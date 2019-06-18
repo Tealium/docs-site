@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.50" />
+     <meta name="generator" content="Hugo 0.54.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -340,13 +340,25 @@ var utag_data = {
 </tr>
 
 <tr>
-<td>device_memory_usage</td>
+<td>device_memory_usage*</td>
 <td>Current memory used by the app on the device at the time of the crash</td>
 <td>143.57MB</td>
 </tr>
 
 <tr>
-<td>device_memory_available</td>
+<td>app_memory_usage</td>
+<td>Current memory used by the app on the device at the time of the crash</td>
+<td>143.57MB</td>
+</tr>
+
+<tr>
+<td>device_memory_available*</td>
+<td>Free memory on device at the time of the crash</td>
+<td>1068.88MB</td>
+</tr>
+
+<tr>
+<td>memory_free</td>
 <td>Free memory on device at the time of the crash</td>
 <td>1068.88MB</td>
 </tr>
@@ -425,6 +437,8 @@ var utag_data = {
 </tbody>
 </table>
 
+<p>* These variables are duplicated for backward-compatibility with previous releases</p>
+
 <h2 id="initialization">Initialization</h2>
 
 <p>Once TealiumCrashReporteriOS.framework is added to your project, you don&rsquo;t have to do anything else. As long as the crash module is enabled and the Tealium SDK is initialized, when a crash is exhibited in your app, crash data will automatically be part of the tracking call.</p>
@@ -447,6 +461,12 @@ TealiumCrashReporter.invokeCrash(name: &quot;TEST_CRASH_NAME&quot;, reason: &quo
 <p>No planned changes</p>
 
 <h2 id="change-log">Change Log</h2>
+
+<p>1.7.0</p>
+
+<ul>
+<li>Duplicated some variables for standardization with other modules</li>
+</ul>
 
 <p>1.6.5</p>
 
@@ -539,7 +559,7 @@ TealiumCrashReporter.invokeCrash(name: &quot;TEST_CRASH_NAME&quot;, reason: &quo
           </li>
           <li class="fw4">
             <a href="/platforms/android/referrer-module/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Module: Referrer
+              Module: Install Referrer
             </a>
           </li>
         </ul>
@@ -676,6 +696,11 @@ TealiumCrashReporter.invokeCrash(name: &quot;TEST_CRASH_NAME&quot;, reason: &quo
           <li class="fw4">
             <a href="/platforms/ios/data-layer-variables/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            <a href="/platforms/ios/tag-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Tag Management
             </a>
           </li>
           <li class="fw4">
@@ -996,7 +1021,7 @@ TealiumCrashReporter.invokeCrash(name: &quot;TEST_CRASH_NAME&quot;, reason: &quo
   <span class="nl3 child"><svg class="grow" fill="" height="14px" viewBox="0 0 24 24" width="14px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
 </span>
     “CrashReporter Module”
-  </a> was last updated: November 7, 2018
+  </a> was last updated: May 17, 2019
 </p>
 
       

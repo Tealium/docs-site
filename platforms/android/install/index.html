@@ -6,12 +6,12 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Install | Tealium for Android |Tealium Developer Docs</title>
+    <title>Install | Overview |Tealium Developer Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.50" />
+     <meta name="generator" content="Hugo 0.54.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -213,9 +213,11 @@ var utag_data = {
               <li><a href="#initialize">Initialize</a></li>
               <li><a href="#track-views">Track Views</a></li>
               <li><a href="#track-events">Track Events</a></li>
+              <li><a href="#persistent-and-volatile-data">Persistent and Volatile Data</a></li>
               <li><a href="#log-level">Log Level</a></li>
               <li><a href="#cookies">Cookies</a></li>
-              <li><a href="#additional-resources">Additional Resources </a></li>
+              <li><a href="#multiprocess-apps">Multiprocess Apps</a></li>
+              <li><a href="#additional-resources">Additional Resources</a></li>
               </nav>
   </aside></div>
 
@@ -255,19 +257,19 @@ var utag_data = {
 
 <ul>
 <li>Android Studio</li>
-<li>Android API Level 9 and higher (Gingerbread/2.3)</li>
+<li>Android API Level 19 and higher (KitKat/4.4)</li>
 </ul>
 
 <p>For use with iQ Tag Management:</p>
 
 <ul>
-<li>Mobile Profile in iQ (see <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328" target="_blank">Creating a Mobile Profile</a>)</li>
+<li>Mobile Profile in iQ (see <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">Creating a Mobile Profile</a>)</li>
 </ul>
 
 <p>For use with Universal Data Hub:</p>
 
 <ul>
-<li>Tealium <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/tkb-p/udh" target="_blank">Universal Data Hub</a> account</li>
+<li>Tealium <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/tkb-p/udh">Universal Data Hub</a> account</li>
 </ul>
 
 <h2 id="get-the-code">Get the Code</h2>
@@ -275,7 +277,7 @@ var utag_data = {
 <p>The code for the Tealium Android library can be found on Github. You must download and install the library before proceeding.</p>
 
 <ul>
-<li>Download: <a href="https://github.com/Tealium/tealium-android" target="_blank">Tealium for Android</a></li>
+<li>Download: <a href="https://github.com/Tealium/tealium-android">Tealium for Android</a></li>
 </ul>
 
 <p class="note">Cloning the library, instead of downloading, will make it easier to update to future releases.</p>
@@ -284,48 +286,49 @@ var utag_data = {
 
 <p>Tealium uses Maven to install and manage dependencies.</p>
 
-<p>Add the Tealium Maven URL to your project root <code>build.gradle</code> file:</p>
+<p>Add the Tealium Maven URL to your project root <code>build.gradle</code> file:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects <span style="font-weight:bold">{</span>
     repositories <span style="font-weight:bold">{</span>
         jcenter<span style="font-weight:bold">()</span>
         maven <span style="font-weight:bold">{</span>
-            url <span style="color:#b84">&#34;http://maven.tealiumiq.com/android/releases/&#34;</span>
+            url <span style="color:#b84">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
         <span style="font-weight:bold">}</span>
     <span style="font-weight:bold">}</span>
 <span style="font-weight:bold">}</span></code></pre></div>
-<p>Add the Tealium dependency to your project module <code>build.gradle</code> file:</p>
+<p>Add the Tealium dependency to your project module <code>build.gradle</code> file:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
-    implementation <span style="color:#b84">&#39;com.tealium:library:5.5.1&#39;</span>
+    implementation <span style="color:#b84">&#39;com.tealium:library:5.5.4&#39;</span>
 <span style="font-weight:bold">}</span></code></pre></div>
 <h2 id="manual-install">Manual Install</h2>
 
 <p>You can also add the dependency manually.</p>
 
-<p>Add flatDir to your project root <code>build.gradle</code> file:</p>
+<p>Add flatDir to your project root <code>build.gradle</code> file:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects <span style="font-weight:bold">{</span>
-   repositories <span style="font-weight:bold">{</span>
-       jcenter<span style="font-weight:bold">()</span>
-       flatDir <span style="font-weight:bold">{</span>
-           dirs <span style="color:#b84">&#39;libs&#39;</span>
-       <span style="font-weight:bold">}</span>
-   <span style="font-weight:bold">}</span>
+   repositories <span style="font-weight:bold">{</span>
+       jcenter<span style="font-weight:bold">()</span>
+       flatDir <span style="font-weight:bold">{</span>
+           dirs <span style="color:#b84">&#39;libs&#39;</span>
+       <span style="font-weight:bold">}</span>
+   <span style="font-weight:bold">}</span>
 <span style="font-weight:bold">}</span></code></pre></div>
 <p>Add <strong>tealium-5.x.x.aar</strong> to <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code>.</p>
 
-<p>Add the Tealium library dependency to your <code>build.gradle</code> file: </p>
+<p>Add the Tealium library dependency to your <code>build.gradle</code> file:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
-    implementation<span style="font-weight:bold">(</span>name:<span style="color:#b84">&#39;tealium-5.5.1&#39;</span><span style="font-weight:bold">,</span> ext:<span style="color:#b84">&#39;aar&#39;</span><span style="font-weight:bold">)</span>
-<span style="font-weight:bold">}</span> </code></pre></div>
+    implementation<span style="font-weight:bold">(</span>name:<span style="color:#b84">&#39;tealium-5.5.4&#39;</span><span style="font-weight:bold">,</span> ext:<span style="color:#b84">&#39;aar&#39;</span><span style="font-weight:bold">)</span>
+<span style="font-weight:bold">}</span> </code></pre></div>
 <h2 id="initialize">Initialize</h2>
 
-<p>The Tealium instance must be configured with the following parameters:</p>
+<p>The Tealium instance must be configured with the following parameters:</p>
 
 <ul>
+<li><strong>application</strong> - the application</li>
 <li><strong>account</strong> - the name of your account</li>
 <li><strong>profile</strong> - the name of your profile</li>
-<li><strong>environment</strong> - one of &ldquo;qa&rdquo; or &ldquo;prod&rdquo;</li>
+<li><strong>environment</strong> - one of &ldquo;dev&rdquo; &ldquo;qa&rdquo; or &ldquo;prod&rdquo;</li>
 <li><strong>datasource</strong> - (optional) the data source key from UDH</li>
-<li><strong>instance</strong> - a unique name for your instance (multiple instances are supported)</li>
+<li><strong>instance</strong> - a unique name for your instance (multiple instances are supported)</li>
 </ul>
 
 <p>Add the following code to the <code>onCreate</code> method in the Application sub-class:</p>
@@ -340,9 +343,9 @@ Tealium<span style="font-weight:bold">.</span><span style="color:#008080">create
 
 <h2 id="track-views">Track Views</h2>
 
-<p>Every time a user opens or changes a screen in the app a tracking call should be made.  A view is tracked by calling <code>trackView()</code> with two parameters: the name of the screen and (optionally) contextual view data. </p>
+<p>Every time a user opens or changes a screen in the app a tracking call should be made.  A view is tracked by calling <code>trackView()</code> with two parameters: the name of the screen and (optionally) contextual view data.</p>
 
-<p class="note">The&nbsp;screen name will be populated in the event data as the <code>screen_title</code>&nbsp;variable.</p>
+<p class="note">The screen name will be populated in the event data as the <code>screen_title</code> variable.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Map<span style="font-weight:bold">&lt;</span>String<span style="font-weight:bold">,</span> Object<span style="font-weight:bold">&gt;</span> data <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> HashMap<span style="font-weight:bold">&lt;&gt;(</span>1<span style="font-weight:bold">);</span>
 data<span style="font-weight:bold">.</span><span style="color:#008080">put</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;someKey&#34;</span><span style="font-weight:bold">,</span> <span style="color:#b84">&#34;someValue&#34;</span><span style="font-weight:bold">);</span>
 Tealium<span style="font-weight:bold">.</span><span style="color:#008080">getInstance</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;INSTANCE&#34;</span><span style="font-weight:bold">).</span><span style="color:#008080">trackView</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;screenName&#34;</span><span style="font-weight:bold">,</span> data<span style="font-weight:bold">);</span></code></pre></div>
@@ -350,28 +353,48 @@ Tealium<span style="font-weight:bold">.</span><span style="color:#008080">getIns
 
 <p>All non-view activity should be tracked as an event. This is easily done by calling <code>trackEvent()</code> with two parameters: an event name and (optionally) contextual event data.</p>
 
-<p class="note">The event&nbsp;name will be populated in the event data as the <code>tealium_event</code>&nbsp;variable.</p>
+<p class="note">The event name will be populated in the event data as the <code>tealium_event</code> variable.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Map<span style="font-weight:bold">&lt;</span>String<span style="font-weight:bold">,</span> Object<span style="font-weight:bold">&gt;</span> data <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> HashMap<span style="font-weight:bold">&lt;&gt;(</span>1<span style="font-weight:bold">);</span>
 data<span style="font-weight:bold">.</span><span style="color:#008080">put</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;someKey&#34;</span><span style="font-weight:bold">,</span> <span style="color:#b84">&#34;someValue&#34;</span><span style="font-weight:bold">);</span>
-Tealium<span style="font-weight:bold">.</span><span style="color:#008080">getInstance</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;INSTANCE_NAME&#34;</span><span style="font-weight:bold">).</span><span style="color:#008080">trackEvent</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;someEvent&#34;</span><span style="font-weight:bold">,</span> data<span style="font-weight:bold">);</span> </code></pre></div>
+Tealium<span style="font-weight:bold">.</span><span style="color:#008080">getInstance</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;INSTANCE_NAME&#34;</span><span style="font-weight:bold">).</span><span style="color:#008080">trackEvent</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;someEvent&#34;</span><span style="font-weight:bold">,</span> data<span style="font-weight:bold">);</span> </code></pre></div>
+<h2 id="persistent-and-volatile-data">Persistent and Volatile Data</h2>
+
+<p>In addition to the transient event data that can be sent via the <code>trackView</code> and <code>trackEvent</code> methods outlined above, there are also methods to set common data for each tracking call.</p>
+
+<h4 id="persistent-data">Persistent Data</h4>
+
+<p>Persistent values are stored on the device as <a href="https://developer.android.com/reference/android/content/SharedPreferences">SharedPreferences</a> and will be merged into to each event and preserved between launches of the app.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">SharedPreferences sp <span style="font-weight:bold">=</span> instance<span style="font-weight:bold">.</span><span style="color:#008080">getDataSources</span><span style="font-weight:bold">().</span><span style="color:#008080">getPersistentDataSources</span><span style="font-weight:bold">();</span>
+sp<span style="font-weight:bold">.</span><span style="color:#008080">edit</span><span style="font-weight:bold">().</span><span style="color:#008080">putInt</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;init_count&#34;</span><span style="font-weight:bold">,</span> sp<span style="font-weight:bold">.</span><span style="color:#008080">getInt</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;init_count&#34;</span><span style="font-weight:bold">,</span> 0<span style="font-weight:bold">)</span> <span style="font-weight:bold">+</span> 1<span style="font-weight:bold">).</span><span style="color:#008080">commit</span><span style="font-weight:bold">();</span></code></pre></div>
+<h4 id="volatile-data">Volatile Data</h4>
+
+<p>Volatile values are merged into to each event, but discarded upon closing the app and restarting.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">instance<span style="font-weight:bold">.</span><span style="color:#008080">getDataSources</span><span style="font-weight:bold">().</span><span style="color:#008080">getVolatileDataSources</span><span style="font-weight:bold">()</span>
+                <span style="font-weight:bold">.</span><span style="color:#008080">put</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;init_time&#34;</span><span style="font-weight:bold">,</span> System<span style="font-weight:bold">.</span><span style="color:#008080">currentTimeMillis</span><span style="font-weight:bold">());</span></code></pre></div>
 <h2 id="log-level">Log Level</h2>
 
-<p>By default, the log level is controlled by the remote publish settings. Sometimes, however, this is not convenient for developers who may not have access to Tealium iQ to change the settings.</p>
+<p>By default, the log level is controlled by the remote publish settings and is inferred from the Tealium environment in use:</p>
 
-<p>Since release 5.3.1 of the Tealium library, you can now override the log level locally at initialization time. To set a specific log level, use the following code:</p>
+<ul>
+<li><strong>dev</strong> - activity, info, warnings, errors</li>
+<li><strong>qa</strong> -  info, warnings, errors</li>
+<li><strong>prod</strong> - errors</li>
+</ul>
+
+<p>Since release 5.3.1 of the Tealium library, you can now override the log level locally at initialization time. To set a specific log level, use the following code:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#998;font-style:italic">// options: dev, qa, prod, silent
 </span><span style="color:#998;font-style:italic"></span>tealConfig<span style="font-weight:bold">.</span><span style="color:#008080">setForceOverrideLogLevel</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;dev&#34;</span><span style="font-weight:bold">);</span></code></pre></div>
 <h2 id="cookies">Cookies</h2>
 
-<p class="note">v<strong>5.1.0 and above -&nbsp;</strong>CookieManager is <strong>enabled</strong> by default. &nbsp;<br>v<strong>5.0.4 and below - </strong>CookieManager is <strong>disbabled</strong> by default.&nbsp;Enabling&nbsp;CookieManager is <strong>required</strong>&nbsp;if using Tag Management</p>
-
-<p>If you have enabled Tag Managements in your mobile profile then the following code can be added to activate cookie management. This code allows the Tag Management Webview to:</p>
+<p>If you have enabled Tag Management in your mobile profile then the following code can be added to activate cookie management. This code allows the Tag Management Webview to:</p>
 
 <ul>
-<li><a href="https://developer.android.com/reference/android/webkit/CookieManager.html#acceptCookie()" target="_blank">acceptCookies</a></li>
-<li><a href="https://developer.android.com/reference/android/webkit/CookieManager.html#acceptThirdPartyCookies(android.webkit.WebView)" target="_blank">acceptThirdPartyCookies</a></li>
-<li><a href="https://developer.android.com/reference/android/webkit/CookieManager.html#setAcceptFileSchemeCookies(boolean)" target="_blank">acceptFileSchemeCookies</a></li>
+<li><a href="https://developer.android.com/reference/android/webkit/CookieManager.html#acceptCookie()">acceptCookies</a></li>
+<li><a href="https://developer.android.com/reference/android/webkit/CookieManager.html#acceptThirdPartyCookies(android.webkit.WebView)">acceptThirdPartyCookies</a></li>
+<li><a href="https://developer.android.com/reference/android/webkit/CookieManager.html#setAcceptFileSchemeCookies(boolean)">acceptFileSchemeCookies</a></li>
 </ul>
+
+<p class="note">v<strong>5.1.0 and above - </strong>CookieManager is <strong>enabled</strong> by default.  <br>v<strong>5.0.4 and below - </strong>CookieManager is <strong>disabled</strong> by default. Enabling CookieManager is <strong>required</strong> if using Tag Management</p>
 
 <p>This must be placed after the initialization statement.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config<span style="font-weight:bold">.</span><span style="color:#008080">getEventListeners</span><span style="font-weight:bold">().</span><span style="color:#008080">add</span><span style="font-weight:bold">(</span>createCookieEnablerListener<span style="font-weight:bold">());</span>
@@ -392,11 +415,21 @@ Tealium<span style="font-weight:bold">.</span><span style="color:#008080">getIns
         <span style="font-weight:bold">}</span>
     <span style="font-weight:bold">};</span>
 <span style="font-weight:bold">}</span></code></pre></div>
-<h2 id="additional-resources">Additional Resources </h2>
+<h2 id="multiprocess-apps">Multiprocess Apps</h2>
+
+<h4 id="android-9-and-above-multiprocess-applications">Android 9 and above + Multiprocess Applications</h4>
+
+<p>Android 9 introduced a behavior change around WebView data directories in multiprocess applications. In this change, WebViews can no longer share a single data directory across multiple processes. Typically, you&rsquo;ll want to have all your Activities that use a WebView in the same process.  If implementing more instances of WebView in more than one process and using Tealium&rsquo;s Tag Management solution, we recommend calling <code>setDataDirectorySuffix()</code> before creating an instance of Tealium to prevent the app from crashing.</p>
+
+<p>If you need to access Tealium&rsquo;s Tag Management cookies and web data, you&rsquo;ll need to copy it between processes yourself using the CookieManager&rsquo;s <code>getCookie()</code> and <code>setCookie()</code> methods.</p>
+
+<p>Addition Reading: <a href="https://developer.android.com/about/versions/pie/android-9.0-changes-28#web-data-dirs">Web-based data directories separated by process</a></p>
+
+<h2 id="additional-resources">Additional Resources</h2>
 
 <ul>
-<li><a href="https://github.com/Tealium/tealium-android/tree/master/Samples" target="_blank">Sample Apps</a></li>
-<li><a href="http://tealium.github.io/tealium-android/" target="_blank">API Documentation</a></li>
+<li><a href="https://github.com/Tealium/tealium-android/tree/master/Samples">Sample Apps</a></li>
+<li><a href="http://tealium.github.io/tealium-android/">API Documentation</a></li>
 </ul>
 
 </div>
@@ -472,7 +505,7 @@ Tealium<span style="font-weight:bold">.</span><span style="color:#008080">getIns
           </li>
           <li class="fw4">
             <a href="/platforms/android/referrer-module/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Module: Referrer
+              Module: Install Referrer
             </a>
           </li>
         </ul>
@@ -609,6 +642,11 @@ Tealium<span style="font-weight:bold">.</span><span style="color:#008080">getIns
           <li class="fw4">
             <a href="/platforms/ios/data-layer-variables/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            <a href="/platforms/ios/tag-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Tag Management
             </a>
           </li>
           <li class="fw4">

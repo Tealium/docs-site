@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.50" />
+     <meta name="generator" content="Hugo 0.54.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -219,6 +219,8 @@ var utag_data = {
               <li><a href="#getloglevel">getLogLevel()</a></li>
               <li><a href="#settagmanagementoverrideurl">setTagManagementOverrideURL()</a></li>
               <li><a href="#settagmanagementqueuesize">setTagManagementQueueSize()</a></li>
+              <li><a href="#setrootview">setRootView()</a></li>
+              <li><a href="#setshoulduselegacywebview">setShouldUseLegacyWebview()</a></li>
               <li><a href="#setcollectoverrideurl">setCollectOverrideURL()</a></li>
               <li><a href="#setmemoryreportingenabled">setMemoryReportingEnabled()</a></li>
               <li><a href="#ismemoryreportingenabled">isMemoryReportingEnabled()</a></li>
@@ -259,7 +261,7 @@ var utag_data = {
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
     <div class="f4 fw4 lh-copy">
-      Provides a central place for configuring tracking options for the Tealium API. Individual modules provide their own extensions for the TealiumConfig class if they are enabled.
+      A class to set configuration options for the main Tealium class. Individual modules provide their own extensions for the TealiumConfig class if they are enabled.
     </div>
   
 
@@ -283,7 +285,7 @@ var utag_data = {
 
 <h2 id="installation">Installation</h2>
 
-<p><em>Included with the TealiumCore framework</em></p>
+<p>Included with the TealiumCore framework.</p>
 
 <h3 id="cocoapods">CocoaPods</h3>
 
@@ -345,13 +347,13 @@ var utag_data = {
 </tbody>
 </table>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// standard basic config object</span>
-<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
+<span style="font-weight:bold">let</span> <span style="color:#008080">tealConfig</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
 
 <span style="color:#998;font-style:italic">// with optionaldata and datasource</span>
-<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>, optionalData: <span style="font-weight:bold">nil</span>, datasource: <span style="color:#b84">&#34;2f5s1&#34;</span>)
+<span style="font-weight:bold">let</span> <span style="color:#008080">tealConfig</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>, optionalData: <span style="font-weight:bold">nil</span>, datasource: <span style="color:#b84">&#34;abc12&#34;</span>)
 
 <span style="color:#998;font-style:italic">// with datasource but no optionalData</span>
-<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>, datasource: <span style="color:#b84">&#34;2f5s1&#34;</span>)</code></pre></div>
+<span style="font-weight:bold">let</span> <span style="color:#008080">tealConfig</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>, datasource: <span style="color:#b84">&#34;abc12&#34;</span>)</code></pre></div>
 <h3 id="optionaldata">optionalData</h3>
 
 <p>Allows certain default behavior to be overridden at init time. Generally, it is better to use the override methods, rather than explicitly specifying an optionalData object.</p>
@@ -422,8 +424,7 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-<span style="color:#998;font-style:italic">// blacklists the autotracking module</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// blacklists the autotracking module</span>
 <span style="font-weight:bold">let</span> <span style="color:#008080">modulesList</span> = TealiumModulesList(isWhitelist: <span style="font-weight:bold">false</span>, moduleNames: [<span style="color:#b84">&#34;autotracking&#34;</span>]
 config.setModulesList(modulesList)</code></pre></div>
 <h3 id="tealiummoduleslist-struct">*TealiumModulesList struct</h3>
@@ -458,8 +459,7 @@ config.setModulesList(modulesList)</code></pre></div>
 
 <pre><code>getModulesList() -&gt; TealiumModulesList
 </code></pre>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-<span style="color:#998;font-style:italic">// blacklists the autotracking module</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// blacklists the autotracking module</span>
 <span style="font-weight:bold">let</span> <span style="color:#008080">modulesList</span> = config.getModulesList()</code></pre></div>
 <h3 id="setloglevel">setLogLevel()</h3>
 
@@ -485,8 +485,7 @@ config.setModulesList(modulesList)</code></pre></div>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-<span style="color:#998;font-style:italic">// .none .errors .warnings .verbose</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// .none .errors .warnings .verbose</span>
 <span style="font-weight:bold">let</span> <span style="color:#008080">newLogLevel</span> = TealiumLogLevel.errors
 config.setLogLevel(logLevel: newLogLevel)</code></pre></div>
 <h3 id="getloglevel">getLogLevel()</h3>
@@ -495,11 +494,10 @@ config.setLogLevel(logLevel: newLogLevel)</code></pre></div>
 
 <pre><code>getLogLevel() -&gt; TealiumLogLevel
 </code></pre>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-<span style="font-weight:bold">let</span> <span style="color:#008080">logLevel</span> = config.getLogLevel()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">logLevel</span> = config.getLogLevel()</code></pre></div>
 <h3 id="settagmanagementoverrideurl">setTagManagementOverrideURL()</h3>
 
-<p>Overrides the default URL used by the non-rendered UIWebView used by the Tag Management module. This should generally be avoided unless you are self-hosting your Tealium JavaScript files.</p>
+<p>Overrides the default URL used by the Tag Management module. This is needed if you are self-hosting your Tealium JavaScript files.</p>
 
 <pre><code>setTagManagementOverrideURL(string: String)
 </code></pre>
@@ -517,13 +515,11 @@ config.setLogLevel(logLevel: newLogLevel)</code></pre></div>
 <tr>
 <td>string</td>
 <td>String</td>
-<td>String representing a URL to be loaded by the Tealium UIWebView</td>
+<td>String representing a URL to be loaded</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// sample</span>
-<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-<span style="font-weight:bold">let</span> <span style="color:#008080">url</span> = <span style="color:#b84">&#34;https://tags.mycdn.com/utag/myaccount/myprofile/myenv/mobile.html&#34;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">url</span> = <span style="color:#b84">&#34;https://tags.mycdn.com/utag/myaccount/myprofile/myenv/mobile.html&#34;</span>
 config.setTagManagementOverrideURL(string: url)</code></pre></div>
 <h3 id="settagmanagementqueuesize">setTagManagementQueueSize()</h3>
 
@@ -549,9 +545,57 @@ config.setTagManagementOverrideURL(string: url)</code></pre></div>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// sample</span>
-<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-config.setTagManagementQueueSize(to: <span style="color:#099">1</span>)</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.setTagManagementQueueSize(to: <span style="color:#099">1</span>)</code></pre></div>
+<h3 id="setrootview">setRootView()</h3>
+
+<p>Sets the current UIView for WKWebView to be attached to.</p>
+
+<pre><code>setRootView(UIView)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>view</td>
+<td>UIView</td>
+<td>UIView instance for WKWebView to be attached to</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.setRootView(<span style="font-weight:bold">self</span>.view)</code></pre></div>
+<h3 id="setshoulduselegacywebview">setShouldUseLegacyWebview()</h3>
+
+<p>Forces use of UIWebView instead of WKWebView.</p>
+
+<pre><code>setShouldUseLegacyWebview(shouldUse: Bool)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>shouldUse</td>
+<td>Bool</td>
+<td><code>true</code> if UIWebView should be used</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.setShouldUseLegacyWebview(shouldUse: <span style="font-weight:bold">true</span>)</code></pre></div>
 <h3 id="setcollectoverrideurl">setCollectOverrideURL()</h3>
 
 <p>Overrides the Tealium Collect URL to send data to a different endpoint.</p>
@@ -576,9 +620,7 @@ config.setTagManagementQueueSize(to: <span style="color:#099">1</span>)</code></
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// sample</span>
-<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-<span style="color:#998;font-style:italic">// force override tealium collect base URL to EU Central</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// force override tealium collect base URL to EU Central</span>
 <span style="font-weight:bold">let</span> <span style="color:#008080">url</span> = <span style="color:#b84">&#34;https://collect-eu-central-1.tealiumiq.com/vdata/i.gif?&#34;</span>
 config.setCollectOverrideURL(string: url)</code></pre></div>
 <h3 id="setmemoryreportingenabled">setMemoryReportingEnabled()</h3>
@@ -605,18 +647,14 @@ config.setCollectOverrideURL(string: url)</code></pre></div>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// sample</span>
-<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-config.setMemoryReportingEnabled(<span style="font-weight:bold">true</span>)</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.setMemoryReportingEnabled(<span style="font-weight:bold">true</span>)</code></pre></div>
 <h3 id="ismemoryreportingenabled">isMemoryReportingEnabled()</h3>
 
 <p>Returns a Bool indicating whether memory reporting is currently enabled or disabled.</p>
 
 <pre><code>isMemoryReportingEnabled() -&gt; Bool
 </code></pre>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// sample</span>
-<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-<span style="font-weight:bold">let</span> <span style="color:#008080">enabled</span> = config.isMemoryReportingEnabled()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">enabled</span> = config.isMemoryReportingEnabled()</code></pre></div>
 <h3 id="setsearchadsenabled">setSearchAdsEnabled()</h3>
 
 <p>Enables or disables memory reporting in the DeviceData module (default: disabled).</p>
@@ -641,41 +679,35 @@ config.setMemoryReportingEnabled(<span style="font-weight:bold">true</span>)</co
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// sample</span>
-<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-config.setSearchAdsEnabled(<span style="font-weight:bold">true</span>)</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.setSearchAdsEnabled(<span style="font-weight:bold">true</span>)</code></pre></div>
 <h3 id="issearchadsenabled">isSearchAdsEnabled()</h3>
 
 <p>Returns a Bool indicating whether the Apple Search Ads API is currently enabled or disabled in the Attribution module.</p>
 
 <pre><code>isSearchAdsEnabled() -&gt; Bool
 </code></pre>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-<span style="font-weight:bold">let</span> <span style="color:#008080">enabled</span> = config.isSearchAdsEnabled()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">enabled</span> = config.isSearchAdsEnabled()</code></pre></div>
 <h3 id="disableremotehttpcommand">disableRemoteHTTPCommand()</h3>
 
 <p>Disables the built-in remote HTTP command (see <a href="/platforms/swift/module-list/remote-commands/">Swift Module: RemoteCommands</a>).</p>
 
 <pre><code>disableRemoteHTTPCommand()
 </code></pre>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-config.disableRemoteHTTPCommand()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.disableRemoteHTTPCommand()</code></pre></div>
 <h3 id="enableremotehttpcommand">enableRemoteHTTPCommand()</h3>
 
 <p>Enables the built-in remote HTTP command (see <a href="/platforms/swift/module-list/remote-commands/">Swift Module: RemoteCommands</a>).</p>
 
 <pre><code>enableRemoteHTTPCommand()
 </code></pre>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-config.enableRemoteHTTPCommand()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.enableRemoteHTTPCommand()</code></pre></div>
 <h3 id="dispatchqueue">dispatchQueue()</h3>
 
 <p>Returns the current dispatch queue used for all Tealium processes.</p>
 
 <pre><code>ispatchQueue() -&gt; DispatchQueue
 </code></pre>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-<span style="font-weight:bold">let</span> <span style="color:#008080">dispatchQueue</span> = config.dispatchQueue()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">dispatchQueue</span> = config.dispatchQueue()</code></pre></div>
 <h3 id="setdispatchqueue">setDispatchQueue()</h3>
 
 <p>Sets a new dispatch queue for Tealium to use. Not recommended. Default is DispatchQueue.main.</p>
@@ -700,8 +732,7 @@ config.enableRemoteHTTPCommand()</code></pre></div>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-<span style="font-weight:bold">let</span> <span style="color:#008080">dispatchQ</span> = DispatchQueue(label: <span style="color:#b84">&#34;com.tealium.myqueue&#34;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">dispatchQ</span> = DispatchQueue(label: <span style="color:#b84">&#34;com.tealium.myqueue&#34;</span>)
 config.setDispatchQueue(dispatchQ)</code></pre></div>
 <h3 id="defaultdispatchqueue">defaultDispatchQueue()</h3>
 
@@ -709,8 +740,7 @@ config.setDispatchQueue(dispatchQ)</code></pre></div>
 
 <pre><code>defaultDispatchQueue() -&gt; DispatchQueue
 </code></pre>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-<span style="font-weight:bold">let</span> <span style="color:#008080">dispatchQueue</span> = config.dispatchQueue()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">dispatchQueue</span> = config.dispatchQueue()</code></pre></div>
 <h3 id="adddelegate">addDelegate()</h3>
 
 <p>Adds a new delegate conforming to the TealiumDelegate protocol.</p>
@@ -735,8 +765,7 @@ config.setDispatchQueue(dispatchQ)</code></pre></div>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-<span style="color:#998;font-style:italic">// assuming current module has implemented the TealiumDelegate protocol</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// assuming current module has implemented the TealiumDelegate protocol</span>
 config.addDelegate(<span style="font-weight:bold">self</span>)</code></pre></div>
 <h3 id="delegates">delegates()</h3>
 
@@ -744,8 +773,7 @@ config.addDelegate(<span style="font-weight:bold">self</span>)</code></pre></div
 
 <pre><code>delegates() -&gt; [TealiumDelegate]
 </code></pre>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-<span style="font-weight:bold">let</span> <span style="color:#008080">delegates</span> = config.delegates()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">delegates</span> = config.delegates()</code></pre></div>
 <h3 id="setconnectivityrefreshenabled">setConnectivityRefreshEnabled()</h3>
 
 <p>If enabled (default), the connectivity module will check for a connection at a specified interval (controlled via <code>setConnectivityRefreshInterval</code>). Queued dispatches will then be sent as soon as a connection is resumed.</p>
@@ -770,8 +798,7 @@ config.addDelegate(<span style="font-weight:bold">self</span>)</code></pre></div
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-config.setConnectivityRefreshEnabled(<span style="font-weight:bold">true</span>) <span style="color:#998;font-style:italic">// set to false to disable this feature</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.setConnectivityRefreshEnabled(<span style="font-weight:bold">true</span>) <span style="color:#998;font-style:italic">// set to false to disable this feature</span></code></pre></div>
 <h3 id="setconnectivityrefreshinterval">setConnectivityRefreshInterval()</h3>
 
 <p>Sets the default connectivity refresh interval in seconds. Default is 30 seconds if not set on the TealiumConfig instance.</p>
@@ -796,8 +823,7 @@ config.setConnectivityRefreshEnabled(<span style="font-weight:bold">true</span>)
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-config. setConnectivityRefreshInterval(<span style="color:#099">5</span>) <span style="color:#998;font-style:italic">// sets interval to 5 seconds</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config. setConnectivityRefreshInterval(<span style="color:#099">5</span>) <span style="color:#998;font-style:italic">// sets interval to 5 seconds</span></code></pre></div>
 <h3 id="addremotecommand">addRemoteCommand()</h3>
 
 <p>Adds remote commands for later execution</p>
@@ -835,8 +861,7 @@ config.addRemoteCommand(remoteCommand)
 <p>Returns an array of remote commands set on the <code>TealiumConfig</code> instance</p>
 
 <p><code>getRemoteCommands() -&gt;[TealiumRemoteCommand]?</code></p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-<span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = config.getRemoteCommands()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = config.getRemoteCommands()</code></pre></div>
 <h3 id="setlegacydispatchmethod">setLegacyDispatchMethod()</h3>
 
 <p>Forces Collect module to use the legacy &ldquo;vdata&rdquo; GET request dispatcher instead of the default &ldquo;/event&rdquo; POST request dispatcher.</p>
@@ -860,9 +885,14 @@ config.addRemoteCommand(remoteCommand)
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>, profile: <span style="color:#b84">&#34;your_profile&#34;</span>, environment: <span style="color:#b84">&#34;dev/qa/prod&#34;</span>)
-config.setLegacyDispatchMethod(<span style="font-weight:bold">true</span>)</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.setLegacyDispatchMethod(<span style="font-weight:bold">true</span>)</code></pre></div>
 <h2 id="change-log">Change Log</h2>
+
+<p>1.7.0</p>
+
+<ul>
+<li>Added new methods for WKWebView</li>
+</ul>
 
 <p>1.6.5</p>
 
@@ -951,7 +981,7 @@ config.setLegacyDispatchMethod(<span style="font-weight:bold">true</span>)</code
           </li>
           <li class="fw4">
             <a href="/platforms/android/referrer-module/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Module: Referrer
+              Module: Install Referrer
             </a>
           </li>
         </ul>
@@ -1088,6 +1118,11 @@ config.setLegacyDispatchMethod(<span style="font-weight:bold">true</span>)</code
           <li class="fw4">
             <a href="/platforms/ios/data-layer-variables/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            <a href="/platforms/ios/tag-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Tag Management
             </a>
           </li>
           <li class="fw4">
@@ -1408,7 +1443,7 @@ config.setLegacyDispatchMethod(<span style="font-weight:bold">true</span>)</code
   <span class="nl3 child"><svg class="grow" fill="" height="14px" viewBox="0 0 24 24" width="14px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
 </span>
     “Class: TealiumConfig”
-  </a> was last updated: November 7, 2018
+  </a> was last updated: May 22, 2019
 </p>
 
       

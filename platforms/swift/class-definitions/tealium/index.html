@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.50" />
+     <meta name="generator" content="Hugo 0.54.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -213,8 +213,9 @@ var utag_data = {
               <ul class="toc-h3"><li><a href="#tealium">Tealium</a></li>
               <li><a href="#track">track()</a></li>
               <li><a href="#trackview">trackView()</a></li>
-              </ul><li><a href="#future-improvements">Future Improvements</a></li>
-              <li><a href="#change-log">Change Log</a></li>
+              <li><a href="#jointrace">joinTrace()</a></li>
+              <li><a href="#leavetrace">leaveTrace()</a></li>
+              </ul><li><a href="#change-log">Change Log</a></li>
               </nav>
   </aside></div>
 
@@ -435,11 +436,67 @@ tealium?.trackView(title: <span style="color:#b84">&#34;some screen title&#34;</
  <span style="color:#998;font-style:italic">// Any follow up code here</span>
 
 })</code></pre></div>
-<h2 id="future-improvements">Future Improvements</h2>
+<h3 id="jointrace">joinTrace()</h3>
 
-<p>No planned changes</p>
+<p>Joins a trace with the specified ID. The trace will remain active for the duration of the app session until <code>leaveTrace()</code> is called. Learn more about the <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/Trace/ta-p/12058">Trace feature</a> in the Tealium Universal Data Hub.</p>
 
+<pre><code>joinTrace(traceId: String)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>traceId</td>
+<td>String</td>
+<td>The trace ID acquired from the Trace tool.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.joinTrace(traceId: <span style="color:#b84">&#34;12345&#34;</span>)</code></pre></div>
+<h3 id="leavetrace">leaveTrace()</h3>
+
+<p>Leave a previously joined trace and end the visitor session. Optional parameter to preserve the trace visitor session when leaving the trace.</p>
+
+<p class="note">Connector actions set to run at "End of Visit" will not run until the session expires.</p>
+
+<pre><code>leaveTrace()
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>killVisitorSession</td>
+<td>Bool</td>
+<td>Default <code>true</code> if no params are passed. Pass <code>false</code> if you do not wish to terminate the visitor session.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.leaveTrace()
+
+tealium?.leaveTrace(killVisitorSession: <span style="font-weight:bold">false</span>)</code></pre></div>
 <h2 id="change-log">Change Log</h2>
+
+<p>Build 1.7.0</p>
+
+<ul>
+<li>Added methods to support Trace.</li>
+</ul>
 
 <p>Build 1.6.5</p>
 
@@ -530,7 +587,7 @@ tealium?.trackView(title: <span style="color:#b84">&#34;some screen title&#34;</
           </li>
           <li class="fw4">
             <a href="/platforms/android/referrer-module/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Module: Referrer
+              Module: Install Referrer
             </a>
           </li>
         </ul>
@@ -667,6 +724,11 @@ tealium?.trackView(title: <span style="color:#b84">&#34;some screen title&#34;</
           <li class="fw4">
             <a href="/platforms/ios/data-layer-variables/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            <a href="/platforms/ios/tag-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Tag Management
             </a>
           </li>
           <li class="fw4">
@@ -987,7 +1049,7 @@ tealium?.trackView(title: <span style="color:#b84">&#34;some screen title&#34;</
   <span class="nl3 child"><svg class="grow" fill="" height="14px" viewBox="0 0 24 24" width="14px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
 </span>
     “Class: Tealium”
-  </a> was last updated: November 7, 2018
+  </a> was last updated: May 22, 2019
 </p>
 
       

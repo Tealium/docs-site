@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.50" />
+     <meta name="generator" content="Hugo 0.54.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -255,7 +255,7 @@ var utag_data = {
 
 <h2 id="appdata-module-variables">AppData Module Variables</h2>
 
-<p>The following variables are available in the AppData module.</p>
+<p>The following variables are added to the data layer by the AppData module.</p>
 
 <table>
 <thead>
@@ -310,7 +310,7 @@ var utag_data = {
 
 <h2 id="attribution-module-variables">Attribution Module Variables</h2>
 
-<p>The following variables are available in the Attribution module.</p>
+<p>The following variables are added to the data layer by the Attribution module.</p>
 
 <table>
 <thead>
@@ -385,7 +385,7 @@ var utag_data = {
 
 <h2 id="autotracking-module-variables">Autotracking Module Variables</h2>
 
-<p>The following variables are available in the Autotracking module.</p>
+<p>The following variables are added to the data layer by the Autotracking module.</p>
 
 <table>
 <thead>
@@ -405,7 +405,7 @@ var utag_data = {
 
 <h2 id="consentmanager-module-variables">ConsentManager Module Variables</h2>
 
-<p>The following variables are available in the ConsentManager module.</p>
+<p>The following variables are added to the data layer by the ConsentManager module.</p>
 
 <table>
 <thead>
@@ -435,7 +435,7 @@ var utag_data = {
 
 <h2 id="connectivity-module-variables">Connectivity Module Variables</h2>
 
-<p>The following variables are available in the Connectivity module.</p>
+<p>The following variables are added to the data layer by the Connectivity module.</p>
 
 <table>
 <thead>
@@ -447,11 +447,6 @@ var utag_data = {
 
 <tbody>
 <tr>
-<td>tealium_datasource</td>
-<td>Specifies the data source name. Added to every dispatch.<br><br>Example: abc123</td>
-</tr>
-
-<tr>
 <td>was_queued</td>
 <td>Indicates whether a tracking call was queued due to no connectivity. Only present for queued events; absent for all other events<br><br>Example: true</td>
 </tr>
@@ -460,7 +455,7 @@ var utag_data = {
 
 <h2 id="core-module-variables">Core Module Variables</h2>
 
-<p>The following variables are available in the VolatileData module.</p>
+<p>The following variables are added to the data layer by the Core module.</p>
 
 <table>
 <thead>
@@ -484,6 +479,8 @@ var utag_data = {
 </table>
 
 <h2 id="crash-reporter-module-variables">Crash Reporter Module Variables</h2>
+
+<p>The following variables are added to the data layer by the Crash Reporter module.</p>
 
 <table>
 <thead>
@@ -573,7 +570,7 @@ var utag_data = {
 
 <h2 id="datasource-module-variables">Datasource Module Variables</h2>
 
-<p>The following variables are available in the Datasource module.</p>
+<p>The following variables are added to the data layer by the Datasource module.</p>
 
 <table>
 <thead>
@@ -593,7 +590,7 @@ var utag_data = {
 
 <h2 id="devicedata-module-variables">DeviceData Module Variables</h2>
 
-<p>The following variables are available in the DeviceData module.</p>
+<p>The following variables are added to the data layer by the DeviceData module.</p>
 
 <table>
 <thead>
@@ -610,7 +607,22 @@ var utag_data = {
 </tr>
 
 <tr>
+<td>app_orientation</td>
+<td>Orientation of the app (from statusBarOrientation; may differ from device orientation if app is locked in a specific orientation)<br><br>Example: Portrait</td>
+</tr>
+
+<tr>
+<td>app_orientation_extended</td>
+<td>Extended Orientation of the app (from statusBarOrientation; may differ from device orientation if app is locked in a specific orientation)<br><br>Example: Portrait Upside Down</td>
+</tr>
+
+<tr>
 <td>battery_percent</td>
+<td>Current battery percentage at time of track call<br><br>Example: 58</td>
+</tr>
+
+<tr>
+<td>device_battery_percent</td>
 <td>Current battery percentage at time of track call<br><br>Example: 58</td>
 </tr>
 
@@ -620,12 +632,27 @@ var utag_data = {
 </tr>
 
 <tr>
+<td>device_architecture</td>
+<td>CPU architecture<br><br>Example: 64</td>
+</tr>
+
+<tr>
 <td>cpu_type</td>
 <td>CPU type<br><br>Example: ARM64v8</td>
 </tr>
 
 <tr>
+<td>device_cputype</td>
+<td>CPU type<br><br>Example: ARM64v8</td>
+</tr>
+
+<tr>
 <td>device_is_charging</td>
+<td>Boolean to indicate if device is currently charging at time of track call<br><br>Example: false</td>
+</tr>
+
+<tr>
+<td>device_ischarging</td>
 <td>Boolean to indicate if device is currently charging at time of track call<br><br>Example: false</td>
 </tr>
 
@@ -680,12 +707,22 @@ var utag_data = {
 </tr>
 
 <tr>
+<td>device</td>
+<td>Consumer device name<br><br>Example: iPhone 7 Plus</td>
+</tr>
+
+<tr>
 <td>model_variant</td>
 <td>Model variant (generally indicates which radio technology is available on the device)<br><br>Example: CDMA, GSM, WiFi, Cellular</td>
 </tr>
 
 <tr>
-<td>network_connection_type**</td>
+<td>network_connection_type</td>
+<td>Current connection type<br><br>Example: wifi, cellular</td>
+</tr>
+
+<tr>
+<td>_connection_type</td>
 <td>Current connection type<br><br>Example: wifi, cellular</td>
 </tr>
 
@@ -695,7 +732,17 @@ var utag_data = {
 </tr>
 
 <tr>
+<td>carrier_iso</td>
+<td>Mobile network ISO country code<br><br>Example: gb</td>
+</tr>
+
+<tr>
 <td>network_mcc</td>
+<td>Mobile network Country Code (see <a href="https://en.wikipedia.org/wiki/Mobilecountrycode">https://en.wikipedia.org/wiki/Mobilecountrycode</a>)<br><br>Example: 234</td>
+</tr>
+
+<tr>
+<td>carrier_mcc</td>
 <td>Mobile network Country Code (see <a href="https://en.wikipedia.org/wiki/Mobilecountrycode">https://en.wikipedia.org/wiki/Mobilecountrycode</a>)<br><br>Example: 234</td>
 </tr>
 
@@ -705,7 +752,17 @@ var utag_data = {
 </tr>
 
 <tr>
+<td>carrier_mnc</td>
+<td>Mobile network code (see <a href="https://en.wikipedia.org/wiki/Mobilecountrycode">https://en.wikipedia.org/wiki/Mobilecountrycode</a>)<br><br>Example: 34</td>
+</tr>
+
+<tr>
 <td>network_name</td>
+<td>Mobile network carrier name<br><br>Example: EE</td>
+</tr>
+
+<tr>
+<td>carrier</td>
 <td>Mobile network carrier name<br><br>Example: EE</td>
 </tr>
 
@@ -720,7 +777,17 @@ var utag_data = {
 </tr>
 
 <tr>
+<td>platform</td>
+<td>Operating System Name<br><br>Example: iOS, tvOS, watchOS, macOS</td>
+</tr>
+
+<tr>
 <td>os_version</td>
+<td>Operating system version<br><br>Example: 11.1</td>
+</tr>
+
+<tr>
+<td>device_os_version</td>
 <td>Operating system version<br><br>Example: 11.1</td>
 </tr>
 
@@ -728,12 +795,17 @@ var utag_data = {
 <td>user_locale</td>
 <td>Current device language<br><br>Example: en</td>
 </tr>
+
+<tr>
+<td>device_language</td>
+<td>Current device language<br><br>Example: en</td>
+</tr>
 </tbody>
 </table>
 
 <h2 id="lifecycle-module-variables">Lifecycle Module Variables</h2>
 
-<p>The following variables are available in the Lifecycle module.</p>
+<p>The following variables are added to the data layer by the Lifecycle module.</p>
 
 <table>
 <thead>
@@ -868,7 +940,7 @@ var utag_data = {
 
 <h2 id="tagmanagement-module-variables">TagManagement Module Variables</h2>
 
-<p>The following variables are available in the TagManagement module.</p>
+<p>The following variables are added to the data layer by the TagManagement module.</p>
 
 <table>
 <thead>
@@ -888,7 +960,7 @@ var utag_data = {
 
 <h2 id="volatiledata-module-variables">VolatileData Module Variables</h2>
 
-<p>The following variables are available in the VolatileData module.</p>
+<p>The following variables are added to the data layer by the VolatileData module.</p>
 
 <table>
 <thead>
@@ -905,7 +977,17 @@ var utag_data = {
 </tr>
 
 <tr>
+<td>timestamp_local</td>
+<td>Event timestamp in ISO8601 local timezone<br><br>Example: 2017-11-20T06:48:00</td>
+</tr>
+
+<tr>
 <td>event_timestamp_iso</td>
+<td>Event timestamp in ISO8601 (Zulu Time), UTC<br><br>Example: 2017-11-20T14:48:00Z</td>
+</tr>
+
+<tr>
+<td>timestamp</td>
 <td>Event timestamp in ISO8601 (Zulu Time), UTC<br><br>Example: 2017-11-20T14:48:00Z</td>
 </tr>
 
@@ -915,12 +997,27 @@ var utag_data = {
 </tr>
 
 <tr>
+<td>timestamp_offset</td>
+<td>Current offset from UTC in hours<br><br>Example: -8</td>
+</tr>
+
+<tr>
 <td>event_timestamp_unix</td>
 <td>Current Unix timestamp (1970 epoch) in seconds<br><br>Example: 1511189280</td>
 </tr>
 
 <tr>
+<td>timestamp_unix</td>
+<td>Current Unix timestamp (1970 epoch) in seconds<br><br>Example: 1511189280</td>
+</tr>
+
+<tr>
 <td>event_timestamp_unix_millis</td>
+<td>Current Unix timestamp (1970 epoch) in milliseconds<br><br>Example: 1511189280337</td>
+</tr>
+
+<tr>
+<td>timestamp_unix_milliseconds</td>
 <td>Current Unix timestamp (1970 epoch) in milliseconds<br><br>Example: 1511189280337</td>
 </tr>
 
@@ -1039,7 +1136,7 @@ var utag_data = {
           </li>
           <li class="fw4">
             <a href="/platforms/android/referrer-module/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Module: Referrer
+              Module: Install Referrer
             </a>
           </li>
         </ul>
@@ -1176,6 +1273,11 @@ var utag_data = {
           <li class="fw4">
             <a href="/platforms/ios/data-layer-variables/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            <a href="/platforms/ios/tag-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Tag Management
             </a>
           </li>
           <li class="fw4">

@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.50" />
+     <meta name="generator" content="Hugo 0.54.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -207,6 +207,7 @@ var utag_data = {
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">In this article:</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
+              <li><a href="#sample-apps">Sample Apps</a></li>
               <li><a href="#install">Install</a></li>
               <ul class="toc-h3"><li><a href="#cocoapods">CocoaPods</a></li>
               <li><a href="#carthage">Carthage</a></li>
@@ -271,11 +272,26 @@ var utag_data = {
 <li>Tealium <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/tkb-p/udh" target="_blank">Universal Data Hub</a> account</li>
 </ul>
 
+<h2 id="sample-apps">Sample Apps</h2>
+
+<p>We recommend downloading one or more sample apps we provide within the iOS repository. This will help to familiarize yourself with our library, the tracking methods, and best practice implementation.</p>
+
+<ul>
+<li><a href="https://github.com/Tealium/tealium-ios/tree/master/Samples">iOS Sample Apps</a></li>
+</ul>
+
+<p>We also recommend the use of a helper class to abstract the Tealium implementation from the rest of your app. This will give you a single entry point from which to initialize and make tracking calls. This approach allows you to update the code in your helper file and not in every single ViewController or header/method file.</p>
+
+<ul>
+<li><a href="https://github.com/Tealium/tealium-ios/blob/master/Samples/iOS_UIKitCatalog%2BTealium_ObjC/UIKitCatalog/TealiumHelper.m">Sample Helper Class - Objective-C</a></li>
+<li><a href="https://github.com/Tealium/tealium-ios/blob/master/Samples/iOS_UIKitCatalog%2BTealium_Swift/UIKitCatalog/TealiumHelper.swift">Sample Helper Class - Swift</a></li>
+</ul>
+
 <h2 id="install">Install</h2>
 
 <h3 id="cocoapods">CocoaPods</h3>
 
-<p>We recommend using CocoaPods <a href="https://guides.cocoapods.org/using/index.html" target="_blank">CocoaPods</a> to install the TealiumIOS framework. To do this, add the following dependency to your Podfile:</p>
+<p>We recommend using <a href="https://guides.cocoapods.org/using/index.html" target="_blank">CocoaPods</a> to install the TealiumIOS framework. To do this, add the following dependency to your Podfile:</p>
 
 <pre><code>pod &quot;TealiumIOS&quot;
 </code></pre>
@@ -285,7 +301,7 @@ var utag_data = {
 <pre><code>pod install
 </code></pre>
 
-<p>Use the created <code>.xcworkspace</code> file to continue building your app. If you do not use the .xcworkspace file, you will not be able to build the app correctly.</p>
+<p>Use the created <code>.xcworkspace</code> file to continue building your app. If you do not use the <code>.xcworkspace</code> file, you will not be able to build the app correctly.</p>
 
 <h3 id="carthage">Carthage</h3>
 
@@ -315,7 +331,6 @@ var utag_data = {
 <li>Add <code>TealiumIOS.framework</code> to your project.</li>
 <li>Copy framework to project in the resulting dialog box.</li>
 <li>In the Target go to <strong>General &gt; Embedded Binaries</strong> and add <code>TealiumIOS.framework</code>.<p class="note">For Swift projects go to the <strong>Build Settings &gt; Swift Compiler &gt; Objective-C Bridging Header</strong> option and include the file <code>TealiumIOSBridgingHeader.h</code>.</p></li>
-<li>Make sure all paths are as expected under <strong>Targets &gt; Build Settings</strong>.</li>
 </ol>
 
 <h2 id="initialize">Initialize</h2>
@@ -327,7 +342,7 @@ var utag_data = {
 <li><strong>profile</strong> - the name of your profile</li>
 <li><strong>environment</strong> - one of &ldquo;qa&rdquo; or &ldquo;prod&rdquo;</li>
 <li><strong>datasource</strong> - (optional) the data source key from UDH</li>
-<li><strong>instance</strong> - a unique name for your instance (multiple instances are supported)</li>
+<li><strong>instance</strong> - a unique name for your instance (multiple instances are supported). This can be any <code>String</code>. You can use this instance name to get the Tealium instance as seen below.</li>
 </ul>
 
 <p>In the Application Delegate or within a helper class setup method use the following initialization code:  </p>
@@ -392,31 +407,33 @@ tealConfig.logLevel = .prod</code></pre></div>
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content"><div class="tab-pane" data-lang="Swift" title="Swift">
   <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// Retrieve instance</span>
-<span style="font-weight:bold">let</span> <span style="color:#008080">tealium</span> = Tealium.newInstanceForKey(<span style="color:#b84">&#34;INSTANCE&#34;</span>)
+<span style="font-weight:bold">let</span> <span style="color:#008080">tealium</span> = Tealium.instance(forKey: <span style="color:#b84">&#34;INSTANCE&#34;</span>)
+
 <span style="color:#998;font-style:italic">// Basic</span>
-tealium?.trackViewWithTitle(<span style="color:#b84">&#34;screenName&#34;</span>, dataSources: [:])
+tealium?.trackViewWithTitle(<span style="color:#b84">&#34;screenName&#34;</span>, dataSources: <span style="font-weight:bold">nil</span>)
 
 <span style="color:#998;font-style:italic">// With optional data</span>
-<span style="font-weight:bold">let</span> <span style="color:#008080">optionalData</span> = [<span style="color:#b84">&#34;someKey&#34;</span>:<span style="color:#b84">&#34;someValue&#34;</span>]
-tealium?.trackViewWithTitle(<span style="color:#b84">&#34;screenName&#34;</span>, dataSources: optionalData)
+<span style="font-weight:bold">let</span> <span style="color:#008080">optionalData</span> = [<span style="color:#b84">&#34;someKey&#34;</span>: <span style="color:#b84">&#34;someValue&#34;</span>]
+tealium?.trackView(withTitle: <span style="color:#b84">&#34;screenName&#34;</span>, dataSources: optionalData)
 
-<span style="color:#998;font-style:italic">// With optional data</span>
-<span style="font-weight:bold">let</span> <span style="color:#008080">optionalData</span> = [<span style="color:#b84">&#34;someKey&#34;</span>:[<span style="color:#b84">&#34;arrayValue1&#34;</span>,<span style="color:#b84">&#34;arrayValue2&#34;</span>]]
-tealium?.trackViewWithTitle(<span style="color:#b84">&#34;screenName&#34;</span>, dataSources: optionalData)</code></pre></div>
+<span style="color:#998;font-style:italic">// With optional array data</span>
+<span style="font-weight:bold">let</span> <span style="color:#008080">optionalData</span> = [<span style="color:#b84">&#34;someKey&#34;</span>: [<span style="color:#b84">&#34;arrayValue1&#34;</span>,<span style="color:#b84">&#34;arrayValue2&#34;</span>]]
+tealium?.trackView(withTitle: <span style="color:#b84">&#34;screenName&#34;</span>, dataSources: optionalData)</code></pre></div>
 </div>
 
 <div class="tab-pane" data-lang="Objective-C" title="Objective-C">
   <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-obj-c" data-lang="obj-c"><span style="color:#998;font-style:italic">// Retrieve instance
 </span><span style="color:#998;font-style:italic"></span>Tealium <span style="font-weight:bold">*</span>tealium <span style="font-weight:bold">=</span> [Tealium instanceForKey:<span style="color:#b84">@&#34;INSTANCE&#34;</span>];
+
 <span style="color:#998;font-style:italic">// Basic
 </span><span style="color:#998;font-style:italic"></span>[tealium trackViewWithTitle:<span style="color:#b84">@&#34;screenName&#34;</span> dataSources:<span style="color:#999">nil</span>];
 
 <span style="color:#998;font-style:italic">// With optional data
-</span><span style="color:#998;font-style:italic"></span>NSDictionary <span style="font-weight:bold">*</span>optionalData <span style="font-weight:bold">=</span> @{<span style="color:#b84">@&#34;someKey&#34;</span><span style="font-weight:bold">:</span><span style="color:#b84">@&#34;someValue&#34;</span>};
+</span><span style="color:#998;font-style:italic"></span>NSDictionary <span style="font-weight:bold">*</span>optionalData <span style="font-weight:bold">=</span> @{<span style="color:#b84">@&#34;someKey&#34;</span> <span style="font-weight:bold">:</span> <span style="color:#b84">@&#34;someValue&#34;</span>};
 [tealium trackViewWithTitle:<span style="color:#b84">@&#34;screenName&#34;</span> dataSources: optionalData];
 
 <span style="color:#998;font-style:italic">// With optional array data
-</span><span style="color:#998;font-style:italic"></span>NSDictionary <span style="font-weight:bold">*</span>optionalData <span style="font-weight:bold">=</span> @{<span style="color:#b84">@&#34;someKey&#34;</span><span style="font-weight:bold">:</span>@[<span style="color:#b84">@&#34;arrayValue1&#34;</span>,<span style="color:#b84">&#34;arrayValue2&#34;</span>]};
+</span><span style="color:#998;font-style:italic"></span>NSDictionary <span style="font-weight:bold">*</span>optionalData <span style="font-weight:bold">=</span> @{<span style="color:#b84">@&#34;someKey&#34;</span> <span style="font-weight:bold">:</span> @[<span style="color:#b84">@&#34;arrayValue1&#34;</span>, <span style="color:#b84">&#34;arrayValue2&#34;</span>]};
 [tealium trackViewWithTitle:<span style="color:#b84">@&#34;screenName&#34;</span> dataSources: optionalData];</code></pre></div>
 </div>
 </div>
@@ -433,31 +450,33 @@ tealium?.trackViewWithTitle(<span style="color:#b84">&#34;screenName&#34;</span>
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content"><div class="tab-pane" data-lang="Swift" title="Swift">
   <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// Retrieve instance</span>
-<span style="font-weight:bold">let</span> <span style="color:#008080">tealium</span> = Tealium.newInstanceForKey(<span style="color:#b84">&#34;INSTANCE&#34;</span>)
+<span style="font-weight:bold">let</span> <span style="color:#008080">tealium</span> = Tealium.instance(forKey: <span style="color:#b84">&#34;INSTANCE&#34;</span>)
+
 <span style="color:#998;font-style:italic">// Basic</span>
-tealium?.trackEventWithTitle(<span style="color:#b84">&#34;someEvent&#34;</span>, dataSources: [:])
+tealium?.trackEvent(withTitle: <span style="color:#b84">&#34;someEvent&#34;</span>, dataSources: <span style="font-weight:bold">nil</span>)
 
 <span style="color:#998;font-style:italic">// With optional data</span>
-<span style="font-weight:bold">let</span> <span style="color:#008080">optionalData</span> = [<span style="color:#b84">&#34;someKey&#34;</span>:<span style="color:#b84">&#34;someValue&#34;</span>]
-tealium?.trackEventWithTitle(<span style="color:#b84">&#34;someEvent&#34;</span>, dataSources:optionalData)
+<span style="font-weight:bold">let</span> <span style="color:#008080">optionalData</span> = [<span style="color:#b84">&#34;someKey&#34;</span>: <span style="color:#b84">&#34;someValue&#34;</span>]
+tealium?.trackEvent(withTitle: <span style="color:#b84">&#34;someEvent&#34;</span>, dataSources: optionalData)
 
 <span style="color:#998;font-style:italic">// With optional array data</span>
 <span style="font-weight:bold">let</span> <span style="color:#008080">optionalData</span> = [<span style="color:#b84">&#34;someKey&#34;</span>: [<span style="color:#b84">&#34;arrayValue1&#34;</span>, <span style="color:#b84">&#34;arrayValue2&#34;</span>]]
-tealium?.trackEventWithTitle(<span style="color:#b84">&#34;someEvent&#34;</span>, dataSources:optionalData)</code></pre></div>
+tealium?.trackEvent(withTitle: <span style="color:#b84">&#34;someEvent&#34;</span>, dataSources: optionalData)</code></pre></div>
 </div>
 
 <div class="tab-pane" data-lang="Objective-C" title="Objective-C">
   <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-obj-c" data-lang="obj-c"><span style="color:#998;font-style:italic">// Retrieve instance
 </span><span style="color:#998;font-style:italic"></span>Tealium <span style="font-weight:bold">*</span>tealium <span style="font-weight:bold">=</span> [Tealium instanceForKey:<span style="color:#b84">@&#34;INSTANCE&#34;</span>];
+
 <span style="color:#998;font-style:italic">// Basic
 </span><span style="color:#998;font-style:italic"></span>[tealium trackEventWithTitle:<span style="color:#b84">@&#34;someEvent&#34;</span> dataSources:<span style="color:#999">nil</span>];
 
 <span style="color:#998;font-style:italic">// With optional data
-</span><span style="color:#998;font-style:italic"></span>NSDictionary <span style="font-weight:bold">*</span>optionalData <span style="font-weight:bold">=</span> @{<span style="color:#b84">@&#34;someKey&#34;</span><span style="font-weight:bold">:</span><span style="color:#b84">@&#34;someValue&#34;</span>};
+</span><span style="color:#998;font-style:italic"></span>NSDictionary <span style="font-weight:bold">*</span>optionalData <span style="font-weight:bold">=</span> @{<span style="color:#b84">@&#34;someKey&#34;</span> <span style="font-weight:bold">:</span> <span style="color:#b84">@&#34;someValue&#34;</span>};
 [tealium trackEventWithTitle:<span style="color:#b84">@&#34;someEvent&#34;</span> dataSources:optionalData];
 
 <span style="color:#998;font-style:italic">// With optional array data
-</span><span style="color:#998;font-style:italic"></span>NSDictionary <span style="font-weight:bold">*</span>optionalData <span style="font-weight:bold">=</span> @{<span style="color:#b84">@&#34;someKey&#34;</span><span style="font-weight:bold">:</span>@[<span style="color:#b84">@&#34;arrayValue1&#34;</span>, <span style="color:#b84">@&#34;arrayValue2&#34;</span>]};
+</span><span style="color:#998;font-style:italic"></span>NSDictionary <span style="font-weight:bold">*</span>optionalData <span style="font-weight:bold">=</span> @{<span style="color:#b84">@&#34;someKey&#34;</span> <span style="font-weight:bold">:</span> @[<span style="color:#b84">@&#34;arrayValue1&#34;</span>, <span style="color:#b84">@&#34;arrayValue2&#34;</span>]};
 [tealium trackEventWithTitle:<span style="color:#b84">@&#34;someEvent&#34;</span> dataSources:optionalData];</code></pre></div>
 </div>
 </div>
@@ -473,12 +492,14 @@ tealium?.trackEventWithTitle(<span style="color:#b84">&#34;someEvent&#34;</span>
 
 <h2 id="submit-to-the-app-store">Submit to the App Store</h2>
 
-<p>The mobile library contains slices which will permit running it in the simulator. Unfortunately, the simulator architecture is not allowed by Apple when submitting to the App Store.  When creating your archive be sure to run one of the following two scripts to strip out the simulator:</p>
+<p>The mobile library contains slices that run in the simulator and on devices. Unfortunately, the simulator architecture is not allowed by Apple when submitting to the App Store.  When creating your archive be sure to run one of the following two scripts to strip out the simulator:</p>
 
 <ul>
 <li><a href="http://ikennd.ac/blog/2015/02/stripping-unwanted-architectures-from-dynamic-libraries-in-xcode/" target="_blank">Daniel Kennett&rsquo;s Strip Framework Script</a></li>
 <li><a href="https://github.com/realm/realm-cocoa/blob/d59c86f11525f346c8e8db277fdbf2d9ff990d98/scripts/strip-frameworks.sh" target="_blank">Realm strip-frameworks.sh</a></li>
 </ul>
+
+<p>Or you can use the <a href="https://github.com/Tealium/tealium-ios/tree/master/DevicesOnly" target="_blank">Devices Only Builds</a> that do not contain simulator slices.</p>
 
 <h2 id="change-log">Change Log</h2>
 
@@ -557,7 +578,7 @@ tealium?.trackEventWithTitle(<span style="color:#b84">&#34;someEvent&#34;</span>
           </li>
           <li class="fw4">
             <a href="/platforms/android/referrer-module/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Module: Referrer
+              Module: Install Referrer
             </a>
           </li>
         </ul>
@@ -694,6 +715,11 @@ tealium?.trackEventWithTitle(<span style="color:#b84">&#34;someEvent&#34;</span>
           <li class="fw4">
             <a href="/platforms/ios/data-layer-variables/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            <a href="/platforms/ios/tag-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Tag Management
             </a>
           </li>
           <li class="fw4">

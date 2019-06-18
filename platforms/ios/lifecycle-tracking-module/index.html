@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.50" />
+     <meta name="generator" content="Hugo 0.54.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -207,7 +207,9 @@ var utag_data = {
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">In this article:</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#install">Install</a></li>
-              <li><a href="#track">Track</a></li>
+              <ul class="toc-h3"><li><a href="#cocoapods">Cocoapods</a></li>
+              <li><a href="#manual">Manual</a></li>
+              </ul><li><a href="#track">Track</a></li>
               <ul class="toc-h3"><li><a href="#automatic-tracking">Automatic Tracking</a></li>
               <li><a href="#manual-tracking">Manual Tracking</a></li>
               </ul><li><a href="#data-layer-variables">Data Layer Variables</a></li>
@@ -250,14 +252,22 @@ var utag_data = {
 
 <h2 id="install">Install</h2>
 
-<p>The Lifecycle Module must be added to your app. The module can be downloaded here:</p>
+<p>The Lifecycle Module must be added to your app. The module can be installed through Cocoapods or manually similar to the Tealium for IOS library.  In any abstraction class (like TealiumHelper.h) replace any <code>@import TealiumIOS</code> with <code>@import TealiumIOSLifecycle</code>.</p>
+
+<h3 id="cocoapods">Cocoapods</h3>
+
+<p>Add the following to your Podfile:</p>
+
+<pre><code>pod &quot;TealiumIOSLifecycle&quot;
+</code></pre>
+
+<h3 id="manual">Manual</h3>
 
 <p>To install the module into your app:</p>
 
 <ul>
 <li>Download here: <a href="https://github.com/Tealium/tealium-ios/tree/master/TealiumIOSLifecycle.framework">https://github.com/Tealium/tealium-ios/tree/master/TealiumIOSLifecycle.framework</a></li>
 <li>Add the &ldquo;TealiumIOSLifecycle.framework&rdquo; file to your project (in the Embedded Binaries section).</li>
-<li>In any abstraction class (like TealiumHelper.h) replace any <code>@import TealiumIOS</code> with <code>@import TealiumIOSLifecycle</code>.</li>
 </ul>
 
 <h2 id="track">Track</h2>
@@ -352,7 +362,7 @@ var utag_data = {
 
 <tr>
 <td> lifecycle_diddetectcrash<br></td>
-<td>Only present if a crash was detected. </td>
+<td>Only present if a crash was detected </td>
 <td>Boolean</td>
 <td>true</td>
 </tr>
@@ -422,7 +432,7 @@ var utag_data = {
 
 <tr>
 <td>lifecycle_priorsecondsawake </td>
-<td>Whole seconds app was awake since last launch only. Aggregates total from all wakes prior. Sent only with lifecycle_type: launch calls. </td>
+<td>Whole seconds app was awake since last launch only. Aggregates total from all wakes prior. Sent only with lifecycle_type: launch calls </td>
 <td>Number </td>
 <td>126</td>
 </tr>
@@ -565,7 +575,7 @@ var utag_data = {
           </li>
           <li class="fw4">
             <a href="/platforms/android/referrer-module/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Module: Referrer
+              Module: Install Referrer
             </a>
           </li>
         </ul>
@@ -702,6 +712,11 @@ var utag_data = {
           <li class="fw4">
             <a href="/platforms/ios/data-layer-variables/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            <a href="/platforms/ios/tag-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Tag Management
             </a>
           </li>
           <li class="fw4">

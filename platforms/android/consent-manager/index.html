@@ -6,12 +6,12 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Consent Manager | Tealium for Android |Tealium Developer Docs</title>
+    <title>Consent Manager | Overview |Tealium Developer Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.50" />
+     <meta name="generator" content="Hugo 0.54.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -327,7 +327,7 @@ var utag_data = {
 <span style="font-weight:bold">}</span></code></pre></div>
 <h4 id="setuserconsentstatus">setUserConsentStatus</h4>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealiumInstance<span style="font-weight:bold">.</span><span style="color:#008080">getConsentManager</span><span style="font-weight:bold">().</span><span style="color:#008080">setUserConsentStatus</span><span style="font-weight:bold">(</span>ConsentManager<span style="font-weight:bold">.</span><span style="color:#008080">ConsentStatus</span><span style="font-weight:bold">.</span><span style="color:#008080">CONSENTED</span><span style="font-weight:bold">);</span></code></pre></div>
-<p>Sets the user&rsquo;s consent status. Designed to be called from your consent management preferences screen in your app when the user opts in or opts out of tracking. If the user&rsquo;s status is set to<code>CONSENTED</code> using this method, the consent manager automatically subscribes the user to ALL available consent categories. This does not allow a subset of the available categories to be set selectively.</p>
+<p>Sets the user&rsquo;s consent status. Designed to be called from your consent management preferences screen in your app when the user opts in or opts out of tracking. If the user&rsquo;s status is set to <code>CONSENTED</code> using this method, the consent manager automatically subscribes the user to ALL available consent categories. This does not allow a subset of the available categories to be set selectively.</p>
 
 <table>
 <thead>
@@ -348,7 +348,7 @@ var utag_data = {
 <h4 id="setuserconsentcategories">setUserConsentCategories</h4>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealiumInstance<span style="font-weight:bold">.</span><span style="color:#008080">getConsentManager</span><span style="font-weight:bold">().</span><span style="color:#008080">setUserConsentCategories</span><span style="font-weight:bold">(</span><span style="font-weight:bold">new</span> String<span style="font-weight:bold">[]{</span>ConsentManager<span style="font-weight:bold">.</span><span style="color:#008080">ConsentCategory</span><span style="font-weight:bold">.</span><span style="color:#008080">ANALYTICS</span><span style="font-weight:bold">,</span> 
 																ConsentManager<span style="font-weight:bold">.</span><span style="color:#008080">ConsentCategory</span><span style="font-weight:bold">.</span><span style="color:#008080">BIG_DATA</span><span style="font-weight:bold">});</span></code></pre></div>
-<p>Sets the user&rsquo;s consent categories. Designed to be called from your consent management preferences screen in your app. This method automatically sets the user&rsquo;s consent status to<code>CONSENTED</code> if any number of categories are set.</p>
+<p>Sets the user&rsquo;s consent categories. Designed to be called from your consent management preferences screen in your app. This method automatically sets the user&rsquo;s consent status to <code>CONSENTED</code> if any number of categories are set.</p>
 
 <table>
 <thead>
@@ -392,11 +392,11 @@ var utag_data = {
 </table>
 
 <h4 id="getuserconsentstatus">getUserConsentStatus</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">final</span> String userStatus <span style="font-weight:bold">=</span> tealiumInstance<span style="font-weight:bold">.</span><span style="color:#008080">getUserConsentStatus</span><span style="font-weight:bold">();</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">final</span> String userStatus <span style="font-weight:bold">=</span> tealiumInstance<span style="font-weight:bold">.</span><span style="color:#008080">getConsentManager</span><span style="font-weight:bold">().</span><span style="color:#008080">getUserConsentStatus</span><span style="font-weight:bold">();</span></code></pre></div>
 <p>Returns the current consent status of the user.</p>
 
 <h4 id="getuserconsentcategories">getUserConsentCategories</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">final</span> String<span style="font-weight:bold">[]</span> userCategories <span style="font-weight:bold">=</span> tealiumInstance<span style="font-weight:bold">.</span><span style="color:#008080">getUserConsentCategories</span><span style="font-weight:bold">();</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">final</span> String<span style="font-weight:bold">[]</span> userCategories <span style="font-weight:bold">=</span> tealiumInstance<span style="font-weight:bold">.</span><span style="color:#008080">getConsentManager</span><span style="font-weight:bold">().</span><span style="color:#008080">getUserConsentCategories</span><span style="font-weight:bold">();</span></code></pre></div>
 <p>Returns the current consent categories of the user.</p>
 
 <h4 id="getuserconsentpreferences">getUserConsentPreferences</h4>
@@ -404,8 +404,8 @@ var utag_data = {
 <p>Returns the UserConsentPreferences object.</p>
 
 <h4 id="resetuserconsentpreferences">resetUserConsentPreferences</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealiumInstance<span style="font-weight:bold">.</span><span style="color:#008080">resetUserConsentPreferences</span><span style="font-weight:bold">();</span></code></pre></div>
-<p>Clears all currently stored consent preferences. Reverts to<code>UNKNOWN</code> consent state with no categories.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealiumInstance<span style="font-weight:bold">.</span><span style="color:#008080">getConsentManager</span><span style="font-weight:bold">().</span><span style="color:#008080">resetUserConsentPreferences</span><span style="font-weight:bold">();</span></code></pre></div>
+<p>Clears all currently stored consent preferences. Reverts to <code>UNKNOWN</code> consent state with no categories.</p>
 
 <h4 id="setpolicy">setPolicy</h4>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealiumInstance<span style="font-weight:bold">.</span><span style="color:#008080">getConsentManager</span><span style="font-weight:bold">().</span><span style="color:#008080">setPolicy</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;custompolicy&#34;</span><span style="font-weight:bold">);</span></code></pre></div>
@@ -509,7 +509,7 @@ UNKNOWN</code></pre></div>
 
 <h4 id="category-based-opt-in">Category-based Opt-in</h4>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealiumInstance<span style="font-weight:bold">.</span><span style="color:#008080">getConsentManager</span><span style="font-weight:bold">().</span><span style="color:#008080">setUserConsentStatusWithCategories</span><span style="font-weight:bold">(</span>ConsentManager<span style="font-weight:bold">.</span><span style="color:#008080">ConsentStatus</span><span style="font-weight:bold">.</span><span style="color:#008080">CONSENTED</span><span style="font-weight:bold">,</span> <span style="font-weight:bold">new</span> String<span style="font-weight:bold">[]</span> <span style="font-weight:bold">{</span>ConsentManager<span style="font-weight:bold">.</span><span style="color:#008080">ConsentCategory</span><span style="font-weight:bold">.</span><span style="color:#008080">ANALYTICS</span><span style="font-weight:bold">,</span> ConsentManager<span style="font-weight:bold">.</span><span style="color:#008080">ConsentCategory</span><span style="font-weight:bold">.</span><span style="color:#008080">PERSONALIZATION</span><span style="font-weight:bold">});</span></code></pre></div>
-<p>This example shows a category-based consent model where the user must explicitly select each category from the full list of categories. The default is<code>UNKNOWN</code>, which will queue hits until the user provides their consent. If the user consents to any categories, events are de-queued, and the consent category data is appended to each tracking call.</p>
+<p>This example shows a category-based consent model where the user must explicitly select each category from the full list of categories. The default is <code>UNKNOWN</code>, which will queue hits until the user provides their consent. If the user consents to any categories, events are de-queued, and the consent category data is appended to each tracking call.</p>
 
 <p><img src="/images/platforms/android/consent-categories.gif" alt="consent-categories.gif" title="consent-categories.gif" /></p>
 
@@ -586,7 +586,7 @@ UNKNOWN</code></pre></div>
           </li>
           <li class="fw4">
             <a href="/platforms/android/referrer-module/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Module: Referrer
+              Module: Install Referrer
             </a>
           </li>
         </ul>
@@ -723,6 +723,11 @@ UNKNOWN</code></pre></div>
           <li class="fw4">
             <a href="/platforms/ios/data-layer-variables/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            <a href="/platforms/ios/tag-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Tag Management
             </a>
           </li>
           <li class="fw4">

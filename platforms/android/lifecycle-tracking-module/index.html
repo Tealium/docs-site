@@ -6,12 +6,12 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Lifecycle Tracking Module | Tealium for Android |Tealium Developer Docs</title>
+    <title>Lifecycle Tracking Module | Overview |Tealium Developer Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.50" />
+     <meta name="generator" content="Hugo 0.54.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -258,41 +258,31 @@ var utag_data = {
 
 <ol>
 <li>Add <strong>tealium.lifecycle-1.x.x.aar</strong> to <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code>.</li>
-
-<li><p>Add the Tealium library dependency to your <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
-    implementation<span style="font-weight:bold">(</span>name:<span style="color:#b84">&#39;tealium.lifecycle-1.1.1&#39;</span><span style="font-weight:bold">,</span> ext:<span style="color:#b84">&#39;aar&#39;</span><span style="font-weight:bold">)</span>
-<span style="font-weight:bold">}</span></code></pre></div></li>
+<li>Add the Tealium library dependency to your <code>build.gradle</code> file:
+<br /></li>
 </ol>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
+    implementation<span style="font-weight:bold">(</span>name:<span style="color:#b84">&#39;tealium.lifecycle-1.1.2&#39;</span><span style="font-weight:bold">,</span> ext:<span style="color:#b84">&#39;aar&#39;</span><span style="font-weight:bold">)</span>
+<span style="font-weight:bold">}</span></code></pre></div>
 <h2 id="maven-install">Maven Install</h2>
 
 <p>Ensure you have the Tealium Maven repo added in your project&rsquo;s <code>build.gradle</code> file:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#998;font-style:italic">// Top-level build file where you can add configuration options common to all sub-projects/modules.
-</span><span style="color:#998;font-style:italic"></span>buildscript <span style="font-weight:bold">{</span> 
-   repositories <span style="font-weight:bold">{</span> 
-       jcenter<span style="font-weight:bold">()</span> 
-   <span style="font-weight:bold">}</span> 
-   dependencies <span style="font-weight:bold">{</span> 
-       classpath <span style="color:#b84">&#39;com.android.tools.build:gradle:2.3.3&#39;</span> 
-   <span style="font-weight:bold">}</span>
-<span style="font-weight:bold">}</span>
-
-allprojects <span style="font-weight:bold">{</span>
+</span><span style="color:#998;font-style:italic"></span>allprojects <span style="font-weight:bold">{</span>
    repositories <span style="font-weight:bold">{</span>
        jcenter<span style="font-weight:bold">()</span>
        <span style="color:#998;font-style:italic">// Tealium Maven repo directive
 </span><span style="color:#998;font-style:italic"></span>       maven <span style="font-weight:bold">{</span>
-           url <span style="color:#b84">&#34;http://maven.tealiumiq.com/android/releases/&#34;</span>
+           url <span style="color:#b84">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
        <span style="font-weight:bold">}</span>
    <span style="font-weight:bold">}</span>
 <span style="font-weight:bold">}</span></code></pre></div>
-<p>In your app-level <code>build.gradle</code> file, add the Tealium lifecycle module. The current version is 1.1:</p>
+<p>In your app-level <code>build.gradle</code> file, add the Tealium lifecycle module. The current version is 1.1.2:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
    <span style="color:#998;font-style:italic">// only add if not already present
-</span><span style="color:#998;font-style:italic"></span>   implementation <span style="color:#b84">&#39;com.tealium:library:5.5.1&#39;</span>
+</span><span style="color:#998;font-style:italic"></span>   implementation <span style="color:#b84">&#39;com.tealium:library:5.5.4&#39;</span>
    <span style="color:#998;font-style:italic">// add lifecycle to list of dependencies
-</span><span style="color:#998;font-style:italic"></span>   implementation <span style="color:#b84">&#39;com.tealium:lifecycle:1.1.1&#39;</span>
+</span><span style="color:#998;font-style:italic"></span>   implementation <span style="color:#b84">&#39;com.tealium:lifecycle:1.1.2&#39;</span>
 <span style="font-weight:bold">}</span></code></pre></div>
 <h2 id="auto-tracked-events">Auto-Tracked Events</h2>
 
@@ -322,19 +312,19 @@ allprojects <span style="font-weight:bold">{</span>
 
 <p>Generated on the first <code>onActivityResumed</code> to occur. If <code>onActivityPaused</code> is called before <code>onActivityResumed</code> (when the library is initialized in the middle of the <code>Activity</code> lifecycle), then the module creation time is used to generate a <code>launch</code> event.</p>
 
-<p><a href="https://github.com/Tealium/tealium-ios/tree/master/Support/Lifecycle#launch-event">Learn more</a></p>
+<p><a href="https://github.com/Tealium/tealium-android/tree/master/Support/Lifecycle#launch-event">Learn more</a></p>
 
 <h3 id="sleep-event">Sleep Event</h3>
 
 <p>Generated 5 seconds after <code>onActivityPaused</code> is called and <code>onActivityResumed</code> was not called. This indicates that the application has been backgrounded because a new view has not been presented.</p>
 
-<p><a href="https://github.com/Tealium/tealium-ios/tree/master/Support/Lifecycle#sleep-event">Learn more</a></p>
+<p><a href="https://github.com/Tealium/tealium-android/tree/master/Support/Lifecycle#sleep-event">Learn more</a></p>
 
 <h3 id="wake-event">Wake Event</h3>
 
 <p>Generated during <code>onActivityResumed</code> when more than 5 seconds has elapsed since the last <code>onActivityPaused</code>. This indicates that <code>onActivityResumed</code> is called because the app is foregrounding and not because of a view change.</p>
 
-<p><a href="https://github.com/Tealium/tealium-ios/tree/master/Support/Lifecycle#wake-event">Learn more</a></p>
+<p><a href="https://github.com/Tealium/tealium-android/tree/master/Support/Lifecycle#wake-event">Learn more</a></p>
 
 <h2 id="manually-tracked-events">Manually Tracked Events</h2>
 
@@ -346,7 +336,7 @@ allprojects <span style="font-weight:bold">{</span>
 <span style="font-weight:bold">if</span><span style="font-weight:bold">(</span>lifeCycle <span style="font-weight:bold">!=</span> <span style="font-weight:bold">null</span><span style="font-weight:bold">)</span> <span style="font-weight:bold">{</span>
 
     <span style="color:#998;font-style:italic">// OPTIONAL
-</span><span style="color:#998;font-style:italic"></span>    Map<span style="font-weight:bold">&lt;</span>string<span style="font-weight:bold">,</span> string<span style="font-weight:bold">=</span><span style="color:#b84">&#34;&#34;</span><span style="font-weight:bold">&gt;</span> data <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> HashMap<span style="font-weight:bold">&lt;&gt;();</span>
+</span><span style="color:#998;font-style:italic"></span>    Map<span style="font-weight:bold">&lt;</span>String<span style="font-weight:bold">,</span> String<span style="font-weight:bold">&gt;</span> data <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> HashMap<span style="font-weight:bold">&lt;&gt;();</span>
     data<span style="font-weight:bold">.</span><span style="color:#008080">put</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;boot_time&#34;</span><span style="font-weight:bold">,</span> <span style="color:#b84">&#34;5ms&#34;</span><span style="font-weight:bold">);</span>
 
     lifeCycle<span style="font-weight:bold">.</span><span style="color:#008080">trackLaunchEvent</span><span style="font-weight:bold">(</span>data<span style="font-weight:bold">);</span>
@@ -357,7 +347,7 @@ allprojects <span style="font-weight:bold">{</span>
 <span style="font-weight:bold">if</span><span style="font-weight:bold">(</span>lifeCycle <span style="font-weight:bold">!=</span> <span style="font-weight:bold">null</span><span style="font-weight:bold">)</span> <span style="font-weight:bold">{</span>
 
     <span style="color:#998;font-style:italic">// OPTIONAL
-</span><span style="color:#998;font-style:italic"></span>    Map<span style="font-weight:bold">&lt;</span>string<span style="font-weight:bold">,</span> string<span style="font-weight:bold">=</span><span style="color:#b84">&#34;&#34;</span><span style="font-weight:bold">&gt;</span> data <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> HashMap<span style="font-weight:bold">&lt;&gt;();</span>
+</span><span style="color:#998;font-style:italic"></span>    Map<span style="font-weight:bold">&lt;</span>String<span style="font-weight:bold">,</span> String<span style="font-weight:bold">&gt;</span> data <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> HashMap<span style="font-weight:bold">&lt;&gt;();</span>
     data<span style="font-weight:bold">.</span><span style="color:#008080">put</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;foreground_time&#34;</span><span style="font-weight:bold">,</span> <span style="color:#b84">&#34;4000ms&#34;</span><span style="font-weight:bold">);</span>
 
     lifeCycle<span style="font-weight:bold">.</span><span style="color:#008080">trackSleepEvent</span><span style="font-weight:bold">(</span>data<span style="font-weight:bold">);</span>
@@ -368,7 +358,7 @@ allprojects <span style="font-weight:bold">{</span>
 <span style="font-weight:bold">if</span><span style="font-weight:bold">(</span>lifeCycle <span style="font-weight:bold">!=</span> <span style="font-weight:bold">null</span><span style="font-weight:bold">)</span> <span style="font-weight:bold">{</span>
 
     <span style="color:#998;font-style:italic">// OPTIONAL
-</span><span style="color:#998;font-style:italic"></span>    Map<span style="font-weight:bold">&lt;</span>string<span style="font-weight:bold">,</span> string<span style="font-weight:bold">=</span><span style="color:#b84">&#34;&#34;</span><span style="font-weight:bold">&gt;</span> data <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> HashMap<span style="font-weight:bold">&lt;&gt;();</span>
+</span><span style="color:#998;font-style:italic"></span>    Map<span style="font-weight:bold">&lt;</span>String<span style="font-weight:bold">,</span> String<span style="font-weight:bold">&gt;</span> data <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> HashMap<span style="font-weight:bold">&lt;&gt;();</span>
     data<span style="font-weight:bold">.</span><span style="color:#008080">put</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;background_time&#34;</span><span style="font-weight:bold">,</span> <span style="color:#b84">&#34;600000ms&#34;</span><span style="font-weight:bold">);</span>
 
     lifeCycle<span style="font-weight:bold">.</span><span style="color:#008080">trackWakeEvent</span><span style="font-weight:bold">(</span>data<span style="font-weight:bold">);</span>
@@ -671,7 +661,7 @@ allprojects <span style="font-weight:bold">{</span>
           </li>
           <li class="fw4">
             <a href="/platforms/android/referrer-module/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Module: Referrer
+              Module: Install Referrer
             </a>
           </li>
         </ul>
@@ -808,6 +798,11 @@ allprojects <span style="font-weight:bold">{</span>
           <li class="fw4">
             <a href="/platforms/ios/data-layer-variables/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            <a href="/platforms/ios/tag-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Tag Management
             </a>
           </li>
           <li class="fw4">

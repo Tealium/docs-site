@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>The b Object | Tealium for JavaScript (utag.js) |Tealium Developer Docs</title>
+    <title>Tag Management | Tealium for iOS |Tealium Developer Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -25,7 +25,7 @@
         
 <script>
 var utag_data = {
-    category_name : "JavaScript (Web)",
+    category_name : "iOS",
     site_section  : "platforms",
     site_language : "en",
     ui_platform   : "docs",
@@ -206,16 +206,10 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">In this article:</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#what-is-the-b-object">What is the b Object?</a></li>
-              <li><a href="#why-do-we-have-a-b-object">Why Do We Have a b Object?</a></li>
-              <li><a href="#variable-types">Variable Types</a></li>
-              <ul class="toc-h3"><li><a href="#data-layer-variable">Data Layer Variable</a></li>
-              <li><a href="#javascript-page-variable">JavaScript Page Variable</a></li>
-              <li><a href="#query-string-parameters">Query String Parameters</a></li>
-              <li><a href="#cookie-values">Cookie Values</a></li>
-              <li><a href="#utag-main-cookie-values">utag_main Cookie Values</a></li>
-              <li><a href="#standard-cookie-values">Standard Cookie Values</a></li>
-              </ul><li><a href="#additional-considerations">Additional Considerations</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#how-it-works">How It Works</a></li>
+              <li><a href="#about-wkwebview">About WKWebView</a></li>
+              <li><a href="#about-uiwebview">About UIWebView</a></li>
+              <li><a href="#samples">Samples</a></li>
               </nav>
   </aside></div>
 
@@ -226,19 +220,19 @@ var utag_data = {
           <header class="flex-none w-100">
   
     
-      <a href="/platforms/javascript" class="f6 fw8 mb0 link mid-gray dim mr3">
-        JAVASCRIPT
+      <a href="/platforms/ios" class="f6 fw8 mb0 link mid-gray dim mr3">
+        IOS
       </a>
     
   
 
-  <h1 class="lh-title mb3 mv0 pt3">The b Object</h1>
+  <h1 class="lh-title mb3 mv0 pt3">Tag Management</h1>
 </header>
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
     <div class="f4 fw4 lh-copy">
-      Learn how to use the alias to the data layer object, also known as the &ldquo;b&rdquo; object.
+      Tag management is implemented as a non-rendered WKWebView instance to execute the Universal Tag (utag.js) JavaScript client-side.
     </div>
   
 
@@ -251,82 +245,72 @@ var utag_data = {
 
 
 
-<h2 id="what-is-the-b-object">What is the b Object?</h2>
+<p>This tag management feature allows you to integrate JavaScript based vendor tags into your app and manage them remotely using Tealium iQ, just like you would for a website.</p>
 
-<p>The b object is a JavaScript variable containing the most recent copy of the data layer object. Depending on when it&rsquo;s referenced, the <code>b</code> object is either an alias or a local copy of the <code>utag.data</code> object. So what is the <code>utag.data</code> object? The <code>utag.data</code> object is a collection of all the data on your page:</p>
+<h2 id="how-it-works">How It Works</h2>
 
-<ul>
-<li>Data Layer Variables</li>
-<li>JavaScript Page Variables</li>
-<li>Meta Tags</li>
-<li>DOM Attributes</li>
-<li>Cookies</li>
-</ul>
-
-<p>So, in essence, the <code>b</code> object is a copy of your page&rsquo;s data layer.</p>
-
-<h2 id="why-do-we-have-a-b-object">Why Do We Have a b Object?</h2>
-
-<p>Using the <code>b</code> object provides a couple benefits:</p>
+<p>Once you have <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">created a mobile profile in Tealium iQ</a> with Tag Management enabled, when you initialize the Tealium instance in your app, a non-rendered web view is created to load a simple HTML file from the Tealium mCDN network in which to load the Universal Tag (utag.js). This web view is never rendered to the user.</p>
 
 <ul>
-<li><p><strong>As an alias with a shorter name</strong><br>
-This shorter name improves performance loading Tealium. If you had to reference <code>utag.data</code> a hundred times, you would end up adding 900 characters to the size of your files. That&rsquo;s 900 more characters the browser has to parse through when loading these files which can result in a negative affect on visitor load times.</p>
-
-<p>Referring to it as <code>b</code> means only 1 character to add to the file for each reference, which if you referenced a hundred times would result in only 100 characters for the browser to parse through. </p></li>
-
-<li><p><strong>As a copy that leaves the original untouched</strong><br>
-By creating a local copy of <code>utag.data</code>, you can customize the values needed for each tag without affecting the original data object.   </p></li>
+<li>Versions 5.5.0 and newer, running iOS 11.0 and newer use <a href="https://developer.apple.com/documentation/webkit/wkwebview?language=objc">WKWebView</a>.</li>
+<li>Versions 5.4.x and older, running iOS 10.0 and older use <a href="https://developer.apple.com/documentation/uikit/uiwebview">UIWebView</a>.</li>
 </ul>
 
-<h2 id="variable-types">Variable Types</h2>
+<h2 id="about-wkwebview">About WKWebView</h2>
 
-<p>To reference a variable in the <code>b</code> object directly in a tag template or extension, you must consider the type of variable you&rsquo;re trying to reference; the syntax will differ slightly. </p>
+<p>WKWebView is required to be attached to a UIView, even if it is not rendered. To accommodate this the Tealium SDK will attempt to attach the non-rendered WKWebView to the <code>rootViewController.view</code>, the most common scenario when your window&rsquo;s rootViewController is a subclass of <code>UIViewController</code> or one of Apple&rsquo;s container view controllers (UINavigationController or UITabBarController).</p>
 
-<h3 id="data-layer-variable">Data Layer Variable</h3>
+<p>If your app has a complex view hierarchy you can set the TEALConfiguration instance with a view to attach to in <code>viewDidLoad</code>, <code>viewWillAppear:</code>, or <code>viewDidAppear:</code>.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-obj-c" data-lang="obj-c">TEALConfiguration <span style="font-weight:bold">*</span>tealConfig <span style="font-weight:bold">=</span> [TEALConfiguration configurationWithAccount:<span style="color:#b84">@&#34;YOUR_ACCOUNT&#34;</span>
+                                                                    profile:<span style="color:#b84">@&#34;YOUR_PROFILE&#34;</span>
+                                                                environment:<span style="color:#b84">@&#34;prod&#34;</span>
+                                                                 datasource:<span style="color:#b84">@&#34;DATASOURCE&#34;</span>];
+tealConfig.view <span style="font-weight:bold">=</span> <span style="font-weight:bold">&lt;</span>YOUR_UIVIEW<span style="font-weight:bold">&gt;</span>; <span style="color:#998;font-style:italic">// e.g. self.view in a UIViewController subclass
+</span><span style="color:#998;font-style:italic">// Initialize with a unique key for this instance
+</span><span style="color:#998;font-style:italic"></span>Tealium <span style="font-weight:bold">*</span>tealium <span style="font-weight:bold">=</span> [Tealium newInstanceForKey:<span style="color:#b84">@&#34;INSTANCE&#34;</span> configuration:tealConfig]; </code></pre></div>
+<p>Upon receiving a push notification, if your app jumps to a <code>UIViewController</code> and has a different view hierarchy than when Tealium was initialized, you must remove the old instance of Tealium and create a new one with the view to attach to. The sample app shows an example of this in <a href="https://github.com/Tealium/tealium-ios/blob/master/Samples/iOS_WKWebView%2BTealium_Objc/iOS_WKWebView%2BTealium_Objc/GreenViewController.m" target="_blank">GreenViewController.m</a> and <a href="https://github.com/Tealium/tealium-ios/blob/master/Samples/iOS_WKWebView%2BTealium_Objc/iOS_WKWebView%2BTealium_Objc/TealiumHelper.m" target="_blank">TealiumHelper.m</a>.</p>
 
-<p>For variables contained in the <code>utag_data</code> object, use the following syntax:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#b84">&#39;var_name&#39;</span>]
-</code></pre></div>
-<h3 id="javascript-page-variable">JavaScript Page Variable</h3>
+<p>Although the Objective-C SDK is currently closed source, to provide more context, this following code snippet shows how the web view is created.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-obj-c" data-lang="obj-c">- (UIView <span style="font-weight:bold">*</span>_Nullable)<span style="color:#900;font-weight:bold">webViewContainer</span> {
+    <span style="font-weight:bold">if</span> (<span style="font-weight:bold">!</span>_webViewContainer) {
+        UIWindow <span style="font-weight:bold">*</span>window <span style="font-weight:bold">=</span> [[UIApplication sharedApplication] keyWindow];
+        UIViewController <span style="font-weight:bold">*</span>rootViewController <span style="font-weight:bold">=</span> window.rootViewController;
+        UIViewController <span style="font-weight:bold">*</span>topViewController;
+        
+        <span style="font-weight:bold">if</span> ([rootViewController isKindOfClass:[UINavigationController <span style="font-weight:bold">class</span>]]) {
+            topViewController <span style="font-weight:bold">=</span> [((UINavigationController <span style="font-weight:bold">*</span>)rootViewController).viewControllers lastObject];
+        } <span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span> ([rootViewController isKindOfClass:[UITabBarController <span style="font-weight:bold">class</span>]]) {
+            topViewController <span style="font-weight:bold">=</span> ((UITabBarController <span style="font-weight:bold">*</span>)rootViewController).selectedViewController;
+        } <span style="font-weight:bold">else</span> {
+            topViewController <span style="font-weight:bold">=</span> rootViewController;
+        }
+        
+        UIView <span style="font-weight:bold">*</span>view <span style="font-weight:bold">=</span> topViewController.viewIfLoaded;
+        <span style="font-weight:bold">if</span> (view) {
+            <span style="color:#999">self</span>.webViewContainer <span style="font-weight:bold">=</span> view;
+        }
+    }
+    <span style="font-weight:bold">return</span> _webViewContainer;
+}</code></pre></div>
+<p>The view is only used once to initialize the WKWebView.</p>
 
-<p>To reference variables defined as JavaScript Page variables, use the following syntax:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#b84">&#39;js_page.var_name&#39;</span>]
-</code></pre></div>
-<h3 id="query-string-parameters">Query String Parameters</h3>
+<h2 id="about-uiwebview">About UIWebView</h2>
 
-<p>To reference a query string parameter, use the following syntax:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#b84">&#39;qp.var_name&#39;</span>]
-</code></pre></div>
-<h3 id="cookie-values">Cookie Values</h3>
+<p>If you encounter issues with WKWebView and want to force the use of <code>UIWebView</code>, set the <code>webViewType</code> in the TEALConfiguration instance:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-obj-c" data-lang="obj-c"><span style="color:#998;font-style:italic">// Set your account, profile, and environment
+</span><span style="color:#998;font-style:italic"></span>TEALConfiguration <span style="font-weight:bold">*</span>tealConfig <span style="font-weight:bold">=</span> [TEALConfiguration configurationWithAccount:<span style="color:#b84">@&#34;YOUR_ACCOUNT&#34;</span>
+                                                                    profile:<span style="color:#b84">@&#34;YOUR_PROFILE&#34;</span>
+                                                                environment:<span style="color:#b84">@&#34;prod&#34;</span>
+                                                                 datasource:<span style="color:#b84">@&#34;DATASOURCE&#34;</span>];
+<span style="color:#998;font-style:italic">// set the web view type to use UIWebView
+</span><span style="color:#998;font-style:italic"></span>tealConfig.webViewType <span style="font-weight:bold">=</span> TEALUIWebView;
+<span style="color:#998;font-style:italic">// Initialize with a unique key for this instance
+</span><span style="color:#998;font-style:italic"></span>Tealium <span style="font-weight:bold">*</span>tealium <span style="font-weight:bold">=</span> [Tealium newInstanceForKey:<span style="color:#b84">@&#34;INSTANCE&#34;</span> configuration:tealConfig]; </code></pre></div>
+<h2 id="samples">Samples</h2>
 
-<p>Tealium has two ways to store cookie values. The syntax to reference these two types varies slightly. Please refer to the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Tealium-Cookies/ta-p/138" target="_blank">Tealium Cookies</a> article for more information on working with cookies in Tealium iQ.</p>
-
-<h3 id="utag-main-cookie-values">utag_main Cookie Values</h3>
-
-<p>To reference a cookie value contained in the utag_main cookie, use the following syntax: </p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#b84">&#39;cp.utag_main_var_name&#39;</span>]
-</code></pre></div>
-<h3 id="standard-cookie-values">Standard Cookie Values</h3>
-
-<p>To reference a cookie value that is not contained in the utag_main cookie, use the following syntax:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#b84">&#39;cp.var_name&#39;</span>]
-</code></pre></div>
-<h2 id="additional-considerations">Additional Considerations</h2>
-
-<h4 id="the-b-object-is-not-global">The b object is not global</h4>
-
-<p>The <code>b</code> object is a locally scoped variable, only available in <strong>All Tags</strong> and <strong>Tag Scoped</strong> extensions. Extensions scoped to <strong>Pre Loader</strong> run before the <code>b</code> object has been created. Likewise, extensions scoped to <strong>DOM Ready</strong> run independently from the main order of operations, so the <code>b</code> object cannot be referenced in this scope either.</p>
-
-<p>Learn more about how to reference the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Extensions/ta-p/13649" target="_blank">data object variable in extensions</a>.</p>
-
-<h4 id="the-b-object-in-tracking-calls">The b object in tracking calls</h4>
-
-<p>During a standard page load, the <code>b</code> object becomes a copy of the <code>utag_data</code> object.</p>
-
-<p>However, on manual tracking calls, the <code>b</code> object is a copy of the object passed to <code>utag.view()</code> or <code>utag.link()</code> and does not contain variables from the origial <code>utag_data</code> object. To preserve data from <code>utag_data</code> in tracking calls (per page load) use the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Publish-Configuration/ta-p/13632#implementation" target="_blank">Base Variables setting in the publish settings</a>.</p>
-
-<p class="note">For profiles loading <em>utag.js version 4.39</em> or older, the content of the <code>b</code> object during tracking calls will be a complete copy of <code>utag.data</code>. Learn more about this update in release history <a href="/platforms/javascript/release-notes/#version-4-40">utag.js 4.40</a>.</p>
+<ul>
+<li><a href="https://github.com/Tealium/tealium-ios/tree/master/Samples/iOS_WKWebView%2BTealium_Objc" target="_blank">WKWebView Sample</a></li>
+</ul>
 
 </div>
 
@@ -517,9 +501,9 @@ By creating a local copy of <code>utag.data</code>, you can customize the valu
         </ul>
       </li>
       
-      <li class="w-100 hover-accent-color-light fw8">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".ios">iOS</a>
-        <ul class="ios desktopmenu animated fadeIn list pl0 dn">
+      <li class="w-100 hover-accent-color-light fw8 active">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2  primary-color" data-target=".ios">iOS</a>
+        <ul class="ios desktopmenu animated fadeIn list pl0 db">
           <li class="fw4">
             <a href="/platforms/ios/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Overview
@@ -541,7 +525,7 @@ By creating a local copy of <code>utag.data</code>, you can customize the valu
             </a>
           </li>
           <li class="fw4">
-            <a href="/platforms/ios/tag-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+            <a href="/platforms/ios/tag-management/" class="db link pl3 pr2 pv1 bg-secondary white">
               Tag Management
             </a>
           </li>
@@ -584,9 +568,9 @@ By creating a local copy of <code>utag.data</code>, you can customize the valu
         </ul>
       </li>
       
-      <li class="w-100 hover-accent-color-light fw8 active">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2  primary-color" data-target=".javascript">JavaScript (Web)</a>
-        <ul class="javascript desktopmenu animated fadeIn list pl0 db">
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".javascript">JavaScript (Web)</a>
+        <ul class="javascript desktopmenu animated fadeIn list pl0 dn">
           <li class="fw4">
             <a href="/platforms/javascript/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Overview
@@ -628,7 +612,7 @@ By creating a local copy of <code>utag.data</code>, you can customize the valu
             </a>
           </li>
           <li class="fw4">
-            <a href="/platforms/javascript/the-b-object/" class="db link pl3 pr2 pv1 bg-secondary white">
+            <a href="/platforms/javascript/the-b-object/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               The b Object
             </a>
           </li>
@@ -859,11 +843,11 @@ By creating a local copy of <code>utag.data</code>, you can customize the valu
   <div class="w-100 bg-light-gray">
     <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
       <p>
-  <a href="http://docs.tealium.com/platforms/javascript/the-b-object/" class="hide-child link primary-color">
+  <a href="http://docs.tealium.com/platforms/ios/tag-management/" class="hide-child link primary-color">
   <span class="nl3 child"><svg class="grow" fill="" height="14px" viewBox="0 0 24 24" width="14px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
 </span>
-    “The b Object”
-  </a> was last updated: November 7, 2018
+    “Tag Management”
+  </a> was last updated: April 1, 2019
 </p>
 
       

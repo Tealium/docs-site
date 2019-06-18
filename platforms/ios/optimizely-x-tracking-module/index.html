@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.50" />
+     <meta name="generator" content="Hugo 0.54.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -254,7 +254,7 @@ var utag_data = {
 
 <ol>
 <li>Download here: <a href="https://github.com/Tealium/tealium-ios/tree/master/TealiumIOSOptimizely.framework">https://github.com/Tealium/tealium-ios/tree/master/TealiumIOSOptimizely.framework</a></li>
-<li>Add the &ldquo;TealiumIOSOptimizely.framework&rdquo; file into your XCode project (in the &ldquo;Embedded Binaries&rdquo; section of your project settings).</li>
+<li>Add the &ldquo;TealiumIOSOptimizely.framework&rdquo; file into your Xcode project (in the &ldquo;Embedded Binaries&rdquo; section of your project settings).</li>
 </ol>
 
 <p>Learn more about the Optimizely X Library:</p>
@@ -267,8 +267,8 @@ var utag_data = {
 
 <p>The Optimizely module must be initialized after the standard Tealium instance is created. Initialize the <code>TealiumOptimizelyTracker</code> instance by passing the Tealium instance and providing an instance name:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#998;font-style:italic">// Initialize the Tealium Optimizely instance
-</span><span style="color:#998;font-style:italic"></span>TealiumOptimizelyTracker <span style="font-weight:bold">*</span> tealOpt <span style="font-weight:bold">=</span> [TealiumOptimizelyTracker tealium];
-[tealOpt addInstanceWithName:<span style="color:#b84">@&#34;INSTANCE_KEY&#34;</span>];</code></pre></div>
+</span><span style="color:#998;font-style:italic"></span>TealiumOptimizelyTracker <span style="font-weight:bold">*</span> optimizelyTracker <span style="font-weight:bold">=</span> [TealiumOptimizelyTracker tealium];
+[optimizelyTracker addInstanceWithName:<span style="color:#b84">@&#34;INSTANCE_KEY&#34;</span>];</code></pre></div>
 <p>No additional configuration is needed. The module will now listen for notifications from the Optimizely SDK and pass the data to Tealium Collect as required.</p>
 
 <h2 id="track">Track</h2>
@@ -337,14 +337,14 @@ var utag_data = {
 <h3 id="override-default-names">Override Default Names</h3>
 
 <p>The default variable names can be overridden if you prefer a different naming convention. To override variable names change the public properties in the <code>TealiumOptimizelyTracker</code> class:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">TealiumOptimizelyTracker <span style="font-weight:bold">*</span> tealOpt <span style="font-weight:bold">=</span> [TealiumOptimizelyTracker sharedInstance];
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">TealiumOptimizelyTracker <span style="font-weight:bold">*</span> optimizelyTracker <span style="font-weight:bold">=</span> [TealiumOptimizelyTracker sharedInstance];
 
-[tealOpt addInstanceWithName:<span style="color:#b84">@&#34;myinstancename&#34;</span>];
-tealOpt.TEOptimizelyUserIdKeyName <span style="font-weight:bold">=</span> <span style="color:#b84">@&#34;my_user_id_key&#34;</span>;
-tealOpt.TEOptimizelyExperimentKeyName <span style="font-weight:bold">=</span> <span style="color:#b84">@&#34;my_experiment_name_key&#34;</span>;
-tealOpt.TEOptimizelyVariationKeyName <span style="font-weight:bold">=</span> <span style="color:#b84">@&#34;my_variation_name_key&#34;</span>;
-tealOpt.TEOptimizelyEventKeyKeyName <span style="font-weight:bold">=</span> <span style="color:#b84">@&#34;my_event_name_key&#34;</span>;
-tealOpt.TEOptimizelyEventValueKeyName <span style="font-weight:bold">=</span> <span style="color:#b84">@&#34;my_event_value_key&#34;</span>;</code></pre></div>
+[optimizelyTracker addInstanceWithName:<span style="color:#b84">@&#34;myinstancename&#34;</span>];
+optimizelyTracker.TEOptimizelyUserIdKeyName <span style="font-weight:bold">=</span> <span style="color:#b84">@&#34;my_user_id_key&#34;</span>;
+optimizelyTracker.TEOptimizelyExperimentKeyName <span style="font-weight:bold">=</span> <span style="color:#b84">@&#34;my_experiment_name_key&#34;</span>;
+optimizelyTracker.TEOptimizelyVariationKeyName <span style="font-weight:bold">=</span> <span style="color:#b84">@&#34;my_variation_name_key&#34;</span>;
+optimizelyTracker.TEOptimizelyEventKeyKeyName <span style="font-weight:bold">=</span> <span style="color:#b84">@&#34;my_event_name_key&#34;</span>;
+optimizelyTracker.TEOptimizelyEventValueKeyName <span style="font-weight:bold">=</span> <span style="color:#b84">@&#34;my_event_value_key&#34;</span>;</code></pre></div>
 </div>
 
           
@@ -418,7 +418,7 @@ tealOpt.TEOptimizelyEventValueKeyName <span style="font-weight:bold">=</span> <s
           </li>
           <li class="fw4">
             <a href="/platforms/android/referrer-module/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Module: Referrer
+              Module: Install Referrer
             </a>
           </li>
         </ul>
@@ -555,6 +555,11 @@ tealOpt.TEOptimizelyEventValueKeyName <span style="font-weight:bold">=</span> <s
           <li class="fw4">
             <a href="/platforms/ios/data-layer-variables/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            <a href="/platforms/ios/tag-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Tag Management
             </a>
           </li>
           <li class="fw4">
