@@ -208,7 +208,8 @@ var utag_data = {
       <p class="b">In this article:</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
               <li><a href="#how-it-works">How It Works</a></li>
-              <li><a href="#tealium-collect-json-for-amp-amp-analytics">Tealium Collect JSON for AMP (amp-analytics) </a></li>
+              <li><a href="#option-1-tealium-collect-for-amp-with-hosted-json">OPTION 1: Tealium Collect for AMP with Hosted JSON</a></li>
+              <li><a href="#option-2-tealium-collect-for-amp-with-embedded-json">OPTION 2: Tealium Collect for AMP with embedded JSON</a></li>
               </nav>
   </aside></div>
 
@@ -252,69 +253,44 @@ var utag_data = {
 
 <h2 id="how-it-works">How It Works</h2>
 
-<p>This solution uses the <code>amp-analytics</code> element to implement user activity tracking with Tealium Collect. This JSON configuration object sets up basic page view tracking and a simple example of click tracking. You may adjust these as necessary.</p>
+<p>This solution uses the <code>amp-analytics</code> element to implement user activity tracking with Tealium Collect. Tealium Collect is a prebuilt integration in AMP Analytics. The JSON configuration object in the example below sets up basic page view tracking and a simple example of click tracking. You may adjust these as necessary.</p>
 
-<p>The &ldquo;triggers&rdquo; section defines the types of events to track. The &ldquo;defaultPageview&rdquo; section will trigger on page views and the &ldquo;links&rdquo; section will trigger on clicks of page elements coded with the &ldquo;tealium&rdquo; class. Adjust this as necessary for your AMP site.</p>
-
-<p class="note">Data parameters with a name prefix of <code>dom.</code> passed in the query string of the collection endpoint&nbsp;will not be accessible as event attributes in EventStream.</p>
+<p>The &ldquo;triggers&rdquo; section defines the types of events to track. The &ldquo;trackClickOnHeader&rdquo; example will trigger on clicks of page elements coded with the &ldquo;header&rdquo; class. Adjust this as necessary for your AMP site.</p>
 
 <p>Read more about <a href="https://www.ampproject.org/docs/reference/components/amp-analytics">amp-analytics</a>.</p>
 
-<h2 id="tealium-collect-json-for-amp-amp-analytics">Tealium Collect JSON for AMP (amp-analytics) </h2>
+<p>For dynamic link tracking configuration, host your JSON defintion on Tealium&rsquo;s CDN.</p>
+
+<p>Read more about Tealium&rsquo;s <a href="https://community.tealiumiq.com/t5/Tealium-API/Hosted-Data-Layer-API/ta-p/14619">Hosted Data Layer</a>.</p>
+
+<h2 id="option-1-tealium-collect-for-amp-with-hosted-json">OPTION 1: Tealium Collect for AMP with Hosted JSON</h2>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">script</span> <span style="color:#008080">async</span> <span style="color:#008080">custom-element</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;amp-analytics&#34;</span> <span style="color:#008080">src</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;https://cdn.ampproject.org/v0/amp-analytics-0.1.js&#34;</span>&gt;&lt;/<span style="color:#000080">script</span>&gt;
  
-<span style="color:#998;font-style:italic">&lt;!-- Begin Tealium Collect tracking --&gt;</span>
-&lt;<span style="color:#000080">amp-analytics</span> <span style="color:#008080">id</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;tealium_collect&#34;</span>&gt;
-&lt;<span style="color:#000080">script</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;application/json&#34;</span>&gt;
-{
-    <span style="color:#b84">&#34;vars&#34;</span><span style="font-weight:bold">:</span> {
-        <span style="color:#b84">&#34;account&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;##TEALIUM_ACCOUNT##&#34;</span>,
-        <span style="color:#b84">&#34;profile&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;##TEALIUM_PROFILE##&#34;</span>,
-        <span style="color:#b84">&#34;datasource&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;##TEALIUM_DATASOURCE##&#34;</span>,
-        <span style="color:#998;font-style:italic">// optional
-</span><span style="color:#998;font-style:italic"></span>       <span style="color:#b84">&#34;visitor_id&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;CLIENT_ID(AMP_ECID_GOOGLE)&#34;</span>
-    },
-    <span style="color:#b84">&#34;extraUrlParams&#34;</span><span style="font-weight:bold">:</span> {
-        <span style="color:#b84">&#34;page_name&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;home&#34;</span>,
-        <span style="color:#b84">&#34;page_topic&#34;</span> <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;news&#34;</span>,
-        <span style="color:#b84">&#34;page_platform&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;amp&#34;</span>
-    },
-    <span style="color:#b84">&#34;transport&#34;</span><span style="font-weight:bold">:</span> {
-        <span style="color:#b84">&#34;beacon&#34;</span><span style="font-weight:bold">:</span> <span style="font-weight:bold">false</span>,
-        <span style="color:#b84">&#34;xhrpost&#34;</span><span style="font-weight:bold">:</span> <span style="font-weight:bold">false</span>,
-        <span style="color:#b84">&#34;image&#34;</span><span style="font-weight:bold">:</span> <span style="font-weight:bold">true</span>
-    },
-    <span style="color:#b84">&#34;requests&#34;</span><span style="font-weight:bold">:</span> {
-        <span style="color:#b84">&#34;base_url&#34;</span> <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;//collect.tealiumiq.com/vdata/i.gif&#34;</span>,
-        <span style="color:#b84">&#34;base&#34;</span> <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;${base_url}?${tealium}&amp;${dom1}&amp;${dom2}&amp;${datetime}&amp;tealium_event=${tealium_event}&amp;tealium_event_type=${tealium_event_type}&#34;</span>,
-        <span style="color:#b84">&#34;tealium&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;tealium_account=${account}&amp;tealium_profile=${profile}&amp;tealium_vid=${visitor_id}&#34;</span>,
-        <span style="color:#b84">&#34;dom1&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;url=${sourceUrl}&amp;domain=${sourceHost}&amp;pathname=${sourcePath}&amp;title=${title}&#34;</span>,
-        <span style="color:#b84">&#34;dom2&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;viewport_width=${viewportWidth}&amp;viewport_height=${viewportHeight}&#34;</span>,
-        <span style="color:#b84">&#34;datetime&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;timestamp=${timestamp}&amp;tz=${timezone}&amp;lang=${browserLanguage}&#34;</span>,
-        <span style="color:#b84">&#34;pageview&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;${base}&amp;referrer=${documentReferrer}&amp;screen_size=${screenWidth}x${screenHeight}&#34;</span>,
-        <span style="color:#b84">&#34;event&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;${base}&amp;scroll_y=${scrollTop}&amp;scroll_x=${scrollLeft}&#34;</span>
+&lt;<span style="color:#000080">amp-analytics</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;tealiumcollect&#34;</span> <span style="color:#008080">config</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;https://tags.tiqcdn.com/dle/{ACCOUNT}/{PROFILE}/{FILE}.json&#34;</span> /&gt;</code></pre></div>
+<h2 id="option-2-tealium-collect-for-amp-with-embedded-json">OPTION 2: Tealium Collect for AMP with embedded JSON</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">script</span> <span style="color:#008080">async</span> <span style="color:#008080">custom-element</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;amp-analytics&#34;</span> <span style="color:#008080">src</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;https://cdn.ampproject.org/v0/amp-analytics-0.1.js&#34;</span>&gt;&lt;/<span style="color:#000080">script</span>&gt;
+ 
+&lt;<span style="color:#000080">amp-analytics</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;tealiumcollect&#34;</span>&gt;
+  &lt;<span style="color:#000080">script</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;application/json&#34;</span>&gt;
+  {
+    <span style="color:#b84">&#34;vars&#34;</span><span style="font-weight:bold">:</span> {
+      <span style="color:#b84">&#34;account&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;&lt;TEALIUM_ACCOUNT&gt;&#34;</span>,
+      <span style="color:#b84">&#34;profile&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;&lt;TEALIUM_PROFILE&gt;&#34;</span>
     },
     <span style="color:#b84">&#34;triggers&#34;</span><span style="font-weight:bold">:</span> {
-        <span style="color:#b84">&#34;defaultPageview&#34;</span><span style="font-weight:bold">:</span> {
-            <span style="color:#b84">&#34;on&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;visible&#34;</span>,
-            <span style="color:#b84">&#34;request&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;pageview&#34;</span>,
-            <span style="color:#b84">&#34;vars&#34;</span><span style="font-weight:bold">:</span> {
-                <span style="color:#b84">&#34;tealium_event&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;screen_view&#34;</span>
-            }
-        },
-        <span style="color:#b84">&#34;links&#34;</span><span style="font-weight:bold">:</span> {
-            <span style="color:#b84">&#34;on&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;click&#34;</span>,
-            <span style="color:#b84">&#34;selector&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;.tealium&#34;</span>,
-            <span style="color:#b84">&#34;request&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;event&#34;</span>,
-            <span style="color:#b84">&#34;vars&#34;</span><span style="font-weight:bold">:</span> {
-                 <span style="color:#b84">&#34;tealium_event&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;custom_click&#34;</span>
-            }
+      <span style="color:#b84">&#34;trackClickOnHeader&#34;</span><span style="font-weight:bold">:</span> {
+        <span style="color:#b84">&#34;on&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;click&#34;</span>,
+        <span style="color:#b84">&#34;selector&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;#header&#34;</span>,
+        <span style="color:#b84">&#34;request&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;event&#34;</span>,
+        <span style="color:#b84">&#34;vars&#34;</span><span style="font-weight:bold">:</span> {
+          <span style="color:#b84">&#34;eventCategory&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;ui-components&#34;</span>,
+          <span style="color:#b84">&#34;eventAction&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;header-click&#34;</span>
         }
-    }
-}
-&lt;/<span style="color:#000080">script</span>&gt;
-&lt;/<span style="color:#000080">amp-analytics</span>&gt;
-<span style="color:#998;font-style:italic">&lt;!-- End Tealium Collect tracking --&gt;</span></code></pre></div>
+      }
+    }
+  }     
+  &lt;/<span style="color:#000080">script</span>&gt;
+&lt;/<span style="color:#000080">amp-analytics</span>&gt;</code></pre></div>
 </div>
 
           
@@ -846,11 +822,7 @@ var utag_data = {
   <div class="w-100 bg-light-gray">
     <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
       <p>
-  <a href="http://docs.tealium.com/platforms/amp/install/" class="hide-child link primary-color">
-  <span class="nl3 child"><svg class="grow" fill="" height="14px" viewBox="0 0 24 24" width="14px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
-</span>
-    “Install”
-  </a> was last updated: November 7, 2018
+  This page was last updated: April 29, 2019
 </p>
 
       
