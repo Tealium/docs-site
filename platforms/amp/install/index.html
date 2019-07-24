@@ -63,6 +63,22 @@ var utag_data = {
           </a>
         </li>
       
+            
+        <li class="f5 dib mr4" role="menuitem">
+            
+          <a href="https://community.tealiumiq.com/t5/Developers/bd-p/mobile" class="dim link">
+            Forum
+              
+            
+            
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 32 32" class="fill-current v-base" aria-label="External Link">
+<path d="M25.152 16.576v5.696q0 2.144-1.504 3.648t-3.648 1.504h-14.848q-2.144 0-3.648-1.504t-1.504-3.648v-14.848q0-2.112 1.504-3.616t3.648-1.536h12.576q0.224 0 0.384 0.16t0.16 0.416v1.152q0 0.256-0.16 0.416t-0.384 0.16h-12.576q-1.184 0-2.016 0.832t-0.864 2.016v14.848q0 1.184 0.864 2.016t2.016 0.864h14.848q1.184 0 2.016-0.864t0.832-2.016v-5.696q0-0.256 0.16-0.416t0.416-0.16h1.152q0.256 0 0.416 0.16t0.16 0.416zM32 1.152v9.12q0 0.48-0.352 0.8t-0.8 0.352-0.8-0.352l-3.136-3.136-11.648 11.648q-0.16 0.192-0.416 0.192t-0.384-0.192l-2.048-2.048q-0.192-0.16-0.192-0.384t0.192-0.416l11.648-11.648-3.136-3.136q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h9.12q0.48 0 0.8 0.352t0.352 0.8z"></path>
+</svg>
+
+            
+          </a>
+        </li>
+      
     </ul>
 
   </div>
@@ -156,11 +172,11 @@ var utag_data = {
                         <a  href="https://support.tealiumiq.com" target="_blank" class="menu-list-item top-level tooltip-right" title="Tealium Support Desk">
                           <span class="menu-large-icon">
                             <i class="fa fa-life-ring"></i>
-                          </span> 
+                          </span>
                           <span class="menu-context supportLinks_buttonTitle">Support Desk</span>
                         </a>
                           <span class="tooltiptext">Support Desk</span>
-                    </li>   
+                    </li>
                 </ul>
             </div>
             <ul class="menu-group as-main-navigation flex-0 bottom-align">
@@ -208,8 +224,12 @@ var utag_data = {
       <p class="b">In this article:</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
               <li><a href="#how-it-works">How It Works</a></li>
-              <li><a href="#option-1-tealium-collect-for-amp-with-hosted-json">OPTION 1: Tealium Collect for AMP with Hosted JSON</a></li>
-              <li><a href="#option-2-tealium-collect-for-amp-with-embedded-json">OPTION 2: Tealium Collect for AMP with embedded JSON</a></li>
+              <li><a href="#page-tracking">Page Tracking</a></li>
+              <li><a href="#event-tracking">Event Tracking</a></li>
+              <ul class="toc-h3"><li><a href="#dynamic-event-variables">Dynamic Event Variables</a></li>
+              </ul><li><a href="#validation">Validation</a></li>
+              <li><a href="#hosted-json">Hosted JSON</a></li>
+              <li><a href="#full-page-example">Full Page Example</a></li>
               </nav>
   </aside></div>
 
@@ -232,7 +252,7 @@ var utag_data = {
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
     <div class="f4 fw4 lh-copy">
-      Get the amp-analytics code to integrate Tealium into your AMP websites and applications.
+      How to install Tealium Collect for AMP sites.
     </div>
   
 
@@ -248,49 +268,162 @@ var utag_data = {
 <h2 id="requirements">Requirements</h2>
 
 <ul>
-<li>Tealium <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/tkb-p/udh" target="_blank">Universal Data Hub</a> account</li>
+<li>Tealium <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/tkb-p/udh">Universal Data Hub</a> account</li>
 </ul>
 
 <h2 id="how-it-works">How It Works</h2>
 
-<p>This solution uses the <code>amp-analytics</code> element to implement user activity tracking with Tealium Collect. Tealium Collect is a prebuilt integration in AMP Analytics. The JSON configuration object in the example below sets up basic page view tracking and a simple example of click tracking. You may adjust these as necessary.</p>
+<p>The <code>&lt;amp-analytics&gt;</code> element is an extended AMP component that captures analytic data from an AMP document. Add it to your page as a script in the <code>&lt;head&gt;</code> tag with the <code>custom-element</code> set to &ldquo;amp-analytics&rdquo;:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">script</span> <span style="color:#008080">async</span> <span style="color:#008080">custom-element</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;amp-analytics&#34;</span> <span style="color:#008080">src</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;https://cdn.ampproject.org/v0/amp-analytics-0.1.js&#34;</span>&gt;&lt;/<span style="color:#000080">script</span>&gt;</code></pre></div>
+<p><a href="https://amp.dev/documentation/guides-and-tutorials/optimize-and-measure/configure-analytics/analytics-vendors/">Tealium Collect</a> is an integrated AMP analytics vendor.
+To add a base installation of Tealium Collect to an AMP page, add the <code>&lt;amp-analytics&gt;</code> element to the <code>&lt;body&gt;</code> of your page with the &ldquo;type&rdquo; property set to &ldquo;tealiumcollect&rdquo;, then add a &ldquo;vars&rdquo; block with the following initialization parameters:</p>
 
-<p>The &ldquo;triggers&rdquo; section defines the types of events to track. The &ldquo;trackClickOnHeader&rdquo; example will trigger on clicks of page elements coded with the &ldquo;header&rdquo; class. Adjust this as necessary for your AMP site.</p>
+<ul>
+<li><strong>account</strong> - the name of your Tealium account</li>
+<li><strong>profile</strong> - the name of your Tealium profile</li>
+<li><strong>datasource</strong> - (optional) the data source key from UDH</li>
+</ul>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">amp-analytics</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;tealiumcollect&#34;</span>&gt;
+&lt;<span style="color:#000080">script</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;application/json&#34;</span>&gt;
+{
+  <span style="color:#b84">&#34;vars&#34;</span><span style="font-weight:bold">:</span> {
+    <span style="color:#b84">&#34;account&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+    <span style="color:#b84">&#34;profile&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;PROFILE&#34;</span>,
+    <span style="color:#b84">&#34;datasource&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;DATASOURCE&#34;</span>
+  }
+}     
+&lt;/<span style="color:#000080">script</span>&gt;
+&lt;/<span style="color:#000080">amp-analytics</span>&gt;</code></pre></div>
+<h2 id="page-tracking">Page Tracking</h2>
 
-<p>Read more about <a href="https://www.ampproject.org/docs/reference/components/amp-analytics">amp-analytics</a>.</p>
+<p>The base installation will make a tracking call every time a user opens or changes a screen in your AMP site. To add a custom data layer to the tracking, add the <code>extraUrlParams</code> block with key/value pairs for your variables:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">amp-analytics</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;tealiumcollect&#34;</span>&gt;
+&lt;<span style="color:#000080">script</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;application/json&#34;</span>&gt;
+{
+  <span style="color:#b84">&#34;vars&#34;</span><span style="font-weight:bold">:</span> {
+    <span style="color:#b84">&#34;account&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+    <span style="color:#b84">&#34;profile&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;PROFILE&#34;</span>,
+    <span style="color:#b84">&#34;datasource&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;DATASOURCE&#34;</span>
+  },
+  <span style="color:#b84">&#34;extraUrlParams&#34;</span><span style="font-weight:bold">:</span> {
+    <span style="color:#b84">&#34;example_param1&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;abc&#34;</span>,
+    <span style="color:#b84">&#34;example_param2&#34;</span><span style="font-weight:bold">:</span> <span style="color:#099">123</span>
+  }
+}     
+&lt;/<span style="color:#000080">script</span>&gt;
+&lt;/<span style="color:#000080">amp-analytics</span>&gt;</code></pre></div>
+<p>Learn more about <a href="https://amp.dev/documentation/components/amp-analytics/?format=websites#extra-url-params">Extra URL Params (amp-analytics)</a>.</p>
 
-<p>For dynamic link tracking configuration, host your JSON defintion on Tealium&rsquo;s CDN.</p>
+<h2 id="event-tracking">Event Tracking</h2>
 
-<p>Read more about Tealium&rsquo;s <a href="https://community.tealiumiq.com/t5/Tealium-API/Hosted-Data-Layer-API/ta-p/14619">Hosted Data Layer</a>.</p>
+<p>The <code>triggers</code> configuration object defines when events should be tracked. A trigger is define as a key-value pair of trigger name and configuration. Trigger names can be any alphanumeric string and the configuration determines the targets of the events.</p>
 
-<h2 id="option-1-tealium-collect-for-amp-with-hosted-json">OPTION 1: Tealium Collect for AMP with Hosted JSON</h2>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">script</span> <span style="color:#008080">async</span> <span style="color:#008080">custom-element</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;amp-analytics&#34;</span> <span style="color:#008080">src</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;https://cdn.ampproject.org/v0/amp-analytics-0.1.js&#34;</span>&gt;&lt;/<span style="color:#000080">script</span>&gt;
- 
-&lt;<span style="color:#000080">amp-analytics</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;tealiumcollect&#34;</span> <span style="color:#008080">config</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;https://tags.tiqcdn.com/dle/{ACCOUNT}/{PROFILE}/{FILE}.json&#34;</span> /&gt;</code></pre></div>
-<h2 id="option-2-tealium-collect-for-amp-with-embedded-json">OPTION 2: Tealium Collect for AMP with embedded JSON</h2>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">script</span> <span style="color:#008080">async</span> <span style="color:#008080">custom-element</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;amp-analytics&#34;</span> <span style="color:#008080">src</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;https://cdn.ampproject.org/v0/amp-analytics-0.1.js&#34;</span>&gt;&lt;/<span style="color:#000080">script</span>&gt;
- 
-&lt;<span style="color:#000080">amp-analytics</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;tealiumcollect&#34;</span>&gt;
-  &lt;<span style="color:#000080">script</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;application/json&#34;</span>&gt;
-  {
-    <span style="color:#b84">&#34;vars&#34;</span><span style="font-weight:bold">:</span> {
-      <span style="color:#b84">&#34;account&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;&lt;TEALIUM_ACCOUNT&gt;&#34;</span>,
-      <span style="color:#b84">&#34;profile&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;&lt;TEALIUM_PROFILE&gt;&#34;</span>
-    },
-    <span style="color:#b84">&#34;triggers&#34;</span><span style="font-weight:bold">:</span> {
-      <span style="color:#b84">&#34;trackClickOnHeader&#34;</span><span style="font-weight:bold">:</span> {
-        <span style="color:#b84">&#34;on&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;click&#34;</span>,
-        <span style="color:#b84">&#34;selector&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;#header&#34;</span>,
-        <span style="color:#b84">&#34;request&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;event&#34;</span>,
-        <span style="color:#b84">&#34;vars&#34;</span><span style="font-weight:bold">:</span> {
-          <span style="color:#b84">&#34;eventCategory&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;ui-components&#34;</span>,
-          <span style="color:#b84">&#34;eventAction&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;header-click&#34;</span>
+<p>AMP supports the following trigger parameters:</p>
+
+<ul>
+<li><strong>on</strong> - (required) The event to listen for. Valid values are <code>click</code>, <code>scroll</code>, <code>timer</code>, and <code>visible</code>.</li>
+<li><strong>request</strong> - (required) Specifies the type of request to send.</li>
+<li><strong>vars</strong> - An object containing key-value pairs used to override <code>vars</code> defined in the top-level config, or to specify vars unique to this trigger.</li>
+<li><strong>extraUrlParams</strong> - An object containing key-value pairs of dynamic event variables.</li>
+<li><strong>selector</strong> - (required when <code>on</code> is set to <code>click</code>) A CSS selector used to refine which elements should be tracked.</li>
+<li><strong>scrollSpec</strong> - (required when <code>on</code> is set to <code>scroll</code>) Controls under which conditions when the page is scrolled the <code>scroll</code> event is fired.</li>
+<li><strong>timerSpec</strong> - (required when on is set to timer) Controls when the <code>timer</code> event is fired.</li>
+</ul>
+
+<p>The following is a basic example of a trigger configuration. To see how a trigger can be configured for a button click, see the example at the end of this document.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#b84">&#34;triggers&#34;</span><span style="color:#a61717;background-color:#e3d2d2">:</span> {
+  <span style="color:#000080">&#34;trigger_name&#34;</span>: {
+    <span style="color:#000080">&#34;on&#34;</span>: <span style="color:#b84">&#34;VALUE&#34;</span>,
+    <span style="color:#000080">&#34;selector&#34;</span>: <span style="color:#b84">&#34;VALUE&#34;</span>,
+    <span style="color:#000080">&#34;request&#34;</span>: <span style="color:#b84">&#34;VALUE&#34;</span>,
+    <span style="color:#000080">&#34;vars&#34;</span>: {
+      <span style="color:#000080">&#34;tealium_event&#34;</span>: <span style="color:#b84">&#34;VALUE&#34;</span>
+    }
+    <span style="color:#b84">&#34;extraUrlParams&#34;</span>: {
+      <span style="color:#000080">&#34;extra_var&#34;</span>: <span style="color:#b84">&#34;${extraVar}&#34;</span>
+    }
+  }
+}</code></pre></div>
+<p>Learn more about <a href="https://www.ampproject.org/docs/reference/components/amp-analytics#triggers">amp-analytics triggers</a>.</p>
+
+<h3 id="dynamic-event-variables">Dynamic Event Variables</h3>
+
+<p>For the event types <code>visible</code> and <code>click</code> (&ldquo;on&rdquo; property), dynamic tracking variables can be passed using HTML5 <code>data-vars-*</code> elemental attributes. Variables passed this way are converted to camel case naming. For example, the element property <code>data-vars-link-name=&quot;register&quot;</code> becomes the variable <code>${linkName}</code> that can be referenced in the <code>extraUrlParams</code> block of your trigger.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#b84">&#34;triggers&#34;</span><span style="color:#a61717;background-color:#e3d2d2">:</span> {
+  <span style="color:#000080">&#34;custom_click&#34;</span>: {
+    <span style="color:#000080">&#34;on&#34;</span>: <span style="color:#b84">&#34;click&#34;</span>,
+    <span style="color:#000080">&#34;selector&#34;</span>: <span style="color:#b84">&#34;#the-button&#34;</span>,
+    <span style="color:#000080">&#34;request&#34;</span>: <span style="color:#b84">&#34;event&#34;</span>,
+    <span style="color:#000080">&#34;vars&#34;</span>: {
+      <span style="color:#000080">&#34;tealium_event&#34;</span>: <span style="color:#b84">&#34;custom_click&#34;</span>
+    }
+    <span style="color:#b84">&#34;extraUrlParams&#34;</span>: {
+      <span style="color:#000080">&#34;link_name&#34;</span>: <span style="color:#b84">&#34;${linkName}&#34;</span>
+    }
+  }
+}</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">span</span> <span style="color:#008080">id</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;the-button&#34;</span> <span style="color:#008080">data-vars-link-name</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;register&#34;</span>&gt;
+Click here to register
+&lt;/<span style="color:#000080">span</span>&gt;</code></pre></div>
+<h2 id="validation">Validation</h2>
+
+<p>Use the <a href="https://github.com/ampproject/amphtml#the-amp-validator">AMP Validator</a> to verify that a web page satisfies the AMP HTML specifications. To turn on the validator, add <code>#development=1</code> to the end of the URL of a page.  You can see any AMP validation errors in the web browser&rsquo;s console.</p>
+
+<h2 id="hosted-json">Hosted JSON</h2>
+
+<p>If you prefer to install Tealium Collect for AMP with hosted JSON, rather than embedded directly in the page, use the <code>config</code> attribute to load your AMP configuration from a hosted location:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">amp-analytics</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;tealiumcollect&#34;</span> <span style="color:#008080">config</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;https://tags.tiqcdn.com/dle/{ACCOUNT}/{PROFILE}/{FILE}.json&#34;</span> /&gt;</code></pre></div>
+<h2 id="full-page-example">Full Page Example</h2>
+
+<p>This example demonstrates a complete AMP page. This configuration will send standard page view data to Tealium and track button clicks.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#999;font-weight:bold">&lt;!doctype html&gt;</span>
+&lt;<span style="color:#000080">html</span> <span style="color:#008080">amp</span> <span style="color:#008080">lang</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;en&#34;</span>&gt;
+  &lt;<span style="color:#000080">head</span>&gt;
+    &lt;<span style="color:#000080">meta</span> <span style="color:#008080">charset</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;utf-8&#34;</span>&gt;
+    &lt;<span style="color:#000080">script</span> <span style="color:#008080">async</span> <span style="color:#008080">src</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;https://cdn.ampproject.org/v0.js&#34;</span>&gt;&lt;/<span style="color:#000080">script</span>&gt;
+    &lt;<span style="color:#000080">script</span> <span style="color:#008080">async</span> <span style="color:#008080">custom-element</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;amp-analytics&#34;</span> <span style="color:#008080">src</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;https://cdn.ampproject.org/v0/amp-analytics-0.1.js&#34;</span>&gt;&lt;/<span style="color:#000080">script</span>&gt;
+    &lt;<span style="color:#000080">style</span> <span style="color:#008080">amp-boilerplate</span>&gt;<span style="color:#000080">body</span>{<span style="font-weight:bold">-webkit-</span><span style="font-weight:bold">animation</span>:<span style="font-weight:bold">-</span>amp-start <span style="color:#099">8</span><span style="color:#458;font-weight:bold">s</span> <span style="color:#999">steps</span>(<span style="color:#099">1</span>,<span style="font-weight:bold">end</span>) <span style="color:#099">0</span><span style="color:#458;font-weight:bold">s</span> <span style="color:#099">1</span> <span style="font-weight:bold">normal</span> <span style="font-weight:bold">both</span>;<span style="font-weight:bold">-moz-</span><span style="font-weight:bold">animation</span>:<span style="font-weight:bold">-</span>amp-start <span style="color:#099">8</span><span style="color:#458;font-weight:bold">s</span> <span style="color:#999">steps</span>(<span style="color:#099">1</span>,<span style="font-weight:bold">end</span>) <span style="color:#099">0</span><span style="color:#458;font-weight:bold">s</span> <span style="color:#099">1</span> <span style="font-weight:bold">normal</span> <span style="font-weight:bold">both</span>;<span style="font-weight:bold">-ms-</span><span style="font-weight:bold">animation</span>:<span style="font-weight:bold">-</span>amp-start <span style="color:#099">8</span><span style="color:#458;font-weight:bold">s</span> <span style="color:#999">steps</span>(<span style="color:#099">1</span>,<span style="font-weight:bold">end</span>) <span style="color:#099">0</span><span style="color:#458;font-weight:bold">s</span> <span style="color:#099">1</span> <span style="font-weight:bold">normal</span> <span style="font-weight:bold">both</span>;<span style="font-weight:bold">animation</span>:<span style="font-weight:bold">-</span>amp-start <span style="color:#099">8</span><span style="color:#458;font-weight:bold">s</span> <span style="color:#999">steps</span>(<span style="color:#099">1</span>,<span style="font-weight:bold">end</span>) <span style="color:#099">0</span><span style="color:#458;font-weight:bold">s</span> <span style="color:#099">1</span> <span style="font-weight:bold">normal</span> <span style="font-weight:bold">both</span>}@<span style="font-weight:bold">-webkit-keyframes</span> <span style="color:#000080">-amp-start</span>{<span style="color:#000080">from</span>{<span style="font-weight:bold">visibility</span>:<span style="font-weight:bold">hidden</span>}<span style="color:#000080">to</span>{<span style="font-weight:bold">visibility</span>:<span style="font-weight:bold">visible</span>}}@<span style="font-weight:bold">-moz-keyframes</span> <span style="color:#000080">-amp-start</span>{<span style="color:#000080">from</span>{<span style="font-weight:bold">visibility</span>:<span style="font-weight:bold">hidden</span>}<span style="color:#000080">to</span>{<span style="font-weight:bold">visibility</span>:<span style="font-weight:bold">visible</span>}}@<span style="font-weight:bold">-ms-keyframes</span> <span style="color:#000080">-amp-start</span>{<span style="color:#000080">from</span>{<span style="font-weight:bold">visibility</span>:<span style="font-weight:bold">hidden</span>}<span style="color:#000080">to</span>{<span style="font-weight:bold">visibility</span>:<span style="font-weight:bold">visible</span>}}@<span style="font-weight:bold">-o-keyframes</span> <span style="color:#000080">-amp-start</span>{<span style="color:#000080">from</span>{<span style="font-weight:bold">visibility</span>:<span style="font-weight:bold">hidden</span>}<span style="color:#000080">to</span>{<span style="font-weight:bold">visibility</span>:<span style="font-weight:bold">visible</span>}}@<span style="font-weight:bold">keyframes</span> <span style="color:#000080">-amp-start</span>{<span style="color:#000080">from</span>{<span style="font-weight:bold">visibility</span>:<span style="font-weight:bold">hidden</span>}<span style="color:#000080">to</span>{<span style="font-weight:bold">visibility</span>:<span style="font-weight:bold">visible</span>}}&lt;/<span style="color:#000080">style</span>&gt;&lt;<span style="color:#000080">noscript</span>&gt;&lt;<span style="color:#000080">style</span> <span style="color:#008080">amp-boilerplate</span>&gt;<span style="color:#000080">body</span>{<span style="font-weight:bold">-webkit-</span><span style="font-weight:bold">animation</span>:<span style="font-weight:bold">none</span>;<span style="font-weight:bold">-moz-</span><span style="font-weight:bold">animation</span>:<span style="font-weight:bold">none</span>;<span style="font-weight:bold">-ms-</span><span style="font-weight:bold">animation</span>:<span style="font-weight:bold">none</span>;<span style="font-weight:bold">animation</span>:<span style="font-weight:bold">none</span>}&lt;/<span style="color:#000080">style</span>&gt;&lt;/<span style="color:#000080">noscript</span>&gt;
+    &lt;<span style="color:#000080">title</span>&gt;Hello, AMPs&lt;/<span style="color:#000080">title</span>&gt;
+    &lt;<span style="color:#000080">link</span> <span style="color:#008080">rel</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;canonical&#34;</span> <span style="color:#008080">href</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;http://example.ampproject.org/article-metadata.html&#34;</span>&gt;
+    &lt;<span style="color:#000080">meta</span> <span style="color:#008080">name</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;viewport&#34;</span> <span style="color:#008080">content</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;width=device-width,minimum-scale=1,initial-scale=1&#34;</span>&gt;
+  &lt;/<span style="color:#000080">head</span>&gt;
+  &lt;<span style="color:#000080">body</span>&gt;
+    &lt;<span style="color:#000080">amp-analytics</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;tealiumcollect&#34;</span>&gt;
+    &lt;<span style="color:#000080">script</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;application/json&#34;</span>&gt;
+    {
+      <span style="color:#b84">&#34;vars&#34;</span><span style="font-weight:bold">:</span> {
+        <span style="color:#b84">&#34;account&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;&lt;ACCOUNT&gt;&#34;</span>,
+        <span style="color:#b84">&#34;profile&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;&lt;PROFILE&gt;&#34;</span>,
+        <span style="color:#b84">&#34;datasource&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;&lt;DATASOURCE&gt;&#34;</span>
+      },
+      <span style="color:#b84">&#34;triggers&#34;</span><span style="font-weight:bold">:</span> {
+        <span style="color:#b84">&#34;custom_click&#34;</span><span style="font-weight:bold">:</span> {
+          <span style="color:#b84">&#34;on&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;click&#34;</span>,
+          <span style="color:#b84">&#34;selector&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;#the-button&#34;</span>,
+          <span style="color:#b84">&#34;request&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;event&#34;</span>,
+          <span style="color:#b84">&#34;vars&#34;</span><span style="font-weight:bold">:</span> {
+            <span style="color:#b84">&#34;tealium_event&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;custom_click&#34;</span>
+          },
+          <span style="color:#b84">&#34;extraUrlParams&#34;</span><span style="font-weight:bold">:</span> {
+            <span style="color:#b84">&#34;link_name&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;${linkName}&#34;</span>
+          }
         }
+      },
+      <span style="color:#b84">&#34;extraUrlParams&#34;</span><span style="font-weight:bold">:</span> {
+        <span style="color:#b84">&#34;site_section&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;Demos&#34;</span>
       }
     }
-  }     
-  &lt;/<span style="color:#000080">script</span>&gt;
-&lt;/<span style="color:#000080">amp-analytics</span>&gt;</code></pre></div>
+    &lt;/<span style="color:#000080">script</span>&gt;
+    &lt;/<span style="color:#000080">amp-analytics</span>&gt;
+
+    &lt;<span style="color:#000080">h1</span> <span style="color:#008080">id</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;header&#34;</span>&gt;Welcome to the mobile web.&lt;/<span style="color:#000080">h1</span>&gt;
+    &lt;<span style="color:#000080">p</span>&gt;Testing AMP Analytics &#34;tealiumcollect&#34; component.&lt;/<span style="color:#000080">p</span>&gt;
+    &lt;<span style="color:#000080">div</span>&gt;
+      &lt;<span style="color:#000080">button</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;button&#34;</span> <span style="color:#008080">id</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;the-button&#34;</span> <span style="color:#008080">data-vars-link-name</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;track&#34;</span>&gt;Track&lt;/<span style="color:#000080">button</span>&gt;
+    &lt;/<span style="color:#000080">div</span>&gt;
+  &lt;/<span style="color:#000080">body</span>&gt;
+&lt;/<span style="color:#000080">html</span>&gt;</code></pre></div>
 </div>
 
           
@@ -314,6 +447,11 @@ var utag_data = {
           <li class="fw4">
             <a href="/platforms/amp/install/" class="db link pl3 pr2 pv1 bg-secondary white">
               Install
+            </a>
+          </li>
+          <li class="fw4">
+            <a href="/platforms/amp/data-layer-variables/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
             </a>
           </li>
         </ul>
@@ -822,7 +960,7 @@ var utag_data = {
   <div class="w-100 bg-light-gray">
     <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
       <p>
-  This page was last updated: April 29, 2019
+  This page was last updated: July 19, 2019
 </p>
 
       
@@ -845,6 +983,12 @@ var utag_data = {
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="/platforms/" class="ttu f6 link primary-color-light overflow hover-white db brand-font ma0 w-100 pv3 ph4">
           Platforms
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://community.tealiumiq.com/t5/Developers/bd-p/mobile" class="ttu f6 link primary-color-light overflow hover-white db brand-font ma0 w-100 pv3 ph4">
+          Forum
         </a>
     </li>
   

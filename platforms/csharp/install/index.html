@@ -63,6 +63,22 @@ var utag_data = {
           </a>
         </li>
       
+            
+        <li class="f5 dib mr4" role="menuitem">
+            
+          <a href="https://community.tealiumiq.com/t5/Developers/bd-p/mobile" class="dim link">
+            Forum
+              
+            
+            
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 32 32" class="fill-current v-base" aria-label="External Link">
+<path d="M25.152 16.576v5.696q0 2.144-1.504 3.648t-3.648 1.504h-14.848q-2.144 0-3.648-1.504t-1.504-3.648v-14.848q0-2.112 1.504-3.616t3.648-1.536h12.576q0.224 0 0.384 0.16t0.16 0.416v1.152q0 0.256-0.16 0.416t-0.384 0.16h-12.576q-1.184 0-2.016 0.832t-0.864 2.016v14.848q0 1.184 0.864 2.016t2.016 0.864h14.848q1.184 0 2.016-0.864t0.832-2.016v-5.696q0-0.256 0.16-0.416t0.416-0.16h1.152q0.256 0 0.416 0.16t0.16 0.416zM32 1.152v9.12q0 0.48-0.352 0.8t-0.8 0.352-0.8-0.352l-3.136-3.136-11.648 11.648q-0.16 0.192-0.416 0.192t-0.384-0.192l-2.048-2.048q-0.192-0.16-0.192-0.384t0.192-0.416l11.648-11.648-3.136-3.136q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h9.12q0.48 0 0.8 0.352t0.352 0.8z"></path>
+</svg>
+
+            
+          </a>
+        </li>
+      
     </ul>
 
   </div>
@@ -156,11 +172,11 @@ var utag_data = {
                         <a  href="https://support.tealiumiq.com" target="_blank" class="menu-list-item top-level tooltip-right" title="Tealium Support Desk">
                           <span class="menu-large-icon">
                             <i class="fa fa-life-ring"></i>
-                          </span> 
+                          </span>
                           <span class="menu-context supportLinks_buttonTitle">Support Desk</span>
                         </a>
                           <span class="tooltiptext">Support Desk</span>
-                    </li>   
+                    </li>
                 </ul>
             </div>
             <ul class="menu-group as-main-navigation flex-0 bottom-align">
@@ -211,6 +227,7 @@ var utag_data = {
               <li><a href="#install">Install</a></li>
               <li><a href="#initialize">Initialize</a></li>
               <li><a href="#track-events">Track Events</a></li>
+              <li><a href="#joining-and-leaving-a-trace">Joining and Leaving a Trace</a></li>
               <li><a href="#xamarin-mobile-applications">Xamarin Mobile Applications</a></li>
               </nav>
   </aside></div>
@@ -251,7 +268,7 @@ var utag_data = {
 
 <ul>
 <li>Tealium <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/tkb-p/udh" target="_blank">Universal Data Hub</a> account</li>
-<li>Xamarin Community Edition+</li>
+<li>Visual Studio (or other C# compliant IDE)</li>
 </ul>
 
 <h2 id="sample-apps">Sample Apps</h2>
@@ -280,11 +297,12 @@ var utag_data = {
 <li><strong>account</strong> - the name of your account.</li>
 <li><strong>profile</strong> - the name of your profile within your account.</li>
 <li><strong>environment</strong> - &ldquo;qa&rdquo; or &ldquo;prod&rdquo;</li>
-<li><strong>visitorID</strong> - a 32 character alphanumeric string identifer that should be unique to a user, app instance.</li>
+<li><strong>visitorID</strong> - a 32 character alphanumeric string identifer that should be unique to a user, app instance. Null acceptable.</li>
 <li><strong>modules</strong> - (optional) modules to be initialized with library. Default modules if none provided: AppDataModule, CollectModule, LoggerModule.</li>
 <li><strong>dataSourceKey</strong> - (optional) the data source key from UDH.</li>
 <li><strong>overrideCollectUrl</strong> - (optional) custom endpoint for the Tealium Collect service.</li>
 <li><strong>optionalData</strong> - (optional) dictionary for module use. Null acceptable.</li>
+<li><strong>method</strong> - (optional) HTTP Method for the Collect Endpoint. Default: Method.POST</li>
 </ul>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">Config tealConfig = <span style="font-weight:bold">new</span> Config(<span style="color:#b84">&#34;account&#34;</span>,
                                <span style="color:#b84">&#34;profile&#34;</span>,
@@ -293,7 +311,8 @@ var utag_data = {
                                <span style="font-weight:bold">new</span> <span style="color:#458;font-weight:bold">string</span><span style="color:#008080">[]</span> { &lt;modules&gt; },
                                <span style="color:#b84">&#34;dataSourceKey&#34;</span>,
                                <span style="color:#b84">&#34;overrideCollectUrl&#34;</span>,
-                               <span style="font-weight:bold">new</span> Dictionary&lt;<span style="color:#458;font-weight:bold">string</span>, <span style="color:#458;font-weight:bold">object</span>&gt; optionalData);
+                               <span style="font-weight:bold">new</span> Dictionary&lt;<span style="color:#458;font-weight:bold">string</span>, <span style="color:#458;font-weight:bold">object</span>&gt; optionalData,
+                               Method.POST);
 Tealium tealium = <span style="font-weight:bold">new</span> Tealium(tealConfig);</code></pre></div>
 <h2 id="track-events">Track Events</h2>
 
@@ -321,16 +340,19 @@ Tealium tealium = <span style="font-weight:bold">new</span> Tealium(tealConfig);
    {<span style="color:#b84">&#34;foo3&#34;</span>, <span style="color:#b84">&#34;bar3&#34;</span>}
 };
 tealium.Track(<span style="color:#b84">&#34;My Event&#34;</span>, customData);</code></pre></div>
+<h2 id="joining-and-leaving-a-trace">Joining and Leaving a Trace</h2>
+
+<p>This library uses the <a href="/platforms/http-api/">HTTP API</a> and therefore supports sending a Trace Id for debugging purposes. To join a Trace, simply generate a new Trace Id in the UDH User Interface and then pass that Id to the JoinTrace method:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">tealium.JoinTrace(<span style="color:#b84">&#34;01234&#34;</span>);</code></pre></div>
+<p>This will add the <code>tealium_trace_id</code> key to all subsequent events allowing you to debug your events using the Trace system.</p>
+
+<p>To leave a trace, simply execute:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">tealium.LeaveTrace();</code></pre></div>
+<p>You can also trigger an additional event to end the trace session at the server - this is useful for verifying end-of-visit behaviour in your UDH configuration/connectors. You can do this by executing the following. This will also call the LeaveTrace() method for you in order to remove the expired <code>tealium_trace_id</code> from any subsequent events.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">tealium.KillTraceSession();</code></pre></div>
 <h2 id="xamarin-mobile-applications">Xamarin Mobile Applications</h2>
 
-<p>If you are building a mobile application in Xamarin you will use bindings to our iOS and Android libraries.</p>
-
-<ul>
-<li><a href="/platforms/ios/">Tealium for iOS</a></li>
-<li><a href="https://developer.xamarin.com/guides/ios/advanced_topics/binding_objective-c/" target="_blank">Xamarin - Binding an iOS Objective-C Library </a></li>
-<li><a href="/platforms/android/">Tealium for Android</a></li>
-<li><a href="https://developer.xamarin.com/guides/android/advanced_topics/binding-a-java-library/" target="_blank">Xamarin - Binding a Java Library</a></li>
-</ul>
+<p>If you are building a mobile application in Xamarin then you can make use of the <a href="/platforms/xamarin/">Xamarin integration</a> which has prebuilt bindings to our <a href="/platforms/ios/">iOS</a> and <a href="/platforms/android/">Android</a> SDKs</p>
 
 </div>
 
@@ -355,6 +377,11 @@ tealium.Track(<span style="color:#b84">&#34;My Event&#34;</span>, customData);</
           <li class="fw4">
             <a href="/platforms/amp/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Install
+            </a>
+          </li>
+          <li class="fw4">
+            <a href="/platforms/amp/data-layer-variables/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
             </a>
           </li>
         </ul>
@@ -863,7 +890,7 @@ tealium.Track(<span style="color:#b84">&#34;My Event&#34;</span>, customData);</
   <div class="w-100 bg-light-gray">
     <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
       <p>
-  This page was last updated: April 3, 2019
+  This page was last updated: July 23, 2019
 </p>
 
       
@@ -886,6 +913,12 @@ tealium.Track(<span style="color:#b84">&#34;My Event&#34;</span>, customData);</
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="/platforms/" class="ttu f6 link primary-color-light overflow hover-white db brand-font ma0 w-100 pv3 ph4">
           Platforms
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://community.tealiumiq.com/t5/Developers/bd-p/mobile" class="ttu f6 link primary-color-light overflow hover-white db brand-font ma0 w-100 pv3 ph4">
+          Forum
         </a>
     </li>
   
