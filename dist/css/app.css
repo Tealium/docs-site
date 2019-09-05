@@ -1,3 +1,4 @@
+@import url(https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css);
 /*Base Styles*/
 /*! TACHYONS v4.7.0 | http://tachyons.io */
 /*
@@ -551,6 +552,9 @@ img { max-width: 100%; }
   This will set table to full width and then
   all cells will be equal width
 */
+@media screen and (min-width: 45em) {
+  .dib-ns {             display: inline-block; }
+}
 @media screen and (min-width: 60em) {
   .dn-l {              display: none; }
   .db-l {              display: block; }
@@ -1673,12 +1677,11 @@ p.tip:after {
 .documentation-copy h2 {
   border-bottom: 1px solid #EEE
 }
-.documentation-copy h2.minor {
+.documentation-copy h2.minor{
   font-size: inherit;
   margin-top: inherit;
   border-bottom: none;
 }
-@keyframes a{0%{transform:translate3d(-20%,0,0);opacity:0}to{transform:none;opacity:1}}
 /*@import '_carousel';*/
 pre, .pre  {
   overflow-x: auto;
@@ -1891,7 +1894,7 @@ h3 {font-size: 1.45em;}
     border: 1px solid #eee
 
 }
-.prose table th {
+.prose table th{
   background-color: #147DC0;
   border-bottom: 1px solid #147DC0;
   color: white;
@@ -1899,7 +1902,7 @@ h3 {font-size: 1.45em;}
   text-align: left;
   padding: .375em .5em;
 }
-.prose table td, .prose table tc {
+.prose table td, .prose table tc{
   padding: .75em .5em;
   text-align: left;
   border-right: 1px solid #eee;
@@ -1907,6 +1910,28 @@ h3 {font-size: 1.45em;}
 .prose table tr:nth-child(even) {
   background-color: #eee;
 }
+input[type=search]:focus, textarea:focus {
+    box-shadow: 0 0 3px;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(255, 255, 255, .6);
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(255, 255, 255, .6);
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(255, 255, 255, .6);
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: rgba(255, 255, 255, .6);
+}
+/* --------- Algolia Overrides --------- */
+/* Main dropdown wrapper */
+/* Main category (eg. Getting Started) */
+/* Category (eg. Downloads) */
+/* Title (eg. Bootstrap CDN) */
+/* Description description (eg. Bootstrap currently works...) */
+/* Highlighted text */
 /* From http://cssfontstack.com */
 code, .code, pre code, .highlight pre  {
   font-family: 'inconsolata',Menlo,Monaco,'Courier New',monospace;
@@ -1957,6 +1982,9 @@ nav.side-nav>ul>li.active{
   border: 1px solid #ddd;
   border-radius: 3px;
   text-decoration: none;
+}
+.pagination li.disabled {
+  display: none;
 }
 .pagination li.active a:link,
 .pagination li.active a:active,

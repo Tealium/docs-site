@@ -31,6 +31,7 @@ var utag_data = {
     tealium_event : "page_view"
 }
 </script>
+
 <script>
  (function(a,b,c,d){
     a='//tags.tiqcdn.com/utag/tealium\/docs/prod/utag.js';
@@ -39,8 +40,8 @@ var utag_data = {
   })();
 </script>
 
-
       
+
     
 <nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
 
@@ -79,8 +80,17 @@ var utag_data = {
         </li>
       
     </ul>
-
+    <div class="db dib-ns pl3"><form id="site-search-form" action="" role="search">
+  <fieldset class="bn ma0 pa0">
+    <label class="clip" for="search-input">Search</label>
+    <input type="search" id="search-input" class="needs-js bg-left bn f5 input-reset lh-solid mt3 mt0-ns pl4 pv2 w5 white"
+           placeholder="Search the Docs" name="search-input" value=""
+           style="background: transparent url('/images/icons/icon-search-white.png') no-repeat 2px 10px /16px 16px;">
+  </fieldset>
+</form>
+</div>
   </div>
+
 
 <div id="mainAppInner" class="padd-54">
     <div id="leftFrame">
@@ -202,9 +212,12 @@ var utag_data = {
                 </a>
               </li>
             </ul>
+
         </div>
+
     </div>
 </div>
+
 
 </nav>
 
@@ -270,7 +283,7 @@ var utag_data = {
 
 <h2 id="manual-install">Manual Install</h2>
 
-<p>Download the tealium.installreferrer-5.2.0.aar file:
+<p>Download the tealium.installreferrer-1.1.2.aar file:
 <a href="https://github.com/Tealium/tealium-android/tree/master/Support/InstallReferrer">https://github.com/Tealium/tealium-android/tree/master/Support/InstallReferrer</a></p>
 
 <p>In the project&rsquo;s root build.gradle, make sure you have the following:</p>
@@ -285,10 +298,12 @@ var utag_data = {
 <p>Include in your app&rsquo;s &ldquo;libs&rdquo; directory, and add the following to your project module&rsquo;s build.gradle:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
     <span style="color:#998;font-style:italic">// only required if you do not already have this reference
-</span><span style="color:#998;font-style:italic"></span>    implementation<span style="font-weight:bold">(</span>name:<span style="color:#b84">&#39;tealium-5.5.4&#39;</span><span style="font-weight:bold">,</span> ext:<span style="color:#b84">&#39;aar&#39;</span><span style="font-weight:bold">)</span>
-    implementation<span style="font-weight:bold">(</span>name:<span style="color:#b84">&#39;tealium.installreferrer-1.1.1&#39;</span><span style="font-weight:bold">,</span> ext:<span style="color:#b84">&#39;aar&#39;</span><span style="font-weight:bold">)</span>
+</span><span style="color:#998;font-style:italic"></span>    implementation<span style="font-weight:bold">(</span>name:<span style="color:#b84">&#39;tealium-5.5.5&#39;</span><span style="font-weight:bold">,</span> ext:<span style="color:#b84">&#39;aar&#39;</span><span style="font-weight:bold">)</span>
+    implementation<span style="font-weight:bold">(</span>name:<span style="color:#b84">&#39;tealium.installreferrer-1.1.2&#39;</span><span style="font-weight:bold">,</span> ext:<span style="color:#b84">&#39;aar&#39;</span><span style="font-weight:bold">)</span>
     <span style="color:#998;font-style:italic">// only required if you do not already have this reference and require lifecycle tracking
 </span><span style="color:#998;font-style:italic"></span>    implementation<span style="font-weight:bold">(</span>name:<span style="color:#b84">&#39;tealium.lifecycle-1.1.2&#39;</span><span style="font-weight:bold">,</span> ext:<span style="color:#b84">&#39;aar&#39;</span><span style="font-weight:bold">)</span>
+    <span style="color:#998;font-style:italic">// Google&#39;s Install Referrer API
+</span><span style="color:#998;font-style:italic"></span>    implementation <span style="color:#b84">&#39;com.android.installreferrer:installreferrer:1.0&#39;</span>
 <span style="font-weight:bold">}</span></code></pre></div>
 <h2 id="maven-install">Maven Install</h2>
 
@@ -299,11 +314,15 @@ var utag_data = {
 <p>In your project module gradle file, add the following maven dependency:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies<span style="font-weight:bold">{</span>
     <span style="color:#998;font-style:italic">//only required if you do not have this reference
-</span><span style="color:#998;font-style:italic"></span>    implementation <span style="color:#b84">&#39;com.tealium:library:5.5.4&#39;</span>
-    implementation <span style="color:#b84">&#39;com.tealium:installreferrer:1.1.1&#39;</span>
+</span><span style="color:#998;font-style:italic"></span>    implementation <span style="color:#b84">&#39;com.tealium:library:5.5.5&#39;</span>
+    implementation <span style="color:#b84">&#39;com.tealium:installreferrer:1.1.2&#39;</span>
     <span style="color:#998;font-style:italic">//only required if you do not already have this reference and require lifecycle tracking
 </span><span style="color:#998;font-style:italic"></span>    implementation <span style="color:#b84">&#39;com.tealium:lifecycle:1.1.2&#39;</span>
+    <span style="color:#998;font-style:italic">// Google&#39;s Install Referrer API
+</span><span style="color:#998;font-style:italic"></span>    implementation <span style="color:#b84">&#39;com.android.installreferrer:installreferrer:1.0&#39;</span>
 <span style="font-weight:bold">}</span></code></pre></div>
+<p class="note">The [Google Install Referrer API](https://developer.android.com/google/play/installreferrer/library) is a dependency for this module, but is not automatically added for you. Please add the module to your build.</p>
+
 <p>In the same block where you instantiate the Tealium library (after instantiating Tealium), add the following calls:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#998;font-style:italic">// import the Tealium InstallReferrer module in the import section
 </span><span style="color:#998;font-style:italic"></span><span style="font-weight:bold">import</span> <span style="color:#555">com.tealium.installreferrer.InstallReferrerReceiver</span><span style="font-weight:bold">;</span>
@@ -312,10 +331,10 @@ var utag_data = {
 </span><span style="color:#998;font-style:italic"></span><span style="font-weight:bold">private</span> <span style="font-weight:bold">static</span> <span style="font-weight:bold">final</span> String TEALIUM_INSTANCENAME <span style="font-weight:bold">=</span> <span style="color:#b84">&#34;INSTANCE_NAME&#34;</span><span style="font-weight:bold">;</span>
 
 <span style="color:#998;font-style:italic">// call this to store the referrer as Persistent data - recommended
-</span><span style="color:#998;font-style:italic"></span>InstallReferrerReceiver<span style="font-weight:bold">.</span><span style="color:#008080">setReferrerPersistent</span><span style="font-weight:bold">(</span>TEALIUM_INSTANCENAME<span style="font-weight:bold">);</span>
+</span><span style="color:#998;font-style:italic"></span>InstallReferrerReceiver<span style="font-weight:bold">.</span><span style="color:#008080">setReferrerPersistent</span><span style="font-weight:bold">(</span>applicationContext<span style="font-weight:bold">,</span> TEALIUM_INSTANCENAME<span style="font-weight:bold">);</span>
 
 <span style="color:#998;font-style:italic">// call this to store the referrer as Volatile data (reset at app restart/terminate) - not recommended in most cases
-</span><span style="color:#998;font-style:italic"></span>InstallReferrerReceiver<span style="font-weight:bold">.</span><span style="color:#008080">setReferrerVolatile</span><span style="font-weight:bold">(</span>TEALIUM_INSTANCENAME<span style="font-weight:bold">);</span></code></pre></div>
+</span><span style="color:#998;font-style:italic"></span>InstallReferrerReceiver<span style="font-weight:bold">.</span><span style="color:#008080">setReferrerVolatile</span><span style="font-weight:bold">(</span>applicationContext<span style="font-weight:bold">,</span> TEALIUM_INSTANCENAME<span style="font-weight:bold">);</span></code></pre></div>
 <h2 id="sample-value">Sample Value</h2>
 
 <p>You can expect to receive the following URL-formatted data in the INSTALL_REFERRER variable, assuming that your incoming URL contained all the specified campaign information.</p>
@@ -329,8 +348,6 @@ utm_campaign=test_name
 <h2 id="additional-considerations">Additional Considerations</h2>
 
 <ul>
-<li><strong>BroadcastReceiver</strong><br>This module implements a BroadcastReceiver, specifically for the INSTALL_REFERRER broadcast. This broadcast is only sent <em>once</em> on first launch of the app, and the Android OS will only call the <em>first</em> BroadcastReceiver for this particular broadcast, even if you define more than one BroadcastReceiver. Thus, if you have other 3rd party SDKs that handle the INSTALL_REFERRER, you will need to implement a &ldquo;proxy&rdquo; BroadcastReceiver that calls the <code>onReceive</code> method of each individual receiver for the INSTALL_REFERRER broadcast.</li>
-
 <li><p><strong>Delete the Stored Referrer</strong><br>
 To delete the stored install referrer string, you can call the standard methods provided by the Tealium library to remove variables from persistent or volatile storage. The key name for the variable is exposed by the InstallReferrerReceiver class. Here&rsquo;s an example to remove the stored install referrer from both persistent and volatile data. This code will have no effect and will not throw an error, if the variable doesn&rsquo;t already exist.<br></p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#998;font-style:italic">// remove from persistent data store
@@ -491,6 +508,13 @@ To delete the stored install referrer string, you can call the standard methods 
             
             <a href="/platforms/android/lifecycle-tracking-module/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Module: Lifecycle Tracking
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/android/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
             </a>
           </li>
           <li class="fw4">
@@ -1183,14 +1207,15 @@ To delete the stored install referrer string, you can call the standard methods 
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc ttu mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc ttu mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
-	<span id="feedback_comment" style="display:none">
-	  <br/>
-		<strong>Tell us how we can make this article better (Optional):</strong>
-		<textarea id="feedback_textarea" rows="4" cols="70"></textarea>
-		<button enabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc ttu mv3 bg-primary-color white hover-bg-blue link">Submit</button>
-	</span>
+	<span id="feedback_comment">
+		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better..." rows="4" cols="70"></textarea>
+		<button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc ttu mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button>
+  </span>
+  <span id="feedback_thank_you" style="display: none;">
+     <em>Thank you for your feedback!</em>
+  </span>
 </div>
-<p>This page was last updated: June 7, 2019</p>
+<p> This page was last updated: August 21, 2019</p>
 
       
 
@@ -1378,6 +1403,19 @@ To delete the stored install referrer string, you can call the standard methods 
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <script src="https://use.fontawesome.com/0757c63fa2.js"></script>
 
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript">
+docsearch({
+  apiKey: 'b909cfb6051533a37a6c253ac1ab02c9',
+  indexName: 'tealium',
+  inputSelector: 'input#search-input',
+  debug: "false" 
+});
+</script>
+
+    
 
   </body>
 </html>

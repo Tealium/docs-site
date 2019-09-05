@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Tag Management Module | Tealium for Swift Modules |Tealium Developer Docs</title>
+    <title>Release Notes | Overview |Tealium Developer Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -25,7 +25,7 @@
         
 <script>
 var utag_data = {
-    category_name : "Swift",
+    category_name : "Android",
     site_section  : "platforms",
     site_language : "en",
     tealium_event : "page_view"
@@ -234,16 +234,7 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">In this article:</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#usage">Usage</a></li>
-              <li><a href="#supported-platforms">Supported Platforms</a></li>
-              <li><a href="#installation">Installation</a></li>
-              <ul class="toc-h3"><li><a href="#cocoapods">CocoaPods</a></li>
-              <li><a href="#carthage">Carthage</a></li>
-              </ul><li><a href="#external-dependencies">External Dependencies</a></li>
-              <li><a href="#included-variables">Included Variables</a></li>
-              <li><a href="#public-api">Public API</a></li>
-              <li><a href="#about-wkwebview">About WKWebView</a></li>
-              <li><a href="#change-log">Change Log</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#5-5-5-august-2019">5.5.5 (August 2019)</a></li>
               </nav>
   </aside></div>
 
@@ -254,19 +245,19 @@ var utag_data = {
           <header class="flex-none w-100">
   
     
-      <a href="/platforms/swift/module-list" class="f6 fw8 mb0 link mid-gray dim mr3">
-        SWIFT/MODULE LIST
+      <a href="/platforms/android" class="f6 fw8 mb0 link mid-gray dim mr3">
+        ANDROID
       </a>
     
   
 
-  <h1 class="lh-title mb3 mv0 pt3">Tag Management Module</h1>
+  <h1 class="lh-title mb3 mv0 pt3">Release Notes</h1>
 </header>
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
     <div class="f4 fw4 lh-copy">
-      The Tag Management module is a client-side implementation of the Universal Tag (utag.js) which uses a non-rendered WKWebView instance to execute JavaScript.
+      Release notes
     </div>
   
 
@@ -279,108 +270,17 @@ var utag_data = {
 
 
 
-<h2 id="usage">Usage</h2>
+<p>Below is a complete list of changes for each release of the Android library.</p>
 
-<p>This module is required in apps that make use of iQ Tag Management. It is automatically included in Carthage and CocoaPods framework builds.</p>
-
-<h2 id="supported-platforms">Supported Platforms</h2>
+<h2 id="5-5-5-august-2019">5.5.5 (August 2019)</h2>
 
 <ul>
-<li>iOS</li>
-</ul>
-
-<h2 id="installation">Installation</h2>
-
-<h3 id="cocoapods">CocoaPods</h3>
-
-<p>Framework will be auto-instantiated, so long as the pod is installed. Depends on <code>TealiumCore</code> pod. No additional <code>import</code> statements necessary besides <code>import TealiumSwift</code>.</p>
-
-<p><code>pod 'tealium-swift/TealiumTagManagement'</code></p>
-
-<h3 id="carthage">Carthage</h3>
-
-<p>Framework will be auto-instantiated, so long as it is compiled into your app (included in &ldquo;Embedded Binaries&rdquo;). Depends on <code>TealiumCore</code>. No additional <code>import</code> statements necessary.</p>
-
-<p><code>TealiumTagManagement.framework</code></p>
-
-<h2 id="external-dependencies">External Dependencies</h2>
+<li>Webview bug fix: disable Hardware Acceleration for Tealium webview</li>
+<li>Install Referrer 1.1.2
 
 <ul>
-<li>UIKit (WKWebView)</li>
-</ul>
-
-<h2 id="included-variables">Included Variables</h2>
-
-<p>The following variables will be transmitted with each tracking call:</p>
-
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-<th>Example Value</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>dispatch_service</td>
-<td>Static string to indicate which module the tracking call came from</td>
-<td>tagmanagement</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="public-api">Public API</h2>
-
-<p>The WKWebView protocols are accessible by adding another object conforming the WKWebView delegate to the module&rsquo;s multicast delegate:</p>
-
-<p><code>tealium.tagManagement()?.delegates.add(MY_OBJECT)</code></p>
-
-<h2 id="about-wkwebview">About WKWebView</h2>
-
-<p>Prior to version 1.7.0, this module used UIWebView which is now deprecated in favor of WKWebView. The OS requires that WKWebView always be attached to a UIView, even if it is not rendered. If it is not attached to a UIView, the OS severely throttles the performance and the JavaScript executes suboptimally. <strong>To accommodate this the Tag Management module will attempt to attach the non-rendered WKWebView to the root UIView of your app.</strong></p>
-
-<p>If your app has a complex view hierarchy and the module cannot detect the rootViewController, you can initialize <a href="/platforms/swift/class-definitions/tealium-config/">TealiumConfig</a> with a view to attach to in <code>viewDidLoad</code>, <code>viewWillAppear:</code>, or <code>viewDidAppear:</code>.</p>
-
-<pre><code>&lt;p class=&quot;note&quot;&gt;Release 1.7.1 significantly improved the auto-detection of views (performed before each tracking call is sent). This should remove the need to specify a view in most scenarios, but you must test this in your app, and verify that tracking calls are sent correctly. See [Release Notes](/platforms/swift/release-notes) for full details.&lt;/p&gt;
-</code></pre>
-
-<p>If your app jumps to a <code>UIViewController</code> upon receiving a push notification, and has a different view hierarchy than when Tealium was initialized, you must update the current UIView using the following API method.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">override</span> <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">viewDidLoad</span>() {
-    <span style="font-weight:bold">super</span>.viewDidLoad()
-    <span style="color:#998;font-style:italic">// this view does not have a navigation controller</span>
-    <span style="font-weight:bold">if</span> <span style="font-weight:bold">self</span>.navigationController == <span style="font-weight:bold">nil</span> {
-          <span style="color:#998;font-style:italic">// update the current root UIView on the Tealium instance</span>
-        tealium?.updateRootView(<span style="font-weight:bold">self</span>.view)
-    }
-    <span style="color:#998;font-style:italic">// Do any additional setup after loading the view.</span>
-}</code></pre></div>
-<p>See the sample app <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/Swift-WKWebView">Swift-WKWebView</a> for a full example.</p>
-
-<p>WKWebView and UIWebView use different methods to store cookies (WKHTTPCookieStore and HTTPCookieStorage respectively), so the module will automatically synchronize cookies the first time that WKWebView is launched. The cookies in HTTPCookieStorage are not deleted, but will eventually expire on their own.</p>
-
-<p>If you encounter issues with WKWebView, and prefer to use UIWebView, see <a href="/platforms/swift/class-definitions/tealium-config/">TealiumConfig</a> for the option to override the default.</p>
-
-<h2 id="change-log">Change Log</h2>
-
-<p>1.7.0</p>
-
-<ul>
-<li>Switch to WKWebView by default (previously UIWebView)</li>
-</ul>
-
-<p>1.6.5</p>
-
-<ul>
-<li>Memory leak fixes</li>
-<li>Nested objects now supported</li>
-</ul>
-
-<p>1.4.0</p>
-
-<ul>
-<li>Minor updates for Swift 4.0 compatibility</li>
+<li>Placement of endConnection() to more appropriate location</li>
+</ul></li>
 </ul>
 
 </div>
@@ -452,9 +352,9 @@ var utag_data = {
       </li>
       
       
-      <li class="w-100 hover-accent-color-light fw8">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".android">Android</a>
-        <ul class="android desktopmenu animated fadeIn list pl0 dn">
+      <li class="w-100 hover-accent-color-light fw8 active">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2  primary-color" data-target=".android">Android</a>
+        <ul class="android desktopmenu animated fadeIn list pl0 db">
           <li class="fw4">
             
             
@@ -507,7 +407,7 @@ var utag_data = {
           <li class="fw4">
             
             
-            <a href="/platforms/android/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+            <a href="/platforms/android/release-notes/" class="db link pl3 pr2 pv1 bg-secondary white">
               Release Notes
             </a>
           </li>
@@ -1040,9 +940,9 @@ var utag_data = {
       </li>
       
       
-      <li class="w-100 hover-accent-color-light fw8 active">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2  primary-color" data-target=".swift">Swift</a>
-        <ul class="swift desktopmenu animated fadeIn list pl0 db">
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".swift">Swift</a>
+        <ul class="swift desktopmenu animated fadeIn list pl0 dn">
           <li class="fw4">
             
             
@@ -1102,7 +1002,7 @@ var utag_data = {
           <li class="fw4">
             
             
-            <a href="/platforms/swift/module-list/" class="db link pl3 pr2 pv1 bg-secondary white">
+            <a href="/platforms/swift/module-list/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Module List
             </a>
           </li>
@@ -1209,7 +1109,7 @@ var utag_data = {
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p> This page was last updated: July 31, 2019</p>
+<p> This page was last updated: August 15, 2019</p>
 
       
 
