@@ -286,7 +286,7 @@ var utag_data = {
 
 <h2 id="how-it-works">How It Works</h2>
 
-<p>Many of the behaviors of utag.js are controlled with settings set in the <code>utag.cfg</code> object. The default behaviors controlled by these settings can be overridden using a new object called <code>utag_cfg_ovrd</code>. This object can be set in your page code prior to loading utag.js or within a <a href="https://community.tealiumiq.com/t5/Tealium-iQ-Tag-Management/JavaScript-Code-Extension/ta-p/11925" target="_blank">JavaScript Code Extension</a> scoped to <strong>Pre Loader</strong>. The override object should be scoped to the window object and initialized safely with the following convention:</p>
+<p>Many of the behaviors of utag.js are controlled with settings set in the <code>utag.cfg</code> object. The default behaviors controlled by these settings can be overridden using a new object called <code>utag_cfg_ovrd</code>. To use this object, set it in your page code prior to loading <code>utag.js</code> or within a <a href="https://community.tealiumiq.com/t5/Tealium-iQ-Tag-Management/JavaScript-Code-Extension/ta-p/11925">JavaScript Code Extension</a> scoped to <strong>Pre Loader</strong> with the following:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#999">window</span>.utag_cfg_ovrd <span style="font-weight:bold">=</span> <span style="color:#999">window</span>.utag_cfg_ovrd <span style="font-weight:bold">||</span> {};
 </code></pre></div>
 <h2 id="settings">Settings</h2>
@@ -298,7 +298,7 @@ var utag_data = {
 <p>Overrides the default 90 days with a custom number of days.</p>
 
 <ul>
-<li>Parameter Name: consentPeriod</li>
+<li>Parameter Name: <code>consentPeriod</code></li>
 <li>Default Value: (not set, but equivalent to 90)</li>
 </ul>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#999">window</span>.utag_cfg_ovrd.consentPeriod <span style="font-weight:bold">=</span> <span style="color:#099">60</span>;
@@ -307,10 +307,10 @@ var utag_data = {
 
 <p>Delay Tags Until DOM Complete (load) Event</p>
 
-<p>Fires tags at the <a href="https://developer.mozilla.org/en-US/docs/Web/Events/load" target="_blank">document load event</a> rather than at DOM Ready.  This will also hold back any extensions scoped to DOM Ready.  </p>
+<p>Fires tags at the <a href="https://developer.mozilla.org/en-US/docs/Web/Events/load">document load event</a> rather than at DOM Ready.  This will also hold back any extensions scoped to DOM Ready.  </p>
 
 <ul>
-<li>Parameter Name: dom_complete</li>
+<li>Parameter Name: <code>dom_complete</code></li>
 <li>Default Value: false</li>
 </ul>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#999">window</span>.utag_cfg_ovrd.dom_complete <span style="font-weight:bold">=</span> <span style="font-weight:bold">true</span>;
@@ -319,10 +319,10 @@ var utag_data = {
 
 <p>Override Cookie Domain</p>
 
-<p>Sets the domain where &lsquo;utag_main&rsquo; cookie is set. Useful for sites on root domains that won&rsquo;t accept cookies (e.g. amazonaws.com).</p>
+<p>Sets the domain where <code>utag_main</code> cookie is set. Useful for sites on root domains that won&rsquo;t accept cookies (e.g. amazonaws.com).</p>
 
 <ul>
-<li>Parameter Name: domain</li>
+<li>Parameter Name: <code>domain</code></li>
 <li>Default Value: The top-level domain of location.hostname</li>
 </ul>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#999">window</span>.utag_cfg_ovrd.domain <span style="font-weight:bold">=</span> <span style="color:#b84">&#34;mysite.amazonaws.com&#34;</span>;
@@ -334,7 +334,7 @@ var utag_data = {
 <p>Controls if Load Rules will be reprocessed on each call to utag.view and utag.link within the same page load. A newly triggered Load Rule could load a new tag into the page. Use this setting to replicate behavior from versions of utag.js older than 4.2x.</p>
 
 <ul>
-<li>Parameter Name: load_rules_ajax</li>
+<li>Parameter Name: <code>load_rules_ajax</code></li>
 <li>Default Value: true</li>
 </ul>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#999">window</span>.utag_cfg_ovrd.load_rules_ajax <span style="font-weight:bold">=</span> <span style="font-weight:bold">false</span>;
@@ -346,7 +346,7 @@ var utag_data = {
 <p>Evaluates Load Rules after extensions. Used for older versions of utag.js and for installations where the data layer object is populated after loading utag.js. Newer versions of utag.js can make use of extension execution order instead of this setting.</p>
 
 <ul>
-<li>Parameter Name: load_rules_at_wait</li>
+<li>Parameter Name: <code>load_rules_at_wait</code></li>
 <li>Default Value: false</li>
 </ul>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#999">window</span>.utag_cfg_ovrd.load_rules_at_wait <span style="font-weight:bold">=</span> <span style="font-weight:bold">true</span>;
@@ -358,7 +358,7 @@ var utag_data = {
 <p>Lower-case all meta data variables and values (eg. <code>utag.data['meta.author']</code>). Replicates behavior in utag.js versions prior to 4.2x.</p>
 
 <ul>
-<li>Parameter Name: lowermeta</li>
+<li>Parameter Name: <code>lowermeta</code></li>
 <li>Default Value: false</li>
 </ul>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#999">window</span>.utag_cfg_ovrd.lowermeta <span style="font-weight:bold">=</span> <span style="font-weight:bold">true</span>;
@@ -394,7 +394,7 @@ var utag_data = {
 <p>Suppresses the automatic page tracking event called by utag.js. Commonly used on single page application sites.</p>
 
 <ul>
-<li>Parameter Name: noview</li>
+<li>Parameter Name: <code>noview</code></li>
 <li>Default Value: false</li>
 </ul>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#999">window</span>.utag_cfg_ovrd.noview <span style="font-weight:bold">=</span> <span style="font-weight:bold">true</span>;
@@ -404,12 +404,13 @@ var utag_data = {
 <p>Cookie Opt-Out</p>
 
 <p>Only set this option if/when a user visiting your site has explicitly opted out of all cookies.
-<p class="note">Using this option inflates visitor and session counts, making all visits look like &ldquo;single page sessions&rdquo;.</p></p>
+<p class="note">Using this option inflates visitor and session counts, making all visits look like &ldquo;single page sessions&rdquo;.</p>
+</p>
 
-<p>This option will disable <em>all</em> cookies from being stored by utag.js, including cookies set with the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Persist-Data-Value-Extension/ta-p/13623" target="_blank">Persist Data Value Extension</a>, and visitor/session cookies. It also sets a new timestamp for the variables <code>ut.visitor_id</code>, <code>tealium_visitor_id</code>, and <code>cp.utag_main_v_id</code> when the cookie is not available.</p>
+<p>This option will disable <em>all</em> cookies from being stored by utag.js, including cookies set with the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Persist-Data-Value-Extension/ta-p/13623">Persist Data Value Extension</a>, and visitor/session cookies. It also sets a new timestamp for the variables <code>ut.visitor_id</code>, <code>tealium_visitor_id</code>, and <code>cp.utag_main_v_id</code> when the cookie is not available.</p>
 
 <ul>
-<li>Parameter Name: nocookie</li>
+<li>Parameter Name: <code>nocookie</code></li>
 <li>Default Value: false</li>
 </ul>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#999">window</span>.utag_cfg_ovrd.nocookie<span style="font-weight:bold">=</span><span style="font-weight:bold">true</span>
@@ -421,7 +422,7 @@ var utag_data = {
 <p>Halt all utag.js operations until the DOM-Ready signal is received from the browser. Extensions scoped to <strong>Pre Loader</strong> still run when utag.js loads.</p>
 
 <ul>
-<li>Parameter Name: readywait</li>
+<li>Parameter Name: <code>readywait</code></li>
 <li>Default Value: 0</li>
 </ul>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#999">window</span>.utag_cfg_ovrd.readywait <span style="font-weight:bold">=</span> <span style="font-weight:bold">true</span>;
@@ -433,7 +434,7 @@ var utag_data = {
 <p>Sets how long to wait, in milliseconds, before expiring the current session. This is normally adjusted using the Publish Configuration setting for Session Timeout.</p>
 
 <ul>
-<li>Parameter Name: session_timeout</li>
+<li>Parameter Name: <code>session_timeout</code></li>
 <li>Default Value: 1800000 (30 minutes)</li>
 </ul>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#998;font-style:italic">// set timeout to 900000 milliseconds (15 minutes)
@@ -446,7 +447,7 @@ var utag_data = {
 <p>Sets how long to wait (in milliseconds) after the DOM Ready event before loading tags.</p>
 
 <ul>
-<li>Parameter Name: waittimer</li>
+<li>Parameter Name: <code>waittimer</code></li>
 <li>Default Value: (not set)</li>
 </ul>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#999">window</span>.utag_cfg_ovrd.waittimer <span style="font-weight:bold">=</span> <span style="color:#099">1000</span>;
@@ -462,6 +463,69 @@ var utag_data = {
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 nl2">
     
+      
+      
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/mobile-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Mobile Concepts
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/client-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Client-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Server-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Feature Comparison
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/troubleshooting/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Troubleshooting
+            </a>
+          </li>
+        </ul>
+      </li>
       
       
       <li class="w-100 hover-accent-color-light fw8 mb1 bb b--moon-gray">
@@ -1055,6 +1119,13 @@ var utag_data = {
               Function Definitions
             </a>
           </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
         </ul>
       </li>
       
@@ -1277,7 +1348,7 @@ var utag_data = {
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p> This page was last updated: September 5, 2019</p>
+<p> This page was last updated: September 10, 2019</p>
 
       
 
@@ -1315,6 +1386,12 @@ var utag_data = {
     
 
 <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="/platforms/getting-started/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
+        </a>
+    </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="/platforms/remote-commands/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">

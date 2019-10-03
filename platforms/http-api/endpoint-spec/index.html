@@ -286,53 +286,70 @@ var utag_data = {
 
 <p>Tealium Collect supports the following standard parameters in each request:</p>
 
-<ul>
-<li><strong>tealium_account</strong> - the name of your Tealium account</li>
-<li><strong>tealium_profile</strong> - the name of your Tealium profile (default &ldquo;main&rdquo;)</li>
-<li><strong>tealium_datasource</strong> - (optional) the data source key from UDH (<a target="_blank" href="https://community.tealiumiq.com/t5/Universal-Data-Hub/Data-Sources/ta-p/17933">learn more about Data Sources</a>)</li>
-<li><strong>tealium_event</strong> - (recommended) the name of the event for tracking purposes</li>
-<li><strong>tealium_visitor_id</strong> - (required for AudienceStream) an anonymized and unique identifier for the visitor associated with the event (see <a href="#visitor-identifiers">Visitor Identifiers</a> below)</li>
-<li><strong>tealium_trace_id</strong> - (optional) for use with <a target="_blank" href="https://community.tealiumiq.com/t5/Universal-Data-Hub/Trace/ta-p/12058">Trace</a></li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>tealium_account</td>
+<td>the name of your Tealium account</td>
+</tr>
+
+<tr>
+<td>tealium_profile</td>
+<td>the name of your Tealium profile (default &ldquo;main&rdquo;)</td>
+</tr>
+
+<tr>
+<td>tealium_datasource</td>
+<td>(optional) the data source key from UDH (<a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/Data-Sources/ta-p/17933">learn more about Data Sources</a>)</td>
+</tr>
+
+<tr>
+<td>tealium_event</td>
+<td>(recommended) the name of the event for tracking purposes</td>
+</tr>
+
+<tr>
+<td>tealium_visitor_id</td>
+<td>(required for AudienceStream) an anonymized and unique identifier for the visitor associated with the event (see <a href="#visitor-identifiers">Visitor Identifiers</a> below)</td>
+</tr>
+
+<tr>
+<td>tealium_trace_id</td>
+<td>(optional) for use with <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/Trace/ta-p/12058">Trace</a></td>
+</tr>
+</tbody>
+</table>
 
 <p>The format of the request will vary depending on the HTTP method used. In the examples below placeholder values are represented with curly braces in the following format: <code>{VALUE}</code>.</p>
 
 <h2 id="custom-event-parameters">Custom Event Parameters</h2>
 
-<p>Additional event attributes are sent as custom parameters according to your tracking needs. These parameters should also be <a target="_blank" href="https://community.tealiumiq.com/t5/Universal-Data-Hub/Using-Attributes/ta-p/11926">defined as event attributes in the UDH</a>.</p>
+<p>Additional event attributes are sent as custom parameters according to your tracking needs. Define these parameters as <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/Using-Attributes/ta-p/11926">event attributes in the UDH</a>.</p>
 
 <h2 id="visitor-identifiers">Visitor Identifiers</h2>
 
-<p>If you are using AudienceStream you must pass a known <a target="_blank" href="https://community.tealiumiq.com/t5/Universal-Data-Hub/Visitor-ID-Attribute/ta-p/12060">visitor identifier</a> attribute (secondary ID) with each tracking call (e.g. <code>email_address</code> or <code>login_id</code>). If the events do not contain a visitor identifier each event will generate a new visit and visitor and stitching will not be possible. This is especially important if using the Collect API on a web platform where you might be tracking anonymous users.</p>
+<p>If you are using AudienceStream you must pass a known <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/Visitor-ID-Attribute/ta-p/12060">visitor identifier</a> attribute (secondary ID) with each tracking call (e.g. <code>email_address</code> or <code>login_id</code>). If the events do not contain a visitor identifier each event will generate a new visit and visitor and stitching will not be possible. This is especially important if using the Collect API on a web platform where you might be tracking anonymous users.</p>
 
 <p>A visitor identifier is also needed if you are using EventStream and need to provide an ID to a vendor connector.</p>
 
-<p>Learn more about what makes a good visitor identifier in the <a target="_blank" href="https://community.tealiumiq.com/t5/Universal-Data-Hub/Visitor-ID-Attribute/ta-p/12060">Visitor ID Attribute</a> article.</p>
+<p>Learn more about what makes a good visitor identifier in the <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/Visitor-ID-Attribute/ta-p/12060">Visitor ID Attribute</a> article.</p>
 
 <h3 id="primary-visitor-id">Primary Visitor ID</h3>
 
 <p>The <strong>tealium_visitor_id</strong> attribute is an anonymous identifier used by AudienceStream to associate a visitor between events and visits.  Depending on your usage of the Collect API, you can use one of the following approaches:</p>
 
 <ul>
-<li><p><strong>Known Visitors</strong> (Recommended)<br>When tracking events for a known visitor (when a value exists for a Visitor ID attribute such as <code>email_address</code>), include the known visitor ID attribute and a hash of that value in the <code>tealium_visitor_id</code> parameter.<br></p>
+<li><p><strong>Known Visitors</strong> (Required for AudienceStream, recommended for EventStream)<br />
+When tracking events for a known visitor (when a value exists for a Visitor ID attribute such as <code>email_address</code>), include the known visitor ID attribute and a hash of that value in the <code>tealium_visitor_id</code> parameter.</p>
 
-<table>
-<thead>
-<tr>
-<th>AudienceStream</th>
-<th>EventStream</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Required</td>
-<td>Recommended</td>
-</tr>
-</tbody>
-</table>
-
-<p>Example:<br></p>
+<p>Example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
     <span style="color:#b84">&#34;tealium_account&#34;</span>    <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;my_account&#34;</span>,
     <span style="color:#b84">&#34;tealium_profile&#34;</span>    <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;main&#34;</span>,
@@ -343,30 +360,15 @@ var utag_data = {
 }
 </code></pre></div></li>
 
-<li><p><strong>Anonymous Visitors</strong><br>When tracking events for an anonymous visitor from a website (without a known identifier), then the value of the <code>tealium_visitor_id</code> will need to match the value in the <code>utag_main_v_id</code> cookie. (Learn more about the <a href="/platforms/javascript/built-in-variables/">built-in variables from utag.js</a>.)<br></p>
-
-<table>
-<thead>
-<tr>
-<th>AudienceStream</th>
-<th>EventStream</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Required</td>
-<td>N/A</td>
-</tr>
-</tbody>
-</table></li>
+<li><p><strong>Anonymous Visitors</strong> (Required for AudienceStream)<br />
+When tracking events for an anonymous visitor from a website (without a known identifier), then the value of the <code>tealium_visitor_id</code> will need to match the value in the <code>utag_main_v_id</code> cookie. (Learn more about the <a href="/platforms/javascript/built-in-variables/">built-in variables from utag.js</a>.)</p></li>
 </ul>
 
 <h2 id="post-method">POST Method</h2>
 
 <p>The POST method supports JSON payloads where the request header must be set to <code>Content-Type: application/json</code> and the payload must be formatted as a valid JSON string. </p>
 
-<p>Let&rsquo;s use the following &ldquo;user_login&rdquo; event for our examples:</p>
+<p>Example of <code>user_login</code> event:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
     <span style="color:#b84">&#34;tealium_account&#34;</span>   <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;{ACCOUNT}&#34;</span>,
     <span style="color:#b84">&#34;tealium_profile&#34;</span>   <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;{PROFILE}&#34;</span>,
@@ -417,6 +419,69 @@ xhr.send(JSON.stringify(event));
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 nl2">
     
+      
+      
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/mobile-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Mobile Concepts
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/client-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Client-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Server-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Feature Comparison
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/troubleshooting/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Troubleshooting
+            </a>
+          </li>
+        </ul>
+      </li>
       
       
       <li class="w-100 hover-accent-color-light fw8 mb1 bb b--moon-gray">
@@ -1010,6 +1075,13 @@ xhr.send(JSON.stringify(event));
               Function Definitions
             </a>
           </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
         </ul>
       </li>
       
@@ -1232,7 +1304,7 @@ xhr.send(JSON.stringify(event));
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p> This page was last updated: February 12, 2019</p>
+<p> This page was last updated: September 10, 2019</p>
 
       
 
@@ -1270,6 +1342,12 @@ xhr.send(JSON.stringify(event));
     
 
 <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="/platforms/getting-started/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
+        </a>
+    </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="/platforms/remote-commands/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">

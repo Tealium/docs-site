@@ -234,7 +234,7 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">In this article:</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#how-it-works">How it Works</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#how-it-works">How It Works</a></li>
               <li><a href="#prerequisites">Prerequisites</a></li>
               <li><a href="#sample-apps">Sample Apps</a></li>
               <li><a href="#install-via-npm">Install via NPM</a></li>
@@ -245,9 +245,7 @@ var utag_data = {
               <li><a href="#ios">iOS</a></li>
               <li><a href="#cocoapods">CocoaPods</a></li>
               </ul><li><a href="#javascript">JavaScript</a></li>
-              <ul class="toc-h3"><li><a href="#install">Install</a></li>
-              <li><a href="#initialize">Initialize</a></li>
-              </ul><li><a href="#configuration-options">Configuration Options</a></li>
+              <ul class="toc-h3"><li><a href="#initialize">Initialize</a></li>
               <li><a href="#track">Track</a></li>
               </nav>
   </aside></div>
@@ -284,30 +282,39 @@ var utag_data = {
 
 
 
-<h2 id="how-it-works">How it Works</h2>
-
 <p>Tealium for React Native allows you to use the Tealium native mobile libraries (iOS, Android) in your React Native application.</p>
 
-<p>You can integrate Tealium mobile libraries into your React Native application using one of the following two methods:</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/kSwYoVOmOrk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+
+<h2 id="how-it-works">How It Works</h2>
+
+<p>Tealium mobile libraries are integrated into your React Native application using one of the following two methods:</p>
 
 <ul>
-<li>Automatic<br>Use the NPM package (recommended)</li>
-<li>Manual<br>For those with specific requirements. You can find the code on <a href="https://github.com/Tealium/tealium-react-native">GitHub.</a></li>
+<li>NPM package (recommended)</li>
+<li>Manual via <a href="https://github.com/Tealium/tealium-react-native">GitHub</a></li>
 </ul>
 
 <h2 id="prerequisites">Prerequisites</h2>
 
 <ul>
-<li>Including the respective libraries for Android and iOS means working with platform specific (aka native) code, so you will need access to your native build environments.</li>
-<li>You must have <a href="https://github.com/Tealium/tealium-react-native/tree/master/ios" title="React Native and Tools">React Native and tools</a> installed, along with <a href="https://developer.android.com/studio/" title="Android Studio">Android Studio</a> , <a href="https://developer.apple.com/xcode/">Xcode</a>, and any other tools for developing mobile apps using React Native.</li>
-<li>You will be working with the Tealium native mobile libraries, so any existing documentation on those topics is relevant, and at times you may be directed to them from this guide. You can find more information on them in our <a href="/platforms/android/">Tealium for Android</a> and <a href="/platforms/ios/">Tealium for iOS</a> guides.</li>
+<li>Access to your native build environments.</li>
+<li><a href="https://github.com/Tealium/tealium-react-native/tree/master/ios">React Native and Tools</a> installed</li>
+<li><a href="https://developer.android.com/studio/">Android Studio</a></li>
+<li><a href="https://developer.apple.com/xcode/">Xcode</a></li>
+<li><a href="/platforms/android/">Tealium for Android</a> or <a href="/platforms/ios/">Tealium for iOS</a></li>
 </ul>
 
-<p class="note">The Core library is required. If you want to track lifecycle events, then the lifecycle module is also needed. These are available from <a href="https://github.com/Tealium/tealium-ios" target="_self" rel="nofollow noopener noreferrer">our GitHub repository for iOS</a>. There are two versions of each module: one for publishing to the App Store and one that includes the ability to run the app on a simulator (cannot be published to the App Store). When working on your own app with intent to publish to the App Store, make sure to use the frameworks in <a href="https://github.com/Tealium/tealium-ios/tree/master/DevicesOnly" target="_blank" rel="noopener nofollow noopener noreferrer">devices only folder</a>.</p>
+<p class="note">The Core library is required. If you want to track lifecycle events, then the lifecycle module is also needed. These are available from <a href="https://github.com/Tealium/tealium-ios">our GitHub repository for iOS</a>. There are two versions of each module: one for publishing to the App Store and one that includes the ability to run the app on a simulator (cannot be published to the App Store). When working on your own app with intent to publish to the App Store, make sure to use the frameworks in <a href="https://github.com/Tealium/tealium-ios/tree/master/DevicesOnly">devices only folder</a>.</p>
+
 
 <h2 id="sample-apps">Sample Apps</h2>
 
-<p>We recommend downloading the sample app we provide witnin the React Native repository. This will help to familiarize yourself with our library, the tracking methods, and best practice implementation.</p>
+<p>We recommend downloading the sample app we provide within the React Native repository. This helps to familiarize yourself with our library, the tracking methods, and best practice implementation.</p>
 
 <ul>
 <li><a href="https://github.com/Tealium/tealium-react-native/tree/master/TealiumSampleApp">React Native Sample App</a></li>
@@ -318,20 +325,22 @@ var utag_data = {
 <p>In the root of your React Native project, run the following:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm install tealium-react-native
 react-native link</code></pre></div>
-<p>The first command will download the <code>tealium-react-native</code> package and install it to your project.</p>
+<p>The first command downloads the <code>tealium-react-native</code> package and install it to your project.</p>
 
-<p>The second command will link the native dependencies within the module to your main React Native app so that it can build against the module.</p>
+<p>The second command links the native dependencies within the module to your main React Native app so that it builds against the module.</p>
 
 <h3 id="android">Android</h3>
 
-<p>At this point your Android app should build and work without issues. We recommend building using the IDE since we&rsquo;ve found that to be more reliable. However, apps can also be started from the Command Line Interface (CLI).</p>
+<p>We recommend building your app using the IDE, however apps can also be started from the Command Line Interface (CLI).</p>
 
 <h3 id="ios">iOS</h3>
 
-<p>First, obtain a copy of Tealium for iOS. The two libraries you need are <code>TealiumIOS.framework</code> and <code>TealiumIOSLifecycle.framework</code>. Drag the frameworks into the <code>Libraries</code> folder in your Xcode project, and from there drag them into the <code>Embedded Binaries</code> section under the <code>General</code> tab of your target.</p>
+<p>The two libraries you need are <code>TealiumIOS.framework</code> and <code>TealiumIOSLifecycle.framework</code>. Drag the frameworks into the <strong>Libraries</strong> folder in your Xcode project, and from there drag them into the <strong>Embedded Binaries</strong> section under the <strong>General</strong> tab of your app target.</p>
 
-<p>Finally, under <code>Libraries</code> find <code>TealiumModule.xcodeproj</code>. Within, you will find a <code>Products</code> folder containing a <code>libTealiumModule.a</code> file.
-<p class="note">If you&rsquo;re looking for <code>Libraries &gt; TealiumModule.xcodeproj &gt; Products &gt; libTealiumModule.a</code>. Under the <code>Build Phases</code> tab of your target, you will find a <code>Link Binary With Libraries</code> section. Drag the <code>libTealiumModule.a</code> file to the <code>Link Binary With Libraries</code> section. More information on linking libraries can be found in the <a href="https://facebook.github.io/react-native/docs/linking-libraries-ios#step-2-1">React Native documentation</a>.</p></p>
+<p>Finally, under <strong>Libraries</strong> find <code>TealiumModule.xcodeproj</code>. Within, you will find a <strong>Products</strong> folder containing the file <code>libTealiumModule.a</code>.</p>
+
+<p class="note">If you are looking for <code>Libraries &gt; TealiumModule.xcodeproj &gt; Products &gt; libTealiumModule.a</code>. Under the <code>Build Phases</code> tab of your target, find the section <code>Link Binary With Libraries</code> and drag <code>libTealiumModule.a</code> into it. More information on linking libraries can be found in the <a href="https://facebook.github.io/react-native/docs/linking-libraries-ios#step-2-1">React Native documentation</a>.</p>
+
 
 <h2 id="manual-install">Manual Install</h2>
 
@@ -348,7 +357,7 @@ react-native link</code></pre></div>
             <span style="font-weight:bold">}</span>
     <span style="font-weight:bold">}</span>
 <span style="font-weight:bold">}</span></code></pre></div>
-<p>Next, add the Tealium core library dependency to your project module <code>build.gradle</code> file. You will also add the Tealium lifecycle dependency here, if needed.</p>
+<p>Next, add the Tealium core library dependency to your project module <code>build.gradle</code> file. Also, add the Tealium lifecycle dependency here, if needed.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
         compile <span style="color:#b84">&#39;com.tealium:library:5.5.2&#39;</span>
             compile <span style="color:#b84">&#39;com.tealium:lifecycle:1.1&#39;</span>
@@ -367,25 +376,23 @@ react-native link</code></pre></div>
 
 <p>Adding Tealium for iOS to a React Native project requires the same steps for a non-React Native application (with the exception of the bridging files), so reference <a href="/platforms/ios/">Adding Tealium to Your iOS App</a> for complete details.</p>
 
-<p>The Core library is required and optional modules can be added as needed. These are available from <a href="https://github.com/Tealium/tealium-ios">our GitHub repository for iOS</a>.</p>
+<p>The Core library is required and optional modules are added as needed. These are available from <a href="https://github.com/Tealium/tealium-ios">our GitHub repository for iOS</a>.</p>
 
 <p>The sample app is for developer experimentation and not meant for publishing on the App Store, so it uses the modules <code>TealiumIOS.framework</code> and <code>TealiumIOSLifecycle.framework</code> (suitable for a simulator but not for publishing). When working on your own app with intent to publish to the App Store, make sure to use the frameworks in the <a href="https://github.com/Tealium/tealium-ios/tree/master/DevicesOnly">devices only folder</a>.</p>
 
 <h3 id="cocoapods">CocoaPods</h3>
 
-<p>Installation can also be done with CocoaPods. Our pod is named &ldquo;TealiumIOS&rdquo;. See the <a href="/platforms/ios/">Tealium for iOS guide</a> for full details. The command <code>create-react-native-app</code> does not create a Podfile so the sample app was built using manual installation. For complex production apps with many dependencies, CocoaPods is the recommended method.</p>
+<p>CocoaPods is another way to perform the Installation. Our pod is named &ldquo;TealiumIOS&rdquo;. See the <a href="/platforms/ios/">Tealium for iOS guide</a> for full details. The command <code>create-react-native-app</code> does not create a Podfile so the sample app was built using manual installation. For complex production apps with many dependencies, CocoaPods is the recommended method.</p>
 
 <h4 id="copy-bridging-logic-1">Copy Bridging Logic</h4>
 
 <p>In the <a href="https://github.com/Tealium/tealium-react-native/tree/master/ios">GitHub repository</a>, there are two files that provide the bridging between the Tealium native iOS SDK and the Javascript in your React Native app: <code>TealiumModule.m</code> and <code>TealiumModule.h</code>.</p>
 
-<p>Copy these two files into your app&rsquo;s main project. It should &ldquo;just work&rdquo; assuming your project has correctly included any React Native dependencies and the Tealium iOS library.</p>
+<p>Copy these two files into your app&rsquo;s main project.</p>
 
 <h2 id="javascript">JavaScript</h2>
 
-<h3 id="install">Install</h3>
-
-<p>The method for importing the module into your app will depends on how you installed above.</p>
+<p>The method for importing the module into your app depends on how you installed.</p>
 
 <p>If you installed via NPM, add this line to your code:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">import</span> Tealium from <span style="color:#b84">&#39;tealium-react-native&#39;</span>;
@@ -397,15 +404,7 @@ react-native link</code></pre></div>
 </code></pre></div>
 <h3 id="initialize">Initialize</h3>
 
-<p>Once your app has been built you are ready to start coding. The Tealium instance must be invoked with the following parameters before you can begin tracking:</p>
-
-<ul>
-<li><strong>account</strong> – the name of your account</li>
-<li><strong>profile</strong> – the name of your profile</li>
-<li><strong>environment</strong> – (optional) one of &ldquo;dev&rdquo;, &ldquo;qa&rdquo;, or &ldquo;prod&rdquo;</li>
-<li><strong>iOS data source</strong> – (optional) the data source key from UDH</li>
-<li><strong>Android data source</strong> – (optional) the data source key from UDH</li>
-</ul>
+<p>Once your app has been built you are ready to start coding. The Tealium instance must be invoked with the following parameters before you tracking begins:</p>
 
 <p>Example code to initialize Tealium:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.initialize(<span style="color:#b84">&#39;ACCOUNT&#39;</span>,
@@ -414,98 +413,124 @@ react-native link</code></pre></div>
                    <span style="color:#b84">&#39;IOS_DATA_SOURCE_KEY&#39;</span>,
                    <span style="color:#b84">&#39;ANDROID_DATA_SOURCE_KEY&#39;</span>);
 </code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ACCOUNT</td>
+<td>the name of your account</td>
+</tr>
+
+<tr>
+<td>PROFILE</td>
+<td>the name of your profile</td>
+</tr>
+
+<tr>
+<td>ENVIRONMENT</td>
+<td>one of &ldquo;dev&rdquo;, &ldquo;qa&rdquo;, or &ldquo;prod&rdquo;</td>
+</tr>
+
+<tr>
+<td>IOS_DATA_SOURCE_KEY</td>
+<td>(optional) the data source key from UDH (Set to <code>null</code> if none)</td>
+</tr>
+
+<tr>
+<td>ANDROID_DATA_SOURCE_KEY</td>
+<td>(optional) the data source key from UDH (Set to <code>null</code> if none)</td>
+</tr>
+</tbody>
+</table>
+
 <h4 id="with-consent-management">With Consent Management</h4>
 
-<p>To use Consent Management, initialize with the method <code>initializeWithConsentManager()</code>.</p>
+<p>To use Consent Management, initialize with the method <code>initializeWithConsentManager()</code> using the same parameters.</p>
 
-<p>Learn more here:</p>
+<p>Learn more:</p>
 
 <ul>
 <li><a href="/platforms/android/consent-manager/">Consent Manager for Android</a></li>
 <li><a href="/platforms/ios/consent-manager/">Consent Manager for iOS</a></li>
 </ul>
 
-<p>Example code to initialize Tealium:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.initializeWithConsentManager(<span style="color:#b84">&#39;ACCOUNT&#39;</span>,
-                                     <span style="color:#b84">&#39;PROFILE&#39;</span>,
-                                     <span style="color:#b84">&#39;ENVIRONMENT&#39;</span>,
-                                     <span style="color:#b84">&#39;IOS_DATA_SOURCE_KEY&#39;</span>,
-                                     <span style="color:#b84">&#39;ANDROID_DATA_SOURCE_KEY&#39;</span>);
-</code></pre></div>
-<h2 id="configuration-options">Configuration Options</h2>
+<h4 id="custom">Custom</h4>
 
-<p>The following advanced options are available. These options must be passed to the method <code>initializeCustom()</code>.</p>
-
-<ul>
-<li><strong>account</strong> – the name of your account</li>
-<li><strong>profile</strong> – the name of your profile</li>
-<li><strong>environment</strong> – (optional) one of &ldquo;dev&rdquo;, &ldquo;qa&rdquo;, or &ldquo;prod&rdquo;</li>
-<li><strong>iOS data source</strong> – (optional) the data source key from UDH</li>
-<li><strong>Android data source</strong> – (optional) the data source key from UDH</li>
-<li><strong>instance name</strong> – any String to represent your Tealium instance</li>
-<li><strong>enable life cycle</strong> – life cycle tracking is optional. Pass <code>true</code> to enable, otherwise <code>false</code></li>
-<li><strong>publish settings url</strong> – String representing the publish settings URL if overriding, otherwise <code>null</code></li>
-<li><strong>tag management url</strong> – String representing the tag management URL if overriding, otherwise <code>null</code></li>
-<li><strong>enable collect endpoint</strong> – <code>true</code> is the default in native Android and iOS libraries that sends data to the Collect endpoint.<code>false</code> sends the data to the older <code>vdata</code> endpoint.</li>
-<li><strong>enable consent management</strong> – <code>true</code> to enable, otherwise <code>false</code></li>
-</ul>
-
-<p>Example code to initialize Tealium:</p>
+<p>All initialization options are available with the method <code>initializeCustom()</code>.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.initializeCustom(<span style="color:#b84">&#39;ACCOUNT&#39;</span>,
                          <span style="color:#b84">&#39;PROFILE&#39;</span>,
                          <span style="color:#b84">&#39;ENVIRONMENT&#39;</span>,
                          <span style="color:#b84">&#39;IOS_DATA_SOURCE_KEY&#39;</span>,
                          <span style="color:#b84">&#39;ANDROID_DATA_SOURCE_KEY&#39;</span>,
-                         <span style="color:#b84">&#39;instance-1&#39;</span>,
-                         <span style="font-weight:bold">true</span>,  <span style="color:#998;font-style:italic">// enable lifecycle tracking
-</span><span style="color:#998;font-style:italic"></span>                         <span style="font-weight:bold">null</span>,  <span style="color:#998;font-style:italic">// custom publish settings URL
-</span><span style="color:#998;font-style:italic"></span>                         <span style="font-weight:bold">null</span>,  <span style="color:#998;font-style:italic">// custom tag management URL
-</span><span style="color:#998;font-style:italic"></span>                         <span style="font-weight:bold">true</span>,  <span style="color:#998;font-style:italic">// toggle between data endpoints, true: Tealium Collect, false: Visitor Data
-</span><span style="color:#998;font-style:italic"></span>                         <span style="font-weight:bold">true</span>); <span style="color:#998;font-style:italic">// enable Consent Management
+                         <span style="color:#b84">&#39;INSTANCE&#39;</span>,
+                         ENABLE_LIFECYCLE,        <span style="color:#998;font-style:italic">// enable lifecycle tracking
+</span><span style="color:#998;font-style:italic"></span>                         <span style="color:#b84">&#39;PUBLISH_SETTINGS_URL&#39;</span>,  <span style="color:#998;font-style:italic">// custom publish settings URL
+</span><span style="color:#998;font-style:italic"></span>                         <span style="color:#b84">&#39;TAG_MANAGEMENT_URL&#39;</span>,    <span style="color:#998;font-style:italic">// custom tag management URL
+</span><span style="color:#998;font-style:italic"></span>                         USE_COLLECT_ENDPOINT,    <span style="color:#998;font-style:italic">// toggle between data endpoints, true: Tealium Collect, false: Visitor Data
+</span><span style="color:#998;font-style:italic"></span>                         ENABLE_CONSENT_MANAGER); <span style="color:#998;font-style:italic">// enable Consent Management
 </span></code></pre></div>
-<h2 id="track">Track</h2>
+<h4 id="additional-parameters">Additional Parameters</h4>
 
-<p>Once the Tealium instance has been defined you can begin tracking with the method <code>Tealium.trackView()</code>, which takes the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
 
-<ul>
-<li><strong>Screen Name</strong> – a name to identify the screen</li>
-<li><strong>Data</strong> – Object with event data as key/value pairs</li>
-</ul>
+<tbody>
+<tr>
+<td>INSTANCE</td>
+<td>(optional) Tealium instance name (default: &ldquo;main&rdquo;)</td>
+</tr>
 
-<p>Example code to track a view:</p>
+<tr>
+<td>ENABLE_LIFECYCLE</td>
+<td>(optional) enable lifecycle tracking events (default: <code>true</code>)</td>
+</tr>
+
+<tr>
+<td>PUBLISH_SETTINGS_URL</td>
+<td>(optional) String representing the publish settings URL if overriding (Set to <code>null</code> if none)</td>
+</tr>
+
+<tr>
+<td>TAG_MANAGEMENT_URL</td>
+<td>(optional) String representing the tag management URL if overriding (Set to <code>null</code> if none)</td>
+</tr>
+
+<tr>
+<td>USE_COLLECT_ENDPOINT</td>
+<td><code>true</code> is the default in native Android and iOS libraries that send data to the Collect endpoint URL. <code>false</code> sends data to the older <code>vdata</code> endpoint</td>
+</tr>
+
+<tr>
+<td>ENABLE_CONSENT_MANAGER</td>
+<td><code>true</code> to enable, or <code>false</code> to disable</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="track">Track</h3>
+
+<p>Track screen views with the method <code>Tealium.trackView()</code>:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.trackView(<span style="color:#b84">&#34;screenName&#34;</span>, {<span style="color:#b84">&#34;someKey&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;someValue&#34;</span>});
 </code></pre></div>
 <p>If multiple instances of Tealium are running, use <code>Tealium.trackViewForInstanceName()</code> which takes the following parameters:</p>
-
-<ul>
-<li><strong>Instance Name</strong> – ( name of the Tealium instance to track from</li>
-<li><strong>Screen Name</strong> – (a name to identify the screen</li>
-<li><strong>Data</strong> (optional) – Object with event data as key/value pairs</li>
-</ul>
-
-<p>Example code to track a view:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.trackViewForInstanceName(<span style="color:#b84">&#34;instance-1&#34;</span>, <span style="color:#b84">&#34;screenName&#34;</span>, {<span style="color:#b84">&#34;someKey&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;someValue&#34;</span>});
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.trackViewForInstanceName(<span style="color:#b84">&#34;INSTANCE&#34;</span>, <span style="color:#b84">&#34;screenName&#34;</span>, {<span style="color:#b84">&#34;someKey&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;someValue&#34;</span>});
 </code></pre></div>
-<p>Track non-view events with the method <code>Tealium.trackEvent()</code> using the following parameters:</p>
-
-<ul>
-<li><strong>Event Name</strong> (required) – (a name to identify the event</li>
-<li><strong>Data</strong> ;(optional) – (Object with event data as key/value pairs</li>
-</ul>
-
-<p>Example code to track an event:</p>
+<p>Track non-view events with the method <code>Tealium.trackEvent()</code>:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.trackEvent(<span style="color:#b84">&#34;eventName&#34;</span>, {<span style="color:#b84">&#34;someKey&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;someValue&#34;</span>}); 
 </code></pre></div>
-<p>If multiple instances of Tealium are running, Track non-view events with the method <code>Tealium.trackEventForInstanceName()</code> using the following parameters:</p>
-
-<ul>
-<li><strong>Instance Name</strong> (required) – (;name of the Tealium instance to track from</li>
-<li><strong>Event Name</strong> (required) – ( a name to identify the event</li>
-<li><strong>Data</strong> (optional) – Object with event data as key/value pairs</li>
-</ul>
-
-<p>Example code to track an event:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.trackEventForInstanceName(<span style="color:#b84">&#34;instance-1&#34;</span>, <span style="color:#b84">&#34;eventName&#34;</span>, {<span style="color:#b84">&#34;someKey&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;someValue&#34;</span>}); 
+<p>If multiple instances of Tealium are running, track non-view events with the method <code>Tealium.trackEventForInstanceName()</code>:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.trackEventForInstanceName(<span style="color:#b84">&#34;INSTANCE&#34;</span>, <span style="color:#b84">&#34;eventName&#34;</span>, {<span style="color:#b84">&#34;someKey&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;someValue&#34;</span>}); 
 </code></pre></div>
 </div>
 
@@ -518,6 +543,69 @@ react-native link</code></pre></div>
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 nl2">
     
+      
+      
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/mobile-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Mobile Concepts
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/client-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Client-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Server-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Feature Comparison
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/troubleshooting/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Troubleshooting
+            </a>
+          </li>
+        </ul>
+      </li>
       
       
       <li class="w-100 hover-accent-color-light fw8 mb1 bb b--moon-gray">
@@ -1111,6 +1199,13 @@ react-native link</code></pre></div>
               Function Definitions
             </a>
           </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
         </ul>
       </li>
       
@@ -1333,7 +1428,7 @@ react-native link</code></pre></div>
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p> This page was last updated: April 3, 2019</p>
+<p> This page was last updated: October 1, 2019</p>
 
       
 
@@ -1371,6 +1466,12 @@ react-native link</code></pre></div>
     
 
 <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="/platforms/getting-started/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
+        </a>
+    </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="/platforms/remote-commands/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">

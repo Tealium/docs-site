@@ -285,16 +285,10 @@ var utag_data = {
 
 <h2 id="how-it-works">How It Works</h2>
 
-<p>The <code>&lt;amp-analytics&gt;</code> element is an extended AMP component that captures analytic data from an AMP document. Add it to your page as a script in the <code>&lt;head&gt;</code> tag with the <code>custom-element</code> set to &ldquo;amp-analytics&rdquo;:</p>
+<p>The <code>&lt;amp-analytics&gt;</code> element is an extended AMP component that captures analytic data from an AMP document. Add the script to your page within the <code>&lt;head&gt;</code> section:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">script</span> <span style="color:#008080">async</span> <span style="color:#008080">custom-element</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;amp-analytics&#34;</span> <span style="color:#008080">src</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;https://cdn.ampproject.org/v0/amp-analytics-0.1.js&#34;</span>&gt;&lt;/<span style="color:#000080">script</span>&gt;</code></pre></div>
-<p><a href="https://amp.dev/documentation/guides-and-tutorials/optimize-and-measure/configure-analytics/analytics-vendors/">Tealium Collect</a> is an integrated AMP analytics vendor.
-To add a base installation of Tealium Collect to an AMP page, add the <code>&lt;amp-analytics&gt;</code> element to the <code>&lt;body&gt;</code> of your page with the &ldquo;type&rdquo; property set to &ldquo;tealiumcollect&rdquo;, then add a &ldquo;vars&rdquo; block with the following initialization parameters:</p>
-
-<ul>
-<li><strong>account</strong> - the name of your Tealium account</li>
-<li><strong>profile</strong> - the name of your Tealium profile</li>
-<li><strong>datasource</strong> - (optional) the data source key from UDH</li>
-</ul>
+<p>Tealium Collect is available as a <a href="https://amp.dev/documentation/guides-and-tutorials/optimize-and-measure/configure-analytics/analytics-vendors/#tealium-collect">built-in configuration for use with AMP analytics</a>.
+To add a base installation of Tealium Collect to an AMP page, add the <code>&lt;amp-analytics&gt;</code> element to the <code>&lt;body&gt;</code> of your page with the <code>type</code> property set to <code>tealiumcollect</code>, then add a <code>vars</code> block with the initialization parameters:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">amp-analytics</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;tealiumcollect&#34;</span>&gt;
 &lt;<span style="color:#000080">script</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;application/json&#34;</span>&gt;
 {
@@ -306,9 +300,35 @@ To add a base installation of Tealium Collect to an AMP page, add the <code>&lt;
 }     
 &lt;/<span style="color:#000080">script</span>&gt;
 &lt;/<span style="color:#000080">amp-analytics</span>&gt;</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>account</td>
+<td>Name of your Tealium account.</td>
+</tr>
+
+<tr>
+<td>profile</td>
+<td>Name of your Tealium profile.</td>
+</tr>
+
+<tr>
+<td>datasource</td>
+<td>(optional) The data source key from UDH.</td>
+</tr>
+</tbody>
+</table>
+
 <h2 id="page-tracking">Page Tracking</h2>
 
-<p>The base installation will make a tracking call every time a user opens or changes a screen in your AMP site. To add a custom data layer to the tracking, add the <code>extraUrlParams</code> block with key/value pairs for your variables:</p>
+<p>The base installation makes a tracking call every time a user opens or changes a screen in your AMP site. To customize the data layer used for this tracking, add the <code>extraUrlParams</code> block with key/value pairs for your variables:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">amp-analytics</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;tealiumcollect&#34;</span>&gt;
 &lt;<span style="color:#000080">script</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;application/json&#34;</span>&gt;
 {
@@ -328,21 +348,7 @@ To add a base installation of Tealium Collect to an AMP page, add the <code>&lt;
 
 <h2 id="event-tracking">Event Tracking</h2>
 
-<p>The <code>triggers</code> configuration object defines when events should be tracked. A trigger is define as a key-value pair of trigger name and configuration. Trigger names can be any alphanumeric string and the configuration determines the targets of the events.</p>
-
-<p>AMP supports the following trigger parameters:</p>
-
-<ul>
-<li><strong>on</strong> - (required) The event to listen for. Valid values are <code>click</code>, <code>scroll</code>, <code>timer</code>, and <code>visible</code>.</li>
-<li><strong>request</strong> - (required) Specifies the type of request to send.</li>
-<li><strong>vars</strong> - An object containing key-value pairs used to override <code>vars</code> defined in the top-level config, or to specify vars unique to this trigger.</li>
-<li><strong>extraUrlParams</strong> - An object containing key-value pairs of dynamic event variables.</li>
-<li><strong>selector</strong> - (required when <code>on</code> is set to <code>click</code>) A CSS selector used to refine which elements should be tracked.</li>
-<li><strong>scrollSpec</strong> - (required when <code>on</code> is set to <code>scroll</code>) Controls under which conditions when the page is scrolled the <code>scroll</code> event is fired.</li>
-<li><strong>timerSpec</strong> - (required when on is set to timer) Controls when the <code>timer</code> event is fired.</li>
-</ul>
-
-<p>The following is a basic example of a trigger configuration. To see how a trigger can be configured for a button click, see the example at the end of this document.</p>
+<p>The <code>triggers</code> configuration object defines which events to track. A trigger is define as a key/value pair of trigger name and configuration. Trigger names can be any alphanumeric string and the configuration determines the targets of the events.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#b84">&#34;triggers&#34;</span><span style="color:#a61717;background-color:#e3d2d2">:</span> {
   <span style="color:#000080">&#34;trigger_name&#34;</span>: {
     <span style="color:#000080">&#34;on&#34;</span>: <span style="color:#b84">&#34;VALUE&#34;</span>,
@@ -356,11 +362,59 @@ To add a base installation of Tealium Collect to an AMP page, add the <code>&lt;
     }
   }
 }</code></pre></div>
+<p>AMP supports the following trigger parameters:</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>on</td>
+<td>(required) The event to listen for. Valid values are <code>click</code>, <code>scroll</code>, <code>timer</code>, and <code>visible</code>.</td>
+</tr>
+
+<tr>
+<td>request</td>
+<td>(required) Specifies the type of request to send.</td>
+</tr>
+
+<tr>
+<td>vars</td>
+<td>An object containing key-value pairs used to override <code>vars</code> defined in the top-level config, or to specify vars unique to this trigger.</td>
+</tr>
+
+<tr>
+<td>extraUrlParams</td>
+<td>An object containing key-value pairs of dynamic event variables.</td>
+</tr>
+
+<tr>
+<td>selector</td>
+<td>(required when <code>on</code> is set to <code>click</code>) A CSS selector used to refine which elements to track.</td>
+</tr>
+
+<tr>
+<td>scrollSpec</td>
+<td>(required when <code>on</code> is set to <code>scroll</code>) Controls under which conditions when the page is scrolled the <code>scroll</code> event is fired.</td>
+</tr>
+
+<tr>
+<td>timerSpec</td>
+<td>(required when on is set to timer) Controls when the <code>timer</code> event is fired.</td>
+</tr>
+</tbody>
+</table>
+
 <p>Learn more about <a href="https://www.ampproject.org/docs/reference/components/amp-analytics#triggers">amp-analytics triggers</a>.</p>
 
 <h3 id="dynamic-event-variables">Dynamic Event Variables</h3>
 
-<p>For the event types <code>visible</code> and <code>click</code> (&ldquo;on&rdquo; property), dynamic tracking variables can be passed using HTML5 <code>data-vars-*</code> elemental attributes. Variables passed this way are converted to camel case naming. For example, the element property <code>data-vars-link-name=&quot;register&quot;</code> becomes the variable <code>${linkName}</code> that can be referenced in the <code>extraUrlParams</code> block of your trigger.</p>
+<p>For the event types <code>visible</code> and <code>click</code> (used in the <code>on</code> property), dynamic tracking variables can be passed using HTML5 elemental attributes in the format <code>data-vars-*</code>. Variables passed this way are converted to camel-case naming. For example, the property <code>data-vars-link-name=&quot;register&quot;</code> becomes the variable <code>${linkName}</code> that can be referenced in the <code>extraUrlParams</code> block of your trigger.</p>
 
 <p>Example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#b84">&#34;triggers&#34;</span><span style="color:#a61717;background-color:#e3d2d2">:</span> {
@@ -380,12 +434,14 @@ Click here to register
 &lt;/<span style="color:#000080">span</span>&gt;</code></pre></div>
 <h2 id="validation">Validation</h2>
 
-<p>Use the <a href="https://github.com/ampproject/amphtml#the-amp-validator">AMP Validator</a> to verify that a web page satisfies the AMP HTML specifications. To turn on the validator, add <code>#development=1</code> to the end of the URL of a page.  You can see any AMP validation errors in the web browser&rsquo;s console.</p>
+<p>Use the <a href="https://github.com/ampproject/amphtml#the-amp-validator">AMP Validator</a> to verify that a web page satisfies the AMP HTML specifications. To turn on the validator, add <code>#development=1</code> to the end of an AMP page URL.  AMP validation errors are displated in the browser console.</p>
 
 <h2 id="hosted-json">Hosted JSON</h2>
 
-<p>If you prefer to install Tealium Collect for AMP with hosted JSON, rather than embedded directly in the page, use the <code>config</code> attribute to load your AMP configuration from a hosted location:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">amp-analytics</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;tealiumcollect&#34;</span> <span style="color:#008080">config</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;https://tags.tiqcdn.com/dle/{ACCOUNT}/{PROFILE}/{FILE}.json&#34;</span> /&gt;</code></pre></div>
+<p>If you prefer to install Tealium Collect for AMP with hosted JSON (rather than embedded directly in the page) use the <code>config</code> attribute to load your AMP configuration from a hosted location:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">amp-analytics</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;tealiumcollect&#34;</span> <span style="color:#008080">config</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/FILE.json&#34;</span> /&gt;</code></pre></div>
+<p>Learn more about <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/About-Hosted-Data-Layer/ta-p/17572#toc-hId--1015582959">serving remote JSON configuration files for use on an AMP site</a>.</p>
+
 <h2 id="full-page-example">Full Page Example</h2>
 
 <p>This example demonstrates a complete AMP page. This configuration will send standard page view data to Tealium and track button clicks.</p>
@@ -405,9 +461,9 @@ Click here to register
     &lt;<span style="color:#000080">script</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;application/json&#34;</span>&gt;
     {
       <span style="color:#b84">&#34;vars&#34;</span><span style="font-weight:bold">:</span> {
-        <span style="color:#b84">&#34;account&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;&lt;ACCOUNT&gt;&#34;</span>,
-        <span style="color:#b84">&#34;profile&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;&lt;PROFILE&gt;&#34;</span>,
-        <span style="color:#b84">&#34;datasource&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;&lt;DATASOURCE&gt;&#34;</span>
+        <span style="color:#b84">&#34;account&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+        <span style="color:#b84">&#34;profile&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;PROFILE&#34;</span>,
+        <span style="color:#b84">&#34;datasource&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;DATASOURCE&#34;</span>
       },
       <span style="color:#b84">&#34;triggers&#34;</span><span style="font-weight:bold">:</span> {
         <span style="color:#b84">&#34;custom_click&#34;</span><span style="font-weight:bold">:</span> {
@@ -447,6 +503,69 @@ Click here to register
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 nl2">
     
+      
+      
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/mobile-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Mobile Concepts
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/client-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Client-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Server-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Feature Comparison
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/troubleshooting/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Troubleshooting
+            </a>
+          </li>
+        </ul>
+      </li>
       
       
       <li class="w-100 hover-accent-color-light fw8 mb1 bb b--moon-gray">
@@ -1040,6 +1159,13 @@ Click here to register
               Function Definitions
             </a>
           </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
         </ul>
       </li>
       
@@ -1262,7 +1388,7 @@ Click here to register
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p> This page was last updated: July 19, 2019</p>
+<p> This page was last updated: September 10, 2019</p>
 
       
 
@@ -1300,6 +1426,12 @@ Click here to register
     
 
 <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="/platforms/getting-started/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
+        </a>
+    </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="/platforms/remote-commands/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">

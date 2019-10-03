@@ -274,12 +274,12 @@ var utag_data = {
 
 <h2 id="track-views">Track Views</h2>
 
-<p>Every time a user opens or changes a screen in the app a tracking call should be made.  A view is tracked by calling trackView() with two parameters: a data object and the instance name.</p>
+<p>Use <code>trackView()</code> to track every time a user opens or changes a screen in the app. This method takes two parameters: a data object and the instance name.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">tealium.trackView({tealium_event <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;screen_view&#34;</span>, <span style="color:#b84">&#34;screen_name&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;Homescreen&#34;</span>}, <span style="color:#b84">&#34;main&#34;</span>);
 </code></pre></div>
 <h2 id="track-events">Track Events</h2>
 
-<p>All non-view activity should be tracked as an event. This is easily done by calling trackEvent() with two parameters: a data object and the instance name.</p>
+<p>Use <code>trackEvent()</code> to track all non-view activity. This method takes two parameters: a data object and the instance name.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">tealium.trackEvent({<span style="color:#b84">&#34;tealium_event&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;cart_add&#34;</span>}, <span style="color:#b84">&#34;main&#34;</span>);
 </code></pre></div>
 <h2 id="persist-data">Persist Data</h2>
@@ -301,8 +301,8 @@ tealium.getVolatile(<span style="color:#b84">&#34;&lt;keyname&gt;&#34;</span>, <
 <p>Notes:</p>
 
 <ul>
-<li>These methods will return <code>null</code> on the JavaScript side if the requested data could not be found</li>
-<li>The returned value could be any of the supported data types listed above. You should therefore add a safety check to ensure that the returned data is of the expected data type before performing any operations on it (e.g. check that a value expected as an array is really an array before trying to use the Array.push prototype method).</li>
+<li>These methods return <code>null</code> on the JavaScript side if the requested data could not be found.</li>
+<li>To avoid unexpected errors, add safety checks for the supported data types before performing any operation on a return value. For example, check that a return value is an array before attempting to use <code>Array.push</code>.</li>
 </ul>
 
 <p>Example:</p>
@@ -327,6 +327,69 @@ tealium.getVolatile(<span style="color:#b84">&#34;&lt;keyname&gt;&#34;</span>, <
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 nl2">
     
+      
+      
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/mobile-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Mobile Concepts
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/client-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Client-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Server-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Feature Comparison
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/troubleshooting/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Troubleshooting
+            </a>
+          </li>
+        </ul>
+      </li>
       
       
       <li class="w-100 hover-accent-color-light fw8 mb1 bb b--moon-gray">
@@ -920,6 +983,13 @@ tealium.getVolatile(<span style="color:#b84">&#34;&lt;keyname&gt;&#34;</span>, <
               Function Definitions
             </a>
           </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
         </ul>
       </li>
       
@@ -1142,7 +1212,7 @@ tealium.getVolatile(<span style="color:#b84">&#34;&lt;keyname&gt;&#34;</span>, <
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p> This page was last updated: February 1, 2019</p>
+<p> This page was last updated: September 10, 2019</p>
 
       
 
@@ -1180,6 +1250,12 @@ tealium.getVolatile(<span style="color:#b84">&#34;&lt;keyname&gt;&#34;</span>, <
     
 
 <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="/platforms/getting-started/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
+        </a>
+    </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="/platforms/remote-commands/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">

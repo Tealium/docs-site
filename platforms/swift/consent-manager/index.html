@@ -280,7 +280,6 @@ var utag_data = {
               <li><a href="#use-case-1-simple-opt-in">Use Case 1: Simple Opt-in</a></li>
               <li><a href="#use-case-2-grouped-opt-in">Use Case 2: Grouped Opt-in</a></li>
               <li><a href="#use-case-3-category-based-opt-in">Use Case 3: Category-based Opt-in</a></li>
-              <li><a href="#video">Video</a></li>
               <li><a href="#future-improvements">Future Improvements</a></li>
               <li><a href="#change-log">Change Log</a></li>
               </nav>
@@ -318,36 +317,43 @@ var utag_data = {
 
 
 
-<p>This module provides a convenient implementation of the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Explicit-Consent-Prompt-Manager/ta-p/22714">Tealium Consent Manager</a>, which can help your app to comply with legal obligations, such as GDPR. Once implemented, your user will be able to easily consent to or decline tracking, and the Tealium SDK will store and respect their choice from that point on.</p>
+<p>This module provides a convenient implementation of the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Explicit-Consent-Prompt-Manager/ta-p/22714">Tealium Consent Manager</a>, which helps your app to comply with legal obligations, such as GDPR. Once implemented, your user is able to easily consent to or decline tracking, and the Tealium SDK stores and respects their choice from that point on.</p>
+
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/68rF6Qo5DOw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
 
 <h2 id="how-it-works">How It Works</h2>
 
-<p>When the Consent Manager is enabled, all events will be queued until consent has been granted by the user. A user can grant full consent, grant partial consent (by category), or decline consent. The result of these options is defined as follows:</p>
+<p>When the Consent Manager is enabled, all events are queued until consent has been granted by the user. A user has the ability to grant full consent, grant partial consent (by category), or decline consent. The result of these options is defined as follows:</p>
 
 <h4 id="grant-full-consent">Grant Full Consent</h4>
 
 <ul>
 <li>Queued events are sent</li>
-<li>Consent state is stored permanently, and will be checked each time a new tracking call is made</li>
+<li>Consent state is stored permanently, and is checked each time a new tracking call is made</li>
 <li>If <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/Consent-Change-Event-Specifications/ta-p/23213">Consent Logging</a> is enabled, an event is sent to track the user&rsquo;s consent state for auditing purposes only.</li>
 </ul>
 
 <h4 id="grant-partial-consent-by-category">Grant Partial Consent (by category)</h4>
 
 <ul>
-<li>If the user has set customized preferences, and consented only to specific categories, these categories will be respected when tags or connectors are fired in Tealium iQ and EventStream respectively</li>
+<li>If the user has set customized preferences, and consented only to specific categories, these categories are respected when tags or connectors are fired in Tealium iQ and EventStream respectively</li>
 <li>If <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/Consent-Change-Event-Specifications/ta-p/23213">Consent Logging</a> is enabled, an event is sent to track the user&rsquo;s consent preferences for auditing purposes only.</li>
 </ul>
 
 <h4 id="decline-consent">Decline Consent</h4>
 
 <ul>
-<li>All queued tracking calls will be purged.</li>
-<li>All future tracking calls will be ignored.</li>
+<li>All queued tracking calls are purged.</li>
+<li>All future tracking calls are ignored.</li>
 <li>If <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/Consent-Change-Event-Specifications/ta-p/23213">Consent Logging</a> is enabled, an event is sent to track the user&rsquo;s consent preferences for auditing purposes only.</li>
 </ul>
 
 <p class="note">The Consent Manager module is enabled by default.</p>
+
 
 <h2 id="supported-platforms">Supported Platforms</h2>
 
@@ -365,11 +371,11 @@ var utag_data = {
 
 <h2 id="disabling-consent-manager">Disabling Consent Manager</h2>
 
-<p>If you do not need to use Consent Manager, it can be disabled by including it in the list of disabled modules on the <a href="https://community.tealiumiq.com/t5/Tealium-for-Swift/Swift-Class-TealiumConfig/ta-p/17095#toc-hId--1223033010">TealiumConfig</a> object at initialization time.</p>
+<p>If you do not need to use Consent Manager, you have the option to disable it by including it in the list of disabled modules on the <a href="https://community.tealiumiq.com/t5/Tealium-for-Swift/Swift-Class-TealiumConfig/ta-p/17095#toc-hId--1223033010">TealiumConfig</a> object at initialization time.</p>
 
 <h2 id="included-variables">Included Variables</h2>
 
-<p>The following variables will be transmitted with each tracking call while the module is enabled:</p>
+<p>The following variables are transmitted with each tracking call while the module is enabled:</p>
 
 <table>
 <thead>
@@ -452,7 +458,7 @@ var utag_data = {
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.consentManager()?.setUserConsentStatus(.consented)</code></pre></div>
 <p>Sets the user&rsquo;s consent status. Designed to be called from your consent management preferences screen in your app when the user enables or disables tracking.</p>
 
-<p>Will always set the list of consented categories to include ALL available consent categories, if the status is <code>.consented</code>. Does not allow categories to be set selectively.</p>
+<p>Sets the list of consented categories to include ALL available consent categories, if the status is <code>.consented</code>. Does not allow categories to be set selectively.</p>
 
 <table>
 <thead>
@@ -476,7 +482,7 @@ var utag_data = {
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.consentManager()?.setUserConsentCategories([.analytics,.bigData])</code></pre></div>
 <p>Sets the user&rsquo;s consent categories. Designed to be called from your consent management preferences screen in your app.</p>
 
-<p>Will always set consent status to <code>.consented</code>.</p>
+<p>Sets consent status to <code>.consented</code>.</p>
 
 <table>
 <thead>
@@ -573,9 +579,9 @@ config.setConsentLoggingEnabled(<span style="font-weight:bold">true</span>)</cod
 <h3 id="setinitialuserconsentstatus">setInitialUserConsentStatus</h3>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(...)
 config.setInitialUserConsentStatus(.notConsented)</code></pre></div>
-<p>Sets the initial consent status for the user when the library starts up for the first time. If there are saved preferences, these will override any preferences passed in the config object.</p>
+<p>Sets the initial consent status for the user when the library starts up for the first time. If there are saved preferences, these override any preferences passed in the config object.</p>
 
-<p>Will always set the list of consented categories to include ALL available consent categories, if the status is <code>.consented</code>. Does not allow categories to be set selectively.</p>
+<p>Sets the list of consented categories to include ALL available consent categories, if the status is <code>.consented</code>. Does not allow categories to be set selectively.</p>
 
 <p>Use this method to ignore all tracked events prior to consent, overriding the default behavior of queueing events prior to consent being granted. Add the following line to the config object:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">setInitialUserConsentStatus(.notConsented)</code></pre></div>
@@ -600,9 +606,9 @@ config.setInitialUserConsentStatus(.notConsented)</code></pre></div>
 <h3 id="setinitialuserconsentcategories">setInitialUserConsentCategories</h3>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(...)
 config.setInitialUserConsentCategories([.analytics])</code></pre></div>
-<p>Sets the user&rsquo;s initial consent categories when the library starts up for the first time. If there are saved preferences, these will override any preferences passed in the config object.</p>
+<p>Sets the user&rsquo;s initial consent categories when the library starts up for the first time. If there are saved preferences, these override any preferences passed in the config object.</p>
 
-<p>Will always set consent status to <code>.consented</code>.</p>
+<p>Sets the consent status to <code>.consented</code>.</p>
 
 <table>
 <thead>
@@ -739,7 +745,7 @@ config.setOverrideConsentPolicy(<span style="color:#b84">&#34;mycustompolicy&#34
 
 <h3 id="consentcategoriesstringarraytoenum">consentCategoriesStringArrayToEnum</h3>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">selectCategories</span>: [TealiumConsentCategories] = TealiumConsentCategories.consentCategoriesStringArrayToEnum([<span style="color:#b84">&#34;analytics&#34;</span>,<span style="color:#b84">&#34;bigData&#34;</span>])</code></pre></div>
-<p>Converts an array of strings containing valid consent categories to an array of enum values. Invalid string values will be omitted from the resulting array.</p>
+<p>Converts an array of strings containing valid consent categories to an array of enum values. Invalid string values are omitted from the resulting array.</p>
 
 <table>
 <thead>
@@ -763,7 +769,7 @@ config.setOverrideConsentPolicy(<span style="color:#b84">&#34;mycustompolicy&#34
 
 <h3 id="unknown">unknown</h3>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">status</span>: TealiumConsentStatus = .unknown</code></pre></div>
-<p>The <code>unknown</code> status is the default setting for the consent manager. In this state, the consent manager will queue events locally until an affirmative <code>consented</code>/<code>notConsented</code> status is provided.</p>
+<p>The <code>unknown</code> status is the default setting for the consent manager. In this state, the consent manager queues events locally until an affirmative <code>consented</code>/<code>notConsented</code> status is provided.</p>
 
 <h3 id="consented">consented</h3>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">status</span>: TealiumConsentStatus = .consented</code></pre></div>
@@ -771,7 +777,7 @@ config.setOverrideConsentPolicy(<span style="color:#b84">&#34;mycustompolicy&#34
 
 <h3 id="notconsented">notConsented</h3>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">status</span>: TealiumConsentStatus = .notConsented</code></pre></div>
-<p>The <code>notConsented</code> status is set when the user has declined tracking. In this state, the consent manager will drop all tracking calls and halt further processing by the SDK.</p>
+<p>The <code>notConsented</code> status is set when the user has declined tracking. In this state, the consent manager drops all tracking calls and halt further processing by the SDK.</p>
 
 <h2 id="tealiumconsentconstants-internal">TealiumConsentConstants (Internal)</h2>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">public</span> <span style="font-weight:bold">enum</span> <span style="color:#458;font-weight:bold">TealiumConsentConstants</span> {
@@ -791,16 +797,16 @@ config.setOverrideConsentPolicy(<span style="color:#b84">&#34;mycustompolicy&#34
 
 <h1 id="implemented-code-examples">Implemented Code Examples</h1>
 
-<p><em>Please see GitHub for latest <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/ConsentManagerDemo">sample apps</a></em></p>
+<p><em>See GitHub for latest <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/ConsentManagerDemo">sample apps</a></em></p>
 
 <h2 id="use-case-1-simple-opt-in">Use Case 1: Simple Opt-in</h2>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">    <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">setConsentStatusSimple</span>(<span style="font-weight:bold">_</span> consented: <span style="color:#999">Bool</span>) {
         <span style="font-weight:bold">let</span> <span style="color:#008080">status</span>: TealiumConsentStatus = consented ? .consented: .notConsented
         <span style="font-weight:bold">self</span>.tealium?.consentManager()?.setUserConsentStatus(status)
     }</code></pre></div>
-<p>This example shows you how to give your users a simple &ldquo;Opt-in/Opt-out&rdquo; option. If the user consents, they will be automatically opted-in to all tracking categories. If they revoke their consent, no categories will be active, and no tracking calls will be sent.</p>
+<p>This example shows you how to give your users a simple &ldquo;Opt-in/Opt-out&rdquo; option. If the user consents, they are automatically opted-in to all tracking categories. If they revoke their consent, no categories remain active, and no tracking calls are sent.</p>
 
-<p>Define and call the following method in your Tealium Helper class when your app user consents to or declines tracking. If the user consents to tracking, the Consent Manager will automatically opt them in to all tracking categories.</p>
+<p>Define and call the following method in your Tealium Helper class when your app user consents to or declines tracking. If the user consents to tracking, the Consent Manager automatically opts them in to all tracking categories.</p>
 
 <p><img src="https://zjzhh79394.i.lithium.com/t5/image/serverpage/image-id/6590i5637771715807D9A/image-size/original?v=1.0&amp;px=-1" alt="Simple Consent" title="Simple Consent" /></p>
 
@@ -858,13 +864,9 @@ config.setOverrideConsentPolicy(<span style="color:#b84">&#34;mycustompolicy&#34
 	<span style="font-weight:bold">let</span> <span style="color:#008080">settingsDict</span>: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>] = [<span style="color:#b84">&#34;consentStatus&#34;</span>: <span style="color:#b84">&#34;consented&#34;</span>, <span style="color:#b84">&#34;consentCategories&#34;</span>: categories]
 	updateConsentPreferences(settingsDict)
 }</code></pre></div>
-<p>This example shows a category-based consent model where the user must explicitly select each category from the full list of categories. The default state is &ldquo;Unknown&rdquo;, which will queue hits until the user provides their consent. If the user consents to any category, events are de-queued, and the consented category data is appended to each tracking call.</p>
+<p>This example shows a category-based consent model where the user must explicitly select each category from the full list of categories. The default state is &ldquo;Unknown&rdquo;, which queues hits until the user provides their consent. If the user consents to any category, events are de-queued, and the consented category data is appended to each tracking call.</p>
 
 <p><a href="images/individual-gif.gif"><img src="https://zjzhh79394.i.lithium.com/t5/image/serverpage/image-id/6588iDEE8A2B2B83CB4B7/image-size/original?v=1.0&amp;px=-1" alt="Category-based" title="Category-based" /></a></p>
-
-<h2 id="video">Video</h2>
-
-<p>Please see <a href="https://youtu.be/68rF6Qo5DOw">this video</a> for an implemented example.</p>
 
 <h2 id="future-improvements">Future Improvements</h2>
 
@@ -897,6 +899,69 @@ config.setOverrideConsentPolicy(<span style="color:#b84">&#34;mycustompolicy&#34
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 nl2">
     
+      
+      
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/mobile-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Mobile Concepts
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/client-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Client-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Server-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Feature Comparison
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/troubleshooting/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Troubleshooting
+            </a>
+          </li>
+        </ul>
+      </li>
       
       
       <li class="w-100 hover-accent-color-light fw8 mb1 bb b--moon-gray">
@@ -1490,6 +1555,13 @@ config.setOverrideConsentPolicy(<span style="color:#b84">&#34;mycustompolicy&#34
               Function Definitions
             </a>
           </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
         </ul>
       </li>
       
@@ -1712,7 +1784,7 @@ config.setOverrideConsentPolicy(<span style="color:#b84">&#34;mycustompolicy&#34
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p> This page was last updated: June 5, 2019</p>
+<p> This page was last updated: September 13, 2019</p>
 
       
 
@@ -1750,6 +1822,12 @@ config.setOverrideConsentPolicy(<span style="color:#b84">&#34;mycustompolicy&#34
     
 
 <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="/platforms/getting-started/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
+        </a>
+    </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="/platforms/remote-commands/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">

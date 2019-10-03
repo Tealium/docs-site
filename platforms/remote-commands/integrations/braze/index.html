@@ -294,7 +294,7 @@ var utag_data = {
 
 <h2 id="how-it-works">How It Works</h2>
 
-<p>The integration with Braze uses the native Braze SDK, a remote commands module that wraps the Braze methods, and the Braze Remote Commands tag that translates event tracking into native Braze calls. This solution leverages the convenience of tag management to configure a native Braze implementation without having to add vendor-specific code to your app.</p>
+<p>The Braze integration uses the native Braze SDK, a remote command module that wraps the Braze methods, and the Braze Remote Commands tag that translates event tracking into native Braze calls. This solution leverages the convenience of tag management to configure a native Braze implementation without having to add vendor-specific code to your app.</p>
 
 <p>There is no need to install the Braze SDK separately. Adding the Braze remote command module to your app build will automatically install and build the required Braze libraries. If you previously added Braze to your app, you can remove it.</p>
 
@@ -320,7 +320,7 @@ var utag_data = {
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">github <span style="color:#b84">&#34;tealium/tealium-ios-braze-remote-command&#34;</span></code></pre></div>
 <p>In addition, you must remove the line <code>github &quot;Appboy/Appboy-iOS-SDK&quot;</code>, if it exists in your Cartfile.</p>
 
-<p class="note">TealiumBraze already has a dependency on <code>tealium-swift</code>, so if <code>tealium-swift</code> was previously in your Cartfile, you need to remove it. 
+<p class="note">TealiumBraze already has a dependency on `tealium-swift`, so if `tealium-swift` was previously in your Cartfile, you need to remove it. 
 
 If you are using version 1.6.5 or later of the Tealium for Swift SDK, the **TealiumDelegate** module needs to be included as well with your installation.</p>
 
@@ -347,6 +347,7 @@ If you are using version 1.6.5 or later of the Tealium for Swift SDK, the **Teal
 <p>To include the remote command files in your own project, clone this repo and drag the files within the <code>Sources</code> folder into your project.</p>
 
 <p class="note">This assumes you have <a href="/platforms/swift/install/">Tealium Swift</a> and <a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/initial_sdk_setup/initial_sdk_setup/">Braze</a> installed already.</p>
+
 
 <p>When initializing the Tealium SDK, in the completion handler:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium = Tealium(config: config) { responses <span style="font-weight:bold">in</span>
@@ -401,20 +402,16 @@ tealium.addRemoteCommandID(<span style="color:#b84">&#34;braze&#34;</span>,
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content"><div class="tab-pane" data-lang="Android" title="Android">
-  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#998;font-style:italic">// this code sets up a config object and creates a Tealium instance; you should already have this code in your app
-</span><span style="color:#998;font-style:italic"></span>Tealium<span style="font-weight:bold">.</span><span style="color:#008080">Config</span> config <span style="font-weight:bold">=</span> Tealium<span style="font-weight:bold">.</span><span style="color:#008080">Config</span><span style="font-weight:bold">.</span><span style="color:#008080">create</span><span style="font-weight:bold">(</span>application<span style="font-weight:bold">,</span> <span style="color:#b84">&#34;your_account&#34;</span><span style="font-weight:bold">,</span> <span style="color:#b84">&#34;your_profile&#34;</span><span style="font-weight:bold">,</span> <span style="color:#b84">&#34;dev&#34;</span><span style="font-weight:bold">);</span>
+  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium<span style="font-weight:bold">.</span><span style="color:#008080">Config</span> config <span style="font-weight:bold">=</span> Tealium<span style="font-weight:bold">.</span><span style="color:#008080">Config</span><span style="font-weight:bold">.</span><span style="color:#008080">create</span><span style="font-weight:bold">(</span>application<span style="font-weight:bold">,</span> <span style="color:#b84">&#34;your_account&#34;</span><span style="font-weight:bold">,</span> <span style="color:#b84">&#34;your_profile&#34;</span><span style="font-weight:bold">,</span> <span style="color:#b84">&#34;dev&#34;</span><span style="font-weight:bold">);</span>
 Tealium teal <span style="font-weight:bold">=</span> Tealium<span style="font-weight:bold">.</span><span style="color:#008080">createInstance</span><span style="font-weight:bold">(</span>TEALIUM_MAIN<span style="font-weight:bold">,</span> config<span style="font-weight:bold">);</span>
 
-<span style="color:#998;font-style:italic">// the following is the new code to add the Braze Remote Command
-</span><span style="color:#998;font-style:italic"></span>RemoteCommand braze <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> BrazeRemoteCommand<span style="font-weight:bold">(</span>application<span style="font-weight:bold">);</span>
+RemoteCommand braze <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> BrazeRemoteCommand<span style="font-weight:bold">(</span>application<span style="font-weight:bold">);</span>
 teal<span style="font-weight:bold">.</span><span style="color:#008080">addRemoteCommand</span><span style="font-weight:bold">(</span>braze<span style="font-weight:bold">);</span></code></pre></div>
 </div>
 
 <div class="tab-pane" data-lang="Objective-C" title="Objective-C">
   <p>This class is designed for the Objective-C library, but the code itself is written in Swift. You will need to have a Bridging Header in your Xcode project for this to work correctly.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#998;font-style:italic">// this code sets up a config object and creates a Tealium instance.
-</span><span style="color:#998;font-style:italic">//  you should already have this code in your app.
-</span><span style="color:#998;font-style:italic"></span>let config <span style="font-weight:bold">=</span> TEALConfiguration(account: <span style="color:#b84">&#34;your_account&#34;</span>,
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">let config <span style="font-weight:bold">=</span> TEALConfiguration(account: <span style="color:#b84">&#34;your_account&#34;</span>,
                                profile: <span style="color:#b84">&#34;your_profile&#34;</span>,
                                environment: <span style="color:#b84">&#34;dev&#34;</span>,
                                datasource: <span style="color:#b84">&#34;abc123&#34;</span>)
@@ -428,8 +425,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;braze&#34;</span>, descrip
 
 <div class="tab-pane" data-lang="Swift" title="Swift">
   <p>This class is designed for use with Tealium&rsquo;s Swift library for iOS (will not work with other platforms).</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// you should already have this code in your app</span>
-<span style="font-weight:bold">var</span> <span style="color:#008080">teal</span> : Tealium?
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">teal</span> : Tealium?
 <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>,
                            profile: <span style="color:#b84">&#34;your_profile&#34;</span>,
                            environment: <span style="color:#b84">&#34;dev&#34;</span>,
@@ -546,6 +542,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 </table>
 
 <p class="note">Since the Braze SDK is installed alongside the Tealium SDK, you can trigger any native Braze functionality given the corresponding tag configuration.</p>
+
 
 <h3 id="sdk-setup">SDK Setup</h3>
 
@@ -1367,6 +1364,69 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
     
       
       
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/mobile-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Mobile Concepts
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/client-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Client-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Server-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Feature Comparison
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/troubleshooting/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Troubleshooting
+            </a>
+          </li>
+        </ul>
+      </li>
+      
+      
       <li class="w-100 hover-accent-color-light fw8 active mb1 bb b--moon-gray">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2  primary-color" data-target=".remote-commands">Remote Commands</a>
         <ul class="remote-commands desktopmenu animated fadeIn list pl0 db">
@@ -1958,6 +2018,13 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
               Function Definitions
             </a>
           </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
         </ul>
       </li>
       
@@ -2180,7 +2247,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p> This page was last updated: August 21, 2019</p>
+<p> This page was last updated: September 10, 2019</p>
 
       
 
@@ -2218,6 +2285,12 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
     
 
 <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="/platforms/getting-started/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
+        </a>
+    </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="/platforms/remote-commands/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">

@@ -305,31 +305,34 @@ var utag_data = {
 <p>Several DLLs are available for the Xamarin integration:</p>
 
 <ul>
-<li><em>Tealium.Common.dll</em><br>This DLL contains cross-platform code, interfaces, and common code to be used in all projects within your Xamarin application. Add this DLL as a reference in both shared project and platform-specific projects.</li>
-<li><em>Abstraction DLLs</em><br>Abstraction DLLS are included to create an easy-to-use C# API wrapper for the native Tealium SDKs and should only be referenced in platform-specific projects. These libraries contain platform-specific, concrete class implementations for the interfaces and abstract classes provided by the Tealium common library. You can code all of your cross-platform logic against the common library.
+<li><code>Tealium.Common.dll</code><br />
+This DLL contains cross-platform code, interfaces, and common code to be used in all projects within your Xamarin application. Add this DLL as a reference in both shared project and platform specific projects.</li>
+<li><code>Abstraction DLLs</code><br />
+Abstraction DLLS are included to create an  C# API wrapper for the native Tealium SDKs in platform specific projects. These libraries contain platform specific, concrete class implementations for the interfaces and abstract classes provided by the Tealium common library. You can code all of your cross-platform logic against the common library.
 
 <ul>
-<li><em>Tealium.Droid.dll</em> – for Android mobile platforms</li>
-<li><em>Tealium.iOS.dll </em> – for Apple mobile platforms</li>
+<li><code>Tealium.Droid.dll</code> – for Android mobile platforms</li>
+<li><code>Tealium.iOS.dll </code> – for Apple mobile platforms</li>
 </ul></li>
 </ul>
 
 <p>There are DLLs specific to each mobile platform which are referenced by the abstraction DLLs. The platform DLLs are binding libraries and therefore embed our the native SDKs - they provide auto-generated wrapper code that would allow you to interact with our native SDKs directly and as a result they can be used standalone if desired.</p>
 
 <ul>
-<li><em>Tealium.Platform.Droid.dll</em></li>
-<li><em>Tealium.Platform.iOS.dll</em></li>
+<li><code>Tealium.Platform.Droid.dll</code></li>
+<li><code>Tealium.Platform.iOS.dll</code></li>
 </ul>
 
-<p class="note">Binding libraries can be used by themselves. The fact that they are automatically generated results in vastly different namespaces for each platform, which adds an extra complication to development efforts. It is advised to make use of the Common and platform-specific abstraction libraries&nbsp;<span>instead.</span></p>
+<p class="note">Binding libraries can be used by themselves. The fact that they are automatically generated results in vastly different namespaces for each platform, which adds an extra complication to development efforts. It is advised to make use of the Common and platform-specific abstraction libraries instead.</p>
+
 
 <h3 id="lifecycle-modules">Lifecycle Modules</h3>
 
 <p>An optional lifecycle module is available by referencing the relevant DLL for the platform. These are binding libraries for the native equivalent SDKs:</p>
 
 <ul>
-<li><em>Tealium.Platform.Lifecycle.Droid.dll</em></li>
-<li><em>Tealium.Platform.Lifecycle.iOS.dll</em></li>
+<li><code>Tealium.Platform.Lifecycle.Droid.dll</code></li>
+<li><code>Tealium.Platform.Lifecycle.iOS.dll</code></li>
 </ul>
 
 <h3 id="android-example">Android Example</h3>
@@ -338,13 +341,13 @@ var utag_data = {
 
 <p><img src="/images/platforms/xamarin/consent-manager-model.png" alt="Consent Manager Model" title="Consent Manager Model" width="450"></p>
 
-<p>As shown in the example, the Shared Project references only the <em>Tealium.Common.dll</em> library, whereas the Android-specific project references all of the following:</p>
+<p>As shown in the example, the Shared Project references only the <code>Tealium.Common.dll</code> library, whereas the Android-specific project references all of the following:</p>
 
 <ul>
-<li><em>Tealium.Common.dll</em></li>
-<li><em>Tealium.Droid.dll</em></li>
-<li><em>Tealium.Platform.Droid.dll</em></li>
-<li><em>Tealium.Platform.Lifecycle.Droid.dll</em></li>
+<li><code>Tealium.Common.dll</code></li>
+<li><code>Tealium.Droid.dll</code></li>
+<li><code>Tealium.Platform.Droid.dll</code></li>
+<li><code>Tealium.Platform.Lifecycle.Droid.dll</code></li>
 </ul>
 
 <h2 id="install">Install</h2>
@@ -381,19 +384,15 @@ ITealiumInstanceManager instanceManager = <span style="font-weight:bold">new</sp
 <p>Use the following steps to create a new instance:</p>
 
 <ol>
-<li><p>Create a <code>TealiumConfig</code> object with your account details:<br></p>
+<li><p>Create a <code>TealiumConfig</code> object with your account details:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">TealiumConfig tealConfig = <span style="font-weight:bold">new</span> TealiumConfig(<span style="color:#b84">&#34;instance&#34;</span>,
+                                             <span style="color:#b84">&#34;account&#34;</span>,
+                                             <span style="color:#b84">&#34;profile&#34;</span>,
+                                             <span style="color:#b84">&#34;prod&#34;</span>,
+                                             <span style="font-weight:bold">false</span>); // Optional Auto Lifecycle AutoTracking (<span style="font-weight:bold">default</span>: <span style="font-weight:bold">true</span>)</code></pre></div></li>
 
-<pre><code>TealiumConfig tealConfig = new TealiumConfig(&quot;instance&quot;,
-                                             &quot;account&quot;,
-                                             &quot;profile&quot;,
-                                             &quot;prod&quot;,
-                                             false); // Optional Auto Lifecycle AutoTracking (default: true)
-</code></pre></li>
-
-<li><p>Next, use the <code>TealiumInstanceManager</code> to create a Tealium instance, which can then be used to track your events:<br></p>
-
-<pre><code>ITealium tealium = instanceManager.CreateInstance(tealConfig);
-</code></pre></li>
+<li><p>Next, use the <code>TealiumInstanceManager</code> to create a Tealium instance, which can then be used to track your events:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">    ITealium tealium = instanceManager.CreateInstance(tealConfig);</code></pre></div></li>
 </ol>
 
 <h2 id="track">Track</h2>
@@ -431,25 +430,23 @@ ITealiumInstanceManager instanceManager = <span style="font-weight:bold">new</sp
 <p>As with the native SDKs, there are two additional types of variables that you can set to be added to each of your events.</p>
 
 <ul>
-<li><p><strong>Persistent Data</strong><br>Persistent data will be merged into your data dictionary on every tracking call, as well as persist between launches, as shown in the following example:<br></p>
-
-<pre><code>// Get ITealium instance
-ITealium tealium = instanceManager.GetExistingInstance(TealiumConsts.INSTANCE_ID);
-tealium.AddPersistentDataSources(new Dictionary&lt;string, object&gt;(1)
+<li><p><strong>Persistent Data</strong><br />
+Persistent data will be merged into your data dictionary on every tracking call, as well as persist between launches, as shown in the following example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">// Get ITealium instance
+</span><span style="color:#998;font-style:italic"></span>ITealium tealium = instanceManager.GetExistingInstance(TealiumConsts.INSTANCE_ID);
+tealium.AddPersistentDataSources(<span style="font-weight:bold">new</span> Dictionary&lt;<span style="color:#458;font-weight:bold">string</span>, <span style="color:#458;font-weight:bold">object</span>&gt;(<span style="color:#099">1</span>)
 {
-    &quot;PersistentDataTest&quot;, &quot;Example persistent value.&quot;}
-});
-</code></pre></li>
+    <span style="color:#b84">&#34;PersistentDataTest&#34;</span>, <span style="color:#b84">&#34;Example persistent value.&#34;</span>}
+});</code></pre></div></li>
 
-<li><p><strong>Volatile Data</strong><br>Volatile data will be merged into your data dictionary on every tracking call, but once the application is closed, volatile data is lost and will not be present on the next launch.<br></p>
-
-<pre><code>//Get ITealium instance
-ITealium tealium = instanceManager.GetExistingInstance(TealiumConsts.INSTANCE_ID);
-tealium.AddVolatileDataSources(new Dictionary&lt;string, object&gt;(1)
+<li><p><strong>Volatile Data</strong><br />
+Volatile data will be merged into your data dictionary on every tracking call, but once the application is closed, volatile data is lost and will not be present on the next launch.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">//Get ITealium instance
+</span><span style="color:#998;font-style:italic"></span>ITealium tealium = instanceManager.GetExistingInstance(TealiumConsts.INSTANCE_ID);
+tealium.AddVolatileDataSources(<span style="font-weight:bold">new</span> Dictionary&lt;<span style="color:#458;font-weight:bold">string</span>, <span style="color:#458;font-weight:bold">object</span>&gt;(<span style="color:#099">1</span>)
 {
-    { &quot;VolatileDataTest&quot;, &quot;Example volatile value.&quot; }
-});
-</code></pre></li>
+    { <span style="color:#b84">&#34;VolatileDataTest&#34;</span>, <span style="color:#b84">&#34;Example volatile value.&#34;</span> }
+});</code></pre></div></li>
 </ul>
 
 <h2 id="advanced-configuration">Advanced Configuration</h2>
@@ -478,16 +475,21 @@ tealium.AddVolatileDataSources(new Dictionary&lt;string, object&gt;(1)
 <p>There are five delegated methods that allow you to inject code into the processing logic within the Tealium SDK:</p>
 
 <ul>
-<li><strong>DelegateDispatchValidator</strong><br>Provides two delegate methods where the Boolean return value determines whether or not an existing dispatch should be dropped or queued. This is useful if you have steps within your app where you know that the user may be offline or you specifically want to write your own batching logic.
+<li><code>DelegateDispatchValidator</code><br />
+Provides two delegate methods where the boolean return value determines whether or not an existing dispatch is dropped or queued. This is useful if you have steps within your app where you know that the user may be offline or you specifically want to write your own batching logic.
 
 <ul>
 <li><code>ShouldDropDispatchDelegate</code></li>
 <li><code>ShouldQueueDispatchDelegate</code></li>
 </ul></li>
-<li><strong>DispatchSentDelegateEventListener</strong><br>Called whenever a dispatch has been sent.</li>
-<li><strong>DispatchQueuedDelegateEventListener</strong><br>Called whenever a dispatch has been queued.</li>
-<li><strong>WebViewReadyDelegateEventListener</strong><br>Called when the WebView is fully loaded and ready, if you are using the Tag Management module.</li>
-<li><strong>SettingsPublishedDelegateEventListener</strong><br>Executed when there has been an updated set of publish settings retrieved.</li>
+<li><code>DispatchSentDelegateEventListener</code><br />
+Called whenever a dispatch has been sent.</li>
+<li><code>DispatchQueuedDelegateEventListener</code><br />
+Called whenever a dispatch has been queued.</li>
+<li><code>WebViewReadyDelegateEventListener</code><br />
+Called when the WebView is fully loaded and ready, if you are using the Tag Management module.</li>
+<li><code>SettingsPublishedDelegateEventListener</code><br />
+Executed when there has been an updated set of publish settings retrieved.</li>
 </ul>
 
 <p>The following example illustrates the usage of the delegate method:</p>
@@ -596,9 +598,9 @@ tealium.AddVolatileDataSources(new Dictionary&lt;string, object&gt;(1)
 };</code></pre></div>
 <h3 id="consent-selection">Consent Selection</h3>
 
-<p>The ConsentManager can be interacted with directly from the Tealium instance, through the ConsentManager property.</p>
+<p>The consent manager can be interacted with directly from the Tealium instance, through the <code>ConsentManager</code> property.</p>
 
-<p>If you need to update a user&rsquo;s consent selection, simply pass the relevant values. Only the enum values available in the <code>ConsentManager.ConsentCategory</code> and <code>ConsentManager.ConsentStatus</code> should be used, as shown in the following example:</p>
+<p>If you need to update a user&rsquo;s consent selection, pass one of enum values available in the <code>ConsentManager.ConsentCategory</code> and <code>ConsentManager.ConsentStatus</code>, as shown in the following example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">// if the user is in an Unknown state, then the following code would trigger any queued events would be sent after this:
 </span><span style="color:#998;font-style:italic"></span>ITealium tealium = instanceManager.GetExistingInstance(TealiumConsts.INSTANCE_ID);
 tealium.ConsentManager.UserConsentStatus = ConsentManager.ConsentStatus.Consented;
@@ -606,11 +608,11 @@ tealium.ConsentManager.UserConsentStatus = ConsentManager.ConsentStatus.Consente
 <span style="color:#998;font-style:italic">// The above will inherently opt the user into all categories as none have been provide.
 </span><span style="color:#998;font-style:italic">// To grant consent and opt into a subset of categories you can use the overload:
 </span><span style="color:#998;font-style:italic"></span>tealium.ConsentManager.UserConsentStatusWithCategories(ConsentManager.ConsentStatus.Consented, <span style="font-weight:bold">new</span> ConsentCategory<span style="color:#008080">[]</span>{
-        ConsentManager.ConsentCategory.Analytics
-        });</code></pre></div>
+    ConsentManager.ConsentCategory.Analytics
+});</code></pre></div>
 <h3 id="resetting">Resetting</h3>
 
-<p>Additional options are available to reset the currently selected consent preferences. This will revert the user back to an Unknown status so that subsequent events will begin being queued again.</p>
+<p>Additional options are available to reset the currently selected consent preferences. This will revert the user back to an <code>Unknown</code> status so that subsequent events will begin being queued again.</p>
 
 <p>To completely disable, disable it on the <code>TealiumConfig</code> object, as shown in the following example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">ITealium tealium = instanceManager.GetExistingInstance(TealiumConsts.INSTANCE_ID);
@@ -628,7 +630,7 @@ tealium.ConsentManager.ResetUserConsentPreferences();</code></pre></div>
 <li><a href="/platforms/android/">Tealium for Android</a></li>
 </ul>
 
-<p>Alternatively, if only using UDH services (AudienceStream, EventStream, DataAccess), the Tealium <a href="/platforms/csharp/">C#</a> library may be used as the native code in a Xamarin project.</p>
+<p>Alternatively, if only using UDH services (AudienceStream, EventStream, DataAccess), the <a href="/platforms/csharp/">Tealium library for C#</a> library may be used as the native code in a Xamarin project.</p>
 
 <h3 id="vendor-documentation">Vendor Documentation</h3>
 
@@ -652,6 +654,69 @@ tealium.ConsentManager.ResetUserConsentPreferences();</code></pre></div>
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 nl2">
     
+      
+      
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/mobile-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Mobile Concepts
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/client-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Client-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Server-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Feature Comparison
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/troubleshooting/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Troubleshooting
+            </a>
+          </li>
+        </ul>
+      </li>
       
       
       <li class="w-100 hover-accent-color-light fw8 mb1 bb b--moon-gray">
@@ -1245,6 +1310,13 @@ tealium.ConsentManager.ResetUserConsentPreferences();</code></pre></div>
               Function Definitions
             </a>
           </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
         </ul>
       </li>
       
@@ -1467,7 +1539,7 @@ tealium.ConsentManager.ResetUserConsentPreferences();</code></pre></div>
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p> This page was last updated: April 3, 2019</p>
+<p> This page was last updated: September 10, 2019</p>
 
       
 
@@ -1505,6 +1577,12 @@ tealium.ConsentManager.ResetUserConsentPreferences();</code></pre></div>
     
 
 <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="/platforms/getting-started/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
+        </a>
+    </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="/platforms/remote-commands/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">

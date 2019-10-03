@@ -277,7 +277,7 @@ var utag_data = {
 <h2 id="requirements">Requirements</h2>
 
 <ul>
-<li>Tealium <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/tkb-p/udh" target="_blank">Universal Data Hub</a> account</li>
+<li>Tealium <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/tkb-p/udh">Universal Data Hub</a> account</li>
 <li>Java IDE eg. Eclipse</li>
 <li>Java 7 or higher</li>
 </ul>
@@ -291,6 +291,7 @@ var utag_data = {
 </ul>
 
 <p class="tip">We recommend cloning the library (instead of downloading) to make it easier to update to future releases.</p>
+
 
 <p>Import all of the .java files from the <code>src/main/java/com/tealium</code> directory, then add this code:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">import</span> <span style="color:#555">com.tealium.*</span></code></pre></div>
@@ -309,34 +310,51 @@ var utag_data = {
 <span style="color:#000080">&lt;version&gt;</span>1.3.0<span style="color:#000080">&lt;/version&gt;</span></code></pre></div>
 <h2 id="initialize">Initialize</h2>
 
-<p>Once the files are added to your project you are ready to start coding. The Tealium instance must be invoked with the following parameters before you can begin tracking:</p>
-
-<ul>
-<li><strong>account</strong> - the name of your account</li>
-<li><strong>profile</strong> - the name of the profile within your account</li>
-<li><strong>environment</strong> - (optional) one of &ldquo;qa&rdquo; or &ldquo;prod&rdquo;</li>
-<li><strong>datasource</strong> - (optional) the data source key from your Universal Data Hub account</li>
-</ul>
+<p>Initialize the Tealium instance:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium tealium <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> Tealium<span style="font-weight:bold">.</span><span style="color:#008080">Builder</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;ACCOUNT&#34;</span><span style="font-weight:bold">,</span> <span style="color:#b84">&#34;PROFILE&#34;</span><span style="font-weight:bold">)</span>
-    <span style="font-weight:bold">.</span><span style="color:#008080">setEnvironment</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;prod&#34;</span><span style="font-weight:bold">)</span>
+    <span style="font-weight:bold">.</span><span style="color:#008080">setEnvironment</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;ENVIRONMENT&#34;</span><span style="font-weight:bold">)</span>
     <span style="font-weight:bold">.</span><span style="color:#008080">setDatasource</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;DATASOURCE&#34;</span><span style="font-weight:bold">)</span>
     <span style="font-weight:bold">.</span><span style="color:#008080">build</span><span style="font-weight:bold">();</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>account</td>
+<td>the name of your account</td>
+</tr>
+
+<tr>
+<td>profile</td>
+<td>the name of your profile</td>
+</tr>
+
+<tr>
+<td>environment</td>
+<td>one of &ldquo;dev&rdquo;, &ldquo;qa&rdquo;, or &ldquo;prod&rdquo;</td>
+</tr>
+
+<tr>
+<td>datasource</td>
+<td>(optional) the data source key from UDH (Set to <code>null</code> if none)</td>
+</tr>
+</tbody>
+</table>
+
 <h2 id="track">Track</h2>
 
-<p>Once the Tealium instance has been defined you can begin tracking events with the method <code>track()</code>, which takes the following parameters:</p>
-
-<ul>
-<li><strong>eventName</strong> (required) - a name to identify the event</li>
-<li><strong>eventData</strong> (optional) - an object with event attributes as key/value pairs</li>
-<li><strong>callback</strong> (optional) - a function to be called when the track() method completes</li>
-</ul>
+<p>Track events with the method <code>track()</code>:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#998;font-style:italic">// Set event attributes
 </span><span style="color:#998;font-style:italic"></span>Udo data <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> Udo<span style="font-weight:bold">();</span>
-data<span style="font-weight:bold">.</span><span style="color:#008080">put</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;user_id&#34;</span><span style="font-weight:bold">,</span> <span style="color:#b84">&#34;0123456789&#34;</span><span style="font-weight:bold">);</span>
-data<span style="font-weight:bold">.</span><span style="color:#008080">put</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;email_address&#34;</span><span style="font-weight:bold">,</span> <span style="color:#b84">&#34;user@example.com&#34;</span><span style="font-weight:bold">);</span>
+data<span style="font-weight:bold">.</span><span style="color:#008080">put</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;some_key&#34;</span><span style="font-weight:bold">,</span> <span style="color:#b84">&#34;some_value&#34;</span><span style="font-weight:bold">);</span>
 
 <span style="color:#998;font-style:italic">// With optional callback
-</span><span style="color:#998;font-style:italic"></span>DispatchCallBack callBack <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> DispatchCallBack<span style="font-weight:bold">(){</span>
+</span><span style="color:#998;font-style:italic"></span>DispatchCallBack callback <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> DispatchCallBack<span style="font-weight:bold">(){</span>
     <span style="font-weight:bold">public</span> <span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">dispatchComplete</span><span style="font-weight:bold">(</span><span style="color:#458;font-weight:bold">boolean</span> success<span style="font-weight:bold">,</span> String encodedURLString<span style="font-weight:bold">,</span> String error<span style="font-weight:bold">){</span>
        <span style="color:#998;font-style:italic">// Callback handling
 </span><span style="color:#998;font-style:italic"></span>       System<span style="font-weight:bold">.</span><span style="color:#008080">out</span><span style="font-weight:bold">.</span><span style="color:#008080">println</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;Dispatch successful: &#34;</span> <span style="font-weight:bold">+</span> String<span style="font-weight:bold">.</span><span style="color:#008080">valueOf</span><span style="font-weight:bold">(</span>success<span style="font-weight:bold">));</span>    
@@ -344,7 +362,33 @@ data<span style="font-weight:bold">.</span><span style="color:#008080">put</span
 <span style="font-weight:bold">}</span>
 
 <span style="color:#998;font-style:italic">// Tracking a login event
-</span><span style="color:#998;font-style:italic"></span>tealium<span style="font-weight:bold">.</span><span style="color:#008080">track</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;user_login&#34;</span><span style="font-weight:bold">,</span> data<span style="font-weight:bold">,</span> callBack<span style="font-weight:bold">);</span></code></pre></div>
+</span><span style="color:#998;font-style:italic"></span>tealium<span style="font-weight:bold">.</span><span style="color:#008080">track</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;event&#34;</span><span style="font-weight:bold">,</span> data<span style="font-weight:bold">,</span> callback<span style="font-weight:bold">);</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>event</td>
+<td>(required) A name to identify the event</td>
+</tr>
+
+<tr>
+<td>data</td>
+<td>(optional) Object with event data as key/value pairs</td>
+</tr>
+
+<tr>
+<td>callback</td>
+<td>(optional) Object with a function assigned to the &ldquo;callback&rdquo; key</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 
           
@@ -356,6 +400,69 @@ data<span style="font-weight:bold">.</span><span style="color:#008080">put</span
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 nl2">
     
+      
+      
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/mobile-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Mobile Concepts
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/client-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Client-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Server-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Feature Comparison
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/troubleshooting/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Troubleshooting
+            </a>
+          </li>
+        </ul>
+      </li>
       
       
       <li class="w-100 hover-accent-color-light fw8 mb1 bb b--moon-gray">
@@ -949,6 +1056,13 @@ data<span style="font-weight:bold">.</span><span style="color:#008080">put</span
               Function Definitions
             </a>
           </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
         </ul>
       </li>
       
@@ -1171,7 +1285,7 @@ data<span style="font-weight:bold">.</span><span style="color:#008080">put</span
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p> This page was last updated: February 12, 2019</p>
+<p> This page was last updated: September 10, 2019</p>
 
       
 
@@ -1209,6 +1323,12 @@ data<span style="font-weight:bold">.</span><span style="color:#008080">put</span
     
 
 <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="/platforms/getting-started/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
+        </a>
+    </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="/platforms/remote-commands/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">

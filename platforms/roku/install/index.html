@@ -239,7 +239,6 @@ var utag_data = {
               <li><a href="#install">Install</a></li>
               <li><a href="#initialize">Initialize</a></li>
               <li><a href="#track">Track</a></li>
-              <li><a href="#change-log">Change Log</a></li>
               </nav>
   </aside></div>
 
@@ -288,13 +287,14 @@ var utag_data = {
 <p>Before proceeding, ensure you have satisfied the following requirements:</p>
 
 <ul>
-<li>Tealium <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/tkb-p/udh" target="_blank">Universal Data Hub</a> account</li>
+<li>Tealium <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/tkb-p/udh">Universal Data Hub</a> account</li>
 <li><a href="https://sdkdocs.roku.com/display/sdkdoc/Release+Notes">Roku SDK</a> 7.2 or higher</li>
 <li>Active <a href="https://developer.roku.com/developer">Roku Developer Account</a></li>
 <li>Roku Device</li>
 </ul>
 
-<p class="tip">We recommend developing in <a href="https://blog.roku.com/developer/2016/11/17/eclipse-plugin-update/" target="_blank" rel="nofollow noopener noreferrer">Eclipse with the Roku plugin</a>.</p>
+<p class="tip">We recommend developing in <a href="https://blog.roku.com/developer/2016/11/17/eclipse-plugin-update/">Eclipse with the Roku plugin</a>.</p>
+
 
 <h2 id="sample-apps">Sample Apps</h2>
 
@@ -317,9 +317,9 @@ var utag_data = {
 <p>The code is organized as a sample app. The Tealium code files are located in <code>sample_app/source/tealium</code>. The following files must be imported into your project&rsquo;s source folder:</p>
 
 <ul>
-<li>tealium.brs</li>
-<li>tealiumCollect.brs</li>
-<li>tealiumLog.brs</li>
+<li><code>tealium.brs</code></li>
+<li><code>tealiumCollect.brs</code></li>
+<li><code>tealiumLog.brs</code></li>
 </ul>
 
 <p>If you are using Eclipse, refresh your project to access the Tealium components.</p>
@@ -336,45 +336,59 @@ var utag_data = {
 
 <h2 id="initialize">Initialize</h2>
 
-<p>Once the Tealium components are added to your project you are ready to start coding. The Tealium instance must be invoked with the following parameters before you can begin tracking:</p>
-
-<ul>
-<li><strong>account</strong> - the name of your account</li>
-<li><strong>profile</strong> - the name of your profile</li>
-<li><strong>log level</strong> - a number 0-3 where:
-
-<ul>
-<li>0 = None</li>
-<li>1 = Errors</li>
-<li>2 = Warnings</li>
-<li>3 = Verbose</li>
-</ul></li>
-<li><strong>environment</strong> - (optional) one of &ldquo;qa&rdquo; or &ldquo;prod&rdquo;</li>
-<li><strong>datasource</strong> - (optional) the data source key rom UDH</li>
-</ul>
-
 <p>Tealium objects are constructed using a builder pattern.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">builder <span style="font-weight:bold">=</span> TealiumBuilder(<span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, <span style="color:#099">1</span>)
-builder.SetEnvironment(<span style="color:#b84">&#34;prod&#34;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">builder <span style="font-weight:bold">=</span> TealiumBuilder(<span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, LOG_LEVEL)
+builder.SetEnvironment(<span style="color:#b84">&#34;ENVIRONMENT&#34;</span>)
 builder.SetDatasource(<span style="color:#b84">&#34;DATASOURCE&#34;</span>)
 teal <span style="font-weight:bold">=</span> builder.Build()
 </code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>account</td>
+<td>Name of your account.</td>
+</tr>
+
+<tr>
+<td>profile</td>
+<td>Name of your profile.</td>
+</tr>
+
+<tr>
+<td>log level</td>
+<td>The log level, where 0 = None, 1 = Errors, 2 = Warnings, 3 = Verbose</td>
+</tr>
+
+<tr>
+<td>environment</td>
+<td>One of &ldquo;qa&rdquo; or &ldquo;prod&rdquo;.</td>
+</tr>
+
+<tr>
+<td>datasource</td>
+<td>(optional) The data source key from UDH.</td>
+</tr>
+</tbody>
+</table>
+
 <p class="note">Be sure to set an appropriate log level when your app is released to production.</p>
+
 
 <h2 id="track">Track</h2>
 
-<p>Once the Tealium instance has been defined you can begin tracking events with the method <code>TrackEvent()</code>, which takes the following parameters:</p>
-
-<ul>
-<li><strong>Event Name</strong> (required) - a name to identify the event</li>
-<li><strong>Event Data</strong> (optional) - Object with event data as key/value pairs</li>
-<li><strong>Callback Function</strong> (optional) - Object with a function assigned to the &ldquo;callback&rdquo; key</li>
-</ul>
+<p>Track events with the method <code>TrackEvent()</code>:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">data <span style="font-weight:bold">=</span> CreateObject(<span style="color:#b84">&#34;roAssociativeArray&#34;</span>)
 data.someKey <span style="font-weight:bold">=</span> <span style="color:#b84">&#34;someValue&#34;</span>
 
-cb <span style="font-weight:bold">=</span> CreateObject(<span style="color:#b84">&#34;roAssociativeArray&#34;</span>)
-cb.callBack <span style="font-weight:bold">=</span> <span style="color:#999">Function</span> (event)
+callback <span style="font-weight:bold">=</span> CreateObject(<span style="color:#b84">&#34;roAssociativeArray&#34;</span>)
+callback.callBack <span style="font-weight:bold">=</span> <span style="color:#999">Function</span> (event)
     responseHeaders <span style="font-weight:bold">=</span> event.GetResponseHeaders()
     responseKeys <span style="font-weight:bold">=</span> responseHeaders.Keys()
     responseCode <span style="font-weight:bold">=</span> event.GetResponseCode()
@@ -385,39 +399,42 @@ cb.callBack <span style="font-weight:bold">=</span> <span style="color:#999">Fun
     End <span style="font-weight:bold">for</span>
 End <span style="color:#999">Function</span>
 
-teal.TrackEvent(<span style="color:#b84">&#34;someEvent&#34;</span>, data, cb)
+teal.TrackEvent(<span style="color:#b84">&#34;event&#34;</span>, data, callback)
 </code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>event</td>
+<td>(required) A name to identify the event</td>
+</tr>
+
+<tr>
+<td>data</td>
+<td>(optional) Object with event data as key/value pairs</td>
+</tr>
+
+<tr>
+<td>callback</td>
+<td>(optional) Object with a function assigned to the &ldquo;callback&rdquo; key</td>
+</tr>
+</tbody>
+</table>
+
 <p>The callback function can be used for a number of purposes, such as:</p>
 
 <ul>
-<li>building a retry or fallback system for failed calls</li>
-<li>building a queueing or throttling system</li>
-<li>customizing the Logger</li>
-<li>chaining application logic </li>
+<li>To build a retry or fallback system for failed calls.</li>
+<li>To manage a queueing or throttling system.</li>
+<li>To customize the Logger.</li>
+<li>To chain application logic.</li>
 </ul>
-
-<h2 id="change-log">Change Log</h2>
-
-<p><strong>1.1.0</strong></p>
-
-<ul>
-<li>Update trackEvent takes an additional String type arg with one of the following values:
-
-<ul>
-<li>activity</li>
-<li>conversion</li>
-<li>derived</li>
-<li>interaction</li>
-<li>view</li>
-</ul></li>
-<li>Additional Tealium variable:
-
-<ul>
-<li>tealium_event_type</li>
-</ul></li>
-</ul>
-
-<p><a href="https://community.tealiumiq.com/t5/Mobile-Libraries/Tealium-for-Roku-1-0-0/ta-p/17086" target="_blank">Python 1.0.0</a></p>
 
 </div>
 
@@ -430,6 +447,69 @@ teal.TrackEvent(<span style="color:#b84">&#34;someEvent&#34;</span>, data, cb)
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 nl2">
     
+      
+      
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/mobile-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Mobile Concepts
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/client-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Client-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Server-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Feature Comparison
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/troubleshooting/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Troubleshooting
+            </a>
+          </li>
+        </ul>
+      </li>
       
       
       <li class="w-100 hover-accent-color-light fw8 mb1 bb b--moon-gray">
@@ -1023,6 +1103,13 @@ teal.TrackEvent(<span style="color:#b84">&#34;someEvent&#34;</span>, data, cb)
               Function Definitions
             </a>
           </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
         </ul>
       </li>
       
@@ -1245,7 +1332,7 @@ teal.TrackEvent(<span style="color:#b84">&#34;someEvent&#34;</span>, data, cb)
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p> This page was last updated: April 3, 2019</p>
+<p> This page was last updated: September 10, 2019</p>
 
       
 
@@ -1283,6 +1370,12 @@ teal.TrackEvent(<span style="color:#b84">&#34;someEvent&#34;</span>, data, cb)
     
 
 <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="/platforms/getting-started/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
+        </a>
+    </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="/platforms/remote-commands/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">

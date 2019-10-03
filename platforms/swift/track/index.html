@@ -234,7 +234,7 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">In this article:</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#initialization">Initialization</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#initialize">Initialize</a></li>
               <li><a href="#trackview">trackView()</a></li>
               <li><a href="#track">track()</a></li>
               <li><a href="#persistent-data">Persistent Data</a></li>
@@ -280,26 +280,48 @@ var utag_data = {
 <li><a href="https://github.com/Tealium/tealium-swift/blob/master/samples/TealiumHelper.swift">Sample Helper Class</a></li>
 </ul>
 
-<h2 id="initialization">Initialization</h2>
+<h2 id="initialize">Initialize</h2>
 
-<p>The Tealium instance must be configured with the following parameters before it will begin tracking:</p>
-
-<ul>
-<li><strong>account</strong> - the name of your account</li>
-<li><strong>profile</strong> - the name of your profile</li>
-<li><strong>environment</strong> - one of &ldquo;qa&rdquo; or &ldquo;prod&rdquo;</li>
-<li><strong>datasource</strong> - (optional) the data source key from UDH</li>
-</ul>
+<p>Initialize the Tealium instance with the following code:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;tealiummobile&#34;</span>,
                            profile: <span style="color:#b84">&#34;demo&#34;</span>,
                            environment: <span style="color:#b84">&#34;dev&#34;</span>,
                            datasource: <span style="color:#b84">&#34;abc123&#34;</span>,
                            optionalData: <span style="font-weight:bold">nil</span>)
   
-<span style="color:#998;font-style:italic">// recommend making tealium reference a member of your singleton helper; it should only be instantiated once</span>
 <span style="font-weight:bold">let</span> <span style="color:#008080">tealium</span> = Tealium(config: config) {
-    <span style="color:#998;font-style:italic">// Optional processing post init.</span>
 }</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>account</td>
+<td>Name of your account.</td>
+</tr>
+
+<tr>
+<td>profile</td>
+<td>Name of your profile.</td>
+</tr>
+
+<tr>
+<td>environment</td>
+<td>One of &ldquo;qa&rdquo; or &ldquo;prod&rdquo;.</td>
+</tr>
+
+<tr>
+<td>datasource</td>
+<td>(optional) The data source key from UDH.</td>
+</tr>
+</tbody>
+</table>
+
 <h2 id="trackview">trackView()</h2>
 
 <p>This code block will track a screen view on the homescreen, passing a Dictionary containing two key-value pairs, the first representing the customer id, and the second, an array of product IDs purchased in this transaction (in this instance, containing 1 product only). You may optionally specify a completion block, but you may pass <code>nil</code> if you don&rsquo;t need special completion handling.</p>
@@ -310,13 +332,14 @@ var utag_data = {
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.track(title: <span style="color:#b84">&#34;Buy Now&#34;</span>, data: [<span style="color:#b84">&#34;product_id&#34;</span> : [<span style="color:#b84">&#34;widget123&#34;</span>]], completion: <span style="font-weight:bold">nil</span>)</code></pre></div>
 <h2 id="persistent-data">Persistent Data</h2>
 
-<p>Persistent data storage should be used for those variables which rarely change during the app&rsquo;s lifecycle, but are required to be sent on every tracking call. An example of this may be a customer ID that stays the same until the user logs out. Persistent data remains set across multiple app launches (since it is stored on disk), and can only be modified by deleting the data through the persistent data API, or overwriting an existing key with a new value. Persistent data is merged with any dictionary passed in each tracking call (<code>trackView</code> or <code>track</code>), and sent to any enabled dispatch services.</p>
+<p>Persistent data are stored on the device and preserved between launches of the app. The values are merged with any dictionary passed to a tracking call.</p>
 
-<p class="note">Persistent Data storage is backed by either UserDefaults or File Storage, depending on the modules currently enabled.</p>
+<p class="note">Persistent data storage is backed by either <code>UserDefaults</code> or <code>FileStorage</code>, depending on the modules currently enabled.</p>
+
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.persistentData()?.add(data: [<span style="color:#b84">&#34;customer_id&#34;</span>:<span style="color:#b84">&#34;1234567890-a&#34;</span>])</code></pre></div>
 <h2 id="volatile-data">Volatile Data</h2>
 
-<p>Volatile data storage should be used for those variables that do not change during a single launch of the app, but may change for future launches. An example of this may be some sort of session ID, which is regenerated each time the user relaunches the app. Volatile data works in a similar way to persistent data, except that it is only kept in main memory, and never written to disk. Thus, force closing an app will clear all volatile data previously set. From the point it is set, volatile data will be sent on each subsequent tracking call, and its data merged with any Dictionary passed in to the tracking call.</p>
+<p>Volatile data values are merged into to each event, but discarded upon closing the app and restarting. The values are merged with any dictionary passed to a tracking call.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.volatileData()?.add(data: [<span style="color:#b84">&#34;session_id&#34;</span>:<span style="color:#b84">&#34;1234567890232&#34;</span>])</code></pre></div>
 </div>
 
@@ -329,6 +352,69 @@ var utag_data = {
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 nl2">
     
+      
+      
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/mobile-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Mobile Concepts
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/client-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Client-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Server-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Feature Comparison
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/troubleshooting/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Troubleshooting
+            </a>
+          </li>
+        </ul>
+      </li>
       
       
       <li class="w-100 hover-accent-color-light fw8 mb1 bb b--moon-gray">
@@ -922,6 +1008,13 @@ var utag_data = {
               Function Definitions
             </a>
           </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
         </ul>
       </li>
       
@@ -1144,7 +1237,7 @@ var utag_data = {
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p> This page was last updated: June 5, 2019</p>
+<p> This page was last updated: September 10, 2019</p>
 
       
 
@@ -1182,6 +1275,12 @@ var utag_data = {
     
 
 <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="/platforms/getting-started/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
+        </a>
+    </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="/platforms/remote-commands/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">

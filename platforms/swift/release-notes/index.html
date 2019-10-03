@@ -299,7 +299,7 @@ var utag_data = {
 <p><strong>High Impact Changes</strong></p>
 
 <ul>
-<li>UIView auto-detection logic for WKWebView has been improved, which should account for most cases with complex view hierarchies, without the need to manually pass a UIView instance in the webview config. Validation in your own app is essential; verify that you can see tracking calls leaving your app in a variety of different screens in your app, including any views that may be launched from push notifications, where the view hierarchy may have changed.</li>
+<li>UIView auto-detection logic for WKWebView has been improved, which accounts for most cases with complex view hierarchies, without the need to manually pass a UIView instance in the webview config. Validation in your own app is essential; verify that you can see tracking calls leaving your app in a variety of different screens in your app, including any views that may be launched from push notifications, where the view hierarchy may have changed.</li>
 </ul>
 
 <h2 id="1-7-0-may-2019">1.7.0 (May 2019)</h2>
@@ -348,8 +348,8 @@ var utag_data = {
 <li>Minimum supported Swift version is now 4.0 due to Swift 3.X deprecation in Xcode 10. 1.6.4 is the last version supporting Swift versions &lt;4.0. Please use this if you require support for Swift 3.2.</li>
 <li>Core: Module responses removed from completion closure for simplicity</li>
 <li>TealiumConfig: TealiumModulesList is no longer required if you are only importing the specific modules you require. It will, however, continue to function as expected if present.</li>
-<li>Tag Management Module: With iOS 12, a memory leak has been introduced into the UIWebView API. This is out of Tealium&rsquo;s control and has been logged with Apple. Rest assured, this is a small leak, and will not impact your app in any significant way, but it will show up when profiling your app with the &ldquo;Leaks&rdquo; instrument. The leak should disapppear with a future iOS update, once Apple has fixed the issue. See: <a href="https://stackoverflow.com/questions/53187305/ios-12-memory-leak-wkwebview-and-uiwebview/53187306">https://stackoverflow.com/questions/53187305/ios-12-memory-leak-wkwebview-and-uiwebview/53187306</a> for details. If you do not need the Tag Management feature, you may remove the Tag Management module from your build, and you will not experience this leak.</li>
-<li>Remote Commands: Remote Commands should now be added via the TealiumConfig instance, rather than the public API method exposed on the Tealium instance. For more information, see: <a href="/platforms/swift/module-list/remote-commands/">Remote Commands Module</a></li>
+<li>Tag Management Module: With iOS 12, a memory leak has been introduced into the UIWebView API. This is out of Tealium&rsquo;s control and has been logged with Apple. Rest assured, this is a small leak, and will not impact your app in any significant way, but it will show up when profiling your app with the &ldquo;Leaks&rdquo; instrument. The leak will disapppear with a future iOS update, once Apple has fixed the issue. See: <a href="https://stackoverflow.com/questions/53187305/ios-12-memory-leak-wkwebview-and-uiwebview/53187306">https://stackoverflow.com/questions/53187305/ios-12-memory-leak-wkwebview-and-uiwebview/53187306</a> for details. If you do not need the Tag Management feature, you may remove the Tag Management module from your build, and you will not experience this leak.</li>
+<li>Remote Commands: Remote Commands can now be added via the TealiumConfig instance, rather than the public API method exposed on the Tealium instance. For more information, see: <a href="/platforms/swift/module-list/remote-commands/">Remote Commands Module</a></li>
 </ul>
 
 <p><strong>Low Impact Changes</strong></p>
@@ -440,11 +440,11 @@ var utag_data = {
 
 <ul>
 <li>Removed deprecated track method with TealiumTrackType. Should now call trackView or trackEvent methods instead to differentiate between track call types.</li>
-<li>&ldquo;tealium_event_type&rdquo; has been removed from all outgoing track calls, as it is now derived in UDH Event Specs and does not need to be sent</li>
-<li>Lifecycle module changed to use same NSNotifications as Objective-C library (UIApplicationDidBecomeActive and UIApplicationWillResignActive). This ensures lifecycle events are captured as quickly as possible. May potentially impact lifecycle reporting, but should be more accurate than before.</li>
-<li>&ldquo;device_orientation&rdquo; has been changed to simply Portrait or Landscape (same as Objective-C library), and a new variable &ldquo;device_orientation_full&rdquo; has been introduced to capture the z-axis orientation (face up, face down etc.)</li>
-<li>&ldquo;device_build&rdquo; variable changed to &ldquo;device_os_build&rdquo; to be more descriptive. &ldquo;device_build&rdquo; is no longer sent. Mappings will need to be updated if you were previously using this variable.</li>
-<li>Attribution module: &ldquo;device_advertising_id&rdquo; has been changed from Identifier for Vendor (IDFV) to Identifier for Advertisers (IDFA). A new variable &ldquo;device_advertising_vendor_id&rdquo; has been added, which contains the IDFV.</li>
+<li><code>tealium_event_type</code> has been removed from all outgoing track calls, as it is now derived in UDH Event Specs and does not need to be sent</li>
+<li>Lifecycle module changed to use same NSNotifications as Objective-C library (UIApplicationDidBecomeActive and UIApplicationWillResignActive). This ensures lifecycle events are captured as quickly as possible.</li>
+<li><code>device_orientation</code> has been changed to simply Portrait or Landscape (same as Objective-C library), and a new variable <code>device_orientation_full</code> has been introduced to capture the z-axis orientation (face up, face down etc.)</li>
+<li><code>device_build</code> variable changed to <code>device_os_build</code> to be more descriptive. <code>device_build</code> is no longer sent. Mappings will need to be updated if you were previously using this variable.</li>
+<li>Attribution module: <code>device_advertising_id</code> has been changed from Identifier for Vendor (IDFV) to Identifier for Advertisers (IDFA). A new variable <code>device_advertising_vendor_id</code> has been added, which contains the IDFV.</li>
 </ul></li>
 
 <li><p><strong>Low impact changes/general updates and improvements</strong></p>
@@ -460,7 +460,8 @@ var utag_data = {
 <li>Attribution module: Added support for Apple Search Ads API. If this module is used, Tealium will now collect attribution information from the Apple Search Ads API.</li>
 <li>Collect module: Added config method to override collect URL</li>
 <li>Connectivity module: Improved logging when device connection changes. Added helpers to get the current connection type</li>
-<li>Core: Added &ldquo;call_type&rdquo; variable to view calls.   - Added &ldquo;screen_title&rdquo; to view calls, which is set to the &ldquo;title&rdquo; parameter passed into the trackView call. For &ldquo;track&rdquo; calls, &ldquo;tealium_event&rdquo; is set to the String value that is passed in as the first parameter.</li>
+<li>Core: Added <code>call_type</code> variable to view calls.</li>
+<li>Added <code>screen_title</code> to view calls, which is set to the &ldquo;title&rdquo; parameter passed into the <code>trackView</code> call. For track calls, <code>tealium_event</code> is set to the string value that is passed in as the first parameter.</li>
 <li>FileStorage module: Fixed bug that caused data not to be persisted to disk due to permissions error</li>
 <li>Lifecycle Persistent Data: Changed implementation of NSKeyedUnarchiver to support Swift 4.0, and add additional error checking</li>
 <li>Logger module: Improved logging for Persistent Data</li>
@@ -766,6 +767,69 @@ var utag_data = {
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 nl2">
     
+      
+      
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/mobile-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Mobile Concepts
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/client-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Client-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Server-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Feature Comparison
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/troubleshooting/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Troubleshooting
+            </a>
+          </li>
+        </ul>
+      </li>
       
       
       <li class="w-100 hover-accent-color-light fw8 mb1 bb b--moon-gray">
@@ -1359,6 +1423,13 @@ var utag_data = {
               Function Definitions
             </a>
           </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
         </ul>
       </li>
       
@@ -1581,7 +1652,7 @@ var utag_data = {
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p> This page was last updated: July 30, 2019</p>
+<p> This page was last updated: September 10, 2019</p>
 
       
 
@@ -1619,6 +1690,12 @@ var utag_data = {
     
 
 <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="/platforms/getting-started/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
+        </a>
+    </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="/platforms/remote-commands/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">

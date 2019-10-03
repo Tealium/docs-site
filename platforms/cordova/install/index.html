@@ -240,7 +240,7 @@ var utag_data = {
               <ul class="toc-h3"><li><a href="#npm-recommended">NPM (Recommended)</a></li>
               <li><a href="#manual">Manual</a></li>
               </ul><li><a href="#initialize">Initialize</a></li>
-              <ul class="toc-h3"><li><a href="#endpoint-override">Endpoint Override</a></li>
+              <ul class="toc-h3"><li><a href="#tealium-collect-override">Tealium Collect Override</a></li>
               </ul><li><a href="#build-tips">Build Tips</a></li>
               <li><a href="#uninstall">Uninstall</a></li>
               <li><a href="#release-notes">Release Notes</a></li>
@@ -295,6 +295,7 @@ var utag_data = {
 
 <p class="note">As of version 1.1.1, framework files are no longer included in the plugin. Instead, the respective dependency managers are used for iOS and Android.</p>
 
+
 <h2 id="sample-apps">Sample Apps</h2>
 
 <p>We recommend downloading one or more sample apps we provide within the Cordova repository. This will help to familiarize yourself with our library, the tracking methods, and best practice implementation.</p>
@@ -323,77 +324,110 @@ cordova platform add &lt;PLATFORM&gt;
 cordova plugin add &lt;/LOCAL_PATH_TO_TEALIUM_PLUGIN/&gt;
 cordova build &lt;PLATFORM&gt;</code></pre></div>
 <h2 id="initialize">Initialize</h2>
-
-<p>Once the Tealium Cordova plugin is installed you are ready to start coding. The initialization function takes the following parameters:</p>
-
-<ul>
-<li><strong>account</strong> - the name of your account</li>
-<li><strong>profile</strong> - the name of the profile within your account</li>
-<li><strong>environment</strong> - (optional) one of &ldquo;qa&rdquo; or &ldquo;prod&rdquo;</li>
-<li><strong>instance</strong> - the instance name (multiple instances can be created, each with a unique name)</li>
-<li><strong>datasource</strong> - (optional) the data source key from UDH</li>
-<li><strong>isLifecycleEnabled</strong> - (optional) string value &ldquo;true&rdquo; or &ldquo;false&rdquo; to control lifecycle tracking (default: &ldquo;true&rdquo;)</li>
-<li><strong>isCrashReporterEnabled</strong> - (optional, Android only, requires Crash Reporter plugin) string value &ldquo;true&rdquo; or &ldquo;false&rdquo; to control crash report tracking</li>
-<li><strong>logLevel</strong> - (optional) set a different log level than the environment (defaults to the environment)
-
-<ul>
-<li>tealium.logLevels.DEV</li>
-<li>tealium.logLevels.QA</li>
-<li>tealium.logLevels.PROD</li>
-</ul></li>
-</ul>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">tealium.init({
-    account                  <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;your_account&#34;</span>
-    , profile                <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;your_profile&#34;</span>
-    , environment            <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;dev&#34;</span>
-    , instance               <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;tealium&#34;</span>
+    account                  <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;YOUR_ACCOUNT&#34;</span>
+    , profile                <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;YOUR_PROFILE&#34;</span>
+    , environment            <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;qa&#34;</span>
+    , datasource             <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;abc123&#34;</span>
+    , instance               <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;INSTANCE&#34;</span>
     , isLifecycleEnabled     <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;false&#34;</span>
     , isCrashReporterEnabled <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;true&#34;</span>
     , logLevel               <span style="font-weight:bold">:</span> tealium.logLevels.DEV
-    , collectDispatchProfile <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;us-mobile&#34;</span>
-    , collectDispatchURL     <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;us-mobile&#34;</span>
+    , collectDispatchProfile <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;DISPATCH_PROFILE&#34;</span>
+    , collectDispatchURL     <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;DISPATCH_URL&#34;</span>
 });
 </code></pre></div>
-<h3 id="endpoint-override">Endpoint Override</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
 
-<p>By default, the core iOS and Android libraries send Tealium Collect data to the &ldquo;main&rdquo; profile of your account. Use one of these initialization options to override this behavior:</p>
+<tbody>
+<tr>
+<td>account</td>
+<td>Name of your account.</td>
+</tr>
 
-<ul>
-<li><strong>collectDispatchProfile</strong> - specify an alternate profile to use in the Tealium Collect endpoint</li>
-</ul>
+<tr>
+<td>profile</td>
+<td>Name of your profile.</td>
+</tr>
 
-<p>Example:</p>
+<tr>
+<td>environment</td>
+<td>One of &ldquo;qa&rdquo; or &ldquo;prod&rdquo;.</td>
+</tr>
+
+<tr>
+<td>datasource</td>
+<td>(optional) The data source key from UDH.</td>
+</tr>
+
+<tr>
+<td>instance</td>
+<td>A unique name for your instance (multiple instances are supported).</td>
+</tr>
+
+<tr>
+<td>isLifecycleEnabled</td>
+<td>(optional) String value &ldquo;true&rdquo; or &ldquo;false&rdquo; to control lifecycle tracking (default: &ldquo;true&rdquo;)</td>
+</tr>
+
+<tr>
+<td>isCrashReporterEnabled</td>
+<td>(optional) Android only, requires Crash Reporter plugin) string value &ldquo;true&rdquo; or &ldquo;false&rdquo; to control crash report tracking</td>
+</tr>
+
+<tr>
+<td>logLevel</td>
+<td>(optional) Set a different log level than the environment (defaults to the environment).<br>Options: <code>tealium.logLevels.DEV</code>, <code>tealium.logLevels.QA</code>, <code>tealium.logLevels.PROD</code></td>
+</tr>
+
+<tr>
+<td>collectDispatchProfile</td>
+<td>Set the profile to use in the Tealium Collect endpoint.</td>
+</tr>
+
+<tr>
+<td>collectDispatchURL</td>
+<td>Override the full Tealium Collect endpoint URL.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="tealium-collect-override">Tealium Collect Override</h3>
+
+<p>By default, the core iOS and Android libraries send Tealium Collect data to the &ldquo;main&rdquo; profile of your account. To direct Tealium Collect to a different endpoint, either override the profile or the endpoint URL.</p>
+
+<p>Example: Override Profile</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">tealium.init({
-    account                <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;your_account&#34;</span>,
-    profile                <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;us-mobile&#34;</span>,
+    account                <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;YOUR_ACCOUNT&#34;</span>,
+    profile                <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;YOUR_PROFILE&#34;</span>,
     environment            <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;prod&#34;</span>,
     instance               <span style="font-weight:bold">:</span> <span style="color:#999">window</span>.tealium_instance,
-    collectDispatchProfile <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;us-mobile&#34;</span>
+    collectDispatchProfile <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;DISPATCH_PROFILE&#34;</span>
 });
 </code></pre></div>
-<ul>
-<li><strong>collectDispatchURL</strong> - specify a full alternate Tealium Collect endpoint</li>
-</ul>
-
-<p>Example:</p>
+<p>Example: Override Endpoint URL</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">tealium.init({
-    account            <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;your_account&#34;</span>,
-    profile            <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;us-mobile&#34;</span>,
+    account            <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;YOUR_ACCOUNT&#34;</span>,
+    profile            <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;YOUR_PROFILE&#34;</span>,
     environment        <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;prod&#34;</span>,
     instance           <span style="font-weight:bold">:</span> <span style="color:#999">window</span>.tealium_instance,
-    collectDispatchURL <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;https://collect.tealiumiq.com/vdata/i.gif?tealium_account=your_account&amp;tealium_profile=us-mobile&#34;</span>
+    collectDispatchURL <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;DISPATCH_URL&#34;</span>
 });
 </code></pre></div>
 <h2 id="build-tips">Build Tips</h2>
 
-<p>If you have any issues building your app, you may need to remove and re-add the platform using the following Cordova command:</p>
+<p>If you have any issues building your app, you may need to remove and re-add the platform with the following command, where <code>&lt;platform&gt;</code> is either &ldquo;android&rdquo; or &ldquo;ios&rdquo;:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cordova platform rm &lt;platform&gt;
 cordova platform add &lt;platform&gt;</code></pre></div>
-<p>Substitute &ldquo;&lt;platform&gt;&rdquo; for either &ldquo;android&rdquo; or &ldquo;ios&rdquo;.</p>
-
 <p>This usually also resolves spurious XCode code signing errors when building for a physical device.</p>
 
-<p>If you experience any trouble with CocoaPods when running your build, issue the command pod cache clean &ndash;all &amp;&amp; pod repo update, which should clear your local CocoaPods cache.</p>
+<p>If you experience any trouble with CocoaPods when running your build, issue the command <code>pod cache clean --all &amp;&amp; pod repo update</code>, to clear your local CocoaPods cache.</p>
 
 <h2 id="uninstall">Uninstall</h2>
 
@@ -407,12 +441,12 @@ cordova platform add &lt;platform&gt;</code></pre></div>
 
 <h4 id="backwards-compatibility">Backwards Compatibility</h4>
 
-<p>The 1.1.0 release changed some API behavior. The following items in particular should be tested after upgrading:</p>
+<p>The 1.1.0 release changed some API behavior. Test the following items after upgrading:</p>
 
 <ul>
 <li>If you were previously using the<code>addVolatile</code> and <code>addPersistent</code> methods, please ensure that you are only storing supported data types specified above</li>
-<li>On iOS, the plugin now runs most of its code on a background thread, except for the initialization method. This should not cause any issues, and should improve performance, but please test thoroughly and report any issues via the GitHub issues page.</li>
-<li>The variable <code>cordova_lifecycle</code>, which was previously sent with all lifecycle events, has now been removed. If you still require this variable, you can create it again by using a Set Data Values extension in Tealium iQ, with a rule &ldquo;if lifecycle_type is populated&rdquo; to create the variable and add it to all lifeycle events.</li>
+<li>To improve performance on iOS, the plugin now runs most of its code on a background thread, except for the initialization method. Report any issues via the GitHub issues page.</li>
+<li>The variable <code>cordova_lifecycle</code>, which was previously sent with all lifecycle events, has now been removed. If you still require this variable, you can create it again by using a Set Data Values extension in Tealium iQ, with a rule <code>if lifecycle_type is populated</code> to create the variable and add it to all lifeycle events.</li>
 <li>On iOS, lifecycle sleep events are now tracked as soon as the user either puts the app into the background, or begins to close the app completely. This means when the user brings up the task switcher while an app is running by pressing the home button twice, a sleep event will be generated. If the user cancels the action and goes back into the app, a corresponding wake event will be generated. Previously, sleep events were only created when the user had finished backgrounding the app (by single-press of the home button, or switching to another app). This behavior matches the existing behavior on Android. Be aware that this may cause an increased amount of sleep events to be recorded in your analytics tools, but the numbers will be technically more accurate</li>
 </ul>
 
@@ -435,6 +469,69 @@ cordova platform add &lt;platform&gt;</code></pre></div>
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 nl2">
     
+      
+      
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/mobile-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Mobile Concepts
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/client-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Client-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Server-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Feature Comparison
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/troubleshooting/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Troubleshooting
+            </a>
+          </li>
+        </ul>
+      </li>
       
       
       <li class="w-100 hover-accent-color-light fw8 mb1 bb b--moon-gray">
@@ -1028,6 +1125,13 @@ cordova platform add &lt;platform&gt;</code></pre></div>
               Function Definitions
             </a>
           </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
         </ul>
       </li>
       
@@ -1250,7 +1354,7 @@ cordova platform add &lt;platform&gt;</code></pre></div>
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p> This page was last updated: April 3, 2019</p>
+<p> This page was last updated: September 24, 2019</p>
 
       
 
@@ -1288,6 +1392,12 @@ cordova platform add &lt;platform&gt;</code></pre></div>
     
 
 <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="/platforms/getting-started/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
+        </a>
+    </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="/platforms/remote-commands/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">

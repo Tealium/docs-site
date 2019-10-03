@@ -237,11 +237,11 @@ var utag_data = {
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#overview">Overview</a></li>
               <li><a href="#utag-link">utag.link()</a></li>
               <li><a href="#event-names">Event Names</a></li>
-              <li><a href="#option-1-jquery-extension-and-html5-data-attributes">Option #1 - jQuery Extension and HTML5 data attributes</a></li>
-              <li><a href="#option-2-coded-utag-link-utag-view">Option #2 - Coded utag.link, utag.view</a></li>
-              <li><a href="#option-3-page-data-layer">Option #3 - Page Data Layer</a></li>
-              <li><a href="#option-4-video">Option #4 - Video</a></li>
-              <li><a href="#previous-versions">Previous Versions</a></li>
+              <li><a href="#implementation-options">Implementation Options</a></li>
+              <ul class="toc-h3"><li><a href="#jquery-and-html5">jQuery and HTML5</a></li>
+              <li><a href="#page-code">Page Code</a></li>
+              <li><a href="#video">Video</a></li>
+              </ul><li><a href="#previous-versions">Previous Versions</a></li>
               </nav>
   </aside></div>
 
@@ -283,13 +283,11 @@ var utag_data = {
 
 <p>Events are interactions a user has with your site that occur after the page has loaded. Examples of these interactions are: form field selections, file downloads, expanding menus, video plays, and many more.</p>
 
-<p>We recommend using a reserved variable in the data layer named <code>tealium_event</code> to uniquely identify each type of interaction that is tracked on the site. The values set for this variable will be plain-English descriptors of the events being tracked. This variable will be used throughout Tealium iQ to configure load rules, extensions, and data mappings. Additional data related to the event should be included in the data layer of the tracking call.</p>
+<p>Use the reserved variable <code>tealium_event</code> to uniquely identify each type of interaction to be tracked. This variable is referenced throughout Tealium iQ to configure load rules, extensions, and data mappings. Use additional variables names of your choosing for all other event data.</p>
 
 <h2 id="utag-link">utag.link()</h2>
 
-<p>This method tracks non-page views, page interactions, and other dynamic events that might occur on a page. Calling this method will trigger the corresponding event tracking functionality within your configured vendor tags. </p>
-
-<p class="tip">Best practice is to use the variable <code>tealium_event</code> to uniquely identify events.</p>
+<p>This method tracks non-page views, page interactions, and other dynamic events that might occur on a page. Calling this method triggers the corresponding vendor tracking functionality within your configured tags. </p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.link(data_object, callback, [uid_array]);
 </code></pre></div>
 <table>
@@ -302,18 +300,18 @@ var utag_data = {
 
 <tbody>
 <tr>
-<td><code>data_object</code><br>Object, optional</td>
-<td>A data object containing the attributes associated with this specific tracking call. Uses the same format and variable names as the Universal Data Object.</td>
+<td><code>data_object</code></td>
+<td>A data object containing the data layer variables associated with the event.</td>
 </tr>
 
 <tr>
-<td><code>callback</code><br>Function, optional</td>
+<td><code>callback</code></td>
 <td>A function to be executed after the tracking call has completed.</td>
 </tr>
 
 <tr>
-<td><code>uid_array</code><br>Array, optional</td>
-<td>An array of tag IDs. Will limit the tracking call for the vendor tags specified by the UID&rsquo;s in this array.</td>
+<td><code>uid_array</code></td>
+<td>An array of tag UID&rsquo;s to trigger.</td>
 </tr>
 </tbody>
 </table>
@@ -387,9 +385,10 @@ var utag_data = {
 </tbody>
 </table>
 
-<p class="tip">Use the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Tealium-Events-Extension/ta-p/18358" target="_blank">Tealium Events extension</a> to set up more standard events.</p>
+<p class="tip">Use the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Tealium-Events-Extension/ta-p/18358">Tealium Events extension</a> to set up more standard events.</p>
 
-<p>Any additional data related to the event should be included in the same tracking call.</p>
+
+<p>Add additional information related to the event in the tracking call.</p>
 
 <p>Example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.link({
@@ -398,36 +397,33 @@ var utag_data = {
     <span style="color:#b84">&#34;shared_link&#34;</span>    <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;https://tealium.com/&#34;</span>
 });
 </code></pre></div>
-<h1 id="understanding-your-options">Understanding Your Options</h1>
+<h2 id="implementation-options">Implementation Options</h2>
 
-<p>Just as page view tracking requires a data layer object to give context about which page is being tracked, event tracking also requires a data layer object be included in the tracking calls.</p>
+<p>Just as page view tracking requires a data layer object to give context about which page is being tracked, event tracking also requires a data layer object be included in the tracking calls.  Include variables relevant to the event in the data object of the tracking call.</p>
 
-<p>For example, the variable <code>utag_data.page_type</code> in the data layer helps distinguish between different types of pages (product, search, cart, etc.) and the variable <code>utag_data.tealium_event</code> distinguishes between the different events to be tracked (cart_add, newsletter_signup, user_login, etc.). Similarly, as certain data layer variables are only relevant to certain page types (eg. <code>search_keyword</code> on Search pages), only variables relevant to a tracked event are required in the tracking call (eg. <code>social_network</code> when tracking a social share event).</p>
+<p>The following sections describe the approaches for implementing Tealium’s event tracking into your website.</p>
 
-<p>The following options describe the various methods of implementing Tealium’s event tracking into your website.</p>
+<h3 id="jquery-and-html5">jQuery and HTML5</h3>
 
-<h2 id="option-1-jquery-extension-and-html5-data-attributes">Option #1 - jQuery Extension and HTML5 data attributes</h2>
-
-<p>The <a href="https://community.tealiumiq.com/t5/Tealium-iQ-Tag-Management/jQuery-onHandler-Extension-jQuery-v1-7-and-up/ta-p/9868)" target="_blank">jQuery Extension</a> is used for tracking basic interactions within a page, such as clicking, expanding, ticking, checking, selecting, etc. HTML5 supports <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes)" target="_blank">data attributes</a> which can be used to associate information to elements in the page. To implement a site-wide custom click tracking solution a global markup strategy should be created to expose the necessary event attributes in the data attributes of the elements to be tracked.</p>
+<p>Use the <a href="https://community.tealiumiq.com/t5/Tealium-iQ-Tag-Management/jQuery-onHandler-Extension-jQuery-v1-7-and-up/ta-p/9868">jQuery Extension</a>) to track basic interactions within a page, such as clicking, expanding, and selecting. Use HTML5 <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes">data attributes</a> to implement informational properties of tracked elements.</p>
 
 <p>An element with data attributes might look like this in the page code:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">a</span> <span style="color:#008080">href</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;/logout&#34;</span> <span style="color:#008080">data-click_name</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;Sign Out&#34;</span> <span style="color:#008080">data-click_category</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;header&#34;</span>&gt;Log out&lt;/<span style="color:#000080">a</span>&gt; </code></pre></div>
-<p>These attributes can then be used in the jQuery Extension selector and to set values in your data layer object. Using the &ldquo;JS Code&rdquo; option you can dynamically assign the value of a data attribute to a data layer variable.</p>
-
-<p>To use data attributes with the jQuery Extension:</p>
+<p>Reference these attributes in the jQuery Extension to track clicks on this link and to set the relevant event data using the &ldquo;JS Code&rdquo; option.</p>
 
 <ul>
 <li>Use a selector to identify elements with a specific data attribute eg. <code>a[data-click_name]</code></li>
 <li>Set a variable using the &ldquo;JS Code&rdquo; option to reference a data attribute in the clicked element eg. <code>$(this).data('click_name')</code></li>
 </ul>
 
-<p class="note">Requires a web page with <a href="https://en.wikipedia.org/wiki/Semantic_HTML" target="_blank" rel="nofollow noopener noreferrer">semantic markup</a>.</p>
+<p class="note">Requires a web page with <a href="https://en.wikipedia.org/wiki/Semantic_HTML">semantic markup</a>.</p>
+
 
 <p><strong>Best Uses</strong>: link clicks, button clicks, form field interactions</p>
 
 <p><strong>Not recommended for</strong>: ajax page flows, form submissions</p>
 
-<h2 id="option-2-coded-utag-link-utag-view">Option #2 - Coded utag.link, utag.view</h2>
+<h3 id="page-code">Page Code</h3>
 
 <p>Used for tracking dynamic page content refreshes, ajax pages, modal form submissions or any event that requires a round-trip request/response to the client’s web server to fetch additional data not already present on the page.</p>
 
@@ -435,28 +431,14 @@ var utag_data = {
 
 <p><strong>Not recommended for</strong>: link tracking </p>
 
-<h2 id="option-3-page-data-layer">Option #3 - Page Data Layer</h2>
+<h3 id="video">Video</h3>
 
-<p>Used when an event occurs at the same time as a new page load. The default page view tracking can perform the event tracking at the same time provided the required data layer variables are present (eg. event_name). For example, in a cart checkout process, when asked to checkout as guest, new customer, or existing customer, if you select “existing customer” and login with correct credentials, the following page load could contain this data layer indicating it is the &ldquo;Shipping&rdquo; section of the checkout <em>and</em> that a &ldquo;user_login&rdquo; event has occurred:  </p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">var</span> utag_data <span style="font-weight:bold">=</span> {
-    <span style="color:#b84">&#34;page_type&#34;</span>  <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;checkout&#34;</span>,
-    <span style="color:#b84">&#34;page_name&#34;</span>  <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;Shipping Information&#34;</span>,
-    <span style="color:#b84">&#34;event_name&#34;</span> <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;user_login&#34;</span>,
-    <span style="color:#b84">&#34;customer_id : &#34;</span><span style="color:#099">0123456789</span><span style="color:#a61717;background-color:#e3d2d2">&#34;</span>
-};
-</code></pre></div>
-<p><strong>Best Uses</strong>: user login, user registration, “success” pages</p>
-
-<p><strong>Not recommended for</strong>: modal forms, ajax pages</p>
-
-<h2 id="option-4-video">Option #4 - Video</h2>
-
-<p>Video tracking often requires a custom Javascript code solution. This can be implemented within a <a href="https://community.tealiumiq.com/t5/Tealium-iQ-Tag-Management/JavaScript-Code-Extension/ta-p/11925" target="_blank">JavaScript Code Extension</a>, but still requires coding to the specifications of the video platform’s API.  </p>
+<p>Video tracking often requires a custom solution coding to the specifications of the video platform API.</p>
 
 <p>Current solutions for video tracking:</p>
 
 <ul>
-<li><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/YouTube-Video-Tracking-Setup-Guide-for-Tealium-iQ/ta-p/14673" target="_blank">YouTube Video Tracking</a></li>
+<li><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/YouTube-Video-Tracking-Setup-Guide-for-Tealium-iQ/ta-p/14673">YouTube Video Tracking</a></li>
 </ul>
 
 <h2 id="previous-versions">Previous Versions</h2>
@@ -464,8 +446,10 @@ var utag_data = {
 <p>The behavior of the utag.link() call changed in the following versions of utag.js:</p>
 
 <ul>
-<li><a href="/platforms/javascript/release-notes/#version-4-36">Version 3.36</a><br>Calls to utag.link() will now reevaluate load rules and load new tags.</li>
-<li><a href="/platforms/javascript/release-notes/#version-4-26">Version 4.26</a><br>All page data variables are now available to utag.link() calls.</li>
+<li><a href="/platforms/javascript/release-notes/#version-4-26">Version 4.26</a><br />
+All page data variables are now available to utag.link() calls.</li>
+<li><a href="/platforms/javascript/release-notes/#version-4-36">Version 3.36</a><br />
+Calls to utag.link() will now reevaluate load rules and load new tags.</li>
 </ul>
 
 </div>
@@ -479,6 +463,69 @@ var utag_data = {
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 nl2">
     
+      
+      
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/mobile-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Mobile Concepts
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/client-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Client-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Server-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Feature Comparison
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/troubleshooting/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Troubleshooting
+            </a>
+          </li>
+        </ul>
+      </li>
       
       
       <li class="w-100 hover-accent-color-light fw8 mb1 bb b--moon-gray">
@@ -1072,6 +1119,13 @@ var utag_data = {
               Function Definitions
             </a>
           </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
         </ul>
       </li>
       
@@ -1294,7 +1348,7 @@ var utag_data = {
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p> This page was last updated: February 12, 2019</p>
+<p> This page was last updated: September 10, 2019</p>
 
       
 
@@ -1332,6 +1386,12 @@ var utag_data = {
     
 
 <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="/platforms/getting-started/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
+        </a>
+    </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="/platforms/remote-commands/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">

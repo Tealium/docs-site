@@ -234,15 +234,14 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">In this article:</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#how-it-works">How it Works</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#how-it-works">How It Works</a></li>
               <li><a href="#requirements">Requirements</a></li>
               <li><a href="#sample-apps">Sample Apps</a></li>
               <li><a href="#install">Install</a></li>
               <li><a href="#initialize">Initialize</a></li>
               <ul class="toc-h3"><li><a href="#consent-manager">Consent Manager</a></li>
+              <li><a href="#custom">Custom</a></li>
               </ul><li><a href="#track">Track</a></li>
-              <ul class="toc-h3"><li><a href="#track-views">Track Views</a></li>
-              <li><a href="#track-events">Track Events</a></li>
               </nav>
   </aside></div>
 
@@ -278,7 +277,7 @@ var utag_data = {
 
 
 
-<h2 id="how-it-works">How it Works</h2>
+<h2 id="how-it-works">How It Works</h2>
 
 <p>Tealium for Flutter allows you to use the Tealium native mobile libraries (Android/iOS) in your Flutter application.</p>
 
@@ -317,19 +316,7 @@ var utag_data = {
 
 <h2 id="initialize">Initialize</h2>
 
-<p>Once the Tealium dependency has been installed and built into your project, you are ready to start coding.</p>
-
-<p>A Tealium instance must be initialized with the following parameters before you begin tracking:</p>
-
-<ul>
-<li><strong>account</strong> - the name of your account</li>
-<li><strong>profile</strong> - the name of your profile</li>
-<li><strong>environment</strong> - one of &ldquo;dev&rdquo;, &ldquo;qa&rdquo;, or &ldquo;prod&rdquo;</li>
-<li><strong>data source key for iOS</strong> - (optional) the data source key from UDH (Set to <code>null</code> if none)</li>
-<li><strong>data source key for Android</strong> - (optional) the data source key from UDH (Set to <code>null</code> if none)</li>
-<li><strong>instance name</strong> - (optional) Tealium instance name (default: &ldquo;main&rdquo;)</li>
-<li><strong>enable lifecycle</strong> - (optional) enable lifecycle tracking events (default: <code>true</code>)</li>
-</ul>
+<p>Initialize the Tealium instance.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium<span style="font-weight:bold">.</span><span style="color:#008080">initialize</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;ACCOUNT&#34;</span><span style="font-weight:bold">,</span>
 			       <span style="color:#b84">&#34;PROFILE&#34;</span><span style="font-weight:bold">,</span>
 			       <span style="color:#b84">&#34;ENVIRONMENT&#34;</span><span style="font-weight:bold">,</span>
@@ -337,66 +324,160 @@ var utag_data = {
 			       <span style="color:#b84">&#34;ANDROID_DATA_SOURCE_KEY&#34;</span><span style="font-weight:bold">,</span>
 			       <span style="color:#b84">&#34;INSTANCE_NAME&#34;</span><span style="font-weight:bold">,</span>
 			       <span style="color:#b84">&#34;IS_LIFECYCLE_ENABLED&#34;</span><span style="font-weight:bold">)</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>account</td>
+<td>the name of your account</td>
+</tr>
+
+<tr>
+<td>profile</td>
+<td>the name of your profile</td>
+</tr>
+
+<tr>
+<td>environment</td>
+<td>one of &ldquo;dev&rdquo;, &ldquo;qa&rdquo;, or &ldquo;prod&rdquo;</td>
+</tr>
+
+<tr>
+<td>data source key for iOS</td>
+<td>(optional) the data source key from UDH (Set to <code>null</code> if none)</td>
+</tr>
+
+<tr>
+<td>data source key for Android</td>
+<td>(optional) the data source key from UDH (Set to <code>null</code> if none)</td>
+</tr>
+
+<tr>
+<td>instance name</td>
+<td>(optional) Tealium instance name (default: &ldquo;main&rdquo;)</td>
+</tr>
+
+<tr>
+<td>enable lifecycle</td>
+<td>(optional) enable lifecycle tracking events (default: <code>true</code>)</td>
+</tr>
+</tbody>
+</table>
+
 <h3 id="consent-manager">Consent Manager</h3>
 
 <p>To use Consent Manager, initialize with the method <code>initializeWithConsentManager()</code>.
-This method has the same parameters as the <code>initialize()</code> method above and enables Consent Manager for you. Learn more here:</p>
+This method has the same parameters as the <code>initialize()</code> method and enables Consent Manager for you.</p>
+
+<p>Learn more about Consent Manager:</p>
 
 <ul>
 <li><a href="../../android/consent-manager/">Consent Manager for Android</a></li>
 <li><a href="../../ios/consent-manager/">Consent Manager for iOS</a></li>
 </ul>
 
-<p>For a custom initialization, the following parameter options are available for the <code>initializeCustom()</code> method:</p>
+<h3 id="custom">Custom</h3>
 
-<ul>
-<li><strong>account</strong> - the name of your account</li>
-<li><strong>profile</strong> - the name of your profile</li>
-<li><strong>environment</strong> - one of &ldquo;dev&rdquo;, &ldquo;qa&rdquo;, or &ldquo;prod&rdquo;</li>
-<li><strong>data source key for iOS</strong> - the data source key from UDH</li>
-<li><strong>data source key for Android</strong> - the data source key from UDH</li>
-<li><strong>instance name</strong> - Tealium instance name (default: &ldquo;main&rdquo;)</li>
-<li><strong>enable lifecycle</strong> - enable lifecycle tracking events (default: <code>true</code>)</li>
-<li><strong>publish settings URL</strong> - (optional) String representing the publish settings URL if overriding (Set to <code>null</code> if none)</li>
-<li><strong>tag management URL</strong> - (optional) String representing the tag management URL if overriding (Set to <code>null</code> if none)</li>
-<li><strong>enable collect endpoint URL</strong> - <code>true</code> is the default in native Android and iOS libraries that send data to the Collect endpoint URL. <code>false</code> sends data to the older <code>vdata</code> endpoint</li>
-<li><strong>enable consent manager</strong> - <code>true</code> to enable, or <code>false</code> to disable</li>
-</ul>
+<p>All intitialization options are available with the <code>initializeCustom()</code> method:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium<span style="font-weight:bold">.</span><span style="color:#008080">initializeCustom</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;ACCOUNT&#34;</span><span style="font-weight:bold">,</span>
 			<span style="color:#b84">&#34;PROFILE&#34;</span><span style="font-weight:bold">,</span>
 			<span style="color:#b84">&#34;ENVIRONMENT&#34;</span><span style="font-weight:bold">,</span>
 			<span style="color:#b84">&#34;IOS_DATA_SOURCE_KEY&#34;</span><span style="font-weight:bold">,</span>
 			<span style="color:#b84">&#34;ANDROID_DATA_SOURCE_KEY&#34;</span><span style="font-weight:bold">,</span>
 			<span style="color:#b84">&#34;INSTANCE_NAME&#34;</span><span style="font-weight:bold">,</span>
-			<span style="color:#b84">&#34;IS_LIFECYCLE_ENABLED&#34;</span><span style="font-weight:bold">,</span>
-		    <span style="font-weight:bold">null</span><span style="font-weight:bold">,</span>	 <span style="color:#998;font-style:italic">//custom publish settings URL
-</span><span style="color:#998;font-style:italic"></span>			<span style="font-weight:bold">null</span><span style="font-weight:bold">,</span> 	 <span style="color:#998;font-style:italic">//custom tag management URL
-</span><span style="color:#998;font-style:italic"></span>			<span style="font-weight:bold">true</span><span style="font-weight:bold">,</span> 	 <span style="color:#998;font-style:italic">//toggle between data endpoints, true: Tealium Collect, false: Visitor Data
-</span><span style="color:#998;font-style:italic"></span>			<span style="font-weight:bold">true</span><span style="font-weight:bold">)</span>	 <span style="font-weight:bold">//</span>enable consent manager</code></pre></div>
-<p class=note>For optional String parameters, set the argument to null if you are not passing any data</p>
+			IS_LIFECYCLE_ENABLED<span style="font-weight:bold">,</span>
+		    <span style="color:#b84">&#34;PUBLISH_SETTINGS_URL&#34;</span><span style="font-weight:bold">,</span>  <span style="color:#998;font-style:italic">// custom publish settings URL
+</span><span style="color:#998;font-style:italic"></span>			<span style="color:#b84">&#34;TAG_MANAGEMENT_URL&#34;</span><span style="font-weight:bold">,</span>    <span style="color:#998;font-style:italic">// custom tag management URL
+</span><span style="color:#998;font-style:italic"></span>			USE_COLLECT<span style="font-weight:bold">,</span>             <span style="color:#998;font-style:italic">// toggle between data endpoints, true: Tealium Collect, false: Visitor Data
+</span><span style="color:#998;font-style:italic"></span>			USE_CONSENT_MANAGER<span style="font-weight:bold">)</span>     <span style="font-weight:bold">//</span> enable consent manager</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>publish settings URL</td>
+<td>(optional) String representing the publish settings URL if overriding (Set to <code>null</code> if none)</td>
+</tr>
+
+<tr>
+<td>tag management URL</td>
+<td>(optional) String representing the tag management URL if overriding (Set to <code>null</code> if none)</td>
+</tr>
+
+<tr>
+<td>use collect endpoint URL</td>
+<td><code>true</code> is the default in native Android and iOS libraries that send data to the Collect endpoint URL. <code>false</code> sends data to the older <code>vdata</code> endpoint</td>
+</tr>
+
+<tr>
+<td>use consent manager</td>
+<td><code>true</code> to enable, or <code>false</code> to disable</td>
+</tr>
+</tbody>
+</table>
+
+<p class="note">For optional String parameters, set the argument to <code>null</code> if you are not passing any data</p>
+
 
 <h2 id="track">Track</h2>
 
-<p>After initializing a Tealium instance, you&rsquo;re ready to start tracking events.</p>
-
-<h3 id="track-views">Track Views</h3>
-
 <p>Use the <code>trackView()</code> method to track screen views:</p>
-
-<ul>
-<li><strong>screen name</strong> - name to identify screen view</li>
-<li><strong>data</strong> - (optional) event data as key/value pairs</li>
-</ul>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium<span style="font-weight:bold">.</span><span style="color:#008080">trackView</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;screen_name&#34;</span><span style="font-weight:bold">,</span> <span style="font-weight:bold">{</span><span style="color:#b84">&#34;key1&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;value1&#34;</span><span style="font-weight:bold">});</span></code></pre></div>
-<h3 id="track-events">Track Events</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
 
-<p>To track non-view events, use the <code>trackEvent()</code> method:</p>
+<tbody>
+<tr>
+<td>screen name</td>
+<td>name to identify screen view</td>
+</tr>
 
-<ul>
-<li><strong>event name</strong> - a name to identify the event being tracked</li>
-<li><strong>data</strong> - (optional) event data as key/value pairs</li>
-</ul>
+<tr>
+<td>data</td>
+<td>(optional) event data as key/value pairs</td>
+</tr>
+</tbody>
+</table>
+
+<p>Use the <code>trackEvent()</code> method to track non-view events:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium<span style="font-weight:bold">.</span><span style="color:#008080">trackEvent</span><span style="font-weight:bold">(</span><span style="color:#b84">&#34;event_name&#34;</span><span style="font-weight:bold">,</span> <span style="font-weight:bold">{</span><span style="color:#b84">&#34;key1&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;value1&#34;</span><span style="font-weight:bold">});</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>event name</td>
+<td>a name to identify the event being tracked</td>
+</tr>
+
+<tr>
+<td>data</td>
+<td>(optional) event data as key/value pairs</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 
           
@@ -408,6 +489,69 @@ This method has the same parameters as the <code>initialize()</code> method abov
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 nl2">
     
+      
+      
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/mobile-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Mobile Concepts
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/client-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Client-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Server-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Feature Comparison
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/troubleshooting/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Troubleshooting
+            </a>
+          </li>
+        </ul>
+      </li>
       
       
       <li class="w-100 hover-accent-color-light fw8 mb1 bb b--moon-gray">
@@ -1001,6 +1145,13 @@ This method has the same parameters as the <code>initialize()</code> method abov
               Function Definitions
             </a>
           </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
         </ul>
       </li>
       
@@ -1223,7 +1374,7 @@ This method has the same parameters as the <code>initialize()</code> method abov
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p> This page was last updated: August 1, 2019</p>
+<p> This page was last updated: September 10, 2019</p>
 
       
 
@@ -1261,6 +1412,12 @@ This method has the same parameters as the <code>initialize()</code> method abov
     
 
 <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="/platforms/getting-started/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
+        </a>
+    </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="/platforms/remote-commands/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">

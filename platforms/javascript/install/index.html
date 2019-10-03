@@ -276,7 +276,8 @@ var utag_data = {
 
 <p>The Universal Data Object (UDO) is a JavaScript object called <code>utag_data</code> in which dynamic data from your webpage is passed to the Tealium tag. The properties in this object are named using plain-English, vendor neutral terms that are specific to your business.  </p>
 
-<p class="note"><code>utag_data</code> should be defined and populated <em>prior</em> to loading the Universal Tag.</p>
+<p class="note">Define and populate <code>utag_data</code> <em>prior</em> to loading the Universal Tag.</p>
+
 
 <p>Example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#998;font-style:italic">&lt;!-- Tealium Universal Data Object --&gt;</span>
@@ -293,36 +294,60 @@ var utag_data = {
 
 <ul>
 <li><a href="/platforms/javascript/about-utag-data/">How the Universal Data Object Works</a></li>
-<li><a href="https://community.tealiumiq.com/t5/Data-Layer/How-the-Data-Layer-Works-for-Websites/ta-p/13618" target="_blank">How the Data Layer Works for Websites</a></li>
+<li><a href="https://community.tealiumiq.com/t5/Data-Layer/How-the-Data-Layer-Works-for-Websites/ta-p/13618">How the Data Layer Works for Websites</a></li>
 </ul>
 
 <h2 id="universal-tag-utag-js">Universal Tag (utag.js)</h2>
 
 <p>The utag.js JavaScript library is Tealium&rsquo;s universal tag that replaces third-party tags with a single snippet of code. The utag.js file contains all of the generated code necessary to load third-party tags onto your site.</p>
-
-<p>The path to the utag.js file comprises the following attributes:</p>
-
-<ul>
-<li><strong>Account</strong> - the name of your account in Tealium iQ</li>
-<li><strong>Profile</strong> - the name of the profile within your account (&ldquo;main&rdquo; is the default)</li>
-<li><strong>Environment</strong> - one of three default publish environments: dev, qa, or prod</li>
-</ul>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#998;font-style:italic">&lt;!-- Tealium Universal Tag --&gt;</span>
 &lt;<span style="color:#000080">script</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;text/javascript&#34;</span>&gt;
 (<span style="font-weight:bold">function</span>(a,b,c,d){
-a<span style="font-weight:bold">=</span><span style="color:#b84">&#39;//tags.tiqcdn.com/utag/[ACCOUNT]/[PROFILE]/[ENV]/utag.js&#39;</span>;
+a<span style="font-weight:bold">=</span><span style="color:#b84">&#39;//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/utag.js&#39;</span>;
 b<span style="font-weight:bold">=</span><span style="color:#999">document</span>;c<span style="font-weight:bold">=</span><span style="color:#b84">&#39;script&#39;</span>;d<span style="font-weight:bold">=</span>b.createElement(c);d.src<span style="font-weight:bold">=</span>a;
 d.type<span style="font-weight:bold">=</span><span style="color:#b84">&#39;text/java&#39;</span><span style="font-weight:bold">+</span>c;d.<span style="font-weight:bold">async</span><span style="font-weight:bold">=</span><span style="font-weight:bold">true</span>;
 a<span style="font-weight:bold">=</span>b.getElementsByTagName(c)[<span style="color:#099">0</span>];a.parentNode.insertBefore(d,a)
 })();
 &lt;/<span style="color:#000080">script</span>&gt;</code></pre></div>
-<p class="tip">Your specific snippet can be retrieved from the <a href="https://community.tealiumiq.com/t5/Tealium-iQ/Code-Center/ta-p/13631" target="_blank">Code Center</a> of your account.</p>
+<p>The path to the file comprises the following attributes:</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>account</td>
+<td>Name of your account.</td>
+</tr>
+
+<tr>
+<td>profile</td>
+<td>Name of your profile.</td>
+</tr>
+
+<tr>
+<td>environment</td>
+<td>One of &ldquo;dev&rdquo;, &ldquo;qa&rdquo; or &ldquo;prod&rdquo;.</td>
+</tr>
+</tbody>
+</table>
+
+<p class="note">Your specific snippet can be retrieved from the <a href="https://community.tealiumiq.com/t5/Tealium-iQ/Code-Center/ta-p/13631">Code Center</a> of your account.</p>
+
+
+<p class="tip">Your specific snippet can be retrieved from the <a href="https://community.tealiumiq.com/t5/Tealium-iQ/Code-Center/ta-p/13631">Code Center</a> of your account.</p>
+
 
 <p>Additional Reading:</p>
 
 <ul>
 <li><a href="/platforms/javascript/about-utag-js/">How utag.js works</a></li>
-<li><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Using-utag-sync-js/ta-p/19175" target="_blank">Using utag.sync.js</a></li>
+<li><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Using-utag-sync-js/ta-p/19175">Using utag.sync.js</a></li>
 </ul>
 
 <h2 id="code-placement">Code Placement</h2>
@@ -332,7 +357,7 @@ a<span style="font-weight:bold">=</span>b.getElementsByTagName(c)[<span style="c
 <p>Additional Reading:</p>
 
 <ul>
-<li><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Understanding-Order-of-Operations-utag-js/ta-p/326" target="_blank">Understanding Order of Operations (utag.js)</a></li>
+<li><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Understanding-Order-of-Operations-utag-js/ta-p/326">Understanding Order of Operations (utag.js)</a></li>
 </ul>
 
 </div>
@@ -346,6 +371,69 @@ a<span style="font-weight:bold">=</span>b.getElementsByTagName(c)[<span style="c
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 nl2">
     
+      
+      
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/mobile-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Mobile Concepts
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/client-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Client-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Server-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Feature Comparison
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/troubleshooting/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Troubleshooting
+            </a>
+          </li>
+        </ul>
+      </li>
       
       
       <li class="w-100 hover-accent-color-light fw8 mb1 bb b--moon-gray">
@@ -939,6 +1027,13 @@ a<span style="font-weight:bold">=</span>b.getElementsByTagName(c)[<span style="c
               Function Definitions
             </a>
           </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
         </ul>
       </li>
       
@@ -1161,7 +1256,7 @@ a<span style="font-weight:bold">=</span>b.getElementsByTagName(c)[<span style="c
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p> This page was last updated: February 12, 2019</p>
+<p> This page was last updated: September 10, 2019</p>
 
       
 
@@ -1199,6 +1294,12 @@ a<span style="font-weight:bold">=</span>b.getElementsByTagName(c)[<span style="c
     
 
 <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="/platforms/getting-started/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
+        </a>
+    </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="/platforms/remote-commands/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">

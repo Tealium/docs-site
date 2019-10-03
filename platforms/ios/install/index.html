@@ -235,7 +235,7 @@ var utag_data = {
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">In this article:</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
-              <li><a href="#sample-apps">Sample Apps</a></li>
+              <li><a href="#samples-and-reference">Samples and Reference</a></li>
               <li><a href="#install">Install</a></li>
               <ul class="toc-h3"><li><a href="#cocoapods">CocoaPods</a></li>
               <li><a href="#carthage">Carthage</a></li>
@@ -244,7 +244,6 @@ var utag_data = {
               <li><a href="#track-views">Track Views</a></li>
               <li><a href="#track-events">Track Events</a></li>
               <li><a href="#persistent-and-volatile-data">Persistent and Volatile Data</a></li>
-              <li><a href="#samples-documentation">Samples &amp; Documentation </a></li>
               <li><a href="#submit-to-the-app-store">Submit to the App Store</a></li>
               <li><a href="#change-log">Change Log</a></li>
               </nav>
@@ -292,21 +291,22 @@ var utag_data = {
 <p>For use with iQ Tag Management:</p>
 
 <ul>
-<li>Mobile Profile in iQ (see <a href="https://community.tealiumiq.com/t5/Getting-Started/Creating-a-Mobile-Profile/ta-p/16328" target="_blank">Creating a Mobile Profile</a>)</li>
+<li>Mobile Profile in iQ (see <a href="https://community.tealiumiq.com/t5/Getting-Started/Creating-a-Mobile-Profile/ta-p/16328">Creating a Mobile Profile</a>)</li>
 </ul>
 
 <p>For use with Universal Data Hub:</p>
 
 <ul>
-<li>Tealium <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/tkb-p/udh" target="_blank">Universal Data Hub</a> account</li>
+<li>Tealium <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/tkb-p/udh">Universal Data Hub</a> account</li>
 </ul>
 
-<h2 id="sample-apps">Sample Apps</h2>
+<h2 id="samples-and-reference">Samples and Reference</h2>
 
 <p>We recommend downloading one or more sample apps we provide within the iOS repository. This will help to familiarize yourself with our library, the tracking methods, and best practice implementation.</p>
 
 <ul>
 <li><a href="https://github.com/Tealium/tealium-ios/tree/master/Samples">iOS Sample Apps</a></li>
+<li><a href="http://tealium.github.io/tealium-ios/">API Reference</a></li>
 </ul>
 
 <p>We also recommend the use of a helper class to abstract the Tealium implementation from the rest of your app. This will give you a single entry point from which to initialize and make tracking calls. This approach allows you to update the code in your helper file and not in every single ViewController or header/method file.</p>
@@ -320,7 +320,7 @@ var utag_data = {
 
 <h3 id="cocoapods">CocoaPods</h3>
 
-<p>We recommend using <a href="https://guides.cocoapods.org/using/index.html" target="_blank">CocoaPods</a> to install the TealiumIOS framework. To do this, add the following dependency to your Podfile:</p>
+<p>We recommend using <a href="https://guides.cocoapods.org/using/index.html">CocoaPods</a> to install the TealiumIOS framework. To do this, add the following dependency to your Podfile:</p>
 
 <pre><code>pod &quot;TealiumIOS&quot;
 </code></pre>
@@ -334,10 +334,10 @@ var utag_data = {
 
 <h3 id="carthage">Carthage</h3>
 
-<p>If you prefer, you may use <a href="https://github.com/Carthage/Carthage" target="_blank">Carthage</a> to install the Tealium frameworks:</p>
+<p>If you prefer, you may use <a href="https://github.com/Carthage/Carthage">Carthage</a> to install the Tealium frameworks:</p>
 
 <ol>
-<li><p>Add the following to your <a href="https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile" target="_blank">Cartfile</a>:</p>
+<li><p>Add the following to your <a href="https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile">Cartfile</a>:</p>
 
 <pre><code>binary &quot;https://tags.tiqcdn.com/dle/tealiummobile/tealium-ios-carthage/tealium-carthage.json&quot;
 </code></pre></li>
@@ -347,7 +347,7 @@ var utag_data = {
 <pre><code>carthage update --platform ios
 </code></pre></li>
 
-<li><p>Make sure Carthage is <a href="https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos" target="_blank">properly integrated</a> into your Xcode project, so that the required frameworks are copied automatically at build-time. </p></li>
+<li><p>Make sure Carthage is <a href="https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos">properly integrated</a> into your Xcode project, so that the required frameworks are copied automatically at build-time. </p></li>
 
 <li><p>Remember to strip simulator support as necessary before submitting to the App Store. You can avoid this step by using the &ldquo;DeviceOnly&rdquo; builds provided on the GitHub repo, which are also downloaded when using Carthage.</p></li>
 </ol>
@@ -359,20 +359,49 @@ var utag_data = {
 <ol>
 <li>Add <code>TealiumIOS.framework</code> to your project.</li>
 <li>Copy framework to project in the resulting dialog box.</li>
-<li>In the Target go to <strong>General &gt; Embedded Binaries</strong> and add <code>TealiumIOS.framework</code>.<p class="note">For Swift projects go to the <strong>Build Settings &gt; Swift Compiler &gt; Objective-C Bridging Header</strong> option and include the file <code>TealiumIOSBridgingHeader.h</code>.</p></li>
+<li>In the Target go to <strong>General &gt; Embedded Binaries</strong> and add <code>TealiumIOS.framework</code>.<p class="note">For Swift projects go to the <strong>Build Settings &gt; Swift Compiler &gt; Objective-C Bridging Header</strong> option and include the file <code>TealiumIOSBridgingHeader.h</code>.</p>
+</li>
 </ol>
 
 <h2 id="initialize">Initialize</h2>
 
 <p>The Tealium instance must be configured with the following parameters before it will begin tracking:</p>
 
-<ul>
-<li><strong>account</strong> - the name of your account</li>
-<li><strong>profile</strong> - the name of your profile</li>
-<li><strong>environment</strong> - one of &ldquo;qa&rdquo; or &ldquo;prod&rdquo;</li>
-<li><strong>datasource</strong> - (optional) the data source key from UDH</li>
-<li><strong>instance</strong> - a unique name for your instance (multiple instances are supported). This can be any <code>String</code>. You can use this instance name to get the Tealium instance as seen below.</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>account</td>
+<td>Name of your account.</td>
+</tr>
+
+<tr>
+<td>profile</td>
+<td>Name of your profile.</td>
+</tr>
+
+<tr>
+<td>environment</td>
+<td>One of &ldquo;qa&rdquo; or &ldquo;prod&rdquo;.</td>
+</tr>
+
+<tr>
+<td>datasource</td>
+<td>(optional) The data source key from UDH.</td>
+</tr>
+
+<tr>
+<td>instance</td>
+<td>A unique name for your instance (multiple instances are supported).</td>
+</tr>
+</tbody>
+</table>
 
 <p>In the Application Delegate or within a helper class setup method use the following initialization code:  </p>
 
@@ -428,9 +457,10 @@ tealConfig.logLevel = .prod</code></pre></div>
 
 <h2 id="track-views">Track Views</h2>
 
-<p>Every time a user opens or changes a screen in the app a tracking call should be made. This is easily done in the <code>viewDidAppear</code> method of any View Controller. A view is tracked by calling <code>trackViewWithTitle()</code> with two parameters: the name of the screen and (optionally) contextual view data. </p>
+<p>Track screen views with <code>trackViewWithTitle()</code>. This can be done in the <code>viewDidAppear</code> method of any View Controller. This method accepts two parameters: the name of the screen and (optionally) contextual view data. </p>
 
-<p class="note">The screen name value will be populated in the event attribute named <code>screen_title</code>.</p>
+<p class="note">The screen name value is set in the event attribute <code>screen_title</code>.</p>
+
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
@@ -471,9 +501,10 @@ tealium?.trackView(withTitle: <span style="color:#b84">&#34;screenName&#34;</spa
 
 <h2 id="track-events">Track Events</h2>
 
-<p>All non-view activity should be tracked as an event. This is done by calling <code>trackEventWithTitle()</code> with two parameters: an event name and (optionally) contextual event data.</p>
+<p>Track non-view activity with <code>trackEventWithTitle()</code>. This method accepts two parameters: an event name and (optionally) contextual event data.</p>
 
-<p class="note">The event&nbsp;name value will be populated in the event attribute&nbsp;named&nbsp;<code>tealium_event</code>.</p>
+<p class="note">The event name value will be populated in the event attribute named <code>tealium_event</code>.</p>
+
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
@@ -543,27 +574,20 @@ NSDictionary <span style="font-weight:bold">*</span>volatileDataSources <span st
 </div>
 
 
-<h2 id="samples-documentation">Samples &amp; Documentation </h2>
-
-<ul>
-<li><a href="https://github.com/Tealium/tealium-ios/tree/master/Samples" target="_blank">Sample Apps</a></li>
-<li><a href="http://tealium.github.io/tealium-ios/" target="_blank">API Documentation</a></li>
-</ul>
-
 <h2 id="submit-to-the-app-store">Submit to the App Store</h2>
 
 <p>The mobile library contains slices that run in the simulator and on devices. Unfortunately, the simulator architecture is not allowed by Apple when submitting to the App Store.  When creating your archive be sure to run one of the following two scripts to strip out the simulator:</p>
 
 <ul>
-<li><a href="http://ikennd.ac/blog/2015/02/stripping-unwanted-architectures-from-dynamic-libraries-in-xcode/" target="_blank">Daniel Kennett&rsquo;s Strip Framework Script</a></li>
-<li><a href="https://github.com/realm/realm-cocoa/blob/d59c86f11525f346c8e8db277fdbf2d9ff990d98/scripts/strip-frameworks.sh" target="_blank">Realm strip-frameworks.sh</a></li>
+<li><a href="http://ikennd.ac/blog/2015/02/stripping-unwanted-architectures-from-dynamic-libraries-in-xcode/">Daniel Kennett&rsquo;s Strip Framework Script</a></li>
+<li><a href="https://github.com/realm/realm-cocoa/blob/d59c86f11525f346c8e8db277fdbf2d9ff990d98/scripts/strip-frameworks.sh">Realm strip-frameworks.sh</a></li>
 </ul>
 
-<p>Or you can use the <a href="https://github.com/Tealium/tealium-ios/tree/master/DevicesOnly" target="_blank">Devices Only Builds</a> that do not contain simulator slices.</p>
+<p>Or you can use the <a href="https://github.com/Tealium/tealium-ios/tree/master/DevicesOnly">Devices Only Builds</a> that do not contain simulator slices.</p>
 
 <h2 id="change-log">Change Log</h2>
 
-<p>See <a href="https://github.com/Tealium/tealium-ios/blob/master/CHANGELOG.md" target="_blank">GitHub</a></p>
+<p>See <a href="https://github.com/Tealium/tealium-ios/blob/master/CHANGELOG.md">GitHub</a></p>
 
 </div>
 
@@ -576,6 +600,69 @@ NSDictionary <span style="font-weight:bold">*</span>volatileDataSources <span st
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 nl2">
     
+      
+      
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/mobile-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Mobile Concepts
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/client-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Client-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Server-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Feature Comparison
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/troubleshooting/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Troubleshooting
+            </a>
+          </li>
+        </ul>
+      </li>
       
       
       <li class="w-100 hover-accent-color-light fw8 mb1 bb b--moon-gray">
@@ -1169,6 +1256,13 @@ NSDictionary <span style="font-weight:bold">*</span>volatileDataSources <span st
               Function Definitions
             </a>
           </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
         </ul>
       </li>
       
@@ -1391,7 +1485,7 @@ NSDictionary <span style="font-weight:bold">*</span>volatileDataSources <span st
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p> This page was last updated: June 25, 2019</p>
+<p> This page was last updated: September 10, 2019</p>
 
       
 
@@ -1429,6 +1523,12 @@ NSDictionary <span style="font-weight:bold">*</span>volatileDataSources <span st
     
 
 <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="/platforms/getting-started/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
+        </a>
+    </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="/platforms/remote-commands/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">

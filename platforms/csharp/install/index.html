@@ -239,7 +239,7 @@ var utag_data = {
               <li><a href="#install">Install</a></li>
               <li><a href="#initialize">Initialize</a></li>
               <li><a href="#track-events">Track Events</a></li>
-              <li><a href="#joining-and-leaving-a-trace">Joining and Leaving a Trace</a></li>
+              <li><a href="#trace">Trace</a></li>
               <li><a href="#xamarin-mobile-applications">Xamarin Mobile Applications</a></li>
               </nav>
   </aside></div>
@@ -279,7 +279,7 @@ var utag_data = {
 <h2 id="requirements">Requirements</h2>
 
 <ul>
-<li>Tealium <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/tkb-p/udh" target="_blank">Universal Data Hub</a> account</li>
+<li>Tealium <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/tkb-p/udh">Universal Data Hub</a> account</li>
 <li>Visual Studio (or other C# compliant IDE)</li>
 </ul>
 
@@ -296,26 +296,14 @@ var utag_data = {
 <p>The code for the Tealium C# library is stored in Github.</p>
 
 <ul>
-<li>Download: <a href="https://github.com/Tealium/tealium-c-sharp" target="_blank">Tealium C# Library</a></li>
+<li>Download: <a href="https://github.com/Tealium/tealium-c-sharp">Tealium C# Library</a></li>
 </ul>
 
 <p>Import the <em>Tealium</em> folder into your solution.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="font-weight:bold">using</span> <span style="color:#555">TealiumCSharp</span>;</code></pre></div>
 <h2 id="initialize">Initialize</h2>
 
-<p>Once the Tealium for C# package is installed you are ready to start coding. Use the following code to initialize with the following parameters:</p>
-
-<ul>
-<li><strong>account</strong> - the name of your account.</li>
-<li><strong>profile</strong> - the name of your profile within your account.</li>
-<li><strong>environment</strong> - &ldquo;qa&rdquo; or &ldquo;prod&rdquo;</li>
-<li><strong>visitorID</strong> - a 32 character alphanumeric string identifer that should be unique to a user, app instance. Null acceptable.</li>
-<li><strong>modules</strong> - (optional) modules to be initialized with library. Default modules if none provided: AppDataModule, CollectModule, LoggerModule.</li>
-<li><strong>dataSourceKey</strong> - (optional) the data source key from UDH.</li>
-<li><strong>overrideCollectUrl</strong> - (optional) custom endpoint for the Tealium Collect service.</li>
-<li><strong>optionalData</strong> - (optional) dictionary for module use. Null acceptable.</li>
-<li><strong>method</strong> - (optional) HTTP Method for the Collect Endpoint. Default: Method.POST</li>
-</ul>
+<p>Once the Tealium for C# package is installed you are ready to start coding. Use the following code to initialize:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">Config tealConfig = <span style="font-weight:bold">new</span> Config(<span style="color:#b84">&#34;account&#34;</span>,
                                <span style="color:#b84">&#34;profile&#34;</span>,
                                <span style="color:#b84">&#34;environment&#34;</span>,
@@ -326,21 +314,99 @@ var utag_data = {
                                <span style="font-weight:bold">new</span> Dictionary&lt;<span style="color:#458;font-weight:bold">string</span>, <span style="color:#458;font-weight:bold">object</span>&gt; optionalData,
                                Method.POST);
 Tealium tealium = <span style="font-weight:bold">new</span> Tealium(tealConfig);</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>account</td>
+<td>Name of your account.</td>
+</tr>
+
+<tr>
+<td>profile</td>
+<td>Name of your profile.</td>
+</tr>
+
+<tr>
+<td>environment</td>
+<td>One of &ldquo;dev&rdquo;, &ldquo;qa&rdquo; or &ldquo;prod&rdquo;.</td>
+</tr>
+
+<tr>
+<td>visitorID</td>
+<td>A 32 character alphanumeric string identifer, unique to a user, app instance. Null acceptable.</td>
+</tr>
+
+<tr>
+<td>modules</td>
+<td>(optional) Modules to be initialized with library. Default modules if none provided: AppDataModule, CollectModule, LoggerModule.</td>
+</tr>
+
+<tr>
+<td>dataSourceKey</td>
+<td>(optional) The data source key from UDH.</td>
+</tr>
+
+<tr>
+<td>overrideCollectUrl</td>
+<td>(optional) Custom endpoint for the Tealium Collect service.</td>
+</tr>
+
+<tr>
+<td>optionalData</td>
+<td>(optional) Dictionary for module use. Null acceptable.</td>
+</tr>
+
+<tr>
+<td>method</td>
+<td>(optional) HTTP Method for the Collect Endpoint. Default: Method.POST</td>
+</tr>
+</tbody>
+</table>
+
 <h2 id="track-events">Track Events</h2>
 
-<p>Once the Tealium object has been defined you can begin tracking events with the method <code>Track()</code>, which takes the following parameters::</p>
-
-<ul>
-<li><strong>eventName</strong> - a name to identify the event</li>
-<li><strong>customData</strong> - (optional) custom data dictionary to send with track call</li>
-<li><strong>completion</strong> - (optional) completion block to trigger after track call</li>
-</ul>
+<p>Once the Tealium object has been defined you can begin tracking events with the method <code>Track()</code>:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">tealium.Track(<span style="color:#b84">&#34;eventName&#34;</span>,
     customData,
     (success, info, error)=&gt;) {
         Debug.WriteLine(<span style="color:#b84">&#34;eventTrackComplete: was successful: &#34;</span> + success);
 });</code></pre></div>
-<p>Below are two convenience methods for calling <code>Track()</code> without the optional parameters:</p>
+<h4 id="parameters">Parameters</h4>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>eventName</td>
+<td>a name to identify the event</td>
+</tr>
+
+<tr>
+<td>customData</td>
+<td>(optional) custom data dictionary to send with track call</td>
+</tr>
+
+<tr>
+<td>completion</td>
+<td>(optional) completion block to trigger after track call</td>
+</tr>
+</tbody>
+</table>
+
+<p>Use the following convenience methods for calling <code>Track()</code> without the optional parameters:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">// track call with only an event name
 </span><span style="color:#998;font-style:italic"></span>tealium.Track(<span style="color:#b84">&#34;My Event&#34;</span>);
 
@@ -352,7 +418,7 @@ Tealium tealium = <span style="font-weight:bold">new</span> Tealium(tealConfig);
    {<span style="color:#b84">&#34;foo3&#34;</span>, <span style="color:#b84">&#34;bar3&#34;</span>}
 };
 tealium.Track(<span style="color:#b84">&#34;My Event&#34;</span>, customData);</code></pre></div>
-<h2 id="joining-and-leaving-a-trace">Joining and Leaving a Trace</h2>
+<h2 id="trace">Trace</h2>
 
 <p>This library uses the <a href="/platforms/http-api/">HTTP API</a> and therefore supports sending a Trace Id for debugging purposes. To join a Trace, simply generate a new Trace Id in the UDH User Interface and then pass that Id to the JoinTrace method:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">tealium.JoinTrace(<span style="color:#b84">&#34;01234&#34;</span>);</code></pre></div>
@@ -377,6 +443,69 @@ tealium.Track(<span style="color:#b84">&#34;My Event&#34;</span>, customData);</
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 nl2">
     
+      
+      
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/mobile-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Mobile Concepts
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/client-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Client-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Server-Side
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Feature Comparison
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/troubleshooting/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Troubleshooting
+            </a>
+          </li>
+        </ul>
+      </li>
       
       
       <li class="w-100 hover-accent-color-light fw8 mb1 bb b--moon-gray">
@@ -970,6 +1099,13 @@ tealium.Track(<span style="color:#b84">&#34;My Event&#34;</span>, customData);</
               Function Definitions
             </a>
           </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
         </ul>
       </li>
       
@@ -1192,7 +1328,7 @@ tealium.Track(<span style="color:#b84">&#34;My Event&#34;</span>, customData);</
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p> This page was last updated: July 23, 2019</p>
+<p> This page was last updated: September 10, 2019</p>
 
       
 
@@ -1230,6 +1366,12 @@ tealium.Track(<span style="color:#b84">&#34;My Event&#34;</span>, customData);</
     
 
 <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="/platforms/getting-started/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
+        </a>
+    </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="/platforms/remote-commands/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
