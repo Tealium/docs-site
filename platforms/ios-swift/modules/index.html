@@ -242,7 +242,6 @@ var utag_data = {
               </ul><li><a href="#install-modules">Install Modules</a></li>
               <ul class="toc-h3"><li><a href="#cocoapods">CocoaPods</a></li>
               <li><a href="#carthage">Carthage</a></li>
-              <li><a href="#manual">Manual</a></li>
               </ul><li><a href="#disable-modules">Disable Modules</a></li>
               </nav>
   </aside></div>
@@ -337,7 +336,7 @@ var utag_data = {
 <td><a href="/platforms/ios-swift/module-list/connectivity/">Connectivity</a></td>
 <td>connectivity</td>
 <td>Adds ability to flag track messages for delayed delivery due to connectivity loss</td>
-<td>iOS, macOS, tvOS</td>
+<td>iOS, macOS, tvOS, watchOS</td>
 </tr>
 
 <tr>
@@ -350,14 +349,14 @@ var utag_data = {
 <tr>
 <td><a href="/platforms/ios-swift/module-list/datasource/">DataSource</a></td>
 <td><code>datasource</code></td>
-<td>Adds an additional config init option for datasource IDs.</td>
+<td>Adds an additional config init option for datasource IDs. Included in Core with Swift 1.8.0+.</td>
 <td>iOS, macOS, tvOS, watchOS</td>
 </tr>
 
 <tr>
-<td><a href="/platforms/ios-swift/module-list/defaults-storage/">DefaultsStorage</a></td>
-<td><code>defaultsstorage</code></td>
-<td>Adds general persistence capability for any module (backed by <code>UserDefaults</code>)</td>
+<td><a href="/platforms/ios-swift/module-list/defaults-storage/">DefaultStorage</a></td>
+<td><code>defaultstorage</code></td>
+<td>Adds general persistence capability for any module (backed by UserDefaults). Included in Core with Swift 1.8.0+.</td>
 <td>iOS, tvOS, watchOS, macOS</td>
 </tr>
 
@@ -372,20 +371,20 @@ var utag_data = {
 <td><a href="/platforms/ios-swift/module-list/device-data/">DeviceData</a></td>
 <td><code>devicedata</code></td>
 <td>Add as additional device info to all track data</td>
-<td>iOS</td>
+<td>iOS, macOS, tvOS, watchOS</td>
 </tr>
 
 <tr>
 <td><a href="/platforms/ios-swift/module-list/dispatch-queue/">DispatchQueue</a></td>
 <td><code>dispatchqueue</code></td>
-<td>Adds persistent storage for queued dispatches</td>
+<td>Adds persistent storage for queued dispatches and manages Event Batching, if enabled</td>
 <td>iOS, macOS, tvOS, watchOS</td>
 </tr>
 
 <tr>
 <td><a href="/platforms/ios-swift/module-list/file-storage/">FileStorage</a></td>
 <td><code>filestorage</code></td>
-<td>Adds general persistence capability for any module - replaces the Defaults Storage module (backed by <code>NSKeyedArchiver</code>)</td>
+<td>Adds general persistence capability for any module - replaces the Defaults Storage module (backed by <code>NSKeyedArchiver</code>). Included in Core with Swift 1.8.0+.</td>
 <td>iOS, macOS, watchOS, tvOS</td>
 </tr>
 
@@ -425,6 +424,13 @@ var utag_data = {
 </tr>
 
 <tr>
+<td><a href="/platforms/ios-swift/module-list/visitor-service/">Visitor Service</a></td>
+<td><code>visitorservice</code></td>
+<td>Retrieves the updated visitor profile from the visitor service</td>
+<td>iOS, macOS, tvOS, watchOS</td>
+</tr>
+
+<tr>
 <td><a href="/platforms/ios-swift/module-list/volatile-data/">Volatile Data</a></td>
 <td><code>volatiledata</code></td>
 <td>Adds ability to add session persistent data to all track data (clears upon app termination/close)</td>
@@ -446,11 +452,9 @@ var utag_data = {
 <li>Attribution<br /></li>
 <li>AppData<br /></li>
 <li>Connectivity<br /></li>
-<li>DataSource<br /></li>
 <li>Delegate<br /></li>
 <li>DeviceData<br /></li>
 <li>DispatchQueue<br /></li>
-<li>FileStorage<br /></li>
 <li>Lifecycle<br /></li>
 <li>Logger<br /></li>
 <li>PersistentData<br /></li>
@@ -478,7 +482,7 @@ var utag_data = {
 
 <h2 id="install-modules">Install Modules</h2>
 
-<p>Install the modules with CocoaPods, Carthage, or manually.</p>
+<p>Install the modules with CocoaPods or Carthage.</p>
 
 <h3 id="cocoapods">CocoaPods</h3>
 
@@ -487,10 +491,6 @@ var utag_data = {
 <h3 id="carthage">Carthage</h3>
 
 <p>When you install with Carthage, you must explicitly import the modules you require. You may import all modules if you prefer, and use the module list, as described earlier, but your app is lighter if you only import the modules you need. See <a href="/platforms/ios-swift/install/#carthage">Install with Carthage</a> for instructions on including/excluding specific modules.</p>
-
-<h3 id="manual">Manual</h3>
-
-<p>If you are installing the library manually, you may completely remove unwanted modules from your project, and they are not invoked.</p>
 
 <h2 id="disable-modules">Disable Modules</h2>
 
@@ -1081,6 +1081,20 @@ config.setModulesList(modulesList)</code></pre></div>
           <li class="fw4">
             
             
+            <a href="/platforms/ios-swift/app-extensions/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              App Extensions
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/ios-swift/identity-resolution/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Identity Resolution
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
             <a href="/platforms/ios-swift/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Consent Management
             </a>
@@ -1503,7 +1517,7 @@ config.setModulesList(modulesList)</code></pre></div>
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p>This page was last updated:  October 29, 2019 </p>
+<p>This page was last updated:  November 18, 2019 </p>
 
       
 

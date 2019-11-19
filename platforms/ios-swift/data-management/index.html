@@ -284,14 +284,56 @@ var utag_data = {
 
 <p>The <a href="/platforms/ios-swift/api/tealium-persistent-data/#add"><code>persistentData().add()</code></a> method stores persistent data, as shown in the following example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.persistentData()?.add(data: [<span style="color:#b84">&#34;KEY&#34;</span>:<span style="color:#b84">&#34;VALUE&#34;</span>])</code></pre></div>
-<p class="note">Persistent data storage is backed by either <code>UserDefaults</code> or <code>FileStorage</code>, depending on the modules currently enabled.</p>
+<p>To clear data for specific keys use the <a href="/platforms/ios-swift/api/tealium-persistent-data/#deletedata"><code>persistentData.deleteData()</code></a> method, or to delete all data use the <a href="/platforms/ios-swift/api/tealium-persistent-data/#deletealldata"><code>persistentData.deleteAllData()</code></a> method.</p>
 
+<p>The following example demonstrates these methods:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
+	<span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
+	<span style="color:#998;font-style:italic">// ...</span>
+
+	<span style="color:#998;font-style:italic">// Adds persistent data to be sent on each hit until manually cleared		</span>
+  <span style="color:#998;font-style:italic">// - Parameter data: `[String: Any]` containing key-value pairs to be stored as persistent data</span>
+	<span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">addPersistentData</span>(<span style="font-weight:bold">_</span> data: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>]) {
+
+		<span style="font-weight:bold">self</span>.tealium?.persistentData()?.add(data)
+	}
+
+	<span style="color:#998;font-style:italic">// Deletes persistent data for specific keys</span>
+	<span style="color:#998;font-style:italic">// - Parameter keys: `[String]` containing keys to be deleted</span>
+	<span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">deleteData</span>(<span style="font-weight:bold">for</span> keys: [<span style="color:#999">String</span>]) {
+		<span style="color:#998;font-style:italic">// clear data for specific keys</span>
+		<span style="font-weight:bold">self</span>.tealium?.persistentData.deleteData(forKeys: keys)
+		<span style="font-weight:bold">self</span>.tealium?.persistentData.deleteAllData()
+	}
+}</code></pre></div>
 <h2 id="volatile-data">Volatile Data</h2>
 
 <p>Volatile data values are merged into to each event, but discarded upon closing the app and restarting. The values are merged with any dictionary passed to a tracking call.</p>
 
-<p>The <a href="/platforms/ios-swift/api/tealium-volatile-data/#add"><code>volatileData().add()</code></a> method stores volatile data, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.volatileData()?.add(data: [<span style="color:#b84">&#34;KEY&#34;</span>:<span style="color:#b84">&#34;VALUE&#34;</span>])</code></pre></div>
+<p>The <a href="/platforms/ios-swift/api/tealium-volatile-data/#add"><code>volatileData().add()</code></a> method stores volatile data.</p>
+
+<p>To clear data for specific keys use the <a href="/platforms/ios-swift/api/tealium-volatile-data/#deletedata"><code>voltileData.deleteData()</code></a> method, or to delete all data use the <a href="/platforms/ios-swift/api/tealium-volatile-data/#deletealldata"><code>volatileData.deleteAllData()</code></a> method.</p>
+
+<p>The following example demonstrates these methods:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
+	<span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
+	<span style="color:#998;font-style:italic">// ...</span>
+
+	<span style="color:#998;font-style:italic">// Adds volatile data to be sent on each hit until the app is terminated</span>
+  <span style="color:#998;font-style:italic">// - Parameter data: `[String: Any]` containing key-value pairs to be stored as volatile data</span>
+	<span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">addVolatileData</span>(<span style="font-weight:bold">_</span> data: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>]) {
+
+		<span style="font-weight:bold">self</span>.tealium?.volatileData()?.add(data)
+	}
+
+	<span style="color:#998;font-style:italic">// Deletes volatile data for specific keys</span>
+  <span style="color:#998;font-style:italic">// - Parameter keys: `[String]` containing keys to be deleted</span>
+	<span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">deleteData</span>(<span style="font-weight:bold">for</span> keys: [<span style="color:#999">String</span>]) {
+		<span style="color:#998;font-style:italic">// clear data for specific keys</span>
+		<span style="font-weight:bold">self</span>.tealium?.volatileData.deleteData(forKeys: keys)
+		<span style="font-weight:bold">self</span>.tealium?.volatileData.deleteAllData()
+	}
+}</code></pre></div>
 </div>
 
           
@@ -872,6 +914,20 @@ var utag_data = {
           <li class="fw4">
             
             
+            <a href="/platforms/ios-swift/app-extensions/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              App Extensions
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/ios-swift/identity-resolution/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Identity Resolution
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
             <a href="/platforms/ios-swift/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Consent Management
             </a>
@@ -1294,7 +1350,7 @@ var utag_data = {
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p>This page was last updated:  October 24, 2019 </p>
+<p>This page was last updated:  November 15, 2019 </p>
 
       
 

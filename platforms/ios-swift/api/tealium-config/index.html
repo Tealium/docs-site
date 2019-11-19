@@ -251,15 +251,22 @@ var utag_data = {
               <li><a href="#isconsentloggingenabled">isConsentLoggingEnabled()</a></li>
               <li><a href="#ismemoryreportingenabled">isMemoryReportingEnabled()</a></li>
               <li><a href="#issearchadsenabled">isSearchAdsEnabled()</a></li>
+              <li><a href="#setbatchexpirationdays">setBatchExpirationDays()</a></li>
+              <li><a href="#setbatchingbypasskeys">setBatchingBypassKeys()</a></li>
+              <li><a href="#setbatchsize">setBatchSize()</a></li>
               <li><a href="#setcollectoverrideurl">setCollectOverrideURL()</a></li>
               <li><a href="#setconnectivityrefreshenabled">setConnectivityRefreshEnabled()</a></li>
               <li><a href="#setconnectivityrefreshinterval">setConnectivityRefreshInterval()</a></li>
               <li><a href="#setconsentloggingenabled">setConsentLoggingEnabled()</a></li>
+              <li><a href="#setdispatchafter">setDispatchAfter()</a></li>
               <li><a href="#setdispatchqueue">setDispatchQueue()</a></li>
               <li><a href="#setinitialuserconsentcategories">setInitialUserConsentCategories()</a></li>
               <li><a href="#setinitialuserconsentstatus">setInitialUserConsentStatus()</a></li>
+              <li><a href="#setiseventbatchingenabled">setIsEventBatchingEnabled()</a></li>
+              <li><a href="#setisremoteapienabled">setIsRemoteAPIEnabled()</a></li>
               <li><a href="#setlegacydispatchmethod">setLegacyDispatchMethod()</a></li>
               <li><a href="#setloglevel">setLogLevel()</a></li>
+              <li><a href="#setmaxqueuesize">setMaxQueueSize()</a></li>
               <li><a href="#setmemoryreportingenabled">setMemoryReportingEnabled()</a></li>
               <li><a href="#setmoduleslist">setModulesList()</a></li>
               <li><a href="#setoverrideconsentpolicy">setOverrideConsentPolicy()</a></li>
@@ -398,6 +405,21 @@ var utag_data = {
 </tr>
 
 <tr>
+<td><code>setBatchExpirationDays()</code></td>
+<td>Sets the batch expiration in days. If the device is offline for an extended period, events older than this will be deleted</td>
+</tr>
+
+<tr>
+<td><code>setBatchingBypassKeys()</code></td>
+<td>Sets a list of event names for which batching will be bypassed (sent as individual events)</td>
+</tr>
+
+<tr>
+<td><code>setBatchSize()</code></td>
+<td>Sets the amount of events to combine into a single batch request. Maxiumum 10.</td>
+</tr>
+
+<tr>
 <td><code>setCollectOverrideURL()</code></td>
 <td>Overrides the Tealium Collect URL to send data to a different endpoint</td>
 </tr>
@@ -413,8 +435,8 @@ var utag_data = {
 </tr>
 
 <tr>
-<td><code>setConsentLoggingEnabled()</code></td>
-<td>Enables the Consent Logging feature, which sends all consent status changes to UDH for auditing purposes</td>
+<td><code>setDispatchAfter()</code></td>
+<td>Sets the number of events after which the queue will be flushed</td>
 </tr>
 
 <tr>
@@ -433,6 +455,16 @@ var utag_data = {
 </tr>
 
 <tr>
+<td><code>setIsEventBatchingEnabled()</code></td>
+<td>Enables (<code>true</code>) or disables (<code>false</code>) event batching. Default <code>false</code></td>
+</tr>
+
+<tr>
+<td><code>setIsRemoteAPIEnabled()</code></td>
+<td>Enables (<code>true</code>) or disables (<code>false</code>) <code>remote_api</code> event. Required for RemoteCommands module if DispatchQueue module in use.</td>
+</tr>
+
+<tr>
 <td><code>setLegacyDispatchMethod()</code></td>
 <td>Forces Collect module to use the legacy <code>&quot;vdata&quot;</code> GET request dispatcher instead of the default <code>&quot;/event&quot;</code> POST request dispatcher</td>
 </tr>
@@ -440,6 +472,11 @@ var utag_data = {
 <tr>
 <td><code>setLogLevel()</code></td>
 <td>Sets a new log level</td>
+</tr>
+
+<tr>
+<td><code>setMaxQueueSize()</code></td>
+<td>Sets the maximum number of queued events. If this number is reached, and the queue has not been flushed, the oldest events will be deleted.</td>
 </tr>
 
 <tr>
@@ -803,6 +840,78 @@ config.addRemoteCommand(remoteCommand)
 </tbody>
 </table>
 
+<h3 id="setbatchexpirationdays"><code>setBatchExpirationDays()</code></h3>
+
+<p>Sets the batch expiration in days. If the device is offline for an extended period, events older than this will be deleted.</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>days</code></td>
+<td><code>Int</code></td>
+<td>Number of days after which old events will be deleted</td>
+<td><code>7</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="setbatchingbypasskeys"><code>setBatchingBypassKeys()</code></h3>
+
+<p>Sets a list of event names for which batching will be bypassed (sent as individual events).</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>keys</code></td>
+<td><code>[String]</code></td>
+<td>Array containing a list of keys for which to bypass batching.</td>
+<td><code>[&quot;my_event&quot;]</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="setbatchsize"><code>setBatchSize()</code></h3>
+
+<p>Sets the amount of events to combine into a single batch request. Maxiumum 10.</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>batchSize</code></td>
+<td><code>Int</code></td>
+<td>The size of each batch of events. Max 10</td>
+<td><code>10</code></td>
+</tr>
+</tbody>
+</table>
+
 <h3 id="setcollectoverrideurl"><code>setCollectOverrideURL()</code></h3>
 
 <p>Overrides the Tealium Collect URL to send data to a different endpoint.</p>
@@ -822,13 +931,13 @@ config.addRemoteCommand(remoteCommand)
 <td><code>string</code></td>
 <td><code>String</code></td>
 <td>The URL to which all Collect module dispatches should be sent. Used to force data collection to stay within a particular region.</td>
-<td><code>&quot;EU Central/Germany&quot;</code></td>
+<td><code>&quot;https://collect-eu-central-1.tealiumiq.com/event/&quot;</code></td>
 </tr>
 </tbody>
 </table>
 
 <p>The following example shows how to force the Tealium Collect base URL to EU Central.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">url</span> = <span style="color:#b84">&#34;https://collect-eu-central-1.tealiumiq.com/vdata/i.gif?&#34;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">url</span> = <span style="color:#b84">&#34;https://collect-eu-central-1.tealiumiq.com/event/&#34;</span>
 config.setCollectOverrideURL(string: url)</code></pre></div>
 <h3 id="setconnectivityrefreshenabled"><code>setConnectivityRefreshEnabled()</code></h3>
 
@@ -900,6 +1009,30 @@ config.setCollectOverrideURL(string: url)</code></pre></div>
 <td><code>Bool</code></td>
 <td>Set to <code>true</code> to enable consent logging (default: <code>false</code>)</td>
 <td>[<code>&quot;true&quot;</code>, <code>&quot;false&quot;</code>]</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="setdispatchafter"><code>setDispatchAfter()</code></h3>
+
+<p>Sets the number of events after which the queue will be flushed.</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>events</code></td>
+<td><code>Int</code></td>
+<td>The number of events after which a batch will be transmitted</td>
+<td><code>100</code></td>
 </tr>
 </tbody>
 </table>
@@ -992,6 +1125,54 @@ The <code>consented</code> status is set when the user has consented to tracking
 <p><strong>.notConsented</strong><br />
 The <code>notConsented</code> status is set when the user has declined tracking. In this state, the Consent Manager drops all tracking calls and halt further processing by the SDK.</p>
 
+<h3 id="setiseventbatchingenabled"><code>setIsEventBatchingEnabled()</code></h3>
+
+<p>Enables (true) or disables (false) event batching. Default false</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>enabled</code></td>
+<td><code>Bool</code></td>
+<td>If true, enables event batching</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="setisremoteapienabled"><code>setIsRemoteAPIEnabled()</code></h3>
+
+<p>Enables (<code>true</code>) or disables (<code>false</code>) <code>remote_api</code> event. Required for RemoteCommands module if DispatchQueue module in use. Default <code>false</code>.</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>enabled</code></td>
+<td><code>Bool</code></td>
+<td>Determines if <code>remote_api</code> call is enabled</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+
 <h3 id="setlegacydispatchmethod"><code>setLegacyDispatchMethod()</code></h3>
 
 <p>Forces Collect module to use the legacy <code>&quot;vdata&quot;</code> GET request dispatcher instead of the default <code>&quot;/event&quot;</code> POST request dispatcher.</p>
@@ -1043,6 +1224,30 @@ The <code>notConsented</code> status is set when the user has declined tracking.
 <p>The following example shows how to set the log level to <code>errors</code>:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">newLogLevel</span> = TealiumLogLevel.errors
 config.setLogLevel(logLevel: newLogLevel)</code></pre></div>
+<h3 id="setmaxqueuesize"><code>setMaxQueueSize()</code></h3>
+
+<p>Sets the maximum number of events to store in the event queue. If this number is reached, and the queue has not been flushed, the oldest events are deleted.</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>queueSize</code></td>
+<td><code>Int</code></td>
+<td>The maximum number of events to store in the event queue</td>
+<td><code>200</code></td>
+</tr>
+</tbody>
+</table>
+
 <h3 id="setmemoryreportingenabled"><code>setMemoryReportingEnabled()</code></h3>
 
 <p>Enables or disables memory reporting in the DeviceData module (default: disabled).</p>
@@ -1943,6 +2148,20 @@ Allows certain default behavior to be overridden at init time. Generally, it is 
           <li class="fw4">
             
             
+            <a href="/platforms/ios-swift/app-extensions/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              App Extensions
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/ios-swift/identity-resolution/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Identity Resolution
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
             <a href="/platforms/ios-swift/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Consent Management
             </a>
@@ -2365,7 +2584,7 @@ Allows certain default behavior to be overridden at init time. Generally, it is 
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p>This page was last updated:  October 29, 2019 </p>
+<p>This page was last updated:  November 19, 2019 </p>
 
       
 

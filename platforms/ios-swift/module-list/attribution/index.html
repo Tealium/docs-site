@@ -240,7 +240,6 @@ var utag_data = {
               <ul class="toc-h3"><li><a href="#cocoapods">CocoaPods</a></li>
               <li><a href="#carthage">Carthage</a></li>
               </ul><li><a href="#data-layer">Data Layer</a></li>
-              <li><a href="#release-notes">Release Notes</a></li>
               </nav>
   </aside></div>
 
@@ -326,7 +325,7 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable</th>
+<th>Variable Name</th>
 <th>Description</th>
 <th>Example</th>
 </tr>
@@ -334,103 +333,122 @@ var utag_data = {
 
 <tbody>
 <tr>
-<td><code>device_advertising_id</code></td>
-<td>User-resettable advertising identifier (IDFA)</td>
-<td><code>&quot;6D92078A-8246-4BA4-AE5B-76104861E7DC&quot;</code></td>
+<td><code>ad_campaign_id</code></td>
+<td>The corresponding ad&rsquo;s campaign ID</td>
+<td><code>1234567890</code></td>
 </tr>
 
 <tr>
-<td><code>device_advertising_ vendor_id</code></td>
-<td>Unique ID guaranteed to be the same across all apps on the same device from a single vendor (apps with the same 1st 2 parts of the RDNS bundle identifier. For example, com.tealium or com.acme).</td>
-<td><code>&quot;6D92078A-8246-4BA4-AE5B-76104861E7DC&quot;</code></td>
+<td><code>ad_campaign_name</code></td>
+<td>The corresponding ad&rsquo;s campaign name</td>
+<td><code>CampaignName</code></td>
+</tr>
+
+<tr>
+<td><code>ad_creativeset_id</code></td>
+<td>The ID of the Creative Set which the corresponding ad was part of.</td>
+<td><code>456093</code></td>
+</tr>
+
+<tr>
+<td><code>ad_creativeset_name</code></td>
+<td>The name of the Creative Set which the corresponding ad was part of.</td>
+<td><code>Beast Images</code></td>
+</tr>
+
+<tr>
+<td><code>ad_group_id</code></td>
+<td>The corresponding ad&rsquo;s campaign group ID</td>
+<td><code>1234567890</code></td>
+</tr>
+
+<tr>
+<td><code>ad_group_name</code></td>
+<td>The corresponding ad&rsquo;s campaign group name</td>
+<td><code>AdGroupName</code></td>
+</tr>
+
+<tr>
+<td><code>ad_keyword</code></td>
+<td>The keyword that drove the ad impression which led to the corresponding ad click</td>
+<td><code>Keyword</code></td>
+</tr>
+
+<tr>
+<td><code>ad_keyword_matchtype</code></td>
+<td>This may either be Broad, Exact or Search Match.</td>
+<td><code>Exact</code></td>
+</tr>
+
+<tr>
+<td><code>ad_org_id</code></td>
+<td>The corresponding ad&rsquo;s campaign organization ID</td>
+<td><code>OrgID</code></td>
+</tr>
+
+<tr>
+<td><code>ad_org_name</code></td>
+<td>The corresponding ad&rsquo;s campaign organization name</td>
+<td><code>OrgName</code></td>
+</tr>
+
+<tr>
+<td><code>ad_purchase_date</code></td>
+<td>Date and time the user first downloaded your app. In the case where <code>iadconversion-type = “Redownload”</code>, this represents the original purchase date. This may or may not have been associated with an Apple Search Ad.</td>
+<td><code>2016-12-05T17:31:40Z</code></td>
+</tr>
+
+<tr>
+<td><code>ad_region</code></td>
+<td>Identifies the country or region associated with the campaign which drove this install.</td>
+<td><code>US</code></td>
+</tr>
+
+<tr>
+<td><code>ad_user_clicked_ last_30_days</code></td>
+<td>Boolean indicating if user clicked on a Search Ads impression within 30 days prior to app download</td>
+<td>[<code>true</code>, <code>false</code>]</td>
+</tr>
+
+<tr>
+<td><code>ad_user_conversion_type</code></td>
+<td>Identifies new download or re-download of the app</td>
+<td><code>Download</code></td>
+</tr>
+
+<tr>
+<td><code>ad_user_date_ clicked</code></td>
+<td>Date and time the user clicked on a corresponding ad</td>
+<td><code>2016-12-05T17:31:40Z</code></td>
+</tr>
+
+<tr>
+<td><code>ad_user_date_ converted</code></td>
+<td>Date and time the user downloaded the app</td>
+<td><code>2016-12-05T17:31:40Z</code></td>
 </tr>
 
 <tr>
 <td><code>device_advertising_ enabled</code></td>
-<td>Boolean to indicate whether the user has allowed ad tracking. True if ad tracking enabled, otherwise false. Note: if false, the advertising ID appears as a string of zeroes</td>
-<td>[<code>&quot;true&quot;</code>, <code>&quot;false&quot;</code>]</td>
+<td>Boolean indicating if the user allowed ad tracking (if <code>false</code>, the advertising ID appears as a string of zeroes)</td>
+<td>[<code>true</code>, <code>false</code>]</td>
 </tr>
 
 <tr>
-<td><code>ad_user_clicked_last _30_days*</code></td>
-<td>True if user clicked on a Search Ads impression within 30 days prior to app download.</td>
-<td>[<code>&quot;true&quot;</code>, <code>&quot;false&quot;</code>]</td>
+<td><code>device_advertising_ id</code></td>
+<td>User-resettable advertising identifier (IDFA)</td>
+<td><code>6D92078A-8246...</code></td>
 </tr>
 
 <tr>
-<td><code>ad_user_date_clicked*</code></td>
-<td>Date and time the user clicked on a corresponding ad.</td>
-<td><code>&quot;2016-12-05T17:31:40Z&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>ad_user_date_converted*</code></td>
-<td>Date and time the user downloaded your ad.</td>
-<td><code>&quot;2016-12-05T17:31:40Z&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>ad_org_name*</code></td>
-<td>The organization that owns the campaign the corresponding ad was part of.</td>
-<td><code>&quot;OrgName&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>ad_campaign_id*</code></td>
-<td>The ID of the campaign the corresponding ad was part of.</td>
-<td><code>&quot;1234567890&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>ad_campaign_name*</code></td>
-<td>The name of the campaign the corresponding ad was part of.</td>
-<td><code>&quot;CampaignName&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>ad_group_id*</code></td>
-<td>The ID of the ad group the corresponding ad was part of.</td>
-<td><code>&quot;1234567890&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>ad_group_name*</code></td>
-<td>The name of the ad group the corresponding ad was part of.</td>
-<td><code>&quot;AdGroupName&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>ad_keyword*</code></td>
-<td>The keyword that drove the ad impression which led to the corresponding ad click.</td>
-<td><code>&quot;Keyword&quot;</code></td>
+<td><code>device_advertising_ vendor_id</code></td>
+<td>Unique ID guaranteed to be the same across all apps on the same device from a single vendor (apps with the same 1st 2 parts of the RDNS bundle identifier. For example, com.tealium or com.acme)</td>
+<td><code>6D92078A-8246...</code></td>
 </tr>
 </tbody>
 </table>
 
-<p class="note">These variables are only enabled if Search Ads has been explicitly enabled in the <a href="/platforms/ios-swift/class-definitions/tealium-config/">TealiumConfig</a> object. These variables are only retrieved from Apple&rsquo;s servers once during the app&rsquo;s lifetime, but they are stored as persistent variables so they are available on future app launches.</p>
-
-<h2 id="release-notes">Release Notes</h2>
-
-<p>Future Improvements</p>
-
-<ul>
-<li>Update IDFA functionality to have a more robust retry mechanism if IDFA retrieval fails the first time (documented Apple limitation).</li>
-</ul>
-
-<p>1.6.5</p>
-
-<ul>
-<li>No functional changes.</li>
-<li>Minor code change to import <code>TealiumCore</code> module for Carthage builds.</li>
-<li>Removed unnecessary code for Swift versions &lt;4.0 (no longer supported due to Xcode deprecation of Swift 3).</li>
-</ul>
-
-<p>1.4.0</p>
-
-<ul>
-<li><code>device_advertising_id</code> has been changed from Identifier for Vendor (IDFV) to Identifier for Advertisers (IDFA). A new variable <code>device_advertising_vendor_id</code> has been added, which contains the IDFV.</li>
-<li>Added support for Apple Search Ads API. If this module is implemented, Tealium collects attribution information from the Apple Search Ads API.</li>
-</ul>
+<p class="note">The variables prefixed with <code>ad_</code> are only enabled if Search Ads has been explicitly enabled in the <a href="/platforms/ios-swift/class-definitions/tealium-config/">TealiumConfig</a> object. These variables are only retrieved from Apple&rsquo;s servers once during the app&rsquo;s lifetime, but they are stored as persistent variables so they are available on future app launches.</p>
 
 </div>
 
@@ -1012,6 +1030,20 @@ var utag_data = {
           <li class="fw4">
             
             
+            <a href="/platforms/ios-swift/app-extensions/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              App Extensions
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/ios-swift/identity-resolution/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Identity Resolution
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
             <a href="/platforms/ios-swift/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Consent Management
             </a>
@@ -1434,7 +1466,7 @@ var utag_data = {
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p>This page was last updated:  October 31, 2019 </p>
+<p>This page was last updated:  November 15, 2019 </p>
 
       
 

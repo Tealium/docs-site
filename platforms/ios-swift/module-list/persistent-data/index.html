@@ -238,9 +238,7 @@ var utag_data = {
               <li><a href="#install">Install</a></li>
               <ul class="toc-h3"><li><a href="#cocoapods">CocoaPods</a></li>
               <li><a href="#carthage">Carthage</a></li>
-              </ul><li><a href="#data-layer">Data Layer</a></li>
-              <li><a href="#api-reference">API Reference</a></li>
-              <li><a href="#release-notes">Release Notes</a></li>
+              </ul><li><a href="#api-reference">API Reference</a></li>
               </nav>
   </aside></div>
 
@@ -278,9 +276,7 @@ var utag_data = {
 
 <h2 id="usage">Usage</h2>
 
-<p>The PersistentData module allows data variables to be stored on disk, and automatically adds them to each dispatch/tracking call. This module must be used in conjunction with either the <a href="/platforms/ios-swift/module-list/file-storage/">File Storage</a> or <a href="/platforms/ios-swift/module-list/defaults-storage/">DefaultsStorage</a> module.</p>
-
-<p>Usage of this module is recommended.</p>
+<p>The PersistentData module stores variables on disk and automatically includes them in each tracking call. Usage of this module is recommended.</p>
 
 <p>The following platforms are supported:</p>
 
@@ -293,14 +289,12 @@ var utag_data = {
 
 <h2 id="install">Install</h2>
 
-<p>Install the PersistentData module with CocoaPods or Carthage. It is bundled with both the <code>FileStorage</code> and <code>DefaultsStorage</code> modules. Only one of these modules is needed.</p>
+<p>Install the PersistentData module with CocoaPods or Carthage.</p>
 
 <h3 id="cocoapods">CocoaPods</h3>
 
-<p>To install the PersistentData module with CocoaPods, add either of the following pods to your Podfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#b84">&#39;tealium-swift/TealiumFileStorage&#39;</span></code></pre></div>
-<p>Or</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#b84">&#39;tealium-swift/TealiumDefaultsStorage&#39;</span></code></pre></div>
+<p>To install the PersistentData module with CocoaPods, add the following to your Podfile:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#b84">&#39;tealium-swift/TealiumPersistentData&#39;</span></code></pre></div>
 <p>The framework is auto-instantiated. It has a dependency on the <code>TealiumCore</code> pod. <a href="/platforms/ios-swift/install/#cocoapods">Learn more</a> about CocoaPods installation for iOS.</p>
 
 <h3 id="carthage">Carthage</h3>
@@ -310,41 +304,18 @@ var utag_data = {
 <ol>
 <li><p>Go to the app target&rsquo;s General configuration page in Xcode.</p></li>
 
-<li><p>Add either of the following frameworks to the <strong>Embedded Binaries</strong> section:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumFileStorage<span style="font-weight:bold">.</span>framework</code></pre></div>
-<p>or</p>
+<li><p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumDefaultsStorage<span style="font-weight:bold">.</span>framework</code></pre></div></li>
 
-<li><p>Add either of the respective import statement to your project:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumFileStorage</span></code></pre></div>
-<p>or</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumDefaultsStorage</span></code></pre></div></li>
+<li><p>Add the following import statement to your helper file:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumPersistentStorage</span></code></pre></div></li>
 </ol>
 
-<p>The framework is auto-instantiated. It has a dependency on <code>TealiumCore</code>. No additional import statements are necessary. <a href="/platforms/ios-swift/install/#carthage">Learn more</a> about Carthage installation for iOS.</p>
-
-<h2 id="data-layer">Data Layer</h2>
-
-<p>No additional variables are introduced by this module.</p>
+<p>The framework is auto-instantiated. It has a dependency on <code>TealiumCore</code>. <a href="/platforms/ios-swift/install/#carthage">Learn more</a> about Carthage installation for iOS.</p>
 
 <h2 id="api-reference">API Reference</h2>
 
 <p>See the <a href="/platforms/ios-swift/api/tealium-persistent-data/"><code>TealiumPersistentData</code></a> class in the iOS (Swift) API.</p>
-
-<h2 id="release-notes">Release Notes</h2>
-
-<p>1.6.5</p>
-
-<ul>
-<li>Now bundled by default with DefaultsStorage and FileStorage modules</li>
-<li>Bug fix for potential memory leak</li>
-</ul>
-
-<p>Build 1</p>
-
-<ul>
-<li>Initial release</li>
-</ul>
 
 </div>
 
@@ -926,6 +897,20 @@ var utag_data = {
           <li class="fw4">
             
             
+            <a href="/platforms/ios-swift/app-extensions/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              App Extensions
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/ios-swift/identity-resolution/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Identity Resolution
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
             <a href="/platforms/ios-swift/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Consent Management
             </a>
@@ -1348,7 +1333,7 @@ var utag_data = {
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p>This page was last updated:  October 31, 2019 </p>
+<p>This page was last updated:  November 19, 2019 </p>
 
       
 

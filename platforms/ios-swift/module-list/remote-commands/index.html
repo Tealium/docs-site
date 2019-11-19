@@ -234,12 +234,12 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#usage">Usage</a></li>
-              <li><a href="#requirements">Requirements</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
               <li><a href="#install">Install</a></li>
               <ul class="toc-h3"><li><a href="#cocoapods">CocoaPods</a></li>
               <li><a href="#carthage">Carthage</a></li>
-              </ul><li><a href="#data-layer">Data Layer</a></li>
+              </ul><li><a href="#example">Example</a></li>
+              <li><a href="#data-layer">Data Layer</a></li>
               <li><a href="#api-reference">API Reference</a></li>
               <ul class="toc-h3"><li><a href="#init">init()</a></li>
               <li><a href="#add">add()</a></li>
@@ -249,7 +249,6 @@ var utag_data = {
               <li><a href="#disableremotehttpcommand">disableRemoteHTTPCommand()</a></li>
               <li><a href="#enableremotehttpcommand">enableRemoteHTTPCommand()</a></li>
               </ul><li><a href="#remote-http-command">Remote HTTP Command</a></li>
-              <li><a href="#release-notes">Release Notes</a></li>
               </nav>
   </aside></div>
 
@@ -285,22 +284,20 @@ var utag_data = {
 
 
 
-<h2 id="usage">Usage</h2>
+<p><a href="/platforms/remote-commands/">Learn more</a> about remote commands.</p>
 
-<p>The RemoteCommands module enables triggering of native code blocks from events in Tealium iQ, controlled by extensions and load rules. Mapped data may also be passed back in remote command calls, enabling limited control of app behavior through Tealium iQ. A simple sets the background color of a screen, based on a hex color code passed back from Tealium iQ.</p>
+<h2 id="requirements">Requirements</h2>
 
-<p>Usage of this module is optional. It is automatically included in Carthage and CocoaPods framework builds.</p>
+<p>This module has the following requirements:</p>
+
+<ul>
+<li>Tag Management module. Not a compile-time dependency, but Remote Commands are triggered from the Tag Management module.</li>
+</ul>
 
 <p>The following platforms are supported:</p>
 
 <ul>
 <li>iOS</li>
-</ul>
-
-<h2 id="requirements">Requirements</h2>
-
-<ul>
-<li>TealiumTagManagement module. Not strictly a compile-time dependency, but Remote Commands are triggered from the Tag Management module.</li>
 </ul>
 
 <h2 id="install">Install</h2>
@@ -329,6 +326,27 @@ var utag_data = {
 
 <p>The framework is auto-instantiated. It has a dependency on <code>TealiumCore</code>. No additional import statements are necessary. <a href="/platforms/ios-swift/install/#carthage">Learn more</a> about Carthage installation for iOS.</p>
 
+<h2 id="example">Example</h2>
+
+<p>Once the Remote Command Tag is configured in Tealium IQ and the module is installed in your app, add the following lines to the initialization as shown in the following example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
+	<span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
+	<span style="color:#998;font-style:italic">// ...</span>
+	<span style="font-weight:bold">private</span> <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">initTealium</span>() {
+		<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+ 	       		                 profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
+        	   	                 environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
+           		                 datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
+    	<span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>?.tealium?.remoteCommands() <span style="font-weight:bold">else</span> {
+          <span style="font-weight:bold">return</span>
+        }
+        <span style="font-weight:bold">let</span> <span style="color:#008080">brazeCommand</span> = BrazeCommand(brazeTracker: BrazeTracker())
+        <span style="font-weight:bold">let</span> <span style="color:#008080">brazeRemoteCommand</span> = brazeCommand.remoteCommand()
+        remoteCommands.add(brazeRemoteCommand)
+
+		<span style="color:#998;font-style:italic">// ...</span>
+	}
+}</code></pre></div>
 <h2 id="data-layer">Data Layer</h2>
 
 <p>No additional variables are introduced by this module.</p>
@@ -477,27 +495,6 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
 	console.log(body.my_response_variable);
 }</code></pre></div>
 <p>For a working example, see this article: <a href="https://community.tealiumiq.com/t5/Mobile-Libraries/Mobile-App-Download-Tracking-with-Adobe-Analytics/ta-p/17914">Tracking App Downloads with Adobe Analytics</a></p>
-
-<h2 id="release-notes">Release Notes</h2>
-
-<p>1.7.0</p>
-
-<ul>
-<li>Fixed a bug where the remote command callback didn&rsquo;t fire as expected</li>
-</ul>
-
-<p>1.6.5</p>
-
-<ul>
-<li>Fixed a bug causing the Remote HTTP command to occasionally not be called when invoked</li>
-</ul>
-
-<p>1.4.0</p>
-
-<ul>
-<li>Fixed bad configuration in sample app</li>
-<li>Removed deprecated enable/disable methods</li>
-</ul>
 
 </div>
 
@@ -1079,6 +1076,20 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
           <li class="fw4">
             
             
+            <a href="/platforms/ios-swift/app-extensions/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              App Extensions
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/ios-swift/identity-resolution/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Identity Resolution
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
             <a href="/platforms/ios-swift/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Consent Management
             </a>
@@ -1501,7 +1512,7 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p>This page was last updated:  October 31, 2019 </p>
+<p>This page was last updated:  November 19, 2019 </p>
 
       
 

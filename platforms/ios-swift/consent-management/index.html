@@ -280,6 +280,8 @@ var utag_data = {
 
 <h2 id="usage">Usage</h2>
 
+<p>The Consent Management module provides a simple API to help manage tracking consent at a granular level. If you have included the CocoaPods dependency or Carthage framework, Consent Management is enabled by default, and no tracking calls are sent until you explicitly notify the API that the user has consented to tracking.</p>
+
 <p>Usage of this module is recommended, as it is automatically included and enabled in Carthage and CocoaPods framework builds. The Foundation framework is an external dependency.</p>
 
 <p>Supported platforms include: iOS, macOS, tvOS, and watchOS.</p>
@@ -337,23 +339,50 @@ var utag_data = {
 <h2 id="examples">Examples</h2>
 
 <p>The following example code shows how to access the Consent Manager.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">MyClass</span> {
-    <span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
+	<span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
+	<span style="color:#998;font-style:italic">// ...</span>
+	<span style="font-weight:bold">private</span> <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">initTealium</span>() {
+		<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+ 	       		                 profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
+        	   	                 environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
+           		                 datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
 
-    <span style="font-weight:bold">public</span> <span style="font-weight:bold">init</span> () {
-        <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-                                   profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-                                   environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-                                   datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
-                                   optionalData: <span style="font-weight:bold">nil</span>)
+		<span style="color:#998;font-style:italic">// sets the initial status to notConsented. All events sent will be deleted.</span>
+		<span style="color:#998;font-style:italic">// config.setInitialUserConsentStatus(.notConsented)</span>
+		<span style="color:#998;font-style:italic">// sets the initial status to consented. All events transmitted immediately until consent status changed to .notConsented</span>
+		<span style="color:#998;font-style:italic">// config.setInitialUserConsentStatus(.consented)</span>
 
-		<span style="font-weight:bold">self</span>.tealium = Tealium(config) {
-			<span style="color:#998;font-style:italic">// Note: this is inside the completion block after initialization</span>
+		<span style="color:#998;font-style:italic">// sets the initial status to unknown (default). All events queued until consent status changed</span>
+		config.setInitialUserConsentStatus(.unknown)			
+		<span style="color:#998;font-style:italic">// if true, consent logging events will be generated whenever the consent status changes</span>
+		config.setConsentLoggingEnabled(<span style="font-weight:bold">false</span>)
 
-			<span style="color:#998;font-style:italic">// self.tealium is guaranteed to be initialized inside the completion block</span>
-			<span style="font-weight:bold">self</span>.tealium?.consentManager()?.#### <span style="color:#998;font-style:italic">// where #### is any public API method on the consentManager object</span>
-		}
+
+
+		<span style="font-weight:bold">self</span>.tealium = Tealium(config: config)
+
+		<span style="color:#998;font-style:italic">// ...</span>
 	}
+
+
+	<span style="color:#998;font-style:italic">// grants full consent (all categories)</span>
+	<span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">grantFullConsent</span>() {
+		<span style="font-weight:bold">self</span>.tealium?.consentManager()?.setUserConsentStatus(.consented)
+	}
+
+	<span style="color:#998;font-style:italic">/// Grants partial consent for specific categories</span>
+	<span style="color:#998;font-style:italic">/// Example usage: `grantPartialConsent([.analytics, .cdp])`</span>
+	<span style="color:#998;font-style:italic">/// - Parameter categories: `[TealiumConsentCategories]`.</span>
+	<span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">grantPartialConsent</span>(categories: [TealiumConsentCategories]) {
+		<span style="font-weight:bold">self</span>.tealium?.consentManager()?.setUserConsentStatusWithCategories(status: .consented, categories: categories)
+	}
+
+	<span style="color:#998;font-style:italic">// declines consent; all future events will be deleted.</span>
+	<span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">declineConsent</span>() {
+		<span style="font-weight:bold">self</span>.tealium?.consentManager()?.setUserConsentStatus(.notConsented)
+	}
+
 }</code></pre></div>
 <h2 id="use-cases">Use Cases</h2>
 
@@ -1007,6 +1036,20 @@ var utag_data = {
           <li class="fw4">
             
             
+            <a href="/platforms/ios-swift/app-extensions/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              App Extensions
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/ios-swift/identity-resolution/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Identity Resolution
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
             <a href="/platforms/ios-swift/consent-management/" class="db link pl3 pr2 pv1 bg-secondary white">
               Consent Management
             </a>
@@ -1429,7 +1472,7 @@ var utag_data = {
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p>This page was last updated:  October 31, 2019 </p>
+<p>This page was last updated:  November 14, 2019 </p>
 
       
 

@@ -241,8 +241,8 @@ var utag_data = {
               <li><a href="#connectivity">Connectivity</a></li>
               <li><a href="#core">Core</a></li>
               <li><a href="#crash-reporter">Crash Reporter</a></li>
-              <li><a href="#datasource">Datasource</a></li>
               <li><a href="#devicedata">DeviceData</a></li>
+              <li><a href="#dispatchqueue">DispatchQueue</a></li>
               <li><a href="#lifecycle">Lifecycle</a></li>
               <li><a href="#tagmanagement">TagManagement</a></li>
               <li><a href="#volatiledata">VolatileData</a></li>
@@ -326,12 +326,6 @@ var utag_data = {
 </tr>
 
 <tr>
-<td><code>app_version_full</code></td>
-<td>App Version + Build Number</td>
-<td><code>1.0 (2213)</code></td>
-</tr>
-
-<tr>
 <td><code>tealium_vid</code></td>
 <td>Persistent Tealium visitor ID</td>
 <td><code>t3aL...1uM</code></td>
@@ -372,6 +366,18 @@ var utag_data = {
 </tr>
 
 <tr>
+<td><code>ad_creativeset_id</code></td>
+<td>The ID of the Creative Set which the corresponding ad was part of.</td>
+<td><code>456093</code></td>
+</tr>
+
+<tr>
+<td><code>ad_creativeset_name</code></td>
+<td>The name of the Creative Set which the corresponding ad was part of.</td>
+<td><code>Beast Images</code></td>
+</tr>
+
+<tr>
 <td><code>ad_group_id</code></td>
 <td>The corresponding ad&rsquo;s campaign group ID</td>
 <td><code>1234567890</code></td>
@@ -390,15 +396,45 @@ var utag_data = {
 </tr>
 
 <tr>
+<td><code>ad_keyword_matchtype</code></td>
+<td>This can either be Broad, Exact or Search Match.</td>
+<td><code>Exact</code></td>
+</tr>
+
+<tr>
+<td><code>ad_org_id</code></td>
+<td>The corresponding ad&rsquo;s campaign organization ID</td>
+<td><code>OrgID</code></td>
+</tr>
+
+<tr>
 <td><code>ad_org_name</code></td>
 <td>The corresponding ad&rsquo;s campaign organization name</td>
 <td><code>OrgName</code></td>
 </tr>
 
 <tr>
+<td><code>ad_purchase_date</code></td>
+<td>Date and time the user first downloaded your app. In the case where <code>iadconversion-type = “Redownload”</code>, this represents the original purchase date. This may or may not have been associated with an Apple Search Ad.</td>
+<td><code>2016-12-05T17:31:40Z</code></td>
+</tr>
+
+<tr>
+<td><code>ad_region</code></td>
+<td>Identifies the country or region associated with the campaign which drove this install.</td>
+<td><code>US</code></td>
+</tr>
+
+<tr>
 <td><code>ad_user_clicked_ last_30_days</code></td>
 <td>Boolean indicating if user clicked on a Search Ads impression within 30 days prior to app download</td>
 <td>[<code>true</code>, <code>false</code>]</td>
+</tr>
+
+<tr>
+<td><code>ad_user_conversion _type</code></td>
+<td>Identifies new download or redownload of the app</td>
+<td><code>Download</code></td>
 </tr>
 
 <tr>
@@ -414,15 +450,15 @@ var utag_data = {
 </tr>
 
 <tr>
-<td><code>device_advertising_ id</code></td>
-<td>User-resettable advertising identifier (IDFA)</td>
-<td><code>6D92078A-8246...</code></td>
-</tr>
-
-<tr>
 <td><code>device_advertising_ enabled</code></td>
 <td>Boolean indicating if the user allowed ad tracking (if <code>false</code>, the advertising ID appears as a string of zeroes)</td>
 <td>[<code>true</code>, <code>false</code>]</td>
+</tr>
+
+<tr>
+<td><code>device_advertising_ id</code></td>
+<td>User-resettable advertising identifier (IDFA)</td>
+<td><code>6D92078A-8246...</code></td>
 </tr>
 
 <tr>
@@ -504,6 +540,12 @@ var utag_data = {
 
 <tbody>
 <tr>
+<td><code>queue_reason</code></td>
+<td>Added to the track call if the tracking request was queued due to lack of connectivity. Only present for queued events; absent for all other events</td>
+<td><code>connectivity</code></td>
+</tr>
+
+<tr>
 <td><code>was_queued</code></td>
 <td>Indicates whether a tracking call was queued due to no connectivity. Only present for queued events; absent for all other events</td>
 <td>[<code>true</code>, <code>false</code>]</td>
@@ -532,6 +574,12 @@ var utag_data = {
 </tr>
 
 <tr>
+<td><code>tealium_datasource</code></td>
+<td>Specifies the data source name (added to every dispatch)</td>
+<td><code>&quot;a1b2c3&quot;</code></td>
+</tr>
+
+<tr>
 <td><code>tealium_event</code></td>
 <td>The name of the event being tracked</td>
 <td><code>&quot;checkout&quot;</code></td>
@@ -553,6 +601,12 @@ var utag_data = {
 </thead>
 
 <tbody>
+<tr>
+<td><code>app_memory_usage</code></td>
+<td>Current memory used by the app on the device at the time of the crash</td>
+<td><code>143.57MB</code></td>
+</tr>
+
 <tr>
 <td><code>crash_cause</code></td>
 <td>Cause of the crash</td>
@@ -642,27 +696,11 @@ var utag_data = {
 <td>Current OS build number</td>
 <td><code>15E217</code></td>
 </tr>
-</tbody>
-</table>
 
-<h2 id="datasource"><code>Datasource</code></h2>
-
-<p>The following variables are added to the data layer by the Datasource module.</p>
-
-<table>
-<thead>
 <tr>
-<th>Variable Name</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>tealium_datasource</code></td>
-<td>Specifies the data source name (added to every dispatch)</td>
-<td><code>&quot;a1b2c3&quot;</code></td>
+<td><code>memory_free</code></td>
+<td>Free memory on device at the time of the crash</td>
+<td><code>1068.88MB</code></td>
 </tr>
 </tbody>
 </table>
@@ -763,6 +801,12 @@ var utag_data = {
 <td><code>device_resolution</code></td>
 <td>Screen resolution</td>
 <td><code>1080x1920</code></td>
+</tr>
+
+<tr>
+<td><code>device_type</code></td>
+<td>Apple internal device identifier</td>
+<td><code>iPhone8,4</code></td>
 </tr>
 
 <tr>
@@ -919,6 +963,34 @@ var utag_data = {
 <td><code>device_language</code></td>
 <td>Current device language</td>
 <td><code>en</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="dispatchqueue">DispatchQueue</h2>
+
+<p>The following variables are added to the data layer by the <code>DispatchQueue</code> module.</p>
+
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>was_queued</code></td>
+<td>Indicates whether a tracking call was queued due to no event batching. Only present for queued events; absent for all other events</td>
+<td>[<code>true</code>, <code>false</code>]</td>
+</tr>
+
+<tr>
+<td><code>queue_reason</code></td>
+<td>Added to the track call if the tracking request was queued due to event batching. Only present for queued events; absent for all other events</td>
+<td><code>batching_enabled</code></td>
 </tr>
 </tbody>
 </table>
@@ -1200,7 +1272,7 @@ var utag_data = {
 <tr>
 <td><code>tealium_library_ version</code></td>
 <td>Tealium library version</td>
-<td><code>1.4.0</code></td>
+<td><code>1.8.0</code></td>
 </tr>
 
 <tr>
@@ -1809,6 +1881,20 @@ var utag_data = {
           <li class="fw4">
             
             
+            <a href="/platforms/ios-swift/app-extensions/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              App Extensions
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/ios-swift/identity-resolution/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Identity Resolution
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
             <a href="/platforms/ios-swift/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Consent Management
             </a>
@@ -2231,7 +2317,7 @@ var utag_data = {
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p>This page was last updated:  October 24, 2019 </p>
+<p>This page was last updated:  November 15, 2019 </p>
 
       
 

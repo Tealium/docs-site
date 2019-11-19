@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Release Notes | Tealium for iOS (Swift) |Tealium Developer Docs</title>
+    <title>VisitorService Module | Modules |Tealium Developer Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -234,10 +234,16 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#1-70-1-8-0-2019">1.70-1.8.0 (2019)</a></li>
-              <li><a href="#1-50-1-6-7-2018">1.50-1.6.7 (2018)</a></li>
-              <li><a href="#1-1-3-1-4-0-2017">1.1.3-1.4.0 (2017)</a></li>
-              <li><a href="#1-0-0-1-1-2-2016">1.0.0-1.1.2 (2016)</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#usage">Usage</a></li>
+              <li><a href="#install">Install</a></li>
+              <ul class="toc-h3"><li><a href="#cocoapods">CocoaPods</a></li>
+              <li><a href="#carthage">Carthage</a></li>
+              </ul><li><a href="#visitor-data-object">Visitor Data Object</a></li>
+              <li><a href="#api-reference">API Reference</a></li>
+              <ul class="toc-h3"><li><a href="#class-tealium">Class Tealium</a></li>
+              <li><a href="#class-tealiumvisitorservicedelegate">Class: TealiumVisitorServiceDelegate</a></li>
+              <li><a href="#class-tealiumconfig">Class: TealiumConfig</a></li>
+              </ul><li><a href="#release-notes">Release Notes</a></li>
               </nav>
   </aside></div>
 
@@ -248,19 +254,19 @@ var utag_data = {
           <header class="flex-none w-100">
   
     
-      <a href="/platforms/ios-swift" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT
+      <a href="/platforms/ios-swift/module-list" class="f6 fw8 mb0 link mid-gray dim mr3">
+        IOS SWIFT/MODULE LIST
       </a>
     
   
 
-  <h1 class="lh-title mb3 mv0 pt3">Release Notes</h1>
+  <h1 class="lh-title mb3 mv0 pt3">VisitorService Module</h1>
 </header>
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
     <div class="f4 fw4 lh-copy">
-      Release notes.
+      Retrieves the updated visitor profile from the visitor service.
     </div>
   
 
@@ -273,542 +279,884 @@ var utag_data = {
 
 
 
-<p>Below is a complete list of changes for each release of the Swift library.</p>
+<h2 id="usage">Usage</h2>
 
-<h2 id="1-70-1-8-0-2019">1.70-1.8.0 (2019)</h2>
+<p>The VisitorService module implements the <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/Data-Layer-Enrichment/ta-p/684">Data Layer Enrichment</a> feature of the UDH.</p>
 
-<h4 id="1-8-0-november-2019">1.8.0 (November 2019)</h4>
+<p>Usage of this module is recommended if you are licensed for Tealium AudienceStream and would like to use the visitor profile to enhance the user experience in your mobile application. If you are not licensed for Tealium AudienceStream, usage of this module is not recommended as no visitor profile is returned.</p>
 
-<p><strong>New Features</strong></p>
-
-<ul>
-<li>Event batching
+<p>The following platforms are supported:</p>
 
 <ul>
-<li>Send up to 10 events in a single hit to the Tealium UDH
-
-<ul>
-<li>For Tag Management, events are dispatched to the <code>WKWebView</code> instance in a batch and are processed individually by JavaScript tags in your profile.</li>
-<li>For EventStream/AudienceStream/Event Data Framework products, events are dispatched in a single HTTP request when using the Collect module. Requests are Gzipped. Once the event limit is reached (max 10 events), they are dispatched immediately, if a connection is available.</li>
-</ul></li>
-<li>To disable event batching, set the batch size to 1</li>
-</ul></li>
-<li>Optional Visitor Service module (requires AudienceStream CDP). Retrieve visitor profiles in real-time as soon as the profile changes.</li>
-<li>New variable <code>&quot;device_type&quot;</code> that captures the internal device identifier, for example iPhone8,4.</li>
-<li>Additional header docs for Visitor Service and Event Batching (DispatchQueue module).</li>
-<li>Added ability to override both the URL and profile for the Visitor Service module</li>
-<li>Fixed a possible crash on iOS 12.0 devices in the DeviceData module, which was due to a known bug in the iOS 12.0 network subscriber information API. Bumped version check to iOS 12.1 where the bug was fixed, and fall back to older API for iOS 12.0</li>
-<li>Added some additional hints for the compiler inside complex closures to allow the project to be built on Xcode 10.3.</li>
-<li>Added remote_api call for future Remote Command compatibility. This triggers an additional call to the Tag Management webview (if module enabled). Disabled by default. Config option to enable: <code>config.setIsRemoteAPIEnbled(true)</code></li>
-<li>Added method to retrieve visitor ID</li>
+<li>iOS</li>
+<li>tvOS</li>
+<li>watchOS</li>
+<li>macOS</li>
 </ul>
 
-<p><strong>High Impact Changes</strong></p>
+<h2 id="install">Install</h2>
+
+<p>Install the VisitorService module with CocoaPods or Carthage.</p>
+
+<h3 id="cocoapods">CocoaPods</h3>
+
+<p>To install the TagManagement module with CocoaPods, add the following pods to your Podfile:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#b84">&#39;tealium-swift/TealiumCore&#39;</span>
+pod <span style="color:#b84">&#39;tealium-swift/TealiumCollect&#39;</span> <span style="color:#808000">//o</span>r <span style="color:#b84">&#39;tealium-swift/TealiumTagManagement&#39;</span>
+pod <span style="color:#b84">&#39;tealium-swift/TealiumVisitorService&#39;</span></code></pre></div>
+<p>The framework is auto-instantiated. It has a dependency on the <code>TealiumCore</code> pod, and one of the dispatch service pods (either <code>TealiumCollect</code> or <code>TealiumTagManagement</code>). <a href="/platforms/ios-swift/install/#cocoapods">Learn more</a> about CocoaPods installation for iOS.</p>
+
+<h3 id="carthage">Carthage</h3>
+
+<p>To install the TagManagement module with Carthage, following these steps:</p>
+
+<ol>
+<li><p>Go to the app target&rsquo;s General configuration page in Xcode.</p></li>
+
+<li><p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumVisitorService<span style="font-weight:bold">.</span>framework</code></pre></div></li>
+
+<li><p>To setup the VisitorService module, add the following required import statements to your project:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumCore</span>
+<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumCollect</span> <span style="color:#998;font-style:italic">//or import TealiumTagManagement</span>
+<span style="color:#458;font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumVisitorService</span></code></pre></div></li>
+</ol>
+
+<p>The framework is auto-instantiated. It has a dependency on <code>TealiumCore</code>, and at least one dispatch service (<code>TealiumCore</code> or <code>TealiumTagManagement</code>). No additional import statements are necessary.</p>
+
+<p><a href="/platforms/ios-swift/install/#carthage">Learn more</a> about Carthage installation for iOS.</p>
+
+<h2 id="visitor-data-object">Visitor Data Object</h2>
+
+<p>The visitor profile is an object that contains native structs for each attribute type. Within the visitor profile object, there is a <code>currentVisit</code> property that allows you to distinguish visitor/visit attribute types. With the exception of audiences, you can access each attribute value by id using a subscript. The <code>audiences</code> attribute simply returns <code>true</code>/<code>false</code> if a visitor is a member of the audience queried via subscript. See the below list for examples.</p>
+
+<p><strong>Attribute Types</strong></p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Properties</th>
+<th>Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>arraysOfBooleans</code></td>
+<td>id: String, value: [Bool]</td>
+<td><code>id: &quot;5129&quot;, value: [true,false,true,true]</code></td>
+</tr>
+
+<tr>
+<td><code>arraysOfNumbers</code></td>
+<td>id: String, value: [Double]</td>
+<td><code>id: &quot;57&quot;, value: [4.82125, 16.8, 0.5714285714285714]</code></td>
+</tr>
+
+<tr>
+<td><code>arraysOfStrings</code></td>
+<td>id: String, value: [String]</td>
+<td><code>id: &quot;5213&quot;, value: [&quot;green shirts&quot;, &quot;green shirts&quot;, &quot;blue shirts&quot;]</code></td>
+</tr>
+
+<tr>
+<td><code>audiences</code></td>
+<td>id: String, name: String</td>
+<td><code>id: &quot;tealiummobile\_demo\_103&quot;, name: &quot;iOS Users&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>badges</code></td>
+<td>id: String, value: Bool</td>
+<td><code>id: &quot;2815&quot;, value: true</code></td>
+</tr>
+
+<tr>
+<td><code>booleans</code></td>
+<td>id: String, value: Bool</td>
+<td><code>id: &quot;4868&quot;, value: true</code></td>
+</tr>
+
+<tr>
+<td><code>currentVisit</code></td>
+<td>All attributes for current visit profile. The current visit profile does not contain Audiences or Badges.</td>
+<td><code>TealiumCurrentVisitProfile(dates: [DateTime(id: &quot;5376&quot;, value: 1567536668080), DateTime(id: &quot;10&quot;, value: 1567536668000)], booleans: [Boolean(id: &quot;4530&quot;, value: true], numbers: [Number(id: &quot;32&quot;, value: 3.8)])</code></td>
+</tr>
+
+<tr>
+<td><code>dates</code></td>
+<td>id: String, value: Int</td>
+<td><code>id: &quot;22&quot;, value: 1567120112000</code></td>
+</tr>
+
+<tr>
+<td><code>numbers</code></td>
+<td>id: String, value: Double</td>
+<td><code>id: &quot;5728&quot;, value: 4.82125</code></td>
+</tr>
+
+<tr>
+<td><code>setOfStrings</code></td>
+<td>id: String, value: Set[String]</td>
+<td><code>id: &quot;5211&quot;, value: [&quot;green shirts&quot;, &quot;red shirts&quot;, &quot;blue shirts&quot;]</code></td>
+</tr>
+
+<tr>
+<td><code>strings</code></td>
+<td>id: String, value: String</td>
+<td><code>id: &quot;5380&quot;, value: &quot;green shirts&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>tallies</code></td>
+<td>id: String, value: [TallyValue]</td>
+<td><code>id: &quot;57&quot;, [[key: &quot;category 1&quot; count: 2.0], key: &quot;category 2&quot;, count: 1.0]]</code></td>
+</tr>
+
+<tr>
+<td><code>tallyValue</code></td>
+<td>key: String, count: Double</td>
+<td><code>[key: &quot;category 1&quot; count: 2.0]</code></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="arraysofbooleans"><code>arraysOfBooleans</code></h4>
+
+<p>Custom subscripting allows for querying the array of booleans value by id.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.arraysOfBooleans</code></td>
+<td>Returns all the arrays of booleans in the visitor profile.</td>
+<td><code>[BooleanArray]</code></td>
+<td><code>[BooleanArray(id: &quot;2333&quot;, value: [true,false]), BooleanArray(id: &quot;1123&quot;, value: [true,true])]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.arraysOfBooleans[&quot;2815&quot;]</code></td>
+<td>Returns the array of booleans by id.</td>
+<td><code>[Bool]</code></td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
+        <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">profile</span> = profile <span style="font-weight:bold">else</span> { <span style="font-weight:bold">return</span> }
+
+        <span style="color:#998;font-style:italic">// Return an array of booleans value</span>
+        <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">arraysOfBooleans</span> = profile.arraysOfBooleans?[<span style="color:#b84">&#34;5279&#34;</span>] {
+            <span style="font-weight:bold">let</span> <span style="color:#008080">numberOfPositiveBools</span> = arraysOfBooleans.map { <span style="color:#008080">$0</span> == <span style="font-weight:bold">true</span> }.count
+            print(numberOfPositiveBools)
+        }
+}</code></pre></div>
+<h4 id="arraysofnumbers"><code>arraysOfNumbers</code></h4>
+
+<p>Custom subscripting allows for querying the array of numbers value by id.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.arraysOfNumbers</code></td>
+<td>Returns all the arrays of numbers in the visitor profile.</td>
+<td><code>[NumberArray]</code></td>
+<td><code>[NumberArray(id: &quot;2333&quot;, value: [2.0, 1.0]), NumberArray(id: &quot;1123&quot;, value: [4.82125, 3.0])]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.arraysOfNumbers[&quot;2815&quot;]</code></td>
+<td>Returns the array of numbers by id.</td>
+<td><code>[Double]</code></td>
+<td><code>[4.82125, 3.0]</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
+        <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">profile</span> = profile <span style="font-weight:bold">else</span> { <span style="font-weight:bold">return</span> }
+
+        <span style="color:#998;font-style:italic">// Return an array of numbers value</span>
+        <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">arraysOfNumbers</span> = profile. arraysOfNumbers?[<span style="color:#b84">&#34;5279&#34;</span>] {
+            arraysOfNumbers.forEach { number <span style="font-weight:bold">in</span>
+        		<span style="font-weight:bold">if</span> number <span style="font-weight:bold">&gt;</span> <span style="color:#099">3.0</span> {
+        			<span style="color:#998;font-style:italic">// ... take action</span>
+        		}
+            }
+        }
+}</code></pre></div>
+<h4 id="arraysofstrings"><code>arraysOfStrings</code></h4>
+
+<p>Custom subscripting allows for querying the array of strings value by id.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.arraysOfStrings</code></td>
+<td>Returns all the arrays of strings in the visitor profile.</td>
+<td><code>[StringArray]</code></td>
+<td><code>[StringArray(id: &quot;1033&quot;, value: [&quot;Foundation&quot;, &quot;Perfume&quot;), StringArray(id: &quot;3390&quot;, value: [&quot;Bootleg Jeans&quot;, &quot;Dresses&quot;])]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.arraysOfStrings[&quot;3390&quot;]</code></td>
+<td>Returns the array of strings by id.</td>
+<td><code>[String]</code></td>
+<td><code>[&quot;Bootleg Jeans&quot;, &quot;Dresses&quot;]</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
+        <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">profile</span> = profile <span style="font-weight:bold">else</span> { <span style="font-weight:bold">return</span> }
+
+        <span style="color:#998;font-style:italic">// Return an array of strings value</span>
+        <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">arraysOfStrings</span> = profile.arraysOfStrings?[<span style="color:#b84">&#34;3390&#34;</span>] {
+            arraysOfStrings.forEach { string <span style="font-weight:bold">in</span>
+        		<span style="font-weight:bold">if</span> string.lowercased().contains(<span style="color:#b84">&#34;Jeans&#34;</span>) {
+        			<span style="color:#998;font-style:italic">// ... take action</span>
+        		}
+            }
+        }
+}</code></pre></div>
+<h4 id="audiences"><code>audiences</code></h4>
+
+<p>Custom subscripting allows for checking visitor audience membership by audience id and audience name.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.audiences</code></td>
+<td>Returns all audiences for which the visitor is a member.</td>
+<td><code>[Audience]</code></td>
+<td><code>[Audience(id: &quot;tealiummobile\_demo\_103&quot;, name: &quot;iOS Users&quot;), Audience(id: &quot;tealiummobile\_demo\_110&quot;, name: &quot;Visitors - Known&quot;)]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.audiences[id: &quot;103&quot;]</code></td>
+<td>Returns true/false depending on whether or not the visitor is a member of the audience based on the id passed in.</td>
+<td><code>Bool</code></td>
+<td><code>true</code></td>
+</tr>
+
+<tr>
+<td><code>profile.audiences[name: &quot;ios users&quot;]</code></td>
+<td>Returns true/false depending on whether or not the visitor is a member of the audience based on the name passed in. The name is case insensitive.</td>
+<td><code>Bool</code></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
+        <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">profile</span> = profile <span style="font-weight:bold">else</span> { <span style="font-weight:bold">return</span> }
+
+        <span style="color:#998;font-style:italic">// Return the current Audiences for which the user is assigned</span>
+        <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">currentVisitorAudiences</span> = profile.audiences {
+            print(<span style="color:#b84">&#34;Visitor audiences: </span><span style="color:#b84">\(</span>currentVisitorAudiences<span style="color:#b84">)</span><span style="color:#b84">&#34;</span>)
+
+            <span style="color:#998;font-style:italic">// Check if an Audience is assigned to a user by id</span>
+            <span style="font-weight:bold">if</span> currentVisitorAudiences[id: <span style="color:#b84">&#34;106&#34;</span>] {
+                print(<span style="color:#b84">&#34;Visitor is a member of audience id 106&#34;</span>)
+                <span style="color:#998;font-style:italic">// ... Visitor is a member of this audience, take appropriate action</span>
+            }
+
+            <span style="color:#998;font-style:italic">// Check if an Audience is assigned to a user by name</span>
+            <span style="font-weight:bold">if</span> currentVisitorAudiences[name: <span style="color:#b84">&#34;ios users&#34;</span>] {
+                print(<span style="color:#b84">&#34;Visitor is a member of audience iOS Users&#34;</span>)
+                <span style="color:#998;font-style:italic">// ... Visitor is a member of this audience, take appropriate action</span>
+            }
+        }
+}</code></pre></div>
+<h4 id="badges"><code>badges</code></h4>
+
+<p>Custom subscripting allows for querying the badge value by id.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.badges</code></td>
+<td>Returns all badges in the visitor profile.</td>
+<td><code>[Badge]</code></td>
+<td><code>[Badge(id: &quot;2815&quot;, value: true), Badge(id: &quot;2813&quot;, value: false)]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.badges[&quot;2815&quot;]</code></td>
+<td>Returns true/false depending on whether or not the visitor is assigned the badge.</td>
+<td><code>Bool</code></td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
+        <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">profile</span> = profile <span style="font-weight:bold">else</span> { <span style="font-weight:bold">return</span> }
+
+        <span style="color:#998;font-style:italic">// Return a badge value</span>
+        <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">badgeAssigned</span> = profile.badges?[<span style="color:#b84">&#34;5279&#34;</span>] {
+            print(badgeAssigned ? <span style="color:#b84">&#34;Badge id 5279 is assigned&#34;</span> : <span style="color:#b84">&#34;Badge id 5945 is not assigned&#34;</span>)
+        }
+}</code></pre></div>
+<h4 id="booleans"><code>booleans</code></h4>
+
+<p>Custom subscripting allows for querying the boolean value by id.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.booleans</code></td>
+<td>Returns all the booleans in the visitor profile.</td>
+<td><code>[Boolean]</code></td>
+<td><code>[Boolean(id: &quot;5784&quot;, value: true), Boolean(id: &quot;1453&quot;, value: false)]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.booleans[&quot;4692&quot;]</code></td>
+<td>Returns the boolean by id.</td>
+<td><code>Bool</code></td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
+        <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">profile</span> = profile <span style="font-weight:bold">else</span> { <span style="font-weight:bold">return</span> }
+
+        <span style="color:#998;font-style:italic">// Return a boolean value</span>
+        <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">booleanValue</span> = profile. booleans?[<span style="color:#b84">&#34;4479&#34;</span>] {
+            <span style="font-weight:bold">if</span> booleanValue {
+            	<span style="color:#998;font-style:italic">// ... do something</span>
+            }
+        }
+}</code></pre></div>
+<h4 id="currentvisit"><code>currentVisit</code></h4>
+
+<p>Access to the attributes for the current visit instead of the lifetime attributes for a visitor.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile. currentVisit</code></td>
+<td>Returns the current visit scoped attributes.</td>
+<td><code>TealiumCurrentVisitProfile</code></td>
+<td><code>TealiumCurrentVisitProfile (dates: [DateTime(id: &quot;5376&quot;, value: 1567536668080), DateTime(id: &quot;10&quot;, value: 1567536668000)], booleans: [Boolean(id: &quot;4530&quot;, value: true], numbers: [Number(id: &quot;32&quot;, value: 3.8)])</code></td>
+</tr>
+
+<tr>
+<td><code>profile. currentVisit. ###</code></td>
+<td>Returns the desired attribute depending on ###. All the same methods liste above apply except for Audiences and Badges. These are exclusively visitor attributes and do not apply to the visit.</td>
+<td>Varies</td>
+<td>Varies</td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
+        <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">profile</span> = profile <span style="font-weight:bold">else</span> { <span style="font-weight:bold">return</span> }
+
+        <span style="color:#998;font-style:italic">// Return a current visit string attribute</span>
+        <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">currentVisit</span> = profile.currentVisit,
+           <span style="font-weight:bold">let</span> <span style="color:#008080">string</span> = currentVisit.strings?[<span style="color:#b84">&#34;34&#34;</span>] {
+            print(string)
+            <span style="color:#998;font-style:italic">// ... take action</span>
+        }
+}</code></pre></div>
+<h4 id="dates"><code>dates</code></h4>
+
+<p>Custom subscripting allows for querying the date value by id.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.dates</code></td>
+<td>Returns all the dates in the visitor profile.</td>
+<td><code>[DateTime]</code></td>
+<td><code>[DateTime(id: &quot;22&quot;, value: 1567120112000), DateTime(id: &quot;13&quot;, value: 1567120113245)]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.dates[&quot;4692&quot;]</code></td>
+<td>Returns the date by id.</td>
+<td><code>Int</code></td>
+<td><code>1567120112000</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
+        <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">profile</span> = profile <span style="font-weight:bold">else</span> { <span style="font-weight:bold">return</span> }
+
+        <span style="color:#998;font-style:italic">// Return a date value</span>
+        <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">date</span> = profile.dates?[<span style="color:#b84">&#34;33&#34;</span>] {
+            print(date)
+            <span style="color:#998;font-style:italic">// .. take action</span>
+        }
+}</code></pre></div>
+<h4 id="numbers"><code>numbers</code></h4>
+
+<p>Custom subscripting allows for querying the number value by id.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usege</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.numbers</code></td>
+<td>Returns all the numbers in the visitor profile.</td>
+<td><code>[Number]</code></td>
+<td><code>[Number(id: &quot;83&quot;, value: 0.5714285714285714), Number(id: &quot;1399&quot;, value: 2.0)]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.numbers[&quot;1399&quot;]</code></td>
+<td>Returns the number by id.</td>
+<td><code>Double</code></td>
+<td><code>4.82125</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
+        <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">profile</span> = profile <span style="font-weight:bold">else</span> { <span style="font-weight:bold">return</span> }
+
+        <span style="color:#998;font-style:italic">// Return a number value</span>
+        <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">number</span> = profile. numbers?[<span style="color:#b84">&#34;1399&#34;</span>] {
+            <span style="font-weight:bold">if</span> number <span style="font-weight:bold">&gt;</span> <span style="color:#099">3.0</span> {
+            	<span style="color:#998;font-style:italic">// ... take action</span>
+            }
+        }
+}</code></pre></div>
+<h4 id="setsofstrings"><code>setsOfStrings</code></h4>
+
+<p>Custom subscripting allows for querying the set of strings value by id.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.setsOfStrings</code></td>
+<td>Returns all the sets of strings in the visitor profile.</td>
+<td><code>[SetOfStrings]</code></td>
+<td><code>[SetOfStrings(id: &quot;9938&quot;, value: [&quot;shirts&quot;]), SetOfStrings(id: &quot;2300&quot;, value: [&quot;Luxury Couch 1&quot;, &quot;Luxury Couch 2&quot;])]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.setsOfStrings[&quot;2300&quot;]</code></td>
+<td>Returns the set of strings by id.</td>
+<td><code>Set&lt;String&gt;</code></td>
+<td><code>[&quot;Luxury Couch 1&quot;, &quot;Luxury Couch 2&quot;]</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
+        <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">profile</span> = profile <span style="font-weight:bold">else</span> { <span style="font-weight:bold">return</span> }
+
+        <span style="color:#998;font-style:italic">// Return an set of strings value</span>
+        <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">setOfStrings</span> = profile.setsOfStrings?[<span style="color:#b84">&#34;5279&#34;</span>] {
+            <span style="font-weight:bold">if</span> setOfStrings.contains(<span style="color:#b84">&#34;toys&#34;</span>) {
+            	<span style="color:#998;font-style:italic">// ... take action</span>
+            }
+        }
+}</code></pre></div>
+<h4 id="strings"><code>strings</code></h4>
+
+<p>Custom subscripting allows for querying the string value by id.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.strings</code></td>
+<td>Returns all the strings in the visitor profile.</td>
+<td><code>[VisitorString]</code></td>
+<td><code>[Number(id: &quot;83&quot;, value: &quot;Toy Truck&quot;), Number(id: &quot;5699&quot;, value: &quot;Toy Tea Set&quot;)]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.strings[&quot;5699&quot;]</code></td>
+<td>Returns the string by id.</td>
+<td><code>String</code></td>
+<td><code>&quot;Toy Tea Set&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
+        <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">profile</span> = profile <span style="font-weight:bold">else</span> { <span style="font-weight:bold">return</span> }
+
+        <span style="color:#998;font-style:italic">// Return a string value</span>
+        <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">string</span> = profile.strings?[<span style="color:#b84">&#34;5699&#34;</span>] {
+            print(string)
+            <span style="color:#998;font-style:italic">// ... take action</span>
+        }
+}</code></pre></div>
+<h4 id="tallies-and-tallyvalue"><code>tallies</code> and <code>tallyValue</code></h4>
+
+<p>Custom subscripting allows for querying the tally by id, and to query the tally value by id.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.tallies</code></td>
+<td>Returns all the tallies in the visitor profile.</td>
+<td><code>[Tally]</code></td>
+<td><code>[Tally(id: &quot;2983&quot;, value: [TallyValue(key: &quot;red shirts category&quot;, count: 4.0), TallyValue(key: &quot;green shirts category&quot;, count: 2.0)]), Tally(id: &quot;5643&quot;, value: [TallyValue(key: &quot;girls&quot;, count: 3.0), TallyValue(key: &quot;womens&quot;, count: 1.0)]</code>]</td>
+</tr>
+
+<tr>
+<td><code>profile.tallies[tally: &quot;1399&quot;]</code></td>
+<td>Returns the tally by id.</td>
+<td><code>[TallyValue]</code></td>
+<td><code>[TallyValue(key: &quot;girls&quot;, count: 3.0), TallyValue(key: &quot;womens&quot;, count: 1.0)]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.tallies[tally: &quot;1399&quot;, key: &quot;womens&quot;]</code></td>
+<td>Returns the tally by id.</td>
+<td><code>Double</code></td>
+<td><code>3.0</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
+        <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">profile</span> = profile <span style="font-weight:bold">else</span> { <span style="font-weight:bold">return</span> }
+
+        <span style="color:#998;font-style:italic">// Return an entire tally</span>
+        <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">tally</span> = profile.tallies?[<span style="color:#b84">&#34;1399&#34;</span>] {
+            print(<span style="color:#b84">&#34;Tally id 5377: </span><span style="color:#b84">\(</span>tally<span style="color:#b84">)</span><span style="color:#b84">&#34;</span>)
+        }
+
+        <span style="color:#998;font-style:italic">// Return a tally value by using the tally id and the key for the value desired</span>
+        <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">tallyValue</span> = profile.tallies?[tally: <span style="color:#b84">&#34;5381&#34;</span>, key: <span style="color:#b84">&#34;red shirts&#34;</span>]{
+            print(<span style="color:#b84">&#34;Tally value for id 5381 and key &#39;red shirts&#39;: </span><span style="color:#b84">\(</span>tallyValue<span style="color:#b84">)</span><span style="color:#b84">&#34;</span>)
+        }
+}</code></pre></div>
+<h2 id="api-reference">API Reference</h2>
+
+<h3 id="class-tealium">Class <code>Tealium</code></h3>
+
+<p>The following API methods are available to act upon the updated visitor profile.</p>
+
+<h4 id="visitorservice"><code>visitorService()</code></h4>
+
+<p>Usage Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">MyHelperClass</span> {
+    <span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
+
+    <span style="font-weight:bold">public</span> <span style="font-weight:bold">init</span> () {
+        <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+                                   profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
+                                   environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
+                                   datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
+                                   optionalData: <span style="font-weight:bold">nil</span>)
+        config.addVisitorServiceDelegate(<span style="font-weight:bold">self</span>)                           
+	     config.setVisitorServiceRefresh(interval: <span style="color:#099">10</span>)		
+		<span style="font-weight:bold">self</span>.tealium = Tealium(config) {
+			<span style="color:#998;font-style:italic">// Note: this is inside the completion block after initialization</span>
+
+			<span style="color:#998;font-style:italic">// self.tealium is guaranteed to be initialized inside the completion block</span>
+
+			<span style="font-weight:bold">self</span>.tealium?.visitorService()?.#### <span style="color:#998;font-style:italic">// where #### is any public API method on the visitorProfile object - see other methods for examples</span>
+		}
+	}
+}</code></pre></div>
+<h4 id="requestvisitorprofile"><code>requestVisitorProfile()</code></h4>
+
+<p>This method triggers an immediate request to the VisitorService to retrieve the current profile. If the profile has been updated since the last fetch, the <code>profileDidUpdate</code> delegate method will be called.</p>
+
+<p>This method is called automatically whenever a track request is sent, if your visitor profile refresh interval is set to <code>0</code>. If you have a higher value set for the refresh interval, then you may call this method to retrieve the profile instantly, without waiting for the next scheduled update.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">self</span>.tealium?.visitorService()?.requestVisitorProfile()</code></pre></div>
+<p>Usage Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">track</span>(title: <span style="color:#999">String</span>, data: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>]?) {
+        tealium?.track(title: title, data: data, completion: { success, <span style="color:#a61717;background-color:#e3d2d2">\</span><span style="font-weight:bold">_</span>, error <span style="font-weight:bold">in</span>
+            <span style="font-weight:bold">if</span> error <span style="font-weight:bold">!=</span> <span style="font-weight:bold">nil</span> {
+                print(<span style="color:#b84">&#34;*** Track not completed because of error: </span><span style="color:#b84">\n</span><span style="color:#b84">\(</span><span style="color:#999">String</span><span style="color:#b84">(</span>describing: error<span style="color:#b84">))</span><span style="color:#b84">&#34;</span>)
+            }
+            <span style="font-weight:bold">if</span> success {
+                print(<span style="color:#b84">&#34;*** Track with VisitorService completed ***&#34;</span>)
+                <span style="font-weight:bold">self</span>.tealium?.visitorProfile()?.requestVisitorProfile()
+
+            }
+        })
+    }</code></pre></div>
+<h4 id="getcachedprofile"><code>getCachedProfile()</code></h4>
+
+<p>Returns the most recently-retrieved visitor profile from persistent storage, without triggering a new request. Useful in situations where there is no internet connection, but a prior successful request has been made.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">self</span>.tealium?.visitorService()?.getCachedProfile(completion: { profile <span style="font-weight:bold">in</span>
+                <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">profile</span> = profile <span style="font-weight:bold">else</span> { <span style="font-weight:bold">return</span> }
+                <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">json</span> = <span style="font-weight:bold">try</span>? JSONEncoder().encode(profile), <span style="font-weight:bold">let</span> <span style="color:#008080">string</span> = <span style="color:#999">String</span>(data: 					json, encoding: .utf8) {
+                    print(string)
+   		}
+})</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+<th>Example Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>completion: TealiumVisitorProfile?</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="removeallvisitorservicedelegates"><code>removeAllVisitorServiceDelegates()</code></h4>
+
+<p>Removes all visitor profile delegates.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">self</span>.tealium?.visitorService()?.removeAllVisitorServiceDelegates()</code></pre></div>
+<h4 id="addvisitorservicedelegate"><code>addVisitorServiceDelegate()</code></h4>
+
+<p>Adds a new class conforming to <code>VisitorServiceDelegate</code></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">self</span>.tealium?.visitorService()?.addVisitorServiceDelegate(<span style="font-weight:bold">self</span>)</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>delegate: Class conforming to <code>VisitorServiceDelegate</code></td>
+<td></td>
+<td><code>ViewController, TealiumHelper</code></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="removesingledelegate"><code>removeSingleDelegate()</code></h4>
+
+<p>Removes a specific visitor profile delegate.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">self</span>.tealium?.visitorService()?.removeSingleDelegate(<span style="font-weight:bold">self</span>)</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+<th>Example Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>delegate: Class conforming to <code>VisitorServiceDelegate</code></td>
+<td></td>
+<td><code>ViewController, TealiumHelper</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="class-tealiumvisitorservicedelegate">Class: <code>TealiumVisitorServiceDelegate</code></h3>
+
+<h4 id="profiledidupdate"><code>profileDidUpdate()</code></h4>
+
+<p>This method is called whenever the visitor profile was updated. This will most likely be called every time the <code>requestVisitorProfile()</code> method is used.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">profileDidUpdate</span>(profile: TealiumVisitorProfile?) {
+        <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">profile</span> = profile <span style="font-weight:bold">else</span> { <span style="font-weight:bold">return</span> }
+
+        <span style="color:#998;font-style:italic">// act on profile attributes</span>
+        print(profile.audiences)
+
+        ...
+}</code></pre></div>
+<h3 id="class-tealiumconfig">Class: <code>TealiumConfig</code></h3>
+
+<h4 id="setvisitorservicerefresh"><code>setVisitorServiceRefresh()</code></h4>
+
+<p>This allows you to set the frequency of visitor profile retrieval. The default value is 5 minutes for this setting. Use this method to adjust the frequency. Even if you add the <code>requestVisitorProfile</code> method to every tracking call, the profile will not be fetched every time unless you set this to 0.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(...)
+config.setVisitorServiceRefresh(<span style="color:#099">3</span>)</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>interval</td>
+<td>The frequency for which to fetch the visitor profile. Integer, minutes. (default: <code>5</code>)</td>
+<td><code>3</code></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="addvisitorservicedelegate-1"><code>addVisitorServiceDelegate()</code></h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.addVisitorServiceDelegate(<span style="font-weight:bold">self</span>)</code></pre></div>
+<p>Add a delegate to an array of VisitorService delegates in order to use the <code>profileDidUpdate</code> delegate method. There can be multiple objects assigned as delegates.</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>class responsible for the profile updates (delegate)</td>
+<td></td>
+<td><code>ViewController, TealiumHelper</code></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="getvisitorservicedelegates"><code>getVisitorServiceDelegates()</code></h4>
+
+<p>Returns a list of delegates assigned to the VisitorService module.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.getVisitorServiceDelegates()</code></pre></div>
+<h4 id="setvisitorserviceoverrideprofile"><code>setVisitorServiceOverrideProfile()</code></h4>
+
+<p>Overrides the profile from which to fetch the visitor profile. Should align with the profile used for data collection in the Collect module.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config. setVisitorServiceOverrideProfile(<span style="color:#b84">&#34;PROFILE&#34;</span>)</code></pre></div>
+<h4 id="setvisitorserviceoverrideurl"><code>setVisitorServiceOverrideURL()</code></h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config. setVisitorServiceOverrideURL(<span style="color:#b84">&#34;https://overridden-subdomain.yourdomain.com/&#34;</span>)</code></pre></div>
+<p>Overrides the base URL from which the visitor profile will be retrieved. ACCOUNT, PROFILE, and visitor ID will be automatically appended to the URL.</p>
+
+<h2 id="release-notes">Release Notes</h2>
+
+<p>1.8.0</p>
 
 <ul>
-<li>Persistent Storage has now moved from UserDefaults to JSON-based file storage. Data is stored by default in the caches directory on the device, but this is overridable through config.</li>
-<li>Where possible, all processing is now performed on a background queue. If you are using the Tag Management module, a limited amount of processing is performed on the main thread, as this is a requirement for WKWebView.</li>
-<li>The following modules have been removed:
-
-<ul>
-<li>FileStorage (superseded by DiskStorage, which is part of Core)</li>
-<li>DefaultsStorage (superseded by DiskStorage, which is part of Core)</li>
-<li>DataSource (incorporated into VolatileData module)</li>
-</ul></li>
-<li>Tag Management Optimizations (Webview)</li>
-<li><code>UIWebView</code> has been removed. Default is now <code>WKWebView</code> (only if using the Tag Management module). Due to bugs in the <code>WKWebView</code> API for iOS versions &lt;11, cookies may not be persisted on these devices when upgrading to 1.8.0 from earlier tealium-swift versions.</li>
-<li><code>vdata</code> dispatcher removed. All Collect module requests are now sent as POST requests to the <code>/event</code> endpoint, or <code>/bulk-event</code> in the case of batched requests</li>
-<li>Connectivity checks improved.</li>
-<li>Connectivity crash fixed (<code>TealiumRepeatingTimer</code> deinit)</li>
-<li>Updated project to work with Xcode11</li>
-<li>Crash reporter dependency fixed (currently using a binary build of PLCrashReporter until a fix is available)</li>
-</ul>
-
-<p><strong>Low Impact Changes</strong></p>
-
-<ul>
-<li>Attribution module updated to include additional data points provided by the Apple Search Ads API</li>
-<li>DeviceData module device names updated to include latest Apple devices</li>
-<li>Logging improvements</li>
-<li>Swiftdoc improvements; all public methods now have quick help available in Xcode</li>
-</ul>
-
-<h4 id="1-7-3-november-2019">1.7.3 (November 2019)</h4>
-
-<p><strong>Low Impact Changes</strong>
-* Fix for PLCrashReporter dependency with Xcode 11. Now uses a pre-built framework instead of building from source.</p>
-
-<h4 id="1-7-2-august-2019">1.7.2 (August 2019)</h4>
-
-<p><strong>Low Impact Changes</strong>
-* Minor internal change to support unit testing for Remote Commands.</p>
-
-<h4 id="1-7-1-july-2019">1.7.1 (July 2019)</h4>
-
-<p><strong>High Impact Changes</strong></p>
-
-<ul>
-<li><code>UIView</code> auto-detection logic for <code>WKWebView</code> has been improved, which accounts for most cases with complex view hierarchies, without the need to manually pass a UIView instance in the webview config. Validation in your own app is essential; verify that you see tracking calls leaving your app in a variety of different screens in your app, including any views that may be launched from push notifications, where the view hierarchy may have changed.</li>
-</ul>
-
-<h4 id="1-7-0-may-2019">1.7.0 (May 2019)</h4>
-
-<p><strong>High Impact Changes</strong></p>
-
-<ul>
-<li><a href="/platforms/ios-swift/module-list/tagmanagement/"><code>TagManagement</code> Module</a> now uses <code>WKWebView</code> instead of <code>UIWebView</code> by default.  <strong>Read tag management documentation carefully before upgrading.</strong></li>
-<li>Consent Manager: If consent logging is enabled, a <code>&quot;decline_consent&quot;</code> event is sent for auditing purposes (GDPR compliance).</li>
-</ul>
-
-<p><strong>Low Impact Changes</strong></p>
-
-<ul>
-<li>Bug Fix: In remote commands, fixed an issue where callbacks to the web view were not executed.</li>
-<li>Sample apps updated to be compatible with Xcode 10.2.</li>
-<li>New feature: Trace. Provides an easy method to join and leave an AudienceStream trace session, including terminating an active visitor session.</li>
-<li>New sample app showing how to use <code>TagManagement</code> with complex view hierarchies.</li>
-<li>Data layer variable standardization (see <a href="/platforms/ios-swift/data-layer/">Data Layer</a> for full list).</li>
-</ul>
-
-<h2 id="1-50-1-6-7-2018">1.50-1.6.7 (2018)</h2>
-
-<h4 id="1-6-7-december-2018">1.6.7 (December 2018)</h4>
-
-<ul>
-<li>Reintroduced init completion with module responses. Tealium is guaranteed to be initialized, along with all modules, when the completion block is called.</li>
-<li>Completion is only called once.</li>
-<li>Subsequent reloads of the <code>TagManagement</code> webview (if enabled) no longer causes remote commands to be re-enabled.</li>
-<li>VolatileData getData() method with no arguments has been reintroduced.</li>
-</ul>
-
-<h4 id="1-6-6-december-2018">1.6.6 (December 2018)</h4>
-
-<p><strong>Low Impact Changes</strong></p>
-
-<ul>
-<li>Fix to enable usage of <code>DeviceData</code> module in app extensions (extension-safe access to <code>UIApplication.shared</code>).</li>
-</ul>
-
-<h4 id="1-6-5-november-2018">1.6.5 (November 2018)</h4>
-
-<p><strong>High Impact Changes</strong></p>
-
-<ul>
-<li>Full modularization of library components; import only the modules you require.</li>
-<li>CocoaPods module import changed from <code>tealium_swift</code> to <code>TealiumSwift</code>.</li>
-<li>Minimum supported Swift version is now 4.0 due to Swift 3.X deprecation in Xcode 10. 1.6.4 is the last version supporting Swift versions &lt;4.0. Use this if you require support for Swift 3.2.</li>
-<li><code>Core</code>: Module responses removed from completion closure for simplicity</li>
-<li><code>TealiumConfig</code>: <code>TealiumModulesList</code> is no longer required if you are only importing the specific modules you require. It will, however, continue to function as expected if present.</li>
-<li><code>TagManagement</code> Module: With iOS 12, a memory leak has been introduced into the <code>UIWebView</code> API. This is out of Tealium&rsquo;s control and has been logged with Apple. Rest assured, this is a small leak, and does not impact your app in any significant way, but it  shows up when profiling your app with the &ldquo;Leaks&rdquo; instrument. The leak disappears with a future iOS update, once Apple has fixed the issue. <a href="https://stackoverflow.com/questions/53187305/ios-12-memory-leak-wkwebview-and-uiwebview/53187306">Learn more</a>. If you do not need the tag management feature, you may remove the <code>TagManagement</code> module from your build to not experience this leak.</li>
-<li>Remote Commands: Add remote commands via the <code>TealiumConfig</code> instance, rather than the public API method exposed on the Tealium instance. <a href="/platforms/ios-swift/module-list/remote-commands/">Learn more</a> about the RemoteCommands module.</li>
-</ul>
-
-<p><strong>Low Impact Changes</strong></p>
-
-<ul>
-<li><code>Core</code>: Improved library startup time.</li>
-<li><code>CrashReporter</code> Module: Reintroduced the Crash Reporter module following Xcode 10 fixes.</li>
-<li><code>VolatileData</code> Module: Fixed bug causing timestamps from queued hits to be overwritten.</li>
-<li><code>VolatileData</code> Module: Added <code>event_timestamp_unix</code>, which is a second-precise 1970-epoch timestamp.</li>
-<li><code>TagManagement</code> Module: Nested objects now supported.</li>
-<li><code>TagManagement</code> Module: Memory leak fixes.</li>
-<li><code>RemoteCommands</code> Module: Fixed a bug causing the Remote HTTP command to occasionally not be called when invoked.</li>
-<li><code>PersistentData</code> Module: Bug fix for potential memory leak.</li>
-<li><code>Lifecycle</code> Module: Fixed a bug that occasionally caused crash data to persist across more than 1 event, potentially causing inflated crash metrics in analytics reports. Crashes are now only sent on &ldquo;launch&rdquo;.</li>
-<li><code>DeviceData</code> Module: <code>network_connection_type</code> now moved to Connectivity module to remove unnecessary dependency.</li>
-<li><code>DeviceData</code> Module: Add <code>app_orientation</code> and <code>app_orientation_extended</code> to indicate the orientation of the app, as well as existing <code>device_orientation</code> and <code>device_orientation_extended</code>.</li>
-<li><code>Delegate</code> Module: <code>Tealium</code> completion handler moved to <code>TealiumCore</code> framework.</li>
-<li><code>Connectivity</code> Module: Set a default time to flush the queue of 30 seconds while the device is known to be offline.</li>
-<li><code>Connectivity</code> Module: Added protection around timer code for connectivity check.</li>
-<li><code>Attribution</code> Module: Removed unnecessary code for Swift versions &lt;4.0 (no longer supported due to Xcode deprecation of Swift 3).</li>
-</ul>
-
-<h4 id="1-6-4-october-2018">1.6.4 (October 2018)</h4>
-
-<p><strong>Low Impact Changes</strong></p>
-
-<ul>
-<li>Minor fix to make <code>TealiumRemoteCommand</code> class accessible when using CocoaPods/Carthage (access level changed from public to open).</li>
-</ul>
-
-<h4 id="1-6-3-october-2018">1.6.3 (October 2018)</h4>
-
-<p><strong>Low Impact Changes</strong></p>
-
-<ul>
-<li>Fix for LogLevel not being respected in newer Xcode/Swift versions.</li>
-<li>Fix for Connectivity module reporting incorrect connection type on cellular data connection.</li>
-</ul>
-
-<h4 id="1-6-2-september-2018">1.6.2 (September 2018)</h4>
-
-<p><strong>High Impact Changes</strong></p>
-
-<ul>
-<li>Crash Reporter temporarily removed from build due to issues with Xcode 10 beta.</li>
-</ul>
-
-<p><strong>Low Impact Changes</strong></p>
-
-<ul>
-<li>Removed &ldquo;always embed swift binaries&rdquo; from targets.</li>
-</ul>
-
-<h4 id="1-6-1-september-2018">1.6.1 (September 2018)</h4>
-
-<p><strong>High Impact Changes</strong></p>
-
-<ul>
-<li>Fix for session ID; Tealium Session ID set to expire after 30 minutes. This value is configurable.</li>
-</ul>
-
-<h4 id="1-6-0-july-2018">1.6.0 (July 2018)</h4>
-
-<ul>
-<li><strong>High Impact Changes</strong>
-
-<ul>
-<li>Initial release of <a href="/platforms/ios-swift/consent-management/">Consent Manager</a> module. This is enabled by default. If you do not require consent management, you must actively disable it, or tracking calls are not sent.</li>
-</ul></li>
-<li><strong>Low Impact Changes</strong>
-
-<ul>
-<li>Fixed a crash relating to older 32 bit devices due to a large integer timestamp (changed from <code>Int</code> to <code>Int64</code>).</li>
-<li>Added <a href="/platforms/ios-swift/module-list/dispatch-queue/">Dispatch Queue</a> module to allow data collected offline to be persisted when the app is terminated.</li>
-</ul></li>
-</ul>
-
-<h4 id="1-5-0-april-2018">1.5.0 (April 2018)</h4>
-
-<ul>
-<li>First release of Tealium Crash Reporter. </li>
-<li>Minor bug fixes.</li>
-</ul>
-
-<h2 id="1-1-3-1-4-0-2017">1.1.3-1.4.0 (2017)</h2>
-
-<h4 id="1-4-0-december-2017">1.4.0 (December 2017)</h4>
-
-<ul>
-<li><p><strong>High impact changes</strong>: these are changes to previous behavior or variable names/values. Before upgrading the library, be sure to check your account setup to ensure you are not relying on the previous behavior to trigger tags/actions. Also see <a href="/platforms/ios-swift/data-layer/">List of Variables</a> for a JavaScript extension to maintain backward compatibility between releases.</p>
-
-<ul>
-<li>Removed deprecated track method with <code>TealiumTrackType</code>. Should now call trackView or trackEvent methods instead to differentiate between track call types.</li>
-<li><code>tealium_event_type</code> has been removed from all outgoing track calls, as it is now derived in UDH Event Specs and does not need to be sent</li>
-<li>Lifecycle module changed to use same <code>NSNotifications</code> as Objective-C library (<code>UIApplicationDidBecomeActive</code> and <code>UIApplicationWillResignActive</code>). This ensures lifecycle events are captured as quickly as possible.</li>
-<li><code>device_orientation</code> has been changed to simply Portrait or Landscape (same as Objective-C library), and a new variable <code>device_orientation_full</code> has been introduced to capture the z-axis orientation such as face up or face down.</li>
-<li><code>device_build</code> variable changed to <code>device_os_build</code> to be more descriptive. <code>device_build</code> is no longer sent. Mappings need to be updated if you were previously using this variable.</li>
-<li>Attribution module: <code>device_advertising_id</code> has been changed from Identifier for Vendor (IDFV) to Identifier for Advertisers (IDFA). A new variable <code>device_advertising_vendor_id</code> has been added, which contains the IDFV.</li>
-</ul></li>
-
-<li><p><strong>Low impact changes/general updates and improvements</strong></p>
-
-<ul>
-<li>Updated all modules to support Swift 4.0. Only minor changes required.</li>
-<li>Major documentation overhaul; documents now included for all modules, with more code samples.</li>
-<li><code>README.md</code> changed to point to Learning Community for all documents.</li>
-<li>More unit tests added for all modules.</li>
-<li>New schemes added to Framework project to allow device-based testing.</li>
-<li>Modified sample Tealium helper file to allow usage with Objective-C apps, and align with best practice.</li>
-<li>Fixed <code>RemoteCommands</code> example in sample <code>TealiumHelper</code> file.</li>
-<li><code>Attribution</code> module: Added support for Apple Search Ads API. If this module is used, Tealium collects attribution information from the Apple Search Ads API.</li>
-<li><code>Collect</code> module: Added config method to override collect URL.</li>
-<li><code>Connectivity</code> module: Improved logging when device connection changes. Added helpers to get the current connection type.</li>
-<li><code>Core</code>: Added <code>call_type</code> variable to view calls.</li>
-<li>Added <code>screen_title</code> to view calls, which is set to the <code>&quot;title&quot;</code> parameter passed into the <code>trackView</code> call. For track calls, <code>tealium_event</code> is set to the string value that is passed in as the first parameter.</li>
-<li><code>FileStorage</code> module: Fixed bug that caused data not to be persisted to disk due to permissions error.</li>
-<li><code>Lifecycle</code> Persistent Data: Changed implementation of <code>NSKeyedUnarchiver</code> to support Swift 4.0, and add additional error checking.</li>
-<li><code>Logger</code> module: Improved logging for Persistent Data.</li>
-<li><code>RemoteCommands</code> module: Removed deprecated enable/disable methods.</li>
-<li><code>TagManagement</code>: Minor updates for Swift 4.0 compatibility.</li>
-<li><code>VolatileData</code>: Added new public method to remove all volatile data.</li>
-<li>DeviceData module:
-
-<ul>
-<li>Added OS Name.</li>
-<li>Added OS version.</li>
-<li>Added Device Screen Resolution.</li>
-<li>Added Network (carrier) info (MNC, MCC, ISO code).</li>
-<li>Added current connection type.</li>
-<li>Added charging state information.</li>
-<li>Fixed bug that caused battery to show as -100.</li>
-<li>Added granular device model. For example, iPhone 7 (GSM).</li>
-<li>&ldquo;device_build&rdquo; variable changed to <code>&quot;device_os_build&quot;</code> to be more descriptive. <code>&quot;device_build&quot;</code> is no longer sent. Mappings need to be updated if you were previously using this variable.</li>
-<li><code>&quot;device_orientation&quot;</code> has been changed to simply Portrait or Landscape (same as Objective-C library), and a new variable <code>&quot;device_orientation_extended&quot;</code> has been introduced to capture the z-axis orientation such as face up, or face down.</li>
-<li>Support added for WatchKit device data (limited data available).</li>
-</ul></li>
-</ul></li>
-</ul>
-
-<h4 id="1-3-3-october-2017">1.3.3 (October 2017)</h4>
-
-<ul>
-<li>Fixed a bug which caused unit tests to crash in some circumstances</li>
-<li>Optimized module detection to remove need to iterate through all loaded classes in app</li>
-</ul>
-
-<h4 id="1-3-2-august-2017">1.3.2 (August 2017)</h4>
-
-<ul>
-<li>Builder project update - Carthage support fix</li>
-<li>Access control updates:
-
-<ul>
-<li><code>Tealium</code> (build 4)</li>
-<li><code>TealiumAutotracking</code> (build 4)</li>
-<li><code>TealiumDatasource</code> (build 3)</li>
-<li><code>TealiumDelegate</code> (build 4)</li>
-<li><code>TealiumModules</code>  (build 2)</li>
-<li><code>TealiumMulticastDelegate</code> (build 3)</li>
-<li><code>TealiumRemoteCommands</code> (build 3)</li>
-<li><code>TealiumTagManagement</code> (build 3)</li>
-</ul></li>
-<li><code>Tealium</code> (build 4) added new function:
-
-<ul>
-<li><code>trackView(title:data:completion)</code></li>
-</ul></li>
-<li><code>Autotracking</code> Module (build 4) instance level custom data access &amp; editing functions added.</li>
-<li><code>Async</code> Module removed. All internal dispatch queue routing removed.</li>
-<li><code>Collect</code> Module (build 4). <code>TrackRequest</code> <code>.wasSent</code> suppression check removed. New didFinish &amp; didFailToFinish with info functions added.</li>
-<li><code>Core Config</code> (build 3) added ability to assign and retrieve target queue for lib to use.</li>
-<li><code>Core Constants</code> (build 3). <code>TrackRequest</code> <code>.wasSent</code> property removed. <code>ModuleResponse</code> <code>.info</code> property added. <code>.info</code> property removed from track related functions in modules:
-
-<ul>
-<li><code>AppData</code></li>
-<li><code>Attribution</code></li>
-<li><code>Autotracking</code></li>
-<li><code>Connectivity</code></li>
-<li><code>Datasource</code></li>
-<li><code>Delegate</code></li>
-<li><code>Lifecycle</code></li>
-<li><code>PersistentData</code></li>
-<li><code>VolatileData</code></li>
-</ul></li>
-<li><code>Core ModulesManager</code> (build 4) updated to report track failures due to library enable fail.</li>
-<li><code>DeviceData</code> Module added (build 1) for iOS builds. Adds following data stream values for keys:
-    - <code>device_architecture</code>
-    - <code>device_battery_percent</code>
-    - <code>device_build</code>
-    - <code>device_cputype</code>
-    - <code>device_ischarging</code>
-    - <code>device_language</code>
-    - <code>device_model</code>
-    - <code>device_orientation</code>
-    - <code>device_os_version</code></li>
-<li><code>Lifecycle</code> (build 3). Initial launch call detection fix. Unarchive fix to handle lifecycle data from different app builds.</li>
-<li><code>Logger</code> (build 3) Updated to log new track data in moduleResponse instead of request info. Logs failed save and load requests. Default log level changed from <code>.verbose</code> to <code>.errors</code>.</li>
-<li><code>RemoteCommands</code> Module (build 3) removed per command queue assignment with library wide queue setting.</li>
-<li><code>TagManagement</code> Module (build 3) updates:
-    - Removed webview <code>isLoading</code> check.
-    - Auto set call type to value of data stream key: <code>&quot;call_type&quot;</code>.
-    - TrackRequest <code>.wasSent</code> suppression check removed.
-    - Added new internal <code>didFinish</code> &amp; <code>didFailToFinish</code> with info functions added.
-    - Update to dictionary sanitization function to permit <code>[String]</code> array values.</li>
-<li><code>VolatileData</code> Module (build 3) refactored to accept new data additions immediately after launch.</li>
-</ul>
-
-<h4 id="1-3-1-july-2017">1.3.1 (July 2017)</h4>
-
-<ul>
-<li><code>Builder</code> (used by Carthage) updated to include previously missing <code>TealiumMulticastDelegate</code> &amp; <code>TealiumLifecyclePersistentData</code> classes in build target.</li>
-<li><code>AppData</code> Module (build 3) fix for app_version &amp; added new key-value:
-
-<ul>
-<li>app_build (application build number)</li>
-</ul></li>
-<li><code>Async</code> Module (build 4) added os x version check for dispatch queue assignment.</li>
-<li><code>Delegate</code> Module (build 3) removed unused code.</li>
-</ul>
-
-<h4 id="1-3-0-july-2017">1.3.0 (July 2017)</h4>
-
-<ul>
-<li>All modules updated to make use of simplified modules base class + new internal TealiumRequest structs that replaces the TealiumProcess &amp; TealiumTrack structs</li>
-<li>Most module related files have been aggregated into single module class files for faster reference &amp; future removal of the module subfolders.</li>
-<li>Added <code>Connectivity</code> module (build 1). Queues track calls if connectivity not available. Resends in FIFO order when connectivity again available when another track occurs. Adds following auto variable:
-
-<ul>
-<li><code>was_queued</code> (true if call was queued)</li>
-</ul></li>
-<li>Added <code>DataStorage</code> module (build 1) that replaces the persistent data module&rsquo;s internal functions. Primarily for tvOS.</li>
-<li>Added <code>FileStorage</code> module (build 1) that replaces the persistent data modules internal functions. For all other target platforms.</li>
-<li>Added <code>TealiumModulesList</code> is assigned to <code>TealiumConfig</code> to explicit enable or disable modules. Struct has following properties:
-
-<ul>
-<li><code>isWhitelist: Bool</code></li>
-<li><code>modulesName: Set&lt;String&gt;</code></li>
-</ul></li>
-<li>Added additional core internal classes:<br />
-
-<ul>
-<li><code>TealiumModules</code></li>
-<li><code>TealiumMulticastDelegate</code></li>
-<li><code>TealiumRequestArray</code></li>
-</ul></li>
-<li>Updated <code>Core Tealium</code> (build 3) with track type call marked deprecated in favor of simpler track method. Updated to use internal TealiumTrackRequest over TealiumTrack. Added new APIs to update library instance with newer configuration:
-
-<ul>
-<li><code>update(config: TealiumConfig)</code></li>
-</ul></li>
-<li>Updated <code>Core TealiumConfig</code> (build 2) convenience constructor added. 1.0.1 Deprecated legacy methods removed.</li>
-<li>Updated <code>Core Constants</code> (build 2) replaced internal track &amp; process struct with new request protocol and request types.</li>
-<li>Updated <code>Core TealiumModule</code> base class (build 3) to support new request structs.Made equatable &amp; hashtable. <code>ModuleConfig</code> made a class level func for better init performance. Simplified process completion methods. Removed an internal protocol requirement.</li>
-<li>Updated <code>Core TealiumModuleManager</code> (build 3) to support updated request structs.</li>
-<li>Updated <code>Core TealiumUtils</code> (build 2) updated multicast delegate to take explicit delegate type at init time.</li>
-<li>Updated <code>AppData</code> module (build 2) to support new persistence related requests &amp; to provide required new data in event no persistent modules enabled. Remaining app data key-value pairs added:
-
-<ul>
-<li><code>app_name</code></li>
-<li><code>app_rdns</code></li>
-<li><code>app_version</code></li>
-</ul></li>
-<li>Updated <code>Attribution</code> module (build 3) to use new internal request structs.</li>
-<li>Updated <code>Autotracking</code> module (build 3) to use new internal request structs.</li>
-<li>Updated <code>Async</code> module (build 3) removed Tealium extensions for completion callbacks.</li>
-<li>Updated <code>Collect</code> module (build 3) to use new internal request structs. Files aggregated into a single <code>TealiumCollectModule.swift</code> file.</li>
-<li>Updated <code>DataSource</code> module (build 2) to use new internal request structs.</li>
-<li>Updated <code>Delegate</code> module (build 2) to store multicast delegate in config instead of within module. Prepares it for further delegate options moving forward.</li>
-<li>Updated <code>Lifecycle</code> module (build 2) to use new internal request structs. Most files aggregated into <code>TealiumLifecycleModule.swift</code> file. Guard statements added in place of explicit optional unwraps.</li>
-<li>Updated <code>Logger</code> module (build 2) Extension to set log levels via <code>TealiumConfig</code> re-enabled. Logs success or failures of save, load, &amp; track requests + use new internal request structs. <code>LogLevel</code> renamed <code>TealiumLogLevel</code> to avoid namespace collisions for manually imported implementations.</li>
-<li>Updated <code>PersistentData</code> module (build 2) to use new internal structs.</li>
-<li>Updated <code>RemoteCommands</code> module (build 2) to use new internal structs. Files aggregated into a single <code>TealiumRemoteCommandsModule.swift</code> file.</li>
-<li>Updated <code>TagManagement</code> module (build 2) to use new internal structs. Files aggregated into a single <code>TealiumTagManagementModule.swift</code> file.</li>
-<li>Updated <code>VolatileData</code> module (build 2) to use new internal structs.</li>
-</ul>
-
-<h4 id="1-2-0-april-2017">1.2.0 (April 2017)</h4>
-
-<ul>
-<li>Added <code>Datasource</code> module (build 1), which makes available:
-
-<ul>
-<li><code>tealium_datasource</code></li>
-</ul></li>
-<li>Added <code>RemoteCommands</code> module (build 1).</li>
-<li>Added <code>TagManagement</code> module (build 1).</li>
-<li>Added <code>TealiumUtils</code> to core module.</li>
-<li>Refactored <code>TealiumDelegateModule</code> (build 2) to use generic multicast delegate.</li>
-<li>Refactored <code>TealiumModuleManager</code> (build 3) removed track pre-processing and added a defer block protection within the getClassList() method.</li>
-<li>Updated <code>Tealium.swift</code> (build 2) added class function to do track pre-processing.</li>
-<li>Updated <code>Lifecycle</code> module (build 2) to properly return tealium_event &amp; tealium_event_type with auto triggered lifecycle calls.</li>
-</ul>
-
-<h4 id="1-1-3-january-2017">1.1.3 (January 2017)</h4>
-
-<ul>
-<li>Added <code>Lifecycle</code> module (build 1). Adds the following auto variables:
-
-<ul>
-<li><code>lifecycle_diddetectcrash</code></li>
-<li><code>lifecycle_dayofweek_local</code></li>
-<li><code>lifecycle_dayssincelaunch</code></li>
-<li><code>lifecycle_dayssinceupdate</code></li>
-<li><code>lifecycle_dayssincelastwake</code></li>
-<li><code>lifecycle_firstlaunchdate</code></li>
-<li><code>lifecycle_firstlaunchdate_MMDDYYYY</code></li>
-<li><code>lifecycle_hourofday_local</code></li>
-<li><code>lifecycle_isfirstlaunch</code></li>
-<li><code>lifecycle_isfirstlaunchupdate</code></li>
-<li><code>lifecycle_isfirstwakemonth</code></li>
-<li><code>lifecycle_isfirstwaketoday</code></li>
-<li><code>lifecycle_lastlaunchdate</code></li>
-<li><code>lifecycle_lastsleepdate</code></li>
-<li><code>lifecycle_lastwakedate</code></li>
-<li><code>lifecycle_lastupdatedate</code></li>
-<li><code>lifecycle_launchcount</code></li>
-<li><code>lifecycle_priorsecondsawake</code></li>
-<li><code>lifecycle_secondsawake</code></li>
-<li><code>lifecycle_sleepcount</code></li>
-<li><code>lifecycle_type</code></li>
-<li><code>lifecycle_totalcrashcount</code></li>
-<li><code>lifecycle_totallaunchcount</code></li>
-<li><code>lifecycle_totalwakecount</code></li>
-<li><code>lifecycle_totalsleepcount</code></li>
-<li><code>lifecycle_totalsecondsawake</code></li>
-<li><code>lifecycle_updatelaunchdate</code></li>
-<li><code>lifecycle_wakecount</code></li>
-</ul></li>
-<li>Added <code>Delegate</code> module (build 1).</li>
-<li>Fixed <code>Collect</code> module (build 3) to correctly report problematic sends.</li>
-<li>Updated <code>Attribution</code> module (build 2) with minor refactor.</li>
-<li>Updated <code>Autotracking</code> module (build 2) by deprecating <code>autotrackingDelegate</code> protocols - use the Delegate module instead.</li>
-<li>Updated <code>Logger</code> module (build 3) with cleaner error output.</li>
-<li>Updated <code>Module</code> base (build 2) with a isEnabled property.</li>
-<li>Updated <code>ModuleManager</code> (build 2) with an internal <code>allModulesEnabled()</code> function.</li>
-</ul>
-
-<h2 id="1-0-0-1-1-2-2016">1.0.0-1.1.2 (2016)</h2>
-
-<h4 id="1-1-2">1.1.2</h4>
-
-<ul>
-<li>Optional Autotracking module (build 1) added. Additional variables with module:
-      - <code>autotracked : true/false</code></li>
-<li>Async module updated (build 2). Adds the following convenience method:
-
-<ul>
-<li><code>init(config: TealiumConfig, completion:((_)-&gt;Void))</code></li>
-</ul></li>
-<li><code>Logger</code> module updated (build 2). Reporting chain fix.</li>
-<li><code>Collect</code> module updated (build 2): didFinish pushes updated track data fix.</li>
-</ul>
-
-<h4 id="1-1-1-december-2016">1.1.1 (December 2016)</h4>
-
-<ul>
-<li><code>Async</code> module added</li>
-<li><code>[String:AnyObject]</code> dictionary usage replaced with more convenient <code>[String:Any]</code></li>
-<li>iOS Sample app updated.</li>
-<li>macOS Sample app updated.</li>
-<li>tvOS Sample app updated.</li>
-<li>watchOS Sample app updated.</li>
-</ul>
-
-<h4 id="1-1-0-october-2016">1.1.0 (October 2016)</h4>
-
-<ul>
-<li>New track with type API added.</li>
-<li>New auto Tealium variable added:
-
-<ul>
-<li><code>app_uuid</code></li>
-<li><code>tealium_event_type</code></li>
-</ul></li>
-<li>Drag &amp; Drop Module Architecture implemented.</li>
-<li>iOS Sample app added.</li>
-<li>macOS Sample app added.</li>
-<li>tvOS Sample app added.</li>
-<li>watchOS Sample app added.</li>
-<li>Additional Tests added.</li>
-</ul>
-
-<h4 id="1-0-1-swift-3-syntax-update-september-2016">1.0.1 Swift 3 Syntax Update (September 2016)</h4>
-
-<ul>
-<li>Support for Swift 3.0.</li>
-</ul>
-
-<h4 id="1-0-0-initial-release-september-2016">1.0.0 Initial Release (September 2016)</h4>
-
-<ul>
-<li>2.x Swift support. In XCode 8, safely update to syntax 2.3 (no code changes are suggested and is usable in a 3.x app)</li>
-<li>Tealium universal data sources added for all dispatches:
-
-<ul>
-<li><code>event_name</code> (transitionary - deprecated soon)</li>
-<li><code>tealium_account</code></li>
-<li><code>tealium_environment</code></li>
-<li><code>tealium_event</code></li>
-<li><code>tealium_library_name</code></li>
-<li><code>tealium_library_version</code></li>
-<li><code>tealium_profile</code></li>
-<li><code>tealium_random</code></li>
-<li><code>tealium_session_id</code></li>
-<li><code>tealium_timestamp_epoch</code></li>
-<li><code>tealium_visitor_id</code></li>
-<li><code>tealium_vid</code> (legacy support - deprecated soon)</li>
-</ul></li>
+<li>Initial release</li>
 </ul>
 
 </div>
@@ -1419,7 +1767,7 @@ var utag_data = {
           <li class="fw4">
             
             
-            <a href="/platforms/ios-swift/module-list/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+            <a href="/platforms/ios-swift/module-list/" class="db link pl3 pr2 pv1 bg-secondary white">
               Module List
             </a>
           </li>
@@ -1447,7 +1795,7 @@ var utag_data = {
           <li class="fw4">
             
             
-            <a href="/platforms/ios-swift/release-notes/" class="db link pl3 pr2 pv1 bg-secondary white">
+            <a href="/platforms/ios-swift/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Release Notes
             </a>
           </li>
@@ -1827,7 +2175,7 @@ var utag_data = {
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-<p>This page was last updated:  November 14, 2019 </p>
+<p>This page was last updated:  November 19, 2019 </p>
 
       
 
