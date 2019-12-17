@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Track | Tealium for AMP |Tealium Developer Docs</title>
+    <title>Release Notes | Tealium for Xamarin |Tealium Developer Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -25,7 +25,7 @@
         
 <script>
 var utag_data = {
-    category_name : "AMP",
+    category_name : "Xamarin",
     site_section  : "platforms",
     site_language : "en",
     tealium_event : "page_view"
@@ -234,9 +234,8 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#track-views">Track Views</a></li>
-              <li><a href="#track-events">Track Events</a></li>
-              <li><a href="#dynamic-tracking-variables">Dynamic Tracking Variables</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#version-1-0-1-nov-2019">Version 1.0.1 - Nov 2019</a></li>
+              <li><a href="#version-1-0-0-dec-2018">Version 1.0.0 - Dec 2018</a></li>
               </nav>
   </aside></div>
 
@@ -247,19 +246,19 @@ var utag_data = {
           <header class="flex-none w-100">
   
     
-      <a href="/platforms/amp" class="f6 fw8 mb0 link mid-gray dim mr3">
-        AMP
+      <a href="/platforms/xamarin" class="f6 fw8 mb0 link mid-gray dim mr3">
+        XAMARIN
       </a>
     
   
 
-  <h1 class="lh-title mb3 mv0 pt3">Track</h1>
+  <h1 class="lh-title mb3 mv0 pt3">Release Notes</h1>
 </header>
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
     <div class="f4 fw4 lh-copy">
-      Learn about the methods for tracking user activity.
+      Release notes.
     </div>
   
 
@@ -272,127 +271,31 @@ var utag_data = {
 <div class="prose" id="prose">
   
 
-<h2 id="track-views">Track Views</h2>
+<p>Below is a complete list of changes for each release of the Xamarin library.</p>
 
-<p>The base installation makes a tracking call every time a user opens or changes a screen in your AMP site.</p>
+<h2 id="version-1-0-1-nov-2019">Version 1.0.1 - Nov 2019</h2>
 
-<p>To customize the data layer used for this tracking, add the <a href="https://amp.dev/documentation/components/amp-analytics/?format=websites#extra-url-params">extra URL Params</a> block <code>extraUrlParams</code> with key-value pairs for your variables:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">amp-analytics</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;tealiumcollect&#34;</span>&gt;
-&lt;<span style="color:#000080">script</span> <span style="color:#008080">type</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;application/json&#34;</span>&gt;
-{
-  <span style="color:#b84">&#34;vars&#34;</span><span style="font-weight:bold">:</span> {
-    <span style="color:#b84">&#34;account&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-    <span style="color:#b84">&#34;profile&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;PROFILE&#34;</span>,
-    <span style="color:#b84">&#34;datasource&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;DATASOURCE&#34;</span>
-  },
-  <span style="color:#b84">&#34;extraUrlParams&#34;</span><span style="font-weight:bold">:</span> {
-    <span style="color:#b84">&#34;example_param1&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;abc&#34;</span>,
-    <span style="color:#b84">&#34;example_param2&#34;</span><span style="font-weight:bold">:</span> <span style="color:#099">123</span>
-  }
-}     
-&lt;/<span style="color:#000080">script</span>&gt;
-&lt;/<span style="color:#000080">amp-analytics</span>&gt;</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Parameters</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
+<ul>
+<li>Updated embedded Android SDK to 5.6.0</li>
+<li>Updated embedded iOS SDK to 5.6.5</li>
+<li>Updated sample app dependencies</li>
+</ul>
 
-<tbody>
-<tr>
-<td><code>account</code></td>
-<td><code>String</code></td>
-<td>Tealium account name</td>
-<td><code>&quot;companyXYZ&quot;</code></td>
-</tr>
+<h2 id="version-1-0-0-dec-2018">Version 1.0.0 - Dec 2018</h2>
 
-<tr>
-<td><code>profile</code></td>
-<td><code>String</code></td>
-<td>Tealium profile name</td>
-<td><code>&quot;main&quot;</code> </td>
-</tr>
+<p>Initial Release</p>
 
-<tr>
-<td><code>datasource</code></td>
-<td><code>String</code></td>
-<td>Tealium data source key from UDH</td>
-<td><code>&quot;abc123&quot;</code></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="track-events">Track Events</h2>
-
-<p>The <code>triggers</code> configuration object defines which events to track. A trigger is define as a key-value pair of trigger name and configuration. Trigger names are alphanumeric strings and the configuration determines the targets of the events.</p>
-
-<p>The following is an example of a trigger:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#b84">&#34;triggers&#34;</span><span style="color:#a61717;background-color:#e3d2d2">:</span> {
-  <span style="color:#000080">&#34;trigger_name&#34;</span>: {
-    <span style="color:#000080">&#34;on&#34;</span>: <span style="color:#b84">&#34;VALUE&#34;</span>,
-    <span style="color:#000080">&#34;selector&#34;</span>: <span style="color:#b84">&#34;VALUE&#34;</span>,
-    <span style="color:#000080">&#34;request&#34;</span>: <span style="color:#b84">&#34;VALUE&#34;</span>,
-    <span style="color:#000080">&#34;vars&#34;</span>: {
-      <span style="color:#000080">&#34;tealium_event&#34;</span>: <span style="color:#b84">&#34;VALUE&#34;</span>
-    }
-    <span style="color:#b84">&#34;extraUrlParams&#34;</span>: {
-      <span style="color:#000080">&#34;extra_var&#34;</span>: <span style="color:#b84">&#34;${extraVar}&#34;</span>
-    }
-  }
-}</code></pre></div>
-<p>AMP supports the following <a href="https://www.ampproject.org/docs/reference/components/amp-analytics#triggers"><code>amp-analytics</code> triggers</a>.</p>
-
-<h2 id="dynamic-tracking-variables">Dynamic Tracking Variables</h2>
-
-<p>For the event types <code>visible</code> and <code>click</code> (used in the <code>on</code> property), dynamic tracking variables are passed using HTML5 elemental attributes in the format <code>data-vars-*</code>. Variables passed this way are converted to camel-case naming.</p>
-
-<p>For example, the property <code>data-vars-link-name=&quot;register&quot;</code> becomes the variable <code>${linkName}</code> that is referenced in the <code>extraUrlParams</code> block of your trigger.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#b84">&#34;triggers&#34;</span><span style="color:#a61717;background-color:#e3d2d2">:</span> {
-  <span style="color:#000080">&#34;custom_click&#34;</span>: {
-    <span style="color:#000080">&#34;on&#34;</span>: <span style="color:#b84">&#34;click&#34;</span>,
-    <span style="color:#000080">&#34;selector&#34;</span>: <span style="color:#b84">&#34;#the-button&#34;</span>,
-    <span style="color:#000080">&#34;request&#34;</span>: <span style="color:#b84">&#34;event&#34;</span>,
-    <span style="color:#000080">&#34;vars&#34;</span>: {
-      <span style="color:#000080">&#34;tealium_event&#34;</span>: <span style="color:#b84">&#34;custom_click&#34;</span>
-    }
-    <span style="color:#b84">&#34;extraUrlParams&#34;</span>: {
-      <span style="color:#000080">&#34;link_name&#34;</span>: <span style="color:#b84">&#34;${linkName}&#34;</span>
-    }
-  }
-}</code></pre></div>
-<p>AMP supports the following <a href="https://amp.dev/documentation/components/amp-analytics/?referrer=ampproject.org#extra-url-params"><code>amp-analytics</code> extra URL params</a>.</p>
-
-<p>The button&rsquo;s HTML example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">span</span> <span style="color:#008080">id</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;the-button&#34;</span> <span style="color:#008080">data-vars-link-name</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;register&#34;</span>&gt;
-Button Text
-&lt;/<span style="color:#000080">span</span>&gt;</code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
-
-	<div date-pref class="white">
-		
-			<a href="http://docs.tealium.com/platforms/amp/install/" title="Install "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
-    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-    <path d="M0 0h24v24H0z" fill="none"/>
-</svg>
- Install </a>
-		
-
-	</div>
-
 </b>
 <b style="position: absolute; right:0px;" class="pv1 br2 dib tc mv3 link">
 
 	<div date-pref class="white">
 
 		
-			<a href="http://docs.tealium.com/platforms/amp/data-layer/" title="Data Layer">
-			Data Layer <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
+			<a href="http://docs.tealium.com/platforms/xamarin/api/" title="API Reference">
+			API Reference <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
 
 			</a>
 		
@@ -504,9 +407,9 @@ Button Text
       </li>
       
       
-      <li class="w-100 hover-accent-color-light fw8 active">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2  primary-color" data-target=".amp">AMP</a>
-        <ul class="amp desktopmenu animated fadeIn list pl0 db">
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".amp">AMP</a>
+        <ul class="amp desktopmenu animated fadeIn list pl0 dn">
           <li class="fw4">
             
             
@@ -524,7 +427,7 @@ Button Text
           <li class="fw4">
             
             
-            <a href="/platforms/amp/track/" class="db link pl3 pr2 pv1 bg-secondary white">
+            <a href="/platforms/amp/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Track
             </a>
           </li>
@@ -1351,9 +1254,9 @@ Button Text
       </li>
       
       
-      <li class="w-100 hover-accent-color-light fw8">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".xamarin">Xamarin</a>
-        <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
+      <li class="w-100 hover-accent-color-light fw8 active">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2  primary-color" data-target=".xamarin">Xamarin</a>
+        <ul class="xamarin desktopmenu animated fadeIn list pl0 db">
           <li class="fw4">
             
             
@@ -1399,7 +1302,7 @@ Button Text
           <li class="fw4">
             
             
-            <a href="/platforms/xamarin/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+            <a href="/platforms/xamarin/release-notes/" class="db link pl3 pr2 pv1 bg-secondary white">
               Release Notes
             </a>
           </li>
@@ -1423,7 +1326,7 @@ Button Text
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 22, 2019 
+    <span>This page was last updated:  December 12, 2019 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
