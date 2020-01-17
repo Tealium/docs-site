@@ -236,6 +236,7 @@ var utag_data = {
       <p class="b">Table of Contents</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#track-views">Track Views</a></li>
               <li><a href="#track-events">Track Events</a></li>
+              <li><a href="#event-batching">Event Batching</a></li>
               </nav>
   </aside></div>
 
@@ -276,13 +277,25 @@ var utag_data = {
 <p>The <a href="/platforms/android-java/api/#trackview"><code>trackView()</code></a> method tracks screen views, as shown in the following example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Map<span style="font-weight:bold">&lt;</span>String, Object<span style="font-weight:bold">&gt;</span> <span style="color:#900;font-weight:bold">data</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> HashMap<span style="font-weight:bold">&lt;&gt;</span>(1);
 data.<span style="color:#008080">put</span>(<span style="color:#b84">&#34;KEY&#34;</span>, <span style="color:#b84">&#34;VALUE&#34;</span>);
-Tealium.<span style="color:#008080">getInstance</span>(<span style="color:#b84">&#34;INSTANCE_NAME&#34;</span>).<span style="color:#008080">trackView</span>(<span style="color:#b84">&#34;SCREEN_NAME&#34;</span>, data);</code></pre></div>
+Tealium.<span style="color:#008080">getInstance</span>(<span style="color:#b84">&#34;INSTANCE_NAME&#34;</span>).<span style="color:#008080">trackView</span>(<span style="color:#b84">&#34;EVENT_NAME&#34;</span>, data);</code></pre></div>
+<p class="note">The value passed as the first parameter will appear in the data layer as the variable <code>tealium_event</code>.</p>
+
 <h2 id="track-events">Track Events</h2>
 
 <p>The <a href="/platforms/android-java/api/#trackevent"><code>trackEvent()</code></a> method tracks non-view events, as shown in the following example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Map<span style="font-weight:bold">&lt;</span>String, Object<span style="font-weight:bold">&gt;</span> <span style="color:#900;font-weight:bold">data</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> HashMap<span style="font-weight:bold">&lt;&gt;</span>(1);
 data.<span style="color:#008080">put</span>(<span style="color:#b84">&#34;KEY&#34;</span>, <span style="color:#b84">&#34;VALUE&#34;</span>);
 Tealium.<span style="color:#008080">getInstance</span>(<span style="color:#b84">&#34;INSTANCE_NAME&#34;</span>).<span style="color:#008080">trackEvent</span>(<span style="color:#b84">&#34;EVENT_NAME&#34;</span>, data);</code></pre></div>
+<h2 id="event-batching">Event Batching</h2>
+
+<p>To enable event batching, go to the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">Mobile Publish Settings</a> and set the batch size to a value greater than 1. Events are dispatched when the number of events in the queue equals the batch size.</p>
+
+<p>The dispatch of events can also be triggered based on the <em>batch timeout</em> setting. This setting ensures that, when the batch size is not reached, the queue is still dispatched after an elapsed period of time.  Set the batch timeout by calling the method <a href="/platforms/android-java/api/#setsecondsbeforebatchtimeout"><code>setSecondsBeforeBatchTimeout()</code></a>.</p>
+
+<p>To override the batch size and batch timeout checks, flush the queue immediately by calling the method <a href="/platforms/android-java/api/#requestflush"><code>requestFlush()</code></a>.</p>
+
+<p class="note">If the device is offline or has the Consent Manager enabled, the flush override has no effect.</p>
+
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -369,6 +382,13 @@ Tealium.<span style="color:#008080">getInstance</span>(<span style="color:#b84">
             
             <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/event-batching/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Event Batching
             </a>
           </li>
           <li class="fw4">
@@ -1053,6 +1073,13 @@ Tealium.<span style="color:#008080">getInstance</span>(<span style="color:#b84">
           <li class="fw4">
             
             
+            <a href="/platforms/javascript/single-page-applications/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Single-Page Applications
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
             <a href="/platforms/javascript/settings/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Settings
             </a>
@@ -1336,7 +1363,7 @@ Tealium.<span style="color:#008080">getInstance</span>(<span style="color:#b84">
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 25, 2019 
+    <span>This page was last updated:  January 17, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

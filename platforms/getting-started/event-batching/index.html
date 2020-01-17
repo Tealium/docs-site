@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>API Reference | Tealium for Python |Tealium Developer Docs</title>
+    <title>Event Batching | Getting Started |Tealium Developer Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -25,7 +25,7 @@
         
 <script>
 var utag_data = {
-    category_name : "Python",
+    category_name : "Getting Started",
     site_section  : "platforms",
     site_language : "en",
     tealium_event : "page_view"
@@ -234,10 +234,11 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#class-tealium">Class: Tealium</a></li>
-              <ul class="toc-h3"><li><a href="#resetsessionid">resetSessionId()</a></li>
-              <li><a href="#tealium">Tealium()</a></li>
-              <li><a href="#trackevent">trackEvent()</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#batch-vs-queue">Batch vs. Queue</a></li>
+              <li><a href="#data-layer-optimization">Data Layer Optimization</a></li>
+              <li><a href="#payload-compression">Payload Compression</a></li>
+              <li><a href="#benefits">Benefits</a></li>
+              <li><a href="#supported-platforms">Supported platforms</a></li>
               </nav>
   </aside></div>
 
@@ -248,19 +249,19 @@ var utag_data = {
           <header class="flex-none w-100">
   
     
-      <a href="/platforms/python" class="f6 fw8 mb0 link mid-gray dim mr3">
-        PYTHON
+      <a href="/platforms/getting-started" class="f6 fw8 mb0 link mid-gray dim mr3">
+        GETTING STARTED
       </a>
     
   
 
-  <h1 class="lh-title mb3 mv0 pt3">API Reference</h1>
+  <h1 class="lh-title mb3 mv0 pt3">Event Batching</h1>
 </header>
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
     <div class="f4 fw4 lh-copy">
-      Reference guide for classes and methods provided by Tealium for Python.
+      Learn about the event batching feature for mobile.
     </div>
   
 
@@ -273,147 +274,44 @@ var utag_data = {
 <div class="prose" id="prose">
   
 
-<h2 id="class-tealium">Class: <code>Tealium</code></h2>
+<p>Event batching is a feature of the Tealium Collect module that optimizes the transmission of data between a mobile device and Tealium by <em>sending multiple events in a single HTTP request</em>. Event batching works with a new data collection endpoint that is optimized to eliminate repetitive data layer variables and to accept payloads compressed with gzip.</p>
 
-<p>The following summarizes the commonly used methods of the <code>Tealium</code> class for Python library.</p>
+<h2 id="batch-vs-queue">Batch vs. Queue</h2>
 
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-</tr>
-</thead>
+<p>Event <em>batching</em> refers to how data is transmitted across the network. The event <em>queue</em> refers to how event data is stored temporarily on the device  before it is dispatched. Event batching combines multiple events into a single network request as opposed to each tracked event in its own request. The event queue is used when a device is offline so that tracking calls can be stored until the device regains a connection, at which point the queue is processed. Event batching works with the event queue by processing multiple events at once until the queue is empty.</p>
 
-<tbody>
-<tr>
-<td><code>resetSessionId()</code></td>
-<td>Resets the session ID as a data source</td>
-</tr>
+<p>For example, if a device is offline and the event queue grows to contain 25 events, once the device comes online the queue is processed in batches of 10 events until the queue is empty. In this case, two batched requests with 10 events each and one batch for the remaining 5 events are sent, for a total of 25 tracked events using only 3 network requests.</p>
 
-<tr>
-<td><code>Tealium()</code></td>
-<td>Constructor to create a <code>Tealium</code> object that is used to track events</td>
-</tr>
+<p class="note">Currently, the batch size maximum is 10.</p>
 
-<tr>
-<td><code>trackEvent()</code></td>
-<td>Track events with optional parameters for data and a callback</td>
-</tr>
-</tbody>
-</table>
+<h2 id="data-layer-optimization">Data Layer Optimization</h2>
 
-<h3 id="resetsessionid"><code>resetSessionId()</code></h3>
+<p>The Tealium mobile libraries contribute a lot of <a href="/platforms/getting-started/data-layer/">device information to the data layer</a>, such as app name, screen resolution, and OS version. These variables are included in every network request even though their values do not change between events. Event batching optimizes the data layer so that these common variables are <em>only sent once per batch</em>.</p>
 
-<p>Resets the session ID <code>tealium_session_id</code> as a data source. Used when you need to start a new session other than at app start time.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">resetSessionId()</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Returns</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
+<h2 id="payload-compression">Payload Compression</h2>
 
-<tbody>
-<tr>
-<td><code>String</code></td>
-<td>A timestamp, in milliseconds converted to a string, that is associated with all subsequent tracking. The session ID is maintained internally and automatically included as the <code>tealium_session_id</code> event attribute.</td>
-<td><code>&quot;1473371215123&quot;</code></td>
-</tr>
-</tbody>
-</table>
+<p>The event batch payload is compressed with gzip to minimize the size of the HTTP request. This compression reduces the size of each network request by up to 90%.</p>
 
-<h3 id="tealium"><code>Tealium()</code></h3>
+<h2 id="benefits">Benefits</h2>
 
-<p>Creates a <code>Tealium</code> object that is used to track events.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">Tealium(account, profile, environment, path, datasource)</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Parameters</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
+<p>The benefits of event batching include:</p>
 
-<tbody>
-<tr>
-<td><code>account</code></td>
-<td><code>String</code></td>
-<td>Tealium account name</td>
-<td><code>&quot;companyXYZ&quot;</code></td>
-</tr>
+<ul>
+<li>Reduced size of total transmitted data.</li>
+<li>Fewer network requests for the same number of events.</li>
+<li>Improved battery performance on the device.</li>
+</ul>
 
-<tr>
-<td><code>profile</code></td>
-<td><code>String</code></td>
-<td>Tealium profile name</td>
-<td><code>&quot;main&quot;</code> </td>
-</tr>
+<p class="note">Event batching is not available for Tag Management.</p>
 
-<tr>
-<td><code>environment</code></td>
-<td><code>String</code></td>
-<td>Tealium environment name</td>
-<td><code>&quot;prod&quot;</code></td>
-</tr>
+<h2 id="supported-platforms">Supported platforms</h2>
 
-<tr>
-<td><code>path</code></td>
-<td><code>String</code></td>
-<td>(Optional) Path to saved persisted data</td>
-<td><code>&quot;/path/to/persist/data&quot;</code></td>
-</tr>
+<p>The following platforms support event batching:</p>
 
-<tr>
-<td><code>datasource</code></td>
-<td><code>String</code></td>
-<td>(Optional) Tealium data source key from UDH (required if PATH is omitted)</td>
-<td><code>&quot;abc123&quot;</code></td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="trackevent"><code>trackEvent()</code></h3>
-
-<p>Track events with optional parameters for data and a callback.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">trackEvent(title, data, callback)</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>title</code></td>
-<td><code>String</code></td>
-<td>A name to identify the event, such as a <code>user_login</code> variable</td>
-<td><code>&quot;test&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>data</code></td>
-<td><code>Dictionary</code></td>
-<td>(Optional) Object with event data as key-value pairs</td>
-<td><code>{&quot;foo&quot;: &quot;bar&quot;, &quot;tealium_visitor_id&quot;: &quot;1234567890&quot;}</code></td>
-</tr>
-
-<tr>
-<td><code>callback</code></td>
-<td><code>Dictionary</code></td>
-<td>(Optional) Object with a function assigned to the &ldquo;callback&rdquo; key</td>
-<td><code>callback = self.tealiumCallback</code></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><a href="/platforms/android-java/track/#event-batching">Android</a></li>
+<li><a href="/platforms/ios-swift/track/#event-batching">iOS</a></li>
+</ul>
 
 </div>
 
@@ -421,17 +319,28 @@ var utag_data = {
 
 	<div date-pref class="white">
 		
-			<a href="http://docs.tealium.com/platforms/python/track/" title="Track "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
+			<a href="http://docs.tealium.com/platforms/getting-started/consent-management/" title="Consent Management "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
     <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
     <path d="M0 0h24v24H0z" fill="none"/>
 </svg>
- Track </a>
+ Consent Management </a>
 		
 
 	</div>
 
 </b>
 <b style="position: absolute; right:0px;" class="pv1 br2 dib tc mv3 link">
+
+	<div date-pref class="white">
+
+		
+			<a href="http://docs.tealium.com/platforms/getting-started/feature-comparison/" title="Feature Comparison">
+			Feature Comparison <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
+
+			</a>
+		
+	</div>
+
 </b>
 <br>&nbsp;</br>
 
@@ -447,9 +356,9 @@ var utag_data = {
     
       
       
-      <li class="w-100 hover-accent-color-light fw8">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
-        <ul class="getting-started desktopmenu animated fadeIn list pl0 dn">
+      <li class="w-100 hover-accent-color-light fw8 active">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2  primary-color" data-target=".getting-started">Getting Started</a>
+        <ul class="getting-started desktopmenu animated fadeIn list pl0 db">
           <li class="fw4">
             
             
@@ -495,7 +404,7 @@ var utag_data = {
           <li class="fw4">
             
             
-            <a href="/platforms/getting-started/event-batching/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+            <a href="/platforms/getting-started/event-batching/" class="db link pl3 pr2 pv1 bg-secondary white">
               Event Batching
             </a>
           </li>
@@ -1252,9 +1161,9 @@ var utag_data = {
       </li>
       
       
-      <li class="w-100 hover-accent-color-light fw8 active">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2  primary-color" data-target=".python">Python</a>
-        <ul class="python desktopmenu animated fadeIn list pl0 db">
+      <li class="w-100 hover-accent-color-light fw8">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".python">Python</a>
+        <ul class="python desktopmenu animated fadeIn list pl0 dn">
           <li class="fw4">
             
             
@@ -1279,7 +1188,7 @@ var utag_data = {
           <li class="fw4">
             
             
-            <a href="/platforms/python/api/" class="db link pl3 pr2 pv1 bg-secondary white">
+            <a href="/platforms/python/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               API Reference
             </a>
           </li>
@@ -1471,7 +1380,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 31, 2019 
+    <span>This page was last updated:  January 17, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

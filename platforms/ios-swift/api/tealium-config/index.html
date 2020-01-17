@@ -416,7 +416,7 @@ var utag_data = {
 
 <tr>
 <td><code>setBatchSize()</code></td>
-<td>Sets the amount of events to combine into a single batch request. Maxiumum 10.</td>
+<td>Sets the amount of events to combine into a single batch request (max: 10)</td>
 </tr>
 
 <tr>
@@ -456,7 +456,7 @@ var utag_data = {
 
 <tr>
 <td><code>setIsEventBatchingEnabled()</code></td>
-<td>Enables (<code>true</code>) or disables (<code>false</code>) event batching. Default <code>false</code></td>
+<td>Enables (<code>true</code>) or disables (<code>false</code>) event batching (default: <code>false</code>)</td>
 </tr>
 
 <tr>
@@ -890,8 +890,8 @@ config.addRemoteCommand(remoteCommand)
 
 <h3 id="setbatchsize"><code>setBatchSize()</code></h3>
 
-<p>Sets the amount of events to combine into a single batch request. Maxiumum 10.</p>
-
+<p>Set the batch size, which is the amount of tracking calls to combine into a single request. Maximum 10.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">setBatchSize(size)</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -904,9 +904,9 @@ config.addRemoteCommand(remoteCommand)
 
 <tbody>
 <tr>
-<td><code>batchSize</code></td>
-<td><code>Int</code></td>
-<td>The size of each batch of events. Max 10</td>
+<td><code>size</code></td>
+<td><code>Integer</code></td>
+<td>The amount of tracking calls to combine into a single request</td>
 <td><code>10</code></td>
 </tr>
 </tbody>
@@ -1015,8 +1015,8 @@ config.setCollectOverrideURL(string: url)</code></pre></div>
 
 <h3 id="setdispatchafter"><code>setDispatchAfter()</code></h3>
 
-<p>Sets the number of events after which the queue will be flushed.</p>
-
+<p>Number of events after which to automatically flush the queue</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">setDispatchAfter(numberOfEvents: numEvents)</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1029,10 +1029,10 @@ config.setCollectOverrideURL(string: url)</code></pre></div>
 
 <tbody>
 <tr>
-<td><code>events</code></td>
-<td><code>Int</code></td>
-<td>The number of events after which a batch will be transmitted</td>
-<td><code>100</code></td>
+<td><code>numEvents</code></td>
+<td><code>Integer</code></td>
+<td>The number of events after which to automatically flush the queue</td>
+<td><code>25</code></td>
 </tr>
 </tbody>
 </table>
@@ -1128,7 +1128,7 @@ The <code>notConsented</code> status is set when the user has declined tracking.
 <h3 id="setiseventbatchingenabled"><code>setIsEventBatchingEnabled()</code></h3>
 
 <p>Enables (true) or disables (false) event batching. Default false</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">setIsEventBatchingEnabled(enabled)</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1143,7 +1143,7 @@ The <code>notConsented</code> status is set when the user has declined tracking.
 <tr>
 <td><code>enabled</code></td>
 <td><code>Bool</code></td>
-<td>If true, enables event batching</td>
+<td>If <code>true</code>, enables event batching</td>
 <td><code>true</code></td>
 </tr>
 </tbody>
@@ -1227,7 +1227,7 @@ config.setLogLevel(logLevel: newLogLevel)</code></pre></div>
 <h3 id="setmaxqueuesize"><code>setMaxQueueSize()</code></h3>
 
 <p>Sets the maximum number of events to store in the event queue. If this number is reached, and the queue has not been flushed, the oldest events are deleted.</p>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">setMaxQueueSize(numEvents)</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1240,13 +1240,15 @@ config.setLogLevel(logLevel: newLogLevel)</code></pre></div>
 
 <tbody>
 <tr>
-<td><code>queueSize</code></td>
+<td><code>numEvents</code></td>
 <td><code>Int</code></td>
 <td>The maximum number of events to store in the event queue</td>
 <td><code>200</code></td>
 </tr>
 </tbody>
 </table>
+
+<p>Maximum number of queued events. If this limit is reached, and the device has not made a connection to the internet, the oldest events are deleted</p>
 
 <h3 id="setmemoryreportingenabled"><code>setMemoryReportingEnabled()</code></h3>
 
@@ -1642,6 +1644,13 @@ Allows certain default behavior to be overridden at init time. Generally, it is 
             
             <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/event-batching/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Event Batching
             </a>
           </li>
           <li class="fw4">
@@ -2326,6 +2335,13 @@ Allows certain default behavior to be overridden at init time. Generally, it is 
           <li class="fw4">
             
             
+            <a href="/platforms/javascript/single-page-applications/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Single-Page Applications
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
             <a href="/platforms/javascript/settings/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Settings
             </a>
@@ -2609,7 +2625,7 @@ Allows certain default behavior to be overridden at init time. Generally, it is 
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  November 22, 2019 
+    <span>This page was last updated:  December 6, 2019 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

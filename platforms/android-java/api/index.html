@@ -253,8 +253,9 @@ var utag_data = {
               <ul class="toc-h3"><li><a href="#setupinstance">setupInstance()</a></li>
               </ul><li><a href="#class-tealium">Class: Tealium</a></li>
               <ul class="toc-h3"><li><a href="#createinstance">createInstance()</a></li>
-              <li><a href="#getconsentmanager">getConsentManager()</a></li>
               <li><a href="#disableconsentmanager">disableConsentManager()</a></li>
+              <li><a href="#getconsentmanager">getConsentManager()</a></li>
+              <li><a href="#requestflush">requestFlush()</a></li>
               <li><a href="#trackevent">trackEvent()</a></li>
               <li><a href="#trackview">trackView()</a></li>
               </ul><li><a href="#class-tealium-config">Class: Tealium.Config</a></li>
@@ -263,6 +264,7 @@ var utag_data = {
               <li><a href="#isconsentmanagerenabled">isConsentManagerEnabled()</a></li>
               <li><a href="#setdatasourceid">setDatasourceId()</a></li>
               <li><a href="#setforceoverrideloglevel">setForceOverrideLogLevel()</a></li>
+              <li><a href="#setsecondsbeforebatchtimeout">setSecondsBeforeBatchTimeout()</a></li>
               </nav>
   </aside></div>
 
@@ -765,6 +767,11 @@ The <code>NOT_CONSENTED</code> status is set when the user has declined tracking
 </tr>
 
 <tr>
+<td><code>requestFlush()</code></td>
+<td>Request to dispatch a batch queue of events</td>
+</tr>
+
+<tr>
 <td><code>trackEvent()</code></td>
 <td>Track an event</td>
 </tr>
@@ -823,6 +830,12 @@ The <code>NOT_CONSENTED</code> status is set when the user has declined tracking
 </tbody>
 </table>
 
+<h3 id="disableconsentmanager"><code>disableConsentManager()</code></h3>
+
+<p>Disables Consent Manager. Call this method after Tealium is fully initialized to disable Consent Manager.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">final</span> <span style="color:#900;font-weight:bold">Tealium</span> tealiumInstance <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">createInstance</span>(TEALIUM_MAIN, config);
+
+tealiumInstance.<span style="color:#008080">disableConsentManager</span>();</code></pre></div>
 <h3 id="getconsentmanager"><code>getConsentManager()</code></h3>
 
 <p>Returns the instance of Consent Manager if enabled.</p>
@@ -845,12 +858,11 @@ ConsentManager <span style="color:#900;font-weight:bold">consentManager</span> <
 </tbody>
 </table>
 
-<h3 id="disableconsentmanager"><code>disableConsentManager()</code></h3>
+<h3 id="requestflush"><code>requestFlush()</code></h3>
 
-<p>Disables Consent Manager. Use this method to disable Consent Manager after Tealium is fully initialized.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">final</span> <span style="color:#900;font-weight:bold">Tealium</span> tealiumInstance <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">createInstance</span>(TEALIUM_MAIN, config);
-
-tealiumInstance.<span style="color:#008080">disableConsentManager</span>();</code></pre></div>
+<p>Request to dispatch a batch queue of events when the batch limit has not been reached. If all other dispatching checks are okay (online, consent management, dispatch validators), the queue is dispatched.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium <span style="color:#900;font-weight:bold">instance</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">getInstance</span>(<span style="color:#b84">&#34;my_instance_name&#34;</span>);
+instance.<span style="color:#008080">requestFlush</span>();</code></pre></div>
 <h3 id="trackevent"><code>trackEvent()</code></h3>
 
 <p>Track a non-view event.</p>
@@ -954,13 +966,18 @@ Tealium.<span style="color:#008080">getInstance</span>(<span style="color:#b84">
 <td><code>setForceOverrideLogLevel()</code></td>
 <td>Set to force a specific log level at init time</td>
 </tr>
+
+<tr>
+<td><code>setSecondsBeforeBatchTimeout()</code></td>
+<td>Sets the number of seconds before batch timeout</td>
+</tr>
 </tbody>
 </table>
 
 <h3 id="create"><code>create()</code></h3>
 
 <p>Create instance of the Config object.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.<span style="color:#008080">Config</span> <span style="color:#900;font-weight:bold">tealConfig</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">Config</span>.<span style="color:#008080">create</span>(
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.<span style="color:#008080">Config</span> <span style="color:#900;font-weight:bold">config</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">Config</span>.<span style="color:#008080">create</span>(
       application,
       account,
       profile,
@@ -1041,7 +1058,7 @@ config.<span style="color:#008080">enableConsentManager</span>(TEALIUM_INSTANCE)
 <h3 id="setdatasourceid"><code>setDatasourceId()</code></h3>
 
 <p>Set Datasource ID from UDH.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealConfig.<span style="color:#008080">setDataSourceId</span>(dataSourceId);</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.<span style="color:#008080">setDataSourceId</span>(dataSourceId);</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1065,7 +1082,7 @@ config.<span style="color:#008080">enableConsentManager</span>(TEALIUM_INSTANCE)
 <h3 id="setforceoverrideloglevel"><code>setForceOverrideLogLevel()</code></h3>
 
 <p>Set to force a specific log level at init time. Returns instance of the config object for method chaining.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealConfig.<span style="color:#008080">setForceOverrideLogLevel</span>(forceOverrideLogLevel);</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.<span style="color:#008080">setForceOverrideLogLevel</span>(forceOverrideLogLevel);</code></pre></div>
 <p>The following <code>String</code> options are available for <code>forceOverrideLogLevel</code>:</p>
 
 <table>
@@ -1095,6 +1112,30 @@ config.<span style="color:#008080">enableConsentManager</span>(TEALIUM_INSTANCE)
 <tr>
 <td><code>&quot;silent&quot;</code></td>
 <td>None</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="setsecondsbeforebatchtimeout"><code>setSecondsBeforeBatchTimeout()</code></h3>
+
+<p>Sets the number of seconds before batch timeout. If the batch size limit has not been reached before reaching the timeout, the queued events are dispatched.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.<span style="color:#008080">setSecondsBeforeBatchTimeout</span>(timeout);</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>timeout</code></td>
+<td><code>int</code></td>
+<td>The timeout, in seconds, for the batch to be sent.</td>
+<td><code>30</code></td>
 </tr>
 </tbody>
 </table>
@@ -1185,6 +1226,13 @@ config.<span style="color:#008080">enableConsentManager</span>(TEALIUM_INSTANCE)
             
             <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/event-batching/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Event Batching
             </a>
           </li>
           <li class="fw4">
@@ -1869,6 +1917,13 @@ config.<span style="color:#008080">enableConsentManager</span>(TEALIUM_INSTANCE)
           <li class="fw4">
             
             
+            <a href="/platforms/javascript/single-page-applications/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Single-Page Applications
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
             <a href="/platforms/javascript/settings/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Settings
             </a>
@@ -2152,7 +2207,7 @@ config.<span style="color:#008080">enableConsentManager</span>(TEALIUM_INSTANCE)
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 29, 2019 
+    <span>This page was last updated:  December 6, 2019 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

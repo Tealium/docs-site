@@ -285,28 +285,30 @@ var utag_data = {
 <p>The <a href="/platforms/ios-swift/api/tealium/#trackview"><code>trackView()</code></a> method tracks a screen view with associated data and, optionally, triggers a callback function.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">mydata</span> = [<span style="color:#b84">&#34;KEY&#34;</span>: <span style="color:#b84">&#34;VALUE&#34;</span>]
 <span style="color:#998;font-style:italic">// track call with type specified and completion block</span>
-tealium?.trackView(title: <span style="color:#b84">&#34;SCREEN_TITLE&#34;</span>,
+tealium?.trackView(title: <span style="color:#b84">&#34;EVENT_NAME&#34;</span>,
       data: mydata,
       completion: { (success: <span style="color:#999">Bool</span>, info: [<span style="color:#999">String</span>:<span style="color:#999">Any</span>]?, error: Error?) <span style="font-weight:bold">in</span>
 <span style="color:#998;font-style:italic">//...</span>
 })</code></pre></div>
-<p>The following example tracks a screen view on the home screen, passing a <code>Dictionary</code> containing two key-value pairs, the first representing the customer ID, and the second, an array of product IDs purchased in this transaction (in this instance, containing 1 product only).</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.trackView(title: <span style="color:#b84">&#34;SCREEN_NAME&#34;</span>, data: [<span style="color:#b84">&#34;KEY&#34;</span> : <span style="color:#b84">&#34;VALUE&#34;</span>], completion: <span style="font-weight:bold">nil</span>)</code></pre></div>
+<p class="note">The value passed to <code>title</code> will appear in the data layer as the variable <code>tealium_event</code>.</p>
+
 <h3 id="track-events">Track Events</h3>
 
 <p>The <a href="/platforms/ios-swift/api/tealium/#track"><code>track()</code></a> method tracks an event with associated data and, optionally, triggers a callback function.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">mydata</span> = [<span style="color:#b84">&#34;KEY&#34;</span>: <span style="color:#b84">&#34;VALUE&#34;</span>]
 <span style="color:#998;font-style:italic">// track call with type specified and completion block</span>
-tealium?.track(title: <span style="color:#b84">&#34;EVENT_TITLE&#34;</span>,
+tealium?.track(title: <span style="color:#b84">&#34;EVENT_NAME&#34;</span>,
       data: mydata,
       completion: { (success: <span style="color:#999">Bool</span>, info: [<span style="color:#999">String</span>:<span style="color:#999">Any</span>]?, error: Error?) <span style="font-weight:bold">in</span>
  <span style="color:#998;font-style:italic">//...</span>
 })</code></pre></div>
-<p>The following example tracks a button click on <strong>Buy Now</strong>, passing a <code>Dictionary</code> containing a single key-value pair, representing the customer ID.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.track(title: <span style="color:#b84">&#34;EVENT_NAME&#34;</span>, data: [<span style="color:#b84">&#34;KEY&#34;</span> : [<span style="color:#b84">&#34;VALUE1&#34;</span>]], completion: <span style="font-weight:bold">nil</span>)</code></pre></div>
+<p class="note">The value passed to <code>title</code> will appear in the data layer as the variable <code>tealium_event</code>.</p>
+
 <h2 id="event-batching">Event Batching</h2>
 
-<p>For optimal network performance enable event batching to deliver multiple events as single compressed requests. <a href="/platforms/ios-swift/api/tealium-config/">Learn more</a> about the different batch options in the <code>TealiumConfig</code> API.</p>
+<p>Swift does not currently use the Mobile Publish Settings, so event batching must be enabled and configured when the SDK is initialized.</p>
+
+<p>This example enables event batching and sets the batch size and queue size.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumDispatchQueue</span> <span style="color:#998;font-style:italic">// required for event batching options</span>
 <span style="color:#458;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
 	<span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
@@ -314,26 +316,55 @@ tealium?.track(title: <span style="color:#b84">&#34;EVENT_TITLE&#34;</span>,
 
 	<span style="font-weight:bold">private</span> <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">initTealium</span>() {
 		<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
- 	       		                 profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-        	   	                 environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-           		                 datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
-		<span style="color:#998;font-style:italic">// Enables batching (disabled by default)</span>
-		config.setIsEventBatchingEnabled(<span style="font-weight:bold">true</span>)
-
-		<span style="color:#998;font-style:italic">// Amount of tracking calls to combine into a single request. Maximum 10.</span>
-		config.setBatchSize(<span style="color:#099">10</span>)
-
-		<span style="color:#998;font-style:italic">// Number of events after which to automatically flush the queue</span>
+ 	       		                   profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
+                               environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
+                               datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
+		config.setIsEventBatchingEnabled(<span style="font-weight:bold">true</span>)      <span style="color:#998;font-style:italic">// enable batching</span>
+		config.setBatchSize(<span style="color:#099">10</span>)                     <span style="color:#998;font-style:italic">// size of batch</span>
 		config.setDispatchAfter(numberOfEvents: <span style="color:#099">25</span>) <span style="color:#998;font-style:italic">// flush after every 25 events</span>
-
-		<span style="color:#998;font-style:italic">// Maximum number of queued events. If this limit is reached, and the device has not made a connection to the internet, the oldest events are deleted</span>
-		config.setMaxQueueSize(<span style="color:#099">100</span>) <span style="color:#998;font-style:italic">// 100 events</span>
-
-		<span style="color:#998;font-style:italic">// Expiration in days for events stored offline. If the device has not made a successful connection to the internet before this time, events older than this will be deleted.</span>
-		setBatchExpirationDays
+		config.setMaxQueueSize(<span style="color:#099">100</span>)                 <span style="color:#998;font-style:italic">// 100 max queued events</span>
+		config.setBatchExpirationDays(<span style="color:#099">5</span>)            <span style="color:#998;font-style:italic">// events expire/delete after 5 days</span>
 		<span style="color:#998;font-style:italic">// ...</span>
 	}
 }</code></pre></div>
+<p>The following options are available to customize event batching.</p>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="/platforms/ios-swift/api/tealium-config/#setbatchexpirationdays"><code>setBatchExpirationDays()</code></a></td>
+<td>Sets the batch expiration in days. If the device is offline for an extended period, events older than this will be deleted.</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/api/tealium-config/#setbatchsize"><code>setBatchSize()</code></a></td>
+<td>Sets the amount of events to combine into a single batch request (max: 10).</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/api/tealium-config/#setdispatchafter"><code>setDispatchAfter()</code></a></td>
+<td>Sets the number of events after which the queue will be flushed.</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/api/tealium-config/#setiseventbatchingenabled"><code>setIsEventBatchingEnabled()</code></a></td>
+<td>Enables or disables event batching (default: <code>false</code>).</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/api/tealium-config/#setmaxqueuesize"><code>setMaxQueueSize()</code></a></td>
+<td>Sets the maximum number of queued events. If this number is reached, and the queue has not been flushed, the oldest events will be deleted.</td>
+</tr>
+</tbody>
+</table>
+
 <h3 id="tag-management">Tag Management</h3>
 
 <p>With Tag Management and event batching enabled, tracking calls are dispatched as individual JavaScript calls to the hidden webview.</p>
@@ -460,6 +491,13 @@ tealium?.track(title: <span style="color:#b84">&#34;EVENT_TITLE&#34;</span>,
             
             <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/event-batching/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Event Batching
             </a>
           </li>
           <li class="fw4">
@@ -1144,6 +1182,13 @@ tealium?.track(title: <span style="color:#b84">&#34;EVENT_TITLE&#34;</span>,
           <li class="fw4">
             
             
+            <a href="/platforms/javascript/single-page-applications/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Single-Page Applications
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
             <a href="/platforms/javascript/settings/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Settings
             </a>
@@ -1427,7 +1472,7 @@ tealium?.track(title: <span style="color:#b84">&#34;EVENT_TITLE&#34;</span>,
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  November 19, 2019 
+    <span>This page was last updated:  January 17, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

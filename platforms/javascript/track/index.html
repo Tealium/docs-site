@@ -236,11 +236,11 @@ var utag_data = {
       <p class="b">Table of Contents</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#track-views">Track Views</a></li>
               <ul class="toc-h3"><li><a href="#utag-view">utag.view()</a></li>
-              <li><a href="#single-page-applications">Single Page Applications</a></li>
               </ul><li><a href="#track-events">Track Events</a></li>
               <ul class="toc-h3"><li><a href="#utag-link">utag.link()</a></li>
               <li><a href="#tealium-event">tealium_event</a></li>
               <li><a href="#implementation-options">Implementation Options</a></li>
+              </ul><li><a href="#single-page-applications">Single Page applications</a></li>
               </nav>
   </aside></div>
 
@@ -333,19 +333,6 @@ var utag_data = {
     <span style="font-weight:bold">function</span>() { utag.DB(<span style="color:#b84">&#34;Product Quick View has been tracked&#34;</span>); },
     [<span style="color:#099">34</span>, <span style="color:#099">12</span>]);
 </code></pre></div>
-<h3 id="single-page-applications">Single Page Applications</h3>
-
-<p>On single page applications where the page loads <code>utag.js</code> only once per visit, you suppress the automatic page view tracking call to allow your application to make these calls directly.</p>
-
-<p>To override the automatic page tracking add this line to your page prior to loading <code>utag.js</code>: </p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#999">window</span>.utag_cfg_ovrd <span style="font-weight:bold">=</span> {noview <span style="font-weight:bold">:</span> <span style="font-weight:bold">true</span>};
-</code></pre></div>
-<p>Once your application is loaded (and <code>utag.js</code>is loaded), trigger <code>utag.view()</code> tracking calls in your page code. These calls are typically be triggered at the DOM-ready event or any event that causes a content view refresh. <a href="/platforms/javascript/settings/">Learn more</a> about the available settings to adjust the behavior of <code>utag.js</code>.</p>
-
-<p>The <code>utag_data</code> object declared on initial page landing is <em>not</em> re-purposed with these calls. If data from the initial page landing needs to be used it needs to be re-declared and passed again in the method call.</p>
-
-<p>Global and Tag-scoped Extensions are executed during these calls. Pre-loader and DOM Ready extensions are not executed during these calls.</p>
-
 <h2 id="track-events">Track Events</h2>
 
 <p>This section explains how to track events using <code>utag.link()</code>. Event tracking collects information about your visitors’ interactions <em>within</em> a page. While page view tracking gathers information about the navigation path a visitor takes, event tracking monitors what visitors do in-between navigation steps.</p>
@@ -498,6 +485,10 @@ var utag_data = {
 
 <p><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/YouTube-Video-Tracking-Setup-Guide-for-Tealium-iQ/ta-p/14673">Learn more</a> about Tealium&rsquo;s current solutions for YouTube video tracking.</p>
 
+<h2 id="single-page-applications">Single Page applications</h2>
+
+<p><a href="/platforms/javascript/single-page-applications/">Learn about</a> tracking views and events on sinlge page applications.</p>
+
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -584,6 +575,13 @@ var utag_data = {
             
             <a href="/platforms/getting-started/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/getting-started/event-batching/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Event Batching
             </a>
           </li>
           <li class="fw4">
@@ -1268,6 +1266,13 @@ var utag_data = {
           <li class="fw4">
             
             
+            <a href="/platforms/javascript/single-page-applications/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Single-Page Applications
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
             <a href="/platforms/javascript/settings/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Settings
             </a>
@@ -1551,7 +1556,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 31, 2019 
+    <span>This page was last updated:  January 6, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
