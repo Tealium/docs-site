@@ -330,9 +330,10 @@ var utag_data = {
 </div>
 
 <div class="tab-pane" data-lang="Maven" title="Maven">
-  <p>Add a reference in your <code>build.gradle</code> file to the following:</p>
+  <p>After installing Tealium&rsquo;s <a href="/platforms/android-java/install/">Android SDK</a>, add the following dependencies in the <code>build.gradle</code> file to import both the Braze SDK and Tealium-Braze RemoteCommand:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
-    implementation <span style="color:#b84">&#39;com.tealium.remotecommands:braze:1.0.0&#39;</span>
+    implementation <span style="color:#b84">&#39;com.tealium.remotecommands:braze:0.0.3&#39;</span>
+    implementation <span style="color:#b84">&#39;com.appboy:android-sdk-ui:3.8.0&#39;</span>
 <span style="font-weight:bold">}</span></code></pre></div>
 </div>
 
@@ -405,11 +406,38 @@ tealium.addRemoteCommandID(<span style="color:#b84">&#34;braze&#34;</span>,
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content">
 <div class="tab-pane" data-lang="Android" title="Android">
-  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.<span style="color:#008080">Config</span> <span style="color:#900;font-weight:bold">config</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">Config</span>.<span style="color:#008080">create</span>(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>);
+  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">import</span> <span style="color:#900;font-weight:bold">com</span>.<span style="color:#008080">tealium</span>.<span style="color:#008080">remotecommands</span>.<span style="color:#008080">BrazeRemoteCommand</span>;
+
+Tealium.<span style="color:#008080">Config</span> <span style="color:#900;font-weight:bold">config</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">Config</span>.<span style="color:#008080">create</span>(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>);
 Tealium <span style="color:#900;font-weight:bold">teal</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">createInstance</span>(TEALIUM_MAIN, config);
 
-RemoteCommand <span style="color:#900;font-weight:bold">braze</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> BrazeRemoteCommand(application);
-teal.<span style="color:#008080">addRemoteCommand</span>(braze);</code></pre></div>
+BrazeRemoteCommand <span style="color:#900;font-weight:bold">braze</span>;
+<span style="color:#998;font-style:italic">// Initialize with default configuration options.
+</span><span style="color:#998;font-style:italic"></span>braze <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> BrazeRemoteCommand(config);
+
+<span style="color:#998;font-style:italic">// Or alternatively initialize with some additional config options:
+</span><span style="color:#998;font-style:italic"></span>Set<span style="font-weight:bold">&lt;</span>Class<span style="font-weight:bold">&gt;</span> <span style="color:#900;font-weight:bold">sessionHandlingBlacklist</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> HashSet<span style="font-weight:bold">&lt;&gt;</span>();
+Set<span style="font-weight:bold">&lt;</span>Class<span style="font-weight:bold">&gt;</span> <span style="color:#900;font-weight:bold">inAppMessageBlacklist</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> HashSet<span style="font-weight:bold">&lt;&gt;</span>();
+<span style="color:#998;font-style:italic">// sessionHandlingBlacklist.add(MainActivity.class);
+</span><span style="color:#998;font-style:italic">// inAppMessageBlacklist.add(UserActivity.class);
+</span><span style="color:#998;font-style:italic"></span>braze <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> BrazeRemoteCommand(config,
+        <span style="font-weight:bold">true</span>,                     <span style="color:#998;font-style:italic">// sessiongHandlingEnabled
+</span><span style="color:#998;font-style:italic"></span>        sessionHandlingBlacklist, <span style="color:#998;font-style:italic">// sessionHandlingBlacklist
+</span><span style="color:#998;font-style:italic"></span>        <span style="font-weight:bold">true</span>,                     <span style="color:#998;font-style:italic">// registerInAppMessageManager
+</span><span style="color:#998;font-style:italic"></span>        inAppMessageBlacklist);   <span style="color:#998;font-style:italic">// inAppMessageBlackList
+</span><span style="color:#998;font-style:italic"></span>
+<span style="color:#998;font-style:italic">// Optional: Set config options that may not be supported yet by the Tag in Tealium IQ
+</span><span style="color:#998;font-style:italic">//              or simply to override settings locally.
+</span><span style="color:#998;font-style:italic"></span>braze.<span style="color:#008080">registerConfigOverride</span>(<span style="font-weight:bold">new</span> BrazeRemoteCommand.<span style="color:#008080">ConfigOverrider</span>() {
+    @Override
+    <span style="font-weight:bold">public</span> <span style="color:#900;font-weight:bold">void</span> onOverride(AppboyConfig.<span style="color:#008080">Builder</span> <span style="color:#900;font-weight:bold">b</span>) {
+        b.<span style="color:#008080">setPushDeepLinkBackStackActivityEnabled</span>(<span style="font-weight:bold">true</span>);
+        b.<span style="color:#008080">setPushDeepLinkBackStackActivityClass</span>(UserActivity.<span style="color:#008080">class</span>);
+    }
+});
+
+<span style="color:#998;font-style:italic">// register the command
+</span><span style="color:#998;font-style:italic"></span>teal.<span style="color:#008080">addRemoteCommand</span>(braze);</code></pre></div>
 </div>
 
 <div class="tab-pane" data-lang="Objective-C" title="Objective-C">
@@ -561,7 +589,8 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <thead>
 <tr>
 <th>Remote Command</th>
-<th>Braze Method</th>
+<th>Braze Method (iOS)</th>
+<th>Braze Method (Android)</th>
 </tr>
 </thead>
 
@@ -569,6 +598,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <tr>
 <td><code>initialize</code></td>
 <td><code>startWithApiKey()</code></td>
+<td><code>configure()</code></td>
 </tr>
 </tbody>
 </table>
@@ -618,7 +648,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <tr>
 <td><code>push_story_identifier</code></td>
 <td><code>String</code></td>
-<td>This key can be set to a string value representing the app group name for the Push Story Notification Content extension.</td>
+<td>This key is set to a string value representing the app group name for the Push Story Notification Content extension.</td>
 </tr>
 
 <tr>
@@ -641,11 +671,19 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 </tbody>
 </table>
 
+<p>Android</p>
+
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/initial_sdk_setup/initial_sdk_setup/#customizing-braze-on-startup">Braze Developer Guide: Initial SDK Setup</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/advanced_use_cases/fine_network_traffic_control/">Braze Developer Guide: Fine Network Traffic Control</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/advanced_use_cases/locations_and_geofences/">Braze Developer Guide: Locations and Geofences</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/push_story/">Braze Developer Guide: Push Story Setup</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/initial_sdk_setup/android_sdk_integration/">Braze Developer Guide: Initial SDK Setup</a></li>
+</ul>
+
+<p>iOS</p>
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/initial_sdk_setup/#customizing-braze-on-startup">Braze Developer Guide: Initial SDK Setup</a><br /></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/advanced_use_cases/fine_network_traffic_control/">Braze Developer Guide: Fine Network Traffic Control</a><br /></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/advanced_use_cases/locations_and_geofences/">Braze Developer Guide: Locations and Geofences</a><br /></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/push_story/">Braze Developer Guide: Push Story Setup</a><br /></li>
 <li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/tracking_sessions/">Braze Developer Guide: Tracking Sessions</a></li>
 </ul>
 
@@ -686,7 +724,12 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 </table>
 
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_user_ids/">Braze Developer Guide: Analytics User IDs</a></li>
+<li>Braze Developer Guide: Analytics User IDs<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_user_ids/">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_user_ids/#assigning-a-user-id">Android</a></li>
+</ul></li>
 </ul>
 
 <h4 id="aliasing-users">Aliasing Users</h4>
@@ -729,7 +772,12 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 </table>
 
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_user_ids/#aliasing-users">Braze Developer Guide: Analytics Alias Users</a></li>
+<li>Braze Developer Guide: Analytics Alias Users<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_user_ids/#aliasing-users">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_user_ids/#aliasing-users">Android</a></li>
+</ul></li>
 </ul>
 
 <h3 id="user-attributes">User Attributes</h3>
@@ -747,7 +795,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <tbody>
 <tr>
 <td>userattribute</td>
-<td>Set fields on the <code>ABKUser</code> object</td>
+<td>Set fields on the <code>ABKUser/AppboyUser</code> object</td>
 </tr>
 </tbody>
 </table>
@@ -814,7 +862,12 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 </table>
 
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#assigning-standard-user-attributes">Braze Developer Guide: Analytics User Attributes</a></li>
+<li>Braze Developer Guide: Analytics User Attributes
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#assigning-standard-user-attributes">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-standard-user-attributes">Android</a></li>
+</ul></li>
 <li><a href="https://www.braze.com/docs/api/endpoints/user_data/?redirected=true#user-attributes-object-specification">Braze Developer Guide: User Data API</a></li>
 </ul>
 
@@ -824,7 +877,8 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <thead>
 <tr>
 <th>Remote Command</th>
-<th>Braze Method</th>
+<th>Braze Method (iOS)</th>
+<th>Braze Method (Android)</th>
 </tr>
 </thead>
 
@@ -832,6 +886,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <tr>
 <td><code>setcustomattribute</code></td>
 <td><code>setCustomAttributeWithKey</code></td>
+<td><code>setCustomUserAttribute</code></td>
 </tr>
 </tbody>
 </table>
@@ -847,13 +902,18 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <tbody>
 <tr>
 <td><code>set_custom_attribute.PROPERTY</code></td>
-<td><code>[String: Any]</code></td>
+<td><code>[String: Any]</code> / <code>JSONObject</code></td>
 </tr>
 </tbody>
 </table>
 
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Braze Developer Guide: Analytics Custom Attributes</a></li>
+<li>Braze Developer Guide: Analytics Custom Attributes<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#assigning-custom-user-attributes">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
+</ul></li>
 </ul>
 
 <h4 id="unset-custom-attribute">Unset Custom Attribute</h4>
@@ -862,7 +922,8 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <thead>
 <tr>
 <th>Remote Command</th>
-<th>Braze</th>
+<th>Braze Method (iOS)</th>
+<th>Braze Method (Android)</th>
 </tr>
 </thead>
 
@@ -870,6 +931,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <tr>
 <td><code>setcustomattribute</code></td>
 <td><code>unsetCustomAttributeWithKey</code></td>
+<td><code>unsetCustomUserAttribute</code></td>
 </tr>
 </tbody>
 </table>
@@ -891,7 +953,12 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 </table>
 
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#unsetting-a-custom-attribute">Braze Developer Guide: Analytics Custom Attributes</a></li>
+<li>Braze Developer Guide: Analytics Custom Attributes<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#unsetting-a-custom-attribute">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
+</ul></li>
 </ul>
 
 <h4 id="increment-custom-attribute">Increment Custom Attribute</h4>
@@ -929,7 +996,12 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 </table>
 
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#incrementingdecrementing-custom-attributes">Braze Developer Guide: Analytics Incrementing Attributes</a></li>
+<li>Braze Developer Guide: Analytics Incrementing Attributes
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#incrementingdecrementing-custom-attributes">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
+</ul></li>
 </ul>
 
 <h4 id="set-custom-array-attribute">Set Custom Array Attribute</h4>
@@ -938,14 +1010,16 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <thead>
 <tr>
 <th>Remote Command</th>
-<th>Braze Method</th>
+<th>Braze Method (iOS)</th>
+<th>Braze Method (Android)</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>setcustomarrayattribute</code></td>
+<td>setcustomarrayattribute</td>
 <td><code>setCustomAttributeArrayWithKey</code></td>
+<td><code>setCustomAttributeArray</code></td>
 </tr>
 </tbody>
 </table>
@@ -961,13 +1035,18 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <tbody>
 <tr>
 <td><code>set_custom_array_attribute.PROPERTY</code></td>
-<td><code>[String: [Any]]</code></td>
+<td><code>[String: [Any]]</code> / <code>JSONObject</code></td>
 </tr>
 </tbody>
 </table>
 
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#custom-attribute-with-an-array-value">Braze Developer Guide: Analytics Array Attributes</a></li>
+<li>Braze Developer Guide: Analytics Array Attributes<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#custom-attribute-with-an-array-value">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
+</ul></li>
 </ul>
 
 <h4 id="append-custom-array-attribute">Append Custom Array Attribute</h4>
@@ -976,7 +1055,8 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <thead>
 <tr>
 <th>Remote Command</th>
-<th>Braze Method</th>
+<th>Braze Method (iOS)</th>
+<th>Braze Method (Android)</th>
 </tr>
 </thead>
 
@@ -984,6 +1064,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <tr>
 <td><code>appendcustomarrayattribute</code></td>
 <td><code>addToCustomAttributeArrayWithKey</code></td>
+<td><code>addToCustomAttributeArray</code></td>
 </tr>
 </tbody>
 </table>
@@ -999,13 +1080,18 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <tbody>
 <tr>
 <td><code>append_custom_array_attribute.PROPERTY</code></td>
-<td><code>[String: String]</code></td>
+<td><code>[String: String]</code> / <code>JSONObject</code></td>
 </tr>
 </tbody>
 </table>
 
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#custom-attribute-with-an-array-value">Braze Developer Guide: Analytics Array Attributes</a></li>
+<li>Braze Developer Guide: Analytics Array Attributes<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#custom-attribute-with-an-array-value">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
+</ul></li>
 </ul>
 
 <h4 id="remove-custom-array-attribute">Remove Custom Array Attribute</h4>
@@ -1014,14 +1100,16 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <thead>
 <tr>
 <th>Remote Command</th>
-<th>Braze Method</th>
+<th>Braze Method (iOS)</th>
+<th>Braze Method (Android)</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>removecustomarrayattribute</code></td>
+<td>removecustomarrayattribute</td>
 <td><code>removeFromCustomAttributeArrayWithKey</code></td>
+<td><code>removeFromCustomAttributeArray</code></td>
 </tr>
 </tbody>
 </table>
@@ -1037,13 +1125,18 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <tbody>
 <tr>
 <td><code>remove_custom_array_attribute.PROPERTY</code></td>
-<td><code>[String: String]</code></td>
+<td><code>[String: String]</code> / <code>JSONObject</code></td>
 </tr>
 </tbody>
 </table>
 
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#custom-attribute-with-an-array-value">Braze Developer Guide: Analytics Array Attributes</a></li>
+<li>Braze Developer Guide: Analytics Array Attributes<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#custom-attribute-with-an-array-value">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
+</ul></li>
 </ul>
 
 <h3 id="social-data-tracking">Social Data Tracking</h3>
@@ -1061,7 +1154,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <tbody>
 <tr>
 <td><code>facebookuser</code></td>
-<td>Initialize a <code>ABKFacebookUser</code> object</td>
+<td>Initialize an <code>ABKFacebookUser/FacebookUser</code> object</td>
 </tr>
 </tbody>
 </table>
@@ -1077,7 +1170,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <tbody>
 <tr>
 <td><code>facebook_id</code></td>
-<td><code>[String: Any]</code></td>
+<td><code>[String: Any]</code> / <code>String</code></td>
 </tr>
 
 <tr>
@@ -1087,13 +1180,18 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 
 <tr>
 <td><code>likes</code></td>
-<td><code>[Any]</code></td>
+<td><code>[Any]</code> / <code>String[]</code></td>
 </tr>
 </tbody>
 </table>
 
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/social_data_tracking/">Braze Developer Guide: Social Data</a></li>
+<li>Braze Developer Guide: Social Data<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/social_data_tracking/">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/social_data_tracking/">Android</a></li>
+</ul></li>
 </ul>
 
 <h4 id="twitter">Twitter</h4>
@@ -1109,7 +1207,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <tbody>
 <tr>
 <td><code>twitteruser</code></td>
-<td>Initialize a <code>ABKTwitterUser</code> object</td>
+<td>Initialize a <code>ABKTwitterUser/TwitterUser</code> object</td>
 </tr>
 </tbody>
 </table>
@@ -1166,7 +1264,12 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 </table>
 
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/social_data_tracking/">Braze Developer Guide: Social Data</a></li>
+<li>Braze Developer Guide: Social Data<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/social_data_tracking/">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/social_data_tracking/">Android</a></li>
+</ul></li>
 </ul>
 
 <h3 id="custom-event-tracking">Custom Event Tracking</h3>
@@ -1205,13 +1308,18 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 
 <tr>
 <td><code>event_properties</code></td>
-<td><code>[String: Any]</code></td>
+<td><code>[String: Any]</code> / <code>JSONObject</code></td>
 </tr>
 </tbody>
 </table>
 
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/tracking_custom_events/">Braze Developer Guide: Analytics Custom Events</a></li>
+<li>Braze Developer Guide: Analytics Custom Events
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/tracking_custom_events/">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/tracking_custom_events/">Android</a></li>
+</ul></li>
 </ul>
 
 <h3 id="notifications">Notifications</h3>
@@ -1253,7 +1361,12 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 </table>
 
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#setting-email-subscriptions">Braze Developer Guide: Analytics Email Subscriptions</a></li>
+<li>Braze Developer Guide: Analytics Email Subscriptions<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#setting-email-subscriptions">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#setting-up-user-subscriptions">Android</a></li>
+</ul></li>
 </ul>
 
 <h4 id="push-notifications">Push Notifications</h4>
@@ -1293,7 +1406,12 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 </table>
 
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#setting-up-user-subscriptions">Braze Developer Guide: Analytics Push Notifications</a></li>
+<li>Braze Developer Guide: Analytics Push Notifications<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#setting-up-user-subscriptions">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#setting-up-user-subscriptions">Android</a></li>
+</ul></li>
 </ul>
 
 <h3 id="purchase-tracking">Purchase Tracking</h3>
@@ -1310,7 +1428,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 
 <tbody>
 <tr>
-<td><code>logpurchase</code></td>
+<td>logpurchase</td>
 <td><code>logPurchase</code></td>
 </tr>
 </tbody>
@@ -1327,33 +1445,38 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <tbody>
 <tr>
 <td><code>product_id</code> (required)</td>
-<td><code>[String]</code></td>
+<td><code>[String]</code> / <code>String[]</code></td>
 </tr>
 
 <tr>
 <td><code>currency</code> (required)</td>
-<td><code>String</code></td>
+<td><code>String</code> / <code>String</code></td>
 </tr>
 
 <tr>
 <td><code>price</code> (required)</td>
-<td><code>[Double]</code></td>
+<td><code>[Double]</code> / <code>Double[]</code></td>
 </tr>
 
 <tr>
 <td><code>quantity</code></td>
-<td><code>[Int]</code></td>
+<td><code>[Int]</code> / <code>Int[]</code></td>
 </tr>
 
 <tr>
 <td><code>purchase_properties</code></td>
-<td><code>[AnyHashable: Any]</code></td>
+<td><code>[AnyHashable: Any]</code> / <code>JSONObject</code></td>
 </tr>
 </tbody>
 </table>
 
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/logging_purchases/">Braze Developer Guide: Analytics Purchase Events</a></li>
+<li>Braze Developer Guide: Analytics Purchase Events<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/logging_purchases/">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/logging_purchases/">Android</a></li>
+</ul></li>
 </ul>
 
 <h3 id="location-tracking">Location Tracking</h3>
@@ -1424,7 +1547,8 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <thead>
 <tr>
 <th>Remote Command</th>
-<th>Braze Method</th>
+<th>Braze Method (iOS)</th>
+<th>Braze Method (Android)</th>
 </tr>
 </thead>
 
@@ -1432,12 +1556,36 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <tr>
 <td><code>enable_sdk</code></td>
 <td><code>enableSDK</code></td>
+<td><code>enableSdk/disableSdk</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>enable_sdk</code></td>
+<td><code>Boolean</code></td>
+<td><code>true / false</code></td>
 </tr>
 </tbody>
 </table>
 
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/disabling_tracking/">Braze Developer Guide: Analytics Disabling</a></li>
+<li>Braze Developer Guide: Analytics Disabling<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/disabling_tracking/">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/disabling_tracking/">Android</a></li>
+</ul></li>
 </ul>
 
 <h4 id="wipe-data">Wipe Data</h4>
@@ -1459,7 +1607,12 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 </table>
 
 <ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/disabling_tracking/">Braze Developer Guide: Analytics Disabling</a></li>
+<li>Braze Developer Guide: Analytics Disabling<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/disabling_tracking/">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/disabling_tracking/">Android</a></li>
+</ul></li>
 </ul>
 
 </div>
@@ -1486,14 +1639,20 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 
         </div>
       </div>
-      <div class="order-0 w-20 dn db-l pl3 sticky-l">
+      <div class="order-0 w-20 dn db-l sticky-l">
         
 <nav class="side-nav f6" role="navigation">
-  <ul class="list pa0 nl2">
+  <ul class="list pa0">
+
     
       
       
-      <li class="w-100 hover-accent-color-light fw8">
+      <li class="w-100 hover-accent-color-light fw8 f4 mid-gray pv1 pl2">
+        Mobile
+      </li>
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 pl2">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".getting-started">Getting Started</a>
         <ul class="getting-started desktopmenu animated fadeIn list pl0 dn">
           <li class="fw4">
@@ -1548,6 +1707,13 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
           <li class="fw4">
             
             
+            <a href="/platforms/getting-started/location/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              User Location and Geofencing
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
             <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Feature Comparison
             </a>
@@ -1563,7 +1729,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
       </li>
       
       
-      <li class="w-100 hover-accent-color-light fw8 active mb1 bb b--moon-gray">
+      <li class="w-100 hover-accent-color-light fw8 active pl2">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2  primary-color" data-target=".remote-commands">Remote Commands</a>
         <ul class="remote-commands desktopmenu animated fadeIn list pl0 db">
           <li class="fw4">
@@ -1591,42 +1757,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
       </li>
       
       
-      <li class="w-100 hover-accent-color-light fw8">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".amp">AMP</a>
-        <ul class="amp desktopmenu animated fadeIn list pl0 dn">
-          <li class="fw4">
-            
-            
-            <a href="/platforms/amp/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Overview
-            </a>
-          </li>
-          <li class="fw4">
-            
-            
-            <a href="/platforms/amp/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Install
-            </a>
-          </li>
-          <li class="fw4">
-            
-            
-            <a href="/platforms/amp/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Track
-            </a>
-          </li>
-          <li class="fw4">
-            
-            
-            <a href="/platforms/amp/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Data Layer
-            </a>
-          </li>
-        </ul>
-      </li>
-      
-      
-      <li class="w-100 hover-accent-color-light fw8">
+      <li class="w-100 hover-accent-color-light fw8 pl2">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".android-java">Android (Java)</a>
         <ul class="android-java desktopmenu animated fadeIn list pl0 dn">
           <li class="fw4">
@@ -1710,91 +1841,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
       </li>
       
       
-      <li class="w-100 hover-accent-color-light fw8">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".angular">Angular</a>
-        <ul class="angular desktopmenu animated fadeIn list pl0 dn">
-          <li class="fw4">
-            
-            
-            <a href="/platforms/angular/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Overview
-            </a>
-          </li>
-          <li class="fw4">
-            
-            
-            <a href="/platforms/angular/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Install
-            </a>
-          </li>
-          <li class="fw4">
-            
-            
-            <a href="/platforms/angular/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Track
-            </a>
-          </li>
-          <li class="fw4">
-            
-            
-            <a href="/platforms/angular/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              API Reference
-            </a>
-          </li>
-        </ul>
-      </li>
-      
-      
-      <li class="w-100 hover-accent-color-light fw8">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".csharp">C#</a>
-        <ul class="csharp desktopmenu animated fadeIn list pl0 dn">
-          <li class="fw4">
-            
-            
-            <a href="/platforms/csharp/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Overview
-            </a>
-          </li>
-          <li class="fw4">
-            
-            
-            <a href="/platforms/csharp/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Install
-            </a>
-          </li>
-          <li class="fw4">
-            
-            
-            <a href="/platforms/csharp/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Track
-            </a>
-          </li>
-          <li class="fw4">
-            
-            
-            <a href="/platforms/csharp/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Data Layer
-            </a>
-          </li>
-          <li class="fw4">
-            
-            
-            <a href="/platforms/csharp/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              API Reference
-            </a>
-          </li>
-          <li class="fw4">
-            
-            
-            <a href="/platforms/csharp/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Release Notes
-            </a>
-          </li>
-        </ul>
-      </li>
-      
-      
-      <li class="w-100 hover-accent-color-light fw8">
+      <li class="w-100 hover-accent-color-light fw8 pl2">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".cordova">Cordova</a>
         <ul class="cordova desktopmenu animated fadeIn list pl0 dn">
           <li class="fw4">
@@ -1850,7 +1897,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
       </li>
       
       
-      <li class="w-100 hover-accent-color-light fw8">
+      <li class="w-100 hover-accent-color-light fw8 pl2">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".flutter">Flutter</a>
         <ul class="flutter desktopmenu animated fadeIn list pl0 dn">
           <li class="fw4">
@@ -1906,35 +1953,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
       </li>
       
       
-      <li class="w-100 hover-accent-color-light fw8">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".http-api">HTTP API</a>
-        <ul class="http-api desktopmenu animated fadeIn list pl0 dn">
-          <li class="fw4">
-            
-            
-            <a href="/platforms/http-api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Overview
-            </a>
-          </li>
-          <li class="fw4">
-            
-            
-            <a href="/platforms/http-api/endpoint-spec/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Endpoint
-            </a>
-          </li>
-          <li class="fw4">
-            
-            
-            <a href="/platforms/http-api/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Data Layer
-            </a>
-          </li>
-        </ul>
-      </li>
-      
-      
-      <li class="w-100 hover-accent-color-light fw8">
+      <li class="w-100 hover-accent-color-light fw8 pl2">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".ios-objective-c">iOS (Objective-C)</a>
         <ul class="ios-objective-c desktopmenu animated fadeIn list pl0 dn">
           <li class="fw4">
@@ -2025,7 +2044,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
       </li>
       
       
-      <li class="w-100 hover-accent-color-light fw8">
+      <li class="w-100 hover-accent-color-light fw8 pl2">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".ios-swift">iOS (Swift)</a>
         <ul class="ios-swift desktopmenu animated fadeIn list pl0 dn">
           <li class="fw4">
@@ -2130,41 +2149,41 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
       </li>
       
       
-      <li class="w-100 hover-accent-color-light fw8">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".java">Java</a>
-        <ul class="java desktopmenu animated fadeIn list pl0 dn">
+      <li class="w-100 hover-accent-color-light fw8 pl2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".react-native">React Native</a>
+        <ul class="react-native desktopmenu animated fadeIn list pl0 dn">
           <li class="fw4">
             
             
-            <a href="/platforms/java/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+            <a href="/platforms/react-native/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Overview
             </a>
           </li>
           <li class="fw4">
             
             
-            <a href="/platforms/java/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+            <a href="/platforms/react-native/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Install
             </a>
           </li>
           <li class="fw4">
             
             
-            <a href="/platforms/java/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+            <a href="/platforms/react-native/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Track
             </a>
           </li>
           <li class="fw4">
             
             
-            <a href="/platforms/java/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+            <a href="/platforms/react-native/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               API Reference
             </a>
           </li>
           <li class="fw4">
             
             
-            <a href="/platforms/java/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+            <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Release Notes
             </a>
           </li>
@@ -2172,7 +2191,138 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
       </li>
       
       
-      <li class="w-100 hover-accent-color-light fw8">
+      <li class="w-100 hover-accent-color-light fw8 mb1 bb b--moon-gray pl2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".xamarin">Xamarin</a>
+        <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/xamarin/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/xamarin/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Install
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/xamarin/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Track
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/xamarin/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Consent Management
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/xamarin/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              API Reference
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/xamarin/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
+        </ul>
+      </li>
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 f4 mid-gray pv1 pl2">
+        Web
+      </li>
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 pl2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".amp">AMP</a>
+        <ul class="amp desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/amp/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/amp/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Install
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/amp/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Track
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/amp/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+        </ul>
+      </li>
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 pl2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".angular">Angular</a>
+        <ul class="angular desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/angular/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/angular/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Install
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/angular/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Track
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/angular/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              API Reference
+            </a>
+          </li>
+        </ul>
+      </li>
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 mb1 bb b--moon-gray pl2">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".javascript">JavaScript (Web)</a>
         <ul class="javascript desktopmenu animated fadeIn list pl0 dn">
           <li class="fw4">
@@ -2263,7 +2413,131 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
       </li>
       
       
-      <li class="w-100 hover-accent-color-light fw8">
+      <li class="w-100 hover-accent-color-light fw8 f4 mid-gray pv1 pl2">
+        Server
+      </li>
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 pl2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".csharp">C#</a>
+        <ul class="csharp desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/csharp/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/csharp/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Install
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/csharp/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Track
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/csharp/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/csharp/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              API Reference
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/csharp/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
+        </ul>
+      </li>
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 pl2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".http-api">HTTP API</a>
+        <ul class="http-api desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/http-api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/http-api/endpoint-spec/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Endpoint
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/http-api/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Data Layer
+            </a>
+          </li>
+        </ul>
+      </li>
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 pl2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".java">Java</a>
+        <ul class="java desktopmenu animated fadeIn list pl0 dn">
+          <li class="fw4">
+            
+            
+            <a href="/platforms/java/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Overview
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/java/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Install
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/java/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Track
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/java/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              API Reference
+            </a>
+          </li>
+          <li class="fw4">
+            
+            
+            <a href="/platforms/java/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              Release Notes
+            </a>
+          </li>
+        </ul>
+      </li>
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 pl2">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".node">Node</a>
         <ul class="node desktopmenu animated fadeIn list pl0 dn">
           <li class="fw4">
@@ -2298,7 +2572,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
       </li>
       
       
-      <li class="w-100 hover-accent-color-light fw8">
+      <li class="w-100 hover-accent-color-light fw8 pl2">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".python">Python</a>
         <ul class="python desktopmenu animated fadeIn list pl0 dn">
           <li class="fw4">
@@ -2333,49 +2607,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
       </li>
       
       
-      <li class="w-100 hover-accent-color-light fw8">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".react-native">React Native</a>
-        <ul class="react-native desktopmenu animated fadeIn list pl0 dn">
-          <li class="fw4">
-            
-            
-            <a href="/platforms/react-native/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Overview
-            </a>
-          </li>
-          <li class="fw4">
-            
-            
-            <a href="/platforms/react-native/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Install
-            </a>
-          </li>
-          <li class="fw4">
-            
-            
-            <a href="/platforms/react-native/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Track
-            </a>
-          </li>
-          <li class="fw4">
-            
-            
-            <a href="/platforms/react-native/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              API Reference
-            </a>
-          </li>
-          <li class="fw4">
-            
-            
-            <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Release Notes
-            </a>
-          </li>
-        </ul>
-      </li>
-      
-      
-      <li class="w-100 hover-accent-color-light fw8">
+      <li class="w-100 hover-accent-color-light fw8 pl2">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".roku">Roku</a>
         <ul class="roku desktopmenu animated fadeIn list pl0 dn">
           <li class="fw4">
@@ -2410,7 +2642,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
       </li>
       
       
-      <li class="w-100 hover-accent-color-light fw8">
+      <li class="w-100 hover-accent-color-light fw8 pl2">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".ruby">Ruby</a>
         <ul class="ruby desktopmenu animated fadeIn list pl0 dn">
           <li class="fw4">
@@ -2445,56 +2677,35 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
       </li>
       
       
-      <li class="w-100 hover-accent-color-light fw8">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".xamarin">Xamarin</a>
-        <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
+      <li class="w-100 hover-accent-color-light fw8 pl2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link mid-gray hover-accent-color-light pl2 pr2 pv2 " data-target=".unity">Unity</a>
+        <ul class="unity desktopmenu animated fadeIn list pl0 dn">
           <li class="fw4">
             
             
-            <a href="/platforms/xamarin/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+            <a href="/platforms/unity/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Overview
             </a>
           </li>
           <li class="fw4">
             
             
-            <a href="/platforms/xamarin/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+            <a href="/platforms/unity/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Install
             </a>
           </li>
           <li class="fw4">
             
             
-            <a href="/platforms/xamarin/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+            <a href="/platforms/unity/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
               Track
             </a>
           </li>
           <li class="fw4">
             
             
-            <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Data Management
-            </a>
-          </li>
-          <li class="fw4">
-            
-            
-            <a href="/platforms/xamarin/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Consent Management
-            </a>
-          </li>
-          <li class="fw4">
-            
-            
-            <a href="/platforms/xamarin/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              API Reference
-            </a>
-          </li>
-          <li class="fw4">
-            
-            
-            <a href="/platforms/xamarin/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
-              Release Notes
+            <a href="/platforms/unity/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary ">
+              API Referencee
             </a>
           </li>
         </ul>
@@ -2517,7 +2728,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  January 23, 2020 
+    <span>This page was last updated:  February 11, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -2564,38 +2775,26 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <ul class="list dib ph0 ma0 scrolling-touch tc">
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="http://docs.tealium.com/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Mobile
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="http://docs.tealium.com/platforms/getting-started/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           Getting Started
         </a>
     </li>
   
-    <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
+    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="http://docs.tealium.com/platforms/remote-commands/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           Remote Commands
         </a>
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
-        <a href="http://docs.tealium.com/platforms/amp/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          AMP
-        </a>
-    </li>
-  
-    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="http://docs.tealium.com/platforms/android-java/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           Android (Java)
-        </a>
-    </li>
-  
-    <li  class="tl dib ma0 hover-bg-primary w-100">
-        <a href="http://docs.tealium.com/platforms/angular/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Angular
-        </a>
-    </li>
-  
-    <li  class="tl dib ma0 hover-bg-primary w-100">
-        <a href="http://docs.tealium.com/platforms/csharp/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          C#
         </a>
     </li>
   
@@ -2612,12 +2811,6 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
-        <a href="http://docs.tealium.com/platforms/http-api/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          HTTP API
-        </a>
-    </li>
-  
-    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="http://docs.tealium.com/platforms/ios-objective-c/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           iOS (Objective-C)
         </a>
@@ -2630,14 +2823,62 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
-        <a href="http://docs.tealium.com/platforms/java/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Java
+        <a href="http://docs.tealium.com/platforms/react-native/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          React Native
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
+        <a href="http://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin
         </a>
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="http://docs.tealium.com/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Web
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="http://docs.tealium.com/platforms/amp/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          AMP
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="http://docs.tealium.com/platforms/angular/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Angular
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="http://docs.tealium.com/platforms/javascript/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           JavaScript (Web)
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="http://docs.tealium.com/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Server
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="http://docs.tealium.com/platforms/csharp/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          C#
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="http://docs.tealium.com/platforms/http-api/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          HTTP API
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="http://docs.tealium.com/platforms/java/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Java
         </a>
     </li>
   
@@ -2654,12 +2895,6 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
-        <a href="http://docs.tealium.com/platforms/react-native/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          React Native
-        </a>
-    </li>
-  
-    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="http://docs.tealium.com/platforms/roku/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           Roku
         </a>
@@ -2672,8 +2907,8 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
-        <a href="http://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+        <a href="http://docs.tealium.com/platforms/unity/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Unity
         </a>
     </li>
   
