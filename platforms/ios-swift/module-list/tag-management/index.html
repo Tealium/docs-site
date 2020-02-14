@@ -366,6 +366,9 @@ var utag_data = {
 
 <p><code>WKWebView</code> and <code>UIWebView</code> use different methods to store cookies (<code>WKHTTPCookieStore</code> and <code>HTTPCookieStorage</code> respectively), so the module automatically synchronizes cookies the first time that WKWebView is launched. The cookies in <code>HTTPCookieStorage</code> are not deleted, but eventually expire on their own.</p>
 
+<p class="note">The <a href="/platforms/ios-swift/api/tealium-config/#shouldaddcookieobserver"><code>shouldAddCookieObserver</code></a> method allows you to use your own cookie observer during cookie synchronization, which requires a cookie observer to retrieve cookies on the main thread after setting them. This issue is caused by bugs in <code>WKWebView</code>, which prevents your own observer from being called.</p>
+  
+
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -1491,7 +1494,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  January 23, 2020 
+    <span>This page was last updated:  January 29, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

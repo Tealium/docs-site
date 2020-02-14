@@ -290,7 +290,7 @@ var utag_data = {
 
 <p>App Extensions have their own sandboxed data storage, which is not shared with the host iOS app (if available). Therefore, by default, a new persistent visitor ID is generated when the app is started for the first time.</p>
 
-<p>A problem arises if you have an iOS app, Today widget, and the watchOS extension, resulting in 3 distinct visitor IDs for the same visitor. If you are using Visitor Stitching, and already have a known visitor ID for the app user, then this is not a problem. This situation is avoidable if you synchronize the visitor IDs across the app and it&rsquo;s extensions. To do this, pass the current Tealium first party visitor ID in the <code>TealiumConfig</code> object of the app extension when initializing Tealium. Then the ID is stored and used for future launches of the app, without being regenerated.</p>
+<p>An issue causing 3 distinct visitor IDs for the same visitor arises when you have an iOS app, Today widget, and the watchOS extension. This is not an issue if you are using visitor stitching and already have a known visitor ID for the app user. Avoid this situation by synchronizing the visitor IDs across the app and its extensions. This is done by passing the current Tealium first party visitor ID in the <code>TealiumConfig</code> object of the app extension when initializing Tealium. The ID is stored and used for future launches of the app, without being regenerated.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
 
 	<span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
@@ -299,7 +299,7 @@ var utag_data = {
 
 	<span style="color:#998;font-style:italic">// Return the current visitor ID from the Tealium Swift library on the iOS app</span>
 	<span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">getVisitorId</span>() -&gt; <span style="color:#999">String</span>? {
-		<span style="font-weight:bold">return</span> <span style="font-weight:bold">self</span>.tealium?.getVisitorId()
+		<span style="font-weight:bold">return</span> <span style="font-weight:bold">self</span>.tealium.visitorId
 	}
 
 	<span style="color:#998;font-style:italic">// On the app extension, pass the ID retrieved from the iOS app in the config object</span>
@@ -310,12 +310,14 @@ var utag_data = {
            		                 datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
 
 		<span style="color:#998;font-style:italic">// existing ID is used as the first party ID in the app extension</span>
-        config.setExistingVisitorId(id)
+        config.existingVisitorId = id
         <span style="font-weight:bold">self</span>.tealium = Tealium(config: config)
 	}
 
 }</code></pre></div>
-<p>Altenratively, generate your own visitor ID centrally and pass it to each Tealium instance at initialization time. It is important that the ID is unique, so we recommend using a UUID. Do <strong>not</strong> use a simple ID such as email address for your first party visitor ID.</p>
+<p>Alternatively, generate a visitor ID centrally and pass it to each Tealium instance at initialization. It is recommended to use a UUID.</p>
+
+<p class="tip">Do not use a simple ID, such as email address, for your first party visitor ID.</p>
 
 </div>
 
@@ -1442,7 +1444,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  November 19, 2019 
+    <span>This page was last updated:  February 11, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

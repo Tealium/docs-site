@@ -237,9 +237,6 @@ var utag_data = {
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#track">Track</a></li>
               <ul class="toc-h3"><li><a href="#track-views">Track Views</a></li>
               <li><a href="#track-events">Track Events</a></li>
-              </ul><li><a href="#event-batching">Event Batching</a></li>
-              <ul class="toc-h3"><li><a href="#tag-management">Tag Management</a></li>
-              <li><a href="#tealium-collect">Tealium Collect</a></li>
               </ul><li><a href="#trace">Trace</a></li>
               <ul class="toc-h3"><li><a href="#join-trace">Join Trace</a></li>
               <li><a href="#leave-trace">Leave trace</a></li>
@@ -287,7 +284,7 @@ var utag_data = {
 <span style="color:#998;font-style:italic">// track call with type specified and completion block</span>
 tealium?.trackView(title: <span style="color:#b84">&#34;EVENT_NAME&#34;</span>,
       data: mydata,
-      completion: { (success: <span style="color:#999">Bool</span>, info: [<span style="color:#999">String</span>:<span style="color:#999">Any</span>]?, error: Error?) <span style="font-weight:bold">in</span>
+      completion: { (success: <span style="color:#999">Bool</span>, info: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>]?, error: Error?) <span style="font-weight:bold">in</span>
 <span style="color:#998;font-style:italic">//...</span>
 })</code></pre></div>
 <p class="note">The value passed to <code>title</code> will appear in the data layer as the variable <code>tealium_event</code>.</p>
@@ -299,81 +296,10 @@ tealium?.trackView(title: <span style="color:#b84">&#34;EVENT_NAME&#34;</span>,
 <span style="color:#998;font-style:italic">// track call with type specified and completion block</span>
 tealium?.track(title: <span style="color:#b84">&#34;EVENT_NAME&#34;</span>,
       data: mydata,
-      completion: { (success: <span style="color:#999">Bool</span>, info: [<span style="color:#999">String</span>:<span style="color:#999">Any</span>]?, error: Error?) <span style="font-weight:bold">in</span>
+      completion: { (success: <span style="color:#999">Bool</span>, info: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>]?, error: Error?) <span style="font-weight:bold">in</span>
  <span style="color:#998;font-style:italic">//...</span>
 })</code></pre></div>
 <p class="note">The value passed to <code>title</code> will appear in the data layer as the variable <code>tealium_event</code>.</p>
-
-<h2 id="event-batching">Event Batching</h2>
-
-<p>Swift does not currently use the Mobile Publish Settings, so event batching must be enabled and configured when the SDK is initialized.</p>
-
-<p>This example enables event batching and sets the batch size and queue size.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumDispatchQueue</span> <span style="color:#998;font-style:italic">// required for event batching options</span>
-<span style="color:#458;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
-	<span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
-	<span style="color:#998;font-style:italic">// ...</span>
-
-	<span style="font-weight:bold">private</span> <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">initTealium</span>() {
-		<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
- 	       		                   profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-                               environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-                               datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
-		config.setIsEventBatchingEnabled(<span style="font-weight:bold">true</span>)      <span style="color:#998;font-style:italic">// enable batching</span>
-		config.setBatchSize(<span style="color:#099">10</span>)                     <span style="color:#998;font-style:italic">// size of batch</span>
-		config.setDispatchAfter(numberOfEvents: <span style="color:#099">25</span>) <span style="color:#998;font-style:italic">// flush after every 25 events</span>
-		config.setMaxQueueSize(<span style="color:#099">100</span>)                 <span style="color:#998;font-style:italic">// 100 max queued events</span>
-		config.setBatchExpirationDays(<span style="color:#099">5</span>)            <span style="color:#998;font-style:italic">// events expire/delete after 5 days</span>
-		<span style="color:#998;font-style:italic">// ...</span>
-	}
-}</code></pre></div>
-<p>The following options are available to customize event batching.</p>
-
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><a href="/platforms/ios-swift/api/tealium-config/#setbatchexpirationdays"><code>setBatchExpirationDays()</code></a></td>
-<td>Sets the batch expiration in days. If the device is offline for an extended period, events older than this will be deleted.</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/api/tealium-config/#setbatchsize"><code>setBatchSize()</code></a></td>
-<td>Sets the amount of events to combine into a single batch request (max: 10).</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/api/tealium-config/#setdispatchafter"><code>setDispatchAfter()</code></a></td>
-<td>Sets the number of events after which the queue will be flushed.</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/api/tealium-config/#setiseventbatchingenabled"><code>setIsEventBatchingEnabled()</code></a></td>
-<td>Enables or disables event batching (default: <code>false</code>).</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/api/tealium-config/#setmaxqueuesize"><code>setMaxQueueSize()</code></a></td>
-<td>Sets the maximum number of queued events. If this number is reached, and the queue has not been flushed, the oldest events will be deleted.</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="tag-management">Tag Management</h3>
-
-<p>With Tag Management and event batching enabled, tracking calls are dispatched as individual JavaScript calls to the hidden webview.</p>
-
-<p>Configured tags are triggered individually, resulting in multiple requests per event leaving the device. This improves device performance by waking up the device less frequently than sending real-time events.</p>
-
-<h3 id="tealium-collect">Tealium Collect</h3>
-
-<p>This endpoint can currently only accept batch data generated by the Tealium SDK, in a proprietary batch format.</p>
 
 <h2 id="trace">Trace</h2>
 
@@ -404,7 +330,7 @@ tealium?.track(title: <span style="color:#b84">&#34;EVENT_NAME&#34;</span>,
 <p>Connector actions set to run at &ldquo;End of Visit&rdquo; does not run until the session expires.</p>
 
 <p>To preserve the trace visitor session when leaving the trace, pass the optional argument <code>false</code>, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.leaveTrace(<span style="font-weight:bold">false</span>)</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.leaveTrace(killVisitorSession: <span style="font-weight:bold">false</span>)</code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -1530,7 +1456,7 @@ tealium?.track(title: <span style="color:#b84">&#34;EVENT_NAME&#34;</span>,
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  January 23, 2020 
+    <span>This page was last updated:  February 14, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

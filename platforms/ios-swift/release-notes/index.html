@@ -234,7 +234,8 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#version-1-70-1-8-1-2019">Version 1.70 - 1.8.1 (2019)</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#version-1-9-0-2020">Version 1.9.0 (2020)</a></li>
+              <li><a href="#version-1-70-1-8-2-2019">Version 1.70 - 1.8.2 (2019)</a></li>
               <li><a href="#version-1-50-1-6-7-2018">Version 1.50 - 1.6.7 (2018)</a></li>
               <li><a href="#version-1-1-3-1-4-0-2017">Version 1.1.3-1.4.0 (2017)</a></li>
               <li><a href="#version-1-0-0-1-1-2-2016">Version 1.0.0-1.1.2 (2016)</a></li>
@@ -275,13 +276,94 @@ var utag_data = {
 
 <p>Below is a complete list of changes for each release of the Swift library.</p>
 
-<h2 id="version-1-70-1-8-1-2019">Version 1.70 - 1.8.1 (2019)</h2>
+<h2 id="version-1-9-0-2020">Version 1.9.0 (2020)</h2>
+
+<h4 id="version-1-9-0">Version 1.9.0</h4>
+
+<p><strong>Released:</strong> January 2020</p>
+
+<p><strong>New Features</strong></p>
+
+<ul>
+<li><p>Support for <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">Mobile Publish Settings</a><br />
+<p class="note"><strong>Mobile Publish Settings are enabled by default, and must be disabled if you don’t wish to use them.</strong></p></p>
+
+<ul>
+<li>Adds the ability to remotely change certain configuration options, such as event batch size, from the Tealium iQ Mobile Publish Settings interface.</li>
+<li>This matches the functionality already present in Tealium iOS (Objective-C) and Tealium Android libraries. <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">Learn more</a>.</li>
+</ul></li>
+
+<li><p>Swift Package Manager support. <a href="/platforms/ios-swift/install">Learn more</a>.</p></li>
+
+<li><p>Swift 5 support</p>
+
+<ul>
+<li>Support for older Swift versions has been removed. If you are unable to use Swift 5, then use Tealium Swift 1.8.2.</li>
+<li>It is no longer required to bundle the Swift runtime with your app if you are using Swift 5+. This significantly reduces the size of your app bundle by approximately 40MB.</li>
+</ul></li>
+
+<li><p>Mac Catalyst support</p>
+
+<ul>
+<li>Supports iOS apps that are enabled to run on macOS Catalina (10.15+)</li>
+</ul></li>
+
+<li><p>Lifecycle tracking methods are now available as part of the public API. <a href="https://docs.tealium.com/platforms/ios-swift/module-list/lifecycle/">Learn more</a>.</p></li>
+
+<li><p><em>Optional</em> location tracking module. <a href="/platforms/ios-swift/module-list/location">Learn more</a>.</p></li>
+
+<li><p>List of enabled modules now added to each track request. For example, <code>enabled_modules=[&quot;attribution&quot;,&quot;tagmanagement&quot;]</code>.</p></li>
+</ul>
+
+<p><strong>Low Impact Changes</strong></p>
+
+<ul>
+<li>Bug fix: Attempt to fix an un-reproducible bug in the Lifecycle module that occasionally causes crashes in low memory scenarios. <a href="https://github.com/Tealium/tealium-swift/issues/120">120</a></li>
+<li>Lifecycle auto-tracking may now be disabled. This option suppresses automatically-generated app lifecycle events. <a href="/platforms/ios-swift/api/tealium-config/">Learn more</a></li>
+<li>Removed dependency on Objective-C <code>NSError</code> for the <code>Core</code> module. Required for Swift Package Manager support. Also fixes implicit import of bridging header issue. <a href="https://github.com/Tealium/tealium-swift/issues/125">125</a></li>
+<li>Optimized <code>Tealium.update</code> method. Modules are no longer deinitialized and reinitialized when the <code>update</code> method is called to change the <code>TealiumConfig</code> settings</li>
+</ul>
+
+<p><strong>High Impact Changes</strong></p>
+
+<ul>
+<li>Setters and getters on the <code>TealiumConfig</code> class have been deprecated in favor of properties. For example, <code>config.setBatchingEnabled(true)</code> -&gt; <code>config.batchingEnabled = true</code>. Setters and getters continue to function as expected, but we recommend switching to properties to avoid compiler warnings.</li>
+<li>Added &ldquo;wifi only sending&rdquo; option, which is controllable through Mobile Publish Settings. If enabled, hits are queued unless wifi is available.</li>
+<li>Added &ldquo;battery saver&rdquo; option, which is controllable through Mobile Publish Settings. If enabled, hits are queued if low power mode is enabled, or if the device has less than 20% battery remaining</li>
+</ul>
+
+<p><strong>Known Issues</strong></p>
+
+<ul>
+<li><p>There is currently a WebKit bug, which results in spurious error messages in the LLDB console when you are debugging your app. The error is similar to the following example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#099">2020</span><span style="font-weight:bold">-</span><span style="color:#099">01</span><span style="font-weight:bold">-</span><span style="color:#099">23</span> <span style="color:#099">11</span>:<span style="color:#099">48</span>:<span style="color:#099">37.219410</span><span style="font-weight:bold">+</span><span style="color:#099">0000</span> TestApp[<span style="color:#099">853</span>:<span style="color:#099">82765</span>] [<span style="color:#999">Process</span>] kill() returned unexpected error <span style="color:#099">1</span></code></pre></div></li>
+</ul>
+
+<p>This error appears if you are using the Tag Management module, until Apple fixes the issue in the WebKit library. <a href="https://forums.developer.apple.com/thread/126930">Learn more</a>.</p>
+
+<h2 id="version-1-70-1-8-2-2019">Version 1.70 - 1.8.2 (2019)</h2>
+
+<h4 id="version-1-8-2">Version 1.8.2</h4>
+
+<p><strong>Released:</strong> December 2019</p>
+
+<p><strong>Low Impact Changes</strong></p>
+
+<ul>
+<li>Fixed thread-related Remote Commands crashes <a href="https://github.com/Tealium/tealium-swift/issues/121">121</a></li>
+<li>Reduced stored lifecycle sessions to 20 sessions to resolve low-memory related crashes <a href="https://github.com/Tealium/tealium-swift/issues/120">120</a></li>
+<li>Fixed some retain cycles that would in some cases prevent a total deinit of the <code>Tealium</code> class</li>
+<li>Added a removeInstance method to the TealiumInstanceManager to allow total deinit of <code>Tealium</code></li>
+<li>Added config option to not use the cookie observer for WKWebView <a href="https://github.com/Tealium/tealium-swift/issues/117">117</a> (<code>config.shouldAddCookieObserver = false</code>)</li>
+<li>Optimized module initialization so that <code>init</code> is only called on modules that are present in the modules list.</li>
+<li>Fixed an issue where the Tag Management completion did not receive expected details (errors/info). Related to: <a href="https://github.com/Tealium/tealium-swift/issues/118">118</a></li>
+</ul>
 
 <h4 id="version-1-8-1">Version 1.8.1</h4>
 
 <p><strong>Released:</strong> November 2019</p>
 
-<p>** Low Impact Changes**</p>
+<p><strong>Low Impact Changes</strong></p>
 
 <ul>
 <li>Fixed a bug that caused an occasional crash in the Tag Management module</li>
@@ -418,7 +500,7 @@ var utag_data = {
 <li>CocoaPods module import changed from <code>tealium_swift</code> to <code>TealiumSwift</code>.</li>
 <li>Minimum supported Swift version is now 4.0 due to Swift 3.X deprecation in Xcode 10. 1.6.4 is the last version supporting Swift versions &lt;4.0. Use this if you require support for Swift 3.2.</li>
 <li><code>Core</code>: Module responses removed from completion closure for simplicity</li>
-<li><code>TealiumConfig</code>: <code>TealiumModulesList</code> is no longer required if you are only importing the specific modules you require. It will, however, continue to function as expected if present.</li>
+<li><code>TealiumConfig</code>: <code>TealiumModulesList</code> is no longer required if you are only importing the specific modules you require. It continues to function as expected if present.</li>
 <li><code>TagManagement</code> Module: With iOS 12, a memory leak has been introduced into the <code>UIWebView</code> API. This is out of Tealium&rsquo;s control and has been logged with Apple. Rest assured, this is a small leak, and does not impact your app in any significant way, but it  shows up when profiling your app with the &ldquo;Leaks&rdquo; instrument. The leak disappears with a future iOS update, once Apple has fixed the issue. <a href="https://stackoverflow.com/questions/53187305/ios-12-memory-leak-wkwebview-and-uiwebview/53187306">Learn more</a>. If you do not need the tag management feature, you may remove the <code>TagManagement</code> module from your build to not experience this leak.</li>
 <li>Remote Commands: Add remote commands via the <code>TealiumConfig</code> instance, rather than the public API method exposed on the Tealium instance. <a href="/platforms/ios-swift/module-list/remote-commands/">Learn more</a> about the RemoteCommands module.</li>
 </ul>
@@ -513,7 +595,7 @@ var utag_data = {
 <li><p><strong>High impact changes</strong>: these are changes to previous behavior or variable names/values. Before upgrading the library, be sure to check your account setup to ensure you are not relying on the previous behavior to trigger tags/actions. Also see <a href="/platforms/ios-swift/data-layer/">List of Variables</a> for a JavaScript extension to maintain backward compatibility between releases.</p>
 
 <ul>
-<li>Removed deprecated track method with <code>TealiumTrackType</code>. Should now call trackView or trackEvent methods instead to differentiate between track call types.</li>
+<li>Removed deprecated track method with <code>TealiumTrackType</code>. Now calls <code>trackView</code> or <code>trackEvent</code> methods instead to differentiate between track call types.</li>
 <li><code>tealium_event_type</code> has been removed from all outgoing track calls, as it is now derived in Customer Data Hub Event Specs and does not need to be sent</li>
 <li>Lifecycle module changed to use same <code>NSNotifications</code> as Objective-C library (<code>UIApplicationDidBecomeActive</code> and <code>UIApplicationWillResignActive</code>). This ensures lifecycle events are captured as quickly as possible.</li>
 <li><code>device_orientation</code> has been changed to simply Portrait or Landscape (same as Objective-C library), and a new variable <code>device_orientation_full</code> has been introduced to capture the z-axis orientation such as face up or face down.</li>
@@ -1945,7 +2027,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  January 23, 2020 
+    <span>This page was last updated:  February 14, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
