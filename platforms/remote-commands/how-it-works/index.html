@@ -281,34 +281,39 @@ var utag_data = {
 <p>Use remote commands in two ways:</p>
 
 <ul>
-<li><strong>Vendor Integrations</strong> - Solutions pre-built for a vendor SDK using a native remote command module that implements the vendor API and a matching vendor tag in iQ Tag Management. <a href="/platforms/remote-commands/integrations/">Learn more</a> about Remote Commands Integrations.</li>
-<li><strong>Custom Commands</strong> - Your own custom commands defined in native code and configured in iQ Tag Management with the Custom Remote Command tag.</li>
+<li><strong>Vendor Integrations</strong><br />
+Solutions pre-built for a vendor SDK using a native remote command module that implements the vendor API and a matching vendor tag in iQ Tag Management. See the list of <a href="/platforms/remote-commands/integrations/">remote command integrations</a>.</li>
+<li><strong>Custom Commands</strong><br />
+Your own custom commands defined in native code and configured in iQ Tag Management with the Custom Remote Command tag.</li>
 </ul>
 
 <h2 id="introduction">Introduction</h2>
 
-<p>Remote Commands (also known as Custom Remote Command/Dynamic Triggers) provide the ability to trigger native code blocks from within the iQ non-rendered web view. For this reason, Remote Commands are available if you have implemented or explicitly enabled the Tag Management feature/module in your app, since iQ cannot execute arbitrary code on the device.</p>
+<p>Remote commands provide the ability to trigger native code blocks from the non-rendered web view when using Tag Management in your app. This is used for cases where data held inside the non-rendered web view needs to be passed back to the native code for further processing.</p>
 
-<p>This feature is primarily used for cases where data held inside the non-rendered web view needs to be passed back to the native code for further processing. For example, you may need to access a value stored in a cookie or localStorage inside the iQ web view. Another use for this feature would be to personalize parts of your app, for example, you may wish to trigger a survey in the app once the user has been through a particular journey, such as making a purchase.</p>
+<p>For example, you may need to access a value stored in a cookie or <code>localStorage</code> inside the non-rendered web view or want to personalize parts of your app, such as launching a survey after the user has made a purchase.</p>
 
-<p>The flow for this particular example would be:</p>
+<p>The steps to configure a post-purchase survey would be:</p>
 
 <ol>
-<li>Create some generic native code capable of triggering a local notification on the device, which prompts the user to take a survey.</li>
-<li>Register this block of code as a Remote Command with the Tealium API.</li>
-<li>In iQ, create a new &ldquo;Custom Remote Command&rdquo; tag, and make sure the command ID matches the command ID you used to register the command in the native code.</li>
-<li>Mappings can be set up to pass specific data variables back to the app. For example, you might wish to pass a customized survey message back to the app such as &ldquo;Thank you for making a purchase. Would you mind taking a short survey?&rdquo;. You might also pass back a specific URL to open when the user clicks the notification, so that you can pass the user through to a specific web-hosted survey using your survey tool of choice.</li>
-<li>In the app, the native code will look for specific variables passed back in the response such as <code>survey_url</code> and <code>survey_title</code>, display the message in the notification, and launch a web view or the native browser when the user clicks the notification.</li>
-<li>If you wish to change the survey URL, or the message displayed to the user, you can now control this through iQ extensions, without needing to re-deploy your app. You can also disable the survey at-will, or change the trigger that leads to the survey being displayed. For example, display on the home screen instead of the order confirmation screen.</li>
+<li>Create native code capable of prompting the user to take a survey where the message and URL to the survey are passed as method parameters (these will come from the non-rendered web view).</li>
+<li>Register this block of code as a remote command with the Tealium API.</li>
+<li>In iQ Tag Management, add the Custom Remote Command tag and set the command ID to the same command registered in the native code.</li>
+<li>Set data mappings to pass specific variables back to the app, such as <code>survey_title</code> or <code>survey_url</code>.</li>
+<li>In the native code, use those variables passed back in the response payload to display the survey to the user.</li>
 </ol>
+
+<p>You can now control the survey title, URL, and logic using extensions in iQ Tag Management without needing to re-deploy your app.</p>
 
 <h2 id="components">Components</h2>
 
-<p>A remote command is structured similarly to a tracked event: it has a command name and a payload of data.</p>
+<p>A remote command has a command name and a payload of data.</p>
 
 <ul>
-<li><strong>command</strong>: the name of the command, or &ldquo;command ID&rdquo;, registered with native code in your app and with a tag in iQ.</li>
-<li><strong>payload</strong>: the data passed from the tag to the native app, configured as data mappings and received in the app as a <code>requestPayload</code> object in the response callback of the handler.</li>
+<li><strong>Command</strong><br />
+The name of the command, or command ID, registered with native code in your app and with a tag in iQ Tag Management.</li>
+<li><strong>Payload</strong><br />
+The data passed from the tag to the native app, configured as data mappings in iQ Tag Management, and received in the app as a <code>requestPayload</code> object in the response callback of the handler.</li>
 </ul>
 
 <p class="note">Remote commands must be defined in your native app at build time. The remote command tag only executes code that is already defined on the device.</p>
@@ -389,7 +394,7 @@ pod &quot;TealiumVendorXYZ&quot;
 
 <p>A remote command tag for the vendor integration is offered in iQ Tag Management. Use this tag just like a regular website tag. Each remote command tag offers event mappings for the vendor&rsquo;s SDK methods, which are defined as remote commands in the app module.</p>
 
-<p><a href="/platforms/remote-commands/integrations/">List of remote command vendor integrations.</a></p>
+<p><a href="/platforms/remote-commands/integrations/">List of remote command vendor integrations</a>.</p>
 
 </div>
 
@@ -1493,7 +1498,7 @@ pod &quot;TealiumVendorXYZ&quot;
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  January 23, 2020 
+    <span>This page was last updated:  February 19, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

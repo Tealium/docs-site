@@ -245,6 +245,7 @@ var utag_data = {
               <ul class="toc-h3"><li><a href="#launchdetected">launchDetected()</a></li>
               <li><a href="#wakedetected">wakeDetected()</a></li>
               <li><a href="#sleepdetected">sleepDetected()</a></li>
+              <li><a href="#dictionary">dictionary</a></li>
               </nav>
   </aside></div>
 
@@ -527,8 +528,7 @@ var utag_data = {
 <p>Updates lifecycle records with a launch event and trigger a lifecycle event dispatch.</p>
 
 <pre><code>func someMethodCalledAtLaunchTime {
-    // Presuming 'tealium' was initialized earlier
-    tealium.lifecycle().launchDetected()
+    tealium?.lifecycle()?.launchDetected()
 
 }
 </code></pre>
@@ -538,8 +538,7 @@ var utag_data = {
 <p>Updates lifecycle records with a wake event and trigger a lifecycle event dispatch.</p>
 
 <pre><code>func someMethodCalledWhenAppStarts {
-    // Presuming 'tealium' was initialized earlier
-    tealium.lifecycle().wakeDetected()
+    tealium?.lifecycle()?.wakeDetected()
 
 }
 </code></pre>
@@ -551,9 +550,16 @@ var utag_data = {
 <p>Update lifecycle records with a sleep event and trigger a lifecycle event dispatch.</p>
 
 <pre><code>func someMethodCalledBeforeAppTerminated {
-    // Presuming 'tealium' was initialized earlier
-    tealium.lifecycle().sleepDetected()
+    tealium?.lifecycle()?.sleepDetected()
 }
+</code></pre>
+
+<h3 id="dictionary"><code>dictionary</code></h3>
+
+<p>Property that provides read-only access to the lifecycle data as a <code>[String: Any]</code> dictionary.</p>
+
+<pre><code>// retrieves the total wake count from the lifecycle data dictionary
+let wakeCount = tealium?.lifecycle()?.dictionary?[&quot;lifecycle_totalwakecount&quot;]
 </code></pre>
 
 </div>
@@ -1681,7 +1687,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  November 22, 2019 
+    <span>This page was last updated:  February 18, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

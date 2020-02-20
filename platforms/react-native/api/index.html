@@ -235,7 +235,9 @@ var utag_data = {
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#class-tealium">Class: Tealium</a></li>
-              <ul class="toc-h3"><li><a href="#getpersistentdata">getPersistentData()</a></li>
+              <ul class="toc-h3"><li><a href="#addremotecommand">addRemoteCommand()</a></li>
+              <li><a href="#addremotecommandforinstancename">addRemoteCommandForInstanceName()</a></li>
+              <li><a href="#getpersistentdata">getPersistentData()</a></li>
               <li><a href="#getpersistentdataforinstancename">getPersistentDataForInstanceName()</a></li>
               <li><a href="#getuserconsentcategories">getUserConsentCategories()</a></li>
               <li><a href="#getuserconsentcatgoriesforinstancename">getUserConsentCatgoriesForInstanceName()</a></li>
@@ -252,6 +254,8 @@ var utag_data = {
               <li><a href="#isconsentloggingenabledforinstancename">isConsentLoggingEnabledForInstanceName()</a></li>
               <li><a href="#removepersistentdata">removePersistentData()</a></li>
               <li><a href="#removepersistentdataforinstancename">removePersistentDataForInstanceName()</a></li>
+              <li><a href="#removeremotecommand">removeRemoteCommand()</a></li>
+              <li><a href="#removeremotecommandforinstancename">removeRemoteCommandForInstanceName()</a></li>
               <li><a href="#removevolatiledata">removeVolatileData()</a></li>
               <li><a href="#removevolatiledataforinstancename">removeVolatileDataForInstanceName()</a></li>
               <li><a href="#resetuserconsentpreferences">resetUserConsentPreferences()</a></li>
@@ -318,6 +322,16 @@ var utag_data = {
 </thead>
 
 <tbody>
+<tr>
+<td><code>addRemoteCommand()</code></td>
+<td>Adds a remote command to the remote command manager</td>
+</tr>
+
+<tr>
+<td><code>addRemoteCommandForInstance()</code></td>
+<td>Adds a remote command to the remote command manager, for a specific Tealium instance</td>
+</tr>
+
 <tr>
 <td><code>getPersistentData()</code></td>
 <td>Gets the value for a specific key</td>
@@ -401,6 +415,16 @@ var utag_data = {
 <tr>
 <td><code>removePersistentDataForInstanceName()</code></td>
 <td>Remove persistent data that has been previously set using <code>setPersistentData()</code> for a specific Tealium instance</td>
+</tr>
+
+<tr>
+<td><code>removeRemoteCommand()</code></td>
+<td>Removes a remote command from the remote command manager</td>
+</tr>
+
+<tr>
+<td><code>removeRemoteCommandForInstanceName()</code></td>
+<td>Removes a remote command from the remote command manager, for a specific Tealium instance</td>
 </tr>
 
 <tr>
@@ -495,6 +519,111 @@ var utag_data = {
 </tbody>
 </table>
 
+<h3 id="addremotecommand"><code>addRemoteCommand()</code></h3>
+
+<p>Adds a remote command to the remote command manager.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">addRemoteCommand(commandID, description, callback);
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>commandID</code></td>
+<td><code>String</code></td>
+<td>Name of the command ID from the tag configuration</td>
+<td><code>&quot;test_command&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>description</code></td>
+<td><code>String</code></td>
+<td>Description of the remote command</td>
+<td><code>&quot;Firebase remote command&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>callback</code></td>
+<td><code>Function</code></td>
+<td>A callback function to execute once the response is received from the remote command. The callback returns a payload of key-value pairs from the tag mappings.</td>
+<td>(see example)</td>
+</tr>
+</tbody>
+</table>
+
+<p>Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.addRemoteCommand(<span style="color:#b84">&#34;firebase&#34;</span>, <span style="color:#b84">&#34;Firebase remote command&#34;</span>, <span style="font-weight:bold">function</span>(payload) {
+
+  <span style="font-weight:bold">var</span> eventName <span style="font-weight:bold">=</span> payload[<span style="color:#b84">&#34;firebase_event_name&#34;</span>];
+  <span style="font-weight:bold">var</span> eventProperties <span style="font-weight:bold">=</span> payload[<span style="color:#b84">&#34;firebase_event_properties&#34;</span>];
+
+  analytics.logEvent(eventName, eventProperties);
+});
+</code></pre></div>
+<h3 id="addremotecommandforinstancename"><code>addRemoteCommandForInstanceName()</code></h3>
+
+<p>Adds a remote command to the remote command manager, for a specific Tealium instance.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">addRemoteCommandForInstanceName(instanceName, commandID, description, callback);
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>instanceName</code></td>
+<td><code>String</code></td>
+<td>Name of the Tealium instance</td>
+<td><code>&quot;instance-2&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>commandID</code></td>
+<td><code>String</code></td>
+<td>Name of the command ID from the tag configuration</td>
+<td><code>&quot;test_command&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>description</code></td>
+<td><code>String</code></td>
+<td>Description of the remote command</td>
+<td><code>&quot;Firebase remote command&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>callback</code></td>
+<td><code>Function</code></td>
+<td>A callback function to execute once the response is received from the remote command. The callback returns a payload of key-value pairs from the tag mappings.</td>
+<td>(see example)</td>
+</tr>
+</tbody>
+</table>
+
+<p>Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.addRemoteCommand(<span style="color:#b84">&#34;instance-2&#34;</span>, <span style="color:#b84">&#34;survey&#34;</span>, <span style="color:#b84">&#34;Display feedback survey&#34;</span>, <span style="font-weight:bold">function</span>(payload) {
+
+	<span style="font-weight:bold">var</span> title <span style="font-weight:bold">=</span> payload[<span style="color:#b84">&#34;survey_title&#34;</span>];
+	<span style="font-weight:bold">var</span> question <span style="font-weight:bold">=</span> payload[<span style="color:#b84">&#34;survey_question&#34;</span>];
+
+	Alert.alert(title, question, [{text<span style="font-weight:bold">:</span> <span style="color:#b84">&#39;Yes&#39;</span>, onPress<span style="font-weight:bold">:</span> () =&gt; surveyHandler()},
+								  {text<span style="font-weight:bold">:</span> <span style="color:#b84">&#39;No&#39;</span>, onPress<span style="font-weight:bold">:</span> () =&gt; surveyHandler()}]);
+
+});
+</code></pre></div>
 <h3 id="getpersistentdata"><code>getPersistentData()</code></h3>
 
 <p>Gets the value for a specific key.</p>
@@ -1174,6 +1303,69 @@ var utag_data = {
 </tbody>
 </table>
 
+<h3 id="removeremotecommand"><code>removeRemoteCommand()</code></h3>
+
+<p>Removes a remote command from the remote command manager.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">removeRemoteCommand(commandID);
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>commandID</code></td>
+<td><code>String</code></td>
+<td>Name of the command ID to remove</td>
+<td><code>&quot;test_command&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.removeRemoteCommand(<span style="color:#b84">&#34;firebase&#34;</span>);
+</code></pre></div>
+<h3 id="removeremotecommandforinstancename"><code>removeRemoteCommandForInstanceName()</code></h3>
+
+<p>Removes a remote command from the remote command manager, for a specific Tealium instance.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">removeRemoteCommandForInstanceName(instanceName, commandID);
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>instanceName</code></td>
+<td><code>String</code></td>
+<td>Name of the Tealium instance</td>
+<td><code>&quot;instance-2&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>commandID</code></td>
+<td><code>String</code></td>
+<td>Name of the command ID to remove</td>
+<td><code>&quot;test_command&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.removeRemoteCommand(<span style="color:#b84">&#34;instance-2&#34;</span>, <span style="color:#b84">&#34;firebase&#34;</span>);
+</code></pre></div>
 <h3 id="removevolatiledata"><code>removeVolatileData()</code></h3>
 
 <p>Remove volatile data that has been previously set using <code>Tealium.setVolatileData()</code>.</p>
@@ -2875,7 +3067,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  January 23, 2020 
+    <span>This page was last updated:  February 19, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

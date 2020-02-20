@@ -268,6 +268,8 @@ var utag_data = {
               <li><a href="#shoulduseremotepublishsettings">shouldUseRemotePublishSettings</a></li>
               <li><a href="#tagmanagementoverrideurl">tagManagementOverrideURL</a></li>
               <li><a href="#tealiumconfig">TealiumConfig()</a></li>
+              <li><a href="#updatedistance">updateDistance</a></li>
+              <li><a href="#usehighaccuracy">useHighAccuracy</a></li>
               </nav>
   </aside></div>
 
@@ -483,12 +485,12 @@ var utag_data = {
 
 <tr>
 <td><code>updateDistance</code></td>
-<td>Sets the distance interval, in meters, at which the location data updates</td>
+<td>Sets the distance interval (meters) in which the location updates are received</td>
 </tr>
 
 <tr>
 <td><code>useHighAccuracy</code></td>
-<td>Set the location precision to high accuracy</td>
+<td>Sets the location precision to low accuracy (default) or high accuracy</td>
 </tr>
 </tbody>
 </table>
@@ -835,6 +837,84 @@ config.tagManagementOverrideURL =  url</code></pre></div>
 </tbody>
 </table>
 
+<h3 id="updatedistance"><code>updateDistance</code></h3>
+
+<p>Sets the distance interval (meters) in which location updates are received.</p>
+
+<p class="note">Only use this method if <code>useHighAccuracy</code> is set to <code>true</code>.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.updateDistance = &lt;<span style="color:#999">Double</span>&gt;</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>Double</code></td>
+<td>The distance interval (meters) in which location updates are received</td>
+<td><code>150.0</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Usage example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">start</span>() {
+      <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+                                 profile: <span style="color:#b84">&#34;NAME&#34;</span>,
+                                 environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
+                                 datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
+                                 optionalData: <span style="font-weight:bold">nil</span>)
+      <span style="color:#998;font-style:italic">// Tealium Location module config methods</span>
+      config.useHighAccuracy = <span style="font-weight:bold">true</span>
+      config.updateDistance = <span style="color:#099">150.0</span>
+  }</code></pre></div>
+<h3 id="usehighaccuracy"><code>useHighAccuracy</code></h3>
+
+<p>Sets the location precision to low accuracy (default) or high accuracy.</p>
+
+<p>The property is disabled (<code>false</code>) by default, which sets the location precision to low accuracy.  If the location enabled device moves 500 meters or more, then this is considered a significant location changes causing a location update. Location updates typically take longer than five minutes with this setting.</p>
+
+<p>Learn more about <a href="https://developer.apple.com/documentation/corelocation/getting_the_user_s_location/using_the_significant-change_location_service">Apple&rsquo;s significant-change location service</a>.</p>
+
+<p>If enabled (<code>true</code>), the property sets the location of data precision to the highest possible accuracy. The initial event is delivered as quickly as possible and then continues to determine the location and delivers additional events, as necessary, when that data is available.</p>
+
+<p>Learn more about <a href="https://developer.apple.com/documentation/corelocation/cllocationmanager/1423836-desiredaccuracy?language=swift">Apple&rsquo;s accuracy of location data</a>.</p>
+
+<p>Using high accuracy results in greater battery consumption for your device than low accuracy, due to more frequent location updates.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.useHighAccuracy = &lt;<span style="color:#999">Bool</span>&gt;</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>Boolean</code></td>
+<td>Sets the location data accuracy</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Usage example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">start</span>() {
+      <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+                                 profile: <span style="color:#b84">&#34;NAME&#34;</span>,
+                                 environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
+                                 datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
+                                 optionalData: <span style="font-weight:bold">nil</span>)
+      <span style="color:#998;font-style:italic">// Tealium Location module config methods</span>
+      config.useHighAccuracy = <span style="font-weight:bold">true</span>
+      config.updateDistance = <span style="color:#099">150.0</span>
+  }</code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -1948,7 +2028,7 @@ config.tagManagementOverrideURL =  url</code></pre></div>
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  February 14, 2020 
+    <span>This page was last updated:  February 20, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
