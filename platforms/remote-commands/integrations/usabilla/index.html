@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Integrations | Tealium Developer Docs</title>
+    <title>Remote Command: Usabilla | Integrations |Tealium Developer Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -224,12 +224,767 @@ var utag_data = {
     
     <main role="main" class="content-with-sidebar pb7 pb0-ns">
       
-  
-  
-  <div class="w-100 ph4 pb5 pb6-ns pt1 pt4-ns">
+  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
+    <div class="flex-l">
 
-  <div class="flex">
-    <div class="order-0 dn db-l w-20 sticky-l">
+      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
+              <li><a href="#how-it-works">How It Works</a></li>
+              <li><a href="#install">Install</a></li>
+              <ul class="toc-h3"><li><a href="#dependency-manager">Dependency Manager</a></li>
+              <li><a href="#manual-ios">Manual (iOS)</a></li>
+              </ul><li><a href="#initialize">Initialize</a></li>
+              <li><a href="#track">Track</a></li>
+              <li><a href="#supported-methods">Supported Methods</a></li>
+              <ul class="toc-h3"><li><a href="#sdk-setup">SDK Setup</a></li>
+              <li><a href="#targeting-options">Targeting Options</a></li>
+              <li><a href="#set-custom-variables">Set Custom Variables</a></li>
+              <li><a href="#forms">Forms</a></li>
+              </nav>
+  </aside></div>
+
+      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
+        <div class="documentation-copy center measure-wide-l">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
+  
+    
+      <a href="/platforms/remote-commands/integrations" class="f6 fw8 mb0 link mid-gray dim mr3">
+        REMOTE COMMANDS/INTEGRATIONS
+      </a>
+    
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Remote Command: Usabilla</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy">
+      Tealium remote command integration for Usabilla on Android and Swift/iOS.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+<li>Usabilla app ID</li>
+<li>Usabilla form ID</li>
+<li><a href="/platforms/android-java/install/">Tealium for Android</a> or <a href="/platforms/ios-swift/install/">Tealium for iOS</a> in your app</li>
+<li>Usabilla remote command tag in iQ Tag Management</li>
+</ul>
+
+<h2 id="how-it-works">How It Works</h2>
+
+<p>The Usabilla integration uses the native <a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk">Usabilla SDK</a>, the Tealium Usabilla remote command module that wraps Usabilla methods, and the Usabilla remote commands tag that translates event tracking into native Usabilla calls. This solution leverages the convenience of tag management to configure a native Usabilla implementation without having to add vendor-specific code to your app.</p>
+
+<p>There is no need to install the Usabilla SDK separately. Adding the Usabilla remote command module to your app build automatically installs and builds the required Usabilla libraries.  If you previously added Usabilla to your app, remove it.</p>
+
+<h2 id="install">Install</h2>
+
+<h3 id="dependency-manager">Dependency Manager</h3>
+
+<p>We recommend using one of the following dependency managers for installation:</p>
+
+<p class="note">If you are using the <code>TealiumIOS</code> (Objective-C) library, use the manual installation method. The CocoaPods and Carthage options are only available if you are using the <code>TealiumSwift</code> library.</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+
+<div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
+  <p>To install Usabilla remote commands for iOS using CocoaPods:</p>
+
+<ol>
+<li><p>Remove <code>tealium-swift</code> and <code>pod &quot;Usabilla&quot;</code> if they already exist your Podfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumUsabilla</code> framework.</p></li>
+
+<li><p>Add the following dependency to your Podfile:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">pod <span style="color:#b84">&#34;TealiumUsabilla&#34;</span></code></pre></div>
+<p>The <code>TealiumUsabilla</code> pod includes the following <code>TealiumSwift</code> dependencies:</p>
+
+<pre><code>'tealium-swift/Core'
+'tealium-swift/TealiumDelegate'
+'tealium-swift/TealiumRemoteCommands'
+'tealium-swift/TealiumTagManagement'
+</code></pre></li>
+
+<li><p>Add any other required modules manually to your Podfile, such as the following:</p>
+
+<pre><code>'tealium-swift/TealiumLogger'
+'tealium-swift/TealiumLifecycle'
+'tealium-swift/TealiumAppData'
+</code></pre>
+
+<p>Learn more about the <a href="https://docs.tealium.com/platforms/ios-swift/modules/">recommended modules for iOS</a>.</p></li>
+
+<li><p>Import the modules <code>TealiumSwift</code> and <code>TealiumUsabilla</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class or the Usabilla remote command.</p></li>
+</ol>
+
+</div>
+
+<div class="tab-pane" data-lang="Carthage" title="Carthage">
+  <p>To install Usabilla remote commands for iOS using Carthage:</p>
+
+<ol>
+<li><p>Remove <code>tealium-swift</code> from your Cartfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumUsabilla</code> framework.</p></li>
+
+<li><p>Remove the following line if it exists in your Cartfile:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">github <span style="color:#b84">&#34;usabilla/usabilla-u4a-ios-swift-sdk&#34;</span></code></pre></div></li>
+
+<li><p>Add the following dependency to your Cartfile:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">github <span style="color:#b84">&#34;tealium/tealium-ios-usabilla-remote-command&#34;</span></code></pre></div></li>
+</ol>
+
+<p class="note">Tealium for Swift SDK (version 1.6.5+) requires the <code>TealiumDelegate</code> module to be included with your installation.</p>
+
+</div>
+
+<div class="tab-pane" data-lang="Maven" title="Maven">
+  <p>To install Usabilla remote commands for Android using Maven:</p>
+
+<ol>
+<li><p>Add the following reference in your <code>build.gradle</code> file:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
+  implementation <span style="color:#b84">&#39;com.tealium.remotecommands:usabilla:1.0.0&#39;</span>
+<span style="font-weight:bold">}</span></code></pre></div></li>
+</ol>
+
+</div>
+
+<p></div>
+</div></p>
+
+<h3 id="manual-ios">Manual (iOS)</h3>
+
+<p>The manually installation for Usabilla remote commands requires one of the following iOS libraries to be installed:</p>
+
+<ul>
+<li><a href="https://docs.tealium.com/platforms/ios-swift/">Tealium for Swift</a></li>
+<li><a href="https://docs.tealium.com/platforms/ios-objective-c/">Tealium for Objective-C</a></li>
+</ul>
+
+<p>To install the Usabilla remote commands for your iOS project:</p>
+
+<ol>
+<li><p>Install the <a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk">Usabilla SDK</a>, if you haven&rsquo;t already done so.</p></li>
+
+<li><p>Clone the <a href="https://github.com/tealium/tealium-ios-usabilla-remote-command">Tealium iOS Usabilla remote command</a> repo and drag the files within the <code>Sources</code> folder into your project.</p></li>
+
+<li><p>Update the completion handler, when initializing the Tealium SDK, as follows:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium = Tealium(config: config) { responses <span style="font-weight:bold">in</span>
+  <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands() <span style="font-weight:bold">else</span> {
+      <span style="font-weight:bold">return</span>
+  }
+  <span style="font-weight:bold">let</span> <span style="color:#008080">usabillaCommand</span> = UsabillaCommand()
+  <span style="font-weight:bold">let</span> <span style="color:#008080">usabillaRemoteCommand</span> = usabillaCommand.remoteCommand()
+  remoteCommands.add(usabillaRemoteCommand)
+}</code></pre></div></li>
+
+<li><p>Add the remote command for Swift or Objective-C:</p></li>
+</ol>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="Swift" title="Swift">
+  <p>Add the remote command in the <code>TealiumHelper.swift</code> file as follows:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">usabillaCommand</span> = UsabillaCommand()
+<span style="font-weight:bold">let</span> <span style="color:#008080">usabillaRemoteCommand</span> = usabillaCommand.remoteCommand()
+tealium.addRemoteCommandID(
+         <span style="color:#b84">&#34;usabilla&#34;</span>,
+         description: <span style="font-weight:bold">nil</span>,
+         targetQueue: DispatchQueue.main,
+         responseBlock: usabillaRemoteCommand)</code></pre></div>
+</div>
+
+<div class="tab-pane" data-lang="Objective-C" title="Objective-C">
+  <p>Import the remote command in the <code>TealiumHelper.m</code> file as follows:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">#<span style="font-weight:bold">import</span> <span style="color:#b84">&#34;TealiumRemoteCommandObjcApp-Swift.h&#34;</span></code></pre></div>
+<p class="note">The Swift bridging header for your target is named <code>-Swift.h</code>. Find this by filtering for &ldquo;Module Name&rdquo; in your target&rsquo;s build settings.</p>
+
+<p>Because there are delegate methods, create a new Swift file to handle your form. See the <a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#integration-with-obj-c-applications">Usabilla guildelines</a> for using these delegate methods in an Objective-C app.</p>
+
+<p>Explore the <a href="https://github.com/Tealium/tealium-ios-usabilla-remote-command/blob/master/Objective-C/SwiftBridge.swift"><code>SwiftBridge.swift</code></a> file to see an example. Learn more in the <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_swift_into_objective-c">Apple Developer Documentation: Importing Swift Into Objective-C</a>.</p>
+
+<p>Initialize the remote command as follows:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Objective-C" data-lang="Objective-C">UsabillaTracker <span style="font-weight:bold">*</span>usabillaTracker <span style="font-weight:bold">=</span> [[UsabillaTracker alloc] init];
+UsabillaCommand <span style="font-weight:bold">*</span>usabillaCommand <span style="font-weight:bold">=</span> [[UsabillaCommand alloc] initWithUsabillaTracker:usabillaTracker];
+TEALRemoteCommandResponseBlock usabillaRemoteCommand <span style="font-weight:bold">=</span> [usabillaCommand remoteCommand];
+[[Tealium instanceForKey:<span style="color:#b84">@&#34;MY_INSTANCE&#34;</span>] addRemoteCommandID:<span style="color:#b84">@&#34;usabilla&#34;</span>
+        description:<span style="color:#b84">@&#34;Usabilla Remote Command&#34;</span>
+        targetQueue:dispatch_get_main_queue()
+        responseBlock: usabillaRemoteCommand];</code></pre></div>
+</div>
+
+<p></div>
+</div></p>
+
+<h2 id="initialize">Initialize</h2>
+
+<p>To initialize the Usabilla remote command:</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="Android" title="Android">
+  <p>The following example creates a Tealium instance and then registers the Usabilla remote command for Android:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.<span style="color:#008080">Config</span> <span style="color:#900;font-weight:bold">config</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">Config</span>.<span style="color:#008080">create</span>(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>);
+Tealium <span style="color:#900;font-weight:bold">teal</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">createInstance</span>(TEALIUM_MAIN, config);
+
+RemoteCommand <span style="color:#900;font-weight:bold">usabilla</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> UsabillaRemoteCommand(TEALIUM_MAIN, config);
+teal.<span style="color:#008080">addRemoteCommand</span>(usabilla);</code></pre></div>
+<p>Additional (optional) <a href="https://github.com/usabilla/usabilla-u4a-android-sdk#initialization">initialization parameters</a> are available for the Usabilla SDK:</p>
+
+<ul>
+<li><code>usabillaHttpClient = null</code><br />
+Overrides the <code>HttpClient</code> object, which gives the possibility to inject a custom client to handle all the connections performed by the SDK. Learn more about the <a href="https://github.com/usabilla/usabilla-u4a-android-sdk#custom-http-client">custom HTTP client</a>.</li>
+<li><code>usabillaReadyCallback = null</code><br />
+Overrides the <code>UsabillaReadyCallback</code> object, which is a callback used to communicate when the initialization process ends.</li>
+<li><code>autoFragmentManager = false</code><br />
+Disables <a href="https://github.com/usabilla/usabilla-u4a-android-sdk#passive-feedback">passive feedback</a> (enabled by default). Passive feedback requires Android&rsquo;s <code>FragmentManager</code> to be kept up-to-date and monitored using <code>android.app.Application.ActivityLifecycleCallbacks</code>.</li>
+<li><code>autoFeedbackHandler = false</code><br />
+Disables handling of event tracking for passive and <a href="https://github.com/usabilla/usabilla-u4a-android-sdk#campaigns">campaign</a> feedback forms as well as auto-removing forms that have been submitted or dismissed (enabled by default). Two <code>android.content.BroadcastReceiver</code>s are registered to listen for Usabilla events that handle both passive and campaign <a href="https://github.com/usabilla/usabilla-u4a-android-sdk#feedback-submission-callback">feedback form closures</a>.</li>
+</ul>
+
+<p>The following example shows usage of the optional parameters:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">RemoteCommand <span style="color:#900;font-weight:bold">usabilla</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> UsabillaRemoteCommand(TEALIUM_MAIN, config,
+        usabillaHttpClient <span style="font-weight:bold">=</span> <span style="font-weight:bold">null</span>,
+        usabillaReadyCallback <span style="font-weight:bold">=</span> <span style="font-weight:bold">null</span>,
+        autoFragmentManager <span style="font-weight:bold">=</span> <span style="font-weight:bold">false</span>,
+        autoFeedbackHandler <span style="font-weight:bold">=</span> <span style="font-weight:bold">false</span>);</code></pre></div>
+</div>
+
+<div class="tab-pane" data-lang="Swift" title="Swift">
+  <p>The following example creates a Tealium instance and then registers the Usabilla remote command for Swift:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">teal</span> : Tealium?
+<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(
+       account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+       profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
+       environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
+       datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
+       optionalData: <span style="font-weight:bold">nil</span>)
+
+teal = Tealium(config: config) { responses <span style="font-weight:bold">in</span>
+  <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands() <span style="font-weight:bold">else</span> {
+        <span style="font-weight:bold">return</span>
+  }
+  <span style="font-weight:bold">let</span> <span style="color:#008080">usabillaCommand</span> = UsabillaCommand()
+  <span style="font-weight:bold">let</span> <span style="color:#008080">usabillaRemoteCommand</span> = usabillaCommand.remoteCommand()
+  remoteCommands.add(usabillaRemoteCommand)
+}</code></pre></div>
+</div>
+
+<div class="tab-pane" data-lang="Objective-C" title="Objective-C">
+  <p>The following example creates a Tealium instance and then registers the Usabilla remote command for Objective-C:</p>
+
+<p class="note">The code is written in Swift and requires a Bridging Header in your Xcode project for this to work correctly.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">let config <span style="font-weight:bold">=</span> TEALConfiguration(
+       account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+       profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
+       environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
+       datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
+let teal <span style="font-weight:bold">=</span> Tealium.newInstance(forKey: <span style="color:#b84">&#34;teal&#34;</span>, configuration: config)
+
+let usabillaCommand <span style="font-weight:bold">=</span> UsabillaCommand()
+let usabillaRemoteCommand <span style="font-weight:bold">=</span> usabillaCommand.remoteCommand()
+teal.addRemoteCommandID(<span style="color:#b84">&#34;usabilla&#34;</span>, description: <span style="color:#999">nil</span>, targetQueue: DispatchQueue.main, responseBlock: usabillaRemoteCommand)</code></pre></div>
+</div>
+
+<p></div>
+</div></p>
+
+<h2 id="track">Track</h2>
+
+<p>Events are tracked automatically for successful and unsuccessful form loads, as well as both passive and campaign feedback forms.</p>
+
+<h2 id="supported-methods">Supported Methods</h2>
+
+<p>Usabilla methods or properties are triggered using a data mapping in the Usabilla remote command tag, by using the following Tealium commands:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Remote Command</th>
+<th align="left">Usabilla Method/Property</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>initialize</code></td>
+<td align="left"><code>initialize()</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>sendevent</code></td>
+<td align="left"><code>sendEvent()</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>debugenabled</code></td>
+<td align="left"><code>debugEnabled</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>displaycampaigns</code></td>
+<td align="left"><code>canDisplayCampaigns</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>loadfeedbackform</code></td>
+<td align="left"><code>loadFeedbackForm()</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>preloadfeedbackforms</code></td>
+<td align="left"><code>preloadFeedbackForms()</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>removecachedforms</code></td>
+<td align="left"><code>removeCachedForms()</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>dismissautomatically</code></td>
+<td align="left"><code>dismissAutomatically</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>setcustomvariable</code></td>
+<td align="left"><code>customVariables</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>resetcampaigndata</code></td>
+<td align="left"><code>resetCampaignData()</code></td>
+</tr>
+</tbody>
+</table>
+
+<p class="tip">Since the Usabilla SDK is integrated with the Tealium SDK, you may trigger any native Usabilla functionality given the corresponding tag configuration.</p>
+
+<h3 id="sdk-setup">SDK Setup</h3>
+
+<h4 id="initialize-1">Initialize</h4>
+
+<p>The Usabilla SDK is initialized automatically upon launch. The Usabilla API key is set in the tag configuration.</p>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Usabilla Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>initialize</code></td>
+<td><code>initialize()</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Usabilla Developer Guide: Initial SDK Setup</p>
+
+<ul>
+<li><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#initialization">iOS</a></li>
+<li><a href="https://github.com/usabilla/usabilla-u4a-android-sdk#initialization">Android</a></li>
+</ul>
+
+<h4 id="debug">Debug</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Usabilla Property</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>debugenabled</code></td>
+<td><code>debugEnabled</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>debugEnabled</code> (required)</td>
+<td>Bool</td>
+</tr>
+</tbody>
+</table>
+
+<p>Usabilla Developer Guide: Initial SDK Setup</p>
+
+<ul>
+<li><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#debugmode">iOS</a><br /></li>
+<li><a href="https://github.com/usabilla/usabilla-u4a-android-sdk#debug-mode">Android</a></li>
+</ul>
+
+<h4 id="campaign-toggling">Campaign Toggling</h4>
+
+<table>
+<thead>
+<tr>
+<th align="left">Remote Command</th>
+<th align="left">Usabilla Property</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>displaycampaigns</code></td>
+<td align="left"><code>canDisplayCampaigns</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>canDisplayCampaigns</code> (required)</td>
+<td>Bool</td>
+</tr>
+</tbody>
+</table>
+
+<p>Usabilla Developer Guide: Campaign Toggling</p>
+
+<ul>
+<li><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#campaign-toggling">iOS</a></li>
+</ul>
+
+<p class="note">Campaign toggling is not available for Android</p>
+
+<h3 id="targeting-options">Targeting Options</h3>
+
+<h4 id="send-events">Send Events</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Usabilla Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>sendevent</code></td>
+<td><code>sendEvent()</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>event</code> (required)</td>
+<td>String</td>
+</tr>
+</tbody>
+</table>
+
+<p>Usabilla Developer Guide: Targeting Options</p>
+
+<ul>
+<li><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#targeting-options">iOS</a></li>
+<li><a href="https://github.com/usabilla/usabilla-u4a-android-sdk#targeting-options">Android</a></li>
+</ul>
+
+<h3 id="set-custom-variables">Set Custom Variables</h3>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Usabilla Property</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>setcustomvariable</code></td>
+<td><code>customVariables</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>custom.###</code> (required)</td>
+<td>String</td>
+</tr>
+</tbody>
+</table>
+
+<p>Usabilla Developer Guide: Set Custom Variables</p>
+
+<ul>
+<li><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#custom-variables">iOS</a></li>
+<li><a href="https://github.com/usabilla/usabilla-u4a-android-sdk#custom-variables">Android</a></li>
+</ul>
+
+<h3 id="forms">Forms</h3>
+
+<h4 id="load-feedback-form">Load Feedback Form</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Usabilla Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>loadfeedbackform</code></td>
+<td><code>loadFeedbackForm</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>formId</code> (required)</td>
+<td>String</td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>fragmentId</code> (Android only)</td>
+<td>Integer</td>
+<td><code>R.id.activity_main</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Usabilla Developer Guide: Load Feedback Form</p>
+
+<ul>
+<li><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#loading-a-form">iOS</a></li>
+<li><a href="https://github.com/usabilla/usabilla-u4a-android-sdk#loading-a-form">Android</a></li>
+</ul>
+
+<h4 id="preload-feedback-forms">Preload Feedback Forms</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Usabilla Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>preloadfeedbackforms</code></td>
+<td><code>preloadFeedbackForms</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>formIds</code> (required)</td>
+<td>[String]</td>
+</tr>
+</tbody>
+</table>
+
+<p>Usabilla Developer Guide: Preload Feedback Forms</p>
+
+<ul>
+<li><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#preloading-a-form">iOS</a></li>
+<li><a href="https://github.com/usabilla/usabilla-u4a-android-sdk#preloading-a-form">Android</a></li>
+</ul>
+
+<h4 id="remove-cached-forms">Remove Cached Forms</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Usabilla Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>removecachedforms</code></td>
+<td><code>removeCachedForms</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Usabilla Developer Guide: Remove Cached Forms</p>
+
+<ul>
+<li><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#preloading-a-form">iOS</a></li>
+<li><a href="https://github.com/usabilla/usabilla-u4a-android-sdk#reset-passive-forms">Android</a></li>
+</ul>
+
+<h4 id="dismiss-automatically">Dismiss Automatically</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Usabilla Property</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>dismissautomatically</code></td>
+<td><code>dismissAutomatically</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>dismissAutomatically</code> (required)</td>
+<td>Bool</td>
+</tr>
+</tbody>
+</table>
+
+<p>Usabilla Developer Guide: Manual Dismiss</p>
+
+<ul>
+<li><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#handle-manual-dismiss">iOS</a></li>
+<li><a href="https://github.com/usabilla/usabilla-u4a-android-sdk#dismissing-forms">Android</a></li>
+</ul>
+
+<h4 id="reset">Reset</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Usabilla Property</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>resetcampaigndata</code></td>
+<td><code>resetCampaignData</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Usabilla Developer Guide: Resetting All Campaigns</p>
+
+<ul>
+<li><a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#resetting-all-campaigns">iOS</a></li>
+<li><a href="https://github.com/usabilla/usabilla-u4a-android-sdk#reset-campaigns-data">Android</a></li>
+</ul>
+
+</div>
+
+<b class="pv1 br2 dib tc mv3 link">
+
+	<div date-pref class="white">
+		
+			<a href="http://docs.tealium.com/platforms/remote-commands/integrations/firebase/" title="Remote Command: Firebase "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+ Remote Command: Firebase </a>
+		
+
+	</div>
+
+</b>
+<b style="position: absolute; right:0px;" class="pv1 br2 dib tc mv3 link">
+</b>
+<br>&nbsp;</br>
+
+          
+
+
+        </div>
+      </div>
+      <div class="order-0 w-20 dn db-l sticky-l">
         
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0">
@@ -1303,89 +2058,35 @@ var utag_data = {
   </ul>
 </nav>
 
-    </div>
-
-    <div class="w-100 w-80-l ph0 ph4-l">
-      <article class="w-100 nested-copy-line-height nested-links nested-img">
-        <h1 class="mid-gray f2">
-          Integrations
-        </h1>
-        <div class=" mid-gray f5 f4-l">
-          
-        </div>
-      </article>
-
-      
-
-      <div class="flex flex-wrap">
-        <section class="flex-ns flex-wrap justify-between w-100">
-          
-            <div class="relative flex-auto w-100 w-40-l mr3 mb3 bg-white ba ba-link b--moon-gray nested-copy-line-height weight-40">
-
-  <div class="mb2 pa3 pa4-l mid-gray">
-      <a href="/platforms/remote-commands/integrations/braze/" class="link primary-color dim">
-    
-
-    <div class="f3">Remote Command: Braze (Beta)</div>
-
-    <div class="lh-copy mid-gray links">
-      
-          Tealium remote command integration for Braze on Android and Swift/iOS.
-        
-    </div>
-    </a>
-
-  </div>
-</div>
-
-          
-            <div class="relative flex-auto w-100 w-40-l mr3 mb3 bg-white ba ba-link b--moon-gray nested-copy-line-height weight-50">
-
-  <div class="mb2 pa3 pa4-l mid-gray">
-      <a href="/platforms/remote-commands/integrations/firebase/" class="link primary-color dim">
-    
-
-    <div class="f3">Remote Command: Firebase</div>
-
-    <div class="lh-copy mid-gray links">
-      
-          Tealium remote command integration for Firebase on Android and Swift/iOS
-        
-    </div>
-    </a>
-
-  </div>
-</div>
-
-          
-            <div class="relative flex-auto w-100 w-40-l mr3 mb3 bg-white ba ba-link b--moon-gray nested-copy-line-height weight-0">
-
-  <div class="mb2 pa3 pa4-l mid-gray">
-      <a href="/platforms/remote-commands/integrations/usabilla/" class="link primary-color dim">
-    
-
-    <div class="f3">Remote Command: Usabilla</div>
-
-    <div class="lh-copy mid-gray links">
-      
-          Tealium remote command integration for Usabilla on Android and Swift/iOS.
-        
-    </div>
-    </a>
-
-  </div>
-</div>
-
-          
-        </section>
       </div>
 
     </div>
+  </article>
 
-  </div>
-
+  <div class="w-100 bg-light-gray">
+    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
+      <div class="feedback_form">
+  <span>
+	  <p style="display:inline">Was this article helpful?</p>
+		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
+	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
+  </span>
+	<span id="feedback_comment">
+		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
+    <span>This page was last updated:  February 27, 2020 
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+  </span>
+  <span id="feedback_thank_you" style="display: none;">
+     <em>Thank you for your feedback!</em>
+  </span>
 </div>
 
+      
+
+
+    </div>
+  </div>
 
     </main>
 

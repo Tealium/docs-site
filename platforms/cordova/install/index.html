@@ -243,6 +243,7 @@ var utag_data = {
               </ul><li><a href="#initialize">Initialize</a></li>
               <li><a href="#build-tips">Build Tips</a></li>
               <li><a href="#uninstall">Uninstall</a></li>
+              <li><a href="#ionic-framework">Ionic Framework</a></li>
               </nav>
   </aside></div>
 
@@ -373,6 +374,31 @@ cordova platform add PLATFORM</code></pre></div>
 <li><code>tealium-cordova-installreferrer</code></li>
 </ul>
 
+<h2 id="ionic-framework">Ionic Framework</h2>
+
+<p>Tealium&rsquo;s Cordova plugin provides support for the <a href="https://ionicframework.com/docs/native/tealium">Ionic Framework</a>. To install run the following commands:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ionic cordova plugin add tealium-cordova-plugin
+npm install @ionic-native/tealium</code></pre></div>
+<p>The following examples demonstrates usage of the Ionic Framework:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="font-weight:bold">import</span> { Tealium, TealConfig } from <span style="color:#b84">&#39;@ionic-native/tealium/ngx&#39;</span>;
+
+constructor(<span style="font-weight:bold">private</span> tealium<span style="font-weight:bold">:</span> Tealium) { }
+
+<span style="color:#998;font-style:italic">//...
+</span><span style="color:#998;font-style:italic"></span>
+<span style="font-weight:bold">let</span> tealConfig<span style="font-weight:bold">:</span> TealConfig <span style="font-weight:bold">=</span> {
+   account<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+   profile<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;PROFILE&#34;</span>,
+   environment<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,      <span style="color:#998;font-style:italic">// one of &#34;dev&#34;, &#34;qa&#34; or &#34;prod&#34;
+</span><span style="color:#998;font-style:italic"></span>   isLifecycleEnabled<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;true&#34;</span>,      <span style="color:#998;font-style:italic">// enable lifecycle tracking
+</span><span style="color:#998;font-style:italic"></span>   isCrashReporterEnabled<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;false&#34;</span>, <span style="color:#998;font-style:italic">// disable crash reporter (Android only)
+</span><span style="color:#998;font-style:italic"></span>   instance<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;INSTANCE&#34;</span>             <span style="color:#998;font-style:italic">// use the same instance name for all subsequent API calls
+</span><span style="color:#998;font-style:italic"></span>}
+
+<span style="font-weight:bold">this</span>.tealium.init(tealConfig).then(()=&gt;{
+   <span style="font-weight:bold">this</span>.tealium.trackView({<span style="color:#b84">&#34;screen_name&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;homescreen&#34;</span>});
+});
+</code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -1486,7 +1512,7 @@ cordova platform add PLATFORM</code></pre></div>
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  November 26, 2019 
+    <span>This page was last updated:  March 2, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
