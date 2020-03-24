@@ -567,9 +567,31 @@ config.addRemoteCommand(remoteCommand)
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.collectOverrideProfile = <span style="color:#b84">&#34;main&#34;</span></code></pre></div>
 <h3 id="collectoverrideurl"><code>collectOverrideURL</code></h3>
 
-<p>Overrides the Tealium Collect URL to send data to a different endpoint. Used to force data collection to stay within a particular region.</p>
+<p>Overrides the Tealium Collect URL to send data to a different endpoint.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.collectOverrideURL = url</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Property value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
 
-<p>The following example shows how to force the Tealium Collect base URL to EU Central.</p>
+<tbody>
+<tr>
+<td><code>url</code></td>
+<td><code>String</code></td>
+<td>The URL to override</td>
+</tr>
+</tbody>
+</table>
+
+<p>The default URL is:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">https://collect.tealiumiq.com/event/</code></pre></div>
+<p>The default URL with event batching is:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">https://collect.tealiumiq.com/bulk-event/</code></pre></div>
+<p>The method is typically used to set a custom hostname, or to set a specific region hostname. The following example sets the Tealium Collect base URL to stay within the EU Central region:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">url</span> = <span style="color:#b84">&#34;https://collect-eu-central-1.tealiumiq.com/event/&#34;</span>
 config.collectOverrideURL = url</code></pre></div>
 <h3 id="connectivityrefreshenabled"><code>connectivityRefreshEnabled</code></h3>
@@ -2028,7 +2050,7 @@ config.tagManagementOverrideURL =  url</code></pre></div>
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  February 20, 2020 
+    <span>This page was last updated:  March 23, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

@@ -243,6 +243,7 @@ var utag_data = {
               </ul><li><a href="#initialize">Initialize</a></li>
               <li><a href="#log-level">Log Level</a></li>
               <li><a href="#cookies">Cookies</a></li>
+              <li><a href="#event-batching">Event Batching</a></li>
               <li><a href="#multiprocess-apps">Multiprocess Apps</a></li>
               </nav>
   </aside></div>
@@ -402,6 +403,16 @@ var utag_data = {
 <p>This code allows the tag management <code>Webview</code> to <a href="https://developer.android.com/reference/android/webkit/CookieManager.html#acceptCookie()">accept</a> first-party, third-party, and file scheme cookies.</p>
 
 <p class="note">In versions 5.1.0+, <code>CookieManager</code> is <strong>enabled</strong> by default. In versions 5.0.4 and below, <code>CookieManager</code> is <strong>disabled</strong> by default.</p>
+
+<h2 id="event-batching">Event Batching</h2>
+
+<p>To enable event batching, go to the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">Mobile Publish Settings</a> and set the batch size to a value greater than 1. Events are dispatched when the number of events in the queue equals the batch size.</p>
+
+<p>The dispatch of events can also be triggered based on the <em>batch timeout</em> setting. This setting ensures that, when the batch size is not reached, the queue is still dispatched after an elapsed period of time.  Set the batch timeout by calling the method <a href="/platforms/android-java/api/#setsecondsbeforebatchtimeout"><code>setSecondsBeforeBatchTimeout()</code></a>.</p>
+
+<p>To override the batch size and batch timeout checks, flush the queue immediately by calling the method <a href="/platforms/android-java/api/#requestflush"><code>requestFlush()</code></a>.</p>
+
+<p class="note">If the device is offline or has the Consent Manager enabled, the flush override has no effect.</p>
 
 <h2 id="multiprocess-apps">Multiprocess Apps</h2>
 
@@ -1528,7 +1539,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  February 20, 2020 
+    <span>This page was last updated:  March 20, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

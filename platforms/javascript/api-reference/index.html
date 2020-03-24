@@ -234,7 +234,8 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h3"><li><a href="#decode">decode()</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#utag-ut">utag.ut</a></li>
+              <ul class="toc-h3"><li><a href="#decode">decode()</a></li>
               <li><a href="#encode">encode()</a></li>
               <li><a href="#flatten">flatten()</a></li>
               <li><a href="#hasown">hasOwn()</a></li>
@@ -244,6 +245,8 @@ var utag_data = {
               <li><a href="#merge">merge()</a></li>
               <li><a href="#pad">pad()</a></li>
               <li><a href="#typeof">typeOf()</a></li>
+              </ul><li><a href="#utag-loader">utag.loader</a></li>
+              <ul class="toc-h3"><li><a href="#utag-loader-sc">utag.loader.SC()</a></li>
               </nav>
   </aside></div>
 
@@ -266,7 +269,7 @@ var utag_data = {
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
     <div class="f4 fw4 lh-copy">
-      Reference guide for classes and methods provided by Tealium for JavaScript (Web).
+      Reference guide for utility functions provided by the Universal Tag (utag.js).
     </div>
   
 
@@ -278,6 +281,8 @@ var utag_data = {
 
 <div class="prose" id="prose">
   
+
+<h2 id="utag-ut"><code>utag.ut</code></h2>
 
 <p>The following <code>utag.ut</code> functions are available:</p>
 
@@ -551,7 +556,7 @@ utag.ut.hasOwn(x);          <span style="color:#998;font-style:italic">// true -
 <p>If a file is loaded as an iframe with the same ID as an existing iframe, the function removes the existing element before adding it to avoid impacting browser history and to maintain a cleaner DOM.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">utag.ut.loader(object)
 </code></pre></div>
-<p>The <code>object</code> can have the following parameters:</p>
+<p>The <code>object</code> has the following parameters:</p>
 
 <table>
 <thead>
@@ -712,6 +717,127 @@ utag.ut.merge(foo, bar, <span style="color:#099">1</span>)
 </span><span style="color:#998;font-style:italic"></span>utag.ut.typeOf(<span style="font-weight:bold">undefined</span>); <span style="color:#998;font-style:italic">// &#34;undefined&#34;
 </span><span style="color:#998;font-style:italic"></span>utag.ut.typeOf(obj.cb);    <span style="color:#998;font-style:italic">// &#34;function&#34;
 </span></code></pre></div>
+<h2 id="utag-loader"><code>utag.loader</code></h2>
+
+<h3 id="utag-loader-sc"><code>utag.loader.SC()</code></h3>
+
+<p>This function sets and deletes multi-value cookies inside the namespace <code>utag_</code>. It is commonly used to set <code>utag_main</code> subcookies to avoid adding extra cookies.</p>
+
+<p>To minimize the number of cookies on your domain, we recommended setting a multi-value cookie object. A multi-value cookie stores several values, as key-value pairs, within one cookie namespace. The function is commonly used to set utag_main</p>
+
+<p class="note">This is the same function used by the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Persist-Data-Value-Extension/ta-p/13623">Persist Data Value extension</a>.</p>
+
+<p>The following format demonstrates how to set a cookie by identifying the cookie&rsquo;s namespace, name, value, optional expiration time, and optional flag for specifying additional functionality:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">utag.loader.SC(namespace, {name<span style="font-weight:bold">:</span> value;exp<span style="font-weight:bold">-</span>expiry}, flag);
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>namespace</code></td>
+<td><code>String</code></td>
+<td>The namespace of the cookie, which must start with <code>utag_</code>.</td>
+<td><code>&quot;utag_multi&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>name:value</code></td>
+<td><code>Object</code></td>
+<td>An object of key-value pairs representing a multi-value cookie.</td>
+<td><code>{&quot;uid&quot;: &quot;012345689&quot;, &quot;aff&quot;: &quot;SiteAff1;exp-7d&quot;}</code></td>
+</tr>
+
+<tr>
+<td><code>expiry</code></td>
+<td><code>String</code></td>
+<td>(Optional) The expiration of the cookie, which must start with <code>exp-</code>.</td>
+<td><code>exp-12h</code></td>
+</tr>
+
+<tr>
+<td><code>flag</code></td>
+<td><code>String</code></td>
+<td>(Optional) A flag to delete one or more cookies.</td>
+<td><code>&quot;d&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Expiry Options</strong><br />
+The following cookie expiry options are available:</p>
+
+<table>
+<thead>
+<tr>
+<th>Expiry unit</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>#d</code></td>
+<td>Expiry time in days (default unit, if none provided)</td>
+<td><code>exp-7d</code> or <code>exp-7</code> (7 days)</td>
+</tr>
+
+<tr>
+<td><code>#h</code></td>
+<td>Expiry time in hours</td>
+<td><code>&quot;exp-8h&quot;</code> (8 hours)</td>
+</tr>
+
+<tr>
+<td><code>#u</code></td>
+<td>Expiry time at <a href="https://www.epochconverter.com/">Unix timestamp</a></td>
+<td><code>&quot;exp-1549271521u&quot;</code> (Midnight (GMT) on Dec 22, 2022)</td>
+</tr>
+
+<tr>
+<td><code>session</code></td>
+<td>Expiry time at end of session (default <a href="/platforms/javascript/settings/#session-timeout">session timeout</a>: 30 minutes)</td>
+<td><code>&quot;exp-session&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<p class="note">Timestamp-based expiration, such as <code>&quot;exp-1549271521u&quot;</code>, has a trailing <code>u</code> indicates Unix timestamp. Do not confuse it with the value set in the cookie itself such as <code>&quot;exp-1549271521&quot;</code></p>
+
+<p>If no expiry option is set, then the default behavior is based on the version of <code>utag.js</code>:</p>
+
+<ul>
+<li><strong>4.27+</strong> - default expiry is 1 year after the creation of the cookie.</li>
+<li><strong>4.26 or older</strong> - default expiry is the year 2099.</li>
+</ul>
+
+<p><strong>Set a Cookie</strong><br />
+To set a multi-value cookie, pass an object of key-value pairs of to the <code>value</code> parameter.</p>
+
+<p>The following example creates a multi-value cookie named <code>utag_multi</code>:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">utag.loader.SC(<span style="color:#b84">&#34;utag_multi&#34;</span>, {
+    <span style="color:#b84">&#34;uid&#34;</span>      <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;012345689&#34;</span>,      <span style="color:#998;font-style:italic">// default expiry
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#b84">&#34;test_seg&#34;</span> <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;groupA;exp-12h&#34;</span>, <span style="color:#998;font-style:italic">// 12 hour expiry
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#b84">&#34;aff&#34;</span>      <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;SiteAff1;exp-7d&#34;</span> <span style="color:#998;font-style:italic">// 7 day expiry
+</span><span style="color:#998;font-style:italic"></span>});
+</code></pre></div>
+<p><strong>Delete a Cookie</strong><br />
+To delete one or more cookie values, use the optional <code>flag</code> parameter.</p>
+
+<p>Delete one or more values from a multi-value cookie. Each key-value pair specified is deleted:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">utag.loader.SC(<span style="color:#b84">&#34;utag_multicookie&#34;</span>, {<span style="color:#b84">&#34;test_seg&#34;</span><span style="font-weight:bold">:</span><span style="color:#b84">&#34;&#34;</span>, <span style="color:#b84">&#34;aff&#34;</span><span style="font-weight:bold">:</span><span style="color:#b84">&#34;&#34;</span>}, <span style="color:#b84">&#34;d&#34;</span>);
+</code></pre></div>
+<p>Delete all values from a multi-value cookie:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">utag.loader.SC(<span style="color:#b84">&#34;utag_multicookie&#34;</span>, {}, <span style="color:#b84">&#34;da&#34;</span>);
+</code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -1837,7 +1963,7 @@ utag.ut.merge(foo, bar, <span style="color:#099">1</span>)
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  December 12, 2019 
+    <span>This page was last updated:  March 17, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

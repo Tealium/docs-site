@@ -237,7 +237,7 @@ var utag_data = {
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#tealium-collect">Tealium Collect</a></li>
               <ul class="toc-h3"><li><a href="#javascript-tag">JavaScript Tag</a></li>
               <li><a href="#native-module">Native Module</a></li>
-              <li><a href="#data-layer-enrichment">Data Layer Enrichment</a></li>
+              <li><a href="#data-layer-enrichment-dle">Data Layer Enrichment (DLE)</a></li>
               </nav>
   </aside></div>
 
@@ -280,8 +280,8 @@ var utag_data = {
 <p>Tealium Collect is activated using one of these methods:</p>
 
 <ul>
-<li>Collect Tag in Tealium iQ Tag Management</li>
-<li>Native Collect Module in your app</li>
+<li>Collect tag in Tealium iQ Tag Management</li>
+<li>Native Collect module in your app</li>
 </ul>
 
 <p>Once added, Tealium Collect sends HTTPS requests to the Customer Data Hub data collection servers for use with the following server-side products:</p>
@@ -306,7 +306,7 @@ var utag_data = {
 <li>Data layer customization using extensions in iQ</li>
 </ul>
 
-<p><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Tealium-Collect-Tag-Setup-Guide/ta-p/11923">How to set up the Tealium Collect Tag</a>.</p>
+<p><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Tealium-Collect-Tag-Setup-Guide/ta-p/11923">How to set up the Tealium Collect tag</a>.</p>
 
 <h3 id="native-module">Native Module</h3>
 
@@ -321,9 +321,13 @@ var utag_data = {
 
 <p class="note">For the Swift library, Tealium Collect must be enabled and disabled in the native code.</p>
 
-<h3 id="data-layer-enrichment">Data Layer Enrichment</h3>
+<h3 id="data-layer-enrichment-dle">Data Layer Enrichment (DLE)</h3>
 
-<p>AudienceStream offers the added benefit of returning visitor profile data to Tealium Collect with a feature called <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Data-Layer-Enrichment-Public-API/ta-p/155">Data Layer Enrichment (DLE)</a>. In the Collect module, use DLE to personalize your app based on the returned visitor attributes. In the Collect tag, the visitor attributes from DLE are made available in the data layer that runs inside the hidden webview.</p>
+<p>Tealium AudienceStream offers the added benefit of returning visitor profile data to Tealium Collect with a feature called <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Data-Layer-Enrichment-Public-API/ta-p/155">Data Layer Enrichment (DLE)</a>. In the Collect module, use DLE to personalize your app based on the returned visitor attributes.</p>
+
+<p>In Tealium iQ Tag Management, with the Collect tag running, the hidden webview <code>mobile.html</code> provides access to DLE visitor attributes. These attributes are accessible when configuring extension, loading rules, etc. A <a href="/platforms/remote-commands/">remote command</a> is required to communicate between the webview and mobile app for in-app personalization based on DLE values.</p>
+
+<p>The <a href="/platforms/ios-swift/module-list/visitor-service/">VisitorService module for Swift</a> also adds the visitor profile to the data layer.</p>
 
 </div>
 
@@ -1450,7 +1454,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  February 7, 2020 
+    <span>This page was last updated:  March 19, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
