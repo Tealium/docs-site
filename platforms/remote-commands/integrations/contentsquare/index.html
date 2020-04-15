@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Integrations | Tealium Developer Docs</title>
+    <title>Remote Command: Contentsquare | Integrations |Tealium Developer Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -224,12 +224,649 @@ var utag_data = {
     
     <main role="main" class="content-with-sidebar pb7 pb0-ns">
       
-  
-  
-  <div class="w-100 ph4 pb5 pb6-ns pt1 pt4-ns">
+  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
+    <div class="flex-l">
 
-  <div class="flex">
-    <div class="order-0 dn db-l w-20 sticky-l">
+      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
+              <li><a href="#how-it-works">How It Works</a></li>
+              <li><a href="#install">Install</a></li>
+              <ul class="toc-h3"><li><a href="#dependency-manager">Dependency Manager</a></li>
+              <li><a href="#manual-for-ios">Manual for iOS</a></li>
+              </ul><li><a href="#initialize">Initialize</a></li>
+              <li><a href="#supported-methods">Supported Methods</a></li>
+              <ul class="toc-h3"><li><a href="#sdk-setup">SDK Setup</a></li>
+              <li><a href="#track-screens">Track Screens</a></li>
+              <li><a href="#track-transactions">Track Transactions</a></li>
+              <li><a href="#track-dynamic-variables">Track Dynamic Variables</a></li>
+              <li><a href="#stop-resume-tracking">Stop / Resume Tracking</a></li>
+              <li><a href="#opt-in">Opt In</a></li>
+              <li><a href="#opt-out">Opt Out</a></li>
+              <li><a href="#forget-me">Forget Me</a></li>
+              </nav>
+  </aside></div>
+
+      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
+        <div class="documentation-copy center measure-wide-l">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
+  
+    
+      <a href="/platforms/remote-commands/integrations" class="f6 fw8 mb0 link mid-gray dim mr3">
+        REMOTE COMMANDS/INTEGRATIONS
+      </a>
+    
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Remote Command: Contentsquare</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy">
+      Tealium remote command integration for Contentsquare on Android and Swift/iOS.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+<li><a href="/platforms/android-java/">Tealium for Android</a> or <a href="/platforms/ios-swift/">Tealium for iOS</a> in your app</li>
+<li>Contentsquare Remote Commands tag in Tealium iQ Tag Management</li>
+</ul>
+
+<h2 id="how-it-works">How It Works</h2>
+
+<p>The Contentsquare integration uses the native Contentsquare SDK, a remote command module that wraps the Contentsquare methods, and the Contentsquare Remote Commands tag that translates event tracking into native Contentsquare calls. This solution leverages the convenience of iQ Tag Management to configure a native Contentsquare implementation without having to add vendor-specific code to your app.</p>
+
+<p>Adding the Contentsquare remote command module to your app build automatically installs and builds the required Contentsquare libraries. If you are using a dependency manager installation, there is no need to install the Contentsquare SDK separately.</p>
+
+<h2 id="install">Install</h2>
+
+<h3 id="dependency-manager">Dependency Manager</h3>
+
+<p>We recommend using one of the following dependency managers for installation:</p>
+
+<p class="note">If you are using the Tealium iOS (Objective-C) library, use the manual installation method. The CocoaPods and Carthage options are only available if you are using the Tealium iOS (Swift) library.</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
+  <p>To install Contentsquare remote commands for iOS using CocoaPods:</p>
+
+<ol>
+<li><p>Remove <code>tealium-swift</code> and <code>pod &quot;CS_iOS_SDK&quot;</code> if they already exist your Podfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumContentsquare</code> framework.</p></li>
+
+<li><p>Add the following dependency to your Podfile:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">pod <span style="color:#b84">&#34;TealiumContentsquare&#34;</span></code></pre></div>
+<p>The <code>TealiumContentsquare</code> pod includes the following <code>TealiumSwift</code> dependencies:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#b84">&#39;tealium-swift/Core&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TealiumDelegate&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TealiumRemoteCommands&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TealiumTagManagement&#39;</span></code></pre></div></li>
+
+<li><p>Add any other required modules manually to your Podfile, such as the following:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#b84">&#39;tealium-swift/TealiumLogger&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TealiumLifecycle&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TealiumAppData&#39;</span></code></pre></div>
+<p>Learn more about the <a href="https://docs.tealium.com/platforms/ios-swift/modules/">recommended modules</a> for iOS.</p></li>
+
+<li><p>Import the modules <code>TealiumSwift</code> and <code>TealiumContentsquare</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class, or the Contentsquare Remote Command.</p></li>
+</ol>
+
+</div>
+
+<div class="tab-pane" data-lang="Carthage" title="Carthage">
+  <p>To install Contentsquare remote commands for iOS using Carthage:</p>
+
+<ol>
+<li><p>Remove <code>tealium-swift</code> from your Cartfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumContentsquare</code> framework.</p></li>
+
+<li><p>Remove the following line if it exists in your Cartfile:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">github <span style="color:#b84">&#34;ContentSquare/CS_iOS_SDK&#34;</span></code></pre></div></li>
+
+<li><p>Add the following dependency to your Cartfile:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">github <span style="color:#b84">&#34;tealium/tealium-ios-contentsquare-remote-command&#34;</span></code></pre></div></li>
+</ol>
+
+<p class="note">Tealium for Swift SDK (version 1.6.5+) requires the <code>TealiumDelegate</code> module to be included with your installation.</p>
+
+</div>
+
+<div class="tab-pane" data-lang="Maven" title="Maven">
+  <p>To install Contentsquare remote commands for Android using Maven:</p>
+
+<ol>
+<li><p>Install Tealium&rsquo;s <a href="/platforms/android-java/install/">Android SDK</a>, if you haven&rsquo;t done so already.</p></li>
+
+<li><p>Import both the Contentquare SDK and Tealium-Contentsquare remote commands by adding the following dependencies in your app project&rsquo;s <code>build.gradle</code> file:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
+  implementation <span style="color:#b84">&#39;com.tealium.remotecommands:contentsquare:0.0.1&#39;</span>
+<span style="font-weight:bold">}</span></code></pre></div></li>
+</ol>
+
+</div>
+
+<p></div>
+</div></p>
+
+<h3 id="manual-for-ios">Manual for iOS</h3>
+
+<p>The manual installation for Contentsquare remote commands requires one of the following iOS libraries to be installed:</p>
+
+<ul>
+<li><a href="https://docs.tealium.com/platforms/ios-swift/">Tealium for Swift</a></li>
+<li><a href="https://docs.tealium.com/platforms/ios-objective-c/">Tealium for Objective-C</a></li>
+</ul>
+
+<p>To install the Contentsquare remote commands for your iOS project:</p>
+
+<ol>
+<li><p>Install the <a href="https://docs.contentsquare.com/ios/#how-to-include-it">Contentsquare SDK</a>, if you haven&rsquo;t already done so.</p></li>
+
+<li><p>Clone the <a href="https://github.com/tealium/tealium-ios-contentsquare-remote-command">Tealium iOS Contentsquare remote command</a> repo and drag the files within the <code>Sources</code> folder into your project.</p></li>
+
+<li><p>When initializing the Tealium Swift SDK, in the completion handler:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium = Tealium(config: config) { responses <span style="font-weight:bold">in</span>
+<span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands() <span style="font-weight:bold">else</span> {
+  <span style="font-weight:bold">return</span>
+}
+<span style="font-weight:bold">let</span> <span style="color:#008080">contentsquareTracker</span> = ContentsquareTracker()
+<span style="font-weight:bold">let</span> <span style="color:#008080">contentsquareCommand</span> = ContentsquareCommand(ContentsquareTracker: contentsquareTracker)
+<span style="font-weight:bold">let</span> <span style="color:#008080">contentsquareRemoteCommand</span> = ContentsquareCommand.remoteCommand()
+remoteCommands.add(contentsquareRemoteCommand)
+}</code></pre></div></li>
+
+<li><p>If you are using the TealiumIOS, add the following code:</p></li>
+</ol>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+
+<div class="tab-pane" data-lang="Swift" title="Swift">
+  <p>Add the remote command in the <code>TealiumHelper.swift</code> file as follows:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">contentsquareTracker</span> = ContentsquareTracker()
+<span style="font-weight:bold">let</span> <span style="color:#008080">contentsquareCommand</span> = ContentsquareCommand(contentsquareTracker: contentsquareTracker)
+<span style="font-weight:bold">let</span> <span style="color:#008080">contentsquareRemoteCommand</span> = contentsquareCommand.remoteCommand()
+tealium.addRemoteCommandID(<span style="color:#b84">&#34;contentsquare&#34;</span>,
+                           description: <span style="font-weight:bold">nil</span>,
+                           targetQueue: DispatchQueue.main,
+                           responseBlock: contentsquareRemoteCommand)</code></pre></div>
+</div>
+
+<div class="tab-pane" data-lang="Objective-C" title="Objective-C">
+  <p>Import the remote command in the <code>TealiumHelper.m</code> file as follows:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">#<span style="font-weight:bold">import</span> <span style="color:#b84">&#34;TealiumRemoteCommandObjcApp-Swift.h&#34;</span></code></pre></div>
+<p class="note">The Swift bridging header for your target is named ending with <code>-Swift.h</code>. Find this by filtering for &ldquo;Module Name&rdquo; in your target&rsquo;s build settings.</p>
+
+<p>Learn more about <a href="(https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_swift_into_objective-c)">importing Swift into Objective-C</a>.</p>
+
+<p>Initialize the remote command as follows:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Objective-C" data-lang="Objective-C">ContentsquareTracker <span style="font-weight:bold">*</span>contentsquareTracker <span style="font-weight:bold">=</span> [[ContentsquareTracker alloc] init];
+ContentsquareCommand <span style="font-weight:bold">*</span>contentsquareCommand <span style="font-weight:bold">=</span> [[ContentsquareCommand alloc] initWithContentsquareTracker:contentsquareTracker];
+TEALRemoteCommandResponseBlock contentsquareRemoteCommand <span style="font-weight:bold">=</span> [contentsquareCommand remoteCommand];
+[[Tealium instanceForKey:<span style="color:#b84">@&#34;MY_INSTANCE&#34;</span>] addRemoteCommandID:<span style="color:#b84">@&#34;contentsquare&#34;</span>
+                                                description:<span style="color:#b84">@&#34;An example remote command block&#34;</span>
+                                                targetQueue:dispatch_get_main_queue()  
+                                              responseBlock:contentsquareRemoteCommand];</code></pre></div>
+</div>
+
+<p></div>
+</div></p>
+
+<h2 id="initialize">Initialize</h2>
+
+<p>For all Tealium libraries, register the Contentsquare remote commands when you initialize.</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="Android" title="Android">
+  <p>The following code is designed for use with Tealium&rsquo;s Android library.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">import</span> <span style="color:#900;font-weight:bold">com</span>.<span style="color:#008080">tealium</span>.<span style="color:#008080">remotecommands</span>.<span style="color:#008080">contentsquare</span>.<span style="color:#008080">ContentsquareRemoteCommand</span>;
+
+Tealium.<span style="color:#008080">Config</span> <span style="color:#900;font-weight:bold">config</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">Config</span>.<span style="color:#008080">create</span>(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>);
+Tealium <span style="color:#900;font-weight:bold">teal</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">createInstance</span>(TEALIUM_MAIN, config);
+
+<span style="color:#998;font-style:italic">// Initialize with `Application` in order to take advantage of consent management and other
+</span><span style="color:#998;font-style:italic">// advanced features
+</span><span style="color:#998;font-style:italic"></span>ContentsquareRemoteCommand <span style="color:#900;font-weight:bold">contentsquare</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> ContentsquareRemoteCommand(<span style="font-weight:bold">this</span>);
+
+<span style="color:#998;font-style:italic">// Or for simple tracking, you can initialize without `Application`
+</span><span style="color:#998;font-style:italic"></span>ContentsquareRemoteCommand <span style="color:#900;font-weight:bold">contentsquare</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> ContentsquareRemoteCommand();
+
+<span style="color:#998;font-style:italic">// register the command
+</span><span style="color:#998;font-style:italic"></span>teal.<span style="color:#008080">addRemoteCommand</span>(contentsquare);</code></pre></div>
+</div>
+
+<div class="tab-pane" data-lang="Kotlin" title="Kotlin">
+  <p>The following code is designed for use with Tealium&rsquo;s Android library.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">import</span> <span style="color:#555">com.tealium.remotecommands.contentsquare.ContentsquareRemoteCommand</span>
+
+<span style="font-weight:bold">val</span> config = Tealium.Config.create(<span style="font-weight:bold">this</span>, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>)
+tealium = Tealium.createInstance(TealiumHelper.instanceName, config)
+
+<span style="color:#998;font-style:italic">// Initialize with `Application` in order to take advantage of consent management and other
+</span><span style="color:#998;font-style:italic">// advanced features
+</span><span style="color:#998;font-style:italic"></span><span style="font-weight:bold">val</span> facebook = ContentsquareRemoteCommand(<span style="font-weight:bold">this</span>)
+
+<span style="color:#998;font-style:italic">// Or for simple tracking, you can initialize without `Application`
+</span><span style="color:#998;font-style:italic"></span><span style="font-weight:bold">val</span> facebook = ContentsquareRemoteCommand()
+
+<span style="color:#998;font-style:italic">// register the command
+</span><span style="color:#998;font-style:italic"></span>tealium.addRemoteCommand(facebook)</code></pre></div>
+</div>
+
+<div class="tab-pane" data-lang="Objective-C" title="Objective-C">
+  <p>The following code is designed for use with Tealium&rsquo;s Objective-C library for iOS, although it is written in Swift. A Bridging Header is required in your Xcode project for this code to work correctly.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">let config <span style="font-weight:bold">=</span> TEALConfiguration(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+                               profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
+                               environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
+                               datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
+let teal <span style="font-weight:bold">=</span> Tealium.newInstance(forKey: <span style="color:#b84">&#34;teal&#34;</span>, configuration: config)
+
+let contentsquareTracker <span style="font-weight:bold">=</span> ContentsquareTracker()
+let contentsquareCommand <span style="font-weight:bold">=</span> ContentsquareCommand(ContentsquareTracker: contentsquareTracker)
+let contentsquareRemoteCommand <span style="font-weight:bold">=</span> contentsquareCommand.remoteCommand()
+teal.addRemoteCommandID(<span style="color:#b84">&#34;contentsquare&#34;</span>, description: <span style="color:#999">nil</span>, targetQueue: DispatchQueue.main, responseBlock: contentsquareRemoteCommand)</code></pre></div>
+</div>
+
+<div class="tab-pane" data-lang="Swift" title="Swift">
+  <p>The following code is designed for use with Tealium&rsquo;s Swift library for iOS.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">teal</span>: Tealium?
+<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+                           profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
+                           environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
+                           datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
+                           optionalData: <span style="font-weight:bold">nil</span>)
+
+teal = Tealium(config: config) { responses <span style="font-weight:bold">in</span>
+  <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands() <span style="font-weight:bold">else</span> {
+        <span style="font-weight:bold">return</span>
+  }
+  <span style="font-weight:bold">let</span> <span style="color:#008080">contentsquareTracker</span> = ContentsquareTracker()
+  <span style="font-weight:bold">let</span> <span style="color:#008080">contentsquareCommand</span> = ContentsquareCommand(ContentsquareTracker: contentsquareTracker)
+  <span style="font-weight:bold">let</span> <span style="color:#008080">contentsquareRemoteCommand</span> = ContentsquareCommand.remoteCommand()
+      remoteCommands.add(contentsquareRemoteCommand)
+}</code></pre></div>
+</div>
+
+<p></div>
+</div></p>
+
+<h2 id="supported-methods">Supported Methods</h2>
+
+<p>The following Contentsquare methods are triggered using a data mapping in the Contentsquare Remote Command tag using the following Tealium commands:</p>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Contentsquare Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>sendscreenview</code></td>
+<td><code>send()</code></td>
+</tr>
+
+<tr>
+<td><code>sendtransaction</code></td>
+<td><code>send()</code></td>
+</tr>
+
+<tr>
+<td><code>senddynamicvar</code></td>
+<td><code>send()</code></td>
+</tr>
+
+<tr>
+<td><code>stoptracking</code></td>
+<td><code>stopTracking()</code></td>
+</tr>
+
+<tr>
+<td><code>resumeTracking</code></td>
+<td><code>resumeTracking()</code></td>
+</tr>
+
+<tr>
+<td><code>forgetme</code></td>
+<td><code>forgetMe()</code></td>
+</tr>
+
+<tr>
+<td><code>optin</code></td>
+<td><code>optIn()</code></td>
+</tr>
+
+<tr>
+<td><code>optout</code></td>
+<td><code>optOut()</code></td>
+</tr>
+</tbody>
+</table>
+
+<p class="note">Since the Contentsquare SDK is installed alongside the Tealium SDK, trigger any native Contentsquare functionality given the corresponding tag configuration.</p>
+
+<h3 id="sdk-setup">SDK Setup</h3>
+
+<h4 id="initialize-1">Initialize</h4>
+
+<p>The Contentsquare SDK is initialized automatically upon launch.</p>
+
+<p>Contentsquare Developer Guide: Initial SDK Setup</p>
+
+<ul>
+<li><a href="https://docs.contentsquare.com/android/#add-contentsquare-to-your-app">Android</a></li>
+<li><a href="https://docs.contentsquare.com/ios/#get-started">iOS</a></li>
+</ul>
+
+<h3 id="track-screens">Track Screens</h3>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Contentsquare Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>sendscreenview</code></td>
+<td><code>send</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>screen_name</code> (required)</td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Contentsquare Developer Guide: Analytics User IDs</p>
+
+<ul>
+<li><a href="https://docs.contentsquare.com/android/#track-screens">Android</a></li>
+<li><a href="https://docs.contentsquare.com/ios/#track-screens">iOS</a></li>
+</ul>
+
+<h3 id="track-transactions">Track Transactions</h3>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Contentsquare Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>sendtransaction</code></td>
+<td><code>send</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>price</code> (required)</td>
+<td><code>Double or Float</code></td>
+</tr>
+
+<tr>
+<td><code>currency</code> (required)</td>
+<td><code>Int</code></td>
+</tr>
+
+<tr>
+<td><code>transaction_id</code> (optional)</td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Contentsquare Developer Guide: Track Transactions</p>
+
+<ul>
+<li><a href="https://docs.contentsquare.com/android/#track-transactions">Android</a></li>
+<li><a href="https://docs.contentsquare.com/ios/#track-transactions">iOS</a></li>
+</ul>
+
+<h3 id="track-dynamic-variables">Track Dynamic Variables</h3>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Contentsquare Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>sendtransaction</code></td>
+<td><code>send</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>price</code> (required)</td>
+<td><code>Double or Float</code></td>
+</tr>
+
+<tr>
+<td><code>currency</code> (required)</td>
+<td><code>Int</code></td>
+</tr>
+
+<tr>
+<td><code>transaction_id</code> (optional)</td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Contentsquare Developer Guide: Track Dynamic Variables</p>
+
+<ul>
+<li><a href="https://docs.contentsquare.com/android/#track-dynamic-variables">Android</a></li>
+<li><a href="https://docs.contentsquare.com/ios/#track-transactions">iOS</a></li>
+</ul>
+
+<h3 id="stop-resume-tracking">Stop / Resume Tracking</h3>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Contentsquare Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>stoptracking</code></td>
+<td><code>stopTracking</code></td>
+</tr>
+
+<tr>
+<td><code>resumetracking</code></td>
+<td><code>resumeTracking</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Contentsquare Developer Guide: Stop / Resume Tracking</p>
+
+<ul>
+<li><a href="https://docs.contentsquare.com/android/#stop-resume-tracking">Android</a></li>
+<li><a href="https://docs.contentsquare.com/ios/#stop-resume-tracking">iOS</a></li>
+</ul>
+
+<h3 id="opt-in">Opt In</h3>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Contentsquare Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>optin</code></td>
+<td><code>optIn</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Contentsquare Developer Guide: Opt In</p>
+
+<ul>
+<li><a href="https://docs.contentsquare.com/android/#opt-in">Android</a></li>
+<li><a href="https://docs.contentsquare.com/ios/#opt-in">iOS</a></li>
+</ul>
+
+<h3 id="opt-out">Opt Out</h3>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Contentsquare Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>optout</code></td>
+<td><code>optOut</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Contentsquare Developer Guide: Opt Out</p>
+
+<ul>
+<li><a href="https://docs.contentsquare.com/android/#opt-out">Android</a></li>
+<li><a href="https://docs.contentsquare.com/ios/#opt-out">iOS</a></li>
+</ul>
+
+<h3 id="forget-me">Forget Me</h3>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Contentsquare Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>forgetme</code></td>
+<td><code>forgetMe</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Contentsquare Developer Guide: Forget Me</p>
+
+<ul>
+<li><a href="https://docs.contentsquare.com/android/#forget-me">Android</a></li>
+<li><a href="https://docs.contentsquare.com/ios/#forget-me">iOS</a></li>
+</ul>
+
+</div>
+
+<b class="pv1 br2 dib tc mv3 link">
+
+	<div date-pref class="white">
+		
+			<a href="http://docs.tealium.com/platforms/remote-commands/integrations/braze/" title="Remote Command: Braze "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+ Remote Command: Braze </a>
+		
+
+	</div>
+
+</b>
+<b style="position: absolute; right:0px;" class="pv1 br2 dib tc mv3 link">
+
+	<div date-pref class="white">
+
+		
+			<a href="http://docs.tealium.com/platforms/remote-commands/integrations/facebook/" title="Remote Command: Facebook">
+			Remote Command: Facebook <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
+
+			</a>
+		
+	</div>
+
+</b>
+<br>&nbsp;</br>
+
+          
+
+
+        </div>
+      </div>
+      <div class="order-0 w-20 dn db-l sticky-l">
         
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0">
@@ -1303,127 +1940,35 @@ var utag_data = {
   </ul>
 </nav>
 
-    </div>
-
-    <div class="w-100 w-80-l ph0 ph4-l">
-      <article class="w-100 nested-copy-line-height nested-links nested-img">
-        <h1 class="mid-gray f2">
-          Integrations
-        </h1>
-        <div class=" mid-gray f5 f4-l">
-          
-        </div>
-      </article>
-
-      
-
-      <div class="flex flex-wrap">
-        <section class="flex-ns flex-wrap justify-between w-100">
-          
-            <div class="relative flex-auto w-100 w-40-l mr3 mb3 bg-white ba ba-link b--moon-gray nested-copy-line-height weight-40">
-
-  <div class="mb2 pa3 pa4-l mid-gray">
-      <a href="/platforms/remote-commands/integrations/braze/" class="link primary-color dim">
-    
-
-    <div class="f3">Remote Command: Braze</div>
-
-    <div class="lh-copy mid-gray links">
-      
-          Tealium remote command integration for Braze on Android and Swift/iOS.
-        
-    </div>
-    </a>
-
-  </div>
-</div>
-
-          
-            <div class="relative flex-auto w-100 w-40-l mr3 mb3 bg-white ba ba-link b--moon-gray nested-copy-line-height weight-50">
-
-  <div class="mb2 pa3 pa4-l mid-gray">
-      <a href="/platforms/remote-commands/integrations/contentsquare/" class="link primary-color dim">
-    
-
-    <div class="f3">Remote Command: Contentsquare</div>
-
-    <div class="lh-copy mid-gray links">
-      
-          Tealium remote command integration for Contentsquare on Android and Swift/iOS.
-        
-    </div>
-    </a>
-
-  </div>
-</div>
-
-          
-            <div class="relative flex-auto w-100 w-40-l mr3 mb3 bg-white ba ba-link b--moon-gray nested-copy-line-height weight-60">
-
-  <div class="mb2 pa3 pa4-l mid-gray">
-      <a href="/platforms/remote-commands/integrations/facebook/" class="link primary-color dim">
-    
-
-    <div class="f3">Remote Command: Facebook</div>
-
-    <div class="lh-copy mid-gray links">
-      
-          Tealium remote command integration for Facebook on Android and Swift/iOS.
-        
-    </div>
-    </a>
-
-  </div>
-</div>
-
-          
-            <div class="relative flex-auto w-100 w-40-l mr3 mb3 bg-white ba ba-link b--moon-gray nested-copy-line-height weight-70">
-
-  <div class="mb2 pa3 pa4-l mid-gray">
-      <a href="/platforms/remote-commands/integrations/firebase/" class="link primary-color dim">
-    
-
-    <div class="f3">Remote Command: Firebase</div>
-
-    <div class="lh-copy mid-gray links">
-      
-          Tealium remote command integration for Firebase on Android and Swift/iOS
-        
-    </div>
-    </a>
-
-  </div>
-</div>
-
-          
-            <div class="relative flex-auto w-100 w-40-l mr3 mb3 bg-white ba ba-link b--moon-gray nested-copy-line-height weight-80">
-
-  <div class="mb2 pa3 pa4-l mid-gray">
-      <a href="/platforms/remote-commands/integrations/usabilla/" class="link primary-color dim">
-    
-
-    <div class="f3">Remote Command: Usabilla</div>
-
-    <div class="lh-copy mid-gray links">
-      
-          Tealium remote command integration for Usabilla on Android and Swift/iOS.
-        
-    </div>
-    </a>
-
-  </div>
-</div>
-
-          
-        </section>
       </div>
 
     </div>
+  </article>
 
-  </div>
-
+  <div class="w-100 bg-light-gray">
+    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
+      <div class="feedback_form">
+  <span>
+	  <p style="display:inline">Was this article helpful?</p>
+		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
+	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
+  </span>
+	<span id="feedback_comment">
+		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
+    <span>This page was last updated:  April 14, 2020 
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+  </span>
+  <span id="feedback_thank_you" style="display: none;">
+     <em>Thank you for your feedback!</em>
+  </span>
 </div>
 
+      
+
+
+    </div>
+  </div>
 
     </main>
 

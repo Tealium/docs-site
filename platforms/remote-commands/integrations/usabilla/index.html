@@ -287,14 +287,14 @@ var utag_data = {
 <li>Usabilla app ID</li>
 <li>Usabilla form ID</li>
 <li><a href="/platforms/android-java/install/">Tealium for Android</a> or <a href="/platforms/ios-swift/install/">Tealium for iOS</a> in your app</li>
-<li>Usabilla remote command tag in iQ Tag Management</li>
+<li>Usabilla Remote Command tag in Tealium iQ Tag Management</li>
 </ul>
 
 <h2 id="how-it-works">How It Works</h2>
 
-<p>The Usabilla integration uses the native <a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk">Usabilla SDK</a>, the Tealium Usabilla remote command module that wraps Usabilla methods, and the Usabilla remote commands tag that translates event tracking into native Usabilla calls. This solution leverages the convenience of tag management to configure a native Usabilla implementation without having to add vendor-specific code to your app.</p>
+<p>The Usabilla integration uses the native Usabilla SDK, the Tealium Usabilla remote command module that wraps Usabilla methods, and the Usabilla Remote Command tag that translates event tracking into native Usabilla calls. This solution leverages the convenience of Tealium iQ Tag Management to configure a native Usabilla implementation without having to add vendor-specific code to your app.</p>
 
-<p>There is no need to install the Usabilla SDK separately. Adding the Usabilla remote command module to your app build automatically installs and builds the required Usabilla libraries.  If you previously added Usabilla to your app, remove it.</p>
+<p>Adding the Usabilla remote command module to your app build automatically installs and builds the required Usabilla libraries. If you are using a dependency manager installation, there is no need to install the Usabilla SDK separately.</p>
 
 <h2 id="install">Install</h2>
 
@@ -317,20 +317,15 @@ var utag_data = {
 <li><p>Add the following dependency to your Podfile:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">pod <span style="color:#b84">&#34;TealiumUsabilla&#34;</span></code></pre></div>
 <p>The <code>TealiumUsabilla</code> pod includes the following <code>TealiumSwift</code> dependencies:</p>
-
-<pre><code>'tealium-swift/Core'
-'tealium-swift/TealiumDelegate'
-'tealium-swift/TealiumRemoteCommands'
-'tealium-swift/TealiumTagManagement'
-</code></pre></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#b84">&#39;tealium-swift/Core&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TealiumDelegate&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TealiumRemoteCommands&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TealiumTagManagement&#39;</span></code></pre></div></li>
 
 <li><p>Add any other required modules manually to your Podfile, such as the following:</p>
-
-<pre><code>'tealium-swift/TealiumLogger'
-'tealium-swift/TealiumLifecycle'
-'tealium-swift/TealiumAppData'
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#b84">&#39;tealium-swift/TealiumLogger&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TealiumLifecycle&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TealiumAppData&#39;</span></code></pre></div>
 <p>Learn more about the <a href="https://docs.tealium.com/platforms/ios-swift/modules/">recommended modules for iOS</a>.</p></li>
 
 <li><p>Import the modules <code>TealiumSwift</code> and <code>TealiumUsabilla</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class or the Usabilla remote command.</p></li>
@@ -374,7 +369,7 @@ var utag_data = {
 
 <h3 id="manual-ios">Manual (iOS)</h3>
 
-<p>The manually installation for Usabilla remote commands requires one of the following iOS libraries to be installed:</p>
+<p>The manual installation for Usabilla remote commands requires one of the following iOS libraries to be installed:</p>
 
 <ul>
 <li><a href="https://docs.tealium.com/platforms/ios-swift/">Tealium for Swift</a></li>
@@ -439,13 +434,13 @@ TEALRemoteCommandResponseBlock usabillaRemoteCommand <span style="font-weight:bo
 
 <h2 id="initialize">Initialize</h2>
 
-<p>To initialize the Usabilla remote command:</p>
+<p>For all Tealium libraries, you need to register the Usabilla remote command when you initialize.</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content">
 <div class="tab-pane" data-lang="Android" title="Android">
-  <p>The following example creates a Tealium instance and then registers the Usabilla remote command for Android:</p>
+  <p>The following code is designed for use with Tealium&rsquo;s Android library.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.<span style="color:#008080">Config</span> <span style="color:#900;font-weight:bold">config</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">Config</span>.<span style="color:#008080">create</span>(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>);
 Tealium <span style="color:#900;font-weight:bold">teal</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">createInstance</span>(TEALIUM_MAIN, config);
 
@@ -473,7 +468,7 @@ Disables handling of event tracking for passive and <a href="https://github.com/
 </div>
 
 <div class="tab-pane" data-lang="Swift" title="Swift">
-  <p>The following example creates a Tealium instance and then registers the Usabilla remote command for Swift:</p>
+  <p>The following code is designed for use with Tealium&rsquo;s Swift library for iOS.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">teal</span> : Tealium?
 <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(
        account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
@@ -493,19 +488,17 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 </div>
 
 <div class="tab-pane" data-lang="Objective-C" title="Objective-C">
-  <p>The following example creates a Tealium instance and then registers the Usabilla remote command for Objective-C:</p>
-
-<p class="note">The code is written in Swift and requires a Bridging Header in your Xcode project for this to work correctly.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">let config <span style="font-weight:bold">=</span> TEALConfiguration(
+  <p>The following code is designed for use with Tealium&rsquo;s Objective-C library for iOS, although it is written in Swift. A Bridging Header is required in your Xcode project for this code to work correctly.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TEALConfiguration(
        account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
        profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
        environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
        datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
-let teal <span style="font-weight:bold">=</span> Tealium.newInstance(forKey: <span style="color:#b84">&#34;teal&#34;</span>, configuration: config)
+<span style="font-weight:bold">let</span> <span style="color:#008080">teal</span> = Tealium.newInstance(forKey: <span style="color:#b84">&#34;teal&#34;</span>, configuration: config)
 
-let usabillaCommand <span style="font-weight:bold">=</span> UsabillaCommand()
-let usabillaRemoteCommand <span style="font-weight:bold">=</span> usabillaCommand.remoteCommand()
-teal.addRemoteCommandID(<span style="color:#b84">&#34;usabilla&#34;</span>, description: <span style="color:#999">nil</span>, targetQueue: DispatchQueue.main, responseBlock: usabillaRemoteCommand)</code></pre></div>
+<span style="font-weight:bold">let</span> <span style="color:#008080">usabillaCommand</span> = UsabillaCommand()
+<span style="font-weight:bold">let</span> <span style="color:#008080">usabillaRemoteCommand</span> = usabillaCommand.remoteCommand()
+teal.addRemoteCommandID(<span style="color:#b84">&#34;usabilla&#34;</span>, description: <span style="font-weight:bold">nil</span>, targetQueue: DispatchQueue.main, responseBlock: usabillaRemoteCommand)</code></pre></div>
 </div>
 
 <p></div>
@@ -517,7 +510,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;usabilla&#34;</span>, desc
 
 <h2 id="supported-methods">Supported Methods</h2>
 
-<p>Usabilla methods or properties are triggered using a data mapping in the Usabilla remote command tag, by using the following Tealium commands:</p>
+<p>Usabilla methods or properties are triggered using a data mapping in the Usabilla Remote Command tag, by using the following Tealium commands:</p>
 
 <table>
 <thead>
@@ -2075,7 +2068,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;usabilla&#34;</span>, desc
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  March 11, 2020 
+    <span>This page was last updated:  April 7, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

@@ -238,7 +238,7 @@ var utag_data = {
               <li><a href="#how-it-works">How It Works</a></li>
               <li><a href="#install">Install</a></li>
               <ul class="toc-h3"><li><a href="#dependency-manager">Dependency Manager</a></li>
-              <li><a href="#manual-for-ios">Manual for iOS</a></li>
+              <li><a href="#manual-ios">Manual (iOS)</a></li>
               </ul><li><a href="#initialize">Initialize</a></li>
               <li><a href="#supported-methods">Supported Methods</a></li>
               <ul class="toc-h3"><li><a href="#sdk-setup">SDK Setup</a></li>
@@ -290,14 +290,14 @@ var utag_data = {
 <ul>
 <li>Braze API key</li>
 <li><a href="/platforms/android-java/">Tealium for Android</a> or <a href="/platforms/ios-swift/">Tealium for iOS</a> in your app</li>
-<li>Braze Remote Command Tag in Tealium iQ Tag Management</li>
+<li>Braze Remote Command tag in Tealium iQ Tag Management</li>
 </ul>
 
 <h2 id="how-it-works">How It Works</h2>
 
-<p>The Braze integration uses the native Braze SDK, a remote command module that wraps the Braze methods, and the Braze Remote Commands tag that translates event tracking into native Braze calls. This solution leverages the convenience of tag management to configure a native Braze implementation without having to add vendor-specific code to your app.</p>
+<p>The Braze integration uses the native Braze SDK, a remote command module that wraps the Braze methods, and the Braze Remote Command tag that translates event tracking into native Braze calls. This solution leverages the convenience of Tealium iQ Tag Management to configure a native Braze implementation without having to add vendor-specific code to your app.</p>
 
-<p>There is no need to install the Braze SDK separately. Adding the Braze remote command module to your app build automatically installs and builds the required Braze libraries. If you previously added Braze to your app, remove it.</p>
+<p>Adding the Braze remote command module to your app build automatically installs and builds the required Braze libraries. If you are using a dependency manager installation, there is no need to install the Braze SDK separately.</p>
 
 <h2 id="install">Install</h2>
 
@@ -314,28 +314,23 @@ var utag_data = {
   <p>To install Braze remote commands for iOS using CocoaPods:</p>
 
 <ol>
-<li><p>Remove <code>tealium-swift</code> and <code>pod &quot;Appboy-iOS-SDK&quot;</code> if they already exist your Podfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumBraze</code> framework.</p></li>
+<li><p>Remove <code>tealium-swift</code> and <code>pod &quot;Appboy-iOS-SDK&quot;</code> if they exist in your Podfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumBraze</code> framework.</p></li>
 
 <li><p>Add the following dependency to your Podfile:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">pod <span style="color:#b84">&#34;TealiumBraze&#34;</span></code></pre></div>
 <p>The <code>TealiumBraze</code> pod includes the following <code>TealiumSwift</code> dependencies:</p>
-
-<pre><code>'tealium-swift/Core'
-'tealium-swift/TealiumDelegate'
-'tealium-swift/TealiumRemoteCommands'
-'tealium-swift/TealiumTagManagement'
-</code></pre></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#b84">&#39;tealium-swift/Core&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TealiumDelegate&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TealiumRemoteCommands&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TealiumTagManagement&#39;</span></code></pre></div></li>
 
 <li><p>Add any other required modules manually to your Podfile, such as the following:</p>
-
-<pre><code>'tealium-swift/TealiumLogger'
-'tealium-swift/TealiumLifecycle'
-'tealium-swift/TealiumAppData'
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#b84">&#39;tealium-swift/TealiumLogger&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TealiumLifecycle&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TealiumAppData&#39;</span></code></pre></div>
 <p>Learn more about the <a href="https://docs.tealium.com/platforms/ios-swift/modules/">recommended modules</a> for iOS.</p></li>
 
-<li><p>Import the modules <code>TealiumSwift</code> and <code>TealiumBraze</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class, or the Braze Remote Command.</p></li>
+<li><p>Import the modules <code>TealiumSwift</code> and <code>TealiumBraze</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class, or the Braze remote command.</p></li>
 </ol>
 
 </div>
@@ -375,9 +370,9 @@ var utag_data = {
 <p></div>
 </div></p>
 
-<h3 id="manual-for-ios">Manual for iOS</h3>
+<h3 id="manual-ios">Manual (iOS)</h3>
 
-<p>The manually installation for Braze remote commands requires one of the following iOS libraries to be installed:</p>
+<p>The manual installation for Braze remote commands requires one of the following iOS libraries to be installed:</p>
 
 <ul>
 <li><a href="https://docs.tealium.com/platforms/ios-swift/">Tealium for Swift</a></li>
@@ -442,13 +437,14 @@ TEALRemoteCommandResponseBlock brazeRemoteCommand <span style="font-weight:bold"
 
 <h2 id="initialize">Initialize</h2>
 
-<p>For all Tealium libraries, you need to register the Braze Remote Command when you initialize.</p>
+<p>For all Tealium libraries, you need to register the Braze remote command when you initialize.</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content">
 <div class="tab-pane" data-lang="Android" title="Android">
-  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">import</span> <span style="color:#900;font-weight:bold">com</span>.<span style="color:#008080">tealium</span>.<span style="color:#008080">remotecommands</span>.<span style="color:#008080">BrazeRemoteCommand</span>;
+  <p>The following code is designed for use with Tealium&rsquo;s Android library.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">import</span> <span style="color:#900;font-weight:bold">com</span>.<span style="color:#008080">tealium</span>.<span style="color:#008080">remotecommands</span>.<span style="color:#008080">BrazeRemoteCommand</span>;
 
 Tealium.<span style="color:#008080">Config</span> <span style="color:#900;font-weight:bold">config</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">Config</span>.<span style="color:#008080">create</span>(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>);
 Tealium <span style="color:#900;font-weight:bold">teal</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">createInstance</span>(TEALIUM_MAIN, config);
@@ -483,7 +479,7 @@ Set<span style="font-weight:bold">&lt;</span>Class<span style="font-weight:bold"
 </div>
 
 <div class="tab-pane" data-lang="Objective-C" title="Objective-C">
-  <p>This class is designed for the Objective-C library, but the code itself is written in Swift. You need to have a Bridging Header in your Xcode project for this to work correctly.</p>
+  <p>The following code is designed for use with Tealium&rsquo;s Objective-C library for iOS, although it is written in Swift. A Bridging Header is required in your Xcode project for this code to work correctly.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">let config <span style="font-weight:bold">=</span> TEALConfiguration(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
                                profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
                                environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
@@ -497,7 +493,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;braze&#34;</span>, descrip
 </div>
 
 <div class="tab-pane" data-lang="Swift" title="Swift">
-  <p>This class is designed for use with Tealium&rsquo;s Swift library for iOS (does not work with other platforms).</p>
+  <p>The following code is designed for use with Tealium&rsquo;s Swift library for iOS.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">teal</span> : Tealium?
 <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
                            profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
@@ -1666,8 +1662,8 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 	<div date-pref class="white">
 
 		
-			<a href="http://docs.tealium.com/platforms/remote-commands/integrations/firebase/" title="Remote Command: Firebase">
-			Remote Command: Firebase <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
+			<a href="http://docs.tealium.com/platforms/remote-commands/integrations/contentsquare/" title="Remote Command: Contentsquare">
+			Remote Command: Contentsquare <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
 
 			</a>
 		
@@ -2770,7 +2766,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  March 11, 2020 
+    <span>This page was last updated:  April 7, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

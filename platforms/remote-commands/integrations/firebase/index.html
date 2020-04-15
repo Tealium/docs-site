@@ -280,41 +280,67 @@ var utag_data = {
 
 <ul>
 <li><a href="/platforms/android-java/">Tealium for Android</a> or <a href="/platforms/ios-swift/">Tealium for iOS</a> in your app</li>
-<li>Firebase Remote Commands classes added to your app from the appropriate repo (Android or iOS)</li>
-<li><a href="https://community.tealiumiq.com/t5/Tags/Firebase-Mobile-Remote-Command-Tag-Setup-Guide/ta-p/30310">Firebase Mobile Remote Command Tag</a> in Tealium iQ Tag Management</li>
+<li>Firebase remote commands classes added to your app from the appropriate repo (Android or iOS)</li>
+<li><a href="https://community.tealiumiq.com/t5/Tags/Firebase-Mobile-Remote-Command-Tag-Setup-Guide/ta-p/30310">Firebase Mobile Remote Command tag</a> in Tealium iQ Tag Management</li>
 </ul>
 
 <h2 id="how-it-works">How It Works</h2>
 
-<p>The integration with Firebase uses the native Firebase SDK, a remote commands module that wraps the Firebase methods, and the Firebase Remote Command Tag that translates event tracking into native Firebase calls. This solution leverages the convenience of Tag Management to configure a native Firebase implementation without having to add vendor-specific code to your app.</p>
+<p>The Firebase integration uses the native Firebase SDK, a remote command module that wraps the Firebase methods, and the Firebase Remote Command tag that translates event tracking into native Firebase calls. This solution leverages the convenience of Tealium iQ Tag Management to configure a native Firebase implementation without having to add vendor-specific code to your app.</p>
+
+<p>Adding the Firebase remote command module to your app build automatically installs and builds the required Firebase libraries. If you are using a dependency manager installation, there is no need to install the Firebase SDK separately.</p>
 
 <h2 id="install">Install</h2>
 
 <h3 id="dependency-manager">Dependency Manager</h3>
 
-<p>It is recommended to install the Firebase remote command with one of the following dependency managers:</p>
+<p>We recommend using one of the following dependency managers for installation:</p>
+
+<p class="note">If you are using the Tealium iOS (Objective-C) library, use the manual installation method. The CocoaPods and Carthage options are only available if you are using the Tealium iOS (Swift) library.</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content">
 
 <div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
-  <p>To install via CocoaPods, add the following dependency to your Podfile:</p>
+  <p>To install Firebase remote commands for iOS using CocoaPods:</p>
+
+<ol>
+<li><p>Remove the following line if it exists in your Podfile:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pod <span style="color:#b84">&#34;Firebase/Analytics&#34;</span></code></pre></div></li>
+
+<li><p>Add the following dependency to your Podfile:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">pod <span style="color:#b84">&#34;TealiumFirebase&#34;</span></code></pre></div>
-<p>Remove the following line, if it exists, from your Podfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pod <span style="color:#b84">&#34;Firebase/Analytics&#34;</span></code></pre></div>
-<p><code>TealiumFirebase</code> already has a dependency on <code>tealium-swift</code>, so do not include it in your Podfile.</p>
+<p>The <code>TealiumFirebase</code> pod includes the following <code>TealiumSwift</code> dependencies:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#b84">&#39;tealium-swift/Core&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TealiumDelegate&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TealiumRemoteCommands&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TealiumTagManagement&#39;</span></code></pre></div></li>
+
+<li><p>Add any other required modules manually to your Podfile, such as the following:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#b84">&#39;tealium-swift/TealiumLogger&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TealiumCollect&#39;</span></code></pre></div>
+<p>Learn more about the <a href="https://docs.tealium.com/platforms/ios-swift/modules/">recommended modules</a> for iOS.</p></li>
+
+<li><p>Import the modules <code>TealiumSwift</code> and <code>TealiumFirebase</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class, or the Firebase remote command.</p></li>
+</ol>
 
 </div>
 
 <div class="tab-pane" data-lang="Carthage" title="Carthage">
-  <p>To install via Carthage, add the following dependency to your Cartfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">github <span style="color:#b84">&#34;tealium/tealium-ios-firebase-remote-command&#34;</span></code></pre></div>
-<p>Remove the following line, if it exists, from your Cartfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">binary <span style="color:#b84">&#34;https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json&#34;</span></code></pre></div>
-<p><code>TealiumFirebase</code> already has a dependency on <code>tealium-swift</code>, so do not include it in your Cartfile.</p>
+  <p>To install Firebase remote commands for iOS using Carthage:</p>
 
-<p>If you are using version 1.6.5+ of the Tealium for Swift SDK, the <code>TealiumDelegate</code> module needs to be included as well with your installation.</p>
+<ol>
+<li><p>Remove <code>tealium-swift</code> from your Cartfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumFirebase</code> framework.</p></li>
+
+<li><p>Remove the following line if it exists in your Cartfile:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">binary <span style="color:#b84">&#34;https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json&#34;</span></code></pre></div></li>
+
+<li><p>Add the following dependency to your Cartfile:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">github <span style="color:#b84">&#34;tealium/tealium-ios-firebase-remote-command&#34;</span></code></pre></div></li>
+</ol>
+
+<p class="note">Tealium for Swift SDK (version 1.6.5+) requires the <code>TealiumDelegate</code> module to be included with your installation.</p>
 
 </div>
 
@@ -330,14 +356,21 @@ var utag_data = {
 
 <h3 id="manual-ios">Manual (iOS)</h3>
 
-<p>To install the Firebase remote command manually for iOS:</p>
+<p>The manual installation for Firebase remote commands requires one of the following iOS libraries to be installed:</p>
+
+<ul>
+<li><a href="https://docs.tealium.com/platforms/ios-swift/">Tealium for Swift</a></li>
+<li><a href="https://docs.tealium.com/platforms/ios-objective-c/">Tealium for Objective-C</a></li>
+</ul>
+
+<p>To install the Firebase remote commands for your iOS project:</p>
 
 <ol>
-<li><p>Verify that you <a href="/platforms/ios-swift/install/">Tealium for iOS</a> and Firebase already installed.</p></li>
+<li><p>Install the <a href="https://firebase.google.com/docs/ios/setup">Firebase SDK</a>, if you haven&rsquo;t already done so.</p></li>
 
-<li><p>Clone the <a href="https://github.com/tealium/tealium-ios-firebase-remote-command">Tealium iOS Firebase Remote Command</a> repo and drag the files within the <code>Sources</code> folder into your project.</p></li>
+<li><p>Clone the <a href="https://github.com/tealium/tealium-ios-firebase-remote-command">Tealium iOS Firebase remote command</a> repo and drag the files within the <code>Sources</code> folder into your project.</p></li>
 
-<li><p>When initializing the Tealium SDK, update the completion handler as shown in the following example:</p>
+<li><p>When initializing the Tealium SDK, update the completion handler as follows:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium = Tealium(config: config) { responses <span style="font-weight:bold">in</span>
   <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands() <span style="font-weight:bold">else</span> {
       <span style="font-weight:bold">return</span>
@@ -349,18 +382,17 @@ var utag_data = {
 }</code></pre></div></li>
 </ol>
 
-<p>Manual install options are available for the following iOS Swift and Objective-C platforms:</p>
+<p>Manual install options are available for the iOS Swift and Objective-C platforms:</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content">
 
 <div class="tab-pane" data-lang="Swift" title="Swift">
-  <p>Add the remote command to the <code>TealiumHelper.swift</code> file as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">firebaseTracker</span> = FirebaseTracker()
-<span style="font-weight:bold">let</span> <span style="color:#008080">firebaseCommand</span> = FirebaseCommand(firebaseTracker: firebaseTracker)
+  <p>Add the remote command to the <code>TealiumHelper.swift</code> file as follows:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">firebaseCommand</span> = FirebaseCommand()
 <span style="font-weight:bold">let</span> <span style="color:#008080">firebaseRemoteCommand</span> = firebaseCommand.remoteCommand()
-tealium.addRemoteCommandID(<span style="color:#b84">&#34;firebase&#34;</span>,
+tealium.addRemoteCommand(<span style="color:#b84">&#34;firebase&#34;</span>,
                            description: <span style="font-weight:bold">nil</span>,
                            targetQueue: DispatchQueue.main,
                            responseBlock: firebaseRemoteCommand)</code></pre></div>
@@ -371,7 +403,9 @@ tealium.addRemoteCommandID(<span style="color:#b84">&#34;firebase&#34;</span>,
 <li><p>Clone the repo and the drag the files from the <code>Objective-C</code> folder into your project.</p></li>
 
 <li><p>Import the Swift code by adding the following line in the file <code>TealiumHelper.m</code>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">#<span style="font-weight:bold">import</span> <span style="color:#b84">&#34;TealiumRemoteCommandObjcApp-Swift.h&#34;</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">#<span style="font-weight:bold">import</span> <span style="color:#b84">&#34;TealiumRemoteCommandObjcApp-Swift.h&#34;</span></code></pre></div>
+<p class="note">The Swift bridging header for your target is named <code>&lt;MODULE-NAME&gt;-Swift.h</code>. Filter for &ldquo;Module Name&rdquo; in your target&rsquo;s build settings to find it.</p>
+  </li>
 
 <li><p>Initialize the remote command:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Objective-C" data-lang="Objective-C">FirebaseTracker <span style="font-weight:bold">*</span>firebaseTracker <span style="font-weight:bold">=</span> [[FirebaseTracker alloc] init];
@@ -380,9 +414,10 @@ TEALRemoteCommandResponseBlock firebaseRemoteCommand <span style="font-weight:bo
 [[Tealium instanceForKey:<span style="color:#b84">@&#34;MY_INSTANCE&#34;</span>] addRemoteCommandID:<span style="color:#b84">@&#34;firebase&#34;</span>
                                 description:<span style="color:#b84">@&#34;Firebase Remote Command&#34;</span>
                                 targetQueue:dispatch_get_main_queue()
-                                responseBlock:firebaseRemoteCommand];</code></pre></div>
-<p><a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_swift_into_objective-c">Learn more</a> about importing Swift into Objective-C.</p></li>
+                                responseBlock:firebaseRemoteCommand];</code></pre></div></li>
 </ol>
+
+<p>Learn about <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_swift_into_objective-c">importing Swift into Objective-C</a>.</p>
 
 </div>
 
@@ -391,23 +426,23 @@ TEALRemoteCommandResponseBlock firebaseRemoteCommand <span style="font-weight:bo
 
 <h2 id="initialize">Initialize</h2>
 
-<p>For all Tealium libraries, register the Firebase Mobile Remote Commands when you initialize.</p>
+<p>For all Tealium libraries, register the Firebase mobile remote commands when you initialize.</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content">
 <div class="tab-pane" data-lang="Android" title="Android">
-  <p>To add the Firebase Mobile Remote Commands, add the following new code:</p>
+  <p>The following code is designed for use with Tealium&rsquo;s Android library.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">RemoteCommand <span style="color:#900;font-weight:bold">firebase</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> FirebaseRemoteCommand(application);
 teal.<span style="color:#008080">addRemoteCommand</span>(firebase);</code></pre></div>
 </div>
 
 <div class="tab-pane" data-lang="Swift" title="Swift">
-  <p>The following code, already located in your iOS (Swift) app, sets up a <code>Tealium</code> config instance:</p>
+  <p>The following code is designed for use with Tealium&rsquo;s Swift library for iOS.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">teal</span> : Tealium?
 <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
                            profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-                           environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
+                           environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,<span style="color:#a61717;background-color:#e3d2d2">˜˜</span>
                            datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
                            optionalData: <span style="font-weight:bold">nil</span>)
 
@@ -415,23 +450,21 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
   <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands() <span style="font-weight:bold">else</span> {
         <span style="font-weight:bold">return</span>
   }
-  <span style="font-weight:bold">let</span> <span style="color:#008080">firebaseTracker</span> = FirebaseTracker()
-  <span style="font-weight:bold">let</span> <span style="color:#008080">firebaseCommand</span> = FirebaseCommand(firebaseTracker: firebaseTracker)
+  <span style="font-weight:bold">let</span> <span style="color:#008080">firebaseCommand</span> = FirebaseCommand()
   <span style="font-weight:bold">let</span> <span style="color:#008080">firebaseRemoteCommand</span> = firebaseCommand.remoteCommand()
-      remoteCommands.add(firebaseRemoteCommand)
+  remoteCommands.add(firebaseRemoteCommand)
 }</code></pre></div>
 </div>
 
 <div class="tab-pane" data-lang="Objective-C" title="Objective-C">
-  <p>The following code, that you already have in your iOS (Objective-C) app, sets up a <code>Tealium</code> config instance.  It needs a Bridging Header in your Xcode project to work properly.</p>
+  <p>The following code is designed for use with Tealium&rsquo;s Objective-C library for iOS, although it is written in Swift. A Bridging Header is required in your Xcode project for this code to work correctly.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">let config <span style="font-weight:bold">=</span> TEALConfiguration(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
                                profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
                                environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
                                datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
 let teal <span style="font-weight:bold">=</span> Tealium.newInstance(forKey: <span style="color:#b84">&#34;teal&#34;</span>, configuration: config)
 
-let firebaseTracker <span style="font-weight:bold">=</span> FirebaseTracker()
-let firebaseCommand <span style="font-weight:bold">=</span> FirebaseCommand(firebaseTracker: firebaseTracker)
+let firebaseCommand <span style="font-weight:bold">=</span> FirebaseCommand()
 let firebaseRemoteCommand <span style="font-weight:bold">=</span> firebaseCommand.remoteCommand()
 teal.addRemoteCommandID(<span style="color:#b84">&#34;firebase&#34;</span>, description: <span style="color:#999">nil</span>, targetQueue: DispatchQueue.main, responseBlock: firebaseRemoteCommand)</code></pre></div>
 </div>
@@ -443,7 +476,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;firebase&#34;</span>, desc
 
 <p>Events triggered by basic interactions with your app are tracked automatically. For more information see: <a href="https://support.google.com/firebase/answer/6317485?hl=en">Firebase automatically collected events</a>.</p>
 
-<p>Learn more about <a href="https://community.tealiumiq.com/t5/Tags/Firebase-Mobile-Remote-Command-Tag-Setup-Guide/ta-p/30310">Firebase Mobile Remote Command Tag Setup</a>.</p>
+<p>Learn about <a href="https://community.tealiumiq.com/t5/Tags/Firebase-Mobile-Remote-Command-Tag-Setup-Guide/ta-p/30310">Firebase Mobile Remote Command Tag setup</a>.</p>
 
 </div>
 
@@ -451,11 +484,11 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;firebase&#34;</span>, desc
 
 	<div date-pref class="white">
 		
-			<a href="http://docs.tealium.com/platforms/remote-commands/integrations/braze/" title="Remote Command: Braze "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
+			<a href="http://docs.tealium.com/platforms/remote-commands/integrations/facebook/" title="Remote Command: Facebook "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
     <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
     <path d="M0 0h24v24H0z" fill="none"/>
 </svg>
- Remote Command: Braze </a>
+ Remote Command: Facebook </a>
 		
 
 	</div>
@@ -1570,7 +1603,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;firebase&#34;</span>, desc
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  February 20, 2020 
+    <span>This page was last updated:  April 7, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
