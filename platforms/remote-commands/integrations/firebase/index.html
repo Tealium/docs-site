@@ -328,7 +328,7 @@ var utag_data = {
 
 <li><p>Add any other required modules manually to your Podfile, such as the following:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#b84">&#39;tealium-swift/TealiumLogger&#39;</span>
-<span style="color:#b84">&#39;tealium-swift/TealiumCollect&#39;</span></code></pre></div>
+<span style="color:#b84">&#39;tealium-swift/TealiumLifecycle&#39;</span></code></pre></div>
 <p>Learn more about the <a href="https://docs.tealium.com/platforms/ios-swift/modules/">recommended modules</a> for iOS.</p></li>
 
 <li><p>Import the modules <code>TealiumSwift</code> and <code>TealiumFirebase</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class, or the Firebase remote command.</p></li>
@@ -399,8 +399,7 @@ var utag_data = {
 
 <div class="tab-pane" data-lang="Swift" title="Swift">
   <p>Add the remote command to the <code>TealiumHelper.swift</code> file as follows:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">firebaseCommand</span> = FirebaseCommand()
-<span style="font-weight:bold">let</span> <span style="color:#008080">firebaseRemoteCommand</span> = firebaseCommand.remoteCommand()
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">firebaseRemoteCommand</span> = firebaseCommand.remoteCommand()
 tealium.addRemoteCommand(<span style="color:#b84">&#34;firebase&#34;</span>,
                            description: <span style="font-weight:bold">nil</span>,
                            targetQueue: DispatchQueue.main,
@@ -459,7 +458,8 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
   <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands() <span style="font-weight:bold">else</span> {
         <span style="font-weight:bold">return</span>
   }
-  <span style="font-weight:bold">let</span> <span style="color:#008080">firebaseCommand</span> = FirebaseCommand()
+  <span style="font-weight:bold">let</span> <span style="color:#008080">firebaseTracker</span> = FirebaseTracker()
+  <span style="font-weight:bold">let</span> <span style="color:#008080">firebaseCommand</span> = FirebaseCommand(firebaseTracker: firebaseTracker)
   <span style="font-weight:bold">let</span> <span style="color:#008080">firebaseRemoteCommand</span> = firebaseCommand.remoteCommand()
   remoteCommands.add(firebaseRemoteCommand)
 }</code></pre></div>
@@ -473,7 +473,8 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
                                datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
 let teal <span style="font-weight:bold">=</span> Tealium.newInstance(forKey: <span style="color:#b84">&#34;teal&#34;</span>, configuration: config)
 
-let firebaseCommand <span style="font-weight:bold">=</span> FirebaseCommand()
+let firebaseTracker <span style="font-weight:bold">=</span> FirebaseTracker()
+let firebaseCommand <span style="font-weight:bold">=</span> FirebaseCommand(firebaseTracker: firebaseTracker)
 let firebaseRemoteCommand <span style="font-weight:bold">=</span> firebaseCommand.remoteCommand()
 teal.addRemoteCommandID(<span style="color:#b84">&#34;firebase&#34;</span>, description: <span style="color:#999">nil</span>, targetQueue: DispatchQueue.main, responseBlock: firebaseRemoteCommand)</code></pre></div>
 </div>
@@ -483,7 +484,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;firebase&#34;</span>, desc
 
 <h2 id="track">Track</h2>
 
-<p>Events triggered by basic interactions with your app are tracked automatically. For more information see: <a href="https://support.google.com/firebase/answer/6317485?hl=en">Firebase automatically collected events</a>.</p>
+<p>Events triggered by basic interactions with your app are tracked automatically. <a href="https://support.google.com/firebase/answer/6317485?hl=en">Learn more</a> about Firebase automatically collected events.</p>
 
 <p>Learn about <a href="https://community.tealiumiq.com/t5/Tags/Firebase-Mobile-Remote-Command-Tag-Setup-Guide/ta-p/30310">Firebase Mobile Remote Command Tag setup</a>.</p>
 
@@ -1612,7 +1613,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;firebase&#34;</span>, desc
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  April 15, 2020 
+    <span>This page was last updated:  May 20, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
