@@ -230,17 +230,15 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#supported-platforms">Supported Platforms</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
               <li><a href="#sample-apps">Sample Apps</a></li>
               <li><a href="#install">Install</a></li>
               <ul class="toc-h3"><li><a href="#swift-package-manager-recommended">Swift Package Manager (Recommended)</a></li>
               <li><a href="#cocoapods">CocoaPods</a></li>
               <li><a href="#carthage">Carthage</a></li>
               </ul><li><a href="#initialize">Initialize</a></li>
-              <ul class="toc-h3"><li><a href="#logging">Logging</a></li>
-              </ul><li><a href="#event-batching">Event Batching</a></li>
-              <ul class="toc-h3"><li><a href="#tag-management">Tag Management</a></li>
-              <li><a href="#tealium-collect">Tealium Collect</a></li>
+              <li><a href="#log-level">Log Level</a></li>
+              <li><a href="#event-batching">Event Batching</a></li>
               </nav>
   </aside></div>
 
@@ -266,7 +264,7 @@ var utag_data = {
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
     <div class="f4 fw4 lh-copy">
-      How to install the Tealium SDK for iOS (Swift).
+      Learn to install the Tealium SDK for iOS (Swift).
     </div>
   
 
@@ -279,26 +277,20 @@ var utag_data = {
 <div class="prose" id="prose">
   
 
-<h2 id="supported-platforms">Supported Platforms</h2>
-
-<p>The Tealium iOS library is designed to allow for easy tracking of apps running on iOS, macOS, watchOS, or tvOS.</p>
-
-<p>The following platforms are supported:</p>
+<h2 id="requirements">Requirements</h2>
 
 <ul>
-<li>iOS 9.0+</li>
-<li>tvOS 9.2+</li>
-<li>watchOS 3.0+</li>
-<li>macOS 10.11+</li>
+<li>Xcode 7.0+</li>
+<li>iOS 9.0+, macOS 10.11+, watchOS 3.0+, or tvOS 9.2+</li>
+<li><a href="https://community.tealiumiq.com/t5/Getting-Started/Creating-a-Mobile-Profile/ta-p/16328">Tealium iQ Mobile Profile</a></li>
+<li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Introduction-to-Customer-Data-Hub/ta-p/17571">Tealium Customer Data Hub account</a></li>
 </ul>
-
-<p><a href="/platforms/ios-swift/modules/">Learn more</a> about which modules are supported for specific platforms.</p>
 
 <h2 id="sample-apps">Sample Apps</h2>
 
-<p>Explore the Swift <a href="https://github.com/Tealium/tealium-swift/tree/master/samples">sample apps</a> to help familiarize yourself with the Tealium library, tracking methods, and best practice implementation</p>
+<p>Explore the iOS (Swift) <a href="https://github.com/Tealium/tealium-swift/tree/master/samples">sample apps</a> to help familiarize yourself with the Tealium library, tracking methods, and best practice implementation</p>
 
-<p>To abstract the Tealium implementation from the rest of your app, we recommend using a helper class. This gives you a single entry point from which to initialize and make tracking calls. It also allows you to update the code in your helper file, and not in every single <code>ViewController</code> or Swift file.</p>
+<p>To abstract the Tealium implementation from the rest of your app, we recommend using a helper class. This gives you a single entry point from which to initialize and make tracking calls. It also allows you to update the code in your helper file, and not in every single <code>View</code> or Swift file.</p>
 
 <p>Explore our <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/TealiumSwiftExample">sample helper class</a>.</p>
 
@@ -308,12 +300,9 @@ var utag_data = {
 
 <p>Install the Tealium for iOS library with Swift Package Manager, CocoaPods, or Carthage.</p>
 
-<p class="note">If you do not require consent management, exclude or disable the consent manager module. The <a href="/platforms/ios-swift/consent-management/">Consent Manager</a> module is enabled by default, which initially prevents tracking calls from being sent. In order to allow tracking calls, set the consent status to <code>.consented</code>.</p>
-  
-
 <h3 id="swift-package-manager-recommended">Swift Package Manager (Recommended)</h3>
 
-<p>Supported in version 1.9.0+, the Swift Package Manager is the recommended and simplest way to install the Tealium Swift library:</p>
+<p>Swift Package Manager is the recommended and simplest way to install the Tealium Swift library:</p>
 
 <ol>
 <li>In your Xcode project, select <strong>File &gt; Swift Packages &gt; Add Package Dependency</strong></li>
@@ -322,7 +311,7 @@ var utag_data = {
 <li>Select the modules to install and add the modules to each of your app targets in your Xcode project, under <strong>Frameworks &gt; Libraries &amp; Embedded Content</strong></li>
 </ol>
 
-<p>The Swift Package Manager has the following limitations:</p>
+<p>Swift Package Manager has the following limitations:</p>
 
 <ul>
 <li>Due to lack of mixed-language source in a single target, the <a href="/platforms/ios-swift/module-list/crash-reporter/"><code>CrashReporter</code></a> and <a href="/platforms/ios-swift/module-list/autotracking/"><code>AutoTracking</code></a> modules are not supported through the Swift Package Manager. Verify that you do not need these modules before using Swift Package Manager.</li>
@@ -361,95 +350,37 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
 
 <h4 id="recommended-podfile">Recommended Podfile</h4>
 
-<p>The following is the recommended Podfile:</p>
+<p>The following is the list of recommended modules to add to your podfile:</p>
 
-<p class="tip">To disable specific modules from the Podfile, comment them out in the Podfile with <code>#</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl"><span style="color:#998;font-style:italic"># Podfile</span>
-<span style="color:#998;font-style:italic"># replace CPodTest with your target</span>
-target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weight:bold">do</span>
-    <span style="color:#998;font-style:italic"># Comment the next line if you&#39;re not using Swift and don&#39;t</span>
-    <span style="color:#998;font-style:italic"># want to use dynamic frameworks</span>
-    use_frameworks<span style="font-weight:bold">!</span>
+<p class="tip">To disable specific modules from the Podfile, comment them out in the Podfile with <code>#</code> or delete the line.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl"><span style="color:#998;font-style:italic"># ...</span>
+<span style="color:#998;font-style:italic"># *** Recommended minimum:</span>
+<span style="color:#998;font-style:italic"># All pods depend on Core. Supports all platforms.</span>
+pod <span style="color:#b84">&#34;tealium-swift/Core&#34;</span>
+pod <span style="color:#b84">&#34;tealium-swift/Lifecycle&#34;</span>
+pod <span style="color:#b84">&#34;tealium-swift/Collect&#34;</span> <span style="color:#998;font-style:italic"># for Server-side products, e.g. EventStream - usually this or TealiumTagManagement, but not often both</span>
+<span style="color:#998;font-style:italic"># OR</span>
+pod <span style="color:#b84">&#34;tealium-swift/TagManagement&#34;</span> <span style="color:#998;font-style:italic"># for Tealium iQ</span>
+pod <span style="color:#b84">&#34;tealium-swift/RemoteCommands&#34;</span>
 
-    <span style="color:#998;font-style:italic"># Pods for CPodTest</span>
-    <span style="color:#998;font-style:italic"># *** Recommended minimum:</span>
-    <span style="color:#998;font-style:italic"># Only disable if you&#39;re sure you don&#39;t need them.  ***</span>
+<span style="color:#998;font-style:italic"># *** Optional modules: You may not need these modules. Enable as required.   *** #</span>
 
-    <span style="color:#998;font-style:italic"># All pods depend on Core. Supports all platforms.</span>
-    pod <span style="color:#b84">&#34;tealium-swift/Core&#34;</span>
-    <span style="color:#998;font-style:italic"># All platforms. Provides important info about</span>
-    <span style="color:#998;font-style:italic"># the app bundle.</span>
-    pod <span style="color:#b84">&#34;tealium-swift/TealiumAppData&#34;</span>
-    <span style="color:#998;font-style:italic"># All platforms. Sends data to Tealium Customer Data Hub.</span>
-    pod <span style="color:#b84">&#34;tealium-swift/TealiumCollect&#34;</span>
-    <span style="color:#998;font-style:italic"># All platforms. Assists with GDPR/privacy compliance.</span>
-    pod <span style="color:#b84">&#34;tealium-swift/TealiumConsentManager&#34;</span>
-    <span style="color:#998;font-style:italic"># iOS, macOS, tvOS only. Detects connectivity state and queues track calls while offline.</span>
-    <span style="color:#998;font-style:italic"># Should be used in conjunction with TealiumDispatchQueue module.</span>
-    pod <span style="color:#b84">&#34;tealium-swift/TealiumConnectivity&#34;</span>
+<span style="color:#998;font-style:italic"># Provides Visitor Audience and Attiribute information back to the app</span>
+<span style="color:#998;font-style:italic"># pod &#34;tealium-swift/VisitorService&#34;</span>
 
-    <span style="color:#998;font-style:italic"># DataSource is included in the Core for Swift 1.8.0+. Uncomment for prior versions.</span>
-    <span style="color:#998;font-style:italic"># All platforms. Adds &#34;tealium_datasource&#34; to each dispatch, and extends TealiumConfig class.</span>
-    <span style="color:#998;font-style:italic"># pod &#34;tealium-swift/TealiumDataSource&#34;</span>
+<span style="color:#998;font-style:italic"># iOS Only. Gathers app attribution data and advertising IDs.</span>
+<span style="color:#998;font-style:italic"># pod &#34;tealium-swift/Attribution&#34;</span>
 
-    <span style="color:#998;font-style:italic"># FileStorage is included in the Core for Swift 1.8.0+. Uncomment for prior versions.</span>
-    <span style="color:#998;font-style:italic"># All platforms. Stores persistent data to File Storage.</span>
-    <span style="color:#998;font-style:italic"># Bundles PersistentData module.</span>
-    <span style="color:#998;font-style:italic"># Should not be used if DefaultsStorage module is in use.</span>
-    <span style="color:#998;font-style:italic"># Pick the option that best suits you.</span>
-    <span style="color:#998;font-style:italic"># pod &#34;tealium-swift/TealiumFileStorage&#34;</span>
+<span style="color:#998;font-style:italic"># iOS and tvOS only. Generally not recommended. See separate notes in module documentation.</span>
+<span style="color:#998;font-style:italic"># pod &#34;tealium-swift/Autotracking&#34;</span>
 
-    <span style="color:#998;font-style:italic"># All platforms. Enables the use of delegates</span>
-    <span style="color:#998;font-style:italic"># and completion handlers on the Tealium class.</span>
-    pod <span style="color:#b84">&#34;tealium-swift/TealiumDelegate&#34;</span>
-    <span style="color:#998;font-style:italic"># All platforms. Adds device information to each dispatch.</span>
-    pod <span style="color:#b84">&#34;tealium-swift/TealiumDeviceData&#34;</span>
-    <span style="color:#998;font-style:italic"># All platforms. Enables offline storage of queued events.</span>
-    <span style="color:#998;font-style:italic"># (required for Consent, Connectivity).</span>
-    pod <span style="color:#b84">&#34;tealium-swift/TealiumDispatchQueue&#34;</span>
-    <span style="color:#998;font-style:italic"># All platforms. Add app lifecycle information to each dispatch.</span>
-    pod <span style="color:#b84">&#34;tealium-swift/TealiumLifecycle&#34;</span>
-    <span style="color:#998;font-style:italic"># All platforms. Enables logging information to the LLDB console.</span>
-    pod <span style="color:#b84">&#34;tealium-swift/TealiumLogger&#34;</span>
-    <span style="color:#998;font-style:italic"># iOS only. Used with the TagManagement module to trigger Remote Commands</span>
-    pod <span style="color:#b84">&#34;tealium-swift/TealiumRemoteCommands&#34;</span>
-    <span style="color:#998;font-style:italic"># iOS only. Enables Tealium iQ Tag Management.</span>
-    pod <span style="color:#b84">&#34;tealium-swift/TealiumTagManagement&#34;</span>
-    <span style="color:#998;font-style:italic"># All platforms. Adds important data to each dispatch, and enables temporary storage of data for the current session.</span>
-    pod <span style="color:#b84">&#34;tealium-swift/TealiumVolatileData&#34;</span>
+<span style="color:#998;font-style:italic"># See separate notes in module documentation.</span>
+<span style="color:#998;font-style:italic"># pod &#34;tealium-swift/Location&#34;</span>
 
-    <span style="color:#998;font-style:italic"># *** Optional modules: You may not need these modules. Enable as required.   *** #</span>
-
-    <span style="color:#998;font-style:italic"># iOS Only. Gathers app attribution data and advertising IDs.</span>
-    <span style="color:#998;font-style:italic"># pod &#34;tealium-swift/TealiumAttribution&#34;</span>
-
-    <span style="color:#998;font-style:italic"># iOS and tvOS only. Generally not recommended. See separate notes in module documentation.</span>
-    <span style="color:#998;font-style:italic"># pod &#34;tealium-swift/TealiumAutotracking&#34;</span>
-
-    <span style="color:#998;font-style:italic"># DefaultStorage is included in the Core for Swift 1.8.0+. Uncomment for prior versions.</span>
-    <span style="color:#998;font-style:italic"># All platforms. Stores persistent data to UserDefaults. Bundles PersistentData module. Should not be used if FileStorage module is in use.</span>
-    <span style="color:#998;font-style:italic"># pod &#34;tealium-swift/TealiumDefaultsStorage&#34;</span>
-
-    <span style="color:#998;font-style:italic"># iOS only. Reports detailed crash information. Installs separate TealiumCrashReporter dependency (based on PLCrashReporter).</span>
-    <span style="color:#998;font-style:italic"># pod &#34;tealium-swift/Crash&#34;</span>
-end</code></pre></div>
-<h4 id="full-podfile">Full Podfile</h4>
-
-<p>The full Podfile imports the entire Tealium for iOS (Swift), including all modules specified as optional:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#998;font-style:italic"># Uncomment the next line to define a global platform for your project</span>
-platform <span style="color:#b84">:ios</span>, <span style="color:#b84">&#39;9.0&#39;</span>
-
-target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weight:bold">do</span>
-    <span style="color:#998;font-style:italic"># Comment the next line if you&#39;re not using Swift and don&#39;t want to use dynamic frameworks</span>
-    use_frameworks!
-
-    <span style="color:#998;font-style:italic"># Pods for CPodTest</span>
-
-    <span style="color:#998;font-style:italic"># new entry for Tealium pod</span>
-    pod <span style="color:#b84">&#39;tealium-swift&#39;</span>
-<span style="font-weight:bold">end</span></code></pre></div>
-<p>To disable specific modules, see the <code>TealiumModulesList</code> struct and relevant methods to blacklist the modules in the <a href="/platforms/ios-swift/api/tealium-config/"><code>TealiumConfig</code></a> class.</p>
-
+<span style="color:#998;font-style:italic"># iOS only. Reports detailed crash information.</span>
+<span style="color:#998;font-style:italic"># Installs separate TealiumCrashReporter dependency (based on PLCrashReporter).</span>
+<span style="color:#998;font-style:italic"># pod &#34;TealiumCrashModule&#34;</span>
+<span style="color:#998;font-style:italic"># ...</span></code></pre></div>
 <h3 id="carthage">Carthage</h3>
 
 <p>To install Tealium for iOS (Swift) with Carthage:</p>
@@ -467,24 +398,20 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
 <li><p>Drag the frameworks you require into your Xcode project&rsquo;s <strong>General &gt; Embedded Binaries</strong> section.<br />
 <p class="note">Verify that the Tealium frameworks have been added to the Embedded Binaries section in your project settings, otherwise your app crashes at launch.</p></p></li>
 
-<li><p>Follow the instructions listed in the Carthage <a href="https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos">Getting Started</a> documentation to add the relevant build phases scripts, to ensure you don&rsquo;t run into any issues when submitting your app.</p></li>
+<li><p>Follow the instructions listed in the <a href="https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos">Carthage Getting Started</a> documentation to add the relevant build phases scripts, to ensure you don&rsquo;t run into any issues when submitting your app.</p></li>
 </ol>
 
-<h4 id="about-modules-1-6-5">About Modules (1.6.5+)</h4>
+<h4 id="importing-modules">Importing Modules</h4>
 
-<p>As of version 1.6.5, the Tealium Swift SDK has been split up into separate modules/frameworks. This means you need only import the specific frameworks for the modules you need to use, which helps to reduce the binary size and, ultimately, increase your app&rsquo;s performance.</p>
+<p>The Tealium Swift SDK has been split up into separate modules/frameworks. This means you need only import the specific frameworks for the modules you need to use, which helps to reduce the binary size and, ultimately, increase your app&rsquo;s performance.</p>
 
 <p><strong>Module import statements</strong></p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumCore</span>              <span style="color:#998;font-style:italic">// required for Tealium, TealiumConfig, TealiumInstanceManager</span>
-<span style="color:#458;font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumVolatileData</span>      <span style="color:#998;font-style:italic">// required if you wish to store volatile data through the Volatile Data API</span>
-<span style="color:#998;font-style:italic">//import TealiumFileStorage     // Included in TealiumCore for Swift 1.8.0+. Import for prior versions.</span>
-<span style="color:#998;font-style:italic">//import TealiumDefaultsStorage // Included in TealiumCore for Swift 1.8.0+. Import for prior versions if you need to store persistent data</span>
+<span style="color:#458;font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumTagManagement</span>		  <span style="color:#998;font-style:italic">// required to dispatch track calls to Tealium IQ</span>
+<span style="color:#458;font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumCollect</span>			  <span style="color:#998;font-style:italic">// required to dispatch track calls to Tealium&#39;s Customer Data Hub</span>
 <span style="color:#458;font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumRemoteCommands</span>    <span style="color:#998;font-style:italic">// required if you need to interact with the Remote Commands API</span>
-<span style="color:#458;font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumDelegate</span>          <span style="color:#998;font-style:italic">// required if you need to set up a tracking delegate</span>
-<span style="color:#998;font-style:italic">//import TealiumDataSource      // Included in TealiumCore for Swift 1.8.0+. Import for prior versions to</span>
-                                <span style="color:#998;font-style:italic">//     allow datasource param to be set on the TealiumConfig class instance</span>
-<span style="color:#458;font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumLifecycle</span>         <span style="color:#998;font-style:italic">// only required if you need to manually call the Lifecycle API</span></code></pre></div>
-<p>Due to Carthage limitations, we had to choose between the convenience of importing the entire SDK, and the flexibility and performance gains of a fully modular install. The downside to this is that it&rsquo;s now necessary to add each module you wish to use individually.</p>
+<span style="color:#458;font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumLifecycle</span>         <span style="color:#998;font-style:italic">// required if you need to collect lifecycle events and associated data</span></code></pre></div>
+<p>Due to Carthage limitations, we had to choose between the convenience of importing the entire SDK, and the flexibility and performance gains of a fully modular install. The downside to this is that it&rsquo;s necessary to add each module you wish to use individually.</p>
 
 <ul>
 <li>Carthage builds <em>all</em> the modules and output the resulting <code>.framework</code> files into your Carthage build directory.</li>
@@ -495,61 +422,97 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
 
 <h2 id="initialize">Initialize</h2>
 
-<p>It is recommended to manage the initialization of the <a href="/platforms/ios-swift/api/tealium/#class-tealium"><code>Tealium</code></a> class. This provides a single point of entry for the Tealium iOS library, and simplifies future upgrades.</p>
+<p class="note">We recommend managing your <a href="/platforms/ios-swift/api/tealium/#class-tealium"><code>Tealium</code></a> instance by using a tracking helper class. This provides a single point of entry for the Tealium iOS library, and simplifies future upgrades.</p>
 
 <p>To initialize Tealium, pass a <a href="/platforms/ios-swift/api/tealium-config/"><code>TealiumConfig</code></a> instance to the <a href="/platforms/ios-swift/api/tealium/#tealium"><code>Tealium()</code></a> constructor, as shown in the following example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
+    <span style="font-weight:bold">static</span> <span style="font-weight:bold">let</span> <span style="color:#008080">shared</span> = TealiumHelper()
+    <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+                               profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
+                               environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
+                               datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
+    <span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
 
-<span style="font-weight:bold">static</span> <span style="font-weight:bold">let</span> <span style="color:#008080">shared</span> = TealiumHelper()
-<span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
+    <span style="font-weight:bold">private</span> <span style="font-weight:bold">init</span>() {
 
-	<span style="font-weight:bold">private</span> <span style="font-weight:bold">init</span>() {
-		initTealium()
-	}
+        <span style="color:#998;font-style:italic">// add necessessary config options</span>
+        config.batchingEnabled = <span style="font-weight:bold">true</span>
+        config.logLevel = .debug
 
-	<span style="font-weight:bold">private</span> <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">initTealium</span>() {
-		<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-   	       		                   profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-        	   	                   environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-           		                   datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
-		<span style="color:#998;font-style:italic">// add config options as required</span>
-		config.setLogLevel(.verbose)
-		<span style="color:#998;font-style:italic">// initialize and keep a reference to Tealium</span>
-		tealium = Tealium(config: config) { moduleResponses <span style="font-weight:bold">in</span>
-		    <span style="color:#998;font-style:italic">// Completion block; perform post-init tasks here</span>
-		}
-	}
+        <span style="color:#998;font-style:italic">// add desired Collectors - no need to include if want all compiled collectors</span>
+        config.collectors = [Collectors.Lifecycle,
+                             Collectors.Location,
+                             Collectors.VisitorService]
+
+        <span style="color:#998;font-style:italic">// add desired Dispatchers - no need to include if want compiled dispatchers</span>
+        config.dispatchers = [Dispatchers.TagManagement,
+                              Dispatchers.RemoteCommands]
+
+        tealium = Tealium(config: config)
+
+        <span style="color:#998;font-style:italic">// optional post init processing</span>
+        tealium?.dataLayer.add(<span style="color:#b84">&#34;mykey&#34;</span>, <span style="color:#b84">&#34;myvalue&#34;</span>, expiration: .forever)
+
+    }
+
+    <span style="font-weight:bold">public</span> <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">start</span>() {
+        <span style="font-weight:bold">_</span> = TealiumHelper.shared
+    }
+
+    <span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">func</span> trackView(title: <span style="color:#999">String</span>, data: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>]?) {    
+      <span style="font-weight:bold">let</span> <span style="color:#008080">tealView</span> = TealiumView(title, dataLayer: data)
+      TealiumHelper.shared.tealium?.track(tealView)
+    }
+
+    <span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">func</span> trackEvent(title: <span style="color:#999">String</span>, data: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>]?) {
+      <span style="font-weight:bold">let</span> <span style="color:#008080">tealEvent</span> = TealiumEvent(title, dataLayer: data)
+      TealiumHelper.shared.tealium?.track(tealEvent)
+    }
 }</code></pre></div>
-<p class="note">In version 1.9.0+, Mobile Publish Settings are enabled by default, and must be disabled if you don’t wish to use them. Configure the Mobile Publish Settings in iQ Tag Management, or disable it using <code>config.shouldUseRemotePublishSettings = false</code>.</p>
+<p class="note">Mobile Publish Settings are enabled by default, and must be disabled if you don’t wish to use them. Configure the Mobile Publish Settings in iQ Tag Management, or disable them using <code>config.shouldUseRemotePublishSettings = false</code>.</p>
 
-<h3 id="logging">Logging</h3>
+<h2 id="log-level">Log Level</h2>
 
-<p>To set a log level, call the <a href="/platforms/ios-swift/api/tealium-config/#setloglevel"><code>setLogLevel()</code></a> method on your <code>TealiumConfig</code> instance with one of the following values:</p>
+<p>To set a log level, set the <a href="/platforms/ios-swift/api/tealium-config/#setloglevel"><code>logLevel</code></a> property on your <code>TealiumConfig</code> instance with one of the following values:</p>
 
 <ul>
-<li><code>none</code></li>
-<li><code>.errors</code></li>
-<li><code>.warnings</code></li>
-<li><code>.verbose</code></li>
+<li><code>.silent</code></li>
+<li><code>.fault</code></li>
+<li><code>.error</code></li>
+<li><code>.debug</code></li>
+<li><code>.info</code></li>
 </ul>
 
-<p>For debugging purposes, <code>.verbose</code> is recommended, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.setLogLevel(.verbose)</code></pre></div>
-<h2 id="event-batching">Event Batching</h2>
+<p>For debugging purposes, <code>.debug</code> is recommended, as shown in the following example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.logLevel = .debug</code></pre></div>
+<p>The default log type used is <a href="https://developer.apple.com/documentation/os/oslog"><code>OSLog</code></a>, but this is modifiable to use <code>print</code> by updating the <code>logType</code> property on the <code>TealiumConfig</code> object to <code>.print</code> like so:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.logType = .print</code></pre></div>
+<p>It is also possible to add your own logger instead of using the <code>TealiumLogger</code> by conforming your <code>Logger</code> class to the <code>TealiumLoggerProtocol</code> and setting the instance of that class to the <code>logger</code> property on the <code>TealiumConfig</code> object. Here is an example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">CustomLogger</span>: TealiumLoggerProtocol {
+	<span style="color:#998;font-style:italic">// ... conforming to the TealiumLoggerProtocol</span>
+	<span style="color:#998;font-style:italic">// plus your own custom methods</span>
+}
 
-<p>Prior to version 1.9.0, the Tealium Swift library did not use <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">Mobile Publish Settings</a>. Therefore, event batching must be enabled and configured when the SDK is initialized. Version 1.9.0+ provides Mobile Publish Settings support, allowing event batching to be configured remotely.</p>
-
-<p>This example enables event batching and sets the batch size and queue size.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumDispatchQueue</span> <span style="color:#998;font-style:italic">// required for event batching options</span>
-<span style="color:#458;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
+<span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
+	<span style="font-weight:bold">let</span> <span style="color:#008080">customLogger</span> = CustomLogger()
 	<span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
 	<span style="color:#998;font-style:italic">// ...</span>
 
-	<span style="font-weight:bold">private</span> <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">initTealium</span>() {
-		<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
- 	       		                   profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-                               environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-                               datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
+	<span style="font-weight:bold">private</span> <span style="font-weight:bold">init</span>() {
+		config.logger = customLogger
+		<span style="color:#998;font-style:italic">// ...</span>
+	}
+}</code></pre></div>
+<h2 id="event-batching">Event Batching</h2>
+
+<p>Event Batching is either be configured locally on the <code>TealiumConfig</code> instance, or by using the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">Mobile Publish Settings</a>. Local settings override remote settings.</p>
+
+<p>This example enables event batching and sets the batch size and queue size.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
+	<span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
+	<span style="color:#998;font-style:italic">// ...</span>
+
+	<span style="font-weight:bold">private</span> <span style="font-weight:bold">init</span>() {
 		config.batchingEnabled = <span style="font-weight:bold">true</span>            <span style="color:#998;font-style:italic">// enable batching</span>
 		config.batchSize = <span style="color:#099">10</span>                    <span style="color:#998;font-style:italic">// size of batch</span>
 		config.dispatchAfter = <span style="color:#099">25</span>                <span style="color:#998;font-style:italic">// flush after every 25 events</span>
@@ -581,28 +544,28 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
 
 <tr>
 <td><a href="/platforms/ios-swift/api/tealium-config/#dispatchafter"><code>dispatchAfter</code></a></td>
-<td>Sets the number of events after which the queue will be flushed.</td>
+<td>Sets the number of events after which the queue is flushed.</td>
 </tr>
 
 <tr>
 <td><a href="/platforms/ios-swift/api/tealium-config/#dispatchexpiration"><code>dispatchExpiration</code></a></td>
-<td>Sets the batch expiration in days. If the device is offline for an extended period, events older than this will be deleted.</td>
+<td>Sets the batch expiration in days. If the device is offline for an extended period, events older than this are deleted.</td>
 </tr>
 
 <tr>
 <td><a href="/platforms/ios-swift/api/tealium-config/#dispatchqueuelimit"><code>dispatchQueueLimit</code></a></td>
-<td>Sets the maximum number of queued events. If this number is reached, and the queue has not been flushed, the oldest events will be deleted.</td>
+<td>Sets the maximum number of queued events. If this number is reached, and the queue has not been flushed, the oldest events are deleted.</td>
 </tr>
 </tbody>
 </table>
 
-<h3 id="tag-management">Tag Management</h3>
+<h4 id="tag-management">Tag Management</h4>
 
-<p>With Tag Management and event batching enabled, tracking calls are dispatched as individual JavaScript calls to the hidden webview.</p>
+<p>With Tag Management and event batching enabled, tracking calls are dispatched as individual JavaScript calls to the hidden WebView.</p>
 
 <p>Configured tags are triggered individually, resulting in multiple requests per event leaving the device. This improves device performance by waking up the device less frequently than sending real-time events.</p>
 
-<h3 id="tealium-collect">Tealium Collect</h3>
+<h4 id="tealium-collect">Tealium Collect</h4>
 
 <p>This endpoint currently only accepts batch data generated by the Tealium SDK, in a proprietary batch format.</p>
 
@@ -619,6 +582,7 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
 			Track <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
 
 			</a>
+		
 		
 	</div>
 
@@ -738,6 +702,26 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-server-side">Server-Side</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/tracking-webviews/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-javascript-interface">Tracking Webviews</a>
       </li>
       
     
@@ -1460,7 +1444,7 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/android-java/api/life-cycle/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-java-api-life-cycle">LifeCycle</a>
+        <a href="/platforms/android-java/api/life-cycle/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-java-api-life-cycle">Lifecycle</a>
       </li>
       
     
@@ -1548,6 +1532,572 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/android-java/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-java-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".android-kotlin">Android (Kotlin)</a>
+        <ul class="android-kotlin desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-data-layer">Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/identity-resolution/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-identity-resolution">Identity Resolution</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 pl3 pr2  primary-color hover-bg-primary " data-target=".android-kotlin-module-list">Module List</a>
+        <ul class="android-kotlin-module-list desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/collect/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-collect">Collect Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/collectors/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-collectors">Collectors Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/install-referrer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-install-referrer">Install Referrer Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/lifecycle-tracking/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-lifecycle-tracking">Lifecycle Tracking Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/location/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-location">Location Manager Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/tag-management/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-tagmanagement">Tag Management Dispatcher Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/visitor-service/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-visitor-service">Visitor Service Module</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/tv/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-tv">Android TV</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 pl3 pr2  primary-color hover-bg-primary " data-target=".android-kotlin-api">API Reference</a>
+        <ul class="android-kotlin-api desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/consent-category/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-consent-category">ConsentCategory</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/consent-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-consent-manager">ConsentManager</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/current-visit/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-current-visit">CurrentVisit</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/data-layer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-data-layer">DataLayer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/lifecycle/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-lifecycle">Lifecycle</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/location-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-location-manager">LocationManager</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/tealium/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-tealium">Tealium</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/tealium-config/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-tealium-config">TealiumConfig</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/visitor-profile/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-visitor-profile">VisitorProfile</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/visitor-service/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-visitor-service">VisitorService</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-release-notes">Release Notes</a>
       </li>
       
     
@@ -2263,8 +2813,874 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
       
       
       
+      <li class="w-100 hover-accent-color-light fw8" data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".ios-swift-v1">iOS (Swift) 1.x</a>
+        <ul class="ios-swift-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-data-layer">Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/app-extensions/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-app-extensions">App Extensions</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/identity-resolution/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-identity-resolution">Identity Resolution</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/modules/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-modules">Modules</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 pl3 pr2  primary-color hover-bg-primary " data-target=".ios-swift-v1-module-list">Module List</a>
+        <ul class="ios-swift-v1-module-list desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/appdata/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-appdata">AppData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/attribution/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-attribution">Attribution Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/autotracking/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-autotracking">AutoTracking Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/collect/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-collect">Collect Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/connectivity/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-connectivity">Connectivity Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-crashreporter">CrashReporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/datasource/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-datasource">DataSource Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/defaults-storage/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-defaultstorage">DefaultStorage Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/delegate/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-delegate">Delegate Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/device-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-devicedata">DeviceData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/dispatch-queue/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-dispatchqueue">DispatchQueue Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/file-storage/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-filestorage">FileStorage Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/lifecycle/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-lifecycle">Lifecycle Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/location/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-location">Location Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/logger/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-logger">Logger Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/persistent-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-persistentdata">PersistentData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/remote-commands/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-remotecommands">RemoteCommands Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/tag-management/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-tagmanagement">TagManagement Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/visitor-service/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-visitor-service">VisitorService Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/volatile-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-volatiledata">VolatileData Module</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-feature-comparison">Feature Comparison</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/with-objective-c/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-with-objective-c">Working with Objective-C</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 pl3 pr2  primary-color hover-bg-primary " data-target=".ios-swift-v1-api">API Reference</a>
+        <ul class="ios-swift-v1-api desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-config/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-config">TealiumConfig</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-consent-categories/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-consent-categories">TealiumConsentCategories</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-consent-manager-delegate/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-consent-manager-delegate">TealiumConsentManagerDelegate</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-consent-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-consent-manager">TealiumConsentManager</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-instance-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-instance-manager">TealiumInstanceManager</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-persistent-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-persistent-data">TealiumPersistentData</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-volatile-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-volatile-data">TealiumVolatileData</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium">Tealium</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8 active" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2 primary-color expanded " data-target=".ios-swift">iOS (Swift)</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2 primary-color expanded " data-target=".ios-swift">iOS (Swift) 2.x</a>
         <ul class="ios-swift desktopmenu animated fadeIn list pl0 db">
             
 
@@ -2359,7 +3775,7 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/ios-swift/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-data-management">Data Management</a>
+        <a href="/platforms/ios-swift/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-consent-management">Consent Management</a>
       </li>
       
     
@@ -2400,26 +3816,6 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/ios-swift/identity-resolution/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-identity-resolution">Identity Resolution</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/ios-swift/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-consent-management">Consent Management</a>
       </li>
       
     
@@ -2594,107 +3990,7 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/datasource/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-datasource">DataSource Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/defaults-storage/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-defaultstorage">DefaultStorage Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/delegate/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-delegate">Delegate Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/module-list/device-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-devicedata">DeviceData Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/dispatch-queue/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-dispatchqueue">DispatchQueue Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/file-storage/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-filestorage">FileStorage Module</a>
       </li>
       
     
@@ -2735,46 +4031,6 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/module-list/location/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-location">Location Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/logger/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-logger">Logger Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/persistent-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-persistentdata">PersistentData Module</a>
       </li>
       
     
@@ -2841,47 +4097,7 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
   
   
 
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/volatile-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-volatiledata">VolatileData Module</a>
-      </li>
-      
-    
-  
-  
-
         </ul>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/ios-swift/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-feature-comparison">Feature Comparison</a>
       </li>
       
     
@@ -2936,6 +4152,26 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift/api/tealium/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium">Tealium</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/api/tealium-config/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-config">TealiumConfig</a>
       </li>
       
@@ -2976,26 +4212,6 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/api/tealium-consent-manager-delegate/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-consent-manager-delegate">TealiumConsentManagerDelegate</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/api/tealium-consent-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-consent-manager">TealiumConsentManager</a>
       </li>
       
@@ -3017,66 +4233,6 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/api/tealium-instance-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-instance-manager">TealiumInstanceManager</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/api/tealium-persistent-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-persistent-data">TealiumPersistentData</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/api/tealium-volatile-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-volatile-data">TealiumVolatileData</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/api/tealium/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium">Tealium</a>
       </li>
       
     
@@ -3747,6 +4903,26 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/javascript/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".utag-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/javascript/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".javascript-track">Track</a>
       </li>
       
@@ -3768,26 +4944,6 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/javascript/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".">Data Layer</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/javascript/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".utag-install">Install</a>
       </li>
       
     
@@ -4929,7 +6085,7 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  February 20, 2020 
+    <span>This page was last updated:  August 12, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -5006,6 +6162,12 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/android-kotlin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Android (Kotlin)
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/cordova/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           Cordova
         </a>
@@ -5024,8 +6186,14 @@ target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weig
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/ios-swift-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          iOS (Swift) 1.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/ios-swift/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          iOS (Swift)
+          iOS (Swift) 2.x
         </a>
     </li>
   

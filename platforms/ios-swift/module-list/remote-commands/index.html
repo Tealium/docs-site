@@ -233,7 +233,8 @@ var utag_data = {
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
               <li><a href="#supported-platforms">Supported Platforms</a></li>
               <li><a href="#install">Install</a></li>
-              <ul class="toc-h3"><li><a href="#cocoapods">CocoaPods</a></li>
+              <ul class="toc-h3"><li><a href="#swift-package-manager-recommended">Swift Package Manager (Recommended)</a></li>
+              <li><a href="#cocoapods">CocoaPods</a></li>
               <li><a href="#carthage">Carthage</a></li>
               </ul><li><a href="#example">Example</a></li>
               <li><a href="#data-layer">Data Layer</a></li>
@@ -241,10 +242,7 @@ var utag_data = {
               <ul class="toc-h3"><li><a href="#init">init()</a></li>
               <li><a href="#add">add()</a></li>
               <li><a href="#remove">remove()</a></li>
-              <li><a href="#disableremotecommands">disableRemoteCommands()</a></li>
-              <li><a href="#enableremotecommands">enableRemoteCommands()</a></li>
-              <li><a href="#disableremotehttpcommand">disableRemoteHTTPCommand()</a></li>
-              <li><a href="#enableremotehttpcommand">enableRemoteHTTPCommand()</a></li>
+              <li><a href="#remotehttpcommanddisabled">remoteHTTPCommandDisabled</a></li>
               </ul><li><a href="#remote-http-command">Remote HTTP Command</a></li>
               </nav>
   </aside></div>
@@ -284,7 +282,7 @@ var utag_data = {
 <div class="prose" id="prose">
   
 
-<p><a href="/platforms/remote-commands/">Learn more</a> about remote commands.</p>
+<p>Learn more about <a href="/platforms/remote-commands/">remote commands</a>.</p>
 
 <h2 id="requirements">Requirements</h2>
 
@@ -300,13 +298,26 @@ var utag_data = {
 
 <h2 id="install">Install</h2>
 
-<p>Install the RemoteCommands module with CocoaPods or Carthage.</p>
+<p>Install the RemoteCommands module with Swift Package Manager, CocoaPods or Carthage.</p>
+
+<h3 id="swift-package-manager-recommended">Swift Package Manager (Recommended)</h3>
+
+<p>Supported in version 1.9.0+, the Swift Package Manager (SMP) is the recommended and simplest way to install the Tealium Swift library:</p>
+
+<ol>
+<li>In your Xcode project, select <strong>File &gt; Swift Packages &gt; Add Package Dependency</strong></li>
+<li>Enter the repository URL: <code>https://github.com/tealium/tealium-swift</code></li>
+<li>Configure the version rules. Typically, <code>&quot;Up to next major&quot;</code> is recommended. If the current Tealium Swift library version does not appears in the list, then reset your Swift package cache.</li>
+<li>Select the <code>RemoteCommands</code> module from the list of modules to install and add it each of your app targets in your Xcode project, under <strong>Frameworks &gt; Libraries &amp; Embedded Content</strong></li>
+</ol>
+
+<p>Learn more about the <a href="/platforms/ios-swift/install/#swift-package-manager-recommended">SPM installation for iOS</a>.</p>
 
 <h3 id="cocoapods">CocoaPods</h3>
 
 <p>To install the RemoteCommands module with CocoaPods, add the following pod to your Podfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#b84">&#39;tealium-swift/TealiumRemoteCommands&#39;</span></code></pre></div>
-<p>The framework is auto-instantiated. It has a dependency on the <code>TealiumCore</code> pod. <a href="/platforms/ios-swift/install/#cocoapods">Learn more</a> about CocoaPods installation for iOS.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#b84">&#39;tealium-swift/RemoteCommands&#39;</span></code></pre></div>
+<p>Learn more about the <a href="/platforms/ios-swift/install/#cocoapods">CocoaPods installation for iOS</a>.</p>
 
 <h3 id="carthage">Carthage</h3>
 
@@ -322,7 +333,7 @@ var utag_data = {
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumRemoteCommands</span></code></pre></div></li>
 </ol>
 
-<p>The framework is auto-instantiated. It has a dependency on <code>TealiumCore</code>. No additional import statements are necessary. <a href="/platforms/ios-swift/install/#carthage">Learn more</a> about Carthage installation for iOS.</p>
+<p>Learn more about the <a href="/platforms/ios-swift/install/#carthage">Carthage installation for iOS</a>.</p>
 
 <h2 id="example">Example</h2>
 
@@ -414,44 +425,23 @@ var utag_data = {
         <span style="color:#998;font-style:italic">// code to execute</span>
         print(<span style="color:#b84">&#34;Custom command response: (response)&#34;</span>)
     })
-<span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands() {
+<span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands {
         remoteCommands.add(customCommand)
 } <span style="font-weight:bold">else</span> {
-print(<span style="color:#b84">&#34;Remote commands not available&#34;</span>)
+		print(<span style="color:#b84">&#34;Remote commands not available&#34;</span>)
 }</code></pre></div>
 <h3 id="remove"><code>remove()</code></h3>
 
 <p>Removes a previously-registered remote command to prevent it being triggered again.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">remove(commandWithId: <span style="color:#999">String</span>)</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// assumes &#34;tealium&#34; previously instantiated</span>
-tealium?.remoteCommands()?.remove(commandWithId: <span style="color:#b84">&#34;logger&#34;</span>)</code></pre></div>
-<h3 id="disableremotecommands"><code>disableRemoteCommands()</code></h3>
+tealium?.remoteCommands?.remove(commandWithId: <span style="color:#b84">&#34;logger&#34;</span>)</code></pre></div>
+<h3 id="remotehttpcommanddisabled"><code>remoteHTTPCommandDisabled</code></h3>
 
-<p>Disables the remote commands module.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">disableRemoteCommands()</code></pre></div>
+<p>When <code>true</code>, disables the built-in remote HTTP command, but leaves the remote commands module enabled for other commands. Default is <code>false</code> - or <a href="#remote-http-command">Remote HTTP Command</a> enabled</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">remoteHTTPCommandDisabled</code></pre></div>
 <p>The following is a usage example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// assumes &#34;tealium&#34; previously instantiated</span>
-tealium?.remoteCommands()?.disableRemoteCommands()</code></pre></div>
-<h3 id="enableremotecommands"><code>enableRemoteCommands()</code></h3>
-
-<p>Enables the remote commands module (only required if previously disabled; default is enabled).</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-TealiumSwift" data-lang="TealiumSwift">enabledRemoteCommands()</code></pre></div>
-<p>The following is a usage example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// assumes &#34;tealium&#34; previously instantiated</span>
-tealium?.remoteCommands()?.enableRemoteCommands()</code></pre></div>
-<h3 id="disableremotehttpcommand"><code>disableRemoteHTTPCommand()</code></h3>
-
-<p>Disables the built-in remote HTTP command, but leaves the remote commands module enabled for other commands.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">disableRemoteHTTPCommand()</code></pre></div>
-<p>The following is a usage example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// assumes &#34;tealium&#34; previously instantiated</span>
-tealium?.remoteCommands()?.disableRemoteHTTPCommand()</code></pre></div>
-<h3 id="enableremotehttpcommand"><code>enableRemoteHTTPCommand()</code></h3>
-
-<p>Enables the built-in remote HTTP command (only required if previously disabled; default is enabled).</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">enableRemoteHTTPCommand()`</code></pre></div>
-<p>The following is a usage example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// assumes &#34;tealium&#34; previously instantiated</span>
-tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// assumes &#34;config&#34; previously instantiated (`TealiumConfig()`)</span>
+config.remoteHTTPCommandDisabled = <span style="font-weight:bold">false</span></code></pre></div>
 <h2 id="remote-http-command">Remote HTTP Command</h2>
 
 <p>This is a reserved internal command with identifier <code>_http</code> which triggers an HTTP request from native code, and passes the response back to the Tealium iQ web view. This is used in some cases to bypass CORS restrictions that may be encountered in a web browser. To use this command, there are specific mapping names you must use:</p>
@@ -487,7 +477,7 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
 </tbody>
 </table>
 
-<p>Here&rsquo;s a sample callback function:</p>
+<p>The following is an example callback function:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">my_callback</span> = function(code, body) {
    <span style="color:#998;font-style:italic">// assuming the response body was a JSON object, this logs a variable called my_response_variable to the console in the web view</span>
 	console.log(body.my_response_variable);
@@ -500,11 +490,12 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
 
 	<div date-pref class="white">
 		
-			<a href="https://docs.tealium.com/platforms/ios-swift/module-list/persistent-data/" title="PersistentData Module "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
+		
+			<a href="https://docs.tealium.com/platforms/ios-swift/module-list/location/" title="Location Module "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
     <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
     <path d="M0 0h24v24H0z" fill="none"/>
 </svg>
- PersistentData Module </a>
+ Location Module </a>
 		
 
 	</div>
@@ -519,6 +510,7 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
 			TagManagement Module <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
 
 			</a>
+		
 		
 	</div>
 
@@ -638,6 +630,26 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-server-side">Server-Side</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/tracking-webviews/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-javascript-interface">Tracking Webviews</a>
       </li>
       
     
@@ -1360,7 +1372,7 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/android-java/api/life-cycle/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-java-api-life-cycle">LifeCycle</a>
+        <a href="/platforms/android-java/api/life-cycle/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-java-api-life-cycle">Lifecycle</a>
       </li>
       
     
@@ -1448,6 +1460,572 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/android-java/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-java-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".android-kotlin">Android (Kotlin)</a>
+        <ul class="android-kotlin desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-data-layer">Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/identity-resolution/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-identity-resolution">Identity Resolution</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 pl3 pr2  primary-color hover-bg-primary " data-target=".android-kotlin-module-list">Module List</a>
+        <ul class="android-kotlin-module-list desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/collect/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-collect">Collect Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/collectors/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-collectors">Collectors Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/install-referrer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-install-referrer">Install Referrer Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/lifecycle-tracking/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-lifecycle-tracking">Lifecycle Tracking Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/location/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-location">Location Manager Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/tag-management/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-tagmanagement">Tag Management Dispatcher Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/visitor-service/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-visitor-service">Visitor Service Module</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/tv/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-tv">Android TV</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 pl3 pr2  primary-color hover-bg-primary " data-target=".android-kotlin-api">API Reference</a>
+        <ul class="android-kotlin-api desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/consent-category/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-consent-category">ConsentCategory</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/consent-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-consent-manager">ConsentManager</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/current-visit/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-current-visit">CurrentVisit</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/data-layer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-data-layer">DataLayer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/lifecycle/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-lifecycle">Lifecycle</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/location-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-location-manager">LocationManager</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/tealium/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-tealium">Tealium</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/tealium-config/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-tealium-config">TealiumConfig</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/visitor-profile/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-visitor-profile">VisitorProfile</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/visitor-service/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-visitor-service">VisitorService</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-release-notes">Release Notes</a>
       </li>
       
     
@@ -2163,8 +2741,874 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
       
       
       
+      <li class="w-100 hover-accent-color-light fw8" data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".ios-swift-v1">iOS (Swift) 1.x</a>
+        <ul class="ios-swift-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-data-layer">Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/app-extensions/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-app-extensions">App Extensions</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/identity-resolution/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-identity-resolution">Identity Resolution</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/modules/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-modules">Modules</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 pl3 pr2  primary-color hover-bg-primary " data-target=".ios-swift-v1-module-list">Module List</a>
+        <ul class="ios-swift-v1-module-list desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/appdata/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-appdata">AppData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/attribution/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-attribution">Attribution Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/autotracking/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-autotracking">AutoTracking Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/collect/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-collect">Collect Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/connectivity/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-connectivity">Connectivity Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-crashreporter">CrashReporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/datasource/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-datasource">DataSource Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/defaults-storage/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-defaultstorage">DefaultStorage Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/delegate/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-delegate">Delegate Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/device-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-devicedata">DeviceData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/dispatch-queue/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-dispatchqueue">DispatchQueue Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/file-storage/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-filestorage">FileStorage Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/lifecycle/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-lifecycle">Lifecycle Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/location/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-location">Location Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/logger/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-logger">Logger Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/persistent-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-persistentdata">PersistentData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/remote-commands/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-remotecommands">RemoteCommands Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/tag-management/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-tagmanagement">TagManagement Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/visitor-service/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-visitor-service">VisitorService Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/volatile-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-volatiledata">VolatileData Module</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-feature-comparison">Feature Comparison</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/with-objective-c/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-with-objective-c">Working with Objective-C</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 pl3 pr2  primary-color hover-bg-primary " data-target=".ios-swift-v1-api">API Reference</a>
+        <ul class="ios-swift-v1-api desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-config/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-config">TealiumConfig</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-consent-categories/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-consent-categories">TealiumConsentCategories</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-consent-manager-delegate/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-consent-manager-delegate">TealiumConsentManagerDelegate</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-consent-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-consent-manager">TealiumConsentManager</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-instance-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-instance-manager">TealiumInstanceManager</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-persistent-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-persistent-data">TealiumPersistentData</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-volatile-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-volatile-data">TealiumVolatileData</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium">Tealium</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8 active" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2 primary-color expanded " data-target=".ios-swift">iOS (Swift)</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2 primary-color expanded " data-target=".ios-swift">iOS (Swift) 2.x</a>
         <ul class="ios-swift desktopmenu animated fadeIn list pl0 db">
             
 
@@ -2259,7 +3703,7 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/ios-swift/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-data-management">Data Management</a>
+        <a href="/platforms/ios-swift/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-consent-management">Consent Management</a>
       </li>
       
     
@@ -2300,26 +3744,6 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/ios-swift/identity-resolution/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-identity-resolution">Identity Resolution</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/ios-swift/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-consent-management">Consent Management</a>
       </li>
       
     
@@ -2494,107 +3918,7 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/datasource/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-datasource">DataSource Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/defaults-storage/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-defaultstorage">DefaultStorage Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/delegate/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-delegate">Delegate Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/module-list/device-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-devicedata">DeviceData Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/dispatch-queue/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-dispatchqueue">DispatchQueue Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/file-storage/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-filestorage">FileStorage Module</a>
       </li>
       
     
@@ -2635,46 +3959,6 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/module-list/location/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-location">Location Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/logger/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-logger">Logger Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/persistent-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-persistentdata">PersistentData Module</a>
       </li>
       
     
@@ -2741,47 +4025,7 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
   
   
 
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/volatile-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-volatiledata">VolatileData Module</a>
-      </li>
-      
-    
-  
-  
-
         </ul>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/ios-swift/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-feature-comparison">Feature Comparison</a>
       </li>
       
     
@@ -2836,6 +4080,26 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift/api/tealium/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium">Tealium</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/api/tealium-config/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-config">TealiumConfig</a>
       </li>
       
@@ -2876,26 +4140,6 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/api/tealium-consent-manager-delegate/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-consent-manager-delegate">TealiumConsentManagerDelegate</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/api/tealium-consent-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-consent-manager">TealiumConsentManager</a>
       </li>
       
@@ -2917,66 +4161,6 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/api/tealium-instance-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-instance-manager">TealiumInstanceManager</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/api/tealium-persistent-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-persistent-data">TealiumPersistentData</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/api/tealium-volatile-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-volatile-data">TealiumVolatileData</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/api/tealium/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium">Tealium</a>
       </li>
       
     
@@ -3647,6 +4831,26 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/javascript/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".utag-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/javascript/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".javascript-track">Track</a>
       </li>
       
@@ -3668,26 +4872,6 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/javascript/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".">Data Layer</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/javascript/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".utag-install">Install</a>
       </li>
       
     
@@ -4829,7 +6013,7 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  February 20, 2020 
+    <span>This page was last updated:  August 12, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -4906,6 +6090,12 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/android-kotlin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Android (Kotlin)
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/cordova/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           Cordova
         </a>
@@ -4924,8 +6114,14 @@ tealium?.remoteCommands()?.enableRemoteHTTPCommand()</code></pre></div>
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/ios-swift-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          iOS (Swift) 1.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/ios-swift/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          iOS (Swift)
+          iOS (Swift) 2.x
         </a>
     </li>
   

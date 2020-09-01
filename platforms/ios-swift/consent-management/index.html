@@ -231,14 +231,12 @@ var utag_data = {
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#usage">Usage</a></li>
-              <li><a href="#sample-app">Sample App</a></li>
-              <li><a href="#disable">Disable</a></li>
-              <li><a href="#data-layer">Data Layer</a></li>
+              <li><a href="#set-policy">Set policy</a></li>
               <li><a href="#examples">Examples</a></li>
               <li><a href="#use-cases">Use Cases</a></li>
-              <ul class="toc-h3"><li><a href="#simple-opt-in">Simple Opt-in</a></li>
-              <li><a href="#grouped-opt-in">Grouped Opt-in</a></li>
-              <li><a href="#category-based-opt-in">Category-based Opt-in</a></li>
+              <ul class="toc-h3"><li><a href="#full-consent">Full Consent</a></li>
+              <li><a href="#partial-consent-by-category-gdpr">Partial Consent by Category (GDPR)</a></li>
+              </ul><li><a href="#sample-app">Sample App</a></li>
               </nav>
   </aside></div>
 
@@ -279,149 +277,111 @@ var utag_data = {
 
 <h2 id="usage">Usage</h2>
 
-<p>The Consent Management module provides a simple API to help manage tracking consent at a granular level. If you have included the CocoaPods dependency or Carthage framework, Consent Management is enabled by default, and no tracking calls are sent until you explicitly notify the API that the user has consented to tracking.</p>
+<p>The Consent Manager module provides a simple API to help manage tracking consent at a granular level. It is supported on all Apple platforms (iOS, iPadOS, tvOS, watchOS, macOS, macOS Catalyst).</p>
 
-<p>Usage of this module is recommended, as it is automatically included and enabled in Carthage and CocoaPods framework builds. The Foundation framework is an external dependency.</p>
+<p>Version 2.x of the Tealium Swift library introduces important changes to the Consent Manager module:</p>
 
-<p>Supported platforms include: iOS, macOS, tvOS, and watchOS.</p>
+<ul>
+<li>Consent Manager disabled by default (see <a href="#full-consent">Full Consent</a> to enable)</li>
+<li>Consent Manager incorporated into the <code>TealiumCore</code> module</li>
+<li>CCPA support introduced</li>
+</ul>
 
-<p><a href="/platforms/getting-started/consent-management/">Learn more</a> about Consent Management.</p>
+<p>Learn more about <a href="/platforms/getting-started/consent-management/">Consent Management</a> and consent policies.</p>
 
+<h2 id="set-policy">Set policy</h2>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/68rF6Qo5DOw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+<p>The Consent Management module is included with the core library and is not active until a consent policy is set.</p>
 
+<p>To set the GDPR policy:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
+	<span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
 
-<h2 id="sample-app">Sample App</h2>
+	<span style="font-weight:bold">private</span> <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">initTealium</span>() {
+		<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(...
+		config.consentPolicy = .gdpr
+    <span style="color:#998;font-style:italic">//...</span>
+	}
+}</code></pre></div>
+<p class="note">Only one policy may be enforced on a device at any given time.</p>
 
-<p>To help to familiarize yourself with our library, tracking methods, and best practice implementation, explore the Tealium for Swift Consent Manager <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/ConsentManagerDemo">sample app</a>.</p>
-
-<h2 id="disable">Disable</h2>
-
-<p>To disable Consent Management, include it in the list of disabled modules on the <a href="/platforms/ios-swift/api/">TealiumConfig</a> object at initialization time.</p>
-
-<h2 id="data-layer">Data Layer</h2>
-
-<p>The following variables are transmitted with each tracking call while the module is enabled:</p>
-
-<table>
-<thead>
-<tr>
-<th>Variable Name</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>policy</code></td>
-<td>The policy under which consent was collected (default: <code>gdpr</code>)</td>
-<td><code>gdpr</code></td>
-</tr>
-
-<tr>
-<td><code>consent_status</code></td>
-<td>The user&rsquo;s current consent status</td>
-<td>[<code>consented</code>, <code>notConsented</code>]</td>
-</tr>
-
-<tr>
-<td><code>consent_categories</code></td>
-<td>An array of the user&rsquo;s selected consent categories</td>
-<td>[<code>&quot;analytics&quot;</code>, <code>&quot;cdp&quot;</code>]</td>
-</tr>
-</tbody>
-</table>
-
+<p>To set consent logging events, which are generated whenever the consent status changes:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.consentLoggingEnabled = <span style="font-weight:bold">true</span></code></pre></div>
 <h2 id="examples">Examples</h2>
 
 <p>The following example code shows how to access the Consent Manager.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
-	<span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
-	<span style="color:#998;font-style:italic">// ...</span>
-	<span style="font-weight:bold">private</span> <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">initTealium</span>() {
-		<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
- 	       		                 profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-        	   	                 environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-           		                 datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
 
-		<span style="color:#998;font-style:italic">// sets the initial status to notConsented. All events sent will be deleted.</span>
-		<span style="color:#998;font-style:italic">// config.initialUserConsentStatus = .notConsented</span>
-		<span style="color:#998;font-style:italic">// sets the initial status to consented. All events transmitted immediately until consent status changed to .notConsented</span>
-		<span style="color:#998;font-style:italic">// config.initialUserConsentStatus = .consented</span>
+<p>The following helper method grants full consent for all categories:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">grantFullConsent</span>() {
+	<span style="font-weight:bold">self</span>.tealium?.consentManager?.userConsentStatus = .consented
+}</code></pre></div>
+<p>The following helper method grants partial consent for specific categories:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">grantPartialConsent</span>(categories: [TealiumConsentCategories]) {
+	<span style="font-weight:bold">self</span>.tealium?.consentManager?.userConsentCategories = categories
+}</code></pre></div>
+<p>Example usage: <code>grantPartialConsent([.analytics, .cdp])</code> (see parameter categories)</p>
 
-		<span style="color:#998;font-style:italic">// sets the initial status to unknown (default). All events queued until consent status changed</span>
-		config.initialUserConsentStatus = .unknown
-		<span style="color:#998;font-style:italic">// if true, consent logging events will be generated whenever the consent status changes</span>
-		config.consentLoggingEnabled = <span style="font-weight:bold">false</span>
-
-
-
-		<span style="font-weight:bold">self</span>.tealium = Tealium(config: config)
-
-		<span style="color:#998;font-style:italic">// ...</span>
-	}
-
-
-	<span style="color:#998;font-style:italic">// grants full consent (all categories)</span>
-	<span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">grantFullConsent</span>() {
-		<span style="font-weight:bold">self</span>.tealium?.consentManager()?.setUserConsentStatus(.consented)
-	}
-
-	<span style="color:#998;font-style:italic">/// Grants partial consent for specific categories</span>
-	<span style="color:#998;font-style:italic">/// Example usage: `grantPartialConsent([.analytics, .cdp])`</span>
-	<span style="color:#998;font-style:italic">/// - Parameter categories: `[TealiumConsentCategories]`.</span>
-	<span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">grantPartialConsent</span>(categories: [TealiumConsentCategories]) {
-		<span style="font-weight:bold">self</span>.tealium?.consentManager()?.setUserConsentStatusWithCategories(status: .consented, categories: categories)
-	}
-
-	<span style="color:#998;font-style:italic">// declines consent; all future events will be deleted.</span>
-	<span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">declineConsent</span>() {
-		<span style="font-weight:bold">self</span>.tealium?.consentManager()?.setUserConsentStatus(.notConsented)
-	}
-
+<p>The following helper method declines consent and delete all future events:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">declineConsent</span>() {
+	<span style="font-weight:bold">self</span>.tealium?.consentManager?.userConsentStatus = .notConsented
 }</code></pre></div>
 <h2 id="use-cases">Use Cases</h2>
 
-<h3 id="simple-opt-in">Simple Opt-in</h3>
+<h3 id="full-consent">Full Consent</h3>
 
-<p>This example shows you how to give your users a simple &ldquo;Opt-in/Opt-out&rdquo; option. If the user consents, they are automatically opted-in to all tracking categories. If they revoke their consent, no categories remain active, and no tracking calls are sent.</p>
+<p>The following example shows how to give your users the option to consent or decline the consent policy.  Once the user has consented or declined, the rules for your selected consent policy takes effect. Learn more about <a href="/platforms/getting-started/consent-management/#consent-policies">consent policies</a>.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">setConsentStatusSimple</span>(<span style="font-weight:bold">_</span> consented: <span style="color:#999">Bool</span>) {
     <span style="font-weight:bold">let</span> <span style="color:#008080">status</span>: TealiumConsentStatus = consented ? .consented: .notConsented
-    <span style="font-weight:bold">self</span>.tealium?.consentManager()?.setUserConsentStatus(status)
+    <span style="font-weight:bold">self</span>.tealium?.consentManager?.userConsentStatus = status
 }</code></pre></div>
-<p>Define and call the following method in your Tealium Helper class when your app user consents to or declines tracking. If the user consents to tracking, the Consent Manager automatically opts them in to all tracking categories.</p>
+<p>Define and call the method in your Tealium Helper class when your app user consents to or declines tracking. If the user consents to tracking, the Consent Manager automatically includes them in all tracking categories.</p>
 
 <p><img src="https://zjzhh79394.i.lithium.com/t5/image/serverpage/image-id/6590i5637771715807D9A/image-size/original?v=1.0&amp;px=-1" alt="Simple Consent" title="Simple Consent" /></p>
 
-<h3 id="grouped-opt-in">Grouped Opt-in</h3>
+<h3 id="partial-consent-by-category-gdpr">Partial Consent by Category (GDPR)</h3>
 
-<p>This example shows a category-based consent model, where tracking categories are grouped into a smaller number of higher-level categories, defined by you.</p>
+<p>In category-based consent, the user must explicitly select each category from the full list of categories.</p>
+
+<p>The following helper method calls methods from the <a href="/platforms/ios-swift/api/tealium-consent-manager/"><code>TealiumConsentManager</code></a> API:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">updateConsentPreferences</span>(<span style="font-weight:bold">_</span> dict: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>]) {
+      <span style="font-weight:bold">var</span> <span style="color:#008080">tealiumConsentCategories</span> = [TealiumConsentCategories]()
+        <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">categories</span> = dict[<span style="color:#b84">&#34;consentCategories&#34;</span>] <span style="font-weight:bold">as</span>? [<span style="color:#999">String</span>] {
+            tealiumConsentCategories = TealiumConsentCategories.consentCategoriesStringArrayToEnum(categories)
+            tealium.consentManager?.userConsentCategories = tealiumConsentCategories
+        } <span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">status</span> = dict[<span style="color:#b84">&#34;consentStatus&#34;</span>] <span style="font-weight:bold">as</span>? <span style="color:#999">String</span> {
+            <span style="font-weight:bold">let</span> <span style="color:#008080">tealiumConsentStatus</span> = (status == <span style="color:#b84">&#34;consented&#34;</span>) ? TealiumConsentStatus.consented : TealiumConsentStatus.notConsented
+            <span style="font-weight:bold">self</span>.tealium?.consentManager?.consentStatus = status
+        }
+    }
+}</code></pre></div>
+<p>To update a list of categories:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">setUserConsentPreferences</span>(<span style="font-weight:bold">_</span> categories: [<span style="color:#999">String</span>]){
+	<span style="font-weight:bold">let</span> <span style="color:#008080">settingsDict</span>: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>] = [<span style="color:#b84">&#34;consentStatus&#34;</span>: <span style="color:#b84">&#34;consented&#34;</span>, <span style="color:#b84">&#34;consentCategories&#34;</span>: categories]
+	updateConsentPreferences(settingsDict)
+}</code></pre></div>
+<h4 id="category-groups-gdpr">Category Groups (GDPR)</h4>
+
+<p>In a category-based consent model, tracking categories are grouped into a smaller number of higher-level categories, defined by the customer.</p>
 
 <p>For example, you may choose to group the Tealium consent categories <code>&quot;big_data&quot;</code>, <code>&quot;analytics&quot;</code>, and <code>&quot;monitoring&quot;</code> under a single category called <code>&quot;performance&quot;</code>. This may be easier for the user than selecting from the full list of categories. You may choose to represent this in a slider interface, ranging from least-permissive to most-permissive (all categories).</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">updateConsentPreferences</span>(<span style="font-weight:bold">_</span> dict: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>]) {
-    <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">status</span> = dict[<span style="color:#b84">&#34;consentStatus&#34;</span>] <span style="font-weight:bold">as</span>? <span style="color:#999">String</span> {
-        <span style="font-weight:bold">var</span> <span style="color:#008080">tealiumConsentCategories</span> = [TealiumConsentCategories]()
-        <span style="font-weight:bold">let</span> <span style="color:#008080">tealiumConsentStatus</span> = (status == <span style="color:#b84">&#34;consented&#34;</span>) ? TealiumConsentStatus.consented : TealiumConsentStatus.notConsented
+      <span style="font-weight:bold">var</span> <span style="color:#008080">tealiumConsentCategories</span> = [TealiumConsentCategories]()
         <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">categories</span> = dict[<span style="color:#b84">&#34;consentCategories&#34;</span>] <span style="font-weight:bold">as</span>? [<span style="color:#999">String</span>] {
             tealiumConsentCategories = TealiumConsentCategories.consentCategoriesStringArrayToEnum(categories)
+            tealium.consentManager?.userConsentCategories = tealiumConsentCategories
+        } <span style="font-weight:bold">else</span> <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">status</span> = dict[<span style="color:#b84">&#34;consentStatus&#34;</span>] <span style="font-weight:bold">as</span>? <span style="color:#999">String</span> {
+            <span style="font-weight:bold">let</span> <span style="color:#008080">tealiumConsentStatus</span> = (status == <span style="color:#b84">&#34;consented&#34;</span>) ? TealiumConsentStatus.consented : TealiumConsentStatus.notConsented
+            <span style="font-weight:bold">self</span>.tealium?.consentManager?.consentStatus = status
         }
-        <span style="font-weight:bold">self</span>.tealium?.consentManager()?.setUserConsentStatusWithCategories(status: tealiumConsentStatus, categories: tealiumConsentCategories)
     }
-}
-
-<span style="color:#998;font-style:italic">// example function to define groups of categories, and set the consent preferences in the consentManager API.</span>
-<span style="color:#998;font-style:italic">// call this function when the user saves their preferences</span>
-<span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">setUserConsentPreferences</span>(){
-	<span style="color:#998;font-style:italic">// define a dictionary containing grouped categories</span>
+}</code></pre></div>
+<p>The following helper function defines groups of categories and sets the users consent preferences:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">setUserConsentPreferences</span>(){
 	<span style="font-weight:bold">let</span> <span style="color:#008080">consentGroups</span> = [<span style="color:#b84">&#34;Off&#34;</span> : [],
 	        <span style="color:#b84">&#34;Performance&#34;</span>: [<span style="color:#b84">&#34;analytics&#34;</span>, <span style="color:#b84">&#34;monitoring&#34;</span>, <span style="color:#b84">&#34;big_data&#34;</span>, <span style="color:#b84">&#34;mobile&#34;</span>, <span style="color:#b84">&#34;crm&#34;</span>],
 	        <span style="color:#b84">&#34;Marketing&#34;</span>: [<span style="color:#b84">&#34;analytics&#34;</span>, <span style="color:#b84">&#34;monitoring&#34;</span>, <span style="color:#b84">&#34;big_data&#34;</span>, <span style="color:#b84">&#34;mobile&#34;</span>, <span style="color:#b84">&#34;crm&#34;</span>, <span style="color:#b84">&#34;affiliates&#34;</span>, <span style="color:#b84">&#34;email&#34;</span>, <span style="color:#b84">&#34;search&#34;</span>, <span style="color:#b84">&#34;engagement&#34;</span>, <span style="color:#b84">&#34;cdp&#34;</span>],
 	        <span style="color:#b84">&#34;Personalized Advertising&#34;</span>: [<span style="color:#b84">&#34;analytics&#34;</span>, <span style="color:#b84">&#34;monitoring&#34;</span>, <span style="color:#b84">&#34;big_data&#34;</span>, <span style="color:#b84">&#34;mobile&#34;</span>, <span style="color:#b84">&#34;crm&#34;</span>, <span style="color:#b84">&#34;affiliates&#34;</span>, <span style="color:#b84">&#34;email&#34;</span>, <span style="color:#b84">&#34;search&#34;</span>, <span style="color:#b84">&#34;engagement&#34;</span>, <span style="color:#b84">&#34;cdp&#34;</span>, <span style="color:#b84">&#34;display_ads&#34;</span>, <span style="color:#b84">&#34;personalization&#34;</span>, <span style="color:#b84">&#34;social&#34;</span>, <span style="color:#b84">&#34;cookiematch&#34;</span>, <span style="color:#b84">&#34;misc&#34;</span>]]
 
-	<span style="color:#998;font-style:italic">// this is the user&#39;s selected preferences level. Is typically dynamic in a real app</span>
 	<span style="font-weight:bold">let</span> <span style="color:#008080">userSelection</span> = <span style="color:#b84">&#34;Marketing&#34;</span>
 
 	<span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">userList</span> = consentGroups[userSelection] {
@@ -432,27 +392,10 @@ var utag_data = {
 }</code></pre></div>
 <p><img src="https://zjzhh79394.i.lithium.com/t5/image/serverpage/image-id/6589iADA6E801B2A3EC85/image-size/original?v=1.0&amp;px=-1" alt="grouped-gif.gif" title="grouped-gif.gif" /></p>
 
-<h3 id="category-based-opt-in">Category-based Opt-in</h3>
+<h2 id="sample-app">Sample App</h2>
 
-<p>This example shows a category-based consent model where the user must explicitly select each category from the full list of categories. The default state is <code>&quot;Unknown&quot;</code>, which queues hits until the user provides their consent. If the user consents to any category, events are de-queued, and the consented category data is appended to each tracking call.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// helper method to call Tealium consentManager API</span>
-<span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">updateConsentPreferences</span>(<span style="font-weight:bold">_</span> dict: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>]) {
-    <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">status</span> = dict[<span style="color:#b84">&#34;consentStatus&#34;</span>] <span style="font-weight:bold">as</span>? <span style="color:#999">String</span> {
-        <span style="font-weight:bold">var</span> <span style="color:#008080">tealiumConsentCategories</span> = [TealiumConsentCategories]()
-        <span style="font-weight:bold">let</span> <span style="color:#008080">tealiumConsentStatus</span> = (status == <span style="color:#b84">&#34;consented&#34;</span>) ? TealiumConsentStatus.consented : TealiumConsentStatus.notConsented
-        <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">categories</span> = dict[<span style="color:#b84">&#34;consentCategories&#34;</span>] <span style="font-weight:bold">as</span>? [<span style="color:#999">String</span>] {
-            tealiumConsentCategories = TealiumConsentCategories.consentCategoriesStringArrayToEnum(categories)
-        }
-        <span style="font-weight:bold">self</span>.tealium?.consentManager()?.setUserConsentStatusWithCategories(status: tealiumConsentStatus, categories: tealiumConsentCategories)
-    }
-}
+<p>To help to familiarize yourself with our library, tracking methods, and best practice implementation, explore the Tealium for Swift <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/ConsentManagerDemo">Consent Manager sample app</a>.</p>
 
-<span style="color:#998;font-style:italic">// example function to take a list of categories and pass to the Tealium consentManager API</span>
-<span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">setUserConsentPreferences</span>(<span style="font-weight:bold">_</span> categories: [<span style="color:#999">String</span>]){
-
-	<span style="font-weight:bold">let</span> <span style="color:#008080">settingsDict</span>: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>] = [<span style="color:#b84">&#34;consentStatus&#34;</span>: <span style="color:#b84">&#34;consented&#34;</span>, <span style="color:#b84">&#34;consentCategories&#34;</span>: categories]
-	updateConsentPreferences(settingsDict)
-}</code></pre></div>
 <p><a href="images/individual-gif.gif"><img src="https://zjzhh79394.i.lithium.com/t5/image/serverpage/image-id/6588iDEE8A2B2B83CB4B7/image-size/original?v=1.0&amp;px=-1" alt="Category-based" title="Category-based" /></a></p>
 
 </div>
@@ -461,11 +404,12 @@ var utag_data = {
 
 	<div date-pref class="white">
 		
-			<a href="https://docs.tealium.com/platforms/ios-swift/identity-resolution/" title="Identity Resolution "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
+		
+			<a href="https://docs.tealium.com/platforms/ios-swift/data-layer/" title="Data Layer "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
     <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
     <path d="M0 0h24v24H0z" fill="none"/>
 </svg>
- Identity Resolution </a>
+ Data Layer </a>
 		
 
 	</div>
@@ -476,10 +420,11 @@ var utag_data = {
 	<div date-pref class="white">
 
 		
-			<a href="https://docs.tealium.com/platforms/ios-swift/modules/" title="Modules">
-			Modules <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
+			<a href="https://docs.tealium.com/platforms/ios-swift/app-extensions/" title="App Extensions">
+			App Extensions <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
 
 			</a>
+		
 		
 	</div>
 
@@ -599,6 +544,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/server-side/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-server-side">Server-Side</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/tracking-webviews/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-javascript-interface">Tracking Webviews</a>
       </li>
       
     
@@ -1321,7 +1286,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/android-java/api/life-cycle/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-java-api-life-cycle">LifeCycle</a>
+        <a href="/platforms/android-java/api/life-cycle/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-java-api-life-cycle">Lifecycle</a>
       </li>
       
     
@@ -1409,6 +1374,572 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/android-java/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-java-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".android-kotlin">Android (Kotlin)</a>
+        <ul class="android-kotlin desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-data-layer">Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/identity-resolution/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-identity-resolution">Identity Resolution</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 pl3 pr2  primary-color hover-bg-primary " data-target=".android-kotlin-module-list">Module List</a>
+        <ul class="android-kotlin-module-list desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/collect/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-collect">Collect Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/collectors/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-collectors">Collectors Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/install-referrer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-install-referrer">Install Referrer Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/lifecycle-tracking/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-lifecycle-tracking">Lifecycle Tracking Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/location/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-location">Location Manager Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/tag-management/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-tagmanagement">Tag Management Dispatcher Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/visitor-service/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-visitor-service">Visitor Service Module</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/tv/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-tv">Android TV</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 pl3 pr2  primary-color hover-bg-primary " data-target=".android-kotlin-api">API Reference</a>
+        <ul class="android-kotlin-api desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/consent-category/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-consent-category">ConsentCategory</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/consent-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-consent-manager">ConsentManager</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/current-visit/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-current-visit">CurrentVisit</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/data-layer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-data-layer">DataLayer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/lifecycle/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-lifecycle">Lifecycle</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/location-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-location-manager">LocationManager</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/tealium/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-tealium">Tealium</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/tealium-config/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-tealium-config">TealiumConfig</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/visitor-profile/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-visitor-profile">VisitorProfile</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/api/visitor-service/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-visitor-service">VisitorService</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/android-kotlin/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-release-notes">Release Notes</a>
       </li>
       
     
@@ -2124,8 +2655,874 @@ var utag_data = {
       
       
       
+      <li class="w-100 hover-accent-color-light fw8" data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".ios-swift-v1">iOS (Swift) 1.x</a>
+        <ul class="ios-swift-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-data-layer">Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/app-extensions/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-app-extensions">App Extensions</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/identity-resolution/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-identity-resolution">Identity Resolution</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/modules/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-modules">Modules</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 pl3 pr2  primary-color hover-bg-primary " data-target=".ios-swift-v1-module-list">Module List</a>
+        <ul class="ios-swift-v1-module-list desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/appdata/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-appdata">AppData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/attribution/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-attribution">Attribution Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/autotracking/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-autotracking">AutoTracking Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/collect/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-collect">Collect Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/connectivity/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-connectivity">Connectivity Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-crashreporter">CrashReporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/datasource/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-datasource">DataSource Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/defaults-storage/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-defaultstorage">DefaultStorage Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/delegate/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-delegate">Delegate Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/device-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-devicedata">DeviceData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/dispatch-queue/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-dispatchqueue">DispatchQueue Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/file-storage/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-filestorage">FileStorage Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/lifecycle/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-lifecycle">Lifecycle Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/location/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-location">Location Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/logger/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-logger">Logger Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/persistent-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-persistentdata">PersistentData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/remote-commands/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-remotecommands">RemoteCommands Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/tag-management/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-tagmanagement">TagManagement Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/visitor-service/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-visitor-service">VisitorService Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/module-list/volatile-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-module-volatiledata">VolatileData Module</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-feature-comparison">Feature Comparison</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/with-objective-c/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-with-objective-c">Working with Objective-C</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 pl3 pr2  primary-color hover-bg-primary " data-target=".ios-swift-v1-api">API Reference</a>
+        <ul class="ios-swift-v1-api desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-config/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-config">TealiumConfig</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-consent-categories/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-consent-categories">TealiumConsentCategories</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-consent-manager-delegate/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-consent-manager-delegate">TealiumConsentManagerDelegate</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-consent-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-consent-manager">TealiumConsentManager</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-instance-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-instance-manager">TealiumInstanceManager</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-persistent-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-persistent-data">TealiumPersistentData</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium-volatile-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium-volatile-data">TealiumVolatileData</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift-v1/api/tealium/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-api-tealium">Tealium</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/ios-swift-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8 active" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2 primary-color expanded " data-target=".ios-swift">iOS (Swift)</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2 primary-color expanded " data-target=".ios-swift">iOS (Swift) 2.x</a>
         <ul class="ios-swift desktopmenu animated fadeIn list pl0 db">
             
 
@@ -2220,7 +3617,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/ios-swift/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-data-management">Data Management</a>
+        <a href="/platforms/ios-swift/consent-management/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".ios-swift-consent-management">Consent Management</a>
       </li>
       
     
@@ -2261,26 +3658,6 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/ios-swift/identity-resolution/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-identity-resolution">Identity Resolution</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/ios-swift/consent-management/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".ios-swift-consent-management">Consent Management</a>
       </li>
       
     
@@ -2455,107 +3832,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/datasource/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-datasource">DataSource Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/defaults-storage/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-defaultstorage">DefaultStorage Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/delegate/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-delegate">Delegate Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/module-list/device-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-devicedata">DeviceData Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/dispatch-queue/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-dispatchqueue">DispatchQueue Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/file-storage/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-filestorage">FileStorage Module</a>
       </li>
       
     
@@ -2596,46 +3873,6 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/module-list/location/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-location">Location Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/logger/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-logger">Logger Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/persistent-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-persistentdata">PersistentData Module</a>
       </li>
       
     
@@ -2702,47 +3939,7 @@ var utag_data = {
   
   
 
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/module-list/volatile-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-volatiledata">VolatileData Module</a>
-      </li>
-      
-    
-  
-  
-
         </ul>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/ios-swift/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-feature-comparison">Feature Comparison</a>
       </li>
       
     
@@ -2797,6 +3994,26 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift/api/tealium/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium">Tealium</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/api/tealium-config/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-config">TealiumConfig</a>
       </li>
       
@@ -2837,26 +4054,6 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/api/tealium-consent-manager-delegate/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-consent-manager-delegate">TealiumConsentManagerDelegate</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/api/tealium-consent-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-consent-manager">TealiumConsentManager</a>
       </li>
       
@@ -2878,66 +4075,6 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/api/tealium-instance-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-instance-manager">TealiumInstanceManager</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/api/tealium-persistent-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-persistent-data">TealiumPersistentData</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/api/tealium-volatile-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-volatile-data">TealiumVolatileData</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-swift/api/tealium/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium">Tealium</a>
       </li>
       
     
@@ -3608,6 +4745,26 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/javascript/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".utag-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/javascript/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".javascript-track">Track</a>
       </li>
       
@@ -3629,26 +4786,6 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/javascript/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".">Data Layer</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/javascript/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".utag-install">Install</a>
       </li>
       
     
@@ -4790,7 +5927,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  February 3, 2020 
+    <span>This page was last updated:  August 14, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -4867,6 +6004,12 @@ var utag_data = {
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/android-kotlin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Android (Kotlin)
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/cordova/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           Cordova
         </a>
@@ -4885,8 +6028,14 @@ var utag_data = {
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/ios-swift-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          iOS (Swift) 1.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/ios-swift/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          iOS (Swift)
+          iOS (Swift) 2.x
         </a>
     </li>
   
