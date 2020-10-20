@@ -235,6 +235,9 @@ var utag_data = {
               <li><a href="#consentmanagerpolicy">consentManagerPolicy</a></li>
               <li><a href="#consentmanagerloggingenabled">consentManagerLoggingEnabled</a></li>
               <li><a href="#consentmanagerloggingurl">consentManagerLoggingUrl</a></li>
+              <li><a href="#deeplinktrackingenabled">deepLinkTrackingEnabled</a></li>
+              <li><a href="#hosteddatalayermaxcachetimeminutes">hostedDataLayerMaxCacheTimeMinutes</a></li>
+              <li><a href="#hosteddatalayereventmappings">hostedDataLayerEventMappings</a></li>
               <li><a href="#tealiumconfig">TealiumConfig</a></li>
               </nav>
   </aside></div>
@@ -294,17 +297,32 @@ var utag_data = {
 
 <tr>
 <td><a href="#consentmanagerpolicy"><code>consentManagerPolicy</code></a></td>
-<td>Optional <code>ConsentPolicy</code> to determine which consent functionality to adhere to.</td>
+<td>Optional <code>ConsentPolicy</code> to determine which consent functionality to adhere to</td>
 </tr>
 
 <tr>
 <td><a href="#consentmanagerloggingenabled"><code>consentManagerLoggingEnabled</code></a></td>
-<td>Optional <code>Boolean</code> to enable/disable logging of consent changes.</td>
+<td>Optional <code>Boolean</code> to enable/disable logging of consent changes</td>
 </tr>
 
 <tr>
 <td><a href="#consentmanagerloggingurl"><code>consentManagerLoggingUrl</code></a></td>
-<td>Optional <code>String</code> for the destination of any consent logging updates.</td>
+<td>Optional <code>String</code> for the destination of any consent logging updates</td>
+</tr>
+
+<tr>
+<td><a href="#deeplinktrackingenabled"><code>deepLinkTrackingEnabled</code></a></td>
+<td>Enables or disables automatic tracking of deep links</td>
+</tr>
+
+<tr>
+<td><a href="#hosteddatalayermaxcachetimeminutes"><code>hostedDataLayerMaxCacheTimeMinutes</code></a></td>
+<td>Sets an expiration on the hosted data layer data</td>
+</tr>
+
+<tr>
+<td><a href="#hosteddatalayereventmappings"><code>hostedDataLayerEventMappings</code></a></td>
+<td>Sets the event mappings used by the hosted data layer module when looking up data layer IDs</td>
 </tr>
 
 <tr>
@@ -330,6 +348,20 @@ var utag_data = {
 
 <p>Sets the URL used when logging consent preference changes.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.consentManagerLoggingUrl = url</code></pre></div>
+<h3 id="deeplinktrackingenabled"><code>deepLinkTrackingEnabled</code></h3>
+
+<p>Enables or disables automatic tracking of standard deep links, such as links to the app from Facebook or other sources, as well as QR trace. Enabled by default.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.deepLinkTrackingEnabled = <span style="font-weight:bold">true</span></code></pre></div>
+<h3 id="hosteddatalayermaxcachetimeminutes"><code>hostedDataLayerMaxCacheTimeMinutes</code></h3>
+
+<p>Sets an expiration on the hosted data layer data. If this property isn&rsquo;t set, hosted data layer items persist for 7 days by default, and are re-downloaded from the CDN once this period has expired.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">hostedDataLayerMaxCacheTimeMinutes <span style="font-weight:bold">=</span> 30</code></pre></div>
+<p class="note">If your hosted data layer is frequently updated, setting a lower value may impact battery life due to increased network requests.</p>
+
+<h3 id="hosteddatalayereventmappings"><code>hostedDataLayerEventMappings</code></h3>
+
+<p>Sets the hosted data layer keys (lookup variables) used by the hosted data layer module when retrieving data layer IDs. The key is the value in the <code>tealium_event</code> key of a dispatch.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">hostedDataLayerEventMappings <span style="font-weight:bold">=</span> mapOf(<span style="color:#b84">&#34;pdp&#34;</span> to <span style="color:#b84">&#34;product_id&#34;</span>)</code></pre></div>
 <h3 id="tealiumconfig"><code>TealiumConfig</code></h3>
 
 <p>Constructor method that creates a <code>TealiumConfig</code> instance.</p>
@@ -655,6 +687,46 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/hosted-data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-hosted-data-layer">Hosted Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-feature-comparison">Feature Comparison</a>
       </li>
       
@@ -772,7 +844,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">Remote Command: AppsFlyer</a>
+        <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
       </li>
       
     
@@ -792,7 +864,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/braze/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-braze">Remote Command: Braze</a>
+        <a href="/platforms/remote-commands/integrations/braze/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-braze">Braze</a>
       </li>
       
     
@@ -812,7 +884,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/contentsquare/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-contentsquare">Remote Command: Contentsquare</a>
+        <a href="/platforms/remote-commands/integrations/contentsquare/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-contentsquare">Contentsquare</a>
       </li>
       
     
@@ -832,7 +904,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/facebook/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-facebook">Remote Command: Facebook</a>
+        <a href="/platforms/remote-commands/integrations/facebook/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-facebook">Facebook</a>
       </li>
       
     
@@ -852,7 +924,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-firebase">Remote Command: Firebase</a>
+        <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-firebase">Firebase</a>
       </li>
       
     
@@ -872,7 +944,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/usabilla/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-usabilla">Remote Command: Usabilla</a>
+        <a href="/platforms/remote-commands/integrations/usabilla/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-usabilla">Usabilla</a>
       </li>
       
     
@@ -5919,7 +5991,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  August 12, 2020 
+    <span>This page was last updated:  October 13, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

@@ -236,6 +236,10 @@ var utag_data = {
               <ul class="toc-h3"><li><a href="#dependency-manager">Dependency Manager</a></li>
               <li><a href="#manual-ios">Manual (iOS)</a></li>
               </ul><li><a href="#initialize">Initialize</a></li>
+              <ul class="toc-h3"><li><a href="#android-kotlin">Android (Kotlin)</a></li>
+              <li><a href="#android-java">Android (Java)</a></li>
+              <li><a href="#ios-swift">iOS (Swift)</a></li>
+              </ul><li><a href="#json-template">JSON Template</a></li>
               <li><a href="#track">Track</a></li>
               </nav>
   </aside></div>
@@ -280,27 +284,41 @@ var utag_data = {
 <ul>
 <li><a href="/platforms/android-java/">Tealium for Android</a> or <a href="/platforms/ios-swift/">Tealium for iOS</a> in your app</li>
 <li>Firebase remote commands classes added to your app from the appropriate repo (Android or iOS)</li>
-<li><a href="https://community.tealiumiq.com/t5/Tags/Firebase-Mobile-Remote-Command-Tag-Setup-Guide/ta-p/30310">Firebase Mobile Remote Command tag</a> in Tealium iQ Tag Management</li>
+<li>One of these remote command integrations:
+
+<ul>
+<li><a href="/platforms/remote-commands/integrations/firebase/#json-template">Firebase Remote Command JSON File</a></li>
+<li><a href="https://community.tealiumiq.com/t5/Tags/Firebase-Mobile-Remote-Command-Tag-Setup-Guide/ta-p/30310">Firebase Remote Command tag</a> in Tealium iQ Tag Management</li>
+</ul></li>
 </ul>
 
 <h2 id="how-it-works">How It Works</h2>
 
-<p>The Firebase integration uses the native Firebase SDK, a remote command module that wraps the Firebase methods, and the Firebase Remote Command tag that translates event tracking into native Firebase calls. This solution leverages the convenience of Tealium iQ Tag Management to configure a native Firebase implementation without having to add vendor-specific code to your app.</p>
+<p>The Firebase integration uses the native Firebase SDK, a remote command module that wraps the Firebase methods, and the Firebase Remote Command tag that translates event tracking into native Firebase calls. The integration uses three items:</p>
 
-<p>Adding the Firebase remote command module to your app automatically installs and builds the required Firebase libraries. If you are using a dependency manager installation, there is no need to install the Firebase SDK separately.</p>
+<ol>
+<li>The Firebase native SDK</li>
+<li>The remote commands module</li>
+<li>Either the JSON configuration file or Remote Command tag</li>
+</ol>
+
+<p>Adding the Firebase remote command module to your app automatically installs and builds the required Firebase libraries, without having to add vendor-specific code to your app. If you are using a dependency manager installation, there is no need to install the Firebase SDK separately.</p>
+
+<p>There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration.  Learn more about <a href="/platforms/remote-commands/how-it-works/#vendor-integrations">vendor integrations</a>.</p>
 
 <h2 id="install">Install</h2>
 
 <h3 id="dependency-manager">Dependency Manager</h3>
 
-<p>We recommend using one of the following dependency managers for installation:</p>
+<p>If you are not using the JSON configuration file, we recommend using one of the following dependency managers for installation:</p>
 
 <p class="note">If you are using the Tealium iOS (Objective-C) library, use the manual installation method. The CocoaPods and Carthage options are only available if you are using the Tealium iOS (Swift) library.</p>
+
+<p>Install the TealiumFirebase Remote Command with CocoaPods or Carthage.</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content">
-
 <div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
   <p>To install Firebase remote commands for iOS using CocoaPods:</p>
 
@@ -312,13 +330,11 @@ var utag_data = {
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">pod <span style="color:#b84">&#34;TealiumFirebase&#34;</span></code></pre></div>
 <p>The <code>TealiumFirebase</code> pod includes the following <code>TealiumSwift</code> dependencies:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#b84">&#39;tealium-swift/Core&#39;</span>
-<span style="color:#b84">&#39;tealium-swift/TealiumDelegate&#39;</span>
-<span style="color:#b84">&#39;tealium-swift/TealiumRemoteCommands&#39;</span>
-<span style="color:#b84">&#39;tealium-swift/TealiumTagManagement&#39;</span></code></pre></div></li>
+<span style="color:#b84">&#39;tealium-swift/RemoteCommands&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TagManagement&#39;</span></code></pre></div></li>
 
 <li><p>Add any other required modules manually to your Podfile, such as the following:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#b84">&#39;tealium-swift/TealiumLogger&#39;</span>
-<span style="color:#b84">&#39;tealium-swift/TealiumLifecycle&#39;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#b84">&#39;tealium-swift/Lifecycle&#39;</span></code></pre></div>
 <p>Learn more about the <a href="https://docs.tealium.com/platforms/ios-swift/modules/">recommended modules</a> for iOS.</p></li>
 
 <li><p>Import the modules <code>TealiumSwift</code> and <code>TealiumFirebase</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class, or the Firebase remote command.</p></li>
@@ -339,14 +355,14 @@ var utag_data = {
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">github <span style="color:#b84">&#34;tealium/tealium-ios-firebase-remote-command&#34;</span></code></pre></div></li>
 </ol>
 
-<p class="note">Tealium for Swift SDK (version 1.6.5+) requires the <code>TealiumDelegate</code> module to be included with your installation.</p>
+<p class="note">Tealium for Swift SDK (version 1.X) and <code>TealiumFirebase</code> version 1.X requires the <code>TealiumDelegate</code> module to be included with your installation.</p>
 
 </div>
 
 <div class="tab-pane" data-lang="Maven" title="Maven">
   <p>To install via Maven, add the following dependency your <code>build.gradle</code> file:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
-    implementation <span style="color:#b84">&#39;com.tealium.remotecommands:firebase:1.1.0&#39;</span>
+    implementation <span style="color:#b84">&#39;com.tealium.remotecommands:firebase:2.0.0&#39;</span>
 <span style="font-weight:bold">}</span></code></pre></div>
 </div>
 
@@ -355,68 +371,48 @@ var utag_data = {
 
 <h3 id="manual-ios">Manual (iOS)</h3>
 
-<p>The manual installation for Firebase remote commands requires one of the following iOS libraries to be installed:</p>
-
-<ul>
-<li><a href="https://docs.tealium.com/platforms/ios-swift/">Tealium for Swift</a></li>
-<li><a href="https://docs.tealium.com/platforms/ios-objective-c/">Tealium for Objective-C</a></li>
-</ul>
-
-<p>To install the Firebase remote commands for your iOS project:</p>
+<p>The manual installation for Firebase remote commands requires the <a href="https://docs.tealium.com/platforms/ios-swift/">Tealium for Swift</a> library to be installed. To install the Firebase remote commands for your iOS project:</p>
 
 <ol>
 <li><p>Install the <a href="https://firebase.google.com/docs/ios/setup">Firebase SDK</a>, if you haven&rsquo;t already done so.</p></li>
 
 <li><p>Clone the <a href="https://github.com/tealium/tealium-ios-firebase-remote-command">Tealium iOS Firebase remote command</a> repo and drag the files within the <code>Sources</code> folder into your project.</p></li>
 
-<li><p>When initializing the Tealium SDK, update the completion handler as follows:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium = Tealium(config: config) { responses <span style="font-weight:bold">in</span>
-  <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands() <span style="font-weight:bold">else</span> {
-      <span style="font-weight:bold">return</span>
-  }
-  <span style="font-weight:bold">let</span> <span style="color:#008080">firebaseTracker</span> = FirebaseTracker()
-  <span style="font-weight:bold">let</span> <span style="color:#008080">firebaseCommand</span> = FirebaseCommand(firebaseTracker: FirebaseTracker)
-  <span style="font-weight:bold">let</span> <span style="color:#008080">firebaseRemoteCommand</span> = firebaseCommand.remoteCommand()
-  remoteCommands.add(firebaseRemoteCommand)
-}</code></pre></div></li>
-</ol>
+<li><p>Set the <a href="/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a> configuration flag to <code>true</code></p></li>
 
-<p>Manual install options are available for the iOS Swift and Objective-C platforms:</p>
+<li><p>When initializing the Tealium SDK, update the completion handler as follows:</p></li>
+</ol>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content">
 
-<div class="tab-pane" data-lang="Swift" title="Swift">
-  <p>Add the remote command to the <code>TealiumHelper.swift</code> file as follows:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">firebaseRemoteCommand</span> = firebaseCommand.remoteCommand()
-tealium.addRemoteCommand(<span style="color:#b84">&#34;firebase&#34;</span>,
-                           description: <span style="font-weight:bold">nil</span>,
-                           targetQueue: DispatchQueue.main,
-                           responseBlock: firebaseRemoteCommand)</code></pre></div>
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The following code is designed for use with the JSON Remote Commands feature, using the local file option:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>, profile: <span style="color:#b84">&#34;PROFILE&#34;</span>, environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>)
+config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
+
+tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
+        <span style="font-weight:bold">return</span>
+    }
+    <span style="font-weight:bold">let</span> <span style="color:#008080">firebase</span> = FirebaseRemoteCommand(type: .local(file: <span style="color:#b84">&#34;firebase&#34;</span>))
+    config.addRemoteCommand(firebase)
+}</code></pre></div>
 </div>
 
-<div class="tab-pane" data-lang="Objective-C" title="Objective-C">
-  <ol>
-<li><p>Clone the repo and the drag the files from the <code>Objective-C</code> folder into your project.</p></li>
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>, profile: <span style="color:#b84">&#34;PROFILE&#34;</span>, environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>)
+config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
 
-<li><p>Import the Swift code by adding the following line in the file <code>TealiumHelper.m</code>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">#<span style="font-weight:bold">import</span> <span style="color:#b84">&#34;TealiumRemoteCommandObjcApp-Swift.h&#34;</span></code></pre></div>
-<p class="note">The Swift bridging header for your target is named <code>&lt;MODULE-NAME&gt;-Swift.h</code>. Filter for &ldquo;Module Name&rdquo; in your target&rsquo;s build settings to find it.</p>
-  </li>
-
-<li><p>Initialize the remote command:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Objective-C" data-lang="Objective-C">FirebaseTracker <span style="font-weight:bold">*</span>firebaseTracker <span style="font-weight:bold">=</span> [[FirebaseTracker alloc] init];
-FirebaseCommand <span style="font-weight:bold">*</span>firebaseCommand <span style="font-weight:bold">=</span> [[FirebaseCommand alloc] initWithFirebaseTracker: firebaseTracker];
-TEALRemoteCommandResponseBlock firebaseRemoteCommand <span style="font-weight:bold">=</span> [firebaseCommand remoteCommand];
-[[Tealium instanceForKey:<span style="color:#b84">@&#34;MY_INSTANCE&#34;</span>] addRemoteCommandID:<span style="color:#b84">@&#34;firebase&#34;</span>
-                                description:<span style="color:#b84">@&#34;Firebase Remote Command&#34;</span>
-                                targetQueue:dispatch_get_main_queue()
-                                responseBlock:firebaseRemoteCommand];</code></pre></div></li>
-</ol>
-
-<p>Learn about <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_swift_into_objective-c">importing Swift into Objective-C</a>.</p>
-
+tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
+        <span style="font-weight:bold">return</span>
+    }
+    <span style="font-weight:bold">let</span> <span style="color:#008080">firebase</span> = FirebaseRemoteCommand()
+    config.addRemoteCommand(firebase)
+}</code></pre></div>
 </div>
 
 <p></div>
@@ -426,57 +422,201 @@ TEALRemoteCommandResponseBlock firebaseRemoteCommand <span style="font-weight:bo
 
 <p>For all Tealium libraries, register the Firebase mobile remote commands when you initialize.</p>
 
+<h3 id="android-kotlin">Android (Kotlin)</h3>
+
+<p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s Kotlin library.</p>
+
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content">
-<div class="tab-pane" data-lang="Android" title="Android">
-  <p>The following code is designed for use with Tealium&rsquo;s Android library:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">RemoteCommand <span style="color:#900;font-weight:bold">firebase</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> FirebaseRemoteCommand(application);
-teal.<span style="color:#008080">addRemoteCommand</span>(firebase);</code></pre></div>
-</div>
-
-<div class="tab-pane" data-lang="Swift" title="Swift">
-  <p>The following code is designed for use with Tealium&rsquo;s Swift library for iOS:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">teal</span> : Tealium?
-<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-                           profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-                           environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,<span style="color:#a61717;background-color:#e3d2d2">˜˜</span>
-                           datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
-                           optionalData: <span style="font-weight:bold">nil</span>)
-
-teal = Tealium(config: config) { responses <span style="font-weight:bold">in</span>
-  <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands() <span style="font-weight:bold">else</span> {
-        <span style="font-weight:bold">return</span>
-  }
-  <span style="font-weight:bold">let</span> <span style="color:#008080">firebaseTracker</span> = FirebaseTracker()
-  <span style="font-weight:bold">let</span> <span style="color:#008080">firebaseCommand</span> = FirebaseCommand(firebaseTracker: firebaseTracker)
-  <span style="font-weight:bold">let</span> <span style="color:#008080">firebaseRemoteCommand</span> = firebaseCommand.remoteCommand()
-  remoteCommands.add(firebaseRemoteCommand)
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The following code is designed for use with the JSON Remote Command feature, using the local file option:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, Environment.DEV, dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+<span style="font-weight:bold">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
+    <span style="font-weight:bold">val</span> facebook = FirebaseRemoteCommand(application);
+  <span style="color:#998;font-style:italic">// register the command
+</span><span style="color:#998;font-style:italic"></span>  remoteCommands<span style="font-weight:bold">?.</span>add(facebook, filename = <span style="color:#b84">&#34;facebook.json&#34;</span>);
 }</code></pre></div>
 </div>
 
-<div class="tab-pane" data-lang="Objective-C" title="Objective-C">
-  <p>The following code is designed for use with Tealium&rsquo;s Objective-C library for iOS, although it is written in Swift. A Bridging Header is required in your Xcode project for this code to work correctly.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">let config <span style="font-weight:bold">=</span> TEALConfiguration(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-                               profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-                               environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-                               datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
-let teal <span style="font-weight:bold">=</span> Tealium.newInstance(forKey: <span style="color:#b84">&#34;teal&#34;</span>, configuration: config)
-
-let firebaseTracker <span style="font-weight:bold">=</span> FirebaseTracker()
-let firebaseCommand <span style="font-weight:bold">=</span> FirebaseCommand(firebaseTracker: firebaseTracker)
-let firebaseRemoteCommand <span style="font-weight:bold">=</span> firebaseCommand.remoteCommand()
-teal.addRemoteCommandID(<span style="color:#b84">&#34;firebase&#34;</span>, description: <span style="color:#999">nil</span>, targetQueue: DispatchQueue.main, responseBlock: firebaseRemoteCommand)</code></pre></div>
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, Environment.DEV, dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+<span style="font-weight:bold">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
+    <span style="font-weight:bold">val</span> facebook = FirebaseRemoteCommand(application);
+  <span style="color:#998;font-style:italic">// register the command
+</span><span style="color:#998;font-style:italic"></span>  remoteCommands<span style="font-weight:bold">?.</span>add(facebook);
+}</code></pre></div>
 </div>
 
 <p></div>
 </div></p>
 
+<h3 id="android-java">Android (Java)</h3>
+
+<p>Initialize remote commands with the Remote Command tag for Tealium&rsquo;s Android (Java) library.</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">RemoteCommand <span style="color:#900;font-weight:bold">firebase</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> FirebaseRemoteCommand(application);
+teal.<span style="color:#008080">addRemoteCommand</span>(firebase);</code></pre></div>
+</div>
+
+<p></div>
+</div></p>
+
+<h3 id="ios-swift">iOS (Swift)</h3>
+
+<p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s iOS (Swift) library.</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The following code is designed for use with the JSON Remote Commands feature, using the local file option:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span> : Tealium?
+<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+                           profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
+                           environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
+                           dataSource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
+                           optionalData: <span style="font-weight:bold">nil</span>)
+
+config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
+
+tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
+        <span style="font-weight:bold">return</span>
+    }
+    <span style="font-weight:bold">let</span> <span style="color:#008080">firebase</span> = FirebaseRemoteCommand(type: .local(file: <span style="color:#b84">&#34;firebase&#34;</span>))
+    config.addRemoteCommand(firebase)
+}</code></pre></div>
+</div>
+
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span> : Tealium?
+<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+                           profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
+                           environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,<span style="color:#a61717;background-color:#e3d2d2">˜˜</span>
+                           dataSource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
+                           optionalData: <span style="font-weight:bold">nil</span>)
+
+config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
+
+tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
+        <span style="font-weight:bold">return</span>
+    }
+    <span style="font-weight:bold">let</span> <span style="color:#008080">firebase</span> = FirebaseRemoteCommand()
+    config.addRemoteCommand(firebase)
+}</code></pre></div>
+</div>
+
+<p></div>
+</div></p>
+
+<h2 id="json-template">JSON Template</h2>
+
+<p>If you are configuring remote commands using a <a href="/platforms/remote-commands/how-it-works/#json-configuration-file">JSON configuration file</a>, refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#000080">&#34;config&#34;</span>: {
+        <span style="color:#000080">&#34;firebase_analytics_enabled&#34;</span>: <span style="color:#b84">&#34;true&#34;</span>,
+        <span style="color:#000080">&#34;firebase_session_timeout_seconds&#34;</span>: <span style="color:#b84">&#34;30&#34;</span>,
+        <span style="color:#000080">&#34;firebase_log_level&#34;</span>: <span style="color:#b84">&#34;max&#34;</span>,
+        <span style="color:#000080">&#34;firebase_session_minimum_seconds&#34;</span>: <span style="color:#b84">&#34;100&#34;</span>
+    },
+    <span style="color:#000080">&#34;mappings&#34;</span>: {
+        <span style="color:#000080">&#34;achievement_id&#34;</span>: <span style="color:#b84">&#34;event.param_achievement_id&#34;</span>,
+        <span style="color:#000080">&#34;ad_network_click_id&#34;</span>: <span style="color:#b84">&#34;event.param_ad_network_click_id&#34;</span>,
+        <span style="color:#000080">&#34;affiliation&#34;</span>: <span style="color:#b84">&#34;event.param_affiliation&#34;</span>,
+        <span style="color:#000080">&#34;campaign_keywords&#34;</span>: <span style="color:#b84">&#34;event.param_cp1&#34;</span>,
+        <span style="color:#000080">&#34;campaign&#34;</span>: <span style="color:#b84">&#34;event.param_campaign&#34;</span>,
+        <span style="color:#000080">&#34;game_character&#34;</span>: <span style="color:#b84">&#34;event.param_character&#34;</span>,
+        <span style="color:#000080">&#34;checkout_option&#34;</span>: <span style="color:#b84">&#34;event.param_checkout_option&#34;</span>,
+        <span style="color:#000080">&#34;checkout_step&#34;</span>: <span style="color:#b84">&#34;event.param_checkout_step&#34;</span>,
+        <span style="color:#000080">&#34;content&#34;</span>: <span style="color:#b84">&#34;event.param_content&#34;</span>,
+        <span style="color:#000080">&#34;content_type&#34;</span>: <span style="color:#b84">&#34;event.param_content_type&#34;</span>,
+        <span style="color:#000080">&#34;coupon&#34;</span>: <span style="color:#b84">&#34;event.param_coupon&#34;</span>,
+        <span style="color:#000080">&#34;creative_name&#34;</span>: <span style="color:#b84">&#34;event.param_creative_name&#34;</span>,
+        <span style="color:#000080">&#34;creative_slot&#34;</span>: <span style="color:#b84">&#34;event.param_creative_slot&#34;</span>,
+        <span style="color:#000080">&#34;currency_code&#34;</span>: <span style="color:#b84">&#34;event.param_currency&#34;</span>,
+        <span style="color:#000080">&#34;travel_destination&#34;</span>: <span style="color:#b84">&#34;event.param_destination&#34;</span>,
+        <span style="color:#000080">&#34;end_date&#34;</span>: <span style="color:#b84">&#34;event.param_end_date&#34;</span>,
+        <span style="color:#000080">&#34;flight_number&#34;</span>: <span style="color:#b84">&#34;pevent.aram_flight_number&#34;</span>,
+        <span style="color:#000080">&#34;group_id&#34;</span>: <span style="color:#b84">&#34;event.param_group_id&#34;</span>,
+        <span style="color:#000080">&#34;current_index&#34;</span>: <span style="color:#b84">&#34;param_index&#34;</span>,
+        <span style="color:#000080">&#34;product_brand&#34;</span>: <span style="color:#b84">&#34;event.param_item_brand&#34;</span>,
+        <span style="color:#000080">&#34;product_category&#34;</span>: <span style="color:#b84">&#34;event.param_item_category&#34;</span>,
+        <span style="color:#000080">&#34;product_id&#34;</span>: <span style="color:#b84">&#34;event.param_item_id&#34;</span>,
+        <span style="color:#000080">&#34;product_list&#34;</span>: <span style="color:#b84">&#34;event.param_item_list&#34;</span>,
+        <span style="color:#000080">&#34;product_location_id&#34;</span>: <span style="color:#b84">&#34;event.param_item_location_id&#34;</span>,
+        <span style="color:#000080">&#34;product_name&#34;</span>: <span style="color:#b84">&#34;event.param_item_name&#34;</span>,
+        <span style="color:#000080">&#34;product_variant&#34;</span>: <span style="color:#b84">&#34;event.param_item_variant&#34;</span>,
+        <span style="color:#000080">&#34;current_level&#34;</span>: <span style="color:#b84">&#34;event.param_level&#34;</span>,
+        <span style="color:#000080">&#34;most_recent_location&#34;</span>: <span style="color:#b84">&#34;event.param_location&#34;</span>,
+        <span style="color:#000080">&#34;campaign_medium&#34;</span>: <span style="color:#b84">&#34;event.param_medium&#34;</span>,
+        <span style="color:#000080">&#34;number_nights&#34;</span>: <span style="color:#b84">&#34;event.param_number_nights&#34;</span>,
+        <span style="color:#000080">&#34;number_pax&#34;</span>: <span style="color:#b84">&#34;event.param_number_pax&#34;</span>,
+        <span style="color:#000080">&#34;number_rooms&#34;</span>: <span style="color:#b84">&#34;event.param_number_rooms&#34;</span>,
+        <span style="color:#000080">&#34;travel_origin&#34;</span>: <span style="color:#b84">&#34;event.param_origin&#34;</span>,
+        <span style="color:#000080">&#34;product_unit_price&#34;</span>: <span style="color:#b84">&#34;event.param_price&#34;</span>,
+        <span style="color:#000080">&#34;product_quantity&#34;</span>: <span style="color:#b84">&#34;event.param_quantity&#34;</span>,
+        <span style="color:#000080">&#34;high_score&#34;</span>: <span style="color:#b84">&#34;event.param_score&#34;</span>,
+        <span style="color:#000080">&#34;search_keyword&#34;</span>: <span style="color:#b84">&#34;event.param_search_term&#34;</span>,
+        <span style="color:#000080">&#34;order_shipping_amount&#34;</span>: <span style="color:#b84">&#34;event.param_shipping&#34;</span>,
+        <span style="color:#000080">&#34;signup_method&#34;</span>: <span style="color:#b84">&#34;event.param_signup_method&#34;</span>,
+        <span style="color:#000080">&#34;campaign_source&#34;</span>: <span style="color:#b84">&#34;event.param_source&#34;</span>,
+        <span style="color:#000080">&#34;start_date&#34;</span>: <span style="color:#b84">&#34;event.param_start_date&#34;</span>,
+        <span style="color:#000080">&#34;order_tax_amount&#34;</span>: <span style="color:#b84">&#34;event.param_tax&#34;</span>,
+        <span style="color:#000080">&#34;product_term&#34;</span>: <span style="color:#b84">&#34;event.param_term&#34;</span>,
+        <span style="color:#000080">&#34;order_id&#34;</span>: <span style="color:#b84">&#34;event.param_transaction_id&#34;</span>,
+        <span style="color:#000080">&#34;travel_class&#34;</span>: <span style="color:#b84">&#34;event.param_travel_class&#34;</span>,
+        <span style="color:#000080">&#34;order_total&#34;</span>: <span style="color:#b84">&#34;event.param_value&#34;</span>,
+        <span style="color:#000080">&#34;virtual_currency_name&#34;</span>: <span style="color:#b84">&#34;event.param_virtual_currency_name&#34;</span>,
+        <span style="color:#000080">&#34;user_signup_method&#34;</span>: <span style="color:#b84">&#34;event.param_user_signup_method&#34;</span>,
+        <span style="color:#000080">&#34;event_title&#34;</span>: <span style="color:#b84">&#34;firebase_event_name&#34;</span>,
+        <span style="color:#000080">&#34;tealium_event&#34;</span>: <span style="color:#b84">&#34;command_name&#34;</span>,
+        <span style="color:#000080">&#34;screen_name&#34;</span>: <span style="color:#b84">&#34;firebase_screen_name&#34;</span>,
+        <span style="color:#000080">&#34;screen_class&#34;</span>: <span style="color:#b84">&#34;firebase_screen_class&#34;</span>,
+        <span style="color:#000080">&#34;pet&#34;</span>: <span style="color:#b84">&#34;firebase_property_name&#34;</span>,
+        <span style="color:#000080">&#34;pet_name&#34;</span>: <span style="color:#b84">&#34;firebase_property_value&#34;</span>,
+        <span style="color:#000080">&#34;customer_id&#34;</span>: <span style="color:#b84">&#34;firebase_user_id&#34;</span>
+    },
+    <span style="color:#000080">&#34;commands&#34;</span>: {
+        <span style="color:#000080">&#34;launch&#34;</span>: <span style="color:#b84">&#34;config&#34;</span>,
+        <span style="color:#000080">&#34;user_login&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
+        <span style="color:#000080">&#34;user_register&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
+        <span style="color:#000080">&#34;share&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
+        <span style="color:#000080">&#34;show_offers&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
+        <span style="color:#000080">&#34;join_group&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
+        <span style="color:#000080">&#34;travel_order&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
+        <span style="color:#000080">&#34;earn_currency&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
+        <span style="color:#000080">&#34;spend_currency&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
+        <span style="color:#000080">&#34;unlock_achievement&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
+        <span style="color:#000080">&#34;level_up&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
+        <span style="color:#000080">&#34;start_tutorial&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
+        <span style="color:#000080">&#34;stop_tutorial&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
+        <span style="color:#000080">&#34;record_score&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
+        <span style="color:#000080">&#34;category&#34;</span>: <span style="color:#b84">&#34;logevent,setscreenname&#34;</span>,
+        <span style="color:#000080">&#34;product&#34;</span>: <span style="color:#b84">&#34;logevent,setscreenname&#34;</span>,
+        <span style="color:#000080">&#34;cart_add&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
+        <span style="color:#000080">&#34;wishlist_add&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
+        <span style="color:#000080">&#34;checkout&#34;</span>: <span style="color:#b84">&#34;logevent,setscreenname&#34;</span>,
+        <span style="color:#000080">&#34;checkout_progress&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
+        <span style="color:#000080">&#34;email_signup&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
+        <span style="color:#000080">&#34;order&#34;</span>: <span style="color:#b84">&#34;logevent,setscreenname&#34;</span>
+    }
+}</code></pre></div>
 <h2 id="track">Track</h2>
 
 <p>Events triggered by basic interactions with your app are tracked automatically. <a href="https://support.google.com/firebase/answer/6317485?hl=en">Learn more</a> about Firebase automatically collected events.</p>
 
-<p>Learn about <a href="https://community.tealiumiq.com/t5/Tags/Firebase-Mobile-Remote-Command-Tag-Setup-Guide/ta-p/30310">Firebase Mobile Remote Command Tag setup</a>.</p>
+<p>Learn about <a href="https://community.tealiumiq.com/t5/Tags/Firebase-Mobile-Remote-Command-Tag-Setup-Guide/ta-p/30310">Firebase Mobile Remote Command tag setup</a>.</p>
 
 </div>
 
@@ -743,6 +883,46 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;firebase&#34;</span>, desc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/hosted-data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-hosted-data-layer">Hosted Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-feature-comparison">Feature Comparison</a>
       </li>
       
@@ -860,7 +1040,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;firebase&#34;</span>, desc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">Remote Command: AppsFlyer</a>
+        <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
       </li>
       
     
@@ -880,7 +1060,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;firebase&#34;</span>, desc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/braze/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-braze">Remote Command: Braze</a>
+        <a href="/platforms/remote-commands/integrations/braze/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-braze">Braze</a>
       </li>
       
     
@@ -900,7 +1080,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;firebase&#34;</span>, desc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/contentsquare/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-contentsquare">Remote Command: Contentsquare</a>
+        <a href="/platforms/remote-commands/integrations/contentsquare/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-contentsquare">Contentsquare</a>
       </li>
       
     
@@ -920,7 +1100,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;firebase&#34;</span>, desc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/facebook/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-facebook">Remote Command: Facebook</a>
+        <a href="/platforms/remote-commands/integrations/facebook/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-facebook">Facebook</a>
       </li>
       
     
@@ -940,7 +1120,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;firebase&#34;</span>, desc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 bg-secondary white" data-target=".remote-commands-firebase">Remote Command: Firebase</a>
+        <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 bg-secondary white" data-target=".remote-commands-firebase">Firebase</a>
       </li>
       
     
@@ -960,7 +1140,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;firebase&#34;</span>, desc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/usabilla/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-usabilla">Remote Command: Usabilla</a>
+        <a href="/platforms/remote-commands/integrations/usabilla/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-usabilla">Usabilla</a>
       </li>
       
     
@@ -6007,7 +6187,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;firebase&#34;</span>, desc
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  May 20, 2020 
+    <span>This page was last updated:  October 19, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

@@ -232,6 +232,7 @@ var utag_data = {
       <p class="b">Table of Contents</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#today-extensions">Today Extensions</a></li>
               <li><a href="#watchos-extensions-and-independent-apps">watchOS Extensions and Independent Apps</a></li>
+              <li><a href="#widgetkit-and-app-clips">WidgetKit and App Clips</a></li>
               <li><a href="#visitor-id-in-app-extensions">Visitor ID in App Extensions</a></li>
               </nav>
   </aside></div>
@@ -281,9 +282,15 @@ var utag_data = {
 
 <h2 id="watchos-extensions-and-independent-apps">watchOS Extensions and Independent Apps</h2>
 
-<p>If you are adding a watchOS target to an iOS project that already has Tealium installed then add the necessary modules, <code>TealiumHelper</code> to the Watch Extension target, and necessary tracking calls. The Tag Management module is not supported on watchOS, due to the dependency on <code>WKWebView</code>; the Collect module is the only supported method of data collection on watchOS.</p>
+<p>If you are adding a watchOS target to an iOS project that already has Tealium installed then add the necessary modules, <code>TealiumHelper</code> (or other analytics manager class) that imports Tealium to the Watch Extension target, and necessary tracking calls. The Tag Management module is not supported on watchOS, due to the dependency on <code>WKWebView</code>; the Collect module is the only supported method of data collection on watchOS.</p>
+
+<p>For an example of a watchOS extension target utilizing Tealium, see <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/TealiumSwiftExample/TealiumSwiftWatchExample%20Extension">TealiumSwiftExample</a>. Creating a standalone watchOS app is similar. Assign each <code>Tealium###.framework</code> to the watchOS extension target, and add your <code>TealiumHelper</code> class.</p>
 
 <p>Alternatively, use the <code>WatchConnectivty</code> framework&rsquo;s <code>WCSession</code> API to send a message to the host iOS app each time you wish to send a tracking call. This allows the event to be tracked by the Tag Management module if you are using it, but is not an option for an independent watchOS app.</p>
+
+<h2 id="widgetkit-and-app-clips">WidgetKit and App Clips</h2>
+
+<p>If you are adding either a WidgetKit or App Clip extension to your current iOS app, share your iOS <code>TealiumHelper</code> (or other analytics manager class) that imports Tealium with the WidgetKit or App Clip target. Then add tracking calls within the <code>Views</code> of the WidgetKit and App Clip to sent events from the Widget or App Clip to Tealium. For an example, see <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/TealiumSwiftExample/WidgetExample">TealiumSwiftExample</a>.</p>
 
 <h2 id="visitor-id-in-app-extensions">Visitor ID in App Extensions</h2>
 
@@ -579,6 +586,46 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/hosted-data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-hosted-data-layer">Hosted Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-feature-comparison">Feature Comparison</a>
       </li>
       
@@ -696,7 +743,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">Remote Command: AppsFlyer</a>
+        <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
       </li>
       
     
@@ -716,7 +763,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/braze/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-braze">Remote Command: Braze</a>
+        <a href="/platforms/remote-commands/integrations/braze/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-braze">Braze</a>
       </li>
       
     
@@ -736,7 +783,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/contentsquare/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-contentsquare">Remote Command: Contentsquare</a>
+        <a href="/platforms/remote-commands/integrations/contentsquare/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-contentsquare">Contentsquare</a>
       </li>
       
     
@@ -756,7 +803,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/facebook/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-facebook">Remote Command: Facebook</a>
+        <a href="/platforms/remote-commands/integrations/facebook/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-facebook">Facebook</a>
       </li>
       
     
@@ -776,7 +823,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-firebase">Remote Command: Firebase</a>
+        <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-firebase">Firebase</a>
       </li>
       
     
@@ -796,7 +843,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/usabilla/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-usabilla">Remote Command: Usabilla</a>
+        <a href="/platforms/remote-commands/integrations/usabilla/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-usabilla">Usabilla</a>
       </li>
       
     
@@ -5843,7 +5890,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  August 12, 2020 
+    <span>This page was last updated:  October 2, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

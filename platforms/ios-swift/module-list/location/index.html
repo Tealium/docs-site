@@ -238,7 +238,8 @@ var utag_data = {
               <li><a href="#cocoapods">CocoaPods</a></li>
               <li><a href="#carthage">Carthage</a></li>
               </ul><li><a href="#initialize">Initialize</a></li>
-              <ul class="toc-h3"><li><a href="#permissions">Permissions</a></li>
+              <ul class="toc-h3"><li><a href="#authorization">Authorization</a></li>
+              <li><a href="#approximate-location-tracking-ios-14">Approximate Location Tracking (iOS 14&#43;)</a></li>
               </ul><li><a href="#location-tracking">Location Tracking</a></li>
               <li><a href="#geofencing">Geofencing</a></li>
               <li><a href="#additional-considerations">Additional Considerations</a></li>
@@ -300,7 +301,7 @@ var utag_data = {
 
 <h2 id="sample-app">Sample App</h2>
 
-<p>Explore the <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/TealiumSwiftExample">iOS sample app</a> to familiarize yourself with our library, tracking methods, and best practice implementation. The main sample app includes the Location module.</p>
+<p>Explore the <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/TealiumSwiftExample">iOS sample app</a> to familiarize yourself with our library, tracking methods, and best practice implementation. The main sample app includes the Location module and an example of the geofencing feature.</p>
 
 <h2 id="install">Install</h2>
 
@@ -313,7 +314,7 @@ var utag_data = {
 <ol>
 <li>In your Xcode project, select <strong>File &gt; Swift Packages &gt; Add Package Dependency</strong></li>
 <li>Enter the repository URL: <code>https://github.com/tealium/tealium-swift</code></li>
-<li>Configure the version rules. Typically, <code>&quot;Up to next major&quot;</code> is recommended. If the current Tealium Swift library version does not appears in the list, then reset your Swift package cache.</li>
+<li>Configure the version rules. Typically, <code>Up to next major</code> is recommended. If the current Tealium Swift library version does not appears in the list, then reset your Swift package cache.</li>
 <li>Select the <code>Location</code> module from the list of modules to install and add it each of your app targets in your Xcode project, under <strong>Frameworks &gt; Libraries &amp; Embedded Content</strong></li>
 </ol>
 
@@ -346,7 +347,7 @@ var utag_data = {
 
 <p>Additional options for <a href="#location-tracking">location accuracy</a> and <a href="#geofencing">geofencing</a> are also configurable for your <code>TealiumConfig</code> instance.</p>
 
-<h3 id="permissions">Permissions</h3>
+<h3 id="authorization">Authorization</h3>
 
 <p>To authorize your app to collect location information, add the following keys to your app&rsquo;s <code>Info.plist</code> file:</p>
 
@@ -360,30 +361,60 @@ var utag_data = {
 <p>If you do not already request location authorizaiton within your current implementation, you can use the Location module&rsquo;s API method <code>requestAuthorization()</code> in the Tealium completion callback like so:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">start</span>() {
       <span style="color:#998;font-style:italic">//...</span>
-      tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span> 
+      tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
       		<span style="font-weight:bold">self</span>.tealium?.location?.requestAuthorization()
       }
   }</code></pre></div>
+<h3 id="approximate-location-tracking-ios-14">Approximate Location Tracking (iOS 14+)</h3>
+
+<p>Apple iOS 14+ provides an app setting for sharing your approximate location rather than your precise location. This method is recommended if your app requires precise location, and if the user initially disabled precise location tracking through their device settings.</p>
+
+<p>If you are not already requesting temporary full authorization in your codebase, use the Tealium helper method <code>requestTemporaryFullAccuracyAuthorization</code> shown in the following example which requests temporary full accuracy.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">start</span>() {
+    <span style="color:#998;font-style:italic">//...</span>
+    tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+      <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">location</span> = <span style="font-weight:bold">self</span>.tealium?.location <span style="font-weight:bold">else</span> {
+          <span style="font-weight:bold">return</span>
+      }
+      <span style="font-weight:bold">if</span> location.isAuthorized {
+          location.requestTemporaryFullAccuracyAuthorization(purposeKey: <span style="color:#b84">&#34;NearStore&#34;</span>)
+      } <span style="font-weight:bold">else</span> {
+          location.requestAuthorization()
+      }
+    }
+}</code></pre></div>
+<p>The <code>String</code> parameter <code>purposeKey</code> corresponds to the key in the <code>NSLocationTemporaryUsageDescriptionDictionary</code> dictionary of your app <code>Info.plist</code> file, as shown in the following example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#000080">key</span>&gt;NSLocationTemporaryUsageDescriptionDictionary&lt;/<span style="color:#000080">key</span>&gt;
+    &lt;<span style="color:#000080">dict</span>&gt;
+        &lt;<span style="color:#000080">key</span>&gt;NearStore&lt;/<span style="color:#000080">key</span>&gt;
+        &lt;<span style="color:#000080">string</span>&gt;In order to send you discounts when you are near a store&lt;/<span style="color:#000080">string</span>&gt;
+    &lt;/<span style="color:#000080">dict</span>&gt;</code></pre></div>
+<p>Learn more about <a href="https://developer.apple.com/documentation/corelocation/cllocationmanager/3600217-requesttemporaryfullaccuracyauth">requesting temporary full authorization</a>.</p>
+
 <h2 id="location-tracking">Location Tracking</h2>
 
 <p>The Location module performs continuous location tracking once the user has authorized location services. Location updates are based on two settings: accuracy and distance.</p>
 
-<p>By default, only significant location updates are monitored. This results in fewer updates and less battery consumption.</p>
+<p>If you disable the the geofence feature, only significant location updates are monitored by Apple&rsquo;s <a href="https://developer.apple.com/documentation/corelocation/cllocationmanager/1423531-startmonitoringsignificantlocati"><code>startMonitoringSignificantLocationChanges()</code></a> method, which results in fewer updates and less battery consumption. This method is called if either property <a href="/platforms/ios-swift/api/tealium-config/#geofencetrackingenabled"><code>config.geofencesTrackingEnabled</code></a> or <a href="/platforms/ios-swift/api/tealium-config/#usehighaccuracy"><code>config.useHighAccuracy</code></a> are set to false, otherwise the Apple&rsquo;s <a href="https://developer.apple.com/documentation/corelocation/cllocationmanager/1423750-startupdatinglocation"><code>startUpdatingLocation</code></a> method is called</p>
 
-<p>To enable higher accuracy updates, set the <a href="/platforms/ios-swift/api/tealium-config/#usehighaccuracy"><code>useHighAccuracy</code></a> property to <code>true</code> and set the <a href="/platforms/ios-swift/api/tealium-config/#updatedistance"><code>updateDistance</code></a> property to a value in meters at which to trigger updates.</p>
+<p>The geofence feature is enabled by default and location updates are more frequent to provide better accuracy. To enable or disable more frequent location updates, set the <a href="/platforms/ios-swift/api/tealium-config/#usehighaccuracy"><code>useHighAccuracy</code></a> property.</p>
+
+<p>If you would like a more accurate location and distance setting, set the <a href="/platforms/ios-swift/api/tealium-config/#updatedistance"><code>updateDistance</code></a> property to a value in meters at which to trigger updates.</p>
+
+<p>There is also an extended accuracy setting, <a href="/platforms/ios-swift/api/tealium-config/#desiredaccuracy"><code>desiredAccuracy</code></a> that specifies the level of accuracy which the app desires to receive. This is the similar to the <a href="https://developer.apple.com/documentation/corelocation/cllocationmanager/1423836-desiredaccuracy"><code>CLLocationManager desiredAccuracy</code></a> property. In iOS 14+, the default value is <code>.reduced</code> and in previous versions it is <code>.nearestHundredMeters</code>.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">start</span>() {
       <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
                                  profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
                                  environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
                                  datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
                                  optionalData: <span style="font-weight:bold">nil</span>)
-      config.useHighAccuracy = <span style="font-weight:bold">true</span>
+      config.useHighAccuracy = <span style="font-weight:bold">false</span>
       config.updateDistance = <span style="color:#099">150</span>
-      <span style="color:#998;font-style:italic">//...</span>
+      config.desiredAccuracy = .nearestThreeKilometers
   }</code></pre></div>
 <h2 id="geofencing">Geofencing</h2>
 
-<p>To enable geofencing, use one of the following methods to provide your <a href="/platforms/getting-started/location/#json-file">geofence JSON file</a>:</p>
+<p>Geofencing is enabled by default, and to configure geofences, use one of the following methods to provide your <a href="/platforms/getting-started/location/#json-file">geofence JSON file</a>:</p>
 
 <ul>
 <li><p><strong>Hosted URL</strong><br />
@@ -396,13 +427,15 @@ Use a geofences file stored in your app by setting the property <a href="/platfo
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.geofenceFileName = <span style="color:#b84">&#34;geofences&#34;</span> <span style="color:#998;font-style:italic">// geofences.json</span></code></pre></div></li>
 </ul>
 
+<p>To disable geofencing set the <a href="/platforms/ios-swift/api/tealium-config/#geofencetrackingenabled"><code>geofenceTrackingEnabled</code></a> property:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.geofenceTrackingEnabled = <span style="font-weight:bold">false</span></code></pre></div>
 <h2 id="additional-considerations">Additional Considerations</h2>
 
 <p><strong>Number of Active Geofences</strong><br />
 Geofences are added and removed dynamically, using as few resources as possible. There is no limit to the number of geofences defined, but the number of active geofences is limited to 20 per device user across <em>all</em> running applications.</p>
 
 <p><strong>Initializing Geofences</strong><br />
-If a user is within a geofence at the time of creation, the <code>&quot;enter&quot;</code> transition event does not fire. This is because <code>&quot;exit&quot;</code> and <code>&quot;enter&quot;</code> transition events are fired when crossing the perimeter and not when materializing inside.</p>
+If a user is within a geofence at the time of creation, the <code>enter</code> transition event does not fire. This is because <code>exit</code> and <code>enter</code> transition events are fired when crossing the perimeter and not when materializing inside.</p>
 
 <h2 id="data-layer">Data Layer</h2>
 
@@ -423,21 +456,28 @@ If a user is within a geofence at the time of creation, the <code>&quot;enter&qu
 <td><code>latitude</code></td>
 <td><code>String</code></td>
 <td>The latitude of the user&rsquo;s most recently recorded location</td>
-<td><code>&quot;32.906119&quot;</code></td>
+<td><code>32.906119</code></td>
 </tr>
 
 <tr>
 <td><code>longitude</code></td>
 <td><code>String</code></td>
 <td>The longitude of the user&rsquo;s most recently recorded location</td>
-<td><code>&quot;-117.2367&quot;</code></td>
+<td><code>-117.2367</code></td>
 </tr>
 
 <tr>
 <td><code>location_accuracy</code></td>
 <td><code>String</code></td>
-<td>The accuracy setting for the Location module, such as <code>&quot;high&quot;</code> or <code>&quot;low&quot;</code></td>
-<td><code>&quot;high&quot;</code></td>
+<td>The frequency for which the location updates are requested, such as <code>high</code> or <code>low</code></td>
+<td><code>high</code></td>
+</tr>
+
+<tr>
+<td><code>location_accuracy_extended</code></td>
+<td><code>String</code></td>
+<td>The accuracy setting for the Location module, such as <code>best</code> or <code>reduced</code></td>
+<td><code>reduced</code></td>
 </tr>
 </tbody>
 </table>
@@ -459,35 +499,35 @@ If a user is within a geofence at the time of creation, the <code>&quot;enter&qu
 <td><code>tealium_event</code></td>
 <td><code>String</code></td>
 <td>The Tealium tracked geofence event</td>
-<td><code>&quot;geofence_entered&quot;</code> or <code>&quot;geofence_exited&quot;</code></td>
+<td><code>geofence_entered</code> or <code>geofence_exited</code></td>
 </tr>
 
 <tr>
 <td><code>geofence_name</code></td>
 <td><code>String</code></td>
 <td>The name of the geofence region</td>
-<td><code>&quot;Tealium_San_Diego&quot;</code></td>
+<td><code>Tealium_San_Diego</code></td>
 </tr>
 
 <tr>
 <td><code>geofence_transition_type</code></td>
 <td><code>String</code></td>
 <td>The type of geofence transition event</td>
-<td><code>&quot;geofence_entered&quot;</code> or <code>&quot;geofence_exited&quot;</code></td>
+<td><code>geofence_entered</code> or <code>geofence_exited</code></td>
 </tr>
 
 <tr>
 <td><code>movement_speed</code></td>
 <td><code>String</code></td>
 <td>The instantaneous speed of the device, measured in meters per second</td>
-<td><code>&quot;1.0&quot;</code></td>
+<td><code>1.0</code></td>
 </tr>
 
 <tr>
 <td><code>location_timestamp</code></td>
 <td><code>String</code></td>
 <td>The recorded date/time (GMT) the user entered/exited the geofence region</td>
-<td><code>&quot;2020-01-28 16:29:46 +0000&quot;</code></td>
+<td><code>2020-01-28 16:29:46 +0000</code></td>
 </tr>
 </tbody>
 </table>
@@ -761,6 +801,46 @@ If a user is within a geofence at the time of creation, the <code>&quot;enter&qu
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/hosted-data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-hosted-data-layer">Hosted Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-feature-comparison">Feature Comparison</a>
       </li>
       
@@ -878,7 +958,7 @@ If a user is within a geofence at the time of creation, the <code>&quot;enter&qu
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">Remote Command: AppsFlyer</a>
+        <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
       </li>
       
     
@@ -898,7 +978,7 @@ If a user is within a geofence at the time of creation, the <code>&quot;enter&qu
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/braze/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-braze">Remote Command: Braze</a>
+        <a href="/platforms/remote-commands/integrations/braze/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-braze">Braze</a>
       </li>
       
     
@@ -918,7 +998,7 @@ If a user is within a geofence at the time of creation, the <code>&quot;enter&qu
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/contentsquare/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-contentsquare">Remote Command: Contentsquare</a>
+        <a href="/platforms/remote-commands/integrations/contentsquare/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-contentsquare">Contentsquare</a>
       </li>
       
     
@@ -938,7 +1018,7 @@ If a user is within a geofence at the time of creation, the <code>&quot;enter&qu
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/facebook/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-facebook">Remote Command: Facebook</a>
+        <a href="/platforms/remote-commands/integrations/facebook/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-facebook">Facebook</a>
       </li>
       
     
@@ -958,7 +1038,7 @@ If a user is within a geofence at the time of creation, the <code>&quot;enter&qu
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-firebase">Remote Command: Firebase</a>
+        <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-firebase">Firebase</a>
       </li>
       
     
@@ -978,7 +1058,7 @@ If a user is within a geofence at the time of creation, the <code>&quot;enter&qu
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/usabilla/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-usabilla">Remote Command: Usabilla</a>
+        <a href="/platforms/remote-commands/integrations/usabilla/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-usabilla">Usabilla</a>
       </li>
       
     
@@ -6025,7 +6105,7 @@ If a user is within a geofence at the time of creation, the <code>&quot;enter&qu
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  August 27, 2020 
+    <span>This page was last updated:  October 2, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

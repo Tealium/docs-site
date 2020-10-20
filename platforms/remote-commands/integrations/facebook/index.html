@@ -237,6 +237,10 @@ var utag_data = {
               <li><a href="#manual-ios">Manual (iOS)</a></li>
               <li><a href="#manual-android">Manual (Android)</a></li>
               </ul><li><a href="#initialize">Initialize</a></li>
+              <ul class="toc-h3"><li><a href="#android-kotlin">Android (Kotlin)</a></li>
+              <li><a href="#android-java">Android (Java)</a></li>
+              <li><a href="#ios-swift">iOS (Swift)</a></li>
+              </ul><li><a href="#json-template">JSON Template</a></li>
               <li><a href="#push-message-tracking">Push Message Tracking</a></li>
               <li><a href="#supported-methods">Supported Methods</a></li>
               <ul class="toc-h3"><li><a href="#standard-event-names">Standard Event Names</a></li>
@@ -290,7 +294,12 @@ var utag_data = {
 
 <ul>
 <li><a href="/platforms/android-java/">Tealium for Android</a> or <a href="/platforms/ios-swift/">Tealium for iOS</a> in your app</li>
-<li>Facebook Remote Command Tag in Tealium iQ Tag Management</li>
+<li>One of these remote command integrations:
+
+<ul>
+<li><a href="/platforms/remote-commands/integrations/facebook/#json-template">Facebook Remote Command JSON File</a></li>
+<li>Facebook Remote Command tag in Tealium iQ Tag Management</li>
+</ul></li>
 </ul>
 
 <p>The following are requirements for iOS and Android:</p>
@@ -299,7 +308,7 @@ var utag_data = {
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content">
 <div class="tab-pane" data-lang="Android" title="Android">
-  <p>The following AndroidManifest.xml keys are required for Android:</p>
+  <p>The following <code>AndroidManifest.xml</code> keys are required for Android:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#000080">&lt;string</span> <span style="color:#008080">name=</span><span style="color:#b84">&#34;facebook_app_id&#34;</span><span style="color:#000080">&gt;</span>[APP_ID]<span style="color:#000080">&lt;/string&gt;</span>
 <span style="color:#000080">&lt;string</span> <span style="color:#008080">name=</span><span style="color:#b84">&#34;fb_login_protocol_scheme&#34;</span><span style="color:#000080">&gt;</span>fb[APP_ID]<span style="color:#000080">&lt;/string&gt;</span></code></pre></div>
 <p>Learn more: <a href="https://developers.facebook.com/docs/app-events/getting-started-app-events-android">Facebook Android Getting Started - Integrate the Facebook SDK in Your Android App</a></p>
@@ -352,9 +361,17 @@ var utag_data = {
 
 <h2 id="how-it-works">How It Works</h2>
 
-<p>The integration with Facebook uses the native Facebook SDK, a remote commands module that wraps the Facebook methods, and the Facebook Remote Command tag that translates event tracking into native Facebook calls. This solution leverages the convenience of Tealium iQ Tag Management to configure a native Facebook implementation without having to add vendor-specific code to your app.</p>
+<p>The integration with Facebook uses the native Facebook SDK, a remote commands module that wraps the Facebook methods, and the Facebook Remote Command tag that translates event tracking into native Facebook calls. The integration uses three items:</p>
 
-<p>Adding the Facebook remote command module to your app automatically installs and builds the required Facebook libraries. If you are using a dependency manager installation, there is no need to install the Facebook SDK separately.</p>
+<ol>
+<li>The Facebook native SDK</li>
+<li>The remote commands module</li>
+<li>Either the JSON configuration file or Remote Command tag</li>
+</ol>
+
+<p>Adding the Facebook remote command module to your app automatically installs and builds the required Facebook libraries, without having to add vendor-specific code to your app. If you are using a dependency manager installation, there is no need to install the Facebook SDK separately.</p>
+
+<p>There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration.  Learn more about <a href="/platforms/remote-commands/how-it-works/#vendor-integrations">vendor integrations</a>.</p>
 
 <h2 id="install">Install</h2>
 
@@ -417,12 +434,12 @@ var utag_data = {
 
 <li><p>Add the Tealium Maven URL to your project&rsquo;s top-level <code>build.gradle</code> file:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects <span style="font-weight:bold">{</span>
-repositories <span style="font-weight:bold">{</span>
-jcenter<span style="font-weight:bold">()</span>
-maven <span style="font-weight:bold">{</span>
-  url <span style="color:#b84">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
-<span style="font-weight:bold">}</span>
-<span style="font-weight:bold">}</span>
+  repositories <span style="font-weight:bold">{</span>
+    jcenter<span style="font-weight:bold">()</span>
+    maven <span style="font-weight:bold">{</span>
+      url <span style="color:#b84">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
+    <span style="font-weight:bold">}</span>
+  <span style="font-weight:bold">}</span>
 <span style="font-weight:bold">}</span></code></pre></div></li>
 
 <li><p>Import both the Facebook SDK and Tealium-Facebook remote commands by adding the following dependencies in your app project&rsquo;s <code>build.gradle</code> file:</p>
@@ -438,60 +455,51 @@ maven <span style="font-weight:bold">{</span>
 
 <h3 id="manual-ios">Manual (iOS)</h3>
 
-<p>The manual installation for Facebook remote commands requires one of the following iOS libraries to be installed:</p>
-
-<ul>
-<li><a href="https://docs.tealium.com/platforms/ios-swift/">Tealium for Swift</a></li>
-<li><a href="https://docs.tealium.com/platforms/ios-objective-c/">Tealium for Objective-C</a></li>
-</ul>
-
-<p>To install the Facebook remote commands for your iOS project:</p>
+<p>The manual installation for Facebook remote commands requires the <a href="https://docs.tealium.com/platforms/ios-swift/">Tealium for Swift</a> library to be installed. To install the Facebook remote commands for your iOS project:</p>
 
 <ol>
 <li><p>Install the <a href="https://github.com/facebook/facebook-ios-sdk/tree/master/FBSDKCoreKit">Facebook SDK</a>, if you haven&rsquo;t already done so.</p></li>
 
 <li><p>Clone the <a href="https://github.com/tealium/tealium-ios-facebook-remote-command">Tealium iOS Facebook remote command</a> repo and drag the files within the <code>Sources</code> folder into your project.</p></li>
 
-<li><p>When initializing the Tealium Swift SDK, in the completion handler:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium = Tealium(config: config) { responses <span style="font-weight:bold">in</span>
-  <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands() <span style="font-weight:bold">else</span> {
-    <span style="font-weight:bold">return</span>
-  }
-  <span style="font-weight:bold">let</span> <span style="color:#008080">facebookRemoteCommand</span> = FacebookRemoteCommand().remoteCommand()
-  remoteCommands.add(facebookRemoteCommand)
-}</code></pre></div></li>
+<li><p>Add <code>Dispatchers.RemoteCommands</code> as a dispatcher</p></li>
 
-<li><p>If you are using the TealiumIOS, add the following code:</p></li>
+<li><p>Set the <a href="/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a> configuration flag to <code>true</code></p></li>
+
+<li><p>When initializing the Tealium SDK, update the completion handler as follows:</p></li>
 </ol>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content">
-<div class="tab-pane" data-lang="Swift" title="Swift">
-  <p>Add the remote command in the <code>TealiumHelper.swift</code> file as follows:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">facebookTracker</span> = FacebookTracker()
-<span style="font-weight:bold">let</span> <span style="color:#008080">facebookRemoteCommand</span> = FacebookRemoteCommand(facebookTracker: facebookTracker).remoteCommand()
-tealium.addRemoteCommandID(<span style="color:#b84">&#34;facebook&#34;</span>,
-                           description: <span style="font-weight:bold">nil</span>,
-                           targetQueue: DispatchQueue.main,
-                           responseBlock: facebookRemoteCommand)</code></pre></div>
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The following code is designed for use with the JSON Remote Commands feature, using the local file option.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>, profile: <span style="color:#b84">&#34;PROFILE&#34;</span>, environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>)
+config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
+config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
+
+tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
+        <span style="font-weight:bold">return</span>
+    }
+    <span style="font-weight:bold">let</span> <span style="color:#008080">facebook</span> = FacebookRemoteCommand(type: .local(file: <span style="color:#b84">&#34;facebook&#34;</span>))
+    remoteCommands.add(facebook)
+}</code></pre></div>
 </div>
 
-<div class="tab-pane" data-lang="Objective-C" title="Objective-C">
-  <p>Import the remote command in the <code>TealiumHelper.m</code> file as follows:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">#<span style="font-weight:bold">import</span> <span style="color:#b84">&#34;TealiumRemoteCommandObjcApp-Swift.h&#34;</span></code></pre></div>
-<p class="note">The Swift bridging header for your target is named ending with <code>-Swift.h</code>. Find this by filtering for &ldquo;Module Name&rdquo; in your target&rsquo;s build settings.</p>
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>, profile: <span style="color:#b84">&#34;PROFILE&#34;</span>, environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>)
+config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
+config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
 
-<p>Learn more about <a href="(https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_swift_into_objective-c)">importing Swift into Objective-C</a>.</p>
-
-<p>Initialize the remote command as follows:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Objective-C" data-lang="Objective-C">FacebookTracker <span style="font-weight:bold">*</span>facebookTracker <span style="font-weight:bold">=</span> [[FacebookTracker alloc] init];
-FacebookRemoteCommand <span style="font-weight:bold">*</span>facebookRemoteCommand <span style="font-weight:bold">=</span> [[FacebookRemoteCommand alloc] initWithFacebookTracker: facebookTracker];
-TEALRemoteCommandResponseBlock facebookRemoteCommandResponse <span style="font-weight:bold">=</span> [facebookRemoteCommand remoteCommand];
-[[Tealium instanceForKey:<span style="color:#b84">@&#34;MY_INSTANCE&#34;</span>] addRemoteCommandID:<span style="color:#b84">@&#34;facebook&#34;</span>
-                                    description:<span style="color:#b84">@&#34;Facebook Remote Command&#34;</span>
-                                    targetQueue:dispatch_get_main_queue()
-                                    responseBlock: facebookRemoteCommandResponse];</code></pre></div>
+tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
+        <span style="font-weight:bold">return</span>
+    }
+    <span style="font-weight:bold">let</span> <span style="color:#008080">facebook</span> = FacebookRemoteCommand()
+    remoteCommands.add(facebook)
+}</code></pre></div>
 </div>
 
 <p></div>
@@ -499,22 +507,16 @@ TEALRemoteCommandResponseBlock facebookRemoteCommandResponse <span style="font-w
 
 <h3 id="manual-android">Manual (Android)</h3>
 
-<p>The manual installation for Facebook remote commands requires the following Android library to be installed:</p>
-
-<ul>
-<li><a href="https://docs.tealium.com/platforms/android-java/">Tealium for Android</a></li>
-</ul>
-
-<p>To install the Facebook remote commands for your Android project:</p>
+<p>The manual installation for Facebook remote commands requires the <a href="https://docs.tealium.com/platforms/android-java/">Tealium for Android</a>library to be installed. To install the Facebook remote commands for your Android project:</p>
 
 <ol>
 <li><p>Add <code>flatDir</code> to your project root <code>build.gradle</code> file:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects <span style="font-weight:bold">{</span>
   repositories <span style="font-weight:bold">{</span>
-     jcenter<span style="font-weight:bold">()</span>
-     flatDir <span style="font-weight:bold">{</span>
-         dirs <span style="color:#b84">&#39;libs&#39;</span>
-     <span style="font-weight:bold">}</span>
+    jcenter<span style="font-weight:bold">()</span>
+    flatDir <span style="font-weight:bold">{</span>
+       dirs <span style="color:#b84">&#39;libs&#39;</span>
+    <span style="font-weight:bold">}</span>
   <span style="font-weight:bold">}</span>
 <span style="font-weight:bold">}</span></code></pre></div></li>
 
@@ -530,11 +532,44 @@ TEALRemoteCommandResponseBlock facebookRemoteCommandResponse <span style="font-w
 
 <p>For all Tealium libraries, register the Facebook Remote Command when you initialize.</p>
 
+<h3 id="android-kotlin">Android (Kotlin)</h3>
+
+<p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s Kotlin library.</p>
+
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content">
-<div class="tab-pane" data-lang="Android" title="Android">
-  <p>The following code is designed for use with Tealium&rsquo;s Android library:</p>
+
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The following code is designed for use with the JSON Remote Commands feature, using the local file option:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, Environment.DEV, dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+<span style="font-weight:bold">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
+  <span style="font-weight:bold">val</span> facebook = FacebookRemoteCommand(<span style="font-weight:bold">this</span>);
+  <span style="color:#998;font-style:italic">// register the command
+</span><span style="color:#998;font-style:italic"></span>  remoteCommands<span style="font-weight:bold">?.</span>add(contentsquare, filename = <span style="color:#b84">&#34;facebook.json&#34;</span>);
+}</code></pre></div>
+</div>
+
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, Environment.DEV, dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+<span style="font-weight:bold">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
+  <span style="font-weight:bold">val</span> facebook = FacebookRemoteCommand(<span style="font-weight:bold">this</span>);
+  <span style="color:#998;font-style:italic">// register the command
+</span><span style="color:#998;font-style:italic"></span>  remoteCommands<span style="font-weight:bold">?.</span>add(contentsquare);
+}</code></pre></div>
+</div>
+
+<p></div>
+</div></p>
+
+<h3 id="android-java">Android (Java)</h3>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">import</span> <span style="color:#900;font-weight:bold">com</span>.<span style="color:#008080">tealium</span>.<span style="color:#008080">remotecommands</span>.<span style="color:#008080">facebook</span>.<span style="color:#008080">FacebookRemoteCommand</span>;
 
 Tealium.<span style="color:#008080">Config</span> <span style="color:#900;font-weight:bold">config</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">Config</span>.<span style="color:#008080">create</span>(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>);
@@ -546,52 +581,138 @@ FacebookRemoteCommand <span style="color:#900;font-weight:bold">facebook</span> 
 </span><span style="color:#998;font-style:italic"></span>teal.<span style="color:#008080">addRemoteCommand</span>(facebook);</code></pre></div>
 </div>
 
-<div class="tab-pane" data-lang="Kotlin" title="Kotlin">
-  <p>The following code is designed for use with Tealium&rsquo;s Android library.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">import</span> <span style="color:#555">com.tealium.remotecommands.facebook.FacebookRemoteCommand</span>
+<p></div>
+</div></p>
 
-<span style="font-weight:bold">val</span> config = Tealium.Config.create(<span style="font-weight:bold">this</span>, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>)
-tealium = Tealium.createInstance(TealiumHelper.instanceName, config)
+<h3 id="ios-swift">iOS (Swift)</h3>
 
-<span style="font-weight:bold">val</span> facebook = FacebookRemoteCommand(<span style="font-weight:bold">this</span>)
+<p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s iOS (Swift) library.</p>
 
-<span style="color:#998;font-style:italic">// register the command
-</span><span style="color:#998;font-style:italic"></span>tealium.addRemoteCommand(facebook)</code></pre></div>
-</div>
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
 
-<div class="tab-pane" data-lang="Swift" title="Swift">
-  <p>The following code is designed for use with Tealium&rsquo;s Swift library for iOS:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">teal</span> : Tealium?
-<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>,
-                           profile: <span style="color:#b84">&#34;your_profile&#34;</span>,
-                           environment: <span style="color:#b84">&#34;dev&#34;</span>,
-                           datasource: <span style="color:#b84">&#34;abc123&#34;</span>,
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The following code is designed for use with the JSON Remote Commands feature, using the local file option:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span> : Tealium?
+<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+                           profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
+                           environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
+                           dataSource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
                            optionalData: <span style="font-weight:bold">nil</span>)
+config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
+config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
 
-teal = Tealium(config: config) { responses <span style="font-weight:bold">in</span>
-  <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands() <span style="font-weight:bold">else</span> {
+tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
         <span style="font-weight:bold">return</span>
-  }
-  <span style="font-weight:bold">let</span> <span style="color:#008080">facebookRemoteCommand</span> = FacebookRemoteCommand().remoteCommand()
-  remoteCommands.add(facebookRemoteCommand)
+    }
+    <span style="font-weight:bold">let</span> <span style="color:#008080">facebook</span> = FacebookRemoteCommand(type: .local(file: <span style="color:#b84">&#34;facebook&#34;</span>))
+    remoteCommands.add(facebook)
 }</code></pre></div>
 </div>
 
-<div class="tab-pane" data-lang="Objective-C" title="Objective-C">
-  <p>The following code is designed for use with Tealium&rsquo;s Objective-C library for iOS, although it is written in Swift. A Bridging Header is required in your Xcode project for this code to work correctly.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">let config <span style="font-weight:bold">=</span> TEALConfiguration(account: <span style="color:#b84">&#34;your_account&#34;</span>,
-                               profile: <span style="color:#b84">&#34;your_profile&#34;</span>,
-                               environment: <span style="color:#b84">&#34;dev&#34;</span>,
-                               datasource: <span style="color:#b84">&#34;abc123&#34;</span>)
-let teal <span style="font-weight:bold">=</span> Tealium.newInstance(forKey: <span style="color:#b84">&#34;teal&#34;</span>, configuration: config)
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span> : Tealium?
+<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+                           profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
+                           environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,<span style="color:#a61717;background-color:#e3d2d2">˜˜</span>
+                           dataSource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
+                           optionalData: <span style="font-weight:bold">nil</span>)
+config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
+config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
 
-let facebookRemoteCommand <span style="font-weight:bold">=</span> FacebookRemoteCommand().remoteCommand()
-teal.addRemoteCommandID(<span style="color:#b84">&#34;facebook&#34;</span>, description: <span style="color:#999">nil</span>, targetQueue: DispatchQueue.main, responseBlock: facebookRemoteCommand)</code></pre></div>
+tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
+        <span style="font-weight:bold">return</span>
+    }
+    <span style="font-weight:bold">let</span> <span style="color:#008080">facebook</span> = FacebookRemoteCommand()
+    remoteCommands.add(facebook)
+}</code></pre></div>
 </div>
 
 <p></div>
 </div></p>
 
+<h2 id="json-template">JSON Template</h2>
+
+<p>If you are configuring remote commands using a <a href="/platforms/remote-commands/how-it-works/#json-configuration-file">JSON configuration file</a>, refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#000080">&#34;config&#34;</span>: {
+    <span style="color:#000080">&#34;applicationid&#34;</span>: <span style="color:#b84">&#34;YOUR_APP_ID&#34;</span>,
+    <span style="color:#000080">&#34;accesstoken&#34;</span>: <span style="color:#b84">&#34;YOUR_ACCESS_TOKEN&#34;</span>,
+    <span style="color:#000080">&#34;userid&#34;</span>: <span style="color:#b84">&#34;YOUR_USER_ID&#34;</span>,
+    <span style="color:#000080">&#34;auto_log_events_enabled&#34;</span>: <span style="font-weight:bold">true</span>,
+    <span style="color:#000080">&#34;auto_init_enabled&#34;</span>: <span style="font-weight:bold">true</span>,
+    <span style="color:#000080">&#34;advertiser_id_collection_enabled&#34;</span>: <span style="font-weight:bold">true</span>,
+    <span style="color:#000080">&#34;debug&#34;</span>: <span style="font-weight:bold">true</span>
+  },
+  <span style="color:#000080">&#34;mappings&#34;</span>: {
+    <span style="color:#000080">&#34;achievement_type&#34;</span>: <span style="color:#b84">&#34;event.fb_description&#34;</span>,
+    <span style="color:#000080">&#34;ad_type&#34;</span>: <span style="color:#b84">&#34;event.ad_type&#34;</span>,
+    <span style="color:#000080">&#34;content&#34;</span>: <span style="color:#b84">&#34;event.fb_content&#34;</span>,
+    <span style="color:#000080">&#34;content_type&#34;</span>: <span style="color:#b84">&#34;event.fb_content_type&#34;</span>,
+    <span style="color:#000080">&#34;currency_cod&#34;</span>: <span style="color:#b84">&#34;event.fb_currency&#34;</span>,
+    <span style="color:#000080">&#34;event_name&#34;</span>: <span style="color:#b84">&#34;event.fb_description&#34;</span>,
+    <span style="color:#000080">&#34;current_level&#34;</span>: <span style="color:#b84">&#34;event.fb_level&#34;</span>,
+    <span style="color:#000080">&#34;pet_count&#34;</span>: <span style="color:#b84">&#34;event.fb_max_rating_value&#34;</span>,
+    <span style="color:#000080">&#34;number_of_items&#34;</span>: <span style="color:#b84">&#34;event.fb_num_items&#34;</span>,
+    <span style="color:#000080">&#34;order_id&#34;</span>: <span style="color:#b84">&#34;event.fb_order_id&#34;</span>,
+    <span style="color:#000080">&#34;payment_info_available&#34;</span>: <span style="color:#b84">&#34;event.fb_payment_info_available&#34;</span>,
+    <span style="color:#000080">&#34;signup_method&#34;</span>: <span style="color:#b84">&#34;event.fb_registration_method&#34;</span>,
+    <span style="color:#000080">&#34;search_keyword&#34;</span>: <span style="color:#b84">&#34;event.fb_search_string&#34;</span>,
+    <span style="color:#000080">&#34;success&#34;</span>: <span style="color:#b84">&#34;event.fb_success&#34;</span>,
+    <span style="color:#000080">&#34;customer_email&#34;</span>: <span style="color:#b84">&#34;user.em&#34;</span>,
+    <span style="color:#000080">&#34;customer_first_name&#34;</span>: <span style="color:#b84">&#34;user.fn&#34;</span>,
+    <span style="color:#000080">&#34;customer_last_name&#34;</span>: <span style="color:#b84">&#34;user.ln&#34;</span>,
+    <span style="color:#000080">&#34;customer_phone&#34;</span>: <span style="color:#b84">&#34;user.ph&#34;</span>,
+    <span style="color:#000080">&#34;customer_dob&#34;</span>: <span style="color:#b84">&#34;user.dob&#34;</span>,
+    <span style="color:#000080">&#34;customer_gender&#34;</span>: <span style="color:#b84">&#34;user.ge&#34;</span>,
+    <span style="color:#000080">&#34;customer_city&#34;</span>: <span style="color:#b84">&#34;user.ct&#34;</span>,
+    <span style="color:#000080">&#34;customer_state&#34;</span>: <span style="color:#b84">&#34;user.st&#34;</span>,
+    <span style="color:#000080">&#34;customer_zip&#34;</span>: <span style="color:#b84">&#34;user.zp&#34;</span>,
+    <span style="color:#000080">&#34;customer_country&#34;</span>: <span style="color:#b84">&#34;user.country&#34;</span>,
+    <span style="color:#000080">&#34;customer_id&#34;</span>: <span style="color:#b84">&#34;fb_user_id&#34;</span>,
+    <span style="color:#000080">&#34;user_value&#34;</span>: <span style="color:#b84">&#34;fb_user_value&#34;</span>,
+    <span style="color:#000080">&#34;user_key&#34;</span>: <span style="color:#b84">&#34;fb_user_key&#34;</span>,
+    <span style="color:#000080">&#34;product_id&#34;</span>: <span style="color:#b84">&#34;product.fb_product_item_id,event.fb_content_id&#34;</span>,
+    <span style="color:#000080">&#34;product_availability&#34;</span>: <span style="color:#b84">&#34;product.fb_product_availability&#34;</span>,
+    <span style="color:#000080">&#34;product_condition&#34;</span>: <span style="color:#b84">&#34;product.fb_product_condition&#34;</span>,
+    <span style="color:#000080">&#34;product_description&#34;</span>: <span style="color:#b84">&#34;product.fb_product_description,event.fb_product_description&#34;</span>,
+    <span style="color:#000080">&#34;product_image_link&#34;</span>: <span style="color:#b84">&#34;product.fb_product_image_link&#34;</span>,
+    <span style="color:#000080">&#34;product_link&#34;</span>: <span style="color:#b84">&#34;product.fb_product_link&#34;</span>,
+    <span style="color:#000080">&#34;product_name&#34;</span>: <span style="color:#b84">&#34;product.fb_product_title&#34;</span>,
+    <span style="color:#000080">&#34;product_variant&#34;</span>: <span style="color:#b84">&#34;product.fb_product_gtin&#34;</span>,
+    <span style="color:#000080">&#34;product_brand&#34;</span>: <span style="color:#b84">&#34;product.fb_product_brand&#34;</span>,
+    <span style="color:#000080">&#34;product_price&#34;</span>: <span style="color:#b84">&#34;product.fb_product_price_amount,event.fb_value_to_sum&#34;</span>,
+    <span style="color:#000080">&#34;product_currency&#34;</span>: <span style="color:#b84">&#34;product.fb_product_price_currency&#34;</span>,
+    <span style="color:#000080">&#34;product_alias&#34;</span>: <span style="color:#b84">&#34;product_parameters.product_alias&#34;</span>,
+    <span style="color:#000080">&#34;product_color&#34;</span>: <span style="color:#b84">&#34;product_parameters.product_color&#34;</span>,
+    <span style="color:#000080">&#34;order_total&#34;</span>: <span style="color:#b84">&#34;purchase.fb_purchase_amount&#34;</span>,
+    <span style="color:#000080">&#34;order_currency&#34;</span>: <span style="color:#b84">&#34;purchase.fb_purchase_currency&#34;</span>,
+    <span style="color:#000080">&#34;customer_status&#34;</span>: <span style="color:#b84">&#34;purchase_parameters.customer_status&#34;</span>,
+    <span style="color:#000080">&#34;coupon&#34;</span>: <span style="color:#b84">&#34;purchase_parameters.coupon&#34;</span>,
+    <span style="color:#000080">&#34;push_action&#34;</span>: <span style="color:#b84">&#34;push.fb_push_action&#34;</span>,
+    <span style="color:#000080">&#34;push_payload&#34;</span>: <span style="color:#b84">&#34;push.fb_push_payload&#34;</span>,
+    <span style="color:#000080">&#34;tealium_event&#34;</span>: <span style="color:#b84">&#34;command_name&#34;</span>
+  },
+  <span style="color:#000080">&#34;commands&#34;</span>: {
+    <span style="color:#000080">&#34;launch&#34;</span>: <span style="color:#b84">&#34;initialize,setautologappeventsenabled,setautoinitenabled,enableadvertiseridcollection&#34;</span>,
+    <span style="color:#000080">&#34;user_login&#34;</span>: <span style="color:#b84">&#34;setuser,setuserid&#34;</span>,
+    <span style="color:#000080">&#34;email_signup&#34;</span>: <span style="color:#b84">&#34;updateuservalue&#34;</span>,
+    <span style="color:#000080">&#34;level_up&#34;</span>: <span style="color:#b84">&#34;achievedlevel&#34;</span>,
+    <span style="color:#000080">&#34;user_register&#34;</span>: <span style="color:#b84">&#34;completedregistration&#34;</span>,
+    <span style="color:#000080">&#34;unlock_achievement&#34;</span>: <span style="color:#b84">&#34;unlockedachievment&#34;</span>,
+    <span style="color:#000080">&#34;cart_add&#34;</span>: <span style="color:#b84">&#34;addedtocart&#34;</span>,
+    <span style="color:#000080">&#34;custom_attribute&#34;</span>: <span style="color:#b84">&#34;rated&#34;</span>,
+    <span style="color:#000080">&#34;wishlist_add&#34;</span>: <span style="color:#b84">&#34;addedtowishlist&#34;</span>,
+    <span style="color:#000080">&#34;payment&#34;</span>: <span style="color:#b84">&#34;initiatedcheckout&#34;</span>,
+    <span style="color:#000080">&#34;product&#34;</span>: <span style="color:#b84">&#34;logproductitem&#34;</span>,
+    <span style="color:#000080">&#34;order&#34;</span>: <span style="color:#b84">&#34;logpurchase&#34;</span>,
+    <span style="color:#000080">&#34;flush&#34;</span>: <span style="color:#b84">&#34;flush&#34;</span>
+  }
+}</code></pre></div>
 <h2 id="push-message-tracking">Push Message Tracking</h2>
 
 <p>The <a href="https://github.com/Tealium/tealium-swift/blob/master/tealium/remotecommands/TealiumRegistration.swift">Tealium Swift library</a> includes a <code>TealiumRegistration</code> protocol for handling push message tracking via Tealium and the Facebook Remote Command. We conform to this protocol in <code>FacebookTracker</code> and is used to send push message authorization events, push message open events, and to uninstall tracking. We recommend taking advantage of the push message tracking capability.</p>
@@ -1030,7 +1151,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <td></td>
 <td><code>fb_product_parameters</code></td>
 <td></td>
-<td><code>[String: Any]</code> - JavaScript Object if in TiQ</td>
+<td><code>[String: Any]</code> - JavaScript Object if in iQ</td>
 </tr>
 
 <tr>
@@ -1163,7 +1284,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <td></td>
 <td></td>
 <td><code>fb_purchase_parameters</code></td>
-<td><code>[String: Any]</code> - Javascript object in TiQ</td>
+<td><code>[String: Any]</code> - Javascript object in iQ</td>
 </tr>
 </tbody>
 </table>
@@ -1604,6 +1725,46 @@ are provided in <a href="https://github.com/facebook/facebook-ios-sdk/blob/9909f
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/hosted-data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-hosted-data-layer">Hosted Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-feature-comparison">Feature Comparison</a>
       </li>
       
@@ -1721,7 +1882,7 @@ are provided in <a href="https://github.com/facebook/facebook-ios-sdk/blob/9909f
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">Remote Command: AppsFlyer</a>
+        <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
       </li>
       
     
@@ -1741,7 +1902,7 @@ are provided in <a href="https://github.com/facebook/facebook-ios-sdk/blob/9909f
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/braze/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-braze">Remote Command: Braze</a>
+        <a href="/platforms/remote-commands/integrations/braze/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-braze">Braze</a>
       </li>
       
     
@@ -1761,7 +1922,7 @@ are provided in <a href="https://github.com/facebook/facebook-ios-sdk/blob/9909f
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/contentsquare/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-contentsquare">Remote Command: Contentsquare</a>
+        <a href="/platforms/remote-commands/integrations/contentsquare/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-contentsquare">Contentsquare</a>
       </li>
       
     
@@ -1781,7 +1942,7 @@ are provided in <a href="https://github.com/facebook/facebook-ios-sdk/blob/9909f
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/facebook/" class="db link pl4 pr2 pv1 bg-secondary white" data-target=".remote-commands-facebook">Remote Command: Facebook</a>
+        <a href="/platforms/remote-commands/integrations/facebook/" class="db link pl4 pr2 pv1 bg-secondary white" data-target=".remote-commands-facebook">Facebook</a>
       </li>
       
     
@@ -1801,7 +1962,7 @@ are provided in <a href="https://github.com/facebook/facebook-ios-sdk/blob/9909f
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-firebase">Remote Command: Firebase</a>
+        <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-firebase">Firebase</a>
       </li>
       
     
@@ -1821,7 +1982,7 @@ are provided in <a href="https://github.com/facebook/facebook-ios-sdk/blob/9909f
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/usabilla/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-usabilla">Remote Command: Usabilla</a>
+        <a href="/platforms/remote-commands/integrations/usabilla/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-usabilla">Usabilla</a>
       </li>
       
     
@@ -6868,7 +7029,7 @@ are provided in <a href="https://github.com/facebook/facebook-ios-sdk/blob/9909f
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  April 15, 2020 
+    <span>This page was last updated:  October 19, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

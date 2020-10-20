@@ -237,7 +237,11 @@ var utag_data = {
               <li><a href="#manual-ios">Manual (iOS)</a></li>
               <li><a href="#manual-android">Manual (Android)</a></li>
               </ul><li><a href="#initialize">Initialize</a></li>
-              <li><a href="#push-message-tracking">Push Message Tracking</a></li>
+              <ul class="toc-h3"><li><a href="#android-kotlin">Android (Kotlin)</a></li>
+              <li><a href="#android-java">Android (Java)</a></li>
+              <li><a href="#ios-swift">iOS (Swift)</a></li>
+              </ul><li><a href="#push-message-tracking">Push Message Tracking</a></li>
+              <li><a href="#json-template">JSON Template</a></li>
               <li><a href="#supported-methods">Supported Methods</a></li>
               <ul class="toc-h3"><li><a href="#standard-event-names">Standard Event Names</a></li>
               <li><a href="#sdk-setup">SDK Setup</a></li>
@@ -284,17 +288,29 @@ var utag_data = {
 <h2 id="requirements">Requirements</h2>
 
 <ul>
-<li><a href="https://support.appsflyer.com/hc/en-us/articles/207377436#available-in-the-app-store-google-play-store-windows-phone-store">App ID</a></li>
-<li><a href="https://support.appsflyer.com/hc/en-us/articles/211719806-App-Settings#sdk-dev-key">AppsFlyer Dev Key</a></li>
+<li>AppsFlyer <a href="https://support.appsflyer.com/hc/en-us/articles/207377436#available-in-the-app-store-google-play-store-windows-phone-store">app ID</a> and <a href="https://support.appsflyer.com/hc/en-us/articles/211719806-App-Settings#sdk-dev-key">dev key</a></li>
 <li><a href="/platforms/android-java/">Tealium for Android</a> or <a href="/platforms/ios-swift/">Tealium for iOS</a> in your app</li>
-<li>AppsFlyer Remote Command Tag in Tealium iQ Tag Management</li>
+<li>One of these remote command integrations:
+
+<ul>
+<li><a href="/platforms/remote-commands/integrations/appsflyer/#json-template">AppsFlyer Remote Command JSON File</a></li>
+<li>AppsFlyer Remote Command tag in Tealium iQ Tag Management</li>
+</ul></li>
 </ul>
 
 <h2 id="how-it-works">How It Works</h2>
 
-<p>The AppsFlyer integration uses the native AppsFlyer SDK, a remote commands module that wraps the AppsFlyer methods, and the AppsFlyer Remote Command tag that translates event tracking into native AppsFlyer calls. This solution leverages the convenience of Tealium iQ Tag Management to configure a native AppsFlyer implementation without having to add vendor-specific code to your app.</p>
+<p>The AppsFlyer integration uses the native AppsFlyer SDK, a remote commands module that wraps the AppsFlyer methods, and the AppsFlyer Remote Command tag that translates event tracking into native AppsFlyer calls. The integration uses three items:</p>
 
-<p>Adding the AppsFlyer remote command module to your app automatically installs and builds the required AppsFlyer libraries. If you are using a dependency manager installation, there is no need to install the AppsFlyer SDK separately.</p>
+<ol>
+<li>The AppsFlyer native SDK</li>
+<li>The remote commands module</li>
+<li>Either the JSON configuration file or Remote Command tag</li>
+</ol>
+
+<p>Adding the AppsFlyer remote command module to your app automatically installs and builds the required AppsFlyer libraries, without having to add vendor-specific code to your app. If you are using a dependency manager installation, there is no need to install the AppsFlyer SDK separately.</p>
+
+<p>There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration.  Learn more about <a href="/platforms/remote-commands/how-it-works/#vendor-integrations">vendor integrations</a>.</p>
 
 <p class="note">iOS: For AppsFlyer version 4.8.11+, the SDK automatically adds the following native frameworks: <code>AdSupport.framework</code> and <code>iAd.framework</code>. Learn more in the <a href="https://support.appsflyer.com/hc/en-us/articles/207032066#integration">AppsFlyer iOS SDK integration</a> guide.</p>
 
@@ -303,8 +319,6 @@ var utag_data = {
 <h3 id="dependency-manager">Dependency Manager</h3>
 
 <p>We recommend using one of the following dependency managers for installation:</p>
-
-<p class="note">If you are using the Tealium iOS (Objective-C) library, use the manual installation method. The CocoaPods and Carthage options are only available if you are using the Tealium iOS (Swift) library.</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
@@ -319,14 +333,12 @@ var utag_data = {
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">pod <span style="color:#b84">&#34;TealiumAppsFlyer&#34;</span></code></pre></div>
 <p>The <code>TealiumAppsFlyer</code> pod includes the following <code>TealiumSwift</code> dependencies:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#b84">&#39;tealium-swift/Core&#39;</span>
-<span style="color:#b84">&#39;tealium-swift/TealiumDelegate&#39;</span>
-<span style="color:#b84">&#39;tealium-swift/TealiumRemoteCommands&#39;</span>
-<span style="color:#b84">&#39;tealium-swift/TealiumTagManagement&#39;</span></code></pre></div></li>
+<span style="color:#b84">&#39;tealium-swift/RemoteCommands&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/TagManagement&#39;</span></code></pre></div></li>
 
 <li><p>Add any other required modules manually to your Podfile, such as the following:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#b84">&#39;tealium-swift/TealiumLogger&#39;</span>
-<span style="color:#b84">&#39;tealium-swift/TealiumLifecycle&#39;</span>
-<span style="color:#b84">&#39;tealium-swift/TealiumAppData&#39;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#b84">&#39;tealium-swift/Lifecycle&#39;</span>
+<span style="color:#b84">&#39;tealium-swift/VisitorService&#39;</span></code></pre></div>
 <p>Learn more about the <a href="https://docs.tealium.com/platforms/ios-swift/modules/">recommended modules</a> for iOS.</p></li>
 
 <li><p>Import the modules <code>TealiumSwift</code> and <code>TealiumAppsFlyer</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class, or the AppsFlyer remote command.</p></li>
@@ -347,7 +359,7 @@ var utag_data = {
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">github <span style="color:#b84">&#34;tealium/tealium-ios-appsflyer-remote-command&#34;</span></code></pre></div></li>
 </ol>
 
-<p class="note">Tealium for Swift SDK (version 1.6.5+) requires the <code>TealiumDelegate</code> module to be included with your installation.</p>
+<p class="note">Tealium for Swift SDK (version 1.X) and <code>TealiumFirebase</code> version 1.X requires the <code>TealiumDelegate</code> module to be included with your installation.</p>
 
 </div>
 
@@ -359,12 +371,12 @@ var utag_data = {
 
 <li><p>Add the Tealium Maven URL to your project&rsquo;s top-level <code>build.gradle</code> file:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects <span style="font-weight:bold">{</span>
-repositories <span style="font-weight:bold">{</span>
-jcenter<span style="font-weight:bold">()</span>
-maven <span style="font-weight:bold">{</span>
-  url <span style="color:#b84">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
-<span style="font-weight:bold">}</span>
-<span style="font-weight:bold">}</span>
+  repositories <span style="font-weight:bold">{</span>
+    jcenter<span style="font-weight:bold">()</span>
+    maven <span style="font-weight:bold">{</span>
+      url <span style="color:#b84">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
+    <span style="font-weight:bold">}</span>
+  <span style="font-weight:bold">}</span>
 <span style="font-weight:bold">}</span></code></pre></div></li>
 
 <li><p>Import both the AppsFlyer SDK and Tealium-AppsFlyer remote commands by adding the following dependencies in your app project&rsquo;s <code>build.gradle</code> file:</p>
@@ -380,60 +392,48 @@ implementation <span style="color:#b84">&#39;com.tealium.remotecommands:appsflye
 
 <h3 id="manual-ios">Manual (iOS)</h3>
 
-<p>The manual installation for AppsFlyer remote commands requires one of the following iOS libraries to be installed:</p>
-
-<ul>
-<li><a href="https://docs.tealium.com/platforms/ios-swift/">Tealium for Swift</a></li>
-<li><a href="https://docs.tealium.com/platforms/ios-objective-c/">Tealium for Objective-C</a></li>
-</ul>
-
-<p>To install the AppsFlyer remote commands for your iOS project:</p>
+<p>The manual installation for AppsFlyer remote commands requires the <a href="https://docs.tealium.com/platforms/ios-swift/">Tealium for Swift</a> library to be installed. To install the AppsFlyer remote commands for your iOS project:</p>
 
 <ol>
 <li><p>Install the <a href="https://github.com/AppsFlyerSDK/AppsFlyerFramework">AppsFlyer SDK</a>, if you haven&rsquo;t already done so.</p></li>
 
 <li><p>Clone the <a href="https://github.com/tealium/tealium-ios-appsflyer-remote-command">Tealium iOS AppsFlyer remote command</a> repo and drag the files within the <code>Sources</code> folder into your project.</p></li>
 
-<li><p>When initializing the Tealium SDK, update the completion handler as follows:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium = Tealium(config: config) { responses <span style="font-weight:bold">in</span>
-<span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands() <span style="font-weight:bold">else</span> {
-<span style="font-weight:bold">return</span>
-}
-<span style="font-weight:bold">let</span> <span style="color:#008080">appsFlyerRemoteCommand</span> = AppsFlyerRemoteCommand().remoteCommand()
-remoteCommands.add(appsFlyerRemoteCommand)
-}</code></pre></div></li>
+<li><p>Set the <a href="/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a> configuration flag to <code>true</code></p></li>
+
+<li><p>When initializing the Tealium SDK, update the completion handler as follows:</p></li>
 </ol>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content">
 
-<div class="tab-pane" data-lang="Swift" title="Swift">
-  <p>Add the remote command in the <code>TealiumHelper.swift</code> file as follows:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">appsFlyerCommandTracker</span> = AppsFlyerCommandTracker()
-<span style="font-weight:bold">let</span> <span style="color:#008080">appsFlyerCommand</span> = AppsFlyerCommand(appsFlyerCommandTracker: appsFlyerCommandTracker)
-<span style="font-weight:bold">let</span> <span style="color:#008080">appsFlyerRemoteCommand</span> = appsFlyerCommand.remoteCommand()
-tealium.addRemoteCommandID(<span style="color:#b84">&#34;appsflyer&#34;</span>,
-                           description: <span style="font-weight:bold">nil</span>,
-                           targetQueue: DispatchQueue.main,
-                           responseBlock: appsFlyerRemoteCommand)</code></pre></div>
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The following code is designed for use with the JSON Remote Command feature, using the local file option.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>, profile: <span style="color:#b84">&#34;PROFILE&#34;</span>, environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>)
+config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
+
+tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
+        <span style="font-weight:bold">return</span>
+    }
+    <span style="font-weight:bold">let</span> <span style="color:#008080">appsflyer</span> = AppsFlyerRemoteCommand(type: .local(file: <span style="color:#b84">&#34;appsflyer&#34;</span>))
+    remoteCommands.add(appsFlyer)
+}</code></pre></div>
 </div>
 
-<div class="tab-pane" data-lang="Objective-C" title="Objective-C">
-  <p>Import the remote command in the <code>TealiumHelper.m</code> file as follows:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">#<span style="font-weight:bold">import</span> <span style="color:#b84">&#34;TealiumRemoteCommandObjcApp-Swift.h&#34;</span></code></pre></div>
-<p class="note">The Swift bridging header for your target is named ending with <code>-Swift.h</code>. Find this by filtering for &ldquo;Module Name&rdquo; in your target&rsquo;s build settings.</p>
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>, profile: <span style="color:#b84">&#34;PROFILE&#34;</span>, environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>)
+config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
 
-<p>Learn more in the <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_swift_into_objective-c">Apple Developer Documentation: Importing Swift Into Objective-C</a>.</p>
-
-<p>Initialize the remote command as follows:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Objective-C" data-lang="Objective-C">AppsFlyerCommandTracker <span style="font-weight:bold">*</span>appsFlyerCommandTracker <span style="font-weight:bold">=</span> [[AppsFlyerCommandTracker alloc] init];
-AppsFlyerCommand <span style="font-weight:bold">*</span>appsFlyerCommand <span style="font-weight:bold">=</span> [[AppsFlyerCommand alloc] initWithAppsFlyerCommandTracker: appsFlyerCommandTracker];
-TEALRemoteCommandResponseBlock appsFlyerRemoteCommand <span style="font-weight:bold">=</span> [appsFlyerCommand remoteCommand];
-[[Tealium instanceForKey:<span style="color:#b84">@&#34;MY_INSTANCE&#34;</span>] addRemoteCommandID:<span style="color:#b84">@&#34;appsflyer&#34;</span>
-                                    description:<span style="color:#b84">@&#34;AppsFlyer Remote Command&#34;</span>
-                                    targetQueue:dispatch_get_main_queue()
-                                    responseBlock: appsFlyerRemoteCommand];</code></pre></div>
+tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
+        <span style="font-weight:bold">return</span>
+    }
+      <span style="font-weight:bold">let</span> <span style="color:#008080">appsFlyer</span> = AppsFlyerRemoteCommand()
+    remoteCommands.add(appsFlyer)
+}</code></pre></div>
 </div>
 
 <p></div>
@@ -441,13 +441,7 @@ TEALRemoteCommandResponseBlock appsFlyerRemoteCommand <span style="font-weight:b
 
 <h3 id="manual-android">Manual (Android)</h3>
 
-<p>The manual installation for AppsFlyer remote commands requires the following Android library to be installed:</p>
-
-<ul>
-<li><a href="https://docs.tealium.com/platforms/android-java/">Tealium for Android</a></li>
-</ul>
-
-<p>To install the AppsFlyer remote commands for your Android project:</p>
+<p>The manual installation for AppsFlyer remote commands requires the <a href="https://docs.tealium.com/platforms/android-java/">Tealium for Android</a> library to be installed. To install the AppsFlyer remote commands for your Android project:</p>
 
 <ol>
 <li><p>Add <code>flatDir</code> to your project root <code>build.gradle</code> file:</p>
@@ -472,52 +466,107 @@ TEALRemoteCommandResponseBlock appsFlyerRemoteCommand <span style="font-weight:b
 
 <p>For all Tealium libraries, register the AppsFlyer Remote Command when you initialize.</p>
 
+<h3 id="android-kotlin">Android (Kotlin)</h3>
+
+<p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s Android (Kotlin) library.</p>
+
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content">
-<div class="tab-pane" data-lang="Android" title="Android">
-  <p>The following code is designed for use with Tealium&rsquo;s Android library:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">private</span> <span style="color:#900;font-weight:bold">val</span> devKey <span style="font-weight:bold">=</span> <span style="color:#b84">&#34;&lt;your_appsflyer_dev_key&gt;&#34;</span>
-
-<span style="color:#998;font-style:italic">// Sets up a config object and creates a Tealium instance
-</span><span style="color:#998;font-style:italic"></span>val <span style="color:#900;font-weight:bold">config</span><span style="font-weight:bold">:</span> Tealium.<span style="color:#008080">Config</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">Config</span>.<span style="color:#008080">create</span>(application, <span style="color:#b84">&#34;your_account&#34;</span>, <span style="color:#b84">&#34;your_profile&#34;</span>, <span style="color:#b84">&#34;dev&#34;</span>);
-var <span style="color:#900;font-weight:bold">tealium</span><span style="font-weight:bold">:</span> Tealium <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">createInstance</span>(TEALIUM_MAIN, config)
-
-<span style="color:#998;font-style:italic">// New code to add the AppsFlyer Remote Command
-</span><span style="color:#998;font-style:italic"></span>val <span style="color:#900;font-weight:bold">appsFlyerRemoteCommand</span> <span style="font-weight:bold">=</span> AppsFlyerRemoteCommand(instanceName, application, appsFlyerDevKey <span style="font-weight:bold">=</span> devKey)
-tealium.<span style="color:#008080">addRemoteCommand</span>(appappsFlyerRemoteCommandsflyer);</code></pre></div>
-</div>
-
-<div class="tab-pane" data-lang="Swift" title="Swift">
-  <p>The following code is designed for use with Tealium&rsquo;s Swift library for iOS:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">teal</span> : Tealium?
-<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;your_account&#34;</span>,
-                           profile: <span style="color:#b84">&#34;your_profile&#34;</span>,
-                           environment: <span style="color:#b84">&#34;dev&#34;</span>,
-                           datasource: <span style="color:#b84">&#34;abc123&#34;</span>,
-                           optionalData: <span style="font-weight:bold">nil</span>)
-
-teal = Tealium(config: config) { responses <span style="font-weight:bold">in</span>
-  <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands() <span style="font-weight:bold">else</span> {
-        <span style="font-weight:bold">return</span>
-  }
-  <span style="font-weight:bold">let</span> <span style="color:#008080">appsFlyerRemoteCommand</span> = AppsFlyerRemoteCommand().remoteCommand()
-  remoteCommands.add(appsFlyerRemoteCommand)
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The following code is designed for use with the JSON Remote Command feature, using the local file option:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#998;font-style:italic">// Sets up a config object and creates a Tealium instance
+</span><span style="color:#998;font-style:italic"></span><span style="font-weight:bold">val</span> config = TealiumConfig(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, Environment.DEV, dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+<span style="font-weight:bold">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
+    <span style="color:#998;font-style:italic">// New code to add the AppsFlyer Remote Command
+</span><span style="color:#998;font-style:italic"></span>    <span style="font-weight:bold">val</span> appsFlyerRemoteCommand = AppsFlyerRemoteCommand(application,
+                                      appsFlyerDevKey = devKey)
+    <span style="color:#998;font-style:italic">// register the command
+</span><span style="color:#998;font-style:italic"></span>    remoteCommands<span style="font-weight:bold">?.</span>add(appsFlyerRemoteCommand, filename = <span style="color:#b84">&#34;appsflyer.json&#34;</span>);
 }</code></pre></div>
 </div>
 
-<div class="tab-pane" data-lang="Objective-C" title="Objective-C">
-  <p>The following code is designed for use with Tealium&rsquo;s Objective-C library for iOS, although it is written in Swift. A Bridging Header is required in your Xcode project for this code to work correctly.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#998;font-style:italic">// Sets up a config object and creates a Tealium instance.
-</span><span style="color:#998;font-style:italic"></span>let config <span style="font-weight:bold">=</span> TEALConfiguration(account: <span style="color:#b84">&#34;your_account&#34;</span>,
-                               profile: <span style="color:#b84">&#34;your_profile&#34;</span>,
-                               environment: <span style="color:#b84">&#34;dev&#34;</span>,
-                               datasource: <span style="color:#b84">&#34;abc123&#34;</span>)
-let teal <span style="font-weight:bold">=</span> Tealium.newInstance(forKey: <span style="color:#b84">&#34;teal&#34;</span>, configuration: config)
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#998;font-style:italic">// Sets up a config object and creates a Tealium instance
+</span><span style="color:#998;font-style:italic"></span><span style="font-weight:bold">val</span> config = TealiumConfig(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, Environment.DEV, dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+<span style="font-weight:bold">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
+    <span style="color:#998;font-style:italic">// New code to add the AppsFlyer Remote Command
+</span><span style="color:#998;font-style:italic"></span>    <span style="font-weight:bold">val</span> appsFlyer = AppsFlyerRemoteCommand(application,
+                                      appsFlyerDevKey = devKey)
+    <span style="color:#998;font-style:italic">// register the command
+</span><span style="color:#998;font-style:italic"></span>    remoteCommands<span style="font-weight:bold">?.</span>add(appsFlyer);
+}</code></pre></div>
+</div>
 
-let appsFlyerCommand <span style="font-weight:bold">=</span> AppsFlyerRemoteCommand(appsFlyerCommandTracker: AppsFlyerCommandTracker())
-let appsFlyerRemoteCommand <span style="font-weight:bold">=</span> appsFlyerCommand.remoteCommand()
-teal.addRemoteCommandID(<span style="color:#b84">&#34;appsflyer&#34;</span>, description: <span style="color:#999">nil</span>, targetQueue: DispatchQueue.main, responseBlock: appsFlyerRemoteCommand)</code></pre></div>
+<p></div>
+</div></p>
+
+<h3 id="android-java">Android (Java)</h3>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#998;font-style:italic">// Sets up a config object and creates a Tealium instance
+</span><span style="color:#998;font-style:italic"></span>Tealium.<span style="color:#008080">Config</span> <span style="color:#900;font-weight:bold">config</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">Config</span>.<span style="color:#008080">create</span>(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>);
+Tealium <span style="color:#900;font-weight:bold">teal</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">createInstance</span>(TEALIUM_MAIN, config);
+    <span style="color:#998;font-style:italic">// New code to add the AppsFlyer Remote Command
+</span><span style="color:#998;font-style:italic"></span>AppsFlyerRemoteCommand <span style="color:#900;font-weight:bold">appsFlyer</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> AppsFlyerRemoteCommand(application, appsFlyerDevKey <span style="font-weight:bold">=</span> devKey)
+teal.<span style="color:#008080">addRemoteCommand</span>(appsFlyer);</code></pre></div>
+</div>
+
+<p></div>
+</div></p>
+
+<h3 id="ios-swift">iOS (Swift)</h3>
+
+<p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s iOS (Swift) library.</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The following code is designed for use with the JSON Remote Command feature, using the local file option:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span> : Tealium?
+<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+                           profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
+                           environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
+                           dataSource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
+                           optionalData: <span style="font-weight:bold">nil</span>)
+
+config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
+
+tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
+        <span style="font-weight:bold">return</span>
+    }
+
+    <span style="font-weight:bold">let</span> <span style="color:#008080">appsflyer</span> = AppsFlyerRemoteCommand(type: .local(file: <span style="color:#b84">&#34;appsflyer&#34;</span>))
+    config.addRemoteCommand(appsflyer)
+}</code></pre></div>
+</div>
+
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span> : Tealium?
+<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+                           profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
+                           environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
+                           dataSource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
+                           optionalData: <span style="font-weight:bold">nil</span>)
+
+config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
+
+tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
+        <span style="font-weight:bold">return</span>
+    }
+
+    <span style="font-weight:bold">let</span> <span style="color:#008080">appsFlyer</span> = AppsFlyerRemoteCommand()
+    config.addRemoteCommand(appsFlyer)
+}</code></pre></div>
 </div>
 
 <p></div>
@@ -540,23 +589,98 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;appsflyer&#34;</span>, des
 
 <p>The following is full example of the push message tracking integration:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">pushMessagingTrackers</span> = [TealiumRegistration]()
+<span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span> : Tealium?
+<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+                           profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
+                           environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
+                           dataSource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
+                           optionalData: <span style="font-weight:bold">nil</span>)
+config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
 
-<span style="color:#998;font-style:italic">//...</span>
-
-teal = Tealium(config: config) { responses <span style="font-weight:bold">in</span>
-  <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands() <span style="font-weight:bold">else</span> {
+tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
         <span style="font-weight:bold">return</span>
-  }
-  <span style="font-weight:bold">let</span> <span style="color:#008080">appsFlyerCommandTracker</span> = AppsFlyerCommandTracker()
-  <span style="font-weight:bold">let</span> <span style="color:#008080">appsFlyerCommand</span> = AppsFlyerCommand(appsFlyerCommandTracker: appsFlyerCommandTracker)
-  <span style="font-weight:bold">let</span> <span style="color:#008080">appsFlyerRemoteCommand</span> = appsFlyerCommand.remoteCommand()
-  remoteCommands.add(appsFlyerRemoteCommand)
-  <span style="font-weight:bold">self</span>.pushMessagingTrackers.append(appsFlyerCommandTracker)
+    }
+
+	<span style="font-weight:bold">let</span> <span style="color:#008080">appsFlyerCommandTracker</span> = AppsFlyerCommandTracker()
+	<span style="font-weight:bold">let</span> <span style="color:#008080">appsflyer</span> = AppsFlyerRemoteCommand(appsFlyerCommandTracker: appsFlyerCommandTracker, type: .local(file: <span style="color:#b84">&#34;appsflyer&#34;</span>))
+	pushMessagingTrackers.append(appsFlyerCommandTracker)
+	config.addRemoteCommand(appsflyer)
 }</code></pre></div>
 <p>To see the entire <code>TealiumHelper.swift</code> file, explore the <a href="https://github.com/Tealium/tealium-ios-appsflyer-remote-command/tree/master/TealiumAppsFlyerExample">AppsFlyer Remote Command sample app</a>. To send an event to AppsFlyer once a user has registered for notifications, opened a push message, or uninstalled the app, see the file <code>AppDelegate.swift</code>.</p>
 
 <p>Learn more about AppsFlyer&rsquo;s push message and uninstall tracking functionality in the <a href="https://support.appsflyer.com/hc/en-us/articles/207032066">iOS SDK integration for developers</a> guide.</p>
 
+<h2 id="json-template">JSON Template</h2>
+
+<p>If you are configuring remote commands using a <a href="/platforms/remote-commands/how-it-works/#json-configuration-file">JSON configuration file</a>, refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#000080">&#34;config&#34;</span>: {
+        <span style="color:#000080">&#34;app_id&#34;</span>: <span style="color:#b84">&#34;YOUR_APP_ID&#34;</span>,
+        <span style="color:#000080">&#34;app_dev_key&#34;</span>: <span style="color:#b84">&#34;YOUR_APPSFLYER_DEV_KEY&#34;</span>,
+        <span style="color:#000080">&#34;settings&#34;</span>: {
+            <span style="color:#000080">&#34;custom_data&#34;</span>: {<span style="color:#000080">&#34;custom_key&#34;</span>: <span style="color:#b84">&#34;custom_value&#34;</span>},
+            <span style="color:#000080">&#34;debug&#34;</span>: <span style="font-weight:bold">true</span>,
+            <span style="color:#000080">&#34;disable_ad_tracking&#34;</span>: <span style="font-weight:bold">false</span>,
+            <span style="color:#000080">&#34;disable_apple_ad_tracking&#34;</span>: <span style="font-weight:bold">false</span>,
+            <span style="color:#000080">&#34;time_between_sessions&#34;</span>: <span style="color:#099">30</span>,
+            <span style="color:#000080">&#34;anonymize_user&#34;</span>: <span style="font-weight:bold">false</span>,
+            <span style="color:#000080">&#34;collect_device_name&#34;</span>: <span style="font-weight:bold">false</span>
+        }
+    },
+    <span style="color:#000080">&#34;mappings&#34;</span>: {
+        <span style="color:#000080">&#34;latitude&#34;</span>: <span style="color:#b84">&#34;af_lat&#34;</span>,
+        <span style="color:#000080">&#34;longitude&#34;</span>: <span style="color:#b84">&#34;af_long&#34;</span>,
+        <span style="color:#000080">&#34;customer_email&#34;</span>: <span style="color:#b84">&#34;customer_emails&#34;</span>,
+        <span style="color:#000080">&#34;hash_type&#34;</span>: <span style="color:#b84">&#34;email_hash_type&#34;</span>,
+        <span style="color:#000080">&#34;currency_code&#34;</span>: <span style="color:#b84">&#34;af_currency&#34;</span>,
+        <span style="color:#000080">&#34;customer_id&#34;</span>: <span style="color:#b84">&#34;af_customer_user_id&#34;</span>,
+        <span style="color:#000080">&#34;signup_method&#34;</span>: <span style="color:#b84">&#34;event.signup_method&#34;</span>,
+        <span style="color:#000080">&#34;achievement_id&#34;</span>: <span style="color:#b84">&#34;event.achievement_id&#34;</span>,
+        <span style="color:#000080">&#34;checkout_option&#34;</span>: <span style="color:#b84">&#34;event.checkout_option&#34;</span>,
+        <span style="color:#000080">&#34;checkout_step&#34;</span>: <span style="color:#b84">&#34;event.checkout_step&#34;</span>,
+        <span style="color:#000080">&#34;content&#34;</span>: <span style="color:#b84">&#34;event.content&#34;</span>,
+        <span style="color:#000080">&#34;content_type&#34;</span>: <span style="color:#b84">&#34;event.content_type&#34;</span>,
+        <span style="color:#000080">&#34;coupon&#34;</span>: <span style="color:#b84">&#34;event.coupon&#34;</span>,
+        <span style="color:#000080">&#34;product_brand&#34;</span>: <span style="color:#b84">&#34;event.product_brand&#34;</span>,
+        <span style="color:#000080">&#34;product_category&#34;</span>: <span style="color:#b84">&#34;event.product_category&#34;</span>,
+        <span style="color:#000080">&#34;product_id&#34;</span>: <span style="color:#b84">&#34;event.af_content_id&#34;</span>,
+        <span style="color:#000080">&#34;product_list&#34;</span>: <span style="color:#b84">&#34;event.product_list&#34;</span>,
+        <span style="color:#000080">&#34;product_location_id&#34;</span>: <span style="color:#b84">&#34;event.product_location_id&#34;</span>,
+        <span style="color:#000080">&#34;product_name&#34;</span>: <span style="color:#b84">&#34;event.product_name&#34;</span>,
+        <span style="color:#000080">&#34;product_variant&#34;</span>: <span style="color:#b84">&#34;event.product_variant&#34;</span>,
+        <span style="color:#000080">&#34;product_unit_price&#34;</span>: <span style="color:#b84">&#34;event.af_price&#34;</span>,
+        <span style="color:#000080">&#34;product_quantity&#34;</span>: <span style="color:#b84">&#34;event.af_quantity&#34;</span>,
+        <span style="color:#000080">&#34;current_level&#34;</span>: <span style="color:#b84">&#34;event.level&#34;</span>,
+        <span style="color:#000080">&#34;score&#34;</span>: <span style="color:#b84">&#34;event.score&#34;</span>,
+        <span style="color:#000080">&#34;search_keyword&#34;</span>: <span style="color:#b84">&#34;event.search_keyword&#34;</span>,
+        <span style="color:#000080">&#34;order_shipping_amount&#34;</span>: <span style="color:#b84">&#34;event.order_shipping&#34;</span>,
+        <span style="color:#000080">&#34;order_tax_amount&#34;</span>: <span style="color:#b84">&#34;event.order_tax&#34;</span>,
+        <span style="color:#000080">&#34;order_id&#34;</span>: <span style="color:#b84">&#34;event.af_order_id&#34;</span>,
+        <span style="color:#000080">&#34;order_total&#34;</span>: <span style="color:#b84">&#34;event.af_revenue&#34;</span>,
+        <span style="color:#000080">&#34;currency_type&#34;</span>: <span style="color:#b84">&#34;event.currency_type&#34;</span>,
+    },
+    <span style="color:#000080">&#34;commands&#34;</span>: {
+        <span style="color:#000080">&#34;launch&#34;</span>: <span style="color:#b84">&#34;initialize,launch&#34;</span>,
+        <span style="color:#000080">&#34;geofence_entered&#34;</span>: <span style="color:#b84">&#34;tracklocation&#34;</span>,
+        <span style="color:#000080">&#34;geofence_exited&#34;</span>: <span style="color:#b84">&#34;tracklocation&#34;</span>,
+        <span style="color:#000080">&#34;user_login&#34;</span>: <span style="color:#b84">&#34;login&#34;</span>,
+        <span style="color:#000080">&#34;user_register&#34;</span>: <span style="color:#b84">&#34;setuseremails,setcustomerid,completeregistration&#34;</span>,
+        <span style="color:#000080">&#34;show_offers&#34;</span>: <span style="color:#b84">&#34;adclick&#34;</span>,
+        <span style="color:#000080">&#34;cart_add&#34;</span>: <span style="color:#b84">&#34;addtocart&#34;</span>,
+        <span style="color:#000080">&#34;wishlist_add&#34;</span>: <span style="color:#b84">&#34;addtowishlist&#34;</span>,
+        <span style="color:#000080">&#34;payment&#34;</span>: <span style="color:#b84">&#34;addpaymentinfo&#34;</span>,
+        <span style="color:#000080">&#34;unlock_achievement&#34;</span>: <span style="color:#b84">&#34;unlockachievement&#34;</span>,
+        <span style="color:#000080">&#34;level_up&#34;</span>: <span style="color:#b84">&#34;achievelevel,customersegment&#34;</span>,
+        <span style="color:#000080">&#34;email_signup&#34;</span>: <span style="color:#b84">&#34;subscribe&#34;</span>,
+        <span style="color:#000080">&#34;product&#34;</span>: <span style="color:#b84">&#34;viewedcontent&#34;</span>,
+        <span style="color:#000080">&#34;category&#34;</span>: <span style="color:#b84">&#34;listview&#34;</span>,
+        <span style="color:#000080">&#34;share&#34;</span>: <span style="color:#b84">&#34;share&#34;</span>,
+        <span style="color:#000080">&#34;search&#34;</span>: <span style="color:#b84">&#34;search&#34;</span>,
+        <span style="color:#000080">&#34;checkout&#34;</span>: <span style="color:#b84">&#34;initiatecheckout&#34;</span>,
+        <span style="color:#000080">&#34;order&#34;</span>:<span style="color:#b84">&#34;purchase&#34;</span>
+    }
+}</code></pre></div>
 <h2 id="supported-methods">Supported Methods</h2>
 
 <p>The following AppsFlyer methods are triggered using a data mapping in the AppsFlyer Remote Command tag using these Tealium commands:</p>
@@ -812,7 +936,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <li><a href="https://support.appsflyer.com/hc/en-us/articles/207032066#integration-33-initializing-the-sdk">iOS</a></li>
 </ul>
 
-<p>There are several configuration options available that can be configured in the AppsFlyer Remote Command Tag. If any of the below are set on launch, they are sent during the initialize method.</p>
+<p>There are several configuration options available that can be configured in the AppsFlyer Remote Command tag. If any of the below are set on launch, they are sent during the initialize method.</p>
 
 <h5 id="configuration-options">Configuration Options</h5>
 
@@ -820,7 +944,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
 <thead>
 <tr>
 <th>Name</th>
-<th>TiQ variable mapping</th>
+<th>iQ variable mapping</th>
 <th>Type</th>
 </tr>
 </thead>
@@ -1486,6 +1610,46 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/hosted-data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-hosted-data-layer">Hosted Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-feature-comparison">Feature Comparison</a>
       </li>
       
@@ -1603,7 +1767,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 bg-secondary white" data-target=".remote-commands-appsflyer">Remote Command: AppsFlyer</a>
+        <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 bg-secondary white" data-target=".remote-commands-appsflyer">AppsFlyer</a>
       </li>
       
     
@@ -1623,7 +1787,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/braze/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-braze">Remote Command: Braze</a>
+        <a href="/platforms/remote-commands/integrations/braze/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-braze">Braze</a>
       </li>
       
     
@@ -1643,7 +1807,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/contentsquare/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-contentsquare">Remote Command: Contentsquare</a>
+        <a href="/platforms/remote-commands/integrations/contentsquare/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-contentsquare">Contentsquare</a>
       </li>
       
     
@@ -1663,7 +1827,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/facebook/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-facebook">Remote Command: Facebook</a>
+        <a href="/platforms/remote-commands/integrations/facebook/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-facebook">Facebook</a>
       </li>
       
     
@@ -1683,7 +1847,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-firebase">Remote Command: Firebase</a>
+        <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-firebase">Firebase</a>
       </li>
       
     
@@ -1703,7 +1867,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/usabilla/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-usabilla">Remote Command: Usabilla</a>
+        <a href="/platforms/remote-commands/integrations/usabilla/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-usabilla">Usabilla</a>
       </li>
       
     
@@ -6750,7 +6914,7 @@ teal = Tealium(config: config) { responses <span style="font-weight:bold">in</sp
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  July 16, 2020 
+    <span>This page was last updated:  October 19, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

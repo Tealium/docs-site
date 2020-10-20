@@ -242,6 +242,7 @@ var utag_data = {
               <li><a href="#cookies">Cookies</a></li>
               <li><a href="#event-batching">Event Batching</a></li>
               <li><a href="#migrate-from-java">Migrate from Java</a></li>
+              <li><a href="#android-wear">Android Wear</a></li>
               </nav>
   </aside></div>
 
@@ -324,7 +325,7 @@ var utag_data = {
 
 <li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the following Maven dependency:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
-  implementation <span style="color:#b84">&#39;com.tealium:kotlin-core:0.1.0&#39;</span>
+  implementation <span style="color:#b84">&#39;com.tealium:kotlin-core:0.1.2&#39;</span>
 <span style="font-weight:bold">}</span></code></pre></div></li>
 </ol>
 
@@ -347,7 +348,7 @@ var utag_data = {
 
 <li><p>Add the Tealium library dependency to your <code>build.gradle</code> file:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
-  implementation<span style="font-weight:bold">(</span>name:<span style="color:#b84">&#39;tealium-kotlin-0.1.0&#39;</span><span style="font-weight:bold">,</span> ext:<span style="color:#b84">&#39;aar&#39;</span><span style="font-weight:bold">)</span>
+  implementation<span style="font-weight:bold">(</span>name:<span style="color:#b84">&#39;tealium-kotlin-0.1.2&#39;</span><span style="font-weight:bold">,</span> ext:<span style="color:#b84">&#39;aar&#39;</span><span style="font-weight:bold">)</span>
 <span style="font-weight:bold">}</span></code></pre></div></li>
 </ol>
 
@@ -370,7 +371,7 @@ var utag_data = {
 </span><span style="color:#998;font-style:italic"></span>                      modules = mutableSetOf(VisitorService),
                       dispatchers = mutableSetOf(TagManagement, Collect)
                     )
-    tealium = Tealium(<span style="color:#b84">&#34;tealium_instance&#34;</span>, tealiumConfig)
+    tealium = Tealium.create(<span style="color:#b84">&#34;tealium_instance&#34;</span>, tealiumConfig)
   }
 }</code></pre></div>
 <h2 id="dispatcher">Dispatcher</h2>
@@ -443,6 +444,12 @@ Add the <a href="/platforms/android-kotlin/module-list/collect/">Collect Dispatc
 </ul>
 
 <p class="note">After transfer to the Kotlin library is complete, legacy data from the Java library is deleted. Subsequently switching back to the Java library results in a new <code>tealium_visitor_id</code> and <code>app_uuid</code> generated, and loss of any custom persistent data.</p>
+
+<h2 id="android-wear">Android Wear</h2>
+
+<p>For Android Wear apps, use the Collect module for data collection, as the Tag Management module is not supported since Android Wear OS does not provide webview support.</p>
+
+<p class="note">If you are developing an Android Wear app using Tealium for Android, <a href="https://developer.android.com/training/wearables/apps/creating">Google recommends</a> creating a standalone app.</p>
 
 </div>
 
@@ -696,6 +703,46 @@ Add the <a href="/platforms/android-kotlin/module-list/collect/">Collect Dispatc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/hosted-data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-hosted-data-layer">Hosted Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-feature-comparison">Feature Comparison</a>
       </li>
       
@@ -813,7 +860,7 @@ Add the <a href="/platforms/android-kotlin/module-list/collect/">Collect Dispatc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">Remote Command: AppsFlyer</a>
+        <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
       </li>
       
     
@@ -833,7 +880,7 @@ Add the <a href="/platforms/android-kotlin/module-list/collect/">Collect Dispatc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/braze/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-braze">Remote Command: Braze</a>
+        <a href="/platforms/remote-commands/integrations/braze/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-braze">Braze</a>
       </li>
       
     
@@ -853,7 +900,7 @@ Add the <a href="/platforms/android-kotlin/module-list/collect/">Collect Dispatc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/contentsquare/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-contentsquare">Remote Command: Contentsquare</a>
+        <a href="/platforms/remote-commands/integrations/contentsquare/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-contentsquare">Contentsquare</a>
       </li>
       
     
@@ -873,7 +920,7 @@ Add the <a href="/platforms/android-kotlin/module-list/collect/">Collect Dispatc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/facebook/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-facebook">Remote Command: Facebook</a>
+        <a href="/platforms/remote-commands/integrations/facebook/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-facebook">Facebook</a>
       </li>
       
     
@@ -893,7 +940,7 @@ Add the <a href="/platforms/android-kotlin/module-list/collect/">Collect Dispatc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-firebase">Remote Command: Firebase</a>
+        <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-firebase">Firebase</a>
       </li>
       
     
@@ -913,7 +960,7 @@ Add the <a href="/platforms/android-kotlin/module-list/collect/">Collect Dispatc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/usabilla/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-usabilla">Remote Command: Usabilla</a>
+        <a href="/platforms/remote-commands/integrations/usabilla/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-usabilla">Usabilla</a>
       </li>
       
     
@@ -5960,7 +6007,7 @@ Add the <a href="/platforms/android-kotlin/module-list/collect/">Collect Dispatc
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  August 27, 2020 
+    <span>This page was last updated:  October 16, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

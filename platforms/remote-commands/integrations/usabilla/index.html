@@ -236,6 +236,10 @@ var utag_data = {
               <ul class="toc-h3"><li><a href="#dependency-manager">Dependency Manager</a></li>
               <li><a href="#manual-ios">Manual (iOS)</a></li>
               </ul><li><a href="#initialize">Initialize</a></li>
+              <ul class="toc-h3"><li><a href="#android-kotlin">Android (Kotlin)</a></li>
+              <li><a href="#android-java">Android (Java)</a></li>
+              <li><a href="#ios-swift">iOS (Swift)</a></li>
+              </ul><li><a href="#json-template">JSON Template</a></li>
               <li><a href="#track">Track</a></li>
               <li><a href="#supported-methods">Supported Methods</a></li>
               <ul class="toc-h3"><li><a href="#sdk-setup">SDK Setup</a></li>
@@ -283,17 +287,29 @@ var utag_data = {
 <h2 id="requirements">Requirements</h2>
 
 <ul>
-<li>Usabilla app ID</li>
-<li>Usabilla form ID</li>
+<li>Usabilla app ID and form ID</li>
 <li><a href="/platforms/android-java/install/">Tealium for Android</a> or <a href="/platforms/ios-swift/install/">Tealium for iOS</a> in your app</li>
+<li>One of these remote command integrations:
+
+<ul>
+<li><a href="/platforms/remote-commands/integrations/usabilla/#json-template">Usabilla Remote Command JSON File</a></li>
 <li>Usabilla Remote Command tag in Tealium iQ Tag Management</li>
+</ul></li>
 </ul>
 
 <h2 id="how-it-works">How It Works</h2>
 
-<p>The Usabilla integration uses the native Usabilla SDK, the Tealium Usabilla remote command module that wraps Usabilla methods, and the Usabilla Remote Command tag that translates event tracking into native Usabilla calls. This solution leverages the convenience of Tealium iQ Tag Management to configure a native Usabilla implementation without having to add vendor-specific code to your app.</p>
+<p>The Usabilla integration uses the native Usabilla SDK, the Tealium Usabilla remote command module that wraps Usabilla methods, and the Usabilla Remote Command tag that translates event tracking into native Usabilla calls. The integration uses three items:</p>
+
+<ol>
+<li>The Usabilla native SDK</li>
+<li>The remote commands module</li>
+<li>Either the JSON configuration file or Remote Command tag</li>
+</ol>
 
 <p>Adding the Usabilla remote command module to your app automatically installs and builds the required Usabilla libraries. If you are using a dependency manager installation, there is no need to install the Usabilla SDK separately.</p>
+
+<p>There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration.  Learn more about <a href="/platforms/remote-commands/how-it-works/#vendor-integrations">vendor integrations</a>.</p>
 
 <h2 id="install">Install</h2>
 
@@ -368,64 +384,51 @@ var utag_data = {
 
 <h3 id="manual-ios">Manual (iOS)</h3>
 
-<p>The manual installation for Usabilla remote commands requires one of the following iOS libraries to be installed:</p>
-
-<ul>
-<li><a href="https://docs.tealium.com/platforms/ios-swift/">Tealium for Swift</a></li>
-<li><a href="https://docs.tealium.com/platforms/ios-objective-c/">Tealium for Objective-C</a></li>
-</ul>
-
-<p>To install the Usabilla remote commands for your iOS project:</p>
+<p>The manual installation for Usabilla remote commands requires the <a href="https://docs.tealium.com/platforms/ios-swift/">Tealium for Swift</a> library to be installed. To install the Usabilla remote commands for your iOS project:</p>
 
 <ol>
 <li><p>Install the <a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk">Usabilla SDK</a>, if you haven&rsquo;t already done so.</p></li>
 
 <li><p>Clone the <a href="https://github.com/tealium/tealium-ios-usabilla-remote-command">Tealium iOS Usabilla remote command</a> repo and drag the files within the <code>Sources</code> folder into your project.</p></li>
 
-<li><p>When initializing the Tealium SDK, update the completion handler as follows:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium = Tealium(config: config) { responses <span style="font-weight:bold">in</span>
-  <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands() <span style="font-weight:bold">else</span> {
-      <span style="font-weight:bold">return</span>
-  }
-  <span style="font-weight:bold">let</span> <span style="color:#008080">usabillaCommand</span> = UsabillaCommand()
-  <span style="font-weight:bold">let</span> <span style="color:#008080">usabillaRemoteCommand</span> = usabillaCommand.remoteCommand()
-  remoteCommands.add(usabillaRemoteCommand)
-}</code></pre></div></li>
+<li><p>Add <code>Dispatchers.RemoteCommands</code> as a dispatcher</p></li>
 
-<li><p>Add the remote command for Swift or Objective-C:</p></li>
+<li><p>Set the <a href="/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a> configuration flag to <code>true</code></p></li>
+
+<li><p>When initializing the Tealium SDK, update the completion handler as follows:</p></li>
 </ol>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content">
-<div class="tab-pane" data-lang="Swift" title="Swift">
-  <p>Add the remote command in the <code>TealiumHelper.swift</code> file as follows:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">usabillaCommand</span> = UsabillaCommand()
-<span style="font-weight:bold">let</span> <span style="color:#008080">usabillaRemoteCommand</span> = usabillaCommand.remoteCommand()
-tealium.addRemoteCommandID(
-         <span style="color:#b84">&#34;usabilla&#34;</span>,
-         description: <span style="font-weight:bold">nil</span>,
-         targetQueue: DispatchQueue.main,
-         responseBlock: usabillaRemoteCommand)</code></pre></div>
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The following code is designed for use with the JSON Remote Commands feature, using the local file option:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>, profile: <span style="color:#b84">&#34;PROFILE&#34;</span>, environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>)
+config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
+config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
+
+tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
+        <span style="font-weight:bold">return</span>
+    }
+    <span style="font-weight:bold">let</span> <span style="color:#008080">usabilla</span> = UsabillaRemoteCommand(type: .local(file: <span style="color:#b84">&#34;usabilla&#34;</span>))
+    remoteCommands.add(usabilla)
+}</code></pre></div>
 </div>
 
-<div class="tab-pane" data-lang="Objective-C" title="Objective-C">
-  <p>Import the remote command in the <code>TealiumHelper.m</code> file as follows:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">#<span style="font-weight:bold">import</span> <span style="color:#b84">&#34;TealiumRemoteCommandObjcApp-Swift.h&#34;</span></code></pre></div>
-<p class="note">The Swift bridging header for your target is named ending with <code>-Swift.h</code>. Find this by filtering for &ldquo;Module Name&rdquo; in your target&rsquo;s build settings.</p>
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>, profile: <span style="color:#b84">&#34;PROFILE&#34;</span>, environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>)
+config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
+config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
 
-<p>Because there are delegate methods, create a new Swift file to handle your form. See the <a href="https://github.com/usabilla/usabilla-u4a-ios-swift-sdk#integration-with-obj-c-applications">Usabilla guildelines</a> for using these delegate methods in an Objective-C app.</p>
-
-<p>Explore the <a href="https://github.com/Tealium/tealium-ios-usabilla-remote-command/blob/master/Objective-C/SwiftBridge.swift"><code>SwiftBridge.swift</code></a> file to see an example. Learn more in the <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_swift_into_objective-c">Apple Developer Documentation: Importing Swift Into Objective-C</a>.</p>
-
-<p>Initialize the remote command as follows:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Objective-C" data-lang="Objective-C">UsabillaTracker <span style="font-weight:bold">*</span>usabillaTracker <span style="font-weight:bold">=</span> [[UsabillaTracker alloc] init];
-UsabillaCommand <span style="font-weight:bold">*</span>usabillaCommand <span style="font-weight:bold">=</span> [[UsabillaCommand alloc] initWithUsabillaTracker:usabillaTracker];
-TEALRemoteCommandResponseBlock usabillaRemoteCommand <span style="font-weight:bold">=</span> [usabillaCommand remoteCommand];
-[[Tealium instanceForKey:<span style="color:#b84">@&#34;MY_INSTANCE&#34;</span>] addRemoteCommandID:<span style="color:#b84">@&#34;usabilla&#34;</span>
-        description:<span style="color:#b84">@&#34;Usabilla Remote Command&#34;</span>
-        targetQueue:dispatch_get_main_queue()
-        responseBlock: usabillaRemoteCommand];</code></pre></div>
+tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
+        <span style="font-weight:bold">return</span>
+    }
+    <span style="font-weight:bold">let</span> <span style="color:#008080">usabilla</span> = UsabillaRemoteCommand()
+    remoteCommands.add(usabilla)
+}</code></pre></div>
 </div>
 
 <p></div>
@@ -435,11 +438,84 @@ TEALRemoteCommandResponseBlock usabillaRemoteCommand <span style="font-weight:bo
 
 <p>For all Tealium libraries, you need to register the Usabilla remote command when you initialize.</p>
 
+<h3 id="android-kotlin">Android (Kotlin)</h3>
+
+<p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s Android (Kotlin) library.</p>
+
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content">
-<div class="tab-pane" data-lang="Android" title="Android">
-  <p>The following code is designed for use with Tealium&rsquo;s Android library:</p>
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The following code is designed for use with the JSON Remote Commands feature, using the local file option:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, Environment.DEV, dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+<span style="font-weight:bold">val</span> usabilla = UsabillaRemoteCommand(TEALIUM_MAIN, config);
+
+<span style="font-weight:bold">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
+  remoteCommands<span style="font-weight:bold">?.</span>add(usabilla, filename = <span style="color:#b84">&#34;usabilla.json&#34;</span>);
+}</code></pre></div>
+<p>Additional (optional) <a href="https://github.com/usabilla/usabilla-u4a-android-sdk#initialization">initialization parameters</a> are available for the Usabilla SDK:</p>
+
+<ul>
+<li><code>usabillaHttpClient = null</code><br />
+Overrides the <code>HttpClient</code> object, which gives the possibility to inject a custom client to handle all the connections performed by the SDK. Learn more about the <a href="https://github.com/usabilla/usabilla-u4a-android-sdk#custom-http-client">custom HTTP client</a>.</li>
+<li><code>usabillaReadyCallback = null</code><br />
+Overrides the <code>UsabillaReadyCallback</code> object, which is a callback used to communicate when the initialization process ends.</li>
+<li><code>autoFragmentManager = false</code><br />
+Disables <a href="https://github.com/usabilla/usabilla-u4a-android-sdk#passive-feedback">passive feedback</a> (enabled by default). Passive feedback requires Android&rsquo;s <code>FragmentManager</code> to be kept up-to-date and monitored using <code>android.app.Application.ActivityLifecycleCallbacks</code>.</li>
+<li><code>autoFeedbackHandler = false</code><br />
+Disables handling of event tracking for passive and <a href="https://github.com/usabilla/usabilla-u4a-android-sdk#campaigns">campaign</a> feedback forms as well as auto-removing forms that have been submitted or dismissed (enabled by default). Two <code>android.content.BroadcastReceiver</code>s are registered to listen for Usabilla events that handle both passive and campaign <a href="https://github.com/usabilla/usabilla-u4a-android-sdk#feedback-submission-callback">feedback form closures</a>.</li>
+</ul>
+
+<p>The following example shows usage of the optional parameters:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> usabilla = UsabillaRemoteCommand(TEALIUM_MAIN, config,
+        usabillaHttpClient = <span style="font-weight:bold">null</span>,
+        usabillaReadyCallback = <span style="font-weight:bold">null</span>,
+        autoFragmentManager = <span style="font-weight:bold">false</span>,
+        autoFeedbackHandler = <span style="font-weight:bold">false</span>);</code></pre></div>
+</div>
+
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, Environment.DEV, dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+<span style="font-weight:bold">val</span> usabilla = UsabillaRemoteCommand(TEALIUM_MAIN, config);
+
+<span style="font-weight:bold">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
+  remoteCommands<span style="font-weight:bold">?.</span>add(usabilla);
+}</code></pre></div>
+<p>Additional (optional) <a href="https://github.com/usabilla/usabilla-u4a-android-sdk#initialization">initialization parameters</a> are available for the Usabilla SDK:</p>
+
+<ul>
+<li><code>usabillaHttpClient = null</code><br />
+Overrides the <code>HttpClient</code> object, which gives the possibility to inject a custom client to handle all the connections performed by the SDK. Learn more about the <a href="https://github.com/usabilla/usabilla-u4a-android-sdk#custom-http-client">custom HTTP client</a>.</li>
+<li><code>usabillaReadyCallback = null</code><br />
+Overrides the <code>UsabillaReadyCallback</code> object, which is a callback used to communicate when the initialization process ends.</li>
+<li><code>autoFragmentManager = false</code><br />
+Disables <a href="https://github.com/usabilla/usabilla-u4a-android-sdk#passive-feedback">passive feedback</a> (enabled by default). Passive feedback requires Android&rsquo;s <code>FragmentManager</code> to be kept up-to-date and monitored using <code>android.app.Application.ActivityLifecycleCallbacks</code>.</li>
+<li><code>autoFeedbackHandler = false</code><br />
+Disables handling of event tracking for passive and <a href="https://github.com/usabilla/usabilla-u4a-android-sdk#campaigns">campaign</a> feedback forms as well as auto-removing forms that have been submitted or dismissed (enabled by default). Two <code>android.content.BroadcastReceiver</code>s are registered to listen for Usabilla events that handle both passive and campaign <a href="https://github.com/usabilla/usabilla-u4a-android-sdk#feedback-submission-callback">feedback form closures</a>.</li>
+</ul>
+
+<p>The following example shows usage of the optional parameters:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> usabilla = UsabillaRemoteCommand(TEALIUM_MAIN, config,
+        usabillaHttpClient = <span style="font-weight:bold">null</span>,
+        usabillaReadyCallback = <span style="font-weight:bold">null</span>,
+        autoFragmentManager = <span style="font-weight:bold">false</span>,
+        autoFeedbackHandler = <span style="font-weight:bold">false</span>);</code></pre></div>
+</div>
+
+<p></div>
+</div></p>
+
+<h3 id="android-java">Android (Java)</h3>
+
+<p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s Android (Java) library.</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.<span style="color:#008080">Config</span> <span style="color:#900;font-weight:bold">config</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">Config</span>.<span style="color:#008080">create</span>(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>);
 Tealium <span style="color:#900;font-weight:bold">teal</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">createInstance</span>(TEALIUM_MAIN, config);
 
@@ -466,43 +542,84 @@ Disables handling of event tracking for passive and <a href="https://github.com/
         autoFeedbackHandler <span style="font-weight:bold">=</span> <span style="font-weight:bold">false</span>);</code></pre></div>
 </div>
 
-<div class="tab-pane" data-lang="Swift" title="Swift">
-  <p>The following code is designed for use with Tealium&rsquo;s Swift library for iOS:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">teal</span> : Tealium?
-<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(
-       account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-       profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-       environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-       datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
-       optionalData: <span style="font-weight:bold">nil</span>)
+<p></div>
+</div></p>
 
-teal = Tealium(config: config) { responses <span style="font-weight:bold">in</span>
-  <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands() <span style="font-weight:bold">else</span> {
+<h3 id="ios-swift">iOS (Swift)</h3>
+
+<p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s Android (Java) library.</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The following code is designed for use with the JSON Remote Commands feature, using the local file option:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span> : Tealium?
+<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+                           profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
+                           environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
+                           dataSource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
+config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
+config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
+
+tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
         <span style="font-weight:bold">return</span>
-  }
-  <span style="font-weight:bold">let</span> <span style="color:#008080">usabillaCommand</span> = UsabillaCommand()
-  <span style="font-weight:bold">let</span> <span style="color:#008080">usabillaRemoteCommand</span> = usabillaCommand.remoteCommand()
-  remoteCommands.add(usabillaRemoteCommand)
+    }
+    <span style="font-weight:bold">let</span> <span style="color:#008080">usabilla</span> = UsabillaRemoteCommand(type: .local(file: <span style="color:#b84">&#34;usabilla&#34;</span>))
+    remoteCommands.add(usabilla)
 }</code></pre></div>
 </div>
 
-<div class="tab-pane" data-lang="Objective-C" title="Objective-C">
-  <p>The following code is designed for use with Tealium&rsquo;s Objective-C library for iOS, although it is written in Swift. A Bridging Header is required in your Xcode project for this code to work correctly.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TEALConfiguration(
-       account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-       profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-       environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-       datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
-<span style="font-weight:bold">let</span> <span style="color:#008080">teal</span> = Tealium.newInstance(forKey: <span style="color:#b84">&#34;teal&#34;</span>, configuration: config)
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span> : Tealium?
+<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+                           profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
+                           environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,<span style="color:#a61717;background-color:#e3d2d2">˜˜</span>
+                           dataSource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
+config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
+config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
 
-<span style="font-weight:bold">let</span> <span style="color:#008080">usabillaCommand</span> = UsabillaCommand()
-<span style="font-weight:bold">let</span> <span style="color:#008080">usabillaRemoteCommand</span> = usabillaCommand.remoteCommand()
-teal.addRemoteCommandID(<span style="color:#b84">&#34;usabilla&#34;</span>, description: <span style="font-weight:bold">nil</span>, targetQueue: DispatchQueue.main, responseBlock: usabillaRemoteCommand)</code></pre></div>
+tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
+        <span style="font-weight:bold">return</span>
+    }
+    <span style="font-weight:bold">let</span> <span style="color:#008080">usabilla</span> = UsabillaRemoteCommand()
+    remoteCommands.add(usabilla)
+}</code></pre></div>
 </div>
 
 <p></div>
 </div></p>
 
+<h2 id="json-template">JSON Template</h2>
+
+<p>If you are configuring remote commands using a <a href="/platforms/remote-commands/how-it-works/#json-configuration-file">JSON configuration file</a>, refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#000080">&#34;config&#34;</span>: {
+    <span style="color:#000080">&#34;appId&#34;</span>: <span style="color:#b84">&#34;YOUR_APP_ID&#34;</span>,
+    <span style="color:#000080">&#34;debugEnabled&#34;</span>: <span style="font-weight:bold">true</span>
+  },
+  <span style="color:#000080">&#34;mappings&#34;</span>: {
+      <span style="color:#000080">&#34;event_name&#34;</span>: <span style="color:#b84">&#34;event&#34;</span>,
+      <span style="color:#000080">&#34;display_campaigns&#34;</span>: <span style="color:#b84">&#34;canDisplayCampaigns&#34;</span>,
+      <span style="color:#000080">&#34;dismiss_automatically&#34;</span>: <span style="color:#b84">&#34;dismissAutomatically&#34;</span>,
+      <span style="color:#000080">&#34;form_id&#34;</span>: <span style="color:#b84">&#34;formId&#34;</span>,
+      <span style="color:#000080">&#34;form_ids&#34;</span>: <span style="color:#b84">&#34;formIds&#34;</span>,
+      <span style="color:#000080">&#34;customer_first_name&#34;</span>: <span style="color:#b84">&#34;custom.customer_first_name&#34;</span>
+},
+  <span style="color:#000080">&#34;commands&#34;</span>: {
+    <span style="color:#000080">&#34;launch&#34;</span>: <span style="color:#b84">&#34;initialize&#34;</span>,
+    <span style="color:#000080">&#34;display_campaigns&#34;</span>: <span style="color:#b84">&#34;candisplaycampaigns&#34;</span>,
+    <span style="color:#000080">&#34;dismiss&#34;</span>: <span style="color:#b84">&#34;dismissautomatically&#34;</span>,
+    <span style="color:#000080">&#34;button_click&#34;</span>: <span style="color:#b84">&#34;sendevent&#34;</span>,
+    <span style="color:#000080">&#34;load_form&#34;</span>: <span style="color:#b84">&#34;loadfeedbackform&#34;</span>,
+    <span style="color:#000080">&#34;set_variables&#34;</span>: <span style="color:#b84">&#34;setcustomvariable&#34;</span>,
+    <span style="color:#000080">&#34;reset&#34;</span>: <span style="color:#b84">&#34;resetcampaigndata&#34;</span>
+  }
+}</code></pre></div>
 <h2 id="track">Track</h2>
 
 <p>Events are tracked automatically for successful and unsuccessful form loads, as well as both passive and campaign feedback forms.</p>
@@ -1206,6 +1323,46 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;usabilla&#34;</span>, desc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/hosted-data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-hosted-data-layer">Hosted Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/feature-comparison/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-feature-comparison">Feature Comparison</a>
       </li>
       
@@ -1323,7 +1480,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;usabilla&#34;</span>, desc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">Remote Command: AppsFlyer</a>
+        <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
       </li>
       
     
@@ -1343,7 +1500,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;usabilla&#34;</span>, desc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/braze/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-braze">Remote Command: Braze</a>
+        <a href="/platforms/remote-commands/integrations/braze/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-braze">Braze</a>
       </li>
       
     
@@ -1363,7 +1520,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;usabilla&#34;</span>, desc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/contentsquare/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-contentsquare">Remote Command: Contentsquare</a>
+        <a href="/platforms/remote-commands/integrations/contentsquare/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-contentsquare">Contentsquare</a>
       </li>
       
     
@@ -1383,7 +1540,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;usabilla&#34;</span>, desc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/facebook/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-facebook">Remote Command: Facebook</a>
+        <a href="/platforms/remote-commands/integrations/facebook/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-facebook">Facebook</a>
       </li>
       
     
@@ -1403,7 +1560,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;usabilla&#34;</span>, desc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-firebase">Remote Command: Firebase</a>
+        <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-firebase">Firebase</a>
       </li>
       
     
@@ -1423,7 +1580,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;usabilla&#34;</span>, desc
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/remote-commands/integrations/usabilla/" class="db link pl4 pr2 pv1 bg-secondary white" data-target=".remote-commands-usabilla">Remote Command: Usabilla</a>
+        <a href="/platforms/remote-commands/integrations/usabilla/" class="db link pl4 pr2 pv1 bg-secondary white" data-target=".remote-commands-usabilla">Usabilla</a>
       </li>
       
     
@@ -6470,7 +6627,7 @@ teal.addRemoteCommandID(<span style="color:#b84">&#34;usabilla&#34;</span>, desc
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  April 15, 2020 
+    <span>This page was last updated:  October 19, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
