@@ -289,11 +289,17 @@ var utag_data = {
 
 <ul>
 <li>AppsFlyer <a href="https://support.appsflyer.com/hc/en-us/articles/207377436#available-in-the-app-store-google-play-store-windows-phone-store">app ID</a> and <a href="https://support.appsflyer.com/hc/en-us/articles/211719806-App-Settings#sdk-dev-key">dev key</a></li>
-<li><a href="/platforms/android-java/">Tealium for Android</a> or <a href="/platforms/ios-swift/">Tealium for iOS</a> in your app</li>
+<li>One of these mobile libraries:
+
+<ul>
+<li><a href="/platforms/android-kotlin/">Tealium for Android-Kotlin</a> (1.0.0+)</li>
+<li><a href="/platforms/android-java/">Tealium for Android-Java</a> (5.9.0+ for AppsFlyer 1.0.0+ or &lt;5.9.0 for previous versions)</li>
+<li><a href="/platforms/ios-swift/">Tealium for iOS-Swift</a></li>
+</ul></li>
 <li>One of these remote command integrations:
 
 <ul>
-<li><a href="/platforms/remote-commands/integrations/appsflyer/#json-template">AppsFlyer Remote Command JSON File</a></li>
+<li><a href="/platforms/remote-commands/integrations/appsflyer/#json-template">AppsFlyer Remote Command JSON File</a> (Requires Android-Kotlin 1.0.0+ or iOS-Swift 2.1.0+)</li>
 <li>AppsFlyer Remote Command tag in Tealium iQ Tag Management</li>
 </ul></li>
 </ul>
@@ -359,7 +365,7 @@ var utag_data = {
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">github <span style="color:#b84">&#34;tealium/tealium-ios-appsflyer-remote-command&#34;</span></code></pre></div></li>
 </ol>
 
-<p class="note">Tealium for Swift SDK (version 1.X) and <code>TealiumFirebase</code> version 1.X requires the <code>TealiumDelegate</code> module to be included with your installation.</p>
+<p class="note">Tealium for Swift SDK (version 1.x) and <code>TealiumAppsFlyer</code> version 1.x requires the <code>TealiumDelegate</code> module to be included with your installation.</p>
 
 </div>
 
@@ -367,7 +373,7 @@ var utag_data = {
   <p>To install AppsFlyer remote commands for Android using Maven:</p>
 
 <ol>
-<li><p>Install Tealium&rsquo;s <a href="/platforms/android-java/install/">Android SDK</a>, if you haven&rsquo;t done so already.</p></li>
+<li><p>Install <a href="/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> or <a href="/platforms/android-java/install/">Tealium for Android (Java)</a>, if you haven&rsquo;t done so already.</p></li>
 
 <li><p>Add the Tealium Maven URL to your project&rsquo;s top-level <code>build.gradle</code> file:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects <span style="font-weight:bold">{</span>
@@ -441,7 +447,7 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
 
 <h3 id="manual-android">Manual (Android)</h3>
 
-<p>The manual installation for AppsFlyer remote commands requires the <a href="https://docs.tealium.com/platforms/android-java/">Tealium for Android</a> library to be installed. To install the AppsFlyer remote commands for your Android project:</p>
+<p>The manual installation for AppsFlyer remote commands requires <a href="/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> or <a href="/platforms/android-java/install/">Tealium for Android (Java)</a> to be installed. To install the AppsFlyer remote commands for your Android project:</p>
 
 <ol>
 <li><p>Add <code>flatDir</code> to your project root <code>build.gradle</code> file:</p>
@@ -519,6 +525,8 @@ teal.<span style="color:#008080">addRemoteCommand</span>(appsFlyer);</code></pre
 
 <p></div>
 </div></p>
+
+<p class="note">The JSON Remote Command file feature for Android is only available in the Kotlin SDK</p>
 
 <h3 id="ios-swift">iOS (Swift)</h3>
 
@@ -6914,7 +6922,7 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 19, 2020 
+    <span>This page was last updated:  October 21, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

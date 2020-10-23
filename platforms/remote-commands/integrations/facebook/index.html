@@ -293,11 +293,17 @@ var utag_data = {
 <h2 id="requirements">Requirements</h2>
 
 <ul>
-<li><a href="/platforms/android-java/">Tealium for Android</a> or <a href="/platforms/ios-swift/">Tealium for iOS</a> in your app</li>
+<li>One of these mobile libraries:
+
+<ul>
+<li><a href="/platforms/android-kotlin/">Tealium for Android-Kotlin</a> (1.0.0+)</li>
+<li><a href="/platforms/android-java/">Tealium for Android-Java</a> (5.9.0+ for Facebook 1.0.0+ or &lt;5.9.0 for previous versions)</li>
+<li><a href="/platforms/ios-swift/">Tealium for iOS-Swift</a></li>
+</ul></li>
 <li>One of these remote command integrations:
 
 <ul>
-<li><a href="/platforms/remote-commands/integrations/facebook/#json-template">Facebook Remote Command JSON File</a></li>
+<li><a href="/platforms/remote-commands/integrations/facebook/#json-template">Facebook Remote Command JSON File</a> (Requires Android-Kotlin 1.0.0+ or iOS-Swift 2.1.0+)</li>
 <li>Facebook Remote Command tag in Tealium iQ Tag Management</li>
 </ul></li>
 </ul>
@@ -507,7 +513,9 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
 
 <h3 id="manual-android">Manual (Android)</h3>
 
-<p>The manual installation for Facebook remote commands requires the <a href="https://docs.tealium.com/platforms/android-java/">Tealium for Android</a>library to be installed. To install the Facebook remote commands for your Android project:</p>
+<p>The manual installation for Facebook remote commands requires <a href="/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> or <a href="/platforms/android-java/install/">Tealium for Android (Java)</a> to be installed.</p>
+
+<p>To install the Facebook remote commands for your Android project:</p>
 
 <ol>
 <li><p>Add <code>flatDir</code> to your project root <code>build.gradle</code> file:</p>
@@ -546,7 +554,7 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
 <span style="font-weight:bold">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
   <span style="font-weight:bold">val</span> facebook = FacebookRemoteCommand(<span style="font-weight:bold">this</span>);
   <span style="color:#998;font-style:italic">// register the command
-</span><span style="color:#998;font-style:italic"></span>  remoteCommands<span style="font-weight:bold">?.</span>add(contentsquare, filename = <span style="color:#b84">&#34;facebook.json&#34;</span>);
+</span><span style="color:#998;font-style:italic"></span>  remoteCommands<span style="font-weight:bold">?.</span>add(facebook, filename = <span style="color:#b84">&#34;facebook.json&#34;</span>);
 }</code></pre></div>
 </div>
 
@@ -556,7 +564,7 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
 <span style="font-weight:bold">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
   <span style="font-weight:bold">val</span> facebook = FacebookRemoteCommand(<span style="font-weight:bold">this</span>);
   <span style="color:#998;font-style:italic">// register the command
-</span><span style="color:#998;font-style:italic"></span>  remoteCommands<span style="font-weight:bold">?.</span>add(contentsquare);
+</span><span style="color:#998;font-style:italic"></span>  remoteCommands<span style="font-weight:bold">?.</span>add(facebook);
 }</code></pre></div>
 </div>
 
@@ -583,6 +591,8 @@ FacebookRemoteCommand <span style="color:#900;font-weight:bold">facebook</span> 
 
 <p></div>
 </div></p>
+
+<p class="note">The JSON Remote Command file feature for Android is only available in the Kotlin SDK</p>
 
 <h3 id="ios-swift">iOS (Swift)</h3>
 
@@ -7029,7 +7039,7 @@ are provided in <a href="https://github.com/facebook/facebook-ios-sdk/blob/9909f
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 19, 2020 
+    <span>This page was last updated:  October 21, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

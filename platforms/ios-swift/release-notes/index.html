@@ -230,7 +230,8 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#version-2-0-0-2020">Version 2.0.0 (2020)</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#version-2-1-0-2020">Version 2.1.0 (2020)</a></li>
+              <li><a href="#version-2-0-0-2020">Version 2.0.0 (2020)</a></li>
               </nav>
   </aside></div>
 
@@ -270,6 +271,30 @@ var utag_data = {
   
 
 <p>Below is a complete list of changes for each release of the Tealium for Swift library.</p>
+
+<h2 id="version-2-1-0-2020">Version 2.1.0 (2020)</h2>
+
+<p><strong>Released:</strong> October 2020</p>
+
+<p><strong>New Features</strong></p>
+
+<ul>
+<li>The remote commands feature was updated with a new option to use a remote or locally hosted JSON configuration files, removing the requirement for a webview. If using the Remote Command tag option, in iQ Tag Management, the webview is required. Learn more about <a href="https://docs.tealium.com/platforms/remote-commands/how-it-works/#json-configuration-file">JSON controlled remote commands</a>.</li>
+<li>Added support for <em>Approximate Location Tracking (iOS 14+)</em> with the function <code>requestTemporaryFullAccuracyAuthorization(purposeKey:)</code> through the <code>TealiumLocation</code> module. Learn more about the <a href="https://docs.tealium.com/platforms/ios-swift/module-list/location/#approximate-location-tracking-ios-14">iOS 14 Location Updates</a> and <a href="https://developer.apple.com/documentation/corelocation/cllocationmanager/3600217-requesttemporaryfullaccuracyauth">requesting temporary full authorization</a></li>
+</ul>
+
+<p><strong>Medium Impact Changes</strong></p>
+
+<ul>
+<li>Lower-cased the value of the <code>platform</code> variable to correct mobile session timer. Previously, sessions were measured similarly to web (30 minutes of consistent activity). By lower-casing the <code>platform</code> variable, the Customer Data Hub recognizes the incoming data as a mobile session and the session length is shortened to 2 minutes.<br />
+<p class="note">Update your load rules if you have Load or Attribute Rules configured checking for case sensitive <code>platform</code> values such as <code>iOS</code> vs <code>ios</code>.</p></li>
+</ul>
+
+<p><strong>Low Impact Changes</strong></p>
+
+<ul>
+<li>Add <code>origin: mobile</code> to the track payload</li>
+</ul>
 
 <h2 id="version-2-0-0-2020">Version 2.0.0 (2020)</h2>
 
@@ -5871,7 +5896,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  September 2, 2020 
+    <span>This page was last updated:  October 20, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

@@ -230,14 +230,18 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#introduction">Introduction</a></li>
-              <ul class="toc-h3"><li><a href="#example">Example</a></li>
-              </ul><li><a href="#components">Components</a></li>
-              <li><a href="#vendor-integrations">Vendor Integrations</a></li>
-              <ul class="toc-h3"><li><a href="#json-configuration-file">JSON Configuration File</a></li>
-              <li><a href="#remote-command-tag">Remote Command Tag</a></li>
-              </ul><li><a href="#native-code">Native Code</a></li>
-              <li><a href="#json-template-files">JSON Template Files</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#vendor-integrations">Vendor Integrations</a></li>
+              <li><a href="#json-file">JSON File</a></li>
+              <ul class="toc-h3"><li><a href="#mappings">Mappings</a></li>
+              <li><a href="#example">Example</a></li>
+              <li><a href="#load-options">Load Options</a></li>
+              <li><a href="#vendor-templates">Vendor Templates</a></li>
+              </ul><li><a href="#custom-commands">Custom Commands</a></li>
+              <ul class="toc-h3"><li><a href="#components">Components</a></li>
+              <li><a href="#native-code">Native Code</a></li>
+              <li><a href="#use-case-purchase-survey">Use Case: Purchase Survey</a></li>
+              </ul><li><a href="#remote-command-tag">Remote Command Tag</a></li>
+              <ul class="toc-h3"><li><a href="#example-remote-command-tag">Example Remote Command Tag</a></li>
               </nav>
   </aside></div>
 
@@ -276,99 +280,80 @@ var utag_data = {
 <div class="prose" id="prose">
   
 
-<h2 id="introduction">Introduction</h2>
-
-<p>Remote commands are a client-side solution for triggering functionality in your native app. Configure remote commands with a JSON configuration file or a Remote Command tag in Tealium iQ Tag Management.</p>
+<p>Remote commands are a client-side solution for triggering functionality in your native app.</p>
 
 <p>Use remote commands in two ways:</p>
 
 <ul>
-<li><strong>Vendor integrations</strong><br />
-For your remote commands vendor integration, it is recommended to use a JSON configuration file. Alternatively, use a tag in iQ Tag Management with pre-built solutions for vendor SDKs using a native remote command module that implements the vendor API and a matching vendor tag. See the list of <a href="/platforms/remote-commands/integrations/">remote command integrations</a>.</li>
-<li><strong>Native code</strong><br />
-Your own custom commands defined in native code and configured in iQ Tag Management with the custom Remote Command tag.</li>
+<li><strong>Vendor Integrations</strong><br />
+Tealium offers pre-built remote command modules that implement a vendor&rsquo;s native API.  See the list of <a href="/platforms/remote-commands/integrations/">remote command integrations</a>.</li>
+<li><strong>Custom Commands</strong><br />
+Define your own native custom commands and trigger them using the Custom Remote Command tag in iQ Tag Management.</li>
 </ul>
-
-<p>A JSON file is provided for each vendor integration with mappings to the vendor&rsquo;s configuration options, events, and data attributes. A benefit of using a JSON file is that it does not require a webview, but there is no UI for managing the mappings.</p>
-
-<p>When using iQ Tag Management in your app, remote commands provide the ability to trigger native code blocks from the non-rendered webview. This is used for cases where data held inside the non-rendered webview needs to be passed back to the native code for further processing. Remote commands use custom URL schemes as a way for JavaScript tags to trigger methods in your app. A tag in the non-rendered webview sends the app custom requests processed by a remote command handler that triggers custom native code or a vendor&rsquo;s SDK.</p>
-
-<h3 id="example">Example</h3>
-
-<p>If you want to personalize parts of your app, such as launching a survey after the user has made a purchase, the following steps configure your post-purchase survey:</p>
-
-<ol>
-<li>Create native code that prompts users to take a survey, passing the message and URL as method parameters (from the non-rendered webview).</li>
-<li>Register the block of code as a remote command with the Tealium API.</li>
-<li>Add the custom Remote Command tag in iQ Tag Management and set the command ID to the same command registered in the native code.</li>
-<li>Set data mappings to pass specific variables back to the app, such as <code>survey_title</code> or <code>survey_url</code>.</li>
-<li>In the native code, use the variables passed back in the response payload to display the survey to the user.</li>
-</ol>
-
-<p>After completing these steps, you are able to configure the survey title, URL, and logic using extensions in iQ Tag Management without re-deploying your app.</p>
-
-<h2 id="components">Components</h2>
-
-<p>A remote command has a command name and a payload of data.</p>
-
-<ul>
-<li><strong>Command</strong><br />
-The name of the command, or command ID, registered with native code in your app and with a tag in iQ Tag Management.</li>
-<li><strong>Payload</strong><br />
-The data passed from the tag to the native app, configured as data mappings in iQ Tag Management, and received in the app as a <code>requestPayload</code> object in the response callback of the handler.</li>
-</ul>
-
-<p class="note">Define remote commands in your native app at build time. The Remote Command tag only executes pre-defined code on the device.</p>
 
 <h2 id="vendor-integrations">Vendor Integrations</h2>
 
 <p>A vendor integration is a pre-built remote command module that installs the vendor SDK and defines native code handlers for the vendor&rsquo;s API.</p>
 
-<p>Implementing a remote command integration requires the following:</p>
+<p>Implementing a vendor integration requires the following:</p>
 
 <ul>
 <li><strong>Vendor remote command module</strong><br />
-In your app build scripts, replace the vendor SDK with the remote command module. The remote command module handles the vendor SDK installation and setup for you.</li>
-<li><strong>JSON configuration file or Remote Command tag</strong><br />
-A JSON configuration file is the recommended option your vendor integration, which may be hosted remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration. Configure the tag settings and data mappings to implement the vendor methods.</li>
+In your app build scripts, replace the vendor SDK with the Tealium remote command module. The remote command module handles the vendor SDK installation and setup for you.</li>
+<li><strong>Configuration</strong> (Choose one of the following)
+
+<ul>
+<li><strong>JSON File</strong><br />
+A JSON file, loaded locally or hosted remotely, containing the vendor settings, data mappings, and event triggers.</li>
+<li><strong>Remote Command Tag</strong><br />
+A tag in iQ Tag Management that offers configuration options for the vendor&rsquo;s API (for use with the Tag Management module).</li>
+</ul></li>
 </ul>
 
-<h3 id="json-configuration-file">JSON Configuration File</h3>
+<p>See the <a href="/platforms/remote-commands/integrations/">list of remote command vendor integrations</a>.</p>
 
-<p>Configure remote commands by hosting a JSON configuration file or including it locally in your app, which eliminates the dependency on iQ Tag Management. A <a href="/platforms/remote-commands/how-it-works/#json-template-files">JSON template file</a> with remote command mappings is available for each vendor integration. Each Tealium remote command method name (key) maps to a wrapper method (value) around the vendor-specific remote command.</p>
+<h2 id="json-file">JSON File</h2>
 
-<h4 id="json-file-sections">JSON File Sections</h4>
+<p>Configure a vendor integration using a JSON file. Load this file locally in the app or from a remotely hosted URL. A <a href="/platforms/remote-commands/how-it-works/#vendor-templates">JSON template file</a> is available for each vendor integration.</p>
 
-<p>A JSON template file has three main sections: <code>config</code>, <code>mappings</code> and <code>commands</code>.</p>
+<h3 id="mappings">Mappings</h3>
+
+<p>A JSON template file has three main sections: <code>config</code>, <code>mappings</code>, and <code>commands</code>.</p>
 
 <ul>
 <li><p><strong><code>config</code></strong><br />
-This section sets SDK initialization options such as client ID, API key, or the log level. For example, the following sets the application ID:</p>
-
-<pre><code>&quot;applicationid&quot;: &quot;appid123&quot;
-</code></pre></li>
+This section sets vendor SDK initialization options such as client ID, API key, or the log level. For example, the following sets the application ID:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#000080">&#34;config&#34;</span>: {
+    <span style="color:#000080">&#34;applicationid&#34;</span>: <span style="color:#b84">&#34;appid123&#34;</span>
+  }
+}</code></pre></div></li>
 
 <li><p><strong><code>mappings</code></strong><br />
-This section defines your data mappings which build the JSON object. The following mapping builds the assigns the product ID in the tracking call to the <code>param_item_id</code> variable.</p>
-
-<pre><code>&quot;product_id&quot;: &quot;param_item_id&quot;  
-</code></pre>
-
-<p>A object reference may prefix a variable using dot notation. The value left of the <code>.</code> is the object being built and the right value is the variable belonging to the object. The mapping builds and outputs a JSON object, similar to the one created in iQ Tag Management, and adds it to the payload. The following mapping assigns the product ID in the tracking call to the <code>param_item_id</code> variable of the <code>event</code> object.  The remote commands parser creates an <code>event</code> object (key), and <code>param_item_id</code> as one of the object properties.</p>
-
-<pre><code>&quot;product_id&quot;: &quot;event.param_item_id&quot;  
-</code></pre>
-
-<p class="note">The object prefix is typically <code>event.</code>, <code>product.</code> or <code>purchase.</code>, but may be any custom object name.  Refer to the <a href="/platforms/remote-commands/how-it-works/#json-template-files">JSON template files</a> to see the object prefixes used for your vendor integration.</p></li>
+This section defines your data mappings. The following mapping assigns the data layer variable <code>product_id</code> to the vendor parameter <code>param_item_id</code>.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#000080">&#34;mappings&#34;</span>: {
+    <span style="color:#000080">&#34;product_id&#34;</span>: <span style="color:#b84">&#34;param_item_id&#34;</span>
+  }
+}</code></pre></div>
+<p>The vendor parameter may use a prefix with dot notation to scope a mapping to a specific object in the payload. The prefix defines the object and the value to the right of the <code>.</code> becomes a property of the object. For example, the following mapping assigns <code>product_id</code> to the <code>param_item_id</code> variable of the <code>event</code> object.  The remote commands parser creates an <code>event</code> object with <code>param_item_id</code> as one of its properties.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#000080">&#34;mappings&#34;</span>: {
+    <span style="color:#000080">&#34;product_id&#34;</span>: <span style="color:#b84">&#34;event.param_item_id&#34;</span>
+  }
+}</code></pre></div>
+<p class="note">The object prefix is typically <code>event.</code>, <code>product.</code>, or <code>purchase.</code>, but may be any custom object name.  Refer to the <a href="/platforms/remote-commands/how-it-works/#vendor-templates">JSON template files</a> to see the object prefixes used for your vendor integration.</p></li>
 
 <li><p><strong><code>commands</code></strong><br />
-This section maps Tealium event names to the vendor&rsquo;s events. The value left of the <code>:</code> is the Tealium method name and the right value is the Tealium created vendor-specific method name, which wraps around the vendor&rsquo;s method. In the following example, the Tealium event is <code>cart_add</code> which maps to the <code>logevent</code> method:</p>
-
-<pre><code>&quot;cart_add&quot;: &quot;logevent&quot;
-</code></pre></li>
+This section maps Tealium event names to the vendor&rsquo;s events. The value left of the <code>:</code> is the Tealium event name and the right value is the Tealium wrapper for the vendor&rsquo;s method. In the following example, the Tealium event <code>cart_add</code> is mapped to the vendor method <code>logevent</code>:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#000080">&#34;commands&#34;</span>: {
+    <span style="color:#000080">&#34;cart_add&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>
+  }
+}</code></pre></div></li>
 </ul>
 
-<h4 id="json-file-example">JSON File Example</h4>
+<h3 id="example">Example</h3>
 
 <p>The following is an example JSON configuration:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
@@ -396,33 +381,99 @@ This section maps Tealium event names to the vendor&rsquo;s events. The value le
         <span style="color:#a61717;background-color:#e3d2d2">...</span>
     }
 }</code></pre></div>
-<h4 id="json-file-options">JSON File Options</h4>
+<h3 id="load-options">Load Options</h3>
 
-<p>There are two options for loading the JSON file: hosted remotely, or locally within your app.</p>
+<p>There are two options for loading the JSON file: as a local file or from a hosted URL.</p>
 
 <ul>
-<li><p><strong>Remotely hosted JSON file</strong><br />
-The following code uses a remotely hosted JSON file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">let</span> remoteCommand3 <span style="font-weight:bold">=</span> RemoteCommand(commandId<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;remote1&#34;</span>,
-                               description<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;Remote Hosted File&#34;</span>,
-                               type<span style="font-weight:bold">:</span> .remote(url<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/facebook.json&#34;</span>)) {
+<li><p><strong>Local File</strong><br />
+Use a configuration file stored in your app.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">let</span> remoteCommand2 <span style="font-weight:bold">=</span> RemoteCommand(commandId<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;local&#34;</span>,
+                               description<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;Local JSON File&#34;</span>,
+                               type<span style="font-weight:bold">:</span> .local(file<span style="font-weight:bold">:</span><span style="color:#b84">&#34;braze&#34;</span>)) {
 response <span style="font-weight:bold">in</span>
 <span style="color:#998;font-style:italic">// ...
 </span><span style="color:#998;font-style:italic"></span>}
 </code></pre></div></li>
 
-<li><p><strong>Local hosted JSON file</strong><br />
-The following code uses a locally hosted JSON file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">let</span> remoteCommand2 <span style="font-weight:bold">=</span> RemoteCommand(commandId<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;local&#34;</span>,
-                               description<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;Local JSON File&#34;</span>,
-                               type<span style="font-weight:bold">:</span> .local(file<span style="font-weight:bold">:</span><span style="color:#b84">&#34;firebase&#34;</span>)) {
+<li><p><strong>Hosted URL</strong><br />
+Use your own hosted file, accessible as a URL.
+Use this option with the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/About-Hosted-Data-Layer/ta-p/17572">hosted data layer</a>.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">let</span> remoteCommand3 <span style="font-weight:bold">=</span> RemoteCommand(commandId<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;remote1&#34;</span>,
+                               description<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;Remote Hosted File&#34;</span>,
+                               type<span style="font-weight:bold">:</span> .remote(url<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/braze.json&#34;</span>)) {
 response <span style="font-weight:bold">in</span>
 <span style="color:#998;font-style:italic">// ...
 </span><span style="color:#998;font-style:italic"></span>}
 </code></pre></div></li>
 </ul>
 
-<h3 id="remote-command-tag">Remote Command Tag</h3>
+<h3 id="vendor-templates">Vendor Templates</h3>
+
+<p>The following remote command JSON templates are available.</p>
+
+<ul>
+<li><a href="/platforms/remote-commands/integrations/appsflyer/#json-template">AppsFlyer</a></li>
+<li><a href="/platforms/remote-commands/integrations/braze/#json-template">Braze</a></li>
+<li><a href="/platforms/remote-commands/integrations/contentsquare/#json-template">Contentsquare</a></li>
+<li><a href="/platforms/remote-commands/integrations/facebook/#json-template">Facebook</a></li>
+<li><a href="/platforms/remote-commands/integrations/firebase/#json-template">Firebase</a></li>
+<li><a href="/platforms/remote-commands/integrations/usabilla/#json-template">Usabilla</a></li>
+</ul>
+
+<h2 id="custom-commands">Custom Commands</h2>
+
+<p>When using iQ Tag Management in your app, custom remote commands provide the ability to trigger native code blocks from the non-rendered webview. This is used in cases where data held inside the non-rendered webview needs to be passed back to the native code for further processing.</p>
+
+<p>Remote commands use custom URL schemes as a way for JavaScript tags to trigger methods in your app. A tag in the non-rendered webview sends the app requests which are processed by a remote command handler that triggers custom code or a vendor SDK.</p>
+
+<h3 id="components">Components</h3>
+
+<p>A remote command has a command name and a payload of data.</p>
+
+<ul>
+<li><strong>Command</strong><br />
+The name of the command, or command ID, registered with native code in your app.</li>
+<li><strong>Payload</strong><br />
+The data passed to the native app and received as an object named <code>requestPayload</code> in the response callback of the handler.</li>
+</ul>
+
+<p class="note">Define remote commands in your native app at build time. The Custom Remote Command tag only executes pre-defined code on the device.</p>
+
+<h3 id="native-code">Native Code</h3>
+
+<p>In the native code, the <code>add()</code> function registers a remote command handler. The callback function <code>response</code> has  access to the payload with <code>response.payload</code>. In the following example, the referenced payload variables have a matching data layer variable configured in iQ Tag Management.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium = Tealium(config: config) { [<span style="font-weight:bold">weak</span> <span style="font-weight:bold">self</span>] <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+	<span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommand</span> = RemoteCommand(commandId: <span style="color:#b84">&#34;myRemoteCommand&#34;</span>, description: <span style="color:#b84">&#34;&#34;</span>) { response <span style="font-weight:bold">in</span>
+		<span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">payload</span> = response.payload,
+	    <span style="font-weight:bold">let</span> <span style="color:#008080">myVariable</span> = payload[<span style="color:#b84">&#34;myVariable&#34;</span>] <span style="font-weight:bold">as</span>? <span style="color:#999">String</span> <span style="font-weight:bold">else</span> {
+			<span style="font-weight:bold">return</span>
+		}
+		print(myVariable)
+	}
+	<span style="font-weight:bold">self</span>.tealium?.remoteCommands?.add(remoteCommand)
+}</code></pre></div>
+<p>Add a module for the vendor integration to the build script for your platform. Modules are named in the format of <code>TealiumVendorXYZ</code>, for example <code>TealiumBraze</code>.</p>
+
+<p>To install, replace the vendor&rsquo;s dependency with the Tealium remote command dependency. For example, remove the following line:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pod <span style="color:#b84">&#34;VendorXYZ-iOS-SDK&#34;</span></code></pre></div>
+<p>Then add the following line:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pod <span style="color:#b84">&#34;TealiumVendorXYZ&#34;</span></code></pre></div>
+<h3 id="use-case-purchase-survey">Use Case: Purchase Survey</h3>
+
+<p>The following steps demonstrate how to use a remote command to trigger a survey in your app after a user completes a purchase.</p>
+
+<ol>
+<li>Create native code that prompts the user to take a survey, passing the message and URL as method parameters (from the non-rendered webview).</li>
+<li>Register the block of code as a remote command with the Tealium API.</li>
+<li>Add the Custom Remote Command tag in iQ Tag Management and set the command ID to the same command registered in the native code.</li>
+<li>Set data mappings to pass specific variables back to the app, such as <code>survey_title</code> or <code>survey_url</code>.</li>
+<li>In the native code, use the variables passed back in the response payload to display the survey to the user.</li>
+</ol>
+
+<p>After completing these steps, you are able to configure the survey title, URL, and logic using extensions in iQ Tag Management without re-deploying your app.</p>
+
+<h2 id="remote-command-tag">Remote Command Tag</h2>
 
 <p>Use iQ Tag Management where a remote command is set up as an instance of the custom Remote Command tag with the following settings:</p>
 
@@ -435,9 +486,7 @@ A rule to determine when to trigger the remote command.</li>
 The data to include in the remote command. Mapped data layer variables are available in the <code>response.requstPayload</code> object in the native code callback.</li>
 </ul>
 
-<p>See the <a href="/platforms/remote-commands/integrations/">list of remote command vendor integrations</a>.</p>
-
-<h4 id="example-remote-command-tag">Example Remote Command Tag:</h4>
+<h3 id="example-remote-command-tag">Example Remote Command Tag</h3>
 
 <p>The following is an example of a tracked event in Swift.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.track(
@@ -458,38 +507,6 @@ The data to include in the remote command. Mapped data layer variables are avail
 <p>The following screenshots show the example configured in iQ Tag Management.</p>
 
 <p><img src="/images/platforms/remote-commands/tag-example.png" alt="tag-example.png" title="tag-example.png" /></p>
-
-<h2 id="native-code">Native Code</h2>
-
-<p>In the native code, the <code>add()</code> function registers a remote command handler. The callback function <code>response</code> has  access to the payload with <code>response.payload</code>. In the following example, the referenced payload variables have a matching data layer variable configured in iQ Tag Management.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium = Tealium(config: config) { [<span style="font-weight:bold">weak</span> <span style="font-weight:bold">self</span>] <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
-	<span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommand</span> = RemoteCommand(commandId: <span style="color:#b84">&#34;myRemoteCommand&#34;</span>, description: <span style="color:#b84">&#34;&#34;</span>) { response <span style="font-weight:bold">in</span>
-		<span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">payload</span> = response.payload,
-	    <span style="font-weight:bold">let</span> <span style="color:#008080">myVariable</span> = payload[<span style="color:#b84">&#34;myVariable&#34;</span>] <span style="font-weight:bold">as</span>? <span style="color:#999">String</span> <span style="font-weight:bold">else</span> {
-			<span style="font-weight:bold">return</span>
-		}
-		print(myVariable)
-	}
-	<span style="font-weight:bold">self</span>.tealium?.remoteCommands?.add(remoteCommand)
-}</code></pre></div>
-<p>Add a module for the vendor integration to the build script for your platform. Modules are named in the format of <code>TealiumVendorXYZ</code>, for example <code>TealiumBraze</code>.</p>
-
-<p>To install, replace the vendor&rsquo;s dependency with the Tealium remote command dependency. For example, remove the following line:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pod <span style="color:#b84">&#34;VendorXYZ-iOS-SDK&#34;</span></code></pre></div>
-<p>Then add the following line:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pod <span style="color:#b84">&#34;TealiumVendorXYZ&#34;</span></code></pre></div>
-<h2 id="json-template-files">JSON Template Files</h2>
-
-<p>The following remote command JSON template files are available. Include the template as code blocks within each vendor remote command page.</p>
-
-<ul>
-<li><a href="/platforms/remote-commands/integrations/appsflyer/#json-template">AppsFlyer</a></li>
-<li><a href="/platforms/remote-commands/integrations/braze/#json-template">Braze</a></li>
-<li><a href="/platforms/remote-commands/integrations/contentsquare/#json-template">Contentsquare</a></li>
-<li><a href="/platforms/remote-commands/integrations/facebook/#json-template">Facebook</a></li>
-<li><a href="/platforms/remote-commands/integrations/firebase/#json-template">Firebase</a></li>
-<li><a href="/platforms/remote-commands/integrations/usabilla/#json-template">Usabilla</a></li>
-</ul>
 
 </div>
 
@@ -6035,7 +6052,7 @@ The data to include in the remote command. Mapped data layer variables are avail
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 15, 2020 
+    <span>This page was last updated:  October 22, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

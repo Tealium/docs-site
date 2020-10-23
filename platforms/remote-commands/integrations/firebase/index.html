@@ -282,12 +282,18 @@ var utag_data = {
 <h2 id="requirements">Requirements</h2>
 
 <ul>
-<li><a href="/platforms/android-java/">Tealium for Android</a> or <a href="/platforms/ios-swift/">Tealium for iOS</a> in your app</li>
+<li>One of these mobile libraries:
+
+<ul>
+<li><a href="/platforms/android-kotlin/">Tealium for Android-Kotlin</a> (1.0.0+)</li>
+<li><a href="/platforms/android-java/">Tealium for Android-Java</a> (5.9.0+ for Firebase 2.0.0+ or &lt;5.9.0 for previous versions)</li>
+<li><a href="/platforms/ios-swift/">Tealium for iOS-Swift</a></li>
+</ul></li>
 <li>Firebase remote commands classes added to your app from the appropriate repo (Android or iOS)</li>
 <li>One of these remote command integrations:
 
 <ul>
-<li><a href="/platforms/remote-commands/integrations/firebase/#json-template">Firebase Remote Command JSON File</a></li>
+<li><a href="/platforms/remote-commands/integrations/firebase/#json-template">Firebase Remote Command JSON File</a> (Requires Android-Kotlin 1.0.0+ or iOS-Swift 2.1.0+)</li>
 <li><a href="https://community.tealiumiq.com/t5/Tags/Firebase-Mobile-Remote-Command-Tag-Setup-Guide/ta-p/30310">Firebase Remote Command tag</a> in Tealium iQ Tag Management</li>
 </ul></li>
 </ul>
@@ -355,15 +361,22 @@ var utag_data = {
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">github <span style="color:#b84">&#34;tealium/tealium-ios-firebase-remote-command&#34;</span></code></pre></div></li>
 </ol>
 
-<p class="note">Tealium for Swift SDK (version 1.X) and <code>TealiumFirebase</code> version 1.X requires the <code>TealiumDelegate</code> module to be included with your installation.</p>
+<p class="note">Tealium for Swift SDK (version 1.x) and <code>TealiumFirebase</code> version 1.x requires the <code>TealiumDelegate</code> module to be included with your installation.</p>
 
 </div>
 
 <div class="tab-pane" data-lang="Maven" title="Maven">
-  <p>To install via Maven, add the following dependency your <code>build.gradle</code> file:</p>
+  <p>To install Firebase remote commands for Android using Maven:</p>
+
+<ol>
+<li><p>Install <a href="/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> or <a href="/platforms/android-java/install/">Tealium for Android (Java)</a>, if you haven&rsquo;t done so already.</p></li>
+
+<li><p>Add the following dependency your <code>build.gradle</code> file:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
-    implementation <span style="color:#b84">&#39;com.tealium.remotecommands:firebase:2.0.0&#39;</span>
-<span style="font-weight:bold">}</span></code></pre></div>
+implementation <span style="color:#b84">&#39;com.tealium.remotecommands:firebase:2.0.0&#39;</span>
+<span style="font-weight:bold">}</span></code></pre></div></li>
+</ol>
+
 </div>
 
 <p></div>
@@ -433,9 +446,9 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
   <p>The following code is designed for use with the JSON Remote Command feature, using the local file option:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, Environment.DEV, dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
 <span style="font-weight:bold">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
-    <span style="font-weight:bold">val</span> facebook = FirebaseRemoteCommand(application);
+    <span style="font-weight:bold">val</span> firebase = FirebaseRemoteCommand(application);
   <span style="color:#998;font-style:italic">// register the command
-</span><span style="color:#998;font-style:italic"></span>  remoteCommands<span style="font-weight:bold">?.</span>add(facebook, filename = <span style="color:#b84">&#34;facebook.json&#34;</span>);
+</span><span style="color:#998;font-style:italic"></span>  remoteCommands<span style="font-weight:bold">?.</span>add(firebase, filename = <span style="color:#b84">&#34;firebase.json&#34;</span>);
 }</code></pre></div>
 </div>
 
@@ -443,9 +456,9 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
   <p>The following code is designed for use with the Remote Command tag feature:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, Environment.DEV, dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
 <span style="font-weight:bold">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
-    <span style="font-weight:bold">val</span> facebook = FirebaseRemoteCommand(application);
+    <span style="font-weight:bold">val</span> firebase = FirebaseRemoteCommand(application);
   <span style="color:#998;font-style:italic">// register the command
-</span><span style="color:#998;font-style:italic"></span>  remoteCommands<span style="font-weight:bold">?.</span>add(facebook);
+</span><span style="color:#998;font-style:italic"></span>  remoteCommands<span style="font-weight:bold">?.</span>add(firebase);
 }</code></pre></div>
 </div>
 
@@ -468,6 +481,8 @@ teal.<span style="color:#008080">addRemoteCommand</span>(firebase);</code></pre>
 
 <p></div>
 </div></p>
+
+<p class="note">The JSON Remote Command file feature for Android is only available in the Kotlin SDK</p>
 
 <h3 id="ios-swift">iOS (Swift)</h3>
 
@@ -6187,7 +6202,7 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 19, 2020 
+    <span>This page was last updated:  October 21, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
