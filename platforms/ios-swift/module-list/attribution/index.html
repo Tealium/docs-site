@@ -237,7 +237,10 @@ var utag_data = {
               <li><a href="#cocoapods">CocoaPods</a></li>
               <li><a href="#carthage">Carthage</a></li>
               </ul><li><a href="#initialize">Initialize</a></li>
-              <li><a href="#data-layer">Data Layer</a></li>
+              <li><a href="#attribution-in-ios-14">Attribution in iOS 14&#43;</a></li>
+              <ul class="toc-h3"><li><a href="#apptrackingtransparency-att">AppTrackingTransparency (ATT)</a></li>
+              <li><a href="#skadnetwork">SKAdNetwork</a></li>
+              </ul><li><a href="#data-layer">Data Layer</a></li>
               </nav>
   </aside></div>
 
@@ -280,6 +283,8 @@ var utag_data = {
 
 <p>The Attribution module adds the user-resettable advertising identifier (IDFA) to each tracking call and, optionally, implements the Apple Search Ads API to gather attribution information. <a href="https://searchads.apple.com/v/advanced/help/pdf/attribution-api.pdf">Learn more</a> for details about Apple Search Ads.</p>
 
+<p>In version 2.1.1+, the attribution module also includes <code>SKAdNetwork</code> support and adds the <code>ATTransparency.AuthorizationStatus</code> to the dispatch payload.</p>
+
 <p>Usage of this module is optional. Take the time to read about its functionality and decide if you need it, as it introduces additional dependencies. You are required to explain to Apple why you are using IDFA when you submit your app. If you do not state that you are using IDFA, Apple rejects your app. <a href="https://developer.apple.com/app-store/review/rejections/">Learn more</a> about IDFA usage and rejections.</p>
 
 <p>The following platforms are supported:</p>
@@ -294,6 +299,8 @@ var utag_data = {
 <li>UIKit</li>
 <li>AdSupport</li>
 <li>iAd</li>
+<li>iOS 14+: AppTrackingTransparency</li>
+<li>iOS 14+: StoreKit</li>
 </ul>
 
 <h2 id="install">Install</h2>
@@ -334,9 +341,35 @@ var utag_data = {
 
 <h2 id="initialize">Initialize</h2>
 
-<p>To initialize the module, verify that it&rsquo;s specified on the <code>TealiumConfig</code> <a href="/platforms/ios-swift/api/tealium-config/#collectors"><code>collectors</code></a> property</p>
+<p>To initialize the module include it in the <a href="/platforms/ios-swift/api/tealium-config/#collectors"><code>collectors</code></a> property.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.collectors = [Collectors.Attribution]</code></pre></div>
+<h2 id="attribution-in-ios-14">Attribution in iOS 14+</h2>
 
-<p><code>config.collectors = [Collectors.Attribution]</code></p>
+<p>In iOS 14+, apps are required to receive user permission to access the device&rsquo;s advertising identifier (IDFA). The user is prompted to grant &ldquo;Permission to track&rdquo; when the app launches for the first time. If the user declines, then the IDFA is not available to the app.</p>
+
+<p>When the IDFA is not available, <code>SKAdNetwork</code> provides a method for registered advertising networks to attribute app installs to a campaign by receiving a signed signal directly from Apple. The advertising network only receives confirmation that the app was successfully installed, along with the campaign ID and optional conversion value.</p>
+
+<p>Learn more about <code>AppTrackingTransparency</code> and <code>SKAdNetwork</code> in the blog <a href="https://community.tealiumiq.com/t5/TLC-Blog/What-Do-Apple-s-IDFA-Changes-Mean-for-Tealium/ba-p/33770#toc-hId-1331108563">What Do Apple&rsquo;s IDFA Changes Mean for Tealium?</a></p>
+
+<h3 id="apptrackingtransparency-att">AppTrackingTransparency (ATT)</h3>
+
+<p>With the attribution module enabled, the user&rsquo;s tracking authorization status is automatically added to the dispatch payload as <code>device_tracking_authorization</code> and the value is a string representation of the <a href="https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus"><code>ATTrackingManager.AuthorizationStatus</code></a> enumeration. If applicable, the <code>ATTrackingManager.requestTrackingAuthorization</code> needs to be called separately.</p>
+
+<p>Learn more about requesting <a href="https://community.tealiumiq.com/t5/TLC-Blog/What-Do-Apple-s-IDFA-Changes-Mean-for-Tealium/ba-p/33770#toc-hId-1331108563">tracking authorization to enable the Tealium SDK</a>.</p>
+
+<h3 id="skadnetwork">SKAdNetwork</h3>
+
+<p>Tealium automatically calls <code>SKAdNetwork.registerAppForAdNetworkAttribution()</code> on launch if <code>config.skAdAttributionEnabled</code> is set to <code>true</code>. This permits advertising networks to anonymously validate app installs. If the <code>config.skAdConversionKeys</code> dictionary is defined, then <code>SKAdNetwork.updateConversionValue()</code> is automatically called on the specified event and sent the value of the specified conversion key.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.skAdConversionKeys = [<span style="color:#b84">&#34;purchase&#34;</span>: <span style="color:#b84">&#34;order_subtotal&#34;</span>]</code></pre></div>
+<p>The conversion value must be an <code>Int</code> with a value between 0 and 63. If the conversion value is a decimal, it must be converted to an integer before calling the conversion event.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.skAdConversionKeys = [<span style="color:#b84">&#34;purchase&#34;</span>: <span style="color:#b84">&#34;conversion_value&#34;</span>]
+...
+tealium?.track(<span style="color:#b84">&#34;purchase&#34;</span>, dataLayer: [<span style="color:#b84">&#34;order_subtotal&#34;</span>: <span style="color:#099">456.87</span>, <span style="color:#b84">&#34;conversion_value&#34;</span>: conversionValue])</code></pre></div>
+<p>Learn more about the <a href="https://community.tealiumiq.com/t5/TLC-Blog/What-Do-Apple-s-IDFA-Changes-Mean-for-Tealium/ba-p/33770#toc-hId-1473659672">SKAdNetwork framework</a>.</p>
 
 <h2 id="data-layer">Data Layer</h2>
 
@@ -366,13 +399,13 @@ var utag_data = {
 
 <tr>
 <td><code>ad_creativeset_id</code></td>
-<td>The ID of the Creative Set which the corresponding ad was part of.</td>
+<td>The ID of the Creative Set which the corresponding advertisement was part of.</td>
 <td><code>456093</code></td>
 </tr>
 
 <tr>
 <td><code>ad_creativeset_name</code></td>
-<td>The name of the Creative Set which the corresponding ad was part of.</td>
+<td>The name of the Creative Set which the corresponding advertisement was part of.</td>
 <td><code>Beast Images</code></td>
 </tr>
 
@@ -390,7 +423,7 @@ var utag_data = {
 
 <tr>
 <td><code>ad_keyword</code></td>
-<td>The keyword that drove the ad impression which led to the corresponding ad click</td>
+<td>The keyword that drove the advertisement impression which led to the corresponding click</td>
 <td><code>Keyword</code></td>
 </tr>
 
@@ -449,8 +482,14 @@ var utag_data = {
 </tr>
 
 <tr>
+<td><code>device_tracking_authorization</code></td>
+<td>iOS 14+ only. <a href="https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus"><code>ATTrackingManager.AuthorizationStatus</code></a></td>
+<td>[<code>notDetermined</code>, <code>restricted</code>,  <code>denied</code>, <code>authorized</code>]</td>
+</tr>
+
+<tr>
 <td><code>device_advertising_ enabled</code></td>
-<td>Boolean indicating if the user allowed ad tracking (if <code>false</code>, the advertising ID appears as a string of zeroes)</td>
+<td>Boolean indicating if the user allowed advertisement tracking (if <code>false</code>, the advertising ID appears as a string of zeroes)</td>
 <td>[<code>true</code>, <code>false</code>]</td>
 </tr>
 
@@ -461,7 +500,7 @@ var utag_data = {
 </tr>
 
 <tr>
-<td><code>device_advertising_ vendor_id</code></td>
+<td><code>device_advertising_vendor_id</code></td>
 <td>Unique ID guaranteed to be the same across all apps on the same device from a single vendor (apps with the same 1st 2 parts of the RDNS bundle identifier. For example, com.tealium or com.acme)</td>
 <td><code>6D92078A-8246...</code></td>
 </tr>
@@ -6039,7 +6078,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  September 28, 2020 
+    <span>This page was last updated:  October 29, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

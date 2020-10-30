@@ -274,6 +274,8 @@ var utag_data = {
               <li><a href="#searchadsenabled">searchAdsEnabled</a></li>
               <li><a href="#shouldaddcookieobserver">shouldAddCookieObserver</a></li>
               <li><a href="#shoulduseremotepublishsettings">shouldUseRemotePublishSettings</a></li>
+              <li><a href="#skadattributionenabled">skAdAttributionEnabled</a></li>
+              <li><a href="#skadconversionkeys">skAdConversionKeys</a></li>
               <li><a href="#tagmanagementoverrideurl">tagManagementOverrideURL</a></li>
               <li><a href="#tealiumconfig">TealiumConfig()</a></li>
               <li><a href="#updatedistance">updateDistance</a></li>
@@ -540,6 +542,16 @@ var utag_data = {
 </tr>
 
 <tr>
+<td><a href="#skadattributionenabled"><code>skAdAttributionEnabled</code></a></td>
+<td>Enables the use <a href="https://developer.apple.com/documentation/storekit/skadnetwork">SKAdNetwork</a> framework</td>
+</tr>
+
+<tr>
+<td><a href="#skadconversionkeys"><code>skAdConversionKeys</code></a></td>
+<td>Defines the event and value for which to call the <a href="https://developer.apple.com/documentation/storekit/skadnetwork/3566697-updateconversionvalue"><code>SKAdNetwork.updateConversionValue()</code></a> method</td>
+</tr>
+
+<tr>
 <td><a href="#tagmanagementoverrideurl"><code>tagManagementOverrideURL</code></a></td>
 <td>Overrides the default URL used by the Tag Management module</td>
 </tr>
@@ -609,7 +621,7 @@ config.addRemoteCommand(remoteCommand)
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.batchSize = <span style="color:#099">8</span></code></pre></div>
 <h3 id="collectors"><code>collectors</code></h3>
 
-<p>Sets the list of <code>Collector</code>s to initialize the Tealium library with.</p>
+<p>Sets the list of <code>Collectors</code> to initialize the Tealium library with.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.collectors = [Collectors.AppData]</code></pre></div>
 <h3 id="collectoverrideprofile"><code>collectOverrideProfile</code></h3>
 
@@ -909,7 +921,7 @@ class TealiumHelper {
 config.rootView = view</code></pre></div>
 <h3 id="searchadsenabled"><code>searchAdsEnabled</code></h3>
 
-<p>Enables or disables memory reporting in the DeviceData module (default: disabled).                         |</p>
+<p>Enables or disables the Apple Search Ads API in the Attribution module (default: disabled).</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.searchAdsEnabled = <span style="font-weight:bold">true</span></code></pre></div>
 <h3 id="shouldaddcookieobserver"><code>shouldAddCookieObserver</code></h3>
 
@@ -921,9 +933,19 @@ config.rootView = view</code></pre></div>
 <h3 id="shoulduseremotepublishsettings"><code>shouldUseRemotePublishSettings</code></h3>
 
 <p>Sets the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">Mobile Publish Settings</a> (version 1.9.0+) to enabled (default) or disabled.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Swift" data-lang="Swift">config.shouldUseRemotePublishSettings = <span style="font-weight:bold">false</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.shouldUseRemotePublishSettings = <span style="font-weight:bold">false</span></code></pre></div>
 <p class="note">Mobile Publish Settings are enabled by default, and must be disabled if you don’t wish to use them. Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature using <code>config.shouldUseRemotePublishSettings = false</code> in the Swift installation. Failure to do causes initialization failures and prevents tracking.</p>
 
+<h3 id="skadattributionenabled"><code>skAdAttributionEnabled</code></h3>
+
+<p>Enables or disables the Apple SKAdNetwork API in the Attribution module (default: disabled).</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.skAdAttributionEnabled = <span style="font-weight:bold">true</span></code></pre></div>
+<h3 id="skadconversionkeys"><code>skAdConversionKeys</code></h3>
+
+<p>Dictionary defining the event for which to call the <code>SKAdNetwork.updateConversionValue()</code> method and the key to use as the conversion value.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.skAdConversionKeys = [<span style="color:#b84">&#34;purchase&#34;</span>: <span style="color:#b84">&#34;number_of_coins&#34;</span>]</code></pre></div>
+<p>In this case, the below event will equate to: <code>SKAdNetwork.updateConversionValue(40)</code></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.track(<span style="color:#b84">&#34;purchase&#34;</span>, dataLayer: [<span style="color:#b84">&#34;number_of_coins&#34;</span>: <span style="color:#099">40</span>])</code></pre></div>
 <h3 id="tagmanagementoverrideurl"><code>tagManagementOverrideURL</code></h3>
 
 <p>Overrides the default URL used by the Tag Management module. This is needed if you are self-hosting your Tealium JavaScript files.</p>
@@ -6623,7 +6645,7 @@ config.tagManagementOverrideURL =  url</code></pre></div>
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 13, 2020 
+    <span>This page was last updated:  October 29, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
