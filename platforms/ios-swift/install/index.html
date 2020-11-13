@@ -143,6 +143,16 @@ var utag_data = {
                           <span class="tooltiptext">Product Guides</span>
                     </li>
                     <li class="menu-divider"></li>
+                    <li class="js-main-nav-section" data-section="kb">
+                        <a href="https://community.tealiumiq.com/t5/Knowledge-Base/ct-p/kb" class="menu-list-item top-level tooltip-right">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-head-side-brain"></i>
+                            </span>
+                            <span class="menu-context">Knowledge Base</span>
+                        </a>
+                          <span class="tooltiptext"> Knowledge Base </span>
+                    </li>
+                    <li class="menu-divider"></li>
                     <li class="js-main-nav-section active">
                         <a href="https://docs.tealium.com/" class="menu-list-item top-level tooltip-right" title="Developer Documentation">
                             <span class="menu-large-icon">
@@ -308,7 +318,7 @@ var utag_data = {
 <ol>
 <li>In your Xcode project, select <strong>File &gt; Swift Packages &gt; Add Package Dependency</strong></li>
 <li>Enter the repository URL: <code>https://github.com/tealium/tealium-swift</code></li>
-<li>Configure the version rules. Typically, <code>&quot;Up to next major&quot;</code> is recommended. If the current Tealium Swift library version does not appears in the list, then reset your Swift package cache.</li>
+<li>Configure the version rules. Typically, <code>Up to next major</code> is recommended. If the current Tealium Swift library version does not appear in the list, then reset your Swift package cache.</li>
 <li>Select the modules to install and add the modules to each of your app targets in your Xcode project, under <strong>Frameworks &gt; Libraries &amp; Embedded Content</strong></li>
 </ol>
 
@@ -423,9 +433,9 @@ pod <span style="color:#b84">&#34;tealium-swift/RemoteCommands&#34;</span>
 
 <h2 id="initialize">Initialize</h2>
 
-<p class="note">We recommend managing your <a href="/platforms/ios-swift/api/tealium/#class-tealium"><code>Tealium</code></a> instance by using a tracking helper class. This provides a single point of entry for the Tealium iOS library, and simplifies future upgrades.</p>
+<p>To initialize Tealium, pass a <a href="/platforms/ios-swift/api/tealium-config/"><code>TealiumConfig</code></a> instance to the <a href="/platforms/ios-swift/api/tealium/#tealium"><code>Tealium()</code></a> constructor.</p>
 
-<p>To initialize Tealium, pass a <a href="/platforms/ios-swift/api/tealium-config/"><code>TealiumConfig</code></a> instance to the <a href="/platforms/ios-swift/api/tealium/#tealium"><code>Tealium()</code></a> constructor, as shown in the following example:</p>
+<p class="note">Manage your <a href="/platforms/ios-swift/api/tealium/#class-tealium"><code>Tealium</code></a> instance by using a tracking helper class, which provides a single point of entry for the Tealium iOS library and simplifies future upgrades.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
     <span style="font-weight:bold">static</span> <span style="font-weight:bold">let</span> <span style="color:#008080">shared</span> = TealiumHelper()
     <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
@@ -474,19 +484,11 @@ pod <span style="color:#b84">&#34;tealium-swift/RemoteCommands&#34;</span>
 
 <h2 id="log-level">Log Level</h2>
 
-<p>To set a log level, set the <a href="/platforms/ios-swift/api/tealium-config/#setloglevel"><code>logLevel</code></a> property on your <code>TealiumConfig</code> instance with one of the following values:</p>
+<p>To set a log level, set the <a href="/platforms/ios-swift/api/tealium-config/#loglevel"><code>logLevel</code></a> property on your <code>TealiumConfig</code> instance:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.logLevel = .debug <span style="color:#998;font-style:italic">// or .info, .error, .fault, .silent</span></code></pre></div>
+<p>For debugging purposes, <code>.debug</code> is recommended.</p>
 
-<ul>
-<li><code>.silent</code></li>
-<li><code>.fault</code></li>
-<li><code>.error</code></li>
-<li><code>.debug</code></li>
-<li><code>.info</code></li>
-</ul>
-
-<p>For debugging purposes, <code>.debug</code> is recommended, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.logLevel = .debug</code></pre></div>
-<p>The default log type used is <a href="https://developer.apple.com/documentation/os/oslog"><code>OSLog</code></a>, but this is modifiable to use <code>print</code> by updating the <code>logType</code> property on the <code>TealiumConfig</code> object to <code>.print</code> like so:</p>
+<p>The default log type used is <a href="https://developer.apple.com/documentation/os/oslog"><code>OSLog</code></a>, but this is modifiable to use <code>.print</code> by updating the <code>logType</code> property on the <code>TealiumConfig</code> object:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.logType = .print</code></pre></div>
 <p>It is also possible to add your own logger instead of using the <code>TealiumLogger</code> by conforming your <code>Logger</code> class to the <code>TealiumLoggerProtocol</code> and setting the instance of that class to the <code>logger</code> property on the <code>TealiumConfig</code> object. Here is an example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">CustomLogger</span>: TealiumLoggerProtocol {
@@ -647,6 +649,26 @@ pod <span style="color:#b84">&#34;tealium-swift/RemoteCommands&#34;</span>
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/quick-start/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-quick-start">Quick Start Guide</a>
       </li>
       
     
@@ -827,6 +849,26 @@ pod <span style="color:#b84">&#34;tealium-swift/RemoteCommands&#34;</span>
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/trace/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-trace">Trace</a>
       </li>
       
     
@@ -1064,6 +1106,26 @@ pod <span style="color:#b84">&#34;tealium-swift/RemoteCommands&#34;</span>
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-firebase">Firebase</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/remote-commands/integrations/kochava/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-kochava">Kochava</a>
       </li>
       
     
@@ -4277,6 +4339,26 @@ pod <span style="color:#b84">&#34;tealium-swift/RemoteCommands&#34;</span>
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift/api/tealium-data-layer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-data-layer">TealiumDataLayer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/api/tealium-instance-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-instance-manager">TealiumInstanceManager</a>
       </li>
       
@@ -4427,6 +4509,108 @@ pod <span style="color:#b84">&#34;tealium-swift/RemoteCommands&#34;</span>
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity">Unity</a>
+        <ul class="unity desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-api">API Referencee</a>
       </li>
       
     
@@ -6010,108 +6194,6 @@ pod <span style="color:#b84">&#34;tealium-swift/RemoteCommands&#34;</span>
   
   
 
-      
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw8" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity">Unity</a>
-        <ul class="unity desktopmenu animated fadeIn list pl0 dn">
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-overview">Overview</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-install">Install</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-track">Track</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-api">API Referencee</a>
-      </li>
-      
-    
-  
-  
-
-        </ul>
-      </li>
-      
-    
-  
-  
-
     
   </ul>
 </nav>
@@ -6130,7 +6212,7 @@ pod <span style="color:#b84">&#34;tealium-swift/RemoteCommands&#34;</span>
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  September 18, 2020 
+    <span>This page was last updated:  November 12, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -6248,6 +6330,12 @@ pod <span style="color:#b84">&#34;tealium-swift/RemoteCommands&#34;</span>
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/unity/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Unity
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           Xamarin
@@ -6329,12 +6417,6 @@ pod <span style="color:#b84">&#34;tealium-swift/RemoteCommands&#34;</span>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/ruby/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           Ruby
-        </a>
-    </li>
-  
-    <li  class="tl dib ma0 hover-bg-primary w-100">
-        <a href="https://docs.tealium.com/platforms/unity/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Unity
         </a>
     </li>
   

@@ -143,6 +143,16 @@ var utag_data = {
                           <span class="tooltiptext">Product Guides</span>
                     </li>
                     <li class="menu-divider"></li>
+                    <li class="js-main-nav-section" data-section="kb">
+                        <a href="https://community.tealiumiq.com/t5/Knowledge-Base/ct-p/kb" class="menu-list-item top-level tooltip-right">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-head-side-brain"></i>
+                            </span>
+                            <span class="menu-context">Knowledge Base</span>
+                        </a>
+                          <span class="tooltiptext"> Knowledge Base </span>
+                    </li>
+                    <li class="menu-divider"></li>
                     <li class="js-main-nav-section active">
                         <a href="https://docs.tealium.com/" class="menu-list-item top-level tooltip-right" title="Developer Documentation">
                             <span class="menu-large-icon">
@@ -289,7 +299,6 @@ var utag_data = {
 <li><a href="/platforms/android-java/">Tealium for Android-Java</a> (5.9.0+ for Firebase 2.0.0+ or &lt;5.9.0 for previous versions)</li>
 <li><a href="/platforms/ios-swift/">Tealium for iOS-Swift</a></li>
 </ul></li>
-<li>Firebase remote commands classes added to your app from the appropriate repo (Android or iOS)</li>
 <li>One of these remote command integrations:
 
 <ul>
@@ -300,12 +309,12 @@ var utag_data = {
 
 <h2 id="how-it-works">How It Works</h2>
 
-<p>The Firebase integration uses the native Firebase SDK, a remote command module that wraps the Firebase methods, and the Firebase Remote Command tag that translates event tracking into native Firebase calls. The integration uses three items:</p>
+<p>The Firebase integration uses three items:</p>
 
 <ol>
 <li>The Firebase native SDK</li>
-<li>The remote commands module</li>
-<li>Either the JSON configuration file or Remote Command tag</li>
+<li>The remote commands module that wraps the Firebase methods</li>
+<li>Either the JSON configuration file or Remote Command tag that translates event tracking into native Firebase calls</li>
 </ol>
 
 <p>Adding the Firebase remote command module to your app automatically installs and builds the required Firebase libraries, without having to add vendor-specific code to your app. If you are using a dependency manager installation, there is no need to install the Firebase SDK separately.</p>
@@ -338,10 +347,6 @@ var utag_data = {
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#b84">&#39;tealium-swift/Core&#39;</span>
 <span style="color:#b84">&#39;tealium-swift/RemoteCommands&#39;</span>
 <span style="color:#b84">&#39;tealium-swift/TagManagement&#39;</span></code></pre></div></li>
-
-<li><p>Add any other required modules manually to your Podfile, such as the following:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#b84">&#39;tealium-swift/Lifecycle&#39;</span></code></pre></div>
-<p>Learn more about the <a href="https://docs.tealium.com/platforms/ios-swift/modules/">recommended modules</a> for iOS.</p></li>
 
 <li><p>Import the modules <code>TealiumSwift</code> and <code>TealiumFirebase</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class, or the Firebase remote command.</p></li>
 </ol>
@@ -392,44 +397,7 @@ implementation <span style="color:#b84">&#39;com.tealium.remotecommands:firebase
 <li><p>Clone the <a href="https://github.com/tealium/tealium-ios-firebase-remote-command">Tealium iOS Firebase remote command</a> repo and drag the files within the <code>Sources</code> folder into your project.</p></li>
 
 <li><p>Set the <a href="/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a> configuration flag to <code>true</code></p></li>
-
-<li><p>When initializing the Tealium SDK, update the completion handler as follows:</p></li>
 </ol>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-
-<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>The following code is designed for use with the JSON Remote Commands feature, using the local file option:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>, profile: <span style="color:#b84">&#34;PROFILE&#34;</span>, environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>)
-config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
-
-tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
-    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
-        <span style="font-weight:bold">return</span>
-    }
-    <span style="font-weight:bold">let</span> <span style="color:#008080">firebase</span> = FirebaseRemoteCommand(type: .local(file: <span style="color:#b84">&#34;firebase&#34;</span>))
-    config.addRemoteCommand(firebase)
-}</code></pre></div>
-</div>
-
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>The following code is designed for use with the Remote Command tag feature.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>, profile: <span style="color:#b84">&#34;PROFILE&#34;</span>, environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>)
-config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
-
-tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
-    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
-        <span style="font-weight:bold">return</span>
-    }
-    <span style="font-weight:bold">let</span> <span style="color:#008080">firebase</span> = FirebaseRemoteCommand()
-    config.addRemoteCommand(firebase)
-}</code></pre></div>
-</div>
-
-<p></div>
-</div></p>
 
 <h2 id="initialize">Initialize</h2>
 
@@ -444,7 +412,11 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
   <div class="tab-content">
 <div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
   <p>The following code is designed for use with the JSON Remote Command feature, using the local file option:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, Environment.DEV, dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(application,
+        <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+        <span style="color:#b84">&#34;PROFILE&#34;</span>,
+        Environment.DEV,
+        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
 <span style="font-weight:bold">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
     <span style="font-weight:bold">val</span> firebase = FirebaseRemoteCommand(application);
   <span style="color:#998;font-style:italic">// register the command
@@ -454,7 +426,11 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
 
 <div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
   <p>The following code is designed for use with the Remote Command tag feature:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, Environment.DEV, dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(application,
+        <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+        <span style="color:#b84">&#34;PROFILE&#34;</span>,
+        Environment.DEV,
+        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
 <span style="font-weight:bold">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
     <span style="font-weight:bold">val</span> firebase = FirebaseRemoteCommand(application);
   <span style="color:#998;font-style:italic">// register the command
@@ -473,6 +449,11 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content">
 
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The JSON Remote Command file feature for Android is only available in the Kotlin SDK.</p>
+
+</div>
+
 <div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
   <p>The following code is designed for use with the Remote Command tag feature:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">RemoteCommand <span style="color:#900;font-weight:bold">firebase</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> FirebaseRemoteCommand(application);
@@ -481,8 +462,6 @@ teal.<span style="color:#008080">addRemoteCommand</span>(firebase);</code></pre>
 
 <p></div>
 </div></p>
-
-<p class="note">The JSON Remote Command file feature for Android is only available in the Kotlin SDK</p>
 
 <h3 id="ios-swift">iOS (Swift)</h3>
 
@@ -508,7 +487,7 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
         <span style="font-weight:bold">return</span>
     }
     <span style="font-weight:bold">let</span> <span style="color:#008080">firebase</span> = FirebaseRemoteCommand(type: .local(file: <span style="color:#b84">&#34;firebase&#34;</span>))
-    config.addRemoteCommand(firebase)
+    remoteCommands.add(firebase)
 }</code></pre></div>
 </div>
 
@@ -528,7 +507,7 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
         <span style="font-weight:bold">return</span>
     }
     <span style="font-weight:bold">let</span> <span style="color:#008080">firebase</span> = FirebaseRemoteCommand()
-    config.addRemoteCommand(firebase)
+    remoteCommands.add(firebase)
 }</code></pre></div>
 </div>
 
@@ -562,16 +541,18 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
         <span style="color:#000080">&#34;currency_code&#34;</span>: <span style="color:#b84">&#34;event.param_currency&#34;</span>,
         <span style="color:#000080">&#34;travel_destination&#34;</span>: <span style="color:#b84">&#34;event.param_destination&#34;</span>,
         <span style="color:#000080">&#34;end_date&#34;</span>: <span style="color:#b84">&#34;event.param_end_date&#34;</span>,
-        <span style="color:#000080">&#34;flight_number&#34;</span>: <span style="color:#b84">&#34;pevent.aram_flight_number&#34;</span>,
+        <span style="color:#000080">&#34;flight_number&#34;</span>: <span style="color:#b84">&#34;event.param_flight_number&#34;</span>,
         <span style="color:#000080">&#34;group_id&#34;</span>: <span style="color:#b84">&#34;event.param_group_id&#34;</span>,
         <span style="color:#000080">&#34;current_index&#34;</span>: <span style="color:#b84">&#34;param_index&#34;</span>,
-        <span style="color:#000080">&#34;product_brand&#34;</span>: <span style="color:#b84">&#34;event.param_item_brand&#34;</span>,
-        <span style="color:#000080">&#34;product_category&#34;</span>: <span style="color:#b84">&#34;event.param_item_category&#34;</span>,
-        <span style="color:#000080">&#34;product_id&#34;</span>: <span style="color:#b84">&#34;event.param_item_id&#34;</span>,
-        <span style="color:#000080">&#34;product_list&#34;</span>: <span style="color:#b84">&#34;event.param_item_list&#34;</span>,
-        <span style="color:#000080">&#34;product_location_id&#34;</span>: <span style="color:#b84">&#34;event.param_item_location_id&#34;</span>,
-        <span style="color:#000080">&#34;product_name&#34;</span>: <span style="color:#b84">&#34;event.param_item_name&#34;</span>,
-        <span style="color:#000080">&#34;product_variant&#34;</span>: <span style="color:#b84">&#34;event.param_item_variant&#34;</span>,
+        <span style="color:#000080">&#34;product_brand&#34;</span>: <span style="color:#b84">&#34;items.param_item_brand&#34;</span>,
+        <span style="color:#000080">&#34;product_category&#34;</span>: <span style="color:#b84">&#34;items.param_item_category&#34;</span>,
+        <span style="color:#000080">&#34;product_id&#34;</span>: <span style="color:#b84">&#34;items.param_item_id&#34;</span>,
+        <span style="color:#000080">&#34;product_unit_price&#34;</span>: <span style="color:#b84">&#34;items.param_price&#34;</span>,
+        <span style="color:#000080">&#34;product_quantity&#34;</span>: <span style="color:#b84">&#34;items.param_quantity&#34;</span>,
+        <span style="color:#000080">&#34;product_list&#34;</span>: <span style="color:#b84">&#34;items.param_item_list&#34;</span>,
+        <span style="color:#000080">&#34;product_location_id&#34;</span>: <span style="color:#b84">&#34;items.param_item_location_id&#34;</span>,
+        <span style="color:#000080">&#34;product_name&#34;</span>: <span style="color:#b84">&#34;items.param_item_name&#34;</span>,
+        <span style="color:#000080">&#34;product_variant&#34;</span>: <span style="color:#b84">&#34;items.param_item_variant&#34;</span>,
         <span style="color:#000080">&#34;current_level&#34;</span>: <span style="color:#b84">&#34;event.param_level&#34;</span>,
         <span style="color:#000080">&#34;most_recent_location&#34;</span>: <span style="color:#b84">&#34;event.param_location&#34;</span>,
         <span style="color:#000080">&#34;campaign_medium&#34;</span>: <span style="color:#b84">&#34;event.param_medium&#34;</span>,
@@ -579,9 +560,7 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
         <span style="color:#000080">&#34;number_pax&#34;</span>: <span style="color:#b84">&#34;event.param_number_pax&#34;</span>,
         <span style="color:#000080">&#34;number_rooms&#34;</span>: <span style="color:#b84">&#34;event.param_number_rooms&#34;</span>,
         <span style="color:#000080">&#34;travel_origin&#34;</span>: <span style="color:#b84">&#34;event.param_origin&#34;</span>,
-        <span style="color:#000080">&#34;product_unit_price&#34;</span>: <span style="color:#b84">&#34;event.param_price&#34;</span>,
-        <span style="color:#000080">&#34;product_quantity&#34;</span>: <span style="color:#b84">&#34;event.param_quantity&#34;</span>,
-        <span style="color:#000080">&#34;high_score&#34;</span>: <span style="color:#b84">&#34;event.param_score&#34;</span>,
+        <span style="color:#000080">&#34;score&#34;</span>: <span style="color:#b84">&#34;event.param_score&#34;</span>,
         <span style="color:#000080">&#34;search_keyword&#34;</span>: <span style="color:#b84">&#34;event.param_search_term&#34;</span>,
         <span style="color:#000080">&#34;order_shipping_amount&#34;</span>: <span style="color:#b84">&#34;event.param_shipping&#34;</span>,
         <span style="color:#000080">&#34;signup_method&#34;</span>: <span style="color:#b84">&#34;event.param_signup_method&#34;</span>,
@@ -592,20 +571,19 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
         <span style="color:#000080">&#34;order_id&#34;</span>: <span style="color:#b84">&#34;event.param_transaction_id&#34;</span>,
         <span style="color:#000080">&#34;travel_class&#34;</span>: <span style="color:#b84">&#34;event.param_travel_class&#34;</span>,
         <span style="color:#000080">&#34;order_total&#34;</span>: <span style="color:#b84">&#34;event.param_value&#34;</span>,
-        <span style="color:#000080">&#34;virtual_currency_name&#34;</span>: <span style="color:#b84">&#34;event.param_virtual_currency_name&#34;</span>,
+        <span style="color:#000080">&#34;currency_type&#34;</span>: <span style="color:#b84">&#34;event.param_virtual_currency_name&#34;</span>,
         <span style="color:#000080">&#34;user_signup_method&#34;</span>: <span style="color:#b84">&#34;event.param_user_signup_method&#34;</span>,
         <span style="color:#000080">&#34;event_title&#34;</span>: <span style="color:#b84">&#34;firebase_event_name&#34;</span>,
-        <span style="color:#000080">&#34;tealium_event&#34;</span>: <span style="color:#b84">&#34;command_name&#34;</span>,
         <span style="color:#000080">&#34;screen_name&#34;</span>: <span style="color:#b84">&#34;firebase_screen_name&#34;</span>,
         <span style="color:#000080">&#34;screen_class&#34;</span>: <span style="color:#b84">&#34;firebase_screen_class&#34;</span>,
-        <span style="color:#000080">&#34;pet&#34;</span>: <span style="color:#b84">&#34;firebase_property_name&#34;</span>,
-        <span style="color:#000080">&#34;pet_name&#34;</span>: <span style="color:#b84">&#34;firebase_property_value&#34;</span>,
+        <span style="color:#000080">&#34;customer_property&#34;</span>: <span style="color:#b84">&#34;firebase_property_name&#34;</span>,
+        <span style="color:#000080">&#34;customer_value&#34;</span>: <span style="color:#b84">&#34;firebase_property_value&#34;</span>,
         <span style="color:#000080">&#34;customer_id&#34;</span>: <span style="color:#b84">&#34;firebase_user_id&#34;</span>
     },
     <span style="color:#000080">&#34;commands&#34;</span>: {
         <span style="color:#000080">&#34;launch&#34;</span>: <span style="color:#b84">&#34;config&#34;</span>,
         <span style="color:#000080">&#34;user_login&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
-        <span style="color:#000080">&#34;user_register&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
+        <span style="color:#000080">&#34;user_register&#34;</span>: <span style="color:#b84">&#34;logevent,setuserproperty&#34;</span>,
         <span style="color:#000080">&#34;share&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
         <span style="color:#000080">&#34;show_offers&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
         <span style="color:#000080">&#34;join_group&#34;</span>: <span style="color:#b84">&#34;logevent&#34;</span>,
@@ -655,8 +633,8 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
 	<div date-pref class="white">
 
 		
-			<a href="https://docs.tealium.com/platforms/remote-commands/integrations/usabilla/" title="Remote Command: Usabilla">
-			Remote Command: Usabilla <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
+			<a href="https://docs.tealium.com/platforms/remote-commands/integrations/kochava/" title="Remote Command: Kochava">
+			Remote Command: Kochava <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
 
 			</a>
 		
@@ -719,6 +697,26 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/quick-start/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-quick-start">Quick Start Guide</a>
       </li>
       
     
@@ -899,6 +897,26 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/trace/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-trace">Trace</a>
       </li>
       
     
@@ -1136,6 +1154,26 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 bg-secondary white" data-target=".remote-commands-firebase">Firebase</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/remote-commands/integrations/kochava/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-kochava">Kochava</a>
       </li>
       
     
@@ -4349,6 +4387,26 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift/api/tealium-data-layer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-data-layer">TealiumDataLayer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/api/tealium-instance-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-instance-manager">TealiumInstanceManager</a>
       </li>
       
@@ -4499,6 +4557,108 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity">Unity</a>
+        <ul class="unity desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-api">API Referencee</a>
       </li>
       
     
@@ -6082,108 +6242,6 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
   
   
 
-      
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw8" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity">Unity</a>
-        <ul class="unity desktopmenu animated fadeIn list pl0 dn">
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-overview">Overview</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-install">Install</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-track">Track</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-api">API Referencee</a>
-      </li>
-      
-    
-  
-  
-
-        </ul>
-      </li>
-      
-    
-  
-  
-
     
   </ul>
 </nav>
@@ -6202,7 +6260,7 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 21, 2020 
+    <span>This page was last updated:  November 11, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -6320,6 +6378,12 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/unity/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Unity
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           Xamarin
@@ -6401,12 +6465,6 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/ruby/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           Ruby
-        </a>
-    </li>
-  
-    <li  class="tl dib ma0 hover-bg-primary w-100">
-        <a href="https://docs.tealium.com/platforms/unity/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Unity
         </a>
     </li>
   

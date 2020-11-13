@@ -143,6 +143,16 @@ var utag_data = {
                           <span class="tooltiptext">Product Guides</span>
                     </li>
                     <li class="menu-divider"></li>
+                    <li class="js-main-nav-section" data-section="kb">
+                        <a href="https://community.tealiumiq.com/t5/Knowledge-Base/ct-p/kb" class="menu-list-item top-level tooltip-right">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-head-side-brain"></i>
+                            </span>
+                            <span class="menu-context">Knowledge Base</span>
+                        </a>
+                          <span class="tooltiptext"> Knowledge Base </span>
+                    </li>
+                    <li class="menu-divider"></li>
                     <li class="js-main-nav-section active">
                         <a href="https://docs.tealium.com/" class="menu-list-item top-level tooltip-right" title="Developer Documentation">
                             <span class="menu-large-icon">
@@ -322,7 +332,7 @@ var utag_data = {
 
 <h2 id="charles-proxy">Charles Proxy</h2>
 
-<p>The Charles web debugging proxy allows you to inspect all HTTP and SSL/HTTPS traffic between your device and a third-party service that you have configured through Tealium iQ.</p>
+<p>The Charles web debugging proxy inspects all HTTP and SSL/HTTPS traffic between your device and a third-party service that you have configured through Tealium iQ Tag Management.</p>
 
 <p>Set up Charles to proxy your <a href="https://community.tealiumiq.com/t5/Tealium-for-Android/Setting-up-Charles-to-Proxy-your-Android-Device/ta-p/5121">Android</a> or <a href="https://community.tealiumiq.com/t5/Tealium-for-iOS/Setting-Up-Charles-to-Proxy-an-iOS-Device/ta-p/15285">iOS</a> device.</p>
 
@@ -385,136 +395,7 @@ var utag_data = {
 
 <h2 id="trace">Trace</h2>
 
-<p><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Trace/ta-p/12058">Trace</a> is a testing and inspection tool for your EventStream and AudienceStream configuration. Use Trace to capture a visitor workflow and watch how events and customer data is processed in real-time.</p>
-
-<h4 id="requirements">Requirements</h4>
-
-<ul>
-<li>Charles Proxy</li>
-<li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Introduction-to-Customer-Data-Hub/ta-p/17571">Tealium Customer Data Hub account</a></li>
-</ul>
-
-<h4 id="using-a-rewrite-in-charles-proxy">Using a Rewrite in Charles Proxy</h4>
-
-<p>This procedure uses the Charles Web Debugging Proxy to start a trace from an application using the Mobile SDK and the collect tag.</p>
-
-<p>To set up your mobile device to proxy traffic on your computer to Charles on your computer, follow the <a href="https://community.tealiumiq.com/t5/Tealium-for-iOS/Setting-Up-Charles-to-Proxy-an-iOS-Device/ta-p/15285">iOS</a> or <a href="https://community.tealiumiq.com/t5/Tealium-for-Android/Setting-up-Charles-to-Proxy-your-Android-Device/ta-p/5121">Android</a> instructions.</p>
-
-<p>Run your application using Charles as the Proxy and filter the network traffic in Charles for &ldquo;teal&rdquo;. Right-click the request and select <strong>Copy URL</strong>.</p>
-
-<p>From the Charles menu click <strong>Tools &gt; Rewrite</strong>, and then click <strong>Enable Rewrite</strong>.</p>
-
-<ul>
-<li>In the Name field, type <strong>Add Trace ID</strong>.</li>
-<li>Click <strong>Add</strong> to add a location.</li>
-<li>In the <em>Host</em> field, type or paste the URL for the collect tag.</li>
-<li>Click outside of the <em>Edit Location</em> dialog box. Charles automatically determines the additional components of the URL.</li>
-<li>Ensure that the query parameters are empty and remove any existing text in the <em>Query</em> field.</li>
-<li>Click <strong>OK</strong>, then click <strong>Add</strong> from Actions list in the Rewrite Settings dialog.</li>
-</ul>
-
-<p>In the <em>Rewrite</em> Settings dialog, configure the settings.</p>
-
-<ul>
-<li>In the <em>Type</em> field, select <strong>Body</strong> from the drop-down list.</li>
-<li>Under <em>Where</em>, click to select the <strong>Request</strong> checkbox.</li>
-<li>In the <em>Value</em> field, under <em>Match</em>, enter the following: <code>&quot;data&quot;:{</code>.</li>
-<li>Click to select the <strong>Match whole value</strong> checkbox.</li>
-<li>In the <em>Value</em> field under <em>Replace</em>, enter the following: <code>&quot;data&quot;:{&quot;cp.trace_id&quot;:&quot;TRACE_ID&quot;,</code>.</li>
-<li>Click to select the <strong>Replace first</strong> checkbox.</li>
-</ul>
-
-<p>The steps are now complete. Browse your application and view the requests in the AudienceStream/EventStream trace session.</p>
-
-<p>Charles retains the settings from your last setup, you do not have to do these steps each time you want to trace. To run another trace, simply start Charles, edit the existing rewrite rule to change the <em>12345</em> value of the trace id.</p>
-
-<h4 id="adding-a-trace-id-through-native-code">Adding a Trace ID Through Native Code</h4>
-
-<p>If you do not wish to use Charles Proxy or are still in development mode and using a simulator, a quicker way to run a trace is to simply add the trace ID to the Volatile Data within your native code. Below are some examples for some of our most popular device libraries.</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="Android" title="Android">
-  <pre><code>instance.getDataSources().getVolatileDataSources().put(&quot;tealium_trace_id&quot;, TRACE_ID&quot;);
-</code></pre>
-
-</div>
-
-<div class="tab-pane" data-lang="iOS" title="iOS">
-  <p><strong><em>Swift</em></strong></p>
-
-<pre><code>tealium.addVolatileDataSources([&quot;tealium_trace_id&quot; : &quot;TRACE_ID&quot;])
-</code></pre>
-
-<p><strong><em>Objective-C</em></strong></p>
-
-<pre><code>NSDictionary *tealiumTrace = @{@&quot;tealium_trace_id&quot;:@&quot;TRACE_ID&quot;};
-[[Tealium instanceForKey:TEALIUM_INSTANCE_ID] addVolatileDataSources: tealiumTrace];
-</code></pre>
-
-</div>
-
-<div class="tab-pane" data-lang="Swift" title="Swift">
-  <p><strong><em>Swift</em></strong></p>
-
-<pre><code>tealium?.volatileData()?.add(data: [&quot;tealium_trace_id&quot;: &quot;TRACE_ID&quot;])
-</code></pre>
-
-</div>
-
-<p></div>
-</div></p>
-
-<h4 id="ending-a-trace-using-native-code">Ending a Trace Using Native Code</h4>
-
-<p>End your trace manually and simulate any &ldquo;end of visit&rdquo; enrichments by adding a track call with the following key value pairs to the optional data anywhere in the app:</p>
-
-<p><code>&quot;event&quot;:&quot;kill_visitor_session&quot;, &quot;cp.trace_id&quot;:&quot;TRACE_ID&quot;</code></p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="Android" title="Android">
-  <pre><code>Map&lt;String, Object&gt; data = new HashMap&lt;&gt;(1);
-data.put(&quot;event&quot;, &quot;kill_visitor_session&quot;);
-data.put(&quot;cp.trace_id&quot;, &quot;TRACE_ID&quot;);
-</code></pre>
-
-<p><code>Tealium.getInstance(&quot;INSTANCE&quot;).trackView(&quot;SCREEN_NAME&quot;, data);</code></p>
-
-</div>
-
-<div class="tab-pane" data-lang="iOS" title="iOS">
-  <pre><code>tealium?.trackViewWithTitle(&quot;SCREEN_NAME&quot;, dataSources: [&quot;event&quot;:&quot;kill_visitor_session&quot;, &quot;cp.trace_id&quot;:&quot;XXXXX&quot;])
-</code></pre>
-
-</div>
-
-<p></div>
-</div></p>
-
-<h4 id="adding-a-trace-id-in-tealium-iq">Adding a Trace ID in Tealium iQ</h4>
-
-<p>This method requires the Tealium Collect tag in your iQ configuration. First, use Live Events in EventStream to determine the Universally Unique Identifier (UUID) of your device, then use that value in a Set Data Values extension in iQ to set a trace ID for tracking that comes from your testing device. This is a powerful method while in later stages of development because it does not require editing the native code.</p>
-
-<p>To start a trace log in to EventStream and go to <strong>Live Events</strong>.</p>
-
-<p>Open the application on your device to trigger tracking activity. Then return to the <strong>Live Events</strong> screen to observe activity in the chart. Click on one of the events to open the details.</p>
-
-<p>Locate the <code>app_uuid</code> parameter (or <code>uuid</code>, depending on which version of the Tealium SDK you are using) and copy the value. Ensure that this event is coming from the device you are testing. Follow <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Trace/ta-p/12058#toc-hId--2045791565">these</a> instructions to generate a Trace ID and start a new Trace.</p>
-
-<p>Once you have a new trace ID, open a new browser tab and go to the Tealium iQ profile for your mobile app. From the <strong>Data Layer</strong> tab click add a new variable with the source set to <code>trace_id</code> and type to &ldquo;First Party Cookie&rdquo;.</p>
-
-<p>From the <strong>Extensions</strong> screen, add a <strong>Set Data Values</strong> extension with the following settings:</p>
-
-<ul>
-<li><strong>Scope</strong>: Tealium Collect</li>
-<li><strong>Set</strong>:  <code>trace_id (cp)</code> To: (Text) <code>TRACE_ID</code></li>
-<li><strong>Condition</strong>:  <code>app_uuid equals UUID</code></li>
-</ul>
-
-<p>Save and publish to the environment where you are testing. Then open your app and navigate through desired screens and events, then navigate back to your Trace tab to see your trace in action.</p>
+<p>Learn about using <a href="/platforms/getting-started/trace/">trace</a> for troubleshooting.</p>
 
 <h2 id="analytics-tools">Analytics Tools</h2>
 
@@ -780,6 +661,26 @@ data.put(&quot;cp.trace_id&quot;, &quot;TRACE_ID&quot;);
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/quick-start/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-quick-start">Quick Start Guide</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/mobile-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-mobile-concepts">Mobile Concepts</a>
       </li>
       
@@ -941,6 +842,26 @@ data.put(&quot;cp.trace_id&quot;, &quot;TRACE_ID&quot;);
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/trace/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-trace">Trace</a>
       </li>
       
     
@@ -1178,6 +1099,26 @@ data.put(&quot;cp.trace_id&quot;, &quot;TRACE_ID&quot;);
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-firebase">Firebase</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/remote-commands/integrations/kochava/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-kochava">Kochava</a>
       </li>
       
     
@@ -4391,6 +4332,26 @@ data.put(&quot;cp.trace_id&quot;, &quot;TRACE_ID&quot;);
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift/api/tealium-data-layer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-data-layer">TealiumDataLayer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/api/tealium-instance-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-instance-manager">TealiumInstanceManager</a>
       </li>
       
@@ -4541,6 +4502,108 @@ data.put(&quot;cp.trace_id&quot;, &quot;TRACE_ID&quot;);
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity">Unity</a>
+        <ul class="unity desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-api">API Referencee</a>
       </li>
       
     
@@ -6124,108 +6187,6 @@ data.put(&quot;cp.trace_id&quot;, &quot;TRACE_ID&quot;);
   
   
 
-      
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw8" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity">Unity</a>
-        <ul class="unity desktopmenu animated fadeIn list pl0 dn">
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-overview">Overview</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-install">Install</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-track">Track</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-api">API Referencee</a>
-      </li>
-      
-    
-  
-  
-
-        </ul>
-      </li>
-      
-    
-  
-  
-
     
   </ul>
 </nav>
@@ -6244,7 +6205,7 @@ data.put(&quot;cp.trace_id&quot;, &quot;TRACE_ID&quot;);
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  September 9, 2020 
+    <span>This page was last updated:  November 9, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -6362,6 +6323,12 @@ data.put(&quot;cp.trace_id&quot;, &quot;TRACE_ID&quot;);
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/unity/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Unity
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           Xamarin
@@ -6443,12 +6410,6 @@ data.put(&quot;cp.trace_id&quot;, &quot;TRACE_ID&quot;);
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/ruby/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           Ruby
-        </a>
-    </li>
-  
-    <li  class="tl dib ma0 hover-bg-primary w-100">
-        <a href="https://docs.tealium.com/platforms/unity/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Unity
         </a>
     </li>
   

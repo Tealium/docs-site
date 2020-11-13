@@ -143,6 +143,16 @@ var utag_data = {
                           <span class="tooltiptext">Product Guides</span>
                     </li>
                     <li class="menu-divider"></li>
+                    <li class="js-main-nav-section" data-section="kb">
+                        <a href="https://community.tealiumiq.com/t5/Knowledge-Base/ct-p/kb" class="menu-list-item top-level tooltip-right">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-head-side-brain"></i>
+                            </span>
+                            <span class="menu-context">Knowledge Base</span>
+                        </a>
+                          <span class="tooltiptext"> Knowledge Base </span>
+                    </li>
+                    <li class="menu-divider"></li>
                     <li class="js-main-nav-section active">
                         <a href="https://docs.tealium.com/" class="menu-list-item top-level tooltip-right" title="Developer Documentation">
                             <span class="menu-large-icon">
@@ -234,7 +244,7 @@ var utag_data = {
               <ul class="toc-h3"><li><a href="#data-expiration">Data Expiration</a></li>
               <li><a href="#retrieve-all-data">Retrieve All Data</a></li>
               <li><a href="#clear-data">Clear Data</a></li>
-              <li><a href="#examples">Examples</a></li>
+              <li><a href="#example">Example</a></li>
               </ul><li><a href="#module-data">Module Data</a></li>
               <ul class="toc-h3"><li><a href="#app-data-collector">App Data Collector</a></li>
               <li><a href="#attribution-collector">Attribution Collector</a></li>
@@ -308,36 +318,38 @@ var utag_data = {
 
 <tbody>
 <tr>
-<td align="left"><a href="#session-data">Session Data</a></td>
+<td align="left"><a href="#session-data">Session</a> (default)</td>
 <td align="left"><code>.session</code></td>
-<td align="left">Expires at the end of the current session (default).</td>
+<td align="left">Expires at the end of the current session</td>
 </tr>
 
 <tr>
-<td align="left"><a href="#restart-data">Restart Data</a></td>
+<td align="left"><a href="#restart-data">Restart</a></td>
 <td align="left"><code>.untilRestart</code></td>
-<td align="left">Expires when the app is closed or restarted.</td>
+<td align="left">Expires when the app is closed or restarted</td>
 </tr>
 
 <tr>
-<td align="left"><a href="#forever-data">Forever Data</a></td>
+<td align="left"><a href="#forever-data">Forever</a></td>
 <td align="left"><code>.forever</code></td>
-<td align="left">Never expires.</td>
+<td align="left">Never expires</td>
 </tr>
 
 <tr>
-<td align="left"><a href="#custom-date-data">Custom Date Data</a></td>
+<td align="left"><a href="#custom-date-data">Custom Date</a></td>
 <td align="left"><code>.after</code></td>
-<td align="left">Expires on the date specified.</td>
+<td align="left">Expires on the date specified</td>
 </tr>
 
 <tr>
-<td align="left"><a href="#custom-duration-data">Custom Duration Data</a></td>
+<td align="left"><a href="#custom-duration-data">Custom Duration</a></td>
 <td align="left"><code>.afterCustom</code></td>
-<td align="left">Expires on the duration specified by the following time units: <code>.minutes</code>, <code>.hours</code>, <code>.days</code>, <code>.months</code>, <code>.years</code>.</td>
+<td align="left">Expires on the duration specified by the following time units: <code>.minutes</code>, <code>.hours</code>, <code>.days</code>, <code>.months</code>, <code>.years</code></td>
 </tr>
 </tbody>
 </table>
+
+<p>Use <a href="/platforms/ios-swift/api/tealium-data-layer/#add">add()</a> to store data in the data layer, based on the expiration type.</p>
 
 <h4 id="session-data">Session Data</h4>
 
@@ -369,51 +381,46 @@ var utag_data = {
 
 <p>Custom duration data values are persisted by a specified duration of time.</p>
 
-<p>To persist a data layer value for a custom duration:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.dataLayer.add(key: <span style="color:#b84">&#34;lengthoftime&#34;</span>, value: <span style="color:#b84">&#34;months&#34;</span>, expiry: .afterCustom((.months, <span style="color:#099">1</span>)))</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.dataLayer.add(key: <span style="color:#b84">&#34;lengthoftime&#34;</span>, value: <span style="color:#b84">&#34;days&#34;</span>, expiry: .afterCustom((.days, <span style="color:#099">1</span>)))</code></pre></div>
+<p>To persist data layer values which expire after 1 day:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.dataLayer.add(key: <span style="color:#b84">&#34;lengthoftime&#34;</span>, value: <span style="color:#b84">&#34;days&#34;</span>, expiry: .afterCustom((.days, <span style="color:#099">1</span>)))</code></pre></div>
+<p>To persist data layer values which expire after 1 month:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.dataLayer.add(key: <span style="color:#b84">&#34;lengthoftime&#34;</span>, value: <span style="color:#b84">&#34;months&#34;</span>, expiry: .afterCustom((.months, <span style="color:#099">1</span>)))</code></pre></div>
 <h3 id="retrieve-all-data">Retrieve All Data</h3>
 
-<p>To retrieve all of the currently stored data in the data layer:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">data</span>: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>] = tealium?.dataLayer.allEventData</code></pre></div>
+<p>To retrieve all the currently stored data in the data layer, use the <a href="/platforms/ios-swift/api/tealium-data-layer/#all">all()</a> method:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">data</span>: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>] = tealium?.dataLayer.all</code></pre></div>
 <h3 id="clear-data">Clear Data</h3>
 
-<p>To clear data for specific keys use the following methods:</p>
+<p>To clear data for specific keys, use the <a href="/platforms/ios-swift/api/tealium-data-layer/#delete">delete()</a> method:</p>
 
 <ul>
 <li>Multiple: <code>dataLayer.delete(forKeys:)</code></li>
 <li>Single: <code>dataLayer.delete(forKey:)</code></li>
 </ul>
 
-<p>To clear all data, use the <code>dataLayer.deleteAll()</code> method.</p>
+<p>To clear all data, use the <a href="/platforms/ios-swift/api/tealium-data-layer/#delete"><code>deleteAll()</code></a> method.</p>
 
-<h3 id="examples">Examples</h3>
+<h3 id="example">Example</h3>
 
 <p>The following example demonstrates the above methods:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
 	<span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
-
 	<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(...)
-
 	tealium = Tealium(config: config) { [<span style="font-weight:bold">weak</span> <span style="font-weight:bold">self</span>] <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
 		<span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">self</span> = <span style="font-weight:bold">self</span>, <span style="font-weight:bold">let</span> <span style="color:#008080">teal</span> = <span style="font-weight:bold">self</span>.tealium <span style="font-weight:bold">else</span> { <span style="font-weight:bold">return</span> }
 
-		<span style="color:#998;font-style:italic">// Add data to be sent on each hit until manually cleared</span>
-		teal.dataLayer.add(key: <span style="color:#b84">&#34;myvarforever&#34;</span>, value: <span style="color:#099">123456</span>) <span style="color:#998;font-style:italic">// stored as session data (default)</span>
+		teal.dataLayer.add(key: <span style="color:#b84">&#34;mysessionvar&#34;</span>, value: <span style="color:#099">123456</span>)
 
-		<span style="color:#998;font-style:italic">// Add data to be sent on each hit for length of session</span>
-		teal.dataLayer.add(key: <span style="color:#b84">&#34;mysessionvar&#34;</span>, value: <span style="color:#b84">&#34;hello&#34;</span>, expiry: .forever)
+		teal.dataLayer.add(key: <span style="color:#b84">&#34;myvarforever&#34;</span>, value: <span style="color:#b84">&#34;hello&#34;</span>, expiry: .forever)
 
-		<span style="color:#998;font-style:italic">// Add data to persist for 3 months</span>
 		teal.dataLayer.add(key: <span style="color:#b84">&#34;campaign&#34;</span>, value: <span style="color:#b84">&#34;summer&#34;</span>, expiry: .afterCustom((.months, <span style="color:#099">3</span>)))
 
-		print(<span style="color:#b84">&#34;All event data: </span><span style="color:#b84">\(</span>teal.dataLayer.allEventData<span style="color:#b84">)</span><span style="color:#b84">&#34;</span>)
-		print(<span style="color:#b84">&#34;All event data: </span><span style="color:#b84">\(</span>teal.dataLayer.allSessionData<span style="color:#b84">)</span><span style="color:#b84">&#34;</span>)
-		print(<span style="color:#b84">&#34;Single event data key `campaign`: </span><span style="color:#b84">\(</span>teal.dataLayer.allEventData[<span style="color:#b84">&#34;campaign&#34;</span>]<span style="color:#b84">)</span><span style="color:#b84">&#34;</span>)
+		print(<span style="color:#b84">&#34;All event data: </span><span style="color:#b84">\(</span>teal.dataLayer.all<span style="color:#b84">)</span><span style="color:#b84">&#34;</span>)
+		print(<span style="color:#b84">&#34;All session data: </span><span style="color:#b84">\(</span>teal.dataLayer.allSessionData<span style="color:#b84">)</span><span style="color:#b84">&#34;</span>)
+		print(<span style="color:#b84">&#34;Single event data key `campaign`: </span><span style="color:#b84">\(</span>teal.dataLayer.all[<span style="color:#b84">&#34;campaign&#34;</span>]<span style="color:#b84">)</span><span style="color:#b84">&#34;</span>)
 
-		<span style="color:#998;font-style:italic">// Delete keys</span>
 		teal.dataLayer.delete(forKeys: [<span style="color:#b84">&#34;myvarforever&#34;</span>])
 
-		<span style="color:#998;font-style:italic">// Delete all data</span>
 		teal.dataLayer.deleteAll()
 	}
 }</code></pre></div>
@@ -1564,6 +1571,26 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/quick-start/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-quick-start">Quick Start Guide</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/mobile-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-mobile-concepts">Mobile Concepts</a>
       </li>
       
@@ -1725,6 +1752,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/trace/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-trace">Trace</a>
       </li>
       
     
@@ -1962,6 +2009,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-firebase">Firebase</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/remote-commands/integrations/kochava/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-kochava">Kochava</a>
       </li>
       
     
@@ -5175,6 +5242,26 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift/api/tealium-data-layer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-data-layer">TealiumDataLayer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/api/tealium-instance-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-instance-manager">TealiumInstanceManager</a>
       </li>
       
@@ -5325,6 +5412,108 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity">Unity</a>
+        <ul class="unity desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-api">API Referencee</a>
       </li>
       
     
@@ -6908,108 +7097,6 @@ var utag_data = {
   
   
 
-      
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw8" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity">Unity</a>
-        <ul class="unity desktopmenu animated fadeIn list pl0 dn">
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-overview">Overview</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-install">Install</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-track">Track</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-api">API Referencee</a>
-      </li>
-      
-    
-  
-  
-
-        </ul>
-      </li>
-      
-    
-  
-  
-
     
   </ul>
 </nav>
@@ -7028,7 +7115,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 22, 2020 
+    <span>This page was last updated:  November 10, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -7146,6 +7233,12 @@ var utag_data = {
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/unity/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Unity
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           Xamarin
@@ -7227,12 +7320,6 @@ var utag_data = {
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/ruby/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           Ruby
-        </a>
-    </li>
-  
-    <li  class="tl dib ma0 hover-bg-primary w-100">
-        <a href="https://docs.tealium.com/platforms/unity/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Unity
         </a>
     </li>
   

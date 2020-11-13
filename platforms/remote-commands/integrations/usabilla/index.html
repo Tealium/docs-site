@@ -143,6 +143,16 @@ var utag_data = {
                           <span class="tooltiptext">Product Guides</span>
                     </li>
                     <li class="menu-divider"></li>
+                    <li class="js-main-nav-section" data-section="kb">
+                        <a href="https://community.tealiumiq.com/t5/Knowledge-Base/ct-p/kb" class="menu-list-item top-level tooltip-right">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-head-side-brain"></i>
+                            </span>
+                            <span class="menu-context">Knowledge Base</span>
+                        </a>
+                          <span class="tooltiptext"> Knowledge Base </span>
+                    </li>
+                    <li class="menu-divider"></li>
                     <li class="js-main-nav-section active">
                         <a href="https://docs.tealium.com/" class="menu-list-item top-level tooltip-right" title="Developer Documentation">
                             <span class="menu-large-icon">
@@ -305,12 +315,12 @@ var utag_data = {
 
 <h2 id="how-it-works">How It Works</h2>
 
-<p>The Usabilla integration uses the native Usabilla SDK, the Tealium Usabilla remote command module that wraps Usabilla methods, and the Usabilla Remote Command tag that translates event tracking into native Usabilla calls. The integration uses three items:</p>
+<p>The Usabilla integration uses three items:</p>
 
 <ol>
 <li>The Usabilla native SDK</li>
-<li>The remote commands module</li>
-<li>Either the JSON configuration file or Remote Command tag</li>
+<li>The remote commands module that wraps the Usabilla methods</li>
+<li>Either the JSON configuration file or Remote Command tag that translates event tracking into native Usabilla calls</li>
 </ol>
 
 <p>Adding the Usabilla remote command module to your app automatically installs and builds the required Usabilla libraries. If you are using a dependency manager installation, there is no need to install the Usabilla SDK separately.</p>
@@ -342,12 +352,6 @@ var utag_data = {
 <span style="color:#b84">&#39;tealium-swift/TealiumDelegate&#39;</span>
 <span style="color:#b84">&#39;tealium-swift/TealiumRemoteCommands&#39;</span>
 <span style="color:#b84">&#39;tealium-swift/TealiumTagManagement&#39;</span></code></pre></div></li>
-
-<li><p>Add any other required modules manually to your Podfile, such as the following:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#b84">&#39;tealium-swift/TealiumLogger&#39;</span>
-<span style="color:#b84">&#39;tealium-swift/TealiumLifecycle&#39;</span>
-<span style="color:#b84">&#39;tealium-swift/TealiumAppData&#39;</span></code></pre></div>
-<p>Learn more about the <a href="https://docs.tealium.com/platforms/ios-swift/modules/">recommended modules for iOS</a>.</p></li>
 
 <li><p>Import the modules <code>TealiumSwift</code> and <code>TealiumUsabilla</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class or the Usabilla remote command.</p></li>
 </ol>
@@ -400,45 +404,7 @@ var utag_data = {
 <li><p>Add <code>Dispatchers.RemoteCommands</code> as a dispatcher</p></li>
 
 <li><p>Set the <a href="/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a> configuration flag to <code>true</code></p></li>
-
-<li><p>When initializing the Tealium SDK, update the completion handler as follows:</p></li>
 </ol>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>The following code is designed for use with the JSON Remote Commands feature, using the local file option:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>, profile: <span style="color:#b84">&#34;PROFILE&#34;</span>, environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>)
-config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
-config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
-
-tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
-    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
-        <span style="font-weight:bold">return</span>
-    }
-    <span style="font-weight:bold">let</span> <span style="color:#008080">usabilla</span> = UsabillaRemoteCommand(type: .local(file: <span style="color:#b84">&#34;usabilla&#34;</span>))
-    remoteCommands.add(usabilla)
-}</code></pre></div>
-</div>
-
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>The following code is designed for use with the Remote Command tag feature.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>, profile: <span style="color:#b84">&#34;PROFILE&#34;</span>, environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>)
-config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
-config.remoteAPIEnabled = <span style="font-weight:bold">true</span> <span style="color:#998;font-style:italic">// Required to use Remote Commands</span>
-
-tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
-    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
-        <span style="font-weight:bold">return</span>
-    }
-    <span style="font-weight:bold">let</span> <span style="color:#008080">usabilla</span> = UsabillaRemoteCommand()
-    remoteCommands.add(usabilla)
-}</code></pre></div>
-</div>
-
-<p></div>
-</div></p>
 
 <h2 id="initialize">Initialize</h2>
 
@@ -453,7 +419,11 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
   <div class="tab-content">
 <div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
   <p>The following code is designed for use with the JSON Remote Commands feature, using the local file option:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, Environment.DEV, dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(application,
+        <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+        <span style="color:#b84">&#34;PROFILE&#34;</span>,
+        Environment.DEV,
+        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
 <span style="font-weight:bold">val</span> usabilla = UsabillaRemoteCommand(TEALIUM_MAIN, config);
 
 <span style="font-weight:bold">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
@@ -482,7 +452,11 @@ Disables handling of event tracking for passive and <a href="https://github.com/
 
 <div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
   <p>The following code is designed for use with the Remote Command tag feature:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, Environment.DEV, dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(application,
+        <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
+        <span style="color:#b84">&#34;PROFILE&#34;</span>,
+        Environment.DEV,
+        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
 <span style="font-weight:bold">val</span> usabilla = UsabillaRemoteCommand(TEALIUM_MAIN, config);
 
 <span style="font-weight:bold">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
@@ -520,6 +494,11 @@ Disables handling of event tracking for passive and <a href="https://github.com/
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content">
 
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The JSON Remote Command file feature for Android is only available in the Kotlin SDK.</p>
+
+</div>
+
 <div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
   <p>The following code is designed for use with the Remote Command tag feature:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.<span style="color:#008080">Config</span> <span style="color:#900;font-weight:bold">config</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">Config</span>.<span style="color:#008080">create</span>(application, <span style="color:#b84">&#34;ACCOUNT&#34;</span>, <span style="color:#b84">&#34;PROFILE&#34;</span>, <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>);
@@ -550,8 +529,6 @@ Disables handling of event tracking for passive and <a href="https://github.com/
 
 <p></div>
 </div></p>
-
-<p class="note">The JSON Remote Command file feature for Android is only available in the Kotlin SDK</p>
 
 <h3 id="ios-swift">iOS (Swift)</h3>
 
@@ -1085,11 +1062,11 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
 	<div date-pref class="white">
 		
 		
-			<a href="https://docs.tealium.com/platforms/remote-commands/integrations/firebase/" title="Remote Command: Firebase "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
+			<a href="https://docs.tealium.com/platforms/remote-commands/integrations/kochava/" title="Remote Command: Kochava "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
     <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
     <path d="M0 0h24v24H0z" fill="none"/>
 </svg>
- Remote Command: Firebase </a>
+ Remote Command: Kochava </a>
 		
 
 	</div>
@@ -1152,6 +1129,26 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/quick-start/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-quick-start">Quick Start Guide</a>
       </li>
       
     
@@ -1332,6 +1329,26 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/trace/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-trace">Trace</a>
       </li>
       
     
@@ -1569,6 +1586,26 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-firebase">Firebase</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/remote-commands/integrations/kochava/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-kochava">Kochava</a>
       </li>
       
     
@@ -4782,6 +4819,26 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift/api/tealium-data-layer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-data-layer">TealiumDataLayer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/api/tealium-instance-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-instance-manager">TealiumInstanceManager</a>
       </li>
       
@@ -4932,6 +4989,108 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity">Unity</a>
+        <ul class="unity desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-api">API Referencee</a>
       </li>
       
     
@@ -6515,108 +6674,6 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
   
   
 
-      
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw8" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity">Unity</a>
-        <ul class="unity desktopmenu animated fadeIn list pl0 dn">
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-overview">Overview</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-install">Install</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-track">Track</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-api">API Referencee</a>
-      </li>
-      
-    
-  
-  
-
-        </ul>
-      </li>
-      
-    
-  
-  
-
     
   </ul>
 </nav>
@@ -6635,7 +6692,7 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 21, 2020 
+    <span>This page was last updated:  November 11, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -6753,6 +6810,12 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/unity/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Unity
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           Xamarin
@@ -6834,12 +6897,6 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/ruby/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           Ruby
-        </a>
-    </li>
-  
-    <li  class="tl dib ma0 hover-bg-primary w-100">
-        <a href="https://docs.tealium.com/platforms/unity/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Unity
         </a>
     </li>
   

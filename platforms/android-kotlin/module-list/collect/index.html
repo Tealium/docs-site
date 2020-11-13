@@ -143,6 +143,16 @@ var utag_data = {
                           <span class="tooltiptext">Product Guides</span>
                     </li>
                     <li class="menu-divider"></li>
+                    <li class="js-main-nav-section" data-section="kb">
+                        <a href="https://community.tealiumiq.com/t5/Knowledge-Base/ct-p/kb" class="menu-list-item top-level tooltip-right">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-head-side-brain"></i>
+                            </span>
+                            <span class="menu-context">Knowledge Base</span>
+                        </a>
+                          <span class="tooltiptext"> Knowledge Base </span>
+                    </li>
+                    <li class="menu-divider"></li>
                     <li class="js-main-nav-section active">
                         <a href="https://docs.tealium.com/" class="menu-list-item top-level tooltip-right" title="Developer Documentation">
                             <span class="menu-large-icon">
@@ -296,7 +306,7 @@ var utag_data = {
 <li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the Maven dependencies for the Tealium library and Collect Dispatcher</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
   implementation <span style="color:#b84">&#39;com.tealium:kotlin-core:1.0.0&#39;</span>
-  implementation <span style="color:#b84">&#39;com.tealium:kotlin-collect-dispatcher:1.0.0&#39;</span>
+  implementation <span style="color:#b84">&#39;com.tealium:kotlin-collect-dispatcher:1.0.1&#39;</span>
 <span style="font-weight:bold">}</span></code></pre></div></li>
 </ol>
 
@@ -307,11 +317,11 @@ var utag_data = {
 <ol>
 <li><p>Download the Tealium <a href="https://github.com/Tealium/tealium-kotlin/tree/master/collectdispatcher">Collect Dispatcher</a> module.</p></li>
 
-<li><p>Copy the file <code>tealium-kotlin.collect-1.0.0.aar</code> into your project&rsquo;s <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> directory.</p></li>
+<li><p>Copy the file <code>tealium-kotlin.collect-1.0.1.aar</code> into your project&rsquo;s <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> directory.</p></li>
 
 <li><p>Add the Tealium library dependency to your project module’s <code>build.gradle</code> file:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
-  implementation<span style="font-weight:bold">(</span>name:<span style="color:#b84">&#39;tealium-kotlin.collect-1.0.0&#39;</span><span style="font-weight:bold">,</span> ext:<span style="color:#b84">&#39;aar&#39;</span><span style="font-weight:bold">)</span>
+  implementation<span style="font-weight:bold">(</span>name:<span style="color:#b84">&#39;tealium-kotlin.collect-1.0.1&#39;</span><span style="font-weight:bold">,</span> ext:<span style="color:#b84">&#39;aar&#39;</span><span style="font-weight:bold">)</span>
 <span style="font-weight:bold">}</span></code></pre></div>
 <p class="note">The Collect Dispatcher has a dependency on the main Tealium Kotlin SDK, so ensure that you also make this available by following the <a href="/platforms/android-kotlin/install">installation instructions</a>.</p></li>
 </ol>
@@ -320,9 +330,13 @@ var utag_data = {
 
 <p>Configure the URL that the Collect Dispatcher sends your data to using the following setting when creating your TealiumConfig object:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(...)
-config.overrideCollectUrl = <span style="color:#b84">&#34;https://your.endpoint.com/event&#34;</span></code></pre></div>
-<p>This URL is used for both individual events as well as <a href="/platforms/getting-started/event-batching">batched events</a> so your endpoint are able to cope with this requirement if you are using the event batching feature.</p>
+config.overrideCollectUrl = <span style="color:#b84">&#34;https://your.endpoint.com/event&#34;</span>
+config.overrideCollectBatchUrl = <span style="color:#b84">&#34;https://your.endpoint.com/bulk-event&#34;</span></code></pre></div>
+<p>Configure the endpoints that individual events or <a href="/platforms/getting-started/event-batching">batched events</a> are sent to.</p>
 
+<p>For deployments that make use of the CNAME or data-center specific requirements, override the domain and keep the Tealium defined endpoints. In the following example, individual events go to <code>https://cname.tealiumiq.com/event</code> and batched events go to <code>https://cname.tealiumiq.com/bulk-event</code>:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(...)
+config.overrideCollectDomain = <span style="color:#b84">&#34;cname.tealiumiq.com&#34;</span></code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -396,6 +410,26 @@ config.overrideCollectUrl = <span style="color:#b84">&#34;https://your.endpoint.
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/quick-start/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-quick-start">Quick Start Guide</a>
       </li>
       
     
@@ -576,6 +610,26 @@ config.overrideCollectUrl = <span style="color:#b84">&#34;https://your.endpoint.
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/trace/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-trace">Trace</a>
       </li>
       
     
@@ -813,6 +867,26 @@ config.overrideCollectUrl = <span style="color:#b84">&#34;https://your.endpoint.
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/remote-commands/integrations/firebase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-firebase">Firebase</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/remote-commands/integrations/kochava/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-kochava">Kochava</a>
       </li>
       
     
@@ -4026,6 +4100,26 @@ config.overrideCollectUrl = <span style="color:#b84">&#34;https://your.endpoint.
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/ios-swift/api/tealium-data-layer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-data-layer">TealiumDataLayer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-swift/api/tealium-instance-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-instance-manager">TealiumInstanceManager</a>
       </li>
       
@@ -4176,6 +4270,108 @@ config.overrideCollectUrl = <span style="color:#b84">&#34;https://your.endpoint.
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/react-native/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity">Unity</a>
+        <ul class="unity desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/unity/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-api">API Referencee</a>
       </li>
       
     
@@ -5759,108 +5955,6 @@ config.overrideCollectUrl = <span style="color:#b84">&#34;https://your.endpoint.
   
   
 
-      
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw8" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity">Unity</a>
-        <ul class="unity desktopmenu animated fadeIn list pl0 dn">
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-overview">Overview</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-install">Install</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-track">Track</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/unity/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-api">API Referencee</a>
-      </li>
-      
-    
-  
-  
-
-        </ul>
-      </li>
-      
-    
-  
-  
-
     
   </ul>
 </nav>
@@ -5879,7 +5973,7 @@ config.overrideCollectUrl = <span style="color:#b84">&#34;https://your.endpoint.
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 20, 2020 
+    <span>This page was last updated:  November 10, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -5997,6 +6091,12 @@ config.overrideCollectUrl = <span style="color:#b84">&#34;https://your.endpoint.
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/unity/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Unity
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           Xamarin
@@ -6078,12 +6178,6 @@ config.overrideCollectUrl = <span style="color:#b84">&#34;https://your.endpoint.
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/ruby/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           Ruby
-        </a>
-    </li>
-  
-    <li  class="tl dib ma0 hover-bg-primary w-100">
-        <a href="https://docs.tealium.com/platforms/unity/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Unity
         </a>
     </li>
   
