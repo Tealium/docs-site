@@ -242,7 +242,10 @@ var utag_data = {
       <p class="b">Table of Contents</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#track-views">Track Views</a></li>
               <li><a href="#track-events">Track Events</a></li>
-              <li><a href="#trace">Trace</a></li>
+              <li><a href="#timed-events">Timed Events</a></li>
+              <ul class="toc-h3"><li><a href="#automatic-triggers">Automatic Triggers</a></li>
+              <li><a href="#manual-triggers">Manual Triggers</a></li>
+              </ul><li><a href="#trace">Trace</a></li>
               <ul class="toc-h3"><li><a href="#join-trace">Join Trace</a></li>
               <li><a href="#leave-trace">Leave trace</a></li>
               </nav>
@@ -285,18 +288,42 @@ var utag_data = {
 
 <h2 id="track-views">Track Views</h2>
 
-<p>To track screen views, pass an instance of <code>TealiumView(viewName:dataLayer:)</code> to the <a href="/platforms/ios-swift/api/tealium/#track"><code>track()</code></a> method. <code>TealiumView</code> is comprised of a view name, which appears in the data layer as <code>tealium_event</code>, and an optional data dictionary.</p>
+<p>To track screen views, pass an instance of <code>TealiumView(viewName:dataLayer:)</code> to the <a href="/platforms/ios-swift/api/tealium/#track"><code>track()</code></a> method. <code>TealiumView</code> is comprised of a view name, which appears in the tracking call as <code>tealium_event</code>, and an optional data dictionary.</p>
 
 <p>The following is an example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">tealView</span> = TealiumView(<span style="color:#b84">&#34;VIEW_NAME&#34;</span>, dataLayer: [<span style="color:#b84">&#34;key&#34;</span>: <span style="color:#b84">&#34;value&#34;</span>])
 tealium?.track(tealView)</code></pre></div>
 <h2 id="track-events">Track Events</h2>
 
-<p>To track non-view events, pass an instance of <code>TealiumEvent(eventName:dataLayer:)</code> to the <a href="/platforms/ios-swift/api/tealium/#track"><code>track()</code></a> method.  <code>TealiumEvent</code> is comprised of an event name, which appears in the data layer as <code>tealium_event</code>, and an optional data dictionary.</p>
+<p>To track non-view events, pass an instance of <code>TealiumEvent(eventName:dataLayer:)</code> to the <a href="/platforms/ios-swift/api/tealium/#track"><code>track()</code></a> method.  <code>TealiumEvent</code> is comprised of an event name, which appears in the tracking call as <code>tealium_event</code>, and an optional data dictionary.</p>
 
 <p>The following is an example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">tealEvent</span> = TealiumEvent(<span style="color:#b84">&#34;EVENT_NAME&#34;</span>, dataLayer: [<span style="color:#b84">&#34;key&#34;</span>: <span style="color:#b84">&#34;value&#34;</span>])
 tealium?.track(tealEvent)</code></pre></div>
+<h2 id="timed-events">Timed Events</h2>
+
+<p><a href="/platforms/getting-started/timed-events/">Timed events</a> measure the duration of an event or the duration between two events. Timed events are triggered automatically or manually.</p>
+
+<h3 id="automatic-triggers">Automatic Triggers</h3>
+
+<p>Automatically track the duration between events by setting <a href="/platforms/ios-swift/api/tealium-config/#timedeventtriggers"><code>timedEventTriggers</code></a> to a list of <code>TimedEventTrigger</code> objects, specifying tthe names of the start and stop events.</p>
+
+<p>The following is an example of tracking a timed event with an automatic trigger:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.timedEventTriggers = [TimedEventTrigger(
+    start: <span style="color:#b84">&#34;cart_add&#34;</span>,
+    stop: <span style="color:#b84">&#34;purchase&#34;</span>)]</code></pre></div>
+<h3 id="manual-triggers">Manual Triggers</h3>
+
+<p>Manually track the duration of an event by starting and stopping the timed event based on your custom logic.</p>
+
+<p>Start tracking the duration of an event with <a href="/platforms/android-kotlin/api/tealium/#starttimedevent"><code>startTimedEvent()</code></a>:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium.startTimedEvent(name: <span style="color:#b84">&#34;TimeSpentViewingProduct&#34;</span>)</code></pre></div>
+<p>Stop a timed event with <a href="/platforms/android-kotlin/api/tealium/#stoptimedevent"><code>stopTimedEvent()</code></a>:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium.stopTimedEvent(name: <span style="color:#b84">&#34;TimeSpentViewingProduct&#34;</span>)</code></pre></div>
+<p>Cancel a previously started timed event with <a href="/platforms/android-kotlin/api/tealium/#canceltimedevent"><code>cancelTimedEvent()</code></a>:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium.cancelTimedEvent(name: <span style="color:#b84">&#34;TimeSpentViewingProduct&#34;</span>)</code></pre></div>
+<p>Clear all previously started timed events with <a href="/platforms/ios-swift/api/tealium/#clearalltimedevents"><code>clearAllTimedEvents()</code></a>:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.clearAllTimedEvents()</code></pre></div>
 <h2 id="trace">Trace</h2>
 
 <h3 id="join-trace">Join Trace</h3>
@@ -613,6 +640,26 @@ tealium?.track(tealEvent)</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/timed-events/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-timed-events">Timed Events</a>
       </li>
       
     
@@ -5976,7 +6023,7 @@ tealium?.track(tealEvent)</code></pre></div>
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  November 10, 2020 
+    <span>This page was last updated:  December 9, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

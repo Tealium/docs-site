@@ -242,8 +242,8 @@ var utag_data = {
       <p class="b">Table of Contents</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#usage">Usage</a></li>
               <li><a href="#install">Install</a></li>
-              <ul class="toc-h3"><li><a href="#cocoapods">CocoaPods</a></li>
-              <li><a href="#carthage">Carthage</a></li>
+              <ul class="toc-h3"><li><a href="#swift-package-manager-recommended">Swift Package Manager (Recommended)</a></li>
+              <li><a href="#cocoapods">CocoaPods</a></li>
               </ul><li><a href="#configure">Configure</a></li>
               <li><a href="#data-layer">Data Layer</a></li>
               <li><a href="#invoke-a-crash">Invoke a Crash</a></li>
@@ -301,9 +301,19 @@ var utag_data = {
 
 <h2 id="install">Install</h2>
 
-<p>Install the CrashReporter module with CocoaPods or Carthage. Swift Package Manager is not supported at this time.</p>
+<p>Install the Crash module with Swift Package Manager or CocoaPods.</p>
 
-<p class="note">As of Tealium Swift 2.0.0, the Crash Reporter module has been separated into its own GitHub repo. This is to work around some recurring issues with dependency managers.</p>
+<h3 id="swift-package-manager-recommended">Swift Package Manager (Recommended)</h3>
+
+<p>Supported in version 1.9.0+, the Swift Package Manager is the recommended and simplest way to install the Tealium Swift library:</p>
+
+<ol>
+<li>In your Xcode project, select <strong>File &gt; Swift Packages &gt; Add Package Dependency</strong></li>
+<li>Enter the repository URL: <code>https://github.com/tealium/tealium-swift-crash-reporter</code></li>
+<li>Configure the version rules. Typically, <code>&quot;Up to next major&quot;</code> is recommended. If the current Tealium Swift library version does not appears in the list, then reset your Swift package cache.</li>
+<li>Select the `TealiumCrashModule and add it each of your app targets in your Xcode project, under <strong>Frameworks &gt; Libraries &amp; Embedded Content</strong></li>
+<li>Follow <a href="platforms/ios-swift/install#swift-package-manager">these instructions</a> to add other modules from the <code>tealium-swift</code> library.</li>
+</ol>
 
 <h3 id="cocoapods">CocoaPods</h3>
 
@@ -319,37 +329,13 @@ var utag_data = {
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod install</code></pre></div></li>
 </ol>
 
-<h3 id="carthage">Carthage</h3>
-
-<ol>
-<li><p>Follow the steps outlined in the <a href="/platforms/ios-swift/install/#carthage">Swift Carthage Installation</a>.</p></li>
-
-<li><p>Add the following line to your <code>Cartfile</code>:</p></li>
-</ol>
-
-<p><code>github Tealium/tealium-swift-crash-reporter</code></p>
-
-<p>Your Cartfile already contains the following line:</p>
-
-<p><code>github Tealium/tealium-swift</code></p>
-
-<ol>
-<li><p>Run the command <code>carthage update --platform iOS</code> and include the resulting frameworks in your app:</p>
-
-<ul>
-<li><code>TealiumCore.framework</code> + all standard Tealium frameworks</li>
-<li><code>TealiumCrash.framework</code></li>
-<li><code>TealiumCrashReporteriOS.framework</code></li>
-</ul></li>
-
-<li><p>Follow the instructions in the <a href="https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos">Carthage Getting Started</a> guide to add the relevant Build Phases scripts for submitting your app to the App Store.</p></li>
-</ol>
+<p class="note">As of Tealium Swift 2.0.0, the Crash Reporter module has been separated into its own GitHub repo. This is to work around some recurring issues with dependency managers.</p>
 
 <h2 id="configure">Configure</h2>
 
 <p>In order to instantiate the CrashReporter module, you must specify it in your <code>TealiumConfig</code> object when initializing the SDK:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumCore</span>
-<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumCrash</span>
+<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumCrashModule</span>
 
 <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
                                profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
@@ -805,6 +791,26 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/timed-events/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-timed-events">Timed Events</a>
       </li>
       
     
@@ -6168,7 +6174,7 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  July 28, 2020 
+    <span>This page was last updated:  November 30, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

@@ -314,9 +314,11 @@ var utag_data = {
 
 <li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the following Maven dependency:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
-  implementation <span style="color:#b84">&#39;com.tealium:kotlin-core:0.1.2&#39;</span>
+  implementation <span style="color:#b84">&#39;com.tealium:kotlin-core:1.X.X&#39;</span>
 <span style="font-weight:bold">}</span></code></pre></div></li>
 </ol>
+
+<p class="note">Check for the latest releases on <a href="https://github.com/tealium/tealium-kotlin/releases">Github</a> and replace 1.X.X with the latest release number.</p>
 
 </div>
 
@@ -352,7 +354,7 @@ var utag_data = {
 
   <span style="font-weight:bold">fun</span> <span style="color:#900;font-weight:bold">init</span>(application: Application) {
     <span style="font-weight:bold">val</span> tealiumConfig = TealiumConfig(
-                      <span style="font-weight:bold">this</span>,
+                      application,
                       <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
                       <span style="color:#b84">&#34;PROFILE&#34;</span>,
                       Environment.DEV,
@@ -433,7 +435,7 @@ var utag_data = {
   <div class="tab-content">
 <div class="tab-pane" data-lang="Android" title="Android">
   <p>To track views:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> tealView = TealiumView(<span style="color:#b84">&#34;screen_view&#34;</span>, mutableMapOf{<span style="color:#b84">&#34;screen_name&#34;</span> to <span style="color:#b84">&#34;Home&#34;</span>})
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> tealView = TealiumView(<span style="color:#b84">&#34;screen_view&#34;</span>, mutableMapOf(<span style="color:#b84">&#34;screen_name&#34;</span> to <span style="color:#b84">&#34;Home&#34;</span>))
 tealium.track(tealView);</code></pre></div>
 </div>
 
@@ -455,7 +457,7 @@ tealium?.track(tealView)</code></pre></div>
   <div class="tab-content">
 <div class="tab-pane" data-lang="Android" title="Android">
   <p>To track events:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> tealEvent = TealiumEvent(<span style="color:#b84">&#34;user_login&#34;</span>, mutableMapOf{<span style="color:#b84">&#34;customer_id&#34;</span> to <span style="color:#b84">&#34;1234567890&#34;</span>})
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> tealEvent = TealiumEvent(<span style="color:#b84">&#34;user_login&#34;</span>, mutableMapOf(<span style="color:#b84">&#34;customer_id&#34;</span> to <span style="color:#b84">&#34;1234567890&#34;</span>))
 tealium.track(tealEvent);</code></pre></div>
 </div>
 
@@ -485,7 +487,7 @@ tealium?.track(tealEvent)</code></pre></div>
 <p>Similarly for different data types, the method begins with <code>put</code>, such as <a href="/platforms/android-kotlin/api/data-layer/#putint">putInt()</a> for integers and <a href="/platforms/android-kotlin/api/data-layer/#getdoublearray">putDoubleArray()</a> for an array of floating-point numbers. Learn more about methods for different <a href="/platforms/android-kotlin/data-layer/#data-types">data type</a>.</p>
 
 <p>To set a <code>String</code> value to expire after 1 day:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">instance.dataLayer.putString(<span style="color:#b84">&#34;my_string&#34;</span>, <span style="color:#b84">&#34;my_string_value&#34;</span>, Expiry.afterTimeUnit(<span style="color:#099">1</span>, TimeUnit.DAYS)))</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium.dataLayer.putString(<span style="color:#b84">&#34;my_string&#34;</span>, <span style="color:#b84">&#34;my_string_value&#34;</span>, Expiry.afterTimeUnit(<span style="color:#099">1</span>, TimeUnit.DAYS))</code></pre></div>
 <p>Learn more about the <a href="/platforms/android-kotlin/data-layer/#data-expiration">expiration types</a>.</p>
 
 </div>
@@ -893,6 +895,26 @@ tealium?.track(tealEvent)</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/timed-events/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-timed-events">Timed Events</a>
       </li>
       
     
@@ -6256,7 +6278,7 @@ tealium?.track(tealEvent)</code></pre></div>
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  November 11, 2020 
+    <span>This page was last updated:  November 20, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

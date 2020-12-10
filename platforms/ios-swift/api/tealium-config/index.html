@@ -247,8 +247,10 @@ var utag_data = {
               <li><a href="#batchingenabled">batchingEnabled</a></li>
               <li><a href="#batchsize">batchSize</a></li>
               <li><a href="#collectors">collectors</a></li>
-              <li><a href="#collectoverrideprofile">collectOverrideProfile</a></li>
-              <li><a href="#collectoverrideurl">collectOverrideURL</a></li>
+              <li><a href="#overridecollectprofile">overrideCollectProfile</a></li>
+              <li><a href="#overridecollecturl">overrideCollectURL</a></li>
+              <li><a href="#overridecollectbatchurl">overrideCollectBatchURL</a></li>
+              <li><a href="#overridecollectdomain">overrideCollectDomain</a></li>
               <li><a href="#connectivityrefreshenabled">connectivityRefreshEnabled</a></li>
               <li><a href="#connectivityrefreshinterval">connectivityRefreshInterval</a></li>
               <li><a href="#consentloggingenabled">consentLoggingEnabled</a></li>
@@ -288,6 +290,7 @@ var utag_data = {
               <li><a href="#skadconversionkeys">skAdConversionKeys</a></li>
               <li><a href="#tagmanagementoverrideurl">tagManagementOverrideURL</a></li>
               <li><a href="#tealiumconfig">TealiumConfig()</a></li>
+              <li><a href="#timedeventtriggers">timedEventTriggers</a></li>
               <li><a href="#updatedistance">updateDistance</a></li>
               <li><a href="#usehighaccuracy">useHighAccuracy</a></li>
               </nav>
@@ -367,13 +370,23 @@ var utag_data = {
 </tr>
 
 <tr>
-<td><a href="#collectoverrideprofile"><code>collectOverrideProfile</code></a></td>
+<td><a href="#overrideCollectProfile"><code>overrideCollectProfile</code></a></td>
 <td>Overrides the Tealium Collect profile to send data to a different Tealium profile</td>
 </tr>
 
 <tr>
-<td><a href="#collectoverrideurl"><code>collectOverrideURL</code></a></td>
+<td><a href="#overrideCollectURL"><code>overrideCollectURL</code></a></td>
 <td>Overrides the Tealium Collect URL to send data to a different endpoint</td>
+</tr>
+
+<tr>
+<td><a href="#overrideCollectBatchURL"><code>overrideCollectBatchURL</code></a></td>
+<td>Overrides the Tealium Collect Batch URL to send data to a different endpoint</td>
+</tr>
+
+<tr>
+<td><a href="#overrideCollectDomain"><code>overrideCollectDomain</code></a></td>
+<td>Overrides the Tealium Collect domain name to send data to a different endpoint</td>
 </tr>
 
 <tr>
@@ -543,7 +556,7 @@ var utag_data = {
 
 <tr>
 <td><a href="#shouldaddcookieobserver"><code>shouldAddCookieObserver</code></a></td>
-<td>Determines if Tealium should add a <code>WKWebView</code> Cookie Observer</td>
+<td>Determines whether to add a <code>WKWebView</code> cookie observer</td>
 </tr>
 
 <tr>
@@ -569,6 +582,11 @@ var utag_data = {
 <tr>
 <td><a href="#tealiumconfig"><code>TealiumConfig()</code></a></td>
 <td>Constructor for a <code>TealiumConfig</code> object</td>
+</tr>
+
+<tr>
+<td><a href="#timedeventtriggers"><code>timedEventTriggers</code></a></td>
+<td>A list of <code>TimedEventTrigger</code> objects for automatically tracking timed events</td>
 </tr>
 
 <tr>
@@ -633,14 +651,14 @@ config.addRemoteCommand(remoteCommand)
 
 <p>Sets the list of <code>Collectors</code> to initialize the Tealium library with.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.collectors = [Collectors.AppData]</code></pre></div>
-<h3 id="collectoverrideprofile"><code>collectOverrideProfile</code></h3>
+<h3 id="overridecollectprofile"><code>overrideCollectProfile</code></h3>
 
 <p>Overrides the Tealium Collect profile to send data to a different Tealium profile.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.collectOverrideProfile = <span style="color:#b84">&#34;main&#34;</span></code></pre></div>
-<h3 id="collectoverrideurl"><code>collectOverrideURL</code></h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.overrideCollectProfile = <span style="color:#b84">&#34;main&#34;</span></code></pre></div>
+<h3 id="overridecollecturl"><code>overrideCollectURL</code></h3>
 
-<p>Overrides the Tealium Collect URL to send data to a different endpoint.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.collectOverrideURL = url</code></pre></div>
+<p>Overrides the Tealium Collect URL to send data to a different endpoint. If using the event batching feature, also override the <a href="#overrideCollectBatchURL">overrideCollectBatchURL</a> property.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.overrideCollectURL = url</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -661,11 +679,40 @@ config.addRemoteCommand(remoteCommand)
 
 <p>The default URL is:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">https://collect.tealiumiq.com/event/</code></pre></div>
+<p>The property is used to set a custom hostname or to set a specific region hostname. The following example sets the Tealium Collect base URL to stay within the EU Central region:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">url</span> = <span style="color:#b84">&#34;https://collect-eu-central-1.tealiumiq.com/event/&#34;</span>
+config.overrideCollectURL = url</code></pre></div>
+<h3 id="overridecollectbatchurl"><code>overrideCollectBatchURL</code></h3>
+
+<p>Overrides the Tealium Collect batch URL to send data to a different endpoint.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.overrideCollectBatchURL = url</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Property value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>url</code></td>
+<td><code>String</code></td>
+<td>The URL to override</td>
+</tr>
+</tbody>
+</table>
+
 <p>The default URL with event batching is:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">https://collect.tealiumiq.com/bulk-event/</code></pre></div>
 <p>The method is typically used to set a custom hostname, or to set a specific region hostname. The following example sets the Tealium Collect base URL to stay within the EU Central region:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">url</span> = <span style="color:#b84">&#34;https://collect-eu-central-1.tealiumiq.com/event/&#34;</span>
-config.collectOverrideURL = url</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">url</span> = <span style="color:#b84">&#34;https://collect-eu-central-1.tealiumiq.com/bulk-event/&#34;</span>
+config.overrideCollectBatchURL = url</code></pre></div>
+<h3 id="overridecollectdomain"><code>overrideCollectDomain</code></h3>
+
+<p>Overrides the default Collect domain. Set the value to a hostname with the protocol excluded, such as <code>my-company.com</code>. Use this property for both batch and single event dispatches. If <code>overrideCollectURL</code> or <code>overrideCollectBatchURL</code> is populated, this property takes precedence.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.overrideCollectDomain = <span style="color:#b84">&#34;my-company.com&#34;</span></code></pre></div>
 <h3 id="connectivityrefreshenabled"><code>connectivityRefreshEnabled</code></h3>
 
 <p>If enabled (default), the connectivity module checks for a connection at a specified interval (controlled via <code>setConnectivityRefreshInterval</code>). Queued dispatches are then sent as soon as a connection is resumed.</p>
@@ -750,7 +797,7 @@ config.collectOverrideURL = url</code></pre></div>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.dispatchListeners = [<span style="font-weight:bold">self</span>]</code></pre></div>
 <h3 id="dispatchvalidators"><code>dispatchValidators</code></h3>
 
-<p>Provides the option to add custom <code>DispatchValidator</code>s to control whether events should be dispatched, queued, or dropped.</p>
+<p>Provides the option to add custom <code>DispatchValidator</code>s to control whether to dispatch, queue or drop events.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.dispatchValidators = [<span style="font-weight:bold">self</span>]</code></pre></div>
 <h3 id="dispatchafter"><code>dispatchAfter</code></h3>
 
@@ -968,9 +1015,9 @@ config.rootView = view</code></pre></div>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.searchAdsEnabled = <span style="font-weight:bold">true</span></code></pre></div>
 <h3 id="shouldaddcookieobserver"><code>shouldAddCookieObserver</code></h3>
 
-<p>If set to <code>true</code> (default), this method determines if a cookie observer should be added in order to successfully migrate all cookies. If set to <code>false</code>, if multiple cookie observers are present then only one of them is called, which may cause some cookies to not migrate.</p>
+<p>If set to <code>true</code> (default), this method determines whether to add a <code>WKWebView</code> cookie observer in order to successfully migrate all cookies. If set to <code>false</code>, if multiple cookie observers are present then only one of them is called, which may cause some cookies to not migrate.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.shouldAddCookieObserver = <span style="font-weight:bold">false</span></code></pre></div>
-<p class="note">The <a href="#shouldaddcookieobserver"><code>shouldAddCookieObserver</code></a> property allows you to use your own cookie observer during cookie synchronization, which requires a cookie observer to retrieve cookies on the main thread after setting them. This issue is caused by bugs in <code>WKWebView</code>, which prevents your own observer from being called.</p>
+<p class="note">The <a href="#shouldaddcookieobserver"><code>shouldAddCookieObserver</code></a> property permits using your own cookie observer during cookie synchronization, which requires a cookie observer to retrieve cookies on the main thread after setting them. This issue is caused by bugs in <code>WKWebView</code>, which prevents your own observer from being called.</p>
   
 
 <h3 id="shoulduseremotepublishsettings"><code>shouldUseRemotePublishSettings</code></h3>
@@ -1041,6 +1088,44 @@ config.tagManagementOverrideURL =  url</code></pre></div>
 </tbody>
 </table>
 
+<h3 id="timedeventtriggers"><code>timedEventTriggers</code></h3>
+
+<p>A list of <code>TimedEventTrigger</code> objects for automatically tracking timed events.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.timedEventTriggers = [TimedEventTrigger(start: <span style="color:#b84">&#34;START_EVENT&#34;</span>,
+                                               stop: <span style="color:#b84">&#34;STOP_EVENT&#34;</span>,
+                                               name: <span style="color:#b84">&#34;TIMED_EVENT_NAME&#34;</span>)]</code></pre></div>
+<p>The following are <code>TimedEventTrigger</code> parameters:</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>start</code></td>
+<td><code>String</code></td>
+<td>Name of the <code>TealiumEvent</code> to start the timed event</td>
+</tr>
+
+<tr>
+<td><code>stop</code></td>
+<td><code>String</code></td>
+<td>Name of the <code>TealiumEvent</code>  to stop the timed event</td>
+</tr>
+
+<tr>
+<td><code>name</code></td>
+<td><code>String?</code></td>
+<td>(Optional) Name of timed event (default: <code>&quot;START_EVENT::STOP_EVENT&quot;</code>)</td>
+</tr>
+</tbody>
+</table>
+
 <h3 id="updatedistance"><code>updateDistance</code></h3>
 
 <p>Sets the distance interval (meters) in which location updates are received.</p>
@@ -1084,7 +1169,7 @@ config.tagManagementOverrideURL =  url</code></pre></div>
 
 <p>Learn more about <a href="https://developer.apple.com/documentation/corelocation/getting_the_user_s_location/using_the_significant-change_location_service">Apple&rsquo;s significant-change location service</a>.</p>
 
-<p>If enabled , the property sets the location of data precision to the highest possible accuracy. The initial event is delivered as quickly as possible and then continues to determine the location and delivers additional events, as necessary, when that data is available.</p>
+<p>If enabled, the property sets the location of data precision to the highest possible accuracy. The initial event is delivered as quickly as possible and then continues to determine the location and delivers additional events, as necessary, when that data is available.</p>
 
 <p>Learn more about <a href="https://developer.apple.com/documentation/corelocation/cllocationmanager/1423836-desiredaccuracy?language=swift">Apple&rsquo;s accuracy of location data</a>.</p>
 
@@ -1405,6 +1490,26 @@ config.tagManagementOverrideURL =  url</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/timed-events/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-timed-events">Timed Events</a>
       </li>
       
     
@@ -6768,7 +6873,7 @@ config.tagManagementOverrideURL =  url</code></pre></div>
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  November 11, 2020 
+    <span>This page was last updated:  December 9, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

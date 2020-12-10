@@ -250,6 +250,7 @@ var utag_data = {
               <li><a href="#hosteddatalayereventmappings">hostedDataLayerEventMappings</a></li>
               <li><a href="#loglevel">logLevel</a></li>
               <li><a href="#tealiumconfig">TealiumConfig</a></li>
+              <li><a href="#timedeventtriggers">timedEventTriggers</a></li>
               </nav>
   </aside></div>
 
@@ -344,6 +345,11 @@ var utag_data = {
 <tr>
 <td><a href="#tealiumconfig"><code>TealiumConfig</code></a></td>
 <td>Constructor method that creates a <code>TealiumConfig</code> instance</td>
+</tr>
+
+<tr>
+<td><a href="#timedeventtriggers"><code>timedEventTriggers</code></a></td>
+<td>A list of <code>EventTrigger</code> objects for automatically tracking timed events</td>
 </tr>
 </tbody>
 </table>
@@ -475,6 +481,49 @@ var utag_data = {
 
 <span style="color:#998;font-style:italic">// Add required Modules
 </span><span style="color:#998;font-style:italic"></span>config.modules.add(VisitorService)</code></pre></div>
+<h3 id="timedeventtriggers"><code>timedEventTriggers</code></h3>
+
+<p>A list of <code>EventTrigger</code> objects for automatically tracking timed events.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(<span style="color:#a61717;background-color:#e3d2d2">…</span>).apply {
+  timedEventTriggers = mutableListOf(
+     EventTrigger.forEventName(
+       start_event,
+       stop_event,
+       timed_event_name)
+  )  
+}</code></pre></div>
+<p>The following are <code>EventTrigger</code> parameters:</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>start_event</code></td>
+<td><code>String</code></td>
+<td>Name of the <code>TealiumEvent</code> to start the timed event</td>
+</tr>
+
+<tr>
+<td><code>stop_event</code></td>
+<td><code>String</code></td>
+<td>Name of the <code>TealiumEvent</code> to stop the timed event</td>
+</tr>
+
+<tr>
+<td><code>timed_event_name</code></td>
+<td><code>String?</code></td>
+<td>(Optional) Name of timed event (default: <code>&quot;start_event::stop_event&quot;</code>)</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -761,6 +810,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/timed-events/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-timed-events">Timed Events</a>
       </li>
       
     
@@ -6124,7 +6193,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  November 11, 2020 
+    <span>This page was last updated:  December 9, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

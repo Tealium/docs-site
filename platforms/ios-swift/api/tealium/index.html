@@ -241,10 +241,14 @@ var utag_data = {
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#class-tealium">Class: Tealium</a></li>
-              <ul class="toc-h3"><li><a href="#disable">disable()</a></li>
+              <ul class="toc-h3"><li><a href="#canceltimedevent">cancelTimedEvent()</a></li>
+              <li><a href="#clearalltimedevents">clearAllTimedEvents()</a></li>
+              <li><a href="#disable">disable()</a></li>
               <li><a href="#flushqueue">flushQueue()</a></li>
               <li><a href="#jointrace">joinTrace()</a></li>
               <li><a href="#leavetrace">leaveTrace()</a></li>
+              <li><a href="#starttimedevent">startTimedEvent()</a></li>
+              <li><a href="#stoptimedevent">stopTimedEvent()</a></li>
               <li><a href="#tealium">Tealium()</a></li>
               <li><a href="#track">track()</a></li>
               <li><a href="#visitorid">visitorId</a></li>
@@ -300,6 +304,16 @@ var utag_data = {
 
 <tbody>
 <tr>
+<td><a href="#canceltimedevent"><code>cancelTimedEvent()</code></a></td>
+<td>Cancels the timer for a timed event</td>
+</tr>
+
+<tr>
+<td><a href="#clearalltimedevents"><code>clearAllTimedEvents()</code></a></td>
+<td>Clears all previously started timed events</td>
+</tr>
+
+<tr>
 <td><a href="#disable"><code>disable()</code></a></td>
 <td>Disables the Tealium library</td>
 </tr>
@@ -320,6 +334,16 @@ var utag_data = {
 </tr>
 
 <tr>
+<td><a href="#starttimedevent"><code>startTimedEvent()</code></a></td>
+<td>Starts a timed event with the given name</td>
+</tr>
+
+<tr>
+<td><a href="#stoptimedevent"><code>stopTimedEvent()</code></a></td>
+<td>Stops the timer for a timed event which triggers the <code>timed_event</code> tracking call</td>
+</tr>
+
+<tr>
 <td><a href="#tealium"><code>Tealium()</code></a></td>
 <td>Constructor for a new <code>Tealium</code> object</td>
 </tr>
@@ -336,6 +360,32 @@ var utag_data = {
 </tbody>
 </table>
 
+<h3 id="canceltimedevent"><code>cancelTimedEvent()</code></h3>
+
+<p>Cancels the timer for a timed event. The timed event is not tracked.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.cancelTimedEvent(name: <span style="color:#b84">&#34;TIMED_EVENT_NAME&#34;</span>)</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>String</code></td>
+<td>The name of the timed event</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="clearalltimedevents"><code>clearAllTimedEvents()</code></h3>
+
+<p>Clears all previously started timed events. The timed events are not tracked.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.clearAllTimedEvents()</code></pre></div>
 <h3 id="disable"><code>disable()</code></h3>
 
 <p>Disables the Tealium library and removes all module references. Re-enable by creating a new Tealium instance if required.</p>
@@ -388,6 +438,58 @@ var utag_data = {
 <td><code>Bool</code></td>
 <td>(Optional) Defaults to <code>true</code> if no params are passed or pass <code>false</code> if you do not wish to terminate the visitor session</td>
 <td>[<code>true</code>, <code>false</code>]</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="starttimedevent"><code>startTimedEvent()</code></h3>
+
+<p>Starts a timed event with the given name. If this method is called again with the same event name, it is ignored if the event has not been ended or canceled. The event start time is not persisted.</p>
+
+<p>If optional data is passed along with the event name, it is added to the track call when the timer is stopped with the <a href="#stoptimedevent"><code>stopTimedEvent()</code></a> call.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium.startTimedEvent(name: <span style="color:#b84">&#34;TIMED_EVENT_NAME&#34;</span>, with: [<span style="color:#b84">&#34;custom_key&#34;</span>: <span style="color:#b84">&#34;custom_value&#34;</span>])</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>String</code></td>
+<td>The name of the timed event</td>
+</tr>
+
+<tr>
+<td><code>[&quot;custom_key&quot;: &quot;custom_value&quot;]</code> (optional)</td>
+<td><code>Map</code></td>
+<td>An object of key-value pair data to be tracked in the data layer</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="stoptimedevent"><code>stopTimedEvent()</code></h3>
+
+<p>Stops the timer for a timed event which triggers the <code>timed_event</code> tracking call.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.stopTimedEvent(name: <span style="color:#b84">&#34;TIMED_EVENT_NAME&#34;</span>)</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>String</code></td>
+<td>The name of the timed event</td>
 </tr>
 </tbody>
 </table>
@@ -761,6 +863,26 @@ tealium?.track(tealEvent)</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started/timed-events/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-timed-events">Timed Events</a>
       </li>
       
     
@@ -6124,7 +6246,7 @@ tealium?.track(tealEvent)</code></pre></div>
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  August 12, 2020 
+    <span>This page was last updated:  December 9, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
