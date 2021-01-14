@@ -241,7 +241,8 @@ var utag_data = {
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#usage">Usage</a></li>
-              <li><a href="#set-policy">Set policy</a></li>
+              <li><a href="#set-policy">Set Policy</a></li>
+              <li><a href="#consent-expiration">Consent Expiration</a></li>
               <li><a href="#examples">Examples</a></li>
               <li><a href="#use-cases">Use Cases</a></li>
               <ul class="toc-h3"><li><a href="#full-consent">Full Consent</a></li>
@@ -295,11 +296,12 @@ var utag_data = {
 <li>Consent Manager disabled by default (see <a href="#full-consent">Full Consent</a> to enable)</li>
 <li>Consent Manager incorporated into the <code>TealiumCore</code> module</li>
 <li>CCPA support introduced</li>
+<li>Consent expiration options</li>
 </ul>
 
 <p>Learn more about <a href="/platforms/getting-started/consent-management/">Consent Management</a> and consent policies.</p>
 
-<h2 id="set-policy">Set policy</h2>
+<h2 id="set-policy">Set Policy</h2>
 
 <p>The Consent Management module is included with the core library and is not active until a consent policy is set.</p>
 
@@ -308,7 +310,7 @@ var utag_data = {
 	<span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
 
 	<span style="font-weight:bold">private</span> <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">initTealium</span>() {
-		<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(...
+		<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(...)
 		config.consentPolicy = .gdpr
     <span style="color:#998;font-style:italic">//...</span>
 	}
@@ -317,6 +319,41 @@ var utag_data = {
 
 <p>To set consent logging events, which are generated whenever the consent status changes:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.consentLoggingEnabled = <span style="font-weight:bold">true</span></code></pre></div>
+<h2 id="consent-expiration">Consent Expiration</h2>
+
+<p>Set the expiration time for the consent selections using the <a href="/platforms/ios-swift/api/tealium-config#consentexpiry"><code>consentExpiry</code></a> property.</p>
+
+<p>The following example sets the consent manager policy to GDPR and the expiration time to 90 days:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
+	<span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
+
+	<span style="font-weight:bold">private</span> <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">initTealium</span>() {
+		<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(...)
+		config.consentPolicy = .gdpr
+		config.consentExpiry = (<span style="color:#099">90</span>, .days)
+    <span style="color:#998;font-style:italic">//...</span>
+	}
+}</code></pre></div>
+<p>To trigger a callback once the consent has expired, define your callback on the <a href="/platforms/ios-swift/api/tealium-config/"><code>TealiumConfig</code></a> object:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
+	<span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
+
+	<span style="font-weight:bold">private</span> <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">initTealium</span>() {
+		<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(...)
+		config.consentPolicy = .gdpr
+		config.consentExpiry = (<span style="color:#099">90</span>, .days)
+		config.onConsentExpiration = {
+       	print(<span style="color:#b84">&#34;Consent expired&#34;</span>)
+       }
+    <span style="color:#998;font-style:italic">//...</span>
+	}
+}</code></pre></div>
+<p>Alternatively, define your callback on the <a href="/platforms/ios-swift/api/tealium-consent-manager/"><code>TealiumConsentManager</code></a> object:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium = Tealium(config: config) { [<span style="font-weight:bold">weak</span> <span style="font-weight:bold">self</span>] <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+	<span style="font-weight:bold">self</span>?.tealium?.consentManager?.onConsentExpiration = {
+		print(<span style="color:#b84">&#34;Consent expired&#34;</span>)
+	}
+}</code></pre></div>
 <h2 id="examples">Examples</h2>
 
 <p>The following example code shows how to access the Consent Manager.</p>
@@ -1701,6 +1738,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/android-kotlin/module-list/collectors/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-collectors">Collectors Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
       </li>
       
     
@@ -6077,7 +6134,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  August 14, 2020 
+    <span>This page was last updated:  January 13, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

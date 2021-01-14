@@ -246,6 +246,8 @@ var utag_data = {
               <li><a href="#reset">reset()</a></li>
               <li><a href="#userconsentcategories">userConsentCategories</a></li>
               <li><a href="#userconsentstatus">userConsentStatus</a></li>
+              </ul><li><a href="#interface-userconsentpreferencesupdatedlistener">Interface: UserConsentPreferencesUpdatedListener</a></li>
+              <ul class="toc-h3"><li><a href="#onuserconsentpreferencesupdated">onUserConsentPreferencesUpdated()</a></li>
               </nav>
   </aside></div>
 
@@ -349,6 +351,64 @@ var utag_data = {
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium.consentManager.userConsentPreferences = ConsentStatus.CONSENTED
 
 <span style="font-weight:bold">val</span> status = tealium.consentManager.userConsentStatus <span style="color:#998;font-style:italic">// returns ConsentStatus.CONSENTED</span></code></pre></div>
+<h2 id="interface-userconsentpreferencesupdatedlistener">Interface: <code>UserConsentPreferencesUpdatedListener</code></h2>
+
+<p>The <code>UserConsentPreferencesUpdatedListener</code> is a listener interface. Register to receive the latest version updates of <code>UserConsentPreferences</code> and <code>ConsentPolicy</code>.</p>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="#onuserconsentpreferencesupdated"><code>onUserConsentPreferencesUpdated()</code></a></td>
+<td>Gets or sets whether to log consent preference changes</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="onuserconsentpreferencesupdated"><code>onUserConsentPreferencesUpdated()</code></h3>
+
+<p>Gets or sets whether to log consent preference changes. Implement the method on a class that implements the interface, or pass in an anonymous object after creating your <code>Tealium</code> instance.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">onUserConsentPreferencesUpdated(userConsentPreferences:policy:)</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>userConsentPreferences</code></td>
+<td><code>UserConsentPreferences</code></td>
+<td>User consent preferences</td>
+</tr>
+
+<tr>
+<td><code>policy</code></td>
+<td><code>ConsentManagementPolicy</code></td>
+<td>Consent management policy</td>
+</tr>
+</tbody>
+</table>
+
+<p>Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> tealium = Tealium.create(...) {
+        events.subscribe(<span style="font-weight:bold">object</span> <span style="color:#a61717;background-color:#e3d2d2">: </span><span style="color:#458;font-weight:bold">UserConsentPreferencesUpdatedListener</span> {
+	        <span style="font-weight:bold">override</span> <span style="font-weight:bold">fun</span> <span style="color:#900;font-weight:bold">onUserConsentPreferencesUpdated</span>(userConsentPreferences: UserConsentPreferences,
+	                                                     policy: ConsentManagementPolicy) {
+	            Logger.dev(BuildConfig.TAG, <span style="color:#b84">&#34;Consent preferences have been updated&#34;</span>)
+
+        }
+    })
+}</code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -1642,6 +1702,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/android-kotlin/module-list/collectors/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-collectors">Collectors Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
       </li>
       
     
@@ -6018,7 +6098,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  August 12, 2020 
+    <span>This page was last updated:  January 13, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

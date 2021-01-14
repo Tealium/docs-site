@@ -241,9 +241,10 @@ var utag_data = {
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#class-tealiumconsentmanager">Class: TealiumConsentManager</a></li>
-              <ul class="toc-h3"><li><a href="#userconsentstatus">userConsentStatus</a></li>
-              <li><a href="#userconsentcategories">userConsentCategories</a></li>
+              <ul class="toc-h3"><li><a href="#onconsentexpiration">onConsentExpiration</a></li>
+              <li><a href="#userconsentstatus">userConsentStatus</a></li>
               <li><a href="#resetuserconsentpreferences">resetUserConsentPreferences()</a></li>
+              <li><a href="#userconsentcategories">userConsentCategories</a></li>
               </nav>
   </aside></div>
 
@@ -296,6 +297,16 @@ var utag_data = {
 
 <tbody>
 <tr>
+<td><a href="#onconsentexpiration"><code>onConsentExpiration</code></a></td>
+<td>Callback to execute once consent selections expire</td>
+</tr>
+
+<tr>
+<td><a href="#resetuserconsentpreferences"><code>resetUserConsentPreferences()</code></a></td>
+<td>Clears all currently stored consent preferences in memory and in persistent storage</td>
+</tr>
+
+<tr>
 <td><a href="#userconsentstatus"><code>userConsentStatus</code></a></td>
 <td>Gets or sets the user&rsquo;s consent status</td>
 </tr>
@@ -304,14 +315,15 @@ var utag_data = {
 <td><a href="#userconsentcategories"><code>userConsentCategories</code></a></td>
 <td>Gets or sets the user&rsquo;s consent categories</td>
 </tr>
-
-<tr>
-<td><a href="#resetuserconsentpreferences"><code>resetUserConsentPreferences()</code></a></td>
-<td>Clears all currently stored consent preferences in memory and in persistent storage</td>
-</tr>
 </tbody>
 </table>
 
+<h3 id="onconsentexpiration"><code>onConsentExpiration</code></h3>
+
+<p>Callback to execute once consent selections expire.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.onConsentExpiration = {
+   <span style="color:#998;font-style:italic">// display consent modal</span>
+}</code></pre></div>
 <h3 id="userconsentstatus"><code>userConsentStatus</code></h3>
 
 <p>Gets or sets the current consent status.</p>
@@ -333,6 +345,10 @@ tealium.consentManager?.userConsentStatus = .consented</code></pre></div>
 </tbody>
 </table>
 
+<h3 id="resetuserconsentpreferences"><code>resetUserConsentPreferences()</code></h3>
+
+<p>Clears all currently stored consent preferences in memory and in persistent storage. Reverts to <code>&quot;unknown&quot;</code> consent state, with no categories.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">resetUserConsentPreferences()</code></pre></div>
 <h3 id="userconsentcategories"><code>userConsentCategories</code></h3>
 
 <p>Gets or sets all current consent categories.</p>
@@ -354,10 +370,6 @@ tealium.consentManager?.userConsentCategories = [.cdp]</code></pre></div>
 </tbody>
 </table>
 
-<h3 id="resetuserconsentpreferences"><code>resetUserConsentPreferences()</code></h3>
-
-<p>Clears all currently stored consent preferences in memory and in persistent storage. Reverts to <code>&quot;unknown&quot;</code> consent state, with no categories.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">resetUserConsentPreferences()</code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -1651,6 +1663,26 @@ tealium.consentManager?.userConsentCategories = [.cdp]</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/android-kotlin/module-list/collectors/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-collectors">Collectors Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
       </li>
       
     
@@ -6027,7 +6059,7 @@ tealium.consentManager?.userConsentCategories = [.cdp]</code></pre></div>
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  August 12, 2020 
+    <span>This page was last updated:  January 13, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

@@ -247,12 +247,9 @@ var utag_data = {
               <li><a href="#batchingenabled">batchingEnabled</a></li>
               <li><a href="#batchsize">batchSize</a></li>
               <li><a href="#collectors">collectors</a></li>
-              <li><a href="#overridecollectprofile">overrideCollectProfile</a></li>
-              <li><a href="#overridecollecturl">overrideCollectURL</a></li>
-              <li><a href="#overridecollectbatchurl">overrideCollectBatchURL</a></li>
-              <li><a href="#overridecollectdomain">overrideCollectDomain</a></li>
               <li><a href="#connectivityrefreshenabled">connectivityRefreshEnabled</a></li>
               <li><a href="#connectivityrefreshinterval">connectivityRefreshInterval</a></li>
+              <li><a href="#consentexpiry">consentExpiry</a></li>
               <li><a href="#consentloggingenabled">consentLoggingEnabled</a></li>
               <li><a href="#consentpolicy">consentPolicy</a></li>
               <li><a href="#deeplinktrackingenabled">deepLinkTrackingEnabled</a></li>
@@ -277,6 +274,11 @@ var utag_data = {
               <li><a href="#memoryreportingenabled">memoryReportingEnabled</a></li>
               <li><a href="#minimumfreediskspace">minimumFreeDiskSpace</a></li>
               <li><a href="#minutesbetweenrefresh">minutesBetweenRefresh</a></li>
+              <li><a href="#onconsentexpiration">onConsentExpiration</a></li>
+              <li><a href="#overridecollectprofile">overrideCollectProfile</a></li>
+              <li><a href="#overridecollecturl">overrideCollectURL</a></li>
+              <li><a href="#overridecollectbatchurl">overrideCollectBatchURL</a></li>
+              <li><a href="#overridecollectdomain">overrideCollectDomain</a></li>
               <li><a href="#publishsettingsprofile">publishSettingsProfile</a></li>
               <li><a href="#publishsettingsurl">publishSettingsURL</a></li>
               <li><a href="#remoteapienabled">remoteAPIEnabled</a></li>
@@ -370,26 +372,6 @@ var utag_data = {
 </tr>
 
 <tr>
-<td><a href="#overrideCollectProfile"><code>overrideCollectProfile</code></a></td>
-<td>Overrides the Tealium Collect profile to send data to a different Tealium profile</td>
-</tr>
-
-<tr>
-<td><a href="#overrideCollectURL"><code>overrideCollectURL</code></a></td>
-<td>Overrides the Tealium Collect URL to send data to a different endpoint</td>
-</tr>
-
-<tr>
-<td><a href="#overrideCollectBatchURL"><code>overrideCollectBatchURL</code></a></td>
-<td>Overrides the Tealium Collect Batch URL to send data to a different endpoint</td>
-</tr>
-
-<tr>
-<td><a href="#overrideCollectDomain"><code>overrideCollectDomain</code></a></td>
-<td>Overrides the Tealium Collect domain name to send data to a different endpoint</td>
-</tr>
-
-<tr>
 <td><a href="#connectivityrefreshenabled"><code>connectivityRefreshEnabled</code></a></td>
 <td>If enabled (default), the connectivity module checks for a connection at a specified interval</td>
 </tr>
@@ -397,6 +379,11 @@ var utag_data = {
 <tr>
 <td><a href="#connectivityrefreshinterval"><code>connectivityRefreshInterval</code></a></td>
 <td>Sets the default connectivity refresh interval in seconds</td>
+</tr>
+
+<tr>
+<td><a href="#consentexpiry"><code>consentExpiry</code></a></td>
+<td>Sets the expiration time of the user consent selections</td>
 </tr>
 
 <tr>
@@ -517,6 +504,31 @@ var utag_data = {
 <tr>
 <td><a href="#minutesbetweenrefresh"><code>minutesBetweenRefresh</code></a></td>
 <td>Determines how often to fetch the publish settings from the CDN</td>
+</tr>
+
+<tr>
+<td><a href="#onconsentexpiration"><code>onConsentExpiration</code></a></td>
+<td>Callback to execute once consent selections expire</td>
+</tr>
+
+<tr>
+<td><a href="#overrideCollectProfile"><code>overrideCollectProfile</code></a></td>
+<td>Overrides the Tealium Collect profile to send data to a different Tealium profile</td>
+</tr>
+
+<tr>
+<td><a href="#overrideCollectURL"><code>overrideCollectURL</code></a></td>
+<td>Overrides the Tealium Collect URL to send data to a different endpoint</td>
+</tr>
+
+<tr>
+<td><a href="#overrideCollectBatchURL"><code>overrideCollectBatchURL</code></a></td>
+<td>Overrides the Tealium Collect Batch URL to send data to a different endpoint</td>
+</tr>
+
+<tr>
+<td><a href="#overrideCollectDomain"><code>overrideCollectDomain</code></a></td>
+<td>Overrides the Tealium Collect domain name to send data to a different endpoint</td>
 </tr>
 
 <tr>
@@ -651,68 +663,6 @@ config.addRemoteCommand(remoteCommand)
 
 <p>Sets the list of <code>Collectors</code> to initialize the Tealium library with.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.collectors = [Collectors.AppData]</code></pre></div>
-<h3 id="overridecollectprofile"><code>overrideCollectProfile</code></h3>
-
-<p>Overrides the Tealium Collect profile to send data to a different Tealium profile.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.overrideCollectProfile = <span style="color:#b84">&#34;main&#34;</span></code></pre></div>
-<h3 id="overridecollecturl"><code>overrideCollectURL</code></h3>
-
-<p>Overrides the Tealium Collect URL to send data to a different endpoint. If using the event batching feature, also override the <a href="#overrideCollectBatchURL">overrideCollectBatchURL</a> property.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.overrideCollectURL = url</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Property value</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>url</code></td>
-<td><code>String</code></td>
-<td>The URL to override</td>
-</tr>
-</tbody>
-</table>
-
-<p>The default URL is:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">https://collect.tealiumiq.com/event/</code></pre></div>
-<p>The property is used to set a custom hostname or to set a specific region hostname. The following example sets the Tealium Collect base URL to stay within the EU Central region:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">url</span> = <span style="color:#b84">&#34;https://collect-eu-central-1.tealiumiq.com/event/&#34;</span>
-config.overrideCollectURL = url</code></pre></div>
-<h3 id="overridecollectbatchurl"><code>overrideCollectBatchURL</code></h3>
-
-<p>Overrides the Tealium Collect batch URL to send data to a different endpoint.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.overrideCollectBatchURL = url</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Property value</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>url</code></td>
-<td><code>String</code></td>
-<td>The URL to override</td>
-</tr>
-</tbody>
-</table>
-
-<p>The default URL with event batching is:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">https://collect.tealiumiq.com/bulk-event/</code></pre></div>
-<p>The method is typically used to set a custom hostname, or to set a specific region hostname. The following example sets the Tealium Collect base URL to stay within the EU Central region:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">url</span> = <span style="color:#b84">&#34;https://collect-eu-central-1.tealiumiq.com/bulk-event/&#34;</span>
-config.overrideCollectBatchURL = url</code></pre></div>
-<h3 id="overridecollectdomain"><code>overrideCollectDomain</code></h3>
-
-<p>Overrides the default Collect domain. Set the value to a hostname with the protocol excluded, such as <code>my-company.com</code>. Use this property for both batch and single event dispatches. If <code>overrideCollectURL</code> or <code>overrideCollectBatchURL</code> is populated, this property takes precedence.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.overrideCollectDomain = <span style="color:#b84">&#34;my-company.com&#34;</span></code></pre></div>
 <h3 id="connectivityrefreshenabled"><code>connectivityRefreshEnabled</code></h3>
 
 <p>If enabled (default), the connectivity module checks for a connection at a specified interval (controlled via <code>setConnectivityRefreshInterval</code>). Queued dispatches are then sent as soon as a connection is resumed.</p>
@@ -721,6 +671,17 @@ config.overrideCollectBatchURL = url</code></pre></div>
 
 <p>Sets the default connectivity refresh interval in seconds. Default is 30 seconds if not set on the TealiumConfig instance.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.connectivityRefreshInterval = <span style="color:#099">30</span></code></pre></div>
+<h3 id="consentexpiry"><code>consentExpiry</code></h3>
+
+<p>Sets the expiration time of the user consent selections. Set this property when initializing Tealium. The default expiration times for consent selections are:</p>
+
+<ul>
+<li>CCPA: 395 days</li>
+<li>GDPR: 365 days<br /></li>
+</ul>
+
+<p>The following sets the consent expiry to 90 days.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.consentExpiry = (<span style="color:#099">90</span>, .days)</code></pre></div>
 <h3 id="consentloggingenabled"><code>consentLoggingEnabled</code></h3>
 
 <p>Enables the <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Consent-Change-Event-Specifications/ta-p/23213">Consent Logging</a> feature, which sends all consent status changes to Tealium Customer Data Hub for auditing purposes.</p>
@@ -982,6 +943,74 @@ config.overrideCollectBatchURL = url</code></pre></div>
 
 <p>Determines how often to fetch the publish settings from the CDN</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.minutesBetweenRefresh = <span style="color:#099">15</span></code></pre></div>
+<h3 id="onconsentexpiration"><code>onConsentExpiration</code></h3>
+
+<p>Callback to execute once consent selections expire.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.onConsentExpiration = {
+	<span style="color:#998;font-style:italic">// display consent modal</span>
+}</code></pre></div>
+<h3 id="overridecollectprofile"><code>overrideCollectProfile</code></h3>
+
+<p>Overrides the Tealium Collect profile to send data to a different Tealium profile.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.overrideCollectProfile = <span style="color:#b84">&#34;main&#34;</span></code></pre></div>
+<h3 id="overridecollecturl"><code>overrideCollectURL</code></h3>
+
+<p>Overrides the Tealium Collect URL to send data to a different endpoint. If using the event batching feature, also override the <a href="#overrideCollectBatchURL">overrideCollectBatchURL</a> property.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.overrideCollectURL = url</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Property value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>url</code></td>
+<td><code>String</code></td>
+<td>The URL to override</td>
+</tr>
+</tbody>
+</table>
+
+<p>The default URL is:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">https://collect.tealiumiq.com/event/</code></pre></div>
+<p>The property is used to set a custom hostname or to set a specific region hostname. The following example sets the Tealium Collect base URL to stay within the EU Central region:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">url</span> = <span style="color:#b84">&#34;https://collect-eu-central-1.tealiumiq.com/event/&#34;</span>
+config.overrideCollectURL = url</code></pre></div>
+<h3 id="overridecollectbatchurl"><code>overrideCollectBatchURL</code></h3>
+
+<p>Overrides the Tealium Collect batch URL to send data to a different endpoint.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.overrideCollectBatchURL = url</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Property value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>url</code></td>
+<td><code>String</code></td>
+<td>The URL to override</td>
+</tr>
+</tbody>
+</table>
+
+<p>The default URL with event batching is:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">https://collect.tealiumiq.com/bulk-event/</code></pre></div>
+<p>The method is typically used to set a custom hostname, or to set a specific region hostname. The following example sets the Tealium Collect base URL to stay within the EU Central region:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">url</span> = <span style="color:#b84">&#34;https://collect-eu-central-1.tealiumiq.com/bulk-event/&#34;</span>
+config.overrideCollectBatchURL = url</code></pre></div>
+<h3 id="overridecollectdomain"><code>overrideCollectDomain</code></h3>
+
+<p>Overrides the default Collect domain. Set the value to a hostname with the protocol excluded, such as <code>my-company.com</code>. Use this property for both batch and single event dispatches. If <code>overrideCollectURL</code> or <code>overrideCollectBatchURL</code> is populated, this property takes precedence.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.overrideCollectDomain = <span style="color:#b84">&#34;my-company.com&#34;</span></code></pre></div>
 <h3 id="publishsettingsprofile"><code>publishSettingsProfile</code></h3>
 
 <p>Overrides the publish settings profile.</p>
@@ -2497,6 +2526,26 @@ config.tagManagementOverrideURL =  url</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/android-kotlin/module-list/collectors/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-collectors">Collectors Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
       </li>
       
     
@@ -6873,7 +6922,7 @@ config.tagManagementOverrideURL =  url</code></pre></div>
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  December 9, 2020 
+    <span>This page was last updated:  January 14, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
