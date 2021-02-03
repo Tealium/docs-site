@@ -248,7 +248,6 @@ var utag_data = {
               <li><a href="#carthage">Carthage</a></li>
               </ul><li><a href="#remote-command-options">Remote Command Options</a></li>
               <ul class="toc-h3"><li><a href="#examples">Examples</a></li>
-              <li><a href="#vendor-example-json">Vendor Example (JSON)</a></li>
               </ul><li><a href="#data-layer">Data Layer</a></li>
               <li><a href="#api-reference">API Reference</a></li>
               <ul class="toc-h3"><li><a href="#init">init()</a></li>
@@ -358,15 +357,17 @@ var utag_data = {
 <p>There are two configuration options for remote commands:</p>
 
 <ul>
-<li>TiQ (webview required)</li>
-<li>JSON (webview not required)</li>
+<li><strong>JSON File</strong><br />
+A JSON file, loaded locally or hosted remotely, containing the vendor settings, data mappings, and event triggers.</li>
+<li><strong>Remote Command Tag</strong><br />
+A tag in iQ Tag Management that offers configuration options for the vendor&rsquo;s API (for use with the Tag Management module).</li>
 </ul>
 
-<p>Learn more about <a href="/platforms/remote-commands/how-it-works/">remote commands</a>, and the difference between these two options.</p>
+<p>See the <a href="/platforms/remote-commands/integrations/">list of remote command vendor integrations</a>.</p>
 
 <h3 id="examples">Examples</h3>
 
-<p>The Remote Command tag is configurable in Tealium iQ Tag Management, via a JSON cfile in your app, or JSON file on a remote server.  Once the remote command is configured and the module is installed in your app, add the following lines to the initialization:</p>
+<p>The Remote Command tag is configurable in Tealium iQ Tag Management, via a JSON file in your app, or JSON file on a remote server.  Once the remote command is configured and the module is installed in your app, add the following lines to the initialization:</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
@@ -376,9 +377,9 @@ var utag_data = {
   <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
 
 <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-                     profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-                    environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-                    dataSource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
+                            profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
+                            environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
+                            dataSource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
 
 tealium = Tealium(config: config) { [<span style="font-weight:bold">weak</span> <span style="font-weight:bold">self</span>] <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
     <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>?.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
@@ -403,7 +404,6 @@ tealium = Tealium(config: config) { [<span style="font-weight:bold">weak</span> 
                             dataSource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
 
 tealium = Tealium(config: config) { [<span style="font-weight:bold">weak</span> <span style="font-weight:bold">self</span>] <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
-
     <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>?.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
         <span style="font-weight:bold">return</span>
     }
@@ -426,7 +426,6 @@ tealium = Tealium(config: config) { [<span style="font-weight:bold">weak</span> 
                             dataSource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
 
 tealium = Tealium(config: config) { [<span style="font-weight:bold">weak</span> <span style="font-weight:bold">self</span>] response <span style="font-weight:bold">in</span>
-
     <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>?.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
         <span style="font-weight:bold">return</span>
     }
@@ -443,30 +442,8 @@ tealium = Tealium(config: config) { [<span style="font-weight:bold">weak</span> 
 <p></div>
 </div></p>
 
-<h3 id="vendor-example-json">Vendor Example (JSON)</h3>
+<p>After the JSON file has been configured and either added to your app or hosted on a server, learn about the different <a href="/platforms/remote-commands/how-it-works/#load-options">JSON load options</a>.</p>
 
-<p>Once a JSON file has been configured and either added to your app or hosted on a server, add the following lines to the initialization as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
-
-<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-                     		profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-                    		environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-                    		dataSource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
-
-
-
-tealium = Tealium(config: config) { [<span style="font-weight:bold">weak</span> <span style="font-weight:bold">self</span>] <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
-    <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = <span style="font-weight:bold">self</span>?.tealium?.remoteCommands <span style="font-weight:bold">else</span> {
-        <span style="font-weight:bold">return</span>
-    }
-
-    <span style="font-weight:bold">let</span> <span style="color:#008080">firebase</span> = FirebaseRemoteCommand(type: .local(file:<span style="color:#b84">&#34;firebase&#34;</span>))
-
-    <span style="font-weight:bold">let</span> <span style="color:#008080">braze</span> = BrazeRemoteCommand(type: .remote(url: <span style="color:#b84">&#34;https://tags.tiqcdn.com/dle/tealiummobile/demo/braze.json&#34;</span>))
-
-    remoteCommands.add(firebase)
-    remoteCommands.add(braze)
-}</code></pre></div>
 <h2 id="data-layer">Data Layer</h2>
 
 <p>No additional variables are introduced by this module.</p>
@@ -1868,6 +1845,26 @@ config.remoteHTTPCommandDisabled = <span style="font-weight:bold">false</span></
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/adid/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-adid">Ad Identifier Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/android-kotlin/module-list/collect/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-collect">Collect Module</a>
       </li>
       
@@ -1969,6 +1966,26 @@ config.remoteHTTPCommandDisabled = <span style="font-weight:bold">false</span></
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/android-kotlin/module-list/location/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-location">Location Manager Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/android-kotlin/module-list/remote-commands/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-remotecommands">RemoteCommands Module</a>
       </li>
       
     
@@ -2861,26 +2878,6 @@ config.remoteHTTPCommandDisabled = <span style="font-weight:bold">false</span></
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="3">
         <a href="/platforms/ios-objective-c/module-list/lifecycle-tracking/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-objective-c-module-list-lifecycle-tracking">Lifecycle Tracking Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
-        <a href="/platforms/ios-objective-c/module-list/optimizely-x-tracking/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-objective-c-module-list-optimizely-x-tracking">Optimizely X Tracking Module</a>
       </li>
       
     
@@ -4486,6 +4483,170 @@ config.remoteHTTPCommandDisabled = <span style="font-weight:bold">false</span></
       
       
       <li class="w-100 hover-accent-color-light fw8" data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".nativescript">NativeScript</a>
+        <ul class="nativescript desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/nativescript/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".nativescript-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/nativescript/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".nativescript-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/nativescript/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".nativescript-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 pl3 pr2  primary-color hover-bg-primary " data-target=".nativescript-api">API Reference</a>
+        <ul class="nativescript-api desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/nativescript/api/tealium/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".nativescript-api-tealium">Tealium</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="3">
+        <a href="/platforms/nativescript/api/tealium-config/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".nativescriptt-api-tealium-config">TealiumConfig</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/nativescript/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".nativescript-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="1">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".react-native-v1">React Native 1.x</a>
         <ul class="react-native-v1 desktopmenu animated fadeIn list pl0 dn">
             
@@ -5006,6 +5167,88 @@ config.remoteHTTPCommandDisabled = <span style="font-weight:bold">false</span></
       
       
       <li class="w-100 hover-accent-color-light fw8" data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".getting-started-web">Getting Started</a>
+        <ul class="getting-started-web desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started-web/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-web-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started-web/quick-start/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-web-quick-start">Quick Start Guide</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/getting-started-web/web-concepts/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-web-web-concepts">Web Concepts</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8" data-level="1">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".adobe-launch">Adobe Launch</a>
         <ul class="adobe-launch desktopmenu animated fadeIn list pl0 dn">
             
@@ -5103,26 +5346,6 @@ config.remoteHTTPCommandDisabled = <span style="font-weight:bold">false</span></
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/amp/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".amp-overview">Overview</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/amp/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".amp-install">Install</a>
       </li>
       
@@ -5170,6 +5393,26 @@ config.remoteHTTPCommandDisabled = <span style="font-weight:bold">false</span></
   
   
 
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/amp/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".amp-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
         </ul>
       </li>
       
@@ -5192,26 +5435,6 @@ config.remoteHTTPCommandDisabled = <span style="font-weight:bold">false</span></
       <li class="w-100 hover-accent-color-light fw8" data-level="1">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".angular">Angular</a>
         <ul class="angular desktopmenu animated fadeIn list pl0 dn">
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/angular/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".angular-overview">Overview</a>
-      </li>
-      
-    
-  
-  
-
             
 
   
@@ -5266,6 +5489,26 @@ config.remoteHTTPCommandDisabled = <span style="font-weight:bold">false</span></
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/angular/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".angular-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/angular/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".angular-overview">Overview</a>
       </li>
       
     
@@ -5327,7 +5570,7 @@ config.remoteHTTPCommandDisabled = <span style="font-weight:bold">false</span></
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/google-tag-manager/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".google-tag-manager-install">Install</a>
+        <a href="/platforms/google-tag-manager/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".google-tag-manager-data-layer">Data Layer</a>
       </li>
       
     
@@ -5347,7 +5590,7 @@ config.remoteHTTPCommandDisabled = <span style="font-weight:bold">false</span></
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/google-tag-manager/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".google-tag-manager-data-layer">Data Layer</a>
+        <a href="/platforms/google-tag-manager/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".google-tag-manager-install">Install</a>
       </li>
       
     
@@ -5376,26 +5619,6 @@ config.remoteHTTPCommandDisabled = <span style="font-weight:bold">false</span></
       <li class="w-100 hover-accent-color-light fw8 mb1 bb b--moon-gray" data-level="1">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".javascript">JavaScript (Web)</a>
         <ul class="javascript desktopmenu animated fadeIn list pl0 dn">
-            
-
-  
-  
-  
-  
-  
-  
-      
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
-        <a href="/platforms/javascript/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".javascript-overview">Overview</a>
-      </li>
-      
-    
-  
-  
-
             
 
   
@@ -5450,6 +5673,26 @@ config.remoteHTTPCommandDisabled = <span style="font-weight:bold">false</span></
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="2">
         <a href="/platforms/javascript/data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".">Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 " data-level="2">
+        <a href="/platforms/javascript/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".javascript-overview">Overview</a>
       </li>
       
     
@@ -6489,7 +6732,7 @@ config.remoteHTTPCommandDisabled = <span style="font-weight:bold">false</span></
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 2, 2020 
+    <span>This page was last updated:  February 3, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -6602,6 +6845,12 @@ config.remoteHTTPCommandDisabled = <span style="font-weight:bold">false</span></
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/nativescript" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          NativeScript
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/react-native-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           React Native 1.x
         </a>
@@ -6628,6 +6877,12 @@ config.remoteHTTPCommandDisabled = <span style="font-weight:bold">false</span></
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
           Web
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/getting-started-web/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
         </a>
     </li>
   
