@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Connectors | Partner Integrations |Tealium Developer Docs</title>
+    <title>CMP Plugins | Partner Integrations |Tealium Developer Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -240,18 +240,9 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#how-connectors-work">How Connectors Work</a></li>
-              <ul class="toc-h3"><li><a href="#event-and-customer-data">Event and Customer Data</a></li>
-              <li><a href="#configuration">Configuration</a></li>
-              <li><a href="#action-examples">Action Examples</a></li>
-              </ul><li><a href="#example-facebook-audiences-connector">Example: Facebook Audiences Connector</a></li>
-              <li><a href="#authentication">Authentication</a></li>
-              <li><a href="#best-practices">Best Practices</a></li>
-              <ul class="toc-h3"><li><a href="#asset-creation">Asset Creation</a></li>
-              <li><a href="#dynamic-vendor-options">Dynamic Vendor Options</a></li>
-              <li><a href="#upsert-by-default">Upsert by Default</a></li>
-              <li><a href="#batching-and-rate-limits">Batching and Rate Limits</a></li>
-              </ul><li><a href="#limitations">Limitations</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#how-it-works">How it Works</a></li>
+              <li><a href="#requirements">Requirements</a></li>
+              <li><a href="#sending-consent-data-to-tealium">Sending Consent Data to Tealium</a></li>
               <li><a href="#become-a-partner">Become a Partner</a></li>
               </nav>
   </aside></div>
@@ -266,19 +257,23 @@ var utag_data = {
 
   
     
+      <a href="/integrations/client-side" class="f6 fw8 mb0 link mid-gray dim mr3">
+        CLIENT SIDE
+      </a>
+    
       <a href="/integrations/server-side" class="f6 fw8 mb0 link mid-gray dim mr3">
         SERVER SIDE
       </a>
     
   
 
-  <h1 class="lh-title mb3 mv0 pt3">Connectors</h1>
+  <h1 class="lh-title mb3 mv0 pt3">CMP Plugins</h1>
 </header>
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
     <div class="f4 fw4 lh-copy">
-      Learn how to integrate your server-side API for real-time activation of event and customer data in Tealium.
+      Learn how to integrate your Consent Management Platform (CMP) with Tealium iQ Tag Management to enforce privacy settings for managed tags.
     </div>
   
 
@@ -296,137 +291,56 @@ var utag_data = {
 
   
 
-<div class="flex justify-center bg-secondary ph3 pv4 mb3 br3 fr ml3"><img src="/images/icons/icon-data-chain-integrate.png" alt="" width="100"  height="70" ></div>
+<div class="flex justify-center bg-secondary ph3 pv4 mb3 br3 fr ml3"><img src="/images/icons/icon-cmp-plugin.png" alt="" width="100"  height="100" ></div>
 
 
-<p>Do you offer an API for data collection or activation? Do you have a server-side equivalent to your client-side JavaScript tag? If so, this guide explains how API integrations for outbound data work in the Tealium Customer Data Hub.</p>
+<p>CMP plugins are vendor-specific solutions in the Tealium extension marketplace that make it easy to integrate a CMP installation with a Tealium iQ installation.</p>
 
-<h2 id="how-connectors-work">How Connectors Work</h2>
-
-<p>A <em>connector</em> is an integration between Tealium and a vendor for transmitting data. A connector offers <em>actions</em> that represent methods from a vendor&rsquo;s API. Connectors provide Tealium users a simplified workflow for activating data in real-time and sending it directly to a vendor.</p>
-
-<h3 id="event-and-customer-data">Event and Customer Data</h3>
-
-<p>Connectors that send <em>event data</em>, such as web analytics, are used in <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Introduction-to-EventStream/ta-p/20387">Tealium EventStream</a>.</p>
-
-<p>Connectors that send <em>customer data</em>, such as email subscription status, are used in <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Introduction-to-AudienceStream/ta-p/16087">Tealium AudienceStream</a>.</p>
-
-<h3 id="configuration">Configuration</h3>
-
-<p>A connector is managed in the following parts:</p>
+<p>A CMP plugin offers the following benefits:</p>
 
 <ul>
-<li><strong>Connector</strong><br />
-The connector establishes a connection to the vendor, usually with an API key or account ID, or even <a href="#authentication">authentication credentials</a>.</li>
-<li><strong>Actions</strong><br />
-Actions implement a specific vendor API method. Each action requires a source of data (event or customer), data mappings, and any required vendor settings. Multiple actions are associated with a single connector.</li>
-<li><strong>Data Mappings</strong><br />
-Data mappings determine which dynamic values from the event or customer are sent to the vendor.</li>
+<li>A simple import tool to reduce the time to integrate the two solutions.</li>
+<li>Robust enforcement of firing tags based on consent status from the CMP.</li>
+<li>Server-side distribution of consent data from the CMP.</li>
 </ul>
 
-<h3 id="action-examples">Action Examples</h3>
+<h2 id="how-it-works">How it Works</h2>
 
-<p>The following examples show common connector actions from various vendor categories:</p>
+<p>A CMP plugin creates a mapping between the data processing services configured in the CMP and the tags configured in Tealium iQ. The plugin provides a helper tool, usually a bookmarklet, that makes it easy to import the CMP settings into Tealium iQ and map each service name to one or more tags.</p>
+
+<p>Once the mappings are set up and deployed to your site, your managed tags will fire based on the user&rsquo;s interaction with the CMP.</p>
+
+<p>A CMP integration has the following parts:</p>
 
 <ul>
-<li><strong>Analytics</strong><br />
-Send an analytics event such as a page view, order purchase, or user registration.</li>
-<li><strong>Display Ads</strong><br />
-Add or remove from an advertising segment.</li>
-<li><strong>Email</strong><br />
-Add or remove from a list, trigger email, or add relational data for a subscriber.</li>
-<li><strong>CRM</strong><br />
-Create a lead or contact, convert a lead, or upsert (insert or update) a record.</li>
-<li><strong>Mobile</strong><br />
-Send an SMS or a push notification, track an app install, or send in-app events.</li>
-</ul>
-
-<p><a href="https://community.tealiumiq.com/t5/Getting-Started-with/Connectors/ta-p/25795">Learn more about connectors</a>.</p>
-
-<h2 id="example-facebook-audiences-connector">Example: Facebook Audiences Connector</h2>
-
-<p>With the <a href="https://community.tealiumiq.com/t5/Server-Side-Connectors/Facebook-Audiences-Connector-Setup-Guide-Beta/ta-p/31549">Facebook Audiences Connector</a> for Facebook Ads users, Tealium users are able to manage their custom audiences in real-time, based on user behavior collected from one or more data sources.</p>
-
-<p>This connector provides the following actions:</p>
+<li><strong>Service Mapping</strong><br />
+A service mapping associates CMP service names with managed tags. The linked tags will only fire after the associated CMP service name is consented to.</li>
+<li><strong>Data Layer Integration</strong><br />
+Consent status variables from the CMP are added to the <a href="/platforms/javascript/data-layer-object/">data layer object</a> of each tracking call. The variable names are in the format <code>&lt;cmp name&gt;_&lt;variable name&gt;</code>. For example, an array of consented service names from Usercentrics would be <code>usercentrics_services_with_consent</code>.
 
 <ul>
-<li>Add user to <em>Custom Audience</em></li>
-<li>Remove user from <em>Custom Audience</em></li>
-<li>Opt-out user from <em>All Custom Audiences</em></li>
+<li><code>&lt;cmp name&gt;_services_with_consent</code> - an array of consented service names.</li>
+<li><code>&lt;cmp name&gt;_consent_type</code> - <code>explicit</code> or <code>implicit</code> consent type.</li>
+</ul></li>
 </ul>
 
-<p>For each action, a list of required and optional fields for Facebook Custom Audiences is available for data mapping.</p>
+<h2 id="requirements">Requirements</h2>
 
-<h2 id="authentication">Authentication</h2>
-
-<p>In cases where a vendor API requires authentication, Tealium offers two solutions:</p>
+<p>To integrate with Tealium iQ Tag Management, the following consent status information must be available for each data processing service configured in the CMP. These are usually accessed as global JavaScript variables or methods in the page:</p>
 
 <ul>
-<li><strong>Tealium-Provided Credentials</strong><br />
-Tealium creates and manages a server-side app to act on behalf of our users. Tealium maintains the authentication relationship with the vendor.</li>
-<li><strong>Customer-Provided Credentials</strong><br />
-The Tealium user obtains the necessary API access from the vendor to authenticate the connection.</li>
+<li><strong>Service Name</strong> - A unique name for the service that consent was applied to.</li>
+<li><strong>Consent Status</strong> - The status of the consent for the servicea, where <code>true</code> indicates that consent has been granted and <code>false</code> indicates that consent has not been granted.</li>
+<li><strong>Consent Method Type</strong> - The method by which consent was obtained (<code>implicit</code> or <code>explicit</code>).</li>
 </ul>
 
-<p>For both solutions, Tealium supports the following authentication types:</p>
+<h2 id="sending-consent-data-to-tealium">Sending Consent Data to Tealium</h2>
 
-<ul>
-<li>Basic Auth (username and password)</li>
-<li>OAuth 2.0</li>
-<li>JSON Web Tokens (JWT)</li>
-</ul>
+<p>In addition to collecting and enforcing consent on the client-side, a CMP integration can also distribute consent status to other vendors using server-side connectors.</p>
 
-<p class="note">If your API places limits on the number of concurrent tokens, Tealium users may encounter issues since we are globally distributed across dozens of servers at any given time.</p>
+<p>If your CMP supports webhook callbacks, then you can extend your integration with Tealium by sending updates to the <a href="/platforms/http-api/endpoint-spec/">HTTP API endpoint</a>. These events will be processed server-side and can be activated across other vendors using Tealium EventStream, AudienceStream, and DataAccess.</p>
 
-<h2 id="best-practices">Best Practices</h2>
-
-<h3 id="asset-creation">Asset Creation</h3>
-
-<p>Asset creation is the ability for Tealium users to create resources for use with a connector without leaving the Tealium Customer Data Hub (CDH). For example, in the Facebook Audiences connector, users are able to create a new Facebook custom audience and then select that audience as the target for a new connector action.</p>
-
-<p>This optional feature is provided for all vendors that support API methods to create resources that are related to a connector action. Some common examples of create methods include:</p>
-
-<ul>
-<li><strong>Display Ads</strong><br />
-Create advertiser segment or audience.</li>
-<li><strong>Email</strong><br />
-Create subscriber list or contact list.</li>
-</ul>
-
-<h3 id="dynamic-vendor-options">Dynamic Vendor Options</h3>
-
-<p>Tealium assists users in configuring a connector action by dynamically populating connector options with data retrieved directly from the vendor&rsquo;s platform.</p>
-
-<p>For example, on the configuration screen of the Facebook Audiences connector, Tealium makes API calls to get the list of custom audiences from the user&rsquo;s Facebook Ads account. This permits the user to browse their external resources with familiar names and helpful metadata to ensure they are selecting the right resources.</p>
-
-<p>These dynamic configuration options may sometimes need to be executed as sequential calls. In a CRM connector, for example, in order to fetch a CRM object&rsquo;s primary key field, we must first retrieve the list of CRM objects.</p>
-
-<h3 id="upsert-by-default">Upsert by Default</h3>
-
-<p>For API methods that create or update records in a vendor platform, Tealium prefers native support for <code>upsert</code> in a single request. This will minimize the number of outgoing API calls from Tealium. For example, before creating or updating a record, an API user must first verify whether a record exists. If the record doesn&rsquo;t exist, the next API call will create the record. If the record does exist, the next API call will update the existing record.</p>
-
-<h3 id="batching-and-rate-limits">Batching and Rate Limits</h3>
-
-<p>While Tealium&rsquo;s goal is to provide real-time performance, some vendors prefer that data be sent in small batches in order to manage resource costs. This is especially true when dealing with large volumes of data.</p>
-
-<p class="tip">Tealium recommends that vendors rate limit individual accounts using their APIs. This prevents a small group of high-volume accounts from impacting your entire system.</p>
-
-<p>Tealium connectors conform to your desired thresholds for the API endpoints used. The following are rate limits examples:</p>
-
-<ul>
-<li>50 events per request with a maximum of 10 requests per second = 500 requests/second</li>
-<li>10,000 events per minute with a maximum 10KB per request = ~167 requests/second</li>
-</ul>
-
-<h2 id="limitations">Limitations</h2>
-
-<p>Tealium connectors do not currently support the following:</p>
-
-<ul>
-<li>File transfers</li>
-<li>Vendor APIs that do not connect within 5000ms</li>
-<li>Vendor APIs that do not respond to requests within 5000ms (10s for batch requests)</li>
-</ul>
+<p>If your CMP does not support webhooks, contact Tealium to work with your product and engineering teams to formalize an integration.</p>
 
 <h2 id="become-a-partner">Become a Partner</h2>
 
@@ -439,17 +353,29 @@ Create subscriber list or contact list.</li>
 	<div date-pref class="white">
 		
 		
-			<a href="https://docs.tealium.com/partners/mobile/" title="Mobile "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
+			<a href="https://docs.tealium.com/partners/data-sources/" title="Data Sources "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
     <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
     <path d="M0 0h24v24H0z" fill="none"/>
 </svg>
- Mobile </a>
+ Data Sources </a>
 		
 
 	</div>
 
 </b>
 <b style="position: absolute; right:0px;" class="pv1 br2 dib tc mv3 link">
+
+	<div date-pref class="white">
+
+		
+			<a href="https://docs.tealium.com/partners/cms-plugins/" title="CMS Plugins">
+			CMS Plugins <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
+
+			</a>
+		
+		
+	</div>
+
 </b>
 <br>&nbsp;</br>
 
@@ -530,7 +456,7 @@ Create subscriber list or contact list.</li>
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="1">
-        <a href="/partners/cmp-plugins/" class="db link pl2 pr2 pv1 primary-color hover-bg-primary " data-target=".partner-cmp-plugins">CMP Plugins</a>
+        <a href="/partners/cmp-plugins/" class="db link pl2 pr2 pv1 bg-secondary white" data-target=".partner-cmp-plugins">CMP Plugins</a>
       </li>
       
     
@@ -610,7 +536,7 @@ Create subscriber list or contact list.</li>
       
       
       <li class="w-100 hover-accent-color-light fw4 " data-level="1">
-        <a href="/partners/connectors/" class="db link pl2 pr2 pv1 bg-secondary white" data-target=".partner-connectors">Connectors</a>
+        <a href="/partners/connectors/" class="db link pl2 pr2 pv1 primary-color hover-bg-primary " data-target=".partner-connectors">Connectors</a>
       </li>
       
     

@@ -240,8 +240,8 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#tag-management">Tag Management</a></li>
-              <li><a href="#tealium-collect">Tealium Collect</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#tealium-collect-recommended">Tealium Collect (Recommended)</a></li>
+              <li><a href="#tag-management">Tag Management</a></li>
               <li><a href="#data-layer">Data Layer</a></li>
               <li><a href="#remote-commands">Remote Commands</a></li>
               <li><a href="#lifecycle-tracking">Lifecycle Tracking</a></li>
@@ -288,29 +288,44 @@ var utag_data = {
 <div class="prose" id="prose">
   
 
+<h2 id="tealium-collect-recommended">Tealium Collect (Recommended)</h2>
+
+<p>Tealium Collect is a lightweight data collection module that sends user events from your mobile app to the Tealium Customer Data Hub. The Tealium Collect module allows you to integrate third-party vendors as server-side connectors instead of as installed SDKs.</p>
+
+<p>Tealium Collect uses <a href="/platforms/getting-started/event-batching/">event batching</a> and other power-saving techniques to provide the following benefits to mobile applications:</p>
+
+<ul>
+<li>Reduced app size and memory footprint</li>
+<li>Optimized network traffic</li>
+<li>Minimal battery usage</li>
+</ul>
+
+<p>Learn more about sending data <a href="/platforms/getting-started/server-side/">server-side</a>.</p>
+
 <h2 id="tag-management">Tag Management</h2>
 
-<p>Tag Management refers to the ability to leverage the power of Tealium iQ within your mobile app to manage the configuration, testing, and release of third-party vendor tags to a digital property. In mobile SDKs, the tag management solution runs as an hidden webview that loads the Tealium JavaScript library. This client-side solution runs identically to the standard desktop web solution where data is sent directly from the device to the tag vendor&rsquo;s data collection servers.</p>
+<p>Tag Management is the module that enables Tealium iQ Tag Management within your mobile app. This client-side solution uses a hidden webiew to run standard web-based vendor tags in your app. Use the Tag Management module to integrate with third-party vendors that do not support a server-side API.</p>
 
-<p>It is recommended to use iQ Tag Management with a JavaScript tag if your vendor does not support server-side delivery and does not use a webhook connector in the marketplace.</p>
+<p>Benefits of the Tag Management module include:</p>
+
+<ul>
+<li>Advanced data layer customization using <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Master-List-of-Extensions/ta-p/5035">iQ Tag Management extensions</a>.</li>
+<li>Support client-side and server-side using the <a href="https://community.tealiumiq.com/t5/Client-Side-Tags/Tealium-Collect-Tag-Setup-Guide/ta-p/11923">Tealium Collect tag</a>.</li>
+</ul>
+
+<p class="note">Avoid using both the Tealium Collect module and the Tealium Collect tag (via the Tag Management module), as this will result in duplicate tracking.</p>
 
 <p>Learn more about the <a href="/platforms/getting-started/server-side/">client-side</a> solution.</p>
 
-<h2 id="tealium-collect">Tealium Collect</h2>
-
-<p>Tealium Collect is the recommended solution for mobile, which uses HTTPS to send data to the Tealium Customer Data Hub.  This approach ensures a light-weight footprint in your app by omitting the webview and leveraging the server-side power of Tealium EventStream and Tealium AudienceStream to activate your vendor integrations.</p>
-
-<p>Learn more about the sending data <a href="/platforms/getting-started/server-side/">server-side</a>.</p>
-
 <h2 id="data-layer">Data Layer</h2>
 
-<p>The data layer is a vendor-neutral and user-friendly representation of the activity you track on your digital properties. The device integration SDKs provide a standard set of built-in data layer variables.</p>
+<p>The data layer is a vendor-neutral and user-friendly representation of the activity you track on your digital properties. In addition to the standard built-in data layer variables provided by each platform installation, you will populate custom data layer variables with dynamic values from your app.</p>
 
 <p>Learn more about the <a href="/platforms/getting-started/data-layer/">data layer variables</a> available on mobile.</p>
 
 <h2 id="remote-commands">Remote Commands</h2>
 
-<p>Remote commands are a client-side solution for triggering functionality in your native app. Configure remote commands with a JSON configuration file or a tag in Tealium iQ Tag Management.</p>
+<p>Remote commands are a client-side solution for triggering functionality in your native app. Use remote commands for custom native features or to integrate with third-party SDKs. Configure remote commands with a JSON file or a remote command tag in Tealium iQ Tag Management.</p>
 
 <p>Learn more about <a href="/platforms/remote-commands/">remote commands</a>.</p>
 
@@ -320,7 +335,7 @@ var utag_data = {
 
 <h2 id="mobile-profiles">Mobile Profiles</h2>
 
-<p>A mobile installation of Tag Management requires a corresponding profile in iQ Tag Management that has been activated for mobile use. A mobile profile includes the built-in mobile data layer variables and additional publish settings to control some aspects of the Tealium SDK functionality without needing to deploy an app update.</p>
+<p>An app that uses the Tag Management module must have a corresponding profile in iQ Tag Management that has been activated for mobile use. A mobile profile includes the built-in mobile data layer variables and additional settings for the Tealium SDK that can be adjusted without needing to deploy an app update.</p>
 
 <p>Learn more about <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">creating a mobile profile</a>.</p>
 
@@ -330,11 +345,11 @@ var utag_data = {
 
 <h3 id="persistent-storage">Persistent Storage</h3>
 
-<p>Items added to persistent storage are kept for the lifetime of the app. For example, until the user uninstalls the app or manually clears the app&rsquo;s data. Each persistent data variable is included in every tracking automatically.</p>
+<p>Data layer variables added to persistent storage are kept until the user uninstalls the app or manually clears the app&rsquo;s data. Each persistent data variable is included in every tracking automatically.</p>
 
 <h3 id="volatile-storage">Volatile Storage</h3>
 
-<p>Items added to volatile storage are kept until the app is cleared from memory, such as a force-close or restart. Each volatile data variable is included in every tracking call automatically. Volatile data is not stored on disk and does not contribute to the app&rsquo;s disk usage footprint on the device.</p>
+<p>Data layer variables added to volatile storage are kept until the app is cleared from memory, such as a force-close or restart. Each volatile data variable is included in every tracking call automatically. Volatile data is not stored on disk and does not contribute to the app&rsquo;s disk usage footprint on the device.</p>
 
 <h3 id="migrating-libraries">Migrating Libraries</h3>
 
@@ -6501,7 +6516,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 29, 2020 
+    <span>This page was last updated:  February 18, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
