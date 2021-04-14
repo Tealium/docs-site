@@ -259,7 +259,8 @@ var utag_data = {
               <li><a href="#attribution-in-ios-14">Attribution in iOS 14&#43;</a></li>
               <ul class="toc-h3"><li><a href="#apptrackingtransparency-att">AppTrackingTransparency (ATT)</a></li>
               <li><a href="#skadnetwork">SKAdNetwork</a></li>
-              </ul><li><a href="#data-layer">Data Layer</a></li>
+              </ul><li><a href="#search-ads-api">Search Ads API</a></li>
+              <li><a href="#data-layer">Data Layer</a></li>
               </nav>
   </aside></div>
 
@@ -300,11 +301,11 @@ var utag_data = {
 
 <h2 id="usage">Usage</h2>
 
-<p>The Attribution module adds the user-resettable advertising identifier (IDFA) to each tracking call and, optionally, implements the Apple Search Ads API to gather attribution information. <a href="https://searchads.apple.com/v/advanced/help/pdf/attribution-api.pdf">Learn more</a> for details about Apple Search Ads.</p>
+<p>The Attribution module adds the user-resettable advertising identifier (IDFA) to each tracking call and, optionally, implements the Apple Search Ads API to gather attribution information. Learn more about <a href="https://developer.apple.com/documentation/iad/setting_up_apple_search_ads_attribution">setting up Apple Search Ads attribution</a>.</p>
 
 <p>In version 2.1.1+, the attribution module also includes <code>SKAdNetwork</code> support and adds the <code>ATTransparency.AuthorizationStatus</code> to the dispatch payload.</p>
 
-<p>Usage of this module is optional. Take the time to read about its functionality and decide if you need it, as it introduces additional dependencies. You are required to explain to Apple why you are using IDFA when you submit your app. If you do not state that you are using IDFA, Apple rejects your app. <a href="https://developer.apple.com/app-store/review/rejections/">Learn more</a> about IDFA usage and rejections.</p>
+<p>Use of this module is optional. Take the time to read about its functionality and decide if you need it, as it introduces additional dependencies. You are required to explain to Apple why you are using IDFA when you submit your app. If you do not state that you are using IDFA, Apple rejects your app. Learn more about <a href="https://developer.apple.com/app-store/review/rejections/">IDFA usage and rejections</a>.</p>
 
 <p>The following platforms are supported:</p>
 
@@ -372,9 +373,9 @@ var utag_data = {
 
 <h3 id="apptrackingtransparency-att">AppTrackingTransparency (ATT)</h3>
 
-<p>With the attribution module enabled, the user&rsquo;s tracking authorization status is automatically added to the dispatch payload as <code>device_tracking_authorization</code> and the value is a string representation of the <a href="https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus"><code>ATTrackingManager.AuthorizationStatus</code></a> enumeration. If applicable, the <code>ATTrackingManager.requestTrackingAuthorization</code> needs to be called separately.</p>
+<p>With the attribution module enabled, the user&rsquo;s tracking authorization status is automatically added to the dispatch payload as <code>device_tracking_authorization</code> and the value is a string representation of the <a href="https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus"><code>ATTrackingManager.AuthorizationStatus</code></a> enumeration.</p>
 
-<p>Learn more about <a href="https://community.tealiumiq.com/t5/TLC-Blog/What-Do-Apple-s-IDFA-Changes-Mean-for-Tealium/ba-p/33770#toc-hId-1331108563">requesting tracking authorization to enable the Tealium SDK</a>.</p>
+<p>If applicable, call <code>ATTrackingManager.requestTrackingAuthorization</code> separately. Learn more about <a href="https://community.tealiumiq.com/t5/TLC-Blog/What-Do-Apple-s-IDFA-Changes-Mean-for-Tealium/ba-p/33770#toc-hId-1331108563">requesting tracking authorization to enable the Tealium SDK</a>.</p>
 
 <h3 id="skadnetwork">SKAdNetwork</h3>
 
@@ -382,17 +383,61 @@ var utag_data = {
 
 <p>Example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.skAdConversionKeys = [<span style="color:#b84">&#34;purchase&#34;</span>: <span style="color:#b84">&#34;order_subtotal&#34;</span>]</code></pre></div>
-<p>The conversion value must be an <code>Int</code> with a value between 0 and 63. If the conversion value is a decimal, it must be converted to an integer before calling the conversion event.</p>
+<p>The conversion value must be an <code>Int</code> with a value between <code>0</code> and <code>63</code>. If the conversion value is a decimal, it must be converted to an integer before calling the conversion event.</p>
 
 <p>Example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.skAdConversionKeys = [<span style="color:#b84">&#34;purchase&#34;</span>: <span style="color:#b84">&#34;conversion_value&#34;</span>]
 ...
 tealium?.track(<span style="color:#b84">&#34;purchase&#34;</span>, dataLayer: [<span style="color:#b84">&#34;order_subtotal&#34;</span>: <span style="color:#099">456.87</span>, <span style="color:#b84">&#34;conversion_value&#34;</span>: conversionValue])</code></pre></div>
-<p>Learn more about the <a href="https://community.tealiumiq.com/t5/TLC-Blog/What-Do-Apple-s-IDFA-Changes-Mean-for-Tealium/ba-p/33770#toc-hId-1473659672">SKAdNetwork framework</a>.</p>
+<p>Learn more about the <a href="https://community.tealiumiq.com/t5/TLC-Blog/What-Do-Apple-s-IDFA-Changes-Mean-for-Tealium/ba-p/33770#toc-hId-1473659672"><code>SKAdNetwork</code> framework</a>.</p>
+
+<h4 id="process">Process</h4>
+
+<p>The following diagram shows the path of an ad&rsquo;s install validation. App A is the source app that displays an ad, and App B is the advertised app that the user installs.</p>
+
+<p><img src="/images/platforms/ios/skad-custom.png" alt="skad-custom.png" title="skad-custom.png" /></p>
+
+<p>When a user clicks on an ad within an app or mobile web browser, the App Store is launched and the user is taken to the product screen for the ad campaign. In iOS 14.5+, advertisers have the option to choose to display a custom view-through ad or a StoreKit-rendered ad. If the user installs the advertised app, the device stores a pending install validation. If the user opens the app within an attribution time window, the device sends the install validation postback to the ad network.</p>
+
+<p>The notification is signed by Apple and includes the campaign ID, but excludes user or device-specific data. The postback may include a conversion value and the source app’s ID if Apple determines that providing the values meets Apple’s privacy threshold.</p>
+
+<p>Learn more about <a href="https://developer.apple.com/documentation/storekit/skadnetwork">advertisement-driven app installations</a>.</p>
+
+<h4 id="tealium-s-role">Tealium&rsquo;s Role</h4>
+
+<p>There are three main parties involved in Apple&rsquo;s <code>SKAdNetwork</code> solution:</p>
+
+<ol>
+<li>Ad networks</li>
+<li>Source app</li>
+<li>Advertised apps</li>
+</ol>
+
+<p>Tealium wraps the calls to <code>SKAdNetwork</code>.  If the <code>TealiumAttribution</code> module and the configuration flag are enabled, then <code>SKAdNetwork.registerAppForAdNetworkAttribution()</code> is called on app launch.</p>
+
+<p>Additionally, if you have defined the <a href="/platforms/ios-swift/api/tealium-config/#skadconversionkeys"><code>skAdConversionKeys</code></a>, then the <code>SKAdNetwork.updateConversionValue(_:)</code> method is called and passed in the specified conversion value. Tealium permits you to manage your calls to <code>SKAdNetwork</code> through the tracking you already have in place.</p>
+
+<p class="note">You may need to request tracking authorization from your users and add the appropriate keys to your <code>.plist</code> file.</p>
+
+<p>The following diagram shows shows how Tealium works with <code>SKAdNetwork</code>:</p>
+
+<p><img src="/images/platforms/ios/skad-tealium-custom.png" alt="skad-tealium-custom.png" title="skad-tealium-custom.png" /></p>
+
+<h4 id="validation">Validation</h4>
+
+<p>Learn about <a href="https://developer.apple.com/documentation/storekit/skadnetwork/verifying_an_install_validation_postback">validating the calls to <code>SKAdNetwork</code></a>.</p>
+
+<h2 id="search-ads-api">Search Ads API</h2>
+
+<p>To use Apple Search Ads API, enable the <a href="/platforms/ios-swift/api/tealium-config/#searchadsenabled"><code>searchAdsEnabled</code></a> property of the <a href="/platforms/ios-swift/api/tealium-config/#tealiumconfig"><code>TealiumConfig</code></a> object. Then use the <a href="https://developer.apple.com/documentation/iad/setting_up_apple_search_ads_attribution">iAd</a> framework to <a href="https://developer.apple.com/documentation/iad/adclient/1614620-requestattributiondetails">retrieve the attribution dictionary</a> which contains the attribution object. The Tealium library does this as soon as the app launches, but it is possible that the information is not retrieved in a timely manner. The information is added to the data layer after receiving it from Apple, typically during the launch event.</p>
+
+<p>In some cases there may be several events after launch. These variables are only retrieved from Apple&rsquo;s servers once during the app&rsquo;s lifetime, and are stored as persistent variables so that they become available on future app launches.</p>
 
 <h2 id="data-layer">Data Layer</h2>
 
 <p>The following variables are transmitted with each tracking call while the module is enabled:</p>
+
+<p class="note">Variables prefixed with <code>ad_</code> are only set if <a href="#search-ads-api">Search Ads</a> has been enabled.</p>
 
 <table>
 <thead>
@@ -477,9 +522,9 @@ tealium?.track(<span style="color:#b84">&#34;purchase&#34;</span>, dataLayer: [<
 </tr>
 
 <tr>
-<td><code>ad_user_clicked_ last_30_days</code></td>
+<td><code>ad_user_clicked_last_30_days</code></td>
 <td>Boolean indicating if user clicked on a Search Ads impression within 30 days prior to app download</td>
-<td>[<code>true</code>, <code>false</code>]</td>
+<td><code>true</code></td>
 </tr>
 
 <tr>
@@ -489,7 +534,7 @@ tealium?.track(<span style="color:#b84">&#34;purchase&#34;</span>, dataLayer: [<
 </tr>
 
 <tr>
-<td><code>ad_user_date_ clicked</code></td>
+<td><code>ad_user_date_clicked</code></td>
 <td>Date and time the user clicked on a corresponding ad</td>
 <td><code>2016-12-05T17:31:40Z</code></td>
 </tr>
@@ -507,13 +552,13 @@ tealium?.track(<span style="color:#b84">&#34;purchase&#34;</span>, dataLayer: [<
 </tr>
 
 <tr>
-<td><code>device_advertising_ enabled</code></td>
-<td>Boolean indicating if the user allowed advertisement tracking (if <code>false</code>, the advertising ID appears as a string of zeroes)</td>
-<td>[<code>true</code>, <code>false</code>]</td>
+<td><code>device_advertising_enabled</code></td>
+<td>Boolean indicating if the user allowed advertisement tracking (if <code>false</code>, the advertising ID appears as a string of <code>0</code>&rsquo;s)</td>
+<td><code>true</code></td>
 </tr>
 
 <tr>
-<td><code>device_advertising_ id</code></td>
+<td><code>device_advertising_id</code></td>
 <td>User-resettable advertising identifier (IDFA)</td>
 <td><code>6D92078A-8246...</code></td>
 </tr>
@@ -525,8 +570,6 @@ tealium?.track(<span style="color:#b84">&#34;purchase&#34;</span>, dataLayer: [<
 </tr>
 </tbody>
 </table>
-
-<p class="note">The variables prefixed with <code>ad_</code> are only enabled if Search Ads has been explicitly enabled in the <a href="/platforms/ios-swift/api/tealium-config/">TealiumConfig</a> object. These variables are only retrieved from Apple&rsquo;s servers once during the app&rsquo;s lifetime, but they are stored as persistent variables so they are available on future app launches.</p>
 
 </div>
 
@@ -5188,6 +5231,210 @@ tealium?.track(<span style="color:#b84">&#34;purchase&#34;</span>, dataLayer: [<
   
   
 
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 " data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 primary-color hover-bg-primary pl3 pr2  " data-target=".getting-started-web-data-layer">Data Layer</a>
+        <ul class="getting-started-web-data-layer desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/getting-started-web/data-layer/an-introduction-to-the-data-layer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-web-an-introduction-to-the-data-layer">An Introduction to the Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/getting-started-web/data-layer/how-the-data-layer-works-for-websites/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-web-how-the-data-layer-works-for-websites">How the Data Layer Works for Websites</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/getting-started-web/data-layer/data-layer-best-practices/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-web-data-layer-best-practices">Data Layer Best Practices</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 " data-level="3">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 primary-color hover-bg-primary pl4 pr2  " data-target=".getting-started-web-data-layer-definitions">Definitions</a>
+        <ul class="getting-started-web-data-layer-definitions desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="4">
+        <a href="/platforms/getting-started-web/data-layer/definitions/retail/" class="db link pl5 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-web-data-layer-definitions-retail">Retail</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="4">
+        <a href="/platforms/getting-started-web/data-layer/definitions/publisher/" class="db link pl5 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-web-data-layer-definitions-publisher">Publisher</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="4">
+        <a href="/platforms/getting-started-web/data-layer/definitions/hotel/" class="db link pl5 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-web-data-layer-definitions-hotel">Hotel</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="4">
+        <a href="/platforms/getting-started-web/data-layer/definitions/travel/" class="db link pl5 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-web-data-layer-definitions-travel">Travel</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="4">
+        <a href="/platforms/getting-started-web/data-layer/definitions/basic-video-tracking/" class="db link pl5 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-web-data-layer-definitions-basic-video-tracking">Basic Video Tracking</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
         </ul>
       </li>
       
@@ -6693,7 +6940,7 @@ tealium?.track(<span style="color:#b84">&#34;purchase&#34;</span>, dataLayer: [<
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 30, 2020 
+    <span>This page was last updated:  April 13, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

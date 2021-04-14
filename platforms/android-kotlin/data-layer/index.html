@@ -255,8 +255,10 @@ var utag_data = {
               <li><a href="#data-expiration">Data Expiration</a></li>
               <li><a href="#examples">Examples</a></li>
               </ul><li><a href="#module-data">Module Data</a></li>
-              <ul class="toc-h3"><li><a href="#app-collector">App Collector</a></li>
+              <ul class="toc-h3"><li><a href="#ad-identifier">Ad Identifier</a></li>
+              <li><a href="#app-collector">App Collector</a></li>
               <li><a href="#connectivity-collector">Connectivity Collector</a></li>
+              <li><a href="#crash-reporter">Crash Reporter</a></li>
               <li><a href="#device-collector">Device Collector</a></li>
               <li><a href="#core">Core</a></li>
               <li><a href="#lifecycle-module">Lifecycle Module</a></li>
@@ -407,6 +409,37 @@ tealium.dataLayer.putBoolean(<span style="color:#b84">&#34;frequent_visitor&#34;
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium.dataLayer.clear()</code></pre></div>
 <h2 id="module-data">Module Data</h2>
 
+<h3 id="ad-identifier">Ad Identifier</h3>
+
+<p>The following variables are added to the data layer by the <a href="/platforms/android-kotlin/module-list/adid/">Ad Identifier</a>.</p>
+
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>google_adid</code></td>
+<td><code>String</code></td>
+<td>The Google Ad Identifier</td>
+<td><code>ca-app-pub-0123456789012345~0123456789</code></td>
+</tr>
+
+<tr>
+<td><code>google_limit_ad_tracking</code></td>
+<td><code>Boolean</code></td>
+<td>Is <code>true</code> if limit ad tracking is enabled on the device, or <code>false</code> otherwise</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+
 <h3 id="app-collector">App Collector</h3>
 
 <p>The following variables are added to the data layer by the <a href="/platforms/android-kotlin/module-list/collectors/">App Collector</a>.</p>
@@ -443,6 +476,12 @@ tealium.dataLayer.putBoolean(<span style="color:#b84">&#34;frequent_visitor&#34;
 <td><code>app_rdns</code></td>
 <td>Reverse DNS application ID (from the <a href="https://developer.android.com/guide/topics/manifest/manifest-element.html">root manifest attribute <code>package</code></a>)</td>
 <td><code>com.example.myapp</code></td>
+</tr>
+
+<tr>
+<td><code>app_uuid</code></td>
+<td>Random <code>uuid</code>. Persists for the duration of the app install, so long as one of the persistent storage modules is also enabled. Resets if app is uninstalled.</td>
+<td><code>123e4567-e89b-12d3-a456-556642440000</code></td>
 </tr>
 
 <tr>
@@ -499,6 +538,58 @@ tealium.dataLayer.putBoolean(<span style="color:#b84">&#34;frequent_visitor&#34;
 </tbody>
 </table>
 
+<h3 id="crash-reporter">Crash Reporter</h3>
+
+<p>The following variables are added to the data layer by the <a href="/platforms/android-kotlin/module-list/crash-reporter/">Crash Reporter</a>.</p>
+
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>crash_cause</code></td>
+<td><code>String</code></td>
+<td>The exception type</td>
+<td><code>java.lang.RuntimeException</code></td>
+</tr>
+
+<tr>
+<td><code>crash_count</code></td>
+<td><code>Number</code></td>
+<td>An incremented counter for each crash since install</td>
+<td><code>1</code></td>
+</tr>
+
+<tr>
+<td><code>crash_name</code></td>
+<td><code>String</code></td>
+<td>The exception message</td>
+<td><code>&quot;Connection refused by server&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>crash_threads</code></td>
+<td><code>[String]</code></td>
+<td>Array of JSON strings  containing data of the crashed thread, including the thread ID and stack trace</td>
+<td><code>['{ &quot;crashed&quot;: &quot;true&quot;, &quot;state&quot;: &quot;RUNNABLE&quot;, &quot;threadNumber&quot;: &quot;1&quot;, &quot;threadId&quot;: &quot;main&quot;, &quot;priority&quot;: &quot;5&quot;, &quot;stack&quot;:  [ { &quot;fileName&quot;: &quot;MainActivity.java&quot;, &quot;className&quot;: &quot;com.tealium.libraryproject.MainActivity$1&quot;, &quot;methodName&quot;: &quot;onClick&quot;, &quot;lineNumber&quot;: &quot;38&quot; }] }']</code></td>
+</tr>
+
+<tr>
+<td><code>crash_uuid</code></td>
+<td><code>String</code></td>
+<td>16-character unique ID for each crash event</td>
+<td><code>3c91d707-949e-445f-8ad1-4d6e200bfd6f</code></td>
+</tr>
+</tbody>
+</table>
+
 <h3 id="device-collector">Device Collector</h3>
 
 <p>The following variables are added to the data layer by the <a href="/platforms/android-kotlin/module-list/collectors/">Device Collector</a>.</p>
@@ -516,7 +607,7 @@ tealium.dataLayer.putBoolean(<span style="color:#b84">&#34;frequent_visitor&#34;
 <tr>
 <td><code>device</code></td>
 <td>Device type</td>
-<td><code>iPhone</code>, <code>iPad</code></td>
+<td><code>Samsung G955f</code></td>
 </tr>
 
 <tr>
@@ -527,13 +618,7 @@ tealium.dataLayer.putBoolean(<span style="color:#b84">&#34;frequent_visitor&#34;
 
 <tr>
 <td><code>device_available_external_storage</code></td>
-<td>Total available external storage on device</td>
-<td><code>512gb</code></td>
-</tr>
-
-<tr>
-<td><code>device_available_system_storage</code></td>
-<td>Total available storage on device</td>
+<td>Total available external storage on device (in bytes)</td>
 <td><code>273772544</code></td>
 </tr>
 
@@ -552,7 +637,13 @@ tealium.dataLayer.putBoolean(<span style="color:#b84">&#34;frequent_visitor&#34;
 <tr>
 <td><code>device_cputype</code></td>
 <td>CPU type</td>
-<td><code>arm7s</code></td>
+<td><code>i686</code></td>
+</tr>
+
+<tr>
+<td><code>device_free_system_storage</code></td>
+<td>Total available storage on device</td>
+<td><code>273772544</code></td>
 </tr>
 
 <tr>
@@ -563,8 +654,8 @@ tealium.dataLayer.putBoolean(<span style="color:#b84">&#34;frequent_visitor&#34;
 
 <tr>
 <td><code>device_language</code></td>
-<td>Two-letter ISO-639-1 language setting identifier</td>
-<td><code>en</code></td>
+<td>Current device language</td>
+<td><code>en-US</code></td>
 </tr>
 
 <tr>
@@ -583,6 +674,12 @@ tealium.dataLayer.putBoolean(<span style="color:#b84">&#34;frequent_visitor&#34;
 <td><code>device_os_version</code></td>
 <td>Operating System version on device</td>
 <td><code>7.0</code></td>
+</tr>
+
+<tr>
+<td><code>device_resolution</code></td>
+<td>Display resolution size in pixels</td>
+<td><code>1920x1080</code></td>
 </tr>
 
 <tr>
@@ -614,27 +711,21 @@ tealium.dataLayer.putBoolean(<span style="color:#b84">&#34;frequent_visitor&#34;
 
 <tbody>
 <tr>
-<td><code>event_name</code></td>
-<td><code>mobile_link</code> required by vdata</td>
+<td><code>tealium_event</code></td>
+<td>The name of the event being tracked</td>
 <td><code>cart_add</code></td>
 </tr>
 
 <tr>
-<td><code>library_version</code></td>
+<td><code>tealium_library_name</code></td>
+<td>The name of the Tealium library your app has installed</td>
+<td><code>android-kotlin</code></td>
+</tr>
+
+<tr>
+<td><code>tealium_library_version</code></td>
 <td>The version of the Tealium library your app has installed</td>
 <td><code>1.2</code></td>
-</tr>
-
-<tr>
-<td><code>screen_title</code></td>
-<td>(VIEW CALLS ONLY) General view title</td>
-<td><code>My Profile</code></td>
-</tr>
-
-<tr>
-<td><code>visitor_id</code></td>
-<td>Tealium-generated visitor ID</td>
-<td><code>t3aL...1uM</code></td>
 </tr>
 </tbody>
 </table>
@@ -5603,6 +5694,210 @@ tealium.dataLayer.putBoolean(<span style="color:#b84">&#34;frequent_visitor&#34;
   
   
 
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 " data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 primary-color hover-bg-primary pl3 pr2  " data-target=".getting-started-web-data-layer">Data Layer</a>
+        <ul class="getting-started-web-data-layer desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/getting-started-web/data-layer/an-introduction-to-the-data-layer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-web-an-introduction-to-the-data-layer">An Introduction to the Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/getting-started-web/data-layer/how-the-data-layer-works-for-websites/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-web-how-the-data-layer-works-for-websites">How the Data Layer Works for Websites</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/getting-started-web/data-layer/data-layer-best-practices/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-web-data-layer-best-practices">Data Layer Best Practices</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 " data-level="3">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 primary-color hover-bg-primary pl4 pr2  " data-target=".getting-started-web-data-layer-definitions">Definitions</a>
+        <ul class="getting-started-web-data-layer-definitions desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="4">
+        <a href="/platforms/getting-started-web/data-layer/definitions/retail/" class="db link pl5 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-web-data-layer-definitions-retail">Retail</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="4">
+        <a href="/platforms/getting-started-web/data-layer/definitions/publisher/" class="db link pl5 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-web-data-layer-definitions-publisher">Publisher</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="4">
+        <a href="/platforms/getting-started-web/data-layer/definitions/hotel/" class="db link pl5 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-web-data-layer-definitions-hotel">Hotel</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="4">
+        <a href="/platforms/getting-started-web/data-layer/definitions/travel/" class="db link pl5 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-web-data-layer-definitions-travel">Travel</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="4">
+        <a href="/platforms/getting-started-web/data-layer/definitions/basic-video-tracking/" class="db link pl5 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-web-data-layer-definitions-basic-video-tracking">Basic Video Tracking</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
         </ul>
       </li>
       
@@ -7108,7 +7403,7 @@ tealium.dataLayer.putBoolean(<span style="color:#b84">&#34;frequent_visitor&#34;
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  November 20, 2020 
+    <span>This page was last updated:  April 1, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
