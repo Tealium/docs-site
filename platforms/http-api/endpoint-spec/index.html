@@ -250,8 +250,8 @@ var utag_data = {
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#tealium-collect-url">Tealium Collect URL</a></li>
-              <li><a href="#visitor-id">Visitor ID</a></li>
-              <ul class="toc-h3"><li><a href="#primary-visitor-id">Primary Visitor ID</a></li>
+              <li><a href="#visitor-id-attribute">Visitor ID Attribute</a></li>
+              <ul class="toc-h3"><li><a href="#anonymous-id">Anonymous ID</a></li>
               </ul><li><a href="#methods">Methods</a></li>
               <ul class="toc-h3"><li><a href="#get">GET</a></li>
               <li><a href="#post">POST</a></li>
@@ -305,23 +305,23 @@ var utag_data = {
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">https://collect.tealiumiq.com/event</code></pre></div>
 <p>Sessions are determined based on the <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Using-Attributes/ta-p/11926#toc-hId--478250751">Visit scope</a> attribute property.</p>
 
-<h2 id="visitor-id">Visitor ID</h2>
+<h2 id="visitor-id-attribute">Visitor ID Attribute</h2>
 
-<p>If you are using Tealium AudienceStream you must pass a known visitor ID attribute (secondary ID) with each tracking call, such as <code>email_address</code> or <code>login_id</code>.</p>
+<p>If you are using Tealium AudienceStream you must pass a known visitor ID attribute (user identifier) with each tracking call, such as <code>email_address</code> or <code>login_id</code>.</p>
 
-<p>If the events do not contain a visitor ID then each event generates a new visit and visitor, making stitching not possible. This is important if using the Collect API on a web platform where you might be tracking anonymous users.</p>
+<p>If the events do not contain a visitor ID attribute then each event generates a new visit and visitor, making stitching not possible. This is important if using the Collect API on a web platform where you might be tracking anonymous users.</p>
 
-<p>A visitor ID is also needed if you are using Tealium EventStream and need to provide an ID to a vendor connector.</p>
+<p>A visitor ID attribute is also needed if you are using Tealium EventStream and need to provide an ID to a vendor connector.</p>
 
-<p><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Visitor-ID-Attribute/ta-p/12060">Learn more</a> about the visitor ID  attribute.</p>
+<p><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Visitor-ID-Attribute/ta-p/12060">Learn more</a> about the visitor ID attribute.</p>
 
-<h3 id="primary-visitor-id">Primary Visitor ID</h3>
+<h3 id="anonymous-id">Anonymous ID</h3>
 
 <p>The <code>tealium_visitor_id</code> attribute is an anonymous ID used by AudienceStream to associate a visitor between events and visits.  Depending on your usage of the Collect API, use one of the following approaches:</p>
 
 <p><strong>Known Visitors</strong><br />
 (Required for AudienceStream, recommended for EventStream)<br />
-When tracking events for a known visitor (when a value exists for a Visitor ID attribute such as <code>email_address</code>), include the known visitor ID attribute and a hash of that value in the <code>tealium_visitor_id</code> parameter.</p>
+When tracking events for a known visitor (when a value exists for a visitor ID attribute such as <code>email_address</code>), include the known visitor ID attribute and a hash of that value in the <code>tealium_visitor_id</code> parameter.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
     <span style="color:#b84">&#34;tealium_account&#34;</span>    <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
     <span style="color:#b84">&#34;tealium_profile&#34;</span>    <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;PROFILE&#34;</span>,
@@ -2409,7 +2409,169 @@ xhr.send(JSON.stringify(event));
       
       
       <li class="w-100 hover-accent-color-light fw8 " data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".flutter">Flutter</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".flutter-v1">Flutter 1.x</a>
+        <ul class="flutter-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".flutter">Flutter 2.x</a>
         <ul class="flutter desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -2523,8 +2685,50 @@ xhr.send(JSON.stringify(event));
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/flutter/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-api">API Reference</a>
+      <li class="w-100 hover-accent-color-light fw8 " data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 primary-color hover-bg-primary pl3 pr2  " data-target=".flutter-api">API Reference</a>
+        <ul class="flutter-api desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/flutter/api/tealium/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-api-tealium">Tealium</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/flutter/api/tealium-config/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-api-tealium-config">TealiumConfig</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
       </li>
       
     
@@ -6804,7 +7008,7 @@ xhr.send(JSON.stringify(event));
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  June 16, 2020 
+    <span>This page was last updated:  April 29, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -6893,8 +7097,14 @@ xhr.send(JSON.stringify(event));
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/flutter-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Flutter 1.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/flutter/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Flutter
+          Flutter 2.x
         </a>
     </li>
   

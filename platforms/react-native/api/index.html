@@ -278,6 +278,7 @@ var utag_data = {
               <li><a href="#terminateintance">terminateIntance()</a></li>
               <li><a href="#track">track()</a></li>
               <li><a href="#visitorprofile">VisitorProfile</a></li>
+              <li><a href="#remotecommand">RemoteCommand</a></li>
               </nav>
   </aside></div>
 
@@ -442,7 +443,7 @@ var utag_data = {
 <tr>
 <td><code>callback</code></td>
 <td><code>Function</code></td>
-<td>A callback function to execute once the response is received from the remote command. The callback returns a payload of key-value pairs from the tag mappings.</td>
+<td>A callback function to execute after the response is received from the remote command. The callback returns a payload of key-value pairs from the tag mappings.</td>
 <td>(see example)</td>
 </tr>
 </tbody>
@@ -913,6 +914,13 @@ var utag_data = {
 <td>Tealium configuration parameters</td>
 <td>(see example)</td>
 </tr>
+
+<tr>
+<td><code>callback</code></td>
+<td><code>Function</code></td>
+<td>(Optional) Callback function after the Tealium instance is ready</td>
+<td>(see example)</td>
+</tr>
 </tbody>
 </table>
 
@@ -934,7 +942,12 @@ var utag_data = {
 	visitorServiceEnabled<span style="font-weight:bold">:</span> <span style="font-weight:bold">true</span>
 };
 
-Tealium.initialize(config);
+Tealium.initialize(config, success =&gt; {
+    <span style="font-weight:bold">if</span> (<span style="font-weight:bold">!</span>success) {
+        <span style="color:#998;font-style:italic">// error creating instance.
+</span><span style="color:#998;font-style:italic"></span>    }
+    <span style="color:#998;font-style:italic">// do something on-ready
+</span><span style="color:#998;font-style:italic"></span>});
 </code></pre></div>
 <h3 id="jointrace"><code>joinTrace()</code></h3>
 
@@ -1123,7 +1136,7 @@ Tealium.initialize(config);
 
 <h3 id="setconsentexpirylistener"><code>setConsentExpiryListener()</code></h3>
 
-<p>Defines a callback to execute once the user&rsquo;s consent preferences have expired according the the <a href="#consentexpiry"><code>ConsentExpiry</code></a>.</p>
+<p>Defines a callback to execute after the user&rsquo;s consent preferences have expired according the <a href="#consentexpiry"><code>ConsentExpiry</code></a>.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.setConsentExpiryListener(callback);
 </code></pre></div>
 <table>
@@ -1140,7 +1153,7 @@ Tealium.initialize(config);
 <tr>
 <td><code>callback</code></td>
 <td><code>Function</code></td>
-<td>Code to execute once consent expires</td>
+<td>Code to execute after consent expires</td>
 <td>(see example)</td>
 </tr>
 </tbody>
@@ -1230,7 +1243,7 @@ Tealium.initialize(config);
 <tr>
 <td><code>callback</code></td>
 <td><code>Function</code></td>
-<td>Code to execute once the updated visitor profile is returned</td>
+<td>Code to execute after the updated visitor profile is returned</td>
 <td>(see example)</td>
 </tr>
 </tbody>
@@ -1479,7 +1492,7 @@ Tealium.initialize(config);
 <tr>
 <td><code>useRemoteLibrarySettings</code></td>
 <td><code>Boolean</code></td>
-<td>Enables or disables the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">Mobile Publish Settings</a> (default: enabled) Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature.</td>
+<td>Enables or disables the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">Mobile Publish Settings</a> (default: enabled) Configure the Mobile Publish Settings in Tealium iQ Tag Management, or disable the feature.</td>
 <td><code>false</code></td>
 </tr>
 
@@ -1488,6 +1501,13 @@ Tealium.initialize(config);
 <td><code>Boolean</code></td>
 <td>Enables or disables the automatic retrieval of the Visitor Profile using the <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Data-Layer-Enrichment-Public-API/ta-p/155">Data Layer Enrichment API</a> (default: disabled)</td>
 <td><code>true</code></td>
+</tr>
+
+<tr>
+<td><code>remoteCommands</code></td>
+<td><code>RemoteCommand[]</code></td>
+<td>Sets a list of <a href="#RemoteCommand">RemoteCommand</a> objects to add when the instance is ready</td>
+<td><code>[{ id: &quot;hello-world&quot;, callback: (payload) =&gt; { console.log(&quot;hello-world: &quot; + JSON.stringify(payload)); } }]</code></td>
 </tr>
 </tbody>
 </table>
@@ -1640,6 +1660,60 @@ Tealium.track(tealEvent)
 </tbody>
 </table>
 
+<h3 id="remotecommand">RemoteCommand</h3>
+
+<p>An interface that defines a configured Remote Command</p>
+
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>The unique identifier name for the RemoteCommand</td>
+</tr>
+
+<tr>
+<td><code>path</code></td>
+<td>(Optional) local file to use for mappings</td>
+</tr>
+
+<tr>
+<td><code>url</code></td>
+<td>(Optional) remote file to use for mappings</td>
+</tr>
+
+<tr>
+<td><code>callback</code></td>
+<td>(Optional) callback function for the RemoteCommand</td>
+</tr>
+</tbody>
+</table>
+
+<p>The path and URL are optional, but either provide only one or the other, or omit both in the case where the mappings are handled by a tag in Tealium iQ Tag Management.</p>
+
+<p>Provide the callback if the command is to be handled within the scope of your React Native app. Omit the callback if the handler has already been registered natively.</p>
+
+<p>The following example is a local mappings file for a command handled by Javascript:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">let</span> localCommand<span style="font-weight:bold">:</span> RemoteCommand <span style="font-weight:bold">=</span> {
+    id<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;hello-world&#34;</span>,
+    path<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;hello-mappings.json&#34;</span>,
+    callback<span style="font-weight:bold">:</span> (payload) =&gt; {
+        <span style="color:#998;font-style:italic">//...
+</span><span style="color:#998;font-style:italic"></span>    }
+}
+</code></pre></div>
+<p>The following example is a remote mappings file for a command handled natively:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">let</span> remoteNativeCommand<span style="font-weight:bold">:</span> RemoteCommand <span style="font-weight:bold">=</span> {
+    id<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;hello-world&#34;</span>,
+    url<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;https://you.domain.com/hello-mappings.json&#34;</span>
+}
+</code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -3614,7 +3688,169 @@ Tealium.track(tealEvent)
       
       
       <li class="w-100 hover-accent-color-light fw8 " data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".flutter">Flutter</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".flutter-v1">Flutter 1.x</a>
+        <ul class="flutter-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".flutter">Flutter 2.x</a>
         <ul class="flutter desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -3728,8 +3964,50 @@ Tealium.track(tealEvent)
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/flutter/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-api">API Reference</a>
+      <li class="w-100 hover-accent-color-light fw8 " data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 primary-color hover-bg-primary pl3 pr2  " data-target=".flutter-api">API Reference</a>
+        <ul class="flutter-api desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/flutter/api/tealium/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-api-tealium">Tealium</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/flutter/api/tealium-config/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-api-tealium-config">TealiumConfig</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
       </li>
       
     
@@ -8009,7 +8287,7 @@ Tealium.track(tealEvent)
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  January 27, 2021 
+    <span>This page was last updated:  May 11, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -8098,8 +8376,14 @@ Tealium.track(tealEvent)
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/flutter-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Flutter 1.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/flutter/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Flutter
+          Flutter 2.x
         </a>
     </li>
   

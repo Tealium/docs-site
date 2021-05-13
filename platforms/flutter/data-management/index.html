@@ -249,9 +249,9 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#usage">Usage</a></li>
-              <li><a href="#persistent-data">Persistent Data</a></li>
-              <li><a href="#volatile-data">Volatile Data</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#add-data">Add Data</a></li>
+              <li><a href="#get-data">Get Data</a></li>
+              <li><a href="#remove-data">Remove Data</a></li>
               </nav>
   </aside></div>
 
@@ -284,33 +284,26 @@ var utag_data = {
 <div class="prose" id="prose">
   
 
-<h2 id="usage">Usage</h2>
+<h2 id="add-data">Add Data</h2>
 
-<p>Some variables are required on every event. To prevent having to manually add required variable data to every event, you have the option to store data as either volatile or persistent. Once data is stored, it will be appended to every event, including lifecycle events.</p>
+<p>To add data to the persistent data layer, call the <a href="/platforms/flutter/api/tealium/#addtodatalayer"><code>addToDataLayer()</code></a> method.</p>
 
-<p><a href="/platforms/getting-started/mobile-concepts/#data-management">Learn more</a> about Data Management.</p>
+<p>The following example adds data to the data layer, with the <a href="/platforms/flutter/api/tealium-config/#expiry">Expiry</a> set until the app restarts:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">Tealium<span style="font-weight:bold">.</span>addToDataLayer({<span style="color:#b84">&#34;persistent_key2&#34;</span> : <span style="color:#b84">&#34;persistent_val2&#34;</span>},
+    Expiry<span style="font-weight:bold">.</span>untilRestart);</code></pre></div>
+<h2 id="get-data">Get Data</h2>
 
-<h2 id="persistent-data">Persistent Data</h2>
+<p>To get the value for a specified key in the persistent data layer as a callback function, call the <a href="/platforms/flutter/api/tealium/#getfromdatalayer"><code>getFromDataLayer()</code></a> method.</p>
 
-<p>The <a href="/platforms/flutter/api/#setpersistentdata"><code>setPersistentData()</code></a> method adds persistent data, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.<span style="color:#008080">setPersistentData</span>({
-     <span style="color:#b84">&#34;KEY1&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;VALUE1&#34;</span>,
-     <span style="color:#b84">&#34;KEY2&#34;</span><span style="font-weight:bold">:</span> [<span style="color:#b84">&#34;STRING1&#34;</span>, <span style="color:#b84">&#34;STRING2&#34;</span>, <span style="color:#b84">&#34;STRING3&#34;</span>]});</code></pre></div>
-<p>The <a href="/platforms/flutter/api/#getpersistentdata"><code>getPersistentData()</code></a> method gets persistent data, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.<span style="color:#008080">getPersistentData</span>(<span style="color:#b84">&#34;KEY1&#34;</span>);</code></pre></div>
-<p>The <a href="/platforms/flutter/api/#removepersistentdata"><code>removePersistentData()</code></a> method removes persistent data, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.<span style="color:#008080">removePersistentData</span>([<span style="color:#b84">&#34;KEY1&#34;</span>, <span style="color:#b84">&#34;KEY2&#34;</span>]);</code></pre></div>
-<h2 id="volatile-data">Volatile Data</h2>
+<p>The following example gets the value for the specified key:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">Tealium<span style="font-weight:bold">.</span>getFromDataLayer(<span style="color:#b84">&#39;KEY2&#39;</span>)
+    <span style="font-weight:bold">.</span><span style="font-weight:bold">then</span>((value) <span style="font-weight:bold">=&gt;</span> <span style="font-weight:bold">print</span>(<span style="color:#b84">&#39;Value From data layer: $value&#39;</span>)));</code></pre></div>
+<h2 id="remove-data">Remove Data</h2>
 
-<p>The <a href="/platforms/flutter/api/#setvolatiledata"><code>setVolatileData()</code></a> method adds persistent data, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.<span style="color:#008080">setVolatileData</span>({
-  <span style="color:#b84">&#34;KEY1&#34;</span><span style="font-weight:bold">:</span> <span style="color:#b84">&#34;VALUE1&#34;</span>,
-  <span style="color:#b84">&#34;KEY2&#34;</span><span style="font-weight:bold">:</span> [<span style="color:#b84">&#34;STRING1&#34;</span>, <span style="color:#b84">&#34;STRING2&#34;</span>, <span style="color:#b84">&#34;STRING3&#34;</span>]
-    });</code></pre></div>
-<p>The <a href="/platforms/flutter/api/#getvolatiledata"><code>getVolatileData()</code></a> method gets persistent data, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.<span style="color:#008080">getVolatileData</span>(<span style="color:#b84">&#34;KEY1&#34;</span>);</code></pre></div>
-<p>The <a href="/platforms/flutter/api/#removevolatiledata"><code>removeVolatileData()</code></a> method removes persistent data, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.<span style="color:#008080">removeVolatileData</span>([<span style="color:#b84">&#34;KEY1&#34;</span>, <span style="color:#b84">&#34;KEY2&#34;</span>]);</code></pre></div>
+<p>To delete a single key-value pair from the data layer, call the <a href="/platforms/flutter/api/tealium/#deletefromdatalayer"><code>deleteFromDataLayer()</code></a> method.</p>
+
+<p>The following example deletes the key-value pair from the data layer for the specified key:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">Tealium<span style="font-weight:bold">.</span>deleteFromDataLayer(KEY2);</code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -333,8 +326,8 @@ var utag_data = {
 	<div date-pref class="white">
 
 		
-			<a href="https://docs.tealium.com/platforms/flutter/api/" title="API Reference">
-			API Reference <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
+			<a href="https://docs.tealium.com/platforms/flutter/release-notes/" title="Release Notes">
+			Release Notes <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
 
 			</a>
 		
@@ -2284,8 +2277,170 @@ var utag_data = {
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".flutter-v1">Flutter 1.x</a>
+        <ul class="flutter-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/consent-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  active" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2 primary-color expanded " data-target=".flutter">Flutter</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2 primary-color expanded " data-target=".flutter">Flutter 2.x</a>
         <ul class="flutter desktopmenu animated fadeIn list pl0">
             
 
@@ -2399,8 +2554,50 @@ var utag_data = {
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/flutter/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-api">API Reference</a>
+      <li class="w-100 hover-accent-color-light fw8 " data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 primary-color hover-bg-primary pl3 pr2  " data-target=".flutter-api">API Reference</a>
+        <ul class="flutter-api desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/flutter/api/tealium/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-api-tealium">Tealium</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/flutter/api/tealium-config/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-api-tealium-config">TealiumConfig</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
       </li>
       
     
@@ -6680,7 +6877,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 31, 2019 
+    <span>This page was last updated:  May 11, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -6769,8 +6966,14 @@ var utag_data = {
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/flutter-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Flutter 1.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/flutter/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Flutter
+          Flutter 2.x
         </a>
     </li>
   
