@@ -443,10 +443,10 @@ var utag_data = {
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">Tealium<span style="font-weight:bold">.</span>addRemoteCommand(<span style="color:#b84">&#34;firebase&#34;</span>, (payload) <span style="font-weight:bold">=&gt;</span> {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">Tealium<span style="font-weight:bold">.</span>addRemoteCommand(<span style="color:#b84">&#39;firebase&#39;</span>, (payload) <span style="font-weight:bold">=&gt;</span> {
 
-  var eventName <span style="font-weight:bold">=</span> payload[<span style="color:#b84">&#34;firebase_event_name&#34;</span>];
-  var eventProperties <span style="font-weight:bold">=</span> payload[<span style="color:#b84">&#34;firebase_event_properties&#34;</span>];
+  var eventName <span style="font-weight:bold">=</span> payload[<span style="color:#b84">&#39;firebase_event_name&#39;</span>];
+  var eventProperties <span style="font-weight:bold">=</span> payload[<span style="color:#b84">&#39;firebase_event_properties&#39;</span>];
 
   analytics<span style="font-weight:bold">.</span>logEvent(eventName, eventProperties);
 });</code></pre></div>
@@ -469,7 +469,7 @@ var utag_data = {
 <td><code>data</code></td>
 <td><code>Object</code></td>
 <td>JSON object of key-value pairs, where keys are strings and the values are either a string or array of strings</td>
-<td><code>{&quot;persistent_key2&quot; : &quot;persistent_val2&quot;}</code></td>
+<td><code>{'persistent_key' : 'persistent_val'}</code></td>
 </tr>
 
 <tr>
@@ -500,7 +500,7 @@ var utag_data = {
 <td><code>key</code></td>
 <td><code>String</code></td>
 <td>Key to retrieve from the data layer</td>
-<td><code>&quot;key1&quot;</code></td>
+<td><code>&quot;key_to_delete&quot;</code></td>
 </tr>
 </tbody>
 </table>
@@ -666,7 +666,9 @@ var utag_data = {
                   () <span style="font-weight:bold">=&gt;</span> <span style="font-weight:bold">print</span>(<span style="color:#b84">&#39;Consent Expired&#39;</span>));
             }
           <span style="font-weight:bold">else</span>
-            {<span style="font-weight:bold">print</span>(<span style="color:#b84">&#34;Tealium Initialization Error&#34;</span>)}
+            {
+            	<span style="font-weight:bold">print</span>(<span style="color:#b84">&#39;Tealium Initialization Error&#39;</span>)
+            }
         });</code></pre></div>
 <h3 id="jointrace"><code>joinTrace()</code></h3>
 
@@ -715,7 +717,7 @@ var utag_data = {
 <td><code>keys</code></td>
 <td><code>List&lt;String&gt;</code></td>
 <td>Array of key names</td>
-<td><code>[&quot;key1&quot;, &quot;KEY2&quot;]</code></td>
+<td><code>[&quot;key1&quot;, &quot;key2&quot;]</code></td>
 </tr>
 </tbody>
 </table>
@@ -745,7 +747,7 @@ var utag_data = {
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">Tealium<span style="font-weight:bold">.</span>removeRemoteCommand(<span style="color:#b84">&#34;firebase&#34;</span>);</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">Tealium<span style="font-weight:bold">.</span>removeRemoteCommand(<span style="color:#b84">&#39;test_command&#39;</span>);</code></pre></div>
 <h3 id="setconsentcategories"><code>setConsentCategories()</code></h3>
 
 <p>Sets the consent categories of a user. Pass in an array of Strings to set the categories. Default is an empty array until <code>ConsentStatus</code> is set to <code>.consented</code>. If the consent status is <code>.consented</code> and no categories are specified with the <code>setConsentCategories()</code> method, then all categories are set.</p>
@@ -884,7 +886,7 @@ var utag_data = {
 </tbody>
 </table>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">Tealium<span style="font-weight:bold">.</span>setConsentExpiryListener(() <span style="font-weight:bold">=&gt;</span> {
-    <span style="font-weight:bold">print</span>(<span style="color:#b84">&#34;Consent Expired&#34;</span>);
+    <span style="font-weight:bold">print</span>(<span style="color:#b84">&#39;Consent Expired&#39;</span>);
 });</code></pre></div>
 <h3 id="setconsentstatus"><code>setConsentStatus()</code></h3>
 
@@ -993,7 +995,7 @@ var utag_data = {
 <td><code>dispatch</code></td>
 <td><code>TealiumDispatch</code></td>
 <td>Tealium dispatch with the event name and data layer</td>
-<td><code>TealiumEvent(&quot;button_click&quot;, { &quot;button_name&quot;: &quot;Submit&quot; })</code></td>
+<td><code>TealiumEvent('button_click', { 'button_name': 'Submit' })</code></td>
 </tr>
 </tbody>
 </table>
@@ -1272,6 +1274,26 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/getting-started/media/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-media">Media Tracking</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
       </li>
       
@@ -1456,6 +1478,26 @@ var utag_data = {
       <li class="w-100 hover-accent-color-light fw8 " data-level="2">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 primary-color hover-bg-primary pl3 pr2  " data-target=".remote-commands-integrations">Integrations</a>
         <ul class="remote-commands-integrations desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/adjust/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-adjust">Adjust</a>
+      </li>
+      
+    
+  
+  
+
             
 
   
@@ -2399,6 +2441,26 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/media/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-media">Media Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/remote-commands/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-remotecommands">RemoteCommands Module</a>
       </li>
       
@@ -2602,6 +2664,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/api/location-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-location-manager">LocationManager</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/api/media/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-media">Media</a>
       </li>
       
     
@@ -4845,6 +4927,26 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/media/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-media">Media Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/remote-commands/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-remotecommands">RemoteCommands Module</a>
       </li>
       
@@ -5048,6 +5150,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/api/tealium-instance-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-instance-manager">TealiumInstanceManager</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/api/media-session/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-media-session">MediaSession</a>
       </li>
       
     
@@ -5509,7 +5631,109 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw8 " data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity">Unity</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity-v1">Unity 1.x</a>
+        <ul class="unity-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/unity-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/unity-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/unity-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/unity-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity">Unity 2.x</a>
         <ul class="unity desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -7558,7 +7782,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  May 10, 2021 
+    <span>This page was last updated:  May 13, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -7695,8 +7919,14 @@ var utag_data = {
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/unity-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Unity 1.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/unity/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Unity
+          Unity 2.x
         </a>
     </li>
   

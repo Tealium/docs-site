@@ -253,7 +253,7 @@ var utag_data = {
               <ul class="toc-h3"><li><a href="#bridging-header">Bridging Header</a></li>
               </ul><li><a href="#call-swift-from-objective-c">Call Swift from Objective-C</a></li>
               <ul class="toc-h3"><li><a href="#helper-class">Helper Class</a></li>
-              <li><a href="#links">Links</a></li>
+              <li><a href="#sample-tealiumhelper-file">Sample TealiumHelper file</a></li>
               </nav>
   </aside></div>
 
@@ -346,12 +346,145 @@ However, by using an intermediate helper class, it is possible to call the Swift
 </span><span style="color:#998;font-style:italic"></span>    [help track:<span style="color:#b84">@&#34;this is from objective-c!&#34;</span> data:@{<span style="color:#b84">@&#34;mydata&#34;</span><span style="font-weight:bold">:</span><span style="color:#b84">@&#34;hello from obj-c&#34;</span>}];
     <span style="font-weight:bold">return</span> <span style="color:#999">YES</span>;
 }</code></pre></div>
-<h3 id="links">Links</h3>
+<h3 id="sample-tealiumhelper-file">Sample TealiumHelper file</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// </span>
+<span style="color:#998;font-style:italic">// TealiumHelper.swift</span>
+<span style="color:#998;font-style:italic">//</span>
+<span style="color:#998;font-style:italic">//  Copyright © 2021 Tealium, Inc. All rights reserved.</span>
+<span style="color:#998;font-style:italic">//</span>
 
-<ul>
-<li><a href="https://raw.githubusercontent.com/Tealium/tealium-swift/master/samples/TealiumHelper.swift">TealiumHelper File (Objective-C compatible)</a></li>
-</ul>
+<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumCollect</span>
+<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumCore</span>
+<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumLifecycle</span>
+<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumVisitorService</span>
+<span style="color:#999;font-weight:bold">#if</span> <span style="color:#999;font-weight:bold">os</span>(<span style="color:#999;font-weight:bold">iOS</span>)
+<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumAttribution</span>
+<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumLocation</span>
+<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumRemoteCommands</span>
+<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumTagManagement</span>
+<span style="color:#999;font-weight:bold">#endif</span>
 
+<span style="font-weight:bold">enum</span> <span style="color:#458;font-weight:bold">TealiumConfiguration</span> {
+    <span style="font-weight:bold">static</span> <span style="font-weight:bold">let</span> <span style="color:#008080">account</span> = <span style="color:#b84">&#34;tealiummobile&#34;</span>
+    <span style="font-weight:bold">static</span> <span style="font-weight:bold">let</span> <span style="color:#008080">profile</span> = <span style="color:#b84">&#34;demo&#34;</span>
+    <span style="font-weight:bold">static</span> <span style="font-weight:bold">let</span> <span style="color:#008080">environment</span> = <span style="color:#b84">&#34;dev&#34;</span>
+    <span style="font-weight:bold">static</span> <span style="font-weight:bold">let</span> <span style="color:#008080">dataSourceKey</span> = <span style="color:#b84">&#34;abc123&#34;</span>
+}
+
+<span style="color:#998;font-style:italic">// Change this to false to disable all the Tealium logs</span>
+<span style="font-weight:bold">let</span> <span style="color:#008080">enableHelperLogs</span> = <span style="font-weight:bold">true</span>
+
+<span style="font-weight:bold">@objc</span>
+<span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span>: NSObject {
+    
+    <span style="font-weight:bold">@objc</span>
+    <span style="font-weight:bold">static</span> <span style="font-weight:bold">let</span> <span style="color:#008080">shared</span> = TealiumHelper()
+
+    <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: TealiumConfiguration.account,
+                               profile: TealiumConfiguration.profile,
+                               environment: TealiumConfiguration.environment,
+                               dataSource: TealiumConfiguration.dataSourceKey)
+
+    <span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
+
+    <span style="color:#998;font-style:italic">// </span><span style="color:#999;font-weight:bold;font-style:italic">MARK:</span><span style="color:#998;font-style:italic"> Tealium Initilization</span>
+    <span style="font-weight:bold">private</span> <span style="font-weight:bold">override</span> <span style="font-weight:bold">init</span>() {
+        <span style="font-weight:bold">super</span>.<span style="font-weight:bold">init</span>()
+        <span style="color:#998;font-style:italic">// Optional Config Settings</span>
+        <span style="font-weight:bold">if</span> enableHelperLogs { config.logLevel = .info }
+
+<span style="color:#998;font-style:italic">// Optional - Only required if using Visitor Service</span>
+<span style="color:#998;font-style:italic">//        config.visitorServiceDelegate = self</span>
+
+<span style="color:#998;font-style:italic">// Optional - Only required if using Consent Manager</span>
+<span style="color:#998;font-style:italic">//        config.consentLoggingEnabled = true</span>
+<span style="color:#998;font-style:italic">//        config.consentPolicy = .ccpa</span>
+
+<span style="color:#998;font-style:italic">// Optional - Only required if using Hosted Data Layer</span>
+<span style="color:#998;font-style:italic">//        config.hostedDataLayerKeys = [&#34;hdl-test&#34;: &#34;product_id&#34;]</span>
+<span style="color:#998;font-style:italic">// Optional - Only required if using Timed Events</span>
+<span style="color:#998;font-style:italic">//        config.timedEventTriggers = [TimedEventTrigger(start: &#34;product_view&#34;, end: &#34;order_complete&#34;),</span>
+<span style="color:#998;font-style:italic">//                                     TimedEventTrigger(start: &#34;start_game&#34;, end: &#34;buy_coins&#34;)]</span>
+
+        <span style="color:#999;font-weight:bold">#if</span> <span style="color:#999;font-weight:bold">os</span>(<span style="color:#999;font-weight:bold">iOS</span>)
+        <span style="color:#998;font-style:italic">// Add dispatchers</span>
+        config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands, Dispatchers.Collect]
+        <span style="color:#999;font-weight:bold">#else</span>
+        config.dispatchers = [Dispatchers.Collect]
+        <span style="color:#999;font-weight:bold">#endif</span>
+
+        <span style="color:#998;font-style:italic">// Add collectors</span>
+        <span style="color:#999;font-weight:bold">#if</span> <span style="color:#999;font-weight:bold">os</span>(<span style="color:#999;font-weight:bold">iOS</span>) <span style="font-weight:bold">&amp;&amp;</span> <span style="color:#999;font-weight:bold">targetEnvironment</span>(<span style="color:#999;font-weight:bold">macCatalyst</span>)
+        <span style="color:#998;font-style:italic">// Optional - Only required if using Visitor Service</span>
+        config.collectors = [Collectors.VisitorService]
+        <span style="color:#999;font-weight:bold">#elseif</span> <span style="color:#999;font-weight:bold">os</span>(<span style="color:#999;font-weight:bold">iOS</span>) <span style="font-weight:bold">&amp;&amp;</span> <span style="font-weight:bold">!</span><span style="color:#999;font-weight:bold">targetEnvironment</span>(<span style="color:#999;font-weight:bold">macCatalyst</span>)
+        config.collectors = [Collectors.Attribution, Collectors.VisitorService, Collectors.Location]
+
+         <span style="color:#998;font-style:italic">// Batching:</span>
+         config.batchingEnabled = <span style="font-weight:bold">false</span> <span style="color:#998;font-style:italic">// true to enable</span>
+
+        <span style="color:#998;font-style:italic">// Location - Geofence Monitoring:</span>
+<span style="color:#998;font-style:italic">//        config.geofenceUrl = &#34;https://tags.tiqcdn.com/dle/tealiummobile/location/geofences.json&#34;</span>
+<span style="color:#998;font-style:italic">//        config.useHighAccuracy = true</span>
+<span style="color:#998;font-style:italic">//        config.updateDistance = 200.0</span>
+        
+        <span style="color:#998;font-style:italic">// SKAdNetwork event handling</span>
+        config.searchAdsEnabled = <span style="font-weight:bold">true</span>
+        config.skAdAttributionEnabled = <span style="font-weight:bold">true</span>
+        config.skAdConversionKeys = [<span style="color:#b84">&#34;conversion_event&#34;</span>: <span style="color:#b84">&#34;conversion_value&#34;</span>]
+
+        <span style="color:#998;font-style:italic">// Remote Commands:</span>
+        <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommand</span> = RemoteCommand(commandId: <span style="color:#b84">&#34;hello&#34;</span>, description: <span style="color:#b84">&#34;world&#34;</span>) { response <span style="font-weight:bold">in</span>
+            <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">payload</span> = response.payload <span style="font-weight:bold">else</span> {
+                <span style="font-weight:bold">return</span>
+            }
+            <span style="color:#998;font-style:italic">// Do something w/remote command payload</span>
+            <span style="font-weight:bold">if</span> enableHelperLogs {
+                print(payload)
+            }
+        }
+        config.addRemoteCommand(remoteCommand)
+        <span style="color:#999;font-weight:bold">#endif</span>
+
+        tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
+            <span style="color:#998;font-style:italic">// Optional post init processing</span>
+            <span style="font-weight:bold">self</span>.tealium?.dataLayer.add(data: [<span style="color:#b84">&#34;somekey&#34;</span>: <span style="color:#b84">&#34;someval&#34;</span>], expiry: .afterCustom((.months, <span style="color:#099">1</span>)))
+            <span style="font-weight:bold">self</span>.tealium?.dataLayer.add(key: <span style="color:#b84">&#34;someotherkey&#34;</span>, value: <span style="color:#b84">&#34;someotherval&#34;</span>, expiry: .forever)
+        }
+    }
+    
+    <span style="font-weight:bold">@objc</span>
+    <span style="font-weight:bold">public</span> <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">start</span>() {
+        <span style="font-weight:bold">_</span> = TealiumHelper.shared
+    }
+    
+    <span style="font-weight:bold">@objc</span>
+    <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">resetConsentPreferences</span>() {
+        tealium?.consentManager?.resetUserConsentPreferences()
+    }
+    
+    <span style="font-weight:bold">@objc</span>
+    <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">track</span>(title: <span style="color:#999">String</span>, data: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>]?) {
+        <span style="font-weight:bold">let</span> <span style="color:#008080">dispatch</span> = TealiumEvent(title, dataLayer: data)
+        tealium?.track(dispatch)
+    }
+
+    <span style="font-weight:bold">@objc</span>
+    <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">trackView</span>(title: <span style="color:#999">String</span>, data: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>]?) {
+        <span style="font-weight:bold">let</span> <span style="color:#008080">dispatch</span> = TealiumView(title, dataLayer: data)
+        tealium?.track(dispatch)
+    }
+
+    <span style="font-weight:bold">@objc</span>
+    <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">joinTrace</span>(<span style="font-weight:bold">_</span> traceID: <span style="color:#999">String</span>) {
+        tealium?.joinTrace(id: traceID)
+    }
+
+    <span style="font-weight:bold">@objc</span>
+    <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">leaveTrace</span>() {
+        tealium?.leaveTrace()
+    }
+}</code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -639,6 +772,26 @@ However, by using an intermediate helper class, it is possible to call the Swift
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/getting-started/media/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-media">Media Tracking</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
       </li>
       
@@ -823,6 +976,26 @@ However, by using an intermediate helper class, it is possible to call the Swift
       <li class="w-100 hover-accent-color-light fw8 " data-level="2">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 primary-color hover-bg-primary pl3 pr2  " data-target=".remote-commands-integrations">Integrations</a>
         <ul class="remote-commands-integrations desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/adjust/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-adjust">Adjust</a>
+      </li>
+      
+    
+  
+  
+
             
 
   
@@ -1766,6 +1939,26 @@ However, by using an intermediate helper class, it is possible to call the Swift
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/media/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-media">Media Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/remote-commands/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-remotecommands">RemoteCommands Module</a>
       </li>
       
@@ -1969,6 +2162,26 @@ However, by using an intermediate helper class, it is possible to call the Swift
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/api/location-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-location-manager">LocationManager</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/api/media/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-media">Media</a>
       </li>
       
     
@@ -4212,6 +4425,26 @@ However, by using an intermediate helper class, it is possible to call the Swift
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/media/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-media">Media Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/remote-commands/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-remotecommands">RemoteCommands Module</a>
       </li>
       
@@ -4415,6 +4648,26 @@ However, by using an intermediate helper class, it is possible to call the Swift
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/api/tealium-instance-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-instance-manager">TealiumInstanceManager</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/api/media-session/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-media-session">MediaSession</a>
       </li>
       
     
@@ -4876,7 +5129,109 @@ However, by using an intermediate helper class, it is possible to call the Swift
       
       
       <li class="w-100 hover-accent-color-light fw8 " data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity">Unity</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity-v1">Unity 1.x</a>
+        <ul class="unity-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/unity-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/unity-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/unity-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/unity-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity">Unity 2.x</a>
         <ul class="unity desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -6925,7 +7280,7 @@ However, by using an intermediate helper class, it is possible to call the Swift
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  August 12, 2020 
+    <span>This page was last updated:  June 22, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -7062,8 +7417,14 @@ However, by using an intermediate helper class, it is possible to call the Swift
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/unity-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Unity 1.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/unity/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Unity
+          Unity 2.x
         </a>
     </li>
   

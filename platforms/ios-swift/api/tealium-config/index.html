@@ -304,6 +304,8 @@ var utag_data = {
               <li><a href="#timedeventtriggers">timedEventTriggers</a></li>
               <li><a href="#updatedistance">updateDistance</a></li>
               <li><a href="#usehighaccuracy">useHighAccuracy</a></li>
+              <li><a href="#webviewprocesspool">webviewProcessPool</a></li>
+              <li><a href="#webviewconfig">webviewConfig</a></li>
               </nav>
   </aside></div>
 
@@ -618,6 +620,16 @@ var utag_data = {
 <tr>
 <td><a href="#usehighaccuracy"><code>useHighAccuracy</code></a></td>
 <td>Sets the location precision to low accuracy (default) or high accuracy</td>
+</tr>
+
+<tr>
+<td><a href="#webviewprocesspool"><code>webviewProcessPool</code></a></td>
+<td>Prevents cookie synchronization issues if your app contains other webviews besides the Tealium Tag Management webview</td>
+</tr>
+
+<tr>
+<td><a href="#webviewconfig"><code>webviewConfig</code></a></td>
+<td>Permits a custom <code>WKWebviewConfiguration</code> object to be passed, which is used by the Tealium Tag Management webview</td>
 </tr>
 </tbody>
 </table>
@@ -1242,6 +1254,24 @@ config.tagManagementOverrideURL =  url</code></pre></div>
       config.useHighAccuracy = <span style="font-weight:bold">true</span>
       config.updateDistance = <span style="color:#099">150.0</span>
   }</code></pre></div>
+<h3 id="webviewprocesspool"><code>webviewProcessPool</code></h3>
+
+<p>Prevent cookie synchronization issues if your app contains other webviews besides the Tealium Tag Management webview. If you use a webview in your app, create and retain a singleton <code>WKProcessPool</code> instance and set it prior to instantiating Tealium.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">processPool</span> = MyApp.wkProcessPool
+config.webviewProcessPool = processPool</code></pre></div>
+<h3 id="webviewconfig"><code>webviewConfig</code></h3>
+
+<p>Permits a custom <code>WKWebviewConfiguration</code> object to be passed, which is used by the Tealium Tag Management webview. If using this option instead of <code>webviewProcessPool</code> option, set the singleton <code>WKProcessPool</code> via the customizable <code>WKWebviewConfiguration</code> <code>processPool</code> property.</p>
+
+<p class="note">It is recommended to use this option as it may be required if future API changes are made to <code>WKWebView</code>.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">processPool</span> = MyApp.wkProcessPool
+<span style="font-weight:bold">let</span> <span style="color:#008080">configuration</span> = WKWebViewConfiguration()
+configuration.processPool = processPool
+config.webviewConfig = configuration</code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -1529,6 +1559,26 @@ config.tagManagementOverrideURL =  url</code></pre></div>
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/getting-started/media/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-media">Media Tracking</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/getting-started/deep-linking/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-deep-linking">Deep Links</a>
       </li>
       
@@ -1713,6 +1763,26 @@ config.tagManagementOverrideURL =  url</code></pre></div>
       <li class="w-100 hover-accent-color-light fw8 " data-level="2">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 primary-color hover-bg-primary pl3 pr2  " data-target=".remote-commands-integrations">Integrations</a>
         <ul class="remote-commands-integrations desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/adjust/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-adjust">Adjust</a>
+      </li>
+      
+    
+  
+  
+
             
 
   
@@ -2656,6 +2726,26 @@ config.tagManagementOverrideURL =  url</code></pre></div>
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/media/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-media">Media Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/remote-commands/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-remotecommands">RemoteCommands Module</a>
       </li>
       
@@ -2859,6 +2949,26 @@ config.tagManagementOverrideURL =  url</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/api/location-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-location-manager">LocationManager</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/api/media/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-api-media">Media</a>
       </li>
       
     
@@ -5102,6 +5212,26 @@ config.tagManagementOverrideURL =  url</code></pre></div>
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/media/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-media">Media Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/remote-commands/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-remotecommands">RemoteCommands Module</a>
       </li>
       
@@ -5305,6 +5435,26 @@ config.tagManagementOverrideURL =  url</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/api/tealium-instance-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-instance-manager">TealiumInstanceManager</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/api/media-session/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-media-session">MediaSession</a>
       </li>
       
     
@@ -5766,7 +5916,109 @@ config.tagManagementOverrideURL =  url</code></pre></div>
       
       
       <li class="w-100 hover-accent-color-light fw8 " data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity">Unity</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity-v1">Unity 1.x</a>
+        <ul class="unity-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/unity-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/unity-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/unity-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/unity-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".unity-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".unity">Unity 2.x</a>
         <ul class="unity desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -7815,7 +8067,7 @@ config.tagManagementOverrideURL =  url</code></pre></div>
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  January 14, 2021 
+    <span>This page was last updated:  May 14, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -7952,8 +8204,14 @@ config.tagManagementOverrideURL =  url</code></pre></div>
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/unity-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Unity 1.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/unity/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Unity
+          Unity 2.x
         </a>
     </li>
   
