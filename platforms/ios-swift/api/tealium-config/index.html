@@ -251,11 +251,17 @@ var utag_data = {
       <p class="b">Table of Contents</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#class-tealiumconfig">Class: TealiumConfig</a></li>
               <ul class="toc-h3"><li><a href="#addremotecommand">addRemoteCommand()</a></li>
+              <li><a href="#adobevisitorauthstate">adobeVisitorAuthState</a></li>
+              <li><a href="#adobevisitorcustomvisitorid">adobeVisitorCustomVisitorId</a></li>
+              <li><a href="#adobevisitordataproviderid">adobeVisitorDataProviderId</a></li>
+              <li><a href="#adobevisitorexistingecid">adobeVisitorExistingEcid</a></li>
+              <li><a href="#adobevisitororgid">adobeVisitorOrgId</a></li>
+              <li><a href="#adobevisitorretries">adobeVisitorRetries</a></li>
               <li><a href="#appdelegateproxyenabled">appDelegateProxyEnabled</a></li>
               <li><a href="#batchingbypasskeys">batchingBypassKeys</a></li>
               <li><a href="#batchingenabled">batchingEnabled</a></li>
               <li><a href="#batchsize">batchSize</a></li>
-              <li><a href="#collectors">collectors</a></li>
+              <li><a href="#collectors">Collectors</a></li>
               <li><a href="#connectivityrefreshenabled">connectivityRefreshEnabled</a></li>
               <li><a href="#connectivityrefreshinterval">connectivityRefreshInterval</a></li>
               <li><a href="#consentexpiry">consentExpiry</a></li>
@@ -351,285 +357,315 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Method/Property</th>
-<th>Description</th>
+<th align="left">Method/Property</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><a href="#addremotecommand"><code>addRemoteCommand()</code></a></td>
-<td>Adds remote commands for later execution</td>
+<td align="left"><a href="#addremotecommand"><code>addRemoteCommand()</code></a></td>
+<td align="left">Adds remote commands for later execution.</td>
 </tr>
 
 <tr>
-<td><a href="#appDelegateProxyEnabled"><code>appDelegateProxyEnabled</code></a></td>
-<td>Enables (default) or disables the Tealium AppDelegate proxy</td>
+<td align="left"><a href="#adobevisitorauthstate"><code>adobeVisitorAuthState</code></a></td>
+<td align="left">Sets the current authentication state for the visitor.</td>
 </tr>
 
 <tr>
-<td><a href="#batchingbypasskeys"><code>batchingBypassKeys</code></a></td>
-<td>Sets a list of event names for which batching is bypassed (sent as individual events)</td>
+<td align="left"><a href="#adobevisitorcustomvisitorid"><code>adobeVisitorCustomVisitorId</code></a></td>
+<td align="left">Sets the known visitor ID to the Adobe ECID, if it&rsquo;s known at initialization time. If the ECID changes in the future, call <code>linkECIDToKnownIdentifier</code> to update the visitor ID.</td>
 </tr>
 
 <tr>
-<td><a href="#batchingenabled"><code>batchingEnabled</code></a></td>
-<td>Enables or disables (default) event batching</td>
+<td align="left"><a href="#adobevisitordataproviderid"><code>adobeVisitorDataProviderId</code></a></td>
+<td align="left">Sets the data provider ID, provided by Adobe, which is required when linking an ECID to a known ID.</td>
 </tr>
 
 <tr>
-<td><a href="#batchsize"><code>batchSize</code></a></td>
-<td>Sets the amount of events to combine into a single batch request (max: 10)</td>
+<td align="left"><a href="#adobevisitorexistingecid"><code>adobeVisitorExistingEcid</code></a></td>
+<td align="left">Sets the existing ECID from a previous installation to be used, such as the Adobe SDK, instead of requesting a new ECID.</td>
 </tr>
 
 <tr>
-<td><a href="#connectivityrefreshenabled"><code>connectivityRefreshEnabled</code></a></td>
-<td>If enabled (default), the connectivity module checks for a connection at a specified interval</td>
+<td align="left"><a href="#adobevisitororgid"><code>adobeVisitorOrgId</code></a></td>
+<td align="left">String containing the Adobe Org ID including the <code>@</code> portion.</td>
 </tr>
 
 <tr>
-<td><a href="#connectivityrefreshinterval"><code>connectivityRefreshInterval</code></a></td>
-<td>Sets the default connectivity refresh interval in seconds</td>
+<td align="left"><a href="#adobevisitorretries"><code>adobeVisitorRetries</code></a></td>
+<td align="left">The number of allowed invalid visitor ID retries before a request fails, which results in tracking calls being sent anyway without an ECID.</td>
 </tr>
 
 <tr>
-<td><a href="#consentexpiry"><code>consentExpiry</code></a></td>
-<td>Sets the expiration time of the user consent selections</td>
+<td align="left"><a href="#appDelegateProxyEnabled"><code>appDelegateProxyEnabled</code></a></td>
+<td align="left">Enables (default) or disables the Tealium AppDelegate proxy.</td>
 </tr>
 
 <tr>
-<td><a href="#consentloggingenabled"><code>consentLoggingEnabled</code></a></td>
-<td>Enables or disables the consent logging feature</td>
+<td align="left"><a href="#batchingbypasskeys"><code>batchingBypassKeys</code></a></td>
+<td align="left">Sets a list of event names for which batching is bypassed (sent as individual events).</td>
 </tr>
 
 <tr>
-<td><a href="#consentpolicy"><code>consentPolicy</code></a></td>
-<td>Sets the consent policy (defaults to GDPR)￼. e.g. CCPA</td>
+<td align="left"><a href="#batchingenabled"><code>batchingEnabled</code></a></td>
+<td align="left">Enables or disables (default) event batching.</td>
 </tr>
 
 <tr>
-<td><a href="#deeplinktrackingenabled"><code>deepLinkTrackingEnabled</code></a></td>
-<td>Enables or disables automatic tracking of deep links</td>
+<td align="left"><a href="#batchsize"><code>batchSize</code></a></td>
+<td align="left">Sets the amount of events to combine into a single batch request (max: 10).</td>
 </tr>
 
 <tr>
-<td><a href="#desiredaccuracy"><code>desiredAccuracy</code></a></td>
-<td>The accuracy of the location data that your app wants to receive</td>
+<td align="left"><a href="#connectivityrefreshenabled"><code>connectivityRefreshEnabled</code></a></td>
+<td align="left">If enabled (default), the connectivity module checks for a connection at a specified interval.</td>
 </tr>
 
 <tr>
-<td><a href="#diskstoragedirectory"><code>diskStorageDirectory</code></a></td>
-<td>Sets the directory to be used for disk storage. Default <code>.caches</code>.</td>
+<td align="left"><a href="#connectivityrefreshinterval"><code>connectivityRefreshInterval</code></a></td>
+<td align="left">Sets the default connectivity refresh interval in seconds.</td>
 </tr>
 
 <tr>
-<td><a href="#dispatchafter"><code>dispatchAfter</code></a></td>
-<td>Sets the number of events after which the queue is flushed</td>
+<td align="left"><a href="#consentexpiry"><code>consentExpiry</code></a></td>
+<td align="left">Sets the expiration time of the user consent selections.</td>
 </tr>
 
 <tr>
-<td><a href="#dispatchexpiration"><code>dispatchExpiration</code></a></td>
-<td>Sets the batch expiration in days. If the device is offline for an extended period, older events are deleted</td>
+<td align="left"><a href="#consentloggingenabled"><code>consentLoggingEnabled</code></a></td>
+<td align="left">Enables or disables the consent logging feature.</td>
 </tr>
 
 <tr>
-<td><a href="#dispatchqueuelimit"><code>dispatchQueueLimit</code></a></td>
-<td>Sets the maximum number of queued events. If this number is reached, and the queue has not been flushed, the oldest events are deleted.</td>
+<td align="left"><a href="#consentpolicy"><code>consentPolicy</code></a></td>
+<td align="left">Sets the consent policy (defaults to GDPR).</td>
 </tr>
 
 <tr>
-<td><a href="#dispatchlisteners"><code>dispatchListeners</code></a></td>
-<td>Provides the option to add custom <code>DispatchListener</code>s to listen for tracking calls just prior to dispatch</td>
+<td align="left"><a href="#deeplinktrackingenabled"><code>deepLinkTrackingEnabled</code></a></td>
+<td align="left">Enables or disables automatic tracking of deep links.</td>
 </tr>
 
 <tr>
-<td><a href="#dispatchvalidators"><code>dispatchValidators</code></a></td>
-<td>Provides the option to add custom <code>DispatchValidator</code>s to control whether to dispatch, queue, or drop events events</td>
+<td align="left"><a href="#desiredaccuracy"><code>desiredAccuracy</code></a></td>
+<td align="left">The accuracy of the location data that your app wants to receive.</td>
 </tr>
 
 <tr>
-<td><a href="#existingvisitorid"><code>existingVisitorId</code></a></td>
-<td>Sets the existing visitor ID, used as the first party ID in the app extension</td>
+<td align="left"><a href="#diskstoragedirectory"><code>diskStorageDirectory</code></a></td>
+<td align="left">Sets the directory to be used for disk storage. Default <code>.caches</code>.</td>
 </tr>
 
 <tr>
-<td><a href="#geofencefilename"><code>geofenceFileName</code></a></td>
-<td>Sets the name of a local geofences JSON file asset. <em>Do not include the file extension.</em></td>
+<td align="left"><a href="#dispatchafter"><code>dispatchAfter</code></a></td>
+<td align="left">Sets the number of events after which the queue is flushed.</td>
 </tr>
 
 <tr>
-<td><a href="#geofencetrackingenabled"><code>geofenceTrackingEnabled</code></a></td>
-<td>Disables or enables geofence tracking</td>
+<td align="left"><a href="#dispatchexpiration"><code>dispatchExpiration</code></a></td>
+<td align="left">Sets the batch expiration in days. If the device is offline for an extended period, older events are deleted.</td>
 </tr>
 
 <tr>
-<td><a href="#geofenceurl"><code>geofenceUrl</code></a></td>
-<td>Sets the URL of a hosted JSON file</td>
+<td align="left"><a href="#dispatchqueuelimit"><code>dispatchQueueLimit</code></a></td>
+<td align="left">Sets the maximum number of queued events. If this number is reached, and the queue has not been flushed, the oldest events are deleted.</td>
 </tr>
 
 <tr>
-<td><a href="#hosteddatalayerexpiry"><code>hostedDataLayerExpiry</code></a></td>
-<td>Sets an expiration on the hosted data layer data</td>
+<td align="left"><a href="#dispatchlisteners"><code>dispatchListeners</code></a></td>
+<td align="left">Provides the option to add custom <code>DispatchListener</code>s to listen for tracking calls just prior to dispatch.</td>
 </tr>
 
 <tr>
-<td><a href="#hosteddatalayerkeys"><code>hostedDataLayerKeys</code></a></td>
-<td>Sets the event mappings used by the hosted data layer module when looking up data layer IDs</td>
+<td align="left"><a href="#dispatchvalidators"><code>dispatchValidators</code></a></td>
+<td align="left">Provides the option to add custom <code>DispatchValidator</code>s to control whether to dispatch, queue, or drop events events.</td>
 </tr>
 
 <tr>
-<td><a href="#iscollectenabled"><code>isCollectEnabled</code></a></td>
-<td>Provides an option to disable the Collect dispatcher</td>
+<td align="left"><a href="#existingvisitorid"><code>existingVisitorId</code></a></td>
+<td align="left">Sets the existing visitor ID, used as the first party ID in the app extension.</td>
 </tr>
 
 <tr>
-<td><a href="(#lifecycleautotrackingenabled)"><code>lifecycleAutoTrackingEnabled</code></a></td>
-<td>Enables or disables lifecycle auto tracking. Default is <code>true</code>. If set to <code>false</code> and lifecycle launch/sleep/wake events are desired, they need to be manually called using the public methods in the <code>LifecycleModule</code></td>
+<td align="left"><a href="#geofencefilename"><code>geofenceFileName</code></a></td>
+<td align="left">Sets the name of a local geofences JSON file asset. <em>Do not include the file extension.</em></td>
 </tr>
 
 <tr>
-<td><a href="#logger"><code>logger</code></a></td>
-<td>Sets a custom logger conforming to the <code>TealiumLoggerProtocol</code> that replaces the current <code>TealiumLogger</code></td>
+<td align="left"><a href="#geofencetrackingenabled"><code>geofenceTrackingEnabled</code></a></td>
+<td align="left">Disables or enables geofence tracking.</td>
 </tr>
 
 <tr>
-<td><a href="#loglevel"><code>logLevel</code></a></td>
-<td>Sets the log level property, which controls how much information is logged</td>
+<td align="left"><a href="#geofenceurl"><code>geofenceUrl</code></a></td>
+<td align="left">Sets the URL of a hosted JSON file.</td>
 </tr>
 
 <tr>
-<td><a href="#logtype"><code>logType</code></a></td>
-<td>Sets a new log type</td>
+<td align="left"><a href="#hosteddatalayerexpiry"><code>hostedDataLayerExpiry</code></a></td>
+<td align="left">Sets an expiration on the hosted data layer data.</td>
 </tr>
 
 <tr>
-<td><a href="#memoryreportingenabled"><code>memoryReportingEnabled</code></a></td>
-<td>Enables or disables memory reporting in the DeviceData module</td>
+<td align="left"><a href="#hosteddatalayerkeys"><code>hostedDataLayerKeys</code></a></td>
+<td align="left">Sets the event mappings used by the hosted data layer module when looking up data layer IDs.</td>
 </tr>
 
 <tr>
-<td><a href="#minimumfreediskspace"><code>minimumFreeDiskSpace</code></a></td>
-<td>Sets the minimum free disk space in Megabytes  for Disk Storage to be enabled</td>
+<td align="left"><a href="#iscollectenabled"><code>isCollectEnabled</code></a></td>
+<td align="left">Provides an option to disable the Collect dispatcher.</td>
 </tr>
 
 <tr>
-<td><a href="#minutesbetweenrefresh"><code>minutesBetweenRefresh</code></a></td>
-<td>Determines how often to fetch the publish settings from the CDN</td>
+<td align="left"><a href="(#lifecycleautotrackingenabled)"><code>lifecycleAutoTrackingEnabled</code></a></td>
+<td align="left">Enables or disables lifecycle auto tracking. Default is <code>true</code>. If set to <code>false</code> and lifecycle launch/sleep/wake events are desired, they need to be manually called using the public methods in the <code>LifecycleModule</code>.</td>
 </tr>
 
 <tr>
-<td><a href="#onconsentexpiration"><code>onConsentExpiration</code></a></td>
-<td>Callback to execute once consent selections expire</td>
+<td align="left"><a href="#logger"><code>logger</code></a></td>
+<td align="left">Sets a custom logger conforming to the <code>TealiumLoggerProtocol</code> that replaces the current <code>TealiumLogger</code>.</td>
 </tr>
 
 <tr>
-<td><a href="#overrideCollectProfile"><code>overrideCollectProfile</code></a></td>
-<td>Overrides the Tealium Collect profile to send data to a different Tealium profile</td>
+<td align="left"><a href="#loglevel"><code>logLevel</code></a></td>
+<td align="left">Sets the log level property, which controls how much information is logged.</td>
 </tr>
 
 <tr>
-<td><a href="#overrideCollectURL"><code>overrideCollectURL</code></a></td>
-<td>Overrides the Tealium Collect URL to send data to a different endpoint</td>
+<td align="left"><a href="#logtype"><code>logType</code></a></td>
+<td align="left">Sets a new log type.</td>
 </tr>
 
 <tr>
-<td><a href="#overrideCollectBatchURL"><code>overrideCollectBatchURL</code></a></td>
-<td>Overrides the Tealium Collect Batch URL to send data to a different endpoint</td>
+<td align="left"><a href="#memoryreportingenabled"><code>memoryReportingEnabled</code></a></td>
+<td align="left">Enables or disables memory reporting in the DeviceData module .</td>
 </tr>
 
 <tr>
-<td><a href="#overrideCollectDomain"><code>overrideCollectDomain</code></a></td>
-<td>Overrides the Tealium Collect domain name to send data to a different endpoint</td>
+<td align="left"><a href="#minimumfreediskspace"><code>minimumFreeDiskSpace</code></a></td>
+<td align="left">Sets the minimum free disk space in Megabytes  for Disk Storage to be enabled.</td>
 </tr>
 
 <tr>
-<td><a href="#publishsettingsprofile"><code>publishSettingsProfile</code></a></td>
-<td>Overrides the publish settings profile</td>
+<td align="left"><a href="#minutesbetweenrefresh"><code>minutesBetweenRefresh</code></a></td>
+<td align="left">Determines how often to fetch the publish settings from the CDN.</td>
 </tr>
 
 <tr>
-<td><a href="#publishsettingsurl"><code>publishSettingsURL</code></a></td>
-<td>Overrides the publish settings URL</td>
+<td align="left"><a href="#onconsentexpiration"><code>onConsentExpiration</code></a></td>
+<td align="left">Callback to execute once consent selections expire.</td>
 </tr>
 
 <tr>
-<td><a href="#remoteapienabled"><code>remoteAPIEnabled</code></a></td>
-<td>Enables or disables <code>remote_api</code> event. Required for RemoteCommands module if DispatchQueue module in use.</td>
+<td align="left"><a href="#overrideCollectProfile"><code>overrideCollectProfile</code></a></td>
+<td align="left">Overrides the Tealium Collect profile to send data to a different Tealium profile.</td>
 </tr>
 
 <tr>
-<td><a href="#remotecommands"><code>remoteCommands</code></a></td>
-<td>Returns an array of all currently-registered remote commands</td>
+<td align="left"><a href="#overrideCollectURL"><code>overrideCollectURL</code></a></td>
+<td align="left">Overrides the Tealium Collect URL to send data to a different endpoint.</td>
 </tr>
 
 <tr>
-<td><a href="#remotehttpcommanddisabled"><code>remoteHTTPCommandDisabled</code></a></td>
-<td>Disables the built-in remote HTTP command if <code>true</code></td>
+<td align="left"><a href="#overrideCollectBatchURL"><code>overrideCollectBatchURL</code></a></td>
+<td align="left">Overrides the Tealium Collect Batch URL to send data to a different endpoint.</td>
 </tr>
 
 <tr>
-<td><a href="#rootview"><code>rootView</code></a></td>
-<td>Sets the current <code>UIView</code> for <code>WKWebView</code> to be attached to</td>
+<td align="left"><a href="#overrideCollectDomain"><code>overrideCollectDomain</code></a></td>
+<td align="left">Overrides the Tealium Collect domain name to send data to a different endpoint.</td>
 </tr>
 
 <tr>
-<td><a href="#searchadsenabled"><code>searchAdsEnabled</code></a></td>
-<td>Enables or disables the Apple Search Ads API in the Attribution module</td>
+<td align="left"><a href="#publishsettingsprofile"><code>publishSettingsProfile</code></a></td>
+<td align="left">Overrides the publish settings profile.</td>
 </tr>
 
 <tr>
-<td><a href="#shouldaddcookieobserver"><code>shouldAddCookieObserver</code></a></td>
-<td>Determines whether to add a <code>WKWebView</code> cookie observer</td>
+<td align="left"><a href="#publishsettingsurl"><code>publishSettingsURL</code></a></td>
+<td align="left">Overrides the publish settings URL.</td>
 </tr>
 
 <tr>
-<td><a href="#shoulduseremotepublishsettings"><code>shouldUseRemotePublishSettings</code></a></td>
-<td>Sets the Mobile Publish Settings (default: enabled)</td>
+<td align="left"><a href="#remoteapienabled"><code>remoteAPIEnabled</code></a></td>
+<td align="left">Enables or disables <code>remote_api</code> event. Required for RemoteCommands module if DispatchQueue module in use.</td>
 </tr>
 
 <tr>
-<td><a href="#skadattributionenabled"><code>skAdAttributionEnabled</code></a></td>
-<td>Enables the use <a href="https://developer.apple.com/documentation/storekit/skadnetwork">SKAdNetwork</a> framework</td>
+<td align="left"><a href="#remotecommands"><code>remoteCommands</code></a></td>
+<td align="left">Returns an array of all currently-registered remote commands.</td>
 </tr>
 
 <tr>
-<td><a href="#skadconversionkeys"><code>skAdConversionKeys</code></a></td>
-<td>Defines the event and value for which to call the <a href="https://developer.apple.com/documentation/storekit/skadnetwork/3566697-updateconversionvalue"><code>SKAdNetwork.updateConversionValue()</code></a> method</td>
+<td align="left"><a href="#remotehttpcommanddisabled"><code>remoteHTTPCommandDisabled</code></a></td>
+<td align="left">Disables the built-in remote HTTP command if <code>true</code>.</td>
 </tr>
 
 <tr>
-<td><a href="#tagmanagementoverrideurl"><code>tagManagementOverrideURL</code></a></td>
-<td>Overrides the default URL used by the Tag Management module</td>
+<td align="left"><a href="#rootview"><code>rootView</code></a></td>
+<td align="left">Sets the current <code>UIView</code> for <code>WKWebView</code> to be attached to.</td>
 </tr>
 
 <tr>
-<td><a href="#tealiumconfig"><code>TealiumConfig()</code></a></td>
-<td>Constructor for a <code>TealiumConfig</code> object</td>
+<td align="left"><a href="#searchadsenabled"><code>searchAdsEnabled</code></a></td>
+<td align="left">Enables or disables the Apple Search Ads API in the Attribution module.</td>
 </tr>
 
 <tr>
-<td><a href="#timedeventtriggers"><code>timedEventTriggers</code></a></td>
-<td>A list of <code>TimedEventTrigger</code> objects for automatically tracking timed events</td>
+<td align="left"><a href="#shouldaddcookieobserver"><code>shouldAddCookieObserver</code></a></td>
+<td align="left">Determines whether to add a <code>WKWebView</code> cookie observer.</td>
 </tr>
 
 <tr>
-<td><a href="#updatedistance"><code>updateDistance</code></a></td>
-<td>Sets the distance interval (meters) in which the location updates are received</td>
+<td align="left"><a href="#shoulduseremotepublishsettings"><code>shouldUseRemotePublishSettings</code></a></td>
+<td align="left">Sets the Mobile Publish Settings (default: enabled).</td>
 </tr>
 
 <tr>
-<td><a href="#usehighaccuracy"><code>useHighAccuracy</code></a></td>
-<td>Sets the location precision to low accuracy (default) or high accuracy</td>
+<td align="left"><a href="#skadattributionenabled"><code>skAdAttributionEnabled</code></a></td>
+<td align="left">Enables the use <a href="https://developer.apple.com/documentation/storekit/skadnetwork">SKAdNetwork</a> framework.</td>
 </tr>
 
 <tr>
-<td><a href="#webviewprocesspool"><code>webviewProcessPool</code></a></td>
-<td>Prevents cookie synchronization issues if your app contains other webviews besides the Tealium Tag Management webview</td>
+<td align="left"><a href="#skadconversionkeys"><code>skAdConversionKeys</code></a></td>
+<td align="left">Defines the event and value for which to call the <a href="https://developer.apple.com/documentation/storekit/skadnetwork/3566697-updateconversionvalue"><code>SKAdNetwork.updateConversionValue()</code></a> method</td>
 </tr>
 
 <tr>
-<td><a href="#webviewconfig"><code>webviewConfig</code></a></td>
-<td>Permits a custom <code>WKWebviewConfiguration</code> object to be passed, which is used by the Tealium Tag Management webview</td>
+<td align="left"><a href="#tagmanagementoverrideurl"><code>tagManagementOverrideURL</code></a></td>
+<td align="left">Overrides the default URL used by the Tag Management module.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#tealiumconfig"><code>TealiumConfig()</code></a></td>
+<td align="left">Constructor for a <code>TealiumConfig</code> object.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#timedeventtriggers"><code>timedEventTriggers</code></a></td>
+<td align="left">A list of <code>TimedEventTrigger</code> objects for automatically tracking timed events.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#updatedistance"><code>updateDistance</code></a></td>
+<td align="left">Sets the distance interval (meters) in which the location updates are received.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#usehighaccuracy"><code>useHighAccuracy</code></a></td>
+<td align="left">Sets the location precision to low accuracy (default) or high accuracy.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#webviewprocesspool"><code>webviewProcessPool</code></a></td>
+<td align="left">Prevents cookie synchronization issues if your app contains other webviews besides the Tealium Tag Management webview.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#webviewconfig"><code>webviewConfig</code></a></td>
+<td align="left">Permits a custom <code>WKWebviewConfiguration</code> object to be passed, which is used by the Tealium Tag Management webview.</td>
 </tr>
 </tbody>
 </table>
@@ -641,17 +677,17 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>command</code></td>
-<td><code>RemoteCommand</code></td>
-<td>Instance of a <code>TealiumRemoteCommand</code> to be added</td>
+<td align="left"><code>command</code></td>
+<td align="left"><code>RemoteCommand</code></td>
+<td align="left">Instance of a <code>TealiumRemoteCommand</code> to be added</td>
 </tr>
 </tbody>
 </table>
@@ -664,6 +700,40 @@ var utag_data = {
 }
 config.addRemoteCommand(remoteCommand)
 <span style="color:#999;font-weight:bold">#endif</span></code></pre></div>
+<h3 id="adobevisitorauthstate"><code>adobeVisitorAuthState</code></h3>
+
+<p>Sets the current authentication state for the visitor.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.adobeVisitorAuthState = .authenticated
+config.adobeVisitorAuthState = .loggedOut
+config.adobeVisitorAuthState = .unknown</code></pre></div>
+<h3 id="adobevisitorcustomvisitorid"><code>adobeVisitorCustomVisitorId</code></h3>
+
+<p>Sets the known visitor ID to the Adobe ECID, if it&rsquo;s known at initialization time. If the ECID changes in the future, call <a href="/platforms/ios-swift/api/tealium/#linkecidtoknownidentifier"><code>linkECIDToKnownIdentifier</code></a> to update the visitor ID.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.adobeVisitorCustomVisitorId = <span style="color:#b84">&#34;20381482060927465156359999806251989655&#34;</span></code></pre></div>
+<h3 id="adobevisitordataproviderid"><code>adobeVisitorDataProviderId</code></h3>
+
+<p>Sets the data provider ID, provided by Adobe, which is required when linking an ECID to a known ID.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.adobeVisitorDataProviderId = <span style="color:#b84">&#34;01&#34;</span></code></pre></div>
+<h3 id="adobevisitorexistingecid"><code>adobeVisitorExistingEcid</code></h3>
+
+<p>Sets the existing ECID from a previous installation to be used, such as the Adobe SDK, instead of requesting a new ECID.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.adobeVisitorExistingEcid = <span style="color:#b84">&#34;20381482060927465156359999806251989655&#34;</span></code></pre></div>
+<h3 id="adobevisitororgid"><code>adobeVisitorOrgId</code></h3>
+
+<p>String containing the Adobe Org ID including the <code>@</code> portion. If the Org ID is not provided, the module is not initialized and no visitor ID is retrieved. Tracking calls continue as normal without an Adobe ECID.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.adobeVisitorOrgId = STRING_VALUE</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.adobeVisitorOrgId = <span style="color:#b84">&#34;1A2A111A111150AA0A110A12@AdobeOrg&#34;</span></code></pre></div>
+<h3 id="adobevisitorretries"><code>adobeVisitorRetries</code></h3>
+
+<p>The number of allowed invalid visitor ID retries before a request fails, which results in tracking calls being sent anyway without an ECID.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.adobeVisitorRetries = <span style="color:#099">5</span></code></pre></div>
 <h3 id="appdelegateproxyenabled"><code>appDelegateProxyEnabled</code></h3>
 
 <p>Enables the AppDelegate proxy to automatically deep link tracking and initiate a Tealium trace session from a deep link. The property is enabled and set <code>true</code> by default. To disable, set property to <code>false</code>.</p>
@@ -680,10 +750,52 @@ config.addRemoteCommand(remoteCommand)
 
 <p>Sets the amount of events to combine into a single batch request. Maximum is 10.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.batchSize = <span style="color:#099">8</span></code></pre></div>
-<h3 id="collectors"><code>collectors</code></h3>
+<h3 id="collectors"><code>Collectors</code></h3>
 
-<p>Sets the list of <code>Collectors</code> to initialize the Tealium library with.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.collectors = [Collectors.AppData]</code></pre></div>
+<p>Collectors are modules that gather supplemental information from the device and append it to the data layer before it&rsquo;s transmitted to the Tealium Customer Data Hub. Some collectors are included in the core library, while others are optional and installed as separate modules.</p>
+
+<p>The following table lists the available collectors. Default collectors are denoted by a <code>*</code> next to the collector name.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Collector Name</th>
+<th align="left">TealiumConfig Reference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>AdobeVisitor</code></td>
+<td align="left"><code>Collectors.AdobeVisitor</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>AppData</code>*</td>
+<td align="left"><code>Collectors.AppData</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>Connectivity</code>*</td>
+<td align="left"><code>Collectors.Connectivity</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>Device</code></td>
+<td align="left"><code>Collectors.Device</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>Lifecycle</code></td>
+<td align="left"><code>Collectors.Lifecycle</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>These modules are enabled or disabled using the <a href="/platforms/ios-swift/api/tealium-config/"><code>TealiumConfig</code></a> <code>collectors</code> property.</p>
+
+<p>The following example adds to existing list of collectors you&rsquo;re using:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.collectors = [Collectors.AdobeVisitor]</code></pre></div>
 <h3 id="connectivityrefreshenabled"><code>connectivityRefreshEnabled</code></h3>
 
 <p>If enabled (default), the connectivity module checks for a connection at a specified interval (controlled via <code>setConnectivityRefreshInterval</code>). Queued dispatches are then sent as soon as a connection is resumed.</p>
@@ -724,45 +836,45 @@ config.addRemoteCommand(remoteCommand)
 <table>
 <thead>
 <tr>
-<th><code>desiredAccuracy</code> option</th>
-<th>Description</th>
+<th align="left"><code>desiredAccuracy</code> option</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>.bestForNavigation</code></td>
-<td>Level of accuracy intended for use in navigation apps that require precise position information at all times</td>
+<td align="left"><code>.bestForNavigation</code></td>
+<td align="left">Level of accuracy intended for use in navigation apps that require precise position information at all times</td>
 </tr>
 
 <tr>
-<td><code>.best</code></td>
-<td>Very high accuracy but don’t need the same level of accuracy required for navigation apps</td>
+<td align="left"><code>.best</code></td>
+<td align="left">Very high accuracy but don’t need the same level of accuracy required for navigation apps</td>
 </tr>
 
 <tr>
-<td><code>.nearestTenMeters</code></td>
-<td>Accuracy to the nearest 10 meters</td>
+<td align="left"><code>.nearestTenMeters</code></td>
+<td align="left">Accuracy to the nearest 10 meters</td>
 </tr>
 
 <tr>
-<td><code>.nearestHundredMeters</code></td>
-<td>Accuracy to the nearest 100 meters</td>
+<td align="left"><code>.nearestHundredMeters</code></td>
+<td align="left">Accuracy to the nearest 100 meters</td>
 </tr>
 
 <tr>
-<td><code>.reduced</code></td>
-<td>Accuracy within 1-20 kilometers</td>
+<td align="left"><code>.reduced</code></td>
+<td align="left">Accuracy within 1-20 kilometers</td>
 </tr>
 
 <tr>
-<td><code>.withinOneKilometer</code></td>
-<td>Accuracy to the nearest 1 kilometer</td>
+<td align="left"><code>.withinOneKilometer</code></td>
+<td align="left">Accuracy to the nearest 1 kilometer</td>
 </tr>
 
 <tr>
-<td><code>.withinThreeKilometers</code></td>
-<td>Accuracy to the nearest 3 kilometers</td>
+<td align="left"><code>.withinThreeKilometers</code></td>
+<td align="left">Accuracy to the nearest 3 kilometers</td>
 </tr>
 </tbody>
 </table>
@@ -804,17 +916,17 @@ config.addRemoteCommand(remoteCommand)
 <table>
 <thead>
 <tr>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>String</code></td>
-<td>The JSON file name</td>
-<td><code>geofences.jsom</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The JSON file name</td>
+<td align="left"><code>geofences.jsom</code></td>
 </tr>
 </tbody>
 </table>
@@ -826,17 +938,17 @@ config.addRemoteCommand(remoteCommand)
 <table>
 <thead>
 <tr>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>String</code></td>
-<td>The JSON file name</td>
-<td><code>geofences.json</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The JSON file name</td>
+<td align="left"><code>geofences.json</code></td>
 </tr>
 </tbody>
 </table>
@@ -848,17 +960,17 @@ config.addRemoteCommand(remoteCommand)
 <table>
 <thead>
 <tr>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>String</code></td>
-<td>The URL of a geofences file</td>
-<td><code>https://example.com/.../geofences.json</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The URL of a geofences file</td>
+<td align="left"><code>https://example.com/.../geofences.json</code></td>
 </tr>
 </tbody>
 </table>
@@ -911,35 +1023,35 @@ config.addRemoteCommand(remoteCommand)
 <table>
 <thead>
 <tr>
-<th>Log Level</th>
-<th>Log Activity Description</th>
+<th align="left">Log Level</th>
+<th align="left">Log Activity Description</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>.debug</code></td>
-<td>Debug-level events used for debugging an application (recommended for development environment)</td>
+<td align="left"><code>.debug</code></td>
+<td align="left">Debug-level events used for debugging an application (recommended for development environment)</td>
 </tr>
 
 <tr>
-<td><code>.info</code></td>
-<td>Informational events that highlight the progress of the application</td>
+<td align="left"><code>.info</code></td>
+<td align="left">Informational events that highlight the progress of the application</td>
 </tr>
 
 <tr>
-<td><code>.error</code></td>
-<td>Error events such as critical errors and failures</td>
+<td align="left"><code>.error</code></td>
+<td align="left">Error events such as critical errors and failures</td>
 </tr>
 
 <tr>
-<td><code>.fault</code></td>
-<td>Fault or severe events such as system-level or multi-process errors</td>
+<td align="left"><code>.fault</code></td>
+<td align="left">Fault or severe events such as system-level or multi-process errors</td>
 </tr>
 
 <tr>
-<td><code>.silent</code></td>
-<td>No logging</td>
+<td align="left"><code>.silent</code></td>
+<td align="left">No logging</td>
 </tr>
 </tbody>
 </table>
@@ -981,17 +1093,17 @@ config.addRemoteCommand(remoteCommand)
 <table>
 <thead>
 <tr>
-<th>Property value</th>
-<th>Type</th>
-<th>Description</th>
+<th align="left">Property value</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>url</code></td>
-<td><code>String</code></td>
-<td>The URL to override</td>
+<td align="left"><code>url</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The URL to override</td>
 </tr>
 </tbody>
 </table>
@@ -1008,17 +1120,17 @@ config.overrideCollectURL = url</code></pre></div>
 <table>
 <thead>
 <tr>
-<th>Property value</th>
-<th>Type</th>
-<th>Description</th>
+<th align="left">Property value</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>url</code></td>
-<td><code>String</code></td>
-<td>The URL to override</td>
+<td align="left"><code>url</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The URL to override</td>
 </tr>
 </tbody>
 </table>
@@ -1100,40 +1212,40 @@ config.tagManagementOverrideURL =  url</code></pre></div>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>account</code></td>
-<td><code>String</code></td>
-<td>Tealium account name</td>
-<td><code>companyXYZ</code></td>
+<td align="left"><code>account</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Tealium account name</td>
+<td align="left"><code>companyXYZ</code></td>
 </tr>
 
 <tr>
-<td><code>profile</code></td>
-<td><code>String</code></td>
-<td>Tealium profile name</td>
-<td><code>main</code></td>
+<td align="left"><code>profile</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Tealium profile name</td>
+<td align="left"><code>main</code></td>
 </tr>
 
 <tr>
-<td><code>environment</code></td>
-<td><code>String</code></td>
-<td>Tealium environment name</td>
-<td>[<code>dev</code>, <code>qa</code>, <code>prod</code>]</td>
+<td align="left"><code>environment</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Tealium environment name</td>
+<td align="left">[<code>dev</code>, <code>qa</code>, <code>prod</code>]</td>
 </tr>
 
 <tr>
-<td><code>datasource</code></td>
-<td><code>String</code></td>
-<td>(Optional) Tealium data source key from CDH</td>
-<td><code>abc123</code></td>
+<td align="left"><code>datasource</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">(Optional) Tealium data source key from CDH</td>
+<td align="left"><code>abc123</code></td>
 </tr>
 </tbody>
 </table>
@@ -1149,29 +1261,29 @@ config.tagManagementOverrideURL =  url</code></pre></div>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>start</code></td>
-<td><code>String</code></td>
-<td>Name of the <code>TealiumEvent</code> to start the timed event</td>
+<td align="left"><code>start</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Name of the <code>TealiumEvent</code> to start the timed event</td>
 </tr>
 
 <tr>
-<td><code>stop</code></td>
-<td><code>String</code></td>
-<td>Name of the <code>TealiumEvent</code>  to stop the timed event</td>
+<td align="left"><code>stop</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Name of the <code>TealiumEvent</code>  to stop the timed event</td>
 </tr>
 
 <tr>
-<td><code>name</code></td>
-<td><code>String?</code></td>
-<td>(Optional) Name of timed event (default: <code>&quot;START_EVENT::STOP_EVENT&quot;</code>)</td>
+<td align="left"><code>name</code></td>
+<td align="left"><code>String?</code></td>
+<td align="left">(Optional) Name of timed event (default: <code>&quot;START_EVENT::STOP_EVENT&quot;</code>)</td>
 </tr>
 </tbody>
 </table>
@@ -1185,17 +1297,17 @@ config.tagManagementOverrideURL =  url</code></pre></div>
 <table>
 <thead>
 <tr>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>Double</code></td>
-<td>The distance interval (meters) in which location updates are received</td>
-<td><code>150.0</code></td>
+<td align="left"><code>Double</code></td>
+<td align="left">The distance interval (meters) in which location updates are received</td>
+<td align="left"><code>150.0</code></td>
 </tr>
 </tbody>
 </table>
@@ -1228,17 +1340,17 @@ config.tagManagementOverrideURL =  url</code></pre></div>
 <table>
 <thead>
 <tr>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>Boolean</code></td>
-<td>Sets the location data accuracy</td>
-<td><code>true</code></td>
+<td align="left"><code>Boolean</code></td>
+<td align="left">Sets the location data accuracy</td>
+<td align="left"><code>true</code></td>
 </tr>
 </tbody>
 </table>
@@ -1640,6 +1752,26 @@ config.webviewConfig = configuration</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/getting-started/hosted-data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-hosted-data-layer">Hosted Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/getting-started/adobe-visitor-service/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-adobe-visitor-service">Adobe Visitor Service Module</a>
       </li>
       
     
@@ -2606,6 +2738,26 @@ config.webviewConfig = configuration</code></pre></div>
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/adobe-visitor-service/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-adobe-visitor-service">AdobeVisitorService Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/collect/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-collect">Collect Module</a>
       </li>
       
@@ -3102,7 +3254,231 @@ config.webviewConfig = configuration</code></pre></div>
       
       
       <li class="w-100 hover-accent-color-light fw8 " data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".cordova">Cordova</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".cordova-v1">Cordova 1.x</a>
+        <ul class="cordova-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 " data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 primary-color hover-bg-primary pl3 pr2  " data-target=".cordova-v1-module-list">Module List</a>
+        <ul class="cordova-v1-module-list desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/cordova-v1/module-list/adid/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-module-list-adid">Ad Identifier Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/cordova-v1/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/cordova-v1/module-list/install-referrer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-module-list-install-referrer">Install Referrer Module</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".cordova">Cordova 2.x</a>
         <ul class="cordova desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -3158,108 +3534,6 @@ config.webviewConfig = configuration</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/cordova/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-track">Track</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/cordova/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-data-management">Data Management</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw8 " data-level="2">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 primary-color hover-bg-primary pl3 pr2  " data-target=".cordova-module-list">Module List</a>
-        <ul class="cordova-module-list desktopmenu animated fadeIn list pl0 dn">
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
-        <a href="/platforms/cordova/module-list/adid/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-module-list-adid">Ad Identifier Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
-        <a href="/platforms/cordova/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-module-list-crash-reporter">Crash Reporter Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
-        <a href="/platforms/cordova/module-list/install-referrer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-module-list-install-referrer">Install Referrer Module</a>
-      </li>
-      
-    
-  
-  
-
-        </ul>
       </li>
       
     
@@ -3639,6 +3913,26 @@ config.webviewConfig = configuration</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/flutter/api/tealium-config/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-api-tealium-config">TealiumConfig</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/flutter/api/visitor-profile/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-api-visitor-profile">VisitorProfile</a>
       </li>
       
     
@@ -5033,6 +5327,26 @@ config.webviewConfig = configuration</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/appdata/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-appdata">AppData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/adobe-visitor-service/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-adobe-visitor-service">AdobeVisitorService Module</a>
       </li>
       
     
@@ -8067,7 +8381,7 @@ config.webviewConfig = configuration</code></pre></div>
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  May 14, 2021 
+    <span>This page was last updated:  July 28, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -8150,8 +8464,14 @@ config.webviewConfig = configuration</code></pre></div>
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/cordova-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Cordova 1.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/cordova/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Cordova
+          Cordova 2.x
         </a>
     </li>
   

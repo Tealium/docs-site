@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Crash Reporter Module | Modules |Tealium Developer Docs</title>
+    <title>Release Notes | Tealium for Cordova |Tealium Developer Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -249,10 +249,10 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#install">Install</a></li>
-              <li><a href="#initialize">Initialize</a></li>
-              <li><a href="#test">Test</a></li>
-              <li><a href="#uninstall">Uninstall</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#1-1-3">1.1.3</a></li>
+              <li><a href="#1-1-2">1.1.2</a></li>
+              <li><a href="#1-1-1">1.1.1</a></li>
+              <li><a href="#1-1-0">1.1.0</a></li>
               </nav>
   </aside></div>
 
@@ -264,21 +264,21 @@ var utag_data = {
 
   
     
-      <a href="/platforms/cordova/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        CORDOVA/MODULE LIST
+      <a href="/platforms/cordova-v1/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        CORDOVA V1
       </a>
     
   
 
   
 
-  <h1 class="lh-title mb3 mv0 pt3">Crash Reporter Module</h1>
+  <h1 class="lh-title mb3 mv0 pt3">Release Notes</h1>
 </header>
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
     <div class="f4 fw4 lh-copy">
-      Provides a Cordova wrapper for the native Android Crash Reporter module (iOS is not supported at this time).
+      Release notes.
     </div>
   
 
@@ -291,57 +291,38 @@ var utag_data = {
 <div class="prose" id="prose">
   
 
-<h2 id="install">Install</h2>
+<p>Below is a complete list of changes for each release of the Cordova library. See the file <a href="https://github.com/Tealium/cordova-plugin/blob/master/CHANGELOG.md">CHANGELOG.md</a> for full list of changes.</p>
 
-<p>To install the Crash Reporter module:</p>
+<p class="note">It is strongly recommended that you remove and re-add the plugin from your project for the 1.1.1 release.</p>
 
-<ol>
-<li><p>Navigate to your Cordova app&rsquo;s directory in a terminal window.</p></li>
-
-<li><p>Run the following command:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cordova plugin add tealium-cordova-crashreporter</code></pre></div></li>
-</ol>
-
-<h2 id="initialize">Initialize</h2>
-
-<p>No explicit initialization of the Crash Reporter module is required.</p>
-
-<p>It is instantiated by the core Tealium plugin if the <code>isCrashReporterEnabled</code> parameter is set in the config object, as shown in the following example::</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">function</span> tealiumInit(account, profile, environment, instance) {
-    tealium.init({
-       account <span style="font-weight:bold">:</span> account,
-       profile <span style="font-weight:bold">:</span> profile,
-       environment <span style="font-weight:bold">:</span> environment,
-       instance <span style="font-weight:bold">:</span> instance,
-       isLifecycleEnabled<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;true&#34;</span>,
-       isCrashReporterEnabled<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;true&#34;</span>
-    });
-}
-</code></pre></div>
-<h2 id="test">Test</h2>
-
-<p>The JavaScript API exposes a method to force a crash to be triggered. In order to avoid accidental triggering of a crash in production, this method is hard-coded to work only if the following conditions are met:</p>
+<h2 id="1-1-3">1.1.3</h2>
 
 <ul>
-<li>The environment is set to <code>dev</code></li>
-<li>Crash Reporter module is installed</li>
-<li>Crash Reporter module was successfully initialized</li>
-<li>The variable <code>forceCrash</code> is present in the data layer</li>
+<li>Upgraded core libraries to latest versions.</li>
 </ul>
 
-<p>If the preceding conditions are met, trigger a crash by issuing a tracking call containing the variable <code>forceCrash</code> with the <a href="/platforms/cordova/api/#trackview"><code>trackView()</code></a> method:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">tealium.trackView({<span style="color:#b84">&#34;forceCrash&#34;</span><span style="font-weight:bold">:</span><span style="color:#b84">&#34;true&#34;</span>});
-</code></pre></div>
-<h2 id="uninstall">Uninstall</h2>
+<h2 id="1-1-2">1.1.2</h2>
 
-<p>To uninstall the Crash Reporter module:</p>
+<ul>
+<li>Fixed <a href="https://github.com/Tealium/cordova-plugin/issues/31">&ldquo;Diamond Operator&rdquo; issue</a></li>
+</ul>
 
-<ol>
-<li><p>Run the following command:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cordova plugin rm tealium-cordova-crashreporter</code></pre></div></li>
+<h2 id="1-1-1">1.1.1</h2>
 
-<li><p>Remove the <code>isCrashReporterEnabled</code> flag from the config object when initializing the main Tealium plugin.</p></li>
-</ol>
+<p>The plugin package name changed from <code>com.tealium.cordova.v5</code> to <code>tealium-cordova-plugin</code>.</p>
+
+<p>To remove earlier plugin versions, run the following command:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cordova plugin rm com.tealium.cordova.v5</code></pre></div>
+<h2 id="1-1-0">1.1.0</h2>
+
+<p>The 1.1.0 release changed some API behavior. Test the following items after upgrading:</p>
+
+<ul>
+<li>If you were previously using the <code>addVolatile</code> and <code>addPersistent</code> methods, then ensure that you are only storing supported data types specified earlier.</li>
+<li>To improve performance on iOS, the plugin now runs most of its code on a background thread, except for the initialization method. Report any issues via the GitHub issues page.</li>
+<li>The variable <code>cordova_lifecycle</code>, which was previously sent with all lifecycle events, has now been removed. If you still require this variable, create it again by using a Set Data Values extension in Tealium iQ, with a rule <code>if lifecycle_type is populated</code> to create the variable and add it to all lifecycle events.</li>
+<li>On iOS, lifecycle sleep events are now tracked as soon as the user either puts the app into the background, or begins to close the app completely. This means when the user brings up the task switcher while an app is running by pressing the home button twice, a sleep event is generated. If the user cancels the action and goes back into the app, a corresponding wake event is generated. Previously, sleep events were only created when the user had finished backgrounding the app (by single-press of the home button, or switching to another app). This behavior matches the existing behavior on Android. Be aware that this may cause an increased amount of sleep events to be recorded in your analytics tools, but the numbers are technically more accurate</li>
+</ul>
 
 </div>
 
@@ -350,29 +331,17 @@ var utag_data = {
 	<div date-pref class="white">
 		
 		
-			<a href="https://docs.tealium.com/platforms/cordova/module-list/adid/" title="Ad Identifier Module "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
+			<a href="https://docs.tealium.com/platforms/cordova-v1/api/" title="API Reference "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
     <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
     <path d="M0 0h24v24H0z" fill="none"/>
 </svg>
- Ad Identifier Module </a>
+ API Reference </a>
 		
 
 	</div>
 
 </b>
 <b style="position: absolute; right:0px;" class="pv1 br2 dib tc mv3 link">
-
-	<div date-pref class="white">
-
-		
-			<a href="https://docs.tealium.com/platforms/cordova/module-list/install-referrer/" title="Install Referrer Module">
-			Install Referrer Module <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
-
-			</a>
-		
-		
-	</div>
-
 </b>
 <br>&nbsp;</br>
 
@@ -711,6 +680,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/getting-started/hosted-data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-hosted-data-layer">Hosted Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/getting-started/adobe-visitor-service/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-adobe-visitor-service">Adobe Visitor Service Module</a>
       </li>
       
     
@@ -1677,6 +1666,26 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/adobe-visitor-service/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-adobe-visitor-service">AdobeVisitorService Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/collect/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-collect">Collect Module</a>
       </li>
       
@@ -2173,8 +2182,232 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw8  active" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2 primary-color expanded " data-target=".cordova">Cordova</a>
-        <ul class="cordova desktopmenu animated fadeIn list pl0">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2 primary-color expanded " data-target=".cordova-v1">Cordova 1.x</a>
+        <ul class="cordova-v1 desktopmenu animated fadeIn list pl0">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 " data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 primary-color hover-bg-primary pl3 pr2  " data-target=".cordova-v1-module-list">Module List</a>
+        <ul class="cordova-v1-module-list desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/cordova-v1/module-list/adid/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-module-list-adid">Ad Identifier Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/cordova-v1/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/cordova-v1/module-list/install-referrer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-module-list-install-referrer">Install Referrer Module</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/release-notes/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".cordova-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".cordova">Cordova 2.x</a>
+        <ul class="cordova desktopmenu animated fadeIn list pl0 dn">
             
 
   
@@ -2229,108 +2462,6 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/cordova/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-track">Track</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/cordova/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-data-management">Data Management</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw8  active" data-level="2">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 primary-color hover-bg-primary pl3 pr2 primary-color expanded " data-target=".cordova-module-list">Module List</a>
-        <ul class="cordova-module-list desktopmenu animated fadeIn list pl0">
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
-        <a href="/platforms/cordova/module-list/adid/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-module-list-adid">Ad Identifier Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
-        <a href="/platforms/cordova/module-list/crash-reporter/" class="db link pl4 pr2 pv1 bg-secondary white" data-target=".cordova-module-list-crash-reporter">Crash Reporter Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
-        <a href="/platforms/cordova/module-list/install-referrer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-module-list-install-referrer">Install Referrer Module</a>
-      </li>
-      
-    
-  
-  
-
-        </ul>
       </li>
       
     
@@ -2710,6 +2841,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/flutter/api/tealium-config/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-api-tealium-config">TealiumConfig</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/flutter/api/visitor-profile/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-api-visitor-profile">VisitorProfile</a>
       </li>
       
     
@@ -4104,6 +4255,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/appdata/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-appdata">AppData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/adobe-visitor-service/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-adobe-visitor-service">AdobeVisitorService Module</a>
       </li>
       
     
@@ -7138,7 +7309,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 29, 2019 
+    <span>This page was last updated:  July 7, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -7221,8 +7392,14 @@ var utag_data = {
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/cordova-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Cordova 1.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/cordova/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Cordova
+          Cordova 2.x
         </a>
     </li>
   

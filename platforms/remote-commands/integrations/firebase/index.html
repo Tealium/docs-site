@@ -260,6 +260,9 @@ var utag_data = {
               <li><a href="#ios-swift">iOS (Swift)</a></li>
               </ul><li><a href="#json-template">JSON Template</a></li>
               <li><a href="#track">Track</a></li>
+              <li><a href="#google-analytics-and-tealium-consent">Google Analytics and Tealium Consent</a></li>
+              <ul class="toc-h3"><li><a href="#passing-consent">Passing Consent</a></li>
+              <li><a href="#faq">FAQ</a></li>
               </nav>
   </aside></div>
 
@@ -632,7 +635,58 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
 
 <p>Events triggered by basic interactions with your app are tracked automatically. <a href="https://support.google.com/firebase/answer/6317485?hl=en">Learn more</a> about Firebase automatically collected events.</p>
 
-<p>Learn about <a href="https://community.tealiumiq.com/t5/Tags/Firebase-Mobile-Remote-Command-Tag-Setup-Guide/ta-p/30310">Firebase Mobile Remote Command tag setup</a>.</p>
+<p>Learn about <a href="https://community.tealiumiq.com/t5/Tags/Firebase-Mobile-Remote-Command-Tag-Setup-Guide/ta-p/30310">Firebase Mobile Remote Command Tag setup</a>.</p>
+
+<h2 id="google-analytics-and-tealium-consent">Google Analytics and Tealium Consent</h2>
+
+<p>Google Analytics for Firebase is an app measurement solution that provides insight into app usage and user engagement. It integrates across Firebase features and provides unlimited reporting for up to 500 distinct events defined using the Firebase SDK.</p>
+
+<p>Since there are no public APIs available, use the Firebase native SDK for Android or iOS to pass data into Firebase. Tealium&rsquo;s Firebase remote commands are able to call to the Firebase SDK.  Using your existing data layer and tracking calls, the behavior of the Firebase SDK is modifiable even after the app is released to the Android Play Store, or Apple App Store.</p>
+
+<p>Learn more in the <a href="https://community.tealiumiq.com/t5/Installation-Libraries/Google-Analytics-for-Firebase-Mobile-Integration-Guide/ta-p/21200">Google Analytics for Firebase Mobile Integration Guide</a>.</p>
+
+<h3 id="passing-consent">Passing Consent</h3>
+
+<p>There are three options to pass content from native screen to the web view. The web view pages are generic pages, not dedicated, and only available in the app. Consent management is enabled in Tealium IQ.</p>
+
+<p><strong>Option 1: Cookie</strong><br />
+With Tealium iQ Tag Manger and consent management enabled, Tealium uses a mobile web view where a cookie is set. The client uses this cookie to read the consent before the website loads any content on the page.</p>
+
+<p><strong>Option 2: API to web view page</strong><br />
+Set up a listener event and, when a user changes their consent, intercept and send it in an API call to the web view where you then set a cookie. </p>
+
+<p><strong>Option 3: Query string</strong><br />
+As the web view pages already have the Tealium consent manager, pass the consent in a query string when you move from native to the web view. Then read it with a preloader extension in Tealium iQ, which recreates the cookie.</p>
+
+<h3 id="faq">FAQ</h3>
+
+<p><strong>What happens if Google updates the Firebase SDK?</strong></p>
+
+<p>Assuming no major API changes, it is safe to update your Firebase SDK. Tealium proactively looks for Firebase updates to any API functionality, and makes the necessary updates to the Firebase remote commands.</p>
+
+<p><strong>The Firebase SDK automatically sends tracking events by default. How do we stop these before the client gives consent?</strong></p>
+
+<p>In the Firebase SDK, set the setting <code>firebase_analytics_collection_enabled</code> to <code>false</code> (default: <code>true</code>).  Once the user has consented, it can be changed back to <code>true</code> using Firebase remote commands. </p>
+
+<p>The following steps outlines the user journey:</p>
+
+<ol>
+<li>User opens app</li>
+<li>Firebase is set to not collect (<code>setAnalyticsCollectionEnabled(false)</code>)</li>
+<li>The user interacts with consent, and Tealium is sent the consent event</li>
+<li>Tealium sends message to the Firebase SDK to set to collect (<code>firebase_analytics_enabled = true</code>)</li>
+<li>The user click is tracked in Google Analytics</li>
+</ol>
+
+<p><strong>How can we tell what consent has been given whilst in App?</strong></p>
+
+<p>It is possible to send an API request to the Tealium SDK to see if a user has consented to a specific category. The client can request this at any point while the app is running.</p>
+
+<p class="note">Tealium does not store the consent. It is retained within the app.</p>
+
+<p><strong>Is it possible to turn off individual tags using an API to the Tealium SDK?</strong></p>
+
+<p>No, it&rsquo;s not possible. Consent opts in and out at the category level. </p>
 
 </div>
 
@@ -1002,6 +1056,26 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/getting-started/hosted-data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-hosted-data-layer">Hosted Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/getting-started/adobe-visitor-service/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-adobe-visitor-service">Adobe Visitor Service Module</a>
       </li>
       
     
@@ -1968,6 +2042,26 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/adobe-visitor-service/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-adobe-visitor-service">AdobeVisitorService Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/collect/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-collect">Collect Module</a>
       </li>
       
@@ -2464,7 +2558,231 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
       
       
       <li class="w-100 hover-accent-color-light fw8 " data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".cordova">Cordova</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".cordova-v1">Cordova 1.x</a>
+        <ul class="cordova-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 " data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 primary-color hover-bg-primary pl3 pr2  " data-target=".cordova-v1-module-list">Module List</a>
+        <ul class="cordova-v1-module-list desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/cordova-v1/module-list/adid/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-module-list-adid">Ad Identifier Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/cordova-v1/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/cordova-v1/module-list/install-referrer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-module-list-install-referrer">Install Referrer Module</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".cordova">Cordova 2.x</a>
         <ul class="cordova desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -2520,108 +2838,6 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/cordova/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-track">Track</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/cordova/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-data-management">Data Management</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw8 " data-level="2">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 primary-color hover-bg-primary pl3 pr2  " data-target=".cordova-module-list">Module List</a>
-        <ul class="cordova-module-list desktopmenu animated fadeIn list pl0 dn">
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
-        <a href="/platforms/cordova/module-list/adid/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-module-list-adid">Ad Identifier Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
-        <a href="/platforms/cordova/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-module-list-crash-reporter">Crash Reporter Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
-        <a href="/platforms/cordova/module-list/install-referrer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-module-list-install-referrer">Install Referrer Module</a>
-      </li>
-      
-    
-  
-  
-
-        </ul>
       </li>
       
     
@@ -3001,6 +3217,26 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/flutter/api/tealium-config/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-api-tealium-config">TealiumConfig</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/flutter/api/visitor-profile/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-api-visitor-profile">VisitorProfile</a>
       </li>
       
     
@@ -4395,6 +4631,26 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/appdata/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-appdata">AppData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/adobe-visitor-service/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-adobe-visitor-service">AdobeVisitorService Module</a>
       </li>
       
     
@@ -7429,7 +7685,7 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  June 2, 2021 
+    <span>This page was last updated:  July 27, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -7512,8 +7768,14 @@ tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <spa
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/cordova-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Cordova 1.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/cordova/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Cordova
+          Cordova 2.x
         </a>
     </li>
   

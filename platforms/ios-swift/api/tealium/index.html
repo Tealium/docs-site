@@ -256,11 +256,14 @@ var utag_data = {
               <li><a href="#flushqueue">flushQueue()</a></li>
               <li><a href="#jointrace">joinTrace()</a></li>
               <li><a href="#leavetrace">leaveTrace()</a></li>
+              <li><a href="#linkecidtoknownidentifier">linkECIDToKnownIdentifier()</a></li>
+              <li><a href="#resetvisitor">resetVisitor()</a></li>
               <li><a href="#resetvisitorid">resetVisitorId()</a></li>
               <li><a href="#starttimedevent">startTimedEvent()</a></li>
               <li><a href="#stoptimedevent">stopTimedEvent()</a></li>
               <li><a href="#tealium">Tealium()</a></li>
               <li><a href="#track">track()</a></li>
+              <li><a href="#visitor">visitor</a></li>
               <li><a href="#visitorid">visitorId</a></li>
               </nav>
   </aside></div>
@@ -307,70 +310,85 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Method/Property</th>
-<th>Description</th>
+<th align="left">Method/Property</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><a href="#canceltimedevent"><code>cancelTimedEvent()</code></a></td>
-<td>Cancels the timer for a timed event</td>
+<td align="left"><a href="#canceltimedevent"><code>cancelTimedEvent()</code></a></td>
+<td align="left">Cancels the timer for a timed event.</td>
 </tr>
 
 <tr>
-<td><a href="#clearalltimedevents"><code>clearAllTimedEvents()</code></a></td>
-<td>Clears all previously started timed events</td>
+<td align="left"><a href="#clearalltimedevents"><code>clearAllTimedEvents()</code></a></td>
+<td align="left">Clears all previously started timed events.</td>
 </tr>
 
 <tr>
-<td><a href="#disable"><code>disable()</code></a></td>
-<td>Disables the Tealium library</td>
+<td align="left"><a href="#disable"><code>disable()</code></a></td>
+<td align="left">Disables the Tealium library.</td>
 </tr>
 
 <tr>
-<td><a href="#flushqueue"><code>flushQueue()</code></a></td>
-<td>Sends any queued dispatches immediately</td>
+<td align="left"><a href="#flushqueue"><code>flushQueue()</code></a></td>
+<td align="left">Sends any queued dispatches immediately.</td>
 </tr>
 
 <tr>
-<td><a href="#jointrace"><code>joinTrace()</code></a></td>
-<td>Joins a trace with the specified ID</td>
+<td align="left"><a href="#jointrace"><code>joinTrace()</code></a></td>
+<td align="left">Joins a trace with the specified ID.</td>
 </tr>
 
 <tr>
-<td><a href="#leavetrace"><code>leaveTrace()</code></a></td>
-<td>Leave a previously joined trace and end the visitor session</td>
+<td align="left"><a href="#leavetrace"><code>leaveTrace()</code></a></td>
+<td align="left">Leave a previously joined trace and end the visitor session.</td>
 </tr>
 
 <tr>
-<td><a href="#resetvisitorid"><code>resetVisitorId()</code></a></td>
-<td>Generates a new visitor ID for the user</td>
+<td align="left"><a href="#linkecidtoknownidentifier"><code>linkECIDToKnownIdentifier</code></a></td>
+<td align="left">Links the current ECID to a known secondary ID.</td>
 </tr>
 
 <tr>
-<td><a href="#starttimedevent"><code>startTimedEvent()</code></a></td>
-<td>Starts a timed event with the given name</td>
+<td align="left"><a href="#resetvisitor"><code>resetVisitor()</code></a></td>
+<td align="left">Resets the visitor ECID by retrieving a new one on the next tracking call.</td>
 </tr>
 
 <tr>
-<td><a href="#stoptimedevent"><code>stopTimedEvent()</code></a></td>
-<td>Stops the timer for a timed event which triggers the <code>timed_event</code> tracking call</td>
+<td align="left"><a href="#resetvisitorid"><code>resetVisitorId()</code></a></td>
+<td align="left">Generates a new visitor ID for the user.</td>
 </tr>
 
 <tr>
-<td><a href="#tealium"><code>Tealium()</code></a></td>
-<td>Constructor for a new <code>Tealium</code> object</td>
+<td align="left"><a href="#starttimedevent"><code>startTimedEvent()</code></a></td>
+<td align="left">Starts a timed event with the given name.</td>
 </tr>
 
 <tr>
-<td><a href="#track"><code>track()</code></a></td>
-<td>Tracks an event with associated data and, optionally, triggers a callback function</td>
+<td align="left"><a href="#stoptimedevent"><code>stopTimedEvent()</code></a></td>
+<td align="left">Stops the timer for a timed event which triggers the <code>timed_event</code> tracking call.</td>
 </tr>
 
 <tr>
-<td><a href="#visitorid"><code>visitorId</code></a></td>
-<td>Returns a randomly generated and unique persistent visitor ID</td>
+<td align="left"><a href="#tealium"><code>Tealium()</code></a></td>
+<td align="left">Constructor for a new <code>Tealium</code> object.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#track"><code>track()</code></a></td>
+<td align="left">Tracks an event with associated data and, optionally, triggers a callback function.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#visitor"><code>visitor</code></a></td>
+<td align="left">Returns the full <code>AdobeVisitor</code> instance.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#visitorid"><code>visitorId</code></a></td>
+<td align="left">Returns a randomly generated and unique persistent visitor ID.</td>
 </tr>
 </tbody>
 </table>
@@ -382,17 +400,17 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Parameters</th>
-<th>Type</th>
-<th>Description</th>
+<th align="left">Parameters</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>name</code></td>
-<td><code>String</code></td>
-<td>The name of the timed event</td>
+<td align="left"><code>name</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The name of the timed event</td>
 </tr>
 </tbody>
 </table>
@@ -416,19 +434,19 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Parameters</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Parameters</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>traceId</code></td>
-<td><code>String</code></td>
-<td>The trace ID acquired from the Trace tool</td>
-<td><code>&quot;12345&quot;</code></td>
+<td align="left"><code>traceId</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The trace ID acquired from the Trace tool</td>
+<td align="left"><code>&quot;12345&quot;</code></td>
 </tr>
 </tbody>
 </table>
@@ -437,6 +455,65 @@ var utag_data = {
 
 <p>Leave a previously joined trace and end the visitor session. Optional parameter to preserve the trace visitor session when leaving the trace.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.leaveTrace(killVisitorSession: <span style="font-weight:bold">false</span>)</code></pre></div>
+<h3 id="linkecidtoknownidentifier"><code>linkECIDToKnownIdentifier()</code></h3>
+
+<p>Links the current ECID to a known secondary identifier, such as an email address or other internal ID.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">linkECIDToKnownIdentifier(
+  <span style="font-weight:bold">_</span> knownID: <span style="color:#999">String</span>,
+  adobeDataProviderId: <span style="color:#999">String</span>,
+  authState: AdobeVisitorAuthState?,
+  completion: ((Result&lt;AdobeVisitor, Error&gt;) <span style="color:#a61717;background-color:#e3d2d2">→</span> <span style="color:#999">Void</span>)</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">Parameters</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>knownId</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The known identifier.</td>
+</tr>
+
+<tr>
+<td align="left"><code>adobeDataProviderId</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The Adobe data provider identifier.</td>
+</tr>
+
+<tr>
+<td align="left"><code>authState</code></td>
+<td align="left"><code>AdobeVisitorAuthState</code></td>
+<td align="left">The authenticated state.</td>
+</tr>
+
+<tr>
+<td align="left"><code>completion</code></td>
+<td align="left"><code>Result&lt;AdobeVisitor, Error&gt;</code></td>
+<td align="left">The Adobe response listener.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">var</span> tealium: Tealium?
+...
+
+tealium<span style="font-weight:bold">?.</span>adobeVisitorApi<span style="font-weight:bold">?.</span>linkECIDToKnownIdentifier(
+  <span style="color:#b84">&#34;myidentifier&#34;</span>, adobeDataProviderId: <span style="color:#b84">&#34;123456&#34;</span>, .unknown
+  )</code></pre></div>
+<h3 id="resetvisitor"><code>resetVisitor()</code></h3>
+
+<p>Resets the visitor ECID by retrieving a new one on the next tracking call.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">resetVisitor()</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
+<span style="color:#998;font-style:italic">//...</span>
+tealium?.adobeVisitorApi?.resetVisitor()</code></pre></div>
 <h3 id="resetvisitorid"><code>resetVisitorId()</code></h3>
 
 <p>Generates a new visitor ID for the user.</p>
@@ -444,19 +521,19 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Parameters</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Parameters</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>killVisitorSession</code></td>
-<td><code>Bool</code></td>
-<td>(Optional) Defaults to <code>true</code> if no params are passed or pass <code>false</code> if you do not wish to terminate the visitor session</td>
-<td><code>true</code></td>
+<td align="left"><code>killVisitorSession</code></td>
+<td align="left"><code>Bool</code></td>
+<td align="left">(Optional) Defaults to <code>true</code> if no params are passed or pass <code>false</code> if you do not wish to terminate the visitor session</td>
+<td align="left"><code>true</code></td>
 </tr>
 </tbody>
 </table>
@@ -470,23 +547,23 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Parameters</th>
-<th>Type</th>
-<th>Description</th>
+<th align="left">Parameters</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>name</code></td>
-<td><code>String</code></td>
-<td>The name of the timed event</td>
+<td align="left"><code>name</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The name of the timed event</td>
 </tr>
 
 <tr>
-<td><code>[&quot;custom_key&quot;: &quot;custom_value&quot;]</code> (optional)</td>
-<td><code>Map</code></td>
-<td>An object of key-value pair data to be tracked in the data layer</td>
+<td align="left"><code>[&quot;custom_key&quot;: &quot;custom_value&quot;]</code> (optional)</td>
+<td align="left"><code>Map</code></td>
+<td align="left">An object of key-value pair data to be tracked in the data layer</td>
 </tr>
 </tbody>
 </table>
@@ -498,17 +575,17 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Parameters</th>
-<th>Type</th>
-<th>Description</th>
+<th align="left">Parameters</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>name</code></td>
-<td><code>String</code></td>
-<td>The name of the timed event</td>
+<td align="left"><code>name</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The name of the timed event</td>
 </tr>
 </tbody>
 </table>
@@ -520,23 +597,23 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Parameters</th>
-<th>Type</th>
-<th>Description</th>
+<th align="left">Parameters</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>config</code></td>
-<td><code>TealiumConfig</code></td>
-<td>Initialize the Tealium object with a <code>TealiumConfig</code> object containing your account details.</td>
+<td align="left"><code>config</code></td>
+<td align="left"><code>TealiumConfig</code></td>
+<td align="left">Initialize the Tealium object with a <code>TealiumConfig</code> object containing your account details.</td>
 </tr>
 
 <tr>
-<td><code>completion</code></td>
-<td><code>Closure</code></td>
-<td>(Optional) Completion closure to be called on init completion<code>()-&gt; Void )?</code></td>
+<td align="left"><code>completion</code></td>
+<td align="left"><code>Closure</code></td>
+<td align="left">(Optional) Completion closure to be called on init completion<code>()-&gt; Void )?</code></td>
 </tr>
 </tbody>
 </table>
@@ -549,26 +626,26 @@ tealium?.track(tealView)</code></pre></div>
 <table>
 <thead>
 <tr>
-<th>Parameters</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Parameters</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>viewName</code></td>
-<td><code>String</code></td>
-<td>The name of the screen to be tracked</td>
-<td><code>viewName: &quot;Buy Now&quot;</code></td>
+<td align="left"><code>viewName</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The name of the screen to be tracked</td>
+<td align="left"><code>viewName: &quot;Buy Now&quot;</code></td>
 </tr>
 
 <tr>
-<td><code>dataLayer</code></td>
-<td><code>Dictionary</code></td>
-<td>An object of key-value pairs with data associated with the event to be tracked</td>
-<td><code>data: data: [&quot;product_id&quot; : [&quot;widget123&quot;]]</code></td>
+<td align="left"><code>dataLayer</code></td>
+<td align="left"><code>Dictionary</code></td>
+<td align="left">An object of key-value pairs with data associated with the event to be tracked</td>
+<td align="left"><code>data: data: [&quot;product_id&quot; : [&quot;widget123&quot;]]</code></td>
 </tr>
 </tbody>
 </table>
@@ -579,32 +656,43 @@ tealium?.track(tealEvent)</code></pre></div>
 <table>
 <thead>
 <tr>
-<th>Parameters</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Parameters</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>eventName</code></td>
-<td><code>String</code></td>
-<td>The name of the event to be tracked</td>
-<td><code>eventName: &quot;Buy Now&quot;</code></td>
+<td align="left"><code>eventName</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The name of the event to be tracked</td>
+<td align="left"><code>eventName: &quot;Buy Now&quot;</code></td>
 </tr>
 
 <tr>
-<td><code>dataLayer</code></td>
-<td><code>Dictionary</code></td>
-<td>An object of key-value pairs with data associated with the event to be tracked</td>
-<td><code>data: data: [&quot;product_id&quot; : [&quot;widget123&quot;]]</code></td>
+<td align="left"><code>dataLayer</code></td>
+<td align="left"><code>Dictionary</code></td>
+<td align="left">An object of key-value pairs with data associated with the event to be tracked</td>
+<td align="left"><code>data: data: [&quot;product_id&quot; : [&quot;widget123&quot;]]</code></td>
 </tr>
 </tbody>
 </table>
 
 <p class="note">The value passed to <code>eventName</code> appears in the data layer as the variable <code>tealium_event</code>.</p>
 
+<h3 id="visitor"><code>visitor</code></h3>
+
+<p>Returns the full AdobeVisitor instance.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
+<span style="color:#998;font-style:italic">//...</span>
+<span style="font-weight:bold">let</span> <span style="color:#008080">visitor</span> = tealium?.adobeVisitorApi?.visitor
+<span style="font-weight:bold">let</span> <span style="color:#008080">id</span>: <span style="color:#999">String</span>? = visitor?.experienceCloudId
+<span style="font-weight:bold">let</span> <span style="color:#008080">nextRefresh</span>: Date? = visitor?.nextRefresh
+<span style="font-weight:bold">let</span> <span style="color:#008080">blob</span>: <span style="color:#999">String</span>? = visitor?.blob
+<span style="font-weight:bold">let</span> <span style="color:#008080">region</span>: <span style="color:#999">String</span>? = visitor?.dcsRegion
+<span style="font-weight:bold">let</span> <span style="color:#008080">ttl</span>: <span style="color:#999">String</span>? = visitor?.idSyncTTL</code></pre></div>
 <h3 id="visitorid"><code>visitorId</code></h3>
 
 <p>Returns a randomly generated and unique persistent visitor ID.</p>
@@ -964,6 +1052,26 @@ tealium?.track(tealEvent)</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/getting-started/hosted-data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-hosted-data-layer">Hosted Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/getting-started/adobe-visitor-service/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-adobe-visitor-service">Adobe Visitor Service Module</a>
       </li>
       
     
@@ -1930,6 +2038,26 @@ tealium?.track(tealEvent)</code></pre></div>
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/adobe-visitor-service/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-adobe-visitor-service">AdobeVisitorService Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/collect/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-collect">Collect Module</a>
       </li>
       
@@ -2426,7 +2554,231 @@ tealium?.track(tealEvent)</code></pre></div>
       
       
       <li class="w-100 hover-accent-color-light fw8 " data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".cordova">Cordova</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".cordova-v1">Cordova 1.x</a>
+        <ul class="cordova-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 " data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 primary-color hover-bg-primary pl3 pr2  " data-target=".cordova-v1-module-list">Module List</a>
+        <ul class="cordova-v1-module-list desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/cordova-v1/module-list/adid/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-module-list-adid">Ad Identifier Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/cordova-v1/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/cordova-v1/module-list/install-referrer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-module-list-install-referrer">Install Referrer Module</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".cordova">Cordova 2.x</a>
         <ul class="cordova desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -2482,108 +2834,6 @@ tealium?.track(tealEvent)</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/cordova/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-track">Track</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/cordova/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-data-management">Data Management</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw8 " data-level="2">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 primary-color hover-bg-primary pl3 pr2  " data-target=".cordova-module-list">Module List</a>
-        <ul class="cordova-module-list desktopmenu animated fadeIn list pl0 dn">
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
-        <a href="/platforms/cordova/module-list/adid/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-module-list-adid">Ad Identifier Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
-        <a href="/platforms/cordova/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-module-list-crash-reporter">Crash Reporter Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
-        <a href="/platforms/cordova/module-list/install-referrer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-module-list-install-referrer">Install Referrer Module</a>
-      </li>
-      
-    
-  
-  
-
-        </ul>
       </li>
       
     
@@ -2963,6 +3213,26 @@ tealium?.track(tealEvent)</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/flutter/api/tealium-config/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-api-tealium-config">TealiumConfig</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/flutter/api/visitor-profile/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-api-visitor-profile">VisitorProfile</a>
       </li>
       
     
@@ -4357,6 +4627,26 @@ tealium?.track(tealEvent)</code></pre></div>
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/appdata/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-appdata">AppData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/adobe-visitor-service/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-adobe-visitor-service">AdobeVisitorService Module</a>
       </li>
       
     
@@ -7391,7 +7681,7 @@ tealium?.track(tealEvent)</code></pre></div>
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  January 13, 2021 
+    <span>This page was last updated:  July 28, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -7474,8 +7764,14 @@ tealium?.track(tealEvent)</code></pre></div>
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/cordova-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Cordova 1.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/cordova/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Cordova
+          Cordova 2.x
         </a>
     </li>
   

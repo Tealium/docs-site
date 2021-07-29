@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Ad Identifier Module | Modules |Tealium Developer Docs</title>
+    <title>API Reference | Tealium for Cordova |Tealium Developer Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -249,10 +249,18 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#install">Install</a></li>
-              <li><a href="#initialize">Initialize</a></li>
-              <li><a href="#data-layer">Data Layer</a></li>
-              <li><a href="#uninstall">Uninstall</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#class-tealium">Class: Tealium</a></li>
+              <ul class="toc-h3"><li><a href="#addpersistent">addPersistent()</a></li>
+              <li><a href="#addvolatile">addVolatile()</a></li>
+              <li><a href="#init">init()</a></li>
+              <li><a href="#getpersistent">getPersistent()</a></li>
+              <li><a href="#getvisitorid">getVisitorID()</a></li>
+              <li><a href="#getvolatile">getVolatile()</a></li>
+              <li><a href="#removepersistent">removePersistent()</a></li>
+              <li><a href="#removevolatile">removeVolatile()</a></li>
+              <li><a href="#track">track()</a></li>
+              <li><a href="#trackevent">trackEvent()</a></li>
+              <li><a href="#trackview">trackView()</a></li>
               </nav>
   </aside></div>
 
@@ -264,21 +272,21 @@ var utag_data = {
 
   
     
-      <a href="/platforms/cordova/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        CORDOVA/MODULE LIST
+      <a href="/platforms/cordova-v1/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        CORDOVA V1
       </a>
     
   
 
   
 
-  <h1 class="lh-title mb3 mv0 pt3">Ad Identifier Module</h1>
+  <h1 class="lh-title mb3 mv0 pt3">API Reference</h1>
 </header>
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
     <div class="f4 fw4 lh-copy">
-      Provides a Cordova wrapper for the native Android Ad Identifier module and the iOS Advertising Identifier (IDFA).
+      Reference guide for classes and methods provided by Tealium for Cordova.
     </div>
   
 
@@ -291,89 +299,568 @@ var utag_data = {
 <div class="prose" id="prose">
   
 
-<h2 id="install">Install</h2>
+<h2 id="class-tealium">Class: <code>Tealium</code></h2>
 
-<p>To install the Ad Identifier module:</p>
+<p>The following summarizes the commonly used methods of the Cordova <code>Tealium</code> class.</p>
 
-<ol>
-<li><p>Navigate to your Cordova app&rsquo;s directory in a terminal window</p></li>
+<table>
+<thead>
+<tr>
+<th align="left">Method</th>
+<th align="left">Description</th>
+</tr>
+</thead>
 
-<li><p>Run the following command:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cordova plugin add tealium-cordova-adidentifier</code></pre></div></li>
-</ol>
+<tbody>
+<tr>
+<td align="left"><code>addPersistent()</code></td>
+<td align="left">Adds data to the Tealium persistent data store</td>
+</tr>
 
-<p class="note">The Ad Identifier module has a dependency on the Google Play Services Ads module. Add your <a href="https://developers.google.com/admob/android/quick-start">AdMob App ID</a> to your app&rsquo;s <code>AndroidManifest.xml</code> file to prevent the app from crashing during startup.</p>
+<tr>
+<td align="left"><code>addVolatile()</code></td>
+<td align="left">Adds data to the Tealium volatile data store</td>
+</tr>
 
-<h2 id="initialize">Initialize</h2>
+<tr>
+<td align="left"><code>init()</code></td>
+<td align="left">Initializes the Tealium Cordova plugin</td>
+</tr>
 
-<p>To initialize the Ad Identifier module:</p>
+<tr>
+<td align="left"><code>getPersistent()</code></td>
+<td align="left">Returns a value from the Tealium persistent data</td>
+</tr>
 
-<ol>
-<li><p>Edit the JavaScript file, where you instantiate the main Tealium plugin, after calling <code>tealium.init</code>.</p></li>
+<tr>
+<td align="left"><code>getVisitorID()</code></td>
+<td align="left">Returns the current Tealium visitor ID for the current user</td>
+</tr>
 
-<li><p>Add the following code:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">function</span> tealiumInit(account, profile, environment, instance){
-<span style="font-weight:bold">var</span> ai;
-tealium.init({...});
- <span style="color:#998;font-style:italic">// check if installreferrer is installed and available
-</span><span style="color:#998;font-style:italic"></span>
-ai <span style="font-weight:bold">=</span> <span style="color:#999">window</span>.tealiumAdIdentifier;
-<span style="font-weight:bold">if</span> (ai) {
-    ai.setPersistent(instance);
-}
-}
-</code></pre></div></li>
-</ol>
+<tr>
+<td align="left"><code>getVolatile()</code></td>
+<td align="left">Returns a value from the Tealium volatile data store</td>
+</tr>
 
-<h2 id="data-layer">Data Layer</h2>
+<tr>
+<td align="left"><code>removePersistent()</code></td>
+<td align="left">Removes data from the Tealium persistent data store</td>
+</tr>
 
-<p>The Ad Identifier module adds the following variables to the data layer:</p>
+<tr>
+<td align="left"><code>removeVolatile()</code></td>
+<td align="left">Removes volatile data from the Tealium volatile data store</td>
+</tr>
 
-<ul>
-<li><strong>Android</strong>
+<tr>
+<td align="left"><code>track()</code></td>
+<td align="left">Track views by passing <code>&quot;view&quot;</code> as the first argument type, or track events by passing <code>&quot;link&quot;</code> as the first argument type</td>
+</tr>
 
-<ul>
-<li><code>google_adid</code></li>
-</ul></li>
-<li><strong>iOS</strong>
+<tr>
+<td align="left"><code>trackEvent()</code></td>
+<td align="left">Tracks all non-view activity</td>
+</tr>
 
-<ul>
-<li><code>device_advertising_id</code></li>
-<li><code>device_advertising_vendor_id</code></li>
-<li><code>device_advertising_enabled</code></li>
-</ul></li>
-</ul>
+<tr>
+<td align="left"><code>trackView()</code></td>
+<td align="left">Tracks every time a user opens or changes a screen in the app</td>
+</tr>
+</tbody>
+</table>
 
-<h2 id="uninstall">Uninstall</h2>
+<h3 id="addpersistent"><code>addPersistent()</code></h3>
 
-<p>To uninstall the Ad Identifier module:</p>
+<p>Adds persistent data to the Tealium persistent data store.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">tealium.addPersistent(key, data, instance);
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
 
-<ol>
-<li><p>Run the following command:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cordova plugin rm tealium-cordova-adidentifier</code></pre></div></li>
+<tbody>
+<tr>
+<td align="left"><code>key</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Key name of value to be persisted</td>
+<td align="left"><code>&quot;user_hashed_email&quot;</code></td>
+</tr>
 
-<li><p>Delete the Ad Identifier data from persistent storage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#998;font-style:italic">// android only
-</span><span style="color:#998;font-style:italic"></span>tealium.removePersistent(<span style="color:#b84">&#34;google_adid&#34;</span>, <span style="font-weight:bold">&lt;</span>your tealium instance name<span style="font-weight:bold">&gt;</span>);
+<tr>
+<td align="left"><code>data</code></td>
+<td align="left"><code>String</code> or <code>[String]</code></td>
+<td align="left">The value to be persisted for this key</td>
+<td align="left"><code>[&quot;testpersist&quot;, &quot;testpersist2&quot;]</code></td>
+</tr>
 
-<span style="color:#998;font-style:italic">// ios only
-</span><span style="color:#998;font-style:italic"></span>tealium.removePersistent(<span style="color:#b84">&#34;device_advertising_id&#34;</span>, <span style="font-weight:bold">&lt;</span>your tealium instance name<span style="font-weight:bold">&gt;</span>);
-tealium.removePersistent(<span style="color:#b84">&#34;device_advertising_vendor_id&#34;</span>, <span style="font-weight:bold">&lt;</span>your tealium instance name<span style="font-weight:bold">&gt;</span>);
-tealium.removePersistent(<span style="color:#b84">&#34;device_advertising_enabled&#34;</span>, <span style="font-weight:bold">&lt;</span>your tealium instance name<span style="font-weight:bold">&gt;</span>);
-</code></pre></div></li>
-</ol>
+<tr>
+<td align="left"><code>instance</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Arbitrary instance name constant, used to refer to a specific tracking instance</td>
+<td align="left"><code>&quot;tealium_main&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="addvolatile"><code>addVolatile()</code></h3>
+
+<p>Adds data to the Tealium volatile data store.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">tealium.addVolatile(key, data, instance);
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>key</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Key name of value to be persisted</td>
+<td align="left"><code>&quot;user_hashed_email&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>data</code></td>
+<td align="left"><code>String</code> or <code>[String]</code></td>
+<td align="left">The value to be persisted for this key</td>
+<td align="left"><code>[&quot;testvolatile1&quot;, &quot;testvolatile2&quot;]</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>instance</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Arbitrary instance name constant, used to refer to a specific tracking instance</td>
+<td align="left"><code>&quot;tealium_main&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="init"><code>init()</code></h3>
+
+<p>Initializes the Tealium Cordova plugin.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.<span style="color:#008080">init</span>(config, successCallBack, errorCallback);</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>config</code></td>
+<td align="left">JavaScript/JSON object</td>
+<td align="left">The config object (see table below)</td>
+</tr>
+
+<tr>
+<td align="left"><code>successCallback</code></td>
+<td align="left">Function</td>
+<td align="left">Overrides the default Success Callback to allow custom success handling</td>
+</tr>
+
+<tr>
+<td align="left"><code>errorCallback</code></td>
+<td align="left">Function</td>
+<td align="left">Overrides the default Success Callback to allow custom success handling</td>
+</tr>
+</tbody>
+</table>
+
+<p>The <code>config</code> object is passed as the first argument, and contains the following data:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.<span style="color:#008080">init</span>({account, profile, environment, instance,
+                isLifecycleEnabled,
+                collectDispatchURL,
+                collectDispatchProfile,
+                isCrashReporterEnabled,
+                logLevel,
+                dataSourceId});</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>account</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Tealium account name</td>
+<td align="left"><code>&quot;companyXYZ&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>profile</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Tealium profile name</td>
+<td align="left"><code>&quot;main&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>environment</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Tealium environment name</td>
+<td align="left">[<code>&quot;dev&quot;</code>, <code>&quot;qa&quot;</code>, <code>&quot;prod&quot;</code>]</td>
+</tr>
+
+<tr>
+<td align="left"><code>instance</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Tealium instance name (multiple instances supported)</td>
+<td align="left"><code>&quot;tealium_main</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>isLifecycleEnabled</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">(Optional) String value &ldquo;true&rdquo; or &ldquo;false&rdquo; to enable lifecycle tracking (default: <code>&quot;true&quot;</code>)</td>
+<td align="left">[<code>&quot;true&quot;</code>, <code>&quot;false&quot;</code>]</td>
+</tr>
+
+<tr>
+<td align="left"><code>collectDispatchURL</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Override the full Tealium Collect endpoint URL</td>
+<td align="left"><code>&quot;https: //collect. tealiumiq.com/ vdata/i.gif ?tealium_account =companyXYZ &amp;tealium_profile =main&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>collectDispatchProfile</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Set the profile to use in the Tealium Collect endpoint</td>
+<td align="left"><code>&quot;cordova-demo&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>isCrashReporterEnabled</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">(Optional and for Android only) Enable crash reporting (uncaught exception handler)</td>
+<td align="left">[<code>&quot;true&quot;</code>, <code>&quot;false&quot;</code>]</td>
+</tr>
+
+<tr>
+<td align="left"><code>logLevel</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">(Optional) Set the log level (defaults to your environment)</td>
+<td align="left"><code>tealium.logLevels.DEV</code> (Info, Warnings, Errors), <code>tealium.logLevels.QA</code> (Warnings, Errors), <code>tealium.logLevels.PROD</code> (Errors Only), <code>tealium.logLevels.SILENT</code> (No Logs)</td>
+</tr>
+
+<tr>
+<td align="left"><code>dataSourceId</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">(Optional) The data source key</td>
+<td align="left">&ldquo;abc123&rdquo;</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="getpersistent"><code>getPersistent()</code></h3>
+
+<p>Returns a value from the Tealium persistent data. Returns <code>null</code> on the JavaScript side if the requested data could not be found.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">tealium.getPersistent(key, instance, callback);
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>key</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Key name of value to be retrieved from persistent storage</td>
+<td align="left"><code>&quot;user_hashed_email&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>instance</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Arbitrary instance name constant, used to refer to a specific tracking instance</td>
+<td align="left"><code>&quot;tealium_main&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>callback</code></td>
+<td align="left"><code>Function</code></td>
+<td align="left">Callback object to return the value requested from the persistent storage</td>
+<td align="left"><code>null</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="getvisitorid"><code>getVisitorID()</code></h3>
+
+<p>Returns the current Tealium visitor ID for the current user.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Returns</th>
+<th align="left">Return Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Current visitor ID</td>
+<td align="left"><code>String</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="getvolatile"><code>getVolatile()</code></h3>
+
+<p>Returns a value from the Tealium volatile data store. Returns <code>null</code> on the JavaScript side if the requested data could not be found.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">tealium.getVolatile(key, instance, callback);
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>key</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Key name of value to be retrieved from volatile storage</td>
+<td align="left"><code>&quot;user_hashed_email&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>instance</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Arbitrary instance name constant, used to refer to a specific tracking instance</td>
+<td align="left"><code>&quot;tealium_main&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>callback</code></td>
+<td align="left"><code>Function</code></td>
+<td align="left">Callback object to return the value requested from the persistent storage</td>
+<td align="left"><code>null</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="removepersistent"><code>removePersistent()</code></h3>
+
+<p>Removes persistent data from the Tealium persistent data store.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">tealium.removePersistent(key, instance);
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>key</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Key name of value to be removed from persistent storage</td>
+<td align="left"><code>&quot;user_hashed_email&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>instance</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Arbitrary instance name constant, used to refer to a specific tracking instance</td>
+<td align="left"><code>&quot;tealium_main&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="removevolatile"><code>removeVolatile()</code></h3>
+
+<p>Removes volatile data from the Tealium volatile data store.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">tealium.removeVolatile(key, instance);
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>key</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Key name of value to be removed from volatile memory</td>
+<td align="left"><code>&quot;user_hashed_email&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>instance</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Arbitrary instance name constant, used to refer to a specific tracking instance</td>
+<td align="left"><code>&quot;tealium_main&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="track"><code>track()</code></h3>
+
+<p>Track views by passing <code>&quot;view&quot;</code> as the first argument type, or track events by passing <code>&quot;link&quot;</code> as the first argument type.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">tealium.track(type, data, instance);
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>type</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Tealium event type name - <code>&quot;link&quot;</code> (event) or <code>&quot;view&quot;</code> (screen view)</td>
+<td align="left">[<code>&quot;link&quot;</code>, <code>&quot;view&quot;</code>]</td>
+</tr>
+
+<tr>
+<td align="left"><code>data</code></td>
+<td align="left">JavaScript/JSON object</td>
+<td align="left">Populates the data layer for this tracking call with the key-value pairs specified</td>
+<td align="left"><code>{&quot;tealium_event&quot; : &quot;page_view&quot;}</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>instance</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Tealium instance name - refers to a specific tracking instance</td>
+<td align="left"><code>&quot;tealium_main&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="trackevent"><code>trackEvent()</code></h3>
+
+<p>Tracks all non-view activity.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">tealium.trackEvent(data, instance);
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>data</code></td>
+<td align="left">JavaScript/JSON object</td>
+<td align="left">Event data as key-value pairs</td>
+<td align="left"><code>{&quot;tealium_event&quot;: &quot;cart_add&quot;}</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>instance</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Tealium instance name - refer to a specific tracking instance</td>
+<td align="left"><code>&quot;tealium_main&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="trackview"><code>trackView()</code></h3>
+
+<p>Tracks every time a user opens or changes a screen in the app.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">tealium.trackView(data, instance);
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>data</code></td>
+<td align="left">JavaScript/JSON object</td>
+<td align="left">`View data as key-value pairs</td>
+<td align="left"><code>{tealium_event:&quot;screen_view&quot;, &quot;screen_name&quot;:&quot;Homescreen&quot;}</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>instance</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Tealium instance name</td>
+<td align="left"><code>&quot;tealium_main&quot;</code></td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
+
+	<div date-pref class="white">
+		
+		
+			<a href="https://docs.tealium.com/platforms/cordova-v1/data-management/" title="Data Management "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+</svg>
+ Data Management </a>
+		
+
+	</div>
+
 </b>
 <b style="position: absolute; right:0px;" class="pv1 br2 dib tc mv3 link">
 
 	<div date-pref class="white">
 
 		
-			<a href="https://docs.tealium.com/platforms/cordova/module-list/crash-reporter/" title="Crash Reporter Module">
-			Crash Reporter Module <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
+			<a href="https://docs.tealium.com/platforms/cordova-v1/release-notes/" title="Release Notes">
+			Release Notes <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
 
 			</a>
 		
@@ -718,6 +1205,26 @@ tealium.removePersistent(<span style="color:#b84">&#34;device_advertising_enable
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/getting-started/hosted-data-layer/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-hosted-data-layer">Hosted Data Layer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/getting-started/adobe-visitor-service/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-adobe-visitor-service">Adobe Visitor Service Module</a>
       </li>
       
     
@@ -1684,6 +2191,26 @@ tealium.removePersistent(<span style="color:#b84">&#34;device_advertising_enable
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/adobe-visitor-service/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-adobe-visitor-service">AdobeVisitorService Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/collect/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-collect">Collect Module</a>
       </li>
       
@@ -2180,8 +2707,232 @@ tealium.removePersistent(<span style="color:#b84">&#34;device_advertising_enable
       
       
       <li class="w-100 hover-accent-color-light fw8  active" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2 primary-color expanded " data-target=".cordova">Cordova</a>
-        <ul class="cordova desktopmenu animated fadeIn list pl0">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2 primary-color expanded " data-target=".cordova-v1">Cordova 1.x</a>
+        <ul class="cordova-v1 desktopmenu animated fadeIn list pl0">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 " data-level="2">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 primary-color hover-bg-primary pl3 pr2  " data-target=".cordova-v1-module-list">Module List</a>
+        <ul class="cordova-v1-module-list desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/cordova-v1/module-list/adid/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-module-list-adid">Ad Identifier Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/cordova-v1/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/cordova-v1/module-list/install-referrer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-module-list-install-referrer">Install Referrer Module</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/api/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".cordova-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/cordova-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".cordova">Cordova 2.x</a>
+        <ul class="cordova desktopmenu animated fadeIn list pl0 dn">
             
 
   
@@ -2236,108 +2987,6 @@ tealium.removePersistent(<span style="color:#b84">&#34;device_advertising_enable
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/cordova/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-track">Track</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/cordova/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-data-management">Data Management</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw8  active" data-level="2">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv1 primary-color hover-bg-primary pl3 pr2 primary-color expanded " data-target=".cordova-module-list">Module List</a>
-        <ul class="cordova-module-list desktopmenu animated fadeIn list pl0">
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
-        <a href="/platforms/cordova/module-list/adid/" class="db link pl4 pr2 pv1 bg-secondary white" data-target=".cordova-module-list-adid">Ad Identifier Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
-        <a href="/platforms/cordova/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-module-list-crash-reporter">Crash Reporter Module</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
-        <a href="/platforms/cordova/module-list/install-referrer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-module-list-install-referrer">Install Referrer Module</a>
-      </li>
-      
-    
-  
-  
-
-        </ul>
       </li>
       
     
@@ -2717,6 +3366,26 @@ tealium.removePersistent(<span style="color:#b84">&#34;device_advertising_enable
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/flutter/api/tealium-config/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-api-tealium-config">TealiumConfig</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/flutter/api/visitor-profile/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-api-visitor-profile">VisitorProfile</a>
       </li>
       
     
@@ -4111,6 +4780,26 @@ tealium.removePersistent(<span style="color:#b84">&#34;device_advertising_enable
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/appdata/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-appdata">AppData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/adobe-visitor-service/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-adobe-visitor-service">AdobeVisitorService Module</a>
       </li>
       
     
@@ -7145,7 +7834,7 @@ tealium.removePersistent(<span style="color:#b84">&#34;device_advertising_enable
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  July 29, 2020 
+    <span>This page was last updated:  July 7, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -7228,8 +7917,14 @@ tealium.removePersistent(<span style="color:#b84">&#34;device_advertising_enable
     </li>
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/cordova-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Cordova 1.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/platforms/cordova/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Cordova
+          Cordova 2.x
         </a>
     </li>
   
