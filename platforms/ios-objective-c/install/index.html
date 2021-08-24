@@ -250,13 +250,12 @@ var utag_data = {
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
-              <li><a href="#samples-apps">Samples Apps</a></li>
+              <li><a href="#sample-apps">Sample Apps</a></li>
               <li><a href="#install">Install</a></li>
               <ul class="toc-h3"><li><a href="#cocoapods">CocoaPods</a></li>
               <li><a href="#carthage">Carthage</a></li>
               <li><a href="#manual">Manual</a></li>
               </ul><li><a href="#initialize">Initialize</a></li>
-              <li><a href="#submit-to-the-app-store">Submit to the App Store</a></li>
               </nav>
   </aside></div>
 
@@ -304,7 +303,7 @@ var utag_data = {
 <li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Introduction-to-Customer-Data-Hub/ta-p/17571">Tealium Customer Data Hub account</a></li>
 </ul>
 
-<h2 id="samples-apps">Samples Apps</h2>
+<h2 id="sample-apps">Sample Apps</h2>
 
 <p>To help familiarize yourself with the Tealium library, tracking methods, and best practice implementation, explore the Tealium for iOS <a href="https://github.com/Tealium/tealium-ios/tree/master/Samples">sample apps</a>.</p>
 
@@ -330,7 +329,7 @@ var utag_data = {
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#b84">&#34;TealiumIOS&#34;</span></code></pre></div></li>
 
 <li><p>Save the file and run the following in your project directory:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod install</code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod install <span style="font-weight:bold">--</span>repo<span style="font-weight:bold">-</span>update</code></pre></div></li>
 
 <li><p>Use the created <code>.xcworkspace</code> file to continue building your app. If you do not use the <code>.xcworkspace</code> file, you are not able to build the app correctly.</p></li>
 </ol>
@@ -341,14 +340,13 @@ var utag_data = {
 
 <ol>
 <li><p>Add the following to your Cartfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">binary <span style="color:#b84">&#34;https://tags.tiqcdn.com/dle/tealiummobile/tealium-ios-carthage/tealium-carthage.json&#34;</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">github <span style="color:#b84">&#34;tealium/tealium-ios&#34;</span></code></pre></div></li>
 
 <li><p>To download and extract the frameworks, run the following command:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">carthage update <span style="font-weight:bold">--</span>platform ios</code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">carthage update <span style="font-weight:bold">--</span>platform ios <span style="font-weight:bold">--</span><span style="font-weight:bold">use</span><span style="font-weight:bold">-</span>xcframeworks</code></pre></div>
+<p class="note">Be sure to use the <code>--use-xcframeworks</code> flag, or the build will fail. This requires <a href="https://github.com/Carthage/Carthage/releases/tag/0.38.0">Carthage 0.38.0</a>.</p></li>
 
 <li><p>For the required frameworks to be copied automatically at build-time, verify sure that Carthage is <a href="https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos">properly integrated</a> into your Xcode project. </p></li>
-
-<li><p>Strip simulator support, as necessary, before submitting to the App Store. This step is avoidable if using the &ldquo;DeviceOnly&rdquo; builds provided on the GitHub repo, which are also downloaded when using Carthage.</p></li>
 </ol>
 
 <h3 id="manual">Manual</h3>
@@ -356,11 +354,11 @@ var utag_data = {
 <p>To install Tealium for iOS (Objective-C) for your app manually:</p>
 
 <ol>
-<li><p>Add <code>TealiumIOS.framework</code> to your project.</p></li>
+<li><p>Add <code>TealiumIOS.xcframework</code> to your project.</p></li>
 
 <li><p>Copy framework to project in the resulting dialog box.</p></li>
 
-<li><p>In the Target go to <strong>General &gt; Embedded Binaries</strong> and add <code>TealiumIOS.framework</code>.
+<li><p>In the Target go to <strong>General &gt; Frameworks, Libraries &amp; Embedded Content</strong> and add <code>TealiumIOS.xcframework</code> with the &ldquo;Embed &amp; Sign&rdquo; option selected.
 <p class="note">For Swift projects go to the <strong>Build Settings &gt; Swift Compiler &gt; Objective-C Bridging Header</strong> option and include the file <code>TealiumIOSBridgingHeader.h</code>.</p></p></li>
 </ol>
 
@@ -469,19 +467,6 @@ tealConfig.logLevel = .prod</code></pre></div>
 </tr>
 </tbody>
 </table>
-
-<h2 id="submit-to-the-app-store">Submit to the App Store</h2>
-
-<p>The mobile library contains slices that run in the simulator and on devices. Unfortunately, the simulator architecture is not allowed by Apple when submitting to the App Store.</p>
-
-<p>When creating your archive be sure to run one of the following two scripts to strip out the simulator:</p>
-
-<ul>
-<li><a href="http://ikennd.ac/blog/2015/02/stripping-unwanted-architectures-from-dynamic-libraries-in-xcode/">Daniel Kennett&rsquo;s Strip Framework Script</a></li>
-<li><a href="https://github.com/realm/realm-cocoa/blob/d59c86f11525f346c8e8db277fdbf2d9ff990d98/scripts/strip-frameworks.sh">Realm strip-frameworks.sh</a></li>
-</ul>
-
-<p>Or use the <a href="https://github.com/Tealium/tealium-ios/tree/master/DevicesOnly">Devices Only Builds</a> that do not contain simulator slices.</p>
 
 </div>
 
@@ -7467,7 +7452,7 @@ tealConfig.logLevel = .prod</code></pre></div>
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  August 12, 2020 
+    <span>This page was last updated:  August 23, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
