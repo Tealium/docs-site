@@ -256,6 +256,10 @@ var utag_data = {
               <li><a href="#adobevisitorexistingecid">adobeVisitorExistingEcid</a></li>
               <li><a href="#adobevisitororgid">adobeVisitorOrgId</a></li>
               <li><a href="#adobevisitorretries">adobeVisitorRetries</a></li>
+              <li><a href="#autotrackingblocklistfilename">autoTrackingBlocklistFilename</a></li>
+              <li><a href="#autotrackingblocklisturl">autoTrackingBlocklistUrl</a></li>
+              <li><a href="#autotrackingcollectordelegate">autoTrackingCollectorDelegate</a></li>
+              <li><a href="#autotrackingmode">autoTrackingMode</a></li>
               <li><a href="#collectors">Collectors</a></li>
               <li><a href="#consentexpiry">consentExpiry</a></li>
               <li><a href="#consentmanagerenabled">consentManagerEnabled</a></li>
@@ -350,13 +354,33 @@ var utag_data = {
 </tr>
 
 <tr>
+<td align="left"><a href="#autotrackingblocklistfilename"><code>autoTrackingBlocklistFilename</code></a></td>
+<td align="left">Sets the name of the local block list file.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#autotrackingblocklisturl"><code>autoTrackingBlocklistUrl</code></a></td>
+<td align="left">Sets the URL of the remote block list file.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#autotrackingcollectordelegate"><code>autoTrackingCollectorDelegate</code></a></td>
+<td align="left">Sets the global delegate that executes for automatically tracked activities.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#autoTrackingBlocklistFilename"><code>autoTrackingMode</code></a></td>
+<td align="left">Sets the tracking mode for the AutoTracking module.</td>
+</tr>
+
+<tr>
 <td align="left"><a href="#consentexpiry"><code>consentExpiry</code></a></td>
 <td align="left">Sets the expiration of the user consent selections.</td>
 </tr>
 
 <tr>
 <td align="left"><a href="#consentmanagerenabled"><code>consentManagerEnabled</code></a></td>
-<td align="left">Optional <code>Boolean</code> to enable/disable Consent Management functionality.</td>
+<td align="left">Enables or disables consent management functionality.</td>
 </tr>
 
 <tr>
@@ -366,7 +390,7 @@ var utag_data = {
 
 <tr>
 <td align="left"><a href="#consentmanagerloggingenabled"><code>consentManagerLoggingEnabled</code></a></td>
-<td align="left">Optional <code>Boolean</code> to enable/disable logging of consent changes.</td>
+<td align="left">Enables or disables logging of consent changes.</td>
 </tr>
 
 <tr>
@@ -435,6 +459,39 @@ config.adobeVisitorAuthState = AdobeAuthState.AUTH_STATE_UNKNOWN</code></pre></d
 
 <p>Example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.adobeVisitorRetries = <span style="color:#099">5</span></code></pre></div>
+<h3 id="autotrackingblocklistfilename"><code>autoTrackingBlocklistFilename</code></h3>
+
+<p>For use with the <a href="/platforms/android-kotlin/module-list/autotracking/#block-list">AutoTracking Module</a>.</p>
+
+<p>Sets the name of a JSON formatted block list file that contains a list of activities to omit from automatic tracking. The file should be available in the Android <code>assets</code> directory.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.autoTrackingBlocklistFilename = <span style="color:#b84">&#34;autotracking-blocklist.json&#34;</span></code></pre></div>
+<h3 id="autotrackingblocklisturl"><code>autoTrackingBlocklistUrl</code></h3>
+
+<p>For use with the <a href="/platforms/android-kotlin/module-list/autotracking/#block-list">AutoTracking Module</a>.</p>
+
+<p>Sets a URL to a JSON formatted block list file that contains a list of activities to omit from automatic tracking.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.autoTrackingBlocklistUrl = <span style="color:#b84">&#34;https://example.com/autotracking-blocklist.json&#34;</span></code></pre></div>
+<h3 id="autotrackingcollectordelegate"><code>autoTrackingCollectorDelegate</code></h3>
+
+<p>For use with the <a href="/platforms/android-kotlin/module-list/autotracking/#custom-data">AutoTracking Module</a>.</p>
+
+<p>Sets a global delegate that executes for activities tracked by the <a href="/platforms/android-kotlin/module-list/autotracking/">AutoTracking module</a>. Edit this delegate to customize the data included with specific activities.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.autoTrackingCollectorDelegate = myCollectorDelegate</code></pre></div>
+<h3 id="autotrackingmode"><code>autoTrackingMode</code></h3>
+
+<p>Sets the level of tracking for the <a href="/platforms/android-kotlin/module-list/autotracking/">AutoTracking module</a>.</p>
+
+<ul>
+<li><code>FULL</code><br />
+Track all activities except those annotated with <code>@Autotracked(track=false)</code>.</li>
+<li><code>ANNOTATED</code><br />
+Track only the activities that are annotated with <code>@Autotracked</code>.</li>
+
+<li><p><code>NONE</code><br />
+Disable all automatic tracking (for debug or dev builds of your app).</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.autoTrackingMode = AutoTrackingMode.FULL</code></pre></div></li>
+</ul>
+
 <h3 id="collectors"><code>Collectors</code></h3>
 
 <p>Collectors are modules that gather supplemental information from the device and append it to the data layer before it&rsquo;s transmitted to the Tealium Customer Data Hub. Some collectors are included in the core library, while others are optional and installed as separate modules.</p>
@@ -618,7 +675,10 @@ config.adobeVisitorAuthState = AdobeAuthState.AUTH_STATE_UNKNOWN</code></pre></d
 </span><span style="color:#998;font-style:italic"></span>config.dispatchers.addAll(setOf(CollectDispatcher, TagManagementDispatcher))
 
 <span style="color:#998;font-style:italic">// Add required Modules
-</span><span style="color:#998;font-style:italic"></span>config.modules.add(VisitorService)</code></pre></div>
+</span><span style="color:#998;font-style:italic"></span>config.modules.add(VisitorService)
+
+<span style="color:#998;font-style:italic">// Automatic tracking mode
+</span><span style="color:#998;font-style:italic"></span>config.autoTrackingMode = AutoTrackingMode.FULL <span style="color:#998;font-style:italic">// (FULL, ANNOTATED, NONE)</span></code></pre></div>
 <h3 id="timedeventtriggers"><code>timedEventTriggers</code></h3>
 
 <p>A list of <code>EventTrigger</code> objects for automatically tracking timed events.</p>
@@ -1997,6 +2057,26 @@ config.adobeVisitorAuthState = AdobeAuthState.AUTH_STATE_UNKNOWN</code></pre></d
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/adid/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-adid">Ad Identifier Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/autotracking/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-autotracking">AutoTracking Module</a>
       </li>
       
     
@@ -7659,7 +7739,7 @@ config.adobeVisitorAuthState = AdobeAuthState.AUTH_STATE_UNKNOWN</code></pre></d
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  July 28, 2021 
+    <span>This page was last updated:  November 2, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

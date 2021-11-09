@@ -249,15 +249,20 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#usage">Usage</a></li>
-              <li><a href="#features">Features</a></li>
-              <li><a href="#requirements">Requirements</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#how-it-works">How It Works</a></li>
+              <ul class="toc-h3"><li><a href="#full-tracking">Full Tracking</a></li>
+              <li><a href="#partial-tracking">Partial Tracking</a></li>
+              <li><a href="#block-list">Block List</a></li>
+              </ul><li><a href="#requirements">Requirements</a></li>
               <li><a href="#install">Install</a></li>
               <ul class="toc-h3"><li><a href="#cocoapods">CocoaPods</a></li>
               <li><a href="#carthage">Carthage</a></li>
               </ul><li><a href="#initialize">Initialize</a></li>
-              <ul class="toc-h3"><li><a href="#bridging-header">Bridging Header</a></li>
+              <li><a href="#partial-tracking-setup">Partial Tracking Setup</a></li>
+              <ul class="toc-h3"><li><a href="#uikit">UIKit</a></li>
+              <li><a href="#swiftui">SwiftUI</a></li>
               </ul><li><a href="#data-layer">Data Layer</a></li>
+              <li><a href="#api-reference">API Reference</a></li>
               </nav>
   </aside></div>
 
@@ -283,7 +288,7 @@ var utag_data = {
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
     <div class="f4 fw4 lh-copy">
-      Automatically triggers tracking calls when certain user interface interactions take place. For example, taps, swipes, screen views.
+      Track screen views automatically.
     </div>
   
 
@@ -296,19 +301,7 @@ var utag_data = {
 <div class="prose" id="prose">
   
 
-<h2 id="usage">Usage</h2>
-
-<p>The AutoTracking module automatically triggers tracking calls when certain user interface interactions take place. For example, taps, swipes, screen views. In general, usage of this module is discouraged and <strong>not recommended</strong> for the following reasons:</p>
-
-<ul>
-<li>Increased memory usage.</li>
-<li>Increased possibility for crashes to occur due to UI changes outside of Tealium&rsquo;s control. For example, UI component being deallocated before the track call has completed.</li>
-<li>Increased battery consumption.</li>
-<li>Unwanted additional tracking calls.</li>
-<li>Does not fully remove the need to add additional tracking data/events, so additional coding is still required.</li>
-</ul>
-
-<p>As an alternative to Autotracking, we strongly recommend you spend time carefully planning the tracking and data you need to capture, and have your developers pass this data to Tealium at the appropriate time. Autotracking may be useful if you are evaluating Tealium and need a quick implementation, but it is unlikely to fulfill all your tracking requirements on its own.</p>
+<p>The AutoTracking module adds automatic tracking of screen views to your app with only a minimal amount of additional code.</p>
 
 <p>The following platforms are supported:</p>
 
@@ -317,22 +310,61 @@ var utag_data = {
 <li>tvOS</li>
 </ul>
 
-<h2 id="features">Features</h2>
+<h2 id="how-it-works">How It Works</h2>
 
-<p>The AutoTracking module provides the following features:</p>
+<p>Add the AutoTracking module to your build and initialization to take advantage of automatic screen view tracking. The module has several options to control which screens are tracked and how they are named.</p>
+
+<p>The AutoTracking module supports two modes of tracking:</p>
 
 <ul>
-<li>Automatically trigger track calls from <code>UIViewController</code> view appearances.</li>
-<li>Automatically trigger track calls for UI Events, such as button taps.</li>
-<li>Includes delegate methods for reporting or suppressing auto-tracked data.</li>
-<li>Uses method swizzling on <code>UIApplication</code> and <code>UIViewController</code> classes. Disable/exclude if you prefer to avoid swizzling in your app.</li>
+<li><strong>Full Tracking</strong>
+
+<ul>
+<li>UIKit - Tracks all screen views automatically, with the option to omit screens using the block list.</li>
+<li>SWiftUI - Not supported.</li>
+</ul></li>
+<li><strong>Partial Tracking</strong>
+
+<ul>
+<li>UIKit - For each view to track, create a subclass of the view controller.</li>
+<li>SwiftUI - For each view to track, either create a view modifier or embed the view in the Tealium tracking container.
+<br /></li>
+</ul></li>
+</ul>
+
+<h3 id="full-tracking">Full Tracking</h3>
+
+<p>Full tracking is only available in a UIKit app.</p>
+
+<p>In UIKit, the AutoTracking module uses method swizzling on the <code>viewDidAppear</code> instance method of <code>ViewController</code>. The name of the tracked event is set to the <code>UIViewController.title</code> property or, if that&rsquo;s not available, is set to the <code>UIViewController</code> class name after removing the &ldquo;ViewController&rdquo; suffix.</p>
+
+<h3 id="partial-tracking">Partial Tracking</h3>
+
+<p>Use partial tracking for more control over automatic tracking and to optimize performance. This approach uses annotations in your <code>ViewController</code> code to only track the views you need. This approach is not dependent on any particular app design paradigm and it works with a UIKit app or a SwiftUI app.</p>
+
+<h3 id="block-list">Block List</h3>
+
+<p>Use the block list feature in the full tracking mode to suppress specific tracking calls.
+The block list is a JSON file that contains a single array of strings. The strings represent views to omit from automatic tracking. If a string in the block list appears anywhere in the view controller name, it will not be tracked. The string comparisons are case-insensitive.</p>
+
+<p>For example, if you don&rsquo;t want to track any view controller names that contain the strings &ldquo;Settings&rdquo; or &ldquo;Profile&rdquo;, then the block list could contain:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">[
+  <span style="color:#b84">&#34;settings&#34;</span>, <span style="color:#b84">&#34;profile&#34;</span>
+]</code></pre></div>
+<p>The block list file can be stored locally in your app or hosted remotely as a URL.</p>
+
+<p>Use the one of the following <code>TealiumConfig</code> properties to use a block list:</p>
+
+<ul>
+<li><a href="/platforms/ios-swift/api/tealium-config/#autotrackingblocklistfilename"><code>autoTrackingBlocklistFilename</code></a></li>
+<li><a href="/platforms/ios-swift/api/tealium-config/#autotrackingblocklisturl"><code>autoTrackingBlocklistUrl</code></a></li>
 </ul>
 
 <h2 id="requirements">Requirements</h2>
 
 <ul>
-<li>UIKit</li>
-<li>UIApplication</li>
+<li><code>UIKit</code> or <code>SwiftUI</code></li>
+<li><code>UIApplication</code></li>
 </ul>
 
 <h2 id="install">Install</h2>
@@ -360,51 +392,161 @@ var utag_data = {
 
 <h2 id="initialize">Initialize</h2>
 
-<p>To initialize the module, verify that it&rsquo;s specified on the <code>TealiumConfig</code> <a href="/platforms/ios-swift/api/tealium-config/#collectors"><code>collectors</code></a> property</p>
+<p>To initialize the AutoTracking module, add it to the <a href="/platforms/ios-swift/api/tealium-config/#collectors"><code>TealiumConfig.collectors</code></a> property.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.collectors = [Collectors.Autotracking]</code></pre></div>
+<h2 id="partial-tracking-setup">Partial Tracking Setup</h2>
 
-<p><code>config.collectors = [Collectors.Autotracking]</code></p>
+<h3 id="uikit">UIKit</h3>
 
-<h3 id="bridging-header">Bridging Header</h3>
+<p>In a UIKit app, use the following methods to implement partial tracking but modifiying only the view controllers that you want to track.</p>
 
-<p>This module has been ported from Objective-C code, and as such, requires a Bridging Header.</p>
+<p>To turn off full tracking and add partial tracking, first add the entry <code>TealiumAutotrackingViewControllersEnabled</code> in the <code>info.plist</code> of the application with the value of <code>false</code>:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#000080">&lt;key&gt;</span>TealiumAutotrackingViewControllersEnabled<span style="color:#000080">&lt;/key&gt;</span>
+<span style="color:#000080">&lt;false/&gt;</span></code></pre></div>
+<p>To automatically track a specific view controller, create a subclass of <code>TealiumViewController</code>:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">MyAutomaticallyTrackedViewController</span>: TealiumViewController { 
+    <span style="color:#998;font-style:italic">// ...</span>
+}</code></pre></div>
+<p>Alternatively, you can conform to <code>TealiumViewControllerTrackable</code> and call <code>trackViewControllerAppearence</code> on the <code>viewDidAppear</code> method of your view controller.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">MyViewController</span>: UITableViewController, TealiumViewControllerTrackable {
+     <span style="font-weight:bold">@objc</span>
+     open <span style="font-weight:bold">override</span> <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">viewDidAppear</span>(<span style="font-weight:bold">_</span> animated: <span style="color:#999">Bool</span>) {
+         <span style="font-weight:bold">super</span>.viewDidAppear(animated)
+         trackViewControllerAppearence()
+     }
+ }</code></pre></div>
+<h3 id="swiftui">SwiftUI</h3>
 
-<p>To create a bridging header:</p>
+<p>To automatically track specific views in SwiftUI, implement one or both of the following approaches:</p>
 
-<ol>
-<li><p>In your Swift project, create a new file. When prompted to select a file type, select &ldquo;Objective-C File&rdquo;.</p></li>
+<ul>
+<li>Add a custom modifier to each view you want to track.</li>
+<li>Embed each view you want to track in the Tealium automatic tracking container.</li>
+</ul>
 
-<li><p>Give this file a temporary name, such as <code>placeholder.m</code>, as you are going to remove it later.</p></li>
+<p>Use one of following view modifiers:</p>
 
-<li><p>Click <strong>Finish</strong>. Xcode prompts you to create a Bridging Header (if it doesn&rsquo;t, you probably already have a Bridging Header in your project). Click <strong>Create Bridging Header</strong> to continue and have Xcode create the new header file for you.</p></li>
+<h4 id="autotracking-viewself-some-view"><code>autoTracking(viewSelf:) -&gt; some View</code></h4>
 
-<li><p>Delete p<code>laceholder.m</code> from your project. Notice a new file called <code>ProjectName-Bridging-Header.h</code>.</p></li>
+<p>Use this modifier to automatically track a view using the class name.</p>
 
-<li><p>Add the following import statements to the new Bridging Header:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">#<span style="font-weight:bold">import</span> <span style="color:#b84">&#34;uiapplication+tealiumtracker.h&#34;</span>
-#<span style="font-weight:bold">import</span> <span style="color:#b84">&#34;uiviewcontroller+tealiumtracker.h&#34;</span></code></pre></div></li>
-</ol>
+<p>Apply this modifier in the body of the view you want to track and pass <code>self</code> as parameter:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">struct</span> <span style="color:#458;font-weight:bold">SomeView</span>: View {
+    <span style="font-weight:bold">var</span> <span style="color:#008080">body</span>: some View {
+        Group {
+            Spacer()
+            Text(<span style="color:#b84">&#34;Some Text&#34;</span>)
+            Spacer()
+        }.autoTracking(viewSelf: <span style="font-weight:bold">self</span>) 
+    }
+}</code></pre></div>
+<h4 id="autotracking-viewclass-some-view"><code>autoTracking(viewClass:) -&gt; some View</code></h4>
+
+<p>Use this modifier to automatically track a view using the class name of the view class.</p>
+
+<p>Apply this modifier in the body of the view you want to track and pass the name of the class you want to track (if you don&rsquo;t have access to the object instance):</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">struct</span> <span style="color:#458;font-weight:bold">SomeContainerView</span>: View {
+    <span style="font-weight:bold">var</span> <span style="color:#008080">body</span>: some View {
+        SomeOtherView {
+            Spacer()
+            Text(<span style="color:#b84">&#34;Some Text&#34;</span>)
+            Spacer()
+        }.autoTracking(viewClass: SomeOtherView.<span style="font-weight:bold">self</span>) 
+    }
+}</code></pre></div>
+<h4 id="autotracked-constantname-some-view"><code>autoTracked(constantName:) -&gt; some View</code></h4>
+
+<p>Use this modifier to automatically track a view with a custom constant name.</p>
+
+<p>Changing the variable from which the constant is taken won’t change the tracked name.</p>
+
+<p class="note">Do not pass a state variable here as it may conflict with <code>onDisappear</code> calls.</p>
+ 
+
+<p>If you want to pass a state variable, pass the binding value instead, using the overloaded method.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">struct</span> <span style="color:#458;font-weight:bold">SomeView</span>: View {
+    <span style="font-weight:bold">var</span> <span style="color:#008080">name</span> = <span style="color:#b84">&#34;Some Constant Name&#34;</span>
+    <span style="font-weight:bold">var</span> <span style="color:#008080">body</span>: some View {
+        Group {
+            Spacer()
+            Text(<span style="color:#b84">&#34;Some Text&#34;</span>)
+            Spacer()
+        }.autoTracked(constantName: name) 
+    }
+}</code></pre></div>
+<h4 id="autotracked-name-binding-string-some-view"><code>autoTracked(name: Binding&lt;String&gt;) -&gt; some View</code></h4>
+
+<p>Use this modifier to automatically track a view with a custom state variable name.</p>
+
+<p>Changing the variable in this case results in a different event name for subsequent automatic tracking calls.</p>
+
+<p>This method solves the issue of <code>onAppear</code> being called after <code>onDisappear</code> for state changes and allows for the variable name to change for subsequent automatically tracked names.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">struct</span> <span style="color:#458;font-weight:bold">SomeView</span>: View {
+    @State <span style="font-weight:bold">var</span> <span style="color:#008080">name</span> = <span style="color:#b84">&#34;Some Constant Name&#34;</span>
+    <span style="font-weight:bold">var</span> <span style="color:#008080">body</span>: some View {
+        Group {
+            Spacer()
+            Text(<span style="color:#b84">&#34;Some Text&#34;</span>)
+            Spacer()
+        }.autoTracked(name: <span style="color:#a61717;background-color:#e3d2d2">$</span>name) 
+    }
+}</code></pre></div>
+<h4 id="embed-automatic-tracking-container">Embed Automatic Tracking Container</h4>
+
+<p>As an alternative to view modifiers, embed the automatic tracking container <code>TealiumViewTrackable</code> in each view you want to track.</p>
+
+<p>There are three options to this approach:</p>
+
+<ul>
+<li><p><strong>Init with content view</strong><br />
+Pass the content view in the initializer to track the content class name automatically.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">TealiumViewTrackable {
+  SomeView()
+}</code></pre></div></li>
+
+<li><p><strong>Init with constant name and content view</strong><br />
+Specify a constant name by passing a state variable to be tracked instead of the content class name.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">TealiumViewTrackable(constantName: <span style="color:#b84">&#34;Some Constant Name&#34;</span>) {
+  SomeView()
+}</code></pre></div></li>
+
+<li><p><strong>Init with state variable binding name and content view</strong><br />
+Pass a binding from a state variable of your view. This uses the current value of the state variable when <code>onAppear</code> is triggered.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@State <span style="font-weight:bold">var</span> <span style="color:#008080">name</span>: <span style="color:#999">String</span> = <span style="color:#b84">&#34;Some Variable Name&#34;</span>
+<span style="font-weight:bold">var</span> <span style="color:#008080">body</span>: some View {
+  TealiumViewTrackable(viewName: <span style="color:#a61717;background-color:#e3d2d2">$</span>name) {
+    SomeView()
+  }
+}</code></pre></div></li>
+</ul>
 
 <h2 id="data-layer">Data Layer</h2>
 
-<p>The following variables are transmitted with each tracking call while the module is enabled:</p>
+<p>The following variables are included with each tracking call that is triggered by this module:</p>
 
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Variable</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>autotracked</code></td>
-<td>Set to true and added to each auto-tracked tracking call.</td>
-<td>[<code>&quot;true&quot;</code>, <code>&quot;false&quot;</code>]</td>
+<td align="left"><code>autotracked</code></td>
+<td align="left">Set for all events tracked by the Autotracking module.</td>
+<td align="left"><code>true</code></td>
 </tr>
 </tbody>
 </table>
+
+<h2 id="api-reference">API Reference</h2>
+
+<ul>
+<li><a href="/platforms/ios-swift/api/tealium-config/"><code>TealiumConfig</code></a></li>
+</ul>
 
 </div>
 
@@ -1741,6 +1883,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/adid/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-adid">Ad Identifier Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/autotracking/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-autotracking">AutoTracking Module</a>
       </li>
       
     
@@ -7403,7 +7565,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  August 12, 2020 
+    <span>This page was last updated:  November 2, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
