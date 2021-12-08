@@ -327,15 +327,15 @@ var utag_data = {
 <p>Extension property on the <code>TealiumConfig</code> object; only available when the VisitorService module is included in your project.</p>
 
 <p>Sets the URL used to retrieve a new/updated VisitorProfile from - default value is <code>&quot;https://visitor-service.tealiumiq.com/{ACOUNT_NAME}/{PROFILE_NAME}/{VISITOR_ID}&quot;</code></p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(...)
-config.overrideVisitorServiceUrl = url</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val <span style="color:#900;font-weight:bold">config</span> <span style="font-weight:bold">=</span> TealiumConfig(...)
+config.<span style="color:#008080">overrideVisitorServiceUrl</span> <span style="font-weight:bold">=</span> url</code></pre></div>
 <h3 id="requestvisitorprofile"><code>requestVisitorProfile</code></h3>
 
 <p>Method to request that the VisitorProfile be updated. This happens after each dispatch, or batch of dispatches, has been sent to the Tealium Customer Data Hub.</p>
 
 <p>Use this method to request an update at any other point in time. It&rsquo;s a <code>suspend</code> function that needs to be called from a coroutine, and as it makes a network request, your coroutine is not called on main thread.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">runBlocking(Dispatchers.IO) {
-    tealium.visitorService<span style="font-weight:bold">?.</span>requestVisitorProfile()
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">runBlocking(Dispatchers.<span style="color:#008080">IO</span>) {
+    tealium.<span style="color:#008080">visitorService</span><span style="font-weight:bold">?</span>.<span style="color:#008080">requestVisitorProfile</span>()
 }</code></pre></div>
 <h2 id="interface-visitorupdatedlistener">Interface: <code>VisitorUpdatedListener</code></h2>
 
@@ -344,10 +344,10 @@ config.overrideVisitorServiceUrl = url</code></pre></div>
 <h3 id="onvisitorupdated"><code>onVisitorUpdated</code></h3>
 
 <p>Implement the <code>onVisitorUpdated</code> method on an existing class, or pass in an anonymous object after creating your <code>Tealium</code> instance. The below example shows the latter.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> tealium = Tealium.create(...) {
-    events.subscribe(<span style="font-weight:bold">object</span> <span style="color:#a61717;background-color:#e3d2d2">: </span><span style="color:#458;font-weight:bold">VisitorUpdatedListener</span> {
-        <span style="font-weight:bold">override</span> <span style="font-weight:bold">fun</span> <span style="color:#900;font-weight:bold">onVisitorUpdated</span>(visitorProfile: VisitorProfile) {
-            Logger.dev(<span style="color:#b84">&#34;--&#34;</span>, <span style="color:#b84">&#34;VisitorProfile updated: $visitorProfile&#34;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val <span style="color:#900;font-weight:bold">tealium</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">create</span>(...) {
+    events.<span style="color:#008080">subscribe</span>(object <span style="font-weight:bold">:</span> VisitorUpdatedListener {
+        override <span style="color:#900;font-weight:bold">fun</span> onVisitorUpdated(visitorProfile<span style="font-weight:bold">:</span> VisitorProfile) {
+            Logger.<span style="color:#008080">dev</span>(<span style="color:#b84">&#34;--&#34;</span>, <span style="color:#b84">&#34;VisitorProfile updated: $visitorProfile&#34;</span>)
         }
     })
 }</code></pre></div>
@@ -7358,7 +7358,7 @@ config.overrideVisitorServiceUrl = url</code></pre></div>
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 15, 2020 
+    <span>This page was last updated:  November 9, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

@@ -249,7 +249,11 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#1-2-4-april-2021">1.2.4 (April 2021)</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#1-2-8-october-2021">1.2.8 (October 2021)</a></li>
+              <li><a href="#1-2-7-september-2021">1.2.7 (September 2021)</a></li>
+              <li><a href="#1-2-6-july-2021">1.2.6 (July 2021)</a></li>
+              <li><a href="#1-2-5-may-2021">1.2.5 (May 2021)</a></li>
+              <li><a href="#1-2-4-april-2021">1.2.4 (April 2021)</a></li>
               <li><a href="#1-2-3-march-2021">1.2.3 (March 2021)</a></li>
               <li><a href="#1-2-2-march-2021">1.2.2 (March 2021)</a></li>
               <li><a href="#1-2-1-march-2021">1.2.1 (March 2021)</a></li>
@@ -298,20 +302,88 @@ var utag_data = {
 
 <p>Below is a list of changes for each release of the Android Kotlin library.  See the <a href="https://github.com/Tealium/tealium-kotlin/blob/master/CHANGELOG.md">Change Log</a> for a complete list.</p>
 
+<h2 id="1-2-8-october-2021">1.2.8 (October 2021)</h2>
+
+<ul>
+<li>Core 1.2.8
+
+<ul>
+<li>Added <a href="/platforms/android-kotlin/api/tealium-config/#loglevel"><code>TealiumConfig.logLevel</code></a> to enable overriding the log level derived from the environment.</li>
+<li>Added <code>consent_last_updated</code> timestamp to the payload of each event triggered by the Consent Manager.</li>
+<li>Payload key constants migrated to <code>Dispatch.Keys.XXX</code> for ease of access.</li>
+<li>Bug Fixes</li>
+<li><code>app_name</code> now falls back to a non-localized version of the app label.</li>
+<li>Fixed event router crashes caused by threading.</li>
+<li><code>screen_title</code> re-added to the <code>TealiumView</code> payload by default, and set to the <code>viewName</code> when one is not provided in the context data</li>
+<li>Unnecessary logging removed when trying to load <code>tealium-settings.json</code> as an Asset.</li>
+<li>Where multiple deep links occur during a session, previous deep link parameters are now removed from the data layer prior to adding the new ones.</li>
+</ul></li>
+<li>CollectDispatcher 1.0.6, HostedDataLayer 1.0.4, RemoteCommandDispatcher 1.0.5, TagManagement 1.0.7
+
+<ul>
+<li>Event key references updated to use the new <code>Dispatch.Keys.XXX</code> (only present in Core 1.2.8+).</li>
+</ul></li>
+</ul>
+
+<h2 id="1-2-7-september-2021">1.2.7 (September 2021)</h2>
+
+<ul>
+<li>Core 1.2.7
+
+<ul>
+<li>Added <code>device_logical_resolution</code> to the data layer from the DeviceData module.</li>
+</ul></li>
+</ul>
+
+<h2 id="1-2-6-july-2021">1.2.6 (July 2021)</h2>
+
+<ul>
+<li>Core 1.2.6
+
+<ul>
+<li>Added <code>TealiumConfig.existingVisitorId</code> to support using your own unique identifier.</li>
+<li>Added <code>TealiumConfig.consentManagerLoggingProfile</code> to support to overriding the profile for Consent Logging.</li>
+<li>Consent Logging event routed through all enabled Dispatchers.</li>
+<li>Updated values for data layer variables <code>app_build</code> and <code>app_version</code>.</li>
+</ul></li>
+<li>Tag Management Dispatcher 1.0.6
+
+<ul>
+<li>Support for Consent Logging profile override.</li>
+</ul></li>
+<li>Collect Dispatcher 1.0.5
+
+<ul>
+<li>Support for Consent Logging profile override.</li>
+</ul></li>
+<li>Visitor Service 1.0.5
+
+<ul>
+<li>Bug fix: deserializing stored long values.</li>
+</ul></li>
+</ul>
+
+<h2 id="1-2-5-may-2021">1.2.5 (May 2021)</h2>
+
+<ul>
+<li>Fixed issues with HttpClient and consent logging failures.</li>
+<li>Improved asynchronous performance by moving HttpClient execution onto the IO dispatcher.</li>
+</ul>
+
 <h2 id="1-2-4-april-2021">1.2.4 (April 2021)</h2>
 
 <ul>
 <li><p>Core 1.2.4</p>
 
 <ul>
-<li><p>Added new <code>enabled_modules</code> and <code>enabled_modules_versions</code> data layer keys. Both are arrays of strings, containing a sorted list of modules in use and their version number - latest versions of all modules required to retrieve their version.<br />
-<p class="note">module names have also been changed from UPPER_SNAKE_CASE to PascalCase to match Swift.</p></p></li>
+<li><p>Added new data layer variables <code>enabled_modules</code> and <code>enabled_modules_versions</code>. Both are arrays of strings, containing a sorted list of modules in use and their version number - latest versions of all modules required to retrieve their version.<br />
+<p class="note">module names have also been changed from &ldquo;UPPER_SNAKE_CASE&rdquo; to &ldquo;PascalCase&rdquo; to match Swift.</p></p></li>
 
-<li><p>New config option <code>remoteApiEnabled</code> to permit disabling of <code>remote_api</code> events when using the RemoteCommands and TagManagement modules</p></li>
+<li><p>New config option <code>remoteApiEnabled</code> to permit disabling of <code>remote_api</code> events when using the RemoteCommands and TagManagement modules.</p></li>
 
-<li><p>New config option <code>overrideCollectProfile</code> to permit overriding the value of <code>tealium_profile</code> in the event payload, routing events to a different Tealium Profile to the one set on the <code>TealiumConfig</code> object.</p></li>
+<li><p>New config option <code>overrideCollectProfile</code> to permit overriding the value of <code>tealium_profile</code> in the event payload, routing events to a different Tealium profile to the one set on the <code>TealiumConfig</code> object.</p></li>
 
-<li><p>Bug fix: Added support for both <code>application/json</code> and <code>x-www-form-urlencoded</code> content types when using the <code>HttpRemoteCommand</code></p></li>
+<li><p>Bug fix: Added support for both <code>application/json</code> and <code>x-www-form-urlencoded</code> content types when using the <code>HttpRemoteCommand</code>.</p></li>
 
 <li><p>Bug fix: Fixed an issue with specific collections not being encoded correctly.</p></li>
 </ul></li>
@@ -7452,7 +7524,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  May 6, 2021 
+    <span>This page was last updated:  November 9, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

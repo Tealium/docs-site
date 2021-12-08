@@ -265,11 +265,14 @@ var utag_data = {
               <li><a href="#consentmanagerenabled">consentManagerEnabled</a></li>
               <li><a href="#consentmanagerpolicy">consentManagerPolicy</a></li>
               <li><a href="#consentmanagerloggingenabled">consentManagerLoggingEnabled</a></li>
+              <li><a href="#consentmanagerloggingprofile">consentManagerLoggingProfile</a></li>
               <li><a href="#consentmanagerloggingurl">consentManagerLoggingUrl</a></li>
               <li><a href="#deeplinktrackingenabled">deepLinkTrackingEnabled</a></li>
+              <li><a href="#existingvisitorid">existingVisitorId</a></li>
               <li><a href="#hosteddatalayermaxcachetimeminutes">hostedDataLayerMaxCacheTimeMinutes</a></li>
               <li><a href="#hosteddatalayereventmappings">hostedDataLayerEventMappings</a></li>
               <li><a href="#loglevel">logLevel</a></li>
+              <li><a href="#remoteapienabled">remoteAPIEnabled</a></li>
               <li><a href="#tealiumconfig">TealiumConfig</a></li>
               <li><a href="#timedeventtriggers">timedEventTriggers</a></li>
               </nav>
@@ -380,7 +383,7 @@ var utag_data = {
 
 <tr>
 <td align="left"><a href="#consentmanagerenabled"><code>consentManagerEnabled</code></a></td>
-<td align="left">Enables or disables consent management functionality.</td>
+<td align="left">Optional <code>Boolean</code> to enable/disable Consent Management functionality.</td>
 </tr>
 
 <tr>
@@ -390,7 +393,7 @@ var utag_data = {
 
 <tr>
 <td align="left"><a href="#consentmanagerloggingenabled"><code>consentManagerLoggingEnabled</code></a></td>
-<td align="left">Enables or disables logging of consent changes.</td>
+<td align="left">Optional <code>Boolean</code> to enable/disable logging of consent changes.</td>
 </tr>
 
 <tr>
@@ -399,8 +402,18 @@ var utag_data = {
 </tr>
 
 <tr>
+<td align="left"><a href="#consentmanagerloggingprofile"><code>consentManagerLoggingProfile</code></a></td>
+<td align="left">Optional <code>String</code> to override the profile that Tealium Collect sends data to.</td>
+</tr>
+
+<tr>
 <td align="left"><a href="#deeplinktrackingenabled"><code>deepLinkTrackingEnabled</code></a></td>
 <td align="left">Enables or disables automatic tracking of deep links.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#existingvisitorid"><code>existingVisitorId</code></a></td>
+<td align="left">Set your own unique identifier, stored in   <code>tealium_visitor_id</code>.</td>
 </tr>
 
 <tr>
@@ -419,8 +432,13 @@ var utag_data = {
 </tr>
 
 <tr>
+<td align="left"><a href="#remoteapienabled"><code>remoteAPIEnabled</code></a></td>
+<td align="left">Enables or disables <code>remote_api</code> event. Required for the RemoteCommands module if the DispatchQueue module in use.</td>
+</tr>
+
+<tr>
 <td align="left"><a href="#tealiumconfig"><code>TealiumConfig</code></a></td>
-<td align="left">Constructor method that creates a <code>TealiumConfig</code> instance.</td>
+<td align="left">Constructor method that creates an instance of <code>TealiumConfig</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -430,35 +448,35 @@ var utag_data = {
 <p>Sets the current authentication state for the visitor.</p>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotin" data-lang="kotin">config.adobeVisitorAuthState = AdobeAuthState.AUTH_STATE_AUTHENTICATED
-config.adobeVisitorAuthState = AdobeAuthState.AUTH_STATE_LOGGED_OUT
-config.adobeVisitorAuthState = AdobeAuthState.AUTH_STATE_UNKNOWN</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.<span style="color:#008080">adobeVisitorAuthState</span> <span style="font-weight:bold">=</span> AdobeAuthState.<span style="color:#008080">AUTH_STATE_AUTHENTICATED</span>
+<span style="color:#900;font-weight:bold">config</span>.<span style="color:#008080">adobeVisitorAuthState</span> <span style="font-weight:bold">=</span> AdobeAuthState.<span style="color:#008080">AUTH_STATE_LOGGED_OUT</span>
+<span style="color:#900;font-weight:bold">config</span>.<span style="color:#008080">adobeVisitorAuthState</span> <span style="font-weight:bold">=</span> AdobeAuthState.<span style="color:#008080">AUTH_STATE_UNKNOWN</span></code></pre></div>
 <h3 id="adobevisitorcustomvisitorid"><code>adobeVisitorCustomVisitorId</code></h3>
 
 <p>Sets the known visitor ID to the Adobe ECID, if it&rsquo;s known at initialization time. If the ECID changes in the future, call <a href="/platforms/android-kotlin/api/tealium/#linkecidtoknownidentifier"><code>linkECIDToKnownIdentifier</code></a> to update the visitor ID.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.adobeVisitorCustomVisitorId = <span style="color:#b84">&#34;20381482060927465156359999806251989655&#34;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.<span style="color:#008080">adobeVisitorCustomVisitorId</span> <span style="font-weight:bold">=</span> <span style="color:#b84">&#34;20381482060927465156359999806251989655&#34;</span></code></pre></div>
 <h3 id="adobevisitordataproviderid"><code>adobeVisitorDataProviderId</code></h3>
 
 <p>Sets the data provider ID, provided by Adobe, which is required when linking an ECID to a known ID.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.adobeVisitorDataProviderId = <span style="color:#b84">&#34;01&#34;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.<span style="color:#008080">adobeVisitorDataProviderId</span> <span style="font-weight:bold">=</span> <span style="color:#b84">&#34;01&#34;</span></code></pre></div>
 <h3 id="adobevisitorexistingecid"><code>adobeVisitorExistingEcid</code></h3>
 
 <p>Sets the existing ECID from a previous installation to be used, such as the Adobe SDK, instead of requesting a new ECID.</p>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotin" data-lang="kotin">config.adobeVisitorExistingEcid = &#34;20381482060927465156359999806251989655&#34;</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.<span style="color:#008080">adobeVisitorExistingEcid</span> <span style="font-weight:bold">=</span> <span style="color:#b84">&#34;20381482060927465156359999806251989655&#34;</span></code></pre></div>
 <h3 id="adobevisitororgid"><code>adobeVisitorOrgId</code></h3>
 
 <p>String containing the Adobe Org ID including the <code>@</code> portion. If the Org ID is not provided, the module is not initialized and no visitor ID is retrieved. Tracking calls continue as normal without an Adobe ECID.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.adobeVisitorOrgId = STRING_VALUE</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.<span style="color:#008080">adobeVisitorOrgId</span> <span style="font-weight:bold">=</span> STRING_VALUE</code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotin" data-lang="kotin">config.adobeVisitorOrgId = &#34;1A2A111A111150AA0A110A12@AdobeOrg&#34;</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.<span style="color:#008080">adobeVisitorOrgId</span> <span style="font-weight:bold">=</span> <span style="color:#b84">&#34;1A2A111A111150AA0A110A12@AdobeOrg&#34;</span></code></pre></div>
 <h3 id="adobevisitorretries"><code>adobeVisitorRetries</code></h3>
 
 <p>The number of allowed invalid visitor ID retries before a request fails, which results in tracking calls being sent anyway without an ECID.</p>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.adobeVisitorRetries = <span style="color:#099">5</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.<span style="color:#008080">adobeVisitorRetries</span> <span style="font-weight:bold">=</span> 5</code></pre></div>
 <h3 id="autotrackingblocklistfilename"><code>autoTrackingBlocklistFilename</code></h3>
 
 <p>For use with the <a href="/platforms/android-kotlin/module-list/autotracking/#block-list">AutoTracking Module</a>.</p>
@@ -537,7 +555,7 @@ Disable all automatic tracking (for debug or dev builds of your app).</p>
 <p>These modules are enabled or disabled using the <a href="/platforms/android-kotlin/api/tealium-config/"><code>TealiumConfig</code></a> <code>collectors</code> property.</p>
 
 <p>The following example adds to existing list of collectors you&rsquo;re using:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(collectors = mutableSetOf(Collectors.AdobeVisitor))</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val <span style="color:#900;font-weight:bold">config</span> <span style="font-weight:bold">=</span> TealiumConfig(collectors <span style="font-weight:bold">=</span> mutableSetOf(Collectors.<span style="color:#008080">AdobeVisitor</span>))</code></pre></div>
 <h3 id="consentexpiry"><code>consentExpiry</code></h3>
 
 <p>Sets the expiration time of the user consent selections. Set this property prior to Tealium initialization. The default expiration times for consent selections are:</p>
@@ -548,27 +566,35 @@ Disable all automatic tracking (for debug or dev builds of your app).</p>
 </ul>
 
 <p>The following sets the consent expiry to 90 days.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.consentExpiry = ConsentExpiry(<span style="color:#099">90</span>, TimeUnit.DAYS)</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.<span style="color:#008080">consentExpiry</span> <span style="font-weight:bold">=</span> ConsentExpiry(90, TimeUnit.<span style="color:#008080">DAYS</span>)</code></pre></div>
 <h3 id="consentmanagerenabled"><code>consentManagerEnabled</code></h3>
 
 <p>Sets whether the ConsentManager module is enabled or not. It is also required to set a Policy via <code>consentManagerPolicy</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.consentManagerEnabled = <span style="font-weight:bold">true</span>  <span style="color:#998;font-style:italic">// enable</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.<span style="color:#008080">consentManagerEnabled</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">true</span>  <span style="font-weight:bold">//</span> enable</code></pre></div>
 <h3 id="consentmanagerpolicy"><code>consentManagerPolicy</code></h3>
 
 <p>Sets the <code>ConsentPolicy</code> that is adhered to within the app. This policy controls whether or not Dispatches are queued and dropped throughout the SDK in accordance with the relevant legal requirements.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.consentManagerPolicy = ConsentPolicy.GDPR</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.<span style="color:#008080">consentManagerPolicy</span> <span style="font-weight:bold">=</span> ConsentPolicy.<span style="color:#008080">GDPR</span></code></pre></div>
 <h3 id="consentmanagerloggingenabled"><code>consentManagerLoggingEnabled</code></h3>
 
 <p>Sets whether changes in consent preferences need to be sent to a remote server to be recorded.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.consentManagerLoggingEnabled = <span style="font-weight:bold">true</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.<span style="color:#008080">consentManagerLoggingEnabled</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">true</span></code></pre></div>
+<h3 id="consentmanagerloggingprofile"><code>consentManagerLoggingProfile</code></h3>
+
+<p>Overrides the profile that Tealium Collect sends data to.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.<span style="color:#008080">consentManagerLoggingProfile</span> <span style="font-weight:bold">=</span> <span style="color:#b84">&#34;us-mobile&#34;</span></code></pre></div>
 <h3 id="consentmanagerloggingurl"><code>consentManagerLoggingUrl</code></h3>
 
 <p>Sets the URL used when logging consent preference changes.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.consentManagerLoggingUrl = url</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.<span style="color:#008080">consentManagerLoggingUrl</span> <span style="font-weight:bold">=</span> url</code></pre></div>
 <h3 id="deeplinktrackingenabled"><code>deepLinkTrackingEnabled</code></h3>
 
 <p>Enables or disables automatic tracking of standard deep links, such as links to the app from Facebook or other sources, as well as QR trace. Enabled by default.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.deepLinkTrackingEnabled = <span style="font-weight:bold">true</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.<span style="color:#008080">deepLinkTrackingEnabled</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">true</span></code></pre></div>
+<h3 id="existingvisitorid"><code>existingVisitorId</code></h3>
+
+<p>Sets the data layer value for <code>tealium_visitor_id</code>. Use this when you have your own unique identifier.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.<span style="color:#008080">existingVisitorId</span> <span style="font-weight:bold">=</span> <span style="color:#b84">&#34;8243d23b56d5488571027547bc72d93&#34;</span></code></pre></div>
 <h3 id="hosteddatalayermaxcachetimeminutes"><code>hostedDataLayerMaxCacheTimeMinutes</code></h3>
 
 <p>Sets an expiration on the hosted data layer data. If this property isn&rsquo;t set, hosted data layer items persist for 7 days by default, and are re-downloaded from the CDN once this period has expired.</p>
@@ -581,7 +607,9 @@ Disable all automatic tracking (for debug or dev builds of your app).</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">hostedDataLayerEventMappings <span style="font-weight:bold">=</span> mapOf(<span style="color:#b84">&#34;pdp&#34;</span> to <span style="color:#b84">&#34;product_id&#34;</span>)</code></pre></div>
 <h3 id="loglevel"><code>logLevel</code></h3>
 
-<p>Sets the log level property, which controls how much information is logged, to one of the following values:</p>
+<p>Sets the log level property to control how much information is logged. Setting this property overrides the default value that comes from the <code>environment</code> property in <code>TealiumConfig</code>.</p>
+
+<p>Set log level to one of the following values:</p>
 
 <table>
 <thead>
@@ -594,28 +622,32 @@ Disable all automatic tracking (for debug or dev builds of your app).</p>
 <tbody>
 <tr>
 <td align="left"><code>DEV</code></td>
-<td align="left">Debug-level events used for debugging an application (recommended for development environment)</td>
+<td align="left">Debug-level events used for debugging an application (recommended for development environment) .</td>
 </tr>
 
 <tr>
 <td align="left"><code>QA</code></td>
-<td align="left">Informational events that highlight the progress of the application</td>
+<td align="left">Informational events that highlight the progress of the application.</td>
 </tr>
 
 <tr>
 <td align="left"><code>PROD</code></td>
-<td align="left">Error events such as critical errors and failures</td>
+<td align="left">Error events such as critical errors and failures.</td>
 </tr>
 
 <tr>
 <td align="left"><code>SILENT</code></td>
-<td align="left">No logging</td>
+<td align="left">No logging.</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">Logger.logLevel = LogLevel.DEV</code></pre></div>
-<p class="note">View your development logs in the Android Studio using LogCat. View your production logs with LogCat app by connecting your Android device.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.<span style="color:#008080">logLevel</span> <span style="font-weight:bold">=</span> LogLevel.<span style="color:#008080">DEV</span></code></pre></div>
+<p class="note">View your development logs in the Android Studio using LogCat. View your production logs with the LogCat app by connecting your Android device.</p>
 
+<h3 id="remoteapienabled"><code>remoteAPIEnabled</code></h3>
+
+<p>Enables or disables <code>remote_api</code> event. Required for RemoteCommands module if DispatchQueue module in use. Default <code>false</code>.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.remoteAPIEnabled = <span style="font-weight:bold">true</span></code></pre></div>
 <h3 id="tealiumconfig"><code>TealiumConfig</code></h3>
 
 <p>Constructor method that creates a <code>TealiumConfig</code> instance.</p>
@@ -668,17 +700,17 @@ Disable all automatic tracking (for debug or dev builds of your app).</p>
 </table>
 
 <p>The following is an example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#998;font-style:italic">// Assuming execution is within Application.onCreate()
-</span><span style="color:#998;font-style:italic"></span><span style="font-weight:bold">val</span> config = TealiumConfig(<span style="font-weight:bold">this</span>, <span style="color:#b84">&#34;ACCOUNT_NAME&#34;</span>, <span style="color:#b84">&#34;PROFILE_NAME&#34;</span>, Environment.PROD)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#998;font-style:italic">// Assuming execution is within Application.onCreate()
+</span><span style="color:#998;font-style:italic"></span>val <span style="color:#900;font-weight:bold">config</span> <span style="font-weight:bold">=</span> TealiumConfig(<span style="font-weight:bold">this</span>, <span style="color:#b84">&#34;ACCOUNT_NAME&#34;</span>, <span style="color:#b84">&#34;PROFILE_NAME&#34;</span>, Environment.<span style="color:#008080">PROD</span>)
 
 <span style="color:#998;font-style:italic">// Add required Dispatchers
-</span><span style="color:#998;font-style:italic"></span>config.dispatchers.addAll(setOf(CollectDispatcher, TagManagementDispatcher))
+</span><span style="color:#998;font-style:italic"></span>config.<span style="color:#008080">dispatchers</span>.<span style="color:#008080">addAll</span>(setOf(CollectDispatcher, TagManagementDispatcher))
 
 <span style="color:#998;font-style:italic">// Add required Modules
-</span><span style="color:#998;font-style:italic"></span>config.modules.add(VisitorService)
+</span><span style="color:#998;font-style:italic"></span>config.<span style="color:#008080">modules</span>.<span style="color:#008080">add</span>(VisitorService)
 
 <span style="color:#998;font-style:italic">// Automatic tracking mode
-</span><span style="color:#998;font-style:italic"></span>config.autoTrackingMode = AutoTrackingMode.FULL <span style="color:#998;font-style:italic">// (FULL, ANNOTATED, NONE)</span></code></pre></div>
+</span><span style="color:#998;font-style:italic"></span>config.<span style="color:#008080">autoTrackingMode</span> <span style="font-weight:bold">=</span> AutoTrackingMode.<span style="color:#008080">FULL</span> <span style="font-weight:bold">//</span> (FULL, ANNOTATED, NONE)</code></pre></div>
 <h3 id="timedeventtriggers"><code>timedEventTriggers</code></h3>
 
 <p>A list of <code>EventTrigger</code> objects for automatically tracking timed events.</p>
@@ -7739,7 +7771,7 @@ Disable all automatic tracking (for debug or dev builds of your app).</p>
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  November 2, 2021 
+    <span>This page was last updated:  December 2, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

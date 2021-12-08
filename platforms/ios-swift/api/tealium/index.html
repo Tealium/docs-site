@@ -254,6 +254,7 @@ var utag_data = {
               <li><a href="#clearalltimedevents">clearAllTimedEvents()</a></li>
               <li><a href="#disable">disable()</a></li>
               <li><a href="#flushqueue">flushQueue()</a></li>
+              <li><a href="#gathertrackdata">gatherTrackData()</a></li>
               <li><a href="#jointrace">joinTrace()</a></li>
               <li><a href="#leavetrace">leaveTrace()</a></li>
               <li><a href="#linkecidtoknownidentifier">linkECIDToKnownIdentifier()</a></li>
@@ -334,6 +335,11 @@ var utag_data = {
 <tr>
 <td align="left"><a href="#flushqueue"><code>flushQueue()</code></a></td>
 <td align="left">Sends any queued dispatches immediately.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#gathertrackdata"><code>gatherTrackData()</code></a></td>
+<td align="left">Returns all custom data layer values and collector module data layer values.</td>
 </tr>
 
 <tr>
@@ -427,6 +433,16 @@ var utag_data = {
 
 <p>Sends all queued dispatches immediately. Requests may still be blocked by <code>DispatchValidator</code>s such as Consent Manager</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.disable()</code></pre></div>
+<h3 id="gathertrackdata"><code>gatherTrackData()</code></h3>
+
+<p>Retrieves all the current custom data layer values and collector module data layer values. The results are cached for subsequent calls and returned asynchronously. Set <code>retrieveCachedData</code> to <code>false</code> to get the most recent values. Use the completion handler to process the returned values. Reference custom data layer values directly using their custom keys and reference collector module values using <code>TealiumDataKey.</code>.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"> tealium?.gatherTrackData(retreiveCachedData: <span style="font-weight:bold">false</span>, completion: { allData <span style="font-weight:bold">in</span>
+    <span style="font-weight:bold">let</span> <span style="color:#008080">lifecycleTotalWakeCount</span> = allData[TealiumDataKey.totalWakeCount]
+    <span style="font-weight:bold">let</span> <span style="color:#008080">visitorId</span> = allData[TealiumDataKey.visitorId]
+    <span style="font-weight:bold">let</span> <span style="color:#008080">userLanguage</span> = allData[<span style="color:#b84">&#34;user_language&#34;</span>]
+})</code></pre></div>
+<p>See also <a href="/platforms/ios-swift/data-layer/#retrieve-all-data"><code>Tealium.dataLayer.all</code></a>.</p>
+
 <h3 id="jointrace"><code>joinTrace()</code></h3>
 
 <p>Joins a trace with the specified ID. The trace remains active for the duration of the app session until <code>leaveTrace()</code> is called. Learn more about the <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Trace/ta-p/12058">trace feature</a> in the Tealium Customer Data Hub.</p>
@@ -7701,7 +7717,7 @@ tealium?.track(tealEvent)</code></pre></div>
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  July 28, 2021 
+    <span>This page was last updated:  December 3, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

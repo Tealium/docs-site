@@ -308,8 +308,6 @@ var utag_data = {
 
 <p>It&rsquo;s common to need general data layer values on every event. To avoid having to add these values to every tracking call, use the <code>tealium.dataLayer</code> methods to persist data layer values that apply to all tracking calls. Once values are stored, they are automatically included in every tracked event.</p>
 
-<p class="note">Methods provided by <code>tealium.dataLayer</code> are able to read or write custom values, but do not have access to <a href="#module-data">module data</a>.</p>
-
 <h3 id="data-expiration">Data Expiration</h3>
 
 <p>Data layer values have an expiration and are removed from the data layer when they expire. When you set a custom data layer value you can optionally set the expiration time for the value. The default expiration length is the current session.</p>
@@ -398,6 +396,8 @@ var utag_data = {
 
 <p>To retrieve all the currently stored data in the data layer, use the <a href="/platforms/ios-swift/api/tealium-data-layer/#all">all()</a> method:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">data</span>: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>] = tealium?.dataLayer.all</code></pre></div>
+<p>See also <a href="/platforms/ios-swift/api/tealium/#gathertrackdata"><code>Tealium.gatherTrackData()</code></a>.</p>
+
 <h3 id="clear-data">Clear Data</h3>
 
 <p>To clear data for specific keys, use the <a href="/platforms/ios-swift/api/tealium-data-layer/#delete">delete()</a> method:</p>
@@ -442,53 +442,53 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable Name</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>app_build</code></td>
-<td>Minor build version of the app</td>
-<td><code>2213</code></td>
+<td align="left"><code>app_build</code></td>
+<td align="left">Minor build version of the app</td>
+<td align="left"><code>2213</code></td>
 </tr>
 
 <tr>
-<td><code>app_name</code></td>
-<td>Name of the app (typically the App Store name)</td>
-<td><code>Digital Velocity</code></td>
+<td align="left"><code>app_name</code></td>
+<td align="left">Name of the app (typically the App Store name)</td>
+<td align="left"><code>Digital Velocity</code></td>
 </tr>
 
 <tr>
-<td><code>app_rdns</code></td>
-<td>Fully-qualified name of the app bundle</td>
-<td><code>com.tealium.digitalvelocity</code></td>
+<td align="left"><code>app_rdns</code></td>
+<td align="left">Fully-qualified name of the app bundle</td>
+<td align="left"><code>com.tealium.digitalvelocity</code></td>
 </tr>
 
 <tr>
-<td><code>app_uuid</code></td>
-<td>Random <code>uuid</code>. Persists for the duration of the app install, so long as one of the persistent storage modules is also enabled. Resets if app is uninstalled.</td>
-<td><code>123e4567-e89b-12d3-a456-556642440000</code></td>
+<td align="left"><code>app_uuid</code></td>
+<td align="left">Random <code>uuid</code>. Persists for the duration of the app install, so long as one of the persistent storage modules is also enabled. Resets if app is uninstalled.</td>
+<td align="left"><code>123e4567-e89b-12d3-a456-556642440000</code></td>
 </tr>
 
 <tr>
-<td><code>app_version</code></td>
-<td>Version of the app bundle</td>
-<td><code>1.0</code></td>
+<td align="left"><code>app_version</code></td>
+<td align="left">Version of the app bundle</td>
+<td align="left"><code>1.0</code></td>
 </tr>
 
 <tr>
-<td><code>tealium_vid</code></td>
-<td>Persistent Tealium visitor ID</td>
-<td><code>t3aL...1uM</code></td>
+<td align="left"><code>tealium_vid</code></td>
+<td align="left">Persistent Tealium visitor ID</td>
+<td align="left"><code>t3aL...1uM</code></td>
 </tr>
 
 <tr>
-<td><code>tealium_visitor_id</code></td>
-<td>Same as <code>tealium_vid</code> and included for legacy reasons</td>
-<td><code>t3aL...1uM</code></td>
+<td align="left"><code>tealium_visitor_id</code></td>
+<td align="left">Same as <code>tealium_vid</code> and included for legacy reasons</td>
+<td align="left"><code>t3aL...1uM</code></td>
 </tr>
 </tbody>
 </table>
@@ -500,131 +500,131 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable Name</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>ad_campaign_id</code></td>
-<td>The corresponding ad&rsquo;s campaign ID</td>
-<td><code>1234567890</code></td>
+<td align="left"><code>ad_campaign_id</code></td>
+<td align="left">The corresponding ad&rsquo;s campaign ID</td>
+<td align="left"><code>1234567890</code></td>
 </tr>
 
 <tr>
-<td><code>ad_campaign_name</code></td>
-<td>The corresponding ad&rsquo;s campaign name</td>
-<td><code>CampaignName</code></td>
+<td align="left"><code>ad_campaign_name</code></td>
+<td align="left">The corresponding ad&rsquo;s campaign name</td>
+<td align="left"><code>CampaignName</code></td>
 </tr>
 
 <tr>
-<td><code>ad_creativeset_id</code></td>
-<td>The ID of the Creative Set which the corresponding ad was part of.</td>
-<td><code>456093</code></td>
+<td align="left"><code>ad_creativeset_id</code></td>
+<td align="left">The ID of the Creative Set which the corresponding ad was part of.</td>
+<td align="left"><code>456093</code></td>
 </tr>
 
 <tr>
-<td><code>ad_creativeset_name</code></td>
-<td>The name of the Creative Set which the corresponding ad was part of.</td>
-<td><code>Beast Images</code></td>
+<td align="left"><code>ad_creativeset_name</code></td>
+<td align="left">The name of the Creative Set which the corresponding ad was part of.</td>
+<td align="left"><code>Beast Images</code></td>
 </tr>
 
 <tr>
-<td><code>ad_group_id</code></td>
-<td>The corresponding ad&rsquo;s campaign group ID</td>
-<td><code>1234567890</code></td>
+<td align="left"><code>ad_group_id</code></td>
+<td align="left">The corresponding ad&rsquo;s campaign group ID</td>
+<td align="left"><code>1234567890</code></td>
 </tr>
 
 <tr>
-<td><code>ad_group_name</code></td>
-<td>The corresponding ad&rsquo;s campaign group name</td>
-<td><code>AdGroupName</code></td>
+<td align="left"><code>ad_group_name</code></td>
+<td align="left">The corresponding ad&rsquo;s campaign group name</td>
+<td align="left"><code>AdGroupName</code></td>
 </tr>
 
 <tr>
-<td><code>ad_keyword</code></td>
-<td>The keyword that drove the ad impression which led to the corresponding ad click</td>
-<td><code>Keyword</code></td>
+<td align="left"><code>ad_keyword</code></td>
+<td align="left">The keyword that drove the ad impression which led to the corresponding ad click</td>
+<td align="left"><code>Keyword</code></td>
 </tr>
 
 <tr>
-<td><code>ad_keyword_matchtype</code></td>
-<td>Either be Broad, Exact or Search Match.</td>
-<td><code>Exact</code></td>
+<td align="left"><code>ad_keyword_matchtype</code></td>
+<td align="left">Either be Broad, Exact or Search Match.</td>
+<td align="left"><code>Exact</code></td>
 </tr>
 
 <tr>
-<td><code>ad_org_id</code></td>
-<td>The corresponding ad&rsquo;s campaign organization ID</td>
-<td><code>OrgID</code></td>
+<td align="left"><code>ad_org_id</code></td>
+<td align="left">The corresponding ad&rsquo;s campaign organization ID</td>
+<td align="left"><code>OrgID</code></td>
 </tr>
 
 <tr>
-<td><code>ad_org_name</code></td>
-<td>The corresponding ad&rsquo;s campaign organization name</td>
-<td><code>OrgName</code></td>
+<td align="left"><code>ad_org_name</code></td>
+<td align="left">The corresponding ad&rsquo;s campaign organization name</td>
+<td align="left"><code>OrgName</code></td>
 </tr>
 
 <tr>
-<td><code>ad_purchase_date</code></td>
-<td>Date and time the user first downloaded your app. In the case where <code>iadconversion-type = “Redownload”</code>, this represents the original purchase date. This may or may not have been associated with an Apple Search Ad.</td>
-<td><code>2016-12-05T17:31:40Z</code></td>
+<td align="left"><code>ad_purchase_date</code></td>
+<td align="left">Date and time the user first downloaded your app. In the case where <code>iadconversion-type = “Redownload”</code>, this represents the original purchase date. This may or may not have been associated with an Apple Search Ad.</td>
+<td align="left"><code>2016-12-05T17:31:40Z</code></td>
 </tr>
 
 <tr>
-<td><code>ad_region</code></td>
-<td>Identifies the country or region associated with the campaign which drove this install.</td>
-<td><code>US</code></td>
+<td align="left"><code>ad_region</code></td>
+<td align="left">Identifies the country or region associated with the campaign which drove this install.</td>
+<td align="left"><code>US</code></td>
 </tr>
 
 <tr>
-<td><code>ad_user_clicked_last_30_days</code></td>
-<td>Boolean indicating if user clicked on a Search Ads impression within 30 days prior to app download</td>
-<td><code>true</code></td>
+<td align="left"><code>ad_user_clicked_last_30_days</code></td>
+<td align="left">Boolean indicating if user clicked on a Search Ads impression within 30 days prior to app download</td>
+<td align="left"><code>true</code></td>
 </tr>
 
 <tr>
-<td><code>ad_user_conversion _type</code></td>
-<td>Identifies new download or redownload of the app</td>
-<td><code>Download</code></td>
+<td align="left"><code>ad_user_conversion _type</code></td>
+<td align="left">Identifies new download or redownload of the app</td>
+<td align="left"><code>Download</code></td>
 </tr>
 
 <tr>
-<td><code>ad_user_date_clicked</code></td>
-<td>Date and time the user clicked on a corresponding ad</td>
-<td><code>2016-12-05T17:31:40Z</code></td>
+<td align="left"><code>ad_user_date_clicked</code></td>
+<td align="left">Date and time the user clicked on a corresponding ad</td>
+<td align="left"><code>2016-12-05T17:31:40Z</code></td>
 </tr>
 
 <tr>
-<td><code>ad_user_date_converted</code></td>
-<td>Date and time the user downloaded the app</td>
-<td><code>2016-12-05T17:31:40Z</code></td>
+<td align="left"><code>ad_user_date_converted</code></td>
+<td align="left">Date and time the user downloaded the app</td>
+<td align="left"><code>2016-12-05T17:31:40Z</code></td>
 </tr>
 
 <tr>
-<td><code>device_advertising_enabled</code></td>
-<td>Boolean indicating if the user allowed ad tracking (if <code>false</code>, the advertising ID appears as a string of zeroes)</td>
-<td><code>true</code></td>
+<td align="left"><code>device_advertising_enabled</code></td>
+<td align="left">Boolean indicating if the user allowed ad tracking (if <code>false</code>, the advertising ID appears as a string of zeroes)</td>
+<td align="left"><code>true</code></td>
 </tr>
 
 <tr>
-<td><code>device_advertising_id</code></td>
-<td>User-resettable advertising identifier (IDFA)</td>
-<td><code>6D92078A-8246...</code></td>
+<td align="left"><code>device_advertising_id</code></td>
+<td align="left">User-resettable advertising identifier (IDFA)</td>
+<td align="left"><code>6D92078A-8246...</code></td>
 </tr>
 
 <tr>
-<td><code>device_advertising_vendor_id</code></td>
-<td>Unique ID guaranteed to be the same across all apps on the same device from a single vendor (apps with the same 1st 2 parts of the RDNS bundle identifier. For example, com.tealium or com.acme)</td>
-<td><code>6D92078A-8246...</code></td>
+<td align="left"><code>device_advertising_vendor_id</code></td>
+<td align="left">Unique ID guaranteed to be the same across all apps on the same device from a single vendor (apps with the same 1st 2 parts of the RDNS bundle identifier. For example, com.tealium or com.acme)</td>
+<td align="left"><code>6D92078A-8246...</code></td>
 </tr>
 
 <tr>
-<td><code>device_tracking_authorization</code></td>
-<td>The tracking <a href="https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus">authorization status</a> that is added to the dispatch payload</td>
-<td><code>authorized</code></td>
+<td align="left"><code>device_tracking_authorization</code></td>
+<td align="left">The tracking <a href="https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus">authorization status</a> that is added to the dispatch payload</td>
+<td align="left"><code>authorized</code></td>
 </tr>
 </tbody>
 </table>
@@ -636,17 +636,17 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable Name</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>autotracked</code></td>
-<td>Set to <code>true</code> and added to each auto-tracked tracking call</td>
-<td><code>true</code></td>
+<td align="left"><code>autotracked</code></td>
+<td align="left">Set to <code>true</code> and added to each auto-tracked tracking call</td>
+<td align="left"><code>true</code></td>
 </tr>
 </tbody>
 </table>
@@ -658,23 +658,23 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable Name</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>dispatch_service</code></td>
-<td>Static string to indicate which module the tracking call came from</td>
-<td><code>collect</code></td>
+<td align="left"><code>dispatch_service</code></td>
+<td align="left">Static string to indicate which module the tracking call came from</td>
+<td align="left"><code>collect</code></td>
 </tr>
 
 <tr>
-<td><code>tealium_event_type</code></td>
-<td>String to indicate which event type is being dispatched</td>
-<td><code>view</code> or <code>event</code></td>
+<td align="left"><code>tealium_event_type</code></td>
+<td align="left">String to indicate which event type is being dispatched</td>
+<td align="left"><code>view</code> or <code>event</code></td>
 </tr>
 </tbody>
 </table>
@@ -686,35 +686,35 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable Name</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>consent_categories</code></td>
-<td>An array of the user&rsquo;s selected consent categories</td>
-<td><code>[&quot;analytics&quot;, &quot;cdp&quot;]</code></td>
+<td align="left"><code>consent_categories</code></td>
+<td align="left">An array of the user&rsquo;s selected consent categories</td>
+<td align="left"><code>[&quot;analytics&quot;, &quot;cdp&quot;]</code></td>
 </tr>
 
 <tr>
-<td><code>consent_status</code></td>
-<td>The user&rsquo;s current consent status</td>
-<td><code>consented</code>, <code>notConsented</code></td>
+<td align="left"><code>consent_status</code></td>
+<td align="left">The user&rsquo;s current consent status</td>
+<td align="left"><code>consented</code>, <code>notConsented</code></td>
 </tr>
 
 <tr>
-<td><code>policy</code></td>
-<td>Consent Policy</td>
-<td><code>gdpr</code>, <code>ccpa</code></td>
+<td align="left"><code>policy</code></td>
+<td align="left">Consent Policy</td>
+<td align="left"><code>gdpr</code>, <code>ccpa</code></td>
 </tr>
 
 <tr>
-<td><code>do_not_sell</code></td>
-<td>Whether or not the user has asked not to sell their data (CCPA only)</td>
-<td><code>true</code></td>
+<td align="left"><code>do_not_sell</code></td>
+<td align="left">Whether or not the user has asked not to sell their data (CCPA only)</td>
+<td align="left"><code>true</code></td>
 </tr>
 </tbody>
 </table>
@@ -726,149 +726,149 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable Name</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>enabled_modules</code></td>
-<td>List of all currently-enabled modules</td>
-<td><code>tagmanagement</code>, <code>collect</code></td>
+<td align="left"><code>enabled_modules</code></td>
+<td align="left">List of all currently-enabled modules</td>
+<td align="left"><code>tagmanagement</code>, <code>collect</code></td>
 </tr>
 
 <tr>
-<td><code>screen_title</code></td>
-<td>Screen title passed to trackView call</td>
-<td><code>homescreen</code></td>
+<td align="left"><code>screen_title</code></td>
+<td align="left">Screen title passed to trackView call</td>
+<td align="left"><code>homescreen</code></td>
 </tr>
 
 <tr>
-<td><code>tealium_datasource</code></td>
-<td>Specifies the data source name (added to every dispatch)</td>
-<td><code>a1b2c3</code></td>
+<td align="left"><code>tealium_datasource</code></td>
+<td align="left">Specifies the data source name (added to every dispatch)</td>
+<td align="left"><code>a1b2c3</code></td>
 </tr>
 
 <tr>
-<td><code>tealium_event</code></td>
-<td>The name of the event being tracked</td>
-<td><code>checkout</code></td>
+<td align="left"><code>tealium_event</code></td>
+<td align="left">The name of the event being tracked</td>
+<td align="left"><code>checkout</code></td>
 </tr>
 
 <tr>
-<td><code>queue_reason</code></td>
-<td>Added to the track call if the tracking request was queued due to lack of connectivity. Only present for queued events; absent for all other events</td>
-<td><code>connectivity</code></td>
+<td align="left"><code>queue_reason</code></td>
+<td align="left">Added to the track call if the tracking request was queued due to lack of connectivity. Only present for queued events; absent for all other events</td>
+<td align="left"><code>connectivity</code></td>
 </tr>
 
 <tr>
-<td><code>was_queued</code></td>
-<td>Indicates whether a tracking call was queued due to no connectivity. Only present for queued events; absent for all other events</td>
-<td><code>true</code></td>
+<td align="left"><code>was_queued</code></td>
+<td align="left">Indicates whether a tracking call was queued due to no connectivity. Only present for queued events; absent for all other events</td>
+<td align="left"><code>true</code></td>
 </tr>
 
 <tr>
-<td><code>tealium_account</code></td>
-<td>Current Tealium account (from TealiumConfig object)</td>
-<td><code>tealium</code></td>
+<td align="left"><code>tealium_account</code></td>
+<td align="left">Current Tealium account (from TealiumConfig object)</td>
+<td align="left"><code>tealium</code></td>
 </tr>
 
 <tr>
-<td><code>tealium_environment</code></td>
-<td>Current Tealium environment (from TealiumConfig object)</td>
-<td><code>dev</code></td>
+<td align="left"><code>tealium_environment</code></td>
+<td align="left">Current Tealium environment (from TealiumConfig object)</td>
+<td align="left"><code>dev</code></td>
 </tr>
 
 <tr>
-<td><code>tealium_library_name</code></td>
-<td>Tealium library name</td>
-<td><code>swift</code></td>
+<td align="left"><code>tealium_library_name</code></td>
+<td align="left">Tealium library name</td>
+<td align="left"><code>swift</code></td>
 </tr>
 
 <tr>
-<td><code>tealium_library_version</code></td>
-<td>Tealium library version</td>
-<td><code>1.8.0</code></td>
+<td align="left"><code>tealium_library_version</code></td>
+<td align="left">Tealium library version</td>
+<td align="left"><code>1.8.0</code></td>
 </tr>
 
 <tr>
-<td><code>tealium_profile</code></td>
-<td>Current Tealium profile (from TealiumConfig object)</td>
-<td><code>mobile</code></td>
+<td align="left"><code>tealium_profile</code></td>
+<td align="left">Current Tealium profile (from TealiumConfig object)</td>
+<td align="left"><code>mobile</code></td>
 </tr>
 
 <tr>
-<td><code>tealium_random</code></td>
-<td>Random number</td>
-<td><code>8449989974958830</code></td>
+<td align="left"><code>tealium_random</code></td>
+<td align="left">Random number</td>
+<td align="left"><code>8449989974958830</code></td>
 </tr>
 
 <tr>
-<td><code>tealium_session_id</code></td>
-<td>Tealium Session ID</td>
-<td><code>1511262829677</code></td>
+<td align="left"><code>tealium_session_id</code></td>
+<td align="left">Tealium Session ID</td>
+<td align="left"><code>1511262829677</code></td>
 </tr>
 
 <tr>
-<td><code>tealium_timestamp_epoch</code></td>
-<td>Current Unix timestamp (1970 epoch) in seconds</td>
-<td><code>1511262829</code></td>
+<td align="left"><code>tealium_timestamp_epoch</code></td>
+<td align="left">Current Unix timestamp (1970 epoch) in seconds</td>
+<td align="left"><code>1511262829</code></td>
 </tr>
 
 <tr>
-<td><code>timestamp</code></td>
-<td>Event timestamp in ISO8601 (Zulu Time), UTC</td>
-<td><code>2017-11-20T14:48:00Z</code></td>
+<td align="left"><code>timestamp</code></td>
+<td align="left">Event timestamp in ISO8601 (Zulu Time), UTC</td>
+<td align="left"><code>2017-11-20T14:48:00Z</code></td>
 </tr>
 
 <tr>
-<td><code>timestamp_local</code></td>
-<td>Event timestamp in ISO8601 local timezone</td>
-<td><code>2017-11-20T06:48:00</code></td>
+<td align="left"><code>timestamp_local</code></td>
+<td align="left">Event timestamp in ISO8601 local timezone</td>
+<td align="left"><code>2017-11-20T06:48:00</code></td>
 </tr>
 
 <tr>
-<td><code>timestamp_offset</code></td>
-<td>Current offset from UTC in hours</td>
-<td><code>-8</code></td>
+<td align="left"><code>timestamp_offset</code></td>
+<td align="left">Current offset from UTC in hours</td>
+<td align="left"><code>-8</code></td>
 </tr>
 
 <tr>
-<td><code>timestamp_unix</code></td>
-<td>Current Unix timestamp (1970 epoch) in seconds</td>
-<td><code>1511189280</code></td>
+<td align="left"><code>timestamp_unix</code></td>
+<td align="left">Current Unix timestamp (1970 epoch) in seconds</td>
+<td align="left"><code>1511189280</code></td>
 </tr>
 
 <tr>
-<td><code>timestamp_unix_milliseconds</code></td>
-<td>Current Unix timestamp (1970 epoch) in milliseconds</td>
-<td><code>1511189280337</code></td>
+<td align="left"><code>timestamp_unix_milliseconds</code></td>
+<td align="left">Current Unix timestamp (1970 epoch) in milliseconds</td>
+<td align="left"><code>1511189280337</code></td>
 </tr>
 
 <tr>
-<td><code>deep_link_url</code></td>
-<td><code>String</code></td>
-<td>The full URL of the deep link that opened the app, including query parameters.</td>
+<td align="left"><code>deep_link_url</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The full URL of the deep link that opened the app, including query parameters.</td>
 </tr>
 
 <tr>
-<td><code>deep_link_param_X</code></td>
-<td><code>String</code></td>
-<td>Each query parameter of the deep link URL, where <code>X</code> is the name of the parameter, such as <code>deep_link_param_campaign_code</code>.</td>
+<td align="left"><code>deep_link_param_X</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Each query parameter of the deep link URL, where <code>X</code> is the name of the parameter, such as <code>deep_link_param_campaign_code</code>.</td>
 </tr>
 
 <tr>
-<td><code>deep_link_referrer_url</code> (iOS)</td>
-<td><code>String</code></td>
-<td>The full URL of the browser page where the deep link was clicked.</td>
+<td align="left"><code>deep_link_referrer_url</code> (iOS)</td>
+<td align="left"><code>String</code></td>
+<td align="left">The full URL of the browser page where the deep link was clicked.</td>
 </tr>
 
 <tr>
-<td><code>deep_link_referrer_app</code> (iOS)</td>
-<td><code>String</code></td>
-<td>The identifier of the referrer app when the deep link comes from a custom schema in another app signed by the same team.</td>
+<td align="left"><code>deep_link_referrer_app</code> (iOS)</td>
+<td align="left"><code>String</code></td>
+<td align="left">The identifier of the referrer app when the deep link comes from a custom schema in another app signed by the same team.</td>
 </tr>
 </tbody>
 </table>
@@ -880,113 +880,113 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable Name</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>app_memory_usage</code></td>
-<td>Current memory used by the app on the device at the time of the crash</td>
-<td><code>143.57MB</code></td>
+<td align="left"><code>app_memory_usage</code></td>
+<td align="left">Current memory used by the app on the device at the time of the crash</td>
+<td align="left"><code>143.57MB</code></td>
 </tr>
 
 <tr>
-<td><code>crash_cause</code></td>
-<td>Cause of the crash</td>
-<td><code>Crash Reason</code></td>
+<td align="left"><code>crash_cause</code></td>
+<td align="left">Cause of the crash</td>
+<td align="left"><code>Crash Reason</code></td>
 </tr>
 
 <tr>
-<td><code>crash_name</code></td>
-<td>Friendly name of the crash, if available</td>
-<td><code>Crash Name</code></td>
+<td align="left"><code>crash_name</code></td>
+<td align="left">Friendly name of the crash, if available</td>
+<td align="left"><code>Crash Name</code></td>
 </tr>
 
 <tr>
-<td><code>crash_libraries</code></td>
-<td>List of loaded libraries at the time of the crash</td>
-<td><code>{ &quot;baseAddress&quot;: &quot;0xa3e0000&quot;, &quot;codeType&quot;: { &quot;arch&quot;: 64, &quot;typeEncoding&quot;: &quot;Mach&quot;}, &quot;imageName&quot;: &quot;/Applications/Xcode9.3.app/ Contents/Developer/Platforms/ iPhoneOS.platform/Developer/ Library/CoreSimulator/Profiles/ Runtimes/iOS.simruntime/ Contents/Resources/ RuntimeRoot/usr/lib/dyld_sim&quot;, &quot;imageSize&quot;: 212992, &quot;imageUuid&quot;: &quot;4015e9b70bde&quot; }</code></td>
+<td align="left"><code>crash_libraries</code></td>
+<td align="left">List of loaded libraries at the time of the crash</td>
+<td align="left"><code>{ &quot;baseAddress&quot;: &quot;0xa3e0000&quot;, &quot;codeType&quot;: { &quot;arch&quot;: 64, &quot;typeEncoding&quot;: &quot;Mach&quot;}, &quot;imageName&quot;: &quot;/Applications/Xcode9.3.app/ Contents/Developer/Platforms/ iPhoneOS.platform/Developer/ Library/CoreSimulator/Profiles/ Runtimes/iOS.simruntime/ Contents/Resources/ RuntimeRoot/usr/lib/dyld_sim&quot;, &quot;imageSize&quot;: 212992, &quot;imageUuid&quot;: &quot;4015e9b70bde&quot; }</code></td>
 </tr>
 
 <tr>
-<td><code>crash_process_id</code></td>
-<td>PID of the app at time of crash</td>
-<td><code>84351</code></td>
+<td align="left"><code>crash_process_id</code></td>
+<td align="left">PID of the app at time of crash</td>
+<td align="left"><code>84351</code></td>
 </tr>
 
 <tr>
-<td><code>crash_process_path</code></td>
-<td>Path the app was running under</td>
-<td><code>/DemoApp.app/DemoApp</code></td>
+<td align="left"><code>crash_process_path</code></td>
+<td align="left">Path the app was running under</td>
+<td align="left"><code>/DemoApp.app/DemoApp</code></td>
 </tr>
 
 <tr>
-<td><code>crash_parent_process</code></td>
-<td>Parent process that launched the app</td>
-<td><code>launchd_sim</code></td>
+<td align="left"><code>crash_parent_process</code></td>
+<td align="left">Parent process that launched the app</td>
+<td align="left"><code>launchd_sim</code></td>
 </tr>
 
 <tr>
-<td><code>crash_parent_process_id</code></td>
-<td>Parent process PID</td>
-<td><code>83183</code></td>
+<td align="left"><code>crash_parent_process_id</code></td>
+<td align="left">Parent process PID</td>
+<td align="left"><code>83183</code></td>
 </tr>
 
 <tr>
-<td><code>crash_signal_address</code></td>
-<td>Signal address of the crash</td>
-<td><code>4572945982</code></td>
+<td align="left"><code>crash_signal_address</code></td>
+<td align="left">Signal address of the crash</td>
+<td align="left"><code>4572945982</code></td>
 </tr>
 
 <tr>
-<td><code>crash_signal_code</code></td>
-<td>Signal code causing the crash</td>
-<td><code>#0</code></td>
+<td align="left"><code>crash_signal_code</code></td>
+<td align="left">Signal code causing the crash</td>
+<td align="left"><code>#0</code></td>
 </tr>
 
 <tr>
-<td><code>crash_signal_name</code></td>
-<td>Signal name causing the crash</td>
-<td><code>SIGABRT</code></td>
+<td align="left"><code>crash_signal_name</code></td>
+<td align="left">Signal name causing the crash</td>
+<td align="left"><code>SIGABRT</code></td>
 </tr>
 
 <tr>
-<td><code>crash_threads</code></td>
-<td>Returns all active threads at the time of the crash</td>
-<td><code>{&quot;crashed&quot;: 1,&quot;registers&quot;: {&quot;cs&quot;: &quot;0x07&quot;},&quot;stack&quot;: {&quot;instructionPointer&quot;: 4572945982,&quot;symbolInfo&quot;: {&quot;symbolName&quot;: &quot;&quot;,&quot;symbolStartAddr&quot;: 0},&quot;threadId&quot;: &quot;&quot;}}</code></td>
+<td align="left"><code>crash_threads</code></td>
+<td align="left">Returns all active threads at the time of the crash</td>
+<td align="left"><code>{&quot;crashed&quot;: 1,&quot;registers&quot;: {&quot;cs&quot;: &quot;0x07&quot;},&quot;stack&quot;: {&quot;instructionPointer&quot;: 4572945982,&quot;symbolInfo&quot;: {&quot;symbolName&quot;: &quot;&quot;,&quot;symbolStartAddr&quot;: 0},&quot;threadId&quot;: &quot;&quot;}}</code></td>
 </tr>
 
 <tr>
-<td><code>crash_uuid</code></td>
-<td>Unique identifier for this specific crash</td>
-<td><code>CC2DA0E9-E544-429A-AC5E-A268FC62F02A</code></td>
+<td align="left"><code>crash_uuid</code></td>
+<td align="left">Unique identifier for this specific crash</td>
+<td align="left"><code>CC2DA0E9-E544-429A-AC5E-A268FC62F02A</code></td>
 </tr>
 
 <tr>
-<td><code>device_memory_usage</code></td>
-<td>Current memory used by the app on the device at the time of the crash</td>
-<td><code>143.57MB</code></td>
+<td align="left"><code>device_memory_usage</code></td>
+<td align="left">Current memory used by the app on the device at the time of the crash</td>
+<td align="left"><code>143.57MB</code></td>
 </tr>
 
 <tr>
-<td><code>device_memory_available</code></td>
-<td>Free memory on device at the time of the crash</td>
-<td><code>1068.88MB</code></td>
+<td align="left"><code>device_memory_available</code></td>
+<td align="left">Free memory on device at the time of the crash</td>
+<td align="left"><code>1068.88MB</code></td>
 </tr>
 
 <tr>
-<td><code>device_os_build</code></td>
-<td>Current OS build number</td>
-<td><code>15E217</code></td>
+<td align="left"><code>device_os_build</code></td>
+<td align="left">Current OS build number</td>
+<td align="left"><code>15E217</code></td>
 </tr>
 
 <tr>
-<td><code>memory_free</code></td>
-<td>Free memory on device at the time of the crash</td>
-<td><code>1068.88MB</code></td>
+<td align="left"><code>memory_free</code></td>
+<td align="left">Free memory on device at the time of the crash</td>
+<td align="left"><code>1068.88MB</code></td>
 </tr>
 </tbody>
 </table>
@@ -998,185 +998,185 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable Name</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>app_memory_usage</code></td>
-<td>Memory being used by the current process/app in Megabytes</td>
-<td><code>35.75MB</code></td>
+<td align="left"><code>app_memory_usage</code></td>
+<td align="left">Memory being used by the current process/app in Megabytes</td>
+<td align="left"><code>35.75MB</code></td>
 </tr>
 
 <tr>
-<td><code>carrier</code></td>
-<td>Mobile network carrier name</td>
-<td><code>EE</code></td>
+<td align="left"><code>carrier</code></td>
+<td align="left">Mobile network carrier name</td>
+<td align="left"><code>EE</code></td>
 </tr>
 
 <tr>
-<td><code>carrier_iso</code></td>
-<td>Mobile carrier ISO</td>
-<td><code>gb</code></td>
+<td align="left"><code>carrier_iso</code></td>
+<td align="left">Mobile carrier ISO</td>
+<td align="left"><code>gb</code></td>
 </tr>
 
 <tr>
-<td><code>carrier_mcc</code></td>
-<td>Carrier mobile country code</td>
-<td><code>234</code></td>
+<td align="left"><code>carrier_mcc</code></td>
+<td align="left">Carrier mobile country code</td>
+<td align="left"><code>234</code></td>
 </tr>
 
 <tr>
-<td><code>carrier_mnc</code></td>
-<td>Carrier mobile network code</td>
-<td><code>34</code></td>
+<td align="left"><code>carrier_mnc</code></td>
+<td align="left">Carrier mobile network code</td>
+<td align="left"><code>34</code></td>
 </tr>
 
 <tr>
-<td><code>connection_type</code></td>
-<td>Current connection type</td>
-<td><code>wifi</code>, <code>cellular</code></td>
+<td align="left"><code>connection_type</code></td>
+<td align="left">Current connection type</td>
+<td align="left"><code>wifi</code>, <code>cellular</code></td>
 </tr>
 
 <tr>
-<td><code>device</code></td>
-<td>Consumer device name</td>
-<td><code>iPhone 7 Plus</code></td>
+<td align="left"><code>device</code></td>
+<td align="left">Consumer device name</td>
+<td align="left"><code>iPhone 7 Plus</code></td>
 </tr>
 
 <tr>
-<td><code>device_architecture</code></td>
-<td>Device architecture</td>
-<td><code>64</code></td>
+<td align="left"><code>device_architecture</code></td>
+<td align="left">Device architecture</td>
+<td align="left"><code>64</code></td>
 </tr>
 
 <tr>
-<td><code>device_battery_percent</code></td>
-<td>Current battery percentage at time of track call</td>
-<td><code>58</code></td>
+<td align="left"><code>device_battery_percent</code></td>
+<td align="left">Current battery percentage at time of track call</td>
+<td align="left"><code>58</code></td>
 </tr>
 
 <tr>
-<td><code>device_cputype</code></td>
-<td>Device CPU type</td>
-<td><code>ARM64v8</code></td>
+<td align="left"><code>device_cputype</code></td>
+<td align="left">Device CPU type</td>
+<td align="left"><code>ARM64v8</code></td>
 </tr>
 
 <tr>
-<td><code>device_ischarging</code></td>
-<td>Boolean to indicate if device is currently charging at time of track call</td>
-<td><code>true</code></td>
+<td align="left"><code>device_ischarging</code></td>
+<td align="left">Boolean to indicate if device is currently charging at time of track call</td>
+<td align="left"><code>true</code></td>
 </tr>
 
 <tr>
-<td><code>device_language</code></td>
-<td>Current device language</td>
-<td><code>en-US</code></td>
+<td align="left"><code>device_language</code></td>
+<td align="left">Current device language</td>
+<td align="left"><code>en-US</code></td>
 </tr>
 
 <tr>
-<td><code>device_orientation</code></td>
-<td>Simple orientation</td>
-<td><code>Portrait</code>, <code>Landscape</code></td>
+<td align="left"><code>device_orientation</code></td>
+<td align="left">Simple orientation</td>
+<td align="left"><code>Portrait</code>, <code>Landscape</code></td>
 </tr>
 
 <tr>
-<td><code>device_orientation_extended</code></td>
-<td>Full orientation</td>
-<td><code>Face Up</code></td>
+<td align="left"><code>device_orientation_extended</code></td>
+<td align="left">Full orientation</td>
+<td align="left"><code>Face Up</code></td>
 </tr>
 
 <tr>
-<td><code>device_os_version</code></td>
-<td>Operating system version</td>
-<td><code>11.1</code></td>
+<td align="left"><code>device_os_version</code></td>
+<td align="left">Operating system version</td>
+<td align="left"><code>11.1</code></td>
 </tr>
 
 <tr>
-<td><code>device_resolution</code></td>
-<td>Physical screen resolution in pixels (width x height)</td>
-<td><code>828x1792</code></td>
+<td align="left"><code>device_resolution</code></td>
+<td align="left">Physical screen resolution in pixels (width x height)</td>
+<td align="left"><code>828x1792</code></td>
 </tr>
 
 <tr>
-<td><code>device_logical_resolution</code></td>
-<td>Logical screen resolution in points (width x height)</td>
-<td><code>414x896</code></td>
+<td align="left"><code>device_logical_resolution</code></td>
+<td align="left">Logical screen resolution in points (width x height)</td>
+<td align="left"><code>414x896</code></td>
 </tr>
 
 <tr>
-<td><code>device_type</code></td>
-<td>Apple internal device identifier</td>
-<td><code>iPhone12,1</code></td>
+<td align="left"><code>device_type</code></td>
+<td align="left">Apple internal device identifier</td>
+<td align="left"><code>iPhone12,1</code></td>
 </tr>
 
 <tr>
-<td><code>memory_active*</code></td>
-<td>Total active memory on the device</td>
-<td><code>997.78MB</code></td>
+<td align="left"><code>memory_active*</code></td>
+<td align="left">Total active memory on the device</td>
+<td align="left"><code>997.78MB</code></td>
 </tr>
 
 <tr>
-<td><code>memory_compressed*</code></td>
-<td>Total compressed memory on the device</td>
-<td><code>153.39MB</code></td>
+<td align="left"><code>memory_compressed*</code></td>
+<td align="left">Total compressed memory on the device</td>
+<td align="left"><code>153.39MB</code></td>
 </tr>
 
 <tr>
-<td><code>memory_free*</code></td>
-<td>Total free memory on the device</td>
-<td><code>120.81MB</code></td>
+<td align="left"><code>memory_free*</code></td>
+<td align="left">Total free memory on the device</td>
+<td align="left"><code>120.81MB</code></td>
 </tr>
 
 <tr>
-<td><code>memory_inactive*</code></td>
-<td>Total inactive memory on the device</td>
-<td><code>441.83MB</code></td>
+<td align="left"><code>memory_inactive*</code></td>
+<td align="left">Total inactive memory on the device</td>
+<td align="left"><code>441.83MB</code></td>
 </tr>
 
 <tr>
-<td><code>memory_physical*</code></td>
-<td>Total physical memory on the device (RAM) in Megabytes</td>
-<td><code>2013.50MB</code></td>
+<td align="left"><code>memory_physical*</code></td>
+<td align="left">Total physical memory on the device (RAM) in Megabytes</td>
+<td align="left"><code>2013.50MB</code></td>
 </tr>
 
 <tr>
-<td><code>memory_wired*</code></td>
-<td>Total wired memory on the device</td>
-<td><code>207.12MB</code></td>
+<td align="left"><code>memory_wired*</code></td>
+<td align="left">Total wired memory on the device</td>
+<td align="left"><code>207.12MB</code></td>
 </tr>
 
 <tr>
-<td><code>model_name</code></td>
-<td>Model name</td>
-<td><code>iPhone 7 Plus</code></td>
+<td align="left"><code>model_name</code></td>
+<td align="left">Model name</td>
+<td align="left"><code>iPhone 7 Plus</code></td>
 </tr>
 
 <tr>
-<td><code>model_variant</code></td>
-<td>Model variant (generally indicates which radio technology is available on the device)</td>
-<td><code>CDMA</code>, <code>GSM</code>, <code>WiFi</code>, <code>Cellular</code></td>
+<td align="left"><code>model_variant</code></td>
+<td align="left">Model variant (generally indicates which radio technology is available on the device)</td>
+<td align="left"><code>CDMA</code>, <code>GSM</code>, <code>WiFi</code>, <code>Cellular</code></td>
 </tr>
 
 <tr>
-<td><code>network_iso_country_code</code></td>
-<td>Mobile network ISO country code</td>
-<td><code>gb</code></td>
+<td align="left"><code>network_iso_country_code</code></td>
+<td align="left">Mobile network ISO country code</td>
+<td align="left"><code>gb</code></td>
 </tr>
 
 <tr>
-<td><code>os_name</code></td>
-<td>Operating System Name</td>
-<td><code>iOS</code>, <code>tvOS</code>, <code>watchOS</code>, <code>macOS</code></td>
+<td align="left"><code>os_name</code></td>
+<td align="left">Operating System Name</td>
+<td align="left"><code>iOS</code>, <code>tvOS</code>, <code>watchOS</code>, <code>macOS</code></td>
 </tr>
 
 <tr>
-<td><code>platform</code></td>
-<td>Operating System Name</td>
-<td><code>iOS</code>, <code>tvOS</code>, <code>watchOS</code>, <code>macOS</code></td>
+<td align="left"><code>platform</code></td>
+<td align="left">Operating System Name</td>
+<td align="left"><code>iOS</code>, <code>tvOS</code>, <code>watchOS</code>, <code>macOS</code></td>
 </tr>
 </tbody>
 </table>
@@ -1188,155 +1188,155 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable Name</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>lifecycle_dayofweek_local</code></td>
-<td>Local day of week that call was made, such as 1=Sunday, 2=Monday</td>
-<td><code>4</code></td>
+<td align="left"><code>lifecycle_dayofweek_local</code></td>
+<td align="left">Local day of week that call was made, such as 1=Sunday, 2=Monday</td>
+<td align="left"><code>4</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_dayssincelastwake</code></td>
-<td>Days since last detected wake in integer increments</td>
-<td><code>1</code></td>
+<td align="left"><code>lifecycle_dayssincelastwake</code></td>
+<td align="left">Days since last detected wake in integer increments</td>
+<td align="left"><code>1</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_dayssincelaunch</code></td>
-<td>Days since first launch in integer increments</td>
-<td><code>23</code></td>
+<td align="left"><code>lifecycle_dayssincelaunch</code></td>
+<td align="left">Days since first launch in integer increments</td>
+<td align="left"><code>23</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_dayssinceupdate</code></td>
-<td>Days since the last detected app version update in integer increments</td>
-<td><code>46</code></td>
+<td align="left"><code>lifecycle_dayssinceupdate</code></td>
+<td align="left">Days since the last detected app version update in integer increments</td>
+<td align="left"><code>46</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_diddetect_crash</code></td>
-<td>Was a crash detected during this launch/wake event (populated only if <code>true</code>)</td>
-<td><code>true</code></td>
+<td align="left"><code>lifecycle_diddetect_crash</code></td>
+<td align="left">Was a crash detected during this launch/wake event (populated only if <code>true</code>)</td>
+<td align="left"><code>true</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_firstlaunchdate</code></td>
-<td>GMT timestamp of the first detected launch/wake in ISO8601 format from Zulu time</td>
-<td><code>2013-07-11T17:55:04Z</code></td>
+<td align="left"><code>lifecycle_firstlaunchdate</code></td>
+<td align="left">GMT timestamp of the first detected launch/wake in ISO8601 format from Zulu time</td>
+<td align="left"><code>2013-07-11T17:55:04Z</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_firstlaunchdate_MMDDYYYY</code></td>
-<td>GMT Timestamp formatted as MM/DD/YYYY</td>
-<td><code>01/17/2012</code></td>
+<td align="left"><code>lifecycle_firstlaunchdate_MMDDYYYY</code></td>
+<td align="left">GMT Timestamp formatted as MM/DD/YYYY</td>
+<td align="left"><code>01/17/2012</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_hourofday_local</code></td>
-<td>Local hour of day that call was made (24 hour format)</td>
-<td><code>true</code></td>
+<td align="left"><code>lifecycle_hourofday_local</code></td>
+<td align="left">Local hour of day that call was made (24 hour format)</td>
+<td align="left"><code>true</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_isfirstlaunch</code></td>
-<td>Only present if call is the first launch/wake call</td>
-<td><code>true</code></td>
+<td align="left"><code>lifecycle_isfirstlaunch</code></td>
+<td align="left">Only present if call is the first launch/wake call</td>
+<td align="left"><code>true</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_isfirstlaunchupdate</code></td>
-<td>Only present if call is first launch/wake after a detected updated</td>
-<td><code>true</code>, <code>false</code></td>
+<td align="left"><code>lifecycle_isfirstlaunchupdate</code></td>
+<td align="left">Only present if call is first launch/wake after a detected updated</td>
+<td align="left"><code>true</code>, <code>false</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_isfirstwakemonth</code></td>
-<td>Only present if call is first launch/wake of the month</td>
-<td><code>true</code></td>
+<td align="left"><code>lifecycle_isfirstwakemonth</code></td>
+<td align="left">Only present if call is first launch/wake of the month</td>
+<td align="left"><code>true</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_isfirstwaketoday</code></td>
-<td>Only present if call is first launch/wake of the day</td>
-<td><code>true</code></td>
+<td align="left"><code>lifecycle_isfirstwaketoday</code></td>
+<td align="left">Only present if call is first launch/wake of the day</td>
+<td align="left"><code>true</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_launchcount</code></td>
-<td>Total number of launches this version of your app (since the last update)</td>
-<td><code>3</code></td>
+<td align="left"><code>lifecycle_launchcount</code></td>
+<td align="left">Total number of launches this version of your app (since the last update)</td>
+<td align="left"><code>3</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_priorsecondsawake</code></td>
-<td>Whole seconds app was awake since last launch only. Aggregates total from all wakes prior. Sent only with <code>lifecycle_type:launch</code> calls.</td>
-<td><code>126</code></td>
+<td align="left"><code>lifecycle_priorsecondsawake</code></td>
+<td align="left">Whole seconds app was awake since last launch only. Aggregates total from all wakes prior. Sent only with <code>lifecycle_type:launch</code> calls.</td>
+<td align="left"><code>126</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_secondsawake</code></td>
-<td>Whole seconds app was awake since most recent wake/launch</td>
-<td><code>30</code></td>
+<td align="left"><code>lifecycle_secondsawake</code></td>
+<td align="left">Whole seconds app was awake since most recent wake/launch</td>
+<td align="left"><code>30</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_sleepcount</code></td>
-<td>Total number of times your app has gone to sleep (resets if updated)</td>
-<td><code>5</code></td>
+<td align="left"><code>lifecycle_sleepcount</code></td>
+<td align="left">Total number of times your app has gone to sleep (resets if updated)</td>
+<td align="left"><code>5</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_totalcrashcount</code></td>
-<td>Total number of crashes counted since install (only reset if app deleted)</td>
-<td><code>21</code></td>
+<td align="left"><code>lifecycle_totalcrashcount</code></td>
+<td align="left">Total number of crashes counted since install (only reset if app deleted)</td>
+<td align="left"><code>21</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_totallaunchcount</code></td>
-<td>Total number of launches since install (only reset if app deleted)</td>
-<td><code>3</code></td>
+<td align="left"><code>lifecycle_totallaunchcount</code></td>
+<td align="left">Total number of launches since install (only reset if app deleted)</td>
+<td align="left"><code>3</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_totalsecondsawake</code></td>
-<td>Total number of seconds your app has been in a woken/active state since app install (only reset if app deleted)</td>
-<td><code>36</code></td>
+<td align="left"><code>lifecycle_totalsecondsawake</code></td>
+<td align="left">Total number of seconds your app has been in a woken/active state since app install (only reset if app deleted)</td>
+<td align="left"><code>36</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_totalsleepcount</code></td>
-<td>Total number of times your app has gone into the background since app install (only reset if app deleted)</td>
-<td><code>400</code></td>
+<td align="left"><code>lifecycle_totalsleepcount</code></td>
+<td align="left">Total number of times your app has gone into the background since app install (only reset if app deleted)</td>
+<td align="left"><code>400</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_totalwakecount</code></td>
-<td>Total number of launches + wakes since install (only reset if app deleted)</td>
-<td><code>563</code></td>
+<td align="left"><code>lifecycle_totalwakecount</code></td>
+<td align="left">Total number of launches + wakes since install (only reset if app deleted)</td>
+<td align="left"><code>563</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_type</code></td>
-<td>Type of lifecycle call.</td>
-<td><code>launch</code>, <code>wake</code>, <code>sleep</code></td>
+<td align="left"><code>lifecycle_type</code></td>
+<td align="left">Type of lifecycle call.</td>
+<td align="left"><code>launch</code>, <code>wake</code>, <code>sleep</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_updatelaunchdate</code></td>
-<td>GMT timestamp of first wake/launch after a version update has been detected</td>
-<td><code>2014-09-08T18:10:01Z</code></td>
+<td align="left"><code>lifecycle_updatelaunchdate</code></td>
+<td align="left">GMT timestamp of first wake/launch after a version update has been detected</td>
+<td align="left"><code>2014-09-08T18:10:01Z</code></td>
 </tr>
 
 <tr>
-<td><code>lifecycle_wakecount</code></td>
-<td>Total number of launches + wakes in this version of your app (resets if updated)</td>
-<td><code>29</code></td>
+<td align="left"><code>lifecycle_wakecount</code></td>
+<td align="left">Total number of launches + wakes in this version of your app (resets if updated)</td>
+<td align="left"><code>29</code></td>
 </tr>
 </tbody>
 </table>
@@ -1348,53 +1348,53 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable  Name</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Variable  Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>geofence_name</code></td>
-<td>The name of the geofence region</td>
-<td><code>Tealium_San_Diego</code></td>
+<td align="left"><code>geofence_name</code></td>
+<td align="left">The name of the geofence region</td>
+<td align="left"><code>Tealium_San_Diego</code></td>
 </tr>
 
 <tr>
-<td><code>geofence_transition_type</code></td>
-<td>The type of geofence transition event</td>
-<td><code>entered</code>,<code>exited</code></td>
+<td align="left"><code>geofence_transition_type</code></td>
+<td align="left">The type of geofence transition event</td>
+<td align="left"><code>entered</code>,<code>exited</code></td>
 </tr>
 
 <tr>
-<td><code>location_timestamp</code></td>
-<td>The recorded date/time (GMT) the user entered/exited the geofence region</td>
-<td><code>2020-01-28 16:29:46 +0000</code></td>
+<td align="left"><code>location_timestamp</code></td>
+<td align="left">The recorded date/time (GMT) the user entered/exited the geofence region</td>
+<td align="left"><code>2020-01-28 16:29:46 +0000</code></td>
 </tr>
 
 <tr>
-<td><code>latitude</code></td>
-<td>The latitude of the user&rsquo;s most recently recorded location</td>
-<td><code>32.906119</code></td>
+<td align="left"><code>latitude</code></td>
+<td align="left">The latitude of the user&rsquo;s most recently recorded location</td>
+<td align="left"><code>32.906119</code></td>
 </tr>
 
 <tr>
-<td><code>longitude</code></td>
-<td>The longitude of the user&rsquo;s most recently recorded location</td>
-<td><code>-117.23791632509666</code></td>
+<td align="left"><code>longitude</code></td>
+<td align="left">The longitude of the user&rsquo;s most recently recorded location</td>
+<td align="left"><code>-117.23791632509666</code></td>
 </tr>
 
 <tr>
-<td><code>movement_speed</code></td>
-<td>The instantaneous speed of the device, measured in meters per second</td>
-<td><code>1.0</code></td>
+<td align="left"><code>movement_speed</code></td>
+<td align="left">The instantaneous speed of the device, measured in meters per second</td>
+<td align="left"><code>1.0</code></td>
 </tr>
 
 <tr>
-<td><code>location_accuracy</code></td>
-<td>String  The accuracy setting for the location module</td>
-<td><code>high</code>, <code>low</code></td>
+<td align="left"><code>location_accuracy</code></td>
+<td align="left">String   The accuracy setting for the location module</td>
+<td align="left"><code>high</code>, <code>low</code></td>
 </tr>
 </tbody>
 </table>
@@ -1406,23 +1406,23 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable Name</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>dispatch_service</code></td>
-<td>Static string to indicate which module the tracking call came from</td>
-<td><code>tagmanagement</code></td>
+<td align="left"><code>dispatch_service</code></td>
+<td align="left">Static string to indicate which module the tracking call came from</td>
+<td align="left"><code>tagmanagement</code></td>
 </tr>
 
 <tr>
-<td><code>tealium_event_type</code></td>
-<td>String to indicate which event type is being dispatched</td>
-<td><code>view</code> or <code>event</code></td>
+<td align="left"><code>tealium_event_type</code></td>
+<td align="left">String to indicate which event type is being dispatched</td>
+<td align="left"><code>view</code> or <code>event</code></td>
 </tr>
 </tbody>
 </table>
@@ -8444,7 +8444,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  September 28, 2021 
+    <span>This page was last updated:  December 2, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

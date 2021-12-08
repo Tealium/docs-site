@@ -249,7 +249,9 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#2-4-6-october-2021">2.4.6 (October 2021)</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#2-5-1-deccember-2021">2.5.1 (Deccember 2021)</a></li>
+              <li><a href="#2-5-0-november-2021">2.5.0 (November 2021)</a></li>
+              <li><a href="#2-4-6-october-2021">2.4.6 (October 2021)</a></li>
               <li><a href="#2-4-5-september-2021">2.4.5 (September 2021)</a></li>
               <li><a href="#2-4-4-september-2021">2.4.4 (September 2021)</a></li>
               <li><a href="#2-4-3-september-2021">2.4.3 (September 2021)</a></li>
@@ -304,6 +306,59 @@ var utag_data = {
   
 
 <p>Below is a complete list of changes for each release of the Tealium for Swift library.</p>
+
+<h2 id="2-5-1-deccember-2021">2.5.1 (Deccember 2021)</h2>
+
+<p><strong>Medium Impact Changes</strong></p>
+
+<ul>
+<li>Fixed import of Swift code in Objective-C files when compiling as a static library, such as when using Cocoapods without setting <code>use_frameworks!</code> or using Tealium React Native library.</li>
+</ul>
+
+<p><strong>Low Impact Changes</strong></p>
+
+<ul>
+<li>Prevented automatic deep link tracking from digesting AppDelegate&rsquo;s deep links, in order to allow other implementations to handle their own deep links.</li>
+<li>Fixed threading issues for <code>TagManagement</code> module and <code>TealiumConfig</code>.</li>
+</ul>
+
+<h2 id="2-5-0-november-2021">2.5.0 (November 2021)</h2>
+
+<p><strong>High Impact Changes</strong></p>
+
+<ul>
+<li>The <a href="/platforms/ios-swift/module-list/autotracking/">AutoTracking module</a> now supports SwiftUI and UIKit and is cross-platform (iOS, watchOS, tvOS, and macOS).</li>
+</ul>
+
+<p><strong>Medium Impact Changes</strong></p>
+
+<ul>
+<li>Added SPM support for AutoTracking module.</li>
+<li>Added automatic handling of deep links for SceneDelegate and SwiftUI apps.</li>
+<li>Added an info.plist flag <code>TealiumAutotrackingDeepLinkEnabled</code> with the value of false to disable automatic deep link tracking.</li>
+<li>Added support for manual tracking of deep links:
+
+<ul>
+<li>SwiftUI: use <code>trackingAppOpenUrl()</code> View modifier or <code>TealiumAppTrackable</code> container View.</li>
+<li>UIKit: use <code>handleDeepLink()</code> from your AppDelegate or SceneDelegate.</li>
+</ul></li>
+</ul>
+
+<p><strong>Low Impact Changes</strong></p>
+
+<ul>
+<li>Made all data layer and Collector&rsquo;s variables available using the method <a href="/platforms/ios-swift/api/tealium/#gathertrackdata"><code>Tealium.gatherTrackData()</code></a>.</li>
+<li>Renamed <code>TealiumKeys</code> to <code>TealiumDataKeys</code>, for use with <a href="/platforms/ios-swift/api/tealium/#gathertrackdata"><code>gatherTrackData()</code></a>.</li>
+<li>Improved Codable support by ignoring non-codable values in release builds and causing a crash in debug builds.</li>
+<li>Reduced Geofences loading usage of main thread.</li>
+</ul>
+
+<p><strong>Known Issues</strong></p>
+
+<ul>
+<li>CocoaPods platform iOS version is increased to 11 due to linting issues (but, if required, it&rsquo;s safe to lower it to 9 with a post-install script).</li>
+<li>Carthage generates warnings with Xcode 13 (<a href="https://github.com/Carthage/Carthage/issues/3238">https://github.com/Carthage/Carthage/issues/3238</a>).</li>
+</ul>
 
 <h2 id="2-4-6-october-2021">2.4.6 (October 2021)</h2>
 
@@ -7563,7 +7618,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 5, 2021 
+    <span>This page was last updated:  December 2, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

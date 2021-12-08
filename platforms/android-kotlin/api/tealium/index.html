@@ -414,7 +414,7 @@ var utag_data = {
 <h3 id="canceltimedevent"><code>cancelTimedEvent()</code></h3>
 
 <p>Cancels a previously started timed event. The timed event is not tracked.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium.cancelTimedEvent(name: <span style="color:#b84">&#34;TIMED_EVENT_NAME&#34;</span>)</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.<span style="color:#008080">cancelTimedEvent</span>(name<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;TIMED_EVENT_NAME&#34;</span>)</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -436,30 +436,30 @@ var utag_data = {
 <h3 id="consentmanager"><code>consentManager</code></h3>
 
 <p>Allows you to set your current consent status and categories, and see the current policy enforced. Learn more in the <a href="/platforms/android-kotlin/consent-management">Consent Management</a> guide.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium.consentManager.userConsentStatus = ConsentStatus.CONSENTED</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.<span style="color:#008080">consentManager</span>.<span style="color:#008080">userConsentStatus</span> <span style="font-weight:bold">=</span> ConsentStatus.<span style="color:#008080">CONSENTED</span></code></pre></div>
 <h3 id="datalayer"><code>dataLayer</code></h3>
 
 <p>Provides persistent storage on the device for key-value pairs, while also allowing you to set expiry times. Each entry is also added to every dispatch that you send through the <a href="#track"><code>track()</code></a> method. Learn more in the <a href="/platforms/android-kotlin/data-management">Data Management</a> guide.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium.dataLayer.putString(<span style="color:#b84">&#34;key&#34;</span>, <span style="color:#b84">&#34;value&#34;</span>, Expiry.FOREVER)</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.<span style="color:#008080">dataLayer</span>.<span style="color:#008080">putString</span>(<span style="color:#b84">&#34;key&#34;</span>, <span style="color:#b84">&#34;value&#34;</span>, Expiry.<span style="color:#008080">FOREVER</span>)</code></pre></div>
 <h3 id="endtracevisitorsession"><code>endTraceVisitorSession()</code></h3>
 
 <p>Ends the visitor session remotely. Does not terminate the SDK session or reset the session ID.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">Tealium[<span style="color:#b84">&#34;INSTANCE_NAME&#34;</span>]<span style="font-weight:bold">?.</span>endTraceVisitorSession()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium[<span style="color:#b84">&#34;INSTANCE_NAME&#34;</span>]<span style="font-weight:bold">?</span>.<span style="color:#008080">endTraceVisitorSession</span>()</code></pre></div>
 <h3 id="events"><code>events</code></h3>
 
 <p>Provides listener classes to your <code>Tealium</code> instance in order to receive useful information from the SDK.</p>
 
 <p>The following example registers a listener for any consent preference changes. This listener is provided with the new consent preferences and the current policy enforced.
 Additional listeners available at <code>com.tealium.core.messaging</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium.events.subscribe(<span style="font-weight:bold">object</span>: UserConsentPreferencesUpdatedListener {
-    <span style="font-weight:bold">override</span> <span style="font-weight:bold">fun</span> <span style="color:#900;font-weight:bold">onUserConsentPreferencesUpdated</span>(userConsentPreferences: UserConsentPreferences, policy: ConsentManagementPolicy) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.<span style="color:#008080">events</span>.<span style="color:#008080">subscribe</span>(object<span style="font-weight:bold">:</span> UserConsentPreferencesUpdatedListener {
+    override <span style="color:#900;font-weight:bold">fun</span> onUserConsentPreferencesUpdated(userConsentPreferences<span style="font-weight:bold">:</span> UserConsentPreferences, policy<span style="font-weight:bold">:</span> ConsentManagementPolicy) {
         <span style="color:#998;font-style:italic">// take action on consent changes
 </span><span style="color:#998;font-style:italic"></span>    }
 })</code></pre></div>
 <h3 id="jointrace"><code>joinTrace()</code></h3>
 
 <p>Adds the supplied trace ID to the data layer for the current session.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">Tealium[<span style="color:#b84">&#34;INSTANCE_NAME&#34;</span>]<span style="font-weight:bold">?.</span>joinTrace(traceId)</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium[<span style="color:#b84">&#34;INSTANCE_NAME&#34;</span>]<span style="font-weight:bold">?</span>.<span style="color:#008080">joinTrace</span>(traceId)</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -481,15 +481,15 @@ Additional listeners available at <code>com.tealium.core.messaging</code>.</p>
 <h3 id="leavetrace"><code>leaveTrace()</code></h3>
 
 <p>Leaves the trace by removing the trace ID.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">Tealium[<span style="color:#b84">&#34;INSTANCE_NAME&#34;</span>]<span style="font-weight:bold">?.</span>leaveTrace()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium[<span style="color:#b84">&#34;INSTANCE_NAME&#34;</span>]<span style="font-weight:bold">?</span>.<span style="color:#008080">leaveTrace</span>()</code></pre></div>
 <h3 id="linkecidtoknownidentifier"><code>linkEcidToKnownIdentifier()</code></h3>
 
 <p>Links the current ECID to a known secondary identifier, such as an email address or other internal ID.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">linkEcidToKnownIdentifier(
-  knownId: String,
-  adobeDataProviderId: String,
-  authState: Int?,
-  adobeResponseListener: ResponseListener&lt;AdobeVisitor&gt;?
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">linkEcidToKnownIdentifier(
+  knownId<span style="font-weight:bold">:</span> String,
+  adobeDataProviderId<span style="font-weight:bold">:</span> String,
+  authState<span style="font-weight:bold">:</span> Int<span style="font-weight:bold">?</span>,
+  adobeResponseListener<span style="font-weight:bold">:</span> ResponseListener<span style="font-weight:bold">&lt;</span>AdobeVisitor<span style="font-weight:bold">&gt;?</span>
   )</code></pre></div>
 <table>
 <thead>
@@ -528,41 +528,41 @@ Additional listeners available at <code>com.tealium.core.messaging</code>.</p>
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">var</span> tealium: Tealium?
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">var <span style="color:#900;font-weight:bold">tealium</span><span style="font-weight:bold">:</span> Tealium<span style="font-weight:bold">?</span>
 ...
 
-tealium.adobeVisitorApi<span style="font-weight:bold">?.</span>linkEcidToKnownIdentifier(
+tealium.<span style="color:#008080">adobeVisitorApi</span><span style="font-weight:bold">?</span>.<span style="color:#008080">linkEcidToKnownIdentifier</span>(
   <span style="color:#b84">&#34;myidentifier&#34;</span>,
   <span style="color:#b84">&#34;123456&#34;</span>,
-  AdobeAuthState.AUTH_STATE_AUTHENTICATED,
+  AdobeAuthState.<span style="color:#008080">AUTH_STATE_AUTHENTICATED</span>,
   <span style="font-weight:bold">null</span>
   )</code></pre></div>
 <h3 id="modules"><code>modules</code></h3>
 
 <p>Provides access to the Module Manager for the SDK, and used to provide access to specific modules.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium.modules.getModule(VisitorService<span style="font-weight:bold">::</span><span style="font-weight:bold">class</span>.java)<span style="font-weight:bold">?.</span>delegate = myDelegate</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.<span style="color:#008080">modules</span>.<span style="color:#008080">getModule</span>(VisitorService<span style="font-weight:bold">::</span>class.<span style="color:#008080">java</span>)<span style="font-weight:bold">?</span>.<span style="color:#008080">delegate</span> <span style="font-weight:bold">=</span> myDelegate</code></pre></div>
 <h3 id="resetvisitor"><code>resetVisitor()</code></h3>
 
 <p>Resets the visitor ECID by retrieving a new one on the next tracking call.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">resetVisitor()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">resetVisitor()</code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">var</span> tealium: Tealium?
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">var <span style="color:#900;font-weight:bold">tealium</span><span style="font-weight:bold">:</span> Tealium<span style="font-weight:bold">?</span>
 <span style="color:#998;font-style:italic">//...
-</span><span style="color:#998;font-style:italic"></span>tealium<span style="font-weight:bold">?.</span>adobeVisitorApi<span style="font-weight:bold">?.</span>resetVisitor()</code></pre></div>
+</span><span style="color:#998;font-style:italic"></span>tealium<span style="font-weight:bold">?</span>.<span style="color:#008080">adobeVisitorApi</span><span style="font-weight:bold">?</span>.<span style="color:#008080">resetVisitor</span>()</code></pre></div>
 <h3 id="sendqueueddispatches"><code>sendQueuedDispatches()</code></h3>
 
 <p>Dispatches are queued for a number of reasons by any DispatchValidator. You may request that they be re-evaluated using this method which ignores the event batching restrictions, but adheres to other DispatchValidators. For example, if there was no connectivity and there is still no connectivity then queued dispatches remain queued.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium.sendQueuedDispatches()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.<span style="color:#008080">sendQueuedDispatches</span>()</code></pre></div>
 <h3 id="session"><code>session</code></h3>
 
 <p>Contains all data relating to the current Session.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> sessionId = tealium.session.id</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val <span style="color:#900;font-weight:bold">sessionId</span> <span style="font-weight:bold">=</span> tealium.<span style="color:#008080">session</span>.<span style="color:#008080">id</span></code></pre></div>
 <h3 id="starttimedevent"><code>startTimedEvent()</code></h3>
 
 <p>Starts a timed event with the given name. If this method is called again with the same event name, it is ignored if the event has not been ended or canceled. The event start time is not persisted.</p>
 
 <p>If optional data is passed along with the event name, it is added to the track call when the timer is stopped with the <a href="#stoptimedevent"><code>stopTimedEvent()</code></a> call.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium.startTimedEvent(name: <span style="color:#b84">&#34;TIMED_EVENT_NAME&#34;</span>, mapOf(<span style="color:#b84">&#34;custom_value&#34;</span> to <span style="color:#b84">&#34;custom_key&#34;</span>))</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.<span style="color:#008080">startTimedEvent</span>(name<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;TIMED_EVENT_NAME&#34;</span>, mapOf(<span style="color:#b84">&#34;custom_value&#34;</span> to <span style="color:#b84">&#34;custom_key&#34;</span>))</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -590,7 +590,7 @@ tealium.adobeVisitorApi<span style="font-weight:bold">?.</span>linkEcidToKnownId
 <h3 id="stoptimedevent"><code>stopTimedEvent()</code></h3>
 
 <p>Stops the timer for a timed event which triggers the <code>timed_event</code> tracking call.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium.stopTimedEvent(name: <span style="color:#b84">&#34;TIMED_EVENT_NAME&#34;</span>)</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.<span style="color:#008080">stopTimedEvent</span>(name<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;TIMED_EVENT_NAME&#34;</span>)</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -612,7 +612,7 @@ tealium.adobeVisitorApi<span style="font-weight:bold">?.</span>linkEcidToKnownId
 <h3 id="tealium"><code>Tealium</code></h3>
 
 <p>Constructor method that creates a <code>Tealium</code> instance.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(key, config);</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val <span style="color:#900;font-weight:bold">config</span> <span style="font-weight:bold">=</span> TealiumConfig(key, config);</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -639,37 +639,37 @@ tealium.adobeVisitorApi<span style="font-weight:bold">?.</span>linkEcidToKnownId
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#998;font-style:italic">// Assuming execution is within Application.onCreate()
-</span><span style="color:#998;font-style:italic"></span><span style="font-weight:bold">val</span> config = TealiumConfig(<span style="font-weight:bold">this</span>, <span style="color:#b84">&#34;ACCOUNT_NAME&#34;</span>, <span style="color:#b84">&#34;PROFILE_NAME&#34;</span>, Environment.PROD)
-<span style="font-weight:bold">val</span> tealium = Tealium.create(<span style="color:#b84">&#34;main&#34;</span>, config)</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#998;font-style:italic">// Assuming execution is within Application.onCreate()
+</span><span style="color:#998;font-style:italic"></span>val <span style="color:#900;font-weight:bold">config</span> <span style="font-weight:bold">=</span> TealiumConfig(<span style="font-weight:bold">this</span>, <span style="color:#b84">&#34;ACCOUNT_NAME&#34;</span>, <span style="color:#b84">&#34;PROFILE_NAME&#34;</span>, Environment.<span style="color:#008080">PROD</span>)
+val <span style="color:#900;font-weight:bold">tealium</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">create</span>(<span style="color:#b84">&#34;main&#34;</span>, config)</code></pre></div>
 <p>Modules are initialized on a background Thread and therefore may not be ready directly after creation of the Tealium object. Add a completion block in order to add any subsequent required configuration as soon as the instance is ready:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> tealium = Tealium.create(<span style="color:#b84">&#34;main&#34;</span>, config) {
-    events.subscribe(<span style="font-weight:bold">object</span> <span style="color:#a61717;background-color:#e3d2d2">: </span><span style="color:#458;font-weight:bold">VisitorUpdatedListener</span> {
-        <span style="font-weight:bold">override</span> <span style="font-weight:bold">fun</span> <span style="color:#900;font-weight:bold">onVisitorUpdated</span>(visitorProfile: VisitorProfile) {
-            Logger.dev(<span style="color:#b84">&#34;--&#34;</span>, <span style="color:#b84">&#34;VisitorProfile updated: $visitorProfile&#34;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val <span style="color:#900;font-weight:bold">tealium</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">create</span>(<span style="color:#b84">&#34;main&#34;</span>, config) {
+    events.<span style="color:#008080">subscribe</span>(object <span style="font-weight:bold">:</span> VisitorUpdatedListener {
+        override <span style="color:#900;font-weight:bold">fun</span> onVisitorUpdated(visitorProfile<span style="font-weight:bold">:</span> VisitorProfile) {
+            Logger.<span style="color:#008080">dev</span>(<span style="color:#b84">&#34;--&#34;</span>, <span style="color:#b84">&#34;VisitorProfile updated: $visitorProfile&#34;</span>)
         }
     })
 }</code></pre></div>
 <h3 id="track"><code>track()</code></h3>
 
 <p>The method used for tracking events within the system such as screen views and events.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium.track(TealiumView(<span style="color:#b84">&#34;SCREEN_NAME&#34;</span>, mapOf(<span style="color:#b84">&#34;key&#34;</span> to <span style="color:#b84">&#34;context value&#34;</span>)))</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.<span style="color:#008080">track</span>(TealiumView(<span style="color:#b84">&#34;SCREEN_NAME&#34;</span>, mapOf(<span style="color:#b84">&#34;key&#34;</span> to <span style="color:#b84">&#34;context value&#34;</span>)))</code></pre></div>
 <h3 id="visitor"><code>visitor</code></h3>
 
 <p>Returns the full AdobeVisitor instance.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">var</span> tealium: Tealium?
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">var <span style="color:#900;font-weight:bold">tealium</span><span style="font-weight:bold">:</span> Tealium<span style="font-weight:bold">?</span>
 <span style="color:#998;font-style:italic">//...
-</span><span style="color:#998;font-style:italic"></span><span style="font-weight:bold">val</span> visitor = tealium.adobeVisitorApi<span style="font-weight:bold">?.</span>visitor<span style="font-weight:bold">?.</span>let { visitor -&gt;
-    <span style="font-weight:bold">val</span> ecid = visitor.experienceCloudId
-    <span style="font-weight:bold">val</span> nextRefresh = visitor.nextRefresh
-    <span style="font-weight:bold">val</span> blob = visitor.blob
-    <span style="font-weight:bold">val</span> region = visitor.region
-    <span style="font-weight:bold">val</span> idSyncTTL = visitor.idSyncTTL
+</span><span style="color:#998;font-style:italic"></span>val <span style="color:#900;font-weight:bold">visitor</span> <span style="font-weight:bold">=</span> tealium.<span style="color:#008080">adobeVisitorApi</span><span style="font-weight:bold">?</span>.<span style="color:#008080">visitor</span><span style="font-weight:bold">?</span>.<span style="color:#008080">let</span> { visitor <span style="font-weight:bold">-&gt;</span>
+    val <span style="color:#900;font-weight:bold">ecid</span> <span style="font-weight:bold">=</span> visitor.<span style="color:#008080">experienceCloudId</span>
+    <span style="color:#900;font-weight:bold">val</span> nextRefresh <span style="font-weight:bold">=</span> visitor.<span style="color:#008080">nextRefresh</span>
+    <span style="color:#900;font-weight:bold">val</span> blob <span style="font-weight:bold">=</span> visitor.<span style="color:#008080">blob</span>
+    <span style="color:#900;font-weight:bold">val</span> region <span style="font-weight:bold">=</span> visitor.<span style="color:#008080">region</span>
+    <span style="color:#900;font-weight:bold">val</span> idSyncTTL <span style="font-weight:bold">=</span> visitor.<span style="color:#008080">idSyncTTL</span>
 }</code></pre></div>
 <h3 id="visitorid"><code>visitorId</code></h3>
 
 <p>The current String for the Visitor ID. It is stored within the data layer, and may be overridden if required.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> visitorId = tealium.visitorId</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val <span style="color:#900;font-weight:bold">visitorId</span> <span style="font-weight:bold">=</span> tealium.<span style="color:#008080">visitorId</span></code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -7687,7 +7687,7 @@ tealium.adobeVisitorApi<span style="font-weight:bold">?.</span>linkEcidToKnownId
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  July 28, 2021 
+    <span>This page was last updated:  November 9, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

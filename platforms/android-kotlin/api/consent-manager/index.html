@@ -338,28 +338,28 @@ var utag_data = {
 <h3 id="isconsentloggingenabled"><code>isConsentLoggingEnabled</code></h3>
 
 <p>Get or set whether to log changes to the user consent preferences. Initialized via the <a href="/platforms/android-kotlin/api/tealium-config/#consentmanagerloggingenabled">TealiumConfig.consentManagerLoggingEnabled</a> option.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium.consentManager.isConsentLoggingEnabled <span style="color:#998;font-style:italic">// e.g. false</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.<span style="color:#008080">consentManager</span>.<span style="color:#008080">isConsentLoggingEnabled</span> <span style="font-weight:bold">//</span> e.<span style="color:#008080">g</span>. <span style="color:#900;font-weight:bold">false</span></code></pre></div>
 <h3 id="policy"><code>policy</code></h3>
 
 <p>Returns the currently in-use <code>ConsentPolicy</code>. Initialized via the <a href="/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy">TealiumConfig.consentManagerPolicy</a> option, and may be set to <code>null</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> policy = tealium.consentManager.policy <span style="color:#998;font-style:italic">// e.g. ConsentPolicy.GDPR</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val <span style="color:#900;font-weight:bold">policy</span> <span style="font-weight:bold">=</span> tealium.<span style="color:#008080">consentManager</span>.<span style="color:#008080">policy</span> <span style="font-weight:bold">//</span> e.<span style="color:#008080">g</span>. <span style="color:#900;font-weight:bold">ConsentPolicy</span>.<span style="color:#008080">GDPR</span></code></pre></div>
 <h3 id="reset"><code>reset()</code></h3>
 
 <p>Returns the provided <code>userConsentStatus</code> and <code>userConsentCategories</code> back to their default values; <code>ConsentStatus.UNKNOWN</code> and <code>null</code> respectively.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium.consentManager.reset()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.<span style="color:#008080">consentManager</span>.<span style="color:#008080">reset</span>()</code></pre></div>
 <h3 id="userconsentcategories"><code>userConsentCategories</code></h3>
 
 <p>Set or get the current Consent Status as granted by the app user. Learn more about the <a href="/platforms/android-kotlin/api/consent-manager-categories">available options</a>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium.consentManager.userConsentCategories = setOf(ConsentCategory.CDP, ConsentCategory.EMAIL)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.<span style="color:#008080">consentManager</span>.<span style="color:#008080">userConsentCategories</span> <span style="font-weight:bold">=</span> setOf(ConsentCategory.<span style="color:#008080">CDP</span>, ConsentCategory.<span style="color:#008080">EMAIL</span>)
 
-<span style="font-weight:bold">val</span> categories = tealium.consentManager.userConsentCategories
-<span style="color:#998;font-style:italic">// returns setOf(ConsentCategory.CDP, ConsentCategory.EMAIL)</span></code></pre></div>
+val <span style="color:#900;font-weight:bold">categories</span> <span style="font-weight:bold">=</span> tealium.<span style="color:#008080">consentManager</span>.<span style="color:#008080">userConsentCategories</span>
+<span style="font-weight:bold">//</span> returns <span style="color:#900;font-weight:bold">setOf</span>(ConsentCategory.<span style="color:#008080">CDP</span>, ConsentCategory.<span style="color:#008080">EMAIL</span>)</code></pre></div>
 <h3 id="userconsentstatus"><code>userConsentStatus</code></h3>
 
 <p>Set or get the current consent status as granted by the app user. Available options are: <code>UNKOWN</code>, <code>CONSENTED</code> and <code>NOT_CONSENTED</code></p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium.consentManager.userConsentPreferences = ConsentStatus.CONSENTED
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.<span style="color:#008080">consentManager</span>.<span style="color:#008080">userConsentPreferences</span> <span style="font-weight:bold">=</span> ConsentStatus.<span style="color:#008080">CONSENTED</span>
 
-<span style="font-weight:bold">val</span> status = tealium.consentManager.userConsentStatus <span style="color:#998;font-style:italic">// returns ConsentStatus.CONSENTED</span></code></pre></div>
+<span style="color:#900;font-weight:bold">val</span> status <span style="font-weight:bold">=</span> tealium.<span style="color:#008080">consentManager</span>.<span style="color:#008080">userConsentStatus</span> <span style="font-weight:bold">//</span> returns <span style="color:#900;font-weight:bold">ConsentStatus</span>.<span style="color:#008080">CONSENTED</span></code></pre></div>
 <h2 id="interface-userconsentpreferencesupdatedlistener">Interface: <code>UserConsentPreferencesUpdatedListener</code></h2>
 
 <p>The <code>UserConsentPreferencesUpdatedListener</code> is a listener interface. Register to receive the latest version updates of <code>UserConsentPreferences</code> and <code>ConsentPolicy</code>.</p>
@@ -383,7 +383,7 @@ var utag_data = {
 <h3 id="onuserconsentpreferencesupdated"><code>onUserConsentPreferencesUpdated()</code></h3>
 
 <p>Gets or sets whether to log consent preference changes. Implement the method on a class that implements the interface, or pass in an anonymous object after creating your <code>Tealium</code> instance.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">onUserConsentPreferencesUpdated(userConsentPreferences:policy:)</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">onUserConsentPreferencesUpdated(userConsentPreferences<span style="font-weight:bold">:</span>policy<span style="font-weight:bold">:</span>)</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -409,11 +409,11 @@ var utag_data = {
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> tealium = Tealium.create(...) {
-        events.subscribe(<span style="font-weight:bold">object</span> <span style="color:#a61717;background-color:#e3d2d2">: </span><span style="color:#458;font-weight:bold">UserConsentPreferencesUpdatedListener</span> {
-	        <span style="font-weight:bold">override</span> <span style="font-weight:bold">fun</span> <span style="color:#900;font-weight:bold">onUserConsentPreferencesUpdated</span>(userConsentPreferences: UserConsentPreferences,
-	                                                     policy: ConsentManagementPolicy) {
-	            Logger.dev(BuildConfig.TAG, <span style="color:#b84">&#34;Consent preferences have been updated&#34;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val <span style="color:#900;font-weight:bold">tealium</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">create</span>(...) {
+        events.<span style="color:#008080">subscribe</span>(object <span style="font-weight:bold">:</span> UserConsentPreferencesUpdatedListener {
+	        override <span style="color:#900;font-weight:bold">fun</span> onUserConsentPreferencesUpdated(userConsentPreferences<span style="font-weight:bold">:</span> UserConsentPreferences,
+	                                                     policy<span style="font-weight:bold">:</span> ConsentManagementPolicy) {
+	            Logger.<span style="color:#008080">dev</span>(BuildConfig.<span style="color:#008080">TAG</span>, <span style="color:#b84">&#34;Consent preferences have been updated&#34;</span>)
 
         }
     })
@@ -7435,7 +7435,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  January 13, 2021 
+    <span>This page was last updated:  November 9, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

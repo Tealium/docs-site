@@ -309,7 +309,7 @@ var utag_data = {
 
 <li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the Maven dependencies for the Tealium library and Crash Reporter:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
-  implementation <span style="color:#b84">&#39;com.tealium:kotlin-core:1.2.4&#39;</span>
+  implementation <span style="color:#b84">&#39;com.tealium:kotlin-core:1.2.8&#39;</span>
   implementation <span style="color:#b84">&#39;com.tealium:kotlin-crash-reporter:1.0.3&#39;</span>
 <span style="font-weight:bold">}</span></code></pre></div></li>
 </ol>
@@ -358,51 +358,56 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
+<th align="left">Variable</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><code>crash_cause</code></td>
-<td><code>String</code></td>
-<td>The exception type</td>
-<td><code>java.lang.RuntimeException</code></td>
+<td align="left"><code>crash_cause</code></td>
+<td align="left">String</td>
+<td align="left">The exception type</td>
 </tr>
 
 <tr>
-<td><code>crash_count</code></td>
-<td><code>Number</code></td>
-<td>An incremented counter for each crash since install</td>
-<td><code>1</code></td>
+<td align="left"><code>crash_count</code></td>
+<td align="left">Number</td>
+<td align="left">An incremented counter for each crash since install</td>
 </tr>
 
 <tr>
-<td><code>crash_name</code></td>
-<td><code>String</code></td>
-<td>The exception message</td>
-<td><code>&quot;Connection refused by server&quot;</code></td>
+<td align="left"><code>crash_name</code></td>
+<td align="left">String</td>
+<td align="left">The exception message</td>
 </tr>
 
 <tr>
-<td><code>crash_threads</code></td>
-<td><code>[String]</code></td>
-<td>Array of JSON strings  containing data of the crashed thread, including the thread ID and stack trace</td>
-<td><code>['{ &quot;crashed&quot;: &quot;true&quot;, &quot;state&quot;: &quot;RUNNABLE&quot;, &quot;threadNumber&quot;: &quot;1&quot;, &quot;threadId&quot;: &quot;main&quot;, &quot;priority&quot;: &quot;5&quot;, &quot;stack&quot;:  [ { &quot;fileName&quot;: &quot;MainActivity.java&quot;, &quot;className&quot;: &quot;com.tealium.libraryproject.MainActivity$1&quot;, &quot;methodName&quot;: &quot;onClick&quot;, &quot;lineNumber&quot;: &quot;38&quot; }] }']</code></td>
+<td align="left"><code>crash_threads</code></td>
+<td align="left">Array of Strings</td>
+<td align="left">Array of JSON strings containing data of the crashed thread, including the thread ID and stack trace</td>
 </tr>
 
 <tr>
-<td><code>crash_uuid</code></td>
-<td><code>String</code></td>
-<td>16-character unique ID for each crash event</td>
-<td><code>3c91d707-949e-445f-8ad1-4d6e200bfd6f</code></td>
+<td align="left"><code>crash_uuid</code></td>
+<td align="left">String</td>
+<td align="left">16-character unique ID for each crash event</td>
 </tr>
 </tbody>
 </table>
 
+<p>Example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#000080">&#34;tealium_event&#34;</span> : <span style="color:#b84">&#34;crash&#34;</span>,
+  <span style="color:#000080">&#34;crash_cause&#34;</span>   : <span style="color:#b84">&#34;java.lang.RuntimeException&#34;</span>,
+  <span style="color:#000080">&#34;crash_count&#34;</span>   : <span style="color:#b84">&#34;1&#34;</span>,
+  <span style="color:#000080">&#34;crash_name&#34;</span>    : <span style="color:#b84">&#34;Connection refused by server&#34;</span>,
+  <span style="color:#000080">&#34;crash_threads&#34;</span> : [
+    <span style="color:#b84">&#34;{ \&#34;crashed\&#34;: \&#34;true\&#34;, \&#34;state\&#34;: \&#34;RUNNABLE\&#34;, \&#34;threadNumber\&#34;: \&#34;1\&#34;, \&#34;threadId\&#34;: \&#34;main\&#34;, \&#34;priority\&#34;: \&#34;5\&#34;, \&#34;stack\&#34;:  [ { \&#34;fileName\&#34;: \&#34;MainActivity.java\&#34;, \&#34;className\&#34;: \&#34;com.tealium.libraryproject.MainActivity$1\&#34;, \&#34;methodName\&#34;: \&#34;onClick\&#34;, \&#34;lineNumber\&#34;: \&#34;38\&#34; }] }&#34;</span>
+  ],
+  <span style="color:#000080">&#34;crash_uuid&#34;</span>    : <span style="color:#b84">&#34;3c91d707-949e-445f-8ad1-4d6e200bfd6f&#34;</span>
+}</code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -7420,7 +7425,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  November 2, 2021 
+    <span>This page was last updated:  November 9, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

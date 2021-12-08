@@ -303,12 +303,11 @@ var utag_data = {
 
 <p>The AutoTracking module adds automatic tracking of screen views to your app with only a minimal amount of additional code.</p>
 
-<p>The following platforms are supported:</p>
-
-<ul>
-<li>iOS</li>
-<li>tvOS</li>
-</ul>
+<p>The following platforms are supported:
+* iOS
+* tvOS
+* watchOS
+* macOS</p>
 
 <h2 id="how-it-works">How It Works</h2>
 
@@ -465,13 +464,12 @@ The block list is a JSON file that contains a single array of strings. The strin
 
 <p>If you want to pass a state variable, pass the binding value instead, using the overloaded method.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">struct</span> <span style="color:#458;font-weight:bold">SomeView</span>: View {
-    <span style="font-weight:bold">var</span> <span style="color:#008080">name</span> = <span style="color:#b84">&#34;Some Constant Name&#34;</span>
     <span style="font-weight:bold">var</span> <span style="color:#008080">body</span>: some View {
         Group {
             Spacer()
             Text(<span style="color:#b84">&#34;Some Text&#34;</span>)
             Spacer()
-        }.autoTracked(constantName: name) 
+        }.autoTracked(constantName: <span style="color:#b84">&#34;Some Constant Name&#34;</span>) 
     }
 }</code></pre></div>
 <h4 id="autotracked-name-binding-string-some-view"><code>autoTracked(name: Binding&lt;String&gt;) -&gt; some View</code></h4>
@@ -482,7 +480,7 @@ The block list is a JSON file that contains a single array of strings. The strin
 
 <p>This method solves the issue of <code>onAppear</code> being called after <code>onDisappear</code> for state changes and allows for the variable name to change for subsequent automatically tracked names.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">struct</span> <span style="color:#458;font-weight:bold">SomeView</span>: View {
-    @State <span style="font-weight:bold">var</span> <span style="color:#008080">name</span> = <span style="color:#b84">&#34;Some Constant Name&#34;</span>
+    @State <span style="font-weight:bold">var</span> <span style="color:#008080">name</span> = <span style="color:#b84">&#34;Some Variable Name&#34;</span>
     <span style="font-weight:bold">var</span> <span style="color:#008080">body</span>: some View {
         Group {
             Spacer()
@@ -7565,7 +7563,7 @@ Pass a binding from a state variable of your view. This uses the current value o
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  November 2, 2021 
+    <span>This page was last updated:  December 2, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
