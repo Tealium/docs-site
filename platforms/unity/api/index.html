@@ -450,13 +450,13 @@ var utag_data = {
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">TealiumUnityPlugin.AddRemoteCommand(<span style="color:#b84">&#34;firebase&#34;</span>, (payload) =<span style="font-weight:bold">&gt;</span> {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">TealiumUnityPlugin.AddRemoteCommand(<span style="color:#a31515">&#34;firebase&#34;</span>, (payload) =&gt; {
 
-  string? eventName = (string)payload[<span style="color:#b84">&#34;firebase_event_name&#34;</span>];
-  <span style="color:#999">Dictionary</span>&lt;string, object&gt;? eventProperties =
-      (<span style="color:#999">Dictionary</span>&lt;string, object&gt;)payload[<span style="color:#b84">&#34;firebase_event_properties&#34;</span>];
+  string? eventName = (string)payload[<span style="color:#a31515">&#34;firebase_event_name&#34;</span>];
+  Dictionary&lt;string, object&gt;? eventProperties =
+      (Dictionary&lt;string, object&gt;)payload[<span style="color:#a31515">&#34;firebase_event_properties&#34;</span>];
 
-  <span style="font-weight:bold">if</span> (eventName <span style="font-weight:bold">!=</span> null) {
+  <span style="color:#00f">if</span> (eventName != null) {
     analytics().logEvent(eventName, eventProperties);
   }
 });</code></pre></div>
@@ -567,7 +567,7 @@ var utag_data = {
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">new</span> ConsentExpiry(<span style="color:#099">90</span>, TimeUnit.Days)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">new</span> ConsentExpiry(90, TimeUnit.Days)
 </code></pre></div>
 <h4 id="timeunit">TimeUnit</h4>
 
@@ -662,7 +662,7 @@ var utag_data = {
 </tbody>
 </table>
 
-<p class="note">At least one dispatcher is required. If no dispatchers are specified, your data is not sent to the data layer.</p>
+<p class="note"><i class="fas fa-info-circle"></i>At least one dispatcher is required. If no dispatchers are specified, your data is not sent to the data layer.</p>
 
 <h3 id="expiry"><code>Expiry</code></h3>
 
@@ -727,8 +727,8 @@ var utag_data = {
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">string? <span style="color:#008080">stringValue</span> <span style="font-weight:bold">=</span>
-    <span style="font-weight:bold">(</span>string<span style="font-weight:bold">)</span>TealiumUnityPlugin.GetFromDataLayer<span style="font-weight:bold">(</span><span style="color:#b84">&#34;test_string&#34;</span><span style="font-weight:bold">)</span>;</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">string? stringValue =
+    (string)TealiumUnityPlugin.GetFromDataLayer(<span style="color:#a31515">&#34;test_string&#34;</span>);</code></pre></div>
 <h3 id="getconsentcategories"><code>GetConsentCategories()</code></h3>
 
 <p>Gets the user&rsquo;s consented categories.</p>
@@ -751,9 +751,9 @@ var utag_data = {
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">List<span style="font-weight:bold">&lt;</span>string<span style="font-weight:bold">&gt;</span> caetgories <span style="font-weight:bold">=</span> TealiumUnityPlugin.GetConsentCategories();
-TealiumLogger.Log(<span style="color:#b84">&#34;Consent Categories: &#34;</span>);
-caetgories.ForEach(category =&gt; TealiumLogger.Log(category.Value <span style="font-weight:bold">+</span> <span style="color:#b84">&#34; &#34;</span>));
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">List&lt;string&gt; caetgories = TealiumUnityPlugin.GetConsentCategories();
+TealiumLogger.Log(<span style="color:#a31515">&#34;Consent Categories: &#34;</span>);
+caetgories.ForEach(category =&gt; TealiumLogger.Log(category.Value + <span style="color:#a31515">&#34; &#34;</span>));
 </code></pre></div>
 <h3 id="getconsentstatus"><code>GetConsentStatus()</code></h3>
 
@@ -777,8 +777,8 @@ caetgories.ForEach(category =&gt; TealiumLogger.Log(category.Value <span style="
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">TealiumLogger.Log(<span style="color:#b84">&#34;Consent Status: &#34;</span>
-    <span style="font-weight:bold">+</span> TealiumUnityPlugin.GetConsentStatus().Value);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">TealiumLogger.Log(<span style="color:#a31515">&#34;Consent Status: &#34;</span>
+    + TealiumUnityPlugin.GetConsentStatus().Value);
 </code></pre></div>
 <h3 id="getvisitorid"><code>GetVisitorId()</code></h3>
 
@@ -802,7 +802,7 @@ caetgories.ForEach(category =&gt; TealiumLogger.Log(category.Value <span style="
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">TealiumLogger.Log(<span style="color:#b84">&#34;Visitor Id: &#34;</span> <span style="font-weight:bold">+</span> TealiumUnityPlugin.GetVisitorId())
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">TealiumLogger.Log(<span style="color:#a31515">&#34;Visitor Id: &#34;</span> + TealiumUnityPlugin.GetVisitorId())
 </code></pre></div>
 <h3 id="initialize"><code>Initialize()</code></h3>
 
@@ -834,30 +834,30 @@ caetgories.ForEach(category =&gt; TealiumLogger.Log(category.Value <span style="
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">private</span> TealiumConfig config <span style="font-weight:bold">=</span>
-      <span style="font-weight:bold">new</span> TealiumConfig(<span style="color:#b84">&#34;tealiummobile&#34;</span>,
-      <span style="color:#b84">&#34;demo&#34;</span>,
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">private</span> TealiumConfig config =
+      <span style="color:#00f">new</span> TealiumConfig(<span style="color:#a31515">&#34;tealiummobile&#34;</span>,
+      <span style="color:#a31515">&#34;demo&#34;</span>,
       TealiumEnvironment.DEV,
-      <span style="font-weight:bold">new</span> List<span style="font-weight:bold">&lt;</span>Dispatchers<span style="font-weight:bold">&gt;</span> {
+      <span style="color:#00f">new</span> List&lt;Dispatchers&gt; {
         Dispatchers.TagManagement,
         Dispatchers.Collect,
         Dispatchers.RemoteCommands },
-      <span style="font-weight:bold">new</span> List<span style="font-weight:bold">&lt;</span>Collectors<span style="font-weight:bold">&gt;</span> {
+      <span style="color:#00f">new</span> List&lt;Collectors&gt; {
         Collectors.AppData,
         Collectors.DeviceData,
         Collectors.Lifecycle,
         Collectors.Connectivity },
-      consentPolicy<span style="font-weight:bold">:</span> ConsentPolicy.GDPR,
-      consentExpiry<span style="font-weight:bold">:</span> <span style="font-weight:bold">new</span> ConsentExpiry(<span style="color:#099">10</span>, TimeUnit.Minutes));
+      consentPolicy: ConsentPolicy.GDPR,
+      consentExpiry: <span style="color:#00f">new</span> ConsentExpiry(10, TimeUnit.Minutes));
 
 TealiumUnityPlugin.Initialize(config, success =&gt; {
-    <span style="font-weight:bold">if</span> (success) {
-        TealiumLogger.Log(<span style="color:#b84">&#34;TealiumUnityPlugin Initialized&#34;</span>);
+    <span style="color:#00f">if</span> (success) {
+        TealiumLogger.Log(<span style="color:#a31515">&#34;TealiumUnityPlugin Initialized&#34;</span>);
         TealiumUnityPlugin.SetConsentStatus(ConsentStatus.Consented);
         TealiumUnityPlugin.SetConsentExpiryListener(() =&gt;
-            TealiumLogger.Log(<span style="color:#b84">&#34;Consent Expired!!&#34;</span>));
-    } <span style="font-weight:bold">else</span> {
-        TealiumLogger.Log(<span style="color:#b84">&#34;TealiumUnityPlugin Failed to Initialize&#34;</span>);
+            TealiumLogger.Log(<span style="color:#a31515">&#34;Consent Expired!!&#34;</span>));
+    } <span style="color:#00f">else</span> {
+        TealiumLogger.Log(<span style="color:#a31515">&#34;TealiumUnityPlugin Failed to Initialize&#34;</span>);
     }
 });
 </code></pre></div>
@@ -955,7 +955,7 @@ TealiumUnityPlugin.Initialize(config, success =&gt; {
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">TealiumUnityPlugin.SetConsentCategories(<span style="font-weight:bold">new</span> List<span style="font-weight:bold">&lt;</span>ConsentCategories<span style="font-weight:bold">&gt;</span>(){ConsentCategories.Analytics, ConsentCategories.Email});
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">TealiumUnityPlugin.SetConsentCategories(<span style="color:#00f">new</span> List&lt;ConsentCategories&gt;(){ConsentCategories.Analytics, ConsentCategories.Email});
 </code></pre></div>
 <h4 id="consentcategories">ConsentCategories</h4>
 
@@ -1070,7 +1070,7 @@ TealiumUnityPlugin.Initialize(config, success =&gt; {
 
 <p>Example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">TealiumUnityPlugin.SetConsentExpiryListener(()
-    =&gt; TealiumLogger.Log(<span style="color:#b84">&#34;Consent Expired!!&#34;</span>));
+    =&gt; TealiumLogger.Log(<span style="color:#a31515">&#34;Consent Expired!!&#34;</span>));
 </code></pre></div>
 <h3 id="setconsentstatus"><code>SetConsentStatus()</code></h3>
 
@@ -1157,8 +1157,8 @@ TealiumUnityPlugin.Initialize(config, success =&gt; {
 
 <p>Example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">TealiumUnityPlugin.setVisitorServiceListener((profile) =&gt; {
-  string<span style="font-weight:bold">?</span> serializedProfile <span style="font-weight:bold">=</span> JsonConvert.SerializeObject(profile);
-  <span style="font-weight:bold">if</span> (serializedProfile <span style="font-weight:bold">!=</span> <span style="font-weight:bold">null</span>) {
+  string? serializedProfile = JsonConvert.SerializeObject(profile);
+  <span style="color:#00f">if</span> (serializedProfile != <span style="color:#00f">null</span>) {
       TealiumLogger.Log(serializedProfile);
   }
 });
@@ -1214,7 +1214,7 @@ TealiumUnityPlugin.Initialize(config, success =&gt; {
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">TealiumUnityPlugin.RemoveRemoteCommand(<span style="color:#b84">&#34;firebase&#34;</span>);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">TealiumUnityPlugin.RemoveRemoteCommand(<span style="color:#a31515">&#34;firebase&#34;</span>);
 </code></pre></div>
 <h3 id="track"><code>Track()</code></h3>
 
@@ -1242,11 +1242,11 @@ TealiumUnityPlugin.Initialize(config, success =&gt; {
 </table>
 
 <p>To track game events, create a <a href="#class-tealiumevent"><code>TealiumEvent</code></a> object, and pass it to the <code>track()</code> method:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">TealiumEvent event <span style="font-weight:bold">=</span> TealiumEvent(<span style="color:#b84">&#39;GAME_EVENT_NAME&#39;</span>, <span style="font-weight:bold">new</span> Dictionary<span style="font-weight:bold">&lt;</span>string, object<span style="font-weight:bold">&gt;</span> {{<span style="color:#b84">&#34;KEY&#34;</span>, <span style="color:#b84">&#34;VALUE&#34;</span>}});
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">TealiumEvent event = TealiumEvent(<span style="color:#a31515">&#39;GAME_EVENT_NAME&#39;</span>, <span style="color:#00f">new</span> Dictionary&lt;string, object&gt; {{<span style="color:#a31515">&#34;KEY&#34;</span>, <span style="color:#a31515">&#34;VALUE&#34;</span>}});
 TealiumUnityPlugin.Track(event);
 </code></pre></div>
 <p>To track game screen views, create a <a href="#class-tealiumview"><code>TealiumView</code></a> object, and pass it to the <code>track()</code> method:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">TealiumView view <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> TealiumView(<span style="color:#b84">&#34;VIEW_NAME&#34;</span>, <span style="font-weight:bold">new</span> Dictionary<span style="font-weight:bold">&lt;</span>string, object<span style="font-weight:bold">&gt;</span> {{<span style="color:#b84">&#34;KEY&#34;</span>, <span style="color:#b84">&#34;VALUE&#34;</span>}})
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">TealiumView view = <span style="color:#00f">new</span> TealiumView(<span style="color:#a31515">&#34;VIEW_NAME&#34;</span>, <span style="color:#00f">new</span> Dictionary&lt;string, object&gt; {{<span style="color:#a31515">&#34;KEY&#34;</span>, <span style="color:#a31515">&#34;VALUE&#34;</span>}})
 TealiumUnityPlugin.Track(view);
 </code></pre></div>
 <h3 id="terminate"><code>Terminate()</code></h3>
@@ -1586,8 +1586,8 @@ TealiumUnityPlugin.Track(view);
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">TealiumEvent event <span style="font-weight:bold">=</span> TealiumEvent(<span style="color:#b84">&#39;EVENT_NAME&#39;</span>,
-    <span style="font-weight:bold">new</span> Dictionary<span style="font-weight:bold">&lt;</span>string, object<span style="font-weight:bold">&gt;</span> {{<span style="color:#b84">&#34;KEY&#34;</span>, <span style="color:#b84">&#34;VALUE&#34;</span>}});
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">TealiumEvent event = TealiumEvent(<span style="color:#a31515">&#39;EVENT_NAME&#39;</span>,
+    <span style="color:#00f">new</span> Dictionary&lt;string, object&gt; {{<span style="color:#a31515">&#34;KEY&#34;</span>, <span style="color:#a31515">&#34;VALUE&#34;</span>}});
 TealiumUnityPlugin.Track(event);
 </code></pre></div>
 <h3 id="class-tealiumview">Class: <code>TealiumView</code></h3>
@@ -1623,8 +1623,8 @@ TealiumUnityPlugin.Track(event);
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">TealiumView view <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> TealiumView(<span style="color:#b84">&#34;VIEW_NAME&#34;</span>,
-    <span style="font-weight:bold">new</span> Dictionary<span style="font-weight:bold">&lt;</span>string, object<span style="font-weight:bold">&gt;</span> {{<span style="color:#b84">&#34;KEY&#34;</span>, <span style="color:#b84">&#34;VALUE&#34;</span>}})
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">TealiumView view = <span style="color:#00f">new</span> TealiumView(<span style="color:#a31515">&#34;VIEW_NAME&#34;</span>,
+    <span style="color:#00f">new</span> Dictionary&lt;string, object&gt; {{<span style="color:#a31515">&#34;KEY&#34;</span>, <span style="color:#a31515">&#34;VALUE&#34;</span>}})
 TealiumUnityPlugin.Track(view);
 </code></pre></div>
 </div>
@@ -6684,8 +6684,170 @@ TealiumUnityPlugin.Track(view);
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -6760,7 +6922,7 @@ TealiumUnityPlugin.Track(view);
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -8786,9 +8948,15 @@ TealiumUnityPlugin.Track(view);
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

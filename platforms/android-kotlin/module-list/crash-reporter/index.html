@@ -303,15 +303,15 @@ var utag_data = {
 
 <ol>
 <li><p>In your project&rsquo;s top-level <code>build.gradle</code> file, add the following Maven repository:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">maven <span style="font-weight:bold">{</span>
-  url <span style="color:#b84">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
-<span style="font-weight:bold">}</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">maven {
+  url <span style="color:#a31515">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
+}</code></pre></div></li>
 
 <li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the Maven dependencies for the Tealium library and Crash Reporter:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
-  implementation <span style="color:#b84">&#39;com.tealium:kotlin-core:1.2.8&#39;</span>
-  implementation <span style="color:#b84">&#39;com.tealium:kotlin-crash-reporter:1.0.3&#39;</span>
-<span style="font-weight:bold">}</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
+  implementation <span style="color:#a31515">&#39;com.tealium:kotlin-core:1.3.0&#39;</span>
+  implementation <span style="color:#a31515">&#39;com.tealium:kotlin-crash-reporter:1.1.0&#39;</span>
+}</code></pre></div></li>
 </ol>
 
 <h3 id="manual">Manual</h3>
@@ -321,35 +321,35 @@ var utag_data = {
 <ol>
 <li><p>Download the Tealium <a href="https://github.com/Tealium/tealium-kotlin/tree/master/crashreporter">Crash Reporter</a> module.</p></li>
 
-<li><p>Copy the file <code>tealium-kotlin.crashreporter-1.0.3.aar</code> into your project&rsquo;s <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> directory.</p></li>
+<li><p>Copy the file <code>tealium-kotlin.crashreporter-1.1.0.aar</code> into your project&rsquo;s <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> directory.</p></li>
 
 <li><p>Add the Tealium library dependency to your project module’s <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
-  implementation<span style="font-weight:bold">(</span>name:<span style="color:#b84">&#39;tealium-kotlin.crashreporter-1.0.3&#39;</span><span style="font-weight:bold">,</span> ext:<span style="color:#b84">&#39;aar&#39;</span><span style="font-weight:bold">)</span>
-<span style="font-weight:bold">}</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
+  implementation(name:<span style="color:#a31515">&#39;tealium-kotlin.crashreporter-1.1.0&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
+}</code></pre></div></li>
 </ol>
 
 <h2 id="initialize">Initialize</h2>
 
 <p>Initialize the Crash Reporter module, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(application,
-              <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-              <span style="color:#b84">&#34;PROFILE&#34;</span>,
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> config = TealiumConfig(application,
+              <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+              <span style="color:#a31515">&#34;PROFILE&#34;</span>,
               ENVIRONMENT,
-              modules = mutableSetOf(Modules.CrashReporter), <span style="color:#998;font-style:italic">// Crash Reporter module
-</span><span style="color:#998;font-style:italic"></span>              dispatchers = mutableSetOf(Dispatchers.Collect,
+              modules = mutableSetOf(Modules.CrashReporter), <span style="color:#008000">// Crash Reporter module
+</span><span style="color:#008000"></span>              dispatchers = mutableSetOf(Dispatchers.Collect,
               Dispatchers.TagManagement,
               Dispatchers.RemoteCommands)
 )</code></pre></div>
 <p>To truncate the Crash Reporter&rsquo;s stack trace, set the configuration option <code>truncateCrashReporterStackTraces</code> to <code>true</code> (default: <code>false</code>).</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.<span style="color:#008080">truncateCrashReporterStackTraces</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">true</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.truncateCrashReporterStackTraces = <span style="color:#00f">true</span></code></pre></div>
 <h2 id="tracked-events">Tracked Events</h2>
 
 <p>Once initialized, the Crash Reporter module automatically captures crash data. If a thread abruptly terminates, <code>.uncaughtExceptionHandler()</code> is invoked and the crash information is saved to disk. Upon the next launch, the saved crash information will be dispatched along with your other events.</p>
 
 <p>Crash events are tracked as <code>tealium_event=&quot;crash&quot;</code>.</p>
 
-<p class="note">Crash Reporter is a singleton instance call. Chaining handlers is not currently supported.</p>
+<p class="note"><i class="fas fa-info-circle"></i>Crash Reporter is a singleton instance call. Chaining handlers is not currently supported.</p>
 
 <h2 id="data-layer">Data Layer</h2>
 
@@ -399,14 +399,14 @@ var utag_data = {
 
 <p>Example:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-  <span style="color:#000080">&#34;tealium_event&#34;</span> : <span style="color:#b84">&#34;crash&#34;</span>,
-  <span style="color:#000080">&#34;crash_cause&#34;</span>   : <span style="color:#b84">&#34;java.lang.RuntimeException&#34;</span>,
-  <span style="color:#000080">&#34;crash_count&#34;</span>   : <span style="color:#b84">&#34;1&#34;</span>,
-  <span style="color:#000080">&#34;crash_name&#34;</span>    : <span style="color:#b84">&#34;Connection refused by server&#34;</span>,
-  <span style="color:#000080">&#34;crash_threads&#34;</span> : [
-    <span style="color:#b84">&#34;{ \&#34;crashed\&#34;: \&#34;true\&#34;, \&#34;state\&#34;: \&#34;RUNNABLE\&#34;, \&#34;threadNumber\&#34;: \&#34;1\&#34;, \&#34;threadId\&#34;: \&#34;main\&#34;, \&#34;priority\&#34;: \&#34;5\&#34;, \&#34;stack\&#34;:  [ { \&#34;fileName\&#34;: \&#34;MainActivity.java\&#34;, \&#34;className\&#34;: \&#34;com.tealium.libraryproject.MainActivity$1\&#34;, \&#34;methodName\&#34;: \&#34;onClick\&#34;, \&#34;lineNumber\&#34;: \&#34;38\&#34; }] }&#34;</span>
+  &#34;tealium_event&#34; : <span style="color:#a31515">&#34;crash&#34;</span>,
+  &#34;crash_cause&#34;   : <span style="color:#a31515">&#34;java.lang.RuntimeException&#34;</span>,
+  &#34;crash_count&#34;   : <span style="color:#a31515">&#34;1&#34;</span>,
+  &#34;crash_name&#34;    : <span style="color:#a31515">&#34;Connection refused by server&#34;</span>,
+  &#34;crash_threads&#34; : [
+    <span style="color:#a31515">&#34;{ \&#34;crashed\&#34;: \&#34;true\&#34;, \&#34;state\&#34;: \&#34;RUNNABLE\&#34;, \&#34;threadNumber\&#34;: \&#34;1\&#34;, \&#34;threadId\&#34;: \&#34;main\&#34;, \&#34;priority\&#34;: \&#34;5\&#34;, \&#34;stack\&#34;:  [ { \&#34;fileName\&#34;: \&#34;MainActivity.java\&#34;, \&#34;className\&#34;: \&#34;com.tealium.libraryproject.MainActivity$1\&#34;, \&#34;methodName\&#34;: \&#34;onClick\&#34;, \&#34;lineNumber\&#34;: \&#34;38\&#34; }] }&#34;</span>
   ],
-  <span style="color:#000080">&#34;crash_uuid&#34;</span>    : <span style="color:#b84">&#34;3c91d707-949e-445f-8ad1-4d6e200bfd6f&#34;</span>
+  &#34;crash_uuid&#34;    : <span style="color:#a31515">&#34;3c91d707-949e-445f-8ad1-4d6e200bfd6f&#34;</span>
 }</code></pre></div>
 </div>
 
@@ -5477,8 +5477,170 @@ var utag_data = {
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5553,7 +5715,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7425,7 +7587,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  November 9, 2021 
+    <span>This page was last updated:  December 14, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -7579,9 +7741,15 @@ var utag_data = {
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

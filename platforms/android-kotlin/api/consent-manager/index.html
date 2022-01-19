@@ -338,28 +338,28 @@ var utag_data = {
 <h3 id="isconsentloggingenabled"><code>isConsentLoggingEnabled</code></h3>
 
 <p>Get or set whether to log changes to the user consent preferences. Initialized via the <a href="/platforms/android-kotlin/api/tealium-config/#consentmanagerloggingenabled">TealiumConfig.consentManagerLoggingEnabled</a> option.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.<span style="color:#008080">consentManager</span>.<span style="color:#008080">isConsentLoggingEnabled</span> <span style="font-weight:bold">//</span> e.<span style="color:#008080">g</span>. <span style="color:#900;font-weight:bold">false</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.consentManager.isConsentLoggingEnabled // e.g. false</code></pre></div>
 <h3 id="policy"><code>policy</code></h3>
 
 <p>Returns the currently in-use <code>ConsentPolicy</code>. Initialized via the <a href="/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy">TealiumConfig.consentManagerPolicy</a> option, and may be set to <code>null</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val <span style="color:#900;font-weight:bold">policy</span> <span style="font-weight:bold">=</span> tealium.<span style="color:#008080">consentManager</span>.<span style="color:#008080">policy</span> <span style="font-weight:bold">//</span> e.<span style="color:#008080">g</span>. <span style="color:#900;font-weight:bold">ConsentPolicy</span>.<span style="color:#008080">GDPR</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val policy = tealium.consentManager.policy // e.g. ConsentPolicy.GDPR</code></pre></div>
 <h3 id="reset"><code>reset()</code></h3>
 
 <p>Returns the provided <code>userConsentStatus</code> and <code>userConsentCategories</code> back to their default values; <code>ConsentStatus.UNKNOWN</code> and <code>null</code> respectively.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.<span style="color:#008080">consentManager</span>.<span style="color:#008080">reset</span>()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.consentManager.reset()</code></pre></div>
 <h3 id="userconsentcategories"><code>userConsentCategories</code></h3>
 
 <p>Set or get the current Consent Status as granted by the app user. Learn more about the <a href="/platforms/android-kotlin/api/consent-manager-categories">available options</a>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.<span style="color:#008080">consentManager</span>.<span style="color:#008080">userConsentCategories</span> <span style="font-weight:bold">=</span> setOf(ConsentCategory.<span style="color:#008080">CDP</span>, ConsentCategory.<span style="color:#008080">EMAIL</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.consentManager.userConsentCategories = setOf(ConsentCategory.CDP, ConsentCategory.EMAIL)
 
-val <span style="color:#900;font-weight:bold">categories</span> <span style="font-weight:bold">=</span> tealium.<span style="color:#008080">consentManager</span>.<span style="color:#008080">userConsentCategories</span>
-<span style="font-weight:bold">//</span> returns <span style="color:#900;font-weight:bold">setOf</span>(ConsentCategory.<span style="color:#008080">CDP</span>, ConsentCategory.<span style="color:#008080">EMAIL</span>)</code></pre></div>
+val categories = tealium.consentManager.userConsentCategories
+// returns setOf(ConsentCategory.CDP, ConsentCategory.EMAIL)</code></pre></div>
 <h3 id="userconsentstatus"><code>userConsentStatus</code></h3>
 
 <p>Set or get the current consent status as granted by the app user. Available options are: <code>UNKOWN</code>, <code>CONSENTED</code> and <code>NOT_CONSENTED</code></p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.<span style="color:#008080">consentManager</span>.<span style="color:#008080">userConsentPreferences</span> <span style="font-weight:bold">=</span> ConsentStatus.<span style="color:#008080">CONSENTED</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.consentManager.userConsentPreferences = ConsentStatus.CONSENTED
 
-<span style="color:#900;font-weight:bold">val</span> status <span style="font-weight:bold">=</span> tealium.<span style="color:#008080">consentManager</span>.<span style="color:#008080">userConsentStatus</span> <span style="font-weight:bold">//</span> returns <span style="color:#900;font-weight:bold">ConsentStatus</span>.<span style="color:#008080">CONSENTED</span></code></pre></div>
+val status = tealium.consentManager.userConsentStatus // returns ConsentStatus.CONSENTED</code></pre></div>
 <h2 id="interface-userconsentpreferencesupdatedlistener">Interface: <code>UserConsentPreferencesUpdatedListener</code></h2>
 
 <p>The <code>UserConsentPreferencesUpdatedListener</code> is a listener interface. Register to receive the latest version updates of <code>UserConsentPreferences</code> and <code>ConsentPolicy</code>.</p>
@@ -383,7 +383,7 @@ val <span style="color:#900;font-weight:bold">categories</span> <span style="fon
 <h3 id="onuserconsentpreferencesupdated"><code>onUserConsentPreferencesUpdated()</code></h3>
 
 <p>Gets or sets whether to log consent preference changes. Implement the method on a class that implements the interface, or pass in an anonymous object after creating your <code>Tealium</code> instance.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">onUserConsentPreferencesUpdated(userConsentPreferences<span style="font-weight:bold">:</span>policy<span style="font-weight:bold">:</span>)</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">onUserConsentPreferencesUpdated(userConsentPreferences:policy:)</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -409,11 +409,11 @@ val <span style="color:#900;font-weight:bold">categories</span> <span style="fon
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val <span style="color:#900;font-weight:bold">tealium</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">create</span>(...) {
-        events.<span style="color:#008080">subscribe</span>(object <span style="font-weight:bold">:</span> UserConsentPreferencesUpdatedListener {
-	        override <span style="color:#900;font-weight:bold">fun</span> onUserConsentPreferencesUpdated(userConsentPreferences<span style="font-weight:bold">:</span> UserConsentPreferences,
-	                                                     policy<span style="font-weight:bold">:</span> ConsentManagementPolicy) {
-	            Logger.<span style="color:#008080">dev</span>(BuildConfig.<span style="color:#008080">TAG</span>, <span style="color:#b84">&#34;Consent preferences have been updated&#34;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val tealium = Tealium.create(...) {
+        events.subscribe(object : UserConsentPreferencesUpdatedListener {
+	        override fun onUserConsentPreferencesUpdated(userConsentPreferences: UserConsentPreferences,
+	                                                     policy: ConsentManagementPolicy) {
+	            Logger.dev(BuildConfig.TAG, <span style="color:#a31515">&#34;Consent preferences have been updated&#34;</span>)
 
         }
     })
@@ -5487,8 +5487,170 @@ val <span style="color:#900;font-weight:bold">categories</span> <span style="fon
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5563,7 +5725,7 @@ val <span style="color:#900;font-weight:bold">categories</span> <span style="fon
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7589,9 +7751,15 @@ val <span style="color:#900;font-weight:bold">categories</span> <span style="fon
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

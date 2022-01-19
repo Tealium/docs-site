@@ -316,15 +316,15 @@ var utag_data = {
 
 <ol>
 <li><p>In your project&rsquo;s top-level <code>build.gradle</code> file, add the following Maven repository:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">maven <span style="font-weight:bold">{</span>
-  url <span style="color:#b84">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
-<span style="font-weight:bold">}</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">maven {
+  url <span style="color:#a31515">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
+}</code></pre></div></li>
 
 <li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the Maven dependencies for the Tealium library and Crash Reporter:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
-implementation <span style="color:#b84">&#39;com.tealium:kotlin-core:1.2.8&#39;</span>
-implementation <span style="color:#b84">&#39;com.tealium:kotlin-media:1.0.0&#39;</span>
-<span style="font-weight:bold">}</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
+implementation <span style="color:#a31515">&#39;com.tealium:kotlin-core:1.3.0&#39;</span>
+implementation <span style="color:#a31515">&#39;com.tealium:kotlin-media:1.1.0&#39;</span>
+}</code></pre></div></li>
 </ol>
 
 <h3 id="manual">Manual</h3>
@@ -334,12 +334,12 @@ implementation <span style="color:#b84">&#39;com.tealium:kotlin-media:1.0.0&#39;
 <ol>
 <li><p>Download the Tealium <a href="https://github.com/Tealium/tealium-kotlin/tree/master/media">Media module</a>.</p></li>
 
-<li><p>Copy the file <code>tealium-kotlin.media-1.0.0.aar</code> into your project&rsquo;s <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> directory.</p></li>
+<li><p>Copy the file <code>tealium-kotlin.media-1.1.0.aar</code> into your project&rsquo;s <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> directory.</p></li>
 
 <li><p>Add the Tealium library dependency to your project module’s <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
-implementation<span style="font-weight:bold">(</span>name:<span style="color:#b84">&#39;tealium-kotlin.media-1.0.0&#39;</span><span style="font-weight:bold">,</span> ext:<span style="color:#b84">&#39;aar&#39;</span><span style="font-weight:bold">)</span>
-<span style="font-weight:bold">}</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
+implementation(name:<span style="color:#a31515">&#39;tealium-kotlin.media-1.1.0&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
+}</code></pre></div></li>
 </ol>
 
 <h2 id="initialize">Initialize</h2>
@@ -347,24 +347,24 @@ implementation<span style="font-weight:bold">(</span>name:<span style="color:#b8
 <p>To initialize the Media module, create a <a href="/platforms/android-kotlin/api/media/#class-mediacontent"><code>MediaContent</code></a> object.</p>
 
 <p>For example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> mediaContent: MediaContent = MediaContent(
-  name = <span style="color:#b84">&#34;What is the Tealium Customer Data Hub?&#34;</span>,
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> mediaContent: MediaContent = MediaContent(
+  name = <span style="color:#a31515">&#34;What is the Tealium Customer Data Hub?&#34;</span>,
   trackingType = TrackingType.MILESTONE,
   streamType = StreamType.DVOD,
   mediaType = MediaType.VIDEO,
-  qoe = QoE(<span style="color:#099">1500</span>),
-  duration = <span style="color:#099">130</span>
+  qoe = QoE(1500),
+  duration = 130
 )</code></pre></div>
 <p>Learn more about <a href="/platforms/getting-started/media/#implement">implementing the Media module</a>.</p>
 
 <h4 id="metadata">Metadata</h4>
 
 <p>To add optional metadata to the session:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">metadata = [<span style="color:#b84">&#34;artist&#34;</span>: <span style="color:#b84">&#34;Various&#34;</span>, <span style="color:#b84">&#34;duration&#34;</span>: <span style="color:#b84">&#34;45:00&#34;</span>]</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">metadata = [<span style="color:#a31515">&#34;artist&#34;</span>: <span style="color:#a31515">&#34;Various&#34;</span>, <span style="color:#a31515">&#34;duration&#34;</span>: <span style="color:#a31515">&#34;45:00&#34;</span>]</code></pre></div>
 <p>To add chapter metadata:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">metadata = [<span style="color:#b84">&#34;artist&#34;</span>: <span style="color:#b84">&#34;Aerosmith&#34;</span>, <span style="color:#b84">&#34;track&#34;</span>: <span style="color:#b84">&#34;5&#34;</span>]</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">metadata = [<span style="color:#a31515">&#34;artist&#34;</span>: <span style="color:#a31515">&#34;Aerosmith&#34;</span>, <span style="color:#a31515">&#34;track&#34;</span>: <span style="color:#a31515">&#34;5&#34;</span>]</code></pre></div>
 <p>To add merged metadata:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">metadata = [<span style="color:#b84">&#34;artist&#34;</span>: <span style="color:#b84">&#34;Aerosmith&#34;</span>, <span style="color:#b84">&#34;track&#34;</span>: <span style="color:#b84">&#34;5&#34;</span>, <span style="color:#b84">&#34;duration&#34;</span>: <span style="color:#b84">&#34;45:00&#34;</span>]</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">metadata = [<span style="color:#a31515">&#34;artist&#34;</span>: <span style="color:#a31515">&#34;Aerosmith&#34;</span>, <span style="color:#a31515">&#34;track&#34;</span>: <span style="color:#a31515">&#34;5&#34;</span>, <span style="color:#a31515">&#34;duration&#34;</span>: <span style="color:#a31515">&#34;45:00&#34;</span>]</code></pre></div>
 <p>Learn more about <a href="/platforms/getting-started/media/#metadata">metadata</a>.</p>
 
 <h2 id="track">Track</h2>
@@ -374,9 +374,9 @@ implementation<span style="font-weight:bold">(</span>name:<span style="color:#b8
 <h3 id="media-session">Media Session</h3>
 
 <p>To start tracking a media session, call the <a href="/platforms/android-kotlin/api/media/#startsession"><code>startSession()</code></a> method. To stop tracking a media session, call the <a href="/platforms/android-kotlin/api/media/#endsession"><code>endSession()</code></a> method:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>startSession(mediaContent)
-<span style="color:#998;font-style:italic">//...
-</span><span style="color:#998;font-style:italic"></span>tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>endSession()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium?.media?.startSession(mediaContent)
+<span style="color:#008000">//...
+</span><span style="color:#008000"></span>tealium?.media?.endSession()</code></pre></div>
 <p>Learn more about <a href="/platforms/getting-started/media/#media-sessions">tracking sessions</a>.</p>
 
 <h3 id="player-events">Player Events</h3>
@@ -384,9 +384,9 @@ implementation<span style="font-weight:bold">(</span>name:<span style="color:#b8
 <p>To track media player events such as play and pause, call the appropriate <a href="/platforms/getting-started/media/#playerevents">player event methods</a>. Each media player event sends a <code>tealium_event</code> variable to the data layer when called.</p>
 
 <p>To track when the media is played, call the <a href="/platforms/android-kotlin/api/media/#play"><code>play()</code></a> method:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>play()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium?.media?.play()</code></pre></div>
 <p>To track when the media is paused, call the <a href="/platforms/android-kotlin/api/media/#pause"><code>pause()</code></a> method:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>pause()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium?.media?.pause()</code></pre></div>
 <p>Learn more about <a href="/platforms/getting-started/media/#player-events">tracking player events</a>.</p>
 
 <h3 id="chapters">Chapters</h3>
@@ -394,10 +394,10 @@ implementation<span style="font-weight:bold">(</span>name:<span style="color:#b8
 <p>To track a chapter segments in the media session, create a <a href="/platforms/android-kotlin/api/media/#class-chapter"><code>Chapter</code></a> object and pass it to the <a href="/platforms/android-kotlin/api/media/#startchapter"><code>startChapter()</code></a> method. To stop tracking the chapter, call the <a href="/platforms/android-kotlin/api/media/#endchapter"><code>endChapter()</code></a> method.</p>
 
 <p>For example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> chapter1 = Chapter(name = <span style="color:#b84">&#34;Chapter 1&#34;</span>, duration = <span style="color:#099">120</span>)
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>startChapter(chapter1)
-<span style="color:#998;font-style:italic">// ...
-</span><span style="color:#998;font-style:italic"></span>tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>endChapter()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> chapter1 = Chapter(name = <span style="color:#a31515">&#34;Chapter 1&#34;</span>, duration = 120)
+tealium?.media?.startChapter(chapter1)
+<span style="color:#008000">// ...
+</span><span style="color:#008000"></span>tealium?.media?.endChapter()</code></pre></div>
 <p>Learn more about <a href="/platforms/getting-started/media/#chapters">tracking chapters</a>.</p>
 
 <h3 id="ads">Ads</h3>
@@ -405,18 +405,18 @@ tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bol
 <p>To track the start of an ad break, create an <a href="/platforms/android-kotlin/api/media/#class-adbreak"><code>AdBreak</code></a> object and pass it to the <a href="/platforms/android-kotlin/api/media/#startadbreak"><code>startAdBreak()</code></a> method. To track the start of an ad within the ad break, create an <a href="/platforms/android-kotlin/api/media/#class-ad"><code>Ad</code></a> object and pass it to the <a href="/platforms/android-kotlin/api/media/#startad"><code>startAd()</code></a> method.</p>
 
 <p>To track the end of an ad, call the <a href="/platforms/android-kotlin/api/media/#endad"><code>endAd()</code></a> method. To track the end of the ad break, call the <a href="/platforms/android-kotlin/api/media/#endadbreak"><code>endAdBreak()</code></a> method.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> adBreak = AdBreak(name = <span style="color:#b84">&#34;Ad Break 1&#34;</span>)
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>startAdBreak(adBreak)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> adBreak = AdBreak(name = <span style="color:#a31515">&#34;Ad Break 1&#34;</span>)
+tealium?.media?.startAdBreak(adBreak)
 
-<span style="font-weight:bold">val</span> ad1 = Ad(<span style="color:#b84">&#34;Ad 1&#34;</span>)
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>startAd(ad1)
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>endAd()
+<span style="color:#00f">val</span> ad1 = Ad(<span style="color:#a31515">&#34;Ad 1&#34;</span>)
+tealium?.media?.startAd(ad1)
+tealium?.media?.endAd()
 
-<span style="font-weight:bold">val</span> ad2 = Ad(<span style="color:#b84">&#34;Ad 2&#34;</span>)
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>startAd(ad2)
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>endAd()
+<span style="color:#00f">val</span> ad2 = Ad(<span style="color:#a31515">&#34;Ad 2&#34;</span>)
+tealium?.media?.startAd(ad2)
+tealium?.media?.endAd()
 
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>endAdBreak()</code></pre></div>
+tealium?.media?.endAdBreak()</code></pre></div>
 <p>Learn more about <a href="/platforms/getting-started/media/#ads">tracking ads</a>.</p>
 
 <h2 id="examples">Examples</h2>
@@ -424,67 +424,67 @@ tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bol
 <h3 id="chapters-and-ads">Chapters and Ads</h3>
 
 <p>The following example tracks media content with chapters and ads:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> mediaContent: MediaContent = MediaContent(
-  name = <span style="color:#b84">&#34;What is the Tealium Customer Data Hub?&#34;</span>,
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> mediaContent: MediaContent = MediaContent(
+  name = <span style="color:#a31515">&#34;What is the Tealium Customer Data Hub?&#34;</span>,
   trackingType = TrackingType.FULL_PLAYBACK,
   streamType = StreamType.VOD,
   mediaType = MediaType.VIDEO,
-  qoe = QoE(<span style="color:#099">1500</span>),
-  duration = <span style="color:#099">114</span>
+  qoe = QoE(1500),
+  duration = 114
 )
 
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>startSession(mediaContent)
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>startAdBreak(AdBreak(<span style="color:#b84">&#34;Ad Break 1&#34;</span>))
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>startAd(Ad(<span style="color:#b84">&#34;Ad  1&#34;</span>))
-<span style="color:#998;font-style:italic">// ...
-</span><span style="color:#998;font-style:italic"></span>tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>endAd()
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>startAd(Ad(<span style="color:#b84">&#34;Ad  2&#34;</span>))
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>endAd()
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>endAdBreak()
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>startChapter(Chapter(<span style="color:#b84">&#34;Chapter 1&#34;</span>))
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>endChapter()
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>startAdBreak(AdBreak(<span style="color:#b84">&#34;Ad Break 2&#34;</span>))
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>startAd(Ad(<span style="color:#b84">&#34;Ad  3&#34;</span>))
-<span style="color:#998;font-style:italic">// ...
-</span><span style="color:#998;font-style:italic"></span>tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>endAd()
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>endAdBreak()
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>startChapter(Chapter(<span style="color:#b84">&#34;Chapter 2&#34;</span>))
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>endChapter()
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>startChapter(Chapter(<span style="color:#b84">&#34;Chapter 3&#34;</span>))
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>startBuffer()
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>endBuffer()
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>endChapter()
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>endContent()
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>endSession()</code></pre></div>
+tealium?.media?.startSession(mediaContent)
+tealium?.media?.startAdBreak(AdBreak(<span style="color:#a31515">&#34;Ad Break 1&#34;</span>))
+tealium?.media?.startAd(Ad(<span style="color:#a31515">&#34;Ad  1&#34;</span>))
+<span style="color:#008000">// ...
+</span><span style="color:#008000"></span>tealium?.media?.endAd()
+tealium?.media?.startAd(Ad(<span style="color:#a31515">&#34;Ad  2&#34;</span>))
+tealium?.media?.endAd()
+tealium?.media?.endAdBreak()
+tealium?.media?.startChapter(Chapter(<span style="color:#a31515">&#34;Chapter 1&#34;</span>))
+tealium?.media?.endChapter()
+tealium?.media?.startAdBreak(AdBreak(<span style="color:#a31515">&#34;Ad Break 2&#34;</span>))
+tealium?.media?.startAd(Ad(<span style="color:#a31515">&#34;Ad  3&#34;</span>))
+<span style="color:#008000">// ...
+</span><span style="color:#008000"></span>tealium?.media?.endAd()
+tealium?.media?.endAdBreak()
+tealium?.media?.startChapter(Chapter(<span style="color:#a31515">&#34;Chapter 2&#34;</span>))
+tealium?.media?.endChapter()
+tealium?.media?.startChapter(Chapter(<span style="color:#a31515">&#34;Chapter 3&#34;</span>))
+tealium?.media?.startBuffer()
+tealium?.media?.endBuffer()
+tealium?.media?.endChapter()
+tealium?.media?.endContent()
+tealium?.media?.endSession()</code></pre></div>
 <h3 id="session-abandonment">Session Abandonment</h3>
 
 <p>The following example shows when the user abandons the session, the app is backgrounded and media stops playing. With the Media module enabled, the <a href="/platforms/android-kotlin/api/media/#endsession"><code>endSession()</code></a> method is triggered after 1 minute before the session is terminated. When the user opens the app again, the media session resumes.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> mediaContent: MediaContent = MediaContent(
-  name = <span style="color:#b84">&#34;What is the Tealium Customer Data Hub?&#34;</span>,
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> mediaContent: MediaContent = MediaContent(
+  name = <span style="color:#a31515">&#34;What is the Tealium Customer Data Hub?&#34;</span>,
   trackingType = TrackingType.FULL_PLAYBACK,
   streamType = StreamType.VOD,
   mediaType = MediaType.VIDEO,
-  qoe = QoE(<span style="color:#099">1500</span>),
-  duration = <span style="color:#099">114</span>
+  qoe = QoE(1500),
+  duration = 114
 )
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>startSession(mediaContent)
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>startAdBreak(AdBreak(<span style="color:#b84">&#34;Ad Break 1&#34;</span>))
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>startAd(Ad(<span style="color:#b84">&#34;Ad 1&#34;</span>))
-<span style="color:#998;font-style:italic">// ...
-</span><span style="color:#998;font-style:italic"></span>tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>endAd()
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>startAd(Ad(<span style="color:#b84">&#34;Ad 2&#34;</span>))
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>endAd()
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>endAdBreak()
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>play()
-<span style="color:#998;font-style:italic">// app goes into background and media does not continue playing
-</span><span style="color:#998;font-style:italic"></span>tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>pause()
-<span style="color:#998;font-style:italic">// Tealium&#39;s background media tracking is enabled, so the endSession is triggered after 1 minute
-</span><span style="color:#998;font-style:italic">// User opens app again, and media continues
-</span><span style="color:#998;font-style:italic"></span>tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>resumeSession() <span style="color:#998;font-style:italic">// resume event
-</span><span style="color:#998;font-style:italic"></span>let adBreak = AdBreak(<span style="color:#b84">&#34;Ad Break 2&#34;</span>)
-tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>startAdBreak(adBreak)
-<span style="color:#998;font-style:italic">// User closes app - session abandoned (no endContent event)
-</span><span style="color:#998;font-style:italic"></span>tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bold">?.</span>endSession() <span style="color:#998;font-style:italic">// end of session</span></code></pre></div>
+tealium?.media?.startSession(mediaContent)
+tealium?.media?.startAdBreak(AdBreak(<span style="color:#a31515">&#34;Ad Break 1&#34;</span>))
+tealium?.media?.startAd(Ad(<span style="color:#a31515">&#34;Ad 1&#34;</span>))
+<span style="color:#008000">// ...
+</span><span style="color:#008000"></span>tealium?.media?.endAd()
+tealium?.media?.startAd(Ad(<span style="color:#a31515">&#34;Ad 2&#34;</span>))
+tealium?.media?.endAd()
+tealium?.media?.endAdBreak()
+tealium?.media?.play()
+<span style="color:#008000">// app goes into background and media does not continue playing
+</span><span style="color:#008000"></span>tealium?.media?.pause()
+<span style="color:#008000">// Tealium&#39;s background media tracking is enabled, so the endSession is triggered after 1 minute
+</span><span style="color:#008000">// User opens app again, and media continues
+</span><span style="color:#008000"></span>tealium?.media?.resumeSession() <span style="color:#008000">// resume event
+</span><span style="color:#008000"></span>let adBreak = AdBreak(<span style="color:#a31515">&#34;Ad Break 2&#34;</span>)
+tealium?.media?.startAdBreak(adBreak)
+<span style="color:#008000">// User closes app - session abandoned (no endContent event)
+</span><span style="color:#008000"></span>tealium?.media?.endSession() <span style="color:#008000">// end of session</span></code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -5554,8 +5554,170 @@ tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bol
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5630,7 +5792,7 @@ tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bol
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7502,7 +7664,7 @@ tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bol
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  November 9, 2021 
+    <span>This page was last updated:  December 14, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -7656,9 +7818,15 @@ tealium<span style="font-weight:bold">?.</span>media<span style="font-weight:bol
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

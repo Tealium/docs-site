@@ -346,7 +346,7 @@ var utag_data = {
 <h3 id="cocoapods">CocoaPods</h3>
 
 <p>To install the Location module with CocoaPods add the following pod to your Podfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#b84">&#39;tealium-swift/TealiumLocation&#39;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;tealium-swift/TealiumLocation&#39;</span></code></pre></div>
 <p>The framework is auto-instantiated. It has a dependency on the <code>TealiumCore</code> pod and requires a dispatcher (<code>TealiumCollect</code> or <code>TealiumTagManagement</code>). <a href="/platforms/ios-swift/install/#cocoapods">Learn more</a> about the CocoaPods installation for iOS.</p>
 
 <h3 id="carthage">Carthage</h3>
@@ -357,7 +357,7 @@ var utag_data = {
 <li><p>Go to the app target&rsquo;s General configuration page in Xcode.</p></li>
 
 <li><p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumLocation<span style="font-weight:bold">.</span>framework</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumLocation.framework</code></pre></div>
 <p>The framework is auto-instantiated. It has a dependency on <code>TealiumCore</code> and requires a dispatcher (<code>TealiumCollect</code> or <code>TealiumTagManagement</code>). No additional import statements are necessary. <a href="/platforms/ios-swift/install/#carthage">Learn more</a> about the Carthage installation for iOS.</p></li>
 </ol>
 
@@ -383,15 +383,15 @@ var utag_data = {
 <p>By default, only significant location updates are monitored. This results in fewer updates and less battery consumption.</p>
 
 <p>To enable higher accuracy updates, set the <a href="/platforms/ios-swift/api/tealium-config/#usehighaccuracy"><code>useHighAccuracy</code></a> property to <code>true</code> and set the <a href="/platforms/ios-swift/api/tealium-config/#updatedistance"><code>updateDistance</code></a> property to a value in meters at which to trigger updates.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">start</span>() {
-      <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-                                 profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-                                 environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-                                 datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
-                                 optionalData: <span style="font-weight:bold">nil</span>)
-      config.useHighAccuracy = <span style="font-weight:bold">true</span>
-      config.updateDistance = <span style="color:#099">150</span>
-      <span style="color:#998;font-style:italic">//...</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> start() {
+      <span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+                                 profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
+                                 environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
+                                 datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>,
+                                 optionalData: <span style="color:#00f">nil</span>)
+      config.useHighAccuracy = <span style="color:#00f">true</span>
+      config.updateDistance = 150
+      <span style="color:#008000">//...</span>
   }</code></pre></div>
 <h2 id="geofencing">Geofencing</h2>
 
@@ -401,11 +401,11 @@ var utag_data = {
 <li><p><strong>Hosted URL</strong><br />
 Use your own hosted geofences file, provided as a URL to the property <a href="/platforms/ios-swift/api/tealium-config/#geofenceurl"><code>geofenceUrl</code></a>.<br />
 This option is recommended if you have overridden the publish settings URL or want to use <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/About-Hosted-Data-Layer/ta-p/17572">Hosted Data Layer</a>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.geofenceUrl = <span style="color:#b84">&#34;https://example.com/geofences.json&#34;</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.geofenceUrl = <span style="color:#a31515">&#34;https://example.com/geofences.json&#34;</span></code></pre></div></li>
 
 <li><p><strong>Local File</strong><br />
 Use a geofences file stored in your app by setting the property <a href="/platforms/ios-swift/api/tealium-config/#geofencefilename"><code>geofenceFileName</code></a>. Omit the file extension.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.geofenceFileName = <span style="color:#b84">&#34;geofences&#34;</span> <span style="color:#998;font-style:italic">// geofences.json</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.geofenceFileName = <span style="color:#a31515">&#34;geofences&#34;</span> <span style="color:#008000">// geofences.json</span></code></pre></div></li>
 </ul>
 
 <h2 id="additional-considerations">Additional Considerations</h2>
@@ -5577,8 +5577,170 @@ If a user is within a geofence at the time of creation, the <code>&quot;enter&qu
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5653,7 +5815,7 @@ If a user is within a geofence at the time of creation, the <code>&quot;enter&qu
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7679,9 +7841,15 @@ If a user is within a geofence at the time of creation, the <code>&quot;enter&qu
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

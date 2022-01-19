@@ -342,7 +342,7 @@ var utag_data = {
 <h3 id="createinstance"><code>createInstance()</code></h3>
 
 <p>Create a new Tealium Multiton, and returns the newly created instance. Instances are accessible by <code>getInstance()</code> and destroyable by <code>destroyInstance()</code>. Multiple instances are supported.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.<span style="color:#008080">createInstance</span>(key, config);</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.createInstance(key, config);</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -389,15 +389,15 @@ var utag_data = {
 <h3 id="disableconsentmanager"><code>disableConsentManager()</code></h3>
 
 <p>Disables Consent Manager. Call this method after Tealium is fully initialized to disable Consent Manager.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">final</span> <span style="color:#900;font-weight:bold">Tealium</span> tealiumInstance <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">createInstance</span>(TEALIUM_MAIN, config);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">final</span> Tealium tealiumInstance = Tealium.createInstance(TEALIUM_MAIN, config);
 
-tealiumInstance.<span style="color:#008080">disableConsentManager</span>();</code></pre></div>
+tealiumInstance.disableConsentManager();</code></pre></div>
 <h3 id="getconsentmanager"><code>getConsentManager()</code></h3>
 
 <p>Returns the instance of Consent Manager if enabled.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">final</span> <span style="color:#900;font-weight:bold">Tealium</span> tealiumInstance <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">createInstance</span>(TEALIUM_MAIN, config);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">final</span> Tealium tealiumInstance = Tealium.createInstance(TEALIUM_MAIN, config);
 
-ConsentManager <span style="color:#900;font-weight:bold">consentManager</span> <span style="font-weight:bold">=</span> tealiumInstance.<span style="color:#008080">getConsentManager</span>();</code></pre></div>
+ConsentManager consentManager = tealiumInstance.getConsentManager();</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -417,14 +417,14 @@ ConsentManager <span style="color:#900;font-weight:bold">consentManager</span> <
 <h3 id="requestflush"><code>requestFlush()</code></h3>
 
 <p>Request to dispatch a batch queue of events when the batch limit has not been reached. If all other dispatching checks are okay (online, consent management, dispatch validators), the queue is dispatched.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium <span style="color:#900;font-weight:bold">instance</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">getInstance</span>(<span style="color:#b84">&#34;my_instance_name&#34;</span>);
-instance.<span style="color:#008080">requestFlush</span>();</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium instance = Tealium.getInstance(<span style="color:#a31515">&#34;my_instance_name&#34;</span>);
+instance.requestFlush();</code></pre></div>
 <h3 id="trackevent"><code>trackEvent()</code></h3>
 
 <p>Track a non-view event.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Map<span style="font-weight:bold">&lt;</span>String, Object<span style="font-weight:bold">&gt;</span> <span style="color:#900;font-weight:bold">data</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> HashMap<span style="font-weight:bold">&lt;&gt;</span>(1);
-data.<span style="color:#008080">put</span>(<span style="color:#b84">&#34;KEY&#34;</span>, <span style="color:#b84">&#34;VALUE&#34;</span>);
-Tealium.<span style="color:#008080">getInstance</span>(<span style="color:#b84">&#34;INSTANCE KEY&#34;</span>).<span style="color:#008080">trackEvent</span>(eventName, data);</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Map&lt;String, Object&gt; data = <span style="color:#00f">new</span> HashMap&lt;&gt;(1);
+data.put(<span style="color:#a31515">&#34;KEY&#34;</span>, <span style="color:#a31515">&#34;VALUE&#34;</span>);
+Tealium.getInstance(<span style="color:#a31515">&#34;INSTANCE KEY&#34;</span>).trackEvent(eventName, data);</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -455,9 +455,9 @@ Tealium.<span style="color:#008080">getInstance</span>(<span style="color:#b84">
 <h3 id="trackview"><code>trackView()</code></h3>
 
 <p>Track a presented view.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Map<span style="font-weight:bold">&lt;</span>String, Object<span style="font-weight:bold">&gt;</span> <span style="color:#900;font-weight:bold">data</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> HashMap<span style="font-weight:bold">&lt;&gt;</span>(1);
-data.<span style="color:#008080">put</span>(<span style="color:#b84">&#34;KEY&#34;</span>, <span style="color:#b84">&#34;VALUE&#34;</span>);
-Tealium.<span style="color:#008080">getInstance</span>(<span style="color:#b84">&#34;INSTANCE KEY&#34;</span>).<span style="color:#008080">trackView</span>(screenName, data);</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Map&lt;String, Object&gt; data = <span style="color:#00f">new</span> HashMap&lt;&gt;(1);
+data.put(<span style="color:#a31515">&#34;KEY&#34;</span>, <span style="color:#a31515">&#34;VALUE&#34;</span>);
+Tealium.getInstance(<span style="color:#a31515">&#34;INSTANCE KEY&#34;</span>).trackView(screenName, data);</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -5554,8 +5554,170 @@ Tealium.<span style="color:#008080">getInstance</span>(<span style="color:#b84">
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5630,7 +5792,7 @@ Tealium.<span style="color:#008080">getInstance</span>(<span style="color:#b84">
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7656,9 +7818,15 @@ Tealium.<span style="color:#008080">getInstance</span>(<span style="color:#b84">
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

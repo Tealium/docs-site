@@ -358,13 +358,13 @@ var utag_data = {
 </ol>
 
 <p>The <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Data-Layer-Enrichment/ta-p/684#toc-hId-682859113">object</a> is stored in <code>localStorage</code> under the key <code>teal_adobe_enrichment_data</code>. Fetching the key returns the DLE object. The following example retrieves the DLE object from <code>localStorage</code>, then stores all the audiences in an array:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">var</span> dle_object <span style="font-weight:bold">=</span> JSON.parse(localStorage.getItem(
-   <span style="color:#b84">&#34;teal_adobe_enrichment_data&#34;</span>));
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">var</span> dle_object = JSON.parse(localStorage.getItem(
+   <span style="color:#a31515">&#34;teal_adobe_enrichment_data&#34;</span>));
 
-<span style="font-weight:bold">var</span> data <span style="font-weight:bold">=</span> {audiences<span style="font-weight:bold">:</span> []};
-<span style="font-weight:bold">if</span> (dle_object.audiences) {
-  <span style="font-weight:bold">for</span> (<span style="font-weight:bold">var</span> id <span style="font-weight:bold">in</span> dle_object.audiences) {
-    <span style="font-weight:bold">if</span> (dle_object.audiences.hasOwnProperty(id)) {
+<span style="color:#00f">var</span> data = {audiences: []};
+<span style="color:#00f">if</span> (dle_object.audiences) {
+  <span style="color:#00f">for</span> (<span style="color:#00f">var</span> id <span style="color:#00f">in</span> dle_object.audiences) {
+    <span style="color:#00f">if</span> (dle_object.audiences.hasOwnProperty(id)) {
      data.audiences.push(id);
     }
   }
@@ -375,20 +375,20 @@ var utag_data = {
 <p>The direct call events from <code>_satellite.track</code> are processed by Tealium Collect. The first parameter is set to the variable <code>tealium_event</code> in the data layer.  The second parameter contains the additional data layer attributes sent along to the Tealium Collect endpoint.</p>
 
 <p>The following example is a direct call for the event <code>contact_submit</code>.  We recommend a data layer of key-value pairs, but you may also pass a nested <code>adobeDataLayer</code> object.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">_satellite.track(<span style="color:#b84">&#39;contact_submit&#39;</span>, { name<span style="font-weight:bold">:</span> <span style="color:#b84">&#39;John Doe&#39;</span> });
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">_satellite.track(<span style="color:#a31515">&#39;contact_submit&#39;</span>, { name: <span style="color:#a31515">&#39;John Doe&#39;</span> });
 </code></pre></div>
 <p>The resulting event in Tealium Collect is:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="font-weight:bold">{</span>
-  <span style="color:#b84">&#34;tealium_event&#34;</span> : <span style="color:#b84">&#34;contact_submit&#34;</span>,
-  <span style="color:#b84">&#34;name&#34;</span> : <span style="color:#b84">&#34;John Doe&#34;</span>
-<span style="font-weight:bold">}</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">{
+  <span style="color:#a31515">&#34;tealium_event&#34;</span> : <span style="color:#a31515">&#34;contact_submit&#34;</span>,
+  <span style="color:#a31515">&#34;name&#34;</span> : <span style="color:#a31515">&#34;John Doe&#34;</span>
+}</code></pre></div>
 <p>In addition to the event parameters, the values found in <code>_satellite.buildInfo</code> are also included in the data layer for direct call event tracking.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">turbineVersion<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;14.0.0&#34;</span>,
-turbineBuildDate<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;2016-07-01T18:10:34Z&#34;</span>,
-buildDate<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;2016-03-30T16:27:10Z&#34;</span>,
-environment<span style="font-weight:bold">:</span> <span style="color:#b84">&#34;development&#34;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">turbineVersion: <span style="color:#a31515">&#34;14.0.0&#34;</span>,
+turbineBuildDate: <span style="color:#a31515">&#34;2016-07-01T18:10:34Z&#34;</span>,
+buildDate: <span style="color:#a31515">&#34;2016-03-30T16:27:10Z&#34;</span>,
+environment: <span style="color:#a31515">&#34;development&#34;</span>
 </code></pre></div>
-<p class="note">If the data layer object contains nested values, it is automatically flattened before it is sent to the Tealium Collect endpoint.</p>
+<p class="note"><i class="fas fa-info-circle"></i>If the data layer object contains nested values, it is automatically flattened before it is sent to the Tealium Collect endpoint.</p>
 
 <p>Learn more about the <a href="https://experienceleague.adobe.com/docs/launch/using/reference/client-side-info/launch-object-reference.html?lang=en#buildinfo">Adobe Experience Platform Launch object reference</a>.</p>
 
@@ -5452,8 +5452,170 @@ environment<span style="font-weight:bold">:</span> <span style="color:#b84">&#34
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5528,7 +5690,7 @@ environment<span style="font-weight:bold">:</span> <span style="color:#b84">&#34
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7554,9 +7716,15 @@ environment<span style="font-weight:bold">:</span> <span style="color:#b84">&#34
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

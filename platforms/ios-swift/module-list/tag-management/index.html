@@ -331,7 +331,7 @@ var utag_data = {
 <h3 id="cocoapods">CocoaPods</h3>
 
 <p>To install the TagManagement module with CocoaPods, add the following pod to your Podfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#b84">&#39;tealium-swift/TagManagement&#39;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;tealium-swift/TagManagement&#39;</span></code></pre></div>
 <p>Learn more about the <a href="/platforms/ios-swift/install/#cocoapods">CocoaPods installation for iOS</a>.</p>
 
 <h3 id="carthage">Carthage</h3>
@@ -342,7 +342,7 @@ var utag_data = {
 <li><p>Go to the app target&rsquo;s General configuration page in Xcode.</p></li>
 
 <li><p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumTagManagement<span style="font-weight:bold">.</span>framework</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumTagManagement.framework</code></pre></div>
 <p>Learn more about the <a href="/platforms/ios-swift/install/#carthage">Carthage installation for iOS</a>.</p></li>
 </ol>
 
@@ -352,7 +352,7 @@ var utag_data = {
 
 <p><code>config.dispatchers = [Dispatchers.TagManagement]</code></p>
 
-<p class="note">If your app uses <code>WKWebView</code>, to avoid cookie synchronization issues, pass a singleton <code>WKProcessPool</code> instance to be used by the Tealium webview. Learn about <a href="/platforms/ios-swift/api/tealium-config/#webviewProcessPool">webviewProcessPool</a></p>
+<p class="note"><i class="fas fa-info-circle"></i>If your app uses <code>WKWebView</code>, to avoid cookie synchronization issues, pass a singleton <code>WKProcessPool</code> instance to be used by the Tealium webview. Learn about <a href="/platforms/ios-swift/api/tealium-config/#webviewProcessPool">webviewProcessPool</a></p>
 
 <h2 id="data-layer">Data Layer</h2>
 
@@ -384,21 +384,21 @@ var utag_data = {
 
 <p>If your app has a complex view hierarchy and the module is not detecting the <code>rootViewController</code>, initialize <a href="/platforms/ios-swift/api/tealium-config/">TealiumConfig</a> with a view to attach to in <code>viewDidLoad</code>, <code>viewWillAppear:</code>, or <code>viewDidAppear:</code>.</p>
 
-<p class="note">Release 1.7.1 significantly improves the auto-detection of views and removes the need to specify a view in most scenarios. But you must test this in your app to verify that tracking calls are sent correctly. See <a href="/platforms/ios-swift/release-notes">Release Notes</a> for full details.</p>
+<p class="note"><i class="fas fa-info-circle"></i>Release 1.7.1 significantly improves the auto-detection of views and removes the need to specify a view in most scenarios. But you must test this in your app to verify that tracking calls are sent correctly. See <a href="/platforms/ios-swift/release-notes">Release Notes</a> for full details.</p>
 
 <p>If your app jumps to a <code>UIViewController</code> upon receiving a push notification, and has a different view hierarchy than when Tealium was initialized, you must update the current <code>UIView</code> using the following API method.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">override</span> <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">viewDidLoad</span>() {
-    <span style="font-weight:bold">super</span>.viewDidLoad()
-    <span style="color:#998;font-style:italic">// this view does not have a navigation controller</span>
-    <span style="font-weight:bold">if</span> <span style="font-weight:bold">self</span>.navigationController == <span style="font-weight:bold">nil</span> {
-          <span style="color:#998;font-style:italic">// update the current root UIView on the Tealium instance</span>
-        tealium?.updateRootView(<span style="font-weight:bold">self</span>.view)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">override</span> <span style="color:#00f">func</span> viewDidLoad() {
+    <span style="color:#00f">super</span>.viewDidLoad()
+    <span style="color:#008000">// this view does not have a navigation controller</span>
+    <span style="color:#00f">if</span> <span style="color:#00f">self</span>.navigationController == <span style="color:#00f">nil</span> {
+          <span style="color:#008000">// update the current root UIView on the Tealium instance</span>
+        tealium?.updateRootView(<span style="color:#00f">self</span>.view)
     }
-    <span style="color:#998;font-style:italic">// Do any additional setup after loading the view.</span>
+    <span style="color:#008000">// Do any additional setup after loading the view.</span>
 }</code></pre></div>
 <p>See the sample app <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/Swift-WKWebView">Swift-WKWebView</a> for a full example.</p>
 
-<p class="note">The <a href="/platforms/ios-swift/api/tealium-config/#shouldaddcookieobserver"><code>shouldAddCookieObserver</code></a> method allows you to use your own cookie observer during cookie synchronization, which requires a cookie observer to retrieve cookies on the main thread after setting them. This issue is caused by bugs in <code>WKWebView</code>, which prevents your own observer from being called.</p>
+<p class="note"><i class="fas fa-info-circle"></i>The <a href="/platforms/ios-swift/api/tealium-config/#shouldaddcookieobserver"><code>shouldAddCookieObserver</code></a> method allows you to use your own cookie observer during cookie synchronization, which requires a cookie observer to retrieve cookies on the main thread after setting them. This issue is caused by bugs in <code>WKWebView</code>, which prevents your own observer from being called.</p>
   
 
 </div>
@@ -5470,8 +5470,170 @@ var utag_data = {
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5546,7 +5708,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7572,9 +7734,15 @@ var utag_data = {
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

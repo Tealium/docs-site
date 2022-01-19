@@ -361,9 +361,9 @@ var utag_data = {
 
 <li><p>Adds support for error handler function passed into <code>utag.ut.loader</code> utility function.  This is only for modern browsers (older browser may the standard callback &ldquo;cb&rdquo; function instead)</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.ut.loader({
-    <span style="color:#b84">&#34;src&#34;</span>   <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;https://www.example.com/path/file.js&#34;</span>,
-    <span style="color:#b84">&#34;cb&#34;</span>    <span style="font-weight:bold">:</span> <span style="font-weight:bold">function</span>(){console.log(<span style="color:#b84">&#34;CALLBACK&#34;</span>)},
-    <span style="color:#b84">&#34;error&#34;</span> <span style="font-weight:bold">:</span> <span style="font-weight:bold">function</span>(){console.log(<span style="color:#b84">&#34;ERROR IN LOADING&#34;</span>)}
+    <span style="color:#a31515">&#34;src&#34;</span>   : <span style="color:#a31515">&#34;https://www.example.com/path/file.js&#34;</span>,
+    <span style="color:#a31515">&#34;cb&#34;</span>    : <span style="color:#00f">function</span>(){console.log(<span style="color:#a31515">&#34;CALLBACK&#34;</span>)},
+    <span style="color:#a31515">&#34;error&#34;</span> : <span style="color:#00f">function</span>(){console.log(<span style="color:#a31515">&#34;ERROR IN LOADING&#34;</span>)}
     });
 </code></pre></div></li>
 </ul>
@@ -413,10 +413,10 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on ol
 
 <p>Previously, items in current data layer passed to <code>utag.link/view</code> were merged into the <code>utag.data</code> global object. This was required to re-evaluate load rules for each <code>utag.link/view</code> call. The <code>utag.js</code>4.40 template takes advantage of a publish engine update so that this is no longer required. In version 4.40, the <code>utag.data</code> global object is not updated with each <code>utag.link</code> or <code>utag.view</code> call.</p>
 
-<p class="note">You may use the following JS Extension to test for backwards compatibility with 4.39 behavior before updating to 4.40.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#998;font-style:italic">// JS Extension scoped to &#34;Before Load Rules&#34;
-</span><span style="color:#998;font-style:italic"></span>utag.ut.merge( b, utag.data, <span style="color:#099">0</span> );
-utag.ut.merge( utag.data, b ,<span style="color:#099">1</span> );
+<p class="note"><i class="fas fa-info-circle"></i>You may use the following JS Extension to test for backwards compatibility with 4.39 behavior before updating to 4.40.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#008000">// JS Extension scoped to &#34;Before Load Rules&#34;
+</span><span style="color:#008000"></span>utag.ut.merge( b, utag.data, 0 );
+utag.ut.merge( utag.data, b ,1 );
 </code></pre></div>
 <p><strong>New &ldquo;noconsole&rdquo; flag.</strong></p>
 
@@ -443,9 +443,9 @@ utag.ut.merge( utag.data, b ,<span style="color:#099">1</span> );
 <p><strong><code>_t_visitor_id</code> and <code>_t_session_id</code> are no longer available</strong></p>
 
 <p>Auto-generated data layer values <code>_t_visitor_id</code> and <code>_t_session_id</code> are no longer available. These are replaced by <code>ut.visitor_id</code> and <code>ut.session_id</code>. If still desired, add them back in as follows:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#998;font-style:italic">// JS Extension scoped to &#34;Before Load Rules&#34;
-</span><span style="color:#998;font-style:italic"></span>b[<span style="color:#b84">&#34;_t_visitor_id&#34;</span>] <span style="font-weight:bold">=</span> b[<span style="color:#b84">&#34;cp.utag_main_v_id&#34;</span>];
-b[<span style="color:#b84">&#34;_t_session_id&#34;</span>] <span style="font-weight:bold">=</span> b[<span style="color:#b84">&#34;cp.utag_main_ses_id&#34;</span>];
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#008000">// JS Extension scoped to &#34;Before Load Rules&#34;
+</span><span style="color:#008000"></span>b[<span style="color:#a31515">&#34;_t_visitor_id&#34;</span>] = b[<span style="color:#a31515">&#34;cp.utag_main_v_id&#34;</span>];
+b[<span style="color:#a31515">&#34;_t_session_id&#34;</span>] = b[<span style="color:#a31515">&#34;cp.utag_main_ses_id&#34;</span>];
 </code></pre></div>
 <h2 id="4-36-4-39">4.36 - 4.39</h2>
 
@@ -467,7 +467,7 @@ b[<span style="color:#b84">&#34;_t_session_id&#34;</span>] <span style="font-wei
 </ul></li>
 </ul>
 
-<p class="note">This feature is not compatible with 4.37 below as they may cause the Extension to run more than once.</p>
+<p class="note"><i class="fas fa-info-circle"></i>This feature is not compatible with 4.37 below as they may cause the Extension to run more than once.</p>
 
 <ul>
 <li>Added support for calling <code>utag.view</code> before all the Tags have loaded; this fixes a bug when calling <code>utag.view</code> to fire a specific Tag by its UID inside a DOM Ready-scoped Extension.</li>
@@ -516,8 +516,8 @@ b[<span style="color:#b84">&#34;_t_session_id&#34;</span>] <span style="font-wei
 
 <ul>
 <li><p>Added an override (<code>utag_cfg_ovrd</code>) flag to <code>utag.js</code> in order to delay the loading of Tags until the DOM readyState &ldquo;complete&rdquo; (AKA &ldquo;load&rdquo;) event. This flag provides a delay that may improve page display time speeds by causing all Tags with the <a href="https://community.tealiumiq.com/t5/Tealium-iQ/Tag-Configuration-Advanced-Settings/ta-p/13600">Wait = Yes setting</a> to execute even later. Set this flag by entering the following code into a PreLoader-scoped <a href="ttps://community.tealiumiq.com/t5/Tealium-iQ/JavaScript-Code-Extension/ta-p/11925">JavaScript Code extension</a>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">var</span> utag_cfg_ovrd <span style="font-weight:bold">=</span> {};
-utag_cfg_ovrd.dom_complete <span style="font-weight:bold">=</span> <span style="font-weight:bold">true</span>;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">var</span> utag_cfg_ovrd = {};
+utag_cfg_ovrd.dom_complete = <span style="color:#00f">true</span>;
 </code></pre></div></li>
 
 <li><p>Fixed a bug for the Internet Explorer browser in which the DOM readyState was reported as &ldquo;interactive&rdquo; prematurely. An extra delay for readyState &ldquo;complete&rdquo; was added for older of Internet Explorer.</p></li>
@@ -540,8 +540,8 @@ utag_cfg_ovrd.dom_complete <span style="font-weight:bold">=</span> <span style="
 </ul>
 
 <p>Here is an example of how to set the Wait Timer flag:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    <span style="font-weight:bold">var</span> utag_cfg_ovrd<span style="font-weight:bold">=</span>{};
-    utag_cfg_ovrd.waittimer<span style="font-weight:bold">=</span><span style="color:#099">3000</span>;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    <span style="color:#00f">var</span> utag_cfg_ovrd={};
+    utag_cfg_ovrd.waittimer=3000;
 </code></pre></div>
 <p>This code snippet delays the loading of all Tags until 3 seconds after the DOM Ready signal.</p>
 
@@ -589,19 +589,19 @@ utag_cfg_ovrd.dom_complete <span style="font-weight:bold">=</span> <span style="
 <li><p>The session ID (<code>ses_id</code>) value in the <code>utag_main</code> cookie is now a timestamp that is used to compute a visitor&rsquo;s time on your website.</p>
 
 <p>To reference this value, use the following syntax:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#b84">&#34;cp.utag_main_ses_id&#34;</span>]
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#a31515">&#34;cp.utag_main_ses_id&#34;</span>]
 </code></pre></div></li>
 
 <li><p>Introduces the session number value in the <code>utag_main</code> cookie.</p>
 
 <p>To reference this value, use the following syntax:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#b84">&#34;cp.utag_main__sn&#34;</span>]
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#a31515">&#34;cp.utag_main__sn&#34;</span>]
 </code></pre></div></li>
 
 <li><p>Introduces the page number value, which increments every time <code>utag.js</code> loads, essentially with each new URL load. This is not to be confused with an Event Counter. This value starts over at 1 with each new session.</p>
 
 <p>To reference this value, use the following syntax:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#b84">&#34;cp.utag_main__pn&#34;</span>]
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#a31515">&#34;cp.utag_main__pn&#34;</span>]
 </code></pre></div></li>
 
 <li><p>Known issue: The page number (<code>_pn</code>) and session number (<code>_sn</code>) values are set to <a href="http://en.wikipedia.org/wiki/NaN">NaN</a> whenever a visitor visits a website in which the <code>utag_main</code> session cookies was already set by a version of <code>utag.js</code> prior to 4.27. This issue is resolved in <code>utag.js</code> version 4.28.</p></li>
@@ -636,12 +636,12 @@ utag_cfg_ovrd.dom_complete <span style="font-weight:bold">=</span> <span style="
 
 <p>Disable this feature to keep current behavior. See <a href="#utagcfgloadrulesajax">utag.cfg.load_rules_ajax flag</a> details below for more information.</p>
 
-<p class="note">A <code>utag.link()</code> call does not load a new tag. Only a <code>utag.view()</code> call does this.</p>
+<p class="note"><i class="fas fa-info-circle"></i>A <code>utag.link()</code> call does not load a new tag. Only a <code>utag.view()</code> call does this.</p>
 
 <p><strong>Load a Tag Directly By UID (Update to <code>utag.view</code> and <code>utag.track</code> calls)</strong></p>
 
 <p>For advanced implementations, especially those using AJAX, use the <code>utag.view()</code> call to bring in a new tag and fire it based on the tag&rsquo;s UID (as seen in the Tags tab of Tealium iQ). This bypasses all load rules.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.view({page_name <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;New Page&#34;</span>}, <span style="font-weight:bold">null</span>, [<span style="color:#099">5</span>]);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.view({page_name : <span style="color:#a31515">&#34;New Page&#34;</span>}, <span style="color:#00f">null</span>, [5]);
 </code></pre></div>
 <ul>
 <li>Param 1: Data Layer</li>
@@ -654,18 +654,18 @@ utag_cfg_ovrd.dom_complete <span style="font-weight:bold">=</span> <span style="
 <p><strong>Automatically Read New &ldquo;Meta&rdquo; tags</strong></p>
 
 <p>These types of meta tags with &ldquo;name=&rdquo; were picked up in a previous version of <code>utag.js</code>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">meta</span> <span style="color:#008080">name</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;keywords&#34;</span> <span style="color:#008080">content</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;Apple,Tab&#34;</span> /&gt;</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;meta name=<span style="color:#a31515">&#34;keywords&#34;</span> content=<span style="color:#a31515">&#34;Apple,Tab&#34;</span> /&gt;</code></pre></div>
 <p>The new <code>utag.js</code> 4.26 now picks up those with <code>property=</code>(see &ldquo;Open Graph&rdquo; meta tags)</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">meta</span> <span style="color:#008080">property</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;og:type&#34;</span> <span style="color:#008080">content</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;video.movie&#34;</span> /&gt; </code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;meta property=<span style="color:#a31515">&#34;og:type&#34;</span> content=<span style="color:#a31515">&#34;video.movie&#34;</span> /&gt; </code></pre></div>
 <p><strong>Removing the &ldquo;lowercase&rdquo; by default of &ldquo;qp.&rdquo; (query string) and &ldquo;meta.&rdquo; variables</strong></p>
 
 <p>This is a logic change in the default behavior of <code>utag.data</code>. Set the <a href="#utagcfglowerqp">utag.cfg.lowerqp flag</a> to <code>true</code> to automatically lowercase. However, the default setting keeps the mixed case.</p>
 
-<p class="tip">Set the <code>utag.cfg.lowerqp</code> flag to true for backward compatibility with previous <code>utag.js</code> behavior.</p>
+<p class="tip"><i class="fas fa-star"></i>Set the <code>utag.cfg.lowerqp</code> flag to true for backward compatibility with previous <code>utag.js</code> behavior.</p>
 
 <p>Set the <code>utag.cfg.lowermeta</code> flag to <code>true</code> to enable lower-casing for the meta tags. This only applies to the name of the name/value pair for that meta tag.</p>
 
-<p class="note">If you have mixed-case query string parameters, you need to update the data source&rsquo;s name in the Data Sources tab to match exactly. Any code that refers to this query string type data source must also be updated.</p>
+<p class="note"><i class="fas fa-info-circle"></i>If you have mixed-case query string parameters, you need to update the data source&rsquo;s name in the Data Sources tab to match exactly. Any code that refers to this query string type data source must also be updated.</p>
 
 <p><strong>New Values in <code>utag_main</code> Cookie</strong></p>
 
@@ -683,7 +683,7 @@ A &ldquo;Session Start&rdquo; flag. Set to <code>&quot;1&quot;</code> for the fi
 <p><strong>Session Start Tracking</strong></p>
 
 <p>A request for an empty file, <code>utag.v.js</code>, is made once at the start of a visitor’s session. This is used internally by Tealium to log the session count. The HTTP request URL looks like this:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">http://tags.tiqcdn.com/utag/tiqapp/utag.v.js?a<span style="font-weight:bold">=</span>tealium/main/201306012057&amp;<span style="color:#008080">cb</span><span style="font-weight:bold">=</span><span style="color:#099">1370276499302</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">http://tags.tiqcdn.com/utag/tiqapp/utag.v.js?a=tealium/main/201306012057&amp;cb=1370276499302</code></pre></div>
 <p>The new cookie value <code>utag_main__ss</code>, is used to determine when to fire. This is only sent on the first event of a session. This request is sent last, after all tags have fired.</p>
 
 <p><strong>New &ldquo;Tealium&rdquo; Values</strong></p>
@@ -703,10 +703,10 @@ A &ldquo;Session Start&rdquo; flag. Set to <code>&quot;1&quot;</code> for the fi
 <p>Example Domain URL:(<a href="http://www.example.com?param1=value1&amp;param2=value2#hash1=value3)`">http://www.example.com?param1=value1&amp;param2=value2#hash1=value3)`</a></p>
 
 <p>Previous:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.data <span style="font-weight:bold">=</span> { <span style="color:#b84">&#34;qp.param1&#34;</span> <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;value1&#34;</span>, <span style="color:#b84">&#34;qp.param2&#34;</span> <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;value2&#34;</span>}
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.data = { <span style="color:#a31515">&#34;qp.param1&#34;</span> : <span style="color:#a31515">&#34;value1&#34;</span>, <span style="color:#a31515">&#34;qp.param2&#34;</span> : <span style="color:#a31515">&#34;value2&#34;</span>}
 </code></pre></div>
 <p>New:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.data <span style="font-weight:bold">=</span> { <span style="color:#b84">&#34;qp.param1&#34;</span> <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;value1&#34;</span>, <span style="color:#b84">&#34;qp.param2&#34;</span> <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;value2&#34;</span>, <span style="color:#b84">&#34;qp.hash1&#34;</span>  <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;value3&#34;</span>}
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.data = { <span style="color:#a31515">&#34;qp.param1&#34;</span> : <span style="color:#a31515">&#34;value1&#34;</span>, <span style="color:#a31515">&#34;qp.param2&#34;</span> : <span style="color:#a31515">&#34;value2&#34;</span>, <span style="color:#a31515">&#34;qp.hash1&#34;</span>  : <span style="color:#a31515">&#34;value3&#34;</span>}
 </code></pre></div>
 <p><strong>All Page Data Available to <code>utag.view</code> and <code>utag.link</code> Calls</strong></p>
 
@@ -717,11 +717,11 @@ A &ldquo;Session Start&rdquo; flag. Set to <code>&quot;1&quot;</code> for the fi
 <p><strong>New Options in utag.cfg</strong></p>
 
 <p>Use a Pre Loader-scoped <a href="https://community.tealiumiq.com/t5/Tealium-iQ/JavaScript-Code-Extension/ta-p/11925">JavaScript Code Extension</a> and the global variable <code>window.utag_cfg_ovrd</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#998;font-style:italic">// JS Code in Preloader Extension
-</span><span style="color:#998;font-style:italic"></span><span style="color:#999">window</span>.utag_cfg_ovrd <span style="font-weight:bold">=</span> {
-    <span style="color:#b84">&#34;noview&#34;</span>          <span style="font-weight:bold">:</span> <span style="font-weight:bold">true</span>,
-    <span style="color:#b84">&#34;lowerqp&#34;</span>         <span style="font-weight:bold">:</span> <span style="font-weight:bold">true</span>,
-    <span style="color:#b84">&#34;load_rules_ajax&#34;</span> <span style="font-weight:bold">:</span> <span style="font-weight:bold">false</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#008000">// JS Code in Preloader Extension
+</span><span style="color:#008000"></span>window.utag_cfg_ovrd = {
+    <span style="color:#a31515">&#34;noview&#34;</span>          : <span style="color:#00f">true</span>,
+    <span style="color:#a31515">&#34;lowerqp&#34;</span>         : <span style="color:#00f">true</span>,
+    <span style="color:#a31515">&#34;load_rules_ajax&#34;</span> : <span style="color:#00f">false</span>
 };
 </code></pre></div>
 <p><strong>The following new options are available:</strong></p>
@@ -798,11 +798,11 @@ Set this flag to <code>true</code> if you wish to control when the initial <code
 
 <p>Also adds support for a &ldquo;no cookie&rdquo; flag <code>utag.cfg.nocookie</code>. When the <code>utag.cfg.nocookie</code>value is defined and set to true then <code>utag.js</code> does not write any <code>utag_main</code> cookies.</p>
 
-<p class="note">Existing <code>utag_main</code> cookies are not modified or removed. Some tags expect that <code>utag_main</code> cookies exist, so use this flag at your own risk.</p>
+<p class="note"><i class="fas fa-info-circle"></i>Existing <code>utag_main</code> cookies are not modified or removed. Some tags expect that <code>utag_main</code> cookies exist, so use this flag at your own risk.</p>
 
 <p>Sample (Pre Loader-scoped JavaScript Code Extension):</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">var</span> utag_cfg_ovrd<span style="font-weight:bold">=</span>{};  
-utag_cfg_ovrd.nocookie<span style="font-weight:bold">=</span><span style="font-weight:bold">true</span>;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">var</span> utag_cfg_ovrd={};  
+utag_cfg_ovrd.nocookie=<span style="color:#00f">true</span>;
 </code></pre></div>
 <p><code>utag.ut.decode</code> is a safer version of <code>decodeURIComponent</code> (if <code>decodeURIComponent</code> issues an exception, then unescape is used)</p>
 
@@ -817,12 +817,12 @@ utag_cfg_ovrd.nocookie<span style="font-weight:bold">=</span><span style="font-w
 <p>How do you turn on debugging? Run this in a console: <code>document.cookie=&quot;utagdb=true&quot;</code></p>
 
 <p>Sample <code>utag.DB</code> call:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.DB(<span style="color:#b84">&#34;Inside of DOM Ready Extension&#34;</span>);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.DB(<span style="color:#a31515">&#34;Inside of DOM Ready Extension&#34;</span>);
 </code></pre></div>
 <h4 id="4-003-october-2012">4.003 (October 2012)</h4>
 
 <p>Adds the ability to set a <code>utag_main</code> cookie to expire at a specific timestamp.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.loader.SC(<span style="color:#b84">&#34;utag_main&#34;</span>,{<span style="color:#b84">&#34;mycookie123&#34;</span><span style="font-weight:bold">:</span><span style="color:#b84">&#34;testing123;exp-1351111959896u&#34;</span>});
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.loader.SC(<span style="color:#a31515">&#34;utag_main&#34;</span>,{<span style="color:#a31515">&#34;mycookie123&#34;</span>:<span style="color:#a31515">&#34;testing123;exp-1351111959896u&#34;</span>});
 </code></pre></div>
 <p>Note the &ldquo;u&rdquo; at the end of the timestamp</p>
 
@@ -5895,8 +5895,170 @@ utag_cfg_ovrd.nocookie<span style="font-weight:bold">=</span><span style="font-w
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5971,7 +6133,7 @@ utag_cfg_ovrd.nocookie<span style="font-weight:bold">=</span><span style="font-w
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7997,9 +8159,15 @@ utag_cfg_ovrd.nocookie<span style="font-weight:bold">=</span><span style="font-w
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

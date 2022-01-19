@@ -251,7 +251,9 @@ var utag_data = {
       <p class="b">Table of Contents</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#class-visitorservice">Class: VisitorService</a></li>
               <ul class="toc-h3"><li><a href="#overridevisitorserviceurl">overrideVisitorServiceUrl</a></li>
+              <li><a href="#overridevisitorserviceprofile">overrideVisitorServiceProfile</a></li>
               <li><a href="#requestvisitorprofile">requestVisitorProfile</a></li>
+              <li><a href="#visitorservicerefreshinterval">visitorServiceRefreshInterval</a></li>
               </ul><li><a href="#interface-visitorupdatedlistener">Interface: VisitorUpdatedListener</a></li>
               <ul class="toc-h3"><li><a href="#onvisitorupdated">onVisitorUpdated</a></li>
               </nav>
@@ -311,13 +313,18 @@ var utag_data = {
 </tr>
 
 <tr>
-<td><a href="#overridevisitorserviceurl"><code>visitorServiceRefreshInterval</code></a></td>
-<td><code>TealiumConfig</code> option to set the minimum time interval before the SDK will automatically retrieve the latest profile</td>
+<td><a href="#overridevisitorserviceprofile"><code>overrideVisitorServiceProfile</code></a></td>
+<td><code>TealiumConfig</code> option to override the profile name used to retrieve the current VisitorProfile</td>
 </tr>
 
 <tr>
-<td><a href="#overridevisitorserviceurl"><code>requestVisitorProfile()</code></a></td>
+<td><a href="#requestvisitorprofile"><code>requestVisitorProfile()</code></a></td>
 <td>Method to request that the current VisitorProfile be updated</td>
+</tr>
+
+<tr>
+<td><a href="#visitorservicerefreshinterval"><code>visitorServiceRefreshInterval</code></a></td>
+<td><code>TealiumConfig</code> option to set the minimum time interval before the SDK will automatically retrieve the latest VisitorProfile</td>
 </tr>
 </tbody>
 </table>
@@ -326,17 +333,32 @@ var utag_data = {
 
 <p>Extension property on the <code>TealiumConfig</code> object; only available when the VisitorService module is included in your project.</p>
 
-<p>Sets the URL used to retrieve a new/updated VisitorProfile from - default value is <code>&quot;https://visitor-service.tealiumiq.com/{ACOUNT_NAME}/{PROFILE_NAME}/{VISITOR_ID}&quot;</code></p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val <span style="color:#900;font-weight:bold">config</span> <span style="font-weight:bold">=</span> TealiumConfig(...)
-config.<span style="color:#008080">overrideVisitorServiceUrl</span> <span style="font-weight:bold">=</span> url</code></pre></div>
+<p>Overrides the URL used by the VisitorService module to get the VisitorProfile object.
+Default URL: <code>&quot;https://visitor-service.tealiumiq.com/{ACOUNT_NAME}/{PROFILE_NAME}/{VISITOR_ID}&quot;</code></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val config = TealiumConfig(...)
+config.overrideVisitorServiceUrl = url</code></pre></div>
+<h3 id="overridevisitorserviceprofile"><code>overrideVisitorServiceProfile</code></h3>
+
+<p>Extension property on the <code>TealiumConfig</code> object; only available when the VisitorService module is included in your project.</p>
+
+<p>Overrides the Tealium profile name used by the VisitorService module to fetch the VisitorProfile object. By default the VisitorService module uses the profile name set in <code>TealiumConfig</code>.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val config = TealiumConfig(...)
+config.overrideVisitorServiceProfile = <span style="color:#a31515">&#34;main&#34;</span></code></pre></div>
 <h3 id="requestvisitorprofile"><code>requestVisitorProfile</code></h3>
 
 <p>Method to request that the VisitorProfile be updated. This happens after each dispatch, or batch of dispatches, has been sent to the Tealium Customer Data Hub.</p>
 
-<p>Use this method to request an update at any other point in time. It&rsquo;s a <code>suspend</code> function that needs to be called from a coroutine, and as it makes a network request, your coroutine is not called on main thread.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">runBlocking(Dispatchers.<span style="color:#008080">IO</span>) {
-    tealium.<span style="color:#008080">visitorService</span><span style="font-weight:bold">?</span>.<span style="color:#008080">requestVisitorProfile</span>()
+<p>Use this method to request an update at any other point in time. It&rsquo;s a <code>suspend</code> function that needs to be called from a coroutine. As it makes a network request, your coroutine is not called on main thread.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">runBlocking(Dispatchers.IO) {
+    tealium.visitorService?.requestVisitorProfile()
 }</code></pre></div>
+<h3 id="visitorservicerefreshinterval"><code>visitorServiceRefreshInterval</code></h3>
+
+<p>Sets the time interval in seconds between updates to the VisitorProfile data. Calls to <code>requestVisitorProfile()</code> ignore this setting.</p>
+
+<p>Default: 300 (5 minutes)</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val config = TealiumConfig(...)
+config.visitorServiceRefreshInterval = TimeUnit.MINUTES.toSeconds(30) // 30 minutes</code></pre></div>
 <h2 id="interface-visitorupdatedlistener">Interface: <code>VisitorUpdatedListener</code></h2>
 
 <p>The <code>VisitorUpdatedListener</code> is a listener class. Register to receive the latest version of the VisitorProfile each time there has been an update. There is only a single method to implement: <a href="#onVisitorUpdated"><code>onVisitorUpdated(visitorProfile: VisitorProfile)</code></a>.</p>
@@ -344,10 +366,10 @@ config.<span style="color:#008080">overrideVisitorServiceUrl</span> <span style=
 <h3 id="onvisitorupdated"><code>onVisitorUpdated</code></h3>
 
 <p>Implement the <code>onVisitorUpdated</code> method on an existing class, or pass in an anonymous object after creating your <code>Tealium</code> instance. The below example shows the latter.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val <span style="color:#900;font-weight:bold">tealium</span> <span style="font-weight:bold">=</span> Tealium.<span style="color:#008080">create</span>(...) {
-    events.<span style="color:#008080">subscribe</span>(object <span style="font-weight:bold">:</span> VisitorUpdatedListener {
-        override <span style="color:#900;font-weight:bold">fun</span> onVisitorUpdated(visitorProfile<span style="font-weight:bold">:</span> VisitorProfile) {
-            Logger.<span style="color:#008080">dev</span>(<span style="color:#b84">&#34;--&#34;</span>, <span style="color:#b84">&#34;VisitorProfile updated: $visitorProfile&#34;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val tealium = Tealium.create(...) {
+    events.subscribe(object : VisitorUpdatedListener {
+        override fun onVisitorUpdated(visitorProfile: VisitorProfile) {
+            Logger.dev(<span style="color:#a31515">&#34;--&#34;</span>, <span style="color:#a31515">&#34;VisitorProfile updated: $visitorProfile&#34;</span>)
         }
     })
 }</code></pre></div>
@@ -5410,8 +5432,170 @@ config.<span style="color:#008080">overrideVisitorServiceUrl</span> <span style=
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5486,7 +5670,7 @@ config.<span style="color:#008080">overrideVisitorServiceUrl</span> <span style=
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7358,7 +7542,7 @@ config.<span style="color:#008080">overrideVisitorServiceUrl</span> <span style=
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  November 9, 2021 
+    <span>This page was last updated:  December 14, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -7512,9 +7696,15 @@ config.<span style="color:#008080">overrideVisitorServiceUrl</span> <span style=
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

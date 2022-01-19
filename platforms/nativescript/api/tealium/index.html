@@ -425,10 +425,10 @@ var utag_data = {
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.addRemoteCommand(<span style="color:#b84">&#39;mycommand&#39;</span>, (result<span style="font-weight:bold">:</span> any)<span style="font-weight:bold">:</span> <span style="font-weight:bold">void</span> =&gt; {
-	console.log(result[<span style="color:#b84">&#34;payload&#34;</span>][<span style="color:#b84">&#34;command_id&#34;</span>]);            <span style="color:#998;font-style:italic">// logs &#34;mycommand&#34;
-</span><span style="color:#998;font-style:italic"></span>	console.log(result[<span style="color:#b84">&#34;payload&#34;</span>][<span style="color:#b84">&#34;my_remote_command_key&#34;</span>]); <span style="color:#998;font-style:italic">// logs value for key &#34;my_remote_command_key&#34;
-</span><span style="color:#998;font-style:italic"></span>});
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.addRemoteCommand(<span style="color:#a31515">&#39;mycommand&#39;</span>, (result: any): <span style="color:#00f">void</span> =&gt; {
+	console.log(result[<span style="color:#a31515">&#34;payload&#34;</span>][<span style="color:#a31515">&#34;command_id&#34;</span>]);            <span style="color:#008000">// logs &#34;mycommand&#34;
+</span><span style="color:#008000"></span>	console.log(result[<span style="color:#a31515">&#34;payload&#34;</span>][<span style="color:#a31515">&#34;my_remote_command_key&#34;</span>]); <span style="color:#008000">// logs value for key &#34;my_remote_command_key&#34;
+</span><span style="color:#008000"></span>});
 </code></pre></div>
 <h3 id="adddata"><code>addData()</code></h3>
 
@@ -463,9 +463,9 @@ var utag_data = {
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">let</span> data<span style="font-weight:bold">:</span> Map<span style="font-weight:bold">&lt;</span>string, any<span style="font-weight:bold">&gt;</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> Map([[<span style="color:#b84">&#39;test_session_data&#39;</span>, <span style="color:#b84">&#39;test&#39;</span>]]);
-data.set(<span style="color:#b84">&#39;my_test_value&#39;</span>, <span style="color:#099">1</span>);
-data[<span style="color:#b84">&#39;my_test_value&#39;</span>] <span style="font-weight:bold">=</span> <span style="color:#099">1</span>;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">let</span> data: Map&lt;string, any&gt; = <span style="color:#00f">new</span> Map([[<span style="color:#a31515">&#39;test_session_data&#39;</span>, <span style="color:#a31515">&#39;test&#39;</span>]]);
+data.set(<span style="color:#a31515">&#39;my_test_value&#39;</span>, 1);
+data[<span style="color:#a31515">&#39;my_test_value&#39;</span>] = 1;
 Tealium.addData(data, Expiry.session);
 </code></pre></div>
 <h4 id="expiry"><code>Expiry</code></h4>
@@ -505,10 +505,10 @@ Tealium.addData(data, Expiry.session);
 <p>Gets or sets the user&rsquo;s consent categories.</p>
 
 <p>To set the user&rsquo;s consent categories:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.consentCategories <span style="font-weight:bold">=</span> categories
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.consentCategories = categories
 </code></pre></div>
 <p>To get the user&rsquo;s consent categories:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">let</span> categories <span style="font-weight:bold">=</span> Tealium.consentCategories
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">let</span> categories = Tealium.consentCategories
 </code></pre></div>
 <table>
 <thead>
@@ -531,7 +531,7 @@ Tealium.addData(data, Expiry.session);
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.consentCategories <span style="font-weight:bold">=</span> [ConsentCategories.analytics, ConsentCategories.email];
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.consentCategories = [ConsentCategories.analytics, ConsentCategories.email];
 </code></pre></div>
 <p>The following consent categories are available:</p>
 
@@ -626,10 +626,10 @@ Tealium.addData(data, Expiry.session);
 <p>Gets or sets the user&rsquo;s consent status. Default is <code>.unknown</code> until changed.</p>
 
 <p>To set the user&rsquo;s consent status:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.consentStatus <span style="font-weight:bold">=</span> status;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.consentStatus = status;
 </code></pre></div>
 <p>To get the user&rsquo;s consent status:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">let</span> status <span style="font-weight:bold">=</span> Tealium.consentStatus
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">let</span> status = Tealium.consentStatus
 </code></pre></div>
 <table>
 <thead>
@@ -652,7 +652,7 @@ Tealium.addData(data, Expiry.session);
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.consentStatus <span style="font-weight:bold">=</span> ConsentStatus.consented;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.consentStatus = ConsentStatus.consented;
 </code></pre></div>
 <p>The following consent status are available:</p>
 
@@ -685,7 +685,7 @@ Tealium.addData(data, Expiry.session);
 <h3 id="getdata"><code>getData()</code></h3>
 
 <p>Retrieves data from the data layer as <code>any</code> type.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">let</span> data <span style="font-weight:bold">=</span> Tealium.getData(key);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">let</span> data = Tealium.getData(key);
 </code></pre></div>
 <table>
 <thead>
@@ -706,7 +706,7 @@ Tealium.addData(data, Expiry.session);
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">let</span> data<span style="font-weight:bold">:</span> Tealium.getData(<span style="color:#b84">&#34;KEY&#34;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">let</span> data: Tealium.getData(<span style="color:#a31515">&#34;KEY&#34;</span>)
 </code></pre></div>
 <h3 id="initialize"><code>initialize()</code></h3>
 
@@ -734,21 +734,21 @@ Tealium.addData(data, Expiry.session);
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">let</span> config<span style="font-weight:bold">:</span> TealiumConfig <span style="font-weight:bold">=</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">let</span> config: TealiumConfig =
 {
-	account<span style="font-weight:bold">:</span> <span style="color:#b84">&#39;ACCOUNT&#39;</span>,
-	profile<span style="font-weight:bold">:</span> <span style="color:#b84">&#39;PROFILE&#39;</span>,
-	environment<span style="font-weight:bold">:</span> TealiumEnvironment.dev,
-	dispatchers<span style="font-weight:bold">:</span> [Dispatchers.Collect,
+	account: <span style="color:#a31515">&#39;ACCOUNT&#39;</span>,
+	profile: <span style="color:#a31515">&#39;PROFILE&#39;</span>,
+	environment: TealiumEnvironment.dev,
+	dispatchers: [Dispatchers.Collect,
 	 			  Dispatchers.TagManagement,
 	  			Dispatchers.RemoteCommands],
-	collectors<span style="font-weight:bold">:</span> [Collectors.AppData,
+	collectors: [Collectors.AppData,
 				 Collectors.DeviceData,
 				 Collectors.Lifecycle,
 				 Collectors.Connectivity],
-	consentLoggingEnabled<span style="font-weight:bold">:</span> <span style="font-weight:bold">true</span>,
-	consentPolicy<span style="font-weight:bold">:</span> ConsentPolicy.gdpr,
-	visitorServiceEnabled<span style="font-weight:bold">:</span> <span style="font-weight:bold">true</span>
+	consentLoggingEnabled: <span style="color:#00f">true</span>,
+	consentPolicy: ConsentPolicy.gdpr,
+	visitorServiceEnabled: <span style="color:#00f">true</span>
 };
 
 Tealium.initialize(config);
@@ -779,7 +779,7 @@ Tealium.initialize(config);
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.joinTrace(<span style="color:#b84">&#34;abc123xy&#34;</span>);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.joinTrace(<span style="color:#a31515">&#34;abc123xy&#34;</span>);
 </code></pre></div>
 <h3 id="leavetrace"><code>leaveTrace()</code></h3>
 
@@ -812,7 +812,7 @@ Tealium.initialize(config);
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.removeData([<span style="color:#b84">&#34;foo&#34;</span>, <span style="color:#b84">&#34;bar&#34;</span>]);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.removeData([<span style="color:#a31515">&#34;foo&#34;</span>, <span style="color:#a31515">&#34;bar&#34;</span>]);
 </code></pre></div>
 <h3 id="removeremotecommand"><code>removeRemoteCommand()</code></h3>
 
@@ -840,7 +840,7 @@ Tealium.initialize(config);
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.removeRemoteCommand(<span style="color:#b84">&#34;test_command&#34;</span>);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.removeRemoteCommand(<span style="color:#a31515">&#34;test_command&#34;</span>);
 </code></pre></div>
 <h3 id="setvisitorservicelistener"><code>setVisitorServiceListener()</code></h3>
 
@@ -873,8 +873,8 @@ Tealium.initialize(config);
 
 <p>The following example logs the visitor&rsquo;s audiences and badges to the console:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.setVisitorServiceListener(profile =&gt; {
-    console.log(profile[<span style="color:#b84">&#34;audiences&#34;</span>]);
-    console.log(profile[<span style="color:#b84">&#34;badges&#34;</span>]);
+    console.log(profile[<span style="color:#a31515">&#34;audiences&#34;</span>]);
+    console.log(profile[<span style="color:#a31515">&#34;badges&#34;</span>]);
 });
 </code></pre></div>
 <h3 id="terminateinstance"><code>terminateInstance()</code></h3>
@@ -911,7 +911,7 @@ Tealium.initialize(config);
 <h4 id="tealiumview"><code>TealiumView</code></h4>
 
 <p>To track screen views, pass an instance of <code>TealiumView(viewName, data)</code> to the <code>track()</code> method. <code>TealiumView</code> comprises a view name, which appears in the tracking call as <code>tealium_event</code>, and an optional data dictionary.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">let</span> tealView <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> TealiumView(<span style="color:#b84">&#34;VIEW_NAME&#34;</span>, <span style="font-weight:bold">new</span> Map([[<span style="color:#b84">&#34;key&#34;</span>, <span style="color:#b84">&#34;value&#34;</span>]]));
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">let</span> tealView = <span style="color:#00f">new</span> TealiumView(<span style="color:#a31515">&#34;VIEW_NAME&#34;</span>, <span style="color:#00f">new</span> Map([[<span style="color:#a31515">&#34;key&#34;</span>, <span style="color:#a31515">&#34;value&#34;</span>]]));
 Tealium.track(tealView);
 </code></pre></div>
 <h4 id="tealiumevent"><code>TealiumEvent</code></h4>
@@ -919,13 +919,13 @@ Tealium.track(tealView);
 <p>To track non-view events, pass an instance of <code>TealiumEvent(eventName, data)</code> to the <code>track()</code> method. <code>TealiumEvent</code> comprises an event name, which appears in the tracking call as <code>tealium_event</code>, and an optional data dictionary.</p>
 
 <p>The following is an example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">let</span> tealEvent <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> TealiumEvent(<span style="color:#b84">&#34;EVENT_NAME&#34;</span>, <span style="font-weight:bold">new</span> Map([[<span style="color:#b84">&#34;key&#34;</span>, <span style="color:#b84">&#34;value&#34;</span>]]));
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">let</span> tealEvent = <span style="color:#00f">new</span> TealiumEvent(<span style="color:#a31515">&#34;EVENT_NAME&#34;</span>, <span style="color:#00f">new</span> Map([[<span style="color:#a31515">&#34;key&#34;</span>, <span style="color:#a31515">&#34;value&#34;</span>]]));
 Tealium.track(tealEvent);
 </code></pre></div>
 <h3 id="visitorid"><code>visitorId</code></h3>
 
 <p>Gets the current visitor ID.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">let</span> visitorId <span style="font-weight:bold">=</span> Tealium.visitorId;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">let</span> visitorId = Tealium.visitorId;
 </code></pre></div>
 <h5 id="tealiumdispatch"><code>TealiumDispatch</code></h5>
 
@@ -5987,8 +5987,170 @@ Tealium.track(tealEvent);
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -6063,7 +6225,7 @@ Tealium.track(tealEvent);
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -8089,9 +8251,15 @@ Tealium.track(tealEvent);
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

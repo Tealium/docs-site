@@ -80,8 +80,7 @@ a {
 /**
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
-b,
-strong {
+b {
   font-weight: bolder;
 }
 /**
@@ -176,14 +175,6 @@ fieldset {
  * 3. Remove the padding so developers are not caught out when they zero out
  *    `fieldset` elements in all browsers.
  */
-legend {
-  box-sizing: border-box; /* 1 */
-  color: inherit; /* 2 */
-  display: table; /* 1 */
-  max-width: 100%; /* 1 */
-  padding: 0; /* 3 */
-  white-space: normal; /* 1 */
-}
 /**
  * Add the correct vertical alignment in Chrome, Firefox, and Opera.
  */
@@ -271,7 +262,6 @@ footer,
 header,
 form,
 fieldset,
-legend,
 pre,
 code,
 a,
@@ -279,7 +269,6 @@ h1,h2,h3,h4,
 p,
 ul,
 li,
-figcaption,
 textarea,
 table, 
 td,
@@ -1597,6 +1586,10 @@ h2:hover .header-link svg,
 h3:hover .header-link svg {
   visibility: visible;
 }
+.prose h2, .prose h3 {
+  padding-top: 100px;
+  margin-top: -100px
+}
 .animated {
   animation-duration: .5s;
   animation-fill-mode: forwards;
@@ -1621,18 +1614,18 @@ h3:hover .header-link svg {
   border-left-style: solid;
   position: relative;
   display: block;
-  padding: 10px 10px 10px 36px !important;
+  padding: 12px 10px 10px 40px !important;
 }
 p.note {
   border-color: #FF9D1F;
   background-color: #FFF3E5;
 }
-p.note:before {
+p.note .fa-info-circle:before {
   content: "\f05a";
   position: absolute;
-  top: 5px;
+  top: 13px;
   left: 10px;
-  font-family: "FontAwesome";
+  font-family: "Font Awesome 5 Pro";
   font-size: 1.3em;
   color: #FF9D1F;
 }
@@ -1640,12 +1633,12 @@ p.tip {
   border-color: #519F15;
   background-color: #F3F9F5;
 }
-p.tip:before {
+p.tip .fa-star:before {
   content: "\f005";
   position: absolute;
-  top: 5px;
+  top: 13px;
   left: 10px;
-  font-family: "FontAwesome";
+  font-family: "Font Awesome 5 Pro";
   font-size: 1.3em;
   color: #519F15;
 }
@@ -1937,7 +1930,34 @@ code, .code, pre code, .highlight pre  {
 /* Monospaced Typefaces (for code) */
 /* Sans-Serif Typefaces */
 /* Serif Typefaces */
-/*@import '_hljs';*/
+/* modified from:*/
+/*
+
+Atom One Light by Daniel Gamage
+Original One Light Syntax theme from https://github.com/atom/one-light-syntax
+
+base:    #fafafa
+mono-1:  #383a42
+mono-2:  #686b77
+mono-3:  #a0a1a7
+hue-1:   #0184bb
+hue-2:   #4078f2
+hue-3:   #a626a4
+hue-4:   #50a14f
+hue-5:   #e45649
+hue-5-2: #c91243
+hue-6:   #986801
+hue-6-2: #c18401
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #383a42;
+  background: #fafafa;
+}
+/* hljs-template-variable covers the handlebars templating*/
 a.js-toggle:after {
     font-family: Font Awesome\ 5 Pro;
     font-weight: 900;

@@ -536,7 +536,7 @@ var utag_data = {
 </table>
 
 <p>The following example assumes the current module has implemented the <code>TealiumDelegate</code> protocol:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.addDelegate(<span style="font-weight:bold">self</span>)</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.addDelegate(<span style="color:#00f">self</span>)</code></pre></div>
 <h3 id="addremotecommand"><code>addRemoteCommand()</code></h3>
 
 <p>Adds remote commands for later execution.</p>
@@ -560,29 +560,29 @@ var utag_data = {
 </table>
 
 <p>The following example, placed prior to Tealium initialization, shows how add remote commands:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#999;font-weight:bold">#if</span> <span style="color:#999;font-weight:bold">os</span>(<span style="color:#999;font-weight:bold">iOS</span>)
-<span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommand</span> = TealiumRemoteCommand(commandId: <span style="color:#b84">&#34;test&#34;</span>,
-        description: <span style="color:#b84">&#34;test&#34;</span>) { response <span style="font-weight:bold">in</span>
-			print(<span style="color:#b84">&#34;Remote Command &#39;test&#39; executed&#34;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">#if</span> <span style="color:#00f">os</span>(<span style="color:#00f">iOS</span>)
+<span style="color:#00f">let</span> remoteCommand = TealiumRemoteCommand(commandId: <span style="color:#a31515">&#34;test&#34;</span>,
+        description: <span style="color:#a31515">&#34;test&#34;</span>) { response <span style="color:#00f">in</span>
+			print(<span style="color:#a31515">&#34;Remote Command &#39;test&#39; executed&#34;</span>)
 }
 config.addRemoteCommand(remoteCommand)
-<span style="color:#999;font-weight:bold">#endif</span></code></pre></div>
+<span style="color:#00f">#endif</span></code></pre></div>
 <h3 id="batchingbypasskeys"><code>batchingBypassKeys</code></h3>
 
 <p>Sets a list of event names for which batching is bypassed (sent as individual events).</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.batchingBypassKeys = [<span style="color:#b84">&#34;home_screen&#34;</span>]</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.batchingBypassKeys = [<span style="color:#a31515">&#34;home_screen&#34;</span>]</code></pre></div>
 <h3 id="batchingenabled"><code>batchingEnabled</code></h3>
 
 <p>Enables (<code>true</code>) or disables (<code>false</code>) event batching. Disabled by default.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.batchingEnabled = <span style="font-weight:bold">true</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.batchingEnabled = <span style="color:#00f">true</span></code></pre></div>
 <h3 id="batchsize"><code>batchSize</code></h3>
 
 <p>Sets the amount of events to combine into a single batch request. Maximum is 10.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.batchSize = <span style="color:#099">8</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.batchSize = 8</code></pre></div>
 <h3 id="collectoverrideprofile"><code>collectOverrideProfile</code></h3>
 
 <p>Overrides the Tealium Collect profile to send data to a different Tealium profile.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.collectOverrideProfile = <span style="color:#b84">&#34;main&#34;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.collectOverrideProfile = <span style="color:#a31515">&#34;main&#34;</span></code></pre></div>
 <h3 id="collectoverrideurl"><code>collectOverrideURL</code></h3>
 
 <p>Overrides the Tealium Collect URL to send data to a different endpoint.</p>
@@ -610,38 +610,38 @@ config.addRemoteCommand(remoteCommand)
 <p>The default URL with event batching is:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">https://collect.tealiumiq.com/bulk-event/</code></pre></div>
 <p>The method is typically used to set a custom hostname, or to set a specific region hostname. The following example sets the Tealium Collect base URL to stay within the EU Central region:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">url</span> = <span style="color:#b84">&#34;https://collect-eu-central-1.tealiumiq.com/event/&#34;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> url = <span style="color:#a31515">&#34;https://collect-eu-central-1.tealiumiq.com/event/&#34;</span>
 config.collectOverrideURL = url</code></pre></div>
 <h3 id="connectivityrefreshenabled"><code>connectivityRefreshEnabled</code></h3>
 
 <p>If enabled (default), the connectivity module checks for a connection at a specified interval (controlled via <code>setConnectivityRefreshInterval</code>). Queued dispatches are then sent as soon as a connection is resumed.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.connectivityRefreshEnabled = <span style="font-weight:bold">true</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.connectivityRefreshEnabled = <span style="color:#00f">true</span></code></pre></div>
 <h3 id="connectivityrefreshinterval"><code>connectivityRefreshInterval</code></h3>
 
 <p>Sets the default connectivity refresh interval in seconds. Default is 30 seconds if not set on the TealiumConfig instance.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.connectivityRefreshInterval = <span style="color:#099">30</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.connectivityRefreshInterval = 30</code></pre></div>
 <h3 id="consentloggingenabled"><code>consentLoggingEnabled</code></h3>
 
 <p>Enables the <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Consent-Change-Event-Specifications/ta-p/23213">Consent Logging</a> feature, which sends all consent status changes to Tealium Customer Data Hub for auditing purposes.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.consentLoggingEnabled = <span style="font-weight:bold">true</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.consentLoggingEnabled = <span style="color:#00f">true</span></code></pre></div>
 <h3 id="delegates"><code>delegates</code></h3>
 
 <p>Returns an array of the currently-enabled delegates.</p>
 
 <p>The following example shows how to get an array of currently-enabled delegate:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">delegates</span> = config.delegates</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> delegates = config.delegates</code></pre></div>
 <h3 id="dispatchafter"><code>dispatchAfter</code></h3>
 
 <p>Number of events after which to automatically flush the queue.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.dispatchAfter = <span style="color:#099">20</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.dispatchAfter = 20</code></pre></div>
 <h3 id="dispatchexpiration"><code>dispatchExpiration</code></h3>
 
 <p>Sets the dispatch expiration in days. If the device is offline for an extended period. Older events are deleted.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.dispatchExpiration = <span style="color:#099">5</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.dispatchExpiration = 5</code></pre></div>
 <h3 id="dispatchqueuelimit"><code>dispatchQueueLimit</code></h3>
 
 <p>Sets the maximum number of events to store in the event queue. If this number is reached, and the queue has not been flushed, the oldest events are deleted.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.dispatchQueueLimit = <span style="color:#099">50</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.dispatchQueueLimit = 50</code></pre></div>
 <h3 id="enableremotehttpcommand"><code>enableRemoteHTTPCommand()</code></h3>
 
 <p>Enables the built-in remote HTTP command (see <a href="/platforms/ios-swift/module-list/remote-commands/">Swift Module: RemoteCommands</a>).</p>
@@ -653,7 +653,7 @@ config.collectOverrideURL = url</code></pre></div>
 <h3 id="geofencefilename"><code>geofenceFileName</code></h3>
 
 <p>Sets the name of a local geofences file asset. Do not include the file extension.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.geofenceFileName = &lt;<span style="color:#999">String</span>&gt;</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.geofenceFileName = &lt;String&gt;</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -675,7 +675,7 @@ config.collectOverrideURL = url</code></pre></div>
 <h3 id="geofenceurl"><code>geofenceUrl</code></h3>
 
 <p>Sets the URL of a hosted geofences file.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.geofenceUrl = &lt;<span style="color:#999">String</span> (url)<span style="font-weight:bold">&gt;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.geofenceUrl = &lt;String (url)&gt;</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -742,18 +742,18 @@ The <code>notConsented</code> status is set when the user has declined tracking.
 <p>Sets a new log level (see <a href="/platforms/ios-swift/module-list/logger/">Swift Module: Logger</a>).</p>
 
 <p>The following example shows how to set the log level to <code>errors</code>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">newLogLevel</span> = TealiumLogLevel.errors
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> newLogLevel = TealiumLogLevel.errors
 config.logLevel = newLogLevel</code></pre></div>
 <h3 id="memoryreportingenabled"><code>memoryReportingEnabled</code></h3>
 
 <p>Enables or disables memory reporting in the DeviceData module (default: disabled).</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.memoryReportingEnabled = <span style="font-weight:bold">true</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.memoryReportingEnabled = <span style="color:#00f">true</span></code></pre></div>
 <h3 id="moduleslist"><code>modulesList</code></h3>
 
 <p>Set a net modules list (see <a href="/platforms/ios-swift/modules/">Modules List</a>).</p>
 
 <p>The following example shows how to blacklist the autotracking module:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">modulesList</span> = TealiumModulesList(isWhitelist: <span style="font-weight:bold">false</span>, moduleNames: [<span style="color:#b84">&#34;autotracking&#34;</span>])
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> modulesList = TealiumModulesList(isWhitelist: <span style="color:#00f">false</span>, moduleNames: [<span style="color:#a31515">&#34;autotracking&#34;</span>])
 config.modulesList = list</code></pre></div>
 <p>The TealiumModulesList <code>struct</code> has the following parameters:</p>
 
@@ -787,55 +787,55 @@ config.modulesList = list</code></pre></div>
 <h3 id="overrideconsentpolicy"><code>overrideConsentPolicy</code></h3>
 
 <p>Overrides the default consent <code>policy</code> parameter (default: <code>&quot;gdpr&quot;</code>).</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">policy</span> = <span style="color:#b84">&#34;ccpa&#34;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> policy = <span style="color:#a31515">&#34;ccpa&#34;</span>
 config.overrideConsentPolicy = policy</code></pre></div>
 <h3 id="remoteapienabled"><code>remoteAPIEnabled</code></h3>
 
 <p>Enables (<code>true</code>) or disables (<code>false</code>) <code>remote_api</code> event. Required for RemoteCommands module if DispatchQueue module in use. Default <code>false</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.remoteAPIEnabled = <span style="font-weight:bold">true</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.remoteAPIEnabled = <span style="color:#00f">true</span></code></pre></div>
 <h3 id="remotecommands"><code>remoteCommands</code></h3>
 
 <p>Returns an array of all currently-registered remote commands.</p>
 
 <p>The following example shows how to get an array of all currently-registered remote commands:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommands</span> = config.remoteCommands</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> remoteCommands = config.remoteCommands</code></pre></div>
 <h3 id="remotehttpcommanddisabled"><code>remoteHTTPCommandDisabled</code></h3>
 
 <p>Disables the built-in remote HTTP command (see <a href="/platforms/ios-swift/module-list/remote-commands/">Swift Module: RemoteCommands</a>).</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.remoteHTTPCommandDisabled = <span style="font-weight:bold">true</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.remoteHTTPCommandDisabled = <span style="color:#00f">true</span></code></pre></div>
 <h3 id="rootview"><code>rootView</code></h3>
 
 <p>Sets the current <code>UIView</code> for <code>WKWebView</code> to be attached to. Only required if you have a complex view hierarchy, such as with a push notification, where auto-detection may fail.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">view</span> = <span style="font-weight:bold">self</span>.view
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> view = <span style="color:#00f">self</span>.view
 config.rootView = view</code></pre></div>
 <h3 id="searchadsenabled"><code>searchAdsEnabled</code></h3>
 
 <p>Enables or disables memory reporting in the DeviceData module (default: disabled).                         |</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.searchAdsEnabled = <span style="font-weight:bold">true</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.searchAdsEnabled = <span style="color:#00f">true</span></code></pre></div>
 <h3 id="shouldaddcookieobserver"><code>shouldAddCookieObserver</code></h3>
 
 <p>If set to <code>true</code> (default), this method determines if a cookie observer should be added in order to successfully migrate all cookies. If set to <code>false</code>, if multiple cookie observers are present then only one of them is called, which may cause some cookies to not migrate.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.shouldAddCookieObserver = <span style="font-weight:bold">false</span></code></pre></div>
-<p class="note">The <a href="/platforms/ios-swift/api/tealium-config/#shouldaddcookieobserver"><code>shouldAddCookieObserver</code></a> property allows you to use your own cookie observer during cookie synchronization, which requires a cookie observer to retrieve cookies on the main thread after setting them. This issue is caused by bugs in <code>WKWebView</code>, which prevents your own observer from being called.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.shouldAddCookieObserver = <span style="color:#00f">false</span></code></pre></div>
+<p class="note"><i class="fas fa-info-circle"></i>The <a href="/platforms/ios-swift/api/tealium-config/#shouldaddcookieobserver"><code>shouldAddCookieObserver</code></a> property allows you to use your own cookie observer during cookie synchronization, which requires a cookie observer to retrieve cookies on the main thread after setting them. This issue is caused by bugs in <code>WKWebView</code>, which prevents your own observer from being called.</p>
   
 
 <h3 id="shoulduseremotepublishsettings"><code>shouldUseRemotePublishSettings</code></h3>
 
 <p>Sets the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">Mobile Publish Settings</a> (version 1.9.0+) to enabled (default) or disabled.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Swift" data-lang="Swift">config.shouldUseRemotePublishSettings = <span style="font-weight:bold">false</span></code></pre></div>
-<p class="note">In version 1.9.0+, Mobile Publish Settings are enabled by default, and must be disabled if you don’t wish to use them. Configure the Mobile Publish Settings in iQ Tag Management, or disable it using <code>config.shouldUseRemotePublishSettings = false</code> in the Swift installation. Failure to do causes initialization failures and prevent tracking.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Swift" data-lang="Swift">config.shouldUseRemotePublishSettings = <span style="color:#00f">false</span></code></pre></div>
+<p class="note"><i class="fas fa-info-circle"></i>In version 1.9.0+, Mobile Publish Settings are enabled by default, and must be disabled if you don’t wish to use them. Configure the Mobile Publish Settings in iQ Tag Management, or disable it using <code>config.shouldUseRemotePublishSettings = false</code> in the Swift installation. Failure to do causes initialization failures and prevent tracking.</p>
 
 <h3 id="tagmanagementoverrideurl"><code>tagManagementOverrideURL</code></h3>
 
 <p>Overrides the default URL used by the Tag Management module. This is needed if you are self-hosting your Tealium JavaScript files.</p>
 
 <p>The following example shows how to override the default URL used by the Tag Management module.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">url</span> = <span style="color:#b84">&#34;https://tags.mycdn.com/utag/myaccount/myprofile/myenv/mobile.html&#34;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> url = <span style="color:#a31515">&#34;https://tags.mycdn.com/utag/myaccount/myprofile/myenv/mobile.html&#34;</span>
 config.tagManagementOverrideURL =  url</code></pre></div>
 <h3 id="tealiumconfig"><code>TealiumConfig()</code></h3>
 
 <p>Constructor for a <code>TealiumConfig</code> object. This object is required to initialize the library for your specific account.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">TealiumConfig(account:<span style="color:#999">String</span>, profile:<span style="color:#999">String</span>, environment:<span style="color:#999">String</span>, optionalData:<span style="color:#999">Dictionary</span>, dataSource:<span style="color:#999">String</span>)</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">TealiumConfig(account:String, profile:String, environment:String, optionalData:Dictionary, dataSource:String)</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -881,8 +881,8 @@ config.tagManagementOverrideURL =  url</code></pre></div>
 
 <p>Sets the distance interval (meters) in which location updates are received.</p>
 
-<p class="note">Only use this method if <code>useHighAccuracy</code> is set to <code>true</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.updateDistance = &lt;<span style="color:#999">Double</span>&gt;</code></pre></div>
+<p class="note"><i class="fas fa-info-circle"></i>Only use this method if <code>useHighAccuracy</code> is set to <code>true</code>.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.updateDistance = &lt;Double&gt;</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -902,15 +902,15 @@ config.tagManagementOverrideURL =  url</code></pre></div>
 </table>
 
 <p>Usage example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">start</span>() {
-      <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-                                 profile: <span style="color:#b84">&#34;NAME&#34;</span>,
-                                 environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-                                 datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
-                                 optionalData: <span style="font-weight:bold">nil</span>)
-      <span style="color:#998;font-style:italic">// Tealium Location module config methods</span>
-      config.useHighAccuracy = <span style="font-weight:bold">true</span>
-      config.updateDistance = <span style="color:#099">150.0</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> start() {
+      <span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+                                 profile: <span style="color:#a31515">&#34;NAME&#34;</span>,
+                                 environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
+                                 datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>,
+                                 optionalData: <span style="color:#00f">nil</span>)
+      <span style="color:#008000">// Tealium Location module config methods</span>
+      config.useHighAccuracy = <span style="color:#00f">true</span>
+      config.updateDistance = 150.0
   }</code></pre></div>
 <h3 id="usehighaccuracy"><code>useHighAccuracy</code></h3>
 
@@ -925,7 +925,7 @@ config.tagManagementOverrideURL =  url</code></pre></div>
 <p>Learn more about <a href="https://developer.apple.com/documentation/corelocation/cllocationmanager/1423836-desiredaccuracy?language=swift">Apple&rsquo;s accuracy of location data</a>.</p>
 
 <p>Using high accuracy results in greater battery consumption for your device than low accuracy, due to more frequent location updates.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.useHighAccuracy = &lt;<span style="color:#999">Bool</span>&gt;</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.useHighAccuracy = &lt;Bool&gt;</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -945,15 +945,15 @@ config.tagManagementOverrideURL =  url</code></pre></div>
 </table>
 
 <p>Usage example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">start</span>() {
-      <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-                                 profile: <span style="color:#b84">&#34;NAME&#34;</span>,
-                                 environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-                                 datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
-                                 optionalData: <span style="font-weight:bold">nil</span>)
-      <span style="color:#998;font-style:italic">// Tealium Location module config methods</span>
-      config.useHighAccuracy = <span style="font-weight:bold">true</span>
-      config.updateDistance = <span style="color:#099">150.0</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> start() {
+      <span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+                                 profile: <span style="color:#a31515">&#34;NAME&#34;</span>,
+                                 environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
+                                 datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>,
+                                 optionalData: <span style="color:#00f">nil</span>)
+      <span style="color:#008000">// Tealium Location module config methods</span>
+      config.useHighAccuracy = <span style="color:#00f">true</span>
+      config.updateDistance = 150.0
   }</code></pre></div>
 </div>
 
@@ -6011,8 +6011,170 @@ config.tagManagementOverrideURL =  url</code></pre></div>
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -6087,7 +6249,7 @@ config.tagManagementOverrideURL =  url</code></pre></div>
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -8113,9 +8275,15 @@ config.tagManagementOverrideURL =  url</code></pre></div>
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

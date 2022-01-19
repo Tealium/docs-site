@@ -319,19 +319,19 @@ var utag_data = {
 
 <p>The <code>tealium_visitor_id</code> attribute is an anonymous ID used by AudienceStream to associate a visitor between events and visits.  Depending on your usage of the Collect API, use one of the following approaches:</p>
 
-<p><strong>Known Visitors</strong><br />
-(Required for AudienceStream, recommended for EventStream)<br />
+<p><strong>Known Visitors</strong>
+(Required for AudienceStream, recommended for EventStream)
 When tracking events for a known visitor (when a value exists for a visitor ID attribute such as <code>email_address</code>), include the known visitor ID attribute and a hash of that value in the <code>tealium_visitor_id</code> parameter.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
-    <span style="color:#b84">&#34;tealium_account&#34;</span>    <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-    <span style="color:#b84">&#34;tealium_profile&#34;</span>    <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;PROFILE&#34;</span>,
-    <span style="color:#b84">&#34;tealium_event&#34;</span>      <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;EVENT_NAME&#34;</span>,
-    <span style="color:#b84">&#34;email_address&#34;</span>      <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;EMAIL_ADDRESS&#34;</span>,
-    <span style="color:#b84">&#34;tealium_visitor_id&#34;</span> <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;VISITOR_ID&#34;</span>
+    <span style="color:#a31515">&#34;tealium_account&#34;</span>    : <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+    <span style="color:#a31515">&#34;tealium_profile&#34;</span>    : <span style="color:#a31515">&#34;PROFILE&#34;</span>,
+    <span style="color:#a31515">&#34;tealium_event&#34;</span>      : <span style="color:#a31515">&#34;EVENT_NAME&#34;</span>,
+    <span style="color:#a31515">&#34;email_address&#34;</span>      : <span style="color:#a31515">&#34;EMAIL_ADDRESS&#34;</span>,
+    <span style="color:#a31515">&#34;tealium_visitor_id&#34;</span> : <span style="color:#a31515">&#34;VISITOR_ID&#34;</span>
 }
 </code></pre></div>
-<p><strong>Anonymous Visitors</strong><br />
-(Required for AudienceStream)<br />
+<p><strong>Anonymous Visitors</strong>
+(Required for AudienceStream)
 When tracking events for an anonymous visitor from a website (without a known ID), then the value of the <code>tealium_visitor_id</code>  needs to match the value in the <code>utag_main_v_id</code> cookie.</p>
 
 <p><a href="/platforms/javascript/data-layer/">Learn more</a> about the built-in variables from <code>utag.js</code>.</p>
@@ -343,22 +343,22 @@ When tracking events for an anonymous visitor from a website (without a known I
 <p>The GET method is used to request data from a specified resource. It passes data using key-value pairs in the query string of the endpoint, and returns a 1x1 transparent GIF to make it compatible with HTML-based implementations.</p>
 
 <p>Example using curl:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -i -X GET <span style="color:#b84">&#34;https://collect.tealiumiq.com/event?tealium_account={ACCOUNT}&amp;tealium_profile={PROFILE}&amp;tealium_event=user_login&amp;email_address=user@example.com&#34;</span> </code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -i -X GET <span style="color:#a31515">&#34;https://collect.tealiumiq.com/event?tealium_account={ACCOUNT}&amp;tealium_profile={PROFILE}&amp;tealium_event=user_login&amp;email_address=user@example.com&#34;</span> </code></pre></div>
 <h3 id="post">POST</h3>
 
 <p>The POST method is used to send data to a server to create/update a resource. It supports JSON payloads where the request header must be set to <code>Content-Type: application/json</code> and the payload must be formatted as a valid JSON string. </p>
 
 <p>Example of <code>user_login</code> event:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
-    <span style="color:#b84">&#34;tealium_account&#34;</span>   <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-    <span style="color:#b84">&#34;tealium_profile&#34;</span>   <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;PROFILE&#34;</span>,
-    <span style="color:#b84">&#34;tealium_event&#34;</span>     <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;EVENT_NAME&#34;</span>,
-    <span style="color:#b84">&#34;email_address&#34;</span>     <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;EMAIL_ADDRESS&#34;</span>
+    <span style="color:#a31515">&#34;tealium_account&#34;</span>   : <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+    <span style="color:#a31515">&#34;tealium_profile&#34;</span>   : <span style="color:#a31515">&#34;PROFILE&#34;</span>,
+    <span style="color:#a31515">&#34;tealium_event&#34;</span>     : <span style="color:#a31515">&#34;EVENT_NAME&#34;</span>,
+    <span style="color:#a31515">&#34;email_address&#34;</span>     : <span style="color:#a31515">&#34;EMAIL_ADDRESS&#34;</span>
 }
 </code></pre></div>
 <p>Example using curl:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -X POST -H <span style="color:#b84">&#39;Content-type: application/json&#39;</span>
---data <span style="color:#b84">&#39;{&#34;tealium_account&#34;:&#34;{ACCOUNT}&#34;,&#34;tealium_profile&#34;:&#34;{PROFILE}&#34;,&#34;tealium_event&#34;:&#34;user_login&#34;,&#34;email_address&#34;:&#34;user@example.com&#34;}&#39;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -X POST -H <span style="color:#a31515">&#39;Content-type: application/json&#39;</span>
+--data <span style="color:#a31515">&#39;{&#34;tealium_account&#34;:&#34;{ACCOUNT}&#34;,&#34;tealium_profile&#34;:&#34;{PROFILE}&#34;,&#34;tealium_event&#34;:&#34;user_login&#34;,&#34;email_address&#34;:&#34;user@example.com&#34;}&#39;</span>
 https://collect.tealiumiq.com/event</code></pre></div>
 <h2 id="status-codes">Status Codes</h2>
 
@@ -381,11 +381,6 @@ https://collect.tealiumiq.com/event</code></pre></div>
 <tr>
 <td><code>400 Bad Request</code></td>
 <td>The server does not understand the request</td>
-</tr>
-
-<tr>
-<td><code>401 Unauthorized</code></td>
-<td>The user does not have permissions</td>
 </tr>
 </tbody>
 </table>
@@ -429,24 +424,24 @@ https://collect.tealiumiq.com/event</code></pre></div>
 <h3 id="html-example">HTML Example</h3>
 
 <p>Tealium Collect is referenced in an <code>&lt;img&gt;</code> tag within your HTML. Due to browser caching it&rsquo;s important to include a cache buster, an additional parameter that contains a randomly generated value, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">var</span> cb<span style="font-weight:bold">=</span><span style="color:#999">Math</span>.random()<span style="font-weight:bold">*</span><span style="color:#099">100000000000</span>;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">var</span> cb=Math.random()*100000000000;
 </code></pre></div>
 <p>This variable is added to the query string of the Tealium Collect pixel:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">img</span> <span style="color:#008080">height</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;1&#34;</span> <span style="color:#008080">width</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;1&#34;</span> <span style="color:#008080">style</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;display:none&#34;</span> <span style="color:#008080">src</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;//collect.tealiumiq.com/event?tealium_account={ACCOUNT}&amp;tealium_profile={PROFILE}&amp;tealium_event=user_login&amp;email_address=user@example.com&amp;cb=&#39; + cb + &#39;&#34;</span>/&gt;</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;img height=<span style="color:#a31515">&#34;1&#34;</span> width=<span style="color:#a31515">&#34;1&#34;</span> style=<span style="color:#a31515">&#34;display:none&#34;</span> src=<span style="color:#a31515">&#34;//collect.tealiumiq.com/event?tealium_account={ACCOUNT}&amp;tealium_profile={PROFILE}&amp;tealium_event=user_login&amp;email_address=user@example.com&amp;cb=&#39; + cb + &#39;&#34;</span>/&gt;</code></pre></div>
 <h3 id="javascript-example">JavaScript Example</h3>
 
 <p>Tealium Collect supports cross-domain requests, allowing you to send a POST from your website to our domain, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">var</span> event <span style="font-weight:bold">=</span> {
-    <span style="color:#b84">&#34;tealium_account&#34;</span> <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-    <span style="color:#b84">&#34;tealium_profile&#34;</span> <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;PROFILE&#34;</span>,
-    <span style="color:#b84">&#34;tealium_event&#34;</span>   <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;EVENT_NAME&#34;</span>,
-    <span style="color:#b84">&#34;email_address&#34;</span>   <span style="font-weight:bold">:</span> <span style="color:#b84">&#34;EMAIL_ADDRESS&#34;</span>};
-<span style="font-weight:bold">var</span> xhr <span style="font-weight:bold">=</span> <span style="font-weight:bold">new</span> XMLHttpRequest();
-xhr.open(<span style="color:#b84">&#34;POST&#34;</span>, <span style="color:#b84">&#34;https://collect.tealiumiq.com/event&#34;</span>);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">var</span> event = {
+    <span style="color:#a31515">&#34;tealium_account&#34;</span> : <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+    <span style="color:#a31515">&#34;tealium_profile&#34;</span> : <span style="color:#a31515">&#34;PROFILE&#34;</span>,
+    <span style="color:#a31515">&#34;tealium_event&#34;</span>   : <span style="color:#a31515">&#34;EVENT_NAME&#34;</span>,
+    <span style="color:#a31515">&#34;email_address&#34;</span>   : <span style="color:#a31515">&#34;EMAIL_ADDRESS&#34;</span>};
+<span style="color:#00f">var</span> xhr = <span style="color:#00f">new</span> XMLHttpRequest();
+xhr.open(<span style="color:#a31515">&#34;POST&#34;</span>, <span style="color:#a31515">&#34;https://collect.tealiumiq.com/event&#34;</span>);
 xhr.send(JSON.stringify(event));
 </code></pre></div>
 <p>The Response Headers include the following:  </p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Access<span style="font-weight:bold">-</span>Control<span style="font-weight:bold">-</span>Allow<span style="font-weight:bold">-</span>Origin<span style="font-weight:bold">:</span> [http<span style="font-weight:bold">:</span><span style="color:#998;font-style:italic">//your_domain.com](http://your_domain.com)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Access-Control-Allow-Origin: [http:<span style="color:#008000">//your_domain.com](http://your_domain.com)
 </span></code></pre></div>
 </div>
 
@@ -5504,8 +5499,170 @@ xhr.send(JSON.stringify(event));
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5580,7 +5737,7 @@ xhr.send(JSON.stringify(event));
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7452,7 +7609,7 @@ xhr.send(JSON.stringify(event));
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  April 29, 2021 
+    <span>This page was last updated:  January 6, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -7606,9 +7763,15 @@ xhr.send(JSON.stringify(event));
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

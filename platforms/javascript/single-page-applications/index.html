@@ -297,8 +297,8 @@ var utag_data = {
 <p>On a single-page application (SPA) where the page loads <code>utag.js</code> only once per visit, suppress the automatic page view tracking call to allow your application to make these calls directly.</p>
 
 <p>To override the automatic page tracking add this line to your page prior to loading <code>utag.js</code>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#999">window</span>.utag_cfg_ovrd <span style="font-weight:bold">=</span> <span style="color:#999">window</span>.utag_cfg_ovrd <span style="font-weight:bold">||</span> {};
-<span style="color:#999">window</span>.utag_cfg_ovrd.noview <span style="font-weight:bold">=</span> <span style="font-weight:bold">true</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.utag_cfg_ovrd = window.utag_cfg_ovrd || {};
+window.utag_cfg_ovrd.noview = <span style="color:#00f">true</span>
 </code></pre></div>
 <p>Once your application is loaded (and <code>utag.js</code>is loaded), trigger <code>utag.view()</code> tracking calls in your page code. These calls are typically triggered at the DOM-ready event or any event that causes a content view refresh. <a href="/platforms/javascript/settings/">Learn more</a> about the available settings to adjust the behavior of <code>utag.js</code>.</p>
 
@@ -311,99 +311,91 @@ var utag_data = {
 <p>Track views in single-page applications with the <a href="/platforms/javascript/api/tracking-functions/#utag-view"><code>utag.view()</code></a> function.</p>
 
 <p>The following <code>utag.view()</code> function call demonstrates how to pass data using key-value pairs:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">utag.view({ variable1<span style="font-weight:bold">:</span><span style="color:#b84">&#34;VARIABLE1 VALUE&#34;</span>, variable2<span style="font-weight:bold">:</span><span style="color:#b84">&#34;VARIABLE2 VALUE&#34;</span>, variable3<span style="font-weight:bold">:</span><span style="color:#b84">&#34;VARIABLE3 VALUE&#34;</span> });
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.view({ variable1:<span style="color:#a31515">&#34;VARIABLE1 VALUE&#34;</span>, variable2:<span style="color:#a31515">&#34;VARIABLE2 VALUE&#34;</span>, variable3:<span style="color:#a31515">&#34;VARIABLE3 VALUE&#34;</span> });
 </code></pre></div>
 <h3 id="examples">Examples</h3>
 
 <p>The following is a content site example in which a visitor searched for &ldquo;politics&rdquo;:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">utag.view({tealium_event<span style="font-weight:bold">:</span><span style="color:#b84">&#34;search&#34;</span>, search_keyword<span style="font-weight:bold">:</span><span style="color:#b84">&#34;politics&#34;</span>, search_results<span style="font-weight:bold">:</span> <span style="color:#099">42</span>});
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.view({tealium_event:<span style="color:#a31515">&#34;search&#34;</span>, search_keyword:<span style="color:#a31515">&#34;politics&#34;</span>, search_results: 42});
 </code></pre></div>
 <p>The following example demonstrates how to track views:</p>
-
-<pre><code>utag.view({
-    &quot;demo_site&quot; : &quot;Tealium React Demo&quot;,
-    &quot;demo_event&quot; : &quot;View &quot; + name
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.view({
+    <span style="color:#a31515">&#34;demo_site&#34;</span> : <span style="color:#a31515">&#34;Tealium React Demo&#34;</span>,
+    <span style="color:#a31515">&#34;demo_event&#34;</span> : <span style="color:#a31515">&#34;View &#34;</span> + name
 })
-</code></pre>
-
+</code></pre></div>
 <h2 id="track-events">Track Events</h2>
 
 <p>Track links and events in single-page applications with the <a href="/platforms/javascript/api/tracking-functions/#utag-view"><code>utag.link()</code></a> function.</p>
 
-<p class="note">If jQuery is installed you have the option to use the <a href="/t5/Tealium-iQ/jQuery-onHandler-Extension/ta-p/13644">jQuery onHandler</a> extension. This extension is configurable for specific event bindings to trigger the <code>utag.link()</code> and <code>utag.view()</code> functions. This allows you to avoid hard-coding the tracking logic in your side code.</p>
+<p class="note"><i class="fas fa-info-circle"></i>If jQuery is installed you have the option to use the <a href="/t5/Tealium-iQ/jQuery-onHandler-Extension/ta-p/13644">jQuery onHandler</a> extension. This extension is configurable for specific event bindings to trigger the <code>utag.link()</code> and <code>utag.view()</code> functions. This allows you to avoid hard-coding the tracking logic in your side code.</p>
 
 <p>The following <code>utag.link()</code> function call demonstrates how to pass data using key-value pairs:</p>
-
-<pre><code>utag.link({ variable1:'VARIABLE1 VALUE', variable2:'VARIABLE2 VALUE' });
-</code></pre>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.link({ variable1:<span style="color:#a31515">&#39;VARIABLE1 VALUE&#39;</span>, variable2:<span style="color:#a31515">&#39;VARIABLE2 VALUE&#39;</span> });
+</code></pre></div>
 <h3 id="examples-1">Examples</h3>
 
 <p>The following is a content site example of tracking social media sharing actions:</p>
-
-<pre><code>utag.link({
-    &quot;content_id&quot;         : &quot;38121&quot;,
-    &quot;page_friendly_url&quot; : &quot;/travel/national_parks&quot;,
-    &quot;page_name&quot;          : &quot;Travel: National Parks&quot;,
-    &quot;social_network&quot;     : &quot;facebook&quot;,
-    &quot;tealium_event&quot;      : &quot;social_share&quot;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.link({
+    <span style="color:#a31515">&#34;content_id&#34;</span>         : <span style="color:#a31515">&#34;38121&#34;</span>,
+    <span style="color:#a31515">&#34;page_friendly_url&#34;</span> : <span style="color:#a31515">&#34;/travel/national_parks&#34;</span>,
+    <span style="color:#a31515">&#34;page_name&#34;</span>          : <span style="color:#a31515">&#34;Travel: National Parks&#34;</span>,
+    <span style="color:#a31515">&#34;social_network&#34;</span>     : <span style="color:#a31515">&#34;facebook&#34;</span>,
+    <span style="color:#a31515">&#34;tealium_event&#34;</span>      : <span style="color:#a31515">&#34;social_share&#34;</span>
 })
-</code></pre>
-
+</code></pre></div>
 <p>The following ReactJS example, from the <a href="http://react.tealiumdemo.com/">Tealim demo application</a>, demonstrates how to track events for add, edit, save and remove function. Each function call triggers the <code>utag.link()</code> function.</p>
-
-<pre><code>add(text) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">add(text) {
     utag.link({
-        &quot;page_type&quot;: &quot;react&quot;,
-        &quot;view_name&quot;: &quot;board&quot;,
-        &quot;event_type&quot;: &quot;click&quot;,
-        &quot;event_name&quot;: &quot;add_note&quot;,
-        &quot;tealium_event&quot;: &quot;add_note&quot;
+        <span style="color:#a31515">&#34;page_type&#34;</span>: <span style="color:#a31515">&#34;react&#34;</span>,
+        <span style="color:#a31515">&#34;view_name&#34;</span>: <span style="color:#a31515">&#34;board&#34;</span>,
+        <span style="color:#a31515">&#34;event_type&#34;</span>: <span style="color:#a31515">&#34;click&#34;</span>,
+        <span style="color:#a31515">&#34;event_name&#34;</span>: <span style="color:#a31515">&#34;add_note&#34;</span>,
+        <span style="color:#a31515">&#34;tealium_event&#34;</span>: <span style="color:#a31515">&#34;add_note&#34;</span>
     })
-    var notes = [
-        ...this.state.notes,
+    <span style="color:#00f">var</span> notes = [
+        ...<span style="color:#00f">this</span>.state.notes,
         {
-            id: this.nextId(),
+            id: <span style="color:#00f">this</span>.nextId(),
             note: text
         }
     ]
-    this.setState({notes})
+    <span style="color:#00f">this</span>.setState({notes})
 }
 
 edit() {
     utag.link({
-        &quot;page_type&quot;: &quot;react&quot;,
-        &quot;view_name&quot;: &quot;board&quot;,
-        &quot;event_type&quot;: &quot;click&quot;,
-        &quot;event_name&quot;: &quot;edit_note&quot;,
-        &quot;tealium_event&quot;: &quot;edit_note&quot;
+        <span style="color:#a31515">&#34;page_type&#34;</span>: <span style="color:#a31515">&#34;react&#34;</span>,
+        <span style="color:#a31515">&#34;view_name&#34;</span>: <span style="color:#a31515">&#34;board&#34;</span>,
+        <span style="color:#a31515">&#34;event_type&#34;</span>: <span style="color:#a31515">&#34;click&#34;</span>,
+        <span style="color:#a31515">&#34;event_name&#34;</span>: <span style="color:#a31515">&#34;edit_note&#34;</span>,
+        <span style="color:#a31515">&#34;tealium_event&#34;</span>: <span style="color:#a31515">&#34;edit_note&#34;</span>
     })
-    this.setState({editing: true});
+    <span style="color:#00f">this</span>.setState({editing: <span style="color:#00f">true</span>});
 }
 save() {
     utag.link({
-        &quot;page_type&quot;: &quot;react&quot;,
-        &quot;view_name&quot;: &quot;board&quot;,
-        &quot;event_type&quot;: &quot;click&quot;,
-        &quot;event_name&quot;: &quot;save_note&quot;,
-        &quot;tealium_event&quot;: &quot;save_note&quot;
+        <span style="color:#a31515">&#34;page_type&#34;</span>: <span style="color:#a31515">&#34;react&#34;</span>,
+        <span style="color:#a31515">&#34;view_name&#34;</span>: <span style="color:#a31515">&#34;board&#34;</span>,
+        <span style="color:#a31515">&#34;event_type&#34;</span>: <span style="color:#a31515">&#34;click&#34;</span>,
+        <span style="color:#a31515">&#34;event_name&#34;</span>: <span style="color:#a31515">&#34;save_note&#34;</span>,
+        <span style="color:#a31515">&#34;tealium_event&#34;</span>: <span style="color:#a31515">&#34;save_note&#34;</span>
     })
-    this.props.onChange(this.refs.newText.value, this.props.id)
-    this.setState({editing: false});
+    <span style="color:#00f">this</span>.props.onChange(<span style="color:#00f">this</span>.refs.newText.value, <span style="color:#00f">this</span>.props.id)
+    <span style="color:#00f">this</span>.setState({editing: <span style="color:#00f">false</span>});
 }
 remove() {
     utag.link({
-        &quot;page_type&quot;: &quot;react&quot;,
-        &quot;view_name&quot;: &quot;board&quot;,
-        &quot;event_type&quot;: &quot;click&quot;,
-        &quot;event_name&quot;: &quot;remove_note&quot;,
-        &quot;tealium_event&quot;: &quot;remove_note&quot;
+        <span style="color:#a31515">&#34;page_type&#34;</span>: <span style="color:#a31515">&#34;react&#34;</span>,
+        <span style="color:#a31515">&#34;view_name&#34;</span>: <span style="color:#a31515">&#34;board&#34;</span>,
+        <span style="color:#a31515">&#34;event_type&#34;</span>: <span style="color:#a31515">&#34;click&#34;</span>,
+        <span style="color:#a31515">&#34;event_name&#34;</span>: <span style="color:#a31515">&#34;remove_note&#34;</span>,
+        <span style="color:#a31515">&#34;tealium_event&#34;</span>: <span style="color:#a31515">&#34;remove_note&#34;</span>
     })
 
-    this.props.onRemove(this.props.id)
+    <span style="color:#00f">this</span>.props.onRemove(<span style="color:#00f">this</span>.props.id)
 }
-</code></pre>
-
+</code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -5473,8 +5465,170 @@ remove() {
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5549,7 +5703,7 @@ remove() {
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7421,7 +7575,7 @@ remove() {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  March 11, 2021 
+    <span>This page was last updated:  December 15, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -7575,9 +7729,15 @@ remove() {
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

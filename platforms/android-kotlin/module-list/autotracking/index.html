@@ -321,18 +321,18 @@ Tracks only the activities that are annotated, with the option to override the s
 <ul>
 <li><p><strong>Override event name</strong><br />
 Use this annotation to override the default screen name.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">@Autotracked(name = <span style="color:#b84">&#34;MyCustomName&#34;</span>)
-<span style="font-weight:bold">private</span> <span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">AnnotatedActivityWithOverride</span> : Activity()</code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">@Autotracked(name = <span style="color:#a31515">&#34;MyCustomName&#34;</span>)
+<span style="color:#00f">private</span> <span style="color:#00f">class</span> <span style="color:#2b91af">AnnotatedActivityWithOverride</span> : Activity()</code></pre></div></li>
 
 <li><p><strong>Include in tracking</strong><br />
 In partial tracking mode, use this annotation to track specific activities.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">@Autotracked()
-<span style="font-weight:bold">private</span> <span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">AnnotatedActivity</span> : Activity()</code></pre></div></li>
+<span style="color:#00f">private</span> <span style="color:#00f">class</span> <span style="color:#2b91af">AnnotatedActivity</span> : Activity()</code></pre></div></li>
 
 <li><p><strong>Omit from tracking</strong><br />
 In full tracking mode, use this annotation to omit activities from being tracked automatically.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">@Autotracked(track = <span style="font-weight:bold">false</span>)
-<span style="font-weight:bold">private</span> <span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">AnnotatedActivityWithoutTracking</span> : Activity()</code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">@Autotracked(track = <span style="color:#00f">false</span>)
+<span style="color:#00f">private</span> <span style="color:#00f">class</span> <span style="color:#2b91af">AnnotatedActivityWithoutTracking</span> : Activity()</code></pre></div></li>
 </ul>
 
 <h3 id="full-tracking">Full Tracking</h3>
@@ -353,7 +353,7 @@ In full tracking mode, use this annotation to omit activities from being tracked
 
 <p>For example, if you don&rsquo;t want to track activities that contain the strings &ldquo;Settings&rdquo; or &ldquo;Profile&rdquo;, then the block list could contain:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">[
-  <span style="color:#b84">&#34;settings&#34;</span>, <span style="color:#b84">&#34;profile&#34;</span>
+  <span style="color:#a31515">&#34;settings&#34;</span>, <span style="color:#a31515">&#34;profile&#34;</span>
 ]</code></pre></div>
 <p>The block list file can be stored locally in the <code>assets</code> directory of your app or hosted remotely as a URL.</p>
 
@@ -374,20 +374,20 @@ In full tracking mode, use this annotation to omit activities from being tracked
 
 <ol>
 <li><p>In your project&rsquo;s top-level <code>build.gradle</code> file, add the following Maven repository:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects <span style="font-weight:bold">{</span>
- repositories <span style="font-weight:bold">{</span>
-   jcenter<span style="font-weight:bold">()</span>
-   maven <span style="font-weight:bold">{</span>
-       url <span style="color:#b84">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
-   <span style="font-weight:bold">}</span>
- <span style="font-weight:bold">}</span>
-<span style="font-weight:bold">}</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
+ repositories {
+   jcenter()
+   maven {
+       url <span style="color:#a31515">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
+   }
+ }
+}</code></pre></div></li>
 
 <li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the following Maven dependency:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
- implementation <span style="color:#b84">&#39;com.tealium:kotlin-core:1.2.8&#39;</span>
- implementation <span style="color:#b84">&#39;com.tealium:kotlin-autotracking:1.0.0&#39;</span>
-<span style="font-weight:bold">}</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
+ implementation <span style="color:#a31515">&#39;com.tealium:kotlin-core:1.3.0&#39;</span>
+ implementation <span style="color:#a31515">&#39;com.tealium:kotlin-autotracking:1.0.0&#39;</span>
+}</code></pre></div></li>
 </ol>
 
 <h3 id="manual">Manual</h3>
@@ -400,9 +400,9 @@ In full tracking mode, use this annotation to omit activities from being tracked
 <li><p>Copy the file <code>tealium-kotlin.autotracking-1.0.0.aar</code> into your project&rsquo;s <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> directory.</p></li>
 
 <li><p>Add the Tealium library dependency to your project module’s <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
-  implementation<span style="font-weight:bold">(</span>name:<span style="color:#b84">&#39;tealium-kotlin.autotracking-1.0.0&#39;</span><span style="font-weight:bold">,</span> ext:<span style="color:#b84">&#39;aar&#39;</span><span style="font-weight:bold">)</span>
-<span style="font-weight:bold">}</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
+  implementation(name:<span style="color:#a31515">&#39;tealium-kotlin.autotracking-1.0.0&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
+}</code></pre></div></li>
 </ol>
 
 <h2 id="initialize">Initialize</h2>
@@ -410,9 +410,9 @@ In full tracking mode, use this annotation to omit activities from being tracked
 <p>To initialize the AutoTracking module, add it to the list of modules in <code>TealiumConfig</code> and set the tracking mode.</p>
 
 <p>Example of initializing the AutoTracking module:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">val</span> config = TealiumConfig(application,
-              <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-              <span style="color:#b84">&#34;PROFILE&#34;</span>,
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> config = TealiumConfig(application,
+              <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+              <span style="color:#a31515">&#34;PROFILE&#34;</span>,
               ENVIRONMENT,
               modules = mutableSetOf(Modules.AutoTracking)
               ).apply {
@@ -449,18 +449,18 @@ In full tracking mode, use this annotation to omit activities from being tracked
 <p>By default, the automatically tracked events do not include any context variables. To add context data to an event from the AutoTracking module, use the global delegate set in the <code>TealiumConfig</code> to return a map of the custom data object for each tracked activity. This executes for every event tracked by the module.</p>
 
 <p>To set the delegate:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.autoTrackingCollectorDelegate = <span style="font-weight:bold">object</span>: ActivityDataCollector {
-    <span style="font-weight:bold">override</span> <span style="font-weight:bold">fun</span> <span style="color:#900;font-weight:bold">onCollectActivityData</span>(activityName: String): Map&lt;String, Any&gt;? {
-        <span style="font-weight:bold">when</span> (activityName) {
-            <span style="color:#b84">&#34;some_activity&#34;</span> -&gt; <span style="font-weight:bold">return</span> mapOf(<span style="color:#b84">&#34;some_key&#34;</span> to <span style="color:#b84">&#34;some_value&#34;</span>)
-            <span style="font-weight:bold">else</span> -&gt; <span style="font-weight:bold">return</span> <span style="font-weight:bold">null</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.autoTrackingCollectorDelegate = <span style="color:#00f">object</span>: ActivityDataCollector {
+    <span style="color:#00f">override</span> <span style="color:#00f">fun</span> onCollectActivityData(activityName: String): Map&lt;String, Any&gt;? {
+        <span style="color:#00f">when</span> (activityName) {
+            <span style="color:#a31515">&#34;some_activity&#34;</span> -&gt; <span style="color:#00f">return</span> mapOf(<span style="color:#a31515">&#34;some_key&#34;</span> to <span style="color:#a31515">&#34;some_value&#34;</span>)
+            <span style="color:#00f">else</span> -&gt; <span style="color:#00f">return</span> <span style="color:#00f">null</span>
         }
     }
 }</code></pre></div>
 <p>Alternatively, to add context data to a specific activity, make your <code>Activity</code> implement the same <code>ActivityDataCollector</code> interface.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">ActivityWithDataCollector</span> : Activity(), ActivityDataCollector {
-    <span style="font-weight:bold">override</span> <span style="font-weight:bold">fun</span> <span style="color:#900;font-weight:bold">onCollectActivityData</span>(activityName: String): Map&lt;String, Any&gt;? {
-        <span style="font-weight:bold">return</span> mapOf(<span style="color:#b84">&#34;some_key&#34;</span> to <span style="color:#b84">&#34;some_value&#34;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">class</span> <span style="color:#2b91af">ActivityWithDataCollector</span> : Activity(), ActivityDataCollector {
+    <span style="color:#00f">override</span> <span style="color:#00f">fun</span> onCollectActivityData(activityName: String): Map&lt;String, Any&gt;? {
+        <span style="color:#00f">return</span> mapOf(<span style="color:#a31515">&#34;some_key&#34;</span> to <span style="color:#a31515">&#34;some_value&#34;</span>)
     }
 }</code></pre></div>
 <p>Both delegates are executed for each tracked activity, so add common data at the global level, and add specific data using the <code>onCollectActivityData</code> method.</p>
@@ -5540,8 +5540,170 @@ In full tracking mode, use this annotation to omit activities from being tracked
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5616,7 +5778,7 @@ In full tracking mode, use this annotation to omit activities from being tracked
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7488,7 +7650,7 @@ In full tracking mode, use this annotation to omit activities from being tracked
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  November 8, 2021 
+    <span>This page was last updated:  December 14, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -7642,9 +7804,15 @@ In full tracking mode, use this annotation to omit activities from being tracked
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

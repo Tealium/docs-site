@@ -309,33 +309,33 @@ var utag_data = {
 <p>App Extensions have their own sandboxed data storage, which is not shared with the host iOS app (if available). Therefore, by default, a new persistent visitor ID is generated when the app is started for the first time.</p>
 
 <p>An issue causing 3 distinct visitor IDs for the same visitor arises when you have an iOS app, Today widget, and the watchOS extension. This is not an issue if you are using visitor stitching and already have a known visitor ID for the app user. Avoid this situation by synchronizing the visitor IDs across the app and its extensions. This is done by passing the current Tealium first party visitor ID in the <code>TealiumConfig</code> object of the app extension when initializing Tealium. The ID is stored and used for future launches of the app, without being regenerated.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">class</span> <span style="color:#2b91af">TealiumHelper</span> {
 
-	<span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
+	<span style="color:#00f">var</span> tealium: Tealium?
 
-	<span style="color:#998;font-style:italic">// ...</span>
+	<span style="color:#008000">// ...</span>
 
-	<span style="color:#998;font-style:italic">// Return the current visitor ID from the Tealium Swift library on the iOS app</span>
-	<span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">getVisitorId</span>() -&gt; <span style="color:#999">String</span>? {
-		<span style="font-weight:bold">return</span> <span style="font-weight:bold">self</span>.tealium.visitorId
+	<span style="color:#008000">// Return the current visitor ID from the Tealium Swift library on the iOS app</span>
+	<span style="color:#00f">func</span> getVisitorId() -&gt; String? {
+		<span style="color:#00f">return</span> <span style="color:#00f">self</span>.tealium.visitorId
 	}
 
-	<span style="color:#998;font-style:italic">// On the app extension, pass the ID retrieved from the iOS app in the config object</span>
-	<span style="font-weight:bold">private</span> <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">initTealium</span>(existingVisitorId id: <span style="color:#999">String</span>) {
-		<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
- 	       		                 profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-        	   	                 environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-           		                 datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
+	<span style="color:#008000">// On the app extension, pass the ID retrieved from the iOS app in the config object</span>
+	<span style="color:#00f">private</span> <span style="color:#00f">func</span> initTealium(existingVisitorId id: String) {
+		<span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+ 	       		                 profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
+        	   	                 environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
+           		                 datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>)
 
-		<span style="color:#998;font-style:italic">// existing ID is used as the first party ID in the app extension</span>
+		<span style="color:#008000">// existing ID is used as the first party ID in the app extension</span>
         config.existingVisitorId = id
-        <span style="font-weight:bold">self</span>.tealium = Tealium(config: config)
+        <span style="color:#00f">self</span>.tealium = Tealium(config: config)
 	}
 
 }</code></pre></div>
 <p>Alternatively, generate a visitor ID centrally and pass it to each Tealium instance at initialization. It is recommended to use a UUID.</p>
 
-<p class="tip">Do not use a simple ID, such as email address, for your first party visitor ID.</p>
+<p class="tip"><i class="fas fa-star"></i>Do not use a simple ID, such as email address, for your first party visitor ID.</p>
 
 </div>
 
@@ -5406,8 +5406,170 @@ var utag_data = {
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5482,7 +5644,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7508,9 +7670,15 @@ var utag_data = {
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

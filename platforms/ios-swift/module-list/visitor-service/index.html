@@ -332,9 +332,9 @@ var utag_data = {
 <h3 id="cocoapods">CocoaPods</h3>
 
 <p>To install the VisitorService module with CocoaPods, add the following pods to your Podfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#b84">&#39;tealium-swift/Core&#39;</span>
-pod <span style="color:#b84">&#39;tealium-swift/Collect&#39;</span> <span style="color:#808000">//o</span>r <span style="color:#b84">&#39;tealium-swift/TagManagement&#39;</span>
-pod <span style="color:#b84">&#39;tealium-swift/VisitorService&#39;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;tealium-swift/Core&#39;</span>
+pod <span style="color:#a31515">&#39;tealium-swift/Collect&#39;</span> <span style="color:#a31515">//o</span>r <span style="color:#a31515">&#39;tealium-swift/TagManagement&#39;</span>
+pod <span style="color:#a31515">&#39;tealium-swift/VisitorService&#39;</span></code></pre></div>
 <p>Learn more about the <a href="/platforms/ios-swift/install/#cocoapods">CocoaPods installation for iOS</a>.</p>
 
 <h3 id="carthage">Carthage</h3>
@@ -345,12 +345,12 @@ pod <span style="color:#b84">&#39;tealium-swift/VisitorService&#39;</span></code
 <li><p>Go to the app target&rsquo;s General configuration page in Xcode.</p></li>
 
 <li><p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumVisitorService<span style="font-weight:bold">.</span>framework</code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumVisitorService.framework</code></pre></div></li>
 
 <li><p>To setup the VisitorService module, add the following required import statements to your project:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumCore</span>
-<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumCollect</span> <span style="color:#998;font-style:italic">//or import TealiumTagManagement</span>
-<span style="color:#458;font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumVisitorService</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumCore</span>
+<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumCollect</span> <span style="color:#008000">//or import TealiumTagManagement</span>
+<span style="color:#2b91af">import</span> <span style="color:#2b91af">TealiumVisitorService</span></code></pre></div></li>
 </ol>
 
 <p>Learn more about the <a href="/platforms/ios-swift/install/#carthage">Carthage installation for iOS</a>.</p>
@@ -457,7 +457,7 @@ pod <span style="color:#b84">&#39;tealium-swift/VisitorService&#39;</span></code
 </tbody>
 </table>
 
-<p class="note">If an Audience or Badge is not assigned, <code>nil</code> is returned.</p>
+<p class="note"><i class="fas fa-info-circle"></i>If an Audience or Badge is not assigned, <code>nil</code> is returned.</p>
 
 <h4 id="arraysofbooleans"><code>arraysOfBooleans</code></h4>
 
@@ -489,10 +489,10 @@ pod <span style="color:#b84">&#39;tealium-swift/VisitorService&#39;</span></code
 </table>
 
 <p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">didUpdate</span>(visitorProfile: TealiumVisitorProfile) {
-    <span style="color:#998;font-style:italic">// Return an array of booleans value</span>
-    <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">arraysOfBooleans</span> = visitorProfile.arraysOfBooleans?[<span style="color:#b84">&#34;5279&#34;</span>] {
-        <span style="font-weight:bold">let</span> <span style="color:#008080">numberOfPositiveBools</span> = arraysOfBooleans.filter { <span style="color:#008080">$0</span> == <span style="font-weight:bold">true</span> }.count
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> didUpdate(visitorProfile: TealiumVisitorProfile) {
+    <span style="color:#008000">// Return an array of booleans value</span>
+    <span style="color:#00f">if</span> <span style="color:#00f">let</span> arraysOfBooleans = visitorProfile.arraysOfBooleans?[<span style="color:#a31515">&#34;5279&#34;</span>] {
+        <span style="color:#00f">let</span> numberOfPositiveBools = arraysOfBooleans.filter { $0 == <span style="color:#00f">true</span> }.count
         print(numberOfPositiveBools)
     }
 }</code></pre></div>
@@ -526,12 +526,12 @@ pod <span style="color:#b84">&#39;tealium-swift/VisitorService&#39;</span></code
 </table>
 
 <p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">didUpdate</span>(visitorProfile: TealiumVisitorProfile) {
-    <span style="color:#998;font-style:italic">// Return an array of numbers value</span>
-    <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">arraysOfNumbers</span> = visitorProfile.arraysOfNumbers?[<span style="color:#b84">&#34;5279&#34;</span>] {
-        arraysOfNumbers.forEach { number <span style="font-weight:bold">in</span>
-    		<span style="font-weight:bold">if</span> number <span style="font-weight:bold">&gt;</span> <span style="color:#099">3.0</span> {
-    			<span style="color:#998;font-style:italic">// ... take action</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> didUpdate(visitorProfile: TealiumVisitorProfile) {
+    <span style="color:#008000">// Return an array of numbers value</span>
+    <span style="color:#00f">if</span> <span style="color:#00f">let</span> arraysOfNumbers = visitorProfile.arraysOfNumbers?[<span style="color:#a31515">&#34;5279&#34;</span>] {
+        arraysOfNumbers.forEach { number <span style="color:#00f">in</span>
+    		<span style="color:#00f">if</span> number &gt; 3.0 {
+    			<span style="color:#008000">// ... take action</span>
     		}
         }
     }
@@ -566,12 +566,12 @@ pod <span style="color:#b84">&#39;tealium-swift/VisitorService&#39;</span></code
 </table>
 
 <p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">didUpdate</span>(visitorProfile: TealiumVisitorProfile) {
-    <span style="color:#998;font-style:italic">// Return an array of strings value</span>
-    <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">arraysOfStrings</span> = visitorProfile.arraysOfStrings?[<span style="color:#b84">&#34;3390&#34;</span>] {
-        arraysOfStrings.forEach { string <span style="font-weight:bold">in</span>
-    		<span style="font-weight:bold">if</span> string.lowercased().contains(<span style="color:#b84">&#34;Jeans&#34;</span>) {
-    			<span style="color:#998;font-style:italic">// ... take action</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> didUpdate(visitorProfile: TealiumVisitorProfile) {
+    <span style="color:#008000">// Return an array of strings value</span>
+    <span style="color:#00f">if</span> <span style="color:#00f">let</span> arraysOfStrings = visitorProfile.arraysOfStrings?[<span style="color:#a31515">&#34;3390&#34;</span>] {
+        arraysOfStrings.forEach { string <span style="color:#00f">in</span>
+    		<span style="color:#00f">if</span> string.lowercased().contains(<span style="color:#a31515">&#34;Jeans&#34;</span>) {
+    			<span style="color:#008000">// ... take action</span>
     		}
         }
     }
@@ -605,18 +605,18 @@ pod <span style="color:#b84">&#39;tealium-swift/VisitorService&#39;</span></code
 </tbody>
 </table>
 
-<p class="note">If an Audience is not assigned, <code>nil</code> is returned.</p>
+<p class="note"><i class="fas fa-info-circle"></i>If an Audience is not assigned, <code>nil</code> is returned.</p>
 
 <p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">didUpdate</span>(visitorProfile: TealiumVisitorProfile) {
-    <span style="color:#998;font-style:italic">// Return the current Audiences for which the user is assigned</span>
-    <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">audiences</span> = visitorProfile.audiences {
-        print(<span style="color:#b84">&#34;Visitor audiences: </span><span style="color:#b84">\(</span>audiences<span style="color:#b84">)</span><span style="color:#b84">&#34;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> didUpdate(visitorProfile: TealiumVisitorProfile) {
+    <span style="color:#008000">// Return the current Audiences for which the user is assigned</span>
+    <span style="color:#00f">if</span> <span style="color:#00f">let</span> audiences = visitorProfile.audiences {
+        print(<span style="color:#a31515">&#34;Visitor audiences: </span><span style="color:#a31515">\(</span>audiences<span style="color:#a31515">)</span><span style="color:#a31515">&#34;</span>)
 
-        <span style="color:#998;font-style:italic">// Check if an Audience is assigned to a user by id</span>
-        <span style="font-weight:bold">if</span> audiences[<span style="color:#b84">&#34;account_profile_106&#34;</span>] <span style="font-weight:bold">!=</span> <span style="font-weight:bold">nil</span> {
-            print(<span style="color:#b84">&#34;Visitor is a member of audience id 106&#34;</span>)
-            <span style="color:#998;font-style:italic">// ... Visitor is a member of this audience, take appropriate action</span>
+        <span style="color:#008000">// Check if an Audience is assigned to a user by id</span>
+        <span style="color:#00f">if</span> audiences[<span style="color:#a31515">&#34;account_profile_106&#34;</span>] != <span style="color:#00f">nil</span> {
+            print(<span style="color:#a31515">&#34;Visitor is a member of audience id 106&#34;</span>)
+            <span style="color:#008000">// ... Visitor is a member of this audience, take appropriate action</span>
         }
 
     }
@@ -651,13 +651,13 @@ pod <span style="color:#b84">&#39;tealium-swift/VisitorService&#39;</span></code
 </table>
 
 <p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">didUpdate</span>(visitorProfile: TealiumVisitorProfile) {
-    <span style="color:#998;font-style:italic">// Return a badge value</span>
-    <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">badgeAssigned</span> = visitorProfile.badges?[<span style="color:#b84">&#34;5279&#34;</span>] {
-        print(badgeAssigned ? <span style="color:#b84">&#34;Badge id 5279 is assigned&#34;</span> : <span style="color:#b84">&#34;Badge id 5945 is not assigned&#34;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> didUpdate(visitorProfile: TealiumVisitorProfile) {
+    <span style="color:#008000">// Return a badge value</span>
+    <span style="color:#00f">if</span> <span style="color:#00f">let</span> badgeAssigned = visitorProfile.badges?[<span style="color:#a31515">&#34;5279&#34;</span>] {
+        print(badgeAssigned ? <span style="color:#a31515">&#34;Badge id 5279 is assigned&#34;</span> : <span style="color:#a31515">&#34;Badge id 5945 is not assigned&#34;</span>)
     }
 }</code></pre></div>
-<p class="note">If a Badge is not assigned, <code>nil</code> is returned.</p>
+<p class="note"><i class="fas fa-info-circle"></i>If a Badge is not assigned, <code>nil</code> is returned.</p>
 
 <h4 id="booleans"><code>booleans</code></h4>
 
@@ -689,11 +689,11 @@ pod <span style="color:#b84">&#39;tealium-swift/VisitorService&#39;</span></code
 </table>
 
 <p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">didUpdate</span>(visitorProfile: TealiumVisitorProfile) {
-    <span style="color:#998;font-style:italic">// Return a boolean value</span>
-    <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">booleanValue</span> = visitorProfile.booleans?[<span style="color:#b84">&#34;4479&#34;</span>] {
-        <span style="font-weight:bold">if</span> booleanValue {
-        	<span style="color:#998;font-style:italic">// ... do something</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> didUpdate(visitorProfile: TealiumVisitorProfile) {
+    <span style="color:#008000">// Return a boolean value</span>
+    <span style="color:#00f">if</span> <span style="color:#00f">let</span> booleanValue = visitorProfile.booleans?[<span style="color:#a31515">&#34;4479&#34;</span>] {
+        <span style="color:#00f">if</span> booleanValue {
+        	<span style="color:#008000">// ... do something</span>
         }
     }
 }</code></pre></div>
@@ -729,12 +729,12 @@ pod <span style="color:#b84">&#39;tealium-swift/VisitorService&#39;</span></code
 </table>
 
 <p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">didUpdate</span>(visitorProfile: TealiumVisitorProfile) {
-    <span style="color:#998;font-style:italic">// Return a current visit string attribute</span>
-    <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">currentVisit</span> = visitorProfile.currentVisit,
-       <span style="font-weight:bold">let</span> <span style="color:#008080">string</span> = currentVisit.strings?[<span style="color:#b84">&#34;34&#34;</span>] {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> didUpdate(visitorProfile: TealiumVisitorProfile) {
+    <span style="color:#008000">// Return a current visit string attribute</span>
+    <span style="color:#00f">if</span> <span style="color:#00f">let</span> currentVisit = visitorProfile.currentVisit,
+       <span style="color:#00f">let</span> string = currentVisit.strings?[<span style="color:#a31515">&#34;34&#34;</span>] {
         print(string)
-        <span style="color:#998;font-style:italic">// ... take action</span>
+        <span style="color:#008000">// ... take action</span>
     }
 }</code></pre></div>
 <h4 id="dates"><code>dates</code></h4>
@@ -767,11 +767,11 @@ pod <span style="color:#b84">&#39;tealium-swift/VisitorService&#39;</span></code
 </table>
 
 <p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">didUpdate</span>(visitorProfile: TealiumVisitorProfile) {
-    <span style="color:#998;font-style:italic">// Return a date value</span>
-    <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">date</span> = visitorProfile.dates?[<span style="color:#b84">&#34;33&#34;</span>] {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> didUpdate(visitorProfile: TealiumVisitorProfile) {
+    <span style="color:#008000">// Return a date value</span>
+    <span style="color:#00f">if</span> <span style="color:#00f">let</span> date = visitorProfile.dates?[<span style="color:#a31515">&#34;33&#34;</span>] {
         print(date)
-        <span style="color:#998;font-style:italic">// .. take action</span>
+        <span style="color:#008000">// .. take action</span>
     }
 }</code></pre></div>
 <h4 id="numbers"><code>numbers</code></h4>
@@ -804,11 +804,11 @@ pod <span style="color:#b84">&#39;tealium-swift/VisitorService&#39;</span></code
 </table>
 
 <p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">didUpdate</span>(visitorProfile: TealiumVisitorProfile) {
-    <span style="color:#998;font-style:italic">// Return a number value</span>
-    <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">number</span> = visitorProfile.numbers?[<span style="color:#b84">&#34;1399&#34;</span>] {
-        <span style="font-weight:bold">if</span> number <span style="font-weight:bold">&gt;</span> <span style="color:#099">3.0</span> {
-        	<span style="color:#998;font-style:italic">// ... take action</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> didUpdate(visitorProfile: TealiumVisitorProfile) {
+    <span style="color:#008000">// Return a number value</span>
+    <span style="color:#00f">if</span> <span style="color:#00f">let</span> number = visitorProfile.numbers?[<span style="color:#a31515">&#34;1399&#34;</span>] {
+        <span style="color:#00f">if</span> number &gt; 3.0 {
+        	<span style="color:#008000">// ... take action</span>
         }
     }
 }</code></pre></div>
@@ -842,11 +842,11 @@ pod <span style="color:#b84">&#39;tealium-swift/VisitorService&#39;</span></code
 </table>
 
 <p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">didUpdate</span>(visitorProfile: TealiumVisitorProfile) {
-    <span style="color:#998;font-style:italic">// Return an set of strings value</span>
-    <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">setOfStrings</span> = visitorProfile.setsOfStrings?[<span style="color:#b84">&#34;5279&#34;</span>] {
-        <span style="font-weight:bold">if</span> setOfStrings.contains(<span style="color:#b84">&#34;toys&#34;</span>) {
-        	<span style="color:#998;font-style:italic">// ... take action</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> didUpdate(visitorProfile: TealiumVisitorProfile) {
+    <span style="color:#008000">// Return an set of strings value</span>
+    <span style="color:#00f">if</span> <span style="color:#00f">let</span> setOfStrings = visitorProfile.setsOfStrings?[<span style="color:#a31515">&#34;5279&#34;</span>] {
+        <span style="color:#00f">if</span> setOfStrings.contains(<span style="color:#a31515">&#34;toys&#34;</span>) {
+        	<span style="color:#008000">// ... take action</span>
         }
     }
 }</code></pre></div>
@@ -880,11 +880,11 @@ pod <span style="color:#b84">&#39;tealium-swift/VisitorService&#39;</span></code
 </table>
 
 <p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">didUpdate</span>(visitorProfile: TealiumVisitorProfile) {
-    <span style="color:#998;font-style:italic">// Return a string value</span>
-    <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">string</span> = visitorProfile.strings?[<span style="color:#b84">&#34;5699&#34;</span>] {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> didUpdate(visitorProfile: TealiumVisitorProfile) {
+    <span style="color:#008000">// Return a string value</span>
+    <span style="color:#00f">if</span> <span style="color:#00f">let</span> string = visitorProfile.strings?[<span style="color:#a31515">&#34;5699&#34;</span>] {
         print(string)
-        <span style="color:#998;font-style:italic">// ... take action</span>
+        <span style="color:#008000">// ... take action</span>
     }
 }</code></pre></div>
 <h4 id="tallies"><code>tallies</code></h4>
@@ -924,15 +924,15 @@ pod <span style="color:#b84">&#39;tealium-swift/VisitorService&#39;</span></code
 </table>
 
 <p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">didUpdate</span>(visitorProfile: TealiumVisitorProfile) {
-    <span style="color:#998;font-style:italic">// Return an entire tally</span>
-    <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">tally</span> = visitorProfile.tallies?[<span style="color:#b84">&#34;1399&#34;</span>] {
-        print(<span style="color:#b84">&#34;Tally id 5377: </span><span style="color:#b84">\(</span>tally<span style="color:#b84">)</span><span style="color:#b84">&#34;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> didUpdate(visitorProfile: TealiumVisitorProfile) {
+    <span style="color:#008000">// Return an entire tally</span>
+    <span style="color:#00f">if</span> <span style="color:#00f">let</span> tally = visitorProfile.tallies?[<span style="color:#a31515">&#34;1399&#34;</span>] {
+        print(<span style="color:#a31515">&#34;Tally id 5377: </span><span style="color:#a31515">\(</span>tally<span style="color:#a31515">)</span><span style="color:#a31515">&#34;</span>)
     }
 
-    <span style="color:#998;font-style:italic">// Return a tally value by using the tally id and the key for the value desired</span>
-    <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">tally</span> = visitorProfile.tallies?[<span style="color:#b84">&#34;5381&#34;</span>], <span style="font-weight:bold">let</span> <span style="color:#008080">tallyValue</span> = tally[<span style="color:#b84">&#34;red shirts&#34;</span>] {
-        print(<span style="color:#b84">&#34;Tally value for id 5381 and key &#39;red shirts&#39;: </span><span style="color:#b84">\(</span>tallyValue<span style="color:#b84">)</span><span style="color:#b84">&#34;</span>)
+    <span style="color:#008000">// Return a tally value by using the tally id and the key for the value desired</span>
+    <span style="color:#00f">if</span> <span style="color:#00f">let</span> tally = visitorProfile.tallies?[<span style="color:#a31515">&#34;5381&#34;</span>], <span style="color:#00f">let</span> tallyValue = tally[<span style="color:#a31515">&#34;red shirts&#34;</span>] {
+        print(<span style="color:#a31515">&#34;Tally value for id 5381 and key &#39;red shirts&#39;: </span><span style="color:#a31515">\(</span>tallyValue<span style="color:#a31515">)</span><span style="color:#a31515">&#34;</span>)
     }
 }</code></pre></div>
 <h2 id="api-reference">API Reference</h2>
@@ -972,10 +972,10 @@ pod <span style="color:#b84">&#39;tealium-swift/VisitorService&#39;</span></code
 <p>Returns the most recently-retrieved visitor profile from persistent storage, without triggering a new request. Useful in situations where there is no internet connection, but a prior successful request has been made.</p>
 
 <p>Usage example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">profile</span> = <span style="font-weight:bold">self</span>.tealium?.visitorService?.cachedProfile
-<span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">json</span> = <span style="font-weight:bold">try</span>? JSONEncoder().encode(profile),
-    <span style="font-weight:bold">let</span> <span style="color:#008080">cachedProfileString</span> = <span style="color:#999">String</span>(data: json, encoding: .utf8) <span style="font-weight:bold">else</span> {
-        <span style="font-weight:bold">return</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> profile = <span style="color:#00f">self</span>.tealium?.visitorService?.cachedProfile
+<span style="color:#00f">guard</span> <span style="color:#00f">let</span> json = <span style="color:#00f">try</span>? JSONEncoder().encode(profile),
+    <span style="color:#00f">let</span> cachedProfileString = String(data: json, encoding: .utf8) <span style="color:#00f">else</span> {
+        <span style="color:#00f">return</span>
 }
 print(cachedProfileString)</code></pre></div>
 <h4 id="requestvisitorprofile"><code>requestVisitorProfile()</code></h4>
@@ -983,36 +983,36 @@ print(cachedProfileString)</code></pre></div>
 <p>Triggers an immediate request to the VisitorService to retrieve the current visitor profile. If the profile has been updated since the last fetch, the <a href="#didupdate"><code>didUpdate()</code></a> delegate method is called.</p>
 
 <p>This method is called automatically whenever a track request is sent, if your visitor profile refresh interval is set to <code>0</code>. If you have a higher value set for the refresh interval, then you may call this method to retrieve the profile instantly, without waiting for the next scheduled update.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">self</span>.tealium?.visitorService?.requestVisitorProfile()</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">self</span>.tealium?.visitorService?.requestVisitorProfile()</code></pre></div>
 <p>Usage example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">track</span>(title: <span style="color:#999">String</span>, data: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>]?) {
-   <span style="font-weight:bold">let</span> <span style="color:#008080">tealEvent</span> = TealiumEvent(title, dataLayer: data)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> track(title: String, data: [String: Any]?) {
+   <span style="color:#00f">let</span> tealEvent = TealiumEvent(title, dataLayer: data)
    tealium?.track(tealEvent)
    tealium?.visitorService?.requestVisitorProfile()
 }</code></pre></div>
 <h4 id="visitorservice"><code>visitorService</code></h4>
 
 <p>The VisitorService module.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">self</span>.tealium?.visitorService?.####</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">self</span>.tealium?.visitorService?.####</code></pre></div>
 <p>The <code>####</code> is any public API method on the <code>visitorService</code> object. The following is a full usage example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">MyHelperClass</span> {
-    <span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">class</span> <span style="color:#2b91af">MyHelperClass</span> {
+    <span style="color:#00f">var</span> tealium: Tealium?
 
-    <span style="font-weight:bold">public</span> <span style="font-weight:bold">init</span> () {
-        <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-            profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-            environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-            datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
-            optionalData: <span style="font-weight:bold">nil</span>)
+    <span style="color:#00f">public</span> <span style="color:#00f">init</span> () {
+        <span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+            profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
+            environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
+            datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>,
+            optionalData: <span style="color:#00f">nil</span>)
 
-        config.visitorServiceDelegate = <span style="font-weight:bold">self</span>
-        config.visitorServiceRefresh = .every(<span style="color:#099">10</span>, .minutes)
+        config.visitorServiceDelegate = <span style="color:#00f">self</span>
+        config.visitorServiceRefresh = .every(10, .minutes)
 
-        <span style="font-weight:bold">self</span>.tealium = Tealium(config) {
-            <span style="color:#998;font-style:italic">// Note: this is inside the completion block after initialization</span>
+        <span style="color:#00f">self</span>.tealium = Tealium(config) {
+            <span style="color:#008000">// Note: this is inside the completion block after initialization</span>
 
-            <span style="color:#998;font-style:italic">// self.tealium is guaranteed to be initialized inside the completion block</span>
-            <span style="font-weight:bold">self</span>.tealium?.visitorService?.####
+            <span style="color:#008000">// self.tealium is guaranteed to be initialized inside the completion block</span>
+            <span style="color:#00f">self</span>.tealium?.visitorService?.####
         }
     }
 }</code></pre></div>
@@ -1039,10 +1039,10 @@ print(cachedProfileString)</code></pre></div>
 <h4 id="didupdate"><code>didUpdate()</code></h4>
 
 <p>Callback method that returns the updated visitor profile when the profile has updated, or when the <code>requestVisitorProfile()</code> method is called.  This depends on the set value of the refresh interval, which default to 5 minutes.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">didUpdate</span>(visitorProfile: TealiumVisitorProfile) {
-    <span style="color:#998;font-style:italic">// Act on profile attributes</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> didUpdate(visitorProfile: TealiumVisitorProfile) {
+    <span style="color:#008000">// Act on profile attributes</span>
     print(visitorProfile.audiences)
-    <span style="color:#998;font-style:italic">//...</span>
+    <span style="color:#008000">//...</span>
 }</code></pre></div>
 <table>
 <thead>
@@ -1100,7 +1100,7 @@ print(cachedProfileString)</code></pre></div>
 <h4 id="visitorservicedelegate"><code>visitorServiceDelegate</code></h4>
 
 <p>Set a delegate in order to use the <a href="#didupdate"><code>didUpdate</code></a> delegate method.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.visitorServiceDelegate = <span style="font-weight:bold">self</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.visitorServiceDelegate = <span style="color:#00f">self</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1120,18 +1120,18 @@ print(cachedProfileString)</code></pre></div>
 </table>
 
 <p>Usage example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">start</span>() {
-      <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-                                 profile: <span style="color:#b84">&#34;NAME&#34;</span>,
-                                 environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-                                 datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
-                                 optionalData: <span style="font-weight:bold">nil</span>)
-      <span style="color:#998;font-style:italic">// Tealium VisitorService module config methods</span>
-      config.visitorServiceDelegate = <span style="font-weight:bold">self</span>
-  }</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">extension</span> <span style="color:#458;font-weight:bold">TealiumHelper</span>: VisitorServiceDelegate {
-    <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">didUpdate</span>(visitorProfile: TealiumVisitorProfile) {
-        <span style="font-weight:bold">if</span> <span style="font-weight:bold">let</span> <span style="color:#008080">json</span> = <span style="font-weight:bold">try</span>? JSONEncoder().encode(visitorProfile),
-           <span style="font-weight:bold">let</span> <span style="color:#008080">string</span> = <span style="color:#999">String</span>(data: json, encoding: .utf8) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> start() {
+      <span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+                                 profile: <span style="color:#a31515">&#34;NAME&#34;</span>,
+                                 environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
+                                 datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>,
+                                 optionalData: <span style="color:#00f">nil</span>)
+      <span style="color:#008000">// Tealium VisitorService module config methods</span>
+      config.visitorServiceDelegate = <span style="color:#00f">self</span>
+  }</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">extension</span> <span style="color:#2b91af">TealiumHelper</span>: VisitorServiceDelegate {
+    <span style="color:#00f">func</span> didUpdate(visitorProfile: TealiumVisitorProfile) {
+        <span style="color:#00f">if</span> <span style="color:#00f">let</span> json = <span style="color:#00f">try</span>? JSONEncoder().encode(visitorProfile),
+           <span style="color:#00f">let</span> string = String(data: json, encoding: .utf8) {
             print(string)
         }
     }
@@ -1139,7 +1139,7 @@ print(cachedProfileString)</code></pre></div>
 <h4 id="visitorserviceoverrideprofile"><code>visitorServiceOverrideProfile</code></h4>
 
 <p>Overrides the profile from which to fetch the visitor profile. Align it with the profile used for data collection in the Collect module.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.visitorServiceOverrideProfile = <span style="color:#b84">&#34;PROFILE&#34;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.visitorServiceOverrideProfile = <span style="color:#a31515">&#34;PROFILE&#34;</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1159,19 +1159,19 @@ print(cachedProfileString)</code></pre></div>
 </table>
 
 <p>Usage example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">start</span>() {
-      <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-                                 profile: <span style="color:#b84">&#34;NAME&#34;</span>,
-                                 environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-                                 datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
-                                 optionalData: <span style="font-weight:bold">nil</span>)
-      <span style="color:#998;font-style:italic">// Tealium Visitor Service module config methods</span>
-      config.visitorServiceOverrideProfile = <span style="color:#b84">&#34;main&#34;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> start() {
+      <span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+                                 profile: <span style="color:#a31515">&#34;NAME&#34;</span>,
+                                 environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
+                                 datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>,
+                                 optionalData: <span style="color:#00f">nil</span>)
+      <span style="color:#008000">// Tealium Visitor Service module config methods</span>
+      config.visitorServiceOverrideProfile = <span style="color:#a31515">&#34;main&#34;</span>
   }</code></pre></div>
 <h4 id="visitorserviceoverrideurl"><code>visitorServiceOverrideURL</code></h4>
 
 <p>Overrides the base URL from which the visitor profile is retrieved. ACCOUNT, PROFILE, and visitor ID are automatically appended to the URL.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.visitorServiceOverrideURL = <span style="color:#b84">&#34;https://overridden-subdomain.yourdomain.com/&#34;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.visitorServiceOverrideURL = <span style="color:#a31515">&#34;https://overridden-subdomain.yourdomain.com/&#34;</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1191,20 +1191,20 @@ print(cachedProfileString)</code></pre></div>
 </table>
 
 <p>Usage example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">start</span>() {
-      <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-                                 profile: <span style="color:#b84">&#34;NAME&#34;</span>,
-                                 environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-                                 datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
-                                 optionalData: <span style="font-weight:bold">nil</span>)
-      <span style="color:#998;font-style:italic">// Tealium Visitor Service module config methods</span>
-      config.visitorServiceOverrideURL = <span style="color:#b84">&#34;https://overridden-subdomain.yourdomain.com/&#34;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> start() {
+      <span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+                                 profile: <span style="color:#a31515">&#34;NAME&#34;</span>,
+                                 environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
+                                 datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>,
+                                 optionalData: <span style="color:#00f">nil</span>)
+      <span style="color:#008000">// Tealium Visitor Service module config methods</span>
+      config.visitorServiceOverrideURL = <span style="color:#a31515">&#34;https://overridden-subdomain.yourdomain.com/&#34;</span>
   }</code></pre></div>
 <h4 id="visitorservicerefresh"><code>visitorServiceRefresh</code></h4>
 
 <p>Use this property to adjust the frequency of visitor profile retrieval. The default value is 5 minutes. Even if you add the <code>requestVisitorProfile()</code> method to every tracking call, the profile is not fetched every time unless you set this to 0.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(...)
-config.visitorServiceRefresh = .every(<span style="color:#099">3</span>, .seconds)</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> config = TealiumConfig(...)
+config.visitorServiceRefresh = .every(3, .seconds)</code></pre></div>
 <p><code>RefreshInterval</code> options: <code>seconds</code>, <code>minutes</code>, or <code>hours</code></p>
 
 <table>
@@ -1226,14 +1226,14 @@ config.visitorServiceRefresh = .every(<span style="color:#099">3</span>, .second
 </table>
 
 <p>Usage example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">start</span>() {
-      <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-                                 profile: <span style="color:#b84">&#34;NAME&#34;</span>,
-                                 environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-                                 datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>,
-                                 optionalData: <span style="font-weight:bold">nil</span>)
-      <span style="color:#998;font-style:italic">// Tealium Visitor Service module config methods</span>
-      config.visitorServiceRefresh = .every(<span style="color:#099">3</span>, .seconds)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> start() {
+      <span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+                                 profile: <span style="color:#a31515">&#34;NAME&#34;</span>,
+                                 environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
+                                 datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>,
+                                 optionalData: <span style="color:#00f">nil</span>)
+      <span style="color:#008000">// Tealium Visitor Service module config methods</span>
+      config.visitorServiceRefresh = .every(3, .seconds)
   }</code></pre></div>
 <h2 id="release-notes">Release Notes</h2>
 
@@ -6319,8 +6319,170 @@ config.visitorServiceRefresh = .every(<span style="color:#099">3</span>, .second
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -6395,7 +6557,7 @@ config.visitorServiceRefresh = .every(<span style="color:#099">3</span>, .second
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -8421,9 +8583,15 @@ config.visitorServiceRefresh = .every(<span style="color:#099">3</span>, .second
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

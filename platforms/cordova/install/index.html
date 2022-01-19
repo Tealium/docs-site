@@ -314,45 +314,45 @@ var utag_data = {
 <h2 id="install">Install</h2>
 
 <p>To install the Tealium library for Cordova, run the following command in your Cordova app project:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">cordova plugin add tealium<span style="font-weight:bold">-</span>cordova<span style="font-weight:bold">-</span>plugin
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">cordova plugin add tealium-cordova-plugin
 </code></pre></div>
 <h2 id="initialize">Initialize</h2>
 
 <p>The <a href="/platforms/cordova/api/#initialize"><code>initialize()</code></a> method initializes the Tealium Cordova plugin, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="font-weight:bold">var</span> Environment <span style="font-weight:bold">=</span> tealium.utils.Environment;
-<span style="font-weight:bold">var</span> Collectors <span style="font-weight:bold">=</span> tealium.utils.Collectors;
-<span style="font-weight:bold">var</span> Dispatchers <span style="font-weight:bold">=</span> tealium.utils.Dispatchers;
-<span style="font-weight:bold">var</span> ConsentPolicy <span style="font-weight:bold">=</span> tealium.utils.ConsentPolicy;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#00f">var</span> Environment = tealium.utils.Environment;
+<span style="color:#00f">var</span> Collectors = tealium.utils.Collectors;
+<span style="color:#00f">var</span> Dispatchers = tealium.utils.Dispatchers;
+<span style="color:#00f">var</span> ConsentPolicy = tealium.utils.ConsentPolicy;
 
-<span style="font-weight:bold">var</span> config <span style="font-weight:bold">=</span> {
-    account<span style="font-weight:bold">:</span> <span style="color:#b84">&#39;ACCOUNT&#39;</span>,
-    profile<span style="font-weight:bold">:</span> <span style="color:#b84">&#39;PROFILE&#39;</span>,
-    environment<span style="font-weight:bold">:</span> Environment.dev,
-    dispatchers<span style="font-weight:bold">:</span> [
+<span style="color:#00f">var</span> config = {
+    account: <span style="color:#a31515">&#39;ACCOUNT&#39;</span>,
+    profile: <span style="color:#a31515">&#39;PROFILE&#39;</span>,
+    environment: Environment.dev,
+    dispatchers: [
         Dispatchers.Collect,
         Dispatchers.TagManagement,
         Dispatchers.RemoteCommands
     ],
-    collectors<span style="font-weight:bold">:</span> [
+    collectors: [
         Collectors.AppData,
         Collectors.DeviceData,
         Collectors.Lifecycle,
         Collectors.Connectivity
     ],
-    consentLoggingEnabled<span style="font-weight:bold">:</span> <span style="font-weight:bold">true</span>,
-    <span style="color:#998;font-style:italic">// consentExpiry: {
-</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">//     &#39;time&#39;: 10,
-</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">//     &#39;unit&#39;: &#39;days&#39;
-</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">// },
-</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">// consentPolicy: ConsentPolicy.gdpr,
-</span><span style="color:#998;font-style:italic"></span>    lifecycleAutotrackingEnabled<span style="font-weight:bold">:</span> <span style="font-weight:bold">true</span>,
-    batchingEnabled<span style="font-weight:bold">:</span> <span style="font-weight:bold">false</span>,
-    visitorServiceEnabled<span style="font-weight:bold">:</span> <span style="font-weight:bold">true</span>,
-    useRemoteLibrarySettings<span style="font-weight:bold">:</span> <span style="font-weight:bold">false</span>
+    consentLoggingEnabled: <span style="color:#00f">true</span>,
+    <span style="color:#008000">// consentExpiry: {
+</span><span style="color:#008000"></span>    <span style="color:#008000">//     &#39;time&#39;: 10,
+</span><span style="color:#008000"></span>    <span style="color:#008000">//     &#39;unit&#39;: &#39;days&#39;
+</span><span style="color:#008000"></span>    <span style="color:#008000">// },
+</span><span style="color:#008000"></span>    <span style="color:#008000">// consentPolicy: ConsentPolicy.gdpr,
+</span><span style="color:#008000"></span>    lifecycleAutotrackingEnabled: <span style="color:#00f">true</span>,
+    batchingEnabled: <span style="color:#00f">false</span>,
+    visitorServiceEnabled: <span style="color:#00f">true</span>,
+    useRemoteLibrarySettings: <span style="color:#00f">false</span>
 };
-<span style="color:#999">window</span>.tealium.initialize(config, <span style="font-weight:bold">function</span>(success) {
-    <span style="font-weight:bold">if</span> (success) {
-      console.log(<span style="color:#b84">&#34;Tealium initialized successfully&#34;</span>)
+window.tealium.initialize(config, <span style="color:#00f">function</span>(success) {
+    <span style="color:#00f">if</span> (success) {
+      console.log(<span style="color:#a31515">&#34;Tealium initialized successfully&#34;</span>)
     }
 })
 </code></pre></div>
@@ -5412,8 +5412,170 @@ var utag_data = {
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5488,7 +5650,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7514,9 +7676,15 @@ var utag_data = {
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

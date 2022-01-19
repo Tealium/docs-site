@@ -344,79 +344,79 @@ var utag_data = {
 
 <ol>
 <li><p>Add the Tealium Swift pod <code>&quot;tealium-swift&quot;</code> to your Podfile. It has a subspec for each module, each of which depends on the &ldquo;Core&rdquo; module. If you do not specify any subspecs, all modules are installed by default.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#998;font-style:italic"># Uncomment the next line to define a global platform for your project</span>
-platform <span style="color:#b84">:ios</span>, <span style="color:#b84">&#39;11.0&#39;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#008000"># Uncomment the next line to define a global platform for your project</span>
+platform <span style="color:#a31515">:ios</span>, <span style="color:#a31515">&#39;11.0&#39;</span>
 
-target <span style="color:#b84">&#39;CPodTest&#39;</span> <span style="font-weight:bold">do</span>
-  <span style="color:#998;font-style:italic"># Comment the next line if you don&#39;t want to use dynamic frameworks</span>
+target <span style="color:#a31515">&#39;CPodTest&#39;</span> <span style="color:#00f">do</span>
+  <span style="color:#008000"># Comment the next line if you don&#39;t want to use dynamic frameworks</span>
   use_frameworks!
 
-  <span style="color:#998;font-style:italic"># Pods for CPodTest</span>
+  <span style="color:#008000"># Pods for CPodTest</span>
 
-  <span style="color:#998;font-style:italic"># new entry for Tealium pod</span>
-  pod <span style="color:#b84">&#39;tealium-swift&#39;</span> <span style="color:#998;font-style:italic"># all modules</span>
-  <span style="color:#998;font-style:italic"># pod &#39;tealium-swift/TealiumTagManagement&#39; # to install individual modules only, use subspecs</span>
-<span style="font-weight:bold">end</span></code></pre></div></li>
+  <span style="color:#008000"># new entry for Tealium pod</span>
+  pod <span style="color:#a31515">&#39;tealium-swift&#39;</span> <span style="color:#008000"># all modules</span>
+  <span style="color:#008000"># pod &#39;tealium-swift/TagManagement&#39; # to install individual modules only, use subspecs</span>
+<span style="color:#00f">end</span></code></pre></div></li>
 
 <li><p>Once you have added your desired modules, run the following command:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod install</code></pre></div>
-<p class="note">If the command doesn&rsquo;t find the correct Pods, try running the command <code>pod repo update</code>.</p></li>
+<p class="note"><i class="fas fa-info-circle"></i>If the command doesn&rsquo;t find the correct Pods, try running the command <code>pod repo update</code>.</p></li>
 
 <li><p>Open your Xcode project using the <code>.xcworkspace</code> file (Do not use the <code>.xcodeproj</code> file).</p></li>
 
 <li><p>To import any number of modules, add the following import statement in the file you plan to instantiate Tealium from:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumSwift</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumSwift</span></code></pre></div></li>
 </ol>
 
 <h4 id="recommended-podfile">Recommended Podfile</h4>
 
 <p>The following is the list of recommended modules to add to your podfile:</p>
 
-<p class="tip">To disable specific modules from the Podfile, comment them out in the Podfile with <code>#</code> or delete the line.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl"><span style="color:#998;font-style:italic"># ...</span>
-<span style="color:#998;font-style:italic"># *** Recommended minimum:</span>
-<span style="color:#998;font-style:italic"># All pods depend on Core. Supports all platforms.</span>
-pod <span style="color:#b84">&#34;tealium-swift/Core&#34;</span>
-pod <span style="color:#b84">&#34;tealium-swift/Lifecycle&#34;</span>
-pod <span style="color:#b84">&#34;tealium-swift/Collect&#34;</span> <span style="color:#998;font-style:italic"># for Server-side products, e.g. EventStream - usually this or TealiumTagManagement, but not often both</span>
-<span style="color:#998;font-style:italic"># OR</span>
-pod <span style="color:#b84">&#34;tealium-swift/TagManagement&#34;</span> <span style="color:#998;font-style:italic"># for Tealium iQ</span>
-pod <span style="color:#b84">&#34;tealium-swift/RemoteCommands&#34;</span>
+<p class="tip"><i class="fas fa-star"></i>To disable specific modules from the Podfile, comment them out in the Podfile with <code>#</code> or delete the line.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl"><span style="color:#008000"># ...</span>
+<span style="color:#008000"># *** Recommended minimum:</span>
+<span style="color:#008000"># All pods depend on Core. Supports all platforms.</span>
+pod <span style="color:#a31515">&#34;tealium-swift/Core&#34;</span>
+pod <span style="color:#a31515">&#34;tealium-swift/Lifecycle&#34;</span>
+pod <span style="color:#a31515">&#34;tealium-swift/Collect&#34;</span> <span style="color:#008000"># for Server-side products, e.g. EventStream - usually this or TealiumTagManagement, but not often both</span>
+<span style="color:#008000"># OR</span>
+pod <span style="color:#a31515">&#34;tealium-swift/TagManagement&#34;</span> <span style="color:#008000"># for Tealium iQ</span>
+pod <span style="color:#a31515">&#34;tealium-swift/RemoteCommands&#34;</span>
 
-<span style="color:#998;font-style:italic"># *** Optional modules: You may not need these modules. Enable as required.   *** #</span>
+<span style="color:#008000"># *** Optional modules: You may not need these modules. Enable as required.   *** #</span>
 
-<span style="color:#998;font-style:italic"># Provides Visitor Audience and Attiribute information back to the app</span>
-<span style="color:#998;font-style:italic"># pod &#34;tealium-swift/VisitorService&#34;</span>
+<span style="color:#008000"># Provides Visitor Audience and Attiribute information back to the app</span>
+<span style="color:#008000"># pod &#34;tealium-swift/VisitorService&#34;</span>
 
-<span style="color:#998;font-style:italic"># iOS Only. Gathers app attribution data and advertising IDs.</span>
-<span style="color:#998;font-style:italic"># pod &#34;tealium-swift/Attribution&#34;</span>
+<span style="color:#008000"># iOS Only. Gathers app attribution data and advertising IDs.</span>
+<span style="color:#008000"># pod &#34;tealium-swift/Attribution&#34;</span>
 
-<span style="color:#998;font-style:italic"># iOS and tvOS only. Generally not recommended. See separate notes in module documentation.</span>
-<span style="color:#998;font-style:italic"># pod &#34;tealium-swift/Autotracking&#34;</span>
+<span style="color:#008000"># iOS and tvOS only. Generally not recommended. See separate notes in module documentation.</span>
+<span style="color:#008000"># pod &#34;tealium-swift/Autotracking&#34;</span>
 
-<span style="color:#998;font-style:italic"># See separate notes in module documentation.</span>
-<span style="color:#998;font-style:italic"># pod &#34;tealium-swift/Location&#34;</span>
+<span style="color:#008000"># See separate notes in module documentation.</span>
+<span style="color:#008000"># pod &#34;tealium-swift/Location&#34;</span>
 
-<span style="color:#998;font-style:italic"># iOS only. Reports detailed crash information.</span>
-<span style="color:#998;font-style:italic"># Installs separate TealiumCrashReporter dependency (based on PLCrashReporter).</span>
-<span style="color:#998;font-style:italic"># pod &#34;TealiumCrashModule&#34;</span>
-<span style="color:#998;font-style:italic"># ...</span></code></pre></div>
+<span style="color:#008000"># iOS only. Reports detailed crash information.</span>
+<span style="color:#008000"># Installs separate TealiumCrashReporter dependency (based on PLCrashReporter).</span>
+<span style="color:#008000"># pod &#34;TealiumCrashModule&#34;</span>
+<span style="color:#008000"># ...</span></code></pre></div>
 <h3 id="carthage">Carthage</h3>
 
 <p>To install Tealium for iOS (Swift) with Carthage:</p>
 
 <ol>
 <li><p>Add the following to your Cartfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">github <span style="color:#b84">&#34;tealium/tealium-swift&#34;</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">github <span style="color:#a31515">&#34;tealium/tealium-swift&#34;</span></code></pre></div></li>
 
 <li><p>To produce frameworks for iOS, macOS, tvOS and watchOS, run the following command:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">carthage update</code></pre></div></li>
 
 <li><p>To build only for a particular platform, such as iOS, and to speed up subsequent builds after the initial build, use Carthage&rsquo;s <code>--platform</code> argument:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">carthage update <span style="font-weight:bold">--</span>platform ios <span style="font-weight:bold">--</span>cache<span style="font-weight:bold">-</span>builds</code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">carthage update --platform ios --cache-builds</code></pre></div></li>
 
-<li><p>Drag the frameworks you require into your Xcode project&rsquo;s <strong>General &gt; Embedded Binaries</strong> section.<br />
-<p class="note">Verify that the Tealium frameworks have been added to the Embedded Binaries section in your project settings, otherwise your app crashes at launch.</p></p></li>
+<li><p>Drag the frameworks you require into your Xcode project&rsquo;s <strong>General &gt; Embedded Binaries</strong> section.
+<p class="note"><i class="fas fa-info-circle"></i>Verify that the Tealium frameworks have been added to the Embedded Binaries section in your project settings, otherwise your app crashes at launch.</p></p></li>
 
 <li><p>Follow the instructions listed in the <a href="https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos">Carthage Getting Started</a> documentation to add the relevant build phases scripts, to ensure you don&rsquo;t run into any issues when submitting your app.</p></li>
 </ol>
@@ -426,11 +426,21 @@ pod <span style="color:#b84">&#34;tealium-swift/RemoteCommands&#34;</span>
 <p>The Tealium Swift SDK has been split up into separate modules/frameworks. This means you need only import the specific frameworks for the modules you need to use, which helps to reduce the binary size and, ultimately, increase your app&rsquo;s performance.</p>
 
 <p><strong>Module import statements</strong></p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumCore</span>              <span style="color:#998;font-style:italic">// required for Tealium, TealiumConfig, TealiumInstanceManager</span>
-<span style="color:#458;font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumTagManagement</span>     <span style="color:#998;font-style:italic">// required to dispatch track calls to Tealium IQ</span>
-<span style="color:#458;font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumCollect</span>           <span style="color:#998;font-style:italic">// required to dispatch track calls to Tealium&#39;s Customer Data Hub</span>
-<span style="color:#458;font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumRemoteCommands</span>    <span style="color:#998;font-style:italic">// required if you need to interact with the Remote Commands API</span>
-<span style="color:#458;font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumLifecycle</span>         <span style="color:#998;font-style:italic">// required if you need to collect lifecycle events and associated data</span></code></pre></div>
+
+<ul>
+<li><strong>TealiumCore</strong> - required for Tealium, TealiumConfig, TealiumInstanceManager</li>
+<li><strong>TealiumTagManagement</strong> - required to dispatch track calls to Tealium iQ</li>
+<li><strong>TealiumCollect</strong>  - required to dispatch track calls to Tealium&rsquo;s Customer Data Hub</li>
+<li><strong>TealiumRemoteCommands</strong> - required if you need to interact with the remote commands API</li>
+
+<li><p><strong>TealiumLifecycle</strong> - required if you need to collect lifecycle events and associated data</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumCore</span>
+<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumTagManagement</span>
+<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumCollect</span>
+<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumRemoteCommands</span>
+<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumLifecycle</span></code></pre></div></li>
+</ul>
+
 <p>Due to Carthage limitations, we had to choose between the convenience of importing the entire SDK, and the flexibility and performance gains of a fully modular install. The downside to this is that it&rsquo;s necessary to add each module you wish to use individually.</p>
 
 <ul>
@@ -444,97 +454,97 @@ pod <span style="color:#b84">&#34;tealium-swift/RemoteCommands&#34;</span>
 
 <p>To initialize Tealium, pass a <a href="/platforms/ios-swift/api/tealium-config/"><code>TealiumConfig</code></a> instance to the <a href="/platforms/ios-swift/api/tealium/#tealium"><code>Tealium()</code></a> constructor.</p>
 
-<p class="note">Manage your <a href="/platforms/ios-swift/api/tealium/#class-tealium"><code>Tealium</code></a> instance by using a tracking helper class, which provides a single point of entry for the Tealium iOS library and simplifies future upgrades.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
-    <span style="font-weight:bold">static</span> <span style="font-weight:bold">let</span> <span style="color:#008080">shared</span> = TealiumHelper()
-    <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-                               profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-                               environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-                               datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
-    <span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
+<p class="note"><i class="fas fa-info-circle"></i>Manage your <a href="/platforms/ios-swift/api/tealium/#class-tealium"><code>Tealium</code></a> instance by using a tracking helper class, which provides a single point of entry for the Tealium iOS library and simplifies future upgrades.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">class</span> <span style="color:#2b91af">TealiumHelper</span> {
+    <span style="color:#00f">static</span> <span style="color:#00f">let</span> shared = TealiumHelper()
+    <span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+                               profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
+                               environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
+                               datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>)
+    <span style="color:#00f">var</span> tealium: Tealium?
 
-    <span style="font-weight:bold">private</span> <span style="font-weight:bold">init</span>() {
+    <span style="color:#00f">private</span> <span style="color:#00f">init</span>() {
 
-        <span style="color:#998;font-style:italic">// add necessary config options</span>
-        config.batchingEnabled = <span style="font-weight:bold">true</span>
+        <span style="color:#008000">// add necessary config options</span>
+        config.batchingEnabled = <span style="color:#00f">true</span>
         config.logLevel = .debug
 
-        <span style="color:#998;font-style:italic">// add desired Collectors - no need to include if want all compiled collectors</span>
+        <span style="color:#008000">// add desired Collectors - no need to include if want all compiled collectors</span>
         config.collectors = [Collectors.Lifecycle,
                              Collectors.Location,
                              Collectors.VisitorService]
 
-        <span style="color:#998;font-style:italic">// add desired Dispatchers - no need to include if want compiled dispatchers</span>
+        <span style="color:#008000">// add desired Dispatchers - no need to include if want compiled dispatchers</span>
         config.dispatchers = [Dispatchers.TagManagement,
                               Dispatchers.RemoteCommands]
 
         tealium = Tealium(config: config)
 
-        <span style="color:#998;font-style:italic">// optional post init processing</span>
-        tealium?.dataLayer.add(key: <span style="color:#b84">&#34;mykey&#34;</span>, value: <span style="color:#b84">&#34;myvalue&#34;</span>, expiry: .forever)
+        <span style="color:#008000">// optional post init processing</span>
+        tealium?.dataLayer.add(key: <span style="color:#a31515">&#34;mykey&#34;</span>, value: <span style="color:#a31515">&#34;myvalue&#34;</span>, expiry: .forever)
 
     }
 
-    <span style="font-weight:bold">public</span> <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">start</span>() {
-        <span style="font-weight:bold">_</span> = TealiumHelper.shared
+    <span style="color:#00f">public</span> <span style="color:#00f">func</span> start() {
+        <span style="color:#00f">_</span> = TealiumHelper.shared
     }
 
-    <span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">func</span> trackView(title: <span style="color:#999">String</span>, data: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>]?) {    
-      <span style="font-weight:bold">let</span> <span style="color:#008080">tealView</span> = TealiumView(title, dataLayer: data)
+    <span style="color:#00f">class</span> <span style="color:#2b91af">func</span> trackView(title: String, data: [String: Any]?) {
+      <span style="color:#00f">let</span> tealView = TealiumView(title, dataLayer: data)
       TealiumHelper.shared.tealium?.track(tealView)
     }
 
-    <span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">func</span> trackEvent(title: <span style="color:#999">String</span>, data: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>]?) {
-      <span style="font-weight:bold">let</span> <span style="color:#008080">tealEvent</span> = TealiumEvent(title, dataLayer: data)
+    <span style="color:#00f">class</span> <span style="color:#2b91af">func</span> trackEvent(title: String, data: [String: Any]?) {
+      <span style="color:#00f">let</span> tealEvent = TealiumEvent(title, dataLayer: data)
       TealiumHelper.shared.tealium?.track(tealEvent)
     }
 }</code></pre></div>
-<p class="note">Mobile Publish Settings are enabled by default, and must be disabled if you don’t wish to use them. Configure the Mobile Publish Settings in iQ Tag Management, or disable them using <code>config.shouldUseRemotePublishSettings = false</code>.</p>
+<p class="note"><i class="fas fa-info-circle"></i>Mobile Publish Settings are enabled by default, and must be disabled if you don’t wish to use them. Configure the Mobile Publish Settings in iQ Tag Management, or disable them using <code>config.shouldUseRemotePublishSettings = false</code>.</p>
 
 <h2 id="log-level">Log Level</h2>
 
 <p>To set a log level, set the <a href="/platforms/ios-swift/api/tealium-config/#loglevel"><code>logLevel</code></a> property on your <code>TealiumConfig</code> instance:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.logLevel = .debug <span style="color:#998;font-style:italic">// or .info, .error, .fault, .silent</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.logLevel = .debug <span style="color:#008000">// or .info, .error, .fault, .silent</span></code></pre></div>
 <p>For debugging purposes, <code>.debug</code> is recommended.</p>
 
 <p>The default log type used is <a href="https://developer.apple.com/documentation/os/oslog"><code>OSLog</code></a>, but this is modifiable to use <code>.print</code> by updating the <code>logType</code> property on the <code>TealiumConfig</code> object:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.logType = .print</code></pre></div>
 <p>It is also possible to add your own logger instead of using the <code>TealiumLogger</code> by conforming your <code>Logger</code> class to the <code>TealiumLoggerProtocol</code> and setting the instance of that class to the <code>logger</code> property on the <code>TealiumConfig</code> object. Here is an example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">CustomLogger</span>: TealiumLoggerProtocol {
-	<span style="color:#998;font-style:italic">// ... conforming to the TealiumLoggerProtocol</span>
-	<span style="color:#998;font-style:italic">// plus your own custom methods</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">class</span> <span style="color:#2b91af">CustomLogger</span>: TealiumLoggerProtocol {
+	<span style="color:#008000">// ... conforming to the TealiumLoggerProtocol</span>
+	<span style="color:#008000">// plus your own custom methods</span>
 }
 
-<span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
-	<span style="font-weight:bold">let</span> <span style="color:#008080">customLogger</span> = CustomLogger()
-	<span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
-	<span style="color:#998;font-style:italic">// ...</span>
+<span style="color:#00f">class</span> <span style="color:#2b91af">TealiumHelper</span> {
+	<span style="color:#00f">let</span> customLogger = CustomLogger()
+	<span style="color:#00f">var</span> tealium: Tealium?
+	<span style="color:#008000">// ...</span>
 
-	<span style="font-weight:bold">private</span> <span style="font-weight:bold">init</span>() {
+	<span style="color:#00f">private</span> <span style="color:#00f">init</span>() {
 		config.logger = customLogger
-		<span style="color:#998;font-style:italic">// ...</span>
+		<span style="color:#008000">// ...</span>
 	}
 }</code></pre></div>
 <h2 id="appdelegate-proxy">AppDelegate Proxy</h2>
 
 <p>By default, the Tealium Swift library includes a proxy for your app&rsquo;s AppDelegate which automatically tracks deep links and initiates Tealium trace sessions using the <a href="/platforms/getting-started/trace/#mobile-trace-tool">Mobile Trace Tool</a>. If you don&rsquo;t wish to use this feature, set the <code>appDelegateProxyEnabled</code> property to <code>false</code> on your <code>TealiumConfig</code> instance.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.appDelegateProxyEnabled = <span style="font-weight:bold">false</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.appDelegateProxyEnabled = <span style="color:#00f">false</span></code></pre></div>
 <h2 id="event-batching">Event Batching</h2>
 
 <p>Event Batching is either be configured locally on the <code>TealiumConfig</code> instance, or by using the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">Mobile Publish Settings</a>. Local settings override remote settings.</p>
 
 <p>This example enables event batching and sets the batch size and queue size.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
-	<span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
-	<span style="color:#998;font-style:italic">// ...</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">class</span> <span style="color:#2b91af">TealiumHelper</span> {
+	<span style="color:#00f">var</span> tealium: Tealium?
+	<span style="color:#008000">// ...</span>
 
-	<span style="font-weight:bold">private</span> <span style="font-weight:bold">init</span>() {
-		config.batchingEnabled = <span style="font-weight:bold">true</span>            <span style="color:#998;font-style:italic">// enable batching</span>
-		config.batchSize = <span style="color:#099">10</span>                    <span style="color:#998;font-style:italic">// size of batch</span>
-		config.dispatchAfter = <span style="color:#099">25</span>                <span style="color:#998;font-style:italic">// flush after every 25 events</span>
-		config.dispatchQueueLimit = <span style="color:#099">100</span>          <span style="color:#998;font-style:italic">// 100 max queued events</span>
-		config.dispatchExpiration = <span style="color:#099">5</span>            <span style="color:#998;font-style:italic">// events expire/delete after 5 days</span>
-		<span style="color:#998;font-style:italic">// ...</span>
+	<span style="color:#00f">private</span> <span style="color:#00f">init</span>() {
+		config.batchingEnabled = <span style="color:#00f">true</span>            <span style="color:#008000">// enable batching</span>
+		config.batchSize = 10                    <span style="color:#008000">// size of batch</span>
+		config.dispatchAfter = 25                <span style="color:#008000">// flush after every 25 events</span>
+		config.dispatchQueueLimit = 100          <span style="color:#008000">// 100 max queued events</span>
+		config.dispatchExpiration = 5            <span style="color:#008000">// events expire/delete after 5 days</span>
+		<span style="color:#008000">// ...</span>
 	}
 }</code></pre></div>
 <p>The following options are available to customize event batching.</p>
@@ -542,35 +552,35 @@ pod <span style="color:#b84">&#34;tealium-swift/RemoteCommands&#34;</span>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th align="left">Property</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td><a href="/platforms/ios-swift/api/tealium-config/#batchingenabled"><code>batchingEnabled</code></a></td>
-<td>Enables or disables event batching (default: <code>false</code>).</td>
+<td align="left"><a href="/platforms/ios-swift/api/tealium-config/#batchingenabled"><code>batchingEnabled</code></a></td>
+<td align="left">Enables or disables event batching (default: <code>false</code>).</td>
 </tr>
 
 <tr>
-<td><a href="/platforms/ios-swift/api/tealium-config/#batchsize"><code>batchSize</code></a></td>
-<td>Sets the amount of events to combine into a single batch request (max: 10).</td>
+<td align="left"><a href="/platforms/ios-swift/api/tealium-config/#batchsize"><code>batchSize</code></a></td>
+<td align="left">Sets the amount of events to combine into a single batch request (max: 10).</td>
 </tr>
 
 <tr>
-<td><a href="/platforms/ios-swift/api/tealium-config/#dispatchafter"><code>dispatchAfter</code></a></td>
-<td>Sets the number of events after which the queue is flushed.</td>
+<td align="left"><a href="/platforms/ios-swift/api/tealium-config/#dispatchafter"><code>dispatchAfter</code></a></td>
+<td align="left">Sets the number of events after which the queue is flushed.</td>
 </tr>
 
 <tr>
-<td><a href="/platforms/ios-swift/api/tealium-config/#dispatchexpiration"><code>dispatchExpiration</code></a></td>
-<td>Sets the batch expiration in days. If the device is offline for an extended period, events older than this are deleted.</td>
+<td align="left"><a href="/platforms/ios-swift/api/tealium-config/#dispatchexpiration"><code>dispatchExpiration</code></a></td>
+<td align="left">Sets the batch expiration in days. If the device is offline for an extended period, events older than this are deleted.</td>
 </tr>
 
 <tr>
-<td><a href="/platforms/ios-swift/api/tealium-config/#dispatchqueuelimit"><code>dispatchQueueLimit</code></a></td>
-<td>Sets the maximum number of queued events. If this number is reached, and the queue has not been flushed, the oldest events are deleted.</td>
+<td align="left"><a href="/platforms/ios-swift/api/tealium-config/#dispatchqueuelimit"><code>dispatchQueueLimit</code></a></td>
+<td align="left">Sets the maximum number of queued events. If this number is reached, and the queue has not been flushed, the oldest events are deleted.</td>
 </tr>
 </tbody>
 </table>
@@ -5641,8 +5651,170 @@ pod <span style="color:#b84">&#34;tealium-swift/RemoteCommands&#34;</span>
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5717,7 +5889,7 @@ pod <span style="color:#b84">&#34;tealium-swift/RemoteCommands&#34;</span>
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7589,7 +7761,7 @@ pod <span style="color:#b84">&#34;tealium-swift/RemoteCommands&#34;</span>
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  December 2, 2021 
+    <span>This page was last updated:  January 6, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -7743,9 +7915,15 @@ pod <span style="color:#b84">&#34;tealium-swift/RemoteCommands&#34;</span>
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

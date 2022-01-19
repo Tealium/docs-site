@@ -302,7 +302,7 @@ var utag_data = {
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cordova plugin add tealium-cordova-adidentifier</code></pre></div></li>
 </ol>
 
-<p class="note">The Ad Identifier module has a dependency on the Google Play Services Ads module. Add your <a href="https://developers.google.com/admob/android/quick-start">AdMob App ID</a> to your app&rsquo;s <code>AndroidManifest.xml</code> file to prevent the app from crashing during startup.</p>
+<p class="note"><i class="fas fa-info-circle"></i>The Ad Identifier module has a dependency on the Google Play Services Ads module. Add your <a href="https://developers.google.com/admob/android/quick-start">AdMob App ID</a> to your app&rsquo;s <code>AndroidManifest.xml</code> file to prevent the app from crashing during startup.</p>
 
 <h2 id="initialize">Initialize</h2>
 
@@ -312,13 +312,13 @@ var utag_data = {
 <li><p>Edit the JavaScript file, where you instantiate the main Tealium plugin, after calling <code>tealium.init</code>.</p></li>
 
 <li><p>Add the following code:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">function</span> tealiumInit(account, profile, environment, instance){
-<span style="font-weight:bold">var</span> ai;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">function</span> tealiumInit(account, profile, environment, instance){
+<span style="color:#00f">var</span> ai;
 tealium.init({...});
- <span style="color:#998;font-style:italic">// check if installreferrer is installed and available
-</span><span style="color:#998;font-style:italic"></span>
-ai <span style="font-weight:bold">=</span> <span style="color:#999">window</span>.tealiumAdIdentifier;
-<span style="font-weight:bold">if</span> (ai) {
+ <span style="color:#008000">// check if installreferrer is installed and available
+</span><span style="color:#008000"></span>
+ai = window.tealiumAdIdentifier;
+<span style="color:#00f">if</span> (ai) {
     ai.setPersistent(instance);
 }
 }
@@ -353,13 +353,13 @@ ai <span style="font-weight:bold">=</span> <span style="color:#999">window</span
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cordova plugin rm tealium-cordova-adidentifier</code></pre></div></li>
 
 <li><p>Delete the Ad Identifier data from persistent storage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#998;font-style:italic">// android only
-</span><span style="color:#998;font-style:italic"></span>tealium.removePersistent(<span style="color:#b84">&#34;google_adid&#34;</span>, <span style="font-weight:bold">&lt;</span>your tealium instance name<span style="font-weight:bold">&gt;</span>);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#008000">// android only
+</span><span style="color:#008000"></span>tealium.removePersistent(<span style="color:#a31515">&#34;google_adid&#34;</span>, &lt;your tealium instance name&gt;);
 
-<span style="color:#998;font-style:italic">// ios only
-</span><span style="color:#998;font-style:italic"></span>tealium.removePersistent(<span style="color:#b84">&#34;device_advertising_id&#34;</span>, <span style="font-weight:bold">&lt;</span>your tealium instance name<span style="font-weight:bold">&gt;</span>);
-tealium.removePersistent(<span style="color:#b84">&#34;device_advertising_vendor_id&#34;</span>, <span style="font-weight:bold">&lt;</span>your tealium instance name<span style="font-weight:bold">&gt;</span>);
-tealium.removePersistent(<span style="color:#b84">&#34;device_advertising_enabled&#34;</span>, <span style="font-weight:bold">&lt;</span>your tealium instance name<span style="font-weight:bold">&gt;</span>);
+<span style="color:#008000">// ios only
+</span><span style="color:#008000"></span>tealium.removePersistent(<span style="color:#a31515">&#34;device_advertising_id&#34;</span>, &lt;your tealium instance name&gt;);
+tealium.removePersistent(<span style="color:#a31515">&#34;device_advertising_vendor_id&#34;</span>, &lt;your tealium instance name&gt;);
+tealium.removePersistent(<span style="color:#a31515">&#34;device_advertising_enabled&#34;</span>, &lt;your tealium instance name&gt;);
 </code></pre></div></li>
 </ol>
 
@@ -5419,8 +5419,170 @@ tealium.removePersistent(<span style="color:#b84">&#34;device_advertising_enable
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5495,7 +5657,7 @@ tealium.removePersistent(<span style="color:#b84">&#34;device_advertising_enable
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7521,9 +7683,15 @@ tealium.removePersistent(<span style="color:#b84">&#34;device_advertising_enable
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

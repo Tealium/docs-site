@@ -293,7 +293,7 @@ var utag_data = {
 
 <h2 id="install">Install</h2>
 
-<p class="note">This feature is available as a separate NPM package.</p>
+<p class="note"><i class="fas fa-info-circle"></i>This feature is available as a separate NPM package.</p>
 
 <p>To install the Install Referrer module:</p>
 
@@ -312,14 +312,14 @@ var utag_data = {
 <li><p>Edit the JavaScript file where you instantiate the main Tealium plugin, after calling the <a href="/platforms/cordova-v1/api/#init"><code>tealium.init()</code></a> method.</p></li>
 
 <li><p>Add the following code:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">function</span> tealiumInit(account, profile, environment, instance){
-<span style="font-weight:bold">var</span> ir;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">function</span> tealiumInit(account, profile, environment, instance){
+<span style="color:#00f">var</span> ir;
 tealium.init({...});
-<span style="color:#998;font-style:italic">// check if installreferrer is installed and available
-</span><span style="color:#998;font-style:italic"></span>ir <span style="font-weight:bold">=</span> <span style="color:#999">window</span>.tealiumInstallReferrer;
-<span style="font-weight:bold">if</span> (ir) {
-    <span style="color:#998;font-style:italic">// init install referrer and store any received values as persistent data
-</span><span style="color:#998;font-style:italic"></span>    ir.setPersistent(instance);
+<span style="color:#008000">// check if installreferrer is installed and available
+</span><span style="color:#008000"></span>ir = window.tealiumInstallReferrer;
+<span style="color:#00f">if</span> (ir) {
+    <span style="color:#008000">// init install referrer and store any received values as persistent data
+</span><span style="color:#008000"></span>    ir.setPersistent(instance);
 }
 }
 </code></pre></div></li>
@@ -331,7 +331,7 @@ tealium.init({...});
 
 <p>Substitute <code>com.tealium.sample</code> with the RDNS bundle identifier for your app (unless testing with the Tealium sample app).</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">adb shell
-am broadcast -a com.android.vending.INSTALL_REFERRER -n <span style="color:#b84">&#34;com.tealium.sample/com.tealium.installreferrer.InstallReferrerReceiver&#34;</span> --es <span style="color:#b84">&#34;referrer&#34;</span> <span style="color:#b84">&#34;utm_source=mysource&amp;utm_medium=mymedium&amp;utm_term=myterm&amp;utm_content=46b25e284dc36d5a7ef8f0e6b393febe3fcc8327&amp;utm_campaign=mycampname&#34;</span></code></pre></div>
+am broadcast -a com.android.vending.INSTALL_REFERRER -n <span style="color:#a31515">&#34;com.tealium.sample/com.tealium.installreferrer.InstallReferrerReceiver&#34;</span> --es <span style="color:#a31515">&#34;referrer&#34;</span> <span style="color:#a31515">&#34;utm_source=mysource&amp;utm_medium=mymedium&amp;utm_term=myterm&amp;utm_content=46b25e284dc36d5a7ef8f0e6b393febe3fcc8327&amp;utm_campaign=mycampname&#34;</span></code></pre></div>
 <h2 id="uninstall">Uninstall</h2>
 
 <p>To uninstall the Install Referrer module:</p>
@@ -341,7 +341,7 @@ am broadcast -a com.android.vending.INSTALL_REFERRER -n <span style="color:#b84"
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cordova plugin rm tealium-cordova-installreferrer</code></pre></div></li>
 
 <li><p>Delete the Install Referrer data from persistent storage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">tealium.removePersistent(<span style="color:#b84">&#34;install_referrer&#34;</span>, <span style="font-weight:bold">&lt;</span>your tealium instance name<span style="font-weight:bold">&gt;</span>);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">tealium.removePersistent(<span style="color:#a31515">&#34;install_referrer&#34;</span>, &lt;your tealium instance name&gt;);
 </code></pre></div></li>
 </ol>
 
@@ -5402,8 +5402,170 @@ am broadcast -a com.android.vending.INSTALL_REFERRER -n <span style="color:#b84"
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5478,7 +5640,7 @@ am broadcast -a com.android.vending.INSTALL_REFERRER -n <span style="color:#b84"
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7504,9 +7666,15 @@ am broadcast -a com.android.vending.INSTALL_REFERRER -n <span style="color:#b84"
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

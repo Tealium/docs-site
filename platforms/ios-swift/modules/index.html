@@ -372,57 +372,57 @@ var utag_data = {
 <h3 id="usage">Usage</h3>
 
 <p>To add a <code>Collector</code>, specify it in the <code>collectors</code> property of the <code>TealiumConfig</code> instance:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumCore</span>
-<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumLifecycle</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumCore</span>
+<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumLifecycle</span>
 
-<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-                               profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-                               environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-                               datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
+<span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+                               profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
+                               environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
+                               datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>)
 
-<span style="color:#998;font-style:italic">// Adds desired Collectors. If omitted, default Collectors are added.</span>
+<span style="color:#008000">// Adds desired Collectors. If omitted, default Collectors are added.</span>
 config.collectors = [Collectors.AppData, Collectors.Lifecycle]                               </code></pre></div>
 <p>To only use the default collectors, omit or comment out the <code>config.collectors</code> line from your initialization code.</p>
 
 <h3 id="custom-collectors">Custom Collectors</h3>
 
 <p>Although custom collectors are generally not required, it is possible to build a custom collector by creating your own class conforming to the <code>Collector</code> protocol. The following example shows a simple collector that gathers the current weekday and appends it to the data layer for each tracking call.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">MyDateCollector</span>: Collector {
-    <span style="font-weight:bold">var</span> <span style="color:#008080">id</span> = <span style="color:#b84">&#34;MyDateCollector&#34;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">class</span> <span style="color:#2b91af">MyDateCollector</span>: Collector {
+    <span style="color:#00f">var</span> id = <span style="color:#a31515">&#34;MyDateCollector&#34;</span>
 
-    <span style="font-weight:bold">var</span> <span style="color:#008080">data</span>: [<span style="color:#999">String</span> : <span style="color:#999">Any</span>]? {
-        [<span style="color:#b84">&#34;day_of_week&#34;</span>: dayOfWeek]
+    <span style="color:#00f">var</span> data: [String : Any]? {
+        [<span style="color:#a31515">&#34;day_of_week&#34;</span>: dayOfWeek]
     }
 
-    <span style="font-weight:bold">var</span> <span style="color:#008080">context</span>: TealiumContext
+    <span style="color:#00f">var</span> context: TealiumContext
 
-    <span style="font-weight:bold">required</span> <span style="font-weight:bold">init</span>(context: TealiumContext,
+    <span style="color:#00f">required</span> <span style="color:#00f">init</span>(context: TealiumContext,
                   delegate: ModuleDelegate?,
                   diskStorage: TealiumDiskStorageProtocol?,
-                  completion: (ModuleResult) -&gt; <span style="color:#999">Void</span>) {
-        <span style="font-weight:bold">self</span>.context = context
+                  completion: (ModuleResult) -&gt; Void) {
+        <span style="color:#00f">self</span>.context = context
     }
 
-    <span style="font-weight:bold">var</span> <span style="color:#008080">dayOfWeek</span>: <span style="color:#999">String</span> {
-        <span style="font-weight:bold">return</span> <span style="color:#b84">&#34;</span><span style="color:#b84">\(</span>Calendar.current.dateComponents<span style="color:#b84">(</span>[.weekday], from: Date<span style="color:#b84">())</span>.weekday ?? <span style="font-weight:bold">-</span><span style="color:#099">1</span><span style="color:#b84">)</span><span style="color:#b84">&#34;</span>
+    <span style="color:#00f">var</span> dayOfWeek: String {
+        <span style="color:#00f">return</span> <span style="color:#a31515">&#34;</span><span style="color:#a31515">\(</span>Calendar.current.dateComponents<span style="color:#a31515">(</span>[.weekday], from: Date<span style="color:#a31515">())</span>.weekday ?? -1<span style="color:#a31515">)</span><span style="color:#a31515">&#34;</span>
     }
 }
 
-<span style="color:#998;font-style:italic">// Add collector to your config instance prior to Tealium initialization</span>
+<span style="color:#008000">// Add collector to your config instance prior to Tealium initialization</span>
 
-<span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
-	<span style="color:#998;font-style:italic">// ...</span>
-	<span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">startTracking</span>() {
-		<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-                               profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-                               environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-                               datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
+<span style="color:#00f">class</span> <span style="color:#2b91af">TealiumHelper</span> {
+	<span style="color:#008000">// ...</span>
+	<span style="color:#00f">func</span> startTracking() {
+		<span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+                               profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
+                               environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
+                               datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>)
 
-<span style="color:#998;font-style:italic">// Add desired Collectors. If omitted, default Collectors are added.</span>
+<span style="color:#008000">// Add desired Collectors. If omitted, default Collectors are added.</span>
 config.collectors = [Collectors.AppData,
 					  Collectors.Lifecycle,
-					  MyDateCollector.<span style="font-weight:bold">self</span>]   
-					  <span style="font-weight:bold">self</span>.tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span> }
+					  MyDateCollector.<span style="color:#00f">self</span>]   
+					  <span style="color:#00f">self</span>.tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span style="color:#00f">in</span> }
 	}
 }</code></pre></div>
 <h2 id="dispatchers">Dispatchers</h2>
@@ -455,60 +455,60 @@ config.collectors = [Collectors.AppData,
 </tbody>
 </table>
 
-<p class="note">At least one dispatcher is required. If no dispatchers are specified, your data is not sent anywhere.</p>
+<p class="note"><i class="fas fa-info-circle"></i>At least one dispatcher is required. If no dispatchers are specified, your data is not sent anywhere.</p>
 
 <h3 id="usage-1">Usage</h3>
 
 <p>To add a <code>Dispatcher</code>, specify it in the <code>dispatchers</code> property of the <code>TealiumConfig</code> object:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumCore</span>
-<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumLifecycle</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumCore</span>
+<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumLifecycle</span>
 
-<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-                               profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-                               environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-                               datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
+<span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+                               profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
+                               environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
+                               datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>)
 
-<span style="color:#998;font-style:italic">// Add desired Collectors. Do not include if you want to use compiled Collectors</span>
+<span style="color:#008000">// Add desired Collectors. Do not include if you want to use compiled Collectors</span>
 config.dispatchers = [Dispatchers.Collect]                               </code></pre></div>
 <h3 id="custom-dispatchers">Custom Dispatchers</h3>
 
 <p>Although custom dispatchers are generally not required, it is possible to build a custom <code>Dispatcher</code> by creating your own class conforming to the <code>Dispatcher</code> protocol. The following example shows a simple dispatcher that prints the event name for each track request. A custom <code>Dispatcher</code> may be useful if you wish to send data to your own custom endpoint in addition to the Tealium endpoints.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">MyCustomDispatcher</span>: Dispatcher {
-    <span style="font-weight:bold">var</span> <span style="color:#008080">isReady</span>: <span style="color:#999">Bool</span>
-    <span style="font-weight:bold">var</span> <span style="color:#008080">id</span> = <span style="color:#b84">&#34;MyCustomDispatcher&#34;</span>
-    <span style="font-weight:bold">var</span> <span style="color:#008080">config</span>: TealiumConfig
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">class</span> <span style="color:#2b91af">MyCustomDispatcher</span>: Dispatcher {
+    <span style="color:#00f">var</span> isReady: Bool
+    <span style="color:#00f">var</span> id = <span style="color:#a31515">&#34;MyCustomDispatcher&#34;</span>
+    <span style="color:#00f">var</span> config: TealiumConfig
 
-    <span style="font-weight:bold">required</span> <span style="font-weight:bold">init</span>(config: TealiumConfig, delegate: ModuleDelegate, completion: ModuleCompletion?) {
-        <span style="font-weight:bold">self</span>.config = config
-        <span style="font-weight:bold">self</span>.isReady = <span style="font-weight:bold">true</span>
+    <span style="color:#00f">required</span> <span style="color:#00f">init</span>(config: TealiumConfig, delegate: ModuleDelegate, completion: ModuleCompletion?) {
+        <span style="color:#00f">self</span>.config = config
+        <span style="color:#00f">self</span>.isReady = <span style="color:#00f">true</span>
     }
 
-    <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">dynamicTrack</span>(<span style="font-weight:bold">_</span> request: TealiumRequest, completion: ModuleCompletion?) {
-        <span style="font-weight:bold">switch</span> request {
-        <span style="font-weight:bold">case</span> <span style="font-weight:bold">let</span> <span style="color:#008080">request</span> <span style="font-weight:bold">as</span> TealiumTrackRequest:
-            print(<span style="color:#b84">&#34;Track received: </span><span style="color:#b84">\(</span>request.event ?? <span style="color:#b84">&#34;no event name&#34;</span><span style="color:#b84">)</span><span style="color:#b84">&#34;</span>)
-            <span style="color:#998;font-style:italic">// perform track action, e.g. send to custom endpoint</span>
-        <span style="font-weight:bold">case</span> <span style="font-weight:bold">_</span> <span style="font-weight:bold">as</span> TealiumBatchTrackRequest:
-            print(<span style="color:#b84">&#34;Batch track received&#34;</span>)
-            <span style="color:#998;font-style:italic">// perform batch track action, e.g. send to custom endpoint</span>
-        <span style="font-weight:bold">default</span>:
-            <span style="font-weight:bold">return</span>
+    <span style="color:#00f">func</span> dynamicTrack(<span style="color:#00f">_</span> request: TealiumRequest, completion: ModuleCompletion?) {
+        <span style="color:#00f">switch</span> request {
+        <span style="color:#00f">case</span> <span style="color:#00f">let</span> request <span style="color:#00f">as</span> TealiumTrackRequest:
+            print(<span style="color:#a31515">&#34;Track received: </span><span style="color:#a31515">\(</span>request.event ?? <span style="color:#a31515">&#34;no event name&#34;</span><span style="color:#a31515">)</span><span style="color:#a31515">&#34;</span>)
+            <span style="color:#008000">// perform track action, e.g. send to custom endpoint</span>
+        <span style="color:#00f">case</span> <span style="color:#00f">_</span> <span style="color:#00f">as</span> TealiumBatchTrackRequest:
+            print(<span style="color:#a31515">&#34;Batch track received&#34;</span>)
+            <span style="color:#008000">// perform batch track action, e.g. send to custom endpoint</span>
+        <span style="color:#00f">default</span>:
+            <span style="color:#00f">return</span>
         }
     }
 }
 
-<span style="color:#998;font-style:italic">// Add dispatcher to your config instance prior to Tealium initialization</span>
-<span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span> {
-	<span style="color:#998;font-style:italic">// ...</span>
-	<span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">startTracking</span>() {
-		<span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>,
-                               profile: <span style="color:#b84">&#34;PROFILE&#34;</span>,
-                               environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>,
-                               datasource: <span style="color:#b84">&#34;DATASOURCE&#34;</span>)
+<span style="color:#008000">// Add dispatcher to your config instance prior to Tealium initialization</span>
+<span style="color:#00f">class</span> <span style="color:#2b91af">TealiumHelper</span> {
+	<span style="color:#008000">// ...</span>
+	<span style="color:#00f">func</span> startTracking() {
+		<span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+                               profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
+                               environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
+                               datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>)
 
-   <span style="color:#998;font-style:italic">// add desired Dispatchers</span>
-   config.dispatchers = [Dispatchers.Collect, MyCustomDispatcher.<span style="font-weight:bold">self</span>]      
-					  <span style="font-weight:bold">self</span>.tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span> }
+   <span style="color:#008000">// add desired Dispatchers</span>
+   config.dispatchers = [Dispatchers.Collect, MyCustomDispatcher.<span style="color:#00f">self</span>]      
+					  <span style="color:#00f">self</span>.tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span style="color:#00f">in</span> }
 }</code></pre></div>
 <h2 id="recommended-modules">Recommended Modules</h2>
 
@@ -5625,8 +5625,170 @@ config.dispatchers = [Dispatchers.Collect]                               </code>
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5701,7 +5863,7 @@ config.dispatchers = [Dispatchers.Collect]                               </code>
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7727,9 +7889,15 @@ config.dispatchers = [Dispatchers.Collect]                               </code>
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

@@ -313,11 +313,11 @@ var utag_data = {
 </ol>
 
 <p>Next, to call the Objective-C code from Swift:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="font-weight:bold">class</span> TealiumHelper {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#00f">class</span> TealiumHelper {
     func somefunc () {
-        let tealConfig <span style="font-weight:bold">=</span> TEALConfiguration.init(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>, profile: <span style="color:#b84">&#34;PROFILE&#34;</span>, environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>)
-        let teal <span style="font-weight:bold">=</span> Tealium.newInstance(forKey: <span style="color:#b84">&#34;KEY&#34;</span>, configuration: tealConfig)
-        teal.trackView(withTitle: <span style="color:#b84">&#34;SCREEN_NAME&#34;</span>, dataSources: [<span style="color:#b84">&#34;DATA&#34;</span><span style="font-weight:bold">:</span><span style="color:#b84">&#34;VALUE&#34;</span>])
+        let tealConfig = TEALConfiguration.init(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>, profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>, environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>)
+        let teal = Tealium.newInstance(forKey: <span style="color:#a31515">&#34;KEY&#34;</span>, configuration: tealConfig)
+        teal.trackView(withTitle: <span style="color:#a31515">&#34;SCREEN_NAME&#34;</span>, dataSources: [<span style="color:#a31515">&#34;DATA&#34;</span>:<span style="color:#a31515">&#34;VALUE&#34;</span>])
     }
 }</code></pre></div>
 <h2 id="call-swift-from-objective-c">Call Swift from Objective-C</h2>
@@ -331,20 +331,20 @@ However, by using an intermediate helper class, it is possible to call the Swift
 <li>In your Objective-C project, create a new Swift file. You are prompted to add a bridging header if you don&rsquo;t already have one. Accept this prompt. Name the new Swift file &ldquo;TealiumHelper.swift&rdquo;.</li>
 
 <li><p>Import the new Swift header (<code>&lt;ProjectName&gt;-Swift.h</code>) into files that need to call the new helper.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#999;font-weight:bold">#import &#34;ProjectName-Swift.h&#34;</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#00f">#import &#34;ProjectName-Swift.h&#34;</span></code></pre></div></li>
 </ol>
 
 <p>The methods in the helper file are now be available to use in your Objective-C code. We recommend making the helper a singleton.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#999;font-weight:bold">#import &#34;TestSwiftBridge-Swift.h&#34;
-</span><span style="color:#999;font-weight:bold"></span>
-- (<span style="color:#458;font-weight:bold">BOOL</span>)<span style="color:#900;font-weight:bold">application:</span>(UIApplication <span style="font-weight:bold">*</span>)<span style="color:#008080">application</span> <span style="color:#900;font-weight:bold">didFinishLaunchingWithOptions:</span>(NSDictionary <span style="font-weight:bold">*</span>)<span style="color:#008080">launchOptions</span> {
-	<span style="color:#998;font-style:italic">// instantiate the helper singleton
-</span><span style="color:#998;font-style:italic"></span>    TealiumHelper <span style="font-weight:bold">*</span> help <span style="font-weight:bold">=</span> [TealiumHelper sharedInstance];
-    <span style="color:#998;font-style:italic">// call the start method, which initializes the Tealium library
-</span><span style="color:#998;font-style:italic"></span>    [help start];
-    <span style="color:#998;font-style:italic">// trigger a new event tracking call from objective-c
-</span><span style="color:#998;font-style:italic"></span>    [help track:<span style="color:#b84">@&#34;this is from objective-c!&#34;</span> data:@{<span style="color:#b84">@&#34;mydata&#34;</span><span style="font-weight:bold">:</span><span style="color:#b84">@&#34;hello from obj-c&#34;</span>}];
-    <span style="font-weight:bold">return</span> <span style="color:#999">YES</span>;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#00f">#import &#34;TestSwiftBridge-Swift.h&#34;
+</span><span style="color:#00f"></span>
+- (<span style="color:#2b91af">BOOL</span>)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	<span style="color:#008000">// instantiate the helper singleton
+</span><span style="color:#008000"></span>    TealiumHelper * help = [TealiumHelper sharedInstance];
+    <span style="color:#008000">// call the start method, which initializes the Tealium library
+</span><span style="color:#008000"></span>    [help start];
+    <span style="color:#008000">// trigger a new event tracking call from objective-c
+</span><span style="color:#008000"></span>    [help track:<span style="color:#a31515">@&#34;this is from objective-c!&#34;</span> data:@{<span style="color:#a31515">@&#34;mydata&#34;</span>:<span style="color:#a31515">@&#34;hello from obj-c&#34;</span>}];
+    <span style="color:#00f">return</span> YES;
 }</code></pre></div>
 <h3 id="links">Links</h3>
 
@@ -5421,8 +5421,170 @@ However, by using an intermediate helper class, it is possible to call the Swift
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5497,7 +5659,7 @@ However, by using an intermediate helper class, it is possible to call the Swift
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7523,9 +7685,15 @@ However, by using an intermediate helper class, it is possible to call the Swift
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

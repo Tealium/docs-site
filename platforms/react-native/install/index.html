@@ -343,7 +343,7 @@ var utag_data = {
 
 <p>To install the pods, run the following commands:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">// From your React Native application folder:
-<span style="color:#999">cd</span> ios <span style="font-weight:bold">&amp;&amp;</span> pod install</code></pre></div>
+cd ios &amp;&amp; pod install</code></pre></div>
 <p>In some cases, it&rsquo;s necessary to enable the clang parameter to allow non-modular includes in the framework modules. To enable the clang parameter:</p>
 
 <ol>
@@ -352,7 +352,7 @@ var utag_data = {
 <li><p>Under <strong>Targets</strong> select the <strong>tealium-react-native</strong> target, and click the <strong>Build Settings</strong> tab.</p></li>
 
 <li><p>Find and update the following setting under <strong>Apple Clang - Language - Modules</strong> &gt; <strong>Allow Non-modular Includes In Framework Modules</strong>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES <span style="font-weight:bold">=</span> YES<span style="font-weight:bold">;</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;</code></pre></div></li>
 </ol>
 
 <h4 id="bridging-header">Bridging Header</h4>
@@ -368,32 +368,32 @@ var utag_data = {
 
 <p>The bridging header file name is in the format: <code>YourProject-Bridging-Header.h</code>. Do not rename the file, as Xcode configures the project with the generated file name.</p>
 
-<p class="note">You are only prompted once per project for adding a bridging header.</p>
+<p class="note"><i class="fas fa-info-circle"></i>You are only prompted once per project for adding a bridging header.</p>
 
 <h2 id="javascript">JavaScript</h2>
 
 <p>The method for importing the module into your app depends on how you installed.</p>
 
 <p>If you installed via NPM, add this line to your code:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">import</span> Tealium from <span style="color:#b84">&#39;tealium-react-native&#39;</span>;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">import</span> Tealium from <span style="color:#a31515">&#39;tealium-react-native&#39;</span>;
 </code></pre></div>
 <p>If you installed manually, then in the  <code>npm-package</code> folder of the <a href="https://github.com/Tealium/tealium-react-native">GitHub repository</a>, find the file <code>index.js</code>, rename it to <code>TealiumModule.js</code> and copy it into your React Native JavaScript Project.</p>
 
 <p>After installation, import the Tealium module into your app&rsquo;s JavaScript code as follows:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">import</span> Tealium from <span style="color:#b84">&#39;tealium-react-native&#39;</span>;
-<span style="font-weight:bold">import</span> { TealiumConfig, TealiumView, TealiumEvent, ConsentCategories, Dispatchers, Collectors, ConsentPolicy, Expiry, ConsentExpiry, TimeUnit, ConsentStatus, TealiumEnvironment } from <span style="color:#b84">&#39;tealium-react-native/common&#39;</span>;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">import</span> Tealium from <span style="color:#a31515">&#39;tealium-react-native&#39;</span>;
+<span style="color:#00f">import</span> { TealiumConfig, TealiumView, TealiumEvent, ConsentCategories, Dispatchers, Collectors, ConsentPolicy, Expiry, ConsentExpiry, TimeUnit, ConsentStatus, TealiumEnvironment } from <span style="color:#a31515">&#39;tealium-react-native/common&#39;</span>;
 </code></pre></div>
 <h2 id="initialize">Initialize</h2>
 
 <p>Once your app has been installed, initialize the <code>Tealium</code> instance with the <a href="/platforms/react-native/api/#initialize"><code>initialize()</code></a> method, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">let</span> config<span style="font-weight:bold">:</span> TealiumConfig <span style="font-weight:bold">=</span> {
-	account<span style="font-weight:bold">:</span> <span style="color:#b84">&#39;ACCOUNT&#39;</span>,
-	profile<span style="font-weight:bold">:</span> <span style="color:#b84">&#39;PROFILE&#39;</span>,
-	environment<span style="font-weight:bold">:</span> TealiumEnvironment.dev,
-	dispatchers<span style="font-weight:bold">:</span> [Dispatchers.Collect, Dispatchers.RemoteCommands, Dispatchers.TagManagement],
-	collectors<span style="font-weight:bold">:</span> [Collectors.AppData, Collectors.DeviceData, Collectors.Lifecycle, Collectors.Connectivity],
-	consentPolicy<span style="font-weight:bold">:</span> ConsentPolicy.gdpr,
-	visitorServiceEnabled<span style="font-weight:bold">:</span> <span style="font-weight:bold">true</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">let</span> config: TealiumConfig = {
+	account: <span style="color:#a31515">&#39;ACCOUNT&#39;</span>,
+	profile: <span style="color:#a31515">&#39;PROFILE&#39;</span>,
+	environment: TealiumEnvironment.dev,
+	dispatchers: [Dispatchers.Collect, Dispatchers.RemoteCommands, Dispatchers.TagManagement],
+	collectors: [Collectors.AppData, Collectors.DeviceData, Collectors.Lifecycle, Collectors.Connectivity],
+	consentPolicy: ConsentPolicy.gdpr,
+	visitorServiceEnabled: <span style="color:#00f">true</span>
 };
 Tealium.initialize(config);
 </code></pre></div>
@@ -5455,8 +5455,170 @@ Tealium.initialize(config);
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5531,7 +5693,7 @@ Tealium.initialize(config);
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7557,9 +7719,15 @@ Tealium.initialize(config);
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

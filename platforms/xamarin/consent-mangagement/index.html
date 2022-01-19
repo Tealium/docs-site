@@ -253,8 +253,6 @@ var utag_data = {
               <li><a href="#sample-app">Sample App</a></li>
               <li><a href="#enable">Enable</a></li>
               <li><a href="#consent-status">Consent Status</a></li>
-              <li><a href="#consent-selection">Consent Selection</a></li>
-              <li><a href="#resetting">Resetting</a></li>
               </nav>
   </aside></div>
 
@@ -295,86 +293,48 @@ var utag_data = {
 
 <h2 id="usage">Usage</h2>
 
-<p>Usage of this module is recommended, as it is automatically included in the library and enabled in the native code upon initialization. Android and iOS are both supported platforms.</p>
+<p>Consent management is a recommended feature and is automatically included in the library. To manage consent you must set a consent policy, then track the user&rsquo;s consent status and consent preferences.</p>
 
-<p><a href="/platforms/getting-started/consent-management/">Learn more</a> about Consent Management.</p>
+<p><a href="/platforms/getting-started/consent-management/">Learn more about consent management</a>.</p>
 
 <h2 id="sample-app">Sample App</h2>
 
-<p>To help to familiarize yourself with our library, the tracking methods, and best practice implementation, download the Xamarin Consent Management <a href="https://github.com/Tealium/tealium-xamarin/tree/master/Samples/ExampleAppConsentMgr">sample app</a>.</p>
+<p>Use the Xamarin Consent Management sample app to familiarize yourself with our library, the tracking methods, and best practices:</p>
+
+<p><a href="https://github.com/Tealium/tealium-xamarin/tree/master/Samples/ExampleAppConsentMgr">Download Xamarin Consent Management Sample App</a></p>
 
 <h2 id="enable">Enable</h2>
 
-<p>The Consent Management feature comes from the two native SDKs embedded into the DLLs named <code>Tealium.Platform.*.dlls</code>. The <code>Tealium.Common.dll</code> provides the following category and status enums to use:</p>
+<p>The consent management feature comes from the native SDKs embedded into the DLLs named <code>Tealium.Platform.*.dlls</code>.</p>
 
-<ul>
-<li><code>Tealium.ConsentManager.ConsentStatus</code></li>
-<li><code>Tealium.ConsentManager.ConsentCategory</code></li>
-</ul>
-
-<p>To enable Consent Management, simply pass the optional parameter in the constructor of <code>TealiumConfig</code>, or set it as a property as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">TealiumConfig tealConfig = <span style="font-weight:bold">new</span> TealiumConfig(
-        TealiumConsts.INSTANCE_ID,
-        TealiumConsts.ACCOUNT,
-        TealiumConsts.PROFILE,
-        TealiumConsts.ENVIRONMENT,
-        <span style="font-weight:bold">true</span>,
-        commands,
-        advConfig,
-        <span style="font-weight:bold">false</span>); <span style="color:#998;font-style:italic">// optional Consent Manager Enablement
-</span><span style="color:#998;font-style:italic"></span>
-<span style="color:#998;font-style:italic">// or subsequently enable it:
-</span><span style="color:#998;font-style:italic"></span>tealConfig.IsConsentManagerEnabled = <span style="font-weight:bold">true</span>;
-
-<span style="color:#998;font-style:italic">// initialise your Tealium Instance:
-</span><span style="color:#998;font-style:italic"></span><span style="color:#458;font-weight:bold">var</span> tealium = instanceManager.CreateInstance(tealConfig);
+<p>To enable consent management, set the <code>consentPolicy</code> parameter when you initialize <a href="/platforms/xamarin/api/#consentpolicy"><code>TealiumConfig</code></a>:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">TealiumConfig config = <span style="color:#00f">new</span> TealiumConfig(
+  <span style="color:#008000">//...
+</span><span style="color:#008000"></span>  consentPolicy = ConsentPolicy.GDPR,
+  <span style="color:#008000">//...
+</span><span style="color:#008000"></span>);
 </code></pre></div>
 <h2 id="consent-status">Consent Status</h2>
 
-<p>As with the native SDKs for both Android and iOS, when Consent Management is enabled, new users are assumed to be in an unknown state. Tracking requests are queued up until the consent status has been opted-in or out, at which point events are sent or purged, respectively.</p>
+<p>As with the native SDKs for both Android and iOS, when consent management is enabled, new users are assumed to be in an unknown state. Tracking requests are queued up until the consent status has been opted-in or out, at which point events are sent or purged, respectively.</p>
 
-<p>Override the initial status through properties on the <code>TealiumConfig</code> object, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">// enable Consent Manager:
-</span><span style="color:#998;font-style:italic"></span>tealConfig.IsConsentManagerEnabled = <span style="font-weight:bold">true</span>;
+<p>Use the following methods to manage a user&rsquo;s consent:</p>
 
-<span style="color:#998;font-style:italic">// Set Users to be Consented by default:
-</span><span style="color:#998;font-style:italic"></span>tealConfig.InitialUserConsentStatus = ConsentManager.ConsentStatus.Consented;
-<span style="color:#998;font-style:italic">// Or set Users to be Not Consented by default:
-</span><span style="color:#998;font-style:italic"></span>tealConfig.InitialUserConsentStatus = ConsentManager.ConsentStatus.NotConsented;
+<ul>
+<li><a href="/platforms/xamarin/api/#setconsentstatus"><code>SetConsentStatus()</code></a></li>
+<li><a href="/platforms/xamarin/api/#getconsentstatus"><code>GetConsentStatus()</code></a></li>
+<li><a href="/platforms/xamarin/api/#setconsentcategories"><code>SetConsentCategories()</code></a></li>
+<li><a href="/platforms/xamarin/api/#getconsentcategories"><code>GetConsentCategories()</code></a></li>
+<li><a href="/platforms/xamarin/api/#setconsentexpirylistener"><code>SetConsentExpiryListener()</code></a></li>
+</ul>
 
-<span style="color:#998;font-style:italic">// Opt users into All Categories
-</span><span style="color:#998;font-style:italic"></span>tealConfig.InitialUserConsentCategories = ConsentManager.AllCategories;
-<span style="color:#998;font-style:italic">// or none:
-</span><span style="color:#998;font-style:italic"></span>tealConfig.InitialUserConsentCategories = ConsentManager.NoCategories;
-<span style="color:#998;font-style:italic">// or partial opt-in, only to Analytics and Mobile categories.
-</span><span style="color:#998;font-style:italic"></span>tealConfig.InitialUserConsentCategories = <span style="font-weight:bold">new</span> ConsentCategory[]{
-    ConsentManager.ConsentCategory.Analytics,
-        ConsentManager.ConsentCategory.Mobile
-};
-</code></pre></div>
-<h2 id="consent-selection">Consent Selection</h2>
+<p>The <code>Tealium.Common.dll</code> provides the following category and status enums to use:</p>
 
-<p>Interact directly with Consent Management from the Tealium instance, through the <code>ConsentManager</code> property.</p>
+<ul>
+<li><a href="/platforms/xamarin/api/#consentstatus"><code>Tealium.ConsentManager.ConsentStatus</code></a></li>
+<li><a href="/platforms/xamarin/api/#consentcategory"><code>Tealium.ConsentManager.ConsentCategory</code></a></li>
+</ul>
 
-<p>If you need to update a user&rsquo;s consent selection, pass one of enum values available in the <code>ConsentManager.ConsentCategory</code> and <code>ConsentManager.ConsentStatus</code>, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#998;font-style:italic">// if the user is in an Unknown state, then the following code triggers any queued events are sent after this:
-</span><span style="color:#998;font-style:italic"></span>ITealium tealium = instanceManager.GetExistingInstance(TealiumConsts.INSTANCE_ID);
-tealium.ConsentManager.UserConsentStatus = ConsentManager.ConsentStatus.Consented;
-
-<span style="color:#998;font-style:italic">// The previous inherently opts the user into all categories as none have been provide.
-</span><span style="color:#998;font-style:italic">// To grant consent and opt into a subset of categories, use the overload:
-</span><span style="color:#998;font-style:italic"></span>tealium.ConsentManager.UserConsentStatusWithCategories(ConsentManager.ConsentStatus.Consented, <span style="font-weight:bold">new</span> ConsentCategory[]{
-    ConsentManager.ConsentCategory.Analytics
-});
-</code></pre></div>
-<h2 id="resetting">Resetting</h2>
-
-<p>Additional options are available to reset the currently selected consent preferences. This reverts the user back to an <code>Unknown</code> status so that subsequent events begin being queued again.</p>
-
-<p>To completely disable, disable it on the <code>TealiumConfig</code> object, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">ITealium tealium = instanceManager.GetExistingInstance(TealiumConsts.INSTANCE_ID);
-tealium.ConsentManager.ResetUserConsentPreferences();
-</code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -382,11 +342,11 @@ tealium.ConsentManager.ResetUserConsentPreferences();
 	<div date-pref class="white">
 		
 		
-			<a href="https://docs.tealium.com/platforms/xamarin/api/" title="API Reference "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
+			<a href="https://docs.tealium.com/platforms/xamarin/data-management/" title="Data Layer "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
     <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
     <path d="M0 0h24v24H0z" fill="none"/>
 </svg>
- API Reference </a>
+ Data Layer </a>
 		
 
 	</div>
@@ -397,8 +357,8 @@ tealium.ConsentManager.ResetUserConsentPreferences();
 	<div date-pref class="white">
 
 		
-			<a href="https://docs.tealium.com/platforms/xamarin/data-management/" title="Data Management">
-			Data Management <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
+			<a href="https://docs.tealium.com/platforms/xamarin/api/" title="API Reference">
+			API Reference <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
 
 			</a>
 		
@@ -5444,8 +5404,170 @@ tealium.ConsentManager.ResetUserConsentPreferences();
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  active mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2 primary-color expanded " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2 primary-color expanded " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0">
             
 
@@ -5520,7 +5642,7 @@ tealium.ConsentManager.ResetUserConsentPreferences();
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7392,7 +7514,7 @@ tealium.ConsentManager.ResetUserConsentPreferences();
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 23, 2019 
+    <span>This page was last updated:  December 15, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
@@ -7546,9 +7668,15 @@ tealium.ConsentManager.ResetUserConsentPreferences();
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

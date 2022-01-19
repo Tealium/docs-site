@@ -348,7 +348,7 @@ The block list is a JSON file that contains a single array of strings. The strin
 
 <p>For example, if you don&rsquo;t want to track any view controller names that contain the strings &ldquo;Settings&rdquo; or &ldquo;Profile&rdquo;, then the block list could contain:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">[
-  <span style="color:#b84">&#34;settings&#34;</span>, <span style="color:#b84">&#34;profile&#34;</span>
+  <span style="color:#a31515">&#34;settings&#34;</span>, <span style="color:#a31515">&#34;profile&#34;</span>
 ]</code></pre></div>
 <p>The block list file can be stored locally in your app or hosted remotely as a URL.</p>
 
@@ -373,7 +373,7 @@ The block list is a JSON file that contains a single array of strings. The strin
 <h3 id="cocoapods">CocoaPods</h3>
 
 <p>To install the AutoTracking module with CocoaPods, add the following pod to your Podfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#b84">&#39;tealium-swift/Autotracking&#39;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;tealium-swift/Autotracking&#39;</span></code></pre></div>
 <p>Learn more about the <a href="/platforms/ios-swift/install/#cocoapods">CocoaPods installation for iOS</a>.</p>
 
 <h3 id="carthage">Carthage</h3>
@@ -384,7 +384,7 @@ The block list is a JSON file that contains a single array of strings. The strin
 <li><p>Go to the app target&rsquo;s General configuration page in Xcode.</p></li>
 
 <li><p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumAutotracking<span style="font-weight:bold">.</span>framework</code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumAutotracking.framework</code></pre></div></li>
 </ol>
 
 <p>Learn more about the <a href="/platforms/ios-swift/install/#carthage">Carthage installation for iOS</a>.</p>
@@ -400,17 +400,17 @@ The block list is a JSON file that contains a single array of strings. The strin
 <p>In a UIKit app, use the following methods to implement partial tracking but modifiying only the view controllers that you want to track.</p>
 
 <p>To turn off full tracking and add partial tracking, first add the entry <code>TealiumAutotrackingViewControllersEnabled</code> in the <code>info.plist</code> of the application with the value of <code>false</code>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#000080">&lt;key&gt;</span>TealiumAutotrackingViewControllersEnabled<span style="color:#000080">&lt;/key&gt;</span>
-<span style="color:#000080">&lt;false/&gt;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">&lt;key&gt;TealiumAutotrackingViewControllersEnabled&lt;/key&gt;
+&lt;false/&gt;</code></pre></div>
 <p>To automatically track a specific view controller, create a subclass of <code>TealiumViewController</code>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">MyAutomaticallyTrackedViewController</span>: TealiumViewController { 
-    <span style="color:#998;font-style:italic">// ...</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">class</span> <span style="color:#2b91af">MyAutomaticallyTrackedViewController</span>: TealiumViewController { 
+    <span style="color:#008000">// ...</span>
 }</code></pre></div>
 <p>Alternatively, you can conform to <code>TealiumViewControllerTrackable</code> and call <code>trackViewControllerAppearence</code> on the <code>viewDidAppear</code> method of your view controller.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">MyViewController</span>: UITableViewController, TealiumViewControllerTrackable {
-     <span style="font-weight:bold">@objc</span>
-     open <span style="font-weight:bold">override</span> <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">viewDidAppear</span>(<span style="font-weight:bold">_</span> animated: <span style="color:#999">Bool</span>) {
-         <span style="font-weight:bold">super</span>.viewDidAppear(animated)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">class</span> <span style="color:#2b91af">MyViewController</span>: UITableViewController, TealiumViewControllerTrackable {
+     <span style="color:#00f">@objc</span>
+     open <span style="color:#00f">override</span> <span style="color:#00f">func</span> viewDidAppear(<span style="color:#00f">_</span> animated: Bool) {
+         <span style="color:#00f">super</span>.viewDidAppear(animated)
          trackViewControllerAppearence()
      }
  }</code></pre></div>
@@ -430,13 +430,13 @@ The block list is a JSON file that contains a single array of strings. The strin
 <p>Use this modifier to automatically track a view using the class name.</p>
 
 <p>Apply this modifier in the body of the view you want to track and pass <code>self</code> as parameter:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">struct</span> <span style="color:#458;font-weight:bold">SomeView</span>: View {
-    <span style="font-weight:bold">var</span> <span style="color:#008080">body</span>: some View {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">struct</span> <span style="color:#2b91af">SomeView</span>: View {
+    <span style="color:#00f">var</span> body: some View {
         Group {
             Spacer()
-            Text(<span style="color:#b84">&#34;Some Text&#34;</span>)
+            Text(<span style="color:#a31515">&#34;Some Text&#34;</span>)
             Spacer()
-        }.autoTracking(viewSelf: <span style="font-weight:bold">self</span>) 
+        }.autoTracking(viewSelf: <span style="color:#00f">self</span>) 
     }
 }</code></pre></div>
 <h4 id="autotracking-viewclass-some-view"><code>autoTracking(viewClass:) -&gt; some View</code></h4>
@@ -444,13 +444,13 @@ The block list is a JSON file that contains a single array of strings. The strin
 <p>Use this modifier to automatically track a view using the class name of the view class.</p>
 
 <p>Apply this modifier in the body of the view you want to track and pass the name of the class you want to track (if you don&rsquo;t have access to the object instance):</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">struct</span> <span style="color:#458;font-weight:bold">SomeContainerView</span>: View {
-    <span style="font-weight:bold">var</span> <span style="color:#008080">body</span>: some View {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">struct</span> <span style="color:#2b91af">SomeContainerView</span>: View {
+    <span style="color:#00f">var</span> body: some View {
         SomeOtherView {
             Spacer()
-            Text(<span style="color:#b84">&#34;Some Text&#34;</span>)
+            Text(<span style="color:#a31515">&#34;Some Text&#34;</span>)
             Spacer()
-        }.autoTracking(viewClass: SomeOtherView.<span style="font-weight:bold">self</span>) 
+        }.autoTracking(viewClass: SomeOtherView.<span style="color:#00f">self</span>) 
     }
 }</code></pre></div>
 <h4 id="autotracked-constantname-some-view"><code>autoTracked(constantName:) -&gt; some View</code></h4>
@@ -459,17 +459,17 @@ The block list is a JSON file that contains a single array of strings. The strin
 
 <p>Changing the variable from which the constant is taken won’t change the tracked name.</p>
 
-<p class="note">Do not pass a state variable here as it may conflict with <code>onDisappear</code> calls.</p>
+<p class="note"><i class="fas fa-info-circle"></i>Do not pass a state variable here as it may conflict with <code>onDisappear</code> calls.</p>
  
 
 <p>If you want to pass a state variable, pass the binding value instead, using the overloaded method.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">struct</span> <span style="color:#458;font-weight:bold">SomeView</span>: View {
-    <span style="font-weight:bold">var</span> <span style="color:#008080">body</span>: some View {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">struct</span> <span style="color:#2b91af">SomeView</span>: View {
+    <span style="color:#00f">var</span> body: some View {
         Group {
             Spacer()
-            Text(<span style="color:#b84">&#34;Some Text&#34;</span>)
+            Text(<span style="color:#a31515">&#34;Some Text&#34;</span>)
             Spacer()
-        }.autoTracked(constantName: <span style="color:#b84">&#34;Some Constant Name&#34;</span>) 
+        }.autoTracked(constantName: <span style="color:#a31515">&#34;Some Constant Name&#34;</span>) 
     }
 }</code></pre></div>
 <h4 id="autotracked-name-binding-string-some-view"><code>autoTracked(name: Binding&lt;String&gt;) -&gt; some View</code></h4>
@@ -479,14 +479,14 @@ The block list is a JSON file that contains a single array of strings. The strin
 <p>Changing the variable in this case results in a different event name for subsequent automatic tracking calls.</p>
 
 <p>This method solves the issue of <code>onAppear</code> being called after <code>onDisappear</code> for state changes and allows for the variable name to change for subsequent automatically tracked names.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="font-weight:bold">struct</span> <span style="color:#458;font-weight:bold">SomeView</span>: View {
-    @State <span style="font-weight:bold">var</span> <span style="color:#008080">name</span> = <span style="color:#b84">&#34;Some Variable Name&#34;</span>
-    <span style="font-weight:bold">var</span> <span style="color:#008080">body</span>: some View {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">struct</span> <span style="color:#2b91af">SomeView</span>: View {
+    @State <span style="color:#00f">var</span> name = <span style="color:#a31515">&#34;Some Variable Name&#34;</span>
+    <span style="color:#00f">var</span> body: some View {
         Group {
             Spacer()
-            Text(<span style="color:#b84">&#34;Some Text&#34;</span>)
+            Text(<span style="color:#a31515">&#34;Some Text&#34;</span>)
             Spacer()
-        }.autoTracked(name: <span style="color:#a61717;background-color:#e3d2d2">$</span>name) 
+        }.autoTracked(name: <span style="">$</span>name) 
     }
 }</code></pre></div>
 <h4 id="embed-automatic-tracking-container">Embed Automatic Tracking Container</h4>
@@ -504,15 +504,15 @@ Pass the content view in the initializer to track the content class name automat
 
 <li><p><strong>Init with constant name and content view</strong><br />
 Specify a constant name by passing a state variable to be tracked instead of the content class name.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">TealiumViewTrackable(constantName: <span style="color:#b84">&#34;Some Constant Name&#34;</span>) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">TealiumViewTrackable(constantName: <span style="color:#a31515">&#34;Some Constant Name&#34;</span>) {
   SomeView()
 }</code></pre></div></li>
 
 <li><p><strong>Init with state variable binding name and content view</strong><br />
 Pass a binding from a state variable of your view. This uses the current value of the state variable when <code>onAppear</code> is triggered.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@State <span style="font-weight:bold">var</span> <span style="color:#008080">name</span>: <span style="color:#999">String</span> = <span style="color:#b84">&#34;Some Variable Name&#34;</span>
-<span style="font-weight:bold">var</span> <span style="color:#008080">body</span>: some View {
-  TealiumViewTrackable(viewName: <span style="color:#a61717;background-color:#e3d2d2">$</span>name) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">@State <span style="color:#00f">var</span> name: String = <span style="color:#a31515">&#34;Some Variable Name&#34;</span>
+<span style="color:#00f">var</span> body: some View {
+  TealiumViewTrackable(viewName: <span style="">$</span>name) {
     SomeView()
   }
 }</code></pre></div></li>
@@ -5615,8 +5615,170 @@ Pass a binding from a state variable of your view. This uses the current value o
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5691,7 +5853,7 @@ Pass a binding from a state variable of your view. This uses the current value o
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7717,9 +7879,15 @@ Pass a binding from a state variable of your view. This uses the current value o
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

@@ -312,18 +312,18 @@ var utag_data = {
 
 <ol>
 <li><p>In your project&rsquo;s top-level <code>build.gradle</code> file, add the following Maven repository:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">maven <span style="font-weight:bold">{</span>
-  url <span style="color:#b84">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
-<span style="font-weight:bold">}</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">maven {
+  url <span style="color:#a31515">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
+}</code></pre></div></li>
 
 <li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the following Maven dependency:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies<span style="font-weight:bold">{</span>
-  <span style="color:#998;font-style:italic">//only required if you do not have this reference
-</span><span style="color:#998;font-style:italic"></span>  implementation <span style="color:#b84">&#39;com.tealium:library:5.8.0&#39;</span>
-  implementation <span style="color:#b84">&#39;com.tealium:optimizelylistener:1.1.2&#39;</span>
-  <span style="color:#998;font-style:italic">//only required if you do not already have this reference and require lifecycle tracking
-</span><span style="color:#998;font-style:italic"></span>  implementation <span style="color:#b84">&#39;com.tealium:lifecycle:1.1.4&#39;</span>
-<span style="font-weight:bold">}</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies{
+  <span style="color:#008000">//only required if you do not have this reference
+</span><span style="color:#008000"></span>  implementation <span style="color:#a31515">&#39;com.tealium:library:5.8.0&#39;</span>
+  implementation <span style="color:#a31515">&#39;com.tealium:optimizelylistener:1.1.2&#39;</span>
+  <span style="color:#008000">//only required if you do not already have this reference and require lifecycle tracking
+</span><span style="color:#008000"></span>  implementation <span style="color:#a31515">&#39;com.tealium:lifecycle:1.1.4&#39;</span>
+}</code></pre></div></li>
 </ol>
 
 <h3 id="manual">Manual</h3>
@@ -334,25 +334,25 @@ var utag_data = {
 <li><p>Download the Tealium <a href="https://github.com/Tealium/tealium-android/tree/master/Modules/Optimizely">OptimizelyListener</a> module.</p></li>
 
 <li><p>In your top-level <code>build.gradle</code> file, verify the following:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects <span style="font-weight:bold">{</span>
-  repositories <span style="font-weight:bold">{</span>
-     jcenter<span style="font-weight:bold">()</span>
-     flatDir <span style="font-weight:bold">{</span>
-          dirs <span style="color:#b84">&#39;libs&#39;</span>
-     <span style="font-weight:bold">}</span>
-  <span style="font-weight:bold">}</span>
-<span style="font-weight:bold">}</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
+  repositories {
+     jcenter()
+     flatDir {
+          dirs <span style="color:#a31515">&#39;libs&#39;</span>
+     }
+  }
+}</code></pre></div></li>
 
 <li><p>Copy the file <code>tealium.optimizelylistener-1.1.1.aar</code> into your project&rsquo;s <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> directory.</p></li>
 
 <li><p>Add the Tealium library dependency to your project module’s <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies <span style="font-weight:bold">{</span>
-  <span style="color:#998;font-style:italic">// only required if you do not already have this reference
-</span><span style="color:#998;font-style:italic"></span>  implementation<span style="font-weight:bold">(</span>name:<span style="color:#b84">&#39;tealium-5.6.1&#39;</span><span style="font-weight:bold">,</span> ext:<span style="color:#b84">&#39;aar&#39;</span><span style="font-weight:bold">)</span>
-  implementation<span style="font-weight:bold">(</span>name:<span style="color:#b84">&#39;tealium.optimizelylistener-1.1.1&#39;</span><span style="font-weight:bold">,</span> ext:<span style="color:#b84">&#39;aar&#39;</span><span style="font-weight:bold">)</span>
-  <span style="color:#998;font-style:italic">// only required if you do not already have this reference and require lifecycle tracking
-</span><span style="color:#998;font-style:italic"></span>  implementation<span style="font-weight:bold">(</span>name:<span style="color:#b84">&#39;tealium.lifecycle-1.1.2&#39;</span><span style="font-weight:bold">,</span> ext:<span style="color:#b84">&#39;aar&#39;</span><span style="font-weight:bold">)</span>
-<span style="font-weight:bold">}</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
+  <span style="color:#008000">// only required if you do not already have this reference
+</span><span style="color:#008000"></span>  implementation(name:<span style="color:#a31515">&#39;tealium-5.6.1&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
+  implementation(name:<span style="color:#a31515">&#39;tealium.optimizelylistener-1.1.1&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
+  <span style="color:#008000">// only required if you do not already have this reference and require lifecycle tracking
+</span><span style="color:#008000"></span>  implementation(name:<span style="color:#a31515">&#39;tealium.lifecycle-1.1.2&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
+}</code></pre></div></li>
 </ol>
 
 <h2 id="initialize">Initialize</h2>
@@ -360,21 +360,21 @@ var utag_data = {
 <p>The module must be initialized after the <code>OptimizelyManager</code> has finished initializing. If initialized elsewhere, some or all events may not be tracked.</p>
 
 <p><code>Optimizely</code> provides a listener which is called as soon as the <code>OptimizelyManager</code> is initialized.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#998;font-style:italic">// import the Tealium OptimizelyListener module in the import section
-</span><span style="color:#998;font-style:italic"></span><span style="font-weight:bold">import</span> <span style="color:#900;font-weight:bold">com</span>.<span style="color:#008080">tealium</span>.<span style="color:#008080">optimizelylistener</span>.<span style="color:#008080">TealiumOptimizelyEventListener</span>;
-<span style="color:#998;font-style:italic">//...
-</span><span style="color:#998;font-style:italic"></span>
-<span style="color:#998;font-style:italic">// substitute the example instance name here with the same instance name you used when initializing the Tealium library
-</span><span style="color:#998;font-style:italic"></span><span style="font-weight:bold">private</span> <span style="color:#900;font-weight:bold">static</span> <span style="font-weight:bold">final</span> <span style="color:#900;font-weight:bold">String</span> TEALIUM_INSTANCENAME <span style="font-weight:bold">=</span> <span style="color:#b84">&#34;teal&#34;</span>;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#008000">// import the Tealium OptimizelyListener module in the import section
+</span><span style="color:#008000"></span><span style="color:#00f">import</span> com.tealium.optimizelylistener.TealiumOptimizelyEventListener;
+<span style="color:#008000">//...
+</span><span style="color:#008000"></span>
+<span style="color:#008000">// substitute the example instance name here with the same instance name you used when initializing the Tealium library
+</span><span style="color:#008000"></span><span style="color:#00f">private</span> static <span style="color:#00f">final</span> String TEALIUM_INSTANCENAME = <span style="color:#a31515">&#34;teal&#34;</span>;
 
-myOptlyManager.<span style="color:#008080">initialize</span>(getApplicationContext(), <span style="font-weight:bold">new</span> OptimizelyStartListener() {
-    @Override <span style="font-weight:bold">public</span> <span style="color:#900;font-weight:bold">void</span> onStart(OptimizelyClient <span style="color:#900;font-weight:bold">optimizely</span>) {
-        <span style="color:#998;font-style:italic">// call this to init the Optimizely listener with a valid OptimizelyManager instance
-</span><span style="color:#998;font-style:italic"></span>        <span style="color:#998;font-style:italic">// myOptlyManager is your own reference to the global OptimizelyManager instance
-</span><span style="color:#998;font-style:italic"></span>        TealiumOptimizelyEventListener.<span style="color:#008080">init</span>(TEALIUM_INSTANCENAME, myOptlyManager);
-        <span style="color:#998;font-style:italic">// activate experiment AFTER initializing the Tealium listener.
-</span><span style="color:#998;font-style:italic"></span>        <span style="color:#998;font-style:italic">// tracking calls are missed if not done in this order.
-</span><span style="color:#998;font-style:italic"></span>        Variation <span style="color:#900;font-weight:bold">v</span> <span style="font-weight:bold">=</span> optimizely.<span style="color:#008080">activate</span>(<span style="color:#b84">&#34;tealiumtest&#34;</span>, <span style="color:#b84">&#34;userid&#34;</span>);
+myOptlyManager.initialize(getApplicationContext(), <span style="color:#00f">new</span> OptimizelyStartListener() {
+    @Override <span style="color:#00f">public</span> void onStart(OptimizelyClient optimizely) {
+        <span style="color:#008000">// call this to init the Optimizely listener with a valid OptimizelyManager instance
+</span><span style="color:#008000"></span>        <span style="color:#008000">// myOptlyManager is your own reference to the global OptimizelyManager instance
+</span><span style="color:#008000"></span>        TealiumOptimizelyEventListener.init(TEALIUM_INSTANCENAME, myOptlyManager);
+        <span style="color:#008000">// activate experiment AFTER initializing the Tealium listener.
+</span><span style="color:#008000"></span>        <span style="color:#008000">// tracking calls are missed if not done in this order.
+</span><span style="color:#008000"></span>        Variation v = optimizely.activate(<span style="color:#a31515">&#34;tealiumtest&#34;</span>, <span style="color:#a31515">&#34;userid&#34;</span>);
     }
 });</code></pre></div>
 <p>Once you have initialized the module, no additional configuration is required. The module listens for notifications from the <code>Optimizely</code> SDK and pass the data to the Tealium SDK as required.</p>
@@ -454,17 +454,17 @@ When the <code>Optimizely</code> SDK receives a custom event (generated by manua
 <h3 id="variable-name-overrides-optional">Variable Name Overrides (optional)</h3>
 
 <p>The default variable names are overridden easily if you prefer a different naming convention. Overriding variable names is done by changing a set of public properties on the <code>TealiumOptimizelyEventListener</code> class.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="font-weight:bold">import</span> <span style="color:#900;font-weight:bold">com</span>.<span style="color:#008080">tealium</span>.<span style="color:#008080">optimizelylistener</span>;
-<span style="color:#998;font-style:italic">//...
-</span><span style="color:#998;font-style:italic"></span>
-TealiumOptimizelyEventListener.<span style="color:#008080">OPTIMIZELY_EXPERIMENT_KEYNAME</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">&lt;</span>your <span style="color:#900;font-weight:bold">new</span> value<span style="font-weight:bold">&gt;</span>;
-TealiumOptimizelyEventListener.<span style="color:#008080">OPTIMIZELY_VARIATION_KEYNAME</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">&lt;</span>your <span style="color:#900;font-weight:bold">new</span> value<span style="font-weight:bold">&gt;</span>;
-TealiumOptimizelyEventListener.<span style="color:#008080">OPTIMIZELY_USERID_KEYNAME</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">&lt;</span>your <span style="color:#900;font-weight:bold">new</span> value<span style="font-weight:bold">&gt;</span>;
-TealiumOptimizelyEventListener.<span style="color:#008080">OPTIMIZELY_EVENTKEY_KEYNAME</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">&lt;</span>your <span style="color:#900;font-weight:bold">new</span> value<span style="font-weight:bold">&gt;</span>;
-TealiumOptimizelyEventListener.<span style="color:#008080">OPTIMIZELY_EVENTVALUE_KEYNAME</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">&lt;</span>your <span style="color:#900;font-weight:bold">new</span> value<span style="font-weight:bold">&gt;</span>;
-TealiumOptimizelyEventListener.<span style="color:#008080">OPTIMIZELY_EXPERIMENT_STARTED</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">&lt;</span>your <span style="color:#900;font-weight:bold">new</span> value<span style="font-weight:bold">&gt;</span>;
-TealiumOptimizelyEventListener.<span style="color:#008080">OPTIMIZELY_EVENT_TRACKED</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">&lt;</span>your <span style="color:#900;font-weight:bold">new</span> value<span style="font-weight:bold">&gt;</span>;
-TealiumOptimizelyEventListener.<span style="color:#008080">OPTIMIZELY_ATTRIBUTE_PREFIX</span> <span style="font-weight:bold">=</span> <span style="font-weight:bold">&lt;</span>your <span style="color:#900;font-weight:bold">new</span> value<span style="font-weight:bold">&gt;</span>;</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">import</span> com.tealium.optimizelylistener;
+<span style="color:#008000">//...
+</span><span style="color:#008000"></span>
+TealiumOptimizelyEventListener.OPTIMIZELY_EXPERIMENT_KEYNAME = &lt;your new value&gt;;
+TealiumOptimizelyEventListener.OPTIMIZELY_VARIATION_KEYNAME = &lt;your new value&gt;;
+TealiumOptimizelyEventListener.OPTIMIZELY_USERID_KEYNAME = &lt;your new value&gt;;
+TealiumOptimizelyEventListener.OPTIMIZELY_EVENTKEY_KEYNAME = &lt;your new value&gt;;
+TealiumOptimizelyEventListener.OPTIMIZELY_EVENTVALUE_KEYNAME = &lt;your new value&gt;;
+TealiumOptimizelyEventListener.OPTIMIZELY_EXPERIMENT_STARTED = &lt;your new value&gt;;
+TealiumOptimizelyEventListener.OPTIMIZELY_EVENT_TRACKED = &lt;your new value&gt;;
+TealiumOptimizelyEventListener.OPTIMIZELY_ATTRIBUTE_PREFIX = &lt;your new value&gt;;</code></pre></div>
 <h2 id="api-reference">API Reference</h2>
 
 <p>For the complete reference of methods for the Optimizely X Tracking Module, see the <a href="https://tealium.github.io/tealium-android/com/tealium/optimizelylistener/TealiumOptimizelyEventListener.html"><code>TealiumOptimizelyEventListener</code></a> class in the Tealium SDK for Android API.</p>
@@ -5526,8 +5526,170 @@ TealiumOptimizelyEventListener.<span style="color:#008080">OPTIMIZELY_ATTRIBUTE_
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5602,7 +5764,7 @@ TealiumOptimizelyEventListener.<span style="color:#008080">OPTIMIZELY_ATTRIBUTE_
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7628,9 +7790,15 @@ TealiumOptimizelyEventListener.<span style="color:#008080">OPTIMIZELY_ATTRIBUTE_
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   

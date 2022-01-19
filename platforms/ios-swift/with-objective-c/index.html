@@ -313,11 +313,11 @@ var utag_data = {
 </ol>
 
 <p>Next, to call the Objective-C code from Swift:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="font-weight:bold">class</span> TealiumHelper {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#00f">class</span> TealiumHelper {
     func somefunc () {
-        let tealConfig <span style="font-weight:bold">=</span> TEALConfiguration.init(account: <span style="color:#b84">&#34;ACCOUNT&#34;</span>, profile: <span style="color:#b84">&#34;PROFILE&#34;</span>, environment: <span style="color:#b84">&#34;ENVIRONMENT&#34;</span>)
-        let teal <span style="font-weight:bold">=</span> Tealium.newInstance(forKey: <span style="color:#b84">&#34;KEY&#34;</span>, configuration: tealConfig)
-        teal.trackView(withTitle: <span style="color:#b84">&#34;SCREEN_NAME&#34;</span>, dataSources: [<span style="color:#b84">&#34;DATA&#34;</span><span style="font-weight:bold">:</span><span style="color:#b84">&#34;VALUE&#34;</span>])
+        let tealConfig = TEALConfiguration.init(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>, profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>, environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>)
+        let teal = Tealium.newInstance(forKey: <span style="color:#a31515">&#34;KEY&#34;</span>, configuration: tealConfig)
+        teal.trackView(withTitle: <span style="color:#a31515">&#34;SCREEN_NAME&#34;</span>, dataSources: [<span style="color:#a31515">&#34;DATA&#34;</span>:<span style="color:#a31515">&#34;VALUE&#34;</span>])
     }
 }</code></pre></div>
 <h2 id="call-swift-from-objective-c">Call Swift from Objective-C</h2>
@@ -331,157 +331,157 @@ However, by using an intermediate helper class, it is possible to call the Swift
 <li>In your Objective-C project, create a new Swift file. You are prompted to add a bridging header if you don&rsquo;t already have one. Accept this prompt. Name the new Swift file &ldquo;TealiumHelper.swift&rdquo;.</li>
 
 <li><p>Import the new Swift header (<code>&lt;ProjectName&gt;-Swift.h</code>) into files that need to call the new helper.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#999;font-weight:bold">#import &#34;ProjectName-Swift.h&#34;</span></code></pre></div></li>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#00f">#import &#34;ProjectName-Swift.h&#34;</span></code></pre></div></li>
 </ol>
 
 <p>The methods in the helper file are now be available to use in your Objective-C code. We recommend making the helper a singleton.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#999;font-weight:bold">#import &#34;TestSwiftBridge-Swift.h&#34;
-</span><span style="color:#999;font-weight:bold"></span>
-- (<span style="color:#458;font-weight:bold">BOOL</span>)<span style="color:#900;font-weight:bold">application:</span>(UIApplication <span style="font-weight:bold">*</span>)<span style="color:#008080">application</span> <span style="color:#900;font-weight:bold">didFinishLaunchingWithOptions:</span>(NSDictionary <span style="font-weight:bold">*</span>)<span style="color:#008080">launchOptions</span> {
-	<span style="color:#998;font-style:italic">// instantiate the helper singleton
-</span><span style="color:#998;font-style:italic"></span>    TealiumHelper <span style="font-weight:bold">*</span> help <span style="font-weight:bold">=</span> [TealiumHelper sharedInstance];
-    <span style="color:#998;font-style:italic">// call the start method, which initializes the Tealium library
-</span><span style="color:#998;font-style:italic"></span>    [help start];
-    <span style="color:#998;font-style:italic">// trigger a new event tracking call from objective-c
-</span><span style="color:#998;font-style:italic"></span>    [help track:<span style="color:#b84">@&#34;this is from objective-c!&#34;</span> data:@{<span style="color:#b84">@&#34;mydata&#34;</span><span style="font-weight:bold">:</span><span style="color:#b84">@&#34;hello from obj-c&#34;</span>}];
-    <span style="font-weight:bold">return</span> <span style="color:#999">YES</span>;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#00f">#import &#34;TestSwiftBridge-Swift.h&#34;
+</span><span style="color:#00f"></span>
+- (<span style="color:#2b91af">BOOL</span>)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	<span style="color:#008000">// instantiate the helper singleton
+</span><span style="color:#008000"></span>    TealiumHelper * help = [TealiumHelper sharedInstance];
+    <span style="color:#008000">// call the start method, which initializes the Tealium library
+</span><span style="color:#008000"></span>    [help start];
+    <span style="color:#008000">// trigger a new event tracking call from objective-c
+</span><span style="color:#008000"></span>    [help track:<span style="color:#a31515">@&#34;this is from objective-c!&#34;</span> data:@{<span style="color:#a31515">@&#34;mydata&#34;</span>:<span style="color:#a31515">@&#34;hello from obj-c&#34;</span>}];
+    <span style="color:#00f">return</span> YES;
 }</code></pre></div>
 <h3 id="sample-tealiumhelper-file">Sample TealiumHelper file</h3>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#998;font-style:italic">// </span>
-<span style="color:#998;font-style:italic">// TealiumHelper.swift</span>
-<span style="color:#998;font-style:italic">//</span>
-<span style="color:#998;font-style:italic">//  Copyright © 2021 Tealium, Inc. All rights reserved.</span>
-<span style="color:#998;font-style:italic">//</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#008000">// </span>
+<span style="color:#008000">// TealiumHelper.swift</span>
+<span style="color:#008000">//</span>
+<span style="color:#008000">//  Copyright © 2021 Tealium, Inc. All rights reserved.</span>
+<span style="color:#008000">//</span>
 
-<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumCollect</span>
-<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumCore</span>
-<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumLifecycle</span>
-<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumVisitorService</span>
-<span style="color:#999;font-weight:bold">#if</span> <span style="color:#999;font-weight:bold">os</span>(<span style="color:#999;font-weight:bold">iOS</span>)
-<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumAttribution</span>
-<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumLocation</span>
-<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumRemoteCommands</span>
-<span style="font-weight:bold">import</span> <span style="color:#458;font-weight:bold">TealiumTagManagement</span>
-<span style="color:#999;font-weight:bold">#endif</span>
+<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumCollect</span>
+<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumCore</span>
+<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumLifecycle</span>
+<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumVisitorService</span>
+<span style="color:#00f">#if</span> <span style="color:#00f">os</span>(<span style="color:#00f">iOS</span>)
+<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumAttribution</span>
+<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumLocation</span>
+<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumRemoteCommands</span>
+<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumTagManagement</span>
+<span style="color:#00f">#endif</span>
 
-<span style="font-weight:bold">enum</span> <span style="color:#458;font-weight:bold">TealiumConfiguration</span> {
-    <span style="font-weight:bold">static</span> <span style="font-weight:bold">let</span> <span style="color:#008080">account</span> = <span style="color:#b84">&#34;tealiummobile&#34;</span>
-    <span style="font-weight:bold">static</span> <span style="font-weight:bold">let</span> <span style="color:#008080">profile</span> = <span style="color:#b84">&#34;demo&#34;</span>
-    <span style="font-weight:bold">static</span> <span style="font-weight:bold">let</span> <span style="color:#008080">environment</span> = <span style="color:#b84">&#34;dev&#34;</span>
-    <span style="font-weight:bold">static</span> <span style="font-weight:bold">let</span> <span style="color:#008080">dataSourceKey</span> = <span style="color:#b84">&#34;abc123&#34;</span>
+<span style="color:#00f">enum</span> <span style="color:#2b91af">TealiumConfiguration</span> {
+    <span style="color:#00f">static</span> <span style="color:#00f">let</span> account = <span style="color:#a31515">&#34;tealiummobile&#34;</span>
+    <span style="color:#00f">static</span> <span style="color:#00f">let</span> profile = <span style="color:#a31515">&#34;demo&#34;</span>
+    <span style="color:#00f">static</span> <span style="color:#00f">let</span> environment = <span style="color:#a31515">&#34;dev&#34;</span>
+    <span style="color:#00f">static</span> <span style="color:#00f">let</span> dataSourceKey = <span style="color:#a31515">&#34;abc123&#34;</span>
 }
 
-<span style="color:#998;font-style:italic">// Change this to false to disable all the Tealium logs</span>
-<span style="font-weight:bold">let</span> <span style="color:#008080">enableHelperLogs</span> = <span style="font-weight:bold">true</span>
+<span style="color:#008000">// Change this to false to disable all the Tealium logs</span>
+<span style="color:#00f">let</span> enableHelperLogs = <span style="color:#00f">true</span>
 
-<span style="font-weight:bold">@objc</span>
-<span style="font-weight:bold">class</span> <span style="color:#458;font-weight:bold">TealiumHelper</span>: NSObject {
+<span style="color:#00f">@objc</span>
+<span style="color:#00f">class</span> <span style="color:#2b91af">TealiumHelper</span>: NSObject {
     
-    <span style="font-weight:bold">@objc</span>
-    <span style="font-weight:bold">static</span> <span style="font-weight:bold">let</span> <span style="color:#008080">shared</span> = TealiumHelper()
+    <span style="color:#00f">@objc</span>
+    <span style="color:#00f">static</span> <span style="color:#00f">let</span> shared = TealiumHelper()
 
-    <span style="font-weight:bold">let</span> <span style="color:#008080">config</span> = TealiumConfig(account: TealiumConfiguration.account,
+    <span style="color:#00f">let</span> config = TealiumConfig(account: TealiumConfiguration.account,
                                profile: TealiumConfiguration.profile,
                                environment: TealiumConfiguration.environment,
                                dataSource: TealiumConfiguration.dataSourceKey)
 
-    <span style="font-weight:bold">var</span> <span style="color:#008080">tealium</span>: Tealium?
+    <span style="color:#00f">var</span> tealium: Tealium?
 
-    <span style="color:#998;font-style:italic">// </span><span style="color:#999;font-weight:bold;font-style:italic">MARK:</span><span style="color:#998;font-style:italic"> Tealium Initilization</span>
-    <span style="font-weight:bold">private</span> <span style="font-weight:bold">override</span> <span style="font-weight:bold">init</span>() {
-        <span style="font-weight:bold">super</span>.<span style="font-weight:bold">init</span>()
-        <span style="color:#998;font-style:italic">// Optional Config Settings</span>
-        <span style="font-weight:bold">if</span> enableHelperLogs { config.logLevel = .info }
+    <span style="color:#008000">// </span><span style="color:#008000">MARK:</span><span style="color:#008000"> Tealium Initilization</span>
+    <span style="color:#00f">private</span> <span style="color:#00f">override</span> <span style="color:#00f">init</span>() {
+        <span style="color:#00f">super</span>.<span style="color:#00f">init</span>()
+        <span style="color:#008000">// Optional Config Settings</span>
+        <span style="color:#00f">if</span> enableHelperLogs { config.logLevel = .info }
 
-<span style="color:#998;font-style:italic">// Optional - Only required if using Visitor Service</span>
-<span style="color:#998;font-style:italic">//        config.visitorServiceDelegate = self</span>
+<span style="color:#008000">// Optional - Only required if using Visitor Service</span>
+<span style="color:#008000">//        config.visitorServiceDelegate = self</span>
 
-<span style="color:#998;font-style:italic">// Optional - Only required if using Consent Manager</span>
-<span style="color:#998;font-style:italic">//        config.consentLoggingEnabled = true</span>
-<span style="color:#998;font-style:italic">//        config.consentPolicy = .ccpa</span>
+<span style="color:#008000">// Optional - Only required if using Consent Manager</span>
+<span style="color:#008000">//        config.consentLoggingEnabled = true</span>
+<span style="color:#008000">//        config.consentPolicy = .ccpa</span>
 
-<span style="color:#998;font-style:italic">// Optional - Only required if using Hosted Data Layer</span>
-<span style="color:#998;font-style:italic">//        config.hostedDataLayerKeys = [&#34;hdl-test&#34;: &#34;product_id&#34;]</span>
-<span style="color:#998;font-style:italic">// Optional - Only required if using Timed Events</span>
-<span style="color:#998;font-style:italic">//        config.timedEventTriggers = [TimedEventTrigger(start: &#34;product_view&#34;, end: &#34;order_complete&#34;),</span>
-<span style="color:#998;font-style:italic">//                                     TimedEventTrigger(start: &#34;start_game&#34;, end: &#34;buy_coins&#34;)]</span>
+<span style="color:#008000">// Optional - Only required if using Hosted Data Layer</span>
+<span style="color:#008000">//        config.hostedDataLayerKeys = [&#34;hdl-test&#34;: &#34;product_id&#34;]</span>
+<span style="color:#008000">// Optional - Only required if using Timed Events</span>
+<span style="color:#008000">//        config.timedEventTriggers = [TimedEventTrigger(start: &#34;product_view&#34;, end: &#34;order_complete&#34;),</span>
+<span style="color:#008000">//                                     TimedEventTrigger(start: &#34;start_game&#34;, end: &#34;buy_coins&#34;)]</span>
 
-        <span style="color:#999;font-weight:bold">#if</span> <span style="color:#999;font-weight:bold">os</span>(<span style="color:#999;font-weight:bold">iOS</span>)
-        <span style="color:#998;font-style:italic">// Add dispatchers</span>
+        <span style="color:#00f">#if</span> <span style="color:#00f">os</span>(<span style="color:#00f">iOS</span>)
+        <span style="color:#008000">// Add dispatchers</span>
         config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands, Dispatchers.Collect]
-        <span style="color:#999;font-weight:bold">#else</span>
+        <span style="color:#00f">#else</span>
         config.dispatchers = [Dispatchers.Collect]
-        <span style="color:#999;font-weight:bold">#endif</span>
+        <span style="color:#00f">#endif</span>
 
-        <span style="color:#998;font-style:italic">// Add collectors</span>
-        <span style="color:#999;font-weight:bold">#if</span> <span style="color:#999;font-weight:bold">os</span>(<span style="color:#999;font-weight:bold">iOS</span>) <span style="font-weight:bold">&amp;&amp;</span> <span style="color:#999;font-weight:bold">targetEnvironment</span>(<span style="color:#999;font-weight:bold">macCatalyst</span>)
-        <span style="color:#998;font-style:italic">// Optional - Only required if using Visitor Service</span>
+        <span style="color:#008000">// Add collectors</span>
+        <span style="color:#00f">#if</span> <span style="color:#00f">os</span>(<span style="color:#00f">iOS</span>) &amp;&amp; <span style="color:#00f">targetEnvironment</span>(<span style="color:#00f">macCatalyst</span>)
+        <span style="color:#008000">// Optional - Only required if using Visitor Service</span>
         config.collectors = [Collectors.VisitorService]
-        <span style="color:#999;font-weight:bold">#elseif</span> <span style="color:#999;font-weight:bold">os</span>(<span style="color:#999;font-weight:bold">iOS</span>) <span style="font-weight:bold">&amp;&amp;</span> <span style="font-weight:bold">!</span><span style="color:#999;font-weight:bold">targetEnvironment</span>(<span style="color:#999;font-weight:bold">macCatalyst</span>)
+        <span style="color:#00f">#elseif</span> <span style="color:#00f">os</span>(<span style="color:#00f">iOS</span>) &amp;&amp; !<span style="color:#00f">targetEnvironment</span>(<span style="color:#00f">macCatalyst</span>)
         config.collectors = [Collectors.Attribution, Collectors.VisitorService, Collectors.Location]
 
-         <span style="color:#998;font-style:italic">// Batching:</span>
-         config.batchingEnabled = <span style="font-weight:bold">false</span> <span style="color:#998;font-style:italic">// true to enable</span>
+         <span style="color:#008000">// Batching:</span>
+         config.batchingEnabled = <span style="color:#00f">false</span> <span style="color:#008000">// true to enable</span>
 
-        <span style="color:#998;font-style:italic">// Location - Geofence Monitoring:</span>
-<span style="color:#998;font-style:italic">//        config.geofenceUrl = &#34;https://tags.tiqcdn.com/dle/tealiummobile/location/geofences.json&#34;</span>
-<span style="color:#998;font-style:italic">//        config.useHighAccuracy = true</span>
-<span style="color:#998;font-style:italic">//        config.updateDistance = 200.0</span>
+        <span style="color:#008000">// Location - Geofence Monitoring:</span>
+<span style="color:#008000">//        config.geofenceUrl = &#34;https://tags.tiqcdn.com/dle/tealiummobile/location/geofences.json&#34;</span>
+<span style="color:#008000">//        config.useHighAccuracy = true</span>
+<span style="color:#008000">//        config.updateDistance = 200.0</span>
         
-        <span style="color:#998;font-style:italic">// SKAdNetwork event handling</span>
-        config.searchAdsEnabled = <span style="font-weight:bold">true</span>
-        config.skAdAttributionEnabled = <span style="font-weight:bold">true</span>
-        config.skAdConversionKeys = [<span style="color:#b84">&#34;conversion_event&#34;</span>: <span style="color:#b84">&#34;conversion_value&#34;</span>]
+        <span style="color:#008000">// SKAdNetwork event handling</span>
+        config.searchAdsEnabled = <span style="color:#00f">true</span>
+        config.skAdAttributionEnabled = <span style="color:#00f">true</span>
+        config.skAdConversionKeys = [<span style="color:#a31515">&#34;conversion_event&#34;</span>: <span style="color:#a31515">&#34;conversion_value&#34;</span>]
 
-        <span style="color:#998;font-style:italic">// Remote Commands:</span>
-        <span style="font-weight:bold">let</span> <span style="color:#008080">remoteCommand</span> = RemoteCommand(commandId: <span style="color:#b84">&#34;hello&#34;</span>, description: <span style="color:#b84">&#34;world&#34;</span>) { response <span style="font-weight:bold">in</span>
-            <span style="font-weight:bold">guard</span> <span style="font-weight:bold">let</span> <span style="color:#008080">payload</span> = response.payload <span style="font-weight:bold">else</span> {
-                <span style="font-weight:bold">return</span>
+        <span style="color:#008000">// Remote Commands:</span>
+        <span style="color:#00f">let</span> remoteCommand = RemoteCommand(commandId: <span style="color:#a31515">&#34;hello&#34;</span>, description: <span style="color:#a31515">&#34;world&#34;</span>) { response <span style="color:#00f">in</span>
+            <span style="color:#00f">guard</span> <span style="color:#00f">let</span> payload = response.payload <span style="color:#00f">else</span> {
+                <span style="color:#00f">return</span>
             }
-            <span style="color:#998;font-style:italic">// Do something w/remote command payload</span>
-            <span style="font-weight:bold">if</span> enableHelperLogs {
+            <span style="color:#008000">// Do something w/remote command payload</span>
+            <span style="color:#00f">if</span> enableHelperLogs {
                 print(payload)
             }
         }
         config.addRemoteCommand(remoteCommand)
-        <span style="color:#999;font-weight:bold">#endif</span>
+        <span style="color:#00f">#endif</span>
 
-        tealium = Tealium(config: config) { <span style="font-weight:bold">_</span> <span style="font-weight:bold">in</span>
-            <span style="color:#998;font-style:italic">// Optional post init processing</span>
-            <span style="font-weight:bold">self</span>.tealium?.dataLayer.add(data: [<span style="color:#b84">&#34;somekey&#34;</span>: <span style="color:#b84">&#34;someval&#34;</span>], expiry: .afterCustom((.months, <span style="color:#099">1</span>)))
-            <span style="font-weight:bold">self</span>.tealium?.dataLayer.add(key: <span style="color:#b84">&#34;someotherkey&#34;</span>, value: <span style="color:#b84">&#34;someotherval&#34;</span>, expiry: .forever)
+        tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span style="color:#00f">in</span>
+            <span style="color:#008000">// Optional post init processing</span>
+            <span style="color:#00f">self</span>.tealium?.dataLayer.add(data: [<span style="color:#a31515">&#34;somekey&#34;</span>: <span style="color:#a31515">&#34;someval&#34;</span>], expiry: .afterCustom((.months, 1)))
+            <span style="color:#00f">self</span>.tealium?.dataLayer.add(key: <span style="color:#a31515">&#34;someotherkey&#34;</span>, value: <span style="color:#a31515">&#34;someotherval&#34;</span>, expiry: .forever)
         }
     }
     
-    <span style="font-weight:bold">@objc</span>
-    <span style="font-weight:bold">public</span> <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">start</span>() {
-        <span style="font-weight:bold">_</span> = TealiumHelper.shared
+    <span style="color:#00f">@objc</span>
+    <span style="color:#00f">public</span> <span style="color:#00f">func</span> start() {
+        <span style="color:#00f">_</span> = TealiumHelper.shared
     }
     
-    <span style="font-weight:bold">@objc</span>
-    <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">resetConsentPreferences</span>() {
+    <span style="color:#00f">@objc</span>
+    <span style="color:#00f">func</span> resetConsentPreferences() {
         tealium?.consentManager?.resetUserConsentPreferences()
     }
     
-    <span style="font-weight:bold">@objc</span>
-    <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">track</span>(title: <span style="color:#999">String</span>, data: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>]?) {
-        <span style="font-weight:bold">let</span> <span style="color:#008080">dispatch</span> = TealiumEvent(title, dataLayer: data)
+    <span style="color:#00f">@objc</span>
+    <span style="color:#00f">func</span> track(title: String, data: [String: Any]?) {
+        <span style="color:#00f">let</span> dispatch = TealiumEvent(title, dataLayer: data)
         tealium?.track(dispatch)
     }
 
-    <span style="font-weight:bold">@objc</span>
-    <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">trackView</span>(title: <span style="color:#999">String</span>, data: [<span style="color:#999">String</span>: <span style="color:#999">Any</span>]?) {
-        <span style="font-weight:bold">let</span> <span style="color:#008080">dispatch</span> = TealiumView(title, dataLayer: data)
+    <span style="color:#00f">@objc</span>
+    <span style="color:#00f">func</span> trackView(title: String, data: [String: Any]?) {
+        <span style="color:#00f">let</span> dispatch = TealiumView(title, dataLayer: data)
         tealium?.track(dispatch)
     }
 
-    <span style="font-weight:bold">@objc</span>
-    <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">joinTrace</span>(<span style="font-weight:bold">_</span> traceID: <span style="color:#999">String</span>) {
+    <span style="color:#00f">@objc</span>
+    <span style="color:#00f">func</span> joinTrace(<span style="color:#00f">_</span> traceID: String) {
         tealium?.joinTrace(id: traceID)
     }
 
-    <span style="font-weight:bold">@objc</span>
-    <span style="font-weight:bold">func</span> <span style="color:#900;font-weight:bold">leaveTrace</span>() {
+    <span style="color:#00f">@objc</span>
+    <span style="color:#00f">func</span> leaveTrace() {
         tealium?.leaveTrace()
     }
 }</code></pre></div>
@@ -5554,8 +5554,170 @@ However, by using an intermediate helper class, it is possible to call the Swift
       
       
       
+      <li class="w-100 hover-accent-color-light fw8 " data-level="1">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin-v1">Xamarin 1.x</a>
+        <ul class="xamarin-v1 desktopmenu animated fadeIn list pl0 dn">
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-overview">Overview</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-track">Track</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-data-management">Data Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/consent-mangagement/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-consent-management">Consent Management</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/api/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-api">API Reference</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/xamarin-v1/release-notes/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-v1-release-notes">Release Notes</a>
+      </li>
+      
+    
+  
+  
+
+        </ul>
+      </li>
+      
+    
+  
+  
+
+      
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
       <li class="w-100 hover-accent-color-light fw8  mb1 bb b--moon-gray" data-level="1">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link pv2 mid-gray hover-accent-color-light pl2 pr2  " data-target=".xamarin">Xamarin 2.x</a>
         <ul class="xamarin desktopmenu animated fadeIn list pl0 dn">
             
 
@@ -5630,7 +5792,7 @@ However, by using an intermediate helper class, it is possible to call the Swift
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-management">Data Management</a>
+        <a href="/platforms/xamarin/data-management/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".xamarin-data-layer">Data Layer</a>
       </li>
       
     
@@ -7656,9 +7818,15 @@ However, by using an intermediate helper class, it is possible to call the Swift
         </a>
     </li>
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
     <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
         <a href="https://docs.tealium.com/platforms/xamarin/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
-          Xamarin
+          Xamarin 2.x
         </a>
     </li>
   
