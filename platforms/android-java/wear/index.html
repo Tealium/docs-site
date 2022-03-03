@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.92.1" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -280,7 +280,7 @@ var utag_data = {
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
-    <div class="f4 fw4 lh-copy">
+    <div class="f4 fw4 lh-copy mb4">
       Learn to install the Tealium SDK for Android Wear.
     </div>
   
@@ -292,78 +292,68 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  
-
-<h2 id="requirements">Requirements</h2>
-
+  <h2 id="requirements">Requirements</h2>
 <ul>
 <li>AndroidWear app with <a href="/platforms/android-java/">Tealium for Android</a></li>
 <li>Android (KitKat/4.4+ / API Level 20+ for Android Wear)</li>
 <li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Introduction-to-Customer-Data-Hub/ta-p/17571">Tealium Customer Data Hub account</a></li>
 </ul>
-
 <h2 id="api-reference">API Reference</h2>
-
 <p>For the complete reference of classes and methods for Android Wear, see the <a href="http://tealium.github.io/tealium-android/com/tealium/wear/package-frame.html"><code>com.tealium.wear</code></a> package in the Tealium SDK for Android API.</p>
-
 <h2 id="sample-app">Sample App</h2>
-
 <p>To help familiarize yourself with the Tealium library, tracking methods, and best practice implementation, it is recommended to download the Tealium for AndroidWear <a href="https://github.com/Tealium/tealium-android/tree/master/Modules/AndroidWear/WearSample">sample app</a>.</p>
-
 <p>To abstract the Tealium implementation from the rest of your app, we recommend the use of the <a href="https://github.com/Tealium/tealium-android/blob/master/Samples/BlankApp%2BTealium/app/src/main/java/com/tealium/blankapp/helper/TealiumHelper.java">sample helper class</a>. This gives you a single entry point from which to initialize and make tracking calls. It also allows you to update the code in your helper file and not in every single Java file.</p>
-
 <h2 id="install">Install</h2>
-
 <p>Install the Tealium library for your Android Wear app:</p>
-
 <ol>
-<li><p>Download and install <a href="https://github.com/Tealium/tealium-android/tree/master/Modules/AndroidWear">Tealium for Android Wear</a>.</p></li>
+<li>
+<p>Download and install <a href="https://github.com/Tealium/tealium-android/tree/master/Modules/AndroidWear">Tealium for Android Wear</a>.</p>
+</li>
+<li>
+<p>Add <code>tealium.mobile-5.x.x.aar</code> to your application&rsquo;s dependencies.</p>
+</li>
+</ol>
+<!-- raw HTML omitted -->
+<ol start="3">
+<li>Create a subclass of the <code>Application</code> class, and add the <code>TealiumWear</code>&rsquo;s initialization code in the app&rsquo;s <code>onCreate()</code> method, as shown in the following example:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">public</span> <span style="color:#00f">class</span> <span style="color:#2b91af">WearApp</span> <span style="color:#00f">extends</span> Application {
 
-<li><p>Add <code>tealium.mobile-5.x.x.aar</code> to your application&rsquo;s dependencies.
-<p class="note"><i class="fas fa-info-circle"></i>For non-wearable Android applications, no additional code is necessary.</p></p></li>
+       <span style="color:#008000">// Instance name from main app
+</span><span style="color:#008000"></span>       <span style="color:#00f">public</span> <span style="color:#00f">static</span> <span style="color:#00f">final</span> String TEALIUM_MAIN = <span style="color:#a31515">&#34;INSTANCE_NAME&#34;</span>;
 
-<li><p>Create a subclass of the <code>Application</code> class, and add the <code>TealiumWear</code>&rsquo;s initialization code in the app&rsquo;s <code>onCreate()</code> method, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">public</span> class WearApp extends Application {
-
-   <span style="color:#008000">// Instance name from main app
-</span><span style="color:#008000"></span>   <span style="color:#00f">public</span> static <span style="color:#00f">final</span> String TEALIUM_MAIN = <span style="color:#a31515">&#34;INSTANCE_NAME&#34;</span>;
-
-   @Override
-   <span style="color:#00f">public</span> void onCreate() {
-     <span style="color:#00f">super</span>.onCreate();
-     TealiumWear.createInstance(TEALIUM_MAIN,
-         TealiumWear.Config.create(<span style="color:#00f">this</span>)
-         .setLogLevel(Log.VERBOSE));
-   }
+       @Override
+       <span style="color:#00f">public</span> <span style="color:#2b91af">void</span> onCreate() {
+         <span style="color:#00f">super</span>.onCreate();
+         TealiumWear.createInstance(TEALIUM_MAIN,
+             TealiumWear.Config.create(<span style="color:#00f">this</span>)
+             .setLogLevel(Log.VERBOSE));
+       }
 <span style="color:#008000">//...
-</span><span style="color:#008000"></span>}</code></pre></div></li>
-
-<li><p>The value of <code>TEALIUM_MAIN</code> must match the instance name used in the initialization of the main application, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#008000">// Main application initialization
+</span><span style="color:#008000"></span>}
+</code></pre></div><ol start="4">
+<li>The value of <code>TEALIUM_MAIN</code> must match the instance name used in the initialization of the main application, as shown in the following example:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#008000">// Main application initialization
 </span><span style="color:#008000"></span>Tealium.createInstance(<span style="color:#a31515">&#34;INSTANCE_NAME&#34;</span>, config);
 
 <span style="color:#008000">// WearApp initialization
-</span><span style="color:#008000"></span><span style="color:#00f">public</span> static <span style="color:#00f">final</span> String TEALIUM_MAIN = <span style="color:#a31515">&#34;INSTANCE_NAME&#34;</span>;</code></pre></div></li>
-</ol>
-
-<h2 id="tracking">Tracking</h2>
-
+</span><span style="color:#008000"></span><span style="color:#00f">public</span> <span style="color:#00f">static</span> <span style="color:#00f">final</span> String TEALIUM_MAIN = <span style="color:#a31515">&#34;INSTANCE_NAME&#34;</span>;
+</code></pre></div><h2 id="tracking">Tracking</h2>
 <h3 id="track-views">Track Views</h3>
-
 <p>Tracking on the wearable is similar to the handheld side. The only difference is in how to pass custom data to the tracking calls. The wearable side uses a <a href="https://developers.google.com/android/reference/com/google/android/gms/wearable/DataMap"><code>DataMap</code></a> object, rather than a <code>Map</code>:</p>
-
 <p>The <a href="/platforms/android-java/api/tealium/#trackview"><code>trackView()</code></a> method tracks screen views, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">final</span> DataMap data = <span style="color:#00f">new</span> DataMap();
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">final</span> DataMap data = <span style="color:#00f">new</span> DataMap();
 <span style="color:#008000">// ...
 </span><span style="color:#008000"></span>TealiumWear.getInstance(WearApp.TEALIUM_MAIN)
-    .trackView(<span style="color:#a31515">&#34;SCREEN_NAME&#34;</span>, data);</code></pre></div>
-<h3 id="track-events">Track Events</h3>
-
+    .trackView(<span style="color:#a31515">&#34;SCREEN_NAME&#34;</span>, data);
+</code></pre></div><h3 id="track-events">Track Events</h3>
 <p>The <a href="/platforms/android-java/api/tealium/#trackevent"><code>trackEvent()</code></a> method tracks non-view events, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">final</span> DataMap data = <span style="color:#00f">new</span> DataMap();
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">final</span> DataMap data = <span style="color:#00f">new</span> DataMap();
 <span style="color:#008000">// ...
 </span><span style="color:#008000"></span>TealiumWear.getInstance(WearApp.TEALIUM_MAIN)
-    .trackEvent(<span style="color:#a31515">&#34;EVENT_NAME&#34;</span>, data);</code></pre></div>
+    .trackEvent(<span style="color:#a31515">&#34;EVENT_NAME&#34;</span>, data);
+</code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -928,6 +918,26 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/branch/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-branch">Branch</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/remote-commands/integrations/braze/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-braze">Braze</a>
       </li>
       
@@ -1076,8 +1086,8 @@ var utag_data = {
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/android-java/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-java-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
+        <a href="/platforms/android-java/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".android-java-overview">Overview</a>
       </li>
       
     
@@ -1799,6 +1809,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-in-app-purchase">In-App Purchase Module</a>
       </li>
       
     
@@ -4467,6 +4497,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/device-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-devicedata">DeviceData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-inapppurchase">In-App Purchase Module</a>
       </li>
       
     

@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.92.1" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -280,7 +280,7 @@ var utag_data = {
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
-    <div class="f4 fw4 lh-copy">
+    <div class="f4 fw4 lh-copy mb4">
       Learn to install Tealium for tvOS.
     </div>
   
@@ -292,12 +292,8 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  
-
-<p class="note"><i class="fas fa-info-circle"></i>tvOS is no longer supported. The Tealium <a href="/platforms/ios-swift/">iOS (Swift)</a> library is recommended.</p>
-
+  <!-- raw HTML omitted -->
 <h2 id="requirements">Requirements</h2>
-
 <ul>
 <li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Introduction-to-Customer-Data-Hub/ta-p/17571">Tealium Customer Data Hub account</a></li>
 <li>Xcode 7+</li>
@@ -305,62 +301,42 @@ var utag_data = {
 <li>100KB available space in <code>.ipa</code> file size</li>
 <li><a href="https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/AppThinning/AppThinning.html">Bitcode compliant</a> framework </li>
 </ul>
-
 <h2 id="sample-apps">Sample Apps</h2>
-
 <p>To help familiarize yourself with the Tealium library, tracking methods, and best practice implementation, it is recommended to download the <a href="https://github.com/Tealium/tealium-tvos/tree/master/Samples">tvOS sample apps</a>.</p>
-
 <p>To abstract the Tealium implementation from the rest of your app, we recommend the use of the <a href="https://github.com/Tealium/tealium-tvos/blob/master/Samples/tvOS_UIKitCatalog%2BTealium_Swift/UIKitCatalog/TealiumHelper.swift">sample helper class</a>. This gives you a single entry point from which to initialize and make tracking calls. It also allows you to update the code in your helper file, and not in every single header/method file.</p>
-
 <h2 id="install">Install</h2>
-
 <p>Install and manage Tealium dependencies for tvOS with CocoaPods. </p>
-
 <ol>
-<li><p>Add the following dependency to your Podfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;TealiumTVOS&#39;</span></code></pre></div></li>
-
-<li><p>Download and install <a href="https://github.com/Tealium/tealium-tvos">Tealium for tvOS</a>.
-<p class="tip"><i class="fas fa-star"></i>We recommend cloning the library (instead of downloading) to make it easier to update to future releases.</p></p></li>
-
-<li><p>Add <code>TealiumTVOS.framework</code> to your project&rsquo;s tvOS Extension target, and copy the framework to the project in the resulting dialog box.</p></li>
-
-<li><p>In the target&rsquo;s <strong>General: Embedded Binaries</strong> section, add the framework:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumTVOS.framework</code></pre></div></li>
+<li>Add the following dependency to your Podfile:</li>
 </ol>
-
-<h2 id="initialize">Initialize</h2>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;TealiumTVOS&#39;</span>
+</code></pre></div><ol start="2">
+<li>Download and install <a href="https://github.com/Tealium/tealium-tvos">Tealium for tvOS</a>.</li>
+</ol>
+<!-- raw HTML omitted -->
+<ol start="3">
+<li>
+<p>Add <code>TealiumTVOS.framework</code> to your project&rsquo;s tvOS Extension target, and copy the framework to the project in the resulting dialog box.</p>
+</li>
+<li>
+<p>In the target&rsquo;s <strong>General: Embedded Binaries</strong> section, add the framework:</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumTVOS.framework
+</code></pre></div><h2 id="initialize">Initialize</h2>
 <p>In the Application Delegate, or within a helper class setup method, invoke a Tealium instance with the following code:</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="Swift" title="Swift">
-  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> config = TEALConfiguration.<span style="color:#00f">init</span>(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-                      profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-                      environment: <span style="color:#a31515">&#34;ENV&#34;</span>,
-                      datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>)
-
-<span style="color:#00f">guard</span> <span style="color:#00f">let</span> tealium = Tealium.newInstanceForKey(<span style="color:#a31515">&#34;uniqueInstanceKey&#34;</span>, configuration: config) <span style="color:#00f">else</span> {
-    <span style="color:#008000">// Any additional failure response here</span>
-    <span style="color:#00f">return</span>
-}</code></pre></div>
-</div>
-
-<div class="tab-pane" data-lang="Objective-C" title="Objective-C">
-  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">TEALConfiguration *configuration = [TEALConfiguration
-                      configurationWithAccount:<span style="color:#a31515">@&#34;ACCOUNT&#34;</span>
-                      profile:<span style="color:#a31515">@&#34;PROFILE&#34;</span>
-                      environment:<span style="color:#a31515">@&#34;ENV&#34;</span>,
-                      datasource:<span style="color:#a31515">@&#34;DATASOURCE&#34;</span>];
-
-Tealium *tealiumInstance1 = [Tealium newInstanceForKey:<span style="color:#a31515">@&#34;INSTANCE&#34;</span> configuration:configuration]; </code></pre></div>
-</div>
-
-<p></div>
-</div></p>
-
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted -->guard<!-- raw HTML omitted --> <!-- raw HTML omitted -->let<!-- raw HTML omitted --> tealium = Tealium.newInstanceForKey(<!-- raw HTML omitted -->&quot;uniqueInstanceKey&quot;<!-- raw HTML omitted -->, configuration: config) <!-- raw HTML omitted -->else<!-- raw HTML omitted --> {
+<!-- raw HTML omitted -->// Any additional failure response here<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->return<!-- raw HTML omitted -->
+}
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Tealium *tealiumInstance1 = [Tealium newInstanceForKey:<!-- raw HTML omitted -->@&quot;INSTANCE&quot;<!-- raw HTML omitted --> configuration:configuration]; 
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <table>
 <thead>
 <tr>
@@ -369,32 +345,27 @@ Tealium *tealiumInstance1 = [Tealium newInstanceForKey:<span style="color:#a3151
 <th>Example</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>account</code></td>
 <td>Tealium account name</td>
 <td><code>&quot;companyXYZ&quot;</code></td>
 </tr>
-
 <tr>
 <td><code>profile</code></td>
 <td>Tealium profile name</td>
 <td><code>&quot;main&quot;</code></td>
 </tr>
-
 <tr>
 <td><code>environment</code></td>
 <td>Tealium environment name</td>
 <td>[<code>&quot;dev&quot;</code>, <code>&quot;qa&quot;</code>, <code>&quot;prod&quot;</code>]</td>
 </tr>
-
 <tr>
 <td><code>datasource</code></td>
 <td>(Optional) data source key</td>
 <td><code>&quot;abc123&quot;</code></td>
 </tr>
-
 <tr>
 <td><code>instance</code></td>
 <td>Unique Tealium instance identifier  (multiple instances are supported)</td>
@@ -402,51 +373,20 @@ Tealium *tealiumInstance1 = [Tealium newInstanceForKey:<span style="color:#a3151
 </tr>
 </tbody>
 </table>
-
 <h2 id="track-views">Track Views</h2>
-
 <p>Track screen views by calling <a href="https://tealium.github.io/tealium-ios/Classes/Tealium.html#//api/name/trackViewWithTitle:dataSources:"><code>trackViewWithTitle()</code></a> with two parameters: the name of the screen and (optionally) contextual view data.</p>
-
 <p>In any UIViewController&rsquo;s <a href="https://developer.apple.com/documentation/uikit/uiviewcontroller/1621423-viewdidappear"><code>viewDidAppear()</code></a> method: </p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="Swift" title="Swift">
-  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">Tealium.instanceForKey(<span style="color:#a31515">&#34;uniqueInstanceKey&#34;</span>)?.trackViewWithTitle(NSStringFromClass(<span style="color:#00f">self</span>.classForCoder), dataSources: [:])</code></pre></div>
-</div>
-
-<div class="tab-pane" data-lang="Objective-C" title="Objective-C">
-  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[[Tealium instanceForKey:<span style="color:#a31515">@&#34;INSTANCE&#34;</span>] trackViewWithTitle:NSStringFromClass([self <span style="color:#00f">class</span>]) dataSources:nil];</code></pre></div>
-</div>
-
-<p></div>
-</div></p>
-
-<p class="note"><i class="fas fa-info-circle"></i>The screen name is populated in the event data as <code>screen_title</code>.</p>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <h2 id="track-events">Track Events</h2>
-
 <p>Track non-view events by calling <a href="https://tealium.github.io/tealium-ios/Classes/Tealium.html#//api/name/trackEventWithTitle:dataSources:"><code>trackEventWithTitle()</code></a> with two parameters: an event name and (optionally) contextual event data. </p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="Swift" title="Swift">
-  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">Tealium.instanceForKey(<span style="color:#a31515">&#34;INSTANCE&#34;</span>)?.trackEventWithTitle(<span style="color:#a31515">&#34;EVENT_NAME&#34;</span>, dataSources: [:])</code></pre></div>
-</div>
-
-<div class="tab-pane" data-lang="Objective-C" title="Objective-C">
-  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[[Tealium instanceForKey:<span style="color:#a31515">@&#34;INSTANCE&#34;</span>] trackEventWithTitle:<span style="color:#a31515">@&#34;EVENT_NAME&#34;</span> dataSources:nil];</code></pre></div>
-</div>
-
-<p></div>
-</div></p>
-
-<p class="note"><i class="fas fa-info-circle"></i>The event name is populated in the event data as <code>tealium_event</code>.</p>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <h2 id="api-reference">API Reference</h2>
-
 <p>See the <a href="http://tealium.github.io/tealium-tvos/">TealiumTVOS Reference API</a> for a complete list of classes and methods.</p>
 
 </div>
@@ -994,6 +934,26 @@ Tealium *tealiumInstance1 = [Tealium newInstanceForKey:<span style="color:#a3151
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/branch/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-branch">Branch</a>
       </li>
       
     
@@ -1884,6 +1844,26 @@ Tealium *tealiumInstance1 = [Tealium newInstanceForKey:<span style="color:#a3151
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-in-app-purchase">In-App Purchase Module</a>
       </li>
       
     
@@ -3085,8 +3065,8 @@ Tealium *tealiumInstance1 = [Tealium newInstanceForKey:<span style="color:#a3151
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/ios-objective-c/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-objective-c-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
+        <a href="/platforms/ios-objective-c/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".ios-objective-c-overview">Overview</a>
       </li>
       
     
@@ -4552,6 +4532,26 @@ Tealium *tealiumInstance1 = [Tealium newInstanceForKey:<span style="color:#a3151
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/device-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-devicedata">DeviceData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-inapppurchase">In-App Purchase Module</a>
       </li>
       
     

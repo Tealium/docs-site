@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.92.1" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -271,7 +271,7 @@ var utag_data = {
       </a>
     
       <a href="/platforms/ios-swift-v1/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT V1/MODULE LIST
+        IOS SWIFT V1 MODULE LIST
       </a>
     
   
@@ -283,7 +283,7 @@ var utag_data = {
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
-    <div class="f4 fw4 lh-copy">
+    <div class="f4 fw4 lh-copy mb4">
       Adds the user-resettable advertising identifier (IDFA) to each tracking call and, optionally, implements the Apple Search Ads API to gather attribution information.
     </div>
   
@@ -295,55 +295,39 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  
-
-<h2 id="usage">Usage</h2>
-
+  <h2 id="usage">Usage</h2>
 <p>The Attribution module adds the user-resettable advertising identifier (IDFA) to each tracking call and, optionally, implements the Apple Search Ads API to gather attribution information. <a href="https://searchads.apple.com/v/advanced/help/pdf/attribution-api.pdf">Learn more</a> for details about Apple Search Ads.</p>
-
 <p>Usage of this module is optional. Take the time to read about its functionality and decide if you need it, as it introduces additional dependencies. You are required to explain to Apple why you are using IDFA when you submit your app. If you do not state that you are using IDFA, Apple rejects your app. <a href="https://developer.apple.com/app-store/review/rejections/">Learn more</a> about IDFA usage and rejections.</p>
-
 <p>The following platforms are supported:</p>
-
 <ul>
 <li>iOS</li>
 </ul>
-
 <h2 id="requirements">Requirements</h2>
-
 <ul>
 <li>UIKit</li>
 <li>AdSupport</li>
 <li>iAd</li>
 </ul>
-
 <h2 id="install">Install</h2>
-
 <p>Install the Attribution module with CocoaPods or Carthage.</p>
-
 <h3 id="cocoapods">CocoaPods</h3>
-
 <p>To install the Attribution module with CocoaPods, add the following pod to your Podfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;tealium-swift/TealiumAttribution&#39;</span></code></pre></div>
-<p>The framework is auto-instantiated. It has a dependency on the <code>TealiumCore</code> pod. <a href="/platforms/ios-swift/install/#cocoapods">Learn more</a> about CocoaPods installation for iOS.</p>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;tealium-swift/TealiumAttribution&#39;</span>
+</code></pre></div><p>The framework is auto-instantiated. It has a dependency on the <code>TealiumCore</code> pod. <a href="/platforms/ios-swift/install/#cocoapods">Learn more</a> about CocoaPods installation for iOS.</p>
 <h3 id="carthage">Carthage</h3>
-
 <p>To install the Attribution module with Carthage, following these steps:</p>
-
 <ol>
-<li><p>Go to the app target&rsquo;s General configuration page in Xcode.</p></li>
-
-<li><p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumAttribution.framework</code></pre></div></li>
+<li>
+<p>Go to the app target&rsquo;s General configuration page in Xcode.</p>
+</li>
+<li>
+<p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
+</li>
 </ol>
-
-<p>The framework is auto-instantiated. It has a dependency on <code>TealiumCore</code>. No additional import statements are necessary. <a href="/platforms/ios-swift/install/#carthage">Learn more</a> about Carthage installation for iOS.</p>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumAttribution.framework
+</code></pre></div><p>The framework is auto-instantiated. It has a dependency on <code>TealiumCore</code>. No additional import statements are necessary. <a href="/platforms/ios-swift/install/#carthage">Learn more</a> about Carthage installation for iOS.</p>
 <h2 id="data-layer">Data Layer</h2>
-
 <p>The following variables are transmitted with each tracking call while the module is enabled:</p>
-
 <table>
 <thead>
 <tr>
@@ -352,116 +336,97 @@ var utag_data = {
 <th>Example</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>ad_campaign_id</code></td>
 <td>The corresponding ad&rsquo;s campaign ID</td>
 <td><code>1234567890</code></td>
 </tr>
-
 <tr>
 <td><code>ad_campaign_name</code></td>
 <td>The corresponding ad&rsquo;s campaign name</td>
 <td><code>CampaignName</code></td>
 </tr>
-
 <tr>
 <td><code>ad_creativeset_id</code></td>
 <td>The ID of the Creative Set which the corresponding ad was part of.</td>
 <td><code>456093</code></td>
 </tr>
-
 <tr>
 <td><code>ad_creativeset_name</code></td>
 <td>The name of the Creative Set which the corresponding ad was part of.</td>
 <td><code>Beast Images</code></td>
 </tr>
-
 <tr>
 <td><code>ad_group_id</code></td>
 <td>The corresponding ad&rsquo;s campaign group ID</td>
 <td><code>1234567890</code></td>
 </tr>
-
 <tr>
 <td><code>ad_group_name</code></td>
 <td>The corresponding ad&rsquo;s campaign group name</td>
 <td><code>AdGroupName</code></td>
 </tr>
-
 <tr>
 <td><code>ad_keyword</code></td>
 <td>The keyword that drove the ad impression which led to the corresponding ad click</td>
 <td><code>Keyword</code></td>
 </tr>
-
 <tr>
 <td><code>ad_keyword_matchtype</code></td>
 <td>This may either be Broad, Exact or Search Match.</td>
 <td><code>Exact</code></td>
 </tr>
-
 <tr>
 <td><code>ad_org_id</code></td>
 <td>The corresponding ad&rsquo;s campaign organization ID</td>
 <td><code>OrgID</code></td>
 </tr>
-
 <tr>
 <td><code>ad_org_name</code></td>
 <td>The corresponding ad&rsquo;s campaign organization name</td>
 <td><code>OrgName</code></td>
 </tr>
-
 <tr>
 <td><code>ad_purchase_date</code></td>
 <td>Date and time the user first downloaded your app. In the case where <code>iadconversion-type = “Redownload”</code>, this represents the original purchase date. This may or may not have been associated with an Apple Search Ad.</td>
 <td><code>2016-12-05T17:31:40Z</code></td>
 </tr>
-
 <tr>
 <td><code>ad_region</code></td>
 <td>Identifies the country or region associated with the campaign which drove this install.</td>
 <td><code>US</code></td>
 </tr>
-
 <tr>
 <td><code>ad_user_clicked_ last_30_days</code></td>
 <td>Boolean indicating if user clicked on a Search Ads impression within 30 days prior to app download</td>
 <td>[<code>true</code>, <code>false</code>]</td>
 </tr>
-
 <tr>
 <td><code>ad_user_conversion_type</code></td>
 <td>Identifies new download or re-download of the app</td>
 <td><code>Download</code></td>
 </tr>
-
 <tr>
 <td><code>ad_user_date_ clicked</code></td>
 <td>Date and time the user clicked on a corresponding ad</td>
 <td><code>2016-12-05T17:31:40Z</code></td>
 </tr>
-
 <tr>
 <td><code>ad_user_date_ converted</code></td>
 <td>Date and time the user downloaded the app</td>
 <td><code>2016-12-05T17:31:40Z</code></td>
 </tr>
-
 <tr>
 <td><code>device_advertising_ enabled</code></td>
 <td>Boolean indicating if the user allowed ad tracking (if <code>false</code>, the advertising ID appears as a string of zeroes)</td>
 <td>[<code>true</code>, <code>false</code>]</td>
 </tr>
-
 <tr>
 <td><code>device_advertising_ id</code></td>
 <td>User-resettable advertising identifier (IDFA)</td>
 <td><code>6D92078A-8246...</code></td>
 </tr>
-
 <tr>
 <td><code>device_advertising_ vendor_id</code></td>
 <td>Unique ID guaranteed to be the same across all apps on the same device from a single vendor (apps with the same 1st 2 parts of the RDNS bundle identifier. For example, com.tealium or com.acme)</td>
@@ -469,8 +434,7 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-
-<p class="note"><i class="fas fa-info-circle"></i>The variables prefixed with <code>ad_</code> are only enabled if Search Ads has been explicitly enabled in the <a href="/platforms/ios-swift/api/tealium-config/">TealiumConfig</a> object. These variables are only retrieved from Apple&rsquo;s servers once during the app&rsquo;s lifetime, but they are stored as persistent variables so they are available on future app launches.</p>
+<!-- raw HTML omitted -->
 
 </div>
 
@@ -1017,6 +981,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/branch/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-branch">Branch</a>
       </li>
       
     
@@ -1907,6 +1891,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-in-app-purchase">In-App Purchase Module</a>
       </li>
       
     
@@ -3392,8 +3396,8 @@ var utag_data = {
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/ios-swift-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
+        <a href="/platforms/ios-swift-v1/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".ios-swift-v1-overview">Overview</a>
       </li>
       
     
@@ -4575,6 +4579,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/device-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-devicedata">DeviceData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-inapppurchase">In-App Purchase Module</a>
       </li>
       
     

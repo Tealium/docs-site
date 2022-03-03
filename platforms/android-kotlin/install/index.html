@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.92.1" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -286,7 +286,7 @@ var utag_data = {
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
-    <div class="f4 fw4 lh-copy">
+    <div class="f4 fw4 lh-copy mb4">
       Learn to install the Tealium SDK for Android (Kotlin).
     </div>
   
@@ -298,85 +298,69 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  
-
-<h2 id="requirements">Requirements</h2>
-
+  <h2 id="requirements">Requirements</h2>
 <ul>
 <li><a href="https://developer.android.com/studio">Android Studio</a></li>
 <li>Android SDK (Lollipop/5.0+ / API Level 21+)</li>
 <li><a href="https://community.tealiumiq.com/t5/Getting-Started/Creating-a-Mobile-Profile/ta-p/16328">Tealium iQ Mobile Profile</a></li>
 <li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Introduction-to-Customer-Data-Hub/ta-p/17571">Tealium Customer Data Hub account</a></li>
 </ul>
-
 <h2 id="sample-apps">Sample Apps</h2>
-
 <p>Explore the Android (Kotlin) <a href="https://github.com/Tealium/tealium-kotlin/tree/master/mobile">sample apps</a> to further your knowledge of the Tealium library, tracking events, and best practice implementations.</p>
-
 <p>Additionally, we recommend abstracting all the Tealium functionality in a central helper class. Explore our <a href="https://github.com/Tealium/tealium-kotlin/blob/master/mobile/src/main/java/com/tealium/mobile/TealiumHelper.kt">sample helper class</a>.</p>
-
 <h2 id="get-the-code">Get the Code</h2>
-
 <p>Clone the <a href="https://github.com/Tealium/tealium-kotlin">Tealium Android library</a>. Cloning the library, rather than downloading, makes it easier to update to future releases.</p>
-
-<p class="tip"><i class="fas fa-star"></i>See the <a href="/platforms/android-kotlin/api/">Tealium API</a> for a complete listing of Tealium classes and methods for Android.</p>
-
+<!-- raw HTML omitted -->
 <h2 id="install">Install</h2>
-
 <p>The Tealium Kotlin library is divided into modules. To maintain the smallest installation size possible, we recommended that you only install the modules necessary to achieve the desired functionality.</p>
-
 <p>Install the Tealium Kotlin library with Maven or manually.</p>
-
 <h3 id="maven">Maven</h3>
-
 <p>To install Tealium for Android library with Maven (recommended):</p>
-
 <ol>
-<li><p>Add the Tealium Maven URL to your project&rsquo;s top-level <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
-  repositories {
-    jcenter()
-    maven {
-      url <span style="color:#a31515">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
-    }
-  }
-}</code></pre></div></li>
-
-<li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the following Maven dependency:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
-  implementation <span style="color:#a31515">&#39;com.tealium:kotlin-core:1.3.0&#39;</span>
-}</code></pre></div></li>
+<li>Add the Tealium Maven URL to your project&rsquo;s top-level <code>build.gradle</code> file:</li>
 </ol>
-
-<h3 id="manual">Manual</h3>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
+      repositories {
+        jcenter()
+        maven {
+          url <span style="color:#a31515">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
+        }
+      }
+}
+</code></pre></div><ol start="2">
+<li>In your project module&rsquo;s <code>build.gradle</code> file, add the following Maven dependency:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
+      implementation <span style="color:#a31515">&#39;com.tealium:kotlin-core:1.3.0&#39;</span>
+}
+</code></pre></div><h3 id="manual">Manual</h3>
 <p>To install Tealium for Android library manually:</p>
-
 <ol>
-<li><p>Add <code>flatDir</code> to your project root <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
-  repositories {
-     jcenter()
-     flatDir {
-         dirs <span style="color:#a31515">&#39;libs&#39;</span>
-     }
-  }
-}</code></pre></div></li>
-
-<li><p>Add <code>tealium-kotlin-1.2.x.aar</code> to <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code>.</p></li>
-
-<li><p>Add the Tealium library dependency to your <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
-  implementation(name:<span style="color:#a31515">&#39;tealium-kotlin-1.3.0&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
-}</code></pre></div></li>
+<li>Add <code>flatDir</code> to your project root <code>build.gradle</code> file:</li>
 </ol>
-
-<h2 id="initialize">Initialize</h2>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
+      repositories {
+         jcenter()
+         flatDir {
+             dirs <span style="color:#a31515">&#39;libs&#39;</span>
+         }
+      }
+}
+</code></pre></div><ol start="2">
+<li>
+<p>Add <code>tealium-kotlin-1.2.x.aar</code> to <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code>.</p>
+</li>
+<li>
+<p>Add the Tealium library dependency to your <code>build.gradle</code> file:</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
+      implementation(name:<span style="color:#a31515">&#39;tealium-kotlin-1.3.0&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
+}
+</code></pre></div><h2 id="initialize">Initialize</h2>
 <p>To initialize Tealium, configure a <a href="/platforms/android-kotlin/api/tealium-config/"><code>TealiumConfig</code></a> instance and pass it into a <a href="/platforms/android-kotlin/api/tealium/"><code>Tealium</code></a> instance. It&rsquo;s recommended to initialize the Tealium Kotlin library in the app&rsquo;s global application class within the <code>onCreate()</code> method.</p>
-
-<p class="note"><i class="fas fa-info-circle"></i>Manage your <a href="/platforms/android-kotlin/api/tealium/#class-tealium"><code>Tealium</code></a> instance by using a tracking helper class, which provides a single point of entry for the Tealium Kotlin library and simplifies future upgrades.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">object</span> <span style="color:#2b91af">TealiumHelper</span> {
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">object</span> <span style="color:#2b91af">TealiumHelper</span> {
 
   <span style="color:#00f">lateinit</span> <span style="color:#00f">var</span> tealium: Tealium
 
@@ -392,54 +376,39 @@ var utag_data = {
                     )
     tealium = Tealium.create(<span style="color:#a31515">&#34;tealium_instance&#34;</span>, tealiumConfig)
   }
-}</code></pre></div>
-<h2 id="dispatcher">Dispatcher</h2>
-
+}
+</code></pre></div><h2 id="dispatcher">Dispatcher</h2>
 <p>To send your data to the Tealium ecosystem, select from the following dispatchers:</p>
-
 <ul>
-<li><strong>Tag Management</strong><br />
+<li><strong>Tag Management</strong> <br>
 Add the <a href="/platforms/android-kotlin/module-list/tag-management/">TagManagement Dispatcher</a> to use Tealium iQ Tag Management and make use of its tag management configuration logic.</li>
-<li><strong>Collect</strong><br />
+<li><strong>Collect</strong><br>
 Add the <a href="/platforms/android-kotlin/module-list/collect/">Collect Dispatcher</a> to use the server-side solutions of the Tealium Customer Data Hub.</li>
 </ul>
-
 <h2 id="log-level">Log Level</h2>
-
 <p>Log level is set to the environment from the <code>TealiumConfig</code> instance.</p>
-
 <p>To use a different log level, set the <a href="/platforms/android-kotlin/api/tealium-config/#loglevel"><code>logLevel</code></a> property:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.logLevel = LogLevel.DEV <span style="color:#008000">// or LogLevel.QA, LogLevel.PROD</span></code></pre></div>
-<h2 id="cookies">Cookies</h2>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.logLevel = LogLevel.DEV <span style="color:#008000">// or LogLevel.QA, LogLevel.PROD
+</span></code></pre></div><h2 id="cookies">Cookies</h2>
 <p>Cookies are enabled by default in the webview.</p>
-
 <h2 id="event-batching">Event Batching</h2>
-
 <p>To enable event batching, go to the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">Mobile Publish Settings</a> and set the batch size to a value greater than 1. Events are dispatched when the number of events in the queue equals the batch size.</p>
-
 <h2 id="migrate-from-java">Migrate from Java</h2>
-
 <p>When migrating to the Kotlin library from the <a href="https://github.com/Tealium/tealium-android">Java library</a>, saved data is automatically migrated including:</p>
-
 <ul>
 <li>Consent Preferences</li>
 <li>Lifecycle data</li>
 <li>Persistent data
-
 <ul>
 <li>Custom persistent data added through the <a href="/platforms/android-java/data-management/#persistent-data">Persistent Data</a> API</li>
 <li>Tealium persistent data: <code>app_uuid</code>, <code>tealium_visitor_id</code></li>
-</ul></li>
 </ul>
-
-<p class="note"><i class="fas fa-info-circle"></i>After transfer to the Kotlin library is complete, legacy data from the Java library is deleted. Subsequently switching back to the Java library results in a new <code>tealium_visitor_id</code> and <code>app_uuid</code> generated, and loss of any custom persistent data.</p>
-
+</li>
+</ul>
+<!-- raw HTML omitted -->
 <h2 id="android-wear">Android Wear</h2>
-
 <p>For Android Wear apps, use the Collect module for data collection, as the Tag Management module is not supported since Android Wear OS does not provide webview support.</p>
-
-<p class="note"><i class="fas fa-info-circle"></i>If you are developing an Android Wear app using Tealium for Android, <a href="https://developer.android.com/training/wearables/apps/creating">Google recommends</a> creating a standalone app.</p>
+<!-- raw HTML omitted -->
 
 </div>
 
@@ -973,6 +942,26 @@ Add the <a href="/platforms/android-kotlin/module-list/collect/">Collect Dispatc
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/branch/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-branch">Branch</a>
       </li>
       
     
@@ -1626,8 +1615,8 @@ Add the <a href="/platforms/android-kotlin/module-list/collect/">Collect Dispatc
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/android-kotlin/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
+        <a href="/platforms/android-kotlin/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".android-kotlin-overview">Overview</a>
       </li>
       
     
@@ -1863,6 +1852,26 @@ Add the <a href="/platforms/android-kotlin/module-list/collect/">Collect Dispatc
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-in-app-purchase">In-App Purchase Module</a>
       </li>
       
     
@@ -4531,6 +4540,26 @@ Add the <a href="/platforms/android-kotlin/module-list/collect/">Collect Dispatc
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/device-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-devicedata">DeviceData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-inapppurchase">In-App Purchase Module</a>
       </li>
       
     

@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.92.1" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -275,7 +275,7 @@ var utag_data = {
   
     
       <a href="/platforms/android-java/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        ANDROID JAVA/MODULE LIST
+        ANDROID JAVA MODULE LIST
       </a>
     
   
@@ -287,7 +287,7 @@ var utag_data = {
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
-    <div class="f4 fw4 lh-copy">
+    <div class="f4 fw4 lh-copy mb4">
       Provides device location data for your events and the ability to add geofences around points of interest.
     </div>
   
@@ -299,287 +299,246 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  
-
-<p>The Location module enables your Android app to receive location information and the ability to configure and monitor geofences. Learn more about <a href="/platforms/getting-started/location/">location tracking and geofencing</a>.</p>
-
+  <p>The Location module enables your Android app to receive location information and the ability to configure and monitor geofences. Learn more about <a href="/platforms/getting-started/location/">location tracking and geofencing</a>.</p>
 <h2 id="supported-platforms">Supported Platforms</h2>
-
 <p>The following platforms are supported:</p>
-
 <ul>
 <li><a href="/platforms/android-java/">Android</a></li>
 <li><a href="/platforms/android-java/tv/">Android TV</a></li>
 <li><a href="/platforms/android-java/wear/">Android Wear</a></li>
 </ul>
-
 <h2 id="requirements">Requirements</h2>
-
 <ul>
 <li><a href="/platforms/android-java/">Tealium for Android</a> (5.6.0+)</li>
 <li>Google Play Services <a href="https://developer.android.com/training/location">Location</a> (11.0.0+)</li>
 </ul>
-
 <p>This module supports Firebase Cloud Messaging.</p>
-
 <h2 id="sample-app">Sample App</h2>
-
 <p>Explore the <a href="https://github.com/Tealium/tealium-android/tree/master/Modules/Location">Android Location module sample app</a> to familiarize yourself with our library, tracking methods, and best practice implementation.</p>
-
 <h2 id="install">Install</h2>
-
 <p>Install the module with Maven (recommended) or manually. After you install, add the following import statement:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#00f">import</span> com.tealium.location.TealiumLocation;</code></pre></div>
-<h3 id="maven">Maven</h3>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#00f">import</span> com.tealium.location.TealiumLocation;
+</code></pre></div><h3 id="maven">Maven</h3>
 <p>To install the module using Maven:</p>
-
 <ol>
-<li><p>In your project&rsquo;s top-level <code>build.gradle</code> file, add the following Maven repository:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">maven {
-  url <span style="color:#a31515">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
-}</code></pre></div></li>
-
-<li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the Maven dependencies for the Tealium library, Location module, and Google Play Services Location API:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
-  implementation <span style="color:#a31515">&#39;com.tealium:library:5.8.0&#39;</span>
-  implementation <span style="color:#a31515">&#39;com.tealium:location:1.0.0&#39;</span>
-  runtimeOnly <span style="color:#a31515">&#39;com.google.android.gms:play-services-location:17.0.0&#39;</span>
-}</code></pre></div></li>
+<li>In your project&rsquo;s top-level <code>build.gradle</code> file, add the following Maven repository:</li>
 </ol>
-
-<h3 id="manual">Manual</h3>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">maven {
+      url <span style="color:#a31515">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
+}
+</code></pre></div><ol start="2">
+<li>In your project module&rsquo;s <code>build.gradle</code> file, add the Maven dependencies for the Tealium library, Location module, and Google Play Services Location API:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
+      implementation <span style="color:#a31515">&#39;com.tealium:library:5.8.0&#39;</span>
+      implementation <span style="color:#a31515">&#39;com.tealium:location:1.0.0&#39;</span>
+      runtimeOnly <span style="color:#a31515">&#39;com.google.android.gms:play-services-location:17.0.0&#39;</span>
+}
+</code></pre></div><h3 id="manual">Manual</h3>
 <p>To install the Location module manually:</p>
-
 <ol>
-<li><p>Download the <a href="https://github.com/Tealium/tealium-android/tree/master/Modules/Location">Location module</a></p></li>
-
-<li><p>In your top-level <code>build.gradle</code> file, verify the following:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
-  repositories {
-      ...
-      google()
-      flatDir {
-          dirs <span style="color:#a31515">&#39;libs&#39;</span>
-      }
-      ...
-  }
-}</code></pre></div></li>
-
-<li><p>Copy the file <code>tealium.location-1.0.0.aar</code> into your project&rsquo;s <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> directory.</p></li>
-
-<li><p>Add the Tealium library dependency to your project module’s <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
-  <span style="color:#008000">// only required if you do not already have this reference
-</span><span style="color:#008000"></span>  implementation(name:<span style="color:#a31515">&#39;tealium-5.6.0&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
-  <span style="color:#008000">// location module reference
-</span><span style="color:#008000"></span>  implementation(name:<span style="color:#a31515">&#39;tealium.location-1.0.0&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
-  <span style="color:#008000">// Google&#39;s Location Services API reference
-</span><span style="color:#008000"></span>  runtimeOnly <span style="color:#a31515">&#39;com.google.android.gms:play-services-location:17.0.0&#39;</span>
-}</code></pre></div></li>
+<li>
+<p>Download the <a href="https://github.com/Tealium/tealium-android/tree/master/Modules/Location">Location module</a></p>
+</li>
+<li>
+<p>In your top-level <code>build.gradle</code> file, verify the following:</p>
+</li>
 </ol>
-
-<h2 id="initialize">Initialize</h2>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
+      repositories {
+          ...
+          google()
+          flatDir {
+              dirs <span style="color:#a31515">&#39;libs&#39;</span>
+          }
+          ...
+      }
+}
+</code></pre></div><ol start="3">
+<li>
+<p>Copy the file <code>tealium.location-1.0.0.aar</code> into your project&rsquo;s <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> directory.</p>
+</li>
+<li>
+<p>Add the Tealium library dependency to your project module’s <code>build.gradle</code> file:</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
+      <span style="color:#008000">// only required if you do not already have this reference
+</span><span style="color:#008000"></span>      implementation(name:<span style="color:#a31515">&#39;tealium-5.6.0&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
+      <span style="color:#008000">// location module reference
+</span><span style="color:#008000"></span>      implementation(name:<span style="color:#a31515">&#39;tealium.location-1.0.0&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
+      <span style="color:#008000">// Google&#39;s Location Services API reference
+</span><span style="color:#008000"></span>      runtimeOnly <span style="color:#a31515">&#39;com.google.android.gms:play-services-location:17.0.0&#39;</span>
+  }
+</code></pre></div><h2 id="initialize">Initialize</h2>
 <p>Initialize the Location module by passing a Tealium instance name to <a href="/platforms/android-java/api/tealium-location/#setupinstance"><code>TealiumLocation.setupInstance()</code></a>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Set&lt;String&gt; tealiumInstances = <span style="color:#00f">new</span> HashSet&lt;&gt;();
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Set&lt;String&gt; tealiumInstances = <span style="color:#00f">new</span> HashSet&lt;&gt;();
 tealiumInstances.add(TealiumHelper.TEALIUM_MAIN);
 
-mInstance = TealiumLocation.setupInstance(<span style="color:#00f">this</span>, tealiumInstances);</code></pre></div>
-<h2 id="location-tracking">Location Tracking</h2>
-
+mInstance = TealiumLocation.setupInstance(<span style="color:#00f">this</span>, tealiumInstances);
+</code></pre></div><h2 id="location-tracking">Location Tracking</h2>
 <p>The Location module performs continuous location tracking automatically when it is enabled and <a href="#location-permissions">location permissions</a> are granted. Location updates are based on two settings: accuracy and time interval.</p>
-
 <p>Accuracy may be set to high or low. High accuracy corresponds to the Android setting <code>PRIORITY_HIGH_ACCURACY</code> and low accuracy corresponds to the Android setting <code>PRIORITY_BALANCED_POWER_ACCURACY</code>.</p>
-
 <p>Learn more about <a href="https://developer.android.com/guide/topics/location/battery#accuracy">Android location accuracy settings</a>.</p>
-
 <p>The time interval between location updates is set with a value in milliseconds. Use the highest possible value that is still useful to your app. The interval value is passed to the Android methods <code>setInterval()</code> and <code>setFastestInterval()</code>.</p>
-
 <p>Learn more about <a href="https://developer.android.com/guide/topics/location/battery#frequency">Android location interval settings</a>.</p>
-
 <p>Start location tracking by calling <a href="/platforms/android-java/api/tealium-location/#startlocationupdates"><code>TealiumLocation.startLocationUpdates()</code></a>. Set the first parameter to <code>true</code> for high accuracy and <code>false</code> for lower accuracy tracking.</p>
-
 <p>The following example uses high accuracy and a time interval of 60000 milliseconds (60 seconds):</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">TealiumLocation.getInstance().startLocationUpdates(<span style="color:#00f">true</span>, 60000);</code></pre></div>
-<p>Disable continuous tracking by calling the methods <code>TealiumLocation.destroyInstance()</code> or <a href="/platforms/android-java/api/tealium-location/#stoplocationupdates"><code>TealiumLocation.stopLocationUpdates()</code></a>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">TealiumLocation.getInstance().startLocationUpdates(<span style="color:#00f">true</span>, 60000);
 
+</code></pre></div><p>Disable continuous tracking by calling the methods <code>TealiumLocation.destroyInstance()</code> or <a href="/platforms/android-java/api/tealium-location/#stoplocationupdates"><code>TealiumLocation.stopLocationUpdates()</code></a>.</p>
 <h3 id="location-permissions">Location Permissions</h3>
-
 <p>To grant location permissions in your app:</p>
-
 <ol>
-<li><p>Set the constant variable for the location request code:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">public</span> static <span style="color:#00f">final</span> int LOCATION_REQUEST_CODE = 101;</code></pre></div></li>
-
-<li><p>Add the following method in your app&rsquo;s <code>MainActivity</code> class:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">public</span> void requestLocationPermission() {
-    <span style="color:#00f">if</span> (ContextCompat.checkSelfPermission(getApplicationContext(),
-    Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-        ActivityCompat.requestPermissions(<span style="color:#00f">this</span>,
-          <span style="color:#00f">new</span> String[]{
-              Manifest.permission.ACCESS_FINE_LOCATION,
-              Manifest.permission.ACCESS_COARSE_LOCATION
-          }, LOCATION_REQUEST_CODE);
+<li>Set the constant variable for the location request code:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">public</span> <span style="color:#00f">static</span> <span style="color:#00f">final</span> <span style="color:#2b91af">int</span> LOCATION_REQUEST_CODE = 101;
+</code></pre></div><ol start="2">
+<li>Add the following method in your app&rsquo;s <code>MainActivity</code> class:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">public</span> <span style="color:#2b91af">void</span> requestLocationPermission() {
+        <span style="color:#00f">if</span> (ContextCompat.checkSelfPermission(getApplicationContext(),
+        Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(<span style="color:#00f">this</span>,
+              <span style="color:#00f">new</span> String[]{
+                  Manifest.permission.ACCESS_FINE_LOCATION,
+                  Manifest.permission.ACCESS_COARSE_LOCATION
+              }, LOCATION_REQUEST_CODE);
+        }
     }
-}</code></pre></div></li>
-
-<li><p>Call the <code>requestLocationPermission()</code> method within the <code>onCreate()</code> method of the <code>MainActivity</code> class:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">if</span> ((ContextCompat.checkSelfPermission(getApplicationContext(),
-  Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
-  &amp;&amp; ContextCompat.checkSelfPermission(getApplicationContext(),
-  Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-      requestLocationPermission();
-}</code></pre></div></li>
-
-<li><p>Optionally, to verify that location permissions are granted, override the <code>onRequestPermissionsResult</code>() method:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@Override
-<span style="color:#00f">public</span> void onRequestPermissionsResult(<span style="color:#2b91af">int</span> requestCode,
-  String[] permissions,
-  <span style="color:#2b91af">int</span>[] grantResults) {
-    String message;
-    <span style="color:#00f">if</span> (requestCode == LOCATION_REQUEST_CODE) {
-        <span style="color:#008000">// If request is cancelled, the result arrays are empty.
-</span><span style="color:#008000"></span>        <span style="color:#00f">if</span> ((grantResults.length &gt; 0) &amp;&amp; (grantResults[0]
-          == PackageManager.PERMISSION_GRANTED)) {
-            message = <span style="color:#a31515">&#34;Location Permission Granted&#34;</span>;
+</code></pre></div><ol start="3">
+<li>Call the <code>requestLocationPermission()</code> method within the <code>onCreate()</code> method of the <code>MainActivity</code> class:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">if</span> ((ContextCompat.checkSelfPermission(getApplicationContext(),
+      Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+      &amp;&amp; ContextCompat.checkSelfPermission(getApplicationContext(),
+      Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+          requestLocationPermission();
+  }
+</code></pre></div><ol start="4">
+<li>Optionally, to verify that location permissions are granted, override the <code>onRequestPermissionsResult</code>() method:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@Override
+<span style="color:#00f">public</span> <span style="color:#2b91af">void</span> onRequestPermissionsResult(<span style="color:#2b91af">int</span> requestCode,
+      String[] permissions,
+      <span style="color:#2b91af">int</span>[] grantResults) {
+        String message;
+        <span style="color:#00f">if</span> (requestCode == LOCATION_REQUEST_CODE) {
+            <span style="color:#008000">// If request is cancelled, the result arrays are empty.
+</span><span style="color:#008000"></span>            <span style="color:#00f">if</span> ((grantResults.length &gt; 0) &amp;&amp; (grantResults[0]
+              == PackageManager.PERMISSION_GRANTED)) {
+                message = <span style="color:#a31515">&#34;Location Permission Granted&#34;</span>;
+            } <span style="color:#00f">else</span> {
+                message = <span style="color:#a31515">&#34;Location Permission Not Granted&#34;</span>;
+            }
         } <span style="color:#00f">else</span> {
             message = <span style="color:#a31515">&#34;Location Permission Not Granted&#34;</span>;
         }
-    } <span style="color:#00f">else</span> {
-        message = <span style="color:#a31515">&#34;Location Permission Not Granted&#34;</span>;
-    }
-    showToast(message);
+        showToast(message);
+  }
+
+<span style="color:#00f">private</span> <span style="color:#2b91af">void</span> showToast(String message) {
+      Toast.makeText(getApplicationContext(),
+      message,
+      Toast.LENGTH_LONG).show();
 }
-
-<span style="color:#00f">private</span> void showToast(String message) {
-  Toast.makeText(getApplicationContext(),
-  message,
-  Toast.LENGTH_LONG).show();
-}</code></pre></div></li>
-</ol>
-
-<h3 id="last-known-location">Last Known Location</h3>
-
+</code></pre></div><h3 id="last-known-location">Last Known Location</h3>
 <p>When continuous tracking is disabled, request the last known location with the method <a href="/platforms/android-java/api/tealium-location/#requestdevicelastlocation"><code>TealiumLocation.requestDeviceLastLocation()</code></a>. This method relies on the location client being used by other apps on the device for accuracy. If no other apps are receiving location updates, then the method returns the last known location (or <code>null</code> if the location is not available).</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">TealiumLocation.getInstance().requestDeviceLastLocation();</code></pre></div>
-<h2 id="geofencing">Geofencing</h2>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">TealiumLocation.getInstance().requestDeviceLastLocation();
+</code></pre></div><h2 id="geofencing">Geofencing</h2>
 <p>To initialize with geofencing enabled, use one of the following methods to provide your <a href="/platforms/getting-started/location/#json-file">geofence JSON file</a> to the setup method:</p>
-
 <ul>
-<li><p><strong>Hosted URL</strong><br />
-Use your own hosted geofences file provided as a URL to the method <a href="/platforms/android-java/api/tealium-location/#setupinstancewithurl"><code>TealiumLocation.setupInstanceWithUrl()</code></a>.<br />
-This option is recommended if you have overridden the publish settings URL or want to use <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/About-Hosted-Data-Layer/ta-p/17572">Hosted Data Layer</a>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">TealiumLocation.setupInstanceWithUrl(<span style="color:#00f">this</span>, tealiumInstances, <span style="color:#a31515">&#34;https://example.com/geofences.json&#34;</span>);</code></pre></div></li>
-
-<li><p><strong>Local File</strong><br />
-Use a geofences file stored in the Assets directory of your app with <a href="/platforms/android-java/api/tealium-location/#setupinstancewithfile"><code>TealiumLocation.setupInstanceWithFile()</code></a>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">TealiumLocation.setupInstanceWithFile(<span style="color:#00f">this</span>, tealiumInstances, <span style="color:#a31515">&#34;geofences.json&#34;</span>);</code></pre></div></li>
+<li><strong>Hosted URL</strong><br>
+Use your own hosted geofences file provided as a URL to the method <a href="/platforms/android-java/api/tealium-location/#setupinstancewithurl"><code>TealiumLocation.setupInstanceWithUrl()</code></a>.<br>
+This option is recommended if you have overridden the publish settings URL or want to use <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/About-Hosted-Data-Layer/ta-p/17572">Hosted Data Layer</a>.</li>
 </ul>
-
-<h2 id="additional-considerations">Additional Considerations</h2>
-
-<p><strong>Battery Optimization Features</strong><br />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">TealiumLocation.setupInstanceWithUrl(<span style="color:#00f">this</span>, tealiumInstances, <span style="color:#a31515">&#34;https://example.com/geofences.json&#34;</span>);
+</code></pre></div><ul>
+<li><strong>Local File</strong><br>
+Use a geofences file stored in the Assets directory of your app with <a href="/platforms/android-java/api/tealium-location/#setupinstancewithfile"><code>TealiumLocation.setupInstanceWithFile()</code></a>.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">TealiumLocation.setupInstanceWithFile(<span style="color:#00f">this</span>, tealiumInstances, <span style="color:#a31515">&#34;geofences.json&#34;</span>);
+</code></pre></div><h2 id="additional-considerations">Additional Considerations</h2>
+<p><strong>Battery Optimization Features</strong><br>
 Android devices that implement battery optimization features may interfere with geofence monitoring, leading to events not firing.</p>
-
-<p><strong>BroadcastReceiver</strong><br />
+<p><strong>BroadcastReceiver</strong><br>
 A <code>GEOFENCE_EVENT</code> broadcast is sent when a geofence transition type is triggered. Android only calls the <em>first</em> <code>BroadcastReceiver</code> for this particular broadcast, even if multiple are defined. For third party SDKs that handle the <code>GEOFENCE_EVENT</code> broadcast, implement a &ldquo;proxy&rdquo; <code>BroadcastReceiver</code> that calls the <code>onReceive()</code> method of each individual receiver for the <code>GEOFENCE_EVENT</code> broadcast.</p>
-
-<p><strong>Initializing Geofences</strong><br />
+<p><strong>Initializing Geofences</strong><br>
 If a user is within a geofence at the time of creation, the <code>&quot;enter&quot;</code> transition event does not fire. This is because <code>&quot;exit&quot;</code> and <code>&quot;enter&quot;</code> transition events are fired when crossing the perimeter and not when materializing inside.</p>
-
-<p><strong>Latency:</strong><br />
+<p><strong>Latency:</strong><br>
 When using the geofencing capabilities, take the following into account:</p>
-
 <ul>
 <li>The geofence service does not continuously query for location, so latency is expected when receiving alerts. The latency is typically less than 2 minutes, but if background location limits are set or if the device has been stationary for a while, the latency increases.</li>
 <li>The geofence service depends on the network location provider and a data connection. If there is no reliable network connectivity inside the geofence, alerts may not be triggered.</li>
 <li>If Wi-Fi is turned off on the device, your application might never receive geofence alerts depending on several settings including the radius of the geofence, the device model, or the Android version. In Android 4.3+ provides the capability of “Wi-Fi scan only mode” which allows users to disable Wi-Fi and still receive a reliable network location. It is recommended to prompt the user to enable this setting.</li>
 </ul>
-
-<p><strong>Number of Active Geofences</strong><br />
+<p><strong>Number of Active Geofences</strong><br>
 Geofences are added and removed dynamically, using as few resources as possible. There is no limit to the number of geofences defined, but the number of active geofences is limited to 100 per device user across <em>all</em> running applications.</p>
-
 <h2 id="data-layer">Data Layer</h2>
-
 <p>The following variables are populated by the Location module as part of the mobile data layer. These variables are included automatically in each tracking call from the library.</p>
-
 <table>
 <thead>
 <tr>
-<th align="left">Variable Name</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
+<th style="text-align:left">Variable Name</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Example</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
-<td align="left"><code>latitude</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">The latitude of the user&rsquo;s most recently recorded location</td>
-<td align="left"><code>&quot;32.906119&quot;</code></td>
+<td style="text-align:left"><code>latitude</code></td>
+<td style="text-align:left"><code>String</code></td>
+<td style="text-align:left">The latitude of the user&rsquo;s most recently recorded location</td>
+<td style="text-align:left"><code>&quot;32.906119&quot;</code></td>
 </tr>
-
 <tr>
-<td align="left"><code>longitude</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">The longitude of the user&rsquo;s most recently recorded location</td>
-<td align="left"><code>&quot;-117.2367&quot;</code></td>
+<td style="text-align:left"><code>longitude</code></td>
+<td style="text-align:left"><code>String</code></td>
+<td style="text-align:left">The longitude of the user&rsquo;s most recently recorded location</td>
+<td style="text-align:left"><code>&quot;-117.2367&quot;</code></td>
 </tr>
-
 <tr>
-<td align="left"><code>location_accuracy</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">The accuracy setting for the location module, such as <code>&quot;high&quot;</code> or <code>&quot;low&quot;</code></td>
-<td align="left"><code>&quot;high&quot;</code></td>
+<td style="text-align:left"><code>location_accuracy</code></td>
+<td style="text-align:left"><code>String</code></td>
+<td style="text-align:left">The accuracy setting for the location module, such as <code>&quot;high&quot;</code> or <code>&quot;low&quot;</code></td>
+<td style="text-align:left"><code>&quot;high&quot;</code></td>
 </tr>
 </tbody>
 </table>
-
 <p>During geofencing, a tracking call containing location data is sent when the transition state of the user changes. Transition state changes include a user entering, exiting, or dwelling within a geofence for a specified duration of time. You must set the duration of loitering before the dwelling alert is sent using the Android method <a href="https://developers.google.com/android/reference/com/google/android/gms/location/Geofence.Builder#setLoiteringDelay(int)">setLoiteringDelay()</a>.</p>
-
 <p>The following variables are sent to the data layer:</p>
-
 <table>
 <thead>
 <tr>
-<th align="left">Variable Name</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
+<th style="text-align:left">Variable Name</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Example</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
-<td align="left"><code>tealium_event</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">The Tealium tracked geofence event</td>
-<td align="left"><code>&quot;geofence_entered&quot;</code>, <code>&quot;geofence_exited&quot;</code>, or <code>&quot;geofence_dwell&quot;</code></td>
+<td style="text-align:left"><code>tealium_event</code></td>
+<td style="text-align:left"><code>String</code></td>
+<td style="text-align:left">The Tealium tracked geofence event</td>
+<td style="text-align:left"><code>&quot;geofence_entered&quot;</code>, <code>&quot;geofence_exited&quot;</code>, or <code>&quot;geofence_dwell&quot;</code></td>
 </tr>
-
 <tr>
-<td align="left"><code>geofence_name</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">The name of the geofence region</td>
-<td align="left"><code>&quot;Tealium_San_Diego&quot;</code></td>
+<td style="text-align:left"><code>geofence_name</code></td>
+<td style="text-align:left"><code>String</code></td>
+<td style="text-align:left">The name of the geofence region</td>
+<td style="text-align:left"><code>&quot;Tealium_San_Diego&quot;</code></td>
 </tr>
-
 <tr>
-<td align="left"><code>geofence_transition_type</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">The type of geofence transition event</td>
-<td align="left"><code>&quot;geofence_entered&quot;</code>, <code>&quot;geofence_exited&quot;</code>, or <code>&quot;geofence_dwell&quot;</code></td>
+<td style="text-align:left"><code>geofence_transition_type</code></td>
+<td style="text-align:left"><code>String</code></td>
+<td style="text-align:left">The type of geofence transition event</td>
+<td style="text-align:left"><code>&quot;geofence_entered&quot;</code>, <code>&quot;geofence_exited&quot;</code>, or <code>&quot;geofence_dwell&quot;</code></td>
 </tr>
 </tbody>
 </table>
-
 <h2 id="api-reference">API Reference</h2>
-
 <p>For the reference of methods used in the Location module, see the <a href="/platforms/android-java/api/tealium-location/#class-tealiumlocation"><code>TealiumLocation</code></a> class in the Tealium SDK for Android API.</p>
 
 </div>
@@ -1146,6 +1105,26 @@ Geofences are added and removed dynamically, using as few resources as possible.
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/branch/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-branch">Branch</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/remote-commands/integrations/braze/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-braze">Braze</a>
       </li>
       
@@ -1294,8 +1273,8 @@ Geofences are added and removed dynamically, using as few resources as possible.
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/android-java/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-java-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
+        <a href="/platforms/android-java/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".android-java-overview">Overview</a>
       </li>
       
     
@@ -2017,6 +1996,26 @@ Geofences are added and removed dynamically, using as few resources as possible.
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-in-app-purchase">In-App Purchase Module</a>
       </li>
       
     
@@ -4685,6 +4684,26 @@ Geofences are added and removed dynamically, using as few resources as possible.
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/device-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-devicedata">DeviceData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-inapppurchase">In-App Purchase Module</a>
       </li>
       
     

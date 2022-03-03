@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.92.1" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -286,7 +286,7 @@ var utag_data = {
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
-    <div class="f4 fw4 lh-copy">
+    <div class="f4 fw4 lh-copy mb4">
       Learn to implement Consent Management for iOS (Objective-C).
     </div>
   
@@ -298,29 +298,18 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  
-
-<h2 id="usage">Usage</h2>
-
+  <h2 id="usage">Usage</h2>
 <p>Usage of this module is recommended, as it is automatically included and enabled in the CocoaPods framework builds.</p>
-
 <p>Supported platforms include: iOS, macOS, tvOS, and watchOS.</p>
-
 <p><a href="/platforms/getting-started/consent-management/">Learn more</a> about Consent Management.</p>
-
 <h2 id="sample-apps">Sample Apps</h2>
-
 <p>To help familiarize yourself with enabling Tealium Consent Management, it is recommended to download the sample apps:</p>
-
 <ul>
 <li><a href="https://github.com/Tealium/tealium-ios/tree/master/Samples/ConsentManagerDemo_ObjC">Objective-C Sample App</a></li>
 <li><a href="https://github.com/Tealium/tealium-ios/tree/master/Samples/ConsentManagerDemo_Swift">Swift Sample App</a></li>
 </ul>
-
 <h2 id="data-layer">Data Layer</h2>
-
 <p>The following variables are transmitted with each tracking call while Consent Management is enabled:</p>
-
 <table>
 <thead>
 <tr>
@@ -329,20 +318,17 @@ var utag_data = {
 <th>Example</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>policy</code></td>
 <td>The policy under which consent was collected (Default: <code>gdpr</code>)</td>
 <td><code>gdpr</code></td>
 </tr>
-
 <tr>
 <td><code>consent_status</code></td>
 <td>The user&rsquo;s current consent status</td>
 <td>[<code>&quot;Consented&quot;</code>, <code>&quot;Not Consented&quot;</code>]</td>
 </tr>
-
 <tr>
 <td><code>consent_categories</code></td>
 <td>The user&rsquo;s current categories they are consented to</td>
@@ -350,35 +336,24 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-
 <h2 id="use-cases">Use Cases</h2>
-
 <h3 id="use-case-simple-opt-in">Use Case: Simple Opt-in</h3>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager setUserConsentStatus:Consented];</code></pre></div>
-<p>This example shows you how to give your users a simple &ldquo;Opt-in/Opt-out&rdquo; option. If the user consents, they are automatically opted-in to all tracking categories. If they revoke their consent, no categories are active, and no tracking calls are sent.</p>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager setUserConsentStatus:Consented];
+</code></pre></div><p>This example shows you how to give your users a simple &ldquo;Opt-in/Opt-out&rdquo; option. If the user consents, they are automatically opted-in to all tracking categories. If they revoke their consent, no categories are active, and no tracking calls are sent.</p>
 <p>Define and call the following method in your Tealium Helper class when your app user consents to or declines tracking. If the user consents to tracking, the Consent Manager automatically opts them in to all tracking categories.</p>
-
-<p><img src="/images/platforms/ios/consent-simple-optin.gif" alt="consent-simple-optin.gif" title="consent-simple-optin.gif" /> </p>
-
+<p><img src="/images/platforms/ios/consent-simple-optin.gif" alt="consent-simple-optin.gif" title="consent-simple-optin.gif"> </p>
 <h3 id="use-case-grouped-opt-in">Use Case: Grouped Opt-in</h3>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager setUserConsentStatus:Consented withUserConsentCategories:@[<span style="color:#a31515">@&#34;analytics&#34;</span>, <span style="color:#a31515">@&#34;monitoring&#34;</span>, <span style="color:#a31515">@&#34;big_data&#34;</span>, <span style="color:#a31515">@&#34;mobile&#34;</span>, <span style="color:#a31515">@&#34;crm&#34;</span>]];</code></pre></div>
-<p>This example shows a category-based consent model, where tracking categories are grouped into a smaller number of higher-level categories, defined by you. For example, you may choose to group the Tealium consent categories <code>&quot;analytics&quot;</code>, <code>&quot;monitoring&quot;</code>, <code>&quot;big_data&quot;</code>, <code>&quot;mobile&quot;</code>, and <code>&quot;crm&quot;</code> under a single category called <code>&quot;performance&quot;</code>. This may be easier for the user than selecting from the full list of categories. You may choose to represent this in a slider interface, ranging from least-permissive to most-permissive (all categories).</p>
-
-<p> <img src="/images/platforms/ios/consent-group-optin.gif" alt="consent-group-optin.gif" title="consent-group-optin.gif" /></p>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager setUserConsentStatus:Consented withUserConsentCategories:@[<span style="color:#a31515">@&#34;analytics&#34;</span>, <span style="color:#a31515">@&#34;monitoring&#34;</span>, <span style="color:#a31515">@&#34;big_data&#34;</span>, <span style="color:#a31515">@&#34;mobile&#34;</span>, <span style="color:#a31515">@&#34;crm&#34;</span>]];
+</code></pre></div><p>This example shows a category-based consent model, where tracking categories are grouped into a smaller number of higher-level categories, defined by you. For example, you may choose to group the Tealium consent categories <code>&quot;analytics&quot;</code>, <code>&quot;monitoring&quot;</code>, <code>&quot;big_data&quot;</code>, <code>&quot;mobile&quot;</code>, and <code>&quot;crm&quot;</code> under a single category called <code>&quot;performance&quot;</code>. This may be easier for the user than selecting from the full list of categories. You may choose to represent this in a slider interface, ranging from least-permissive to most-permissive (all categories).</p>
+<p> <img src="/images/platforms/ios/consent-group-optin.gif" alt="consent-group-optin.gif" title="consent-group-optin.gif"></p>
 <h3 id="use-case-category-based-opt-in">Use Case: Category-based Opt-in</h3>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager setUserConsentStatus:Consented withUserConsentCategories:@[<span style="color:#a31515">@&#34;analytics&#34;</span>, <span style="color:#a31515">@&#34;personalization&#34;</span>]];</code></pre></div>
-<p>This example shows a category-based consent model where the user must explicitly select each category from the full list of categories. The default state of the Consent Manager is <code>&quot;Unknown&quot;</code>, which queues hits until the user provides their consent. If the user consents to any category, events are dequeued, and the consented category data is appended to each tracking call.</p>
-
-<p> <img src="/images/platforms/ios/consent-category-optin.gif" alt="consent-category-optin.gif" title="consent-category-optin.gif" /></p>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager setUserConsentStatus:Consented withUserConsentCategories:@[<span style="color:#a31515">@&#34;analytics&#34;</span>, <span style="color:#a31515">@&#34;personalization&#34;</span>]];
+</code></pre></div><p>This example shows a category-based consent model where the user must explicitly select each category from the full list of categories. The default state of the Consent Manager is <code>&quot;Unknown&quot;</code>, which queues hits until the user provides their consent. If the user consents to any category, events are dequeued, and the consented category data is appended to each tracking call.</p>
+<p> <img src="/images/platforms/ios/consent-category-optin.gif" alt="consent-category-optin.gif" title="consent-category-optin.gif"></p>
 <h2 id="api-reference">API Reference</h2>
-
 <h3 id="consentmanager"><code>consentManager</code></h3>
-
 <p>This code shows how to enable Consent Management on Tealium initialization.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#008000">// TealiumHelper.h
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#008000">// TealiumHelper.h
 </span><span style="color:#008000"></span>
 @import TealiumIOS;
 <span style="color:#00f">@interface</span> <span style="color:#2b91af">TealiumHelper</span> : <span style="color:#2b91af">NSObject</span>&lt;TealiumDelegate, TEALConsentManagerDelegate&gt;
@@ -418,29 +393,27 @@ var utag_data = {
   <span style="color:#00f">return</span> self;
 }
 
-<span style="color:#00f">@end</span></code></pre></div>
-<p><strong><code>enable</code></strong><br />
+<span style="color:#00f">@end</span>
+</code></pre></div><p><strong><code>enable</code></strong><br>
 Enable Consent Manager. This method enables Consent Manager at a later time and not on Tealium initialization.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager enable];</code></pre></div>
-<p>The recommended approach is to enable Consent Manager on Tealium initialization.  </p>
-
-<p><strong><code>isEnabled</code></strong><br />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager enable];
+</code></pre></div><p>The recommended approach is to enable Consent Manager on Tealium initialization.  </p>
+<p><strong><code>isEnabled</code></strong><br>
 Checks if Consent Manager is enabled.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager isEnabled];</code></pre></div>
-<p><strong><code>disable</code></strong><br />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager isEnabled];
+</code></pre></div><p><strong><code>disable</code></strong><br>
 Disables Consent Manager. This method disables Consent Manager after Tealium is fully initialized.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager disable];</code></pre></div>
-<p><strong><code>isDisabled</code></strong><br />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager disable];
+</code></pre></div><p><strong><code>isDisabled</code></strong><br>
 Checks if the Consent Manager is disabled.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager isDisabled];</code></pre></div>
-<p><strong><code>consentManagerDelegate</code></strong><br />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager isDisabled];
+</code></pre></div><p><strong><code>consentManagerDelegate</code></strong><br>
 Registers a specific class conforming to the TEALConsentManagerDelegate protocol.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium setConsentManagerDelegate:(<span style="color:#2b91af">id</span>&lt;TEALConsentManagerDelegate&gt;)];</code></pre></div>
-<p><strong><code>setUserConsentStatus</code></strong><br />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium setConsentManagerDelegate:(<span style="color:#2b91af">id</span>&lt;TEALConsentManagerDelegate&gt;)];
+</code></pre></div><p><strong><code>setUserConsentStatus</code></strong><br>
 Sets the user&rsquo;s consent status. Designed to be called from your consent management preferences screen in your app when the user enables or disables tracking.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager setUserConsentStatus:Consented];</code></pre></div>
-<p>Consent Manager always sets the list of consented categories to include ALL available consent categories if the status is <code>Consented</code>. This method does not allow categories to be set selectively.  </p>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager setUserConsentStatus:Consented];
+</code></pre></div><p>Consent Manager always sets the list of consented categories to include ALL available consent categories if the status is <code>Consented</code>. This method does not allow categories to be set selectively.  </p>
 <table>
 <thead>
 <tr>
@@ -449,7 +422,6 @@ Sets the user&rsquo;s consent status. Designed to be called from your consent ma
 <th>Example</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>TEALConsentStatus</code></td>
@@ -458,12 +430,10 @@ Sets the user&rsquo;s consent status. Designed to be called from your consent ma
 </tr>
 </tbody>
 </table>
-
-<p><strong><code>setUserConsentCategories</code></strong><br />
+<p><strong><code>setUserConsentCategories</code></strong><br>
 Sets the user&rsquo;s consent categories. Designed to be called from your consent management preferences screen in your app.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager setUserConsentCategories:@[<span style="color:#a31515">@&#34;analytics&#34;</span>]];</code></pre></div>
-<p>Always sets consent status to <code>Consented</code> when any number of categories are set.</p>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager setUserConsentCategories:@[<span style="color:#a31515">@&#34;analytics&#34;</span>]];
+</code></pre></div><p>Always sets consent status to <code>Consented</code> when any number of categories are set.</p>
 <table>
 <thead>
 <tr>
@@ -472,7 +442,6 @@ Sets the user&rsquo;s consent categories. Designed to be called from your consen
 <th>Example</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>NSArray</code></td>
@@ -481,11 +450,10 @@ Sets the user&rsquo;s consent categories. Designed to be called from your consen
 </tr>
 </tbody>
 </table>
-
-<p><strong><code>setUserConsentStatus:withUserConsentCategories</code></strong><br />
+<p><strong><code>setUserConsentStatus:withUserConsentCategories</code></strong><br>
 Sets the user&rsquo;s consent status and user&rsquo;s consent categories in a single method.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager setUserConsentStatus:Consented withUserConsentCategories:@[<span style="color:#a31515">@&#34;analytics&#34;</span>]];</code></pre></div>
-<table>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager setUserConsentStatus:Consented withUserConsentCategories:@[<span style="color:#a31515">@&#34;analytics&#34;</span>]];
+</code></pre></div><table>
 <thead>
 <tr>
 <th>Parameters</th>
@@ -493,14 +461,12 @@ Sets the user&rsquo;s consent status and user&rsquo;s consent categories in a si
 <th>Example Value</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>TEALConsentStatus</td>
 <td>A value from TEALConsentStatus enum</td>
 <td>[<code>Consented</code>, <code>NotConsented</code>]</td>
 </tr>
-
 <tr>
 <td>NSArray</td>
 <td>An array of predefined NSString categories</td>
@@ -508,26 +474,25 @@ Sets the user&rsquo;s consent status and user&rsquo;s consent categories in a si
 </tr>
 </tbody>
 </table>
-
-<p><strong><code>userConsentStatus</code></strong><br />
+<p><strong><code>userConsentStatus</code></strong><br>
 Returns the current consent status of the user.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager userConsentStatus];</code></pre></div>
-<p><strong><code>userConsentCategories</code></strong><br />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager userConsentStatus];
+</code></pre></div><p><strong><code>userConsentCategories</code></strong><br>
 Returns the current consent categories of the user.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager userConsentCategories];</code></pre></div>
-<p><strong><code>isConsented</code></strong><br />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager userConsentCategories];
+</code></pre></div><p><strong><code>isConsented</code></strong><br>
 Convenience method to determine if the user is consented.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager isConsented];</code></pre></div>
-<p><strong><code>consentStatusString</code></strong><br />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager isConsented];
+</code></pre></div><p><strong><code>consentStatusString</code></strong><br>
 Convenience method for human-readable string of the TEALConsentStatus enum.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[TEALConsentManager consentStatusString:_tealium.consentManager.userConsentStatus];</code></pre></div>
-<p><strong><code>resetUserConsentPreferences</code></strong><br />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[TEALConsentManager consentStatusString:_tealium.consentManager.userConsentStatus];
+</code></pre></div><p><strong><code>resetUserConsentPreferences</code></strong><br>
 Resets all currently stored consent preferences. Reverts to <code>Unknown</code> consent status with no categories.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager resetUserConsentPreferences];</code></pre></div>
-<p><strong><code>setConsentLoggingEnabled</code></strong><br />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager resetUserConsentPreferences];
+</code></pre></div><p><strong><code>setConsentLoggingEnabled</code></strong><br>
 Enables the <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Consent-Change-Event-Specifications/ta-p/23213">Consent Logging</a> feature, which sends all consent status changes to Tealium Customer Data Hub for auditing purposes.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager setConsentLoggingEnabled:YES];</code></pre></div>
-<table>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager setConsentLoggingEnabled:YES];
+</code></pre></div><table>
 <thead>
 <tr>
 <th>Parameters</th>
@@ -535,7 +500,6 @@ Enables the <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Consen
 <th>Example Value</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>TEALConsentLoggingEnabled</code></td>
@@ -544,24 +508,21 @@ Enables the <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Consen
 </tr>
 </tbody>
 </table>
-
-<p><strong><code>isConsentLoggingEnabled</code></strong><br />
+<p><strong><code>isConsentLoggingEnabled</code></strong><br>
 Returns the current state of the consent logging feature.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager isConsentLoggingEnabled];</code></pre></div>
-<p><strong><code>allCategories</code></strong><br />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager isConsentLoggingEnabled];
+</code></pre></div><p><strong><code>allCategories</code></strong><br>
 Returns the complete list of supported consent categories.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager allCategories];</code></pre></div>
-<h3 id="tealconfiguration"><code>TEALConfiguration</code></h3>
-
-<p><strong><code>enableConsentManager</code></strong><br />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">[_tealium.consentManager allCategories];
+</code></pre></div><h3 id="tealconfiguration"><code>TEALConfiguration</code></h3>
+<p><strong><code>enableConsentManager</code></strong><br>
 Sets the initial consent status for the user when the library starts up for the first time. If there are saved preferences, they override any preferences passed in the config object.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">self.configuration.enableConsentManager = YES;</code></pre></div>
-<p>Consent Manager always sets the list of consented categories to include ALL available consent categories, if the status is <code>Consented</code>. This method does not allow categories to be set selectively.</p>
-
-<p><strong><code>userConsentStatus</code></strong><br />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">self.configuration.enableConsentManager = YES;
+</code></pre></div><p>Consent Manager always sets the list of consented categories to include ALL available consent categories, if the status is <code>Consented</code>. This method does not allow categories to be set selectively.</p>
+<p><strong><code>userConsentStatus</code></strong><br>
 Sets the user&rsquo;s initial consent status when the library starts up for the first time. If there are saved preferences, these override any preferences passed in the config object.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">self.configuration.userConsentStatus = Consented;</code></pre></div>
-<table>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">self.configuration.userConsentStatus = Consented;
+</code></pre></div><table>
 <thead>
 <tr>
 <th>Parameters</th>
@@ -569,7 +530,6 @@ Sets the user&rsquo;s initial consent status when the library starts up for the 
 <th>Example Value</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>TEALConsentStatus</code></td>
@@ -578,11 +538,10 @@ Sets the user&rsquo;s initial consent status when the library starts up for the 
 </tr>
 </tbody>
 </table>
-
-<p><strong><code>userConsentCategories</code></strong><br />
+<p><strong><code>userConsentCategories</code></strong><br>
 Sets the user&rsquo;s initial consent categories when the library starts up for the first time. If there are saved preferences, these  override any preferences passed in the config object.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">self.configuration.userConsentCategories = @[<span style="color:#a31515">@&#34;analytics&#34;</span>, <span style="color:#a31515">@&#34;retargeting&#34;</span>];</code></pre></div>
-<table>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">self.configuration.userConsentCategories = @[<span style="color:#a31515">@&#34;analytics&#34;</span>, <span style="color:#a31515">@&#34;retargeting&#34;</span>];
+</code></pre></div><table>
 <thead>
 <tr>
 <th>Parameters</th>
@@ -590,7 +549,6 @@ Sets the user&rsquo;s initial consent categories when the library starts up for 
 <th>Example Value</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>NSArray</code></td>
@@ -599,25 +557,21 @@ Sets the user&rsquo;s initial consent categories when the library starts up for 
 </tr>
 </tbody>
 </table>
-
 <h3 id="tealconsentmanagerdelegate"><code>TEALConsentManagerDelegate</code></h3>
-
-<p><strong><code>consentManagerDidChangeWithState</code></strong><br />
+<p><strong><code>consentManagerDidChangeWithState</code></strong><br>
 This method is called whenever the Consent Manager user consent status is changed. For example, the user consented or declined tracking.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#2b91af">void</span>)consentManagerDidChangeWithState:(TEALConsentStatus)consentStatus;</code></pre></div>
-<p><strong><code>consentManagerDidUpdateConsentCategories</code></strong><br />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#2b91af">void</span>)consentManagerDidChangeWithState:(TEALConsentStatus)consentStatus;
+</code></pre></div><p><strong><code>consentManagerDidUpdateConsentCategories</code></strong><br>
 This method is called whenever the Consent Manager user consent categories are updated.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">-(<span style="color:#2b91af">void</span>)consentManagerDidUpdateConsentCategories:(NSArray * <span style="">\</span>_Nullable)categories;</code></pre></div>
-<p><strong><code>consentManagerWillDropDispatch</code></strong><br />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">-(<span style="color:#2b91af">void</span>)consentManagerDidUpdateConsentCategories:(NSArray * <span style="">\</span>_Nullable)categories;
+</code></pre></div><p><strong><code>consentManagerWillDropDispatch</code></strong><br>
 This method is called whenever the Consent Manager is going to drop a tracking call. For example, the user declined tracking.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#2b91af">void</span>)consentManagerWillDropDispatch:(TEALDispatch * <span style="">\</span>_Nullable)dispatch;</code></pre></div>
-<p><strong><code>consentManagerWillQueueDispatch</code></strong><br />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#2b91af">void</span>)consentManagerWillDropDispatch:(TEALDispatch * <span style="">\</span>_Nullable)dispatch;
+</code></pre></div><p><strong><code>consentManagerWillQueueDispatch</code></strong><br>
 This method is called whenever the Consent Manager is in the <code>Unknown</code> state. Tracking calls are being queued locally until the user grants or declines consent.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#2b91af">void</span>)consentManagerWillQueueDispatch:(TEALDispatch * <span style="">\</span>_Nullable)dispatch;</code></pre></div>
-<h2 id="consent-categories">Consent Categories</h2>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">- (<span style="color:#2b91af">void</span>)consentManagerWillQueueDispatch:(TEALDispatch * <span style="">\</span>_Nullable)dispatch;
+</code></pre></div><h2 id="consent-categories">Consent Categories</h2>
 <p>The following lists all the supported consent categories:</p>
-
 <ul>
 <li><code>analytics</code></li>
 <li><code>affiliates</code></li>
@@ -635,18 +589,17 @@ This method is called whenever the Consent Manager is in the <code>Unknown</code
 <li><code>cookiematch</code></li>
 <li><code>misc</code></li>
 </ul>
-
 <h2 id="tealconsentstatus">TEALConsentStatus</h2>
-
-<p><strong><code>Unknown</code></strong><br />
+<p><strong><code>Unknown</code></strong><br>
 The <code>Unknown</code> status is the default setting for the Consent Manager. In this state, the Consent Manager queues events locally until an affirmative <code>Consented</code> / <code>NotConsented</code> status is provided.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">self.tealium.consentManager.userConsentStatus = Unknown</code></pre></div>
-<p><strong><code>Consented</code></strong><br />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">self.tealium.consentManager.userConsentStatus = Unknown
+</code></pre></div><p><strong><code>Consented</code></strong><br>
 The <code>Consented</code> status is set when the user has consented to tracking. In this state, the Consent Manager allows all tracking calls to continue as normal.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">self.tealium.consentManager.userConsentStatus = Consented</code></pre></div>
-<p><strong><code>NotConsented</code></strong><br />
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">self.tealium.consentManager.userConsentStatus = Consented
+</code></pre></div><p><strong><code>NotConsented</code></strong><br>
 The <code>NotConsented</code> status is set when the user has declined tracking. In this state, the Consent Manager drops all tracking calls and halt further processing by the SDK.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">self.tealium.consentManager.userConsentStatus = NotConsented</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">self.tealium.consentManager.userConsentStatus = NotConsented
+</code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -1192,6 +1145,26 @@ The <code>NotConsented</code> status is set when the user has declined tracking.
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/branch/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-branch">Branch</a>
       </li>
       
     
@@ -2082,6 +2055,26 @@ The <code>NotConsented</code> status is set when the user has declined tracking.
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-in-app-purchase">In-App Purchase Module</a>
       </li>
       
     
@@ -3283,8 +3276,8 @@ The <code>NotConsented</code> status is set when the user has declined tracking.
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/ios-objective-c/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-objective-c-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
+        <a href="/platforms/ios-objective-c/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".ios-objective-c-overview">Overview</a>
       </li>
       
     
@@ -4750,6 +4743,26 @@ The <code>NotConsented</code> status is set when the user has declined tracking.
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/device-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-devicedata">DeviceData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-inapppurchase">In-App Purchase Module</a>
       </li>
       
     

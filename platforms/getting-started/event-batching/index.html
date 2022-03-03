@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.92.1" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -278,7 +278,7 @@ var utag_data = {
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
-    <div class="f4 fw4 lh-copy">
+    <div class="f4 fw4 lh-copy mb4">
       Learn about the event batching feature for mobile.
     </div>
   
@@ -290,42 +290,25 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  
-
-<p>Event batching is a feature of the Tealium Collect module that optimizes the transmission of data between a mobile device and Tealium by <em>sending multiple events in a single HTTP request</em>. Event batching works with a new data collection endpoint that is optimized to eliminate repetitive data layer variables and to accept payloads compressed with gzip.</p>
-
+  <p>Event batching is a feature of the Tealium Collect module that optimizes the transmission of data between a mobile device and Tealium by <em>sending multiple events in a single HTTP request</em>. Event batching works with a new data collection endpoint that is optimized to eliminate repetitive data layer variables and to accept payloads compressed with gzip.</p>
 <h2 id="batch-vs-queue">Batch vs. Queue</h2>
-
 <p>Event <em>batching</em> refers to how data is transmitted across the network. The event <em>queue</em> refers to how event data is stored temporarily on the device  before it is dispatched. Event batching combines multiple events into a single network request as opposed to each tracked event in its own request. The event queue is used when a device is offline so that tracking calls can be stored until the device regains a connection, at which point the queue is processed. Event batching works with the event queue by processing multiple events at once until the queue is empty.</p>
-
 <p>For example, if a device is offline and the event queue grows to contain 25 events, once the device comes online the queue is processed in batches of 10 events until the queue is empty. In this case, two batched requests with 10 events each and one batch for the remaining 5 events are sent, for a total of 25 tracked events using only 3 network requests.</p>
-
-<p class="note"><i class="fas fa-info-circle"></i>Currently, the batch size maximum is 10.</p>
-
+<!-- raw HTML omitted -->
 <h2 id="data-layer-optimization">Data Layer Optimization</h2>
-
 <p>The Tealium mobile libraries contribute a lot of <a href="/platforms/getting-started/data-layer/">device information to the data layer</a>, such as app name, screen resolution, and OS version. These variables are included in every network request even though their values do not change between events. Event batching optimizes the data layer so that these common variables are <em>only sent once per batch</em>.</p>
-
 <h2 id="payload-compression">Payload Compression</h2>
-
 <p>The event batch payload is compressed with gzip to minimize the size of the HTTP request. This compression reduces the size of each network request by up to 90%.</p>
-
 <h2 id="benefits">Benefits</h2>
-
 <p>The benefits of event batching include:</p>
-
 <ul>
 <li>Reduced size of total transmitted data.</li>
 <li>Fewer network requests for the same number of events.</li>
 <li>Improved battery performance on the device.</li>
 </ul>
-
-<p class="note"><i class="fas fa-info-circle"></i>Event batching is not available for Tealium iQ Tag Management.</p>
-
+<!-- raw HTML omitted -->
 <h2 id="supported-platforms">Supported Platforms</h2>
-
 <p>The following platforms support event batching:</p>
-
 <ul>
 <li><a href="/platforms/android-java/install/#event-batching">Android</a></li>
 <li><a href="/platforms/ios-swift/install/#event-batching">iOS</a></li>
@@ -417,8 +400,8 @@ var utag_data = {
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
+        <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".getting-started-overview">Overview</a>
       </li>
       
     
@@ -876,6 +859,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/branch/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-branch">Branch</a>
       </li>
       
     
@@ -1766,6 +1769,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-in-app-purchase">In-App Purchase Module</a>
       </li>
       
     
@@ -4434,6 +4457,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/device-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-devicedata">DeviceData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-inapppurchase">In-App Purchase Module</a>
       </li>
       
     

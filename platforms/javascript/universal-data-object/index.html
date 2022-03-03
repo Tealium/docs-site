@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.92.1" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -250,7 +250,7 @@ var utag_data = {
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#universal-data-object-udo">Universal Data Object (UDO)</a></li>
-              <ul class="toc-h3"><li><a href="#syntax-guidelines">Syntax Guidelines</a></li>
+              <ul class="toc-h3"><li><a href="#syntaxguidelines">Syntax Guidelines</a></li>
               </ul><li><a href="#examples">Examples</a></li>
               <ul class="toc-h3"><li><a href="#standard-page">Standard Page</a></li>
               <li><a href="#page-specific-data">Page Specific Data</a></li>
@@ -280,7 +280,7 @@ var utag_data = {
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
-    <div class="f4 fw4 lh-copy">
+    <div class="f4 fw4 lh-copy mb4">
       Learn about the Universal Data Object (<code>utag_data</code>) and the different types of web page data it makes available.
     </div>
   
@@ -292,54 +292,41 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  
-
-<h2 id="universal-data-object-udo">Universal Data Object (UDO)</h2>
-
+  <h2 id="universal-data-object-udo">Universal Data Object (UDO)</h2>
 <p>The <a href="https://community.tealiumiq.com/t5/Data-Layer/An-Introduction-to-the-Data-Layer/ta-p/15885">data layer</a> is the foundation of your Tealium solution and served as the one true definition of your data across all digital assets and customer interactions. The data layer comprises all of the various <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Data-Layer-Variables/ta-p/9427">variables</a> that are collected across your site and the visitor interactions and events that are tracked.</p>
-
 <p>The data layer is implemented on your website as a JavaScript object called <code>utag_data</code> in which you expose data from the page to the Tealium tag. The properties in this object use plain, vendor neutral names that are tailored to your business.</p>
-
 <p>The following is an example declaration of <code>utag_data</code>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;script type=<span style="color:#a31515">&#34;text/javascript&#34;</span>&gt;
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;script type=<span style="color:#a31515">&#34;text/javascript&#34;</span>&gt;
   <span style="color:#00f">var</span> utag_data={
       <span style="color:#a31515">&#34;tealium_event&#34;</span>  : <span style="color:#a31515">&#34;search&#34;</span>,
       <span style="color:#a31515">&#34;page_name&#34;</span>      : <span style="color:#a31515">&#34;Search Results&#34;</span>,
       <span style="color:#a31515">&#34;search_results&#34;</span> : <span style="color:#a31515">&#34;42&#34;</span>,
       <span style="color:#a31515">&#34;search_keyword&#34;</span> : <span style="color:#a31515">&#34;Tealium shirt&#34;</span>};
-&lt;/script&gt;</code></pre></div>
-<p class="note"><i class="fas fa-info-circle"></i>Define and populate the <code>utag_data</code> object variable prior to loading the Universal Tag (<code>utag.js</code>).</p>
-
+&lt;/script&gt;
+</code></pre></div><!-- raw HTML omitted -->
 <p>When <code>utag.js</code> loads in the page, it looks for the <code>utag_data</code> variable and uses the data to automatically trigger a page view tracking call with <code>utag.view()</code>. If you have a single page application, or are calling <code>utag.view()</code> manually, you might not need <code>utag_data</code>. </p>
-
 <p><a href="/platforms/javascript/page-tracking/">Learn more</a> about page tracking options.</p>
-
-<h3 id="syntax-guidelines">Syntax Guidelines</h3>
-
+<h3 id="syntaxguidelines">Syntax Guidelines</h3>
 <p>When implementing the UDO there are certain guidelines to follow, not only to avoid errors or inconsistencies in your implementation but also to conform to JavaScript and Tealium standards.</p>
-
 <ul>
-<li><strong>String Values</strong><br />
+<li><strong>String Values</strong><br>
 Use string values for all variables, including boolean and numeric data.</li>
-<li><strong>Escape Quotes</strong><br />
+<li><strong>Escape Quotes</strong> <br>
 Enclose all values in double quotes or single quotes and escape any quotes that might appear in the value itself. For example, <code>utag_data.page_name = 'It\'s All About the Data!';</code>.</li>
-<li><strong>Boolean Values</strong><br />
+<li><strong>Boolean Values</strong><br>
 For boolean values use <code>&quot;1&quot;</code> and <code>&quot;0&quot;</code> to represent <code>true</code> and <code>false</code>. This is the simplest way to represent a boolean using strings.</li>
-<li><strong>Amount Values</strong><br />
+<li><strong>Amount Values</strong><br>
 Use strings for all dollar amounts and exclude all currency symbols and commas. For example, <code>utag_data.order_total = &quot;1234.00&quot;;</code> instead of <code>&quot;$1,234.00&quot;</code>.  </li>
-<li><strong>Array Values</strong><br />
-Use array values for all product related variables. The Tealium library, and each vendor tag integration, is designed to use arrays for all product-related data. For example, ID, price, or quantity. <br />
+<li><strong>Array Values</strong><br>
+Use array values for all product related variables. The Tealium library, and each vendor tag integration, is designed to use arrays for all product-related data. For example, ID, price, or quantity. <br>
 <code>utag_data.product_id = [&quot;P1234&quot;, &quot;P4567&quot;, &quot;P7890&quot;];</code></li>
-<li><strong>Avoid Extra Code</strong><br />
+<li><strong>Avoid Extra Code</strong><br>
 Do not add extra code to the UDO script block. If any code in the same script block fails, the UDO may not be defined correctly which might lead to unexpected data being passed to your vendor tags.</li>
 </ul>
-
 <h2 id="examples">Examples</h2>
-
 <h3 id="standard-page">Standard Page</h3>
-
 <p>The following is a <em>sample</em> UDO as it appears on a page. This specific example shows properties that might appear on a &ldquo;Shopping Cart&rdquo; page with two products in the cart.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;script type=<span style="color:#a31515">&#34;text/javascript&#34;</span>&gt;
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;script type=<span style="color:#a31515">&#34;text/javascript&#34;</span>&gt;
   <span style="color:#00f">var</span> utag_data = {
     <span style="color:#a31515">&#34;tealium_event&#34;</span>      : <span style="color:#a31515">&#34;cart_add&#34;</span>,
     <span style="color:#a31515">&#34;country_code&#34;</span>       : <span style="color:#a31515">&#34;US&#34;</span>,    
@@ -353,34 +340,30 @@ Do not add extra code to the UDO script block. If any code in the same script bl
     <span style="color:#a31515">&#34;product_unit_price&#34;</span> : [<span style="color:#a31515">&#34;65.00&#34;</span>, <span style="color:#a31515">&#34;4.75&#34;</span>],    
     <span style="color:#a31515">&#34;cart_total_items&#34;</span>   : <span style="color:#a31515">&#34;3&#34;</span>,    
     <span style="color:#a31515">&#34;cart_subtotal&#34;</span>      : <span style="color:#a31515">&#34;74.00&#34;</span>};
-&lt;/script&gt;</code></pre></div>
-<p>If needed, update the UDO with additional values outside of the declaration block, as long as the data gets set prior to loading <code>utag.js</code>. UDO variables set after loading <code>utag.js</code> are ignored.  </p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;script type=<span style="color:#a31515">&#34;text/javascript&#34;</span>&gt;
+&lt;/script&gt;
+</code></pre></div><p>If needed, update the UDO with additional values outside of the declaration block, as long as the data gets set prior to loading <code>utag.js</code>. UDO variables set after loading <code>utag.js</code> are ignored.  </p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;script type=<span style="color:#a31515">&#34;text/javascript&#34;</span>&gt;
   utag_data[<span style="color:#a31515">&#34;page_name&#34;</span>] = <span style="color:#a31515">&#34;View Cart&#34;</span>;
-&lt;/script&gt;</code></pre></div>
-<h3 id="page-specific-data">Page Specific Data</h3>
-
+&lt;/script&gt;
+</code></pre></div><h3 id="page-specific-data">Page Specific Data</h3>
 <p>When populating the UDO, only include variables pertinent to the current page type. This reduces clutter in the page code and eliminates confusion about what data is expected. Below is an example of a search page UDO that omits unnecessary items such as product and order data.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;script type=<span style="color:#a31515">&#34;text/javascript&#34;</span>&gt;
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;script type=<span style="color:#a31515">&#34;text/javascript&#34;</span>&gt;
   <span style="color:#00f">var</span> utag_data={
       <span style="color:#a31515">&#34;page_name&#34;</span>      : <span style="color:#a31515">&#34;Search Results&#34;</span>,
       <span style="color:#a31515">&#34;page_type&#34;</span>      : <span style="color:#a31515">&#34;search&#34;</span>,
       <span style="color:#a31515">&#34;search_results&#34;</span> : <span style="color:#a31515">&#34;42&#34;</span>,
       <span style="color:#a31515">&#34;search_keyword&#34;</span> : <span style="color:#a31515">&#34;tennis shoes&#34;</span>};
-&lt;/script&gt;</code></pre></div>
-<h3 id="product-arrays">Product Arrays</h3>
-
+&lt;/script&gt;
+</code></pre></div><h3 id="product-arrays">Product Arrays</h3>
 <p>Product variables are to be populated as arrays, even when a single product is being set. Below are examples of setting the product ID variable with one product ID (on the Product Detail page) and with three product IDs such as a Shopping Cart page.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#008000">// Single product. For example, product detail page
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#008000">// Single product. For example, product detail page
 </span><span style="color:#008000"></span>utag_data[<span style="color:#a31515">&#34;product_id&#34;</span>] = [<span style="color:#a31515">&#34;PROD123&#34;</span>];
 
 <span style="color:#008000">// Multiple products. For example, cart page
 </span><span style="color:#008000"></span>utag_data[<span style="color:#a31515">&#34;product_id&#34;</span>] = [<span style="color:#a31515">&#34;PROD123&#34;</span>, <span style="color:#a31515">&#34;PROD456&#34;</span>, <span style="color:#a31515">&#34;PROD789&#34;</span>];
-</code></pre></div>
-<h3 id="array-alignment">Array Alignment</h3>
-
+</code></pre></div><h3 id="array-alignment">Array Alignment</h3>
 <p>All product array variables must have the same number of elements to ensure data alignment. In this example, notice that the first element in each array corresponds to the first product. Properties associated with this product (such as ID, price, and quantity) all appear in the first element in each array, while the properties of the second product appear in the second element in each array, and so on.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#008000">// Product 1:
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#008000">// Product 1:
 </span><span style="color:#008000">//   ID    = PROD123
 </span><span style="color:#008000">//   Price = 3.00
 </span><span style="color:#008000">//   QTY   = 1
@@ -939,6 +922,26 @@ utag_data[<span style="color:#a31515">&#34;product_quantity&#34;</span>] = [<spa
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/branch/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-branch">Branch</a>
       </li>
       
     
@@ -1829,6 +1832,26 @@ utag_data[<span style="color:#a31515">&#34;product_quantity&#34;</span>] = [<spa
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-in-app-purchase">In-App Purchase Module</a>
       </li>
       
     
@@ -4516,6 +4539,26 @@ utag_data[<span style="color:#a31515">&#34;product_quantity&#34;</span>] = [<spa
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-inapppurchase">In-App Purchase Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/lifecycle/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-lifecycle">Lifecycle Module</a>
       </li>
       
@@ -6470,8 +6513,8 @@ utag_data[<span style="color:#a31515">&#34;product_quantity&#34;</span>] = [<spa
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/javascript/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".javascript-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
+        <a href="/platforms/javascript/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".javascript-overview">Overview</a>
       </li>
       
     

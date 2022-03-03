@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.92.1" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -249,7 +249,7 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#utag-loader-sc">utag.loader.SC()</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#utagloadersc">utag.loader.SC()</a></li>
               </nav>
   </aside></div>
 
@@ -274,7 +274,7 @@ var utag_data = {
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
-    <div class="f4 fw4 lh-copy">
+    <div class="f4 fw4 lh-copy mb4">
       Reference guide for cookie functions provided by Tealium for JavaScript.
     </div>
   
@@ -286,20 +286,13 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  
-
-<h2 id="utag-loader-sc"><code>utag.loader.SC()</code></h2>
-
+  <h2 id="utagloadersc"><code>utag.loader.SC()</code></h2>
 <p>This function sets and deletes multi-value cookies inside the namespace <code>utag_</code>. It is commonly used to set <code>utag_main</code> subcookies to avoid adding extra cookies.</p>
-
 <p>To minimize the number of cookies on your domain, we recommended setting a multi-value cookie object. A multi-value cookie stores several values, as key-value pairs, within one cookie namespace. The function is commonly used to set <code>utag_main</code></p>
-
-<p class="note"><i class="fas fa-info-circle"></i>This is the same function used by the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Persist-Data-Value-Extension/ta-p/13623">Persist Data Value extension</a>.</p>
-
+<!-- raw HTML omitted -->
 <p>The following format demonstrates how to set a cookie by identifying the cookie&rsquo;s namespace, name, value, optional expiration time, and optional flag for specifying additional functionality:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">utag.loader.SC(namespace, {<span style="color:#a31515">&#34;name&#34;</span>: <span style="color:#a31515">&#34;value;exp-expiry&#34;</span>}, flag);
-</code></pre></div>
-<table>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">utag.loader.SC(namespace, {<span style="color:#a31515">&#34;name&#34;</span>: <span style="color:#a31515">&#34;value;exp-expiry&#34;</span>}, flag);
+</code></pre></div><table>
 <thead>
 <tr>
 <th>Parameter</th>
@@ -308,7 +301,6 @@ var utag_data = {
 <th>Example</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>namespace</code></td>
@@ -316,21 +308,18 @@ var utag_data = {
 <td>The namespace of the cookie, which must start with <code>utag_</code>.</td>
 <td><code>&quot;utag_multi&quot;</code></td>
 </tr>
-
 <tr>
 <td><code>name:value</code></td>
 <td><code>Object</code></td>
 <td>An object of key-value pairs representing a multi-value cookie.</td>
 <td><code>{&quot;uid&quot;: &quot;012345689&quot;, &quot;aff&quot;: &quot;SiteAff1;exp-7d&quot;}</code></td>
 </tr>
-
 <tr>
 <td><code>expiry</code></td>
 <td><code>String</code></td>
 <td>(Optional) The expiration of the cookie, which must start with <code>exp-</code>.</td>
 <td><code>exp-12h</code></td>
 </tr>
-
 <tr>
 <td><code>flag</code></td>
 <td><code>String</code></td>
@@ -339,10 +328,8 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-
-<p><strong>Expiry Options</strong><br />
+<p><strong>Expiry Options</strong><br>
 The following cookie expiry options are available:</p>
-
 <table>
 <thead>
 <tr>
@@ -351,26 +338,22 @@ The following cookie expiry options are available:</p>
 <th>Example</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>#d</code></td>
 <td>Expiry time in days (default unit, if none provided)</td>
 <td><code>exp-7d</code> or <code>exp-7</code> (7 days)</td>
 </tr>
-
 <tr>
 <td><code>#h</code></td>
 <td>Expiry time in hours</td>
 <td><code>&quot;exp-8h&quot;</code> (8 hours)</td>
 </tr>
-
 <tr>
 <td><code>#u</code></td>
 <td>Expiry time at <a href="https://www.epochconverter.com/">Unix timestamp</a></td>
 <td><code>&quot;exp-1549271521u&quot;</code> (Midnight (GMT) on Dec 22, 2022)</td>
 </tr>
-
 <tr>
 <td><code>session</code></td>
 <td>Expiry time at end of session (default <a href="/platforms/javascript/settings/#session-timeout">session timeout</a>: 30 minutes)</td>
@@ -378,34 +361,26 @@ The following cookie expiry options are available:</p>
 </tr>
 </tbody>
 </table>
-
-<p class="note"><i class="fas fa-info-circle"></i>Timestamp-based expiration, such as <code>&quot;exp-1549271521u&quot;</code>, has a trailing <code>u</code> indicates Unix timestamp. Do not confuse it with the value set in the cookie itself such as <code>&quot;exp-1549271521&quot;</code></p>
-
+<!-- raw HTML omitted -->
 <p>If no expiry option is set, then the default behavior is based on the version of <code>utag.js</code>:</p>
-
 <ul>
 <li><strong>4.27+</strong> - default expiry is 1 year after the creation of the cookie.</li>
 <li><strong>4.26 or older</strong> - default expiry is the year 2099.</li>
 </ul>
-
-<p><strong>Set a Cookie</strong><br />
+<p><strong>Set a Cookie</strong><br>
 To set a multi-value cookie, pass an object of key-value pairs of to the <code>value</code> parameter.</p>
-
 <p>The following example creates a multi-value cookie named <code>utag_multi</code>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">utag.loader.SC(<span style="color:#a31515">&#34;utag_multi&#34;</span>, {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">utag.loader.SC(<span style="color:#a31515">&#34;utag_multi&#34;</span>, {
     <span style="color:#a31515">&#34;uid&#34;</span>      : <span style="color:#a31515">&#34;012345689&#34;</span>,      <span style="color:#008000">// default expiry
 </span><span style="color:#008000"></span>    <span style="color:#a31515">&#34;test_seg&#34;</span> : <span style="color:#a31515">&#34;groupA;exp-12h&#34;</span>, <span style="color:#008000">// 12 hour expiry
 </span><span style="color:#008000"></span>    <span style="color:#a31515">&#34;aff&#34;</span>      : <span style="color:#a31515">&#34;SiteAff1;exp-7d&#34;</span> <span style="color:#008000">// 7 day expiry
 </span><span style="color:#008000"></span>});
-</code></pre></div>
-<p><strong>Delete a Cookie</strong><br />
+</code></pre></div><p><strong>Delete a Cookie</strong><br>
 To delete one or more cookie values, use the optional <code>flag</code> parameter.</p>
-
 <p>Delete one or more values from a multi-value cookie. Each key-value pair specified is deleted:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">utag.loader.SC(<span style="color:#a31515">&#34;utag_multicookie&#34;</span>, {<span style="color:#a31515">&#34;test_seg&#34;</span>:<span style="color:#a31515">&#34;&#34;</span>, <span style="color:#a31515">&#34;aff&#34;</span>:<span style="color:#a31515">&#34;&#34;</span>}, <span style="color:#a31515">&#34;d&#34;</span>);
-</code></pre></div>
-<p>Delete all values from a multi-value cookie:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">utag.loader.SC(<span style="color:#a31515">&#34;utag_multicookie&#34;</span>, {}, <span style="color:#a31515">&#34;da&#34;</span>);
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">utag.loader.SC(<span style="color:#a31515">&#34;utag_multicookie&#34;</span>, {<span style="color:#a31515">&#34;test_seg&#34;</span>:<span style="color:#a31515">&#34;&#34;</span>, <span style="color:#a31515">&#34;aff&#34;</span>:<span style="color:#a31515">&#34;&#34;</span>}, <span style="color:#a31515">&#34;d&#34;</span>);
+</code></pre></div><p>Delete all values from a multi-value cookie:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">utag.loader.SC(<span style="color:#a31515">&#34;utag_multicookie&#34;</span>, {}, <span style="color:#a31515">&#34;da&#34;</span>);
 </code></pre></div>
 </div>
 
@@ -939,6 +914,26 @@ To delete one or more cookie values, use the optional <code>flag</code> paramet
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/branch/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-branch">Branch</a>
       </li>
       
     
@@ -1829,6 +1824,26 @@ To delete one or more cookie values, use the optional <code>flag</code> paramet
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-in-app-purchase">In-App Purchase Module</a>
       </li>
       
     
@@ -4516,6 +4531,26 @@ To delete one or more cookie values, use the optional <code>flag</code> paramet
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-inapppurchase">In-App Purchase Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/lifecycle/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-lifecycle">Lifecycle Module</a>
       </li>
       
@@ -6470,8 +6505,8 @@ To delete one or more cookie values, use the optional <code>flag</code> paramet
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/javascript/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".javascript-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
+        <a href="/platforms/javascript/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".javascript-overview">Overview</a>
       </li>
       
     

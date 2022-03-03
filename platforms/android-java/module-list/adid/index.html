@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.92.1" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -268,7 +268,7 @@ var utag_data = {
   
     
       <a href="/platforms/android-java/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        ANDROID JAVA/MODULE LIST
+        ANDROID JAVA MODULE LIST
       </a>
     
   
@@ -280,7 +280,7 @@ var utag_data = {
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
-    <div class="f4 fw4 lh-copy">
+    <div class="f4 fw4 lh-copy mb4">
       Provides the ability to make use of the device &ldquo;Ad Identifier&rdquo; (ADID) to help identify interactions with display ad networks.
     </div>
   
@@ -292,106 +292,102 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  
-
-<h2 id="requirements">Requirements</h2>
-
+  <h2 id="requirements">Requirements</h2>
 <ul>
 <li><a href="https://developers.google.com/android/guides/setup">Google Play Services SDK</a></li>
 </ul>
-
 <h2 id="install">Install</h2>
-
 <p>Install the Ad Identifier module with Maven or manually.</p>
-
 <h3 id="maven">Maven</h3>
-
 <p>To install the Ad Identifier module with Maven:</p>
-
 <ol>
-<li><p>In your project&rsquo;s top-level <code>build.gradle</code> file, add the following Maven repository:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">maven {
-  url <span style="color:#a31515">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
-}</code></pre></div></li>
-
-<li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the following Maven dependency:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies{
-  implementation <span style="color:#a31515">&#39;com.tealium:library:5.8.0&#39;</span> <span style="color:#008000">//only required if you do not have this reference
-</span><span style="color:#008000"></span>  implementation <span style="color:#a31515">&#39;com.tealium:adidentifier:1.0.4&#39;</span>
-  implementation <span style="color:#a31515">&#39;com.tealium:lifecycle:1.1.4&#39;</span> <span style="color:#008000">//only required if you do not already have this reference and require lifecycle tracking
-</span><span style="color:#008000"></span>}</code></pre></div></li>
-
-<li><p>In the same block where you instantiate the Tealium library, after instantiating Tealium, add the following:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#008000">// import the Tealium AdIdentifier module in the import section
+<li>In your project&rsquo;s top-level <code>build.gradle</code> file, add the following Maven repository:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">maven {
+      url <span style="color:#a31515">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
+}
+</code></pre></div><ol start="2">
+<li>In your project module&rsquo;s <code>build.gradle</code> file, add the following Maven dependency:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies{
+      implementation <span style="color:#a31515">&#39;com.tealium:library:5.8.0&#39;</span> <span style="color:#008000">//only required if you do not have this reference
+</span><span style="color:#008000"></span>      implementation <span style="color:#a31515">&#39;com.tealium:adidentifier:1.0.4&#39;</span>
+      implementation <span style="color:#a31515">&#39;com.tealium:lifecycle:1.1.4&#39;</span> <span style="color:#008000">//only required if you do not already have this reference and require lifecycle tracking
+</span><span style="color:#008000"></span>}
+</code></pre></div><ol start="3">
+<li>In the same block where you instantiate the Tealium library, after instantiating Tealium, add the following:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#008000">// import the Tealium AdIdentifier module in the import section
 </span><span style="color:#008000"></span><span style="color:#00f">import</span> com.tealium.adidentifier.AdIdentifier;
 
 <span style="color:#008000">// context to pass to AdIdentifier module
 </span><span style="color:#008000"></span>Context mContext = <span style="color:#00f">this</span>;
 
 <span style="color:#008000">// substitute the example instance name here with the same instance name you used when initializing the Tealium library
-</span><span style="color:#008000"></span><span style="color:#00f">private</span> static <span style="color:#00f">final</span> String TEALIUM_INSTANCENAME = <span style="color:#a31515">&#34;INSTANCE_NAME&#34;</span>;
+</span><span style="color:#008000"></span><span style="color:#00f">private</span> <span style="color:#00f">static</span> <span style="color:#00f">final</span> String TEALIUM_INSTANCENAME = <span style="color:#a31515">&#34;INSTANCE_NAME&#34;</span>;
 
 <span style="color:#008000">// call this to store the referrer as Persistent data - recommended
 </span><span style="color:#008000"></span>AdIdentifier.setIdPersistent(TEALIUM_INSTANCENAME, mContext);
 
 <span style="color:#008000">// call this to store the referrer as Volatile data (reset at app restart/terminate) - not recommended in most cases
-</span><span style="color:#008000"></span>AdIdentifier.setIdVolatile(TEALIUM_INSTANCENAME, mContext);</code></pre></div></li>
-</ol>
-
-<h3 id="manual">Manual</h3>
-
+</span><span style="color:#008000"></span>AdIdentifier.setIdVolatile(TEALIUM_INSTANCENAME, mContext);
+</code></pre></div><h3 id="manual">Manual</h3>
 <p>To install the Ad Identifier module manually:</p>
-
 <ol>
-<li><p>Download the Tealium <a href="https://github.com/Tealium/tealium-android/tree/master/Modules/AdIdentifier">AdIdentifier</a> module.</p></li>
-
-<li><p>In your top-level <code>build.gradle</code> file, verify the following:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
-  repositories {
-     jcenter()
-     flatDir {
-          dirs <span style="color:#a31515">&#39;libs&#39;</span>
-    }
-  }
-}</code></pre></div></li>
-
-<li><p>Copy the file <code>tealium.adidentifier-1.0.4.aar</code> into your project&rsquo;s <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> directory.</p></li>
-
-<li><p>Add the Tealium library dependency to your project module’s <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
-  <span style="color:#008000">// only required if you do not already have this reference
-</span><span style="color:#008000"></span>  implementation (name:<span style="color:#a31515">&#39;tealium-5.8.0&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
-  implementation (name:<span style="color:#a31515">&#39;tealium.adidentifier-1.0.4&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
-  <span style="color:#008000">// only required if you do not already have this reference and require lifecycle tracking
-</span><span style="color:#008000"></span>  implementation (name:<span style="color:#a31515">&#39;tealium.lifecycle-1.1.4&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
-}</code></pre></div></li>
+<li>
+<p>Download the Tealium <a href="https://github.com/Tealium/tealium-android/tree/master/Modules/AdIdentifier">AdIdentifier</a> module.</p>
+</li>
+<li>
+<p>In your top-level <code>build.gradle</code> file, verify the following:</p>
+</li>
 </ol>
-
-<h2 id="additional-considerations">Additional Considerations</h2>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
+      repositories {
+         jcenter()
+         flatDir {
+              dirs <span style="color:#a31515">&#39;libs&#39;</span>
+        }
+      }
+}
+</code></pre></div><ol start="3">
+<li>
+<p>Copy the file <code>tealium.adidentifier-1.0.4.aar</code> into your project&rsquo;s <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> directory.</p>
+</li>
+<li>
+<p>Add the Tealium library dependency to your project module’s <code>build.gradle</code> file:</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
+      <span style="color:#008000">// only required if you do not already have this reference
+</span><span style="color:#008000"></span>      implementation (name:<span style="color:#a31515">&#39;tealium-5.8.0&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
+      implementation (name:<span style="color:#a31515">&#39;tealium.adidentifier-1.0.4&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
+      <span style="color:#008000">// only required if you do not already have this reference and require lifecycle tracking
+</span><span style="color:#008000"></span>      implementation (name:<span style="color:#a31515">&#39;tealium.lifecycle-1.1.4&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
+}
+</code></pre></div><h2 id="additional-considerations">Additional Considerations</h2>
 <ul>
-<li><p><strong>Blocked Access</strong><br />
-If the user has not allowed access to the Ad Identifier, the module sets the <code>google_adid</code> variable to the string &ldquo;Ad Tracking Disabled&rdquo;, which is handled in your Tealium iQ configuration to ensure you pass the expected data to your third-party vendors.</p></li>
-
-<li><p><strong>Delete the Ad Identifier</strong><br />
+<li>
+<p><strong>Blocked Access</strong><br>
+If the user has not allowed access to the Ad Identifier, the module sets the <code>google_adid</code> variable to the string &ldquo;Ad Tracking Disabled&rdquo;, which is handled in your Tealium iQ configuration to ensure you pass the expected data to your third-party vendors.</p>
+</li>
+<li>
+<p><strong>Delete the Ad Identifier</strong><br>
 To delete the stored Ad Identifier string, call the standard methods provided by the Tealium library to remove variables from persistent or volatile storage. The key name for the variable is exposed by the <code>TealiumAdIdentifier</code> class. Here&rsquo;s an example to remove the stored Ad Identifier from both persistent and volatile data. This code has no effect and does not throw an error if the variable doesn&rsquo;t already exist.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#008000">// import the Tealium AdIdentifier module in the import section
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#008000">// import the Tealium AdIdentifier module in the import section
 </span><span style="color:#008000"></span><span style="color:#00f">import</span> com.tealium.adidentifier.AdIdentifier;
 
-<span style="color:#00f">private</span> static <span style="color:#00f">final</span> String TEALIUM_INSTANCENAME = <span style="color:#a31515">&#34;INSTANCE_NAME&#34;</span>;
+<span style="color:#00f">private</span> <span style="color:#00f">static</span> <span style="color:#00f">final</span> String TEALIUM_INSTANCENAME = <span style="color:#a31515">&#34;INSTANCE_NAME&#34;</span>;
 <span style="color:#00f">final</span> Tealium instance = Tealium.getInstance(TEALIUM_INSTANCENAME);
 
 <span style="color:#008000">// remove from persistent data store
 </span><span style="color:#008000"></span>instance.getDataSources().getPersistentDataSources().edit().remove(AdIdentifier.KEY_GOOGLE_ADID).apply();
 
 <span style="color:#008000">// remove from volatile data store (session only)
-</span><span style="color:#008000"></span>instance.getDataSources().getVolatileDataSources().remove(AdIdentifier.KEY_GOOGLE_ADID);</code></pre></div></li>
-</ul>
-
-<h2 id="data-layer">Data Layer</h2>
-
+</span><span style="color:#008000"></span>instance.getDataSources().getVolatileDataSources().remove(AdIdentifier.KEY_GOOGLE_ADID);
+</code></pre></div><h2 id="data-layer">Data Layer</h2>
 <p>The Ad Identifier module adds the following variables to the data layer:</p>
-
 <table>
 <thead>
 <tr>
@@ -401,7 +397,6 @@ To delete the stored Ad Identifier string, call the standard methods provided by
 <th>Example</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>google_adid</code></td>
@@ -411,9 +406,7 @@ To delete the stored Ad Identifier string, call the standard methods provided by
 </tr>
 </tbody>
 </table>
-
 <h2 id="api-reference">API Reference</h2>
-
 <p>For the complete reference of methods for the Ad Identifier module, see the <a href="https://tealium.github.io/tealium-android/com/tealium/adidentifier/AdIdentifier.html"><code>AdIdentifier</code></a> class in the Tealium SDK for Android API.</p>
 
 </div>
@@ -967,6 +960,26 @@ To delete the stored Ad Identifier string, call the standard methods provided by
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/branch/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-branch">Branch</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/remote-commands/integrations/braze/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-braze">Braze</a>
       </li>
       
@@ -1115,8 +1128,8 @@ To delete the stored Ad Identifier string, call the standard methods provided by
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/android-java/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-java-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
+        <a href="/platforms/android-java/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".android-java-overview">Overview</a>
       </li>
       
     
@@ -1838,6 +1851,26 @@ To delete the stored Ad Identifier string, call the standard methods provided by
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-in-app-purchase">In-App Purchase Module</a>
       </li>
       
     
@@ -4506,6 +4539,26 @@ To delete the stored Ad Identifier string, call the standard methods provided by
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/device-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-devicedata">DeviceData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-inapppurchase">In-App Purchase Module</a>
       </li>
       
     

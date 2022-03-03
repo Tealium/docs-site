@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.92.1" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -270,7 +270,7 @@ var utag_data = {
   
     
       <a href="/platforms/ios-swift/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT/MODULE LIST
+        IOS SWIFT MODULE LIST
       </a>
     
   
@@ -282,7 +282,7 @@ var utag_data = {
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
-    <div class="f4 fw4 lh-copy">
+    <div class="f4 fw4 lh-copy mb4">
       Automatically tracks crashes in your app. Once the module is enabled and the accompanying frameworks are installed, a crash event is triggered if a crash occurs in your app.
     </div>
   
@@ -294,28 +294,17 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  
-
-<h2 id="usage">Usage</h2>
-
+  <h2 id="usage">Usage</h2>
 <p>The CrashReporter module automatically tracks crashes in your app. Once the module is enabled and the accompanying frameworks are installed, a crash event is triggered if a crash occurs in your app.</p>
-
 <p>Usage of this framework is recommended to get vital information regarding your app&rsquo;s crashes.</p>
-
 <p>The following platforms are supported:</p>
-
 <ul>
 <li>iOS</li>
 </ul>
-
 <h2 id="install">Install</h2>
-
 <p>Install the Crash module with Swift Package Manager or CocoaPods.</p>
-
 <h3 id="swift-package-manager-recommended">Swift Package Manager (Recommended)</h3>
-
 <p>Supported in version 1.9.0+, the Swift Package Manager is the recommended and simplest way to install the Tealium Swift library:</p>
-
 <ol>
 <li>In your Xcode project, select <strong>File &gt; Swift Packages &gt; Add Package Dependency</strong></li>
 <li>Enter the repository URL: <code>https://github.com/tealium/tealium-swift-crash-reporter</code></li>
@@ -323,27 +312,22 @@ var utag_data = {
 <li>Select the `TealiumCrashModule and add it each of your app targets in your Xcode project, under <strong>Frameworks &gt; Libraries &amp; Embedded Content</strong></li>
 <li>Follow <a href="platforms/ios-swift/install#swift-package-manager">these instructions</a> to add other modules from the <code>tealium-swift</code> library.</li>
 </ol>
-
 <h3 id="cocoapods">CocoaPods</h3>
-
 <p>To install the CrashReporter module with CocoaPods:</p>
-
 <ol>
-<li><p>Add the following pod to your Podfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;TealiumCrashModule&#39;</span></code></pre></div>
-<p>Your Podfile already contains the following line:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;tealium-swift&#39;</span></code></pre></div></li>
-
-<li><p>Run the following command:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod install</code></pre></div></li>
+<li>Add the following pod to your Podfile:</li>
 </ol>
-
-<p class="note"><i class="fas fa-info-circle"></i>Following the release of Xcode 12 and Apple&rsquo;s M1 chip, the CrashReporter module no longer supports Carthage. Although the module uses <code>PLCrashReporter</code> which produces an <code>XCFramework</code> in order to support the new Apple ecosystem, Carthage does not provide support for pre-built <code>XCFramwework</code>s.</p>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;TealiumCrashModule&#39;</span>
+</code></pre></div><p>Your Podfile already contains the following line:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;tealium-swift&#39;</span>
+</code></pre></div><ol start="2">
+<li>Run the following command:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod install
+</code></pre></div><!-- raw HTML omitted -->
 <h2 id="configure">Configure</h2>
-
 <p>In order to instantiate the CrashReporter module, you must specify it in your <code>TealiumConfig</code> object when initializing the SDK:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumCore</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumCore</span>
 <span style="color:#00f">import</span> <span style="color:#2b91af">TealiumCrashModule</span>
 
 <span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
@@ -354,140 +338,115 @@ var utag_data = {
 <span style="color:#008000">// add desired Collectors - no need to include if want compiled Collectors</span>
 config.collectors = [Collectors.AppData,
 					 Collectors.Crash,] <span style="color:#008000">// Instantiates the CrashReporter module</span>
-tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span style="color:#00f">in</span> }                               </code></pre></div>
-<h2 id="data-layer">Data Layer</h2>
-
+tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span style="color:#00f">in</span> }                               
+</code></pre></div><h2 id="data-layer">Data Layer</h2>
 <p>The following variables are transmitted with each tracking call while the module is enabled:</p>
-
 <table>
 <thead>
 <tr>
-<th align="left">Variable</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Example</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
-<td align="left"><code>crash_uuid</code></td>
-<td align="left">Unique identifier for this specific crash</td>
-<td align="left"><code>&quot;CC2DA0E9-E544-429A-AC5E-A268FC62F02A&quot;</code></td>
+<td style="text-align:left"><code>crash_uuid</code></td>
+<td style="text-align:left">Unique identifier for this specific crash</td>
+<td style="text-align:left"><code>&quot;CC2DA0E9-E544-429A-AC5E-A268FC62F02A&quot;</code></td>
 </tr>
-
 <tr>
-<td align="left"><code>device_memory_usage*</code></td>
-<td align="left">Current memory used by the app on the device at the time of the crash</td>
-<td align="left"><code>&quot;143.57MB&quot;</code></td>
+<td style="text-align:left"><code>device_memory_usage*</code></td>
+<td style="text-align:left">Current memory used by the app on the device at the time of the crash</td>
+<td style="text-align:left"><code>&quot;143.57MB&quot; </code></td>
 </tr>
-
 <tr>
-<td align="left"><code>app_memory_usage</code></td>
-<td align="left">Current memory used by the app on the device at the time of the crash</td>
-<td align="left"><code>&quot;143.57MB&quot;</code></td>
+<td style="text-align:left"><code>app_memory_usage</code></td>
+<td style="text-align:left">Current memory used by the app on the device at the time of the crash</td>
+<td style="text-align:left"><code>&quot;143.57MB&quot;</code></td>
 </tr>
-
 <tr>
-<td align="left"><code>device_memory_available*</code></td>
-<td align="left">Free memory on device at the time of the crash</td>
-<td align="left"><code>&quot;1068.88MB&quot;</code></td>
+<td style="text-align:left"><code>device_memory_available*</code></td>
+<td style="text-align:left">Free memory on device at the time of the crash</td>
+<td style="text-align:left"><code>&quot;1068.88MB&quot;</code></td>
 </tr>
-
 <tr>
-<td align="left"><code>memory_free</code></td>
-<td align="left">Free memory on device at the time of the crash</td>
-<td align="left"><code>&quot;1068.88MB&quot;</code></td>
+<td style="text-align:left"><code>memory_free</code></td>
+<td style="text-align:left">Free memory on device at the time of the crash</td>
+<td style="text-align:left"><code>&quot;1068.88MB&quot;</code></td>
 </tr>
-
 <tr>
-<td align="left"><code>device_os_build</code></td>
-<td align="left">Current OS build number</td>
-<td align="left"><code>&quot;15E217&quot;</code></td>
+<td style="text-align:left"><code>device_os_build</code></td>
+<td style="text-align:left">Current OS build number</td>
+<td style="text-align:left"><code>&quot;15E217&quot;</code></td>
 </tr>
-
 <tr>
-<td align="left"><code>crash_process_id</code></td>
-<td align="left">PID of the app at time of crash</td>
-<td align="left"><code>&quot;84351&quot;</code></td>
+<td style="text-align:left"><code>crash_process_id</code></td>
+<td style="text-align:left">PID of the app at time of crash</td>
+<td style="text-align:left"><code>&quot;84351&quot;</code></td>
 </tr>
-
 <tr>
-<td align="left"><code>crash_process_path</code></td>
-<td align="left">Path the app was running under</td>
-<td align="left"><code>&quot;/DemoApp.app/DemoApp&quot;</code></td>
+<td style="text-align:left"><code>crash_process_path</code></td>
+<td style="text-align:left">Path the app was running under</td>
+<td style="text-align:left"><code>&quot;/DemoApp.app/DemoApp&quot;</code></td>
 </tr>
-
 <tr>
-<td align="left"><code>crash_parent_process</code></td>
-<td align="left">Parent process that launched the app</td>
-<td align="left"><code>&quot;launchd_sim&quot;</code></td>
+<td style="text-align:left"><code>crash_parent_process</code></td>
+<td style="text-align:left">Parent process that launched the app</td>
+<td style="text-align:left"><code>&quot;launchd_sim&quot;</code></td>
 </tr>
-
 <tr>
-<td align="left"><code>crash_parent_process_id</code></td>
-<td align="left">Parent process PID</td>
-<td align="left"><code>&quot;83183&quot;</code></td>
+<td style="text-align:left"><code>crash_parent_process_id</code></td>
+<td style="text-align:left">Parent process PID</td>
+<td style="text-align:left"><code>&quot;83183&quot;</code></td>
 </tr>
-
 <tr>
-<td align="left"><code>crash_name</code></td>
-<td align="left">Friendly name of the crash, if available</td>
-<td align="left"><code>&quot;Crash Name&quot;</code></td>
+<td style="text-align:left"><code>crash_name</code></td>
+<td style="text-align:left">Friendly name of the crash, if available</td>
+<td style="text-align:left"><code>&quot;Crash Name&quot;</code></td>
 </tr>
-
 <tr>
-<td align="left"><code>crash_cause</code></td>
-<td align="left">Cause of the crash</td>
-<td align="left"><code>&quot;Crash Reason&quot;</code></td>
+<td style="text-align:left"><code>crash_cause</code></td>
+<td style="text-align:left">Cause of the crash</td>
+<td style="text-align:left"><code>&quot;Crash Reason&quot;</code></td>
 </tr>
-
 <tr>
-<td align="left"><code>crash_signal_code</code></td>
-<td align="left">Signal code causing the crash</td>
-<td align="left"><code>&quot;#0&quot;</code></td>
+<td style="text-align:left"><code>crash_signal_code</code></td>
+<td style="text-align:left">Signal code causing the crash</td>
+<td style="text-align:left"><code>&quot;#0&quot;</code></td>
 </tr>
-
 <tr>
-<td align="left"><code>crash_signal_name</code></td>
-<td align="left">Signal name causing the crash</td>
-<td align="left"><code>&quot;SIGABRT&quot;</code></td>
+<td style="text-align:left"><code>crash_signal_name</code></td>
+<td style="text-align:left">Signal name causing the crash</td>
+<td style="text-align:left"><code>&quot;SIGABRT&quot;</code></td>
 </tr>
-
 <tr>
-<td align="left"><code>crash_signal_address</code></td>
-<td align="left">Signal address of the crash</td>
-<td align="left"><code>&quot;4572945982&quot;</code></td>
+<td style="text-align:left"><code>crash_signal_address</code></td>
+<td style="text-align:left">Signal address of the crash</td>
+<td style="text-align:left"><code>&quot;4572945982&quot;</code></td>
 </tr>
-
 <tr>
-<td align="left"><code>crash_libraries</code></td>
-<td align="left">List of loaded libraries at the time of the crash</td>
-<td align="left"><code>[{&quot;baseAddress&quot;: &quot;0xa3e0000&quot;, &quot;codeType&quot;: { &quot;arch&quot;: 64, &quot;typeEncoding&quot;: &quot;Mach&quot;}, &quot;imageName&quot;: &quot;/Applications/Xcode9.3.app/Contents/ Developer/Platforms/iPhoneOS.platform/ Developer/Library/CoreSimulator/Profiles /Runtimes/iOS.simruntime/Contents/ Resources/RuntimeRoot/usr/lib/dyld_sim&quot;, &quot;imageSize&quot;: 212992, &quot;imageUuid&quot;: &quot;4015e9b70bde&quot;}]</code></td>
+<td style="text-align:left"><code>crash_libraries</code></td>
+<td style="text-align:left">List of loaded libraries at the time of the crash</td>
+<td style="text-align:left"><code>[{&quot;baseAddress&quot;: &quot;0xa3e0000&quot;, &quot;codeType&quot;: { &quot;arch&quot;: 64, &quot;typeEncoding&quot;: &quot;Mach&quot;}, &quot;imageName&quot;: &quot;/Applications/Xcode9.3.app/Contents/ Developer/Platforms/iPhoneOS.platform/ Developer/Library/CoreSimulator/Profiles /Runtimes/iOS.simruntime/Contents/ Resources/RuntimeRoot/usr/lib/dyld_sim&quot;, &quot;imageSize&quot;: 212992, &quot;imageUuid&quot;: &quot;4015e9b70bde&quot;}]</code></td>
 </tr>
-
 <tr>
-<td align="left"><code>crash_threads</code></td>
-<td align="left">Returns all active threads at the time of the crash</td>
-<td align="left"><code>{&quot;crashed&quot;: 1,&quot;registers&quot;: {&quot;cs&quot;: &quot;0x07&quot;},&quot;stack&quot;: {&quot;instructionPointer&quot;: 4572945982,&quot;symbolInfo&quot;: {&quot;symbolName&quot;: &quot;&quot;,&quot;symbolStartAddr&quot;: 0},&quot;threadId&quot;: &quot;&quot;}}</code></td>
+<td style="text-align:left"><code>crash_threads</code></td>
+<td style="text-align:left">Returns all active threads at the time of the crash</td>
+<td style="text-align:left"><code>{&quot;crashed&quot;: 1,&quot;registers&quot;: {&quot;cs&quot;: &quot;0x07&quot;},&quot;stack&quot;: {&quot;instructionPointer&quot;: 4572945982,&quot;symbolInfo&quot;: {&quot;symbolName&quot;: &quot;&quot;,&quot;symbolStartAddr&quot;: 0},&quot;threadId&quot;: &quot;&quot;}}</code></td>
 </tr>
 </tbody>
 </table>
-
 <ul>
 <li>These variables are duplicated for backward-compatibility with previous releases</li>
 </ul>
-
 <h2 id="invoke-a-crash">Invoke a Crash</h2>
-
 <p>Once <code>TealiumCrashReporteriOS.framework</code> is added to your project, no additional initialization steps are needed. As long as the crash module is enabled and the Tealium SDK is initialized, when a crash is exhibited in your app, crash data automatically becomes part of the tracking call.</p>
-
 <h2 id="api-reference">API Reference</h2>
-
 <h3 id="invokecrash"><code>invokeCrash()</code></h3>
-
 <p>Invokes a crash for the CrashReporter module.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">TealiumCrashReporter.invokeCrash(name, reason)</code></pre></div>
-<table>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">TealiumCrashReporter.invokeCrash(name, reason)
+</code></pre></div><table>
 <thead>
 <tr>
 <th>Parameters</th>
@@ -496,7 +455,6 @@ tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span styl
 <th>Example</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>name</code></td>
@@ -504,7 +462,6 @@ tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span styl
 <td>Name of the crash</td>
 <td><code>&quot;TEST_CRASH_NAME&quot;</code></td>
 </tr>
-
 <tr>
 <td><code>reason</code></td>
 <td><code>String</code></td>
@@ -1059,6 +1016,26 @@ tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span styl
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/branch/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-branch">Branch</a>
       </li>
       
     
@@ -1949,6 +1926,26 @@ tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span styl
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-in-app-purchase">In-App Purchase Module</a>
       </li>
       
     
@@ -4300,8 +4297,8 @@ tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span styl
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/ios-swift/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
+        <a href="/platforms/ios-swift/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".ios-swift-overview">Overview</a>
       </li>
       
     
@@ -4617,6 +4614,26 @@ tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span styl
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/device-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-devicedata">DeviceData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-inapppurchase">In-App Purchase Module</a>
       </li>
       
     

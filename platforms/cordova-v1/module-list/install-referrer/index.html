@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.92.1" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -265,7 +265,7 @@ var utag_data = {
   
     
       <a href="/platforms/cordova-v1/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        CORDOVA V1/MODULE LIST
+        CORDOVA V1 MODULE LIST
       </a>
     
   
@@ -277,7 +277,7 @@ var utag_data = {
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
-    <div class="f4 fw4 lh-copy">
+    <div class="f4 fw4 lh-copy mb4">
       Provides a Cordova wrapper for the native Android Install Referrer module.
     </div>
   
@@ -289,62 +289,54 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  
-
-<h2 id="install">Install</h2>
-
-<p class="note"><i class="fas fa-info-circle"></i>This feature is available as a separate NPM package.</p>
-
+  <h2 id="install">Install</h2>
+<!-- raw HTML omitted -->
 <p>To install the Install Referrer module:</p>
-
 <ol>
-<li><p>Navigate to your Cordova app&rsquo;s directory in a terminal window.</p></li>
-
-<li><p>Run the following command:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cordova plugin add tealium-cordova-installreferrer</code></pre></div></li>
+<li>
+<p>Navigate to your Cordova app&rsquo;s directory in a terminal window.</p>
+</li>
+<li>
+<p>Run the following command:</p>
+</li>
 </ol>
-
-<h2 id="initialize">Initialize</h2>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cordova plugin add tealium-cordova-installreferrer
+</code></pre></div><h2 id="initialize">Initialize</h2>
 <p>To initialize the Install Referrer module:</p>
-
 <ol>
-<li><p>Edit the JavaScript file where you instantiate the main Tealium plugin, after calling the <a href="/platforms/cordova-v1/api/#init"><code>tealium.init()</code></a> method.</p></li>
-
-<li><p>Add the following code:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">function</span> tealiumInit(account, profile, environment, instance){
-<span style="color:#00f">var</span> ir;
-tealium.init({...});
-<span style="color:#008000">// check if installreferrer is installed and available
-</span><span style="color:#008000"></span>ir = window.tealiumInstallReferrer;
-<span style="color:#00f">if</span> (ir) {
-    <span style="color:#008000">// init install referrer and store any received values as persistent data
-</span><span style="color:#008000"></span>    ir.setPersistent(instance);
-}
-}
-</code></pre></div></li>
+<li>
+<p>Edit the JavaScript file where you instantiate the main Tealium plugin, after calling the <a href="/platforms/cordova-v1/api/#init"><code>tealium.init()</code></a> method.</p>
+</li>
+<li>
+<p>Add the following code:</p>
+</li>
 </ol>
-
-<h2 id="test">Test</h2>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">function</span> tealiumInit(account, profile, environment, instance){
+    <span style="color:#00f">var</span> ir;
+    tealium.init({...});
+    <span style="color:#008000">// check if installreferrer is installed and available
+</span><span style="color:#008000"></span>    ir = window.tealiumInstallReferrer;
+    <span style="color:#00f">if</span> (ir) {
+        <span style="color:#008000">// init install referrer and store any received values as persistent data
+</span><span style="color:#008000"></span>        ir.setPersistent(instance);
+    }
+}
+</code></pre></div><h2 id="test">Test</h2>
 <p>Once the plugin has been installed, test it by manually triggering a system broadcast.</p>
-
 <p>Substitute <code>com.tealium.sample</code> with the RDNS bundle identifier for your app (unless testing with the Tealium sample app).</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">adb shell
-am broadcast -a com.android.vending.INSTALL_REFERRER -n <span style="color:#a31515">&#34;com.tealium.sample/com.tealium.installreferrer.InstallReferrerReceiver&#34;</span> --es <span style="color:#a31515">&#34;referrer&#34;</span> <span style="color:#a31515">&#34;utm_source=mysource&amp;utm_medium=mymedium&amp;utm_term=myterm&amp;utm_content=46b25e284dc36d5a7ef8f0e6b393febe3fcc8327&amp;utm_campaign=mycampname&#34;</span></code></pre></div>
-<h2 id="uninstall">Uninstall</h2>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">adb shell
+am broadcast -a com.android.vending.INSTALL_REFERRER -n <span style="color:#a31515">&#34;com.tealium.sample/com.tealium.installreferrer.InstallReferrerReceiver&#34;</span> --es <span style="color:#a31515">&#34;referrer&#34;</span> <span style="color:#a31515">&#34;utm_source=mysource&amp;utm_medium=mymedium&amp;utm_term=myterm&amp;utm_content=46b25e284dc36d5a7ef8f0e6b393febe3fcc8327&amp;utm_campaign=mycampname&#34;</span>
+</code></pre></div><h2 id="uninstall">Uninstall</h2>
 <p>To uninstall the Install Referrer module:</p>
-
 <ol>
-<li><p>Run the following command:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cordova plugin rm tealium-cordova-installreferrer</code></pre></div></li>
-
-<li><p>Delete the Install Referrer data from persistent storage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">tealium.removePersistent(<span style="color:#a31515">&#34;install_referrer&#34;</span>, &lt;your tealium instance name&gt;);
-</code></pre></div></li>
+<li>Run the following command:</li>
 </ol>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cordova plugin rm tealium-cordova-installreferrer
+</code></pre></div><ol start="2">
+<li>Delete the Install Referrer data from persistent storage:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">tealium.removePersistent(<span style="color:#a31515">&#34;install_referrer&#34;</span>, &lt;your tealium instance name&gt;);
+</code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -878,6 +870,26 @@ am broadcast -a com.android.vending.INSTALL_REFERRER -n <span style="color:#a315
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/branch/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-branch">Branch</a>
       </li>
       
     
@@ -1787,6 +1799,26 @@ am broadcast -a com.android.vending.INSTALL_REFERRER -n <span style="color:#a315
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-in-app-purchase">In-App Purchase Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/install-referrer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-install-referrer">Install Referrer Module</a>
       </li>
       
@@ -2237,8 +2269,8 @@ am broadcast -a com.android.vending.INSTALL_REFERRER -n <span style="color:#a315
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/cordova-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".cordova-v1-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
+        <a href="/platforms/cordova-v1/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".cordova-v1-overview">Overview</a>
       </li>
       
     
@@ -4436,6 +4468,26 @@ am broadcast -a com.android.vending.INSTALL_REFERRER -n <span style="color:#a315
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/device-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-devicedata">DeviceData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-inapppurchase">In-App Purchase Module</a>
       </li>
       
     

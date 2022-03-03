@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.92.1" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -281,7 +281,7 @@ var utag_data = {
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
-    <div class="f4 fw4 lh-copy">
+    <div class="f4 fw4 lh-copy mb4">
       Learn to use the alias to the Data Layer Object (<code>b</code>).
     </div>
   
@@ -293,12 +293,8 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  
-
-<h2 id="what-is-the-b-object">What is the <code>b</code> Object?</h2>
-
+  <h2 id="what-is-the-b-object">What is the <code>b</code> Object?</h2>
 <p>The <code>b</code> object is a JavaScript variable containing the most recent copy of the data layer object. Depending on when it&rsquo;s referenced, the <code>b</code> object is either an alias or a local copy of the <code>utag.data</code> object. So what is the <code>utag.data</code> object? The <code>utag.data</code> object is a collection of all the data on your page:</p>
-
 <ul>
 <li>Data Layer Variables</li>
 <li>JavaScript Page Variables</li>
@@ -306,72 +302,50 @@ var utag_data = {
 <li>DOM Attributes</li>
 <li>Cookies</li>
 </ul>
-
 <p>So, in essence, the <code>b</code> object is a copy of your page&rsquo;s data layer.</p>
-
 <h2 id="why-do-we-have-a-b-object">Why Do We Have a <code>b</code> Object?</h2>
-
 <p>Using the <code>b</code> object provides a couple benefits:</p>
-
 <ul>
-<li><strong>As an alias with a shorter name</strong><br />
+<li><strong>As an alias with a shorter name</strong><br>
 This shorter name improves performance loading Tealium. If you had to reference <code>utag.data</code> a hundred times, then you are adding 900 characters to the size of your files. That&rsquo;s 900 more characters the browser has to parse through when loading these files which results in a negative affect on visitor load times. Referring to it as <code>b</code> means only 1 character to add to the file for each reference, which if you referenced a hundred times  results in only 100 characters for the browser to parse through. </li>
-<li><strong>As a copy that leaves the original untouched</strong><br />
+<li><strong>As a copy that leaves the original untouched</strong><br>
 By creating a local copy of <code>utag.data</code>, the values needed for each tag are customizable without affecting the original data object.   </li>
 </ul>
-
 <h2 id="variable-types">Variable Types</h2>
-
 <p>To reference a variable in the <code>b</code> object directly in a tag template or extension, you must consider the type of variable you&rsquo;re trying to reference; the syntax differs slightly. </p>
-
 <h3 id="data-layer">Data Layer</h3>
-
 <p>For variables contained in the <code>utag_data</code> object, use the following syntax:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#a31515">&#39;var_name&#39;</span>]
-</code></pre></div>
-<h3 id="javascript-page-variable">JavaScript Page Variable</h3>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#a31515">&#39;var_name&#39;</span>]
+</code></pre></div><h3 id="javascript-page-variable">JavaScript Page Variable</h3>
 <p>To reference variables defined as JavaScript Page variables, use the following syntax:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#a31515">&#39;js_page.var_name&#39;</span>]
-</code></pre></div>
-<h3 id="query-string-parameters">Query String Parameters</h3>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#a31515">&#39;js_page.var_name&#39;</span>]
+</code></pre></div><h3 id="query-string-parameters">Query String Parameters</h3>
 <p>To reference a query string parameter, use the following syntax:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#a31515">&#39;qp.var_name&#39;</span>]
-</code></pre></div>
-<h3 id="cookie-values">Cookie Values</h3>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#a31515">&#39;qp.var_name&#39;</span>]
+</code></pre></div><h3 id="cookie-values">Cookie Values</h3>
 <p>Tealium has two ways to store cookie values. The syntax to reference these two types varies slightly. <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Tealium-Cookies/ta-p/138">Learn more</a> about working with cookies in Tealium iQ.</p>
-
 <ol>
-<li><p><strong><code>utag_main</code> Cookie Values</strong> - to reference a cookie value contained in the <code>utag_main</code> cookie, use the following syntax: </p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#a31515">&#39;cp.utag_main_var_name&#39;</span>]
-</code></pre></div></li>
-
-<li><p><strong>Standard Cookie Values</strong> - to reference a cookie value that is not contained in the <code>utag_main</code> cookie, use the following syntax:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#a31515">&#39;cp.var_name&#39;</span>]
-</code></pre></div></li>
+<li><strong><code>utag_main</code> Cookie Values</strong> - to reference a cookie value contained in the <code>utag_main</code> cookie, use the following syntax: </li>
 </ol>
-
-<h2 id="additional-considerations">Additional Considerations</h2>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#a31515">&#39;cp.utag_main_var_name&#39;</span>]
+</code></pre></div><ol start="2">
+<li><strong>Standard Cookie Values</strong> - to reference a cookie value that is not contained in the <code>utag_main</code> cookie, use the following syntax:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#a31515">&#39;cp.var_name&#39;</span>]
+</code></pre></div><h2 id="additional-considerations">Additional Considerations</h2>
 <p><strong>The <code>b</code> object is not global</strong></p>
-
 <ul>
 <li>The <code>b</code> object is a locally scoped variable, only available in <strong>All Tags</strong> and <strong>Tag Scoped</strong> extensions. </li>
 <li>Extensions scoped to <strong>Pre Loader</strong> run before the <code>b</code> object has been created.</li>
-<li>Extensions scoped to <strong>DOM Ready</strong> run independently from the main order of operations, so the <code>b</code> object cannot be referenced in this scope either.<br /></li>
-<li><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Extensions/ta-p/13649">Learn more</a> about how to reference the data object variable in extensions.<br /></li>
+<li>Extensions scoped to <strong>DOM Ready</strong> run independently from the main order of operations, so the <code>b</code> object cannot be referenced in this scope either.</li>
+<li><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Extensions/ta-p/13649">Learn more</a> about how to reference the data object variable in extensions.</li>
 </ul>
-
 <p><strong>The <code>b</code> object in tracking calls</strong></p>
-
 <ul>
 <li>During a standard page load, the <code>b</code> object becomes a copy of the <code>utag_data</code> object. However, on manual tracking calls, the <code>b</code> object is a copy of the object passed to <code>utag.view()</code> or <code>utag.link()</code> and does not contain variables from the original <code>utag_data</code> object. </li>
-<li>To preserve data from <code>utag_data</code> in tracking calls (per page load) use the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Publish-Configuration/ta-p/13632#implementation">Base Variables setting in the publish settings</a>.<br /></li>
+<li>To preserve data from <code>utag_data</code> in tracking calls (per page load) use the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Publish-Configuration/ta-p/13632#implementation">Base Variables setting in the publish settings</a>.</li>
 </ul>
-
-<p class="note"><i class="fas fa-info-circle"></i>For profiles loading version 4.39 or older, the content of the <code>b</code> object during tracking calls is a complete copy of <code>utag.data</code>. <a href="/platforms/javascript/release-notes/">Learn more</a> about this update in release history <code>utag.js</code> 4.40.</p>
+<!-- raw HTML omitted -->
 
 </div>
 
@@ -918,6 +892,26 @@ By creating a local copy of <code>utag.data</code>, the values needed for each t
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/branch/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-branch">Branch</a>
       </li>
       
     
@@ -1808,6 +1802,26 @@ By creating a local copy of <code>utag.data</code>, the values needed for each t
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-in-app-purchase">In-App Purchase Module</a>
       </li>
       
     
@@ -4495,6 +4509,26 @@ By creating a local copy of <code>utag.data</code>, the values needed for each t
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-inapppurchase">In-App Purchase Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/lifecycle/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-lifecycle">Lifecycle Module</a>
       </li>
       
@@ -6449,8 +6483,8 @@ By creating a local copy of <code>utag.data</code>, the values needed for each t
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/javascript/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".javascript-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
+        <a href="/platforms/javascript/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".javascript-overview">Overview</a>
       </li>
       
     

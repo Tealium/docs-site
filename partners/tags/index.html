@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.92.1" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -282,7 +282,7 @@ var utag_data = {
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
-    <div class="f4 fw4 lh-copy">
+    <div class="f4 fw4 lh-copy mb4">
       Learn how to integrate your browser-based tag with Tealium iQ Tag Management.
     </div>
   
@@ -297,89 +297,62 @@ var utag_data = {
   
 
 
-
-
   
 
 <div class="flex justify-center bg-secondary ph3 pv4 mb3 br3 fr ml3"><img src="/images/icons/icon-tags.png" alt="" width="100"  height="63" ></div>
 
-
 <p>Do you want your JavaScript tag offered in the Tealium tag marketplace? Do you want your users to seamlessly add your tag to their site without a lengthy release cycle? If so, this guide explains how tags work and the additional benefits of having an official integration with Tealium iQ Tag Management.</p>
-
 <h2 id="how-tags-work">How Tags Work</h2>
-
 <p>A tag in the tag marketplace provides a complete integration of the capabilities of your tag. This means that every option and tracked event expected by your tag is combined into a single configurable instance of the tag in a Tealium user&rsquo;s account.</p>
-
 <h3 id="configuration">Configuration</h3>
-
 <p>The inner workings of your tag are hidden from most users so that they can focus on the point-and-click setup options. However, the code that runs your tag is available to Tealium users that are comfortable working with JavaScript.</p>
-
 <p>A tag is managed in three parts:</p>
-
 <ul>
-<li><strong>Settings</strong><br />
+<li><strong>Settings</strong><br>
 Tag settings are set once per instance of the tag and usually do not vary from page to page.
 <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Tags/ta-p/5016">Learn more about tag settings</a>.</li>
-<li><strong>Load Rule</strong><br />
+<li><strong>Load Rule</strong><br>
 The load rule determines when the tag should load on a page or event. Load rule conditions are based on data layer values.
 <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Load-Rules/ta-p/5098">Learn more about load rules</a>.</li>
-<li><strong>Data Mappings</strong><br />
+<li><strong>Data Mappings</strong><br>
 Data mappings determine which dynamic values the tag needs from the data layer and the corresponding variable name used by the vendor. Mappings also determine how to track in-page events.
 <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Data-Mappings/ta-p/10645">Learn more about data mappings</a>.</li>
 </ul>
-
 <h3 id="loading-in-the-browser">Loading in the Browser</h3>
-
 <p>Vendor tags are loaded by the Tealium Universal Tag (utag.js), a wrapper tag that contains the configuration logic from the iQ Tag Management account. Subsequent vendor tags are loaded using asynchronous JavaScript and run identically to how they run outside of a tag manager.</p>
-
 <p>As a vendor, you can expect to see your same tag library or image pixel in the DOM of the page. At Tealium, we make every effort to load your tag exactly to your specifications. In rare cases where we must alter the code, we will ensure that the final tracking beacon matches your requirements.</p>
-
-<p class="note"><i class="fas fa-info-circle"></i>Tealium can also load synchronous JavaScript to support A/B and multi-variate testing vendors.</p>
-
+<!-- raw HTML omitted -->
 <h3 id="e-commerce-values">E-Commerce Values</h3>
-
 <p>For e-commerce tags that collect product and order data, Tealium offers a convenience feature, called the E-Commerce Extension, to ensure that all standard e-commerce data is automatically integrated with your tag. When the E-Commerce extension is configured in an account, it acts as a global data mapping to every tag that requires those values. This helps to minimize the amount of work needed to set up a tag of this type.</p>
-
 <p><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/E-commerce-Extension/ta-p/11927">Learn more about the E-Commerce Extension</a>.</p>
-
 <h2 id="tag-types">Tag Types</h2>
-
 <p>In addition to implementing your tag solution, Tealium can offer additional integration options depending on your system capabilities.</p>
-
 <h3 id="standard">Standard</h3>
-
 <p>Nearly all tags follow the same convention: load a JavaScript file, initialize the code, collect dynamic data from the page, trigger the tag. This standard framework can vary from the simplest image pixel with static parameters to a complicated JavaScript library that runs different code for each page type and collects dynamic data from the page.</p>
-
 <h3 id="cookie-match">Cookie Match</h3>
-
 <p>The purpose of a cookie match tag is to use special requests to synchronize visitor identifiers between Tealium and your system. This allows you to share your system&rsquo;s unique visitor ID with Tealium&rsquo;s server-side platform and receive Tealium&rsquo;s visitor ID in return. This type of integration is used <em>in addition to your standard tag</em>.</p>
-
 <h4 id="example">Example</h4>
-
 <p>The following example demonstrates a cookie match request:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plain" data-lang="plain">GET https://sync.example-dsp.net/get-userId?
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plain" data-lang="plain">GET https://sync.example-dsp.net/get-userId?
 tealium_visitor_id=abxyz0909&amp;
 tealium_account=my_account&amp;
 tealium_profile=main&amp;
-tealium_datasource=abc123</code></pre></div>
-<p>This request originates in the browser and sends the Tealium visitor ID to your system.  The result is a forwarding request containing your system&rsquo;s visitor ID and Tealium&rsquo;s visitor ID back to Tealium. This indicates that Tealium is hosting the match table, which is preferred. The final request to Tealium includes all of the provided Tealium variables and the vendor matched ID.</p>
-
+tealium_datasource=abc123
+</code></pre></div><p>This request originates in the browser and sends the Tealium visitor ID to your system.  The result is a forwarding request containing your system&rsquo;s visitor ID and Tealium&rsquo;s visitor ID back to Tealium. This indicates that Tealium is hosting the match table, which is preferred. The final request to Tealium includes all of the provided Tealium variables and the vendor matched ID.</p>
 <p>The following is an example redirect back to Tealium:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plain" data-lang="plain">GET https://collect.tealiumiq.com/vdata?
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plain" data-lang="plain">GET https://collect.tealiumiq.com/vdata?
 dsp_uid=4595-23423442&amp;
 tealium_visitor_id=abxyz0909&amp;
 tealium_account=my_account&amp;
 tealium_profile=main&amp;
-tealium_datasource=abc123</code></pre></div>
-<p>The following cookie match example passes the redirect request as a URL parameter, if the DSP&rsquo;s endpoint accepts it:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plain" data-lang="plain">GET https://sync.example-dsp.net/get-userId?
-redirect=https://collect.tealiumiq.com/vdata?dsp_uid=$UID&amp;tealium_visitor_id=abxyz0909&amp;tealium_account=egbrand&amp;tealium_profile=main&amp;tealium_datasource=abc123</code></pre></div>
-<h3 id="server-side-enabled">Server-Side Enabled</h3>
-
+tealium_datasource=abc123
+</code></pre></div><p>The following cookie match example passes the redirect request as a URL parameter, if the DSP&rsquo;s endpoint accepts it:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plain" data-lang="plain">GET https://sync.example-dsp.net/get-userId?
+redirect=https://collect.tealiumiq.com/vdata?dsp_uid=$UID&amp;tealium_visitor_id=abxyz0909&amp;tealium_account=egbrand&amp;tealium_profile=main&amp;tealium_datasource=abc123
+</code></pre></div><h3 id="server-side-enabled">Server-Side Enabled</h3>
 <p>Server-side enabled tags have the added ability to send events directly to Tealium EventStream and AudienceStream. For example, a user experience vendor inferring user sentiment by tracking mouse movements could trigger specific events directly to Tealium Collect. This type of integration <em>is included with your standard tag</em>.</p>
-
 <p>The following example function sends data to the Tealium event endpoint:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.tealium.sendEvent = <span style="color:#00f">function</span>(event_data) {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.tealium.sendEvent = <span style="color:#00f">function</span>(event_data) {
     <span style="color:#008000">//Send Event to CDH event endpoint
 </span><span style="color:#008000"></span>    event_data[<span style="color:#a31515">&#39;tealium_event&#39;</span>] = <span style="color:#a31515">&#34;EVENT_NAME&#34;</span>;
     event_data[<span style="color:#a31515">&#39;tealium_account&#39;</span>] = b.tealium_account; <span style="color:#008000">// required
@@ -398,9 +371,7 @@ redirect=https://collect.tealiumiq.com/vdata?dsp_uid=$UID&amp;tealium_visitor_id
         }
     <span style="color:#00f">return</span> <span style="color:#00f">true</span>;
 };
-</code></pre></div>
-<h2 id="become-a-partner">Become a Partner</h2>
-
+</code></pre></div><h2 id="become-a-partner">Become a Partner</h2>
 <p><a href="https://community.tealiumiq.com/t5/Become-a-Technology-Partner/bd-p/become-a-technology-partner">Contact us</a> to integrate your technology.</p>
 
 </div>
@@ -474,8 +445,8 @@ redirect=https://collect.tealiumiq.com/vdata?dsp_uid=$UID&amp;tealium_visitor_id
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f5" data-level="1">
-        <a href="/partners/" class="db link pl2 pr2 pv1 primary-color hover-bg-primary " data-target=".partners-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f5 active" data-level="1">
+        <a href="/partners/" class="db link pl2 pr2 pv1 bg-secondary white" data-target=".partners-overview">Overview</a>
       </li>
       
     

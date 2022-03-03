@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.92.1" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -267,7 +267,7 @@ var utag_data = {
   
     
       <a href="/platforms/ios-swift/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT/MODULE LIST
+        IOS SWIFT MODULE LIST
       </a>
     
   
@@ -279,7 +279,7 @@ var utag_data = {
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
-    <div class="f4 fw4 lh-copy">
+    <div class="f4 fw4 lh-copy mb4">
       Provides a central cross-device visitor ID for each user.
     </div>
   
@@ -291,54 +291,38 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  
-
-<p>The Adobe Visitor Service module interfaces directly with Adobe’s REST API to retrieve and maintain the Experience Cloud ID (ECID) for visitors.</p>
-
+  <p>The Adobe Visitor Service module interfaces directly with Adobe’s REST API to retrieve and maintain the Experience Cloud ID (ECID) for visitors.</p>
 <p>Learn more about the <a href="/platforms/getting-started/adobe-visitor-service/">AdobeVisitorService</a> module.</p>
-
 <h2 id="requirements">Requirements</h2>
-
 <ul>
 <li><a href="/platforms/ios-swift/">Tealium for Swift</a> (2.0.0+)</li>
+</ul>
+<ul>
 <li>Valid Adobe account and Adobe organization ID</li>
 <li><a href="https://github.com/Tealium/tealium-swift-adobe-visitor-api">TealiumAdobeVisitorAPI GitHub Repo</a></li>
 </ul>
-
 <h2 id="sample-app">Sample App</h2>
-
 <p>Explore the <a href="https://github.com/Tealium/tealium-swift-adobe-visitor-api/tree/main/TealiumAdobeVisitorAPI/VisitorAPIExample">AdobeVisitorService module sample app</a> for iOS to further your knowledge of the Tealium library and best practice implementations.</p>
-
 <h2 id="install">Install</h2>
-
 <p>The AdobeVisitorService module is configured when initializing the Tealium SDK, and does not have remote configuration capabilities.</p>
-
 <p>The module acts as a <code>DispatchValidator</code>, preventing calls being sent without an Adobe organization ID. It attempts to retrieve an ECID from the Adobe API, but after 5 failed attempts, calls are permitted to continue without an ECID to avoid data loss. Sending data is prioritized over having a valid ECID.</p>
-
 <p>Possible causes for no ECID being retrieved are:</p>
-
 <ul>
 <li>Invalid response, such as a response was received but did not contain a valid ECID.</li>
 <li>There was no response.</li>
 <li>The Adobe organization ID was invalid.</li>
 </ul>
-
 <h3 id="carthage">Carthage</h3>
-
 <p>To install the AdobeService module with Carthage, add the following to your cartfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">github <span style="color:#a31515">&#34;tealium/tealium-swift-adobe-visitor-api&#34;</span></code></pre></div>
-<p><a href="/platforms/ios-swift/install/#carthage">Learn more</a> about Carthage installation for iOS.</p>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">github <span style="color:#a31515">&#34;tealium/tealium-swift-adobe-visitor-api&#34;</span>
+</code></pre></div><p><a href="/platforms/ios-swift/install/#carthage">Learn more</a> about Carthage installation for iOS.</p>
 <h3 id="cocoapods">CocoaPods</h3>
-
 <p>To install the AdobeVisitor module with CocoaPods, add the following pod to your podfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;TealiumAdobeVisitorAPI&#39;</span></code></pre></div>
-<p>Learn more about the <a href="/platforms/ios-swift/install/#cocoapods">CocoaPods installation for iOS</a>.</p>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;TealiumAdobeVisitorAPI&#39;</span>
+</code></pre></div><p>Learn more about the <a href="/platforms/ios-swift/install/#cocoapods">CocoaPods installation for iOS</a>.</p>
 <h3 id="swift-package-manager">Swift Package Manager</h3>
-
 <p>To install the AdobeVisitor module with Swift Package Manager, import the <a href="https://github.com/Tealium/tealium-swift-adobe-visitor-api"><code>TealiumAdobeVisitorAPI</code></a> library, and then add add <code>Collectors.AdobeVisitor</code> to your existing list of collectors.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumAdobeVisitorAPI</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumAdobeVisitorAPI</span>
 
 <span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
     profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
@@ -347,8 +331,8 @@ config.collectors = [Collectors.AppData,
     Collectors.Lifecycle,
     Collectors.AdobeVisitor]
 config.dispatchers = [Dispatchers.Collect]
-<span style="color:#00f">self</span>.tealium = Tealium(config: config)</code></pre></div>
-<p>Learn more about the <a href="/platforms/ios-swift/install/#swift-package-manager-recommended">Swift Package Manager installation for iOS</a>.</p>
+<span style="color:#00f">self</span>.tealium = Tealium(config: config)
+</code></pre></div><p>Learn more about the <a href="/platforms/ios-swift/install/#swift-package-manager-recommended">Swift Package Manager installation for iOS</a>.</p>
 
 </div>
 
@@ -895,6 +879,26 @@ config.dispatchers = [Dispatchers.Collect]
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/branch/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-branch">Branch</a>
       </li>
       
     
@@ -1785,6 +1789,26 @@ config.dispatchers = [Dispatchers.Collect]
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-in-app-purchase">In-App Purchase Module</a>
       </li>
       
     
@@ -4136,8 +4160,8 @@ config.dispatchers = [Dispatchers.Collect]
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/ios-swift/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
+        <a href="/platforms/ios-swift/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".ios-swift-overview">Overview</a>
       </li>
       
     
@@ -4453,6 +4477,26 @@ config.dispatchers = [Dispatchers.Collect]
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/device-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-devicedata">DeviceData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-inapppurchase">In-App Purchase Module</a>
       </li>
       
     

@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.92.1" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -278,7 +278,7 @@ var utag_data = {
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
-    <div class="f4 fw4 lh-copy">
+    <div class="f4 fw4 lh-copy mb4">
       Learn to install the Tealium SDK for Angular.
     </div>
   
@@ -290,59 +290,49 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  
-
-<p>This sample is based on the <a href="https://angular.io/docs/ts/latest/cli-quickstart.html">Angular CLI Quickstart</a>.</p>
-
+  <p>This sample is based on the <a href="https://angular.io/docs/ts/latest/cli-quickstart.html">Angular CLI Quickstart</a>.</p>
 <h2 id="requirements">Requirements</h2>
-
 <ul>
 <li>Tealium iQ Tag Management account</li>
 <li>Angular application</li>
 </ul>
-
 <h2 id="sample-app">Sample app</h2>
-
 <p>To help familiarize yourself with the Tealium library, tracking methods, and best practice implementation, explore the Tealium for Angular <a href="https://github.com/Tealium/integration-angular">sample app</a>.</p>
-
 <h2 id="install">Install</h2>
-
 <p>The installation only requires one file to be added to your application. This service takes care of loading the Tealium <code>utag.js</code> library for your account and handling the tracking calls.</p>
-
 <p>To install the Tealium library for Angular:</p>
-
 <ol>
-<li><p>Create the directory <code>./src/app/tealium</code> in your Angular application.</p></li>
-
-<li><p>Copy the file <a href="https://github.com/Tealium/integration-angular/tree/master/example/src/app/tealium">utag.service.ts</a> into your application&rsquo;s path <code>./src/app/tealium/</code>.</p></li>
-
-<li><p>Follow the example found in the sample app&rsquo;s <a href="https://github.com/Tealium/integration-angular/blob/master/example/src/app/app.component.ts"><code>app.compontent.ts</code></a> file to define and invoke the Tealium service in your app.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">import { Component, OnInit } from <span style="color:#a31515">&#39;@angular/core&#39;</span>;
+<li>
+<p>Create the directory <code>./src/app/tealium</code> in your Angular application.</p>
+</li>
+<li>
+<p>Copy the file <a href="https://github.com/Tealium/integration-angular/tree/master/example/src/app/tealium">utag.service.ts</a> into your application&rsquo;s path <code>./src/app/tealium/</code>.</p>
+</li>
+<li>
+<p>Follow the example found in the sample app&rsquo;s <a href="https://github.com/Tealium/integration-angular/blob/master/example/src/app/app.component.ts"><code>app.compontent.ts</code></a> file to define and invoke the Tealium service in your app.</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">import { Component, OnInit } from <span style="color:#a31515">&#39;@angular/core&#39;</span>;
 import { TealiumUtagService } from <span style="color:#a31515">&#39;./tealium/utag.service&#39;</span>;
 
 @Component({
-  <span style="color:#a31515">selector</span>: <span style="color:#a31515">&#39;app-root&#39;</span>,
-  <span style="color:#a31515">providers</span>: [TealiumUtagService],
-  <span style="color:#a31515">templateUrl</span>: <span style="color:#a31515">&#39;./app.component.html&#39;</span>,
-  <span style="color:#a31515">styleUrls</span>: [<span style="color:#a31515">&#39;./app.component.css&#39;</span>]
-})</code></pre></div></li>
-</ol>
-
-<h2 id="initialize">Initialize</h2>
-
+      <span style="color:#a31515">selector</span>: <span style="color:#a31515">&#39;app-root&#39;</span>,
+      <span style="color:#a31515">providers</span>: [TealiumUtagService],
+      <span style="color:#a31515">templateUrl</span>: <span style="color:#a31515">&#39;./app.component.html&#39;</span>,
+      <span style="color:#a31515">styleUrls</span>: [<span style="color:#a31515">&#39;./app.component.css&#39;</span>]
+})
+</code></pre></div><h2 id="initialize">Initialize</h2>
 <p>The <a href="/platforms/angular/api/#setconfig"><code>setConfig()</code></a> method initializes Tealium and builds the path to the <code>utag.js</code> file, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">constructor(<span style="color:#00f">private</span> <span style="color:#a31515">tealium</span>: TealiumUtagService) {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">constructor(<span style="color:#00f">private</span> <span style="color:#a31515">tealium</span>: TealiumUtagService) {
     this.tealium.setConfig({
         <span style="color:#a31515">&#34;account&#34;</span>     : <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
         <span style="color:#a31515">&#34;profile&#34;</span>     : <span style="color:#a31515">&#34;PROFILE&#34;</span>,
         <span style="color:#a31515">&#34;environment&#34;</span> : <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>});
-}</code></pre></div>
-<p>The installation adds a new class to your application called <code>TealiumUtagService</code> which available by registering it as a provider to a component.</p>
-
+}
+</code></pre></div><p>The installation adds a new class to your application called <code>TealiumUtagService</code> which available by registering it as a provider to a component.</p>
 <h2 id="example">Example</h2>
-
 <p>The following is a full example of importing the Tealium service to your application, <a href="https://github.com/Tealium/integration-angular/blob/master/example/src/app/app.component.ts"><code>app.component.ts</code></a>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">import { Component, OnInit } from <span style="color:#a31515">&#39;@angular/core&#39;</span>;
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">import { Component, OnInit } from <span style="color:#a31515">&#39;@angular/core&#39;</span>;
 import { TealiumUtagService } from <span style="color:#a31515">&#39;./tealium/utag.service&#39;</span>;
 
 @Component({
@@ -365,7 +355,8 @@ export <span style="color:#00f">class</span> <span style="color:#2b91af">AppComp
     this.tealium.view({<span style="color:#a31515">event_name</span>: <span style="color:#a31515">&#39;init&#39;</span>});
     <span style="color:#a31515">//</span>this.tealium.track(<span style="color:#a31515">&#39;view&#39;</span>, {<span style="color:#a31515">&#39;event_name&#39;</span> : <span style="color:#a31515">&#39;init&#39;</span>});
   }
-}</code></pre></div>
+}
+</code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -898,6 +889,26 @@ export <span style="color:#00f">class</span> <span style="color:#2b91af">AppComp
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/branch/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-branch">Branch</a>
       </li>
       
     
@@ -1788,6 +1799,26 @@ export <span style="color:#00f">class</span> <span style="color:#2b91af">AppComp
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-in-app-purchase">In-App Purchase Module</a>
       </li>
       
     
@@ -4475,6 +4506,26 @@ export <span style="color:#00f">class</span> <span style="color:#2b91af">AppComp
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-inapppurchase">In-App Purchase Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/lifecycle/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-lifecycle">Lifecycle Module</a>
       </li>
       
@@ -6245,8 +6296,8 @@ export <span style="color:#00f">class</span> <span style="color:#2b91af">AppComp
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/angular/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".angular-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
+        <a href="/platforms/angular/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".angular-overview">Overview</a>
       </li>
       
     

@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.92.1" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -280,7 +280,7 @@ var utag_data = {
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
-    <div class="f4 fw4 lh-copy">
+    <div class="f4 fw4 lh-copy mb4">
       Reference guide for VisitorService class and methods provided by Tealium for Android (Kotlin).
     </div>
   
@@ -292,12 +292,8 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  
-
-<h2 id="class-visitorservice">Class: <code>VisitorService</code></h2>
-
+  <h2 id="class-visitorservice">Class: <code>VisitorService</code></h2>
 <p>The following summarizes the commonly used methods and properties of the <code>VisitorService</code> module for Kotlin.</p>
-
 <table>
 <thead>
 <tr>
@@ -305,75 +301,59 @@ var utag_data = {
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><a href="#overridevisitorserviceurl"><code>overrideVisitorServiceUrl</code></a></td>
 <td><code>TealiumConfig</code> option to override the URL used to retrieve the current VisitorProfile</td>
 </tr>
-
 <tr>
 <td><a href="#overridevisitorserviceprofile"><code>overrideVisitorServiceProfile</code></a></td>
 <td><code>TealiumConfig</code> option to override the profile name used to retrieve the current VisitorProfile</td>
 </tr>
-
 <tr>
 <td><a href="#requestvisitorprofile"><code>requestVisitorProfile()</code></a></td>
 <td>Method to request that the current VisitorProfile be updated</td>
 </tr>
-
 <tr>
 <td><a href="#visitorservicerefreshinterval"><code>visitorServiceRefreshInterval</code></a></td>
 <td><code>TealiumConfig</code> option to set the minimum time interval before the SDK will automatically retrieve the latest VisitorProfile</td>
 </tr>
 </tbody>
 </table>
-
 <h3 id="overridevisitorserviceurl"><code>overrideVisitorServiceUrl</code></h3>
-
 <p>Extension property on the <code>TealiumConfig</code> object; only available when the VisitorService module is included in your project.</p>
-
 <p>Overrides the URL used by the VisitorService module to get the VisitorProfile object.
 Default URL: <code>&quot;https://visitor-service.tealiumiq.com/{ACOUNT_NAME}/{PROFILE_NAME}/{VISITOR_ID}&quot;</code></p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val config = TealiumConfig(...)
-config.overrideVisitorServiceUrl = url</code></pre></div>
-<h3 id="overridevisitorserviceprofile"><code>overrideVisitorServiceProfile</code></h3>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val config = TealiumConfig(...)
+config.overrideVisitorServiceUrl = url
+</code></pre></div><h3 id="overridevisitorserviceprofile"><code>overrideVisitorServiceProfile</code></h3>
 <p>Extension property on the <code>TealiumConfig</code> object; only available when the VisitorService module is included in your project.</p>
-
 <p>Overrides the Tealium profile name used by the VisitorService module to fetch the VisitorProfile object. By default the VisitorService module uses the profile name set in <code>TealiumConfig</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val config = TealiumConfig(...)
-config.overrideVisitorServiceProfile = <span style="color:#a31515">&#34;main&#34;</span></code></pre></div>
-<h3 id="requestvisitorprofile"><code>requestVisitorProfile</code></h3>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val config = TealiumConfig(...)
+config.overrideVisitorServiceProfile = <span style="color:#a31515">&#34;main&#34;</span>
+</code></pre></div><h3 id="requestvisitorprofile"><code>requestVisitorProfile</code></h3>
 <p>Method to request that the VisitorProfile be updated. This happens after each dispatch, or batch of dispatches, has been sent to the Tealium Customer Data Hub.</p>
-
 <p>Use this method to request an update at any other point in time. It&rsquo;s a <code>suspend</code> function that needs to be called from a coroutine. As it makes a network request, your coroutine is not called on main thread.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">runBlocking(Dispatchers.IO) {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">runBlocking(Dispatchers.IO) {
     tealium.visitorService?.requestVisitorProfile()
-}</code></pre></div>
-<h3 id="visitorservicerefreshinterval"><code>visitorServiceRefreshInterval</code></h3>
-
+}
+</code></pre></div><h3 id="visitorservicerefreshinterval"><code>visitorServiceRefreshInterval</code></h3>
 <p>Sets the time interval in seconds between updates to the VisitorProfile data. Calls to <code>requestVisitorProfile()</code> ignore this setting.</p>
-
 <p>Default: 300 (5 minutes)</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val config = TealiumConfig(...)
-config.visitorServiceRefreshInterval = TimeUnit.MINUTES.toSeconds(30) // 30 minutes</code></pre></div>
-<h2 id="interface-visitorupdatedlistener">Interface: <code>VisitorUpdatedListener</code></h2>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val config = TealiumConfig(...)
+config.visitorServiceRefreshInterval = TimeUnit.MINUTES.toSeconds(30) <span style="color:#008000">// 30 minutes
+</span></code></pre></div><h2 id="interface-visitorupdatedlistener">Interface: <code>VisitorUpdatedListener</code></h2>
 <p>The <code>VisitorUpdatedListener</code> is a listener class. Register to receive the latest version of the VisitorProfile each time there has been an update. There is only a single method to implement: <a href="#onVisitorUpdated"><code>onVisitorUpdated(visitorProfile: VisitorProfile)</code></a>.</p>
-
 <h3 id="onvisitorupdated"><code>onVisitorUpdated</code></h3>
-
 <p>Implement the <code>onVisitorUpdated</code> method on an existing class, or pass in an anonymous object after creating your <code>Tealium</code> instance. The below example shows the latter.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val tealium = Tealium.create(...) {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val tealium = Tealium.create(...) {
     events.subscribe(object : VisitorUpdatedListener {
         override fun onVisitorUpdated(visitorProfile: VisitorProfile) {
             Logger.dev(<span style="color:#a31515">&#34;--&#34;</span>, <span style="color:#a31515">&#34;VisitorProfile updated: $visitorProfile&#34;</span>)
         }
     })
-}</code></pre></div>
-<p>Please see the <a href="/platforms/android-kotlin/api/visitor-profile">VisitorProfile</a> documentation for full details on available properties.</p>
+}
+</code></pre></div><p>Please see the <a href="/platforms/android-kotlin/api/visitor-profile">VisitorProfile</a> documentation for full details on available properties.</p>
 
 </div>
 
@@ -908,6 +888,26 @@ config.visitorServiceRefreshInterval = TimeUnit.MINUTES.toSeconds(30) // 30 minu
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/branch/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-branch">Branch</a>
       </li>
       
     
@@ -1561,8 +1561,8 @@ config.visitorServiceRefreshInterval = TimeUnit.MINUTES.toSeconds(30) // 30 minu
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/android-kotlin/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
+        <a href="/platforms/android-kotlin/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".android-kotlin-overview">Overview</a>
       </li>
       
     
@@ -1798,6 +1798,26 @@ config.visitorServiceRefreshInterval = TimeUnit.MINUTES.toSeconds(30) // 30 minu
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-in-app-purchase">In-App Purchase Module</a>
       </li>
       
     
@@ -4466,6 +4486,26 @@ config.visitorServiceRefreshInterval = TimeUnit.MINUTES.toSeconds(30) // 30 minu
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/device-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-devicedata">DeviceData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-inapppurchase">In-App Purchase Module</a>
       </li>
       
     

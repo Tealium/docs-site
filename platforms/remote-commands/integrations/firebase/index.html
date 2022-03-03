@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.92.1" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -275,7 +275,7 @@ var utag_data = {
   
     
       <a href="/platforms/remote-commands/integrations/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        REMOTE COMMANDS/INTEGRATIONS
+        REMOTE COMMANDS INTEGRATIONS
       </a>
     
   
@@ -287,7 +287,7 @@ var utag_data = {
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
-    <div class="f4 fw4 lh-copy">
+    <div class="f4 fw4 lh-copy mb4">
       Tealium remote command integration for Firebase on Android and Swift/iOS
     </div>
   
@@ -299,251 +299,100 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  
-
-<h2 id="requirements">Requirements</h2>
-
+  <h2 id="requirements">Requirements</h2>
 <ul>
 <li>One of these mobile libraries:
-
 <ul>
 <li><a href="/platforms/android-kotlin/">Tealium for Android-Kotlin</a> (1.0.0+)</li>
 <li><a href="/platforms/android-java/">Tealium for Android-Java</a> (5.9.0+ for Firebase 2.0.0+ or &lt;5.9.0 for previous versions)</li>
 <li><a href="/platforms/ios-swift/">Tealium for iOS-Swift</a></li>
-</ul></li>
+</ul>
+</li>
 <li>One of these remote command integrations:
-
 <ul>
 <li><a href="/platforms/remote-commands/integrations/firebase/#json-template">Firebase Remote Command JSON File</a> (Requires Android-Kotlin 1.0.0+ or iOS-Swift 2.1.0+)</li>
 <li><a href="https://community.tealiumiq.com/t5/Tags/Firebase-Mobile-Remote-Command-Tag-Setup-Guide/ta-p/30310">Firebase Remote Command tag</a> in Tealium iQ Tag Management</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h2 id="how-it-works">How It Works</h2>
-
 <p>The Firebase integration uses three items:</p>
-
 <ol>
 <li>The Firebase native SDK</li>
 <li>The remote commands module that wraps the Firebase methods</li>
 <li>Either the JSON configuration file or Remote Command tag that translates event tracking into native Firebase calls</li>
 </ol>
-
 <p>Adding the Firebase remote command module to your app automatically installs and builds the required Firebase libraries, without having to add vendor-specific code to your app. If you are using a dependency manager installation, there is no need to install the Firebase SDK separately.</p>
-
 <p>There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration.  Learn more about <a href="/platforms/remote-commands/how-it-works/#vendor-integrations">vendor integrations</a>.</p>
-
 <h2 id="install">Install</h2>
-
 <h3 id="dependency-manager">Dependency Manager</h3>
-
 <p>If you are not using the JSON configuration file, we recommend using one of the following dependency managers for installation:</p>
-
-<p class="note"><i class="fas fa-info-circle"></i>If you are using the Tealium iOS (Objective-C) library, use the manual installation method. The CocoaPods and Carthage options are only available if you are using the Tealium iOS (Swift) library.</p>
-
+<!-- raw HTML omitted -->
 <p>Install the TealiumFirebase Remote Command with CocoaPods or Carthage.</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="Swift Package Manager" title="Swift Package Manager">
-  <p>To install Facebook remote commands for iOS using Swift Package Manager:</p>
-
-<ol>
-<li>In your Xcode project, select <strong>File &gt; Swift Packages &gt; Add Package Dependency</strong>.</li>
-<li>Enter the repository URL: <code>https://github.com/tealium/tealium-ios-firebase-remote-command</code>.</li>
-<li>Configure the version rules. Typically, <code>Up to next major</code> is recommended. If the current <code>TealiumFirebase</code> version does not appear in the list, then reset your Swift package cache.</li>
-<li>Select the <code>TealiumFirebase</code> module to install and add the modules to each of your app targets in your Xcode project, under <strong>Frameworks &gt; Libraries &amp; Embedded Content</strong>.</li>
-</ol>
-
-<p>To add additional modules from the Tealium Swift library, follow the <a href="/platforms/ios-swift/install/#swift-package-manager-recommended">Swift Package Manager</a> instructions.</p>
-
-</div>
-
-<div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
-  <p>To install Firebase remote commands for iOS using CocoaPods:</p>
-
-<ol>
-<li><p>Remove the following line if it exists in your Podfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pod <span style="color:#a31515">&#34;Firebase/Analytics&#34;</span></code></pre></div></li>
-
-<li><p>Add the following dependency to your Podfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">pod <span style="color:#a31515">&#34;TealiumFirebase&#34;</span></code></pre></div>
-<p>The <code>TealiumFirebase</code> pod includes the following <code>TealiumSwift</code> dependencies:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#a31515">&#39;tealium-swift/Core&#39;</span>
-<span style="color:#a31515">&#39;tealium-swift/RemoteCommands&#39;</span>
-<span style="color:#a31515">&#39;tealium-swift/TagManagement&#39;</span></code></pre></div></li>
-
-<li><p>Import the modules <code>TealiumSwift</code> and <code>TealiumFirebase</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class, or the Firebase remote command.</p></li>
-</ol>
-
-</div>
-
-<div class="tab-pane" data-lang="Carthage" title="Carthage">
-  <p>To install Firebase remote commands for iOS using Carthage:</p>
-
-<ol>
-<li><p>Remove <code>tealium-swift</code> from your Cartfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumFirebase</code> framework.</p></li>
-
-<li><p>Remove the following line if it exists in your Cartfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">binary <span style="color:#a31515">&#34;https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json&#34;</span></code></pre></div></li>
-
-<li><p>Add the following dependency to your Cartfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">github <span style="color:#a31515">&#34;tealium/tealium-ios-firebase-remote-command&#34;</span></code></pre></div></li>
-</ol>
-
-<p class="note"><i class="fas fa-info-circle"></i>The <code>TealiumFirebase</code> module cannot be built as an <code>xcframework</code> when using the Carthage <code>--use-xcframeworks</code> flag because Firebase uses a Carthage binary installation.  It is recommended to use Carthage&rsquo;s official <a href="https://github.com/Carthage/Carthage/blob/master/Documentation/Xcode12Workaround.md">Xcode 12 workaround</a> to build the dependencies.</p>
-
-</div>
-
-<div class="tab-pane" data-lang="Maven" title="Maven">
-  <p>To install Firebase remote commands for Android using Maven:</p>
-
-<ol>
-<li><p>Install <a href="/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> or <a href="/platforms/android-java/install/">Tealium for Android (Java)</a>, if you haven&rsquo;t done so already.</p></li>
-
-<li><p>Add the following dependency your <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
-implementation <span style="color:#a31515">&#39;com.tealium.remotecommands:firebase:2.0.0&#39;</span>
-}</code></pre></div></li>
-</ol>
-
-</div>
-
-<p></div>
-</div></p>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <h3 id="manual-ios">Manual (iOS)</h3>
-
 <p>The manual installation for Firebase remote commands requires the <a href="/platforms/ios-swift/">Tealium for Swift</a> library to be installed. To install the Firebase remote commands for your iOS project:</p>
-
 <ol>
-<li><p>Install the <a href="https://firebase.google.com/docs/ios/setup">Firebase SDK</a>, if you haven&rsquo;t already done so.</p></li>
-
-<li><p>Clone the <a href="https://github.com/tealium/tealium-ios-firebase-remote-command">Tealium iOS Firebase remote command</a> repo and drag the files within the <code>Sources</code> folder into your project.</p></li>
-
-<li><p>Set the <a href="/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a> configuration flag to <code>true</code></p></li>
+<li>
+<p>Install the <a href="https://firebase.google.com/docs/ios/setup">Firebase SDK</a>, if you haven&rsquo;t already done so.</p>
+</li>
+<li>
+<p>Clone the <a href="https://github.com/tealium/tealium-ios-firebase-remote-command">Tealium iOS Firebase remote command</a> repo and drag the files within the <code>Sources</code> folder into your project.</p>
+</li>
+<li>
+<p>Set the <a href="/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a> configuration flag to <code>true</code></p>
+</li>
 </ol>
-
 <h2 id="initialize">Initialize</h2>
-
 <p>For all Tealium libraries, register the Firebase mobile remote commands when you initialize.</p>
-
 <h3 id="android-kotlin">Android (Kotlin)</h3>
-
 <p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s Kotlin library.</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>The following code is designed for use with the JSON Remote Command feature, using the local file option:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> config = TealiumConfig(application,
-        <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-        <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-        Environment.DEV,
-        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
-<span style="color:#00f">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
-    <span style="color:#00f">val</span> firebase = FirebaseRemoteCommand(application);
-  <span style="color:#008000">// register the command
-</span><span style="color:#008000"></span>  remoteCommands?.add(firebase, filename = <span style="color:#a31515">&#34;firebase.json&#34;</span>);
-}</code></pre></div>
-</div>
-
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>The following code is designed for use with the Remote Command tag feature:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> config = TealiumConfig(application,
-        <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-        <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-        Environment.DEV,
-        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
-<span style="color:#00f">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
-    <span style="color:#00f">val</span> firebase = FirebaseRemoteCommand(application);
-  <span style="color:#008000">// register the command
-</span><span style="color:#008000"></span>  remoteCommands?.add(firebase);
-}</code></pre></div>
-</div>
-
-<p></div>
-</div></p>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <h3 id="android-java">Android (Java)</h3>
-
 <p>Initialize remote commands with the Remote Command tag for Tealium&rsquo;s Android (Java) library.</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-
-<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>The JSON Remote Command file feature for Android is only available in the Kotlin SDK.</p>
-
-</div>
-
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>The following code is designed for use with the Remote Command tag feature:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">RemoteCommand firebase = <span style="color:#00f">new</span> FirebaseRemoteCommand(application);
-teal.addRemoteCommand(firebase);</code></pre></div>
-</div>
-
-<p></div>
-</div></p>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <h3 id="ios-swift">iOS (Swift)</h3>
-
 <p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s iOS (Swift) library.</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-
-<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>The following code is designed for use with the JSON Remote Commands feature, using the local file option:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">var</span> tealium : Tealium?
-<span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-                           profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-                           environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
-                           dataSource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>,
-                           optionalData: <span style="color:#00f">nil</span>)
-
-config.remoteAPIEnabled = <span style="color:#00f">true</span> <span style="color:#008000">// Required to use Remote Commands</span>
-
-tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span style="color:#00f">in</span>
-    <span style="color:#00f">guard</span> <span style="color:#00f">let</span> remoteCommands = <span style="color:#00f">self</span>.tealium?.remoteCommands <span style="color:#00f">else</span> {
-        <span style="color:#00f">return</span>
-    }
-    <span style="color:#00f">let</span> firebase = FirebaseRemoteCommand(type: .local(file: <span style="color:#a31515">&#34;firebase&#34;</span>))
-    remoteCommands.add(firebase)
-}</code></pre></div>
-</div>
-
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>The following code is designed for use with the Remote Command tag feature:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">var</span> tealium : Tealium?
-<span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-                           profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-                           environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,<span style="">˜˜</span>
-                           dataSource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>,
-                           optionalData: <span style="color:#00f">nil</span>)
-
-config.remoteAPIEnabled = <span style="color:#00f">true</span> <span style="color:#008000">// Required to use Remote Commands</span>
-
-tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span style="color:#00f">in</span>
-    <span style="color:#00f">guard</span> <span style="color:#00f">let</span> remoteCommands = <span style="color:#00f">self</span>.tealium?.remoteCommands <span style="color:#00f">else</span> {
-        <span style="color:#00f">return</span>
-    }
-    <span style="color:#00f">let</span> firebase = FirebaseRemoteCommand()
-    remoteCommands.add(firebase)
-}</code></pre></div>
-</div>
-
-<p></div>
-</div></p>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>config.remoteAPIEnabled = <!-- raw HTML omitted -->true<!-- raw HTML omitted --> <!-- raw HTML omitted -->// Required to use Remote Commands<!-- raw HTML omitted --></p>
+<p>tealium = Tealium(config: config) { <!-- raw HTML omitted -->_<!-- raw HTML omitted --> <!-- raw HTML omitted -->in<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->guard<!-- raw HTML omitted --> <!-- raw HTML omitted -->let<!-- raw HTML omitted --> remoteCommands = <!-- raw HTML omitted -->self<!-- raw HTML omitted -->.tealium?.remoteCommands <!-- raw HTML omitted -->else<!-- raw HTML omitted --> {
+<!-- raw HTML omitted -->return<!-- raw HTML omitted -->
+}
+<!-- raw HTML omitted -->let<!-- raw HTML omitted --> firebase = FirebaseRemoteCommand(type: .local(file: <!-- raw HTML omitted -->&quot;firebase&quot;<!-- raw HTML omitted -->))
+remoteCommands.add(firebase)
+}
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>config.remoteAPIEnabled = <!-- raw HTML omitted -->true<!-- raw HTML omitted --> <!-- raw HTML omitted -->// Required to use Remote Commands<!-- raw HTML omitted --></p>
+<p>tealium = Tealium(config: config) { <!-- raw HTML omitted -->_<!-- raw HTML omitted --> <!-- raw HTML omitted -->in<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->guard<!-- raw HTML omitted --> <!-- raw HTML omitted -->let<!-- raw HTML omitted --> remoteCommands = <!-- raw HTML omitted -->self<!-- raw HTML omitted -->.tealium?.remoteCommands <!-- raw HTML omitted -->else<!-- raw HTML omitted --> {
+<!-- raw HTML omitted -->return<!-- raw HTML omitted -->
+}
+<!-- raw HTML omitted -->let<!-- raw HTML omitted --> firebase = FirebaseRemoteCommand()
+remoteCommands.add(firebase)
+}</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <h2 id="json-template">JSON Template</h2>
-
 <p>If you are configuring remote commands using a <a href="/platforms/remote-commands/how-it-works/#json-configuration-file">JSON configuration file</a>, refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
     &#34;config&#34;: {
         &#34;firebase_analytics_enabled&#34;: <span style="color:#a31515">&#34;true&#34;</span>,
         &#34;firebase_session_timeout_seconds&#34;: <span style="color:#a31515">&#34;30&#34;</span>,
@@ -630,46 +479,28 @@ tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span styl
         &#34;email_signup&#34;: <span style="color:#a31515">&#34;logevent&#34;</span>,
         &#34;order&#34;: <span style="color:#a31515">&#34;logevent,setscreenname&#34;</span>
     }
-}</code></pre></div>
-<h2 id="track">Track</h2>
-
+}
+</code></pre></div><h2 id="track">Track</h2>
 <p>Events triggered by basic interactions with your app are tracked automatically. <a href="https://support.google.com/firebase/answer/6317485?hl=en">Learn more</a> about Firebase automatically collected events.</p>
-
 <p>Learn about <a href="https://community.tealiumiq.com/t5/Tags/Firebase-Mobile-Remote-Command-Tag-Setup-Guide/ta-p/30310">Firebase Mobile Remote Command Tag setup</a>.</p>
-
 <h2 id="google-analytics-and-tealium-consent">Google Analytics and Tealium Consent</h2>
-
 <p>Google Analytics for Firebase is an app measurement solution that provides insight into app usage and user engagement. It integrates across Firebase features and provides unlimited reporting for up to 500 distinct events defined using the Firebase SDK.</p>
-
 <p>Since there are no public APIs available, use the Firebase native SDK for Android or iOS to pass data into Firebase. Tealium&rsquo;s Firebase remote commands are able to call to the Firebase SDK.  Using your existing data layer and tracking calls, the behavior of the Firebase SDK is modifiable even after the app is released to the Android Play Store, or Apple App Store.</p>
-
 <p>Learn more in the <a href="https://community.tealiumiq.com/t5/Installation-Libraries/Google-Analytics-for-Firebase-Mobile-Integration-Guide/ta-p/21200">Google Analytics for Firebase Mobile Integration Guide</a>.</p>
-
 <h3 id="passing-consent">Passing Consent</h3>
-
 <p>There are three options to pass content from native screen to the web view. The web view pages are generic pages, not dedicated, and only available in the app. Consent management is enabled in Tealium IQ.</p>
-
-<p><strong>Option 1: Cookie</strong><br />
+<p><strong>Option 1: Cookie</strong><br>
 With Tealium iQ Tag Manger and consent management enabled, Tealium uses a mobile web view where a cookie is set. The client uses this cookie to read the consent before the website loads any content on the page.</p>
-
-<p><strong>Option 2: API to web view page</strong><br />
+<p><strong>Option 2: API to web view page</strong><br>
 Set up a listener event and, when a user changes their consent, intercept and send it in an API call to the web view where you then set a cookie. </p>
-
-<p><strong>Option 3: Query string</strong><br />
+<p><strong>Option 3: Query string</strong><br>
 As the web view pages already have the Tealium consent manager, pass the consent in a query string when you move from native to the web view. Then read it with a preloader extension in Tealium iQ, which recreates the cookie.</p>
-
 <h3 id="faq">FAQ</h3>
-
 <p><strong>What happens if Google updates the Firebase SDK?</strong></p>
-
 <p>Assuming no major API changes, it is safe to update your Firebase SDK. Tealium proactively looks for Firebase updates to any API functionality, and makes the necessary updates to the Firebase remote commands.</p>
-
 <p><strong>The Firebase SDK automatically sends tracking events by default. How do we stop these before the client gives consent?</strong></p>
-
 <p>In the Firebase SDK, set the setting <code>firebase_analytics_collection_enabled</code> to <code>false</code> (default: <code>true</code>).  Once the user has consented, it can be changed back to <code>true</code> using Firebase remote commands. </p>
-
 <p>The following steps outlines the user journey:</p>
-
 <ol>
 <li>User opens app</li>
 <li>Firebase is set to not collect (<code>setAnalyticsCollectionEnabled(false)</code>)</li>
@@ -677,15 +508,10 @@ As the web view pages already have the Tealium consent manager, pass the consent
 <li>Tealium sends message to the Firebase SDK to set to collect (<code>firebase_analytics_enabled = true</code>)</li>
 <li>The user click is tracked in Google Analytics</li>
 </ol>
-
 <p><strong>How can we tell what consent has been given whilst in App?</strong></p>
-
 <p>It is possible to send an API request to the Tealium SDK to see if a user has consented to a specific category. The client can request this at any point while the app is running.</p>
-
-<p class="note"><i class="fas fa-info-circle"></i>Tealium does not store the consent. It is retained within the app.</p>
-
+<!-- raw HTML omitted -->
 <p><strong>Is it possible to turn off individual tags using an API to the Tealium SDK?</strong></p>
-
 <p>No, it&rsquo;s not possible. Consent opts in and out at the category level. </p>
 
 </div>
@@ -1156,8 +982,8 @@ As the web view pages already have the Tealium consent manager, pass the consent
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/remote-commands/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
+        <a href="/platforms/remote-commands/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".remote-commands-overview">Overview</a>
       </li>
       
     
@@ -1233,6 +1059,26 @@ As the web view pages already have the Tealium consent manager, pass the consent
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/branch/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-branch">Branch</a>
       </li>
       
     
@@ -2123,6 +1969,26 @@ As the web view pages already have the Tealium consent manager, pass the consent
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-in-app-purchase">In-App Purchase Module</a>
       </li>
       
     
@@ -4791,6 +4657,26 @@ As the web view pages already have the Tealium consent manager, pass the consent
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/device-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-devicedata">DeviceData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-inapppurchase">In-App Purchase Module</a>
       </li>
       
     
@@ -7867,7 +7753,7 @@ As the web view pages already have the Tealium consent manager, pass the consent
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  July 27, 2021 
+    <span>This page was last updated:  March 3, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

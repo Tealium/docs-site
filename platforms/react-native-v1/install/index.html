@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.92.1" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -252,7 +252,7 @@ var utag_data = {
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#how-it-works">How It Works</a></li>
               <li><a href="#requirements">Requirements</a></li>
               <li><a href="#sample-app">Sample App</a></li>
-              <li><a href="#install-npm-yarn">Install (NPM/YARN)</a></li>
+              <li><a href="#install-npmyarn">Install (NPM/YARN)</a></li>
               <ul class="toc-h3"><li><a href="#android">Android</a></li>
               <li><a href="#ios">iOS</a></li>
               </ul><li><a href="#install-manual">Install (Manual)</a></li>
@@ -285,7 +285,7 @@ var utag_data = {
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
-    <div class="f4 fw4 lh-copy">
+    <div class="f4 fw4 lh-copy mb4">
       Learn to install Tealium for React Native.
     </div>
   
@@ -297,27 +297,19 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  
-
-<p>Tealium for React Native allows you to use the Tealium native mobile libraries (iOS, Android) in your React Native application.</p>
-
+  <p>Tealium for React Native allows you to use the Tealium native mobile libraries (iOS, Android) in your React Native application.</p>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
   <iframe src="https://www.youtube.com/embed/kSwYoVOmOrk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-
 <h2 id="how-it-works">How It Works</h2>
-
 <p>Tealium mobile libraries are integrated into your React Native application using one of the following two methods:</p>
-
 <ul>
 <li>NPM package (recommended)</li>
 <li>Manual via <a href="https://github.com/Tealium/tealium-react-native">GitHub</a></li>
 </ul>
-
 <h2 id="requirements">Requirements</h2>
-
 <ul>
 <li>Access to your native build environments</li>
 <li><a href="https://github.com/Tealium/tealium-react-native">React Native</a> and tools installed</li>
@@ -325,139 +317,117 @@ var utag_data = {
 <li><a href="https://developer.android.com/studio/">Android Studio</a> or <a href="https://developer.apple.com/xcode/">Xcode</a></li>
 <li><a href="/platforms/android-java/">Tealium for Android</a> or <a href="/platforms/ios-swift/">Tealium for iOS</a></li>
 </ul>
-
 <h2 id="sample-app">Sample App</h2>
-
 <p>To help familiarize yourself with our library, the tracking methods, and best practice implementation, it is recommended to download the <a href="https://github.com/Tealium/tealium-react-native/tree/master/TealiumSampleApp">React Native sample app</a>.</p>
-
-<h2 id="install-npm-yarn">Install (NPM/YARN)</h2>
-
+<h2 id="install-npmyarn">Install (NPM/YARN)</h2>
 <p>To install the Tealium library for React Native with NPM:</p>
-
 <ol>
-<li><p>Navigate to the root of your React Native project.</p></li>
-
-<li><p>Download and install the <code>tealium-react-native</code> package with the following command:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yarn install tealium-react-native</code></pre></div></li>
-
-<li><p>React Native Autolinking is enabled in version 1.0.7 of the NPM package and is no longer needed to run <code>react-native link</code> if using version 0.60+ of React Native.</p></li>
+<li>
+<p>Navigate to the root of your React Native project.</p>
+</li>
+<li>
+<p>Download and install the <code>tealium-react-native</code> package with the following command:</p>
+</li>
 </ol>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yarn install tealium-react-native
+</code></pre></div><ol start="3">
+<li>React Native Autolinking is enabled in version 1.0.7 of the NPM package and is no longer needed to run <code>react-native link</code> if using version 0.60+ of React Native.</li>
+</ol>
 <h3 id="android">Android</h3>
-
 <p>Add a reference to Tealium&rsquo;s Maven repository in your Android project&rsquo;s root <code>build.gradle</code> file as described in the <a href="/platforms/android/install/#maven-install">Android Maven Install</a> documentation. The project dependencies are automatically handled by the Autolinking process.</p>
-
 <h3 id="ios">iOS</h3>
-
 <p>The Autolinking feature of React Native 0.60+ automatically adds the required CocoaPods dependencies into your iOS application workspace.</p>
-
 <p>To install the pods, run the following commands:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">// From your React Native application folder:
-cd ios &amp;&amp; pod install</code></pre></div>
-<p>In some cases, it&rsquo;s necessary to enable the clang parameter to allow non-modular includes in the framework modules. To enable the clang parameter:</p>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">// From your React Native application folder:
+cd ios &amp;&amp; pod install
+</code></pre></div><p>In some cases, it&rsquo;s necessary to enable the clang parameter to allow non-modular includes in the framework modules. To enable the clang parameter:</p>
 <ol>
-<li><p>In Xcode, open the app&rsquo;s <code>.xcworkspace</code> file and selecting your <code>Pods</code> from the navigator.</p></li>
-
-<li><p>Under <strong>Targets</strong> select the <strong>tealium-react-native</strong> target, and click the <strong>Build Settings</strong> tab.</p></li>
-
-<li><p>Find and update the following setting under <strong>Apple Clang - Language - Modules</strong> &gt; <strong>Allow Non-modular Includes In Framework Modules</strong>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;</code></pre></div></li>
+<li>
+<p>In Xcode, open the app&rsquo;s <code>.xcworkspace</code> file and selecting your <code>Pods</code> from the navigator.</p>
+</li>
+<li>
+<p>Under <strong>Targets</strong> select the <strong>tealium-react-native</strong> target, and click the <strong>Build Settings</strong> tab.</p>
+</li>
+<li>
+<p>Find and update the following setting under <strong>Apple Clang - Language - Modules</strong> &gt; <strong>Allow Non-modular Includes In Framework Modules</strong>:</p>
+</li>
 </ol>
-
-<h2 id="install-manual">Install (Manual)</h2>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+</code></pre></div><h2 id="install-manual">Install (Manual)</h2>
 <h3 id="android-1">Android</h3>
-
 <p>For Android apps, follow these manual installation steps:</p>
-
 <ol>
-<li><p>To integrate Tealium into your Android application, add this to your Tealium Maven repository:</p></li>
-
-<li><p>In your project root <code>build.gradle</code>, add the Tealium Maven URL:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
-  repositories {
-    jcenter()
-    maven {
-        url <span style="color:#a31515">&#34;http://maven.tealiumiq.com/android/releases/&#34;</span>
-    }
-  }
-}</code></pre></div></li>
-
-<li><p>Add the Tealium core library dependency to your project module <code>build.gradle</code> file. Also, add the Tealium lifecycle dependency (if needed):</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
+<li>
+<p>To integrate Tealium into your Android application, add this to your Tealium Maven repository:</p>
+</li>
+<li>
+<p>In your project root <code>build.gradle</code>, add the Tealium Maven URL:</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
+      repositories {
+        jcenter()
+        maven {
+            url <span style="color:#a31515">&#34;http://maven.tealiumiq.com/android/releases/&#34;</span>
+        }
+      }
+}
+</code></pre></div><ol start="3">
+<li>Add the Tealium core library dependency to your project module <code>build.gradle</code> file. Also, add the Tealium lifecycle dependency (if needed):</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
     compile <span style="color:#a31515">&#39;com.tealium:library:5.5.2&#39;</span>
-    compile <span style="color:#a31515">&#39;com.tealium:lifecycle:1.1&#39;</span>
-}</code></pre></div></li>
-</ol>
-
-<p>To copy Bridging logic:</p>
-
+        compile <span style="color:#a31515">&#39;com.tealium:lifecycle:1.1&#39;</span>
+}
+</code></pre></div><p>To copy Bridging logic:</p>
 <ol>
-<li><p>From the Android folder, add <code>TealiumModule.java</code> and <code>TealiumPackage.java</code> into your project files.</p></li>
-
-<li><p>Include <code>TealiumPackage</code> into the <code>getPackages()</code> method of your <code>MainApplication.java</code> file.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@Override
-<span style="color:#00f">protected</span> List getPackages() {
-  <span style="color:#00f">return</span> Arrays.asList(
-      <span style="color:#00f">new</span> MainReactPackage(),
-      <span style="color:#00f">new</span> TealiumPackage()    <span style="color:#008000">// &lt;--- Add TealiumPackage
-</span><span style="color:#008000"></span>  );
-}</code></pre></div></li>
+<li>
+<p>From the Android folder, add <code>TealiumModule.java</code> and <code>TealiumPackage.java</code> into your project files.</p>
+</li>
+<li>
+<p>Include <code>TealiumPackage</code> into the <code>getPackages()</code> method of your <code>MainApplication.java</code> file.</p>
+</li>
 </ol>
-
-<h3 id="ios-1">iOS</h3>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@Override
+<span style="color:#00f">protected</span> List getPackages() {
+      <span style="color:#00f">return</span> Arrays.asList(
+          <span style="color:#00f">new</span> MainReactPackage(),
+          <span style="color:#00f">new</span> TealiumPackage()    <span style="color:#008000">// &lt;--- Add TealiumPackage
+</span><span style="color:#008000"></span>      );
+}
+</code></pre></div><h3 id="ios-1">iOS</h3>
 <p>Adding Tealium for iOS to a React Native project requires the same steps for a non-React Native application (with the exception of the bridging files), so reference <a href="/platforms/ios/">Adding Tealium to Your iOS App</a> for complete details.</p>
-
 <p>The Core library is required and optional modules are added as needed. These are available from <a href="https://github.com/Tealium/tealium-ios">our GitHub repository for iOS</a>.</p>
-
 <p>The sample app is for developer experimentation and not meant for publishing on the App Store, so it uses the modules <code>TealiumIOS.framework</code> and <code>TealiumIOSLifecycle.framework</code> (suitable for a simulator but not for publishing). When working on your own app with intent to publish to the App Store, make sure to use the frameworks in the <a href="https://github.com/Tealium/tealium-ios/tree/master/DevicesOnly">devices only folder</a>.</p>
-
 <h2 id="install-cocoapods">Install (CocoaPods)</h2>
-
 <p>CocoaPods is another way to perform the Installation. Our pod is named &ldquo;TealiumIOS&rdquo;. See the <a href="/platforms/ios/">Tealium for iOS guide</a> for full details. The command <code>create-react-native-app</code> does not create a Podfile so the sample app was built using manual installation. For complex production apps with many dependencies, CocoaPods is the recommended method.</p>
-
 <h4 id="copy-bridging-logic">Copy Bridging Logic</h4>
-
 <p>In the <a href="https://github.com/Tealium/tealium-react-native/tree/master/ios">GitHub repository</a>, there are two files that provide the bridging between the Tealium native iOS SDK and the Javascript in your React Native app: <code>TealiumModule.m</code> and <code>TealiumModule.h</code>.</p>
-
 <p>Copy these two files into your app&rsquo;s main project.</p>
-
 <h2 id="javascript">JavaScript</h2>
-
 <p>The method for importing the module into your app depends on how you installed.</p>
-
 <p>If you installed via NPM, add this line to your code:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">import</span> Tealium from <span style="color:#a31515">&#39;tealium-react-native&#39;</span>;
-</code></pre></div>
-<p>If you installed manually, then in the  <code>npm-package</code> folder of the <a href="https://github.com/Tealium/tealium-react-native">GitHub repository</a>, find the file <code>index.js</code>, rename it to <code>TealiumModule.js</code> and copy it into your React Native JavaScript Project.</p>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">import</span> Tealium from <span style="color:#a31515">&#39;tealium-react-native&#39;</span>;
+</code></pre></div><p>If you installed manually, then in the  <code>npm-package</code> folder of the <a href="https://github.com/Tealium/tealium-react-native">GitHub repository</a>, find the file <code>index.js</code>, rename it to <code>TealiumModule.js</code> and copy it into your React Native JavaScript Project.</p>
 <p>Next, add this line to your code to import the Tealium JavaScript module:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">import</span> Tealium from <span style="color:#a31515">&#39;./TealiumModule&#39;</span>;
-</code></pre></div>
-<h2 id="initialize">Initialize</h2>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">import</span> Tealium from <span style="color:#a31515">&#39;./TealiumModule&#39;</span>;
+</code></pre></div><h2 id="initialize">Initialize</h2>
 <p>Once your app has been installed, initialize the <code>Tealium</code> instance with the <a href="/platforms/react-native-v1/api/#initialize"><code>initialize()</code></a> method, as shown in the following examples:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.initialize(<span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.initialize(<span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
                    <span style="color:#a31515">&#34;PROFILE&#34;</span>,
                    <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
                    <span style="color:#a31515">&#34;IOS_DATA_SOURCE_KEY&#34;</span>,
                    <span style="color:#a31515">&#34;ANDROID_DATA_SOURCE_KEY&#34;</span>)
-</code></pre></div>
-<p><strong>Consent Management</strong><br />
+</code></pre></div><p><strong>Consent Management</strong><br>
 To use Consent Management, initialize with the method <a href="/platforms/react-native-v1/api/#initializewithconsentmanager"><code>initializeWithConsentManager()</code></a> using the same parameters.</p>
-
 <p>Learn more:</p>
-
 <ul>
 <li><a href="/platforms/android-java/consent-management/">Consent Manager for Android</a></li>
 <li><a href="/platforms/ios-swift/consent-management/">Consent Manager for iOS</a></li>
 </ul>
-
-<p><strong>Custom Initialization</strong><br />
+<p><strong>Custom Initialization</strong><br>
 All initialization options are available with the method <a href="/platforms/react-native-v1/api/#initializecustom"><code>initializeCustom()</code></a>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.initializeCustom(<span style="color:#a31515">&#39;ACCOUNT&#39;</span>,
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Tealium.initializeCustom(<span style="color:#a31515">&#39;ACCOUNT&#39;</span>,
                          <span style="color:#a31515">&#39;PROFILE&#39;</span>,
                          <span style="color:#a31515">&#39;ENVIRONMENT&#39;</span>,
                          <span style="color:#a31515">&#39;IOS_DATA_SOURCE_KEY&#39;</span>,
@@ -468,8 +438,7 @@ All initialization options are available with the method <a href="/platforms/rea
 </span><span style="color:#008000"></span>                         <span style="color:#a31515">&#39;TAG_MANAGEMENT_URL&#39;</span>,    <span style="color:#008000">// custom tag management URL
 </span><span style="color:#008000"></span>                         USE_COLLECT_ENDPOINT,    <span style="color:#008000">// toggle between data endpoints, true: Tealium Collect, false: Visitor Data
 </span><span style="color:#008000"></span>                         ENABLE_CONSENT_MANAGER); <span style="color:#008000">// enable Consent Management
-</span></code></pre></div>
-<p>See the <a href="/platforms/react-native-v1/api/">API Reference</a> for more information.</p>
+</span></code></pre></div><p>See the <a href="/platforms/react-native-v1/api/">API Reference</a> for more information.</p>
 
 </div>
 
@@ -1003,6 +972,26 @@ All initialization options are available with the method <a href="/platforms/rea
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/branch/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-branch">Branch</a>
       </li>
       
     
@@ -1893,6 +1882,26 @@ All initialization options are available with the method <a href="/platforms/rea
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-in-app-purchase">In-App Purchase Module</a>
       </li>
       
     
@@ -4580,6 +4589,26 @@ All initialization options are available with the method <a href="/platforms/rea
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-inapppurchase">In-App Purchase Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/lifecycle/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-lifecycle">Lifecycle Module</a>
       </li>
       
@@ -5094,8 +5123,8 @@ All initialization options are available with the method <a href="/platforms/rea
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/react-native-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-v1-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
+        <a href="/platforms/react-native-v1/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".react-native-v1-overview">Overview</a>
       </li>
       
     

@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.92.1" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -282,7 +282,7 @@ var utag_data = {
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
   
-    <div class="f4 fw4 lh-copy">
+    <div class="f4 fw4 lh-copy mb4">
       Learn to implement consent management for Android Kotlin.
     </div>
   
@@ -294,42 +294,30 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  
-
-<h2 id="usage">Usage</h2>
-
+  <h2 id="usage">Usage</h2>
 <p>The Consent Management module is recommended and automatically enabled upon initialization. It is supported on Android mobile and Android TV.</p>
-
 <p>Initialize the consent manager policy inside <a href="platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy"><code>TealiumConfig</code></a>. Then manage user consent using the Tealium instance at <a href="/platforms/android-kotlin/api/tealium/#consentmanager"><code>tealium.consentManager</code></a>.</p>
-
 <p>Learn more about <a href="/platforms/getting-started/consent-management/">Consent Management</a> and consent policies.</p>
-
 <h2 id="consent">Consent</h2>
-
 <h3 id="set-policy">Set Policy</h3>
-
 <p>Set the consent policy during initialization to one of the following:</p>
-
 <ul>
 <li><code>ConsentPolicy.GDPR</code></li>
 <li><code>ConsentPolicy.CCPA</code></li>
 </ul>
-
-<p class="note"><i class="fas fa-info-circle"></i>Only one policy may be enforced on a device at any given time.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val config = TealiumConfig(...).apply {
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val config = TealiumConfig(...).apply {
   consentManagerPolicy = ConsentPolicy.GDPR
-}</code></pre></div>
-<h3 id="consent-expiration">Consent Expiration</h3>
-
+}
+</code></pre></div><h3 id="consent-expiration">Consent Expiration</h3>
 <p>Set the expiration time for the consent selections using the <a href="/platforms/android-kotlin/api/tealium-config/#consentexpiry"><code>consentExpiry</code></a> property.</p>
-
 <p>The following example sets the consent manager policy to GDPR and the expiration time to 90 days:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val config = TealiumConfig(...).apply {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val config = TealiumConfig(...).apply {
   consentManagerPolicy = ConsentPolicy.GDPR
   consentExpiry = ConsentExpiry(90, TimeUnit.DAYS)
-}</code></pre></div>
-<p>To trigger a callback once the consent has expired, use the <a href="/platforms/android-kotlin/api/consent-manager/#onuserconsentpreferencesupdated"><code>onUserConsentPreferencesUpdated()</code></a> method to check when the <code>ConsentStatus</code> is <code>UNKNOWN</code>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.create(BuildConfig.TEALIUM_INSTANCE, config) {
+}
+</code></pre></div><p>To trigger a callback once the consent has expired, use the <a href="/platforms/android-kotlin/api/consent-manager/#onuserconsentpreferencesupdated"><code>onUserConsentPreferencesUpdated()</code></a> method to check when the <code>ConsentStatus</code> is <code>UNKNOWN</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.create(BuildConfig.TEALIUM_INSTANCE, config) {
     events.subscribe(object : UserConsentPreferencesUpdatedListener {
         override fun onUserConsentPreferencesUpdated(userConsentPreferences: UserConsentPreferences,
                                                      policy: ConsentManagementPolicy) {
@@ -338,42 +326,36 @@ var utag_data = {
             }
         }
     })
-}</code></pre></div>
-<h3 id="set-full-consent">Set Full Consent</h3>
-
+}
+</code></pre></div><h3 id="set-full-consent">Set Full Consent</h3>
 <p>To set full consent:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.consentManager.userConsentStatus = ConsentStatus.CONSENTED</code></pre></div>
-<p class="note"><i class="fas fa-info-circle"></i>Setting full consent implicitly sets the consent categories to the full list of available <a href="/platforms/android-kotlin/api/consent-category/#class-consentcategory"><code>ConsentCategory</code></a> types.</p>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.consentManager.userConsentStatus = ConsentStatus.CONSENTED
+</code></pre></div><!-- raw HTML omitted -->
 <h3 id="set-partial-consent-by-category">Set Partial Consent by Category</h3>
-
 <p>To set partial consent, specify a subset of consent categories. This implicitly sets <a href="/platforms/android-kotlin/api/consent-manager/#userconsentstatus"><code>userConsentStatus</code></a> to <code>CONSENTED</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.consentManager.userConsentCategories = setOf(ConsentCategory.ANALYTICS, ConsentCategory.EMAIL)</code></pre></div>
-<h3 id="set-declined-consent">Set Declined Consent</h3>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.consentManager.userConsentCategories = setOf(ConsentCategory.ANALYTICS, ConsentCategory.EMAIL)
+</code></pre></div><h3 id="set-declined-consent">Set Declined Consent</h3>
 <p>To decline consent set the consent status:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.consentManager.userConsentStatus = ConsentStatus.NOT_CONSENTED</code></pre></div>
-<p>Alternatively, set the consent categories to <code>null</code>.</p>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.consentManager.userConsentStatus = ConsentStatus.NOT_CONSENTED
+</code></pre></div><p>Alternatively, set the consent categories to <code>null</code>.</p>
 <h2 id="custom-consent">Custom Consent</h2>
-
 <p>If your organization&rsquo;s consent requirements are not covered by our standard GDPR and CCPA policies, create a custom consent policy.</p>
-
 <ol>
-<li><p>Implement the <code>ConsentManagementPolicy</code> interface.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val customPolicy = object: ConsentManagementPolicy {
-  <span style="color:#008000">//implement methods...
-</span><span style="color:#008000"></span>}</code></pre></div></li>
-
-<li><p>Pass the <code>ConsentManagementPolicy</code> implementation to the <code>ConsentPolicy.CUSTOM</code> enum using the <code>setCustomPolicy()</code> method.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">ConsentPolicy.CUSTOM.setCustomPolicy(customPolicy)</code></pre></div></li>
-
-<li><p>Pass the <code>ConsentPolicy.CUSTOM</code> option on your <code>TealiumConfig</code> object via the <a href="/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy"><code>consentManagerPolicy</code></a> property.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.consentManagerPolicy = ConsentPolicy.CUSTOM</code></pre></div></li>
+<li>Implement the <code>ConsentManagementPolicy</code> interface.</li>
 </ol>
-
-<p>Your custom <code>ConsentManagementPolicy</code> implementation may delegate existing consent management methods and properties to the provided <code>superPolicy</code>, which overrides the <code>policy</code> key with its own name on each event.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">class</span> CustomPolicy(
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val customPolicy = object: ConsentManagementPolicy {
+      <span style="color:#008000">//implement methods...
+</span><span style="color:#008000"></span>}
+</code></pre></div><ol start="2">
+<li>Pass the <code>ConsentManagementPolicy</code> implementation to the <code>ConsentPolicy.CUSTOM</code> enum using the <code>setCustomPolicy()</code> method.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">ConsentPolicy.CUSTOM.setCustomPolicy(customPolicy)
+</code></pre></div><ol start="3">
+<li>Pass the <code>ConsentPolicy.CUSTOM</code> option on your <code>TealiumConfig</code> object via the <a href="/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy"><code>consentManagerPolicy</code></a> property.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.consentManagerPolicy = ConsentPolicy.CUSTOM
+</code></pre></div><p>Your custom <code>ConsentManagementPolicy</code> implementation may delegate existing consent management methods and properties to the provided <code>superPolicy</code>, which overrides the <code>policy</code> key with its own name on each event.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">class</span> CustomPolicy(
         val superPolicy: ConsentManagementPolicy
         ) : ConsentManagementPolicy by superPolicy {
     override val name: String = <span style="color:#a31515">&#34;custom_policy&#34;</span>
@@ -386,9 +368,8 @@ var utag_data = {
 }
 
 val customPolicy = CustomPolicy(ConsentPolicy.GDPR.create(
-    UserConsentPreferences(ConsentStatus.UNKNOWN, <span style="color:#00f">null</span>)))</code></pre></div>
-<p>After the custom consent policy is implemented, override the following properties and methods available on the <code>ConsentManagementPolicy</code> as needed:</p>
-
+    UserConsentPreferences(ConsentStatus.UNKNOWN, <span style="color:#00f">null</span>)))
+</code></pre></div><p>After the custom consent policy is implemented, override the following properties and methods available on the <code>ConsentManagementPolicy</code> as needed:</p>
 <table>
 <thead>
 <tr>
@@ -397,62 +378,52 @@ val customPolicy = CustomPolicy(ConsentPolicy.GDPR.create(
 <th>Description</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>name</code></td>
 <td><code>String</code></td>
 <td>Name of the <code>ConsentManagementPolicy</code></td>
 </tr>
-
 <tr>
 <td><code>userConsentPreferences</code></td>
 <td><code>UserConsentPreferences</code></td>
 <td>The current <code>UserConsentPreferences</code> that are automatically updated by the <code>ConsentManager</code> when the preferences change</td>
 </tr>
-
 <tr>
 <td><code>consentLoggingEnabled</code></td>
 <td><code>Boolean</code></td>
 <td>Sets whether or not logging of consent changes are required</td>
 </tr>
-
 <tr>
 <td><code>consentLoggingEventName</code></td>
 <td><code>String</code></td>
 <td>Sets the event name (key: <code>tealium_event</code>) to use when logging a change in consent</td>
 </tr>
-
 <tr>
 <td><code>defaultConsentExpiry</code>]</td>
 <td><code>ConsentExpiry</code></td>
 <td>Sets the default expiry time for the <code>ConsentManagementPolicy</code></td>
 </tr>
-
 <tr>
 <td><code>cookieUpdateRequired</code></td>
 <td><code>Boolean</code></td>
 <td>Sets whether or not to update a cookie in the TagManagement module&rsquo;s webview</td>
 </tr>
-
 <tr>
 <td><code>cookieUpdateEventName</code></td>
 <td><code>String</code></td>
 <td>Sets the event name to use when <code>cookieUpdateRequired</code> is set to <code>true</code></td>
 </tr>
-
 <tr>
 <td><code>policyStatusInfo()</code></td>
 <td><code>Map&lt;String, Any&gt;</code></td>
 <td>Returns a map of key value data to be added to the payload of each dispatch</td>
 </tr>
-
 <tr>
 <td><code>shouldQueue()</code></td>
 <td><code>Boolean</code></td>
 <td>Returns whether or not to queue dispatches according to the <code>ConsentPolicy</code> rules</td>
 </tr>
-
 <tr>
 <td><code>shouldDrop()</code></td>
 <td><code>Boolean</code></td>
@@ -460,11 +431,9 @@ val customPolicy = CustomPolicy(ConsentPolicy.GDPR.create(
 </tr>
 </tbody>
 </table>
-
 <h3 id="examples">Examples</h3>
-
 <p>The following example re-maps the policy data keys to avoid Tealium EventStream fixed consent values:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">class</span> CustomPolicy(
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">class</span> CustomPolicy(
         val superPolicy: ConsentManagementPolicy
 ) : ConsentManagementPolicy by superPolicy {
     <span style="color:#00f">return</span> superPolicy.policyStatusInfo().toMutableMap().apply {
@@ -477,9 +446,9 @@ val customPolicy = CustomPolicy(ConsentPolicy.GDPR.create(
             put(<span style="color:#a31515">&#34;custom_consent_categories&#34;</span>, categories)
         }
     }
-}</code></pre></div>
-<p>The following example customizes the consent logging event name that is sent:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">class</span> CustomPolicy(
+}
+</code></pre></div><p>The following example customizes the consent logging event name that is sent:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">class</span> CustomPolicy(
         val superPolicy: ConsentManagementPolicy
 ) : ConsentManagementPolicy by superPolicy {
     override val consentLoggingEventName: String
@@ -490,9 +459,9 @@ val customPolicy = CustomPolicy(ConsentPolicy.GDPR.create(
                 ConsentStatus.UNKNOWN -&gt; <span style="color:#a31515">&#34;user_consent_unknown&#34;</span>
             }
         }
-}</code></pre></div>
-<p>The following example returns third-party consent values, where <code>thirdPartyConsentProvider</code> is a reference to another consent provider:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">class</span> CustomPolicy(
+}
+</code></pre></div><p>The following example returns third-party consent values, where <code>thirdPartyConsentProvider</code> is a reference to another consent provider:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">class</span> CustomPolicy(
         val superPolicy: ConsentManagementPolicy,
         val thirdPartyConsentLibrary: OtherConsentProvider
 ) : ConsentManagementPolicy by superPolicy {
@@ -501,7 +470,8 @@ val customPolicy = CustomPolicy(ConsentPolicy.GDPR.create(
                 .getConsent(userConsentPreferences.consentStatus == ConsentStatus.CONSENTED)
         <span style="color:#00f">return</span> mapOf(<span style="color:#a31515">&#34;my_consent_status&#34;</span> to status)
     }
-}</code></pre></div>
+}
+</code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -1047,6 +1017,26 @@ val customPolicy = CustomPolicy(ConsentPolicy.GDPR.create(
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-appsflyer">AppsFlyer</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/remote-commands/integrations/branch/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-branch">Branch</a>
       </li>
       
     
@@ -1700,8 +1690,8 @@ val customPolicy = CustomPolicy(ConsentPolicy.GDPR.create(
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/android-kotlin/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
+        <a href="/platforms/android-kotlin/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".android-kotlin-overview">Overview</a>
       </li>
       
     
@@ -1937,6 +1927,26 @@ val customPolicy = CustomPolicy(ConsentPolicy.GDPR.create(
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/android-kotlin/module-list/crash-reporter/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-crash-reporter">Crash Reporter Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/android-kotlin/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".android-kotlin-module-list-in-app-purchase">In-App Purchase Module</a>
       </li>
       
     
@@ -4605,6 +4615,26 @@ val customPolicy = CustomPolicy(ConsentPolicy.GDPR.create(
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/module-list/device-data/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-devicedata">DeviceData Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/module-list/in-app-purchase/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-module-inapppurchase">In-App Purchase Module</a>
       </li>
       
     
