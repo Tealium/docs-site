@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.92.1" />
+     <meta name="generator" content="Hugo 0.59.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -276,7 +276,7 @@ var utag_data = {
       </a>
     
       <a href="/platforms/ios-swift-v1/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT V1 MODULE LIST
+        IOS SWIFT V1/MODULE LIST
       </a>
     
   
@@ -300,44 +300,58 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  <h2 id="usage">Usage</h2>
+  
+
+<h2 id="usage">Usage</h2>
+
 <p>The Delegate module provides a multicast delegate handler to allow delegates to monitor or suppress dispatch events. Usage of this module is optional. You only need to use it if you need fine control over individual dispatches/events. For example, to block an event from being sent, or to monitor tracking calls for success/failure.</p>
+
 <p>The following platforms are supported:</p>
+
 <ul>
 <li>iOS</li>
 <li>tvOS</li>
 <li>watchOS</li>
 <li>macOS</li>
 </ul>
+
 <h2 id="install">Install</h2>
+
 <p>Install the Delegate module with CocoaPods or Carthage.</p>
+
 <h3 id="cocoapods">CocoaPods</h3>
+
 <p>To install the Delegate module with CocoaPods, add the following pod to your Podfile:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;tealium-swift/TealiumDelegate&#39;</span>
-</code></pre></div><p>The framework is auto-instantiated. It has a dependency on the <code>TealiumCore</code> pod. <a href="/platforms/ios-swift/install/#cocoapods">Learn more</a> about CocoaPods installation for iOS.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;tealium-swift/TealiumDelegate&#39;</span></code></pre></div>
+<p>The framework is auto-instantiated. It has a dependency on the <code>TealiumCore</code> pod. <a href="/platforms/ios-swift/install/#cocoapods">Learn more</a> about CocoaPods installation for iOS.</p>
+
 <h3 id="carthage">Carthage</h3>
+
 <p>To install the Delegate module with Carthage, following these steps:</p>
+
 <ol>
-<li>
-<p>Go to the app target&rsquo;s General configuration page in Xcode.</p>
-</li>
-<li>
-<p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
-</li>
+<li><p>Go to the app target&rsquo;s General configuration page in Xcode.</p></li>
+
+<li><p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumDelegate.framework</code></pre></div></li>
+
+<li><p>To setup a tracking delegate, add the following required import statement to your project:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumDelegate</span></code></pre></div></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumDelegate.framework
-</code></pre></div><ol start="3">
-<li>To setup a tracking delegate, add the following required import statement to your project:</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumDelegate</span>
-</code></pre></div><p>The framework is auto-instantiated. It has a dependency on <code>TealiumCore</code>. No additional import statements are necessary. <a href="/platforms/ios-swift/install/#carthage">Learn more</a> about Carthage installation for iOS.</p>
+
+<p>The framework is auto-instantiated. It has a dependency on <code>TealiumCore</code>. No additional import statements are necessary. <a href="/platforms/ios-swift/install/#carthage">Learn more</a> about Carthage installation for iOS.</p>
+
 <h2 id="data-layer">Data Layer</h2>
+
 <p>No additional variables are introduced by this module.</p>
+
 <h2 id="api-reference">API Reference</h2>
+
 <h3 id="add"><code>add()</code></h3>
+
 <p>Adds a weak pointer to a class instance conforming to the <code>TealiumDelegate</code> protocol.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">add(delegate)
-</code></pre></div><table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">add(delegate)</code></pre></div>
+<table>
 <thead>
 <tr>
 <th>Parameters</th>
@@ -346,6 +360,7 @@ var utag_data = {
 <th>Example</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>delegate</code></td>
@@ -355,10 +370,12 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
+
 <h3 id="remove"><code>remove()</code></h3>
+
 <p>Removes the weak pointer reference to the given class conforming to the <code>TealiumDelegate</code> protocol.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">remove(delegate)
-</code></pre></div><table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">remove(delegate)</code></pre></div>
+<table>
 <thead>
 <tr>
 <th>Parameters</th>
@@ -367,6 +384,7 @@ var utag_data = {
 <th>Example</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>delegate</code></td>
@@ -376,13 +394,16 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
+
 <h3 id="removeall"><code>removeAll()</code></h3>
+
 <p>Removes all weak pointers from tracking.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">removeAll()
-</code></pre></div><h3 id="tealiumshouldtrack"><code>tealiumShouldTrack()</code></h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">removeAll()</code></pre></div>
+<h3 id="tealiumshouldtrack"><code>tealiumShouldTrack()</code></h3>
+
 <p>If method returns <code>true</code>, the tracking call is allowed to complete. If method returns false, tracking call is canceled.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealiumShouldTrack(data: [String:Any]) -&gt; Bool
-</code></pre></div><table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealiumShouldTrack(data: [String:Any]) -&gt; Bool</code></pre></div>
+<table>
 <thead>
 <tr>
 <th>Parameters</th>
@@ -390,6 +411,7 @@ var utag_data = {
 <th>Example</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>data</code></td>
@@ -398,10 +420,12 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
+
 <h3 id="tealiumtrackcompleted"><code>tealiumTrackCompleted()</code></h3>
+
 <p>Allows monitoring of completed track calls and handling of any errors.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealiumTrackCompleted(success: Bool, info: [String:Any]?, error: Error?)
-</code></pre></div><table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealiumTrackCompleted(success: Bool, info: [String:Any]?, error: Error?)</code></pre></div>
+<table>
 <thead>
 <tr>
 <th>Parameters</th>
@@ -410,6 +434,7 @@ var utag_data = {
 <th>Example</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>success</code></td>
@@ -417,12 +442,14 @@ var utag_data = {
 <td>If dispatch completed acceptably</td>
 <td>[<code>&quot;true&quot;</code>, <code>&quot;false&quot;</code>]</td>
 </tr>
+
 <tr>
 <td><code>info</code></td>
 <td><code>[String:Any]</code></td>
 <td>Dictionary of the original payload and any other returned data regarding dispatch</td>
 <td><code>[&quot;somekey&quot; : &quot;somevalue&quot;]</code></td>
 </tr>
+
 <tr>
 <td><code>error</code></td>
 <td><code>Error</code></td>
@@ -3392,8 +3419,8 @@ var utag_data = {
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
-        <a href="/platforms/ios-swift-v1/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".ios-swift-v1-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/ios-swift-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-overview">Overview</a>
       </li>
       
     
@@ -5272,6 +5299,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/react-native/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/react-native/location/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-location-install">Location Module</a>
       </li>
       
     

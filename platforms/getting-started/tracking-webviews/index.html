@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.92.1" />
+     <meta name="generator" content="Hugo 0.59.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -291,24 +291,32 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  <p>A native app can display web content and delegate functionality to an embedded browser called a webview. To track events from a webview in the Tealium iOS or Android SDK you need a communication bridge to the native code. This is done using JavaScript to invoke native code by sending messages to your app.</p>
-<!-- raw HTML omitted -->
+  
+
+<p>A native app can display web content and delegate functionality to an embedded browser called a webview. To track events from a webview in the Tealium iOS or Android SDK you need a communication bridge to the native code. This is done using JavaScript to invoke native code by sending messages to your app.</p>
+
+<p class="note"><i class="fas fa-info-circle"></i>This solution works in webviews <em>with or without</em> the Tealium Universal Tag (utag.js) installed.</p>
+
 <h2 id="how-it-works">How It Works</h2>
+
 <p>This solution uses the following components:</p>
+
 <ul>
-<li><strong>Webview JavaScript Handler</strong><br>
+<li><strong>Webview JavaScript Handler</strong><br />
 This JavaScript code is a wrapper around your web-based event tracking to send the events to the native app.
+
 <ul>
 <li>With Tealium iQ Tag Management - Use extensions to quickly add this code to your pages.</li>
 <li>Without Tealium - Use existing event tracking or add tracking to the pages.</li>
-</ul>
-</li>
-<li><strong>Native Message Handler</strong><br>
+</ul></li>
+<li><strong>Native Message Handler</strong><br />
 This native code uses a JavaScript interface to receive the messages containing the event data.</li>
 </ul>
+
 <h2 id="webview-javascript-handler">Webview JavaScript Handler</h2>
+
 <p>The following JavaScript code provides two wrapper functions, one for tracking views and one for tracking events, to forward a web-based tracking call to the native code. This code works for iOS and Android.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">function</span> tealView(tealiumEvent, data) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">function</span> tealView(tealiumEvent, data) {
   <span style="color:#00f">if</span> (!tealiumEvent) {
     <span style="color:#00f">return</span>;
   }
@@ -343,65 +351,90 @@ This native code uses a JavaScript interface to receive the messages containing 
     window.webkit.messageHandlers.tealium.postMessage(message);
   }
 }
-</code></pre></div><h3 id="webview-with-tealium">Webview With Tealium</h3>
+</code></pre></div>
+<h3 id="webview-with-tealium">Webview With Tealium</h3>
+
 <p>If the pages loaded in the webview already have the Tealium Universal Tag (utag.js), then add the JavaScript handler code using two <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/JavaScript-Code-Extension/ta-p/11925">JavaScript Code extensions</a>: one to initialize the wrapper functions and one to forward existing tracking calls to the JavaScript interface.</p>
-<!-- raw HTML omitted -->
+
+<p class="note"><i class="fas fa-info-circle"></i>In this scenario the webview pages and the native app must be using different Tealium iQ profiles.</p>
+
 <ol>
-<li>
-<p>Add the <a href="#webview-javascript-handler">JavaScript handler code</a> to a JavaScript Code extension scoped to <strong>Pre Loader</strong>.</p>
-</li>
-<li>
-<p>Add the following code to a second JavaScript Code extension scoped to <strong>All Tags - After Tags</strong>. This forwards the existing Tealium tracking calls, already occuring in the webview, to the native host app.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">if</span> (a == <span style="color:#a31515">&#34;view&#34;</span>) {
+<li>Add the <a href="#webview-javascript-handler">JavaScript handler code</a> to a JavaScript Code extension scoped to <strong>Pre Loader</strong>.</li>
+
+<li><p>Add the following code to a second JavaScript Code extension scoped to <strong>All Tags - After Tags</strong>. This forwards the existing Tealium tracking calls, already occuring in the webview, to the native host app.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">if</span> (a == <span style="color:#a31515">&#34;view&#34;</span>) {
   tealView(b.tealium_event, b);
 } <span style="color:#00f">else</span> <span style="color:#00f">if</span> (a == <span style="color:#a31515">&#34;link&#34;</span>) {
   tealLink(b.tealium_event, b);
 }
 </code></pre></div></li>
 </ol>
-<h3 id="webview-without-tealium">Webview Without Tealium</h3>
-<p>If the pages loaded in the webview do not have Tealium, then add the JavaScript handler code to each page that loads inside a webview. Then call <code>tealView</code> to track page views and <code>tealLink</code> when a non-page view event occurs, such as a button click or cart event.</p>
-<h2 id="native-message-handler">Native Message Handler</h2>
-<!-- raw HTML omitted -->
-<pre><code>@JavascriptInterface
-&lt;span style=&quot;color:#00f&quot;&gt;public&lt;/span&gt; &lt;span style=&quot;color:#2b91af&quot;&gt;void&lt;/span&gt; trackView(String viewName, String data) &lt;span style=&quot;color:#00f&quot;&gt;throws&lt;/span&gt; JSONException {
-    tealium.track(viewName, &lt;span style=&quot;color:#00f&quot;&gt;new&lt;/span&gt; JSONObject(data));
-}
 
-@JavascriptInterface
-&lt;span style=&quot;color:#00f&quot;&gt;public&lt;/span&gt; &lt;span style=&quot;color:#2b91af&quot;&gt;void&lt;/span&gt; trackEvent(String eventName, String data) &lt;span style=&quot;color:#00f&quot;&gt;throws&lt;/span&gt; JSONException {
-	tealium.track(eventName, &lt;span style=&quot;color:#00f&quot;&gt;new&lt;/span&gt; JSONObject(data));
-}
-</code></pre>
-<p>}
-<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->Once the native interface is created, register it with your <!-- raw HTML omitted -->WebView<!-- raw HTML omitted --> to make it visible to JavaScript code running in the <!-- raw HTML omitted -->WebView<!-- raw HTML omitted -->.<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted -->guard<!-- raw HTML omitted --> <!-- raw HTML omitted -->let<!-- raw HTML omitted --> body = message.body <!-- raw HTML omitted -->as<!-- raw HTML omitted -->? [String: Any],
-<!-- raw HTML omitted -->let<!-- raw HTML omitted --> command = body[<!-- raw HTML omitted -->&quot;command&quot;<!-- raw HTML omitted -->] <!-- raw HTML omitted -->as<!-- raw HTML omitted -->? String,
-<!-- raw HTML omitted -->let<!-- raw HTML omitted --> title = body[<!-- raw HTML omitted -->&quot;title&quot;<!-- raw HTML omitted -->] <!-- raw HTML omitted -->as<!-- raw HTML omitted -->? String,
-<!-- raw HTML omitted -->let<!-- raw HTML omitted --> webViewData = body[<!-- raw HTML omitted -->&quot;data&quot;<!-- raw HTML omitted -->] <!-- raw HTML omitted -->as<!-- raw HTML omitted -->? [String: Any] <!-- raw HTML omitted -->else<!-- raw HTML omitted --> {
-<!-- raw HTML omitted -->return<!-- raw HTML omitted -->
-}</p>
-<p><!-- raw HTML omitted -->switch<!-- raw HTML omitted --> command {
-<!-- raw HTML omitted -->case<!-- raw HTML omitted --> <!-- raw HTML omitted -->&quot;track&quot;<!-- raw HTML omitted -->:
-TealiumHelper.shared.tealium?.track(title: title,
-data: webViewData,
-completion: <!-- raw HTML omitted -->nil<!-- raw HTML omitted -->)
-<!-- raw HTML omitted -->case<!-- raw HTML omitted --> <!-- raw HTML omitted -->&quot;trackView&quot;<!-- raw HTML omitted -->:
-TealiumHelper.shared.tealium?.trackView(title: title,
-data: webViewData,
-completion: <!-- raw HTML omitted -->nil<!-- raw HTML omitted -->)
-<!-- raw HTML omitted -->default<!-- raw HTML omitted -->:
-<!-- raw HTML omitted -->break<!-- raw HTML omitted -->
-}
-}
-<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<h3 id="webview-without-tealium">Webview Without Tealium</h3>
+
+<p>If the pages loaded in the webview do not have Tealium, then add the JavaScript handler code to each page that loads inside a webview. Then call <code>tealView</code> to track page views and <code>tealLink</code> when a non-page view event occurs, such as a button click or cart event.</p>
+
+<h2 id="native-message-handler">Native Message Handler</h2>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="Android" title="Android">
+  <p>To invoke native Android code from JavaScript, implement a class with methods marked <a href="https://developer.android.com/reference/android/webkit/JavascriptInterface"><code>@JavaScriptInterface</code></a>:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">public</span> class WebViewInterface {
+
+    @JavascriptInterface
+    <span style="color:#00f">public</span> void trackView(String viewName, String data) <span style="color:#00f">throws</span> JSONException {
+        tealium.track(viewName, <span style="color:#00f">new</span> JSONObject(data));
+    }
+
+    @JavascriptInterface
+    <span style="color:#00f">public</span> void trackEvent(String eventName, String data) <span style="color:#00f">throws</span> JSONException {
+        tealium.track(eventName, <span style="color:#00f">new</span> JSONObject(data));
+    }
+}</code></pre></div>
+<p>Once the native interface is created, register it with your <code>WebView</code> to make it visible to JavaScript code running in the <code>WebView</code>.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">mWebView.addJavascriptInterface(mInterface, <span style="color:#a31515">&#34;WebViewInterface&#34;</span>);</code></pre></div>
+<p class="note"><i class="fas fa-info-circle"></i>Call the method <a href="https://developer.android.com/reference/android/webkit/WebView.html#addJavascriptInterface(java.lang.Object,%20java.lang.String)"><code>addJavascriptInterface()</code></a> prior to calling the <code>webView.loadUrl()</code> method. Also, due to security concerns, only add the <a href="https://developer.android.com/reference/android/webkit/WebView#addJavascriptInterface(java.lang.Object,%20java.lang.String)"><code>JavaScriptInterface</code></a> on API version JELLY_BEAN_MR1 and above.</p>
+
+</div>
+
+<div class="tab-pane" data-lang="iOS" title="iOS">
+  <p>Add the following message handler to the WebView&rsquo;s user <a href="https://developer.apple.com/documentation/webkit/wkusercontentcontroller">content controller</a>:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">webView.configuration.userContentController.add(<span style="color:#00f">self</span>, name: <span style="color:#a31515">&#34;tealium&#34;</span>)</code></pre></div>
+<p>To invoke native iOS code from JavaScript, create a message handler class conforming to the <a href="https://developer.apple.com/documentation/webkit/wkscriptmessagehandler">WKScriptMessageHandler</a> protocol. For tracking, call <a href="/platforms/ios-swift/track/">Tealium.track</a> inside the <a href="https://developer.apple.com/documentation/webkit/wkscriptmessagehandler/1396222-usercontentcontroller">userContentController:didReceive:</a> callback:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> userContentController(<span style="color:#00f">_</span> userContentController: WKUserContentController,
+                          didReceive message: WKScriptMessage) {
+
+  <span style="color:#00f">guard</span> <span style="color:#00f">let</span> body = message.body <span style="color:#00f">as</span>? [String: Any],
+      <span style="color:#00f">let</span> command = body[<span style="color:#a31515">&#34;command&#34;</span>] <span style="color:#00f">as</span>? String,
+      <span style="color:#00f">let</span> title = body[<span style="color:#a31515">&#34;title&#34;</span>] <span style="color:#00f">as</span>? String,
+      <span style="color:#00f">let</span> webViewData = body[<span style="color:#a31515">&#34;data&#34;</span>] <span style="color:#00f">as</span>? [String: Any] <span style="color:#00f">else</span> {
+          <span style="color:#00f">return</span>
+  }
+
+  <span style="color:#00f">switch</span> command {
+  <span style="color:#00f">case</span> <span style="color:#a31515">&#34;track&#34;</span>:
+      TealiumHelper.shared.tealium?.track(title: title,
+                                          data: webViewData,
+                                          completion: <span style="color:#00f">nil</span>)
+  <span style="color:#00f">case</span> <span style="color:#a31515">&#34;trackView&#34;</span>:
+      TealiumHelper.shared.tealium?.trackView(title: title,
+                                              data: webViewData,
+                                              completion: <span style="color:#00f">nil</span>)
+  <span style="color:#00f">default</span>:
+      <span style="color:#00f">break</span>
+  }
+}</code></pre></div>
+</div>
+
+<p></div>
+</div></p>
+
 <h2 id="supported-libraries">Supported Libraries</h2>
+
 <p>The following platforms support the JavaScript interface solution:</p>
+
 <ul>
 <li><a href="/platforms/android-java/">Tealium for Android</a></li>
 <li><a href="/platforms/ios-swift/">Tealium for iOS</a></li>
@@ -493,8 +526,8 @@ completion: <!-- raw HTML omitted -->nil<!-- raw HTML omitted -->)
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
-        <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".getting-started-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-overview">Overview</a>
       </li>
       
     
@@ -5247,6 +5280,26 @@ completion: <!-- raw HTML omitted -->nil<!-- raw HTML omitted -->)
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/react-native/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/react-native/location/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-location-install">Location Module</a>
       </li>
       
     

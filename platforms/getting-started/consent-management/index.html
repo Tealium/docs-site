@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.92.1" />
+     <meta name="generator" content="Hugo 0.59.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -291,60 +291,80 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  <p><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Explicit-Consent-Prompt-Manager/ta-p/22714">Tealium Consent Management</a> adds consent and data privacy support. It also adds the ability to prompt your users for consent, retain their selection, and honor that selection throughout the tracking behavior.</p>
+  
+
+<p><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Explicit-Consent-Prompt-Manager/ta-p/22714">Tealium Consent Management</a> adds consent and data privacy support. It also adds the ability to prompt your users for consent, retain their selection, and honor that selection throughout the tracking behavior.</p>
+
 <p>The behavior of the Consent Manager is controlled by a consent policy, which is based on the region of the app user.</p>
+
 <h2 id="consent-policies">Consent Policies</h2>
+
 <p>The Tealium Consent Manager is designed to support multiple regulatory requirements and can be adapted to support new ones as they emerge. These policies are configured at initialization time by setting the <code>TealiumConfig</code> <code>consentPolicy</code> property.</p>
+
 <h3 id="gdpr">GDPR</h3>
+
 <p>Tealium iQ Tag Management and EventStream support the General Data Protection Regulation (GDPR) as the default policy.</p>
+
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Consent Status</th>
-<th style="text-align:left">Description</th>
+<th align="left">Consent Status</th>
+<th align="left">Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
-<td style="text-align:left"><strong>Not Set</strong> (default)</td>
-<td style="text-align:left">Tracking calls are queued locally until consent status is set.</td>
+<td align="left"><strong>Not Set</strong> (default)</td>
+<td align="left">Tracking calls are queued locally until consent status is set.</td>
 </tr>
+
 <tr>
-<td style="text-align:left"><strong>Consent</strong></td>
-<td style="text-align:left">Tracking calls are sent.<!-- raw HTML omitted -->Consent categories are included in all tracking calls.<!-- raw HTML omitted -->If consent logging is enabled the <code>grant_consent</code> event is sent.</td>
+<td align="left"><strong>Consent</strong></td>
+<td align="left">Tracking calls are sent.<br>Consent categories are included in all tracking calls.<br>If consent logging is enabled the <code>grant_consent</code> event is sent.</td>
 </tr>
+
 <tr>
-<td style="text-align:left"><strong>Declined</strong></td>
-<td style="text-align:left">Tracking calls are not sent.<!-- raw HTML omitted -->If consent logging in enabled the <code>decline_consent</code> event is sent.</td>
+<td align="left"><strong>Declined</strong></td>
+<td align="left">Tracking calls are not sent.<br>If consent logging in enabled the <code>decline_consent</code> event is sent.</td>
 </tr>
 </tbody>
 </table>
+
 <h3 id="ccpa">CCPA</h3>
+
 <p>Tealium iQ Tag Management supports the California Consumer Privacy Act (CCPA) policy.</p>
+
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Consent Status</th>
-<th style="text-align:left">Description</th>
+<th align="left">Consent Status</th>
+<th align="left">Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
-<td style="text-align:left"><strong>Not Set</strong> (default)</td>
-<td style="text-align:left">Tracking calls are sent.<!-- raw HTML omitted -->The <a href="#data-layer"><code>do_not_sell</code></a> flag is set to <code>false</code>.<!-- raw HTML omitted -->Tags are unaffected.</td>
+<td align="left"><strong>Not Set</strong> (default)</td>
+<td align="left">Tracking calls are sent.<br>The <a href="#data-layer"><code>do_not_sell</code></a> flag is set to <code>false</code>.<br>Tags are unaffected.</td>
 </tr>
+
 <tr>
-<td style="text-align:left"><strong>Consent</strong></td>
-<td style="text-align:left">Tracking calls are sent.<!-- raw HTML omitted -->The <a href="#data-layer"><code>do_not_sell</code></a> flag set to <code>false</code>.<!-- raw HTML omitted -->Tags are  unaffected.</td>
+<td align="left"><strong>Consent</strong></td>
+<td align="left">Tracking calls are sent.<br>The <a href="#data-layer"><code>do_not_sell</code></a> flag set to <code>false</code>.<br>Tags are  unaffected.</td>
 </tr>
+
 <tr>
-<td style="text-align:left"><strong>Declined</strong></td>
-<td style="text-align:left">Tracking calls are sent.<!-- raw HTML omitted -->The <a href="#data-layer"><code>do_not_sell</code></a> flag is set to <code>true</code>.<!-- raw HTML omitted -->Tags configured in the “Affected Tags” section of the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/CCPA-Privacy-Banner-and-Popup-Setup-Guide/ta-p/31686">CCPA Consent Manager</a> are not triggered.</td>
+<td align="left"><strong>Declined</strong></td>
+<td align="left">Tracking calls are sent.<br>The <a href="#data-layer"><code>do_not_sell</code></a> flag is set to <code>true</code>.<br>Tags configured in the “Affected Tags” section of the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/CCPA-Privacy-Banner-and-Popup-Setup-Guide/ta-p/31686">CCPA Consent Manager</a> are not triggered.</td>
 </tr>
 </tbody>
 </table>
+
 <h2 id="available-actions">Available Actions</h2>
+
 <p>The following actions are available with the Consent Management module.</p>
+
 <ul>
 <li>Set Consent Status</li>
 <li>Set User Consent Categories</li>
@@ -353,8 +373,11 @@ var utag_data = {
 <li>Set Consent Policy</li>
 <li>Get Consent Policy</li>
 </ul>
+
 <h2 id="supported-platforms">Supported Platforms</h2>
+
 <p>Support for the following libraries is provided:</p>
+
 <ul>
 <li><a href="/platforms/android-java/consent-management/">Android (Java)</a> - Included in the library and enabled in the native code upon initialization.</li>
 <li><a href="/platforms/android-kotlin/consent-management/">Android (Kotlin)</a> - Included in the library and enabled in the native code upon initialization.</li>
@@ -364,9 +387,13 @@ var utag_data = {
 <li><a href="/platforms/react-native/">React Native</a></li>
 <li><a href="/platforms/xamarin/consent-mangagement/">Xamarin</a></li>
 </ul>
+
 <p>For a full feature comparison, see the <a href="/platforms/getting-started/feature-comparison/">Mobile Feature Comparison</a>.</p>
+
 <h2 id="data-layer">Data Layer</h2>
+
 <p>The following data layer variables are included with each tracking call when the Consent Management module is in use:</p>
+
 <table>
 <thead>
 <tr>
@@ -375,22 +402,26 @@ var utag_data = {
 <th>Examples</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>policy</code></td>
 <td>The policy under which consent was collected (default: <code>gdpr</code>)</td>
 <td><code>gdpr</code> or <code>ccpa</code></td>
 </tr>
+
 <tr>
 <td><code>consent_status</code></td>
 <td>The user&rsquo;s current consent status</td>
 <td><code>consented</code> or <code>notConsented</code></td>
 </tr>
+
 <tr>
 <td><code>consent_categories</code></td>
 <td>An array of the user&rsquo;s selected consent categories</td>
 <td><code>[&quot;analytics&quot;, &quot;cdp&quot;]</code></td>
 </tr>
+
 <tr>
 <td><code>do_not_sell</code></td>
 <td>Only set if the CCPA consent policy is active</td>
@@ -485,8 +516,8 @@ var utag_data = {
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
-        <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".getting-started-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-overview">Overview</a>
       </li>
       
     
@@ -5239,6 +5270,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/react-native/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/react-native/location/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-location-install">Location Module</a>
       </li>
       
     

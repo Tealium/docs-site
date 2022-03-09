@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.92.1" />
+     <meta name="generator" content="Hugo 0.59.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -253,7 +253,7 @@ var utag_data = {
               <li><a href="#recommended-modules">Recommended Modules</a></li>
               <ul class="toc-h3"><li><a href="#base-implementation">Base Implementation</a></li>
               <li><a href="#tag-management">Tag Management</a></li>
-              <li><a href="#tealium-eventstreamaudiencestream">Tealium EventStream/AudienceStream</a></li>
+              <li><a href="#tealium-eventstream-audiencestream">Tealium EventStream/AudienceStream</a></li>
               </ul><li><a href="#install-modules">Install Modules</a></li>
               <ul class="toc-h3"><li><a href="#cocoapods">CocoaPods</a></li>
               <li><a href="#carthage">Carthage</a></li>
@@ -294,10 +294,16 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  <p>The Tealium Swift library is designed around a modular architecture. Modules are automatically instantiated if they are present, and retrieve their configuration from the <code>TealiumConfig</code> instance.</p>
+  
+
+<p>The Tealium Swift library is designed around a modular architecture. Modules are automatically instantiated if they are present, and retrieve their configuration from the <code>TealiumConfig</code> instance.</p>
+
 <p>All modules have a dependency on <code>TealiumCore</code>. This means installing any of the optional modules installs <code>TealiumCore</code>.</p>
+
 <h2 id="module-list">Module List</h2>
+
 <p>The modules are listed below in priority order (the internal order in which auto-instantiation takes place).</p>
+
 <table>
 <thead>
 <tr>
@@ -307,6 +313,7 @@ var utag_data = {
 <th>Supported Platforms</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><a href="/platforms/ios-swift/module-list/appdata/">AppData</a></td>
@@ -314,120 +321,140 @@ var utag_data = {
 <td>Adds <code>app_uuid</code> to track data</td>
 <td>iOS, macOS, tvOS, watchOS</td>
 </tr>
+
 <tr>
 <td><a href="/platforms/ios-swift/module-list/attribution/">Attribution</a></td>
 <td><code>attribution</code></td>
 <td>Adds IDFA to track data</td>
 <td>iOS</td>
 </tr>
+
 <tr>
 <td><a href="/platforms/ios-swift/module-list/autotracking/">AutoTracking</a></td>
 <td><code>autotracking</code></td>
 <td>Prepares &amp; sends dispatches for most UI, including <code>viewDidAppear</code> events</td>
 <td>iOS, tvOS</td>
 </tr>
+
 <tr>
 <td><a href="/platforms/ios-swift/module-list/collect/">Collect</a></td>
 <td><code>collect</code></td>
 <td>Packages and delivers track call to Tealium Collect or other custom URL endpoint</td>
 <td>iOS, macOS, tvOS, watchOS</td>
 </tr>
+
 <tr>
 <td><a href="/platforms/ios-swift/consent-management">ConsentManager</a></td>
 <td><code>consentmanager</code></td>
 <td>Aids GDPR/privacy compliance</td>
 <td>iOS, macOS, tvOS, watchOS</td>
 </tr>
+
 <tr>
 <td><a href="/platforms/ios-swift/module-list/connectivity/">Connectivity</a></td>
 <td>connectivity</td>
 <td>Adds ability to flag track messages for delayed delivery due to connectivity loss</td>
 <td>iOS, macOS, tvOS, watchOS</td>
 </tr>
+
 <tr>
 <td><a href="/platforms/ios-swift/module-list/crash-reporter/">CrashReporter</a></td>
 <td><code>crashreporter</code></td>
 <td>Automatically tracks crashes in your app. Once the module is enabled and the accompanying frameworks are installed, a crash event is triggered if a crash occurs in your app.</td>
 <td>iOS</td>
 </tr>
+
 <tr>
 <td><a href="/platforms/ios-swift/module-list/datasource/">DataSource</a></td>
 <td><code>datasource</code></td>
 <td>Adds an additional config init option for datasource IDs. Included in Core with Swift 1.8.0+.</td>
 <td>iOS, macOS, tvOS, watchOS</td>
 </tr>
+
 <tr>
 <td><a href="/platforms/ios-swift/module-list/defaults-storage/">DefaultStorage</a></td>
 <td><code>defaultstorage</code></td>
 <td>Adds general persistence capability for any module (backed by UserDefaults). Included in Core with Swift 1.8.0+.</td>
 <td>iOS, tvOS, watchOS, macOS</td>
 </tr>
+
 <tr>
 <td><a href="/platforms/ios-swift/module-list/delegate/">Delegate</a></td>
 <td><code>delegate</code></td>
 <td>Adds multicast delegates to monitor or suppress track dispatches</td>
 <td>iOS, macOS, tvOS, watchOS</td>
 </tr>
+
 <tr>
 <td><a href="/platforms/ios-swift/module-list/device-data/">DeviceData</a></td>
 <td><code>devicedata</code></td>
 <td>Add as additional device info to all track data</td>
 <td>iOS, macOS, tvOS, watchOS</td>
 </tr>
+
 <tr>
 <td><a href="/platforms/ios-swift/module-list/dispatch-queue/">DispatchQueue</a></td>
 <td><code>dispatchqueue</code></td>
 <td>Adds persistent storage for queued dispatches and manages Event Batching, if enabled</td>
 <td>iOS, macOS, tvOS, watchOS</td>
 </tr>
+
 <tr>
 <td><a href="/platforms/ios-swift/module-list/file-storage/">FileStorage</a></td>
 <td><code>filestorage</code></td>
 <td>Adds general persistence capability for any module - replaces the Defaults Storage module (backed by <code>NSKeyedArchiver</code>). Included in Core with Swift 1.8.0+.</td>
 <td>iOS, macOS, watchOS, tvOS</td>
 </tr>
+
 <tr>
 <td><a href="/platforms/ios-swift/module-list/lifecycle/">Lifecycle</a></td>
 <td><code>lifecycle</code></td>
 <td>Tracks launches, wakes, sleeps, and crash instances (Auto or manually)</td>
 <td>iOS, tvOS, watchOS</td>
 </tr>
+
 <tr>
 <td><a href="/platforms/ios-swift/module-list/location/">Location</a></td>
 <td><code>location</code></td>
 <td>Provides device location data for your events, and the ability to add geofences around points of interest</td>
 <td>iOS, Mac Catalyst, macOS, tvOS, watchOS</td>
 </tr>
+
 <tr>
 <td><a href="/platforms/ios-swift/module-list/logger/">Logger</a></td>
 <td><code>logger</code></td>
 <td>Debug logging</td>
 <td>iOS, macOS, tvOS, watchOs</td>
 </tr>
+
 <tr>
 <td><a href="/platforms/ios-swift/module-list/persistent-data/">PersistentData</a></td>
 <td><code>persistentdata</code></td>
 <td>Adds ability to add persistent data to all track data</td>
 <td>iOS, macOS, tvOS, watchOS</td>
 </tr>
+
 <tr>
 <td><a href="/platforms/ios-swift/module-list/remote-commands/">RemoteCommands</a></td>
 <td><code>remotecommands</code></td>
 <td>Permits configurable remote code block execution via <code>URLScheme</code>, <code>UIWebView</code>, or <code>TagManagement</code></td>
 <td>iOS</td>
 </tr>
+
 <tr>
 <td><a href="/platforms/ios-swift/module-list/tag-management/">TagManagement</a></td>
 <td><code>tagmanagement</code></td>
 <td><code>UIWebview</code> based dispatch service that permits library to run TIQ/<code>utag.js</code></td>
 <td>iOS</td>
 </tr>
+
 <tr>
 <td><a href="/platforms/ios-swift/module-list/visitor-service/">Visitor Service</a></td>
 <td><code>visitorservice</code></td>
 <td>Retrieves the updated visitor profile from the visitor service</td>
 <td>iOS, macOS, tvOS, watchOS</td>
 </tr>
+
 <tr>
 <td><a href="/platforms/ios-swift/module-list/volatile-data/">Volatile Data</a></td>
 <td><code>volatiledata</code></td>
@@ -436,49 +463,69 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
+
 <h2 id="recommended-modules">Recommended Modules</h2>
+
 <p>The following sections lists the recommended modules.</p>
+
 <h3 id="base-implementation">Base Implementation</h3>
+
 <p>This is the recommended list of modules for a base implementation.</p>
+
 <ul>
-<li>Core</li>
-<li>Attribution</li>
-<li>AppData</li>
-<li>Connectivity</li>
-<li>Delegate</li>
-<li>DeviceData</li>
-<li>DispatchQueue</li>
-<li>Lifecycle</li>
-<li>Logger</li>
-<li>PersistentData</li>
+<li>Core<br /></li>
+<li>Attribution<br /></li>
+<li>AppData<br /></li>
+<li>Connectivity<br /></li>
+<li>Delegate<br /></li>
+<li>DeviceData<br /></li>
+<li>DispatchQueue<br /></li>
+<li>Lifecycle<br /></li>
+<li>Logger<br /></li>
+<li>PersistentData<br /></li>
 <li>VolatileData</li>
 </ul>
+
 <h3 id="tag-management">Tag Management</h3>
+
 <p>In addition to the base modules, these modules are needed for a tag management installation.</p>
+
 <ul>
 <li>Consent Manager</li>
 <li>RemoteCommands</li>
 <li>TagManagement</li>
 </ul>
-<h3 id="tealium-eventstreamaudiencestream">Tealium EventStream/AudienceStream</h3>
+
+<h3 id="tealium-eventstream-audiencestream">Tealium EventStream/AudienceStream</h3>
+
 <p>In addition to the base modules, these modules are needed for an EventStream/ AudienceStream installation.</p>
+
 <ul>
 <li>Collect</li>
 <li>Consent Manager</li>
 </ul>
+
 <h2 id="install-modules">Install Modules</h2>
+
 <p>Install the modules with CocoaPods or Carthage.</p>
+
 <h3 id="cocoapods">CocoaPods</h3>
+
 <p>See <a href="/platforms/ios-swift/install/#cocoapods">Install with CocoaPods</a> for instructions on including/excluding specific modules.</p>
+
 <h3 id="carthage">Carthage</h3>
+
 <p>When you install with Carthage, you must explicitly import the modules you require. You may import all modules if you prefer, and use the module list, as described earlier, but your app is lighter if you only import the modules you need. See <a href="/platforms/ios-swift/install/#carthage">Install with Carthage</a> for instructions on including/excluding specific modules.</p>
+
 <h2 id="disable-modules">Disable Modules</h2>
+
 <p>Prior to version 1.6.5 of the Tealium Swift SDK, the only way to disable unneeded modules if you were using CocoaPods or Carthage was via the <a href="/platforms/ios-swift/api/tealium-config/">TealiumConfig</a> object, by setting an array of enabled/disabled modules (whitelist/blacklist). In this scenario, all the code was still compiled into your final app bundle, but any disabled modules were deactivated.</p>
+
 <p>This method is still supported, but we recommend migrating to one of the other methods below to take advantage of the performance gains associated with compiling less code into your app bundle. Safely leave the module list enabled on the <code>TealiumConfig</code> object, and simultaneously remove unneeded modules. In the case where you attempt to enable a module, but the code is not present in your app bundle, it does not cause any undesired consequences, and simply has no effect.</p>
+
 <p>The following example blacklists the auto-tracking module:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> modulesList = TealiumModulesList(isWhitelist: <span style="color:#00f">false</span>, moduleNames: [<span style="color:#a31515">&#34;autotracking&#34;</span>])
-config.setModulesList(modulesList)
-</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> modulesList = TealiumModulesList(isWhitelist: <span style="color:#00f">false</span>, moduleNames: [<span style="color:#a31515">&#34;autotracking&#34;</span>])
+config.setModulesList(modulesList)</code></pre></div>
 </div>
 
 <b class="pv1 br2 dib tc mv3 link">
@@ -3439,8 +3486,8 @@ config.setModulesList(modulesList)
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
-        <a href="/platforms/ios-swift-v1/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".ios-swift-v1-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/ios-swift-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-overview">Overview</a>
       </li>
       
     
@@ -5319,6 +5366,26 @@ config.setModulesList(modulesList)
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/react-native/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/react-native/location/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-location-install">Location Module</a>
       </li>
       
     

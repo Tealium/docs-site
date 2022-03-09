@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.92.1" />
+     <meta name="generator" content="Hugo 0.59.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -290,7 +290,9 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  <p>
+  
+
+<p>
 
 
   
@@ -298,10 +300,15 @@ var utag_data = {
 <div class="flex justify-center bg-secondary ph3 pv4 mb3 br3 fr ml3"><img src="/images/icons/icon-data-chain-collect.png" alt="" width="100"  height="62" ></div>
 
 Data sources send data into Tealium. A data source can a website, a CRM system, a mobile SDK, a server-side application, or even a webhook. The number of possible data sources is endless, however there are two primary methods for sending data to Tealium: web-based and API-based. Choose the method that matches your platform to determine how you will send data to Tealium.</p>
+
 <h2 id="web">Web</h2>
+
 <p>Web based integrations use the Tealium Universal Tag (utag.js) and Universal Data Object (utag_data) to load the Tealium Collect tag, a JavaScript tag that sends data to the Tealium Customer Data Hub. The most common web based integrations are CMS plugins. A Tealium plugin will add the necessary JavaScript tag and data layer object to the pages in the CMS.</p>
+
 <p>A successful CMS integration loads the Universal Tag and dynamically populates a data layer with built-in system data, such as page name, site language, and user login status to name a few. An e-commerce platform would populate product and order variables on the relevant pages in the system.</p>
+
 <p>Examples of web integrations include:</p>
+
 <ul>
 <li>JavaScript (Web)</li>
 <li>Angular</li>
@@ -309,16 +316,23 @@ Data sources send data into Tealium. A data source can a website, a CRM system, 
 <li>Shopify</li>
 <li>SiteCore</li>
 </ul>
+
 <p>Learn More</p>
+
 <ul>
 <li><a href="https://community.tealiumiq.com/t5/Data-Layer/An-Introduction-to-the-Data-Layer/ta-p/15885">An Introduction to the Data Layer</a></li>
 <li><a href="/platforms/javascript/install/">JavaScript Install</a></li>
 </ul>
+
 <h2 id="api">API</h2>
+
 <p>API based integrations use the Tealium Collect HTTP endpoint or a custom endpoint to send data to the Tealium Customer Data Hub. This approach is useful if your system supports triggered callbacks or webhooks. The most common platforms for API integrations are CRM and email marketing platforms.</p>
+
 <p>The following lists the available API data sources integrations:</p>
+
 <ul>
 <li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Affirm-Incoming-Webhook-Setup-Guide/ta-p/32839">Affirm</a></li>
+<li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Braze-Setup-Guide/ta-p/36303">Braze Currents</a></li>
 <li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Hubspot-Workflow-Incoming-Webhook-Setup-Guide/ta-p/26675">Hubspot</a></li>
 <li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Intercom-Incoming-Webhook-Setup-Guide/ta-p/32286">Intercom</a></li>
 <li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Iterable-Incoming-Webhook-Setup-Guide/ta-p/32320">Iterable</a></li>
@@ -327,21 +341,30 @@ Data sources send data into Tealium. A data source can a website, a CRM system, 
 <li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/SendGrid-Incoming-Webhook-Setup-Guide/ta-p/25099">SendGrid</a></li>
 <li>Zapier</li>
 </ul>
+
 <p>Learn More</p>
+
 <ul>
 <li><a href="/platforms/http-api/">Tealium HTTP API</a></li>
 </ul>
+
 <h2 id="benefits">Benefits</h2>
+
 <p>Benefits of data source integrations include:</p>
+
 <ul>
 <li>Tealium users can easily onboard and unify data from various systems to create personalized customer experiences.</li>
 <li>Tealium users can identify the origin of all incoming data for a clearer understanding of their data supply chain.</li>
 <li>Higher quality of incoming data.</li>
 </ul>
-<!-- raw HTML omitted -->
+
+<p class="note"><i class="fas fa-info-circle"></i>Tealium offers a <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/File-Import-Data-Source/ta-p/26216">file import data source</a> which processes CSV files from several cloud storage providers. However, file imports are not currently offered as an integration method for partners.</p>
+
 <h2 id="example-mailchimp">Example: Mailchimp</h2>
+
 <p>Mailchimp is an all-in-one marketing platform that offers webhooks for common email actions such as subscriptions, profile updates, email changes, and campaign statuses. For example, when MailChimp receives a subscribe action it can trigger a webhook with the data related to that event. In this case, the <code>subscribe</code> event type has the following fields (brackets indicate nested JSON):</p>
-<pre tabindex="0"><code>{
+
+<pre><code>{
   &quot;type&quot;: &quot;subscribe&quot;,
   &quot;fired_at&quot;: &quot;2009-03-26 21:35:57&quot;,
   &quot;data[id]&quot;: &quot;8a25ff1d98&quot;,
@@ -355,16 +378,23 @@ Data sources send data into Tealium. A data source can a website, a CRM system, 
   &quot;data[ip_opt]&quot;: &quot;10.20.10.30&quot;,
   &quot;data[ip_signup]&quot;: &quot;10.20.10.30&quot;
 }
-</code></pre><p>Tealium&rsquo;s official data source integration with Mailchimp offers these additional benefits from using the generic HTTP API:</p>
+</code></pre>
+
+<p>Tealium&rsquo;s official data source integration with Mailchimp offers these additional benefits from using the generic HTTP API:</p>
+
 <ul>
-<li><strong>Dedicated Endpoint</strong><br>
+<li><strong>Dedicated Endpoint</strong><br />
 Tealium issues a customized endpoint for this data source. For example: <code>https://collect.tealiumiq.com/integration/event/my_account/main/abc123</code>.</li>
-<li><strong>Variable Transposing</strong><br>
+<li><strong>Variable Transposing</strong><br />
 Tealium flattens the JSON body and prepends <code>mailchimp_</code> to all field names to give all MailChimp data its own namespace. For example, <code>&quot;data[merges][EMAIL]&quot;</code> becomes <code>mailchimp_data_merges_email</code>.</li>
 </ul>
+
 <p>These benefits provide improved data quality and governance for all downstream data enrichments and actions. By combining the MailChimp data source with other data sources and activations, Tealium users maintain a more accurate and up-to-date single view of their customers.</p>
+
 <p>Learn more: <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/MailChimp-Incoming-Webhook-Setup-Guide/ta-p/24188">MailChimp Incoming Webhook Setup Guide</a></p>
+
 <h2 id="become-a-partner">Become a Partner</h2>
+
 <p><a href="https://community.tealiumiq.com/t5/Become-a-Technology-Partner/bd-p/become-a-technology-partner">Contact us</a> to integrate your technology.</p>
 
 </div>
@@ -425,8 +455,8 @@ Tealium flattens the JSON body and prepends <code>mailchimp_</code> to all field
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f5 active" data-level="1">
-        <a href="/partners/" class="db link pl2 pr2 pv1 bg-secondary white" data-target=".partners-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f5" data-level="1">
+        <a href="/partners/" class="db link pl2 pr2 pv1 primary-color hover-bg-primary " data-target=".partners-overview">Overview</a>
       </li>
       
     
@@ -571,7 +601,7 @@ Tealium flattens the JSON body and prepends <code>mailchimp_</code> to all field
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  March 26, 2021 
+    <span>This page was last updated:  March 4, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>

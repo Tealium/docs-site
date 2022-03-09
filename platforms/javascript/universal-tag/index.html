@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.92.1" />
+     <meta name="generator" content="Hugo 0.59.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -290,37 +290,60 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  <!-- raw HTML omitted -->
+  
+
+<p class="note"><i class="fas fa-info-circle"></i>If you&rsquo;re a partner looking to integrate with Tealium, visit <a href="/partners/cms-plugins/">Partner Integrations</a>.</p>
+
 <h2 id="cdn-files">CDN Files</h2>
+
 <p>All tag configuration and business logic saved in your iQ account/profile is converted to JavaScript code and published to a <code>utag.js</code> JavaScript library specific to your account/profile and hosted on our <a href="https://community.tealiumiq.com/t5/Getting-Started/The-New-Multi-CDN/ta-p/13701">multi-CDN infrastructure</a>.</p>
+
 <p>The CDN is designed to deliver these files to your website as quickly as possible. When the Universal Tag code snippet is executed by your webpage a request is made to the CDN, the file is downloaded into the page and the code is run. As soon as <code>utag.js</code> is loaded on your page it begins executing code to prepare to fire your tags.</p>
+
 <p><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Understanding-Order-of-Operations-utag-js/ta-p/326">Learn more</a> about the order of operations to understand how the Universal Tag <code>utag.js</code> loads.</p>
+
 <h2 id="page-data">Page Data</h2>
+
 <p>In addition to the dynamic data that your site populates into <code>utag_data</code>, the <code>utag.js</code> library automatically gathers other various data values from the page and combine them into one central data object to be made available to your tags and load rules. The following page elements are captured:</p>
+
 <ul>
 <li>Query String Parameters</li>
 <li>First-Party Cookies</li>
 <li>JavaScript Variables</li>
 <li>Meta Data Elements</li>
 </ul>
+
 <p>The final data object are used to power your load rules and tags.</p>
+
 <h2 id="load-rules">Load Rules</h2>
+
 <p><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Load-Rules/ta-p/5098">Load Rules</a> are precise conditions that determine when to load a tag. Generally made up of one or more conditions, a load rule has to be satisfied in order to load the tag to which it is applied. The full list of variables from the data object are used to evaluate the load rules and determine which tags load on the page. Load Rules are JavaScript code evaluated client-side, in the browser.</p>
+
 <h2 id="load-tags">Load Tags</h2>
+
 <p>The code needed to load and run a vendor tag is also published to the CDN and stored in a tag configuration file numbered according to the UID of the tag, such as <code>utag.1.js</code>. An HTTP request is made to the CDN from your webpage to retrieve each tag configuration file.</p>
+
 <p>While this file contains the settings and configuration for the vendor, it might not contain the vendor&rsquo;s JavaScript file. If so, an additional HTTP request is made to fetch the vendor&rsquo;s code. These requests are made asynchronously to minimize the impact on the time to render the page.</p>
+
 <p>Here is a simple example showing how one tag, Google Analytics, is loaded into the page:</p>
-<p><img src="/images/platforms/javascript/utag-network-files.png" alt="utag-network-files.png" title="utag-network-files.png"></p>
+
+<p><img src="/images/platforms/javascript/utag-network-files.png" alt="utag-network-files.png" title="utag-network-files.png" /></p>
+
 <ul>
 <li><strong><code>utag.js</code></strong> (tags.tiqcdn.com) - the Tealium iQ Tag Management JavaScript library</li>
 <li><strong><code>utag.1.js</code></strong> (tags.tiqcdn.com) - the Tealium tag configuration file for Google Analytics</li>
 <li><strong><code>analytics.js</code></strong> (<a href="http://www.google-analytics.com">www.google-analytics.com</a>) - the Google Analytics JavaScript library</li>
 </ul>
-<!-- raw HTML omitted -->
+
+<p class="tip"><i class="fas fa-star"></i>Improve page performance by <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Tags/ta-p/5016#advanced_settings">bundling tags</a> into <code>utag.js</code> to reduce the number of HTTP requests coming from your page.</p>
+
 <h2 id="run-tags">Run Tags</h2>
+
 <p>Once all tag files are loaded and the DOM Ready event is reached, the tracking beacons are triggered. The vendor code runs the same as if it was outside of Tealium, so the resulting HTTP requests is easy to identify.</p>
+
 <p>For example, Google Analytics is identified in the network request by the following two items: the <code>analytics.js</code> script and the collect image pixel. These same network requests occur even when Google Analytics is loaded via iQ Tag Management, as seen here:</p>
-<p><img src="/images/platforms/javascript/utag-vendor-pixel.png" alt="utag-vendor-pixel.png" title="utag-vendor-pixel.png"></p>
+
+<p><img src="/images/platforms/javascript/utag-vendor-pixel.png" alt="utag-vendor-pixel.png" title="utag-vendor-pixel.png" /></p>
 
 </div>
 
@@ -5181,6 +5204,26 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/react-native/location/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-location-install">Location Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/react-native/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-track">Track</a>
       </li>
       
@@ -6458,8 +6501,8 @@ var utag_data = {
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
-        <a href="/platforms/javascript/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".javascript-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/javascript/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".javascript-overview">Overview</a>
       </li>
       
     

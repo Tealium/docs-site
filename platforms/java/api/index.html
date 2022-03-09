@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.92.1" />
+     <meta name="generator" content="Hugo 0.59.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -257,10 +257,10 @@ var utag_data = {
               <li><a href="#getsessionid">getSessionId()</a></li>
               <li><a href="#resetsessionid">resetSessionId()</a></li>
               <li><a href="#track">track()</a></li>
-              </ul><li><a href="#class-tealiumbuilder">Class: Tealium.Builder</a></li>
+              </ul><li><a href="#class-tealium-builder">Class: Tealium.Builder</a></li>
               <ul class="toc-h3"><li><a href="#build">build()</a></li>
               <li><a href="#builder">Builder()</a></li>
-              <li><a href="#setdatasource">setDatasource() </a></li>
+              <li><a href="#setdatasource">setDatasource()</a></li>
               <li><a href="#setenvironment">setEnvironment()</a></li>
               <li><a href="#setpersistentdata">setPersistentData()</a></li>
               </nav>
@@ -299,8 +299,12 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  <h2 id="class-tealium">Class: <code>Tealium</code></h2>
+  
+
+<h2 id="class-tealium">Class: <code>Tealium</code></h2>
+
 <p>The following summarizes the commonly used methods of the Java <code>Tealium</code> class.</p>
+
 <table>
 <thead>
 <tr>
@@ -308,41 +312,50 @@ var utag_data = {
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>addPersistentData()</code></td>
 <td>Use the <code>DataManager</code> to make data available across multiple app sessions</td>
 </tr>
+
 <tr>
 <td><code>deletePersistentData()</code></td>
 <td>Use the <code>DataManager</code> to delete previously persisted data by providing a list of keys to delete</td>
 </tr>
+
 <tr>
 <td><code>getDataManager()</code></td>
 <td>Get the <code>DataManager</code> object which processes call time data and handles persistent data</td>
 </tr>
+
 <tr>
 <td><code>getPersistentData()</code></td>
 <td>Use the <code>DataManager</code> to retrieve data that has been persisted</td>
 </tr>
+
 <tr>
 <td><code>getSessionId()</code></td>
 <td>Use the <code>DataManager</code> to fetch the current session ID</td>
 </tr>
+
 <tr>
 <td><code>resetSessionId()</code></td>
 <td>Use the <code>DataManager</code> to reset the session ID</td>
 </tr>
+
 <tr>
 <td><code>track()</code></td>
 <td>Track events</td>
 </tr>
 </tbody>
 </table>
+
 <h3 id="addpersistentdata"><code>addPersistentData()</code></h3>
+
 <p>Use the <code>DataManager</code> to make data available across multiple app sessions.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">addPersistentData(data)
-</code></pre></div><table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">addPersistentData(data)</code></pre></div>
+<table>
 <thead>
 <tr>
 <th>Parameters</th>
@@ -351,6 +364,7 @@ var utag_data = {
 <th>Example</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>data</code></td>
@@ -360,13 +374,14 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Udo data = <span style="color:#00f">new</span> Udo();
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Udo data = <span style="color:#00f">new</span> Udo();
 data.put(<span style="color:#a31515">&#34;KEY&#34;</span>, <span style="color:#a31515">&#34;VALUE&#34;</span>);
-tealium.getDataManager().addPersistentData(data);
-</code></pre></div><h3 id="deletepersistentdata"><code>deletePersistentData()</code></h3>
+tealium.getDataManager().addPersistentData(data);</code></pre></div>
+<h3 id="deletepersistentdata"><code>deletePersistentData()</code></h3>
+
 <p>Use the <code>DataManager</code> to delete previously persisted data by providing a list of keys to delete.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">deletePersistentData(list)
-</code></pre></div><table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">deletePersistentData(list)</code></pre></div>
+<table>
 <thead>
 <tr>
 <th>Parameters</th>
@@ -375,6 +390,7 @@ tealium.getDataManager().addPersistentData(data);
 <th>Example</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>list</code></td>
@@ -384,19 +400,21 @@ tealium.getDataManager().addPersistentData(data);
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List&lt;String&gt; list = <span style="color:#00f">new</span> List&lt;&gt;();
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List&lt;String&gt; list = <span style="color:#00f">new</span> List&lt;&gt;();
 list.append(<span style="color:#a31515">&#34;key_to_delete&#34;</span>);
-tealium.getDataManager().deletePersistentData(list);
-</code></pre></div><h3 id="getdatamanager"><code>getDataManager()</code></h3>
+tealium.getDataManager().deletePersistentData(list);</code></pre></div>
+<h3 id="getdatamanager"><code>getDataManager()</code></h3>
+
 <p>Get the <code>DataManager</code> object which processes call time data and handles persistent data.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">getDataManager()
-</code></pre></div><table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">getDataManager()</code></pre></div>
+<table>
 <thead>
 <tr>
 <th>Return Type</th>
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>DataManager</code></td>
@@ -404,11 +422,12 @@ tealium.getDataManager().deletePersistentData(list);
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">DataManager dm = tealium.getDataManager()
-</code></pre></div><h3 id="getpersistentdata"><code>getPersistentData()</code></h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">DataManager dm = tealium.getDataManager()</code></pre></div>
+<h3 id="getpersistentdata"><code>getPersistentData()</code></h3>
+
 <p>Use the <code>DataManager</code> to retrieve data that has been persisted.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">getPersistentData()
-</code></pre></div><table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">getPersistentData()</code></pre></div>
+<table>
 <thead>
 <tr>
 <th>Return Type</th>
@@ -416,6 +435,7 @@ tealium.getDataManager().deletePersistentData(list);
 <th>Example</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>Udo</code></td>
@@ -424,11 +444,12 @@ tealium.getDataManager().deletePersistentData(list);
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Udo persistentData = tealium.getDataManager().getPersistentData()
-</code></pre></div><h3 id="getsessionid"><code>getSessionId()</code></h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Udo persistentData = tealium.getDataManager().getPersistentData()</code></pre></div>
+<h3 id="getsessionid"><code>getSessionId()</code></h3>
+
 <p>Use the <code>DataManager</code> to fetch the current session ID. A session ID is created on initialization of the <code>Tealium</code> object.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">getSessionId()
-</code></pre></div><table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">getSessionId()</code></pre></div>
+<table>
 <thead>
 <tr>
 <th>Return Type</th>
@@ -436,6 +457,7 @@ tealium.getDataManager().deletePersistentData(list);
 <th>Example</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>String</code></td>
@@ -444,11 +466,12 @@ tealium.getDataManager().deletePersistentData(list);
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.getDataManager().getSessionId() 
-</code></pre></div><h3 id="resetsessionid"><code>resetSessionId()</code></h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.getDataManager().getSessionId() </code></pre></div>
+<h3 id="resetsessionid"><code>resetSessionId()</code></h3>
+
 <p>Use the <code>DataManager</code> to reset the session ID. Used when you need to start a new session other than at app start time.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">resetSessionId()
-</code></pre></div><table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">resetSessionId()</code></pre></div>
+<table>
 <thead>
 <tr>
 <th>Return Type</th>
@@ -456,6 +479,7 @@ tealium.getDataManager().deletePersistentData(list);
 <th>Example</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>String</code></td>
@@ -464,13 +488,14 @@ tealium.getDataManager().deletePersistentData(list);
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.getDataManager().resetSessionId()
-</code></pre></div><h3 id="track"><code>track()</code></h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.getDataManager().resetSessionId()</code></pre></div>
+<h3 id="track"><code>track()</code></h3>
+
 <p>Track events.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">track(eventTitle)
-</code></pre></div><p>Track events with optional parameters for data and a callback.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">track(eventTitle, data, callback)
-</code></pre></div><table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">track(eventTitle)</code></pre></div>
+<p>Track events with optional parameters for data and a callback.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">track(eventTitle, data, callback)</code></pre></div>
+<table>
 <thead>
 <tr>
 <th>Parameter</th>
@@ -479,6 +504,7 @@ tealium.getDataManager().deletePersistentData(list);
 <th>Example</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>eventTitle</code></td>
@@ -486,12 +512,14 @@ tealium.getDataManager().deletePersistentData(list);
 <td>Title of event (becomes the <code>tealium_event</code> and <code>event_name</code> event attribute values)</td>
 <td><code>&quot;Some Event&quot;</code></td>
 </tr>
+
 <tr>
 <td><code>data</code></td>
 <td><code>Udo</code></td>
 <td>(Optional) Universal Data Object (UDO) with event data as key-value pairs</td>
 <td><code>udoObject</code></td>
 </tr>
+
 <tr>
 <td><code>callback</code></td>
 <td><code>DispatchCallback</code></td>
@@ -500,8 +528,11 @@ tealium.getDataManager().deletePersistentData(list);
 </tr>
 </tbody>
 </table>
-<h2 id="class-tealiumbuilder">Class: <code>Tealium.Builder</code></h2>
+
+<h2 id="class-tealium-builder">Class: <code>Tealium.Builder</code></h2>
+
 <p>The following summarizes the commonly used methods of the Java <code>Tealium.Builder</code> class.</p>
+
 <table>
 <thead>
 <tr>
@@ -509,41 +540,48 @@ tealium.getDataManager().deletePersistentData(list);
 <th>Description</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>build()</code></td>
 <td>Executes the build, and sets the persistent data and collect dispatcher</td>
 </tr>
+
 <tr>
 <td><code>Builder()</code></td>
 <td>Constructor to instantiate a Tealium object</td>
 </tr>
+
 <tr>
 <td><code>setDatasource()</code></td>
 <td>Data source key</td>
 </tr>
+
 <tr>
 <td><code>setEnvironment()</code></td>
 <td>Sets the Tealium environment name</td>
 </tr>
+
 <tr>
 <td><code>setPersistentData()</code></td>
 <td>Sets the persistent data</td>
 </tr>
 </tbody>
 </table>
+
 <h3 id="build"><code>build()</code></h3>
+
 <p>Executes the build. Sets the persistent data if it hasn&rsquo;t been explicitly set with the <code>setPersistentData()</code> method. Sets the collect dispatcher if it hasn&rsquo;t been explicitly set with the setCollectDispatcher() method.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.build();
-</code></pre></div><h3 id="builder"><code>Builder()</code></h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.build();</code></pre></div>
+<h3 id="builder"><code>Builder()</code></h3>
+
 <p>Constructor to instantiate a Tealium object.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.Builder(account, profile, environment).build()
-</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#008000">// Init Tealium
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.Builder(account, profile, environment).build()</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#008000">// Init Tealium
 </span><span style="color:#008000"></span>Tealium tealium = <span style="color:#00f">new</span> Tealium.Builder(account, profile)
     .setEnvironment(environment)
     .setDatasource(datasource)
-    .build();
-</code></pre></div><table>
+    .build();</code></pre></div>
+<table>
 <thead>
 <tr>
 <th>Parameters</th>
@@ -552,6 +590,7 @@ tealium.getDataManager().deletePersistentData(list);
 <th>Example</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>account</code></td>
@@ -559,18 +598,21 @@ tealium.getDataManager().deletePersistentData(list);
 <td>Tealium account name</td>
 <td><code>&quot;companyXYZ&quot;</code></td>
 </tr>
+
 <tr>
 <td><code>profile</code></td>
 <td><code>String</code></td>
 <td>Tealium profile name</td>
 <td><code>&quot;main&quot;</code></td>
 </tr>
+
 <tr>
 <td><code>environment</code></td>
 <td><code>String</code></td>
 <td>Tealium environment name</td>
 <td>[<code>&quot;dev&quot;</code>, <code>&quot;qa&quot;</code>, <code>&quot;prod&quot;</code>]</td>
 </tr>
+
 <tr>
 <td><code>datasource</code></td>
 <td><code>String</code></td>
@@ -579,10 +621,12 @@ tealium.getDataManager().deletePersistentData(list);
 </tr>
 </tbody>
 </table>
-<h3 id="setdatasource-"><code>setDatasource() </code></h3>
+
+<h3 id="setdatasource"><code>setDatasource()</code></h3>
+
 <p>Sets the data source key. Set to <code>null</code> if none.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.setEnvironment(datasource);
-</code></pre></div><table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.setEnvironment(datasource);</code></pre></div>
+<table>
 <thead>
 <tr>
 <th>Parameters</th>
@@ -591,6 +635,7 @@ tealium.getDataManager().deletePersistentData(list);
 <th>Example</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>datasource</code></td>
@@ -600,10 +645,12 @@ tealium.getDataManager().deletePersistentData(list);
 </tr>
 </tbody>
 </table>
+
 <h3 id="setenvironment"><code>setEnvironment()</code></h3>
+
 <p>Sets the Tealium environment name</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.setEnvironment(environment);
-</code></pre></div><table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.setEnvironment(environment);</code></pre></div>
+<table>
 <thead>
 <tr>
 <th>Parameters</th>
@@ -612,6 +659,7 @@ tealium.getDataManager().deletePersistentData(list);
 <th>Example</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>environment</code></td>
@@ -621,10 +669,12 @@ tealium.getDataManager().deletePersistentData(list);
 </tr>
 </tbody>
 </table>
+
 <h3 id="setpersistentdata"><code>setPersistentData()</code></h3>
+
 <p>Sets the persistent data.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.setPersistentData(persistentData);
-</code></pre></div><table>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium.setPersistentData(persistentData);</code></pre></div>
+<table>
 <thead>
 <tr>
 <th>Parameters</th>
@@ -633,6 +683,7 @@ tealium.getDataManager().deletePersistentData(list);
 <th>Example</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>persistentData</code></td>
@@ -5502,6 +5553,26 @@ tealium.getDataManager().deletePersistentData(list);
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/react-native/location/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-location-install">Location Module</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/react-native/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-track">Track</a>
       </li>
       
@@ -7361,8 +7432,8 @@ tealium.getDataManager().deletePersistentData(list);
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
-        <a href="/platforms/java/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/java/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".">Overview</a>
       </li>
       
     

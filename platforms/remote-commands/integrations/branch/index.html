@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.92.1" />
+     <meta name="generator" content="Hugo 0.59.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -275,7 +275,7 @@ var utag_data = {
   
     
       <a href="/platforms/remote-commands/integrations/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        REMOTE COMMANDS INTEGRATIONS
+        REMOTE COMMANDS/INTEGRATIONS
       </a>
     
   
@@ -299,134 +299,264 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  <h2 id="requirements">Requirements</h2>
+  
+
+<h2 id="requirements">Requirements</h2>
+
 <ul>
 <li><a href="https://dashboard.branch.io/settings/link">Branch Key from Dashboard</a></li>
 <li>One of these mobile libraries:
+
 <ul>
 <li><a href="/platforms/android-kotlin/">Tealium for Android (Kotlin)</a> (1.0.0+)</li>
 <li><a href="/platforms/android-java/">Tealium for Android (Java)</a> (5.9.0+)</li>
 <li><a href="/platforms/ios-swift/">Tealium for iOS (Swift)</a> (2.1.0+)</li>
-</ul>
-</li>
+</ul></li>
 <li>One of these remote command integrations:
+
 <ul>
 <li><a href="/platforms/remote-commands/integrations/branch/#json-template">Branch Remote Command JSON File</a></li>
 <li><a href="https://community.tealiumiq.com/t5/Client-Side-Tags/Branch-Mobile-Remote-Command-Tag-Setup-Guide/ta-p/36694">Branch Remote Command tag</a> in Tealium iQ Tag Management</li>
+</ul></li>
 </ul>
-</li>
-</ul>
+
 <h2 id="how-it-works">How It Works</h2>
+
 <p>The Branch integration uses three items:</p>
+
 <ol>
 <li>The Branch native SDK</li>
 <li>The remote commands module that wraps the Branch methods</li>
 <li>Either the JSON configuration file or Remote Command tag that translates event tracking into native Branch calls</li>
 </ol>
+
 <p>Adding the Branch remote command module to your app automatically installs and builds the required Branch libraries, without having to add vendor-specific code to your app. If you are using a dependency manager installation, there is no need to install the Branch SDK separately.</p>
+
 <p>There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration.  Learn more about <a href="/platforms/remote-commands/how-it-works/#vendor-integrations">vendor integrations</a>.</p>
+
 <h2 id="install">Install</h2>
+
 <h3 id="dependency-manager">Dependency Manager</h3>
+
 <p>We recommend using one of the following dependency managers for installation:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+
+<p class="note"><i class="fas fa-info-circle"></i>If you are using the Tealium iOS (Objective-C) library, use the manual installation method. The CocoaPods and Carthage options are only available if you are using the Tealium iOS (Swift) library.</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
+  <p>To install Branch remote commands for iOS using CocoaPods:</p>
+
+<ol>
+<li><p>Remove <code>tealium-swift</code> and <code>pod &quot;Branch&quot;</code> if they already exist your Podfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumBranch</code> framework.</p></li>
+
+<li><p>Add the following dependency to your Podfile:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">pod <span style="color:#a31515">&#34;TealiumBranch&#34;</span></code></pre></div>
+<p>The <code>TealiumBranch</code> pod includes the following <code>TealiumSwift</code> dependencies:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#a31515">&#39;tealium-swift/Core&#39;</span>
+<span style="color:#a31515">&#39;tealium-swift/RemoteCommands&#39;</span>
+<span style="color:#a31515">&#39;tealium-swift/TagManagement&#39;</span></code></pre></div></li>
+
+<li><p>Import the modules <code>TealiumSwift</code> and <code>TealiumBranch</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class, or the Branch Remote Command.</p></li>
+</ol>
+
+</div>
+
+<div class="tab-pane" data-lang="Carthage" title="Carthage">
+  <p>To install Branch remote commands for iOS using Carthage:</p>
+
+<ol>
+<li><p>Remove <code>tealium-swift</code> from your Cartfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumBranch</code> framework.</p></li>
+
+<li><p>Add the following dependency to your Cartfile:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">github <span style="color:#a31515">&#34;tealium/tealium-ios-branch-remote-command&#34;</span></code></pre></div></li>
+</ol>
+
+<p class="note"><i class="fas fa-info-circle"></i>Tealium for Swift SDK (version 1.6.5+) requires the <code>TealiumDelegate</code> module to be included with your installation.</p>
+
+</div>
+
+<div class="tab-pane" data-lang="Maven" title="Maven">
+  <p>To install Branch remote commands for Android using Maven:</p>
+
+<ol>
+<li><p>Install <a href="/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> or <a href="/platforms/android-java/install/">Tealium for Android (Java)</a>, if you haven&rsquo;t done so already.</p></li>
+
+<li><p>Add the Tealium Maven URL to your project’s top-level <code>build.gradle</code> file:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
+  repositories {
+    jcenter()
+    maven {
+      url <span style="color:#a31515">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
+    }
+  }
+}</code></pre></div></li>
+
+<li><p>Import both the Branch SDK and Tealium-Branch remote commands by adding the following dependencies in your app project&rsquo;s <code>build.gradle</code> file:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
+  implementation <span style="color:#a31515">&#39;com.tealium.remotecommands:branch:1.0.0&#39;</span>
+}</code></pre></div></li>
+</ol>
+
+</div>
+
+<p></div>
+</div></p>
+
 <h3 id="manual-ios">Manual (iOS)</h3>
+
 <p>The manual installation for Branch remote commands requires the <a href="/platforms/ios-swift/">Tealium for Swift</a> library to be installed. To install the Branch remote commands for your iOS project:</p>
+
 <ol>
-<li>
-<p>Install the <a href="https://help.branch.io/developers-hub/docs/ios-basic-integration#via-manual-framework">Branch SDK</a>, if you haven&rsquo;t already done so.</p>
-</li>
-<li>
-<p>Clone the Tealium iOS Branch remote command repo and drag the files within the <code>Sources</code> folder into your project.<br>
-GitHub repo: <a href="https://github.com/tealium/tealium-ios-branch-remote-command">https://github.com/tealium/tealium-ios-branch-remote-command</a></p>
-</li>
-<li>
-<p>Set the <a href="/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a> configuration flag to <code>true</code>.</p>
-</li>
+<li><p>Install the <a href="https://help.branch.io/developers-hub/docs/ios-basic-integration#via-manual-framework">Branch SDK</a>, if you haven&rsquo;t already done so.</p></li>
+
+<li><p>Clone the Tealium iOS Branch remote command repo and drag the files within the <code>Sources</code> folder into your project.<br />
+GitHub repo: <a href="https://github.com/tealium/tealium-ios-branch-remote-command">https://github.com/tealium/tealium-ios-branch-remote-command</a></p></li>
+
+<li><p>Set the <a href="/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a> configuration flag to <code>true</code>.</p></li>
 </ol>
+
 <h3 id="manual-android">Manual (Android)</h3>
+
 <p>The manual installation for Branch remote commands requires <a href="/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> or <a href="/platforms/android-java/install/">Tealium for Android (Java)</a> to be installed.</p>
+
 <p>To install the Branch remote commands for your Android project:</p>
+
 <ol>
-<li>Add <code>flatDir</code> to your project root <code>build.gradle</code> file:</li>
+<li><p>Add <code>flatDir</code> to your project root <code>build.gradle</code> file:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
+  repositories {
+     jcenter()
+     flatDir {
+         dirs <span style="color:#a31515">&#39;libs&#39;</span>
+     }
+  }
+}</code></pre></div></li>
+
+<li><p>Add <code>tealium-branch.aar</code> to <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code>.</p></li>
+
+<li><p>Add the Tealium library dependency to your <code>build.gradle</code> file:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
+  implementation(name:<span style="color:#a31515">&#39;tealium-branch&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
+}</code></pre></div></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
-      repositories {
-         jcenter()
-         flatDir {
-             dirs <span style="color:#a31515">&#39;libs&#39;</span>
-         }
-      }
-}
-</code></pre></div><ol start="2">
-<li>
-<p>Add <code>tealium-branch.aar</code> to <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code>.</p>
-</li>
-<li>
-<p>Add the Tealium library dependency to your <code>build.gradle</code> file:</p>
-</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
-      implementation(name:<span style="color:#a31515">&#39;tealium-branch&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
-}
-</code></pre></div><h2 id="initialize">Initialize</h2>
+
+<h2 id="initialize">Initialize</h2>
+
 <p>For all Tealium libraries, register the Branch mobile remote commands when you initialize.</p>
+
 <h3 id="android-kotlin">Android (Kotlin)</h3>
+
 <p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s Kotlin library.</p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted -->var<!-- raw HTML omitted --> tealium = Tealium.create(TEALIUM_MAIN, config) {
-<!-- raw HTML omitted -->val<!-- raw HTML omitted --> branch = BranchRemoteCommand(application);
-remoteCommands?.add(branch, filename = <!-- raw HTML omitted -->&quot;branch.json&quot;<!-- raw HTML omitted -->);
-}
-<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted -->var<!-- raw HTML omitted --> tealium = Tealium.create(TEALIUM_MAIN, config) {
-<!-- raw HTML omitted -->val<!-- raw HTML omitted --> branch = BranchRemoteCommand(application);
-remoteCommands?.add(branch);
-}
-<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The following code is designed for use with the JSON Remote Command feature, using the local file option:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> config = TealiumConfig(application,
+      <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+      <span style="color:#a31515">&#34;PROFILE&#34;</span>,
+      Environment.DEV,
+      dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+
+<span style="color:#00f">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
+    <span style="color:#00f">val</span> branch = BranchRemoteCommand(application);
+    remoteCommands?.add(branch, filename = <span style="color:#a31515">&#34;branch.json&#34;</span>);
+}</code></pre></div>
+</div>
+
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> config = TealiumConfig(application,
+        <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+        <span style="color:#a31515">&#34;PROFILE&#34;</span>,
+        Environment.DEV,
+        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+
+<span style="color:#00f">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
+    <span style="color:#00f">val</span> branch = BranchRemoteCommand(application);
+    remoteCommands?.add(branch);
+}</code></pre></div>
+</div>
+
+<p></div>
+</div></p>
+
 <h3 id="android-java">Android (Java)</h3>
+
 <p>Initialize remote commands with the Remote Command tag for Tealium&rsquo;s Android (Java) library.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The JSON Remote Command file feature for Android is only available in the Kotlin SDK.</p>
+
+</div>
+
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">RemoteCommand branch = <span style="color:#00f">new</span> BranchRemoteCommand(application);
+teal.addRemoteCommand(branch);</code></pre></div>
+</div>
+
+<p></div>
+</div></p>
+
 <h3 id="ios-swift">iOS (Swift)</h3>
+
 <p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s iOS (Swift) library.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>tealium = Tealium(config: config) { <!-- raw HTML omitted -->_<!-- raw HTML omitted --> <!-- raw HTML omitted -->in<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->guard<!-- raw HTML omitted --> <!-- raw HTML omitted -->let<!-- raw HTML omitted --> remoteCommands = <!-- raw HTML omitted -->self<!-- raw HTML omitted -->.tealium?.remoteCommands <!-- raw HTML omitted -->else<!-- raw HTML omitted --> {
-<!-- raw HTML omitted -->return<!-- raw HTML omitted -->
-}
-<!-- raw HTML omitted -->let<!-- raw HTML omitted --> branch = BranchRemoteCommand(type: .local(file: <!-- raw HTML omitted -->&quot;branch&quot;<!-- raw HTML omitted -->))
-remoteCommands.add(branch)
-}
-<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>tealium = Tealium(config: config) { <!-- raw HTML omitted -->_<!-- raw HTML omitted --> <!-- raw HTML omitted -->in<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->guard<!-- raw HTML omitted --> <!-- raw HTML omitted -->let<!-- raw HTML omitted --> remoteCommands = <!-- raw HTML omitted -->self<!-- raw HTML omitted -->.tealium?.remoteCommands <!-- raw HTML omitted -->else<!-- raw HTML omitted --> {
-<!-- raw HTML omitted -->return<!-- raw HTML omitted -->
-}
-<!-- raw HTML omitted -->let<!-- raw HTML omitted --> branch = BranchRemoteCommand()
-remoteCommands.add(branch)
-}</p>
-<p><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The following code is designed for use with the JSON Remote Commands feature, using the local file option:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">var</span> tealium : Tealium?
+<span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+                           profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
+                           environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
+                           dataSource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>)
+config.remoteAPIEnabled = <span style="color:#00f">true</span>
+
+tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span style="color:#00f">in</span>
+    <span style="color:#00f">guard</span> <span style="color:#00f">let</span> remoteCommands = <span style="color:#00f">self</span>.tealium?.remoteCommands <span style="color:#00f">else</span> {
+        <span style="color:#00f">return</span>
+    }
+    <span style="color:#00f">let</span> branch = BranchRemoteCommand(type: .local(file: <span style="color:#a31515">&#34;branch&#34;</span>))
+    remoteCommands.add(branch)
+}</code></pre></div>
+</div>
+
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">var</span> tealium : Tealium?
+<span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+                           profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
+                           environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
+                           dataSource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>)
+config.remoteAPIEnabled = <span style="color:#00f">true</span>
+
+tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span style="color:#00f">in</span>
+    <span style="color:#00f">guard</span> <span style="color:#00f">let</span> remoteCommands = <span style="color:#00f">self</span>.tealium?.remoteCommands <span style="color:#00f">else</span> {
+        <span style="color:#00f">return</span>
+    }
+    <span style="color:#00f">let</span> branch = BranchRemoteCommand()
+    remoteCommands.add(branch)
+}</code></pre></div>
+</div>
+
+<p></div>
+</div></p>
+
 <h2 id="json-template">JSON Template</h2>
+
 <p>If you are configuring remote commands using a <a href="/platforms/remote-commands/how-it-works/#json-configuration-file">JSON configuration file</a>, refer to the following template to get started. The template includes common mappings used in a standard installation. Edit the mappings as needed.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
   &#34;config&#34;: {
     &#34;settings&#34;: {
       &#34;enable_logging&#34;: <span style="color:#00f">true</span>,
@@ -476,218 +606,267 @@ remoteCommands.add(branch)
     &#34;record_score&#34;: <span style="color:#a31515">&#34;record_score&#34;</span>,
     &#34;teal_custom_event&#34;: <span style="color:#a31515">&#34;teal_custom_event&#34;</span>
   }
-}
-</code></pre></div><h2 id="supported-methods">Supported Methods</h2>
+}</code></pre></div>
+<h2 id="supported-methods">Supported Methods</h2>
+
 <p>The following Branch methods are triggered using a data mapping in the Branch Remote Command tag using the following Tealium commands:</p>
+
 <h4 id="ios-remote-commands">iOS Remote Commands</h4>
+
 <table>
 <thead>
 <tr>
-<th style="text-align:left">iOS Remote Command</th>
-<th style="text-align:left">Branch Method</th>
+<th align="left">iOS Remote Command</th>
+<th align="left">Branch Method</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
-<td style="text-align:left"><code>initialize</code></td>
-<td style="text-align:left"><code>initSession()</code></td>
+<td align="left"><code>initialize</code></td>
+<td align="left"><code>initSession()</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>setuserid</code></td>
-<td style="text-align:left"><code>setIdentity()</code></td>
+<td align="left"><code>setuserid</code></td>
+<td align="left"><code>setIdentity()</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>logout</code></td>
-<td style="text-align:left"><code>logout()</code></td>
+<td align="left"><code>logout</code></td>
+<td align="left"><code>logout()</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left">Any other</td>
-<td style="text-align:left"><code>logEvent()</code></td>
+<td align="left">Any other</td>
+<td align="left"><code>logEvent()</code></td>
 </tr>
 </tbody>
 </table>
+
 <h4 id="android-remote-commands">Android Remote Commands</h4>
+
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Android Remote Command</th>
-<th style="text-align:left">Branch Method</th>
+<th align="left">Android Remote Command</th>
+<th align="left">Branch Method</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
-<td style="text-align:left"><code>initialize</code></td>
-<td style="text-align:left"><code>initSession()</code></td>
+<td align="left"><code>initialize</code></td>
+<td align="left"><code>initSession()</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>setuserid</code></td>
-<td style="text-align:left"><code>setIdentity()</code></td>
+<td align="left"><code>setuserid</code></td>
+<td align="left"><code>setIdentity()</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>logout</code></td>
-<td style="text-align:left"><code>logout()</code></td>
+<td align="left"><code>logout</code></td>
+<td align="left"><code>logout()</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>createdeeplink</code></td>
-<td style="text-align:left"><code>generateShortUrl()</code></td>
+<td align="left"><code>createdeeplink</code></td>
+<td align="left"><code>generateShortUrl()</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left">Any other</td>
-<td style="text-align:left"><code>logEvent()</code></td>
+<td align="left">Any other</td>
+<td align="left"><code>logEvent()</code></td>
 </tr>
 </tbody>
 </table>
+
 <h3 id="standard-event-names">Standard Event Names</h3>
+
 <p>The following standard event command names are supported with the <code>logEvent</code> method. When a command is sent, and all required variables are mapped and defined for the event, then the command is automatically triggered in the Branch SDK.</p>
+
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Remote Command</th>
-<th style="text-align:left">Branch Event Name (iOS)</th>
-<th style="text-align:left">Branch Event Name (Andriod)</th>
+<th align="left">Remote Command</th>
+<th align="left">Branch Event Name (iOS)</th>
+<th align="left">Branch Event Name (Andriod)</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
-<td style="text-align:left"><code>achievelevel</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.achieveLevel</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.ACHIEVE_LEVEL</code></td>
+<td align="left"><code>achievelevel</code></td>
+<td align="left"><code>BranchStandardEvent.achieveLevel</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.ACHIEVE_LEVEL</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>addpaymentinfo</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.addPaymentInfo</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.ADD_PAYMENT_INFO</code></td>
+<td align="left"><code>addpaymentinfo</code></td>
+<td align="left"><code>BranchStandardEvent.addPaymentInfo</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.ADD_PAYMENT_INFO</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>addtocart</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.addToCart</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.ADD_TO_CART</code></td>
+<td align="left"><code>addtocart</code></td>
+<td align="left"><code>BranchStandardEvent.addToCart</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.ADD_TO_CART</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>addtowishlist</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.addToWishlist</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.ADD_TO_WISHLIST</code></td>
+<td align="left"><code>addtowishlist</code></td>
+<td align="left"><code>BranchStandardEvent.addToWishlist</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.ADD_TO_WISHLIST</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>clickad</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.clickAd</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.CLICK_AD</code></td>
+<td align="left"><code>clickad</code></td>
+<td align="left"><code>BranchStandardEvent.clickAd</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.CLICK_AD</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>completetutorial</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.completeTutorial</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.COMPLETE_TUTORIAL</code></td>
+<td align="left"><code>completetutorial</code></td>
+<td align="left"><code>BranchStandardEvent.completeTutorial</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.COMPLETE_TUTORIAL</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>completeregistration</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.completeRegistration</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.COMPLETE_REGISTRATION</code></td>
+<td align="left"><code>completeregistration</code></td>
+<td align="left"><code>BranchStandardEvent.completeRegistration</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.COMPLETE_REGISTRATION</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>completestream</code></td>
-<td style="text-align:left">Custom event <code>BranchEvent(eventName)</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.COMPLETE_STREAM</code></td>
+<td align="left"><code>completestream</code></td>
+<td align="left">Custom event <code>BranchEvent(eventName)</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.COMPLETE_STREAM</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>initiatepurchase</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.initiatePurchase</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.INITIATE_PURCHASE</code></td>
+<td align="left"><code>initiatepurchase</code></td>
+<td align="left"><code>BranchStandardEvent.initiatePurchase</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.INITIATE_PURCHASE</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>initiatestream</code></td>
-<td style="text-align:left">Custom event <code>BranchEvent(eventName)</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.INITIATE_STREAM</code></td>
+<td align="left"><code>initiatestream</code></td>
+<td align="left">Custom event <code>BranchEvent(eventName)</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.INITIATE_STREAM</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>invite</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.invite</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.INVITE</code></td>
+<td align="left"><code>invite</code></td>
+<td align="left"><code>BranchStandardEvent.invite</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.INVITE</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>login</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.login</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.LOGIN</code></td>
+<td align="left"><code>login</code></td>
+<td align="left"><code>BranchStandardEvent.login</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.LOGIN</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>purchase</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.purchase</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.PURCHASE</code></td>
+<td align="left"><code>purchase</code></td>
+<td align="left"><code>BranchStandardEvent.purchase</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.PURCHASE</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>rate</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.rate</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.RATE</code></td>
+<td align="left"><code>rate</code></td>
+<td align="left"><code>BranchStandardEvent.rate</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.RATE</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>reserve</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.reserve</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.RESERVE</code></td>
+<td align="left"><code>reserve</code></td>
+<td align="left"><code>BranchStandardEvent.reserve</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.RESERVE</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>search</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.search</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.SEARCH</code></td>
+<td align="left"><code>search</code></td>
+<td align="left"><code>BranchStandardEvent.search</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.SEARCH</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>share</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.share</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.SHARE</code></td>
+<td align="left"><code>share</code></td>
+<td align="left"><code>BranchStandardEvent.share</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.SHARE</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>spendcredits</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.spendCredits</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.SPEND_CREDITS</code></td>
+<td align="left"><code>spendcredits</code></td>
+<td align="left"><code>BranchStandardEvent.spendCredits</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.SPEND_CREDITS</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>starttrial</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.startTrial</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.START_TRIAL</code></td>
+<td align="left"><code>starttrial</code></td>
+<td align="left"><code>BranchStandardEvent.startTrial</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.START_TRIAL</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>subscribe</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.subscribe</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.SUBSCRIBE</code></td>
+<td align="left"><code>subscribe</code></td>
+<td align="left"><code>BranchStandardEvent.subscribe</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.SUBSCRIBE</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>unlockachievement</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.unlockAchievement</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.UNLOCK_ACHIEVEMENT</code></td>
+<td align="left"><code>unlockachievement</code></td>
+<td align="left"><code>BranchStandardEvent.unlockAchievement</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.UNLOCK_ACHIEVEMENT</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>viewad</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.viewAd</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.VIEW_AD</code></td>
+<td align="left"><code>viewad</code></td>
+<td align="left"><code>BranchStandardEvent.viewAd</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.VIEW_AD</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>viewcart</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.viewCart</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.VIEW_CART</code></td>
+<td align="left"><code>viewcart</code></td>
+<td align="left"><code>BranchStandardEvent.viewCart</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.VIEW_CART</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>viewitem</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.viewItem</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.VIEW_ITEM</code></td>
+<td align="left"><code>viewitem</code></td>
+<td align="left"><code>BranchStandardEvent.viewItem</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.VIEW_ITEM</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>viewitems</code></td>
-<td style="text-align:left"><code>BranchStandardEvent.viewItems</code></td>
-<td style="text-align:left"><code>BRANCH_STANDARD_EVENT.VIEW_ITEMS</code></td>
+<td align="left"><code>viewitems</code></td>
+<td align="left"><code>BranchStandardEvent.viewItems</code></td>
+<td align="left"><code>BRANCH_STANDARD_EVENT.VIEW_ITEMS</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>custom</code></td>
-<td style="text-align:left"><code>BranchEvent(eventString)</code></td>
-<td style="text-align:left"><code>BranchEvent(eventString)</code></td>
+<td align="left"><code>custom</code></td>
+<td align="left"><code>BranchEvent(eventString)</code></td>
+<td align="left"><code>BranchEvent(eventString)</code></td>
 </tr>
 </tbody>
 </table>
+
 <h3 id="sdk-setup">SDK Setup</h3>
+
 <p>Learn more about the Branch SDK Setup:</p>
+
 <ul>
 <li><a href="https://help.branch.io/developers-hub/docs/ios-basic-integration">Branch iOS SDK</a></li>
 <li><a href="https://help.branch.io/developers-hub/docs/android-basic-integration">Branch Android SDK</a></li>
 </ul>
+
 <h4 id="initialize-1">Initialize</h4>
+
 <p>The Branch SDK is initialized automatically upon launch. The Branch Key is set in the Info.plist or the <code>branch_dev_key</code> inside the JSON configuration file.</p>
+
 <table>
 <thead>
 <tr>
@@ -695,6 +874,7 @@ remoteCommands.add(branch)
 <th>Branch Method</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>initialize</code></td>
@@ -702,8 +882,11 @@ remoteCommands.add(branch)
 </tr>
 </tbody>
 </table>
+
 <p>There are a few configuration options available for the Branch Remote Command tag. If any of the below are set on launch, they are sent during the <code>configure()</code> method.</p>
+
 <h5 id="configuration-options">Configuration Options</h5>
+
 <table>
 <thead>
 <tr>
@@ -713,6 +896,7 @@ remoteCommands.add(branch)
 <th>Type</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td>Enable Logging</td>
@@ -720,6 +904,7 @@ remoteCommands.add(branch)
 <td>Log Branch events to the console</td>
 <td><code>Bool</code></td>
 </tr>
+
 <tr>
 <td>Branch Key</td>
 <td><code>branch_dev_key</code></td>
@@ -728,7 +913,9 @@ remoteCommands.add(branch)
 </tr>
 </tbody>
 </table>
+
 <h4 id="send-identity-link">Send Identity Link</h4>
+
 <table>
 <thead>
 <tr>
@@ -736,6 +923,7 @@ remoteCommands.add(branch)
 <th>Branch Method</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>setIdentity</code></td>
@@ -743,6 +931,7 @@ remoteCommands.add(branch)
 </tr>
 </tbody>
 </table>
+
 <table>
 <thead>
 <tr>
@@ -750,6 +939,7 @@ remoteCommands.add(branch)
 <th>Type</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>id</code> (required)</td>
@@ -1226,8 +1416,8 @@ remoteCommands.add(branch)
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
-        <a href="/platforms/remote-commands/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".remote-commands-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/remote-commands/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".remote-commands-overview">Overview</a>
       </li>
       
     
@@ -5598,6 +5788,26 @@ remoteCommands.add(branch)
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/react-native/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/react-native/location/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-location-install">Location Module</a>
       </li>
       
     

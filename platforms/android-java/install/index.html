@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.92.1" />
+     <meta name="generator" content="Hugo 0.59.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -296,98 +296,115 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  <h2 id="requirements">Requirements</h2>
+  
+
+<h2 id="requirements">Requirements</h2>
+
 <ul>
 <li><a href="https://developer.android.com/studio">Android Studio</a></li>
 <li>Android (KitKat/4.4+ / API Level 19+)</li>
 <li><a href="https://community.tealiumiq.com/t5/Getting-Started/Creating-a-Mobile-Profile/ta-p/16328">Tealium iQ Mobile Profile</a></li>
 <li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Introduction-to-Customer-Data-Hub/ta-p/17571">Tealium Customer Data Hub account</a></li>
 </ul>
+
 <h2 id="sample-apps">Sample Apps</h2>
+
 <p>To help to familiarize yourself with our library, tracking methods, and best practice implementation, explore the Tealium for Android <a href="https://github.com/Tealium/tealium-android/tree/master/Samples">sample apps</a>.</p>
+
 <h2 id="get-the-code">Get the Code</h2>
+
 <p>Clone the <a href="https://github.com/Tealium/tealium-android">Tealium Android library</a>. Cloning the library, rather than downloading, makes it easier to update to future releases.</p>
-<!-- raw HTML omitted -->
+
+<p class="tip"><i class="fas fa-star"></i>See the <a href="https://tealium.github.io/tealium-android/">Tealium API</a> for a complete listing of Tealium classes and methods for Android.</p>
+
 <h2 id="install">Install</h2>
+
 <p>Install the Tealium SDK for Android with Maven, or manually.</p>
+
 <h3 id="maven">Maven</h3>
+
 <p>To install Tealium for Android library with Maven (recommended):</p>
+
 <ol>
-<li>Add the Tealium Maven URL to your project&rsquo;s top-level <code>build.gradle</code> file:</li>
+<li><p>Add the Tealium Maven URL to your project&rsquo;s top-level <code>build.gradle</code> file:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
+  repositories {
+    jcenter()
+    maven {
+      url <span style="color:#a31515">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
+    }
+  }
+}</code></pre></div></li>
+
+<li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the following Maven dependency:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
+  implementation <span style="color:#a31515">&#39;com.tealium:library:5.8.0&#39;</span>
+}</code></pre></div></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
-      repositories {
-        jcenter()
-        maven {
-          url <span style="color:#a31515">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
-        }
-      }
-}
-</code></pre></div><ol start="2">
-<li>In your project module&rsquo;s <code>build.gradle</code> file, add the following Maven dependency:</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
-      implementation <span style="color:#a31515">&#39;com.tealium:library:5.8.0&#39;</span>
-}
-</code></pre></div><h3 id="manual">Manual</h3>
+
+<h3 id="manual">Manual</h3>
+
 <p>To install Tealium for Android library manually:</p>
+
 <ol>
-<li>Add <code>flatDir</code> to your project root <code>build.gradle</code> file:</li>
+<li><p>Add <code>flatDir</code> to your project root <code>build.gradle</code> file:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
+  repositories {
+     jcenter()
+     flatDir {
+         dirs <span style="color:#a31515">&#39;libs&#39;</span>
+     }
+  }
+}</code></pre></div></li>
+
+<li><p>Add <code>tealium-5.x.x.aar</code> to <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code>.</p></li>
+
+<li><p>Add the Tealium library dependency to your <code>build.gradle</code> file:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
+  implementation(name:<span style="color:#a31515">&#39;tealium-5.6.1&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
+}</code></pre></div></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
-      repositories {
-         jcenter()
-         flatDir {
-             dirs <span style="color:#a31515">&#39;libs&#39;</span>
-         }
-      }
-}
-</code></pre></div><ol start="2">
-<li>
-<p>Add <code>tealium-5.x.x.aar</code> to <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code>.</p>
-</li>
-<li>
-<p>Add the Tealium library dependency to your <code>build.gradle</code> file:</p>
-</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
-      implementation(name:<span style="color:#a31515">&#39;tealium-5.6.1&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
-}
-</code></pre></div><h2 id="initialize">Initialize</h2>
+
+<h2 id="initialize">Initialize</h2>
+
 <p>To initialize, make the following changes in app&rsquo;s <code>onCreate()</code> method:</p>
+
 <ol>
-<li>Create instance of the <a href="/platforms/android-java/api/tealium-config/#class-tealium-config"><code>Tealium.Config</code></a> object:</li>
+<li><p>Create instance of the <a href="/platforms/android-java/api/tealium-config/#class-tealium-config"><code>Tealium.Config</code></a> object:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.Config tealConfig = Tealium.Config.create(
+    <span style="color:#00f">this</span>,
+    <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
+    <span style="color:#a31515">&#34;PROFILE&#34;</span>,
+    <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>);</code></pre></div></li>
+
+<li><p>Call any additional needed methods to set the configuration data such as <a href="/platforms/android-java/api/tealium-config/#setdatasourceid"><code>setDatasourceId()</code></a>:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealConfig.setDatasourceId(<span style="color:#a31515">&#34;DATASOURCE_ID&#34;</span>);</code></pre></div></li>
+
+<li><p>Call the <a href="/platforms/android-java/api/life-cycle/#setupinstance"><code>setupInstance()</code></a> method to setup the app&rsquo;s lifecycle instance:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">LifeCycle.setupInstance(<span style="color:#a31515">&#34;INSTANCE_NAME&#34;</span>, config, <span style="color:#00f">true</span>);</code></pre></div></li>
+
+<li><p>Call the <a href="/platforms/android-java/api/tealium/#createinstance"><code>createInstance()</code></a> method to create the Tealium instance, passing the configuration instance as a constructor argument:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium = Tealium.createInstance(<span style="color:#a31515">&#34;INSTANCE_NAME&#34;</span>, tealConfig);</code></pre></div></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.Config tealConfig = Tealium.Config.create(
-        <span style="color:#00f">this</span>,
-        <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-        <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-        <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>);
-</code></pre></div><ol start="2">
-<li>Call any additional needed methods to set the configuration data such as <a href="/platforms/android-java/api/tealium-config/#setdatasourceid"><code>setDatasourceId()</code></a>:</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealConfig.setDatasourceId(<span style="color:#a31515">&#34;DATASOURCE_ID&#34;</span>);
-</code></pre></div><ol start="3">
-<li>Call the <a href="/platforms/android-java/api/life-cycle/#setupinstance"><code>setupInstance()</code></a> method to setup the app&rsquo;s lifecycle instance:</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">LifeCycle.setupInstance(<span style="color:#a31515">&#34;INSTANCE_NAME&#34;</span>, config, <span style="color:#00f">true</span>);
-</code></pre></div><ol start="4">
-<li>Call the <a href="/platforms/android-java/api/tealium/#createinstance"><code>createInstance()</code></a> method to create the Tealium instance, passing the configuration instance as a constructor argument:</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealium = Tealium.createInstance(<span style="color:#a31515">&#34;INSTANCE_NAME&#34;</span>, tealConfig);
-</code></pre></div><!-- raw HTML omitted -->
+
+<p class="note"><i class="fas fa-info-circle"></i>When Collect is enabled in versions 5.5.1+, data is sent to the profile provided in <code>Tealium.Config</code> object. In previous versions, data is sent to the default profile (<code>&quot;main&quot;</code>)</p>
+
 <h2 id="log-level">Log Level</h2>
+
 <p>The log level is controlled by the remote publish settings and is inferred from the environment set in the initialization.</p>
+
 <p>In versions 5.3.1+, it is possible to override the log level locally with the <a href="/platforms/android-java/api/tealium-config/#setforceoverrideloglevel"><code>setForceOverrideLogLevel()</code></a> method as shown in the following example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealConfig.setForceOverrideLogLevel(<span style="color:#a31515">&#34;LOG_LEVEL&#34;</span>);
-</code></pre></div><h2 id="cookies">Cookies</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">tealConfig.setForceOverrideLogLevel(<span style="color:#a31515">&#34;LOG_LEVEL&#34;</span>);</code></pre></div>
+<h2 id="cookies">Cookies</h2>
+
 <p>Enabling cookies is required if you have enabled Tag Management in your mobile profile.</p>
+
 <p>Add the following code, after the initialization statement, to activate cookie management.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.getEventListeners().add(createCookieEnablerListener());
-<span style="color:#00f">private</span> <span style="color:#00f">static</span> WebViewCreatedListener createCookieEnablerListener() {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">config.getEventListeners().add(createCookieEnablerListener());
+<span style="color:#00f">private</span> static WebViewCreatedListener createCookieEnablerListener() {
     <span style="color:#00f">return</span> <span style="color:#00f">new</span> WebViewCreatedListener() {
         @Override
-        <span style="color:#00f">public</span> <span style="color:#2b91af">void</span> onWebViewCreated(WebView webView) {
+        <span style="color:#00f">public</span> void onWebViewCreated(WebView webView) {
             <span style="color:#00f">final</span> CookieManager mgr = CookieManager.getInstance();
             <span style="color:#008000">// Accept all cookies
 </span><span style="color:#008000"></span>            mgr.setAcceptCookie(<span style="color:#00f">true</span>);
@@ -400,19 +417,31 @@ var utag_data = {
             Log.d(TAG, <span style="color:#a31515">&#34;WebView &#34;</span> + webView + <span style="color:#a31515">&#34; created and cookies enabled.&#34;</span>);
         }
     };
-}
-</code></pre></div><p>This code allows the tag management <code>Webview</code> to <a href="https://developer.android.com/reference/android/webkit/CookieManager.html#acceptCookie()">accept</a> first-party, third-party, and file scheme cookies.</p>
-<!-- raw HTML omitted -->
+}</code></pre></div>
+<p>This code allows the tag management <code>Webview</code> to <a href="https://developer.android.com/reference/android/webkit/CookieManager.html#acceptCookie()">accept</a> first-party, third-party, and file scheme cookies.</p>
+
+<p class="note"><i class="fas fa-info-circle"></i>In versions 5.1.0+, <code>CookieManager</code> is <strong>enabled</strong> by default. In versions 5.0.4 and below, <code>CookieManager</code> is <strong>disabled</strong> by default.</p>
+
 <h2 id="event-batching">Event Batching</h2>
+
 <p>To enable event batching, go to the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">Mobile Publish Settings</a> and set the batch size to a value greater than 1. Events are dispatched when the number of events in the queue equals the batch size.</p>
+
 <p>The dispatch of events can also be triggered based on the <em>batch timeout</em> setting. This setting ensures that, when the batch size is not reached, the queue is still dispatched after an elapsed period of time.  Set the batch timeout by calling the method <a href="/platforms/android-java/api/tealium-config/#setsecondsbeforebatchtimeout"><code>setSecondsBeforeBatchTimeout()</code></a>.</p>
+
 <p>To override the batch size and batch timeout checks, flush the queue immediately by calling the method <a href="/platforms/android-java/api/tealium/#requestflush"><code>requestFlush()</code></a>.</p>
-<!-- raw HTML omitted -->
+
+<p class="note"><i class="fas fa-info-circle"></i>If the device is offline or has the Consent Manager enabled, the flush override has no effect.</p>
+
 <h2 id="multiprocess-apps">Multiprocess Apps</h2>
+
 <h4 id="android-9-multiprocess-applications">Android 9+ Multiprocess Applications</h4>
+
 <p>Android 9 introduced a behavior change around <code>WebView</code> data directories in multiprocess applications. In this change, a <code>WebView</code> no longer shares a single data directory across multiple processes. Typically, you&rsquo;ll want to have all your Activities that use a <code>WebView</code> in the same process.</p>
+
 <p>If implementing more instances of <code>WebView</code> in more than one process, and you&rsquo;re using Tealium&rsquo;s Tag Management solution, we recommend calling <code>setDataDirectorySuffix</code> before creating an instance of Tealium to prevent the app from crashing.</p>
+
 <p>If you need to access Tealium&rsquo;s tag management cookies and web data, copy it between processes using the <code>getCookie()</code> and <code>setCookie()</code> methods of the <code>CookieManager</code> class.</p>
+
 <p>Addition Reading: <a href="https://developer.android.com/about/versions/pie/android-9.0-changes-28#web-data-dirs">Web-based data directories separated by process</a></p>
 
 </div>
@@ -1134,8 +1163,8 @@ var utag_data = {
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
-        <a href="/platforms/android-java/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".android-java-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/android-java/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".android-java-overview">Overview</a>
       </li>
       
     
@@ -5242,6 +5271,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/react-native/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/react-native/location/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-location-install">Location Module</a>
       </li>
       
     

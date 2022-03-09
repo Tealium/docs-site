@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.92.1" />
+     <meta name="generator" content="Hugo 0.59.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -265,7 +265,7 @@ var utag_data = {
   
     
       <a href="/platforms/ios-swift/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT MODULE LIST
+        IOS SWIFT/MODULE LIST
       </a>
     
   
@@ -289,61 +289,79 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  <h2 id="usage">Usage</h2>
+  
+
+<h2 id="usage">Usage</h2>
+
 <p>The AppData module gathers important information about the app bundle. Usage of this module is recommended, but not mandatory. If you choose to exclude it, the data layer variables are not included in tracking calls. The <code>tealium_visitor_id</code> is always transmitted, even if the module is disabled, as this is a required variable.</p>
+
 <p>The following platforms are supported:</p>
+
 <ul>
 <li>iOS</li>
 <li>macOS</li>
 <li>watchOS</li>
 <li>tvOS</li>
 </ul>
+
 <h2 id="install">Install</h2>
+
 <p>This module is included as part of the Core library and does not require separate installation.</p>
+
 <h2 id="initialize">Initialize</h2>
+
 <p>To initialize the module, verify that it&rsquo;s specified on the <code>TealiumConfig</code> <a href="/platforms/ios-swift/api/tealium-config/#collectors"><code>collectors</code></a> property:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.collectors = [Collectors.AppData]
-</code></pre></div><!-- raw HTML omitted -->
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.collectors = [Collectors.AppData]</code></pre></div>
+<p class="note"><i class="fas fa-info-circle"></i>If you don&rsquo;t specify any optional collectors on your <code>TealiumConfig</code> instance, then this module is automatically enabled.</p>
+
 <h2 id="data-layer">Data Layer</h2>
+
 <p>The following variables are transmitted with each tracking call while the module is enabled:</p>
+
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Variable</th>
-<th style="text-align:left">Description</th>
-<th style="text-align:left">Example</th>
+<th align="left">Variable</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
-<td style="text-align:left"><code>app_build</code></td>
-<td style="text-align:left">Minor build version of the app</td>
-<td style="text-align:left"><code>&quot;2213&quot;</code></td>
+<td align="left"><code>app_build</code></td>
+<td align="left">Minor build version of the app</td>
+<td align="left"><code>&quot;2213&quot;</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>app_name</code></td>
-<td style="text-align:left">Name of the app (usually same as App Store name)</td>
-<td style="text-align:left"><code>&quot;Digital Velocity&quot;</code></td>
+<td align="left"><code>app_name</code></td>
+<td align="left">Name of the app (usually same as App Store name)</td>
+<td align="left"><code>&quot;Digital Velocity&quot;</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>app_rdns</code></td>
-<td style="text-align:left">Fully-qualified name of the app bundle</td>
-<td style="text-align:left"><code>&quot;com.tealium.digitalvelocity&quot;</code></td>
+<td align="left"><code>app_rdns</code></td>
+<td align="left">Fully-qualified name of the app bundle</td>
+<td align="left"><code>&quot;com.tealium.digitalvelocity&quot;</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>app_uuid</code></td>
-<td style="text-align:left">Random uuid. Persists for the duration of the app install, so long as one of the persistent storage modules is also enabled. Resets if app is uninstalled.</td>
-<td style="text-align:left"><code>123e4567-e89b-12d3-a456-&quot;426655440000&quot;</code></td>
+<td align="left"><code>app_uuid</code></td>
+<td align="left">Random uuid. Persists for the duration of the app install, so long as one of the persistent storage modules is also enabled. Resets if app is uninstalled.</td>
+<td align="left"><code>123e4567-e89b-12d3-a456-&quot;426655440000&quot;</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>app_version</code></td>
-<td style="text-align:left">Version of the app bundle</td>
-<td style="text-align:left"><code>&quot;1.0&quot;</code></td>
+<td align="left"><code>app_version</code></td>
+<td align="left">Version of the app bundle</td>
+<td align="left"><code>&quot;1.0&quot;</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>tealium_visitor_id</code></td>
-<td style="text-align:left">Persistent Tealium visitor ID</td>
-<td style="text-align:left"><code>&quot;123e4567e89b12d3a456426655440000&quot;</code></td>
+<td align="left"><code>tealium_visitor_id</code></td>
+<td align="left">Persistent Tealium visitor ID</td>
+<td align="left"><code>&quot;123e4567e89b12d3a456426655440000&quot;</code></td>
 </tr>
 </tbody>
 </table>
@@ -4161,8 +4179,8 @@ var utag_data = {
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
-        <a href="/platforms/ios-swift/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".ios-swift-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/ios-swift/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-overview">Overview</a>
       </li>
       
     
@@ -5175,6 +5193,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/react-native/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/react-native/location/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-location-install">Location Module</a>
       </li>
       
     

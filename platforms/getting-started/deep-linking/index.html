@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.92.1" />
+     <meta name="generator" content="Hugo 0.59.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -253,8 +253,8 @@ var utag_data = {
               <li><a href="#how-it-works">How it Works</a></li>
               <li><a href="#configuration">Configuration</a></li>
               <ul class="toc-h3"><li><a href="#android-kotlin">Android Kotlin</a></li>
-              <li><a href="#swift-v2x">Swift v2.x</a></li>
-              <li><a href="#swift-v1x">Swift v1.x</a></li>
+              <li><a href="#swift-v2-x">Swift v2.x</a></li>
+              <li><a href="#swift-v1-x">Swift v1.x</a></li>
               </ul><li><a href="#data-layer">Data Layer</a></li>
               </nav>
   </aside></div>
@@ -292,70 +292,95 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  <p>A deep link is a hyperlink that launches a mobile app and, optionally, delivers specific content within the app. Deep links are often used to measure the performance of advertisement campaigns or promotional emails that link users to your app.</p>
+  
+
+<p>A deep link is a hyperlink that launches a mobile app and, optionally, delivers specific content within the app. Deep links are often used to measure the performance of advertisement campaigns or promotional emails that link users to your app.</p>
+
 <h2 id="supported-platforms">Supported Platforms</h2>
+
 <p>The following platforms support deep link tracking:</p>
+
 <ul>
 <li><a href="/platforms/android-kotlin/">Android (Kotlin)</a></li>
 <li><a href="/platforms/ios-swift/">iOS (Swift v2.x)</a></li>
 </ul>
+
 <h2 id="how-it-works">How it Works</h2>
+
 <p>When your app is launched from a deep link, the Tealium library adds the URL to the data layer as the attribute <code>deep_link_url</code>.</p>
+
 <p>The deep link&rsquo;s query parameters are added to the data layer with attribute names in the format <code>deep_link_param_&lt;param name&gt;</code>.</p>
+
 <p>For example, <code>https://example.com/?campaign_code=SUMMER</code> becomes:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">deep_link_url = <span style="color:#a31515">&#34;https://example.com/?campaign_code=SUMMER&#34;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">deep_link_url = <span style="color:#a31515">&#34;https://example.com/?campaign_code=SUMMER&#34;</span>
 deep_link_param_campaign_code = <span style="color:#a31515">&#34;SUMMER&#34;</span>
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div>
+<p class="note"><i class="fas fa-info-circle"></i>Deep link data layer attributes are only stored for the session.</p>
+
 <h2 id="configuration">Configuration</h2>
+
 <h3 id="android-kotlin">Android Kotlin</h3>
+
 <p>Deep link tracking is automatically enabled in Tealium for Android (Kotlin).</p>
+
 <p>Disable automatic tracking of deep links by setting the <a href="/platforms/android-kotlin/api/tealium-config/#deeplinktrackingenabled"><code>deepLinkTrackingEnabled</code></a> property to <code>false</code>.</p>
-<h3 id="swift-v2x">Swift v2.x</h3>
+
+<h3 id="swift-v2-x">Swift v2.x</h3>
+
 <p>Deep link tracking is automatically enabled in Tealium for iOS (Swift v2.x).</p>
+
 <p>Disable automatic tracking of deep links by setting the <code>info.plist</code> key <code>TealiumAutotrackingDeepLinkEnabled</code> to <code>false</code>.</p>
-<h3 id="swift-v1x">Swift v1.x</h3>
+
+<h3 id="swift-v1-x">Swift v1.x</h3>
+
 <p>Tealium for iOS (Swift v1.x) requires a single line of code to be added to your app&rsquo;s <code>AppDelegate</code> class to enable deep linking.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> application(<span style="color:#00f">_</span> app: UIApplication,
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> application(<span style="color:#00f">_</span> app: UIApplication,
                  open url: URL,
                  options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -&gt; Bool {
   tealium?.handleDeepLink(url)
   <span style="color:#00f">return</span> <span style="color:#00f">true</span>
-}
-</code></pre></div><h2 id="data-layer">Data Layer</h2>
+}</code></pre></div>
+<h2 id="data-layer">Data Layer</h2>
+
 <p>The following properties are added to your data layer when your app is launched from a deep link:</p>
+
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Event Attribute</th>
-<th style="text-align:left">Type</th>
-<th style="text-align:left">Description</th>
-<th style="text-align:left">Example</th>
+<th align="left">Event Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
-<td style="text-align:left"><code>deep_link_url</code></td>
-<td style="text-align:left"><code>String</code></td>
-<td style="text-align:left">The full URL of the deep link that opened the app, including query parameters.</td>
-<td style="text-align:left"><code>https://example.com/?campaign_code=SUMMER</code></td>
+<td align="left"><code>deep_link_url</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The full URL of the deep link that opened the app, including query parameters.</td>
+<td align="left"><code>https://example.com/?campaign_code=SUMMER</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>deep_link_param_X</code></td>
-<td style="text-align:left"><code>String</code></td>
-<td style="text-align:left">Each query parameter of the deep link URL, where <code>X</code> is the name of the parameter, such as <code>deep_link_param_campaign_code</code>.</td>
-<td style="text-align:left"><code>SUMMER</code></td>
+<td align="left"><code>deep_link_param_X</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Each query parameter of the deep link URL, where <code>X</code> is the name of the parameter, such as <code>deep_link_param_campaign_code</code>.</td>
+<td align="left"><code>SUMMER</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>deep_link_referrer_url</code> (iOS)</td>
-<td style="text-align:left"><code>String</code></td>
-<td style="text-align:left">The full URL of the browser page where the deep link was clicked.</td>
-<td style="text-align:left"><code>https://www.example.com/referring/page</code></td>
+<td align="left"><code>deep_link_referrer_url</code> (iOS)</td>
+<td align="left"><code>String</code></td>
+<td align="left">The full URL of the browser page where the deep link was clicked.</td>
+<td align="left"><code>https://www.example.com/referring/page</code></td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>deep_link_referrer_app</code> (iOS)</td>
-<td style="text-align:left"><code>String</code></td>
-<td style="text-align:left">The identifier of the referrer app when the deep link comes from a custom schema in another app signed by the same team.</td>
-<td style="text-align:left"><code>com.example.appId</code></td>
+<td align="left"><code>deep_link_referrer_app</code> (iOS)</td>
+<td align="left"><code>String</code></td>
+<td align="left">The identifier of the referrer app when the deep link comes from a custom schema in another app signed by the same team.</td>
+<td align="left"><code>com.example.appId</code></td>
 </tr>
 </tbody>
 </table>
@@ -446,8 +471,8 @@ deep_link_param_campaign_code = <span style="color:#a31515">&#34;SUMMER&#34;</sp
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
-        <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".getting-started-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-overview">Overview</a>
       </li>
       
     
@@ -5200,6 +5225,26 @@ deep_link_param_campaign_code = <span style="color:#a31515">&#34;SUMMER&#34;</sp
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/react-native/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/react-native/location/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-location-install">Location Module</a>
       </li>
       
     

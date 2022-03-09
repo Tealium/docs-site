@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.92.1" />
+     <meta name="generator" content="Hugo 0.59.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -271,7 +271,7 @@ var utag_data = {
       </a>
     
       <a href="/platforms/ios-swift-v1/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT V1 MODULE LIST
+        IOS SWIFT V1/MODULE LIST
       </a>
     
   
@@ -295,39 +295,51 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  <h2 id="usage">Usage</h2>
+  
+
+<h2 id="usage">Usage</h2>
+
 <p>The VolatileData module allows data variables to be stored in main memory (RAM). Data is stored and added to all dispatches/tracking calls until the app is restarted.</p>
+
 <p>Usage of this module is mandatory. If you do not implement it, vital variables become missing from tracking calls.</p>
+
 <p>The following platforms are supported:</p>
+
 <ul>
 <li>iOS</li>
 <li>tvOS</li>
 <li>watchOS</li>
 <li>macOS</li>
 </ul>
+
 <h2 id="install">Install</h2>
+
 <p>Install the VolatileData module with CocoaPods or Carthage.</p>
+
 <h3 id="cocoapods">CocoaPods</h3>
+
 <p>To install the VolatileData module with CocoaPods, add the following pod to your Podfile:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;tealium-swift/TealiumVolatileData&#39;</span>
-</code></pre></div><p>The framework is auto-instantiated. It has a dependency on the <code>TealiumCore</code> pod. <a href="/platforms/ios-swift/install/#cocoapods">Learn more</a> about CocoaPods installation for iOS.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;tealium-swift/TealiumVolatileData&#39;</span></code></pre></div>
+<p>The framework is auto-instantiated. It has a dependency on the <code>TealiumCore</code> pod. <a href="/platforms/ios-swift/install/#cocoapods">Learn more</a> about CocoaPods installation for iOS.</p>
+
 <h3 id="carthage">Carthage</h3>
+
 <p>To install the VolatileData module with Carthage, following these steps:</p>
+
 <ol>
-<li>
-<p>Go to the app target&rsquo;s General configuration page in Xcode.</p>
-</li>
-<li>
-<p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
-</li>
+<li><p>Go to the app target&rsquo;s General configuration page in Xcode.</p></li>
+
+<li><p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumVolatileData.framework</code></pre></div></li>
+
+<li><p>To store volatile data through the VolatileData API, add the following required import statement to your project:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumVolatileData</span></code></pre></div></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumVolatileData.framework
-</code></pre></div><ol start="3">
-<li>To store volatile data through the VolatileData API, add the following required import statement to your project:</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumVolatileData</span>
-</code></pre></div><p>The framework is auto-instantiated. It has a dependency on <code>TealiumCore</code>. No additional import statements are necessary. <a href="/platforms/ios-swift/install/#carthage">Learn more</a> about Carthage installation for iOS.</p>
+
+<p>The framework is auto-instantiated. It has a dependency on <code>TealiumCore</code>. No additional import statements are necessary. <a href="/platforms/ios-swift/install/#carthage">Learn more</a> about Carthage installation for iOS.</p>
+
 <h2 id="included-variables">Included Variables</h2>
+
 <table>
 <thead>
 <tr>
@@ -337,6 +349,7 @@ var utag_data = {
 <th>Supported Platforms</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
 <td><code>tealium_random</code></td>
@@ -344,102 +357,119 @@ var utag_data = {
 <td><code>&quot;8449989974958830&quot;</code></td>
 <td>iOS, tvOS, watchOS, macOS</td>
 </tr>
+
 <tr>
 <td><code>tealium_session_id</code></td>
 <td>Tealium Session ID</td>
 <td><code>&quot;1511262829677&quot;</code></td>
 <td>iOS, tvOS, watchOS, macOS</td>
 </tr>
+
 <tr>
 <td><code>tealium_timestamp_epoch</code></td>
 <td>Current Unix timestamp (1970 epoch) in seconds</td>
 <td><code>&quot;1511262829&quot;</code></td>
 <td>iOS, tvOS, watchOS, macOS</td>
 </tr>
+
 <tr>
 <td><code>tealium_account</code></td>
 <td>Current Tealium account (from TealiumConfig object)</td>
 <td><code>&quot;tealium&quot;</code></td>
 <td>iOS, tvOS, watchOS, macOS</td>
 </tr>
+
 <tr>
 <td><code>tealium_profile</code></td>
 <td>Current Tealium profile (from TealiumConfig object)</td>
 <td><code>&quot;mobile&quot;</code></td>
 <td>iOS, tvOS, watchOS, macOS</td>
 </tr>
+
 <tr>
 <td><code>tealium_environment</code></td>
 <td>Current Tealium environment (from TealiumConfig object)</td>
 <td>[<code>&quot;dev&quot;</code>, <code>&quot;qa&quot;</code>, <code>&quot;prod&quot;</code>]</td>
 <td>iOS, tvOS, watchOS, macOS</td>
 </tr>
+
 <tr>
 <td><code>tealium_library_name</code></td>
 <td>Tealium library name</td>
 <td><code>&quot;swift&quot;</code></td>
 <td>iOS, tvOS, watchOS, macOS</td>
 </tr>
+
 <tr>
 <td><code>tealium_library_version</code></td>
 <td>Tealium library version</td>
 <td><code>&quot;1.4.0&quot;</code></td>
 <td>iOS, tvOS, watchOS, macOS</td>
 </tr>
+
 <tr>
-<td><code>event_timestamp_iso* </code></td>
+<td><code>event_timestamp_iso*</code></td>
 <td>Event timestamp in ISO8601 (Zulu Time), UTC</td>
 <td><code>&quot;2017-11-20T14:48:00Z&quot;</code></td>
 <td>iOS, tvOS, watchOS, macOS</td>
 </tr>
+
 <tr>
 <td><code>timestamp</code></td>
 <td>Event timestamp in ISO8601 (Zulu Time), UTC</td>
 <td><code>&quot;2017-11-20T14:48:00Z&quot;</code></td>
 <td>iOS, tvOS, watchOS, macOS</td>
 </tr>
+
 <tr>
 <td><code>event_timestamp_local_iso*</code></td>
 <td>Event timestamp in ISO8601 local timezone</td>
 <td><code>&quot;2017-11-20T06:48:00&quot;</code></td>
 <td>iOS, tvOS, watchOS, macOS</td>
 </tr>
+
 <tr>
 <td><code>timestamp_local</code></td>
 <td>Event timestamp in ISO8601 local timezone</td>
 <td><code>&quot;2017-11-20T06:48:00&quot;</code></td>
 <td>iOS, tvOS, watchOS, macOS</td>
 </tr>
+
 <tr>
 <td><code>event_timestamp_offset_hours*</code></td>
 <td>Current offset from UTC in hours</td>
 <td><code>-8</code></td>
 <td>iOS, tvOS, watchOS, macOS</td>
 </tr>
+
 <tr>
 <td><code>timestamp_offset</code></td>
 <td>Current offset from UTC in hours</td>
 <td><code>-8</code></td>
 <td>iOS, tvOS, watchOS, macOS</td>
 </tr>
+
 <tr>
 <td><code>event_timestamp_unix_millis*</code></td>
 <td>Current Unix timestamp (1970 epoch) in milliseconds</td>
 <td><code>1511189280337</code></td>
 <td>iOS, tvOS, watchOS, macOS</td>
 </tr>
+
 <tr>
 <td><code>timestamp_unix_milliseconds</code></td>
 <td>Current Unix timestamp (1970 epoch) in milliseconds</td>
 <td><code>1511189280337</code></td>
 <td>iOS, tvOS, watchOS, macOS</td>
 </tr>
+
 <tr>
 <td><code>event_timestamp_unix*</code></td>
 <td>Current Unix timestamp (1970 epoch) in seconds</td>
 <td><code>1511189280</code></td>
 <td>iOS, tvOS, watchOS, macOS</td>
 </tr>
+
 <tr>
 <td><code>timestamp_unix</code></td>
 <td>Current Unix timestamp (1970 epoch) in seconds</td>
@@ -448,7 +478,9 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
+
 <h2 id="api-reference">API Reference</h2>
+
 <p>See the <a href="/platforms/ios-swift/api/tealium-volatile-data/"><code>TealiumVolatileData</code></a> class in the iOS (Swift) API.</p>
 
 </div>
@@ -3399,8 +3431,8 @@ var utag_data = {
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
-        <a href="/platforms/ios-swift-v1/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".ios-swift-v1-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/ios-swift-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-v1-overview">Overview</a>
       </li>
       
     
@@ -5279,6 +5311,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/react-native/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/react-native/location/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-location-install">Location Module</a>
       </li>
       
     

@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.92.1" />
+     <meta name="generator" content="Hugo 0.59.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -300,74 +300,126 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  <p><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Trace/ta-p/12058">Trace</a> is a testing and inspection tool for your Tealium EventStream and Tealium AudienceStream configuration. Use Trace to capture a visitor workflow and watch how events and customer data is processed in real-time.</p>
+  
+
+<p><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Trace/ta-p/12058">Trace</a> is a testing and inspection tool for your Tealium EventStream and Tealium AudienceStream configuration. Use Trace to capture a visitor workflow and watch how events and customer data is processed in real-time.</p>
+
 <h2 id="mobile-trace-tool">Mobile Trace Tool</h2>
+
 <h3 id="supported-platforms">Supported Platforms</h3>
+
 <p>The following platforms support the Mobile Trace Tool:</p>
+
 <ul>
 <li><a href="/platforms/android-kotlin/">Android (Kotlin)</a></li>
 <li><a href="/platforms/ios-swift/">iOS (Swift v2.x)</a></li>
 </ul>
+
 <h3 id="how-it-works">How it Works</h3>
+
 <p>The Mobile Trace Tool enhances the trace feature by providing a QR code that is scannable by your device, enabling you to quickly view events coming from the Tealium Mobile SDKs.</p>
+
 <p>After clicking <strong>Start Trace</strong> in the tool, once per Customer Data Hub session, a QR code is automatically injected into the main browser window each time you start a new trace.</p>
+
 <p>QR codes are generated for each platform (<a href="/platforms/android-kotlin/">Android</a> or <a href="/platforms/ios-swift/">iOS</a>).  After you scan the appropriate QR code with the appropriate mobile device&rsquo;s camera, click the link from the QR code to start the app and pass trace parameters to the Tealium SDK.  The Tealium SDK recevies the trace ID (along with other parameters) and inserts the trace ID into the data layer for the current session</p>
+
 <p>All subsequent events are recorded in the trace session until you end the session or leave the trace. </p>
+
 <p>The following diagram illustrates how it works: </p>
-<p><img src="/images/platforms/getting-started/trace-tool-overview.png" alt="trace-tool-overview.png" title="trace-tool-overview.png"></p>
+
+<p><img src="/images/platforms/getting-started/trace-tool-overview.png" alt="trace-tool-overview.png" title="trace-tool-overview.png" /></p>
+
 <h3 id="install">Install</h3>
+
 <p>To use this tool, install the <a href="https://community.tealiumiq.com/t5/Developer-Tools/Tealium-Tools-Browser-Extensions/ta-p/18355">Tealium Tools browser extension</a> for your Chrome or Firefox browser.</p>
+
 <p>In the <strong>Add by URL</strong> textfield, enter the URL: <a href="https://solutions.tealium.net/hosted/tealiumTools/mobile-trace/tool.json">https://solutions.tealium.net/hosted/tealiumTools/mobile-trace/tool.json</a></p>
+
 <p>After installation has completed, launch the Mobile Trace Tool icon from the Tealium Tools extension.</p>
+
 <h3 id="url-schemes">URL Schemes</h3>
+
 <p>To use the Mobile Trace Tool, determine which URLs are handled by your mobile apps in order to configure the URL schemes. </p>
+
 <p>The QR code trace feature launches your app from a URL and listens for a specific query parameter. In order to launch your app directly from a URL, your app must have registered itself to handle specific domains.</p>
+
 <p>Typically, most apps already handle specific URLs. For example, if your website domain is <a href="https://mycompany.com">https://mycompany.com</a>, your app registers itself as a handler for this domain and, if your app is installed on a user&rsquo;s device, the user is prompted to launch the link in your app instead of within a browser. </p>
-<!-- raw HTML omitted -->
+
+<p class="note"><i class="fas fa-info-circle"></i>Some apps register custom URL schemes instead of <code>http</code> or <code>https</code>, for example <code>mycompanyapp://</code>. These also work with the Mobile Trace Tool.</p>
+
 <p>Once you have established which URL schemes launch your app, enter these into the input fields in the Mobile Trace Tool. The tool supports different schemes for Android and iOS if necessary, but are usually the same for both platforms.</p>
-<p><img src="/images/platforms/getting-started/trace-tool.png" alt="trace-tool.png" title="trace-tool.png"></p>
+
+<p><img src="/images/platforms/getting-started/trace-tool.png" alt="trace-tool.png" title="trace-tool.png" /></p>
+
 <p>Click <strong>Save</strong> next to each URL scheme to store the setting in the browser&rsquo;s <code>localStorage</code>. Click the blue pencil icon to edit the URL schemes as needed.</p>
+
 <h3 id="start-trace">Start Trace</h3>
+
 <p>Before starting a trace, verify that you are in the server-side Tealium Customer Data Hub. Click <strong>Start Trace</strong> in the Mobile Trace Tool to start a new trace and add the Mobile Trace QR codes into the trace window. </p>
-<p><img src="/images/platforms/getting-started/trace-tool-start.png" alt="trace-tool-start.png" title="trace-tool-start.png"></p>
+
+<p><img src="/images/platforms/getting-started/trace-tool-start.png" alt="trace-tool-start.png" title="trace-tool-start.png" /></p>
+
 <p>After starting a trace, close the Tealium Tools UI as it&rsquo;s not required for the rest of your session.</p>
+
 <p>Subsequent traces are started directly from Customer Data Hub and the QR code automatically refreshes each time a new trace starts. Scan the QR code with your device&rsquo;s camera, and click the link to launch your app and automatically begin tracing. Any Tealium events generated by your app after joining the trace are recorded in your trace session.</p>
-<p><img src="/images/platforms/getting-started/trace-qr-code.png" alt="trace-qr-code.png" title="trace-qr-code.png"></p>
+
+<p><img src="/images/platforms/getting-started/trace-qr-code.png" alt="trace-qr-code.png" title="trace-qr-code.png" /></p>
+
 <h3 id="leave-trace">Leave Trace</h3>
+
 <p>If you leave a trace session without ending it, you are able to rejoin the same trace from a different device without losing the history of that trace session.</p>
+
 <p>To leave a trace:</p>
+
 <ol>
 <li>Select the <strong>Leave Trace</strong> checkbox in the trace UI.</li>
 <li>Scan the QR code again with your device&rsquo;s camera.</li>
 <li>Click the link for your device to no longer participate in the trace session.</li>
 </ol>
+
 <h3 id="end-of-visit-audiencestream">End of Visit (AudienceStream)</h3>
+
 <p>Testing &ldquo;End of Visit&rdquo; actions in Tealium AudienceStream requires a signal to immediately end the visitor&rsquo;s session, otherwise it is necessary to wait for the session to expire normally.</p>
+
 <p>In the Mobile Trace Tool, end the session immediately by selecting the <strong>End Visitor Session</strong> checkbox, which adds a parameter to the QR code that makes the SDK send a <code>kill_visitor_session</code> event.</p>
-<p><img src="/images/platforms/getting-started/trace-end-visit.png" alt="trace-end-visit.png" title="trace-end-visit.png"></p>
+
+<p><img src="/images/platforms/getting-started/trace-end-visit.png" alt="trace-end-visit.png" title="trace-end-visit.png" /></p>
+
 <h2 id="charles-proxy">Charles Proxy</h2>
+
 <p>Use the Charles Web Debugging Proxy to start a trace from an application using the Mobile SDK and the Tealium Collect tag.</p>
+
 <h3 id="requirements">Requirements</h3>
+
 <ul>
 <li>Charles Proxy</li>
 <li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Introduction-to-Customer-Data-Hub/ta-p/17571">Tealium Customer Data Hub account</a></li>
 </ul>
+
 <h3 id="setup">Setup</h3>
+
 <p>To set up your mobile device to proxy traffic on your computer to Charles on your computer, follow the instructions for <a href="https://community.tealiumiq.com/t5/Tealium-for-Android/Setting-up-Charles-to-Proxy-your-Android-Device/ta-p/5121">Android</a> or <a href="https://community.tealiumiq.com/t5/Tealium-for-iOS/Setting-Up-Charles-to-Proxy-an-iOS-Device/ta-p/15285">iOS</a>.</p>
+
 <h3 id="using-a-rewrite">Using a Rewrite</h3>
+
 <p>Run your application using Charles as the proxy and filter the network traffic for <code>teal</code>. Right-click the request and select <strong>Copy URL</strong>.</p>
+
 <p>From the Charles menu select <strong>Tools &gt; Rewrite</strong> to open the <strong>Rewrite Settings</strong> dialog.</p>
+
 <p>To add a location:</p>
+
 <ol>
 <li>Select the <strong>Enable Rewrite</strong> checkbox and click the <strong>Add</strong> button below the Location list.</li>
 <li>Set the <strong>Name</strong> field to <code>Add Trace ID</code> and click <strong>Add</strong> to add a location.</li>
-<li>Fill out the location fields and set the <strong>Host</strong> field to the Collect tag URL.</li>
+
+<li><p>Fill out the location fields and set the <strong>Host</strong> field to the Collect tag URL.
+<p class="tip"><i class="fas fa-star"></i>If you click outside of the <strong>Edit Location</strong> dialog box, Charles automatically determines the additional URL components.</p></p></li>
+
+<li><p>Leave the <strong>Query</strong> field empty and click <strong>OK</strong>.</p></li>
 </ol>
-<!-- raw HTML omitted -->
-<ol start="4">
-<li>Leave the <strong>Query</strong> field empty and click <strong>OK</strong>.</li>
-</ol>
+
 <p>To add an action:</p>
+
 <ol>
 <li>Click the <strong>Add</strong> button below the Action list and set <strong>Type</strong> to <code>Body</code> from the drop-down menu.</li>
 <li>In the <strong>Where</strong> section, select the <strong>Request</strong> checkbox.</li>
@@ -375,19 +427,54 @@ var utag_data = {
 <li>In the <strong>Replace</strong> section, set <strong>Value</strong> to <code>&quot;data&quot;:{&quot;cp.trace_id&quot;:&quot;TRACE_ID&quot;,</code> and select the <strong>Replace first</strong> checkbox.</li>
 <li>Click <strong>OK</strong> and <strong>Apply</strong> changes.</li>
 </ol>
+
 <p>After completing the steps, browse your application and view the requests in the AudienceStream or EventStream trace session. To run another trace, launch Charles and edit the existing rewrite rule to change the <code>12345</code> trace ID value.</p>
+
 <h2 id="manual">Manual</h2>
+
 <p>If you are in development mode using an emulator, or do not want to use Charles, then another option is to add and leave a trace manually through native code.</p>
+
 <h3 id="start-trace-manual">Start Trace (Manual)</h3>
+
 <p>To start and run a trace manually, add the trace ID to the volatile data within your native code.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="Android" title="Android">
+  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">instance.getDataSources().getVolatileDataSources().put(<span style="color:#a31515">&#34;tealium_trace_id&#34;</span>, <span style="color:#a31515">&#34;TRACE_ID&#34;</span>);</code></pre></div>
+</div>
+
+<div class="tab-pane" data-lang="iOS" title="iOS">
+  <p><strong>Swift</strong></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.volatileData()?.add(data: [<span style="color:#a31515">&#34;tealium_trace_id&#34;</span>: <span style="color:#a31515">&#34;TRACE_ID&#34;</span>])</code></pre></div>
+<p><strong>Objective-C</strong></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-obj-c" data-lang="obj-c">NSDictionary *tealiumTrace = @{<span style="color:#a31515">@&#34;tealium_trace_id&#34;</span>:<span style="color:#a31515">@&#34;TRACE_ID&#34;</span>};
+[[Tealium instanceForKey:TEALIUM_INSTANCE_ID] addVolatileDataSources: tealiumTrace];</code></pre></div>
+</div>
+
+<p></div>
+</div></p>
+
 <h3 id="end-trace-manual">End Trace (Manual)</h3>
+
 <p>To end a trace manually and simulate any &ldquo;end of visit&rdquo; enrichments, add the following track to the optional data anywhere within the app:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="Android" title="Android">
+  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Map&lt;String, Object&gt; data = <span style="color:#00f">new</span> HashMap&lt;&gt;(1);
+data.put(<span style="color:#a31515">&#34;event&#34;</span>, <span style="color:#a31515">&#34;kill_visitor_session&#34;</span>);
+data.put(<span style="color:#a31515">&#34;cp.trace_id&#34;</span>, <span style="color:#a31515">&#34;TRACE_ID&#34;</span>);</code></pre></div>
+</div>
+
+<div class="tab-pane" data-lang="iOS" title="iOS">
+  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.trackViewWithTitle(<span style="color:#a31515">&#34;SCREEN_NAME&#34;</span>, dataSources: [<span style="color:#a31515">&#34;event&#34;</span>:<span style="color:#a31515">&#34;kill_visitor_session&#34;</span>, <span style="color:#a31515">&#34;cp.trace_id&#34;</span>:<span style="color:#a31515">&#34;XXXXX&#34;</span>])</code></pre></div>
+</div>
+
+<p></div>
+</div></p>
 
 </div>
 
@@ -475,8 +562,8 @@ var utag_data = {
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
-        <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".getting-started-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/getting-started/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".getting-started-overview">Overview</a>
       </li>
       
     
@@ -5229,6 +5316,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/react-native/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/react-native/location/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-location-install">Location Module</a>
       </li>
       
     

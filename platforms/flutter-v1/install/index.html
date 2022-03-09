@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.92.1" />
+     <meta name="generator" content="Hugo 0.59.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -289,44 +289,55 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  <p>Tealium for Flutter allows you to use the Tealium native mobile libraries for <a href="/platforms/android-java">Android</a> or <a href="/platforms/ios-swift">iOS</a> in your Flutter application.</p>
+  
+
+<p>Tealium for Flutter allows you to use the Tealium native mobile libraries for <a href="/platforms/android-java">Android</a> or <a href="/platforms/ios-swift">iOS</a> in your Flutter application.</p>
+
 <h2 id="requirements">Requirements</h2>
+
 <ul>
 <li><a href="https://flutter.dev/">Flutter</a> application development framework</li>
 <li>IDE such as <a href="https://developer.android.com/studio">Android Studio</a> or <a href="https://code.visualstudio.com/">VS Code</a></li>
 <li>Flutter <a href="https://github.com/flutter-v1/plugins">plugin</a> installed on the IDE</li>
 </ul>
+
 <h2 id="sample-apps">Sample Apps</h2>
+
 <p>To help to familiarize yourself with our library, the tracking methods, and best practice implementation, explore the Tealium for Flutter sample apps.</p>
+
 <ul>
 <li><a href="https://github.com/Tealium/tealium-flutter-v1/tree/master/android">Sample app for Android</a></li>
 <li><a href="https://github.com/Tealium/tealium-flutter-v1/tree/master/ios">Sample app for iOS</a></li>
 </ul>
+
 <h2 id="install">Install</h2>
+
 <p>To install the Tealium library for Flutter:</p>
+
 <ol>
-<li>In your Flutter app project, update the <code>pubspec.yaml</code> file to add the Tealium Flutter plugin dependency as follows:</li>
+<li><p>In your Flutter app project, update the <code>pubspec.yaml</code> file to add the Tealium Flutter plugin dependency as follows:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">dependencies:
+flutter:
+sdk: flutter
+tealium: <span style="color:#a31515">&#39;1.0.0&#39;</span></code></pre></div></li>
+
+<li><p>To pull the Tealium Flutter plugin dependency in your project, run the following command:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">flutter pub get</code></pre></div></li>
+
+<li><p>Import the Dart code to your project:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">import tealium/tealium.dart</code></pre></div></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">dependencies:
-  flutter:
-  sdk: flutter
-  tealium: <span style="color:#a31515">&#39;1.0.0&#39;</span>
-</code></pre></div><ol start="2">
-<li>To pull the Tealium Flutter plugin dependency in your project, run the following command:</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">flutter pub get
-</code></pre></div><ol start="3">
-<li>Import the Dart code to your project:</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">import tealium/tealium.dart
-</code></pre></div><p>Use The Tealium APIs in your Flutter project.</p>
+
+<p>Use The Tealium APIs in your Flutter project.</p>
+
 <h2 id="initialize">Initialize</h2>
+
 <p>Initialize the Tealium instance with the <a href="/platforms/flutter-v1/api/#initialize"><code>initialize()</code></a> method, as shown in the following example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">var teal = Tealium.initialize(<span style="color:#a31515">&#34;ACCOUNT&#34;</span>, <span style="color:#a31515">&#34;PROFILE&#34;</span>, <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>, <span style="color:#00f">null</span>, <span style="color:#00f">null</span>);
-</code></pre></div><p>The <a href="/platforms/flutter-v1/api/#initializecustom"><code>initializeCustom()</code></a> method initialize the Tealium instance with all initialization options, as shown in the following example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">var teal = Tealium.initializeCustom(<span style="color:#a31515">&#34;ACCOUNT&#34;</span>, <span style="color:#a31515">&#34;PROFILE&#34;</span>, <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>, <span style="color:#00f">null</span>, <span style="color:#00f">null</span>,
-      <span style="color:#a31515">&#34;INSTANCE&#34;</span>, <span style="color:#00f">true</span>, <span style="color:#00f">null</span>, <span style="color:#00f">null</span>, <span style="color:#00f">null</span>, <span style="color:#00f">true</span>);
-</code></pre></div><p>See the <a href="/platforms/flutter-v1/api">Flutter API</a> to learn more about initialization options.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">var teal = Tealium.initialize(<span style="color:#a31515">&#34;ACCOUNT&#34;</span>, <span style="color:#a31515">&#34;PROFILE&#34;</span>, <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>, <span style="color:#00f">null</span>, <span style="color:#00f">null</span>);</code></pre></div>
+<p>The <a href="/platforms/flutter-v1/api/#initializecustom"><code>initializeCustom()</code></a> method initialize the Tealium instance with all initialization options, as shown in the following example:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">var teal = Tealium.initializeCustom(<span style="color:#a31515">&#34;ACCOUNT&#34;</span>, <span style="color:#a31515">&#34;PROFILE&#34;</span>, <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>, <span style="color:#00f">null</span>, <span style="color:#00f">null</span>,
+      <span style="color:#a31515">&#34;INSTANCE&#34;</span>, <span style="color:#00f">true</span>, <span style="color:#00f">null</span>, <span style="color:#00f">null</span>, <span style="color:#00f">null</span>, <span style="color:#00f">true</span>);</code></pre></div>
+<p>See the <a href="/platforms/flutter-v1/api">Flutter API</a> to learn more about initialization options.</p>
 
 </div>
 
@@ -2605,8 +2616,8 @@ var utag_data = {
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
-        <a href="/platforms/flutter-v1/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".flutter-v1-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/flutter-v1/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".flutter-v1-overview">Overview</a>
       </li>
       
     
@@ -5155,6 +5166,26 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/react-native/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/react-native/location/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-location-install">Location Module</a>
       </li>
       
     

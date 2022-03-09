@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.92.1" />
+     <meta name="generator" content="Hugo 0.59.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -268,7 +268,7 @@ var utag_data = {
   
     
       <a href="/platforms/ios-swift/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT MODULE LIST
+        IOS SWIFT/MODULE LIST
       </a>
     
   
@@ -292,8 +292,12 @@ var utag_data = {
 
 
 <div class="prose" id="prose">
-  <h2 id="what-is-an-in-app-purchase">What is an in-app purchase?</h2>
+  
+
+<h2 id="what-is-an-in-app-purchase">What is an in-app purchase?</h2>
+
 <p>An in-app purchase is additional content, services, or a subscription that you buy inside the app. Some examples of in-app purchases include:</p>
+
 <ul>
 <li>Upgrade to remove ads</li>
 <li>Game credits</li>
@@ -301,42 +305,59 @@ var utag_data = {
 <li>Extra game levels</li>
 <li>Unlock more features</li>
 </ul>
+
 <p>Examples of purchases that are not considered in-app purchases include:</p>
+
 <ul>
 <li>Purchasing clothes or other items in an e-commerce app.</li>
 <li>Using Apple Pay to complete a purchase.</li>
 </ul>
+
 <p>Learn more about <a href="https://developer.apple.com/in-app-purchase/">in-app purchases in the Apple developer portal</a>.</p>
+
 <h2 id="install">Install</h2>
+
 <p>Install the In-App Purchase module with Swift Package Manager, CocoaPods, or Carthage.</p>
+
 <h3 id="swift-package-manager-recommended">Swift Package Manager (Recommended)</h3>
+
 <p>Swift Package Manager is the recommended way to install the Tealium Swift library:</p>
+
 <ol>
 <li>In your Xcode project, select <strong>File &gt; Swift Packages &gt; Add Package Dependency</strong>.</li>
 <li>Enter the repository URL: <code>https://github.com/tealium/tealium-swift</code>.</li>
 <li>Configure the version rules. The default, <code>&quot;Up to next major&quot;</code>, is recommended. If the current Tealium Swift library version does not appear in the list, reset your Swift package cache.</li>
 <li>Select the <code>InAppPurchase</code> module from the list of modules to install. Add the module to each of your app targets in your Xcode project under <strong>Frameworks &gt; Libraries &amp; Embedded Content</strong>.</li>
 </ol>
+
 <p>Learn more about the <a href="https://docs.tealium.com/platforms/ios-swift/install/#swift-package-manager-recommended">Swift Package Manager</a> installation for iOS.</p>
+
 <h3 id="cocoapods">CocoaPods</h3>
+
 <p>To install the In-App Purchase module with CocoaPods, add the following pod to your Podfile:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;tealium-swift/InAppPurchase&#39;</span>
-</code></pre></div><p>Learn more about the <a href="https://docs.tealium.com/platforms/ios-swift/install/#cocoapods">CocoaPods</a> installation for iOS.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;tealium-swift/InAppPurchase&#39;</span></code></pre></div>
+<p>Learn more about the <a href="https://docs.tealium.com/platforms/ios-swift/install/#cocoapods">CocoaPods</a> installation for iOS.</p>
+
 <h3 id="carthage">Carthage</h3>
+
 <p>Follw these steps to install the In-App Purchase module with Carthage:</p>
+
 <ol>
 <li>Navigate to the <strong>General</strong> configuration pane for the target app in Xcode.</li>
-<li>Add the following framework to the <strong>Embedded Binaries</strong> section:</li>
+
+<li><p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">TealiumInAppPurchase.xcframework</code></pre></div></li>
+
+<li><p>To import the In-App Purchase library, add the following import statement to your project:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumInAppPurchase</span></code></pre></div></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">TealiumInAppPurchase.xcframework
-</code></pre></div><ol start="3">
-<li>To import the In-App Purchase library, add the following import statement to your project:</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumInAppPurchase</span>
-</code></pre></div><p>Learn more about the <a href="https://docs.tealium.com/platforms/ios-swift/install/#carthage">Carthage</a> installation for iOS.</p>
+
+<p>Learn more about the <a href="https://docs.tealium.com/platforms/ios-swift/install/#carthage">Carthage</a> installation for iOS.</p>
+
 <h2 id="configure">Configure</h2>
+
 <p>To instantiate the In-App Purchase module, you must specify it in your <code>TealiumConfig</code> object when initializing the SDK:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumCore</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumCore</span>
 <span style="color:#00f">import</span> <span style="color:#2b91af">TealiumInAppPurchase</span>
 
 <span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
@@ -345,47 +366,55 @@ var utag_data = {
                            datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>)
 
 config.collectors = [Collectors.InAppPurchase]
-tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span style="color:#00f">in</span> }
-</code></pre></div><h2 id="data-layer">Data Layer</h2>
+tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span style="color:#00f">in</span> }</code></pre></div>
+<h2 id="data-layer">Data Layer</h2>
+
 <p>The In-App Purchase module sends the following attributes in the event:</p>
+
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Variable</th>
-<th style="text-align:left">Description</th>
-<th style="text-align:left">Example</th>
+<th align="left">Variable</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
-<td style="text-align:left"><code>purchase_order_id</code></td>
-<td style="text-align:left">The order ID of the purchase.</td>
-<td style="text-align:left">&ldquo;1234567890&rdquo;</td>
+<td align="left"><code>purchase_order_id</code></td>
+<td align="left">The order ID of the purchase.</td>
+<td align="left">&ldquo;1234567890&rdquo;</td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>purchase_timestamp</code></td>
-<td style="text-align:left">The timestamp of the purchase in ISO 8601 format.</td>
-<td style="text-align:left">&ldquo;2022-01-17T14:42:28Z&rdquo;</td>
+<td align="left"><code>purchase_timestamp</code></td>
+<td align="left">The timestamp of the purchase in ISO 8601 format.</td>
+<td align="left">&ldquo;2022-01-17T14:42:28Z&rdquo;</td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>purchase_quantity</code></td>
-<td style="text-align:left">The total number of items purchased.</td>
-<td style="text-align:left">&ldquo;1&rdquo;</td>
+<td align="left"><code>purchase_quantity</code></td>
+<td align="left">The total number of items purchased.</td>
+<td align="left">&ldquo;1&rdquo;</td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>purchase_skus</code></td>
-<td style="text-align:left">An array of the product IDs purchased.</td>
-<td style="text-align:left">[&ldquo;com.example.level1&rdquo;]</td>
+<td align="left"><code>purchase_skus</code></td>
+<td align="left">An array of the product IDs purchased.</td>
+<td align="left">[&ldquo;com.example.level1&rdquo;]</td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>autotracked</code></td>
-<td style="text-align:left">Set to <code>true</code> to indicate that the event was tracked automatically.</td>
-<td style="text-align:left">true</td>
+<td align="left"><code>autotracked</code></td>
+<td align="left">Set to <code>true</code> to indicate that the event was tracked automatically.</td>
+<td align="left">true</td>
 </tr>
+
 <tr>
-<td style="text-align:left"><code>tealium_event</code></td>
-<td style="text-align:left">The name of the event.</td>
-<td style="text-align:left">&ldquo;in_app_purchase&rdquo;</td>
+<td align="left"><code>tealium_event</code></td>
+<td align="left">The name of the event.</td>
+<td align="left">&ldquo;in_app_purchase&rdquo;</td>
 </tr>
 </tbody>
 </table>
@@ -4216,8 +4245,8 @@ tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span styl
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f6 active" data-level="2">
-        <a href="/platforms/ios-swift/" class="db link pl3 pr2 pv1 bg-secondary white" data-target=".ios-swift-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/ios-swift/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-overview">Overview</a>
       </li>
       
     
@@ -5230,6 +5259,26 @@ tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span styl
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
         <a href="/platforms/react-native/install/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-install">Install</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
+        <a href="/platforms/react-native/location/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-location-install">Location Module</a>
       </li>
       
     

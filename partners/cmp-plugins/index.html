@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.92.1" />
+     <meta name="generator" content="Hugo 0.59.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -296,44 +296,63 @@ var utag_data = {
   
 
 
+
+
   
 
 <div class="flex justify-center bg-secondary ph3 pv4 mb3 br3 fr ml3"><img src="/images/icons/icon-cmp-plugin.png" alt="" width="100"  height="100" ></div>
 
+
 <p>CMP plugins are vendor-specific solutions in the Tealium extension marketplace that make it easy to integrate a CMP installation with a Tealium iQ installation.</p>
+
 <p>A CMP plugin offers the following benefits:</p>
+
 <ul>
 <li>A simple import tool to reduce the time to integrate the two solutions.</li>
 <li>Robust enforcement of firing tags based on consent status from the CMP.</li>
 <li>Server-side distribution of consent data from the CMP.</li>
 </ul>
+
 <h2 id="how-it-works">How it Works</h2>
+
 <p>A CMP plugin creates a mapping between the data processing services configured in the CMP and the tags configured in Tealium iQ. The plugin provides a helper tool, usually a bookmarklet, that makes it easy to import the CMP settings into Tealium iQ and map each service name to one or more tags.</p>
+
 <p>Once the mappings are set up and deployed to your site, your managed tags will fire based on the user&rsquo;s interaction with the CMP.</p>
+
 <p>A CMP integration has the following parts:</p>
+
 <ul>
-<li><strong>Service Mapping</strong><br>
+<li><strong>Service Mapping</strong><br />
 A service mapping associates CMP service names with managed tags. The linked tags will only fire after the associated CMP service name is consented to.</li>
-<li><strong>Data Layer Integration</strong><br>
+<li><strong>Data Layer Integration</strong><br />
 Consent status variables from the CMP are added to the <a href="/platforms/javascript/data-layer-object/">data layer object</a> of each tracking call. The variable names are in the format <code>&lt;cmp name&gt;_&lt;variable name&gt;</code>. For example, an array of consented service names from Usercentrics would be <code>usercentrics_services_with_consent</code>.
+
 <ul>
 <li><code>&lt;cmp name&gt;_services_with_consent</code> - an array of consented service names.</li>
 <li><code>&lt;cmp name&gt;_consent_type</code> - <code>explicit</code> or <code>implicit</code> consent type.</li>
+</ul></li>
 </ul>
-</li>
-</ul>
+
 <h2 id="requirements">Requirements</h2>
+
 <p>To integrate with Tealium iQ Tag Management, the following consent status information must be available for each data processing service configured in the CMP. These are usually accessed as global JavaScript variables or methods in the page:</p>
+
 <ul>
 <li><strong>Service Name</strong> - A unique name for the service that consent was applied to.</li>
 <li><strong>Consent Status</strong> - The status of the consent for the servicea, where <code>true</code> indicates that consent has been granted and <code>false</code> indicates that consent has not been granted.</li>
 <li><strong>Consent Method Type</strong> - The method by which consent was obtained (<code>implicit</code> or <code>explicit</code>).</li>
 </ul>
+
 <h2 id="sending-consent-data-to-tealium">Sending Consent Data to Tealium</h2>
+
 <p>In addition to collecting and enforcing consent on the client-side, a CMP integration can also distribute consent status to other vendors using server-side connectors.</p>
+
 <p>If your CMP supports webhook callbacks, then you can extend your integration with Tealium by sending updates to the <a href="/platforms/http-api/endpoint-spec/">HTTP API endpoint</a>. These events will be processed server-side and can be activated across other vendors using Tealium EventStream, AudienceStream, and DataAccess.</p>
+
 <p>If your CMP does not support webhooks, contact Tealium to work with your product and engineering teams to formalize an integration.</p>
+
 <h2 id="become-a-partner">Become a Partner</h2>
+
 <p><a href="https://community.tealiumiq.com/t5/Become-a-Technology-Partner/bd-p/become-a-technology-partner">Contact us</a> to integrate your technology.</p>
 
 </div>
@@ -407,8 +426,8 @@ Consent status variables from the CMP are added to the <a href="/platforms/javas
       
       
       
-      <li class="w-100 hover-accent-color-light fw4 f5 active" data-level="1">
-        <a href="/partners/" class="db link pl2 pr2 pv1 bg-secondary white" data-target=".partners-overview">Overview</a>
+      <li class="w-100 hover-accent-color-light fw4 f5" data-level="1">
+        <a href="/partners/" class="db link pl2 pr2 pv1 primary-color hover-bg-primary " data-target=".partners-overview">Overview</a>
       </li>
       
     
