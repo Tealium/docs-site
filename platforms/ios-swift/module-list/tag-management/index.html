@@ -257,7 +257,10 @@ var utag_data = {
               <li><a href="#cocoapods">CocoaPods</a></li>
               <li><a href="#carthage">Carthage</a></li>
               </ul><li><a href="#initialize">Initialize</a></li>
-              <li><a href="#data-layer">Data Layer</a></li>
+              <li><a href="#customizing-the-webview-settings">Customizing the WebView Settings</a></li>
+              <ul class="toc-h3"><li><a href="#app-bound-domains">App Bound Domains</a></li>
+              <li><a href="#process-pool">Process Pool</a></li>
+              </ul><li><a href="#data-layer">Data Layer</a></li>
               <li><a href="#about-wkwebview">About WKWebView</a></li>
               </nav>
   </aside></div>
@@ -352,7 +355,29 @@ var utag_data = {
 
 <p><code>config.dispatchers = [Dispatchers.TagManagement]</code></p>
 
-<p class="note"><i class="fas fa-info-circle"></i>If your app uses <code>WKWebView</code>, to avoid cookie synchronization issues, pass a singleton <code>WKProcessPool</code> instance to be used by the Tealium webview. Learn about <a href="/platforms/ios-swift/api/tealium-config/#webviewProcessPool">webviewProcessPool</a></p>
+<h2 id="customizing-the-webview-settings">Customizing the WebView Settings</h2>
+
+<h3 id="app-bound-domains">App Bound Domains</h3>
+
+<p>If your app uses the <a href="https://webkit.org/blog/10882/app-bound-domains/">WKAppBoundDomains</a> feature to limit which domains webviews in your app can communicate with, you must pass a custom <code>WKWebViewConfiguration</code> and set its <code>limitsNavigationsToAppBoundDomains</code> property to <code>true</code>. Failing to do this will result in all tracking calls being dropped by the operating system. You must also include &ldquo;tags.tiqcdn.com&rdquo; in your <code>Info.plist</code>&rsquo;s <code>WKAppBoundDomains</code> list, as well as the domains for any tags you have set up in Tealium iQ (for example &ldquo;google-analytics.com&rdquo;). Be aware that a maximum of 10 domains can be configured for the entire app, so if you use multiple client-side tags, you may easily exceed this.</p>
+
+<pre><code> let config = TealiumConfig(account: &quot;ACCOUNT&quot;,
+                               profile: &quot;PROFILE&quot;,
+                               environment: &quot;ENVIRONMENT&quot;,
+                               datasource: &quot;DATASOURCE&quot;)
+ config.dispatchers = [Dispatchers.TagManagement]
+ let wkWebViewConfiguration = WKWebViewConfiguration()
+ wkWebViewConfiguration.limitsNavigationsToAppBoundDomains = true
+ config.webviewConfig = wkWebViewConfiguration
+ tealium = Tealium(config: config)
+        
+</code></pre>
+
+<h3 id="process-pool">Process Pool</h3>
+
+<p>If your app uses its own <code>WKWebView</code>, to avoid cookie synchronization issues, pass a singleton <code>WKProcessPool</code> instance to be used by the Tealium webview, or a custom <code>WkWebViewConfiguration</code> that&rsquo;s shared with other webviews in your app.</p>
+
+<p>Learn about <a href="/platforms/ios-swift/api/tealium-config/#webviewprocesspool">webviewProcessPool</a> and <a href="/platforms/ios-swift/api/tealium-config/#webviewconfig">webViewConfig</a>.</p>
 
 <h2 id="data-layer">Data Layer</h2>
 
@@ -403,35 +428,45 @@ var utag_data = {
 
 </div>
 
-<b class="pv1 br2 dib tc mv3 link">
-
-	<div date-pref class="white">
+<div class="pv3">
+	<div class="di">
 		
 		
-			<a href="https://docs.tealium.com/platforms/ios-swift/module-list/remote-commands/" title="RemoteCommands Module "><svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg">
-    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-    <path d="M0 0h24v24H0z" fill="none"/>
-</svg>
- RemoteCommands Module </a>
+		<a href="/platforms/ios-swift/module-list/remote-commands/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"RemoteCommands Module "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>RemoteCommands Module</div>
+			</section>
+		</a>
 		
 
 	</div>
 
-</b>
-<b style="position: absolute; right:0px;" class="pv1 br2 dib tc mv3 link">
 
-	<div date-pref class="white">
+	<div class="fr">
 
 		
-			<a href="https://docs.tealium.com/platforms/ios-swift/module-list/visitor-service/" title="VisitorService Module">
-			VisitorService Module <svg class="fill-current" height="18px" viewBox="0 0 18 18" width="18px" xmlns="http://www.w3.org/2000/svg"> <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path> <path d="M0 0h24v24H0z" fill="none"></path> </svg>
-
-			</a>
+		<a href="/platforms/ios-swift/module-list/visitor-service/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>VisitorService Module</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"VisitorService Module"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
 		
 		
 	</div>
 
-</b>
+</div>
 <br>&nbsp;</br>
 
           
@@ -4745,6 +4780,46 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/api/location-module/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-location-module">LocationModule</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
+        <a href="/platforms/ios-swift/api/media-session/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-media-session">MediaSession</a>
+      </li>
+      
+    
+  
+  
+
+            
+
+  
+  
+  
+  
+  
+  
+    
+      
+      
+      
+      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/api/tealium/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium">Tealium</a>
       </li>
       
@@ -4846,26 +4921,6 @@ var utag_data = {
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
         <a href="/platforms/ios-swift/api/tealium-instance-manager/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-tealium-instance-manager">TealiumInstanceManager</a>
-      </li>
-      
-    
-  
-  
-
-            
-
-  
-  
-  
-  
-  
-  
-    
-      
-      
-      
-      <li class="w-100 hover-accent-color-light fw4 f6" data-level="3">
-        <a href="/platforms/ios-swift/api/media-session/" class="db link pl4 pr2 pv1 primary-color hover-bg-primary " data-target=".ios-swift-api-media-session">MediaSession</a>
       </li>
       
     
@@ -5260,7 +5315,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/react-native/location/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-location-install">Location Module</a>
+        <a href="/platforms/react-native/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-track">Track</a>
       </li>
       
     
@@ -5280,7 +5335,7 @@ var utag_data = {
       
       
       <li class="w-100 hover-accent-color-light fw4 f6" data-level="2">
-        <a href="/platforms/react-native/track/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-track">Track</a>
+        <a href="/platforms/react-native/location/" class="db link pl3 pr2 pv1 primary-color hover-bg-primary " data-target=".react-native-location-install">Location Module</a>
       </li>
       
     
@@ -7660,7 +7715,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  May 14, 2021 
+    <span>This page was last updated:  March 8, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
   </span>
