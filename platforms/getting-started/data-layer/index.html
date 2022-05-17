@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,678 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#app-data">App Data</a></li>
-              <li><a href="#collect">Collect</a></li>
-              <li><a href="#carrier-data">Carrier Data</a></li>
-              <li><a href="#consent-management">Consent Management</a></li>
-              <li><a href="#device-data">Device Data</a></li>
-              <li><a href="#lifecycle-events">Lifecycle Events</a></li>
-              <li><a href="#offline-queuing">Offline Queuing</a></li>
-              <li><a href="#tag-management">Tag Management</a></li>
-              <li><a href="#tealium-data">Tealium Data</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/getting-started/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        GETTING STARTED
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Data Layer</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      The list of data layer variables available on mobile installations.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<p>Each mobile component adds variables to the data layer. The following sections list every variable in each module.</p>
-
-<p>All values are converted to strings. However, numbers can be coerced back into a numeric type as needed using iQ extensions or Tealium EventStream enrichments.</p>
-
-<p class="note"><i class="fas fa-info-circle"></i>All auto-tracked events set the attribute: <code>autotracked=&quot;true&quot;</code></p>
-
-<h2 id="app-data">App Data</h2>
-
-<p>Properties of the host application.</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Event Attribute</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>app_name</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Application name</td>
-<td align="left"><code>&quot;Digital Velocity&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>app_rdns</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Reverse DNS Bundle id/package name</td>
-<td align="left"><code>&quot;com.digitalvelocity.alpha&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>app_version</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Application version</td>
-<td align="left"><code>&quot;1.2.0&quot;</code></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="collect">Collect</h2>
-
-<p>Dispatches tracking calls as network requests to Tealium&rsquo;s Collect service using the platform&rsquo;s native URL communications service.</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Event Attribute</th>
-<th align="left">Type</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>dispatch_service</code></td>
-<td align="left"><code>String</code></td>
-<td align="left"><code>&quot;collect&quot;</code></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="carrier-data">Carrier Data</h2>
-
-<p>Provides information regarding the mobile carrier. </p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Event Attribute</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>carrier</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Name of the Carrier</td>
-<td align="left"><code>&quot;AT&amp;T&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>carrier_iso</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Carrier ISO 3166-1 country code</td>
-<td align="left"><code>&quot;us&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>carrier_mcc</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Mobile ITU-T E.212 country code</td>
-<td align="left"><code>&quot;us&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>carrier_mnc</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Mobile Network Code</td>
-<td align="left"><code>&quot;410&quot;</code></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="consent-management">Consent Management</h2>
-
-<p>Provides information about consent tracking preferences. </p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Event Attribute</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>policy</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">The policy under which consent was collected</td>
-<td align="left"><code>&quot;gdpr&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>consent_status</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">The user&rsquo;s current consent status</td>
-<td align="left"><code>&quot;consented&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>consent_categories</code></td>
-<td align="left"><code>[String]</code></td>
-<td align="left">An array of the user&rsquo;s selected consent categories</td>
-<td align="left"> <code>[&quot;analytics&quot;, &quot;cdp&quot;]</code></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="device-data">Device Data</h2>
-
-<p>Provides information regarding the host device.</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Event Attribute</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>device</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Name of the device</td>
-<td align="left"><code>&quot;iPhone 6s&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_architecture</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Bit architecture of device (32, 64, etc.)</td>
-<td align="left"><code>64</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_advertising_id</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Optional Advertising identifier. Not automatically available for all devices</td>
-<td align="left"><code>&quot;03402320-245A-4ED4-BEAE-A1F50E21C55E&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_battery_percent</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Whole number percent representation of device&rsquo;s remaining battery power</td>
-<td align="left"><code>100</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_cputype</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Central Processor Unit type (arm6, arm7, etc.)</td>
-<td align="left"><code>&quot;ARM64&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_ischarging </code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Is the device actively charging (true/false)</td>
-<td align="left"><code>&quot;false&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_language </code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Two-letter IOS-639-1 language identifier (en, ja, etc.)</td>
-<td align="left"><code>&quot;en&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_orientation</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Orientation of device at time of event (portrait, landscape, etc.) </td>
-<td align="left"><code>&quot;Portrait&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_resolution </code></td>
-<td align="left"><code>String</code></td>
-<td align="left"> Resolution of a device</td>
-<td align="left"><code>&quot;750x1334&quot;</code></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="lifecycle-events">Lifecycle Events</h2>
-
-<p>Provides automatic tracking for the following application lifecycle events: launch, wake, and sleep.</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Event Attribute</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>lifecycle_ dayofweek_local</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Local day of week (1=Sunday, 2=Monday, etc)</td>
-<td align="left"><code>3</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ dayssincelaunch</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Days since first launch in whole number increments</td>
-<td align="left"><code>0</code> (24 hours have not yet elapsed)</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ dayssinceupdate</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Days since the app was updated in whole number increments</td>
-<td align="left"><code>&quot;1&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ diddetectcrash</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Was there a crash was determined at time of launch?</td>
-<td align="left"><code>&quot;true&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ firstlaunchdate</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">GMT timestamp of very first detected launch (ISO-8601format for Zulu time)</td>
-<td align="left"><code>&quot;2016-05-16T16:32:04Z&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ firstlaunchdate_ MMDDYYYY</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">GMT timestamp of very first detected launch (MM/DD/YYYY format)</td>
-<td align="left"><code>&quot;5/16/2016&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ hourofday_local</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Local hour of day (24 hour format)</td>
-<td align="left"><code>13</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ isfirstlaunch</code></td>
-<td align="left"><code>String</code></td>
-<td align="left"><code>&quot;true&quot;</code> if launch is very first (otherwise not populated)</td>
-<td align="left"><code>&quot;true&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ isfirstlaunchupdate</code></td>
-<td align="left"><code>String</code></td>
-<td align="left"><code>&quot;true&quot;</code> if launch is very first after a detected app version update (otherwise not populated)</td>
-<td align="left"><code>&quot;true&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ isfirstwakemonth</code></td>
-<td align="left"><code>String</code></td>
-<td align="left"><code>&quot;true&quot;</code> if launch event is the first for the current month (otherwise not populated)</td>
-<td align="left"><code>&quot;true&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ isfirstwaketoday </code></td>
-<td align="left"><code>String</code></td>
-<td align="left"><code>&quot;true&quot;</code> if launch/wake event is the first for current day (otherwise not populated)</td>
-<td align="left"><code>&quot;true&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ lastlaunchdate </code></td>
-<td align="left"><code>String</code></td>
-<td align="left">GMT timestamp of prior recorded launch (ISO-8601 format for Zulu time) (Not populated if it is within the first session)</td>
-<td align="left"><code>&quot;2013-07-11T17:55:04Z&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ lastsleepdate </code></td>
-<td align="left"><code>String</code></td>
-<td align="left">GMT timestamp of prior recorded sleep event (ISO-8601 format for Zulu time)</td>
-<td align="left"><code>&quot;2013-07-11T17:55:04Z&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ lastwakedate </code></td>
-<td align="left"><code>String</code></td>
-<td align="left">GMT timestamp of prior recorded wake event (ISO-8601 format for Zulu time)</td>
-<td align="left"><code>&quot;2013-07-11T17:55:04Z&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ launchcount </code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Total whole number of launches for application since most recent version update (restarts when a new version detected)</td>
-<td align="left"><code>3</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ priorsecondsawake</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Populated only during launch events. Whole seconds application was awake between wakes and sleeps. Aggregate of all these wakes &amp; sleeps until a launch event.</td>
-<td align="left"><code>148</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ secondsawake </code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Populated only during sleep events. Whole seconds application has been awake from most recent wake to the sleep event.</td>
-<td align="left"><code>480</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ sleepcount </code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Total number of times app was detected to have gone to sleep/background.</td>
-<td align="left"><code>3</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ totallaunchcount</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Total number of launches since app was installed. Only resets if application deleted and reinstalled. </td>
-<td align="left"><code>5</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ totalsecondsawake </code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Total number of seconds application has been awake. Only resets if application deleted and reinstalled.</td>
-<td align="left"><code>800</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ totalsleepcount </code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Total number of times application was detected to have gone to sleep. Only resets if application deleted and reinstalled.</td>
-<td align="left"><code>8</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ totalcrashcount</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Total number of times an application failed to properly log a sleep event, resulting in a lifecycle sequence discrepancy caused by a crash. Only resets if application deleted and reinstalled.</td>
-<td align="left"><code>2</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ totalwakecount </code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Total number of launches and wakes. Only resets if application deleted and reinstalled.</td>
-<td align="left"><code>7</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_type</code> </td>
-<td align="left"><code>String</code></td>
-<td align="left">Lifecycle event type</td>
-<td align="left">[<code>&quot;launch&quot;</code>, <code>&quot;wake&quot;</code>, <code>&quot;sleep&quot;</code>]</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ updatelaunchdate</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">GMT timestamp of first launch/wake after an app version update detected. ISO8601 format for Zulu time.</td>
-<td align="left"><code>&quot;2016-05-16T16:32:04Z&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ wakecount</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Total number of launches and wakes for this application version. Resets if a new host application version detected.</td>
-<td align="left"><code>34</code></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="offline-queuing">Offline Queuing</h2>
-
-<p>Preserves event dispatch data for later delivery when, for example, a device has momentarily lost network connectivity.</p>
-
-<p>Populates the following Event Attribute within the dispatch data that was queued: </p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Event Attribute</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>was_queued</code></td>
-<td align="left"><code>&quot;true&quot;</code></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="tag-management">Tag Management</h2>
-
-<p>Runs vendor tags configured in Tealium iQ Tag Management in a hidden webview.</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Event Attribute</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>dispatch_service</code></td>
-<td align="left"><code>&quot;tagmanagement&quot;</code></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="tealium-data">Tealium Data</h2>
-
-<p>Default event attributes that are present in all libraries.</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Event Attribute</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>tealium_event</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Title of the event. Value populated by the &lsquo;title&rsquo; argument of the Tealium provided track calls. Does NOT need to be unique.</td>
-<td align="left"><code>&quot;button_tapped&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_random</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Random 16 digit number generated per event. Pre-padded with zeroes to maintain 16 digit length.</td>
-<td align="left"><code>1234567890123456</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_account</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Tealium account name used to initialize a Tealium integration library.</td>
-<td align="left"><code>&quot;companyXYZ&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_environment</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Tealium TIQ environment used to initialize a Tealium integration library.</td>
-<td align="left">[<code>&quot;dev&quot;</code>, <code>&quot;qa&quot;</code>, <code>&quot;prod&quot;</code>]</td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_library_name</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Name of the platform integration library.</td>
-<td align="left"><code>&quot;swift&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_library_version</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Version of the platform integration library.</td>
-<td align="left"><code>&quot;1.2.0&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_profile</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Tealium profile name used to initialize a Tealium integration library.</td>
-<td align="left"><code>&quot;main&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_datasource</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">6 digit alphanumeric identifier provided by the Tealium Customer Data Hub</td>
-<td align="left"><code>&quot;abc123&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_session_id</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Unix epoch timestamp in milliseconds, no decimals, of first event. Resets after a new session starts, typically a new launch.</td>
-<td align="left"><code>1496350751928</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_visitor_id</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Unique app-device visitor id that differentiates users. Required by the Collect service.</td>
-<td align="left">(32 character alpha-numeric)</td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_timestamp_epoch</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Unix timestamp at UTC.</td>
-<td align="left"><code>1496350751</code></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/getting-started/tracking-webviews/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Tracking Webviews "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Tracking Webviews</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/getting-started/consent-management/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Consent Management</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Consent Management"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -8136,33 +7472,702 @@ var utag_data = {
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/getting-started/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        GETTING STARTED
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Data Layer</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      The list of data layer variables available on mobile installations.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<p>Each mobile component adds variables to the data layer. The following sections list every variable in each module.</p>
+
+<p>All values are converted to strings. However, numbers can be coerced back into a numeric type as needed using iQ extensions or Tealium EventStream enrichments.</p>
+
+<p class="note"><i class="fas fa-info-circle"></i>All auto-tracked events set the attribute: <code>autotracked=&quot;true&quot;</code></p>
+
+<h2 id="app-data">App Data</h2>
+
+<p>Properties of the host application.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Event Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>app_name</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Application name</td>
+<td align="left"><code>&quot;Digital Velocity&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>app_rdns</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Reverse DNS Bundle id/package name</td>
+<td align="left"><code>&quot;com.digitalvelocity.alpha&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>app_version</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Application version</td>
+<td align="left"><code>&quot;1.2.0&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="collect">Collect</h2>
+
+<p>Dispatches tracking calls as network requests to Tealium&rsquo;s Collect service using the platform&rsquo;s native URL communications service.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Event Attribute</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>dispatch_service</code></td>
+<td align="left"><code>String</code></td>
+<td align="left"><code>&quot;collect&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="carrier-data">Carrier Data</h2>
+
+<p>Provides information regarding the mobile carrier. </p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Event Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>carrier</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Name of the Carrier</td>
+<td align="left"><code>&quot;AT&amp;T&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>carrier_iso</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Carrier ISO 3166-1 country code</td>
+<td align="left"><code>&quot;us&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>carrier_mcc</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Mobile ITU-T E.212 country code</td>
+<td align="left"><code>&quot;us&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>carrier_mnc</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Mobile Network Code</td>
+<td align="left"><code>&quot;410&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="consent-management">Consent Management</h2>
+
+<p>Provides information about consent tracking preferences. </p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Event Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>policy</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The policy under which consent was collected</td>
+<td align="left"><code>&quot;gdpr&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>consent_status</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The user&rsquo;s current consent status</td>
+<td align="left"><code>&quot;consented&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>consent_categories</code></td>
+<td align="left"><code>[String]</code></td>
+<td align="left">An array of the user&rsquo;s selected consent categories</td>
+<td align="left"> <code>[&quot;analytics&quot;, &quot;cdp&quot;]</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="device-data">Device Data</h2>
+
+<p>Provides information regarding the host device.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Event Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>device</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Name of the device</td>
+<td align="left"><code>&quot;iPhone 6s&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_architecture</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Bit architecture of device (32, 64, etc.)</td>
+<td align="left"><code>64</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_advertising_id</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Optional Advertising identifier. Not automatically available for all devices</td>
+<td align="left"><code>&quot;03402320-245A-4ED4-BEAE-A1F50E21C55E&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_battery_percent</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Whole number percent representation of device&rsquo;s remaining battery power</td>
+<td align="left"><code>100</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_cputype</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Central Processor Unit type (arm6, arm7, etc.)</td>
+<td align="left"><code>&quot;ARM64&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_ischarging </code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Is the device actively charging (true/false)</td>
+<td align="left"><code>&quot;false&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_language </code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Two-letter IOS-639-1 language identifier (en, ja, etc.)</td>
+<td align="left"><code>&quot;en&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_orientation</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Orientation of device at time of event (portrait, landscape, etc.) </td>
+<td align="left"><code>&quot;Portrait&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_resolution </code></td>
+<td align="left"><code>String</code></td>
+<td align="left"> Resolution of a device</td>
+<td align="left"><code>&quot;750x1334&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="lifecycle-events">Lifecycle Events</h2>
+
+<p>Provides automatic tracking for the following application lifecycle events: launch, wake, and sleep.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Event Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>lifecycle_ dayofweek_local</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Local day of week (1=Sunday, 2=Monday, etc)</td>
+<td align="left"><code>3</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ dayssincelaunch</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Days since first launch in whole number increments</td>
+<td align="left"><code>0</code> (24 hours have not yet elapsed)</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ dayssinceupdate</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Days since the app was updated in whole number increments</td>
+<td align="left"><code>&quot;1&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ diddetectcrash</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Was there a crash was determined at time of launch?</td>
+<td align="left"><code>&quot;true&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ firstlaunchdate</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">GMT timestamp of very first detected launch (ISO-8601format for Zulu time)</td>
+<td align="left"><code>&quot;2016-05-16T16:32:04Z&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ firstlaunchdate_ MMDDYYYY</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">GMT timestamp of very first detected launch (MM/DD/YYYY format)</td>
+<td align="left"><code>&quot;5/16/2016&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ hourofday_local</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Local hour of day (24 hour format)</td>
+<td align="left"><code>13</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ isfirstlaunch</code></td>
+<td align="left"><code>String</code></td>
+<td align="left"><code>&quot;true&quot;</code> if launch is very first (otherwise not populated)</td>
+<td align="left"><code>&quot;true&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ isfirstlaunchupdate</code></td>
+<td align="left"><code>String</code></td>
+<td align="left"><code>&quot;true&quot;</code> if launch is very first after a detected app version update (otherwise not populated)</td>
+<td align="left"><code>&quot;true&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ isfirstwakemonth</code></td>
+<td align="left"><code>String</code></td>
+<td align="left"><code>&quot;true&quot;</code> if launch event is the first for the current month (otherwise not populated)</td>
+<td align="left"><code>&quot;true&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ isfirstwaketoday </code></td>
+<td align="left"><code>String</code></td>
+<td align="left"><code>&quot;true&quot;</code> if launch/wake event is the first for current day (otherwise not populated)</td>
+<td align="left"><code>&quot;true&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ lastlaunchdate </code></td>
+<td align="left"><code>String</code></td>
+<td align="left">GMT timestamp of prior recorded launch (ISO-8601 format for Zulu time) (Not populated if it is within the first session)</td>
+<td align="left"><code>&quot;2013-07-11T17:55:04Z&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ lastsleepdate </code></td>
+<td align="left"><code>String</code></td>
+<td align="left">GMT timestamp of prior recorded sleep event (ISO-8601 format for Zulu time)</td>
+<td align="left"><code>&quot;2013-07-11T17:55:04Z&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ lastwakedate </code></td>
+<td align="left"><code>String</code></td>
+<td align="left">GMT timestamp of prior recorded wake event (ISO-8601 format for Zulu time)</td>
+<td align="left"><code>&quot;2013-07-11T17:55:04Z&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ launchcount </code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Total whole number of launches for application since most recent version update (restarts when a new version detected)</td>
+<td align="left"><code>3</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ priorsecondsawake</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Populated only during launch events. Whole seconds application was awake between wakes and sleeps. Aggregate of all these wakes &amp; sleeps until a launch event.</td>
+<td align="left"><code>148</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ secondsawake </code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Populated only during sleep events. Whole seconds application has been awake from most recent wake to the sleep event.</td>
+<td align="left"><code>480</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ sleepcount </code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Total number of times app was detected to have gone to sleep/background.</td>
+<td align="left"><code>3</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ totallaunchcount</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Total number of launches since app was installed. Only resets if application deleted and reinstalled. </td>
+<td align="left"><code>5</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ totalsecondsawake </code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Total number of seconds application has been awake. Only resets if application deleted and reinstalled.</td>
+<td align="left"><code>800</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ totalsleepcount </code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Total number of times application was detected to have gone to sleep. Only resets if application deleted and reinstalled.</td>
+<td align="left"><code>8</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ totalcrashcount</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Total number of times an application failed to properly log a sleep event, resulting in a lifecycle sequence discrepancy caused by a crash. Only resets if application deleted and reinstalled.</td>
+<td align="left"><code>2</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ totalwakecount </code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Total number of launches and wakes. Only resets if application deleted and reinstalled.</td>
+<td align="left"><code>7</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_type</code> </td>
+<td align="left"><code>String</code></td>
+<td align="left">Lifecycle event type</td>
+<td align="left">[<code>&quot;launch&quot;</code>, <code>&quot;wake&quot;</code>, <code>&quot;sleep&quot;</code>]</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ updatelaunchdate</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">GMT timestamp of first launch/wake after an app version update detected. ISO8601 format for Zulu time.</td>
+<td align="left"><code>&quot;2016-05-16T16:32:04Z&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ wakecount</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Total number of launches and wakes for this application version. Resets if a new host application version detected.</td>
+<td align="left"><code>34</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="offline-queuing">Offline Queuing</h2>
+
+<p>Preserves event dispatch data for later delivery when, for example, a device has momentarily lost network connectivity.</p>
+
+<p>Populates the following Event Attribute within the dispatch data that was queued: </p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Event Attribute</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>was_queued</code></td>
+<td align="left"><code>&quot;true&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="tag-management">Tag Management</h2>
+
+<p>Runs vendor tags configured in Tealium iQ Tag Management in a hidden webview.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Event Attribute</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>dispatch_service</code></td>
+<td align="left"><code>&quot;tagmanagement&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="tealium-data">Tealium Data</h2>
+
+<p>Default event attributes that are present in all libraries.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Event Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>tealium_event</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Title of the event. Value populated by the &lsquo;title&rsquo; argument of the Tealium provided track calls. Does NOT need to be unique.</td>
+<td align="left"><code>&quot;button_tapped&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_random</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Random 16 digit number generated per event. Pre-padded with zeroes to maintain 16 digit length.</td>
+<td align="left"><code>1234567890123456</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_account</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Tealium account name used to initialize a Tealium integration library.</td>
+<td align="left"><code>&quot;companyXYZ&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_environment</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Tealium TIQ environment used to initialize a Tealium integration library.</td>
+<td align="left">[<code>&quot;dev&quot;</code>, <code>&quot;qa&quot;</code>, <code>&quot;prod&quot;</code>]</td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_library_name</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Name of the platform integration library.</td>
+<td align="left"><code>&quot;swift&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_library_version</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Version of the platform integration library.</td>
+<td align="left"><code>&quot;1.2.0&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_profile</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Tealium profile name used to initialize a Tealium integration library.</td>
+<td align="left"><code>&quot;main&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_datasource</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">6 digit alphanumeric identifier provided by the Tealium Customer Data Hub</td>
+<td align="left"><code>&quot;abc123&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_session_id</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Unix epoch timestamp in milliseconds, no decimals, of first event. Resets after a new session starts, typically a new launch.</td>
+<td align="left"><code>1496350751928</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_visitor_id</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Unique app-device visitor id that differentiates users. Required by the Collect service.</td>
+<td align="left">(32 character alpha-numeric)</td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_timestamp_epoch</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Unix timestamp at UTC.</td>
+<td align="left"><code>1496350751</code></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/getting-started/tracking-webviews/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Tracking Webviews "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Tracking Webviews</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/getting-started/consent-management/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Consent Management</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Consent Management"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 20, 2020 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  October 20, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#app-data">App Data</a></li>
+              <li><a href="#collect">Collect</a></li>
+              <li><a href="#carrier-data">Carrier Data</a></li>
+              <li><a href="#consent-management">Consent Management</a></li>
+              <li><a href="#device-data">Device Data</a></li>
+              <li><a href="#lifecycle-events">Lifecycle Events</a></li>
+              <li><a href="#offline-queuing">Offline Queuing</a></li>
+              <li><a href="#tag-management">Tag Management</a></li>
+              <li><a href="#tealium-data">Tealium Data</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

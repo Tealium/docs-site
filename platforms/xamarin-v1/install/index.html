@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,360 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#sample-app">Sample App</a></li>
-              <li><a href="#get-the-code">Get the Code</a></li>
-              <li><a href="#install">Install</a></li>
-              <ul class="toc-h3"><li><a href="#nuget">NuGet</a></li>
-              </ul><li><a href="#initialize">Initialize</a></li>
-              <li><a href="#advanced-configuration">Advanced Configuration</a></li>
-              <ul class="toc-h3"><li><a href="#remote-commands">Remote Commands</a></li>
-              <li><a href="#delegate-methods">Delegate Methods</a></li>
-              </ul><li><a href="#resources">Resources</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/xamarin/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        XAMARIN
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Install</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Learn to install Tealium for Xamarin 1.x.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<p>The Tealium Xamarin integration provides a set of cross-platform interfaces and configuration classes that interface with the native Tealium iOS and Android SDKs.</p>
-
-<h2 id="sample-app">Sample App</h2>
-
-<p>To help to familiarize yourself with our library, the tracking methods, and best practice implementation, download the Xamarin <a href="https://github.com/Tealium/tealium-xamarin/tree/master/Samples/ExampleApp">sample app</a>.</p>
-
-<h2 id="get-the-code">Get the Code</h2>
-
-<h4 id="available-dlls">Available DLLs</h4>
-
-<p>Several <a href="https://github.com/Tealium/tealium-xamarin">dynamic-link libraries</a> (DLLs) are available for the Xamarin integration:</p>
-
-<ul>
-<li><strong><code>Tealium.Common.dll</code></strong><br />
-This DLL contains cross-platform code, interfaces, and common code to be used in all projects within your Xamarin application. Add this DLL as a reference in both shared project and platform specific projects.</li>
-<li><strong>Abstraction DLLs</strong><br />
-Abstraction DLLS are included to create a C# API wrapper for the native Tealium SDKs in platform specific projects. These libraries contain platform specific, concrete class implementations for the interfaces and abstract classes provided by the Tealium common library. Code all of your cross-platform logic against the common library.
-
-<ul>
-<li><code>Tealium.Droid.dll</code> – for Android mobile platforms</li>
-<li><code>Tealium.iOS.dll</code> – for Apple mobile platforms</li>
-</ul></li>
-</ul>
-
-<p>There are DLLs specific to each mobile platform which are referenced by the abstraction DLLs. The platform DLLs are binding libraries and therefore embedded in Tealium&rsquo;s native SDKs. They provide auto-generated wrapper code that allows you to interact with our native SDKs directly and as a result they may be used standalone if desired.</p>
-
-<ul>
-<li><code>Tealium.Platform.Droid.dll</code></li>
-<li><code>Tealium.Platform.iOS.dll</code></li>
-</ul>
-
-<p class="note"><i class="fas fa-info-circle"></i>Binding libraries may be used by themselves. The fact that they are automatically generated results in vastly different namespaces for each platform, which adds an extra complication to development efforts. It is advised to make use of the <code>Common</code> and platform-specific abstraction libraries instead.</p>
-
-<h4 id="lifecycle-modules">Lifecycle Modules</h4>
-
-<p>An optional lifecycle module is available by referencing the relevant DLL for the platform. These are binding libraries for the native equivalent SDKs:</p>
-
-<ul>
-<li><code>Tealium.Platform.Lifecycle.Droid.dll</code></li>
-<li><code>Tealium.Platform.Lifecycle.iOS.dll</code></li>
-</ul>
-
-<h4 id="android-example">Android Example</h4>
-
-<p>The following example illustrates the Shared project and Android platform-specific project from a typical Xamarin based app:</p>
-
-<p><img src="/images/platforms/xamarin/consent-manager-model.png" alt="Consent Manager Model" title="Consent Manager Model" width="450"></p>
-
-<p>As shown in the example, the Shared Project references only the <code>Tealium.Common.dll</code> library, whereas the Android-specific project references all of the following:</p>
-
-<ul>
-<li><code>Tealium.Common.dll</code></li>
-<li><code>Tealium.Droid.dll</code></li>
-<li><code>Tealium.Platform.Droid.dll</code></li>
-<li><code>Tealium.Platform.Lifecycle.Droid.dll</code></li>
-</ul>
-
-<h2 id="install">Install</h2>
-
-<p>To install Tealium library for Xamarin, first verify that your projects reference the appropriate libraries. We recommend using the <code>TealiumInstanceManager</code> classes provided as they provide out-of-the-box, thread-safe Tealium instance management.</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="Android" title="Android">
-  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#00f">using</span> Tealium.Droid;
-<span style="color:#008000">//...
-</span><span style="color:#008000"></span>
-ITealiumInstanceManager instanceManager = <span style="color:#00f">new</span> TealiumInstanceManager(<span style="color:#00f">new</span> TealiumInstanceFactoryDroid(&lt;myAndroidApplication&gt;));
-<span style="color:#008000">//Optional Lifecycle Module enablement - must reference Tealium.Platform.Lifecycle.Droid.dll
-</span><span style="color:#008000"></span>TealiumLifecycleManager.SetLifecycleAutoTracking = TealiumDroid.Lifecycle.TealiumLifecycleControlDelegation.SetLifecycleAutoTracking;
-</code></pre></div>
-</div>
-
-<div class="tab-pane" data-lang="iOS" title="iOS">
-  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#00f">using</span> Tealium.iOS;
-<span style="color:#008000">//...
-</span><span style="color:#008000"></span>
-ITealiumInstanceManager instanceManager = <span style="color:#00f">new</span> TealiumInstanceManager(<span style="color:#00f">new</span> TealiumInstanceFactoryIOS());
-<span style="color:#008000">//Optional Lifecycle Module enablement - must reference Tealium.Platform.Lifecycle.iOS.dll
-</span><span style="color:#008000"></span>TealiumLifecycleManager.SetLifecycleAutoTracking =TealiumIOS.Lifecycle.TealiumLifecycleControlDelegation.SetLifecycleAutoTracking;
-</code></pre></div>
-</div>
-
-<p></div>
-</div></p>
-
-<h3 id="nuget">NuGet</h3>
-
-<p>To install the Tealium library for Xamarin as a NuGet package, install it directly from Visual Studio using the built-in NuGet package manager. <a href="https://www.nuget.org/packages/Tealium.Xamarin/">Learn more</a> about the Tealium NuGet listing.</p>
-
-<h2 id="initialize">Initialize</h2>
-
-<p>Once the <code>TealiumInstanceManager</code> is created, begin creating <code>Tealium</code> instances as with the native SDKs. The <code>TealiumInstanceManager</code> is a multiton pattern that provides access to multiple named instances if you need to track data on more than one Tealium profile.</p>
-
-<p>To create a new instance, first create a <code>TealiumConfig</code> object with your account details:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">TealiumConfig tealConfig
-     = <span style="color:#00f">new</span> TealiumConfig(instance, account, profile, environment, lifecycleAutoTracking);
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>instance</code></td>
-<td><code>String</code></td>
-<td>Tealium Instance ID</td>
-<td><code>&quot;tealium_main&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>account</code></td>
-<td><code>String</code></td>
-<td>Tealium account name</td>
-<td><code>&quot;companyXYZ&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>profile</code></td>
-<td><code>String</code></td>
-<td>Tealium profile name</td>
-<td><code>&quot;main&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>environment</code></td>
-<td><code>String</code></td>
-<td>Tealium environment name</td>
-<td>[<code>&quot;dev&quot;</code>, <code>&quot;qa&quot;</code>, <code>&quot;prod&quot;</code>]</td>
-</tr>
-
-<tr>
-<td><code>lifecycleAutoTracking</code></td>
-<td><code>Boolean</code></td>
-<td>(Optional) Lifecycle auto-tracking (default: <code>true</code>)</td>
-<td><code>true`, `false</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>Then use the <code>TealiumInstanceManager</code> to create a Tealium instance, which is used to track your events:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp">ITealium tealium = instanceManager.CreateInstance(tealConfig);
-</code></pre></div>
-<h2 id="advanced-configuration">Advanced Configuration</h2>
-
-<p>The <code>TealiumConfig</code> class has overloaded constructors for the option of specifying optional parameters to enable or disable the more advanced aspects of the Tealium Mobile SDKs. These parameters are optional as not all customers require these features.</p>
-
-<h3 id="remote-commands">Remote Commands</h3>
-
-<p>While the majority of the events within mobile are either sent to our data collection servers to be actioned through connectors, or processed in the tag management web view to trigger vendor tags, remote commands provide additional flexibility to trigger native code through the <code>IRemoteCommand</code> interface.</p>
-
-<p>The following sample code prints out the command ID (set to <code>TealiumConsts.REMOTE_COMMAND_ID</code>). This example also provides access to a full payload of data, as configured in the associated TagBridge Custom Command tag required to set this up:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#00f">static</span> List&lt;IRemoteCommand&gt; SetupRemoteCommands()
-{
-    <span style="color:#2b91af">var</span> command = <span style="color:#00f">new</span> DelegateRemoteCommand(TealiumConsts.REMOTE_COMMAND_ID, <span style="color:#a31515">&#34;Test command &#34;</span> + TealiumConsts.REMOTE_COMMAND_ID) {
-        HandleResponseDelegate = (DelegateRemoteCommand cmd,
-            IRemoteCommandResponse resp) =&gt; {
-                System.Diagnostics.Debug.WriteLine(<span style="color:#a31515">$&#34;Handling command {cmd.CommandId}...&#34;</span>);
-            }
-        };
-    <span style="color:#00f">return</span> <span style="color:#00f">new</span> List&lt;IRemoteCommand&gt;() { command };
-}
-</code></pre></div>
-<p><a href="/platforms/remote-commands/how-it-works/">Learn more</a> about remote commands.</p>
-
-<h3 id="delegate-methods">Delegate Methods</h3>
-
-<p>There are five delegated methods that allow you to inject code into the processing logic within the Tealium SDK:</p>
-
-<table>
-<thead>
-<tr>
-<th>Delegated Method</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>DelegateDispatchValidator()</code></td>
-<td>Provides two delegate methods [<code>ShouldDropDispatchDelegate()</code>,  <code>ShouldQueueDispatchDelegate()</code>] where the boolean return value determines whether or not an existing dispatch is dropped or queued &ndash; Useful if you have steps within your app where you know that the user may be offline or you specifically want to write your own batching logic</td>
-</tr>
-
-<tr>
-<td><code>DispatchSentDelegateEventListener()</code></td>
-<td>Called whenever a dispatch has been sent</td>
-</tr>
-
-<tr>
-<td><code>DispatchQueuedDelegateEventListener()</code></td>
-<td>Called whenever a dispatch has been queued</td>
-</tr>
-
-<tr>
-<td><code>WebViewReadyDelegateEventListener()</code></td>
-<td>Called when the WebView is fully loaded and ready, if you are using the Tag Management module</td>
-</tr>
-
-<tr>
-<td><code>SettingsPublishedDelegateEventListener()</code></td>
-<td>Called when there has been an updated set of publish settings retrieved</td>
-</tr>
-</tbody>
-</table>
-
-<p>The following example illustrates the usage of the delegate method:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#00f">static</span> TealiumAdvancedConfig SetupAdvancedConfig() {
-
-    DelegateDispatchValidator validator = <span style="color:#00f">new</span> DelegateDispatchValidator() {
-        ShouldDropDispatchDelegate = (ITealium arg1, IDispatch arg2) =&gt; {
-            System.Diagnostics.Debug.WriteLine(<span style="color:#a31515">&#34;Inside ShouldDropDispatchDelegate!&#34;</span>);
-            <span style="color:#00f">return</span> <span style="color:#00f">false</span>;
-        },
-        ShouldQueueDispatchDelegate = (ITealium arg1, IDispatch arg2, <span style="color:#2b91af">bool</span> shouldQueue) =&gt; {
-            System.Diagnostics.Debug.WriteLine(<span style="color:#a31515">&#34;Inside ShouldQueueDispatchDelegate!&#34;</span>);
-            <span style="color:#00f">return</span> shouldQueue;
-        }
-    };
-    DispatchSentDelegateEventListener sendingListener = <span style="color:#00f">new</span> DispatchSentDelegateEventListener() {
-        DispatchSent = (tealium, dispatch) =&gt; {
-            System.Diagnostics.Debug.WriteLine(<span style="color:#a31515">&#34;Inside DispatchSent!&#34;</span>);
-            dispatch.PutString(<span style="color:#a31515">&#34;KeyAddedBySendListener&#34;</span>, <span style="color:#a31515">&#34;Value added by sending listener.&#34;</span>);
-        }
-    };
-    DispatchQueuedDelegateEventListener queuingListener = <span style="color:#00f">new</span> DispatchQueuedDelegateEventListener() {
-        DispatchQueued = (tealium, dispatch) =&gt; {
-            System.Diagnostics.Debug.WriteLine(<span style="color:#a31515">&#34;Inside DispatchQueued!&#34;</span>);
-            dispatch.PutString(<span style="color:#a31515">&#34;KeyAddedByQueuedListener&#34;</span>, <span style="color:#a31515">&#34;Value added by queuing listener.&#34;</span>);
-        }
-    };
-    WebViewReadyDelegateEventListener webViewListener = <span style="color:#00f">new</span> WebViewReadyDelegateEventListener() {
-        WebViewReady = (tealium, webView) =&gt;  {
-            System.Diagnostics.Debug.WriteLine(<span style="color:#a31515">&#34;Inside WebViewReady!&#34;</span>);
-        }
-    };
-    SettingsPublishedDelegateEventListener settingsListener = <span style="color:#00f">new</span> SettingsPublishedDelegateEventListener() {
-        SettingsPublished = (tealium) =&gt; {
-            System.Diagnostics.Debug.WriteLine(<span style="color:#a31515">&#34;Inside SettingsPublished!&#34;</span>);
-        }
-    };
-    TealiumAdvancedConfig advConfig = <span style="color:#00f">new</span> TealiumAdvancedConfig(validator,
-        sendingListener, queuingListener, webViewListener, settingsListener);
-
-    <span style="color:#00f">return</span> advConfig;
-}
-</code></pre></div>
-<h2 id="resources">Resources</h2>
-
-<p>The following resources provide links to Xamarin&rsquo;s extensive documentation for adding Tealium&rsquo;s Android and iOS libraries:</p>
-
-<ul>
-<li><a href="https://www.xamarin.com/platform">Xamarin</a></li>
-<li><a href="https://developer.xamarin.com/guides/android/advanced_topics/binding-a-java-library" title="Xamarin How to Bind a Java Library">Binding a Java Library</a></li>
-<li><a href="https://developer.xamarin.com/guides/ios/advanced_topics/binding_objective-c/">Xamarin - Binding an iOS Objective-C Library</a></li>
-<li><a href="https://developer.xamarin.com/guides/ios/advanced_topics/binding_objective-c/walkthrough/" title="Xamarin how to bind an Objective-C library">Walkthrough: Binding an iOS Objective-C Library</a></li>
-</ul>
-
-</div>
-
-<div class="pv3">
-
-	<div class="fr">
-
-		
-		<a href="/platforms/xamarin-v1/track/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Track</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Track"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7818,33 +7472,395 @@ ITealiumInstanceManager instanceManager = <span style="color:#00f">new</span> Te
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/xamarin/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        XAMARIN
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Install</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Learn to install Tealium for Xamarin 1.x.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<p>The Tealium Xamarin integration provides a set of cross-platform interfaces and configuration classes that interface with the native Tealium iOS and Android SDKs.</p>
+
+<h2 id="sample-app">Sample App</h2>
+
+<p>To help to familiarize yourself with our library, the tracking methods, and best practice implementation, download the Xamarin <a href="https://github.com/Tealium/tealium-xamarin/tree/master/Samples/ExampleApp">sample app</a>.</p>
+
+<h2 id="get-the-code">Get the Code</h2>
+
+<h4 id="available-dlls">Available DLLs</h4>
+
+<p>Several <a href="https://github.com/Tealium/tealium-xamarin">dynamic-link libraries</a> (DLLs) are available for the Xamarin integration:</p>
+
+<ul>
+<li><strong><code>Tealium.Common.dll</code></strong><br />
+This DLL contains cross-platform code, interfaces, and common code to be used in all projects within your Xamarin application. Add this DLL as a reference in both shared project and platform specific projects.</li>
+<li><strong>Abstraction DLLs</strong><br />
+Abstraction DLLS are included to create a C# API wrapper for the native Tealium SDKs in platform specific projects. These libraries contain platform specific, concrete class implementations for the interfaces and abstract classes provided by the Tealium common library. Code all of your cross-platform logic against the common library.
+
+<ul>
+<li><code>Tealium.Droid.dll</code> – for Android mobile platforms</li>
+<li><code>Tealium.iOS.dll</code> – for Apple mobile platforms</li>
+</ul></li>
+</ul>
+
+<p>There are DLLs specific to each mobile platform which are referenced by the abstraction DLLs. The platform DLLs are binding libraries and therefore embedded in Tealium&rsquo;s native SDKs. They provide auto-generated wrapper code that allows you to interact with our native SDKs directly and as a result they may be used standalone if desired.</p>
+
+<ul>
+<li><code>Tealium.Platform.Droid.dll</code></li>
+<li><code>Tealium.Platform.iOS.dll</code></li>
+</ul>
+
+<p class="note"><i class="fas fa-info-circle"></i>Binding libraries may be used by themselves. The fact that they are automatically generated results in vastly different namespaces for each platform, which adds an extra complication to development efforts. It is advised to make use of the <code>Common</code> and platform-specific abstraction libraries instead.</p>
+
+<h4 id="lifecycle-modules">Lifecycle Modules</h4>
+
+<p>An optional lifecycle module is available by referencing the relevant DLL for the platform. These are binding libraries for the native equivalent SDKs:</p>
+
+<ul>
+<li><code>Tealium.Platform.Lifecycle.Droid.dll</code></li>
+<li><code>Tealium.Platform.Lifecycle.iOS.dll</code></li>
+</ul>
+
+<h4 id="android-example">Android Example</h4>
+
+<p>The following example illustrates the Shared project and Android platform-specific project from a typical Xamarin based app:</p>
+
+<p><img src="/images/platforms/xamarin/consent-manager-model.png" alt="Consent Manager Model" title="Consent Manager Model" width="450"></p>
+
+<p>As shown in the example, the Shared Project references only the <code>Tealium.Common.dll</code> library, whereas the Android-specific project references all of the following:</p>
+
+<ul>
+<li><code>Tealium.Common.dll</code></li>
+<li><code>Tealium.Droid.dll</code></li>
+<li><code>Tealium.Platform.Droid.dll</code></li>
+<li><code>Tealium.Platform.Lifecycle.Droid.dll</code></li>
+</ul>
+
+<h2 id="install">Install</h2>
+
+<p>To install Tealium library for Xamarin, first verify that your projects reference the appropriate libraries. We recommend using the <code>TealiumInstanceManager</code> classes provided as they provide out-of-the-box, thread-safe Tealium instance management.</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="Android" title="Android">
+  <pre><code class="language-csharp">using Tealium.Droid;
+//...
+
+ITealiumInstanceManager instanceManager = new TealiumInstanceManager(new TealiumInstanceFactoryDroid(&lt;myAndroidApplication&gt;));
+//Optional Lifecycle Module enablement - must reference Tealium.Platform.Lifecycle.Droid.dll
+TealiumLifecycleManager.SetLifecycleAutoTracking = TealiumDroid.Lifecycle.TealiumLifecycleControlDelegation.SetLifecycleAutoTracking;
+</code></pre>
+
+</div>
+
+<div class="tab-pane" data-lang="iOS" title="iOS">
+  <pre><code class="language-csharp">using Tealium.iOS;
+//...
+
+ITealiumInstanceManager instanceManager = new TealiumInstanceManager(new TealiumInstanceFactoryIOS());
+//Optional Lifecycle Module enablement - must reference Tealium.Platform.Lifecycle.iOS.dll
+TealiumLifecycleManager.SetLifecycleAutoTracking =TealiumIOS.Lifecycle.TealiumLifecycleControlDelegation.SetLifecycleAutoTracking;
+</code></pre>
+
+</div>
+
+<p></div>
+</div></p>
+
+<h3 id="nuget">NuGet</h3>
+
+<p>To install the Tealium library for Xamarin as a NuGet package, install it directly from Visual Studio using the built-in NuGet package manager. <a href="https://www.nuget.org/packages/Tealium.Xamarin/">Learn more</a> about the Tealium NuGet listing.</p>
+
+<h2 id="initialize">Initialize</h2>
+
+<p>Once the <code>TealiumInstanceManager</code> is created, begin creating <code>Tealium</code> instances as with the native SDKs. The <code>TealiumInstanceManager</code> is a multiton pattern that provides access to multiple named instances if you need to track data on more than one Tealium profile.</p>
+
+<p>To create a new instance, first create a <code>TealiumConfig</code> object with your account details:</p>
+
+<pre><code class="language-csharp">TealiumConfig tealConfig
+     = new TealiumConfig(instance, account, profile, environment, lifecycleAutoTracking);
+
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>instance</code></td>
+<td><code>String</code></td>
+<td>Tealium Instance ID</td>
+<td><code>&quot;tealium_main&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>account</code></td>
+<td><code>String</code></td>
+<td>Tealium account name</td>
+<td><code>&quot;companyXYZ&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>profile</code></td>
+<td><code>String</code></td>
+<td>Tealium profile name</td>
+<td><code>&quot;main&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>environment</code></td>
+<td><code>String</code></td>
+<td>Tealium environment name</td>
+<td>[<code>&quot;dev&quot;</code>, <code>&quot;qa&quot;</code>, <code>&quot;prod&quot;</code>]</td>
+</tr>
+
+<tr>
+<td><code>lifecycleAutoTracking</code></td>
+<td><code>Boolean</code></td>
+<td>(Optional) Lifecycle auto-tracking (default: <code>true</code>)</td>
+<td><code>true`, `false</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Then use the <code>TealiumInstanceManager</code> to create a Tealium instance, which is used to track your events:</p>
+
+<pre><code class="language-csharp">ITealium tealium = instanceManager.CreateInstance(tealConfig);
+</code></pre>
+
+<h2 id="advanced-configuration">Advanced Configuration</h2>
+
+<p>The <code>TealiumConfig</code> class has overloaded constructors for the option of specifying optional parameters to enable or disable the more advanced aspects of the Tealium Mobile SDKs. These parameters are optional as not all customers require these features.</p>
+
+<h3 id="remote-commands">Remote Commands</h3>
+
+<p>While the majority of the events within mobile are either sent to our data collection servers to be actioned through connectors, or processed in the tag management web view to trigger vendor tags, remote commands provide additional flexibility to trigger native code through the <code>IRemoteCommand</code> interface.</p>
+
+<p>The following sample code prints out the command ID (set to <code>TealiumConsts.REMOTE_COMMAND_ID</code>). This example also provides access to a full payload of data, as configured in the associated TagBridge Custom Command tag required to set this up:</p>
+
+<pre><code class="language-csharp">static List&lt;IRemoteCommand&gt; SetupRemoteCommands()
+{
+    var command = new DelegateRemoteCommand(TealiumConsts.REMOTE_COMMAND_ID, &quot;Test command &quot; + TealiumConsts.REMOTE_COMMAND_ID) {
+        HandleResponseDelegate = (DelegateRemoteCommand cmd,
+            IRemoteCommandResponse resp) =&gt; {
+                System.Diagnostics.Debug.WriteLine($&quot;Handling command {cmd.CommandId}...&quot;);
+            }
+        };
+    return new List&lt;IRemoteCommand&gt;() { command };
+}
+</code></pre>
+
+<p><a href="/platforms/remote-commands/how-it-works/">Learn more</a> about remote commands.</p>
+
+<h3 id="delegate-methods">Delegate Methods</h3>
+
+<p>There are five delegated methods that allow you to inject code into the processing logic within the Tealium SDK:</p>
+
+<table>
+<thead>
+<tr>
+<th>Delegated Method</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>DelegateDispatchValidator()</code></td>
+<td>Provides two delegate methods [<code>ShouldDropDispatchDelegate()</code>,  <code>ShouldQueueDispatchDelegate()</code>] where the boolean return value determines whether or not an existing dispatch is dropped or queued &ndash; Useful if you have steps within your app where you know that the user may be offline or you specifically want to write your own batching logic</td>
+</tr>
+
+<tr>
+<td><code>DispatchSentDelegateEventListener()</code></td>
+<td>Called whenever a dispatch has been sent</td>
+</tr>
+
+<tr>
+<td><code>DispatchQueuedDelegateEventListener()</code></td>
+<td>Called whenever a dispatch has been queued</td>
+</tr>
+
+<tr>
+<td><code>WebViewReadyDelegateEventListener()</code></td>
+<td>Called when the WebView is fully loaded and ready, if you are using the Tag Management module</td>
+</tr>
+
+<tr>
+<td><code>SettingsPublishedDelegateEventListener()</code></td>
+<td>Called when there has been an updated set of publish settings retrieved</td>
+</tr>
+</tbody>
+</table>
+
+<p>The following example illustrates the usage of the delegate method:</p>
+
+<pre><code class="language-csharp">static TealiumAdvancedConfig SetupAdvancedConfig() {
+
+    DelegateDispatchValidator validator = new DelegateDispatchValidator() {
+        ShouldDropDispatchDelegate = (ITealium arg1, IDispatch arg2) =&gt; {
+            System.Diagnostics.Debug.WriteLine(&quot;Inside ShouldDropDispatchDelegate!&quot;);
+            return false;
+        },
+        ShouldQueueDispatchDelegate = (ITealium arg1, IDispatch arg2, bool shouldQueue) =&gt; {
+            System.Diagnostics.Debug.WriteLine(&quot;Inside ShouldQueueDispatchDelegate!&quot;);
+            return shouldQueue;
+        }
+    };
+    DispatchSentDelegateEventListener sendingListener = new DispatchSentDelegateEventListener() {
+        DispatchSent = (tealium, dispatch) =&gt; {
+            System.Diagnostics.Debug.WriteLine(&quot;Inside DispatchSent!&quot;);
+            dispatch.PutString(&quot;KeyAddedBySendListener&quot;, &quot;Value added by sending listener.&quot;);
+        }
+    };
+    DispatchQueuedDelegateEventListener queuingListener = new DispatchQueuedDelegateEventListener() {
+        DispatchQueued = (tealium, dispatch) =&gt; {
+            System.Diagnostics.Debug.WriteLine(&quot;Inside DispatchQueued!&quot;);
+            dispatch.PutString(&quot;KeyAddedByQueuedListener&quot;, &quot;Value added by queuing listener.&quot;);
+        }
+    };
+    WebViewReadyDelegateEventListener webViewListener = new WebViewReadyDelegateEventListener() {
+        WebViewReady = (tealium, webView) =&gt;  {
+            System.Diagnostics.Debug.WriteLine(&quot;Inside WebViewReady!&quot;);
+        }
+    };
+    SettingsPublishedDelegateEventListener settingsListener = new SettingsPublishedDelegateEventListener() {
+        SettingsPublished = (tealium) =&gt; {
+            System.Diagnostics.Debug.WriteLine(&quot;Inside SettingsPublished!&quot;);
+        }
+    };
+    TealiumAdvancedConfig advConfig = new TealiumAdvancedConfig(validator,
+        sendingListener, queuingListener, webViewListener, settingsListener);
+
+    return advConfig;
+}
+</code></pre>
+
+<h2 id="resources">Resources</h2>
+
+<p>The following resources provide links to Xamarin&rsquo;s extensive documentation for adding Tealium&rsquo;s Android and iOS libraries:</p>
+
+<ul>
+<li><a href="https://www.xamarin.com/platform">Xamarin</a></li>
+<li><a href="https://developer.xamarin.com/guides/android/advanced_topics/binding-a-java-library" title="Xamarin How to Bind a Java Library">Binding a Java Library</a></li>
+<li><a href="https://developer.xamarin.com/guides/ios/advanced_topics/binding_objective-c/">Xamarin - Binding an iOS Objective-C Library</a></li>
+<li><a href="https://developer.xamarin.com/guides/ios/advanced_topics/binding_objective-c/walkthrough/" title="Xamarin how to bind an Objective-C library">Walkthrough: Binding an iOS Objective-C Library</a></li>
+</ul>
+
+</div>
+
+<div class="pv3">
+
+	<div class="fr">
+
+		
+		<a href="/platforms/xamarin-v1/track/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Track</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Track"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  December 15, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  December 15, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#sample-app">Sample App</a></li>
+              <li><a href="#get-the-code">Get the Code</a></li>
+              <li><a href="#install">Install</a></li>
+              <ul class="toc-h3"><li><a href="#nuget">NuGet</a></li>
+              </ul><li><a href="#initialize">Initialize</a></li>
+              <li><a href="#advanced-configuration">Advanced Configuration</a></li>
+              <ul class="toc-h3"><li><a href="#remote-commands">Remote Commands</a></li>
+              <li><a href="#delegate-methods">Delegate Methods</a></li>
+              </ul><li><a href="#resources">Resources</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

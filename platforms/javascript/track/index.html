@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,271 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#track-views">Track Views</a></li>
-              <li><a href="#track-events">Track Events</a></li>
-              <li><a href="#tealium-event">tealium_event</a></li>
-              <li><a href="#implementation-options">Implementation Options</a></li>
-              <ul class="toc-h3"><li><a href="#jquery-and-html5">jQuery and HTML5</a></li>
-              <li><a href="#page-code">Page Code</a></li>
-              <li><a href="#video-tracking">Video Tracking</a></li>
-              <li><a href="#single-page-applications">Single Page Applications</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/javascript/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        JAVASCRIPT
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Track</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Learn about the functions for tracking user activity.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="track-views">Track Views</h2>
-
-<p>The <a href="/platforms/javascript/api/tracking-functions/#utag-view"><code>utag.view()</code></a> function tracks page views, virtual page views, and Ajax page flows. Calling this function triggers the corresponding page tracking functionality within your configured vendor tags. <code>utag.js</code> automatically triggers this function on every page load.</p>
-
-<p><code>utag.view()</code> is commonly used for Ajax page flows where the URL does not refresh as the user navigates the site. For example, single-page checkout or single-page application.</p>
-
-<p>The Universal Data Object (UDO) declared on the initial page load, <code>utag_data</code>, is not re-purposed with these calls. You must explicitly pass a new data object to this function.  </p>
-
-<p class="note"><i class="fas fa-info-circle"></i>Best practice is to use the variable <a href="#tealium-event"><code>tealium_event</code></a> to identify important page view events and <code>page_type</code> to uniquely identify page templates.</p>
-
-<p>The following example tracks a &ldquo;Product Quick View&rdquo; view, with a callback function. It is only tracked by tags <code>34</code> and <code>12</code>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.view({
-    <span style="color:#a31515">&#34;tealium_event&#34;</span>: <span style="color:#a31515">&#34;product_view&#34;</span>,
-    <span style="color:#a31515">&#34;page_type&#34;</span>    : <span style="color:#a31515">&#34;product_quick_view&#34;</span>,
-    <span style="color:#a31515">&#34;page_name&#34;</span>    : <span style="color:#a31515">&#34;Quick View: Shirts: Lucky Shirt&#34;</span>,
-    <span style="color:#a31515">&#34;product_id&#34;</span>   : [<span style="color:#a31515">&#34;12345&#34;</span>],
-    <span style="color:#a31515">&#34;product_name&#34;</span> : [<span style="color:#a31515">&#34;Lucky Shirt&#34;</span>]
-});
-</code></pre></div>
-<h2 id="track-events">Track Events</h2>
-
-<p>The <a href="/platforms/javascript/api/tracking-functions/#utag-link"><code>utag.link()</code></a> function tracks events such as non-page views, page interactions, and other dynamic page events. Event tracking collects information about your visitors’ interactions <em>within</em> a page. While page view tracking gathers information about the navigation path a visitor takes, event tracking monitors what visitors do in-between navigation steps.</p>
-
-<p>The following example tracks an &ldquo;Add to Cart&rdquo; event, without a callback function, tracked by all tags: </p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.link({
-    <span style="color:#a31515">&#34;tealium_event&#34;</span>    : <span style="color:#a31515">&#34;cart_add&#34;</span>,
-    <span style="color:#a31515">&#34;product_id&#34;</span>       : [<span style="color:#a31515">&#34;12345&#34;</span>],
-    <span style="color:#a31515">&#34;product_name&#34;</span>     : [<span style="color:#a31515">&#34;Lucky Shirt&#34;</span>],
-    <span style="color:#a31515">&#34;product_quantity&#34;</span> : [<span style="color:#a31515">&#34;2&#34;</span>],
-    <span style="color:#a31515">&#34;product_price&#34;</span>    : [<span style="color:#a31515">&#34;12.99&#34;</span>]
-});
-</code></pre></div>
-<h2 id="tealium-event"><code>tealium_event</code></h2>
-
-<p>To uniquely identify each type of interaction to be tracked, use the reserved variable <code>tealium_event</code>. This variable is referenced throughout Tealium iQ to configure load rules, extensions, and data mappings. Use additional variables names of your choosing for all other event data.</p>
-
-<p>The suggested <code>tealium_event</code> values include, but are not limited to:</p>
-
-<table>
-<thead>
-<tr>
-<th>Value of <code>tealium_event</code></th>
-<th>Event Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>page_view</code></td>
-<td>Page view</td>
-</tr>
-
-<tr>
-<td><code>product_view</code></td>
-<td>Product detail page view</td>
-</tr>
-
-<tr>
-<td><code>search</code></td>
-<td>Internal search</td>
-</tr>
-
-<tr>
-<td><code>cart_add</code></td>
-<td>Add to Shopping Cart</td>
-</tr>
-
-<tr>
-<td><code>cart_remove</code></td>
-<td>Remove from Shopping Cart</td>
-</tr>
-
-<tr>
-<td><code>cart_view</code></td>
-<td>View Shopping Cart</td>
-</tr>
-
-<tr>
-<td><code>purchase</code></td>
-<td>Complete a purchase</td>
-</tr>
-
-<tr>
-<td><code>user_register</code></td>
-<td>User Registration Complete</td>
-</tr>
-
-<tr>
-<td><code>user_login</code></td>
-<td>User Login</td>
-</tr>
-
-<tr>
-<td><code>email_signup</code></td>
-<td>Newsletter Email Signup</td>
-</tr>
-
-<tr>
-<td><code>social_share</code></td>
-<td>Share a Link on a Social Site</td>
-</tr>
-</tbody>
-</table>
-
-<p class="tip"><i class="fas fa-star"></i>Use the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Tealium-Events-Extension/ta-p/18358">Tealium Events extension</a> to set up more standard events.</p>
-
-<p>The following example adds additional information related to the event in the tracking call:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.link({
-    <span style="color:#a31515">&#34;tealium_event&#34;</span>  : <span style="color:#a31515">&#34;social_share&#34;</span>,
-    <span style="color:#a31515">&#34;social_network&#34;</span> : <span style="color:#a31515">&#34;LinkedIn&#34;</span>,
-    <span style="color:#a31515">&#34;shared_link&#34;</span>    : <span style="color:#a31515">&#34;https://tealium.com/&#34;</span>
-});
-</code></pre></div>
-<p>Learn more about <a href="https://community.tealiumiq.com/t5/Data-Layer/An-Introduction-to-the-Data-Layer/ta-p/15885">the data layer and Tealium events</a>.</p>
-
-<h2 id="implementation-options">Implementation Options</h2>
-
-<p>Just as page view tracking requires a data layer object to give context about which page is being tracked, event tracking also requires a data layer object be included in the tracking calls.  Include variables relevant to the event in the data object of the tracking call.</p>
-
-<p>The following sections describe the approaches for implementing Tealium’s event tracking into your website.</p>
-
-<h3 id="jquery-and-html5">jQuery and HTML5</h3>
-
-<p>Use the <a href="https://community.tealiumiq.com/t5/Tealium-iQ-Tag-Management/jQuery-onHandler-Extension-jQuery-v1-7-and-up/ta-p/9868">jQuery Extension</a> to track basic interactions within a page, such as clicking, expanding, and selecting. Use HTML5 <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes">data attributes</a> to implement informational properties of tracked elements. Requires a web page with <a href="https://en.wikipedia.org/wiki/Semantic_HTML">semantic HTML</a>.</p>
-
-<ul>
-<li>Best used for link clicks, button clicks, form field interactions.</li>
-<li>Not recommended for Ajax page flows, or form submissions.</li>
-</ul>
-
-<p>An element with data attributes might look like this in the page code:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;a href=<span style="color:#a31515">&#34;/logout&#34;</span> data-click_name=<span style="color:#a31515">&#34;Sign Out&#34;</span> data-click_category=<span style="color:#a31515">&#34;header&#34;</span>&gt;Log out&lt;/a&gt; </code></pre></div>
-<p>Reference these attributes in the jQuery Extension to track clicks on this link and to set the relevant event data using the &ldquo;JS Code&rdquo; option.</p>
-
-<ul>
-<li>Use a selector to identify elements with a specific data attribute. For example, <code>a[data-click_name]</code>.</li>
-<li>Set a variable using the &ldquo;JS Code&rdquo; option to reference a data attribute in the clicked element. For example, <code>$(this).data('click_name')</code>.</li>
-</ul>
-
-<h3 id="page-code">Page Code</h3>
-
-<p>Page code is used for tracking dynamic page content refreshes, Ajax pages, modal form submissions or any event that requires a round-trip request/response to the client’s web server to fetch additional data not already present on the page.</p>
-
-<ul>
-<li>Best used for modal forms, product quick view, single page websites, add to cart from non-product pages.</li>
-<li>Not recommended for link tracking.</li>
-</ul>
-
-<h3 id="video-tracking">Video Tracking</h3>
-
-<p>Video tracking often requires a custom solution coding to the specifications of the video platform API.</p>
-
-<p>Learn more about Tealium&rsquo;s current solution in the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/YouTube-Video-Tracking-Setup-Guide-for-Tealium-iQ/ta-p/14673">YouTube Video Tracking Setup Guide</a>.</p>
-
-<h3 id="single-page-applications">Single Page Applications</h3>
-
-<p>Learn about tracking views and events for <a href="/platforms/javascript/single-page-applications/">single page applications</a>.</p>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/javascript/install/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Install "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Install</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/javascript/data-layer/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Data Layer</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Data Layer"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7729,33 +7472,304 @@ var utag_data = {
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/javascript/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        JAVASCRIPT
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Track</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Learn about the functions for tracking user activity.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="track-views">Track Views</h2>
+
+<p>The <a href="/platforms/javascript/api/tracking-functions/#utag-view"><code>utag.view()</code></a> function tracks page views, virtual page views, and Ajax page flows. Calling this function triggers the corresponding page tracking functionality within your configured vendor tags. <code>utag.js</code> automatically triggers this function on every page load.</p>
+
+<p><code>utag.view()</code> is commonly used for Ajax page flows where the URL does not refresh as the user navigates the site. For example, single-page checkout or single-page application.</p>
+
+<p>The Universal Data Object (UDO) declared on the initial page load, <code>utag_data</code>, is not re-purposed with these calls. You must explicitly pass a new data object to this function.  </p>
+
+<p class="note"><i class="fas fa-info-circle"></i>Best practice is to use the variable <a href="#tealium-event"><code>tealium_event</code></a> to identify important page view events and <code>page_type</code> to uniquely identify page templates.</p>
+
+<p>The following example tracks a &ldquo;Product Quick View&rdquo; view, with a callback function. It is only tracked by tags <code>34</code> and <code>12</code>:</p>
+
+<pre><code class="language-javascript">utag.view({
+    &quot;tealium_event&quot;: &quot;product_view&quot;,
+    &quot;page_type&quot;    : &quot;product_quick_view&quot;,
+    &quot;page_name&quot;    : &quot;Quick View: Shirts: Lucky Shirt&quot;,
+    &quot;product_id&quot;   : [&quot;12345&quot;],
+    &quot;product_name&quot; : [&quot;Lucky Shirt&quot;]
+});
+</code></pre>
+
+<h2 id="track-events">Track Events</h2>
+
+<p>The <a href="/platforms/javascript/api/tracking-functions/#utag-link"><code>utag.link()</code></a> function tracks events such as non-page views, page interactions, and other dynamic page events. Event tracking collects information about your visitors’ interactions <em>within</em> a page. While page view tracking gathers information about the navigation path a visitor takes, event tracking monitors what visitors do in-between navigation steps.</p>
+
+<p>The following example tracks an &ldquo;Add to Cart&rdquo; event, without a callback function, tracked by all tags: </p>
+
+<pre><code class="language-javascript">utag.link({
+    &quot;tealium_event&quot;    : &quot;cart_add&quot;,
+    &quot;product_id&quot;       : [&quot;12345&quot;],
+    &quot;product_name&quot;     : [&quot;Lucky Shirt&quot;],
+    &quot;product_quantity&quot; : [&quot;2&quot;],
+    &quot;product_price&quot;    : [&quot;12.99&quot;]
+});
+</code></pre>
+
+<h2 id="tealium-event"><code>tealium_event</code></h2>
+
+<p>To uniquely identify each type of interaction to be tracked, use the reserved variable <code>tealium_event</code>. This variable is referenced throughout Tealium iQ to configure load rules, extensions, and data mappings. Use additional variables names of your choosing for all other event data.</p>
+
+<p>The suggested <code>tealium_event</code> values include, but are not limited to:</p>
+
+<table>
+<thead>
+<tr>
+<th>Value of <code>tealium_event</code></th>
+<th>Event Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>page_view</code></td>
+<td>Page view</td>
+</tr>
+
+<tr>
+<td><code>product_view</code></td>
+<td>Product detail page view</td>
+</tr>
+
+<tr>
+<td><code>search</code></td>
+<td>Internal search</td>
+</tr>
+
+<tr>
+<td><code>cart_add</code></td>
+<td>Add to Shopping Cart</td>
+</tr>
+
+<tr>
+<td><code>cart_remove</code></td>
+<td>Remove from Shopping Cart</td>
+</tr>
+
+<tr>
+<td><code>cart_view</code></td>
+<td>View Shopping Cart</td>
+</tr>
+
+<tr>
+<td><code>purchase</code></td>
+<td>Complete a purchase</td>
+</tr>
+
+<tr>
+<td><code>user_register</code></td>
+<td>User Registration Complete</td>
+</tr>
+
+<tr>
+<td><code>user_login</code></td>
+<td>User Login</td>
+</tr>
+
+<tr>
+<td><code>email_signup</code></td>
+<td>Newsletter Email Signup</td>
+</tr>
+
+<tr>
+<td><code>social_share</code></td>
+<td>Share a Link on a Social Site</td>
+</tr>
+</tbody>
+</table>
+
+<p class="tip"><i class="fas fa-star"></i>Use the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Tealium-Events-Extension/ta-p/18358">Tealium Events extension</a> to set up more standard events.</p>
+
+<p>The following example adds additional information related to the event in the tracking call:</p>
+
+<pre><code class="language-javascript">utag.link({
+    &quot;tealium_event&quot;  : &quot;social_share&quot;,
+    &quot;social_network&quot; : &quot;LinkedIn&quot;,
+    &quot;shared_link&quot;    : &quot;https://tealium.com/&quot;
+});
+</code></pre>
+
+<p>Learn more about <a href="https://community.tealiumiq.com/t5/Data-Layer/An-Introduction-to-the-Data-Layer/ta-p/15885">the data layer and Tealium events</a>.</p>
+
+<h2 id="implementation-options">Implementation Options</h2>
+
+<p>Just as page view tracking requires a data layer object to give context about which page is being tracked, event tracking also requires a data layer object be included in the tracking calls.  Include variables relevant to the event in the data object of the tracking call.</p>
+
+<p>The following sections describe the approaches for implementing Tealium’s event tracking into your website.</p>
+
+<h3 id="jquery-and-html5">jQuery and HTML5</h3>
+
+<p>Use the <a href="https://community.tealiumiq.com/t5/Tealium-iQ-Tag-Management/jQuery-onHandler-Extension-jQuery-v1-7-and-up/ta-p/9868">jQuery Extension</a> to track basic interactions within a page, such as clicking, expanding, and selecting. Use HTML5 <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes">data attributes</a> to implement informational properties of tracked elements. Requires a web page with <a href="https://en.wikipedia.org/wiki/Semantic_HTML">semantic HTML</a>.</p>
+
+<ul>
+<li>Best used for link clicks, button clicks, form field interactions.</li>
+<li>Not recommended for Ajax page flows, or form submissions.</li>
+</ul>
+
+<p>An element with data attributes might look like this in the page code:</p>
+
+<pre><code class="language-html">&lt;a href=&quot;/logout&quot; data-click_name=&quot;Sign Out&quot; data-click_category=&quot;header&quot;&gt;Log out&lt;/a&gt; 
+</code></pre>
+
+<p>Reference these attributes in the jQuery Extension to track clicks on this link and to set the relevant event data using the &ldquo;JS Code&rdquo; option.</p>
+
+<ul>
+<li>Use a selector to identify elements with a specific data attribute. For example, <code>a[data-click_name]</code>.</li>
+<li>Set a variable using the &ldquo;JS Code&rdquo; option to reference a data attribute in the clicked element. For example, <code>$(this).data('click_name')</code>.</li>
+</ul>
+
+<h3 id="page-code">Page Code</h3>
+
+<p>Page code is used for tracking dynamic page content refreshes, Ajax pages, modal form submissions or any event that requires a round-trip request/response to the client’s web server to fetch additional data not already present on the page.</p>
+
+<ul>
+<li>Best used for modal forms, product quick view, single page websites, add to cart from non-product pages.</li>
+<li>Not recommended for link tracking.</li>
+</ul>
+
+<h3 id="video-tracking">Video Tracking</h3>
+
+<p>Video tracking often requires a custom solution coding to the specifications of the video platform API.</p>
+
+<p>Learn more about Tealium&rsquo;s current solution in the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/YouTube-Video-Tracking-Setup-Guide-for-Tealium-iQ/ta-p/14673">YouTube Video Tracking Setup Guide</a>.</p>
+
+<h3 id="single-page-applications">Single Page Applications</h3>
+
+<p>Learn about tracking views and events for <a href="/platforms/javascript/single-page-applications/">single page applications</a>.</p>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/javascript/install/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Install "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Install</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/javascript/data-layer/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Data Layer</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Data Layer"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  March 11, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  March 11, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#track-views">Track Views</a></li>
+              <li><a href="#track-events">Track Events</a></li>
+              <li><a href="#tealium-event">tealium_event</a></li>
+              <li><a href="#implementation-options">Implementation Options</a></li>
+              <ul class="toc-h3"><li><a href="#jquery-and-html5">jQuery and HTML5</a></li>
+              <li><a href="#page-code">Page Code</a></li>
+              <li><a href="#video-tracking">Video Tracking</a></li>
+              <li><a href="#single-page-applications">Single Page Applications</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,356 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#data-layer-attributes">Data Layer Attributes</a></li>
-              <li><a href="#event-tracking">Event Tracking</a></li>
-              <ul class="toc-h3"><li><a href="#video-load">Video Load</a></li>
-              <li><a href="#video-start">Video Start</a></li>
-              <li><a href="#video-play">Video Play</a></li>
-              <li><a href="#video-pause">Video Pause</a></li>
-              <li><a href="#video-seek">Video Seek</a></li>
-              <li><a href="#video-complete">Video Complete</a></li>
-              <li><a href="#video-milestone">Video Milestone</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/getting-started-web/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        GETTING STARTED WEB
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Basic Video Tracking</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      This article provides the data layer definition for basic video tracking.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="data-layer-attributes">Data Layer Attributes</h2>
-
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-<th>Example</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>tealium_event</code></td>
-<td>Tealium event name</td>
-<td><code>video_pause</code></td>
-<td>String</td>
-</tr>
-
-<tr>
-<td><code>video_playhead</code></td>
-<td>The playhead position (in seconds) of the video at the time of the event</td>
-<td><code>75</code></td>
-<td>Number</td>
-</tr>
-
-<tr>
-<td><code>video_id</code></td>
-<td>A unique ID for the video</td>
-<td><code>xWlEk2i9r5Q</code></td>
-<td>String</td>
-</tr>
-
-<tr>
-<td><code>video_length</code></td>
-<td>The total length (in seconds) of the video.</td>
-<td><code>300</code></td>
-<td>Number</td>
-</tr>
-
-<tr>
-<td><code>video_milestone</code></td>
-<td>The percentage of video played</td>
-<td><code>25</code></td>
-<td>Number</td>
-</tr>
-
-<tr>
-<td><code>video_name</code></td>
-<td>The display name of the video</td>
-<td><code>How to track videos in Tealium</code></td>
-<td>String</td>
-</tr>
-
-<tr>
-<td><code>video_platform</code></td>
-<td>The name of the platform serving the video</td>
-<td><code>YouTube</code></td>
-<td>String</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="event-tracking">Event Tracking</h2>
-
-<h3 id="video-load">Video Load</h3>
-
-<table>
-<thead>
-<tr>
-<th>Identifier</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>tealium_event=&quot;video_load&quot;</code></td>
-<td>The video was loaded and made available to the viewer.</td>
-</tr>
-</tbody>
-</table>
-
-<p>Sample:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
-   <span style="color:#a31515">&#34;tealium_event&#34;</span>  : <span style="color:#a31515">&#34;video_load&#34;</span>,
-   <span style="color:#a31515">&#34;video_id&#34;</span>       : <span style="color:#a31515">&#34;xWlEk2i9r5Q&#34;</span>,
-   <span style="color:#a31515">&#34;video_length&#34;</span>   : 300,
-   <span style="color:#a31515">&#34;video_name&#34;</span>     : <span style="color:#a31515">&#34;How to track videos in Tealium&#34;</span>,
-   <span style="color:#a31515">&#34;video_platform&#34;</span> : <span style="color:#a31515">&#34;YouTube&#34;</span>
-}
-</code></pre></div>
-<h3 id="video-start">Video Start</h3>
-
-<table>
-<thead>
-<tr>
-<th>Identifier</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>tealium_event=&quot;video_start&quot;</code></td>
-<td>The video began playing for the first time (either via auto-play or user click).</td>
-</tr>
-</tbody>
-</table>
-
-<p>Sample:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
-   <span style="color:#a31515">&#34;tealium_event&#34;</span>  : <span style="color:#a31515">&#34;video_start&#34;</span>,     
-   <span style="color:#a31515">&#34;video_id&#34;</span>       : <span style="color:#a31515">&#34;xWlEk2i9r5Q&#34;</span>,     
-   <span style="color:#a31515">&#34;video_length&#34;</span>   : 300,     
-   <span style="color:#a31515">&#34;video_name&#34;</span>     : <span style="color:#a31515">&#34;How to track videos in Tealium&#34;</span>,     
-   <span style="color:#a31515">&#34;video_platform&#34;</span> : <span style="color:#a31515">&#34;YouTube&#34;</span>
-}
-</code></pre></div>
-<h3 id="video-play">Video Play</h3>
-
-<table>
-<thead>
-<tr>
-<th>Identifier</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>tealium_event=&quot;video_play&quot;</code></td>
-<td>The video playback changed from not playing to playing.</td>
-</tr>
-</tbody>
-</table>
-
-<p>Sample:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{  
-   <span style="color:#a31515">&#34;tealium_event&#34;</span>  : <span style="color:#a31515">&#34;video_play&#34;</span>,     
-   <span style="color:#a31515">&#34;video_playhead&#34;</span> : <span style="color:#a31515">&#34;75&#34;</span>,     
-   <span style="color:#a31515">&#34;video_id&#34;</span>       : <span style="color:#a31515">&#34;xWlEk2i9r5Q&#34;</span>,     
-   <span style="color:#a31515">&#34;video_length&#34;</span>   : <span style="color:#a31515">&#34;300&#34;</span>,     
-   <span style="color:#a31515">&#34;video_name&#34;</span>     : <span style="color:#a31515">&#34;How to track videos in Tealium&#34;</span>,     
-   <span style="color:#a31515">&#34;video_platform&#34;</span> : <span style="color:#a31515">&#34;YouTube&#34;</span>
-}
-</code></pre></div>
-<h3 id="video-pause">Video Pause</h3>
-
-<table>
-<thead>
-<tr>
-<th>Identifier</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>tealium_event=&quot;video_pause&quot;</code></td>
-<td>The video playback changed to paused.</td>
-</tr>
-</tbody>
-</table>
-
-<p>Sample:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
-   <span style="color:#a31515">&#34;tealium_event&#34;</span>  : <span style="color:#a31515">&#34;video_pause&#34;</span>,     
-   <span style="color:#a31515">&#34;video_playhead&#34;</span> : 75,     
-   <span style="color:#a31515">&#34;video_id&#34;</span>       : <span style="color:#a31515">&#34;xWlEk2i9r5Q&#34;</span>,     
-   <span style="color:#a31515">&#34;video_length&#34;</span>   : 300,     
-   <span style="color:#a31515">&#34;video_name&#34;</span>     : <span style="color:#a31515">&#34;How to track videos in Tealium&#34;</span>,     
-   <span style="color:#a31515">&#34;video_platform&#34;</span> : <span style="color:#a31515">&#34;YouTube&#34;</span>
-}
-</code></pre></div>
-<h3 id="video-seek">Video Seek</h3>
-
-<table>
-<thead>
-<tr>
-<th>Identifier</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>tealium_event=&quot;video_seek&quot;</code></td>
-<td>Video playback was advanced forward or backward to a new playhead.</td>
-</tr>
-</tbody>
-</table>
-
-<p>Sample:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
-   <span style="color:#a31515">&#34;tealium_event&#34;</span>  : <span style="color:#a31515">&#34;video_seek&#34;</span>,     
-   <span style="color:#a31515">&#34;video_playhead&#34;</span> : 75,     
-   <span style="color:#a31515">&#34;video_id&#34;</span>       : <span style="color:#a31515">&#34;xWlEk2i9r5Q&#34;</span>,     
-   <span style="color:#a31515">&#34;video_length&#34;</span>   : 300,     
-   <span style="color:#a31515">&#34;video_name&#34;</span>     : <span style="color:#a31515">&#34;How to track videos in Tealium&#34;</span>,     
-   <span style="color:#a31515">&#34;video_platform&#34;</span> : <span style="color:#a31515">&#34;YouTube&#34;</span>
-}
-</code></pre></div>
-<h3 id="video-complete">Video Complete</h3>
-
-<table>
-<thead>
-<tr>
-<th>Identifier</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>tealium_event=&quot;video_complete&quot;</code></td>
-<td>Video playback has completed.</td>
-</tr>
-</tbody>
-</table>
-
-<p>Sample:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
-   <span style="color:#a31515">&#34;tealium_event&#34;</span>  : <span style="color:#a31515">&#34;video_complete&#34;</span>,     
-   <span style="color:#a31515">&#34;video_id&#34;</span>       : <span style="color:#a31515">&#34;xWlEk2i9r5Q&#34;</span>,     
-   <span style="color:#a31515">&#34;video_length&#34;</span>   : 300,     
-   <span style="color:#a31515">&#34;video_name&#34;</span>     : <span style="color:#a31515">&#34;How to track videos in Tealium&#34;</span>,     
-   <span style="color:#a31515">&#34;video_platform&#34;</span> : <span style="color:#a31515">&#34;YouTube&#34;</span>
-}
-</code></pre></div>
-<h3 id="video-milestone">Video Milestone</h3>
-
-<table>
-<thead>
-<tr>
-<th>Identifier</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>tealium_event=&quot;video_milestone&quot;</code></td>
-<td>The video playback reached a specific percentage milestone.</td>
-</tr>
-</tbody>
-</table>
-
-<p>Sample:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{   
-   <span style="color:#a31515">&#34;tealium_event&#34;</span>   : <span style="color:#a31515">&#34;video_milestone&#34;</span>,     
-   <span style="color:#a31515">&#34;video_playhead&#34;</span>  : 75,     
-   <span style="color:#a31515">&#34;video_id&#34;</span>        : <span style="color:#a31515">&#34;xWlEk2i9r5Q&#34;</span>,     
-   <span style="color:#a31515">&#34;video_length&#34;</span>    : 300,     
-   <span style="color:#a31515">&#34;video_milestone&#34;</span> : 25,     
-   <span style="color:#a31515">&#34;video_name&#34;</span>      : <span style="color:#a31515">&#34;How to track videos in Tealium&#34;</span>,     
-   <span style="color:#a31515">&#34;video_platform&#34;</span>  : <span style="color:#a31515">&#34;YouTube&#34;</span>
-}
-</code></pre></div>
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/getting-started-web/data-layer/definitions/travel/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Travel "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Travel</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7814,33 +7472,394 @@ var utag_data = {
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/getting-started-web/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        GETTING STARTED WEB
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Basic Video Tracking</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      This article provides the data layer definition for basic video tracking.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="data-layer-attributes">Data Layer Attributes</h2>
+
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Example</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>tealium_event</code></td>
+<td>Tealium event name</td>
+<td><code>video_pause</code></td>
+<td>String</td>
+</tr>
+
+<tr>
+<td><code>video_playhead</code></td>
+<td>The playhead position (in seconds) of the video at the time of the event</td>
+<td><code>75</code></td>
+<td>Number</td>
+</tr>
+
+<tr>
+<td><code>video_id</code></td>
+<td>A unique ID for the video</td>
+<td><code>xWlEk2i9r5Q</code></td>
+<td>String</td>
+</tr>
+
+<tr>
+<td><code>video_length</code></td>
+<td>The total length (in seconds) of the video.</td>
+<td><code>300</code></td>
+<td>Number</td>
+</tr>
+
+<tr>
+<td><code>video_milestone</code></td>
+<td>The percentage of video played</td>
+<td><code>25</code></td>
+<td>Number</td>
+</tr>
+
+<tr>
+<td><code>video_name</code></td>
+<td>The display name of the video</td>
+<td><code>How to track videos in Tealium</code></td>
+<td>String</td>
+</tr>
+
+<tr>
+<td><code>video_platform</code></td>
+<td>The name of the platform serving the video</td>
+<td><code>YouTube</code></td>
+<td>String</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="event-tracking">Event Tracking</h2>
+
+<h3 id="video-load">Video Load</h3>
+
+<table>
+<thead>
+<tr>
+<th>Identifier</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>tealium_event=&quot;video_load&quot;</code></td>
+<td>The video was loaded and made available to the viewer.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Sample:</p>
+
+<pre><code class="language-javascript">{
+   &quot;tealium_event&quot;  : &quot;video_load&quot;,
+   &quot;video_id&quot;       : &quot;xWlEk2i9r5Q&quot;,
+   &quot;video_length&quot;   : 300,
+   &quot;video_name&quot;     : &quot;How to track videos in Tealium&quot;,
+   &quot;video_platform&quot; : &quot;YouTube&quot;
+}
+</code></pre>
+
+<h3 id="video-start">Video Start</h3>
+
+<table>
+<thead>
+<tr>
+<th>Identifier</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>tealium_event=&quot;video_start&quot;</code></td>
+<td>The video began playing for the first time (either via auto-play or user click).</td>
+</tr>
+</tbody>
+</table>
+
+<p>Sample:</p>
+
+<pre><code class="language-javascript">{
+   &quot;tealium_event&quot;  : &quot;video_start&quot;,     
+   &quot;video_id&quot;       : &quot;xWlEk2i9r5Q&quot;,     
+   &quot;video_length&quot;   : 300,     
+   &quot;video_name&quot;     : &quot;How to track videos in Tealium&quot;,     
+   &quot;video_platform&quot; : &quot;YouTube&quot;
+}
+</code></pre>
+
+<h3 id="video-play">Video Play</h3>
+
+<table>
+<thead>
+<tr>
+<th>Identifier</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>tealium_event=&quot;video_play&quot;</code></td>
+<td>The video playback changed from not playing to playing.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Sample:</p>
+
+<pre><code class="language-javascript">{  
+   &quot;tealium_event&quot;  : &quot;video_play&quot;,     
+   &quot;video_playhead&quot; : &quot;75&quot;,     
+   &quot;video_id&quot;       : &quot;xWlEk2i9r5Q&quot;,     
+   &quot;video_length&quot;   : &quot;300&quot;,     
+   &quot;video_name&quot;     : &quot;How to track videos in Tealium&quot;,     
+   &quot;video_platform&quot; : &quot;YouTube&quot;
+}
+</code></pre>
+
+<h3 id="video-pause">Video Pause</h3>
+
+<table>
+<thead>
+<tr>
+<th>Identifier</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>tealium_event=&quot;video_pause&quot;</code></td>
+<td>The video playback changed to paused.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Sample:</p>
+
+<pre><code class="language-javascript">{
+   &quot;tealium_event&quot;  : &quot;video_pause&quot;,     
+   &quot;video_playhead&quot; : 75,     
+   &quot;video_id&quot;       : &quot;xWlEk2i9r5Q&quot;,     
+   &quot;video_length&quot;   : 300,     
+   &quot;video_name&quot;     : &quot;How to track videos in Tealium&quot;,     
+   &quot;video_platform&quot; : &quot;YouTube&quot;
+}
+</code></pre>
+
+<h3 id="video-seek">Video Seek</h3>
+
+<table>
+<thead>
+<tr>
+<th>Identifier</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>tealium_event=&quot;video_seek&quot;</code></td>
+<td>Video playback was advanced forward or backward to a new playhead.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Sample:</p>
+
+<pre><code class="language-javascript">{
+   &quot;tealium_event&quot;  : &quot;video_seek&quot;,     
+   &quot;video_playhead&quot; : 75,     
+   &quot;video_id&quot;       : &quot;xWlEk2i9r5Q&quot;,     
+   &quot;video_length&quot;   : 300,     
+   &quot;video_name&quot;     : &quot;How to track videos in Tealium&quot;,     
+   &quot;video_platform&quot; : &quot;YouTube&quot;
+}
+</code></pre>
+
+<h3 id="video-complete">Video Complete</h3>
+
+<table>
+<thead>
+<tr>
+<th>Identifier</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>tealium_event=&quot;video_complete&quot;</code></td>
+<td>Video playback has completed.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Sample:</p>
+
+<pre><code class="language-javascript">{
+   &quot;tealium_event&quot;  : &quot;video_complete&quot;,     
+   &quot;video_id&quot;       : &quot;xWlEk2i9r5Q&quot;,     
+   &quot;video_length&quot;   : 300,     
+   &quot;video_name&quot;     : &quot;How to track videos in Tealium&quot;,     
+   &quot;video_platform&quot; : &quot;YouTube&quot;
+}
+</code></pre>
+
+<h3 id="video-milestone">Video Milestone</h3>
+
+<table>
+<thead>
+<tr>
+<th>Identifier</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>tealium_event=&quot;video_milestone&quot;</code></td>
+<td>The video playback reached a specific percentage milestone.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Sample:</p>
+
+<pre><code class="language-javascript">{   
+   &quot;tealium_event&quot;   : &quot;video_milestone&quot;,     
+   &quot;video_playhead&quot;  : 75,     
+   &quot;video_id&quot;        : &quot;xWlEk2i9r5Q&quot;,     
+   &quot;video_length&quot;    : 300,     
+   &quot;video_milestone&quot; : 25,     
+   &quot;video_name&quot;      : &quot;How to track videos in Tealium&quot;,     
+   &quot;video_platform&quot;  : &quot;YouTube&quot;
+}
+</code></pre>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/getting-started-web/data-layer/definitions/travel/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Travel "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Travel</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  April 13, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  April 13, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#data-layer-attributes">Data Layer Attributes</a></li>
+              <li><a href="#event-tracking">Event Tracking</a></li>
+              <ul class="toc-h3"><li><a href="#video-load">Video Load</a></li>
+              <li><a href="#video-start">Video Start</a></li>
+              <li><a href="#video-play">Video Play</a></li>
+              <li><a href="#video-pause">Video Pause</a></li>
+              <li><a href="#video-seek">Video Seek</a></li>
+              <li><a href="#video-complete">Video Complete</a></li>
+              <li><a href="#video-milestone">Video Milestone</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

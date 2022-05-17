@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,548 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#tealiumconfig">TealiumConfig</a></li>
-              <ul class="toc-h3"><li><a href="#collectors">Collectors</a></li>
-              <li><a href="#consentexpiry">ConsentExpiry</a></li>
-              <li><a href="#consentpolicy">ConsentPolicy</a></li>
-              <li><a href="#dispatchers">Dispatchers</a></li>
-              <li><a href="#expiry">Expiry</a></li>
-              <li><a href="#loglevel">LogLevel</a></li>
-              <li><a href="#tealiumenvironment">TealiumEnvironment</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/flutter/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        FLUTTER
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">TealiumConfig</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      A class to set configuration options for the main Tealium class. Individual modules provide their own extensions for the <code>TealiumConfig</code> class if they are enabled.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="tealiumconfig"><code>TealiumConfig</code></h2>
-
-<p>The following summarizes the properties of the <code>TealiumConfig</code> class.</p>
-
-<table>
-<thead>
-<tr>
-<th>Parameters</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>account</code></td>
-<td><code>String</code></td>
-<td>(Required) Tealium account name</td>
-<td><code>companyXYZ</code></td>
-</tr>
-
-<tr>
-<td><code>collectors</code></td>
-<td><code>List&lt;Collectors&gt;</code></td>
-<td>(Required) Sets the list of <a href="#collectors"><code>Collectors</code></a> to initialize the Tealium library with</td>
-<td><code>[Collectors.AppData]</code></td>
-</tr>
-
-<tr>
-<td><code>consentExpiry</code></td>
-<td><a href="#consentexpiry"><code>ConsentExpiry</code></a></td>
-<td>Sets the expiration of the user&rsquo;s consent preferences (default is dependent upon policy)</td>
-<td><code>ConsentExpiry(90, TimeUnit.DAYS)</code></td>
-</tr>
-
-<tr>
-<td><code>consentLoggingEnabled</code></td>
-<td><code>Boolean</code></td>
-<td>Enables the <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Consent-Change-Event-Specifications/ta-p/23213">Consent Logging</a> feature, which sends all consent status changes to Tealium Customer Data Hub for auditing purposes. (default: enabled)</td>
-<td><code>true</code></td>
-</tr>
-
-<tr>
-<td><code>consentPolicy</code></td>
-<td><a href="#consentpolicy"><code>ConsentPolicy</code></a></td>
-<td>Sets the consent policy, such as CCPA or GDPR. Consent Manager is only enabled if this property is set.</td>
-<td><code>ConsentPolicy.GDPR</code></td>
-</tr>
-
-<tr>
-<td><code>customVisitorId</code></td>
-<td><code>String</code></td>
-<td>Set a custom Visitor ID</td>
-<td><code>“ALK2398LSDKJ3289SLKJ3298SLKJ3”</code></td>
-</tr>
-
-<tr>
-<td><code>dataSource</code></td>
-<td><code>String</code></td>
-<td>CDH data source key</td>
-<td><code>&quot;abc123&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>deepLinkTrackingEnabled</code></td>
-<td><code>Boolean</code></td>
-<td>Enables or disables <a href="/platforms/getting-started/deep-linking/#readout">automatic tracking of standard deep links</a>, such as links to the app from Facebook or other sources, as well as QR trace.  (default: enabled)</td>
-<td><code>false</code></td>
-</tr>
-
-<tr>
-<td><code>dispatchers</code></td>
-<td><code>Dispatchers[]</code></td>
-<td>(Required) Sets the list of <a href="#dispatchers"><code>Dispatchers</code></a> to initialize the Tealium library with</td>
-<td><code>[Dispatchers.Collect]</code></td>
-</tr>
-
-<tr>
-<td><code>environment</code></td>
-<td><a href="#tealiumenvironment"><code>TealiumEnvironment</code></a></td>
-<td>(Required) Tealium environment name</td>
-<td><code>TealiumEnvironment.dev</code></td>
-</tr>
-
-<tr>
-<td><code>lifecycleAutotrackingEnabled</code></td>
-<td><code>Boolean</code></td>
-<td>Enables or disables lifecycle auto tracking. (default: enabled)</td>
-<td><code>false</code></td>
-</tr>
-
-<tr>
-<td><code>logLevel</code></td>
-<td><a href="#loglevel"><code>LogLevel</code></a>`</td>
-<td>Sets the log level property, which controls how much information is logged (default: silent)</td>
-<td><code>LogLevel.DEV</code></td>
-</tr>
-
-<tr>
-<td><code>memoryReportingEnabled</code></td>
-<td><code>Boolean</code></td>
-<td>Enables or disables memory reporting in the DeviceData module (default: disabled)</td>
-<td><code>true</code></td>
-</tr>
-
-<tr>
-<td><code>overrideCollectBatchURL</code></td>
-<td><code>String</code></td>
-<td>Overrides the Tealium Collect batch URL to send data to a different endpoint</td>
-<td><code>“https://custom-domain.com/batch-event”</code></td>
-</tr>
-
-<tr>
-<td><code>overrideCollectURL</code></td>
-<td><code>String</code></td>
-<td>Overrides the Tealium Collect URL to send data to a different endpoint. If using the event batching feature, also override the <code>overrideCollectBatchURL</code> property.</td>
-<td><code>“https://custom-domain.com/event”</code></td>
-</tr>
-
-<tr>
-<td><code>overrideLibrarySettingsURL</code></td>
-<td><code>String</code></td>
-<td>Overrides the publish settings URL.`</td>
-<td><code>“https://custom-domain.com/mobile.html”</code></td>
-</tr>
-
-<tr>
-<td><code>overrideTagManagementURL</code></td>
-<td><code>String</code></td>
-<td>Overrides the default URL used by the Tag Management module. This is needed if you are self-hosting your Tealium perlScript files</td>
-<td><code>“https://custom-domain.com/path/env/utag.js”</code></td>
-</tr>
-
-<tr>
-<td><code>profile</code></td>
-<td><code>String</code></td>
-<td>(Required) Tealium profile name</td>
-<td><code>main</code></td>
-</tr>
-
-<tr>
-<td><code>qrTraceEnabled</code></td>
-<td><code>Boolean</code></td>
-<td>Enables or disables <a href="/platforms/getting-started/trace/#how-it-works">QR trace</a>. (default: enabled)</td>
-<td><code>false</code></td>
-</tr>
-
-<tr>
-<td><code>useRemoteLibrarySettings</code></td>
-<td><code>Boolean</code></td>
-<td>Enables or disables the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">Mobile Publish Settings</a> (default: enabled) Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature.</td>
-<td><code>false</code></td>
-</tr>
-
-<tr>
-<td><code>visitorServiceEnabled</code></td>
-<td><code>Boolean</code></td>
-<td>Enables or disables the automatic retrieval of the Visitor Profile using the <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Data-Layer-Enrichment-Public-API/ta-p/155">Data Layer Enrichment API</a> (default: disabled)</td>
-<td><code>true</code></td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="collectors"><code>Collectors</code></h3>
-
-<p>Collectors are modules that gather supplemental information from the device and append it to the data layer before it&rsquo;s transmitted to the Tealium Customer Data Hub. Some collectors are included in the core library, while others are optional and installed as separate modules.</p>
-
-<p>The following table lists the available collectors:</p>
-
-<table>
-<thead>
-<tr>
-<th>Collector Name</th>
-<th>TealiumConfig Reference</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>AppData</code> (default)</td>
-<td><code>Collectors.AppData</code></td>
-</tr>
-
-<tr>
-<td><code>Connectivity</code> (default)</td>
-<td><code>Collectors.Connectivity</code></td>
-</tr>
-
-<tr>
-<td><code>Device</code></td>
-<td><code>Collectors.Device</code></td>
-</tr>
-
-<tr>
-<td><code>Lifecycle</code></td>
-<td><code>Collectors.Lifecycle</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>These modules are enabled or disabled using the <a href="/platforms/flutter/api/tealium-config/"><code>TealiumConfig</code></a> <code>collectors</code> property.</p>
-
-<h3 id="consentexpiry"><code>ConsentExpiry</code></h3>
-
-<p>Defines user consent preferences expiration.</p>
-
-<table>
-<thead>
-<tr>
-<th>Parameters</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>time</code></td>
-<td><code>Number</code></td>
-<td>The amount of time before expiration</td>
-<td><code>90</code></td>
-</tr>
-
-<tr>
-<td><code>unit</code></td>
-<td><code>TimeUnit</code></td>
-<td>The unit of time before expiration</td>
-<td><code>TimeUnit.DAYS</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl"><span style="color:#00f">new</span> ConsentExpiry(90, TimeUnit.Days)</code></pre></div>
-<p>The following time units are available:</p>
-
-<table>
-<thead>
-<tr>
-<th>Time Unit</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>ConsentExpiry.DAYS</code></td>
-<td>Days</td>
-</tr>
-
-<tr>
-<td><code>ConsentExpiry.HOURS</code></td>
-<td>Hours</td>
-</tr>
-
-<tr>
-<td><code>ConsentExpiry.MINUTES</code></td>
-<td>Minutes</td>
-</tr>
-
-<tr>
-<td><code>ConsentExpiry.MONTHS</code></td>
-<td>Months</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="consentpolicy"><code>ConsentPolicy</code></h3>
-
-<p>Defines the consent policy to adhere to. If no consent policy is defined on the <a href="/platforms/flutter/api/tealium-config/"><code>TealiumConfig</code></a> object, the consent manager becomes disabled.</p>
-
-<p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">ConsentPolicy.GDPR</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Consent Policy</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>ConsentPolicy.GDPR</code></td>
-<td>GDPR</td>
-</tr>
-
-<tr>
-<td><code>ConsentPolicy.CCPA</code></td>
-<td>CCPA</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="dispatchers"><code>Dispatchers</code></h3>
-
-<p>Dispatchers are modules that send the data from your data layer to a Tealium endpoint. The following dispatchers are currently available:</p>
-
-<table>
-<thead>
-<tr>
-<th>Dispatcher Name</th>
-<th>TealiumConfig Reference</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>Collect</code></td>
-<td><code>Dispatchers.Collect</code></td>
-</tr>
-
-<tr>
-<td><code>RemoteCommands</code></td>
-<td><code>Dispatchers.RemoteCommands</code></td>
-</tr>
-
-<tr>
-<td><code>TagManagement</code></td>
-<td><code>Dispatchers.TagManagement</code></td>
-</tr>
-</tbody>
-</table>
-
-<p class="note"><i class="fas fa-info-circle"></i>At least one dispatcher is required. If no dispatchers are specified, no tracking occurs.</p>
-
-<h3 id="expiry"><code>Expiry</code></h3>
-
-<p>Defines the expiration time for setting a property that expires.</p>
-
-<p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">Expiry.session</code></pre></div>
-<p>The following expiry options are available:</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Value</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>session</code> (default)</td>
-<td align="left">The lifetime of the current active session</td>
-</tr>
-
-<tr>
-<td align="left"><code>forever</code></td>
-<td align="left">Never expires while the app is installed</td>
-</tr>
-
-<tr>
-<td align="left"><code>untilRestart</code></td>
-<td align="left">Until the app restarts</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="loglevel"><code>LogLevel</code></h3>
-
-<p>Sets the <code>logLevel</code> property, which controls how much information is logged.</p>
-
-<p>The following logging levels are available:</p>
-
-<table>
-<thead>
-<tr>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>LogLevel.DEV</code></td>
-<td>Informational events that highlight the progress of the application</td>
-</tr>
-
-<tr>
-<td><code>LogLevel.QA</code></td>
-<td>Debug-level events used for debugging an application</td>
-</tr>
-
-<tr>
-<td><code>LogLevel.PROD</code></td>
-<td>Error events such as critical errors and failures</td>
-</tr>
-
-<tr>
-<td><code>LogLevel.SILENT</code></td>
-<td>No Logging (default)</td>
-</tr>
-</tbody>
-</table>
-
-<p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">LogLevel.DEV</code></pre></div>
-<h3 id="tealiumenvironment"><code>TealiumEnvironment</code></h3>
-
-<p>The environment is one of three default environments (Dev, QA, Prod) or any custom environments that Tealium publishes to. Select one of these environments.</p>
-
-<p>Example:</p>
-
-<p><code>TealiumEnvironment.dev</code></p>
-
-<table>
-<thead>
-<tr>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>.dev</code></td>
-<td>Development</td>
-</tr>
-
-<tr>
-<td><code>.qa</code></td>
-<td>QA/UAT</td>
-</tr>
-
-<tr>
-<td><code>.prod</code></td>
-<td>Production</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/flutter/api/tealium/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Tealium "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Tealium</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/flutter/api/visitor-profile/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>VisitorProfile</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"VisitorProfile"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -8006,33 +7472,584 @@ var utag_data = {
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/flutter/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        FLUTTER
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">TealiumConfig</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      A class to set configuration options for the main Tealium class. Individual modules provide their own extensions for the <code>TealiumConfig</code> class if they are enabled.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="tealiumconfig"><code>TealiumConfig</code></h2>
+
+<p>The following summarizes the properties of the <code>TealiumConfig</code> class.</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>account</code></td>
+<td><code>String</code></td>
+<td>(Required) Tealium account name</td>
+<td><code>companyXYZ</code></td>
+</tr>
+
+<tr>
+<td><code>collectors</code></td>
+<td><code>List&lt;Collectors&gt;</code></td>
+<td>(Required) Sets the list of <a href="#collectors"><code>Collectors</code></a> to initialize the Tealium library with</td>
+<td><code>[Collectors.AppData]</code></td>
+</tr>
+
+<tr>
+<td><code>consentExpiry</code></td>
+<td><a href="#consentexpiry"><code>ConsentExpiry</code></a></td>
+<td>Sets the expiration of the user&rsquo;s consent preferences (default is dependent upon policy)</td>
+<td><code>ConsentExpiry(90, TimeUnit.DAYS)</code></td>
+</tr>
+
+<tr>
+<td><code>consentLoggingEnabled</code></td>
+<td><code>Boolean</code></td>
+<td>Enables the <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Consent-Change-Event-Specifications/ta-p/23213">Consent Logging</a> feature, which sends all consent status changes to Tealium Customer Data Hub for auditing purposes. (default: enabled)</td>
+<td><code>true</code></td>
+</tr>
+
+<tr>
+<td><code>consentPolicy</code></td>
+<td><a href="#consentpolicy"><code>ConsentPolicy</code></a></td>
+<td>Sets the consent policy, such as CCPA or GDPR. Consent Manager is only enabled if this property is set.</td>
+<td><code>ConsentPolicy.GDPR</code></td>
+</tr>
+
+<tr>
+<td><code>customVisitorId</code></td>
+<td><code>String</code></td>
+<td>Set a custom Visitor ID</td>
+<td><code>“ALK2398LSDKJ3289SLKJ3298SLKJ3”</code></td>
+</tr>
+
+<tr>
+<td><code>dataSource</code></td>
+<td><code>String</code></td>
+<td>CDH data source key</td>
+<td><code>&quot;abc123&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>deepLinkTrackingEnabled</code></td>
+<td><code>Boolean</code></td>
+<td>Enables or disables <a href="/platforms/getting-started/deep-linking/#readout">automatic tracking of standard deep links</a>, such as links to the app from Facebook or other sources, as well as QR trace.  (default: enabled)</td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><code>dispatchers</code></td>
+<td><code>Dispatchers[]</code></td>
+<td>(Required) Sets the list of <a href="#dispatchers"><code>Dispatchers</code></a> to initialize the Tealium library with</td>
+<td><code>[Dispatchers.Collect]</code></td>
+</tr>
+
+<tr>
+<td><code>environment</code></td>
+<td><a href="#tealiumenvironment"><code>TealiumEnvironment</code></a></td>
+<td>(Required) Tealium environment name</td>
+<td><code>TealiumEnvironment.dev</code></td>
+</tr>
+
+<tr>
+<td><code>lifecycleAutotrackingEnabled</code></td>
+<td><code>Boolean</code></td>
+<td>Enables or disables lifecycle auto tracking. (default: enabled)</td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><code>logLevel</code></td>
+<td><a href="#loglevel"><code>LogLevel</code></a>`</td>
+<td>Sets the log level property, which controls how much information is logged (default: silent)</td>
+<td><code>LogLevel.DEV</code></td>
+</tr>
+
+<tr>
+<td><code>memoryReportingEnabled</code></td>
+<td><code>Boolean</code></td>
+<td>Enables or disables memory reporting in the DeviceData module (default: disabled)</td>
+<td><code>true</code></td>
+</tr>
+
+<tr>
+<td><code>overrideCollectBatchURL</code></td>
+<td><code>String</code></td>
+<td>Overrides the Tealium Collect batch URL to send data to a different endpoint</td>
+<td><code>“https://custom-domain.com/batch-event”</code></td>
+</tr>
+
+<tr>
+<td><code>overrideCollectURL</code></td>
+<td><code>String</code></td>
+<td>Overrides the Tealium Collect URL to send data to a different endpoint. If using the event batching feature, also override the <code>overrideCollectBatchURL</code> property.</td>
+<td><code>“https://custom-domain.com/event”</code></td>
+</tr>
+
+<tr>
+<td><code>overrideLibrarySettingsURL</code></td>
+<td><code>String</code></td>
+<td>Overrides the publish settings URL.`</td>
+<td><code>“https://custom-domain.com/mobile.html”</code></td>
+</tr>
+
+<tr>
+<td><code>overrideTagManagementURL</code></td>
+<td><code>String</code></td>
+<td>Overrides the default URL used by the Tag Management module. This is needed if you are self-hosting your Tealium flutterScript files</td>
+<td><code>“https://custom-domain.com/path/env/utag.js”</code></td>
+</tr>
+
+<tr>
+<td><code>profile</code></td>
+<td><code>String</code></td>
+<td>(Required) Tealium profile name</td>
+<td><code>main</code></td>
+</tr>
+
+<tr>
+<td><code>qrTraceEnabled</code></td>
+<td><code>Boolean</code></td>
+<td>Enables or disables <a href="/platforms/getting-started/trace/#how-it-works">QR trace</a>. (default: enabled)</td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><code>useRemoteLibrarySettings</code></td>
+<td><code>Boolean</code></td>
+<td>Enables or disables the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">Mobile Publish Settings</a> (default: enabled) Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature.</td>
+<td><code>false</code></td>
+</tr>
+
+<tr>
+<td><code>visitorServiceEnabled</code></td>
+<td><code>Boolean</code></td>
+<td>Enables or disables the automatic retrieval of the Visitor Profile using the <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Data-Layer-Enrichment-Public-API/ta-p/155">Data Layer Enrichment API</a> (default: disabled)</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="collectors"><code>Collectors</code></h3>
+
+<p>Collectors are modules that gather supplemental information from the device and append it to the data layer before it&rsquo;s transmitted to the Tealium Customer Data Hub. Some collectors are included in the core library, while others are optional and installed as separate modules.</p>
+
+<p>The following table lists the available collectors:</p>
+
+<table>
+<thead>
+<tr>
+<th>Collector Name</th>
+<th>TealiumConfig Reference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>AppData</code> (default)</td>
+<td><code>Collectors.AppData</code></td>
+</tr>
+
+<tr>
+<td><code>Connectivity</code> (default)</td>
+<td><code>Collectors.Connectivity</code></td>
+</tr>
+
+<tr>
+<td><code>Device</code></td>
+<td><code>Collectors.Device</code></td>
+</tr>
+
+<tr>
+<td><code>Lifecycle</code></td>
+<td><code>Collectors.Lifecycle</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>These modules are enabled or disabled using the <a href="/platforms/flutter/api/tealium-config/"><code>TealiumConfig</code></a> <code>collectors</code> property.</p>
+
+<h3 id="consentexpiry"><code>ConsentExpiry</code></h3>
+
+<p>Defines user consent preferences expiration.</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>time</code></td>
+<td><code>Number</code></td>
+<td>The amount of time before expiration</td>
+<td><code>90</code></td>
+</tr>
+
+<tr>
+<td><code>unit</code></td>
+<td><code>TimeUnit</code></td>
+<td>The unit of time before expiration</td>
+<td><code>TimeUnit.DAYS</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example:</p>
+
+<pre><code class="language-flutter">new ConsentExpiry(90, TimeUnit.Days)
+</code></pre>
+
+<p>The following time units are available:</p>
+
+<table>
+<thead>
+<tr>
+<th>Time Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>ConsentExpiry.DAYS</code></td>
+<td>Days</td>
+</tr>
+
+<tr>
+<td><code>ConsentExpiry.HOURS</code></td>
+<td>Hours</td>
+</tr>
+
+<tr>
+<td><code>ConsentExpiry.MINUTES</code></td>
+<td>Minutes</td>
+</tr>
+
+<tr>
+<td><code>ConsentExpiry.MONTHS</code></td>
+<td>Months</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="consentpolicy"><code>ConsentPolicy</code></h3>
+
+<p>Defines the consent policy to adhere to. If no consent policy is defined on the <a href="/platforms/flutter/api/tealium-config/"><code>TealiumConfig</code></a> object, the consent manager becomes disabled.</p>
+
+<p>Example:</p>
+
+<pre><code class="language-flutter">ConsentPolicy.GDPR
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Consent Policy</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>ConsentPolicy.GDPR</code></td>
+<td>GDPR</td>
+</tr>
+
+<tr>
+<td><code>ConsentPolicy.CCPA</code></td>
+<td>CCPA</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="dispatchers"><code>Dispatchers</code></h3>
+
+<p>Dispatchers are modules that send the data from your data layer to a Tealium endpoint. The following dispatchers are currently available:</p>
+
+<table>
+<thead>
+<tr>
+<th>Dispatcher Name</th>
+<th>TealiumConfig Reference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>Collect</code></td>
+<td><code>Dispatchers.Collect</code></td>
+</tr>
+
+<tr>
+<td><code>RemoteCommands</code></td>
+<td><code>Dispatchers.RemoteCommands</code></td>
+</tr>
+
+<tr>
+<td><code>TagManagement</code></td>
+<td><code>Dispatchers.TagManagement</code></td>
+</tr>
+</tbody>
+</table>
+
+<p class="note"><i class="fas fa-info-circle"></i>At least one dispatcher is required. If no dispatchers are specified, no tracking occurs.</p>
+
+<h3 id="expiry"><code>Expiry</code></h3>
+
+<p>Defines the expiration time for setting a property that expires.</p>
+
+<p>Example:</p>
+
+<pre><code class="language-flutter">Expiry.session
+</code></pre>
+
+<p>The following expiry options are available:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>session</code> (default)</td>
+<td align="left">The lifetime of the current active session</td>
+</tr>
+
+<tr>
+<td align="left"><code>forever</code></td>
+<td align="left">Never expires while the app is installed</td>
+</tr>
+
+<tr>
+<td align="left"><code>untilRestart</code></td>
+<td align="left">Until the app restarts</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="loglevel"><code>LogLevel</code></h3>
+
+<p>Sets the <code>logLevel</code> property, which controls how much information is logged.</p>
+
+<p>The following logging levels are available:</p>
+
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>LogLevel.DEV</code></td>
+<td>Informational events that highlight the progress of the application</td>
+</tr>
+
+<tr>
+<td><code>LogLevel.QA</code></td>
+<td>Debug-level events used for debugging an application</td>
+</tr>
+
+<tr>
+<td><code>LogLevel.PROD</code></td>
+<td>Error events such as critical errors and failures</td>
+</tr>
+
+<tr>
+<td><code>LogLevel.SILENT</code></td>
+<td>No Logging (default)</td>
+</tr>
+</tbody>
+</table>
+
+<p>Example:</p>
+
+<pre><code class="language-flutter">LogLevel.DEV
+</code></pre>
+
+<h3 id="tealiumenvironment"><code>TealiumEnvironment</code></h3>
+
+<p>The environment is one of three default environments (Dev, QA, Prod) or any custom environments that Tealium publishes to. Select one of these environments.</p>
+
+<p>Example:</p>
+
+<p><code>TealiumEnvironment.dev</code></p>
+
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>.dev</code></td>
+<td>Development</td>
+</tr>
+
+<tr>
+<td><code>.qa</code></td>
+<td>QA/UAT</td>
+</tr>
+
+<tr>
+<td><code>.prod</code></td>
+<td>Production</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/flutter/api/tealium/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Tealium "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Tealium</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/flutter/api/visitor-profile/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>VisitorProfile</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"VisitorProfile"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  May 13, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  May 13, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#tealiumconfig">TealiumConfig</a></li>
+              <ul class="toc-h3"><li><a href="#collectors">Collectors</a></li>
+              <li><a href="#consentexpiry">ConsentExpiry</a></li>
+              <li><a href="#consentpolicy">ConsentPolicy</a></li>
+              <li><a href="#dispatchers">Dispatchers</a></li>
+              <li><a href="#expiry">Expiry</a></li>
+              <li><a href="#loglevel">LogLevel</a></li>
+              <li><a href="#tealiumenvironment">TealiumEnvironment</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,1171 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
-              <li><a href="#how-it-works">How It Works</a></li>
-              <li><a href="#install">Install</a></li>
-              <ul class="toc-h3"><li><a href="#dependency-manager">Dependency Manager</a></li>
-              <li><a href="#manual-ios">Manual (iOS)</a></li>
-              <li><a href="#manual-android">Manual (Android)</a></li>
-              </ul><li><a href="#initialize">Initialize</a></li>
-              <ul class="toc-h3"><li><a href="#android-kotlin">Android (Kotlin)</a></li>
-              <li><a href="#android-java">Android (Java)</a></li>
-              <li><a href="#ios-swift">iOS (Swift)</a></li>
-              </ul><li><a href="#push-message-tracking">Push Message Tracking</a></li>
-              <li><a href="#json-template">JSON Template</a></li>
-              <li><a href="#supported-methods">Supported Methods</a></li>
-              <ul class="toc-h3"><li><a href="#standard-event-names">Standard Event Names</a></li>
-              <li><a href="#sdk-setup">SDK Setup</a></li>
-              <li><a href="#location">Location</a></li>
-              <li><a href="#other-options">Other Options</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/remote-commands/integrations/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        REMOTE COMMANDS/INTEGRATIONS
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Remote Command: AppsFlyer</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Tealium remote command integration for AppsFlyer on Android and Swift/iOS.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="requirements">Requirements</h2>
-
-<ul>
-<li>AppsFlyer <a href="https://support.appsflyer.com/hc/en-us/articles/207377436#available-in-the-app-store-google-play-store-windows-phone-store">app ID</a> and <a href="https://support.appsflyer.com/hc/en-us/articles/211719806-App-Settings#sdk-dev-key">dev key</a></li>
-<li>One of these mobile libraries:
-
-<ul>
-<li><a href="/platforms/android-kotlin/">Tealium for Android-Kotlin</a> (1.0.0+)</li>
-<li><a href="/platforms/android-java/">Tealium for Android-Java</a> (5.9.0+ for AppsFlyer 1.0.0+ or &lt;5.9.0 for previous versions)</li>
-<li><a href="/platforms/ios-swift/">Tealium for iOS-Swift</a></li>
-</ul></li>
-<li>One of these remote command integrations:
-
-<ul>
-<li><a href="/platforms/remote-commands/integrations/appsflyer/#json-template">AppsFlyer Remote Command JSON File</a> (Requires Android-Kotlin 1.0.0+ or iOS-Swift 2.1.0+)</li>
-<li>AppsFlyer Remote Command tag in Tealium iQ Tag Management</li>
-</ul></li>
-</ul>
-
-<h2 id="how-it-works">How It Works</h2>
-
-<p>The AppsFlyer integration uses three items:</p>
-
-<ol>
-<li>The AppsFlyer native SDK</li>
-<li>The remote commands module that wraps the AppsFlyer methods</li>
-<li>Either the JSON configuration file or Remote Command tag that translates event tracking into native AppsFlyer calls</li>
-</ol>
-
-<p>Adding the AppsFlyer remote command module to your app automatically installs and builds the required AppsFlyer libraries, without having to add vendor-specific code to your app. If you are using a dependency manager installation, there is no need to install the AppsFlyer SDK separately.</p>
-
-<p>There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration.  Learn more about <a href="/platforms/remote-commands/how-it-works/#vendor-integrations">vendor integrations</a>.</p>
-
-<p class="note"><i class="fas fa-info-circle"></i>iOS: For AppsFlyer version 4.8.11+, the SDK automatically adds the following native frameworks: <code>AdSupport.framework</code> and <code>iAd.framework</code>. Learn more in the <a href="https://support.appsflyer.com/hc/en-us/articles/207032066#integration">AppsFlyer iOS SDK integration</a> guide.</p>
-
-<h2 id="install">Install</h2>
-
-<h3 id="dependency-manager">Dependency Manager</h3>
-
-<p>We recommend using one of the following dependency managers for installation:</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
-  <p>To install AppsFlyer remote commands for iOS using CocoaPods:</p>
-
-<ol>
-<li><p>Remove <code>tealium-swift</code> and <code>pod &quot;AppsFlyerFramework&quot;</code> if they exist in your Podfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumAppsFlyer</code> framework.</p></li>
-
-<li><p>Add the following dependency to your Podfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">pod <span style="color:#a31515">&#34;TealiumAppsFlyer&#34;</span></code></pre></div>
-<p>The <code>TealiumAppsFlyer</code> pod includes the following <code>TealiumSwift</code> dependencies:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#a31515">&#39;tealium-swift/Core&#39;</span>
-<span style="color:#a31515">&#39;tealium-swift/RemoteCommands&#39;</span>
-<span style="color:#a31515">&#39;tealium-swift/TagManagement&#39;</span></code></pre></div></li>
-
-<li><p>Import the modules <code>TealiumSwift</code> and <code>TealiumAppsFlyer</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class, or the AppsFlyer remote command.</p></li>
-</ol>
-
-</div>
-
-<div class="tab-pane" data-lang="Carthage" title="Carthage">
-  <p>To install AppsFlyer remote commands for iOS using Carthage:</p>
-
-<ol>
-<li><p>Remove <code>tealium-swift</code> from your Cartfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumAppsFlyer</code> framework.</p></li>
-
-<li><p>Remove the following line if it exists in your Cartfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#a31515">`</span>binary <span style="color:#a31515">&#34;https://raw.githubusercontent.com/AppsFlyerSDK/AppsFlyerFramework/master/AppsFlyerLib.json&#34;</span><span style="color:#a31515">`</span></code></pre></div></li>
-
-<li><p>Add the following dependency to your Cartfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">github <span style="color:#a31515">&#34;tealium/tealium-ios-appsflyer-remote-command&#34;</span></code></pre></div></li>
-</ol>
-
-<p class="note"><i class="fas fa-info-circle"></i>Tealium for Swift SDK (version 1.x) and <code>TealiumAppsFlyer</code> version 1.x requires the <code>TealiumDelegate</code> module to be included with your installation.</p>
-
-</div>
-
-<div class="tab-pane" data-lang="Maven" title="Maven">
-  <p>To install AppsFlyer remote commands for Android using Maven:</p>
-
-<ol>
-<li><p>Install <a href="/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> or <a href="/platforms/android-java/install/">Tealium for Android (Java)</a> and add the Tealium Maven URL to your project’s top-level <code>build.gradle</code> file, if you haven&rsquo;t done so already.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
-  repositories {
-    jcenter()
-    maven {
-      url <span style="color:#a31515">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
-    }
-  }
-}</code></pre></div></li>
-
-<li><p>Import both the AppsFlyer SDK and Tealium-AppsFlyer remote commands by adding the following dependencies in your app project&rsquo;s <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
-implementation <span style="color:#a31515">&#39;com.tealium.remotecommands:appsflyer:1.0.0&#39;</span>
-}</code></pre></div></li>
-</ol>
-
-</div>
-
-<p></div>
-</div></p>
-
-<h3 id="manual-ios">Manual (iOS)</h3>
-
-<p>The manual installation for AppsFlyer remote commands requires the <a href="/platforms/ios-swift/">Tealium for Swift</a> library to be installed. To install the AppsFlyer remote commands for your iOS project:</p>
-
-<ol>
-<li><p>Install the <a href="https://github.com/AppsFlyerSDK/AppsFlyerFramework">AppsFlyer SDK</a>, if you haven&rsquo;t already done so.</p></li>
-
-<li><p>Clone the <a href="https://github.com/tealium/tealium-ios-appsflyer-remote-command">Tealium iOS AppsFlyer remote command</a> repo and drag the files within the <code>Sources</code> folder into your project.</p></li>
-
-<li><p>Set the <a href="/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a> configuration flag to <code>true</code></p></li>
-</ol>
-
-<h3 id="manual-android">Manual (Android)</h3>
-
-<p>The manual installation for AppsFlyer remote commands requires <a href="/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> or <a href="/platforms/android-java/install/">Tealium for Android (Java)</a> to be installed. To install the AppsFlyer remote commands for your Android project:</p>
-
-<ol>
-<li><p>Add <code>flatDir</code> to your project root <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
-  repositories {
-     jcenter()
-     flatDir {
-         dirs <span style="color:#a31515">&#39;libs&#39;</span>
-     }
-  }
-}</code></pre></div></li>
-
-<li><p>Add <code>tealium-appsflyer.aar</code> to <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code>.</p></li>
-
-<li><p>Add the Tealium library dependency to your <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
-  implementation(name:<span style="color:#a31515">&#39;tealium-appsflyer&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
-}</code></pre></div></li>
-</ol>
-
-<h2 id="initialize">Initialize</h2>
-
-<p>For all Tealium libraries, register the AppsFlyer Remote Command when you initialize.</p>
-
-<h3 id="android-kotlin">Android (Kotlin)</h3>
-
-<p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s Android (Kotlin) library.</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>The following code is designed for use with the JSON Remote Command feature, using the local file option:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#008000">// Sets up a config object and creates a Tealium instance
-</span><span style="color:#008000"></span><span style="color:#00f">val</span> config = TealiumConfig(application,
-        <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-        <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-        Environment.DEV,
-        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
-<span style="color:#00f">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
-    <span style="color:#008000">// New code to add the AppsFlyer Remote Command
-</span><span style="color:#008000"></span>    <span style="color:#00f">val</span> appsFlyerRemoteCommand = AppsFlyerRemoteCommand(application,
-                                      appsFlyerDevKey = devKey)
-    <span style="color:#008000">// register the command
-</span><span style="color:#008000"></span>    remoteCommands?.add(appsFlyerRemoteCommand, filename = <span style="color:#a31515">&#34;appsflyer.json&#34;</span>);
-}</code></pre></div>
-</div>
-
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>The following code is designed for use with the Remote Command tag feature:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#008000">// Sets up a config object and creates a Tealium instance
-</span><span style="color:#008000"></span><span style="color:#00f">val</span> config = TealiumConfig(application,
-        <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-        <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-        Environment.DEV,
-        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
-<span style="color:#00f">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
-    <span style="color:#008000">// New code to add the AppsFlyer Remote Command
-</span><span style="color:#008000"></span>    <span style="color:#00f">val</span> appsFlyer = AppsFlyerRemoteCommand(application,
-                                      appsFlyerDevKey = devKey)
-    <span style="color:#008000">// register the command
-</span><span style="color:#008000"></span>    remoteCommands?.add(appsFlyer);
-}</code></pre></div>
-</div>
-
-<p></div>
-</div></p>
-
-<h3 id="android-java">Android (Java)</h3>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-
-<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>The JSON Remote Command file feature for Android is only available in the Kotlin SDK.</p>
-
-</div>
-
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>The following code is designed for use with the Remote Command tag feature:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#008000">// Sets up a config object and creates a Tealium instance
-</span><span style="color:#008000"></span>Tealium.Config config = Tealium.Config.create(application, <span style="color:#a31515">&#34;ACCOUNT&#34;</span>, <span style="color:#a31515">&#34;PROFILE&#34;</span>, <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>);
-Tealium teal = Tealium.createInstance(TEALIUM_MAIN, config);
-    <span style="color:#008000">// New code to add the AppsFlyer Remote Command
-</span><span style="color:#008000"></span>AppsFlyerRemoteCommand appsFlyer = <span style="color:#00f">new</span> AppsFlyerRemoteCommand(application, appsFlyerDevKey = devKey)
-teal.addRemoteCommand(appsFlyer);</code></pre></div>
-</div>
-
-<p></div>
-</div></p>
-
-<h3 id="ios-swift">iOS (Swift)</h3>
-
-<p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s iOS (Swift) library.</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>The following code is designed for use with the JSON Remote Command feature, using the local file option:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">var</span> tealium : Tealium?
-<span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-                           profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-                           environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
-                           dataSource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>,
-                           optionalData: <span style="color:#00f">nil</span>)
-
-config.remoteAPIEnabled = <span style="color:#00f">true</span> <span style="color:#008000">// Required to use Remote Commands</span>
-
-tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span style="color:#00f">in</span>
-    <span style="color:#00f">guard</span> <span style="color:#00f">let</span> remoteCommands = <span style="color:#00f">self</span>.tealium?.remoteCommands <span style="color:#00f">else</span> {
-        <span style="color:#00f">return</span>
-    }
-
-    <span style="color:#00f">let</span> appsflyer = AppsFlyerRemoteCommand(type: .local(file: <span style="color:#a31515">&#34;appsflyer&#34;</span>))
-    remoteCommands.add(appsflyer)
-}</code></pre></div>
-</div>
-
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>The following code is designed for use with the Remote Command tag feature:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">var</span> tealium : Tealium?
-<span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-                           profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-                           environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
-                           dataSource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>,
-                           optionalData: <span style="color:#00f">nil</span>)
-
-config.remoteAPIEnabled = <span style="color:#00f">true</span> <span style="color:#008000">// Required to use Remote Commands</span>
-
-tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span style="color:#00f">in</span>
-    <span style="color:#00f">guard</span> <span style="color:#00f">let</span> remoteCommands = <span style="color:#00f">self</span>.tealium?.remoteCommands <span style="color:#00f">else</span> {
-        <span style="color:#00f">return</span>
-    }
-
-    <span style="color:#00f">let</span> appsFlyer = AppsFlyerRemoteCommand()
-    remoteCommands.add(appsFlyer)
-}</code></pre></div>
-</div>
-
-<p></div>
-</div></p>
-
-<h2 id="push-message-tracking">Push Message Tracking</h2>
-
-<p>The Tealium Swift library includes a <code>TealiumRegistration</code> protocol for handling push message tracking via Tealium and the AppsFlyer Remote Command.  We conform to this protocol in the wrapper class <code>AppsFlyerInstance</code> which is used to send push message authorization events, push message open events, and to uninstall tracking. We recommend taking advantage of the push message tracking capability.</p>
-
-<p>The following steps integrate push message tracking for your iOS project:</p>
-
-<ol>
-<li><p>In the <code>TealiumHelper.swift</code> file, initialize an empty array of objects that conform to the <code>TealiumRegistration</code> protocol. For example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">var</span> pushMessagingTrackers = [TealiumRegistration]()</code></pre></div></li>
-
-<li><p>Initialize the <code>AppsFlyerInstance</code> before the <code>AppsFlyerRemoteCommand</code></p></li>
-
-<li><p>Append the <code>AppsFlyerInstance</code> to the array described above</p></li>
-</ol>
-
-<p>The following is full example of the push message tracking integration:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">var</span> pushMessagingTrackers = [TealiumRegistration]()
-<span style="color:#00f">var</span> tealium : Tealium?
-<span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-                           profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-                           environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
-                           dataSource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>,
-                           optionalData: <span style="color:#00f">nil</span>)
-config.remoteAPIEnabled = <span style="color:#00f">true</span> <span style="color:#008000">// Required to use Remote Commands</span>
-
-tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span style="color:#00f">in</span>
-    <span style="color:#00f">guard</span> <span style="color:#00f">let</span> remoteCommands = <span style="color:#00f">self</span>.tealium?.remoteCommands <span style="color:#00f">else</span> {
-        <span style="color:#00f">return</span>
-    }
-
-	<span style="color:#00f">let</span> appsflyerInstance = AppsFlyerInstance()
-	<span style="color:#00f">let</span> appsflyer = AppsFlyerRemoteCommand(appsflyerInstance: appsflyerInstance, type: .local(file: <span style="color:#a31515">&#34;appsflyer&#34;</span>))
-	pushMessagingTrackers.append(appsflyerInstance)
-	remoteCommands.add(appsflyer)
-}</code></pre></div>
-<p>To see the entire <code>TealiumHelper.swift</code> file, explore the <a href="https://github.com/Tealium/tealium-ios-appsflyer-remote-command/tree/master/TealiumAppsFlyerExample">AppsFlyer Remote Command sample app</a>. To send an event to AppsFlyer once a user has registered for notifications, opened a push message, or uninstalled the app, see the file <code>AppDelegate.swift</code>.</p>
-
-<p>Learn more about AppsFlyer&rsquo;s push message and uninstall tracking functionality in the <a href="https://support.appsflyer.com/hc/en-us/articles/207032066">iOS SDK integration for developers</a> guide.</p>
-
-<h2 id="json-template">JSON Template</h2>
-
-<p>If you are configuring remote commands using a <a href="/platforms/remote-commands/how-it-works/#json-configuration-file">JSON configuration file</a>, refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-    &#34;config&#34;: {
-        &#34;app_id&#34;: <span style="color:#a31515">&#34;YOUR_APP_ID&#34;</span>,
-        &#34;app_dev_key&#34;: <span style="color:#a31515">&#34;YOUR_APPSFLYER_DEV_KEY&#34;</span>,
-        &#34;settings&#34;: {
-            &#34;custom_data&#34;: {&#34;custom_key&#34;: <span style="color:#a31515">&#34;custom_value&#34;</span>},
-            &#34;debug&#34;: <span style="color:#00f">true</span>,
-            &#34;disable_ad_tracking&#34;: <span style="color:#00f">false</span>,
-            &#34;disable_apple_ad_tracking&#34;: <span style="color:#00f">false</span>,
-            &#34;time_between_sessions&#34;: 30,
-            &#34;anonymize_user&#34;: <span style="color:#00f">false</span>,
-            &#34;collect_device_name&#34;: <span style="color:#00f">false</span>
-        }
-    },
-    &#34;mappings&#34;: {
-        &#34;latitude&#34;: <span style="color:#a31515">&#34;af_lat&#34;</span>,
-        &#34;longitude&#34;: <span style="color:#a31515">&#34;af_long&#34;</span>,
-        &#34;customer_email&#34;: <span style="color:#a31515">&#34;customer_emails&#34;</span>,
-        &#34;hash_type&#34;: <span style="color:#a31515">&#34;email_hash_type&#34;</span>,
-        &#34;currency_code&#34;: <span style="color:#a31515">&#34;af_currency&#34;</span>,
-        &#34;customer_id&#34;: <span style="color:#a31515">&#34;af_customer_user_id&#34;</span>,
-        &#34;signup_method&#34;: <span style="color:#a31515">&#34;event.signup_method&#34;</span>,
-        &#34;achievement_id&#34;: <span style="color:#a31515">&#34;event.achievement_id&#34;</span>,
-        &#34;checkout_option&#34;: <span style="color:#a31515">&#34;event.checkout_option&#34;</span>,
-        &#34;checkout_step&#34;: <span style="color:#a31515">&#34;event.checkout_step&#34;</span>,
-        &#34;content&#34;: <span style="color:#a31515">&#34;event.content&#34;</span>,
-        &#34;content_type&#34;: <span style="color:#a31515">&#34;event.content_type&#34;</span>,
-        &#34;coupon&#34;: <span style="color:#a31515">&#34;event.coupon&#34;</span>,
-        &#34;product_brand&#34;: <span style="color:#a31515">&#34;event.product_brand&#34;</span>,
-        &#34;product_category&#34;: <span style="color:#a31515">&#34;event.product_category&#34;</span>,
-        &#34;product_id&#34;: <span style="color:#a31515">&#34;event.af_content_id&#34;</span>,
-        &#34;product_list&#34;: <span style="color:#a31515">&#34;event.product_list&#34;</span>,
-        &#34;product_location_id&#34;: <span style="color:#a31515">&#34;event.product_location_id&#34;</span>,
-        &#34;product_name&#34;: <span style="color:#a31515">&#34;event.product_name&#34;</span>,
-        &#34;product_variant&#34;: <span style="color:#a31515">&#34;event.product_variant&#34;</span>,
-        &#34;product_unit_price&#34;: <span style="color:#a31515">&#34;event.af_price&#34;</span>,
-        &#34;product_quantity&#34;: <span style="color:#a31515">&#34;event.af_quantity&#34;</span>,
-        &#34;current_level&#34;: <span style="color:#a31515">&#34;event.level&#34;</span>,
-        &#34;score&#34;: <span style="color:#a31515">&#34;event.score&#34;</span>,
-        &#34;search_keyword&#34;: <span style="color:#a31515">&#34;event.search_keyword&#34;</span>,
-        &#34;order_shipping_amount&#34;: <span style="color:#a31515">&#34;event.order_shipping&#34;</span>,
-        &#34;order_tax_amount&#34;: <span style="color:#a31515">&#34;event.order_tax&#34;</span>,
-        &#34;order_id&#34;: <span style="color:#a31515">&#34;event.af_order_id&#34;</span>,
-        &#34;order_total&#34;: <span style="color:#a31515">&#34;event.af_revenue&#34;</span>,
-        &#34;currency_type&#34;: <span style="color:#a31515">&#34;event.currency_type&#34;</span>,
-    },
-    &#34;commands&#34;: {
-        &#34;launch&#34;: <span style="color:#a31515">&#34;initialize,launch&#34;</span>,
-        &#34;geofence_entered&#34;: <span style="color:#a31515">&#34;tracklocation&#34;</span>,
-        &#34;geofence_exited&#34;: <span style="color:#a31515">&#34;tracklocation&#34;</span>,
-        &#34;user_login&#34;: <span style="color:#a31515">&#34;login&#34;</span>,
-        &#34;user_register&#34;: <span style="color:#a31515">&#34;setuseremails,setcustomerid,completeregistration&#34;</span>,
-        &#34;show_offers&#34;: <span style="color:#a31515">&#34;adclick&#34;</span>,
-        &#34;cart_add&#34;: <span style="color:#a31515">&#34;addtocart&#34;</span>,
-        &#34;wishlist_add&#34;: <span style="color:#a31515">&#34;addtowishlist&#34;</span>,
-        &#34;payment&#34;: <span style="color:#a31515">&#34;addpaymentinfo&#34;</span>,
-        &#34;unlock_achievement&#34;: <span style="color:#a31515">&#34;unlockachievement&#34;</span>,
-        &#34;level_up&#34;: <span style="color:#a31515">&#34;achievelevel,customersegment&#34;</span>,
-        &#34;email_signup&#34;: <span style="color:#a31515">&#34;subscribe&#34;</span>,
-        &#34;product&#34;: <span style="color:#a31515">&#34;viewedcontent&#34;</span>,
-        &#34;category&#34;: <span style="color:#a31515">&#34;listview&#34;</span>,
-        &#34;share&#34;: <span style="color:#a31515">&#34;share&#34;</span>,
-        &#34;search&#34;: <span style="color:#a31515">&#34;search&#34;</span>,
-        &#34;checkout&#34;: <span style="color:#a31515">&#34;initiatecheckout&#34;</span>,
-        &#34;order&#34;:<span style="color:#a31515">&#34;purchase&#34;</span>
-    }
-}</code></pre></div>
-<h2 id="supported-methods">Supported Methods</h2>
-
-<p>The following AppsFlyer methods are triggered using a data mapping in the AppsFlyer Remote Command tag using these Tealium commands:</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Remote Command</th>
-<th align="left">AppsFlyer Method</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>initialize</code></td>
-<td align="left"><code>initialize()</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>trackLaunch</code></td>
-<td align="left"><code>trackLaunch()</code></td>
-</tr>
-
-<tr>
-<td align="left">Any of the below event names</td>
-<td align="left"><code>trackEvent()</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>setHost</code></td>
-<td align="left"><code>setHost()</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>setUserEmails</code></td>
-<td align="left"><code>setUserEmails()</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>setCurrencyCode</code></td>
-<td align="left"><code>currencyCode (property on the AppsFlyerTracker.shared object)</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>setCustomerId</code></td>
-<td align="left"><code>customerUserID (property on the AppsFlyerTracker.shared object)</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>disableDeviceTracking</code></td>
-<td align="left"><code>setDeviceTrackingDisabled</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>disableTracking</code></td>
-<td align="left"><code>isStopTracking (property on the AppsFlyerTracker.shared object)</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>resolveDeeplinkUrls</code></td>
-<td align="left"><code>resolveDeepLinkURLs (property on the AppsFlyerTracker.shared object)</code></td>
-</tr>
-
-<tr>
-<td align="left">Manually called in <code>AppDelegate</code> within <code>didReceiveRemoteNotification</code></td>
-<td align="left"><code>handlePushNotification()</code></td>
-</tr>
-
-<tr>
-<td align="left">Manually called in <code>AppDelegate</code> within <code>didReceiveRemoteNotification</code></td>
-<td align="left"><code>trackEvent() - event name: af_opened_from_push_notification</code></td>
-</tr>
-
-<tr>
-<td align="left">Manually called in <code>AppDelegate</code> within <code>didRegisterForRemoteNotificationsWithDeviceToken</code></td>
-<td align="left"><code>registerPushToken()</code></td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="standard-event-names">Standard Event Names</h3>
-
-<p>The following is a list of standard event names supported with the <code>trackEvent</code> method. If any of the below command names are sent, they are automatically triggered in the AppsFlyer SDK. This is assuming all the required variables are also mapped and defined for that particular event. Learn more about <a href="https://support.appsflyer.com/hc/en-us/articles/207032066#core-apis-5-recording-inapp-events">recording in-app events</a> and the see the full list of <a href="https://support.appsflyer.com/hc/en-us/articles/115005544169#Verticals">recommended in-app events per vertical</a>.</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Remote Command</th>
-<th align="left">AppsFlyer Event Name</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>achievedLevel</code></td>
-<td align="left"><code>&quot;af_level_achieved&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>addPaymentInfo</code></td>
-<td align="left"><code>&quot;af_add_payment_info&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>addToCart</code></td>
-<td align="left"><code>&quot;af_add_to_cart&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>addToWishlist</code></td>
-<td align="left"><code>&quot;af_add_to_wishlist&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>completeRegistration</code></td>
-<td align="left"><code>&quot;af_complete_registration&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>completeTutorial</code></td>
-<td align="left"><code>&quot;af_tutorial_completion&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>initiateCheckout</code></td>
-<td align="left"><code>&quot;af_initiated_checkout&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>purchase</code></td>
-<td align="left"><code>&quot;af_purchase&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>subscribe</code></td>
-<td align="left"><code>&quot;af_subscribe&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>startTrial</code></td>
-<td align="left"><code>&quot;af_start_trial&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>rate</code></td>
-<td align="left"><code>&quot;af_rate&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>search</code></td>
-<td align="left"><code>&quot;af_search&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>spentCredits</code></td>
-<td align="left"><code>&quot;af_spent_credits&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>unlockAchievement</code></td>
-<td align="left"><code>&quot;af_achievement_unlocked&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>contentView</code></td>
-<td align="left"><code>&quot;af_content_view&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>listView</code></td>
-<td align="left"><code>&quot;af_list_view&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>adClick</code></td>
-<td align="left"><code>&quot;af_ad_click&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>adView</code></td>
-<td align="left"><code>&quot;af_ad_view&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>travelBooking</code></td>
-<td align="left"><code>&quot;af_travel_booking&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>share</code></td>
-<td align="left"><code>&quot;af_share</code>&ldquo;</td>
-</tr>
-
-<tr>
-<td align="left"><code>invite</code></td>
-<td align="left"><code>&quot;af_invite&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>reEngage</code></td>
-<td align="left"><code>&quot;af_re_engage&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>update</code></td>
-<td align="left"><code>&quot;af_update&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>login</code></td>
-<td align="left"><code>&quot;af_login&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>customerSegment</code></td>
-<td align="left"><code>&quot;af_customer_segment&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>pushNotificationOpened</code></td>
-<td align="left"><code>&quot;af_opened_from_push_notification&quot;</code></td>
-</tr>
-</tbody>
-</table>
-
-<p class="note"><i class="fas fa-info-circle"></i>Since the AppsFlyer SDK is installed alongside the Tealium SDK, you are able to trigger any native AppsFlyer functionality given the corresponding tag configuration.</p>
-
-<h3 id="sdk-setup">SDK Setup</h3>
-
-<h4 id="initialize-1">Initialize</h4>
-
-<p>The AppsFlyer SDK is initialized automatically upon launch. The AppsFlyer API key is set in the tag configuration.</p>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>AppsFlyer Method</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>initialize</code></td>
-<td><code>initialize()</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>AppsFlyer Developer Guide: Initial SDK Setup</p>
-
-<ul>
-<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032066#integration-33-initializing-the-sdk">iOS</a></li>
-</ul>
-
-<p>There are several configuration options available that can be configured in the AppsFlyer Remote Command tag. If any of the below are set on launch, they are sent during the initialize method.</p>
-
-<h5 id="configuration-options">Configuration Options</h5>
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>iQ variable mapping</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>debug</code></td>
-<td><code>debug</code></td>
-<td><code>Bool</code></td>
-</tr>
-
-<tr>
-<td><code>disableIAdTracking</code></td>
-<td><code>disable_apple_ad_tracking</code></td>
-<td><code>Bool</code></td>
-</tr>
-
-<tr>
-<td><code>minTimeBetweenSessions</code></td>
-<td><code>time_between_sessions</code></td>
-<td><code>Int</code></td>
-</tr>
-
-<tr>
-<td><code>anonymizeUser</code></td>
-<td><code>anonymize_user</code></td>
-<td><code>Bool</code></td>
-</tr>
-
-<tr>
-<td><code>shouldCollectDeviceName</code></td>
-<td><code>collect_device_name</code></td>
-<td><code>Bool</code></td>
-</tr>
-
-<tr>
-<td><code>customData</code></td>
-<td><code>custom_data</code></td>
-<td><code>Dictionary</code> or <code>Map</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>AppsFlyer Developer Guide: Additional APIs</p>
-
-<ul>
-<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032066#additional-apis">iOS</a></li>
-<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032126-Android-SDK-integration-for-developers#additional-apis">Android</a></li>
-</ul>
-
-<h4 id="track-launch">Track Launch</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>AppsFlyer Method</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>initialize</code> or <code>launch</code></td>
-<td><code>trackLaunch()</code></td>
-</tr>
-</tbody>
-</table>
-
-<p class="note"><i class="fas fa-info-circle"></i>If you have the lifecycle module installed, this event automatically sends every app launch.</p>
-
-<p>AppsFlyer Developer Guide: Initializing the SDK</p>
-
-<ul>
-<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032066#integration-33-initializing-the-sdk">iOS</a></li>
-<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032126-Android-SDK-integration-for-developers#integration-3-implementing-and-initializing-the-sdk">Android</a></li>
-</ul>
-
-<h3 id="location">Location</h3>
-
-<h4 id="track-location">Track Location</h4>
-
-<table>
-<thead>
-<tr>
-<th align="left">Remote Command</th>
-<th align="left">AppsFlyer Method</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>tracklocation</code></td>
-<td align="left"><code>trackEvent()</code> - event name <code>af_location_coordinates</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>latitude</code> (required)</td>
-<td><code>Bool</code></td>
-</tr>
-
-<tr>
-<td><code>longitude</code> (required)</td>
-<td><code>Bool</code></td>
-</tr>
-</tbody>
-</table>
-
-<p class="note"><i class="fas fa-info-circle"></i>If you have the location module installed, the latitude and longitude are sent with every event.</p>
-
-<p>AppsFlyer API Reference: Location Tracking</p>
-
-<ul>
-<li><a href="https://github.com/AppsFlyerSDK/AppsFlyerFramework/blob/19ab52e9133ae86626c013e8cf0ed34aaf3721f0/iOS/AppsFlyerLib.framework/Versions/A/Headers/AppsFlyerTracker.h#L443">iOS</a></li>
-</ul>
-
-<h3 id="other-options">Other Options</h3>
-
-<h4 id="set-host">Set Host</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>AppsFlyer Method</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>sethost</code></td>
-<td><code>setHost</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>host</code> (required)</td>
-<td><code>String</code></td>
-</tr>
-
-<tr>
-<td><code>hostPrefix</code> (required)</td>
-<td><code>String</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>AppsFlyer API Reference: Set Host</p>
-
-<ul>
-<li><a href="https://github.com/AppsFlyerSDK/AppsFlyerFramework/blob/19ab52e9133ae86626c013e8cf0ed34aaf3721f0/iOS/AppsFlyerLib.framework/Versions/A/Headers/AppsFlyerTracker.h#L534">iOS</a></li>
-</ul>
-
-<h4 id="set-user-emails">Set User Emails</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>AppsFlyer Method</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>setsermails</code></td>
-<td><code>setUserEmails</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>emails</code> (required)</td>
-<td><code>[String]</code></td>
-</tr>
-
-<tr>
-<td><code>cryptType</code> (required)</td>
-<td><code>Int</code></td>
-</tr>
-</tbody>
-</table>
-
-<h5 id="crypt-type-reference">Crypt Type Reference</h5>
-
-<table>
-<thead>
-<tr>
-<th>Value</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>0</code></td>
-<td><code>None</code></td>
-</tr>
-
-<tr>
-<td><code>1</code></td>
-<td><code>SHA1</code></td>
-</tr>
-
-<tr>
-<td><code>2</code></td>
-<td><code>MD5</code></td>
-</tr>
-
-<tr>
-<td><code>3</code></td>
-<td><code>SHA256</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>AppsFlyer API Reference: Set User Email</p>
-
-<ul>
-<li><a href="https://github.com/AppsFlyerSDK/AppsFlyerFramework/blob/19ab52e9133ae86626c013e8cf0ed34aaf3721f0/iOS/AppsFlyerLib.framework/Versions/A/Headers/AppsFlyerTracker.h#L361">iOS</a></li>
-</ul>
-
-<h4 id="set-currency-code">Set Currency Code</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>AppsFlyer Property</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>setcurrencycode</code></td>
-<td><code>currencyCode</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>currency</code> (required)</td>
-<td><code>String</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>AppsFlyer API Reference: Set Currency Code</p>
-
-<ul>
-<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032066#api-reference-currencycode">iOS</a></li>
-</ul>
-
-<h4 id="set-customer-id">Set Customer ID</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>AppsFlyer Property</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>setcustomerid</code></td>
-<td><code>customerUserID</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>customerId</code> (required)</td>
-<td><code>String</code></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>AppsFlyer Additional APIs: Set Customer ID</li>
-<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032066#additional-apis-set-customer-user-id">iOS</a></li>
-<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032126-Android-SDK-integration-for-developers#api-reference-setcustomeruserid">Android</a></li>
-</ul>
-
-<h4 id="resolve-deep-link-urls">Resolve Deep Link Urls</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>AppsFlyer Property</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>resolvedeeplinkurls</td>
-<td><code>resolveDeepLinkURLs</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>deepLinkUrls</code> (required)</td>
-<td><code>[String]</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>AppsFlyer API Reference: Resolve Deep Link URLs</p>
-
-<ul>
-<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032066#api-reference-resolvedeeplinkurls">iOS</a></li>
-<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032126-Android-SDK-integration-for-developers#api-reference-setresolvedeeplinkurls">Android</a></li>
-</ul>
-
-<h4 id="disable-tracking">Disable Tracking</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>AppsFlyer Property</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>disabletracking</td>
-<td><code>isStopTracking</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>stopTracking</code> (required)</td>
-<td>Bool</td>
-</tr>
-</tbody>
-</table>
-
-<p>AppsFlyer Additional APIs: Stop Tracking (Opt-out)</p>
-
-<ul>
-<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032066#additional-apis-optout">iOS</a></li>
-<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032126-Android-SDK-integration-for-developers#additional-apis-optout">Android</a></li>
-</ul>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/remote-commands/integrations/adjust/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Remote Command: Adjust "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Remote Command: Adjust</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/remote-commands/integrations/branch/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Remote Command: Branch</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Remote Command: Branch"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -8629,33 +7472,1236 @@ tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span styl
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/remote-commands/integrations/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        REMOTE COMMANDS/INTEGRATIONS
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Remote Command: AppsFlyer</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Tealium remote command integration for AppsFlyer on Android and Swift/iOS.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+<li>AppsFlyer <a href="https://support.appsflyer.com/hc/en-us/articles/207377436#available-in-the-app-store-google-play-store-windows-phone-store">app ID</a> and <a href="https://support.appsflyer.com/hc/en-us/articles/211719806-App-Settings#sdk-dev-key">dev key</a></li>
+<li>One of these mobile libraries:
+
+<ul>
+<li><a href="/platforms/android-kotlin/">Tealium for Android-Kotlin</a> (1.0.0+)</li>
+<li><a href="/platforms/android-java/">Tealium for Android-Java</a> (5.9.0+ for AppsFlyer 1.0.0+ or &lt;5.9.0 for previous versions)</li>
+<li><a href="/platforms/ios-swift/">Tealium for iOS-Swift</a></li>
+</ul></li>
+<li>One of these remote command integrations:
+
+<ul>
+<li><a href="/platforms/remote-commands/integrations/appsflyer/#json-template">AppsFlyer Remote Command JSON File</a> (Requires Android-Kotlin 1.0.0+ or iOS-Swift 2.1.0+)</li>
+<li>AppsFlyer Remote Command tag in Tealium iQ Tag Management</li>
+</ul></li>
+</ul>
+
+<h2 id="how-it-works">How It Works</h2>
+
+<p>The AppsFlyer integration uses three items:</p>
+
+<ol>
+<li>The AppsFlyer native SDK</li>
+<li>The remote commands module that wraps the AppsFlyer methods</li>
+<li>Either the JSON configuration file or Remote Command tag that translates event tracking into native AppsFlyer calls</li>
+</ol>
+
+<p>Adding the AppsFlyer remote command module to your app automatically installs and builds the required AppsFlyer libraries, without having to add vendor-specific code to your app. If you are using a dependency manager installation, there is no need to install the AppsFlyer SDK separately.</p>
+
+<p>There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration.  Learn more about <a href="/platforms/remote-commands/how-it-works/#vendor-integrations">vendor integrations</a>.</p>
+
+<p class="note"><i class="fas fa-info-circle"></i>iOS: For AppsFlyer version 4.8.11+, the SDK automatically adds the following native frameworks: <code>AdSupport.framework</code> and <code>iAd.framework</code>. Learn more in the <a href="https://support.appsflyer.com/hc/en-us/articles/207032066#integration">AppsFlyer iOS SDK integration</a> guide.</p>
+
+<h2 id="install">Install</h2>
+
+<h3 id="dependency-manager">Dependency Manager</h3>
+
+<p>We recommend using one of the following dependency managers for installation:</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
+  <p>To install AppsFlyer remote commands for iOS using CocoaPods:</p>
+
+<ol>
+<li><p>Remove <code>tealium-swift</code> and <code>pod &quot;AppsFlyerFramework&quot;</code> if they exist in your Podfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumAppsFlyer</code> framework.</p></li>
+
+<li><p>Add the following dependency to your Podfile:</p>
+
+<pre><code class="language-ruby">pod &quot;TealiumAppsFlyer&quot;
+</code></pre>
+
+<p>The <code>TealiumAppsFlyer</code> pod includes the following <code>TealiumSwift</code> dependencies:</p>
+
+<pre><code class="language-bash">'tealium-swift/Core'
+'tealium-swift/RemoteCommands'
+'tealium-swift/TagManagement'
+</code></pre></li>
+
+<li><p>Import the modules <code>TealiumSwift</code> and <code>TealiumAppsFlyer</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class, or the AppsFlyer remote command.</p></li>
+</ol>
+
+</div>
+
+<div class="tab-pane" data-lang="Carthage" title="Carthage">
+  <p>To install AppsFlyer remote commands for iOS using Carthage:</p>
+
+<ol>
+<li><p>Remove <code>tealium-swift</code> from your Cartfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumAppsFlyer</code> framework.</p></li>
+
+<li><p>Remove the following line if it exists in your Cartfile:</p>
+
+<pre><code class="language-bash">`binary &quot;https://raw.githubusercontent.com/AppsFlyerSDK/AppsFlyerFramework/master/AppsFlyerLib.json&quot;`
+</code></pre></li>
+
+<li><p>Add the following dependency to your Cartfile:</p>
+
+<pre><code class="language-bash">github &quot;tealium/tealium-ios-appsflyer-remote-command&quot;
+</code></pre></li>
+</ol>
+
+<p class="note"><i class="fas fa-info-circle"></i>Tealium for Swift SDK (version 1.x) and <code>TealiumAppsFlyer</code> version 1.x requires the <code>TealiumDelegate</code> module to be included with your installation.</p>
+
+</div>
+
+<div class="tab-pane" data-lang="Maven" title="Maven">
+  <p>To install AppsFlyer remote commands for Android using Maven:</p>
+
+<ol>
+<li><p>Install <a href="/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> or <a href="/platforms/android-java/install/">Tealium for Android (Java)</a> and add the Tealium Maven URL to your project’s top-level <code>build.gradle</code> file, if you haven&rsquo;t done so already.</p>
+
+<pre><code class="language-groovy">allprojects {
+  repositories {
+    jcenter()
+    maven {
+      url &quot;https://maven.tealiumiq.com/android/releases/&quot;
+    }
+  }
+}
+</code></pre></li>
+
+<li><p>Import both the AppsFlyer SDK and Tealium-AppsFlyer remote commands by adding the following dependencies in your app project&rsquo;s <code>build.gradle</code> file:</p>
+
+<pre><code class="language-groovy">dependencies {
+implementation 'com.tealium.remotecommands:appsflyer:1.0.0'
+}
+</code></pre></li>
+</ol>
+
+</div>
+
+<p></div>
+</div></p>
+
+<h3 id="manual-ios">Manual (iOS)</h3>
+
+<p>The manual installation for AppsFlyer remote commands requires the <a href="/platforms/ios-swift/">Tealium for Swift</a> library to be installed. To install the AppsFlyer remote commands for your iOS project:</p>
+
+<ol>
+<li><p>Install the <a href="https://github.com/AppsFlyerSDK/AppsFlyerFramework">AppsFlyer SDK</a>, if you haven&rsquo;t already done so.</p></li>
+
+<li><p>Clone the <a href="https://github.com/tealium/tealium-ios-appsflyer-remote-command">Tealium iOS AppsFlyer remote command</a> repo and drag the files within the <code>Sources</code> folder into your project.</p></li>
+
+<li><p>Set the <a href="/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a> configuration flag to <code>true</code></p></li>
+</ol>
+
+<h3 id="manual-android">Manual (Android)</h3>
+
+<p>The manual installation for AppsFlyer remote commands requires <a href="/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> or <a href="/platforms/android-java/install/">Tealium for Android (Java)</a> to be installed. To install the AppsFlyer remote commands for your Android project:</p>
+
+<ol>
+<li><p>Add <code>flatDir</code> to your project root <code>build.gradle</code> file:</p>
+
+<pre><code class="language-groovy">allprojects {
+  repositories {
+     jcenter()
+     flatDir {
+         dirs 'libs'
+     }
+  }
+}
+</code></pre></li>
+
+<li><p>Add <code>tealium-appsflyer.aar</code> to <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code>.</p></li>
+
+<li><p>Add the Tealium library dependency to your <code>build.gradle</code> file:</p>
+
+<pre><code class="language-groovy">dependencies {
+  implementation(name:'tealium-appsflyer', ext:'aar')
+}
+</code></pre></li>
+</ol>
+
+<h2 id="initialize">Initialize</h2>
+
+<p>For all Tealium libraries, register the AppsFlyer Remote Command when you initialize.</p>
+
+<h3 id="android-kotlin">Android (Kotlin)</h3>
+
+<p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s Android (Kotlin) library.</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The following code is designed for use with the JSON Remote Command feature, using the local file option:</p>
+
+<pre><code class="language-kotlin">// Sets up a config object and creates a Tealium instance
+val config = TealiumConfig(application,
+        &quot;ACCOUNT&quot;,
+        &quot;PROFILE&quot;,
+        Environment.DEV,
+        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+var tealium = Tealium.create(TEALIUM_MAIN, config) {
+    // New code to add the AppsFlyer Remote Command
+    val appsFlyerRemoteCommand = AppsFlyerRemoteCommand(application,
+                                      appsFlyerDevKey = devKey)
+    // register the command
+    remoteCommands?.add(appsFlyerRemoteCommand, filename = &quot;appsflyer.json&quot;);
+}
+</code></pre>
+
+</div>
+
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
+
+<pre><code class="language-kotlin">// Sets up a config object and creates a Tealium instance
+val config = TealiumConfig(application,
+        &quot;ACCOUNT&quot;,
+        &quot;PROFILE&quot;,
+        Environment.DEV,
+        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+var tealium = Tealium.create(TEALIUM_MAIN, config) {
+    // New code to add the AppsFlyer Remote Command
+    val appsFlyer = AppsFlyerRemoteCommand(application,
+                                      appsFlyerDevKey = devKey)
+    // register the command
+    remoteCommands?.add(appsFlyer);
+}
+</code></pre>
+
+</div>
+
+<p></div>
+</div></p>
+
+<h3 id="android-java">Android (Java)</h3>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The JSON Remote Command file feature for Android is only available in the Kotlin SDK.</p>
+
+</div>
+
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
+
+<pre><code class="language-java">// Sets up a config object and creates a Tealium instance
+Tealium.Config config = Tealium.Config.create(application, &quot;ACCOUNT&quot;, &quot;PROFILE&quot;, &quot;ENVIRONMENT&quot;);
+Tealium teal = Tealium.createInstance(TEALIUM_MAIN, config);
+    // New code to add the AppsFlyer Remote Command
+AppsFlyerRemoteCommand appsFlyer = new AppsFlyerRemoteCommand(application, appsFlyerDevKey = devKey)
+teal.addRemoteCommand(appsFlyer);
+</code></pre>
+
+</div>
+
+<p></div>
+</div></p>
+
+<h3 id="ios-swift">iOS (Swift)</h3>
+
+<p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s iOS (Swift) library.</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The following code is designed for use with the JSON Remote Command feature, using the local file option:</p>
+
+<pre><code class="language-swift">var tealium : Tealium?
+let config = TealiumConfig(account: &quot;ACCOUNT&quot;,
+                           profile: &quot;PROFILE&quot;,
+                           environment: &quot;ENVIRONMENT&quot;,
+                           dataSource: &quot;DATASOURCE&quot;,
+                           optionalData: nil)
+
+config.remoteAPIEnabled = true // Required to use Remote Commands
+
+tealium = Tealium(config: config) { _ in
+    guard let remoteCommands = self.tealium?.remoteCommands else {
+        return
+    }
+
+    let appsflyer = AppsFlyerRemoteCommand(type: .local(file: &quot;appsflyer&quot;))
+    remoteCommands.add(appsflyer)
+}
+</code></pre>
+
+</div>
+
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
+
+<pre><code class="language-swift">var tealium : Tealium?
+let config = TealiumConfig(account: &quot;ACCOUNT&quot;,
+                           profile: &quot;PROFILE&quot;,
+                           environment: &quot;ENVIRONMENT&quot;,
+                           dataSource: &quot;DATASOURCE&quot;,
+                           optionalData: nil)
+
+config.remoteAPIEnabled = true // Required to use Remote Commands
+
+tealium = Tealium(config: config) { _ in
+    guard let remoteCommands = self.tealium?.remoteCommands else {
+        return
+    }
+
+    let appsFlyer = AppsFlyerRemoteCommand()
+    remoteCommands.add(appsFlyer)
+}
+
+</code></pre>
+
+</div>
+
+<p></div>
+</div></p>
+
+<h2 id="push-message-tracking">Push Message Tracking</h2>
+
+<p>The Tealium Swift library includes a <code>TealiumRegistration</code> protocol for handling push message tracking via Tealium and the AppsFlyer Remote Command.  We conform to this protocol in the wrapper class <code>AppsFlyerInstance</code> which is used to send push message authorization events, push message open events, and to uninstall tracking. We recommend taking advantage of the push message tracking capability.</p>
+
+<p>The following steps integrate push message tracking for your iOS project:</p>
+
+<ol>
+<li><p>In the <code>TealiumHelper.swift</code> file, initialize an empty array of objects that conform to the <code>TealiumRegistration</code> protocol. For example:</p>
+
+<pre><code class="language-swift">var pushMessagingTrackers = [TealiumRegistration]()
+</code></pre></li>
+
+<li><p>Initialize the <code>AppsFlyerInstance</code> before the <code>AppsFlyerRemoteCommand</code></p></li>
+
+<li><p>Append the <code>AppsFlyerInstance</code> to the array described above</p></li>
+</ol>
+
+<p>The following is full example of the push message tracking integration:</p>
+
+<pre><code class="language-swift">var pushMessagingTrackers = [TealiumRegistration]()
+var tealium : Tealium?
+let config = TealiumConfig(account: &quot;ACCOUNT&quot;,
+                           profile: &quot;PROFILE&quot;,
+                           environment: &quot;ENVIRONMENT&quot;,
+                           dataSource: &quot;DATASOURCE&quot;,
+                           optionalData: nil)
+config.remoteAPIEnabled = true // Required to use Remote Commands
+
+tealium = Tealium(config: config) { _ in
+    guard let remoteCommands = self.tealium?.remoteCommands else {
+        return
+    }
+
+	let appsflyerInstance = AppsFlyerInstance()
+	let appsflyer = AppsFlyerRemoteCommand(appsflyerInstance: appsflyerInstance, type: .local(file: &quot;appsflyer&quot;))
+	pushMessagingTrackers.append(appsflyerInstance)
+	remoteCommands.add(appsflyer)
+}
+</code></pre>
+
+<p>To see the entire <code>TealiumHelper.swift</code> file, explore the <a href="https://github.com/Tealium/tealium-ios-appsflyer-remote-command/tree/master/TealiumAppsFlyerExample">AppsFlyer Remote Command sample app</a>. To send an event to AppsFlyer once a user has registered for notifications, opened a push message, or uninstalled the app, see the file <code>AppDelegate.swift</code>.</p>
+
+<p>Learn more about AppsFlyer&rsquo;s push message and uninstall tracking functionality in the <a href="https://support.appsflyer.com/hc/en-us/articles/207032066">iOS SDK integration for developers</a> guide.</p>
+
+<h2 id="json-template">JSON Template</h2>
+
+<p>If you are configuring remote commands using a <a href="/platforms/remote-commands/how-it-works/#json-configuration-file">JSON configuration file</a>, refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.</p>
+
+<pre><code class="language-json">{
+    &quot;config&quot;: {
+        &quot;app_id&quot;: &quot;YOUR_APP_ID&quot;,
+        &quot;app_dev_key&quot;: &quot;YOUR_APPSFLYER_DEV_KEY&quot;,
+        &quot;settings&quot;: {
+            &quot;custom_data&quot;: {&quot;custom_key&quot;: &quot;custom_value&quot;},
+            &quot;debug&quot;: true,
+            &quot;disable_ad_tracking&quot;: false,
+            &quot;disable_apple_ad_tracking&quot;: false,
+            &quot;time_between_sessions&quot;: 30,
+            &quot;anonymize_user&quot;: false,
+            &quot;collect_device_name&quot;: false
+        }
+    },
+    &quot;mappings&quot;: {
+        &quot;latitude&quot;: &quot;af_lat&quot;,
+        &quot;longitude&quot;: &quot;af_long&quot;,
+        &quot;customer_email&quot;: &quot;customer_emails&quot;,
+        &quot;hash_type&quot;: &quot;email_hash_type&quot;,
+        &quot;currency_code&quot;: &quot;af_currency&quot;,
+        &quot;customer_id&quot;: &quot;af_customer_user_id&quot;,
+        &quot;signup_method&quot;: &quot;event.signup_method&quot;,
+        &quot;achievement_id&quot;: &quot;event.achievement_id&quot;,
+        &quot;checkout_option&quot;: &quot;event.checkout_option&quot;,
+        &quot;checkout_step&quot;: &quot;event.checkout_step&quot;,
+        &quot;content&quot;: &quot;event.content&quot;,
+        &quot;content_type&quot;: &quot;event.content_type&quot;,
+        &quot;coupon&quot;: &quot;event.coupon&quot;,
+        &quot;product_brand&quot;: &quot;event.product_brand&quot;,
+        &quot;product_category&quot;: &quot;event.product_category&quot;,
+        &quot;product_id&quot;: &quot;event.af_content_id&quot;,
+        &quot;product_list&quot;: &quot;event.product_list&quot;,
+        &quot;product_location_id&quot;: &quot;event.product_location_id&quot;,
+        &quot;product_name&quot;: &quot;event.product_name&quot;,
+        &quot;product_variant&quot;: &quot;event.product_variant&quot;,
+        &quot;product_unit_price&quot;: &quot;event.af_price&quot;,
+        &quot;product_quantity&quot;: &quot;event.af_quantity&quot;,
+        &quot;current_level&quot;: &quot;event.level&quot;,
+        &quot;score&quot;: &quot;event.score&quot;,
+        &quot;search_keyword&quot;: &quot;event.search_keyword&quot;,
+        &quot;order_shipping_amount&quot;: &quot;event.order_shipping&quot;,
+        &quot;order_tax_amount&quot;: &quot;event.order_tax&quot;,
+        &quot;order_id&quot;: &quot;event.af_order_id&quot;,
+        &quot;order_total&quot;: &quot;event.af_revenue&quot;,
+        &quot;currency_type&quot;: &quot;event.currency_type&quot;,
+    },
+    &quot;commands&quot;: {
+        &quot;launch&quot;: &quot;initialize,launch&quot;,
+        &quot;geofence_entered&quot;: &quot;tracklocation&quot;,
+        &quot;geofence_exited&quot;: &quot;tracklocation&quot;,
+        &quot;user_login&quot;: &quot;login&quot;,
+        &quot;user_register&quot;: &quot;setuseremails,setcustomerid,completeregistration&quot;,
+        &quot;show_offers&quot;: &quot;adclick&quot;,
+        &quot;cart_add&quot;: &quot;addtocart&quot;,
+        &quot;wishlist_add&quot;: &quot;addtowishlist&quot;,
+        &quot;payment&quot;: &quot;addpaymentinfo&quot;,
+        &quot;unlock_achievement&quot;: &quot;unlockachievement&quot;,
+        &quot;level_up&quot;: &quot;achievelevel,customersegment&quot;,
+        &quot;email_signup&quot;: &quot;subscribe&quot;,
+        &quot;product&quot;: &quot;viewedcontent&quot;,
+        &quot;category&quot;: &quot;listview&quot;,
+        &quot;share&quot;: &quot;share&quot;,
+        &quot;search&quot;: &quot;search&quot;,
+        &quot;checkout&quot;: &quot;initiatecheckout&quot;,
+        &quot;order&quot;:&quot;purchase&quot;
+    }
+}
+</code></pre>
+
+<h2 id="supported-methods">Supported Methods</h2>
+
+<p>The following AppsFlyer methods are triggered using a data mapping in the AppsFlyer Remote Command tag using these Tealium commands:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Remote Command</th>
+<th align="left">AppsFlyer Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>initialize</code></td>
+<td align="left"><code>initialize()</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>trackLaunch</code></td>
+<td align="left"><code>trackLaunch()</code></td>
+</tr>
+
+<tr>
+<td align="left">Any of the below event names</td>
+<td align="left"><code>trackEvent()</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>setHost</code></td>
+<td align="left"><code>setHost()</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>setUserEmails</code></td>
+<td align="left"><code>setUserEmails()</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>setCurrencyCode</code></td>
+<td align="left"><code>currencyCode (property on the AppsFlyerTracker.shared object)</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>setCustomerId</code></td>
+<td align="left"><code>customerUserID (property on the AppsFlyerTracker.shared object)</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>disableDeviceTracking</code></td>
+<td align="left"><code>setDeviceTrackingDisabled</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>disableTracking</code></td>
+<td align="left"><code>isStopTracking (property on the AppsFlyerTracker.shared object)</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>resolveDeeplinkUrls</code></td>
+<td align="left"><code>resolveDeepLinkURLs (property on the AppsFlyerTracker.shared object)</code></td>
+</tr>
+
+<tr>
+<td align="left">Manually called in <code>AppDelegate</code> within <code>didReceiveRemoteNotification</code></td>
+<td align="left"><code>handlePushNotification()</code></td>
+</tr>
+
+<tr>
+<td align="left">Manually called in <code>AppDelegate</code> within <code>didReceiveRemoteNotification</code></td>
+<td align="left"><code>trackEvent() - event name: af_opened_from_push_notification</code></td>
+</tr>
+
+<tr>
+<td align="left">Manually called in <code>AppDelegate</code> within <code>didRegisterForRemoteNotificationsWithDeviceToken</code></td>
+<td align="left"><code>registerPushToken()</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="standard-event-names">Standard Event Names</h3>
+
+<p>The following is a list of standard event names supported with the <code>trackEvent</code> method. If any of the below command names are sent, they are automatically triggered in the AppsFlyer SDK. This is assuming all the required variables are also mapped and defined for that particular event. Learn more about <a href="https://support.appsflyer.com/hc/en-us/articles/207032066#core-apis-5-recording-inapp-events">recording in-app events</a> and the see the full list of <a href="https://support.appsflyer.com/hc/en-us/articles/115005544169#Verticals">recommended in-app events per vertical</a>.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Remote Command</th>
+<th align="left">AppsFlyer Event Name</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>achievedLevel</code></td>
+<td align="left"><code>&quot;af_level_achieved&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>addPaymentInfo</code></td>
+<td align="left"><code>&quot;af_add_payment_info&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>addToCart</code></td>
+<td align="left"><code>&quot;af_add_to_cart&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>addToWishlist</code></td>
+<td align="left"><code>&quot;af_add_to_wishlist&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>completeRegistration</code></td>
+<td align="left"><code>&quot;af_complete_registration&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>completeTutorial</code></td>
+<td align="left"><code>&quot;af_tutorial_completion&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>initiateCheckout</code></td>
+<td align="left"><code>&quot;af_initiated_checkout&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>purchase</code></td>
+<td align="left"><code>&quot;af_purchase&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>subscribe</code></td>
+<td align="left"><code>&quot;af_subscribe&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>startTrial</code></td>
+<td align="left"><code>&quot;af_start_trial&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>rate</code></td>
+<td align="left"><code>&quot;af_rate&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>search</code></td>
+<td align="left"><code>&quot;af_search&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>spentCredits</code></td>
+<td align="left"><code>&quot;af_spent_credits&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>unlockAchievement</code></td>
+<td align="left"><code>&quot;af_achievement_unlocked&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>contentView</code></td>
+<td align="left"><code>&quot;af_content_view&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>listView</code></td>
+<td align="left"><code>&quot;af_list_view&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>adClick</code></td>
+<td align="left"><code>&quot;af_ad_click&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>adView</code></td>
+<td align="left"><code>&quot;af_ad_view&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>travelBooking</code></td>
+<td align="left"><code>&quot;af_travel_booking&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>share</code></td>
+<td align="left"><code>&quot;af_share</code>&ldquo;</td>
+</tr>
+
+<tr>
+<td align="left"><code>invite</code></td>
+<td align="left"><code>&quot;af_invite&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>reEngage</code></td>
+<td align="left"><code>&quot;af_re_engage&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>update</code></td>
+<td align="left"><code>&quot;af_update&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>login</code></td>
+<td align="left"><code>&quot;af_login&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>customerSegment</code></td>
+<td align="left"><code>&quot;af_customer_segment&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>pushNotificationOpened</code></td>
+<td align="left"><code>&quot;af_opened_from_push_notification&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<p class="note"><i class="fas fa-info-circle"></i>Since the AppsFlyer SDK is installed alongside the Tealium SDK, you are able to trigger any native AppsFlyer functionality given the corresponding tag configuration.</p>
+
+<h3 id="sdk-setup">SDK Setup</h3>
+
+<h4 id="initialize-1">Initialize</h4>
+
+<p>The AppsFlyer SDK is initialized automatically upon launch. The AppsFlyer API key is set in the tag configuration.</p>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>AppsFlyer Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>initialize</code></td>
+<td><code>initialize()</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>AppsFlyer Developer Guide: Initial SDK Setup</p>
+
+<ul>
+<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032066#integration-33-initializing-the-sdk">iOS</a></li>
+</ul>
+
+<p>There are several configuration options available that can be configured in the AppsFlyer Remote Command tag. If any of the below are set on launch, they are sent during the initialize method.</p>
+
+<h5 id="configuration-options">Configuration Options</h5>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>iQ variable mapping</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>debug</code></td>
+<td><code>debug</code></td>
+<td><code>Bool</code></td>
+</tr>
+
+<tr>
+<td><code>disableIAdTracking</code></td>
+<td><code>disable_apple_ad_tracking</code></td>
+<td><code>Bool</code></td>
+</tr>
+
+<tr>
+<td><code>minTimeBetweenSessions</code></td>
+<td><code>time_between_sessions</code></td>
+<td><code>Int</code></td>
+</tr>
+
+<tr>
+<td><code>anonymizeUser</code></td>
+<td><code>anonymize_user</code></td>
+<td><code>Bool</code></td>
+</tr>
+
+<tr>
+<td><code>shouldCollectDeviceName</code></td>
+<td><code>collect_device_name</code></td>
+<td><code>Bool</code></td>
+</tr>
+
+<tr>
+<td><code>customData</code></td>
+<td><code>custom_data</code></td>
+<td><code>Dictionary</code> or <code>Map</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>AppsFlyer Developer Guide: Additional APIs</p>
+
+<ul>
+<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032066#additional-apis">iOS</a></li>
+<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032126-Android-SDK-integration-for-developers#additional-apis">Android</a></li>
+</ul>
+
+<h4 id="track-launch">Track Launch</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>AppsFlyer Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>initialize</code> or <code>launch</code></td>
+<td><code>trackLaunch()</code></td>
+</tr>
+</tbody>
+</table>
+
+<p class="note"><i class="fas fa-info-circle"></i>If you have the lifecycle module installed, this event automatically sends every app launch.</p>
+
+<p>AppsFlyer Developer Guide: Initializing the SDK</p>
+
+<ul>
+<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032066#integration-33-initializing-the-sdk">iOS</a></li>
+<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032126-Android-SDK-integration-for-developers#integration-3-implementing-and-initializing-the-sdk">Android</a></li>
+</ul>
+
+<h3 id="location">Location</h3>
+
+<h4 id="track-location">Track Location</h4>
+
+<table>
+<thead>
+<tr>
+<th align="left">Remote Command</th>
+<th align="left">AppsFlyer Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>tracklocation</code></td>
+<td align="left"><code>trackEvent()</code> - event name <code>af_location_coordinates</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>latitude</code> (required)</td>
+<td><code>Bool</code></td>
+</tr>
+
+<tr>
+<td><code>longitude</code> (required)</td>
+<td><code>Bool</code></td>
+</tr>
+</tbody>
+</table>
+
+<p class="note"><i class="fas fa-info-circle"></i>If you have the location module installed, the latitude and longitude are sent with every event.</p>
+
+<p>AppsFlyer API Reference: Location Tracking</p>
+
+<ul>
+<li><a href="https://github.com/AppsFlyerSDK/AppsFlyerFramework/blob/19ab52e9133ae86626c013e8cf0ed34aaf3721f0/iOS/AppsFlyerLib.framework/Versions/A/Headers/AppsFlyerTracker.h#L443">iOS</a></li>
+</ul>
+
+<h3 id="other-options">Other Options</h3>
+
+<h4 id="set-host">Set Host</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>AppsFlyer Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>sethost</code></td>
+<td><code>setHost</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>host</code> (required)</td>
+<td><code>String</code></td>
+</tr>
+
+<tr>
+<td><code>hostPrefix</code> (required)</td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>AppsFlyer API Reference: Set Host</p>
+
+<ul>
+<li><a href="https://github.com/AppsFlyerSDK/AppsFlyerFramework/blob/19ab52e9133ae86626c013e8cf0ed34aaf3721f0/iOS/AppsFlyerLib.framework/Versions/A/Headers/AppsFlyerTracker.h#L534">iOS</a></li>
+</ul>
+
+<h4 id="set-user-emails">Set User Emails</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>AppsFlyer Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>setsermails</code></td>
+<td><code>setUserEmails</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>emails</code> (required)</td>
+<td><code>[String]</code></td>
+</tr>
+
+<tr>
+<td><code>cryptType</code> (required)</td>
+<td><code>Int</code></td>
+</tr>
+</tbody>
+</table>
+
+<h5 id="crypt-type-reference">Crypt Type Reference</h5>
+
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td><code>None</code></td>
+</tr>
+
+<tr>
+<td><code>1</code></td>
+<td><code>SHA1</code></td>
+</tr>
+
+<tr>
+<td><code>2</code></td>
+<td><code>MD5</code></td>
+</tr>
+
+<tr>
+<td><code>3</code></td>
+<td><code>SHA256</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>AppsFlyer API Reference: Set User Email</p>
+
+<ul>
+<li><a href="https://github.com/AppsFlyerSDK/AppsFlyerFramework/blob/19ab52e9133ae86626c013e8cf0ed34aaf3721f0/iOS/AppsFlyerLib.framework/Versions/A/Headers/AppsFlyerTracker.h#L361">iOS</a></li>
+</ul>
+
+<h4 id="set-currency-code">Set Currency Code</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>AppsFlyer Property</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>setcurrencycode</code></td>
+<td><code>currencyCode</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>currency</code> (required)</td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>AppsFlyer API Reference: Set Currency Code</p>
+
+<ul>
+<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032066#api-reference-currencycode">iOS</a></li>
+</ul>
+
+<h4 id="set-customer-id">Set Customer ID</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>AppsFlyer Property</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>setcustomerid</code></td>
+<td><code>customerUserID</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>customerId</code> (required)</td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>AppsFlyer Additional APIs: Set Customer ID</li>
+<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032066#additional-apis-set-customer-user-id">iOS</a></li>
+<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032126-Android-SDK-integration-for-developers#api-reference-setcustomeruserid">Android</a></li>
+</ul>
+
+<h4 id="resolve-deep-link-urls">Resolve Deep Link Urls</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>AppsFlyer Property</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>resolvedeeplinkurls</td>
+<td><code>resolveDeepLinkURLs</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>deepLinkUrls</code> (required)</td>
+<td><code>[String]</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>AppsFlyer API Reference: Resolve Deep Link URLs</p>
+
+<ul>
+<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032066#api-reference-resolvedeeplinkurls">iOS</a></li>
+<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032126-Android-SDK-integration-for-developers#api-reference-setresolvedeeplinkurls">Android</a></li>
+</ul>
+
+<h4 id="disable-tracking">Disable Tracking</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>AppsFlyer Property</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>disabletracking</td>
+<td><code>isStopTracking</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>stopTracking</code> (required)</td>
+<td>Bool</td>
+</tr>
+</tbody>
+</table>
+
+<p>AppsFlyer Additional APIs: Stop Tracking (Opt-out)</p>
+
+<ul>
+<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032066#additional-apis-optout">iOS</a></li>
+<li><a href="https://support.appsflyer.com/hc/en-us/articles/207032126-Android-SDK-integration-for-developers#additional-apis-optout">Android</a></li>
+</ul>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/remote-commands/integrations/adjust/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Remote Command: Adjust "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Remote Command: Adjust</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/remote-commands/integrations/branch/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Remote Command: Branch</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Remote Command: Branch"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  March 2, 2022 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  March 2, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
+              <li><a href="#how-it-works">How It Works</a></li>
+              <li><a href="#install">Install</a></li>
+              <ul class="toc-h3"><li><a href="#dependency-manager">Dependency Manager</a></li>
+              <li><a href="#manual-ios">Manual (iOS)</a></li>
+              <li><a href="#manual-android">Manual (Android)</a></li>
+              </ul><li><a href="#initialize">Initialize</a></li>
+              <ul class="toc-h3"><li><a href="#android-kotlin">Android (Kotlin)</a></li>
+              <li><a href="#android-java">Android (Java)</a></li>
+              <li><a href="#ios-swift">iOS (Swift)</a></li>
+              </ul><li><a href="#push-message-tracking">Push Message Tracking</a></li>
+              <li><a href="#json-template">JSON Template</a></li>
+              <li><a href="#supported-methods">Supported Methods</a></li>
+              <ul class="toc-h3"><li><a href="#standard-event-names">Standard Event Names</a></li>
+              <li><a href="#sdk-setup">SDK Setup</a></li>
+              <li><a href="#location">Location</a></li>
+              <li><a href="#other-options">Other Options</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

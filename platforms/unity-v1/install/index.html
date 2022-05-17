@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,167 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
-              <li><a href="#sample-app">Sample app</a></li>
-              <li><a href="#install">Install</a></li>
-              <li><a href="#initialize">Initialize</a></li>
-              <li><a href="#verify">Verify</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/unity-v1/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        UNITY V1
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Install</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Install the Tealium 1.x plugin in your Unity application.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<p>Tealium for Unity allows you to use the Tealium native mobile libraries (iOS, Android) in your Unity application.</p>
-
-<h2 id="requirements">Requirements</h2>
-
-<ul>
-<li><a href="https://unity.com/">Unity</a> 4.5+</li>
-<li>iOS or Android target</li>
-</ul>
-
-<h2 id="sample-app">Sample app</h2>
-
-<p>Explore the <a href="https://github.com/Tealium/unity-plugin/tree/master/Sample">sample app</a> to familiarize yourself with the Tealium library, tracking methods, and best practice implementation.</p>
-
-<h2 id="install">Install</h2>
-
-<p>To integrate Tealium mobile libraries (iOS/Android) into your Unity application, copy all the contents of the Unity <a href="https://github.com/Tealium/unity-plugin">plugin code</a> into the <code>Assets/Plugins/</code> directory within your Unity project.</p>
-
-<p>When the Unity plugin is deployed to an Android or iOS device, Tealium events are logged in the respective device logs.</p>
-
-<p class="note"><i class="fas fa-info-circle"></i>Tealium only supports Android and iOS platforms within Unity.</p>
-
-<h2 id="initialize">Initialize</h2>
-
-<p>To initialize the Tealium instance, configure the following parameters:</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="Android" title="Android">
-  <p>Update the following <a href="https://developer.android.com/guide/topics/manifest/meta-data-element">meta-data</a> keys in the Android manifest file <code>~/Assets/Plugins/Android/AndroidManifest.xml</code> to point to your Tealium instance.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">&lt;meta-data android:name=<span style="color:#a31515">&#34;com.tealium.library.ACCOUNT&#34;</span> android:value=<span style="color:#a31515">&#34;ACCOUNT&#34;</span> /&gt;
-&lt;meta-data android:name=<span style="color:#a31515">&#34;com.tealium.library.PROFILE&#34;</span> android:value=<span style="color:#a31515">&#34;PROFILE&#34;</span> /&gt;
-&lt;meta-data android:name=<span style="color:#a31515">&#34;com.tealium.library.ENVIRONMENT&#34;</span> android:value=<span style="color:#a31515">&#34;ENVIRONMENT&#34;</span> /&gt;
-&lt;meta-data android:name=<span style="color:#a31515">&#34;com.tealium.library.DATA_SOURCE&#34;</span> android:value=<span style="color:#a31515">&#34;DATASOURCE&#34;</span> /&gt;
-<span style="color:#008000">&lt;!--TODO: remove for release builds--&gt;</span>
-&lt;meta-data android:name=<span style="color:#a31515">&#34;com.tealium.library.DEBUG&#34;</span> android:value=<span style="color:#a31515">&#34;true&#34;</span> /&gt;</code></pre></div>
-</div>
-
-<div class="tab-pane" data-lang="iOS" title="iOS">
-  <p>Update the Tealium account information in the bridging code file <code>Assets/Plugins/iOS/TealiumBridge.mm</code> to point to your Tealium instance.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">#define TEALIUM_INSTANCE_NAME    @<span style="color:#a31515">&#34;TEALIUM_INSTANCE&#34;</span>
-#define TEALIUM_ACCOUNT_NAME     @<span style="color:#a31515">&#34;ACCOUNT&#34;</span>
-#define TEALIUM_PROFILE_NAME     @<span style="color:#a31515">&#34;PROFILE&#34;</span>
-#define TEALIUM_ENVIRONMENT_NAME @<span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>
-#define TEALIUM_DATA_SOURCE      @<span style="color:#a31515">&#34;DATASOURCE&#34;</span></code></pre></div>
-</div>
-
-<p></div>
-</div></p>
-
-<h2 id="verify">Verify</h2>
-
-<p>The following steps verify that Tealium is properly installed on your Unity application.</p>
-
-<ul>
-<li><p>In Unity, create a new empty <code>GameObject</code> by selecting from the menu <strong>GameObject &gt; Create Empty</strong>. The <code>GameObject</code> displays in the <strong>Inspector</strong> window.</p></li>
-
-<li><p>Select <code>TealiumInitializer.cs</code> from the Unity <strong>Project</strong> window and drag/drop it into the <strong>Inspector</strong> window</p></li>
-
-<li><p>Select from the menu <strong>Edit &gt; Project Settings &gt; Script Execution Order</strong> and click the <strong>+</strong> sign to add the <code>TealiumInitializer</code> script.</p></li>
-
-<li><p>Drag the <code>TealiumInitializer</code> script to the top of the list of existing scripts in order to initialize the plugin, and then apply the changes.</p></li>
-
-<li><p>Click the <strong>Play</strong> button (or <strong>Edit &gt; Play</strong>) to launch the Unity Editor and verify that you see a similar initialization message logged into to the Unity Console:</p>
-
-<pre><code>view: {
-	custom_alpha : alpha
-	custom_beta : beta
-	screen_title : SCREEN_NAME
-}
-</code></pre></li>
-</ul>
-
-<p class="tip"><i class="fas fa-star"></i>To open the Console from Unity’s main menu, select <strong>Window &gt; General &gt; Console</strong>. Click the speech balloon icon to see full details.</p>
-
-</div>
-
-<div class="pv3">
-
-	<div class="fr">
-
-		
-		<a href="/platforms/unity-v1/track/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Track</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Track"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7625,33 +7472,197 @@ var utag_data = {
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/unity-v1/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        UNITY V1
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Install</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Install the Tealium 1.x plugin in your Unity application.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<p>Tealium for Unity allows you to use the Tealium native mobile libraries (iOS, Android) in your Unity application.</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+<li><a href="https://unity.com/">Unity</a> 4.5+</li>
+<li>iOS or Android target</li>
+</ul>
+
+<h2 id="sample-app">Sample app</h2>
+
+<p>Explore the <a href="https://github.com/Tealium/unity-plugin/tree/master/Sample">sample app</a> to familiarize yourself with the Tealium library, tracking methods, and best practice implementation.</p>
+
+<h2 id="install">Install</h2>
+
+<p>To integrate Tealium mobile libraries (iOS/Android) into your Unity application, copy all the contents of the Unity <a href="https://github.com/Tealium/unity-plugin">plugin code</a> into the <code>Assets/Plugins/</code> directory within your Unity project.</p>
+
+<p>When the Unity plugin is deployed to an Android or iOS device, Tealium events are logged in the respective device logs.</p>
+
+<p class="note"><i class="fas fa-info-circle"></i>Tealium only supports Android and iOS platforms within Unity.</p>
+
+<h2 id="initialize">Initialize</h2>
+
+<p>To initialize the Tealium instance, configure the following parameters:</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="Android" title="Android">
+  <p>Update the following <a href="https://developer.android.com/guide/topics/manifest/meta-data-element">meta-data</a> keys in the Android manifest file <code>~/Assets/Plugins/Android/AndroidManifest.xml</code> to point to your Tealium instance.</p>
+
+<pre><code class="language-xml">&lt;meta-data android:name=&quot;com.tealium.library.ACCOUNT&quot; android:value=&quot;ACCOUNT&quot; /&gt;
+&lt;meta-data android:name=&quot;com.tealium.library.PROFILE&quot; android:value=&quot;PROFILE&quot; /&gt;
+&lt;meta-data android:name=&quot;com.tealium.library.ENVIRONMENT&quot; android:value=&quot;ENVIRONMENT&quot; /&gt;
+&lt;meta-data android:name=&quot;com.tealium.library.DATA_SOURCE&quot; android:value=&quot;DATASOURCE&quot; /&gt;
+&lt;!--TODO: remove for release builds--&gt;
+&lt;meta-data android:name=&quot;com.tealium.library.DEBUG&quot; android:value=&quot;true&quot; /&gt;
+</code></pre>
+
+</div>
+
+<div class="tab-pane" data-lang="iOS" title="iOS">
+  <p>Update the Tealium account information in the bridging code file <code>Assets/Plugins/iOS/TealiumBridge.mm</code> to point to your Tealium instance.</p>
+
+<pre><code class="language-swift">#define TEALIUM_INSTANCE_NAME    @&quot;TEALIUM_INSTANCE&quot;
+#define TEALIUM_ACCOUNT_NAME     @&quot;ACCOUNT&quot;
+#define TEALIUM_PROFILE_NAME     @&quot;PROFILE&quot;
+#define TEALIUM_ENVIRONMENT_NAME @&quot;ENVIRONMENT&quot;
+#define TEALIUM_DATA_SOURCE      @&quot;DATASOURCE&quot;
+</code></pre>
+
+</div>
+
+<p></div>
+</div></p>
+
+<h2 id="verify">Verify</h2>
+
+<p>The following steps verify that Tealium is properly installed on your Unity application.</p>
+
+<ul>
+<li><p>In Unity, create a new empty <code>GameObject</code> by selecting from the menu <strong>GameObject &gt; Create Empty</strong>. The <code>GameObject</code> displays in the <strong>Inspector</strong> window.</p></li>
+
+<li><p>Select <code>TealiumInitializer.cs</code> from the Unity <strong>Project</strong> window and drag/drop it into the <strong>Inspector</strong> window</p></li>
+
+<li><p>Select from the menu <strong>Edit &gt; Project Settings &gt; Script Execution Order</strong> and click the <strong>+</strong> sign to add the <code>TealiumInitializer</code> script.</p></li>
+
+<li><p>Drag the <code>TealiumInitializer</code> script to the top of the list of existing scripts in order to initialize the plugin, and then apply the changes.</p></li>
+
+<li><p>Click the <strong>Play</strong> button (or <strong>Edit &gt; Play</strong>) to launch the Unity Editor and verify that you see a similar initialization message logged into to the Unity Console:</p>
+
+<pre><code>view: {
+	custom_alpha : alpha
+	custom_beta : beta
+	screen_title : SCREEN_NAME
+}
+</code></pre></li>
+</ul>
+
+<p class="tip"><i class="fas fa-star"></i>To open the Console from Unity’s main menu, select <strong>Window &gt; General &gt; Console</strong>. Click the speech balloon icon to see full details.</p>
+
+</div>
+
+<div class="pv3">
+
+	<div class="fr">
+
+		
+		<a href="/platforms/unity-v1/track/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Track</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Track"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  June 14, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  June 14, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
+              <li><a href="#sample-app">Sample app</a></li>
+              <li><a href="#install">Install</a></li>
+              <li><a href="#initialize">Initialize</a></li>
+              <li><a href="#verify">Verify</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

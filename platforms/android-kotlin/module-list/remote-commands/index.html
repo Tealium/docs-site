@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,289 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
-              <li><a href="#install">Install</a></li>
-              <ul class="toc-h3"><li><a href="#maven">Maven</a></li>
-              <li><a href="#manual">Manual</a></li>
-              </ul><li><a href="#remote-command-options">Remote Command Options</a></li>
-              <ul class="toc-h3"><li><a href="#examples">Examples</a></li>
-              </ul><li><a href="#data-layer">Data Layer</a></li>
-              <li><a href="#api-reference">API Reference</a></li>
-              <ul class="toc-h3"><li><a href="#remotecommand">RemoteCommand()</a></li>
-              <li><a href="#add">add()</a></li>
-              <li><a href="#remove">remove()</a></li>
-              <li><a href="#removeall">removeAll</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/android-kotlin/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        ANDROID KOTLIN/MODULE LIST
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">RemoteCommands Module</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Enables triggering of native code blocks from events in Tealium iQ Tag Management, controlled by extensions and load rules.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<p>Learn more about <a href="/platforms/remote-commands/">remote commands</a>.</p>
-
-<h2 id="requirements">Requirements</h2>
-
-<ul>
-<li>If using the <code>webview</code> remote command, the <a href="/platforms/android-kotlin/module-list/tag-management/">Tag Management Dispatcher module</a> is required.</li>
-</ul>
-
-<h2 id="install">Install</h2>
-
-<p>Install the RemoteCommands Dispatcher module using Maven (recommended) or manually.</p>
-
-<h3 id="maven">Maven</h3>
-
-<p>To install the module using Maven:</p>
-
-<ol>
-<li><p>In your project&rsquo;s top-level <code>build.gradle</code> file, add the following Maven repository:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">maven {
-  url <span style="color:#a31515">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
-}</code></pre></div></li>
-
-<li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the Maven dependencies for the RemoteCommands Dispatcher. This will pull in the Tealium Kotlin library.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
-  implementation <span style="color:#a31515">&#39;com.tealium:kotlin-remotecommand-dispatcher:1.1.0&#39;</span>
-}</code></pre></div></li>
-</ol>
-
-<h3 id="manual">Manual</h3>
-
-<p>To install the RemoteCommands Dispatcher manually:</p>
-
-<ol>
-<li><p>Download the Tealium <a href="https://github.com/Tealium/tealium-kotlin/tree/master/collectdispatcher">Collect Dispatcher</a> module.</p></li>
-
-<li><p>Copy the file <code>tealium-kotlin.remotecommand-1.1.0.aar</code> into your project&rsquo;s <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> directory.</p></li>
-
-<li><p>Add the Tealium library dependency to your project module’s <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
-  implementation(name:<span style="color:#a31515">&#39;tealium-kotlin.remotecommand-1.1.0&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
-}</code></pre></div></li>
-</ol>
-
-<h2 id="remote-command-options">Remote Command Options</h2>
-
-<p>There are two configuration options for remote commands:</p>
-
-<ul>
-<li><strong>JSON File</strong><br />
-A JSON file, loaded locally or hosted remotely, containing the vendor settings, data mappings, and event triggers.</li>
-<li><strong>Remote Command Tag</strong><br />
-A tag in iQ Tag Management that offers configuration options for the vendor&rsquo;s API (for use with the Tag Management module).</li>
-</ul>
-
-<p>See the <a href="/platforms/remote-commands/integrations/">list of remote command vendor integrations</a>.</p>
-
-<h3 id="examples">Examples</h3>
-
-<p>The Remote Command tag is configurable in Tealium iQ Tag Management, via a JSON file in your app, or JSON file on a remote server.  Once the remote command is configured and the module is installed, add the following lines to the initialization:</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-
-<div class="tab-pane" data-lang="Tealium iQ" title="Tealium iQ">
-  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> config = TealiumConfig(application,
-        <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-        <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-        Environment.DEV,
-        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
-<span style="color:#00f">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
-  <span style="color:#00f">val</span> remoteCommands = RemoteCommand(<span style="color:#00f">this</span>);
-  <span style="color:#008000">// register the command
-</span><span style="color:#008000"></span>  remoteCommands?.add(remoteCommands);
-}</code></pre></div>
-</div>
-
-<div class="tab-pane" data-lang="Local JSON File" title="Local JSON File">
-  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> config = TealiumConfig(application,
-        <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-        <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-        Environment.DEV,
-        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
-<span style="color:#00f">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
-  <span style="color:#00f">val</span> remoteCommands = RemoteCommand(<span style="color:#00f">this</span>);
-  remoteCommands?.add(remoteCommands, filename = <span style="color:#a31515">&#34;FILENAME.json&#34;</span>);
-}</code></pre></div>
-</div>
-
-<div class="tab-pane" data-lang="Remote Hosted JSON" title="Remote Hosted JSON">
-  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> config = TealiumConfig(application,
-        <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-        <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-        Environment.DEV,
-        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
-<span style="color:#00f">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
-  <span style="color:#00f">val</span> remoteCommands = RemoteCommand(<span style="color:#00f">this</span>);
-  remoteCommands?.add(remoteCommands, remoteUrl = <span style="color:#a31515">&#34;https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/FILENAME.json&#34;</span>);
-}</code></pre></div>
-</div>
-
-<p></div>
-</div></p>
-
-<p>After the JSON file has been configured and either added to your app or hosted on a server, learn about the different <a href="/platforms/remote-commands/how-it-works/#load-options">JSON load options</a>.</p>
-
-<h2 id="data-layer">Data Layer</h2>
-
-<p>No additional variables are introduced by this module.</p>
-
-<h2 id="api-reference">API Reference</h2>
-
-<h3 id="remotecommand"><code>RemoteCommand()</code></h3>
-
-<p>Creates a new remote command object ready to be passed to the <code>add</code> command.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> remoteCommand = <span style="color:#00f">object</span> <span style="">: </span><span style="color:#2b91af">RemoteCommand</span>(<span style="color:#a31515">&#34;commandName&#34;</span>, <span style="color:#a31515">&#34;description&#34;</span>) {
-    <span style="color:#00f">override</span> <span style="color:#00f">fun</span> onInvoke(response: Response) {
-        Logger.dev(BuildConfig.TAG, <span style="color:#a31515">&#34;ResponsePayload for webView RemoteCommand ${response.requestPayload}&#34;</span>)
-    }
-}</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>commandName</code></td>
-<td>Required String command name</td>
-<td><code>&quot;sample&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>description</code></td>
-<td>Optional String description of the remote command</td>
-<td><code>&quot;testing RCs&quot;</code></td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="add"><code>add()</code></h3>
-
-<p>Registers a specified remote command with Tealium for later triggering. Tealium must have been initialized before adding a new Remote Command.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> tealium = Tealium.create(instanceName, config) {
-    remoteCommands?.add(remoteCommand)
-}</code></pre></div>
-<p>The following is a usage example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> remoteCommand = <span style="color:#00f">object</span> <span style="">: </span><span style="color:#2b91af">RemoteCommand</span>(<span style="color:#a31515">&#34;sample&#34;</span>, <span style="color:#a31515">&#34;testing RCs&#34;</span>) {
-    <span style="color:#00f">override</span> <span style="color:#00f">fun</span> onInvoke(response: Response) {
-        Logger.dev(BuildConfig.TAG, <span style="color:#a31515">&#34;ResponsePayload for webView RemoteCommand ${response.requestPayload}&#34;</span>)
-    }
-}
-
-<span style="color:#00f">val</span> tealium = Tealium.create(instanceName, config) {
-    remoteCommands?.add(remoteCommand)
-}</code></pre></div>
-<h3 id="remove"><code>remove()</code></h3>
-
-<p>Removes a previously registered remote command to prevent it from being triggered again.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> tealium = Tealium.create(instanceName, config) {
-   remoteCommands?.remove(<span style="color:#a31515">&#34;commandName&#34;</span>)
-}</code></pre></div>
-<h3 id="removeall"><code>removeAll</code></h3>
-
-<p>Removes all previously registered remote commands.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> tealium = Tealium.create(instanceName, config) {
-    remoteCommands?.removeAll()
-}</code></pre></div>
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/android-kotlin/module-list/media/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Media Module "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Media Module</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/android-kotlin/module-list/tag-management/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Tag Management Dispatcher Module</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Tag Management Dispatcher Module"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7747,33 +7472,340 @@ A tag in iQ Tag Management that offers configuration options for the vendor&rsqu
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/android-kotlin/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        ANDROID KOTLIN/MODULE LIST
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">RemoteCommands Module</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Enables triggering of native code blocks from events in Tealium iQ Tag Management, controlled by extensions and load rules.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<p>Learn more about <a href="/platforms/remote-commands/">remote commands</a>.</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+<li>If using the <code>webview</code> remote command, the <a href="/platforms/android-kotlin/module-list/tag-management/">Tag Management Dispatcher module</a> is required.</li>
+</ul>
+
+<h2 id="install">Install</h2>
+
+<p>Install the RemoteCommands Dispatcher module using Maven (recommended) or manually.</p>
+
+<h3 id="maven">Maven</h3>
+
+<p>To install the module using Maven:</p>
+
+<ol>
+<li><p>In your project&rsquo;s top-level <code>build.gradle</code> file, add the following Maven repository:</p>
+
+<pre><code class="language-groovy">maven {
+  url &quot;https://maven.tealiumiq.com/android/releases/&quot;
+}
+</code></pre></li>
+
+<li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the Maven dependencies for the RemoteCommands Dispatcher. This will pull in the Tealium Kotlin library.</p>
+
+<pre><code class="language-groovy">dependencies {
+  implementation 'com.tealium:kotlin-remotecommand-dispatcher:1.1.0'
+}
+</code></pre></li>
+</ol>
+
+<h3 id="manual">Manual</h3>
+
+<p>To install the RemoteCommands Dispatcher manually:</p>
+
+<ol>
+<li><p>Download the Tealium <a href="https://github.com/Tealium/tealium-kotlin/tree/master/collectdispatcher">Collect Dispatcher</a> module.</p></li>
+
+<li><p>Copy the file <code>tealium-kotlin.remotecommand-1.1.0.aar</code> into your project&rsquo;s <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> directory.</p></li>
+
+<li><p>Add the Tealium library dependency to your project module’s <code>build.gradle</code> file:</p>
+
+<pre><code class="language-groovy">dependencies {
+  implementation(name:'tealium-kotlin.remotecommand-1.1.0', ext:'aar')
+}
+</code></pre></li>
+</ol>
+
+<h2 id="remote-command-options">Remote Command Options</h2>
+
+<p>There are two configuration options for remote commands:</p>
+
+<ul>
+<li><strong>JSON File</strong><br />
+A JSON file, loaded locally or hosted remotely, containing the vendor settings, data mappings, and event triggers.</li>
+<li><strong>Remote Command Tag</strong><br />
+A tag in iQ Tag Management that offers configuration options for the vendor&rsquo;s API (for use with the Tag Management module).</li>
+</ul>
+
+<p>See the <a href="/platforms/remote-commands/integrations/">list of remote command vendor integrations</a>.</p>
+
+<h3 id="examples">Examples</h3>
+
+<p>The Remote Command tag is configurable in Tealium iQ Tag Management, via a JSON file in your app, or JSON file on a remote server.  Once the remote command is configured and the module is installed, add the following lines to the initialization:</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+
+<div class="tab-pane" data-lang="Tealium iQ" title="Tealium iQ">
+  <pre><code class="language-kotlin">val config = TealiumConfig(application,
+        &quot;ACCOUNT&quot;,
+        &quot;PROFILE&quot;,
+        Environment.DEV,
+        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+var tealium = Tealium.create(TEALIUM_MAIN, config) {
+  val remoteCommands = RemoteCommand(this);
+  // register the command
+  remoteCommands?.add(remoteCommands);
+}
+</code></pre>
+
+</div>
+
+<div class="tab-pane" data-lang="Local JSON File" title="Local JSON File">
+  <pre><code class="language-kotlin">val config = TealiumConfig(application,
+        &quot;ACCOUNT&quot;,
+        &quot;PROFILE&quot;,
+        Environment.DEV,
+        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+var tealium = Tealium.create(TEALIUM_MAIN, config) {
+  val remoteCommands = RemoteCommand(this);
+  remoteCommands?.add(remoteCommands, filename = &quot;FILENAME.json&quot;);
+}
+</code></pre>
+
+</div>
+
+<div class="tab-pane" data-lang="Remote Hosted JSON" title="Remote Hosted JSON">
+  <pre><code class="language-kotlin">val config = TealiumConfig(application,
+        &quot;ACCOUNT&quot;,
+        &quot;PROFILE&quot;,
+        Environment.DEV,
+        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+var tealium = Tealium.create(TEALIUM_MAIN, config) {
+  val remoteCommands = RemoteCommand(this);
+  remoteCommands?.add(remoteCommands, remoteUrl = &quot;https://tags.tiqcdn.com/dle/ACCOUNT/PROFILE/FILENAME.json&quot;);
+}
+</code></pre>
+
+</div>
+
+<p></div>
+</div></p>
+
+<p>After the JSON file has been configured and either added to your app or hosted on a server, learn about the different <a href="/platforms/remote-commands/how-it-works/#load-options">JSON load options</a>.</p>
+
+<h2 id="data-layer">Data Layer</h2>
+
+<p>No additional variables are introduced by this module.</p>
+
+<h2 id="api-reference">API Reference</h2>
+
+<h3 id="remotecommand"><code>RemoteCommand()</code></h3>
+
+<p>Creates a new remote command object ready to be passed to the <code>add</code> command.</p>
+
+<pre><code class="language-kotlin">val remoteCommand = object : RemoteCommand(&quot;commandName&quot;, &quot;description&quot;) {
+    override fun onInvoke(response: Response) {
+        Logger.dev(BuildConfig.TAG, &quot;ResponsePayload for webView RemoteCommand ${response.requestPayload}&quot;)
+    }
+}
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>commandName</code></td>
+<td>Required String command name</td>
+<td><code>&quot;sample&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>description</code></td>
+<td>Optional String description of the remote command</td>
+<td><code>&quot;testing RCs&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="add"><code>add()</code></h3>
+
+<p>Registers a specified remote command with Tealium for later triggering. Tealium must have been initialized before adding a new Remote Command.</p>
+
+<pre><code class="language-kotlin">val tealium = Tealium.create(instanceName, config) {
+    remoteCommands?.add(remoteCommand)
+}
+</code></pre>
+
+<p>The following is a usage example:</p>
+
+<pre><code class="language-kotlin">val remoteCommand = object : RemoteCommand(&quot;sample&quot;, &quot;testing RCs&quot;) {
+    override fun onInvoke(response: Response) {
+        Logger.dev(BuildConfig.TAG, &quot;ResponsePayload for webView RemoteCommand ${response.requestPayload}&quot;)
+    }
+}
+
+val tealium = Tealium.create(instanceName, config) {
+    remoteCommands?.add(remoteCommand)
+}
+</code></pre>
+
+<h3 id="remove"><code>remove()</code></h3>
+
+<p>Removes a previously registered remote command to prevent it from being triggered again.</p>
+
+<pre><code class="language-kotlin">val tealium = Tealium.create(instanceName, config) {
+   remoteCommands?.remove(&quot;commandName&quot;)
+}
+</code></pre>
+
+<h3 id="removeall"><code>removeAll</code></h3>
+
+<p>Removes all previously registered remote commands.</p>
+
+<pre><code class="language-kotlin">val tealium = Tealium.create(instanceName, config) {
+    remoteCommands?.removeAll()
+}
+</code></pre>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/android-kotlin/module-list/media/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Media Module "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Media Module</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/android-kotlin/module-list/tag-management/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Tag Management Dispatcher Module</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Tag Management Dispatcher Module"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  December 14, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  December 14, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
+              <li><a href="#install">Install</a></li>
+              <ul class="toc-h3"><li><a href="#maven">Maven</a></li>
+              <li><a href="#manual">Manual</a></li>
+              </ul><li><a href="#remote-command-options">Remote Command Options</a></li>
+              <ul class="toc-h3"><li><a href="#examples">Examples</a></li>
+              </ul><li><a href="#data-layer">Data Layer</a></li>
+              <li><a href="#api-reference">API Reference</a></li>
+              <ul class="toc-h3"><li><a href="#remotecommand">RemoteCommand()</a></li>
+              <li><a href="#add">add()</a></li>
+              <li><a href="#remove">remove()</a></li>
+              <li><a href="#removeall">removeAll</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

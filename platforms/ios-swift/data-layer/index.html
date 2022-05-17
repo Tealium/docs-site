@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,1245 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#custom-data">Custom Data</a></li>
-              <ul class="toc-h3"><li><a href="#data-expiration">Data Expiration</a></li>
-              <li><a href="#retrieve-all-data">Retrieve All Data</a></li>
-              <li><a href="#clear-data">Clear Data</a></li>
-              <li><a href="#example">Example</a></li>
-              </ul><li><a href="#module-data">Module Data</a></li>
-              <ul class="toc-h3"><li><a href="#app-data-collector">App Data Collector</a></li>
-              <li><a href="#attribution-collector">Attribution Collector</a></li>
-              <li><a href="#autotracking-collector">Autotracking Collector</a></li>
-              <li><a href="#collect-dispatcher">Collect Dispatcher</a></li>
-              <li><a href="#consent-manager-module">Consent Manager Module</a></li>
-              <li><a href="#core">Core</a></li>
-              <li><a href="#crash-collector">Crash Collector</a></li>
-              <li><a href="#device-data-collector">Device Data Collector</a></li>
-              <li><a href="#lifecycle-collector">Lifecycle Collector</a></li>
-              <li><a href="#location-collector">Location Collector</a></li>
-              <li><a href="#tag-management">Tag Management</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/ios-swift/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Data Layer</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Learn about managing common data layer values and the data provided by each module.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="custom-data">Custom Data</h2>
-
-<p>It&rsquo;s common to need general data layer values on every event. To avoid having to add these values to every tracking call, use the <code>tealium.dataLayer</code> methods to persist data layer values that apply to all tracking calls. Once values are stored, they are automatically included in every tracked event.</p>
-
-<h3 id="data-expiration">Data Expiration</h3>
-
-<p>Data layer values have an expiration and are removed from the data layer when they expire. When you set a custom data layer value you can optionally set the expiration time for the value. The default expiration length is the current session.</p>
-
-<p>The following expiration types are available:</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Type</th>
-<th align="left">Value</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><a href="#session-data">Session</a> (default)</td>
-<td align="left"><code>.session</code></td>
-<td align="left">Expires at the end of the current session</td>
-</tr>
-
-<tr>
-<td align="left"><a href="#restart-data">Restart</a></td>
-<td align="left"><code>.untilRestart</code></td>
-<td align="left">Expires when the app is closed or restarted</td>
-</tr>
-
-<tr>
-<td align="left"><a href="#forever-data">Forever</a></td>
-<td align="left"><code>.forever</code></td>
-<td align="left">Never expires</td>
-</tr>
-
-<tr>
-<td align="left"><a href="#custom-date-data">Custom Date</a></td>
-<td align="left"><code>.after</code></td>
-<td align="left">Expires on the date specified</td>
-</tr>
-
-<tr>
-<td align="left"><a href="#custom-duration-data">Custom Duration</a></td>
-<td align="left"><code>.afterCustom</code></td>
-<td align="left">Expires on the duration specified by the following time units: <code>.minutes</code>, <code>.hours</code>, <code>.days</code>, <code>.months</code>, <code>.years</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>Use <a href="/platforms/ios-swift/api/tealium-data-layer/#add">add()</a> to store data in the data layer, based on the expiration type.</p>
-
-<h4 id="session-data">Session Data</h4>
-
-<p>Session data values are persisted for the session. A session is determined by user activity within a given time frame. The session expires after 30 minutes of user inactivity.</p>
-
-<p>To persist a data layer value that expires after the session:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.dataLayer.add(key: <span style="color:#a31515">&#34;mysessionvar&#34;</span>, value: <span style="color:#a31515">&#34;hello&#34;</span>, expiry: .session)</code></pre></div>
-<p>To retrieve all session data:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> sessionData = tealium?.dataLayer.allSessionData</code></pre></div>
-<h4 id="restart-data">Restart Data</h4>
-
-<p>Restart data values are persisted for each event. The data is removed when the app is closed or restarted.</p>
-
-<p>To persist a data layer value until the next app restart:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.dataLayer.add(key: <span style="color:#a31515">&#34;myrestartvar&#34;</span>, value: <span style="color:#a31515">&#34;foo&#34;</span>, expiry: .untilRestart)</code></pre></div>
-<h4 id="forever-data">Forever Data</h4>
-
-<p>Forever data values are persisted for the lifetime of the current app version. The data is removed from the data layer when the app is uninstalled or updated.</p>
-
-<p>To persist forever data:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.dataLayer.add(key: <span style="color:#a31515">&#34;myforevervar&#34;</span>, value: <span style="color:#a31515">&#34;world&#34;</span>, expiry: .forever)</code></pre></div>
-<h4 id="custom-date-data">Custom Date Data</h4>
-
-<p>Custom date data values are persisted by a specified date.</p>
-
-<p>To persist data layer values with a custom date expiration:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.dataLayer.add(key: <span style="color:#a31515">&#34;customdate&#34;</span>, value: <span style="color:#a31515">&#34;bar&#34;</span>, expiry: .after(yourDate))</code></pre></div>
-<h4 id="custom-duration-data">Custom Duration Data</h4>
-
-<p>Custom duration data values are persisted by a specified duration of time.</p>
-
-<p>To persist data layer values which expire after 1 day:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.dataLayer.add(key: <span style="color:#a31515">&#34;lengthoftime&#34;</span>, value: <span style="color:#a31515">&#34;days&#34;</span>, expiry: .afterCustom((.days, 1)))</code></pre></div>
-<p>To persist data layer values which expire after 1 month:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.dataLayer.add(key: <span style="color:#a31515">&#34;lengthoftime&#34;</span>, value: <span style="color:#a31515">&#34;months&#34;</span>, expiry: .afterCustom((.months, 1)))</code></pre></div>
-<h3 id="retrieve-all-data">Retrieve All Data</h3>
-
-<p>To retrieve all the currently stored data in the data layer, use the <a href="/platforms/ios-swift/api/tealium-data-layer/#all">all()</a> method:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> data: [String: Any] = tealium?.dataLayer.all</code></pre></div>
-<p>See also <a href="/platforms/ios-swift/api/tealium/#gathertrackdata"><code>Tealium.gatherTrackData()</code></a>.</p>
-
-<h3 id="clear-data">Clear Data</h3>
-
-<p>To clear data for specific keys, use the <a href="/platforms/ios-swift/api/tealium-data-layer/#delete">delete()</a> method:</p>
-
-<ul>
-<li>Multiple: <code>dataLayer.delete(forKeys:)</code></li>
-<li>Single: <code>dataLayer.delete(forKey:)</code></li>
-</ul>
-
-<p>To clear all data, use the <a href="/platforms/ios-swift/api/tealium-data-layer/#delete"><code>deleteAll()</code></a> method.</p>
-
-<h3 id="example">Example</h3>
-
-<p>The following example demonstrates the above methods:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">class</span> <span style="color:#2b91af">TealiumHelper</span> {
-	<span style="color:#00f">var</span> tealium: Tealium?
-	<span style="color:#00f">let</span> config = TealiumConfig(...)
-	tealium = Tealium(config: config) { [<span style="color:#00f">weak</span> <span style="color:#00f">self</span>] <span style="color:#00f">_</span> <span style="color:#00f">in</span>
-		<span style="color:#00f">guard</span> <span style="color:#00f">let</span> self = <span style="color:#00f">self</span>, <span style="color:#00f">let</span> teal = <span style="color:#00f">self</span>.tealium <span style="color:#00f">else</span> { <span style="color:#00f">return</span> }
-
-		teal.dataLayer.add(key: <span style="color:#a31515">&#34;mysessionvar&#34;</span>, value: 123456)
-
-		teal.dataLayer.add(key: <span style="color:#a31515">&#34;myvarforever&#34;</span>, value: <span style="color:#a31515">&#34;hello&#34;</span>, expiry: .forever)
-
-		teal.dataLayer.add(key: <span style="color:#a31515">&#34;campaign&#34;</span>, value: <span style="color:#a31515">&#34;summer&#34;</span>, expiry: .afterCustom((.months, 3)))
-
-		print(<span style="color:#a31515">&#34;All event data: </span><span style="color:#a31515">\(</span>teal.dataLayer.all<span style="color:#a31515">)</span><span style="color:#a31515">&#34;</span>)
-		print(<span style="color:#a31515">&#34;All session data: </span><span style="color:#a31515">\(</span>teal.dataLayer.allSessionData<span style="color:#a31515">)</span><span style="color:#a31515">&#34;</span>)
-		print(<span style="color:#a31515">&#34;Single event data key `campaign`: </span><span style="color:#a31515">\(</span>teal.dataLayer.all[<span style="color:#a31515">&#34;campaign&#34;</span>]<span style="color:#a31515">)</span><span style="color:#a31515">&#34;</span>)
-
-		teal.dataLayer.delete(forKeys: [<span style="color:#a31515">&#34;myvarforever&#34;</span>])
-
-		teal.dataLayer.deleteAll()
-	}
-}</code></pre></div>
-<h2 id="module-data">Module Data</h2>
-
-<h3 id="app-data-collector">App Data Collector</h3>
-
-<p>The following variables are added to the data layer by the <a href="/platforms/ios-swift/module-list/appdata/"><code>AppData</code></a> module.</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Variable Name</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>app_build</code></td>
-<td align="left">Minor build version of the app</td>
-<td align="left"><code>2213</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>app_name</code></td>
-<td align="left">Name of the app (typically the App Store name)</td>
-<td align="left"><code>Digital Velocity</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>app_rdns</code></td>
-<td align="left">Fully-qualified name of the app bundle</td>
-<td align="left"><code>com.tealium.digitalvelocity</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>app_uuid</code></td>
-<td align="left">Random <code>uuid</code>. Persists for the duration of the app install, so long as one of the persistent storage modules is also enabled. Resets if app is uninstalled.</td>
-<td align="left"><code>123e4567-e89b-12d3-a456-556642440000</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>app_version</code></td>
-<td align="left">Version of the app bundle</td>
-<td align="left"><code>1.0</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_vid</code></td>
-<td align="left">Persistent Tealium visitor ID</td>
-<td align="left"><code>t3aL...1uM</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_visitor_id</code></td>
-<td align="left">Same as <code>tealium_vid</code> and included for legacy reasons</td>
-<td align="left"><code>t3aL...1uM</code></td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="attribution-collector">Attribution Collector</h3>
-
-<p>The following variables are added to the data layer by the <a href="/platforms/ios-swift/module-list/attribution/"><code>Attribution</code></a> module.</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Variable Name</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>ad_campaign_id</code></td>
-<td align="left">The corresponding ad&rsquo;s campaign ID</td>
-<td align="left"><code>1234567890</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>ad_campaign_name</code></td>
-<td align="left">The corresponding ad&rsquo;s campaign name</td>
-<td align="left"><code>CampaignName</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>ad_creativeset_id</code></td>
-<td align="left">The ID of the Creative Set which the corresponding ad was part of.</td>
-<td align="left"><code>456093</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>ad_creativeset_name</code></td>
-<td align="left">The name of the Creative Set which the corresponding ad was part of.</td>
-<td align="left"><code>Beast Images</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>ad_group_id</code></td>
-<td align="left">The corresponding ad&rsquo;s campaign group ID</td>
-<td align="left"><code>1234567890</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>ad_group_name</code></td>
-<td align="left">The corresponding ad&rsquo;s campaign group name</td>
-<td align="left"><code>AdGroupName</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>ad_keyword</code></td>
-<td align="left">The keyword that drove the ad impression which led to the corresponding ad click</td>
-<td align="left"><code>Keyword</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>ad_keyword_matchtype</code></td>
-<td align="left">Either be Broad, Exact or Search Match.</td>
-<td align="left"><code>Exact</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>ad_org_id</code></td>
-<td align="left">The corresponding ad&rsquo;s campaign organization ID</td>
-<td align="left"><code>OrgID</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>ad_org_name</code></td>
-<td align="left">The corresponding ad&rsquo;s campaign organization name</td>
-<td align="left"><code>OrgName</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>ad_purchase_date</code></td>
-<td align="left">Date and time the user first downloaded your app. In the case where <code>iadconversion-type = “Redownload”</code>, this represents the original purchase date. This may or may not have been associated with an Apple Search Ad.</td>
-<td align="left"><code>2016-12-05T17:31:40Z</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>ad_region</code></td>
-<td align="left">Identifies the country or region associated with the campaign which drove this install.</td>
-<td align="left"><code>US</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>ad_user_clicked_last_30_days</code></td>
-<td align="left">Boolean indicating if user clicked on a Search Ads impression within 30 days prior to app download</td>
-<td align="left"><code>true</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>ad_user_conversion _type</code></td>
-<td align="left">Identifies new download or redownload of the app</td>
-<td align="left"><code>Download</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>ad_user_date_clicked</code></td>
-<td align="left">Date and time the user clicked on a corresponding ad</td>
-<td align="left"><code>2016-12-05T17:31:40Z</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>ad_user_date_converted</code></td>
-<td align="left">Date and time the user downloaded the app</td>
-<td align="left"><code>2016-12-05T17:31:40Z</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_advertising_enabled</code></td>
-<td align="left">Boolean indicating if the user allowed ad tracking (if <code>false</code>, the advertising ID appears as a string of zeroes)</td>
-<td align="left"><code>true</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_advertising_id</code></td>
-<td align="left">User-resettable advertising identifier (IDFA)</td>
-<td align="left"><code>6D92078A-8246...</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_advertising_vendor_id</code></td>
-<td align="left">Unique ID guaranteed to be the same across all apps on the same device from a single vendor (apps with the same 1st 2 parts of the RDNS bundle identifier. For example, com.tealium or com.acme)</td>
-<td align="left"><code>6D92078A-8246...</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_tracking_authorization</code></td>
-<td align="left">The tracking <a href="https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus">authorization status</a> that is added to the dispatch payload</td>
-<td align="left"><code>authorized</code></td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="autotracking-collector">Autotracking Collector</h3>
-
-<p>The following variables are added to the data layer by the <a href="/platforms/ios-swift/module-list/autotracking/"><code>Autotracking</code></a> module.</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Variable Name</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>autotracked</code></td>
-<td align="left">Set to <code>true</code> and added to each auto-tracked tracking call</td>
-<td align="left"><code>true</code></td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="collect-dispatcher">Collect Dispatcher</h3>
-
-<p>The following variables are added to the data layer by the <a href="/platforms/ios-swift/module-list/collect/"><code>Collect</code></a> dispatcher.</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Variable Name</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>dispatch_service</code></td>
-<td align="left">Static string to indicate which module the tracking call came from</td>
-<td align="left"><code>collect</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_event_type</code></td>
-<td align="left">String to indicate which event type is being dispatched</td>
-<td align="left"><code>view</code> or <code>event</code></td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="consent-manager-module">Consent Manager Module</h3>
-
-<p>The following variables are added to the data layer by the <a href="/platforms/ios-swift/consent-management/"><code>ConsentManager</code></a> module if enabled.</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Variable Name</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>consent_categories</code></td>
-<td align="left">An array of the user&rsquo;s selected consent categories</td>
-<td align="left"><code>[&quot;analytics&quot;, &quot;cdp&quot;]</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>consent_status</code></td>
-<td align="left">The user&rsquo;s current consent status</td>
-<td align="left"><code>consented</code>, <code>notConsented</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>policy</code></td>
-<td align="left">Consent Policy</td>
-<td align="left"><code>gdpr</code>, <code>ccpa</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>do_not_sell</code></td>
-<td align="left">Whether or not the user has asked not to sell their data (CCPA only)</td>
-<td align="left"><code>true</code></td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="core">Core</h3>
-
-<p>The following variables are added to the data layer by the <code>Core</code> module.</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Variable Name</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>enabled_modules</code></td>
-<td align="left">List of all currently-enabled modules</td>
-<td align="left"><code>tagmanagement</code>, <code>collect</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>screen_title</code></td>
-<td align="left">Screen title passed to trackView call</td>
-<td align="left"><code>homescreen</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_datasource</code></td>
-<td align="left">Specifies the data source name (added to every dispatch)</td>
-<td align="left"><code>a1b2c3</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_event</code></td>
-<td align="left">The name of the event being tracked</td>
-<td align="left"><code>checkout</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>queue_reason</code></td>
-<td align="left">Added to the track call if the tracking request was queued due to lack of connectivity. Only present for queued events; absent for all other events</td>
-<td align="left"><code>connectivity</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>was_queued</code></td>
-<td align="left">Indicates whether a tracking call was queued due to no connectivity. Only present for queued events; absent for all other events</td>
-<td align="left"><code>true</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_account</code></td>
-<td align="left">Current Tealium account (from TealiumConfig object)</td>
-<td align="left"><code>tealium</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_environment</code></td>
-<td align="left">Current Tealium environment (from TealiumConfig object)</td>
-<td align="left"><code>dev</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_library_name</code></td>
-<td align="left">Tealium library name</td>
-<td align="left"><code>swift</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_library_version</code></td>
-<td align="left">Tealium library version</td>
-<td align="left"><code>1.8.0</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_profile</code></td>
-<td align="left">Current Tealium profile (from TealiumConfig object)</td>
-<td align="left"><code>mobile</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_random</code></td>
-<td align="left">Random number</td>
-<td align="left"><code>8449989974958830</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_session_id</code></td>
-<td align="left">Tealium Session ID</td>
-<td align="left"><code>1511262829677</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_timestamp_epoch</code></td>
-<td align="left">Current Unix timestamp (1970 epoch) in seconds</td>
-<td align="left"><code>1511262829</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>timestamp</code></td>
-<td align="left">Event timestamp in ISO8601 (Zulu Time), UTC</td>
-<td align="left"><code>2017-11-20T14:48:00Z</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>timestamp_local</code></td>
-<td align="left">Event timestamp in ISO8601 local timezone</td>
-<td align="left"><code>2017-11-20T06:48:00</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>timestamp_offset</code></td>
-<td align="left">Current offset from UTC in hours</td>
-<td align="left"><code>-8</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>timestamp_unix</code></td>
-<td align="left">Current Unix timestamp (1970 epoch) in seconds</td>
-<td align="left"><code>1511189280</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>timestamp_unix_milliseconds</code></td>
-<td align="left">Current Unix timestamp (1970 epoch) in milliseconds</td>
-<td align="left"><code>1511189280337</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>deep_link_url</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">The full URL of the deep link that opened the app, including query parameters.</td>
-</tr>
-
-<tr>
-<td align="left"><code>deep_link_param_X</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Each query parameter of the deep link URL, where <code>X</code> is the name of the parameter, such as <code>deep_link_param_campaign_code</code>.</td>
-</tr>
-
-<tr>
-<td align="left"><code>deep_link_referrer_url</code> (iOS)</td>
-<td align="left"><code>String</code></td>
-<td align="left">The full URL of the browser page where the deep link was clicked.</td>
-</tr>
-
-<tr>
-<td align="left"><code>deep_link_referrer_app</code> (iOS)</td>
-<td align="left"><code>String</code></td>
-<td align="left">The identifier of the referrer app when the deep link comes from a custom schema in another app signed by the same team.</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="crash-collector">Crash Collector</h3>
-
-<p>The following variables are added to the data layer by the <a href="/platforms/ios-swift/module-list/crash-reporter/"><code>CrashReporter</code></a> module.</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Variable Name</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>app_memory_usage</code></td>
-<td align="left">Current memory used by the app on the device at the time of the crash</td>
-<td align="left"><code>143.57MB</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>crash_cause</code></td>
-<td align="left">Cause of the crash</td>
-<td align="left"><code>Crash Reason</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>crash_name</code></td>
-<td align="left">Friendly name of the crash, if available</td>
-<td align="left"><code>Crash Name</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>crash_libraries</code></td>
-<td align="left">List of loaded libraries at the time of the crash</td>
-<td align="left"><code>{ &quot;baseAddress&quot;: &quot;0xa3e0000&quot;, &quot;codeType&quot;: { &quot;arch&quot;: 64, &quot;typeEncoding&quot;: &quot;Mach&quot;}, &quot;imageName&quot;: &quot;/Applications/Xcode9.3.app/ Contents/Developer/Platforms/ iPhoneOS.platform/Developer/ Library/CoreSimulator/Profiles/ Runtimes/iOS.simruntime/ Contents/Resources/ RuntimeRoot/usr/lib/dyld_sim&quot;, &quot;imageSize&quot;: 212992, &quot;imageUuid&quot;: &quot;4015e9b70bde&quot; }</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>crash_process_id</code></td>
-<td align="left">PID of the app at time of crash</td>
-<td align="left"><code>84351</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>crash_process_path</code></td>
-<td align="left">Path the app was running under</td>
-<td align="left"><code>/DemoApp.app/DemoApp</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>crash_parent_process</code></td>
-<td align="left">Parent process that launched the app</td>
-<td align="left"><code>launchd_sim</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>crash_parent_process_id</code></td>
-<td align="left">Parent process PID</td>
-<td align="left"><code>83183</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>crash_signal_address</code></td>
-<td align="left">Signal address of the crash</td>
-<td align="left"><code>4572945982</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>crash_signal_code</code></td>
-<td align="left">Signal code causing the crash</td>
-<td align="left"><code>#0</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>crash_signal_name</code></td>
-<td align="left">Signal name causing the crash</td>
-<td align="left"><code>SIGABRT</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>crash_threads</code></td>
-<td align="left">Returns all active threads at the time of the crash</td>
-<td align="left"><code>{&quot;crashed&quot;: 1,&quot;registers&quot;: {&quot;cs&quot;: &quot;0x07&quot;},&quot;stack&quot;: {&quot;instructionPointer&quot;: 4572945982,&quot;symbolInfo&quot;: {&quot;symbolName&quot;: &quot;&quot;,&quot;symbolStartAddr&quot;: 0},&quot;threadId&quot;: &quot;&quot;}}</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>crash_uuid</code></td>
-<td align="left">Unique identifier for this specific crash</td>
-<td align="left"><code>CC2DA0E9-E544-429A-AC5E-A268FC62F02A</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_memory_usage</code></td>
-<td align="left">Current memory used by the app on the device at the time of the crash</td>
-<td align="left"><code>143.57MB</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_memory_available</code></td>
-<td align="left">Free memory on device at the time of the crash</td>
-<td align="left"><code>1068.88MB</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_os_build</code></td>
-<td align="left">Current OS build number</td>
-<td align="left"><code>15E217</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>memory_free</code></td>
-<td align="left">Free memory on device at the time of the crash</td>
-<td align="left"><code>1068.88MB</code></td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="device-data-collector">Device Data Collector</h3>
-
-<p>The following variables are added to the data layer by the <a href="/platforms/ios-swift/module-list/device-data/"><code>DeviceData</code></a> module.</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Variable Name</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>app_memory_usage</code></td>
-<td align="left">Memory being used by the current process/app in Megabytes</td>
-<td align="left"><code>35.75MB</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>carrier</code></td>
-<td align="left">Mobile network carrier name</td>
-<td align="left"><code>EE</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>carrier_iso</code></td>
-<td align="left">Mobile carrier ISO</td>
-<td align="left"><code>gb</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>carrier_mcc</code></td>
-<td align="left">Carrier mobile country code</td>
-<td align="left"><code>234</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>carrier_mnc</code></td>
-<td align="left">Carrier mobile network code</td>
-<td align="left"><code>34</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>connection_type</code></td>
-<td align="left">Current connection type</td>
-<td align="left"><code>wifi</code>, <code>cellular</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device</code></td>
-<td align="left">Consumer device name</td>
-<td align="left"><code>iPhone 7 Plus</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_architecture</code></td>
-<td align="left">Device architecture</td>
-<td align="left"><code>64</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_battery_percent</code></td>
-<td align="left">Current battery percentage at time of track call</td>
-<td align="left"><code>58</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_cputype</code></td>
-<td align="left">Device CPU type</td>
-<td align="left"><code>ARM64v8</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_ischarging</code></td>
-<td align="left">Boolean to indicate if device is currently charging at time of track call</td>
-<td align="left"><code>true</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_language</code></td>
-<td align="left">Current device language</td>
-<td align="left"><code>en-US</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_orientation</code></td>
-<td align="left">Simple orientation</td>
-<td align="left"><code>Portrait</code>, <code>Landscape</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_orientation_extended</code></td>
-<td align="left">Full orientation</td>
-<td align="left"><code>Face Up</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_os_version</code></td>
-<td align="left">Operating system version</td>
-<td align="left"><code>11.1</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_resolution</code></td>
-<td align="left">Physical screen resolution in pixels (width x height)</td>
-<td align="left"><code>828x1792</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_logical_resolution</code></td>
-<td align="left">Logical screen resolution in points (width x height)</td>
-<td align="left"><code>414x896</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>device_type</code></td>
-<td align="left">Apple internal device identifier</td>
-<td align="left"><code>iPhone12,1</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>memory_active*</code></td>
-<td align="left">Total active memory on the device</td>
-<td align="left"><code>997.78MB</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>memory_compressed*</code></td>
-<td align="left">Total compressed memory on the device</td>
-<td align="left"><code>153.39MB</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>memory_free*</code></td>
-<td align="left">Total free memory on the device</td>
-<td align="left"><code>120.81MB</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>memory_inactive*</code></td>
-<td align="left">Total inactive memory on the device</td>
-<td align="left"><code>441.83MB</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>memory_physical*</code></td>
-<td align="left">Total physical memory on the device (RAM) in Megabytes</td>
-<td align="left"><code>2013.50MB</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>memory_wired*</code></td>
-<td align="left">Total wired memory on the device</td>
-<td align="left"><code>207.12MB</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>model_name</code></td>
-<td align="left">Model name</td>
-<td align="left"><code>iPhone 7 Plus</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>model_variant</code></td>
-<td align="left">Model variant (generally indicates which radio technology is available on the device)</td>
-<td align="left"><code>CDMA</code>, <code>GSM</code>, <code>WiFi</code>, <code>Cellular</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>network_iso_country_code</code></td>
-<td align="left">Mobile network ISO country code</td>
-<td align="left"><code>gb</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>os_name</code></td>
-<td align="left">Operating System Name</td>
-<td align="left"><code>iOS</code>, <code>tvOS</code>, <code>watchOS</code>, <code>macOS</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>platform</code></td>
-<td align="left">Operating System Name</td>
-<td align="left"><code>iOS</code>, <code>tvOS</code>, <code>watchOS</code>, <code>macOS</code></td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="lifecycle-collector">Lifecycle Collector</h3>
-
-<p>The following variables are added to the data layer by the <a href="/platforms/ios-swift/module-list/lifecycle/"><code>Lifecycle</code></a> module.</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Variable Name</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>lifecycle_dayofweek_local</code></td>
-<td align="left">Local day of week that call was made, such as 1=Sunday, 2=Monday</td>
-<td align="left"><code>4</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_dayssincelastwake</code></td>
-<td align="left">Days since last detected wake in integer increments</td>
-<td align="left"><code>1</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_dayssincelaunch</code></td>
-<td align="left">Days since first launch in integer increments</td>
-<td align="left"><code>23</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_dayssinceupdate</code></td>
-<td align="left">Days since the last detected app version update in integer increments</td>
-<td align="left"><code>46</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_diddetect_crash</code></td>
-<td align="left">Was a crash detected during this launch/wake event (populated only if <code>true</code>)</td>
-<td align="left"><code>true</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_firstlaunchdate</code></td>
-<td align="left">GMT timestamp of the first detected launch/wake in ISO8601 format from Zulu time</td>
-<td align="left"><code>2013-07-11T17:55:04Z</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_firstlaunchdate_MMDDYYYY</code></td>
-<td align="left">GMT Timestamp formatted as MM/DD/YYYY</td>
-<td align="left"><code>01/17/2012</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_hourofday_local</code></td>
-<td align="left">Local hour of day that call was made (24 hour format)</td>
-<td align="left"><code>true</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_isfirstlaunch</code></td>
-<td align="left">Only present if call is the first launch/wake call</td>
-<td align="left"><code>true</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_isfirstlaunchupdate</code></td>
-<td align="left">Only present if call is first launch/wake after a detected updated</td>
-<td align="left"><code>true</code>, <code>false</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_isfirstwakemonth</code></td>
-<td align="left">Only present if call is first launch/wake of the month</td>
-<td align="left"><code>true</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_isfirstwaketoday</code></td>
-<td align="left">Only present if call is first launch/wake of the day</td>
-<td align="left"><code>true</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_launchcount</code></td>
-<td align="left">Total number of launches this version of your app (since the last update)</td>
-<td align="left"><code>3</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_priorsecondsawake</code></td>
-<td align="left">Whole seconds app was awake since last launch only. Aggregates total from all wakes prior. Sent only with <code>lifecycle_type:launch</code> calls.</td>
-<td align="left"><code>126</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_secondsawake</code></td>
-<td align="left">Whole seconds app was awake since most recent wake/launch</td>
-<td align="left"><code>30</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_sleepcount</code></td>
-<td align="left">Total number of times your app has gone to sleep (resets if updated)</td>
-<td align="left"><code>5</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_totalcrashcount</code></td>
-<td align="left">Total number of crashes counted since install (only reset if app deleted)</td>
-<td align="left"><code>21</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_totallaunchcount</code></td>
-<td align="left">Total number of launches since install (only reset if app deleted)</td>
-<td align="left"><code>3</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_totalsecondsawake</code></td>
-<td align="left">Total number of seconds your app has been in a woken/active state since app install (only reset if app deleted)</td>
-<td align="left"><code>36</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_totalsleepcount</code></td>
-<td align="left">Total number of times your app has gone into the background since app install (only reset if app deleted)</td>
-<td align="left"><code>400</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_totalwakecount</code></td>
-<td align="left">Total number of launches + wakes since install (only reset if app deleted)</td>
-<td align="left"><code>563</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_type</code></td>
-<td align="left">Type of lifecycle call.</td>
-<td align="left"><code>launch</code>, <code>wake</code>, <code>sleep</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_updatelaunchdate</code></td>
-<td align="left">GMT timestamp of first wake/launch after a version update has been detected</td>
-<td align="left"><code>2014-09-08T18:10:01Z</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_wakecount</code></td>
-<td align="left">Total number of launches + wakes in this version of your app (resets if updated)</td>
-<td align="left"><code>29</code></td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="location-collector">Location Collector</h3>
-
-<p>The following variables are added to the data layer by the <a href="/platforms/ios-swift/module-list/location/"><code>Location</code></a> module.</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Variable  Name</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>geofence_name</code></td>
-<td align="left">The name of the geofence region</td>
-<td align="left"><code>Tealium_San_Diego</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>geofence_transition_type</code></td>
-<td align="left">The type of geofence transition event</td>
-<td align="left"><code>entered</code>,<code>exited</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>location_timestamp</code></td>
-<td align="left">The recorded date/time (GMT) the user entered/exited the geofence region</td>
-<td align="left"><code>2020-01-28 16:29:46 +0000</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>latitude</code></td>
-<td align="left">The latitude of the user&rsquo;s most recently recorded location</td>
-<td align="left"><code>32.906119</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>longitude</code></td>
-<td align="left">The longitude of the user&rsquo;s most recently recorded location</td>
-<td align="left"><code>-117.23791632509666</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>movement_speed</code></td>
-<td align="left">The instantaneous speed of the device, measured in meters per second</td>
-<td align="left"><code>1.0</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>location_accuracy</code></td>
-<td align="left">String   The accuracy setting for the location module</td>
-<td align="left"><code>high</code>, <code>low</code></td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="tag-management">Tag Management</h3>
-
-<p>The following variables are added to the data layer by the <a href="/platforms/ios-swift/module-list/tag-management/"><code>Tag Management</code></a> module.</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Variable Name</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>dispatch_service</code></td>
-<td align="left">Static string to indicate which module the tracking call came from</td>
-<td align="left"><code>tagmanagement</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_event_type</code></td>
-<td align="left">String to indicate which event type is being dispatched</td>
-<td align="left"><code>view</code> or <code>event</code></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/ios-swift/track/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Track "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Track</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/ios-swift/consent-management/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Consent Management</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Consent Management"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -8703,33 +7472,1296 @@ var utag_data = {
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/ios-swift/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        IOS SWIFT
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Data Layer</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Learn about managing common data layer values and the data provided by each module.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="custom-data">Custom Data</h2>
+
+<p>It&rsquo;s common to need general data layer values on every event. To avoid having to add these values to every tracking call, use the <code>tealium.dataLayer</code> methods to persist data layer values that apply to all tracking calls. Once values are stored, they are automatically included in every tracked event.</p>
+
+<h3 id="data-expiration">Data Expiration</h3>
+
+<p>Data layer values have an expiration and are removed from the data layer when they expire. When you set a custom data layer value you can optionally set the expiration time for the value. The default expiration length is the current session.</p>
+
+<p>The following expiration types are available:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><a href="#session-data">Session</a> (default)</td>
+<td align="left"><code>.session</code></td>
+<td align="left">Expires at the end of the current session</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#restart-data">Restart</a></td>
+<td align="left"><code>.untilRestart</code></td>
+<td align="left">Expires when the app is closed or restarted</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#forever-data">Forever</a></td>
+<td align="left"><code>.forever</code></td>
+<td align="left">Never expires</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#custom-date-data">Custom Date</a></td>
+<td align="left"><code>.after</code></td>
+<td align="left">Expires on the date specified</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#custom-duration-data">Custom Duration</a></td>
+<td align="left"><code>.afterCustom</code></td>
+<td align="left">Expires on the duration specified by the following time units: <code>.minutes</code>, <code>.hours</code>, <code>.days</code>, <code>.months</code>, <code>.years</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Use <a href="/platforms/ios-swift/api/tealium-data-layer/#add">add()</a> to store data in the data layer, based on the expiration type.</p>
+
+<h4 id="session-data">Session Data</h4>
+
+<p>Session data values are persisted for the session. A session is determined by user activity within a given time frame. The session expires after 30 minutes of user inactivity.</p>
+
+<p>To persist a data layer value that expires after the session:</p>
+
+<pre><code class="language-swift">tealium?.dataLayer.add(key: &quot;mysessionvar&quot;, value: &quot;hello&quot;, expiry: .session)
+</code></pre>
+
+<p>To retrieve all session data:</p>
+
+<pre><code class="language-swift">let sessionData = tealium?.dataLayer.allSessionData
+</code></pre>
+
+<h4 id="restart-data">Restart Data</h4>
+
+<p>Restart data values are persisted for each event. The data is removed when the app is closed or restarted.</p>
+
+<p>To persist a data layer value until the next app restart:</p>
+
+<pre><code class="language-swift">tealium?.dataLayer.add(key: &quot;myrestartvar&quot;, value: &quot;foo&quot;, expiry: .untilRestart)
+</code></pre>
+
+<h4 id="forever-data">Forever Data</h4>
+
+<p>Forever data values are persisted for the lifetime of the current app version. The data is removed from the data layer when the app is uninstalled or updated.</p>
+
+<p>To persist forever data:</p>
+
+<pre><code class="language-swift">tealium?.dataLayer.add(key: &quot;myforevervar&quot;, value: &quot;world&quot;, expiry: .forever)
+</code></pre>
+
+<h4 id="custom-date-data">Custom Date Data</h4>
+
+<p>Custom date data values are persisted by a specified date.</p>
+
+<p>To persist data layer values with a custom date expiration:</p>
+
+<pre><code class="language-swift">tealium?.dataLayer.add(key: &quot;customdate&quot;, value: &quot;bar&quot;, expiry: .after(yourDate))
+</code></pre>
+
+<h4 id="custom-duration-data">Custom Duration Data</h4>
+
+<p>Custom duration data values are persisted by a specified duration of time.</p>
+
+<p>To persist data layer values which expire after 1 day:</p>
+
+<pre><code class="language-swift">tealium?.dataLayer.add(key: &quot;lengthoftime&quot;, value: &quot;days&quot;, expiry: .afterCustom((.days, 1)))
+</code></pre>
+
+<p>To persist data layer values which expire after 1 month:</p>
+
+<pre><code class="language-swift">tealium?.dataLayer.add(key: &quot;lengthoftime&quot;, value: &quot;months&quot;, expiry: .afterCustom((.months, 1)))
+</code></pre>
+
+<h3 id="retrieve-all-data">Retrieve All Data</h3>
+
+<p>To retrieve all the currently stored data in the data layer, use the <a href="/platforms/ios-swift/api/tealium-data-layer/#all">all()</a> method:</p>
+
+<pre><code class="language-swift">let data: [String: Any] = tealium?.dataLayer.all
+</code></pre>
+
+<p>See also <a href="/platforms/ios-swift/api/tealium/#gathertrackdata"><code>Tealium.gatherTrackData()</code></a>.</p>
+
+<h3 id="clear-data">Clear Data</h3>
+
+<p>To clear data for specific keys, use the <a href="/platforms/ios-swift/api/tealium-data-layer/#delete">delete()</a> method:</p>
+
+<ul>
+<li>Multiple: <code>dataLayer.delete(forKeys:)</code></li>
+<li>Single: <code>dataLayer.delete(forKey:)</code></li>
+</ul>
+
+<p>To clear all data, use the <a href="/platforms/ios-swift/api/tealium-data-layer/#delete"><code>deleteAll()</code></a> method.</p>
+
+<h3 id="example">Example</h3>
+
+<p>The following example demonstrates the above methods:</p>
+
+<pre><code class="language-swift">class TealiumHelper {
+	var tealium: Tealium?
+	let config = TealiumConfig(...)
+	tealium = Tealium(config: config) { [weak self] _ in
+		guard let self = self, let teal = self.tealium else { return }
+
+		teal.dataLayer.add(key: &quot;mysessionvar&quot;, value: 123456)
+
+		teal.dataLayer.add(key: &quot;myvarforever&quot;, value: &quot;hello&quot;, expiry: .forever)
+
+		teal.dataLayer.add(key: &quot;campaign&quot;, value: &quot;summer&quot;, expiry: .afterCustom((.months, 3)))
+
+		print(&quot;All event data: \(teal.dataLayer.all)&quot;)
+		print(&quot;All session data: \(teal.dataLayer.allSessionData)&quot;)
+		print(&quot;Single event data key `campaign`: \(teal.dataLayer.all[&quot;campaign&quot;])&quot;)
+
+		teal.dataLayer.delete(forKeys: [&quot;myvarforever&quot;])
+
+		teal.dataLayer.deleteAll()
+	}
+}
+</code></pre>
+
+<h2 id="module-data">Module Data</h2>
+
+<h3 id="app-data-collector">App Data Collector</h3>
+
+<p>The following variables are added to the data layer by the <a href="/platforms/ios-swift/module-list/appdata/"><code>AppData</code></a> module.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>app_build</code></td>
+<td align="left">Minor build version of the app</td>
+<td align="left"><code>2213</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>app_name</code></td>
+<td align="left">Name of the app (typically the App Store name)</td>
+<td align="left"><code>Digital Velocity</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>app_rdns</code></td>
+<td align="left">Fully-qualified name of the app bundle</td>
+<td align="left"><code>com.tealium.digitalvelocity</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>app_uuid</code></td>
+<td align="left">Random <code>uuid</code>. Persists for the duration of the app install, so long as one of the persistent storage modules is also enabled. Resets if app is uninstalled.</td>
+<td align="left"><code>123e4567-e89b-12d3-a456-556642440000</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>app_version</code></td>
+<td align="left">Version of the app bundle</td>
+<td align="left"><code>1.0</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_vid</code></td>
+<td align="left">Persistent Tealium visitor ID</td>
+<td align="left"><code>t3aL...1uM</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_visitor_id</code></td>
+<td align="left">Same as <code>tealium_vid</code> and included for legacy reasons</td>
+<td align="left"><code>t3aL...1uM</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="attribution-collector">Attribution Collector</h3>
+
+<p>The following variables are added to the data layer by the <a href="/platforms/ios-swift/module-list/attribution/"><code>Attribution</code></a> module.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>ad_campaign_id</code></td>
+<td align="left">The corresponding ad&rsquo;s campaign ID</td>
+<td align="left"><code>1234567890</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>ad_campaign_name</code></td>
+<td align="left">The corresponding ad&rsquo;s campaign name</td>
+<td align="left"><code>CampaignName</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>ad_creativeset_id</code></td>
+<td align="left">The ID of the Creative Set which the corresponding ad was part of.</td>
+<td align="left"><code>456093</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>ad_creativeset_name</code></td>
+<td align="left">The name of the Creative Set which the corresponding ad was part of.</td>
+<td align="left"><code>Beast Images</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>ad_group_id</code></td>
+<td align="left">The corresponding ad&rsquo;s campaign group ID</td>
+<td align="left"><code>1234567890</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>ad_group_name</code></td>
+<td align="left">The corresponding ad&rsquo;s campaign group name</td>
+<td align="left"><code>AdGroupName</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>ad_keyword</code></td>
+<td align="left">The keyword that drove the ad impression which led to the corresponding ad click</td>
+<td align="left"><code>Keyword</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>ad_keyword_matchtype</code></td>
+<td align="left">Either be Broad, Exact or Search Match.</td>
+<td align="left"><code>Exact</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>ad_org_id</code></td>
+<td align="left">The corresponding ad&rsquo;s campaign organization ID</td>
+<td align="left"><code>OrgID</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>ad_org_name</code></td>
+<td align="left">The corresponding ad&rsquo;s campaign organization name</td>
+<td align="left"><code>OrgName</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>ad_purchase_date</code></td>
+<td align="left">Date and time the user first downloaded your app. In the case where <code>iadconversion-type = “Redownload”</code>, this represents the original purchase date. This may or may not have been associated with an Apple Search Ad.</td>
+<td align="left"><code>2016-12-05T17:31:40Z</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>ad_region</code></td>
+<td align="left">Identifies the country or region associated with the campaign which drove this install.</td>
+<td align="left"><code>US</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>ad_user_clicked_last_30_days</code></td>
+<td align="left">Boolean indicating if user clicked on a Search Ads impression within 30 days prior to app download</td>
+<td align="left"><code>true</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>ad_user_conversion _type</code></td>
+<td align="left">Identifies new download or redownload of the app</td>
+<td align="left"><code>Download</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>ad_user_date_clicked</code></td>
+<td align="left">Date and time the user clicked on a corresponding ad</td>
+<td align="left"><code>2016-12-05T17:31:40Z</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>ad_user_date_converted</code></td>
+<td align="left">Date and time the user downloaded the app</td>
+<td align="left"><code>2016-12-05T17:31:40Z</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_advertising_enabled</code></td>
+<td align="left">Boolean indicating if the user allowed ad tracking (if <code>false</code>, the advertising ID appears as a string of zeroes)</td>
+<td align="left"><code>true</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_advertising_id</code></td>
+<td align="left">User-resettable advertising identifier (IDFA)</td>
+<td align="left"><code>6D92078A-8246...</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_advertising_vendor_id</code></td>
+<td align="left">Unique ID guaranteed to be the same across all apps on the same device from a single vendor (apps with the same 1st 2 parts of the RDNS bundle identifier. For example, com.tealium or com.acme)</td>
+<td align="left"><code>6D92078A-8246...</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_tracking_authorization</code></td>
+<td align="left">The tracking <a href="https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus">authorization status</a> that is added to the dispatch payload</td>
+<td align="left"><code>authorized</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="autotracking-collector">Autotracking Collector</h3>
+
+<p>The following variables are added to the data layer by the <a href="/platforms/ios-swift/module-list/autotracking/"><code>Autotracking</code></a> module.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>autotracked</code></td>
+<td align="left">Set to <code>true</code> and added to each auto-tracked tracking call</td>
+<td align="left"><code>true</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="collect-dispatcher">Collect Dispatcher</h3>
+
+<p>The following variables are added to the data layer by the <a href="/platforms/ios-swift/module-list/collect/"><code>Collect</code></a> dispatcher.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>dispatch_service</code></td>
+<td align="left">Static string to indicate which module the tracking call came from</td>
+<td align="left"><code>collect</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_event_type</code></td>
+<td align="left">String to indicate which event type is being dispatched</td>
+<td align="left"><code>view</code> or <code>event</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="consent-manager-module">Consent Manager Module</h3>
+
+<p>The following variables are added to the data layer by the <a href="/platforms/ios-swift/consent-management/"><code>ConsentManager</code></a> module if enabled.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>consent_categories</code></td>
+<td align="left">An array of the user&rsquo;s selected consent categories</td>
+<td align="left"><code>[&quot;analytics&quot;, &quot;cdp&quot;]</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>consent_status</code></td>
+<td align="left">The user&rsquo;s current consent status</td>
+<td align="left"><code>consented</code>, <code>notConsented</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>policy</code></td>
+<td align="left">Consent Policy</td>
+<td align="left"><code>gdpr</code>, <code>ccpa</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>do_not_sell</code></td>
+<td align="left">Whether or not the user has asked not to sell their data (CCPA only)</td>
+<td align="left"><code>true</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="core">Core</h3>
+
+<p>The following variables are added to the data layer by the <code>Core</code> module.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>enabled_modules</code></td>
+<td align="left">List of all currently-enabled modules</td>
+<td align="left"><code>tagmanagement</code>, <code>collect</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>screen_title</code></td>
+<td align="left">Screen title passed to trackView call</td>
+<td align="left"><code>homescreen</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_datasource</code></td>
+<td align="left">Specifies the data source name (added to every dispatch)</td>
+<td align="left"><code>a1b2c3</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_event</code></td>
+<td align="left">The name of the event being tracked</td>
+<td align="left"><code>checkout</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>queue_reason</code></td>
+<td align="left">Added to the track call if the tracking request was queued due to lack of connectivity. Only present for queued events; absent for all other events</td>
+<td align="left"><code>connectivity</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>was_queued</code></td>
+<td align="left">Indicates whether a tracking call was queued due to no connectivity. Only present for queued events; absent for all other events</td>
+<td align="left"><code>true</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_account</code></td>
+<td align="left">Current Tealium account (from TealiumConfig object)</td>
+<td align="left"><code>tealium</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_environment</code></td>
+<td align="left">Current Tealium environment (from TealiumConfig object)</td>
+<td align="left"><code>dev</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_library_name</code></td>
+<td align="left">Tealium library name</td>
+<td align="left"><code>swift</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_library_version</code></td>
+<td align="left">Tealium library version</td>
+<td align="left"><code>1.8.0</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_profile</code></td>
+<td align="left">Current Tealium profile (from TealiumConfig object)</td>
+<td align="left"><code>mobile</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_random</code></td>
+<td align="left">Random number</td>
+<td align="left"><code>8449989974958830</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_session_id</code></td>
+<td align="left">Tealium Session ID</td>
+<td align="left"><code>1511262829677</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_timestamp_epoch</code></td>
+<td align="left">Current Unix timestamp (1970 epoch) in seconds</td>
+<td align="left"><code>1511262829</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>timestamp</code></td>
+<td align="left">Event timestamp in ISO8601 (Zulu Time), UTC</td>
+<td align="left"><code>2017-11-20T14:48:00Z</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>timestamp_local</code></td>
+<td align="left">Event timestamp in ISO8601 local timezone</td>
+<td align="left"><code>2017-11-20T06:48:00</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>timestamp_offset</code></td>
+<td align="left">Current offset from UTC in hours</td>
+<td align="left"><code>-8</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>timestamp_unix</code></td>
+<td align="left">Current Unix timestamp (1970 epoch) in seconds</td>
+<td align="left"><code>1511189280</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>timestamp_unix_milliseconds</code></td>
+<td align="left">Current Unix timestamp (1970 epoch) in milliseconds</td>
+<td align="left"><code>1511189280337</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>deep_link_url</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The full URL of the deep link that opened the app, including query parameters.</td>
+</tr>
+
+<tr>
+<td align="left"><code>deep_link_param_X</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Each query parameter of the deep link URL, where <code>X</code> is the name of the parameter, such as <code>deep_link_param_campaign_code</code>.</td>
+</tr>
+
+<tr>
+<td align="left"><code>deep_link_referrer_url</code> (iOS)</td>
+<td align="left"><code>String</code></td>
+<td align="left">The full URL of the browser page where the deep link was clicked.</td>
+</tr>
+
+<tr>
+<td align="left"><code>deep_link_referrer_app</code> (iOS)</td>
+<td align="left"><code>String</code></td>
+<td align="left">The identifier of the referrer app when the deep link comes from a custom schema in another app signed by the same team.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="crash-collector">Crash Collector</h3>
+
+<p>The following variables are added to the data layer by the <a href="/platforms/ios-swift/module-list/crash-reporter/"><code>CrashReporter</code></a> module.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>app_memory_usage</code></td>
+<td align="left">Current memory used by the app on the device at the time of the crash</td>
+<td align="left"><code>143.57MB</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>crash_cause</code></td>
+<td align="left">Cause of the crash</td>
+<td align="left"><code>Crash Reason</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>crash_name</code></td>
+<td align="left">Friendly name of the crash, if available</td>
+<td align="left"><code>Crash Name</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>crash_libraries</code></td>
+<td align="left">List of loaded libraries at the time of the crash</td>
+<td align="left"><code>{ &quot;baseAddress&quot;: &quot;0xa3e0000&quot;, &quot;codeType&quot;: { &quot;arch&quot;: 64, &quot;typeEncoding&quot;: &quot;Mach&quot;}, &quot;imageName&quot;: &quot;/Applications/Xcode9.3.app/ Contents/Developer/Platforms/ iPhoneOS.platform/Developer/ Library/CoreSimulator/Profiles/ Runtimes/iOS.simruntime/ Contents/Resources/ RuntimeRoot/usr/lib/dyld_sim&quot;, &quot;imageSize&quot;: 212992, &quot;imageUuid&quot;: &quot;4015e9b70bde&quot; }</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>crash_process_id</code></td>
+<td align="left">PID of the app at time of crash</td>
+<td align="left"><code>84351</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>crash_process_path</code></td>
+<td align="left">Path the app was running under</td>
+<td align="left"><code>/DemoApp.app/DemoApp</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>crash_parent_process</code></td>
+<td align="left">Parent process that launched the app</td>
+<td align="left"><code>launchd_sim</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>crash_parent_process_id</code></td>
+<td align="left">Parent process PID</td>
+<td align="left"><code>83183</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>crash_signal_address</code></td>
+<td align="left">Signal address of the crash</td>
+<td align="left"><code>4572945982</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>crash_signal_code</code></td>
+<td align="left">Signal code causing the crash</td>
+<td align="left"><code>#0</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>crash_signal_name</code></td>
+<td align="left">Signal name causing the crash</td>
+<td align="left"><code>SIGABRT</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>crash_threads</code></td>
+<td align="left">Returns all active threads at the time of the crash</td>
+<td align="left"><code>{&quot;crashed&quot;: 1,&quot;registers&quot;: {&quot;cs&quot;: &quot;0x07&quot;},&quot;stack&quot;: {&quot;instructionPointer&quot;: 4572945982,&quot;symbolInfo&quot;: {&quot;symbolName&quot;: &quot;&quot;,&quot;symbolStartAddr&quot;: 0},&quot;threadId&quot;: &quot;&quot;}}</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>crash_uuid</code></td>
+<td align="left">Unique identifier for this specific crash</td>
+<td align="left"><code>CC2DA0E9-E544-429A-AC5E-A268FC62F02A</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_memory_usage</code></td>
+<td align="left">Current memory used by the app on the device at the time of the crash</td>
+<td align="left"><code>143.57MB</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_memory_available</code></td>
+<td align="left">Free memory on device at the time of the crash</td>
+<td align="left"><code>1068.88MB</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_os_build</code></td>
+<td align="left">Current OS build number</td>
+<td align="left"><code>15E217</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>memory_free</code></td>
+<td align="left">Free memory on device at the time of the crash</td>
+<td align="left"><code>1068.88MB</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="device-data-collector">Device Data Collector</h3>
+
+<p>The following variables are added to the data layer by the <a href="/platforms/ios-swift/module-list/device-data/"><code>DeviceData</code></a> module.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>app_memory_usage</code></td>
+<td align="left">Memory being used by the current process/app in Megabytes</td>
+<td align="left"><code>35.75MB</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>carrier</code></td>
+<td align="left">Mobile network carrier name</td>
+<td align="left"><code>EE</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>carrier_iso</code></td>
+<td align="left">Mobile carrier ISO</td>
+<td align="left"><code>gb</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>carrier_mcc</code></td>
+<td align="left">Carrier mobile country code</td>
+<td align="left"><code>234</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>carrier_mnc</code></td>
+<td align="left">Carrier mobile network code</td>
+<td align="left"><code>34</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>connection_type</code></td>
+<td align="left">Current connection type</td>
+<td align="left"><code>wifi</code>, <code>cellular</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device</code></td>
+<td align="left">Consumer device name</td>
+<td align="left"><code>iPhone 7 Plus</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_architecture</code></td>
+<td align="left">Device architecture</td>
+<td align="left"><code>64</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_battery_percent</code></td>
+<td align="left">Current battery percentage at time of track call</td>
+<td align="left"><code>58</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_cputype</code></td>
+<td align="left">Device CPU type</td>
+<td align="left"><code>ARM64v8</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_ischarging</code></td>
+<td align="left">Boolean to indicate if device is currently charging at time of track call</td>
+<td align="left"><code>true</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_language</code></td>
+<td align="left">Current device language</td>
+<td align="left"><code>en-US</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_orientation</code></td>
+<td align="left">Simple orientation</td>
+<td align="left"><code>Portrait</code>, <code>Landscape</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_orientation_extended</code></td>
+<td align="left">Full orientation</td>
+<td align="left"><code>Face Up</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_os_version</code></td>
+<td align="left">Operating system version</td>
+<td align="left"><code>11.1</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_resolution</code></td>
+<td align="left">Physical screen resolution in pixels (width x height)</td>
+<td align="left"><code>828x1792</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_logical_resolution</code></td>
+<td align="left">Logical screen resolution in points (width x height)</td>
+<td align="left"><code>414x896</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>device_type</code></td>
+<td align="left">Apple internal device identifier</td>
+<td align="left"><code>iPhone12,1</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>memory_active*</code></td>
+<td align="left">Total active memory on the device</td>
+<td align="left"><code>997.78MB</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>memory_compressed*</code></td>
+<td align="left">Total compressed memory on the device</td>
+<td align="left"><code>153.39MB</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>memory_free*</code></td>
+<td align="left">Total free memory on the device</td>
+<td align="left"><code>120.81MB</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>memory_inactive*</code></td>
+<td align="left">Total inactive memory on the device</td>
+<td align="left"><code>441.83MB</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>memory_physical*</code></td>
+<td align="left">Total physical memory on the device (RAM) in Megabytes</td>
+<td align="left"><code>2013.50MB</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>memory_wired*</code></td>
+<td align="left">Total wired memory on the device</td>
+<td align="left"><code>207.12MB</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>model_name</code></td>
+<td align="left">Model name</td>
+<td align="left"><code>iPhone 7 Plus</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>model_variant</code></td>
+<td align="left">Model variant (generally indicates which radio technology is available on the device)</td>
+<td align="left"><code>CDMA</code>, <code>GSM</code>, <code>WiFi</code>, <code>Cellular</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>network_iso_country_code</code></td>
+<td align="left">Mobile network ISO country code</td>
+<td align="left"><code>gb</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>os_name</code></td>
+<td align="left">Operating System Name</td>
+<td align="left"><code>iOS</code>, <code>tvOS</code>, <code>watchOS</code>, <code>macOS</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>platform</code></td>
+<td align="left">Operating System Name</td>
+<td align="left"><code>iOS</code>, <code>tvOS</code>, <code>watchOS</code>, <code>macOS</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="lifecycle-collector">Lifecycle Collector</h3>
+
+<p>The following variables are added to the data layer by the <a href="/platforms/ios-swift/module-list/lifecycle/"><code>Lifecycle</code></a> module.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>lifecycle_dayofweek_local</code></td>
+<td align="left">Local day of week that call was made, such as 1=Sunday, 2=Monday</td>
+<td align="left"><code>4</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_dayssincelastwake</code></td>
+<td align="left">Days since last detected wake in integer increments</td>
+<td align="left"><code>1</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_dayssincelaunch</code></td>
+<td align="left">Days since first launch in integer increments</td>
+<td align="left"><code>23</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_dayssinceupdate</code></td>
+<td align="left">Days since the last detected app version update in integer increments</td>
+<td align="left"><code>46</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_diddetect_crash</code></td>
+<td align="left">Was a crash detected during this launch/wake event (populated only if <code>true</code>)</td>
+<td align="left"><code>true</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_firstlaunchdate</code></td>
+<td align="left">GMT timestamp of the first detected launch/wake in ISO8601 format from Zulu time</td>
+<td align="left"><code>2013-07-11T17:55:04Z</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_firstlaunchdate_MMDDYYYY</code></td>
+<td align="left">GMT Timestamp formatted as MM/DD/YYYY</td>
+<td align="left"><code>01/17/2012</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_hourofday_local</code></td>
+<td align="left">Local hour of day that call was made (24 hour format)</td>
+<td align="left"><code>true</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_isfirstlaunch</code></td>
+<td align="left">Only present if call is the first launch/wake call</td>
+<td align="left"><code>true</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_isfirstlaunchupdate</code></td>
+<td align="left">Only present if call is first launch/wake after a detected updated</td>
+<td align="left"><code>true</code>, <code>false</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_isfirstwakemonth</code></td>
+<td align="left">Only present if call is first launch/wake of the month</td>
+<td align="left"><code>true</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_isfirstwaketoday</code></td>
+<td align="left">Only present if call is first launch/wake of the day</td>
+<td align="left"><code>true</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_launchcount</code></td>
+<td align="left">Total number of launches this version of your app (since the last update)</td>
+<td align="left"><code>3</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_priorsecondsawake</code></td>
+<td align="left">Whole seconds app was awake since last launch only. Aggregates total from all wakes prior. Sent only with <code>lifecycle_type:launch</code> calls.</td>
+<td align="left"><code>126</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_secondsawake</code></td>
+<td align="left">Whole seconds app was awake since most recent wake/launch</td>
+<td align="left"><code>30</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_sleepcount</code></td>
+<td align="left">Total number of times your app has gone to sleep (resets if updated)</td>
+<td align="left"><code>5</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_totalcrashcount</code></td>
+<td align="left">Total number of crashes counted since install (only reset if app deleted)</td>
+<td align="left"><code>21</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_totallaunchcount</code></td>
+<td align="left">Total number of launches since install (only reset if app deleted)</td>
+<td align="left"><code>3</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_totalsecondsawake</code></td>
+<td align="left">Total number of seconds your app has been in a woken/active state since app install (only reset if app deleted)</td>
+<td align="left"><code>36</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_totalsleepcount</code></td>
+<td align="left">Total number of times your app has gone into the background since app install (only reset if app deleted)</td>
+<td align="left"><code>400</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_totalwakecount</code></td>
+<td align="left">Total number of launches + wakes since install (only reset if app deleted)</td>
+<td align="left"><code>563</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_type</code></td>
+<td align="left">Type of lifecycle call.</td>
+<td align="left"><code>launch</code>, <code>wake</code>, <code>sleep</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_updatelaunchdate</code></td>
+<td align="left">GMT timestamp of first wake/launch after a version update has been detected</td>
+<td align="left"><code>2014-09-08T18:10:01Z</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_wakecount</code></td>
+<td align="left">Total number of launches + wakes in this version of your app (resets if updated)</td>
+<td align="left"><code>29</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="location-collector">Location Collector</h3>
+
+<p>The following variables are added to the data layer by the <a href="/platforms/ios-swift/module-list/location/"><code>Location</code></a> module.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Variable  Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>geofence_name</code></td>
+<td align="left">The name of the geofence region</td>
+<td align="left"><code>Tealium_San_Diego</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>geofence_transition_type</code></td>
+<td align="left">The type of geofence transition event</td>
+<td align="left"><code>entered</code>,<code>exited</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>location_timestamp</code></td>
+<td align="left">The recorded date/time (GMT) the user entered/exited the geofence region</td>
+<td align="left"><code>2020-01-28 16:29:46 +0000</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>latitude</code></td>
+<td align="left">The latitude of the user&rsquo;s most recently recorded location</td>
+<td align="left"><code>32.906119</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>longitude</code></td>
+<td align="left">The longitude of the user&rsquo;s most recently recorded location</td>
+<td align="left"><code>-117.23791632509666</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>movement_speed</code></td>
+<td align="left">The instantaneous speed of the device, measured in meters per second</td>
+<td align="left"><code>1.0</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>location_accuracy</code></td>
+<td align="left">String   The accuracy setting for the location module</td>
+<td align="left"><code>high</code>, <code>low</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="tag-management">Tag Management</h3>
+
+<p>The following variables are added to the data layer by the <a href="/platforms/ios-swift/module-list/tag-management/"><code>Tag Management</code></a> module.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Variable Name</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>dispatch_service</code></td>
+<td align="left">Static string to indicate which module the tracking call came from</td>
+<td align="left"><code>tagmanagement</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_event_type</code></td>
+<td align="left">String to indicate which event type is being dispatched</td>
+<td align="left"><code>view</code> or <code>event</code></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/ios-swift/track/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Track "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Track</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/ios-swift/consent-management/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Consent Management</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Consent Management"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  December 2, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  December 2, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#custom-data">Custom Data</a></li>
+              <ul class="toc-h3"><li><a href="#data-expiration">Data Expiration</a></li>
+              <li><a href="#retrieve-all-data">Retrieve All Data</a></li>
+              <li><a href="#clear-data">Clear Data</a></li>
+              <li><a href="#example">Example</a></li>
+              </ul><li><a href="#module-data">Module Data</a></li>
+              <ul class="toc-h3"><li><a href="#app-data-collector">App Data Collector</a></li>
+              <li><a href="#attribution-collector">Attribution Collector</a></li>
+              <li><a href="#autotracking-collector">Autotracking Collector</a></li>
+              <li><a href="#collect-dispatcher">Collect Dispatcher</a></li>
+              <li><a href="#consent-manager-module">Consent Manager Module</a></li>
+              <li><a href="#core">Core</a></li>
+              <li><a href="#crash-collector">Crash Collector</a></li>
+              <li><a href="#device-data-collector">Device Data Collector</a></li>
+              <li><a href="#lifecycle-collector">Lifecycle Collector</a></li>
+              <li><a href="#location-collector">Location Collector</a></li>
+              <li><a href="#tag-management">Tag Management</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

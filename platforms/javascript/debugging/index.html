@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,248 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#debug-mode">Debug Mode</a></li>
-              <li><a href="#breakpoints">Breakpoints</a></li>
-              <li><a href="#console-output">Console Output</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/javascript/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        JAVASCRIPT
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Debugging</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Learn the basics of debugging tracking calls that are initiated from <code>utag.js</code>.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<p>The functions <code>utag.view()</code> and <code>utag.link()</code> are used to track page views and events, respectively. This article shows how to debug these functions to see how and when they are being called and what data is being passed.</p>
-
-<h2 id="debug-mode">Debug Mode</h2>
-
-<p>To enable debug mode, open the debugging tools in your favorite browser and run the following command:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">document.cookie=<span style="color:#a31515">&#34;utagdb=true&#34;</span>;
-</code></pre></div>
-<p>This cookie turns on debug mode within <code>utag.js</code>, which generates useful output to the console.</p>
-
-<p><img src="/images/platforms/javascript/console-output.png" alt="Console Output" title="utag.js debug console output" /></p>
-
-<p>Once debug mode is enabled, when you trigger actions on the page that are tracked, debug logs appear in the console. Inspect the console output for: <code>trigger: view</code> or <code>trigger: link</code></p>
-
-<p>The following example demonstrates how this looks in the console after an event is tracked:</p>
-
-<p><img src="/images/platforms/javascript/debugging-console-utag-link.png" alt="Debug Console - `utag.link`" title="Debug Console utag.link" /></p>
-
-<p>Click the line under <code>trigger:view</code> or <code>trigger:link</code> to expand and collapse the event data object.</p>
-
-<h2 id="breakpoints">Breakpoints</h2>
-
-<p>For more in-depth debugging, it is useful to set breakpoints in <code>utag.js</code> to pause the code when calls tracking calls are made. This allows you to review the data being passed as well as examine the stack trace to see where the call originated. </p>
-
-<p>To use Chrome developer tools to set a breakpoint:</p>
-
-<ol>
-<li><p>In Chrome Developer Tools, go to Sources and open <code>utag.js</code>.</p></li>
-
-<li><p>Unminify (pretty print) the code by clicking the curly braces at the bottom left of the window.</p></li>
-
-<li><p>Find the line with <code>return this.track(</code> and click the line number to set a breakpoint:<br />
-<img src="/images/platforms/javascript/debugging-utag-code.png" alt="utag breakpoint" title="utag breakpoint" /></p></li>
-
-<li><p>Return to the main window and perform an action to invoke one of the tracking calls. When a tracking call is made, one of the breakpoints stops the action in order to inspect the code.</p></li>
-
-<li><p>In the right-hand side of the developer tool there is a section called &rdquo;Watch Expression&rdquo;. Click the <strong>+</strong> sign to add a watch expression. Type <code>a</code> and click  <strong>Enter</strong> to add a watch expression for this variable.</p></li>
-
-<li><p>Expand the object that is contained in parameter <code>a</code> to show the data was passed to the tracking call. This is the data that you have to work with in extensions, load rules and mappings. </p></li>
-</ol>
-
-<p><a href="https://developers.google.com/web/tools/chrome-devtools/javascript/breakpoints">Learn more</a> about setting breakpoints in Chrome Developer Tools.</p>
-
-<p class="tip"><i class="fas fa-star"></i>One of the advantages of this method is the use of the Call Stack, reported through the Developer Tools in the Sources tab, to inspect the origin of the tracking call.</p>
-
-<p>The following is an example of where to look for the location of a <code>utag.link()</code> call:</p>
-
-<p><img src="/images/platforms/javascript/utag-link-call-stack.png" alt="utag-link-call-stack.png" title="utag-link-call-stack.png" /></p>
-
-<p>The preceding image shows the breakpoint in <code>utag.js</code> that was placed to trap the <code>utag.link()</code> call. Item (2), when clicked, shows the <code>utag.link()</code> call that is made within the source code (to the left). </p>
-
-<p>You have now successfully been able to debug three things:</p>
-
-<ul>
-<li>Did the breakpoint get hit. If yes, then the function is set up to be triggered correctly.</li>
-<li>Since the breakpoint was hit, you were able to see what data was sent when <code>utag.view()</code> or <code>utag.link()</code> was called. </li>
-<li>You were able to view the actual configuration of the <code>utag.view()</code> or <code>utag.link()</code> call. </li>
-</ul>
-
-<p>This is helpful when you are not seeing the correct data passed when certain events are triggered. It is likely that the data being sent in the function is incorrect.</p>
-
-<h2 id="console-output">Console Output</h2>
-
-<p>Below is a breakdown of the different output results you see. This is not a comprehensive list as the output is specific to your implementation. The log output may change at any time due to updates and enhancements.</p>
-
-<table>
-<thead>
-<tr>
-<th>Output Result</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>Pre-INIT</code></td>
-<td>Pre Loader scoped extensions are now running</td>
-</tr>
-
-<tr>
-<td><code>utag.loader.RD</code></td>
-<td>The library reads data such as the UDO, Meta Data, DOM data and more</td>
-</tr>
-
-<tr>
-<td><code>utag.load.INIT</code></td>
-<td>The standard <code>utag.js</code> file logic is initiated</td>
-</tr>
-
-<tr>
-<td><code>All Tags EXTENSIONS</code></td>
-<td>All Tags scoped extensions are now running</td>
-</tr>
-
-<tr>
-<td><code>utag.loader.INIT: waiting 1</code></td>
-<td>Tags waiting for DOM Ready</td>
-</tr>
-
-<tr>
-<td><code>READY</code></td>
-<td>The library is ready for DOM Ready to occur</td>
-</tr>
-
-<tr>
-<td><code>WQ</code></td>
-<td>Indicates how many tags are set to wait (for example, the <code>&quot;services-dang/tiq-as&quot;</code> profile has 4 tags enabled and all 4 are set to wait)</td>
-</tr>
-
-<tr>
-<td><code>Attach to head</code></td>
-<td>Tag script is added into the source code</td>
-</tr>
-
-<tr>
-<td><code>utag.loader.WAIT</code></td>
-<td>The specified tag is loaded into the browser but to wait until DOM Ready to fire the tags</td>
-</tr>
-
-<tr>
-<td><code>utag.loader.LOAD</code></td>
-<td>The tag&rsquo;s <code>u.send</code> function runs, sending data to the tag</td>
-</tr>
-
-<tr>
-<td><code>Sending: 1</code></td>
-<td>The tag is triggering the call to the vendor</td>
-</tr>
-
-<tr>
-<td><code>SETFORCE:WAIT</code></td>
-<td>Tags are about fire due do DOM Ready</td>
-</tr>
-
-<tr>
-<td><code>trigger:view</code></td>
-<td>A tracking call was made</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/javascript/settings/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Settings "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Settings</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/javascript/release-notes/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Release Notes</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Release Notes"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7706,33 +7472,274 @@ var utag_data = {
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/javascript/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        JAVASCRIPT
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Debugging</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Learn the basics of debugging tracking calls that are initiated from <code>utag.js</code>.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<p>The functions <code>utag.view()</code> and <code>utag.link()</code> are used to track page views and events, respectively. This article shows how to debug these functions to see how and when they are being called and what data is being passed.</p>
+
+<h2 id="debug-mode">Debug Mode</h2>
+
+<p>To enable debug mode, open the debugging tools in your favorite browser and run the following command:</p>
+
+<pre><code class="language-javascript">document.cookie=&quot;utagdb=true&quot;;
+</code></pre>
+
+<p>This cookie turns on debug mode within <code>utag.js</code>, which generates useful output to the console.</p>
+
+<p><img src="/images/platforms/javascript/console-output.png" alt="Console Output" title="utag.js debug console output" /></p>
+
+<p>Once debug mode is enabled, when you trigger actions on the page that are tracked, debug logs appear in the console. Inspect the console output for: <code>trigger: view</code> or <code>trigger: link</code></p>
+
+<p>The following example demonstrates how this looks in the console after an event is tracked:</p>
+
+<p><img src="/images/platforms/javascript/debugging-console-utag-link.png" alt="Debug Console - `utag.link`" title="Debug Console utag.link" /></p>
+
+<p>Click the line under <code>trigger:view</code> or <code>trigger:link</code> to expand and collapse the event data object.</p>
+
+<h2 id="breakpoints">Breakpoints</h2>
+
+<p>For more in-depth debugging, it is useful to set breakpoints in <code>utag.js</code> to pause the code when calls tracking calls are made. This allows you to review the data being passed as well as examine the stack trace to see where the call originated. </p>
+
+<p>To use Chrome developer tools to set a breakpoint:</p>
+
+<ol>
+<li><p>In Chrome Developer Tools, go to Sources and open <code>utag.js</code>.</p></li>
+
+<li><p>Unminify (pretty print) the code by clicking the curly braces at the bottom left of the window.</p></li>
+
+<li><p>Find the line with <code>return this.track(</code> and click the line number to set a breakpoint:<br />
+<img src="/images/platforms/javascript/debugging-utag-code.png" alt="utag breakpoint" title="utag breakpoint" /></p></li>
+
+<li><p>Return to the main window and perform an action to invoke one of the tracking calls. When a tracking call is made, one of the breakpoints stops the action in order to inspect the code.</p></li>
+
+<li><p>In the right-hand side of the developer tool there is a section called &rdquo;Watch Expression&rdquo;. Click the <strong>+</strong> sign to add a watch expression. Type <code>a</code> and click  <strong>Enter</strong> to add a watch expression for this variable.</p></li>
+
+<li><p>Expand the object that is contained in parameter <code>a</code> to show the data was passed to the tracking call. This is the data that you have to work with in extensions, load rules and mappings. </p></li>
+</ol>
+
+<p><a href="https://developers.google.com/web/tools/chrome-devtools/javascript/breakpoints">Learn more</a> about setting breakpoints in Chrome Developer Tools.</p>
+
+<p class="tip"><i class="fas fa-star"></i>One of the advantages of this method is the use of the Call Stack, reported through the Developer Tools in the Sources tab, to inspect the origin of the tracking call.</p>
+
+<p>The following is an example of where to look for the location of a <code>utag.link()</code> call:</p>
+
+<p><img src="/images/platforms/javascript/utag-link-call-stack.png" alt="utag-link-call-stack.png" title="utag-link-call-stack.png" /></p>
+
+<p>The preceding image shows the breakpoint in <code>utag.js</code> that was placed to trap the <code>utag.link()</code> call. Item (2), when clicked, shows the <code>utag.link()</code> call that is made within the source code (to the left). </p>
+
+<p>You have now successfully been able to debug three things:</p>
+
+<ul>
+<li>Did the breakpoint get hit. If yes, then the function is set up to be triggered correctly.</li>
+<li>Since the breakpoint was hit, you were able to see what data was sent when <code>utag.view()</code> or <code>utag.link()</code> was called. </li>
+<li>You were able to view the actual configuration of the <code>utag.view()</code> or <code>utag.link()</code> call. </li>
+</ul>
+
+<p>This is helpful when you are not seeing the correct data passed when certain events are triggered. It is likely that the data being sent in the function is incorrect.</p>
+
+<h2 id="console-output">Console Output</h2>
+
+<p>Below is a breakdown of the different output results you see. This is not a comprehensive list as the output is specific to your implementation. The log output may change at any time due to updates and enhancements.</p>
+
+<table>
+<thead>
+<tr>
+<th>Output Result</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>Pre-INIT</code></td>
+<td>Pre Loader scoped extensions are now running</td>
+</tr>
+
+<tr>
+<td><code>utag.loader.RD</code></td>
+<td>The library reads data such as the UDO, Meta Data, DOM data and more</td>
+</tr>
+
+<tr>
+<td><code>utag.load.INIT</code></td>
+<td>The standard <code>utag.js</code> file logic is initiated</td>
+</tr>
+
+<tr>
+<td><code>All Tags EXTENSIONS</code></td>
+<td>All Tags scoped extensions are now running</td>
+</tr>
+
+<tr>
+<td><code>utag.loader.INIT: waiting 1</code></td>
+<td>Tags waiting for DOM Ready</td>
+</tr>
+
+<tr>
+<td><code>READY</code></td>
+<td>The library is ready for DOM Ready to occur</td>
+</tr>
+
+<tr>
+<td><code>WQ</code></td>
+<td>Indicates how many tags are set to wait (for example, the <code>&quot;services-dang/tiq-as&quot;</code> profile has 4 tags enabled and all 4 are set to wait)</td>
+</tr>
+
+<tr>
+<td><code>Attach to head</code></td>
+<td>Tag script is added into the source code</td>
+</tr>
+
+<tr>
+<td><code>utag.loader.WAIT</code></td>
+<td>The specified tag is loaded into the browser but to wait until DOM Ready to fire the tags</td>
+</tr>
+
+<tr>
+<td><code>utag.loader.LOAD</code></td>
+<td>The tag&rsquo;s <code>u.send</code> function runs, sending data to the tag</td>
+</tr>
+
+<tr>
+<td><code>Sending: 1</code></td>
+<td>The tag is triggering the call to the vendor</td>
+</tr>
+
+<tr>
+<td><code>SETFORCE:WAIT</code></td>
+<td>Tags are about fire due do DOM Ready</td>
+</tr>
+
+<tr>
+<td><code>trigger:view</code></td>
+<td>A tracking call was made</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/javascript/settings/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Settings "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Settings</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/javascript/release-notes/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Release Notes</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Release Notes"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  March 11, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  March 11, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#debug-mode">Debug Mode</a></li>
+              <li><a href="#breakpoints">Breakpoints</a></li>
+              <li><a href="#console-output">Console Output</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

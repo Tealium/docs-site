@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,242 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#supported-platforms">Supported platforms</a></li>
-              <li><a href="#use-cases">Use Cases</a></li>
-              <ul class="toc-h3"><li><a href="#migrating-to-server-side-analytics">Migrating to Server-Side Analytics</a></li>
-              <li><a href="#tealium-iq-tag-management">Tealium iQ Tag Management</a></li>
-              <li><a href="#migrating-from-adobe-sdk-to-tealium-sdk">Migrating from Adobe SDK to Tealium SDK</a></li>
-              <li><a href="#tracking-different-visitors-on-the-same-device">Tracking different visitors on the same device</a></li>
-              <li><a href="#set-your-own-visitor-id-and-authentication-state">Set your own visitor ID and authentication state</a></li>
-              </ul><li><a href="#troubleshooting">Troubleshooting</a></li>
-              <li><a href="#data-layer">Data Layer</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/getting-started/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        GETTING STARTED
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Adobe Visitor Service Module</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Learn about the Adobe Visitor Service Module.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<p>The Adobe Visitor Service module interfaces directly with Adobe’s REST API to retrieve and maintain the Experience Cloud ID (ECID) for visitors. The ECID identifies the same visitor in different parts of the Adobe ecosystem, such as Adobe Target and Adobe Analytics, and identifies unique visitors.</p>
-
-<p>If you are migrating from the Adobe tracking SDK to the Tealium SDK, use the Adobe Visitor Service module to pass an ECID in the tracking payload. The new ECID in the data layer may be mapped in the server-side Adobe connectors in Tealium EventStream or Tealium AudienceStream. The Adobe Visitor Service module provides a seamless transition to the Tealium SDK by reusing the existing ECID if it exists and generating a new one if it doesn&rsquo;t, ensuring an accurate count of visitors in your app.</p>
-
-<h2 id="supported-platforms">Supported platforms</h2>
-
-<p>The following platforms support the Adobe Visitor Service module:</p>
-
-<ul>
-<li><a href="/platforms/android-kotlin/module-list/adobe-visitor-service/">Tealium for Android</a></li>
-<li><a href="/platforms/ios-swift/module-list/adobe-visitor-service/">Tealium for iOS</a></li>
-</ul>
-
-<h2 id="use-cases">Use Cases</h2>
-
-<h3 id="migrating-to-server-side-analytics">Migrating to Server-Side Analytics</h3>
-
-<p>Migrate your Adobe integrations server-side and map the ECID to the <code>marketingCloudVisitorID</code> parameter in the connector using Adobe Analytics server-side through EventStream, and need a valid ECID for multiple Adobe products to work together. The Tealium SDK requests the ECID from Adobe before sending any calls to EventStream, and the ECID is mapped to the <code>marketingCloudVisitorID</code> property in the Adobe Analytics connector.</p>
-
-<h3 id="tealium-iq-tag-management">Tealium iQ Tag Management</h3>
-
-<p>We recommend using Tealium iQ Tag Management to generate the ECID when using the Adobe Analytics tag. This guarantees the ECID is readily available, persisted in storage, and independent of the cookie store in the hidden webview.</p>
-
-<h3 id="migrating-from-adobe-sdk-to-tealium-sdk">Migrating from Adobe SDK to Tealium SDK</h3>
-
-<p>Migration from the Adobe SDK to the Tealium module is seamless. If your app currently relies on the Adobe SDK to manage the ECID, we recommend having a transition period during which the Adobe SDK is present in the app alongside the Tealium SDK. If the visitor has an existing Adobe ECID, pass it to the Tealium module via the <code>config.adobeVisitorExistingEcid</code> property. If the property is set during initialization, then the existing ECID is used. If the property is not set, the Tealium module retrieves a new one from the Adobe API.</p>
-
-<h3 id="tracking-different-visitors-on-the-same-device">Tracking different visitors on the same device</h3>
-
-<p>If you detect different visitor accounts in your app, reset the ECID to ensure each visitor is tracked separately by calling <code>tealium.adobeVisitor?.resetVisitor()</code>. This resets the current ECID and a new one is automatically requested from the Adobe API.</p>
-
-<h3 id="set-your-own-visitor-id-and-authentication-state">Set your own visitor ID and authentication state</h3>
-
-<p>There are several methods for <a href="#passing-your-own-visitor-id">passing your own visitor ID</a> to the Visitor API so that the ID service matches the anonymous ECID to a known ID.</p>
-
-<h4 id="set-a-known-visitor-id">Set a known visitor ID</h4>
-
-<p>If you know the visitor&rsquo;s ID and authentication state when you initialize, use the configuration property <code>adobeVisitorDataProviderId</code> which sets the visitor&rsquo;s known ID when the module starts:</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="Kotlin" title="Kotlin">
-  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.adobeVisitorDataProviderId = <span style="color:#a31515">&#34;01&#34;</span> <span style="color:#008000">// Data provider ID for this type of visitor ID
-</span><span style="color:#008000"></span>config.adobeVisitorAuthState = AdobeAuthState.AUTH_STATE_AUTHENTICATED
-config.adobeVisitorCustomVisitorId = <span style="color:#a31515">&#34;customeremail@emailprovider.com&#34;</span></code></pre></div>
-</div>
-
-<div class="tab-pane" data-lang="Swift" title="Swift">
-  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.adobeVisitorDataProviderId = <span style="color:#a31515">&#34;01&#34;</span> <span style="color:#008000">// Data provider ID for this type of visitor ID</span>
-config.adobeVisitorAuthState = .authenticated
-config.adobeVisitorCustomVisitorId = <span style="color:#a31515">&#34;customeremail@emailprovider.com&#34;</span></code></pre></div>
-</div>
-
-<p></div>
-</div></p>
-
-<p>The module automatically requests a new ID if needed, and subsequently sends an additional API call to link the ECID to the known ID supplied in the <code>TealiumConfig</code> properties.</p>
-
-<p>If you need to pass the ID and authentication state when the visitor logs in, call the following method to link the visitor&rsquo;s known ID to the anonymous ECID:</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="Kotlin" title="Kotlin">
-  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium.adobeVisitorApi?.linkEcidToKnownIdentifier(<span style="color:#a31515">&#34;myidentifier&#34;</span>, <span style="color:#a31515">&#34;123456&#34;</span>, AdobeAuthState.AUTH_STATE_AUTHENTICATED, <span style="color:#00f">null</span>)</code></pre></div>
-</div>
-
-<div class="tab-pane" data-lang="Swift" title="Swift">
-  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.adobeVisitorApi?.linkECIDToKnownIdentifier(<span style="color:#a31515">&#34;myidentifier&#34;</span>, adobeDataProviderId: <span style="color:#a31515">&#34;123456&#34;</span>, .unknown)</code></pre></div>
-</div>
-
-<p></div>
-</div></p>
-
-<h2 id="troubleshooting">Troubleshooting</h2>
-
-<p>The following lists the different API failure behaviors:</p>
-
-<ul>
-<li><p><strong>Missing Adobe organization ID</strong><br />
-If the module is enabled but an Adobe organization ID has not been passed in the <code>TealiumConfig</code> object, the module is disabled and tracking calls continue without an Adobe ECID.</p></li>
-
-<li><p><strong>Invalid Adobe organization ID</strong><br />
-The module attempts to retry up to the retry limit (default: 5). After the retry limit has exceeded, tracking calls continue as normal without the ECID, and any queued requests are sent immediately.</p></li>
-
-<li><p><strong>Adobe API returns an error or an empty response</strong><br />
-In the event that an error is returned while sending a request, such as connectivity failure, the module attempts to retry up to the retry limit (default: 5). After the retry limit has exceeded, tracking calls continue as normal without the ECID, and any queued requests are sent immediately.</p></li>
-
-<li><p>The module encounters either (2) or (3) above, but the visitor&rsquo;s previous ECID has been provided on the <code>TealiumConfig</code> object. After the maximum retries, the module uses the provided visitor ID value and does not block any requests.</p></li>
-</ul>
-
-<p class="note"><i class="fas fa-info-circle"></i>If your top priority is getting data to Tealium, then set the number of retries to 0 to skip retrieving the ECID in case of failure. The number of retries is controlled by the <code>config.adobeVisitorRetries</code> property.</p>
-
-<h2 id="data-layer">Data Layer</h2>
-
-<p>The following variables are sent to the data layer:</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Variable</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>adobe_ecid</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">The Adobe ECID. If the module successfully retrieve an ECID from the Adobe Visitor API, then it is present on every tracking call.</td>
-</tr>
-
-<tr>
-<td align="left"><code>adobe_error</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">A description of the type of error encountered, such as <code>Org ID Not Set. ECID is not included from track requests</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>queue_reason</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Event queues by the module before the visitor ID is available.</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/getting-started/hosted-data-layer/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Hosted Data Layer "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Hosted Data Layer</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/getting-started/feature-comparison/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Feature Comparison</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Feature Comparison"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7700,33 +7472,274 @@ In the event that an error is returned while sending a request, such as connecti
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/getting-started/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        GETTING STARTED
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Adobe Visitor Service Module</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Learn about the Adobe Visitor Service Module.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<p>The Adobe Visitor Service module interfaces directly with Adobe’s REST API to retrieve and maintain the Experience Cloud ID (ECID) for visitors. The ECID identifies the same visitor in different parts of the Adobe ecosystem, such as Adobe Target and Adobe Analytics, and identifies unique visitors.</p>
+
+<p>If you are migrating from the Adobe tracking SDK to the Tealium SDK, use the Adobe Visitor Service module to pass an ECID in the tracking payload. The new ECID in the data layer may be mapped in the server-side Adobe connectors in Tealium EventStream or Tealium AudienceStream. The Adobe Visitor Service module provides a seamless transition to the Tealium SDK by reusing the existing ECID if it exists and generating a new one if it doesn&rsquo;t, ensuring an accurate count of visitors in your app.</p>
+
+<h2 id="supported-platforms">Supported platforms</h2>
+
+<p>The following platforms support the Adobe Visitor Service module:</p>
+
+<ul>
+<li><a href="/platforms/android-kotlin/module-list/adobe-visitor-service/">Tealium for Android</a></li>
+<li><a href="/platforms/ios-swift/module-list/adobe-visitor-service/">Tealium for iOS</a></li>
+</ul>
+
+<h2 id="use-cases">Use Cases</h2>
+
+<h3 id="migrating-to-server-side-analytics">Migrating to Server-Side Analytics</h3>
+
+<p>Migrate your Adobe integrations server-side and map the ECID to the <code>marketingCloudVisitorID</code> parameter in the connector using Adobe Analytics server-side through EventStream, and need a valid ECID for multiple Adobe products to work together. The Tealium SDK requests the ECID from Adobe before sending any calls to EventStream, and the ECID is mapped to the <code>marketingCloudVisitorID</code> property in the Adobe Analytics connector.</p>
+
+<h3 id="tealium-iq-tag-management">Tealium iQ Tag Management</h3>
+
+<p>We recommend using Tealium iQ Tag Management to generate the ECID when using the Adobe Analytics tag. This guarantees the ECID is readily available, persisted in storage, and independent of the cookie store in the hidden webview.</p>
+
+<h3 id="migrating-from-adobe-sdk-to-tealium-sdk">Migrating from Adobe SDK to Tealium SDK</h3>
+
+<p>Migration from the Adobe SDK to the Tealium module is seamless. If your app currently relies on the Adobe SDK to manage the ECID, we recommend having a transition period during which the Adobe SDK is present in the app alongside the Tealium SDK. If the visitor has an existing Adobe ECID, pass it to the Tealium module via the <code>config.adobeVisitorExistingEcid</code> property. If the property is set during initialization, then the existing ECID is used. If the property is not set, the Tealium module retrieves a new one from the Adobe API.</p>
+
+<h3 id="tracking-different-visitors-on-the-same-device">Tracking different visitors on the same device</h3>
+
+<p>If you detect different visitor accounts in your app, reset the ECID to ensure each visitor is tracked separately by calling <code>tealium.adobeVisitor?.resetVisitor()</code>. This resets the current ECID and a new one is automatically requested from the Adobe API.</p>
+
+<h3 id="set-your-own-visitor-id-and-authentication-state">Set your own visitor ID and authentication state</h3>
+
+<p>There are several methods for <a href="#passing-your-own-visitor-id">passing your own visitor ID</a> to the Visitor API so that the ID service matches the anonymous ECID to a known ID.</p>
+
+<h4 id="set-a-known-visitor-id">Set a known visitor ID</h4>
+
+<p>If you know the visitor&rsquo;s ID and authentication state when you initialize, use the configuration property <code>adobeVisitorDataProviderId</code> which sets the visitor&rsquo;s known ID when the module starts:</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="Kotlin" title="Kotlin">
+  <pre><code class="language-kotlin">config.adobeVisitorDataProviderId = &quot;01&quot; // Data provider ID for this type of visitor ID
+config.adobeVisitorAuthState = AdobeAuthState.AUTH_STATE_AUTHENTICATED
+config.adobeVisitorCustomVisitorId = &quot;customeremail@emailprovider.com&quot;
+</code></pre>
+
+</div>
+
+<div class="tab-pane" data-lang="Swift" title="Swift">
+  <pre><code class="language-swift">config.adobeVisitorDataProviderId = &quot;01&quot; // Data provider ID for this type of visitor ID
+config.adobeVisitorAuthState = .authenticated
+config.adobeVisitorCustomVisitorId = &quot;customeremail@emailprovider.com&quot;
+</code></pre>
+
+</div>
+
+<p></div>
+</div></p>
+
+<p>The module automatically requests a new ID if needed, and subsequently sends an additional API call to link the ECID to the known ID supplied in the <code>TealiumConfig</code> properties.</p>
+
+<p>If you need to pass the ID and authentication state when the visitor logs in, call the following method to link the visitor&rsquo;s known ID to the anonymous ECID:</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="Kotlin" title="Kotlin">
+  <pre><code class="language-kotlin">tealium.adobeVisitorApi?.linkEcidToKnownIdentifier(&quot;myidentifier&quot;, &quot;123456&quot;, AdobeAuthState.AUTH_STATE_AUTHENTICATED, null)
+</code></pre>
+
+</div>
+
+<div class="tab-pane" data-lang="Swift" title="Swift">
+  <pre><code class="language-swift">tealium?.adobeVisitorApi?.linkECIDToKnownIdentifier(&quot;myidentifier&quot;, adobeDataProviderId: &quot;123456&quot;, .unknown)
+</code></pre>
+
+</div>
+
+<p></div>
+</div></p>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<p>The following lists the different API failure behaviors:</p>
+
+<ul>
+<li><p><strong>Missing Adobe organization ID</strong><br />
+If the module is enabled but an Adobe organization ID has not been passed in the <code>TealiumConfig</code> object, the module is disabled and tracking calls continue without an Adobe ECID.</p></li>
+
+<li><p><strong>Invalid Adobe organization ID</strong><br />
+The module attempts to retry up to the retry limit (default: 5). After the retry limit has exceeded, tracking calls continue as normal without the ECID, and any queued requests are sent immediately.</p></li>
+
+<li><p><strong>Adobe API returns an error or an empty response</strong><br />
+In the event that an error is returned while sending a request, such as connectivity failure, the module attempts to retry up to the retry limit (default: 5). After the retry limit has exceeded, tracking calls continue as normal without the ECID, and any queued requests are sent immediately.</p></li>
+
+<li><p>The module encounters either (2) or (3) above, but the visitor&rsquo;s previous ECID has been provided on the <code>TealiumConfig</code> object. After the maximum retries, the module uses the provided visitor ID value and does not block any requests.</p></li>
+</ul>
+
+<p class="note"><i class="fas fa-info-circle"></i>If your top priority is getting data to Tealium, then set the number of retries to 0 to skip retrieving the ECID in case of failure. The number of retries is controlled by the <code>config.adobeVisitorRetries</code> property.</p>
+
+<h2 id="data-layer">Data Layer</h2>
+
+<p>The following variables are sent to the data layer:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Variable</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>adobe_ecid</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The Adobe ECID. If the module successfully retrieve an ECID from the Adobe Visitor API, then it is present on every tracking call.</td>
+</tr>
+
+<tr>
+<td align="left"><code>adobe_error</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">A description of the type of error encountered, such as <code>Org ID Not Set. ECID is not included from track requests</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>queue_reason</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Event queues by the module before the visitor ID is available.</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/getting-started/hosted-data-layer/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Hosted Data Layer "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Hosted Data Layer</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/getting-started/feature-comparison/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Feature Comparison</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Feature Comparison"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  July 28, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  July 28, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#supported-platforms">Supported platforms</a></li>
+              <li><a href="#use-cases">Use Cases</a></li>
+              <ul class="toc-h3"><li><a href="#migrating-to-server-side-analytics">Migrating to Server-Side Analytics</a></li>
+              <li><a href="#tealium-iq-tag-management">Tealium iQ Tag Management</a></li>
+              <li><a href="#migrating-from-adobe-sdk-to-tealium-sdk">Migrating from Adobe SDK to Tealium SDK</a></li>
+              <li><a href="#tracking-different-visitors-on-the-same-device">Tracking different visitors on the same device</a></li>
+              <li><a href="#set-your-own-visitor-id-and-authentication-state">Set your own visitor ID and authentication state</a></li>
+              </ul><li><a href="#troubleshooting">Troubleshooting</a></li>
+              <li><a href="#data-layer">Data Layer</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

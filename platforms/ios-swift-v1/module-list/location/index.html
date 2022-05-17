@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,326 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#supported-platforms">Supported Platforms</a></li>
-              <li><a href="#requirements">Requirements</a></li>
-              <li><a href="#sample-app">Sample App</a></li>
-              <li><a href="#install">Install</a></li>
-              <ul class="toc-h3"><li><a href="#swift-package-manager-recommended">Swift Package Manager (Recommended)</a></li>
-              <li><a href="#cocoapods">CocoaPods</a></li>
-              <li><a href="#carthage">Carthage</a></li>
-              </ul><li><a href="#initialize">Initialize</a></li>
-              <ul class="toc-h3"><li><a href="#permissions">Permissions</a></li>
-              </ul><li><a href="#location-tracking">Location Tracking</a></li>
-              <li><a href="#geofencing">Geofencing</a></li>
-              <li><a href="#additional-considerations">Additional Considerations</a></li>
-              <li><a href="#data-layer">Data Layer</a></li>
-              <li><a href="#api-reference">API Reference</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/ios-swift-v1/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT V1
-      </a>
-    
-      <a href="/platforms/ios-swift-v1/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT V1/MODULE LIST
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Location Module</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Provides device location data for your events and the ability to add geofences around points of interest.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<p>The Location module enables your iOS app to receive location information and the ability to configure and monitor geofences. <a href="/platforms/getting-started/location/">Learn more</a> about location tracking and geofencing.</p>
-
-<h2 id="supported-platforms">Supported Platforms</h2>
-
-<p>The following platforms are supported:</p>
-
-<ul>
-<li><a href="/platforms/ios-swift/">iOS</a></li>
-</ul>
-
-<h2 id="requirements">Requirements</h2>
-
-<ul>
-<li><a href="/platforms/ios-swift/">Tealium for Swift</a> (1.9.0+)</li>
-</ul>
-
-<h2 id="sample-app">Sample App</h2>
-
-<p>Explore the <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/TealiumSwiftExample">iOS sample app</a> to familiarize yourself with our library, tracking methods, and best practice implementation. The main sample app includes the Location module.</p>
-
-<h2 id="install">Install</h2>
-
-<p>Install the Location module with Swift Package Manager, CocoaPods or Carthage.</p>
-
-<h3 id="swift-package-manager-recommended">Swift Package Manager (Recommended)</h3>
-
-<p>To install the Location module with SPM:</p>
-
-<ol>
-<li><p>Add a Swift Package within Xcode or the command line tool using the repository: <a href="https://www.github.com/Tealium/tealium-swift">https://www.github.com/Tealium/tealium-swift</a></p></li>
-
-<li><p>If using Xcode, select the <code>TealiumLocation</code> target in the installation process. If using the command line, add the <code>TealiumLocation</code> module in the list of dependencies within the <code>Package.swift</code> file.</p></li>
-</ol>
-
-<p>The framework is auto-instantiated. It has a dependency on <code>TealiumCore</code> and requires a dispatcher (<code>TealiumCollect</code> or <code>TealiumTagManagement</code>). No additional import statements are necessary.</p>
-
-<p><a href="/platforms/ios-swift/install/#swift-package-manager-recommended">Learn more</a> about the SPM installation for iOS.</p>
-
-<h3 id="cocoapods">CocoaPods</h3>
-
-<p>To install the Location module with CocoaPods add the following pod to your Podfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;tealium-swift/TealiumLocation&#39;</span></code></pre></div>
-<p>The framework is auto-instantiated. It has a dependency on the <code>TealiumCore</code> pod and requires a dispatcher (<code>TealiumCollect</code> or <code>TealiumTagManagement</code>). <a href="/platforms/ios-swift/install/#cocoapods">Learn more</a> about the CocoaPods installation for iOS.</p>
-
-<h3 id="carthage">Carthage</h3>
-
-<p>To install the Location module with Carthage:</p>
-
-<ol>
-<li><p>Go to the app target&rsquo;s General configuration page in Xcode.</p></li>
-
-<li><p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumLocation.framework</code></pre></div>
-<p>The framework is auto-instantiated. It has a dependency on <code>TealiumCore</code> and requires a dispatcher (<code>TealiumCollect</code> or <code>TealiumTagManagement</code>). No additional import statements are necessary. <a href="/platforms/ios-swift/install/#carthage">Learn more</a> about the Carthage installation for iOS.</p></li>
-</ol>
-
-<h2 id="initialize">Initialize</h2>
-
-<p>Location tracking is enabled by default when the module is added to your app. Configuration options for <a href="#location-tracking">location accuracy</a> and <a href="#geofencing">geofencing</a> are set using properties of an instance of <code>TealiumConfig</code>.</p>
-
-<h3 id="permissions">Permissions</h3>
-
-<p>To authorize your app to collect location information, add the following keys to your app&rsquo;s <code>Info.plist</code> file:</p>
-
-<ul>
-<li><code>Privacy - Location When In Use Usage Description</code></li>
-<li><code>Privacy - Location Always and When In Use Usage Description</code></li>
-</ul>
-
-<p>If the keys are not present, location requests fail immediately.  <a href="https://developer.apple.com/documentation/corelocation/requesting_authorization_for_location_services">Learn more</a> about requesting authorization for location services.</p>
-
-<h2 id="location-tracking">Location Tracking</h2>
-
-<p>The Location module performs continuous location tracking. Location updates are based on two settings: accuracy and distance.</p>
-
-<p>By default, only significant location updates are monitored. This results in fewer updates and less battery consumption.</p>
-
-<p>To enable higher accuracy updates, set the <a href="/platforms/ios-swift/api/tealium-config/#usehighaccuracy"><code>useHighAccuracy</code></a> property to <code>true</code> and set the <a href="/platforms/ios-swift/api/tealium-config/#updatedistance"><code>updateDistance</code></a> property to a value in meters at which to trigger updates.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> start() {
-      <span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-                                 profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-                                 environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
-                                 datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>,
-                                 optionalData: <span style="color:#00f">nil</span>)
-      config.useHighAccuracy = <span style="color:#00f">true</span>
-      config.updateDistance = 150
-      <span style="color:#008000">//...</span>
-  }</code></pre></div>
-<h2 id="geofencing">Geofencing</h2>
-
-<p>To enable geofencing, use one of the following methods to provide your <a href="/platforms/getting-started/location/#json-file">geofence JSON file</a>:</p>
-
-<ul>
-<li><p><strong>Hosted URL</strong><br />
-Use your own hosted geofences file, provided as a URL to the property <a href="/platforms/ios-swift/api/tealium-config/#geofenceurl"><code>geofenceUrl</code></a>.<br />
-This option is recommended if you have overridden the publish settings URL or want to use <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/About-Hosted-Data-Layer/ta-p/17572">Hosted Data Layer</a>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.geofenceUrl = <span style="color:#a31515">&#34;https://example.com/geofences.json&#34;</span></code></pre></div></li>
-
-<li><p><strong>Local File</strong><br />
-Use a geofences file stored in your app by setting the property <a href="/platforms/ios-swift/api/tealium-config/#geofencefilename"><code>geofenceFileName</code></a>. Omit the file extension.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.geofenceFileName = <span style="color:#a31515">&#34;geofences&#34;</span> <span style="color:#008000">// geofences.json</span></code></pre></div></li>
-</ul>
-
-<h2 id="additional-considerations">Additional Considerations</h2>
-
-<p><strong>Number of Active Geofences</strong><br />
-Geofences are added and removed dynamically, using as few resources as possible. There is no limit to the number of geofences defined, but the number of active geofences is limited to 20 per device user across <em>all</em> running applications.</p>
-
-<p><strong>Initializing Geofences</strong><br />
-If a user is within a geofence at the time of creation, the <code>&quot;enter&quot;</code> transition event does not fire. This is because <code>&quot;exit&quot;</code> and <code>&quot;enter&quot;</code> transition events are fired when crossing the perimeter and not when materializing inside.</p>
-
-<h2 id="data-layer">Data Layer</h2>
-
-<p>The following variables are populated by the Location module as part of the mobile data layer. These variables are included automatically in each tracking call from the library.</p>
-
-<table>
-<thead>
-<tr>
-<th>Variable Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>latitude</code></td>
-<td><code>String</code></td>
-<td>The latitude of the user&rsquo;s most recently recorded location</td>
-<td><code>&quot;32.906119&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>longitude</code></td>
-<td><code>String</code></td>
-<td>The longitude of the user&rsquo;s most recently recorded location</td>
-<td><code>&quot;-117.2367&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>location_accuracy</code></td>
-<td><code>String</code></td>
-<td>The accuracy setting for the Location module, such as <code>&quot;high&quot;</code> or <code>&quot;low&quot;</code></td>
-<td><code>&quot;high&quot;</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>During geofencing, a tracking call containing location data is sent when the transition state of the user changes. Transition state changes include a user entering or exiting a geofence. The following additional variables are sent to the data layer:</p>
-
-<table>
-<thead>
-<tr>
-<th>Variable Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>tealium_event</code></td>
-<td><code>String</code></td>
-<td>The Tealium tracked geofence event</td>
-<td><code>&quot;geofence_entered&quot;</code> or <code>&quot;geofence_exited&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>geofence_name</code></td>
-<td><code>String</code></td>
-<td>The name of the geofence region</td>
-<td><code>&quot;Tealium_San_Diego&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>geofence_transition_type</code></td>
-<td><code>String</code></td>
-<td>The type of geofence transition event</td>
-<td><code>&quot;geofence_entered&quot;</code> or <code>&quot;geofence_exited&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>movement_speed</code></td>
-<td><code>String</code></td>
-<td>The instantaneous speed of the device, measured in meters per second</td>
-<td><code>&quot;1.0&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>location_timestamp</code></td>
-<td><code>String</code></td>
-<td>The recorded date/time (GMT) the user entered/exited the geofence region</td>
-<td><code>&quot;2020-01-28 16:29:46 +0000&quot;</code></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="api-reference">API Reference</h2>
-
-<p>For the reference of methods used in the Location module, see the <a href="/platforms/ios-swift/api/tealium-config/"><code>TealiumConfig</code></a> class in the Tealium SDK for iOS API.</p>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/ios-swift-v1/module-list/lifecycle/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Lifecycle Module "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Lifecycle Module</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/ios-swift-v1/module-list/logger/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Logger Module</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Logger Module"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7784,33 +7472,363 @@ If a user is within a geofence at the time of creation, the <code>&quot;enter&qu
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/ios-swift-v1/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        IOS SWIFT V1
+      </a>
+    
+      <a href="/platforms/ios-swift-v1/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        IOS SWIFT V1/MODULE LIST
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Location Module</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Provides device location data for your events and the ability to add geofences around points of interest.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<p>The Location module enables your iOS app to receive location information and the ability to configure and monitor geofences. <a href="/platforms/getting-started/location/">Learn more</a> about location tracking and geofencing.</p>
+
+<h2 id="supported-platforms">Supported Platforms</h2>
+
+<p>The following platforms are supported:</p>
+
+<ul>
+<li><a href="/platforms/ios-swift/">iOS</a></li>
+</ul>
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+<li><a href="/platforms/ios-swift/">Tealium for Swift</a> (1.9.0+)</li>
+</ul>
+
+<h2 id="sample-app">Sample App</h2>
+
+<p>Explore the <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/TealiumSwiftExample">iOS sample app</a> to familiarize yourself with our library, tracking methods, and best practice implementation. The main sample app includes the Location module.</p>
+
+<h2 id="install">Install</h2>
+
+<p>Install the Location module with Swift Package Manager, CocoaPods or Carthage.</p>
+
+<h3 id="swift-package-manager-recommended">Swift Package Manager (Recommended)</h3>
+
+<p>To install the Location module with SPM:</p>
+
+<ol>
+<li><p>Add a Swift Package within Xcode or the command line tool using the repository: <a href="https://www.github.com/Tealium/tealium-swift">https://www.github.com/Tealium/tealium-swift</a></p></li>
+
+<li><p>If using Xcode, select the <code>TealiumLocation</code> target in the installation process. If using the command line, add the <code>TealiumLocation</code> module in the list of dependencies within the <code>Package.swift</code> file.</p></li>
+</ol>
+
+<p>The framework is auto-instantiated. It has a dependency on <code>TealiumCore</code> and requires a dispatcher (<code>TealiumCollect</code> or <code>TealiumTagManagement</code>). No additional import statements are necessary.</p>
+
+<p><a href="/platforms/ios-swift/install/#swift-package-manager-recommended">Learn more</a> about the SPM installation for iOS.</p>
+
+<h3 id="cocoapods">CocoaPods</h3>
+
+<p>To install the Location module with CocoaPods add the following pod to your Podfile:</p>
+
+<pre><code class="language-ruby">pod 'tealium-swift/TealiumLocation'
+</code></pre>
+
+<p>The framework is auto-instantiated. It has a dependency on the <code>TealiumCore</code> pod and requires a dispatcher (<code>TealiumCollect</code> or <code>TealiumTagManagement</code>). <a href="/platforms/ios-swift/install/#cocoapods">Learn more</a> about the CocoaPods installation for iOS.</p>
+
+<h3 id="carthage">Carthage</h3>
+
+<p>To install the Location module with Carthage:</p>
+
+<ol>
+<li><p>Go to the app target&rsquo;s General configuration page in Xcode.</p></li>
+
+<li><p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
+
+<pre><code class="language-ruby">TealiumLocation.framework
+</code></pre>
+
+<p>The framework is auto-instantiated. It has a dependency on <code>TealiumCore</code> and requires a dispatcher (<code>TealiumCollect</code> or <code>TealiumTagManagement</code>). No additional import statements are necessary. <a href="/platforms/ios-swift/install/#carthage">Learn more</a> about the Carthage installation for iOS.</p></li>
+</ol>
+
+<h2 id="initialize">Initialize</h2>
+
+<p>Location tracking is enabled by default when the module is added to your app. Configuration options for <a href="#location-tracking">location accuracy</a> and <a href="#geofencing">geofencing</a> are set using properties of an instance of <code>TealiumConfig</code>.</p>
+
+<h3 id="permissions">Permissions</h3>
+
+<p>To authorize your app to collect location information, add the following keys to your app&rsquo;s <code>Info.plist</code> file:</p>
+
+<ul>
+<li><code>Privacy - Location When In Use Usage Description</code></li>
+<li><code>Privacy - Location Always and When In Use Usage Description</code></li>
+</ul>
+
+<p>If the keys are not present, location requests fail immediately.  <a href="https://developer.apple.com/documentation/corelocation/requesting_authorization_for_location_services">Learn more</a> about requesting authorization for location services.</p>
+
+<h2 id="location-tracking">Location Tracking</h2>
+
+<p>The Location module performs continuous location tracking. Location updates are based on two settings: accuracy and distance.</p>
+
+<p>By default, only significant location updates are monitored. This results in fewer updates and less battery consumption.</p>
+
+<p>To enable higher accuracy updates, set the <a href="/platforms/ios-swift/api/tealium-config/#usehighaccuracy"><code>useHighAccuracy</code></a> property to <code>true</code> and set the <a href="/platforms/ios-swift/api/tealium-config/#updatedistance"><code>updateDistance</code></a> property to a value in meters at which to trigger updates.</p>
+
+<pre><code class="language-swift">func start() {
+      let config = TealiumConfig(account: &quot;ACCOUNT&quot;,
+                                 profile: &quot;PROFILE&quot;,
+                                 environment: &quot;ENVIRONMENT&quot;,
+                                 datasource: &quot;DATASOURCE&quot;,
+                                 optionalData: nil)
+      config.useHighAccuracy = true
+      config.updateDistance = 150
+      //...
+  }
+</code></pre>
+
+<h2 id="geofencing">Geofencing</h2>
+
+<p>To enable geofencing, use one of the following methods to provide your <a href="/platforms/getting-started/location/#json-file">geofence JSON file</a>:</p>
+
+<ul>
+<li><p><strong>Hosted URL</strong><br />
+Use your own hosted geofences file, provided as a URL to the property <a href="/platforms/ios-swift/api/tealium-config/#geofenceurl"><code>geofenceUrl</code></a>.<br />
+This option is recommended if you have overridden the publish settings URL or want to use <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/About-Hosted-Data-Layer/ta-p/17572">Hosted Data Layer</a>.</p>
+
+<pre><code class="language-swift">config.geofenceUrl = &quot;https://example.com/geofences.json&quot;
+</code></pre></li>
+
+<li><p><strong>Local File</strong><br />
+Use a geofences file stored in your app by setting the property <a href="/platforms/ios-swift/api/tealium-config/#geofencefilename"><code>geofenceFileName</code></a>. Omit the file extension.</p>
+
+<pre><code class="language-swift">config.geofenceFileName = &quot;geofences&quot; // geofences.json
+</code></pre></li>
+</ul>
+
+<h2 id="additional-considerations">Additional Considerations</h2>
+
+<p><strong>Number of Active Geofences</strong><br />
+Geofences are added and removed dynamically, using as few resources as possible. There is no limit to the number of geofences defined, but the number of active geofences is limited to 20 per device user across <em>all</em> running applications.</p>
+
+<p><strong>Initializing Geofences</strong><br />
+If a user is within a geofence at the time of creation, the <code>&quot;enter&quot;</code> transition event does not fire. This is because <code>&quot;exit&quot;</code> and <code>&quot;enter&quot;</code> transition events are fired when crossing the perimeter and not when materializing inside.</p>
+
+<h2 id="data-layer">Data Layer</h2>
+
+<p>The following variables are populated by the Location module as part of the mobile data layer. These variables are included automatically in each tracking call from the library.</p>
+
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>latitude</code></td>
+<td><code>String</code></td>
+<td>The latitude of the user&rsquo;s most recently recorded location</td>
+<td><code>&quot;32.906119&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>longitude</code></td>
+<td><code>String</code></td>
+<td>The longitude of the user&rsquo;s most recently recorded location</td>
+<td><code>&quot;-117.2367&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>location_accuracy</code></td>
+<td><code>String</code></td>
+<td>The accuracy setting for the Location module, such as <code>&quot;high&quot;</code> or <code>&quot;low&quot;</code></td>
+<td><code>&quot;high&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>During geofencing, a tracking call containing location data is sent when the transition state of the user changes. Transition state changes include a user entering or exiting a geofence. The following additional variables are sent to the data layer:</p>
+
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>tealium_event</code></td>
+<td><code>String</code></td>
+<td>The Tealium tracked geofence event</td>
+<td><code>&quot;geofence_entered&quot;</code> or <code>&quot;geofence_exited&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>geofence_name</code></td>
+<td><code>String</code></td>
+<td>The name of the geofence region</td>
+<td><code>&quot;Tealium_San_Diego&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>geofence_transition_type</code></td>
+<td><code>String</code></td>
+<td>The type of geofence transition event</td>
+<td><code>&quot;geofence_entered&quot;</code> or <code>&quot;geofence_exited&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>movement_speed</code></td>
+<td><code>String</code></td>
+<td>The instantaneous speed of the device, measured in meters per second</td>
+<td><code>&quot;1.0&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>location_timestamp</code></td>
+<td><code>String</code></td>
+<td>The recorded date/time (GMT) the user entered/exited the geofence region</td>
+<td><code>&quot;2020-01-28 16:29:46 +0000&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="api-reference">API Reference</h2>
+
+<p>For the reference of methods used in the Location module, see the <a href="/platforms/ios-swift/api/tealium-config/"><code>TealiumConfig</code></a> class in the Tealium SDK for iOS API.</p>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/ios-swift-v1/module-list/lifecycle/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Lifecycle Module "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Lifecycle Module</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/ios-swift-v1/module-list/logger/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Logger Module</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Logger Module"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  August 27, 2020 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  May 13, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#supported-platforms">Supported Platforms</a></li>
+              <li><a href="#requirements">Requirements</a></li>
+              <li><a href="#sample-app">Sample App</a></li>
+              <li><a href="#install">Install</a></li>
+              <ul class="toc-h3"><li><a href="#swift-package-manager-recommended">Swift Package Manager (Recommended)</a></li>
+              <li><a href="#cocoapods">CocoaPods</a></li>
+              <li><a href="#carthage">Carthage</a></li>
+              </ul><li><a href="#initialize">Initialize</a></li>
+              <ul class="toc-h3"><li><a href="#permissions">Permissions</a></li>
+              </ul><li><a href="#location-tracking">Location Tracking</a></li>
+              <li><a href="#geofencing">Geofencing</a></li>
+              <li><a href="#additional-considerations">Additional Considerations</a></li>
+              <li><a href="#data-layer">Data Layer</a></li>
+              <li><a href="#api-reference">API Reference</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

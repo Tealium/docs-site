@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,343 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#supported-platforms">Supported Platforms</a></li>
-              <li><a href="#location-tracking">Location Tracking</a></li>
-              <li><a href="#geofencing">Geofencing</a></li>
-              <li><a href="#geofence-file">Geofence File</a></li>
-              <ul class="toc-h3"><li><a href="#file-format">File Format</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/getting-started/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        GETTING STARTED
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">User Location and Geofencing</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Learn about the location tracking and geofencing features for mobile.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="supported-platforms">Supported Platforms</h2>
-
-<p>The following platforms support location tracking and geofencing:</p>
-
-<ul>
-<li><a href="/platforms/android-java/module-list/location/">Android</a></li>
-<li><a href="/platforms/ios-swift/module-list/location/">iOS</a></li>
-</ul>
-
-<h2 id="location-tracking">Location Tracking</h2>
-
-<p>Location tracking is the ability to identify the geographic location (latitude and longitude) of a user&rsquo;s device.  Permission must be granted to your app to allow for location tracking.</p>
-
-<p>Location updates can be provided continuously, which results in higher accuracy, but requires more battery consumption.</p>
-
-<p>If continuous tracking is disabled or not available, the user&rsquo;s last known location can be retrieved with an explicit method call. This approach uses less battery and can be used in apps that do not require real-time location monitoring.</p>
-
-<p>The following variables are added to the data layer for each location tracking call:</p>
-
-<table>
-<thead>
-<tr>
-<th>Variable Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>latitude</code></td>
-<td><code>String</code></td>
-<td>The latitude of the user&rsquo;s most recently recorded location</td>
-<td><code>&quot;32.9072&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>longitude</code></td>
-<td><code>String</code></td>
-<td>The longitude of the user&rsquo;s most recently recorded location</td>
-<td><code>&quot;-117.2367&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>location_accuracy</code></td>
-<td><code>String</code></td>
-<td>The accuracy setting, such as <code>&quot;high&quot;</code> or <code>&quot;low&quot;</code></td>
-<td><code>&quot;high&quot;</code></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="geofencing">Geofencing</h2>
-
-<p>Geofencing is a location tracking service that combines awareness of the user&rsquo;s location with the user&rsquo;s proximity to a <em>geofence</em>. A geofence is a virtual perimeter surrounding an area of interest, specified by latitude, longitude, and a radius.</p>
-
-<p>Geofencing uses three transition states to track a user&rsquo;s interaction with a geofence. These transition states trigger tracking calls in the Tealium library. The following transition states are monitored:</p>
-
-<table>
-<thead>
-<tr>
-<th>Transition</th>
-<th>Tealium Event</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Geofence entered</td>
-<td><code>tealium_event=&quot;geofence_entered&quot;</code></td>
-<td>The user entered a geofence</td>
-</tr>
-
-<tr>
-<td>Geofence exited</td>
-<td><code>tealium_event=&quot;geofence_exited&quot;</code></td>
-<td>The user exited a geofence</td>
-</tr>
-
-<tr>
-<td>Dwelled</td>
-<td><code>tealium_event=&quot;geofence_dwell&quot;</code> (Android only)</td>
-<td>The user stops for a defined duration within a geofence</td>
-</tr>
-</tbody>
-</table>
-
-<p>The specifics of your geofencing is defined in a <a href="#file-format">geofences file</a> and provided to your app during initialization.</p>
-
-<p>The following variables are tracked during geofencing transition states:</p>
-
-<table>
-<thead>
-<tr>
-<th>Variable Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>tealium_event</code></td>
-<td><code>String</code></td>
-<td>The Tealium tracked geofence event: <code>&quot;geofence_entered&quot;</code>, <code>&quot;geofence_exited&quot;</code>, or <code>&quot;geofence_dwell&quot;</code> (Android only)</td>
-<td><code>&quot;geofence_entered&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>geofence_name</code></td>
-<td><code>String</code></td>
-<td>The name of the geofence region</td>
-<td><code>&quot;Tealium San Diego&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>geofence_transition_type</code></td>
-<td><code>String</code></td>
-<td>The type of geofence transition event</td>
-<td><code>&quot;geofence_entered&quot;</code>, <code>&quot;geofence_exited&quot;</code>, or <code>&quot;geofence_dwell&quot;</code>(Android)</td>
-</tr>
-
-<tr>
-<td><code>movement_speed</code>  (iOS only)</td>
-<td><code>String</code></td>
-<td>The instantaneous speed of the user, measured in meters per second</td>
-<td><code>&quot;1.0&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>location_timestamp</code> (iOS only)</td>
-<td><code>String</code></td>
-<td>The recorded date/time (GMT) the user entered/exited the geofence region</td>
-<td><code>&quot;2020-01-28 16:29:46 +0000&quot;</code></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="geofence-file">Geofence File</h2>
-
-<p>Geofencing is enabled when a geofence file is provided during app initialization. A geofence file contains coordinates of points of interest and which transition states to track in JSON format.</p>
-
-<p>There are two options when providing the geofences file: a local file or a hosted URL.</p>
-
-<h3 id="file-format">File Format</h3>
-
-<p>When creating your geofence file, name the file <code>geofences.json</code>. Geofences are written as key-value pairs with the variables listed in the table below.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">[{
-  &#34;name&#34;: <span style="color:#a31515">&#34;Geofence_Name&#34;</span>,
-  &#34;latitude&#34;: 0.000,
-  &#34;longitude&#34;: 0.000,
-  &#34;radius&#34;: 100,
-  &#34;expire_after&#34;: -1,
-  &#34;trigger_on_enter&#34;: <span style="color:#00f">true</span>,
-  &#34;trigger_on_exit&#34;: <span style="color:#00f">false</span>,
-  &#34;minimum_dwell_time&#34;: 0 },
- {
-    <span style="">...</span>
- }]</code></pre></div>
-<p>The following properties define each geofence:</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Parameter</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>name</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">The geofence name as a unique string with words separated by underscores. Avoid using spaces, emojis and characters not supported by UTF-8 encoding.</td>
-<td align="left"><code>Geofence_Name</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>latitude</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">The latitude coordinate of the center of the geofence as a decimal value between <code>-90.0</code> and <code>90.0</code>.</td>
-<td align="left"><code>0.000</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>longitude</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">The longitude coordinate of the center of the geofence as a decimal value between <code>-180.0</code> and <code>180.0</code>.</td>
-<td align="left"><code>0.000</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>radius</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">The geofence radius value, in meters. Recommended value: <code>100</code>+</td>
-<td align="left"><code>100</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>expire_after</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">The time, in milliseconds, that the geofence expires after. (Set to -1 to not expire)</td>
-<td align="left"><code>-1</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>trigger_on_enter</code></td>
-<td align="left"><code>Boolean</code></td>
-<td align="left">Defines whether the geofence fires a tracking event when a user enters the area.</td>
-<td align="left"><code>true</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>trigger_on_exit</code></td>
-<td align="left"><code>Boolean</code></td>
-<td align="left">Defines whether the geofence fires a tracking event when a user exits the area.</td>
-<td align="left"><code>true</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>minimum_dwell_time</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">The time, in milliseconds, a tracking event is fired when a user enters and stays in the geofence. Recommended for most use cases to avoid events repeatedly firing if a user keeps entering and exiting a geofence. (Set to <code>0</code> if <code>trigger_on_enter</code> is set to <code>true</code>)</td>
-<td align="left"><code>0</code></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/getting-started/event-batching/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Event Batching "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Event Batching</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/getting-started/media/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Media Tracking</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Media Tracking"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7801,33 +7472,370 @@ var utag_data = {
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/getting-started/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        GETTING STARTED
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">User Location and Geofencing</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Learn about the location tracking and geofencing features for mobile.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="supported-platforms">Supported Platforms</h2>
+
+<p>The following platforms support location tracking and geofencing:</p>
+
+<ul>
+<li><a href="/platforms/android-java/module-list/location/">Android</a></li>
+<li><a href="/platforms/ios-swift/module-list/location/">iOS</a></li>
+</ul>
+
+<h2 id="location-tracking">Location Tracking</h2>
+
+<p>Location tracking is the ability to identify the geographic location (latitude and longitude) of a user&rsquo;s device.  Permission must be granted to your app to allow for location tracking.</p>
+
+<p>Location updates can be provided continuously, which results in higher accuracy, but requires more battery consumption.</p>
+
+<p>If continuous tracking is disabled or not available, the user&rsquo;s last known location can be retrieved with an explicit method call. This approach uses less battery and can be used in apps that do not require real-time location monitoring.</p>
+
+<p>The following variables are added to the data layer for each location tracking call:</p>
+
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>latitude</code></td>
+<td><code>String</code></td>
+<td>The latitude of the user&rsquo;s most recently recorded location</td>
+<td><code>&quot;32.9072&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>longitude</code></td>
+<td><code>String</code></td>
+<td>The longitude of the user&rsquo;s most recently recorded location</td>
+<td><code>&quot;-117.2367&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>location_accuracy</code></td>
+<td><code>String</code></td>
+<td>The accuracy setting, such as <code>&quot;high&quot;</code> or <code>&quot;low&quot;</code></td>
+<td><code>&quot;high&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="geofencing">Geofencing</h2>
+
+<p>Geofencing is a location tracking service that combines awareness of the user&rsquo;s location with the user&rsquo;s proximity to a <em>geofence</em>. A geofence is a virtual perimeter surrounding an area of interest, specified by latitude, longitude, and a radius.</p>
+
+<p>Geofencing uses three transition states to track a user&rsquo;s interaction with a geofence. These transition states trigger tracking calls in the Tealium library. The following transition states are monitored:</p>
+
+<table>
+<thead>
+<tr>
+<th>Transition</th>
+<th>Tealium Event</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Geofence entered</td>
+<td><code>tealium_event=&quot;geofence_entered&quot;</code></td>
+<td>The user entered a geofence</td>
+</tr>
+
+<tr>
+<td>Geofence exited</td>
+<td><code>tealium_event=&quot;geofence_exited&quot;</code></td>
+<td>The user exited a geofence</td>
+</tr>
+
+<tr>
+<td>Dwelled</td>
+<td><code>tealium_event=&quot;geofence_dwell&quot;</code> (Android only)</td>
+<td>The user stops for a defined duration within a geofence</td>
+</tr>
+</tbody>
+</table>
+
+<p>The specifics of your geofencing is defined in a <a href="#file-format">geofences file</a> and provided to your app during initialization.</p>
+
+<p>The following variables are tracked during geofencing transition states:</p>
+
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>tealium_event</code></td>
+<td><code>String</code></td>
+<td>The Tealium tracked geofence event: <code>&quot;geofence_entered&quot;</code>, <code>&quot;geofence_exited&quot;</code>, or <code>&quot;geofence_dwell&quot;</code> (Android only)</td>
+<td><code>&quot;geofence_entered&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>geofence_name</code></td>
+<td><code>String</code></td>
+<td>The name of the geofence region</td>
+<td><code>&quot;Tealium San Diego&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>geofence_transition_type</code></td>
+<td><code>String</code></td>
+<td>The type of geofence transition event</td>
+<td><code>&quot;geofence_entered&quot;</code>, <code>&quot;geofence_exited&quot;</code>, or <code>&quot;geofence_dwell&quot;</code>(Android)</td>
+</tr>
+
+<tr>
+<td><code>movement_speed</code>  (iOS only)</td>
+<td><code>String</code></td>
+<td>The instantaneous speed of the user, measured in meters per second</td>
+<td><code>&quot;1.0&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>location_timestamp</code> (iOS only)</td>
+<td><code>String</code></td>
+<td>The recorded date/time (GMT) the user entered/exited the geofence region</td>
+<td><code>&quot;2020-01-28 16:29:46 +0000&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="geofence-file">Geofence File</h2>
+
+<p>Geofencing is enabled when a geofence file is provided during app initialization. A geofence file contains coordinates of points of interest and which transition states to track in JSON format.</p>
+
+<p>There are two options when providing the geofences file: a local file or a hosted URL.</p>
+
+<h3 id="file-format">File Format</h3>
+
+<p>When creating your geofence file, name the file <code>geofences.json</code>. Geofences are written as key-value pairs with the variables listed in the table below.</p>
+
+<pre><code class="language-json">[{
+  &quot;name&quot;: &quot;Geofence_Name&quot;,
+  &quot;latitude&quot;: 0.000,
+  &quot;longitude&quot;: 0.000,
+  &quot;radius&quot;: 100,
+  &quot;expire_after&quot;: -1,
+  &quot;trigger_on_enter&quot;: true,
+  &quot;trigger_on_exit&quot;: false,
+  &quot;minimum_dwell_time&quot;: 0 },
+ {
+    ...
+ }]
+</code></pre>
+
+<p>The following properties define each geofence:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>name</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The geofence name as a unique string with words separated by underscores. Avoid using spaces, emojis and characters not supported by UTF-8 encoding.</td>
+<td align="left"><code>Geofence_Name</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>latitude</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">The latitude coordinate of the center of the geofence as a decimal value between <code>-90.0</code> and <code>90.0</code>.</td>
+<td align="left"><code>0.000</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>longitude</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">The longitude coordinate of the center of the geofence as a decimal value between <code>-180.0</code> and <code>180.0</code>.</td>
+<td align="left"><code>0.000</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>radius</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">The geofence radius value, in meters. Recommended value: <code>100</code>+</td>
+<td align="left"><code>100</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>expire_after</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">The time, in milliseconds, that the geofence expires after. (Set to -1 to not expire)</td>
+<td align="left"><code>-1</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>trigger_on_enter</code></td>
+<td align="left"><code>Boolean</code></td>
+<td align="left">Defines whether the geofence fires a tracking event when a user enters the area.</td>
+<td align="left"><code>true</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>trigger_on_exit</code></td>
+<td align="left"><code>Boolean</code></td>
+<td align="left">Defines whether the geofence fires a tracking event when a user exits the area.</td>
+<td align="left"><code>true</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>minimum_dwell_time</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">The time, in milliseconds, a tracking event is fired when a user enters and stays in the geofence. Recommended for most use cases to avoid events repeatedly firing if a user keeps entering and exiting a geofence. (Set to <code>0</code> if <code>trigger_on_enter</code> is set to <code>true</code>)</td>
+<td align="left"><code>0</code></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/getting-started/event-batching/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Event Batching "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Event Batching</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/getting-started/media/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Media Tracking</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Media Tracking"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  September 28, 2020 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  September 28, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#supported-platforms">Supported Platforms</a></li>
+              <li><a href="#location-tracking">Location Tracking</a></li>
+              <li><a href="#geofencing">Geofencing</a></li>
+              <li><a href="#geofence-file">Geofence File</a></li>
+              <ul class="toc-h3"><li><a href="#file-format">File Format</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,303 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#call-objective-c-from-swift">Call Objective-C from Swift</a></li>
-              <ul class="toc-h3"><li><a href="#bridging-header">Bridging Header</a></li>
-              </ul><li><a href="#call-swift-from-objective-c">Call Swift from Objective-C</a></li>
-              <ul class="toc-h3"><li><a href="#helper-class">Helper Class</a></li>
-              <li><a href="#sample-tealiumhelper-file">Sample TealiumHelper file</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/ios-swift/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Working with Objective-C</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Learn about creating a bridging header to work between Objective-C and Swift.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<p>We recommend using our native Swift library, even for Objective-C projects, but if you still need to use the Objective-C library, this document helps.</p>
-
-<h2 id="call-objective-c-from-swift">Call Objective-C from Swift</h2>
-
-<p>Call the Objective-C library from Swift code by simply adding a bridging header to your project, and importing the appropriate headers.</p>
-
-<h3 id="bridging-header">Bridging Header</h3>
-
-<p>To create a bridging header:</p>
-
-<ol>
-<li>In your Swift project, create a new file. When prompted to select a file type, select Objective-C File.</li>
-<li>Give this file a temporary name, such as &ldquo;placeholder.m&rdquo;, as you are going to remove it later.</li>
-<li>Click &ldquo;Finish&rdquo; and XCode prompts you to create a Bridging Header (if it doesn&rsquo;t, you probably already have a Bridging Header in your project). Press &ldquo;Create Bridging Header&rdquo; to continue, and Xcode automatically creates the new header file for you.</li>
-<li>Delete the <code>placeholder.m</code> file from the project and notice a new file called <code>&lt;ProjectName&gt;-Bridging-Header.h</code></li>
-
-<li><p>Add the following import statement to the new Bridging Header:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc">@import TealiumIOS;</code></pre></div></li>
-</ol>
-
-<p>Next, to call the Objective-C code from Swift:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#00f">class</span> TealiumHelper {
-    func somefunc () {
-        let tealConfig = TEALConfiguration.init(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>, profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>, environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>)
-        let teal = Tealium.newInstance(forKey: <span style="color:#a31515">&#34;KEY&#34;</span>, configuration: tealConfig)
-        teal.trackView(withTitle: <span style="color:#a31515">&#34;SCREEN_NAME&#34;</span>, dataSources: [<span style="color:#a31515">&#34;DATA&#34;</span>:<span style="color:#a31515">&#34;VALUE&#34;</span>])
-    }
-}</code></pre></div>
-<h2 id="call-swift-from-objective-c">Call Swift from Objective-C</h2>
-
-<p>The Swift library cannot be directly called from Objective-C, since it is missing the required annotations in the code, and in many cases, modules do not inherit from NSObject, rather they use the native Swift data types.
-However, by using an intermediate helper class, it is possible to call the Swift library from Objective-C.</p>
-
-<h3 id="helper-class">Helper Class</h3>
-
-<ol>
-<li>In your Objective-C project, create a new Swift file. You are prompted to add a bridging header if you don&rsquo;t already have one. Accept this prompt. Name the new Swift file &ldquo;TealiumHelper.swift&rdquo;.</li>
-
-<li><p>Import the new Swift header (<code>&lt;ProjectName&gt;-Swift.h</code>) into files that need to call the new helper.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#00f">#import &#34;ProjectName-Swift.h&#34;</span></code></pre></div></li>
-</ol>
-
-<p>The methods in the helper file are now be available to use in your Objective-C code. We recommend making the helper a singleton.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-objc" data-lang="objc"><span style="color:#00f">#import &#34;TestSwiftBridge-Swift.h&#34;
-</span><span style="color:#00f"></span>
-- (<span style="color:#2b91af">BOOL</span>)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	<span style="color:#008000">// instantiate the helper singleton
-</span><span style="color:#008000"></span>    TealiumHelper * help = [TealiumHelper sharedInstance];
-    <span style="color:#008000">// call the start method, which initializes the Tealium library
-</span><span style="color:#008000"></span>    [help start];
-    <span style="color:#008000">// trigger a new event tracking call from objective-c
-</span><span style="color:#008000"></span>    [help track:<span style="color:#a31515">@&#34;this is from objective-c!&#34;</span> data:@{<span style="color:#a31515">@&#34;mydata&#34;</span>:<span style="color:#a31515">@&#34;hello from obj-c&#34;</span>}];
-    <span style="color:#00f">return</span> YES;
-}</code></pre></div>
-<h3 id="sample-tealiumhelper-file">Sample TealiumHelper file</h3>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#008000">// </span>
-<span style="color:#008000">// TealiumHelper.swift</span>
-<span style="color:#008000">//</span>
-<span style="color:#008000">//  Copyright © 2021 Tealium, Inc. All rights reserved.</span>
-<span style="color:#008000">//</span>
-
-<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumCollect</span>
-<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumCore</span>
-<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumLifecycle</span>
-<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumVisitorService</span>
-<span style="color:#00f">#if</span> <span style="color:#00f">os</span>(<span style="color:#00f">iOS</span>)
-<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumAttribution</span>
-<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumLocation</span>
-<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumRemoteCommands</span>
-<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumTagManagement</span>
-<span style="color:#00f">#endif</span>
-
-<span style="color:#00f">enum</span> <span style="color:#2b91af">TealiumConfiguration</span> {
-    <span style="color:#00f">static</span> <span style="color:#00f">let</span> account = <span style="color:#a31515">&#34;tealiummobile&#34;</span>
-    <span style="color:#00f">static</span> <span style="color:#00f">let</span> profile = <span style="color:#a31515">&#34;demo&#34;</span>
-    <span style="color:#00f">static</span> <span style="color:#00f">let</span> environment = <span style="color:#a31515">&#34;dev&#34;</span>
-    <span style="color:#00f">static</span> <span style="color:#00f">let</span> dataSourceKey = <span style="color:#a31515">&#34;abc123&#34;</span>
-}
-
-<span style="color:#008000">// Change this to false to disable all the Tealium logs</span>
-<span style="color:#00f">let</span> enableHelperLogs = <span style="color:#00f">true</span>
-
-<span style="color:#00f">@objc</span>
-<span style="color:#00f">class</span> <span style="color:#2b91af">TealiumHelper</span>: NSObject {
-    
-    <span style="color:#00f">@objc</span>
-    <span style="color:#00f">static</span> <span style="color:#00f">let</span> shared = TealiumHelper()
-
-    <span style="color:#00f">let</span> config = TealiumConfig(account: TealiumConfiguration.account,
-                               profile: TealiumConfiguration.profile,
-                               environment: TealiumConfiguration.environment,
-                               dataSource: TealiumConfiguration.dataSourceKey)
-
-    <span style="color:#00f">var</span> tealium: Tealium?
-
-    <span style="color:#008000">// </span><span style="color:#008000">MARK:</span><span style="color:#008000"> Tealium Initilization</span>
-    <span style="color:#00f">private</span> <span style="color:#00f">override</span> <span style="color:#00f">init</span>() {
-        <span style="color:#00f">super</span>.<span style="color:#00f">init</span>()
-        <span style="color:#008000">// Optional Config Settings</span>
-        <span style="color:#00f">if</span> enableHelperLogs { config.logLevel = .info }
-
-<span style="color:#008000">// Optional - Only required if using Visitor Service</span>
-<span style="color:#008000">//        config.visitorServiceDelegate = self</span>
-
-<span style="color:#008000">// Optional - Only required if using Consent Manager</span>
-<span style="color:#008000">//        config.consentLoggingEnabled = true</span>
-<span style="color:#008000">//        config.consentPolicy = .ccpa</span>
-
-<span style="color:#008000">// Optional - Only required if using Hosted Data Layer</span>
-<span style="color:#008000">//        config.hostedDataLayerKeys = [&#34;hdl-test&#34;: &#34;product_id&#34;]</span>
-<span style="color:#008000">// Optional - Only required if using Timed Events</span>
-<span style="color:#008000">//        config.timedEventTriggers = [TimedEventTrigger(start: &#34;product_view&#34;, end: &#34;order_complete&#34;),</span>
-<span style="color:#008000">//                                     TimedEventTrigger(start: &#34;start_game&#34;, end: &#34;buy_coins&#34;)]</span>
-
-        <span style="color:#00f">#if</span> <span style="color:#00f">os</span>(<span style="color:#00f">iOS</span>)
-        <span style="color:#008000">// Add dispatchers</span>
-        config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands, Dispatchers.Collect]
-        <span style="color:#00f">#else</span>
-        config.dispatchers = [Dispatchers.Collect]
-        <span style="color:#00f">#endif</span>
-
-        <span style="color:#008000">// Add collectors</span>
-        <span style="color:#00f">#if</span> <span style="color:#00f">os</span>(<span style="color:#00f">iOS</span>) &amp;&amp; <span style="color:#00f">targetEnvironment</span>(<span style="color:#00f">macCatalyst</span>)
-        <span style="color:#008000">// Optional - Only required if using Visitor Service</span>
-        config.collectors = [Collectors.VisitorService]
-        <span style="color:#00f">#elseif</span> <span style="color:#00f">os</span>(<span style="color:#00f">iOS</span>) &amp;&amp; !<span style="color:#00f">targetEnvironment</span>(<span style="color:#00f">macCatalyst</span>)
-        config.collectors = [Collectors.Attribution, Collectors.VisitorService, Collectors.Location]
-
-         <span style="color:#008000">// Batching:</span>
-         config.batchingEnabled = <span style="color:#00f">false</span> <span style="color:#008000">// true to enable</span>
-
-        <span style="color:#008000">// Location - Geofence Monitoring:</span>
-<span style="color:#008000">//        config.geofenceUrl = &#34;https://tags.tiqcdn.com/dle/tealiummobile/location/geofences.json&#34;</span>
-<span style="color:#008000">//        config.useHighAccuracy = true</span>
-<span style="color:#008000">//        config.updateDistance = 200.0</span>
-        
-        <span style="color:#008000">// SKAdNetwork event handling</span>
-        config.searchAdsEnabled = <span style="color:#00f">true</span>
-        config.skAdAttributionEnabled = <span style="color:#00f">true</span>
-        config.skAdConversionKeys = [<span style="color:#a31515">&#34;conversion_event&#34;</span>: <span style="color:#a31515">&#34;conversion_value&#34;</span>]
-
-        <span style="color:#008000">// Remote Commands:</span>
-        <span style="color:#00f">let</span> remoteCommand = RemoteCommand(commandId: <span style="color:#a31515">&#34;hello&#34;</span>, description: <span style="color:#a31515">&#34;world&#34;</span>) { response <span style="color:#00f">in</span>
-            <span style="color:#00f">guard</span> <span style="color:#00f">let</span> payload = response.payload <span style="color:#00f">else</span> {
-                <span style="color:#00f">return</span>
-            }
-            <span style="color:#008000">// Do something w/remote command payload</span>
-            <span style="color:#00f">if</span> enableHelperLogs {
-                print(payload)
-            }
-        }
-        config.addRemoteCommand(remoteCommand)
-        <span style="color:#00f">#endif</span>
-
-        tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span style="color:#00f">in</span>
-            <span style="color:#008000">// Optional post init processing</span>
-            <span style="color:#00f">self</span>.tealium?.dataLayer.add(data: [<span style="color:#a31515">&#34;somekey&#34;</span>: <span style="color:#a31515">&#34;someval&#34;</span>], expiry: .afterCustom((.months, 1)))
-            <span style="color:#00f">self</span>.tealium?.dataLayer.add(key: <span style="color:#a31515">&#34;someotherkey&#34;</span>, value: <span style="color:#a31515">&#34;someotherval&#34;</span>, expiry: .forever)
-        }
-    }
-    
-    <span style="color:#00f">@objc</span>
-    <span style="color:#00f">public</span> <span style="color:#00f">func</span> start() {
-        <span style="color:#00f">_</span> = TealiumHelper.shared
-    }
-    
-    <span style="color:#00f">@objc</span>
-    <span style="color:#00f">func</span> resetConsentPreferences() {
-        tealium?.consentManager?.resetUserConsentPreferences()
-    }
-    
-    <span style="color:#00f">@objc</span>
-    <span style="color:#00f">func</span> track(title: String, data: [String: Any]?) {
-        <span style="color:#00f">let</span> dispatch = TealiumEvent(title, dataLayer: data)
-        tealium?.track(dispatch)
-    }
-
-    <span style="color:#00f">@objc</span>
-    <span style="color:#00f">func</span> trackView(title: String, data: [String: Any]?) {
-        <span style="color:#00f">let</span> dispatch = TealiumView(title, dataLayer: data)
-        tealium?.track(dispatch)
-    }
-
-    <span style="color:#00f">@objc</span>
-    <span style="color:#00f">func</span> joinTrace(<span style="color:#00f">_</span> traceID: String) {
-        tealium?.joinTrace(id: traceID)
-    }
-
-    <span style="color:#00f">@objc</span>
-    <span style="color:#00f">func</span> leaveTrace() {
-        tealium?.leaveTrace()
-    }
-}</code></pre></div>
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/ios-swift/modules/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Modules "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Modules</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/ios-swift/release-notes/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Release Notes</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Release Notes"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7761,33 +7472,340 @@ However, by using an intermediate helper class, it is possible to call the Swift
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/ios-swift/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        IOS SWIFT
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Working with Objective-C</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Learn about creating a bridging header to work between Objective-C and Swift.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<p>We recommend using our native Swift library, even for Objective-C projects, but if you still need to use the Objective-C library, this document helps.</p>
+
+<h2 id="call-objective-c-from-swift">Call Objective-C from Swift</h2>
+
+<p>Call the Objective-C library from Swift code by simply adding a bridging header to your project, and importing the appropriate headers.</p>
+
+<h3 id="bridging-header">Bridging Header</h3>
+
+<p>To create a bridging header:</p>
+
+<ol>
+<li>In your Swift project, create a new file. When prompted to select a file type, select Objective-C File.</li>
+<li>Give this file a temporary name, such as &ldquo;placeholder.m&rdquo;, as you are going to remove it later.</li>
+<li>Click &ldquo;Finish&rdquo; and XCode prompts you to create a Bridging Header (if it doesn&rsquo;t, you probably already have a Bridging Header in your project). Press &ldquo;Create Bridging Header&rdquo; to continue, and Xcode automatically creates the new header file for you.</li>
+<li>Delete the <code>placeholder.m</code> file from the project and notice a new file called <code>&lt;ProjectName&gt;-Bridging-Header.h</code></li>
+
+<li><p>Add the following import statement to the new Bridging Header:</p>
+
+<pre><code class="language-objc">@import TealiumIOS;
+</code></pre></li>
+</ol>
+
+<p>Next, to call the Objective-C code from Swift:</p>
+
+<pre><code class="language-objc">class TealiumHelper {
+    func somefunc () {
+        let tealConfig = TEALConfiguration.init(account: &quot;ACCOUNT&quot;, profile: &quot;PROFILE&quot;, environment: &quot;ENVIRONMENT&quot;)
+        let teal = Tealium.newInstance(forKey: &quot;KEY&quot;, configuration: tealConfig)
+        teal.trackView(withTitle: &quot;SCREEN_NAME&quot;, dataSources: [&quot;DATA&quot;:&quot;VALUE&quot;])
+    }
+}
+</code></pre>
+
+<h2 id="call-swift-from-objective-c">Call Swift from Objective-C</h2>
+
+<p>The Swift library cannot be directly called from Objective-C, since it is missing the required annotations in the code, and in many cases, modules do not inherit from NSObject, rather they use the native Swift data types.
+However, by using an intermediate helper class, it is possible to call the Swift library from Objective-C.</p>
+
+<h3 id="helper-class">Helper Class</h3>
+
+<ol>
+<li>In your Objective-C project, create a new Swift file. You are prompted to add a bridging header if you don&rsquo;t already have one. Accept this prompt. Name the new Swift file &ldquo;TealiumHelper.swift&rdquo;.</li>
+
+<li><p>Import the new Swift header (<code>&lt;ProjectName&gt;-Swift.h</code>) into files that need to call the new helper.</p>
+
+<pre><code class="language-objc">#import &quot;ProjectName-Swift.h&quot;
+</code></pre></li>
+</ol>
+
+<p>The methods in the helper file are now be available to use in your Objective-C code. We recommend making the helper a singleton.</p>
+
+<pre><code class="language-objc">#import &quot;TestSwiftBridge-Swift.h&quot;
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	// instantiate the helper singleton
+    TealiumHelper * help = [TealiumHelper sharedInstance];
+    // call the start method, which initializes the Tealium library
+    [help start];
+    // trigger a new event tracking call from objective-c
+    [help track:@&quot;this is from objective-c!&quot; data:@{@&quot;mydata&quot;:@&quot;hello from obj-c&quot;}];
+    return YES;
+}
+</code></pre>
+
+<h3 id="sample-tealiumhelper-file">Sample TealiumHelper file</h3>
+
+<pre><code class="language-swift">// 
+// TealiumHelper.swift
+//
+//  Copyright © 2021 Tealium, Inc. All rights reserved.
+//
+
+import TealiumCollect
+import TealiumCore
+import TealiumLifecycle
+import TealiumVisitorService
+#if os(iOS)
+import TealiumAttribution
+import TealiumLocation
+import TealiumRemoteCommands
+import TealiumTagManagement
+#endif
+
+enum TealiumConfiguration {
+    static let account = &quot;tealiummobile&quot;
+    static let profile = &quot;demo&quot;
+    static let environment = &quot;dev&quot;
+    static let dataSourceKey = &quot;abc123&quot;
+}
+
+// Change this to false to disable all the Tealium logs
+let enableHelperLogs = true
+
+@objc
+class TealiumHelper: NSObject {
+    
+    @objc
+    static let shared = TealiumHelper()
+
+    let config = TealiumConfig(account: TealiumConfiguration.account,
+                               profile: TealiumConfiguration.profile,
+                               environment: TealiumConfiguration.environment,
+                               dataSource: TealiumConfiguration.dataSourceKey)
+
+    var tealium: Tealium?
+
+    // MARK: Tealium Initilization
+    private override init() {
+        super.init()
+        // Optional Config Settings
+        if enableHelperLogs { config.logLevel = .info }
+
+// Optional - Only required if using Visitor Service
+//        config.visitorServiceDelegate = self
+
+// Optional - Only required if using Consent Manager
+//        config.consentLoggingEnabled = true
+//        config.consentPolicy = .ccpa
+
+// Optional - Only required if using Hosted Data Layer
+//        config.hostedDataLayerKeys = [&quot;hdl-test&quot;: &quot;product_id&quot;]
+// Optional - Only required if using Timed Events
+//        config.timedEventTriggers = [TimedEventTrigger(start: &quot;product_view&quot;, end: &quot;order_complete&quot;),
+//                                     TimedEventTrigger(start: &quot;start_game&quot;, end: &quot;buy_coins&quot;)]
+
+        #if os(iOS)
+        // Add dispatchers
+        config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands, Dispatchers.Collect]
+        #else
+        config.dispatchers = [Dispatchers.Collect]
+        #endif
+
+        // Add collectors
+        #if os(iOS) &amp;&amp; targetEnvironment(macCatalyst)
+        // Optional - Only required if using Visitor Service
+        config.collectors = [Collectors.VisitorService]
+        #elseif os(iOS) &amp;&amp; !targetEnvironment(macCatalyst)
+        config.collectors = [Collectors.Attribution, Collectors.VisitorService, Collectors.Location]
+
+         // Batching:
+         config.batchingEnabled = false // true to enable
+
+        // Location - Geofence Monitoring:
+//        config.geofenceUrl = &quot;https://tags.tiqcdn.com/dle/tealiummobile/location/geofences.json&quot;
+//        config.useHighAccuracy = true
+//        config.updateDistance = 200.0
+        
+        // SKAdNetwork event handling
+        config.searchAdsEnabled = true
+        config.skAdAttributionEnabled = true
+        config.skAdConversionKeys = [&quot;conversion_event&quot;: &quot;conversion_value&quot;]
+
+        // Remote Commands:
+        let remoteCommand = RemoteCommand(commandId: &quot;hello&quot;, description: &quot;world&quot;) { response in
+            guard let payload = response.payload else {
+                return
+            }
+            // Do something w/remote command payload
+            if enableHelperLogs {
+                print(payload)
+            }
+        }
+        config.addRemoteCommand(remoteCommand)
+        #endif
+
+        tealium = Tealium(config: config) { _ in
+            // Optional post init processing
+            self.tealium?.dataLayer.add(data: [&quot;somekey&quot;: &quot;someval&quot;], expiry: .afterCustom((.months, 1)))
+            self.tealium?.dataLayer.add(key: &quot;someotherkey&quot;, value: &quot;someotherval&quot;, expiry: .forever)
+        }
+    }
+    
+    @objc
+    public func start() {
+        _ = TealiumHelper.shared
+    }
+    
+    @objc
+    func resetConsentPreferences() {
+        tealium?.consentManager?.resetUserConsentPreferences()
+    }
+    
+    @objc
+    func track(title: String, data: [String: Any]?) {
+        let dispatch = TealiumEvent(title, dataLayer: data)
+        tealium?.track(dispatch)
+    }
+
+    @objc
+    func trackView(title: String, data: [String: Any]?) {
+        let dispatch = TealiumView(title, dataLayer: data)
+        tealium?.track(dispatch)
+    }
+
+    @objc
+    func joinTrace(_ traceID: String) {
+        tealium?.joinTrace(id: traceID)
+    }
+
+    @objc
+    func leaveTrace() {
+        tealium?.leaveTrace()
+    }
+}
+</code></pre>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/ios-swift/modules/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Modules "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Modules</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/ios-swift/release-notes/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Release Notes</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Release Notes"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  June 22, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  June 22, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#call-objective-c-from-swift">Call Objective-C from Swift</a></li>
+              <ul class="toc-h3"><li><a href="#bridging-header">Bridging Header</a></li>
+              </ul><li><a href="#call-swift-from-objective-c">Call Swift from Objective-C</a></li>
+              <ul class="toc-h3"><li><a href="#helper-class">Helper Class</a></li>
+              <li><a href="#sample-tealiumhelper-file">Sample TealiumHelper file</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

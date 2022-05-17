@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,339 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#how-it-works">How It Works</a></li>
-              <li><a href="#settings">Settings</a></li>
-              <ul class="toc-h3"><li><a href="#cmcookiens">cmcookiens</a></li>
-              <li><a href="#consentperiod">consentPeriod</a></li>
-              <li><a href="#dom-complete">dom_complete</a></li>
-              <li><a href="#domain">domain</a></li>
-              <li><a href="#gdprdlref">gdprDLRef</a></li>
-              <li><a href="#load-rules-ajax">load_rules_ajax</a></li>
-              <li><a href="#load-rules-at-wait">load_rules_at_wait</a></li>
-              <li><a href="#lowermeta">lowermeta</a></li>
-              <li><a href="#lowerqp">lowerqp</a></li>
-              <li><a href="#noload">noload</a></li>
-              <li><a href="#noview">noview</a></li>
-              <li><a href="#nocookie">nocookie</a></li>
-              <li><a href="#readywait">readywait</a></li>
-              <li><a href="#secure-cookie">secure_cookie</a></li>
-              <li><a href="#session-timeout">session_timeout</a></li>
-              <li><a href="#waittimer">waittimer</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/javascript/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        JAVASCRIPT
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Settings</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Learn about the available settings that adjust the behavior of <code>utag.js</code>.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="how-it-works">How It Works</h2>
-
-<p>Many of the behaviors of <code>utag.js</code> are controlled with settings set in the <code>utag.cfg</code> object. The default behaviors controlled by these settings are overridden using a new object called <code>utag_cfg_ovrd</code>. To use this object, set it in your page code prior to loading <code>utag.js</code> or within a <a href="https://community.tealiumiq.com/t5/Tealium-iQ-Tag-Management/JavaScript-Code-Extension/ta-p/11925">JavaScript Code Extension</a> scoped to <strong>Pre Loader</strong> with the following:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.utag_cfg_ovrd = window.utag_cfg_ovrd || {};
-</code></pre></div>
-<h2 id="settings">Settings</h2>
-
-<p>The following table summarizes the available settings:</p>
-
-<table>
-<thead>
-<tr>
-<th>Setting</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><a href="#cmcookiename"><code>cmcookiens</code></a></td>
-<td>Consent management cookie name.</td>
-</tr>
-
-<tr>
-<td><a href="#consentperiod"><code>consentPeriod</code></a></td>
-<td>Set the number of days to retain the user&rsquo;s consent preference.</td>
-</tr>
-
-<tr>
-<td><a href="#dom-complete"><code>dom_complete</code></a></td>
-<td>Delay tags until the DOM complete (load) event.</td>
-</tr>
-
-<tr>
-<td><a href="#domain"><code>domain</code></a></td>
-<td>Override the domain used to set cookies.</td>
-</tr>
-
-<tr>
-<td><a href="#gdprdlref"><code>gdprDLRef</code></a></td>
-<td>Specify the name of the data layer variable which stores the language setting to be used by the consent manager.</td>
-</tr>
-
-<tr>
-<td><a href="#load-rules-ajax"><code>load_rules_ajax</code></a></td>
-<td>Disable load rules after page load (legacy).</td>
-</tr>
-
-<tr>
-<td><a href="#load-rules-at-wait"><code>load_rules_at_wait</code></a></td>
-<td>Run load rules after extensions (legacy).</td>
-</tr>
-
-<tr>
-<td><a href="#lowermeta"><code>lowermeta</code></a></td>
-<td>Lower-case meta tag names and values (legacy).</td>
-</tr>
-
-<tr>
-<td><a href="#lowerqp"><code>lowerqp</code></a></td>
-<td>Lower-case query string parameter names and values (legacy).</td>
-</tr>
-
-<tr>
-<td><a href="#noload"><code>noload</code></a></td>
-<td>Disable all functionality.</td>
-</tr>
-
-<tr>
-<td><a href="#noview"><code>noview</code></a></td>
-<td>Disable the automatic tracking call on initial page load.</td>
-</tr>
-
-<tr>
-<td><a href="#nocookie"><code>nocookie</code></a></td>
-<td>Disable the <code>utag_main</code> cookie.</td>
-</tr>
-
-<tr>
-<td><a href="#readywait"><code>readywait</code></a></td>
-<td>Halt operations until the DOM-ready browser event.</td>
-</tr>
-
-<tr>
-<td><a href="#secure-cookie"><code>secure_cookie</code></a></td>
-<td>Set the attribute string to <code>secure</code> for all <code>utag_main</code> cookies set by the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Persist-Data-Value-Extension/ta-p/13623">Persist Data Values extension</a> and the <a href="/platforms/javascript/api/cookie-functions/#utag-loader-sc"><code>SC()</code></a> function.</td>
-</tr>
-
-<tr>
-<td><a href="#session-timeout"><code>session_timeout</code></a></td>
-<td>Set the session expiration time (in milliseconds).</td>
-</tr>
-
-<tr>
-<td><a href="#waittimer"><code>waittimer</code></a></td>
-<td>Set a time to delay (in milliseconds) before loading tags.</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="cmcookiens"><code>cmcookiens</code></h3>
-
-<p><strong>Consent Management cookie name</strong><br />
-Customize the Consent Management cookie name, which is useful when different profiles share the same domain name.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">window.utag_cfg_ovrd.cmcookiens = <span style="color:#a31515">&#34;CONSENTMGR_NL-CMB-CG1&#34;</span>;
-</code></pre></div>
-<h3 id="consentperiod"><code>consentPeriod</code></h3>
-
-<p><strong>Consent preference retention period</strong><br />
-Set the number of days to retain GDPR and CCPA consent status. The built-in expiry is 365 days for GDPR and 395 days for CCPA.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.utag_cfg_ovrd.consentPeriod = 60;
-</code></pre></div>
-<h3 id="dom-complete"><code>dom_complete</code></h3>
-
-<p><strong>Delay tags until the DOM complete (load) browser event</strong><br />
-Load tags at the <a href="https://developer.mozilla.org/en-US/docs/Web/Events/load">document load event</a> rather than at DOM Ready.  This also holds back any extensions scoped to DOM Ready.  (Default: <code>false</code>)</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.utag_cfg_ovrd.dom_complete = <span style="color:#00f">true</span>;
-</code></pre></div>
-<h3 id="domain"><code>domain</code></h3>
-
-<p><strong>Override cookie domain</strong><br />
-Sets the domain where <code>utag_main</code> cookie is set. Useful for sites on root domains that won&rsquo;t accept cookies. For example, <code>amazonaws.com</code>. (Default: The top-level domain of <code>location.hostname</code>)</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.utag_cfg_ovrd.domain = <span style="color:#a31515">&#34;mysite.amazonaws.com&#34;</span>;
-</code></pre></div>
-<h3 id="gdprdlref"><code>gdprDLRef</code></h3>
-
-<p><strong>Override language preference in consent manager</strong><br />
-Specify the name of the data layer variable which stores the language to be used in the consent manager.</p>
-
-<p>For example, if your data layer contains a variable named <code>site_language</code>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.utag_cfg_ovrd = window.utag_cfg_ovrd || {}
-window.utag_cfg_ovrd.gdprDLRef = <span style="color:#a31515">&#34;site_language&#34;</span>;
-</code></pre></div>
-<p class="note"><i class="fas fa-info-circle"></i>Do not set the language code directly. This override setting expects a variable name, not a language code value.</p>
-
-<h3 id="load-rules-ajax"><code>load_rules_ajax</code></h3>
-
-<p><strong>Disable load rules after page load (legacy)</strong><br />
-Controls if load rules are reprocessed on each call to <code>utag.view</code> and <code>utag.link</code> within the same page load. It&rsquo;s possible that a newly triggered Load Rule loads a new tag into the page. Use this setting to replicate behavior from versions of <code>utag.js</code> older than 4.2x. (Default: <code>true</code>)</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.utag_cfg_ovrd.load_rules_ajax = <span style="color:#00f">false</span>;
-</code></pre></div>
-<h3 id="load-rules-at-wait"><code>load_rules_at_wait</code></h3>
-
-<p><strong>Run load rules after extensions (legacy)</strong><br />
-Evaluates Load Rules after extensions. Used for older versions of <code>utag.js</code> and for installations where the data layer object is populated after loading <code>utag.js</code>. Newer versions of <code>utag.js</code> make use of extension execution order instead of this setting. (Default: <code>false</code>)</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.utag_cfg_ovrd.load_rules_at_wait = <span style="color:#00f">true</span>;
-</code></pre></div>
-<h3 id="lowermeta"><code>lowermeta</code></h3>
-
-<p><strong>Lower-case meta tag data (legacy)</strong><br />
-Lower-case all meta data variable names and values. Replicates behavior in <code>utag.js</code> versions prior to 4.2x. (Default: <code>false</code>)</p>
-
-<p>Example meta tag:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;meta content=<span style="color:#a31515">&#34;iQ Tag Management&#34;</span> property=<span style="color:#a31515">&#34;Article:Section&#34;</span>&gt;</code></pre></div>
-<p>Resulting value:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.data[<span style="color:#a31515">&#39;meta.article:section&#39;</span>]=<span style="color:#a31515">&#34;iq tag management&#34;</span>
-</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.utag_cfg_ovrd.lowermeta = <span style="color:#00f">true</span>;
-</code></pre></div>
-<h3 id="lowerqp"><code>lowerqp</code></h3>
-
-<p><strong>Lower-case query string parameter names and values (legacy)</strong><br />
-Lower-case all query string variable names and values. Replicates behavior in <code>utag.js</code> versions prior to 4.2x. (Default: <code>false</code>)</p>
-
-<p>Example query string parameter: <code>&amp;RefId=Abc123</code>
-Resulting value: <code>utag.data['qp.refid']=&quot;abc123&quot;</code></p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.utag_cfg_ovrd.lowerqp = <span style="color:#00f">true</span>;
-</code></pre></div>
-<h3 id="noload"><code>noload</code></h3>
-
-<p><strong>Halt all operations</strong><br />
-The execution of all code halts after the extensions scoped to <strong>Pre Loader</strong>. Extensions scoped to <strong>DOM Ready</strong> still run. This is normally adjusted using the publish setting for <strong>Prevent Tag Load</strong>. (Default: <code>0</code>)</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.utag_cfg_ovrd.noload = <span style="color:#00f">true</span>;
-</code></pre></div>
-<h3 id="noview"><code>noview</code></h3>
-
-<p><strong>Disable automatic tracking call on initial page load</strong><br />
-Suppresses the tracking call that occurs automatically on initial page load. This setting is commonly used on single page application sites. (Default: <code>false</code>)</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.utag_cfg_ovrd.noview = <span style="color:#00f">true</span>;
-</code></pre></div>
-<h3 id="nocookie"><code>nocookie</code></h3>
-
-<p><strong>Cookie opt-out</strong><br />
-Only set this option if a visitor has explicitly opted out of all cookies. (Default: <code>false</code>)
-<p class="note"><i class="fas fa-info-circle"></i>Using this option inflates visitor and session counts, making all visits look like &ldquo;single page sessions&rdquo;.</p></p>
-
-<p>This option disables <em>all</em> cookies from being stored by <code>utag.js</code>, including cookies set with the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Persist-Data-Value-Extension/ta-p/13623">Persist Data Value extension</a>, and session cookies. It also sets a new timestamp for the variables <code>ut.visitor_id</code>, <code>tealium_visitor_id</code>, and <code>cp.utag_main_v_id</code> when the cookie is not available.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.utag_cfg_ovrd.nocookie = <span style="color:#00f">true</span>
-</code></pre></div>
-<h3 id="readywait"><code>readywait</code></h3>
-
-<p><strong>Delay operations until DOM-ready</strong><br />
-Halt all operations until the DOM-ready signal is received from the browser. Extensions scoped to <strong>Pre Loader</strong> still run when <code>utag.js</code> loads. (Default: <code>0</code>)</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.utag_cfg_ovrd.readywait = <span style="color:#00f">true</span>;
-</code></pre></div>
-<h3 id="secure-cookie"><code>secure_cookie</code></h3>
-
-<p><strong>Secure cookie</strong><br />
-Set the attribute string to <code>secure</code> for all <code>utag_main</code> cookies set by the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Persist-Data-Value-Extension/ta-p/13623">Persist Data Values extension</a> and the <a href="/platforms/javascript/api/cookie-functions/#utag-loader-sc"><code>SC()</code></a> function. Secure cookies can only be set and accessed on HTTPS pages. (Default: <code>false</code>)</p>
-
-<p class="note"><i class="fas fa-info-circle"></i>Requires <code>utag.js</code> version 4.48</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.utag_cfg_ovrd.secure_cookie = <span style="color:#00f">true</span>;
-</code></pre></div>
-<h3 id="session-timeout"><code>session_timeout</code></h3>
-
-<p><strong>Session timeout</strong><br />
-Sets how long to wait, in milliseconds, before expiring the current session. This is normally adjusted using the publish configuration setting for Session Timeout. (Default: <code>1800000</code> (30 minutes))</p>
-
-<p>Example to set the timeout to 900000 milliseconds (15 minutes):</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.utag_cfg_ovrd.session_timeout = 900000;
-</code></pre></div>
-<h3 id="waittimer"><code>waittimer</code></h3>
-
-<p><strong>Delay tags with timer</strong><br />
-Sets how long to wait (in milliseconds) after the DOM Ready event before loading tags. (Default: not set)</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">window.utag_cfg_ovrd.waittimer = 1000;
-</code></pre></div>
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/javascript/single-page-applications/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Single-Page Applications "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Single-Page Applications</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/javascript/debugging/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Debugging</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Debugging"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7797,33 +7472,402 @@ Sets how long to wait (in milliseconds) after the DOM Ready event before loading
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/javascript/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        JAVASCRIPT
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Settings</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Learn about the available settings that adjust the behavior of <code>utag.js</code>.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="how-it-works">How It Works</h2>
+
+<p>Many of the behaviors of <code>utag.js</code> are controlled with settings set in the <code>utag.cfg</code> object. The default behaviors controlled by these settings are overridden using a new object called <code>utag_cfg_ovrd</code>. To use this object, set it in your page code prior to loading <code>utag.js</code> or within a <a href="https://community.tealiumiq.com/t5/Tealium-iQ-Tag-Management/JavaScript-Code-Extension/ta-p/11925">JavaScript Code Extension</a> scoped to <strong>Pre Loader</strong> with the following:</p>
+
+<pre><code class="language-javascript">window.utag_cfg_ovrd = window.utag_cfg_ovrd || {};
+</code></pre>
+
+<h2 id="settings">Settings</h2>
+
+<p>The following table summarizes the available settings:</p>
+
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="#cmcookiename"><code>cmcookiens</code></a></td>
+<td>Consent management cookie name.</td>
+</tr>
+
+<tr>
+<td><a href="#consentperiod"><code>consentPeriod</code></a></td>
+<td>Set the number of days to retain the user&rsquo;s consent preference.</td>
+</tr>
+
+<tr>
+<td><a href="#dom-complete"><code>dom_complete</code></a></td>
+<td>Delay tags until the DOM complete (load) event.</td>
+</tr>
+
+<tr>
+<td><a href="#domain"><code>domain</code></a></td>
+<td>Override the domain used to set cookies.</td>
+</tr>
+
+<tr>
+<td><a href="#gdprdlref"><code>gdprDLRef</code></a></td>
+<td>Specify the name of the data layer variable which stores the language setting to be used by the consent manager.</td>
+</tr>
+
+<tr>
+<td><a href="#load-rules-ajax"><code>load_rules_ajax</code></a></td>
+<td>Disable load rules after page load (legacy).</td>
+</tr>
+
+<tr>
+<td><a href="#load-rules-at-wait"><code>load_rules_at_wait</code></a></td>
+<td>Run load rules after extensions (legacy).</td>
+</tr>
+
+<tr>
+<td><a href="#lowermeta"><code>lowermeta</code></a></td>
+<td>Lower-case meta tag names and values (legacy).</td>
+</tr>
+
+<tr>
+<td><a href="#lowerqp"><code>lowerqp</code></a></td>
+<td>Lower-case query string parameter names and values (legacy).</td>
+</tr>
+
+<tr>
+<td><a href="#noload"><code>noload</code></a></td>
+<td>Disable all functionality.</td>
+</tr>
+
+<tr>
+<td><a href="#noview"><code>noview</code></a></td>
+<td>Disable the automatic tracking call on initial page load.</td>
+</tr>
+
+<tr>
+<td><a href="#nocookie"><code>nocookie</code></a></td>
+<td>Disable the <code>utag_main</code> cookie.</td>
+</tr>
+
+<tr>
+<td><a href="#readywait"><code>readywait</code></a></td>
+<td>Halt operations until the DOM-ready browser event.</td>
+</tr>
+
+<tr>
+<td><a href="#secure-cookie"><code>secure_cookie</code></a></td>
+<td>Set the attribute string to <code>secure</code> for all <code>utag_main</code> cookies set by the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Persist-Data-Value-Extension/ta-p/13623">Persist Data Values extension</a> and the <a href="/platforms/javascript/api/cookie-functions/#utag-loader-sc"><code>SC()</code></a> function.</td>
+</tr>
+
+<tr>
+<td><a href="#session-timeout"><code>session_timeout</code></a></td>
+<td>Set the session expiration time (in milliseconds).</td>
+</tr>
+
+<tr>
+<td><a href="#waittimer"><code>waittimer</code></a></td>
+<td>Set a time to delay (in milliseconds) before loading tags.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="cmcookiens"><code>cmcookiens</code></h3>
+
+<p><strong>Consent Management cookie name</strong><br />
+Customize the Consent Management cookie name, which is useful when different profiles share the same domain name.</p>
+
+<pre><code class="language-JavaScript">window.utag_cfg_ovrd.cmcookiens = &quot;CONSENTMGR_NL-CMB-CG1&quot;;
+</code></pre>
+
+<h3 id="consentperiod"><code>consentPeriod</code></h3>
+
+<p><strong>Consent preference retention period</strong><br />
+Set the number of days to retain GDPR and CCPA consent status. The built-in expiry is 365 days for GDPR and 395 days for CCPA.</p>
+
+<pre><code class="language-javascript">window.utag_cfg_ovrd.consentPeriod = 60;
+</code></pre>
+
+<h3 id="dom-complete"><code>dom_complete</code></h3>
+
+<p><strong>Delay tags until the DOM complete (load) browser event</strong><br />
+Load tags at the <a href="https://developer.mozilla.org/en-US/docs/Web/Events/load">document load event</a> rather than at DOM Ready.  This also holds back any extensions scoped to DOM Ready.  (Default: <code>false</code>)</p>
+
+<pre><code class="language-javascript">window.utag_cfg_ovrd.dom_complete = true;
+</code></pre>
+
+<h3 id="domain"><code>domain</code></h3>
+
+<p><strong>Override cookie domain</strong><br />
+Sets the domain where <code>utag_main</code> cookie is set. Useful for sites on root domains that won&rsquo;t accept cookies. For example, <code>amazonaws.com</code>. (Default: The top-level domain of <code>location.hostname</code>)</p>
+
+<pre><code class="language-javascript">window.utag_cfg_ovrd.domain = &quot;mysite.amazonaws.com&quot;;
+</code></pre>
+
+<h3 id="gdprdlref"><code>gdprDLRef</code></h3>
+
+<p><strong>Override language preference in consent manager</strong><br />
+Specify the name of the data layer variable which stores the language to be used in the consent manager.</p>
+
+<p>For example, if your data layer contains a variable named <code>site_language</code>:</p>
+
+<pre><code class="language-javascript">window.utag_cfg_ovrd = window.utag_cfg_ovrd || {}
+window.utag_cfg_ovrd.gdprDLRef = &quot;site_language&quot;;
+</code></pre>
+
+<p class="note"><i class="fas fa-info-circle"></i>Do not set the language code directly. This override setting expects a variable name, not a language code value.</p>
+
+<h3 id="load-rules-ajax"><code>load_rules_ajax</code></h3>
+
+<p><strong>Disable load rules after page load (legacy)</strong><br />
+Controls if load rules are reprocessed on each call to <code>utag.view</code> and <code>utag.link</code> within the same page load. It&rsquo;s possible that a newly triggered Load Rule loads a new tag into the page. Use this setting to replicate behavior from versions of <code>utag.js</code> older than 4.2x. (Default: <code>true</code>)</p>
+
+<pre><code class="language-javascript">window.utag_cfg_ovrd.load_rules_ajax = false;
+</code></pre>
+
+<h3 id="load-rules-at-wait"><code>load_rules_at_wait</code></h3>
+
+<p><strong>Run load rules after extensions (legacy)</strong><br />
+Evaluates Load Rules after extensions. Used for older versions of <code>utag.js</code> and for installations where the data layer object is populated after loading <code>utag.js</code>. Newer versions of <code>utag.js</code> make use of extension execution order instead of this setting. (Default: <code>false</code>)</p>
+
+<pre><code class="language-javascript">window.utag_cfg_ovrd.load_rules_at_wait = true;
+</code></pre>
+
+<h3 id="lowermeta"><code>lowermeta</code></h3>
+
+<p><strong>Lower-case meta tag data (legacy)</strong><br />
+Lower-case all meta data variable names and values. Replicates behavior in <code>utag.js</code> versions prior to 4.2x. (Default: <code>false</code>)</p>
+
+<p>Example meta tag:</p>
+
+<pre><code class="language-html">&lt;meta content=&quot;iQ Tag Management&quot; property=&quot;Article:Section&quot;&gt;
+</code></pre>
+
+<p>Resulting value:</p>
+
+<pre><code class="language-javascript">utag.data['meta.article:section']=&quot;iq tag management&quot;
+</code></pre>
+
+<pre><code class="language-javascript">window.utag_cfg_ovrd.lowermeta = true;
+</code></pre>
+
+<h3 id="lowerqp"><code>lowerqp</code></h3>
+
+<p><strong>Lower-case query string parameter names and values (legacy)</strong><br />
+Lower-case all query string variable names and values. Replicates behavior in <code>utag.js</code> versions prior to 4.2x. (Default: <code>false</code>)</p>
+
+<p>Example query string parameter: <code>&amp;RefId=Abc123</code>
+Resulting value: <code>utag.data['qp.refid']=&quot;abc123&quot;</code></p>
+
+<pre><code class="language-javascript">window.utag_cfg_ovrd.lowerqp = true;
+</code></pre>
+
+<h3 id="noload"><code>noload</code></h3>
+
+<p><strong>Halt all operations</strong><br />
+The execution of all code halts after the extensions scoped to <strong>Pre Loader</strong>. Extensions scoped to <strong>DOM Ready</strong> still run. This is normally adjusted using the publish setting for <strong>Prevent Tag Load</strong>. (Default: <code>0</code>)</p>
+
+<pre><code class="language-javascript">window.utag_cfg_ovrd.noload = true;
+</code></pre>
+
+<h3 id="noview"><code>noview</code></h3>
+
+<p><strong>Disable automatic tracking call on initial page load</strong><br />
+Suppresses the tracking call that occurs automatically on initial page load. This setting is commonly used on single page application sites. (Default: <code>false</code>)</p>
+
+<pre><code class="language-javascript">window.utag_cfg_ovrd.noview = true;
+</code></pre>
+
+<h3 id="nocookie"><code>nocookie</code></h3>
+
+<p><strong>Cookie opt-out</strong><br />
+Only set this option if a visitor has explicitly opted out of all cookies. (Default: <code>false</code>)
+<p class="note"><i class="fas fa-info-circle"></i>Using this option inflates visitor and session counts, making all visits look like &ldquo;single page sessions&rdquo;.</p></p>
+
+<p>This option disables <em>all</em> cookies from being stored by <code>utag.js</code>, including cookies set with the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Persist-Data-Value-Extension/ta-p/13623">Persist Data Value extension</a>, and session cookies. It also sets a new timestamp for the variables <code>ut.visitor_id</code>, <code>tealium_visitor_id</code>, and <code>cp.utag_main_v_id</code> when the cookie is not available.</p>
+
+<pre><code class="language-javascript">window.utag_cfg_ovrd.nocookie = true
+</code></pre>
+
+<h3 id="readywait"><code>readywait</code></h3>
+
+<p><strong>Delay operations until DOM-ready</strong><br />
+Halt all operations until the DOM-ready signal is received from the browser. Extensions scoped to <strong>Pre Loader</strong> still run when <code>utag.js</code> loads. (Default: <code>0</code>)</p>
+
+<pre><code class="language-javascript">window.utag_cfg_ovrd.readywait = true;
+</code></pre>
+
+<h3 id="secure-cookie"><code>secure_cookie</code></h3>
+
+<p><strong>Secure cookie</strong><br />
+Set the attribute string to <code>secure</code> for all <code>utag_main</code> cookies set by the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Persist-Data-Value-Extension/ta-p/13623">Persist Data Values extension</a> and the <a href="/platforms/javascript/api/cookie-functions/#utag-loader-sc"><code>SC()</code></a> function. Secure cookies can only be set and accessed on HTTPS pages. (Default: <code>false</code>)</p>
+
+<p class="note"><i class="fas fa-info-circle"></i>Requires <code>utag.js</code> version 4.48</p>
+
+<pre><code class="language-javascript">window.utag_cfg_ovrd.secure_cookie = true;
+</code></pre>
+
+<h3 id="session-timeout"><code>session_timeout</code></h3>
+
+<p><strong>Session timeout</strong><br />
+Sets how long to wait, in milliseconds, before expiring the current session. This is normally adjusted using the publish configuration setting for Session Timeout. (Default: <code>1800000</code> (30 minutes))</p>
+
+<p>Example to set the timeout to 900000 milliseconds (15 minutes):</p>
+
+<pre><code class="language-javascript">window.utag_cfg_ovrd.session_timeout = 900000;
+</code></pre>
+
+<h3 id="waittimer"><code>waittimer</code></h3>
+
+<p><strong>Delay tags with timer</strong><br />
+Sets how long to wait (in milliseconds) after the DOM Ready event before loading tags. (Default: not set)</p>
+
+<pre><code class="language-javascript">window.utag_cfg_ovrd.waittimer = 1000;
+</code></pre>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/javascript/single-page-applications/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Single-Page Applications "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Single-Page Applications</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/javascript/debugging/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Debugging</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Debugging"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  January 19, 2022 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  January 19, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#how-it-works">How It Works</a></li>
+              <li><a href="#settings">Settings</a></li>
+              <ul class="toc-h3"><li><a href="#cmcookiens">cmcookiens</a></li>
+              <li><a href="#consentperiod">consentPeriod</a></li>
+              <li><a href="#dom-complete">dom_complete</a></li>
+              <li><a href="#domain">domain</a></li>
+              <li><a href="#gdprdlref">gdprDLRef</a></li>
+              <li><a href="#load-rules-ajax">load_rules_ajax</a></li>
+              <li><a href="#load-rules-at-wait">load_rules_at_wait</a></li>
+              <li><a href="#lowermeta">lowermeta</a></li>
+              <li><a href="#lowerqp">lowerqp</a></li>
+              <li><a href="#noload">noload</a></li>
+              <li><a href="#noview">noview</a></li>
+              <li><a href="#nocookie">nocookie</a></li>
+              <li><a href="#readywait">readywait</a></li>
+              <li><a href="#secure-cookie">secure_cookie</a></li>
+              <li><a href="#session-timeout">session_timeout</a></li>
+              <li><a href="#waittimer">waittimer</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

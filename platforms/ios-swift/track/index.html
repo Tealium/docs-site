@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,181 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#track-views">Track Views</a></li>
-              <li><a href="#track-events">Track Events</a></li>
-              <li><a href="#timed-events">Timed Events</a></li>
-              <ul class="toc-h3"><li><a href="#automatic-triggers">Automatic Triggers</a></li>
-              <li><a href="#manual-triggers">Manual Triggers</a></li>
-              </ul><li><a href="#trace">Trace</a></li>
-              <ul class="toc-h3"><li><a href="#join-trace">Join Trace</a></li>
-              <li><a href="#leave-trace">Leave trace</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/ios-swift/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Track</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Learn about the methods for tracking user activity.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="track-views">Track Views</h2>
-
-<p>To track screen views, pass an instance of <code>TealiumView(viewName:dataLayer:)</code> to the <a href="/platforms/ios-swift/api/tealium/#track"><code>track()</code></a> method. <code>TealiumView</code> is comprised of a view name, which appears in the tracking call as <code>tealium_event</code>, and an optional data dictionary.</p>
-
-<p>The following is an example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> tealView = TealiumView(<span style="color:#a31515">&#34;VIEW_NAME&#34;</span>, dataLayer: [<span style="color:#a31515">&#34;key&#34;</span>: <span style="color:#a31515">&#34;value&#34;</span>])
-tealium?.track(tealView)</code></pre></div>
-<h2 id="track-events">Track Events</h2>
-
-<p>To track non-view events, pass an instance of <code>TealiumEvent(eventName:dataLayer:)</code> to the <a href="/platforms/ios-swift/api/tealium/#track"><code>track()</code></a> method.  <code>TealiumEvent</code> is comprised of an event name, which appears in the tracking call as <code>tealium_event</code>, and an optional data dictionary.</p>
-
-<p>The following is an example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> tealEvent = TealiumEvent(<span style="color:#a31515">&#34;EVENT_NAME&#34;</span>, dataLayer: [<span style="color:#a31515">&#34;key&#34;</span>: <span style="color:#a31515">&#34;value&#34;</span>])
-tealium?.track(tealEvent)</code></pre></div>
-<h2 id="timed-events">Timed Events</h2>
-
-<p><a href="/platforms/getting-started/timed-events/">Timed events</a> measure the duration of an event or the duration between two events. Timed events are triggered automatically or manually.</p>
-
-<h3 id="automatic-triggers">Automatic Triggers</h3>
-
-<p>Automatically track the duration between events by setting <a href="/platforms/ios-swift/api/tealium-config/#timedeventtriggers"><code>timedEventTriggers</code></a> to a list of <code>TimedEventTrigger</code> objects, specifying tthe names of the start and stop events.</p>
-
-<p>The following is an example of tracking a timed event with an automatic trigger:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.timedEventTriggers = [TimedEventTrigger(
-    start: <span style="color:#a31515">&#34;cart_add&#34;</span>,
-    stop: <span style="color:#a31515">&#34;purchase&#34;</span>)]</code></pre></div>
-<h3 id="manual-triggers">Manual Triggers</h3>
-
-<p>Manually track the duration of an event by starting and stopping the timed event based on your custom logic.</p>
-
-<p>Start tracking the duration of an event with <a href="/platforms/android-kotlin/api/tealium/#starttimedevent"><code>startTimedEvent()</code></a>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium.startTimedEvent(name: <span style="color:#a31515">&#34;TimeSpentViewingProduct&#34;</span>)</code></pre></div>
-<p>Stop a timed event with <a href="/platforms/android-kotlin/api/tealium/#stoptimedevent"><code>stopTimedEvent()</code></a>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium.stopTimedEvent(name: <span style="color:#a31515">&#34;TimeSpentViewingProduct&#34;</span>)</code></pre></div>
-<p>Cancel a previously started timed event with <a href="/platforms/android-kotlin/api/tealium/#canceltimedevent"><code>cancelTimedEvent()</code></a>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium.cancelTimedEvent(name: <span style="color:#a31515">&#34;TimeSpentViewingProduct&#34;</span>)</code></pre></div>
-<p>Clear all previously started timed events with <a href="/platforms/ios-swift/api/tealium/#clearalltimedevents"><code>clearAllTimedEvents()</code></a>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.clearAllTimedEvents()</code></pre></div>
-<h2 id="trace">Trace</h2>
-
-<h3 id="join-trace">Join Trace</h3>
-
-<p>The <a href="/platforms/ios-swift/api/tealium/#jointrace"><code>joinTrace()</code></a> method joins a trace with the specified ID. Learn more about the <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Trace/ta-p/12058">Trace</a> feature in the Tealium Customer Data Hub.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">class</span> <span style="color:#2b91af">TealiumHelper</span> {
-	<span style="color:#00f">var</span> tealium: Tealium?
-	<span style="color:#008000">// ...</span>
-
-	<span style="color:#00f">func</span> joinTrace(traceId id: String) {
-		tealium?.joinTrace(id: <span style="color:#a31515">&#34;TRACE_ID&#34;</span>)
-		<span style="color:#008000">// ...</span>
-	}
-}</code></pre></div>
-<h3 id="leave-trace">Leave trace</h3>
-
-<p>A trace remains active for the duration of the app session until the <a href="/platforms/ios-swift/api/tealium/#leavetrace"><code>leaveTrace()</code></a> method is called, which leaves a previously joined trace and ends the visitor session.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">class</span> <span style="color:#2b91af">TealiumHelper</span> {
-	<span style="color:#00f">var</span> tealium: Tealium?
-	<span style="color:#008000">// ...</span>
-
-	<span style="color:#00f">func</span> leaveTrace() {
-		tealium?.leaveTrace()
-		<span style="color:#008000">// ...</span>
-	}
-}</code></pre></div>
-<p>Connector actions set to run at <code>&quot;End of Visit&quot;</code> do not run until the session expires.</p>
-
-<p>To preserve the trace visitor session when leaving the trace, pass the optional argument <code>false</code>, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealium?.leaveTrace(killVisitorSession: <span style="color:#00f">false</span>)</code></pre></div>
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/ios-swift/install/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Install "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Install</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/ios-swift/data-layer/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Data Layer</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Data Layer"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7639,33 +7472,235 @@ tealium?.track(tealEvent)</code></pre></div>
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/ios-swift/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        IOS SWIFT
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Track</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Learn about the methods for tracking user activity.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="track-views">Track Views</h2>
+
+<p>To track screen views, pass an instance of <code>TealiumView(viewName:dataLayer:)</code> to the <a href="/platforms/ios-swift/api/tealium/#track"><code>track()</code></a> method. <code>TealiumView</code> is comprised of a view name, which appears in the tracking call as <code>tealium_event</code>, and an optional data dictionary.</p>
+
+<p>The following is an example:</p>
+
+<pre><code class="language-swift">let tealView = TealiumView(&quot;VIEW_NAME&quot;, dataLayer: [&quot;key&quot;: &quot;value&quot;])
+tealium?.track(tealView)
+</code></pre>
+
+<h2 id="track-events">Track Events</h2>
+
+<p>To track non-view events, pass an instance of <code>TealiumEvent(eventName:dataLayer:)</code> to the <a href="/platforms/ios-swift/api/tealium/#track"><code>track()</code></a> method.  <code>TealiumEvent</code> is comprised of an event name, which appears in the tracking call as <code>tealium_event</code>, and an optional data dictionary.</p>
+
+<p>The following is an example:</p>
+
+<pre><code class="language-swift">let tealEvent = TealiumEvent(&quot;EVENT_NAME&quot;, dataLayer: [&quot;key&quot;: &quot;value&quot;])
+tealium?.track(tealEvent)
+</code></pre>
+
+<h2 id="timed-events">Timed Events</h2>
+
+<p><a href="/platforms/getting-started/timed-events/">Timed events</a> measure the duration of an event or the duration between two events. Timed events are triggered automatically or manually.</p>
+
+<h3 id="automatic-triggers">Automatic Triggers</h3>
+
+<p>Automatically track the duration between events by setting <a href="/platforms/ios-swift/api/tealium-config/#timedeventtriggers"><code>timedEventTriggers</code></a> to a list of <code>TimedEventTrigger</code> objects, specifying tthe names of the start and stop events.</p>
+
+<p>The following is an example of tracking a timed event with an automatic trigger:</p>
+
+<pre><code class="language-swift">config.timedEventTriggers = [TimedEventTrigger(
+    start: &quot;cart_add&quot;,
+    stop: &quot;purchase&quot;)]
+</code></pre>
+
+<h3 id="manual-triggers">Manual Triggers</h3>
+
+<p>Manually track the duration of an event by starting and stopping the timed event based on your custom logic.</p>
+
+<p>Start tracking the duration of an event with <a href="/platforms/android-kotlin/api/tealium/#starttimedevent"><code>startTimedEvent()</code></a>:</p>
+
+<pre><code class="language-swift">tealium.startTimedEvent(name: &quot;TimeSpentViewingProduct&quot;)
+</code></pre>
+
+<p>Stop a timed event with <a href="/platforms/android-kotlin/api/tealium/#stoptimedevent"><code>stopTimedEvent()</code></a>:</p>
+
+<pre><code class="language-swift">tealium.stopTimedEvent(name: &quot;TimeSpentViewingProduct&quot;)
+</code></pre>
+
+<p>Cancel a previously started timed event with <a href="/platforms/android-kotlin/api/tealium/#canceltimedevent"><code>cancelTimedEvent()</code></a>:</p>
+
+<pre><code class="language-swift">tealium.cancelTimedEvent(name: &quot;TimeSpentViewingProduct&quot;)
+</code></pre>
+
+<p>Clear all previously started timed events with <a href="/platforms/ios-swift/api/tealium/#clearalltimedevents"><code>clearAllTimedEvents()</code></a>:</p>
+
+<pre><code class="language-swift">tealium?.clearAllTimedEvents()
+</code></pre>
+
+<h2 id="trace">Trace</h2>
+
+<h3 id="join-trace">Join Trace</h3>
+
+<p>The <a href="/platforms/ios-swift/api/tealium/#jointrace"><code>joinTrace()</code></a> method joins a trace with the specified ID. Learn more about the <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Trace/ta-p/12058">Trace</a> feature in the Tealium Customer Data Hub.</p>
+
+<pre><code class="language-swift">class TealiumHelper {
+	var tealium: Tealium?
+	// ...
+
+	func joinTrace(traceId id: String) {
+		tealium?.joinTrace(id: &quot;TRACE_ID&quot;)
+		// ...
+	}
+}
+</code></pre>
+
+<h3 id="leave-trace">Leave trace</h3>
+
+<p>A trace remains active for the duration of the app session until the <a href="/platforms/ios-swift/api/tealium/#leavetrace"><code>leaveTrace()</code></a> method is called, which leaves a previously joined trace and ends the visitor session.</p>
+
+<pre><code class="language-swift">class TealiumHelper {
+	var tealium: Tealium?
+	// ...
+
+	func leaveTrace() {
+		tealium?.leaveTrace()
+		// ...
+	}
+}
+</code></pre>
+
+<p>Connector actions set to run at <code>&quot;End of Visit&quot;</code> do not run until the session expires.</p>
+
+<p>To preserve the trace visitor session when leaving the trace, pass the optional argument <code>false</code>, as shown in the following example:</p>
+
+<pre><code class="language-swift">tealium?.leaveTrace(killVisitorSession: false)
+</code></pre>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/ios-swift/install/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Install "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Install</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/ios-swift/data-layer/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Data Layer</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Data Layer"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  November 2, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  November 2, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#track-views">Track Views</a></li>
+              <li><a href="#track-events">Track Events</a></li>
+              <li><a href="#timed-events">Timed Events</a></li>
+              <ul class="toc-h3"><li><a href="#automatic-triggers">Automatic Triggers</a></li>
+              <li><a href="#manual-triggers">Manual Triggers</a></li>
+              </ul><li><a href="#trace">Trace</a></li>
+              <ul class="toc-h3"><li><a href="#join-trace">Join Trace</a></li>
+              <li><a href="#leave-trace">Leave trace</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

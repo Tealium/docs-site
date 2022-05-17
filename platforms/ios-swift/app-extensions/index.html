@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,158 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#today-extensions">Today Extensions</a></li>
-              <li><a href="#watchos-extensions-and-independent-apps">watchOS Extensions and Independent Apps</a></li>
-              <li><a href="#widgetkit-and-app-clips">WidgetKit and App Clips</a></li>
-              <li><a href="#visitor-id-in-app-extensions">Visitor ID in App Extensions</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/ios-swift/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">App Extensions</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Learn about app extensions.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="today-extensions">Today Extensions</h2>
-
-<p><strong>Today Extensions</strong> are widgets that appear on the device&rsquo;s &ldquo;Today&rdquo; screen. These app extensions are allowed very limited resources by the OS, and may be terminated if they consume too much memory or processing power.</p>
-
-<p>Use the Swift library as normal inside a Today Extension but, in order to keep the memory footprint low, we recommend using only the <a href="/platforms/ios-swift/module-list/collect/">Collect module</a> to transmit data. The <a href="/platforms/ios-swift/module-list/tag-management/">Tag Management module</a> may be too resource intensive and result in your widget being terminated.</p>
-
-<p>Regardless of the option chosen, it is important to thoroughly test and ensure your widget performs as expected. Embedding fewer Tealium modules in your widget results in greater performance and a lower memory footprint.</p>
-
-<h2 id="watchos-extensions-and-independent-apps">watchOS Extensions and Independent Apps</h2>
-
-<p>If you are adding a watchOS target to an iOS project that already has Tealium installed then add the necessary modules, <code>TealiumHelper</code> (or other analytics manager class) that imports Tealium to the Watch Extension target, and necessary tracking calls. The Tag Management module is not supported on watchOS, due to the dependency on <code>WKWebView</code>; the Collect module is the only supported method of data collection on watchOS.</p>
-
-<p>For an example of a watchOS extension target utilizing Tealium, see <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/TealiumSwiftExample/TealiumSwiftWatchExample%20Extension">TealiumSwiftExample</a>. Creating a standalone watchOS app is similar. Assign each <code>Tealium###.framework</code> to the watchOS extension target, and add your <code>TealiumHelper</code> class.</p>
-
-<p>Alternatively, use the <code>WatchConnectivty</code> framework&rsquo;s <code>WCSession</code> API to send a message to the host iOS app each time you wish to send a tracking call. This allows the event to be tracked by the Tag Management module if you are using it, but is not an option for an independent watchOS app.</p>
-
-<h2 id="widgetkit-and-app-clips">WidgetKit and App Clips</h2>
-
-<p>If you are adding either a WidgetKit or App Clip extension to your current iOS app, share your iOS <code>TealiumHelper</code> (or other analytics manager class) that imports Tealium with the WidgetKit or App Clip target. Then add tracking calls within the <code>Views</code> of the WidgetKit and App Clip to sent events from the Widget or App Clip to Tealium. For an example, see <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/TealiumSwiftExample/WidgetExample">TealiumSwiftExample</a>.</p>
-
-<h2 id="visitor-id-in-app-extensions">Visitor ID in App Extensions</h2>
-
-<p>App Extensions have their own sandboxed data storage, which is not shared with the host iOS app (if available). Therefore, by default, a new persistent visitor ID is generated when the app is started for the first time.</p>
-
-<p>An issue causing 3 distinct visitor IDs for the same visitor arises when you have an iOS app, Today widget, and the watchOS extension. This is not an issue if you are using visitor stitching and already have a known visitor ID for the app user. Avoid this situation by synchronizing the visitor IDs across the app and its extensions. This is done by passing the current Tealium first party visitor ID in the <code>TealiumConfig</code> object of the app extension when initializing Tealium. The ID is stored and used for future launches of the app, without being regenerated.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">class</span> <span style="color:#2b91af">TealiumHelper</span> {
-	<span style="color:#00f">var</span> tealium: Tealium?
-	<span style="color:#008000">// ...</span>
-	<span style="color:#008000">// Return the current visitor ID from the Tealium Swift library on the iOS app</span>
-	<span style="color:#00f">func</span> getVisitorId() -&gt; String? {
-		<span style="color:#00f">return</span> <span style="color:#00f">self</span>.tealium.visitorId
-	}
-
-	<span style="color:#008000">// On the app extension, pass the ID retrieved from the iOS app in the config object</span>
-	<span style="color:#00f">private</span> <span style="color:#00f">func</span> initTealium(existingVisitorId id: String) {
-		<span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
- 	       		                 profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-        	   	                 environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
-           		                 datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>)
-
-		<span style="color:#008000">// existing ID is used as the first party ID in the app extension</span>
-        config.existingVisitorId = id
-        <span style="color:#00f">self</span>.tealium = Tealium(config: config)
-	}
-}</code></pre></div>
-<p>Alternatively, generate a visitor ID centrally and pass it to each Tealium instance at initialization. It is recommended to use a UUID.</p>
-
-<p class="tip"><i class="fas fa-star"></i>Do not use a simple ID, such as email address, for your first party visitor ID.</p>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/ios-swift/consent-management/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Consent Management "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Consent Management</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/ios-swift/identity-resolution/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Identity Resolution</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Identity Resolution"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7616,33 +7472,185 @@ var utag_data = {
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/ios-swift/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        IOS SWIFT
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">App Extensions</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Learn about app extensions.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="today-extensions">Today Extensions</h2>
+
+<p><strong>Today Extensions</strong> are widgets that appear on the device&rsquo;s &ldquo;Today&rdquo; screen. These app extensions are allowed very limited resources by the OS, and may be terminated if they consume too much memory or processing power.</p>
+
+<p>Use the Swift library as normal inside a Today Extension but, in order to keep the memory footprint low, we recommend using only the <a href="/platforms/ios-swift/module-list/collect/">Collect module</a> to transmit data. The <a href="/platforms/ios-swift/module-list/tag-management/">Tag Management module</a> may be too resource intensive and result in your widget being terminated.</p>
+
+<p>Regardless of the option chosen, it is important to thoroughly test and ensure your widget performs as expected. Embedding fewer Tealium modules in your widget results in greater performance and a lower memory footprint.</p>
+
+<h2 id="watchos-extensions-and-independent-apps">watchOS Extensions and Independent Apps</h2>
+
+<p>If you are adding a watchOS target to an iOS project that already has Tealium installed then add the necessary modules, <code>TealiumHelper</code> (or other analytics manager class) that imports Tealium to the Watch Extension target, and necessary tracking calls. The Tag Management module is not supported on watchOS, due to the dependency on <code>WKWebView</code>; the Collect module is the only supported method of data collection on watchOS.</p>
+
+<p>For an example of a watchOS extension target utilizing Tealium, see <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/TealiumSwiftExample/TealiumSwiftWatchExample%20Extension">TealiumSwiftExample</a>. Creating a standalone watchOS app is similar. Assign each <code>Tealium###.framework</code> to the watchOS extension target, and add your <code>TealiumHelper</code> class.</p>
+
+<p>Alternatively, use the <code>WatchConnectivty</code> framework&rsquo;s <code>WCSession</code> API to send a message to the host iOS app each time you wish to send a tracking call. This allows the event to be tracked by the Tag Management module if you are using it, but is not an option for an independent watchOS app.</p>
+
+<h2 id="widgetkit-and-app-clips">WidgetKit and App Clips</h2>
+
+<p>If you are adding either a WidgetKit or App Clip extension to your current iOS app, share your iOS <code>TealiumHelper</code> (or other analytics manager class) that imports Tealium with the WidgetKit or App Clip target. Then add tracking calls within the <code>Views</code> of the WidgetKit and App Clip to sent events from the Widget or App Clip to Tealium. For an example, see <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/TealiumSwiftExample/WidgetExample">TealiumSwiftExample</a>.</p>
+
+<h2 id="visitor-id-in-app-extensions">Visitor ID in App Extensions</h2>
+
+<p>App Extensions have their own sandboxed data storage, which is not shared with the host iOS app (if available). Therefore, by default, a new persistent visitor ID is generated when the app is started for the first time.</p>
+
+<p>An issue causing 3 distinct visitor IDs for the same visitor arises when you have an iOS app, Today widget, and the watchOS extension. This is not an issue if you are using visitor stitching and already have a known visitor ID for the app user. Avoid this situation by synchronizing the visitor IDs across the app and its extensions. This is done by passing the current Tealium first party visitor ID in the <code>TealiumConfig</code> object of the app extension when initializing Tealium. The ID is stored and used for future launches of the app, without being regenerated.</p>
+
+<pre><code class="language-swift">class TealiumHelper {
+	var tealium: Tealium?
+	// ...
+	// Return the current visitor ID from the Tealium Swift library on the iOS app
+	func getVisitorId() -&gt; String? {
+		return self.tealium.visitorId
+	}
+
+	// On the app extension, pass the ID retrieved from the iOS app in the config object
+	private func initTealium(existingVisitorId id: String) {
+		let config = TealiumConfig(account: &quot;ACCOUNT&quot;,
+ 	       		                 profile: &quot;PROFILE&quot;,
+        	   	                 environment: &quot;ENVIRONMENT&quot;,
+           		                 datasource: &quot;DATASOURCE&quot;)
+
+		// existing ID is used as the first party ID in the app extension
+        config.existingVisitorId = id
+        self.tealium = Tealium(config: config)
+	}
+}
+</code></pre>
+
+<p>Alternatively, generate a visitor ID centrally and pass it to each Tealium instance at initialization. It is recommended to use a UUID.</p>
+
+<p class="tip"><i class="fas fa-star"></i>Do not use a simple ID, such as email address, for your first party visitor ID.</p>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/ios-swift/consent-management/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Consent Management "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Consent Management</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/ios-swift/identity-resolution/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Identity Resolution</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Identity Resolution"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  October 2, 2020 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  October 2, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#today-extensions">Today Extensions</a></li>
+              <li><a href="#watchos-extensions-and-independent-apps">watchOS Extensions and Independent Apps</a></li>
+              <li><a href="#widgetkit-and-app-clips">WidgetKit and App Clips</a></li>
+              <li><a href="#visitor-id-in-app-extensions">Visitor ID in App Extensions</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

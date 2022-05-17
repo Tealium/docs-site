@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,163 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#1-3-1">1.3.1</a></li>
-              <li><a href="#1-3-0">1.3.0</a></li>
-              <li><a href="#1-2-0">1.2.0</a></li>
-              <li><a href="#1-1-0">1.1.0</a></li>
-              <li><a href="#1-0-1">1.0.1</a></li>
-              <li><a href="#1-0-0-initial">1.0.0 (Initial)</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/java/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        JAVA
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Release Notes</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Release notes.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="1-3-1">1.3.1</h2>
-
-<ul>
-<li>BugFix - Updated track method to use a copy of Persistent Data to stop event data unexpectedly being stored.</li>
-</ul>
-
-<h2 id="1-3-0">1.3.0</h2>
-
-<ul>
-<li>Remove <code>visitor_id</code> and switch to <code>&quot;event&quot;</code> endpoint</li>
-<li><code>tealium_visitor_id</code> and <code>tealium_vid</code> removed</li>
-<li>Use the <code>&quot;event&quot;</code> endpoint using the POST method with JSON</li>
-<li>Create a <code>Udo</code> data object to represent data instead of the ambiguous <code>Map&lt;String, Object&gt;</code></li>
-<li>Update methods to use the <code>Udo</code> data type and deprecate API methods using <code>Map&lt;String, Object&gt;</code> for data.</li>
-<li>Lots of refactoring and introduction of TDD practices to encourage more maintainable code in the library.</li>
-</ul>
-
-<h2 id="1-2-0">1.2.0</h2>
-
-<ul>
-<li>Add Datasource</li>
-<li>New variable <code>tealium_datasource</code> added</li>
-<li>Persistent file name changed to <code>account.profile.data</code> (if upgrading from prior version, file no longer accessible)</li>
-<li>Bug fix for unit test</li>
-</ul>
-
-<h2 id="1-1-0">1.1.0</h2>
-
-<ul>
-<li>New variable <code>tealium_event_type</code> added</li>
-<li><code>track(type, title, data, completion)</code> added as new primary <code>track</code> method, types avail:
-
-<ul>
-<li><code>activity</code></li>
-<li><code>conversion</code></li>
-<li><code>derived</code></li>
-<li><code>interaction</code></li>
-<li><code>view</code></li>
-</ul></li>
-<li><code>DispatchCallback</code> update to return info dictionary instead of just <code>encodedUrl -&gt; ( boolean, map&lt;String, Object&gt;, error)</code> that</li>
-<li>Removal of convenience retry <code>track(string, callBack)</code></li>
-</ul>
-
-<h2 id="1-0-1">1.0.1</h2>
-
-<ul>
-<li>Bug Fix - <code>LogLevel</code> enum converted to public API</li>
-</ul>
-
-<h2 id="1-0-0-initial">1.0.0 (Initial)</h2>
-
-<ul>
-<li>Tealium universal data sources added for all dispatches:
-
-<ul>
-<li><code>event_name</code> (transitionary - will be deprecated)</li>
-<li><code>tealium_account</code></li>
-<li><code>tealium_environment</code></li>
-<li><code>tealium_event</code></li>
-<li><code>tealium_library_name</code></li>
-<li><code>tealium_library_version</code></li>
-<li><code>tealium_profile</code></li>
-<li><code>tealium_random</code></li>
-<li><code>tealium_session_id</code></li>
-<li><code>tealium_timestamp_epoch</code></li>
-<li><code>tealium_visitor_id</code></li>
-<li><code>tealium_vid</code> (legacy support - will be deprecated)</li>
-</ul></li>
-</ul>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/java/api/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"API Reference "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>API Reference</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7621,33 +7472,187 @@ var utag_data = {
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/java/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        JAVA
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Release Notes</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Release notes.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="1-3-1">1.3.1</h2>
+
+<ul>
+<li>BugFix - Updated track method to use a copy of Persistent Data to stop event data unexpectedly being stored.</li>
+</ul>
+
+<h2 id="1-3-0">1.3.0</h2>
+
+<ul>
+<li>Remove <code>visitor_id</code> and switch to <code>&quot;event&quot;</code> endpoint</li>
+<li><code>tealium_visitor_id</code> and <code>tealium_vid</code> removed</li>
+<li>Use the <code>&quot;event&quot;</code> endpoint using the POST method with JSON</li>
+<li>Create a <code>Udo</code> data object to represent data instead of the ambiguous <code>Map&lt;String, Object&gt;</code></li>
+<li>Update methods to use the <code>Udo</code> data type and deprecate API methods using <code>Map&lt;String, Object&gt;</code> for data.</li>
+<li>Lots of refactoring and introduction of TDD practices to encourage more maintainable code in the library.</li>
+</ul>
+
+<h2 id="1-2-0">1.2.0</h2>
+
+<ul>
+<li>Add Datasource</li>
+<li>New variable <code>tealium_datasource</code> added</li>
+<li>Persistent file name changed to <code>account.profile.data</code> (if upgrading from prior version, file no longer accessible)</li>
+<li>Bug fix for unit test</li>
+</ul>
+
+<h2 id="1-1-0">1.1.0</h2>
+
+<ul>
+<li>New variable <code>tealium_event_type</code> added</li>
+<li><code>track(type, title, data, completion)</code> added as new primary <code>track</code> method, types avail:
+
+<ul>
+<li><code>activity</code></li>
+<li><code>conversion</code></li>
+<li><code>derived</code></li>
+<li><code>interaction</code></li>
+<li><code>view</code></li>
+</ul></li>
+<li><code>DispatchCallback</code> update to return info dictionary instead of just <code>encodedUrl -&gt; ( boolean, map&lt;String, Object&gt;, error)</code> that</li>
+<li>Removal of convenience retry <code>track(string, callBack)</code></li>
+</ul>
+
+<h2 id="1-0-1">1.0.1</h2>
+
+<ul>
+<li>Bug Fix - <code>LogLevel</code> enum converted to public API</li>
+</ul>
+
+<h2 id="1-0-0-initial">1.0.0 (Initial)</h2>
+
+<ul>
+<li>Tealium universal data sources added for all dispatches:
+
+<ul>
+<li><code>event_name</code> (transitionary - will be deprecated)</li>
+<li><code>tealium_account</code></li>
+<li><code>tealium_environment</code></li>
+<li><code>tealium_event</code></li>
+<li><code>tealium_library_name</code></li>
+<li><code>tealium_library_version</code></li>
+<li><code>tealium_profile</code></li>
+<li><code>tealium_random</code></li>
+<li><code>tealium_session_id</code></li>
+<li><code>tealium_timestamp_epoch</code></li>
+<li><code>tealium_visitor_id</code></li>
+<li><code>tealium_vid</code> (legacy support - will be deprecated)</li>
+</ul></li>
+</ul>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/java/api/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"API Reference "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>API Reference</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  March 18, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  March 18, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#1-3-1">1.3.1</a></li>
+              <li><a href="#1-3-0">1.3.0</a></li>
+              <li><a href="#1-2-0">1.2.0</a></li>
+              <li><a href="#1-1-0">1.1.0</a></li>
+              <li><a href="#1-0-1">1.0.1</a></li>
+              <li><a href="#1-0-0-initial">1.0.0 (Initial)</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

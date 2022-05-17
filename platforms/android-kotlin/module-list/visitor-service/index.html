@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,273 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#usage">Usage</a></li>
-              <li><a href="#install">Install</a></li>
-              <ul class="toc-h3"><li><a href="#maven">Maven</a></li>
-              <li><a href="#manual">Manual</a></li>
-              </ul><li><a href="#visitor-profile-data">Visitor Profile Data</a></li>
-              <li><a href="#configuration-options">Configuration Options</a></li>
-              <ul class="toc-h3"><li><a href="#override-visitor-service-url">Override Visitor Service Url</a></li>
-              <li><a href="#override-visitor-service-profile">Override Visitor Service Profile</a></li>
-              <li><a href="#visitor-profile-refresh-interval">Visitor Profile Refresh Interval</a></li>
-              </ul><li><a href="#api-reference">API Reference</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/android-kotlin/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        ANDROID KOTLIN/MODULE LIST
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Visitor Service Module</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Fetches the latest profile for the current visitor.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="usage">Usage</h2>
-
-<p>The Visitor Service module brings <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Data-Layer-Enrichment/ta-p/684">data layer enrichment</a> functionality to the native mobile app.</p>
-
-<p>Usage of this module requires a license for Tealium AudienceStream. Use the retrieved visitor profile to enhance the customer experience or data layer throughout your application.</p>
-
-<h2 id="install">Install</h2>
-
-<p>Install the Visitor Service module using Maven (recommended) or manually.</p>
-
-<h3 id="maven">Maven</h3>
-
-<p>To install the module using Maven:</p>
-
-<ol>
-<li><p>In your project&rsquo;s top-level <code>build.gradle</code> file, add the following Maven repository:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">maven {
-  url <span style="color:#a31515">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
-}</code></pre></div></li>
-
-<li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the Maven dependencies for the Tealium library and Visitor Service Module</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
-  implementation <span style="color:#a31515">&#39;com.tealium:kotlin-core:1.3.0&#39;</span>
-  implementation <span style="color:#a31515">&#39;com.tealium:kotlin-visitor-service:1.1.0&#39;</span>
-}</code></pre></div></li>
-</ol>
-
-<h3 id="manual">Manual</h3>
-
-<p>To install the Visitor Service Module manually:</p>
-
-<ol>
-<li><p>Download the Tealium <a href="https://github.com/Tealium/tealium-kotlin/tree/master/visitorservice">Visitor Service</a> module.</p></li>
-
-<li><p>Copy the file <code>tealium-kotlin.visitorservice-1.1.0.aar</code> into your project&rsquo;s <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> directory.</p></li>
-
-<li><p>Add the Tealium library dependency to your project module’s <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
-  implementation(name:<span style="color:#a31515">&#39;tealium-kotlin.visitorservice-1.1.0&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
-}</code></pre></div>
-<p class="note"><i class="fas fa-info-circle"></i>The Collect Dispatcher has a dependency on the main Tealium Kotlin SDK, so ensure that you also make this available by following the <a href="/platforms/android-kotlin/install">installation instructions</a>.</p></li>
-</ol>
-
-<h2 id="visitor-profile-data">Visitor Profile Data</h2>
-
-<p>To make use of the current visitor data you need to register a delegate object to receive the latest Visitor Profile each time it gets updated:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">instance = Tealium.create(<span style="color:#a31515">&#34;main&#34;</span>, config) {
-    events.subscribe(object : VisitorUpdatedListener {
-        override fun onVisitorUpdated(visitorProfile: VisitorProfile) {
-            Logger.dev(<span style="color:#a31515">&#34;--&#34;</span>, <span style="color:#a31515">&#34;VisitorProfile updated: $visitorProfile&#34;</span>)
-        }
-    })
-}</code></pre></div>
-<p>The VisitorProfile object have access to many fields relating to your Visitor - the following outlines the available properties:</p>
-
-<table>
-<thead>
-<tr>
-<th>Parameters</th>
-<th>Properties</th>
-<th>Value</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>arraysOfBooleans</code></td>
-<td>key: String, value: List&lt;Boolean&gt;</td>
-<td><code>key: &quot;5129&quot;, value: listOf(true,false,true,true)</code></td>
-</tr>
-
-<tr>
-<td><code>arraysOfNumbers</code></td>
-<td>key: String, value: List&lt;Double&gt;</td>
-<td><code>key: &quot;57&quot;, value: listOf(4.82125, 16.8, 0.5714285714285714)</code></td>
-</tr>
-
-<tr>
-<td><code>arraysOfStrings</code></td>
-<td>key: String, value: List&lt;String&gt;</td>
-<td><code>key: &quot;5213&quot;, value: listOf(&quot;green shirts&quot;, &quot;green shirts&quot;, &quot;blue shirts&quot;)</code></td>
-</tr>
-
-<tr>
-<td><code>audiences</code></td>
-<td>key: String, name: String</td>
-<td><code>key: &quot;tealiummobile_demo_103&quot;, name: &quot;Kotlin Users&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>badges</code></td>
-<td>key: String, value: Boolean</td>
-<td><code>key: &quot;2815&quot;, value: true</code></td>
-</tr>
-
-<tr>
-<td><code>booleans</code></td>
-<td>key: String, value: Boolean</td>
-<td><code>key: &quot;4868&quot;, value: true</code></td>
-</tr>
-
-<tr>
-<td><code>currentVisit</code></td>
-<td>All attributes for current visit profile. The current visit profile does not contain Audiences or Badges.</td>
-<td><code>CurrentVisit</code></td>
-</tr>
-
-<tr>
-<td><code>dates</code></td>
-<td>key: String, value: Long</td>
-<td><code>key: &quot;22&quot;, value: 1567120112000</code></td>
-</tr>
-
-<tr>
-<td><code>numbers</code></td>
-<td>key: String, value: Double</td>
-<td><code>key: &quot;5728&quot;, value: 4.82125</code></td>
-</tr>
-
-<tr>
-<td><code>setsOfStrings</code></td>
-<td>key: String, value: Set&lt;String&gt;</td>
-<td><code>key: &quot;5211&quot;, value: setOf(&quot;green shirts&quot;, &quot;red shirts&quot;, &quot;blue shirts&quot;)</code></td>
-</tr>
-
-<tr>
-<td><code>strings</code></td>
-<td>key: String, value: String</td>
-<td><code>key: &quot;5380&quot;, value: &quot;green shirts&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>tallies</code></td>
-<td>key: String, value: Map<String, Double></td>
-<td><code>key: &quot;57&quot;, mapOf(&quot;category 1&quot; to 2.0, &quot;category 2&quot; to 1.0)</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>Below is a basic example of how to interact with the Visitor Profile once it has been retrieved. Key names differ per account/profile.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val returningVisitor = visitorProfile.badges?.get(<span style="color:#a31515">&#34;returning_visitor&#34;</span>)
-returningVisitor?.let {
-    <span style="color:#00f">if</span> (returningVisitor == <span style="color:#00f">true</span>) {
-        val ltv = visitorProfile.numbers?.get(<span style="color:#a31515">&#34;lifetime_value&#34;</span>)
-        <span style="color:#008000">// take action
-</span><span style="color:#008000"></span>    }
-}</code></pre></div>
-<h2 id="configuration-options">Configuration Options</h2>
-
-<p>Configure the URL that it used to retrieve the Visitor Profile using the following setting when creating your TealiumConfig object:</p>
-
-<h3 id="override-visitor-service-url">Override Visitor Service Url</h3>
-
-<p>Sets the URL to use when fetching updates to the visitor profile.</p>
-
-<p>See: <a href="/platforms/android-kotlin/api/visitor-service/#overridevisitorserviceurl"><code>TealiumConfig.overrideVisitorServiceUrl</code></a>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val config = TealiumConfig(...)
-config.overrideVisitorServiceUrl = <span style="color:#a31515">&#34;https://your.preferred.visitor-service.com&#34;</span></code></pre></div>
-<p>Default: <code>https://visitor-service.tealiumiq.com/{ACCOUNT_NAME}/{PROFILE_NAME}/{VISITOR_ID}</code></p>
-
-<h3 id="override-visitor-service-profile">Override Visitor Service Profile</h3>
-
-<p>Sets the Tealium profile to use when fetching updates to the visitor profile. See: <a href="/platforms/android-kotlin/api/visitor-service/#overridevisitorserviceprofile"><code>TealiumConfig.overrideVisitorServiceProfile</code></a>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val config = TealiumConfig(...)
-config.overrideVisitorServiceProfile = <span style="color:#a31515">&#34;someOtherTealiumProfile&#34;</span></code></pre></div>
-<h3 id="visitor-profile-refresh-interval">Visitor Profile Refresh Interval</h3>
-
-<p>Sets the time interval, in seconds, between calls to get the latest VisitorProfile data. See: <a href="/platforms/android-kotlin/api/visitor-service/#visitorservicerefreshinterval"><code>TealiumConfig.visitorServiceRefreshInterval</code></a>.</p>
-
-<p>Default: 300 (5 minutes)</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val config = TealiumConfig(...)
-config.visitorServiceRefreshInterval = TimeUnit.MINUTES.toSeconds(30) // 30 minutes</code></pre></div>
-<h2 id="api-reference">API Reference</h2>
-
-<p>For the reference of methods used by the Visitor Service module, see the <a href="/platforms/android-kotlin/api/visitor-service/"><code>VisitorService</code></a> class in the Tealium SDK for Android API.</p>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/android-kotlin/module-list/tag-management/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Tag Management Dispatcher Module "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Tag Management Dispatcher Module</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7731,33 +7472,319 @@ config.visitorServiceRefreshInterval = TimeUnit.MINUTES.toSeconds(30) // 30 minu
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/android-kotlin/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        ANDROID KOTLIN/MODULE LIST
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Visitor Service Module</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Fetches the latest profile for the current visitor.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="usage">Usage</h2>
+
+<p>The Visitor Service module brings <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Data-Layer-Enrichment/ta-p/684">data layer enrichment</a> functionality to the native mobile app.</p>
+
+<p>Usage of this module requires a license for Tealium AudienceStream. Use the retrieved visitor profile to enhance the customer experience or data layer throughout your application.</p>
+
+<h2 id="install">Install</h2>
+
+<p>Install the Visitor Service module using Maven (recommended) or manually.</p>
+
+<h3 id="maven">Maven</h3>
+
+<p>To install the module using Maven:</p>
+
+<ol>
+<li><p>In your project&rsquo;s top-level <code>build.gradle</code> file, add the following Maven repository:</p>
+
+<pre><code class="language-groovy">maven {
+  url &quot;https://maven.tealiumiq.com/android/releases/&quot;
+}
+</code></pre></li>
+
+<li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the Maven dependencies for the Tealium library and Visitor Service Module</p>
+
+<pre><code class="language-groovy">dependencies {
+  implementation 'com.tealium:kotlin-core:1.3.0'
+  implementation 'com.tealium:kotlin-visitor-service:1.1.0'
+}
+</code></pre></li>
+</ol>
+
+<h3 id="manual">Manual</h3>
+
+<p>To install the Visitor Service Module manually:</p>
+
+<ol>
+<li><p>Download the Tealium <a href="https://github.com/Tealium/tealium-kotlin/tree/master/visitorservice">Visitor Service</a> module.</p></li>
+
+<li><p>Copy the file <code>tealium-kotlin.visitorservice-1.1.0.aar</code> into your project&rsquo;s <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> directory.</p></li>
+
+<li><p>Add the Tealium library dependency to your project module’s <code>build.gradle</code> file:</p>
+
+<pre><code class="language-groovy">dependencies {
+  implementation(name:'tealium-kotlin.visitorservice-1.1.0', ext:'aar')
+}
+</code></pre>
+
+<p class="note"><i class="fas fa-info-circle"></i>The Collect Dispatcher has a dependency on the main Tealium Kotlin SDK, so ensure that you also make this available by following the <a href="/platforms/android-kotlin/install">installation instructions</a>.</p></li>
+</ol>
+
+<h2 id="visitor-profile-data">Visitor Profile Data</h2>
+
+<p>To make use of the current visitor data you need to register a delegate object to receive the latest Visitor Profile each time it gets updated:</p>
+
+<pre><code class="language-java">instance = Tealium.create(&quot;main&quot;, config) {
+    events.subscribe(object : VisitorUpdatedListener {
+        override fun onVisitorUpdated(visitorProfile: VisitorProfile) {
+            Logger.dev(&quot;--&quot;, &quot;VisitorProfile updated: $visitorProfile&quot;)
+        }
+    })
+}
+</code></pre>
+
+<p>The VisitorProfile object have access to many fields relating to your Visitor - the following outlines the available properties:</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Properties</th>
+<th>Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>arraysOfBooleans</code></td>
+<td>key: String, value: List&lt;Boolean&gt;</td>
+<td><code>key: &quot;5129&quot;, value: listOf(true,false,true,true)</code></td>
+</tr>
+
+<tr>
+<td><code>arraysOfNumbers</code></td>
+<td>key: String, value: List&lt;Double&gt;</td>
+<td><code>key: &quot;57&quot;, value: listOf(4.82125, 16.8, 0.5714285714285714)</code></td>
+</tr>
+
+<tr>
+<td><code>arraysOfStrings</code></td>
+<td>key: String, value: List&lt;String&gt;</td>
+<td><code>key: &quot;5213&quot;, value: listOf(&quot;green shirts&quot;, &quot;green shirts&quot;, &quot;blue shirts&quot;)</code></td>
+</tr>
+
+<tr>
+<td><code>audiences</code></td>
+<td>key: String, name: String</td>
+<td><code>key: &quot;tealiummobile_demo_103&quot;, name: &quot;Kotlin Users&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>badges</code></td>
+<td>key: String, value: Boolean</td>
+<td><code>key: &quot;2815&quot;, value: true</code></td>
+</tr>
+
+<tr>
+<td><code>booleans</code></td>
+<td>key: String, value: Boolean</td>
+<td><code>key: &quot;4868&quot;, value: true</code></td>
+</tr>
+
+<tr>
+<td><code>currentVisit</code></td>
+<td>All attributes for current visit profile. The current visit profile does not contain Audiences or Badges.</td>
+<td><code>CurrentVisit</code></td>
+</tr>
+
+<tr>
+<td><code>dates</code></td>
+<td>key: String, value: Long</td>
+<td><code>key: &quot;22&quot;, value: 1567120112000</code></td>
+</tr>
+
+<tr>
+<td><code>numbers</code></td>
+<td>key: String, value: Double</td>
+<td><code>key: &quot;5728&quot;, value: 4.82125</code></td>
+</tr>
+
+<tr>
+<td><code>setsOfStrings</code></td>
+<td>key: String, value: Set&lt;String&gt;</td>
+<td><code>key: &quot;5211&quot;, value: setOf(&quot;green shirts&quot;, &quot;red shirts&quot;, &quot;blue shirts&quot;)</code></td>
+</tr>
+
+<tr>
+<td><code>strings</code></td>
+<td>key: String, value: String</td>
+<td><code>key: &quot;5380&quot;, value: &quot;green shirts&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>tallies</code></td>
+<td>key: String, value: Map<String, Double></td>
+<td><code>key: &quot;57&quot;, mapOf(&quot;category 1&quot; to 2.0, &quot;category 2&quot; to 1.0)</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Below is a basic example of how to interact with the Visitor Profile once it has been retrieved. Key names differ per account/profile.</p>
+
+<pre><code class="language-java">val returningVisitor = visitorProfile.badges?.get(&quot;returning_visitor&quot;)
+returningVisitor?.let {
+    if (returningVisitor == true) {
+        val ltv = visitorProfile.numbers?.get(&quot;lifetime_value&quot;)
+        // take action
+    }
+}
+</code></pre>
+
+<h2 id="configuration-options">Configuration Options</h2>
+
+<p>Configure the URL that it used to retrieve the Visitor Profile using the following setting when creating your TealiumConfig object:</p>
+
+<h3 id="override-visitor-service-url">Override Visitor Service Url</h3>
+
+<p>Sets the URL to use when fetching updates to the visitor profile.</p>
+
+<p>See: <a href="/platforms/android-kotlin/api/visitor-service/#overridevisitorserviceurl"><code>TealiumConfig.overrideVisitorServiceUrl</code></a>.</p>
+
+<pre><code class="language-java">val config = TealiumConfig(...)
+config.overrideVisitorServiceUrl = &quot;https://your.preferred.visitor-service.com&quot;
+</code></pre>
+
+<p>Default: <code>https://visitor-service.tealiumiq.com/{ACCOUNT_NAME}/{PROFILE_NAME}/{VISITOR_ID}</code></p>
+
+<h3 id="override-visitor-service-profile">Override Visitor Service Profile</h3>
+
+<p>Sets the Tealium profile to use when fetching updates to the visitor profile. See: <a href="/platforms/android-kotlin/api/visitor-service/#overridevisitorserviceprofile"><code>TealiumConfig.overrideVisitorServiceProfile</code></a>.</p>
+
+<pre><code class="language-java">val config = TealiumConfig(...)
+config.overrideVisitorServiceProfile = &quot;someOtherTealiumProfile&quot;
+</code></pre>
+
+<h3 id="visitor-profile-refresh-interval">Visitor Profile Refresh Interval</h3>
+
+<p>Sets the time interval, in seconds, between calls to get the latest VisitorProfile data. See: <a href="/platforms/android-kotlin/api/visitor-service/#visitorservicerefreshinterval"><code>TealiumConfig.visitorServiceRefreshInterval</code></a>.</p>
+
+<p>Default: 300 (5 minutes)</p>
+
+<pre><code class="language-java">val config = TealiumConfig(...)
+config.visitorServiceRefreshInterval = TimeUnit.MINUTES.toSeconds(30) // 30 minutes
+</code></pre>
+
+<h2 id="api-reference">API Reference</h2>
+
+<p>For the reference of methods used by the Visitor Service module, see the <a href="/platforms/android-kotlin/api/visitor-service/"><code>VisitorService</code></a> class in the Tealium SDK for Android API.</p>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/android-kotlin/module-list/tag-management/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Tag Management Dispatcher Module "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Tag Management Dispatcher Module</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  December 14, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  December 14, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#usage">Usage</a></li>
+              <li><a href="#install">Install</a></li>
+              <ul class="toc-h3"><li><a href="#maven">Maven</a></li>
+              <li><a href="#manual">Manual</a></li>
+              </ul><li><a href="#visitor-profile-data">Visitor Profile Data</a></li>
+              <li><a href="#configuration-options">Configuration Options</a></li>
+              <ul class="toc-h3"><li><a href="#override-visitor-service-url">Override Visitor Service Url</a></li>
+              <li><a href="#override-visitor-service-profile">Override Visitor Service Profile</a></li>
+              <li><a href="#visitor-profile-refresh-interval">Visitor Profile Refresh Interval</a></li>
+              </ul><li><a href="#api-reference">API Reference</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

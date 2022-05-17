@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,291 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#naming-conventions">Naming Conventions</a></li>
-              <li><a href="#string-variables">String Variables</a></li>
-              <li><a href="#array-variables">Array Variables</a></li>
-              <li><a href="#page-type-identifier">Page Type Identifier</a></li>
-              <li><a href="#third-party-data-layer-objects">Third-Party Data Layer Objects</a></li>
-              <li><a href="#set-utag-data-before-utag-js">Set utag_data Before utag.js</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/getting-started-web/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        GETTING STARTED WEB
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Data Layer Best Practices</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      This article reviews our best practices associated with implementing and managing your data layer.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="naming-conventions">Naming Conventions</h2>
-
-<p>The goal of the data layer is to provide a set of variables that are vendor-neutral and easy to understand. The following best practices apply:</p>
-
-<ul>
-<li><strong>Use lowercase, underscore-separated variable names.</strong><br />
-Examples: <code>site_section</code>, <code>product_unit_price</code>, <code>login_status</code>.</li>
-<li><strong>Avoid vendor specific naming.</strong><br />
-Avoid <code>eVar1</code>, <code>pv_a3</code>, or <code>oid</code>.</li>
-
-<li><p><strong>Use meaningful variable descriptions.</strong><br />
-Sometimes even a properly named variable still needs additional clarification. A good variable description includes details about when and where a variable is set, which vendor is using the variable, and possible values to expect in the variable. Examples:</p>
-
-<ul>
-<li>Login status <code>anonymous</code> or <code>authenticated</code>, used for <code>eVar1</code> in Adobe Analytics.</li>
-<li>Order subtotal does not include tax or shipping, exclude commas and currency symbols.</li>
-</ul></li>
-
-<li><p><strong>Avoid pluralized variable names.</strong><br />
-Variables that contain multiple values, such as the product array variables, should use the singular form of the name. Examples:</p>
-
-<ul>
-<li><code>product_category</code> instead of <code>product_categories</code></li>
-<li><code>product_id</code> instead of <code>product_ids</code></li>
-</ul></li>
-
-<li><p><strong>Prefix boolean variable names with <code>is_.</code> or <code>has_.</code></strong><br />
-This allows you to quickly identify variables that contain a value of <code>1</code> or <code>0</code>. Examples: <code>is_registered</code>, <code>is_first_time_visitor</code>, <code>is_logged_in</code></p></li>
-</ul>
-
-<p><strong>Pros</strong></p>
-
-<ul>
-<li>Creates a consistent naming convention.</li>
-<li>Easier for new users to understand what is available in your data layer and how each variable is used.</li>
-<li>Tealium Support is familiar with this convention.</li>
-</ul>
-
-<p><strong>Cons</strong></p>
-
-<ul>
-<li>Additional effort to transition vendor-specific variables to vendor-neutral naming convention.</li>
-</ul>
-
-<h2 id="string-variables">String Variables</h2>
-
-<p>Use string values for all non-product variables. Boolean and numeric variables should be passed as strings.</p>
-
-<p>For boolean values, use <code>1</code> and <code>0</code> instead of <code>true</code> and <code>false</code>. This approach is more stable and reduces confusion about the expected values in these variables.</p>
-
-<p>Examples:</p>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Boolean</th>
-<th>Integer</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Correct</td>
-<td><code>is_registered : &quot;1&quot;</code></td>
-<td><code>order_total : &quot;1234.56&quot;</code></td>
-</tr>
-
-<tr>
-<td>Incorrect</td>
-<td><code>is_registered : true</code></td>
-<td><code>order_total : 1234.56</code></td>
-</tr>
-</tbody>
-</table>
-
-<p><strong>Pros</strong></p>
-
-<ul>
-<li>Tag templates expect strings and arrays.</li>
-<li>Minimizes testing effort during and after implementation.</li>
-</ul>
-
-<p><strong>Cons</strong></p>
-
-<ul>
-<li>None.</li>
-</ul>
-
-<h2 id="array-variables">Array Variables</h2>
-
-<p>Set product variables (price, quantity, ID, etc.) as arrays. The Universal Tag (<code>utag.js</code>) is designed to use arrays for all product variables. While it is possible to set product values in a comma-separated string, this approach is more prone to errors.</p>
-
-<p>Array (recommended):</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">product_id : [<span style="color:#a31515">&#34;prodID1&#34;</span>,<span style="color:#a31515">&#34;prodID2&#34;</span>,<span style="color:#a31515">&#34;prodID3&#34;</span>]
-</code></pre></div>
-<p>String:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">product_id : <span style="color:#a31515">&#34;prodID1,prodID2,prodID3&#34;</span>
-</code></pre></div>
-<p><strong>Pros</strong></p>
-
-<ul>
-<li>Same format expected by vendor tag templates.</li>
-<li>Improves readability of the data layer.</li>
-</ul>
-
-<p><strong>Cons</strong></p>
-
-<ul>
-<li>None.</li>
-</ul>
-
-<h2 id="page-type-identifier">Page Type Identifier</h2>
-
-<p>All pages of your site should include a variable called <code>page_type</code>. This is used to determine the type of page the user is viewing. The suggested values include, but are not limited to:</p>
-
-<table>
-<thead>
-<tr>
-<th>Page</th>
-<th>Value</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Home Page</td>
-<td><code>home</code></td>
-</tr>
-
-<tr>
-<td>Category / Product List</td>
-<td><code>category</code></td>
-</tr>
-
-<tr>
-<td>Product Detail</td>
-<td><code>product</code></td>
-</tr>
-
-<tr>
-<td>Search Results</td>
-<td><code>search</code></td>
-</tr>
-
-<tr>
-<td>Cart / Basket</td>
-<td><code>cart</code></td>
-</tr>
-
-<tr>
-<td>Checkout Flow (User Info, Billing Address, Shipping Address)</td>
-<td><code>checkout</code></td>
-</tr>
-
-<tr>
-<td>Order Confirmation / Thank You</td>
-<td><code>order</code></td>
-</tr>
-</tbody>
-</table>
-
-<p><strong>Pros</strong></p>
-
-<ul>
-<li>Gives a clear understanding of what kind of page the user is viewing.</li>
-<li>Many vendor tags utilize a page type to function properly.</li>
-</ul>
-
-<p><strong>Cons</strong></p>
-
-<ul>
-<li>Initial development effort to add <code>page_type</code> variable to the Universal Data Object.</li>
-</ul>
-
-<h2 id="third-party-data-layer-objects">Third-Party Data Layer Objects</h2>
-
-<p>You might already have a data layer object implemented on your site, such as the W3C Data Object or your own custom object. We recommend that these objects be converted to the UDO <code>utag_data</code> format using one of the available <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Data-Layer-Converter/ta-p/17581">data layer converters</a>.</p>
-
-<p><strong>Pros</strong></p>
-
-<ul>
-<li>Better compatibility with built-in functionality, such as load rules, data mappings, and Web Companion.</li>
-<li>Reduces support costs to investigate issues with your custom object.</li>
-</ul>
-
-<p><strong>Cons</strong></p>
-
-<ul>
-<li>Additional effort to implement.</li>
-</ul>
-
-<h2 id="set-utag-data-before-utag-js">Set <code>utag_data</code> Before <code>utag.js</code></h2>
-
-<p>In the page code, the Universal Data Object (<code>utag_data</code>) must be declared <em>before</em> the reference to the Universal Tag (<code>utag.js</code>). This ensures that the Universal Tag has all the data layer variables needed to evaluate load rules, extensions, and tags. A sample of your code can be accessed from Code Center.</p>
-
-<p>Learn More: <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Code-Center/ta-p/13631">Code Center</a></p>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/getting-started-web/data-layer/how-the-data-layer-works-for-websites/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"How the Data Layer Works for Websites "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>How the Data Layer Works for Websites</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7749,33 +7472,319 @@ This allows you to quickly identify variables that contain a value of <code>1</c
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/getting-started-web/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        GETTING STARTED WEB
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Data Layer Best Practices</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      This article reviews our best practices associated with implementing and managing your data layer.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="naming-conventions">Naming Conventions</h2>
+
+<p>The goal of the data layer is to provide a set of variables that are vendor-neutral and easy to understand. The following best practices apply:</p>
+
+<ul>
+<li><strong>Use lowercase, underscore-separated variable names.</strong><br />
+Examples: <code>site_section</code>, <code>product_unit_price</code>, <code>login_status</code>.</li>
+<li><strong>Avoid vendor specific naming.</strong><br />
+Avoid <code>eVar1</code>, <code>pv_a3</code>, or <code>oid</code>.</li>
+
+<li><p><strong>Use meaningful variable descriptions.</strong><br />
+Sometimes even a properly named variable still needs additional clarification. A good variable description includes details about when and where a variable is set, which vendor is using the variable, and possible values to expect in the variable. Examples:</p>
+
+<ul>
+<li>Login status <code>anonymous</code> or <code>authenticated</code>, used for <code>eVar1</code> in Adobe Analytics.</li>
+<li>Order subtotal does not include tax or shipping, exclude commas and currency symbols.</li>
+</ul></li>
+
+<li><p><strong>Avoid pluralized variable names.</strong><br />
+Variables that contain multiple values, such as the product array variables, should use the singular form of the name. Examples:</p>
+
+<ul>
+<li><code>product_category</code> instead of <code>product_categories</code></li>
+<li><code>product_id</code> instead of <code>product_ids</code></li>
+</ul></li>
+
+<li><p><strong>Prefix boolean variable names with <code>is_.</code> or <code>has_.</code></strong><br />
+This allows you to quickly identify variables that contain a value of <code>1</code> or <code>0</code>. Examples: <code>is_registered</code>, <code>is_first_time_visitor</code>, <code>is_logged_in</code></p></li>
+</ul>
+
+<p><strong>Pros</strong></p>
+
+<ul>
+<li>Creates a consistent naming convention.</li>
+<li>Easier for new users to understand what is available in your data layer and how each variable is used.</li>
+<li>Tealium Support is familiar with this convention.</li>
+</ul>
+
+<p><strong>Cons</strong></p>
+
+<ul>
+<li>Additional effort to transition vendor-specific variables to vendor-neutral naming convention.</li>
+</ul>
+
+<h2 id="string-variables">String Variables</h2>
+
+<p>Use string values for all non-product variables. Boolean and numeric variables should be passed as strings.</p>
+
+<p>For boolean values, use <code>1</code> and <code>0</code> instead of <code>true</code> and <code>false</code>. This approach is more stable and reduces confusion about the expected values in these variables.</p>
+
+<p>Examples:</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Boolean</th>
+<th>Integer</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Correct</td>
+<td><code>is_registered : &quot;1&quot;</code></td>
+<td><code>order_total : &quot;1234.56&quot;</code></td>
+</tr>
+
+<tr>
+<td>Incorrect</td>
+<td><code>is_registered : true</code></td>
+<td><code>order_total : 1234.56</code></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Pros</strong></p>
+
+<ul>
+<li>Tag templates expect strings and arrays.</li>
+<li>Minimizes testing effort during and after implementation.</li>
+</ul>
+
+<p><strong>Cons</strong></p>
+
+<ul>
+<li>None.</li>
+</ul>
+
+<h2 id="array-variables">Array Variables</h2>
+
+<p>Set product variables (price, quantity, ID, etc.) as arrays. The Universal Tag (<code>utag.js</code>) is designed to use arrays for all product variables. While it is possible to set product values in a comma-separated string, this approach is more prone to errors.</p>
+
+<p>Array (recommended):</p>
+
+<pre><code class="language-javascript">product_id : [&quot;prodID1&quot;,&quot;prodID2&quot;,&quot;prodID3&quot;]
+</code></pre>
+
+<p>String:</p>
+
+<pre><code class="language-javascript">product_id : &quot;prodID1,prodID2,prodID3&quot;
+</code></pre>
+
+<p><strong>Pros</strong></p>
+
+<ul>
+<li>Same format expected by vendor tag templates.</li>
+<li>Improves readability of the data layer.</li>
+</ul>
+
+<p><strong>Cons</strong></p>
+
+<ul>
+<li>None.</li>
+</ul>
+
+<h2 id="page-type-identifier">Page Type Identifier</h2>
+
+<p>All pages of your site should include a variable called <code>page_type</code>. This is used to determine the type of page the user is viewing. The suggested values include, but are not limited to:</p>
+
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Home Page</td>
+<td><code>home</code></td>
+</tr>
+
+<tr>
+<td>Category / Product List</td>
+<td><code>category</code></td>
+</tr>
+
+<tr>
+<td>Product Detail</td>
+<td><code>product</code></td>
+</tr>
+
+<tr>
+<td>Search Results</td>
+<td><code>search</code></td>
+</tr>
+
+<tr>
+<td>Cart / Basket</td>
+<td><code>cart</code></td>
+</tr>
+
+<tr>
+<td>Checkout Flow (User Info, Billing Address, Shipping Address)</td>
+<td><code>checkout</code></td>
+</tr>
+
+<tr>
+<td>Order Confirmation / Thank You</td>
+<td><code>order</code></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Pros</strong></p>
+
+<ul>
+<li>Gives a clear understanding of what kind of page the user is viewing.</li>
+<li>Many vendor tags utilize a page type to function properly.</li>
+</ul>
+
+<p><strong>Cons</strong></p>
+
+<ul>
+<li>Initial development effort to add <code>page_type</code> variable to the Universal Data Object.</li>
+</ul>
+
+<h2 id="third-party-data-layer-objects">Third-Party Data Layer Objects</h2>
+
+<p>You might already have a data layer object implemented on your site, such as the W3C Data Object or your own custom object. We recommend that these objects be converted to the UDO <code>utag_data</code> format using one of the available <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Data-Layer-Converter/ta-p/17581">data layer converters</a>.</p>
+
+<p><strong>Pros</strong></p>
+
+<ul>
+<li>Better compatibility with built-in functionality, such as load rules, data mappings, and Web Companion.</li>
+<li>Reduces support costs to investigate issues with your custom object.</li>
+</ul>
+
+<p><strong>Cons</strong></p>
+
+<ul>
+<li>Additional effort to implement.</li>
+</ul>
+
+<h2 id="set-utag-data-before-utag-js">Set <code>utag_data</code> Before <code>utag.js</code></h2>
+
+<p>In the page code, the Universal Data Object (<code>utag_data</code>) must be declared <em>before</em> the reference to the Universal Tag (<code>utag.js</code>). This ensures that the Universal Tag has all the data layer variables needed to evaluate load rules, extensions, and tags. A sample of your code can be accessed from Code Center.</p>
+
+<p>Learn More: <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Code-Center/ta-p/13631">Code Center</a></p>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/getting-started-web/data-layer/how-the-data-layer-works-for-websites/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"How the Data Layer Works for Websites "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>How the Data Layer Works for Websites</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  April 13, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  April 13, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#naming-conventions">Naming Conventions</a></li>
+              <li><a href="#string-variables">String Variables</a></li>
+              <li><a href="#array-variables">Array Variables</a></li>
+              <li><a href="#page-type-identifier">Page Type Identifier</a></li>
+              <li><a href="#third-party-data-layer-objects">Third-Party Data Layer Objects</a></li>
+              <li><a href="#set-utag-data-before-utag-js">Set utag_data Before utag.js</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

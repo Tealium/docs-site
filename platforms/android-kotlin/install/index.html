@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,254 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
-              <li><a href="#sample-apps">Sample Apps</a></li>
-              <li><a href="#get-the-code">Get the Code</a></li>
-              <li><a href="#install">Install</a></li>
-              <ul class="toc-h3"><li><a href="#maven">Maven</a></li>
-              <li><a href="#manual">Manual</a></li>
-              </ul><li><a href="#initialize">Initialize</a></li>
-              <li><a href="#dispatcher">Dispatcher</a></li>
-              <li><a href="#log-level">Log Level</a></li>
-              <li><a href="#cookies">Cookies</a></li>
-              <li><a href="#event-batching">Event Batching</a></li>
-              <li><a href="#migrate-from-java">Migrate from Java</a></li>
-              <li><a href="#android-wear">Android Wear</a></li>
-              <li><a href="#multiprocess-apps">Multiprocess Apps</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/android-kotlin/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        ANDROID KOTLIN
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Install</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Learn to install the Tealium SDK for Android (Kotlin).
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="requirements">Requirements</h2>
-
-<ul>
-<li><a href="https://developer.android.com/studio">Android Studio</a></li>
-<li>Android SDK (Lollipop/5.0+ / API Level 21+)</li>
-<li><a href="https://community.tealiumiq.com/t5/Getting-Started/Creating-a-Mobile-Profile/ta-p/16328">Tealium iQ Mobile Profile</a></li>
-<li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Introduction-to-Customer-Data-Hub/ta-p/17571">Tealium Customer Data Hub account</a></li>
-</ul>
-
-<h2 id="sample-apps">Sample Apps</h2>
-
-<p>Explore the Android (Kotlin) <a href="https://github.com/Tealium/tealium-kotlin/tree/master/mobile">sample apps</a> to further your knowledge of the Tealium library, tracking events, and best practice implementations.</p>
-
-<p>Additionally, we recommend abstracting all the Tealium functionality in a central helper class. Explore our <a href="https://github.com/Tealium/tealium-kotlin/blob/master/mobile/src/main/java/com/tealium/mobile/TealiumHelper.kt">sample helper class</a>.</p>
-
-<h2 id="get-the-code">Get the Code</h2>
-
-<p>Clone the <a href="https://github.com/Tealium/tealium-kotlin">Tealium Android library</a>. Cloning the library, rather than downloading, makes it easier to update to future releases.</p>
-
-<p class="tip"><i class="fas fa-star"></i>See the <a href="/platforms/android-kotlin/api/">Tealium API</a> for a complete listing of Tealium classes and methods for Android.</p>
-
-<h2 id="install">Install</h2>
-
-<p>The Tealium Kotlin library is divided into modules. To maintain the smallest installation size possible, we recommended that you only install the modules necessary to achieve the desired functionality.</p>
-
-<p>Install the Tealium Kotlin library with Maven or manually.</p>
-
-<h3 id="maven">Maven</h3>
-
-<p>To install Tealium for Android library with Maven (recommended):</p>
-
-<ol>
-<li><p>Add the Tealium Maven URL to your project&rsquo;s top-level <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
-  repositories {
-    jcenter()
-    maven {
-      url <span style="color:#a31515">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
-    }
-  }
-}</code></pre></div></li>
-
-<li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the following Maven dependency:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
-  implementation <span style="color:#a31515">&#39;com.tealium:kotlin-core:1.3.0&#39;</span>
-}</code></pre></div></li>
-</ol>
-
-<h3 id="manual">Manual</h3>
-
-<p>To install Tealium for Android library manually:</p>
-
-<ol>
-<li><p>Add <code>flatDir</code> to your project root <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
-  repositories {
-     jcenter()
-     flatDir {
-         dirs <span style="color:#a31515">&#39;libs&#39;</span>
-     }
-  }
-}</code></pre></div></li>
-
-<li><p>Add <code>tealium-kotlin-1.2.x.aar</code> to <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code>.</p></li>
-
-<li><p>Add the Tealium library dependency to your <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
-  implementation(name:<span style="color:#a31515">&#39;tealium-kotlin-1.3.0&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
-}</code></pre></div></li>
-</ol>
-
-<h2 id="initialize">Initialize</h2>
-
-<p>To initialize Tealium, configure a <a href="/platforms/android-kotlin/api/tealium-config/"><code>TealiumConfig</code></a> instance and pass it into a <a href="/platforms/android-kotlin/api/tealium/"><code>Tealium</code></a> instance. It&rsquo;s recommended to initialize the Tealium Kotlin library in the app&rsquo;s global application class within the <code>onCreate()</code> method.</p>
-
-<p class="note"><i class="fas fa-info-circle"></i>Manage your <a href="/platforms/android-kotlin/api/tealium/#class-tealium"><code>Tealium</code></a> instance by using a tracking helper class, which provides a single point of entry for the Tealium Kotlin library and simplifies future upgrades.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">object</span> <span style="color:#2b91af">TealiumHelper</span> {
-
-  <span style="color:#00f">lateinit</span> <span style="color:#00f">var</span> tealium: Tealium
-
-  <span style="color:#00f">fun</span> init(application: Application) {
-    <span style="color:#00f">val</span> tealiumConfig = TealiumConfig(
-                      application,
-                      <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-                      <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-                      Environment.DEV,
-                      dataSourceId = <span style="color:#a31515">&#34;DATASOURCE_ID&#34;</span>,  <span style="color:#008000">//optional
-</span><span style="color:#008000"></span>                      modules = mutableSetOf(VisitorService),
-                      dispatchers = mutableSetOf(Collect)
-                    )
-    tealium = Tealium.create(<span style="color:#a31515">&#34;tealium_instance&#34;</span>, tealiumConfig)
-  }
-}</code></pre></div>
-<h2 id="dispatcher">Dispatcher</h2>
-
-<p>To send your data to the Tealium ecosystem, select from the following dispatchers:</p>
-
-<ul>
-<li><strong>Tag Management</strong><br />
-Add the <a href="/platforms/android-kotlin/module-list/tag-management/">TagManagement Dispatcher</a> to use Tealium iQ Tag Management and make use of its tag management configuration logic.</li>
-<li><strong>Collect</strong><br />
-Add the <a href="/platforms/android-kotlin/module-list/collect/">Collect Dispatcher</a> to use the server-side solutions of the Tealium Customer Data Hub.</li>
-</ul>
-
-<h2 id="log-level">Log Level</h2>
-
-<p>Log level is set to the environment from the <code>TealiumConfig</code> instance.</p>
-
-<p>To use a different log level, set the <a href="/platforms/android-kotlin/api/tealium-config/#loglevel"><code>logLevel</code></a> property:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.logLevel = LogLevel.DEV <span style="color:#008000">// or LogLevel.QA, LogLevel.PROD</span></code></pre></div>
-<h2 id="cookies">Cookies</h2>
-
-<p>Cookies are enabled by default in the webview.</p>
-
-<h2 id="event-batching">Event Batching</h2>
-
-<p>To enable event batching, go to the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">Mobile Publish Settings</a> and set the batch size to a value greater than 1. Events are dispatched when the number of events in the queue equals the batch size.</p>
-
-<h2 id="migrate-from-java">Migrate from Java</h2>
-
-<p>When migrating to the Kotlin library from the <a href="https://github.com/Tealium/tealium-android">Java library</a>, saved data is automatically migrated including:</p>
-
-<ul>
-<li>Consent Preferences</li>
-<li>Lifecycle data</li>
-<li>Persistent data
-
-<ul>
-<li>Custom persistent data added through the <a href="/platforms/android-java/data-management/#persistent-data">Persistent Data</a> API</li>
-<li>Tealium persistent data: <code>app_uuid</code>, <code>tealium_visitor_id</code></li>
-</ul></li>
-</ul>
-
-<p class="note"><i class="fas fa-info-circle"></i>After transfer to the Kotlin library is complete, legacy data from the Java library is deleted. Subsequently switching back to the Java library results in a new <code>tealium_visitor_id</code> and <code>app_uuid</code> generated, and loss of any custom persistent data.</p>
-
-<h2 id="android-wear">Android Wear</h2>
-
-<p>For Android Wear apps, use the Collect module for data collection, as the Tag Management module is not supported since Android Wear OS does not provide webview support.</p>
-
-<p class="note"><i class="fas fa-info-circle"></i>If you are developing an Android Wear app using Tealium for Android, <a href="https://developer.android.com/training/wearables/apps/creating">Google recommends</a> creating a standalone app.</p>
-
-<h2 id="multiprocess-apps">Multiprocess Apps</h2>
-
-<h4 id="android-9-multiprocess-applications">Android 9+ Multiprocess Applications</h4>
-
-<p>Android 9 introduced a behavior change around <code>WebView</code> data directories in multiprocess applications. In this change, a <code>WebView</code> no longer shares a single data directory across multiple processes. Typically, you&rsquo;ll want to have all your Activities that use a <code>WebView</code> in the same process.</p>
-
-<p>If you use the Tag Management module and implement additional instances of <code>WebView</code>, we recommend calling <code>WebView.setDataDirectorySuffix()</code> before creating the Tealium instance to prevent the app from crashing.</p>
-
-<p>If you need to access cookies and web data from the Tag Management module, copy it between processes using the <code>CookieManager.getCookie()</code> and <code>CookieManager.setCookie()</code> methods.</p>
-
-<p>To learn more, see <a href="https://developer.android.com/about/versions/pie/android-9.0-changes-28#web-data-dirs">Web-based data directories separated by process</a>.</p>
-
-</div>
-
-<div class="pv3">
-
-	<div class="fr">
-
-		
-		<a href="/platforms/android-kotlin/track/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Track</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Track"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7712,33 +7472,292 @@ Add the <a href="/platforms/android-kotlin/module-list/collect/">Collect Dispatc
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/android-kotlin/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        ANDROID KOTLIN
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Install</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Learn to install the Tealium SDK for Android (Kotlin).
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+<li><a href="https://developer.android.com/studio">Android Studio</a></li>
+<li>Android SDK (Lollipop/5.0+ / API Level 21+)</li>
+<li><a href="https://community.tealiumiq.com/t5/Getting-Started/Creating-a-Mobile-Profile/ta-p/16328">Tealium iQ Mobile Profile</a></li>
+<li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Introduction-to-Customer-Data-Hub/ta-p/17571">Tealium Customer Data Hub account</a></li>
+</ul>
+
+<h2 id="sample-apps">Sample Apps</h2>
+
+<p>Explore the Android (Kotlin) <a href="https://github.com/Tealium/tealium-kotlin/tree/master/mobile">sample apps</a> to further your knowledge of the Tealium library, tracking events, and best practice implementations.</p>
+
+<p>Additionally, we recommend abstracting all the Tealium functionality in a central helper class. Explore our <a href="https://github.com/Tealium/tealium-kotlin/blob/master/mobile/src/main/java/com/tealium/mobile/TealiumHelper.kt">sample helper class</a>.</p>
+
+<h2 id="get-the-code">Get the Code</h2>
+
+<p>Clone the <a href="https://github.com/Tealium/tealium-kotlin">Tealium Android library</a>. Cloning the library, rather than downloading, makes it easier to update to future releases.</p>
+
+<p class="tip"><i class="fas fa-star"></i>See the <a href="/platforms/android-kotlin/api/">Tealium API</a> for a complete listing of Tealium classes and methods for Android.</p>
+
+<h2 id="install">Install</h2>
+
+<p>The Tealium Kotlin library is divided into modules. To maintain the smallest installation size possible, we recommended that you only install the modules necessary to achieve the desired functionality.</p>
+
+<p>Install the Tealium Kotlin library with Maven or manually.</p>
+
+<h3 id="maven">Maven</h3>
+
+<p>To install Tealium for Android library with Maven (recommended):</p>
+
+<ol>
+<li><p>Add the Tealium Maven URL to your project&rsquo;s top-level <code>build.gradle</code> file:</p>
+
+<pre><code class="language-groovy">allprojects {
+  repositories {
+    jcenter()
+    maven {
+      url &quot;https://maven.tealiumiq.com/android/releases/&quot;
+    }
+  }
+}
+</code></pre></li>
+
+<li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the following Maven dependency:</p>
+
+<pre><code class="language-groovy">dependencies {
+  implementation 'com.tealium:kotlin-core:1.3.0'
+}
+</code></pre></li>
+</ol>
+
+<h3 id="manual">Manual</h3>
+
+<p>To install Tealium for Android library manually:</p>
+
+<ol>
+<li><p>Add <code>flatDir</code> to your project root <code>build.gradle</code> file:</p>
+
+<pre><code class="language-groovy">allprojects {
+  repositories {
+     jcenter()
+     flatDir {
+         dirs 'libs'
+     }
+  }
+}
+</code></pre></li>
+
+<li><p>Add <code>tealium-kotlin-1.2.x.aar</code> to <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code>.</p></li>
+
+<li><p>Add the Tealium library dependency to your <code>build.gradle</code> file:</p>
+
+<pre><code class="language-groovy">dependencies {
+  implementation(name:'tealium-kotlin-1.3.0', ext:'aar')
+}
+</code></pre></li>
+</ol>
+
+<h2 id="initialize">Initialize</h2>
+
+<p>To initialize Tealium, configure a <a href="/platforms/android-kotlin/api/tealium-config/"><code>TealiumConfig</code></a> instance and pass it into a <a href="/platforms/android-kotlin/api/tealium/"><code>Tealium</code></a> instance. It&rsquo;s recommended to initialize the Tealium Kotlin library in the app&rsquo;s global application class within the <code>onCreate()</code> method.</p>
+
+<p class="note"><i class="fas fa-info-circle"></i>Manage your <a href="/platforms/android-kotlin/api/tealium/#class-tealium"><code>Tealium</code></a> instance by using a tracking helper class, which provides a single point of entry for the Tealium Kotlin library and simplifies future upgrades.</p>
+
+<pre><code class="language-kotlin">object TealiumHelper {
+
+  lateinit var tealium: Tealium
+
+  fun init(application: Application) {
+    val tealiumConfig = TealiumConfig(
+                      application,
+                      &quot;ACCOUNT&quot;,
+                      &quot;PROFILE&quot;,
+                      Environment.DEV,
+                      dataSourceId = &quot;DATASOURCE_ID&quot;,  //optional
+                      modules = mutableSetOf(VisitorService),
+                      dispatchers = mutableSetOf(Collect)
+                    )
+    tealium = Tealium.create(&quot;tealium_instance&quot;, tealiumConfig)
+  }
+}
+</code></pre>
+
+<h2 id="dispatcher">Dispatcher</h2>
+
+<p>To send your data to the Tealium ecosystem, select from the following dispatchers:</p>
+
+<ul>
+<li><strong>Tag Management</strong><br />
+Add the <a href="/platforms/android-kotlin/module-list/tag-management/">TagManagement Dispatcher</a> to use Tealium iQ Tag Management and make use of its tag management configuration logic.</li>
+<li><strong>Collect</strong><br />
+Add the <a href="/platforms/android-kotlin/module-list/collect/">Collect Dispatcher</a> to use the server-side solutions of the Tealium Customer Data Hub.</li>
+</ul>
+
+<h2 id="log-level">Log Level</h2>
+
+<p>Log level is set to the environment from the <code>TealiumConfig</code> instance.</p>
+
+<p>To use a different log level, set the <a href="/platforms/android-kotlin/api/tealium-config/#loglevel"><code>logLevel</code></a> property:</p>
+
+<pre><code class="language-kotlin">config.logLevel = LogLevel.DEV // or LogLevel.QA, LogLevel.PROD
+</code></pre>
+
+<h2 id="cookies">Cookies</h2>
+
+<p>Cookies are enabled by default in the webview.</p>
+
+<h2 id="event-batching">Event Batching</h2>
+
+<p>To enable event batching, go to the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">Mobile Publish Settings</a> and set the batch size to a value greater than 1. Events are dispatched when the number of events in the queue equals the batch size.</p>
+
+<h2 id="migrate-from-java">Migrate from Java</h2>
+
+<p>When migrating to the Kotlin library from the <a href="https://github.com/Tealium/tealium-android">Java library</a>, saved data is automatically migrated including:</p>
+
+<ul>
+<li>Consent Preferences</li>
+<li>Lifecycle data</li>
+<li>Persistent data
+
+<ul>
+<li>Custom persistent data added through the <a href="/platforms/android-java/data-management/#persistent-data">Persistent Data</a> API</li>
+<li>Tealium persistent data: <code>app_uuid</code>, <code>tealium_visitor_id</code></li>
+</ul></li>
+</ul>
+
+<p class="note"><i class="fas fa-info-circle"></i>After transfer to the Kotlin library is complete, legacy data from the Java library is deleted. Subsequently switching back to the Java library results in a new <code>tealium_visitor_id</code> and <code>app_uuid</code> generated, and loss of any custom persistent data.</p>
+
+<h2 id="android-wear">Android Wear</h2>
+
+<p>For Android Wear apps, use the Collect module for data collection, as the Tag Management module is not supported since Android Wear OS does not provide webview support.</p>
+
+<p class="note"><i class="fas fa-info-circle"></i>If you are developing an Android Wear app using Tealium for Android, <a href="https://developer.android.com/training/wearables/apps/creating">Google recommends</a> creating a standalone app.</p>
+
+<h2 id="multiprocess-apps">Multiprocess Apps</h2>
+
+<h4 id="android-9-multiprocess-applications">Android 9+ Multiprocess Applications</h4>
+
+<p>Android 9 introduced a behavior change around <code>WebView</code> data directories in multiprocess applications. In this change, a <code>WebView</code> no longer shares a single data directory across multiple processes. Typically, you&rsquo;ll want to have all your Activities that use a <code>WebView</code> in the same process.</p>
+
+<p>If you use the Tag Management module and implement additional instances of <code>WebView</code>, we recommend calling <code>WebView.setDataDirectorySuffix()</code> before creating the Tealium instance to prevent the app from crashing.</p>
+
+<p>If you need to access cookies and web data from the Tag Management module, copy it between processes using the <code>CookieManager.getCookie()</code> and <code>CookieManager.setCookie()</code> methods.</p>
+
+<p>To learn more, see <a href="https://developer.android.com/about/versions/pie/android-9.0-changes-28#web-data-dirs">Web-based data directories separated by process</a>.</p>
+
+</div>
+
+<div class="pv3">
+
+	<div class="fr">
+
+		
+		<a href="/platforms/android-kotlin/track/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Track</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Track"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  March 14, 2022 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  March 14, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
+              <li><a href="#sample-apps">Sample Apps</a></li>
+              <li><a href="#get-the-code">Get the Code</a></li>
+              <li><a href="#install">Install</a></li>
+              <ul class="toc-h3"><li><a href="#maven">Maven</a></li>
+              <li><a href="#manual">Manual</a></li>
+              </ul><li><a href="#initialize">Initialize</a></li>
+              <li><a href="#dispatcher">Dispatcher</a></li>
+              <li><a href="#log-level">Log Level</a></li>
+              <li><a href="#cookies">Cookies</a></li>
+              <li><a href="#event-batching">Event Batching</a></li>
+              <li><a href="#migrate-from-java">Migrate from Java</a></li>
+              <li><a href="#android-wear">Android Wear</a></li>
+              <li><a href="#multiprocess-apps">Multiprocess Apps</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

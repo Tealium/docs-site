@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,377 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#install">Install</a></li>
-              <ul class="toc-h3"><li><a href="#universal-tag">Universal Tag</a></li>
-              <li><a href="#get-the-code">Get the Code</a></li>
-              <li><a href="#environments">Environments</a></li>
-              <li><a href="#code-placement">Code Placement</a></li>
-              </ul><li><a href="#data-layer">Data Layer</a></li>
-              <li><a href="#track">Track</a></li>
-              <ul class="toc-h3"><li><a href="#events">Events</a></li>
-              <li><a href="#views">Views</a></li>
-              <li><a href="#tealium-event-variable">Tealium Event Variable</a></li>
-              <li><a href="#best-practices">Best Practices</a></li>
-              </ul><li><a href="#testing-and-validation">Testing and Validation</a></li>
-              <ul class="toc-h3"><li><a href="#universal-tag-debugger">Universal Tag Debugger</a></li>
-              <li><a href="#web-companion">Web Companion</a></li>
-              <li><a href="#live-events">Live Events</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/getting-started-web/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        GETTING STARTED WEB
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Quick Start Guide</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Quick start guide for web.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<p>This guide covers the installation of the Tealium tag management solution for web sites. This installation requires two components: the Universal Tag (<code>utag.js</code>) and the Universal Data Object (<code>utag_data</code>). Install both of these components on every page of your site.</p>
-
-<h2 id="install">Install</h2>
-
-<h3 id="universal-tag">Universal Tag</h3>
-
-<p>The Universal Tag is a JavaScript file called <code>utag.js</code> that contains the generated code necessary to load your tag management configuration on your site.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#008000">&lt;!-- Tealium Universal Tag --&gt;</span>
-&lt;script type=<span style="color:#a31515">&#34;text/javascript&#34;</span>&gt;
-  (<span style="color:#00f">function</span>(a,b,c,d) {
-      a=<span style="color:#a31515">&#39;//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/utag.js&#39;</span>;
-      b=document;c=<span style="color:#a31515">&#39;script&#39;</span>;d=b.createElement(c);d.src=a;
-      d.type=<span style="color:#a31515">&#39;text/java&#39;</span>+c;d.async=<span style="color:#00f">true</span>;
-      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
-&lt;/script&gt;</code></pre></div>
-<p>The file path to <code>utag.js</code> will be unique to your account. Throughout this guide, replace the placeholder values <code>ACCOUNT</code>, <code>PROFILE</code>, and <code>ENVIRONMENT</code> with your account, profile, and environment.</p>
-
-<p>For example, if your account name was <code>your-company</code>, and you were using the default profile named <code>main</code>, the file path to the QA instance would be:</p>
-
-<pre><code>//tags.tiqcdn.com/utag/your-company/main/qa/utag.js
-</code></pre>
-
-<p>Learn more about <a href="/platforms/javascript/install/#universal-tag-utag-js">installing the Universal Tag (utag.js)</a>.</p>
-
-<h3 id="get-the-code">Get the Code</h3>
-
-<p>If you don&rsquo;t know your account and profile name, use the Code Center in iQ Tag Management to get the installation code (or ask your Tealium administrator):</p>
-
-<ol>
-<li>In Tealium iQ Tag Management, click the user menu and select <strong>Code Center</strong></li>
-<li>Leave the default <strong>JavaScript Type</strong> set to <strong>Asynchronous</strong> (Learn about <a href="https://community.tealiumiq.com/t5/Getting-Started/Synchronous-vs-Asynchronous-JavaScript-sync-vs-async/ta-p/13490">synchronous vs. asynchronous JavaScript</a>)</li>
-<li>In the <strong>Tealium Script</strong> tab, click <strong>Select All</strong> to select the code snippet</li>
-<li>Copy the selected Universal Tag code to your clipboard</li>
-</ol>
-
-<p><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/8247iE28B32F6909D25B0/image-size/large?v=1.0&amp;px=999" alt="Code Center" /></p>
-
-<h3 id="environments">Environments</h3>
-
-<p>There are three environments to support a proper release cycle: Dev, QA, and Prod. This allows you to install the QA instance of <code>utag.js</code> in your non-production environment and the Prod instance on your live production site. With this setup you can test changes in QA before releasing them to Prod.</p>
-
-<p>The environment path determines which instance of your Universal Tag to load.</p>
-
-<ul>
-<li><strong>QA</strong><br />
-<code>//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/qa/utag.js</code></li>
-<li><strong>Prod</strong><br />
-<code>//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/prod/utag.js</code></li>
-</ul>
-
-<p>Learn more about <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Code-Center/ta-p/13631">using the Code Center</a> to get your installation code.</p>
-
-<h3 id="code-placement">Code Placement</h3>
-
-<p>Paste the Universal Tag code immediately after the opening <code>&lt;body&gt;</code> tag on every page of your site. This position provides the best compatibility with the greatest number of vendors and allows third-party tracking to complete before the visitor navigates to the next page.</p>
-
-<p>The following example shows the code placement:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;head&gt;
-  ...
-&lt;/head&gt;
-&lt;body&gt;
-<span style="color:#008000">&lt;!-- Tealium Universal Tag --&gt;</span>
-&lt;script type=<span style="color:#a31515">&#34;text/javascript&#34;</span>&gt;
-  (<span style="color:#00f">function</span>(a,b,c,d) {
-      a=<span style="color:#a31515">&#39;//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/utag.js&#39;</span>;
-      b=document;c=<span style="color:#a31515">&#39;script&#39;</span>;d=b.createElement(c);d.src=a;
-      d.type=<span style="color:#a31515">&#39;text/java&#39;</span>+c;d.async=<span style="color:#00f">true</span>;
-      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
-&lt;/script&gt;
-  ...
-&lt;/body&gt;</code></pre></div>
-<p>Learn more about the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Order-of-Operations/ta-p/326">order of operations</a> to understand how the Universal Tag loads.</p>
-
-<h2 id="data-layer">Data Layer</h2>
-
-<p>The data layer is the foundation of your Tealium solution that comprises all of the variables that are collected across your site and the visitor interactions that are tracked.</p>
-
-<p>The Universal Data Object (UDO) is a JavaScript object called <code>utag_data</code> in which dynamic data from your site is passed to the Tealium tag. The properties in this object are named using plain, vendor-neutral terms that are specific to your business.  </p>
-
-<p class="note"><i class="fas fa-info-circle"></i>You must load the data layer object on every page of your site, populate it dynamically based on the variables needed for each page type, and load it prior to the Universal Tag.</p>
-
-<p>The following is an example declaration of <code>utag_data</code> that might appear on a search results page:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;script type=<span style="color:#a31515">&#34;text/javascript&#34;</span>&gt;
-  <span style="color:#00f">var</span> utag_data={
-      <span style="color:#a31515">&#34;tealium_event&#34;</span>  : <span style="color:#a31515">&#34;search&#34;</span>,
-      <span style="color:#a31515">&#34;page_name&#34;</span>      : <span style="color:#a31515">&#34;Search Results&#34;</span>,
-      <span style="color:#a31515">&#34;search_results&#34;</span> : <span style="color:#a31515">&#34;42&#34;</span>,
-      <span style="color:#a31515">&#34;search_keyword&#34;</span> : <span style="color:#a31515">&#34;Tealium shirt&#34;</span>
-  };
-&lt;/script&gt;</code></pre></div>
-<p>Learn more:</p>
-
-<ul>
-<li><a href="https://community.tealiumiq.com/t5/Data-Layer/An-Introduction-to-the-Data-Layer/ta-p/15885">Introduction to the Data Layer</a></li>
-<li><a href="/platforms/javascript/data-layer/">Built-in data layer variables</a></li>
-<li><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Data-Layer-Variables/ta-p/9427">Using data layer variables in iQ Tag Management</a></li>
-<li><a href="/platforms/javascript/about-utag-data/">About the Universal Data Object</a></li>
-</ul>
-
-<h2 id="track">Track</h2>
-
-<h3 id="events">Events</h3>
-
-<p>Use the <code>utag.link()</code> function to track events such as non-page views, page interactions, and other dynamic page events. Event tracking collects information about a visitor’s interactions within a page.</p>
-
-<p>Tealium provides the data layer variable <a href="#tealium-event-variable"><code>tealium_event</code></a> to name your tracked events. It is used within JavaScript event listeners to track events when a user interacts with website elements such as clicking a button.</p>
-
-<p>The following example tracks when a user clicks a social share button:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;a href=<span style="color:#a31515">&#34;#&#34;</span> name=<span style="color:#a31515">&#34;share&#34;</span> onclick=<span style="color:#a31515">&#34;utag.link({&#39;tealium_event&#39;: &#39;social_share&#39;, &#39;social_network&#39;: &#39;LinkedIn&#39;});&#34;</span>&gt;Share&lt;/a&gt;</code></pre></div>
-<p>Learn more about <a href="/platforms/javascript/track/#track-events">tracking events</a>.</p>
-
-<h3 id="views">Views</h3>
-
-<p>The <code>utag.view()</code> function is triggered automatically on every page load. It tracks page views, virtual page views, Ajax page flows, and single-page applications. Calling this function triggers the corresponding page tracking functionality within your configured vendor tags.</p>
-
-<p>The following is a content site example in which a visitor searched for &ldquo;jeans&rdquo;:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.view({
-    <span style="color:#a31515">&#34;tealium_event&#34;</span>: <span style="color:#a31515">&#34;search&#34;</span>,
-    <span style="color:#a31515">&#34;search_keyword&#34;</span>: <span style="color:#a31515">&#34;jeans&#34;</span>,
-    <span style="color:#a31515">&#34;search_results&#34;</span>: <span style="color:#a31515">&#34;42&#34;</span>
-});
-</code></pre></div>
-<p>The following is an ecommerce site example that tracks a step of a checkout flow:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">utag.view({
-    <span style="color:#a31515">&#34;tealium_event&#34;</span>: <span style="color:#a31515">&#34;page_view&#34;</span>,
-    <span style="color:#a31515">&#34;page_type&#34;</span>: <span style="color:#a31515">&#34;checkout&#34;</span>,
-    <span style="color:#a31515">&#34;page_name&#34;</span>: <span style="color:#a31515">&#34;Checkout: Payment Method&#34;</span>,
-    <span style="color:#a31515">&#34;cart_total_items&#34;</span>: <span style="color:#a31515">&#34;2&#34;</span>,
-    <span style="color:#a31515">&#34;cart_total_value&#34;</span>: <span style="color:#a31515">&#34;125.00&#34;</span>
-});
-</code></pre></div>
-<p>Learn more:</p>
-
-<ul>
-<li><a href="/platforms/javascript/track/#track-views">Tracking views</a></li>
-<li><a href="/platforms/javascript/single-page-applications/">Single page applications</a></li>
-</ul>
-
-<h3 id="tealium-event-variable">Tealium Event Variable</h3>
-
-<p>To uniquely identify each type of interaction to be tracked, use the reserved variable <code>tealium_event</code>. This variable is referenced throughout Tealium iQ to configure load rules, extensions, and data mappings. For all other event data, use variable names of your choosing.</p>
-
-<p>The suggested <code>tealium_event</code> values include, but are not limited to:</p>
-
-<table>
-<thead>
-<tr>
-<th>Value of <code>tealium_event</code></th>
-<th>Event Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>page_view</code></td>
-<td>View a page</td>
-</tr>
-
-<tr>
-<td><code>search</code></td>
-<td>Search a product</td>
-</tr>
-
-<tr>
-<td><code>product_view</code></td>
-<td>View a product</td>
-</tr>
-
-<tr>
-<td><code>cart_add</code></td>
-<td>Add a product to the shopping cart</td>
-</tr>
-
-<tr>
-<td><code>purchase</code></td>
-<td>Complete a purchase</td>
-</tr>
-
-<tr>
-<td><code>user_login</code></td>
-<td>User login</td>
-</tr>
-
-<tr>
-<td><code>social_share</code></td>
-<td>Share a link on a social site</td>
-</tr>
-</tbody>
-</table>
-
-<p>Learn more:</p>
-
-<ul>
-<li><a href="/platforms/javascript/track/#tealium-event">About the <code>tealium_event</code> variable</a></li>
-<li><a href="https://community.tealiumiq.com/t5/Data-Layer/Data-Layer-Definition-Retail/ta-p/17227">Data Layer Definition: Retail</a></li>
-<li><a href="https://community.tealiumiq.com/t5/Data-Layer/Data-Layer-Definition-Publisher/ta-p/17268">Data Layer Definition: Publisher</a></li>
-<li><a href="https://community.tealiumiq.com/t5/Data-Layer/Data-Layer-Definition-Basic-Video-Tracking/ta-p/19681">Data Layer Definition: Video Tracking</a></li>
-</ul>
-
-<h3 id="best-practices">Best Practices</h3>
-
-<p>Best practices associated with with implementing and managing your data layer include:</p>
-
-<p><strong>Variable naming conventions</strong></p>
-
-<ul>
-<li>Use lowercase, singular, underscore-separated variable names.</li>
-<li>Use meaningful variable names that avoid vendor specific naming.</li>
-<li>Prefix boolean variable names with <code>is_</code> or <code>has_</code>.</li>
-</ul>
-
-<p><strong>Data values</strong></p>
-
-<ul>
-<li>Use string values for all variables.</li>
-<li>For boolean values, use string values <code>&quot;1&quot;</code> and <code>&quot;0&quot;</code> instead of <code>true</code> and <code>false</code>.</li>
-<li>For numeric values, use string values such as <code>&quot;1234.56&quot;</code> instead of <code>1234.56</code>.</li>
-<li>For arrays, use comma-separated strings such as <code>[&quot;prodID1&quot;, &quot;prodID2&quot;, &quot;prodID3&quot;]</code>.</li>
-</ul>
-
-<p><strong>Page type identifiers</strong></p>
-
-<p>All pages of your site should include a variable called <code>page_type</code>. This is used to determine the type of page the user is viewing which can be useful for configuring load rules, extensions, and data mappings.</p>
-
-<p><strong>Third-party data layer objects</strong></p>
-
-<p>You might already have a data layer object implemented on your site, such as the W3C Data Object or your own custom object. Convert these objects to the Universal Data Object (UDO) <code>utag_data</code> using one of the available <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Data-Layer-Converter/ta-p/17581">data layer converters</a>.</p>
-
-<p><strong>Set <code>utag_data</code> before <code>utag.js</code></strong><br />
-In the page code, the Universal Data Object must be declared before the Universal Tag. This ensures that the Universal Tag has all the data layer variables needed to evaluate load rules, extensions, and tags.</p>
-
-<p>Learn more about <a href="https://community.tealiumiq.com/t5/Data-Layer/Data-Layer-Best-Practices/ta-p/15987">data layer best practices</a>.</p>
-
-<h2 id="testing-and-validation">Testing and Validation</h2>
-
-<p>Use the following tools to validate that your installation is working properly.</p>
-
-<h3 id="universal-tag-debugger">Universal Tag Debugger</h3>
-
-<p>The Universal Tag Debugger (or &ldquo;utag debugger&rdquo;) provides an easy way to validate your data layer and tracking calls in real-time as you navigate your site.</p>
-
-<p><img src="/images/platforms/javascript/utag-monitor.png" alt="UTAG Monitor" title="UTAG Monitor" /></p>
-
-<p>The tracking calls made by <code>utag.js</code> are displayed and updated in the tool as you navigate or trigger in-page events.  </p>
-
-<p>Learn more about the <a href="https://community.tealiumiq.com/t5/Productivity-Tools/Tealium-Universal-Tag-Monitor/ta-p/15179">Universal Tag Debugger</a>.</p>
-
-<h3 id="web-companion">Web Companion</h3>
-
-<p>Web Companion is a browser tool that allows you to check your tag configuration, inspect data on your site, and create and test new configurations quickly and easily. Launching this tool quickly verifies that the <code>utag.js</code> library is loading properly on your site. </p>
-
-<p><img src="/images/platforms/javascript/web-companion.png" alt="Web Companion" title="Web Companion" /></p>
-
-<p>Learn more:</p>
-
-<ul>
-<li><a href="https://community.tealiumiq.com/t5/Productivity-Tools/Web-Companion/ta-p/11947">Web Companion</a></li>
-<li><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Publish-Configuration/ta-p/13632#implementation">Web Companion setting in your publish settings</a></li>
-<li><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Methods-to-Switch-Publish-Environment/ta-p/23589">Switching environments</a></li>
-</ul>
-
-<h3 id="live-events">Live Events</h3>
-
-<p>In Tealium EventStream, use the Live Events feature to manage and inspect incoming events in real-time. Verify that the events you send from your data source are being received.</p>
-
-<p class="note"><i class="fas fa-info-circle"></i>To use Live Events you must add the Tealium Collect tag to your iQ Tag Management configuration.</p>
-
-<p>Learn more:</p>
-
-<ul>
-<li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Live-Events-and-Feeds/ta-p/11805">Live Events and Feeds</a></li>
-<li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Data-Sources-for-iQ-Tag-Management/ta-p/17934">Data Sources for iQ Tag Management</a></li>
-<li><a href="https://community.tealiumiq.com/t5/Client-Side-Tags/Tealium-Collect-Tag-Setup-Guide/ta-p/11923">Tealium Collect Tag Setup Guide</a></li>
-</ul>
-
-</div>
-
-<div class="pv3">
-
-	<div class="fr">
-
-		
-		<a href="/platforms/getting-started-web/web-concepts/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Web Concepts</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Web Concepts"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7835,33 +7472,417 @@ In the page code, the Universal Data Object must be declared before the Universa
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/getting-started-web/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        GETTING STARTED WEB
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Quick Start Guide</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Quick start guide for web.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<p>This guide covers the installation of the Tealium tag management solution for web sites. This installation requires two components: the Universal Tag (<code>utag.js</code>) and the Universal Data Object (<code>utag_data</code>). Install both of these components on every page of your site.</p>
+
+<h2 id="install">Install</h2>
+
+<h3 id="universal-tag">Universal Tag</h3>
+
+<p>The Universal Tag is a JavaScript file called <code>utag.js</code> that contains the generated code necessary to load your tag management configuration on your site.</p>
+
+<pre><code class="language-html">&lt;!-- Tealium Universal Tag --&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+  (function(a,b,c,d) {
+      a='//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
+      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+&lt;/script&gt;
+</code></pre>
+
+<p>The file path to <code>utag.js</code> will be unique to your account. Throughout this guide, replace the placeholder values <code>ACCOUNT</code>, <code>PROFILE</code>, and <code>ENVIRONMENT</code> with your account, profile, and environment.</p>
+
+<p>For example, if your account name was <code>your-company</code>, and you were using the default profile named <code>main</code>, the file path to the QA instance would be:</p>
+
+<pre><code>//tags.tiqcdn.com/utag/your-company/main/qa/utag.js
+</code></pre>
+
+<p>Learn more about <a href="/platforms/javascript/install/#universal-tag-utag-js">installing the Universal Tag (utag.js)</a>.</p>
+
+<h3 id="get-the-code">Get the Code</h3>
+
+<p>If you don&rsquo;t know your account and profile name, use the Code Center in iQ Tag Management to get the installation code (or ask your Tealium administrator):</p>
+
+<ol>
+<li>In Tealium iQ Tag Management, click the user menu and select <strong>Code Center</strong></li>
+<li>Leave the default <strong>JavaScript Type</strong> set to <strong>Asynchronous</strong> (Learn about <a href="https://community.tealiumiq.com/t5/Getting-Started/Synchronous-vs-Asynchronous-JavaScript-sync-vs-async/ta-p/13490">synchronous vs. asynchronous JavaScript</a>)</li>
+<li>In the <strong>Tealium Script</strong> tab, click <strong>Select All</strong> to select the code snippet</li>
+<li>Copy the selected Universal Tag code to your clipboard</li>
+</ol>
+
+<p><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/8247iE28B32F6909D25B0/image-size/large?v=1.0&amp;px=999" alt="Code Center" /></p>
+
+<h3 id="environments">Environments</h3>
+
+<p>There are three environments to support a proper release cycle: Dev, QA, and Prod. This allows you to install the QA instance of <code>utag.js</code> in your non-production environment and the Prod instance on your live production site. With this setup you can test changes in QA before releasing them to Prod.</p>
+
+<p>The environment path determines which instance of your Universal Tag to load.</p>
+
+<ul>
+<li><strong>QA</strong><br />
+<code>//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/qa/utag.js</code></li>
+<li><strong>Prod</strong><br />
+<code>//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/prod/utag.js</code></li>
+</ul>
+
+<p>Learn more about <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Code-Center/ta-p/13631">using the Code Center</a> to get your installation code.</p>
+
+<h3 id="code-placement">Code Placement</h3>
+
+<p>Paste the Universal Tag code immediately after the opening <code>&lt;body&gt;</code> tag on every page of your site. This position provides the best compatibility with the greatest number of vendors and allows third-party tracking to complete before the visitor navigates to the next page.</p>
+
+<p>The following example shows the code placement:</p>
+
+<pre><code class="language-html">&lt;head&gt;
+  ...
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- Tealium Universal Tag --&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+  (function(a,b,c,d) {
+      a='//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
+      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+&lt;/script&gt;
+  ...
+&lt;/body&gt;
+</code></pre>
+
+<p>Learn more about the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Order-of-Operations/ta-p/326">order of operations</a> to understand how the Universal Tag loads.</p>
+
+<h2 id="data-layer">Data Layer</h2>
+
+<p>The data layer is the foundation of your Tealium solution that comprises all of the variables that are collected across your site and the visitor interactions that are tracked.</p>
+
+<p>The Universal Data Object (UDO) is a JavaScript object called <code>utag_data</code> in which dynamic data from your site is passed to the Tealium tag. The properties in this object are named using plain, vendor-neutral terms that are specific to your business.  </p>
+
+<p class="note"><i class="fas fa-info-circle"></i>You must load the data layer object on every page of your site, populate it dynamically based on the variables needed for each page type, and load it prior to the Universal Tag.</p>
+
+<p>The following is an example declaration of <code>utag_data</code> that might appear on a search results page:</p>
+
+<pre><code class="language-html">&lt;script type=&quot;text/javascript&quot;&gt;
+  var utag_data={
+      &quot;tealium_event&quot;  : &quot;search&quot;,
+      &quot;page_name&quot;      : &quot;Search Results&quot;,
+      &quot;search_results&quot; : &quot;42&quot;,
+      &quot;search_keyword&quot; : &quot;Tealium shirt&quot;
+  };
+&lt;/script&gt;
+</code></pre>
+
+<p>Learn more:</p>
+
+<ul>
+<li><a href="https://community.tealiumiq.com/t5/Data-Layer/An-Introduction-to-the-Data-Layer/ta-p/15885">Introduction to the Data Layer</a></li>
+<li><a href="/platforms/javascript/data-layer/">Built-in data layer variables</a></li>
+<li><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Data-Layer-Variables/ta-p/9427">Using data layer variables in iQ Tag Management</a></li>
+<li><a href="/platforms/javascript/about-utag-data/">About the Universal Data Object</a></li>
+</ul>
+
+<h2 id="track">Track</h2>
+
+<h3 id="events">Events</h3>
+
+<p>Use the <code>utag.link()</code> function to track events such as non-page views, page interactions, and other dynamic page events. Event tracking collects information about a visitor’s interactions within a page.</p>
+
+<p>Tealium provides the data layer variable <a href="#tealium-event-variable"><code>tealium_event</code></a> to name your tracked events. It is used within JavaScript event listeners to track events when a user interacts with website elements such as clicking a button.</p>
+
+<p>The following example tracks when a user clicks a social share button:</p>
+
+<pre><code class="language-html">&lt;a href=&quot;#&quot; name=&quot;share&quot; onclick=&quot;utag.link({'tealium_event': 'social_share', 'social_network': 'LinkedIn'});&quot;&gt;Share&lt;/a&gt;
+</code></pre>
+
+<p>Learn more about <a href="/platforms/javascript/track/#track-events">tracking events</a>.</p>
+
+<h3 id="views">Views</h3>
+
+<p>The <code>utag.view()</code> function is triggered automatically on every page load. It tracks page views, virtual page views, Ajax page flows, and single-page applications. Calling this function triggers the corresponding page tracking functionality within your configured vendor tags.</p>
+
+<p>The following is a content site example in which a visitor searched for &ldquo;jeans&rdquo;:</p>
+
+<pre><code class="language-javascript">utag.view({
+    &quot;tealium_event&quot;: &quot;search&quot;,
+    &quot;search_keyword&quot;: &quot;jeans&quot;,
+    &quot;search_results&quot;: &quot;42&quot;
+});
+</code></pre>
+
+<p>The following is an ecommerce site example that tracks a step of a checkout flow:</p>
+
+<pre><code class="language-javascript">utag.view({
+    &quot;tealium_event&quot;: &quot;page_view&quot;,
+    &quot;page_type&quot;: &quot;checkout&quot;,
+    &quot;page_name&quot;: &quot;Checkout: Payment Method&quot;,
+    &quot;cart_total_items&quot;: &quot;2&quot;,
+    &quot;cart_total_value&quot;: &quot;125.00&quot;
+});
+</code></pre>
+
+<p>Learn more:</p>
+
+<ul>
+<li><a href="/platforms/javascript/track/#track-views">Tracking views</a></li>
+<li><a href="/platforms/javascript/single-page-applications/">Single page applications</a></li>
+</ul>
+
+<h3 id="tealium-event-variable">Tealium Event Variable</h3>
+
+<p>To uniquely identify each type of interaction to be tracked, use the reserved variable <code>tealium_event</code>. This variable is referenced throughout Tealium iQ to configure load rules, extensions, and data mappings. For all other event data, use variable names of your choosing.</p>
+
+<p>The suggested <code>tealium_event</code> values include, but are not limited to:</p>
+
+<table>
+<thead>
+<tr>
+<th>Value of <code>tealium_event</code></th>
+<th>Event Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>page_view</code></td>
+<td>View a page</td>
+</tr>
+
+<tr>
+<td><code>search</code></td>
+<td>Search a product</td>
+</tr>
+
+<tr>
+<td><code>product_view</code></td>
+<td>View a product</td>
+</tr>
+
+<tr>
+<td><code>cart_add</code></td>
+<td>Add a product to the shopping cart</td>
+</tr>
+
+<tr>
+<td><code>purchase</code></td>
+<td>Complete a purchase</td>
+</tr>
+
+<tr>
+<td><code>user_login</code></td>
+<td>User login</td>
+</tr>
+
+<tr>
+<td><code>social_share</code></td>
+<td>Share a link on a social site</td>
+</tr>
+</tbody>
+</table>
+
+<p>Learn more:</p>
+
+<ul>
+<li><a href="/platforms/javascript/track/#tealium-event">About the <code>tealium_event</code> variable</a></li>
+<li><a href="https://community.tealiumiq.com/t5/Data-Layer/Data-Layer-Definition-Retail/ta-p/17227">Data Layer Definition: Retail</a></li>
+<li><a href="https://community.tealiumiq.com/t5/Data-Layer/Data-Layer-Definition-Publisher/ta-p/17268">Data Layer Definition: Publisher</a></li>
+<li><a href="https://community.tealiumiq.com/t5/Data-Layer/Data-Layer-Definition-Basic-Video-Tracking/ta-p/19681">Data Layer Definition: Video Tracking</a></li>
+</ul>
+
+<h3 id="best-practices">Best Practices</h3>
+
+<p>Best practices associated with with implementing and managing your data layer include:</p>
+
+<p><strong>Variable naming conventions</strong></p>
+
+<ul>
+<li>Use lowercase, singular, underscore-separated variable names.</li>
+<li>Use meaningful variable names that avoid vendor specific naming.</li>
+<li>Prefix boolean variable names with <code>is_</code> or <code>has_</code>.</li>
+</ul>
+
+<p><strong>Data values</strong></p>
+
+<ul>
+<li>Use string values for all variables.</li>
+<li>For boolean values, use string values <code>&quot;1&quot;</code> and <code>&quot;0&quot;</code> instead of <code>true</code> and <code>false</code>.</li>
+<li>For numeric values, use string values such as <code>&quot;1234.56&quot;</code> instead of <code>1234.56</code>.</li>
+<li>For arrays, use comma-separated strings such as <code>[&quot;prodID1&quot;, &quot;prodID2&quot;, &quot;prodID3&quot;]</code>.</li>
+</ul>
+
+<p><strong>Page type identifiers</strong></p>
+
+<p>All pages of your site should include a variable called <code>page_type</code>. This is used to determine the type of page the user is viewing which can be useful for configuring load rules, extensions, and data mappings.</p>
+
+<p><strong>Third-party data layer objects</strong></p>
+
+<p>You might already have a data layer object implemented on your site, such as the W3C Data Object or your own custom object. Convert these objects to the Universal Data Object (UDO) <code>utag_data</code> using one of the available <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Data-Layer-Converter/ta-p/17581">data layer converters</a>.</p>
+
+<p><strong>Set <code>utag_data</code> before <code>utag.js</code></strong><br />
+In the page code, the Universal Data Object must be declared before the Universal Tag. This ensures that the Universal Tag has all the data layer variables needed to evaluate load rules, extensions, and tags.</p>
+
+<p>Learn more about <a href="https://community.tealiumiq.com/t5/Data-Layer/Data-Layer-Best-Practices/ta-p/15987">data layer best practices</a>.</p>
+
+<h2 id="testing-and-validation">Testing and Validation</h2>
+
+<p>Use the following tools to validate that your installation is working properly.</p>
+
+<h3 id="universal-tag-debugger">Universal Tag Debugger</h3>
+
+<p>The Universal Tag Debugger (or &ldquo;utag debugger&rdquo;) provides an easy way to validate your data layer and tracking calls in real-time as you navigate your site.</p>
+
+<p><img src="/images/platforms/javascript/utag-monitor.png" alt="UTAG Monitor" title="UTAG Monitor" /></p>
+
+<p>The tracking calls made by <code>utag.js</code> are displayed and updated in the tool as you navigate or trigger in-page events.  </p>
+
+<p>Learn more about the <a href="https://community.tealiumiq.com/t5/Productivity-Tools/Tealium-Universal-Tag-Monitor/ta-p/15179">Universal Tag Debugger</a>.</p>
+
+<h3 id="web-companion">Web Companion</h3>
+
+<p>Web Companion is a browser tool that allows you to check your tag configuration, inspect data on your site, and create and test new configurations quickly and easily. Launching this tool quickly verifies that the <code>utag.js</code> library is loading properly on your site. </p>
+
+<p><img src="/images/platforms/javascript/web-companion.png" alt="Web Companion" title="Web Companion" /></p>
+
+<p>Learn more:</p>
+
+<ul>
+<li><a href="https://community.tealiumiq.com/t5/Productivity-Tools/Web-Companion/ta-p/11947">Web Companion</a></li>
+<li><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Publish-Configuration/ta-p/13632#implementation">Web Companion setting in your publish settings</a></li>
+<li><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Methods-to-Switch-Publish-Environment/ta-p/23589">Switching environments</a></li>
+</ul>
+
+<h3 id="live-events">Live Events</h3>
+
+<p>In Tealium EventStream, use the Live Events feature to manage and inspect incoming events in real-time. Verify that the events you send from your data source are being received.</p>
+
+<p class="note"><i class="fas fa-info-circle"></i>To use Live Events you must add the Tealium Collect tag to your iQ Tag Management configuration.</p>
+
+<p>Learn more:</p>
+
+<ul>
+<li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Live-Events-and-Feeds/ta-p/11805">Live Events and Feeds</a></li>
+<li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Data-Sources-for-iQ-Tag-Management/ta-p/17934">Data Sources for iQ Tag Management</a></li>
+<li><a href="https://community.tealiumiq.com/t5/Client-Side-Tags/Tealium-Collect-Tag-Setup-Guide/ta-p/11923">Tealium Collect Tag Setup Guide</a></li>
+</ul>
+
+</div>
+
+<div class="pv3">
+
+	<div class="fr">
+
+		
+		<a href="/platforms/getting-started-web/web-concepts/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Web Concepts</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Web Concepts"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  March 5, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  March 5, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#install">Install</a></li>
+              <ul class="toc-h3"><li><a href="#universal-tag">Universal Tag</a></li>
+              <li><a href="#get-the-code">Get the Code</a></li>
+              <li><a href="#environments">Environments</a></li>
+              <li><a href="#code-placement">Code Placement</a></li>
+              </ul><li><a href="#data-layer">Data Layer</a></li>
+              <li><a href="#track">Track</a></li>
+              <ul class="toc-h3"><li><a href="#events">Events</a></li>
+              <li><a href="#views">Views</a></li>
+              <li><a href="#tealium-event-variable">Tealium Event Variable</a></li>
+              <li><a href="#best-practices">Best Practices</a></li>
+              </ul><li><a href="#testing-and-validation">Testing and Validation</a></li>
+              <ul class="toc-h3"><li><a href="#universal-tag-debugger">Universal Tag Debugger</a></li>
+              <li><a href="#web-companion">Web Companion</a></li>
+              <li><a href="#live-events">Live Events</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

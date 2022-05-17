@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,325 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#sample-app">Sample App</a></li>
-              <li><a href="#install">Install</a></li>
-              <ul class="toc-h3"><li><a href="#swift-package-manager-recommended">Swift Package Manager (Recommended)</a></li>
-              <li><a href="#cocoapods">CocoaPods</a></li>
-              <li><a href="#carthage">Carthage</a></li>
-              </ul><li><a href="#initialize">Initialize</a></li>
-              <li><a href="#track">Track</a></li>
-              <ul class="toc-h3"><li><a href="#media-session">Media Session</a></li>
-              <li><a href="#player-events">Player Events</a></li>
-              <li><a href="#chapters">Chapters</a></li>
-              <li><a href="#ads">Ads</a></li>
-              </ul><li><a href="#examples">Examples</a></li>
-              <ul class="toc-h3"><li><a href="#chapters-and-ads">Chapters and Ads</a></li>
-              <li><a href="#session-abandonment">Session Abandonment</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/ios-swift/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT/MODULE LIST
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Media Module</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Provides tracking data for your media events.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<p>The Media module tracks streaming media in apps through the use of custom events. Learn more about <a href="/platforms/getting-started/media/">media tracking</a>.</p>
-
-<h2 id="sample-app">Sample App</h2>
-
-<p>Explore the iOS (Swift) <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/TealiumMediaExample">Media sample app</a> to help familiarize yourself with the Tealium library, tracking methods, and best practice implementation.</p>
-
-<h2 id="install">Install</h2>
-
-<p>Install the Media module with Swift Package Manager, CocoaPods or Carthage.</p>
-
-<h3 id="swift-package-manager-recommended">Swift Package Manager (Recommended)</h3>
-
-<p>Supported in version 1.9.0+, the Swift Package Manager is the recommended and simplest way to install the Tealium Swift library:</p>
-
-<ol>
-<li>In your Xcode project, select <strong>File &gt; Swift Packages &gt; Add Package Dependency</strong></li>
-<li>Enter the repository URL: <code>https://github.com/tealium/tealium-swift</code></li>
-<li>Configure the version rules. Typically, <code>&quot;Up to next major&quot;</code> is recommended. If the current Tealium Swift library version does not appears in the list, then reset your Swift package cache.</li>
-<li>Select the <code>Media</code> module from the list of modules to install and add it each of your app targets in your Xcode project, under <strong>Frameworks &gt; Libraries &amp; Embedded Content</strong></li>
-</ol>
-
-<p>Learn more about the <a href="/platforms/ios-swift/install/#swift-package-manager-recommended">Swift Package Manager installation for iOS</a>.</p>
-
-<h3 id="cocoapods">CocoaPods</h3>
-
-<p>To install the Media module with CocoaPods, add the following pod to your Podfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;tealium-swift/Media&#39;</span></code></pre></div>
-<p>Learn more about the <a href="/platforms/ios-swift/install/#cocoapods">CocoaPods installation for iOS</a>.</p>
-
-<h3 id="carthage">Carthage</h3>
-
-<p>To install the Media module with Carthage, following these steps:</p>
-
-<ol>
-<li><p>Go to the app target&rsquo;s General configuration page in Xcode.</p></li>
-
-<li><p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumMedia.framework</code></pre></div></li>
-</ol>
-
-<p>Learn more about <a href="/platforms/ios-swift/install/#carthage">Carthage installation for iOS</a>.</p>
-
-<h2 id="initialize">Initialize</h2>
-
-<p>To initialize the Media module, create a <a href="/platforms/ios-swift/api/media-session/#class-mediacontent"><code>MediaContent</code></a> object.</p>
-
-<p>For example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> media = MediaContent(
-  name: <span style="color:#a31515">&#34;What is the Tealium Customer Data Hub?&#34;</span>,
-  trackingType: .milestone,
-  streamType: .vod,
-  mediaType: .video,
-  qoe: QoE(bitrate: 1500),
-  duration: 130
-)</code></pre></div>
-<p>Learn more about <a href="/platforms/getting-started/media/#implement">implementing the Media module</a>.</p>
-
-<h4 id="metadata">Metadata</h4>
-
-<p>To add optional metadata to the media session:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">metadata: [<span style="color:#a31515">&#34;artist&#34;</span>: <span style="color:#a31515">&#34;various&#34;</span>, <span style="color:#a31515">&#34;duration&#34;</span>: <span style="color:#a31515">&#34;45:00&#34;</span>]</code></pre></div>
-<p>To add chapter metadata:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">metadata: [<span style="color:#a31515">&#34;artist&#34;</span>: <span style="color:#a31515">&#34;Aerosmith&#34;</span>, <span style="color:#a31515">&#34;track&#34;</span>: <span style="color:#a31515">&#34;5&#34;</span>]</code></pre></div>
-<p>To add merged metadata:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">metadata: [<span style="color:#a31515">&#34;artist&#34;</span>: <span style="color:#a31515">&#34;Aerosmith&#34;</span>, <span style="color:#a31515">&#34;track&#34;</span>: <span style="color:#a31515">&#34;5&#34;</span>, <span style="color:#a31515">&#34;duration&#34;</span>: <span style="color:#a31515">&#34;45:00&#34;</span>]</code></pre></div>
-<p>Learn more about <a href="/platforms/getting-started/media/#metadata">metadata</a>.</p>
-
-<h2 id="track">Track</h2>
-
-<p>There are many methods and properties available to track media.</p>
-
-<h3 id="media-session">Media Session</h3>
-
-<p>To start tracking a media session, call the <a href="/platforms/ios-swift/api/media-session/#startsession"><code>startSession()</code></a> method. To stop tracking a media session, call the <a href="/platforms/ios-swift/api/media-session/#endsession"><code>endSession()</code></a> method:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> session = tealium?.media?.createSession(from: media)                                
-session.startSession()
-<span style="color:#008000">// ...</span>
-session.end()</code></pre></div>
-<p>Learn more about <a href="/platforms/getting-started/media/#media-sessions">tracking sessions</a>.</p>
-
-<h3 id="player-events">Player Events</h3>
-
-<p>To track media player events such as play and pause, call the appropriate <a href="/platforms/getting-started/media/#playerevents">player event methods</a>. Each media player event sends a <code>tealium_event</code> variable to the data layer when called.</p>
-
-<p>To track when the media is played, call the <a href="/platforms/ios-swift/api/media-session/#play"><code>play()</code></a> method:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">session.play()</code></pre></div>
-<p>To track when the media is paused, call the <a href="/platforms/ios-swift/api/media-session/#pause"><code>pause()</code></a> method:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">session.pause()</code></pre></div>
-<h3 id="chapters">Chapters</h3>
-
-<p>To track a chapter segments in the media session, create a <a href="/platforms/ios-swift/api/media-session/#struct-chapter"><code>Chapter</code></a> object and pass it to the <a href="/platforms/ios-swift/api/media-session/#startchapter"><code>startChapter()</code></a> method. To stop tracking the chapter, call the <a href="/platforms/ios-swift/api/media-session/#endchapter"><code>endChapter()</code></a> method</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> chapter1 = Chapter(<span style="color:#a31515">&#34;Chapter 1&#34;</span>, 120)
-mediaSession.startChapter(chapter1)
-<span style="color:#008000">// ...</span>
-mediaSession.endChapter()</code></pre></div>
-<p>Learn more about <a href="/platforms/getting-started/media/#chapters">tracking chapters</a>.</p>
-
-<h3 id="ads">Ads</h3>
-
-<p>To track the start of an ad break, create an <a href="/platforms/ios-swift/api/media-session/#struct-adbreak"><code>AdBreak</code></a> object and pass it to the <a href="/platforms/ios-swift/api/media-session/#startadbreak"><code>startAdBreak()</code></a> method. To track the start of an ad within the ad break, create an <a href="/platforms/ios-swift/api/media-session/#struct-ad"><code>Ad</code></a> object and pass it to the <a href="/platforms/ios-swift/api/media-session/#startad"><code>startAd()</code></a> method.</p>
-
-<p>To track the end of an ad, call the <a href="/platforms/ios-swift/api/media-session/#endad"><code>endAd()</code></a> method. To track the end of the ad break, call the <a href="/platforms/ios-swift/api/media-session/#endadbreak"><code>endAdBreak()</code></a> method.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> adBreak = AdBreak(<span style="color:#a31515">&#34;Ad Break 1&#34;</span>)
-session.endAdBreak(adBreak)
-
-<span style="color:#00f">let</span> ad1 = Ad(<span style="color:#a31515">&#34;Ad 1&#34;</span>)
-session.startAd(ad1)
-session.endAd()
-
-<span style="color:#00f">let</span> ad2 = Ad(<span style="color:#a31515">&#34;Ad 2&#34;</span>)
-session.adStart(ad2)
-session.endAd()
-
-session.endAdBreak()</code></pre></div>
-<p>Learn more about <a href="/platforms/getting-started/media/#ads">tracking ads</a>.</p>
-
-<h2 id="examples">Examples</h2>
-
-<h3 id="chapters-and-ads">Chapters and Ads</h3>
-
-<p>The following example tracks media content with chapters and ads:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> qoe = QoE(bitrate: 1500)
-
-<span style="color:#00f">let</span> mediaSession = tealium?.media?.createSession(from: MediaContent(
-  name: <span style="color:#a31515">&#34;What is the Tealium Customer Data Hub?&#34;</span>,
-  trackingType: .fullPlayback
-  streamType: .vod,
-  mediaType: .video,
-  qoe: qoe,
-  duration: 114
-))
-
-mediaSession.startSession()
-<span style="color:#00f">let</span> adBreak = AdBreak(<span style="color:#a31515">&#34;Ad Break 1&#34;</span>)
-mediaSession.startAdBreak(adBreak)
-<span style="color:#00f">let</span> ad = Ad(<span style="color:#a31515">&#34;Ad 1&#34;</span>)
-mediaSession.startAd(ad)
-<span style="color:#008000">// ...</span>
-mediaSession.endAd()
-<span style="color:#00f">let</span> secondAd = Ad(<span style="color:#a31515">&#34;Ad 2&#34;</span>)
-mediaSession.startAd(secondAd)
-mediaSession.endAd()
-mediaSession.endAdBreak()
-<span style="color:#00f">let</span> chapterOne = Chapter(<span style="color:#a31515">&#34;Chapter 1&#34;</span>)
-mediaSession.startChapter(chapterOne)
-mediaSession.endChapter()
-<span style="color:#00f">let</span> adBreak = AdBreak(<span style="color:#a31515">&#34;Ad Break 2&#34;</span>)
-mediaSession.startAdBreak(adBreak)
-<span style="color:#00f">let</span> thirdAd = Ad(<span style="color:#a31515">&#34;Ad 3&#34;</span>)
-mediaSession.startAd(thirdAd)
-<span style="color:#008000">// ...</span>
-mediaSession.endAd()
-mediaSession.endAdBreak()
-<span style="color:#00f">let</span> chapterTwo = Chapter(<span style="color:#a31515">&#34;Chapter 2&#34;</span>)
-mediaSession.startChapter(chapterTwo)
-mediaSession.endChapter()
-
-<span style="color:#00f">let</span> adBreak = AdBreak(<span style="color:#a31515">&#34;Ad Break 3&#34;</span>)
-mediaSession.startAdBreak(adBreak)
-<span style="color:#00f">let</span> fourthAd = Ad(<span style="color:#a31515">&#34;Ad 4&#34;</span>)
-mediaSession.startAd(fourthAd)
-mediaSession.endAd()
-<span style="color:#00f">let</span> fifthAd = Ad(<span style="color:#a31515">&#34;Ad 5&#34;</span>)
-mediaSession.startAd(fifthAd)
-mediaSession.endAd()
-mediaSession.endAdBreak()
-<span style="color:#00f">let</span> chapterThree = Chapter(<span style="color:#a31515">&#34;Chapter 3&#34;</span>)
-mediaSession.startChapter(chapterThree)
-mediaSession.startBuffer()
-mediaSession.endBuffer()
-mediaSession.endChapter()
-mediaSession.endContent()  <span style="color:#008000">// end of all content and ads</span>
-mediaSession.endSession()  <span style="color:#008000">// end of session</span></code></pre></div>
-<h3 id="session-abandonment">Session Abandonment</h3>
-
-<p>The following example shows when the user abandons the session, the app is backgrounded and media stops playing. With the Media module enabled, the <a href="/platforms/ios-swift/api/media-session/#endsession"><code>endSession()</code></a> method is triggered after 1 minute before the session is terminated. When the user opens the app again, the media session resumes.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> media = MediaContent(
-  name: <span style="color:#a31515">&#34;What is the Tealium Customer Data Hub?&#34;</span>,
-  trackingType: .fullPlayback
-  streamType: .vod,
-  mediaType: .video,
-  qoe: QoE(bitrate: 1500),
-  duration: 114
-)
-<span style="color:#00f">let</span> mediaSession = tealium?.media?.createSession(from: media)                                
-mediaSession.startSession()
-<span style="color:#00f">let</span> adBreak = AdBreak(<span style="color:#a31515">&#34;Ad Break 1&#34;</span>)
-mediaSession.startAdBreak(adBreak)
-<span style="color:#00f">let</span> ad = Ad(<span style="color:#a31515">&#34;Ad 1&#34;</span>)
-mediaSession.startAd(ad)
-<span style="color:#008000">// ...</span>
-mediaSession.endAd()
-<span style="color:#00f">let</span> secondAd = Ad(<span style="color:#a31515">&#34;Ad 2&#34;</span>)
-mediaSession.startAd(secondAd)
-mediaSession.endAd()
-mediaSession.endAdBreak()
-mediaSession.play()
-<span style="color:#008000">// app goes into background and media does not continue playing</span>
-mediaSession.pause()
-<span style="color:#008000">// Tealium&#39;s background media tracking is enabled, so the endSession is triggered after 1 minute</span>
-<span style="color:#008000">// User opens app again, and media continues</span>
-mediaSession.resumeSession() <span style="color:#008000">// resume event</span>
-<span style="color:#00f">let</span> adBreak = AdBreak(<span style="color:#a31515">&#34;Ad Break 2&#34;</span>)
-mediaSession.startAdBreak(adBreak)
-<span style="color:#008000">// User closes app - session abandoned (no endContent event)</span>
-mediaSession.endSession() <span style="color:#008000">// end of session</span></code></pre></div>
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/ios-swift/module-list/location/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Location Module "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Location Module</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/ios-swift/module-list/remote-commands/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>RemoteCommands Module</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"RemoteCommands Module"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7783,33 +7472,387 @@ mediaSession.endSession() <span style="color:#008000">// end of session</span></
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/ios-swift/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        IOS SWIFT/MODULE LIST
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Media Module</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Provides tracking data for your media events.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<p>The Media module tracks streaming media in apps through the use of custom events. Learn more about <a href="/platforms/getting-started/media/">media tracking</a>.</p>
+
+<h2 id="sample-app">Sample App</h2>
+
+<p>Explore the iOS (Swift) <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/TealiumMediaExample">Media sample app</a> to help familiarize yourself with the Tealium library, tracking methods, and best practice implementation.</p>
+
+<h2 id="install">Install</h2>
+
+<p>Install the Media module with Swift Package Manager, CocoaPods or Carthage.</p>
+
+<h3 id="swift-package-manager-recommended">Swift Package Manager (Recommended)</h3>
+
+<p>Supported in version 1.9.0+, the Swift Package Manager is the recommended and simplest way to install the Tealium Swift library:</p>
+
+<ol>
+<li>In your Xcode project, select <strong>File &gt; Swift Packages &gt; Add Package Dependency</strong></li>
+<li>Enter the repository URL: <code>https://github.com/tealium/tealium-swift</code></li>
+<li>Configure the version rules. Typically, <code>&quot;Up to next major&quot;</code> is recommended. If the current Tealium Swift library version does not appears in the list, then reset your Swift package cache.</li>
+<li>Select the <code>Media</code> module from the list of modules to install and add it each of your app targets in your Xcode project, under <strong>Frameworks &gt; Libraries &amp; Embedded Content</strong></li>
+</ol>
+
+<p>Learn more about the <a href="/platforms/ios-swift/install/#swift-package-manager-recommended">Swift Package Manager installation for iOS</a>.</p>
+
+<h3 id="cocoapods">CocoaPods</h3>
+
+<p>To install the Media module with CocoaPods, add the following pod to your Podfile:</p>
+
+<pre><code class="language-perl">pod 'tealium-swift/Media'
+</code></pre>
+
+<p>Learn more about the <a href="/platforms/ios-swift/install/#cocoapods">CocoaPods installation for iOS</a>.</p>
+
+<h3 id="carthage">Carthage</h3>
+
+<p>To install the Media module with Carthage, following these steps:</p>
+
+<ol>
+<li><p>Go to the app target&rsquo;s General configuration page in Xcode.</p></li>
+
+<li><p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
+
+<pre><code class="language-perl">TealiumMedia.framework
+</code></pre></li>
+</ol>
+
+<p>Learn more about <a href="/platforms/ios-swift/install/#carthage">Carthage installation for iOS</a>.</p>
+
+<h2 id="initialize">Initialize</h2>
+
+<p>To initialize the Media module, create a <a href="/platforms/ios-swift/api/media-session/#class-mediacontent"><code>MediaContent</code></a> object.</p>
+
+<p>For example:</p>
+
+<pre><code class="language-swift">let media = MediaContent(
+  name: &quot;What is the Tealium Customer Data Hub?&quot;,
+  trackingType: .milestone,
+  streamType: .vod,
+  mediaType: .video,
+  qoe: QoE(bitrate: 1500),
+  duration: 130
+)
+</code></pre>
+
+<p>Learn more about <a href="/platforms/getting-started/media/#implement">implementing the Media module</a>.</p>
+
+<h4 id="metadata">Metadata</h4>
+
+<p>To add optional metadata to the media session:</p>
+
+<pre><code class="language-swift">metadata: [&quot;artist&quot;: &quot;various&quot;, &quot;duration&quot;: &quot;45:00&quot;]
+</code></pre>
+
+<p>To add chapter metadata:</p>
+
+<pre><code class="language-swift">metadata: [&quot;artist&quot;: &quot;Aerosmith&quot;, &quot;track&quot;: &quot;5&quot;]
+</code></pre>
+
+<p>To add merged metadata:</p>
+
+<pre><code class="language-swift">metadata: [&quot;artist&quot;: &quot;Aerosmith&quot;, &quot;track&quot;: &quot;5&quot;, &quot;duration&quot;: &quot;45:00&quot;]
+</code></pre>
+
+<p>Learn more about <a href="/platforms/getting-started/media/#metadata">metadata</a>.</p>
+
+<h2 id="track">Track</h2>
+
+<p>There are many methods and properties available to track media.</p>
+
+<h3 id="media-session">Media Session</h3>
+
+<p>To start tracking a media session, call the <a href="/platforms/ios-swift/api/media-session/#startsession"><code>startSession()</code></a> method. To stop tracking a media session, call the <a href="/platforms/ios-swift/api/media-session/#endsession"><code>endSession()</code></a> method:</p>
+
+<pre><code class="language-swift">let session = tealium?.media?.createSession(from: media)                                
+session.startSession()
+// ...
+session.end()
+</code></pre>
+
+<p>Learn more about <a href="/platforms/getting-started/media/#media-sessions">tracking sessions</a>.</p>
+
+<h3 id="player-events">Player Events</h3>
+
+<p>To track media player events such as play and pause, call the appropriate <a href="/platforms/getting-started/media/#playerevents">player event methods</a>. Each media player event sends a <code>tealium_event</code> variable to the data layer when called.</p>
+
+<p>To track when the media is played, call the <a href="/platforms/ios-swift/api/media-session/#play"><code>play()</code></a> method:</p>
+
+<pre><code class="language-swift">session.play()
+</code></pre>
+
+<p>To track when the media is paused, call the <a href="/platforms/ios-swift/api/media-session/#pause"><code>pause()</code></a> method:</p>
+
+<pre><code class="language-swift">session.pause()
+</code></pre>
+
+<h3 id="chapters">Chapters</h3>
+
+<p>To track a chapter segments in the media session, create a <a href="/platforms/ios-swift/api/media-session/#struct-chapter"><code>Chapter</code></a> object and pass it to the <a href="/platforms/ios-swift/api/media-session/#startchapter"><code>startChapter()</code></a> method. To stop tracking the chapter, call the <a href="/platforms/ios-swift/api/media-session/#endchapter"><code>endChapter()</code></a> method</p>
+
+<pre><code class="language-swift">let chapter1 = Chapter(&quot;Chapter 1&quot;, 120)
+mediaSession.startChapter(chapter1)
+// ...
+mediaSession.endChapter()
+</code></pre>
+
+<p>Learn more about <a href="/platforms/getting-started/media/#chapters">tracking chapters</a>.</p>
+
+<h3 id="ads">Ads</h3>
+
+<p>To track the start of an ad break, create an <a href="/platforms/ios-swift/api/media-session/#struct-adbreak"><code>AdBreak</code></a> object and pass it to the <a href="/platforms/ios-swift/api/media-session/#startadbreak"><code>startAdBreak()</code></a> method. To track the start of an ad within the ad break, create an <a href="/platforms/ios-swift/api/media-session/#struct-ad"><code>Ad</code></a> object and pass it to the <a href="/platforms/ios-swift/api/media-session/#startad"><code>startAd()</code></a> method.</p>
+
+<p>To track the end of an ad, call the <a href="/platforms/ios-swift/api/media-session/#endad"><code>endAd()</code></a> method. To track the end of the ad break, call the <a href="/platforms/ios-swift/api/media-session/#endadbreak"><code>endAdBreak()</code></a> method.</p>
+
+<pre><code class="language-swift">let adBreak = AdBreak(&quot;Ad Break 1&quot;)
+session.endAdBreak(adBreak)
+
+let ad1 = Ad(&quot;Ad 1&quot;)
+session.startAd(ad1)
+session.endAd()
+
+let ad2 = Ad(&quot;Ad 2&quot;)
+session.adStart(ad2)
+session.endAd()
+
+session.endAdBreak()
+</code></pre>
+
+<p>Learn more about <a href="/platforms/getting-started/media/#ads">tracking ads</a>.</p>
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="chapters-and-ads">Chapters and Ads</h3>
+
+<p>The following example tracks media content with chapters and ads:</p>
+
+<pre><code class="language-swift">let qoe = QoE(bitrate: 1500)
+
+let mediaSession = tealium?.media?.createSession(from: MediaContent(
+  name: &quot;What is the Tealium Customer Data Hub?&quot;,
+  trackingType: .fullPlayback
+  streamType: .vod,
+  mediaType: .video,
+  qoe: qoe,
+  duration: 114
+))
+
+mediaSession.startSession()
+let adBreak = AdBreak(&quot;Ad Break 1&quot;)
+mediaSession.startAdBreak(adBreak)
+let ad = Ad(&quot;Ad 1&quot;)
+mediaSession.startAd(ad)
+// ...
+mediaSession.endAd()
+let secondAd = Ad(&quot;Ad 2&quot;)
+mediaSession.startAd(secondAd)
+mediaSession.endAd()
+mediaSession.endAdBreak()
+let chapterOne = Chapter(&quot;Chapter 1&quot;)
+mediaSession.startChapter(chapterOne)
+mediaSession.endChapter()
+let adBreak = AdBreak(&quot;Ad Break 2&quot;)
+mediaSession.startAdBreak(adBreak)
+let thirdAd = Ad(&quot;Ad 3&quot;)
+mediaSession.startAd(thirdAd)
+// ...
+mediaSession.endAd()
+mediaSession.endAdBreak()
+let chapterTwo = Chapter(&quot;Chapter 2&quot;)
+mediaSession.startChapter(chapterTwo)
+mediaSession.endChapter()
+
+let adBreak = AdBreak(&quot;Ad Break 3&quot;)
+mediaSession.startAdBreak(adBreak)
+let fourthAd = Ad(&quot;Ad 4&quot;)
+mediaSession.startAd(fourthAd)
+mediaSession.endAd()
+let fifthAd = Ad(&quot;Ad 5&quot;)
+mediaSession.startAd(fifthAd)
+mediaSession.endAd()
+mediaSession.endAdBreak()
+let chapterThree = Chapter(&quot;Chapter 3&quot;)
+mediaSession.startChapter(chapterThree)
+mediaSession.startBuffer()
+mediaSession.endBuffer()
+mediaSession.endChapter()
+mediaSession.endContent()  // end of all content and ads
+mediaSession.endSession()  // end of session
+</code></pre>
+
+<h3 id="session-abandonment">Session Abandonment</h3>
+
+<p>The following example shows when the user abandons the session, the app is backgrounded and media stops playing. With the Media module enabled, the <a href="/platforms/ios-swift/api/media-session/#endsession"><code>endSession()</code></a> method is triggered after 1 minute before the session is terminated. When the user opens the app again, the media session resumes.</p>
+
+<pre><code class="language-swift">let media = MediaContent(
+  name: &quot;What is the Tealium Customer Data Hub?&quot;,
+  trackingType: .fullPlayback
+  streamType: .vod,
+  mediaType: .video,
+  qoe: QoE(bitrate: 1500),
+  duration: 114
+)
+let mediaSession = tealium?.media?.createSession(from: media)                                
+mediaSession.startSession()
+let adBreak = AdBreak(&quot;Ad Break 1&quot;)
+mediaSession.startAdBreak(adBreak)
+let ad = Ad(&quot;Ad 1&quot;)
+mediaSession.startAd(ad)
+// ...
+mediaSession.endAd()
+let secondAd = Ad(&quot;Ad 2&quot;)
+mediaSession.startAd(secondAd)
+mediaSession.endAd()
+mediaSession.endAdBreak()
+mediaSession.play()
+// app goes into background and media does not continue playing
+mediaSession.pause()
+// Tealium's background media tracking is enabled, so the endSession is triggered after 1 minute
+// User opens app again, and media continues
+mediaSession.resumeSession() // resume event
+let adBreak = AdBreak(&quot;Ad Break 2&quot;)
+mediaSession.startAdBreak(adBreak)
+// User closes app - session abandoned (no endContent event)
+mediaSession.endSession() // end of session
+</code></pre>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/ios-swift/module-list/location/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Location Module "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Location Module</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/ios-swift/module-list/remote-commands/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>RemoteCommands Module</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"RemoteCommands Module"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  June 22, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  June 22, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#sample-app">Sample App</a></li>
+              <li><a href="#install">Install</a></li>
+              <ul class="toc-h3"><li><a href="#swift-package-manager-recommended">Swift Package Manager (Recommended)</a></li>
+              <li><a href="#cocoapods">CocoaPods</a></li>
+              <li><a href="#carthage">Carthage</a></li>
+              </ul><li><a href="#initialize">Initialize</a></li>
+              <li><a href="#track">Track</a></li>
+              <ul class="toc-h3"><li><a href="#media-session">Media Session</a></li>
+              <li><a href="#player-events">Player Events</a></li>
+              <li><a href="#chapters">Chapters</a></li>
+              <li><a href="#ads">Ads</a></li>
+              </ul><li><a href="#examples">Examples</a></li>
+              <ul class="toc-h3"><li><a href="#chapters-and-ads">Chapters and Ads</a></li>
+              <li><a href="#session-abandonment">Session Abandonment</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

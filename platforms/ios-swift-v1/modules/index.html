@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,344 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#module-list">Module List</a></li>
-              <li><a href="#recommended-modules">Recommended Modules</a></li>
-              <ul class="toc-h3"><li><a href="#base-implementation">Base Implementation</a></li>
-              <li><a href="#tag-management">Tag Management</a></li>
-              <li><a href="#tealium-eventstream-audiencestream">Tealium EventStream/AudienceStream</a></li>
-              </ul><li><a href="#install-modules">Install Modules</a></li>
-              <ul class="toc-h3"><li><a href="#cocoapods">CocoaPods</a></li>
-              <li><a href="#carthage">Carthage</a></li>
-              </ul><li><a href="#disable-modules">Disable Modules</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/ios-swift-v1/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT V1
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Modules</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      A list of the available modules.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<p>The Tealium Swift library is designed around a modular architecture. Modules are automatically instantiated if they are present, and retrieve their configuration from the <code>TealiumConfig</code> instance.</p>
-
-<p>All modules have a dependency on <code>TealiumCore</code>. This means installing any of the optional modules installs <code>TealiumCore</code>.</p>
-
-<h2 id="module-list">Module List</h2>
-
-<p>The modules are listed below in priority order (the internal order in which auto-instantiation takes place).</p>
-
-<table>
-<thead>
-<tr>
-<th>Module Name</th>
-<th>Module ID</th>
-<th>Description</th>
-<th>Supported Platforms</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><a href="/platforms/ios-swift/module-list/appdata/">AppData</a></td>
-<td><code>appdata</code></td>
-<td>Adds <code>app_uuid</code> to track data</td>
-<td>iOS, macOS, tvOS, watchOS</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/module-list/attribution/">Attribution</a></td>
-<td><code>attribution</code></td>
-<td>Adds IDFA to track data</td>
-<td>iOS</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/module-list/autotracking/">AutoTracking</a></td>
-<td><code>autotracking</code></td>
-<td>Prepares &amp; sends dispatches for most UI, including <code>viewDidAppear</code> events</td>
-<td>iOS, tvOS</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/module-list/collect/">Collect</a></td>
-<td><code>collect</code></td>
-<td>Packages and delivers track call to Tealium Collect or other custom URL endpoint</td>
-<td>iOS, macOS, tvOS, watchOS</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/consent-management">ConsentManager</a></td>
-<td><code>consentmanager</code></td>
-<td>Aids GDPR/privacy compliance</td>
-<td>iOS, macOS, tvOS, watchOS</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/module-list/connectivity/">Connectivity</a></td>
-<td>connectivity</td>
-<td>Adds ability to flag track messages for delayed delivery due to connectivity loss</td>
-<td>iOS, macOS, tvOS, watchOS</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/module-list/crash-reporter/">CrashReporter</a></td>
-<td><code>crashreporter</code></td>
-<td>Automatically tracks crashes in your app. Once the module is enabled and the accompanying frameworks are installed, a crash event is triggered if a crash occurs in your app.</td>
-<td>iOS</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/module-list/datasource/">DataSource</a></td>
-<td><code>datasource</code></td>
-<td>Adds an additional config init option for datasource IDs. Included in Core with Swift 1.8.0+.</td>
-<td>iOS, macOS, tvOS, watchOS</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/module-list/defaults-storage/">DefaultStorage</a></td>
-<td><code>defaultstorage</code></td>
-<td>Adds general persistence capability for any module (backed by UserDefaults). Included in Core with Swift 1.8.0+.</td>
-<td>iOS, tvOS, watchOS, macOS</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/module-list/delegate/">Delegate</a></td>
-<td><code>delegate</code></td>
-<td>Adds multicast delegates to monitor or suppress track dispatches</td>
-<td>iOS, macOS, tvOS, watchOS</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/module-list/device-data/">DeviceData</a></td>
-<td><code>devicedata</code></td>
-<td>Add as additional device info to all track data</td>
-<td>iOS, macOS, tvOS, watchOS</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/module-list/dispatch-queue/">DispatchQueue</a></td>
-<td><code>dispatchqueue</code></td>
-<td>Adds persistent storage for queued dispatches and manages Event Batching, if enabled</td>
-<td>iOS, macOS, tvOS, watchOS</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/module-list/file-storage/">FileStorage</a></td>
-<td><code>filestorage</code></td>
-<td>Adds general persistence capability for any module - replaces the Defaults Storage module (backed by <code>NSKeyedArchiver</code>). Included in Core with Swift 1.8.0+.</td>
-<td>iOS, macOS, watchOS, tvOS</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/module-list/lifecycle/">Lifecycle</a></td>
-<td><code>lifecycle</code></td>
-<td>Tracks launches, wakes, sleeps, and crash instances (Auto or manually)</td>
-<td>iOS, tvOS, watchOS</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/module-list/location/">Location</a></td>
-<td><code>location</code></td>
-<td>Provides device location data for your events, and the ability to add geofences around points of interest</td>
-<td>iOS, Mac Catalyst, macOS, tvOS, watchOS</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/module-list/logger/">Logger</a></td>
-<td><code>logger</code></td>
-<td>Debug logging</td>
-<td>iOS, macOS, tvOS, watchOs</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/module-list/persistent-data/">PersistentData</a></td>
-<td><code>persistentdata</code></td>
-<td>Adds ability to add persistent data to all track data</td>
-<td>iOS, macOS, tvOS, watchOS</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/module-list/remote-commands/">RemoteCommands</a></td>
-<td><code>remotecommands</code></td>
-<td>Permits configurable remote code block execution via <code>URLScheme</code>, <code>UIWebView</code>, or <code>TagManagement</code></td>
-<td>iOS</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/module-list/tag-management/">TagManagement</a></td>
-<td><code>tagmanagement</code></td>
-<td><code>UIWebview</code> based dispatch service that permits library to run TIQ/<code>utag.js</code></td>
-<td>iOS</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/module-list/visitor-service/">Visitor Service</a></td>
-<td><code>visitorservice</code></td>
-<td>Retrieves the updated visitor profile from the visitor service</td>
-<td>iOS, macOS, tvOS, watchOS</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/module-list/volatile-data/">Volatile Data</a></td>
-<td><code>volatiledata</code></td>
-<td>Adds ability to add session persistent data to all track data (clears upon app termination/close)</td>
-<td>iOS, macOS, tvOS, watchOS</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="recommended-modules">Recommended Modules</h2>
-
-<p>The following sections lists the recommended modules.</p>
-
-<h3 id="base-implementation">Base Implementation</h3>
-
-<p>This is the recommended list of modules for a base implementation.</p>
-
-<ul>
-<li>Core<br /></li>
-<li>Attribution<br /></li>
-<li>AppData<br /></li>
-<li>Connectivity<br /></li>
-<li>Delegate<br /></li>
-<li>DeviceData<br /></li>
-<li>DispatchQueue<br /></li>
-<li>Lifecycle<br /></li>
-<li>Logger<br /></li>
-<li>PersistentData<br /></li>
-<li>VolatileData</li>
-</ul>
-
-<h3 id="tag-management">Tag Management</h3>
-
-<p>In addition to the base modules, these modules are needed for a tag management installation.</p>
-
-<ul>
-<li>Consent Manager</li>
-<li>RemoteCommands</li>
-<li>TagManagement</li>
-</ul>
-
-<h3 id="tealium-eventstream-audiencestream">Tealium EventStream/AudienceStream</h3>
-
-<p>In addition to the base modules, these modules are needed for an EventStream/ AudienceStream installation.</p>
-
-<ul>
-<li>Collect</li>
-<li>Consent Manager</li>
-</ul>
-
-<h2 id="install-modules">Install Modules</h2>
-
-<p>Install the modules with CocoaPods or Carthage.</p>
-
-<h3 id="cocoapods">CocoaPods</h3>
-
-<p>See <a href="/platforms/ios-swift/install/#cocoapods">Install with CocoaPods</a> for instructions on including/excluding specific modules.</p>
-
-<h3 id="carthage">Carthage</h3>
-
-<p>When you install with Carthage, you must explicitly import the modules you require. You may import all modules if you prefer, and use the module list, as described earlier, but your app is lighter if you only import the modules you need. See <a href="/platforms/ios-swift/install/#carthage">Install with Carthage</a> for instructions on including/excluding specific modules.</p>
-
-<h2 id="disable-modules">Disable Modules</h2>
-
-<p>Prior to version 1.6.5 of the Tealium Swift SDK, the only way to disable unneeded modules if you were using CocoaPods or Carthage was via the <a href="/platforms/ios-swift/api/tealium-config/">TealiumConfig</a> object, by setting an array of enabled/disabled modules (whitelist/blacklist). In this scenario, all the code was still compiled into your final app bundle, but any disabled modules were deactivated.</p>
-
-<p>This method is still supported, but we recommend migrating to one of the other methods below to take advantage of the performance gains associated with compiling less code into your app bundle. Safely leave the module list enabled on the <code>TealiumConfig</code> object, and simultaneously remove unneeded modules. In the case where you attempt to enable a module, but the code is not present in your app bundle, it does not cause any undesired consequences, and simply has no effect.</p>
-
-<p>The following example blacklists the auto-tracking module:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> modulesList = TealiumModulesList(isWhitelist: <span style="color:#00f">false</span>, moduleNames: [<span style="color:#a31515">&#34;autotracking&#34;</span>])
-config.setModulesList(modulesList)</code></pre></div>
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/ios-swift-v1/consent-management/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Consent Management "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Consent Management</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/ios-swift-v1/feature-comparison/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Feature Comparison</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Feature Comparison"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7802,33 +7472,371 @@ config.setModulesList(modulesList)</code></pre></div>
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/ios-swift-v1/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        IOS SWIFT V1
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Modules</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      A list of the available modules.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<p>The Tealium Swift library is designed around a modular architecture. Modules are automatically instantiated if they are present, and retrieve their configuration from the <code>TealiumConfig</code> instance.</p>
+
+<p>All modules have a dependency on <code>TealiumCore</code>. This means installing any of the optional modules installs <code>TealiumCore</code>.</p>
+
+<h2 id="module-list">Module List</h2>
+
+<p>The modules are listed below in priority order (the internal order in which auto-instantiation takes place).</p>
+
+<table>
+<thead>
+<tr>
+<th>Module Name</th>
+<th>Module ID</th>
+<th>Description</th>
+<th>Supported Platforms</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="/platforms/ios-swift/module-list/appdata/">AppData</a></td>
+<td><code>appdata</code></td>
+<td>Adds <code>app_uuid</code> to track data</td>
+<td>iOS, macOS, tvOS, watchOS</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/module-list/attribution/">Attribution</a></td>
+<td><code>attribution</code></td>
+<td>Adds IDFA to track data</td>
+<td>iOS</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/module-list/autotracking/">AutoTracking</a></td>
+<td><code>autotracking</code></td>
+<td>Prepares &amp; sends dispatches for most UI, including <code>viewDidAppear</code> events</td>
+<td>iOS, tvOS</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/module-list/collect/">Collect</a></td>
+<td><code>collect</code></td>
+<td>Packages and delivers track call to Tealium Collect or other custom URL endpoint</td>
+<td>iOS, macOS, tvOS, watchOS</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/consent-management">ConsentManager</a></td>
+<td><code>consentmanager</code></td>
+<td>Aids GDPR/privacy compliance</td>
+<td>iOS, macOS, tvOS, watchOS</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/module-list/connectivity/">Connectivity</a></td>
+<td>connectivity</td>
+<td>Adds ability to flag track messages for delayed delivery due to connectivity loss</td>
+<td>iOS, macOS, tvOS, watchOS</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/module-list/crash-reporter/">CrashReporter</a></td>
+<td><code>crashreporter</code></td>
+<td>Automatically tracks crashes in your app. Once the module is enabled and the accompanying frameworks are installed, a crash event is triggered if a crash occurs in your app.</td>
+<td>iOS</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/module-list/datasource/">DataSource</a></td>
+<td><code>datasource</code></td>
+<td>Adds an additional config init option for datasource IDs. Included in Core with Swift 1.8.0+.</td>
+<td>iOS, macOS, tvOS, watchOS</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/module-list/defaults-storage/">DefaultStorage</a></td>
+<td><code>defaultstorage</code></td>
+<td>Adds general persistence capability for any module (backed by UserDefaults). Included in Core with Swift 1.8.0+.</td>
+<td>iOS, tvOS, watchOS, macOS</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/module-list/delegate/">Delegate</a></td>
+<td><code>delegate</code></td>
+<td>Adds multicast delegates to monitor or suppress track dispatches</td>
+<td>iOS, macOS, tvOS, watchOS</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/module-list/device-data/">DeviceData</a></td>
+<td><code>devicedata</code></td>
+<td>Add as additional device info to all track data</td>
+<td>iOS, macOS, tvOS, watchOS</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/module-list/dispatch-queue/">DispatchQueue</a></td>
+<td><code>dispatchqueue</code></td>
+<td>Adds persistent storage for queued dispatches and manages Event Batching, if enabled</td>
+<td>iOS, macOS, tvOS, watchOS</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/module-list/file-storage/">FileStorage</a></td>
+<td><code>filestorage</code></td>
+<td>Adds general persistence capability for any module - replaces the Defaults Storage module (backed by <code>NSKeyedArchiver</code>). Included in Core with Swift 1.8.0+.</td>
+<td>iOS, macOS, watchOS, tvOS</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/module-list/lifecycle/">Lifecycle</a></td>
+<td><code>lifecycle</code></td>
+<td>Tracks launches, wakes, sleeps, and crash instances (Auto or manually)</td>
+<td>iOS, tvOS, watchOS</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/module-list/location/">Location</a></td>
+<td><code>location</code></td>
+<td>Provides device location data for your events, and the ability to add geofences around points of interest</td>
+<td>iOS, Mac Catalyst, macOS, tvOS, watchOS</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/module-list/logger/">Logger</a></td>
+<td><code>logger</code></td>
+<td>Debug logging</td>
+<td>iOS, macOS, tvOS, watchOs</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/module-list/persistent-data/">PersistentData</a></td>
+<td><code>persistentdata</code></td>
+<td>Adds ability to add persistent data to all track data</td>
+<td>iOS, macOS, tvOS, watchOS</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/module-list/remote-commands/">RemoteCommands</a></td>
+<td><code>remotecommands</code></td>
+<td>Permits configurable remote code block execution via <code>URLScheme</code>, <code>UIWebView</code>, or <code>TagManagement</code></td>
+<td>iOS</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/module-list/tag-management/">TagManagement</a></td>
+<td><code>tagmanagement</code></td>
+<td><code>UIWebview</code> based dispatch service that permits library to run TIQ/<code>utag.js</code></td>
+<td>iOS</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/module-list/visitor-service/">Visitor Service</a></td>
+<td><code>visitorservice</code></td>
+<td>Retrieves the updated visitor profile from the visitor service</td>
+<td>iOS, macOS, tvOS, watchOS</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/module-list/volatile-data/">Volatile Data</a></td>
+<td><code>volatiledata</code></td>
+<td>Adds ability to add session persistent data to all track data (clears upon app termination/close)</td>
+<td>iOS, macOS, tvOS, watchOS</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="recommended-modules">Recommended Modules</h2>
+
+<p>The following sections lists the recommended modules.</p>
+
+<h3 id="base-implementation">Base Implementation</h3>
+
+<p>This is the recommended list of modules for a base implementation.</p>
+
+<ul>
+<li>Core<br /></li>
+<li>Attribution<br /></li>
+<li>AppData<br /></li>
+<li>Connectivity<br /></li>
+<li>Delegate<br /></li>
+<li>DeviceData<br /></li>
+<li>DispatchQueue<br /></li>
+<li>Lifecycle<br /></li>
+<li>Logger<br /></li>
+<li>PersistentData<br /></li>
+<li>VolatileData</li>
+</ul>
+
+<h3 id="tag-management">Tag Management</h3>
+
+<p>In addition to the base modules, these modules are needed for a tag management installation.</p>
+
+<ul>
+<li>Consent Manager</li>
+<li>RemoteCommands</li>
+<li>TagManagement</li>
+</ul>
+
+<h3 id="tealium-eventstream-audiencestream">Tealium EventStream/AudienceStream</h3>
+
+<p>In addition to the base modules, these modules are needed for an EventStream/ AudienceStream installation.</p>
+
+<ul>
+<li>Collect</li>
+<li>Consent Manager</li>
+</ul>
+
+<h2 id="install-modules">Install Modules</h2>
+
+<p>Install the modules with CocoaPods or Carthage.</p>
+
+<h3 id="cocoapods">CocoaPods</h3>
+
+<p>See <a href="/platforms/ios-swift/install/#cocoapods">Install with CocoaPods</a> for instructions on including/excluding specific modules.</p>
+
+<h3 id="carthage">Carthage</h3>
+
+<p>When you install with Carthage, you must explicitly import the modules you require. You may import all modules if you prefer, and use the module list, as described earlier, but your app is lighter if you only import the modules you need. See <a href="/platforms/ios-swift/install/#carthage">Install with Carthage</a> for instructions on including/excluding specific modules.</p>
+
+<h2 id="disable-modules">Disable Modules</h2>
+
+<p>Prior to version 1.6.5 of the Tealium Swift SDK, the only way to disable unneeded modules if you were using CocoaPods or Carthage was via the <a href="/platforms/ios-swift/api/tealium-config/">TealiumConfig</a> object, by setting an array of enabled/disabled modules (whitelist/blacklist). In this scenario, all the code was still compiled into your final app bundle, but any disabled modules were deactivated.</p>
+
+<p>This method is still supported, but we recommend migrating to one of the other methods below to take advantage of the performance gains associated with compiling less code into your app bundle. Safely leave the module list enabled on the <code>TealiumConfig</code> object, and simultaneously remove unneeded modules. In the case where you attempt to enable a module, but the code is not present in your app bundle, it does not cause any undesired consequences, and simply has no effect.</p>
+
+<p>The following example blacklists the auto-tracking module:</p>
+
+<pre><code class="language-swift">let modulesList = TealiumModulesList(isWhitelist: false, moduleNames: [&quot;autotracking&quot;])
+config.setModulesList(modulesList)
+</code></pre>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/ios-swift-v1/consent-management/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Consent Management "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Consent Management</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/ios-swift-v1/feature-comparison/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Feature Comparison</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Feature Comparison"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  July 23, 2020 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  July 23, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#module-list">Module List</a></li>
+              <li><a href="#recommended-modules">Recommended Modules</a></li>
+              <ul class="toc-h3"><li><a href="#base-implementation">Base Implementation</a></li>
+              <li><a href="#tag-management">Tag Management</a></li>
+              <li><a href="#tealium-eventstream-audiencestream">Tealium EventStream/AudienceStream</a></li>
+              </ul><li><a href="#install-modules">Install Modules</a></li>
+              <ul class="toc-h3"><li><a href="#cocoapods">CocoaPods</a></li>
+              <li><a href="#carthage">Carthage</a></li>
+              </ul><li><a href="#disable-modules">Disable Modules</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,163 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#cdn-files">CDN Files</a></li>
-              <li><a href="#page-data">Page Data</a></li>
-              <li><a href="#load-rules">Load Rules</a></li>
-              <li><a href="#load-tags">Load Tags</a></li>
-              <li><a href="#run-tags">Run Tags</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/javascript/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        JAVASCRIPT
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Universal Tag (utag.js)</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Learn about how the Tealium Universal tag (<code>utag.js</code>) works and how vendor library files are loaded in the page.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<p class="note"><i class="fas fa-info-circle"></i>If you&rsquo;re a partner looking to integrate with Tealium, visit <a href="/partners/cms-plugins/">Partner Integrations</a>.</p>
-
-<h2 id="cdn-files">CDN Files</h2>
-
-<p>All tag configuration and business logic saved in your iQ account/profile is converted to JavaScript code and published to a <code>utag.js</code> JavaScript library specific to your account/profile and hosted on our <a href="https://community.tealiumiq.com/t5/Getting-Started/The-New-Multi-CDN/ta-p/13701">multi-CDN infrastructure</a>.</p>
-
-<p>The CDN is designed to deliver these files to your website as quickly as possible. When the Universal Tag code snippet is executed by your webpage a request is made to the CDN, the file is downloaded into the page and the code is run. As soon as <code>utag.js</code> is loaded on your page it begins executing code to prepare to fire your tags.</p>
-
-<p><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Understanding-Order-of-Operations-utag-js/ta-p/326">Learn more</a> about the order of operations to understand how the Universal Tag <code>utag.js</code> loads.</p>
-
-<h2 id="page-data">Page Data</h2>
-
-<p>In addition to the dynamic data that your site populates into <code>utag_data</code>, the <code>utag.js</code> library automatically gathers other various data values from the page and combine them into one central data object to be made available to your tags and load rules. The following page elements are captured:</p>
-
-<ul>
-<li>Query String Parameters</li>
-<li>First-Party Cookies</li>
-<li>JavaScript Variables</li>
-<li>Meta Data Elements</li>
-</ul>
-
-<p>The final data object are used to power your load rules and tags.</p>
-
-<h2 id="load-rules">Load Rules</h2>
-
-<p><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Load-Rules/ta-p/5098">Load Rules</a> are precise conditions that determine when to load a tag. Generally made up of one or more conditions, a load rule has to be satisfied in order to load the tag to which it is applied. The full list of variables from the data object are used to evaluate the load rules and determine which tags load on the page. Load Rules are JavaScript code evaluated client-side, in the browser.</p>
-
-<h2 id="load-tags">Load Tags</h2>
-
-<p>The code needed to load and run a vendor tag is also published to the CDN and stored in a tag configuration file numbered according to the UID of the tag, such as <code>utag.1.js</code>. An HTTP request is made to the CDN from your webpage to retrieve each tag configuration file.</p>
-
-<p>While this file contains the settings and configuration for the vendor, it might not contain the vendor&rsquo;s JavaScript file. If so, an additional HTTP request is made to fetch the vendor&rsquo;s code. These requests are made asynchronously to minimize the impact on the time to render the page.</p>
-
-<p>Here is a simple example showing how one tag, Google Analytics, is loaded into the page:</p>
-
-<p><img src="/images/platforms/javascript/utag-network-files.png" alt="utag-network-files.png" title="utag-network-files.png" /></p>
-
-<ul>
-<li><strong><code>utag.js</code></strong> (tags.tiqcdn.com) - the Tealium iQ Tag Management JavaScript library</li>
-<li><strong><code>utag.1.js</code></strong> (tags.tiqcdn.com) - the Tealium tag configuration file for Google Analytics</li>
-<li><strong><code>analytics.js</code></strong> (<a href="http://www.google-analytics.com">www.google-analytics.com</a>) - the Google Analytics JavaScript library</li>
-</ul>
-
-<p class="tip"><i class="fas fa-star"></i>Improve page performance by <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Tags/ta-p/5016#advanced_settings">bundling tags</a> into <code>utag.js</code> to reduce the number of HTTP requests coming from your page.</p>
-
-<h2 id="run-tags">Run Tags</h2>
-
-<p>Once all tag files are loaded and the DOM Ready event is reached, the tracking beacons are triggered. The vendor code runs the same as if it was outside of Tealium, so the resulting HTTP requests is easy to identify.</p>
-
-<p>For example, Google Analytics is identified in the network request by the following two items: the <code>analytics.js</code> script and the collect image pixel. These same network requests occur even when Google Analytics is loaded via iQ Tag Management, as seen here:</p>
-
-<p><img src="/images/platforms/javascript/utag-vendor-pixel.png" alt="utag-vendor-pixel.png" title="utag-vendor-pixel.png" /></p>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/javascript/universal-data-object/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Universal Data Object (utag_data) "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Universal Data Object (utag_data)</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/javascript/data-layer-object/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Data Layer Object (b)</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Data Layer Object (b)"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7621,33 +7472,187 @@ var utag_data = {
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/javascript/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        JAVASCRIPT
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Universal Tag (utag.js)</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Learn about how the Tealium Universal tag (<code>utag.js</code>) works and how vendor library files are loaded in the page.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<p class="note"><i class="fas fa-info-circle"></i>If you&rsquo;re a partner looking to integrate with Tealium, visit <a href="/partners/cms-plugins/">Partner Integrations</a>.</p>
+
+<h2 id="cdn-files">CDN Files</h2>
+
+<p>All tag configuration and business logic saved in your iQ account/profile is converted to JavaScript code and published to a <code>utag.js</code> JavaScript library specific to your account/profile and hosted on our <a href="https://community.tealiumiq.com/t5/Getting-Started/The-New-Multi-CDN/ta-p/13701">multi-CDN infrastructure</a>.</p>
+
+<p>The CDN is designed to deliver these files to your website as quickly as possible. When the Universal Tag code snippet is executed by your webpage a request is made to the CDN, the file is downloaded into the page and the code is run. As soon as <code>utag.js</code> is loaded on your page it begins executing code to prepare to fire your tags.</p>
+
+<p><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Understanding-Order-of-Operations-utag-js/ta-p/326">Learn more</a> about the order of operations to understand how the Universal Tag <code>utag.js</code> loads.</p>
+
+<h2 id="page-data">Page Data</h2>
+
+<p>In addition to the dynamic data that your site populates into <code>utag_data</code>, the <code>utag.js</code> library automatically gathers other various data values from the page and combine them into one central data object to be made available to your tags and load rules. The following page elements are captured:</p>
+
+<ul>
+<li>Query String Parameters</li>
+<li>First-Party Cookies</li>
+<li>JavaScript Variables</li>
+<li>Meta Data Elements</li>
+</ul>
+
+<p>The final data object are used to power your load rules and tags.</p>
+
+<h2 id="load-rules">Load Rules</h2>
+
+<p><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Load-Rules/ta-p/5098">Load Rules</a> are precise conditions that determine when to load a tag. Generally made up of one or more conditions, a load rule has to be satisfied in order to load the tag to which it is applied. The full list of variables from the data object are used to evaluate the load rules and determine which tags load on the page. Load Rules are JavaScript code evaluated client-side, in the browser.</p>
+
+<h2 id="load-tags">Load Tags</h2>
+
+<p>The code needed to load and run a vendor tag is also published to the CDN and stored in a tag configuration file numbered according to the UID of the tag, such as <code>utag.1.js</code>. An HTTP request is made to the CDN from your webpage to retrieve each tag configuration file.</p>
+
+<p>While this file contains the settings and configuration for the vendor, it might not contain the vendor&rsquo;s JavaScript file. If so, an additional HTTP request is made to fetch the vendor&rsquo;s code. These requests are made asynchronously to minimize the impact on the time to render the page.</p>
+
+<p>Here is a simple example showing how one tag, Google Analytics, is loaded into the page:</p>
+
+<p><img src="/images/platforms/javascript/utag-network-files.png" alt="utag-network-files.png" title="utag-network-files.png" /></p>
+
+<ul>
+<li><strong><code>utag.js</code></strong> (tags.tiqcdn.com) - the Tealium iQ Tag Management JavaScript library</li>
+<li><strong><code>utag.1.js</code></strong> (tags.tiqcdn.com) - the Tealium tag configuration file for Google Analytics</li>
+<li><strong><code>analytics.js</code></strong> (<a href="http://www.google-analytics.com">www.google-analytics.com</a>) - the Google Analytics JavaScript library</li>
+</ul>
+
+<p class="tip"><i class="fas fa-star"></i>Improve page performance by <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Tags/ta-p/5016#advanced_settings">bundling tags</a> into <code>utag.js</code> to reduce the number of HTTP requests coming from your page.</p>
+
+<h2 id="run-tags">Run Tags</h2>
+
+<p>Once all tag files are loaded and the DOM Ready event is reached, the tracking beacons are triggered. The vendor code runs the same as if it was outside of Tealium, so the resulting HTTP requests is easy to identify.</p>
+
+<p>For example, Google Analytics is identified in the network request by the following two items: the <code>analytics.js</code> script and the collect image pixel. These same network requests occur even when Google Analytics is loaded via iQ Tag Management, as seen here:</p>
+
+<p><img src="/images/platforms/javascript/utag-vendor-pixel.png" alt="utag-vendor-pixel.png" title="utag-vendor-pixel.png" /></p>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/javascript/universal-data-object/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Universal Data Object (utag_data) "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Universal Data Object (utag_data)</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/javascript/data-layer-object/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Data Layer Object (b)</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Data Layer Object (b)"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  March 11, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  March 11, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#cdn-files">CDN Files</a></li>
+              <li><a href="#page-data">Page Data</a></li>
+              <li><a href="#load-rules">Load Rules</a></li>
+              <li><a href="#load-tags">Load Tags</a></li>
+              <li><a href="#run-tags">Run Tags</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

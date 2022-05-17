@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,219 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#web">Web</a></li>
-              <li><a href="#mobile">Mobile</a></li>
-              <ul class="toc-h3"><li><a href="#benefits">Benefits</a></li>
-              <li><a href="#considerations">Considerations</a></li>
-              </ul><li><a href="#use-cases">Use Cases</a></li>
-              <ul class="toc-h3"><li><a href="#iq-tag-management-only">iQ Tag Management Only</a></li>
-              <li><a href="#complex-analytics">Complex Analytics</a></li>
-              <li><a href="#required-vendor-sdk">Required Vendor SDK</a></li>
-              </ul><li><a href="#supported-libraries">Supported Libraries</a></li>
-              <li><a href="#tealium-collect-tag">Tealium Collect Tag</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/getting-started/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        GETTING STARTED
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Client-Side</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Learn about the capabilities of the client-side solution.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="web">Web</h2>
-
-<p>iQ Tag Management is a client-side solution that, without an application server, provides all the tag configuration logic from a static JavaScript file is processed solely by the browser.</p>
-
-<p>In iQ Tag Management, your vendor tag configuration and business logic is represented in JavaScript code that resides inside the main client-side library called Universal Tag (<code>utag.js</code>). As visitors browse your site, this file is loaded and, within the browser itself, determines which additional vendor tags to load and how to send their data. Once these files have been retrieved by the browser they are cached for subsequent page views to optimize network traffic and page performance.</p>
-
-<p><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/How-does-iQ-Tag-Management-work/ta-p/15893">Learn more</a> about how iQ Tag Management works.</p>
-
-<h2 id="mobile">Mobile</h2>
-
-<p>The client-side solution uses a hidden webview to load a special HTML file for mobile devices. This HTML file contains settings to control SDK behavior and it loads the Universal Tag (<code>utag.js</code>) to execute the configuration of the corresponding mobile iQ profile.</p>
-
-<p>When you <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328#publish_settings">activate a mobile profile</a> in iQ, a file named <code>mobile.html</code> is published to the following path on the CDN:</p>
-
-<p><code>http://tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/mobile.html</code></p>
-
-<p>Sample contents:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#00f">&lt;!DOCTYPE html&gt;</span>
-<span style="color:#008000">&lt;!--tealium tag management - mobile.webview ut4.0.201905291649, Copyright 2019 Tealium.com Inc. All Rights Reserved.--&gt;</span>
-&lt;html&gt;
-&lt;head&gt;&lt;title&gt;Tealium Mobile Webview&lt;/title&gt;&lt;/head&gt;
-&lt;body&gt;
-&lt;script type=<span style="color:#a31515">&#34;text/javascript&#34;</span>&gt;
-<span style="color:#00f">var</span> utag_cfg_ovrd={noview:<span style="color:#00f">true</span>};
-<span style="color:#00f">var</span> mps = {
-    <span style="color:#a31515">&#34;5&#34;</span>: {
-        <span style="color:#a31515">&#34;_is_enabled&#34;</span>:<span style="color:#a31515">&#34;true&#34;</span>,
-        <span style="color:#a31515">&#34;battery_saver&#34;</span>:<span style="color:#a31515">&#34;true&#34;</span>,
-        <span style="color:#a31515">&#34;dispatch_expiration&#34;</span>:<span style="color:#a31515">&#34;-1&#34;</span>,
-        <span style="color:#a31515">&#34;enable_collect&#34;</span>:<span style="color:#a31515">&#34;false&#34;</span>,
-        <span style="color:#a31515">&#34;enable_s2s_legacy&#34;</span>:<span style="color:#a31515">&#34;false&#34;</span>,
-        <span style="color:#a31515">&#34;enable_tag_management&#34;</span>:<span style="color:#a31515">&#34;true&#34;</span>,
-        <span style="color:#a31515">&#34;event_batch_size&#34;</span>:<span style="color:#a31515">&#34;1&#34;</span>,
-        <span style="color:#a31515">&#34;minutes_between_refresh&#34;</span>:<span style="color:#a31515">&#34;15.0&#34;</span>,
-        <span style="color:#a31515">&#34;offline_dispatch_limit&#34;</span>:<span style="color:#a31515">&#34;100&#34;</span>,
-        <span style="color:#a31515">&#34;override_log&#34;</span>:<span style="color:#a31515">&#34;&#34;</span>,
-        <span style="color:#a31515">&#34;wifi_only_sending&#34;</span>:<span style="color:#a31515">&#34;false&#34;</span>
-    },
-    <span style="color:#a31515">&#34;_firstpublish&#34;</span>:<span style="color:#a31515">&#34;true&#34;</span>
-}
-&lt;/script&gt;
-&lt;script type=<span style="color:#a31515">&#34;text/javascript&#34;</span> src=<span style="color:#a31515">&#34;//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/utag.js&#34;</span>&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre></div>
-<p>This file is used by the native mobile library to receive mobile settings and to load the Universal Tag (utag.js). This allows you to follow the traditional tag management workflow to deploy tags to your app and to adjust mobile settings related to tracking behavior.</p>
-
-<h3 id="benefits">Benefits</h3>
-
-<p>The client-side approach has the following benefits:</p>
-
-<ul>
-<li><strong>Tag Vendor Support</strong>
-Since the client-side solution is deployed using iQ Tag Management, you have access to the existing <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Tag-Marketplace/ta-p/12193">Tag Marketplace</a> integrations.</li>
-<li><strong>Data Layer Customization</strong>
-More options for data layer customization using <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Master-List-of-Extensions/ta-p/5035">extensions</a>.</li>
-</ul>
-
-<h3 id="considerations">Considerations</h3>
-
-<p>Keep in mind the following considerations:</p>
-
-<ul>
-<li><strong>WebView Behavior</strong>
-The native webviews are provided by the iOS/Android APIs and may exhibit behavior beyond the control of Tealium.</li>
-<li><strong>Memory Usage</strong>
-The native webview results in slightly more memory usage in the app.</li>
-<li><strong>Network Traffic</strong>
-The more tags you deploy to your app, the more network traffic is generated due to the loading of vendor JavaScript tags and their resulting tracking pixels.</li>
-</ul>
-
-<h2 id="use-cases">Use Cases</h2>
-
-<p>The client-side solution is best for the following scenarios.</p>
-
-<h3 id="iq-tag-management-only">iQ Tag Management Only</h3>
-
-<p>You are only subscribed to iQ Tag Management and do not have access to Tealium EventStream.</p>
-
-<h3 id="complex-analytics">Complex Analytics</h3>
-
-<p>You have a complex analytics implementation and either do not have the resources to add the required data layer or have a short timeline to deploy. The ability to run extension using the client-side Tag Management solution allows you to manipulate the built-in data layer for your analytics needs and offload costly development time on your native app to the rapid configuration effort in iQ Tag Management.</p>
-
-<h3 id="required-vendor-sdk">Required Vendor SDK</h3>
-
-<p>You require mobile-specific features from a third-party vendor SDK, such as Firebase, push notifications, content modification, or attribution fingerprinting. The client-side solution offers <a href="/platforms/remote-commands/">remote commands</a>, a way to trigger native code blocks from within the hidden webview and configured within iQ Tag Management.</p>
-
-<h2 id="supported-libraries">Supported Libraries</h2>
-
-<p>The following platforms support the Tag Management client-side solution:</p>
-
-<ul>
-<li><a href="/platforms/android-java/">Tealium for Android</a></li>
-<li><a href="/platforms/cordova/">Tealium for Cordova</a></li>
-<li><a href="/platforms/ios-swift/">Tealium for iOS</a></li>
-<li><a href="/platforms/react-native/">Tealium for React Native</a></li>
-<li><a href="/platforms/xamarin/">Tealium for Xamarin</a></li>
-</ul>
-
-<h2 id="tealium-collect-tag">Tealium Collect Tag</h2>
-
-<p>The <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Tealium-Collect-Tag/ta-p/11923">Tealium Collect Tag</a> sends data to the Tealium Customer Data Hub server-side product EventStream. This tag is the client-side solution for the <a href="/platforms/getting-started/server-side/#tealium-collect-module">native Collect Module</a>. Using both in your app doubles your usage volume and result in additional charges on your account.</p>
-
-<p>The primary benefit of the client-side Tealium Collect tag is the ability to use extensions to customize the data layer prior to collection.</p>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/getting-started/mobile-concepts/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Mobile Concepts "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Mobile Concepts</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/getting-started/server-side/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Server-Side</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Server-Side"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7677,33 +7472,248 @@ The more tags you deploy to your app, the more network traffic is generated due 
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/getting-started/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        GETTING STARTED
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Client-Side</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Learn about the capabilities of the client-side solution.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="web">Web</h2>
+
+<p>Tealium iQ Tag Management is a client-side solution that saves your vendor tag configuration and business logic to a static JavaScript named <code>utag.js</code>. As visitors browse your site this file is loaded and run in the browser (client-side) to determine which vendor tags to load and how to send their data. After these files are retrieved by the browser they are cached for subsequent page views to optimize network traffic and page performance.</p>
+
+<p>Learn more about <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/How-does-iQ-Tag-Management-work/ta-p/15893">how iQ Tag Management works</a>.</p>
+
+<h2 id="mobile">Mobile</h2>
+
+<p>In iQ Tag Management you use a separate <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328#publish_settings">mobile profile</a>, one for iOS and one for Android, to manage the tags and configuration for your mobile app. A mobile profile generates a file named <code>mobile.html</code> that is published to the following path on the CDN:</p>
+
+<p><code>http://tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/mobile.html</code></p>
+
+<p>When you add Tealium to your mobile app, the client-side solution uses a hidden webview to load <code>mobile.html</code>, which is optimized for mobile devices. This page contains settings that control the behavior of the Tealium SDK and it loads <code>utag.js</code> to run your tag configuration.</p>
+
+<p>Sample contents of <code>mobile.html</code>:</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;!--tealium tag management - mobile.webview ut4.0.201905291649, Copyright 2019 Tealium.com Inc. All Rights Reserved.--&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Tealium Mobile Webview&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var utag_cfg_ovrd={noview:true};
+var mps = {
+    &quot;5&quot;: {
+        &quot;_is_enabled&quot;:&quot;true&quot;,
+        &quot;battery_saver&quot;:&quot;true&quot;,
+        &quot;dispatch_expiration&quot;:&quot;-1&quot;,
+        &quot;enable_collect&quot;:&quot;false&quot;,
+        &quot;enable_s2s_legacy&quot;:&quot;false&quot;,
+        &quot;enable_tag_management&quot;:&quot;true&quot;,
+        &quot;event_batch_size&quot;:&quot;1&quot;,
+        &quot;minutes_between_refresh&quot;:&quot;15.0&quot;,
+        &quot;offline_dispatch_limit&quot;:&quot;100&quot;,
+        &quot;override_log&quot;:&quot;&quot;,
+        &quot;wifi_only_sending&quot;:&quot;false&quot;
+    },
+    &quot;_firstpublish&quot;:&quot;true&quot;
+}
+&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/utag.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>This client-side solution allows you to follow the traditional tag management workflow to deploy tags to your app and to adjust mobile settings related to tracking behavior.</p>
+
+<p>The following diagram illustrates how iQ Tag Management loads your vendor tag configuration as visitors use your mobile app. This example shows how the Tealium SDK converts a tracked purchase event to a JavaScript tracking call in the hidden webview. Your vendor tags run in the hidden webview, just as they would on a mobile web page, and tracking data is transmitted directly from the app (client-side) to the vendor.</p>
+
+<p><img src="/images/platforms/getting-started/tag_management_data_flow_diagram.png" alt="tag_management_data_flow_diagram.png" title="tag_management_data_flow_diagram.png" /></p>
+
+<h3 id="benefits">Benefits</h3>
+
+<p>The client-side approach has the following benefits:</p>
+
+<ul>
+<li><strong>Tag Vendor Support</strong>
+Since the client-side solution is deployed using iQ Tag Management, you have access to the existing <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Tag-Marketplace/ta-p/12193">Tag Marketplace</a> integrations.</li>
+<li><strong>Data Layer Customization</strong>
+More options for data layer customization using <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Master-List-of-Extensions/ta-p/5035">extensions</a>.</li>
+</ul>
+
+<h3 id="considerations">Considerations</h3>
+
+<p>Keep in mind the following considerations:</p>
+
+<ul>
+<li><strong>WebView Behavior</strong>
+The native webviews are provided by the iOS/Android APIs and may exhibit behavior beyond the control of Tealium.</li>
+<li><strong>Memory Usage</strong>
+The native webview results in slightly more memory usage in the app.</li>
+<li><strong>Network Traffic</strong>
+The more tags you deploy to your app, the more network traffic is generated due to the loading of vendor JavaScript tags and their resulting tracking pixels.</li>
+</ul>
+
+<h2 id="use-cases">Use Cases</h2>
+
+<p>The client-side solution is best for the following scenarios.</p>
+
+<h3 id="iq-tag-management-only">iQ Tag Management Only</h3>
+
+<p>You are only subscribed to iQ Tag Management and do not have access to Tealium EventStream.</p>
+
+<h3 id="complex-analytics">Complex Analytics</h3>
+
+<p>You have a complex analytics implementation and either do not have the resources to add the required data layer or have a short timeline to deploy. The ability to run extension using the client-side Tag Management solution allows you to manipulate the built-in data layer for your analytics needs and offload costly development time on your native app to the rapid configuration effort in iQ Tag Management.</p>
+
+<h3 id="required-vendor-sdk">Required Vendor SDK</h3>
+
+<p>You require mobile-specific features from a third-party vendor SDK, such as Firebase, push notifications, content modification, or attribution fingerprinting. The client-side solution offers <a href="/platforms/remote-commands/">remote commands</a>, a way to trigger native code blocks from within the hidden webview and configured within iQ Tag Management.</p>
+
+<h2 id="supported-libraries">Supported Libraries</h2>
+
+<p>The following platforms support the Tag Management client-side solution:</p>
+
+<ul>
+<li><a href="/platforms/android-java/">Tealium for Android</a></li>
+<li><a href="/platforms/cordova/">Tealium for Cordova</a></li>
+<li><a href="/platforms/ios-swift/">Tealium for iOS</a></li>
+<li><a href="/platforms/react-native/">Tealium for React Native</a></li>
+<li><a href="/platforms/xamarin/">Tealium for Xamarin</a></li>
+</ul>
+
+<h2 id="tealium-collect-tag">Tealium Collect Tag</h2>
+
+<p>The <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Tealium-Collect-Tag/ta-p/11923">Tealium Collect Tag</a> sends data to the Tealium Customer Data Hub server-side product EventStream. This tag is the client-side solution for the <a href="/platforms/getting-started/server-side/#tealium-collect-module">native Collect Module</a>. Using both in your app doubles your usage volume and result in additional charges on your account.</p>
+
+<p>The primary benefit of the client-side Tealium Collect tag is the ability to use extensions to customize the data layer prior to collection.</p>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/getting-started/mobile-concepts/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Mobile Concepts "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Mobile Concepts</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/getting-started/server-side/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Server-Side</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Server-Side"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  January 6, 2022 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  April 18, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#web">Web</a></li>
+              <li><a href="#mobile">Mobile</a></li>
+              <ul class="toc-h3"><li><a href="#benefits">Benefits</a></li>
+              <li><a href="#considerations">Considerations</a></li>
+              </ul><li><a href="#use-cases">Use Cases</a></li>
+              <ul class="toc-h3"><li><a href="#iq-tag-management-only">iQ Tag Management Only</a></li>
+              <li><a href="#complex-analytics">Complex Analytics</a></li>
+              <li><a href="#required-vendor-sdk">Required Vendor SDK</a></li>
+              </ul><li><a href="#supported-libraries">Supported Libraries</a></li>
+              <li><a href="#tealium-collect-tag">Tealium Collect Tag</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

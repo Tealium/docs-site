@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,244 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#usage">Usage</a></li>
-              <li><a href="#supported-platforms">Supported Platforms</a></li>
-              <li><a href="#requirements">Requirements</a></li>
-              <li><a href="#install">Install</a></li>
-              <ul class="toc-h3"><li><a href="#swift-package-manager-recommended">Swift Package Manager (Recommended)</a></li>
-              <li><a href="#cocoapods">CocoaPods</a></li>
-              <li><a href="#carthage">Carthage</a></li>
-              </ul><li><a href="#initialize">Initialize</a></li>
-              <li><a href="#customizing-the-webview-settings">Customizing the WebView Settings</a></li>
-              <ul class="toc-h3"><li><a href="#app-bound-domains">App Bound Domains</a></li>
-              <li><a href="#process-pool">Process Pool</a></li>
-              </ul><li><a href="#data-layer">Data Layer</a></li>
-              <li><a href="#about-wkwebview">About WKWebView</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/ios-swift/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT/MODULE LIST
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">TagManagement Module</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      A client-side implementation of the Universal Tag (utag.js) which uses a non-rendered WKWebView instance to execute JavaScript.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="usage">Usage</h2>
-
-<p>The TagManagement module is a client-side implementation of the Universal Tag (<code>utag.js</code>) which uses a non-rendered <code>WKWebView</code> instance to execute JavaScript. This module is required in apps that make use of Tealium iQ Tag Management. It is automatically included in Carthage and CocoaPods framework builds.</p>
-
-<h2 id="supported-platforms">Supported Platforms</h2>
-
-<ul>
-<li>iOS</li>
-</ul>
-
-<h2 id="requirements">Requirements</h2>
-
-<ul>
-<li>WebKit (WKWebView)</li>
-</ul>
-
-<h2 id="install">Install</h2>
-
-<p>Install the TagManagement module with Swift Package Manager, CocoaPods or Carthage.</p>
-
-<h3 id="swift-package-manager-recommended">Swift Package Manager (Recommended)</h3>
-
-<p>Supported in version 1.9.0+, the Swift Package Manager is the recommended and simplest way to install the Tealium Swift library:</p>
-
-<ol>
-<li>In your Xcode project, select <strong>File &gt; Swift Packages &gt; Add Package Dependency</strong></li>
-<li>Enter the repository URL: <code>https://github.com/tealium/tealium-swift</code></li>
-<li>Configure the version rules. Typically, <code>&quot;Up to next major&quot;</code> is recommended. If the current Tealium Swift library version does not appears in the list, then reset your Swift package cache.</li>
-<li>Select the <code>TagManagement</code> module from the list of modules to install and add it each of your app targets in your Xcode project, under <strong>Frameworks &gt; Libraries &amp; Embedded Content</strong></li>
-</ol>
-
-<h3 id="cocoapods">CocoaPods</h3>
-
-<p>To install the TagManagement module with CocoaPods, add the following pod to your Podfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;tealium-swift/TagManagement&#39;</span></code></pre></div>
-<p>Learn more about the <a href="/platforms/ios-swift/install/#cocoapods">CocoaPods installation for iOS</a>.</p>
-
-<h3 id="carthage">Carthage</h3>
-
-<p>To install the TagManagement module with Carthage, following these steps:</p>
-
-<ol>
-<li><p>Go to the app target&rsquo;s General configuration page in Xcode.</p></li>
-
-<li><p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumTagManagement.framework</code></pre></div>
-<p>Learn more about the <a href="/platforms/ios-swift/install/#carthage">Carthage installation for iOS</a>.</p></li>
-</ol>
-
-<h2 id="initialize">Initialize</h2>
-
-<p>To initialize the module, verify that it&rsquo;s specified on the <code>TealiumConfig</code> <a href="/platforms/ios-swift/api/tealium-config/#collectors"><code>collectors</code></a> property</p>
-
-<p><code>config.dispatchers = [Dispatchers.TagManagement]</code></p>
-
-<h2 id="customizing-the-webview-settings">Customizing the WebView Settings</h2>
-
-<h3 id="app-bound-domains">App Bound Domains</h3>
-
-<p>If your app uses the <a href="https://webkit.org/blog/10882/app-bound-domains/">WKAppBoundDomains</a> feature to limit which domains webviews in your app can communicate with, you must pass a custom <code>WKWebViewConfiguration</code> and set its <code>limitsNavigationsToAppBoundDomains</code> property to <code>true</code>. Failing to do this will result in all tracking calls being dropped by the operating system. You must also include &ldquo;tags.tiqcdn.com&rdquo; in your <code>Info.plist</code>&rsquo;s <code>WKAppBoundDomains</code> list, as well as the domains for any tags you have set up in Tealium iQ (for example &ldquo;google-analytics.com&rdquo;). Be aware that a maximum of 10 domains can be configured for the entire app, so if you use multiple client-side tags, you may easily exceed this.</p>
-
-<pre><code> let config = TealiumConfig(account: &quot;ACCOUNT&quot;,
-                               profile: &quot;PROFILE&quot;,
-                               environment: &quot;ENVIRONMENT&quot;,
-                               datasource: &quot;DATASOURCE&quot;)
- config.dispatchers = [Dispatchers.TagManagement]
- let wkWebViewConfiguration = WKWebViewConfiguration()
- wkWebViewConfiguration.limitsNavigationsToAppBoundDomains = true
- config.webviewConfig = wkWebViewConfiguration
- tealium = Tealium(config: config)
-        
-</code></pre>
-
-<h3 id="process-pool">Process Pool</h3>
-
-<p>If your app uses its own <code>WKWebView</code>, to avoid cookie synchronization issues, pass a singleton <code>WKProcessPool</code> instance to be used by the Tealium webview, or a custom <code>WkWebViewConfiguration</code> that&rsquo;s shared with other webviews in your app.</p>
-
-<p>Learn about <a href="/platforms/ios-swift/api/tealium-config/#webviewprocesspool">webviewProcessPool</a> and <a href="/platforms/ios-swift/api/tealium-config/#webviewconfig">webViewConfig</a>.</p>
-
-<h2 id="data-layer">Data Layer</h2>
-
-<p>The following variables are transmitted with each tracking call:</p>
-
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>dispatch_service</code></td>
-<td><code>String</code></td>
-<td>Static string to indicate which module the tracking call came from</td>
-<td><code>&quot;tagmanagement&quot;</code></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="about-wkwebview">About WKWebView</h2>
-
-<p>Prior to version 1.7.0, this module used <code>UIWebView</code> which is now deprecated in favor of <code>WKWebView</code>. The OS requires that <code>WKWebView</code> always be attached to a <code>UIView</code>, even if it is not rendered. If it is not attached to a UIView, the OS severely throttles the performance and the JavaScript executes suboptimally. <strong>To accommodate this the Tag Management module attempts to attach the non-rendered WKWebView to the root UIView of your app.</strong></p>
-
-<p>If your app has a complex view hierarchy and the module is not detecting the <code>rootViewController</code>, initialize <a href="/platforms/ios-swift/api/tealium-config/">TealiumConfig</a> with a view to attach to in <code>viewDidLoad</code>, <code>viewWillAppear:</code>, or <code>viewDidAppear:</code>.</p>
-
-<p class="note"><i class="fas fa-info-circle"></i>Release 1.7.1 significantly improves the auto-detection of views and removes the need to specify a view in most scenarios. But you must test this in your app to verify that tracking calls are sent correctly. See <a href="/platforms/ios-swift/release-notes">Release Notes</a> for full details.</p>
-
-<p>If your app jumps to a <code>UIViewController</code> upon receiving a push notification, and has a different view hierarchy than when Tealium was initialized, you must update the current <code>UIView</code> using the following API method.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">override</span> <span style="color:#00f">func</span> viewDidLoad() {
-    <span style="color:#00f">super</span>.viewDidLoad()
-    <span style="color:#008000">// this view does not have a navigation controller</span>
-    <span style="color:#00f">if</span> <span style="color:#00f">self</span>.navigationController == <span style="color:#00f">nil</span> {
-          <span style="color:#008000">// update the current root UIView on the Tealium instance</span>
-        tealium?.updateRootView(<span style="color:#00f">self</span>.view)
-    }
-    <span style="color:#008000">// Do any additional setup after loading the view.</span>
-}</code></pre></div>
-<p>See the sample app <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/Swift-WKWebView">Swift-WKWebView</a> for a full example.</p>
-
-<p class="note"><i class="fas fa-info-circle"></i>The <a href="/platforms/ios-swift/api/tealium-config/#shouldaddcookieobserver"><code>shouldAddCookieObserver</code></a> method allows you to use your own cookie observer during cookie synchronization, which requires a cookie observer to retrieve cookies on the main thread after setting them. This issue is caused by bugs in <code>WKWebView</code>, which prevents your own observer from being called.</p>
-  
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/ios-swift/module-list/remote-commands/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"RemoteCommands Module "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>RemoteCommands Module</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/ios-swift/module-list/visitor-service/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>VisitorService Module</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"VisitorService Module"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7702,33 +7472,277 @@ var utag_data = {
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/ios-swift/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        IOS SWIFT/MODULE LIST
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">TagManagement Module</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      A client-side implementation of the Universal Tag (utag.js) which uses a non-rendered WKWebView instance to execute JavaScript.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="usage">Usage</h2>
+
+<p>The TagManagement module is a client-side implementation of the Universal Tag (<code>utag.js</code>) which uses a non-rendered <code>WKWebView</code> instance to execute JavaScript. This module is required in apps that make use of Tealium iQ Tag Management. It is automatically included in Carthage and CocoaPods framework builds.</p>
+
+<h2 id="supported-platforms">Supported Platforms</h2>
+
+<ul>
+<li>iOS</li>
+</ul>
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+<li>WebKit (WKWebView)</li>
+</ul>
+
+<h2 id="install">Install</h2>
+
+<p>Install the TagManagement module with Swift Package Manager, CocoaPods or Carthage.</p>
+
+<h3 id="swift-package-manager-recommended">Swift Package Manager (Recommended)</h3>
+
+<p>Supported in version 1.9.0+, the Swift Package Manager is the recommended and simplest way to install the Tealium Swift library:</p>
+
+<ol>
+<li>In your Xcode project, select <strong>File &gt; Swift Packages &gt; Add Package Dependency</strong></li>
+<li>Enter the repository URL: <code>https://github.com/tealium/tealium-swift</code></li>
+<li>Configure the version rules. Typically, <code>&quot;Up to next major&quot;</code> is recommended. If the current Tealium Swift library version does not appears in the list, then reset your Swift package cache.</li>
+<li>Select the <code>TagManagement</code> module from the list of modules to install and add it each of your app targets in your Xcode project, under <strong>Frameworks &gt; Libraries &amp; Embedded Content</strong></li>
+</ol>
+
+<h3 id="cocoapods">CocoaPods</h3>
+
+<p>To install the TagManagement module with CocoaPods, add the following pod to your Podfile:</p>
+
+<pre><code class="language-perl">pod 'tealium-swift/TagManagement'
+</code></pre>
+
+<p>Learn more about the <a href="/platforms/ios-swift/install/#cocoapods">CocoaPods installation for iOS</a>.</p>
+
+<h3 id="carthage">Carthage</h3>
+
+<p>To install the TagManagement module with Carthage, following these steps:</p>
+
+<ol>
+<li><p>Go to the app target&rsquo;s General configuration page in Xcode.</p></li>
+
+<li><p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
+
+<pre><code class="language-perl">TealiumTagManagement.framework
+</code></pre>
+
+<p>Learn more about the <a href="/platforms/ios-swift/install/#carthage">Carthage installation for iOS</a>.</p></li>
+</ol>
+
+<h2 id="initialize">Initialize</h2>
+
+<p>To initialize the module, verify that it&rsquo;s specified on the <code>TealiumConfig</code> <a href="/platforms/ios-swift/api/tealium-config/#collectors"><code>collectors</code></a> property</p>
+
+<p><code>config.dispatchers = [Dispatchers.TagManagement]</code></p>
+
+<h2 id="customizing-the-webview-settings">Customizing the WebView Settings</h2>
+
+<h3 id="app-bound-domains">App Bound Domains</h3>
+
+<p>If your app uses the <a href="https://webkit.org/blog/10882/app-bound-domains/">WKAppBoundDomains</a> feature to limit which domains webviews in your app can communicate with, you must pass a custom <code>WKWebViewConfiguration</code> and set its <code>limitsNavigationsToAppBoundDomains</code> property to <code>true</code>. Failing to do this will result in all tracking calls being dropped by the operating system. You must also include &ldquo;tags.tiqcdn.com&rdquo; in your <code>Info.plist</code>&rsquo;s <code>WKAppBoundDomains</code> list, as well as the domains for any tags you have set up in Tealium iQ (for example &ldquo;google-analytics.com&rdquo;). Be aware that a maximum of 10 domains can be configured for the entire app, so if you use multiple client-side tags, you may easily exceed this.</p>
+
+<pre><code> let config = TealiumConfig(account: &quot;ACCOUNT&quot;,
+                               profile: &quot;PROFILE&quot;,
+                               environment: &quot;ENVIRONMENT&quot;,
+                               datasource: &quot;DATASOURCE&quot;)
+ config.dispatchers = [Dispatchers.TagManagement]
+ let wkWebViewConfiguration = WKWebViewConfiguration()
+ wkWebViewConfiguration.limitsNavigationsToAppBoundDomains = true
+ config.webviewConfig = wkWebViewConfiguration
+ tealium = Tealium(config: config)
+        
+</code></pre>
+
+<h3 id="process-pool">Process Pool</h3>
+
+<p>If your app uses its own <code>WKWebView</code>, to avoid cookie synchronization issues, pass a singleton <code>WKProcessPool</code> instance to be used by the Tealium webview, or a custom <code>WkWebViewConfiguration</code> that&rsquo;s shared with other webviews in your app.</p>
+
+<p>Learn about <a href="/platforms/ios-swift/api/tealium-config/#webviewprocesspool">webviewProcessPool</a> and <a href="/platforms/ios-swift/api/tealium-config/#webviewconfig">webViewConfig</a>.</p>
+
+<h2 id="data-layer">Data Layer</h2>
+
+<p>The following variables are transmitted with each tracking call:</p>
+
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>dispatch_service</code></td>
+<td><code>String</code></td>
+<td>Static string to indicate which module the tracking call came from</td>
+<td><code>&quot;tagmanagement&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="about-wkwebview">About WKWebView</h2>
+
+<p>Prior to version 1.7.0, this module used <code>UIWebView</code> which is now deprecated in favor of <code>WKWebView</code>. The OS requires that <code>WKWebView</code> always be attached to a <code>UIView</code>, even if it is not rendered. If it is not attached to a UIView, the OS severely throttles the performance and the JavaScript executes suboptimally. <strong>To accommodate this the Tag Management module attempts to attach the non-rendered WKWebView to the root UIView of your app.</strong></p>
+
+<p>If your app has a complex view hierarchy and the module is not detecting the <code>rootViewController</code>, initialize <a href="/platforms/ios-swift/api/tealium-config/">TealiumConfig</a> with a view to attach to in <code>viewDidLoad</code>, <code>viewWillAppear:</code>, or <code>viewDidAppear:</code>.</p>
+
+<p class="note"><i class="fas fa-info-circle"></i>Release 1.7.1 significantly improves the auto-detection of views and removes the need to specify a view in most scenarios. But you must test this in your app to verify that tracking calls are sent correctly. See <a href="/platforms/ios-swift/release-notes">Release Notes</a> for full details.</p>
+
+<p>If your app jumps to a <code>UIViewController</code> upon receiving a push notification, and has a different view hierarchy than when Tealium was initialized, you must update the current <code>UIView</code> using the following API method.</p>
+
+<pre><code class="language-swift">override func viewDidLoad() {
+    super.viewDidLoad()
+    // this view does not have a navigation controller
+    if self.navigationController == nil {
+          // update the current root UIView on the Tealium instance
+        tealium?.updateRootView(self.view)
+    }
+    // Do any additional setup after loading the view.
+}
+</code></pre>
+
+<p>See the sample app <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/Swift-WKWebView">Swift-WKWebView</a> for a full example.</p>
+
+<p class="note"><i class="fas fa-info-circle"></i>The <a href="/platforms/ios-swift/api/tealium-config/#shouldaddcookieobserver"><code>shouldAddCookieObserver</code></a> method allows you to use your own cookie observer during cookie synchronization, which requires a cookie observer to retrieve cookies on the main thread after setting them. This issue is caused by bugs in <code>WKWebView</code>, which prevents your own observer from being called.</p>
+  
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/ios-swift/module-list/remote-commands/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"RemoteCommands Module "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>RemoteCommands Module</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/ios-swift/module-list/visitor-service/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>VisitorService Module</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"VisitorService Module"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  March 8, 2022 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  March 8, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#usage">Usage</a></li>
+              <li><a href="#supported-platforms">Supported Platforms</a></li>
+              <li><a href="#requirements">Requirements</a></li>
+              <li><a href="#install">Install</a></li>
+              <ul class="toc-h3"><li><a href="#swift-package-manager-recommended">Swift Package Manager (Recommended)</a></li>
+              <li><a href="#cocoapods">CocoaPods</a></li>
+              <li><a href="#carthage">Carthage</a></li>
+              </ul><li><a href="#initialize">Initialize</a></li>
+              <li><a href="#customizing-the-webview-settings">Customizing the WebView Settings</a></li>
+              <ul class="toc-h3"><li><a href="#app-bound-domains">App Bound Domains</a></li>
+              <li><a href="#process-pool">Process Pool</a></li>
+              </ul><li><a href="#data-layer">Data Layer</a></li>
+              <li><a href="#about-wkwebview">About WKWebView</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

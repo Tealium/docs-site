@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,376 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#basics">Basics</a></li>
-              <li><a href="#tealium-eventstream-live-events">Tealium EventStream Live Events</a></li>
-              <li><a href="#charles-proxy">Charles Proxy</a></li>
-              <li><a href="#trace">Trace</a></li>
-              <li><a href="#analytics-tools">Analytics Tools</a></li>
-              <li><a href="#device-logs">Device Logs</a></li>
-              <li><a href="#debugging-mobile-html">Debugging mobile.html</a></li>
-              <li><a href="#remote-debugging">Remote Debugging</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/getting-started/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        GETTING STARTED
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Troubleshooting</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Learn about the various methods for validating your mobile installation.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="basics">Basics</h2>
-
-<p>When testing mobile apps, it is recommended to only test in the Tealium <code>&quot;dev&quot;</code> environment, and not in <code>&quot;prod&quot;</code>. Also, use a build of the app specifically designed for testing. If you must use a production build (App Store/Play Store), see the section below on switching environments to avoid making changes to the live application.</p>
-
-<p>When publishing changes while debugging, you are subject to the 5 minute expiry time on Tealium&rsquo;s CDN cache. During this time, the <code>utag.js</code> files are refreshed on the CDN after you publish.</p>
-
-<p>Each time you launch the app from a cold start (app was previously swiped away from the app tray), the Tealium SDK checks for new files, and subsequently every 15 minutes by default (controlled by <a href="https://community.tealiumiq.com/t5/Mobile-Libraries/Mobile-Publish-Settings/ta-p/13633">mobile publish settings</a>. However, if it has been less than 5 minutes since publishing, restarting the app does not always work until after the 5 minute expiry time. Switching between the <code>&quot;dev&quot;</code> and <code>&quot;qa&quot;</code> environments while testing alleviates this somewhat, because the cache on the environment expires if not used within the last 5 minutes, and the new file becomes available immediately.</p>
-
-<h2 id="tealium-eventstream-live-events">Tealium EventStream Live Events</h2>
-
-<p>The <strong>Live Events</strong> feature in Tealium EventStream is available to all Tealium customers for the purpose of debugging mobile installations.</p>
-
-<p class="note"><i class="fas fa-info-circle"></i>If you enable this in a production environment, you may be charged for the volume usage. Be sure to disable this feature before your app goes live.</p>
-
-<p>Use one of the following methods to enable the event collection feature.</p>
-
-<h4 id="option-1-tealium-collect-tag">Option 1 - Tealium Collect Tag</h4>
-
-<p>Add the Tealium Collect tag from the tag marketplace. In the Advanced Settings of the tag, toggle off the QA and Prod environments to avoid publishing the tag to production and incurring usage charges. Requests are sent out from the app as encoded JSON data in a POST request, so this is more difficult to use in conjunction with Charles Proxy, but the advantage is that you are able to see all data from the webview, including cookie data and variables modified by extensions. If you do not enter a specific profile in the tag config, data is sent to the same profile the app is targeting. If you wish to send data to a specific profile, see the <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Tealium-Collect-Tag-Setup-Guide/ta-p/11923">Tealium collect tag setup guide</a>.</p>
-
-<h4 id="option-2-tealium-collect-module">Option 2 - Tealium Collect Module</h4>
-
-<p>In your iQ account, go to the <strong>Mobile Publish Settings</strong> and enable &ldquo;Tealium Collect&rdquo;. The advantage to this method is that data is transmitted as a GET request, and each data variable is added to the query string in the form of easily-readable query parameters. This method is best if you intend to use Charles Proxy to inspect the data. Be sure to turn this setting off before pushing app to production to avoid unexpected usage charges. Only the exact data that was passed to Tealium by the app developers is seen, and not the data from the webview in this request such as cookie data or extension-generated data.</p>
-
-<p>By default, data sent using this feature is sent to the &ldquo;main&rdquo; profile in your account and not the currently selected profile in your app. To adjust this, override the dispatch URL using the following code snippets in your app, and substitute the appropriate account/profile combination:</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="Android" title="Android">
-  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Tealium.Config config = Tealium.Config.create(application, <span style="color:#a31515">&#34;[ACCOUNT]&#34;</span>, <span style="color:#a31515">&#34;[PROFILE]&#34;</span>, <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>);config.setOverrideCollectDispatchUrl(<span style="color:#a31515">&#34;https://collect.tealiumiq.com/vdata/i.gif?tealium_account=[ACCOUNT]&amp;tealium_profile=[PROFILE]&#34;</span>);</code></pre></div>
-</div>
-
-<div class="tab-pane" data-lang="iOS/Objective-C" title="iOS/Objective-C">
-  <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-obj-c" data-lang="obj-c">TEALConfiguration *configuration = [TEALConfiguration configurationWithAccount:<span style="color:#a31515">@&#34;[account]&#34;</span>profile:<span style="color:#a31515">@&#34;[profile]&#34;</span> environment:<span style="color:#a31515">@&#34;dev&#34;</span>];[configuration setOverrideCollectDispatchURL:<span style="color:#a31515">@&#34;https://collect.tealiumiq.com/vdata/i.gif?tealium_account=[account]&amp;tealium_profile=[profile]&#34;</span>];</code></pre></div>
-</div>
-
-<p></div>
-</div></p>
-
-<p>Once you have configured one of the collection methods above, log in to EventStream and go to Live Events to see the incoming events.</p>
-
-<p><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Live-Events-and-Feeds/ta-p/11805">Learn more</a> about using Live Events.</p>
-
-<h2 id="charles-proxy">Charles Proxy</h2>
-
-<p>The Charles web debugging proxy inspects all HTTP and SSL/HTTPS traffic between your device and a third-party service that you have configured through Tealium iQ Tag Management.</p>
-
-<p>Set up Charles to proxy your <a href="https://community.tealiumiq.com/t5/Tealium-for-Android/Setting-up-Charles-to-Proxy-your-Android-Device/ta-p/5121">Android</a> or <a href="https://community.tealiumiq.com/t5/Tealium-for-iOS/Setting-Up-Charles-to-Proxy-an-iOS-Device/ta-p/15285">iOS</a> device.</p>
-
-<h4 id="switching-tealium-environments">Switching Tealium Environments</h4>
-
-<p>You may need to switch from the default environment the app is targeting (for example, &ldquo;prod&rdquo;) to a different environment to view your changes. To switch environments, add a custom mapping in Charles Proxy (or other proxy tool such as Fiddler), which transparently switch out the files that are being served to the app. For example, the app requests the &ldquo;prod&rdquo; <a href="https://tags.tiqcdn.com/utag/tealiummobile/demo/prod/utag.js">utag.js</a>, but Charles proxy serves back the &ldquo;dev&rdquo; <a href="https://tags.tiqcdn.com/utag/tealiummobile/demo/dev/utag.js">utag.js</a></p>
-
-<p>The following configuration steps switch to a different Tealium environment.</p>
-
-<ol>
-<li>Open Charles Proxy, and navigate to <strong>Tools &gt; Map Remote</strong>. In the <strong>Map Remote Settings</strong> screen, check <strong>Enable Map Remote</strong> and then click <strong>Add</strong>.</li>
-<li>In the <strong>Host</strong> box, paste <code>https://tags.tiqcdn.com/utag/&lt;account&gt;/&lt;profile&gt;/prod/*</code>, substituting your account and profile into the url. After pasting, move your cursor and click into the <strong>Port</strong> or <strong>Path</strong> field of the <strong>Map From</strong> section, and Charles automatically separates the URL into its component parts.</li>
-<li>In the <strong>Map To</strong> section, perform the same process again, this time changing the environment from &ldquo;prod&rdquo; to &ldquo;dev&rdquo; (or &ldquo;qa&rdquo;) in the URL, depending on which environment you wish to target. Remove the asterisks character from the end of the URL, for example:  <code>https://tags.tiqcdn.com/utag/&lt;account&gt;/&lt;profile&gt;/dev/</code></li>
-<li>Click <strong>OK</strong> to complete the setup.</li>
-</ol>
-
-<p>Charles Proxy now switches all requests from the &ldquo;prod&rdquo; environment to the &ldquo;dev&rdquo; environment. To switch back to the app&rsquo;s default environment, disable or delete the Map Remote rule, or turn off the proxy on your device.</p>
-
-<p class="note"><i class="fas fa-info-circle"></i>Kill the app and relaunch it for this setting to take effect.</p>
-
-<h4 id="traffic-inspection">Traffic Inspection</h4>
-
-<p>The following are common examples of requests to inspect using Charles proxy.</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Request</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>\*.tealiumiq.com</code></td>
-<td align="left">These hits are sent if you&rsquo;re using Tealium AudienceStream&rsquo;s Live Events feature for debugging, as described in Option 1 above.</td>
-</tr>
-
-<tr>
-<td align="left"><code>mobile.html</code></td>
-<td align="left">Initial hit retrieving settings from Tealium&rsquo;s Multi-CDN.</td>
-</tr>
-
-<tr>
-<td align="left"><code>google-analytics.com, collect.gif</code></td>
-<td align="left">If using Google Analytics, hits are sent to <code>collect.gif</code>, and the query parameters is inspected.</td>
-</tr>
-
-<tr>
-<td align="left"><code>/b/ss</code></td>
-<td align="left">This filter picks up all hits to Adobe Analytics, and Context Data and/or props/eVars is shown in the query string.</td>
-</tr>
-
-<tr>
-<td align="left"><code>tags.tiqcdn.com</code></td>
-<td align="left">To see which of your Tealium tags have fired, look out for hits to this server. If you don&rsquo;t have bundling enabled then you&rsquo;ll see individual files for each tag, for example the tag with UID 123 is <code>utag.123.js</code>. Be aware that if the files are cached, they won&rsquo;t necessarily show in your Charles Proxy session, even if they have fired, so this is not always the most accurate way of testing.</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="trace">Trace</h2>
-
-<p>Learn about using <a href="/platforms/getting-started/trace/">trace</a> for troubleshooting.</p>
-
-<h2 id="analytics-tools">Analytics Tools</h2>
-
-<p>Set up a test Google Analytics account for yourself, and note the property ID (for example, UA-12345678-1).</p>
-
-<p>Add the <a href="/t5/Tags/Google-Universal-Analytics-Tag-Basic-Configuration/ta-p/11984">Google Analytics</a> tag through Tealium IQ, entering your new property ID in the relevant config field.</p>
-
-<p>Enable screen views in the GA tag, and map one of your data variables to <code>screenName</code>.</p>
-
-<p>(Optional) Set up a custom event in GA by mapping any 2 variables to Event Action and Event Category respectively. If the app is functioning correctly, screen views and custom events appear in your Google Analytics account. A custom event is automatically generated so long as Event Category and Action are set, and it doesn&rsquo;t matter which specific data you pass to these variables for test purposes.</p>
-
-<h2 id="device-logs">Device Logs</h2>
-
-<h4 id="standard-device-logs">Standard Device Logs</h4>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="Android" title="Android">
-  <ol>
-<li>Install Android Studio on your machine.</li>
-<li><a href="https://developer.android.com/studio/debug/dev-options#enable">Enable USB Debugging</a> on your Android device.</li>
-<li>Launch Android Studio on your PC/Mac, and ensure the &ldquo;Android Monitor&rdquo; (v3.1 and below) or &ldquo;Run&rdquo; (v3.2 and higher) is displayed at the bottom of the screen. If neither of those options are &ldquo;View &gt; Tool Windows &gt; Android Monitor/Run&rdquo; to show one of them.</li>
-<li>Connect your Android device with a USB cable. The logs from your device in the console become available. This shows the output from all apps, including the Android system itself, and if you are testing a production build, it is likely that only critical errors/crashes are logged.</li>
-<li>If you have version Android Studio 3.2 or higher installed, there are a number of <a href="https://developer.android.com/studio/profile/monitor">other tools</a> with the ability to debug/validate/troubleshoot.</li>
-</ol>
-
-</div>
-
-<div class="tab-pane" data-lang="iOS" title="iOS">
-  <ol>
-<li>Install XCode on your machine.</li>
-<li>Connect your iPhone/iPad with a lightning cable.</li>
-<li>Go to &ldquo;Window &gt; Devices and Simulators&rdquo;, in the &ldquo;Devices&rdquo; tab, select your device in the list.</li>
-<li>To see the device console, click the up-triangle at the bottom left of the right hand panel. The console displays logs from all apps on the device. If the app is a production build, it is likely that only critical errors/crashes are logged.</li>
-</ol>
-
-</div>
-
-<p></div>
-</div></p>
-
-<p class="tip"><i class="fas fa-star"></i>If you filter the console with &ldquo;tealium&rdquo; you might see these logs more clearly.</p>
-
-<h4 id="tealium-debug-logs">Tealium Debug Logs</h4>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="Android" title="Android">
-  <ol>
-<li>Open Android Studio and plug in your device.</li>
-<li>Set the Tealium Debug Level to the most verbose setting (&ldquo;dev&rdquo;&ldquo;) by calling the <code>.setForceOverrideLogLevel()</code> method. (For example,  <code>.setForceOverrideLogLevel(&quot;dev&quot;);</code>)</li>
-<li>Run your project and view the output in the Logcat console. The publish settings, configuration settings, and payload is displayed on the console.</li>
-</ol>
-
-<p class="tip"><i class="fas fa-star"></i>If you filter Logcat with &ldquo;Sent queued dispatch&rdquo; you might see these logs more clearly.</p>
-
-</div>
-
-<div class="tab-pane" data-lang="iOS" title="iOS">
-  <ol>
-<li>Open Xcode and plug in your device.</li>
-<li>Set the Tealium Debug Level to the most verbose setting (&ldquo;dev&rdquo;) by calling the <code>.setLogLevel()</code> method.
-
-<ul>
-<li>iOS: <code>[tealConfig setLogLevel: TEALLogLevelDev];</code></li>
-<li>Swift: <code>setLogLevel(logLevel: TealiumLogLevel)</code></li>
-</ul></li>
-<li>Run your project and view the output in the <code>lldb</code> console. The publish settings, configuration settings, and payload is displayed on the console.</li>
-</ol>
-
-<p class="tip"><i class="fas fa-star"></i>If you filter your IDE console with &ldquo;datasources payload&rdquo; you might see these logs more clearly.</p>
-
-</div>
-
-<p></div>
-</div></p>
-
-<h2 id="debugging-mobile-html">Debugging mobile.html</h2>
-
-<p>This section shows how to troubleshoot a mobile implementation of Tealium iQ Tag Management via the published file <code>mobile.html</code>.</p>
-
-<p>When you activate a mobile profile in Tealium iQ a file named <code>mobile.html</code> is published to the following path on the CDN:</p>
-
-<p><code>http://tags.tiqcdn.com/utag/{ACCOUNT}/{PROFILE}/{ENVIRONMENT}/mobile.html</code></p>
-
-<p>This file is used by the native mobile library to receive mobile publish settings and to facilitate the Tag Management module. This file is useful to perform some basic troubleshooting of your mobile implementation.</p>
-
-<h4 id="inspecting-mobile-html">Inspecting mobile.html </h4>
-
-<p>The behavior of <code>utag.js</code> on the <code>mobile.html</code> page is similar to that of a standard desktop website page. The <code>utag.js</code> file is loaded and subsequent vendor tags are executed.</p>
-
-<p>To inspect the <code>mobile.html</code> page:</p>
-
-<ol>
-<li>Load the <code>mobile.html</code> URL for your iQ profile in a new browser window.</li>
-<li>Open the developer tools or web console of the browser to inspect the page source.</li>
-</ol>
-
-<p>From here you are able to perform many of the same troubleshooting techniques that are used for a website with Tealium&rsquo;s <code>utag.js</code> installed.</p>
-
-<h4 id="verifying-the-publish-timestamp">Verifying the Publish Timestamp</h4>
-
-<p>The first thing to verify is that your most recently published changes are being loaded in <code>mobile.html</code>. This is done by matching the timestamp from the HTML source to the timestamp from the iQ Versions screen.</p>
-
-<p>To verify the publish timestamp:</p>
-
-<ol>
-<li>At the top of the page source of <code>mobile.html</code>, look for the published timestamp on the first line. The timestamp in <code>mobile.html</code> has the following pattern: <code>ut.4.0.YYYYMMDDHHMM</code>. (Time is always in GMT)</li>
-<li>In your iQ profile, go the Versions screen and find the most recently published version of the same environment. The timestamp of this publish matches the timestamp found inside <code>mobile.html</code>.</li>
-</ol>
-
-<h4 id="inspecting-mobile-publish-settings-javascript-object">Inspecting Mobile Publish Settings JavaScript Object</h4>
-
-<p>The <code>mobile.html</code> page uses a JavaScript object named <code>mps</code> to store the values of the <a href="https://community.tealiumiq.com/t5/Mobile-Libraries/Creating-a-Mobile-Profile/ta-p/16328#toc-hId-441843222">mobile publish settings</a>. Inspect this object to verify your settings.</p>
-
-<p>To inspect the <code>mps</code> object:</p>
-
-<ol>
-<li>Type &ldquo;mps&rdquo; into the web console and hit enter.</li>
-<li>The properties marked &ldquo;4&rdquo; and &ldquo;5&rdquo; correspond to versions 4.x and 5.x of your mobile library respectively.</li>
-</ol>
-
-<h4 id="simulating-tracking-calls">Simulating Tracking Calls</h4>
-
-<p>The behavior of <code>utag.js</code> on this page is similar to that of a standard desktop website page. Watch the network activity to see which <code>utag.\*.js</code> files are loaded and trigger tracking calls from the browser console to verify that your tags are working as expected.</p>
-
-<p>To simulate tracking calls in <code>mobile.html</code>:</p>
-
-<ol>
-<li>From the browser console, type <code>utag.view({screen_title : &quot;Test Page&quot;})</code> and hit enter.</li>
-<li>Go to the network activity screen to inspect the outgoing vendor tracking activity.</li>
-</ol>
-
-<h2 id="remote-debugging">Remote Debugging</h2>
-
-<p>Advanced users are able to debug the hidden webview using Chrome or Safari remote web inspector</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="Android" title="Android">
-  <p>Ensure the app is configured to allow <a href="https://developers.google.com/web/tools/chrome-devtools/remote-debugging/webviews?hl=en#configure_webviews_for_debugging">remote debugging</a> of the Tealium webview (Must be done by the app developer at build time).</p>
-
-<p>Launch the <a href="https://developers.google.com/web/tools/chrome-devtools/remote-debugging/webviews?hl=en#open_a_webview_in_devtools">web inspector</a> in Google Chrome.</p>
-
-<p>Ensure your device is connected to your machine with a USB cable.</p>
-
-<p>In the list of web pages, look for the one hosted on <code>tags.tiqcdn.com</code>. This is the Tealium webview (<code>mobile.html</code>), which is inspected in the same way as described above. Whenever the app triggers a view or link request, any breakpoints you have set in your JavaScript tag templates are hit, and the value of the data layer is inspected as if it were a desktop website.</p>
-
-</div>
-
-<div class="tab-pane" data-lang="iOS" title="iOS">
-  <p>Follow Apple&rsquo;s <a href="https://developer.apple.com/library/content/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/GettingStarted/GettingStarted.html">Safari Developer Guide</a> to enable the web inspector in Safari for Mac OSX and in the iPhone/iPad&rsquo;s device settings.</p>
-
-<p>Once you are able see your device on the &ldquo;develop&rdquo; menu, open &ldquo;tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/mobile.html&rdquo; in the list of open web pages on the device, and then continue to follow the instructions in method 5 above.</p>
-
-<p class="note"><i class="fas fa-info-circle"></i>This also works when using the iOS Simulator to debug your app</p>
-
-</div>
-
-<p></div>
-</div></p>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/getting-started/feature-comparison/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Feature Comparison "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Feature Comparison</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7834,33 +7472,404 @@ var utag_data = {
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/getting-started/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        GETTING STARTED
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Troubleshooting</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Learn about the various methods for validating your mobile installation.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="basics">Basics</h2>
+
+<p>When testing mobile apps, it is recommended to only test in the Tealium <code>&quot;dev&quot;</code> environment, and not in <code>&quot;prod&quot;</code>. Also, use a build of the app specifically designed for testing. If you must use a production build (App Store/Play Store), see the section below on switching environments to avoid making changes to the live application.</p>
+
+<p>When publishing changes while debugging, you are subject to the 5 minute expiry time on Tealium&rsquo;s CDN cache. During this time, the <code>utag.js</code> files are refreshed on the CDN after you publish.</p>
+
+<p>Each time you launch the app from a cold start (app was previously swiped away from the app tray), the Tealium SDK checks for new files, and subsequently every 15 minutes by default (controlled by <a href="https://community.tealiumiq.com/t5/Mobile-Libraries/Mobile-Publish-Settings/ta-p/13633">mobile publish settings</a>. However, if it has been less than 5 minutes since publishing, restarting the app does not always work until after the 5 minute expiry time. Switching between the <code>&quot;dev&quot;</code> and <code>&quot;qa&quot;</code> environments while testing alleviates this somewhat, because the cache on the environment expires if not used within the last 5 minutes, and the new file becomes available immediately.</p>
+
+<h2 id="tealium-eventstream-live-events">Tealium EventStream Live Events</h2>
+
+<p>The <strong>Live Events</strong> feature in Tealium EventStream is available to all Tealium customers for the purpose of debugging mobile installations.</p>
+
+<p class="note"><i class="fas fa-info-circle"></i>If you enable this in a production environment, you may be charged for the volume usage. Be sure to disable this feature before your app goes live.</p>
+
+<p>Use one of the following methods to enable the event collection feature.</p>
+
+<h4 id="option-1-tealium-collect-tag">Option 1 - Tealium Collect Tag</h4>
+
+<p>Add the Tealium Collect tag from the tag marketplace. In the Advanced Settings of the tag, toggle off the QA and Prod environments to avoid publishing the tag to production and incurring usage charges. Requests are sent out from the app as encoded JSON data in a POST request, so this is more difficult to use in conjunction with Charles Proxy, but the advantage is that you are able to see all data from the webview, including cookie data and variables modified by extensions. If you do not enter a specific profile in the tag config, data is sent to the same profile the app is targeting. If you wish to send data to a specific profile, see the <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Tealium-Collect-Tag-Setup-Guide/ta-p/11923">Tealium collect tag setup guide</a>.</p>
+
+<h4 id="option-2-tealium-collect-module">Option 2 - Tealium Collect Module</h4>
+
+<p>In your iQ account, go to the <strong>Mobile Publish Settings</strong> and enable &ldquo;Tealium Collect&rdquo;. The advantage to this method is that data is transmitted as a GET request, and each data variable is added to the query string in the form of easily-readable query parameters. This method is best if you intend to use Charles Proxy to inspect the data. Be sure to turn this setting off before pushing app to production to avoid unexpected usage charges. Only the exact data that was passed to Tealium by the app developers is seen, and not the data from the webview in this request such as cookie data or extension-generated data.</p>
+
+<p>By default, data sent using this feature is sent to the &ldquo;main&rdquo; profile in your account and not the currently selected profile in your app. To adjust this, override the dispatch URL using the following code snippets in your app, and substitute the appropriate account/profile combination:</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="Android" title="Android">
+  <pre><code class="language-java">Tealium.Config config = Tealium.Config.create(application, &quot;[ACCOUNT]&quot;, &quot;[PROFILE]&quot;, &quot;ENVIRONMENT&quot;);config.setOverrideCollectDispatchUrl(&quot;https://collect.tealiumiq.com/vdata/i.gif?tealium_account=[ACCOUNT]&amp;tealium_profile=[PROFILE]&quot;);
+</code></pre>
+
+</div>
+
+<div class="tab-pane" data-lang="iOS/Objective-C" title="iOS/Objective-C">
+  <pre><code class="language-obj-c">TEALConfiguration *configuration = [TEALConfiguration configurationWithAccount:@&quot;[account]&quot;profile:@&quot;[profile]&quot; environment:@&quot;dev&quot;];[configuration setOverrideCollectDispatchURL:@&quot;https://collect.tealiumiq.com/vdata/i.gif?tealium_account=[account]&amp;tealium_profile=[profile]&quot;];
+</code></pre>
+
+</div>
+
+<p></div>
+</div></p>
+
+<p>Once you have configured one of the collection methods above, log in to EventStream and go to Live Events to see the incoming events.</p>
+
+<p><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Live-Events-and-Feeds/ta-p/11805">Learn more</a> about using Live Events.</p>
+
+<h2 id="charles-proxy">Charles Proxy</h2>
+
+<p>The Charles web debugging proxy inspects all HTTP and SSL/HTTPS traffic between your device and a third-party service that you have configured through Tealium iQ Tag Management.</p>
+
+<p>Set up Charles to proxy your <a href="https://community.tealiumiq.com/t5/Tealium-for-Android/Setting-up-Charles-to-Proxy-your-Android-Device/ta-p/5121">Android</a> or <a href="https://community.tealiumiq.com/t5/Tealium-for-iOS/Setting-Up-Charles-to-Proxy-an-iOS-Device/ta-p/15285">iOS</a> device.</p>
+
+<h4 id="switching-tealium-environments">Switching Tealium Environments</h4>
+
+<p>You may need to switch from the default environment the app is targeting (for example, &ldquo;prod&rdquo;) to a different environment to view your changes. To switch environments, add a custom mapping in Charles Proxy (or other proxy tool such as Fiddler), which transparently switch out the files that are being served to the app. For example, the app requests the &ldquo;prod&rdquo; <a href="https://tags.tiqcdn.com/utag/tealiummobile/demo/prod/utag.js">utag.js</a>, but Charles proxy serves back the &ldquo;dev&rdquo; <a href="https://tags.tiqcdn.com/utag/tealiummobile/demo/dev/utag.js">utag.js</a></p>
+
+<p>The following configuration steps switch to a different Tealium environment.</p>
+
+<ol>
+<li>Open Charles Proxy, and navigate to <strong>Tools &gt; Map Remote</strong>. In the <strong>Map Remote Settings</strong> screen, check <strong>Enable Map Remote</strong> and then click <strong>Add</strong>.</li>
+<li>In the <strong>Host</strong> box, paste <code>https://tags.tiqcdn.com/utag/&lt;account&gt;/&lt;profile&gt;/prod/*</code>, substituting your account and profile into the url. After pasting, move your cursor and click into the <strong>Port</strong> or <strong>Path</strong> field of the <strong>Map From</strong> section, and Charles automatically separates the URL into its component parts.</li>
+<li>In the <strong>Map To</strong> section, perform the same process again, this time changing the environment from &ldquo;prod&rdquo; to &ldquo;dev&rdquo; (or &ldquo;qa&rdquo;) in the URL, depending on which environment you wish to target. Remove the asterisks character from the end of the URL, for example:  <code>https://tags.tiqcdn.com/utag/&lt;account&gt;/&lt;profile&gt;/dev/</code></li>
+<li>Click <strong>OK</strong> to complete the setup.</li>
+</ol>
+
+<p>Charles Proxy now switches all requests from the &ldquo;prod&rdquo; environment to the &ldquo;dev&rdquo; environment. To switch back to the app&rsquo;s default environment, disable or delete the Map Remote rule, or turn off the proxy on your device.</p>
+
+<p class="note"><i class="fas fa-info-circle"></i>Kill the app and relaunch it for this setting to take effect.</p>
+
+<h4 id="traffic-inspection">Traffic Inspection</h4>
+
+<p>The following are common examples of requests to inspect using Charles proxy.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Request</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>\*.tealiumiq.com</code></td>
+<td align="left">These hits are sent if you&rsquo;re using Tealium AudienceStream&rsquo;s Live Events feature for debugging, as described in Option 1 above.</td>
+</tr>
+
+<tr>
+<td align="left"><code>mobile.html</code></td>
+<td align="left">Initial hit retrieving settings from Tealium&rsquo;s Multi-CDN.</td>
+</tr>
+
+<tr>
+<td align="left"><code>google-analytics.com, collect.gif</code></td>
+<td align="left">If using Google Analytics, hits are sent to <code>collect.gif</code>, and the query parameters is inspected.</td>
+</tr>
+
+<tr>
+<td align="left"><code>/b/ss</code></td>
+<td align="left">This filter picks up all hits to Adobe Analytics, and Context Data and/or props/eVars is shown in the query string.</td>
+</tr>
+
+<tr>
+<td align="left"><code>tags.tiqcdn.com</code></td>
+<td align="left">To see which of your Tealium tags have fired, look out for hits to this server. If you don&rsquo;t have bundling enabled then you&rsquo;ll see individual files for each tag, for example the tag with UID 123 is <code>utag.123.js</code>. Be aware that if the files are cached, they won&rsquo;t necessarily show in your Charles Proxy session, even if they have fired, so this is not always the most accurate way of testing.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="trace">Trace</h2>
+
+<p>Learn about using <a href="/platforms/getting-started/trace/">trace</a> for troubleshooting.</p>
+
+<h2 id="analytics-tools">Analytics Tools</h2>
+
+<p>Set up a test Google Analytics account for yourself, and note the property ID (for example, UA-12345678-1).</p>
+
+<p>Add the <a href="/t5/Tags/Google-Universal-Analytics-Tag-Basic-Configuration/ta-p/11984">Google Analytics</a> tag through Tealium IQ, entering your new property ID in the relevant config field.</p>
+
+<p>Enable screen views in the GA tag, and map one of your data variables to <code>screenName</code>.</p>
+
+<p>(Optional) Set up a custom event in GA by mapping any 2 variables to Event Action and Event Category respectively. If the app is functioning correctly, screen views and custom events appear in your Google Analytics account. A custom event is automatically generated so long as Event Category and Action are set, and it doesn&rsquo;t matter which specific data you pass to these variables for test purposes.</p>
+
+<h2 id="device-logs">Device Logs</h2>
+
+<h4 id="standard-device-logs">Standard Device Logs</h4>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="Android" title="Android">
+  <ol>
+<li>Install Android Studio on your machine.</li>
+<li><a href="https://developer.android.com/studio/debug/dev-options#enable">Enable USB Debugging</a> on your Android device.</li>
+<li>Launch Android Studio on your PC/Mac, and ensure the &ldquo;Android Monitor&rdquo; (v3.1 and below) or &ldquo;Run&rdquo; (v3.2 and higher) is displayed at the bottom of the screen. If neither of those options are &ldquo;View &gt; Tool Windows &gt; Android Monitor/Run&rdquo; to show one of them.</li>
+<li>Connect your Android device with a USB cable. The logs from your device in the console become available. This shows the output from all apps, including the Android system itself, and if you are testing a production build, it is likely that only critical errors/crashes are logged.</li>
+<li>If you have version Android Studio 3.2 or higher installed, there are a number of <a href="https://developer.android.com/studio/profile/monitor">other tools</a> with the ability to debug/validate/troubleshoot.</li>
+</ol>
+
+</div>
+
+<div class="tab-pane" data-lang="iOS" title="iOS">
+  <ol>
+<li>Install XCode on your machine.</li>
+<li>Connect your iPhone/iPad with a lightning cable.</li>
+<li>Go to &ldquo;Window &gt; Devices and Simulators&rdquo;, in the &ldquo;Devices&rdquo; tab, select your device in the list.</li>
+<li>To see the device console, click the up-triangle at the bottom left of the right hand panel. The console displays logs from all apps on the device. If the app is a production build, it is likely that only critical errors/crashes are logged.</li>
+</ol>
+
+</div>
+
+<p></div>
+</div></p>
+
+<p class="tip"><i class="fas fa-star"></i>If you filter the console with &ldquo;tealium&rdquo; you might see these logs more clearly.</p>
+
+<h4 id="tealium-debug-logs">Tealium Debug Logs</h4>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="Android" title="Android">
+  <ol>
+<li>Open Android Studio and plug in your device.</li>
+<li>Set the Tealium Debug Level to the most verbose setting (&ldquo;dev&rdquo;&ldquo;) by calling the <code>.setForceOverrideLogLevel()</code> method. (For example,  <code>.setForceOverrideLogLevel(&quot;dev&quot;);</code>)</li>
+<li>Run your project and view the output in the Logcat console. The publish settings, configuration settings, and payload is displayed on the console.</li>
+</ol>
+
+<p class="tip"><i class="fas fa-star"></i>If you filter Logcat with &ldquo;Sent queued dispatch&rdquo; you might see these logs more clearly.</p>
+
+</div>
+
+<div class="tab-pane" data-lang="iOS" title="iOS">
+  <ol>
+<li>Open Xcode and plug in your device.</li>
+<li>Set the Tealium Debug Level to the most verbose setting (&ldquo;dev&rdquo;) by calling the <code>.setLogLevel()</code> method.
+
+<ul>
+<li>iOS: <code>[tealConfig setLogLevel: TEALLogLevelDev];</code></li>
+<li>Swift: <code>setLogLevel(logLevel: TealiumLogLevel)</code></li>
+</ul></li>
+<li>Run your project and view the output in the <code>lldb</code> console. The publish settings, configuration settings, and payload is displayed on the console.</li>
+</ol>
+
+<p class="tip"><i class="fas fa-star"></i>If you filter your IDE console with &ldquo;datasources payload&rdquo; you might see these logs more clearly.</p>
+
+</div>
+
+<p></div>
+</div></p>
+
+<h2 id="debugging-mobile-html">Debugging mobile.html</h2>
+
+<p>This section shows how to troubleshoot a mobile implementation of Tealium iQ Tag Management via the published file <code>mobile.html</code>.</p>
+
+<p>When you activate a mobile profile in Tealium iQ a file named <code>mobile.html</code> is published to the following path on the CDN:</p>
+
+<p><code>http://tags.tiqcdn.com/utag/{ACCOUNT}/{PROFILE}/{ENVIRONMENT}/mobile.html</code></p>
+
+<p>This file is used by the native mobile library to receive mobile publish settings and to facilitate the Tag Management module. This file is useful to perform some basic troubleshooting of your mobile implementation.</p>
+
+<h4 id="inspecting-mobile-html">Inspecting mobile.html </h4>
+
+<p>The behavior of <code>utag.js</code> on the <code>mobile.html</code> page is similar to that of a standard desktop website page. The <code>utag.js</code> file is loaded and subsequent vendor tags are executed.</p>
+
+<p>To inspect the <code>mobile.html</code> page:</p>
+
+<ol>
+<li>Load the <code>mobile.html</code> URL for your iQ profile in a new browser window.</li>
+<li>Open the developer tools or web console of the browser to inspect the page source.</li>
+</ol>
+
+<p>From here you are able to perform many of the same troubleshooting techniques that are used for a website with Tealium&rsquo;s <code>utag.js</code> installed.</p>
+
+<h4 id="verifying-the-publish-timestamp">Verifying the Publish Timestamp</h4>
+
+<p>The first thing to verify is that your most recently published changes are being loaded in <code>mobile.html</code>. This is done by matching the timestamp from the HTML source to the timestamp from the iQ Versions screen.</p>
+
+<p>To verify the publish timestamp:</p>
+
+<ol>
+<li>At the top of the page source of <code>mobile.html</code>, look for the published timestamp on the first line. The timestamp in <code>mobile.html</code> has the following pattern: <code>ut.4.0.YYYYMMDDHHMM</code>. (Time is always in GMT)</li>
+<li>In your iQ profile, go the Versions screen and find the most recently published version of the same environment. The timestamp of this publish matches the timestamp found inside <code>mobile.html</code>.</li>
+</ol>
+
+<h4 id="inspecting-mobile-publish-settings-javascript-object">Inspecting Mobile Publish Settings JavaScript Object</h4>
+
+<p>The <code>mobile.html</code> page uses a JavaScript object named <code>mps</code> to store the values of the <a href="https://community.tealiumiq.com/t5/Mobile-Libraries/Creating-a-Mobile-Profile/ta-p/16328#toc-hId-441843222">mobile publish settings</a>. Inspect this object to verify your settings.</p>
+
+<p>To inspect the <code>mps</code> object:</p>
+
+<ol>
+<li>Type &ldquo;mps&rdquo; into the web console and hit enter.</li>
+<li>The properties marked &ldquo;4&rdquo; and &ldquo;5&rdquo; correspond to versions 4.x and 5.x of your mobile library respectively.</li>
+</ol>
+
+<h4 id="simulating-tracking-calls">Simulating Tracking Calls</h4>
+
+<p>The behavior of <code>utag.js</code> on this page is similar to that of a standard desktop website page. Watch the network activity to see which <code>utag.\*.js</code> files are loaded and trigger tracking calls from the browser console to verify that your tags are working as expected.</p>
+
+<p>To simulate tracking calls in <code>mobile.html</code>:</p>
+
+<ol>
+<li>From the browser console, type <code>utag.view({screen_title : &quot;Test Page&quot;})</code> and hit enter.</li>
+<li>Go to the network activity screen to inspect the outgoing vendor tracking activity.</li>
+</ol>
+
+<h2 id="remote-debugging">Remote Debugging</h2>
+
+<p>Advanced users are able to debug the hidden webview using Chrome or Safari remote web inspector</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="Android" title="Android">
+  <p>Ensure the app is configured to allow <a href="https://developers.google.com/web/tools/chrome-devtools/remote-debugging/webviews?hl=en#configure_webviews_for_debugging">remote debugging</a> of the Tealium webview (Must be done by the app developer at build time).</p>
+
+<p>Launch the <a href="https://developers.google.com/web/tools/chrome-devtools/remote-debugging/webviews?hl=en#open_a_webview_in_devtools">web inspector</a> in Google Chrome.</p>
+
+<p>Ensure your device is connected to your machine with a USB cable.</p>
+
+<p>In the list of web pages, look for the one hosted on <code>tags.tiqcdn.com</code>. This is the Tealium webview (<code>mobile.html</code>), which is inspected in the same way as described above. Whenever the app triggers a view or link request, any breakpoints you have set in your JavaScript tag templates are hit, and the value of the data layer is inspected as if it were a desktop website.</p>
+
+</div>
+
+<div class="tab-pane" data-lang="iOS" title="iOS">
+  <p>Follow Apple&rsquo;s <a href="https://developer.apple.com/library/content/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/GettingStarted/GettingStarted.html">Safari Developer Guide</a> to enable the web inspector in Safari for Mac OSX and in the iPhone/iPad&rsquo;s device settings.</p>
+
+<p>Once you are able see your device on the &ldquo;develop&rdquo; menu, open &ldquo;tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/mobile.html&rdquo; in the list of open web pages on the device, and then continue to follow the instructions in method 5 above.</p>
+
+<p class="note"><i class="fas fa-info-circle"></i>This also works when using the iOS Simulator to debug your app</p>
+
+</div>
+
+<p></div>
+</div></p>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/getting-started/feature-comparison/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Feature Comparison "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Feature Comparison</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  November 9, 2020 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  November 9, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#basics">Basics</a></li>
+              <li><a href="#tealium-eventstream-live-events">Tealium EventStream Live Events</a></li>
+              <li><a href="#charles-proxy">Charles Proxy</a></li>
+              <li><a href="#trace">Trace</a></li>
+              <li><a href="#analytics-tools">Analytics Tools</a></li>
+              <li><a href="#device-logs">Device Logs</a></li>
+              <li><a href="#debugging-mobile-html">Debugging mobile.html</a></li>
+              <li><a href="#remote-debugging">Remote Debugging</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

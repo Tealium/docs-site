@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,277 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#usage">Usage</a></li>
-              <li><a href="#install">Install</a></li>
-              <ul class="toc-h3"><li><a href="#cocoapods">CocoaPods</a></li>
-              <li><a href="#carthage">Carthage</a></li>
-              </ul><li><a href="#data-layer">Data Layer</a></li>
-              <li><a href="#api-reference">API Reference</a></li>
-              <ul class="toc-h3"><li><a href="#add">add()</a></li>
-              <li><a href="#remove">remove()</a></li>
-              <li><a href="#removeall">removeAll()</a></li>
-              <li><a href="#tealiumshouldtrack">tealiumShouldTrack()</a></li>
-              <li><a href="#tealiumtrackcompleted">tealiumTrackCompleted()</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/ios-swift-v1/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT V1
-      </a>
-    
-      <a href="/platforms/ios-swift-v1/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT V1/MODULE LIST
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Delegate Module</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      A multicast delegate handler to allow delegates to monitor or suppress dispatch events.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="usage">Usage</h2>
-
-<p>The Delegate module provides a multicast delegate handler to allow delegates to monitor or suppress dispatch events. Usage of this module is optional. You only need to use it if you need fine control over individual dispatches/events. For example, to block an event from being sent, or to monitor tracking calls for success/failure.</p>
-
-<p>The following platforms are supported:</p>
-
-<ul>
-<li>iOS</li>
-<li>tvOS</li>
-<li>watchOS</li>
-<li>macOS</li>
-</ul>
-
-<h2 id="install">Install</h2>
-
-<p>Install the Delegate module with CocoaPods or Carthage.</p>
-
-<h3 id="cocoapods">CocoaPods</h3>
-
-<p>To install the Delegate module with CocoaPods, add the following pod to your Podfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;tealium-swift/TealiumDelegate&#39;</span></code></pre></div>
-<p>The framework is auto-instantiated. It has a dependency on the <code>TealiumCore</code> pod. <a href="/platforms/ios-swift/install/#cocoapods">Learn more</a> about CocoaPods installation for iOS.</p>
-
-<h3 id="carthage">Carthage</h3>
-
-<p>To install the Delegate module with Carthage, following these steps:</p>
-
-<ol>
-<li><p>Go to the app target&rsquo;s General configuration page in Xcode.</p></li>
-
-<li><p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumDelegate.framework</code></pre></div></li>
-
-<li><p>To setup a tracking delegate, add the following required import statement to your project:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumDelegate</span></code></pre></div></li>
-</ol>
-
-<p>The framework is auto-instantiated. It has a dependency on <code>TealiumCore</code>. No additional import statements are necessary. <a href="/platforms/ios-swift/install/#carthage">Learn more</a> about Carthage installation for iOS.</p>
-
-<h2 id="data-layer">Data Layer</h2>
-
-<p>No additional variables are introduced by this module.</p>
-
-<h2 id="api-reference">API Reference</h2>
-
-<h3 id="add"><code>add()</code></h3>
-
-<p>Adds a weak pointer to a class instance conforming to the <code>TealiumDelegate</code> protocol.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">add(delegate)</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Parameters</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>delegate</code></td>
-<td><code>TealiumDelegate</code></td>
-<td>Any class conforming to the TealiumDelegate protocol</td>
-<td><code>delegate:self</code></td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="remove"><code>remove()</code></h3>
-
-<p>Removes the weak pointer reference to the given class conforming to the <code>TealiumDelegate</code> protocol.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">remove(delegate)</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Parameters</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>delegate</code></td>
-<td><code>TealiumDelegate</code></td>
-<td>Any class conforming to the TealiumDelegate protocol</td>
-<td><code>delegate:self</code></td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="removeall"><code>removeAll()</code></h3>
-
-<p>Removes all weak pointers from tracking.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">removeAll()</code></pre></div>
-<h3 id="tealiumshouldtrack"><code>tealiumShouldTrack()</code></h3>
-
-<p>If method returns <code>true</code>, the tracking call is allowed to complete. If method returns false, tracking call is canceled.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealiumShouldTrack(data: [String:Any]) -&gt; Bool</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Parameters</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>data</code></td>
-<td><code>[String:Any]</code></td>
-<td><code>[&quot;somekey&quot; : &quot;somevalue&quot;]</code></td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="tealiumtrackcompleted"><code>tealiumTrackCompleted()</code></h3>
-
-<p>Allows monitoring of completed track calls and handling of any errors.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">tealiumTrackCompleted(success: Bool, info: [String:Any]?, error: Error?)</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Parameters</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>success</code></td>
-<td><code>Bool</code></td>
-<td>If dispatch completed acceptably</td>
-<td>[<code>&quot;true&quot;</code>, <code>&quot;false&quot;</code>]</td>
-</tr>
-
-<tr>
-<td><code>info</code></td>
-<td><code>[String:Any]</code></td>
-<td>Dictionary of the original payload and any other returned data regarding dispatch</td>
-<td><code>[&quot;somekey&quot; : &quot;somevalue&quot;]</code></td>
-</tr>
-
-<tr>
-<td><code>error</code></td>
-<td><code>Error</code></td>
-<td>Error, if any, encountered during dispatch processing</td>
-<td><code>TealiumCollectError.xErrorDetected</code></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/ios-swift-v1/module-list/defaults-storage/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"DefaultStorage Module "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>DefaultStorage Module</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/ios-swift-v1/module-list/device-data/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>DeviceData Module</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"DeviceData Module"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7735,33 +7472,323 @@ var utag_data = {
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/ios-swift-v1/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        IOS SWIFT V1
+      </a>
+    
+      <a href="/platforms/ios-swift-v1/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        IOS SWIFT V1/MODULE LIST
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Delegate Module</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      A multicast delegate handler to allow delegates to monitor or suppress dispatch events.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="usage">Usage</h2>
+
+<p>The Delegate module provides a multicast delegate handler to allow delegates to monitor or suppress dispatch events. Usage of this module is optional. You only need to use it if you need fine control over individual dispatches/events. For example, to block an event from being sent, or to monitor tracking calls for success/failure.</p>
+
+<p>The following platforms are supported:</p>
+
+<ul>
+<li>iOS</li>
+<li>tvOS</li>
+<li>watchOS</li>
+<li>macOS</li>
+</ul>
+
+<h2 id="install">Install</h2>
+
+<p>Install the Delegate module with CocoaPods or Carthage.</p>
+
+<h3 id="cocoapods">CocoaPods</h3>
+
+<p>To install the Delegate module with CocoaPods, add the following pod to your Podfile:</p>
+
+<pre><code class="language-ruby">pod 'tealium-swift/TealiumDelegate'
+</code></pre>
+
+<p>The framework is auto-instantiated. It has a dependency on the <code>TealiumCore</code> pod. <a href="/platforms/ios-swift/install/#cocoapods">Learn more</a> about CocoaPods installation for iOS.</p>
+
+<h3 id="carthage">Carthage</h3>
+
+<p>To install the Delegate module with Carthage, following these steps:</p>
+
+<ol>
+<li><p>Go to the app target&rsquo;s General configuration page in Xcode.</p></li>
+
+<li><p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
+
+<pre><code class="language-ruby">TealiumDelegate.framework
+</code></pre></li>
+
+<li><p>To setup a tracking delegate, add the following required import statement to your project:</p>
+
+<pre><code class="language-swift">import TealiumDelegate
+</code></pre></li>
+</ol>
+
+<p>The framework is auto-instantiated. It has a dependency on <code>TealiumCore</code>. No additional import statements are necessary. <a href="/platforms/ios-swift/install/#carthage">Learn more</a> about Carthage installation for iOS.</p>
+
+<h2 id="data-layer">Data Layer</h2>
+
+<p>No additional variables are introduced by this module.</p>
+
+<h2 id="api-reference">API Reference</h2>
+
+<h3 id="add"><code>add()</code></h3>
+
+<p>Adds a weak pointer to a class instance conforming to the <code>TealiumDelegate</code> protocol.</p>
+
+<pre><code class="language-swift">add(delegate)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>delegate</code></td>
+<td><code>TealiumDelegate</code></td>
+<td>Any class conforming to the TealiumDelegate protocol</td>
+<td><code>delegate:self</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="remove"><code>remove()</code></h3>
+
+<p>Removes the weak pointer reference to the given class conforming to the <code>TealiumDelegate</code> protocol.</p>
+
+<pre><code class="language-swift">remove(delegate)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>delegate</code></td>
+<td><code>TealiumDelegate</code></td>
+<td>Any class conforming to the TealiumDelegate protocol</td>
+<td><code>delegate:self</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="removeall"><code>removeAll()</code></h3>
+
+<p>Removes all weak pointers from tracking.</p>
+
+<pre><code class="language-swift">removeAll()
+</code></pre>
+
+<h3 id="tealiumshouldtrack"><code>tealiumShouldTrack()</code></h3>
+
+<p>If method returns <code>true</code>, the tracking call is allowed to complete. If method returns false, tracking call is canceled.</p>
+
+<pre><code class="language-swift">tealiumShouldTrack(data: [String:Any]) -&gt; Bool
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>[String:Any]</code></td>
+<td><code>[&quot;somekey&quot; : &quot;somevalue&quot;]</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="tealiumtrackcompleted"><code>tealiumTrackCompleted()</code></h3>
+
+<p>Allows monitoring of completed track calls and handling of any errors.</p>
+
+<pre><code class="language-swift">tealiumTrackCompleted(success: Bool, info: [String:Any]?, error: Error?)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>success</code></td>
+<td><code>Bool</code></td>
+<td>If dispatch completed acceptably</td>
+<td>[<code>&quot;true&quot;</code>, <code>&quot;false&quot;</code>]</td>
+</tr>
+
+<tr>
+<td><code>info</code></td>
+<td><code>[String:Any]</code></td>
+<td>Dictionary of the original payload and any other returned data regarding dispatch</td>
+<td><code>[&quot;somekey&quot; : &quot;somevalue&quot;]</code></td>
+</tr>
+
+<tr>
+<td><code>error</code></td>
+<td><code>Error</code></td>
+<td>Error, if any, encountered during dispatch processing</td>
+<td><code>TealiumCollectError.xErrorDetected</code></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/ios-swift-v1/module-list/defaults-storage/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"DefaultStorage Module "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>DefaultStorage Module</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/ios-swift-v1/module-list/device-data/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>DeviceData Module</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"DeviceData Module"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  September 18, 2020 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  May 13, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#usage">Usage</a></li>
+              <li><a href="#install">Install</a></li>
+              <ul class="toc-h3"><li><a href="#cocoapods">CocoaPods</a></li>
+              <li><a href="#carthage">Carthage</a></li>
+              </ul><li><a href="#data-layer">Data Layer</a></li>
+              <li><a href="#api-reference">API Reference</a></li>
+              <ul class="toc-h3"><li><a href="#add">add()</a></li>
+              <li><a href="#remove">remove()</a></li>
+              <li><a href="#removeall">removeAll()</a></li>
+              <li><a href="#tealiumshouldtrack">tealiumShouldTrack()</a></li>
+              <li><a href="#tealiumtrackcompleted">tealiumTrackCompleted()</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

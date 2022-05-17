@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,440 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#install">Install</a></li>
-              <ul class="toc-h3"><li><a href="#maven">Maven</a></li>
-              <li><a href="#manual">Manual</a></li>
-              </ul><li><a href="#automatically-tracked-events">Automatically Tracked Events</a></li>
-              <li><a href="#manually-tracked-events">Manually Tracked Events</a></li>
-              <ul class="toc-h3"><li><a href="#configuration-options">Configuration Options</a></li>
-              </ul><li><a href="#crash-detection">Crash Detection</a></li>
-              <li><a href="#data-layer">Data Layer</a></li>
-              <li><a href="#api-reference">API Reference</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/android-kotlin/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        ANDROID KOTLIN/MODULE LIST
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Lifecycle Tracking Module</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Provides app lifecycle tracking events.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="install">Install</h2>
-
-<p>Install the Lifecycle Tracking module with Maven or manually.</p>
-
-<h3 id="maven">Maven</h3>
-
-<p>To install the Lifecycle Tracking module using Maven:</p>
-
-<ol>
-<li><p>In your project&rsquo;s top-level <code>build.gradle</code> file, add the following Maven repository:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#008000">// Top-level build file where you add configuration options common to all sub-projects/modules.
-</span><span style="color:#008000"></span>allprojects {
- repositories {
-   jcenter()
-   <span style="color:#008000">// Tealium Maven repo directive
-</span><span style="color:#008000"></span>   maven {
-       url <span style="color:#a31515">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
-   }
- }
-}</code></pre></div></li>
-
-<li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the following Maven dependency:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
- <span style="color:#008000">// only add if not already present
-</span><span style="color:#008000"></span> implementation <span style="color:#a31515">&#39;com.tealium:kotlin-core:1.3.0&#39;</span>
- <span style="color:#008000">// add lifecycle to list of dependencies
-</span><span style="color:#008000"></span> implementation <span style="color:#a31515">&#39;com.tealium:kotlin-lifecycle:1.1.0&#39;</span>
-}</code></pre></div></li>
-</ol>
-
-<h3 id="manual">Manual</h3>
-
-<p>To install the Lifecycle Tracking module manually, following these steps:</p>
-
-<ol>
-<li><p>Download the Tealium <a href="https://github.com/Tealium/tealium-kotlin/tree/master/lifecycle">Lifecycle Tracking Module</a> module.</p></li>
-
-<li><p>Copy the file <code>tealium-kotlin.lifecycle-1.1.0.aar</code> into your project&rsquo;s <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> directory.</p></li>
-
-<li><p>Add the Tealium library dependency to your project module’s <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
-  implementation(name:<span style="color:#a31515">&#39;tealium-kotlin.lifecycle-1.1.0&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
-}</code></pre></div></li>
-</ol>
-
-<h2 id="automatically-tracked-events">Automatically Tracked Events</h2>
-
-<p>The module tracks the following lifecycle events, set by the <code>lifecycle_type</code> variable:</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Lifecycle Event</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>launch</code></td>
-<td align="left">Generated on the first <code>onActivityResumed</code> to occur. If <code>onActivityPaused</code> is called before <code>onActivityResumed</code> (when the library is initialized in the middle of the <code>Activity</code> lifecycle), then the module creation time is used to generate a <code>launch</code> event.</td>
-</tr>
-
-<tr>
-<td align="left"><code>sleep</code></td>
-<td align="left">Generated 5 seconds after <code>onActivityPaused</code> is called and <code>onActivityResumed</code> was not called. This indicates that the application has been backgrounded because a new view has not been presented.</td>
-</tr>
-
-<tr>
-<td align="left"><code>wake</code></td>
-<td align="left">Generated during <code>onActivityResumed</code> when more than 5 seconds has elapsed since the last <code>onActivityPaused</code>. This indicates that <code>onActivityResumed</code> is called because the app is foregrounding and not because of a view change.</td>
-</tr>
-</tbody>
-</table>
-
-<p>Tealium lifecycle tracking solely associates usage with the activity lifecycle.</p>
-
-<p>The library leverages the <a href="http://developer.android.com/reference/android/app/Application.ActivityLifecycleCallbacks.html">Application.ActivityLifecycleCallbacks</a> API and evaluates its conditions on <a href="http://developer.android.com/reference/android/app/Application.ActivityLifecycleCallbacks.html#onActivityResumed%28android.app.Activity%29">onActivityResumed</a> and <a href="http://developer.android.com/reference/android/app/Application.ActivityLifecycleCallbacks.html#onActivityPaused%28android.app.Activity%29">onActivityPaused</a>.</p>
-
-<p>It is enabled with the following code:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> config = TealiumConfig(
-                applicaiton,
-                <span style="color:#a31515">&#34;accountName&#34;</span>,
-                <span style="color:#a31515">&#34;profileName&#34;</span>,
-                Environment.DEV,
-                modules = mutableSetOf(Lifecycle)
-                )</code></pre></div>
-<h2 id="manually-tracked-events">Manually Tracked Events</h2>
-
-<p>Available for specific lifecycle paradigms and unconventional lifecycle tracking. This approach is not recommended for most implementations. To allow manual lifecycle tracking update your lifecycle initiation code to set <code>isAutoTrackingEnabled</code> to <code>false</code>.</p>
-
-<h3 id="configuration-options">Configuration Options</h3>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> config = TealiumConfig(...)
-
-config.isAutoTrackingEnabled = <span style="color:#00f">false</span></code></pre></div>
-<p>To manually track a <code>launch</code> event, call the <code>trackLaunchEvent()</code> method:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium.lifecycle?.trackLaunchEvent()</code></pre></div>
-<p>To manually track a <code>sleep</code> event, call the <code>trackSleepEvent()</code> method:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium.lifecycle?.trackSleepEvent()</code></pre></div>
-<p>To manually track a <code>wake</code> event, call the <code>trackWakeEvent()</code> method:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">tealium.lifecycle?.trackWakeEvent()</code></pre></div>
-<h2 id="crash-detection">Crash Detection</h2>
-
-<p>When a <code>launch</code> event follows a <code>wake</code> event or vice-versa, this indicates a crash has occurred since the app did not successfully <code>sleep</code>. If the aforementioned sequence occurs because of a Tealium library shutdown, this is not considered to be a crash event.</p>
-
-<p>When a crash event is detected, the <code>launch</code> or <code>wake</code> event data has the <code>lifecycle_diddetectcrash</code> variable added.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
-    <span style="color:#a31515">&#34;lifecycle_type&#34;</span> : <span style="color:#a31515">&#34;launch&#34;</span>,
-    <span style="color:#a31515">&#34;lifecycle_diddetectcrash&#34;</span> : <span style="color:#a31515">&#34;true&#34;</span>,
-    <span style="color:#008000">//...
-</span><span style="color:#008000"></span>}
-</code></pre></div>
-<h2 id="data-layer">Data Layer</h2>
-
-<p>The Lifecycle Tracking module adds the following additional variables for the listed lifecycle event types (<code>launch</code>, <code>wake</code>, <code>sleep</code>):</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Variable</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-<th align="left">Event</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>lifecycle_ dayofweek_local</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Local day of week that call was made, such as 1=Sunday, 2=Monday</td>
-<td align="left"><code>2</code></td>
-<td align="left">all</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ dayssincelaunch</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Days since first launch in integer increments</td>
-<td align="left"><code>23</code></td>
-<td align="left">all</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ dayssinceupdate</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Days since the last detected app version update in integer increments</td>
-<td align="left"><code>46</code></td>
-<td align="left">all</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ dayssincelastwake</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Days since last detected wake in integer increments</td>
-<td align="left"><code>1</code></td>
-<td align="left">all</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ diddetectcrash</code></td>
-<td align="left"><code>Boolean</code></td>
-<td align="left">Crash inferred from missing prior sleep event (only present if a launch event follows a wake event)</td>
-<td align="left">[<code>true</code>, <code>false</code>]</td>
-<td align="left">launch</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ firstlaunchdate</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">GMT timestamp of the first detected launch/wake in ISO8601 format from Zulu time</td>
-<td align="left"><code>&quot;2013-07-11T17:55:04Z&quot;</code></td>
-<td align="left">all</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ firstlaunchdate_ MMDDYYYY </code></td>
-<td align="left"><code>String</code></td>
-<td align="left">GMT Timestamp formatted as MM/DD/YYYY</td>
-<td align="left"><code>&quot;01/17/2012&quot;</code></td>
-<td align="left">all</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ hourofday_local</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Local hour of day that call was made (24 hour format)</td>
-<td align="left"><code>&quot;12&quot;</code></td>
-<td align="left">all</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ isfirstlaunch</code></td>
-<td align="left"><code>Boolean</code></td>
-<td align="left">Only present if call is the first launch call</td>
-<td align="left">[<code>true</code>, <code>false</code>]</td>
-<td align="left">launch</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ isfirstlaunchupdate</code></td>
-<td align="left"><code>Boolean</code></td>
-<td align="left">Only present if call is first launch after a detected updated</td>
-<td align="left">[<code>true</code>, <code>false</code>]</td>
-<td align="left">launch</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ isfirstwakemonth</code></td>
-<td align="left"><code>Boolean</code></td>
-<td align="left">Only present if call is first launch/wake of the month</td>
-<td align="left">[<code>true</code>, <code>false</code>]</td>
-<td align="left">launch, wake</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ isfirstwaketoday</code></td>
-<td align="left"><code>Boolean</code></td>
-<td align="left">Only present if call is first launch/wake of the day</td>
-<td align="left">[<code>true</code>, <code>false</code>]</td>
-<td align="left">launch, wake</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ launchcount</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Total number of launches this version of your app (since the last update)</td>
-<td align="left"><code>3</code></td>
-<td align="left">all</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ secondsawake</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Whole seconds app was awake since last wake/launch (sent only with <code>lifecycle_type:sleep</code> or <code>lifecycle_type:terminate</code> calls)</td>
-<td align="left"><code>30</code></td>
-<td align="left">all</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ priorsecondsawake </code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Whole seconds app was awake since last launch only - aggregates total from all wakes prior (sent only with <code>lifecycle_type:launch</code> calls)</td>
-<td align="left"><code>126</code></td>
-<td align="left">all</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ sleepcount</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Total number of times your app has gone to sleep (resets if updated)</td>
-<td align="left"><code>5</code></td>
-<td align="left">all</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ totalcrashcount</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Total number of crashes counted since install (only reset if app deleted)</td>
-<td align="left"><code>21 </code></td>
-<td align="left">all</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ totallaunchcount</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Total number of launches since install (only reset if app deleted)</td>
-<td align="left"><code>3</code></td>
-<td align="left">all</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ totalsecondsawake</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Total number of seconds your app has been in a woken/active state since app install (only reset if app deleted)</td>
-<td align="left"><code>36</code></td>
-<td align="left">all</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ totalsleepcount</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Total number of times your app has gone into the background since app install (only reset if app deleted)</td>
-<td align="left"><code>400</code></td>
-<td align="left">all</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ totalwakecount</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Total number of launches + wakes since install (only reset if app deleted)</td>
-<td align="left"><code>563</code></td>
-<td align="left">all</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_type</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Type of lifecycle call</td>
-<td align="left">[<code>&quot;initial&quot;</code>, <code>&quot;launch&quot;</code>, <code>&quot;wake&quot;</code>, <code>&quot;sleep&quot;</code>, <code>&quot;terminate&quot;</code>]</td>
-<td align="left">all</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ updatelaunchdate</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">GMT timestamp of first wake/launch after a version update has been detected</td>
-<td align="left"><code>&quot;2014-09-08T18:10:01Z&quot;</code></td>
-<td align="left">all</td>
-</tr>
-
-<tr>
-<td align="left"><code>lifecycle_ wakecount</code></td>
-<td align="left"><code>Number</code></td>
-<td align="left">Total number of launches + wakes in this version of your app (resets if updated)</td>
-<td align="left"><code> 29</code></td>
-<td align="left">all</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="api-reference">API Reference</h2>
-
-<p>For the reference of methods used by the Lifecycle Tracking module, see the <a href="/platforms/android-kotlin/api/lifecycle/"><code>LifeCycle</code></a> class in the Tealium SDK for Android API.</p>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/android-kotlin/module-list/install-referrer/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Install Referrer Module "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Install Referrer Module</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/android-kotlin/module-list/location/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Location Manager Module</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Location Manager Module"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7898,33 +7472,487 @@ config.isAutoTrackingEnabled = <span style="color:#00f">false</span></code></pre
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/android-kotlin/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        ANDROID KOTLIN/MODULE LIST
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Lifecycle Tracking Module</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Provides app lifecycle tracking events.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="install">Install</h2>
+
+<p>Install the Lifecycle Tracking module with Maven or manually.</p>
+
+<h3 id="maven">Maven</h3>
+
+<p>To install the Lifecycle Tracking module using Maven:</p>
+
+<ol>
+<li><p>In your project&rsquo;s top-level <code>build.gradle</code> file, add the following Maven repository:</p>
+
+<pre><code class="language-groovy">// Top-level build file where you add configuration options common to all sub-projects/modules.
+allprojects {
+ repositories {
+   jcenter()
+   // Tealium Maven repo directive
+   maven {
+       url &quot;https://maven.tealiumiq.com/android/releases/&quot;
+   }
+ }
+}
+</code></pre></li>
+
+<li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the following Maven dependency:</p>
+
+<pre><code class="language-groovy">dependencies {
+ // only add if not already present
+ implementation 'com.tealium:kotlin-core:1.3.0'
+ // add lifecycle to list of dependencies
+ implementation 'com.tealium:kotlin-lifecycle:1.1.0'
+}
+</code></pre></li>
+</ol>
+
+<h3 id="manual">Manual</h3>
+
+<p>To install the Lifecycle Tracking module manually, following these steps:</p>
+
+<ol>
+<li><p>Download the Tealium <a href="https://github.com/Tealium/tealium-kotlin/tree/master/lifecycle">Lifecycle Tracking Module</a> module.</p></li>
+
+<li><p>Copy the file <code>tealium-kotlin.lifecycle-1.1.0.aar</code> into your project&rsquo;s <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> directory.</p></li>
+
+<li><p>Add the Tealium library dependency to your project module’s <code>build.gradle</code> file:</p>
+
+<pre><code class="language-groovy">dependencies {
+  implementation(name:'tealium-kotlin.lifecycle-1.1.0', ext:'aar')
+}
+</code></pre></li>
+</ol>
+
+<h2 id="automatically-tracked-events">Automatically Tracked Events</h2>
+
+<p>The module tracks the following lifecycle events, set by the <code>lifecycle_type</code> variable:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Lifecycle Event</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>launch</code></td>
+<td align="left">Generated on the first <code>onActivityResumed</code> to occur. If <code>onActivityPaused</code> is called before <code>onActivityResumed</code> (when the library is initialized in the middle of the <code>Activity</code> lifecycle), then the module creation time is used to generate a <code>launch</code> event.</td>
+</tr>
+
+<tr>
+<td align="left"><code>sleep</code></td>
+<td align="left">Generated 5 seconds after <code>onActivityPaused</code> is called and <code>onActivityResumed</code> was not called. This indicates that the application has been backgrounded because a new view has not been presented.</td>
+</tr>
+
+<tr>
+<td align="left"><code>wake</code></td>
+<td align="left">Generated during <code>onActivityResumed</code> when more than 5 seconds has elapsed since the last <code>onActivityPaused</code>. This indicates that <code>onActivityResumed</code> is called because the app is foregrounding and not because of a view change.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Tealium lifecycle tracking solely associates usage with the activity lifecycle.</p>
+
+<p>The library leverages the <a href="http://developer.android.com/reference/android/app/Application.ActivityLifecycleCallbacks.html">Application.ActivityLifecycleCallbacks</a> API and evaluates its conditions on <a href="http://developer.android.com/reference/android/app/Application.ActivityLifecycleCallbacks.html#onActivityResumed%28android.app.Activity%29">onActivityResumed</a> and <a href="http://developer.android.com/reference/android/app/Application.ActivityLifecycleCallbacks.html#onActivityPaused%28android.app.Activity%29">onActivityPaused</a>.</p>
+
+<p>It is enabled with the following code:</p>
+
+<pre><code class="language-kotlin">val config = TealiumConfig(
+                applicaiton,
+                &quot;accountName&quot;,
+                &quot;profileName&quot;,
+                Environment.DEV,
+                modules = mutableSetOf(Lifecycle)
+                )
+</code></pre>
+
+<h2 id="manually-tracked-events">Manually Tracked Events</h2>
+
+<p>Available for specific lifecycle paradigms and unconventional lifecycle tracking. This approach is not recommended for most implementations. To allow manual lifecycle tracking update your lifecycle initiation code to set <code>isAutoTrackingEnabled</code> to <code>false</code>.</p>
+
+<h3 id="configuration-options">Configuration Options</h3>
+
+<pre><code class="language-kotlin">val config = TealiumConfig(...)
+
+config.isAutoTrackingEnabled = false
+</code></pre>
+
+<p>To manually track a <code>launch</code> event, call the <code>trackLaunchEvent()</code> method:</p>
+
+<pre><code class="language-kotlin">tealium.lifecycle?.trackLaunchEvent()
+</code></pre>
+
+<p>To manually track a <code>sleep</code> event, call the <code>trackSleepEvent()</code> method:</p>
+
+<pre><code class="language-kotlin">tealium.lifecycle?.trackSleepEvent()
+</code></pre>
+
+<p>To manually track a <code>wake</code> event, call the <code>trackWakeEvent()</code> method:</p>
+
+<pre><code class="language-kotlin">tealium.lifecycle?.trackWakeEvent()
+</code></pre>
+
+<h2 id="crash-detection">Crash Detection</h2>
+
+<p>When a <code>launch</code> event follows a <code>wake</code> event or vice-versa, this indicates a crash has occurred since the app did not successfully <code>sleep</code>. If the aforementioned sequence occurs because of a Tealium library shutdown, this is not considered to be a crash event.</p>
+
+<p>When a crash event is detected, the <code>launch</code> or <code>wake</code> event data has the <code>lifecycle_diddetectcrash</code> variable added.</p>
+
+<pre><code class="language-javascript">{
+    &quot;lifecycle_type&quot; : &quot;launch&quot;,
+    &quot;lifecycle_diddetectcrash&quot; : &quot;true&quot;,
+    //...
+}
+</code></pre>
+
+<h2 id="data-layer">Data Layer</h2>
+
+<p>The Lifecycle Tracking module adds the following additional variables for the listed lifecycle event types (<code>launch</code>, <code>wake</code>, <code>sleep</code>):</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Variable</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+<th align="left">Event</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>lifecycle_ dayofweek_local</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Local day of week that call was made, such as 1=Sunday, 2=Monday</td>
+<td align="left"><code>2</code></td>
+<td align="left">all</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ dayssincelaunch</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Days since first launch in integer increments</td>
+<td align="left"><code>23</code></td>
+<td align="left">all</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ dayssinceupdate</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Days since the last detected app version update in integer increments</td>
+<td align="left"><code>46</code></td>
+<td align="left">all</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ dayssincelastwake</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Days since last detected wake in integer increments</td>
+<td align="left"><code>1</code></td>
+<td align="left">all</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ diddetectcrash</code></td>
+<td align="left"><code>Boolean</code></td>
+<td align="left">Crash inferred from missing prior sleep event (only present if a launch event follows a wake event)</td>
+<td align="left">[<code>true</code>, <code>false</code>]</td>
+<td align="left">launch</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ firstlaunchdate</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">GMT timestamp of the first detected launch/wake in ISO8601 format from Zulu time</td>
+<td align="left"><code>&quot;2013-07-11T17:55:04Z&quot;</code></td>
+<td align="left">all</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ firstlaunchdate_ MMDDYYYY </code></td>
+<td align="left"><code>String</code></td>
+<td align="left">GMT Timestamp formatted as MM/DD/YYYY</td>
+<td align="left"><code>&quot;01/17/2012&quot;</code></td>
+<td align="left">all</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ hourofday_local</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Local hour of day that call was made (24 hour format)</td>
+<td align="left"><code>&quot;12&quot;</code></td>
+<td align="left">all</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ isfirstlaunch</code></td>
+<td align="left"><code>Boolean</code></td>
+<td align="left">Only present if call is the first launch call</td>
+<td align="left">[<code>true</code>, <code>false</code>]</td>
+<td align="left">launch</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ isfirstlaunchupdate</code></td>
+<td align="left"><code>Boolean</code></td>
+<td align="left">Only present if call is first launch after a detected updated</td>
+<td align="left">[<code>true</code>, <code>false</code>]</td>
+<td align="left">launch</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ isfirstwakemonth</code></td>
+<td align="left"><code>Boolean</code></td>
+<td align="left">Only present if call is first launch/wake of the month</td>
+<td align="left">[<code>true</code>, <code>false</code>]</td>
+<td align="left">launch, wake</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ isfirstwaketoday</code></td>
+<td align="left"><code>Boolean</code></td>
+<td align="left">Only present if call is first launch/wake of the day</td>
+<td align="left">[<code>true</code>, <code>false</code>]</td>
+<td align="left">launch, wake</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ launchcount</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Total number of launches this version of your app (since the last update)</td>
+<td align="left"><code>3</code></td>
+<td align="left">all</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ secondsawake</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Whole seconds app was awake since last wake/launch (sent only with <code>lifecycle_type:sleep</code> or <code>lifecycle_type:terminate</code> calls)</td>
+<td align="left"><code>30</code></td>
+<td align="left">all</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ priorsecondsawake </code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Whole seconds app was awake since last launch only - aggregates total from all wakes prior (sent only with <code>lifecycle_type:launch</code> calls)</td>
+<td align="left"><code>126</code></td>
+<td align="left">all</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ sleepcount</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Total number of times your app has gone to sleep (resets if updated)</td>
+<td align="left"><code>5</code></td>
+<td align="left">all</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ totalcrashcount</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Total number of crashes counted since install (only reset if app deleted)</td>
+<td align="left"><code>21 </code></td>
+<td align="left">all</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ totallaunchcount</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Total number of launches since install (only reset if app deleted)</td>
+<td align="left"><code>3</code></td>
+<td align="left">all</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ totalsecondsawake</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Total number of seconds your app has been in a woken/active state since app install (only reset if app deleted)</td>
+<td align="left"><code>36</code></td>
+<td align="left">all</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ totalsleepcount</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Total number of times your app has gone into the background since app install (only reset if app deleted)</td>
+<td align="left"><code>400</code></td>
+<td align="left">all</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ totalwakecount</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Total number of launches + wakes since install (only reset if app deleted)</td>
+<td align="left"><code>563</code></td>
+<td align="left">all</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_type</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Type of lifecycle call</td>
+<td align="left">[<code>&quot;initial&quot;</code>, <code>&quot;launch&quot;</code>, <code>&quot;wake&quot;</code>, <code>&quot;sleep&quot;</code>, <code>&quot;terminate&quot;</code>]</td>
+<td align="left">all</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ updatelaunchdate</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">GMT timestamp of first wake/launch after a version update has been detected</td>
+<td align="left"><code>&quot;2014-09-08T18:10:01Z&quot;</code></td>
+<td align="left">all</td>
+</tr>
+
+<tr>
+<td align="left"><code>lifecycle_ wakecount</code></td>
+<td align="left"><code>Number</code></td>
+<td align="left">Total number of launches + wakes in this version of your app (resets if updated)</td>
+<td align="left"><code> 29</code></td>
+<td align="left">all</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="api-reference">API Reference</h2>
+
+<p>For the reference of methods used by the Lifecycle Tracking module, see the <a href="/platforms/android-kotlin/api/lifecycle/"><code>LifeCycle</code></a> class in the Tealium SDK for Android API.</p>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/android-kotlin/module-list/install-referrer/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Install Referrer Module "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Install Referrer Module</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/android-kotlin/module-list/location/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Location Manager Module</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Location Manager Module"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  December 14, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  December 14, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#install">Install</a></li>
+              <ul class="toc-h3"><li><a href="#maven">Maven</a></li>
+              <li><a href="#manual">Manual</a></li>
+              </ul><li><a href="#automatically-tracked-events">Automatically Tracked Events</a></li>
+              <li><a href="#manually-tracked-events">Manually Tracked Events</a></li>
+              <ul class="toc-h3"><li><a href="#configuration-options">Configuration Options</a></li>
+              </ul><li><a href="#crash-detection">Crash Detection</a></li>
+              <li><a href="#data-layer">Data Layer</a></li>
+              <li><a href="#api-reference">API Reference</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

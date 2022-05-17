@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,191 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#what-is-the-b-object">What is the b Object?</a></li>
-              <li><a href="#why-do-we-have-a-b-object">Why Do We Have a b Object?</a></li>
-              <li><a href="#variable-types">Variable Types</a></li>
-              <ul class="toc-h3"><li><a href="#data-layer">Data Layer</a></li>
-              <li><a href="#javascript-page-variable">JavaScript Page Variable</a></li>
-              <li><a href="#query-string-parameters">Query String Parameters</a></li>
-              <li><a href="#cookie-values">Cookie Values</a></li>
-              </ul><li><a href="#additional-considerations">Additional Considerations</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/javascript/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        JAVASCRIPT
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Data Layer Object (b)</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Learn to use the alias to the Data Layer Object (<code>b</code>).
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="what-is-the-b-object">What is the <code>b</code> Object?</h2>
-
-<p>The <code>b</code> object is a JavaScript variable containing the most recent copy of the data layer object. Depending on when it&rsquo;s referenced, the <code>b</code> object is either an alias or a local copy of the <code>utag.data</code> object. So what is the <code>utag.data</code> object? The <code>utag.data</code> object is a collection of all the data on your page:</p>
-
-<ul>
-<li>Data Layer Variables</li>
-<li>JavaScript Page Variables</li>
-<li>Meta Tags</li>
-<li>DOM Attributes</li>
-<li>Cookies</li>
-</ul>
-
-<p>So, in essence, the <code>b</code> object is a copy of your page&rsquo;s data layer.</p>
-
-<h2 id="why-do-we-have-a-b-object">Why Do We Have a <code>b</code> Object?</h2>
-
-<p>Using the <code>b</code> object provides a couple benefits:</p>
-
-<ul>
-<li><strong>As an alias with a shorter name</strong><br />
-This shorter name improves performance loading Tealium. If you had to reference <code>utag.data</code> a hundred times, then you are adding 900 characters to the size of your files. That&rsquo;s 900 more characters the browser has to parse through when loading these files which results in a negative affect on visitor load times. Referring to it as <code>b</code> means only 1 character to add to the file for each reference, which if you referenced a hundred times  results in only 100 characters for the browser to parse through. </li>
-<li><strong>As a copy that leaves the original untouched</strong><br />
-By creating a local copy of <code>utag.data</code>, the values needed for each tag are customizable without affecting the original data object.   </li>
-</ul>
-
-<h2 id="variable-types">Variable Types</h2>
-
-<p>To reference a variable in the <code>b</code> object directly in a tag template or extension, you must consider the type of variable you&rsquo;re trying to reference; the syntax differs slightly. </p>
-
-<h3 id="data-layer">Data Layer</h3>
-
-<p>For variables contained in the <code>utag_data</code> object, use the following syntax:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#a31515">&#39;var_name&#39;</span>]
-</code></pre></div>
-<h3 id="javascript-page-variable">JavaScript Page Variable</h3>
-
-<p>To reference variables defined as JavaScript Page variables, use the following syntax:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#a31515">&#39;js_page.var_name&#39;</span>]
-</code></pre></div>
-<h3 id="query-string-parameters">Query String Parameters</h3>
-
-<p>To reference a query string parameter, use the following syntax:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#a31515">&#39;qp.var_name&#39;</span>]
-</code></pre></div>
-<h3 id="cookie-values">Cookie Values</h3>
-
-<p>Tealium has two ways to store cookie values. The syntax to reference these two types varies slightly. <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Tealium-Cookies/ta-p/138">Learn more</a> about working with cookies in Tealium iQ.</p>
-
-<ol>
-<li><p><strong><code>utag_main</code> Cookie Values</strong> - to reference a cookie value contained in the <code>utag_main</code> cookie, use the following syntax: </p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#a31515">&#39;cp.utag_main_var_name&#39;</span>]
-</code></pre></div></li>
-
-<li><p><strong>Standard Cookie Values</strong> - to reference a cookie value that is not contained in the <code>utag_main</code> cookie, use the following syntax:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">b[<span style="color:#a31515">&#39;cp.var_name&#39;</span>]
-</code></pre></div></li>
-</ol>
-
-<h2 id="additional-considerations">Additional Considerations</h2>
-
-<p><strong>The <code>b</code> object is not global</strong></p>
-
-<ul>
-<li>The <code>b</code> object is a locally scoped variable, only available in <strong>All Tags</strong> and <strong>Tag Scoped</strong> extensions. </li>
-<li>Extensions scoped to <strong>Pre Loader</strong> run before the <code>b</code> object has been created.</li>
-<li>Extensions scoped to <strong>DOM Ready</strong> run independently from the main order of operations, so the <code>b</code> object cannot be referenced in this scope either.<br /></li>
-<li><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Extensions/ta-p/13649">Learn more</a> about how to reference the data object variable in extensions.<br /></li>
-</ul>
-
-<p><strong>The <code>b</code> object in tracking calls</strong></p>
-
-<ul>
-<li>During a standard page load, the <code>b</code> object becomes a copy of the <code>utag_data</code> object. However, on manual tracking calls, the <code>b</code> object is a copy of the object passed to <code>utag.view()</code> or <code>utag.link()</code> and does not contain variables from the original <code>utag_data</code> object. </li>
-<li>To preserve data from <code>utag_data</code> in tracking calls (per page load) use the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Publish-Configuration/ta-p/13632#implementation">Base Variables setting in the publish settings</a>.<br /></li>
-</ul>
-
-<p class="note"><i class="fas fa-info-circle"></i>For profiles loading version 4.39 or older, the content of the <code>b</code> object during tracking calls is a complete copy of <code>utag.data</code>. <a href="/platforms/javascript/release-notes/">Learn more</a> about this update in release history <code>utag.js</code> 4.40.</p>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/javascript/universal-tag/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Universal Tag (utag.js) "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Universal Tag (utag.js)</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/javascript/single-page-applications/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Single-Page Applications</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Single-Page Applications"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7649,33 +7472,223 @@ By creating a local copy of <code>utag.data</code>, the values needed for each t
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/javascript/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        JAVASCRIPT
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Data Layer Object (b)</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Learn to use the alias to the Data Layer Object (<code>b</code>).
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="what-is-the-b-object">What is the <code>b</code> Object?</h2>
+
+<p>The <code>b</code> object is a JavaScript variable containing the most recent copy of the data layer object. Depending on when it&rsquo;s referenced, the <code>b</code> object is either an alias or a local copy of the <code>utag.data</code> object. So what is the <code>utag.data</code> object? The <code>utag.data</code> object is a collection of all the data on your page:</p>
+
+<ul>
+<li>Data Layer Variables</li>
+<li>JavaScript Page Variables</li>
+<li>Meta Tags</li>
+<li>DOM Attributes</li>
+<li>Cookies</li>
+</ul>
+
+<p>So, in essence, the <code>b</code> object is a copy of your page&rsquo;s data layer.</p>
+
+<h2 id="why-do-we-have-a-b-object">Why Do We Have a <code>b</code> Object?</h2>
+
+<p>Using the <code>b</code> object provides a couple benefits:</p>
+
+<ul>
+<li><strong>As an alias with a shorter name</strong><br />
+This shorter name improves performance loading Tealium. If you had to reference <code>utag.data</code> a hundred times, then you are adding 900 characters to the size of your files. That&rsquo;s 900 more characters the browser has to parse through when loading these files which results in a negative affect on visitor load times. Referring to it as <code>b</code> means only 1 character to add to the file for each reference, which if you referenced a hundred times  results in only 100 characters for the browser to parse through. </li>
+<li><strong>As a copy that leaves the original untouched</strong><br />
+By creating a local copy of <code>utag.data</code>, the values needed for each tag are customizable without affecting the original data object.   </li>
+</ul>
+
+<h2 id="variable-types">Variable Types</h2>
+
+<p>To reference a variable in the <code>b</code> object directly in a tag template or extension, you must consider the type of variable you&rsquo;re trying to reference; the syntax differs slightly. </p>
+
+<h3 id="data-layer">Data Layer</h3>
+
+<p>For variables contained in the <code>utag_data</code> object, use the following syntax:</p>
+
+<pre><code class="language-javascript">b['var_name']
+</code></pre>
+
+<h3 id="javascript-page-variable">JavaScript Page Variable</h3>
+
+<p>To reference variables defined as JavaScript Page variables, use the following syntax:</p>
+
+<pre><code class="language-javascript">b['js_page.var_name']
+</code></pre>
+
+<h3 id="query-string-parameters">Query String Parameters</h3>
+
+<p>To reference a query string parameter, use the following syntax:</p>
+
+<pre><code class="language-javascript">b['qp.var_name']
+</code></pre>
+
+<h3 id="cookie-values">Cookie Values</h3>
+
+<p>Tealium has two ways to store cookie values. The syntax to reference these two types varies slightly. <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Tealium-Cookies/ta-p/138">Learn more</a> about working with cookies in Tealium iQ.</p>
+
+<ol>
+<li><p><strong><code>utag_main</code> Cookie Values</strong> - to reference a cookie value contained in the <code>utag_main</code> cookie, use the following syntax: </p>
+
+<pre><code class="language-javascript">b['cp.utag_main_var_name']
+</code></pre></li>
+
+<li><p><strong>Standard Cookie Values</strong> - to reference a cookie value that is not contained in the <code>utag_main</code> cookie, use the following syntax:</p>
+
+<pre><code class="language-javascript">b['cp.var_name']
+</code></pre></li>
+</ol>
+
+<h2 id="additional-considerations">Additional Considerations</h2>
+
+<p><strong>The <code>b</code> object is not global</strong></p>
+
+<ul>
+<li>The <code>b</code> object is a locally scoped variable, only available in <strong>All Tags</strong> and <strong>Tag Scoped</strong> extensions. </li>
+<li>Extensions scoped to <strong>Pre Loader</strong> run before the <code>b</code> object has been created.</li>
+<li>Extensions scoped to <strong>DOM Ready</strong> run independently from the main order of operations, so the <code>b</code> object cannot be referenced in this scope either.<br /></li>
+<li><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Extensions/ta-p/13649">Learn more</a> about how to reference the data object variable in extensions.<br /></li>
+</ul>
+
+<p><strong>The <code>b</code> object in tracking calls</strong></p>
+
+<ul>
+<li>During a standard page load, the <code>b</code> object becomes a copy of the <code>utag_data</code> object. However, on manual tracking calls, the <code>b</code> object is a copy of the object passed to <code>utag.view()</code> or <code>utag.link()</code> and does not contain variables from the original <code>utag_data</code> object. </li>
+<li>To preserve data from <code>utag_data</code> in tracking calls (per page load) use the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Publish-Configuration/ta-p/13632#implementation">Base Variables setting in the publish settings</a>.<br /></li>
+</ul>
+
+<p class="note"><i class="fas fa-info-circle"></i>For profiles loading version 4.39 or older, the content of the <code>b</code> object during tracking calls is a complete copy of <code>utag.data</code>. <a href="/platforms/javascript/release-notes/">Learn more</a> about this update in release history <code>utag.js</code> 4.40.</p>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/javascript/universal-tag/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Universal Tag (utag.js) "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Universal Tag (utag.js)</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/javascript/single-page-applications/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Single-Page Applications</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Single-Page Applications"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  March 11, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  March 11, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#what-is-the-b-object">What is the b Object?</a></li>
+              <li><a href="#why-do-we-have-a-b-object">Why Do We Have a b Object?</a></li>
+              <li><a href="#variable-types">Variable Types</a></li>
+              <ul class="toc-h3"><li><a href="#data-layer">Data Layer</a></li>
+              <li><a href="#javascript-page-variable">JavaScript Page Variable</a></li>
+              <li><a href="#query-string-parameters">Query String Parameters</a></li>
+              <li><a href="#cookie-values">Cookie Values</a></li>
+              </ul><li><a href="#additional-considerations">Additional Considerations</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

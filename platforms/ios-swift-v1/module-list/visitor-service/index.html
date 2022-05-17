@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,999 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#usage">Usage</a></li>
-              <li><a href="#install">Install</a></li>
-              <ul class="toc-h3"><li><a href="#cocoapods">CocoaPods</a></li>
-              <li><a href="#carthage">Carthage</a></li>
-              </ul><li><a href="#visitor-data-object">Visitor Data Object</a></li>
-              <li><a href="#api-reference">API Reference</a></li>
-              <ul class="toc-h3"><li><a href="#class-tealium">Class Tealium</a></li>
-              <li><a href="#class-tealiumvisitorservicedelegate">Class: TealiumVisitorServiceDelegate</a></li>
-              <li><a href="#class-tealiumconfig">Class: TealiumConfig</a></li>
-              </ul><li><a href="#release-notes">Release Notes</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/ios-swift-v1/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT V1
-      </a>
-    
-      <a href="/platforms/ios-swift-v1/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT V1/MODULE LIST
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">VisitorService Module</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Retrieves the updated visitor profile from the visitor service.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="usage">Usage</h2>
-
-<p>The VisitorService module implements the <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Data-Layer-Enrichment/ta-p/684">Data Layer Enrichment</a> feature of the Tealium Customer Data Hub.</p>
-
-<p>Usage of this module is recommended if you are licensed for Tealium AudienceStream and would like to use the visitor profile to enhance the user experience in your mobile application. If you are not licensed for AudienceStream, usage of this module is not recommended as no visitor profile is returned.</p>
-
-<p>The following platforms are supported:</p>
-
-<ul>
-<li>iOS</li>
-<li>tvOS</li>
-<li>watchOS</li>
-<li>macOS</li>
-</ul>
-
-<h2 id="install">Install</h2>
-
-<p>Install the VisitorService module with CocoaPods or Carthage.</p>
-
-<h3 id="cocoapods">CocoaPods</h3>
-
-<p>To install the VisitorService module with CocoaPods, add the following pods to your Podfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod <span style="color:#a31515">&#39;tealium-swift/TealiumCore&#39;</span>
-pod <span style="color:#a31515">&#39;tealium-swift/TealiumCollect&#39;</span> <span style="color:#a31515">//o</span>r <span style="color:#a31515">&#39;tealium-swift/TealiumTagManagement&#39;</span>
-pod <span style="color:#a31515">&#39;tealium-swift/TealiumVisitorService&#39;</span></code></pre></div>
-<p>The framework is auto-instantiated. It has a dependency on the <code>TealiumCore</code> pod, and one of the dispatch service pods (either <code>TealiumCollect</code> or <code>TealiumTagManagement</code>). <a href="/platforms/ios-swift/install/#cocoapods">Learn more</a> about CocoaPods installation for iOS.</p>
-
-<h3 id="carthage">Carthage</h3>
-
-<p>To install the VisitorService module with Carthage, following these steps:</p>
-
-<ol>
-<li><p>Go to the app target&rsquo;s General configuration page in Xcode.</p></li>
-
-<li><p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">TealiumVisitorService.framework</code></pre></div></li>
-
-<li><p>To setup the VisitorService module, add the following required import statements to your project:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumCore</span>
-<span style="color:#00f">import</span> <span style="color:#2b91af">TealiumCollect</span> <span style="color:#008000">//or import TealiumTagManagement</span>
-<span style="color:#2b91af">import</span> <span style="color:#2b91af">TealiumVisitorService</span></code></pre></div></li>
-</ol>
-
-<p>The framework is auto-instantiated. It has a dependency on <code>TealiumCore</code>, and at least one dispatch service (<code>TealiumCore</code> or <code>TealiumTagManagement</code>). No additional import statements are necessary.</p>
-
-<p><a href="/platforms/ios-swift/install/#carthage">Learn more</a> about Carthage installation for iOS.</p>
-
-<h2 id="visitor-data-object">Visitor Data Object</h2>
-
-<p>The visitor profile is an object that contains native structs for each attribute type. Within the visitor profile object, there is a <code>currentVisit</code> property that allows you to distinguish visitor/visit attribute types. With the exception of audiences, each attribute value is accessible by ID using a subscript. The <code>audiences</code> attribute simply returns <code>true</code>/<code>false</code> if a visitor is a member of the audience queried via subscript. See the below list for examples.</p>
-
-<p><strong>Attribute Types</strong></p>
-
-<table>
-<thead>
-<tr>
-<th>Parameters</th>
-<th>Properties</th>
-<th>Value</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>arraysOfBooleans</code></td>
-<td>id: String, value: [Bool]</td>
-<td><code>id: &quot;5129&quot;, value: [true,false,true,true]</code></td>
-</tr>
-
-<tr>
-<td><code>arraysOfNumbers</code></td>
-<td>id: String, value: [Double]</td>
-<td><code>id: &quot;57&quot;, value: [4.82125, 16.8, 0.5714285714285714]</code></td>
-</tr>
-
-<tr>
-<td><code>arraysOfStrings</code></td>
-<td>id: String, value: [String]</td>
-<td><code>id: &quot;5213&quot;, value: [&quot;green shirts&quot;, &quot;green shirts&quot;, &quot;blue shirts&quot;]</code></td>
-</tr>
-
-<tr>
-<td><code>audiences</code></td>
-<td>id: String, name: String</td>
-<td><code>id: &quot;tealiummobile\_demo\_103&quot;, name: &quot;iOS Users&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>badges</code></td>
-<td>id: String, value: Bool</td>
-<td><code>id: &quot;2815&quot;, value: true</code></td>
-</tr>
-
-<tr>
-<td><code>booleans</code></td>
-<td>id: String, value: Bool</td>
-<td><code>id: &quot;4868&quot;, value: true</code></td>
-</tr>
-
-<tr>
-<td><code>currentVisit</code></td>
-<td>All attributes for current visit profile. The current visit profile does not contain Audiences or Badges.</td>
-<td><code>TealiumCurrentVisitProfile(dates: [DateTime(id: &quot;5376&quot;, value: 1567536668080), DateTime(id: &quot;10&quot;, value: 1567536668000)], booleans: [Boolean(id: &quot;4530&quot;, value: true], numbers: [Number(id: &quot;32&quot;, value: 3.8)])</code></td>
-</tr>
-
-<tr>
-<td><code>dates</code></td>
-<td>id: String, value: Int</td>
-<td><code>id: &quot;22&quot;, value: 1567120112000</code></td>
-</tr>
-
-<tr>
-<td><code>numbers</code></td>
-<td>id: String, value: Double</td>
-<td><code>id: &quot;5728&quot;, value: 4.82125</code></td>
-</tr>
-
-<tr>
-<td><code>setOfStrings</code></td>
-<td>id: String, value: Set[String]</td>
-<td><code>id: &quot;5211&quot;, value: [&quot;green shirts&quot;, &quot;red shirts&quot;, &quot;blue shirts&quot;]</code></td>
-</tr>
-
-<tr>
-<td><code>strings</code></td>
-<td>id: String, value: String</td>
-<td><code>id: &quot;5380&quot;, value: &quot;green shirts&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>tallies</code></td>
-<td>id: String, value: [TallyValue]</td>
-<td><code>id: &quot;57&quot;, [[key: &quot;category 1&quot; count: 2.0], key: &quot;category 2&quot;, count: 1.0]]</code></td>
-</tr>
-
-<tr>
-<td><code>tallyValue</code></td>
-<td>key: String, count: Double</td>
-<td><code>[key: &quot;category 1&quot; count: 2.0]</code></td>
-</tr>
-</tbody>
-</table>
-
-<h4 id="arraysofbooleans"><code>arraysOfBooleans</code></h4>
-
-<p>Custom subscripting allows for querying the array of booleans value by id.</p>
-
-<table>
-<thead>
-<tr>
-<th>Usage</th>
-<th>Description</th>
-<th>Type</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>profile.arraysOfBooleans</code></td>
-<td>Returns all the arrays of booleans in the visitor profile.</td>
-<td><code>[BooleanArray]</code></td>
-<td><code>[BooleanArray(id: &quot;2333&quot;, value: [true,false]), BooleanArray(id: &quot;1123&quot;, value: [true,true])]</code></td>
-</tr>
-
-<tr>
-<td><code>profile.arraysOfBooleans[&quot;2815&quot;]</code></td>
-<td>Returns the array of booleans by id.</td>
-<td><code>[Bool]</code></td>
-<td><code>true</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> profileDidUpdate(profile: TealiumVisitorProfile?) {
-        <span style="color:#00f">guard</span> <span style="color:#00f">let</span> profile = profile <span style="color:#00f">else</span> { <span style="color:#00f">return</span> }
-
-        <span style="color:#008000">// Return an array of booleans value</span>
-        <span style="color:#00f">if</span> <span style="color:#00f">let</span> arraysOfBooleans = profile.arraysOfBooleans?[<span style="color:#a31515">&#34;5279&#34;</span>] {
-            <span style="color:#00f">let</span> numberOfPositiveBools = arraysOfBooleans.map { $0 == <span style="color:#00f">true</span> }.count
-            print(numberOfPositiveBools)
-        }
-}</code></pre></div>
-<h4 id="arraysofnumbers"><code>arraysOfNumbers</code></h4>
-
-<p>Custom subscripting allows for querying the array of numbers value by id.</p>
-
-<table>
-<thead>
-<tr>
-<th>Usage</th>
-<th>Description</th>
-<th>Type</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>profile.arraysOfNumbers</code></td>
-<td>Returns all the arrays of numbers in the visitor profile.</td>
-<td><code>[NumberArray]</code></td>
-<td><code>[NumberArray(id: &quot;2333&quot;, value: [2.0, 1.0]), NumberArray(id: &quot;1123&quot;, value: [4.82125, 3.0])]</code></td>
-</tr>
-
-<tr>
-<td><code>profile.arraysOfNumbers[&quot;2815&quot;]</code></td>
-<td>Returns the array of numbers by id.</td>
-<td><code>[Double]</code></td>
-<td><code>[4.82125, 3.0]</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> profileDidUpdate(profile: TealiumVisitorProfile?) {
-        <span style="color:#00f">guard</span> <span style="color:#00f">let</span> profile = profile <span style="color:#00f">else</span> { <span style="color:#00f">return</span> }
-
-        <span style="color:#008000">// Return an array of numbers value</span>
-        <span style="color:#00f">if</span> <span style="color:#00f">let</span> arraysOfNumbers = profile. arraysOfNumbers?[<span style="color:#a31515">&#34;5279&#34;</span>] {
-            arraysOfNumbers.forEach { number <span style="color:#00f">in</span>
-        		<span style="color:#00f">if</span> number &gt; 3.0 {
-        			<span style="color:#008000">// ... take action</span>
-        		}
-            }
-        }
-}</code></pre></div>
-<h4 id="arraysofstrings"><code>arraysOfStrings</code></h4>
-
-<p>Custom subscripting allows for querying the array of strings value by id.</p>
-
-<table>
-<thead>
-<tr>
-<th>Usage</th>
-<th>Description</th>
-<th>Type</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>profile.arraysOfStrings</code></td>
-<td>Returns all the arrays of strings in the visitor profile.</td>
-<td><code>[StringArray]</code></td>
-<td><code>[StringArray(id: &quot;1033&quot;, value: [&quot;Foundation&quot;, &quot;Perfume&quot;), StringArray(id: &quot;3390&quot;, value: [&quot;Bootleg Jeans&quot;, &quot;Dresses&quot;])]</code></td>
-</tr>
-
-<tr>
-<td><code>profile.arraysOfStrings[&quot;3390&quot;]</code></td>
-<td>Returns the array of strings by id.</td>
-<td><code>[String]</code></td>
-<td><code>[&quot;Bootleg Jeans&quot;, &quot;Dresses&quot;]</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> profileDidUpdate(profile: TealiumVisitorProfile?) {
-        <span style="color:#00f">guard</span> <span style="color:#00f">let</span> profile = profile <span style="color:#00f">else</span> { <span style="color:#00f">return</span> }
-
-        <span style="color:#008000">// Return an array of strings value</span>
-        <span style="color:#00f">if</span> <span style="color:#00f">let</span> arraysOfStrings = profile.arraysOfStrings?[<span style="color:#a31515">&#34;3390&#34;</span>] {
-            arraysOfStrings.forEach { string <span style="color:#00f">in</span>
-        		<span style="color:#00f">if</span> string.lowercased().contains(<span style="color:#a31515">&#34;Jeans&#34;</span>) {
-        			<span style="color:#008000">// ... take action</span>
-        		}
-            }
-        }
-}</code></pre></div>
-<h4 id="audiences"><code>audiences</code></h4>
-
-<p>Custom subscripting allows for checking visitor audience membership by audience id and audience name.</p>
-
-<table>
-<thead>
-<tr>
-<th>Usage</th>
-<th>Description</th>
-<th>Type</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>profile.audiences</code></td>
-<td>Returns all audiences for which the visitor is a member.</td>
-<td><code>[Audience]</code></td>
-<td><code>[Audience(id: &quot;tealiummobile\_demo\_103&quot;, name: &quot;iOS Users&quot;), Audience(id: &quot;tealiummobile\_demo\_110&quot;, name: &quot;Visitors - Known&quot;)]</code></td>
-</tr>
-
-<tr>
-<td><code>profile.audiences[id: &quot;103&quot;]</code></td>
-<td>Returns true/false depending on whether or not the visitor is a member of the audience based on the id passed in.</td>
-<td><code>Bool</code></td>
-<td><code>true</code></td>
-</tr>
-
-<tr>
-<td><code>profile.audiences[name: &quot;ios users&quot;]</code></td>
-<td>Returns true/false depending on whether or not the visitor is a member of the audience based on the name passed in. The name is case insensitive.</td>
-<td><code>Bool</code></td>
-<td><code>false</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> profileDidUpdate(profile: TealiumVisitorProfile?) {
-        <span style="color:#00f">guard</span> <span style="color:#00f">let</span> profile = profile <span style="color:#00f">else</span> { <span style="color:#00f">return</span> }
-
-        <span style="color:#008000">// Return the current Audiences for which the user is assigned</span>
-        <span style="color:#00f">if</span> <span style="color:#00f">let</span> currentVisitorAudiences = profile.audiences {
-            print(<span style="color:#a31515">&#34;Visitor audiences: </span><span style="color:#a31515">\(</span>currentVisitorAudiences<span style="color:#a31515">)</span><span style="color:#a31515">&#34;</span>)
-
-            <span style="color:#008000">// Check if an Audience is assigned to a user by id</span>
-            <span style="color:#00f">if</span> currentVisitorAudiences[id: <span style="color:#a31515">&#34;106&#34;</span>] {
-                print(<span style="color:#a31515">&#34;Visitor is a member of audience id 106&#34;</span>)
-                <span style="color:#008000">// ... Visitor is a member of this audience, take appropriate action</span>
-            }
-
-            <span style="color:#008000">// Check if an Audience is assigned to a user by name</span>
-            <span style="color:#00f">if</span> currentVisitorAudiences[name: <span style="color:#a31515">&#34;ios users&#34;</span>] {
-                print(<span style="color:#a31515">&#34;Visitor is a member of audience iOS Users&#34;</span>)
-                <span style="color:#008000">// ... Visitor is a member of this audience, take appropriate action</span>
-            }
-        }
-}</code></pre></div>
-<h4 id="badges"><code>badges</code></h4>
-
-<p>Custom subscripting allows for querying the badge value by id.</p>
-
-<table>
-<thead>
-<tr>
-<th>Usage</th>
-<th>Description</th>
-<th>Type</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>profile.badges</code></td>
-<td>Returns all badges in the visitor profile.</td>
-<td><code>[Badge]</code></td>
-<td><code>[Badge(id: &quot;2815&quot;, value: true), Badge(id: &quot;2813&quot;, value: false)]</code></td>
-</tr>
-
-<tr>
-<td><code>profile.badges[&quot;2815&quot;]</code></td>
-<td>Returns true/false depending on whether or not the visitor is assigned the badge.</td>
-<td><code>Bool</code></td>
-<td><code>true</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> profileDidUpdate(profile: TealiumVisitorProfile?) {
-        <span style="color:#00f">guard</span> <span style="color:#00f">let</span> profile = profile <span style="color:#00f">else</span> { <span style="color:#00f">return</span> }
-
-        <span style="color:#008000">// Return a badge value</span>
-        <span style="color:#00f">if</span> <span style="color:#00f">let</span> badgeAssigned = profile.badges?[<span style="color:#a31515">&#34;5279&#34;</span>] {
-            print(badgeAssigned ? <span style="color:#a31515">&#34;Badge id 5279 is assigned&#34;</span> : <span style="color:#a31515">&#34;Badge id 5945 is not assigned&#34;</span>)
-        }
-}</code></pre></div>
-<h4 id="booleans"><code>booleans</code></h4>
-
-<p>Custom subscripting allows for querying the boolean value by id.</p>
-
-<table>
-<thead>
-<tr>
-<th>Usage</th>
-<th>Description</th>
-<th>Type</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>profile.booleans</code></td>
-<td>Returns all the booleans in the visitor profile.</td>
-<td><code>[Boolean]</code></td>
-<td><code>[Boolean(id: &quot;5784&quot;, value: true), Boolean(id: &quot;1453&quot;, value: false)]</code></td>
-</tr>
-
-<tr>
-<td><code>profile.booleans[&quot;4692&quot;]</code></td>
-<td>Returns the boolean by id.</td>
-<td><code>Bool</code></td>
-<td><code>true</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> profileDidUpdate(profile: TealiumVisitorProfile?) {
-        <span style="color:#00f">guard</span> <span style="color:#00f">let</span> profile = profile <span style="color:#00f">else</span> { <span style="color:#00f">return</span> }
-
-        <span style="color:#008000">// Return a boolean value</span>
-        <span style="color:#00f">if</span> <span style="color:#00f">let</span> booleanValue = profile. booleans?[<span style="color:#a31515">&#34;4479&#34;</span>] {
-            <span style="color:#00f">if</span> booleanValue {
-            	<span style="color:#008000">// ... do something</span>
-            }
-        }
-}</code></pre></div>
-<h4 id="currentvisit"><code>currentVisit</code></h4>
-
-<p>Access to the attributes for the current visit instead of the lifetime attributes for a visitor.</p>
-
-<table>
-<thead>
-<tr>
-<th>Usage</th>
-<th>Description</th>
-<th>Type</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>profile. currentVisit</code></td>
-<td>Returns the current visit scoped attributes.</td>
-<td><code>TealiumCurrentVisitProfile</code></td>
-<td><code>TealiumCurrentVisitProfile (dates: [DateTime(id: &quot;5376&quot;, value: 1567536668080), DateTime(id: &quot;10&quot;, value: 1567536668000)], booleans: [Boolean(id: &quot;4530&quot;, value: true], numbers: [Number(id: &quot;32&quot;, value: 3.8)])</code></td>
-</tr>
-
-<tr>
-<td><code>profile. currentVisit. ###</code></td>
-<td>Returns the desired attribute depending on ###. All the same methods liste above apply except for Audiences and Badges. These are exclusively visitor attributes and do not apply to the visit.</td>
-<td>Varies</td>
-<td>Varies</td>
-</tr>
-</tbody>
-</table>
-
-<p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> profileDidUpdate(profile: TealiumVisitorProfile?) {
-        <span style="color:#00f">guard</span> <span style="color:#00f">let</span> profile = profile <span style="color:#00f">else</span> { <span style="color:#00f">return</span> }
-
-        <span style="color:#008000">// Return a current visit string attribute</span>
-        <span style="color:#00f">if</span> <span style="color:#00f">let</span> currentVisit = profile.currentVisit,
-           <span style="color:#00f">let</span> string = currentVisit.strings?[<span style="color:#a31515">&#34;34&#34;</span>] {
-            print(string)
-            <span style="color:#008000">// ... take action</span>
-        }
-}</code></pre></div>
-<h4 id="dates"><code>dates</code></h4>
-
-<p>Custom subscripting allows for querying the date value by id.</p>
-
-<table>
-<thead>
-<tr>
-<th>Usage</th>
-<th>Description</th>
-<th>Type</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>profile.dates</code></td>
-<td>Returns all the dates in the visitor profile.</td>
-<td><code>[DateTime]</code></td>
-<td><code>[DateTime(id: &quot;22&quot;, value: 1567120112000), DateTime(id: &quot;13&quot;, value: 1567120113245)]</code></td>
-</tr>
-
-<tr>
-<td><code>profile.dates[&quot;4692&quot;]</code></td>
-<td>Returns the date by id.</td>
-<td><code>Int</code></td>
-<td><code>1567120112000</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> profileDidUpdate(profile: TealiumVisitorProfile?) {
-        <span style="color:#00f">guard</span> <span style="color:#00f">let</span> profile = profile <span style="color:#00f">else</span> { <span style="color:#00f">return</span> }
-
-        <span style="color:#008000">// Return a date value</span>
-        <span style="color:#00f">if</span> <span style="color:#00f">let</span> date = profile.dates?[<span style="color:#a31515">&#34;33&#34;</span>] {
-            print(date)
-            <span style="color:#008000">// .. take action</span>
-        }
-}</code></pre></div>
-<h4 id="numbers"><code>numbers</code></h4>
-
-<p>Custom subscripting allows for querying the number value by id.</p>
-
-<table>
-<thead>
-<tr>
-<th>Usege</th>
-<th>Description</th>
-<th>Type</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>profile.numbers</code></td>
-<td>Returns all the numbers in the visitor profile.</td>
-<td><code>[Number]</code></td>
-<td><code>[Number(id: &quot;83&quot;, value: 0.5714285714285714), Number(id: &quot;1399&quot;, value: 2.0)]</code></td>
-</tr>
-
-<tr>
-<td><code>profile.numbers[&quot;1399&quot;]</code></td>
-<td>Returns the number by id.</td>
-<td><code>Double</code></td>
-<td><code>4.82125</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> profileDidUpdate(profile: TealiumVisitorProfile?) {
-        <span style="color:#00f">guard</span> <span style="color:#00f">let</span> profile = profile <span style="color:#00f">else</span> { <span style="color:#00f">return</span> }
-
-        <span style="color:#008000">// Return a number value</span>
-        <span style="color:#00f">if</span> <span style="color:#00f">let</span> number = profile. numbers?[<span style="color:#a31515">&#34;1399&#34;</span>] {
-            <span style="color:#00f">if</span> number &gt; 3.0 {
-            	<span style="color:#008000">// ... take action</span>
-            }
-        }
-}</code></pre></div>
-<h4 id="setsofstrings"><code>setsOfStrings</code></h4>
-
-<p>Custom subscripting allows for querying the set of strings value by id.</p>
-
-<table>
-<thead>
-<tr>
-<th>Usage</th>
-<th>Description</th>
-<th>Type</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>profile.setsOfStrings</code></td>
-<td>Returns all the sets of strings in the visitor profile.</td>
-<td><code>[SetOfStrings]</code></td>
-<td><code>[SetOfStrings(id: &quot;9938&quot;, value: [&quot;shirts&quot;]), SetOfStrings(id: &quot;2300&quot;, value: [&quot;Luxury Couch 1&quot;, &quot;Luxury Couch 2&quot;])]</code></td>
-</tr>
-
-<tr>
-<td><code>profile.setsOfStrings[&quot;2300&quot;]</code></td>
-<td>Returns the set of strings by id.</td>
-<td><code>Set&lt;String&gt;</code></td>
-<td><code>[&quot;Luxury Couch 1&quot;, &quot;Luxury Couch 2&quot;]</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> profileDidUpdate(profile: TealiumVisitorProfile?) {
-        <span style="color:#00f">guard</span> <span style="color:#00f">let</span> profile = profile <span style="color:#00f">else</span> { <span style="color:#00f">return</span> }
-
-        <span style="color:#008000">// Return an set of strings value</span>
-        <span style="color:#00f">if</span> <span style="color:#00f">let</span> setOfStrings = profile.setsOfStrings?[<span style="color:#a31515">&#34;5279&#34;</span>] {
-            <span style="color:#00f">if</span> setOfStrings.contains(<span style="color:#a31515">&#34;toys&#34;</span>) {
-            	<span style="color:#008000">// ... take action</span>
-            }
-        }
-}</code></pre></div>
-<h4 id="strings"><code>strings</code></h4>
-
-<p>Custom subscripting allows for querying the string value by id.</p>
-
-<table>
-<thead>
-<tr>
-<th>Usage</th>
-<th>Description</th>
-<th>Type</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>profile.strings</code></td>
-<td>Returns all the strings in the visitor profile.</td>
-<td><code>[VisitorString]</code></td>
-<td><code>[Number(id: &quot;83&quot;, value: &quot;Toy Truck&quot;), Number(id: &quot;5699&quot;, value: &quot;Toy Tea Set&quot;)]</code></td>
-</tr>
-
-<tr>
-<td><code>profile.strings[&quot;5699&quot;]</code></td>
-<td>Returns the string by id.</td>
-<td><code>String</code></td>
-<td><code>&quot;Toy Tea Set&quot;</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> profileDidUpdate(profile: TealiumVisitorProfile?) {
-        <span style="color:#00f">guard</span> <span style="color:#00f">let</span> profile = profile <span style="color:#00f">else</span> { <span style="color:#00f">return</span> }
-
-        <span style="color:#008000">// Return a string value</span>
-        <span style="color:#00f">if</span> <span style="color:#00f">let</span> string = profile.strings?[<span style="color:#a31515">&#34;5699&#34;</span>] {
-            print(string)
-            <span style="color:#008000">// ... take action</span>
-        }
-}</code></pre></div>
-<h4 id="tallies-and-tallyvalue"><code>tallies</code> and <code>tallyValue</code></h4>
-
-<p>Custom subscripting allows for querying the tally by id, and to query the tally value by id.</p>
-
-<table>
-<thead>
-<tr>
-<th>Usage</th>
-<th>Description</th>
-<th>Type</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>profile.tallies</code></td>
-<td>Returns all the tallies in the visitor profile.</td>
-<td><code>[Tally]</code></td>
-<td><code>[Tally(id: &quot;2983&quot;, value: [TallyValue(key: &quot;red shirts category&quot;, count: 4.0), TallyValue(key: &quot;green shirts category&quot;, count: 2.0)]), Tally(id: &quot;5643&quot;, value: [TallyValue(key: &quot;girls&quot;, count: 3.0), TallyValue(key: &quot;womens&quot;, count: 1.0)]</code>]</td>
-</tr>
-
-<tr>
-<td><code>profile.tallies[tally: &quot;1399&quot;]</code></td>
-<td>Returns the tally by id.</td>
-<td><code>[TallyValue]</code></td>
-<td><code>[TallyValue(key: &quot;girls&quot;, count: 3.0), TallyValue(key: &quot;womens&quot;, count: 1.0)]</code></td>
-</tr>
-
-<tr>
-<td><code>profile.tallies[tally: &quot;1399&quot;, key: &quot;womens&quot;]</code></td>
-<td>Returns the tally by id.</td>
-<td><code>Double</code></td>
-<td><code>3.0</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>Example usage:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> profileDidUpdate(profile: TealiumVisitorProfile?) {
-        <span style="color:#00f">guard</span> <span style="color:#00f">let</span> profile = profile <span style="color:#00f">else</span> { <span style="color:#00f">return</span> }
-
-        <span style="color:#008000">// Return an entire tally</span>
-        <span style="color:#00f">if</span> <span style="color:#00f">let</span> tally = profile.tallies?[<span style="color:#a31515">&#34;1399&#34;</span>] {
-            print(<span style="color:#a31515">&#34;Tally id 5377: </span><span style="color:#a31515">\(</span>tally<span style="color:#a31515">)</span><span style="color:#a31515">&#34;</span>)
-        }
-
-        <span style="color:#008000">// Return a tally value by using the tally id and the key for the value desired</span>
-        <span style="color:#00f">if</span> <span style="color:#00f">let</span> tallyValue = profile.tallies?[tally: <span style="color:#a31515">&#34;5381&#34;</span>, key: <span style="color:#a31515">&#34;red shirts&#34;</span>]{
-            print(<span style="color:#a31515">&#34;Tally value for id 5381 and key &#39;red shirts&#39;: </span><span style="color:#a31515">\(</span>tallyValue<span style="color:#a31515">)</span><span style="color:#a31515">&#34;</span>)
-        }
-}</code></pre></div>
-<h2 id="api-reference">API Reference</h2>
-
-<h3 id="class-tealium">Class <code>Tealium</code></h3>
-
-<p>The following API methods are available to act upon the updated visitor profile.</p>
-
-<h4 id="visitorservice"><code>visitorService()</code></h4>
-
-<p>Usage Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">class</span> <span style="color:#2b91af">MyHelperClass</span> {
-    <span style="color:#00f">var</span> tealium: Tealium?
-
-    <span style="color:#00f">public</span> <span style="color:#00f">init</span> () {
-        <span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-                                   profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-                                   environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
-                                   datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>,
-                                   optionalData: <span style="color:#00f">nil</span>)
-        config.addVisitorServiceDelegate(<span style="color:#00f">self</span>)                           
-	     config.setVisitorServiceRefresh(interval: 10)		
-		<span style="color:#00f">self</span>.tealium = Tealium(config) {
-			<span style="color:#008000">// Note: this is inside the completion block after initialization</span>
-
-			<span style="color:#008000">// self.tealium is guaranteed to be initialized inside the completion block</span>
-
-			<span style="color:#00f">self</span>.tealium?.visitorService()?.#### <span style="color:#008000">// where #### is any public API method on the visitorProfile object - see other methods for examples</span>
-		}
-	}
-}</code></pre></div>
-<h4 id="requestvisitorprofile"><code>requestVisitorProfile()</code></h4>
-
-<p>This method triggers an immediate request to the VisitorService to retrieve the current profile. If the profile has been updated since the last fetch, the <code>profileDidUpdate</code> delegate method will be called.</p>
-
-<p>This method is called automatically whenever a track request is sent, if your visitor profile refresh interval is set to <code>0</code>. If you have a higher value set for the refresh interval, then you may call this method to retrieve the profile instantly, without waiting for the next scheduled update.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">self</span>.tealium?.visitorService()?.requestVisitorProfile()</code></pre></div>
-<p>Usage Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> track(title: String, data: [String: Any]?) {
-        tealium?.track(title: title, data: data, completion: { success, <span style="">\</span><span style="color:#00f">_</span>, error <span style="color:#00f">in</span>
-            <span style="color:#00f">if</span> error != <span style="color:#00f">nil</span> {
-                print(<span style="color:#a31515">&#34;*** Track not completed because of error: </span><span style="color:#a31515">\n</span><span style="color:#a31515">\(</span>String<span style="color:#a31515">(</span>describing: error<span style="color:#a31515">))</span><span style="color:#a31515">&#34;</span>)
-            }
-            <span style="color:#00f">if</span> success {
-                print(<span style="color:#a31515">&#34;*** Track with VisitorService completed ***&#34;</span>)
-                <span style="color:#00f">self</span>.tealium?.visitorProfile()?.requestVisitorProfile()
-
-            }
-        })
-    }</code></pre></div>
-<h4 id="getcachedprofile"><code>getCachedProfile()</code></h4>
-
-<p>Returns the most recently-retrieved visitor profile from persistent storage, without triggering a new request. Useful in situations where there is no internet connection, but a prior successful request has been made.</p>
-
-<p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">self</span>.tealium?.visitorService()?.getCachedProfile(completion: { profile <span style="color:#00f">in</span>
-                <span style="color:#00f">guard</span> <span style="color:#00f">let</span> profile = profile <span style="color:#00f">else</span> { <span style="color:#00f">return</span> }
-                <span style="color:#00f">if</span> <span style="color:#00f">let</span> json = <span style="color:#00f">try</span>? JSONEncoder().encode(profile), <span style="color:#00f">let</span> string = String(data: 					json, encoding: .utf8) {
-                    print(string)
-   		}
-})</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Parameters</th>
-<th>Description</th>
-<th>Example Value</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>completion: TealiumVisitorProfile?</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<h4 id="removeallvisitorservicedelegates"><code>removeAllVisitorServiceDelegates()</code></h4>
-
-<p>Removes all visitor profile delegates.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">self</span>.tealium?.visitorService()?.removeAllVisitorServiceDelegates()</code></pre></div>
-<h4 id="addvisitorservicedelegate"><code>addVisitorServiceDelegate()</code></h4>
-
-<p>Adds a new class conforming to <code>VisitorServiceDelegate</code></p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">self</span>.tealium?.visitorService()?.addVisitorServiceDelegate(<span style="color:#00f">self</span>)</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Parameters</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>delegate: Class conforming to <code>VisitorServiceDelegate</code></td>
-<td></td>
-<td><code>ViewController, TealiumHelper</code></td>
-</tr>
-</tbody>
-</table>
-
-<h4 id="removesingledelegate"><code>removeSingleDelegate()</code></h4>
-
-<p>Removes a specific visitor profile delegate.</p>
-
-<p>Example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">self</span>.tealium?.visitorService()?.removeSingleDelegate(<span style="color:#00f">self</span>)</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Parameters</th>
-<th>Description</th>
-<th>Example Value</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>delegate: Class conforming to <code>VisitorServiceDelegate</code></td>
-<td></td>
-<td><code>ViewController, TealiumHelper</code></td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="class-tealiumvisitorservicedelegate">Class: <code>TealiumVisitorServiceDelegate</code></h3>
-
-<h4 id="profiledidupdate"><code>profileDidUpdate()</code></h4>
-
-<p>This method is called whenever the visitor profile was updated. This will most likely be called every time the <code>requestVisitorProfile()</code> method is used.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> profileDidUpdate(profile: TealiumVisitorProfile?) {
-        <span style="color:#00f">guard</span> <span style="color:#00f">let</span> profile = profile <span style="color:#00f">else</span> { <span style="color:#00f">return</span> }
-
-        <span style="color:#008000">// act on profile attributes</span>
-        print(profile.audiences)
-
-        ...
-}</code></pre></div>
-<h3 id="class-tealiumconfig">Class: <code>TealiumConfig</code></h3>
-
-<h4 id="setvisitorservicerefresh"><code>setVisitorServiceRefresh()</code></h4>
-
-<p>This allows you to set the frequency of visitor profile retrieval. The default value is 5 minutes for this setting. Use this method to adjust the frequency. Even if you add the <code>requestVisitorProfile</code> method to every tracking call, the profile will not be fetched every time unless you set this to 0.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">let</span> config = TealiumConfig(...)
-config.setVisitorServiceRefresh(3)</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Parameters</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>interval</td>
-<td>The frequency for which to fetch the visitor profile. Integer, minutes. (default: <code>5</code>)</td>
-<td><code>3</code></td>
-</tr>
-</tbody>
-</table>
-
-<h4 id="addvisitorservicedelegate-1"><code>addVisitorServiceDelegate()</code></h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.addVisitorServiceDelegate(<span style="color:#00f">self</span>)</code></pre></div>
-<p>Add a delegate to an array of VisitorService delegates in order to use the <code>profileDidUpdate</code> delegate method. There can be multiple objects assigned as delegates.</p>
-
-<table>
-<thead>
-<tr>
-<th>Parameters</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>class responsible for the profile updates (delegate)</td>
-<td></td>
-<td><code>ViewController, TealiumHelper</code></td>
-</tr>
-</tbody>
-</table>
-
-<h4 id="getvisitorservicedelegates"><code>getVisitorServiceDelegates()</code></h4>
-
-<p>Returns a list of delegates assigned to the VisitorService module.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.getVisitorServiceDelegates()</code></pre></div>
-<h4 id="setvisitorserviceoverrideprofile"><code>setVisitorServiceOverrideProfile()</code></h4>
-
-<p>Overrides the profile from which to fetch the visitor profile. Should align with the profile used for data collection in the Collect module.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config. setVisitorServiceOverrideProfile(<span style="color:#a31515">&#34;PROFILE&#34;</span>)</code></pre></div>
-<h4 id="setvisitorserviceoverrideurl"><code>setVisitorServiceOverrideURL()</code></h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config. setVisitorServiceOverrideURL(<span style="color:#a31515">&#34;https://overridden-subdomain.yourdomain.com/&#34;</span>)</code></pre></div>
-<p>Overrides the base URL from which the visitor profile will be retrieved. ACCOUNT, PROFILE, and visitor ID will be automatically appended to the URL.</p>
-
-<h2 id="release-notes">Release Notes</h2>
-
-<p>1.8.0</p>
-
-<ul>
-<li>Initial release</li>
-</ul>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/ios-swift-v1/module-list/tag-management/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"TagManagement Module "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>TagManagement Module</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/ios-swift-v1/module-list/volatile-data/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>VolatileData Module</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"VolatileData Module"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -8457,33 +7472,1105 @@ config.setVisitorServiceRefresh(3)</code></pre></div>
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/ios-swift-v1/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        IOS SWIFT V1
+      </a>
+    
+      <a href="/platforms/ios-swift-v1/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        IOS SWIFT V1/MODULE LIST
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">VisitorService Module</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Retrieves the updated visitor profile from the visitor service.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="usage">Usage</h2>
+
+<p>The VisitorService module implements the <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Data-Layer-Enrichment/ta-p/684">Data Layer Enrichment</a> feature of the Tealium Customer Data Hub.</p>
+
+<p>Usage of this module is recommended if you are licensed for Tealium AudienceStream and would like to use the visitor profile to enhance the user experience in your mobile application. If you are not licensed for AudienceStream, usage of this module is not recommended as no visitor profile is returned.</p>
+
+<p>The following platforms are supported:</p>
+
+<ul>
+<li>iOS</li>
+<li>tvOS</li>
+<li>watchOS</li>
+<li>macOS</li>
+</ul>
+
+<h2 id="install">Install</h2>
+
+<p>Install the VisitorService module with CocoaPods or Carthage.</p>
+
+<h3 id="cocoapods">CocoaPods</h3>
+
+<p>To install the VisitorService module with CocoaPods, add the following pods to your Podfile:</p>
+
+<pre><code class="language-ruby">pod 'tealium-swift/TealiumCore'
+pod 'tealium-swift/TealiumCollect' //or 'tealium-swift/TealiumTagManagement'
+pod 'tealium-swift/TealiumVisitorService'
+</code></pre>
+
+<p>The framework is auto-instantiated. It has a dependency on the <code>TealiumCore</code> pod, and one of the dispatch service pods (either <code>TealiumCollect</code> or <code>TealiumTagManagement</code>). <a href="/platforms/ios-swift/install/#cocoapods">Learn more</a> about CocoaPods installation for iOS.</p>
+
+<h3 id="carthage">Carthage</h3>
+
+<p>To install the VisitorService module with Carthage, following these steps:</p>
+
+<ol>
+<li><p>Go to the app target&rsquo;s General configuration page in Xcode.</p></li>
+
+<li><p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
+
+<pre><code class="language-ruby">TealiumVisitorService.framework
+</code></pre></li>
+
+<li><p>To setup the VisitorService module, add the following required import statements to your project:</p>
+
+<pre><code class="language-swift">import TealiumCore
+import TealiumCollect //or import TealiumTagManagement
+import TealiumVisitorService
+</code></pre></li>
+</ol>
+
+<p>The framework is auto-instantiated. It has a dependency on <code>TealiumCore</code>, and at least one dispatch service (<code>TealiumCore</code> or <code>TealiumTagManagement</code>). No additional import statements are necessary.</p>
+
+<p><a href="/platforms/ios-swift/install/#carthage">Learn more</a> about Carthage installation for iOS.</p>
+
+<h2 id="visitor-data-object">Visitor Data Object</h2>
+
+<p>The visitor profile is an object that contains native structs for each attribute type. Within the visitor profile object, there is a <code>currentVisit</code> property that allows you to distinguish visitor/visit attribute types. With the exception of audiences, each attribute value is accessible by ID using a subscript. The <code>audiences</code> attribute simply returns <code>true</code>/<code>false</code> if a visitor is a member of the audience queried via subscript. See the below list for examples.</p>
+
+<p><strong>Attribute Types</strong></p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Properties</th>
+<th>Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>arraysOfBooleans</code></td>
+<td>id: String, value: [Bool]</td>
+<td><code>id: &quot;5129&quot;, value: [true,false,true,true]</code></td>
+</tr>
+
+<tr>
+<td><code>arraysOfNumbers</code></td>
+<td>id: String, value: [Double]</td>
+<td><code>id: &quot;57&quot;, value: [4.82125, 16.8, 0.5714285714285714]</code></td>
+</tr>
+
+<tr>
+<td><code>arraysOfStrings</code></td>
+<td>id: String, value: [String]</td>
+<td><code>id: &quot;5213&quot;, value: [&quot;green shirts&quot;, &quot;green shirts&quot;, &quot;blue shirts&quot;]</code></td>
+</tr>
+
+<tr>
+<td><code>audiences</code></td>
+<td>id: String, name: String</td>
+<td><code>id: &quot;tealiummobile\_demo\_103&quot;, name: &quot;iOS Users&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>badges</code></td>
+<td>id: String, value: Bool</td>
+<td><code>id: &quot;2815&quot;, value: true</code></td>
+</tr>
+
+<tr>
+<td><code>booleans</code></td>
+<td>id: String, value: Bool</td>
+<td><code>id: &quot;4868&quot;, value: true</code></td>
+</tr>
+
+<tr>
+<td><code>currentVisit</code></td>
+<td>All attributes for current visit profile. The current visit profile does not contain Audiences or Badges.</td>
+<td><code>TealiumCurrentVisitProfile(dates: [DateTime(id: &quot;5376&quot;, value: 1567536668080), DateTime(id: &quot;10&quot;, value: 1567536668000)], booleans: [Boolean(id: &quot;4530&quot;, value: true], numbers: [Number(id: &quot;32&quot;, value: 3.8)])</code></td>
+</tr>
+
+<tr>
+<td><code>dates</code></td>
+<td>id: String, value: Int</td>
+<td><code>id: &quot;22&quot;, value: 1567120112000</code></td>
+</tr>
+
+<tr>
+<td><code>numbers</code></td>
+<td>id: String, value: Double</td>
+<td><code>id: &quot;5728&quot;, value: 4.82125</code></td>
+</tr>
+
+<tr>
+<td><code>setOfStrings</code></td>
+<td>id: String, value: Set[String]</td>
+<td><code>id: &quot;5211&quot;, value: [&quot;green shirts&quot;, &quot;red shirts&quot;, &quot;blue shirts&quot;]</code></td>
+</tr>
+
+<tr>
+<td><code>strings</code></td>
+<td>id: String, value: String</td>
+<td><code>id: &quot;5380&quot;, value: &quot;green shirts&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>tallies</code></td>
+<td>id: String, value: [TallyValue]</td>
+<td><code>id: &quot;57&quot;, [[key: &quot;category 1&quot; count: 2.0], key: &quot;category 2&quot;, count: 1.0]]</code></td>
+</tr>
+
+<tr>
+<td><code>tallyValue</code></td>
+<td>key: String, count: Double</td>
+<td><code>[key: &quot;category 1&quot; count: 2.0]</code></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="arraysofbooleans"><code>arraysOfBooleans</code></h4>
+
+<p>Custom subscripting allows for querying the array of booleans value by id.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.arraysOfBooleans</code></td>
+<td>Returns all the arrays of booleans in the visitor profile.</td>
+<td><code>[BooleanArray]</code></td>
+<td><code>[BooleanArray(id: &quot;2333&quot;, value: [true,false]), BooleanArray(id: &quot;1123&quot;, value: [true,true])]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.arraysOfBooleans[&quot;2815&quot;]</code></td>
+<td>Returns the array of booleans by id.</td>
+<td><code>[Bool]</code></td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+
+<pre><code class="language-swift">func profileDidUpdate(profile: TealiumVisitorProfile?) {
+        guard let profile = profile else { return }
+
+        // Return an array of booleans value
+        if let arraysOfBooleans = profile.arraysOfBooleans?[&quot;5279&quot;] {
+            let numberOfPositiveBools = arraysOfBooleans.map { $0 == true }.count
+            print(numberOfPositiveBools)
+        }
+}
+</code></pre>
+
+<h4 id="arraysofnumbers"><code>arraysOfNumbers</code></h4>
+
+<p>Custom subscripting allows for querying the array of numbers value by id.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.arraysOfNumbers</code></td>
+<td>Returns all the arrays of numbers in the visitor profile.</td>
+<td><code>[NumberArray]</code></td>
+<td><code>[NumberArray(id: &quot;2333&quot;, value: [2.0, 1.0]), NumberArray(id: &quot;1123&quot;, value: [4.82125, 3.0])]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.arraysOfNumbers[&quot;2815&quot;]</code></td>
+<td>Returns the array of numbers by id.</td>
+<td><code>[Double]</code></td>
+<td><code>[4.82125, 3.0]</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+
+<pre><code class="language-swift">func profileDidUpdate(profile: TealiumVisitorProfile?) {
+        guard let profile = profile else { return }
+
+        // Return an array of numbers value
+        if let arraysOfNumbers = profile. arraysOfNumbers?[&quot;5279&quot;] {
+            arraysOfNumbers.forEach { number in
+        		if number &gt; 3.0 {
+        			// ... take action
+        		}
+            }
+        }
+}
+</code></pre>
+
+<h4 id="arraysofstrings"><code>arraysOfStrings</code></h4>
+
+<p>Custom subscripting allows for querying the array of strings value by id.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.arraysOfStrings</code></td>
+<td>Returns all the arrays of strings in the visitor profile.</td>
+<td><code>[StringArray]</code></td>
+<td><code>[StringArray(id: &quot;1033&quot;, value: [&quot;Foundation&quot;, &quot;Perfume&quot;), StringArray(id: &quot;3390&quot;, value: [&quot;Bootleg Jeans&quot;, &quot;Dresses&quot;])]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.arraysOfStrings[&quot;3390&quot;]</code></td>
+<td>Returns the array of strings by id.</td>
+<td><code>[String]</code></td>
+<td><code>[&quot;Bootleg Jeans&quot;, &quot;Dresses&quot;]</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+
+<pre><code class="language-swift">func profileDidUpdate(profile: TealiumVisitorProfile?) {
+        guard let profile = profile else { return }
+
+        // Return an array of strings value
+        if let arraysOfStrings = profile.arraysOfStrings?[&quot;3390&quot;] {
+            arraysOfStrings.forEach { string in
+        		if string.lowercased().contains(&quot;Jeans&quot;) {
+        			// ... take action
+        		}
+            }
+        }
+}
+</code></pre>
+
+<h4 id="audiences"><code>audiences</code></h4>
+
+<p>Custom subscripting allows for checking visitor audience membership by audience id and audience name.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.audiences</code></td>
+<td>Returns all audiences for which the visitor is a member.</td>
+<td><code>[Audience]</code></td>
+<td><code>[Audience(id: &quot;tealiummobile\_demo\_103&quot;, name: &quot;iOS Users&quot;), Audience(id: &quot;tealiummobile\_demo\_110&quot;, name: &quot;Visitors - Known&quot;)]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.audiences[id: &quot;103&quot;]</code></td>
+<td>Returns true/false depending on whether or not the visitor is a member of the audience based on the id passed in.</td>
+<td><code>Bool</code></td>
+<td><code>true</code></td>
+</tr>
+
+<tr>
+<td><code>profile.audiences[name: &quot;ios users&quot;]</code></td>
+<td>Returns true/false depending on whether or not the visitor is a member of the audience based on the name passed in. The name is case insensitive.</td>
+<td><code>Bool</code></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+
+<pre><code class="language-swift">func profileDidUpdate(profile: TealiumVisitorProfile?) {
+        guard let profile = profile else { return }
+
+        // Return the current Audiences for which the user is assigned
+        if let currentVisitorAudiences = profile.audiences {
+            print(&quot;Visitor audiences: \(currentVisitorAudiences)&quot;)
+
+            // Check if an Audience is assigned to a user by id
+            if currentVisitorAudiences[id: &quot;106&quot;] {
+                print(&quot;Visitor is a member of audience id 106&quot;)
+                // ... Visitor is a member of this audience, take appropriate action
+            }
+
+            // Check if an Audience is assigned to a user by name
+            if currentVisitorAudiences[name: &quot;ios users&quot;] {
+                print(&quot;Visitor is a member of audience iOS Users&quot;)
+                // ... Visitor is a member of this audience, take appropriate action
+            }
+        }
+}
+</code></pre>
+
+<h4 id="badges"><code>badges</code></h4>
+
+<p>Custom subscripting allows for querying the badge value by id.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.badges</code></td>
+<td>Returns all badges in the visitor profile.</td>
+<td><code>[Badge]</code></td>
+<td><code>[Badge(id: &quot;2815&quot;, value: true), Badge(id: &quot;2813&quot;, value: false)]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.badges[&quot;2815&quot;]</code></td>
+<td>Returns true/false depending on whether or not the visitor is assigned the badge.</td>
+<td><code>Bool</code></td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+
+<pre><code class="language-swift">func profileDidUpdate(profile: TealiumVisitorProfile?) {
+        guard let profile = profile else { return }
+
+        // Return a badge value
+        if let badgeAssigned = profile.badges?[&quot;5279&quot;] {
+            print(badgeAssigned ? &quot;Badge id 5279 is assigned&quot; : &quot;Badge id 5945 is not assigned&quot;)
+        }
+}
+</code></pre>
+
+<h4 id="booleans"><code>booleans</code></h4>
+
+<p>Custom subscripting allows for querying the boolean value by id.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.booleans</code></td>
+<td>Returns all the booleans in the visitor profile.</td>
+<td><code>[Boolean]</code></td>
+<td><code>[Boolean(id: &quot;5784&quot;, value: true), Boolean(id: &quot;1453&quot;, value: false)]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.booleans[&quot;4692&quot;]</code></td>
+<td>Returns the boolean by id.</td>
+<td><code>Bool</code></td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+
+<pre><code class="language-swift">func profileDidUpdate(profile: TealiumVisitorProfile?) {
+        guard let profile = profile else { return }
+
+        // Return a boolean value
+        if let booleanValue = profile. booleans?[&quot;4479&quot;] {
+            if booleanValue {
+            	// ... do something
+            }
+        }
+}
+</code></pre>
+
+<h4 id="currentvisit"><code>currentVisit</code></h4>
+
+<p>Access to the attributes for the current visit instead of the lifetime attributes for a visitor.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile. currentVisit</code></td>
+<td>Returns the current visit scoped attributes.</td>
+<td><code>TealiumCurrentVisitProfile</code></td>
+<td><code>TealiumCurrentVisitProfile (dates: [DateTime(id: &quot;5376&quot;, value: 1567536668080), DateTime(id: &quot;10&quot;, value: 1567536668000)], booleans: [Boolean(id: &quot;4530&quot;, value: true], numbers: [Number(id: &quot;32&quot;, value: 3.8)])</code></td>
+</tr>
+
+<tr>
+<td><code>profile. currentVisit. ###</code></td>
+<td>Returns the desired attribute depending on ###. All the same methods liste above apply except for Audiences and Badges. These are exclusively visitor attributes and do not apply to the visit.</td>
+<td>Varies</td>
+<td>Varies</td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+
+<pre><code class="language-swift">func profileDidUpdate(profile: TealiumVisitorProfile?) {
+        guard let profile = profile else { return }
+
+        // Return a current visit string attribute
+        if let currentVisit = profile.currentVisit,
+           let string = currentVisit.strings?[&quot;34&quot;] {
+            print(string)
+            // ... take action
+        }
+}
+</code></pre>
+
+<h4 id="dates"><code>dates</code></h4>
+
+<p>Custom subscripting allows for querying the date value by id.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.dates</code></td>
+<td>Returns all the dates in the visitor profile.</td>
+<td><code>[DateTime]</code></td>
+<td><code>[DateTime(id: &quot;22&quot;, value: 1567120112000), DateTime(id: &quot;13&quot;, value: 1567120113245)]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.dates[&quot;4692&quot;]</code></td>
+<td>Returns the date by id.</td>
+<td><code>Int</code></td>
+<td><code>1567120112000</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+
+<pre><code class="language-swift">func profileDidUpdate(profile: TealiumVisitorProfile?) {
+        guard let profile = profile else { return }
+
+        // Return a date value
+        if let date = profile.dates?[&quot;33&quot;] {
+            print(date)
+            // .. take action
+        }
+}
+</code></pre>
+
+<h4 id="numbers"><code>numbers</code></h4>
+
+<p>Custom subscripting allows for querying the number value by id.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usege</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.numbers</code></td>
+<td>Returns all the numbers in the visitor profile.</td>
+<td><code>[Number]</code></td>
+<td><code>[Number(id: &quot;83&quot;, value: 0.5714285714285714), Number(id: &quot;1399&quot;, value: 2.0)]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.numbers[&quot;1399&quot;]</code></td>
+<td>Returns the number by id.</td>
+<td><code>Double</code></td>
+<td><code>4.82125</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+
+<pre><code class="language-swift">func profileDidUpdate(profile: TealiumVisitorProfile?) {
+        guard let profile = profile else { return }
+
+        // Return a number value
+        if let number = profile. numbers?[&quot;1399&quot;] {
+            if number &gt; 3.0 {
+            	// ... take action
+            }
+        }
+}
+</code></pre>
+
+<h4 id="setsofstrings"><code>setsOfStrings</code></h4>
+
+<p>Custom subscripting allows for querying the set of strings value by id.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.setsOfStrings</code></td>
+<td>Returns all the sets of strings in the visitor profile.</td>
+<td><code>[SetOfStrings]</code></td>
+<td><code>[SetOfStrings(id: &quot;9938&quot;, value: [&quot;shirts&quot;]), SetOfStrings(id: &quot;2300&quot;, value: [&quot;Luxury Couch 1&quot;, &quot;Luxury Couch 2&quot;])]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.setsOfStrings[&quot;2300&quot;]</code></td>
+<td>Returns the set of strings by id.</td>
+<td><code>Set&lt;String&gt;</code></td>
+<td><code>[&quot;Luxury Couch 1&quot;, &quot;Luxury Couch 2&quot;]</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+
+<pre><code class="language-swift">func profileDidUpdate(profile: TealiumVisitorProfile?) {
+        guard let profile = profile else { return }
+
+        // Return an set of strings value
+        if let setOfStrings = profile.setsOfStrings?[&quot;5279&quot;] {
+            if setOfStrings.contains(&quot;toys&quot;) {
+            	// ... take action
+            }
+        }
+}
+</code></pre>
+
+<h4 id="strings"><code>strings</code></h4>
+
+<p>Custom subscripting allows for querying the string value by id.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.strings</code></td>
+<td>Returns all the strings in the visitor profile.</td>
+<td><code>[VisitorString]</code></td>
+<td><code>[Number(id: &quot;83&quot;, value: &quot;Toy Truck&quot;), Number(id: &quot;5699&quot;, value: &quot;Toy Tea Set&quot;)]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.strings[&quot;5699&quot;]</code></td>
+<td>Returns the string by id.</td>
+<td><code>String</code></td>
+<td><code>&quot;Toy Tea Set&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+
+<pre><code class="language-swift">func profileDidUpdate(profile: TealiumVisitorProfile?) {
+        guard let profile = profile else { return }
+
+        // Return a string value
+        if let string = profile.strings?[&quot;5699&quot;] {
+            print(string)
+            // ... take action
+        }
+}
+</code></pre>
+
+<h4 id="tallies-and-tallyvalue"><code>tallies</code> and <code>tallyValue</code></h4>
+
+<p>Custom subscripting allows for querying the tally by id, and to query the tally value by id.</p>
+
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Description</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>profile.tallies</code></td>
+<td>Returns all the tallies in the visitor profile.</td>
+<td><code>[Tally]</code></td>
+<td><code>[Tally(id: &quot;2983&quot;, value: [TallyValue(key: &quot;red shirts category&quot;, count: 4.0), TallyValue(key: &quot;green shirts category&quot;, count: 2.0)]), Tally(id: &quot;5643&quot;, value: [TallyValue(key: &quot;girls&quot;, count: 3.0), TallyValue(key: &quot;womens&quot;, count: 1.0)]</code>]</td>
+</tr>
+
+<tr>
+<td><code>profile.tallies[tally: &quot;1399&quot;]</code></td>
+<td>Returns the tally by id.</td>
+<td><code>[TallyValue]</code></td>
+<td><code>[TallyValue(key: &quot;girls&quot;, count: 3.0), TallyValue(key: &quot;womens&quot;, count: 1.0)]</code></td>
+</tr>
+
+<tr>
+<td><code>profile.tallies[tally: &quot;1399&quot;, key: &quot;womens&quot;]</code></td>
+<td>Returns the tally by id.</td>
+<td><code>Double</code></td>
+<td><code>3.0</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Example usage:</p>
+
+<pre><code class="language-swift">func profileDidUpdate(profile: TealiumVisitorProfile?) {
+        guard let profile = profile else { return }
+
+        // Return an entire tally
+        if let tally = profile.tallies?[&quot;1399&quot;] {
+            print(&quot;Tally id 5377: \(tally)&quot;)
+        }
+
+        // Return a tally value by using the tally id and the key for the value desired
+        if let tallyValue = profile.tallies?[tally: &quot;5381&quot;, key: &quot;red shirts&quot;]{
+            print(&quot;Tally value for id 5381 and key 'red shirts': \(tallyValue)&quot;)
+        }
+}
+</code></pre>
+
+<h2 id="api-reference">API Reference</h2>
+
+<h3 id="class-tealium">Class <code>Tealium</code></h3>
+
+<p>The following API methods are available to act upon the updated visitor profile.</p>
+
+<h4 id="visitorservice"><code>visitorService()</code></h4>
+
+<p>Usage Example:</p>
+
+<pre><code class="language-swift">class MyHelperClass {
+    var tealium: Tealium?
+
+    public init () {
+        let config = TealiumConfig(account: &quot;ACCOUNT&quot;,
+                                   profile: &quot;PROFILE&quot;,
+                                   environment: &quot;ENVIRONMENT&quot;,
+                                   datasource: &quot;DATASOURCE&quot;,
+                                   optionalData: nil)
+        config.addVisitorServiceDelegate(self)                           
+	     config.setVisitorServiceRefresh(interval: 10)		
+		self.tealium = Tealium(config) {
+			// Note: this is inside the completion block after initialization
+
+			// self.tealium is guaranteed to be initialized inside the completion block
+
+			self.tealium?.visitorService()?.#### // where #### is any public API method on the visitorProfile object - see other methods for examples
+		}
+	}
+}
+</code></pre>
+
+<h4 id="requestvisitorprofile"><code>requestVisitorProfile()</code></h4>
+
+<p>This method triggers an immediate request to the VisitorService to retrieve the current profile. If the profile has been updated since the last fetch, the <code>profileDidUpdate</code> delegate method will be called.</p>
+
+<p>This method is called automatically whenever a track request is sent, if your visitor profile refresh interval is set to <code>0</code>. If you have a higher value set for the refresh interval, then you may call this method to retrieve the profile instantly, without waiting for the next scheduled update.</p>
+
+<pre><code class="language-swift">self.tealium?.visitorService()?.requestVisitorProfile()
+</code></pre>
+
+<p>Usage Example:</p>
+
+<pre><code class="language-swift">func track(title: String, data: [String: Any]?) {
+        tealium?.track(title: title, data: data, completion: { success, \_, error in
+            if error != nil {
+                print(&quot;*** Track not completed because of error: \n\(String(describing: error))&quot;)
+            }
+            if success {
+                print(&quot;*** Track with VisitorService completed ***&quot;)
+                self.tealium?.visitorProfile()?.requestVisitorProfile()
+
+            }
+        })
+    }
+</code></pre>
+
+<h4 id="getcachedprofile"><code>getCachedProfile()</code></h4>
+
+<p>Returns the most recently retrieved visitor profile from persistent storage, without triggering a new request. Useful in situations where there is no internet connection, but a prior successful request has been made.</p>
+
+<p>Example:</p>
+
+<pre><code class="language-swift">self.tealium?.visitorService()?.getCachedProfile(completion: { profile in
+                guard let profile = profile else { return }
+                if let json = try? JSONEncoder().encode(profile), let string = String(data: 					json, encoding: .utf8) {
+                    print(string)
+   		}
+})
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+<th>Example Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>completion: TealiumVisitorProfile?</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="removeallvisitorservicedelegates"><code>removeAllVisitorServiceDelegates()</code></h4>
+
+<p>Removes all visitor profile delegates.</p>
+
+<pre><code class="language-swift">self.tealium?.visitorService()?.removeAllVisitorServiceDelegates()
+</code></pre>
+
+<h4 id="addvisitorservicedelegate"><code>addVisitorServiceDelegate()</code></h4>
+
+<p>Adds a new class conforming to <code>VisitorServiceDelegate</code></p>
+
+<pre><code class="language-swift">self.tealium?.visitorService()?.addVisitorServiceDelegate(self)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>delegate: Class conforming to <code>VisitorServiceDelegate</code></td>
+<td></td>
+<td><code>ViewController, TealiumHelper</code></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="removesingledelegate"><code>removeSingleDelegate()</code></h4>
+
+<p>Removes a specific visitor profile delegate.</p>
+
+<p>Example:</p>
+
+<pre><code class="language-swift">self.tealium?.visitorService()?.removeSingleDelegate(self)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+<th>Example Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>delegate: Class conforming to <code>VisitorServiceDelegate</code></td>
+<td></td>
+<td><code>ViewController, TealiumHelper</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="class-tealiumvisitorservicedelegate">Class: <code>TealiumVisitorServiceDelegate</code></h3>
+
+<h4 id="profiledidupdate"><code>profileDidUpdate()</code></h4>
+
+<p>This method is called whenever the visitor profile was updated. This will most likely be called every time the <code>requestVisitorProfile()</code> method is used.</p>
+
+<pre><code class="language-swift">func profileDidUpdate(profile: TealiumVisitorProfile?) {
+        guard let profile = profile else { return }
+
+        // act on profile attributes
+        print(profile.audiences)
+
+        ...
+}
+</code></pre>
+
+<h3 id="class-tealiumconfig">Class: <code>TealiumConfig</code></h3>
+
+<h4 id="setvisitorservicerefresh"><code>setVisitorServiceRefresh()</code></h4>
+
+<p>This allows you to set the frequency of visitor profile retrieval. The default value is 5 minutes for this setting. Use this method to adjust the frequency. Even if you add the <code>requestVisitorProfile</code> method to every tracking call, the profile will not be fetched every time unless you set this to 0.</p>
+
+<pre><code class="language-swift">let config = TealiumConfig(...)
+config.setVisitorServiceRefresh(3)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>interval</td>
+<td>The frequency for which to fetch the visitor profile. Integer, minutes. (default: <code>5</code>)</td>
+<td><code>3</code></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="addvisitorservicedelegate-1"><code>addVisitorServiceDelegate()</code></h4>
+
+<pre><code class="language-swift">config.addVisitorServiceDelegate(self)
+</code></pre>
+
+<p>Add a delegate to an array of VisitorService delegates in order to use the <code>profileDidUpdate</code> delegate method. There can be multiple objects assigned as delegates.</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>class responsible for the profile updates (delegate)</td>
+<td></td>
+<td><code>ViewController, TealiumHelper</code></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="getvisitorservicedelegates"><code>getVisitorServiceDelegates()</code></h4>
+
+<p>Returns a list of delegates assigned to the VisitorService module.</p>
+
+<pre><code class="language-swift">config.getVisitorServiceDelegates()
+</code></pre>
+
+<h4 id="setvisitorserviceoverrideprofile"><code>setVisitorServiceOverrideProfile()</code></h4>
+
+<p>Overrides the profile from which to fetch the visitor profile. Should align with the profile used for data collection in the Collect module.</p>
+
+<pre><code class="language-swift">config. setVisitorServiceOverrideProfile(&quot;PROFILE&quot;)
+</code></pre>
+
+<h4 id="setvisitorserviceoverrideurl"><code>setVisitorServiceOverrideURL()</code></h4>
+
+<pre><code class="language-swift">config. setVisitorServiceOverrideURL(&quot;https://overridden-subdomain.yourdomain.com/&quot;)
+</code></pre>
+
+<p>Overrides the base URL from which the visitor profile will be retrieved. ACCOUNT, PROFILE, and visitor ID will be automatically appended to the URL.</p>
+
+<h2 id="release-notes">Release Notes</h2>
+
+<p>1.8.0</p>
+
+<ul>
+<li>Initial release</li>
+</ul>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/ios-swift-v1/module-list/tag-management/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"TagManagement Module "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>TagManagement Module</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/ios-swift-v1/module-list/volatile-data/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>VolatileData Module</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"VolatileData Module"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  July 29, 2020 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  May 17, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#usage">Usage</a></li>
+              <li><a href="#install">Install</a></li>
+              <ul class="toc-h3"><li><a href="#cocoapods">CocoaPods</a></li>
+              <li><a href="#carthage">Carthage</a></li>
+              </ul><li><a href="#visitor-data-object">Visitor Data Object</a></li>
+              <li><a href="#api-reference">API Reference</a></li>
+              <ul class="toc-h3"><li><a href="#class-tealium">Class Tealium</a></li>
+              <li><a href="#class-tealiumvisitorservicedelegate">Class: TealiumVisitorServiceDelegate</a></li>
+              <li><a href="#class-tealiumconfig">Class: TealiumConfig</a></li>
+              </ul><li><a href="#release-notes">Release Notes</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

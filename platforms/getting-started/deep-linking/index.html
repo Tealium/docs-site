@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,203 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#supported-platforms">Supported Platforms</a></li>
-              <li><a href="#how-it-works">How it Works</a></li>
-              <li><a href="#configuration">Configuration</a></li>
-              <ul class="toc-h3"><li><a href="#android-kotlin">Android Kotlin</a></li>
-              <li><a href="#swift-v2-x">Swift v2.x</a></li>
-              <li><a href="#swift-v1-x">Swift v1.x</a></li>
-              </ul><li><a href="#data-layer">Data Layer</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/getting-started/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        GETTING STARTED
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Deep Links</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Learn about deep linking for mobile.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<p>A deep link is a hyperlink that launches a mobile app and, optionally, delivers specific content within the app. Deep links are often used to measure the performance of advertisement campaigns or promotional emails that link users to your app.</p>
-
-<h2 id="supported-platforms">Supported Platforms</h2>
-
-<p>The following platforms support deep link tracking:</p>
-
-<ul>
-<li><a href="/platforms/android-kotlin/">Android (Kotlin)</a></li>
-<li><a href="/platforms/ios-swift/">iOS (Swift v2.x)</a></li>
-</ul>
-
-<h2 id="how-it-works">How it Works</h2>
-
-<p>When your app is launched from a deep link, the Tealium library adds the URL to the data layer as the attribute <code>deep_link_url</code>.</p>
-
-<p>The deep link&rsquo;s query parameters are added to the data layer with attribute names in the format <code>deep_link_param_&lt;param name&gt;</code>.</p>
-
-<p>For example, <code>https://example.com/?campaign_code=SUMMER</code> becomes:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">deep_link_url = <span style="color:#a31515">&#34;https://example.com/?campaign_code=SUMMER&#34;</span>
-deep_link_param_campaign_code = <span style="color:#a31515">&#34;SUMMER&#34;</span>
-</code></pre></div>
-<p class="note"><i class="fas fa-info-circle"></i>Deep link data layer attributes are only stored for the session.</p>
-
-<h2 id="configuration">Configuration</h2>
-
-<h3 id="android-kotlin">Android Kotlin</h3>
-
-<p>Deep link tracking is automatically enabled in Tealium for Android (Kotlin).</p>
-
-<p>Disable automatic tracking of deep links by setting the <a href="/platforms/android-kotlin/api/tealium-config/#deeplinktrackingenabled"><code>deepLinkTrackingEnabled</code></a> property to <code>false</code>.</p>
-
-<h3 id="swift-v2-x">Swift v2.x</h3>
-
-<p>Deep link tracking is automatically enabled in Tealium for iOS (Swift v2.x).</p>
-
-<p>Disable automatic tracking of deep links by setting the <code>info.plist</code> key <code>TealiumAutotrackingDeepLinkEnabled</code> to <code>false</code>.</p>
-
-<h3 id="swift-v1-x">Swift v1.x</h3>
-
-<p>Tealium for iOS (Swift v1.x) requires a single line of code to be added to your app&rsquo;s <code>AppDelegate</code> class to enable deep linking.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> application(<span style="color:#00f">_</span> app: UIApplication,
-                 open url: URL,
-                 options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -&gt; Bool {
-  tealium?.handleDeepLink(url)
-  <span style="color:#00f">return</span> <span style="color:#00f">true</span>
-}</code></pre></div>
-<h2 id="data-layer">Data Layer</h2>
-
-<p>The following properties are added to your data layer when your app is launched from a deep link:</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Event Attribute</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>deep_link_url</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">The full URL of the deep link that opened the app, including query parameters.</td>
-<td align="left"><code>https://example.com/?campaign_code=SUMMER</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>deep_link_param_X</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Each query parameter of the deep link URL, where <code>X</code> is the name of the parameter, such as <code>deep_link_param_campaign_code</code>.</td>
-<td align="left"><code>SUMMER</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>deep_link_referrer_url</code> (iOS)</td>
-<td align="left"><code>String</code></td>
-<td align="left">The full URL of the browser page where the deep link was clicked.</td>
-<td align="left"><code>https://www.example.com/referring/page</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>deep_link_referrer_app</code> (iOS)</td>
-<td align="left"><code>String</code></td>
-<td align="left">The identifier of the referrer app when the deep link comes from a custom schema in another app signed by the same team.</td>
-<td align="left"><code>com.example.appId</code></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/getting-started/media/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Media Tracking "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Media Tracking</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/getting-started/timed-events/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Timed Events</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Timed Events"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7661,33 +7472,232 @@ deep_link_param_campaign_code = <span style="color:#a31515">&#34;SUMMER&#34;</sp
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/getting-started/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        GETTING STARTED
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Deep Links</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Learn about deep linking for mobile.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<p>A deep link is a hyperlink that launches a mobile app and, optionally, delivers specific content within the app. Deep links are often used to measure the performance of advertisement campaigns or promotional emails that link users to your app.</p>
+
+<h2 id="supported-platforms">Supported Platforms</h2>
+
+<p>The following platforms support deep link tracking:</p>
+
+<ul>
+<li><a href="/platforms/android-kotlin/">Android (Kotlin)</a></li>
+<li><a href="/platforms/ios-swift/">iOS (Swift v2.x)</a></li>
+</ul>
+
+<h2 id="how-it-works">How it Works</h2>
+
+<p>When your app is launched from a deep link, the Tealium library adds the URL to the data layer as the attribute <code>deep_link_url</code>.</p>
+
+<p>The deep link&rsquo;s query parameters are added to the data layer with attribute names in the format <code>deep_link_param_&lt;param name&gt;</code>.</p>
+
+<p>For example, <code>https://example.com/?campaign_code=SUMMER</code> becomes:</p>
+
+<pre><code class="language-javascript">deep_link_url = &quot;https://example.com/?campaign_code=SUMMER&quot;
+deep_link_param_campaign_code = &quot;SUMMER&quot;
+</code></pre>
+
+<p class="note"><i class="fas fa-info-circle"></i>Deep link data layer attributes are only stored for the session.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<h3 id="android-kotlin">Android Kotlin</h3>
+
+<p>Deep link tracking is automatically enabled in Tealium for Android (Kotlin).</p>
+
+<p>Disable automatic tracking of deep links by setting the <a href="/platforms/android-kotlin/api/tealium-config/#deeplinktrackingenabled"><code>deepLinkTrackingEnabled</code></a> property to <code>false</code>.</p>
+
+<h3 id="swift-v2-x">Swift v2.x</h3>
+
+<p>Deep link tracking is automatically enabled in Tealium for iOS (Swift v2.x).</p>
+
+<p>Disable automatic tracking of deep links by setting the <code>info.plist</code> key <code>TealiumAutotrackingDeepLinkEnabled</code> to <code>false</code>.</p>
+
+<h3 id="swift-v1-x">Swift v1.x</h3>
+
+<p>Tealium for iOS (Swift v1.x) requires a single line of code to be added to your app&rsquo;s <code>AppDelegate</code> class to enable deep linking.</p>
+
+<pre><code class="language-swift">func application(_ app: UIApplication,
+                 open url: URL,
+                 options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -&gt; Bool {
+  tealium?.handleDeepLink(url)
+  return true
+}
+</code></pre>
+
+<h2 id="data-layer">Data Layer</h2>
+
+<p>The following properties are added to your data layer when your app is launched from a deep link:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Event Attribute</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>deep_link_url</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">The full URL of the deep link that opened the app, including query parameters.</td>
+<td align="left"><code>https://example.com/?campaign_code=SUMMER</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>deep_link_param_X</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Each query parameter of the deep link URL, where <code>X</code> is the name of the parameter, such as <code>deep_link_param_campaign_code</code>.</td>
+<td align="left"><code>SUMMER</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>deep_link_referrer_url</code> (iOS)</td>
+<td align="left"><code>String</code></td>
+<td align="left">The full URL of the browser page where the deep link was clicked.</td>
+<td align="left"><code>https://www.example.com/referring/page</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>deep_link_referrer_app</code> (iOS)</td>
+<td align="left"><code>String</code></td>
+<td align="left">The identifier of the referrer app when the deep link comes from a custom schema in another app signed by the same team.</td>
+<td align="left"><code>com.example.appId</code></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/getting-started/media/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Media Tracking "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Media Tracking</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/getting-started/timed-events/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Timed Events</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Timed Events"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  December 2, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  December 2, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#supported-platforms">Supported Platforms</a></li>
+              <li><a href="#how-it-works">How it Works</a></li>
+              <li><a href="#configuration">Configuration</a></li>
+              <ul class="toc-h3"><li><a href="#android-kotlin">Android Kotlin</a></li>
+              <li><a href="#swift-v2-x">Swift v2.x</a></li>
+              <li><a href="#swift-v1-x">Swift v1.x</a></li>
+              </ul><li><a href="#data-layer">Data Layer</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

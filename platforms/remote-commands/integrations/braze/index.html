@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,1628 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
-              <li><a href="#how-it-works">How It Works</a></li>
-              <li><a href="#install">Install</a></li>
-              <ul class="toc-h3"><li><a href="#dependency-manager">Dependency Manager</a></li>
-              <li><a href="#manual-ios">Manual (iOS)</a></li>
-              </ul><li><a href="#initialize">Initialize</a></li>
-              <ul class="toc-h3"><li><a href="#android-kotlin">Android (Kotlin)</a></li>
-              <li><a href="#android-java">Android (Java)</a></li>
-              <li><a href="#ios-swift">iOS (Swift)</a></li>
-              </ul><li><a href="#json-template">JSON Template</a></li>
-              <li><a href="#supported-methods">Supported Methods</a></li>
-              <ul class="toc-h3"><li><a href="#sdk-setup">SDK Setup</a></li>
-              <li><a href="#user-tracking">User Tracking</a></li>
-              <li><a href="#user-attributes">User Attributes</a></li>
-              <li><a href="#social-data-tracking">Social Data Tracking</a></li>
-              <li><a href="#custom-event-tracking">Custom Event Tracking</a></li>
-              <li><a href="#notifications">Notifications</a></li>
-              <li><a href="#purchase-tracking">Purchase Tracking</a></li>
-              <li><a href="#location-tracking">Location Tracking</a></li>
-              <li><a href="#data-privacy">Data Privacy</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/remote-commands/integrations/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        REMOTE COMMANDS/INTEGRATIONS
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Remote Command: Braze</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Tealium remote command integration for Braze on Android and Swift/iOS.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="requirements">Requirements</h2>
-
-<ul>
-<li>Braze API key</li>
-<li>One of these mobile libraries:
-
-<ul>
-<li><a href="/platforms/android-kotlin/">Tealium for Android-Kotlin</a> (1.0.0+)</li>
-<li><a href="/platforms/android-java/">Tealium for Android-Java</a> (5.9.0+ for Braze 1.0.0+ or &lt;5.9.0 for previous versions)</li>
-<li><a href="/platforms/ios-swift/">Tealium for iOS-Swift</a></li>
-</ul></li>
-<li>One of these remote command integrations:
-
-<ul>
-<li><a href="/platforms/remote-commands/integrations/braze/#json-template">Braze Remote Command JSON File</a> (Requires Android-Kotlin 1.0.0+ or iOS-Swift 2.1.0+)</li>
-<li>Braze Remote Command tag in Tealium iQ Tag Management</li>
-</ul></li>
-</ul>
-
-<h2 id="how-it-works">How It Works</h2>
-
-<p>The Braze integration uses three items:</p>
-
-<ol>
-<li>The Braze native SDK</li>
-<li>The remote commands module that wraps the Braze methods</li>
-<li>Either the JSON configuration file or Remote Command tag that translates event tracking into native Braze calls</li>
-</ol>
-
-<p>Adding the Braze remote command module to your app automatically installs and builds the required Braze libraries, without having to add vendor-specific code to your app. If you are using a dependency manager installation, there is no need to install the Braze SDK separately.</p>
-
-<p>There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration.  Learn more about <a href="/platforms/remote-commands/how-it-works/#vendor-integrations">vendor integrations</a>.</p>
-
-<h2 id="install">Install</h2>
-
-<h3 id="dependency-manager">Dependency Manager</h3>
-
-<p>We recommend using one of the following dependency managers for installation:</p>
-
-<p class="note"><i class="fas fa-info-circle"></i>If you are using the Tealium iOS (Objective-C) library, use the manual installation method. The CocoaPods and Carthage options are only available if you are using the Tealium iOS (Swift) library.</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
-  <p>To install Braze remote commands for iOS using CocoaPods:</p>
-
-<ol>
-<li><p>Remove <code>tealium-swift</code> and <code>pod &quot;Appboy-iOS-SDK&quot;</code> if they exist in your Podfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumBraze</code> framework.</p></li>
-
-<li><p>Add the following dependency to your Podfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">pod <span style="color:#a31515">&#34;TealiumBraze&#34;</span></code></pre></div>
-<p>The <code>TealiumBraze</code> pod includes the following <code>TealiumSwift</code> dependencies:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#a31515">&#39;tealium-swift/Core&#39;</span>
-<span style="color:#a31515">&#39;tealium-swift/RemoteCommands&#39;</span>
-<span style="color:#a31515">&#39;tealium-swift/TagManagement&#39;</span></code></pre></div></li>
-
-<li><p>Import the modules <code>TealiumSwift</code> and <code>TealiumBraze</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class, or the Braze remote command.</p></li>
-</ol>
-
-</div>
-
-<div class="tab-pane" data-lang="Carthage" title="Carthage">
-  <p>To install Braze remote commands for iOS using Carthage:</p>
-
-<ol>
-<li><p>Remove <code>tealium-swift</code> from your Cartfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumBraze</code> framework.</p></li>
-
-<li><p>Remove the following line if it exists in your Cartfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">github <span style="color:#a31515">&#34;Appboy/Appboy-iOS-SDK&#34;</span></code></pre></div></li>
-
-<li><p>Add the following dependency to your Cartfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">github <span style="color:#a31515">&#34;tealium/tealium-ios-braze-remote-command&#34;</span></code></pre></div></li>
-</ol>
-
-<p class="note"><i class="fas fa-info-circle"></i>Tealium for Swift SDK (version 1.x) and <code>TealiumBraze</code> version 1.x requires the <code>TealiumDelegate</code> module to be included with your installation.</p>
-
-</div>
-
-<div class="tab-pane" data-lang="Maven" title="Maven">
-  <p>To install Braze remote commands for Android using Maven:</p>
-
-<ol>
-<li><p>Install <a href="/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> or <a href="/platforms/android-java/install/">Tealium for Android (Java)</a> and add the Tealium Maven URL to your project’s top-level <code>build.gradle</code> file, if you haven&rsquo;t done so already.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
-  repositories {
-    jcenter()
-    maven {
-      url <span style="color:#a31515">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
-    }
-  }
-}</code></pre></div></li>
-
-<li><p>Import both the Braze SDK and Tealium-Braze remote commands by adding the following dependencies in your app project&rsquo;s <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
-  implementation <span style="color:#a31515">&#39;com.tealium.remotecommands:braze:1.0.0&#39;</span>
-  implementation <span style="color:#a31515">&#39;com.appboy:android-sdk-ui:10.1.0&#39;</span>
-}</code></pre></div></li>
-</ol>
-
-</div>
-
-<p></div>
-</div></p>
-
-<h3 id="manual-ios">Manual (iOS)</h3>
-
-<p>The manual installation for Braze remote commands requires the <a href="/platforms/ios-swift/">Tealium for Swift</a> library to be installed. To install the Braze remote commands for your iOS project:</p>
-
-<ol>
-<li><p>Install the <a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/initial_sdk_setup/initial_sdk_setup/">Braze SDK</a>, if you haven&rsquo;t already done so.</p></li>
-
-<li><p>Clone the <a href="https://github.com/tealium/tealium-ios-braze-remote-command">Tealium iOS Braze remote command</a> repo and drag the files within the <code>Sources</code> folder into your project.</p></li>
-
-<li><p>Set the <a href="/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a> configuration flag to <code>true</code></p></li>
-</ol>
-
-<h2 id="initialize">Initialize</h2>
-
-<p>For all Tealium libraries, you need to register the Braze remote command when you initialize.</p>
-
-<h3 id="android-kotlin">Android (Kotlin)</h3>
-
-<p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s Kotlin library.</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>The following code is designed for use with the JSON Remote Commands feature, using the local file option:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> config = TealiumConfig(application,
-        <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-        <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-        Environment.DEV,
-        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
-<span style="color:#008000">// New code to add the Braze Remote Command
-</span><span style="color:#008000"></span><span style="color:#00f">val</span> brazeRemoteCommand = BrazeRemoteCommand(application,
-                            <span style="color:#00f">true</span>,
-                            sessionHandlingBlacklist,
-                            <span style="color:#00f">true</span>,
-                            inAppMessageBlacklist)
-
-<span style="color:#00f">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
-    <span style="color:#008000">// Optional: Set config options that may not be supported yet by the Tag in Tealium IQ
-</span><span style="color:#008000"></span>    <span style="color:#008000">//              or simply to override settings locally.
-</span><span style="color:#008000"></span>    brazeRemoteCommand.registerConfigOverride { builder -&gt;
-            <span style="color:#008000">// builder.setIsLocationCollectionEnabled(true);
-</span><span style="color:#008000"></span>            <span style="color:#008000">// builder.setGeofencesEnabled(true);
-</span><span style="color:#008000"></span>            <span style="color:#008000">// builder.setPushDeepLinkBackStackActivityEnabled(true);
-</span><span style="color:#008000"></span>            <span style="color:#008000">// builder.setPushDeepLinkBackStackActivityClass(UserActivity.class);
-</span><span style="color:#008000"></span>    }
-
-    <span style="color:#008000">// register the command
-</span><span style="color:#008000"></span>    remoteCommands?.add(brazeRemoteCommand, filename = <span style="color:#a31515">&#34;braze.json&#34;</span>);
-}</code></pre></div>
-</div>
-
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>The following code is designed for use with the Remote Command tag feature:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> config = TealiumConfig(application,
-        <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-        <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-        Environment.DEV,
-        dispatchers = mutableSetOf(Dispatchers.RemoteCommands, Dispatchers.TagManagement));
-<span style="color:#008000">// New code to add the Braze Remote Command
-</span><span style="color:#008000"></span><span style="color:#00f">val</span> brazeRemoteCommand = BrazeRemoteCommand(application,
-                            <span style="color:#00f">true</span>,
-                            sessionHandlingBlacklist,
-                            <span style="color:#00f">true</span>,
-                            inAppMessageBlacklist)
-
-<span style="color:#00f">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
-    <span style="color:#008000">// Optional: Set config options that may not be supported yet by the Tag in Tealium IQ
-</span><span style="color:#008000"></span>    <span style="color:#008000">//              or simply to override settings locally.
-</span><span style="color:#008000"></span>    brazeRemoteCommand.registerConfigOverride { builder -&gt;
-            <span style="color:#008000">// builder.setIsLocationCollectionEnabled(true);
-</span><span style="color:#008000"></span>            <span style="color:#008000">// builder.setGeofencesEnabled(true);
-</span><span style="color:#008000"></span>            <span style="color:#008000">// builder.setPushDeepLinkBackStackActivityEnabled(true);
-</span><span style="color:#008000"></span>            <span style="color:#008000">// builder.setPushDeepLinkBackStackActivityClass(UserActivity.class);
-</span><span style="color:#008000"></span>    }
-
-    <span style="color:#008000">// register the command
-</span><span style="color:#008000"></span>    remoteCommands?.add(brazeRemoteCommand);
-}</code></pre></div>
-</div>
-
-<p></div>
-</div></p>
-
-<h3 id="android-java">Android (Java)</h3>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-
-<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>The JSON Remote Command file feature for Android is only available in the Kotlin SDK.</p>
-
-</div>
-
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>The following code is designed for use with the Remote Command tag feature:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00f">import</span> com.tealium.remotecommands.BrazeRemoteCommand;
-
-Tealium.Config config = Tealium.Config.create(application, <span style="color:#a31515">&#34;ACCOUNT&#34;</span>, <span style="color:#a31515">&#34;PROFILE&#34;</span>, <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>);
-Tealium teal = Tealium.createInstance(TEALIUM_MAIN, config);
-
-BrazeRemoteCommand braze;
-<span style="color:#008000">// Initialize with default configuration options.
-</span><span style="color:#008000"></span>braze = <span style="color:#00f">new</span> BrazeRemoteCommand(config);
-
-<span style="color:#008000">// Or alternatively initialize with some additional config options:
-</span><span style="color:#008000"></span>Set&lt;Class&gt; sessionHandlingBlacklist = <span style="color:#00f">new</span> HashSet&lt;&gt;();
-Set&lt;Class&gt; inAppMessageBlacklist = <span style="color:#00f">new</span> HashSet&lt;&gt;();
-<span style="color:#008000">// sessionHandlingBlacklist.add(MainActivity.class);
-</span><span style="color:#008000">// inAppMessageBlacklist.add(UserActivity.class);
-</span><span style="color:#008000"></span>braze = <span style="color:#00f">new</span> BrazeRemoteCommand(config,
-        <span style="color:#00f">true</span>,                     <span style="color:#008000">// sessiongHandlingEnabled
-</span><span style="color:#008000"></span>        sessionHandlingBlacklist, <span style="color:#008000">// sessionHandlingBlacklist
-</span><span style="color:#008000"></span>        <span style="color:#00f">true</span>,                     <span style="color:#008000">// registerInAppMessageManager
-</span><span style="color:#008000"></span>        inAppMessageBlacklist);   <span style="color:#008000">// inAppMessageBlackList
-</span><span style="color:#008000"></span>
-<span style="color:#008000">// Optional: Set config options that may not be supported yet by the Tag in Tealium IQ
-</span><span style="color:#008000">//              or simply to override settings locally.
-</span><span style="color:#008000"></span>braze.registerConfigOverride(<span style="color:#00f">new</span> BrazeRemoteCommand.ConfigOverrider() {
-    @Override
-    <span style="color:#00f">public</span> void onOverride(AppboyConfig.Builder b) {
-        b.setPushDeepLinkBackStackActivityEnabled(<span style="color:#00f">true</span>);
-        b.setPushDeepLinkBackStackActivityClass(UserActivity.class);
-    }
-});
-
-<span style="color:#008000">// register the command
-</span><span style="color:#008000"></span>teal.addRemoteCommand(braze);</code></pre></div>
-</div>
-
-<p></div>
-</div></p>
-
-<h3 id="ios-swift">iOS (Swift)</h3>
-
-<p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium’s iOS (Swift) library.</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content">
-<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>The following code is designed for use with the JSON Remote Commands feature, using the local file option:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">var</span> tealium : Tealium?
-<span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-                           profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-                           environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
-                           dataSource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>,
-                           optionalData: <span style="color:#00f">nil</span>)
-
-config.remoteAPIEnabled = <span style="color:#00f">true</span> <span style="color:#008000">// Required to use Remote Commands</span>
-
-tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span style="color:#00f">in</span>
-    <span style="color:#00f">guard</span> <span style="color:#00f">let</span> remoteCommands = <span style="color:#00f">self</span>.tealium?.remoteCommands <span style="color:#00f">else</span> {
-        <span style="color:#00f">return</span>
-    }
-    <span style="color:#00f">let</span> braze = BrazeRemoteCommand(type: .local(file: <span style="color:#a31515">&#34;braze&#34;</span>))
-    remoteCommands.add(braze)
-}</code></pre></div>
-</div>
-
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>The following code is designed for use with the Remote Command tag feature:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">var</span> tealium : Tealium?
-<span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-                           profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-                           environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
-                           dataSource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>,
-                           optionalData: <span style="color:#00f">nil</span>)
-
-config.remoteAPIEnabled = <span style="color:#00f">true</span> <span style="color:#008000">// Required to use Remote Commands</span>
-
-tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span style="color:#00f">in</span>
-    <span style="color:#00f">guard</span> <span style="color:#00f">let</span> remoteCommands = <span style="color:#00f">self</span>.tealium?.remoteCommands <span style="color:#00f">else</span> {
-        <span style="color:#00f">return</span>
-    }
-    <span style="color:#00f">let</span> braze = BrazeRemoteCommand()
-    remoteCommands.add(braze)
-}</code></pre></div>
-</div>
-
-<p></div>
-</div></p>
-
-<h2 id="json-template">JSON Template</h2>
-
-<p>If you are configuring remote commands using a <a href="/platforms/remote-commands/how-it-works/#json-configuration-file">JSON configuration file</a>, refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-    &#34;config&#34;: {
-        &#34;api_key&#34;: <span style="color:#a31515">&#34;YOUR_API_KEY&#34;</span>,
-        &#34;session_timeout&#34;: 30,
-        &#34;disable_location&#34;: <span style="color:#00f">false</span>,
-        &#34;trigger_interval_seconds&#34;: 100
-    },
-    &#34;mappings&#34;: {
-        &#34;customer_id&#34;: <span style="color:#a31515">&#34;user_id&#34;</span>,
-        &#34;customer_first_name&#34;: <span style="color:#a31515">&#34;first_name&#34;</span>,
-        &#34;customer_last_name&#34;: <span style="color:#a31515">&#34;last_name&#34;</span>,
-        &#34;customer_gender&#34;: <span style="color:#a31515">&#34;gender&#34;</span>,
-        &#34;customer_language&#34;: <span style="color:#a31515">&#34;language&#34;</span>,
-        &#34;customer_email&#34;: <span style="color:#a31515">&#34;email&#34;</span>,
-        &#34;customer_home_city&#34;: <span style="color:#a31515">&#34;home_city&#34;</span>,
-        &#34;customer_dob&#34;: <span style="color:#a31515">&#34;date_of_birth&#34;</span>,
-        &#34;customer_alias&#34;: <span style="color:#a31515">&#34;user_alias&#34;</span>,
-        &#34;customer_alias_label&#34;: <span style="color:#a31515">&#34;alias_label&#34;</span>,
-        &#34;pet&#34;: <span style="color:#a31515">&#34;set_custom_attribute.pet&#34;</span>,
-        &#34;pet_count&#34;: <span style="color:#a31515">&#34;set_custom_attribute.pet_count&#34;</span>,
-        &#34;pet_count_unset&#34;: <span style="color:#a31515">&#34;unset_custom_attribute.pet_count_unset&#34;</span>,
-        &#34;pet_count_increment&#34;: <span style="color:#a31515">&#34;increment_custom_attribute.pet_count_increment&#34;</span>,
-        &#34;pet_names&#34;: <span style="color:#a31515">&#34;set_custom_array_attribute.pet_names&#34;</span>,
-        &#34;pet_names_append&#34;: <span style="color:#a31515">&#34;append_custom_array_attribute.pet_names_append&#34;</span>,
-        &#34;pet_names_remove&#34;: <span style="color:#a31515">&#34;remove_custom_array_attribute.pet_names_remove&#34;</span>,
-        &#34;facebook_user&#34;: <span style="color:#a31515">&#34;facebook_user&#34;</span>,
-        &#34;number_of_friends&#34;: <span style="color:#a31515">&#34;friends_count&#34;</span>,
-        &#34;list_of_likes&#34;: <span style="color:#a31515">&#34;likes&#34;</span>,
-        &#34;facebook_user_properties&#34;: <span style="color:#a31515">&#34;facebook_user&#34;</span>,
-        &#34;social_media_user_description&#34;: <span style="color:#a31515">&#34;description&#34;</span>,
-        &#34;twitter_id&#34;: <span style="color:#a31515">&#34;twitter_id&#34;</span>,
-        &#34;twitter_name&#34;: <span style="color:#a31515">&#34;twitter_name&#34;</span>,
-        &#34;twitter_user_description&#34;: <span style="color:#a31515">&#34;description&#34;</span>,
-        &#34;profile_image_url&#34;: <span style="color:#a31515">&#34;profile_image_url&#34;</span>,
-        &#34;screen_name&#34;: <span style="color:#a31515">&#34;screen_name&#34;</span>,
-        &#34;number_of_followers&#34;: <span style="color:#a31515">&#34;followers_count&#34;</span>,
-        &#34;number_of_statuses&#34;: <span style="color:#a31515">&#34;statuses_count&#34;</span>,
-        &#34;email_notification&#34;: <span style="color:#a31515">&#34;email_notification&#34;</span>,
-        &#34;push_notification&#34;: <span style="color:#a31515">&#34;push_notification&#34;</span>,
-        &#34;event_name&#34;: <span style="color:#a31515">&#34;event_name&#34;</span>,
-        &#34;current_level&#34;: <span style="color:#a31515">&#34;event.current_level&#34;</span>,
-        &#34;start_date&#34;: <span style="color:#a31515">&#34;event.start_date&#34;</span>,
-        &#34;high_score&#34;: <span style="color:#a31515">&#34;event.high_score&#34;</span>,
-        &#34;product_id&#34;: <span style="color:#a31515">&#34;product_id&#34;</span>,
-        &#34;product_quantity&#34;: <span style="color:#a31515">&#34;quantity&#34;</span>,
-        &#34;product_unit_price&#34;: <span style="color:#a31515">&#34;product_unit_price&#34;</span>,
-        &#34;currency_code&#34;: <span style="color:#a31515">&#34;order_currency&#34;</span>,
-        &#34;rewards_member&#34;: <span style="color:#a31515">&#34;purchase.rewards_member&#34;</span>,
-        &#34;rewards_points_earned&#34;: <span style="color:#a31515">&#34;purchase.rewards_points_earned&#34;</span>,
-        &#34;date_joined_program&#34;: <span style="color:#a31515">&#34;purchase.date_joined_program&#34;</span>,
-        &#34;latitude&#34;: <span style="color:#a31515">&#34;location_latitude&#34;</span>,
-        &#34;longitude&#34;: <span style="color:#a31515">&#34;location_longitude&#34;</span>,
-        &#34;horizontal_accuracy&#34;: <span style="color:#a31515">&#34;location_horizontal_accuracy&#34;</span>
-    },
-    &#34;commands&#34;: {
-        &#34;launch&#34;: <span style="color:#a31515">&#34;initialize&#34;</span>,
-        &#34;twitter&#34;: <span style="color:#a31515">&#34;twitteruser&#34;</span>,
-        &#34;facebook&#34;: <span style="color:#a31515">&#34;facebookuser&#34;</span>,
-        &#34;setengagement&#34;: <span style="color:#a31515">&#34;emailnotification,pushnotification&#34;</span>,
-        &#34;log_custom_event&#34;: <span style="color:#a31515">&#34;logcustomevent&#34;</span>,
-        &#34;set_location&#34;: <span style="color:#a31515">&#34;setlastknownlocation&#34;</span>,
-        &#34;custom_attribute&#34;: <span style="color:#a31515">&#34;setcustomattribute&#34;</span>,
-        &#34;unset_custom_attribute&#34;: <span style="color:#a31515">&#34;unsetcustomattribute&#34;</span>,
-        &#34;custom_array_attribute&#34;: <span style="color:#a31515">&#34;appendcustomarrayattribute&#34;</span>,
-        &#34;append_custom_array_attribute&#34;: <span style="color:#a31515">&#34;appendcustomarrayattribute&#34;</span>,
-        &#34;remove_custom_array_attribute&#34;: <span style="color:#a31515">&#34;removecustomarrayattribute&#34;</span>,
-        &#34;increment_custom_attribute&#34;: <span style="color:#a31515">&#34;incrementcustomattribute&#34;</span>,
-        &#34;log_purchase&#34;: <span style="color:#a31515">&#34;logpurchase&#34;</span>,
-        &#34;user_attribute&#34;: <span style="color:#a31515">&#34;userattribute,useridentifier,useralias&#34;</span>,
-        &#34;user_login&#34;: <span style="color:#a31515">&#34;useridentifier,useralias&#34;</span>,
-        &#34;user_alias&#34;: <span style="color:#a31515">&#34;useralias&#34;</span>,
-    }
-}</code></pre></div>
-<h2 id="supported-methods">Supported Methods</h2>
-
-<p>The following Braze methods are triggered using a data mapping in the Braze Remote Command tag using the following Tealium commands:</p>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>Braze Method</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>appendcustomarrayattribute</code></td>
-<td><code>addToCustomAttributeArrayWithKey()</code></td>
-</tr>
-
-<tr>
-<td><code>emailnotification</code></td>
-<td><code>setEmailNotificationSubscriptionType()</code></td>
-</tr>
-
-<tr>
-<td><code>facebookuser</code></td>
-<td><code>facebookUser()</code></td>
-</tr>
-
-<tr>
-<td><code>incrementcustomattribute</code></td>
-<td><code>incrementCustomUserAttribute()</code></td>
-</tr>
-
-<tr>
-<td><code>initialize</code></td>
-<td><code>startWithApiKey()</code></td>
-</tr>
-
-<tr>
-<td><code>logcustomevent</code></td>
-<td><code>logCustomEvent()</code></td>
-</tr>
-
-<tr>
-<td><code>logpurchase</code></td>
-<td><code>logPurchase()</code></td>
-</tr>
-
-<tr>
-<td><code>pushnotification</code></td>
-<td><code>setPushNotificationSubscriptionType()</code></td>
-</tr>
-
-<tr>
-<td><code>removecustomarrayattribute</code></td>
-<td><code>removeFromCustomAttributeArrayWithKey()</code></td>
-</tr>
-
-<tr>
-<td><code>setcustomattribute</code></td>
-<td><code>setCustomAttributeWithKey()</code></td>
-</tr>
-
-<tr>
-<td><code>setcustomarrayattribute</code></td>
-<td><code>setCustomAttributeArrayWithKey()</code></td>
-</tr>
-
-<tr>
-<td><code>setlastknownlocation</code></td>
-<td><code>setLastKnownLocationWithLatitude()</code></td>
-</tr>
-
-<tr>
-<td><code>twitteruser</code></td>
-<td><code>twitterUser()</code></td>
-</tr>
-
-<tr>
-<td><code>unsetcustomattribute</code></td>
-<td><code>unsetCustomAttributeWithKey()</code></td>
-</tr>
-
-<tr>
-<td><code>useralias</code></td>
-<td><code>addAlias()</code></td>
-</tr>
-
-<tr>
-<td><code>userattribute</code></td>
-<td><code>ABKUser()</code></td>
-</tr>
-
-<tr>
-<td><code>useridentifier</code></td>
-<td><code>changeUser()</code></td>
-</tr>
-</tbody>
-</table>
-
-<p class="note"><i class="fas fa-info-circle"></i>Since the Braze SDK is installed alongside the Tealium SDK, trigger any native Braze functionality given the corresponding tag configuration.</p>
-
-<h3 id="sdk-setup">SDK Setup</h3>
-
-<h4 id="initialize-1">Initialize</h4>
-
-<p>The Braze SDK is initialized automatically upon launch. The Braze API key is set in the tag configuration.</p>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>Braze Method (iOS)</th>
-<th>Braze Method (Android)</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>initialize</code></td>
-<td><code>startWithApiKey()</code></td>
-<td><code>configure()</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>The following mappings are used to set launch options.</p>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>custom_endpoint</code></td>
-<td><code>String</code></td>
-<td>Sets a custom API endpoint. This gets sent in the format <code>sdk.api.braze.eu</code></td>
-</tr>
-
-<tr>
-<td><code>device_options</code></td>
-<td><code>Int</code></td>
-<td>Key to specify a whitelist for device fields that are collected by the Braze SDK (default all fields are collected)</td>
-</tr>
-
-<tr>
-<td><code>disable_location</code></td>
-<td><code>Int</code></td>
-<td>Disable automatic location data collection (<code>1</code> or <code>0</code>)</td>
-</tr>
-
-<tr>
-<td><code>enable_geofences</code></td>
-<td><code>Int</code></td>
-<td>Enable automatic collection of geofences (<code>1</code> or <code>0</code>)</td>
-</tr>
-
-<tr>
-<td><code>flush_interval</code></td>
-<td><code>Double</code></td>
-<td>Sets the data flush interval (in seconds). Values are converted into NSTimeIntervals and must be greater than <code>1.0</code></td>
-</tr>
-
-<tr>
-<td><code>push_story_identifier</code></td>
-<td><code>String</code></td>
-<td>This key is set to a string value representing the app group name for the Push Story Notification Content extension.</td>
-</tr>
-
-<tr>
-<td><code>request_processing_policy</code></td>
-<td><code>Int</code></td>
-<td>Possible values for the SDKs request processing (default ABKAutomaticRequestProcessing)</td>
-</tr>
-
-<tr>
-<td><code>session_timeout</code></td>
-<td><code>Int</code> (seconds)</td>
-<td>The session timeout in seconds (default: <code>30</code> seconds)</td>
-</tr>
-
-<tr>
-<td><code>trigger_interval_seconds</code></td>
-<td><code>Int</code> (seconds)</td>
-<td>Override the minimum interval between in-app message triggers (default: <code>30</code> seconds)</td>
-</tr>
-</tbody>
-</table>
-
-<p>Android</p>
-
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/initial_sdk_setup/android_sdk_integration/">Braze Developer Guide: Initial SDK Setup</a></li>
-</ul>
-
-<p>iOS</p>
-
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/initial_sdk_setup/#customizing-braze-on-startup">Braze Developer Guide: Initial SDK Setup</a><br /></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/advanced_use_cases/fine_network_traffic_control/">Braze Developer Guide: Fine Network Traffic Control</a><br /></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/advanced_use_cases/locations_and_geofences/">Braze Developer Guide: Locations and Geofences</a><br /></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/push_story/">Braze Developer Guide: Push Story Setup</a><br /></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/tracking_sessions/">Braze Developer Guide: Tracking Sessions</a></li>
-</ul>
-
-<h3 id="user-tracking">User Tracking</h3>
-
-<h4 id="assigning-a-user-id">Assigning a User ID</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>Braze Method</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>useridentifier</code></td>
-<td><code>changeUser</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>user_id</code> (required)</td>
-<td><code>String</code></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>Braze Developer Guide: Analytics User IDs<br />
-
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_user_ids/">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_user_ids/#assigning-a-user-id">Android</a></li>
-</ul></li>
-</ul>
-
-<h4 id="aliasing-users">Aliasing Users</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>Braze Method</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>useralias</code></td>
-<td><code>addAlias</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>user_alias</code> (required)</td>
-<td><code>String</code></td>
-</tr>
-
-<tr>
-<td><code>alias_label</code> (required)</td>
-<td><code>String</code></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>Braze Developer Guide: Analytics Alias Users<br />
-
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_user_ids/#aliasing-users">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_user_ids/#aliasing-users">Android</a></li>
-</ul></li>
-</ul>
-
-<h3 id="user-attributes">User Attributes</h3>
-
-<h4 id="standard-attributes">Standard Attributes</h4>
-
-<table>
-<thead>
-<tr>
-<th>Event</th>
-<th>Braze Method</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>userattribute</td>
-<td>Set fields on the <code>ABKUser/AppboyUser</code> object</td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>first_name</code></td>
-<td><code>String</code></td>
-</tr>
-
-<tr>
-<td><code>last_name</code></td>
-<td><code>String</code></td>
-</tr>
-
-<tr>
-<td><code>email</code></td>
-<td><code>String</code></td>
-</tr>
-
-<tr>
-<td><code>date_of_birth</code></td>
-<td><code>String</code></td>
-</tr>
-
-<tr>
-<td><code>country</code></td>
-<td><code>String</code></td>
-</tr>
-
-<tr>
-<td><code>language</code></td>
-<td><code>String</code></td>
-</tr>
-
-<tr>
-<td><code>home_city</code></td>
-<td><code>String</code></td>
-</tr>
-
-<tr>
-<td><code>phone</code></td>
-<td><code>String</code></td>
-</tr>
-
-<tr>
-<td><code>avatar_image_url</code></td>
-<td><code>String</code></td>
-</tr>
-
-<tr>
-<td><code>gender</code></td>
-<td><code>String</code></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>Braze Developer Guide: Analytics User Attributes
-
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#assigning-standard-user-attributes">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-standard-user-attributes">Android</a></li>
-</ul></li>
-<li><a href="https://www.braze.com/docs/api/endpoints/user_data/?redirected=true#user-attributes-object-specification">Braze Developer Guide: User Data API</a></li>
-</ul>
-
-<h4 id="set-custom-attribute">Set Custom Attribute</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>Braze Method (iOS)</th>
-<th>Braze Method (Android)</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>setcustomattribute</code></td>
-<td><code>setCustomAttributeWithKey</code></td>
-<td><code>setCustomUserAttribute</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>set_custom_attribute.PROPERTY</code></td>
-<td><code>[String: Any]</code> / <code>JSONObject</code></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>Braze Developer Guide: Analytics Custom Attributes<br />
-
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#assigning-custom-user-attributes">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
-</ul></li>
-</ul>
-
-<h4 id="unset-custom-attribute">Unset Custom Attribute</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>Braze Method (iOS)</th>
-<th>Braze Method (Android)</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>setcustomattribute</code></td>
-<td><code>unsetCustomAttributeWithKey</code></td>
-<td><code>unsetCustomUserAttribute</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>set_custom_attribute.PROPERTY</code></td>
-<td><code>String</code></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>Braze Developer Guide: Analytics Custom Attributes<br />
-
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#unsetting-a-custom-attribute">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
-</ul></li>
-</ul>
-
-<h4 id="increment-custom-attribute">Increment Custom Attribute</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>Braze Method</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>incrementcustomattribute</code></td>
-<td><code>incrementCustomUserAttribute</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>increment_custom_attribute.PROPERTY</code></td>
-<td><code>String</code></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>Braze Developer Guide: Analytics Incrementing Attributes
-
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#incrementingdecrementing-custom-attributes">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
-</ul></li>
-</ul>
-
-<h4 id="set-custom-array-attribute">Set Custom Array Attribute</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>Braze Method (iOS)</th>
-<th>Braze Method (Android)</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>setcustomarrayattribute</td>
-<td><code>setCustomAttributeArrayWithKey</code></td>
-<td><code>setCustomAttributeArray</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>set_custom_array_attribute.PROPERTY</code></td>
-<td><code>[String: [Any]]</code> / <code>JSONObject</code></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>Braze Developer Guide: Analytics Array Attributes<br />
-
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#custom-attribute-with-an-array-value">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
-</ul></li>
-</ul>
-
-<h4 id="append-custom-array-attribute">Append Custom Array Attribute</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>Braze Method (iOS)</th>
-<th>Braze Method (Android)</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>appendcustomarrayattribute</code></td>
-<td><code>addToCustomAttributeArrayWithKey</code></td>
-<td><code>addToCustomAttributeArray</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>append_custom_array_attribute.PROPERTY</code></td>
-<td><code>[String: String]</code> / <code>JSONObject</code></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>Braze Developer Guide: Analytics Array Attributes<br />
-
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#custom-attribute-with-an-array-value">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
-</ul></li>
-</ul>
-
-<h4 id="remove-custom-array-attribute">Remove Custom Array Attribute</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>Braze Method (iOS)</th>
-<th>Braze Method (Android)</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>removecustomarrayattribute</td>
-<td><code>removeFromCustomAttributeArrayWithKey</code></td>
-<td><code>removeFromCustomAttributeArray</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>remove_custom_array_attribute.PROPERTY</code></td>
-<td><code>[String: String]</code> / <code>JSONObject</code></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>Braze Developer Guide: Analytics Array Attributes<br />
-
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#custom-attribute-with-an-array-value">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
-</ul></li>
-</ul>
-
-<h3 id="social-data-tracking">Social Data Tracking</h3>
-
-<h4 id="facebook">Facebook</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>Braze Method</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>facebookuser</code></td>
-<td>Initialize an <code>ABKFacebookUser/FacebookUser</code> object</td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>facebook_id</code></td>
-<td><code>[String: Any]</code> / <code>String</code></td>
-</tr>
-
-<tr>
-<td><code>friends_count</code></td>
-<td><code>Int</code></td>
-</tr>
-
-<tr>
-<td><code>likes</code></td>
-<td><code>[Any]</code> / <code>String[]</code></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>Braze Developer Guide: Social Data<br />
-
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/social_data_tracking/">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/social_data_tracking/">Android</a></li>
-</ul></li>
-</ul>
-
-<h4 id="twitter">Twitter</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>Braze Method</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>twitteruser</code></td>
-<td>Initialize a <code>ABKTwitterUser/TwitterUser</code> object</td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>description</code></td>
-<td><code>String</code></td>
-</tr>
-
-<tr>
-<td><code>twitter_name</code></td>
-<td><code>String</code></td>
-</tr>
-
-<tr>
-<td><code>profile_image_url</code></td>
-<td><code>String</code></td>
-</tr>
-
-<tr>
-<td><code>screen_name</code></td>
-<td><code>String</code></td>
-</tr>
-
-<tr>
-<td><code>followers_count</code></td>
-<td><code>Int</code></td>
-</tr>
-
-<tr>
-<td><code>friends_count</code></td>
-<td><code>Int</code></td>
-</tr>
-
-<tr>
-<td><code>statuses_count</code></td>
-<td><code>Int</code></td>
-</tr>
-
-<tr>
-<td><code>twitter_id</code></td>
-<td><code>Int</code></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>Braze Developer Guide: Social Data<br />
-
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/social_data_tracking/">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/social_data_tracking/">Android</a></li>
-</ul></li>
-</ul>
-
-<h3 id="custom-event-tracking">Custom Event Tracking</h3>
-
-<h4 id="custom-event">Custom Event</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>Braze Method</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>logcustomevent</code></td>
-<td><code>logCustomEvent</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>event_name</code> (required)</td>
-<td><code>String</code></td>
-</tr>
-
-<tr>
-<td><code>event_properties</code></td>
-<td><code>[String: Any]</code> / <code>JSONObject</code></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>Braze Developer Guide: Analytics Custom Events
-
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/tracking_custom_events/">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/tracking_custom_events/">Android</a></li>
-</ul></li>
-</ul>
-
-<h3 id="notifications">Notifications</h3>
-
-<h4 id="email-notifications">Email Notifications</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>Braze Method</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>emailnotification</code></td>
-<td><code>setEmailNotificationSubscriptionType</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>email_notification</code></td>
-<td><code>String</code></td>
-<td>[<code>&quot;optedin&quot;</code>, <code>&quot;subscribed&quot;</code>, <code>&quot;unsubscribed&quot;</code>]</td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>Braze Developer Guide: Analytics Email Subscriptions<br />
-
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#setting-email-subscriptions">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#setting-up-user-subscriptions">Android</a></li>
-</ul></li>
-</ul>
-
-<h4 id="push-notifications">Push Notifications</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>Braze Method</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>pushnotification</td>
-<td><code>setPushNotificationSubscriptionType</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>push_notification</code></td>
-<td><code>String</code></td>
-<td>[<code>&quot;optedin&quot;</code>, <code>&quot;subscribed&quot;</code>, <code>&quot;unsubscribed&quot;</code>]</td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>Braze Developer Guide: Analytics Push Notifications<br />
-
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#setting-up-user-subscriptions">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#setting-up-user-subscriptions">Android</a></li>
-</ul></li>
-</ul>
-
-<h3 id="purchase-tracking">Purchase Tracking</h3>
-
-<h4 id="log-purchase">Log Purchase</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>Braze Method</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>logpurchase</td>
-<td><code>logPurchase</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>product_id</code> (required)</td>
-<td><code>[String]</code> / <code>String[]</code></td>
-</tr>
-
-<tr>
-<td><code>currency</code> (required)</td>
-<td><code>String</code> / <code>String</code></td>
-</tr>
-
-<tr>
-<td><code>price</code> (required)</td>
-<td><code>[Double]</code> / <code>Double[]</code></td>
-</tr>
-
-<tr>
-<td><code>quantity</code></td>
-<td><code>[Int]</code> / <code>Int[]</code></td>
-</tr>
-
-<tr>
-<td><code>purchase_properties</code></td>
-<td><code>[AnyHashable: Any]</code> / <code>JSONObject</code></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>Braze Developer Guide: Analytics Purchase Events<br />
-
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/logging_purchases/">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/logging_purchases/">Android</a></li>
-</ul></li>
-</ul>
-
-<h3 id="location-tracking">Location Tracking</h3>
-
-<h4 id="set-user-s-last-known-location">Set User&rsquo;s Last Known Location</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>Braze Method</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>setlastknownlocation</code></td>
-<td><code>setLastKnownLocationWithLatitude</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>latitude</code> (required)</td>
-<td><code>Double</code></td>
-</tr>
-
-<tr>
-<td><code>longitude</code> (required)</td>
-<td><code>Double</code></td>
-</tr>
-
-<tr>
-<td><code>horizontalAccuracy</code> (required)</td>
-<td><code>Double</code></td>
-</tr>
-
-<tr>
-<td><code>altitude</code></td>
-<td><code>Double</code></td>
-</tr>
-
-<tr>
-<td><code>verticalAccuracy</code></td>
-<td><code>Double</code></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/location_tracking/#enabling-automatic-location-tracking">Braze Developer Guide: Analytics Location Tracking</a></li>
-</ul>
-
-<h3 id="data-privacy">Data Privacy</h3>
-
-<h4 id="enable-sdk">Enable SDK</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>Braze Method (iOS)</th>
-<th>Braze Method (Android)</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>enable_sdk</code></td>
-<td><code>enableSDK</code></td>
-<td><code>enableSdk/disableSdk</code></td>
-</tr>
-</tbody>
-</table>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>enable_sdk</code></td>
-<td><code>Boolean</code></td>
-<td><code>true / false</code></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>Braze Developer Guide: Analytics Disabling<br />
-
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/disabling_tracking/">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/disabling_tracking/">Android</a></li>
-</ul></li>
-</ul>
-
-<h4 id="wipe-data">Wipe Data</h4>
-
-<table>
-<thead>
-<tr>
-<th>Remote Command</th>
-<th>Braze Method</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>wipe_data</code></td>
-<td><code>wipeData</code></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>Braze Developer Guide: Analytics Disabling<br />
-
-<ul>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/disabling_tracking/">iOS</a></li>
-<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/disabling_tracking/">Android</a></li>
-</ul></li>
-</ul>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/remote-commands/integrations/branch/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Remote Command: Branch "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Remote Command: Branch</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/remote-commands/integrations/contentsquare/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Remote Command: Contentsquare</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Remote Command: Contentsquare"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -9086,33 +7472,1683 @@ tealium = Tealium(config: config) { <span style="color:#00f">_</span> <span styl
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/remote-commands/integrations/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        REMOTE COMMANDS/INTEGRATIONS
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Remote Command: Braze</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Tealium remote command integration for Braze on Android and Swift/iOS.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+<li>Braze API key</li>
+<li>One of these mobile libraries:
+
+<ul>
+<li><a href="/platforms/android-kotlin/">Tealium for Android-Kotlin</a> (1.0.0+)</li>
+<li><a href="/platforms/android-java/">Tealium for Android-Java</a> (5.9.0+ for Braze 1.0.0+ or &lt;5.9.0 for previous versions)</li>
+<li><a href="/platforms/ios-swift/">Tealium for iOS-Swift</a></li>
+</ul></li>
+<li>One of these remote command integrations:
+
+<ul>
+<li><a href="/platforms/remote-commands/integrations/braze/#json-template">Braze Remote Command JSON File</a> (Requires Android-Kotlin 1.0.0+ or iOS-Swift 2.1.0+)</li>
+<li>Braze Remote Command tag in Tealium iQ Tag Management</li>
+</ul></li>
+</ul>
+
+<h2 id="how-it-works">How It Works</h2>
+
+<p>The Braze integration uses three items:</p>
+
+<ol>
+<li>The Braze native SDK</li>
+<li>The remote commands module that wraps the Braze methods</li>
+<li>Either the JSON configuration file or Remote Command tag that translates event tracking into native Braze calls</li>
+</ol>
+
+<p>Adding the Braze remote command module to your app automatically installs and builds the required Braze libraries, without having to add vendor-specific code to your app. If you are using a dependency manager installation, there is no need to install the Braze SDK separately.</p>
+
+<p>There are two remote command options: A JSON configuration file, or using iQ Tag Management to configure the mappings. A JSON configuration file is the recommended option for your vendor integration, hosted either remotely or locally within your app. If using iQ Tag Management, add the Remote Command tag for the vendor integration.  Learn more about <a href="/platforms/remote-commands/how-it-works/#vendor-integrations">vendor integrations</a>.</p>
+
+<h2 id="install">Install</h2>
+
+<h3 id="dependency-manager">Dependency Manager</h3>
+
+<p>We recommend using one of the following dependency managers for installation:</p>
+
+<p class="note"><i class="fas fa-info-circle"></i>If you are using the Tealium iOS (Objective-C) library, use the manual installation method. The CocoaPods and Carthage options are only available if you are using the Tealium iOS (Swift) library.</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
+  <p>To install Braze remote commands for iOS using CocoaPods:</p>
+
+<ol>
+<li><p>Remove <code>tealium-swift</code> and <code>pod &quot;Appboy-iOS-SDK&quot;</code> if they exist in your Podfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumBraze</code> framework.</p></li>
+
+<li><p>Add the following dependency to your Podfile:</p>
+
+<pre><code class="language-ruby">pod &quot;TealiumBraze&quot;
+</code></pre>
+
+<p>The <code>TealiumBraze</code> pod includes the following <code>TealiumSwift</code> dependencies:</p>
+
+<pre><code class="language-bash">'tealium-swift/Core'
+'tealium-swift/RemoteCommands'
+'tealium-swift/TagManagement'
+</code></pre></li>
+
+<li><p>Import the modules <code>TealiumSwift</code> and <code>TealiumBraze</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class, or the Braze remote command.</p></li>
+</ol>
+
+</div>
+
+<div class="tab-pane" data-lang="Carthage" title="Carthage">
+  <p>To install Braze remote commands for iOS using Carthage:</p>
+
+<ol>
+<li><p>Remove <code>tealium-swift</code> from your Cartfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumBraze</code> framework.</p></li>
+
+<li><p>Remove the following line if it exists in your Cartfile:</p>
+
+<pre><code class="language-bash">github &quot;Appboy/Appboy-iOS-SDK&quot;
+</code></pre></li>
+
+<li><p>Add the following dependency to your Cartfile:</p>
+
+<pre><code class="language-bash">github &quot;tealium/tealium-ios-braze-remote-command&quot;
+</code></pre></li>
+</ol>
+
+<p class="note"><i class="fas fa-info-circle"></i>Tealium for Swift SDK (version 1.x) and <code>TealiumBraze</code> version 1.x requires the <code>TealiumDelegate</code> module to be included with your installation.</p>
+
+</div>
+
+<div class="tab-pane" data-lang="Maven" title="Maven">
+  <p>To install Braze remote commands for Android using Maven:</p>
+
+<ol>
+<li><p>Install <a href="/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> or <a href="/platforms/android-java/install/">Tealium for Android (Java)</a> and add the Tealium Maven URL to your project’s top-level <code>build.gradle</code> file, if you haven&rsquo;t done so already.</p>
+
+<pre><code class="language-groovy">allprojects {
+  repositories {
+    jcenter()
+    maven {
+      url &quot;https://maven.tealiumiq.com/android/releases/&quot;
+    }
+  }
+}
+</code></pre></li>
+
+<li><p>Import both the Braze SDK and Tealium-Braze remote commands by adding the following dependencies in your app project&rsquo;s <code>build.gradle</code> file:</p>
+
+<pre><code class="language-groovy">dependencies {
+  implementation 'com.tealium.remotecommands:braze:1.0.0'
+  implementation 'com.appboy:android-sdk-ui:10.1.0'
+}
+</code></pre></li>
+</ol>
+
+</div>
+
+<p></div>
+</div></p>
+
+<h3 id="manual-ios">Manual (iOS)</h3>
+
+<p>The manual installation for Braze remote commands requires the <a href="/platforms/ios-swift/">Tealium for Swift</a> library to be installed. To install the Braze remote commands for your iOS project:</p>
+
+<ol>
+<li><p>Install the <a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/initial_sdk_setup/initial_sdk_setup/">Braze SDK</a>, if you haven&rsquo;t already done so.</p></li>
+
+<li><p>Clone the <a href="https://github.com/tealium/tealium-ios-braze-remote-command">Tealium iOS Braze remote command</a> repo and drag the files within the <code>Sources</code> folder into your project.</p></li>
+
+<li><p>Set the <a href="/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a> configuration flag to <code>true</code></p></li>
+</ol>
+
+<h2 id="initialize">Initialize</h2>
+
+<p>For all Tealium libraries, you need to register the Braze remote command when you initialize.</p>
+
+<h3 id="android-kotlin">Android (Kotlin)</h3>
+
+<p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s Kotlin library.</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The following code is designed for use with the JSON Remote Commands feature, using the local file option:</p>
+
+<pre><code class="language-kotlin">val config = TealiumConfig(application,
+        &quot;ACCOUNT&quot;,
+        &quot;PROFILE&quot;,
+        Environment.DEV,
+        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+// New code to add the Braze Remote Command
+val brazeRemoteCommand = BrazeRemoteCommand(application,
+                            true,
+                            sessionHandlingBlacklist,
+                            true,
+                            inAppMessageBlacklist)
+
+var tealium = Tealium.create(TEALIUM_MAIN, config) {
+    // Optional: Set config options that may not be supported yet by the Tag in Tealium IQ
+    //              or simply to override settings locally.
+    brazeRemoteCommand.registerConfigOverride { builder -&gt;
+            // builder.setIsLocationCollectionEnabled(true);
+            // builder.setGeofencesEnabled(true);
+            // builder.setPushDeepLinkBackStackActivityEnabled(true);
+            // builder.setPushDeepLinkBackStackActivityClass(UserActivity.class);
+    }
+
+    // register the command
+    remoteCommands?.add(brazeRemoteCommand, filename = &quot;braze.json&quot;);
+}
+</code></pre>
+
+</div>
+
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
+
+<pre><code class="language-kotlin">val config = TealiumConfig(application,
+        &quot;ACCOUNT&quot;,
+        &quot;PROFILE&quot;,
+        Environment.DEV,
+        dispatchers = mutableSetOf(Dispatchers.RemoteCommands, Dispatchers.TagManagement));
+// New code to add the Braze Remote Command
+val brazeRemoteCommand = BrazeRemoteCommand(application,
+                            true,
+                            sessionHandlingBlacklist,
+                            true,
+                            inAppMessageBlacklist)
+
+var tealium = Tealium.create(TEALIUM_MAIN, config) {
+    // Optional: Set config options that may not be supported yet by the Tag in Tealium IQ
+    //              or simply to override settings locally.
+    brazeRemoteCommand.registerConfigOverride { builder -&gt;
+            // builder.setIsLocationCollectionEnabled(true);
+            // builder.setGeofencesEnabled(true);
+            // builder.setPushDeepLinkBackStackActivityEnabled(true);
+            // builder.setPushDeepLinkBackStackActivityClass(UserActivity.class);
+    }
+
+    // register the command
+    remoteCommands?.add(brazeRemoteCommand);
+}
+</code></pre>
+
+</div>
+
+<p></div>
+</div></p>
+
+<h3 id="android-java">Android (Java)</h3>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The JSON Remote Command file feature for Android is only available in the Kotlin SDK.</p>
+
+</div>
+
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
+
+<pre><code class="language-java">import com.tealium.remotecommands.BrazeRemoteCommand;
+
+Tealium.Config config = Tealium.Config.create(application, &quot;ACCOUNT&quot;, &quot;PROFILE&quot;, &quot;ENVIRONMENT&quot;);
+Tealium teal = Tealium.createInstance(TEALIUM_MAIN, config);
+
+BrazeRemoteCommand braze;
+// Initialize with default configuration options.
+braze = new BrazeRemoteCommand(config);
+
+// Or alternatively initialize with some additional config options:
+Set&lt;Class&gt; sessionHandlingBlacklist = new HashSet&lt;&gt;();
+Set&lt;Class&gt; inAppMessageBlacklist = new HashSet&lt;&gt;();
+// sessionHandlingBlacklist.add(MainActivity.class);
+// inAppMessageBlacklist.add(UserActivity.class);
+braze = new BrazeRemoteCommand(config,
+        true,                     // sessiongHandlingEnabled
+        sessionHandlingBlacklist, // sessionHandlingBlacklist
+        true,                     // registerInAppMessageManager
+        inAppMessageBlacklist);   // inAppMessageBlackList
+
+// Optional: Set config options that may not be supported yet by the Tag in Tealium IQ
+//              or simply to override settings locally.
+braze.registerConfigOverride(new BrazeRemoteCommand.ConfigOverrider() {
+    @Override
+    public void onOverride(AppboyConfig.Builder b) {
+        b.setPushDeepLinkBackStackActivityEnabled(true);
+        b.setPushDeepLinkBackStackActivityClass(UserActivity.class);
+    }
+});
+
+// register the command
+teal.addRemoteCommand(braze);
+</code></pre>
+
+</div>
+
+<p></div>
+</div></p>
+
+<h3 id="ios-swift">iOS (Swift)</h3>
+
+<p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium’s iOS (Swift) library.</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">
+<div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
+  <p>The following code is designed for use with the JSON Remote Commands feature, using the local file option:</p>
+
+<pre><code class="language-swift">var tealium : Tealium?
+let config = TealiumConfig(account: &quot;ACCOUNT&quot;,
+                           profile: &quot;PROFILE&quot;,
+                           environment: &quot;ENVIRONMENT&quot;,
+                           dataSource: &quot;DATASOURCE&quot;,
+                           optionalData: nil)
+
+config.remoteAPIEnabled = true // Required to use Remote Commands
+
+tealium = Tealium(config: config) { _ in
+    guard let remoteCommands = self.tealium?.remoteCommands else {
+        return
+    }
+    let braze = BrazeRemoteCommand(type: .local(file: &quot;braze&quot;))
+    remoteCommands.add(braze)
+}
+</code></pre>
+
+</div>
+
+<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
+  <p>The following code is designed for use with the Remote Command tag feature:</p>
+
+<pre><code class="language-swift">var tealium : Tealium?
+let config = TealiumConfig(account: &quot;ACCOUNT&quot;,
+                           profile: &quot;PROFILE&quot;,
+                           environment: &quot;ENVIRONMENT&quot;,
+                           dataSource: &quot;DATASOURCE&quot;,
+                           optionalData: nil)
+
+config.remoteAPIEnabled = true // Required to use Remote Commands
+
+tealium = Tealium(config: config) { _ in
+    guard let remoteCommands = self.tealium?.remoteCommands else {
+        return
+    }
+    let braze = BrazeRemoteCommand()
+    remoteCommands.add(braze)
+}
+</code></pre>
+
+</div>
+
+<p></div>
+</div></p>
+
+<h2 id="json-template">JSON Template</h2>
+
+<p>If you are configuring remote commands using a <a href="/platforms/remote-commands/how-it-works/#json-configuration-file">JSON configuration file</a>, refer to the following template to get started. The template includes common mappings used in a standard e-commerce installation. Edit the mappings as needed.</p>
+
+<pre><code class="language-json">{
+    &quot;config&quot;: {
+        &quot;api_key&quot;: &quot;YOUR_API_KEY&quot;,
+        &quot;session_timeout&quot;: 30,
+        &quot;disable_location&quot;: false,
+        &quot;trigger_interval_seconds&quot;: 100
+    },
+    &quot;mappings&quot;: {
+        &quot;customer_id&quot;: &quot;user_id&quot;,
+        &quot;customer_first_name&quot;: &quot;first_name&quot;,
+        &quot;customer_last_name&quot;: &quot;last_name&quot;,
+        &quot;customer_gender&quot;: &quot;gender&quot;,
+        &quot;customer_language&quot;: &quot;language&quot;,
+        &quot;customer_email&quot;: &quot;email&quot;,
+        &quot;customer_home_city&quot;: &quot;home_city&quot;,
+        &quot;customer_dob&quot;: &quot;date_of_birth&quot;,
+        &quot;customer_alias&quot;: &quot;user_alias&quot;,
+        &quot;customer_alias_label&quot;: &quot;alias_label&quot;,
+        &quot;pet&quot;: &quot;set_custom_attribute.pet&quot;,
+        &quot;pet_count&quot;: &quot;set_custom_attribute.pet_count&quot;,
+        &quot;pet_count_unset&quot;: &quot;unset_custom_attribute.pet_count_unset&quot;,
+        &quot;pet_count_increment&quot;: &quot;increment_custom_attribute.pet_count_increment&quot;,
+        &quot;pet_names&quot;: &quot;set_custom_array_attribute.pet_names&quot;,
+        &quot;pet_names_append&quot;: &quot;append_custom_array_attribute.pet_names_append&quot;,
+        &quot;pet_names_remove&quot;: &quot;remove_custom_array_attribute.pet_names_remove&quot;,
+        &quot;facebook_user&quot;: &quot;facebook_user&quot;,
+        &quot;number_of_friends&quot;: &quot;friends_count&quot;,
+        &quot;list_of_likes&quot;: &quot;likes&quot;,
+        &quot;facebook_user_properties&quot;: &quot;facebook_user&quot;,
+        &quot;social_media_user_description&quot;: &quot;description&quot;,
+        &quot;twitter_id&quot;: &quot;twitter_id&quot;,
+        &quot;twitter_name&quot;: &quot;twitter_name&quot;,
+        &quot;twitter_user_description&quot;: &quot;description&quot;,
+        &quot;profile_image_url&quot;: &quot;profile_image_url&quot;,
+        &quot;screen_name&quot;: &quot;screen_name&quot;,
+        &quot;number_of_followers&quot;: &quot;followers_count&quot;,
+        &quot;number_of_statuses&quot;: &quot;statuses_count&quot;,
+        &quot;email_notification&quot;: &quot;email_notification&quot;,
+        &quot;push_notification&quot;: &quot;push_notification&quot;,
+        &quot;event_name&quot;: &quot;event_name&quot;,
+        &quot;current_level&quot;: &quot;event.current_level&quot;,
+        &quot;start_date&quot;: &quot;event.start_date&quot;,
+        &quot;high_score&quot;: &quot;event.high_score&quot;,
+        &quot;product_id&quot;: &quot;product_id&quot;,
+        &quot;product_quantity&quot;: &quot;quantity&quot;,
+        &quot;product_unit_price&quot;: &quot;product_unit_price&quot;,
+        &quot;currency_code&quot;: &quot;order_currency&quot;,
+        &quot;rewards_member&quot;: &quot;purchase.rewards_member&quot;,
+        &quot;rewards_points_earned&quot;: &quot;purchase.rewards_points_earned&quot;,
+        &quot;date_joined_program&quot;: &quot;purchase.date_joined_program&quot;,
+        &quot;latitude&quot;: &quot;location_latitude&quot;,
+        &quot;longitude&quot;: &quot;location_longitude&quot;,
+        &quot;horizontal_accuracy&quot;: &quot;location_horizontal_accuracy&quot;
+    },
+    &quot;commands&quot;: {
+        &quot;launch&quot;: &quot;initialize&quot;,
+        &quot;twitter&quot;: &quot;twitteruser&quot;,
+        &quot;facebook&quot;: &quot;facebookuser&quot;,
+        &quot;setengagement&quot;: &quot;emailnotification,pushnotification&quot;,
+        &quot;log_custom_event&quot;: &quot;logcustomevent&quot;,
+        &quot;set_location&quot;: &quot;setlastknownlocation&quot;,
+        &quot;custom_attribute&quot;: &quot;setcustomattribute&quot;,
+        &quot;unset_custom_attribute&quot;: &quot;unsetcustomattribute&quot;,
+        &quot;custom_array_attribute&quot;: &quot;appendcustomarrayattribute&quot;,
+        &quot;append_custom_array_attribute&quot;: &quot;appendcustomarrayattribute&quot;,
+        &quot;remove_custom_array_attribute&quot;: &quot;removecustomarrayattribute&quot;,
+        &quot;increment_custom_attribute&quot;: &quot;incrementcustomattribute&quot;,
+        &quot;log_purchase&quot;: &quot;logpurchase&quot;,
+        &quot;user_attribute&quot;: &quot;userattribute,useridentifier,useralias&quot;,
+        &quot;user_login&quot;: &quot;useridentifier,useralias&quot;,
+        &quot;user_alias&quot;: &quot;useralias&quot;,
+    }
+}
+</code></pre>
+
+<h2 id="supported-methods">Supported Methods</h2>
+
+<p>The following Braze methods are triggered using a data mapping in the Braze Remote Command tag using the following Tealium commands:</p>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>appendcustomarrayattribute</code></td>
+<td><code>addToCustomAttributeArrayWithKey()</code></td>
+</tr>
+
+<tr>
+<td><code>emailnotification</code></td>
+<td><code>setEmailNotificationSubscriptionType()</code></td>
+</tr>
+
+<tr>
+<td><code>facebookuser</code></td>
+<td><code>facebookUser()</code></td>
+</tr>
+
+<tr>
+<td><code>incrementcustomattribute</code></td>
+<td><code>incrementCustomUserAttribute()</code></td>
+</tr>
+
+<tr>
+<td><code>initialize</code></td>
+<td><code>startWithApiKey()</code></td>
+</tr>
+
+<tr>
+<td><code>logcustomevent</code></td>
+<td><code>logCustomEvent()</code></td>
+</tr>
+
+<tr>
+<td><code>logpurchase</code></td>
+<td><code>logPurchase()</code></td>
+</tr>
+
+<tr>
+<td><code>pushnotification</code></td>
+<td><code>setPushNotificationSubscriptionType()</code></td>
+</tr>
+
+<tr>
+<td><code>removecustomarrayattribute</code></td>
+<td><code>removeFromCustomAttributeArrayWithKey()</code></td>
+</tr>
+
+<tr>
+<td><code>setcustomattribute</code></td>
+<td><code>setCustomAttributeWithKey()</code></td>
+</tr>
+
+<tr>
+<td><code>setcustomarrayattribute</code></td>
+<td><code>setCustomAttributeArrayWithKey()</code></td>
+</tr>
+
+<tr>
+<td><code>setlastknownlocation</code></td>
+<td><code>setLastKnownLocationWithLatitude()</code></td>
+</tr>
+
+<tr>
+<td><code>twitteruser</code></td>
+<td><code>twitterUser()</code></td>
+</tr>
+
+<tr>
+<td><code>unsetcustomattribute</code></td>
+<td><code>unsetCustomAttributeWithKey()</code></td>
+</tr>
+
+<tr>
+<td><code>useralias</code></td>
+<td><code>addAlias()</code></td>
+</tr>
+
+<tr>
+<td><code>userattribute</code></td>
+<td><code>ABKUser()</code></td>
+</tr>
+
+<tr>
+<td><code>useridentifier</code></td>
+<td><code>changeUser()</code></td>
+</tr>
+</tbody>
+</table>
+
+<p class="note"><i class="fas fa-info-circle"></i>Since the Braze SDK is installed alongside the Tealium SDK, trigger any native Braze functionality given the corresponding tag configuration.</p>
+
+<h3 id="sdk-setup">SDK Setup</h3>
+
+<h4 id="initialize-1">Initialize</h4>
+
+<p>The Braze SDK is initialized automatically upon launch. The Braze API key is set in the tag configuration.</p>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method (iOS)</th>
+<th>Braze Method (Android)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>initialize</code></td>
+<td><code>startWithApiKey()</code></td>
+<td><code>configure()</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>The following mappings are used to set launch options.</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>custom_endpoint</code></td>
+<td><code>String</code></td>
+<td>Sets a custom API endpoint. This gets sent in the format <code>sdk.api.braze.eu</code></td>
+</tr>
+
+<tr>
+<td><code>device_options</code></td>
+<td><code>Int</code></td>
+<td>Key to specify a whitelist for device fields that are collected by the Braze SDK (default all fields are collected)</td>
+</tr>
+
+<tr>
+<td><code>disable_location</code></td>
+<td><code>Int</code></td>
+<td>Disable automatic location data collection (<code>1</code> or <code>0</code>)</td>
+</tr>
+
+<tr>
+<td><code>enable_geofences</code></td>
+<td><code>Int</code></td>
+<td>Enable automatic collection of geofences (<code>1</code> or <code>0</code>)</td>
+</tr>
+
+<tr>
+<td><code>flush_interval</code></td>
+<td><code>Double</code></td>
+<td>Sets the data flush interval (in seconds). Values are converted into NSTimeIntervals and must be greater than <code>1.0</code></td>
+</tr>
+
+<tr>
+<td><code>push_story_identifier</code></td>
+<td><code>String</code></td>
+<td>This key is set to a string value representing the app group name for the Push Story Notification Content extension.</td>
+</tr>
+
+<tr>
+<td><code>request_processing_policy</code></td>
+<td><code>Int</code></td>
+<td>Possible values for the SDKs request processing (default ABKAutomaticRequestProcessing)</td>
+</tr>
+
+<tr>
+<td><code>session_timeout</code></td>
+<td><code>Int</code> (seconds)</td>
+<td>The session timeout in seconds (default: <code>30</code> seconds)</td>
+</tr>
+
+<tr>
+<td><code>trigger_interval_seconds</code></td>
+<td><code>Int</code> (seconds)</td>
+<td>Override the minimum interval between in-app message triggers (default: <code>30</code> seconds)</td>
+</tr>
+</tbody>
+</table>
+
+<p>Android</p>
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/initial_sdk_setup/android_sdk_integration/">Braze Developer Guide: Initial SDK Setup</a></li>
+</ul>
+
+<p>iOS</p>
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/initial_sdk_setup/#customizing-braze-on-startup">Braze Developer Guide: Initial SDK Setup</a><br /></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/advanced_use_cases/fine_network_traffic_control/">Braze Developer Guide: Fine Network Traffic Control</a><br /></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/advanced_use_cases/locations_and_geofences/">Braze Developer Guide: Locations and Geofences</a><br /></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/push_story/">Braze Developer Guide: Push Story Setup</a><br /></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/tracking_sessions/">Braze Developer Guide: Tracking Sessions</a></li>
+</ul>
+
+<h3 id="user-tracking">User Tracking</h3>
+
+<h4 id="assigning-a-user-id">Assigning a User ID</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>useridentifier</code></td>
+<td><code>changeUser</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>user_id</code> (required)</td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Braze Developer Guide: Analytics User IDs<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_user_ids/">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_user_ids/#assigning-a-user-id">Android</a></li>
+</ul></li>
+</ul>
+
+<h4 id="aliasing-users">Aliasing Users</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>useralias</code></td>
+<td><code>addAlias</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>user_alias</code> (required)</td>
+<td><code>String</code></td>
+</tr>
+
+<tr>
+<td><code>alias_label</code> (required)</td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Braze Developer Guide: Analytics Alias Users<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_user_ids/#aliasing-users">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_user_ids/#aliasing-users">Android</a></li>
+</ul></li>
+</ul>
+
+<h3 id="user-attributes">User Attributes</h3>
+
+<h4 id="standard-attributes">Standard Attributes</h4>
+
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Braze Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>userattribute</td>
+<td>Set fields on the <code>ABKUser/AppboyUser</code> object</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>first_name</code></td>
+<td><code>String</code></td>
+</tr>
+
+<tr>
+<td><code>last_name</code></td>
+<td><code>String</code></td>
+</tr>
+
+<tr>
+<td><code>email</code></td>
+<td><code>String</code></td>
+</tr>
+
+<tr>
+<td><code>date_of_birth</code></td>
+<td><code>String</code></td>
+</tr>
+
+<tr>
+<td><code>country</code></td>
+<td><code>String</code></td>
+</tr>
+
+<tr>
+<td><code>language</code></td>
+<td><code>String</code></td>
+</tr>
+
+<tr>
+<td><code>home_city</code></td>
+<td><code>String</code></td>
+</tr>
+
+<tr>
+<td><code>phone</code></td>
+<td><code>String</code></td>
+</tr>
+
+<tr>
+<td><code>avatar_image_url</code></td>
+<td><code>String</code></td>
+</tr>
+
+<tr>
+<td><code>gender</code></td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Braze Developer Guide: Analytics User Attributes
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#assigning-standard-user-attributes">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-standard-user-attributes">Android</a></li>
+</ul></li>
+<li><a href="https://www.braze.com/docs/api/endpoints/user_data/?redirected=true#user-attributes-object-specification">Braze Developer Guide: User Data API</a></li>
+</ul>
+
+<h4 id="set-custom-attribute">Set Custom Attribute</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method (iOS)</th>
+<th>Braze Method (Android)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>setcustomattribute</code></td>
+<td><code>setCustomAttributeWithKey</code></td>
+<td><code>setCustomUserAttribute</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>set_custom_attribute.PROPERTY</code></td>
+<td><code>[String: Any]</code> / <code>JSONObject</code></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Braze Developer Guide: Analytics Custom Attributes<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#assigning-custom-user-attributes">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
+</ul></li>
+</ul>
+
+<h4 id="unset-custom-attribute">Unset Custom Attribute</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method (iOS)</th>
+<th>Braze Method (Android)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>setcustomattribute</code></td>
+<td><code>unsetCustomAttributeWithKey</code></td>
+<td><code>unsetCustomUserAttribute</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>set_custom_attribute.PROPERTY</code></td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Braze Developer Guide: Analytics Custom Attributes<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#unsetting-a-custom-attribute">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
+</ul></li>
+</ul>
+
+<h4 id="increment-custom-attribute">Increment Custom Attribute</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>incrementcustomattribute</code></td>
+<td><code>incrementCustomUserAttribute</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>increment_custom_attribute.PROPERTY</code></td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Braze Developer Guide: Analytics Incrementing Attributes
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#incrementingdecrementing-custom-attributes">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
+</ul></li>
+</ul>
+
+<h4 id="set-custom-array-attribute">Set Custom Array Attribute</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method (iOS)</th>
+<th>Braze Method (Android)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>setcustomarrayattribute</td>
+<td><code>setCustomAttributeArrayWithKey</code></td>
+<td><code>setCustomAttributeArray</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>set_custom_array_attribute.PROPERTY</code></td>
+<td><code>[String: [Any]]</code> / <code>JSONObject</code></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Braze Developer Guide: Analytics Array Attributes<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#custom-attribute-with-an-array-value">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
+</ul></li>
+</ul>
+
+<h4 id="append-custom-array-attribute">Append Custom Array Attribute</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method (iOS)</th>
+<th>Braze Method (Android)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>appendcustomarrayattribute</code></td>
+<td><code>addToCustomAttributeArrayWithKey</code></td>
+<td><code>addToCustomAttributeArray</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>append_custom_array_attribute.PROPERTY</code></td>
+<td><code>[String: String]</code> / <code>JSONObject</code></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Braze Developer Guide: Analytics Array Attributes<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#custom-attribute-with-an-array-value">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
+</ul></li>
+</ul>
+
+<h4 id="remove-custom-array-attribute">Remove Custom Array Attribute</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method (iOS)</th>
+<th>Braze Method (Android)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>removecustomarrayattribute</td>
+<td><code>removeFromCustomAttributeArrayWithKey</code></td>
+<td><code>removeFromCustomAttributeArray</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>remove_custom_array_attribute.PROPERTY</code></td>
+<td><code>[String: String]</code> / <code>JSONObject</code></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Braze Developer Guide: Analytics Array Attributes<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#custom-attribute-with-an-array-value">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#assigning-custom-user-attributes">Android</a></li>
+</ul></li>
+</ul>
+
+<h3 id="social-data-tracking">Social Data Tracking</h3>
+
+<h4 id="facebook">Facebook</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>facebookuser</code></td>
+<td>Initialize an <code>ABKFacebookUser/FacebookUser</code> object</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>facebook_id</code></td>
+<td><code>[String: Any]</code> / <code>String</code></td>
+</tr>
+
+<tr>
+<td><code>friends_count</code></td>
+<td><code>Int</code></td>
+</tr>
+
+<tr>
+<td><code>likes</code></td>
+<td><code>[Any]</code> / <code>String[]</code></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Braze Developer Guide: Social Data<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/social_data_tracking/">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/social_data_tracking/">Android</a></li>
+</ul></li>
+</ul>
+
+<h4 id="twitter">Twitter</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>twitteruser</code></td>
+<td>Initialize a <code>ABKTwitterUser/TwitterUser</code> object</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>description</code></td>
+<td><code>String</code></td>
+</tr>
+
+<tr>
+<td><code>twitter_name</code></td>
+<td><code>String</code></td>
+</tr>
+
+<tr>
+<td><code>profile_image_url</code></td>
+<td><code>String</code></td>
+</tr>
+
+<tr>
+<td><code>screen_name</code></td>
+<td><code>String</code></td>
+</tr>
+
+<tr>
+<td><code>followers_count</code></td>
+<td><code>Int</code></td>
+</tr>
+
+<tr>
+<td><code>friends_count</code></td>
+<td><code>Int</code></td>
+</tr>
+
+<tr>
+<td><code>statuses_count</code></td>
+<td><code>Int</code></td>
+</tr>
+
+<tr>
+<td><code>twitter_id</code></td>
+<td><code>Int</code></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Braze Developer Guide: Social Data<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/social_data_tracking/">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/social_data_tracking/">Android</a></li>
+</ul></li>
+</ul>
+
+<h3 id="custom-event-tracking">Custom Event Tracking</h3>
+
+<h4 id="custom-event">Custom Event</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>logcustomevent</code></td>
+<td><code>logCustomEvent</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>event_name</code> (required)</td>
+<td><code>String</code></td>
+</tr>
+
+<tr>
+<td><code>event_properties</code></td>
+<td><code>[String: Any]</code> / <code>JSONObject</code></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Braze Developer Guide: Analytics Custom Events
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/tracking_custom_events/">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/tracking_custom_events/">Android</a></li>
+</ul></li>
+</ul>
+
+<h3 id="notifications">Notifications</h3>
+
+<h4 id="email-notifications">Email Notifications</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>emailnotification</code></td>
+<td><code>setEmailNotificationSubscriptionType</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>email_notification</code></td>
+<td><code>String</code></td>
+<td>[<code>&quot;optedin&quot;</code>, <code>&quot;subscribed&quot;</code>, <code>&quot;unsubscribed&quot;</code>]</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Braze Developer Guide: Analytics Email Subscriptions<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#setting-email-subscriptions">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#setting-up-user-subscriptions">Android</a></li>
+</ul></li>
+</ul>
+
+<h4 id="push-notifications">Push Notifications</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>pushnotification</td>
+<td><code>setPushNotificationSubscriptionType</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>push_notification</code></td>
+<td><code>String</code></td>
+<td>[<code>&quot;optedin&quot;</code>, <code>&quot;subscribed&quot;</code>, <code>&quot;unsubscribed&quot;</code>]</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Braze Developer Guide: Analytics Push Notifications<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_custom_attributes/#setting-up-user-subscriptions">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/setting_custom_attributes/#setting-up-user-subscriptions">Android</a></li>
+</ul></li>
+</ul>
+
+<h3 id="purchase-tracking">Purchase Tracking</h3>
+
+<h4 id="log-purchase">Log Purchase</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>logpurchase</td>
+<td><code>logPurchase</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>product_id</code> (required)</td>
+<td><code>[String]</code> / <code>String[]</code></td>
+</tr>
+
+<tr>
+<td><code>currency</code> (required)</td>
+<td><code>String</code> / <code>String</code></td>
+</tr>
+
+<tr>
+<td><code>price</code> (required)</td>
+<td><code>[Double]</code> / <code>Double[]</code></td>
+</tr>
+
+<tr>
+<td><code>quantity</code></td>
+<td><code>[Int]</code> / <code>Int[]</code></td>
+</tr>
+
+<tr>
+<td><code>purchase_properties</code></td>
+<td><code>[AnyHashable: Any]</code> / <code>JSONObject</code></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Braze Developer Guide: Analytics Purchase Events<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/logging_purchases/">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/logging_purchases/">Android</a></li>
+</ul></li>
+</ul>
+
+<h3 id="location-tracking">Location Tracking</h3>
+
+<h4 id="set-user-s-last-known-location">Set User&rsquo;s Last Known Location</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>setlastknownlocation</code></td>
+<td><code>setLastKnownLocationWithLatitude</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>latitude</code> (required)</td>
+<td><code>Double</code></td>
+</tr>
+
+<tr>
+<td><code>longitude</code> (required)</td>
+<td><code>Double</code></td>
+</tr>
+
+<tr>
+<td><code>horizontalAccuracy</code> (required)</td>
+<td><code>Double</code></td>
+</tr>
+
+<tr>
+<td><code>altitude</code></td>
+<td><code>Double</code></td>
+</tr>
+
+<tr>
+<td><code>verticalAccuracy</code></td>
+<td><code>Double</code></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/location_tracking/#enabling-automatic-location-tracking">Braze Developer Guide: Analytics Location Tracking</a></li>
+</ul>
+
+<h3 id="data-privacy">Data Privacy</h3>
+
+<h4 id="enable-sdk">Enable SDK</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method (iOS)</th>
+<th>Braze Method (Android)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>enable_sdk</code></td>
+<td><code>enableSDK</code></td>
+<td><code>enableSdk/disableSdk</code></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>enable_sdk</code></td>
+<td><code>Boolean</code></td>
+<td><code>true / false</code></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Braze Developer Guide: Analytics Disabling<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/disabling_tracking/">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/disabling_tracking/">Android</a></li>
+</ul></li>
+</ul>
+
+<h4 id="wipe-data">Wipe Data</h4>
+
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>wipe_data</code></td>
+<td><code>wipeData</code></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Braze Developer Guide: Analytics Disabling<br />
+
+<ul>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/disabling_tracking/">iOS</a></li>
+<li><a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/android/analytics/disabling_tracking/">Android</a></li>
+</ul></li>
+</ul>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/remote-commands/integrations/branch/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Remote Command: Branch "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Remote Command: Branch</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/remote-commands/integrations/contentsquare/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Remote Command: Contentsquare</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Remote Command: Contentsquare"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  March 2, 2022 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  March 2, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
+              <li><a href="#how-it-works">How It Works</a></li>
+              <li><a href="#install">Install</a></li>
+              <ul class="toc-h3"><li><a href="#dependency-manager">Dependency Manager</a></li>
+              <li><a href="#manual-ios">Manual (iOS)</a></li>
+              </ul><li><a href="#initialize">Initialize</a></li>
+              <ul class="toc-h3"><li><a href="#android-kotlin">Android (Kotlin)</a></li>
+              <li><a href="#android-java">Android (Java)</a></li>
+              <li><a href="#ios-swift">iOS (Swift)</a></li>
+              </ul><li><a href="#json-template">JSON Template</a></li>
+              <li><a href="#supported-methods">Supported Methods</a></li>
+              <ul class="toc-h3"><li><a href="#sdk-setup">SDK Setup</a></li>
+              <li><a href="#user-tracking">User Tracking</a></li>
+              <li><a href="#user-attributes">User Attributes</a></li>
+              <li><a href="#social-data-tracking">Social Data Tracking</a></li>
+              <li><a href="#custom-event-tracking">Custom Event Tracking</a></li>
+              <li><a href="#notifications">Notifications</a></li>
+              <li><a href="#purchase-tracking">Purchase Tracking</a></li>
+              <li><a href="#location-tracking">Location Tracking</a></li>
+              <li><a href="#data-privacy">Data Privacy</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

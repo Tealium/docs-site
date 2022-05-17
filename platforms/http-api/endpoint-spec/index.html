@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,243 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#tealium-collect-url">Tealium Collect URL</a></li>
-              <li><a href="#visitor-id-attribute">Visitor ID Attribute</a></li>
-              <ul class="toc-h3"><li><a href="#anonymous-id">Anonymous ID</a></li>
-              </ul><li><a href="#methods">Methods</a></li>
-              <ul class="toc-h3"><li><a href="#get">GET</a></li>
-              <li><a href="#post">POST</a></li>
-              </ul><li><a href="#status-codes">Status Codes</a></li>
-              <li><a href="#examples">Examples</a></li>
-              <ul class="toc-h3"><li><a href="#html-example">HTML Example</a></li>
-              <li><a href="#javascript-example">JavaScript Example</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/http-api/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        HTTP API
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Endpoint Specification</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Learn to send data to the Tealium Customer Data Hub using the HTTP API for events.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<p>This article provides the specification for the direct HTTP endpoint, which is used in any application that sends HTTP requests.</p>
-
-<h2 id="tealium-collect-url">Tealium Collect URL</h2>
-
-<p>Tealium Collect is located at the following root URL: </p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">https://collect.tealiumiq.com/event</code></pre></div>
-<p>Sessions are determined based on the <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Using-Attributes/ta-p/11926#toc-hId--478250751">Visit scope</a> attribute property.</p>
-
-<h2 id="visitor-id-attribute">Visitor ID Attribute</h2>
-
-<p>If you are using Tealium AudienceStream you must pass a known visitor ID attribute (user identifier) with each tracking call, such as <code>email_address</code> or <code>login_id</code>.</p>
-
-<p>If the events do not contain a visitor ID attribute then each event generates a new visit and visitor, making stitching not possible. This is important if using the Collect API on a web platform where you might be tracking anonymous users.</p>
-
-<p>A visitor ID attribute is also needed if you are using Tealium EventStream and need to provide an ID to a vendor connector.</p>
-
-<p><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Visitor-ID-Attribute/ta-p/12060">Learn more</a> about the visitor ID attribute.</p>
-
-<h3 id="anonymous-id">Anonymous ID</h3>
-
-<p>The <code>tealium_visitor_id</code> attribute is an anonymous ID used by AudienceStream to associate a visitor between events and visits.  Depending on your usage of the Collect API, use one of the following approaches:</p>
-
-<p><strong>Known Visitors</strong>
-(Required for AudienceStream, recommended for EventStream)
-When tracking events for a known visitor (when a value exists for a visitor ID attribute such as <code>email_address</code>), include the known visitor ID attribute and a hash of that value in the <code>tealium_visitor_id</code> parameter.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
-    <span style="color:#a31515">&#34;tealium_account&#34;</span>    : <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-    <span style="color:#a31515">&#34;tealium_profile&#34;</span>    : <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-    <span style="color:#a31515">&#34;tealium_event&#34;</span>      : <span style="color:#a31515">&#34;EVENT_NAME&#34;</span>,
-    <span style="color:#a31515">&#34;email_address&#34;</span>      : <span style="color:#a31515">&#34;EMAIL_ADDRESS&#34;</span>,
-    <span style="color:#a31515">&#34;tealium_visitor_id&#34;</span> : <span style="color:#a31515">&#34;VISITOR_ID&#34;</span>
-}
-</code></pre></div>
-<p><strong>Anonymous Visitors</strong>
-(Required for AudienceStream)
-When tracking events for an anonymous visitor from a website (without a known ID), then the value of the <code>tealium_visitor_id</code>  needs to match the value in the <code>utag_main_v_id</code> cookie.</p>
-
-<p><a href="/platforms/javascript/data-layer/">Learn more</a> about the built-in variables from <code>utag.js</code>.</p>
-
-<h2 id="methods">Methods</h2>
-
-<h3 id="get">GET</h3>
-
-<p>The GET method is used to request data from a specified resource. It passes data using key-value pairs in the query string of the endpoint, and returns a 1x1 transparent GIF to make it compatible with HTML-based implementations.</p>
-
-<p>Example using curl:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -i -X GET <span style="color:#a31515">&#34;https://collect.tealiumiq.com/event?tealium_account={ACCOUNT}&amp;tealium_profile={PROFILE}&amp;tealium_event=user_login&amp;email_address=user@example.com&#34;</span> </code></pre></div>
-<h3 id="post">POST</h3>
-
-<p>The POST method is used to send data to a server to create/update a resource. It supports JSON payloads where the request header must be set to <code>Content-Type: application/json</code> and the payload must be formatted as a valid JSON string. </p>
-
-<p>Example of <code>user_login</code> event:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
-    <span style="color:#a31515">&#34;tealium_account&#34;</span>   : <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-    <span style="color:#a31515">&#34;tealium_profile&#34;</span>   : <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-    <span style="color:#a31515">&#34;tealium_event&#34;</span>     : <span style="color:#a31515">&#34;EVENT_NAME&#34;</span>,
-    <span style="color:#a31515">&#34;email_address&#34;</span>     : <span style="color:#a31515">&#34;EMAIL_ADDRESS&#34;</span>
-}
-</code></pre></div>
-<p>Example using curl:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -X POST -H <span style="color:#a31515">&#39;Content-type: application/json&#39;</span>
---data <span style="color:#a31515">&#39;{&#34;tealium_account&#34;:&#34;{ACCOUNT}&#34;,&#34;tealium_profile&#34;:&#34;{PROFILE}&#34;,&#34;tealium_event&#34;:&#34;user_login&#34;,&#34;email_address&#34;:&#34;user@example.com&#34;}&#39;</span>
-https://collect.tealiumiq.com/event</code></pre></div>
-<h2 id="status-codes">Status Codes</h2>
-
-<p>The following table summarizes Tealium&rsquo;s HTTP response status codes:</p>
-
-<table>
-<thead>
-<tr>
-<th>Status Code</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>200 Status OK</code></td>
-<td>The request succeeded</td>
-</tr>
-
-<tr>
-<td><code>400 Bad Request</code></td>
-<td>The server does not understand the request</td>
-</tr>
-</tbody>
-</table>
-
-<p>The <code>400 Bad Request</code> status code occurs when at least of the following is true:</p>
-
-<ul>
-<li>The JSON key contains a period, is invalid, or exceeds 1MB in size</li>
-<li>The file-type parameter contains a value other than &ldquo;json&rdquo; or &ldquo;javascript&rdquo;</li>
-<li>The combination of <code>account</code>, <code>profile</code>, and <code>datalayer_id</code> exceeds 250 characters in length, or contains restricted characters</li>
-<li><code>tealium_account</code> or <code>tealium_profile</code> is missing, or contains typographical errors</li>
-<li>The request body is empty</li>
-</ul>
-
-<p>The following is an example of a <code>400 Bad Request</code> response, shown in the <code>X-Error</code> header, when the required <code>tealium_account</code> or <code>tealium_profile</code> parameter values are missing:</p>
-
-<pre><code>&gt; GET /event?tealium_account=jentest-as&amp;tealium_profile=&amp;tealium_visitor_id=sendgeteventhttps@testing.com&amp;tealium_datasource=utc2cj&amp;customer_city=Honolulu&amp;customer_state=Hawaii&amp;Flag=true&amp;Number=45&amp;String=ascent&amp;String_Array=[hello,howareyou,whatsup,yoyoyo]&amp;Number_Array=[2.222,3.000,19.12,28.3]&amp;Flag_Array=[true,false,false,true]&amp;Combo_Array=[1,salutations,2324,world,22jjfssl]&amp;Array_of_Array=[[1,2,3],heyworld]&amp;myvariable=unicorns HTTP/1.1
-&gt; Host: qa21-collect.tealiumiq.com
-&gt; User-Agent: curl/7.54.0
-&gt; Accept: */*
-&gt;
-&lt; HTTP/1.1 400 Bad Request
-&lt; Cache-Control: no-transform,private,no-cache,no-store,max-age=0,s-maxage=0
-&lt; Content-Type: application/json
-&lt; Date: Wed, 23 Oct 2019 17:10:51 GMT
-&lt; Expires: Wed, 23 Oct 2019 17:10:51 GMT
-&lt; P3P: policyref=&quot;/w3c/p3p.xml&quot;, CP=&quot;NOI DSP COR NID CUR ADM DEV OUR BUS&quot;
-&lt; Pragma: no-cache
-&lt; Vary: Origin
-&lt; X-Error: Missing required tealium_account or tealium_profile param value
-&lt; X-Region: us-east-1
-&lt; X-ServerID: uconnect_i-9a157d19
-&lt; X-ULVer: 1.0.331-SNAPSHOT
-&lt; X-UUID: d4fc78d1-8204-412c-a6cb-57869d2370a7
-&lt; Content-Length: 0
-&lt; Connection: keep-alive
-</code></pre>
-
-<h2 id="examples">Examples</h2>
-
-<h3 id="html-example">HTML Example</h3>
-
-<p>Tealium Collect is referenced in an <code>&lt;img&gt;</code> tag within your HTML. Due to browser caching it&rsquo;s important to include a cache buster, an additional parameter that contains a randomly generated value, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">var</span> cb=Math.random()*100000000000;
-</code></pre></div>
-<p>This variable is added to the query string of the Tealium Collect pixel:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;img height=<span style="color:#a31515">&#34;1&#34;</span> width=<span style="color:#a31515">&#34;1&#34;</span> style=<span style="color:#a31515">&#34;display:none&#34;</span> src=<span style="color:#a31515">&#34;//collect.tealiumiq.com/event?tealium_account={ACCOUNT}&amp;tealium_profile={PROFILE}&amp;tealium_event=user_login&amp;email_address=user@example.com&amp;cb=&#39; + cb + &#39;&#34;</span>/&gt;</code></pre></div>
-<h3 id="javascript-example">JavaScript Example</h3>
-
-<p>Tealium Collect supports cross-domain requests, allowing you to send a POST from your website to our domain, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">var</span> event = {
-    <span style="color:#a31515">&#34;tealium_account&#34;</span> : <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-    <span style="color:#a31515">&#34;tealium_profile&#34;</span> : <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-    <span style="color:#a31515">&#34;tealium_event&#34;</span>   : <span style="color:#a31515">&#34;EVENT_NAME&#34;</span>,
-    <span style="color:#a31515">&#34;email_address&#34;</span>   : <span style="color:#a31515">&#34;EMAIL_ADDRESS&#34;</span>};
-<span style="color:#00f">var</span> xhr = <span style="color:#00f">new</span> XMLHttpRequest();
-xhr.open(<span style="color:#a31515">&#34;POST&#34;</span>, <span style="color:#a31515">&#34;https://collect.tealiumiq.com/event&#34;</span>);
-xhr.send(JSON.stringify(event));
-</code></pre></div>
-<p>The Response Headers include the following:  </p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Access-Control-Allow-Origin: [http:<span style="color:#008000">//your_domain.com](http://your_domain.com)
-</span></code></pre></div>
-</div>
-
-<div class="pv3">
-
-	<div class="fr">
-
-		
-		<a href="/platforms/http-api/data-layer/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Data Layer</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Data Layer"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7701,33 +7472,289 @@ xhr.send(JSON.stringify(event));
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/http-api/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        HTTP API
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Endpoint Specification</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Learn to send data to the Tealium Customer Data Hub using the HTTP API for events.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<p>This article provides the specification for the direct HTTP endpoint, which is used in any application that sends HTTP requests.</p>
+
+<h2 id="tealium-collect-url">Tealium Collect URL</h2>
+
+<p>Tealium Collect is located at the following root URL: </p>
+
+<pre><code class="language-bash">https://collect.tealiumiq.com/event
+</code></pre>
+
+<p>Sessions are determined based on the <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Using-Attributes/ta-p/11926#toc-hId--478250751">Visit scope</a> attribute property.</p>
+
+<h2 id="visitor-id-attribute">Visitor ID Attribute</h2>
+
+<p>If you are using Tealium AudienceStream you must pass a known visitor ID attribute (user identifier) with each tracking call, such as <code>email_address</code> or <code>login_id</code>.</p>
+
+<p>If the events do not contain a visitor ID attribute then each event generates a new visit and visitor, making stitching not possible. This is important if using the Collect API on a web platform where you might be tracking anonymous users.</p>
+
+<p>A visitor ID attribute is also needed if you are using Tealium EventStream and need to provide an ID to a vendor connector.</p>
+
+<p><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Visitor-ID-Attribute/ta-p/12060">Learn more</a> about the visitor ID attribute.</p>
+
+<h3 id="anonymous-id">Anonymous ID</h3>
+
+<p>The <code>tealium_visitor_id</code> attribute is an anonymous ID used by AudienceStream to associate a visitor between events and visits.  Depending on your usage of the Collect API, use one of the following approaches:</p>
+
+<p><strong>Known Visitors</strong>
+(Required for AudienceStream, recommended for EventStream)
+When tracking events for a known visitor (when a value exists for a visitor ID attribute such as <code>email_address</code>), include the known visitor ID attribute and a hash of that value in the <code>tealium_visitor_id</code> parameter.</p>
+
+<pre><code class="language-javascript">{
+    &quot;tealium_account&quot;    : &quot;ACCOUNT&quot;,
+    &quot;tealium_profile&quot;    : &quot;PROFILE&quot;,
+    &quot;tealium_event&quot;      : &quot;EVENT_NAME&quot;,
+    &quot;email_address&quot;      : &quot;EMAIL_ADDRESS&quot;,
+    &quot;tealium_visitor_id&quot; : &quot;VISITOR_ID&quot;
+}
+</code></pre>
+
+<p><strong>Anonymous Visitors</strong>
+(Required for AudienceStream)
+When tracking events for an anonymous visitor from a website (without a known ID), then the value of the <code>tealium_visitor_id</code>  needs to match the value in the <code>utag_main_v_id</code> cookie.</p>
+
+<p><a href="/platforms/javascript/data-layer/">Learn more</a> about the built-in variables from <code>utag.js</code>.</p>
+
+<h2 id="methods">Methods</h2>
+
+<h3 id="get">GET</h3>
+
+<p>The GET method is used to request data from a specified resource. It passes data using key-value pairs in the query string of the endpoint, and returns a 1x1 transparent GIF to make it compatible with HTML-based implementations.</p>
+
+<p>Example using curl:</p>
+
+<pre><code class="language-bash">curl -i -X GET &quot;https://collect.tealiumiq.com/event?tealium_account={ACCOUNT}&amp;tealium_profile={PROFILE}&amp;tealium_event=user_login&amp;email_address=user@example.com&quot; 
+</code></pre>
+
+<h3 id="post">POST</h3>
+
+<p>The POST method is used to send data to a server to create/update a resource. It supports JSON payloads where the request header must be set to <code>Content-Type: application/json</code> and the payload must be formatted as a valid JSON string. </p>
+
+<p>Example of <code>user_login</code> event:</p>
+
+<pre><code class="language-javascript">{
+    &quot;tealium_account&quot;   : &quot;ACCOUNT&quot;,
+    &quot;tealium_profile&quot;   : &quot;PROFILE&quot;,
+    &quot;tealium_event&quot;     : &quot;EVENT_NAME&quot;,
+    &quot;email_address&quot;     : &quot;EMAIL_ADDRESS&quot;
+}
+</code></pre>
+
+<p>Example using curl:</p>
+
+<pre><code class="language-bash">curl -X POST -H 'Content-type: application/json'
+--data '{&quot;tealium_account&quot;:&quot;{ACCOUNT}&quot;,&quot;tealium_profile&quot;:&quot;{PROFILE}&quot;,&quot;tealium_event&quot;:&quot;user_login&quot;,&quot;email_address&quot;:&quot;user@example.com&quot;}'
+https://collect.tealiumiq.com/event
+</code></pre>
+
+<h2 id="status-codes">Status Codes</h2>
+
+<p>The following table summarizes Tealium&rsquo;s HTTP response status codes:</p>
+
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>200 Status OK</code></td>
+<td>The request succeeded</td>
+</tr>
+
+<tr>
+<td><code>400 Bad Request</code></td>
+<td>The server does not understand the request</td>
+</tr>
+</tbody>
+</table>
+
+<p>The <code>400 Bad Request</code> status code occurs when at least of the following is true:</p>
+
+<ul>
+<li>The JSON key contains a period, is invalid, or exceeds 1MB in size</li>
+<li>The file-type parameter contains a value other than &ldquo;json&rdquo; or &ldquo;javascript&rdquo;</li>
+<li>The combination of <code>account</code>, <code>profile</code>, and <code>datalayer_id</code> exceeds 250 characters in length, or contains restricted characters</li>
+<li><code>tealium_account</code> or <code>tealium_profile</code> is missing, or contains typographical errors</li>
+<li>The request body is empty</li>
+</ul>
+
+<p>The following is an example of a <code>400 Bad Request</code> response, shown in the <code>X-Error</code> header, when the required <code>tealium_account</code> or <code>tealium_profile</code> parameter values are missing:</p>
+
+<pre><code>&gt; GET /event?tealium_account=jentest-as&amp;tealium_profile=&amp;tealium_visitor_id=sendgeteventhttps@testing.com&amp;tealium_datasource=utc2cj&amp;customer_city=Honolulu&amp;customer_state=Hawaii&amp;Flag=true&amp;Number=45&amp;String=ascent&amp;String_Array=[hello,howareyou,whatsup,yoyoyo]&amp;Number_Array=[2.222,3.000,19.12,28.3]&amp;Flag_Array=[true,false,false,true]&amp;Combo_Array=[1,salutations,2324,world,22jjfssl]&amp;Array_of_Array=[[1,2,3],heyworld]&amp;myvariable=unicorns HTTP/1.1
+&gt; Host: qa21-collect.tealiumiq.com
+&gt; User-Agent: curl/7.54.0
+&gt; Accept: */*
+&gt;
+&lt; HTTP/1.1 400 Bad Request
+&lt; Cache-Control: no-transform,private,no-cache,no-store,max-age=0,s-maxage=0
+&lt; Content-Type: application/json
+&lt; Date: Wed, 23 Oct 2019 17:10:51 GMT
+&lt; Expires: Wed, 23 Oct 2019 17:10:51 GMT
+&lt; P3P: policyref=&quot;/w3c/p3p.xml&quot;, CP=&quot;NOI DSP COR NID CUR ADM DEV OUR BUS&quot;
+&lt; Pragma: no-cache
+&lt; Vary: Origin
+&lt; X-Error: Missing required tealium_account or tealium_profile param value
+&lt; X-Region: us-east-1
+&lt; X-ServerID: uconnect_i-9a157d19
+&lt; X-ULVer: 1.0.331-SNAPSHOT
+&lt; X-UUID: d4fc78d1-8204-412c-a6cb-57869d2370a7
+&lt; Content-Length: 0
+&lt; Connection: keep-alive
+</code></pre>
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="html-example">HTML Example</h3>
+
+<p>Tealium Collect is referenced in an <code>&lt;img&gt;</code> tag within your HTML. Due to browser caching it&rsquo;s important to include a cache buster, an additional parameter that contains a randomly generated value, as shown in the following example:</p>
+
+<pre><code class="language-javascript">var cb=Math.random()*100000000000;
+</code></pre>
+
+<p>This variable is added to the query string of the Tealium Collect pixel:</p>
+
+<pre><code class="language-html">&lt;img height=&quot;1&quot; width=&quot;1&quot; style=&quot;display:none&quot; src=&quot;//collect.tealiumiq.com/event?tealium_account={ACCOUNT}&amp;tealium_profile={PROFILE}&amp;tealium_event=user_login&amp;email_address=user@example.com&amp;cb=' + cb + '&quot;/&gt;
+</code></pre>
+
+<h3 id="javascript-example">JavaScript Example</h3>
+
+<p>Tealium Collect supports cross-domain requests, allowing you to send a POST from your website to our domain, as shown in the following example:</p>
+
+<pre><code class="language-javascript">var event = {
+    &quot;tealium_account&quot; : &quot;ACCOUNT&quot;,
+    &quot;tealium_profile&quot; : &quot;PROFILE&quot;,
+    &quot;tealium_event&quot;   : &quot;EVENT_NAME&quot;,
+    &quot;email_address&quot;   : &quot;EMAIL_ADDRESS&quot;};
+var xhr = new XMLHttpRequest();
+xhr.open(&quot;POST&quot;, &quot;https://collect.tealiumiq.com/event&quot;);
+xhr.send(JSON.stringify(event));
+</code></pre>
+
+<p>The Response Headers include the following:  </p>
+
+<pre><code class="language-javascript">Access-Control-Allow-Origin: [http://your_domain.com](http://your_domain.com)
+</code></pre>
+
+</div>
+
+<div class="pv3">
+
+	<div class="fr">
+
+		
+		<a href="/platforms/http-api/data-layer/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Data Layer</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Data Layer"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  January 6, 2022 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  January 6, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#tealium-collect-url">Tealium Collect URL</a></li>
+              <li><a href="#visitor-id-attribute">Visitor ID Attribute</a></li>
+              <ul class="toc-h3"><li><a href="#anonymous-id">Anonymous ID</a></li>
+              </ul><li><a href="#methods">Methods</a></li>
+              <ul class="toc-h3"><li><a href="#get">GET</a></li>
+              <li><a href="#post">POST</a></li>
+              </ul><li><a href="#status-codes">Status Codes</a></li>
+              <li><a href="#examples">Examples</a></li>
+              <ul class="toc-h3"><li><a href="#html-example">HTML Example</a></li>
+              <li><a href="#javascript-example">JavaScript Example</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

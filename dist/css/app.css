@@ -359,6 +359,7 @@ img { max-width: 100%; }
 .bb { border-bottom-style: solid; border-bottom-width: 1px; }
 .bn { border-style: none; border-width: 0; }
 @media screen and (min-width: 60em) {
+  .bt-l { border-top-style: solid; border-top-width: 1px; }
   .bl-l { border-left-style: solid; border-left-width: 1px; }
 }
 /*
@@ -809,7 +810,6 @@ img { max-width: 100%; }
 /* Max Width Percentages */
 .mw-100  { max-width: 100%; }
 /* Max Width Scale */
-.mw7  {  max-width: 48rem; }
 .mw9  {  max-width: 96rem; }
 /* Max Width String Properties */
 @media screen and (min-width: 60em) {
@@ -893,6 +893,7 @@ img { max-width: 100%; }
 
  */
 .overflow-hidden { overflow: hidden; }
+.overflow-auto { overflow: auto; }
 /*
 
    POSITIONING
@@ -1004,13 +1005,13 @@ img { max-width: 100%; }
 .pl3 { padding-left: 1rem; }
 .pl4 { padding-left: 2rem; }
 .pl5 { padding-left: 4rem; }
+.pl7 { padding-left: 16rem; }
 .pr2 { padding-right: .5rem; }
 .pr3 { padding-right: 1rem; }
+.pr4 { padding-right: 2rem; }
 .pb1 { padding-bottom: .25rem; }
-.pb2 { padding-bottom: .5rem; }
 .pb3 { padding-bottom: 1rem; }
 .pb5 { padding-bottom: 4rem; }
-.pb7 { padding-bottom: 16rem; }
 .pt1 { padding-top: .25rem; }
 .pt2 { padding-top: .5rem; }
 .pt3 { padding-top: 1rem; }
@@ -1079,10 +1080,8 @@ img { max-width: 100%; }
   .pl4-ns  {  padding-left: 2rem; }
 
   .pb0-ns  {  padding-bottom: 0; }
-  .pb2-ns  {  padding-bottom: .5rem; }
   .pb6-ns {  padding-bottom: 8rem; }
   .pt3-ns  {  padding-top: 1rem; }
-  .pt4-ns  {  padding-top: 2rem; }
 
   .pv0-ns {
     padding-top: 0;
@@ -1103,10 +1102,6 @@ img { max-width: 100%; }
   .ph5-ns {
     padding-left: 4rem;
     padding-right: 4rem;
-  }
-  .ph6-ns {
-    padding-left: 8rem;
-    padding-right: 8rem;
   }
 
   .ml0-ns  {  margin-left: 0; }
@@ -1309,11 +1304,6 @@ img { max-width: 100%; }
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-@media screen and (min-width: 60em) {
-  .measure-wide-l {
-    max-width: 40em;
-  }
 }
 /*
 
@@ -1553,15 +1543,70 @@ img { max-width: 100%; }
 /* @import 'tachyons/src/_debug'; */
 /* Customizations */
 /* @media (--breakpoint-small) { }*/
-@media screen and (min-width: 60em) {
-  .measure-wide-l {
-    max-width: 40em;
-  }
-}
+.tooltipped{position:relative}
+.tooltipped::after{position:absolute;z-index:1000000;display:none;padding:.5em .75em;font:normal normal 11px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";-webkit-font-smoothing:subpixel-antialiased;color:#fff;text-align:center;text-decoration:none;text-shadow:none;text-transform:none;letter-spacing:normal;word-wrap:break-word;white-space:pre;pointer-events:none;content:attr(aria-label);background:#1b1f23;border-radius:3px;opacity:0}
+.tooltipped::before{position:absolute;z-index:1000001;display:none;width:0;height:0;color:#1b1f23;pointer-events:none;content:"";border:6px solid transparent;opacity:0}
+@keyframes tooltip-appear{from{opacity:0}to{opacity:1}}
+.tooltipped:hover::before,.tooltipped:hover::after,.tooltipped:active::before,.tooltipped:active::after,.tooltipped:focus::before,.tooltipped:focus::after{display:inline-block;text-decoration:none;animation-name:tooltip-appear;animation-duration:.1s;animation-fill-mode:forwards;animation-timing-function:ease-in;animation-delay:.4s}
+.tooltipped-no-delay:hover::before,.tooltipped-no-delay:hover::after,.tooltipped-no-delay:active::before,.tooltipped-no-delay:active::after,.tooltipped-no-delay:focus::before,.tooltipped-no-delay:focus::after{animation-delay:0s}
+.tooltipped-multiline:hover::after,.tooltipped-multiline:active::after,.tooltipped-multiline:focus::after{display:table-cell}
+.tooltipped-s::after,.tooltipped-se::after,.tooltipped-sw::after{top:100%;right:50%;margin-top:6px}
+.tooltipped-s::before,.tooltipped-se::before,.tooltipped-sw::before{top:auto;right:50%;bottom:-7px;margin-right:-6px;border-bottom-color:#1b1f23}
+.tooltipped-se::after{right:auto;left:50%;margin-left:-16px}
+.tooltipped-sw::after{margin-right:-16px}
+.tooltipped-n::after,.tooltipped-ne::after,.tooltipped-nw::after{right:50%;bottom:100%;margin-bottom:6px}
+.tooltipped-n::before,.tooltipped-ne::before,.tooltipped-nw::before{top:-7px;right:50%;bottom:auto;margin-right:-6px;border-top-color:#1b1f23}
+.tooltipped-ne::after{right:auto;left:50%;margin-left:-16px}
+.tooltipped-nw::after{margin-right:-16px}
+.tooltipped-s::after,.tooltipped-n::after{transform:translateX(50%)}
+.tooltipped-w::after{right:100%;bottom:50%;margin-right:6px;transform:translateY(50%)}
+.tooltipped-w::before{top:50%;bottom:50%;left:-7px;margin-top:-6px;border-left-color:#1b1f23}
+.tooltipped-e::after{bottom:50%;left:100%;margin-left:6px;transform:translateY(50%)}
+.tooltipped-e::before{top:50%;right:-7px;bottom:50%;margin-top:-6px;border-right-color:#1b1f23}
+.tooltipped-align-right-1::after,.tooltipped-align-right-2::after{right:0;margin-right:0}
+.tooltipped-align-right-1::before{right:10px}
+.tooltipped-align-right-2::before{right:15px}
+.tooltipped-align-left-1::after,.tooltipped-align-left-2::after{left:0;margin-left:0}
+.tooltipped-align-left-1::before{left:5px}
+.tooltipped-align-left-2::before{left:10px}
+.tooltipped-multiline::after{width:-webkit-max-content;width:-moz-max-content;width:max-content;max-width:250px;word-wrap:break-word;white-space:pre-line;border-collapse:separate}
+.tooltipped-multiline.tooltipped-s::after,.tooltipped-multiline.tooltipped-n::after{right:auto;left:50%;transform:translateX(-50%)}
+.tooltipped-multiline.tooltipped-w::after,.tooltipped-multiline.tooltipped-e::after{right:100%}
+@media screen and (min-width: 0\0){.tooltipped-multiline::after{width:250px}}
+.tooltipped-sticky::before,.tooltipped-sticky::after{display:inline-block}
+.tooltipped-sticky.tooltipped-multiline::after{display:table-cell}
+/* https://highlightjs.org/static/demo/ */
+/*!
+  Theme: Github
+  Author: Defman21
+  License: ~ MIT (or more permissive) [via base16-schemes-source]
+  Maintainer: @highlightjs/core-team
+  Version: 2021.09.0
+*/
+pre code.hljs{display:block;overflow-x:auto;padding:1em}
+code.hljs{padding:3px 5px}
+.hljs{color:#333;background:#fff}
+.hljs ::selection,.hljs::selection{background-color:#c8c8fa;color:#333}
+.hljs-comment{color:#969896}
+.hljs-tag{color:#e8e8e8}
+.hljs-operator,.hljs-punctuation,.hljs-subst{color:#333}
+.hljs-operator{opacity:.7}
+.hljs-bullet,.hljs-deletion,.hljs-name,.hljs-selector-tag,.hljs-template-variable,.hljs-variable{color:#ed6a43}
+.hljs-attr,.hljs-link,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}
+.hljs-class .hljs-title,.hljs-title{color:#795da3}
+.hljs-strong{font-weight:700;color:#795da3}
+.hljs-addition,.hljs-built_in,.hljs-code,.hljs-doctag,.hljs-keyword.hljs-atrule,.hljs-quote,.hljs-regexp,.hljs-string{color:#183691}
+.hljs-attribute,.hljs-function .hljs-title,.hljs-section{color:#795da3}
+.hljs-keyword,.hljs-template-tag,.hljs-type{color:#a71d5d}
+.hljs-emphasis{color:#a71d5d;font-style:italic}
+.hljs-meta,.hljs-meta .hljs-keyword,.hljs-meta .hljs-string{color:#333}
+.hljs-meta .hljs-keyword,.hljs-meta-keyword{font-weight:700}
 /*type*/
 /*@import 'font/_muli-200';*/
 /*@import 'font/_muli-400';*/
 /*@import 'font/_muli-800';*/
+:root { /* #0594CB; */ /* #0A1922; */ /* #f9f9f9; main background */ /* #FF4088; */ /* #373737; */ /* <p note> */ /* <p note> */ /* <p tip> */ /* <p tip> */
+}
 .header-link:after {
   position: relative;
   left: 0.5em;
@@ -1667,54 +1712,6 @@ p.tip .fa-star:before {
   border-bottom: none;
 }
 /*@import '_carousel';*/
-pre, .pre  {
-  overflow-x: auto;
-  overflow-y: hidden;
-  /* this adds a chunky border to the code window overflow:   scroll; */
-}
-code {
-    padding: 0.2em;
-    margin: 0;
-    font-size: 85%;
-    background-color: rgba(27, 31, 35, .05);
-    border-radius: 3px;
-}
-pre  code {
-  display: block;
-  padding: 1.0em 1.0em;
-  font-size: .875rem;
-  line-height: 1.5;
-  overflow-x: auto;
-}
-pre {
-  background-color: #fff;
-  color: #333;
-  white-space: pre;
-  -webkit-hyphens: none;
-      -ms-hyphens: none;
-          hyphens: none;
-  position: relative;
-  border-width: 1px;
-  border-color: #ccc;
-  border-style: solid;
-}
-/* The Pygments highlighter comes with its own styles. */
-.highlight pre {
-  /*background-color: inherit; displays code under TOC*/
-  color: inherit;
-  padding: 0.5em;
-  font-size: .875rem;
-}
-/*We are adding the copy button content here so we can change it with javascript. See the "Clipboard scripts"*/
-.copy:after {
-  content: "Copy"
-}
-@media screen and (min-width: 60em) {
-   pre.expand:hover {
-    margin-right: -20vw;
-    max-width: 100vw;
-  }
-}
 .tab-button{
 	margin-bottom:1px;
 	position: relative;
@@ -1725,18 +1722,18 @@ pre {
 	background-color:white;
 }
 .tab-pane code{
-	background:#f1f2f2;
-	border-radius:0;
+	background: #F7F7F7;
+	border-radius: 0;
 }
 .tab-pane .chroma{
 	background:none;
 	padding:0;
 }
 .tab-button.active{
-	border-bottom-color:#f1f2f2;
-	background-color: #f1f2f2;
+	border-bottom-color: #F7F7F7;
+	background-color: #F7F7F7;
 }
-.tab-content .tab-pane{
+.tab-content .tab-pane {
 	display: none;
 }
 .tab-content .tab-pane.active{
@@ -1744,7 +1741,10 @@ pre {
 }
 /* Treatment of copy buttons inside a tab module */
 .tab-content .copy{
-	display: none;
+	xxxdisplay: none;
+}
+.tab-content  pre button.copy {
+  background-color: #F7F7F7;
 }
 .tab-content .tab-pane.active + .copy{
 	display: block;
@@ -1804,6 +1804,64 @@ pre {
   padding: 3px 0;
 }
 /* end tabbed code blocks */
+/* GitHub Primer Styles for Tooltips */
+.tooltipped:hover:before, 
+.tooltipped:hover:after, 
+.tooltipped:active:before, 
+.tooltipped:active:after, 
+.tooltipped:focus:before, 
+.tooltipped:focus:after {
+    display: inline-block;
+    text-decoration: none;
+}
+.tooltipped-s:before, 
+.tooltipped-se:before, 
+.tooltipped-sw:before {
+    top: auto;
+    right: 50%;
+    bottom: -5px;
+    margin-right: -5px;
+    border-bottom-color: rgba(0, 0, 0, .8);
+}
+.tooltipped:before {
+    position: absolute;
+    z-index: 1000001;
+    display: none;
+    width: 0;
+    height: 0;
+    color: rgba(0, 0, 0, .8);
+    pointer-events: none;
+    content: "";
+    border: 5px solid transparent;
+}
+.tooltipped-s:after, .tooltipped-n:after {
+    transform: translateX(50%);
+}
+.tooltipped-s:after, .tooltipped-se:after, .tooltipped-sw:after {
+    top: 100%;
+    right: 50%;
+    margin-top: 5px;
+}
+.tooltipped:after {
+    position: absolute;
+    z-index: 1000000;
+    display: none;
+    padding: 5px 8px;
+    font: normal normal 11px/1.5 Helvetica,arial,nimbussansl,liberationsans,freesans,clean,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: none;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: break-word;
+    white-space: pre;
+    pointer-events: none;
+    content: attr(aria-label);
+    background: rgba(0, 0, 0, .8);
+    border-radius: 3px;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
 button:disabled {
   opacity: 0.3;
 }
@@ -1930,34 +1988,15 @@ code, .code, pre code, .highlight pre  {
 /* Monospaced Typefaces (for code) */
 /* Sans-Serif Typefaces */
 /* Serif Typefaces */
-/* modified from:*/
-/*
-
-Atom One Light by Daniel Gamage
-Original One Light Syntax theme from https://github.com/atom/one-light-syntax
-
-base:    #fafafa
-mono-1:  #383a42
-mono-2:  #686b77
-mono-3:  #a0a1a7
-hue-1:   #0184bb
-hue-2:   #4078f2
-hue-3:   #a626a4
-hue-4:   #50a14f
-hue-5:   #e45649
-hue-5-2: #c91243
-hue-6:   #986801
-hue-6-2: #c18401
-
-*/
-.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0.5em;
-  color: #383a42;
-  background: #fafafa;
+pre code.hljs {
+  padding:  0;
 }
-/* hljs-template-variable covers the handlebars templating*/
+.hljs {
+  background: #F7F7F7;
+}
+.hljs-tag {
+    color: #333;
+}
 a.js-toggle:after {
     font-family: Font Awesome\ 5 Pro;
     font-weight: 900;
@@ -2044,11 +2083,11 @@ nav.side-nav>ul>li.active{
 .sticky-l::-webkit-scrollbar {
   height: 4px;
   width: 4px;
-  background-color: #f7f7f7;
+  background-color: #F7F7F7;
 }
 .sticky-l::-webkit-scrollbar-track {
   border-radius: 0;
-  background-color: #f7f7f7;
+  background-color: #F7F7F7;
 }
 .sticky-l::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, .26);
@@ -2065,6 +2104,7 @@ nav.side-nav>ul>li.active{
   -ms-flex: 1 1;
       flex: 1 1;
 }
+.max-vh-100 { max-height: 100vh; }
 @media screen and (min-width: 45em) {
   #leftFrame > .main-nav-container {
     overflow-y: hidden;
@@ -2378,11 +2418,8 @@ ul.menu-group > li:hover .tooltiptext::before {
   .sticky-l {
     position: -webkit-sticky;
     position: sticky;
-    top: 100px;
-    max-height: 100vh;
+    top: 0;
     left: auto;
-    overflow-y: auto;
-    overflow-x: hidden;
     background-color: #f7f7f7;
   }
 
@@ -2395,8 +2432,63 @@ ul.menu-group > li:hover .tooltiptext::before {
   }
 }
 .fill-current { fill: currentColor; }
-/*@import '_chroma';*/
-/*@import '_chroma_lovelace';*/
-:root { /* #0594CB; */ /* #0A1922; */ /* #f9f9f9; main background */ /* #FF4088; */ /* #373737; */ /* <p note> */ /* <p note> */ /* <p tip> */ /* <p tip> */
+pre, .pre  {
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* this adds a chunky border to the code window overflow:   scroll; */
+}
+code {
+    padding: 0.2em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(27, 31, 35, .05);
+    border-radius: 3px;
+}
+pre  code {
+  display: block;
+  xxxpadding: 1.0em 1.0em;
+  font-size: .875rem;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+pre {
+  background-color: #F7F7F7 !important;
+  color: #333;
+  white-space: pre;
+  -webkit-hyphens: none;
+      -ms-hyphens: none;
+          hyphens: none;
+  position: relative;
+  border-width: 1px;
+  border-color: #ccc;
+  border-style: solid;
+  border-radius: 4px;
+  padding: 1rem;
+}
+/* The Pygments highlighter comes with its own styles. */
+.highlight pre {
+  /*background-color: inherit; displays code under TOC*/
+  color: inherit;
+  padding: 1rem;
+  font-size: .875rem;
+}
+/*We are adding the copy button content here so we can change it with javascript. See the "Clipboard scripts"*/
+.copy:after {
+  xxxcontent: "Copy"
+}
+@media screen and (min-width: 60em) {
+   pre.expand:hover {
+    xxxmargin-right: -20vw;
+    xxxmax-width: 100vw;
+  }
+}
+pre button.btn {
+  top: 6px;
+  right: 3px;
+  background-color: #F7F7F7;
+}
+/* override relative position that to work with clipboard js */
+.tooltipped {
+  position: absolute;
 }
 

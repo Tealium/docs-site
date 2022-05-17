@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,419 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#standard-page-data">Standard Page Data</a></li>
-              <li><a href="#cookies">Cookies</a></li>
-              <li><a href="#tealium-data">Tealium Data</a></li>
-              <li><a href="#example-data">Example Data</a></li>
-              <li><a href="#how-data-layer-variables-are-flattened">How Data Layer Variables are Flattened</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/adobe-launch/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        ADOBE LAUNCH
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Data Layer</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Learn about the built-in (automatic) data layer variables for the Collect tag in the Adobe Launch marketplace.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<p>The data layer contains built-in variables that collect basic information about the page being tracked. These variables include cookies, standard DOM variables from the page, and Tealium-specific variables about the loaded configuration.</p>
-
-<p><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Data-Layer-Variables/ta-p/9427">Learn more</a> about the types of data layer variables available.</p>
-
-<h2 id="standard-page-data">Standard Page Data</h2>
-
-<p>The following variables are generated from the standard JavaScript properties available for the web page.</p>
-
-<p>The example values shown are based on the following page URL:</p>
-
-<p><code>http://www.example.com/path/file.html?param1=value1#hash=fragment</code></p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Variable</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>dom.domain</code></td>
-<td align="left">The full domain of the URL. Source: location.hostname</td>
-<td align="left"><code>www.example.com</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>dom.hash</code></td>
-<td align="left">The hash fragment of the URL (excluding the # character). Source: location.hash</td>
-<td align="left"><code>hash=fragment</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>dom.pathname</code></td>
-<td align="left">The path of the URL, excluding the query parameters and domain. Source: location.pathname</td>
-<td align="left"><code>&quot;/path/file.html&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>dom.query_string</code></td>
-<td align="left">The full query string of the URL. Source: location.search</td>
-<td align="left"><code>param1=value1</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>dom.referrer</code></td>
-<td align="left">URL of previous page. Source: document.referrer</td>
-<td align="left"></td>
-</tr>
-
-<tr>
-<td align="left"><code>dom.title</code></td>
-<td align="left">Text in the &lt;title&gt; tag. Source: document.title</td>
-<td align="left"><code>&quot;Page Title&quot;</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>dom.url</code></td>
-<td align="left">The full URL of the page. Source: document.URL</td>
-<td align="left"><code>http://www.example.com/ PATH/FILE.html?param1=VALUE#hash=FRAGMENT</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>dom.viewport_height</code></td>
-<td align="left">The height of the browser view port. Source: window.innerHeight or document.documentElement.clientHeight</td>
-<td align="left"><code>1320</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>dom.viewport_width</code></td>
-<td align="left">The width of the browser view port. Source: window.innerWidth or document.documentElement.clientWidth</td>
-<td align="left"><code>1278</code></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="cookies">Cookies</h2>
-
-<p>The following variables are stored and maintained in a single cookie named <code>TEAL</code>. Each is a variable in the <code>TEAL</code> object.</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Variable</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>tealium)_session_event_number</code></td>
-<td align="left">The number of events in the current session.</td>
-<td align="left"><code>2</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_session_number</code></td>
-<td align="left">The number of sessions for this unique visitor.</td>
-<td align="left"><code>1</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_session_id</code></td>
-<td align="left">The unique identifier for the session.</td>
-<td align="left"><code>1628542077230</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>tealium_visitor_id</code></td>
-<td align="left">A unique identifier for the visitor. May be 40 characters or more.</td>
-<td align="left"><code>016297481...</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>The following is an example of the document.cookie format of the TEAL cookie, which shows the variable values separated by <code>$</code> characters.</p>
-
-<p><code>TEAL=v:927b2ebc092a70110329356772472215264145f9fa1$t:1628543914615$s:1628542077230%3Bexp-sess$sn:1$en:3</code></p>
-
-<h2 id="tealium-data">Tealium Data</h2>
-
-<table>
-<thead>
-<tr>
-<th align="left">Variable</th>
-<th align="left">Name</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left">tealium_account</td>
-<td align="left">Account Name</td>
-<td align="left">sandbox</td>
-</tr>
-
-<tr>
-<td align="left">tealium_datasource</td>
-<td align="left">Data Source Key</td>
-<td align="left">abc123</td>
-</tr>
-
-<tr>
-<td align="left">tealium_environment</td>
-<td align="left">Publish Environment</td>
-<td align="left">prod</td>
-</tr>
-
-<tr>
-<td align="left">tealium_event</td>
-<td align="left">Tealium Event Name</td>
-<td align="left">my_event</td>
-</tr>
-
-<tr>
-<td align="left">tealium_library_name</td>
-<td align="left">Library Name</td>
-<td align="left">tealium.js</td>
-</tr>
-
-<tr>
-<td align="left">tealium_library_version</td>
-<td align="left">Library Version</td>
-<td align="left">5.0.3</td>
-</tr>
-
-<tr>
-<td align="left">tealium_profile</td>
-<td align="left">Account Profile</td>
-<td align="left">main</td>
-</tr>
-
-<tr>
-<td align="left">tealium_random</td>
-<td align="left">Random Number</td>
-<td align="left">7782219645308327</td>
-</tr>
-
-<tr>
-<td align="left">tealium_timestamp_epoch</td>
-<td align="left">Current Unix timestamp in seconds</td>
-<td align="left">1522956509</td>
-</tr>
-
-<tr>
-<td align="left">tealium_timestamp_local</td>
-<td align="left">Local Timestamp</td>
-<td align="left">2018-04-05T12:28:29.019</td>
-</tr>
-
-<tr>
-<td align="left">tealium_timestamp_utc</td>
-<td align="left">UTC Timestamp</td>
-<td align="left">2018-04-05T19:28:29.019z</td>
-</tr>
-
-<tr>
-<td align="left">tealium_cookie_domain</td>
-<td align="left">Domain where TEAL cookie is set</td>
-<td align="left">example.com</td>
-</tr>
-
-<tr>
-<td align="left">tealium_domain</td>
-<td align="left">Domain of website</td>
-<td align="left">example.com</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="example-data">Example Data</h2>
-
-<p>The following is an example of the built-in data layer that is automatically available.</p>
-
-<pre><code>{
-        &quot;cp._ga&quot;: &quot;GA1.2.1370368844.1628542067&quot;,
-        &quot;cp._gid&quot;: &quot;GA1.2.73283117.1628542067&quot;,
-        &quot;tealium_session_number&quot;: 1,
-        &quot;tealium_session_event_number&quot;: 3,
-        &quot;tealium_session_id&quot;: &quot;1628542077230&quot;,
-        &quot;tealium_visitor_id&quot;: &quot;927b2ebc092a70110329356772472215264145f9fa1&quot;,
-        &quot;dom.referrer&quot;: &quot;&quot;,
-        &quot;dom.title&quot;: &quot;Example dot com&quot;,
-        &quot;dom.domain&quot;: &quot;example.com&quot;,
-        &quot;dom.query_string&quot;: &quot;&quot;,
-        &quot;dom.hash&quot;: &quot;&quot;,
-        &quot;dom.url&quot;: &quot;https://example.com/&quot;,
-        &quot;dom.pathname&quot;: &quot;/&quot;,
-        &quot;dom.viewport_height&quot;: 936,
-        &quot;dom.viewport_width&quot;: 1517,
-        &quot;meta.description&quot;: &quot;View&quot;,
-        &quot;meta.viewport&quot;: &quot;width=device-width, initial-scale=1&quot;,
-        &quot;meta.theme-color&quot;: &quot;#13B0E9&quot;,
-        &quot;tealium_cookie_domain&quot;: &quot;example.com&quot;,
-        &quot;tealium_domain&quot;: &quot;example.com&quot;,
-        &quot;tealium_event&quot;: &quot;test event&quot;,
-        &quot;tealium_account&quot;: &quot;xxxxxxxxxxxx&quot;,
-        &quot;tealium_profile&quot;: &quot;main&quot;,
-        &quot;tealium_environment&quot;: &quot;prod&quot;,
-        &quot;tealium_datasource&quot;: &quot;test1234&quot;,
-        &quot;tealium_random&quot;: &quot;9870188345895229&quot;,
-        &quot;tealium_library_name&quot;: &quot;tealium.js&quot;,
-        &quot;tealium_library_version&quot;: &quot;5.0.3&quot;,
-        &quot;tealium_timestamp_epoch&quot;: 1628542114,
-        &quot;tealium_timestamp_utc&quot;: &quot;2021-08-09T20:48:34.616Z&quot;,
-        &quot;tealium_timestamp_local&quot;: &quot;2021-08-09T13:48:34.616&quot;,
-        &quot;timing.domain&quot;: &quot;example.com&quot;,
-        &quot;timing.pathname&quot;: &quot;/&quot;,
-        &quot;timing.query_string&quot;: &quot;&quot;,
-        &quot;timing.timestamp&quot;: 1628542085435,
-        &quot;timing.dns&quot;: 1,
-        &quot;timing.connect&quot;: 99,
-        &quot;timing.response&quot;: 0,
-        &quot;timing.dom_loading_to_interactive&quot;: 7,
-        &quot;timing.dom_interactive_to_complete&quot;: 129,
-        &quot;timing.load&quot;: 0,
-        &quot;timing.time_to_first_byte&quot;: 95,
-        &quot;timing.front_end&quot;: 163,
-        &quot;timing.fetch_to_response&quot;: 210,
-        &quot;timing.fetch_to_complete&quot;: 373,
-        &quot;timing.fetch_to_interactive&quot;: 244
-}
-
-</code></pre>
-
-<h2 id="how-data-layer-variables-are-flattened">How Data Layer Variables are Flattened</h2>
-
-<p>Adobe Experience Platform Launch events are converted into flattened attribute names in order to meet the Tealium Customer Data Hub specifications.</p>
-
-<p>Here is an example of an Adobe Experience Platform Launch event prior to being flattened:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">digitalData = {
-    product: [{
-        productInfo: {
-            productID: <span style="color:#a31515">&#34;4859&#34;</span>,
-            productName: <span style="color:#a31515">&#34;Example product&#34;</span>,
-            description: <span style="color:#a31515">&#34;Example description&#34;</span>,
-            productURL: <span style="color:#a31515">&#34;https://example.com/product.html&#34;</span>,
-            productImage: <span style="color:#a31515">&#34;https://example.com/product_image.png&#34;</span>,
-            productThumbnail: <span style="color:#a31515">&#34;https://example.com/product_thumbnail.png&#34;</span>,
-            manufacturer: <span style="color:#a31515">&#34;Example manufacturer&#34;</span>,
-            quantity: 1,
-            size: <span style="color:#a31515">&#34;Product size&#34;</span>
-        }
-    }],
-    cart: {
-        cartID: <span style="color:#a31515">&#34;934856&#34;</span>,
-        price: {
-            basePrice: 200.00,
-            voucherCode: <span style="color:#a31515">&#34;EXAMPLEVOUCHER1&#34;</span>,
-            voucherDiscount: 0.50,
-            currency: <span style="color:#a31515">&#34;USD&#34;</span>,
-            taxRate: 0.20,
-            shipping: 5.00,
-            shippingMethod: <span style="color:#a31515">&#34;UPS&#34;</span>,
-            priceWithTax: 120,
-            cartTotal: 125
-        }
-    }
-}
-</code></pre></div>
-<p>The flattened event sent by Tealium Collect:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
-    <span style="color:#a31515">&#34;product.productInfo.productID&#34;</span>: [<span style="color:#a31515">&#34;4859&#34;</span>],
-    <span style="color:#a31515">&#34;product.productInfo.productName&#34;</span>: [<span style="color:#a31515">&#34;Example product&#34;</span>],
-    <span style="color:#a31515">&#34;product.productInfo.description&#34;</span>: [<span style="color:#a31515">&#34;Example description&#34;</span>],
-    <span style="color:#a31515">&#34;product.productInfo.productURL&#34;</span>: [<span style="color:#a31515">&#34;https://example.com/product.html&#34;</span>],
-    <span style="color:#a31515">&#34;product.productInfo.productImage&#34;</span>: [<span style="color:#a31515">&#34;https://example.com/product_image.png&#34;</span>],
-    <span style="color:#a31515">&#34;product.productInfo.productThumbnail&#34;</span>: [<span style="color:#a31515">&#34;https://example.com/product_thumbnail.png&#34;</span>],
-    <span style="color:#a31515">&#34;product.productInfo.manufacturer&#34;</span>: [<span style="color:#a31515">&#34;Example manufacturer&#34;</span>],
-    <span style="color:#a31515">&#34;product.productInfo.quantity&#34;</span>: [<span style="color:#a31515">&#34;1&#34;</span>],
-    <span style="color:#a31515">&#34;product.productInfo.size&#34;</span>: [<span style="color:#a31515">&#34;Product size&#34;</span>],
-    <span style="color:#a31515">&#34;cart.cartID&#34;</span>: <span style="color:#a31515">&#34;934856&#34;</span>,
-    <span style="color:#a31515">&#34;cart.price.basePrice&#34;</span>: <span style="color:#a31515">&#34;200.00&#34;</span>,
-    <span style="color:#a31515">&#34;cart.price.voucherCode&#34;</span>: <span style="color:#a31515">&#34;EXAMPLEVOUCHER1&#34;</span>,
-    <span style="color:#a31515">&#34;cart.price.voucherDiscount&#34;</span>: <span style="color:#a31515">&#34;0.50&#34;</span>,
-    <span style="color:#a31515">&#34;cart.price.currency&#34;</span>: <span style="color:#a31515">&#34;USD&#34;</span>,
-    <span style="color:#a31515">&#34;cart.price.taxRate&#34;</span>: <span style="color:#a31515">&#34;0.20&#34;</span>,
-    <span style="color:#a31515">&#34;cart.price.shipping&#34;</span>: <span style="color:#a31515">&#34;5.00&#34;</span>,
-    <span style="color:#a31515">&#34;cart.price.shippingMethod&#34;</span>: <span style="color:#a31515">&#34;UPS&#34;</span>,
-    <span style="color:#a31515">&#34;cart.price.priceWithTax&#34;</span>: <span style="color:#a31515">&#34;120&#34;</span>,
-    <span style="color:#a31515">&#34;cart.price.cartTotal&#34;</span>: <span style="color:#a31515">&#34;125&#34;</span>
-}
-</code></pre></div>
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/adobe-launch/install/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Install "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Install</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7877,33 +7472,447 @@ var utag_data = {
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/adobe-launch/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        ADOBE LAUNCH
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Data Layer</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Learn about the built-in (automatic) data layer variables for the Collect tag in the Adobe Launch marketplace.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<p>The data layer contains built-in variables that collect basic information about the page being tracked. These variables include cookies, standard DOM variables from the page, and Tealium-specific variables about the loaded configuration.</p>
+
+<p><a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Data-Layer-Variables/ta-p/9427">Learn more</a> about the types of data layer variables available.</p>
+
+<h2 id="standard-page-data">Standard Page Data</h2>
+
+<p>The following variables are generated from the standard JavaScript properties available for the web page.</p>
+
+<p>The example values shown are based on the following page URL:</p>
+
+<p><code>http://www.example.com/path/file.html?param1=value1#hash=fragment</code></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Variable</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>dom.domain</code></td>
+<td align="left">The full domain of the URL. Source: location.hostname</td>
+<td align="left"><code>www.example.com</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>dom.hash</code></td>
+<td align="left">The hash fragment of the URL (excluding the # character). Source: location.hash</td>
+<td align="left"><code>hash=fragment</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>dom.pathname</code></td>
+<td align="left">The path of the URL, excluding the query parameters and domain. Source: location.pathname</td>
+<td align="left"><code>&quot;/path/file.html&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>dom.query_string</code></td>
+<td align="left">The full query string of the URL. Source: location.search</td>
+<td align="left"><code>param1=value1</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>dom.referrer</code></td>
+<td align="left">URL of previous page. Source: document.referrer</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left"><code>dom.title</code></td>
+<td align="left">Text in the &lt;title&gt; tag. Source: document.title</td>
+<td align="left"><code>&quot;Page Title&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>dom.url</code></td>
+<td align="left">The full URL of the page. Source: document.URL</td>
+<td align="left"><code>http://www.example.com/ PATH/FILE.html?param1=VALUE#hash=FRAGMENT</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>dom.viewport_height</code></td>
+<td align="left">The height of the browser view port. Source: window.innerHeight or document.documentElement.clientHeight</td>
+<td align="left"><code>1320</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>dom.viewport_width</code></td>
+<td align="left">The width of the browser view port. Source: window.innerWidth or document.documentElement.clientWidth</td>
+<td align="left"><code>1278</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="cookies">Cookies</h2>
+
+<p>The following variables are stored and maintained in a single cookie named <code>TEAL</code>. Each is a variable in the <code>TEAL</code> object.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Variable</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>tealium)_session_event_number</code></td>
+<td align="left">The number of events in the current session.</td>
+<td align="left"><code>2</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_session_number</code></td>
+<td align="left">The number of sessions for this unique visitor.</td>
+<td align="left"><code>1</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_session_id</code></td>
+<td align="left">The unique identifier for the session.</td>
+<td align="left"><code>1628542077230</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>tealium_visitor_id</code></td>
+<td align="left">A unique identifier for the visitor. May be 40 characters or more.</td>
+<td align="left"><code>016297481...</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>The following is an example of the document.cookie format of the TEAL cookie, which shows the variable values separated by <code>$</code> characters.</p>
+
+<p><code>TEAL=v:927b2ebc092a70110329356772472215264145f9fa1$t:1628543914615$s:1628542077230%3Bexp-sess$sn:1$en:3</code></p>
+
+<h2 id="tealium-data">Tealium Data</h2>
+
+<table>
+<thead>
+<tr>
+<th align="left">Variable</th>
+<th align="left">Name</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">tealium_account</td>
+<td align="left">Account Name</td>
+<td align="left">sandbox</td>
+</tr>
+
+<tr>
+<td align="left">tealium_datasource</td>
+<td align="left">Data Source Key</td>
+<td align="left">abc123</td>
+</tr>
+
+<tr>
+<td align="left">tealium_environment</td>
+<td align="left">Publish Environment</td>
+<td align="left">prod</td>
+</tr>
+
+<tr>
+<td align="left">tealium_event</td>
+<td align="left">Tealium Event Name</td>
+<td align="left">my_event</td>
+</tr>
+
+<tr>
+<td align="left">tealium_library_name</td>
+<td align="left">Library Name</td>
+<td align="left">tealium.js</td>
+</tr>
+
+<tr>
+<td align="left">tealium_library_version</td>
+<td align="left">Library Version</td>
+<td align="left">5.0.3</td>
+</tr>
+
+<tr>
+<td align="left">tealium_profile</td>
+<td align="left">Account Profile</td>
+<td align="left">main</td>
+</tr>
+
+<tr>
+<td align="left">tealium_random</td>
+<td align="left">Random Number</td>
+<td align="left">7782219645308327</td>
+</tr>
+
+<tr>
+<td align="left">tealium_timestamp_epoch</td>
+<td align="left">Current Unix timestamp in seconds</td>
+<td align="left">1522956509</td>
+</tr>
+
+<tr>
+<td align="left">tealium_timestamp_local</td>
+<td align="left">Local Timestamp</td>
+<td align="left">2018-04-05T12:28:29.019</td>
+</tr>
+
+<tr>
+<td align="left">tealium_timestamp_utc</td>
+<td align="left">UTC Timestamp</td>
+<td align="left">2018-04-05T19:28:29.019z</td>
+</tr>
+
+<tr>
+<td align="left">tealium_cookie_domain</td>
+<td align="left">Domain where TEAL cookie is set</td>
+<td align="left">example.com</td>
+</tr>
+
+<tr>
+<td align="left">tealium_domain</td>
+<td align="left">Domain of website</td>
+<td align="left">example.com</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="example-data">Example Data</h2>
+
+<p>The following is an example of the built-in data layer that is automatically available.</p>
+
+<pre><code>{
+        &quot;cp._ga&quot;: &quot;GA1.2.1370368844.1628542067&quot;,
+        &quot;cp._gid&quot;: &quot;GA1.2.73283117.1628542067&quot;,
+        &quot;tealium_session_number&quot;: 1,
+        &quot;tealium_session_event_number&quot;: 3,
+        &quot;tealium_session_id&quot;: &quot;1628542077230&quot;,
+        &quot;tealium_visitor_id&quot;: &quot;927b2ebc092a70110329356772472215264145f9fa1&quot;,
+        &quot;dom.referrer&quot;: &quot;&quot;,
+        &quot;dom.title&quot;: &quot;Example dot com&quot;,
+        &quot;dom.domain&quot;: &quot;example.com&quot;,
+        &quot;dom.query_string&quot;: &quot;&quot;,
+        &quot;dom.hash&quot;: &quot;&quot;,
+        &quot;dom.url&quot;: &quot;https://example.com/&quot;,
+        &quot;dom.pathname&quot;: &quot;/&quot;,
+        &quot;dom.viewport_height&quot;: 936,
+        &quot;dom.viewport_width&quot;: 1517,
+        &quot;meta.description&quot;: &quot;View&quot;,
+        &quot;meta.viewport&quot;: &quot;width=device-width, initial-scale=1&quot;,
+        &quot;meta.theme-color&quot;: &quot;#13B0E9&quot;,
+        &quot;tealium_cookie_domain&quot;: &quot;example.com&quot;,
+        &quot;tealium_domain&quot;: &quot;example.com&quot;,
+        &quot;tealium_event&quot;: &quot;test event&quot;,
+        &quot;tealium_account&quot;: &quot;xxxxxxxxxxxx&quot;,
+        &quot;tealium_profile&quot;: &quot;main&quot;,
+        &quot;tealium_environment&quot;: &quot;prod&quot;,
+        &quot;tealium_datasource&quot;: &quot;test1234&quot;,
+        &quot;tealium_random&quot;: &quot;9870188345895229&quot;,
+        &quot;tealium_library_name&quot;: &quot;tealium.js&quot;,
+        &quot;tealium_library_version&quot;: &quot;5.0.3&quot;,
+        &quot;tealium_timestamp_epoch&quot;: 1628542114,
+        &quot;tealium_timestamp_utc&quot;: &quot;2021-08-09T20:48:34.616Z&quot;,
+        &quot;tealium_timestamp_local&quot;: &quot;2021-08-09T13:48:34.616&quot;,
+        &quot;timing.domain&quot;: &quot;example.com&quot;,
+        &quot;timing.pathname&quot;: &quot;/&quot;,
+        &quot;timing.query_string&quot;: &quot;&quot;,
+        &quot;timing.timestamp&quot;: 1628542085435,
+        &quot;timing.dns&quot;: 1,
+        &quot;timing.connect&quot;: 99,
+        &quot;timing.response&quot;: 0,
+        &quot;timing.dom_loading_to_interactive&quot;: 7,
+        &quot;timing.dom_interactive_to_complete&quot;: 129,
+        &quot;timing.load&quot;: 0,
+        &quot;timing.time_to_first_byte&quot;: 95,
+        &quot;timing.front_end&quot;: 163,
+        &quot;timing.fetch_to_response&quot;: 210,
+        &quot;timing.fetch_to_complete&quot;: 373,
+        &quot;timing.fetch_to_interactive&quot;: 244
+}
+
+</code></pre>
+
+<h2 id="how-data-layer-variables-are-flattened">How Data Layer Variables are Flattened</h2>
+
+<p>Adobe Experience Platform Launch events are converted into flattened attribute names in order to meet the Tealium Customer Data Hub specifications.</p>
+
+<p>Here is an example of an Adobe Experience Platform Launch event prior to being flattened:</p>
+
+<pre><code class="language-javascript">digitalData = {
+    product: [{
+        productInfo: {
+            productID: &quot;4859&quot;,
+            productName: &quot;Example product&quot;,
+            description: &quot;Example description&quot;,
+            productURL: &quot;https://example.com/product.html&quot;,
+            productImage: &quot;https://example.com/product_image.png&quot;,
+            productThumbnail: &quot;https://example.com/product_thumbnail.png&quot;,
+            manufacturer: &quot;Example manufacturer&quot;,
+            quantity: 1,
+            size: &quot;Product size&quot;
+        }
+    }],
+    cart: {
+        cartID: &quot;934856&quot;,
+        price: {
+            basePrice: 200.00,
+            voucherCode: &quot;EXAMPLEVOUCHER1&quot;,
+            voucherDiscount: 0.50,
+            currency: &quot;USD&quot;,
+            taxRate: 0.20,
+            shipping: 5.00,
+            shippingMethod: &quot;UPS&quot;,
+            priceWithTax: 120,
+            cartTotal: 125
+        }
+    }
+}
+</code></pre>
+
+<p>The flattened event sent by Tealium Collect:</p>
+
+<pre><code class="language-javascript">{
+    &quot;product.productInfo.productID&quot;: [&quot;4859&quot;],
+    &quot;product.productInfo.productName&quot;: [&quot;Example product&quot;],
+    &quot;product.productInfo.description&quot;: [&quot;Example description&quot;],
+    &quot;product.productInfo.productURL&quot;: [&quot;https://example.com/product.html&quot;],
+    &quot;product.productInfo.productImage&quot;: [&quot;https://example.com/product_image.png&quot;],
+    &quot;product.productInfo.productThumbnail&quot;: [&quot;https://example.com/product_thumbnail.png&quot;],
+    &quot;product.productInfo.manufacturer&quot;: [&quot;Example manufacturer&quot;],
+    &quot;product.productInfo.quantity&quot;: [&quot;1&quot;],
+    &quot;product.productInfo.size&quot;: [&quot;Product size&quot;],
+    &quot;cart.cartID&quot;: &quot;934856&quot;,
+    &quot;cart.price.basePrice&quot;: &quot;200.00&quot;,
+    &quot;cart.price.voucherCode&quot;: &quot;EXAMPLEVOUCHER1&quot;,
+    &quot;cart.price.voucherDiscount&quot;: &quot;0.50&quot;,
+    &quot;cart.price.currency&quot;: &quot;USD&quot;,
+    &quot;cart.price.taxRate&quot;: &quot;0.20&quot;,
+    &quot;cart.price.shipping&quot;: &quot;5.00&quot;,
+    &quot;cart.price.shippingMethod&quot;: &quot;UPS&quot;,
+    &quot;cart.price.priceWithTax&quot;: &quot;120&quot;,
+    &quot;cart.price.cartTotal&quot;: &quot;125&quot;
+}
+</code></pre>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/adobe-launch/install/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Install "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Install</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  December 8, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  December 8, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#standard-page-data">Standard Page Data</a></li>
+              <li><a href="#cookies">Cookies</a></li>
+              <li><a href="#tealium-data">Tealium Data</a></li>
+              <li><a href="#example-data">Example Data</a></li>
+              <li><a href="#how-data-layer-variables-are-flattened">How Data Layer Variables are Flattened</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

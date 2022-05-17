@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,207 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#utag-loader-sc">utag.loader.SC()</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/javascript/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        JAVASCRIPT
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Cookie Functions</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Reference guide for cookie functions provided by Tealium for JavaScript.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="utag-loader-sc"><code>utag.loader.SC()</code></h2>
-
-<p>This function sets and deletes multi-value cookies inside the namespace <code>utag_</code>. It is commonly used to set <code>utag_main</code> subcookies to avoid adding extra cookies.</p>
-
-<p>To minimize the number of cookies on your domain, we recommended setting a multi-value cookie object. A multi-value cookie stores several values, as key-value pairs, within one cookie namespace. The function is commonly used to set <code>utag_main</code></p>
-
-<p class="note"><i class="fas fa-info-circle"></i>This is the same function used by the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Persist-Data-Value-Extension/ta-p/13623">Persist Data Value extension</a>.</p>
-
-<p>The following format demonstrates how to set a cookie by identifying the cookie&rsquo;s namespace, name, value, optional expiration time, and optional flag for specifying additional functionality:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">utag.loader.SC(namespace, {<span style="color:#a31515">&#34;name&#34;</span>: <span style="color:#a31515">&#34;value;exp-expiry&#34;</span>}, flag);
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>namespace</code></td>
-<td><code>String</code></td>
-<td>The namespace of the cookie, which must start with <code>utag_</code>.</td>
-<td><code>&quot;utag_multi&quot;</code></td>
-</tr>
-
-<tr>
-<td><code>name:value</code></td>
-<td><code>Object</code></td>
-<td>An object of key-value pairs representing a multi-value cookie.</td>
-<td><code>{&quot;uid&quot;: &quot;012345689&quot;, &quot;aff&quot;: &quot;SiteAff1;exp-7d&quot;}</code></td>
-</tr>
-
-<tr>
-<td><code>expiry</code></td>
-<td><code>String</code></td>
-<td>(Optional) The expiration of the cookie, which must start with <code>exp-</code>.</td>
-<td><code>exp-12h</code></td>
-</tr>
-
-<tr>
-<td><code>flag</code></td>
-<td><code>String</code></td>
-<td>(Optional) A flag to delete one or more cookies.</td>
-<td><code>&quot;d&quot;</code></td>
-</tr>
-</tbody>
-</table>
-
-<p><strong>Expiry Options</strong><br />
-The following cookie expiry options are available:</p>
-
-<table>
-<thead>
-<tr>
-<th>Expiry unit</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>#d</code></td>
-<td>Expiry time in days (default unit, if none provided)</td>
-<td><code>exp-7d</code> or <code>exp-7</code> (7 days)</td>
-</tr>
-
-<tr>
-<td><code>#h</code></td>
-<td>Expiry time in hours</td>
-<td><code>&quot;exp-8h&quot;</code> (8 hours)</td>
-</tr>
-
-<tr>
-<td><code>#u</code></td>
-<td>Expiry time at <a href="https://www.epochconverter.com/">Unix timestamp</a></td>
-<td><code>&quot;exp-1549271521u&quot;</code> (Midnight (GMT) on Dec 22, 2022)</td>
-</tr>
-
-<tr>
-<td><code>session</code></td>
-<td>Expiry time at end of session (default <a href="/platforms/javascript/settings/#session-timeout">session timeout</a>: 30 minutes)</td>
-<td><code>&quot;exp-session&quot;</code></td>
-</tr>
-</tbody>
-</table>
-
-<p class="note"><i class="fas fa-info-circle"></i>Timestamp-based expiration, such as <code>&quot;exp-1549271521u&quot;</code>, has a trailing <code>u</code> indicates Unix timestamp. Do not confuse it with the value set in the cookie itself such as <code>&quot;exp-1549271521&quot;</code></p>
-
-<p>If no expiry option is set, then the default behavior is based on the version of <code>utag.js</code>:</p>
-
-<ul>
-<li><strong>4.27+</strong> - default expiry is 1 year after the creation of the cookie.</li>
-<li><strong>4.26 or older</strong> - default expiry is the year 2099.</li>
-</ul>
-
-<p><strong>Set a Cookie</strong><br />
-To set a multi-value cookie, pass an object of key-value pairs of to the <code>value</code> parameter.</p>
-
-<p>The following example creates a multi-value cookie named <code>utag_multi</code>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">utag.loader.SC(<span style="color:#a31515">&#34;utag_multi&#34;</span>, {
-    <span style="color:#a31515">&#34;uid&#34;</span>      : <span style="color:#a31515">&#34;012345689&#34;</span>,      <span style="color:#008000">// default expiry
-</span><span style="color:#008000"></span>    <span style="color:#a31515">&#34;test_seg&#34;</span> : <span style="color:#a31515">&#34;groupA;exp-12h&#34;</span>, <span style="color:#008000">// 12 hour expiry
-</span><span style="color:#008000"></span>    <span style="color:#a31515">&#34;aff&#34;</span>      : <span style="color:#a31515">&#34;SiteAff1;exp-7d&#34;</span> <span style="color:#008000">// 7 day expiry
-</span><span style="color:#008000"></span>});
-</code></pre></div>
-<p><strong>Delete a Cookie</strong><br />
-To delete one or more cookie values, use the optional <code>flag</code> parameter.</p>
-
-<p>Delete one or more values from a multi-value cookie. Each key-value pair specified is deleted:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">utag.loader.SC(<span style="color:#a31515">&#34;utag_multicookie&#34;</span>, {<span style="color:#a31515">&#34;test_seg&#34;</span>:<span style="color:#a31515">&#34;&#34;</span>, <span style="color:#a31515">&#34;aff&#34;</span>:<span style="color:#a31515">&#34;&#34;</span>}, <span style="color:#a31515">&#34;d&#34;</span>);
-</code></pre></div>
-<p>Delete all values from a multi-value cookie:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">utag.loader.SC(<span style="color:#a31515">&#34;utag_multicookie&#34;</span>, {}, <span style="color:#a31515">&#34;da&#34;</span>);
-</code></pre></div>
-</div>
-
-<div class="pv3">
-
-	<div class="fr">
-
-		
-		<a href="/platforms/javascript/api/gdpr-functions/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>GDPR Functions</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"GDPR Functions"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7665,33 +7472,239 @@ To delete one or more cookie values, use the optional <code>flag</code> paramet
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/javascript/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        JAVASCRIPT
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Cookie Functions</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Reference guide for cookie functions provided by Tealium for JavaScript.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="utag-loader-sc"><code>utag.loader.SC()</code></h2>
+
+<p>This function sets and deletes multi-value cookies inside the namespace <code>utag_</code>. It is commonly used to set <code>utag_main</code> subcookies to avoid adding extra cookies.</p>
+
+<p>To minimize the number of cookies on your domain, we recommended setting a multi-value cookie object. A multi-value cookie stores several values, as key-value pairs, within one cookie namespace. The function is commonly used to set <code>utag_main</code></p>
+
+<p class="note"><i class="fas fa-info-circle"></i>This is the same function used by the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Persist-Data-Value-Extension/ta-p/13623">Persist Data Value extension</a>.</p>
+
+<p>The following format demonstrates how to set a cookie by identifying the cookie&rsquo;s namespace, name, value, optional expiration time, and optional flag for specifying additional functionality:</p>
+
+<pre><code class="language-js">utag.loader.SC(namespace, {&quot;name&quot;: &quot;value;exp-expiry&quot;}, flag);
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>namespace</code></td>
+<td><code>String</code></td>
+<td>The namespace of the cookie, which must start with <code>utag_</code>.</td>
+<td><code>&quot;utag_multi&quot;</code></td>
+</tr>
+
+<tr>
+<td><code>name:value</code></td>
+<td><code>Object</code></td>
+<td>An object of key-value pairs representing a multi-value cookie.</td>
+<td><code>{&quot;uid&quot;: &quot;012345689&quot;, &quot;aff&quot;: &quot;SiteAff1;exp-7d&quot;}</code></td>
+</tr>
+
+<tr>
+<td><code>expiry</code></td>
+<td><code>String</code></td>
+<td>(Optional) The expiration of the cookie, which must start with <code>exp-</code>.</td>
+<td><code>exp-12h</code></td>
+</tr>
+
+<tr>
+<td><code>flag</code></td>
+<td><code>String</code></td>
+<td>(Optional) A flag to delete one or more cookies.</td>
+<td><code>&quot;d&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Expiry Options</strong><br />
+The following cookie expiry options are available:</p>
+
+<table>
+<thead>
+<tr>
+<th>Expiry unit</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>#d</code></td>
+<td>Expiry time in days (default unit, if none provided)</td>
+<td><code>exp-7d</code> or <code>exp-7</code> (7 days)</td>
+</tr>
+
+<tr>
+<td><code>#h</code></td>
+<td>Expiry time in hours</td>
+<td><code>&quot;exp-8h&quot;</code> (8 hours)</td>
+</tr>
+
+<tr>
+<td><code>#u</code></td>
+<td>Expiry time at <a href="https://www.epochconverter.com/">Unix timestamp</a></td>
+<td><code>&quot;exp-1549271521u&quot;</code> (Midnight (GMT) on Dec 22, 2022)</td>
+</tr>
+
+<tr>
+<td><code>session</code></td>
+<td>Expiry time at end of session (default <a href="/platforms/javascript/settings/#session-timeout">session timeout</a>: 30 minutes)</td>
+<td><code>&quot;exp-session&quot;</code></td>
+</tr>
+</tbody>
+</table>
+
+<p class="note"><i class="fas fa-info-circle"></i>Timestamp-based expiration, such as <code>&quot;exp-1549271521u&quot;</code>, has a trailing <code>u</code> indicates Unix timestamp. Do not confuse it with the value set in the cookie itself such as <code>&quot;exp-1549271521&quot;</code></p>
+
+<p>If no expiry option is set, then the default behavior is based on the version of <code>utag.js</code>:</p>
+
+<ul>
+<li><strong>4.27+</strong> - default expiry is 1 year after the creation of the cookie.</li>
+<li><strong>4.26 or older</strong> - default expiry is the year 2099.</li>
+</ul>
+
+<p><strong>Set a Cookie</strong><br />
+To set a multi-value cookie, pass an object of key-value pairs of to the <code>value</code> parameter.</p>
+
+<p>The following example creates a multi-value cookie named <code>utag_multi</code>:</p>
+
+<pre><code class="language-js">utag.loader.SC(&quot;utag_multi&quot;, {
+    &quot;uid&quot;      : &quot;012345689&quot;,      // default expiry
+    &quot;test_seg&quot; : &quot;groupA;exp-12h&quot;, // 12 hour expiry
+    &quot;aff&quot;      : &quot;SiteAff1;exp-7d&quot; // 7 day expiry
+});
+</code></pre>
+
+<p><strong>Delete a Cookie</strong><br />
+To delete one or more cookie values, use the optional <code>flag</code> parameter.</p>
+
+<p>Delete one or more values from a multi-value cookie. Each key-value pair specified is deleted:</p>
+
+<pre><code class="language-js">utag.loader.SC(&quot;utag_multicookie&quot;, {&quot;test_seg&quot;:&quot;&quot;, &quot;aff&quot;:&quot;&quot;}, &quot;d&quot;);
+</code></pre>
+
+<p>Delete all values from a multi-value cookie:</p>
+
+<pre><code class="language-js">utag.loader.SC(&quot;utag_multicookie&quot;, {}, &quot;da&quot;);
+</code></pre>
+
+</div>
+
+<div class="pv3">
+
+	<div class="fr">
+
+		
+		<a href="/platforms/javascript/api/gdpr-functions/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>GDPR Functions</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"GDPR Functions"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  December 15, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  December 15, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#utag-loader-sc">utag.loader.SC()</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

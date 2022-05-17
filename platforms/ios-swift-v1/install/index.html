@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,429 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
-              <li><a href="#sample-apps">Sample Apps</a></li>
-              <li><a href="#install">Install</a></li>
-              <ul class="toc-h3"><li><a href="#swift-package-manager-recommended">Swift Package Manager (Recommended)</a></li>
-              <li><a href="#cocoapods">CocoaPods</a></li>
-              <li><a href="#carthage">Carthage</a></li>
-              </ul><li><a href="#initialize">Initialize</a></li>
-              <li><a href="#log-level">Log Level</a></li>
-              <li><a href="#event-batching">Event Batching</a></li>
-              <ul class="toc-h3"><li><a href="#tag-management">Tag Management</a></li>
-              <li><a href="#tealium-collect">Tealium Collect</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/ios-swift-v1/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT V1
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Install</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      How to install the Tealium SDK for iOS (Swift).
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="requirements">Requirements</h2>
-
-<ul>
-<li>Xcode 7.0+</li>
-<li>iOS 9.0+, macOS 10.11+, watchOS 3.0+, or tvOS 9.2+</li>
-<li><a href="https://community.tealiumiq.com/t5/Getting-Started/Creating-a-Mobile-Profile/ta-p/16328">Tealium iQ Mobile Profile</a></li>
-<li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Introduction-to-Customer-Data-Hub/ta-p/17571">Tealium Customer Data Hub account</a></li>
-</ul>
-
-<h2 id="sample-apps">Sample Apps</h2>
-
-<p>Explore the Swift <a href="https://github.com/Tealium/tealium-swift/tree/master/samples">sample apps</a> to help familiarize yourself with the Tealium library, tracking methods, and best practice implementation</p>
-
-<p>To abstract the Tealium implementation from the rest of your app, we recommend using a helper class. This gives you a single entry point from which to initialize and make tracking calls. It also allows you to update the code in your helper file, and not in every single <code>ViewController</code> or Swift file.</p>
-
-<p>Explore our <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/TealiumSwiftExample">sample helper class</a>.</p>
-
-<h2 id="install">Install</h2>
-
-<p>The Tealium iOS library is divided into modules. It is recommended to install only the modules that you need in order to maintain a smaller resource footprint. <a href="/platforms/ios-swift/modules/">Learn more</a> about the modules available for iOS.</p>
-
-<p>Install the Tealium for iOS library with Swift Package Manager, CocoaPods, or Carthage.</p>
-
-<p class="note"><i class="fas fa-info-circle"></i>If you do not require consent management, exclude or disable the consent manager module. The <a href="/platforms/ios-swift/consent-management/">Consent Manager</a> module is enabled by default, which initially prevents tracking calls from being sent. In order to allow tracking calls, set the consent status to <code>.consented</code>.</p>
-  
-
-<h3 id="swift-package-manager-recommended">Swift Package Manager (Recommended)</h3>
-
-<p>Supported in version 1.9.0+, the Swift Package Manager is the recommended and simplest way to install the Tealium Swift library:</p>
-
-<ol>
-<li>In your Xcode project, select <strong>File &gt; Add Packages&hellip; &gt; Add Package Dependency</strong></li>
-<li>Enter the repository URL: <code>https://github.com/tealium/tealium-swift</code></li>
-<li>Configure the version rules. Typically, <code>Up to next major</code> is recommended. If the current Tealium Swift library version does not appear in the list, then reset your Swift package cache.</li>
-<li>Select the modules to install, and select the app target you want the modules to be installed in.</li>
-</ol>
-
-<p>If your project has more than one app target and needs Tealium Swift libraries in more app targets, you have to manually add them in the <strong>Frameworks, Libraries, and Embedded Content</strong> section.</p>
-
-<p>To install Tealium Swift libraries in additional app targets:</p>
-
-<ol>
-<li>Select your Xcode project in the <strong>Project Navigator</strong>.</li>
-<li>In your Xcode project, select the app target under the <strong>TARGETS</strong> section.</li>
-<li>Navigate to <strong>General &gt; Frameworks, Libraries &amp; Embedded Content</strong> and  select a Tealium Swift library to add it to your app target.</li>
-</ol>
-
-<p>The Swift Package Manager has the following limitations:</p>
-
-<ul>
-<li>Due to lack of mixed-language source in a single target, the <a href="/platforms/ios-swift/module-list/crash-reporter/"><code>CrashReporter</code></a> and <a href="/platforms/ios-swift/module-list/autotracking/"><code>AutoTracking</code></a> modules are not supported through the Swift Package Manager. Verify that you do not need these modules before using Swift Package Manager.</li>
-<li>Restricting a target within a package to a specific platform is not possible. Modules such as <a href="/platforms/ios-swift/module-list/tag-management/"><code>TagManagement</code></a>, which are only supported for iOS, also become available to non-iOS targets. Adding one of these modules to an non-iOS target causes the compiler throws errors due to unavailable system libraries.</li>
-</ul>
-
-<h3 id="cocoapods">CocoaPods</h3>
-
-<p>To install the Tealium for iOS library with CocoaPods (recommended):</p>
-
-<ol>
-<li><p>Add the Tealium Swift pod <code>&quot;tealium-swift&quot;</code> to your Podfile. It has a subspec for each module, each of which depends on the &ldquo;Core&rdquo; module. If you do not specify any subspecs, all modules are installed by default.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#008000"># Uncomment the next line to define a global platform for your project</span>
-platform <span style="color:#a31515">:ios</span>, <span style="color:#a31515">&#39;9.0&#39;</span>
-
-target <span style="color:#a31515">&#39;CPodTest&#39;</span> <span style="color:#00f">do</span>
-  <span style="color:#008000"># Comment the next line if you don&#39;t want to use dynamic frameworks</span>
-  use_frameworks!
-
-  <span style="color:#008000"># Pods for CPodTest</span>
-
-  <span style="color:#008000"># new entry for Tealium pod</span>
-  pod <span style="color:#a31515">&#39;tealium-swift&#39;</span> <span style="color:#008000"># all modules</span>
-  <span style="color:#008000"># pod &#39;tealium-swift/TealiumTagManagement&#39; # to install individual modules only, use subspecs</span>
-<span style="color:#00f">end</span></code></pre></div></li>
-
-<li><p>Once you have added your desired modules, run the following command:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">pod install</code></pre></div>
-<p class="note"><i class="fas fa-info-circle"></i>If the command doesn&rsquo;t find the correct Pods, try running the command <code>pod repo update</code>.</p></li>
-
-<li><p>Open your Xcode project using the <code>.xcworkspace</code> file (Do not use the <code>.xcodeproj</code> file).</p></li>
-
-<li><p>To import any number of modules, add the following import statement in the file you plan to instantiate Tealium from:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumSwift</span></code></pre></div></li>
-</ol>
-
-<h4 id="recommended-podfile">Recommended Podfile</h4>
-
-<p>The following is the recommended Podfile:</p>
-
-<p class="tip"><i class="fas fa-star"></i>To disable specific modules from the Podfile, comment them out in the Podfile with <code>#</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl"><span style="color:#008000"># Podfile</span>
-<span style="color:#008000"># replace CPodTest with your target</span>
-target <span style="color:#a31515">&#39;CPodTest&#39;</span> <span style="color:#00f">do</span>
-    <span style="color:#008000"># Comment the next line if you&#39;re not using Swift and don&#39;t</span>
-    <span style="color:#008000"># want to use dynamic frameworks</span>
-    use_frameworks!
-
-    <span style="color:#008000"># Pods for CPodTest</span>
-    <span style="color:#008000"># *** Recommended minimum:</span>
-    <span style="color:#008000"># Only disable if you&#39;re sure you don&#39;t need them.  ***</span>
-
-    <span style="color:#008000"># All pods depend on Core. Supports all platforms.</span>
-    pod <span style="color:#a31515">&#34;tealium-swift/Core&#34;</span>
-    <span style="color:#008000"># All platforms. Provides important info about</span>
-    <span style="color:#008000"># the app bundle.</span>
-    pod <span style="color:#a31515">&#34;tealium-swift/TealiumAppData&#34;</span>
-    <span style="color:#008000"># All platforms. Sends data to Tealium Customer Data Hub.</span>
-    pod <span style="color:#a31515">&#34;tealium-swift/TealiumCollect&#34;</span>
-    <span style="color:#008000"># All platforms. Assists with GDPR/privacy compliance.</span>
-    pod <span style="color:#a31515">&#34;tealium-swift/TealiumConsentManager&#34;</span>
-    <span style="color:#008000"># iOS, macOS, tvOS only. Detects connectivity state and queues track calls while offline.</span>
-    <span style="color:#008000"># Should be used in conjunction with TealiumDispatchQueue module.</span>
-    pod <span style="color:#a31515">&#34;tealium-swift/TealiumConnectivity&#34;</span>
-
-    <span style="color:#008000"># DataSource is included in the Core for Swift 1.8.0+. Uncomment for prior versions.</span>
-    <span style="color:#008000"># All platforms. Adds &#34;tealium_datasource&#34; to each dispatch, and extends TealiumConfig class.</span>
-    <span style="color:#008000"># pod &#34;tealium-swift/TealiumDataSource&#34;</span>
-
-    <span style="color:#008000"># FileStorage is included in the Core for Swift 1.8.0+. Uncomment for prior versions.</span>
-    <span style="color:#008000"># All platforms. Stores persistent data to File Storage.</span>
-    <span style="color:#008000"># Bundles PersistentData module.</span>
-    <span style="color:#008000"># Should not be used if DefaultsStorage module is in use.</span>
-    <span style="color:#008000"># Pick the option that best suits you.</span>
-    <span style="color:#008000"># pod &#34;tealium-swift/TealiumFileStorage&#34;</span>
-
-    <span style="color:#008000"># All platforms. Enables the use of delegates</span>
-    <span style="color:#008000"># and completion handlers on the Tealium class.</span>
-    pod <span style="color:#a31515">&#34;tealium-swift/TealiumDelegate&#34;</span>
-    <span style="color:#008000"># All platforms. Adds device information to each dispatch.</span>
-    pod <span style="color:#a31515">&#34;tealium-swift/TealiumDeviceData&#34;</span>
-    <span style="color:#008000"># All platforms. Enables offline storage of queued events.</span>
-    <span style="color:#008000"># (required for Consent, Connectivity).</span>
-    pod <span style="color:#a31515">&#34;tealium-swift/TealiumDispatchQueue&#34;</span>
-    <span style="color:#008000"># All platforms. Add app lifecycle information to each dispatch.</span>
-    pod <span style="color:#a31515">&#34;tealium-swift/TealiumLifecycle&#34;</span>
-    <span style="color:#008000"># All platforms. Enables logging information to the LLDB console.</span>
-    pod <span style="color:#a31515">&#34;tealium-swift/TealiumLogger&#34;</span>
-    <span style="color:#008000"># iOS only. Used with the TagManagement module to trigger Remote Commands</span>
-    pod <span style="color:#a31515">&#34;tealium-swift/TealiumRemoteCommands&#34;</span>
-    <span style="color:#008000"># iOS only. Enables Tealium iQ Tag Management.</span>
-    pod <span style="color:#a31515">&#34;tealium-swift/TealiumTagManagement&#34;</span>
-    <span style="color:#008000"># All platforms. Adds important data to each dispatch, and enables temporary storage of data for the current session.</span>
-    pod <span style="color:#a31515">&#34;tealium-swift/TealiumVolatileData&#34;</span>
-
-    <span style="color:#008000"># *** Optional modules: You may not need these modules. Enable as required.   *** #</span>
-
-    <span style="color:#008000"># iOS Only. Gathers app attribution data and advertising IDs.</span>
-    <span style="color:#008000"># pod &#34;tealium-swift/TealiumAttribution&#34;</span>
-
-    <span style="color:#008000"># iOS and tvOS only. Generally not recommended. See separate notes in module documentation.</span>
-    <span style="color:#008000"># pod &#34;tealium-swift/TealiumAutotracking&#34;</span>
-
-    <span style="color:#008000"># DefaultStorage is included in the Core for Swift 1.8.0+. Uncomment for prior versions.</span>
-    <span style="color:#008000"># All platforms. Stores persistent data to UserDefaults. Bundles PersistentData module. Should not be used if FileStorage module is in use.</span>
-    <span style="color:#008000"># pod &#34;tealium-swift/TealiumDefaultsStorage&#34;</span>
-
-    <span style="color:#008000"># iOS only. Reports detailed crash information. Installs separate TealiumCrashReporter dependency (based on PLCrashReporter).</span>
-    <span style="color:#008000"># pod &#34;tealium-swift/Crash&#34;</span>
-end</code></pre></div>
-<h4 id="full-podfile">Full Podfile</h4>
-
-<p>The full Podfile imports the entire Tealium for iOS (Swift), including all modules specified as optional:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#008000"># Uncomment the next line to define a global platform for your project</span>
-platform <span style="color:#a31515">:ios</span>, <span style="color:#a31515">&#39;9.0&#39;</span>
-
-target <span style="color:#a31515">&#39;CPodTest&#39;</span> <span style="color:#00f">do</span>
-    <span style="color:#008000"># Comment the next line if you&#39;re not using Swift and don&#39;t want to use dynamic frameworks</span>
-    use_frameworks!
-
-    <span style="color:#008000"># Pods for CPodTest</span>
-
-    <span style="color:#008000"># new entry for Tealium pod</span>
-    pod <span style="color:#a31515">&#39;tealium-swift&#39;</span>
-<span style="color:#00f">end</span></code></pre></div>
-<p>To disable specific modules, see the <code>TealiumModulesList</code> struct and relevant methods to blacklist the modules in the <a href="/platforms/ios-swift/api/tealium-config/"><code>TealiumConfig</code></a> class.</p>
-
-<h3 id="carthage">Carthage</h3>
-
-<p>To install Tealium for iOS (Swift) with Carthage:</p>
-
-<ol>
-<li><p>Add the following to your Cartfile:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">github <span style="color:#a31515">&#34;tealium/tealium-swift&#34;</span></code></pre></div></li>
-
-<li><p>To produce frameworks for iOS, macOS, tvOS and watchOS, run the following command:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">carthage update</code></pre></div></li>
-
-<li><p>To build only for a particular platform, such as iOS, and to speed up subsequent builds after the initial build, use Carthage&rsquo;s <code>--platform</code> argument:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">carthage update --platform ios --cache-builds</code></pre></div></li>
-
-<li><p>Drag the frameworks you require into your Xcode project&rsquo;s <strong>General &gt; Embedded Binaries</strong> section.<br />
-<p class="note"><i class="fas fa-info-circle"></i>Verify that the Tealium frameworks have been added to the Embedded Binaries section in your project settings, otherwise your app crashes at launch.</p></p></li>
-
-<li><p>Follow the instructions listed in the Carthage <a href="https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos">Getting Started</a> documentation to add the relevant build phases scripts, to ensure you don&rsquo;t run into any issues when submitting your app.</p></li>
-</ol>
-
-<h4 id="about-modules-1-6-5">About Modules (1.6.5+)</h4>
-
-<p>As of version 1.6.5, the Tealium Swift SDK has been split up into separate modules/frameworks. This means you need only import the specific frameworks for the modules you need to use, which helps to reduce the binary size and, ultimately, increase your app&rsquo;s performance.</p>
-
-<p><strong>Module import statements</strong></p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumCore</span>              <span style="color:#008000">// required for Tealium, TealiumConfig, TealiumInstanceManager</span>
-<span style="color:#2b91af">import</span> <span style="color:#2b91af">TealiumVolatileData</span>      <span style="color:#008000">// required if you wish to store volatile data through the Volatile Data API</span>
-<span style="color:#008000">//import TealiumFileStorage     // Included in TealiumCore for Swift 1.8.0+. Import for prior versions.</span>
-<span style="color:#008000">//import TealiumDefaultsStorage // Included in TealiumCore for Swift 1.8.0+. Import for prior versions if you need to store persistent data</span>
-<span style="color:#2b91af">import</span> <span style="color:#2b91af">TealiumRemoteCommands</span>    <span style="color:#008000">// required if you need to interact with the Remote Commands API</span>
-<span style="color:#2b91af">import</span> <span style="color:#2b91af">TealiumDelegate</span>          <span style="color:#008000">// required if you need to set up a tracking delegate</span>
-<span style="color:#008000">//import TealiumDataSource      // Included in TealiumCore for Swift 1.8.0+. Import for prior versions to</span>
-                                <span style="color:#008000">//     allow datasource param to be set on the TealiumConfig class instance</span>
-<span style="color:#2b91af">import</span> <span style="color:#2b91af">TealiumLifecycle</span>         <span style="color:#008000">// only required if you need to manually call the Lifecycle API</span></code></pre></div>
-<p>Due to Carthage limitations, we had to choose between the convenience of importing the entire SDK, and the flexibility and performance gains of a fully modular install. The downside to this is that it&rsquo;s now necessary to add each module you wish to use individually.</p>
-
-<ul>
-<li>Carthage builds <em>all</em> the modules and output the resulting <code>.framework</code> files into your Carthage build directory.</li>
-<li>Delete any modules you don&rsquo;t need, and drag the modules that you do need into Xcode.</li>
-</ul>
-
-<p>See <a href="/platforms/ios-swift/modules/">Modules</a> for further details on recommended module lists.</p>
-
-<h2 id="initialize">Initialize</h2>
-
-<p>It is recommended to manage the initialization of the <a href="/platforms/ios-swift/api/tealium/#class-tealium"><code>Tealium</code></a> class. This provides a single point of entry for the Tealium iOS library, and simplifies future upgrades.</p>
-
-<p>To initialize Tealium, pass a <a href="/platforms/ios-swift/api/tealium-config/"><code>TealiumConfig</code></a> instance to the <a href="/platforms/ios-swift/api/tealium/#tealium"><code>Tealium()</code></a> constructor, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">class</span> <span style="color:#2b91af">TealiumHelper</span> {
-
-<span style="color:#00f">static</span> <span style="color:#00f">let</span> shared = TealiumHelper()
-<span style="color:#00f">var</span> tealium: Tealium?
-
-	<span style="color:#00f">private</span> <span style="color:#00f">init</span>() {
-		initTealium()
-	}
-
-	<span style="color:#00f">private</span> <span style="color:#00f">func</span> initTealium() {
-		<span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-   	       		                   profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-        	   	                   environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
-           		                   datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>)
-		<span style="color:#008000">// add config options as required</span>
-		config.setLogLevel(.verbose)
-		<span style="color:#008000">// initialize and keep a reference to Tealium</span>
-		tealium = Tealium(config: config) { moduleResponses <span style="color:#00f">in</span>
-		    <span style="color:#008000">// Completion block; perform post-init tasks here</span>
-		}
-	}
-}</code></pre></div>
-<p class="note"><i class="fas fa-info-circle"></i>In version 1.9.0+, Mobile Publish Settings are enabled by default, and must be disabled if you don’t wish to use them. Configure the Mobile Publish Settings in iQ Tag Management, or disable it using <code>config.shouldUseRemotePublishSettings = false</code>.</p>
-
-<h2 id="log-level">Log Level</h2>
-
-<p>To set a log level, call the <a href="/platforms/ios-swift/api/tealium-config/#setloglevel"><code>setLogLevel()</code></a> method on your <code>TealiumConfig</code> instance with one of the following values:</p>
-
-<ul>
-<li><code>none</code></li>
-<li><code>.errors</code></li>
-<li><code>.warnings</code></li>
-<li><code>.verbose</code></li>
-</ul>
-
-<p>For debugging purposes, <code>.verbose</code> is recommended, as shown in the following example:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift">config.setLogLevel(.verbose)</code></pre></div>
-<h2 id="event-batching">Event Batching</h2>
-
-<p>Prior to version 1.9.0, the Tealium Swift library did not use <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">Mobile Publish Settings</a>. Therefore, event batching must be enabled and configured when the SDK is initialized. Version 1.9.0+ provides Mobile Publish Settings support, allowing event batching to be configured remotely.</p>
-
-<p>This example enables event batching and sets the batch size and queue size.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">import</span> <span style="color:#2b91af">TealiumDispatchQueue</span> <span style="color:#008000">// required for event batching options</span>
-<span style="color:#2b91af">class</span> <span style="color:#2b91af">TealiumHelper</span> {
-	<span style="color:#00f">var</span> tealium: Tealium?
-	<span style="color:#008000">// ...</span>
-
-	<span style="color:#00f">private</span> <span style="color:#00f">func</span> initTealium() {
-		<span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
- 	       		                   profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-                               environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
-                               datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>)
-		config.batchingEnabled = <span style="color:#00f">true</span>            <span style="color:#008000">// enable batching</span>
-		config.batchSize = 10                    <span style="color:#008000">// size of batch</span>
-		config.dispatchAfter = 25                <span style="color:#008000">// flush after every 25 events</span>
-		config.dispatchQueueLimit = 100          <span style="color:#008000">// 100 max queued events</span>
-		config.dispatchExpiration = 5            <span style="color:#008000">// events expire/delete after 5 days</span>
-		<span style="color:#008000">// ...</span>
-	}
-}</code></pre></div>
-<p>The following options are available to customize event batching.</p>
-
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><a href="/platforms/ios-swift/api/tealium-config/#batchingenabled"><code>batchingEnabled</code></a></td>
-<td>Enables or disables event batching (default: <code>false</code>).</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/api/tealium-config/#batchsize"><code>batchSize</code></a></td>
-<td>Sets the amount of events to combine into a single batch request (max: 10).</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/api/tealium-config/#dispatchafter"><code>dispatchAfter</code></a></td>
-<td>Sets the number of events after which the queue will be flushed.</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/api/tealium-config/#dispatchexpiration"><code>dispatchExpiration</code></a></td>
-<td>Sets the batch expiration in days. If the device is offline for an extended period, events older than this will be deleted.</td>
-</tr>
-
-<tr>
-<td><a href="/platforms/ios-swift/api/tealium-config/#dispatchqueuelimit"><code>dispatchQueueLimit</code></a></td>
-<td>Sets the maximum number of queued events. If this number is reached, and the queue has not been flushed, the oldest events will be deleted.</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="tag-management">Tag Management</h3>
-
-<p>With Tag Management and event batching enabled, tracking calls are dispatched as individual JavaScript calls to the hidden webview.</p>
-
-<p>Configured tags are triggered individually, resulting in multiple requests per event leaving the device. This improves device performance by waking up the device less frequently than sending real-time events.</p>
-
-<h3 id="tealium-collect">Tealium Collect</h3>
-
-<p>This endpoint currently only accepts batch data generated by the Tealium SDK, in a proprietary batch format.</p>
-
-</div>
-
-<div class="pv3">
-
-	<div class="fr">
-
-		
-		<a href="/platforms/ios-swift-v1/track/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Track</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Track"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7887,33 +7472,484 @@ target <span style="color:#a31515">&#39;CPodTest&#39;</span> <span style="color:
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/ios-swift-v1/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        IOS SWIFT V1
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Install</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      How to install the Tealium SDK for iOS (Swift).
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+<li>Xcode 7.0+</li>
+<li>iOS 9.0+, macOS 10.11+, watchOS 3.0+, or tvOS 9.2+</li>
+<li><a href="https://community.tealiumiq.com/t5/Getting-Started/Creating-a-Mobile-Profile/ta-p/16328">Tealium iQ Mobile Profile</a></li>
+<li><a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Introduction-to-Customer-Data-Hub/ta-p/17571">Tealium Customer Data Hub account</a></li>
+</ul>
+
+<h2 id="sample-apps">Sample Apps</h2>
+
+<p>Explore the Swift <a href="https://github.com/Tealium/tealium-swift/tree/master/samples">sample apps</a> to help familiarize yourself with the Tealium library, tracking methods, and best practice implementation</p>
+
+<p>To abstract the Tealium implementation from the rest of your app, we recommend using a helper class. This gives you a single entry point from which to initialize and make tracking calls. It also allows you to update the code in your helper file, and not in every single <code>ViewController</code> or Swift file.</p>
+
+<p>Explore our <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/TealiumSwiftExample">sample helper class</a>.</p>
+
+<h2 id="install">Install</h2>
+
+<p>The Tealium iOS library is divided into modules. It is recommended to install only the modules that you need in order to maintain a smaller resource footprint. <a href="/platforms/ios-swift/modules/">Learn more</a> about the modules available for iOS.</p>
+
+<p>Install the Tealium for iOS library with Swift Package Manager, CocoaPods, or Carthage.</p>
+
+<p class="note"><i class="fas fa-info-circle"></i>If you do not require consent management, exclude or disable the consent manager module. The <a href="/platforms/ios-swift/consent-management/">Consent Manager</a> module is enabled by default, which initially prevents tracking calls from being sent. In order to allow tracking calls, set the consent status to <code>.consented</code>.</p>
+  
+
+<h3 id="swift-package-manager-recommended">Swift Package Manager (Recommended)</h3>
+
+<p>Supported in version 1.9.0+, the Swift Package Manager is the recommended and simplest way to install the Tealium Swift library:</p>
+
+<ol>
+<li>In your Xcode project, select <strong>File &gt; Add Packages&hellip; &gt; Add Package Dependency</strong></li>
+<li>Enter the repository URL: <code>https://github.com/tealium/tealium-swift</code></li>
+<li>Configure the version rules. Typically, <code>Up to next major</code> is recommended. If the current Tealium Swift library version does not appear in the list, then reset your Swift package cache.</li>
+<li>Select the modules to install, and select the app target you want the modules to be installed in.</li>
+</ol>
+
+<p>If your project has more than one app target and needs Tealium Swift libraries in more app targets, you have to manually add them in the <strong>Frameworks, Libraries, and Embedded Content</strong> section.</p>
+
+<p>To install Tealium Swift libraries in additional app targets:</p>
+
+<ol>
+<li>Select your Xcode project in the <strong>Project Navigator</strong>.</li>
+<li>In your Xcode project, select the app target under the <strong>TARGETS</strong> section.</li>
+<li>Navigate to <strong>General &gt; Frameworks, Libraries &amp; Embedded Content</strong> and  select a Tealium Swift library to add it to your app target.</li>
+</ol>
+
+<p>The Swift Package Manager has the following limitations:</p>
+
+<ul>
+<li>Due to lack of mixed-language source in a single target, the <a href="/platforms/ios-swift/module-list/crash-reporter/"><code>CrashReporter</code></a> and <a href="/platforms/ios-swift/module-list/autotracking/"><code>AutoTracking</code></a> modules are not supported through the Swift Package Manager. Verify that you do not need these modules before using Swift Package Manager.</li>
+<li>Restricting a target within a package to a specific platform is not possible. Modules such as <a href="/platforms/ios-swift/module-list/tag-management/"><code>TagManagement</code></a>, which are only supported for iOS, also become available to non-iOS targets. Adding one of these modules to an non-iOS target causes the compiler throws errors due to unavailable system libraries.</li>
+</ul>
+
+<h3 id="cocoapods">CocoaPods</h3>
+
+<p>To install the Tealium for iOS library with CocoaPods (recommended):</p>
+
+<ol>
+<li><p>Add the Tealium Swift pod <code>&quot;tealium-swift&quot;</code> to your Podfile. It has a subspec for each module, each of which depends on the &ldquo;Core&rdquo; module. If you do not specify any subspecs, all modules are installed by default.</p>
+
+<pre><code class="language-ruby"># Uncomment the next line to define a global platform for your project
+platform :ios, '9.0'
+
+target 'CPodTest' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for CPodTest
+
+  # new entry for Tealium pod
+  pod 'tealium-swift' # all modules
+  # pod 'tealium-swift/TealiumTagManagement' # to install individual modules only, use subspecs
+end
+</code></pre></li>
+
+<li><p>Once you have added your desired modules, run the following command:</p>
+
+<pre><code class="language-ruby">pod install
+</code></pre>
+
+<p class="note"><i class="fas fa-info-circle"></i>If the command doesn&rsquo;t find the correct Pods, try running the command <code>pod repo update</code>.</p></li>
+
+<li><p>Open your Xcode project using the <code>.xcworkspace</code> file (Do not use the <code>.xcodeproj</code> file).</p></li>
+
+<li><p>To import any number of modules, add the following import statement in the file you plan to instantiate Tealium from:</p>
+
+<pre><code class="language-swift">import TealiumSwift
+</code></pre></li>
+</ol>
+
+<h4 id="recommended-podfile">Recommended Podfile</h4>
+
+<p>The following is the recommended Podfile:</p>
+
+<p class="tip"><i class="fas fa-star"></i>To disable specific modules from the Podfile, comment them out in the Podfile with <code>#</code>.</p>
+
+<pre><code class="language-ruby"># Podfile
+# replace CPodTest with your target
+target 'CPodTest' do
+    # Comment the next line if you're not using Swift and don't
+    # want to use dynamic frameworks
+    use_frameworks!
+
+    # Pods for CPodTest
+    # *** Recommended minimum:
+    # Only disable if you're sure you don't need them.  ***
+
+    # All pods depend on Core. Supports all platforms.
+    pod &quot;tealium-swift/Core&quot;
+    # All platforms. Provides important info about
+    # the app bundle.
+    pod &quot;tealium-swift/TealiumAppData&quot;
+    # All platforms. Sends data to Tealium Customer Data Hub.
+    pod &quot;tealium-swift/TealiumCollect&quot;
+    # All platforms. Assists with GDPR/privacy compliance.
+    pod &quot;tealium-swift/TealiumConsentManager&quot;
+    # iOS, macOS, tvOS only. Detects connectivity state and queues track calls while offline.
+    # Should be used in conjunction with TealiumDispatchQueue module.
+    pod &quot;tealium-swift/TealiumConnectivity&quot;
+
+    # DataSource is included in the Core for Swift 1.8.0+. Uncomment for prior versions.
+    # All platforms. Adds &quot;tealium_datasource&quot; to each dispatch, and extends TealiumConfig class.
+    # pod &quot;tealium-swift/TealiumDataSource&quot;
+
+    # FileStorage is included in the Core for Swift 1.8.0+. Uncomment for prior versions.
+    # All platforms. Stores persistent data to File Storage.
+    # Bundles PersistentData module.
+    # Should not be used if DefaultsStorage module is in use.
+    # Pick the option that best suits you.
+    # pod &quot;tealium-swift/TealiumFileStorage&quot;
+
+    # All platforms. Enables the use of delegates
+    # and completion handlers on the Tealium class.
+    pod &quot;tealium-swift/TealiumDelegate&quot;
+    # All platforms. Adds device information to each dispatch.
+    pod &quot;tealium-swift/TealiumDeviceData&quot;
+    # All platforms. Enables offline storage of queued events.
+    # (required for Consent, Connectivity).
+    pod &quot;tealium-swift/TealiumDispatchQueue&quot;
+    # All platforms. Add app lifecycle information to each dispatch.
+    pod &quot;tealium-swift/TealiumLifecycle&quot;
+    # All platforms. Enables logging information to the LLDB console.
+    pod &quot;tealium-swift/TealiumLogger&quot;
+    # iOS only. Used with the TagManagement module to trigger Remote Commands
+    pod &quot;tealium-swift/TealiumRemoteCommands&quot;
+    # iOS only. Enables Tealium iQ Tag Management.
+    pod &quot;tealium-swift/TealiumTagManagement&quot;
+    # All platforms. Adds important data to each dispatch, and enables temporary storage of data for the current session.
+    pod &quot;tealium-swift/TealiumVolatileData&quot;
+
+    # *** Optional modules: You may not need these modules. Enable as required.   *** #
+
+    # iOS Only. Gathers app attribution data and advertising IDs.
+    # pod &quot;tealium-swift/TealiumAttribution&quot;
+
+    # iOS and tvOS only. Generally not recommended. See separate notes in module documentation.
+    # pod &quot;tealium-swift/TealiumAutotracking&quot;
+
+    # DefaultStorage is included in the Core for Swift 1.8.0+. Uncomment for prior versions.
+    # All platforms. Stores persistent data to UserDefaults. Bundles PersistentData module. Should not be used if FileStorage module is in use.
+    # pod &quot;tealium-swift/TealiumDefaultsStorage&quot;
+
+    # iOS only. Reports detailed crash information. Installs separate TealiumCrashReporter dependency (based on PLCrashReporter).
+    # pod &quot;tealium-swift/Crash&quot;
+end
+</code></pre>
+
+<h4 id="full-podfile">Full Podfile</h4>
+
+<p>The full Podfile imports the entire Tealium for iOS (Swift), including all modules specified as optional:</p>
+
+<pre><code class="language-ruby"># Uncomment the next line to define a global platform for your project
+platform :ios, '9.0'
+
+target 'CPodTest' do
+    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
+
+    # Pods for CPodTest
+
+    # new entry for Tealium pod
+    pod 'tealium-swift'
+end
+</code></pre>
+
+<p>To disable specific modules, see the <code>TealiumModulesList</code> struct and relevant methods to blacklist the modules in the <a href="/platforms/ios-swift/api/tealium-config/"><code>TealiumConfig</code></a> class.</p>
+
+<h3 id="carthage">Carthage</h3>
+
+<p>To install Tealium for iOS (Swift) with Carthage:</p>
+
+<ol>
+<li><p>Add the following to your Cartfile:</p>
+
+<pre><code class="language-ruby">github &quot;tealium/tealium-swift&quot;
+</code></pre></li>
+
+<li><p>To produce frameworks for iOS, macOS, tvOS and watchOS, run the following command:</p>
+
+<pre><code class="language-ruby">carthage update
+</code></pre></li>
+
+<li><p>To build only for a particular platform, such as iOS, and to speed up subsequent builds after the initial build, use Carthage&rsquo;s <code>--platform</code> argument:</p>
+
+<pre><code class="language-ruby">carthage update --platform ios --cache-builds
+</code></pre></li>
+
+<li><p>Drag the frameworks you require into your Xcode project&rsquo;s <strong>General &gt; Embedded Binaries</strong> section.<br />
+<p class="note"><i class="fas fa-info-circle"></i>Verify that the Tealium frameworks have been added to the Embedded Binaries section in your project settings, otherwise your app crashes at launch.</p></p></li>
+
+<li><p>Follow the instructions listed in the Carthage <a href="https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos">Getting Started</a> documentation to add the relevant build phases scripts, to ensure you don&rsquo;t run into any issues when submitting your app.</p></li>
+</ol>
+
+<h4 id="about-modules-1-6-5">About Modules (1.6.5+)</h4>
+
+<p>As of version 1.6.5, the Tealium Swift SDK has been split up into separate modules/frameworks. This means you need only import the specific frameworks for the modules you need to use, which helps to reduce the binary size and, ultimately, increase your app&rsquo;s performance.</p>
+
+<p><strong>Module import statements</strong></p>
+
+<pre><code class="language-swift">import TealiumCore              // required for Tealium, TealiumConfig, TealiumInstanceManager
+import TealiumVolatileData      // required if you wish to store volatile data through the Volatile Data API
+//import TealiumFileStorage     // Included in TealiumCore for Swift 1.8.0+. Import for prior versions.
+//import TealiumDefaultsStorage // Included in TealiumCore for Swift 1.8.0+. Import for prior versions if you need to store persistent data
+import TealiumRemoteCommands    // required if you need to interact with the Remote Commands API
+import TealiumDelegate          // required if you need to set up a tracking delegate
+//import TealiumDataSource      // Included in TealiumCore for Swift 1.8.0+. Import for prior versions to
+                                //     allow datasource param to be set on the TealiumConfig class instance
+import TealiumLifecycle         // only required if you need to manually call the Lifecycle API
+</code></pre>
+
+<p>Due to Carthage limitations, we had to choose between the convenience of importing the entire SDK, and the flexibility and performance gains of a fully modular install. The downside to this is that it&rsquo;s now necessary to add each module you wish to use individually.</p>
+
+<ul>
+<li>Carthage builds <em>all</em> the modules and output the resulting <code>.framework</code> files into your Carthage build directory.</li>
+<li>Delete any modules you don&rsquo;t need, and drag the modules that you do need into Xcode.</li>
+</ul>
+
+<p>See <a href="/platforms/ios-swift/modules/">Modules</a> for further details on recommended module lists.</p>
+
+<h2 id="initialize">Initialize</h2>
+
+<p>It is recommended to manage the initialization of the <a href="/platforms/ios-swift/api/tealium/#class-tealium"><code>Tealium</code></a> class. This provides a single point of entry for the Tealium iOS library, and simplifies future upgrades.</p>
+
+<p>To initialize Tealium, pass a <a href="/platforms/ios-swift/api/tealium-config/"><code>TealiumConfig</code></a> instance to the <a href="/platforms/ios-swift/api/tealium/#tealium"><code>Tealium()</code></a> constructor, as shown in the following example:</p>
+
+<pre><code class="language-swift">class TealiumHelper {
+
+static let shared = TealiumHelper()
+var tealium: Tealium?
+
+	private init() {
+		initTealium()
+	}
+
+	private func initTealium() {
+		let config = TealiumConfig(account: &quot;ACCOUNT&quot;,
+   	       		                   profile: &quot;PROFILE&quot;,
+        	   	                   environment: &quot;ENVIRONMENT&quot;,
+           		                   datasource: &quot;DATASOURCE&quot;)
+		// add config options as required
+		config.setLogLevel(.verbose)
+		// initialize and keep a reference to Tealium
+		tealium = Tealium(config: config) { moduleResponses in
+		    // Completion block; perform post-init tasks here
+		}
+	}
+}
+</code></pre>
+
+<p class="note"><i class="fas fa-info-circle"></i>In version 1.9.0+, Mobile Publish Settings are enabled by default, and must be disabled if you don’t wish to use them. Configure the Mobile Publish Settings in iQ Tag Management, or disable it using <code>config.shouldUseRemotePublishSettings = false</code>.</p>
+
+<h2 id="log-level">Log Level</h2>
+
+<p>To set a log level, call the <a href="/platforms/ios-swift/api/tealium-config/#setloglevel"><code>setLogLevel()</code></a> method on your <code>TealiumConfig</code> instance with one of the following values:</p>
+
+<ul>
+<li><code>none</code></li>
+<li><code>.errors</code></li>
+<li><code>.warnings</code></li>
+<li><code>.verbose</code></li>
+</ul>
+
+<p>For debugging purposes, <code>.verbose</code> is recommended, as shown in the following example:</p>
+
+<pre><code class="language-swift">config.setLogLevel(.verbose)
+</code></pre>
+
+<h2 id="event-batching">Event Batching</h2>
+
+<p>Prior to version 1.9.0, the Tealium Swift library did not use <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">Mobile Publish Settings</a>. Therefore, event batching must be enabled and configured when the SDK is initialized. Version 1.9.0+ provides Mobile Publish Settings support, allowing event batching to be configured remotely.</p>
+
+<p>This example enables event batching and sets the batch size and queue size.</p>
+
+<pre><code class="language-swift">import TealiumDispatchQueue // required for event batching options
+class TealiumHelper {
+	var tealium: Tealium?
+	// ...
+
+	private func initTealium() {
+		let config = TealiumConfig(account: &quot;ACCOUNT&quot;,
+ 	       		                   profile: &quot;PROFILE&quot;,
+                               environment: &quot;ENVIRONMENT&quot;,
+                               datasource: &quot;DATASOURCE&quot;)
+		config.batchingEnabled = true            // enable batching
+		config.batchSize = 10                    // size of batch
+		config.dispatchAfter = 25                // flush after every 25 events
+		config.dispatchQueueLimit = 100          // 100 max queued events
+		config.dispatchExpiration = 5            // events expire/delete after 5 days
+		// ...
+	}
+}
+</code></pre>
+
+<p>The following options are available to customize event batching.</p>
+
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="/platforms/ios-swift/api/tealium-config/#batchingenabled"><code>batchingEnabled</code></a></td>
+<td>Enables or disables event batching (default: <code>false</code>).</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/api/tealium-config/#batchsize"><code>batchSize</code></a></td>
+<td>Sets the amount of events to combine into a single batch request (max: 10).</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/api/tealium-config/#dispatchafter"><code>dispatchAfter</code></a></td>
+<td>Sets the number of events after which the queue will be flushed.</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/api/tealium-config/#dispatchexpiration"><code>dispatchExpiration</code></a></td>
+<td>Sets the batch expiration in days. If the device is offline for an extended period, events older than this will be deleted.</td>
+</tr>
+
+<tr>
+<td><a href="/platforms/ios-swift/api/tealium-config/#dispatchqueuelimit"><code>dispatchQueueLimit</code></a></td>
+<td>Sets the maximum number of queued events. If this number is reached, and the queue has not been flushed, the oldest events will be deleted.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="tag-management">Tag Management</h3>
+
+<p>With Tag Management and event batching enabled, tracking calls are dispatched as individual JavaScript calls to the hidden webview.</p>
+
+<p>Configured tags are triggered individually, resulting in multiple requests per event leaving the device. This improves device performance by waking up the device less frequently than sending real-time events.</p>
+
+<h3 id="tealium-collect">Tealium Collect</h3>
+
+<p>This endpoint currently only accepts batch data generated by the Tealium SDK, in a proprietary batch format.</p>
+
+</div>
+
+<div class="pv3">
+
+	<div class="fr">
+
+		
+		<a href="/platforms/ios-swift-v1/track/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Track</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Track"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  March 7, 2022 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  May 13, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#requirements">Requirements</a></li>
+              <li><a href="#sample-apps">Sample Apps</a></li>
+              <li><a href="#install">Install</a></li>
+              <ul class="toc-h3"><li><a href="#swift-package-manager-recommended">Swift Package Manager (Recommended)</a></li>
+              <li><a href="#cocoapods">CocoaPods</a></li>
+              <li><a href="#carthage">Carthage</a></li>
+              </ul><li><a href="#initialize">Initialize</a></li>
+              <li><a href="#log-level">Log Level</a></li>
+              <li><a href="#event-batching">Event Batching</a></li>
+              <ul class="toc-h3"><li><a href="#tag-management">Tag Management</a></li>
+              <li><a href="#tealium-collect">Tealium Collect</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

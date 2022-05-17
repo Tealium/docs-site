@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,289 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#how-it-works">How It Works</a></li>
-              <ul class="toc-h3"><li><a href="#annotations">Annotations</a></li>
-              <li><a href="#full-tracking">Full Tracking</a></li>
-              <li><a href="#partial-tracking">Partial Tracking</a></li>
-              <li><a href="#block-list">Block List</a></li>
-              </ul><li><a href="#install">Install</a></li>
-              <ul class="toc-h3"><li><a href="#maven">Maven</a></li>
-              <li><a href="#manual">Manual</a></li>
-              </ul><li><a href="#initialize">Initialize</a></li>
-              <li><a href="#data-layer">Data Layer</a></li>
-              <ul class="toc-h3"><li><a href="#custom-data">Custom Data</a></li>
-              </ul><li><a href="#api-reference">API Reference</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/android-kotlin/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        ANDROID KOTLIN/MODULE LIST
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">AutoTracking Module</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Track screen views automatically.
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<p>The AutoTracking module adds automatic tracking of common events to your app, without writing additional code in your app.</p>
-
-<h2 id="how-it-works">How It Works</h2>
-
-<p>Add automatic tracking to your app by including the AutoTracking module in your build and initialization. The module has several options to control which screens are tracked and how they are named.</p>
-
-<p>The Autotracking module has two modes of tracking:</p>
-
-<ul>
-<li><strong>Full Tracking</strong><br />
-Tracks all screen views automatically, with the option to omit screens or override the screen names.</li>
-<li><strong>Partial Tracking</strong><br />
-Tracks only the activities that are annotated, with the option to override the screen names.</li>
-</ul>
-
-<h3 id="annotations">Annotations</h3>
-
-<p>Use the following annotations to adjust the behavior of the module:</p>
-
-<ul>
-<li><p><strong>Override event name</strong><br />
-Use this annotation to override the default screen name.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">@Autotracked(name = <span style="color:#a31515">&#34;MyCustomName&#34;</span>)
-<span style="color:#00f">private</span> <span style="color:#00f">class</span> <span style="color:#2b91af">AnnotatedActivityWithOverride</span> : Activity()</code></pre></div></li>
-
-<li><p><strong>Include in tracking</strong><br />
-In partial tracking mode, use this annotation to track specific activities.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">@Autotracked()
-<span style="color:#00f">private</span> <span style="color:#00f">class</span> <span style="color:#2b91af">AnnotatedActivity</span> : Activity()</code></pre></div></li>
-
-<li><p><strong>Omit from tracking</strong><br />
-In full tracking mode, use this annotation to omit activities from being tracked automatically.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">@Autotracked(track = <span style="color:#00f">false</span>)
-<span style="color:#00f">private</span> <span style="color:#00f">class</span> <span style="color:#2b91af">AnnotatedActivityWithoutTracking</span> : Activity()</code></pre></div></li>
-</ul>
-
-<h3 id="full-tracking">Full Tracking</h3>
-
-<p>The full tracking mode uses <code>Application.ActivityLifecycleCallbacks</code> to determine when a new activity comes into focus and then triggers a <code>TealiumView</code> event. In the event, <code>tealium_event</code> is set to the class name, but with &ldquo;Activity&rdquo; trimmed from the name.</p>
-
-<p>Use annotations to override the screen name or to prevent activities from being tracked.</p>
-
-<p>Learn more from <a href="https://developer.android.com/guide/components/activities/activity-lifecycle">Android Developers: The Activity Lifecycle</a>.</p>
-
-<h3 id="partial-tracking">Partial Tracking</h3>
-
-<p>The partial tracking mode relies on Annotations to determine which activities to track. Use annotations to specify which activities to track or to override the screen name.</p>
-
-<h3 id="block-list">Block List</h3>
-
-<p>The block list is a JSON file that contains a single array of strings. The strings represent activities to omit from automatic tracking. If a string in the block list appears anywhere in the activity name, it will not be tracked. The string comparisons are case-insensitive.</p>
-
-<p>For example, if you don&rsquo;t want to track activities that contain the strings &ldquo;Settings&rdquo; or &ldquo;Profile&rdquo;, then the block list could contain:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">[
-  <span style="color:#a31515">&#34;settings&#34;</span>, <span style="color:#a31515">&#34;profile&#34;</span>
-]</code></pre></div>
-<p>The block list file can be stored locally in the <code>assets</code> directory of your app or hosted remotely as a URL.</p>
-
-<p>Use the one of the following <code>TealiumConfig</code> properties to use a block list:</p>
-
-<ul>
-<li><a href="/platforms/android-kotlin/api/tealium-config/#autotrackingblocklistfilename"><code>autoTrackingBlocklistFilename</code></a></li>
-<li><a href="/platforms/android-kotlin/api/tealium-config/#autotrackingblocklisturl"><code>autoTrackingBlocklistUrl</code></a></li>
-</ul>
-
-<h2 id="install">Install</h2>
-
-<p>Install the module with Maven (recommended) or manually.</p>
-
-<h3 id="maven">Maven</h3>
-
-<p>To install the AutoTracking Tracking module using Maven:</p>
-
-<ol>
-<li><p>In your project&rsquo;s top-level <code>build.gradle</code> file, add the following Maven repository:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">allprojects {
- repositories {
-   jcenter()
-   maven {
-       url <span style="color:#a31515">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
-   }
- }
-}</code></pre></div></li>
-
-<li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the following Maven dependency:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
- implementation <span style="color:#a31515">&#39;com.tealium:kotlin-core:1.3.0&#39;</span>
- implementation <span style="color:#a31515">&#39;com.tealium:kotlin-autotracking:1.0.0&#39;</span>
-}</code></pre></div></li>
-</ol>
-
-<h3 id="manual">Manual</h3>
-
-<p>To install the AutoTracking module manually, following these steps:</p>
-
-<ol>
-<li><p>Download the Tealium <a href="https://github.com/Tealium/tealium-kotlin/tree/master/autotracking/">AutoTracking Module</a> module.</p></li>
-
-<li><p>Copy the file <code>tealium-kotlin.autotracking-1.0.0.aar</code> into your project&rsquo;s <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> directory.</p></li>
-
-<li><p>Add the Tealium library dependency to your project module’s <code>build.gradle</code> file:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">dependencies {
-  implementation(name:<span style="color:#a31515">&#39;tealium-kotlin.autotracking-1.0.0&#39;</span>, ext:<span style="color:#a31515">&#39;aar&#39;</span>)
-}</code></pre></div></li>
-</ol>
-
-<h2 id="initialize">Initialize</h2>
-
-<p>To initialize the AutoTracking module, add it to the list of modules in <code>TealiumConfig</code> and set the tracking mode.</p>
-
-<p>Example of initializing the AutoTracking module:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">val</span> config = TealiumConfig(application,
-              <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
-              <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-              ENVIRONMENT,
-              modules = mutableSetOf(Modules.AutoTracking)
-              ).apply {
-                autoTrackingMode = AutoTrackingMode.ANNOTATED
-              }</code></pre></div>
-<p>See <a href="/platforms/android-kotlin/api/tealium-config/#autotrackingmode"><code>TealiumConfig.autoTrackingMode</code></a> for more options.</p>
-
-<h2 id="data-layer">Data Layer</h2>
-
-<p>The following variables are included with each tracking call that is triggered by this module:</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Variable Name</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>autotracked</code></td>
-<td align="left"><code>String</code></td>
-<td align="left">Set for all events tracked by the Autotracking module.</td>
-<td align="left"><code>true</code></td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="custom-data">Custom Data</h3>
-
-<p>By default, the automatically tracked events do not include any context variables. To add context data to an event from the AutoTracking module, use the global delegate set in the <code>TealiumConfig</code> to return a map of the custom data object for each tracked activity. This executes for every event tracked by the module.</p>
-
-<p>To set the delegate:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin">config.autoTrackingCollectorDelegate = <span style="color:#00f">object</span>: ActivityDataCollector {
-    <span style="color:#00f">override</span> <span style="color:#00f">fun</span> onCollectActivityData(activityName: String): Map&lt;String, Any&gt;? {
-        <span style="color:#00f">when</span> (activityName) {
-            <span style="color:#a31515">&#34;some_activity&#34;</span> -&gt; <span style="color:#00f">return</span> mapOf(<span style="color:#a31515">&#34;some_key&#34;</span> to <span style="color:#a31515">&#34;some_value&#34;</span>)
-            <span style="color:#00f">else</span> -&gt; <span style="color:#00f">return</span> <span style="color:#00f">null</span>
-        }
-    }
-}</code></pre></div>
-<p>Alternatively, to add context data to a specific activity, make your <code>Activity</code> implement the same <code>ActivityDataCollector</code> interface.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#00f">class</span> <span style="color:#2b91af">ActivityWithDataCollector</span> : Activity(), ActivityDataCollector {
-    <span style="color:#00f">override</span> <span style="color:#00f">fun</span> onCollectActivityData(activityName: String): Map&lt;String, Any&gt;? {
-        <span style="color:#00f">return</span> mapOf(<span style="color:#a31515">&#34;some_key&#34;</span> to <span style="color:#a31515">&#34;some_value&#34;</span>)
-    }
-}</code></pre></div>
-<p>Both delegates are executed for each tracked activity, so add common data at the global level, and add specific data using the <code>onCollectActivityData</code> method.</p>
-
-<h2 id="api-reference">API Reference</h2>
-
-<ul>
-<li><a href="/platforms/android-kotlin/api/tealium-config/"><code>TealiumConfig</code></a></li>
-</ul>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/android-kotlin/module-list/adid/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Ad Identifier Module "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Ad Identifier Module</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/android-kotlin/module-list/adobe-visitor-service/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>AdobeVisitorService Module</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"AdobeVisitorService Module"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7747,33 +7472,337 @@ In full tracking mode, use this annotation to omit activities from being tracked
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/android-kotlin/module-list/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        ANDROID KOTLIN/MODULE LIST
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">AutoTracking Module</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Track screen views automatically.
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<p>The AutoTracking module adds automatic tracking of common events to your app, without writing additional code in your app.</p>
+
+<h2 id="how-it-works">How It Works</h2>
+
+<p>Add automatic tracking to your app by including the AutoTracking module in your build and initialization. The module has several options to control which screens are tracked and how they are named.</p>
+
+<p>The Autotracking module has two modes of tracking:</p>
+
+<ul>
+<li><strong>Full Tracking</strong><br />
+Tracks all screen views automatically, with the option to omit screens or override the screen names.</li>
+<li><strong>Partial Tracking</strong><br />
+Tracks only the activities that are annotated, with the option to override the screen names.</li>
+</ul>
+
+<h3 id="annotations">Annotations</h3>
+
+<p>Use the following annotations to adjust the behavior of the module:</p>
+
+<ul>
+<li><p><strong>Override event name</strong><br />
+Use this annotation to override the default screen name.</p>
+
+<pre><code class="language-kotlin">@Autotracked(name = &quot;MyCustomName&quot;)
+private class AnnotatedActivityWithOverride : Activity()
+</code></pre></li>
+
+<li><p><strong>Include in tracking</strong><br />
+In partial tracking mode, use this annotation to track specific activities.</p>
+
+<pre><code class="language-kotlin">@Autotracked()
+private class AnnotatedActivity : Activity()
+</code></pre></li>
+
+<li><p><strong>Omit from tracking</strong><br />
+In full tracking mode, use this annotation to omit activities from being tracked automatically.</p>
+
+<pre><code class="language-kotlin">@Autotracked(track = false)
+private class AnnotatedActivityWithoutTracking : Activity()
+</code></pre></li>
+</ul>
+
+<h3 id="full-tracking">Full Tracking</h3>
+
+<p>The full tracking mode uses <code>Application.ActivityLifecycleCallbacks</code> to determine when a new activity comes into focus and then triggers a <code>TealiumView</code> event. In the event, <code>tealium_event</code> is set to the class name, but with &ldquo;Activity&rdquo; trimmed from the name.</p>
+
+<p>Use annotations to override the screen name or to prevent activities from being tracked.</p>
+
+<p>Learn more from <a href="https://developer.android.com/guide/components/activities/activity-lifecycle">Android Developers: The Activity Lifecycle</a>.</p>
+
+<h3 id="partial-tracking">Partial Tracking</h3>
+
+<p>The partial tracking mode relies on Annotations to determine which activities to track. Use annotations to specify which activities to track or to override the screen name.</p>
+
+<h3 id="block-list">Block List</h3>
+
+<p>The block list is a JSON file that contains a single array of strings. The strings represent activities to omit from automatic tracking. If a string in the block list appears anywhere in the activity name, it will not be tracked. The string comparisons are case-insensitive.</p>
+
+<p>For example, if you don&rsquo;t want to track activities that contain the strings &ldquo;Settings&rdquo; or &ldquo;Profile&rdquo;, then the block list could contain:</p>
+
+<pre><code class="language-json">[
+  &quot;settings&quot;, &quot;profile&quot;
+]
+</code></pre>
+
+<p>The block list file can be stored locally in the <code>assets</code> directory of your app or hosted remotely as a URL.</p>
+
+<p>Use the one of the following <code>TealiumConfig</code> properties to use a block list:</p>
+
+<ul>
+<li><a href="/platforms/android-kotlin/api/tealium-config/#autotrackingblocklistfilename"><code>autoTrackingBlocklistFilename</code></a></li>
+<li><a href="/platforms/android-kotlin/api/tealium-config/#autotrackingblocklisturl"><code>autoTrackingBlocklistUrl</code></a></li>
+</ul>
+
+<h2 id="install">Install</h2>
+
+<p>Install the module with Maven (recommended) or manually.</p>
+
+<h3 id="maven">Maven</h3>
+
+<p>To install the AutoTracking Tracking module using Maven:</p>
+
+<ol>
+<li><p>In your project&rsquo;s top-level <code>build.gradle</code> file, add the following Maven repository:</p>
+
+<pre><code class="language-groovy">allprojects {
+ repositories {
+   jcenter()
+   maven {
+       url &quot;https://maven.tealiumiq.com/android/releases/&quot;
+   }
+ }
+}
+</code></pre></li>
+
+<li><p>In your project module&rsquo;s <code>build.gradle</code> file, add the following Maven dependency:</p>
+
+<pre><code class="language-groovy">dependencies {
+ implementation 'com.tealium:kotlin-core:1.3.0'
+ implementation 'com.tealium:kotlin-autotracking:1.0.0'
+}
+</code></pre></li>
+</ol>
+
+<h3 id="manual">Manual</h3>
+
+<p>To install the AutoTracking module manually, following these steps:</p>
+
+<ol>
+<li><p>Download the Tealium <a href="https://github.com/Tealium/tealium-kotlin/tree/master/autotracking/">AutoTracking Module</a> module.</p></li>
+
+<li><p>Copy the file <code>tealium-kotlin.autotracking-1.0.0.aar</code> into your project&rsquo;s <code>&lt;PROJECT_ROOT&gt;/&lt;MODULE&gt;/libs</code> directory.</p></li>
+
+<li><p>Add the Tealium library dependency to your project module’s <code>build.gradle</code> file:</p>
+
+<pre><code class="language-groovy">dependencies {
+  implementation(name:'tealium-kotlin.autotracking-1.0.0', ext:'aar')
+}
+</code></pre></li>
+</ol>
+
+<h2 id="initialize">Initialize</h2>
+
+<p>To initialize the AutoTracking module, add it to the list of modules in <code>TealiumConfig</code> and set the tracking mode.</p>
+
+<p>Example of initializing the AutoTracking module:</p>
+
+<pre><code class="language-kotlin">val config = TealiumConfig(application,
+              &quot;ACCOUNT&quot;,
+              &quot;PROFILE&quot;,
+              ENVIRONMENT,
+              modules = mutableSetOf(Modules.AutoTracking)
+              ).apply {
+                autoTrackingMode = AutoTrackingMode.ANNOTATED
+              }
+</code></pre>
+
+<p>See <a href="/platforms/android-kotlin/api/tealium-config/#autotrackingmode"><code>TealiumConfig.autoTrackingMode</code></a> for more options.</p>
+
+<h2 id="data-layer">Data Layer</h2>
+
+<p>The following variables are included with each tracking call that is triggered by this module:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Variable Name</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>autotracked</code></td>
+<td align="left"><code>String</code></td>
+<td align="left">Set for all events tracked by the Autotracking module.</td>
+<td align="left"><code>true</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="custom-data">Custom Data</h3>
+
+<p>By default, the automatically tracked events do not include any context variables. To add context data to an event from the AutoTracking module, use the global delegate set in the <code>TealiumConfig</code> to return a map of the custom data object for each tracked activity. This executes for every event tracked by the module.</p>
+
+<p>To set the delegate:</p>
+
+<pre><code class="language-kotlin">config.autoTrackingCollectorDelegate = object: ActivityDataCollector {
+    override fun onCollectActivityData(activityName: String): Map&lt;String, Any&gt;? {
+        when (activityName) {
+            &quot;some_activity&quot; -&gt; return mapOf(&quot;some_key&quot; to &quot;some_value&quot;)
+            else -&gt; return null
+        }
+    }
+}
+</code></pre>
+
+<p>Alternatively, to add context data to a specific activity, make your <code>Activity</code> implement the same <code>ActivityDataCollector</code> interface.</p>
+
+<pre><code class="language-kotlin">class ActivityWithDataCollector : Activity(), ActivityDataCollector {
+    override fun onCollectActivityData(activityName: String): Map&lt;String, Any&gt;? {
+        return mapOf(&quot;some_key&quot; to &quot;some_value&quot;)
+    }
+}
+</code></pre>
+
+<p>Both delegates are executed for each tracked activity, so add common data at the global level, and add specific data using the <code>onCollectActivityData</code> method.</p>
+
+<h2 id="api-reference">API Reference</h2>
+
+<ul>
+<li><a href="/platforms/android-kotlin/api/tealium-config/"><code>TealiumConfig</code></a></li>
+</ul>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/android-kotlin/module-list/adid/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Ad Identifier Module "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Ad Identifier Module</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/android-kotlin/module-list/adobe-visitor-service/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>AdobeVisitorService Module</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"AdobeVisitorService Module"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  December 14, 2021 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  December 14, 2021 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#how-it-works">How It Works</a></li>
+              <ul class="toc-h3"><li><a href="#annotations">Annotations</a></li>
+              <li><a href="#full-tracking">Full Tracking</a></li>
+              <li><a href="#partial-tracking">Partial Tracking</a></li>
+              <li><a href="#block-list">Block List</a></li>
+              </ul><li><a href="#install">Install</a></li>
+              <ul class="toc-h3"><li><a href="#maven">Maven</a></li>
+              <li><a href="#manual">Manual</a></li>
+              </ul><li><a href="#initialize">Initialize</a></li>
+              <li><a href="#data-layer">Data Layer</a></li>
+              <ul class="toc-h3"><li><a href="#custom-data">Custom Data</a></li>
+              </ul><li><a href="#api-reference">API Reference</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 

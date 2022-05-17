@@ -42,9 +42,9 @@ var utag_data = {
       
 
     
-<nav class="bg-primary-color-dark pv2 w-100 sticky-t" role="navigation">
+<nav class="bg-primary-color-dark pv3 w-100 sticky-t" role="navigation">
 
-  <div class="center flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
 
     <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="https://docs.tealium.com/"><img src="/images/icons/tealdevdocs_logo_white.svg" width="180" height="41"/></a>
@@ -237,292 +237,14 @@ var utag_data = {
 </nav>
 
     
-    <main role="main" class="content-with-sidebar pb7 pb0-ns">
+    <main role="main" class="content-with-sidebar pb0-ns">
       
-  <article class="w-100 ph4 pb2 pb2-ns pt1 pt4-ns">
-    <div class="flex-l">
-
-      <div class="order-2 w-100 w-20-l ph4-m ph0-l mb4 sticky-r">
-
-
-
-
-  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
-      <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#usage">Usage</a></li>
-              <li><a href="#sample-app">Sample App</a></li>
-              <li><a href="#disable">Disable</a></li>
-              <li><a href="#data-layer">Data Layer</a></li>
-              <li><a href="#examples">Examples</a></li>
-              <li><a href="#use-cases">Use Cases</a></li>
-              <ul class="toc-h3"><li><a href="#simple-opt-in">Simple Opt-in</a></li>
-              <li><a href="#grouped-opt-in">Grouped Opt-in</a></li>
-              <li><a href="#category-based-opt-in">Category-based Opt-in</a></li>
-              </nav>
-  </aside></div>
-
-      <div class="order-1 ph0 ph4-ns mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns" style="flex-grow:1;">
-        <div class="documentation-copy center measure-wide-l">
-          <div id="readout" class="fixed right-0 bottom-0">
-          </div>
-          <header class="flex-none w-100">
-
-  
+  <article class="w-100 ph0-l ph4 pr4">
     
-      <a href="/platforms/ios-swift-v1/" class="f6 fw8 mb0 link mid-gray dim mr3">
-        IOS SWIFT V1
-      </a>
-    
-  
+    <div class="flex">
+      
 
-  
-
-  <h1 class="lh-title mb3 mv0 pt3">Consent Management</h1>
-</header>
-
-<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
-  
-    <div class="f4 fw4 lh-copy mb4">
-      Learn how to implement Consent Management for iOS (Swift).
-    </div>
-  
-
-  
-</aside>
-
-
-
-
-<div class="prose" id="prose">
-  
-
-<h2 id="usage">Usage</h2>
-
-<p>The Consent Management module provides a simple API to help manage tracking consent at a granular level. If you have included the CocoaPods dependency or Carthage framework, Consent Management is enabled by default, and no tracking calls are sent until you explicitly notify the API that the user has consented to tracking.</p>
-
-<p>Usage of this module is recommended, as it is automatically included and enabled in Carthage and CocoaPods framework builds. The Foundation framework is an external dependency.</p>
-
-<p>Supported platforms include: iOS, macOS, tvOS, and watchOS.</p>
-
-<p><a href="/platforms/getting-started/consent-management/">Learn more</a> about Consent Management.</p>
-
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/68rF6Qo5DOw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
-
-<h2 id="sample-app">Sample App</h2>
-
-<p>To help to familiarize yourself with our library, tracking methods, and best practice implementation, explore the Tealium for Swift Consent Manager <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/ConsentManagerDemo">sample app</a>.</p>
-
-<h2 id="disable">Disable</h2>
-
-<p>To disable Consent Management, include it in the list of disabled modules on the <a href="/platforms/ios-swift/api/">TealiumConfig</a> object at initialization time.</p>
-
-<h2 id="data-layer">Data Layer</h2>
-
-<p>The following variables are transmitted with each tracking call while the module is enabled:</p>
-
-<table>
-<thead>
-<tr>
-<th>Variable Name</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>policy</code></td>
-<td>The policy under which consent was collected (default: <code>gdpr</code>)</td>
-<td><code>gdpr</code></td>
-</tr>
-
-<tr>
-<td><code>consent_status</code></td>
-<td>The user&rsquo;s current consent status</td>
-<td>[<code>consented</code>, <code>notConsented</code>]</td>
-</tr>
-
-<tr>
-<td><code>consent_categories</code></td>
-<td>An array of the user&rsquo;s selected consent categories</td>
-<td>[<code>&quot;analytics&quot;</code>, <code>&quot;cdp&quot;</code>]</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="examples">Examples</h2>
-
-<p>The following example code shows how to access the Consent Manager.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">class</span> <span style="color:#2b91af">TealiumHelper</span> {
-	<span style="color:#00f">var</span> tealium: Tealium?
-	<span style="color:#008000">// ...</span>
-	<span style="color:#00f">private</span> <span style="color:#00f">func</span> initTealium() {
-		<span style="color:#00f">let</span> config = TealiumConfig(account: <span style="color:#a31515">&#34;ACCOUNT&#34;</span>,
- 	       		                 profile: <span style="color:#a31515">&#34;PROFILE&#34;</span>,
-        	   	                 environment: <span style="color:#a31515">&#34;ENVIRONMENT&#34;</span>,
-           		                 datasource: <span style="color:#a31515">&#34;DATASOURCE&#34;</span>)
-
-		<span style="color:#008000">// sets the initial status to notConsented. All events sent will be deleted.</span>
-		<span style="color:#008000">// config.initialUserConsentStatus = .notConsented</span>
-		<span style="color:#008000">// sets the initial status to consented. All events transmitted immediately until consent status changed to .notConsented</span>
-		<span style="color:#008000">// config.initialUserConsentStatus = .consented</span>
-
-		<span style="color:#008000">// sets the initial status to unknown (default). All events queued until consent status changed</span>
-		config.initialUserConsentStatus = .unknown
-		<span style="color:#008000">// if true, consent logging events will be generated whenever the consent status changes</span>
-		config.consentLoggingEnabled = <span style="color:#00f">false</span>
-
-
-
-		<span style="color:#00f">self</span>.tealium = Tealium(config: config)
-
-		<span style="color:#008000">// ...</span>
-	}
-
-
-	<span style="color:#008000">// grants full consent (all categories)</span>
-	<span style="color:#00f">func</span> grantFullConsent() {
-		<span style="color:#00f">self</span>.tealium?.consentManager()?.setUserConsentStatus(.consented)
-	}
-
-	<span style="color:#008000">/// Grants partial consent for specific categories</span>
-	<span style="color:#008000">/// Example usage: `grantPartialConsent([.analytics, .cdp])`</span>
-	<span style="color:#008000">/// - Parameter categories: `[TealiumConsentCategories]`.</span>
-	<span style="color:#00f">func</span> grantPartialConsent(categories: [TealiumConsentCategories]) {
-		<span style="color:#00f">self</span>.tealium?.consentManager()?.setUserConsentStatusWithCategories(status: .consented, categories: categories)
-	}
-
-	<span style="color:#008000">// declines consent; all future events will be deleted.</span>
-	<span style="color:#00f">func</span> declineConsent() {
-		<span style="color:#00f">self</span>.tealium?.consentManager()?.setUserConsentStatus(.notConsented)
-	}
-
-}</code></pre></div>
-<h2 id="use-cases">Use Cases</h2>
-
-<h3 id="simple-opt-in">Simple Opt-in</h3>
-
-<p>This example shows you how to give your users a simple &ldquo;Opt-in/Opt-out&rdquo; option. If the user consents, they are automatically opted-in to all tracking categories. If they revoke their consent, no categories remain active, and no tracking calls are sent.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> setConsentStatusSimple(<span style="color:#00f">_</span> consented: Bool) {
-    <span style="color:#00f">let</span> status: TealiumConsentStatus = consented ? .consented: .notConsented
-    <span style="color:#00f">self</span>.tealium?.consentManager()?.setUserConsentStatus(status)
-}</code></pre></div>
-<p>Define and call the following method in your Tealium Helper class when your app user consents to or declines tracking. If the user consents to tracking, the Consent Manager automatically opts them in to all tracking categories.</p>
-
-<p><img src="https://zjzhh79394.i.lithium.com/t5/image/serverpage/image-id/6590i5637771715807D9A/image-size/original?v=1.0&amp;px=-1" alt="Simple Consent" title="Simple Consent" /></p>
-
-<h3 id="grouped-opt-in">Grouped Opt-in</h3>
-
-<p>This example shows a category-based consent model, where tracking categories are grouped into a smaller number of higher-level categories, defined by you.</p>
-
-<p>For example, you may choose to group the Tealium consent categories <code>&quot;big_data&quot;</code>, <code>&quot;analytics&quot;</code>, and <code>&quot;monitoring&quot;</code> under a single category called <code>&quot;performance&quot;</code>. This may be easier for the user than selecting from the full list of categories. You may choose to represent this in a slider interface, ranging from least-permissive to most-permissive (all categories).</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00f">func</span> updateConsentPreferences(<span style="color:#00f">_</span> dict: [String: Any]) {
-    <span style="color:#00f">if</span> <span style="color:#00f">let</span> status = dict[<span style="color:#a31515">&#34;consentStatus&#34;</span>] <span style="color:#00f">as</span>? String {
-        <span style="color:#00f">var</span> tealiumConsentCategories = [TealiumConsentCategories]()
-        <span style="color:#00f">let</span> tealiumConsentStatus = (status == <span style="color:#a31515">&#34;consented&#34;</span>) ? TealiumConsentStatus.consented : TealiumConsentStatus.notConsented
-        <span style="color:#00f">if</span> <span style="color:#00f">let</span> categories = dict[<span style="color:#a31515">&#34;consentCategories&#34;</span>] <span style="color:#00f">as</span>? [String] {
-            tealiumConsentCategories = TealiumConsentCategories.consentCategoriesStringArrayToEnum(categories)
-        }
-        <span style="color:#00f">self</span>.tealium?.consentManager()?.setUserConsentStatusWithCategories(status: tealiumConsentStatus, categories: tealiumConsentCategories)
-    }
-}
-
-<span style="color:#008000">// example function to define groups of categories, and set the consent preferences in the consentManager API.</span>
-<span style="color:#008000">// call this function when the user saves their preferences</span>
-<span style="color:#00f">func</span> setUserConsentPreferences(){
-	<span style="color:#008000">// define a dictionary containing grouped categories</span>
-	<span style="color:#00f">let</span> consentGroups = [<span style="color:#a31515">&#34;Off&#34;</span> : [],
-	        <span style="color:#a31515">&#34;Performance&#34;</span>: [<span style="color:#a31515">&#34;analytics&#34;</span>, <span style="color:#a31515">&#34;monitoring&#34;</span>, <span style="color:#a31515">&#34;big_data&#34;</span>, <span style="color:#a31515">&#34;mobile&#34;</span>, <span style="color:#a31515">&#34;crm&#34;</span>],
-	        <span style="color:#a31515">&#34;Marketing&#34;</span>: [<span style="color:#a31515">&#34;analytics&#34;</span>, <span style="color:#a31515">&#34;monitoring&#34;</span>, <span style="color:#a31515">&#34;big_data&#34;</span>, <span style="color:#a31515">&#34;mobile&#34;</span>, <span style="color:#a31515">&#34;crm&#34;</span>, <span style="color:#a31515">&#34;affiliates&#34;</span>, <span style="color:#a31515">&#34;email&#34;</span>, <span style="color:#a31515">&#34;search&#34;</span>, <span style="color:#a31515">&#34;engagement&#34;</span>, <span style="color:#a31515">&#34;cdp&#34;</span>],
-	        <span style="color:#a31515">&#34;Personalized Advertising&#34;</span>: [<span style="color:#a31515">&#34;analytics&#34;</span>, <span style="color:#a31515">&#34;monitoring&#34;</span>, <span style="color:#a31515">&#34;big_data&#34;</span>, <span style="color:#a31515">&#34;mobile&#34;</span>, <span style="color:#a31515">&#34;crm&#34;</span>, <span style="color:#a31515">&#34;affiliates&#34;</span>, <span style="color:#a31515">&#34;email&#34;</span>, <span style="color:#a31515">&#34;search&#34;</span>, <span style="color:#a31515">&#34;engagement&#34;</span>, <span style="color:#a31515">&#34;cdp&#34;</span>, <span style="color:#a31515">&#34;display_ads&#34;</span>, <span style="color:#a31515">&#34;personalization&#34;</span>, <span style="color:#a31515">&#34;social&#34;</span>, <span style="color:#a31515">&#34;cookiematch&#34;</span>, <span style="color:#a31515">&#34;misc&#34;</span>]]
-
-	<span style="color:#008000">// this is the user&#39;s selected preferences level. Is typically dynamic in a real app</span>
-	<span style="color:#00f">let</span> userSelection = <span style="color:#a31515">&#34;Marketing&#34;</span>
-
-	<span style="color:#00f">if</span> <span style="color:#00f">let</span> userList = consentGroups[userSelection] {
-	  <span style="color:#00f">let</span> settingsDict: [String: Any] = [<span style="color:#a31515">&#34;consentStatus&#34;</span>: <span style="color:#a31515">&#34;consented&#34;</span>, <span style="color:#a31515">&#34;consentCategories&#34;</span>: userList]
-
-	  updateConsentPreferences(settingsDict)
-	}
-}</code></pre></div>
-<p><img src="https://zjzhh79394.i.lithium.com/t5/image/serverpage/image-id/6589iADA6E801B2A3EC85/image-size/original?v=1.0&amp;px=-1" alt="grouped-gif.gif" title="grouped-gif.gif" /></p>
-
-<h3 id="category-based-opt-in">Category-based Opt-in</h3>
-
-<p>This example shows a category-based consent model where the user must explicitly select each category from the full list of categories. The default state is <code>&quot;Unknown&quot;</code>, which queues hits until the user provides their consent. If the user consents to any category, events are de-queued, and the consented category data is appended to each tracking call.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#008000">// helper method to call Tealium consentManager API</span>
-<span style="color:#00f">func</span> updateConsentPreferences(<span style="color:#00f">_</span> dict: [String: Any]) {
-    <span style="color:#00f">if</span> <span style="color:#00f">let</span> status = dict[<span style="color:#a31515">&#34;consentStatus&#34;</span>] <span style="color:#00f">as</span>? String {
-        <span style="color:#00f">var</span> tealiumConsentCategories = [TealiumConsentCategories]()
-        <span style="color:#00f">let</span> tealiumConsentStatus = (status == <span style="color:#a31515">&#34;consented&#34;</span>) ? TealiumConsentStatus.consented : TealiumConsentStatus.notConsented
-        <span style="color:#00f">if</span> <span style="color:#00f">let</span> categories = dict[<span style="color:#a31515">&#34;consentCategories&#34;</span>] <span style="color:#00f">as</span>? [String] {
-            tealiumConsentCategories = TealiumConsentCategories.consentCategoriesStringArrayToEnum(categories)
-        }
-        <span style="color:#00f">self</span>.tealium?.consentManager()?.setUserConsentStatusWithCategories(status: tealiumConsentStatus, categories: tealiumConsentCategories)
-    }
-}
-
-<span style="color:#008000">// example function to take a list of categories and pass to the Tealium consentManager API</span>
-<span style="color:#00f">func</span> setUserConsentPreferences(<span style="color:#00f">_</span> categories: [String]){
-
-	<span style="color:#00f">let</span> settingsDict: [String: Any] = [<span style="color:#a31515">&#34;consentStatus&#34;</span>: <span style="color:#a31515">&#34;consented&#34;</span>, <span style="color:#a31515">&#34;consentCategories&#34;</span>: categories]
-	updateConsentPreferences(settingsDict)
-}</code></pre></div>
-<p><a href="images/individual-gif.gif"><img src="https://zjzhh79394.i.lithium.com/t5/image/serverpage/image-id/6588iDEE8A2B2B83CB4B7/image-size/original?v=1.0&amp;px=-1" alt="Category-based" title="Category-based" /></a></p>
-
-</div>
-
-<div class="pv3">
-	<div class="di">
-		
-		
-		<a href="/platforms/ios-swift-v1/identity-resolution/"
-			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-				<title>"Identity Resolution "</title>
-				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-			</svg>
-     <section class="tr pl3">
-				<div class="text-color-secondary f7">Previous </div>
-				<div>Identity Resolution</div>
-			</section>
-		</a>
-		
-
-	</div>
-
-
-	<div class="fr">
-
-		
-		<a href="/platforms/ios-swift-v1/modules/"
-      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
-			<section class="tl pr3">
-				<div class="f7 text-color-secondary">Next</div>
-				<div>Modules</div>
-			</section>
-      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-			  <title>"Modules"</title>
-			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-			</svg>
-    </a>
-		
-		
-	</div>
-
-</div>
-<br>&nbsp;</br>
-
-          
-
-
-        </div>
-      </div>
-      <div class="order-0 w-20 dn db-l sticky-l">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-auto dn db-l sticky-l ph3" style="width:225px;">
         
 
 
@@ -7750,33 +7472,328 @@ var utag_data = {
 </nav>
       </div>
 
-    </div>
-  </article>
+      <div id="content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+        <div class="documentation-copy ml3">
+          <div id="readout" class="fixed right-0 bottom-0">
+          </div>
+          <header class="flex-none w-100">
 
-  <div class="w-100 bg-light-gray">
-    <div class="mw7 pa2 ph0 ph6-ns center nested-lh-copy lh-copy">
-      <div class="feedback_form">
+  
+    
+      <a href="/platforms/ios-swift-v1/" class="f6 fw8 mb0 link mid-gray dim mr3">
+        IOS SWIFT V1
+      </a>
+    
+  
+
+  
+
+  <h1 class="lh-title mb3 mv0 pt3">Consent Management</h1>
+</header>
+
+<aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  
+    <div class="f4 fw4 lh-copy mb4">
+      Learn how to implement Consent Management for iOS (Swift).
+    </div>
+  
+
+  
+</aside>
+
+
+
+
+<div class="prose" id="prose">
+  
+
+<h2 id="usage">Usage</h2>
+
+<p>The Consent Management module provides a simple API to help manage tracking consent at a granular level. If you have included the CocoaPods dependency or Carthage framework, Consent Management is enabled by default, and no tracking calls are sent until you explicitly notify the API that the user has consented to tracking.</p>
+
+<p>Usage of this module is recommended, as it is automatically included and enabled in Carthage and CocoaPods framework builds. The Foundation framework is an external dependency.</p>
+
+<p>Supported platforms include: iOS, macOS, tvOS, and watchOS.</p>
+
+<p><a href="/platforms/getting-started/consent-management/">Learn more</a> about Consent Management.</p>
+
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/68rF6Qo5DOw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+
+<h2 id="sample-app">Sample App</h2>
+
+<p>To help to familiarize yourself with our library, tracking methods, and best practice implementation, explore the Tealium for Swift Consent Manager <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/ConsentManagerDemo">sample app</a>.</p>
+
+<h2 id="disable">Disable</h2>
+
+<p>To disable Consent Management, include it in the list of disabled modules on the <a href="/platforms/ios-swift/api/">TealiumConfig</a> object at initialization time.</p>
+
+<h2 id="data-layer">Data Layer</h2>
+
+<p>The following variables are transmitted with each tracking call while the module is enabled:</p>
+
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>policy</code></td>
+<td>The policy under which consent was collected (default: <code>gdpr</code>)</td>
+<td><code>gdpr</code></td>
+</tr>
+
+<tr>
+<td><code>consent_status</code></td>
+<td>The user&rsquo;s current consent status</td>
+<td>[<code>consented</code>, <code>notConsented</code>]</td>
+</tr>
+
+<tr>
+<td><code>consent_categories</code></td>
+<td>An array of the user&rsquo;s selected consent categories</td>
+<td>[<code>&quot;analytics&quot;</code>, <code>&quot;cdp&quot;</code>]</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="examples">Examples</h2>
+
+<p>The following example code shows how to access the Consent Manager.</p>
+
+<pre><code class="language-swift">class TealiumHelper {
+	var tealium: Tealium?
+	// ...
+	private func initTealium() {
+		let config = TealiumConfig(account: &quot;ACCOUNT&quot;,
+ 	       		                 profile: &quot;PROFILE&quot;,
+        	   	                 environment: &quot;ENVIRONMENT&quot;,
+           		                 datasource: &quot;DATASOURCE&quot;)
+
+		// sets the initial status to notConsented. All events sent will be deleted.
+		// config.initialUserConsentStatus = .notConsented
+		// sets the initial status to consented. All events transmitted immediately until consent status changed to .notConsented
+		// config.initialUserConsentStatus = .consented
+
+		// sets the initial status to unknown (default). All events queued until consent status changed
+		config.initialUserConsentStatus = .unknown
+		// if true, consent logging events will be generated whenever the consent status changes
+		config.consentLoggingEnabled = false
+
+
+
+		self.tealium = Tealium(config: config)
+
+		// ...
+	}
+
+
+	// grants full consent (all categories)
+	func grantFullConsent() {
+		self.tealium?.consentManager()?.setUserConsentStatus(.consented)
+	}
+
+	/// Grants partial consent for specific categories
+	/// Example usage: `grantPartialConsent([.analytics, .cdp])`
+	/// - Parameter categories: `[TealiumConsentCategories]`.
+	func grantPartialConsent(categories: [TealiumConsentCategories]) {
+		self.tealium?.consentManager()?.setUserConsentStatusWithCategories(status: .consented, categories: categories)
+	}
+
+	// declines consent; all future events will be deleted.
+	func declineConsent() {
+		self.tealium?.consentManager()?.setUserConsentStatus(.notConsented)
+	}
+
+}
+</code></pre>
+
+<h2 id="use-cases">Use Cases</h2>
+
+<h3 id="simple-opt-in">Simple Opt-in</h3>
+
+<p>This example shows you how to give your users a simple &ldquo;Opt-in/Opt-out&rdquo; option. If the user consents, they are automatically opted-in to all tracking categories. If they revoke their consent, no categories remain active, and no tracking calls are sent.</p>
+
+<pre><code class="language-swift">func setConsentStatusSimple(_ consented: Bool) {
+    let status: TealiumConsentStatus = consented ? .consented: .notConsented
+    self.tealium?.consentManager()?.setUserConsentStatus(status)
+}
+</code></pre>
+
+<p>Define and call the following method in your Tealium Helper class when your app user consents to or declines tracking. If the user consents to tracking, the Consent Manager automatically opts them in to all tracking categories.</p>
+
+<p><img src="https://zjzhh79394.i.lithium.com/t5/image/serverpage/image-id/6590i5637771715807D9A/image-size/original?v=1.0&amp;px=-1" alt="Simple Consent" title="Simple Consent" /></p>
+
+<h3 id="grouped-opt-in">Grouped Opt-in</h3>
+
+<p>This example shows a category-based consent model, where tracking categories are grouped into a smaller number of higher-level categories, defined by you.</p>
+
+<p>For example, you may choose to group the Tealium consent categories <code>&quot;big_data&quot;</code>, <code>&quot;analytics&quot;</code>, and <code>&quot;monitoring&quot;</code> under a single category called <code>&quot;performance&quot;</code>. This may be easier for the user than selecting from the full list of categories. You may choose to represent this in a slider interface, ranging from least-permissive to most-permissive (all categories).</p>
+
+<pre><code class="language-swift">func updateConsentPreferences(_ dict: [String: Any]) {
+    if let status = dict[&quot;consentStatus&quot;] as? String {
+        var tealiumConsentCategories = [TealiumConsentCategories]()
+        let tealiumConsentStatus = (status == &quot;consented&quot;) ? TealiumConsentStatus.consented : TealiumConsentStatus.notConsented
+        if let categories = dict[&quot;consentCategories&quot;] as? [String] {
+            tealiumConsentCategories = TealiumConsentCategories.consentCategoriesStringArrayToEnum(categories)
+        }
+        self.tealium?.consentManager()?.setUserConsentStatusWithCategories(status: tealiumConsentStatus, categories: tealiumConsentCategories)
+    }
+}
+
+// example function to define groups of categories, and set the consent preferences in the consentManager API.
+// call this function when the user saves their preferences
+func setUserConsentPreferences(){
+	// define a dictionary containing grouped categories
+	let consentGroups = [&quot;Off&quot; : [],
+	        &quot;Performance&quot;: [&quot;analytics&quot;, &quot;monitoring&quot;, &quot;big_data&quot;, &quot;mobile&quot;, &quot;crm&quot;],
+	        &quot;Marketing&quot;: [&quot;analytics&quot;, &quot;monitoring&quot;, &quot;big_data&quot;, &quot;mobile&quot;, &quot;crm&quot;, &quot;affiliates&quot;, &quot;email&quot;, &quot;search&quot;, &quot;engagement&quot;, &quot;cdp&quot;],
+	        &quot;Personalized Advertising&quot;: [&quot;analytics&quot;, &quot;monitoring&quot;, &quot;big_data&quot;, &quot;mobile&quot;, &quot;crm&quot;, &quot;affiliates&quot;, &quot;email&quot;, &quot;search&quot;, &quot;engagement&quot;, &quot;cdp&quot;, &quot;display_ads&quot;, &quot;personalization&quot;, &quot;social&quot;, &quot;cookiematch&quot;, &quot;misc&quot;]]
+
+	// this is the user's selected preferences level. Is typically dynamic in a real app
+	let userSelection = &quot;Marketing&quot;
+
+	if let userList = consentGroups[userSelection] {
+	  let settingsDict: [String: Any] = [&quot;consentStatus&quot;: &quot;consented&quot;, &quot;consentCategories&quot;: userList]
+
+	  updateConsentPreferences(settingsDict)
+	}
+}
+</code></pre>
+
+<p><img src="https://zjzhh79394.i.lithium.com/t5/image/serverpage/image-id/6589iADA6E801B2A3EC85/image-size/original?v=1.0&amp;px=-1" alt="grouped-gif.gif" title="grouped-gif.gif" /></p>
+
+<h3 id="category-based-opt-in">Category-based Opt-in</h3>
+
+<p>This example shows a category-based consent model where the user must explicitly select each category from the full list of categories. The default state is <code>&quot;Unknown&quot;</code>, which queues hits until the user provides their consent. If the user consents to any category, events are de-queued, and the consented category data is appended to each tracking call.</p>
+
+<pre><code class="language-swift">// helper method to call Tealium consentManager API
+func updateConsentPreferences(_ dict: [String: Any]) {
+    if let status = dict[&quot;consentStatus&quot;] as? String {
+        var tealiumConsentCategories = [TealiumConsentCategories]()
+        let tealiumConsentStatus = (status == &quot;consented&quot;) ? TealiumConsentStatus.consented : TealiumConsentStatus.notConsented
+        if let categories = dict[&quot;consentCategories&quot;] as? [String] {
+            tealiumConsentCategories = TealiumConsentCategories.consentCategoriesStringArrayToEnum(categories)
+        }
+        self.tealium?.consentManager()?.setUserConsentStatusWithCategories(status: tealiumConsentStatus, categories: tealiumConsentCategories)
+    }
+}
+
+// example function to take a list of categories and pass to the Tealium consentManager API
+func setUserConsentPreferences(_ categories: [String]){
+
+	let settingsDict: [String: Any] = [&quot;consentStatus&quot;: &quot;consented&quot;, &quot;consentCategories&quot;: categories]
+	updateConsentPreferences(settingsDict)
+}
+</code></pre>
+
+<p><a href="images/individual-gif.gif"><img src="https://zjzhh79394.i.lithium.com/t5/image/serverpage/image-id/6588iDEE8A2B2B83CB4B7/image-size/original?v=1.0&amp;px=-1" alt="Category-based" title="Category-based" /></a></p>
+
+</div>
+
+<div class="pv3">
+	<div class="di">
+		
+		
+		<a href="/platforms/ios-swift-v1/identity-resolution/"
+			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+      <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+				<title>"Identity Resolution "</title>
+				<path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+			</svg>
+     <section class="tr pl3">
+				<div class="text-color-secondary f7">Previous </div>
+				<div>Identity Resolution</div>
+			</section>
+		</a>
+		
+
+	</div>
+
+
+	<div class="fr">
+
+		
+		<a href="/platforms/ios-swift-v1/modules/"
+      class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+			<section class="tl pr3">
+				<div class="f7 text-color-secondary">Next</div>
+				<div>Modules</div>
+			</section>
+      <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+			  <title>"Modules"</title>
+			  <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+			</svg>
+    </a>
+		
+		
+	</div>
+
+</div>
+<br>&nbsp;</br>
+
+          
+
+
+
+          <div class="nested-lh-copy lh-copy bt-l b--moon-gray pt2 mt4">
+            <div class="feedback_form">
   <span>
 	  <p style="display:inline">Was this article helpful?</p>
 		<button enabled id="feedback_yes" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">Yes</button>
 	  <button enabled id="feedback_no" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-green link">No</button>
   </span>
 	<span id="feedback_comment">
-		<textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="70"></textarea>
-    <span>This page was last updated:  July 23, 2020 
+		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
+    <span><p>This page was last updated:  July 23, 2020 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
+    </p>
   </span>
   <span id="feedback_thank_you" style="display: none;">
      <em>Thank you for your feedback!</em>
   </span>
 </div>
 
-      
+            
 
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
+      <p class="b">Table of Contents</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#usage">Usage</a></li>
+              <li><a href="#sample-app">Sample App</a></li>
+              <li><a href="#disable">Disable</a></li>
+              <li><a href="#data-layer">Data Layer</a></li>
+              <li><a href="#examples">Examples</a></li>
+              <li><a href="#use-cases">Use Cases</a></li>
+              <ul class="toc-h3"><li><a href="#simple-opt-in">Simple Opt-in</a></li>
+              <li><a href="#grouped-opt-in">Grouped Opt-in</a></li>
+              <li><a href="#category-based-opt-in">Category-based Opt-in</a></li>
+              </nav>
+  </aside></div>
 
     </div>
-  </div>
+  </article>
+
+    
 
     </main>
 
