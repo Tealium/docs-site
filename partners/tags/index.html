@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.59.0" />
+     <meta name="generator" content="Hugo 0.98.0" />
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -276,8 +276,7 @@ var utag_data = {
     
       
       
-      
-      <li class="w-100 hover-accent-color-light fw4 f5" data-level="1">
+      <li class="w-100 hover-accent-color-light fw4 f5 active" data-level="1">
         <a href="/partners/" class="db link pl2 pr2 pv1 primary-color hover-bg-primary " data-target=".partners-overview">Overview</a>
       </li>
       
@@ -294,7 +293,6 @@ var utag_data = {
   
   
     
-      
       
       
       <li class="w-100 hover-accent-color-light fw4 f5" data-level="1">
@@ -316,7 +314,6 @@ var utag_data = {
     
       
       
-      
       <li class="w-100 hover-accent-color-light fw4 f5" data-level="1">
         <a href="/partners/cmp-plugins/" class="db link pl2 pr2 pv1 primary-color hover-bg-primary " data-target=".partner-cmp-plugins">CMP Plugins</a>
       </li>
@@ -334,7 +331,6 @@ var utag_data = {
   
   
     
-      
       
       
       <li class="w-100 hover-accent-color-light fw4 f5" data-level="1">
@@ -356,7 +352,6 @@ var utag_data = {
     
       
       
-      
       <li class="w-100 hover-accent-color-light fw4 f5" data-level="1">
         <a href="/partners/tags/" class="db link pl2 pr2 pv1 bg-secondary white" data-target=".partner-tags">Tags</a>
       </li>
@@ -376,7 +371,6 @@ var utag_data = {
     
       
       
-      
       <li class="w-100 hover-accent-color-light fw4 f5" data-level="1">
         <a href="/partners/mobile/" class="db link pl2 pr2 pv1 primary-color hover-bg-primary " data-target=".partner-mobile">Mobile</a>
       </li>
@@ -394,7 +388,6 @@ var utag_data = {
   
   
     
-      
       
       
       <li class="w-100 hover-accent-color-light fw4 f5" data-level="1">
@@ -506,59 +499,47 @@ Data mappings determine which dynamic values the tag needs from the data layer a
 <h4 id="example">Example</h4>
 
 <p>The following example demonstrates a cookie match request:</p>
-
-<pre><code class="language-plain">GET https://sync.example-dsp.net/get-userId?
-tealium_visitor_id=abxyz0909&amp;
-tealium_account=my_account&amp;
-tealium_profile=main&amp;
-tealium_datasource=abc123
-</code></pre>
-
-<p>This request originates in the browser and sends the Tealium visitor ID to your system.  The result is a forwarding request containing your system&rsquo;s visitor ID and Tealium&rsquo;s visitor ID back to Tealium. This indicates that Tealium is hosting the match table, which is preferred. The final request to Tealium includes all of the provided Tealium variables and the vendor matched ID.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">GET https://sync.example-dsp.net/get-userId?
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">tealium_visitor_id=abxyz0909&amp;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">tealium_account=my_account&amp;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">tealium_profile=main&amp;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">tealium_datasource=abc123 </span></span></span></code></pre></div>
+<p>This request originates in the browser and sends the Tealium visitor ID to your system. The result is a forwarding request containing your system&rsquo;s visitor ID and Tealium&rsquo;s visitor ID back to Tealium. This indicates that Tealium is hosting the match table, which is preferred. The final request to Tealium includes all of the provided Tealium variables and the vendor matched ID.</p>
 
 <p>The following is an example redirect back to Tealium:</p>
-
-<pre><code class="language-plain">GET https://collect.tealiumiq.com/vdata?
-dsp_uid=4595-23423442&amp;
-tealium_visitor_id=abxyz0909&amp;
-tealium_account=my_account&amp;
-tealium_profile=main&amp;
-tealium_datasource=abc123
-</code></pre>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">GET https://collect.tealiumiq.com/vdata?
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">dsp_uid=4595-23423442&amp;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">tealium_visitor_id=abxyz0909&amp;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">tealium_account=my_account&amp;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">tealium_profile=main&amp;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">tealium_datasource=abc123</span></span></span></code></pre></div>
 <p>The following cookie match example passes the redirect request as a URL parameter, if the DSP&rsquo;s endpoint accepts it:</p>
-
-<pre><code class="language-plain">GET https://sync.example-dsp.net/get-userId?
-redirect=https://collect.tealiumiq.com/vdata?dsp_uid=$UID&amp;tealium_visitor_id=abxyz0909&amp;tealium_account=egbrand&amp;tealium_profile=main&amp;tealium_datasource=abc123
-</code></pre>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">GET https://sync.example-dsp.net/get-userId?
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">redirect=https://collect.tealiumiq.com/vdata?dsp_uid=$UID&amp;tealium_visitor_id=abxyz0909&amp;tealium_account=egbrand&amp;tealium_profile=main&amp;tealium_datasource=abc123</span></span></span></code></pre></div>
 <h3 id="server-side-enabled">Server-Side Enabled</h3>
 
 <p>Server-side enabled tags have the added ability to send events directly to Tealium EventStream and AudienceStream. For example, a user experience vendor inferring user sentiment by tracking mouse movements could trigger specific events directly to Tealium Collect. This type of integration <em>is included with your standard tag</em>.</p>
 
 <p>The following example function sends data to the Tealium event endpoint:</p>
-
-<pre><code class="language-javascript">window.tealium.sendEvent = function(event_data) {
-    //Send Event to CDH event endpoint
-    event_data['tealium_event'] = &quot;EVENT_NAME&quot;;
-    event_data['tealium_account'] = b.tealium_account; // required
-    event_data['tealium_profile'] = b.tealium_profile; // required
-    event_data['tealium_visitor_id'] = b.tealium_visitor_id; // required
-    event_data['tealium_trace_id'] = b[&quot;cp.trace_id&quot;]; // optional
-    event_data['tealium_datasource'] = 'DATASOURCE_KEY'; // optional
-
-    var data = new FormData();
-    data.append(&quot;data&quot;, JSON.stringify(event_data));
-
-    if (window.utag &amp;&amp; utag.data &amp;&amp; utag.data.tealium_account) {
-        var xhr = new XMLHttpRequest();
-        xhr.open(&quot;POST&quot;, &quot;https://collect.tealiumiq.com/event?&quot;);
-        xhr.send(data);
-        }
-    return true;
-};
-</code></pre>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>window.<span style="color:#a6e22e">tealium</span>.<span style="color:#a6e22e">sendEvent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">event_data</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//Send Event to CDH event endpoint
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">event_data</span>[<span style="color:#e6db74">&#39;tealium_event&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;EVENT_NAME&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">event_data</span>[<span style="color:#e6db74">&#39;tealium_account&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">tealium_account</span>; <span style="color:#75715e">// required
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">event_data</span>[<span style="color:#e6db74">&#39;tealium_profile&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">tealium_profile</span>; <span style="color:#75715e">// required
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">event_data</span>[<span style="color:#e6db74">&#39;tealium_visitor_id&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">tealium_visitor_id</span>; <span style="color:#75715e">// required
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">event_data</span>[<span style="color:#e6db74">&#39;tealium_trace_id&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>[<span style="color:#e6db74">&#34;cp.trace_id&#34;</span>]; <span style="color:#75715e">// optional
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">event_data</span>[<span style="color:#e6db74">&#39;tealium_datasource&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;DATASOURCE_KEY&#39;</span>; <span style="color:#75715e">// optional
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FormData</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;data&#34;</span>, <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">event_data</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (window.<span style="color:#a6e22e">utag</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">data</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">tealium_account</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">xhr</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">XMLHttpRequest</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;POST&#34;</span>, <span style="color:#e6db74">&#34;https://collect.tealiumiq.com/event?&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">xhr</span>.<span style="color:#a6e22e">send</span>(<span style="color:#a6e22e">data</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>};</span></span></code></pre></div>
 <h2 id="become-a-partner">Become a Partner</h2>
 
 <p><a href="https://community.tealiumiq.com/t5/Become-a-Technology-Partner/bd-p/become-a-technology-partner">Contact us</a> to integrate your technology.</p>
@@ -569,7 +550,7 @@ redirect=https://collect.tealiumiq.com/vdata?dsp_uid=$UID&amp;tealium_visitor_id
 	<div class="di">
 		
 		
-		<a href="/partners/cms-plugins/"
+		<a href="https://docs.tealium.com/partners/cms-plugins/"
 			class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
       <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
 				<title>"CMS Plugins "</title>
@@ -588,7 +569,7 @@ redirect=https://collect.tealiumiq.com/vdata?dsp_uid=$UID&amp;tealium_visitor_id
 	<div class="fr">
 
 		
-		<a href="/partners/mobile/"
+		<a href="https://docs.tealium.com/partners/mobile/"
       class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
 			<section class="tl pr3">
 				<div class="f7 text-color-secondary">Next</div>
@@ -619,7 +600,7 @@ redirect=https://collect.tealiumiq.com/vdata?dsp_uid=$UID&amp;tealium_visitor_id
   </span>
 	<span id="feedback_comment">
 		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
-    <span><p>This page was last updated:  February 24, 2021 
+    <span><p>This page was last updated:  June 23, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
     </p>
