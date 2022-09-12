@@ -1070,7 +1070,15 @@ var utag_data = {
 
 <p>Below is a complete list of changes for each release of <code>utag.js</code>.</p>
 
-<p><a href="https://community.tealiumiq.com/t5/JavaScript-utag-js/How-do-I-upgrade-to-the-latest-utag-js/ta-p/5042">Update your copy of <code>utag.js</code></a> to take advantage of the latest fixes and enhancements.</p>
+<p><a href="https://community.tealiumiq.com/t5/JavaScript-utag-js/How-do-I-upgrade-to-the-latest-utag-js/ta-p/5042">Update your copy of <code>utag.js</code></a> to take advantage of the latest fixes and enhancements.</p>
+
+<h2 id="4-49-september-2022">4.49 (September 2022)</h2>
+
+<ul>
+<li>Values from <code>localStorage</code> and <code>sessionStorage</code> are automatically added to the <a href="/platforms/javascript/data-layer/#local-and-session-storage">data layer object</a>.</li>
+<li>Added override options <a href="/platforms/javascript/settings/#ignorelocalstorage"><code>ignoreSessionStorage</code></a> and <a href="/platforms/javascript/settings/#ignoresessionstorage"><code>ignoreLocalStorage</code></a>.</li>
+<li>Fixed an issue where <code>tealium_environment</code> and <code>ut.env</code> were not set correctly for first-party domain customers.</li>
+</ul>
 
 <h2 id="4-45-4-48">4.45 - 4.48</h2>
 
@@ -1083,7 +1091,7 @@ var utag_data = {
 <h4 id="4-47-january-2021">4.47 (January 2021)</h4>
 
 <ul>
-<li><p>Adds defensive code for potential jQuery vulnerability.  Checks to make sure the <code>src</code> of a JavaScript file is set directly and not inherited from a compromised <code>Object.prototype</code>.  This issue was fixed in jQuery 3.5.0, but re-introduced in <a href="https://blog.jquery.com/2020/05/04/jquery-3-5-1-released-fixing-a-regression/">3.5.1</a>.</p></li>
+<li><p>Adds defensive code for potential jQuery vulnerability. Checks to make sure the <code>src</code> of a JavaScript file is set directly and not inherited from a compromised <code>Object.prototype</code>.  This issue was fixed in jQuery 3.5.0, but re-introduced in <a href="https://blog.jquery.com/2020/05/04/jquery-3-5-1-released-fixing-a-regression/">3.5.1</a>.</p></li>
 
 <li><p>Update to check for <code>Array</code> type with the built-in <code>utag.ut.typeOf</code> function instead of using <code>instance of</code>.  Fixes issue with <code>utag.js</code> running in iframe in a testing environment (such as Cypress) and JavaScript <code>instance of</code> operation not working correctly.</p></li>
 </ul>
@@ -1095,19 +1103,19 @@ var utag_data = {
 
 <ul>
 <li><code>tealium_session_number</code> - a duplicate of the existing value in <code>utag.data['cp.utag_main__sn']</code></li>
-<li><code>tealium_session_event_number</code> - the cookie value in <code>utag.data['cp.utag_main__se']</code> that counts the number of tracking calls (<code>utag.view()</code>, <code>utag.link()</code>) in the current session (visit). This is useful for Single Page Apps (SPAs) where there is only one page load with many tracked events on that page. For pages using the <code>noview</code> flag, the value is &lsquo;1&rsquo; for both page load (load rule evaluation) and the first call to <code>utag.view()</code>.</li>
+<li><code>tealium_session_event_number</code> - the cookie value in <code>utag.data['cp.utag_main__se']</code> that counts the number of tracking calls (<code>utag.view()</code>, <code>utag.link()</code>) in the current session (visit). This is useful for Single Page Apps (SPAs) where there is only one page load with many tracked events on that page. For pages using the <code>noview</code> flag, the value is &lsquo;1&rsquo; for both page load (load rule evaluation) and the first call to <code>utag.view()</code>.</li>
 </ul></li>
-<li>Adds support for an empty param list passed into <code>utag.link</code>, <code>utag.view</code> or <code>utag.track</code> calls.  In previous versions, calls to <code>utag.link()</code> or <code>utag.view()</code> work fine, but gets an extra &ldquo;cfg&rdquo; object added to the data layer. Calls to <code>utag.track()</code> causes an exception in previous versions.</li>
+<li>Adds support for an empty param list passed into <code>utag.link</code>, <code>utag.view</code> or <code>utag.track</code> calls.  In previous versions, calls to <code>utag.link()</code> or <code>utag.view()</code> work fine, but gets an extra &ldquo;cfg&rdquo; object added to the data layer. Calls to <code>utag.track()</code> causes an exception in previous versions.</li>
 <li>For pages using <code>noview</code> flag, there are two things to keep in mind:
 
 <ul>
-<li>The data layer will have a &lsquo;1&rsquo; value for <code>tealium_session_event_number</code> for both page load (<code>utag.js</code> uses data layer to loads in tags) and first call to <code>utag.view</code> (which fires tags and/or loads in more tags.)</li>
-<li>Because cookies are used and initialized at page load time, if the <code>utag.view</code> call does not happen in time on the first page, and the page is refreshed in browser, it moves to &lsquo;2&rsquo; for the first <code>utag.view</code> call which happens on second page.  This is an edge case since most implementations calls <code>utag.view</code> immediately after <code>utag.js</code> executes.</li>
+<li>The data layer will have a &lsquo;1&rsquo; value for <code>tealium_session_event_number</code> for both page load (<code>utag.js</code> uses data layer to loads in tags) and first call to <code>utag.view</code> (which fires tags and/or loads in more tags.)</li>
+<li>Because cookies are used and initialized at page load time, if the <code>utag.view</code> call does not happen in time on the first page, and the page is refreshed in browser, it moves to &lsquo;2&rsquo; for the first <code>utag.view</code> call which happens on second page.  This is an edge case since most implementations calls <code>utag.view</code> immediately after <code>utag.js</code> executes.</li>
 </ul></li>
 <li>This update also includes fixes for the &ldquo;OU&rdquo; function used by legacy Privacy Manager Extension.
 
 <ul>
-<li>The OPTOUTMULTI cookie is re-checked with each call to <code>utag.view/link</code> (no page refresh required)</li>
+<li>The OPTOUTMULTI cookie is re-checked with each call to <code>utag.view/link</code> (no page refresh required)</li>
 <li>Tags fired directly by tag&rsquo;s UID also checks the OPTOUTMULTI cookie settings before firing</li>
 </ul></li>
 </ul>
@@ -1124,16 +1132,16 @@ var utag_data = {
 
 <ul>
 <li>Added support for visitor session counting for <code>utag.js</code> hosted on &ldquo;tags.tiqcdn.cn&rdquo; (China).</li>
-<li>Updated the default <code>utag_main</code> cookie domain logic for domains following the pattern &rdquo;example.XX.jp&rdquo; (where cookies cannot be set in the XX.jp domain, but are set in &ldquo;example.XX.jp&rdquo; domain).</li>
+<li>Updated the default <code>utag_main</code> cookie domain logic for domains following the pattern &ldquo;example.XX.jp&rdquo; (where cookies cannot be set in the XX.jp domain, but are set in &ldquo;example.XX.jp&rdquo; domain).</li>
 </ul>
 
 <h4 id="4-43-june-2017">4.43 (June 2017)</h4>
 
 <ul>
-<li>Removed use of global variable <code>i</code> &ndash; previously used in loop through global variable <code>utag_cfg_ovrd</code> (config override object)</li>
-<li>Removed legacy s2s support (as this was previously removed from Tealium iQ.)  Cloud Delivery supported in Tealium Customer Data Hub.</li>
+<li>Removed use of global variable <code>i</code> &ndash; previously used in loop through global variable <code>utag_cfg_ovrd</code> (config override object)</li>
+<li>Removed legacy s2s support (as this was previously removed from Tealium iQ.)  Cloud Delivery supported in Tealium Customer Data Hub.</li>
 
-<li><p>Adds support for error handler function passed into <code>utag.ut.loader</code> utility function.  This is only for modern browsers (older browser may the standard callback &ldquo;cb&rdquo; function instead)</p>
+<li><p>Adds support for error handler function passed into <code>utag.ut.loader</code> utility function.  This is only for modern browsers (older browser may the standard callback &ldquo;cb&rdquo; function instead)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">ut</span>.<span style="color:#a6e22e">loader</span>({
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;src&#34;</span>   <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://www.example.com/path/file.js&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;cb&#34;</span>    <span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(){<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;CALLBACK&#34;</span>)},
@@ -1148,37 +1156,37 @@ var utag_data = {
 <p>Add new built-in Tealium event attributes. These new attributes are added to the data layer with each Tealium view or link event.</p>
 
 <ul>
-<li><code>tealium_visitor_id</code> 
+<li><code>tealium_visitor_id</code>
 The Tealium-generated ID in the cookie <code>cp.utag_main_v_id</code></li>
-<li><code>tealium_session_id</code> 
+<li><code>tealium_session_id</code>
 The epoch timestamp string of current session start in ms</li>
-<li><code>tealium_account</code> 
+<li><code>tealium_account</code>
 The account string value in the path to the <code>utag.js</code> file</li>
-<li><code>tealium_profile</code> 
-The profile string value in the path to the <code>utag.js</code> file</li>
+<li><code>tealium_profile</code>
+The profile string value in the path to the <code>utag.js</code> file</li>
 <li><code>tealium_environment</code>
-The environment string value in the path to the <code>utag.js</code> file. For example, &ldquo;dev&rdquo; or &ldquo;prod&rdquo;.</li>
-<li><code>tealium_datasource</code> 
+The environment string value in the path to the <code>utag.js</code> file. For example, &ldquo;dev&rdquo; or &ldquo;prod&rdquo;.</li>
+<li><code>tealium_datasource</code>
 The data source key from Tealium EventStream.</li>
-<li><code>tealium_random</code> 
+<li><code>tealium_random</code>
 A random number as a string for use in cache busting</li>
-<li><code>tealium_library_name</code> 
+<li><code>tealium_library_name</code>
 The name of the library (<code>utag.js</code>)</li>
-<li><code>tealium_library_version</code> 
+<li><code>tealium_library_version</code>
 The version of the <code>utag.js</code>. For example, &ldquo;4.42.0&rdquo; for this release)</li>
-<li><code>tealium_timestamp_epoch</code> 
+<li><code>tealium_timestamp_epoch</code>
 Current epoch time in seconds as an integer</li>
-<li><code>tealium_timestamp_utc</code> 
+<li><code>tealium_timestamp_utc</code>
 Current ISO string timestamp for UTC time zone (not available on older browsers)</li>
-<li><code>tealium_timestamp_local</code> 
-Current ISO string timestamp for browser&rsquo;s time zone (not available on older browsers)</li>
+<li><code>tealium_timestamp_local</code>
+Current ISO string timestamp for browser&rsquo;s time zone (not available on older browsers)</li>
 </ul>
 
 <h4 id="4-41">4.41</h4>
 
 <p><strong>Minor update to fix typo for the fallback function in <code>utag.ut.encode</code>.</strong></p>
 
-<p>The <code>encodeURIComponent</code> call now falls back to use JavaScript&rsquo;s <code>escape</code> call for the exception when encoding badly-formed unicode characters.</p>
+<p>The <code>encodeURIComponent</code> call now falls back to use JavaScript&rsquo;s <code>escape</code> call for the exception when encoding badly formed unicode characters.</p>
 
 <h4 id="4-40-april-2016">4.40 (April 2016)</h4>
 
@@ -1210,7 +1218,7 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on ol
 
 <p><strong>New <code>utag.ut.encode</code> function</strong></p>
 
-<p>This function falls back to use escape when encodeURIComponent issues an exception (an exception is possible when attempting to encode Unicode characters that are incomplete or incorrectly formed).</p>
+<p>This function falls back to use escape when encodeURIComponent issues an exception (an exception is possible when attempting to encode Unicode characters that are incomplete or incorrectly formed).</p>
 
 <p><strong><code>_t_visitor_id</code> and <code>_t_session_id</code> are no longer available</strong></p>
 
@@ -1268,7 +1276,7 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on ol
 <li><code>utag.data[&quot;ut.env&quot;]</code>: The publish environment</li>
 </ul></li>
 <li>Fixed a bug in which manual <code>utag.view</code> and <code>utag.link</code> calls were not extending the session end cookie timestamp. This is especially useful for single-page apps and sites that rely on AJAX to keep the session open while the visitor interacts with the site.</li>
-<li>Fixed a bug for blocking Tags that prevented synchronously-loading Tags from being used as <a href="https://community.tealiumiq.com/t5/Tealium-iQ/Tag-Configuration-Advanced-Settings/ta-p/13600">blocking Tags</a>.</li>
+<li>Fixed a bug for blocking Tags that prevented synchronously loading Tags from being used as <a href="https://community.tealiumiq.com/t5/Tealium-iQ/Tag-Configuration-Advanced-Settings/ta-p/13600">blocking Tags</a>.</li>
 <li>Fixed a bug that prevented the loading of multiple synchronous blocking Tags from cache for older of Internet Explorer.</li>
 <li>Added debugging to output the Data Layer at the point right before All Tags-scoped extensions run.</li>
 </ul>
@@ -1317,7 +1325,7 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on ol
 <h4 id="4-31-may-2014">4.31 (May 2014)</h4>
 
 <ul>
-<li><p>Fixed a UTAG utility function bug for IE browsers when bringing in external JavaScript files and running a callback function. This addresses a rare timing issue in which the callback function runs too soon.</p></li>
+<li><p>Fixed a UTAG utility function bug for IE browsers when bringing in external JavaScript files and running a callback function. This addresses a rare timing issue in which the callback function runs too soon.</p></li>
 
 <li><p>Introduces additional debugging output for when <code>utag.view</code> is called before all Tags are loaded. The Tag UID which may have an error now shows up in the output.</p></li>
 </ul>
@@ -1325,23 +1333,23 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on ol
 <h4 id="4-30-april-2014">4.30 (April 2014)</h4>
 
 <ul>
-<li>Fixes a bug with the IE browser (9 and earlier) in which manual <code>utag.view</code> calls do not fire if your last Tag set to <a href="https://community.tealiumiq.com/t5/Tealium-iQ/Tag-Configuration-Advanced-Settings/ta-p/13600">Wait = Yes</a> did not fire and <code>utag.X.js</code> files were cached.</li>
-<li>The <code>utag.js</code> now uses the values in the OPTOUTMULTI (<a href="https://community.tealiumiq.com/t5/Tealium-iQ/Privacy-Manager-Extension/ta-p/13624">Privacy Manager Extension</a>) cookie for every <code>utag.view</code> call.  Tags that are opted-out no longer fire for <code>utag.view</code> calls fired with AJAX content. </li>
+<li>Fixes a bug with the IE browser (9 and earlier) in which manual <code>utag.view</code> calls do not fire if your last Tag set to <a href="https://community.tealiumiq.com/t5/Tealium-iQ/Tag-Configuration-Advanced-Settings/ta-p/13600">Wait = Yes</a> did not fire and <code>utag.X.js</code> files were cached.</li>
+<li>The <code>utag.js</code> now uses the values in the OPTOUTMULTI (<a href="https://community.tealiumiq.com/t5/Tealium-iQ/Privacy-Manager-Extension/ta-p/13624">Privacy Manager Extension</a>) cookie for every <code>utag.view</code> call.  Tags that are opted-out no longer fire for <code>utag.view</code> calls fired with AJAX content.</li>
 </ul>
 
 <h4 id="4-29-april-2014">4.29 (April 2014)</h4>
 
 <ul>
-<li>Fixes a bug which prevented support for more than one <a href="https://community.tealiumiq.com/t5/Tealium-iQ/Tag-Configuration-Advanced-Settings/ta-p/13600">blocking Tag</a>. You may now have more than one Tag act as a blocking Tag. For example, <a href="https://community.tealiumiq.com/t5/2-Tealium-iQ-Documentation/Tealium-Currency-Converter-Tag/ta-p/5618">Tealium Currency Converter</a> with another external <code>.js</code>file.</li>
+<li>Fixes a bug which prevented support for more than one <a href="https://community.tealiumiq.com/t5/Tealium-iQ/Tag-Configuration-Advanced-Settings/ta-p/13600">blocking Tag</a>. You may now have more than one Tag act as a blocking Tag. For example, <a href="https://community.tealiumiq.com/t5/2-Tealium-iQ-Documentation/Tealium-Currency-Converter-Tag/ta-p/5618">Tealium Currency Converter</a> with another external <code>.js</code>file.</li>
 <li>Extensions scoped to &ldquo;All Tags&rdquo; run after any blocking Tags complete.</li>
 <li>The <code>utag.v.js</code> file is no longer sent in the situation that you are <a href="https://community.tealiumiq.com/t5/2-Tealium-iQ-Documentation/Hosting-Tealium-iQ-files-on-your-own-domain/ta-p/10135">self-hosting the <code>utag.js</code> file</a>.</li>
-<li>Removed &ldquo;top.&rdquo; from visitor ID generation logic. This fixes issues with iframes. </li>
+<li>Removed &ldquo;top.&rdquo; from visitor ID generation logic. This fixes issues with iframes.</li>
 </ul>
 
 <h4 id="4-28-february-2014">4.28 (February 2014)</h4>
 
 <ul>
-<li>Fixes an issue in which the page number (<code>_pn</code>) and session number (<code>_sn</code>) values are set to <a href="http://en.wikipedia.org/wiki/NaN">NaN</a> whenever a visitor visits a website in which the <code>utag_main</code> session cookies was already set by a version of <code>utag.js</code> prior to 4.27. These values are now reset to 1. </li>
+<li>Fixes an issue in which the page number (<code>_pn</code>) and session number (<code>_sn</code>) values are set to <a href="http://en.wikipedia.org/wiki/NaN">NaN</a> whenever a visitor visits a website in which the <code>utag_main</code> session cookies was already set by a version of <code>utag.js</code> prior to 4.27. These values are now reset to 1.</li>
 </ul>
 
 <h4 id="4-27-february-2014">4.27 (February 2014)</h4>
@@ -1380,9 +1388,9 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on ol
 
 <p>Load rules are re-evaluated for both <code>utag.view()</code> and <code>utag.link()</code> calls.</p>
 
-<p>Changes to the way the <code>utag.js</code> 4.26 file handles query string parameters and meta tags means that they are no longer lower-cased by default. If you have query string parameters or meta tags identified as data sources in your profile, you may need to update those data source names in the Data Layer tab to match upper case and lower case letters exactly. </p>
+<p>Changes to the way the <code>utag.js</code> 4.26 file handles query string parameters and meta tags means that they are no longer lower-cased by default. If you have query string parameters or meta tags identified as data sources in your profile, you may need to update those data source names in the Data Layer tab to match upper case and lower case letters exactly.</p>
 
-<p><strong>Custom Script Source is a Blocking Tag</strong></p>
+<p><strong>Custom Script Source is a Blocking Tag</strong></p>
 
 <p>A blocking tag is a tag that must run before any other tags run. When you enter the location for the <a href="https://community.tealiumiq.com/t5/Tealium-iQ/Tag-Configuration-Advanced-Settings/ta-p/13600">custom script source advanced setting</a> for a tag, this tag automatically becomes a blocking tag. This tag still loads asynchronously, but subsequent asynchronous scripts. For example, <code>utag.10.js</code> does not load until the blocking tag is complete.</p>
 
@@ -1392,13 +1400,13 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on ol
 
 <p>The <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Tags/ta-p/5016#advanced_settings">Wait Flag is an advanced setting</a> within tag configuration.</p>
 
-<p>Tags whose <strong>Wait Flag</strong> is set to  &rdquo;No&rdquo; load and fire immediately after the <code>utag.js</code> file loads. Those tags, whose <strong>Wait Flag</strong> is set to &ldquo;No&rdquo;, that load sooner may fire sooner, regardless of their order in Tealium iQ. For example, if Tag 2 loads before Tag 1, and Tag 1 is placed higher in the Tags tab in Tealium iQ, Tag 2 may still fire sooner, despite the order they&rsquo;re in. Previously, tags executed in the order specified in Tealium iQ. These tags then waited for tags placed higher in the order to load before loading themselves.</p>
+<p>Tags whose <strong>Wait Flag</strong> is set to  &ldquo;No&rdquo; load and fire immediately after the <code>utag.js</code> file loads. Those tags, whose <strong>Wait Flag</strong> is set to &ldquo;No&rdquo;, that load sooner may fire sooner, regardless of their order in Tealium iQ. For example, if Tag 2 loads before Tag 1, and Tag 1 is placed higher in the Tags tab in Tealium iQ, Tag 2 may still fire sooner, despite the order they&rsquo;re in. Previously, tags executed in the order specified in Tealium iQ. These tags then waited for tags placed higher in the order to load before loading themselves.</p>
 
-<p>This means that you may now have a mixture of tags with their Wait Flag set to &lsquo;No&rsquo; and tags with their Wait Flag set to &lsquo;Yes&rsquo; in the same profile. </p>
+<p>This means that you may now have a mixture of tags with their Wait Flag set to &lsquo;No&rsquo; and tags with their Wait Flag set to &lsquo;Yes&rsquo; in the same profile.</p>
 
 <p><strong>Control Load Rules-based Tracking for AJAX</strong></p>
 
-<p>Subsequent <code>utag.view()</code> calls on the page trigger load rules to load new tags. In previous versions, a <code>utag.view</code> call does not load new tags. This feature is enabled by default in <code>utag.js</code> 4.26.</p>
+<p>Subsequent <code>utag.view()</code> calls on the page trigger load rules to load new tags. In previous versions, a <code>utag.view</code> call does not load new tags. This feature is enabled by default in <code>utag.js</code> 4.26.</p>
 
 <p>Disable this feature to keep current behavior. See <a href="#utagcfgloadrulesajax">utag.cfg.load_rules_ajax flag</a> details below for more information.</p>
 
@@ -1406,7 +1414,7 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on ol
 
 <p><strong>Load a Tag Directly By UID (Update to <code>utag.view</code> and <code>utag.track</code> calls)</strong></p>
 
-<p>For advanced implementations, especially those using AJAX, use the <code>utag.view()</code> call to bring in a new tag and fire it based on the tag&rsquo;s UID (as seen in the Tags tab of Tealium iQ). This bypasses all load rules.</p>
+<p>For advanced implementations, especially those using AJAX, use the <code>utag.view()</code> call to bring in a new tag and fire it based on the tag&rsquo;s UID (as seen in the Tags tab of Tealium iQ). This bypasses all load rules.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">view</span>({<span style="color:#a6e22e">page_name</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;New Page&#34;</span>}, <span style="color:#66d9ef">null</span>, [<span style="color:#ae81ff">5</span>]);</span></span></code></pre></div>
 <ul>
 <li>Param 1: Data Layer</li>
@@ -1414,14 +1422,14 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on ol
 <li>Param 3: Array of UIDs to load and fire</li>
 </ul>
 
-<p><a href="https://community.tealiumiq.com/t5/JavaScript-utag-js/Page-Tracking/ta-p/15563">Learn more</a> about page tracking. </p>
+<p><a href="https://community.tealiumiq.com/t5/JavaScript-utag-js/Page-Tracking/ta-p/15563">Learn more</a> about page tracking.</p>
 
 <p><strong>Automatically Read New &ldquo;Meta&rdquo; tags</strong></p>
 
 <p>These types of meta tags with &ldquo;name=&rdquo; were picked up in a previous version of <code>utag.js</code>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;keywords&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Apple,Tab&#34;</span> /&gt;</span></span></code></pre></div>
 <p>The new <code>utag.js</code> 4.26 now picks up those with <code>property=</code>(see &ldquo;Open Graph&rdquo; meta tags)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">property</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;og:type&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;video.movie&#34;</span> /&gt; </span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">property</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;og:type&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;video.movie&#34;</span> /&gt; </span></span></code></pre></div>
 <p><strong>Removing the &ldquo;lowercase&rdquo; by default of &ldquo;qp.&rdquo; (query string) and &ldquo;meta.&rdquo; variables</strong></p>
 
 <p>This is a logic change in the default behavior of <code>utag.data</code>. Set the <a href="#utagcfglowerqp">utag.cfg.lowerqp flag</a> to <code>true</code> to automatically lowercase. However, the default setting keeps the mixed case.</p>
@@ -1453,7 +1461,7 @@ A &ldquo;Session Start&rdquo; flag. Set to <code>&quot;1&quot;</code> for the fi
 
 <p><strong>New &ldquo;Tealium&rdquo; Values</strong></p>
 
-<p>Identify the new cookie values in the Data Layer tab:</p>
+<p>Identify the new cookie values in the Data Layer tab:</p>
 
 <ul>
 <li>The session ID value in the <code>utag_main_ses_id</code> cookie</li>
@@ -1461,23 +1469,23 @@ A &ldquo;Session Start&rdquo; flag. Set to <code>&quot;1&quot;</code> for the fi
 <li>The session start flag (0 or 1) found in the <code>utag_main__ss</code> cookie</li>
 </ul>
 
-<p><strong>URL Fragment Parameters</strong></p>
+<p><strong>URL Fragment Parameters</strong></p>
 
-<p>Previously the name/value pairs in a URL after the <code>?</code> were read and stored in <code>utag.data</code> as <code>qp.</code> values. Now, items after the hash/fragment <code>#</code> sign are also used to build these. This adds an important feature for AJAX sites.</p>
+<p>Previously the name/value pairs in a URL after the <code>?</code> were read and stored in <code>utag.data</code> as <code>qp.</code> values. Now, items after the hash/fragment <code>#</code> sign are also used to build these. This adds an important feature for AJAX sites.</p>
 
 <p>Example Domain URL:(<a href="http://www.example.com?param1=value1&amp;param2=value2#hash1=value3)`">http://www.example.com?param1=value1&amp;param2=value2#hash1=value3)`</a></p>
 
 <p>Previous:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;qp.param1&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value1&#34;</span>, <span style="color:#e6db74">&#34;qp.param2&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value2&#34;</span>}</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;qp.param1&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value1&#34;</span>, <span style="color:#e6db74">&#34;qp.param2&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value2&#34;</span>}</span></span></code></pre></div>
 <p>New:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;qp.param1&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value1&#34;</span>, <span style="color:#e6db74">&#34;qp.param2&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value2&#34;</span>, <span style="color:#e6db74">&#34;qp.hash1&#34;</span>  <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value3&#34;</span>}</span></span></code></pre></div>
-<p><strong>All Page Data Available to <code>utag.view</code> and <code>utag.link</code> Calls</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;qp.param1&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value1&#34;</span>, <span style="color:#e6db74">&#34;qp.param2&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value2&#34;</span>, <span style="color:#e6db74">&#34;qp.hash1&#34;</span>  <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value3&#34;</span>}</span></span></code></pre></div>
+<p><strong>All Page Data Available to <code>utag.view</code> and <code>utag.link</code> Calls</strong></p>
 
 <p>Previously, <code>utag.view</code> and <code>utag.link</code> calls only knew about the data you passed them. Items like <code>b[&quot;qp.campaign&quot;]</code> were not available. Now, all &ldquo;built-in&rdquo; data points such as URL, meta, or cookie values are added to the data layer for the <code>utag.link</code> and <code>utag.view</code> calls.</p>
 
-<p>Also, dynamic items that may have changed for AJAX sites (such as <code>b[&quot;dom.url&quot;]</code>) are re-built so they use the current value. The current value may be different from the value at the time of the initial landing on an AJAX page. </p>
+<p>Also, dynamic items that may have changed for AJAX sites (such as <code>b[&quot;dom.url&quot;]</code>) are re-built so they use the current value. The current value may be different from the value at the time of the initial landing on an AJAX page.</p>
 
-<p><strong>New Options in utag.cfg</strong></p>
+<p><strong>New Options in utag.cfg</strong></p>
 
 <p>Use a Pre Loader-scoped <a href="https://community.tealiumiq.com/t5/Tealium-iQ/JavaScript-Code-Extension/ta-p/11925">JavaScript Code Extension</a> and the global variable <code>window.utag_cfg_ovrd</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// JS Code in Preloader Extension
@@ -1500,7 +1508,7 @@ Set this flag to <code>true</code> if you wish to lowercase your query string na
 <li><code>utag.cfg.lowermeta</code><br />
 Set this flag to <code>true</code> if you wish to lowercase your meta tags&rsquo; names. The value of the name/value pair for the meta tag is not lowercased.</li>
 <li><code>utag.cfg.noview</code><br />
-Set this flag to <code>true</code> if you wish to control when the initial <code>utag.view</code> call is made. This is common for AJAX sites where your application controls the page view event (not the initial page load action.) </li>
+Set this flag to <code>true</code> if you wish to control when the initial <code>utag.view</code> call is made. This is common for AJAX sites where your application controls the page view event (not the initial page load action.)</li>
 </ul>
 
 <p><strong>Things to Consider</strong></p>
@@ -1519,7 +1527,7 @@ Set this flag to <code>true</code> if you wish to control when the initial <code
 
 <ul>
 <li>The Data Layer&rsquo;s <code>utag_data</code> object becomes a reference to <code>utag.data</code>, and changing one changes the other.</li>
-<li>IE8 may introduce timing issues if your Data Layer is defined at the end of your <code>&lt;body&gt;</code> element, just before DOM Ready (and the <code>utag.js</code> is already loaded). As a best practice, always declare your <code>utag_data</code> object before you load the <code>utag.js</code> file.</li>
+<li>IE8 may introduce timing issues if your Data Layer is defined at the end of your <code>&lt;body&gt;</code> element, just before DOM Ready (and the <code>utag.js</code> is already loaded). As a best practice, always declare your <code>utag_data</code> object before you load the <code>utag.js</code> file.</li>
 </ul>
 
 <h2 id="4-006-4-011">4.006 - 4.011</h2>
@@ -1530,7 +1538,7 @@ Set this flag to <code>true</code> if you wish to control when the initial <code
 
 <h4 id="4-010-november-2013">4.010 (November 2013)</h4>
 
-<p>Fixes a bug when using the Tealium Currency Converter tag or any Tag with a value set for Custom Source Advanced setting, in which the Tag waits until for a force timeout threshold of 3 seconds or greater to call the u.send function for the other Tags.</p>
+<p>Fixes a bug when using the Tealium Currency Converter tag or any Tag with a value set for Custom Source Advanced setting, in which the Tag waits until for a force timeout threshold of 3 seconds or greater to call the u.send function for the other Tags.</p>
 
 <h4 id="4-009-september-2013">4.009 (September 2013)</h4>
 
@@ -1546,32 +1554,32 @@ Set this flag to <code>true</code> if you wish to control when the initial <code
 
 <h4 id="4-007-january-2013">4.007 (January 2013)</h4>
 
-<p>Fixes an issue in which the customer may an exception in the &ldquo;pre&rdquo; function by entering something like <code>myobj.utag_data</code> for the &rdquo;Page Data Object&rdquo; Publish Setting (assuming the <code>myobj</code> doesn&rsquo;t exist). This exception caused pieces of code to get skipped and resulted in checking .length for a <code>utag.handler.extend</code> variable that was never defined. There is now a check to see if <code>utag.handler.extend</code> is defined.</p>
+<p>Fixes an issue in which the customer may an exception in the &ldquo;pre&rdquo; function by entering something like <code>myobj.utag_data</code> for the &ldquo;Page Data Object&rdquo; Publish Setting (assuming the <code>myobj</code> doesn&rsquo;t exist). This exception caused pieces of code to get skipped and resulted in checking .length for a <code>utag.handler.extend</code> variable that was never defined. There is now a check to see if <code>utag.handler.extend</code> is defined.</p>
 
 <h4 id="4-006-january-2013">4.006 (January 2013)</h4>
 
-<p>The Publish Engine builds a <code>utag.loader.cfgsort</code> variable that is an Array of the Tag UIDs. This Array is in the right order of the Tags in Tealium iQ. Tags now fire in the order that matches the Tealium iQ&rsquo;s order.</p>
+<p>The Publish Engine builds a <code>utag.loader.cfgsort</code> variable that is an Array of the Tag UIDs. This Array is in the right order of the Tags in Tealium iQ. Tags now fire in the order that matches the Tealium iQ&rsquo;s order.</p>
 
 <h2 id="4-000-4-005">4.000-4.005</h2>
 
 <h4 id="4-005-december-2012">4.005 (December 2012)</h4>
 
-<p>Adds the utility function <code>utag.ut.decode</code>.</p>
+<p>Adds the utility function <code>utag.ut.decode</code>.</p>
 
 <p>Also adds support for a &ldquo;no cookie&rdquo; flag <code>utag.cfg.nocookie</code>. When the <code>utag.cfg.nocookie</code>value is defined and set to true then <code>utag.js</code> does not write any <code>utag_main</code> cookies.</p>
 
 <p class="note"><i class="fas fa-info-circle"></i>Existing <code>utag_main</code> cookies are not modified or removed. Some tags expect that <code>utag_main</code> cookies exist, so use this flag at your own risk.</p>
 
-<p>Sample (Pre Loader-scoped JavaScript Code Extension):</p>
+<p>Sample (Pre Loader-scoped JavaScript Code Extension):</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_cfg_ovrd</span><span style="color:#f92672">=</span>{};  
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">nocookie</span><span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>;</span></span></code></pre></div>
 <p><code>utag.ut.decode</code> is a safer version of <code>decodeURIComponent</code> (if <code>decodeURIComponent</code> issues an exception, then unescape is used)</p>
 
 <h4 id="4-004-november-2012">4.004 (November 2012)</h4>
 
-<p>Includes a fix for an Internet Explorer DOM Ready Extension &ldquo;timing&rdquo; issue in IE7 and IE8 in which IE may or may not run the DOM Ready Extensions before Tags are loaded. This version fixes the issue to ensure that DOM Ready Extensions run first. This provides consistent behavior in all browsers.</p>
+<p>Includes a fix for an Internet Explorer DOM Ready Extension &ldquo;timing&rdquo; issue in IE7 and IE8 in which IE may or may not run the DOM Ready Extensions before Tags are loaded. This version fixes the issue to ensure that DOM Ready Extensions run first. This provides consistent behavior in all browsers.</p>
 
-<p>Changes in <code>utag.DB</code>. This function is changed so that every <code>utag.DB</code> call does not &ldquo;re-check&rdquo; the cookie for <code>utagdb=true</code>; this makes for a high-performance <code>utag.DB</code> function.</p>
+<p>Changes in <code>utag.DB</code>. This function is changed so that every <code>utag.DB</code> call does not &ldquo;re-check&rdquo; the cookie for <code>utagdb=true</code>; this makes for a high-performance <code>utag.DB</code> function.</p>
 
 <p>Adds additional <code>utag.DB</code> calls in <code>utag.js</code>.</p>
 
@@ -1635,7 +1643,7 @@ Set this flag to <code>true</code> if you wish to control when the initial <code
   </span>
 	<span id="feedback_comment">
 		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
-    <span><p>This page was last updated:  August 25, 2022 
+    <span><p>This page was last updated:  September 9, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
     </p>
@@ -1644,9 +1652,6 @@ Set this flag to <code>true</code> if you wish to control when the initial <code
      <em>Thank you for your feedback!</em>
   </span>
 </div>
-
-            
-
 
           </div>
         </div>
@@ -1660,7 +1665,8 @@ Set this flag to <code>true</code> if you wish to control when the initial <code
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#4-45-4-48">4.45 - 4.48</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#4-49-september-2022">4.49 (September 2022)</a></li>
+              <li><a href="#4-45-4-48">4.45 - 4.48</a></li>
               <li><a href="#4-43-4-44">4.43 - 4.44</a></li>
               <li><a href="#4-40-4-42">4.40 - 4.42</a></li>
               <li><a href="#4-36-4-39">4.36 - 4.39</a></li>
