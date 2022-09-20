@@ -1279,13 +1279,13 @@ var utag_data = {
 </div>
 
 
-<h2 id="identify">Identify</h2>
+<h2 id="identity-resolution">Identity Resolution</h2>
 
-<p>Get started with adding a custom visitor ID for <a href="/platforms/android-kotlin/identity-resolution/">Android</a> or <a href="/platforms/ios-swift/identity-resolution/">iOS</a>.</p>
+<p>Learn how to use the Tealium anonymous ID and set your own user identifiers.</p>
 
-<h3 id="visitor-id">Visitor ID</h3>
+<h3 id="anonymous-id">Anonymous ID</h3>
 
-<p>The Tealium Android and Swift libraries generates a unique persistent visitor ID the first time it is launched and stores it in <code>visitorId</code>. This value is the primary visitor ID included in each tracked event as the attribute <code>tealium_visitor_id</code>.</p>
+<p>The Tealium library generates a unique persistent anonymous ID the first time the app is launched. The value is stored in <code>visitorId</code>. This value is included in each tracked event as the attribute <code>tealium_visitor_id</code>.</p>
 
 
 <div class="code-tabs">
@@ -1315,26 +1315,26 @@ var utag_data = {
 </div>
 
 
-<p>Provide additional visitor ID attributes to the data layer, as needed, by sending them as variables in your tracking calls.</p>
+<p>If you are using Tealium AudienceStream, <code>visitorId</code> is the anonymous ID associated with the visitor. Learn more about <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Anonymous-IDs-User-Identifiers-and-Visitor-ID-Attributes/ta-p/34470">anonymous IDs in AudienceStream</a>.</p>
 
-<p>If you are using Tealium AudienceStream, <code>visitorId</code> is the primary visitor ID associated with the visitor. Learn more about <a href="https://community.tealiumiq.com/t5/Getting-Started-with/Visitor-Stitching-Visitor-ID/ta-p/25790">configuring visitor IDs in AudienceStream</a>.</p>
+<h3 id="user-identifier">User Identifier</h3>
 
-<h3 id="secondary-visitor-id">Secondary Visitor ID</h3>
+<p>When you identify known users, add a user identifier attribute to the persistent data storage.</p>
 
-<p>Include secondary visitor ID attributes as needed by adding them to the persistent data storage.</p>
+<p>Learn more about <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Anonymous-IDs-User-Identifiers-and-Visitor-ID-Attributes/ta-p/34470">user identifiers in AudienceStream</a>.</p>
 
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content"><div class="tab-pane" data-lang="Android" title="Android">
-  <p>To add a known visitor ID, such as a customer ID:</p>
+  <p>To add a user identifier, such as a customer ID:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">setKnownVisitorId</span>(id: String) {
 </span></span><span style="display:flex;"><span>    tealium.dataLayer.putString(<span style="color:#e6db74">&#34;customer_id&#34;</span>, id, Expiry.FOREVER)
 </span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
 </div>
 
 <div class="tab-pane" data-lang="iOS" title="iOS">
-  <p>To add a known visitor ID, such as a customer ID:</p>
+  <p>To add a user identifier, such as a customer ID:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setKnownVisitorId</span>(<span style="color:#66d9ef">_</span> id: String) {
 </span></span><span style="display:flex;"><span>    tealium?.dataLayer.add(key: <span style="color:#e6db74">&#34;customer_id&#34;</span>, value: id, expiry: .forever)
 </span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
@@ -1437,7 +1437,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
-    <span><p>This page was last updated:  August 25, 2022 
+    <span><p>This page was last updated:  September 13, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
     </p>
@@ -1465,9 +1465,9 @@ var utag_data = {
               <ul class="toc-h3"><li><a href="#track-views">Track Views</a></li>
               <li><a href="#track-events">Track Events</a></li>
               </ul><li><a href="#data-layer">Data Layer</a></li>
-              <li><a href="#identify">Identify</a></li>
-              <ul class="toc-h3"><li><a href="#visitor-id">Visitor ID</a></li>
-              <li><a href="#secondary-visitor-id">Secondary Visitor ID</a></li>
+              <li><a href="#identity-resolution">Identity Resolution</a></li>
+              <ul class="toc-h3"><li><a href="#anonymous-id">Anonymous ID</a></li>
+              <li><a href="#user-identifier">User Identifier</a></li>
               </ul><li><a href="#validate">Validate</a></li>
               <ul class="toc-h3"><li><a href="#logs">Logs</a></li>
               <li><a href="#trace">Trace</a></li>

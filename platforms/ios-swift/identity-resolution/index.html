@@ -1072,9 +1072,9 @@ var utag_data = {
 <div class="prose" id="prose">
   
 
-<h2 id="visitor-id">Visitor ID</h2>
+<h2 id="anonymous-id">Anonymous ID</h2>
 
-<p>The Tealium Swift library generates a unique persistent visitor ID the first time it is launched and stores it in <a href="/platforms/ios-swift/api/tealium/#visitorid"><code>tealium.visitorId</code></a>. This value is the primary visitor ID included in each tracked event as the attribute <code>tealium_visitor_id</code>.</p>
+<p>The Tealium Swift library generates a unique persistent anonymous ID the first time it is launched and stores it in <a href="/platforms/ios-swift/api/tealium/#visitorid"><code>tealium.visitorId</code></a>. This value is included in each tracked event as the attribute <code>tealium_visitor_id</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TealiumHelper</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> tealium: Tealium?
 </span></span><span style="display:flex;"><span>
@@ -1082,15 +1082,13 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>		tealium?.visitorId
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
-<p>Provide additional visitor ID attributes to the data layer by sending them as variables in your tracking calls.</p>
+<p>If you are using Tealium AudienceStream, <code>visitorId</code> is the anonymous ID associated with the visitor. Learn more about <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Anonymous-IDs-User-Identifiers-and-Visitor-ID-Attributes/ta-p/34470">anonymous IDs in AudienceStream</a>.</p>
 
-<p>If you are using Tealium AudienceStream, <code>visitorId</code> is the primary visitor ID associated with the visitor. Learn more about <a href="https://community.tealiumiq.com/t5/Getting-Started-with/Visitor-Stitching-Visitor-ID/ta-p/25790">configuring visitor IDs in AudienceStream</a>.</p>
+<h2 id="user-identifier">User Identifier</h2>
 
-<h2 id="secondary-visitor-id">Secondary Visitor ID</h2>
+<p>When you identify known users, add a user identifier attribute to the persistent data storage.</p>
 
-<p>Include secondary visitor ID attributes as needed by adding them to the persistent data storage.</p>
-
-<p>To add a known visitor ID, such as a customer ID:</p>
+<p>To add a user identifier, such as a customer ID:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setKnownVisitorId</span>(<span style="color:#66d9ef">_</span> id: String) {
 </span></span><span style="display:flex;"><span>	tealium?.dataLayer.add(key: <span style="color:#e6db74">&#34;customer_id&#34;</span>, value: id, expiration: .forever)
 </span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
@@ -1150,7 +1148,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
-    <span><p>This page was last updated:  August 25, 2022 
+    <span><p>This page was last updated:  September 13, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
     </p>
@@ -1172,8 +1170,8 @@ var utag_data = {
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#visitor-id">Visitor ID</a></li>
-              <li><a href="#secondary-visitor-id">Secondary Visitor ID</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#anonymous-id">Anonymous ID</a></li>
+              <li><a href="#user-identifier">User Identifier</a></li>
               </nav>
   </aside></div>
 
