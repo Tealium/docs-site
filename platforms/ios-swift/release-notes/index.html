@@ -1070,7 +1070,45 @@ var utag_data = {
 
 <p>Below is a complete list of changes for each release of the Tealium for Swift library.</p>
 
-<h2 id="2-6-5-may-2022">2.6.5 (May 2022)</h2>
+<h2 id="2-8-2-october-2022">2.8.2 (October 2022)</h2>
+
+<p><strong>Low Impact Changes</strong></p>
+
+<ul>
+<li>Prevented visitor profile requests for old visitor identifiers from being executed after a visitor switch.</li>
+</ul>
+
+<h2 id="2-8-1-october-2022">2.8.1 (October 2022)</h2>
+
+<p><strong>Low Impact Changes</strong></p>
+
+<ul>
+<li>No functional changes. Fixed eventual crashes for Carthage on prebuilt frameworks.</li>
+</ul>
+
+<h2 id="2-8-0-october-2022">2.8.0 (October 2022)</h2>
+
+<p><strong>Low Impact Changes</strong></p>
+
+<ul>
+<li>Improved the Tag Management module code and thread security.</li>
+<li>VisitorService&rsquo;s <a href="/platforms/ios-swift/module-list/visitor-service/#requestvisitorprofile"><code>requestVisitorProfile</code></a> now skips the timeout set by the <code>visitorServiceRefresh</code> config key.</li>
+<li>Added an observable for <a href="/platforms/ios-swift/api/tealium/#onvisitorid"><code>onVisitorId</code></a> changes in the <code>Tealium</code> class to notify new IDs when <code>resetVisitorId</code> is called or when we automatically switch to a new visitor.</li>
+<li>Added the <a href="/platforms/ios-swift/api/tealium-config/#visitoridentitykey"><code>visitorIdentityKey</code></a> config key for the new visitor switching API.</li>
+<li>Migrated the <code>app_uuid</code> storage to the data layer to allow applications to delete it if needed.</li>
+<li>Added <a href="/platforms/ios-swift/api/tealium/#clearstoredvisitorids"><code>clearStoredVisitorIds</code></a> method in <code>Tealium</code> class to delete all stored visitor IDs for current and previous identities and reset the current <code>visitorId</code>.</li>
+<li>Added <a href="/platforms/ios-swift/api/tealium/#decorateurl"><code>decorateUrl</code></a> method to <code>AdobeVisitorService</code> module to add Adobe query param to a URL.</li>
+</ul>
+
+<p><strong>New Features</strong></p>
+
+<ul>
+<li>Added query parameter provider functionality for Adobe ECID in the Tag Management module to decorate the webview URL with Adobe query param.</li>
+<li>Added support in remote commands for command mappings to <code>all_events</code> and <code>all_views</code>, which are triggered on each event and view, respectively.</li>
+<li>Added support for <a href="/platforms/ios-swift/identity-resolution/#visitor-switching">visitor switching</a>.</li>
+</ul>
+
+<h2 id="2-7-0-september-2022">2.7.0 (September 2022)</h2>
 
 <p><strong>Low Impact Changes</strong></p>
 
@@ -1091,7 +1129,7 @@ if you rely on that being called.</li>
 <li>Added config option <a href="/platforms/ios-swift/api/tealium-config/#overrideconsentcategorieskey"><code>overrideConsentCategoriesKey</code></a> to override the name of the Tealium consent categories attribute, to support custom enforcement of server-side consent.</li>
 </ul>
 
-<h2 id="2-6-5-may-2022-1">2.6.5 (May 2022)</h2>
+<h2 id="2-6-5-may-2022">2.6.5 (May 2022)</h2>
 
 <p><strong>Low Impact Changes</strong></p>
 
@@ -1507,7 +1545,7 @@ if you rely on that being called.</li>
   </span>
 	<span id="feedback_comment">
 		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
-    <span><p>This page was last updated:  August 25, 2022 
+    <span><p>This page was last updated:  November 4, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
     </p>
@@ -1529,7 +1567,10 @@ if you rely on that being called.</li>
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--moon-gray pv4 pv0-ns ph4-l nested-links nested-copy-line-height">
       <p class="b">Table of Contents</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#2-6-5-may-2022">2.6.5 (May 2022)</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#2-8-2-october-2022">2.8.2 (October 2022)</a></li>
+              <li><a href="#2-8-1-october-2022">2.8.1 (October 2022)</a></li>
+              <li><a href="#2-8-0-october-2022">2.8.0 (October 2022)</a></li>
+              <li><a href="#2-7-0-september-2022">2.7.0 (September 2022)</a></li>
               <li><a href="#2-6-5-may-2022">2.6.5 (May 2022)</a></li>
               <li><a href="#2-6-4-may-2022">2.6.4 (May 2022)</a></li>
               <li><a href="#2-6-3-march-2022">2.6.3 (March 2022)</a></li>

@@ -1091,8 +1091,18 @@ var utag_data = {
 </tr>
 
 <tr>
+<td align="left"><a href="#clearstoredvisitorids"><code>clearStoredVisitorIds()</code></a></td>
+<td align="left">Deletes the stored cache of visitorIds and calls <code>resetVisitorId</code>.</td>
+</tr>
+
+<tr>
 <td align="left"><a href="#clearalltimedevents"><code>clearAllTimedEvents()</code></a></td>
 <td align="left">Clears all previously started timed events.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#decorateurl"><code>decorateUrl()</code></a></td>
+<td align="left">Decorates the URL with the Adobe ECID parameters.</td>
 </tr>
 
 <tr>
@@ -1123,6 +1133,11 @@ var utag_data = {
 <tr>
 <td align="left"><a href="#linkecidtoknownidentifier"><code>linkECIDToKnownIdentifier</code></a></td>
 <td align="left">Links the current ECID to a known secondary ID.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#onvisitorid"><code>onVisitorId</code></a></td>
+<td align="left">Allows subscription to changes on <code>visitorId</code>.</td>
 </tr>
 
 <tr>
@@ -1193,6 +1208,45 @@ var utag_data = {
 
 <p>Clears all previously started timed events. The timed events are not tracked.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>tealium?.clearAllTimedEvents()</span></span></code></pre></div>
+<h3 id="clearstoredvisitorids"><code>clearStoredVisitorIds()</code></h3>
+
+<p>Clears all previously stored visitor IDs and hashed customer identifiers.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>tealium?.clearStoredVisitorIds()</span></span></code></pre></div>
+<h3 id="decorateurl"><code>decorateUrl()</code></h3>
+
+<p>Decorates the input URL with the Adobe ECID query parameters.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>decorateUrl(<span style="color:#66d9ef">_</span> url: URL, completion: ((URL) <span style="color:#960050;background-color:#1e0010">→</span> Void)</span></span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">Parameters</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>url</code></td>
+<td align="left"><code>URL</code></td>
+<td align="left">The URL to decorate</td>
+</tr>
+
+<tr>
+<td align="left"><code>completion</code></td>
+<td align="left"><code>URL</code> -&gt; Void</td>
+<td align="left">The block called with the decorated URL.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium: Tealium?
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> url = URL(string: <span style="color:#e6db74">&#34;https://www.tealium.com&#34;</span>)<span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>tealium?.adobeVisitorApi?.decorateUrl(url) { newUrl <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// use the new URL</span>
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
 <h3 id="disable"><code>disable()</code></h3>
 
 <p>Disables the Tealium library and removes all module references. Re-enable by creating a new Tealium instance if required.</p>
@@ -1284,12 +1338,18 @@ var utag_data = {
 </table>
 
 <p>Example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium: Tealium?
-</span></span><span style="display:flex;"><span><span style="color:#f92672">..</span>.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium: Tealium?
+</span></span><span style="display:flex;"><span>...
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>tealium<span style="color:#f92672">?.</span>adobeVisitorApi<span style="color:#f92672">?.</span>linkECIDToKnownIdentifier(
+</span></span><span style="display:flex;"><span>tealium?.adobeVisitorApi?.linkECIDToKnownIdentifier(
 </span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;myidentifier&#34;</span>, adobeDataProviderId: <span style="color:#e6db74">&#34;123456&#34;</span>, .unknown
 </span></span><span style="display:flex;"><span>  )</span></span></code></pre></div>
+<h3 id="onvisitorid"><code>onVisitorId</code></h3>
+
+<p>Notifies of visitor ID changes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> subscription = tealium?.onVisitorId.subscribe { newVisitor <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// handle visitor change here</span>
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
 <h3 id="resetvisitor"><code>resetVisitor()</code></h3>
 
 <p>Resets the visitor ECID by retrieving a new one on the next tracking call.</p>
@@ -1537,7 +1597,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
-    <span><p>This page was last updated:  April 11, 2022 
+    <span><p>This page was last updated:  November 4, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
     </p>
@@ -1562,12 +1622,15 @@ var utag_data = {
       <nav id="TableOfContents"><ul class="toc-h2"><li><a href="#class-tealium">Class: Tealium</a></li>
               <ul class="toc-h3"><li><a href="#canceltimedevent">cancelTimedEvent()</a></li>
               <li><a href="#clearalltimedevents">clearAllTimedEvents()</a></li>
+              <li><a href="#clearstoredvisitorids">clearStoredVisitorIds()</a></li>
+              <li><a href="#decorateurl">decorateUrl()</a></li>
               <li><a href="#disable">disable()</a></li>
               <li><a href="#flushqueue">flushQueue()</a></li>
               <li><a href="#gathertrackdata">gatherTrackData()</a></li>
               <li><a href="#jointrace">joinTrace()</a></li>
               <li><a href="#leavetrace">leaveTrace()</a></li>
               <li><a href="#linkecidtoknownidentifier">linkECIDToKnownIdentifier()</a></li>
+              <li><a href="#onvisitorid">onVisitorId</a></li>
               <li><a href="#resetvisitor">resetVisitor()</a></li>
               <li><a href="#resetvisitorid">resetVisitorId()</a></li>
               <li><a href="#starttimedevent">startTimedEvent()</a></li>

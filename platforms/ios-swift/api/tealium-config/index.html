@@ -1411,6 +1411,11 @@ var utag_data = {
 </tr>
 
 <tr>
+<td><a href="#visitoridentitykey"><code>visitorIdentityKey</code></a></td>
+<td>A config key that specifies the data layer key that represents the customer identifier. It can be used to enable <a href="/platforms/ios-swift/identity-resolution/#visitor-switching">visitor switching</a>.</td>
+</tr>
+
+<tr>
 <td><a href="#webviewprocesspool"><code>webviewProcessPool</code></a></td>
 <td>Prevents cookie synchronization issues if your app contains other webviews besides the Tealium Tag Management webview</td>
 </tr>
@@ -2004,7 +2009,7 @@ var utag_data = {
 <h3 id="tealiumconfig"><code>TealiumConfig()</code></h3>
 
 <p>Constructor for a <code>TealiumConfig</code> object. This object is required to initialize the library for your specific account.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>TealiumConfig(account:String, profile:String, environment:String, optionalData:Dictionary, dataSource:String)</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>TealiumConfig(account:String, profile:String, environment:String, dataSource:String)</span></span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2113,8 +2118,7 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
 </span></span><span style="display:flex;"><span>                                 profile: <span style="color:#e6db74">&#34;NAME&#34;</span>,
 </span></span><span style="display:flex;"><span>                                 environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
-</span></span><span style="display:flex;"><span>                                 datasource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>,
-</span></span><span style="display:flex;"><span>                                 optionalData: <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>                                 datasource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Tealium Location module config methods</span>
 </span></span><span style="display:flex;"><span>      config.useHighAccuracy = <span style="color:#66d9ef">true</span>
 </span></span><span style="display:flex;"><span>      config.updateDistance = <span style="color:#ae81ff">150.0</span>
@@ -2156,11 +2160,24 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
 </span></span><span style="display:flex;"><span>                                 profile: <span style="color:#e6db74">&#34;NAME&#34;</span>,
 </span></span><span style="display:flex;"><span>                                 environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
-</span></span><span style="display:flex;"><span>                                 datasource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>,
-</span></span><span style="display:flex;"><span>                                 optionalData: <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>                                 datasource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Tealium Location module config methods</span>
 </span></span><span style="display:flex;"><span>      config.useHighAccuracy = <span style="color:#66d9ef">true</span>
 </span></span><span style="display:flex;"><span>      config.updateDistance = <span style="color:#ae81ff">150.0</span>
+</span></span><span style="display:flex;"><span>  }</span></span></code></pre></div>
+<h3 id="visitoridentitykey"><code>visitorIdentityKey</code></h3>
+
+<p>Used to enable visitor switching on the specified <code>visitorIdentityKey</code> in the data layer.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>  <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">start</span>() {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">let</span> customerIdentifierKey = <span style="color:#e6db74">&#34;customer_id&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
+</span></span><span style="display:flex;"><span>                                 profile: <span style="color:#e6db74">&#34;NAME&#34;</span>,
+</span></span><span style="display:flex;"><span>                                 environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
+</span></span><span style="display:flex;"><span>                                 datasource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
+</span></span><span style="display:flex;"><span>      config.visitorIdentityKey = customerIdentifierKey
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// use the same customerIdentifierKey for storing a specific customer identifier in the data layer</span>
 </span></span><span style="display:flex;"><span>  }</span></span></code></pre></div>
 <h3 id="webviewprocesspool"><code>webviewProcessPool</code></h3>
 
@@ -2236,7 +2253,7 @@ var utag_data = {
   </span>
 	<span id="feedback_comment">
 		<p><textarea id="feedback_textarea" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea></p>
-    <span><p>This page was last updated:  August 10, 2022 
+    <span><p>This page was last updated:  November 4, 2022 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button disabled id="feedback_submit" class="f6 ph3 pv1 br2 dib tc mv3 bg-primary-color white hover-bg-blue link">Send Feedback</button></span>
     </p>
@@ -2325,6 +2342,7 @@ var utag_data = {
               <li><a href="#timedeventtriggers">timedEventTriggers</a></li>
               <li><a href="#updatedistance">updateDistance</a></li>
               <li><a href="#usehighaccuracy">useHighAccuracy</a></li>
+              <li><a href="#visitoridentitykey">visitorIdentityKey</a></li>
               <li><a href="#webviewprocesspool">webviewProcessPool</a></li>
               <li><a href="#webviewconfig">webviewConfig</a></li>
               </nav>
