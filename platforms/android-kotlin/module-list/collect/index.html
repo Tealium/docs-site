@@ -1466,16 +1466,20 @@ const translations = {
   },
 };
 var default_sections = [
-  "JAVASCRIPT",
-  "GETTING STARTED WEB",
-  "ANDROID KOTLIN",
-  "IOS SWIFT",
-  "GETTING STARTED"
+  "Platforms > JavaScript (Web)",
+  "Platforms > Getting Started for Websites",
+  "Platforms > Android (Kotlin)",
+  "Platforms > iOS (Swift)",
+  "Platforms > Getting Started for Mobile"
 ];
 var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
 var local_sections = new Set(ls_sections);
-var cur_section = $('header a');
-if(cur_section && cur_section.length == 1) {
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
   var sect = cur_section.text().trim();
   if(local_sections.has(sect)) {
     
@@ -1485,7 +1489,7 @@ if(cur_section && cur_section.length == 1) {
   else {
     
     local_sections.add(sect);
-    if(local_sections.size > 5) {
+    if(local_sections.size > 10) {
       local_sections.delete(ls_sections[0]);
     }
   }
