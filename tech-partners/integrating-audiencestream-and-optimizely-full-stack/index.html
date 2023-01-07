@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     
+    <title>Integrating AudienceStream and Optimizely Full Stack | Technology Partners |Tealium Docs</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+     <meta name="generator" content="Hugo 0.98.0" />
+
+      
+        <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+      
+
+    <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+
+  </head>
+  <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
+      
+        
+<script>
+var utag_data = {
+    site_section  : "tech-partners",
+    site_language : "en",
+    tealium_event : "page_view"
+}
+</script>
+
+<script>
+ (function(a,b,c,d){
+    a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+  })();
+</script>
+
+      
+
+    
+<nav class="w-100 sticky-t nested-links pv3 bg-primary-color-light bb b--light-gray " role="navigation">
+
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
+
+    <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl15">
+      <a href="https://docs.tealium.com/"><img src="/images/icons/tealium_logo.svg" class="v-mid dib" width="200" height="42"></a>
+    </h1>
+    
+    <div class="db dib-ns pl3 mr4"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-l">
+      
+        <li class="f5 dib mr3" role="menuitem">
+            
+          <a href="https://community.tealiumiq.com/t5/Developer-Questions/qa-p/developer-questions" class="dim link">
+          Forums
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 32 32" class="fill-current v-base" aria-label="External Link">
+<path d="M25.152 16.576v5.696q0 2.144-1.504 3.648t-3.648 1.504h-14.848q-2.144 0-3.648-1.504t-1.504-3.648v-14.848q0-2.112 1.504-3.616t3.648-1.536h12.576q0.224 0 0.384 0.16t0.16 0.416v1.152q0 0.256-0.16 0.416t-0.384 0.16h-12.576q-1.184 0-2.016 0.832t-0.864 2.016v14.848q0 1.184 0.864 2.016t2.016 0.864h14.848q1.184 0 2.016-0.864t0.832-2.016v-5.696q0-0.256 0.16-0.416t0.416-0.16h1.152q0.256 0 0.416 0.16t0.16 0.416zM32 1.152v9.12q0 0.48-0.352 0.8t-0.8 0.352-0.8-0.352l-3.136-3.136-11.648 11.648q-0.16 0.192-0.416 0.192t-0.384-0.192l-2.048-2.048q-0.192-0.16-0.192-0.384t0.192-0.416l11.648-11.648-3.136-3.136q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h9.12q0.48 0 0.8 0.352t0.352 0.8z"></path>
+</svg>
+</a>
+        </li></ul>
+
+
+    <ul class="list ma0 pa0 dn dib-l">
+      <li class="f5 dib">
+         <i class="fa fa-globe" style="color: rgba(255, 255, 255, .6)" aria-hidden="true"></i>
+      </li>
+      <li class="f5 dib mr4"><a href="https://docs.tealium.co.jp/">日本語</a>
+</li>
+    </ul>
+
+  </div>
+
+
+<div id="mainAppInner" class="padd-54">
+    <div id="leftFrame">
+        <div class="main-nav-container">
+            <div class="flex-1">
+                <ul id="navCategoryHome" class="menu-group as-main-navigation">
+                    <li class="js-main-nav-section" data-section="home">
+                        <a href="https://community.tealiumiq.com/" class="menu-list-item top-level tooltip-right" title="Tearlium Learnig Center Home">
+                          <span class="menu-large-icon">
+                              <span class="as-platform-image square-xxxs is-rounded bg-transparent">
+                                  <span class="inner-image UDH-icon">TLC</span>
+                              </span>
+                          </span>
+                          <span class="menu-context supportLinks_buttonTitle">Tealium Learning Center</span>
+                        </a>
+                          <span class="tooltiptext">Tealium Learning <br>Community</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a href="https://community.tealiumiq.com/t5/Forums/ct-p/tealiumlearningcommunity" class="menu-list-item top-level tooltip-right" title="Discussions & Ideas">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-comments"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">Discussions & Ideas</span>
+                        </a>
+                          <span class="tooltiptext">Dicussions & Ideas</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a href="https://community.tealiumiq.com/t5/tkb/communitypage" class="menu-list-item top-level tooltip-right" title="Product Guides">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-book"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">Product Guides</span>
+                        </a>
+                          <span class="tooltiptext">Product Guides</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section" data-section="kb">
+                        <a href="https://support.tealiumiq.com/en/support/solutions" class="menu-list-item top-level tooltip-right">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-head-side-brain"></i>
+                            </span>
+                            <span class="menu-context">Knowledge Base</span>
+                        </a>
+                          <span class="tooltiptext"> Knowledge Base </span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section active">
+                        <a href="https://docs.tealium.com/" class="menu-list-item top-level tooltip-right" title="Developer Documentation">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-code"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">Developer Docs</span>
+                        </a>
+                          <span class="tooltiptext">Developer Docs</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a href="https://community.tealiumiq.com/t5/Education/ct-p/education" class="menu-list-item top-level tooltip-right" title="Education">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-graduation-cap"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">Education</span>
+                        </a>
+                          <span class="tooltiptext">Education</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a href="https://community.tealiumiq.com/t5/TLC-Blog/bg-p/TLC-Blog" class="menu-list-item top-level tooltip-right" title="TLC Blog">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-newspaper"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">TLC Blog</span>
+                        </a>
+                          <span class="tooltiptext">TLC Blog</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a  href="https://support.tealiumiq.com" target="_blank" class="menu-list-item top-level tooltip-right" title="Tealium Support Desk">
+                          <span class="menu-large-icon">
+                            <i class="fal fa-life-ring"></i>
+                          </span>
+                          <span class="menu-context supportLinks_buttonTitle">Support Desk</span>
+                        </a>
+                          <span class="tooltiptext">Support Desk</span>
+                    </li>
+                </ul>
+            </div>
+            <ul class="menu-group as-main-navigation flex-0 bottom-align">
+              <li class="menu-divider"></li>
+              <li class="js-main-nav-section">
+                <a href="https://my.tealiumiq.com/" class="menu-list-item top-level tooltip-right" title="Customer Data Hub">
+                    <span class="menu-large-icon">
+                        <span class="as-platform-image square-xxxs is-rounded bg-transparent">
+                            <span class="inner-image UDH-icon">CDH</span>
+                        </span>
+                    </span>
+                    <span class="menu-context supportLinks_buttonTitle">Customer Data Hub</span>
+                </a>
+                          <span class="tooltiptext">Customer Data Hub</span>
+              </li>
+              <li class="menu-divider"></li>
+              <li class="js-toggle-leftframe">
+                <a href="#" class="menu-list-item top-level d-flex justify-content-end" title="Expand/Collapse">
+                    <span class="menu-large-icon d-flex align-items-center justify-content-center mr-0">
+                        <span class="as-platform-image square-xxxs is-rounded bg-transparent d-flex align-items-center justify-content-center">
+                            <i class="fa as-caret"></i>
+                        </span>
+                    </span>
+                </a>
+              </li>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+
+</nav>
+
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 ph0-l ph4 pr4">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto vh-100 overflow-auto dn db-l sticky-l pt3 pl125" style="width:280px;">
+<nav class="side-nav home-nav f6" role="navigation">
+  <ul class="list pa0 mt0">
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/" class="db link hover-primary-color pv2 mb2 text-color-primary hover-primary-color " data-target=".home">Home</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <span class="db mv2 text-color-disabled fw4 ttu pv1">Client-Side</span>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/iq-tag-management/" class="db link hover-primary-color pv2 mb2 text-color-primary hover-primary-color " data-target=".home-iq">iQ Tag Management</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <span class="db mv2 text-color-disabled fw4 ttu pv1">Server-Side</span>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/server-side/getting-started/eventstream-api-hub/introduction/" class="db link hover-primary-color pv2 mb2 text-color-primary hover-primary-color " data-target=".home-es">EventStream API Hub</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/server-side/getting-started/audiencestream-cdp/introduction/" class="db link hover-primary-color pv2 mb2 text-color-primary hover-primary-color " data-target=".home-as">AudienceStream CDP</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/server-side/functions/about/" class="db link hover-primary-color pv2 mb2 text-color-primary hover-primary-color " data-target=".home-fn">Functions</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/predict/getting-started/about-predict/" class="db link hover-primary-color pv2 mb2 text-color-primary hover-primary-color " data-target=".home-ml">Predict ML</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/server-side/data-storage/about/" class="db link hover-primary-color pv2 mb2 text-color-primary hover-primary-color " data-target=".home-da">DataAccess</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <span class="db mv2 text-color-disabled fw4 ttu pv1">Integrations</span>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/client-side-tags/" class="db link hover-primary-color pv2 mb2 text-color-primary hover-primary-color " data-target=".home-tags">Client-Side Tags</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/server-side-connectors/" class="db link hover-primary-color pv2 mb2 text-color-primary hover-primary-color " data-target=".home-conn">Server-Side Connectors</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <span class="db mv2 text-color-disabled fw4 ttu pv1">Developers</span>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/platforms/" class="db link hover-primary-color pv2 mb2 text-color-primary hover-primary-color " data-target=".home-plat">Platforms</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5 mb2 break">
+      
+        <a href="/api/getting-started/auth/" class="db link hover-primary-color pv2 mb2 text-color-primary hover-primary-color " data-target=".home-api">API</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/industries/tealium-for-pharma/" class="db link hover-primary-color pv2 mb2 text-color-primary hover-primary-color " data-target=".">Tealium for Pharma</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/industries/tealium-identity-partners/" class="db link hover-primary-color pv2 mb2 text-color-primary hover-primary-color " data-target=".home-identity">Tealium Identity Partners</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5 selected">
+      
+        <a href="/tech-partners/" class="db link hover-primary-color pv2 mb2 bg-secondary primary-color" data-target=".">Technology Partners</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/glossary/" class="db link hover-primary-color pv2 mb2 text-color-primary hover-primary-color " data-target=".">Glossary</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/early-access/" class="db link hover-primary-color pv2 mb2 text-color-primary hover-primary-color " data-target=".">Early Access</a>
+      
+      </li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+      <div class="documentation-copy ml3">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+  
+  <li class="primary-color f7 lvl0"><a class="f6 mb0 link mid-gray dim" href="/">Home</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="primary-color f7 lvl1"><a class="f6 mb0 link mid-gray dim" href="/tech-partners/">Technology Partners</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mb3 mv0 pt3">Integrating AudienceStream and Optimizely Full Stack</h1>
+</header>
+
+<div class="bt bw1 mv2 mid-gray b--mid-gray fn w-100">
+  
+    <p class="f4 fw3 lh-copy">
+      This article describes best practices used to integrate Tealium AudienceStream and Optimizely Full Stack.
+    </p>
+  
+</div>
+
+<div class="prose" id="prose">
+  <h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>The Visitor ID for the visitor profile in Tealium</li>
+<li>The User ID for the Optimizely feature or experiment</li>
+</ul>
+<h2 id="how-it-works">How it works</h2>
+<p>Leveraging Tealium AudienceStream audiences and badges within Optimizely Full Stack allows you to target specific features or experiments to a subset of your users.</p>
+<h2 id="limitations-and-considerations">Limitations and considerations</h2>
+<ul>
+<li>Calling the Data Layer enrichment API adds network latency and should be done outside of the critical path using a profile cached locally within your environment.</li>
+<li>Optimizely Full Stack projects have a 100 attribute limit.</li>
+</ul>
+<h2 id="tealium-sdk-visitorservice">Tealium SDK: VisitorService</h2>
+<p>The VisitorService within the Tealium Software Development Kit (SDK) is a wrapper for the Data Layer Enrichment API that can be used to manage the complexity of updating and caching Data Layer Enrichment calls on your behalf.</p>
+<p>The following Tealium SDKs have a built-in Data Layer Enrichment profile:</p>
+<h3 id="swift-for-ios">Swift for iOS</h3>
+<p>Implement the <code>TealiumVisitorServiceDelegate</code> as outlined in the <a href="https://docs.tealium.com/platforms/ios-swift/module-list/visitor-service/">VisitorSevice Module</a> developer documentation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#f92672">**</span><span style="color:#66d9ef">func</span><span style="color:#f92672">**</span> <span style="color:#f92672">**</span>profileDidUpdate<span style="color:#f92672">**</span>(profile: TealiumVisitorProfile?) {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">**</span><span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span><span style="color:#f92672">**</span> profile = profile <span style="color:#f92672">**</span><span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }<span style="color:#f92672">**</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Return the current Audiences for which the user is assigned</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">**</span><span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span><span style="color:#f92672">**</span> currentVisitorAudiences = profile.audiences {
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;Visitor audiences: </span><span style="color:#e6db74">\(</span>currentVisitorAudiences<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Check if an Audience is assigned to a user by id</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">**</span><span style="color:#66d9ef">if</span><span style="color:#f92672">**</span> currentVisitorAudiences[id: <span style="color:#e6db74">&#34;106&#34;</span>] {
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">&#34;Visitor is a member of audience id 106&#34;</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// ... Visitor is a member of this audience, take appropriate action</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Check if an Audience is assigned to a user by name</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">**</span><span style="color:#66d9ef">if</span><span style="color:#f92672">**</span> currentVisitorAudiences[name: <span style="color:#e6db74">&#34;ios users&#34;</span>] {
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">&#34;Visitor is a member of audience iOS Users&#34;</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// ... Visitor is a member of this audience, take appropriate action</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="retrieve-most-recent-visitor-profile">Retrieve most recent visitor profile</h4>
+<p>Use <code>getCachedProfile</code> to retrieve the most recent visitor profile, as shown in the following example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#f92672">**</span><span style="color:#66d9ef">self</span><span style="color:#f92672">**</span>.tealium?.visitorService()?.getCachedProfile(completion: {
+</span></span><span style="display:flex;"><span>prfile <span style="color:#f92672">**</span><span style="color:#66d9ef">in</span><span style="color:#f92672">**</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">**</span><span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span><span style="color:#f92672">**</span> profile = profile <span style="color:#f92672">**</span><span style="color:#66d9ef">else</span><span style="color:#f92672">**</span> { <span style="color:#f92672">**</span><span style="color:#66d9ef">return</span><span style="color:#f92672">**</span> }
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><p>From the profile, you will need the following attribute information from <code>audiences</code> and <code>badges</code>:</p>
+<ul>
+<li><strong>audiences</strong>
+<ul>
+<li>id: String, name: String</li>
+<li><code>id: &quot;tealiummobile\_demo\_103&quot;, name: &quot;iOS Users&quot;</code></li>
+</ul>
+</li>
+<li><strong>badges</strong>
+<ul>
+<li>id: String, value: Bool</li>
+<li><code>id: &quot;2815&quot;, value: true</code></li>
+</ul>
+</li>
+</ul>
+<p>Using this information, you will create a single variable that contains the contents of these two profile attributes, in addition to any other attributes being passed to Optimizely. Once created, you can pass this attribute as a parameter with <code>activate</code>, <code>isFeatureEnabled</code>, or <code>getEnabledFeatures</code>.</p>
+<h4 id="merge-audiences-and-badges-into-a-single-attributes-variable">Merge audiences and badges into a single attributes variable</h4>
+<p>Use the following example to merge audience and badges into a single attributes variable:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Merged profiles.audience and profiles.badges into attributes array using array append or + notation.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">NOTE: Ensure you include any existing attributes you may already be passing.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> attributes = profile.audiences <span style="color:#f92672">+</span> profile.badges
+</span></span></code></pre></div><h4 id="example-getenabledfeatures">Example: getEnabledFeatures</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> enabledFeatures = optimizely.getEnabledFeatures(userId: <span style="color:#e6db74">&#34;user_123&#34;</span>,
+</span></span><span style="display:flex;"><span>  attributes: attributes)
+</span></span></code></pre></div><h4 id="example-activate">Example: Activate</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">do</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">let</span> variation = <span style="color:#66d9ef">try</span> optimizelyClient.activate(<span style="color:#e6db74">&#34;app_redesign&#34;</span>, userId:userId, attributes: attributes )
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (variation.variationKey == <span style="color:#e6db74">&#34;control&#34;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Execute code for variation A</span>
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (variation.variationKey == <span style="color:#e6db74">&#34;treatment&#34;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Execute code for variation B</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Execute code for users who don&#39;t qualify for the experiment</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="android">Android</h3>
+<p>A new Android SDK that will includes the VisitorService included is currently in Development.</p>
+<h4 id="tealium-data-layer-enrichment-public-api">Tealium Data Layer Enrichment Public API</h4>
+<p>To retrieve the Tealium profile for the current user for languages where the SDK does not implement a VisitorService, see the <a href="/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/manage-data-layer-enrichment-api/">Data Layer Enrichment Public API</a>.</p>
+<p class="tip"><i class="fas fa-star"></i>When using the Data Layer Enrichment API with your server-side code, consider keeping the user profile stored on your local servers and have update requests occur in the background, (~100 milliseconds or less).</p>
+<p>Contact your Optimizely representative to ensure that your implementation is a good fit for your use case.</p>
+<p>The Data Layer Enrichment API returns the visitor profile JSON, similar to the following example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&#34;metrics&#34;</span> : {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;5117&#34;</span> : <span style="color:#ae81ff">6.0</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;22&#34;</span> : <span style="color:#ae81ff">6.0</span>
+</span></span><span style="display:flex;"><span>     },
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&#34;dates&#34;</span> : {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;5111&#34;</span> : <span style="color:#ae81ff">1420223771043</span>
+</span></span><span style="display:flex;"><span>     },
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&#34;properties&#34;</span> : {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;17&#34;</span> : <span style="color:#e6db74">&#34;http://tags.tiqcdn.com/utag/acct/prof/env/mobile.html&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;account&#34;</span> : <span style="color:#e6db74">&#34;tealiummobile&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;5123&#34;</span> : <span style="color:#e6db74">&#34;set&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;profile&#34;</span> : <span style="color:#e6db74">&#34;demo&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;flags&#34;</span> : { <span style="color:#f92672">&#34;5115&#34;</span> : <span style="color:#66d9ef">true</span> },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;current_visit&#34;</span>  {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;metrics&#34;</span> : {
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;7&#34;</span> : <span style="color:#ae81ff">6.0</span>
+</span></span><span style="display:flex;"><span>           },
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">&#34;dates&#34;</span> : {
+</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&#34;5202&#34;</span> : <span style="color:#ae81ff">1420225387000</span>
+</span></span><span style="display:flex;"><span>           },
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">&#34;properties&#34;</span> : {
+</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&#34;48&#34;</span> : <span style="color:#e6db74">&#34;Chrome&#34;</span>,
+</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&#34;45&#34;</span> : <span style="color:#e6db74">&#34;Mac OS X&#34;</span>,
+</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&#34;44&#34;</span> : <span style="color:#e6db74">&#34;Chrome&#34;</span>,
+</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&#34;47&#34;</span> : <span style="color:#e6db74">&#34;browser&#34;</span>,
+</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&#34;46&#34;</span> : <span style="color:#e6db74">&#34;Mac desktop&#34;</span>
+</span></span><span style="display:flex;"><span>           },
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;flags&#34;</span> : { }
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">&#34;badges&#34;</span> : { <span style="color:#f92672">&#34;5113&#34;</span> : <span style="color:#66d9ef">true</span> },
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">&#34;audiences&#34;</span> : {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;tealiummobile_demo_101&#34;</span> : <span style="color:#e6db74">&#34;Sample Audience&#34;</span>
+</span></span><span style="display:flex;"><span>       }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="set-up-attributes-in-optimizely">Set up attributes in Optimizely</h4>
+<p>To target a Feature Flag/Feature Experiment or Experiment to a Tealium audience or badge, create one &ldquo;attribute&rdquo; for each Tealium audience and each Tealium badge within the Optimizely Full Stack interface.</p>
+<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/10186iFE5FF501D357C55D/image-size/large?v=v2&amp;amp;px=999"
+         alt="Optimizely Set up Attributes"
+         title="Optimizely Set up Attributes"/>
+</figure>
+<p>The attributes you create should match the key elements of the JSON object. Create these attributes for the regular and consistent audiences that you want to target. For example, in the sample JSON in the previous, you would create the following attributes in Optimizely:</p>
+<ul>
+<li>Audiences: <code>tealium_mobile_demo_101</code></li>
+<li>Badges: <code>5113</code></li>
+</ul>
+<p class="note"><i class="fas fa-info-circle"></i>There is a 100 attribute limit for attributes per project. Only create attributes for the Tealium audiences and badges you intend to use.</p>
+<h4 id="edit-attributes">Edit attributes</h4>
+<p>Attributes are characteristics of your users that you pass in when calling Optimzely APIs that can then be used to create audiences. Click on an attribute to edit the Attribute Key or the optional Attribute Description fields and then click <strong>Save Attribute</strong> to save your changes.</p>
+<h4 id="set-up-an-optimizely-audience">Set up an Optimizely audience</h4>
+<p>After you have created the attributes within the Optimizely Full Stack interface, use the following steps to create an audience:</p>
+<ol>
+<li>Click the <strong>Audience</strong> tab.</li>
+<li>Click <strong>Create New Audience</strong>.</li>
+<li>Enter a Name and Description for the audience.</li>
+<li>Under Custom Attributes, select any of the Tealium attributes you created in the previous steps.<br>
+<img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/10187iD74CDD6E0902C7CB/image-size/large?v=v2&amp;amp;px=999" 
+         alt="Optimizely Create New Audience"
+         title="Optimizely Create New Audience"/></li>
+<li>Once you have configured the audience to your needs, click <strong>Save</strong>.</li>
+</ol>
+<h4 id="pass-tealium-audiences-and-badges-to-optimizely">Pass Tealium audiences and badges to Optimizely</h4>
+<p>Within your code, parse the JSON object so that you can create an attribute parameter using the audience and badges sections that you can then pass to Optimizely, as shown in the following example.</p>
+<p class="tip"><i class="fas fa-star"></i>If you are already passing attributes through Optimizely, ensure that you include those elements in the attribution parameter.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">/* Function to merge array objects */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">extend</span>(<span style="color:#a6e22e">dest</span>, <span style="color:#a6e22e">src</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">key</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">src</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">dest</span>[<span style="color:#a6e22e">key</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">src</span>[<span style="color:#a6e22e">key</span>];
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">dest</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">request</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">XMLHttpRequest</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#39;GET&#39;</span>,<span style="color:#e6db74">&#39;https://visitor-service.tealiumiq.com/{account}/{profile}/{visitor_id}&#39;</span>, <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">onload</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">tealium_audiences</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">response</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">attributes</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tealium_audiences</span>.<span style="color:#a6e22e">audiences</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">attributes</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">extend</span>(<span style="color:#a6e22e">attributes</span>, <span style="color:#a6e22e">tealium_audiences</span>.<span style="color:#a6e22e">badges</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Send request
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">send</span>()
+</span></span></code></pre></div><p>The results of the above example are similar to the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">attributes</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;5113&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;true&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;tealiummobile_101&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Sample Audience&#34;</span>
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>The attribute variable can now be passed to Optimizely using the getFeatureEnabled and activate function, as shown in the following example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">enabled</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">optimizelyClientInstance</span>.<span style="color:#a6e22e">isFeatureEnabled</span>(<span style="color:#e6db74">&#39;mens_preview_widget&#39;</span>, <span style="color:#a6e22e">userId</span>, <span style="color:#a6e22e">attributes</span>);
+</span></span></code></pre></div>
+</div>
+
+<div class="pv3 overflow-hidden"><div class="fr">
+
+  
+  <a href="/tech-partners/tealium-braze-integration-guide/"
+    class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+    <section class="tl pr3">
+      <div class="f7 text-color-secondary">Next</div>
+      <div>Tealium &#43; Braze Integration Guide</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"Tealium &#43; Braze Integration Guide"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
+  
+  
+</div><div class="di">
+  
+  
+  <a href="/tech-partners/optimizely-integration-with-audiencestream/"
+    class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"AudienceStream CDP &#43; Optimizely X "</title>
+      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+    </svg>
+   <section class="tr pl3">
+      <div class="text-color-secondary f7">Previous </div>
+      <div>AudienceStream CDP &#43; Optimizely X</div>
+    </section>
+  </a>
+  
+
+</div></div>
+
+
+
+        <div class="nested-lh-copy lh-copy bt-l b--moon-gray  mt3 cb">
+          <div id="feedback_form">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">Was this page helpful?</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+Yes</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+No</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea><button id="feedback_submit" class="ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">Send Feedback</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">Thank you for your feedback!</p>
+  </div>
+</div>
+
+          <p>This page was last updated:  January 6, 2023 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+      
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--light-gray pv4 pv0-ns ph3-l nested-copy-line-height">
+      <p class="b ttu">On this page</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#prerequisites">Prerequisites</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#limitations-and-considerations">Limitations and considerations</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tealium-sdk-visitorservice">Tealium SDK: VisitorService</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#swift-for-ios">Swift for iOS</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#android">Android</a></li>
+              </nav>
+  </aside></nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-primary-color-dark ph1-ns relative w-100" role="contentinfo">
+    <div class="center flex-ns flex-wrap justify-between mw9 w-90">
+    </div>
+
+    <div class="bg-primary-color-dark bottom-0 left-0 right-0 dn-l fixed pb3 ph3 w-100"><div  class="globalmenu mobilemenu dn pl5">
+    
+
+<ul class="list hidden dib ph0 ma0 scrolling-touch tc">
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://community.tealiumiq.com/t5/Developer-Questions/qa-p/developer-questions" class="ttu f6 link primary-color-light overflow hover-white db brand-font ma0 w-100 pv3 ph4">
+          Forums
+        </a>
+    </li>
+  
+</ul>
+
+</div>
+<div  class="docsmenu mobilemenu dn pl5 vh-100" style="overflow-y:scroll;padding-top: 150px;">
+    
+
+<ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Web
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/getting-started-web/quick-start/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/javascript/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          JavaScript (Web)
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/adobe-launch/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Adobe Launch
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/amp/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          AMP
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/angular/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Angular
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
+        <a href="https://docs.tealium.com/platforms/google-tag-manager/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Google Tag Manager
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Mobile
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/getting-started-mobile/quick-start/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Getting Started
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/remote-commands/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Remote Commands
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/android-java/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Android (Java)
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/android-kotlin/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Android (Kotlin)
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/cordova-v1/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Cordova 1.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/cordova/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Cordova 2.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/flutter-v1/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Flutter 1.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/flutter/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Flutter 2.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/ios-objective-c/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          iOS (Objective-C)
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/ios-swift-v1/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          iOS (Swift) 1.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/ios-swift/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          iOS (Swift) 2.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/nativescript/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          NativeScript
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/react-native-v1/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          React Native 1.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/react-native/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          React Native 2.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/unity-v1/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Unity 1.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/unity/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Unity 2.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/xamarin-v1/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 1.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100 mb2 bb b--mid-gray">
+        <a href="https://docs.tealium.com/platforms/xamarin/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Xamarin 2.x
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Server
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/csharp/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          C#
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/http-api/endpoint/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          HTTP API
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/java/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Java
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/node/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Node
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/python/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Python
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/roku/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Roku
+        </a>
+    </li>
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/ruby/install/" class="ttu f6 link primary-color-light  hover-white db brand-font ma0 w-100 pv2 ph4">
+          Ruby
+        </a>
+    </li>
+  
+</ul>
+
+</div>
+
+<div class="flex dn-l justify-between pl5">
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link mr2 white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".globalmenu">Menu</button>
+
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".docsmenu">Platforms</button>
+</div>
+</div>
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'Search',
+    buttonAriaLabel: 'Search',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'Clear the query',
+      resetButtonAriaLabel: 'Clear the query',
+      cancelButtonText: 'Cancel',
+      cancelButtonAriaLabel: 'Cancel',
+    },
+    startScreen: {
+      recentSearchesTitle: 'Recent',
+      noRecentSearchesText: 'No recent searches',
+      saveRecentSearchButtonTitle: 'Save this search',
+      removeRecentSearchButtonTitle: 'Remove this search from history',
+      favoriteSearchesTitle: 'Favorite',
+      removeFavoriteSearchButtonTitle: 'Remove this search from favorites',
+    },
+    errorScreen: {
+      titleText: 'Unable to fetch results',
+      helpText: 'You might want to check your network connection.',
+    },
+    footer: {
+      selectText: 'to select',
+      selectKeyAriaLabel: 'Enter key',
+      navigateText: 'to navigate',
+      navigateUpKeyAriaLabel: 'Arrow up',
+      navigateDownKeyAriaLabel: 'Arrow down',
+      closeText: 'to close',
+      closeKeyAriaLabel: 'Escape key',
+      searchByText: 'Search by',
+    },
+    noResultsScreen: {
+      noResultsText: 'No results for',
+      suggestedQueryText: 'Try searching for',
+      reportMissingResultsText: 'Believe this query should return results?',
+      reportMissingResultsLinkText: 'Let us know.',
+    },
+  },
+};
+var default_sections = [
+  "Platforms > JavaScript (Web)",
+  "Platforms > Getting Started for Websites",
+  "Platforms > Android (Kotlin)",
+  "Platforms > iOS (Swift)",
+  "Platforms > Getting Started for Mobile"
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+docsearch({
+  container: '#docsearch',
+  appId: '01G44CJWZ0',
+  apiKey: 'cb21a38c7ac4f7dddf727fa23008d220',
+  indexName: 'tealium',
+  placeholder: 'Search',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    optionalFilters: opt_filters
+  },
+  debug: "false"
+});
+</script>
+
+    
+
+  </body>
+</html>
