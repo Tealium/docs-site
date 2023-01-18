@@ -814,8 +814,12 @@ If a function attempts to use more than 32 MB, the following error is written to
 </figure>
 <p>For information on how to view details for throttled functions, see <a href="/server-side/functions/manage-functions/view-function-statistics/">View function statistics</a>.</p>
 <h2 id="execution-time-limits-for-event-and-visitor-functions">Execution time limits for event and visitor functions</h2>
-<p>Event and visitor functions have 10 seconds execution time. If a function exceeds this time, the following error is written to the log:</p>
-<p><code>Exception 504 - Invocation timeout limit exceeded.</code></p>
+<p>Event and visitor functions have the following execution limits:</p>
+<ul>
+<li>Execution rate: 180,000 events per minute</li>
+<li>Execution time: 8 hours per minute</li>
+<li>Execution time for each function invocation: 10 seconds<br>If a function exceeds the 10 seconds execution time, the following error is written to the log:<br><code>Exception 504 - Invocation timeout limit exceeded.</code></li>
+</ul>
 <h2 id="execution-rate-and-execution-time-example-1">Execution rate and execution time: example 1</h2>
 <p>In this example, we assume that function that communicates with external APIs takes about 100 ms per invocation. In addition, we assume there is only one function configured for the account and the average execution rate of this function is 1000 invocations per second.</p>
 <p>The execution rate and execution time within a 1-minute time window are as follows:</p>
@@ -886,7 +890,7 @@ No</button>
   </div>
 </div>
 
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  January 12, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
