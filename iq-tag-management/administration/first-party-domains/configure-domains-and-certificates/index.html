@@ -681,14 +681,13 @@ Upload your own certificate files. If you use your own certificate, Tealium cann
 <p>The certificates are stored and configured on the Tealium endpoint in the region selected for the first-party domain. If the region for the first party domain is set to a different region than the region for the profile, the event and visitor data is collected in the first-party domain region and forwarded to the region configured for the profile.</p>
 <h2 id="select-the-type-of-validation">Select the type of validation</h2>
 <ul>
-<li>
-<p><strong>DNS Validation</strong><br>
-To validate using DNS, you will be provided temporary DNS records to add to your DNS database. After these records are propagated and validated, you will be provided permanent records to replace the temporary records. You must have access to edit your DNS configuration and update the configuration with the permanent records.</p>
-</li>
-<li>
-<p><strong>Email Validation</strong><br>
-To validate using email, an email message will be sent to the administrator email address associated with the requested domains. You must be able to receive these email messages to validate your ownership of the domains. You will receive one email message for each domain containing a validation token that expires in 72 hours. If you do not receive the email or the token has expired, return to the main screen and click <strong>Resend Email</strong>.</p>
-</li>
+<li><strong>DNS Validation</strong><br>
+To validate using DNS, you will be provided validation DNS records to add to your DNS database. After these records are propagated and validated, you will be provided permanent records that you must add to your DNS database. You must have access to edit your DNS configuration and add the permanent records to your DNS configuration.</li>
+</ul>
+<p class="note"><i class="fas fa-info-circle"></i>Your DNS configuration must include the validation records and the permanent records. The validation records are used when you add domains to a certificate and for auto-renewal of the certificate.</p>
+<ul>
+<li><strong>Email Validation</strong><br>
+To validate using email, an email message will be sent to the administrator email address associated with the requested domains. You must be able to receive these email messages to validate your ownership of the domains. You will receive one email message for each domain containing a validation token that expires in 72 hours. If you do not receive the email or the token has expired, return to the main screen and click <strong>Resend Email</strong>.</li>
 </ul>
 <h2 id="add-domains">Add domains</h2>
 <p>The first-party domains you specify are typically subdomains of your customer-facing website. For example, the website located at <code>www.example.com</code> would use a subdomain named <code>tags.example.com</code> as a first-party domain for tag management services.</p>
@@ -705,7 +704,7 @@ To validate using email, an email message will be sent to the administrator emai
          alt="plat-perms-cert-generated"
          title="plat-perms-cert-generated"/>
 </figure>
-<p class="note"><i class="fas fa-info-circle"></i>When you first request the certificate, temporary DNS records (CNAME records or A records) are displayed for validation purposes, after which the permanent records are displayed. The temporary DNS records are also used for auto-renewal of the certificate. Do not delete the temporary DNS records.</p>
+<p class="note"><i class="fas fa-info-circle"></i>When you first request the certificate, validation DNS records (CNAME records or A records) are displayed. After the validation process is completed, the permanent records are displayed. The validation DNS records are used when you add a domain to a certificate and for auto-renewal of the certificate. Do not delete the validation DNS records.</p>
 <p>When the validation process is completed, one or more permanent DNS records are displayed. Each record contains a Name and Value that you must enter into your DNS provider&rsquo;s web interface to update the records.</p>
 <p>The record name appears in the format <code>_X.sub.example.com.</code> where <code>X</code> is a generated alpha-numeric string and <code>sub.example.com</code> is the first-party domain you entered.</p>
 <p>Example record name:</p>

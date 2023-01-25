@@ -587,6 +587,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/slack-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".slack-connector">Slack</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/smart-digital-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".smart-digital-connector">Smart Digital</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/smartfocus-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".smartfocus-connector">SmartFocus</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/smartsurvey-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".smartsurvey-connector">SmartSurvey</a>
@@ -711,7 +713,7 @@ var utag_data = {
 <li>API Username &amp; API Keys</li>
 <li>Data Schema</li>
 </ul>
-<h2 id="supported-actions">Supported Actions</h2>
+<h2 id="supported-actions">Supported actions</h2>
 <table>
 <thead>
 <tr>
@@ -728,27 +730,17 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<h2 id="configure-settings">Configure Settings</h2>
-<p>Go to the Connector Marketplace and add a new Monetate Personalization Engine connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
+<h2 id="configure-settings">Configure settings</h2>
+<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
 <p>To configure your vendor, follow these steps:</p>
 <ol>
-<li>
-<p>In the <strong>Configure</strong> tab, provide a title for the Connector instance.</p>
-</li>
-<li>
-<p>Enter your API Username, which can be found under <strong>Settings &gt; Sites &gt; API Keys</strong> of your account.</p>
-</li>
-<li>
-<p>Provide your Private Key matching the registered public key in your account. The private key must be generated with an RSA algorithm and transformed to PEM PKCS #8 format. For more information, see: <a href="https://support.monetate.com/hc/en-us/articles/115001851123-API-Keys-Overview">API Keys Overview</a> and the <strong>Generating API Keys</strong> section below.</p>
-</li>
-<li>
-<p>Provide your API Client ID, which can be found under <strong>Settings &gt; API Documentation &gt; Monetate Data API &gt; Base URL</strong> of your account. For example, if the URL is <code>https://api.monetate.net/api/data/v1/abc/production/</code>, then the client ID is <code>abc</code>.</p>
-</li>
-<li>
-<p>Click <strong>Test Connection</strong> to verify API connectivity with the provided credentials.</p>
-</li>
+<li>In the <strong>Configure</strong> tab, provide a title for the Connector instance.</li>
+<li>Enter your API Username, which can be found under <strong>Settings &gt; Sites &gt; API Keys</strong> of your account.</li>
+<li>Provide your Private Key matching the registered public key in your account. The private key must be generated with an RSA algorithm and transformed to PEM PKCS #8 format. For more information, see: <a href="https://support.monetate.com/hc/en-us/articles/115001851123-API-Keys-Overview">API Keys Overview</a> and the <strong>Generating API Keys</strong> section below.</li>
+<li>Provide your API Client ID, which can be found under <strong>Settings &gt; API Documentation &gt; Monetate Data API &gt; Base URL</strong> of your account. For example, if the URL is <code>https://api.monetate.net/api/data/v1/abc/production/</code>, then the client ID is <code>abc</code>.</li>
+<li>Click <strong>Test Connection</strong> to verify API connectivity with the provided credentials.</li>
 </ol>
-<h2 id="generating-api-keys">Generating API Keys</h2>
+<h2 id="generating-api-keys">Generating API keys</h2>
 <p>To ensure secure communication, Monetate API uses public and private key pairs. Key pairs can be generated with a free and widely available OpenSSL command line tool.</p>
 <p>Run the following commands in order:</p>
 <ol>
@@ -764,17 +756,50 @@ var utag_data = {
 </ol>
 <p class="note"><i class="fas fa-info-circle"></i>The above example names the generated key files as <code>my_key.pem</code>, <code>my_private_key.pem</code> and <code>my_public_key.pem</code>, but these are arbitrary and can be named as you see fit.</p>
 <p>Once generated, open the files in a text editor and copy the key values accordingly. Register the public key in your Monetate account and provide its private key in the connector configuration screen.</p>
-<h2 id="action-settings-parameters-and-options">Action Settings: Parameters and Options</h2>
+<h2 id="action-settings---parameters-and-options">Action settings - parameters and options</h2>
 <p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. It&rsquo;s where you&rsquo;ll set up actions to trigger.</p>
 <p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action-create-or-update-data-record">Action: Create or Update Data Record</h3>
+<h3 id="action-create-or-update-data-record-real-time">Action: Create or Update Data Record (Real-Time)</h3>
 <h4 id="parameters">Parameters</h4>
-<ol>
-<li><strong>Schema</strong> (Required): Select schema in which to create or update records.</li>
-<li><strong>Data Record</strong> (Required): Map attributes to data record fields. If a record with the primary key field value already exists in the schema, its data will be updated. Schemas of type <code>event</code> require an <code>event time</code> type field. If not mapped explicitly, field value will default to now. Date attributes will be converted to ISO 8601 format: <code>YYYY-MM-DDThh:mm:ss</code>.</li>
-</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Schema</td>
+<td>(Required) Select schema in which to create or update records.</td>
+</tr>
+<tr>
+<td>Data Record</td>
+<td>(Required) Map attributes to data record fields. If a record with the primary key field value already exists in the schema, its data will be updated. Schemas of type <code>event</code> require an <code>event time</code> type field. If not mapped explicitly, field value will default to now. Date attributes will be converted to ISO 8601 format: <code>YYYY-MM-DDThh:mm:ss</code>.</td>
+</tr>
+</tbody>
+</table>
 <p class="tip"><i class="fas fa-star"></i>For more information, see: <a href="https://knowledge.monetate.com/hc/en-us/articles/115005090746">Engine API: Sending Data</a>.</p>
-<h2 id="vendor-documentation">Vendor Documentation</h2>
+<h3 id="action-create-or-update-data-record-batched">Action: Create or Update Data Record (Batched)</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Schema</td>
+<td>(Required) Select schema in which to create or update records.</td>
+</tr>
+<tr>
+<td>Data Record</td>
+<td>(Required) Map attributes to data record fields. If a record with the primary key field value already exists in the schema, its data will be updated. Schemas of type <code>event</code> require an <code>event time</code> type field. If not mapped explicitly, field value will default to now. Date attributes will be converted to ISO 8601 format: <code>YYYY-MM-DDThh:mm:ss</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="vendor-documentation">Vendor documentation</h2>
 <ul>
 <li><a href="https://support.monetate.com/hc/en-us/articles/115001851123-API-Keys-Overview">API Keys Overview</a></li>
 <li><a href="https://knowledge.monetate.com/hc/en-us/articles/115005090746">Engine API: Sending Data</a></li>
@@ -854,12 +879,13 @@ No</button>
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--light-gray pv4 pv0-ns ph3-l nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#requirements">Requirements</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#supported-actions">Supported Actions</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#generating-api-keys">Generating API Keys</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings-parameters-and-options">Action Settings: Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-create-or-update-data-record">Action: Create or Update Data Record</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#vendor-documentation">Vendor Documentation</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#supported-actions">Supported actions</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure settings</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#generating-api-keys">Generating API keys</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action settings - parameters and options</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-create-or-update-data-record-real-time">Action: Create or Update Data Record (Real-Time)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-create-or-update-data-record-batched">Action: Create or Update Data Record (Batched)</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#vendor-documentation">Vendor documentation</a></li>
               </nav>
   </aside></nav>
 
@@ -1046,6 +1072,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
