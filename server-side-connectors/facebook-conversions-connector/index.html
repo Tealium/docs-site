@@ -708,19 +708,17 @@ var utag_data = {
 
 <div class="prose" id="prose">
   <h2 id="prerequisites">Prerequisites</h2>
-<p>The Facebook Conversions connector requires:</p>
-<ul>
-<li>The client-side <a href="/client-side-tags/facebook-pixel-tag/">Facebook Pixel tag</a> running in the web browser. Learn more in the <a href="https://www.facebook.com/business/help/2041148702652965">Facebook Help Center</a>.</li>
-</ul>
-<p>For Facebook Pixel to work with the Facebook Conversions connector, enable the Tealium partner integration in your Facebook Ads account settings as follows:</p>
+<p>The Facebook Conversions connector requires the client-side <a href="/client-side-tags/facebook-pixel-tag/">Facebook Pixel tag</a> to be running in the web browser. Learn more in the <a href="https://www.facebook.com/business/help/2041148702652965">Facebook Help Center</a>.</p>
+<p>For the Facebook Pixel to work with the Facebook Conversions connector, enable the Tealium partner integration in your Facebook Ads account settings as follows:</p>
 <ol>
-<li>Log into your Facebook Ads Manager account and click <strong>Events Manager</strong> from the menu**.**</li>
+<li>Log into your Facebook Ads Manager account and click <strong>Events Manager</strong> from the menu.</li>
 <li>In the menu, select <strong>Data Sources</strong>, then select the Pixel and click the <strong>Settings</strong> tab.</li>
 <li>Scroll down to the <strong>Server-Side API</strong> section.</li>
 <li>In the <strong>Partner Integration</strong> section, click <strong>Choose a Partner</strong>.</li>
 <li>Select <strong>Authorize Tealium Connection</strong>, and click <strong>Continue</strong> to enable <strong>Tealium</strong>.</li>
 </ol>
 <p>If you do not see the option to toggle a partner integration, contact your Tealium Account Manager for support.</p>
+<p class="note"><i class="fas fa-info-circle"></i>The Facebook Pixel tag automatically hashes user data. This pixel functionality cannot be changed.</p>
 <h3 id="api-information">API Information</h3>
 <p>This connector uses the following vendor API:</p>
 <ul>
@@ -770,8 +768,8 @@ var utag_data = {
 <p>This section describes how to set up parameters and options for each action.</p>
 <h3 id="deduplication-for-facebook-pixel-and-facebook-conversions-api-for-web-events">Deduplication for Facebook Pixel and Facebook Conversions API for Web Events</h3>
 <p>To configure this connector action to receive event IDs from the Facebook Pixel tag in your iQ Tag Management account, look for event attributes using the following naming convention:</p>
-<pre tabindex="0"><code>fb_event_id_&lt;Facebook Event&gt;_&lt;Tag UID&gt;
-</code></pre><p>For example: <code>fb_event_id_Purchase_32</code> or <code>fb_event_id_PageView</code></p>
+<p><code>fb_event_id_&lt;Facebook Event&gt;_&lt;Tag UID&gt;</code></p>
+<p>For example: <code>fb_event_id_Purchase_32</code> or <code>fb_event_id_PageView</code></p>
 <p class="note"><i class="fas fa-info-circle"></i>IDs were previously generated as <code>fb_event_id_&lt;Facebook Event&gt;</code>. These IDs continue to be generated but are considered legacy. The new IDs allow for use with multiple Facebook tags firing on a single page and offer a stronger tie back to the related tag. If you are using the legacy version, you must change the connector to the new ID.</p>
 <p>Use a separate action for each type of event ID. Map the event-specific event ID attribute to Event ID with the matching event name mapped to Event Name. For example:</p>
 <table>
@@ -797,13 +795,13 @@ var utag_data = {
 <p>When the <strong>Automatic Deduplication</strong> value is populated, the connector will look for the corresponding variable within the UDO object. You are no longer required to add an Event ID if this section is populated and you are using Tealium iQ. However, the following approach may still be needed when using EventStream without TealiumiQ.</p>
 <p>The connector uses the following order of operations:</p>
 <ul>
-<li>If <strong>Automatic Deduplication</strong> is populated, and the value is found in the data layer, (for example, <code>fb_event_id_ViewContent_30</code>) this value will supersede anything mapped in Event ID.</li>
-<li>If <strong>Automatic Deduplication</strong> is populated, but it can’t find the tag ID version, but can find the legacy version (with no ID attached), we will use that value (for example, <code>fb_event_id_ViewContent</code>).</li>
-<li>If <strong>Automatic Deduplication</strong> is populated, but we can’t find any value, we will use the mapped Event ID, if it is populated.</li>
+<li>If <strong>Automatic Deduplication</strong> is populated, and the value is found in the data layer, (for example, <code>fb_event_id_ViewContent_30</code>) this value supersedes anything mapped in Event ID.</li>
+<li>If <strong>Automatic Deduplication</strong> is populated, but it can’t find the tag ID version, but can find the legacy version (with no ID attached), that value is used (for example, <code>fb_event_id_ViewContent</code>).</li>
+<li>If <strong>Automatic Deduplication</strong> is populated, but the valie isn&rsquo;t found, the mapped Event ID is used, if it is populated.</li>
 </ul>
 <h3 id="action---send-event">Action - Send Event</h3>
 <h4 id="parameters">Parameters</h4>
-<p>For <strong>User Data</strong> parameters, the following table notes the level of importance for each parameter. The importance level describes the parameter&rsquo;s influence on your event match quality. For example, <strong>Email (em)</strong> has the Highest level of importance while <strong>Phone Number (ph)</strong> has an importance level of High.</p>
+<p>For <strong>User Data</strong> parameters, the following table notes the level of importance for some parameters. The importance level describes the parameter&rsquo;s influence on your event match quality. For example, <strong>Email (em)</strong> has an importance level of <strong>Highest</strong> while <strong>Phone Number (ph)</strong> has an importance level of <strong>High</strong>.</p>
 <table>
 <thead>
 <tr>
@@ -814,23 +812,23 @@ var utag_data = {
 <tbody>
 <tr>
 <td style="text-align:left">Event Source URL</td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Required if the <strong>Action Source</strong> is set to website.</li><li>The browser URL where the event happened.</li><li><strong>EventStream</strong> - If the <strong>Action Source</strong> is set to website and this field is not mapped, it is automatically mapped to the attribute Current URL in EventStream.</li><li><strong>AudienceStream</strong> - If the <strong>Action Source</strong> is set to website and this field is not mapped, it is automatically mapped to the attribute Last Event URL in AudienceStream.</li></ul></td>
+<td style="text-align:left"><ul><li><strong>Optional.</strong></li><li>Required if the <strong>Action Source</strong> is set to website.</li><li>The browser URL where the event happened.</li><li><strong>EventStream</strong> - If the <strong>Action Source</strong> is set to website and this field is not mapped, it is automatically mapped to the attribute Current URL in EventStream.</li><li><strong>AudienceStream</strong> - If the <strong>Action Source</strong> is set to website and this field is not mapped, it is automatically mapped to the <strong>Last Event URL</strong> attribute in AudienceStream.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Test Event Code</td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Send the test ID as a <code>test_event_code</code> parameter to start seeing event activity appear in the Test Events window.</li><li>Events sent with <code>test_event_code</code> are not dropped, instead they flow into Events Manager and are used for targeting and ads measurement purposes.</li></ul></td>
+<td style="text-align:left"><ul><li><strong>Optional.</strong></li><li>Send the test ID in the <code>test_event_code</code> parameter to start seeing event activity in the Test Events window.</li><li>Events sent with <code>test_event_code</code> are not dropped, instead they flow into Events Manager and are used for targeting and ads measurement purposes.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Data Processing Options</td>
-<td style="text-align:left"><ul><li>Required.</li><li>Map value to LDU to have Facebook process event with Limited Data Use restrictions.</li><li>Otherwise map <code>None</code> to specify that the event should not be processed with Limited Data Use restrictions.</li><li>For more information, see <a href="https://developers.facebook.com/docs/marketing-apis/data-processing-options">Facebook Data Processing Options</a>.</li></ul></td>
+<td style="text-align:left"><ul><li><strong>Required.</strong></li><li>Map value to LDU to have Facebook process event with Limited Data Use restrictions.</li><li>Otherwise map <code>None</code> to specify that the event should not be processed with Limited Data Use restrictions.</li><li>For more information, see <a href="https://developers.facebook.com/docs/marketing-apis/data-processing-options">Facebook Data Processing Options</a>.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Event Name</td>
-<td style="text-align:left"><ul><li>Required.</li><li>A Facebook pixel standard event name.</li></ul></td>
+<td style="text-align:left"><ul><li><strong>Required.</strong></li><li>A Facebook pixel standard event name.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Debugging Level</td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Specifies the trace level for the event.  <ul><li><code>1</code> for Error</li><li><code>2</code> for Info</li><li><code>3</code> for Debug</li></ul> </li></ul></td>
+<td style="text-align:left"><ul><li><strong>Optional.</strong></li><li>Specifies the trace level for the event.  <ul><li><code>1</code> for Error</li><li><code>2</code> for Info</li><li><code>3</code> for Debug</li></ul></li></ul>If you use Trace to verify hashing of data, the data shown at the top of Trace, such as user_data - EMAIL, is the data that came into the connector, not the data sent to Facebook. The data sent to Facebook is shown in the <strong>Request Body Section</strong> of Trace.</td>
 </tr>
 <tr>
 <td style="text-align:left">Action Source</td>
@@ -838,19 +836,19 @@ var utag_data = {
 </tr>
 <tr>
 <td style="text-align:left">Pixel ID Override</td>
-<td style="text-align:left"><ul><li>Optional</li><li>String</li><li>Can be used to override the value used for the initial connector configuration.</li><li>If not provided, the Pixel ID from the connector configuration will is used.</li></ul></td>
+<td style="text-align:left"><ul><li><strong>Optional.</strong></li><li>String</li><li>Can be used to override the value used for the initial connector configuration.</li><li>If not provided, the Pixel ID from the connector configuration is used.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Data Processing Options Country</td>
-<td style="text-align:left"><ul><li>Required if <strong>Data Processing Options</strong> is mapped to LDU.</li><li>Map country code associated with user event.</li><li>Accepted code values:  <ul><li><code>1</code> for the United States of America</li><li><code>0</code> to request country to be geolocated by Facebook</li></ul> </li><li>Geolocation also requires mapping the <strong>Client IP Address</strong> attribute.</li></ul></td>
+<td style="text-align:left"><ul><li><strong>Required</strong> if <strong>Data Processing Options</strong> is mapped to LDU.</li><li>Map the country code associated with the user event.</li><li>Accepted code values:  <ul><li><code>1</code> for the United States of America</li><li><code>0</code> to request country to be geolocated by Facebook</li></ul> </li><li>Geolocation also requires mapping the <strong>Client IP Address</strong> attribute.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Event ID</td>
-<td style="text-align:left"><ul><li>Optional.</li><li>An ID used by Facebook to de-duplicate the same event sent from both server and browser.</li><li>Verify this is an ID unique to one pair of events sent from browser and server.</li></ul></td>
+<td style="text-align:left"><ul><li><strong>Optional.</strong></li><li>An ID used by Facebook to de-duplicate the same event sent from both server and browser.</li><li>Verify that this is a unique ID to one pair of events sent from browser and server.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Event Time</td>
-<td style="text-align:left"><ul><li>Optional.</li><li>A Unix timestamp in seconds indicating when the actual event occurred (auto-populated at execution time if absent).</li></ul></td>
+<td style="text-align:left"><ul><li><strong>Optional.</strong></li><li>A Unix timestamp in seconds indicating when the actual event occurred (auto-populated at execution time if absent).</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Data Processing Options State</td>
@@ -858,11 +856,11 @@ var utag_data = {
 </tr>
 <tr>
 <td style="text-align:left">Opt Out</td>
-<td style="text-align:left"><ul><li>Optional.</li><li>A flag indicating to not use this event for ads delivery optimization.</li><li>Set this to true to only use the event for attribution.</li></ul></td>
+<td style="text-align:left"><ul><li>Optional.</li><li>A flag indicating to not use this event for ads delivery optimization.</li><li>Set this to true to only use the event for attribution.</li><ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Zip (zip)</td>
-<td style="text-align:left"><ul><li>Postal zip code.</li><li>Example: <code>94035</code></li></ul> Importance: Medium</td>
+<td style="text-align:left"><ul><li>Postal zip code.</li><li>Example: <code>94035</code>.</li><li><strong>Importance: Medium</strong></li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">FB Login ID</td>
@@ -870,31 +868,31 @@ var utag_data = {
 </tr>
 <tr>
 <td style="text-align:left">Client User Agent (ua)</td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Required if the <strong>Action Source</strong> is set to website.</li><li>The user agent for the browser corresponding to the event.</li><li>Do not hash.</li><li><strong>EventStream</strong> - If the <strong>Action Source</strong> is set to website and this field is not mapped, it is automatically mapped to the attribute User Agent in EventStream.</li><li><strong>AudienceStream</strong> - If the <strong>Action Source</strong> is set to website and this field is not mapped, it is automatically mapped to the vistor&rsquo;s last User Agent in AudienceStream.</li></ul> Importance: High</td>
+<td style="text-align:left"><ul><li><strong>Optional.</strong></li><li>Required if the <strong>Action Source</strong> is set to website.</li><li>The user agent for the browser corresponding to the event.</li><li>Do not hash.</li><li><strong>EventStream</strong> - If the <strong>Action Source</strong> is set to website and this field is not mapped, it is automatically mapped to the User Agent attribute in EventStream.</li><li><strong>AudienceStream</strong> - If the <strong>Action Source</strong> is set to website and this field is not mapped, it is automatically mapped to the visitor&rsquo;s last User Agent in AudienceStream.</li><li><strong>Importance: High</strong></li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Client IP Address (ip)</td>
-<td style="text-align:left"><ul><li>Do not hash.</li><li>The IP address of the browser corresponding to the event. Tealium can capture the client IP address, but it is not available by default. To enable this feature contact your Customer Success Manager. For more information, see <a href="https://community.tealiumiq.com/t5/Consent-and-Privacy/Enabling-IP-Address-Collection-in-Server-Side-Tealium-Products/ta-p/27929">Enabling IP Address Collection in Server-Side Tealium Products</a>.</li></ul> Importance: High</td>
+<td style="text-align:left"><ul><li>Do not hash.</li><li>The IP address of the browser corresponding to the event. Tealium can capture the client IP address, but it is not available by default. To enable this feature, contact your Customer Success Manager. For more information, see <a href="https://community.tealiumiq.com/t5/Consent-and-Privacy/Enabling-IP-Address-Collection-in-Server-Side-Tealium-Products/ta-p/27929">Enabling IP Address Collection in Server-Side Tealium Products</a>.</li><li><strong>Importance: High</strong></li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Phone (ph)</td>
-<td style="text-align:left"><ul><li>A phone number.</li><li>Include only digits with country code, area code, and number.</li><li>Example: <strong>16505551212</strong></li></ul> Importance: High</td>
+<td style="text-align:left"><ul><li>A phone number.</li><li>Include only digits with country code, area code, and number.</li><li>Example: <strong>16505551212</strong></li><li><strong>Importance: High</strong> </li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">State (st)</td>
-<td style="text-align:left"><ul><li>US State abbreviation.</li><li>Example: <strong>ca</strong></li></ul> Importance: Medium</td>
+<td style="text-align:left"><ul><li>US State abbreviation.</li><li>Example: <strong>ca</strong>.</li><li><strong>Importance: Medium</strong></li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Email (em)</td>
-<td style="text-align:left"><ul><li>Email address.</li><li>Example: <code>user@example.com</code></li></ul> Importance: Highest</td>
+<td style="text-align:left"><ul><li>Email address.</li><li>Example: <code>user@example.com</code>.</li><li><strong>Importance: Highest</strong></li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Last Name (ln)</td>
-<td style="text-align:left"><ul><li>A last name in lowercase.</li><li>Example: <code>smith</code></li></ul> Importance: Medium</td>
+<td style="text-align:left"><ul><li>Last name in lowercase.</li><li>Example: <code>smith</code>.</li><li><strong>Importance: Medium</strong></li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">First Name (fn)</td>
-<td style="text-align:left"><ul><li>A first name in lowercase.</li><li>Example: <code>joe</code></li></ul> Importance: Medium</td>
+<td style="text-align:left"><ul><li>First name in lowercase.</li><li>Example: <code>joe</code>.</li><li><strong>Importance: Medium</strong></li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Lead ID</td>
@@ -902,23 +900,23 @@ var utag_data = {
 </tr>
 <tr>
 <td style="text-align:left">City (ct)</td>
-<td style="text-align:left"><ul><li>A city in lower-case without spaces or punctuation.</li><li>Example: <strong>menlopark</strong></li></ul> Importance: Medium</td>
+<td style="text-align:left"><ul><li>City in lower-case without spaces or punctuation.</li><li>Example: <strong>menlopark</strong>.</li><li><strong>Importance: Medium</strong></li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Country (country)</td>
-<td style="text-align:left"><ul><li>A two-letter country code in lowercase.</li><li>Example: <code>us</code></li></ul> Importance: Medium</td>
+<td style="text-align:left"><ul><li>Two-letter country code in lowercase.</li><li>Example: <code>us</code>.</li><li><strong>Importance: Medium</strong></li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">External ID</td>
-<td style="text-align:left"><ul><li>Do not hash.</li><li>Any unique ID from the advertiser, such as loyalty membership IDs, user IDs, and external cookie IDs.</li></ul></td>
+<td style="text-align:left"><ul><li>Do not hash.</li><li>Any unique ID from the advertiser, such as loyalty membership IDs, user IDs, or external cookie IDs.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Browser ID (fpb)</td>
-<td style="text-align:left"><ul><li>Do not hash.</li><li>The browser ID value stored in Facebook&rsquo;s <code>_fbp</code> cookie.</li></ul> Importance: High</td>
+<td style="text-align:left"><ul><li>Do not hash.</li><li>The browser ID value stored in Facebook&rsquo;s <code>_fbp</code> cookie.</li><li><strong>Importance: High</strong></li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Subscription ID</td>
-<td style="text-align:left"><ul><li>Do not hash.</li><li>The subscription ID for the user in this transaction.</li><li>This is similar to the order ID for an individual product.</li><li>Example: <strong>anid1234</strong></li></ul></td>
+<td style="text-align:left"><ul><li>Do not hash.</li><li>The subscription ID for the user in this transaction.</li><li>This is similar to the order ID for an individual product.&lt;/li</li>Example: <strong>anid1234</strong></li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Gender</td>
@@ -926,15 +924,15 @@ var utag_data = {
 </tr>
 <tr>
 <td style="text-align:left">Date of Birth</td>
-<td style="text-align:left"><ul><li>A date of birth given as year, month, and day.</li><li>Example: <strong>19971226</strong> for December 26, 1997.</li></ul></td>
+<td style="text-align:left"><ul><li>Date of birth given as year, month, and day.</li><li>Example: <strong>19971226</strong> for December 26, 1997.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Click ID (fbc)</td>
-<td style="text-align:left"><ul><li>Do not hash.</li><li>The Facebook click ID value stored in Facebook&rsquo;s <code>_fbc</code> cookie.</li></ul> Importance: High</td>
+<td style="text-align:left"><ul><li>Do not hash.</li><li>The Facebook click ID value stored in Facebook&rsquo;s <code>_fbc</code> cookie.</li><li><strong>Importance: High</strong>                                 </li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">User Data is already hashed</td>
-<td style="text-align:left"><ul><li>Select this option if the Target User Identifier Data is already hashed.</li></ul></td>
+<td style="text-align:left"><ul><li>The Facebook Conversions connector requires the Facebook Pixel tag, which automatically hashes user data. This pixel functionality cannot be changed.</li><li>Select this option to avoid hashing the data again.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Currency</td>
@@ -951,10 +949,6 @@ var utag_data = {
 <tr>
 <td style="text-align:left">Search String</td>
 <td style="text-align:left"><ul><li>A search query made by a user.</li><li>Use only with Search events.</li><li>Example: <strong>lettuce</strong></li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Status</td>
-<td style="text-align:left"><ul><li>Use only with <strong>CompleteRegistration</strong> events.</li><li>The status of the registration event.</li><li>Example: <strong>registered</strong></li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Order ID</td>
@@ -994,11 +988,11 @@ var utag_data = {
 </tr>
 <tr>
 <td style="text-align:left">JSON Template Variables</td>
-<td style="text-align:left"><ul><li>Provide template variables as data input for templates.</li><li>See the <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>.</li><li>Name nested template variables with the dot notation, for example <code>items.name</code>.</li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
+<td style="text-align:left"><ul><li>Provide template variables as data input for templates.</li><li>See the <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>.</li><li>Name nested template variables with the dot notation.</li><li>Example <code>items.name</code>.</li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">JSON Templates</td>
-<td style="text-align:left"><ul><li>Provide valid JSON templates to be referenced in Custom Data section.</li><li>Templates are injected by name with double curly braces into supported fields, for example: <code>{{SomeTemplateName}}</code>.</li><li>For additional information, see the <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Webhook - Send Custom Request - Trimou Templating Engine Guide</a>.</li></ul></td>
+<td style="text-align:left"><ul><li>Provide valid JSON templates to be referenced in Custom Data section.</li><li>Templates are injected by name with double curly braces into supported fields.</li><li>Example: <code>{{SomeTemplateName}}</code>.</li><li>For additional information, see the <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Webhook - Send Custom Request - Trimou Templating Engine Guide</a>.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Automatic Deduplication</td>
