@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     
+    <title>File Import Data Source (Early Access) | Early Access |Tealium Docs</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+     <meta name="generator" content="Hugo 0.98.0" />
+
+      
+        <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+      
+
+    <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+
+  </head>
+  <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
+      
+        
+<script>
+var utag_data = {
+    site_section  : "early-access",
+    site_language : "en",
+    tealium_event : "page_view"
+}
+</script>
+
+<script>
+ (function(a,b,c,d){
+    a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+  })();
+</script>
+
+      
+
+    
+<nav class="w-100 sticky-t nested-links pv3 bg-primary-color-light bb b--light-gray " role="navigation">
+
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
+
+    <h1 class="dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl15">
+      <a href="https://docs.tealium.com/"><img src="/images/icons/tealium_logo.svg" class="v-mid dib" width="200" height="42"></a>
+    </h1>
+    
+    <div class="db dib-ns pl3 mr4"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-l">
+      
+        <li class="f5 dib mr3" role="menuitem">
+            
+          <a href="https://community.tealiumiq.com/t5/Developer-Questions/qa-p/developer-questions" class="dim link">
+          Forums
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 32 32" class="fill-current v-base" aria-label="External Link">
+<path d="M25.152 16.576v5.696q0 2.144-1.504 3.648t-3.648 1.504h-14.848q-2.144 0-3.648-1.504t-1.504-3.648v-14.848q0-2.112 1.504-3.616t3.648-1.536h12.576q0.224 0 0.384 0.16t0.16 0.416v1.152q0 0.256-0.16 0.416t-0.384 0.16h-12.576q-1.184 0-2.016 0.832t-0.864 2.016v14.848q0 1.184 0.864 2.016t2.016 0.864h14.848q1.184 0 2.016-0.864t0.832-2.016v-5.696q0-0.256 0.16-0.416t0.416-0.16h1.152q0.256 0 0.416 0.16t0.16 0.416zM32 1.152v9.12q0 0.48-0.352 0.8t-0.8 0.352-0.8-0.352l-3.136-3.136-11.648 11.648q-0.16 0.192-0.416 0.192t-0.384-0.192l-2.048-2.048q-0.192-0.16-0.192-0.384t0.192-0.416l11.648-11.648-3.136-3.136q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h9.12q0.48 0 0.8 0.352t0.352 0.8z"></path>
+</svg>
+</a>
+        </li></ul>
+
+
+    <ul class="list ma0 pa0 dn dib-l">
+      <li class="f5 dib">
+         <i class="fa fa-globe" style="color: rgba(255, 255, 255, .6)" aria-hidden="true"></i>
+      </li>
+      <li class="f5 dib mr4"><a href="https://docs.tealium.co.jp/">日本語</a>
+</li>
+    </ul>
+
+  </div>
+
+
+<div id="mainAppInner" class="padd-54">
+    <div id="leftFrame">
+        <div class="main-nav-container">
+            <div class="flex-1">
+                <ul id="navCategoryHome" class="menu-group as-main-navigation">
+                    <li class="js-main-nav-section" data-section="home">
+                        <a href="https://community.tealiumiq.com/" class="menu-list-item top-level tooltip-right" title="Tealium Learning Center">
+                          <span class="menu-large-icon">
+                              <span class="as-platform-image square-xxxs is-rounded bg-transparent">
+                                  <span class="inner-image UDH-icon">TLC</span>
+                              </span>
+                          </span>
+                          <span class="menu-context supportLinks_buttonTitle">Tealium Learning Center</span>
+                        </a>
+                          <span class="tooltiptext">Tealium Learning <br>Center</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a href="https://community.tealiumiq.com/t5/Forums/ct-p/tealiumlearningcommunity" class="menu-list-item top-level tooltip-right" title="Discussions & Ideas">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-comments"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">Discussions & Ideas</span>
+                        </a>
+                          <span class="tooltiptext">Dicussions & Ideas</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section active">
+                        <a href="https://docs.tealium.com/" class="menu-list-item top-level tooltip-right" title="Documentation">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-book"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">Documentation</span>
+                        </a>
+                          <span class="tooltiptext">Documentation</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section" data-section="kb">
+                        <a href="https://support.tealiumiq.com/en/support/solutions" class="menu-list-item top-level tooltip-right">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-head-side-brain"></i>
+                            </span>
+                            <span class="menu-context">Knowledge Base</span>
+                        </a>
+                          <span class="tooltiptext"> Knowledge Base </span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a href="https://education.tealium.com/" class="menu-list-item top-level tooltip-right" title="Education">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-graduation-cap"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">Education</span>
+                        </a>
+                          <span class="tooltiptext">Education</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a href="https://community.tealiumiq.com/t5/TLC-Blog/bg-p/TLC-Blog" class="menu-list-item top-level tooltip-right" title="TLC Blog">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-newspaper"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">TLC Blog</span>
+                        </a>
+                          <span class="tooltiptext">TLC Blog</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a  href="https://support.tealiumiq.com" target="_blank" class="menu-list-item top-level tooltip-right" title="Tealium Support Desk">
+                          <span class="menu-large-icon">
+                            <i class="fal fa-life-ring"></i>
+                          </span>
+                          <span class="menu-context supportLinks_buttonTitle">Support Desk</span>
+                        </a>
+                          <span class="tooltiptext">Support Desk</span>
+                    </li>
+                </ul>
+            </div>
+            <ul class="menu-group as-main-navigation flex-0 bottom-align">
+              <li class="menu-divider"></li>
+              <li class="js-main-nav-section">
+                <a href="https://my.tealiumiq.com/" class="menu-list-item top-level tooltip-right" title="Customer Data Hub">
+                    <span class="menu-large-icon">
+                        <span class="as-platform-image square-xxxs is-rounded bg-transparent">
+                            <span class="inner-image UDH-icon">CDH</span>
+                        </span>
+                    </span>
+                    <span class="menu-context supportLinks_buttonTitle">Customer Data Hub</span>
+                </a>
+                          <span class="tooltiptext">Customer Data Hub</span>
+              </li>
+              <li class="menu-divider"></li>
+              <li class="js-toggle-leftframe">
+                <a href="#" class="menu-list-item top-level d-flex justify-content-end" title="Expand/Collapse">
+                    <span class="menu-large-icon d-flex align-items-center justify-content-center mr-0">
+                        <span class="as-platform-image square-xxxs is-rounded bg-transparent d-flex align-items-center justify-content-center">
+                            <i class="fa as-caret"></i>
+                        </span>
+                    </span>
+                </a>
+              </li>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+
+</nav>
+
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 ph0-l ph4 pr4">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto vh-100 overflow-auto dn db-l sticky-l pt3 pl125" style="width:280px;">
+<nav class="side-nav f6" role="navigation">
+  <ul class="list pa0 mt0 mb1">
+  
+    <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>Home</a></li>
+  
+  </ul>
+  <ul class="list pa0"><li class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><a href="/early-access/" class="dib w-100 link text-color-primary hover-primary-color"><span class="pb2">Early Access</span></a>
+        <ul class="early-access desktopmenu animated fadeIn list pl0 mt2"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">About Early Access</a>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".consent">Consent Integrations</a>
+        <ul class=" consent desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/consent/about-consent-integrations/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">About Consent Integrations</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/consent/supported-vendors/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Supported Vendor Integrations</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/consent/custom-cmp/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Custom CMP Integrations</a>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".data-connect">Data Connect</a>
+        <ul class=" data-connect desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/data-connect/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-data-connect-early-access">About</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/data-connect/dashboard/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".using-the-data-connect-dashboard-early-access">Dashboard</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/data-connect/api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".data-connect-api-early-access">Data Connect API</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/data-connect/managing-data-connect-integrations-early-access/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".managing-data-connect-integrations-early-access">Manage Integrations</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/data-connect/tables/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".managing-data-connect-tables-early-access">Manage Tables</a>
+      </li></ul>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/data-insights/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Data Insights</a>
+      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/file-import/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".">File Import</a>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".permissions">Platform Permissions</a>
+        <ul class=" permissions desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/platform-permissions/early-access-release/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Early Acess Release</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/platform-permissions/expanded-release/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Expanded Early Access Release</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/platform-permissions/pii-account-roles/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">PII and Account Level Roles</a>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".api-v3">Tealium API v3</a>
+        <ul class=" api-v3 desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/tealium-api-v3-getting-started-early-access/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-api-v3-getting-started-early-access">Authentication and Request Format</a>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".iq-profiles-api">iQ Profiles</a>
+        <ul class=" iq-profiles-api desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-v3-api">About iQ Profiles</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-get-profile-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-get-profile-api">iQ GET Profile API</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-javascript-extension-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-javascript-extension-api">iQ JavaScript Extension API</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-load-rules-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-load-rules-api">iQ Load Rules API</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-profiles-api-objects/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-api-objects">iQ Profiles API Objects</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-variables-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-variables-api">iQ Variables API</a>
+      </li></ul>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/tealium-collect-http-api-v3-early-access/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-collect-http-api-v3-early-access">Tealium Collect HTTP API</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/tealium-api-v3-visitor-privacy-api-formerly-visitor-lookup-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-api-v3-visitor-privacy-api-formerly-visitor-lookup-api">Visitor Privacy API</a>
+      </li></ul>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/visitor-deletion-jobs/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".visitor-deletion-jobs">Visitor Deletion Jobs</a>
+      </li></ul></li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto max-vh-100 pt3 ph4-l mid-gray nested-copy-line-height no-underline nested-links nested-copy-seperator nested-blockquote mt0-ns w-100" style="flex:1;">
+      <div class="documentation-copy ml3">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+  
+  <li class="primary-color f7 lvl0"><a class="f6 mb0 link mid-gray dim" href="/">Home</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="primary-color f7 lvl1"><a class="f6 mb0 link mid-gray dim" href="/early-access/">Early Access</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mb3 mv0 pt3">File Import Data Source (Early Access)</h1>
+</header>
+
+<div class="bt bw1 mv2 mid-gray b--mid-gray fn w-100">
+  
+    <p class="f4 fw3 lh-copy">
+      This article describes how to import CSV files as a data source, allowing offline data to become enriched and actionable within the Customer Data Hub.
+    </p>
+  
+</div>
+
+<div class="prose" id="prose">
+  <p>To be successfully imported, the CSV files must be formatted correctly. For information on the file format, see <a href="https://community.tealiumiq.com/t5/Universal-Data-Hub/Preparing-a-CSV-File-for-Import/ta-p/26081">Preparing a CSV File for Import</a>.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Tealium AudienceStream CDP</li>
+<li>Tealium EventStream API Hub</li>
+</ul>
+<h3 id="how-it-works">How It works</h3>
+<p>The File Import feature provides the ability to import a CSV file to supplement online visitor profiles with valuable offline data. Using this feature, you can import a CSV file using a file transfer service, such as an Amazon S3 Bucket. The Tealium server connects to the file service, reads the file, and ingests the data. Each imported row is processed as an event. After the data is ingested, it can then be enriched, stitched to existing visitor profiles, and sent to other vendors.</p>
+<p>There are two steps in setting up a file import as a data source:</p>
+<ol>
+<li>Set up a file import data source
+Setting up a file import data source requires that you prepare a CSV file, configure column mappings, and assign a file transfer service.</li>
+<li>Upload files to your file transfer service
+After you set up your data source, upload your CSV files to your file service. File uploading is done outside of Tealium.</li>
+</ol>
+<h4 id="csv-column-mapping-configuration">CSV Column Mapping Configuration</h4>
+<p>The column mapping configuration determines the event attributes that correspond to each column in the CSV file. The column names are often different from the attribute names in the Customer Data Hub, so this mapping ensures that the data is imported properly. For example, a CSV file might have a column named <code>postalCode</code>, but the matching event attribute is named <code>customer_zip</code>, so a column mapping is needed to associate the two.</p>
+<p>Mappings can be configured based on an existing event specification or as a custom event.</p>
+<h5 id="event-spec-mapping">Event Spec Mapping</h5>
+<p>When a file import uses an event specification mapping, the event attributes are pre-selected and you specify the CSV column name that corresponds to each attribute. Each row is processed as an event of the selected specification, for example <code>tealium_event = &quot;purchase&quot;</code>.</p>
+<h5 id="custom-mapping">Custom Mapping</h5>
+<p>When a file import uses a custom event mapping, you specify the event attribute that corresponds to each CSV column. Each row is processed as an event with the following event identifier:</p>
+<p><code>tealium_event = &quot;imported&quot;</code></p>
+<h5 id="file-transfer-service">File Transfer Service</h5>
+<p>The file transfer service is a secure location where you upload the files to be imported. The following file transfer services are supported:</p>
+<ul>
+<li>
+<p>Amazon S3 (Tealium bucket or your own bucket) <p class="note"><i class="fas fa-info-circle"></i>Tealium uses <a href="https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-services-overview.html">VPC endpoints to access Tealium S3 buckets</a> directly through the AWS network. Use IAM credentials to allow Tealium access your own bucket via our VPC Internet Gateway.</p></p>
+</li>
+<li>
+<p>Microsoft Azure File/Blob Storage</p>
+</li>
+<li>
+<p>FTP/SFTP<br>
+Supports the following authentication methods:</p>
+<ul>
+<li>Password</li>
+<li>Upload Private Key File</li>
+<li>Generate Key Pair</li>
+</ul>
+</li>
+</ul>
+<p class="tip"><i class="fas fa-star"></i>If you use your own file transfer service, be sure to have the connection details ready before proceeding.</p>
+<h4 id="file-import-process">File Import Process</h4>
+<p>After a file transfer service is assigned to a file import data source, you upload files to the service. The system then uses the following order of operations:</p>
+<ol>
+<li><strong>Check for New Files</strong><br>
+The system checks the file transfer service for new files every 10 minutes.</li>
+<li><strong>Copy New Files</strong><br>
+When a new file is detected, it is copied from the file transfer location and processed in the Customer Data Hub.</li>
+<li><strong>Match Filename Prefix to File Import Data Source</strong><br>
+The prefix of the filename is used to identify which file import data source to use when importing the data in the file.</li>
+<li><strong>Process Files</strong><br>
+The header line is read to identify the attributes being ingested. From there, the following processing is performed:</li>
+</ol>
+<ul>
+<li>
+<p><strong>Visitor Lookup</strong><br>
+The visitor ID is used for a lookup of the visitor record in AudienceStream. If an existing visitor record is not found, a new one is created. <p class="tip"><i class="fas fa-star"></i>Grouping rows with the same visitor ID increases the speed of the import.</p></p>
+</li>
+<li>
+<p><strong>Attribute Enrichment</strong><br>
+The visitor record is enriched according to the attributes imported and the existing enrichments in your account.</p>
+</li>
+</ul>
+<h3 id="setting-up-a-file-import-data-source">Setting Up a File Import Data Source</h3>
+<p class="tip"><i class="fas fa-star"></i>Before you begin, create a sample CSV file (less than 1,000 rows) to use during the setup process. THis sample file is used to automatically detect the column mappings.</p>
+<p>Navigate to <strong>Sources &gt; Data Sources</strong> and click <strong>+ Add Data Source</strong>. Complete the following steps to set up a file import data source:</p>
+<h4 id="1-add-a-file-import-data-source">1. Add a File Import Data Source</h4>
+<p>Complete the following steps to add a file import data source:</p>
+<ol>
+<li>In the sidebar, select <strong>Sources &gt; Data Sources</strong>.</li>
+<li>Click <strong>+ Add Data Source</strong>.</li>
+<li>Under <strong>Categories</strong>, click <strong>File Import</strong> and select the <strong>File Import</strong> platform.</li>
+<li>In the <strong>Name</strong> field, enter a unique name related to the file type and click <strong>Continue</strong>.</li>
+</ol>
+<h4 id="2-upload-a-sample-file-optional">2. Upload a Sample File (Optional)</h4>
+<p>After you have added a file import data source, you upload the sample CSV file. During this upload, column names in the file are automatically detected and pre-configured on the column mappings screen. This step is optional and can be skipped by clicking <strong>Continue</strong> to go directly to the column mappings screen.</p>
+<p>Complete following steps to upload a sample file:</p>
+<ol>
+<li>Select a file.
+<ul>
+<li>Click <strong>[Choose a file&hellip;]</strong>, select the file, and click <strong>Open,</strong> or</li>
+<li><strong>Drag and Drop</strong> a file directly onto the upload area.<br>
+The <strong>Sample File</strong> preview screen displays the file contents in table format.</li>
+</ul>
+</li>
+<li>Scroll through the sample file to verify that the columns and data look correct.<br>
+The detected column names are listed in CSV format below the table and are pre-populated on the column mapping screen.</li>
+<li>If there are problems with the sample file, click <strong>Remove</strong> and try another file.</li>
+<li>Click <strong>Continue</strong>.<br>
+<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/7949i922A60D2934C2BFA/image-size/large?v=v2&amp;amp;px=999"
+         alt="WhiteUI_FileImportDataSource_Preview.png"
+         title="WhiteUI_FileImportDataSource_Preview.png"/>
+</figure></li>
+</ol>
+<h4 id="3-configure-column-mappings">3. Configure Column Mappings</h4>
+<p>The <strong>Mapping</strong> screen is used to indicate the type of data being imported and how to map the CSV columns to event attributes.</p>
+<h5 id="event-specification">Event Specification</h5>
+<p>Each row of the CSV file is processed as an event. Use the drop-down menu to select which specification matches the data in the file, otherwise select <strong>Custom</strong>. This selection determines the value of the <code>tealium_event</code> attribute during the import process. If <strong>Custom</strong> is selected, <code>tealium_event</code> is set to <code>imported</code>, otherwise it is set to the corresponding specification name, such as <code>purchase</code>.</p>
+<p class="note"><i class="fas fa-info-circle"></i>Changing the selected specification resets the column mapping table.</p>
+<h5 id="column-mapping-table">Column Mapping Table</h5>
+<p>The column mapping table contains the following columns:</p>
+<ul>
+<li><strong>Column Label from CSV</strong><br>
+The columns names from the CSV (pre-populated from the sample file).</li>
+<li><strong>Date Formatter</strong><br>
+A date formatter for columns that contain date/time values.</li>
+<li><strong>Event Attribute</strong><br>
+The event attribute to receive the data from that column.</li>
+<li><strong>Sample 1 – Sample 3</strong><br>
+Values from the sample file.</li>
+</ul>
+<p>Complete the following steps to map each column to an event attribute:</p>
+<ol>
+<li>Enter or select a column name from the file (if not pre-selected).</li>
+<li>Click the drop-down list in each <strong>Event Attribute</strong> column and select the event attribute to map to that column. Each CSV column heading must be unique.  <figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/7954i4722007A395A1721/image-size/large?v=v2&amp;amp;px=999"
+         alt="WhiteUI_File Import_Column Mapping.png"
+         title="WhiteUI_File Import_Column Mapping.png"/>
+</figure></li>
+<li>Columns with date/time values must have a matching date format setting. Click the checkbox in the date column next to any column for which you need to customize the timestamp format. The default value is <code>yyyy-MM-dd</code>.<br>
+An interactive menu displays that allows you customize the timestamp format for that column.  <figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/7951i7DCA29EEFE53BEFE/image-size/large?v=v2&amp;amp;px=999"
+         alt="WhiteUI_FileImportDataSource_ReverseColorCalendarPopUp.png"
+         title="WhiteUI_FileImportDataSource_ReverseColorCalendarPopUp.png"/>
+</figure></li>
+<li>Repeat the column mapping and date formatting steps for each column.<br>
+If a column does not need to be mapped, click the red <strong>X</strong> to remove that column from the list.</li>
+<li>(Optional) Click the <strong>Enable Visitor ID Mapping in AudienceStream</strong> checkbox.</li>
+<li>Click <strong>Continue</strong> to advance to the <strong>Service Configuration</strong> tab.</li>
+</ol>
+<h4 id="4-configure-a-file-transfer-service">4. Configure a File Transfer Service</h4>
+<p>The file transfer service is a secure location to which you upload your files for Tealium to retrieve them. If you are using your own file transfer service, ensure that you have the connection details ready before proceeding.</p>
+<p>Complete the following steps to add and configure your file transfer service:</p>
+<ol>
+<li>Select a service from the <strong>Choose File Service</strong> drop-down list.</li>
+<li>(Optional) If you do not have a file service set up or want to add a new service, click <strong>+ Add New File Service</strong>. If you have an existing configuration, select the configuration and skip to step 3.<br>
+To set up a new file service configuration, complete the following steps:
+<ol>
+<li>
+<p>In the <strong>Configure File Service</strong> screen, enter a name in the <strong>File Service Name</strong> field.</p>
+</li>
+<li>
+<p>From the <strong>Service</strong> drop-down list, select a supported file service from the list.</p>
+</li>
+<li>
+<p>For services other than My SFTP Connection, enter the credentials necessary to access the selected service. If you selected Tealium S3 Bucket, the necessary credentials are generated for you automatically.</p>
+</li>
+<li>
+<p>If you selected My SFTP Connection, choose an <strong>Authentication Method</strong>.<br>
+In addition to <strong>Password</strong> authentication, <strong>Upload****Private Key File</strong>, and <strong>Generate Key Pair</strong> are supported.</p>
+<ul>
+<li>If you selected <strong>Password</strong>, enter the password and click <strong>Test File Source Connection</strong>.</li>
+<li>If you selected <strong>Upload****Private Key File</strong>, choose a file from the list and click <strong>Test File Source Connection</strong>.</li>
+<li>If you selected <strong>Generate Key Pair</strong>, click <strong>Generate</strong> and click <strong>Test File Source Connection.</strong></li>
+</ul>
+</li>
+<li>
+<p>Select a <strong>Region</strong>.</p>
+</li>
+<li>
+<p>(Optional) To improve file processing efficiency, consider compressing your files using a tool that   supports GZIP compression. If your files are compressed, select <strong>GZIP</strong> for the <strong>Compression</strong> format.</p>
+</li>
+<li>
+<p>(Optional) To ensure secure processing of your files, consider encrypting your files with an encryption tool that supports PGP encryption. If your files are encrypted, select <strong>PGP</strong> for the <strong>Encryption</strong> format.  <p class="note"><i class="fas fa-info-circle"></i>Currently, the only supported compression format is GZIP and the only supported encryption format is PGP. If you are processing files that are both compressed and encrypted, the files must be compressed first, then encrypted. If you are processing new versions of files that have been mapped previously, your files must be encrypted and compressed in the same way as previously processed versions.</p></p>
+</li>
+<li>
+<p>Click <strong>Save</strong> to save this service for future use.</p>
+</li>
+</ol>
+</li>
+<li>In the <strong>Service Configuration</strong> screen, enter the <strong>File Name Prefix</strong>, such as <strong>ordercompleted</strong>. The prefix of the filename is used to identify which file import data source to use when importing the data in the file. In this example, the prefix is used to create a CSV file titled <code>ordercompleted_VERSION.csv</code>.<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/7952i651F2B6266FFF14B/image-size/large?v=v2&amp;amp;px=999"
+         alt="WhiteUI_FileImportDataSource_ConfigureFileService.png"
+         title="WhiteUI_FileImportDataSource_ConfigureFileService.png"/>
+</figure></li>
+<li>Use the slider to <strong>Enable or Disable Service Processing for File Import</strong>.
+<ul>
+<li>When set to <strong>ON</strong>, the file service is checked and files are processed every 10 minutes.</li>
+<li>Set to <strong>OFF</strong> if you are not ready to start processing files. You can enable the service later.</li>
+</ul>
+</li>
+<li>Click <strong>Continue</strong> to advance to the <strong>Summary</strong> tab.</li>
+</ol>
+<h4 id="5-summary">5. Summary</h4>
+<p>In this final step, you view the summary, make any needed corrections, and then save and publish your profile.</p>
+<ol>
+<li>View the <strong>Event Attribute Mappings</strong>.  <figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/7955i8F36B37C63F91649/image-size/large?v=v2&amp;amp;px=999"
+         alt="WhiteUI_FileImportDataSource_Summary_Finish.png"
+         title="WhiteUI_FileImportDataSource_Summary_Finish.png"/>
+</figure></li>
+<li>To make changes, click <strong>Previous</strong> twice to return to the <strong>Mapping</strong> tab to update.</li>
+<li>Click <strong>Finish</strong> to exit the configuration dialog.<br>
+Your new data source now displays in the list of data sources.  <figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/7956iFFA6E4C341C30053/image-size/large?v=v2&amp;amp;px=999"
+         alt="WhiteUI_FileImportDataSources_Now Added.png"
+         title="WhiteUI_FileImportDataSources_Now Added.png"/>
+</figure></li>
+<li>Click <strong>Save/Publish</strong> to save and publish your changes.</li>
+</ol>
+<h3 id="uploading-a-file-to-a-file-service">Uploading a File to a File Service</h3>
+<p>To upload a file to a file service, a third-party application is required to initiate the upload. Though you may use any client for this purpose, Tealium recommends <a href="https://cyberduck.io/s3/">Cyberduck</a> because it&rsquo;s free and supports FTP and Amazon S3.</p>
+<p class="note"><i class="fas fa-info-circle"></i>When multiple files are uploaded at the same time using SFTP or S3, the files are processed in alphabetical order based on the file name.</p>
+<h4 id="using-cyberduck-to-upload-a-file-via-ftp-or-amazon-s3">Using Cyberduck to Upload a File via FTP or Amazon S3</h4>
+<ol>
+<li>Launch Cyberduck.</li>
+<li>Create a new connection and give it a title.</li>
+<li>Select the file transfer service used in your File Transfer Service configuration.</li>
+<li>Enter the credentials (username and password) for your service.
+<ul>
+<li><strong>My FTP Connection and My SFTP Connection</strong></li>
+<li><strong>Tealium S3 Bucket</strong> The credentials are pre-populated as an Access Key (username) and Secret Key (password).</li>
+</ul>
+</li>
+<li>Provide other details, such as the server, path, port, etc, required by your service. To learn more about accessing third-party S3 buckets using Cyberduck, see the <a href="https://docs.cyberduck.io/protocols/s3/#Accessthirdpartybuckets">Amazon S3</a> article in the Cyberduck documentation.</li>
+<li>Save the connection.</li>
+</ol>
+<p>You are now ready to upload files by dragging and dropping your CSV files into Cyberduck. If this is a new S3 bucket (an empty bucket), see <a href="#s3-bucket-1st-upload">Uploading a File to an Empty S3 Bucket</a> for instructions on uploading your first file.</p>
+<p class="note"><i class="fas fa-info-circle"></i>When using SFTP, the file must be located in the root folder. Files cannot be located in the sub-folders for an SFTP connection.</p>
+<h4 id="using-the-amazon-command-line-interface-to-upload-and-manage-files">Using the Amazon Command Line Interface to Upload and Manage Files</h4>
+<p>To install the Amazon Command Line Interface (CLI), see <a href="http://docs.aws.amazon.com/cli/latest/userguide/installing.html">Installing, updating, and uninstalling the AWS CLI</a> in the Amazon documentation. For information on configuring AWS CLI, see <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html">Configuration Basics</a>.</p>
+<p>When you call<code>aws configure</code>, you are prompted for your Access Key and Access Key ID (you can leave Region Name and Output Format blank).</p>
+<p>After you configure the CLI, you can make queries using the<code>s3api</code>method, as shown in the following CLI examples:</p>
+<h5 id="list-all-objects-in-the-root-folder">List all Objects in the Root Folder</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws s3 ls s3://collect-REGION.tealium.com/bulk-downloader/ACCOUNT-PROFILE/
+</span></span></code></pre></div><h5 id="copy-a-file-into-a-folder">Copy a File into a Folder</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws s3 cp local_file.csv s3://collect-REGION.tealium.com/bulk-downloader/ACCOUNT-PROFILE/
+</span></span></code></pre></div><h5 id="remove-a-file-from-a-folder">Remove a File from a Folder</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws s3 rm s3://collect-REGION.tealium.com/bulk-downloader/ACCOUNT-PROFILE/local_file.csv
+</span></span></code></pre></div><h5 id="file-upload-errors">File Upload Errors</h5>
+<p>When a file process failure occurs, the file is ignored. The system does not attempt to process the file again. The most common reasons for failure are:</p>
+<ul>
+<li>The CSV file is improperly formatted and is therefore not a valid CSV file</li>
+<li>The CSV file must be in UTF-8 format with no BOM encoding</li>
+<li>Column names used in the file definition do not exist in the file</li>
+<li>A column name is used more than once in the File Service configuration</li>
+</ul>
+<h4 id="uploading-a-file-to-an-empty-s3-bucket">Uploading a File to an Empty S3 Bucket</h4>
+<p>When an S3 bucket is first created, it&rsquo;s empty. If you try to access an empty S3 bucket, the following message may be displayed:</p>
+<p><code>Failure to read attributes of ACCOUNT-PROFILE</code></p>
+<p>Before uploading any CSV files, use the following <code>aws s3api</code> command to upload a file into the empty bucket:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws s3api put-object --bucket &lt;bucket&gt; --key &lt;key&gt; --body &lt;body&gt;
+</span></span></code></pre></div><ul>
+<li>The <code>bucket</code> value is the region domain in the format <code>collect-REGION.tealium.com</code>.</li>
+<li>The <code>key</code> value specifies the filename you want to assign to the file, including the file prefix.</li>
+<li>The <code>body</code> value specifies specifies the file location on the local system.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws s3api put-object --bucket collect-us-east-1.tealium.com <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --key bulk-downloader/ACCOUNT-PROFILE/test_fileimp_01.csv <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --body ./test_fileimp_01.csv
+</span></span></code></pre></div><p>For more information, see <a href="https://community.tealiumiq.com/t5/Data-Sources-and-File-Imports/AWS-Command-Line-Interface-CLI-How-to-connect-to-your-S3-Bucket/ta-p/35724">AWS Command Line Interface (CLI): How to Connect to Your S3 Bucket and Other Common Commands</a>.</p>
+<h3 id="check-import-status">Check Import Status</h3>
+<p>After the file import data source is set up and has begun importing files, you can view the import activity from the <strong>Status</strong> tab by expanding the data source in the <strong>Data Sources Dashboard</strong>. This tab shows a rolling month report, with details about how many rows were processed, with and without errors, in graphical format. A tabular view displays directly underneath the graph.</p>
+<p class="tip"><i class="fas fa-star"></i>You can also see events imported from files on the Live Events screen by navigating to Live Events and selecting the File Import data source you want to view from the drop-down list.</p>
+<p>If an error occurs, hovering over the red area of a bar in the graphical display displays a breakdown of the errors. Tooltips show common errors with a link to detailed report of all errors hosted in S3. Hover over any bar in the display to view details about the number of rows processed.</p>
+<p class="note"><i class="fas fa-info-circle"></i>If AudienceStream fails to copy a file using the file transfer service, it will retry in 10 minutes.</p>
+
+</div>
+
+<div class="pv3 overflow-hidden"><div class="fr">
+
+  
+  <a href="/early-access/visitor-deletion-jobs/"
+    class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+    <section class="tl pr3">
+      <div class="f7 text-color-secondary">Next</div>
+      <div>Visitor Deletion Jobs</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"Visitor Deletion Jobs"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
+  
+  
+</div><div class="di">
+  
+  
+  <a href="/early-access/data-insights/"
+    class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
+    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"Data Insights "</title>
+      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+    </svg>
+   <section class="tr pl3">
+      <div class="text-color-secondary f7">Previous </div>
+      <div>Data Insights</div>
+    </section>
+  </a>
+  
+
+</div></div>
+
+
+
+        <div class="nested-lh-copy lh-copy bt-l b--moon-gray  mt3 cb">
+          <div id="feedback_form">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">Was this page helpful?</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+Yes</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+No</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea><button id="feedback_submit" class="ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">Send Feedback</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">Thank you for your feedback!</p>
+  </div>
+</div>
+
+          <p>This page was last updated:  January 30, 2023 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-100 w-20-l pl4 ph4-m mb4 sticky-r dn db-l">
+      
+
+
+
+  <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--light-gray pv4 pv0-ns ph3-l nested-copy-line-height">
+      <p class="b ttu">On this page</p>
+      <nav id="TableOfContents"><ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#prerequisites">Prerequisites</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How It works</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#setting-up-a-file-import-data-source">Setting Up a File Import Data Source</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#uploading-a-file-to-a-file-service">Uploading a File to a File Service</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#check-import-status">Check Import Status</a></li>
+              </nav>
+  </aside></nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-primary-color-dark ph1-ns relative w-100" role="contentinfo">
+    <div class="center flex-ns flex-wrap justify-between mw9 w-90">
+    </div>
+
+    <div class="bg-primary-color-dark bottom-0 left-0 right-0 dn-l fixed pb3 ph3 w-100">
+<div class="globalmenu mobilemenu dn">
+    
+
+<ul class="list hidden dib ph0 ma0 scrolling-touch tc">
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Home
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/iq-tag-management/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          iQ Tag Management
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/getting-started/eventstream-api-hub/introduction/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          EventStream API Hub
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/getting-started/audiencestream-cdp/introduction/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/functions/about/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Functions
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/predict/getting-started/about-predict/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Predict ML
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/data-storage/about/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          DataAccess
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/client-side-tags/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Client-Side Tags
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side-connectors/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Server-Side Connectors
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Platforms
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/api/getting-started/auth/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium for Pharma
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Identity Partners
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tech-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Technology Partners
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/glossary/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Glossary
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/early-access/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Early Access
+        </a>
+    </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+</div>
+
+
+<div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
+    <ul class="list dib ph0 ma0 scrolling-touch tc">
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/about/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          About Early Access
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/consent/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Consent Integrations
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/data-connect/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Data Connect
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/data-insights/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Data Insights
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/file-import/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          File Import
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/platform-permissions/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Platform Permissions
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/api-v3/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Tealium API v3
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/visitor-deletion-jobs/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Visitor Deletion Jobs
+      </a>
+      </li>
+      
+      
+  
+
+</ul>
+
+</div>
+
+
+
+
+<div class="flex dn-l justify-between">
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link mr2 white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".globalmenu">Site</button>
+
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".docsmenu">Section</button>
+
+</div>
+</div>
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'Search',
+    buttonAriaLabel: 'Search',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'Clear the query',
+      resetButtonAriaLabel: 'Clear the query',
+      cancelButtonText: 'Cancel',
+      cancelButtonAriaLabel: 'Cancel',
+    },
+    startScreen: {
+      recentSearchesTitle: 'Recent',
+      noRecentSearchesText: 'No recent searches',
+      saveRecentSearchButtonTitle: 'Save this search',
+      removeRecentSearchButtonTitle: 'Remove this search from history',
+      favoriteSearchesTitle: 'Favorite',
+      removeFavoriteSearchButtonTitle: 'Remove this search from favorites',
+    },
+    errorScreen: {
+      titleText: 'Unable to fetch results',
+      helpText: 'You might want to check your network connection.',
+    },
+    footer: {
+      selectText: 'to select',
+      selectKeyAriaLabel: 'Enter key',
+      navigateText: 'to navigate',
+      navigateUpKeyAriaLabel: 'Arrow up',
+      navigateDownKeyAriaLabel: 'Arrow down',
+      closeText: 'to close',
+      closeKeyAriaLabel: 'Escape key',
+      searchByText: 'Search by',
+    },
+    noResultsScreen: {
+      noResultsText: 'No results for',
+      suggestedQueryText: 'Try searching for',
+      reportMissingResultsText: 'Believe this query should return results?',
+      reportMissingResultsLinkText: 'Let us know.',
+    },
+  },
+};
+var default_sections = [
+  "Platforms > JavaScript (Web)",
+  "Platforms > Getting Started for Websites",
+  "Platforms > Android (Kotlin)",
+  "Platforms > iOS (Swift)",
+  "Platforms > Getting Started for Mobile"
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+docsearch({
+  container: '#docsearch',
+  appId: '01G44CJWZ0',
+  apiKey: 'cb21a38c7ac4f7dddf727fa23008d220',
+  indexName: 'tealium',
+  placeholder: 'Search',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    optionalFilters: opt_filters
+  },
+  debug: "false"
+});
+</script>
+
+    
+
+  </body>
+</html>

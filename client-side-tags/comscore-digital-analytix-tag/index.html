@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>comScore Tag Setup Guide | Client-Side Tags |Tealium Docs</title>
+    <title>comScore Digital Analytix Tag Setup Guide | Client-Side Tags |Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -202,7 +202,7 @@ var utag_data = {
     <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>Home</a></li>
   
   </ul>
-  <ul class="list pa0"><li class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><span class="pb2">Client-Side Tags</span></li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+  <ul class="list pa0"><li class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><a href="/client-side-tags/" class="dib w-100 link text-color-primary hover-primary-color"><span class="pb2">Client-Side Tags</span></a></li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/acoustic-digital-analytics-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".acoustic-digital-analytics-tag">Acoustic Digital Analytics</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/acoustic-digital-analytics-cheatsheet/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".acoustic-digital-analytics-pixel-parameter-cheatsheet">Acoustic Digital Analytics Cheatsheet</a>
@@ -325,7 +325,11 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/commission-factory-au-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".commission-factory-au-tag">Commission Factory (AU)</a>
       </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/client-side-tags/comscore-tag/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".comscore-tag-basic-configuration">comScore</a>
+        <a href="/client-side-tags/comscore-digital-analytix-tag/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".comscore-digital-analytix-tag-configuration">comScore Digital Analytix</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/client-side-tags/comscore-mobile-js-tracking-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".comscore-mobile-js-tracking-tag">comScore Mobile JS Tracking</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/client-side-tags/comscore-stream-sense-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".comscore-stream-sense-tag">comScore Stream Sense</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/configuring-multiple-floodlight-tags/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".configuring-multiple-floodlight-tags">Configuring Multiple Floodlight Tags</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -727,75 +731,162 @@ var utag_data = {
 </ul>
 </nav>
 
-<h1 class="lh-title mb3 mv0 pt3">comScore Tag Setup Guide</h1>
+<h1 class="lh-title mb3 mv0 pt3">comScore Digital Analytix Tag Setup Guide</h1>
 </header>
 
 <div class="bt bw1 mv2 mid-gray b--mid-gray fn w-100">
   
+    <p class="f4 fw3 lh-copy">
+      This article describes how to set up the comScore Digital Analytix tag.
+    </p>
+  
 </div>
 
 <div class="prose" id="prose">
-  <h2 id="tag-configuration">Tag configuration</h2>
-<p>Navigate to the Tag Marketplace to add a new tag. Read the <a href="/iq-tag-management/tags/about/">Tag Overview</a> article for general instructions on how to add a tag.</p>
-<p>When adding the tag, configure the following settings:</p>
+  <h2 id="tag-tips">Tag tips</h2>
 <ul>
-<li><strong>Name</strong>: comScore</li>
-<li><strong>Vendor</strong>: comScore</li>
-<li><strong>Type</strong>: Web Analytics</li>
-</ul>
-<h4 id="required">Required</h4>
-<p><strong>Services</strong>: comScore Direct Account</p>
-<p><strong>Configurations</strong>:</p>
+<li>comScore is now GDPR-compliant. You can indicate a visitor&rsquo;s consent by setting the <code>cs_ucfr</code> parameter to 0 (no consent) or 1 (consent). By default the <code>cs_ucfr parameter</code> is set to 0. You can set this parameter via mappings. You may have to update this tag&rsquo;s template to take advantage of this feature.</li>
+<li>Use mapping to add additional <code>c-parameters</code>.</li>
+<li>Order tracking is triggered automatically when an Order ID is set via the E-Commerce extension.</li>
+<li>Supports the following E-Commerce extension values:
 <ul>
-<li>comScore Client ID</li>
+<li>Order ID</li>
+<li>Shipping Amount</li>
+<li>Customer ID</li>
+<li>List of Product IDs</li>
+<li>List of Brands</li>
+<li>List of Categories</li>
+<li>List of Categories 2</li>
+<li>List of Quantities</li>
+<li>List of Prices</li>
 </ul>
-<hr>
-<h2 id="tag-configuration-in-tealium-iq">Tag Configuration in Tealium iQ</h2>
-<h6 id="1-adding-the-tag">1. Adding the Tag</h6>
-<p>Tealium iQ&rsquo;s Tag marketplace offers a wide variety of Tags. Click <a href="https://community.tealiumiq.com/posts/541835">here</a> to learn how to add a Tag to your profile.</p>
-<h6 id="2-configuring-the-tag">2. Configuring the Tag</h6>
-<figure><img src="http://community-beta.tealiumiq.com:80/t5/image/serverpage/image-id/1667i542F6ACB0CD5F9EF?v=mpbl-1"/><figcaption><p>config.png</p>
-        </figcaption>
-</figure>
-<ol>
-<li><strong>Title</strong> (Required): Enter a descriptive title to identify the Tag instance.</li>
-<li><strong>Account</strong> (Required): Enter the client ID provided to you by comScore. Client ID is the numeric value of the c2 parameter and can be obtained from your comScore Direct account. Example: 18273594</li>
-<li><strong>Stream Sense Video</strong> (Required): Choose whether or not you want to activate comScore&rsquo;s Stream Sense functionality for this Tag. Stream Sense tracks and reports browser interaction with video advertisements. By default, the functionality is set to &lsquo;Deactivate&rsquo;.</li>
-</ol>
+</li>
+</ul>
+<h2 id="tag-configuration">Tag configuration</h2>
+<p>Navigate to the Tag Marketplace to add a new tag. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
+<p>Configure the following settings:</p>
 <ul>
-<li>To activate Stream Sense, select &lsquo;Activate&rsquo; from the drop-down.</li>
+<li><strong>Client ID</strong>: Your comScore Client ID (c2)</li>
+<li><strong>Stream Sense Video Tracking</strong>:</li>
+<li><strong>Form Identifier</strong>: Enter a Form ID or Name to enable form measurements. Enter * to measure all forms. Use mapping to measure hidden form fields. Leave this field blank to disable form tracking.</li>
 </ul>
-<p><strong>Tip</strong>: Place this Tag at the top of the list in the Tags tab as comScore recommends you load this Tag as soon as the page begins to load.</p>
-<h6 id="3-applying-load-rules">3. Applying Load Rules</h6>
-<p><a href="https://community.tealiumiq.com/posts/572034">Load Rules</a> determine when and where to load an instance of this Tag. The &lsquo;Load on All Pages&rsquo; rule is the default Load Rule. To load this Tag on a specific page, create a new load rule with the relevant conditions.</p>
-<p><strong>Best Practice</strong>: Leave the default &lsquo;Load on All Pages&rsquo; selection as is. Loading this Tag on all pages of your site optimizes the data collection process.</p>
-<h6 id="4-setting-up-mappings">4. Setting up Mappings</h6>
-<p><a href="https://community.tealiumiq.com/posts/762144#mapping">Mapping</a> is the simple process of sending data from a data source, in your Data Layer, to the matching destination variable of the vendor Tag. The Mapping toolbox for this Tag does not offer any pre-defined destination variables since comScore supports custom (more like &lsquo;user-defined&rsquo;) variables. The custom variable you specify will in turn serve as the Tag&rsquo;s destination variable (see example screenshot below).</p>
-<figure><img src="http://community-beta.tealiumiq.com:80/t5/image/serverpage/image-id/1668iE3228CC1DBFCF1BC?v=mpbl-1"/><figcaption><p>mapping.png</p>
-        </figcaption>
-</figure>
-<hr>
-<h4 id="vendor-documentation">Vendor Documentation</h4>
-<ul>
-<li><a href="http://www.comscore.com/About_comScore">About comScore</a></li>
-<li><a href="http://direct.comscore.com/LearnMore.aspx">comScore FAQs</a></li>
-<li><a href="http://direct.comscore.com/LearnMore.aspx">What is comScore Direct</a></li>
-</ul>
-<p><a href="https://community.tealiumiq.com/posts/762144#mapping">How to set up Mappings</a> <a href="https://community.tealiumiq.com/posts/572034">How to set up Load Rules</a> <a href="https://community.tealiumiq.com/posts/541835">How to add a Tag</a></p>
+<h2 id="load-rules">Load rules</h2>
+<p>Load the tag on all pages or set conditions for when your tag will load. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
+<h2 id="data-mappings">Data mappings</h2>
+<p>Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see <a href="/iq-tag-management/data-mappings/about/">About data mappings</a>.</p>
+<p>The available categories are:</p>
+<h3 id="standard">Standard</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>c1</code></td>
+<td style="text-align:left"><ul><li>C1</li><li>String</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>c2</code></td>
+<td style="text-align:left"><ul><li>Client ID</li><li>String</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ns_type</code></td>
+<td style="text-align:left"><ul><li>NS Type</li><li>String</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>form</code></td>
+<td style="text-align:left"><ul><li>Form identifier</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>form_normal</code></td>
+<td style="text-align:left"><ul><li>Normal Form Fields</li><li>Array</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>form_hidden</code></td>
+<td style="text-align:left"><ul><li>Hidden Form Fields</li><li> Array</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>form_submit</code></td>
+<td style="text-align:left"><ul><li>Report Submit Events</li><li> Boolean</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>form_abandon</code></td>
+<td style="text-align:left"><ul><li>Report Abandon Events</li><li>Boolean</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>form_failure</code></td>
+<td style="text-align:left"><ul><li>Report Failure Events</li><li>Boolean</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>cs_ucfr</code></td>
+<td style="text-align:left"><ul><li>Consent State</li><li>[0/1]</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h3 id="e-commerce">E-Commerce</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>order_id</code></td>
+<td style="text-align:left"><ul><li>Order ID</li><li>Overrides <code>_corder</code></li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>order_shipping</code></td>
+<td style="text-align:left"><ul><li>Shipping Amount</li><li>Overrides <code>_cship</code></li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>customer_id</code></td>
+<td style="text-align:left"><ul><li>Customer ID</li><li>Overrides <code>_ccustid</code></li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>product_id</code></td>
+<td style="text-align:left"><ul><li>List of Product IDs</li><li>Array</li><li>Overrides <code>_cprod</code></li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>product_brand</code></td>
+<td style="text-align:left"><ul><li>List of Brands</li><li>Array</li><li>Overrides <code>_cbrand</code></li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>product_category</code></td>
+<td style="text-align:left"><ul><li>List of Categories</li><li>Array</li><li>Overrides <code>_ccat</code></li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>product_subcategory</code></td>
+<td style="text-align:left"><ul><li>List of Sub Categories</li><li>Array</li><li>Overrides <code>_ccat</code></li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>product_quantity</code></td>
+<td style="text-align:left"><ul><li>List of Quantities</li><li>Array</li><li>Overrides <code>_cquan</code></li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>product_unit_price</code></td>
+<td style="text-align:left"><ul><li>List of Prices</li><li>Array</li><li>Overrides <code>_cprice</code></li></ul></td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
 <div class="pv3 overflow-hidden"><div class="fr">
 
   
-  <a href="/client-side-tags/configuring-multiple-floodlight-tags/"
+  <a href="/client-side-tags/comscore-mobile-js-tracking-tag/"
     class="inline-flex justify-between ba ba-link b--black-20 br2 pa2">
     <section class="tl pr3">
       <div class="f7 text-color-secondary">Next</div>
-      <div>Configuring Multiple Floodlight Tags</div>
+      <div>comScore Mobile JS Tracking</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Configuring Multiple Floodlight Tags"</title>
+      <title>"comScore Mobile JS Tracking"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -842,7 +933,7 @@ No</button>
   </div>
 </div>
 
-          <p>This page was last updated:  April 7, 2016 
+          <p>This page was last updated:  January 30, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -856,8 +947,12 @@ No</button>
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--light-gray pv4 pv0-ns ph3-l nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag configuration</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration-in-tealium-iq">Tag Configuration in Tealium iQ</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-tips">Tag tips</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag configuration</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules">Load rules</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data mappings</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#standard">Standard</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#e-commerce">E-Commerce</a></li>
               </nav>
   </aside></nav>
 
@@ -1044,6 +1139,8 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
   
   
   

@@ -311,7 +311,7 @@ var utag_data = {
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content"><div class="tab-pane" data-lang="Swift Package Manager (Recommended)" title="Swift Package Manager (Recommended)">
-  <p>Swift Package Manager is the recommended and simplest way to install the TealiumFirebase package. To install Airship remote commands for iOS using Swift Package Manager:</p>
+  <p>Swift Package Manager is the recommended and simplest way to install the TealiumAirship package. To install Airship remote commands for iOS using Swift Package Manager:</p>
 <ol>
 <li>
 <p>In your Xcode project, select <strong>File &gt; Add Packages&hellip; &gt; Add Package Dependency</strong></p>
@@ -338,32 +338,31 @@ var utag_data = {
 </ol>
 </div>
 <div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
-  <p>To install Airship remote commands for iOS using CocoaPods:</p>
-<ol>
+  <ol>
 <li>
 <p>Remove <code>pod &quot;tealium-swift&quot;</code> and <code>pod &quot;Airship&quot;</code> if they exist in your Podfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumAirship</code> framework.</p>
 </li>
 <li>
 <p>Add the following dependency to your Podfile:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>pod <span style="color:#e6db74">&#34;TealiumAirship&#34;</span>
+</span></span></code></pre></div><p>The <code>TealiumAirship</code> pod includes the following <code>TealiumSwift</code> dependencies:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#34;tealium-swift/Core&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;tealium-swift/RemoteCommands&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;tealium-swift/TagManagement&#34;</span>
 </span></span></code></pre></div></li>
-</ol>
-<p>The <code>TealiumAirship</code> pod includes the following <code>TealiumSwift</code> dependencies:<br>
-<code>bash &quot;tealium-swift/Core&quot; &quot;tealium-swift/RemoteCommands&quot; &quot;tealium-swift/TagManagement&quot; </code></p>
-<ol start="3">
-<li>Add any other required modules manually to your Podfile, such as the following:
+<li>
+<p>Add any other required modules manually to your Podfile, such as the following:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>pod <span style="color:#e6db74">&#34;tealium-swift/Lifecycle&#34;</span>
 </span></span><span style="display:flex;"><span>pod <span style="color:#e6db74">&#34;tealium-swift/VisitorService&#34;</span>
-</span></span></code></pre></div></li>
-</ol>
-<p>Learn more about the <a href="/platforms/ios-swift/modules/">recommended modules for iOS</a>.</p>
-<ol start="4">
-<li>Import the modules <code>TealiumSwift</code> and <code>TealiumAirship</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class, or the Airship remote command.</li>
+</span></span></code></pre></div><p>Learn more about the <a href="/platforms/ios-swift/modules/">recommended modules for iOS</a>.</p>
+</li>
+<li>
+<p>Import the modules <code>TealiumSwift</code> and <code>TealiumAirship</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class, or the Airship remote command.</p>
+</li>
 </ol>
 </div>
 <div class="tab-pane" data-lang="Carthage" title="Carthage">
-  <p>To install Airship remote commands for iOS using Carthage:</p>
-<ol>
+  <ol>
 <li>
 <p>Remove <code>tealium-swift</code> from your Cartfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumAirship</code> framework.</p>
 </li>
@@ -378,8 +377,7 @@ var utag_data = {
 </ol>
 </div>
 <div class="tab-pane" data-lang="Maven" title="Maven">
-  <p>To install Airship remote commands for Android using Maven:</p>
-<ol>
+  <ol>
 <li>
 <p>Install <a href="/platforms/android-java/install/">Tealium for Android</a> and add the Tealium Maven URL to your project’s top-level <code>build.gradle</code> file, if you haven&rsquo;t done so already.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>allprojects <span style="color:#f92672">{</span>
@@ -450,62 +448,16 @@ var utag_data = {
 
 <h2 id="initialize">Initialize</h2>
 <p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s Android or Swift library.</p>
-<p>To initialize the Airship remote command:</p>
-<h3 id="android-kotlin">Android (Kotlin)</h3>
-<p>The following example creates a Tealium instance and then registers the Airship remote command for Android (Kotlin):</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="Android - TiQ Remote Command" title="Android - TiQ Remote Command">
-  <p>The following code is designed for use with the Remote Command tag feature:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// Sets up a config object and creates a Tealium instance
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> config = TealiumConfig(
-</span></span><span style="display:flex;"><span>    application, 
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>, 
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;PROFILE&#34;</span>, 
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>, 
-</span></span><span style="display:flex;"><span>    dispatchers = mutableSetOf(Dispatchers.RemoteCommands))
-</span></span><span style="display:flex;"><span>Tealium.create(TEALIUM_MAIN, config) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// New code to add the Airship Remote Command
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> airshipCommand = AirshipRemoteCommand(application)
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// register the command
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    remoteCommands<span style="color:#f92672">?.</span>add(airshipCommand)
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
-</div>
-<div class="tab-pane" data-lang="Android - JSON Remote Command" title="Android - JSON Remote Command">
-  <p>The following code is designed for use with the JSON Remote Command feature, using the local file option:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#75715e">// Sets up a config object and creates a Tealium instance
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> config = TealiumConfig(
-</span></span><span style="display:flex;"><span>    application, 
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>, 
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;PROFILE&#34;</span>, 
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>, 
-</span></span><span style="display:flex;"><span>    dispatchers = mutableSetOf(Dispatchers.RemoteCommands))
-</span></span><span style="display:flex;"><span>Tealium.create(TEALIUM_MAIN, config) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// New code to add the Airship Remote Command
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">val</span> airshipCommand = AirshipRemoteCommand(application)
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// register the command
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    remoteCommands<span style="color:#f92672">?.</span>add(airshipCommand, filename = <span style="color:#e6db74">&#34;airship.json&#34;</span>) <span style="color:#75715e">// add remote command file name
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span></code></pre></div>
-</div>
-</div>
-</div>
-
-<h3 id="ios-swift">iOS (Swift)</h3>
-<p>The following example creates a Tealium instance and then registers the Airship remote command with Tealium&rsquo;s Swift library for iOS:</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>The following code is designed for use with the JSON Remote Command feature, using the local file option:</p>
+  <div class="tab-content"><div class="tab-pane" data-lang="iOS" title="iOS">
+  <p>The following example creates a Tealium instance and then registers the Airship remote command with Tealium&rsquo;s Swift library for iOS:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
 </span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
 </span></span><span style="display:flex;"><span>                           environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
-</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>,
-</span></span><span style="display:flex;"><span>                           optionalData: <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
 </span></span><span style="display:flex;"><span>config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
 </span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span> <span style="color:#75715e">// Required to use Remote Commands</span>
 </span></span><span style="display:flex;"><span>
@@ -513,29 +465,39 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  	<span style="color:#66d9ef">let</span> airship = AirshipRemoteCommand(type: .local(file: <span style="color:#e6db74">&#34;airship&#34;</span>))
-</span></span><span style="display:flex;"><span>	remoteCommands.add(airship)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Webview Tag</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> airship = AirshipRemoteCommand() 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Local JSON</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//let airship = AirshipRemoteCommand(type: .local(file: &#34;airship&#34;))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Remote JSON</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//let airship = AirshipRemoteCommand(type: .remote(url: &#34;https://some.domain.com/airship.json&#34;))</span>
+</span></span><span style="display:flex;"><span>    remoteCommands.add(airship)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
 </div>
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>The following code is designed for use with the Remote Command tag feature:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span>                           environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,<span style="color:#960050;background-color:#1e0010">˜˜</span>
-</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>,
-</span></span><span style="display:flex;"><span>                           optionalData: <span style="color:#66d9ef">nil</span>)
-</span></span><span style="display:flex;"><span>config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
-</span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span> <span style="color:#75715e">// Required to use Remote Commands</span>
+<div class="tab-pane" data-lang="Android (Kotlin)" title="Android (Kotlin)">
+  <p>The following example creates a Tealium instance and then registers the Airship remote command for Android (Kotlin):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> config = TealiumConfig(application,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
+</span></span><span style="display:flex;"><span>        Environment.DEV,
+</span></span><span style="display:flex;"><span>        dispatchers = mutableSetOf(Dispatchers.RemoteCommands, Dispatchers.TagManagement));
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> airship = AirshipRemoteCommand(application);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  	<span style="color:#66d9ef">let</span> airship = AirshipRemoteCommand()
-</span></span><span style="display:flex;"><span>	remoteCommands.add(airship)
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Webview Tag
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    remoteCommands<span style="color:#f92672">?.</span>add(airship);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Local JSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//remoteCommands?.add(airship, filename = &#34;airship.json&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Remote JSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//remoteCommands?.add(airship, remoteUrl = &#34;https://some.domain.com/airship.json&#34;); 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span></code></pre></div>
 </div>
 </div>
@@ -2039,7 +2001,7 @@ No</button>
   </div>
 </div>
 
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  January 26, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -2059,9 +2021,7 @@ No</button>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#dependency-manager">Dependency Manager</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#manual-installation">Manual Installation</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#initialize">Initialize</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#android-kotlin">Android (Kotlin)</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#ios-swift">iOS (Swift)</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#supported-methods">Supported Methods</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#supported-methods">Supported Methods</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#sdk-setup">SDK Setup</a></li>
               </nav>
   </aside></nav>

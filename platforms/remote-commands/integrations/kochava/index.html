@@ -318,9 +318,24 @@ var utag_data = {
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
-  <p>To install Kochava remote commands for iOS using CocoaPods:</p>
+  <div class="tab-content"><div class="tab-pane" data-lang="Swift Package Manager" title="Swift Package Manager">
+  <ol>
+<li>In your Xcode project, select <strong>File &gt; Add Packages&hellip; &gt; Add Package Dependency</strong>.</li>
+<li>Enter the repository URL: <code>https://github.com/tealium/tealium-ios-kochava-remote-command</code>.</li>
+<li>Configure the version rules. Typically, <code>Up to next major</code> is recommended. If the current <code>TealiumKochava</code> version does not appear in the list, then reset your Swift package cache.</li>
+<li>Select the <code>TealiumKochava</code> module to install, and select the app target you want the module to be installed in.</li>
+</ol>
+<p>If your project has more than one app target and needs <code>TealiumKochava</code> module in more app targets, you have to manually add them in the <strong>Frameworks, Libraries, and Embedded Content</strong> section.</p>
+<p>To install <code>TealiumKochava</code> in additional app targets:</p>
 <ol>
+<li>Select your Xcode project in the <strong>Project Navigator</strong>.</li>
+<li>In your Xcode project, select the app target under the <strong>TARGETS</strong> section.</li>
+<li>Navigate to <strong>General &gt; Frameworks, Libraries &amp; Embedded Content</strong> and  select the <code>TealiumKochava</code> module to add it to your app target.</li>
+</ol>
+<p>To add additional modules from the Tealium Swift library, follow the <a href="/platforms/ios-swift/install/#swift-package-manager-recommended">Swift Package Manager</a> instructions.</p>
+</div>
+<div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
+  <ol>
 <li>
 <p>Remove <code>tealium-swift</code> and <code>pod &quot;KochavaTrackeriOS&quot;</code> if they already exist your Podfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumKochava</code> framework.</p>
 </li>
@@ -338,8 +353,7 @@ var utag_data = {
 </ol>
 </div>
 <div class="tab-pane" data-lang="Carthage" title="Carthage">
-  <p>To install Kochava remote commands for iOS using Carthage:</p>
-<ol>
+  <ol>
 <li>
 <p>Remove <code>tealium-swift</code> from your Cartfile. The dependency for <code>tealium-swift</code> is already included in the <code>TealiumKochava</code> framework.</p>
 </li>
@@ -351,10 +365,9 @@ var utag_data = {
 <p class="note"><i class="fas fa-info-circle"></i>Tealium for Swift SDK (version 1.6.5+) requires the <code>TealiumDelegate</code> module to be included with your installation.</p>
 </div>
 <div class="tab-pane" data-lang="Maven" title="Maven">
-  <p>To install Kochava remote commands for Android using Maven:</p>
-<ol>
+  <ol>
 <li>
-<p>Install <a href="/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> or <a href="/platforms/android-java/install/">Tealium for Android (Java)</a> and add the Tealium Maven URL to your project’s top-level <code>build.gradle</code> file, if you haven&rsquo;t done so already.</p>
+<p>Install <a href="/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a> or <a href="/platforms/android-java/install/">Tealium for Android (Java)</a> and add the Tealium Maven URL to your project’s top-level <code>build.gradle</code> file, if you haven&rsquo;t done so already.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>allprojects <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>  repositories <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    jcenter<span style="color:#f92672">()</span>
@@ -389,7 +402,7 @@ var utag_data = {
 <p>Clone the <a href="https://github.com/tealium/tealium-ios-kochava-remote-command">Tealium iOS Kochava remote command</a> repo and drag the files within the <code>Sources</code> folder into your project.</p>
 </li>
 <li>
-<p>Set the <a href="/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a> configuration flag to <code>true</code></p>
+<p>Set the <a href="/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a> configuration flag to <code>true.</code></p>
 </li>
 </ol>
 </div>
@@ -424,98 +437,63 @@ var utag_data = {
 
 <h2 id="initialize">Initialize</h2>
 <p>For all Tealium libraries, register the Kochava mobile remote commands when you initialize.</p>
-<h3 id="android-kotlin">Android (Kotlin)</h3>
-<p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s Kotlin library.</p>
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>The following code is designed for use with the JSON Remote Command feature, using the local file option:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> config = TealiumConfig(application,
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span>      Environment.DEV,
-</span></span><span style="display:flex;"><span>      dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+  <div class="tab-content"><div class="tab-pane" data-lang="Swift" title="Swift">
+  <p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s iOS (Swift) library:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
+</span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
+</span></span><span style="display:flex;"><span>                           environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
+</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
+</span></span><span style="display:flex;"><span>config.dispatchers = [Dispatchers.TagManagement, Dispatchers.RemoteCommands]
+</span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span> <span style="color:#75715e">// Required to use Remote Commands</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> kochava = KochavaRemoteCommand(application);
-</span></span><span style="display:flex;"><span>    remoteCommands<span style="color:#f92672">?.</span>add(kochava, filename = <span style="color:#e6db74">&#34;kochava.json&#34;</span>);
+</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Webview Tag</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> kochava = KochavaRemoteCommand() 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Local JSON</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//let kochava = KochavaRemoteCommand(type: .local(file: &#34;kochava&#34;))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Remote JSON </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//let kochava = KochavaRemoteCommand(type: .remote(url: &#34;https://some.domain.com/kochava.json&#34;)) </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    remoteCommands.add(kochava)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
 </div>
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>The following code is designed for use with the Remote Command tag feature:</p>
+<div class="tab-pane" data-lang="Android (Kotlin)" title="Android (Kotlin)">
+  <p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s Kotlin library:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> config = TealiumConfig(application,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
 </span></span><span style="display:flex;"><span>        Environment.DEV,
-</span></span><span style="display:flex;"><span>        dispatchers = mutableSetOf(Dispatchers.RemoteCommands));
+</span></span><span style="display:flex;"><span>        dispatchers = mutableSetOf(Dispatchers.RemoteCommands, Dispatchers.TagManagement));
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">val</span> kochava = KochavaRemoteCommand(application);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium = Tealium.create(TEALIUM_MAIN, config) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> kochava = KochavaRemoteCommand(application);
-</span></span><span style="display:flex;"><span>    remoteCommands<span style="color:#f92672">?.</span>add(kochava);
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Webview Tag
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    remoteCommands<span style="color:#f92672">?.</span>add(kochava); 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Local JSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//remoteCommands?.add(kochava, filename = &#34;kochava.json&#34;); 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Remote JSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//remoteCommands?.add(kochava, remoteUrl = &#34;https://some.domain.com/kochava.json&#34;); 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span></code></pre></div>
 </div>
-</div>
-</div>
-
-<h3 id="android-java">Android (Java)</h3>
-<p>Initialize remote commands with the Remote Command tag for Tealium&rsquo;s Android (Java) library.</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>The JSON Remote Command file feature for Android is only available in the Kotlin SDK.</p>
-</div>
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>The following code is designed for use with the Remote Command tag feature:</p>
+<div class="tab-pane" data-lang="Android (Java)" title="Android (Java)">
+  <p>Initialize remote commands with the Remote Command tag for Tealium&rsquo;s Android (Java) library:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>RemoteCommand kochava <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> KochavaRemoteCommand<span style="color:#f92672">(</span>application<span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>teal<span style="color:#f92672">.</span><span style="color:#a6e22e">addRemoteCommand</span><span style="color:#f92672">(</span>kochava<span style="color:#f92672">);</span>
-</span></span></code></pre></div>
-</div>
-</div>
-</div>
-
-<h3 id="ios-swift">iOS (Swift)</h3>
-<p>Initialize remote commands with a JSON configuration file or the Remote Command tag for Tealium&rsquo;s iOS (Swift) library.</p>
-
-<div class="code-tabs">
-  <ul class="nav nav-tabs"></ul>
-  <div class="tab-content"><div class="tab-pane" data-lang="JSON Remote Command" title="JSON Remote Command">
-  <p>The following code is designed for use with the JSON Remote Commands feature, using the local file option:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span>                           environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
-</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
-</span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  	<span style="color:#66d9ef">let</span> kochava = KochavaRemoteCommand(type: .local(file: <span style="color:#e6db74">&#34;kochava&#34;</span>))
-</span></span><span style="display:flex;"><span>	remoteCommands.add(kochava)
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
-</div>
-<div class="tab-pane" data-lang="Remote Command tag" title="Remote Command tag">
-  <p>The following code is designed for use with the Remote Command tag feature:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
-</span></span><span style="display:flex;"><span>                           profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
-</span></span><span style="display:flex;"><span>                           environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
-</span></span><span style="display:flex;"><span>                           dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
-</span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  	<span style="color:#66d9ef">let</span> kochava = KochavaRemoteCommand()
-</span></span><span style="display:flex;"><span>  	remoteCommands.add(kochava)
-</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
 </div>
 </div>
@@ -614,24 +592,21 @@ var utag_data = {
 <li>Initialize the <code>KochavaInstance</code> before the <code>KochavaRemoteCommand</code></li>
 <li>Append the <code>KochavaInstance</code> to the array described above</li>
 </ol>
-<p>The following is full example of the push message tracking integration:</p>
-<pre><code>  ```swift
-  var pushMessagingHelpers = [TealiumRegistration]()
-
-  //...
-
-  teal = Tealium(config: config) { responses in
-    guard let remoteCommands = self.tealium?.remoteCommands() else {
-          return
-    }
-    let kochavaInstance = KochavaInstance()
-    let kochavaRemoteCommand = KochavaRemoteCommand(kochavaInstance: kochavaInstance)
-    remoteCommands.add(kochavaRemoteCommand)
-    self.pushMessagingHelpers.append(kochavaInstance)
-  }
-  ```
-</code></pre>
-<p>To see the entire <code>TealiumHelper.swift</code> file, explore the <a href="https://github.com/Tealium/tealium-ios-kochava-remote-command/tree/master/TealiumKochavaExample">Kochava Remote Command Example App</a>. To send an event to Kochava once a user has registered for notifications, opened a push message, or uninstalled the app, see the file <a href="https://github.com/Tealium/tealium-ios-kochava-remote-command/blob/master/TealiumKochavaExample/TealiumKochavaExample/AppDelegate.swift"><code>AppDelegate.swift</code></a>.</p>
+<p>The following is an example of the push message tracking integration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> pushMessagingHelpers = [TealiumRegistration]()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>teal = Tealium(config: config) { responses <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands() <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> kochavaInstance = KochavaInstance()
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> kochavaRemoteCommand = KochavaRemoteCommand(kochavaInstance: kochavaInstance)
+</span></span><span style="display:flex;"><span>  remoteCommands.add(kochavaRemoteCommand)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">self</span>.pushMessagingHelpers.append(kochavaInstance)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>To see the entire <code>TealiumHelper.swift</code> file, explore the <a href="https://github.com/Tealium/tealium-ios-kochava-remote-command/tree/master/TealiumKochavaExample">Kochava Remote Command Example App</a>. To send an event to Kochava once a user has registered for notifications, opened a push message, or uninstalled the app, see the file <a href="https://github.com/Tealium/tealium-ios-kochava-remote-command/blob/master/TealiumKochavaExample/TealiumKochavaExample/AppDelegate.swift"><code>AppDelegate.swift</code></a>.</p>
 <p>For more information about Kochava&rsquo;s push message tracking, see the <a href="https://support.kochava.com/sdk-integration/ios-sdk-integration/ios-push-notification/">Kochava iOS push notification </a> documentation.</p>
 <h2 id="enhanced-deep-linking-ios">Enhanced Deep Linking (iOS)</h2>
 <p>The Tealium Swift Library includes a <code>TealiumDeepLinkable</code> protocol for handling your deep links via Tealium and the Kochava Remote Command. We conform to this protocol in wrapper class <code>KochavaInstance</code> which is used to send <code>.deepLink</code> events before rerouting your user to the desired location.</p>
@@ -1104,7 +1079,7 @@ No</button>
   </div>
 </div>
 
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  January 26, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1124,10 +1099,7 @@ No</button>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#dependency-manager">Dependency Manager</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#manual-installation">Manual Installation</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#initialize">Initialize</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#android-kotlin">Android (Kotlin)</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#android-java">Android (Java)</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#ios-swift">iOS (Swift)</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#json-template">JSON Template</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#json-template">JSON Template</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#push-message-tracking-ios">Push Message Tracking (iOS)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#enhanced-deep-linking-ios">Enhanced Deep Linking (iOS)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#supported-methods">Supported Methods</a></li>
