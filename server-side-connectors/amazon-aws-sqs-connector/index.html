@@ -731,7 +731,17 @@ var utag_data = {
 <td>✓</td>
 </tr>
 <tr>
+<td>Send Event Data to Queue (Batch)</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
 <td>Send Visitor Data to Queue</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Send Visitor Data to Queue (Batch)</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
@@ -740,64 +750,69 @@ var utag_data = {
 <td>✓</td>
 <td>✓</td>
 </tr>
+<tr>
+<td>Send Customized Data to Queue (Advanced Batch)</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
 </tbody>
 </table>
 <h2 id="configure-settings">Configure settings</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
+<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
 <li>
 <p><strong>Access Key</strong></p>
 <ul>
-<li>Required</li>
-<li>Provide your IAM User&rsquo;s access keyAssociated IAM policy (for either IAM User or Assumed Role)</li>
-<li>Must grant &lsquo;sqs:SendMessage&rsquo; permission.</li>
-<li>For additional information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-authentication-and-access-control.htm">Access Control for Amazon SQS</a>.</li>
+<li>Required. Provide your IAM User&rsquo;s access key. Associated IAM policy (for either IAM User or Assumed Role) must grant <code>sqs:SendMessage</code> permission.</li>
+<li>For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-authentication-and-access-control.htm">Access Control for Amazon SQS</a>.</li>
 </ul>
 </li>
 <li>
 <p><strong>Secret Key</strong></p>
 <ul>
-<li>Required</li>
-<li>Provide your IAM User&rsquo;s secret key</li>
+<li>Required. Provide your IAM User&rsquo;s secret key</li>
 </ul>
 </li>
 <li>
 <p><strong>Region</strong></p>
 <ul>
-<li>Required</li>
-<li>Select region</li>
+<li>Required. Select the region.</li>
 </ul>
 </li>
 <li>
 <p><strong>Assume Role: ARN</strong></p>
 <ul>
-<li>Optional</li>
-<li>Provide Amazon Resource Name (ARN) of role to assume.<br>
+<li>Optional: Provide Amazon Resource Name (ARN) of role to assume.<br>
 For example: <code>arn:aws:iam::222222222222:role/myrole</code></li>
-<li>For additional information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">Switching to an IAM Role</a>.</li>
+<li>For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">Switching to an IAM Role</a>.</li>
 </ul>
 </li>
 <li>
 <p><strong>Assume Role: Session Name</strong></p>
 <ul>
-<li>Optional.</li>
-<li>Provide identifier for assumed role session</li>
+<li>Optional: Provide identifier for assumed role session.</li>
 </ul>
 </li>
 <li>
 <p><strong>Assume Role: External ID</strong></p>
 <ul>
-<li>Optional</li>
-<li>Provide external identifier</li>
-<li>For additional information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">How to Use an External ID</a>.</li>
+<li>Optional: Provide external identifier.</li>
+<li>For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">How to Use an External ID</a>.</li>
 </ul>
 </li>
 </ul>
-<h2 id="action-settings---parameters-and--ptions">Action settings - parameters and  ptions</h2>
+<h2 id="action-settings---parameters-and-options">Action settings - parameters and options</h2>
 <p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
 <p>The following sections describe how to set up parameters and options for each action.</p>
-<h3 id="action---send-event-data-to-queue">Action - Send Event Data to Queue</h3>
+<h3 id="action---send-event-data-to-queue-and-send-event-data-to-queue-batch">Action - Send Event Data to Queue and Send Event Data to Queue (Batch)</h3>
+<h4 id="batch-limits">Batch Limits</h4>
+<p>The Send Event Data to Queue (Batch) action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Maximum number of requests: 10</li>
+<li>Maximum time since oldest request: 5 minutes</li>
+<li>Maximum size of requests: 1 MB</li>
+</ul>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -809,24 +824,31 @@ For example: <code>arn:aws:iam::222222222222:role/myrole</code></li>
 <tbody>
 <tr>
 <td>Queue</td>
-<td><ul><li>Required</li><li>Select queue to send data to</li><li>If your IAM policy does not grant &lsquo;sqs:ListQueues&rsquo; permission, you will need to manually enter a Custom Value</li><li>Custom values should be a URL. For example: <code>&lt;https://sqs.us-west-2.amazonaws.com/0123456789/queue_name&gt;</code></li></ul></td>
+<td><ul><li>Required. Select queue to send data to.</li><li>If your IAM policy does not grant <code>sqs:ListQueues</code> permission, you will need to manually enter a Custom Value.</li><li>The custom value should be a URL. For example: <code>https://sqs.us-west-2.amazonaws.com/0123456789/queue_name</code></li></ul></td>
 </tr>
 <tr>
 <td>MessageGroupId</td>
-<td></td>
+<td>Specifies that a message belongs to a specific message group (FIFO Queues only).</td>
 </tr>
 <tr>
 <td>DelaySeconds</td>
-<td></td>
+<td>The length of time (in seconds) to delay a specific message (0 to 900).</td>
 </tr>
 <tr>
 <td>Print Attribute Names</td>
-<td>If attribute names are updated, the names in the payload will reflect the update</td>
+<td>If attribute names are updated, the names in the payload reflect the update.</td>
 </tr>
 </tbody>
 </table>
-<p class="tip"><i class="fas fa-star"></i>See <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html">Using Amazon SQS Message Attributes</a></p>
-<h3 id="action---send-visitor-data-to-queue">Action - Send Visitor Data to Queue</h3>
+<p class="tip"><i class="fas fa-star"></i>See <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html">Using Amazon SQS Message Attributes</a>.</p>
+<h3 id="action---send-visitor-data-to-queue-and-send-visitor-data-to-queue-batch">Action - Send Visitor Data to Queue and Send Visitor Data to Queue (Batch)</h3>
+<h4 id="batch-limits-1">Batch Limits</h4>
+<p>The Send Visitor Data to Queue (Batch) action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Maximum  number of requests: 10</li>
+<li>Maximum time since oldest request: 5 minutes</li>
+<li>Maximum size of requests: 1 MB</li>
+</ul>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
@@ -838,15 +860,15 @@ For example: <code>arn:aws:iam::222222222222:role/myrole</code></li>
 <tbody>
 <tr>
 <td>Queue</td>
-<td><ul><li>Required</li><li>Select queue to send data to</li><li>If your IAM policy does not grant &lsquo;sqs:ListQueues&rsquo; permission, you will need to manually enter a Custom Value</li><li>Custom values should be a URL. For example:__ <code>&lt;https://sqs.us-west-2.amazonaws.com/0123456789/queue_name&gt;</code></li></ul></td>
+<td><ul><li>Required. Select queue to send data to.</li><li>If your IAM policy does not grant <code>sqs:ListQueues</code> permission, you will need to manually enter a Custom Value</li><li>The custom value should be a URL. For example: <code>https://sqs.us-west-2.amazonaws.com/0123456789/queue_name</code></li></ul></td>
 </tr>
 <tr>
 <td>MessageGroupId</td>
-<td></td>
+<td>Specifies that a message belongs to a specific message group (FIFO Queues only).</td>
 </tr>
 <tr>
 <td>DelaySeconds</td>
-<td></td>
+<td>The length of time (in seconds) to delay a specific message (0 to 900).</td>
 </tr>
 <tr>
 <td>Include Current Visit Data</td>
@@ -854,11 +876,18 @@ For example: <code>arn:aws:iam::222222222222:role/myrole</code></li>
 </tr>
 <tr>
 <td>Print Attribute Names</td>
-<td>If attribute names are updated, the names in the payload will reflect the update</td>
+<td>If attribute names are updated, the names in the payload reflect the update.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---send-customized-data-to-queue-advanced">Action - Send Customized Data to Queue (Advanced)</h3>
+<h3 id="action---send-customized-data-to-queue-advanced-and-send-customized-data-to-queue-advanced-batch">Action - Send Customized Data to Queue (Advanced) and Send Customized Data to Queue (Advanced Batch)</h3>
+<h4 id="batch-limits-2">Batch Limits</h4>
+<p>The Send Customized Data to Queue (Advanced Batch) action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Maximum number of requests: 10</li>
+<li>Maximum time since oldest request: 5 minutes</li>
+<li>Maximum size of requests: 1 MB</li>
+</ul>
 <h4 id="parameters-2">Parameters</h4>
 <table>
 <thead>
@@ -870,15 +899,15 @@ For example: <code>arn:aws:iam::222222222222:role/myrole</code></li>
 <tbody>
 <tr>
 <td>Queue</td>
-<td><ul><li>Required</li><li>Select queue to send data to</li><li>If your IAM policy does not grant &lsquo;sqs:ListQueues&rsquo; permission, you will need to manually enter a Custom Value</li><li>Custom values should be a URL. For example: <code>&lt;https://sqs.us-west-2.amazonaws.com/0123456789/queue_name&gt;</code></li></ul></td>
+<td><ul><li>Required. Select queue to send data to.</li><li>If your IAM policy does not grant <code>sqs:ListQueues</code> permission, you will need to manually enter a Custom Value. The custom values should be a URL. For example: <code>https://sqs.us-west-2.amazonaws.com/0123456789/queue_name</code></li></ul></td>
 </tr>
 <tr>
 <td>MessageGroupId</td>
-<td></td>
+<td>Specifies that a message belongs to a specific message group (FIFO Queues only).</td>
 </tr>
 <tr>
 <td>DelaySeconds</td>
-<td></td>
+<td>The length of time (in seconds) to delay a specific message (0 to 900).</td>
 </tr>
 <tr>
 <td>Custom Message Definition</td>
@@ -886,15 +915,15 @@ For example: <code>arn:aws:iam::222222222222:role/myrole</code></li>
 </tr>
 <tr>
 <td>Message Template Variables</td>
-<td><ul><li>Optional: provide template variables as data input for templates. For more information, see the <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a></li><li>Name nested template variables with the dot notation (Example: items.name)</li><li>Nested template variables are typically built from data layer list attributes</li></ul></td>
+<td><ul><li>Optional: Provide template variables as data input for templates. For more information, see the <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a></li><li>Name nested template variables with the dot notation For example: <code>items.name</code></li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
 </tr>
 <tr>
 <td>Message Templates</td>
-<td><ul><li>Optional: provide templates to be referenced in either URL, URL Parameter, Header or Body Data (see:<a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>)</li><li>Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}})</code>.</li></ul></td>
+<td><ul><li>Optional: Provide templates to be referenced in either URL, URL Parameter, Header or Body Data (see:<a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>)</li><li>Templates are injected into supported fields by name with double curly braces. For example, <code>{{SomeTemplateName}})</code>.</li></ul></td>
 </tr>
 </tbody>
 </table>
-<p class="tip"><i class="fas fa-star"></i>See Using Amazon SQS Message Attributes</p>
+<p class="tip"><i class="fas fa-star"></i>See <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html">Using Amazon SQS Message Attributes</a>.</p>
 <h2 id="vendor-documentation">Vendor Documentation</h2>
 <ul>
 <li><a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-authentication-and-access-control.html">Access Control for Amazon SQS</a></li>
@@ -980,10 +1009,10 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#requirements">Requirements</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure settings</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-ptions">Action settings - parameters and ptions</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-event-data-to-queue">Action - Send Event Data to Queue</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-visitor-data-to-queue">Action - Send Visitor Data to Queue</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-customized-data-to-queue-advanced">Action - Send Customized Data to Queue (Advanced)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action settings - parameters and options</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-event-data-to-queue-and-send-event-data-to-queue-batch">Action - Send Event Data to Queue and Send Event Data to Queue (Batch)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-visitor-data-to-queue-and-send-visitor-data-to-queue-batch">Action - Send Visitor Data to Queue and Send Visitor Data to Queue (Batch)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-customized-data-to-queue-advanced-and-send-customized-data-to-queue-advanced-batch">Action - Send Customized Data to Queue (Advanced) and Send Customized Data to Queue (Advanced Batch)</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#vendor-documentation">Vendor Documentation</a></li>
               </nav>
   </aside></nav>
