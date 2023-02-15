@@ -768,16 +768,16 @@ var utag_data = {
 </tr>
 <tr>
 <td>From</td>
-<td><ul><li>A Twilio phone number, in E.164 format, or alphanumeric sender ID enabled for the type of message you wish to send.</li><li>Phone numbers or short codes purchased from Twilio work here.</li><li>You cannot &ldquo;spoof&rdquo; messages from your own cell phone number. <p class="note"><i class="fas fa-info-circle"></i>You must POST at least one of the following parameters to determine the <strong>From</strong> phone number or Sender ID of your message: <code>From</code>, <code>Messaging Service SID</code></p></td>
+<td><ul><li>A Twilio phone number, in E.164 format, or alphanumeric sender ID enabled for the type of message you wish to send.</li><li>Phone numbers or short codes purchased from Twilio work here.</li><li>You cannot &ldquo;spoof&rdquo; messages from your own cell phone number. <p class="note"><i class="fa fa-exclamation-triangle"></i>You must POST at least one of the following parameters to determine the <strong>From</strong> phone number or Sender ID of your message: <code>From</code>, <code>Messaging Service SID</code></p></td>
 </tr>
 </tbody>
 </table>
  </li></ul> |
-|Messaging Service SID|  <ul><li>The 34-character unique ID of the Messaging Service you want to associate with this Message.</li><li>Set this parameter to use the Messaging Service Settings and Copilot Features you have configured.</li><li>When only this parameter is set, Twilio will use your enabled Copilot features to select the **From** phone number for delivery. <p class="note"><i class="fas fa-info-circle"></i>You must POST at least one of the following parameters to determine the <strong>From</strong> phone number or Sender ID of your message:<code>From</code>, <code>Messaging Service SID</code></p>
+|Messaging Service SID|  <ul><li>The 34-character unique ID of the Messaging Service you want to associate with this Message.</li><li>Set this parameter to use the Messaging Service Settings and Copilot Features you have configured.</li><li>When only this parameter is set, Twilio will use your enabled Copilot features to select the **From** phone number for delivery. <p class="note"><i class="fa fa-exclamation-triangle"></i>You must POST at least one of the following parameters to determine the <strong>From</strong> phone number or Sender ID of your message:<code>From</code>, <code>Messaging Service SID</code></p>
  </li></ul> |
-|Body|  <ul><li>The text of the message you want to send, limited to 1600 characters. <p class="note"><i class="fas fa-info-circle"></i>You must POST at least one of the following parameters for the content of your message: <code>Body</code>, <code>MediaUrl</code></p>
+|Body|  <ul><li>The text of the message you want to send, limited to 1600 characters. <p class="note"><i class="fa fa-exclamation-triangle"></i>You must POST at least one of the following parameters for the content of your message: <code>Body</code>, <code>MediaUrl</code></p>
  </li></ul> |
-|Media URL|  <ul><li>The URL of the media you wish to send out with the message.</li><li>GIF, PNG, and JPEG content is currently supported and will be formatted correctly on the recipient's device.</li><li>Other file types are also accepted by the API.</li><li>The media size limit is 5 megabytes (MB).</li><li>To send more than one image in the message body, provide multiple `MediaUrls` values in the POST request.</li><li>You may include up to 10 `MediaUrls` per message <p class="note"><i class="fas fa-info-circle"></i>You must POST at least one of the following parameters for the content of your message: <code>Body</code>, <code>MediaUrl</code></p>
+|Media URL|  <ul><li>The URL of the media you wish to send out with the message.</li><li>GIF, PNG, and JPEG content is currently supported and will be formatted correctly on the recipient's device.</li><li>Other file types are also accepted by the API.</li><li>The media size limit is 5 megabytes (MB).</li><li>To send more than one image in the message body, provide multiple `MediaUrls` values in the POST request.</li><li>You may include up to 10 `MediaUrls` per message <p class="note"><i class="fa fa-exclamation-triangle"></i>You must POST at least one of the following parameters for the content of your message: <code>Body</code>, <code>MediaUrl</code></p>
  </li></ul> |
 |Status Callback|  <ul><li>A URL where Twilio will POST each time your message status changes to one of the following:  <ul><li>`queued`</li><li>`failed`</li><li>`sent`</li><li>`delivered`</li><li>`undelivered`</li></ul> </li><li>Twilio will POST the `MessageSid` along with the other standard request parameters as well as `MessageStatus` and `ErrorCode`.</li><li>If this parameter is passed in addition to a `MessagingServiceSid`, Twilio will override the Status Callback URL of the Messaging Service.</li><li>URLs must contain a valid hostname.</li><li>The underscore character (`_`) is not allowed in the hostname.</li></ul> |
 |Application SID|  <ul><li>Twilio will POST `MessageSid` as well as `MessageStatus=sent` or `MessageStatus=failed` to the URL in the `MessageStatusCallback` property of this Application.</li><li>If the `StatusCallback` parameter above is also passed, the `MessageStatusCallback` parameter for the application takes precedence.</li></ul> |
@@ -1015,6 +1015,8 @@ No</button>
           Early Access
         </a>
     </li>
+  
+  
   
   
   

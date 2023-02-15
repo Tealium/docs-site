@@ -484,7 +484,7 @@ var utag_data = {
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
 </span></span></code></pre></div><h2 id="utaggdprgetcookievalues"><code>utag.gdpr.getCookieValues()</code></h2>
 <p>Returns an <code>Object</code> representing the consent cookie as key-value pairs. This function uses the default cookie namespace (<code>CONSENTMGR</code>) or the value provided in <code>window.utag_cfg_ovrd.cmcookiens</code>. The reverse function (writing into the cookie) is <code>utag.gdpr.setCookie()</code>.</p>
-<p class="note"><i class="fas fa-info-circle"></i>Instead of using this function directly, it is recommended use a function such as <code>utag.gdpr.getConsentState()</code>, which calls the <code>getCookieValues()</code> function to read the cookie.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Instead of using this function directly, it is recommended use a function such as <code>utag.gdpr.getConsentState()</code>, which calls the <code>getCookieValues()</code> function to read the cookie.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span>.<span style="color:#a6e22e">getCookieValues</span>()
 </span></span></code></pre></div><p>The following example gives partial consent:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span>.<span style="color:#a6e22e">getCookieValues</span>()
@@ -553,7 +553,7 @@ var utag_data = {
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span>.<span style="color:#a6e22e">setAllCategories</span>(<span style="color:#66d9ef">false</span>)
 </span></span></code></pre></div><h2 id="utaggdprsetconsentvalue"><code>utag.gdpr.setConsentValue()</code></h2>
 <p>Sets the consent cookie value to enabled or disabled. The function also updates the timestamp of consent, and generates a tracking call to the Collect API, and replays tags that are kept in the queue <code>utag.gdpr.queue</code>.</p>
-<p class="note"><i class="fas fa-info-circle"></i>This doesn’t change the consent value of individual categories that needs to be disabled via the relevant API call (<code>setPreferencesFromList()</code> or <code>setPreferencesValues()</code>).</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>This doesn’t change the consent value of individual categories that needs to be disabled via the relevant API call (<code>setPreferencesFromList()</code> or <code>setPreferencesValues()</code>).</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span>.<span style="color:#a6e22e">setConsentValue</span>(<span style="color:#a6e22e">_response</span>)
 </span></span></code></pre></div><table>
 <thead>
@@ -577,7 +577,7 @@ var utag_data = {
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span>.<span style="color:#a6e22e">setConsentValue</span>(<span style="color:#ae81ff">0</span>)
 </span></span></code></pre></div><h2 id="utaggdprsetcookie"><code>utag.gdpr.setCookie()</code></h2>
 <p>Internal function that writes directly to the cookie object. It uses an object to represent the consent state, the timestamp, and the various categories for partial consent. It automatically uses the correct cookie name and expiry period.</p>
-<p class="note"><i class="fas fa-info-circle"></i>It is not recommended to call this function directly.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>It is not recommended to call this function directly.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span>.<span style="color:#a6e22e">setCookie</span>(<span style="color:#a6e22e">onlyEnabledCats</span>)
 </span></span></code></pre></div><table>
 <thead>
@@ -601,7 +601,7 @@ var utag_data = {
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Sets the cookie to: c6:1%7Cc1:0%7Cc2:0%7Cts:1587133526482%7Cconsent:false%7Cc3:0%7Cc4:0%7Cc5:0%7Cc7:0%7Cc8:0%7Cc9:0%7Cc10:0%7Cc11:0%7Cc12:0%7Cc13:0%7Cc14:0%7Cc15:0
 </span></span></span></code></pre></div><h2 id="utaggdprsetcookievalue"><code>utag.gdpr.setCookieValue()</code></h2>
 <p>Sets an individual value in the consent cookie.</p>
-<p class="note"><i class="fas fa-info-circle"></i>This function is used by other higher level functions such as <code>setConsentValue()</code>. Use this method cautiously and only if higher level functions do not fulfill the initial needs.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>This function is used by other higher level functions such as <code>setConsentValue()</code>. Use this method cautiously and only if higher level functions do not fulfill the initial needs.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span>.<span style="color:#a6e22e">setCookieValue</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span>);
 </span></span></code></pre></div><table>
 <thead>
@@ -1022,6 +1022,8 @@ No</button>
           Early Access
         </a>
     </li>
+  
+  
   
   
   

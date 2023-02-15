@@ -603,8 +603,13 @@ var utag_data = {
       </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-management/global-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".global-consent-parameters">Global consent parameters</a>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".global-privacy-control">Global Privacy Control</a>
+        <ul class=" global-privacy-control desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/consent-management/global-privacy-control/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-global-privacy-control">About Global Privacy Control (GPC)</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/consent-management/global-privacy-control/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".global-privacy-control">Global Privacy Control</a>
+        <a href="/iq-tag-management/consent-management/global-privacy-control/client-side-support-gpc/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".client-side-global-privacy-control">Client-side Global Privacy Control (GPC)</a>
+      </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-management/event-logging/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".event-logging-for-consent-management">Event logging</a>
       </li></ul>
@@ -701,7 +706,7 @@ var utag_data = {
 <h2 id="data-layer-objects">Data layer objects</h2>
 <p>Hosted data layer utilizes micro data layer objects that are associated to a variable in your on-page data layer. The hosted data layer object is a text file that contains a JSON object in which the key/value pairs represent the micro data layer. This file is uploaded to the CDN using the <a href="/api/hosted-data-layer/about/">hosted data layer API</a>. The on-page data layer contains lookup variables, which are configured in the <a href="/iq-tag-management/extensions/extensions-list/hosted-data-layer-extension/">hosted data layer extension</a>, that are used to determine which hosted data layer object to fetch from the CDN.</p>
 <p>The following sections provide a description of the two required components, the hosted data layer API and the hosted data layer extension.</p>
-<p class="note"><i class="fas fa-info-circle"></i>These objects can also be plain JSON files used for purposes other than data layer augmentation and would not require the use of the hosted data layer extension.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>These objects can also be plain JSON files used for purposes other than data layer augmentation and would not require the use of the hosted data layer extension.</p>
 <h2 id="hosted-data-layer-api">Hosted data layer API</h2>
 <p>The hosted data layer API allows you to upload the supplemental data to the CDN in a flat JSON object called a hosted data layer object. The API enables the programmatic processing of large amounts of data to be used as hosted data layer objects.</p>
 <p>The following example shows the contents of a hosted data layer object:</p>
@@ -713,7 +718,7 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;product_has_instore_pickup&#34;</span> : [<span style="color:#e6db74">&#34;1&#34;</span>]
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>As shown in the example, a hosted data layer object looks similar to the data layer object on your website. While the on-page data layer describes the page and customer interactions, the hosted data layer object provides additional attributes based on a specific variable on the page. Additional attributes for a specific product are provided in the example.</p>
-<p class="note"><i class="fas fa-info-circle"></i>The API can be used to store other types of information in JSON format besides data layer values.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The API can be used to store other types of information in JSON format besides data layer values.</p>
 <p>For detailed instructions, see <a href="/api/hosted-data-layer/about/">How to use the hosted data layer API</a>.</p>
 <h2 id="hosted-data-layer-extension">Hosted data layer extension</h2>
 <p>The hosted data layer extension is the component that combines the hosted data with the in-page data, as follows:</p>
@@ -725,7 +730,7 @@ The extension is configured to identify the data layer variables, also known as 
 <p>For detailed instructions, see <a href="/iq-tag-management/extensions/extensions-list/hosted-data-layer-extension/">How to set up the hosted data layer extension</a>.</p>
 <h2 id="lookup-variable">Lookup variable</h2>
 <p>A lookup variable identifies which variable in the on-page data layer will be used to fetch the corresponding hosted data layer object for that page. The lookup variable is the shared link between the hosted data layer objects and the hosted data layer extension.</p>
-<p class="tip"><i class="fas fa-star"></i>You must identify your lookup variables first and then use the expected values of each variable to name your hosted data layer objects. For example, if your lookup variable is <code>item_id</code> and one of the values is <code>123</code>, the corresponding hosted data layer object will be named <code>123.js</code>.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>You must identify your lookup variables first and then use the expected values of each variable to name your hosted data layer objects. For example, if your lookup variable is <code>item_id</code> and one of the values is <code>123</code>, the corresponding hosted data layer object will be named <code>123.js</code>.</p>
 <h2 id="order-of-operations">Order of operations</h2>
 <p>The following list summarizes the order of operations for the hosted data layer extension:</p>
 <ul>
@@ -737,7 +742,7 @@ to ensure that no tags, load rules, or other extensions are evaluated until the 
 <li>If a hosted data layer object is found, the data from that object is combined with the on-page data layer into a temporary object.</li>
 <li>After all lookup variables are processed and a new data layer object is finalized, the extension triggers <code>utag.view()</code> with that new object.</li>
 </ul>
-<p class="note"><i class="fas fa-info-circle"></i><strong>Timing Issue</strong><br>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><strong>Timing Issue</strong><br>
 Due to the delay introduced by the hosted data layer extension, extensions scoped to &ldquo;DOM Ready&rdquo; might run before some &ldquo;All Tags&rdquo; extensions.</p>
 <h2 id="summary-diagram">Summary diagram</h2>
 <p>The following list and diagram summarizes how the hosted data layer extension processes data.</p>
@@ -967,6 +972,8 @@ No</button>
           Early Access
         </a>
     </li>
+  
+  
   
   
   

@@ -392,7 +392,7 @@ var utag_data = {
 </span></span></code></pre></div><h2 id="about-wkwebview">About WKWebView</h2>
 <p>Prior to version 1.7.0, this module used <code>UIWebView</code> which is now deprecated in favor of <code>WKWebView</code>. The OS requires that <code>WKWebView</code> always be attached to a <code>UIView</code>, even if it is not rendered. If it is not attached to a UIView, the OS severely throttles the performance and the JavaScript executes suboptimally. <strong>To accommodate this the Tag Management module attempts to attach the non-rendered WKWebView to the root UIView of your app.</strong></p>
 <p>If your app has a complex view hierarchy and the module cannot detect the <code>rootViewController</code>, initialize <a href="/platforms/ios-swift-v1/api/tealium-config/">TealiumConfig</a> with a view to attach to in <code>viewDidLoad</code>, <code>viewWillAppear:</code>, or <code>viewDidAppear:</code>.</p>
-<p class="note"><i class="fas fa-info-circle"></i>Release 1.7.1 significantly improves the auto-detection of views and removes the need to specify a view in most scenarios. But you must test this in your app to verify that tracking calls are sent correctly. See <a href="/platforms/ios-swift-v1/release-notes/">Release Notes</a> for full details.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Release 1.7.1 significantly improves the auto-detection of views and removes the need to specify a view in most scenarios. But you must test this in your app to verify that tracking calls are sent correctly. See <a href="/platforms/ios-swift-v1/release-notes/">Release Notes</a> for full details.</p>
 <p>If your app jumps to a <code>UIViewController</code> upon receiving a push notification, and has a different view hierarchy than when Tealium was initialized, you must update the current <code>UIView</code> using the following API method.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewDidLoad</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">super</span>.viewDidLoad()
@@ -405,7 +405,7 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>See the sample app <a href="https://github.com/Tealium/tealium-swift/tree/master/samples/Swift-WKWebView">Swift-WKWebView</a> for a full example.</p>
 <p><code>WKWebView</code> and <code>UIWebView</code> use different methods to store cookies (<code>WKHTTPCookieStore</code> and <code>HTTPCookieStorage</code> respectively), so the module automatically synchronizes cookies the first time that WKWebView is launched. The cookies in <code>HTTPCookieStorage</code> are not deleted, but eventually expire on their own.</p>
-<p class="note"><i class="fas fa-info-circle"></i>The <a href="/platforms/ios-swift-v1/api/tealium-config/#shouldaddcookieobserver"><code>shouldAddCookieObserver</code></a> method allows you to use your own cookie observer during cookie synchronization, which requires a cookie observer to retrieve cookies on the main thread after setting them. This issue is caused by bugs in <code>WKWebView</code>, which prevents your own observer from being called.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The <a href="/platforms/ios-swift-v1/api/tealium-config/#shouldaddcookieobserver"><code>shouldAddCookieObserver</code></a> method allows you to use your own cookie observer during cookie synchronization, which requires a cookie observer to retrieve cookies on the main thread after setting them. This issue is caused by bugs in <code>WKWebView</code>, which prevents your own observer from being called.</p>
 
 </div>
 
@@ -642,6 +642,8 @@ No</button>
           Early Access
         </a>
     </li>
+  
+  
   
   
   

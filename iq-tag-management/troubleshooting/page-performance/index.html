@@ -603,8 +603,13 @@ var utag_data = {
       </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-management/global-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".global-consent-parameters">Global consent parameters</a>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".global-privacy-control">Global Privacy Control</a>
+        <ul class=" global-privacy-control desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/consent-management/global-privacy-control/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-global-privacy-control">About Global Privacy Control (GPC)</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/consent-management/global-privacy-control/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".global-privacy-control">Global Privacy Control</a>
+        <a href="/iq-tag-management/consent-management/global-privacy-control/client-side-support-gpc/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".client-side-global-privacy-control">Client-side Global Privacy Control (GPC)</a>
+      </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-management/event-logging/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".event-logging-for-consent-management">Event logging</a>
       </li></ul>
@@ -712,7 +717,7 @@ var utag_data = {
 <h2 id="perceived-load-time-vs-actual-load-time">Perceived load time vs. actual load time</h2>
 <p>Before we begin, it&rsquo;s worth mentioning the difference between perceived load time and actual load time. The actual load time is traditionally a measurement from the browser that indicates when all of the assets of a web page have been processed. The perceived load time, arguably the more important of the two, is a measurement of when the web page is visually rendered and available to the user.</p>
 <p>This topic of what to measure is quite technical and has been researched via industry experts such as <a href="https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index">WebPagetest</a>, Google&rsquo;s <a href="https://developers.google.com/speed/pagespeed/">PageSpeed Tools</a>, and Yahoo&rsquo;s <a href="http://yslow.org/">YSlow</a>.</p>
-<p class="note"><i class="fas fa-info-circle"></i>The iQ Tag Management JavaScript library (<code>utag.js</code>) is designed to have little or no impact on the perceived load time of a page.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The iQ Tag Management JavaScript library (<code>utag.js</code>) is designed to have little or no impact on the perceived load time of a page.</p>
 <h2 id="tealium-files-vs-third-party-files">Tealium files vs. third-party files</h2>
 <p>At the foundation of the Tealium solution is our file serving framework, the <a href="https://community.tealiumiq.com/t5/Getting-Started/Multi-CDN-for-Tag-Delivery/ta-p/13701">Multi-CDN</a>. This global and real-time solution ensures that Tealium&rsquo;s files are delivered to your visitors&rsquo; browser at the quickest speed possible. The JavaScript loader (or wrapper) files contain the logic and configuration from your iQ Tag Management account and can be identified in your browser&rsquo;s network console by the names <code>utag.js</code> and <code>utag.#.js</code>. These are the files served by Tealium from the <code>tags.tiqcdn.com</code> domain.</p>
 <p>Example browser network log of Tealium files:</p>
@@ -721,7 +726,7 @@ var utag_data = {
          title="browser network log"/>
 </figure>
 <p>As the browser loads these Tealium files there might be additional requests for files that are required by your tag vendors. These files can be identified as coming from a domain other than <code>tags.tiqcdn.com</code> and with names other than <code>utag</code>.</p>
-<p class="note"><i class="fas fa-info-circle"></i>Tealium does not host or control the performance of third-party files.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium does not host or control the performance of third-party files.</p>
 <h2 id="browser-file-cache">Browser file cache</h2>
 <p>Browsers have their own methods of optimizing page performance, the most widely known is file caching. The browser will save a copy of a file so that it doesn&rsquo;t request the same content over the network repeatedly. This reduces network traffic and allows site pages to load more quickly once the initial assets are cached in the browser.</p>
 <p>Learn more about <a href="/iq-tag-management/getting-started/file-cache/">how Universal Tag files are cached in the browser.</a></p>
@@ -760,7 +765,7 @@ var utag_data = {
 <p>Read more about <a href="https://community.tealiumiq.com/t5/JavaScript-utag-js/Adding-utag-js-to-your-site/ta-p/14785#toc-hId-441787667">utag.js code placement</a>.</p>
 <h3 id="ready-wait-flag">Ready Wait flag</h3>
 <p>The Ready Wait flag can be found in <a href="/iq-tag-management/save-publish/publish-configuration/">the <strong>Publish Configuration</strong> area</a>. It controls when <code>utag.js</code> will begin executing. By default, this flag is <strong>Off</strong> and <code>utag.js</code> begins executing as soon as it loads into the page. When this flag is set to <strong>On</strong>, <code>utag.js</code> will wait for the DOM-Ready event before executing. You can deprioritize your tags in favor of possible gains in page load time by turning this flag on.</p>
-<p class="note"><i class="fas fa-info-circle"></i>Setting <strong>Ready Wait Flag</strong> to <strong>On</strong> could lead to lost tracking due to visitors navigating away from the page before the tags have loaded. Always perform thorough testing before releasing new settings to your live site.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Setting <strong>Ready Wait Flag</strong> to <strong>On</strong> could lead to lost tracking due to visitors navigating away from the page before the tags have loaded. Always perform thorough testing before releasing new settings to your live site.</p>
 <h3 id="file-compression-and-minification">File compression and minification</h3>
 <p>The files delivered from the Mult-CDN are compressed using the GZip industry standard. This ensures the JavaScript files (text files) are as small as possible upon delivery to the browser. This behavior cannot be changed. The code within those JavaScript files is also minified by default. Minification adds another step of compressing the code files to only their essential text by removing comment lines and white space. You can turn this setting off if needed for debugging purposes.</p>
 <p>Read more about the <a href="/iq-tag-management/save-publish/publish-configuration/">Minify Tag Templates setting</a>.</p>
@@ -1033,6 +1038,8 @@ No</button>
           Early Access
         </a>
     </li>
+  
+  
   
   
   

@@ -327,7 +327,7 @@ var utag_data = {
 <li><code>ConsentPolicy.GDPR</code></li>
 <li><code>ConsentPolicy.CCPA</code></li>
 </ul>
-<p class="note"><i class="fas fa-info-circle"></i>Only one policy may be enforced on a device at any given time.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Only one policy may be enforced on a device at any given time.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val config <span style="color:#f92672">=</span> TealiumConfig<span style="color:#f92672">(...).</span><span style="color:#a6e22e">apply</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>  consentManagerPolicy <span style="color:#f92672">=</span> ConsentPolicy<span style="color:#f92672">.</span><span style="color:#a6e22e">GDPR</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
@@ -352,7 +352,7 @@ var utag_data = {
 </span></span></code></pre></div><h3 id="set-full-consent">Set Full Consent</h3>
 <p>To set full consent:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">consentManager</span><span style="color:#f92672">.</span><span style="color:#a6e22e">userConsentStatus</span> <span style="color:#f92672">=</span> ConsentStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">CONSENTED</span>
-</span></span></code></pre></div><p class="note"><i class="fas fa-info-circle"></i>Setting full consent implicitly sets the consent categories to the full list of available <a href="/platforms/android-kotlin/api/consent-category/#class-consentcategory"><code>ConsentCategory</code></a> types.</p>
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>Setting full consent implicitly sets the consent categories to the full list of available <a href="/platforms/android-kotlin/api/consent-category/#class-consentcategory"><code>ConsentCategory</code></a> types.</p>
 <h3 id="set-partial-consent-by-category">Set Partial Consent by Category</h3>
 <p>To set partial consent, specify a subset of consent categories. This implicitly sets <a href="/platforms/android-kotlin/api/consent-manager/#userconsentstatus"><code>userConsentStatus</code></a> to <code>CONSENTED</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">consentManager</span><span style="color:#f92672">.</span><span style="color:#a6e22e">userConsentCategories</span> <span style="color:#f92672">=</span> setOf<span style="color:#f92672">(</span>ConsentCategory<span style="color:#f92672">.</span><span style="color:#a6e22e">ANALYTICS</span><span style="color:#f92672">,</span> ConsentCategory<span style="color:#f92672">.</span><span style="color:#a6e22e">EMAIL</span><span style="color:#f92672">)</span>
@@ -728,6 +728,8 @@ No</button>
           Early Access
         </a>
     </li>
+  
+  
   
   
   

@@ -603,8 +603,13 @@ var utag_data = {
       </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-management/global-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".global-consent-parameters">Global consent parameters</a>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".global-privacy-control">Global Privacy Control</a>
+        <ul class=" global-privacy-control desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/consent-management/global-privacy-control/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-global-privacy-control">About Global Privacy Control (GPC)</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/consent-management/global-privacy-control/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".global-privacy-control">Global Privacy Control</a>
+        <a href="/iq-tag-management/consent-management/global-privacy-control/client-side-support-gpc/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".client-side-global-privacy-control">Client-side Global Privacy Control (GPC)</a>
+      </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-management/event-logging/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".event-logging-for-consent-management">Event logging</a>
       </li></ul>
@@ -700,16 +705,16 @@ var utag_data = {
 </div>
 
 <div class="prose" id="prose">
-  <p class="note"><i class="fas fa-info-circle"></i>To use first-party domains, you must have access to update your DNS database entries. You will need to work with your Production Operations team or the person responsible for your domain registration and SSL/TLS certificates.</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>To use first-party domains, you must have access to update your DNS database entries. You will need to work with your Production Operations team or the person responsible for your domain registration and SSL/TLS certificates.</p>
 <h2 id="about-first-party-domains">About first-party domains</h2>
 <p>By default, the services offered in the Tealium Customer Data Hub are hosted on Tealium domains. When domain names don&rsquo;t match the domain of your brand&rsquo;s website, they are considered third-party domains. For example, the JavaScript files for Tealium iQ Tag Management are served from the domain <code>tags.tiqcdn.com</code> and the data collection endpoint for Tealium EventStream API Hub uses the domain <code>collect.tealiumiq.com</code>.</p>
 <p>As new privacy regulations come out and as browsers begin limiting third-party capabilities, you might want to use your own domain to ensure that Tealium services are treated as first-party. First-party domains benefit from improved tracking and better compliance with browser privacy and cookie settings. Currently, only one first-party domain can be configured for an account.</p>
-<p class="note"><i class="fas fa-info-circle"></i>Contact the Tealium Support Desk to enable first-party domains for your account.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Contact the Tealium Support Desk to enable first-party domains for your account.</p>
 <h2 id="how-it-works">How it works</h2>
 <p>To use your own domain name for <code>tags.tiqcdn.com</code>, you must create a CNAME entry in your DNS database. A CNAME record is an alias that maps one domain name to another. For example, for the website <code>www.example.com</code>, you would create a CNAME for <code>tags.example.com</code> that points to Tealium&rsquo;s CDN to serve the files for iQ Tag Management.</p>
 <p>For <code>collect.tealiumiq.com</code>, you add A records to your DNS configuration. An A record maps a domain name to the IP address for the domain.</p>
 <p>A critical part of this configuration is the management of the SSL/TLS certificates, which are the public key certificates that verify the encryption of your website over HTTPS. The Tealium first-party domain feature helps you manage which domains you want to use with Tealium services and validates the SSL/TLS certificates for those domains.</p>
-<p class="note"><i class="fas fa-info-circle"></i>When using first-party domains, make sure you are using the latest version of the Tealium Collect tag.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>When using first-party domains, make sure you are using the latest version of the Tealium Collect tag.</p>
 <h3 id="managed-and-imported-certificates">Managed and imported certificates</h3>
 <p>You configure first-party domains by either importing your own certificates or by requesting certificates to be managed by Tealium. Imported certificates work the same as managed certificates, but with one important exception: imported certificates are not automatically renewed.</p>
 <p>To use your own certificates, you must have access to the following SSL/TLS certificate files:</p>
@@ -732,7 +737,7 @@ var utag_data = {
 <p>To use the DNS validation method, you must have access to edit your DNS configuration.</p>
 <p>After you enter your domains, you are provided with validation CNAME records for each domain requested, which you must add to your DNS configuration.</p>
 <p>After the DNS update for the validation CNAME records propagates (which may take several hours), the ownership is confirmed and permanent DNS records (CNAME records for <code>tags.tiqcdn.com</code>  or A records for <code>collect.tealiumiq.com</code>) are provided in the DNS Confirmation screen. You must then add the permanent records to your DNS configuration.</p>
-<p class="note"><i class="fas fa-info-circle"></i>Your DNS configuration must include the validation records and the permanent records. The validation records are used when you add domains to a certificate and for auto-renewal of the certificate.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Your DNS configuration must include the validation records and the permanent records. The validation records are used when you add domains to a certificate and for auto-renewal of the certificate.</p>
 <h4 id="email-validation">Email validation</h4>
 <p>To use email validation, you must be able to receive email messages at one of the contact addresses listed in the WHOIS database for each of your requested domains. The email addresses that will receive a message include:</p>
 <ul>
@@ -743,7 +748,7 @@ var utag_data = {
 <li><code>webmaster@your_domain</code></li>
 <li><code>admin@your_domain</code></li>
 </ul>
-<p class="tip"><i class="fas fa-star"></i>You will receive an email message (one for each domain) from Amazon Web Services containing a validation token that expires in 72 hours. If you do not receive the email or the token has expired, return to the main screen and click <strong>Resend Email</strong>.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>You will receive an email message (one for each domain) from Amazon Web Services containing a validation token that expires in 72 hours. If you do not receive the email or the token has expired, return to the main screen and click <strong>Resend Email</strong>.</p>
 <h3 id="data-collection-domains">Data collection domains</h3>
 <p>Use first-party domains with Tealium EventStream API Hub and Tealium AudienceStream CDP for first-party data collection.</p>
 <p>The following data collection services and domains can be mapped to your first-party domain:</p>
@@ -763,7 +768,7 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<p class="note"><i class="fas fa-info-circle"></i>To use first-party domains with other services, such as the View-Through Extension, contact the Tealium Support Desk.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>To use first-party domains with other services, such as the View-Through Extension, contact the Tealium Support Desk.</p>
 <h3 id="tag-management-delivery-domains">Tag management delivery domains</h3>
 <p>Use first-party domains with Tealium iQ Tag Management to maintain core functionality as browsers adopt stricter privacy policies such as ITP and ad blockers.</p>
 <p>The following tag management services and domains can be mapped to your first-party domain:</p>
@@ -1000,6 +1005,8 @@ No</button>
           Early Access
         </a>
     </li>
+  
+  
   
   
   

@@ -677,6 +677,8 @@ var utag_data = {
         <a href="/server-side/consent/event-specs/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-consent-change-event-specifications">Consent change event specifications</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/consent/sample-privacy-policy-excerpts/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-sample-privacy-policy-excerpts">Sample privacy policy excerpts</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/consent/server-side-support-gpc/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-global-privacy-control">Server-side Global Privacy Control</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".ss-save-publish">Save and publish</a>
@@ -825,7 +827,7 @@ If the referrer and the whitelisted domains do not match, the Data Layer Enrichm
 </ol>
 <p>Ensure the script runs on page load and only if the CMS does not already have the visitor ID.<br>
 This script imports the value of the <code>v_id</code> key from the <code>utag_main</code> cookie namespace, also known as <code>utag.data[&quot;cp.utag_main_v_id&quot;]</code>.</p>
-<p class="tip"><i class="fas fa-star"></i>The account and profile imported into the script refer to the AudienceStream account and profile. Many clients have a Tealium iQ Tag Mangement profile that differs from an AudienceStream profile. For example, the Tealium iQ profiles <code>tealium/audiencestream</code> and <code>tealium/tiq</code> may point to the AudienceStream profile <code>tealium/main</code>.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>The account and profile imported into the script refer to the AudienceStream account and profile. Many clients have a Tealium iQ Tag Mangement profile that differs from an AudienceStream profile. For example, the Tealium iQ profiles <code>tealium/audiencestream</code> and <code>tealium/tiq</code> may point to the AudienceStream profile <code>tealium/main</code>.</p>
 <ol>
 <li>
 <p>Trigger the Data Layer Enrichment Public API.</p>
@@ -869,7 +871,7 @@ This script imports the value of the <code>v_id</code> key from the <code>utag_m
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        ]
 </span></span><span style="display:flex;"><span>    }
-</span></span></code></pre></div><p class="note"><i class="fas fa-info-circle"></i>In this example, only audience and badge definitions are returned. You can optionally append the <code>visitor_id</code> parameter to the previous example. If this method is used, the response will be empty unless the specified visitor is currently active.</p>
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>In this example, only audience and badge definitions are returned. You can optionally append the <code>visitor_id</code> parameter to the previous example. If this method is used, the response will be empty unless the specified visitor is currently active.</p>
 <h3 id="whitelisting-domains">Whitelisting domains</h3>
 <p>By default, Data Layer Enrichment Public API honors requests from all domains. If you want to limit these requests from only specific domains, whitelist them in your Customer Data Hub profile. Whitelisting prevents non-trusted domains from accessing visitor information in the TAPID cookie. When a visitor navigates to any domain outside the whitelist that is potentially malicious, the Data Layer Enrichment Public API will use only the visitor ID in the URL path.</p>
 <p>When you whitelist a domain, all of its sub-domains are automatically included. For example, if you whitelist <code>example.com</code>, any sub-domain that matches <code>*****.example.com</code> is included.</p>
@@ -1105,6 +1107,8 @@ No</button>
           Early Access
         </a>
     </li>
+  
+  
   
   
   

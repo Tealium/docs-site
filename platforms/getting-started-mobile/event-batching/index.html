@@ -288,7 +288,7 @@ var utag_data = {
 <h2 id="batch-vs-queue">Batch vs. Queue</h2>
 <p>Event <em>batching</em> refers to how data is transmitted across the network. The event <em>queue</em> refers to how event data is stored temporarily on the device  before it is dispatched. Event batching combines multiple events into a single network request as opposed to each tracked event in its own request. The event queue is used when a device is offline so that tracking calls can be stored until the device regains a connection, at which point the queue is processed. Event batching works with the event queue by processing multiple events at once until the queue is empty.</p>
 <p>For example, if a device is offline and the event queue grows to contain 25 events, once the device comes online the queue is processed in batches of 10 events until the queue is empty. In this case, two batched requests with 10 events each and one batch for the remaining 5 events are sent, for a total of 25 tracked events using only 3 network requests.</p>
-<p class="note"><i class="fas fa-info-circle"></i>Currently, the batch size maximum is 10.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Currently, the batch size maximum is 10.</p>
 <h2 id="data-layer-optimization">Data Layer Optimization</h2>
 <p>The Tealium mobile libraries contribute a lot of <a href="/platforms/getting-started-mobile/data-layer/">device information to the data layer</a>, such as app name, screen resolution, and OS version. These variables are included in every network request even though their values do not change between events. Event batching optimizes the data layer so that these common variables are <em>only sent once per batch</em>.</p>
 <h2 id="payload-compression">Payload Compression</h2>
@@ -300,7 +300,7 @@ var utag_data = {
 <li>Fewer network requests for the same number of events.</li>
 <li>Improved battery performance on the device.</li>
 </ul>
-<p class="note"><i class="fas fa-info-circle"></i>Event batching is not available for Tealium iQ Tag Management.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Event batching is not available for Tealium iQ Tag Management.</p>
 <h2 id="supported-platforms">Supported Platforms</h2>
 <p>The following platforms support event batching:</p>
 <ul>
@@ -539,6 +539,8 @@ No</button>
           Early Access
         </a>
     </li>
+  
+  
   
   
   

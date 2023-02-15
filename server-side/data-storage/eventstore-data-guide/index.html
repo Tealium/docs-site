@@ -677,6 +677,8 @@ var utag_data = {
         <a href="/server-side/consent/event-specs/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-consent-change-event-specifications">Consent change event specifications</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/consent/sample-privacy-policy-excerpts/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-sample-privacy-policy-excerpts">Sample privacy policy excerpts</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/consent/server-side-support-gpc/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-global-privacy-control">Server-side Global Privacy Control</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".ss-save-publish">Save and publish</a>
@@ -798,7 +800,7 @@ var utag_data = {
 </li>
 <li>
 <p>The captured data is then compressed into a flattened JSON file and made available for download from Tealium’s Amazon S3 bucket. Each JSON object in the file may contain one or more rows of name-value pairs associated with the event.</p>
-   <p class="note"><i class="fas fa-info-circle"></i>If you send your event data (event feeds), to another location, such as your S3 bucket or server, the feeds are not displayed in EventStore.</p>
+   <p class="note"><i class="fa fa-exclamation-triangle"></i>If you send your event data (event feeds), to another location, such as your S3 bucket or server, the feeds are not displayed in EventStore.</p>
 </li>
 <li>
 <p>After the S3 bucket reaches a size of 100 MB (uncompressed) or after 1 hour has elapsed, whichever comes first, the data is compressed and prepared for Redshift.</p>
@@ -809,7 +811,7 @@ var utag_data = {
 </ol>
 <h2 id="tealium-collect-tag-data">Tealium Collect tag data</h2>
 <p>The Tealium Collect tag sends several predefined variables and data from the page, as described in the following sections.</p>
-<p class="note"><i class="fas fa-info-circle"></i>Ignore legacy values prefixed by <code>_t</code> in your data log files.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Ignore legacy values prefixed by <code>_t</code> in your data log files.</p>
 <h3 id="default-variables">Default variables</h3>
 <table>
 <thead>
@@ -1140,7 +1142,7 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<p class="note"><i class="fas fa-info-circle"></i>If the value of a data point equals zero (0), no timing information was captured. You can ignore the zero values when reporting or averaging.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If the value of a data point equals zero (0), no timing information was captured. You can ignore the zero values when reporting or averaging.</p>
 <h2 id="calculate-visitor-timezone">Calculate visitor timezone</h2>
 <p>The timezone for a visitor is not sent in the EventStore data. You can calculate the timezone by viewing the difference between <code>EventTime</code> and <code>_ses_id</code> on the record where <code>_ss</code> is <code>1</code>, since that record is the start of the session.</p>
 <p>If <code>utag.cfg.session_timeout</code> is known, you can calculate the current local time for the user by subtracting <code>utag.cfg.session_timeout</code> from <code>_st</code>, and then calculating the timezone by looking at the difference between the current time and <code>EventTime</code>. This approach can be used for any record.</p>
@@ -1446,6 +1448,8 @@ No</button>
           Early Access
         </a>
     </li>
+  
+  
   
   
   

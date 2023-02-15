@@ -332,7 +332,7 @@ After you set up your data source, upload your CSV files to your file service. F
 <p>The file transfer service is a secure location where you upload the files to be imported. The following file transfer services are supported:</p>
 <ul>
 <li>
-<p>Amazon S3 (Tealium bucket or your own bucket) <p class="note"><i class="fas fa-info-circle"></i>Tealium uses <a href="https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-services-overview.html">VPC endpoints to access Tealium S3 buckets</a> directly through the AWS network. Use IAM credentials to allow Tealium access your own bucket via our VPC Internet Gateway.</p></p>
+<p>Amazon S3 (Tealium bucket or your own bucket) <p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium uses <a href="https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-services-overview.html">VPC endpoints to access Tealium S3 buckets</a> directly through the AWS network. Use IAM credentials to allow Tealium access your own bucket via our VPC Internet Gateway.</p></p>
 </li>
 <li>
 <p>Microsoft Azure File/Blob Storage</p>
@@ -347,7 +347,7 @@ Supports the following authentication methods:</p>
 </ul>
 </li>
 </ul>
-<p class="tip"><i class="fas fa-star"></i>If you use your own file transfer service, be sure to have the connection details ready before proceeding.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>If you use your own file transfer service, be sure to have the connection details ready before proceeding.</p>
 <h4 id="file-import-process">File Import Process</h4>
 <p>After a file transfer service is assigned to a file import data source, you upload files to the service. The system then uses the following order of operations:</p>
 <ol>
@@ -363,7 +363,7 @@ The header line is read to identify the attributes being ingested. From there, t
 <ul>
 <li>
 <p><strong>Visitor Lookup</strong><br>
-The visitor ID is used for a lookup of the visitor record in AudienceStream. If an existing visitor record is not found, a new one is created. <p class="tip"><i class="fas fa-star"></i>Grouping rows with the same visitor ID increases the speed of the import.</p></p>
+The visitor ID is used for a lookup of the visitor record in AudienceStream. If an existing visitor record is not found, a new one is created. <p class="tip"><i class="fa fa-info-circle"></i>Grouping rows with the same visitor ID increases the speed of the import.</p></p>
 </li>
 <li>
 <p><strong>Attribute Enrichment</strong><br>
@@ -371,7 +371,7 @@ The visitor record is enriched according to the attributes imported and the exis
 </li>
 </ul>
 <h3 id="setting-up-a-file-import-data-source">Setting Up a File Import Data Source</h3>
-<p class="tip"><i class="fas fa-star"></i>Before you begin, create a sample CSV file (less than 1,000 rows) to use during the setup process. THis sample file is used to automatically detect the column mappings.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>Before you begin, create a sample CSV file (less than 1,000 rows) to use during the setup process. THis sample file is used to automatically detect the column mappings.</p>
 <p>Navigate to <strong>Sources &gt; Data Sources</strong> and click <strong>+ Add Data Source</strong>. Complete the following steps to set up a file import data source:</p>
 <h4 id="1-add-a-file-import-data-source">1. Add a File Import Data Source</h4>
 <p>Complete the following steps to add a file import data source:</p>
@@ -405,7 +405,7 @@ The detected column names are listed in CSV format below the table and are pre-p
 <p>The <strong>Mapping</strong> screen is used to indicate the type of data being imported and how to map the CSV columns to event attributes.</p>
 <h5 id="event-specification">Event Specification</h5>
 <p>Each row of the CSV file is processed as an event. Use the drop-down menu to select which specification matches the data in the file, otherwise select <strong>Custom</strong>. This selection determines the value of the <code>tealium_event</code> attribute during the import process. If <strong>Custom</strong> is selected, <code>tealium_event</code> is set to <code>imported</code>, otherwise it is set to the corresponding specification name, such as <code>purchase</code>.</p>
-<p class="note"><i class="fas fa-info-circle"></i>Changing the selected specification resets the column mapping table.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Changing the selected specification resets the column mapping table.</p>
 <h5 id="column-mapping-table">Column Mapping Table</h5>
 <p>The column mapping table contains the following columns:</p>
 <ul>
@@ -468,7 +468,7 @@ In addition to <strong>Password</strong> authentication, <strong>Upload****Priva
 <p>(Optional) To improve file processing efficiency, consider compressing your files using a tool that   supports GZIP compression. If your files are compressed, select <strong>GZIP</strong> for the <strong>Compression</strong> format.</p>
 </li>
 <li>
-<p>(Optional) To ensure secure processing of your files, consider encrypting your files with an encryption tool that supports PGP encryption. If your files are encrypted, select <strong>PGP</strong> for the <strong>Encryption</strong> format.  <p class="note"><i class="fas fa-info-circle"></i>Currently, the only supported compression format is GZIP and the only supported encryption format is PGP. If you are processing files that are both compressed and encrypted, the files must be compressed first, then encrypted. If you are processing new versions of files that have been mapped previously, your files must be encrypted and compressed in the same way as previously processed versions.</p></p>
+<p>(Optional) To ensure secure processing of your files, consider encrypting your files with an encryption tool that supports PGP encryption. If your files are encrypted, select <strong>PGP</strong> for the <strong>Encryption</strong> format.  <p class="note"><i class="fa fa-exclamation-triangle"></i>Currently, the only supported compression format is GZIP and the only supported encryption format is PGP. If you are processing files that are both compressed and encrypted, the files must be compressed first, then encrypted. If you are processing new versions of files that have been mapped previously, your files must be encrypted and compressed in the same way as previously processed versions.</p></p>
 </li>
 <li>
 <p>Click <strong>Save</strong> to save this service for future use.</p>
@@ -504,7 +504,7 @@ Your new data source now displays in the list of data sources.  <figure><img src
 </ol>
 <h3 id="uploading-a-file-to-a-file-service">Uploading a File to a File Service</h3>
 <p>To upload a file to a file service, a third-party application is required to initiate the upload. Though you may use any client for this purpose, Tealium recommends <a href="https://cyberduck.io/s3/">Cyberduck</a> because it&rsquo;s free and supports FTP and Amazon S3.</p>
-<p class="note"><i class="fas fa-info-circle"></i>When multiple files are uploaded at the same time using SFTP or S3, the files are processed in alphabetical order based on the file name.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>When multiple files are uploaded at the same time using SFTP or S3, the files are processed in alphabetical order based on the file name.</p>
 <h4 id="using-cyberduck-to-upload-a-file-via-ftp-or-amazon-s3">Using Cyberduck to Upload a File via FTP or Amazon S3</h4>
 <ol>
 <li>Launch Cyberduck.</li>
@@ -520,7 +520,7 @@ Your new data source now displays in the list of data sources.  <figure><img src
 <li>Save the connection.</li>
 </ol>
 <p>You are now ready to upload files by dragging and dropping your CSV files into Cyberduck. If this is a new S3 bucket (an empty bucket), see <a href="#s3-bucket-1st-upload">Uploading a File to an Empty S3 Bucket</a> for instructions on uploading your first file.</p>
-<p class="note"><i class="fas fa-info-circle"></i>When using SFTP, the file must be located in the root folder. Files cannot be located in the sub-folders for an SFTP connection.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>When using SFTP, the file must be located in the root folder. Files cannot be located in the sub-folders for an SFTP connection.</p>
 <h4 id="using-the-amazon-command-line-interface-to-upload-and-manage-files">Using the Amazon Command Line Interface to Upload and Manage Files</h4>
 <p>To install the Amazon Command Line Interface (CLI), see <a href="http://docs.aws.amazon.com/cli/latest/userguide/installing.html">Installing, updating, and uninstalling the AWS CLI</a> in the Amazon documentation. For information on configuring AWS CLI, see <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html">Configuration Basics</a>.</p>
 <p>When you call<code>aws configure</code>, you are prompted for your Access Key and Access Key ID (you can leave Region Name and Output Format blank).</p>
@@ -556,9 +556,9 @@ Your new data source now displays in the list of data sources.  <figure><img src
 </span></span></code></pre></div><p>For more information, see <a href="https://community.tealiumiq.com/t5/Data-Sources-and-File-Imports/AWS-Command-Line-Interface-CLI-How-to-connect-to-your-S3-Bucket/ta-p/35724">AWS Command Line Interface (CLI): How to Connect to Your S3 Bucket and Other Common Commands</a>.</p>
 <h3 id="check-import-status">Check Import Status</h3>
 <p>After the file import data source is set up and has begun importing files, you can view the import activity from the <strong>Status</strong> tab by expanding the data source in the <strong>Data Sources Dashboard</strong>. This tab shows a rolling month report, with details about how many rows were processed, with and without errors, in graphical format. A tabular view displays directly underneath the graph.</p>
-<p class="tip"><i class="fas fa-star"></i>You can also see events imported from files on the Live Events screen by navigating to Live Events and selecting the File Import data source you want to view from the drop-down list.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>You can also see events imported from files on the Live Events screen by navigating to Live Events and selecting the File Import data source you want to view from the drop-down list.</p>
 <p>If an error occurs, hovering over the red area of a bar in the graphical display displays a breakdown of the errors. Tooltips show common errors with a link to detailed report of all errors hosted in S3. Hover over any bar in the display to view details about the number of rows processed.</p>
-<p class="note"><i class="fas fa-info-circle"></i>If AudienceStream fails to copy a file using the file transfer service, it will retry in 10 minutes.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If AudienceStream fails to copy a file using the file transfer service, it will retry in 10 minutes.</p>
 
 </div>
 
@@ -791,6 +791,8 @@ No</button>
           Early Access
         </a>
     </li>
+  
+  
   
   
   

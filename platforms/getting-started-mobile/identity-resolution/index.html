@@ -341,7 +341,7 @@ var utag_data = {
 <p>If your app supports multiple users, it is important to separate their AudienceStream CDP profiles to avoid sending targeted messages or advertisements to the wrong user. When enabled, Tealium SDK&rsquo;s Visitor Switching feature automatically monitors the app for user changes, and resets the <code>tealium_visitor_id</code> whenever a new user is detected.</p>
 <p>To enable this feature, a visitor identity key must be passed to the <code>TealiumConfig</code> instance. This key tells the SDK which data layer item to monitor to determine if a new visitor has logged in. Once a new visitor is detected, a new visitor ID is assigned and inserted into the data layer, affecting any event generated from the point of the visitor switch.</p>
 <p>To reduce the number of visitor IDs assigned to each user (recommended for performance reasons in AudienceStream), if the SDK detects a switch to a user who has previously logged in, their original visitor ID is used. To support this feature, the <code>tealium_visitor_id</code> and the value of the custom data layer key are stored locally on the device.</p>
-<p class="note"><i class="fas fa-info-circle"></i>IDs are always hashed with the <code>SHA-256</code> algorithm. The hashed IDs are only used for comparison purposes. There is no way for personal data to be un-hashed, and the hashed value is never transmitted from the device.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>IDs are always hashed with the <code>SHA-256</code> algorithm. The hashed IDs are only used for comparison purposes. There is no way for personal data to be un-hashed, and the hashed value is never transmitted from the device.</p>
 <h3 id="configuration">Configuration</h3>
 <p>Visitor Switching is enabled by passing the name of the key that identifies the app user in the data layer to the <code>TealiumConfig</code> instance:</p>
 
@@ -364,7 +364,7 @@ var utag_data = {
 <pre tabindex="0"><code>tealium.clearStoredVisitorIds()
 </code></pre><p>If the <code>visitorIdentityKey</code> is present in the <code>TealiumConfig</code> instance and the <code>dataLayer</code> contains the visitor identifier, the visitor ID storage is automatically repopulated with the current identity and the new <code>tealium_visitor_id</code>.</p>
 <p>After clearing all previously saved identifiers, the <code>tealium_visitor_id</code> for the current visitor is reset to a new identifier.</p>
-<p class="note"><i class="fas fa-info-circle"></i>It is strongly advised that this is only performed when absolutely necessary, because clearing the stored IDs regularly prevents the feature from operating as intended, and could lead to problems with your AudienceStream configuration.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>It is strongly advised that this is only performed when absolutely necessary, because clearing the stored IDs regularly prevents the feature from operating as intended, and could lead to problems with your AudienceStream configuration.</p>
 <h2 id="listen-for-anonymous-id-changes">Listen for Anonymous ID changes</h2>
 <p>The Tealium instance offers an observable property that can be subscribed to <code>onVisitorId</code>. The subscription is called with the current <code>tealium_visitor_id</code> in the following instances:</p>
 <ul>
@@ -606,6 +606,8 @@ No</button>
           Early Access
         </a>
     </li>
+  
+  
   
   
   

@@ -373,7 +373,7 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on old
 <h4 id="440-april-2016">4.40 (April 2016)</h4>
 <p><strong>Improvements in behavior in Single Page App (SPA) sites using <code>utag.link</code> and <code>utag.view</code></strong></p>
 <p>Previously, items in current data layer passed to <code>utag.link/view</code> were merged into the <code>utag.data</code> global object. This was required to re-evaluate load rules for each <code>utag.link/view</code> call. The <code>utag.js </code>4.40 template takes advantage of a publish engine update so that this is no longer required. In version 4.40, the <code>utag.data</code> global object is not updated with each <code>utag.link</code> or <code>utag.view</code> call.</p>
-<p class="note"><i class="fas fa-info-circle"></i>You may use the following JS Extension to test for backwards compatibility with 4.39 behavior before updating to 4.40.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>You may use the following JS Extension to test for backwards compatibility with 4.39 behavior before updating to 4.40.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// JS Extension scoped to &#34;Before Load Rules&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">ut</span>.<span style="color:#a6e22e">merge</span>( <span style="color:#a6e22e">b</span>, <span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">data</span>, <span style="color:#ae81ff">0</span> );
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">ut</span>.<span style="color:#a6e22e">merge</span>( <span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">b</span> ,<span style="color:#ae81ff">1</span> );
@@ -408,7 +408,7 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on old
 </ul>
 </li>
 </ul>
-<p class="note"><i class="fas fa-info-circle"></i>This feature is not compatible with 4.37 below as they may cause the Extension to run more than once.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>This feature is not compatible with 4.37 below as they may cause the Extension to run more than once.</p>
 <ul>
 <li>Added support for calling <code>utag.view</code> before all the Tags have loaded; this fixes a bug when calling <code>utag.view</code> to fire a specific Tag by its UID inside a DOM Ready-scoped Extension.</li>
 <li>Added support for calling <code>utag.link</code> for a specific Tag by its UID.</li>
@@ -538,7 +538,7 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on old
 <p><strong>Control Load Rules-based Tracking for AJAX</strong></p>
 <p>Subsequent <code>utag.view()</code> calls on the page trigger load rules to load new tags. In previous versions, a <code>utag.view</code> call does not load new tags. This feature is enabled by default in <code>utag.js</code> 4.26.</p>
 <p>Disable this feature to keep current behavior. See <a href="#utagcfgloadrulesajax">utag.cfg.load_rules_ajax flag</a> details below for more information.</p>
-<p class="note"><i class="fas fa-info-circle"></i>A <code>utag.link()</code> call does not load a new tag. Only a <code>utag.view()</code> call does this.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>A <code>utag.link()</code> call does not load a new tag. Only a <code>utag.view()</code> call does this.</p>
 <p><strong>Load a Tag Directly By UID (Update to <code>utag.view</code> and <code>utag.track</code> calls)</strong></p>
 <p>For advanced implementations, especially those using AJAX, use the <code>utag.view()</code> call to bring in a new tag and fire it based on the tag&rsquo;s UID (as seen in the Tags tab of Tealium iQ). This bypasses all load rules.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">view</span>({<span style="color:#a6e22e">page_name</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;New Page&#34;</span>}, <span style="color:#66d9ef">null</span>, [<span style="color:#ae81ff">5</span>]);
@@ -555,9 +555,9 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on old
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">property</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;og:type&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;video.movie&#34;</span> /&gt; 
 </span></span></code></pre></div><p><strong>Removing the &ldquo;lowercase&rdquo; by default of &ldquo;qp.&rdquo; (query string) and &ldquo;meta.&rdquo; variables</strong></p>
 <p>This is a logic change in the default behavior of <code>utag.data</code>. Set the <a href="#utagcfglowerqp">utag.cfg.lowerqp flag</a> to <code>true</code> to automatically lowercase. However, the default setting keeps the mixed case.</p>
-<p class="tip"><i class="fas fa-star"></i>Set the <code>utag.cfg.lowerqp</code> flag to true for backward compatibility with previous <code>utag.js</code> behavior.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>Set the <code>utag.cfg.lowerqp</code> flag to true for backward compatibility with previous <code>utag.js</code> behavior.</p>
 <p>Set the <code>utag.cfg.lowermeta</code> flag to <code>true</code> to enable lower-casing for the meta tags. This only applies to the name of the name/value pair for that meta tag.</p>
-<p class="note"><i class="fas fa-info-circle"></i>If you have mixed-case query string parameters, you need to update the data source&rsquo;s name in the Data Sources tab to match exactly. Any code that refers to this query string type data source must also be updated.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If you have mixed-case query string parameters, you need to update the data source&rsquo;s name in the Data Sources tab to match exactly. Any code that refers to this query string type data source must also be updated.</p>
 <p><strong>New Values in <code>utag_main</code> Cookie</strong></p>
 <p>There are new cookie name/value pairs in the <code>utag_main</code> cookie:</p>
 <ul>
@@ -651,7 +651,7 @@ Set this flag to <code>true</code> if you wish to control when the initial <code
 <h4 id="4005-december-2012">4.005 (December 2012)</h4>
 <p>Adds the utility function <code>utag.ut.decode</code>.</p>
 <p>Also adds support for a &ldquo;no cookie&rdquo; flag <code>utag.cfg.nocookie</code>. When the <code>utag.cfg.nocookie </code>value is defined and set to true then <code>utag.js</code> does not write any <code>utag_main</code> cookies.</p>
-<p class="note"><i class="fas fa-info-circle"></i>Existing <code>utag_main</code> cookies are not modified or removed. Some tags expect that <code>utag_main</code> cookies exist, so use this flag at your own risk.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Existing <code>utag_main</code> cookies are not modified or removed. Some tags expect that <code>utag_main</code> cookies exist, so use this flag at your own risk.</p>
 <p>Sample (Pre Loader-scoped JavaScript Code Extension):</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_cfg_ovrd</span><span style="color:#f92672">=</span>{};  
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">nocookie</span><span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>;
@@ -892,6 +892,8 @@ No</button>
           Early Access
         </a>
     </li>
+  
+  
   
   
   

@@ -601,8 +601,13 @@ var utag_data = {
       </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-management/global-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".global-consent-parameters">Global consent parameters</a>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".global-privacy-control">Global Privacy Control</a>
+        <ul class=" global-privacy-control desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/consent-management/global-privacy-control/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-global-privacy-control">About Global Privacy Control (GPC)</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/consent-management/global-privacy-control/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".global-privacy-control">Global Privacy Control</a>
+        <a href="/iq-tag-management/consent-management/global-privacy-control/client-side-support-gpc/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".client-side-global-privacy-control">Client-side Global Privacy Control (GPC)</a>
+      </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-management/event-logging/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".event-logging-for-consent-management">Event logging</a>
       </li></ul>
@@ -740,7 +745,7 @@ Upload your own certificate files. If you use your own certificate, Tealium cann
 <li><strong>DNS Validation</strong><br>
 To validate using DNS, you will be provided validation DNS records to add to your DNS database. After these records are propagated and validated, you will be provided permanent records that you must add to your DNS database. You must have access to edit your DNS configuration and add the permanent records to your DNS configuration.</li>
 </ul>
-<p class="note"><i class="fas fa-info-circle"></i>Your DNS configuration must include the validation records and the permanent records. The validation records are used when you add domains to a certificate and for auto-renewal of the certificate.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Your DNS configuration must include the validation records and the permanent records. The validation records are used when you add domains to a certificate and for auto-renewal of the certificate.</p>
 <ul>
 <li><strong>Email Validation</strong><br>
 To validate using email, an email message will be sent to the administrator email address associated with the requested domains. You must be able to receive these email messages to validate your ownership of the domains. You will receive one email message for each domain containing a validation token that expires in 72 hours. If you do not receive the email or the token has expired, return to the main screen and click <strong>Resend Email</strong>.</li>
@@ -748,7 +753,7 @@ To validate using email, an email message will be sent to the administrator emai
 <h2 id="add-domains">Add domains</h2>
 <p>The first-party domains you specify are typically subdomains of your customer-facing website. For example, the website located at <code>www.example.com</code> would use a subdomain named <code>tags.example.com</code> as a first-party domain for tag management services.</p>
 <p>Enter the first-party domain you want to use, omitting <code>https://</code> and the ending slash.</p>
-<p class="note"><i class="fas fa-info-circle"></i>First-party domains apply to all profiles in your account. Enter a subdomain for each site managed by this account.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>First-party domains apply to all profiles in your account. Enter a subdomain for each site managed by this account.</p>
 <h2 id="view-domain-contact-info">View domain contact info</h2>
 <p>After you enter a domain, click <strong>View Contact Info</strong> to view the <a href="https://whois.icann.org/en/about-whois">WHOIS database information</a> for that domain. If the WHOIS database contains contact information for the domain, such as a name, mailing address, email address, or phone number, the contact information is displayed. Verify that the information is correct.</p>
 <p>Click <strong>+ Add Another Domain</strong> to add additional domains. When the maximum number of domains for the account is reached, <strong>+ Add Domain</strong> is grayed out. Click <strong>Next</strong> when you have finished entering domains.</p>
@@ -760,12 +765,12 @@ To validate using email, an email message will be sent to the administrator emai
          alt="plat-perms-cert-generated"
          title="plat-perms-cert-generated"/>
 </figure>
-<p class="note"><i class="fas fa-info-circle"></i>When you first request the certificate, validation DNS records (CNAME records or A records) are displayed. After the validation process is completed, the permanent records are displayed. The validation DNS records are used when you add a domain to a certificate and for auto-renewal of the certificate. Do not delete the validation DNS records.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>When you first request the certificate, validation DNS records (CNAME records or A records) are displayed. After the validation process is completed, the permanent records are displayed. The validation DNS records are used when you add a domain to a certificate and for auto-renewal of the certificate. Do not delete the validation DNS records.</p>
 <p>When the validation process is completed, one or more permanent DNS records are displayed. Each record contains a Name and Value that you must enter into your DNS provider&rsquo;s web interface to update the records.</p>
 <p>The record name appears in the format <code>_X.sub.example.com.</code> where <code>X</code> is a generated alpha-numeric string and <code>sub.example.com</code> is the first-party domain you entered.</p>
 <p>Example record name:</p>
 <pre tabindex="0"><code>_4c71ce829d13dacf824b18af1067d273.tags.example.com.
-</code></pre><p class="tip"><i class="fas fa-star"></i>DNS providers are inconsistent in their handling of the record name (or name) field. In some cases, you are expected to provide the entire value as shown above, while other providers automatically append the domain name to the value you enter.</p>
+</code></pre><p class="tip"><i class="fa fa-info-circle"></i>DNS providers are inconsistent in their handling of the record name (or name) field. In some cases, you are expected to provide the entire value as shown above, while other providers automatically append the domain name to the value you enter.</p>
 <p>The record value is similar and appears in the format <code>_X.Y.acm-validations.aws.</code> where <code>X.Y</code> is a generated alpha-numeric string.</p>
 <p>Example record value:</p>
 <pre tabindex="0"><code>_6e23f25da49d05e43a419ea7c5f4162d.zzxlnyslwt.acm-validations.aws.
@@ -792,7 +797,7 @@ To validate using email, an email message will be sent to the administrator emai
 <li>Certificate Chain</li>
 <li>Private Key</li>
 </ul>
-<p class="note"><i class="fas fa-info-circle"></i>The Private Key must match the Public Key in the certificate and must not be encrypted with a password.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The Private Key must match the Public Key in the certificate and must not be encrypted with a password.</p>
 <p>The domains for the certificate are displayed. Verify that the list of domains is correct and click <strong>Save</strong>.</p>
 <figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/12535iB7741EF3F8392C34/image-size/large?v=v2&amp;amp;px=999"
          alt="fpd cert domains"
@@ -818,7 +823,7 @@ To validate using email, an email message will be sent to the administrator emai
 <li><strong>Pending Validation</strong>: One or more domains attached to the certificate are not validated.</li>
 </ul>
 <p>The domain validation must occur within 72 hours.</p>
-<p class="tip"><i class="fas fa-star"></i>If the validation period expires, request a new certificate for the same domain. The DNS validation records are the same for subsequent requests of the same domain.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>If the validation period expires, request a new certificate for the same domain. The DNS validation records are the same for subsequent requests of the same domain.</p>
 
           
         
@@ -1063,6 +1068,8 @@ No</button>
           Early Access
         </a>
     </li>
+  
+  
   
   
   

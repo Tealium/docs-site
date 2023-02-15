@@ -567,6 +567,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/pixibo-fyf-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".pixibo-fyf-tag">Pixibo FYF</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/client-side-tags/podsights-pixel/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".podsights-pixel-tag">Podsights Pixel</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/pricegrabber-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".pricegrabber-tag">PriceGrabber</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/pulsepoint-hcp365-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">PulsePoint HCP365 Pixel</a>
@@ -604,6 +606,8 @@ var utag_data = {
         <a href="/client-side-tags/sailthru-personalization-engine-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".sailthru-personalization-engine-tag">Sailthru Personalization Engine</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/salsify-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".salsify-tag">Salsify</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/client-side-tags/sas-ci-360/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".sas-customer-intelligenge-360-tag">SAS Customer Intelligence 360</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/schema-app-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".schema-app-tag">Schema App</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -756,7 +760,7 @@ Ensure that your site has jQuery installed on it. If you are not using jQuery, y
 <li><a href="/client-side-tags/adobe-appmeasurement-for-js-tag/"><strong>AppMeasurement JavaScript Tag</strong></a><br>
 Add and configure the tag in the same profile and enable the bundle flag, if you have not done so already. This is required for JavaScript implementations. Bundling is only required for <a href="https://community.tealiumiq.com/t5/Tags/AppMeasurement-Tag-Update-Adobe-Marketing-Cloud-ID-Service/ta-p/15163">Tag version 1.6.3</a>, as the prior versions already have the Enterprise Cloud Service bundled by default.</li>
 </ul>
-<p class="note"><i class="fas fa-info-circle"></i>In the Tags tab, ensure that the bundled Enterprise Cloud ID tag is placed above the bundled AppMeasurement tag. This ensures the Enterprise Cloud ID tag will load first.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>In the Tags tab, ensure that the bundled Enterprise Cloud ID tag is placed above the bundled AppMeasurement tag. This ensures the Enterprise Cloud ID tag will load first.</p>
 <h2 id="supported-vendor-libraries">Supported Vendor Libraries</h2>
 <ul>
 <li>Adobe Heartbeat v2.0.2 (default)</li>
@@ -851,7 +855,7 @@ Add and configure the tag in the same profile and enable the bundle flag, if you
 </table>
 <h2 id="apply-load-rules">Apply Load Rules</h2>
 <p><a href="https://community.tealiumiq.com/t5/1-Getting-Started-Documentation/Load-Rules-Creation/ta-p/9422">Load Rules</a> determine when and where to load an instance of this tag on your site. The Load on All Pages rule is the default load rule. To load this tag on a specific page, create relevant rule conditions to apply to the tag.</p>
-<p class="tip"><i class="fas fa-star"></i>Best Practice: Create and apply custom rules to load this tag on any pages where videos are made available.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>Best Practice: Create and apply custom rules to load this tag on any pages where videos are made available.</p>
 <h2 id="data-mappings">Data Mappings</h2>
 <p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-layer/manage-variables/manage-data-bundles/">data layer variable</a> to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">Data Mappings</a>.</p>
 <p>The following sections provide detailed tables for each available category.</p>
@@ -1395,7 +1399,7 @@ Add and configure the tag in the same profile and enable the bundle flag, if you
 <h2 id="validation">Validation</h2>
 <p>The Heartbeat tag is event-based and leverages the <code>utag.track(&quot;video&quot;, data)</code> call to differentiate itself from other utag calls. For this reason, it is crucial to properly set up the <a href="#video_events_mapping">video event triggers in the Data Mapping toolbox</a>.</p>
 <p>Once configured, the tag fires continuously every second in order to keep the video data current. This is accomplished by firing the &ldquo;playing&rdquo; event within your video player&rsquo;s &ldquo;playing&rdquo; event handler. Other video events should also be fired via their corresponding Adobe heartbeat events. Network calls are aggregated and reported to Adobe every 10 seconds; including those for event changes.</p>
-<p class="tip"><i class="fas fa-star"></i>An easy way to set both the Heartbeat and Nielsen debug flags is by adding a querystring parameter to the URL of the video page. For For example, <code>adobe_debug=1&amp;Nielsen=1</code> <br>You can then add the Query parameter variables to your data layer in Tealium iQ and map them accordingly.<br>Mapping destinations for both the Heartbeat and Nielsen debug flags are available under the Standard category. See &ldquo;Adobe Heartbeat Debug Logging Flag&rdquo; and &ldquo;Nielsen SDK Debug Flag&rdquo;.<br>When complete, you can run the following Tealium debug command in your browser console. <br>
+<p class="tip"><i class="fa fa-info-circle"></i>An easy way to set both the Heartbeat and Nielsen debug flags is by adding a querystring parameter to the URL of the video page. For For example, <code>adobe_debug=1&amp;Nielsen=1</code> <br>You can then add the Query parameter variables to your data layer in Tealium iQ and map them accordingly.<br>Mapping destinations for both the Heartbeat and Nielsen debug flags are available under the Standard category. See &ldquo;Adobe Heartbeat Debug Logging Flag&rdquo; and &ldquo;Nielsen SDK Debug Flag&rdquo;.<br>When complete, you can run the following Tealium debug command in your browser console. <br>
 <code>document.cookie = &quot;utagdb=true&quot;;</code></p>
 <h3 id="sample-implementation">Sample Implementation</h3>
 <p>The following examples show network calls for a sample Heartbeat implementation. Primary parameters to note are <code>s:event:type</code> and <code>s:asset:type</code>. These parameters, respectively, indicate the type of video event and which video component it pertains to. The example shows the beginning of the main video before the ad display. The <code>l:event:playhead</code>, also shown, refers to the elapsed time on the main video.</p>
@@ -1680,6 +1684,8 @@ No</button>
   
   
   
+  
+  
 </ul>
 
 </div>
@@ -1687,6 +1693,8 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
   
   
   

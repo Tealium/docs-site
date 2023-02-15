@@ -868,7 +868,7 @@ var utag_data = {
 <h3 id="hosteddatalayerexpiry"><code>hostedDataLayerExpiry</code></h3>
 <p>Sets an expiration on the hosted data layer data. If this property isn&rsquo;t set, hosted data layer items persist for 7 days by default, and are re-downloaded from the CDN once this period has expired.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.hostedDataLayerExpiry = (<span style="color:#ae81ff">1</span>, unit: .minutes)
-</span></span></code></pre></div><p class="note"><i class="fas fa-info-circle"></i>Setting a shorter expiration time reduces mobile device battery life due to increased network requests.</p>
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>Setting a shorter expiration time reduces mobile device battery life due to increased network requests.</p>
 <h3 id="hosteddatalayerkeys"><code>hostedDataLayerKeys</code></h3>
 <p>Sets the hosted data layer keys (lookup variables) used by the hosted data layer module when retrieving data layer IDs.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.hostedDataLayerKeys = [<span style="color:#e6db74">&#34;product_view&#34;</span> : <span style="color:#e6db74">&#34;product_id&#34;</span>]
@@ -932,7 +932,7 @@ var utag_data = {
 </tbody>
 </table>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.logLevel = .debug
-</span></span></code></pre></div><p class="note"><i class="fas fa-info-circle"></i>View your development logs in the Xcode console or the Mac Console app. View your production logs with the Console app by connecting your iOS device.</p>
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>View your development logs in the Xcode console or the Mac Console app. View your production logs with the Console app by connecting your iOS device.</p>
 <h3 id="logtype"><code>logType</code></h3>
 <p>Sets a new logger type. The default is <code>.os</code> or <a href="https://developer.apple.com/documentation/os/oslog"><code>OSLog</code></a></p>
 <p>The following example shows how to set the log level to <code>print</code>:</p>
@@ -1050,11 +1050,11 @@ var utag_data = {
 </span></span></code></pre></div><h3 id="shouldaddcookieobserver"><code>shouldAddCookieObserver</code></h3>
 <p>If set to <code>true</code> (default), this method determines whether to add a <code>WKWebView</code> cookie observer in order to successfully migrate all cookies. If set to <code>false</code>, if multiple cookie observers are present then only one of them is called, which may cause some cookies to not migrate.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.shouldAddCookieObserver = <span style="color:#66d9ef">false</span>
-</span></span></code></pre></div><p class="note"><i class="fas fa-info-circle"></i>The <a href="#shouldaddcookieobserver"><code>shouldAddCookieObserver</code></a> property permits using your own cookie observer during cookie synchronization, which requires a cookie observer to retrieve cookies on the main thread after setting them. This issue is caused by bugs in <code>WKWebView</code>, which prevents your own observer from being called.</p>
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>The <a href="#shouldaddcookieobserver"><code>shouldAddCookieObserver</code></a> property permits using your own cookie observer during cookie synchronization, which requires a cookie observer to retrieve cookies on the main thread after setting them. This issue is caused by bugs in <code>WKWebView</code>, which prevents your own observer from being called.</p>
 <h3 id="shoulduseremotepublishsettings"><code>shouldUseRemotePublishSettings</code></h3>
 <p>Sets the <a href="/iq-tag-management/profiles/creating-a-mobile-profile/">Mobile Publish Settings</a> (version 1.9.0+) to enabled (default) or disabled.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.shouldUseRemotePublishSettings = <span style="color:#66d9ef">false</span>
-</span></span></code></pre></div><p class="note"><i class="fas fa-info-circle"></i>Mobile Publish Settings are enabled by default, and must be disabled if you don’t wish to use them. Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature using <code>config.shouldUseRemotePublishSettings = false</code> in the Swift installation. Failure to do causes initialization failures and prevents tracking.</p>
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>Mobile Publish Settings are enabled by default, and must be disabled if you don’t wish to use them. Configure the Mobile Publish Settings in iQ Tag Management, or disable the feature using <code>config.shouldUseRemotePublishSettings = false</code> in the Swift installation. Failure to do causes initialization failures and prevents tracking.</p>
 <h3 id="skadattributionenabled"><code>skAdAttributionEnabled</code></h3>
 <p>Enables or disables the Apple SKAdNetwork API in the Attribution module (default: disabled).</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.skAdAttributionEnabled = <span style="color:#66d9ef">true</span>
@@ -1141,7 +1141,7 @@ var utag_data = {
 </table>
 <h3 id="updatedistance"><code>updateDistance</code></h3>
 <p>Sets the distance interval (meters) in which location updates are received.</p>
-<p class="note"><i class="fas fa-info-circle"></i>Only use this method if <code>useHighAccuracy</code> is set to <code>true</code>.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Only use this method if <code>useHighAccuracy</code> is set to <code>true</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.updateDistance = &lt;Double&gt;
 </span></span></code></pre></div><table>
 <thead>
@@ -1222,7 +1222,7 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>config.webviewProcessPool = processPool
 </span></span></code></pre></div><h3 id="webviewconfig"><code>webviewConfig</code></h3>
 <p>Permits a custom <code>WKWebviewConfiguration</code> object to be passed, which is used by the Tealium Tag Management webview. If using this option instead of <code>webviewProcessPool</code> option, set the singleton <code>WKProcessPool</code> via the customizable <code>WKWebviewConfiguration</code> <code>processPool</code> property.</p>
-<p class="note"><i class="fas fa-info-circle"></i>It is recommended to use this option as it may be required if future API changes are made to <code>WKWebView</code>.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>It is recommended to use this option as it may be required if future API changes are made to <code>WKWebView</code>.</p>
 <p>Example:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> processPool = MyApp.wkProcessPool
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> configuration = WKWebViewConfiguration()
@@ -1525,6 +1525,8 @@ No</button>
           Early Access
         </a>
     </li>
+  
+  
   
   
   

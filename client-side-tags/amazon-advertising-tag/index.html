@@ -567,6 +567,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/pixibo-fyf-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".pixibo-fyf-tag">Pixibo FYF</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/client-side-tags/podsights-pixel/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".podsights-pixel-tag">Podsights Pixel</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/pricegrabber-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".pricegrabber-tag">PriceGrabber</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/pulsepoint-hcp365-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">PulsePoint HCP365 Pixel</a>
@@ -604,6 +606,8 @@ var utag_data = {
         <a href="/client-side-tags/sailthru-personalization-engine-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".sailthru-personalization-engine-tag">Sailthru Personalization Engine</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/salsify-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".salsify-tag">Salsify</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/client-side-tags/sas-ci-360/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".sas-customer-intelligenge-360-tag">SAS Customer Intelligence 360</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/schema-app-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".schema-app-tag">Schema App</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -745,96 +749,159 @@ var utag_data = {
 </div>
 
 <div class="prose" id="prose">
-  <p>The Amazon Advertising System is an online advertising service that run ads on the Amazon network. It is used to drive traffic and boost sales.</p>
+  <p>This article describes how to set up the Amazon Advertising tag.</p>
+<p>Amazon Advertising System is an online advertising service which runs ads on the Amazon network. It is used to drive traffic and boost sales.</p>
 <h2 id="tag-tips">Tag tips</h2>
 <ul>
 <li>Use mappings to override or dynamically set the tag configurations.</li>
-<li>By default, the Amazon Advertising base code always includes <code>Page View</code> and <code>Pageview</code> events, which track when a visitor lands on your website.</li>
 </ul>
 <h2 id="tag-configuration">Tag configuration</h2>
-<p>Navigate to the Tag Marketplace to add a new tag. Read the <a href="/iq-tag-management/tags/about/">Tag Overview</a> article for general instructions on how to add a tag.</p>
+<p>Navigate to the Tag Marketplace to add a new tag. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
 <p>When adding the tag, configure the following settings:</p>
 <ul>
-<li><strong>Region</strong>:</li>
-<li><strong>Tag IDs</strong>: Supports multiple values provided in CSV format</li>
-<li><strong>Automatic Pageview Tracking</strong>: When Automatic Pageview Tracking is set to true, if <code>event</code> equals view, Amazon event is set to to Pageview.</li>
-<li><strong>Automatic Purchase Tracking</strong>: When Automatic Purchase Tracking is set to true, if <code>order_id</code> is defined, Amazon event is set to to Purchase.</li>
+<li><strong>Region</strong>: Enter your Amazon Advertising account region (NA, EU, FE)</li>
+<li><strong>Tag IDs</strong>: Support multiple values with CSV format</li>
+<li><strong>Automatic Pageview Tracking</strong>: When Automatic Pageview Tracking is set to <code>true</code>, if event equals <code>view</code>, Amazon event is set to to <code>Pageview</code>.</li>
+<li><strong>Automatic Purchase Tracking</strong>: When Automatic Purchase Tracking is set to <code>true</code>, if <code>order_id</code> is defined, Amazon event is set to to <code>Purchase</code>.</li>
 </ul>
 <h2 id="load-rules">Load rules</h2>
-<p>Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the <a href="/iq-tag-management/load-rules/about/">Load Rules</a> documentation.</p>
+<p>Load the tag on all pages or set conditions for when your tag will load. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
+<h2 id="event-mapping">Event Mapping</h2>
+<p>Amazon Advertising events are configured through data mappings by selecting a variable that maps to an event and entering a trigger. The trigger initiates the event when the variable is equal to a specific value, as demonstrated in the following use case.</p>
+<h3 id="use-case-add-to-cart-event">Use Case: Add to Cart Event</h3>
+<p>To set up an add to cart event:</p>
+<ol>
+<li>Select <code>tealium_event</code> from the variable drop-down list and click <strong>Select a Destination</strong>.</li>
+<li>In the <strong>Category</strong> section, select <strong>Events</strong>.</li>
+<li>Set the <strong>When mapped variable equals</strong> field to <code>cart_add</code>, which is the value <code>tealium_event</code> must equal to trigger an add to cart.</li>
+<li>In the <strong>Trigger event</strong> drop-down list, select <code>AddToCart</code>, which is the event that is triggered when <code>tealium_event</code> equals <code>cart_add</code>.</li>
+</ol>
+<p>If additional data needs to be sent with the add to cart event, use Custom Parameters to map additional event data.</p>
+<p>The following example passes the product id as <strong>productid</strong> with the add to cart event:</p>
+<ol>
+<li>Select <code>product_id</code> from the variable drop-down list and click <strong>Select a Destination</strong>.</li>
+<li>In the <strong>Category</strong> section, select <strong>Event-specific Parameters</strong>.</li>
+<li>Set the <strong>Destination</strong> field to the name <code>productid</code> for the Custom Parameter.</li>
+<li>In the <strong>For event</strong> drop-down list, select the event <code>AddToCart</code> which the Custom Parameter collects with.</li>
+</ol>
+<p>Test the mappings by using the Developer Tools offered by your browser.</p>
+<ol>
+<li>Use the <strong>Network</strong> Panel and filter for <code>Amazon</code> to display all the network requests containing amazon as a keyword.</li>
+<li>Confirm the <code>AddToCart</code> event was successful by looking at the name of the request.</li>
+<li>Open the request and select the <strong>Payload</strong> to view the <strong>Query String Parameters</strong> and see the values of the the data mappings that were configured: <code>AddToCart</code> and <code>productid</code>.</li>
+</ol>
 <h2 id="data-mappings">Data mappings</h2>
-<p>Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">data mappings</a>.</p>
+<p>Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see <a href="/iq-tag-management/data-mappings/about/">About data mappings</a>.</p>
 <p>The available categories are:</p>
-<h3 id="tag-configuration-1">Tag configuration</h3>
+<h3 id="tag-configuration-1">Tag Configuration</h3>
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Region (region)</td>
-<td>[String]</td>
+<td style="text-align:left">Region <code>region</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"><ul><li>Amazon Advertising account region</li></ul></td>
 </tr>
 <tr>
-<td>Tag IDs (ids)</td>
-<td>[String]</td>
+<td style="text-align:left">Tag IDs <code>ids</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"><ul><li>Amazon Advertising account IDs (comma-delimited string for multiple)</li></ul></td>
 </tr>
 <tr>
-<td>Automatic Pageview Tracking (auto_page_tracking)</td>
-<td>[Boolean]</td>
+<td style="text-align:left">Automatic Pageview Tracking <code>auto_page_tracking</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left"><ul><li>Toggle to enable or disable automatic PageView tracking.</li><li>Toggles whether or not to automatically trigger a PageView event with a page load.</li><li>Overrides tag config selection.</li></ul></td>
 </tr>
 <tr>
-<td>Automatic Purchase Tracking (auto_purchase_tracking)</td>
-<td>[Boolean]</td>
+<td style="text-align:left">Automatic Purchase Tracking <code>auto_purchase_tracking</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left"><ul><li>Toggle to enable or disable automatic Purchase tracking.</li><li>Toggles whether or not to automatically trigger a Purchase event when <code>order_id</code> is present.</li><li>Overrides tag config selection.</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h3 id="e-commerce">E-Commerce</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Order ID <code>order_id</code> (Overrides <code>_corder</code>)</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"><ul><li>Unique identifier assigned to the final order.</li><li>Overrides <code>_corder</code>.</li></ul></td>
 </tr>
 </tbody>
 </table>
 <h3 id="events">Events</h3>
+<p>To map events, refer to <a href="/iq-tag-management/data-mappings/manage/#add-a-variable-mapping">Create an Event Mapping</a>.</p>
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>PageView</td>
-<td>PageView</td>
+<td style="text-align:left">AddToCart</td>
+<td style="text-align:left"><code>AddToCart</code></td>
 </tr>
 <tr>
-<td>AddToCart</td>
-<td>AddToCart</td>
+<td style="text-align:left">Application</td>
+<td style="text-align:left"><code>Application</code></td>
 </tr>
 <tr>
-<td>ViewContent</td>
-<td>ViewContent</td>
+<td style="text-align:left">Checkout</td>
+<td style="text-align:left"><code>Checkout</code></td>
 </tr>
 <tr>
-<td>SignUp</td>
-<td>SignUp</td>
+<td style="text-align:left">Contact</td>
+<td style="text-align:left"><code>Contact</code></td>
 </tr>
 <tr>
-<td>Login</td>
-<td>Login</td>
+<td style="text-align:left">Lead</td>
+<td style="text-align:left"><code>Lead</code></td>
 </tr>
 <tr>
-<td>Checkout</td>
-<td>Checkout</td>
+<td style="text-align:left">Purchase</td>
+<td style="text-align:left"><code>Purchase</code></td>
 </tr>
 <tr>
-<td>Purchase</td>
-<td>Purchase</td>
+<td style="text-align:left">PageView</td>
+<td style="text-align:left"><code>PageView</code></td>
 </tr>
 <tr>
-<td>Custom</td>
-<td>Custom</td>
+<td style="text-align:left">Search</td>
+<td style="text-align:left"><code>Search</code></td>
+</tr>
+<tr>
+<td style="text-align:left">SignUp</td>
+<td style="text-align:left"><code>SignUp</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Subscription</td>
+<td style="text-align:left"><code>Subscription</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Custom</td>
+<td style="text-align:left"><code>Custom</code></td>
 </tr>
 </tbody>
 </table>
+<h3 id="event-specific-parameters">Event-specific Parameters</h3>
+<p>To map events, refer to <a href="/iq-tag-management/data-mappings/manage/#add-a-variable-mapping">Create an Event Mapping</a>.</p>
+<p>In order to map a parameter for a specific event only, enter the name of the parameter you want to set and then select the name of the event for which you want to set that parameter.</p>
+<p>If you want to specify a custom event for the event-specific mapping to occur, select the <strong>Custom option</strong> from the <strong>Events</strong> drop-down list and enter the name of the custom event in the field that appears.</p>
 
 </div>
 
@@ -912,9 +979,13 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-tips">Tag tips</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag configuration</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules">Load rules</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data mappings</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag configuration</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-mapping">Event Mapping</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#use-case-add-to-cart-event">Use Case: Add to Cart Event</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data mappings</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag Configuration</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#e-commerce">E-Commerce</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#events">Events</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-specific-parameters">Event-specific Parameters</a></li>
               </nav>
   </aside></nav>
 
@@ -1094,6 +1165,8 @@ No</button>
   
   
   
+  
+  
 </ul>
 
 </div>
@@ -1101,6 +1174,8 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
   
   
   

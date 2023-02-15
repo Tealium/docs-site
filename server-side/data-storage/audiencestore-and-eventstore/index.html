@@ -677,6 +677,8 @@ var utag_data = {
         <a href="/server-side/consent/event-specs/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-consent-change-event-specifications">Consent change event specifications</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/consent/sample-privacy-policy-excerpts/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-sample-privacy-policy-excerpts">Sample privacy policy excerpts</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/consent/server-side-support-gpc/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-global-privacy-control">Server-side Global Privacy Control</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".ss-save-publish">Save and publish</a>
@@ -797,7 +799,7 @@ For detailed information, see the <a href="/server-side-connectors/audiencestore
 – OR –</li>
 <li>Active EventStream feeds</li>
 </ul>
-<p class="note"><i class="fas fa-info-circle"></i>These services must be activated for your account. Contact your account manager for more information.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>These services must be activated for your account. Contact your account manager for more information.</p>
 <h2 id="how-it-works">How it works</h2>
 <p>AudienceStore and EventStore services store your unstructured audience and event data as compressed JSON files on Tealium&rsquo;s Amazon S3 bucket. The Tealium Collect tag (or other Collect library) sends event data to the Customer Data Hub where it&rsquo;s captured in Tealium&rsquo;s Amazon S3 bucket as flattened JSON data. When the S3 bucket reaches a size of 100 MB (uncompressed) or 1 hour elapses, whichever comes first, the data is compressed and prepared for Redshift. The compressed data is then copied and imported into the Redshift database for your account.</p>
 <h3 id="audiencestore-file-paths">AudienceStore file paths</h3>
@@ -847,7 +849,7 @@ For detailed information, see the <a href="/server-side-connectors/audiencestore
 </li>
 </ol>
 <p>For security purposes the secret access key is only displayed once, so it&rsquo;s important to store it securely for later use.</p>
-<p class="note"><i class="fas fa-info-circle"></i>If you ever lose this value you can regenerate a new one, but it invalidates all previous connections that used the old value.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If you ever lose this value you can regenerate a new one, but it invalidates all previous connections that used the old value.</p>
 <h3 id="ftp-clients-with-amazon-s3-support">FTP clients with Amazon S3 support</h3>
 <p>We recommend using a desktop application for a more convenient method of downloading a large number of files.</p>
 <p>Here are some client applications that work with Amazon S3.</p>
@@ -893,7 +895,7 @@ For detailed information, see the <a href="/server-side-connectors/audiencestore
 <pre tabindex="0"><code>aws s3 cp s3://dataaccess-&lt;region&gt;.tealiumiq.com/&lt;account&gt;/&lt;profile&gt;/audiences/{action-id}/{filename}.gz ./
 </code></pre><h3 id="synchronize-local-and-remote-folders">Synchronize local and remote folders</h3>
 <p>The <code>sync</code> method takes a remote folder on Amazon S3 and synchronizes it with a local folder on your desktop or server. The following example synchronizes a specific remote EventStream or AudienceStream folder to a local folder on the desktop.</p>
-<p class="note"><i class="fas fa-info-circle"></i>The <code>--dryrun</code> argument shows you what files would actually sync, without actually doing the download. To execute the actual download, remove the <code>--dryrun</code> argument.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The <code>--dryrun</code> argument shows you what files would actually sync, without actually doing the download. To execute the actual download, remove the <code>--dryrun</code> argument.</p>
 <pre tabindex="0"><code>aws s3 sync s3://uconnect.tealiumiq.com/{account}/{profile}/audiences// \
     ~/Desktop/temp --dryrun
 </code></pre><p>Lastly, you can also filter the <code>sync</code> method to only download files matching a specific filter. In this example, only the files that match the wildcard filter of &ldquo;*2015.06.14*&rdquo; are downloaded.</p>
@@ -1137,6 +1139,8 @@ No</button>
           Early Access
         </a>
     </li>
+  
+  
   
   
   
