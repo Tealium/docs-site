@@ -346,7 +346,7 @@ var utag_data = {
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".events">Events</a>
         <ul class=" events desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/events/about-events/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-events">About Events</a>
+        <a href="/iq-tag-management/events/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-events">About Events</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/events/event-scope/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".event-scope">Scope</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -701,12 +701,12 @@ var utag_data = {
 <div class="prose" id="prose">
   <p>A data mapping is a connection between a data layer variable and a vendor tag. Data mappings determine the data a tag receives and the type of event tracking it performs.</p>
 <p>For example, a tag might collect the page name in a parameter named <code>pName</code>, but your data layer might store this value in a variable named <code>page_name</code>. To send the value of <code>page_name</code> to <code>pName</code>, you create a data mapping. After the mapping is configured, the value of <code>page_name</code> will always be passed to the vendor parameter <code>pName</code> when that tag is triggered.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/8104i81D321D105FE2FE9/image-size/large?v=v2&amp;amp;px=999"
+<figure><img src="/images/iq-tag-management/whiteui-tiq-page-name-to-pname.png"
          alt="page_name to pName"
          title="page_name to pName"/>
 </figure>
 <p>Data mappings are managed from the tag configuration. The list of supported vendor parameters is organized by category and available on the <strong>Data Mappings</strong> screen. First, you select the data layer variable to map, then choose the vendor parameter it maps to.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/11884iC42C5AA3A7C45CED/image-size/large?v=v2&amp;amp;px=999"
+<figure><img src="/images/iq-tag-management/data-mappings-select-destination.png"
          alt="Select-destination"
          title="Select-destination"/>
 </figure>
@@ -733,7 +733,7 @@ var utag_data = {
 <p>An event mapping associates the values of your event variable ( <code>tealium_event</code> ) to the vendor&rsquo;s event names and triggers the corresponding tag function. Learn more about <a href="/iq-tag-management/data-mappings/manage/">mapping events</a>.</p>
 <h4 id="example-variable-mapping">Example: Variable mapping</h4>
 <p>A tag vendor has a parameter for currency code, named <code>curr</code> , to be set to the three-character code matching the currency of a transaction. If the tag is loaded on pages that support multiple currencies, you would likely have a data layer variable called <code>site_currency</code> or <code>currency_code</code> that is set to the appropriate value for the current visitor. The expected values might be <code>USD</code>, <code>CAD</code>, <code>GBP</code>, <code>EUR</code>, <code>JPY</code>, and so on. The variable mapping would look like this:</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/8103iCCE7D1D63B8BB9A1/image-size/large?v=v2&amp;amp;px=999"
+<figure><img src="/images/iq-tag-management/whiteui-tiq-datamapping-variables.png"
          alt="Data Mapping Variables"
          title="Data Mapping Variables"/>
 </figure>
@@ -741,7 +741,7 @@ var utag_data = {
 <p>A custom value mapping is a convenient method for assigning a value directly in a mapping without using an extension or a data layer variable. The custom value is plain-text or the return value of a snippet of JavaScript code.</p>
 <h3 id="example-custom-value-with-plain-text">Example: Custom value with plain text</h3>
 <p>A tag vendor has a parameter for currency code, named <code>curr</code> , but the tag is only deployed to a single geographic region where the currency is always the same (such as <code>CAD</code>). In this case, a data layer variable is not necessary because the value is constant throughout the site. The expected currency code, <code>CAD</code>, can be set directly as a custom value mapping, as follows:</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/8102iD2426153A5550C30/image-size/large?v=v2&amp;amp;px=999"
+<figure><img src="/images/iq-tag-management/whiteui-tiq-datamapping-customvalue.png"
          alt="Data Mapping Custom Value"
          title="Data Mapping Custom Value"/>
 </figure>
@@ -749,14 +749,14 @@ var utag_data = {
 <p>The custom value can also be returned from JavaScript code. This option can be used to pass a JavaScript number, boolean, or array value to a vendor parameter. You can use advanced statements or even an inline function.</p>
 <p>For example, the following line of JavaScript sets the mapping to <code>GB</code> if the <code>hostname</code> contains <code>co.uk</code>, otherwise it is set to <code>USD</code>:</p>
 <pre tabindex="0"><code>location.hostname.indexOf(&#34;co.uk&#34;) &gt; -1 ? &#34;GBP&#34; : &#34;USD&#34;
-</code></pre><figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/6974i408A920793907910/image-dimensions/301x57?v=v2"
+</code></pre><figure><img src="/images/iq-tag-management/iq-data-mappings-custom-value-jscode.jpg"
          alt="Custom-Value-jSCode"
          title="Custom-Value-jSCode" width="301" height="57"/>
 </figure>
 <p>To reference a data layer variable such as <code>page_name</code>, use the <code>b</code>object. For example, <code>b['page_name']</code>. <a href="/platforms/javascript/the-b-object/">Learn more about the b object</a>.</p>
 <h2 id="mapping-precedence">Mapping precedence</h2>
 <p>When two or more variables are mapped to the same destination, such as <code>page_name &gt; pageName</code> and <code>Document Title &gt; pageName</code>, the last mapping takes precedence. Data mappings can be reordered to account for this precedence.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/8111iEB6AC0E3C4AAC7B5/image-size/medium?v=v2&amp;amp;px=400"
+<figure><img src="/images/iq-tag-management/whiteui-tiq-two-variabvles-mapped-to-same-destination.png"
          alt="Two Variables Mapped to Same Destination"
          title="Two Variables Mapped to Same Destination"/>
 </figure>
@@ -807,7 +807,7 @@ No</button>
   </div>
 </div>
 
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  February 21, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

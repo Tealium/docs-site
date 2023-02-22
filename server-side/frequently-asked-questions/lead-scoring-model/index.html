@@ -823,85 +823,85 @@ The audiences requested to be created are tied to elements from a sample client&
 <p>In order for Google Analytics to properly store the hit from the Webhook, the Google Analytics Visitor ID must be provided in the <a href="/server-side/connectors/webhook-connectors/">Webhook</a>. This is done in Tealium iQ by parsing the cookie <code>_ga</code> using a <strong>Set Data Values extension</strong> and storing the 2 longest numbers at the end of the cookie value into a data layer variable. Declare <code>_ga</code> as type <strong>First Party Cookie</strong>, and <code>google_visitorid</code> as type <code>UDO Variable</code> in your <strong>Data Layer</strong> tab. Then create the <a href="/iq-tag-management/extensions/extensions-list/set-data-values-extension/">Set Data Values extension</a> as seen below.</p>
 <p>See the following code and screenshot example:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">b</span>[<span style="color:#e6db74">&#34;cp._ga&#34;</span>].<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;.&#34;</span>).<span style="color:#a6e22e">splice</span>(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>).<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34;.&#34;</span>)
-</span></span></code></pre></div><figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/2130i75CB81F4849A0707/strip-exif-data/true/image-size/large?v=v2&amp;amp;px=-1"
+</span></span></code></pre></div><figure><img src="/images/server-side/google-analytics-visitor-id.png"
          alt="Google Analytics Visitor ID"
          title="Google Analytics Visitor ID"/>
 </figure>
 <p>The <code>google_visitorid</code> value can then be stored as a a string.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/4101iFC14D4ABF8A749E0/image-size/original?v=v2&amp;amp;px=-1"
+<figure><img src="/images/server-side/set-string-to-google-visitorid.png"
          alt="set string to google visitorid"
          title="set string to google visitorid"/>
 </figure>
 <p>We will set a <a href="/server-side/attributes/data-types/boolean/">Boolean</a> to check if the data exists. This is important because the value stored in <code>google_visitorid</code> is required for Google Analytics to save the data received from the connector.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/4102i8952F6EFDF39ECD9/image-size/original?v=v2&amp;amp;px=-1"
+<figure><img src="/images/server-side/set-boolean-google-visitor-id.png"
          alt="set boolean google visitor id"
          title="set boolean google visitor id"/>
 </figure>
 <p>Last, we will eventually map the data to the <code>cid</code> parameter in the Webhook that we build for Google Analytics</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/4103i537AFD92FCE84948/image-size/original?v=v2&amp;amp;px=-1"
+<figure><img src="/images/server-side/map-to-cid.png"
          alt="map to cid"
          title="map to cid"/>
 </figure>
 <h2 id="step-2-capture-event-information-tealium-iq">Step 2: Capture event information (Tealium iQ)</h2>
 <p>Configure the events in Tealium iQ that will adjust the Lead Score metrics in AudienceStream. This usually involves calling <code>utag.link()</code> on specific website assets when they are clicked on or interacted with. For this step, you&rsquo;ll have the option to use the jQuery <code>onHandler()</code> extension or a JavaScript Code extension to capture these events. These will both submit the data Google Analytics and AudienceStream.</p>
 <p>For this use case, we&rsquo;ve chosen to use the <a href="/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Javascript Code extension</a> and used jQuery to capture all the events. Some examples of positive events from this use case are interactions with assets like case studies, white papers, videos, webinars, and more. It also includes negative events, such as Support, which will negatively impact Lead Score by either decrementing the value or resetting it to zero.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/160iCA6F830D8BD7A1CE/strip-exif-data/true/image-size/large?v=v2&amp;amp;px=-1"
+<figure><img src="/images/server-side/no-title-160ica6f830d8bd7a1ce.png"
          alt="1"
          title="1"/>
 </figure>
 <h2 id="step-3-create-rules-and-attributes-audiencestream">Step 3: Create rules and attributes (AudienceStream)</h2>
 <h3 id="lead-score">Lead Score</h3>
 <p>Initialize <strong>Lead Score</strong> to zero for all new visitors. This is done by using the <strong>Lifetime Event Count Number</strong> and checking if it is zero.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/4104iDE2995877A75220D/image-size/original?v=v2&amp;amp;px=-1"
+<figure><img src="/images/server-side/lead-score-lifetime.png"
          alt="lead score lifetime"
          title="lead score lifetime"/>
 </figure>
 <p>For all events with positive points, increment the <strong>Lead Score</strong> by a desired value.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/4105iB451E54D308B1E29/image-size/original?v=v2&amp;amp;px=-1"
+<figure><img src="/images/server-side/increment-decrement-lead-score.png"
          alt="increment decrement lead score"
          title="increment decrement lead score"/>
 </figure>
 <p>For all negative events, apply the negative credit however it fits the model. In the case of <strong>Support</strong>, it resets the score to zero.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/4106i3B1414624D6357AB/image-size/original?v=v2&amp;amp;px=-1"
+<figure><img src="/images/server-side/lead-score-support-user.png"
          alt="lead score support user"
          title="lead score support user"/>
 </figure>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>If the scoring model is still being refined (as in this use case), make sure to use small values initially so that when you end up refining the model with higher values, visitors with initial lower lead score values do not skew your audiences.</p>
 <h3 id="rules">Rules</h3>
 <p><code>Lead Score &gt; 3</code> or <code>Lead Score &gt;= 3</code>. These will be used to assign the Visitor Value String next.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/4107iFE713BCDA1C6D4FD/image-size/original?v=v2&amp;amp;px=-1"
+<figure><img src="/images/server-side/ls-greater-equal-3.png"
          alt="LS greater equal 3"
          title="LS greater equal 3"/>
 </figure>
 <h3 id="visitor-value">Visitor Value</h3>
 <p>For this use case, the initial critical <strong>Lead Score</strong> threshold is <code>3</code>. If <strong>Lead Score</strong> is less than <code>3</code>, then set to <code>Standard Visitor</code>. If <strong>Lead Score</strong> is greater or equal to <code>3</code>, then set to <code>High Value Visitor</code>.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/4108i4CFF2D0394116938/image-size/original?v=v2&amp;amp;px=-1"
+<figure><img src="/images/server-side/string-visitor-value.png"
          alt="string visitor value"
          title="string visitor value"/>
 </figure>
 <h2 id="step-4-create-audiences-audiencestream">Step 4: Create audiences (AudienceStream)</h2>
 <h3 id="high-value-visitors">High Value Visitors</h3>
 <p>When <strong>Visitor Value</strong> is <code>High Value Visitor</code>, visitor is a member of this audience.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/4109i938D58E7CAA1ED99/image-size/original?v=v2&amp;amp;px=-1"
+<figure><img src="/images/server-side/high-value-audience.png"
          alt="high value audience"
          title="high value audience"/>
 </figure>
 <h3 id="standard-visitors">Standard Visitors</h3>
 <p>When <strong>Visitor Value</strong> is <code>Standard Visitor</code>, visitor is a member of this audience.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/4110i46C785CAFB021A7E/image-size/original?v=v2&amp;amp;px=-1"
+<figure><img src="/images/server-side/standard-audience.png"
          alt="Standard audience"
          title="Standard audience"/>
 </figure>
 <h2 id="step-5-configure-webhook-google-analytics-and-audiencestream">Step 5: Configure webhook (Google Analytics and AudienceStream)</h2>
 <h3 id="custom-dimensions">Custom Dimensions</h3>
 <p>Create <strong>Custom Dimensions</strong> in Google Analytics that the <a href="/server-side/connectors/webhook-connectors/">Webhook</a> will populate.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/168i3748718D3D7CC6EC/strip-exif-data/true/image-size/large?v=v2&amp;amp;px=-1"
+<figure><img src="/images/server-side/no-title-168i3748718d3d7cc6ec.png"
          alt="Custom dimensions"
          title="Custom dimensions"/>
 </figure>
 <h3 id="webhook-example">Webhook Example</h3>
 <p>The following example configuration is used to trigger the data to Google Analytics.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/2137i4135E61F04E6A2F9/strip-exif-data/true/image-size/large?v=v2&amp;amp;px=-1"
+<figure><img src="/images/server-side/google-analytics-configurations.png"
          alt="Google Analytics Configurations"
          title="Google Analytics Configurations"/>
 </figure>
@@ -992,19 +992,19 @@ The audiences requested to be created are tied to elements from a sample client&
 </table>
 <h3 id="connectors">Connectors</h3>
 <p>There will be 2 connectors configured. Each one will fire based on when a visitor joins or changes audiences from <code>Standard Visitor</code> or <code>High Value Visitor</code>.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/2138i3D7C127B9AC37543/strip-exif-data/true/image-size/large?v=v2&amp;amp;px=-1"
+<figure><img src="/images/server-side/two-connectors.png"
          alt="Two Connectors"
          title="Two Connectors"/>
 </figure>
 <p>Every new visitor will fire the connector on their first pageview to flag them as a <code>Standard Visitor</code>. This first connector must fire because Google Analytics does not automatically assign a <code>NULL</code> value to custom dimensions. If you need a default value in a custom dimension, it must be populated with some value. If they eventually join the <code>High Value Visitor</code> audience, a second connector will fire to upgrade them to a <code>High Value Visitor</code>. If that visitor ever leaves that audience and re-joins the <code>Standard Visitor</code> audience, the connector will fire again.</p>
 <h2 id="step-6-act">Step 6: Act!</h2>
 <h3 id="example-custom-report">Example: Custom report</h3>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/171i447E852B607FBD60/strip-exif-data/true/image-size/large?v=v2&amp;amp;px=-1"
+<figure><img src="/images/server-side/no-title-171i447e852b607fbd60.png"
          alt="Custom report"
          title="Custom report"/>
 </figure>
 <h3 id="example-remarketing-list-based-on-high-value-visitor">Example: Remarketing list based on High Value Visitor</h3>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/172i85EE1C061F359FCA/strip-exif-data/true/image-size/large?v=v2&amp;amp;px=-1"
+<figure><img src="/images/server-side/no-title-172i85ee1c061f359fca.png"
          alt="Remarketing list"
          title="Remarketing list"/>
 </figure>
@@ -1053,7 +1053,7 @@ No</button>
   </div>
 </div>
 
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  February 21, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -823,31 +823,31 @@ var utag_data = {
 <h2 id="scenario-1-a-different-email-address-from-the-same-device-and-browser">Scenario 1: a different email address from the same device and browser</h2>
 <p>A week later, the user visits the website using the same device and browser and submits a form with a different email address. The anonymous ID is the same, so the incoming event will match the profile that was created on the user&rsquo;s first visit. However, because a visitor ID attribute cannot be changed, the new email address hash value will not be used.</p>
 <p><strong>Result:</strong> One visitor profile with a visitor ID attribute set to the original email address hash.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/11508iEE81A9046793C0E3/image-size/small?v=v2&amp;amp;px=200"
+<figure><img src="/images/server-side/two-emails-first.png"
          alt="two-emails-first.png"
          title="two-emails-first.png"/>
 </figure>
 <h2 id="scenario-2-a-different-email-from-a-different-device-or-browser">Scenario 2: a different email from a Different Device or Browser</h2>
 <p>A week later, the same user visits the website using a different device or browser and submits a form with a different email address. The anonymous ID is different, so the incoming event does not match the profile that was created on the user&rsquo;s first visit. A new profile is created and there are two profiles for this user after the second visit. No visitor stitching occurs, because the visitor ID attribute does not match (the email addresses are different). These two profiles could be stitched together later, if they matched on a second visitor ID attribute.</p>
 <p><strong>Result:</strong> Two visitor profiles, with each visitor ID attribute set to the corresponding email address hash.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/11509i15DA53A0AB3AE285/image-size/medium?v=v2&amp;amp;px=400"
+<figure><img src="/images/server-side/two-emails-both.png"
          alt="two-emails-both.png"
          title="two-emails-both.png"/>
 </figure>
 <h2 id="example-of-two-visitor-profiles-matching-on-a-second-visitor-id-attribute">Example of two visitor profiles matching on a second visitor ID attribute</h2>
 <p>In this example, a user visits a web site from two different devices and is assigned a customer ID for each visit. The anonymous IDs do not match, and two separate profiles are created. The customer ID is configured to enrich visitor ID attribute #1, and the visitor ID attribute is enriched in each profile, as shown below.</p>
 <p>This scenario could only happen if the anonymous ID (<code>tealium_visitor_id</code>) is not known, or is different in the two profiles. If the anonymous IDs match, no user IDs or visitor ID attributes would be evaluated, and the second profile would not be created.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/11516iD8B9AFA627FE5432/image-size/medium?v=v2&amp;amp;px=400"
+<figure><img src="/images/server-side/match-2nd-visid-first.png"
          alt="match-2nd-visID-first.png"
          title="match-2nd-visID-first.png"/>
 </figure>
 <p>The user visits the website again from the first device and provides an email address when submitting a form. The customer_email address attribute is configured to enrich visitor ID attribute #2. Visitor ID attribute #2 in Profile A is enriched with the email address, as shown below.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/11517iF048C9950777DBDE/image-size/medium?v=v2&amp;amp;px=400"
+<figure><img src="/images/server-side/match-2nd-visid-second.png"
          alt="match-2nd-visID-second.png"
          title="match-2nd-visID-second.png"/>
 </figure>
 <p>When the user visits the website from the second device and provides the same email address when submitting a form, the email address matches visitor ID attribute #2 in Profile A, and the two profiles are stitched together to create Profile C, as shown below.</p>
-<figure><img src="https://community.tealiumiq.com/t5/image/serverpage/image-id/11514iC66F378E504F1532/image-size/small?v=v2&amp;amp;px=200"
+<figure><img src="/images/server-side/match-2nd-visid-third.png"
          alt="match-2nd-visID-third.png"
          title="match-2nd-visID-third.png"/>
 </figure>
@@ -964,7 +964,7 @@ No</button>
   </div>
 </div>
 
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  February 21, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
