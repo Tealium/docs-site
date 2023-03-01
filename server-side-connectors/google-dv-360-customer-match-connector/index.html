@@ -745,14 +745,9 @@ var utag_data = {
 <p class="note"><i class="fa fa-exclamation-triangle"></i>When you add this connector, you are prompted to accept the vendor&rsquo;s data platform policy.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>Linked Customer ID</strong>
+<li><strong>Customer ID</strong>
 <ul>
 <li><strong>Required.</strong> The account to which Tealium is linked in the DV360 UI (<strong>Tools and Settings</strong> &gt; <strong>Linked Accounts</strong>).</li>
-</ul>
-</li>
-<li><strong>Client Customer ID</strong>
-<ul>
-<li><strong>Required.</strong> The customer ID that owns the lists.</li>
 </ul>
 </li>
 <li><strong>Target Product</strong>
@@ -765,6 +760,38 @@ var utag_data = {
 <h2 id="action-settings--parameters-and-options">Action Settings — Parameters and Options</h2>
 <p>Click <strong>Continue</strong> to configure the connector actions. Enter a name for the action and then select the action type from the drop-down menu.</p>
 <p>The following sections describe how to set up parameters and options for each action.</p>
+<h3 id="user-identifiers">User Identifiers</h3>
+<p>Each action requires a user identifier and these values must be normalized and hashed using SHA-256. Each user identifier value mapped must meet the following requirements:</p>
+<ul>
+<li>Lower-case</li>
+<li>Whitespace trimmed from the beginning and end of the text</li>
+<li>Hashed with SHA-256</li>
+</ul>
+<p>You can map attributes that are already normalized and hashed or you can allow the connector to normalize and hash them for you. Select the appropriate mapping for your scenario.</p>
+<p>The <code>User List</code> type you select determines the type of user identifier. The <code>User List</code> type can be one of the following:</p>
+<ul>
+<li>CONTACT_INFO</li>
+<li>MOBILE_ADVERTISING_ID</li>
+</ul>
+<p>The following user identifier fields are supported:</p>
+<table>
+<thead>
+<tr>
+<th>User Identifier Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CONTACT_INFO</code></td>
+<td><ul><li>Provide Hashed Email, Hashed Phone Number, or Address Info.</li><li><strong>Address Info: Country Code</strong> - 2-letter country code for user&rsquo;s address in ISO-3166-1 alpha-2 format.</li><li><strong>Address Info: First Name (already SHA256 hashed)</strong> - Provide first name, with whitespace trimmed, that has been lowercased and SHA256 hashed.</li><li><strong>Address Info: First Name (apply SHA256 hash)</strong> - Provide a plain text first name. The connector hashes this value using SHA256 hash.</li><li><strong>Address Info: Last Name (already SHA256 hashed)</strong> - Provide last name, with whitespace trimmed, that has been lowercased and SHA256 hashed.</li><li><strong>Address Info: Last Name (apply SHA256 hash)</strong> - Provide a plain text last name. The connector hashes this value using SHA256 hash.</li><li><strong>Address Info: Postal Code</strong> - Postal code of the user&rsquo;s address.</li><li><strong>Email Address (already SHA256 hashed)</strong> - Provide an email address, with whitespace trimmed, that has been lowercased and SHA256 hashed.</li><li><strong>Email Address (apply SHA256 hash)</strong> - Provide a plain text email address. The connector hashes this value using SHA256 hash.</li><li><strong>Phone Number (already SHA256 hashed)</strong> - Provide a phone number, with whitespace trimmed, that has been SHA256 hashed.</li><li><strong>Phone Number (apply SHA256 hash)</strong> - Provide a plain text phone number. The connector hashes this value using SHA256 hash.</li></ul></td>
+</tr>
+<tr>
+<td><code>MOBILE_ADVERTISING_ID</code></td>
+<td><ul><li><strong>Mobile ID</strong> (Required) - Mobile device ID (advertising ID/IDFA).</li></ul></td>
+</tr>
+</tbody>
+</table>
 <h3 id="action--add-to-customer-match-list">Action — Add to Customer Match List</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
@@ -876,7 +903,8 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#batch-limits">Batch Limits</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings--parameters-and-options">Action Settings — Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action--add-to-customer-match-list">Action — Add to Customer Match List</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#user-identifiers">User Identifiers</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action--add-to-customer-match-list">Action — Add to Customer Match List</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action--remove-from-customer-match-list">Action — Remove from Customer Match List</a></li>
               </nav>
   </aside></nav>

@@ -332,7 +332,12 @@ var utag_data = {
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>tealium.AddToDataLayer(<span style="color:#66d9ef">new</span> Dictionary&lt;<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">object</span>&gt; {
 </span></span><span style="display:flex;"><span>  { <span style="color:#e6db74">&#34;user_language&#34;</span>, lang }
 </span></span><span style="display:flex;"><span>}, Expiry.Forever);
-</span></span></code></pre></div><h3 id="consentcategory">ConsentCategory</h3>
+</span></span></code></pre></div><h3 id="clearstoredvisitorids"><code>ClearStoredVisitorIds()</code></h3>
+<p>Clears the stored visitor IDs and generates a new one. Primarily used for legal compliance.</p>
+<p>Visitor IDs will contiue to be stored based on the config setting <code>visitorIdentityKey</code>, if the data layer contains that key.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>tealium.ClearStoredVisitorIds();
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>To avoid storing the newly reset <code>visitorId</code> with the current identity after the storage is cleared, the identity key must be previously deleted from the data layer (see <a href="#removefromdatalayer"><code>RemoveFromDataLayer()</code></a>).</p>
+<h3 id="consentcategory">ConsentCategory</h3>
 <p>The consent category values. For use with <a href="#getconsentcategories"><code>GetConsentCategories</code></a> and <a href="#setconsentcategories"><code>SetConsentCategories</code></a>.</p>
 <p>The consent categories are:</p>
 <ul>
@@ -534,6 +539,9 @@ var utag_data = {
 </tbody>
 </table>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>tealium.RemoveRemoteCommand(<span style="color:#e6db74">&#34;firebase&#34;</span>);
+</span></span></code></pre></div><h3 id="resetvisitorid"><code>ResetVisitorId()</code></h3>
+<p>Resets the visitor ID and generates a new one.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>tealium.ResetVisitorId();
 </span></span></code></pre></div><h3 id="setconsentcategories"><code>SetConsentCategories()</code></h3>
 <p>Sets the list of categories that the user consented to. For use with <a href="#consentcategory"><code>ConsentCategory</code></a>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> SetConsentCategories(List&lt;ConsentCategory&gt; categories);
@@ -805,6 +813,18 @@ var utag_data = {
 <td style="text-align:left"><code>RemoteCommand[]</code></td>
 <td style="text-align:left">Sets a list of <a href="#RemoteCommand">RemoteCommand</a> objects to add when the instance is ready</td>
 <td style="text-align:left"><code>[{ id: &quot;hello-world&quot;, callback: (payload) =&gt; { console.log(&quot;hello-world: &quot; + JSON.stringify(payload)); } }]</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>overrideConsentCategoriesKey</code></td>
+<td style="text-align:left"><code>String</code></td>
+<td style="text-align:left">Overrides the name of the consent categories event attribute. Use this to support custom enforcement of server-side consent. Learn more about <a href="/server-side/consent/consent-management/">disabling automatic enforcement of server-side consent</a>. (default: <code>consent_categories</code>)</td>
+<td style="text-align:left"><code>consent_categories_granted</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>visitorIdentityKey</code></td>
+<td style="text-align:left"><code>String</code></td>
+<td style="text-align:left">Use to support visitor switching and to specify the shared key to identify multiple users of the app.</td>
+<td style="text-align:left"><code>user_profile_id</code></td>
 </tr>
 </tbody>
 </table>
@@ -1159,7 +1179,7 @@ No</button>
   </div>
 </div>
 
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  February 27, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1176,6 +1196,7 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#class-tealium">Class: Tealium</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#addremotecommand">AddRemoteCommand()</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#addtodatalayer">AddToDataLayer()</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#clearstoredvisitorids">ClearStoredVisitorIds()</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#consentcategory">ConsentCategory</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#consentstatus">ConsentStatus</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#environment">Environment</a></li>
@@ -1188,6 +1209,7 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#leavetrace">LeaveTrace()</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#removefromdatalayer">RemoveFromDataLayer()</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#removeremotecommand">RemoveRemoteCommand()</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#resetvisitorid">ResetVisitorId()</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#setconsentcategories">SetConsentCategories()</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#setconsentexpirylistener">SetConsentExpiryListener()</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#setconsentstatus">SetConsentStatus()</a></li>
