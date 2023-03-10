@@ -291,9 +291,9 @@ var utag_data = {
 <li><a href="/platforms/ios-swift/">iOS (Swift v2.x)</a></li>
 </ul>
 <h2 id="how-it-works">How it Works</h2>
-<p>Hosted data layer facilitates the use of statically hosted data for the purpose of supplementing the dynamic data layer of your mobile app or for hosting JSON configuration files. While the data layer implemented in your mobile app is useful in capturing real-time information, it can be a challenge to include additional valuable information from offline systems. Hosted data layer provides a convenient mechanism to upload static data to the Tealium mCDN, where it can be accessed by your mobile app to enrich data or power an application that uses JSON files.</p>
+<p>Hosted data layer facilitates the use of statically-hosted data for the purpose of supplementing the dynamic data layer of your mobile app or for hosting JSON configuration files. While the data layer implemented in your mobile app is useful in capturing real-time information, it can be a challenge to include additional valuable information from offline systems. Hosted data layer provides a convenient mechanism to upload static data to Tealium, where it can be accessed by your mobile app to enrich data or power an application that uses JSON files.</p>
 <p>Tealium for mobile supports a hosted data layer which stores certain data layer items remotely to be downloaded by your app. This feature is useful in any scenario where data layer attributes are not available in your native code, but can be made available from your organization. For example, your e-commerce system might have product attributes such as <code>product_is_in_stock</code> or <code>product_has_free_shipping</code> that are not easily accessed in native code, but can be uploaded as hosted data layer files.</p>
-<p>A <em>lookup variable</em> identifies which variable the data layer uses for fetching the corresponding hosted data layer object. The hosted data layer data items persist for 7 days by default, and are re-downloaded from the CDN after expiration.</p>
+<p>A <em>lookup variable</em> identifies which variable the data layer uses for fetching the corresponding hosted data layer object. The hosted data layer data items persist for 7 days by default, and are re-downloaded after expiration.</p>
 <p>Additional Information:</p>
 <ul>
 <li>About <a href="/iq-tag-management/data-layer/hosted-data-layer/use-case-supplementing-product-data/">hosted data layer</a></li>
@@ -305,7 +305,7 @@ var utag_data = {
 <li>Android: <a href="/platforms/android-kotlin/api/tealium-config/#hosteddatalayereventmappings"><code>hostedDataLayerEventMappings</code></a></li>
 <li>Swift: <a href="/platforms/ios-swift/api/tealium-config/#hosteddatalayerkeys"><code>hostedDataLayerKeys</code></a></li>
 </ul>
-<p>By default, data persists for 7 days in the hosted data layer data, and is re-downloaded from the CDN after expiration. Configure an expiration time on hosted data layer data by setting the following property.</p>
+<p>By default, data persists for 7 days in the hosted data layer data, and is re-downloaded after expiration. Configure an expiration time on hosted data layer data by setting the following property.</p>
 <ul>
 <li>Android: <a href="/platforms/android-kotlin/api/tealium-config/#hosteddatalayermaxcachetimeminutes"><code>hostedDataLayerMaxCacheTimeMinutes</code></a></li>
 <li>Swift: <a href="/platforms/ios-swift/api/tealium-config/#hosteddatalayerexpiry"><code>hostedDataLayerExpiry</code></a></li>
@@ -351,9 +351,9 @@ Export the offline product data into JSON files, which are named according to th
 <h2 id="troubleshooting">Troubleshooting</h2>
 <p>The following are troubleshooting tips:</p>
 <ul>
-<li>Be aware that track calls where the dispatch contains hosted data layer components may be sent out of order, due to the additional time required to retrieve items from the CDN. This doesn&rsquo;t apply if a valid cache exists for an item, since the CDN lookup isn&rsquo;t required.</li>
+<li>Be aware that track calls where the dispatch contains hosted data layer components may be sent out of order, due to the additional time required to retrieve those remote files. This doesn&rsquo;t apply if a valid cache exists for an item, since lookup isn&rsquo;t required.</li>
 <li>If there are any server or connectivity errors when the hosted data layer request is made, the request retries up to 5 times. After 5 failed attempts, the track call is sent without the hosted data layer data.</li>
-<li>If a valid record on the CDN is not found for an item, the track call is sent without the hosted data layer data.</li>
+<li>If a valid record on Tealium is not found for an item, the track call is sent without the hosted data layer data.</li>
 <li>If there is no valid cache available for the hosted data layer item being requested, the first request is queued and only sent when the queue is flushed. This behavior is automatic when the maximum number of batched events is reached or if the app is in the background.</li>
 </ul>
 
@@ -416,7 +416,7 @@ No</button>
   </div>
 </div>
 
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  March 9, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

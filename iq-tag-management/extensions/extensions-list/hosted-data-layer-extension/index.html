@@ -240,8 +240,6 @@ var utag_data = {
         <a href="/iq-tag-management/getting-started/install/load-utag-china/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-gs-load-utag-china">Load utag.js in China</a>
       </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/getting-started/multi-cdn/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-gs-mcdn">Multi-CDN for tag delivery</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/getting-started/file-cache/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-how-files-are-cached">How files are cached</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/getting-started/best-practices/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-gs-best-practices">Best practices</a>
@@ -595,11 +593,11 @@ var utag_data = {
         <a href="/iq-tag-management/consent-management/consent-preferences-dialog/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-consent-preferences">Manage consent preferences</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".privacy-banner-and-popup">CCPA Privacy Banner and Popup</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".privacy-banner-and-popup">Opt-out Privacy Banner and Popup</a>
         <ul class=" privacy-banner-and-popup desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/consent-management/privacy-banner-and-popup/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-ccpa-privacy-banner-and-popup">About the CCPA Privacy Banner and Popup</a>
+        <a href="/iq-tag-management/consent-management/privacy-banner-and-popup/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-ccpa-privacy-banner-and-popup">About the Opt-out Privacy Banner and Popup</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/consent-management/privacy-banner-and-popup/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-ccpa-privacy-banner-and-popup">Manage CCPA privacy banner and popup</a>
+        <a href="/iq-tag-management/consent-management/privacy-banner-and-popup/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-ccpa-privacy-banner-and-popup">Manage Opt-out privacy banner and popup</a>
       </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-management/global-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".global-consent-parameters">Global consent parameters</a>
@@ -722,10 +720,10 @@ var utag_data = {
 <li>The hosted data layer extension executes early and halts<code> utag.js</code> for a duration up to the specified value in the timeout setting.<br>
 While paused, <code>utag.js</code> does not evaluate tags, load rules, or extensions.</li>
 <li>Then the hosted data layer extension scans the on-page data layer (<code>utag_data</code>) for the specified lookup variables.</li>
-<li>If the lookup variable exists, the extension queries the CDN for the matching hosted data layer object with the same name as the lookup value.</li>
-<li>If the <code>.js</code> file exists on the CDN, the extension fetches the <code>.js</code> file.<br>
+<li>If the lookup variable exists, the extension queries Tealium&rsquo;s servers for the matching hosted data layer object with the same name as the lookup value.</li>
+<li>If the <code>.js</code> file exists on the Tealium&rsquo;s servers, the extension fetches the <code>.js</code> file.<br>
 The lookup is deemed successful.</li>
-<li>If a hosted data layer object is found on the CDN, the extension merges that data into the on-page data layer.<br>
+<li>If a hosted data layer object is found on Tealium&rsquo;s servers, the extension merges that data into the on-page data layer.<br>
 Duplicate variables are handled according to the following setting of the <strong>Overwrite on merge</strong> setting:
 <ul>
 <li><strong>Overwrite on merge: Yes</strong>: Variables in the on-page data layer are overwritten by variables from the incoming object.</li>
@@ -772,9 +770,9 @@ For detailed instructions, see <a href="/iq-tag-management/extensions/about/">Ho
 </li>
 </ol>
 <h2 id="faq">FAQ</h2>
-<h4 id="what-happens-if-the-hosted-hosted-data-layer-object-is-not-found-on-the-cdn">What happens if the hosted hosted data layer object is not found on the CDN?</h4>
+<h4 id="what-happens-if-the-hosted-hosted-data-layer-object-is-not-found">What happens if the hosted hosted data layer object is not found?</h4>
 <p>The lookup can fail for two reasons: either the name of the hosted data layer object is defined incorrectly or it is not defined at all. Regardless of the reason, the extension receives an empty object and there is no enrichment.</p>
-<p class="tip"><i class="fa fa-info-circle"></i>Ensure that the value of the lookup variable in the on-page data layer matches the name of the hosted data layer object uploaded to the CDN. Use the hosted data layer API to verify that the expected hosted data layer objects are uploaded to the CDN.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>Ensure that the value of the lookup variable in the on-page data layer matches the name of the hosted data layer object uploaded to Tealium. Use the hosted data layer API to verify that the expected hosted data layer objects are uploaded to Tealium.</p>
 <h4 id="what-happens-if-the-lookup-variable-is-not-in-the-on-page-data-layer">What happens if the lookup variable is not in the on-page data layer?</h4>
 <p>The extension releases the halt on <code>utag.js</code> and it runs as usual. There is no lookup and the on-page data layer remains unchanged.</p>
 <p>The following example shows how the data layer looks before and after merging:</p>
@@ -807,7 +805,7 @@ For detailed instructions, see <a href="/iq-tag-management/extensions/about/">Ho
 </tbody>
 </table>
 <h4 id="can-i-use-this-extension-without-the-api-component">Can I use this extension without the API component?</h4>
-<p>No. You must upload data layer objects to the CDN prior to using this extension.</p>
+<p>No. You must upload data layer objects prior to using this extension.</p>
 <h4 id="can-i-change-the-scope-of-the-extension">Can I change the scope of the extension?</h4>
 <p>No. The scope and the execution drop-down list is predefined to ensure that the extension can automatically run before all load rules and tags are processed.</p>
 <h4 id="does-this-extension-affect-page-loading">Does this extension affect page loading?</h4>
@@ -818,7 +816,7 @@ For detailed instructions, see <a href="/iq-tag-management/extensions/about/">Ho
 <p>No. The extension is designed to run once per page load.</p>
 <h4 id="can-this-extension-be-used-in-mobile-installations">Can this extension be used in mobile installations?</h4>
 <p>Yes. To learn about the Hosted Data Layer feature for mobile, see [Hosted Data Layer]/platforms/getting-started-mobile/hosted-data-layer/).</p>
-<h4 id="what-happens-if-the-extension-fails-to-find-the-target-data-layer-object-on-the-cdn">What happens if the extension fails to find the target data layer object on the CDN?</h4>
+<h4 id="what-happens-if-the-extension-fails-to-find-the-target-data-layer-object">What happens if the extension fails to find the target data layer object?</h4>
 <p>The extension receives an empty object and <code>utag.js</code> automatically resumes. No merging occurs.</p>
 <h4 id="what-version-of-utagjs-is-required-for-this-feature">What version of utag.js is required for this feature?</h4>
 <p>You must use version 4.43, or greater. The hosted data layer extension is optimized for the most recent version of <code>utag.js</code>.</p>
@@ -882,7 +880,7 @@ No</button>
   </div>
 </div>
 
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  March 9, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

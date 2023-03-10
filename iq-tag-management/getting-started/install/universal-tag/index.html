@@ -240,8 +240,6 @@ var utag_data = {
         <a href="/iq-tag-management/getting-started/install/load-utag-china/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-gs-load-utag-china">Load utag.js in China</a>
       </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/getting-started/multi-cdn/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-gs-mcdn">Multi-CDN for tag delivery</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/getting-started/file-cache/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-how-files-are-cached">How files are cached</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/getting-started/best-practices/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-gs-best-practices">Best practices</a>
@@ -595,11 +593,11 @@ var utag_data = {
         <a href="/iq-tag-management/consent-management/consent-preferences-dialog/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-consent-preferences">Manage consent preferences</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".privacy-banner-and-popup">CCPA Privacy Banner and Popup</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".privacy-banner-and-popup">Opt-out Privacy Banner and Popup</a>
         <ul class=" privacy-banner-and-popup desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/consent-management/privacy-banner-and-popup/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-ccpa-privacy-banner-and-popup">About the CCPA Privacy Banner and Popup</a>
+        <a href="/iq-tag-management/consent-management/privacy-banner-and-popup/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-ccpa-privacy-banner-and-popup">About the Opt-out Privacy Banner and Popup</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/consent-management/privacy-banner-and-popup/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-ccpa-privacy-banner-and-popup">Manage CCPA privacy banner and popup</a>
+        <a href="/iq-tag-management/consent-management/privacy-banner-and-popup/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-ccpa-privacy-banner-and-popup">Manage Opt-out privacy banner and popup</a>
       </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-management/global-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".global-consent-parameters">Global consent parameters</a>
@@ -705,9 +703,9 @@ var utag_data = {
 </div>
 
 <div class="prose" id="prose">
-  <h2 id="cdn-files">CDN files</h2>
-<p>All tag configuration and business logic saved in your account is converted to JavaScript code and published to a file named <code>utag.js</code>. This file is specific to your account and is hosted on the <a href="/iq-tag-management/getting-started/multi-cdn/">Tealium multi-CDN infrastructure</a>.</p>
-<p>The CDN is designed to deliver these files to your website as quickly as possible. When the Universal Tag code snippet is executed by your webpage a request is made to the CDN, the file is downloaded into the page and the code is run. As soon as <code>utag.js</code> is loaded on your page it begins executing code to prepare to fire your tags.</p>
+  <h2 id="hosted-files">Hosted files</h2>
+<p>All tag configuration and business logic saved in your account is converted to JavaScript code and published to a file named <code>utag.js</code>. This file is specific to your account and is hosted on Tealium&rsquo;s servers.</p>
+<p>Tealium&rsquo;s server infrastructure is designed to deliver these files to your website as quickly as possible. When the Universal Tag code snippet is executed by your webpage a request is made to Tealium&rsquo;s servers, the file is downloaded into the page and the code is run. As soon as <code>utag.js</code> is loaded on your page it begins executing code to prepare to fire your tags.</p>
 <p>Learn more about the <a href="/iq-tag-management/getting-started/order-of-operations/">order of operations</a> to understand how the Universal Tag <code>utag.js</code> loads.</p>
 <h2 id="page-data">Page data</h2>
 <p>In addition to the dynamic data that your site populates into <code>utag_data</code>, the <code>utag.js</code> library automatically gathers other various data values from the page and combine them into one central data object to be made available to your tags and load rules. The following page elements are captured:</p>
@@ -723,7 +721,7 @@ var utag_data = {
 <h2 id="events">Events</h2>
 <p><a href="/iq-tag-management/events/about/">Events</a> are triggers that help collect data. They listen for the viewer to perform an action on a page, and then send that information to the data layer. For example, if you want to check how many times a certain product has been viewed, you can use an event that fires each time a product page is viewed. You can also use them to record user interactions with website elements, such as when particular elements are visible. Event triggers use load rules to determine whether they are loaded on a page along with the tags. Events are JavaScript code evaluated client-side, in the browser.</p>
 <h2 id="load-tags">Load tags</h2>
-<p>The code needed to load and run a vendor tag is also published to the CDN and stored in a tag configuration file numbered according to the UID of the tag, such as <code>utag.1.js</code>. An HTTP request is made to the CDN from your webpage to retrieve each tag configuration file.</p>
+<p>The code needed to load and run a vendor tag is also published to Tealium and stored in a tag configuration file numbered according to the UID of the tag, such as <code>utag.1.js</code>. Visitors&rsquo; browsers send HTTP requests to the Tealium server to get each tag configuration file when they go to a web page.</p>
 <p>While this file contains the settings and configuration for the vendor, it might not contain the vendor&rsquo;s JavaScript file. If so, an additional HTTP request is made to fetch the vendor&rsquo;s code. These requests are made asynchronously to minimize the impact on the time to render the page.</p>
 <p>Here is a simple example showing how one tag, Google Analytics, is loaded into the page:</p>
 <figure><img src="/images/platforms/javascript/utag-network-files.png"
@@ -787,7 +785,7 @@ No</button>
   </div>
 </div>
 
-          <p>This page was last updated:  January 30, 2023 
+          <p>This page was last updated:  March 9, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -801,7 +799,7 @@ No</button>
 
   <aside class="fixed-lTK mw5-l right-0 f6 bl-l b--light-gray pv4 pv0-ns ph3-l nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#cdn-files">CDN files</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#hosted-files">Hosted files</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#page-data">Page data</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules">Load rules</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#events">Events</a></li>

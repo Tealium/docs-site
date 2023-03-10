@@ -240,8 +240,6 @@ var utag_data = {
         <a href="/iq-tag-management/getting-started/install/load-utag-china/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-gs-load-utag-china">Load utag.js in China</a>
       </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/getting-started/multi-cdn/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-gs-mcdn">Multi-CDN for tag delivery</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/getting-started/file-cache/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-how-files-are-cached">How files are cached</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/getting-started/best-practices/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-gs-best-practices">Best practices</a>
@@ -595,11 +593,11 @@ var utag_data = {
         <a href="/iq-tag-management/consent-management/consent-preferences-dialog/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-consent-preferences">Manage consent preferences</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".privacy-banner-and-popup">CCPA Privacy Banner and Popup</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".privacy-banner-and-popup">Opt-out Privacy Banner and Popup</a>
         <ul class=" privacy-banner-and-popup desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/consent-management/privacy-banner-and-popup/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-ccpa-privacy-banner-and-popup">About the CCPA Privacy Banner and Popup</a>
+        <a href="/iq-tag-management/consent-management/privacy-banner-and-popup/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-ccpa-privacy-banner-and-popup">About the Opt-out Privacy Banner and Popup</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/consent-management/privacy-banner-and-popup/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-ccpa-privacy-banner-and-popup">Manage CCPA privacy banner and popup</a>
+        <a href="/iq-tag-management/consent-management/privacy-banner-and-popup/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-ccpa-privacy-banner-and-popup">Manage Opt-out privacy banner and popup</a>
       </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-management/global-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".global-consent-parameters">Global consent parameters</a>
@@ -707,7 +705,7 @@ var utag_data = {
 <div class="prose" id="prose">
   <p class="note"><i class="fa fa-exclamation-triangle"></i>Before you begin, contact your Account Manager to verify the contracted terms for this feature on your account to ensure availability and appropriate licencing is maintained.</p>
 <h2 id="overview">Overview</h2>
-<p>Tealium iQ publishes your <code>utag.js</code> files to our highly-scaled <a href="/iq-tag-management/getting-started/multi-cdn/">Multi-CDN Infrastructure</a>. When <code>utag.js</code> is implemented on your website, the file is sourced from <code>tags.tiqcdn.com</code>. If you have requirements that prevent you from loading external JavaScript files (or have other restrictions) we offer the ability to self-host these files on your own server. The generated <code>utag</code> files are still published to our CDN, but they are also made available in a <code>.zip</code> archive which can be easily transferred to your system.</p>
+<p>Tealium iQ publishes your <code>utag.js</code> files to our servers. When <code>utag.js</code> is implemented on your website, the file is sourced from <code>tags.tiqcdn.com</code>. If you have requirements that prevent you from loading external JavaScript files (or have other restrictions) we offer the ability to self-host these files on your own server. The generated <code>utag</code> files are still published to our servers, but they are also made available in a <code>.zip</code> archive which can be easily transferred to your system.</p>
 <p>The main difference in self-hosting is in the code snippet used to load <code>utag.js</code> on your website. The domain and path to that file must be updated to reflect your server location that hosts the files. In the following example you can see the URL change from Tealium&rsquo;s standard location to a self-hosted location.</p>
 <p><strong>Original Tealium snippet:</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- Tealium Universal Tag --&gt;</span>
@@ -743,7 +741,7 @@ var utag_data = {
          title="self-hosting generate distro.zip"/>
 </figure>
 <h3 id="set-published-file-location">Set published file location</h3>
-<p>The published file location is a setting that tells the <code>utag.js</code> code where to load subsequent utag files (for example, <code>utag.4.js</code>). Remember, the code snippet to load <code>utag.js</code> will be adjusted to use your custom self-hosted location, but the loading of the other utag files occurs dynamically based on the logic within <code>utag.js</code> and the default location is Tealium&rsquo;s Multi-CDN domain.</p>
+<p>The published file location is a setting that tells the <code>utag.js</code> code where to load subsequent utag files (for example, <code>utag.4.js</code>). Remember, the code snippet to load <code>utag.js</code> will be adjusted to use your custom self-hosted location, but the loading of the other utag files occurs dynamically based on the logic within <code>utag.js</code> and the default location is Tealium&rsquo;s servers.</p>
 <p>To change the published file location:</p>
 <ol>
 <li>Click <strong>Save/Publish</strong></li>
@@ -753,7 +751,7 @@ var utag_data = {
 </ol>
 <p class="tip"><i class="fa fa-info-circle"></i>Include the environment in your path to support the built-in dev, qa, and prod targets.</p>
 <h3 id="publish-all-environments">Publish all environments</h3>
-<p>You have now enabled the downloadable <code>distro.zip</code> file. You will notice that the code snippet in the <strong>Code Center</strong> now displays the custom location of your hosted <code>utag.js</code> instead of Tealium&rsquo;s default Multi-CDN location.</p>
+<p>You have now enabled the downloadable <code>distro.zip</code> file. You will notice that the code snippet in the <strong>Code Center</strong> now displays the custom location of your hosted <code>utag.js</code> instead of Tealium.</p>
 <figure><img src="/images/iq-tag-management/iq-self-hosting-code-center.jpg"
          alt="self-hosting code center"
          title="self-hosting code center"/>
@@ -769,7 +767,7 @@ var utag_data = {
 <li>From the <strong>Versions</strong> tab, find the last published version, expand the <strong>Publish Details</strong> for each environment and click <strong>Download Distro Zip File</strong>.</li>
 <li>Unzip the <code>distro.zip</code> file on your server in the location specified in the custom <strong>Publishing URLs</strong> setting.</li>
 <li>Using the code from <strong>Code Center</strong>, add the <code>utag.js</code> code snippet to your website.</li>
-<li>Using the browser console, verify that your webpage is loading utag.js from your self-hosted location and not from Tealium&rsquo;s Multi-CDN domain <code>tags.tiqcdn.com</code>.</li>
+<li>Using the browser console, verify that your webpage is loading utag.js from your self-hosted location and not from Tealium&rsquo;s domain <code>tags.tiqcdn.com</code>.</li>
 </ol>
 <h4 id="use-version-labels">Use version labels</h4>
 <p>Lastly, after you make the <code>utag</code> files available on your live site, we recommend taking one last step to label the released version in iQ using <strong><a href="/iq-tag-management/save-publish/version-labels/">Version Labels</a></strong>. This will indicate to users of your account which versions have completed your internal software release cycle.</p>
@@ -848,7 +846,7 @@ No</button>
   </div>
 </div>
 
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  March 8, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

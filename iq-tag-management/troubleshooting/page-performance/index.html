@@ -240,8 +240,6 @@ var utag_data = {
         <a href="/iq-tag-management/getting-started/install/load-utag-china/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-gs-load-utag-china">Load utag.js in China</a>
       </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/getting-started/multi-cdn/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-gs-mcdn">Multi-CDN for tag delivery</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/getting-started/file-cache/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-how-files-are-cached">How files are cached</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/getting-started/best-practices/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-gs-best-practices">Best practices</a>
@@ -595,11 +593,11 @@ var utag_data = {
         <a href="/iq-tag-management/consent-management/consent-preferences-dialog/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-consent-preferences">Manage consent preferences</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".privacy-banner-and-popup">CCPA Privacy Banner and Popup</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".privacy-banner-and-popup">Opt-out Privacy Banner and Popup</a>
         <ul class=" privacy-banner-and-popup desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/consent-management/privacy-banner-and-popup/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-ccpa-privacy-banner-and-popup">About the CCPA Privacy Banner and Popup</a>
+        <a href="/iq-tag-management/consent-management/privacy-banner-and-popup/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-ccpa-privacy-banner-and-popup">About the Opt-out Privacy Banner and Popup</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/consent-management/privacy-banner-and-popup/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-ccpa-privacy-banner-and-popup">Manage CCPA privacy banner and popup</a>
+        <a href="/iq-tag-management/consent-management/privacy-banner-and-popup/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-ccpa-privacy-banner-and-popup">Manage Opt-out privacy banner and popup</a>
       </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-management/global-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".global-consent-parameters">Global consent parameters</a>
@@ -719,7 +717,7 @@ var utag_data = {
 <p>This topic of what to measure is quite technical and has been researched via industry experts such as <a href="https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index">WebPagetest</a>, Google&rsquo;s <a href="https://developers.google.com/speed/pagespeed/">PageSpeed Tools</a>, and Yahoo&rsquo;s <a href="http://yslow.org/">YSlow</a>.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>The iQ Tag Management JavaScript library (<code>utag.js</code>) is designed to have little or no impact on the perceived load time of a page.</p>
 <h2 id="tealium-files-vs-third-party-files">Tealium files vs. third-party files</h2>
-<p>At the foundation of the Tealium solution is our file serving framework, the <a href="https://community.tealiumiq.com/t5/Getting-Started/Multi-CDN-for-Tag-Delivery/ta-p/13701">Multi-CDN</a>. This global and real-time solution ensures that Tealium&rsquo;s files are delivered to your visitors&rsquo; browser at the quickest speed possible. The JavaScript loader (or wrapper) files contain the logic and configuration from your iQ Tag Management account and can be identified in your browser&rsquo;s network console by the names <code>utag.js</code> and <code>utag.#.js</code>. These are the files served by Tealium from the <code>tags.tiqcdn.com</code> domain.</p>
+<p>At the foundation of the Tealium solution is our file serving framework. This global and real-time solution ensures that Tealium&rsquo;s files are delivered to your visitors&rsquo; browser at the quickest speed possible. The JavaScript loader (or wrapper) files contain the logic and configuration from your iQ Tag Management account and can be identified in your browser&rsquo;s network console by the names <code>utag.js</code> and <code>utag.#.js</code>. These are the files served by Tealium from the <code>tags.tiqcdn.com</code> domain.</p>
 <p>Example browser network log of Tealium files:</p>
 <figure><img src="/images/iq-tag-management/tealium-network-utag-files.jpg"
          alt="browser network log"
@@ -767,10 +765,10 @@ var utag_data = {
 <p>The Ready Wait flag can be found in <a href="/iq-tag-management/save-publish/publish-configuration/">the <strong>Publish Configuration</strong> area</a>. It controls when <code>utag.js</code> will begin executing. By default, this flag is <strong>Off</strong> and <code>utag.js</code> begins executing as soon as it loads into the page. When this flag is set to <strong>On</strong>, <code>utag.js</code> will wait for the DOM-Ready event before executing. You can deprioritize your tags in favor of possible gains in page load time by turning this flag on.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Setting <strong>Ready Wait Flag</strong> to <strong>On</strong> could lead to lost tracking due to visitors navigating away from the page before the tags have loaded. Always perform thorough testing before releasing new settings to your live site.</p>
 <h3 id="file-compression-and-minification">File compression and minification</h3>
-<p>The files delivered from the Mult-CDN are compressed using the GZip industry standard. This ensures the JavaScript files (text files) are as small as possible upon delivery to the browser. This behavior cannot be changed. The code within those JavaScript files is also minified by default. Minification adds another step of compressing the code files to only their essential text by removing comment lines and white space. You can turn this setting off if needed for debugging purposes.</p>
+<p>The files delivered from Tealium&rsquo;s servers are compressed using the GZip industry standard. This ensures the JavaScript files (text files) are as small as possible upon delivery to the browser. This behavior cannot be changed. The code within those JavaScript files is also minified by default. Minification adds another step of compressing the code files to only their essential text by removing comment lines and white space. You can turn this setting off if needed for debugging purposes.</p>
 <p>Read more about the <a href="/iq-tag-management/save-publish/publish-configuration/">Minify Tag Templates setting</a>.</p>
 <h3 id="bundling">Bundling</h3>
-<p>Bundling allows vendor tag code to be included in the main <code>utag.js</code> file to eliminate additional HTTP requests from the page. By default, the vendor tags configured in iQ Tag Management are loaded as separate files (for example, <code>utag.4.js</code>) into the page. This is done to minimize the risk of introducing a code error into the main <code>utag.js</code> file (for example, an error in one file will not affect the others). However, using separate files increases the number of HTTP requests the page makes to load your tags. And while the delivery of these files is optimized via the Multi-CDN and browser caching, if you need to optimize further then bundling is an option to consider.</p>
+<p>Bundling allows vendor tag code to be included in the main <code>utag.js</code> file to eliminate additional HTTP requests from the page. By default, the vendor tags configured in iQ Tag Management are loaded as separate files (for example, <code>utag.4.js</code>) into the page. This is done to minimize the risk of introducing a code error into the main <code>utag.js</code> file (for example, an error in one file will not affect the others). However, using separate files increases the number of HTTP requests the page makes to load your tags. And while the delivery of these files is optimized via Tealium&rsquo;s servers and browser caching, if you need to optimize further then bundling is an option to consider.</p>
 <p>Here is a simple example where bundling tags resulted in an 80% improvement in load time for the files coming from Tealium.</p>
 <h4 id="two-vendor-tags-unbundled">Two vendor tags unbundled</h4>
 <ul>
@@ -859,7 +857,7 @@ No</button>
   </div>
 </div>
 
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  March 8, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
