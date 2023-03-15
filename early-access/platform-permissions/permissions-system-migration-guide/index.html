@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     
+    <title>Permissions System Migration Guide | Platform Permissions |Tealium Docs</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+     <meta name="generator" content="Hugo 0.98.0" />
+
+      
+        <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+      
+
+    <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+
+  </head>
+  <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
+      
+        
+<script>
+var utag_data = {
+    site_section  : "early-access",
+    site_language : "en",
+    tealium_event : "page_view"
+}
+</script>
+
+<script>
+ (function(a,b,c,d){
+    a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+  })();
+</script>
+
+      
+
+    
+<nav class="w-100 sticky-t bg-primary-color-light bb b--light-gray dpn" role="navigation">
+
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
+
+    <div class="lh-solid ml0-ns mr0 mr4-l mv3 pl15 dib db-ns">
+      <a href="https://docs.tealium.com/"><img src="/images/icons/tealium-documentation-logo-color.svg" class="v-mid dib" width="186" height="31"></a>
+    </div>
+    
+    <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-ns">
+      
+        <li class="f5 dib mr3" role="menuitem">
+            
+          <a href="https://community.tealiumiq.com/t5/Developer-Questions/qa-p/developer-questions" class="dim link mid-gray">
+          Forums
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 32 32" class="fill-current v-base" aria-label="External Link">
+<path d="M25.152 16.576v5.696q0 2.144-1.504 3.648t-3.648 1.504h-14.848q-2.144 0-3.648-1.504t-1.504-3.648v-14.848q0-2.112 1.504-3.616t3.648-1.536h12.576q0.224 0 0.384 0.16t0.16 0.416v1.152q0 0.256-0.16 0.416t-0.384 0.16h-12.576q-1.184 0-2.016 0.832t-0.864 2.016v14.848q0 1.184 0.864 2.016t2.016 0.864h14.848q1.184 0 2.016-0.864t0.832-2.016v-5.696q0-0.256 0.16-0.416t0.416-0.16h1.152q0.256 0 0.416 0.16t0.16 0.416zM32 1.152v9.12q0 0.48-0.352 0.8t-0.8 0.352-0.8-0.352l-3.136-3.136-11.648 11.648q-0.16 0.192-0.416 0.192t-0.384-0.192l-2.048-2.048q-0.192-0.16-0.192-0.384t0.192-0.416l11.648-11.648-3.136-3.136q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h9.12q0.48 0 0.8 0.352t0.352 0.8z"></path>
+</svg>
+</a>
+        </li></ul>
+
+    <ul class="list ma0 pa0 dn dib-ns">
+      <li class="f5 dib">
+         <i class="fa fa-globe" style="color: rgba(255, 255, 255, .6)" aria-hidden="true"></i>
+      </li>
+      <li class="f5 dib mr4"><a href="https://docs.tealium.co.jp/" class="dim link mid-gray">日本語</a>
+</li>
+    </ul>
+
+  </div>
+
+
+<div id="mainAppInner" class="padd-54 dpn">
+    <div id="leftFrame">
+        <div class="main-nav-container">
+            <div class="flex-1">
+                <ul id="navCategoryHome" class="menu-group as-main-navigation">
+                    <li class="js-main-nav-section" data-section="home">
+                        <a href="https://community.tealiumiq.com/" class="menu-list-item top-level tooltip-right" title="Tealium Learning Center">
+                          <span class="menu-large-icon">
+                              <span class="as-platform-image square-xxxs is-rounded bg-transparent">
+                                  <span class="inner-image UDH-icon">TLC</span>
+                              </span>
+                          </span>
+                          <span class="menu-context supportLinks_buttonTitle">Tealium Learning Center</span>
+                        </a>
+                          <span class="tooltiptext">Tealium Learning <br>Center</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a href="https://community.tealiumiq.com/t5/Forums/ct-p/tealiumlearningcommunity" class="menu-list-item top-level tooltip-right" title="Discussions">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-comments"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">Discussions</span>
+                        </a>
+                          <span class="tooltiptext">Discussions</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section active">
+                        <a href="https://docs.tealium.com/" class="menu-list-item top-level tooltip-right" title="Documentation">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-book"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">Documentation</span>
+                        </a>
+                          <span class="tooltiptext">Documentation</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section" data-section="kb">
+                        <a href="https://support.tealiumiq.com/en/support/solutions" class="menu-list-item top-level tooltip-right" title="Knowledge Base">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-head-side-brain"></i>
+                            </span>
+                            <span class="menu-context">Knowledge Base</span>
+                        </a>
+                          <span class="tooltiptext"> Knowledge Base </span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a href="https://university.tealium.com/" class="menu-list-item top-level tooltip-right" title="Tealium Education">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-graduation-cap"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">Education</span>
+                        </a>
+                          <span class="tooltiptext">Tealium Education</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a href="https://community.tealiumiq.com/t5/TLC-Blog/bg-p/TLC-Blog" class="menu-list-item top-level tooltip-right" title="TLC Blog">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-newspaper"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">TLC Blog</span>
+                        </a>
+                          <span class="tooltiptext">TLC Blog</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a  href="https://support.tealiumiq.com" target="_blank" class="menu-list-item top-level tooltip-right" title="Tealium Support Desk">
+                          <span class="menu-large-icon">
+                            <i class="fal fa-life-ring"></i>
+                          </span>
+                          <span class="menu-context supportLinks_buttonTitle">Support Desk</span>
+                        </a>
+                          <span class="tooltiptext">Support Desk</span>
+                    </li>
+                </ul>
+            </div>
+            <ul class="menu-group as-main-navigation flex-0 bottom-align">
+              <li class="menu-divider"></li>
+              <li class="js-main-nav-section">
+                <a href="https://my.tealiumiq.com/" class="menu-list-item top-level tooltip-right" title="Tealium Customer Data Hub">
+                    <span class="menu-large-icon">
+                        <span class="as-platform-image square-xxxs is-rounded bg-transparent">
+                            <span class="inner-image UDH-icon">CDH</span>
+                        </span>
+                    </span>
+                    <span class="menu-context supportLinks_buttonTitle">Customer Data Hub</span>
+                </a>
+                          <span class="tooltiptext">Customer Data Hub</span>
+              </li>
+              <li class="menu-divider"></li>
+              <li class="js-toggle-leftframe">
+                <a href="#" class="menu-list-item top-level d-flex justify-content-end" title="Expand/Collapse">
+                    <span class="menu-large-icon d-flex align-items-center justify-content-center mr-0">
+                        <span class="as-platform-image square-xxxs is-rounded bg-transparent d-flex align-items-center justify-content-center">
+                            <i class="fa as-caret"></i>
+                        </span>
+                    </span>
+                </a>
+              </li>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+
+</nav>
+
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 pr4">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto vh-100 overflow-auto dn db-ns sticky-l pt3 pl125" style="width:280px;">
+<nav class="side-nav f6" role="navigation">
+  <ul class="list pa0 mt0 mb1">
+  
+    <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>Home</a></li>
+  
+  </ul>
+  <ul class="list pa0"><li class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><a href="/early-access/" class="dib w-100 link text-color-primary hover-primary-color"><span class="pb2">Early Access</span></a>
+        <ul class="early-access desktopmenu animated fadeIn list pl0 mt2"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">About Early Access</a>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".consent">Consent Integrations</a>
+        <ul class=" consent desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/consent-integrations/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">About Consent Integrations</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/consent-integrations/supported-vendors/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Supported Vendor Integrations</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/consent-integrations/custom-cmp/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Custom CMP Integrations</a>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".data-connect">Data Connect</a>
+        <ul class=" data-connect desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/data-connect/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-data-connect-early-access">About</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/data-connect/dashboard/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".using-the-data-connect-dashboard-early-access">Dashboard</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/data-connect/api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".data-connect-api-early-access">Data Connect API</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/data-connect/managing-data-connect-integrations-early-access/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".managing-data-connect-integrations-early-access">Manage Integrations</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/data-connect/tables/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".managing-data-connect-tables-early-access">Manage Tables</a>
+      </li></ul>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/data-insights/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Data Insights</a>
+      </li><li class="relative w-100 fw8 f5  active">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2 primary-color expanded " data-target=".permissions">Platform Permissions</a>
+        <ul class="bl b--primary bw1 pl2 permissions desktopmenu animated fadeIn list "><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/platform-permissions/early-access-release/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Early Access Release</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/platform-permissions/expanded-release/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Expanded Early Access Release</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/platform-permissions/pii-account-roles/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">PII and Account Level Roles</a>
+      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/platform-permissions/permissions-system-migration-guide/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".">Migration Guide</a>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".api-v3">Tealium API v3</a>
+        <ul class=" api-v3 desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/tealium-api-v3-getting-started-early-access/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-api-v3-getting-started-early-access">Authentication and Request Format</a>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".iq-profiles-api">iQ Profiles</a>
+        <ul class=" iq-profiles-api desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-v3-api">About iQ Profiles</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-get-profile-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-get-profile-api">iQ GET Profile API</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-javascript-extension-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-javascript-extension-api">iQ JavaScript Extension API</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-load-rules-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-load-rules-api">iQ Load Rules API</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-profiles-api-objects/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-api-objects">iQ Profiles API Objects</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-variables-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-variables-api">iQ Variables API</a>
+      </li></ul>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/tealium-collect-http-api-v3-early-access/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-collect-http-api-v3-early-access">Tealium Collect HTTP API</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/tealium-api-v3-visitor-privacy-api-formerly-visitor-lookup-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-api-v3-visitor-privacy-api-formerly-visitor-lookup-api">Visitor Privacy API</a>
+      </li></ul>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/visitor-deletion-jobs/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".visitor-deletion-jobs">Visitor Deletion Jobs</a>
+      </li></ul></li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/linkedin-conversions-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".linkedin-conversions-connector">LinkedIn Conversions</a>
+      </li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
+      <div class="documentation-copy ph4">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+    
+  
+  <li class="mr1 f7 lvl0"><a class="f6 mb0 link mid-gray dim mr1" href="/">Home</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/early-access/">Early Access</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl2"><a class="f6 mb0 link mid-gray dim mr1" href="/early-access/platform-permissions/">Platform Permissions</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mt30 mb3">Permissions System Migration Guide</h1>
+</header>
+
+<div class="mv2 mid-gray fn w-100">
+  
+    <p class="f4 fw3 lh-copy">
+      This document provides suggestions on how to build a migration plan from the legacy permissions management system to the new unified platform permissions system.
+    </p>
+  
+</div>
+
+<div class="prose nested-links" id="prose">
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>Platform Permissions is in Expanded Early Access and is only available to select customers. If you are interested in trying this feature, contact your Tealium Support representative.</p>
+<h2 id="terminology">Terminology</h2>
+<p>Before you plan out your migration strategy, review the following basic concepts:</p>
+<ul>
+<li>A <strong>product</strong> is a grouping of features licensed at the account level (for example, Tealium AudienceStream CDP, Tealium EventStream API Hub, Tealium iQ Tag Management, etc.)</li>
+<li>A <strong>feature</strong> is a subsection of a product that allows management and access to data and configurations.</li>
+<li>An <strong>account</strong> contains configuration and access that spans multiple profiles.</li>
+<li>A <strong>profile</strong> is a configuration set for either Server Side or Client Side products and features.</li>
+<li>A <strong>user</strong> is an individual login to an account, defined by the user’s email address.</li>
+</ul>
+<p>The new unified permissions system introduces the following two new concepts:</p>
+<ul>
+<li>A <a href="https://community.tealiumiq.com/t5/Product/Permission-Groups/ta-p/37757"><strong>permission group</strong></a> (usually referred to as <strong>group</strong>) defines a set of product access levels for the profiles, products, and product features in your account. They also determine publishing rights. Users in a group inherit those permissions for the associated profiles, making it easier for you to manage permissions for a large number of users.</li>
+<li>An <a href="https://community.tealiumiq.com/t5/Product/Admin-Roles/ta-p/37763"><strong>admin role</strong></a> defines a set of account access levels for the users in your account. Using admin roles make it easier for you to delegate management of your account and product features to a team of users. Users without admin roles receive a basic user role.</li>
+</ul>
+<h2 id="how-it-works">How it works</h2>
+<p>Previously, account administrators had to administer client-side users, server-side users, and administration rights separately. Separately administering accounts required a lot of time and effort to audit each user’s viewing and editing rights as well as manage their access to profiles.</p>
+<p>Tealium now provides a unified permissions system so you can manage user access to your account and profiles through permission groups and admin roles.</p>
+<p>For more about the new permissions management system, see <a href="https://community.tealiumiq.com/t5/Product/Platform-Permissions-System/ta-p/37762">Platform Permissions System</a>.</p>
+<h2 id="benefits-of-migration">Benefits of migration</h2>
+<p>Migrating from the old permissions system to the new one gives you an opportunity to audit the permissions, security, and structure of your account:</p>
+<ul>
+<li>Remove users who no longer use the platform or work for your organization.</li>
+<li>Use admin roles to delegate account management responsibility to others.</li>
+<li>Remove unnecessary levels of access on the platform.</li>
+<li>Organize access to profiles for easier management.</li>
+<li>Give permission groups descriptive names for easier security auditing and management.</li>
+<li>Gather data for any future plans to break up profiles into multiple regional profiles to better handle regional brands, offices, management structures, and data privacy compliance regulations.</li>
+</ul>
+<p>It is also easier for the Tealium account team to assist you with access issues on the new permissions system than with the legacy system.</p>
+<h2 id="best-practices">Best practices</h2>
+<p>Some important things to consider as you plan your migration:</p>
+<ul>
+<li><strong>Non-disruptive migration</strong> - Building your permissions groups and admin roles under the new permissions system will not disrupt your current permissions and access. Your account will continue to use the legacy permissions until you enable Permissions Enforcement to use the new system. If you have any major problems with the new system, you can switch back to the legacy system to make any necessary changes.</li>
+<li><strong>Permission groups are additive</strong> - You can create a permission group with view rights on one profile, create another permission group with Editor rights on other profile, and then add a user to both. The user will inherit permissions from both groups, and if the permissions overlap, the user will inherit the greater permissions for a resource.</li>
+<li><strong>Client-side profiles are separate from server-side profiles</strong> - However, you can create a permission group that manages user access to both client-side and server-side profiles, simplifying the process of assigning and managing permissions.</li>
+<li><strong>Access requires a group</strong> - To access Tealium, users must be assigned to one or more permission groups that provide the necessary product and feature permissions.</li>
+</ul>
+<h2 id="general-migration-strategy">General migration strategy</h2>
+<p>Use the following steps to help you build your migration strategy:</p>
+<ol>
+<li>Make an inventory of your users’ current access levels and permissions.</li>
+<li>Audit those permissions to ensure they’re accurate for the users’ needs.</li>
+<li>Analyze the results of your audit to determine logical functional groups.</li>
+<li>Add permission groups to match those bundles of access rights to profiles and product features.</li>
+<li>Add users to those permission groups.</li>
+<li>Assign admin roles to users in your account to delegate management of users, features, and profiles.</li>
+<li>Set PII permissions for each user.</li>
+<li>Test the permissions with your users.</li>
+<li>Adjust the permission groups and admin roles as needed.</li>
+</ol>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If you need assistance with this process, contact the Tealium account team.</p>
+<h2 id="planning-the-permissions-structure">Planning the permissions structure</h2>
+<p>Perform the following steps to create an inventory of your current users and permissions:</p>
+<h3 id="step-1-make-an-inventory">Step 1: Make an inventory</h3>
+<p>There are several available methods for you to build an inventory of your current users and their permissions:</p>
+<h4 id="export-users">Export users</h4>
+<p>The <strong>Export Users</strong> function allows you to download a comma-separated value (CSV) file with the account&rsquo;s users, profiles, and legacy user permissions for each profile. This funcionality makes it easy to audit your users and their permissions to build permission groups and assign admin roles in the new platform permissions system.</p>
+<ol>
+<li>From the client-side’s User Menu, click <strong>Manage Users</strong>. The table displays a list of users on the account with their general permissions.</li>
+<li>Click <strong>Export Users</strong>.</li>
+</ol>
+<figure><img src="/images/early-access/2.png"
+         alt="2.png"
+         title="2.png" width="608" height="378"/>
+</figure>
+<h4 id="client-side-inventory-using-the-user-permissions-exporter-tool">Client-side inventory using the User Permissions Exporter Tool</h4>
+<p>Use the User Permissions Exporter Tealium Tool to export a CSV file that contains each user’s permission on client-side profiles.</p>
+<ul>
+<li>For instructions on how to install and use the Tealium Tool Browser Extension, see <a href="/iq-tag-management/tealium-tools/browser-extension/">Tealium Tools Browser Extension</a>.</li>
+<li>For instructions on how to install and use the User Permissions Exporter, see <a href="https://community.tealiumiq.com/t5/Accounts-Profiles-and-Libraries/Tealium-Tool-User-Permissions-Exporter/ta-p/16149">Tealium Tool User Permissions Exporter</a>.</li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>You must have the Manage Users permission in the active account to run this tool.</p>
+<p>The following screenshot demonstrates a downloaded CSV file imported into a Google Sheet, with minor formatting adjustments on row 1 for readability:</p>
+<figure><img src="/images/early-access/1.png"
+         alt="csv"
+         title="csv" width="473" height="274"/>
+</figure>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Manage Site Scans will appear in the exported data. It is a legacy function, and you will not need it for migration purposes.</p>
+<p>In this example, <strong>user3</strong> appears three times in the <strong>User</strong> column. Unlike the other users, who have the same permission on all the profiles on the account, <strong>user3</strong> has different permissions on the profiles <strong>Website A</strong>, <strong>Website B</strong>, and <strong>Website C</strong>. Because of this, separate rows in the spreadsheet contain <strong>user3</strong>’s profile permissions.</p>
+<p>Because this tool only exports client-side users and permissions, you will need to export server-side users and permissions manually.</p>
+<h4 id="manual-inventory-of-client-side-users-and-permissions">Manual inventory of client-side users and permissions</h4>
+<p>If you cannot use an automatic export or prefer to perform a manual inventory, you will need to manually collect each user’s permissions on the client side. Perform the following steps to export each users’ permissions on the client side:</p>
+<ol>
+<li>From the client-side’s User Menu, click <strong>Manage Users</strong>. The table displays a list of users on the account with their general permissions.</li>
+<li>Create a spreadsheet and label the first column <strong>Users</strong>.</li>
+<li>In the spreadsheet, add the user list to the first column.</li>
+<li>In the spreadsheet, label the second column <strong>Profile</strong>.</li>
+<li>Click the first account.</li>
+<li>Click <strong>Edit/View User Settings</strong>. The dialog box displays the user’s permissions on the account and on each profile (Full, Partial, or None).</li>
+<li>In the spreadsheet, create three new columns with this information and note the column names to use later when you are setting up the Manage Account and Manage Users admin roles:
+<ul>
+<li><strong>Account</strong></li>
+<li><strong>Profiles</strong></li>
+<li><strong>JavaScript Code</strong></li>
+</ul>
+</li>
+<li>Click <strong>Close</strong>.</li>
+<li>Click <strong>Edit/View User Permissions</strong>. The dialog box will display the Account, Profiles, and JavaScript permissions (You already have this information).</li>
+<li>Click <strong>Next</strong>.</li>
+<li>Select <strong>Select from Currently Assigned Profile(s)</strong>.</li>
+<li>Select each profile from the drop-down box and click <strong>Next</strong>. The dialog box will display the user’s permissions on every profile.</li>
+<li>If the user has the same permissions on every profile, put <strong>All</strong> in the <strong>Profile</strong> column of the spreadsheet and note the user’s permissions. If the user has different permissions on profiles, duplicate the user’s row in the spreadsheet so each line represents a different profile, enter the profile names in the <strong>Profile</strong> column, and note their permissions in columns titled:
+<ul>
+<li>Manage Users</li>
+<li>Manage Resource Locks</li>
+<li>Publish to Dev/Custom Environment</li>
+<li>Publish to QA Environment</li>
+<li>Publish to Prod Environment</li>
+<li>Manage Tag Templates</li>
+<li>Save Existing Versions</li>
+<li>Save As New Versions</li>
+<li>Promote to Dev/Custom Environment</li>
+<li>Promote to QA Environment</li>
+<li>Promote to Prod Environment</li>
+</ul>
+</li>
+<li>Click <strong>Cancel</strong>.</li>
+<li>Repeat this process for each user.</li>
+</ol>
+<p>You now have all the client side user permissions.</p>
+<h4 id="manual-inventory-of-server-side-users-and-permissions">Manual inventory of server-side users and permissions</h4>
+<p>Perform the following steps to export each user’s permissions on the server side:</p>
+<ol>
+<li>From the server side’s User Menu, click <strong>Manage Users</strong>. If a server side user doesn’t already exist on the spreadsheet, add it to the first column.</li>
+<li>Click the user account.</li>
+<li>Click <strong>Next.</strong> The dialog now displays the user’s permissions in every profile.</li>
+<li>If the user has the same permissions on every profile, enter <strong>All</strong> in the <strong>Profile</strong> column and note the user’s permissions in the spreadsheet. If the user has different permissions on profiles, duplicate the user’s row in the spreadsheet so each line represents a different profile, enter the profile names in the <strong>Profile</strong> column, and note the permissions in the appropriate rows.
+<ul>
+<li><strong>No Access</strong> - Cannot access profile.</li>
+<li><strong>Reader</strong> - Read-only access to profile.</li>
+<li><strong>Editor</strong> - Edit and save the profile, but cannot publish.</li>
+<li><strong>Publisher</strong> - Editor, plus save and publish the profile</li>
+</ul>
+</li>
+<li>Click <strong>Close</strong></li>
+<li>Repeat this process for each user.</li>
+</ol>
+<p>Based on the previous example, the following screenshot demonstrates a spreadsheet updated with server-side users and permissions:</p>
+<figure><img src="/images/early-access/2.png"
+         alt="2.png"
+         title="2.png" width="608" height="378"/>
+</figure>
+<p>In this example, <strong>user6</strong>, <strong>user7</strong>, and <strong>user8</strong> do not have any permissions on the client side, and they had to be added manually to the spreadsheet. Also, <strong>user7</strong> has different permissions on the server-side profiles <strong>App A</strong> and <strong>App B</strong>, so separate rows in the spreadsheet were created for <strong>user7</strong>’s profile permissions.</p>
+<p>You now have all the user permissions for client-side and server-side profiles from the legacy permissions system.</p>
+<h3 id="step-2-audit-the-spreadsheet">Step 2: Audit the spreadsheet</h3>
+<p>Now that you have everyone’s permissions in a spreadsheet, check for users with too much access or not enough access to the profiles they need to perform their job. Remember that a user must be in at least one permission group to access a profile’s resources. Update the spreadsheet to reflect their actual needs.</p>
+<p>Also, be sure to remove any users who longer work for the company or require access to the account.</p>
+<h3 id="step-3-add-individual-needs-to-the-spreadsheet">Step 3: Add individual needs to the spreadsheet</h3>
+<p>Now that you have each user&rsquo;s profile rights on the spreadsheet, you need add some final product and data-level needs to the spreadsheet for each user:</p>
+<ul>
+<li>The level of access to PII data the user should have.</li>
+<li>The products and product features each user should be able to access.</li>
+<li>The level of access each user should have on each product feature.</li>
+</ul>
+<h4 id="pii-data-needs">PII data needs</h4>
+<p>PII Permissions control who can see PII data and who can edit the <strong>Restricted Data</strong> property that identifies PII data. Only one level of PII permissions can be assigned to a user. The three levels of PII permissions are as follows:</p>
+<ul>
+<li><strong>No PII</strong> – Users can view PII attributes, but cannot see the values of these attributes. PII is obscured wherever it is shown, including Trace and Live Events.</li>
+<li><strong>View</strong> – Users can view the values of PII attributes, data but cannot edit or manage PII data.</li>
+<li><strong>Manage &amp; View</strong> – Users can view, edit, and manage PII data.</li>
+</ul>
+<p>Note in your spreadsheet whether a user should have no access, View access, or Manage &amp; View access for PII.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>In EA and EEA, PII permissions are managed by groups. PII permissions management will be moving from group-based management to user-based management in the GA release. We are planning to automatically migrate PII permissions set by group in EA and EEA when this change has been made.</p>
+<h4 id="product-and-feature-needs">Product and feature needs</h4>
+<p>Product access permissions specify the Tealium products and features that users can access:</p>
+<ul>
+<li>Tealium iQ Tag Management</li>
+<li>AudienceStream</li>
+<li>EventStream</li>
+<li>Data Access</li>
+<li>Data Connect</li>
+<li>Predict</li>
+<li>Functions</li>
+<li>Server-Side Tools</li>
+<li>Server-Side (Others)</li>
+</ul>
+<p>Product access permissions are divided into feature permissions, and may vary depending on the product permissions assigned to the group, as shown in the following table.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Users that have <strong>View &amp; Edit</strong> or <strong>View, Edit &amp; Delete</strong> permission also have <strong>Save</strong> permission.</p>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Features</th>
+<th>Available Permissions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tealium iQ Tag Management</td>
+<td>JavaScript Extension</td>
+<td>No Access<br> View, Edit &amp; Delete</td>
+</tr>
+<tr>
+<td>Advanced JavaScript Extension - Promote to Dev</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Advanced JavaScript Extension - Promote to QA</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Advanced JavaScript Extension - Promote to Prod</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Publish to Dev/Custom</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Publish to QA</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Publish to Prod</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Save</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Publish Settings</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Code Settings</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Resource Lock</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Client-Side Versions</td>
+<td>No Access<br> View<br> View &amp; Edit</td>
+<td></td>
+</tr>
+<tr>
+<td>Tag Templates</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Tags, Extensions, Load Rules, Data Layer</td>
+<td>No Access<br> View<br> View &amp; Edit<br> View, Edit &amp; Delete</td>
+<td></td>
+</tr>
+<tr>
+<td>AudienceStream</td>
+<td>Dashboard</td>
+<td>No Access<br> View</td>
+</tr>
+<tr>
+<td>Discovery/Sizing</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Audiences</td>
+<td>No Access<br> View<br> View &amp; Edit<br> View, Edit &amp; Delete</td>
+<td></td>
+</tr>
+<tr>
+<td>Audience Connectors</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Visitor/Visit Attributes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>EventStream</td>
+<td>Data Sources</td>
+<td>No Access<br> View<br> View &amp; Edit<br> View, Edit &amp; Delete</td>
+</tr>
+<tr>
+<td>Event Attributes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Event Connectors</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Event Specs</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Live Events</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Omnichannel</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Data Access</td>
+<td>Access Keys</td>
+<td>No Access<br> View</td>
+</tr>
+<tr>
+<td>Data Insight</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>EventStore Legacy</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>AudienceDB</td>
+<td>No Access<br> View<br> View &amp; Edit<br> View, Edit &amp; Delete</td>
+<td></td>
+</tr>
+<tr>
+<td>EventDB</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>AudienceStore</td>
+<td>No Access<br> View<br> View &amp; Edit<br> View, Edit &amp; Delete</td>
+<td></td>
+</tr>
+<tr>
+<td>EventStore</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Data Connect</td>
+<td>Tables</td>
+<td>No Access<br> View<br> View &amp; Edit<br> View, Edit &amp; Delete</td>
+</tr>
+<tr>
+<td>Dashboard</td>
+<td>No Access<br> View</td>
+<td></td>
+</tr>
+<tr>
+<td>Integrations</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Predict</td>
+<td>All features</td>
+<td>No Access<br> View<br> View &amp; Edit<br> View, Edit &amp; Delete</td>
+</tr>
+<tr>
+<td>Functions</td>
+<td>Credentials/Authentications<br> Global Variables</td>
+<td>No Access<br> View<br> View &amp; Edit<br> View, Edit &amp; Delete</td>
+</tr>
+<tr>
+<td>Server-Side Tools</td>
+<td>Manage Rules</td>
+<td>No Access<br> View<br> View &amp; Edit<br> View, Edit &amp; Delete</td>
+</tr>
+<tr>
+<td>Visitor Delete</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Visitor Lookup</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Visitor Profile Sampler</td>
+<td>No Access<br> View</td>
+<td></td>
+</tr>
+<tr>
+<td>Server-Side (Others)</td>
+<td>Labels</td>
+<td>No Access<br> View<br> View &amp; Edit<br> View, Edit &amp; Delete</td>
+</tr>
+<tr>
+<td>Trace</td>
+<td>No Access<br> View</td>
+<td></td>
+</tr>
+<tr>
+<td>Versions</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="cross-feature-permission-issues">Cross-feature permission issues</h4>
+<p>Carefully consider when you disable access to a feature or product. If you disable access to a feature for a user, that user willl not be able to access the feature in any other features that depend on it. For example:</p>
+<ul>
+<li>If you disable access to AudienceStream audiences for a user, that user will not be able to select an audience to action in an AudienceStream connector.</li>
+<li>If you disable access to server-side labels for a user, the user will not see labels on the server-side. They will still be able to access connectors or other elements with labels on them, but they will not see or be able to edit the labels themselves.</li>
+</ul>
+<p>If you disable a product for a user, but the user has server-side Publish permission and access to another product that shares elements with the first product, the user can still publish changes to those shared elements. For example, EventStream and AudienceStream share some elements, such as rules and labels. If a user has Publish permission and only has access to EventStream, they can publish changes to rules and labels they made in EventStream, and those changes will also affect AudienceStream. Similarly, if a user has Publish permission and only has access to AudienceStream, their published changes to rules and labels also affect EventStream.</p>
+<h4 id="update-the-spreadsheet">Update the spreadsheet</h4>
+<p>Create columns in the spreadsheet for each product and feature, and mark the level of access that the user should have on each.</p>
+<figure><img src="/images/early-access/3.png"
+         alt="3.png"
+         title="3.png"/>
+</figure>
+<p>Congratulations. You now have all your users&rsquo; individual needs in the spreadsheet.</p>
+<p>The next step is to organize the users into groups.</p>
+<h3 id="step-4-add-organizational-information">Step 4: Add organizational information</h3>
+<p>Every organization has a unique structure, needs, and workflow. Setting permissions to match your organization&rsquo;s workflow can ensure that each person has access appropriate for their job role, and does not have access to data due to privacy regulations. So, you will need to ask some questions about your users and organization to help sort them into groups.</p>
+<p>Here are some suggestions:</p>
+<ul>
+<li>Do you want separate permission groups for your client-side and server-side profiles because different parts of your organization manage these products?</li>
+<li>Do you want to create permission groups based on job responsibilities (Developer, QA, Data Manager, Engineer, Compliance, etc.) so that when you add, move, or remove users, you can quickly assign permissions based on their job title?</li>
+<li>Do you want to break down permission groups by region because your profiles and users are organized by geographic campaigns and sites, and different data storage and data privacy laws apply to them?</li>
+<li>Do you want to break down permission groups by product (AudienceStream, EventStream, Customer Data Hub, etc.)?</li>
+</ul>
+<p>For each Yes answer, add another column to the spreadsheet, and add notes in that column about how that question impacts that user&rsquo;s relationship to the organization and workflow.</p>
+<figure><img src="/images/early-access/4.png"
+         alt="4.png"
+         title="4.png"/>
+</figure>
+<h4 id="profile-audit">Profile audit</h4>
+<p>If you have only one main client-side profile and one main server-side profile, but your brand and organization is split among multiple regions and responsibility structures, this data can be useful as part of a future project to configure regional profiles on your account. However, Tealium recommends that you set up and test permissions on the new permissions system first.</p>
+<h3 id="step-5-sort-the-users-into-groups">Step 5: Sort the users into groups</h3>
+<p>Now that you have all the users’ needs and relationships to the organization documented in your spreadsheet, sort the users by each of the columns.</p>
+<p>You can now organize those users into groups based on their common needs and access rights:</p>
+<ul>
+<li>The profiles users in the group needs to access.</li>
+<li>The level of access group members need on each profile.</li>
+<li>Whether group members should have publishing rights for client-side and server-side profiles.</li>
+<li>The products and product features each group should be able to access.</li>
+<li>The level of access each group should have on each product feature.</li>
+</ul>
+<p>You can break the users into smaller groups based on your organization’s other needs, such as managing users by department or job function, grouping them by geography, and so on.</p>
+<p>These final groups of users are the permission groups you need to create.</p>
+<h3 id="step-6-add-admin-roles">Step 6: Add admin roles</h3>
+<p>Now that you have the groups planned out, it&rsquo;s time to plan out the admin roles.</p>
+<p>Looking at your spreadsheet, ask yourself some questions about the account itself:</p>
+<ul>
+<li>Who needs full access to the account?</li>
+<li>Who will be managing users and user membership in the account’s groups?</li>
+<li>Who will handle the technical configuration of the account?</li>
+<li>Who will be handling the Personally Identifiable Information (PII) data rights on the account?</li>
+<li>Who will be managing the account’s profiles?</li>
+</ul>
+<p>The Admin and Profiles settings from the client side inventory of user permissions can help you determine who should get admin roles for the account in the new permission system:</p>
+<ul>
+<li><strong>Account Admin</strong> - This role has full access to the account (Includes the permissions of other roles).</li>
+<li><strong>User Admin</strong> - This role manages permission groups and user permissions. Anyone responsible for adding users, editing users, and assigning users to permission groups should have this role.</li>
+<li><strong>Technical Admin</strong> - This role manages account configuration features, such as first-party domains.</li>
+<li><strong>Privacy Admin</strong> - This role manages the PII permission level in groups (Requires the User Admin role). Anyone responsible for data privacy and compliance should be a candidate for this role.</li>
+<li><strong>Profile Admin</strong> - This role manages access to profiles and libraries. Anyone who builds and organizes profiles on your account should have this role. This role does not include profile editing or publishing permissions; those are granted through rights in a permission group.</li>
+</ul>
+<p>For more information abour admin roles, see <a href="https://community.tealiumiq.com/t5/Product/Admin-Roles/ta-p/37763">Admin Roles</a>.</p>
+<h2 id="deployment-strategies">Deployment strategies</h2>
+<p>Now that you have your planned list of users, permission groups, and admin roles, you’re ready to deploy your new permissions structure.</p>
+<ul>
+<li>For instructions on how to create a permission group, see <a href="https://community.tealiumiq.com/t5/Product/Permission-Groups/ta-p/37757">Permission Groups</a>.</li>
+<li>For instructions on how to assign an admin role to a user, see <a href="https://community.tealiumiq.com/t5/Product/Managing-Users/ta-p/37715">Managing Users</a>.</li>
+<li>For instructions on how to enforce the new permissions settings, see <a href="https://community.tealiumiq.com/t5/Product/Platform-Permissions-System/ta-p/37762">Platform Permissions System</a>.</li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Before turning on Permissions Enforcement, make sure that users have been added to groups and admin role permissions have been assigned to users that manage users, groups, and PII permissions. If you turn on permissions enforcement before you assign users to groups or assign admin roles to users, you may lose access to your account.</p>
+<p>The following examples describe strategies for deploying the new permissions system:</p>
+<h3 id="deployment-strategy-1---build-job-functions-and-roles-then-add-people">Deployment Strategy 1 - Build job functions and roles, then add people</h3>
+<p>This strategy uses small groups of users with identical needs and roles that you generated after the final audit of your inventory. Users with similar or identical responsibilities can be bundled and added to groups with the correct permissions and access,</p>
+<ol>
+<li>Assign admin roles to the users that will help you with the migration and testing process.</li>
+<li>Create permission groups for the groups of users with identical needs and roles.</li>
+<li>Add users to the appropriate permission groups.</li>
+<li>Warn your users that you will be testing the new permissions system and ask for feedback.</li>
+<li>Set the Permissions Enforcement toggles to <strong>ON</strong>.</li>
+<li>Gather feedback from your users, and implement any changes in permissions that are necessary.</li>
+<li>If there are too many issues to deal with quickly, set the Permissions Enforcement toggle to <strong>OFF</strong> so you can revise your plans, permission groups, and admin roles before running another test.</li>
+</ol>
+<p>The advantage of this method is that you are organizing users into groups based on similar job responsibilities and roles in your organization, so group membership will parallel your organization chart and workgroups.</p>
+<p>The disadvantage is that users who perform multiple or overlapping roles or require special access may need some extra planning and adjustment.</p>
+<h3 id="deployment-strategy-2---stacked-granular-permission-groups">Deployment Strategy 2 - Stacked granular permission groups</h3>
+<p>Another possible strategy for creating permission groups uses stacking of multiple permission groups to build access for each user. This strategy uses the additive property of permission groups, where a user who is a member of multiple groups inherits the greatest access of those groups. This allows you to manage your users through multiple layers of resource access groups instead of job role or workgroup based groups.</p>
+<ol>
+<li>Assign admin roles to the users that will help you with the migration and testing process.</li>
+<li>Create 4 permission groups: <strong>Publish to Dev/Custom</strong>, <strong>Publish to QA</strong>, <strong>Publish to Prod</strong>, and <strong>Publish Server Side</strong>.
+<ul>
+<li>Assign users to these groups as necessary based on their rights to publish.</li>
+</ul>
+</li>
+<li>Create permission groups that bundle access to product features as needed for various roles in your organization (Development, QA, Data Manager, Account Manager, etc.)
+<ul>
+<li>Add users to the appropriate permissions groups.</li>
+</ul>
+</li>
+<li>Create additional permission groups with:
+<ul>
+<li>Read, Edit, and Delete rights on each profile as necessary</li>
+<li>Read, Edit, and Delete rights on each feature as necessary.</li>
+</ul>
+</li>
+<li>Add users to the appropriate permissions groups.</li>
+<li>Set PII permissions for each of your users.</li>
+<li>Warn your users that you will be testing the new permissions system and ask for feedback.</li>
+<li>Set the Permissions Enforcement toggles to <strong>ON</strong>.</li>
+<li>Gather feedback from your users, and implement any changes in permissions that are necessary.</li>
+<li>If there are too many issues to deal with quickly, set the Permissions Enforcement toggle to <strong>OFF</strong> so you can revise your plans, permission groups, and admin roles before running another test.</li>
+</ol>
+<p>The advantage of this method is that you are organizing groups by a resource’s permission levels, and you can add or remove users from groups as their needs change.</p>
+<p>The disadvantage is that you need to manage many more groups when a new user joins your organization or when a user changes job responsibilities or leaves.</p>
+
+</div>
+
+<div class="mv30 nested-links overflow-hidden dpn"><div class="fr">
+
+  
+  <a href="/early-access/platform-permissions/pii-account-roles/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <section class="tl pr3">
+      <div>PII and Account Level Roles</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"PII and Account Level Roles"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
+  
+  
+</div><div class="di">
+  
+  
+  <a href="/early-access/platform-permissions/expanded-release/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"Expanded Early Access Release "</title>
+      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+    </svg>
+   <section class="tr pl3">
+      <div>Expanded Early Access Release</div>
+    </section>
+  </a>
+  
+
+</div></div>
+
+
+
+        <div class="bt-l b--moon-gray pv3 cb">
+          <div id="feedback_form" class="dpn">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">Was this page helpful?</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+Yes</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+No</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea><button id="feedback_submit" class="db ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">Send Feedback</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">Thank you for your feedback!</p>
+  </div>
+</div>
+
+        </div>
+        <div class="bt-l b--moon-gray pt3 f6">
+          <p>This page was last updated:  March 13, 2023 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns">
+      
+
+
+
+  <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">On this page</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#terminology">Terminology</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#benefits-of-migration">Benefits of migration</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#best-practices">Best practices</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#general-migration-strategy">General migration strategy</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#planning-the-permissions-structure">Planning the permissions structure</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#step-1-make-an-inventory">Step 1: Make an inventory</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#step-2-audit-the-spreadsheet">Step 2: Audit the spreadsheet</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#step-3-add-individual-needs-to-the-spreadsheet">Step 3: Add individual needs to the spreadsheet</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#step-4-add-organizational-information">Step 4: Add organizational information</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#step-5-sort-the-users-into-groups">Step 5: Sort the users into groups</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#step-6-add-admin-roles">Step 6: Add admin roles</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#deployment-strategies">Deployment strategies</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#deployment-strategy-1---build-job-functions-and-roles-then-add-people">Deployment Strategy 1 - Build job functions and roles, then add people</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#deployment-strategy-2---stacked-granular-permission-groups">Deployment Strategy 2 - Stacked granular permission groups</a></li>
+              </nav>
+  </aside></nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-primary-color-dark ph1-ns relative w-100" role="contentinfo">
+    <div class="center flex-ns flex-wrap justify-between mw9 w-90">
+    </div>
+
+    <div class="bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+<div class="globalmenu mobilemenu dn">
+    
+
+<ul class="list hidden dib ph0 ma0 scrolling-touch tc">
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Home
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/iq-tag-management/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          iQ Tag Management
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/getting-started/eventstream-api-hub/introduction/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          EventStream API Hub
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/getting-started/audiencestream-cdp/introduction/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/functions/about/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Functions
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/predict/getting-started/about-predict/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Predict ML
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/data-storage/about/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          DataAccess
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/client-side-tags/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Client-Side Tags
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side-connectors/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Server-Side Connectors
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Platforms
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/api/getting-started/auth/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium for Pharma
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Identity Partners
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tech-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Technology Partners
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/glossary/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Glossary
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/early-access/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Early Access
+        </a>
+    </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+</div>
+
+
+<div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
+    <ul class="list dib ph0 ma0 scrolling-touch tc">
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/about/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          About Early Access
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/consent-integrations/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Consent Integrations
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/data-connect/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Data Connect
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/data-insights/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Data Insights
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/platform-permissions/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4 bg-primary-color">
+          Platform Permissions
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/api-v3/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Tealium API v3
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/visitor-deletion-jobs/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Visitor Deletion Jobs
+      </a>
+      </li>
+      
+      
+  
+  
+
+</ul>
+
+</div>
+
+
+
+
+<div class="flex dn-l justify-between">
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link mr2 white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".globalmenu">Site</button>
+
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".docsmenu">Section</button>
+
+</div>
+</div>
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'Search',
+    buttonAriaLabel: 'Search',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'Clear the query',
+      resetButtonAriaLabel: 'Clear the query',
+      cancelButtonText: 'Cancel',
+      cancelButtonAriaLabel: 'Cancel',
+    },
+    startScreen: {
+      recentSearchesTitle: 'Recent',
+      noRecentSearchesText: 'No recent searches',
+      saveRecentSearchButtonTitle: 'Save this search',
+      removeRecentSearchButtonTitle: 'Remove this search from history',
+      favoriteSearchesTitle: 'Favorite',
+      removeFavoriteSearchButtonTitle: 'Remove this search from favorites',
+    },
+    errorScreen: {
+      titleText: 'Unable to fetch results',
+      helpText: 'You might want to check your network connection.',
+    },
+    footer: {
+      selectText: 'to select',
+      selectKeyAriaLabel: 'Enter key',
+      navigateText: 'to navigate',
+      navigateUpKeyAriaLabel: 'Arrow up',
+      navigateDownKeyAriaLabel: 'Arrow down',
+      closeText: 'to close',
+      closeKeyAriaLabel: 'Escape key',
+      searchByText: 'Search by',
+    },
+    noResultsScreen: {
+      noResultsText: 'No results for',
+      suggestedQueryText: 'Try searching for',
+      reportMissingResultsText: 'Believe this query should return results?',
+      reportMissingResultsLinkText: 'Let us know.',
+    },
+  },
+};
+var default_sections = [
+  "Platforms > JavaScript (Web)",
+  "Platforms > Getting Started for Websites",
+  "Platforms > Android (Kotlin)",
+  "Platforms > iOS (Swift)",
+  "Platforms > Getting Started for Mobile"
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+docsearch({
+  container: '#docsearch',
+  appId: '01G44CJWZ0',
+  apiKey: 'cb21a38c7ac4f7dddf727fa23008d220',
+  indexName: 'tealium',
+  placeholder: 'Search',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    optionalFilters: opt_filters
+  },
+  debug: "false"
+});
+</script>
+
+    
+
+  </body>
+</html>
