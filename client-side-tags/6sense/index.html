@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>PulsePoint HCP365 Pixel Tag Setup Guide | Client-Side Tags |Tealium Docs</title>
+    <title>6sense Tag | Client-Side Tags |Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -201,8 +201,8 @@ var utag_data = {
     <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>Home</a></li>
   
   </ul>
-  <ul class="list pa0"><li class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><a href="/client-side-tags/" class="dib w-100 link text-color-primary hover-primary-color"><span class="pb2">Client-Side Tags</span></a></li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/client-side-tags/6sense/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".6sense-tag">6sense</a>
+  <ul class="list pa0"><li class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><a href="/client-side-tags/" class="dib w-100 link text-color-primary hover-primary-color"><span class="pb2">Client-Side Tags</span></a></li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/client-side-tags/6sense/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".6sense-tag">6sense</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/acoustic-digital-analytics-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".acoustic-digital-analytics-tag">Acoustic Digital Analytics</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -583,8 +583,8 @@ var utag_data = {
         <a href="/client-side-tags/podsights-pixel/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".podsights-pixel-tag">Podsights Pixel</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/pricegrabber-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".pricegrabber-tag">PriceGrabber</a>
-      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/client-side-tags/pulsepoint-hcp365-tag/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".">PulsePoint HCP365 Pixel</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/client-side-tags/pulsepoint-hcp365-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">PulsePoint HCP365 Pixel</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/pushengage-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".pushengage-tag">PushEngage</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -754,95 +754,103 @@ var utag_data = {
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">PulsePoint HCP365 Pixel Tag Setup Guide</h1>
+<h1 class="lh-title mt30 mb3">6sense Tag</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to set up the PulsePoint HCP365 Pixel tag.
+      This article describes how to set up the 6sense tag.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>HCP365, the first self-serve product under the Signal platform, uncovers who, how, and when your HCP audience organically engages with branded digital touch points at the NPI-level. The HCP365 Pixel will send page-level information into your PulsePoint system.</p>
-<h2 id="tag-tips">Tag Tips</h2>
+  <p>6sense empowers marketing and sales teams with 100 percent visibility into their buyers&rsquo; identities, needs, and timing.</p>
+<h2 id="tag-tips">Tag tips</h2>
+<p>Use mapping to:</p>
 <ul>
-<li>Use mappings to override Standard parameters.</li>
+<li>Override standard config values.</li>
+<li>Set custom parameters and attributes.</li>
+<li>To track events for only specific tags, map <strong>Manually Tracked Tags</strong> (for example, <code>['A', 'BUTTON']</code>).</li>
 </ul>
-<h2 id="tag-configuration">Tag Configuration</h2>
-<p>Navigate to the Tag Marketplace to add a new tag. Read the <a href="/iq-tag-management/tags/about/">Tag Overview</a> article for general instructions on how to add a tag.</p>
+<h2 id="tag-configuration">Tag configuration</h2>
+<p>Navigate to the Tag Marketplace to add a new tag. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
 <p>When adding the tag, configure the following settings:</p>
 <ul>
-<li><strong>PulsePoint Container Pixel</strong>: PulsePoint container pixel that is unique to each client</li>
-<li><strong>Token</strong>: PulsePoint internal identifier for a brand (for example, Merck advertiser has multiple brands so multiple tokens)</li>
+<li><strong>Event Tracking Customer Token</strong>: Enables Auto Event Tracking. Provided by your 6sense customer success manager.</li>
+<li><strong>Identity API Organization Token</strong>: Enables the Company Identity API. Provided by your 6sense customer success manager.</li>
+<li><strong>Trigger Event On Detect</strong>: If you select <code>Yes</code>, a callback function will be called upon tag detection. Trigger <code>utag.link</code> that passes in the JSON object returned.</li>
 </ul>
-<h2 id="load-rules">Load Rules</h2>
-<p>Load the tag on all pages or set conditions for when your tag will load. For more information about load rules, see the <a href="/iq-tag-management/load-rules/about/">Load Rules</a> documentation.</p>
-<h2 id="data-mappings">Data Mappings</h2>
-<p>Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">data mappings</a>.</p>
+<h2 id="load-rules">Load rules</h2>
+<p>Load the tag on all pages or set conditions for when your tag will load. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
+<h2 id="data-mappings">Data mappings</h2>
+<p>Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see <a href="/iq-tag-management/data-mappings/about/">About data mappings</a>.</p>
 <p>The available categories are:</p>
 <h3 id="standard">Standard</h3>
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>PulsePoint container pixel (<code>p</code>)</td>
-<td><code>String</code></td>
+<td style="text-align:left"><code>customer_token</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Event Tracking Customer Token</td>
 </tr>
 <tr>
-<td>Token (<code>token</code>)</td>
-<td><code>String</code></td>
+<td style="text-align:left"><code>org_token</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Identity API Organization Token</td>
 </tr>
 <tr>
-<td>Base Url (<code>base_url</code>)</td>
-<td><code>String</code></td>
+<td style="text-align:left"><code>trackedTags</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Manually Tracked Tags</td>
 </tr>
 <tr>
-<td>CCPA Opt-Out (<code>us_privacy</code>) (Required)</td>
-<td><code>String</code></td>
+<td style="text-align:left"><code>setEndpoint</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Endpoint</td>
 </tr>
 <tr>
-<td>URL of the page the tag was fired (<code>url</code>) (Required)</td>
-<td><code>String</code></td>
+<td style="text-align:left"><code>setWhitelistFields</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Whitelist Fields</td>
 </tr>
 <tr>
-<td>Referrer of the page (<code>rr</code>) (Required)</td>
-<td><code>String</code></td>
+<td style="text-align:left"><code>setCustomMetatags</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Custom Metatags</td>
 </tr>
 <tr>
-<td>Additional parameters for passing additional information to the pixel (<code>param1</code>)</td>
-<td><code>String</code></td>
+<td style="text-align:left"><code>setPageAttributes.param</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Page Attributes</td>
 </tr>
 <tr>
-<td>Additional parameters for passing additional information to the pixel (<code>param2</code>)</td>
-<td><code>String</code></td>
+<td style="text-align:left"><code>setThirdPartyValues.vendor</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Third Party Analytics</td>
 </tr>
 <tr>
-<td>Additional parameters for passing additional information to the pixel (<code>param3</code>)</td>
-<td><code>String</code></td>
+<td style="text-align:left"><code>enableCompanyDetails</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Enable Data Retrieval</td>
 </tr>
 <tr>
-<td>Additional parameters for passing additional information to the pixel (<code>param4</code>)</td>
-<td><code>String</code></td>
+<td style="text-align:left"><code>enableEventTracking</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Enable Event Tracking</td>
 </tr>
 <tr>
-<td>Additional parameters for passing additional information to the pixel (<code>param5</code>)</td>
-<td><code>String</code></td>
-</tr>
-<tr>
-<td>Form details if tag is fired on form submission (<code>frmtext</code>)</td>
-<td><code>String</code></td>
-</tr>
-<tr>
-<td>Link text of the link being clicked or document name of the document being downloaded (<code>clktext</code>)</td>
-<td><code>String</code></td>
+<td style="text-align:left"><code>triggerEvent</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Trigger Event on Detect</td>
 </tr>
 </tbody>
 </table>
@@ -852,33 +860,18 @@ var utag_data = {
 <div class="mv30 nested-links overflow-hidden dpn"><div class="fr">
 
   
-  <a href="/client-side-tags/pushengage-tag/"
+  <a href="/client-side-tags/acoustic-digital-analytics-cheatsheet/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>PushEngage</div>
+      <div>Acoustic Digital Analytics Cheatsheet</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"PushEngage"</title>
+      <title>"Acoustic Digital Analytics Cheatsheet"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
   
   
-</div><div class="di">
-  
-  
-  <a href="/client-side-tags/pricegrabber-tag/"
-    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
-    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"PriceGrabber "</title>
-      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
-    </svg>
-   <section class="tr pl3">
-      <div>PriceGrabber</div>
-    </section>
-  </a>
-  
-
 </div></div>
 
 
@@ -906,7 +899,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 26, 2021 
+          <p>This page was last updated:  March 2, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -920,10 +913,10 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-tips">Tag Tips</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag Configuration</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules">Load Rules</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data Mappings</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-tips">Tag tips</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag configuration</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules">Load rules</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data mappings</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#standard">Standard</a></li>
               </nav>
   </aside></nav>
