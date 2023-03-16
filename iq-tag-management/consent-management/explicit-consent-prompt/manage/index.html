@@ -189,11 +189,9 @@ var utag_data = {
     
     <main role="main" class="content-with-sidebar pb0-ns">
       
+  <div class="w-100 pr4">
+  <div class="flex">
 
-<div class="w-100 pr4">
-<div class="flex">
-
-    
       <div id="menu" class="order-0 w-auto vh-100 overflow-auto dn db-ns sticky-l pt3 pl125" style="width:280px;">
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 mt0 mb1">
@@ -654,10 +652,10 @@ var utag_data = {
       </li></ul></li></ul>
 </nav>
 </div>
-    
 
     <article id="main-content" class="order-1 overflow-auto max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
       <div class="documentation-copy ph4">
+
         <header class="flex-none w-100"><nav id="breadcrumb">
 <ul class="nav">
 
@@ -691,21 +689,214 @@ var utag_data = {
 </nav>
 
 <h1 class="lh-title mt30 mb3">Manage explicit consent prompt</h1>
-</header>
+        </header>
 
-<div class="mv2 mid-gray fn w-100">
-  
-    <p class="f4 fw3 lh-copy">
-      This article explains how to manage settings in the Explicit Consent Prompt.
-    </p>
-  
-</div>
+        <div class="mv2 mid-gray fn w-100">
+          
+            <p class="f4 fw3 lh-copy">
+              This article explains how to manage settings in the Explicit Consent Prompt.
+            </p>
+          
+        </div>
 
-<div class="prose nested-links" id="prose">
-  
-</div>
+        <div class="prose nested-links" id="prose">
+         
+        
+        
+          
+          
+          <h2 id="getting-started">Getting started</h2>
+<p>Use the following steps to begin setting up the explicit consent prompt:</p>
+<ol>
+<li>In the left sidebar, go to <strong>Client-Side Tools &gt; Consent Management</strong>.</li>
+<li>In the <strong>Explicit Consent Prompt</strong> section, click <strong>Get Started</strong> to launch the configuration.<br>
+If the <strong>Explicit Consent Prompt</strong> is already set up, you can toggle it on or off from this screen.</li>
+</ol>
+<h3 id="content">Content</h3>
+<p>On the <strong>Content</strong> screen, customize the message displayed in the consent prompt, add languages for translated content, define custom parameters, and view a preview of the prompt you created.</p>
+<figure><img src="/images/guides/iq/consent-manager-explicit-consent-prompt.png"
+         alt="Explicit Consent Prompt"
+         title="Explicit Consent Prompt" width="850" height="700"/>
+</figure>
+<h4 id="content-parameters">Content parameters</h4>
+<p>The <strong>Explicit Consent Prompt</strong> uses parameters to construct the final prompt that displays on your site. The prompt is templatized so that the values of the parameters can be easily substituted. Parameters are referenced using the format: <code>{{parameter_name}}</code>.</p>
+<p>The standard built-in content parameters are:</p>
+<ul>
+<li>
+<p><strong>Title</strong> <code>{{title}}</code><br>
+The main heading of the consent prompt.</p>
+</li>
+<li>
+<p><strong>Message</strong> <code>{{message}}</code><br>
+Your message to customers to inform them about your tracking intentions and links to other resources such as a privacy policy or contact form.</p>
+</li>
+<li>
+<p><strong>Opt-in/Opt-out</strong> <code>{{opt_in}} / {{opt_out}}</code><br>
+The two options available:</p>
+<ul>
+<li><code>opt-in - grant consent</code></li>
+<li><code>opt-out - deny consent</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Confirmation Button</strong> <code>{{confirmation_button}}</code><br>
+The label on the submission button.</p>
+</li>
+</ul>
+<p>To edit the content of the standard parameters, modify the text fields and click <strong>Finish</strong>.</p>
+<p>Sample HTML code with parameters:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;example_body&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;privacy_prompt&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;privacy_prompt_content&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">h1</span>&gt;{{title}}&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">p</span>&gt;{{message}}&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;privacy_prompt_footer&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;button right&#34;</span>&gt;{{confirmation_button}}&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;close_btn_thick&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><h4 id="custom-parameters">Custom parameters</h4>
+<p>Custom parameters can be added to further customize the prompt. These parameters can be referenced within the standard parameters or in the CSS/HTML/JavaScript code.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>Best Practice: Avoid putting translatable text directly in the HTML or JavaScript. Instead, construct the code with <code>{{parameters}}</code> and define the values using custom parameters.</p>
+<p>Use the following steps to add a custom parameter:</p>
+<ol>
+<li>Scroll down to the <strong>Custom Parameters</strong> section and click <strong>+ Add Parameter</strong>.<br>
+The Custom Parameter dialog appears.</li>
+<li>Enter a name for the parameter.</li>
+<li>Click <strong>Apply</strong>.<br>
+The new custom parameter displays in the list.</li>
+<li>Enter a value for the new parameter.<br>
+This value are substituted where the parameter is referenced.</li>
+<li>Click <strong>Finish</strong>.</li>
+</ol>
+<h3 id="languages">Languages</h3>
+<p>The consent prompt can be displayed in multiple languages. For each language you add you must provide the translations for each content parameter and custom parameter.</p>
+<p>The consent prompt detects the language setting in the visitor&rsquo;s browser (two-character language code) and displays the corresponding version. If the detected language is not configured, the default language is displayed.</p>
+<h4 id="add-a-language">Add a language</h4>
+<p>To add a language:</p>
+<ol>
+<li>
+<p>In the <strong>Language</strong> side panel, click <strong>+ Add</strong>.<br>
+<img src="/images/iq-tag-management/consent-manager-consent-preferences-dialog-add-language.jpg" 
+         alt="Consent Manager_Consent Preferences Dialog_Add Language.jpg"
+         title="Consent Manager_Consent Preferences Dialog_Add Language.jpg"/></p>
+</li>
+<li>
+<p>Select the desired language and click <strong>Apply</strong>.<br>
+The new language displays in the side panel.</p>
+</li>
+</ol>
+<p>Click the new language to enter translated text for all content parameters and custom parameters.</p>
+<h4 id="set-the-default-language">Set the default language</h4>
+<p>The default language is used to display the consent prompt when the user&rsquo;s detected browser language is not configured.</p>
+<p>To set a default language:</p>
+<ol>
+<li>Check the <strong>Make Default Language</strong> box located in the language title bar.<br>
+<img src="/images/iq-tag-management/consent-prompt-content-make-default.png" 
+         alt="Conent prompt content make default"
+         title="Conent prompt content make default"/></li>
+<li>Click <strong>Preview</strong> to view your language configuration.</li>
+</ol>
+<h4 id="override-the-language">Override the language</h4>
+<p>You can override the consent manager language setting with a data layer variable by using the <a href="/platforms/javascript/settings/">Universal Tag settings override object</a>. Specify the name of the data layer variable which stores the language to be used in the consent manager.</p>
+<p>For example, if your data layer contains a variable named <code>site_language</code>:</p>
+<pre tabindex="0"><code>window.utag_cfg_ovrd = window.utag_cfg_ovrd || {}
+window.utag_cfg_ovrd.gdprDLRef = &#34;site_language&#34;;
+</code></pre><p class="note"><i class="fa fa-exclamation-triangle"></i>Do not set the two-character language code directly. This override setting expects a variable name, not a language code value.</p>
 
-<div class="mv30 nested-links overflow-hidden dpn"><div class="di">
+          
+          
+          <p>On the <strong>Customization</strong> screen, the code is behind the consent prompt – the CSS, HTML, and the JavaScript that runs the prompt. This code can be edited to adjust the look and design of the prompt to match your website.</p>
+<p>The JavaScript code is minified before it is published into the utag.js file. If the minification process fails for any reason (such as a syntax error), the publish process halt and return a warning message in iQ. Upon successful publish, when utag.js executes on the page, the consent prompt JavaScript code is injected into the <code>&lt;head&gt;</code> of the page.</p>
+<h3 id="enforcement-rule">Enforcement rule</h3>
+<p>On the <strong>Enforcement Rule</strong> screen, select the load rule to determine when to load the consent prompt and display it to customers. To comply with GDPR regulation, the consent prompt must be presented to data subjects residing in the European Union (EU). You can select an existing load rule or create one to satisfy that criteria. If you are unsure, a guide is offered to generate a load rule for you.</p>
+
+          
+          
+          <h2 id="options">Options</h2>
+<p>From the <strong>Options</strong> screen, you can enable event logging and tags to omit.</p>
+<h3 id="event-logging">Event logging</h3>
+<p>The event logging option requires DataAccess (EventStore or EventDB) or EventStream and logs every consent action taken by your visitors. These consent actions can then be logged to EventStore, EventDB, or EventStream. Each time a visitor grants or revokes consent using the consent prompt, the action is logged for auditing purposes.</p>
+<p>This option is offered to help you comply with Recital 42 of the GDPR, which requires that proof of consent be available for auditing purposes. In addition, the event logging option provides you with the data needed to enable you to analyze the volumes and percentages of visitors that opt in or opt out of consent and the types of cookies each visitor is opting in or out of as a result of your efforts.</p>
+<p>Learn more about <a href="/iq-tag-management/consent-management/event-logging/">Event Logging for Consent Management</a>.</p>
+<h3 id="tags-to-omit">Tags to omit</h3>
+<p>Not all tags deployed via iQ Tag Management are for tracking or data collection. Tags and extensions can also be used to serve site functionality, such as pop-up modals, product feedback, site support, or chat clients. Use the <strong>Tags to Omit</strong> setting to create a list of tags to be exempted from the tracking restrictions.</p>
+<h3 id="consent-cookie">Consent cookie</h3>
+<p>The consent prompt uses a cookie named <code>CONSENTMGR</code>. The presence of this cookie and the values it contains determines the behavior of the prompt and reflect the state of the visitor&rsquo;s consent. The key/value pairs are delimited by the &quot; <code>|</code>&quot; character.</p>
+<p>The <code>CONSENTMGR</code> cookie stores the following key/value pairs related to the consent and preferences prompts:</p>
+<ul>
+<li>
+<p><strong>c1..N</strong> – integer value <code>1</code> or  indicating the tag category consent status where <code>1..N </code>is the category number. <code>1</code>=allowed, <code>0</code>=not allowed (for use with the Consent Preferences prompt)</p>
+</li>
+<li>
+<p><strong>consent</strong> – a Boolean value that reflects the consent state of the visitor:</p>
+<ul>
+<li><strong>true</strong> – consent was given using the opt-in option</li>
+<li><strong>false</strong> – consent was declined using the opt-out option</li>
+</ul>
+</li>
+<li>
+<p><strong>ts</strong> – the timestamp of the last consent state change</p>
+</li>
+</ul>
+<p>Example value of the <code>CONSENTMGR</code> cookie:</p>
+<pre tabindex="0"><code>ts:1525369619|consent:true|c1:0|c2:0|c3:0|c4:0|c5:0|c6:0|c7:1|c8:0|c9:1|c10:0|c11:0|c12:1|c13:0|c14:0|c15:0
+</code></pre><h3 id="default-consent-categories-javascript-code-extension">Default consent categories (JavaScript Code Extension)</h3>
+<p>This step is only needed if the Consent Preferences Dialog is disabled and if you have a server-side product (EventStream, AudienceStream, DataAccess) enabled. This step uses the JavaScript Code extension to add the default consent categories to the data layer to ensure that server-side events continue to be processed.</p>
+<p>To add the default consent categories:</p>
+<ol>
+<li>Add a <a href="/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">JavaScript Code extension</a>.</li>
+<li>Add this line of code to set the default list of consent categories:
+<pre tabindex="0"><code>b[&#34;consent_categories&#34;] = [&#34;analytics&#34;, &#34;affiliates&#34;, &#34;display_ads&#34;, &#34;search&#34;, &#34;email&#34;, &#34;personalization&#34;, &#34;social&#34;, &#34;big_data&#34;, &#34;misc&#34;, &#34;cookiematch&#34;, &#34;cdp&#34;, &#34;mobile&#34;, &#34;engagement&#34;, &#34;monitoring&#34;, &#34;crm&#34;];
+</code></pre></li>
+<li>Scope the extension to the Tealium Collect tag.</li>
+</ol>
+
+          
+          
+          <h2 id="javascript-helper-functions">JavaScript helper functions</h2>
+<p>After enabled and published, the consent prompt introduces JavaScript utility functions into the utag namespace to allow you to integrate additional functionality. The namespace <code>utag.gdpr</code> contains all of the consent management utility functions.</p>
+<h3 id="utaggdprshowexplicitconsent">utag.gdpr.showExplicitConsent()</h3>
+<p>Displays the explicit consent prompt. Integrate this function into your site to provide visitors a way to change their consent setting. To set the language dynamically, you can send the language as a parameter when calling the function. This overrides both the <code>window.utag_cfg_ovrd.gdprDLRef</code> defined above and the browser detection logic.</p>
+<p>Example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;javascript:utag.gdpr.showExplicitConsent(&#39;EN&#39;)&#34;</span>&gt;Change Consent&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span></code></pre></div><h3 id="utaggdprgetcookievalues">utag.gdpr.getCookieValues()</h3>
+<p>Returns an object of key/value pairs from the <code>CONSENTMGR</code> cookie (mentioned above). The values are retrieved from <code>utag.data['cp.CONSENTMGR']</code>.</p>
+<p>Example of consent declined:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span>.<span style="color:#a6e22e">getCookieValues</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ts</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1525369619&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">consent</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Example of partial consent has been given for categories <code>7</code>, <code>9</code>, and <code>12</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span>.<span style="color:#a6e22e">getCookieValues</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ts</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1525369619&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">consent</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;true&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c1</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c2</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c3</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c4</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c5</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c6</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c7</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c8</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c9</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c10</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c11</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c12</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c13</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c14</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">c15</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+          
+        
+        </div>
+
+        <div class="mv30 nested-links overflow-hidden dpn"><div class="di">
   
   
   <a href="/iq-tag-management/consent-management/explicit-consent-prompt/about/"
@@ -721,9 +912,6 @@ var utag_data = {
   
 
 </div></div>
-
-
-
         <div class="bt-l b--moon-gray pv3 cb">
           <div id="feedback_form" class="dpn">
   <div id="feedback_buttons">
@@ -755,15 +943,29 @@ No</button>
     </article>
 
     <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns">
-      
+        
 
 
 
-  </nav>
+  <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">On this page</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#getting-started">Getting started</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#content">Content</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#languages">Languages</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#enforcement-rule">Enforcement rule</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#options">Options</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-logging">Event logging</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tags-to-omit">Tags to omit</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#consent-cookie">Consent cookie</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#default-consent-categories-javascript-code-extension">Default consent categories (JavaScript Code Extension)</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#javascript-helper-functions">JavaScript helper functions</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#utaggdprshowexplicitconsent">utag.gdpr.showExplicitConsent()</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#utaggdprgetcookievalues">utag.gdpr.getCookieValues()</a></li>
+              </nav>
+  </aside></nav>
 
-</div>
-</div>
-    
+  </div>
+  </div>
 
     </main>
 
