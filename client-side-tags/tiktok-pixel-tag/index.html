@@ -766,44 +766,33 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>The TikTok Pixel is a powerful measurement tool that tracks your TikTok ads impact on your website. This clever bit of code enables you to monitor sales, user activity, and find the right audience for your ads.</p>
-<h2 id="tag-tips">Tag Tips</h2>
+  <p>The TikTok Pixel is a powerful measurement tool that tracks your TikTok ads&rsquo; impact on your website. This clever bit of code enables you to monitor sales, user activity, and find the right audience for your ads.</p>
+<h2 id="tag-tips">Tag tips</h2>
 <ul>
-<li>Use mappings to override or dynamically set the tag configurations.</li>
-<li>You can use the Crypto Extension to encrypt and populate the Hashed Email and Phone Number values.</li>
-<li>By default, the pixel base code always includes page view events, which track when a visitor lands on your website.</li>
-<li>The <code>content_type</code> object property&rsquo;s value must be set to either <code>product</code>, or <code>product_group</code>.</li>
+<li>Use data mappings to override and dynamically set the tag configurations.</li>
+<li>By default, the tag template detects if mapped product parameters contain single or multiple products per event. If a single product is detected, the individual TikTok product variables (<code>content_id</code>, <code>content_category</code>, <code>content_name</code>) are used. If multiple products are detected, the <code>contents</code> array is automatically populated and used.</li>
+<li>By default, the <code>Identify</code> method is automatically sent for each event where user data (hashed or un-hashed email or phone number) is populated. As per standard industry practice, TikTok will automatically hash raw customer information with sha256 before the value enters their servers for matching. Automatic hashing can be disabled in the tag configuration.</li>
+<li>For TikTok to collect an un-hashed email, the input text must contain an <code>@</code> symbol. The text must also end in a domain designation.</li>
+<li>For TikTok to collect an un-hashed phone number, the entered numeric values must begin with a <code>+</code> symbol.</li>
+<li>You can use the Crypto Extension to encrypt and populate the <strong>Hashed Email</strong> and <strong>Phone Number</strong> values.</li>
+<li>The <code>value</code> parameter is automatically calculated and set in the template based on product prices and quantities.</li>
+<li>By default, the pixel base code will always include page view events, which track when a visitor lands on your website. You can disable <code>auto_page_tracking</code> in the tag configuration or override it in the data mappings.</li>
+<li>By default, the <code>PlaceAnOrder</code> event occurs when an order ID is populated. You can disable this <code>auto_purchase_tracking</code> in the tag configuration or override it in the data mappings.</li>
 </ul>
-<h2 id="tag-configuration">Tag Configuration</h2>
-<p>First, go to the Tealium Tag Marketplace and add the TikTok Pixel tag (Learn more about <a href="/iq-tag-management/tags/manage-tags/">how to add a tag</a>).</p>
-<p>After adding the tag, configure the following settings:</p>
+<h2 id="tag-configuration">Tag configuration</h2>
+<p>Navigate to the Tag Marketplace to add a new tag. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
+<p>When adding the tag, configure the following settings:</p>
 <ul>
-<li>
-<p><strong>Pixel ID</strong></p>
-<ul>
-<li>Your TikTok Pixel ID.</li>
-<li>The Pixel ID appears as a long series of numbers in the code snippet.</li>
-<li>You may enter multiple Pixel IDs using a comma-separated list, without spaces.</li>
-<li>Example: <code>ttq(&quot;init&quot;, &quot;12345678901234&quot;);</code></li>
+<li><strong>Content Type</strong>: The <code>content_type</code> sends TikTok information about the format of product IDs that are being sent through the <code>content_id</code> parameter. For example, <code>content_type</code> = <code>product_group</code> refers to general product groups or SPU values (often a prefix in the product ID), while <code>content_type</code> = <code>product</code> is the full product ID for a single product (commonly referred to as the SKU).</li>
+<li><strong>Generate Event ID</strong>: Use with <a href="/server-side-connectors/tiktok-events-connector/">TikTok Events connector</a> in Tealium EventStream API Hub. If enabled, the <strong>Event ID</strong> parameter must be mapped in the connector to synchronize web- and server-based integrations. This feature requires an active <a href="/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a>.</li>
+<li><strong>Auto PageView Tracking</strong>: By default, the pixel base code will always include page view events, which track when a visitor lands on your website.</li>
+<li><strong>Auto Purchase Tracking</strong>: By default, the purchase tracking event occurs when an order ID is populated.</li>
+<li><strong>Auto Identity Tracking</strong>: Referred to by TikTok as Advanced Matching. When true, <code>ttq.identify()</code> fires for every event where user data (email or phone number) is detected.</li>
 </ul>
-</li>
-<li>
-<p><strong>Generate Event ID</strong></p>
-<ul>
-<li>Automatically generate an Event ID for every TikTok tracking event.</li>
-<li>This setting defaults to <code>False</code>.</li>
-<li>Event ID attributes follow the naming convention: <code>tiktok_event_id_&lt;TikTok Event&gt;</code></li>
-<li>Example: <code>tiktok_event_id_Purchase_32 : &quot;028b2ade7478...&quot;</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="unique-event-ids">Unique Event IDs</h2>
-<p>The tag can generate a unique Event ID for each event tracked and send it to Tealium EventStream for use in the TikTok Events connector. If you enable this feature, the Event ID parameter must be mapped in the connector to synchronize web-based and server-based integrations. This feature requires an active Tealium Collect tag.</p>
-<p>The tag generates new event attributes using the following naming convention:</p>
-<pre tabindex="0"><code>tiktok_event_id_&lt;TikTok Event&gt;_&lt;Tag UID&gt;
-</code></pre><p>For example: <code>tiktok_event_id_Purchase_32 : &quot;028b2ade7478...&quot;</code> or <code>tiktok_event_id_PageView_32</code></p>
-<h2 id="data-mappings">Data Mappings</h2>
-<p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-layer/data-layer-variables/">data layer variable</a> to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">data mappings</a>.</p>
+<h2 id="load-rules">Load rules</h2>
+<p>Load the tag on all pages or set conditions for when your tag will load. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
+<h2 id="data-mappings">Data mappings</h2>
+<p>Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see <a href="/iq-tag-management/data-mappings/about/">About data mappings</a>.</p>
 <p>The available categories are:</p>
 <h3 id="tag-configuration-1">Tag Configuration</h3>
 <table>
@@ -815,16 +804,24 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Pixel ID (<code>pixel_code</code>)</td>
-<td style="text-align:left">[String]</td>
+<td style="text-align:left">Pixel ID <code>pixel_code</code></td>
+<td style="text-align:left">String</td>
 </tr>
 <tr>
-<td style="text-align:left">Automatic Pageview Tracking (<code>auto_page_tracking</code>)</td>
-<td style="text-align:left">[Boolean]</td>
+<td style="text-align:left">Content Type <code>content_type</code></td>
+<td style="text-align:left">String</td>
 </tr>
 <tr>
-<td style="text-align:left">Automatic Purchase Tracking (<code>auto_purchase_tracking</code>)</td>
-<td style="text-align:left">[Boolean]</td>
+<td style="text-align:left">Automatic PageView Tracking <code>auto_page_tracking</code></td>
+<td style="text-align:left">Boolean</td>
+</tr>
+<tr>
+<td style="text-align:left">Automatic Purchase Tracking <code>auto_purchase_tracking</code></td>
+<td style="text-align:left">Boolean</td>
+</tr>
+<tr>
+<td style="text-align:left">Automatic Identity Tracking <code>auto_identity_tracking</code></td>
+<td style="text-align:left">Boolean</td>
 </tr>
 </tbody>
 </table>
@@ -838,63 +835,20 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">User Email (<code>user_email</code>)</td>
-<td style="text-align:left">[String]</td>
+<td style="text-align:left">User Email <code>email</code></td>
+<td style="text-align:left">String</td>
 </tr>
 <tr>
-<td style="text-align:left">User Phone Number (<code>user_phone_number</code>)</td>
-<td style="text-align:left">[String]</td>
+<td style="text-align:left">User Phone Number <code>phone_number</code></td>
+<td style="text-align:left">String</td>
 </tr>
 <tr>
-<td style="text-align:left">User Hashed Email (<code>sha256_email</code>)</td>
-<td style="text-align:left">[String]</td>
+<td style="text-align:left">User Hashed Email <code>sha256_email</code></td>
+<td style="text-align:left">String</td>
 </tr>
 <tr>
-<td style="text-align:left">User Hashed Phone Number (<code>sha256_phone_number</code>)</td>
-<td style="text-align:left">[String]</td>
-</tr>
-</tbody>
-</table>
-<h3 id="e-commerce">E-Commerce</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Variable</th>
-<th style="text-align:left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Order ID (<code>order_id</code>) (Overrides <code>_corder</code>)</td>
-<td style="text-align:left">[String]</td>
-</tr>
-<tr>
-<td style="text-align:left">Sub Total (<code>order_subtotal</code>) (Overrides <code>_csubtotal</code>)</td>
-<td style="text-align:left">[String]</td>
-</tr>
-<tr>
-<td style="text-align:left">Currency (<code>order_currency</code>) (Overrides <code>_ccurrency</code>)</td>
-<td style="text-align:left">[String]</td>
-</tr>
-<tr>
-<td style="text-align:left">Customer ID (<code>customer_id</code>) (Overrides <code>_ccustid</code>)</td>
-<td style="text-align:left">[String]</td>
-</tr>
-<tr>
-<td style="text-align:left">List of Product IDs (<code>product_id</code>) (Overrides <code>_cpro</code>d)</td>
-<td style="text-align:left">[Array]</td>
-</tr>
-<tr>
-<td style="text-align:left">List of Categories (<code>product_category</code>) (Overrides <code>_ccat</code>)</td>
-<td style="text-align:left">[Array]</td>
-</tr>
-<tr>
-<td style="text-align:left">List of Prices (<code>product_unit_price</code>) (Overrides <code>_cprice</code>)</td>
-<td style="text-align:left">[Array]</td>
-</tr>
-<tr>
-<td style="text-align:left">List of Quantities (<code>product_quantity</code>) (Overrides <code>_cquan</code>)</td>
-<td style="text-align:left">[Array]</td>
+<td style="text-align:left">User Hashed Phone Number <code>sha256_phone_number</code></td>
+<td style="text-align:left">String</td>
 </tr>
 </tbody>
 </table>
@@ -908,48 +862,53 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Currency (<code>currency</code>)</td>
-<td style="text-align:left">[String]</td>
+<td style="text-align:left">Currency <code>currency</code> (Overrides <code>_ccurrency</code>)</td>
+<td style="text-align:left">String</td>
 </tr>
 <tr>
-<td style="text-align:left">Content Category (<code>content_category</code>)</td>
-<td style="text-align:left">[String,Array]</td>
+<td style="text-align:left">Value <code>value</code> (Overrides <code>_ctotal</code>)</td>
+<td style="text-align:left">Number</td>
 </tr>
 <tr>
-<td style="text-align:left">Content Name (<code>content_name</code>)</td>
-<td style="text-align:left">[String,Array]</td>
+<td style="text-align:left">Query <code>query</code></td>
+<td style="text-align:left">String</td>
 </tr>
 <tr>
-<td style="text-align:left">Content ID (<code>content_id</code>)</td>
-<td style="text-align:left">[String]</td>
+<td style="text-align:left">Description <code>description</code></td>
+<td style="text-align:left">String</td>
 </tr>
 <tr>
-<td style="text-align:left">Value (<code>value</code>)</td>
-<td style="text-align:left">[Number]</td>
+<td style="text-align:left">Status <code>status</code></td>
+<td style="text-align:left">String</td>
 </tr>
 <tr>
-<td style="text-align:left">Quantity (<code>quantity</code>)</td>
-<td style="text-align:left">[Number]</td>
+<td style="text-align:left">Contents <code>contents</code></td>
+<td style="text-align:left">Array of objects</td>
 </tr>
 <tr>
-<td style="text-align:left">Price (<code>price</code>)</td>
-<td style="text-align:left">[Number]</td>
+<td style="text-align:left">Content ID <code>content_id</code> (Overrides <code>_cprod</code>)</td>
+<td style="text-align:left">Array of Strings</td>
 </tr>
 <tr>
-<td style="text-align:left">Query (<code>query</code>)</td>
-<td style="text-align:left">[String]</td>
+<td style="text-align:left">Content Name <code>content_name</code> (Overrides <code>_cprodname</code>)</td>
+<td style="text-align:left">Array of Strings</td>
 </tr>
 <tr>
-<td style="text-align:left">Contents (<code>contents</code>)</td>
-<td style="text-align:left">[Array of objects]</td>
+<td style="text-align:left">Content Category <code>content_category</code> (Overrides <code>_ccat</code>)</td>
+<td style="text-align:left">Array of Strings</td>
 </tr>
 <tr>
-<td style="text-align:left">Content Type (<code>content_type</code>)</td>
-<td style="text-align:left">[String]</td>
+<td style="text-align:left">Quantity <code>quantity</code> (Overrides <code>_cquan</code>)</td>
+<td style="text-align:left">Array of Numbers</td>
+</tr>
+<tr>
+<td style="text-align:left">Price <code>price</code> (Overrides <code>_cprice</code>)</td>
+<td style="text-align:left">Array of Numbers</td>
 </tr>
 </tbody>
 </table>
 <h3 id="events">Events</h3>
+<p>To map events, refer to <a href="/iq-tag-management/data-mappings/manage/#add-an-event-mapping">Create an Event Mapping</a></p>
 <table>
 <thead>
 <tr>
@@ -959,64 +918,64 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">AddPaymentInfo</td>
 <td style="text-align:left"><code>AddPaymentInfo</code></td>
+<td style="text-align:left">AddPaymentInfo</td>
 </tr>
 <tr>
-<td style="text-align:left">AddToCart</td>
 <td style="text-align:left"><code>AddToCart</code></td>
+<td style="text-align:left">AddToCart</td>
 </tr>
 <tr>
-<td style="text-align:left">AddToWishlist</td>
 <td style="text-align:left"><code>AddToWishlist</code></td>
+<td style="text-align:left">AddToWishlist</td>
 </tr>
 <tr>
-<td style="text-align:left">ClickButton</td>
 <td style="text-align:left"><code>ClickButton</code></td>
+<td style="text-align:left">ClickButton</td>
 </tr>
 <tr>
-<td style="text-align:left">CompletePayment</td>
 <td style="text-align:left"><code>CompletePayment</code></td>
+<td style="text-align:left">CompletePayment</td>
 </tr>
 <tr>
-<td style="text-align:left">CompleteRegistration</td>
 <td style="text-align:left"><code>CompleteRegistration</code></td>
+<td style="text-align:left">CompleteRegistration</td>
 </tr>
 <tr>
-<td style="text-align:left">Contact</td>
 <td style="text-align:left"><code>Contact</code></td>
+<td style="text-align:left">Contact</td>
 </tr>
 <tr>
-<td style="text-align:left">Download</td>
 <td style="text-align:left"><code>Download</code></td>
+<td style="text-align:left">Download</td>
 </tr>
 <tr>
-<td style="text-align:left">InitiateCheckout</td>
 <td style="text-align:left"><code>InitiateCheckout</code></td>
+<td style="text-align:left">InitiateCheckout</td>
 </tr>
 <tr>
-<td style="text-align:left">PlaceAnOrder</td>
 <td style="text-align:left"><code>PlaceAnOrder</code></td>
+<td style="text-align:left">PlaceAnOrder</td>
 </tr>
 <tr>
-<td style="text-align:left">Search</td>
 <td style="text-align:left"><code>Search</code></td>
+<td style="text-align:left">Search</td>
 </tr>
 <tr>
-<td style="text-align:left">SubmitForm</td>
 <td style="text-align:left"><code>SubmitForm</code></td>
+<td style="text-align:left">SubmitForm</td>
 </tr>
 <tr>
-<td style="text-align:left">Subscribe</td>
 <td style="text-align:left"><code>Subscribe</code></td>
+<td style="text-align:left">Subscribe</td>
 </tr>
 <tr>
-<td style="text-align:left">ViewContent</td>
 <td style="text-align:left"><code>ViewContent</code></td>
+<td style="text-align:left">ViewContent</td>
 </tr>
 <tr>
-<td style="text-align:left">Custom</td>
 <td style="text-align:left"><code>Custom</code></td>
+<td style="text-align:left">Custom</td>
 </tr>
 </tbody>
 </table>
@@ -1094,13 +1053,12 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-tips">Tag Tips</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag Configuration</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#unique-event-ids">Unique Event IDs</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data Mappings</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-tips">Tag tips</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag configuration</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules">Load rules</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data mappings</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag Configuration</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#user-parameters">User Parameters</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#e-commerce">E-Commerce</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#standard-tracking-parameters">Standard Tracking Parameters</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#events">Events</a></li>
               </nav>
