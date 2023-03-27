@@ -707,39 +707,19 @@ var utag_data = {
 </figure></li>
 </ul>
 <h2 id="udo-variable">UDO variable</h2>
-<p>This type is for variables defined in your [Universal Data Object]/platforms/javascript/about-utag-data/), also referred to as <code>utag_data</code>, which you can find in the code for your webpage. Most of your variables will be this type.</p>
+<p>This type is for variables defined in your <a href="/platforms/javascript/about-utag-data/">Universal Data Object</a>, also referred to as <code>utag_data</code>, which you can find in the code for your webpage. Most of your variables will be this type.</p>
 <h4 id="example">Example</h4>
 <p>In the page: <code>var utag_data = { language : &quot;en&quot;, currency : &quot;usd&quot; };</code></p>
 <p>Name in iQ: <code>language</code> and <code>currency</code></p>
 <p>Reference this variable with JavaScript in an extension: <code>b[&quot;language&quot;]</code></p>
-<h2 id="local-and-session-storage">Local and session storage</h2>
-<p>Local and session storage keys appear automatically in the data layer using <code>localStorage</code> and <code>sessionStorage</code> variables. For more information about the differences between storage types and uses, see <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">Window.localStorage</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage">Window.sessionStorage</a> articles in the MDN Web Docs.</p>
-<p>Session and local storage are sub-domain based. For example, your data will not persist if you move between <code>www.example.com</code> to <code>secure.example.com</code>. For more information, see <a href="/server-side/attributes/data-layer-enrichment/about/#same-origin-policy">Same Origin Policy</a>.</p>
-<p>To use these storage variables, navigate to <strong>iQ Tag Management &gt; Data Layer &gt; +Add Variable</strong>. Select <strong>UDO Variable</strong> and type in a source variable name.</p>
-<p>Variable name in iQ:</p>
-<ul>
-<li><code>ls.variable_name</code></li>
-<li><code>ss.variable_name</code></li>
-</ul>
-<p>Reference these variables with JavaScript in an extension:</p>
-<ul>
-<li><code>b[&quot;ls.my_local_storage_var&quot;]</code></li>
-<li><code>b[&quot;ss.my_session_storage_var&quot;]</code></li>
-</ul>
-<h2 id="javascript-variables">JavaScript variables</h2>
-<p>Select this type to reference a JavaScript variable on your web page (other than the <code>utag_data</code> object). Normal syntax rules apply to the JavaScript variable type.</p>
+<h2 id="query-string-parameters">Query string parameters</h2>
+<p>Select this type to capture parameters from the URL. The query string consists of everything after the <code>?</code> character in the URL.</p>
 <h4 id="example-1">Example</h4>
-<p>In the page: <code>var myApp = { page : { name : &quot;Home Page&quot; } };</code></p>
-<p>Variable name in iQ: <code>myApp.page.name</code></p>
-<p>Reference this variable with JavaScript in an extension: <code>b[&quot;js_page.myApp.page.name&quot;]</code></p>
-<h2 id="querystring-parameters">Querystring parameters</h2>
-<p>Select this type to capture parameters from the URL. The query string consists of everything after the &ldquo;?&rdquo; character in the URL.</p>
-<h4 id="example-2">Example</h4>
 <p>In the URL: <code>http://example.com/path/file.html?sortOrder=price</code></p>
 <p>Variable name in iQ: <code>sortOrder</code></p>
 <p>Reference this variable with JavaScript in an extension: <code>b[&quot;qp.sortOrder&quot;]</code></p>
 <h2 id="first-party-cookies">First-party cookies</h2>
-<p>Select this variable type to reference the value in a cookie being set on your domain. When creating a cookie variable you can either specify the Tealium cookie, <code>utag_main</code> , or a standard cookie. The examples below describe both methods.</p>
+<p>Select this variable type to reference the value in a cookie being set on your domain. When creating a cookie variable, you can either specify the Tealium cookie, <code>utag_main</code>, or a standard cookie. The examples below describe both methods.</p>
 <p>The following table describes the set of default parameters stored in the Tealium cookie, which are available in the Tealium data bundle.</p>
 <table>
 <thead>
@@ -767,7 +747,7 @@ var utag_data = {
 </tr>
 <tr>
 <td><code>v_id</code></td>
-<td>This id value is unique to the visitor.</td>
+<td>This ID value is unique to the visitor.</td>
 <td>4.26 and later</td>
 </tr>
 <tr>
@@ -790,6 +770,12 @@ var utag_data = {
 <p>Reference this variable with JavaScript in an extension: <code>b[&quot;cp.aff&quot;]</code></p>
 <p>Understanding when to use each type of cookie is important when trying to save cookie space. We recommend that you use the Tealium cookie as much as possible. However, if you&rsquo;re using the <a href="/iq-tag-management/extensions/extensions-list/split-segmentation-extension/">Split Segmentation</a> extension, then you must use a non-Tealium cookie.</p>
 <p>For more information on how to use cookies with Tealium, please see the <a href="/iq-tag-management/data-layer/cookies/">Tealium Cookies</a> article.</p>
+<h2 id="javascript-variables">JavaScript variables</h2>
+<p>Select this type to reference a JavaScript variable on your web page (other than the <code>utag_data</code> object). Normal syntax rules apply to the JavaScript variable type.</p>
+<h4 id="example-2">Example</h4>
+<p>In the page: <code>var myApp = { page : { name : &quot;Home Page&quot; } };</code></p>
+<p>Variable name in iQ: <code>myApp.page.name</code></p>
+<p>Reference this variable with JavaScript in an extension: <code>b[&quot;js_page.myApp.page.name&quot;]</code></p>
 <h2 id="meta-data-elements">Meta data elements</h2>
 <p>Select this type to reference the content of a meta tag in the page.</p>
 <h4 id="example-3">Example</h4>
@@ -799,6 +785,16 @@ var utag_data = {
 <h2 id="dom-variable">DOM variable</h2>
 <p>These are built-in DOM variables that cannot be modified. They are set automatically in the page.</p>
 <p><a href="/platforms/javascript/built-in-variables/">Learn more about built-in utag.js variables</a>.</p>
+<h2 id="local-and-session-storage">Local and session storage</h2>
+<p>Select this type to reference an object from local storage or session storage.</p>
+<p>For more information about the differences between storage types and uses, see <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">Window.localStorage</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage">Window.sessionStorage</a> from  MDN Web Docs.</p>
+<p>Session and local storage are sub-domain based. For example, your data will not persist if you move between <code>www.example.com</code> to <code>secure.example.com</code>. For more information, see <a href="/server-side/attributes/data-layer-enrichment/about/#same-origin-policy">Same Origin Policy</a>.</p>
+<p>Reference these variables with JavaScript in an extension:</p>
+<ul>
+<li>Local storage: <code>b[&quot;ls.my_local_storage_var&quot;]</code></li>
+<li>Session storage: <code>b[&quot;ss.my_session_storage_var&quot;]</code></li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If you added local storage or session storage variables as the UDO type with the <code>ls.</code> or <code>ss.</code> prefix before March 1, 2023, they will not be converted to the new local storage and session storage variable types.</p>
 
 </div>
 
@@ -859,7 +855,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  March 20, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -874,14 +870,14 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#udo-variable">UDO variable</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#local-and-session-storage">Local and session storage</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#javascript-variables">JavaScript variables</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#querystring-parameters">Querystring parameters</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#query-string-parameters">Query string parameters</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#first-party-cookies">First-party cookies</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tealium-cookie">Tealium cookie</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#non-tealium-cookie">Non-Tealium cookie</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#meta-data-elements">Meta data elements</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#javascript-variables">JavaScript variables</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#meta-data-elements">Meta data elements</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#dom-variable">DOM variable</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#local-and-session-storage">Local and session storage</a></li>
               </nav>
   </aside></nav>
 
