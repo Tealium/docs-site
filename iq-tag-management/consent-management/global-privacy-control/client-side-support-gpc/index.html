@@ -611,6 +611,17 @@ var utag_data = {
         <a href="/iq-tag-management/consent-management/event-logging/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".event-logging-for-consent-management">Event logging</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".consent-integrations">Consent Integrations</a>
+        <ul class=" consent-integrations desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/consent-integrations/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-consent-integrations">About Consent Integrations</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/consent-integrations/supported-vendors/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".vendor-specific-configuration">Supported Vendor Integrations</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/consent-integrations/validate-and-debug/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".validate-and-debug-consent-integrations">Validate and debug</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/consent-integrations/custom-cmp/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".custom-consent-management-platform">Custom CMP Integrations</a>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".tealium-tools">Tealium Tools</a>
         <ul class=" tealium-tools desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/tealium-tools/browser-extension/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-tools-browser-extension">Browser extension</a>
@@ -714,13 +725,23 @@ var utag_data = {
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    window.<span style="color:#a6e22e">utag_cfg_ovrd</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">utag_cfg_ovrd</span> <span style="color:#f92672">||</span> {};
 </span></span><span style="display:flex;"><span>    window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">noload</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="opt-out-models-like-ccpacpra">Opt-out models (like CCPA/CPRA)</h3>
-<p>Starting with <code>cmDoNotSell v1.2.0</code>, the logical flow from the diagram below is implemented in the CCPA model.</p>
+</span></span></code></pre></div><h3 id="opt-in-models-like-gdpr">Opt-in models (like GDPR)</h3>
+<p>The GPC signal is designed for opt-out models (like CCPA/CPRA), not opt-in models (like GDPR). Tealium Opt-In Consent Management modules (the <a href="/iq-tag-management/consent-management/explicit-consent-prompt/">Explicit Consent Prompt Manager</a> and the <a href="/iq-tag-management/consent-management/consent-preferences-dialog/">Consent Preferences Manager</a> ) do not contain GPC-related opt-out logic out of the box.</p>
+<p>Customer needs vary widely, and our Consent Management modules are intended to be customized so that tailored GPC logic can be added as needed to support your organization&rsquo;s needs and interpretations.</p>
+<h3 id="opt-out-models-like-ccpacpra">Opt-out models (like CCPA/CPRA)</h3>
+<h4 id="tealium-iq-consent-integrations---opt-out-cookie--gpc-integration">Tealium iQ Consent Integrations - Opt-out Cookie + GPC Integration</h4>
+<p><strong>For customers with an already active opt-out form who need cookie-based enforcement that includes GPC support.</strong></p>
+<p><a href="/iq-tag-management/consent-integrations/about/">Tealium iQ Consent Integration</a> provides support for simple opt-out models as required by CCPA/CPRA.</p>
+<p>This integration assumes that a user has opted out when the GPC opt-out signal or a customer-specified opt-out cookie is found. For more information on how the Tealium iQ Consent Integration supports GPC, see the <a href="/iq-tag-management/consent-integrations/supported-vendors/#opt-out-cookie--gpc">documentation</a>.</p>
+<h4 id="tealium-iq-consent-integrations---cmps-with-gpc-support">Tealium iQ Consent Integrations - CMPs with GPC Support</h4>
+<p><strong>For customers with an already active Consent Management Platform (CMP) with GPC support who only need enforcement.</strong></p>
+<p><a href="/iq-tag-management/consent-integrations/about/">Tealium iQ Consent Integration</a> provides support for a growing list of CMPs. These CMPs typically provide GPC support as part of their decision capture, which is then enforced by Tealium iQ through the consent integration, with no additional logic or interpretation required. If your CMP isn&rsquo;t supported yet, custom integrations are also available.</p>
+<h4 id="tealium-iq-consent-management---opt-out-privacy-banner-and-popup">Tealium iQ Consent Management - Opt-out Privacy Banner and Popup</h4>
+<p><strong>For customers who want to fully implement their consent management in Tealium iQ.</strong></p>
+<p>As of the release of <code>cmDoNotSell v1.2.0</code>, the logical flow from the diagram below is implemented in the <a href="/iq-tag-management/consent-management/privacy-banner-and-popup/about/">Opt-out Privacy Banner and Popup</a>.</p>
 <figure><img src="/images/guides/server-side/global-privacy-control-consent-flow.png" width="793" height="700"/>
 </figure>
-<p>That behavior is provided as a starting point, and the specific behavior should be discussed with your legal team and clearly explained to your users. That behavior can easily be changed or removed with a simple edit to the <code>cmDoNotSell</code> template.</p>
-<h3 id="opt-in-models-like-gdpr">Opt-in models (like GDPR)</h3>
-<p>The GPC signal is intended for opt-out models such as CCPA/CPRA and not opt-in models such as GDPR. Customers needs vary widely, and as such, our models are designed to be customized, and tailored GPC logic can be added as needed to support your needs and interpretations.</p>
+<p>This behavior serves as a starting point for building a consent management solution that meets the needs of your users and your business, and the specific behavior should be discussed with your legal team and clearly explained to your users. You can change or remove this behavior by editing the <code>cmDoNotSell</code> template.</p>
 
 </div>
 
@@ -766,7 +787,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 24, 2023 
+          <p>This page was last updated:  March 28, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -781,8 +802,8 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#client-side-support">Client-side support</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#opt-out-models-like-ccpacpra">Opt-out models (like CCPA/CPRA)</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#opt-in-models-like-gdpr">Opt-in models (like GDPR)</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#opt-in-models-like-gdpr">Opt-in models (like GDPR)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#opt-out-models-like-ccpacpra">Opt-out models (like CCPA/CPRA)</a></li>
               </nav>
   </aside></nav>
 
@@ -1040,6 +1061,12 @@ No</button>
       <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/iq-tag-management/consent-management/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4 bg-primary-color">
           Consent management
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/iq-tag-management/consent-integrations/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Consent Integrations
       </a>
       </li>
       
