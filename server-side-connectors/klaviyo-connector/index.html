@@ -710,13 +710,21 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="connector-actions">Connector Actions</h2>
+  <h2 id="api-information">API Information</h2>
+<p>This connector uses the following vendor API:</p>
+<ul>
+<li>API Name: Klaviyo API</li>
+<li>API Version: 2023-02-22</li>
+<li>API Endpoint: <code>https://a.klaviyo.com/api/</code></li>
+<li>Documentation: <a href="https://developers.klaviyo.com/en/reference/api_overview">Klaviyo API Reference</a></li>
+</ul>
+<h2 id="connector-actions">Connector Actions</h2>
 <table>
 <thead>
 <tr>
-<th><strong>Action Name</strong></th>
-<th><strong>AudienceStream</strong></th>
-<th><strong>EventStream</strong></th>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
@@ -726,31 +734,38 @@ var utag_data = {
 <td>✗</td>
 </tr>
 <tr>
-<td>Add User to List</td>
+<td>Add User to List (Real-Time)</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>Unsubscribe User from List</td>
+<td>Add User to List (Batched)</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Remove User from List (Real-Time)</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Remove User from List (Batched)</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 </tbody>
 </table>
 <h2 id="configure-settings">Configure Settings</h2>
-<p>Go to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
+<p>Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>Private API Key</strong>
-<ul>
-<li>You can manage your private API keys from your account.</li>
+<li><strong>Private API Key</strong><br>
+<strong>Required.</strong> Private API Key. See <a href="https://developers.klaviyo.com/en/docs/retrieve_api_credentials">Obtain API credentials</a> documentation for more information.</li>
 </ul>
-</li>
-</ul>
-<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
-<p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action---update-user-attributes">Action - Update User Attributes</h3>
+<h2 id="actions">Actions</h2>
+<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<p>The following section describes how to set up parameters and options for each action.</p>
+<h3 id="update-user-attributes">Update User Attributes</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -761,56 +776,100 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>Person ID</td>
-<td><ul><li>Your unique identifier for a person.</li><li>For more information about this endpoint, see <a href="https://www.klaviyo.com/docs/api/people">Klaviyo Profiles API Overview</a>.</li></ul></td>
+<td>Profile ID</td>
+<td>The primary identifier that Klaviyo assigns to each user profile.</td>
+</tr>
+<tr>
+<td>External ID</td>
+<td>A unique identifier used by customers to associate Klaviyo user profiles with user profiles in an external system, such as a point-of-sale system. Format varies based on the external system.</td>
 </tr>
 <tr>
 <td>Email</td>
-<td><ul><li>Email address for the person.</li></ul></td>
-</tr>
-<tr>
-<td>First Name</td>
-<td><ul><li>First name of the person.</li></ul></td>
-</tr>
-<tr>
-<td>Last Name</td>
-<td><ul><li>Last name of the person.</li></ul></td>
+<td>The email address associated with a user profile.</td>
 </tr>
 <tr>
 <td>Phone Number</td>
-<td><ul><li>Telephone number of the person.</li></ul></td>
+<td>The phone number associated with a user profile.</td>
 </tr>
 <tr>
-<td>Title</td>
-<td><ul><li>Person&rsquo;s title at their business or organization.</li></ul></td>
+<td>Email</td>
+<td>The individual&rsquo;s email address.</td>
+</tr>
+<tr>
+<td>Phone Number</td>
+<td>The individual&rsquo;s phone number in E.164 format.</td>
+</tr>
+<tr>
+<td>External ID</td>
+<td>A unique identifier used by customers to associate Klaviyo user profiles with user profiles in an external system, such as a point-of-sale system. Format varies based on the external system.</td>
+</tr>
+<tr>
+<td>Anonymous ID</td>
+<td>For mobile app profiles, if Klaviyo cannot associate the user with an email address, an anonymous mobile app ID will represent the iOS profile.</td>
+</tr>
+<tr>
+<td>First Name</td>
+<td>Individual&rsquo;s first name.</td>
+</tr>
+<tr>
+<td>Last Name</td>
+<td>Individual&rsquo;s last name.</td>
 </tr>
 <tr>
 <td>Organization</td>
-<td><ul><li>Business or organization the person belongs to.</li></ul></td>
+<td>Name of the company or organization within the company for whom the individual works.</td>
+</tr>
+<tr>
+<td>Title</td>
+<td>Individual&rsquo;s job title.</td>
+</tr>
+<tr>
+<td>Image</td>
+<td>URL pointing to the location of a profile image.</td>
+</tr>
+<tr>
+<td>Address 1</td>
+<td>First line of street address.</td>
+</tr>
+<tr>
+<td>Address 2</td>
+<td>Second line of street address.</td>
 </tr>
 <tr>
 <td>City</td>
-<td><ul><li>City of residence for the person.</li></ul></td>
-</tr>
-<tr>
-<td>Region</td>
-<td><ul><li>Region or state where the person resides.</li></ul></td>
+<td>City name.</td>
 </tr>
 <tr>
 <td>Country</td>
-<td><ul><li>Country to residence for the person.</li></ul></td>
+<td>Country name.</td>
+</tr>
+<tr>
+<td>Latitude</td>
+<td>Latitude coordinate. We recommended a precision of four decimal places.</td>
+</tr>
+<tr>
+<td>Longitude</td>
+<td>Longitude coordinate. We recommended that you provide</td>
+</tr>
+<tr>
+<td>Region</td>
+<td>Region within a country, such as state or province.</td>
 </tr>
 <tr>
 <td>Zip</td>
-<td><ul><li>Postal code for the person.</li></ul></td>
+<td>Zip code.</td>
+</tr>
+<tr>
+<td>Timezone</td>
+<td>Time zone name. We recommended time zones from the IANA Time Zone Database.</td>
 </tr>
 <tr>
 <td>Custom Properties</td>
-<td><ul><li>Custom properties.</li><li>In addition to the pre-defined Klaviyo arguments, you may pass any arbitrary key-value pair as a custom property.</li></ul></td>
+<td>Map any custom properties assigned to this profile. Date attributes will be converted to ISO 8601 format. For example: <code>2021-09-15 13:34:08+00:00</code>.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---add-user-to-list">Action - Add User to List</h3>
+<h3 id="add-user-to-list-real-time">Add User to List (Real-Time)</h3>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
@@ -821,28 +880,35 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>List ID</td>
-<td><ul><li>Unique identifier of the list you wish to add the user to.</li><li>For more information about this endpoint, see the <a href="https://www.klaviyo.com/docs/api/lists">Klaviyo Lists &amp; List Management API Overview</a>.</li></ul></td>
+<td>List</td>
+<td>Select the list to add the user to.</td>
+</tr>
+<tr>
+<td>Profile ID</td>
+<td>The primary identifier that Klaviyo assigns to each user profile.</td>
+</tr>
+<tr>
+<td>External ID</td>
+<td>A unique identifier used by customers to associate Klaviyo user profiles with user profiles in an external system, such as a point-of-sale system. The format varies based on the external system.</td>
 </tr>
 <tr>
 <td>Email</td>
-<td><ul><li>The email address of the person added to the list.</li></ul></td>
+<td>The email address associated with a user profile.</td>
 </tr>
 <tr>
 <td>Phone Number</td>
-<td><ul><li>The phone number of the person who will be added to the list.</li></ul></td>
-</tr>
-<tr>
-<td>Push Token</td>
-<td><ul><li>The push token of the person who will be added to the list.</li></ul></td>
-</tr>
-<tr>
-<td>Additional Properties</td>
-<td><ul><li>Additional properties related to the person who will be added to the list as key-value pairs.</li></ul></td>
+<td>The phone number associated with a user profile.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---unsubscribe-user-from-list">Action - Unsubscribe User from List</h3>
+<h3 id="add-user-to-list-batched">Add User to List (Batched)</h3>
+<h4 id="batch-limits">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 1000</li>
+<li>Max time since oldest request: 10 minutes</li>
+<li>Max size of requests: 1 MB</li>
+</ul>
 <h4 id="parameters-2">Parameters</h4>
 <table>
 <thead>
@@ -853,20 +919,95 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>List ID</td>
-<td><ul><li>Unique identifier of the list from which you want to remove the user.</li><li>For more information, see the <a href="https://www.klaviyo.com/docs/api/lists">Klaviyo Lists &amp; List Management API Overview</a>.</li></ul></td>
+<td>List</td>
+<td>Select the list to add the user to.</td>
+</tr>
+<tr>
+<td>Profile ID</td>
+<td>The primary identifier that Klaviyo assigns to each user profile.</td>
+</tr>
+<tr>
+<td>External ID</td>
+<td>A unique identifier used by customers to associate Klaviyo user profiles with user profiles in an external system, such as a point-of-sale system. The format varies based on the external system.</td>
 </tr>
 <tr>
 <td>Email</td>
-<td><ul><li>The email address of the person who will be excluded from the list.</li></ul></td>
+<td>The email address associated with a user profile.</td>
 </tr>
 <tr>
 <td>Phone Number</td>
-<td><ul><li>The phone number of the person who will be excluded from the list.</li></ul></td>
+<td>The phone number associated with a user profile.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="remove-user-from-list-real-time">Remove User from List (Real-Time)</h3>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List</td>
+<td>Select the list to remove user from.</td>
 </tr>
 <tr>
-<td>Push Token</td>
-<td><ul><li>The push token of the person who will be excluded from the list.</li></ul></td>
+<td>Profile ID</td>
+<td>The primary identifier that Klaviyo assigns to each user profile.</td>
+</tr>
+<tr>
+<td>External ID</td>
+<td>A unique identifier used by customers to associate Klaviyo user profiles with user profiles in an external system, such as a point-of-sale system. The format varies based on the external system.</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>The email address associated with a user profile.</td>
+</tr>
+<tr>
+<td>Phone Number</td>
+<td>The phone number associated with a user profile.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="remove-user-from-list-batched">Remove User from List (Batched)</h3>
+<h4 id="batch-limits-1">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 1000</li>
+<li>Max time since oldest request: 10 minutes</li>
+<li>Max size of requests: 1 MB</li>
+</ul>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List</td>
+<td>Select the list to remove user from.</td>
+</tr>
+<tr>
+<td>Profile ID</td>
+<td>The primary identifier that Klaviyo assigns to each user profile.</td>
+</tr>
+<tr>
+<td>External ID</td>
+<td>A unique identifier used by customers to associate Klaviyo user profiles with user profiles in an external system, such as a point-of-sale system. The format varies based on the external system.</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>The email address associated with a user profile.</td>
+</tr>
+<tr>
+<td>Phone Number</td>
+<td>The phone number associated with a user profile.</td>
 </tr>
 </tbody>
 </table>
@@ -930,7 +1071,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 27, 2020 
+          <p>This page was last updated:  March 27, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -944,12 +1085,15 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#api-information">API Information</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action Settings - Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---update-user-attributes">Action - Update User Attributes</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---add-user-to-list">Action - Add User to List</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---unsubscribe-user-from-list">Action - Unsubscribe User from List</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#actions">Actions</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#update-user-attributes">Update User Attributes</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-user-to-list-real-time">Add User to List (Real-Time)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-user-to-list-batched">Add User to List (Batched)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#remove-user-from-list-real-time">Remove User from List (Real-Time)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#remove-user-from-list-batched">Remove User from List (Batched)</a></li>
               </nav>
   </aside></nav>
 
