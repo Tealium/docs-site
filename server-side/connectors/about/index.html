@@ -816,11 +816,11 @@ Source indicates the origin of the data being acted upon. A source can be an aud
 <p>If a connector action fails, it is retried three times at 1 minute, 5 minute, and 30 minute intervals. If the request is successful on any of the subsequent retry attempts, the request is reported as a success in the UI. If all three retries fail, the request is dropped and reported as an error in the UI.</p>
 <p>A retry is attempted when any of the following error codes occur:</p>
 <ul>
-<li>403 – Forbidden</li>
-<li>409 – Conflict</li>
+<li>408 – Forbidden</li>
 <li>429 – Too Many Requests</li>
 <li>500 – Internal Server Error</li>
 <li>503 – Service Unavailable</li>
+<li>504 – Gateway Timeout</li>
 </ul>
 <p>A retry is not attempted when a <strong>Response Timeout - Vendor API did not respond within 5000 milliseconds</strong> response is received. The request payload was sent, but the vendor did not send a response within our allowed time of 5 seconds. The request may have succeeded on the vendor&rsquo;s side but because it took longer than 5 seconds to get a response, we treat it as a failure.</p>
 <h3 id="restricted-data">Restricted data</h3>
@@ -934,7 +934,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  April 6, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Impact Page Loads Connector Setup Guide | Server-Side Connectors |Tealium Docs</title>
+    <title>FullStory API Connector Setup Guide | Server-Side Connectors |Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -367,8 +367,8 @@ var utag_data = {
         <a href="/server-side-connectors/friendbuy-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".friendbuy-connector">Friendbuy</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/fullstory-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".fullstory-connector">FullStory</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side-connectors/fullstory-user-api-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".fullstory-api-connector">FullStory API</a>
+      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/fullstory-user-api-connector/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".fullstory-api-connector">FullStory API</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/google-ad-manager-360-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".google-ad-manager-360-connector">Google Ad Manager 360</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -405,8 +405,8 @@ var utag_data = {
         <a href="/server-side-connectors/hubspot-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".hubspot-connector-setup-guide">Hubspot</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/impact-conversions-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".impact-conversions-connector">Impact Conversions</a>
-      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side-connectors/impact-page-loads-connector/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".impact-page-loads-connector">Impact Page Loads</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/impact-page-loads-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".impact-page-loads-connector">Impact Page Loads</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/infobip-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".infobip-connector">Infobip</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -702,42 +702,68 @@ var utag_data = {
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Impact Page Loads Connector Setup Guide</h1>
+<h1 class="lh-title mt30 mb3">FullStory API Connector Setup Guide</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to set up the Impact Page Loads connector.
+      This article describes how to set up the FullStory API connector.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="connector-actions">Connector Actions</h2>
+  <h2 id="api-information">API Information</h2>
+<p>This connector uses the following vendor API:</p>
+<ul>
+<li>API Name: FullStory API</li>
+<li>API Version: v1.0</li>
+<li>API Endpoint: <code>https://api.fullstory.com/users/v1/</code></li>
+<li>Documentation: <a href="https://developer.fullstory.com/server/v1/users/introduction/">FullStory API</a></li>
+</ul>
+<h2 id="connector-actions">Connector Actions</h2>
 <table>
 <thead>
 <tr>
-<th><strong>Action Name</strong></th>
-<th><strong>AudienceStream</strong></th>
-<th><strong>EventStream</strong></th>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Send Landing Page Event</td>
+<td>Server Events</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Set User Properties</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Delete User</td>
 <td>✓</td>
 <td>✓</td>
 </tr>
 </tbody>
 </table>
 <h2 id="configure-settings">Configure Settings</h2>
-<p>Go to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
+<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
-<h2 id="actions-and-parameters">Actions and Parameters</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
-<p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="send-landing-page-event">Send Landing Page Event</h3>
+<ul>
+<li><strong>API Key</strong>
+<ul>
+<li>Required. The HTTP API requires an API key that you can generate from the FullStory app. The API key must have Admin or Architect level permissions. For more information, see: <a target="_blank" href="https://help.fullstory.com/hc/en-us/articles/360020624834">Where can I find my API key</a>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="actions">Actions</h2>
+<p>Enter the <strong>Action Name</strong> and select the <strong>Action Type</strong> from the drop-down menu.</p>
+<p>The following sections describe how to set up parameters and options for each action.</p>
+<h3 id="server-events">Server Events</h3>
+<h4 id="parameters">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -747,44 +773,72 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>Campaign ID</td>
-<td><ul><li>Required</li><li>Unique integer campaign identifier provided by Impact.</li></ul></td>
+<td>UID</td>
+<td>Required. The unique user ID given to the user, which has been passed through the <code>FS.identify</code> Browser API function.</td>
 </tr>
 <tr>
-<td>Page URL</td>
-<td><ul><li>Required</li><li>Full landing page URL.</li><li>Example: <code>https://www.example.com?utm_source=google&amp;amp;utm_medium=cpc</code></li></ul></td>
+<td>Event Name</td>
+<td>Required. The unique name of the custom event.</td>
 </tr>
 <tr>
-<td>Referring URL</td>
-<td><ul><li>Required</li><li>The URL of the page the click originated from.</li></ul></td>
+<td>Timestamp</td>
+<td>The time the event occurred, represented in <a target="_blank" href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601 format</a>. If not provided, the current FullStory server time is used.</td>
 </tr>
 <tr>
-<td>Custom Profile ID</td>
-<td><ul><li>Required</li><li>The advertiser’s user-specific value, such as cookie value.</li></ul></td>
+<td>Use Recent Session</td>
+<td>Set to <code>true</code> if the custom event should be attached to the user’s most recent session. The most recent session must have had activity within the past 30 minutes. Cannot be used if <code>session_url</code> or <code>device_session</code> are defined.</td>
 </tr>
 <tr>
-<td>User Agent</td>
-<td><ul><li>Required</li><li>String identifying the browser and operating system.</li></ul></td>
+<td>ID</td>
+<td></td>
 </tr>
 <tr>
-<td>IP Address</td>
-<td><ul><li>Required</li><li>String representing IP Address of the customer.</li></ul></td>
+<td>Priority</td>
+<td></td>
 </tr>
 <tr>
-<td>Customer ID</td>
-<td><ul><li>Unique alphanumeric customer identifier your platform assigns to customer accounts.</li><li>Do not use personally-identifiable information (PII).</li></ul></td>
+<td>Source</td>
+<td></td>
 </tr>
 <tr>
-<td>Customer Email</td>
-<td><ul><li>SHA1 hash string of the customer email address.</li></ul></td>
+<td>Title</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="set-user-properties">Set User Properties</h3>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UID</td>
+<td>Required. The unique user ID given to the user, which has been passed through the FS.identify Browser API function.</td>
 </tr>
 <tr>
-<td>Event Date</td>
-<td><ul><li>Options:  <ul><li>String values of <code>NOW</code></li><li>Dates in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO-8601</a> format</li><li>Dates in <code>dd-MMM-yyyy HH:mm:ss z</code> format.</li></ul> </li><li><code>NOW</code> is the default value.</li></ul></td>
+<td>Body</td>
+<td>The custom properties associated with the user. Clients should be allowed to map any Visitor Attribute. Property names must follow the custom field format documented <a target="_blank" href="https://help.fullstory.com/hc/en-us/articles/4446290296599-Setting-custom-API-properties">here</a>.<br></td>
 </tr>
+</tbody>
+</table>
+<h3 id="delete-user">Delete User</h3>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
 <tr>
-<td>Customer Email Already Hashed</td>
-<td><ul><li>Check this box if the customer email is already hashed.</li></ul></td>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UID</td>
+<td>Required. The unique user ID given to the user, which has been passed through the FS.identify Browser API function.</td>
 </tr>
 </tbody>
 </table>
@@ -794,13 +848,13 @@ var utag_data = {
 <div class="mv30 nested-links overflow-hidden dpn"><div class="fr">
 
   
-  <a href="/server-side-connectors/infobip-connector/"
+  <a href="/server-side-connectors/fullstory-connector/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Infobip</div>
+      <div>FullStory</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Infobip"</title>
+      <title>"FullStory"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -809,14 +863,14 @@ var utag_data = {
 </div><div class="di">
   
   
-  <a href="/server-side-connectors/impact-conversions-connector/"
+  <a href="/server-side-connectors/friendbuy-connector/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Impact Conversions "</title>
+      <title>"Friendbuy "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>Impact Conversions</div>
+      <div>Friendbuy</div>
     </section>
   </a>
   
@@ -848,7 +902,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 1, 2021 
+          <p>This page was last updated:  March 31, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -862,10 +916,13 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#api-information">API Information</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#actions-and-parameters">Actions and Parameters</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#send-landing-page-event">Send Landing Page Event</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#actions">Actions</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#server-events">Server Events</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#set-user-properties">Set User Properties</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#delete-user">Delete User</a></li>
               </nav>
   </aside></nav>
 

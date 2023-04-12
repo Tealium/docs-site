@@ -770,7 +770,7 @@ var utag_data = {
 <p>This content has been moved: <a href="/iq-tag-management/getting-started/data-layer/data-layer-best-practices/">Data layer best practices</a></p>
 <h2 id="event-tracking">Event tracking</h2>
 <h3 id="replace-hard-coded-vendor-tags">Replace hard-coded vendor tags</h3>
-<p>When adding event tracking code to your site, we recommend replacing all existing hard-coded vendor tags with Universal Tag  tracking code. The behavior of individual tags can be controlled within the iQ console.</p>
+<p>When adding event tracking code to your site, we recommend replacing all existing hard-coded vendor tags with Universal Tag tracking code. The behavior of individual tags can be controlled within the Tealium iQ Tag Management console.</p>
 <table>
 <thead>
 <tr>
@@ -780,7 +780,7 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>Centralizes the management of event tracking to the iQ console.</td>
+<td>Centralizes the management of event tracking to the Tealium iQ console.</td>
 <td>Developers might be more familiar with the vendor&rsquo;s code.</td>
 </tr>
 <tr>
@@ -838,6 +838,12 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
+<p>Standardized event names offer the following benefits:</p>
+<ul>
+<li>Implementation is clearer due to consistent variable names and values.</li>
+<li>Data mapping is easier because there is a single identifier for event types.</li>
+<li>Event are grouped into categories by the prefix of the name (<code>product_</code>, <code>cart_</code>, <code>user_</code>).</li>
+</ul>
 <h4 id="sample-event-tracking-script">Sample event tracking script</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">link</span>({
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tealium_event</span>    <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cart_add&#34;</span>,
@@ -845,36 +851,13 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">product_price</span>    <span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;12.50&#34;</span>],
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">product_quantity</span> <span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;2&#34;</span>]
 </span></span><span style="display:flex;"><span>});
-</span></span></code></pre></div><table>
-<thead>
-<tr>
-<th>Pros</th>
-<th>Cons</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Implementation is clearer due to consistent variable names and values.</td>
-<td>An additional variable to implement in all event tracking calls.</td>
-</tr>
-<tr>
-<td>Data mapping is easier because there is a single identifier for event types.</td>
-<td></td>
-</tr>
-<tr>
-<td>Event are grouped into categories by the prefix of the name (<code>product_</code>, <code>cart_</code>, <code>user_</code>)</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="jquery-extension-vs-utaglink">jQuery extension vs. utag.link()</h3>
+</span></span></code></pre></div><h3 id="event-listeners-versus-utaglink">Event listeners versus utag.link()</h3>
 <p>Tealium has two options for tracking clicks and other events on a site:</p>
 <ul>
-<li>Configuring the <a href="/iq-tag-management/extensions/extensions-list/jquery-onhandler-extension/">jQuery extension</a> in the iQ console.</li>
+<li>Configuring <a href="/iq-tag-management/events/about/">Event listeners</a> in the Tealium iQ interface.</li>
 <li>Coding <code>utag.link()</code> directly in the page.</li>
 </ul>
-<p>The jQuery extension is recommended for tracking click activity. If there are many links to be tracked, developing a strategy that simplifies this method creates a more maintainable implementation.</p>
-<p>Learn More: <a href="/platforms/javascript/track/">Event Tracking - JavaScript (Web)</a></p>
+<p>We recommend that you hard-code <code>utag.link()</code> on pages that have business-critical need for tracking and Event listeners to track all other necessary events.</p>
 <h2 id="performance">Performance</h2>
 <h3 id="load-utagjs-asynchronously">Load utag.js asynchronously</h3>
 <p>The best practice is to loading all tags and vendor code asynchronously. In this method, tags are loaded in parallel to the rest of the page content. This means that even if the tag is slow to respond or to load, it will not slow down the rest of the site.</p>
@@ -1065,7 +1048,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  March 31, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1086,7 +1069,7 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-tracking">Event tracking</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#replace-hard-coded-vendor-tags">Replace hard-coded vendor tags</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-names">Event names</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#jquery-extension-vs-utaglink">jQuery extension vs. utag.link()</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-listeners-versus-utaglink">Event listeners versus utag.link()</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#performance">Performance</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-utagjs-asynchronously">Load utag.js asynchronously</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#bundle-tags">Bundle tags</a></li>

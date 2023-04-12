@@ -368,6 +368,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/fullstory-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".fullstory-connector">FullStory</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/fullstory-user-api-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".fullstory-api-connector">FullStory API</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/google-ad-manager-360-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".google-ad-manager-360-connector">Google Ad Manager 360</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/google-ads-conversions-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".google-ads-conversions-connector">Google Ads Conversions</a>
@@ -523,6 +525,8 @@ var utag_data = {
         <a href="/server-side-connectors/pipedrive-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".pipedrive-connector">Pipedrive</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/postmark-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".postmark-connector">Postmark</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/pulsepoint-npi-list-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".pulsepoint-npi-list-connector">PulsePoint NPI List</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/pushcrew-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".pushcrew-connector">PushCrew</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -710,16 +714,17 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="api-information">API Information</h2>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>This article provides information about using the latest version of the Pinterest Audiences connector. The previous version of the Pinterest Audiences connector is still available, but eventually will be deprecated.<br>To update your Pinterest Audiences connector, authenticate it, and add mappings again.</p>
+<h2 id="api-information">API Information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
-<li>API Name: Pinterest Marketing API: Audience</li>
-<li>API Version: v4</li>
-<li>API Endpoint: <code>https://api.pinterest.com/ads/</code></li>
-<li>Documentation: <a href="https://developers.pinterest.com/docs/redoc/dataprovider_ads_v4/">Pinterest Marketing API: Audience</a></li>
+<li>API Name: Pinterest REST API</li>
+<li>API Version: v5</li>
+<li>API Endpoint: <code>https://api.pinterest.com/v5/</code></li>
+<li>Documentation: <a href="https://developers.pinterest.com/docs/ads/targeting/#Audiences">Pinterest Audiences</a></li>
 </ul>
 <h2 id="batch-limits">Batch Limits</h2>
-<p>This connector uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following 3 thresholds is met:</p>
+<p>This connector uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
 <ul>
 <li>Max number of requests: 10000</li>
 <li>Max time since oldest request: 10 minutes</li>
@@ -729,9 +734,9 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th><strong>Action Name</strong></th>
-<th><strong>AudienceStream</strong></th>
-<th><strong>EventStream</strong></th>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
@@ -748,19 +753,21 @@ var utag_data = {
 </tbody>
 </table>
 <h2 id="configure-settings">Configure Settings</h2>
-<p>Go to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
+<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>When you add this connector you are prompted to accept the vendor&rsquo;s data platform policy.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>Advertiser I</strong>
+<li><strong>Ad Account ID</strong><br>
+<strong>Required.</strong> Unique identifier of an ad account. You can find this identifier with the following methods:
 <ul>
-<li>Required path parameter for all Advertiser API requests.</li>
-<li>Specified Advertiser ID must be associated with the authenticated user.</li>
+<li>Log in to the Pinterest account that owns your advertiser account and then navigate to <a href="https://ads.pinterest.com">https://ads.pinterest.com/</a>. In the top navigation section, click <strong>Viewing</strong>. The ad account ID will be the number underneath the ad account name in the drop-down list.</li>
+<li>Navigate to <strong>Ads &gt; Overview</strong> and locate the ad account ID in the URL path. The URL uses the following format: <code>ads.pinterest.com/advertiser/{ad_account_id}/?...</code>.</li>
 </ul>
 </li>
 </ul>
-<h3 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h3>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
-<p>This section describes how to set up parameters and options for each action.</p>
+<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
+<p>Enter a name for the action and select the action type from the drop-down list.</p>
+<p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="action---add-user-to-audience">Action - Add User to Audience</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
@@ -772,36 +779,60 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>Customer Lists</td>
-<td><ul><li>Add name, list type, and records</li><li>List Type  <ul><li>User list type</li><li>Supported values are <code>EMAIL</code> (default) and <code>MAID</code>.</li></ul> </li><li>Records list  <ul><li>Can be any combination of emails or MAIDs.</li><li><strong>Email</strong> Can be cleartext, SHA256, MD5 hash key. Must include an <code>@</code>.</li><li><strong>MAIDs</strong> Can be cleartext, SHA1, SHA256, MD5 hash keys. AAIDs (Android ad IDs) Must be lowercase. MAIDs (AAIDs) should follow the format 8-4-4-4-12.</li></ul> </li><li>Customer lists are a type of audience.</li><li>For additional information, see <a href="https://help.pinterest.com/en/business/article/audience-targeting">Audience targeting</a>.</li></ul></td>
+<td>Customer List</td>
+<td>Select the list to add records to.<br>Customer lists are a type of audience. For more information, see <a href="https://help.pinterest.com/en/business/article/audience-targeting">Audience targeting</a> or the <a href="https://developers.pinterest.com/docs/ads/targeting/#Audiences">Audiences</a> section of the ads management guide.</td>
 </tr>
 <tr>
-<td>Email address (already hashed)</td>
-<td><ul><li>Provide an email address which is a cleartext (must include an <code>@</code>) or has been already SHA256 or MD5 hashed.</li></ul></td>
+<td>Email Address (plain text)</td>
+<td>Provide a plain text email address (must include an <code>@</code>).</td>
 </tr>
 <tr>
-<td>Email address (apply SHA256 hash)</td>
-<td><ul><li>Provide a plain text email address and the connector will hash this value using SHA256 hash.</li></ul></td>
+<td>Email Address (already hashed)</td>
+<td>Provide an email address which has been already whitespace trimmed, lowercased, and MD5, SHA1 or SHA256 hashed.</td>
 </tr>
 <tr>
-<td>Email address (apply MD5 hash)</td>
-<td><ul><li>Provide a plain text email address and the connector will hash this value using MD5 hash.</li></ul></td>
+<td>Email Address (apply MD5 hash)</td>
+<td>Provide a plain text email address (must include an <code>@</code>) and the connector will whitespace trim, lowercase, and hash this value using MD5 hash.</td>
+</tr>
+<tr>
+<td>Email Address (apply SHA1 hash)</td>
+<td>Provide a plain text email address (must include an <code>@</code>) and the connector will whitespace trim, lowercase, and hash this value using SHA1 hash.</td>
+</tr>
+<tr>
+<td>Email Address (apply SHA256 hash)</td>
+<td>Provide a plain text email address (must include an <code>@</code>) and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Apple IDFA (already hashed)</td>
+<td>Provide an Identifier for Advertisers which has been already whitespace trimmed, and MD5, SHA1 or SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Apple IDFA (apply MD5 hash)</td>
+<td>Provide an Identifier for Advertisers and the connector will whitespace trim and hash this value using MD5 hash.</td>
+</tr>
+<tr>
+<td>Apple IDFA (apply SHA1 hash)</td>
+<td>Provide an Identifier for Advertisers and the connector will whitespace trim and hash this value using SHA1 hash.</td>
+</tr>
+<tr>
+<td>Apple IDFA (apply SHA256 hash)</td>
+<td>Provide an Identifier for Advertisers and the connector will whitespace trim and hash this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Mobile Ad ID (already hashed)</td>
-<td><ul><li>Provide a mobile ad ID which is a cleartext or has been already SHA1, SHA256 or MD5 hashed.</li></ul></td>
-</tr>
-<tr>
-<td>Mobile Ad ID (apply SHA256 hash)</td>
-<td><ul><li>Provide a plain text mobile ad ID and the connector will hash this value using SHA256 hash.</li></ul></td>
-</tr>
-<tr>
-<td>Mobile Ad ID (apply SHA1 hash)</td>
-<td><ul><li>Provide a plain text mobile ad ID and the connector will hash this value using SHA1 hash.</li></ul></td>
+<td>Provide a Mobile Ad ID which has been already whitespace trimmed and MD5, SHA1 or SHA256 hashed.</td>
 </tr>
 <tr>
 <td>Mobile Ad ID (apply MD5 hash)</td>
-<td><ul><li>Provide a plain text mobile ad ID and the connector will hash this value using MD5 hash.</li></ul></td>
+<td>Provide a Mobile Ad ID and the connector will whitespace trim and hash this value using MD5 hash.</td>
+</tr>
+<tr>
+<td>Mobile Ad ID (apply SHA1 hash)</td>
+<td>Provide a Mobile Ad ID and the connector will whitespace trim and hash this value using SHA1 hash.</td>
+</tr>
+<tr>
+<td>Mobile Ad ID (apply SHA256 hash)</td>
+<td>Provide a Mobile Ad ID and the connector will whitespace trim and hash this value using SHA256 hash.</td>
 </tr>
 </tbody>
 </table>
@@ -816,36 +847,60 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>Customer Lists</td>
-<td><ul><li>Add name, list type, and records</li><li>List Type  <ul><li>User list type</li><li>Supported values are <code>EMAIL</code> (default) and <code>MAID</code>.</li></ul> </li><li>Records list  <ul><li>Can be any combination of emails or MAIDs.</li><li><strong>Email</strong> Can be cleartext, SHA256, MD5 hash key. Must include an <code>@</code>.</li><li><strong>MAIDs</strong> Can be cleartext, SHA1, SHA256, MD5 hash keys. AAIDs (Android ad IDs) Must be lowercase. MAIDs (AAIDs) should follow the format 8-4-4-4-12.</li></ul> </li><li>Customer lists are a type of audience.</li><li>For additional information, see <a href="https://help.pinterest.com/en/business/article/audience-targeting">Audience targeting</a>.</li></ul></td>
+<td>Customer List</td>
+<td>Select the list to remove records from.<br>Customer lists are a type of audience. For more information, see <a href="https://help.pinterest.com/en/business/article/audience-targeting">Audience targeting</a> or the <a href="https://developers.pinterest.com/docs/ads/targeting/#Audiences">Audiences</a> section of the ads management guide.</td>
 </tr>
 <tr>
-<td>Email address (already hashed)</td>
-<td><ul><li>Provide an email address which is a cleartext (must include an <code>@)</code> or has been already SHA256 or MD5 hashed.</li></ul></td>
+<td>Email Address (plain text)</td>
+<td>Provide a plain text email address (must include an <code>@</code>).</td>
 </tr>
 <tr>
-<td>Email address (apply SHA256 hash)</td>
-<td><ul><li>Provide a plain text email address and the connector will hash this value using SHA256 hash.</li></ul></td>
+<td>Email Address (already hashed)</td>
+<td>Provide an email address which has been already whitespace trimmed, lowercased, and MD5, SHA1 or SHA256 hashed.</td>
 </tr>
 <tr>
-<td>Email address (apply MD5 hash)</td>
-<td><ul><li>Provide a plain text email address and the connector will hash this value using MD5 hash.</li></ul></td>
+<td>Email Address (apply MD5 hash)</td>
+<td>Provide a plain text email address (must include an <code>@</code>) and the connector will whitespace trim, lowercase, and hash this value using MD5 hash.</td>
+</tr>
+<tr>
+<td>Email Address (apply SHA1 hash)</td>
+<td>Provide a plain text email address (must include an <code>@</code>) and the connector will whitespace trim, lowercase, and hash this value using SHA1 hash.</td>
+</tr>
+<tr>
+<td>Email Address (apply SHA256 hash)</td>
+<td>Provide a plain text email address (must include an <code>@</code>) and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Apple IDFA (already hashed)</td>
+<td>Provide an Identifier for Advertisers which has been already whitespace trimmed and MD5, SHA1 or SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Apple IDFA (apply MD5 hash)</td>
+<td>Provide an Identifier for Advertisers and the connector will whitespace trim and hash this value using MD5 hash.</td>
+</tr>
+<tr>
+<td>Apple IDFA (apply SHA1 hash)</td>
+<td>Provide an Identifier for Advertisers and the connector will whitespace trim and hash this value using SHA1 hash.</td>
+</tr>
+<tr>
+<td>Apple IDFA (apply SHA256 hash)</td>
+<td>Provide an Identifier for Advertisers and the connector will whitespace trim and hash this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Mobile Ad ID (already hashed)</td>
-<td><ul><li>Provide a mobile ad ID which is a cleartext or has been already SHA1, SHA256 or MD5 hashed.</li></ul></td>
-</tr>
-<tr>
-<td>Mobile Ad ID (apply SHA256 hash)</td>
-<td><ul><li>Provide a plain text mobile ad ID and the connector will hash this value using SHA256 hash.</li></ul></td>
-</tr>
-<tr>
-<td>Mobile Ad ID (apply SHA1 hash)</td>
-<td><ul><li>Provide a plain text mobile ad ID and the connector will hash this value using SHA1 hash.</li></ul></td>
+<td>Provide a Mobile Ad ID which has been already whitespace trimmed and MD5, SHA1 or SHA256 hashed.</td>
 </tr>
 <tr>
 <td>Mobile Ad ID (apply MD5 hash)</td>
-<td><ul><li>Provide a plain text mobile ad ID and the connector will hash this value using MD5 hash.</li></ul></td>
+<td>Provide a Mobile Ad ID and the connector will whitespace trim and hash this value using MD5 hash.</td>
+</tr>
+<tr>
+<td>Mobile Ad ID (apply SHA1 hash)</td>
+<td>Provide a Mobile Ad ID and the connector will whitespace trim and hash this value using SHA1 hash.</td>
+</tr>
+<tr>
+<td>Mobile Ad ID (apply SHA256 hash)</td>
+<td>Provide a Mobile Ad ID and the connector will whitespace trim and hash this value using SHA256 hash.</td>
 </tr>
 </tbody>
 </table>
@@ -909,7 +964,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 23, 2021 
+          <p>This page was last updated:  April 4, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -927,8 +982,8 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#batch-limits">Batch Limits</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action Settings - Parameters and Options</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---add-user-to-audience">Action - Add User to Audience</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action Settings - Parameters and Options</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---add-user-to-audience">Action - Add User to Audience</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---remove-user-from-audience">Action - Remove User from Audience</a></li>
               </nav>
   </aside></nav>
@@ -1118,6 +1173,8 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
   
   
   

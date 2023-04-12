@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Impact Page Loads Connector Setup Guide | Server-Side Connectors |Tealium Docs</title>
+    <title>PulsePoint NPI List Connector Setup Guide | Server-Side Connectors |Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -405,8 +405,8 @@ var utag_data = {
         <a href="/server-side-connectors/hubspot-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".hubspot-connector-setup-guide">Hubspot</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/impact-conversions-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".impact-conversions-connector">Impact Conversions</a>
-      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side-connectors/impact-page-loads-connector/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".impact-page-loads-connector">Impact Page Loads</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/impact-page-loads-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".impact-page-loads-connector">Impact Page Loads</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/infobip-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".infobip-connector">Infobip</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -525,8 +525,8 @@ var utag_data = {
         <a href="/server-side-connectors/pipedrive-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".pipedrive-connector">Pipedrive</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/postmark-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".postmark-connector">Postmark</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side-connectors/pulsepoint-npi-list-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".pulsepoint-npi-list-connector">PulsePoint NPI List</a>
+      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/pulsepoint-npi-list-connector/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".pulsepoint-npi-list-connector">PulsePoint NPI List</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/pushcrew-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".pushcrew-connector">PushCrew</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -702,42 +702,73 @@ var utag_data = {
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Impact Page Loads Connector Setup Guide</h1>
+<h1 class="lh-title mt30 mb3">PulsePoint NPI List Connector Setup Guide</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to set up the Impact Page Loads connector.
+      This article describes how to set up the PulsePoint NPI List connector.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="connector-actions">Connector Actions</h2>
+  <p>This integration connects you to Life by PulsePoint. Life is a DSP focused on healthcare advertising and allows you to plan, activate, and analyze digital healthcare ad campaigns aimed at HCPs across endemic and non-endemic publishers. Our PulsePoint NPI List Connector provides you direct access and complete control to Life’s NPI List, creating a seamless integration to our <a href="/industries/tealium-for-pharma/">Tealium for Pharma CDP</a>.</p>
+<h2 id="api-information">API Information</h2>
+<p>This connector uses the following vendor API:</p>
+<ul>
+<li>API Name: PulsePoint API</li>
+<li>API Version: v1</li>
+<li>API Endpoint: <code>https://lifeapi.pulsepoint.com/RestApi/v1/npi/npi-list/</code></li>
+</ul>
+<h2 id="connector-actions">Connector Actions</h2>
 <table>
 <thead>
 <tr>
-<th><strong>Action Name</strong></th>
-<th><strong>AudienceStream</strong></th>
-<th><strong>EventStream</strong></th>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Send Landing Page Event</td>
+<td>Create NPI List</td>
 <td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Add NPIs to a List</td>
 <td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Delete NPIs from a List</td>
+<td>✓</td>
+<td>✗</td>
 </tr>
 </tbody>
 </table>
 <h2 id="configure-settings">Configure Settings</h2>
-<p>Go to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
+<p>Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
-<h2 id="actions-and-parameters">Actions and Parameters</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
-<p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="send-landing-page-event">Send Landing Page Event</h3>
+<ul>
+<li><strong>Client ID</strong><br>
+Required. ID for the account in PulsePoint.</li>
+<li><strong>Client Secret</strong><br>
+Required. Secret for the account in PulsePoint, provided by a PulsePoint representative.</li>
+<li><strong>Username</strong><br>
+Required. PulsePoint Life username for the client.</li>
+<li><strong>Password</strong><br>
+Required. PulsePoint Life password for the client’s username.</li>
+<li><strong>Account ID</strong><br>
+Required. Account ID associated with the client and that holds all the NPI lists.</li>
+</ul>
+<h2 id="actions">Actions</h2>
+<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<p>The following section describes how to set up parameters and options for each action.</p>
+<h3 id="create-npi-list">Create NPI List</h3>
+<h4 id="parameters">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -747,44 +778,56 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>Campaign ID</td>
-<td><ul><li>Required</li><li>Unique integer campaign identifier provided by Impact.</li></ul></td>
+<td>Name</td>
+<td>Required. Name of the advertiser that is linked to the NPI list.</td>
 </tr>
 <tr>
-<td>Page URL</td>
-<td><ul><li>Required</li><li>Full landing page URL.</li><li>Example: <code>https://www.example.com?utm_source=google&amp;amp;utm_medium=cpc</code></li></ul></td>
+<td>Advertisers</td>
+<td>Required. NPI list name.</td>
 </tr>
 <tr>
-<td>Referring URL</td>
-<td><ul><li>Required</li><li>The URL of the page the click originated from.</li></ul></td>
+<td>NPI</td>
+<td>Required. List of NPIs to include in the NPI list.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="add-npis-to-a-list">Add NPIs to a List</h3>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List ID</td>
+<td>Required. List number that the requested NPIs belong to.</td>
 </tr>
 <tr>
-<td>Custom Profile ID</td>
-<td><ul><li>Required</li><li>The advertiser’s user-specific value, such as cookie value.</li></ul></td>
+<td>NPI</td>
+<td>Required. List of NPIs to include in the NPI list.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="delete-npis-from-a-list">Delete NPIs from a List</h3>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List ID</td>
+<td>Required. List number that the requested NPIs belong to.</td>
 </tr>
 <tr>
-<td>User Agent</td>
-<td><ul><li>Required</li><li>String identifying the browser and operating system.</li></ul></td>
-</tr>
-<tr>
-<td>IP Address</td>
-<td><ul><li>Required</li><li>String representing IP Address of the customer.</li></ul></td>
-</tr>
-<tr>
-<td>Customer ID</td>
-<td><ul><li>Unique alphanumeric customer identifier your platform assigns to customer accounts.</li><li>Do not use personally-identifiable information (PII).</li></ul></td>
-</tr>
-<tr>
-<td>Customer Email</td>
-<td><ul><li>SHA1 hash string of the customer email address.</li></ul></td>
-</tr>
-<tr>
-<td>Event Date</td>
-<td><ul><li>Options:  <ul><li>String values of <code>NOW</code></li><li>Dates in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO-8601</a> format</li><li>Dates in <code>dd-MMM-yyyy HH:mm:ss z</code> format.</li></ul> </li><li><code>NOW</code> is the default value.</li></ul></td>
-</tr>
-<tr>
-<td>Customer Email Already Hashed</td>
-<td><ul><li>Check this box if the customer email is already hashed.</li></ul></td>
+<td>NPI</td>
+<td>Required. List of NPIs to delete in the NPI list.</td>
 </tr>
 </tbody>
 </table>
@@ -794,13 +837,13 @@ var utag_data = {
 <div class="mv30 nested-links overflow-hidden dpn"><div class="fr">
 
   
-  <a href="/server-side-connectors/infobip-connector/"
+  <a href="/server-side-connectors/pushcrew-connector/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Infobip</div>
+      <div>PushCrew</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Infobip"</title>
+      <title>"PushCrew"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -809,14 +852,14 @@ var utag_data = {
 </div><div class="di">
   
   
-  <a href="/server-side-connectors/impact-conversions-connector/"
+  <a href="/server-side-connectors/postmark-connector/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Impact Conversions "</title>
+      <title>"Postmark "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>Impact Conversions</div>
+      <div>Postmark</div>
     </section>
   </a>
   
@@ -848,7 +891,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 1, 2021 
+          <p>This page was last updated:  March 9, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -862,10 +905,13 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#api-information">API Information</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#actions-and-parameters">Actions and Parameters</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#send-landing-page-event">Send Landing Page Event</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#actions">Actions</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#create-npi-list">Create NPI List</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-npis-to-a-list">Add NPIs to a List</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#delete-npis-from-a-list">Delete NPIs from a List</a></li>
               </nav>
   </aside></nav>
 
