@@ -628,6 +628,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/tiktok-events-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tiktok-events-connector">TikTok Events</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/tiktok-offiline-events-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tiktok-offline-events-connector">TikTok Offline Events</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/trbo-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".trbo-connector">trbo</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/trumpia-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".trumpia-connector">Trumpia</a>
@@ -737,15 +739,23 @@ var utag_data = {
 <td>✓</td>
 <td>✗</td>
 </tr>
+<tr>
+<td>Remove Visitor from Audience</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
 </tbody>
 </table>
 <h2 id="configure-settings">Configure Settings</h2>
 <p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>App ID</strong> Required. The App ID applied by the developer.</li>
-<li><strong>App Secret</strong> Required. The private key of the Developer&rsquo;s App.</li>
-<li><strong>Advertiser ID</strong> Required. The advertiser ID.</li>
+<li><strong>App ID</strong><br>
+Required. The App ID set by the developer.</li>
+<li><strong>App Secret</strong><br>
+Required. The private key of the Developer&rsquo;s App.</li>
+<li><strong>Advertiser ID</strong><br>
+Required. The advertiser ID.</li>
 </ul>
 <p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
 <h2 id="action-settings--parameters-and-options">Action Settings — Parameters and Options</h2>
@@ -763,7 +773,7 @@ var utag_data = {
 <tbody>
 <tr>
 <td>Audience ID</td>
-<td>Select audience or type audience ID.</td>
+<td>Select audience or enter audience ID.</td>
 </tr>
 <tr>
 <td>IDFA (apply MD5 hash)</td>
@@ -795,19 +805,83 @@ var utag_data = {
 </tr>
 <tr>
 <td>AAID (already SHA256 hashed)</td>
-<td>Provide an email address that is a cleartext (must include an <code>@</code>) and has already been SHA256 hashed.</td>
+<td>Provide an Ad identifier for Android devices which has already been SHA256 hashed.</td>
 </tr>
 <tr>
 <td>Email Address (apply SHA256 hash)</td>
-<td>Provide an email address thay is a cleartext (must include an <code>@</code>) and has been already SHA256 hashed.</td>
+<td>Provide a plain text email address (must include an <code>@</code>). The connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Email Address (already SHA256 hashed)</td>
-<td>Provide a plain text email address and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide an email address that has already been SHA256 hashed.</td>
 </tr>
 <tr>
 <td>Phone Number (apply SHA256 hash)</td>
-<td>Provide a plain text phone number and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text phone number. The connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Phone Number (already SHA256 hashed)</td>
+<td>Provide a phone number that has already been SHA256 hashed.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="action---remove-visitor-from-audience">Action - Remove Visitor from Audience</h3>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Audience ID</td>
+<td>Select audience or enter audience ID.</td>
+</tr>
+<tr>
+<td>IDFA (apply MD5 hash)</td>
+<td>Provide a plain text iOS IDFA. The connector will whitespace trim, lowercase, and hash this value using MD5 hash.</td>
+</tr>
+<tr>
+<td>IDFA (already MD5 hashed)</td>
+<td>Provide an iOS IDFA which has already been MD5 hashed.</td>
+</tr>
+<tr>
+<td>AAID (apply MD5 hash)</td>
+<td>Provide a plain text Ad identifier for Android devices. The connector will whitespace trim, lowercase, and hash this value using MD5 hash.</td>
+</tr>
+<tr>
+<td>AAID (already MD5 hashed)</td>
+<td>Provide an Ad identifier for Android devices which has already been MD5 hashed.</td>
+</tr>
+<tr>
+<td>IDFA (apply SHA256 hash)</td>
+<td>Provide a plain text iOS IDFA. The connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>IDFA (already SHA256 hashed)</td>
+<td>Provide an iOS IDFA which has already been SHA256 hashed.</td>
+</tr>
+<tr>
+<td>AAID (apply SHA256 hash)</td>
+<td>Provide a plain text Ad identifier for Android devices. The connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>AAID (already SHA256 hashed)</td>
+<td>Provide an Ad identifier for Android devices which has already been SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Email Address (apply SHA256 hash)</td>
+<td>Provide a plain text email address (must include an <code>@</code>). The connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Email Address (already SHA256 hashed)</td>
+<td>Provide an email address that has already been SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Phone Number (apply SHA256 hash)</td>
+<td>Provide a plain text phone number. The connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Phone Number (already SHA256 hashed)</td>
@@ -894,6 +968,7 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings--parameters-and-options">Action Settings — Parameters and Options</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action--add-visitor-to-audience">Action — Add Visitor to Audience</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---remove-visitor-from-audience">Action - Remove Visitor from Audience</a></li>
               </nav>
   </aside></nav>
 
@@ -1090,6 +1165,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

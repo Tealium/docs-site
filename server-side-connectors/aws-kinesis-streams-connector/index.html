@@ -628,6 +628,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/tiktok-events-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tiktok-events-connector">TikTok Events</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/tiktok-offiline-events-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tiktok-offline-events-connector">TikTok Offline Events</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/trbo-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".trbo-connector">trbo</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/trumpia-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".trumpia-connector">Trumpia</a>
@@ -720,13 +722,13 @@ var utag_data = {
 <li>Identity and Access Management (IAM) User Credentials</li>
 <li>Kinesis Streams</li>
 </ul>
-<h2 id="supported-actions">Supported Actions</h2>
+<h2 id="connector-actions">Connector Actions</h2>
 <table>
 <thead>
 <tr>
-<th><strong>Action Name</strong></th>
-<th><strong>Trigger on Audience</strong></th>
-<th><strong>Trigger on Streams</strong></th>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
@@ -745,95 +747,268 @@ var utag_data = {
 <td>✓</td>
 <td>✓</td>
 </tr>
+<tr>
+<td>Send Batched Event Data to Kinesis Stream</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Batched Visitor Data to Kinesis Stream</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Send Batched Customized Data to Kinesis Stream (Advanced)</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
 </tbody>
 </table>
 <h2 id="configure-settings">Configure Settings</h2>
-<p>Go to the Connector Marketplace and add a new Amazon Kinesis Streams Connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a Connector.</p>
-<p>To configure your vendor, follow these steps:</p>
-<ol>
-<li>
-<p>In the <strong>Configure</strong> tab, provide a title for the <strong>Connector instance</strong>.</p>
-</li>
-<li>
-<p>Provide your IAM user access and secret key.</p>
-</li>
-</ol>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>The policy statement attached to your IAM user instance must include the <strong>kinesis:PutRecord</strong> permission. For more details on policies for Kinesis Streams, see <a href="http://docs.aws.amazon.com/streams/latest/dev/controlling-access.html">Kinesis Streams Resources Access</a>).</p>
-<ol>
-<li>
-<p>Select the region where you want to make the API calls.</p>
-</li>
-<li>
-<p><strong>Assume Role Parameters</strong>: Required only if your IAM User is not setup with all necessary permissions (see: <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">Switching to an IAM Role</a>).</p>
-</li>
-</ol>
+<p>Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>After adding the connector, configure the following settings:</p>
 <ul>
-<li>ARN (required): Amazon Resource Name assigned to the role to assume.</li>
-<li>Session Name (required): Unique identifier of the assumed role session.</li>
-<li>External ID (optional): Unique identifier used by third parties when assuming roles in their customers&rsquo; accounts (see: <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">How to Use an External ID</a>).</li>
+<li><strong>Access Key</strong><br>
+Required: Provide your IAM User&rsquo;s access key. The associated IAM policy (for either IAM User or Assumed Role) must grant <code>kinesis:PutRecord</code> permission along with streams you want to send data to. See: <a href="http://docs.aws.amazon.com/streams/latest/dev/controlling-access.html">Kinesis Streams Resources Access</a>.</li>
+<li><strong>Secret Key</strong><br>
+Required: Provide your IAM User&rsquo;s secret key.</li>
+<li><strong>Region</strong><br>
+Required: Select a region.</li>
+<li><strong>Assume Role: ARN</strong><br>
+Optional: provide Amazon Resource Name (ARN) of role to assume. For example: <code>arn:aws:iam::222222222222:role/myrole</code>. See: <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">Switching to an IAM Role</a>.</li>
+<li><strong>Assume Role: Session Name</strong><br>
+Optional: Provide identifier for assumed role session.</li>
+<li><strong>Assume Role: External ID</strong><br>
+Optional: Provide external identifier. See: <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">How to Use an External ID</a>.</li>
 </ul>
-<ol>
-<li>Click <strong>Test Connection</strong> to verify API connectivity with the provided credentials.</li>
-</ol>
-<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. It&rsquo;s where you&rsquo;ll set up actions to trigger.</p>
-<p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action---send-event-data-to-kinesis-stream">Action - Send Event Data to Kinesis Stream</h3>
+<h2 id="actions">Actions</h2>
+<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<p>The following section describes how to set up parameters and options for each action.</p>
+<h3 id="action-settings---send-event-data-to-kinesis-stream">Action Settings - Send Event Data to Kinesis Stream</h3>
 <h4 id="parameters">Parameters</h4>
-<ol>
-<li><strong>Stream Name</strong> (Required): Select the stream to send data to. These options are available only if your configured policy is granted the <strong>kinesis:ListStreams</strong> permission. If the permission is not granted, you must manually enter the stream name as a <strong>Custom Value</strong>.</li>
-<li><strong>Message Options</strong> (Required): Map Attribute(s) to a message option in the <strong>To</strong> drop-down list. See available options below.</li>
-<li><strong>Print Attribute Names</strong>: Checking this box will display names for each event data Attribute in the message payload. And if the Attribute names change in Customer Data Hub, they are automatically reflected in the payload.</li>
-</ol>
-<h4 id="options---message-options">Options - Message Options</h4>
 <table>
 <thead>
 <tr>
-<th><strong>Option</strong></th>
+<th><strong>Parameter</strong></th>
 <th><strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>Stream Name</td>
+<td>Select the stream to send data to. If your IAM policy does not grant <code>kinesis:ListStreams</code> permission, you will need to manually enter a custom value.</td>
+</tr>
+<tr>
 <td>Partition Key</td>
-<td>Required: Determines which shard in the stream the message is sent to</td>
+<td>(Required) A partition key groups data by shard within a stream.</td>
+</tr>
+<tr>
+<td>Sequence Number For Ordering</td>
+<td>The data record&rsquo;s sequence number within the Kinesis data stream&rsquo;s shard.</td>
 </tr>
 <tr>
 <td>Explicit Hash Key</td>
-<td>A specific hash value that helps determine the shard in the stream the message is sent to. Overrides hashing the partition key.</td>
+<td>The key used to hash the Partition Key.</td>
 </tr>
 <tr>
-<td>Sequence Number for Ordering</td>
-<td>Guarantees strictly increasing sequence numbers for messages from the same client and to the same partition key</td>
+<td>Print Attribute Names</td>
+<td>If attribute names are updated, the names in the payload will reflect the update.</td>
 </tr>
 </tbody>
 </table>
-<p class="tip"><i class="fa fa-info-circle"></i>For more information, see: <a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecord.html#API_PutRecord_RequestSyntax">Put Record Request Parameters</a></p>
-<h3 id="action---send-visitor-data-to-kinesis-stream">Action - Send Visitor Data to Kinesis Stream</h3>
+<h3 id="action-settings---send-visitor-data-to-kinesis-stream">Action Settings - Send Visitor Data to Kinesis Stream</h3>
 <h4 id="parameters-1">Parameters</h4>
-<ol>
-<li><strong>Stream Name</strong> (Required): Select the stream to send data to. These options are available only if your configured policy is granted the <strong>kinesis:ListStreams</strong> permission. If the permission is not granted, you must manually enter the stream name as a Custom Value.</li>
-<li><strong>Message Options</strong> (Required): Map Attribute(s) to a message option in the <strong>To</strong> drop-down list.</li>
-<li><strong>Include Current Visit Data</strong>: Checking this box will include current visit data in the message payload.</li>
-<li><strong>Print Attribute Names</strong>: Checking this box will display names for each visitor data Attribute in the message payload. And if the Attribute names change in Customer Data Hub, they are automatically reflected in the payload.</li>
-</ol>
-<h3 id="action---send-customized-data-to-kinesis-streams-advanced">Action - Send Customized Data to Kinesis Streams (Advanced)</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stream Name</td>
+<td>Select the stream to send data to. If your IAM policy does not grant <code>kinesis:ListStreams</code> permission, you will need to manually enter a custom value.</td>
+</tr>
+<tr>
+<td>Partition Key</td>
+<td>(Required) A partition key groups data by shard within a stream.</td>
+</tr>
+<tr>
+<td>Sequence Number For Ordering</td>
+<td>The data record&rsquo;s sequence number within the Kinesis data stream&rsquo;s shard.</td>
+</tr>
+<tr>
+<td>Explicit Hash Key</td>
+<td>The key used to hash the Partition Key.</td>
+</tr>
+<tr>
+<td>Include Current Visit Data</td>
+<td>A <code>true</code>/<code>false</code> value that indicates whether to include the current visit data in the payload.</td>
+</tr>
+<tr>
+<td>Print Attribute Names</td>
+<td>If attribute names are updated, the names in the payload will reflect the update.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="action-settings---send-customized-data-to-kinesis-stream-advanced">Action Settings - Send Customized Data to Kinesis Stream (Advanced)</h3>
 <h4 id="parameters-2">Parameters</h4>
-<ol>
-<li><strong>Stream Name</strong> (Required): Select the stream to send data to. These options are available only if your configured policy is granted the <strong>kinesis:ListStreams</strong> permission. If the permission is not granted, you must manually enter the stream name as a Custom Value.</li>
-<li><strong>Message Options</strong> (Required): Map Attribute(s) to a message option in the <strong>To</strong> drop-down list.</li>
-<li><strong>Message Data</strong> (Required): Construct a custom message body. Map Attribute(s) to names for a simple, one-level JSON format, or reference a template name (surrounded in double curly braces) and select the <strong>Custom Message Definition</strong> option.</li>
-<li><strong>Template Variables</strong>: Map Attribute(s) to template variable names. Template variables are available for substitution and rendering of all templates. Refer to our <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a> for details.</li>
-<li><strong>Templates</strong>: Provide one or more templates to render. Typically, a single template is used to construct a message data. Refer to our <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a> for common syntax and extensions.</li>
-</ol>
-<h2 id="vendor-documentation">Vendor Documentation</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stream Name</td>
+<td>Select the stream to send data to. If your IAM policy does not grant &lsquo;kinesis:ListStreams&rsquo; permission, you will need to manually enter a custom value.</td>
+</tr>
+<tr>
+<td>Partition Key</td>
+<td>(Required) A partition key groups data by shard within a stream.</td>
+</tr>
+<tr>
+<td>Sequence Number For Ordering</td>
+<td>The data record&rsquo;s sequence number within the Kinesis data stream&rsquo;s shard.</td>
+</tr>
+<tr>
+<td>Explicit Hash Key</td>
+<td>The key used to hash the Partition Key.</td>
+</tr>
+<tr>
+<td>Custom Message Definition</td>
+<td>A custom message to include in the log file.</td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td>Optional. <ul><li>Provide template variables as data input for templates (see: <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>.</li><li>Name nested template variables with the dot notation (For example: <code>items.name</code>).</li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Optional. <ul><li>Provide templates to be referenced in message data (see: <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>).</li><li>Templates are injected by name with double curly braces into supported fields (For example: <code>{{SomeTemplateName}}</code>).</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h3 id="action-settings---send-batched-event-data-to-kinesis-stream">Action Settings - Send Batched Event Data to Kinesis Stream</h3>
+<h4 id="batch-limits">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
 <ul>
-<li><a href="http://docs.aws.amazon.com/streams/latest/dev/introduction.html">What Is Amazon Kinesis Streams</a></li>
-<li><a href="http://docs.aws.amazon.com/streams/latest/dev/controlling-access.html">Kinesis Streams Resources Access</a></li>
-<li><a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-api.html">Switching to an IAM Role</a></li>
-<li><a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">How to Use an External ID</a></li>
-<li><a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecord.html#API_PutRecord_RequestSyntax">Put Record Request Parameters</a></li>
+<li>Max number of requests: 500</li>
+<li>Max time since oldest request: 10 minutes</li>
+<li>Max size of requests: 5 MB</li>
 </ul>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stream Name</td>
+<td>Select the stream to send data to. If your IAM policy does not grant <code>kinesis:ListStreams</code> permission, you will need to manually enter a custom value.</td>
+</tr>
+<tr>
+<td>Partition Key</td>
+<td>(Required) A partition key groups data by shard within a stream.</td>
+</tr>
+<tr>
+<td>Explicit Hash Key</td>
+<td>The key used to hash the Partition Key.</td>
+</tr>
+<tr>
+<td>Print Attribute Names</td>
+<td>If attribute names are updated, the names in the payload will reflect the update.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="action-settings---send-batched-visitor-data-to-kinesis-stream">Action Settings - Send Batched Visitor Data to Kinesis Stream</h3>
+<h4 id="batch-limits-1">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 500</li>
+<li>Max time since oldest request: 10 minutes</li>
+<li>Max size of requests: 5 MB</li>
+</ul>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stream Name</td>
+<td>Select the stream to send data to. If your IAM policy does not grant &lsquo;kinesis:ListStreams&rsquo; permission, you will need to manually enter a custom value.</td>
+</tr>
+<tr>
+<td>Partition Key</td>
+<td>(Required) A partition key groups data by shard within a stream.</td>
+</tr>
+<tr>
+<td>Explicit Hash Key</td>
+<td>The key used to hash the Partition Key.</td>
+</tr>
+<tr>
+<td>Include Current Visit Data</td>
+<td>A <code>true</code>/<code>false</code> value that indicates whether to include the current visit data in the payload.</td>
+</tr>
+<tr>
+<td>Print Attribute Names</td>
+<td>If attribute names are updated, the names in the payload will reflect the update.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="action-settings---send-batched-customized-data-to-kinesis-stream-advanced">Action Settings - Send Batched Customized Data to Kinesis Stream (Advanced)</h3>
+<h4 id="batch-limits-2">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 500</li>
+<li>Max time since oldest request: 10 minutes</li>
+<li>Max size of requests: 5 MB</li>
+</ul>
+<h4 id="parameters-5">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stream Name</td>
+<td>Select the stream to send data to. If your IAM policy does not grant <code>kinesis:ListStreams</code> permission, you will need to manually enter a custom value.</td>
+</tr>
+<tr>
+<td>Partition Key</td>
+<td>(Required) A partition key groups data by shard within a stream.</td>
+</tr>
+<tr>
+<td>Explicit Hash Key</td>
+<td>The key used to hash the Partition Key.</td>
+</tr>
+<tr>
+<td>Custom Message Definition</td>
+<td>A custom message to include in the log file.</td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td>Optional.<ul><li>Provide template variables as data input for templates (see: <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>.</li><li>Name nested template variables with the dot notation (For example: <code>items.name</code>).</li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Optional.<ul><li>Provide templates to be referenced in message data (see: <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>.</li><li>Templates are injected by name with double curly braces into supported fields (For example: <code>{{SomeTemplateName}}</code>)</li></ul></td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
@@ -894,7 +1069,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 5, 2020 
+          <p>This page was last updated:  April 20, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -909,13 +1084,15 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#requirements">Requirements</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#supported-actions">Supported Actions</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action Settings - Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-event-data-to-kinesis-stream">Action - Send Event Data to Kinesis Stream</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-visitor-data-to-kinesis-stream">Action - Send Visitor Data to Kinesis Stream</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-customized-data-to-kinesis-streams-advanced">Action - Send Customized Data to Kinesis Streams (Advanced)</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#vendor-documentation">Vendor Documentation</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#actions">Actions</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---send-event-data-to-kinesis-stream">Action Settings - Send Event Data to Kinesis Stream</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---send-visitor-data-to-kinesis-stream">Action Settings - Send Visitor Data to Kinesis Stream</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---send-customized-data-to-kinesis-stream-advanced">Action Settings - Send Customized Data to Kinesis Stream (Advanced)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---send-batched-event-data-to-kinesis-stream">Action Settings - Send Batched Event Data to Kinesis Stream</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---send-batched-visitor-data-to-kinesis-stream">Action Settings - Send Batched Visitor Data to Kinesis Stream</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---send-batched-customized-data-to-kinesis-stream-advanced">Action Settings - Send Batched Customized Data to Kinesis Stream (Advanced)</a></li>
               </nav>
   </aside></nav>
 
@@ -1112,6 +1289,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

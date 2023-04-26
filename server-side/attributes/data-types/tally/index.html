@@ -911,22 +911,15 @@ var utag_data = {
 </figure>
 <h3 id="example">Example</h3>
 <p>The following table illustrates the example of a tally named &ldquo;Product Category Purchased&rdquo;, which counts the number of times each product category was purchased from. This tally automatically populates a string attribute with the name of the entry containing the highest value.</p>
+<p><strong>Tally Attribute: &ldquo;Product Category Purchased&rdquo;</strong></p>
 <table>
 <thead>
 <tr>
-<th></th>
-<th></th>
+<th>Tally Key</th>
+<th>Tally Value</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><strong>Tally Attribute: &ldquo;Product Category Purchased&rdquo;</strong></td>
-<td></td>
-</tr>
-<tr>
-<td>Tally Key</td>
-<td>Tally Value</td>
-</tr>
 <tr>
 <td>&ldquo;Shoes&rdquo;</td>
 <td>1</td>
@@ -955,8 +948,7 @@ var utag_data = {
 <p>The number attribute stores a number for browsing metrics such as visits, page views, and events. Common examples include Lifetime Value, Order Total Transaction, or Days Since Last Purchase.</p>
 <p>To specify the number type, select <strong>Decimal</strong> or <strong>Integer</strong> from the <strong>Type</strong> drop-down list.</p>
 <ul>
-<li>
-<p><strong>Decimal</strong></p>
+<li><strong>Decimal</strong>
 <ul>
 <li>Default value.</li>
 <li>Decimal values can have zero (0) or more decimal digits.</li>
@@ -964,8 +956,7 @@ var utag_data = {
 <li>Required for attributes that represent monetary values.</li>
 </ul>
 </li>
-<li>
-<p><strong>Integer</strong></p>
+<li><strong>Integer</strong>
 <ul>
 <li>Only whole number values are stored.</li>
 <li>Example: <code>12</code>, <code>-4</code>, <code>3214</code></li>
@@ -974,254 +965,84 @@ var utag_data = {
 </li>
 </ul>
 <p><strong>Attribute Name</strong>: &ldquo;Product Category Viewed&rdquo;</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Starting Value</strong></td>
-<td><code>{&quot;Shoes&quot;: 7, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 3}</code></td>
-</tr>
-<tr>
-<td><strong>Enriched With</strong></td>
-<td><code>product_category:&quot;Shoes&quot;</code></td>
-</tr>
-<tr>
-<td><strong>Resulting Value</strong></td>
-<td><code>{&quot;Shoes&quot;: 8, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 3}</code></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Starting Value</strong>: <code>{&quot;Shoes&quot;: 7, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 3}</code></li>
+<li><strong>Enriched With</strong>: <code>product_category:&quot;Shoes&quot;</code></li>
+<li><strong>Resulting Value</strong>: <code>{&quot;Shoes&quot;: 8, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 3}</code></li>
+</ul>
 <h3 id="increment-tally-value">Increment Tally Value</h3>
 <p>Increment a tally entry based on a custom name with a custom value or another attribute value. For example, use a tally named &ldquo;Product Category Searched&rdquo; and enrich it with a hard-coded value of &ldquo;Did Not Search&rdquo; when a search has not occured (a condition likely based on a boolean attribute that keeps track of searches). Since the name &ldquo;Did Not Search&rdquo; would not naturally occur in a <code>product_category</code> attribute, this enrichment is used to add the custom entry.</p>
 <p><strong>Attribute Name</strong>: &ldquo;Product Category Searched&rdquo;</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Starting Value</strong></td>
-<td><code>{&quot;Shoes&quot;: 7, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 3}</code></td>
-</tr>
-<tr>
-<td><strong>Enriched With</strong></td>
-<td>Custom Key: <code>&quot;Did Not Search&quot;</code><br> Custom Increment: <code>1</code></td>
-</tr>
-<tr>
-<td><strong>Resulting Value</strong></td>
-<td><code>{&quot;Did Not Search&quot;: 1, &quot;Shoes&quot;: 7, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 3}</code></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Starting Value</strong>: <code>{&quot;Shoes&quot;: 7, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 3}</code></li>
+<li><strong>Enriched With</strong>: Custom Key: <code>&quot;Did Not Search&quot;</code><br> Custom Increment: <code>1</code></li>
+<li><strong>Resulting Value</strong>: <code>{&quot;Did Not Search&quot;: 1, &quot;Shoes&quot;: 7, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 3}</code></li>
+</ul>
 <h3 id="increment-tally-by-tally">Increment Tally by Tally</h3>
 <p>Increment the values in a tally by the values found in another tally.</p>
 <p><strong>Attribute Name</strong>: &ldquo;Product Category Purchased (Lifetime)&rdquo;</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Starting Value</strong></td>
-<td><code>{&quot;Shoes&quot;: 7, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 3}</code></td>
-</tr>
-<tr>
-<td><strong>Enriched With</strong></td>
-<td><code>{&quot;Shoes&quot;: 1, &quot;Shirts&quot;: 2, &quot;Dresses&quot;: 1}</code></td>
-</tr>
-<tr>
-<td><strong>Resulting Value</strong></td>
-<td><code>{&quot;Shoes&quot;: 8, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 5, &quot;Dresses&quot;: 1}</code></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Starting Value</strong>: <code>{&quot;Shoes&quot;: 7, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 3}</code></li>
+<li><strong>Enriched With</strong>: <code>{&quot;Shoes&quot;: 1, &quot;Shirts&quot;: 2, &quot;Dresses&quot;: 1}</code></li>
+<li><strong>Resulting Value</strong>: <code>{&quot;Shoes&quot;: 8, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 5, &quot;Dresses&quot;: 1}</code></li>
+</ul>
 <h3 id="increment-tally-by-set-of-strings">Increment Tally by Set of Strings</h3>
 <p>Increment the entries in a tally based on the entries in a set of strings. For example, use a tally named &ldquo;Product Category Searched (Lifetime)&rdquo; to track the product categories searched per visit, and enrich it with a set of strings named &ldquo;Product Categories Searched (Visit)&rdquo; at the end of each visit.</p>
 <p><strong>Attribute Name</strong>: &ldquo;Product Category Searched (Lifetime)&rdquo;</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Starting Value</strong></td>
-<td><code>{&quot;Shoes&quot;: 7, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 3}</code></td>
-</tr>
-<tr>
-<td><strong>Enriched With</strong></td>
-<td>Product Categories Search (Visit):<code>{&quot;Shoes&quot;, &quot;Pants&quot;, &quot;Hats&quot;}</code></td>
-</tr>
-<tr>
-<td><strong>Resulting Value</strong></td>
-<td><code>[&quot;Shoes&quot;: 8, &quot;Pants&quot;: 2, &quot;Shirts&quot;: 3, &quot;Hats&quot;: 1}</code></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Starting Value</strong>: <code>{&quot;Shoes&quot;: 7, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 3}</code></li>
+<li><strong>Enriched With</strong>: Product Categories Search (Visit):<code>{&quot;Shoes&quot;, &quot;Pants&quot;, &quot;Hats&quot;}</code></li>
+<li><strong>Resulting Value</strong>: <code>[&quot;Shoes&quot;: 8, &quot;Pants&quot;: 2, &quot;Shirts&quot;: 3, &quot;Hats&quot;: 1}</code></li>
+</ul>
 <h3 id="set-rolling-average-based-on-timeline">Set Rolling Average Based on Timeline</h3>
 <p>The rolling average is the arithmetic mean of numerical values captured over time. These values come from <a href="/server-side/attributes/data-types/number/">number</a> and <a href="/server-side/attributes/data-types/number/">tally</a> attributes that are all collected as entries in a <a href="/server-side/attributes/data-types/number/">Timeline</a>. The timeline&rsquo;s expiration determines which entries can be factored into the final average. If there is no expiration date, it is a simple average solution.</p>
 <p><strong>Attribute Name</strong>: &ldquo;Average Product Category Purchase Amounts&rdquo;</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Starting Value</strong></td>
-<td><code>{}</code></td>
-</tr>
-<tr>
-<td><strong>Enriched With</strong></td>
-<td>Timeline entry: <code>{&quot;Shoes&quot;: 150.00, &quot;Pants&quot;: 75.00, &quot;Shirts&quot;: 30.00}</code><br> Timeline entry: <code>{&quot;Pants&quot;: 75.00, &quot;Shirts&quot;: 42.00}</code><br> Timeline entry: <code>{&quot;Shoes&quot;: 110.00, &quot;Shirts&quot;: 18.00 &quot;Hats&quot;: 25.00}</code></td>
-</tr>
-<tr>
-<td><strong>Resulting Value</strong></td>
-<td><code>{&quot;Shoes&quot;: 130.00, &quot;Pants&quot;: 75.00, &quot;Shirts&quot;: 30.00, &quot;Hats&quot;: 25.00}</code></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Starting Value</strong>: <code>{}</code></li>
+<li><strong>Enriched With</strong>:  Timeline entry: <code>{&quot;Shoes&quot;: 150.00, &quot;Pants&quot;: 75.00, &quot;Shirts&quot;: 30.00}</code><br> Timeline entry: <code>{&quot;Pants&quot;: 75.00, &quot;Shirts&quot;: 42.00}</code><br> Timeline entry: <code>{&quot;Shoes&quot;: 110.00, &quot;Shirts&quot;: 18.00 &quot;Hats&quot;: 25.00}</code></li>
+<li><strong>Resulting Value</strong>: <code>{&quot;Shoes&quot;: 130.00, &quot;Pants&quot;: 75.00, &quot;Shirts&quot;: 30.00, &quot;Hats&quot;: 25.00}</code></li>
+</ul>
 <h3 id="set-rolling-sum-based-on-timeline">Set Rolling Sum Based on Timeline</h3>
 <p>A rolling sum is the aggregate of numerical values in a number or <a href="/server-side/attributes/data-types/tally/">tally</a> attribute that are captured as entries in a <a href="/server-side/attributes/data-types/timeline/">timeline</a>. The Timeline&rsquo;s expiration determines which entries can be factored in during the aggregation.</p>
 <p><strong>Attribute Name</strong>: &ldquo;Average Product Category Purchase Amounts&rdquo;</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Starting Value</strong></td>
-<td><code>{}</code></td>
-</tr>
-<tr>
-<td><strong>Enriched With</strong></td>
-<td>Timeline entry: <code>{&quot;Shoes&quot;: 150.00, &quot;Pants&quot;: 75.00, &quot;Shirts&quot;: 30.00}</code><br> Timeline entry: <code>{&quot;Pants&quot;: 75.00, &quot;Shirts&quot;: 42.00}</code><br> Timeline entry: <code>{&quot;Shoes&quot;: 110.00, &quot;Shirts&quot;: 18.00 &quot;Hats&quot;: 25.00}</code></td>
-</tr>
-<tr>
-<td><strong>Resulting Value</strong></td>
-<td><code>{&quot;Shoes&quot;: 260.00, &quot;Pants&quot;: 150.00, &quot;Shirts&quot;: 90.00, &quot;Hats&quot;: 25.00}</code></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Starting Value</strong>: <code>{}</code></li>
+<li><strong>Enriched With</strong>:  Timeline entry: <code>{&quot;Shoes&quot;: 150.00, &quot;Pants&quot;: 75.00, &quot;Shirts&quot;: 30.00}</code><br> Timeline entry: <code>{&quot;Pants&quot;: 75.00, &quot;Shirts&quot;: 42.00}</code><br> Timeline entry: <code>{&quot;Shoes&quot;: 110.00, &quot;Shirts&quot;: 18.00 &quot;Hats&quot;: 25.00}</code></li>
+<li><strong>Resulting Value</strong>: <code>{&quot;Shoes&quot;: 260.00, &quot;Pants&quot;: 150.00, &quot;Shirts&quot;: 90.00, &quot;Hats&quot;: 25.00}</code></li>
+</ul>
 <h3 id="set-tally-by-corresponding-arrays">Set Tally by Corresponding Arrays</h3>
 <p>Set the tally to the values defined in two corresponding arrays. For example, use a tally named &ldquo;Product Category Quantity Purchased&rdquo; to capture the quantity of products purchased and enrich it with the two arrays <code>product_category</code> and <code>product_quantity</code> when a purchase event occurs.</p>
 <p><strong>Attribute Name</strong>: &ldquo;Product Category Quantity Purchased&rdquo;</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Starting Value</strong></td>
-<td><code>{}</code></td>
-</tr>
-<tr>
-<td><strong>Enriched With</strong></td>
-<td><code>product_category: [&quot;Shoes&quot;, &quot;Pants&quot;, &quot;Shirts&quot;]</code><br><code>product_quantity: [1, 1, 3]</code></td>
-</tr>
-<tr>
-<td><strong>Resulting Value</strong></td>
-<td><code>{&quot;Shoes&quot;: 1, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 3}</code></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Starting Value</strong>: <code>{}</code></li>
+<li><strong>Enriched With</strong>:  <code>product_category: [&quot;Shoes&quot;, &quot;Pants&quot;, &quot;Shirts&quot;]</code><br><code>product_quantity: [1, 1, 3]</code></li>
+<li><strong>Resulting Value</strong>: <code>{&quot;Shoes&quot;: 1, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 3}</code></li>
+</ul>
 <h3 id="remove-tally">Remove Tally</h3>
 <p>Remove tally based on a set of conditions.</p>
 <p>The remove tally enrichment can be used to reset a tally. For example, if you have been tracking visitor&rsquo;s product category searches, you might clear that tally once an order is placed.</p>
 <p><strong>Attribute Name</strong>: reset tally to zero</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Starting Value</strong></td>
-<td><code>{&quot;Shoes&quot;: 1, &quot;Pants&quot;: 3}</code></td>
-</tr>
-<tr>
-<td><strong>Enriched With</strong></td>
-<td><code>Purchase event occurs</code></td>
-</tr>
-<tr>
-<td><strong>Resulting Value</strong></td>
-<td><code>{}</code></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Starting Value</strong>: <code>{&quot;Shoes&quot;: 1, &quot;Pants&quot;: 3}</code></li>
+<li><strong>Enriched With</strong>: <code>Purchase event occurs</code></li>
+<li><strong>Resulting Value</strong>: <code>{}</code></li>
+</ul>
 <h3 id="remove-an-entry-in-a-tally">Remove an Entry in a Tally</h3>
 <p>Remove an entry in a tally based on a set of conditions. For example, use a tally named &ldquo;Product Category Searched&rdquo; to track a visitors product searches (and potential purchases) then use this enrichment to remove the tally entries that match items in a purchase.</p>
 <p><strong>Attribute Name</strong>: &ldquo;Product Category Searched (Not Purchased)&rdquo;</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Starting Value</strong></td>
-<td><code>{&quot;Shoes&quot;: 7, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 3, &quot;Jeans&quot;: 10}</code></td>
-</tr>
-<tr>
-<td><strong>Enriched With</strong></td>
-<td><code>product_catgory : &quot;Shoes&quot;</code></td>
-</tr>
-<tr>
-<td><strong>Resulting Value</strong></td>
-<td><code>[&quot;Pants&quot;: 1, &quot;Shirts&quot;: 3, &quot;Jeans&quot;: 10]</code></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Starting Value</strong>: <code>{&quot;Shoes&quot;: 7, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 3, &quot;Jeans&quot;: 10}</code></li>
+<li><strong>Enriched With</strong>: <code>product_catgory : &quot;Shoes&quot;</code></li>
+<li><strong>Resulting Value</strong>: <code>[&quot;Pants&quot;: 1, &quot;Shirts&quot;: 3, &quot;Jeans&quot;: 10]</code></li>
+</ul>
 <h3 id="increment-by-1-for-each-item-in-an-array">Increment by 1 for Each Item in an Array</h3>
 <p>Increment by one (1) for each item in an array. For example, use a tally named &ldquo;Product Category Purchased&rdquo; and enrich it with the array attribute <code>product_category</code> when a purchase event occurs.</p>
 <p><strong>Attribute Name</strong>: &ldquo;Product Category Purchased&rdquo;</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Starting Value</strong></td>
-<td><code>{&quot;Shoes&quot;: 1, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 3}</code></td>
-</tr>
-<tr>
-<td><strong>Enriched With</strong></td>
-<td><code>product_category : [&quot;Pants&quot;, &quot;Ties&quot;]</code></td>
-</tr>
-<tr>
-<td><strong>Resulting Value</strong></td>
-<td><code>{&quot;Shoes&quot;: 1, &quot;Pants&quot;: 2, &quot;Shirts&quot;: 3, &quot;Ties&quot;: 1]</code></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Starting Value</strong>: <code>{&quot;Shoes&quot;: 1, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 3}</code></li>
+<li><strong>Enriched With</strong>: <code>product_category : [&quot;Pants&quot;, &quot;Ties&quot;]</code></li>
+<li><strong>Resulting Value</strong>: <code>{&quot;Shoes&quot;: 1, &quot;Pants&quot;: 2, &quot;Shirts&quot;: 3, &quot;Ties&quot;: 1]</code></li>
+</ul>
 
 </div>
 
@@ -1282,7 +1103,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  April 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

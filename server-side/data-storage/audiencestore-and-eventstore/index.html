@@ -837,6 +837,7 @@ For detailed information, see the <a href="/server-side-connectors/audiencestore
 <p class="note"><i class="fa fa-exclamation-triangle"></i>These services must be activated for your account. Contact your account manager for more information.</p>
 <h2 id="how-it-works">How it works</h2>
 <p>AudienceStore and EventStore services store your unstructured audience and event data as compressed JSON files on Tealium&rsquo;s Amazon S3 bucket. The Tealium Collect tag (or other Collect library) sends event data to the Customer Data Hub where it&rsquo;s captured in Tealium&rsquo;s Amazon S3 bucket as flattened JSON data. When the S3 bucket reaches a size of 100 MB (uncompressed) or 1 hour elapses, whichever comes first, the data is compressed and prepared for Redshift. The compressed data is then copied and imported into the Redshift database for your account.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>EventStore must be enabled to be able to collect data from the configured event feeds and write data to S3 files. AudienceStore must be enabled to be able to write data from the configured AudienceStore connectors to S3 files.</p>
 <h3 id="audiencestore-file-paths">AudienceStore file paths</h3>
 <p>Data files for AudienceStream are stored in the S3 bucket with a path structure that matches your account name, profile name, and the action ID of the AudienceStore connector:</p>
 <pre tabindex="0"><code>{account_name}/{profile_name}/audiences/{action_id}
@@ -996,7 +997,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  April 25, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

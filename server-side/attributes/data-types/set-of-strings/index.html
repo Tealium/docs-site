@@ -865,68 +865,30 @@ var utag_data = {
 <h3 id="add-to-set-of-strings">Add to Set of Strings</h3>
 <p>Add a string value to a set of strings. Adds only unique strings.</p>
 <p><strong>Attribute Name</strong>: <code>product_category</code></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Starting Value</strong></td>
-<td><code>&quot;Home Improvement&quot;, &quot;Electronics&quot;, &quot;Kitchen&quot;</code></td>
-</tr>
-<tr>
-<td><strong>Enriched With</strong></td>
-<td><code>&quot;Apparel&quot;, &quot;Electronics&quot;</code></td>
-</tr>
-<tr>
-<td><strong>Resulting Value</strong></td>
-<td><code>&quot;Home Improvement&quot;, &quot;Electronics&quot;, &quot;Kitchen&quot;, &quot;Apparel&quot;</code></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Starting Value</strong>:  <code>&quot;Home Improvement&quot;, &quot;Electronics&quot;, &quot;Kitchen&quot;</code></li>
+<li><strong>Enriched With</strong>: <code>&quot;Apparel&quot;, &quot;Electronics&quot;</code></li>
+<li><strong>Resulting Value</strong>: <code>&quot;Home Improvement&quot;, &quot;Electronics&quot;, &quot;Kitchen&quot;, &quot;Apparel&quot;</code></li>
+</ul>
 <p>The result ignores the &ldquo;Electronics&rdquo; item because it exists already in the set of strings.</p>
 <h3 id="store-array-as-set-of-strings">Store Array as Set of Strings</h3>
 <p>This enrichment is used to save the values from an array of strings attribute into a set of strings attribute. All duplicate elements in the array are ignored in the new set, which permits only unique strings.</p>
 <p><strong>Attribute Name</strong>: <code>Product Categories Viewed</code></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Starting Value</strong></td>
-<td><code>&quot;Kitchen&quot;</code></td>
-</tr>
-<tr>
-<td><strong>Enriched With</strong></td>
-<td><code>[&quot;Home Improvement&quot;, &quot;Electronics&quot;, &quot;Kitchen&quot;]</code></td>
-</tr>
-<tr>
-<td><strong>Resulting Value</strong></td>
-<td><code>&quot;Home Improvement&quot;, &quot;Electronics&quot;, &quot;Kitchen&quot;</code></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Starting Value</strong>:  <code>&quot;Kitchen&quot;</code></li>
+<li><strong>Enriched With</strong>: <code>[&quot;Home Improvement&quot;, &quot;Electronics&quot;, &quot;Kitchen&quot;]</code></li>
+<li><strong>Resulting Value</strong>: <code>&quot;Home Improvement&quot;, &quot;Electronics&quot;, &quot;Kitchen&quot;</code></li>
+</ul>
 <h3 id="update-set-of-strings-by-set-of-strings">Update Set of Strings By Set of Strings</h3>
 <p>This enrichment appends the values from another set of strings attribute into the set of strings. For example, to track the product categories that a visitor purchases from you might have two set of strings attributes named &ldquo;Categories Purchased&rdquo;, with one scoped to visit to capture when the purchase occurs and one scoped to visitor to store the master set.</p>
 <table>
 <thead>
 <tr>
-<th></th>
-<th></th>
+<th><strong>Visit: Categories Purchased</strong></th>
+<th><strong>Visitor: Categories Purchased</strong></th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><strong>Visit: Categories Purchased</strong></td>
-<td><strong>Visitor: Categories Purchased</strong></td>
-</tr>
 <tr>
 <td><code>&quot;Electronics&quot;</code></td>
 <td><code>&quot;Electronics&quot;</code></td>
@@ -943,172 +905,59 @@ var utag_data = {
 </table>
 <p>While the set of strings scoped to visit is overwritten with new values each time, the enrichment copies those values into the set of strings scoped to visitor where the master list expands, storing each unique value encountered.</p>
 <p><strong>Attribute Name</strong>: <code>Product Category Purchased</code></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Starting Value</strong></td>
-<td><code>&quot;Electronics&quot;</code></td>
-</tr>
-<tr>
-<td><strong>Enriched With</strong></td>
-<td><code>&quot;Home Improvement&quot;, &quot;Electronics&quot;, &quot;Kitchen&quot;</code></td>
-</tr>
-<tr>
-<td><strong>Resulting Value</strong></td>
-<td><code>&quot;Electronics&quot;, &quot;Home Improvement&quot;, &quot;Kitchen&quot;</code></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Starting Value</strong>:  <code>&quot;Electronics&quot;</code></li>
+<li><strong>Enriched With</strong>: <code>&quot;Home Improvement&quot;, &quot;Electronics&quot;, &quot;Kitchen&quot;</code></li>
+<li><strong>Resulting Value</strong>: <code>&quot;Electronics&quot;, &quot;Home Improvement&quot;, &quot;Kitchen&quot;</code></li>
+</ul>
 <h3 id="difference-between-two-sets-of-strings">Difference Between Two Sets of Strings</h3>
 <p>Create a new set of strings attribute that contains the items from one set of strings that do not appear in another set of strings. For example, to find the categories that a customer browsed, but did not purchase from, use this enrichment to find the difference between &ldquo;Categories Browsed&rdquo; and &ldquo;Categories Purchased&rdquo;.</p>
 <p>Example:</p>
 <p>Find values present in: <code>Categories Browsed</code> and that are not in: <code>Categories Purchased</code>.</p>
 <p><strong>Attribute Name</strong>: <code>Browsed Categories Not Purchased</code></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Starting Value</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Enriched With</strong></td>
-<td>&ldquo;Categories Browsed&rdquo;: <code>&quot;Home Improvement&quot;, &quot;Kitchen&quot;, &quot;Windows&quot;</code> &ldquo;Categories Purchased&rdquo;: <code>&quot;Home Improvement&quot;</code></td>
-</tr>
-<tr>
-<td><strong>Resulting Value</strong></td>
-<td><code>&quot;Kitchen&quot;, &quot;Windows&quot;</code></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Starting Value</strong>:</li>
+<li><strong>Enriched With</strong>:  &ldquo;Categories Browsed&rdquo;: <code>&quot;Home Improvement&quot;, &quot;Kitchen&quot;, &quot;Windows&quot;</code> &ldquo;Categories Purchased&rdquo;: <code>&quot;Home Improvement&quot;</code></li>
+<li><strong>Resulting Value</strong>: <code>&quot;Kitchen&quot;, &quot;Windows&quot;</code></li>
+</ul>
 <h3 id="remove-set-of-strings">Remove Set of Strings</h3>
 <p>Remove a set of strings based on a set of conditions. This is the equivalent of deleting the set.</p>
 <p><strong>Attribute Name</strong>: <code>product_category</code></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Starting Value</strong></td>
-<td><code>&quot;Home Improvement&quot;, &quot;Kitchen&quot;, &quot;Windows&quot;</code></td>
-</tr>
-<tr>
-<td><strong>Resulting Value</strong></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Starting Value</strong>:  <code>&quot;Home Improvement&quot;, &quot;Kitchen&quot;, &quot;Windows&quot;</code></li>
+<li><strong>Resulting Value</strong>:</li>
+</ul>
 <h3 id="lowercase-set-of-strings">Lowercase Set of Strings</h3>
 <p>Lowercase a set of strings based on a set of conditions.</p>
 <p><strong>Attribute Name</strong>: <code>product_category</code></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Starting Value</strong></td>
-<td><code>&quot;Home Improvement&quot;, &quot;Electronics&quot;, &quot;Kitchen&quot;</code></td>
-</tr>
-<tr>
-<td><strong>Resulting Value</strong></td>
-<td><code>&quot;home improvement&quot;, &quot;electronics&quot;, &quot;kitchen&quot;</code></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Starting Value</strong>:  <code>&quot;Home Improvement&quot;, &quot;Electronics&quot;, &quot;Kitchen&quot;</code></li>
+<li><strong>Resulting Value</strong>: <code>&quot;home improvement&quot;, &quot;electronics&quot;, &quot;kitchen&quot;</code></li>
+</ul>
 <h3 id="set-to-top-tally-items">Set to Top Tally Items</h3>
 <p>Create a set of strings using the highest valued items from a tally. For example, to track the three most viewed products, create a set of strings to capture the top three entries from a tally attribute that tracks the occurrences of viewed products.</p>
 <p><strong>Attribute Name</strong>: <code>Top 3 Products Viewed</code></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Starting Value</strong></td>
-<td>&ndash;</td>
-</tr>
-<tr>
-<td><strong>Enriched With</strong></td>
-<td>Top 3 Items in &ldquo;Viewed Products&rdquo;: <br> <code>{ &quot;AirPods Pro&quot; : 3 &quot;iPhone 10&quot; : 6 &quot;iPhone Case&quot; : 10 &quot;MacBook Pro&quot; : 1 &quot;iMac&quot; : 2 }</code></td>
-</tr>
-<tr>
-<td><strong>Resulting Value</strong></td>
-<td><code>&quot;iPhone Case&quot;, &quot;iPhone 10&quot;, &quot;AirPods Pro&quot;</code></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Starting Value</strong>:  &ndash;</li>
+<li><strong>Enriched With</strong>: Top 3 Items in &ldquo;Viewed Products&rdquo;: <br> <code>{ &quot;AirPods Pro&quot; : 3 &quot;iPhone 10&quot; : 6 &quot;iPhone Case&quot; : 10 &quot;MacBook Pro&quot; : 1 &quot;iMac&quot; : 2 }</code></li>
+<li><strong>Resulting Value</strong>: <code>&quot;iPhone Case&quot;, &quot;iPhone 10&quot;, &quot;AirPods Pro&quot;</code></li>
+</ul>
 <h3 id="set-to-tally-items-above-target-value">Set to Tally Items Above Target Value</h3>
 <p>Create a set of strings using the items from a tally whose values are above a set threshold. For example, to track products that have been viewed more than 20 times, create a set of strings to capture the entries from a tally attribute that tracks the occurrences of viewed products.</p>
 <p><strong>Attribute Name</strong>: <code>Products Viewed 20+ Times</code></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Starting Value</strong></td>
-<td>&ndash;</td>
-</tr>
-<tr>
-<td><strong>Enriched With</strong></td>
-<td>Items in &ldquo;Products Viewed&rdquo; that are greater than 20: <br><code>{  &quot;AirPods Pro&quot; : 21,  &quot;iPhone 10&quot; : 35, &quot;iPhone Case&quot; : 12, &quot;MacBook Pro&quot; : 1 &quot;iMac&quot; : 2 }</code></td>
-</tr>
-<tr>
-<td><strong>Resulting Value</strong></td>
-<td><code>&quot;iPhone 10&quot;, &quot;AirPods Pro&quot;</code></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Starting Value</strong>: &ndash;</li>
+<li><strong>Enriched With</strong>:  Items in &ldquo;Products Viewed&rdquo; that are greater than 20: <br><code>{  &quot;AirPods Pro&quot; : 21,  &quot;iPhone 10&quot; : 35, &quot;iPhone Case&quot; : 12, &quot;MacBook Pro&quot; : 1 &quot;iMac&quot; : 2 }</code></li>
+<li><strong>Resulting Value</strong>:  <code>&quot;iPhone 10&quot;, &quot;AirPods Pro&quot;</code></li>
+</ul>
 <h3 id="remove-entry-from-set-of-strings">Remove Entry from Set of Strings</h3>
 <p>Remove an entry from a set of strings based on a set of conditions. For example, remove the entry &ldquo;iPhone Case&rdquo; from a set of strings that tracks a product wishlist because it has been purchased.</p>
 <p><strong>Attribute Name</strong>: <code>Product Wishlist</code></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Starting Value</strong></td>
-<td><code>&quot;iPhone 10&quot;, &quot;AirPods Pro&quot;, &quot;iPhone Case&quot;</code></td>
-</tr>
-<tr>
-<td><strong>Enriched With</strong></td>
-<td>Remove <code>purchased_product</code> (value &ldquo;iPhone Case&rdquo;)</td>
-</tr>
-<tr>
-<td><strong>Resulting Value</strong></td>
-<td><code>&quot;iPhone 10&quot;, &quot;AirPods Pro&quot;</code></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Starting Value</strong>:  <code>&quot;iPhone 10&quot;, &quot;AirPods Pro&quot;, &quot;iPhone Case&quot;</code></li>
+<li><strong>Enriched With</strong>:  Remove <code>purchased_product</code> (value &ldquo;iPhone Case&rdquo;)</li>
+<li><strong>Resulting Value</strong>: <code>&quot;iPhone 10&quot;, &quot;AirPods Pro&quot;</code></li>
+</ul>
 
 </div>
 
@@ -1169,7 +1018,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  April 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
