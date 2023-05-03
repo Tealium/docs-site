@@ -764,13 +764,14 @@ var utag_data = {
 <div class="mv2 mid-gray fn w-100">
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to set up the Google Ads Conversion Tracking and Remarketing (gtag.js) tag in your Tealium iQ Tag Management (TiQ) account.
+      This article describes how to set up the Google Ads Conversion Tracking &amp; Remarketing (gtag.js) tag.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="tag-tips">Tag Tips</h2>
+  <p>Use Google Ads remarketing to re-engage with potential customers by adding your website and app visitors to remarketing lists. Additionally, leverage conversion measurement to see how effectively interactions with your ads lead to valuable customer activity.</p>
+<h2 id="tag-tips">Tag tips</h2>
 <ul>
 <li>
 <p>Supports the E-Commerce extension for:</p>
@@ -788,143 +789,144 @@ var utag_data = {
 <p>Use mapping to dynamically override the standard configuration values and the E-Commerce extension values.</p>
 </li>
 <li>
-<p>Pass custom conversion variables by mapping to <code>Custom Conversion Variable</code> and replacing <code>myvar</code> with your custom variable name.</p>
+<p>Pass custom conversion variables by mapping to <strong>Custom Conversion Variable</strong> and replacing <code>myvar</code> with your custom variable name.</p>
+</li>
+<li>
+<p><a href="https://support.google.com/google-ads/answer/7305793">Dynamic Remarketing documentation</a></p>
 </li>
 <li>
 <p><a href="https://developers.google.com/adwords-remarketing-tag/">Google Ads documentation</a></p>
 </li>
-</ul>
-<h2 id="tag-configuration">Tag Configuration</h2>
-<p>First, go to Tealium&rsquo;s tag marketplace and add the Google Ads Conversion Tracking and Remarketing (<code>gtag.js</code>) tag (Learn more about <a href="/iq-tag-management/tags/manage-tags/">how to add a tag</a>).</p>
-<p>After adding the tag, configure the following settings:</p>
-<ul>
 <li>
-<p><strong>Conversion ID</strong></p>
+<p>Use the <a href="/iq-tag-management/extensions/extensions-list/crypto-extension/">Crypto Extension</a> to encrypt and populate the <strong>Hashed Email</strong> and <strong>Phone Number</strong> values.</p>
+</li>
+</ul>
+<h2 id="tag-configuration">Tag configuration</h2>
+<p>Navigate to the Tag Marketplace to add a new tag. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
+<p>When adding the tag, configure the following settings:</p>
 <ul>
-<li>Required.</li>
-<li>Unique ID for the conversion.</li>
-<li>You can find this ID in your Google Ads control panel.</li>
-<li>Example: <code>AW-123456789</code></li>
+<li><strong>Conversion ID</strong>: Unique ID for the conversion. You can find this ID in your Google Ads control panel (for example, <code>AW-123456789</code>).
+<ul>
 <li>Use mapping to dynamically override this value.</li>
 <li>Use a comma-separated list to send data for multiple properties.</li>
 </ul>
 </li>
-<li>
-<p><strong>Conversion Label</strong></p>
+<li><strong>Conversion Label</strong>: Set a default label here and use mapping to dynamically override this value.
 <ul>
-<li>Set a default label here and use mapping to dynamically override this value.</li>
-<li>Use a comma-separated list to send data for multiple labels.</li>
-<li>This list can use a matching number of Conversion Labels as Conversion IDs or use a single label for all Conversion IDs.</li>
+<li>Use a comma-separated list to send data for multiple labels. This list can use a matching number of <strong>Conversion Labels</strong> as <strong>Conversion IDs</strong> or use a single label for all <strong>Conversion IDs</strong>.</li>
 </ul>
 </li>
-<li>
-<p><strong>Conversion Value</strong></p>
+<li><strong>Conversion Value</strong>: Set a default value here or leave this blank to use the Subtotal value from the E-Commerce extension.
 <ul>
-<li>Set a default value here or leave this blank to use the Subtotal value from the E-Commerce extension.</li>
 <li>Use mapping to dynamically override this value and the E-Commerce extension value.</li>
 </ul>
 </li>
-<li>
-<p><strong>Global Object</strong></p>
+<li><strong>Global Object</strong>: This is the name of the <strong>Global Object</strong> used for the event queue. If not specified, <code>gtag</code> is used.
 <ul>
-<li>This is the name of the Global Object used for the event queue, if not specified, <code>gtag</code> is used.</li>
-<li>This is not required for most implementations.</li>
+<li>Not required for most implementations.</li>
 </ul>
 </li>
-<li>
-<p><strong>Data Layer Name</strong></p>
+<li><strong>Data Layer Name</strong>: By default, the data layer initiated and referenced by the global site tag is named <strong>dataLayer</strong>. Rename the data layer only if your project requires a separate name.</li>
+<li><strong>Enable Remarketing</strong>: When Remarketing is enabled, this tag will automatically pull in data from the E-Commerce Extension to populate the Google Ads <strong>Retail</strong> parameters.
 <ul>
-<li>By default, the data layer initiated and referenced by the global site tag is named <strong>dataLayer</strong>.</li>
-<li>Rename the data layer only if your project requires a separate name.</li>
+<li>Mapping directly to the <strong>Retail</strong> tab in the toolbox will override the data pulled in via the E-Commerce Extension.</li>
 </ul>
 </li>
-<li>
-<p><strong>Enable Remarketing</strong></p>
+<li><strong>Page Type</strong>: Select a default page type here and use mapping to dynamically override this value.</li>
+<li><strong>Cross-Tracking Domains</strong>: A comma-separated list of domains to use with Cross-Domain Tracking (<code>setAllowLinker</code>).
 <ul>
-<li>When Remarketing is enabled, this tag automatically pulls in data from the E-Commerce Extension to populate the Google Ads <strong>Retail</strong> parameters.</li>
-<li>Prefix: <code>ecomm_</code>.</li>
-<li>Mapping directly to the <strong>Retail</strong> tab in the toolbox overrides the data pulled in via the E-Commerce Extension.</li>
+<li>This list should consist of top-level domains, such as <code>tealiumiq.com</code>.</li>
 </ul>
 </li>
-<li>
-<p><strong>Page Type</strong></p>
-<ul>
-<li>Select a default page type here and use mapping to dynamically override this value.</li>
-</ul>
-</li>
-<li>
-<p><strong>Cross-Tracking Domains</strong></p>
-<ul>
-<li>A comma-separated list of domains to use with Cross-Domain Tracking (<code>setAllowLinker</code>).</li>
-<li>This should be the top level domain. For example: <code>tealiumiq.com</code></li>
-</ul>
-</li>
-<li>
-<p><strong>Enable Enhanced Conversions</strong></p>
+<li><strong>Enable Enhanced Conversions</strong>
 <ul>
 <li>Support for enhanced conversions was added in June, 2022. If you are running an older version of the tag and want to use this feature, you must update the tag template. For more information, see: <a href="/iq-tag-management/tags/tag-templates/about/">Managing Tag Templates</a>.</li>
-<li>The Enhanced Conversions for Web feature can improve the accuracy of your conversion measurements. It supplements your existing conversion tags by sending hashed first-party conversion data from your website in a privacy safe way.</li>
-<li>Before enabling <strong>Enhanced Conversions</strong>, you must first accept the Customer Data Terms of Service in your Google Ads account (<strong>Tools and Settings &gt; Measurement/Conversions &gt; Settings &gt; Customer Data Terms</strong>).</li>
-<li>If you are using the server-side Enhanced Conversions for Web connector to supplement this client-side tag, map a unique value, such as <code>tealium_random</code>, to <strong>Transaction ID</strong> for non-purchase conversions to enable Google to deduplicate the event. In addition, within the Google Ads configuration for your conversion, set <strong>Implementation Type</strong> to <code>API</code>.</li>
+<li>The <strong>Enhanced Conversions for Web</strong> feature can improve the accuracy of your conversion measurements. It supplements your existing conversion tags by sending hashed first-party conversion data from your website in a privacy safe way.</li>
+<li>Before enabling <strong>Enhanced Conversions</strong>, you must first accept the <strong>Customer Data Terms of Service</strong> in your Google Ads account (<strong>Tools and Settings &gt; Measurement/Conversions &gt; Settings &gt; Customer Data Terms</strong>).</li>
+<li>If you are using the server-side <strong>Enhanced Conversions for Web</strong> connector to supplement this client-side tag, map a unique value, such as <code>tealium_random</code>, to <strong>Transaction ID</strong> for non-purchase conversions to enable Google to deduplicate the event. In addition, within the Google Ads configuration for your conversion, set <strong>Implementation Type</strong> to <code>API</code>.</li>
 <li>For more information on how to set up this tag to work with the Google Ads Enhanced Conversion connector in EventStream, see: <a href="/tech-partners/tealium-google-enhanced-conversions-integration-guide/">Tealium + Google Enhanced Conversions Integration Guide</a>.</li>
 </ul>
 </li>
 </ul>
-<h2 id="data-mappings">Data Mappings</h2>
-<p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-layer/data-layer-variables/">data layer variable</a> to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">Data Mappings</a>.</p>
+<h2 id="load-rules">Load rules</h2>
+<p>Load the tag on all pages or set conditions for when your tag will load. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
+<h2 id="data-mappings">Data mappings</h2>
+<p>Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see <a href="/iq-tag-management/data-mappings/about/">About data mappings</a>.</p>
 <p>The available categories are:</p>
 <h3 id="standard">Standard</h3>
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>conversion_id</code></td>
-<td><ul><li>Required.</li><li>Conversion ID.</li><li>Unique ID for the conversion.</li><li>You can find this ID in your Google Ads control panel.</li><li>Example: <code>AW-123456789</code></li><li>Use mapping to dynamically override this value.</li><li>Use a comma-separated list to send data for multiple properties.</li></ul></td>
+<td style="text-align:left"><code>conversion_id</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Conversion ID</td>
 </tr>
 <tr>
-<td><code>conversion_label</code></td>
-<td><ul><li>Conversion label.</li><li>Set a default label here and use mapping to dynamically override this value.</li><li>Use a comma-separated list to send data for multiple labels.</li><li>This list can use a matching number of Conversion Labels as Conversion IDs or use a single label for all Conversion IDs.</li></ul></td>
+<td style="text-align:left"><code>conversion_label</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Conversion Label</td>
 </tr>
 <tr>
-<td><code>conversion_value</code></td>
-<td><ul><li>Conversion value.</li><li>Set a default value here or leave this blank to use the Subtotal value from the E-Commerce extension.</li><li>Use mapping to dynamically override this value and the E-Commerce extension value.</li></ul></td>
+<td style="text-align:left"><code>conversion_value</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Conversion Value</td>
 </tr>
 <tr>
-<td><code>conversion_currency</code></td>
-<td><ul><li>Conversion currency.</li></ul></td>
+<td style="text-align:left"><code>conversion_currency</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Conversion Currency</td>
 </tr>
 <tr>
-<td><code>pagetype</code></td>
-<td><ul><li>Page type.</li><li>Select a default page type here and use mapping to dynamically override this value.</li></ul></td>
+<td style="text-align:left"><code>user_id</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">User ID</td>
 </tr>
 <tr>
-<td><code>aw_merchant_id</code></td>
-<td><ul><li>AdWords Merchant Center ID</li></ul></td>
+<td style="text-align:left"><code>pagetype</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Page Type</td>
 </tr>
 <tr>
-<td><code>aw_feed_country</code></td>
-<td><ul><li>AdWords Feed Country</li></ul></td>
+<td style="text-align:left"><code>aw_merchant_id</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Merchant Center ID</td>
 </tr>
 <tr>
-<td><code>aw_feed_language</code></td>
-<td><ul><li>AdWords Feed Language</li></ul></td>
+<td style="text-align:left"><code>aw_feed_country</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Feed Country</td>
 </tr>
 <tr>
-<td><code>config.send_page_view)</code></td>
-<td><ul><li>Boolean</li><li>Send page view</li></ul></td>
+<td style="text-align:left"><code>aw_feed_language</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Feed Language</td>
 </tr>
 <tr>
-<td><code>conversion_cookie_prefix</code></td>
-<td><ul><li>Conversion cookie prefix.</li></ul></td>
+<td style="text-align:left"><code>config.send_page_view</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Send Page View.</td>
 </tr>
 <tr>
-<td><code>custom.myvar</code></td>
-<td><ul><li>Custom conversion variable.</li></ul></td>
+<td style="text-align:left"><code>conversion_cookie_prefix</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Conversion Cookie Prefix</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>custom.myvar</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Custom Conversion Variable</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>cross_track_domains</code></td>
+<td style="text-align:left">Comma-separated String</td>
+<td style="text-align:left">Cross-Tracking Domains</td>
 </tr>
 </tbody>
 </table>
@@ -932,30 +934,16 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>ecomm.prodid</code></td>
-<td><ul><li>E-commerce product ID.</li><li>Overrides <code>_cprod</code>.</li></ul></td>
-</tr>
-<tr>
-<td><code>ecomm.totalvalue</code></td>
-<td><ul><li>E-commerce total value.</li></ul></td>
-</tr>
-<tr>
-<td><code>ecomm.category</code></td>
-<td><ul><li>E-commerce category.</li><li>Overrides <code>_ccat</code>.</li></ul></td>
-</tr>
-<tr>
-<td><code>ecomm.pvalue</code></td>
-<td><ul><li>E-commerce price value.</li><li>Overrides <code>_cprice</code>.</li></ul></td>
-</tr>
-<tr>
-<td><code>ecomm.quantity</code></td>
-<td><ul><li>E-Commerce quantity.</li><li>Overrides <code>_cquan</code>.</li></ul></td>
+<td style="text-align:left"><code>rmkt.retail.id</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Unique Product ID (Overrides <code>_cprod</code>)</td>
 </tr>
 </tbody>
 </table>
@@ -963,18 +951,21 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>edu.pid</code></td>
-<td>Education pid</td>
+<td style="text-align:left"><code>rmkt.education.id</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Unique ID</td>
 </tr>
 <tr>
-<td><code>edu.plocid</code></td>
-<td>Education plocid</td>
+<td style="text-align:left"><code>rmkt.education.location_id</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Location ID</td>
 </tr>
 </tbody>
 </table>
@@ -982,30 +973,31 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>flight.originid</code></td>
-<td>Flight origin ID.</td>
+<td style="text-align:left"><code>rmkt.flights.origin</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Origin ID</td>
 </tr>
 <tr>
-<td><code>flight.destid</code></td>
-<td>Flight destination ID.</td>
+<td style="text-align:left"><code>rmkt.flights.destination</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Destination ID</td>
 </tr>
 <tr>
-<td><code>flight.totalvalue</code></td>
-<td>Flight total value.</td>
+<td style="text-align:left"><code>rmkt.flights.start_date</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Start Date</td>
 </tr>
 <tr>
-<td><code>flight.startdate</code></td>
-<td>Flight start date.</td>
-</tr>
-<tr>
-<td><code>flight.enddate</code></td>
-<td>Flight end date.</td>
+<td style="text-align:left"><code>rmkt.flights.end_date</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">End Date</td>
 </tr>
 </tbody>
 </table>
@@ -1013,26 +1005,26 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>hrental.id</code></td>
-<td>Hotel rental ID.</td>
+<td style="text-align:left"><code>rmkt.hotel_rental.id</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Property ID</td>
 </tr>
 <tr>
-<td><code>hrental.startdate</code></td>
-<td>Hotel rental start date.</td>
+<td style="text-align:left"><code>rmkt.hotel_rental.start_date</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Start Date</td>
 </tr>
 <tr>
-<td><code>hrental.enddate</code></td>
-<td>Hotel rental end date.</td>
-</tr>
-<tr>
-<td><code>hrental.totalvalue</code></td>
-<td>Hotel rental total value.</td>
+<td style="text-align:left"><code>rmkt.hotel_rental.end_date</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">End Date</td>
 </tr>
 </tbody>
 </table>
@@ -1040,22 +1032,21 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>job.id</code></td>
-<td>Job ID.</td>
+<td style="text-align:left"><code>rmkt.jobs.id</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Job ID</td>
 </tr>
 <tr>
-<td><code>job.locid</code></td>
-<td>Job location ID.</td>
-</tr>
-<tr>
-<td><code>job.totalvalue</code></td>
-<td>Job total value.</td>
+<td style="text-align:left"><code>rmkt.jobs.location_id</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Location ID</td>
 </tr>
 </tbody>
 </table>
@@ -1063,37 +1054,33 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>local.id</code></td>
-<td>Local ID.</td>
-</tr>
-<tr>
-<td><code>local.totalvalue</code></td>
-<td>Local total value.</td>
+<td style="text-align:left"><code>rmkt.local.id</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Deal ID</td>
 </tr>
 </tbody>
 </table>
-<h4 id="real-estate">Real Estate</h4>
+<h3 id="real-estate">Real Estate</h3>
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>listing.id</code></td>
-<td>Real estate listing ID.</td>
-</tr>
-<tr>
-<td><code>listing.totalvalue</code></td>
-<td>Real estate listing total value.</td>
+<td style="text-align:left"><code>rmkt.real_estate.id</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Listing ID</td>
 </tr>
 </tbody>
 </table>
@@ -1101,53 +1088,174 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>travel.destid</code></td>
-<td>Travel destination ID.</td>
+<td style="text-align:left"><code>rmkt.travel.origin</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Origin ID</td>
 </tr>
 <tr>
-<td><code>travel.originid</code></td>
-<td>Travel origin ID.</td>
+<td style="text-align:left"><code>rmkt.travel.destination</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Destination ID</td>
 </tr>
 <tr>
-<td><code>travel.startdate</code></td>
-<td>Travel start date.</td>
+<td style="text-align:left"><code>rmkt.travel.start_date</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Start Date</td>
 </tr>
 <tr>
-<td><code>travel.enddate</code></td>
-<td>Travel end date.</td>
-</tr>
-<tr>
-<td><code>travel.totalvalue</code></td>
-<td>Travel total value.</td>
+<td style="text-align:left"><code>rmkt.travel.end_date</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">End Date</td>
 </tr>
 </tbody>
 </table>
-<h3 id="other">Other</h3>
+<h3 id="custom--legacy">Custom / Legacy</h3>
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>dynx.itemid</code></td>
-<td>Item ID</td>
+<td style="text-align:left"><code>rmkt.custom.id</code></td>
+<td style="text-align:left">Array. Custom ID</td>
 </tr>
 <tr>
-<td><code>dynx.itemid2</code></td>
-<td>Item ID 2</td>
+<td style="text-align:left"><code>rmkt.custom.location_id</code></td>
+<td style="text-align:left">Array. Custom Location ID/ID2</td>
 </tr>
 <tr>
-<td><code>dynx.totalvalue</code></td>
-<td>Item total value</td>
+<td style="text-align:left"><code>ecomm.prodid</code></td>
+<td style="text-align:left">ecomm.prodid  (Overrides <code>_cprod</code>)</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ecomm.totalvalue</code></td>
+<td style="text-align:left">ecomm.totalvalue</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ecomm.category</code></td>
+<td style="text-align:left">ecomm.category (Overrides <code>_ccat</code>)</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ecomm.pvalue</code></td>
+<td style="text-align:left">ecomm.pvalue (Overrides <code>_cprice</code>)</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ecomm.quantity</code></td>
+<td style="text-align:left">ecomm.quantity (Overrides <code>_cquan</code>)</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>edu.pid</code></td>
+<td style="text-align:left">edu.pid</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>edu.plocid</code></td>
+<td style="text-align:left">edu.plocid</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>flight.originid</code></td>
+<td style="text-align:left">flight.originid</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>flight.destid</code></td>
+<td style="text-align:left">flight.destid</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>flight.totalvalue</code></td>
+<td style="text-align:left">flight.totalvalue</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>flight.startdate</code></td>
+<td style="text-align:left">flight.startdate</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>flight.enddate</code></td>
+<td style="text-align:left">flight.enddate</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>hrental.id</code></td>
+<td style="text-align:left">hrental.id</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>hrental.startdate</code></td>
+<td style="text-align:left">hrental.startdate</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>hrental.enddate</code></td>
+<td style="text-align:left">hrental.enddate</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>hrental.totalvalue</code></td>
+<td style="text-align:left">hrental.totalvalue</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>job.id</code></td>
+<td style="text-align:left">job.id</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>job.locid</code></td>
+<td style="text-align:left">job.locid</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>job.totalvalue</code></td>
+<td style="text-align:left">job.totalvalue</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>local.id</code></td>
+<td style="text-align:left">local.id</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>local.totalvalue</code></td>
+<td style="text-align:left">local.totalvalue</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>listing.id</code></td>
+<td style="text-align:left">listing.id</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>listing.totalvalue</code></td>
+<td style="text-align:left">listing.totalvalue</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>travel.destid</code></td>
+<td style="text-align:left">travel.destid</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>travel.originid</code></td>
+<td style="text-align:left">travel.originid</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>travel.startdate</code></td>
+<td style="text-align:left">travel.startdate</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>travel.enddate</code></td>
+<td style="text-align:left">travel.enddate</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>travel.totalvalue</code></td>
+<td style="text-align:left">travel.totalvalue</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>dynx.itemid</code></td>
+<td style="text-align:left">dynx.itemid</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>dynx.itemid2</code></td>
+<td style="text-align:left">dynx.itemid2</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>dynx.totalvalue</code></td>
+<td style="text-align:left">dynx.totalvalue</td>
 </tr>
 </tbody>
 </table>
@@ -1155,46 +1263,56 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>custom.ecomm_rec_prodid</code></td>
-<td>Recommended Product IDs</td>
+<td style="text-align:left"><code>custom.ecomm_rec_prodid</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Recommended Product IDs</td>
 </tr>
 <tr>
-<td><code>custom.a</code></td>
-<td>Visitor&rsquo;s age</td>
+<td style="text-align:left"><code>custom.a</code></td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">Visitor&rsquo;s Age</td>
 </tr>
 <tr>
-<td><code>custom.g</code></td>
-<td>Visitor&rsquo;s gender</td>
+<td style="text-align:left"><code>custom.g</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Visitor&rsquo;s Gender</td>
 </tr>
 <tr>
-<td><code>custom.hasaccount</code></td>
-<td>Visitor has account.</td>
+<td style="text-align:left"><code>custom.hasaccount</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Visitor Has Account</td>
 </tr>
 <tr>
-<td><code>custom.cqs</code></td>
-<td>Custom quality score.</td>
+<td style="text-align:left"><code>custom.cqs</code></td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">Customer Quality Score</td>
 </tr>
 <tr>
-<td><code>custom.rp</code></td>
-<td>Repeat purchaser.</td>
+<td style="text-align:left"><code>custom.rp</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Repeat Purchaser</td>
 </tr>
 <tr>
-<td><code>custom.ly</code></td>
-<td>Visitor loyalty score.</td>
+<td style="text-align:left"><code>custom.ly</code></td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">Visitor Loyalty Score</td>
 </tr>
 <tr>
-<td><code>custom.hs</code></td>
-<td>Visitor high spender score.</td>
+<td style="text-align:left"><code>custom.hs</code></td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">Visitor High Spender Score</td>
 </tr>
 <tr>
-<td><code>custom.myvar</code></td>
-<td>Custom</td>
+<td style="text-align:left"><code>custom.myvar</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Custom</td>
 </tr>
 </tbody>
 </table>
@@ -1202,30 +1320,36 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>config.phone_conversion_number</code></td>
-<td><ul><li>Phone conversion number</li></ul></td>
+<td style="text-align:left"><code>config.phone_conversion_number</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Phone Conversion Number</td>
 </tr>
 <tr>
-<td><code>config.phone_conversion_callback</code></td>
-<td><ul><li>Function</li><li>Phone conversion callback</li></ul></td>
+<td style="text-align:left"><code>config.phone_conversion_callback</code></td>
+<td style="text-align:left">Function</td>
+<td style="text-align:left">Phone Conversion Callback</td>
 </tr>
 <tr>
-<td><code>config.phone_conversion_css_class</code></td>
-<td><ul><li>String</li><li>Phone conversion CSS class name.</li></ul></td>
+<td style="text-align:left"><code>config.phone_conversion_css_class</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Phone Conversion CSS Class Name</td>
 </tr>
 <tr>
-<td><code>config.phone_conversion_options.timeout</code></td>
-<td><ul><li>Number</li><li>Phone conversion timeout.</li></ul></td>
+<td style="text-align:left"><code>config.phone_conversion_options.timeout</code></td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">Phone Conversion Timeout</td>
 </tr>
 <tr>
-<td><code>config.phone_conversion_options.cache</code></td>
-<td><ul><li>Boolean</li><li>Phone conversion cache.</li></ul></td>
+<td style="text-align:left"><code>config.phone_conversion_options.cache</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Phone Conversion Cache</td>
 </tr>
 </tbody>
 </table>
@@ -1233,42 +1357,51 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>order_id</code></td>
-<td><ul><li>Order ID.</li><li>Overrides <code>_corder</code>.</li></ul></td>
+<td style="text-align:left"><code>order_id</code> (Overrides <code>_corder</code>)</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Order ID</td>
 </tr>
 <tr>
-<td><code>order_subtotal</code></td>
-<td><ul><li>Order subtotal.</li><li>Overrides <code>_csubtotal</code>.</li></ul></td>
+<td style="text-align:left"><code>order_subtotal</code> (Overrides <code>_csubtotal</code>)</td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">Sub Total</td>
 </tr>
 <tr>
-<td><code>order_currency</code></td>
-<td><ul><li>Order currency.</li><li>Overrides <code>_ccurrency</code>.</li></ul></td>
+<td style="text-align:left"><code>order_currency</code> (Overrides <code>_ccurrency</code>)</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Currency</td>
 </tr>
 <tr>
-<td><code>product_id</code></td>
-<td><ul><li>Array</li><li>List of Product IDs.</li><li>Overrides <code>_cprod</code>.</li></ul></td>
+<td style="text-align:left"><code>product_id</code> (Overrides <code>_cprod</code>)</td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">List of Product IDs</td>
 </tr>
 <tr>
-<td><code>product_category</code></td>
-<td><ul><li>Array</li><li>List of Categories.</li><li>Overrides <code>_ccat</code>.</li></ul></td>
+<td style="text-align:left"><code>product_category</code> (Overrides <code>_ccat</code>)</td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">List of Categories</td>
 </tr>
 <tr>
-<td><code>product_quantity</code></td>
-<td><ul><li>Array</li><li>List of Quantities.</li><li>Overrides <code>_cquan</code>.</li></ul></td>
+<td style="text-align:left"><code>product_quantity</code> (Overrides <code>_cquan</code>)</td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">List of Quantities</td>
 </tr>
 <tr>
-<td><code>product_unit_price</code></td>
-<td><ul><li>Array</li><li>List of prices.</li><li>Overrides <code>_cprice</code>.</li></ul></td>
+<td style="text-align:left"><code>product_unit_price</code> (Overrides <code>_cprice</code>)</td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">List of Prices</td>
 </tr>
 <tr>
-<td><code>product_discount</code></td>
-<td><ul><li>Array</li><li>List of discounts.</li><li>Overrides <code>_cdisc</code>.</li></ul></td>
+<td style="text-align:left"><code>product_discount</code> (Overrides <code>_cdisc</code>)</td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">List of Discounts</td>
 </tr>
 </tbody>
 </table>
@@ -1276,125 +1409,128 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>gtag_enable_tcf_support</code></td>
-<td><ul><li>Enable TCF support.</li><li>Values are <code>true</code> or <code>false</code>.</li></ul></td>
+<td style="text-align:left"><code>gtag_enable_tcf_support</code> (true/false)</td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Enable TCF Support</td>
 </tr>
 </tbody>
 </table>
 <h3 id="iab-transparency-and-consent-framework-v2">IAB Transparency and Consent Framework v2</h3>
+<p>To map events, refer to <a href="/iq-tag-management/data-mappings/manage/#add-an-event-mapping">Create an Event Mapping</a></p>
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>&lt;Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>exception</code></td>
-<td>Exception</td>
+<td style="text-align:left"><code>exception</code></td>
+<td style="text-align:left">An exception event is logged when the normal flow of an app&rsquo;s execution is interrupted.</td>
 </tr>
 <tr>
-<td><code>generate_lead</code></td>
-<td>Generate lead</td>
+<td style="text-align:left"><code>generate_lead</code></td>
+<td style="text-align:left">A lead has been generated. This variable helps you understand how effective your re-engagement campaigns are.</td>
 </tr>
 <tr>
-<td><code>login</code></td>
-<td>Login</td>
+<td style="text-align:left"><code>login</code></td>
+<td style="text-align:left">A user has logged in.</td>
 </tr>
 <tr>
-<td><code>page_view</code></td>
-<td>Page view</td>
+<td style="text-align:left"><code>page_view</code></td>
+<td style="text-align:left">A user has viewed a page.</td>
 </tr>
 <tr>
-<td><code>screen_view</code></td>
-<td>Screen view</td>
+<td style="text-align:left"><code>screen_view</code></td>
+<td style="text-align:left">The user transitions to a new screen.</td>
 </tr>
 <tr>
-<td><code>search</code></td>
-<td>Search</td>
+<td style="text-align:left"><code>search</code></td>
+<td style="text-align:left">The user has performed a search. You can use this event to contextualize search operations to identify the content that users are searching for on your website or app. For example, you can send this event when a user views a page after performing a search.</td>
 </tr>
 <tr>
-<td><code>share</code></td>
-<td>Share</td>
+<td style="text-align:left"><code>share</code></td>
+<td style="text-align:left">Use this event when a user has shared content.</td>
 </tr>
 <tr>
-<td><code>sign_up</code></td>
-<td>Sign up</td>
+<td style="text-align:left"><code>sign_up</code></td>
+<td style="text-align:left">The user registers for the site or service.</td>
 </tr>
 <tr>
-<td><code>timing_complete</code></td>
-<td>Timing complete</td>
+<td style="text-align:left"><code>timing_complete</code></td>
+<td style="text-align:left">The user completes a process.</td>
 </tr>
 <tr>
-<td><code>view_search_results</code></td>
-<td>View search results</td>
+<td style="text-align:left"><code>view_search_results</code></td>
+<td style="text-align:left">The user has been presented with the results of a search. Note that you can enable the <code>view_search_results</code> event for automatic collection through enhanced event measurement in Google Analytics.</td>
 </tr>
 <tr>
-<td><code>cst</code></td>
-<td>Custom</td>
+<td style="text-align:left"><code>cst</code></td>
+<td style="text-align:left">Custom event.</td>
 </tr>
 <tr>
-<td><code>add_payment_info</code></td>
-<td>Add payment info</td>
+<td style="text-align:left"><code>add_payment_info</code></td>
+<td style="text-align:left">A user has submitted their payment information.</td>
 </tr>
 <tr>
-<td><code>add_to_cart</code></td>
-<td>Add to cart</td>
+<td style="text-align:left"><code>add_to_cart</code></td>
+<td style="text-align:left">An item was added to a cart for purchase.</td>
 </tr>
 <tr>
-<td><code>add_to_wishlist</code></td>
-<td><code>add_to_wishlist</code></td>
+<td style="text-align:left"><code>add_to_wishlist</code></td>
+<td style="text-align:left">An item was added to a wishlist. Use this event to identify popular gift items in your app.</td>
 </tr>
 <tr>
-<td><code>begin_checkout</code></td>
-<td><code>begin_checkout</code></td>
+<td style="text-align:left"><code>begin_checkout</code></td>
+<td style="text-align:left">A user has begun a checkout.</td>
 </tr>
 <tr>
-<td><code>checkout_progress</code></td>
-<td><code>checkout_progress</code></td>
+<td style="text-align:left"><code>checkout_progress</code></td>
+<td style="text-align:left">A user is in the process of checking out.</td>
 </tr>
 <tr>
-<td><code>purchase</code></td>
-<td>purchase</td>
+<td style="text-align:left"><code>purchase</code></td>
+<td style="text-align:left">One or more items is purchased by a user.</td>
 </tr>
 <tr>
-<td><code>refund</code></td>
-<td>refund</td>
+<td style="text-align:left"><code>refund</code></td>
+<td style="text-align:left">One or more items is refunded to a user.</td>
 </tr>
 <tr>
-<td><code>remove_from_cart</code></td>
-<td>Remove from cart</td>
+<td style="text-align:left"><code>remove_from_cart</code></td>
+<td style="text-align:left">An item was removed from a cart.</td>
 </tr>
 <tr>
-<td><code>product_click</code></td>
-<td>Product click</td>
+<td style="text-align:left"><code>product_click</code></td>
+<td style="text-align:left">An item was selected from a list.</td>
 </tr>
 <tr>
-<td><code>promotion_click</code></td>
-<td>Promotion click</td>
+<td style="text-align:left"><code>promotion_click</code></td>
+<td style="text-align:left">A promotion was selected from a list.</td>
 </tr>
 <tr>
-<td><code>set_checkout_option</code></td>
-<td>Set checkout option</td>
+<td style="text-align:left"><code>set_checkout_option</code></td>
+<td style="text-align:left">The user selected a checkout option, such as a shipping method.</td>
 </tr>
 <tr>
-<td><code>view_item</code></td>
-<td>View item</td>
+<td style="text-align:left"><code>view_item</code></td>
+<td style="text-align:left">Content was shown to the user. Use this event to discover the most popular items viewed.</td>
 </tr>
 <tr>
-<td><code>view_item_list</code></td>
-<td>View item list</td>
+<td style="text-align:left"><code>view_item_list</code></td>
+<td style="text-align:left">The user has been presented with a list of items of a certain category.</td>
 </tr>
 <tr>
-<td><code>view_promotion</code></td>
-<td>View promotion</td>
+<td style="text-align:left"><code>view_promotion</code></td>
+<td style="text-align:left">A promotion was viewed from a list.</td>
 </tr>
 </tbody>
 </table>
@@ -1402,54 +1538,86 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>config.allow_enhanced_conversions</code></td>
-<td>Allow Enhanced Conversions</td>
+<td style="text-align:left"><code>config.allow_enhanced_conversions</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Allow Enhanced Conversions.</td>
 </tr>
 <tr>
-<td><code>user_data.email</code></td>
-<td>Required. Email Address.</td>
+<td style="text-align:left"><code>user_data.email</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Email Address</td>
 </tr>
 <tr>
-<td><code>user_data.phone_number</code></td>
-<td>Required. Phone Number.</td>
+<td style="text-align:left"><code>user_data.sha256_email_address</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Hashed Email Address</td>
 </tr>
 <tr>
-<td><code>user_data.address.first_name</code></td>
-<td>Required. First Name.</td>
+<td style="text-align:left"><code>user_data.phone_number</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Phone Number</td>
 </tr>
 <tr>
-<td><code>user_data.address.last_name</code></td>
-<td>Required. Last Name.</td>
+<td style="text-align:left"><code>user_data.sha256_phone_number</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Hashed Phone Number</td>
 </tr>
 <tr>
-<td><code>user_data.address.street</code></td>
-<td>Street Address.</td>
+<td style="text-align:left"><code>user_data.address.first_name</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">First Name</td>
 </tr>
 <tr>
-<td><code>user_data.address.city</code></td>
-<td>City.</td>
+<td style="text-align:left"><code>user_data.address.sha256_first_name</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Hashed First Name</td>
 </tr>
 <tr>
-<td><code>user_data.address.region</code></td>
-<td>Region.</td>
+<td style="text-align:left"><code>user_data.address.last_name</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Last Name</td>
 </tr>
 <tr>
-<td><code>user_data.address.postal_code</code></td>
-<td>Required. Postal Code.</td>
+<td style="text-align:left"><code>user_data.address.sha256_last_name</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Hashed Last Name</td>
 </tr>
 <tr>
-<td><code>user_data.address.country</code></td>
-<td>Required. Country.</td>
+<td style="text-align:left"><code>user_data.address.street</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Street Address</td>
 </tr>
 <tr>
-<td><code>user_data.transaction_id</code></td>
-<td>Required. Transaction ID.</td>
+<td style="text-align:left"><code>user_data.address.city</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">City</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>user_data.address.region</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Region</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>user_data.address.postal_code</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Postal Code</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>user_data.address.country</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Country</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>transaction_id</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Required. Transaction ID</td>
 </tr>
 </tbody>
 </table>
@@ -1513,7 +1681,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 11, 2022 
+          <p>This page was last updated:  April 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1527,9 +1695,10 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-tips">Tag Tips</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag Configuration</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data Mappings</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-tips">Tag tips</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag configuration</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules">Load rules</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data mappings</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#standard">Standard</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#retail">Retail</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#education">Education</a></li>
@@ -1537,8 +1706,9 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#hotel-and-rentals">Hotel and Rentals</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#jobs">Jobs</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#local">Local</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#real-estate">Real Estate</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#travel">Travel</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#other">Other</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#custom--legacy">Custom / Legacy</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#advanced">Advanced</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#phone-conversion">Phone Conversion</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#e-commerce">E-Commerce</a></li>

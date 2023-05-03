@@ -348,19 +348,29 @@ var utag_data = {
 <p>To install the AdobeVisitor module with CocoaPods, add the following pod to your podfile:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>pod <span style="color:#e6db74">&#39;TealiumAdobeVisitorAPI&#39;</span>
 </span></span></code></pre></div><p>Learn more about the <a href="/platforms/ios-swift/install/#cocoapods">CocoaPods installation for iOS</a>.</p>
-<h3 id="swift-package-manager">Swift Package Manager</h3>
-<p>To install the AdobeVisitor module with Swift Package Manager, import the <a href="https://github.com/Tealium/tealium-swift-adobe-visitor-api"><code>TealiumAdobeVisitorAPI</code></a> library, and then add add <code>Collectors.AdobeVisitor</code> to your existing list of collectors.</p>
+<h3 id="swift-package-manager-recommended">Swift Package Manager (Recommended)</h3>
+<p>Swift Package Manager is the recommended way to install the Tealium Swift library:</p>
+<ol>
+<li>In your Xcode project, select <strong>File &gt; Swift Packages &gt; Add Package Dependency</strong>.</li>
+<li>Enter the repository URL: <code>https://github.com/Tealium/tealium-swift-adobe-visitor-api</code>.</li>
+<li>Configure the version rules. The default, <code>&quot;Up to next major&quot;</code>, is recommended. If the current Tealium Swift library version does not appear in the list, reset your Swift package cache.</li>
+<li>Select the <code>TealiumAdobeVisitorAPI</code> module from the list of modules to install. Add the module to each of your app targets in your Xcode project under <strong>Frameworks &gt; Libraries &amp; Embedded Content</strong>.</li>
+</ol>
+<p>Learn more about the <a href="https://docs.tealium.com/platforms/ios-swift/install/#swift-package-manager-recommended">Swift Package Manager</a> installation for iOS.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TealiumAdobeVisitorAPI</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
 </span></span><span style="display:flex;"><span>    profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
 </span></span><span style="display:flex;"><span>    environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>)
 </span></span><span style="display:flex;"><span>config.collectors = [Collectors.AppData,
+</span></span><span style="display:flex;"><span>    Collectors.Connectivity,
+</span></span><span style="display:flex;"><span>    Collectors.Device,
 </span></span><span style="display:flex;"><span>    Collectors.Lifecycle,
 </span></span><span style="display:flex;"><span>    Collectors.AdobeVisitor]
 </span></span><span style="display:flex;"><span>config.dispatchers = [Dispatchers.Collect]
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">self</span>.tealium = Tealium(config: config)
-</span></span></code></pre></div><p>Learn more about the <a href="/platforms/ios-swift/install/#swift-package-manager-recommended">Swift Package Manager installation for iOS</a>.</p>
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>Review the <a href="/platforms/ios-swift/modules/#collectors">Collectors</a> documentation to understand how to correctly specify the collectors you require.</p>
+<p>Learn more about the <a href="/platforms/ios-swift/install/#swift-package-manager-recommended">Swift Package Manager installation for iOS</a>.</p>
 
 </div>
 
@@ -421,7 +431,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  March 3, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -440,7 +450,7 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#install">Install</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#carthage">Carthage</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#cocoapods">CocoaPods</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#swift-package-manager">Swift Package Manager</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#swift-package-manager-recommended">Swift Package Manager (Recommended)</a></li>
               </nav>
   </aside></nav>
 

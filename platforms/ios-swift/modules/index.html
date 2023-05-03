@@ -319,7 +319,7 @@ var utag_data = {
 <p>All modules have a dependency on <code>TealiumCore</code>. Modules are separated into <code>Collectors</code> and <code>Dispatchers</code> depending on their purpose.</p>
 <h2 id="collectors">Collectors</h2>
 <p>Collectors are modules that gather supplemental information from the device and append it to the data layer before it&rsquo;s transmitted to the Tealium Customer Data Hub. Some collectors are included in the core library, while others are optional and installed as separate modules.</p>
-<p>The following table lists the available collectors. Default collectors are denoted by a <code>*</code> next to the collector name.</p>
+<p>The following table lists the available collectors.</p>
 <table>
 <thead>
 <tr>
@@ -341,7 +341,7 @@ var utag_data = {
 <td><code>Collectors.Connectivity</code></td>
 </tr>
 <tr>
-<td><code>Device</code></td>
+<td><code>Device</code>*</td>
 <td><code>Collectors.Device</code></td>
 </tr>
 <tr>
@@ -366,7 +366,7 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<p>These modules are included with the core library, but are enabled or disabled using the <code>TealiumConfig</code> <code>collectors</code> property as described below</p>
+<p>Modules marked with an asterisk (<code>*</code>) are included with the core library. They are enabled by default, but can be disabled using the <code>TealiumConfig</code> <code>collectors</code> property as described below.</p>
 <h3 id="usage">Usage</h3>
 <p>To add a <code>Collector</code>, specify it in the <code>collectors</code> property of the <code>TealiumConfig</code> instance:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TealiumCore</span>
@@ -378,8 +378,10 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>                               datasource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Adds desired Collectors. If omitted, default Collectors are added.</span>
-</span></span><span style="display:flex;"><span>config.collectors = [Collectors.AppData, Collectors.Lifecycle]                               
+</span></span><span style="display:flex;"><span>config.collectors = [Collectors.AppData, Collectors.Device, Collectors.Connectivity, Collectors.Lifecycle]                               
 </span></span></code></pre></div><p>To only use the default collectors, omit or comment out the <code>config.collectors</code> line from your initialization code.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>When adding new collectors, be sure to also include <code>Collectors.Device</code> and <code>Collectors.Connectivity</code> in the array, otherwise these collectors will be disabled.</p>
+<p>The AppData collector can&rsquo;t be disabled, because it collects critical information, such as the Tealium Visitor ID.</p>
 <h3 id="custom-collectors">Custom Collectors</h3>
 <p>Although custom collectors are generally not required, it is possible to build a custom collector by creating your own class conforming to the <code>Collector</code> protocol. The following example shows a simple collector that gathers the current weekday and appends it to the data layer for each tracking call.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyDateCollector</span>: Collector {
@@ -498,7 +500,7 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="recommended-modules">Recommended Modules</h2>
 <h3 id="base-implementation">Base Implementation</h3>
-<p>For a base implementation, the following list of modules are recommended. At least one <code>Dispatcher</code> needs to be enabled, depending on which Tealium products you plan to use.</p>
+<p>For a base implementation, the following list of modules is recommended. At least one <code>Dispatcher</code> needs to be enabled, depending on which Tealium products you plan to use.</p>
 <ul>
 <li>AppData Collector</li>
 <li>Device Collector</li>
@@ -584,7 +586,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  March 3, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
