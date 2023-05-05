@@ -444,6 +444,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/line-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".line-connector">LINE</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/line-audiences-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".line-audiences-connector">LINE Audiences</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/linkedin-matched-audiences-connector-setup-guide/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".linkedin-matched-audiences-connector-setup-guide">LinkedIn Matched Audiences</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/listrak-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".listrak-connector">Listrak</a>
@@ -717,7 +719,7 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
-<p>The Snapchat Conversions connector uses the Snap Conversions API. Snap’s Conversions API is a structured, privacy-centric interface that allows you to directly pass web, app, and offline events to Snap via a Server-to-Server (S2S) integration. This API supports similar event tracking as the Snap Pixel and broken out into the Device Type used to make the conversion as well. This trigger allows for the Snap App ID to be used (in the case of a mobile conversion) and the Pixel ID (web and offline conversion events).</p>
+<p>The Snapchat Conversions connector uses the Snap Conversions API. The Snap Conversions API is a structured, privacy-centric interface that allows you to directly pass web, app, and offline events to Snap via a Server-to-Server (S2S) integration. This API supports similar event tracking as the Snap Pixel and broken out into the Device Type used to make the conversion as well. This trigger allows for the Snap App ID to be used for mobile conversions and the Pixel ID for web and offline conversion events.</p>
 <p>Snap Conversions API can be deployed standalone or in-conjunction with the client side Snap Pixel.</p>
 <p>For more information about Snap&rsquo;s Conversions API, see the <a href="https://businesshelp.snapchat.com/s/article/conversions-api?language=en_US">Conversion API</a> article in the Snapchat documentation.</p>
 <h2 id="api-information">API Information</h2>
@@ -750,16 +752,24 @@ var utag_data = {
 <p>The Snap Conversions API can be used as a standalone API or alongside other Snapchat solutions. To minimize signal loss and create more efficient results, Tealium recommends passing the same events through the Snap Conversion API that you have configured in your Snap Pixel.</p>
 <p>Snap Conversions API shows only Event Deduplication if the following conditions are met:</p>
 <ul>
-<li>
-<p>Snap App ID and/or Pixel ID has multiple sources (API, SDK, etc.)</p>
-</li>
-<li>
-<p>Events are for the same conversion type (Web, App, or Offline)</p>
-</li>
-<li>
-<p>The selected event is added on 2 or more sources</p>
-</li>
+<li>Snap App ID and/or Pixel ID has multiple sources (API, SDK, etc.)</li>
+<li>Events are for the same conversion type (Web, App, or Offline)</li>
+<li>The selected event is added on 2 or more sources</li>
 </ul>
+<p>Tealium has deduplication recommendations based on your integration configuration:</p>
+<ul>
+<li><strong>Single source redundancy</strong> - The duplication of events sent in the same integration.<br>
+If you send the a conversion multiple times through the same integration source, we highly recommend passing consistent information.</li>
+<li><strong>Cross source redundancy</strong> - The duplication of events sent from multiple integrations.<br>
+When sending data from multiple integrations, we recommend sending redundant data to ensure the best optimization, targeting, and measurement capabilities.</li>
+</ul>
+<p>Depending on your deduplication use case, use the following parameters:</p>
+<ul>
+<li><strong>Client dedup ID</strong> - Deduplicates unique events for web and offline channels. Allows for a 48 hour deduplication window.</li>
+<li><strong>Transaction ID</strong> - Eligible for deduplicating purchase events for all channels (web, mobile, and offline). Allows for a 30 day deduplication window.</li>
+<li><strong>Mobile Ad ID</strong> - Use a shared device identifier like AAID or hashed IDFV for unique event deduplication.</li>
+</ul>
+<p>For more information, see the <a href="https://marketingapi.snapchat.com/docs/conversion.html#deduplication">Deduplication section</a> of the Snap Conversions API documentation.</p>
 <h2 id="connector-actions">Connector Actions</h2>
 <table>
 <thead>
@@ -787,134 +797,134 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Parameter</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Event Type</td>
-<td style="text-align:left"><ul><li>Select event type from drop-down list.</li></ul></td>
+<td>Event Type</td>
+<td><ul><li>Select event type from drop-down list.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Event Conversion Type</td>
-<td style="text-align:left"><ul><li>Select event conversion type from drop-down list.</li></ul></td>
+<td>Event Conversion Type</td>
+<td><ul><li>Where the event took place. For example, offline, web, or mobile app.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Pixel ID</td>
-<td style="text-align:left"><ul><li>The Pixel ID associated with your Ad Account.</li></ul></td>
+<td>Pixel ID</td>
+<td><ul><li>The Pixel ID associated with your Ad Account.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">App ID</td>
-<td style="text-align:left"><ul><li>The unique ID assigned for a given application.</li><li>Numeric for iOS.</li><li>Google Advertising ID (GAID) for Android.</li></ul></td>
+<td>App ID</td>
+<td><ul><li>The unique ID assigned for a given application.</li><li>Numeric for iOS.</li><li>Google Android Advertising ID (AAID).</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Snap App ID</td>
-<td style="text-align:left"><ul><li>The Snap App ID associated with your app (a unique code generated in Ads Manager and included in your MMP dashboard).</li></ul></td>
+<td>Snap App ID</td>
+<td><ul><li>The Snap App ID associated with your app (a unique code generated in Ads Manager and included in your MMP dashboard).</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Event Tag</td>
-<td style="text-align:left"><ul><li>Custom event set label.</li><li>Example: in-store, weekend sales, back-to-school campaign</li><li>May be used for future tagging and audience targeting.</li></ul></td>
+<td>Event Tag</td>
+<td><ul><li>Custom event set label.</li><li>Example: in-store, weekend sales, back-to-school campaign</li><li>May be used for future tagging and audience targeting.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Timestamp</td>
-<td style="text-align:left"><ul><li>The Epoch timestamp for the conversion happening.</li><li>If this field is not mapped, it will be initialized with the current timestamp.</li></ul></td>
+<td>Timestamp</td>
+<td><ul><li>The Epoch timestamp for the conversion happening.</li><li>If this field is not mapped, it will be initialized with the current timestamp.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Description</td>
-<td style="text-align:left"><ul><li>A string description for additional information.</li></ul></td>
+<td>Description</td>
+<td><ul><li>A string description for additional information.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Number Items</td>
-<td style="text-align:left"><ul><li>Number of items (integer, singular value).</li><li>If this field is mapped to array, it will be converted to the sum of array elements.</li></ul></td>
+<td>Number Items</td>
+<td><ul><li>Number of items (integer, singular value).</li><li>If this field is mapped to array, it will be converted to the sum of array elements.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Currency</td>
-<td style="text-align:left"><ul><li>Standard ISO 4217 code.</li><li>Example: <code>EUR</code>, <code>USD</code>, <code>JPY</code>.</li></ul></td>
+<td>Currency</td>
+<td><ul><li>Standard ISO 4217 code.</li><li>Example: <code>EUR</code>, <code>USD</code>, <code>JPY</code>.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Transaction ID</td>
-<td style="text-align:left"><ul><li>Transaction ID or order ID tied to the conversion event.</li></ul></td>
+<td>Transaction ID</td>
+<td><ul><li>Transaction ID or order ID tied to the conversion event.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Level</td>
-<td style="text-align:left"><ul><li>Represents a level in the context of a game.</li></ul></td>
+<td>Level</td>
+<td><ul><li>Represents a level in the context of a game.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Client Dedup ID</td>
-<td style="text-align:left"><ul><li>ID that is used to identify this single request.</li><li>Used to differentiate this request from other requests in the same batch. </li></ul>Note: This is an advanced feature; first ensure that you are confident with your approach if using this as a deduplication key.</td>
+<td>Client Dedup ID</td>
+<td><ul><li>ID that is used to identify this single request.</li><li>Used to differentiate this request from other requests in the same batch. </li></ul>Note: This is an advanced feature; first ensure that you are confident with your approach if using this as a deduplication key.</td>
 </tr>
 <tr>
-<td style="text-align:left">Data Use</td>
-<td style="text-align:left"><ul><li>For iOS 14.5 and above users, indicate if we should treat the event as opt-in or opt-out.</li><li>For <code>OPT_OUT</code> user events, value is a list with only the value of <code>lmu</code>.</li></ul></td>
+<td>Data Use</td>
+<td><ul><li>For iOS 14.5 and above users, indicate if we should treat the event as opt-in or opt-out.</li><li>For <code>OPT_OUT</code> user events, value is a list with only the value of <code>lmu</code>.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Search String</td>
-<td style="text-align:left"><ul><li>The text that was searched for.</li></ul></td>
+<td>Search String</td>
+<td><ul><li>The text that was searched for.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Page Url</td>
-<td style="text-align:left"><ul><li>The URL of the web page where the event took place.</li><li>Must include protocol.</li></ul></td>
+<td>Page Url</td>
+<td><ul><li>The URL of the web page where the event took place.</li><li>Must include protocol.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Sign Up Method</td>
-<td style="text-align:left"><ul><li>A string indicating the sign up method, such as <code>Facebook</code>, <code>Email</code>, or <code>Twitter</code>.</li></ul></td>
+<td>Sign Up Method</td>
+<td><ul><li>A string indicating the sign up method, such as <code>Facebook</code>, <code>Email</code>, or <code>Twitter</code>.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Item Category</td>
-<td style="text-align:left"><ul><li>Category of item(s).</li></ul></td>
+<td>Item Category</td>
+<td><ul><li>Category of item(s).</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Item ID</td>
-<td style="text-align:left"><ul><li>International Article Number (EAN), when applicable, or other product or category identifier.</li><li>Map array and list values to keys to be passed to Snapchat.</li><li>All arrays and lists should be of equal length.</li><li>Single value attribute will be converted to array containing single value.</li></ul></td>
+<td>Item ID</td>
+<td><ul><li>International Article Number (EAN), when applicable, or other product or category identifier.</li><li>Map array and list values to keys to be passed to Snapchat.</li><li>All arrays and lists should be of equal length.</li><li>Single value attribute will be converted to array containing single value.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Price</td>
-<td style="text-align:left"><ul><li>Price of the item.</li></ul></td>
+<td>Price</td>
+<td><ul><li>Price of the item.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Email Address (apply SHA256 hashed)</td>
-<td style="text-align:left"><ul><li>Provide a plain text email address and the connector will hash this value in the format Snapchat expects.</li><li>Empty or null hashed values are ignored.</li></ul></td>
+<td>Email Address (apply SHA256 hashed)</td>
+<td><ul><li>Provide a lowercased plain text email address and the connector will hash this value in the format Snapchat expects.</li><li>Empty or null hashed values are ignored.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Email Address (already SHA256 hash)</td>
-<td style="text-align:left"><ul><li>Provide an email address that has been SHA256 hashed.</li></ul></td>
+<td>Email Address (already SHA256 hash)</td>
+<td><ul><li>Provide an email address that has been SHA256 hashed.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Mobile Ad ID (already SHA256 hashed)</td>
-<td style="text-align:left"><ul><li>Provide a mobile ad ID.</li><li>Example: <code>iOS</code>, <code>IDFA</code>, or <code>GAID</code>, that has been SHA256 hashed.</li><li>Empty or null hashed values are ignored.</li></ul></td>
+<td>Mobile Ad ID (already SHA256 hashed)</td>
+<td><ul><li>Provide a mobile ad ID.</li><li>Example: <code>iOS</code>, <code>IDFA</code>, or <code>AAID</code>, that has been SHA256 hashed.</li><li>Empty or null hashed values are ignored.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Mobile Ad ID (apply SHA256 hash)</td>
-<td style="text-align:left"><ul><li>Provide a plain text mobile ad ID.</li><li>Example: <code>iOS</code>, <code>IDFA</code>, or <code>GAID</code> and the connector will hash this value in the format Snapchat expects.</li></ul></td>
+<td>Mobile Ad ID (apply SHA256 hash)</td>
+<td><ul><li>Provide a lowercased plain text mobile ad ID.</li><li>Example: <code>iOS</code>, <code>IDFA</code>, or <code>AAID</code> and the connector will hash this value in the format Snapchat expects.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Phone Number (already SHA256 hashed)</td>
-<td style="text-align:left"><ul><li>Provide a phone number that has been SHA256 hashed.</li><li>Empty or null hashed values are ignored.</li></ul></td>
+<td>Phone Number (already SHA256 hashed)</td>
+<td><ul><li>Provide a phone number that has been SHA256 hashed.</li><li>Empty or null hashed values are ignored.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Phone Number (apply SHA256 hash)</td>
-<td style="text-align:left"><ul><li>Provide a plain text phone number and the connector will hash this value in the format Snapchat expects.</li></ul></td>
+<td>Phone Number (apply SHA256 hash)</td>
+<td><ul><li>Provide a plain text phone number and the connector will hash this value in the format Snapchat expects.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">IP Address (already SHA256 hashed)</td>
-<td style="text-align:left"><ul><li>Provide a IP address that has been SHA256 hashed.</li><li>Empty or null hashed values are ignored.</li></ul></td>
+<td>IP Address (already SHA256 hashed)</td>
+<td><ul><li>Provide a IP address that has been SHA256 hashed.</li><li>Empty or null hashed values are ignored.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">IP Address (apply SHA256 hash)</td>
-<td style="text-align:left"><ul><li>Provide a plain text IP address and the connector will hash this value in the format Snapchat expects.</li><li>Use the Client IP attribute (recommended).</li></ul></td>
+<td>IP Address (apply SHA256 hash)</td>
+<td><ul><li>Provide a plain text IP address and the connector will hash this value in the format Snapchat expects.</li><li>Use the Client IP attribute (recommended).</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Vendor Identifier (already SHA256 hashed)</td>
-<td style="text-align:left"><ul><li>Provide a vendor identifier that has been SHA256 hashed.</li><li>Empty or null hashed values are ignored.</li></ul></td>
+<td>Vendor Identifier (already SHA256 hashed)</td>
+<td><ul><li>Provide a vendor identifier that has been SHA256 hashed.</li><li>Empty or null hashed values are ignored.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Vendor Identifier (apply SHA256 hash)</td>
-<td style="text-align:left"><ul><li>Provide a plain text vendor identifier and the connector will hash this value in the format Snapchat expects.</li></ul></td>
+<td>Vendor Identifier (apply SHA256 hash)</td>
+<td><ul><li>Provide a plain text vendor identifier and the connector will hash this value in the format Snapchat expects.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">User Agent</td>
-<td style="text-align:left"><ul><li>Use the User Agent attribute.</li><li>If this field is not mapped in EventStream, it will be auto-mapped to the attribute User Agent.</li><li>If this field is not mapped in AudienceStream, it will be auto-mapped to the visitor&rsquo;s last User Agent.</li></ul></td>
+<td>User Agent</td>
+<td><ul><li>Use the User Agent attribute.</li><li>If this field is not mapped in EventStream, it will be auto-mapped to the attribute User Agent.</li><li>If this field is not mapped in AudienceStream, it will be auto-mapped to the visitor&rsquo;s last User Agent.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -1199,6 +1209,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

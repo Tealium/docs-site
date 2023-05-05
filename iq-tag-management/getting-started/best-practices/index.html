@@ -858,10 +858,21 @@ var utag_data = {
 </span></span></code></pre></div><h3 id="event-listeners-versus-utaglink">Event listeners versus utag.link()</h3>
 <p>Tealium has two options for tracking clicks and other events on a site:</p>
 <ul>
-<li>Configuring <a href="/iq-tag-management/events/about/">Event listeners</a> in the Tealium iQ interface.</li>
+<li>Configuring <a href="/iq-tag-management/events/about/">event listeners</a> in the Tealium iQ interface.</li>
 <li>Coding <code>utag.link()</code> directly in the page.</li>
 </ul>
-<p>We recommend that you hard-code <code>utag.link()</code> on pages that have business-critical need for tracking and Event listeners to track all other necessary events.</p>
+<p>Consider using event listeners in the following situations:</p>
+<ul>
+<li>The website, development team, or release cycles do not allow for hardcoded tracking calls.</li>
+<li>Scroll tracking and video tracking are much easier to implement with event listeners.</li>
+<li>Strong selectors and tracking data elements are available.</li>
+</ul>
+<p>Consider using hardcoded <code>utag.link()</code> calls in the following situations:</p>
+<ul>
+<li>The event requires data not available in the DOM.</li>
+<li>Business-critical KPIs (Key Performance Indicators).</li>
+<li>When easier to integrate with site functionality, such as modals and form validation.</li>
+</ul>
 <h2 id="performance">Performance</h2>
 <h3 id="load-utagjs-asynchronously">Load utag.js asynchronously</h3>
 <p>The best practice is to loading all tags and vendor code asynchronously. In this method, tags are loaded in parallel to the rest of the page content. This means that even if the tag is slow to respond or to load, it will not slow down the rest of the site.</p>
@@ -949,6 +960,9 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
+<h3 id="only-load-event-listeners-when-necessary">Only load event listeners when necessary</h3>
+<p>If you do not set any event rules for an event listener, it will load on every page. Loading a levent listeners on every page will slow down delivery of pages on the site and collect unnecessary data. We recommend that you use rules to load event listeners only on pages where you expect the trigger&rsquo;s actions to happen or where you require visitor action data.</p>
+<p>For more information, see <a href="/iq-tag-management/events/rules/">Event Rules</a>.</p>
 <h2 id="extensions">Extensions</h2>
 <h3 id="use-built-in-extensions">Use built-in extensions</h3>
 <p>Tealium is designed for both non-technical users with limited coding experience and for developers who are comfortable writing their own JavaScript. While many of the built-in extensions could easily be re-written as custom JavaScript Code extensions, we recommend using the built-in extensions whenever possible and only writing custom JavaScript when you require additional functionality not offered by the existing options.</p>
@@ -1052,7 +1066,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 31, 2023 
+          <p>This page was last updated:  May 4, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1079,6 +1093,7 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#bundle-tags">Bundle tags</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#page-code-placement">Page code placement</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-timing">Tag timing</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#only-load-event-listeners-when-necessary">Only load event listeners when necessary</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#extensions">Extensions</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#use-built-in-extensions">Use built-in extensions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#global-vs-local-javascript-variables">Global vs. local JavaScript variables</a></li>
