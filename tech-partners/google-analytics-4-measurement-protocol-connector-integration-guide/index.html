@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     
+    <title>Tealium &#43; Google Analytics 4 Measurement Protocol Integration Guide | Technology Partners |Tealium Docs</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+     <meta name="generator" content="Hugo 0.98.0" />
+
+      
+        <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+      
+
+    <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+
+  </head>
+  <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
+      
+        
+<script>
+var utag_data = {
+    site_section  : "tech-partners",
+    site_language : "en",
+    tealium_event : "page_view"
+}
+</script>
+
+<script>
+ (function(a,b,c,d){
+    a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+  })();
+</script>
+
+      
+
+    
+<nav class="w-100 sticky-t bg-primary-color-light bb b--light-gray dpn" role="navigation">
+
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
+
+    <div class="lh-solid ml0-ns mr0 mr4-l mv3 pl15 dib db-ns">
+      <a href="https://docs.tealium.com/"><img src="/images/icons/tealium-documentation-logo-color.svg" class="v-mid dib" width="186" height="31"></a>
+    </div>
+    
+    <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-ns">
+      
+        <li class="f5 dib mr3" role="menuitem">
+            
+          <a href="https://community.tealiumiq.com/t5/Developer-Questions/qa-p/developer-questions" class="dim link mid-gray">
+          Forums
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 32 32" class="fill-current v-base" aria-label="External Link">
+<path d="M25.152 16.576v5.696q0 2.144-1.504 3.648t-3.648 1.504h-14.848q-2.144 0-3.648-1.504t-1.504-3.648v-14.848q0-2.112 1.504-3.616t3.648-1.536h12.576q0.224 0 0.384 0.16t0.16 0.416v1.152q0 0.256-0.16 0.416t-0.384 0.16h-12.576q-1.184 0-2.016 0.832t-0.864 2.016v14.848q0 1.184 0.864 2.016t2.016 0.864h14.848q1.184 0 2.016-0.864t0.832-2.016v-5.696q0-0.256 0.16-0.416t0.416-0.16h1.152q0.256 0 0.416 0.16t0.16 0.416zM32 1.152v9.12q0 0.48-0.352 0.8t-0.8 0.352-0.8-0.352l-3.136-3.136-11.648 11.648q-0.16 0.192-0.416 0.192t-0.384-0.192l-2.048-2.048q-0.192-0.16-0.192-0.384t0.192-0.416l11.648-11.648-3.136-3.136q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h9.12q0.48 0 0.8 0.352t0.352 0.8z"></path>
+</svg>
+</a>
+        </li></ul>
+
+    <ul class="list ma0 pa0 dn dib-ns">
+      <li class="f5 dib">
+         <i class="fa fa-globe" style="color: rgba(255, 255, 255, .6)" aria-hidden="true"></i>
+      </li>
+      <li class="f5 dib mr4"><a href="https://docs.tealium.co.jp/" class="dim link mid-gray">日本語</a>
+</li>
+    </ul>
+
+  </div>
+
+
+<div id="mainAppInner" class="padd-54 dpn">
+    <div id="leftFrame">
+        <div class="main-nav-container">
+            <div class="flex-1">
+                <ul id="navCategoryHome" class="menu-group as-main-navigation">
+                    <li class="js-main-nav-section" data-section="home">
+                        <a href="https://community.tealiumiq.com/" class="menu-list-item top-level tooltip-right" title="Tealium Learning Center">
+                          <span class="menu-large-icon">
+                              <span class="as-platform-image square-xxxs is-rounded bg-transparent">
+                                  <span class="inner-image UDH-icon">TLC</span>
+                              </span>
+                          </span>
+                          <span class="menu-context supportLinks_buttonTitle">Tealium Learning Center</span>
+                        </a>
+                          <span class="tooltiptext">Tealium Learning <br>Center</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a href="https://community.tealiumiq.com/t5/Forums/ct-p/tealiumlearningcommunity" class="menu-list-item top-level tooltip-right" title="Discussions">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-comments"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">Discussions</span>
+                        </a>
+                          <span class="tooltiptext">Discussions</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section active">
+                        <a href="https://docs.tealium.com/" class="menu-list-item top-level tooltip-right" title="Documentation">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-book"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">Documentation</span>
+                        </a>
+                          <span class="tooltiptext">Documentation</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section" data-section="kb">
+                        <a href="https://support.tealiumiq.com/en/support/solutions" class="menu-list-item top-level tooltip-right" title="Knowledge Base">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-head-side-brain"></i>
+                            </span>
+                            <span class="menu-context">Knowledge Base</span>
+                        </a>
+                          <span class="tooltiptext"> Knowledge Base </span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a href="https://university.tealium.com/" class="menu-list-item top-level tooltip-right" title="Tealium Education">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-graduation-cap"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">Education</span>
+                        </a>
+                          <span class="tooltiptext">Tealium Education</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a href="https://community.tealiumiq.com/t5/TLC-Blog/bg-p/TLC-Blog" class="menu-list-item top-level tooltip-right" title="TLC Blog">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-newspaper"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">TLC Blog</span>
+                        </a>
+                          <span class="tooltiptext">TLC Blog</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a  href="https://support.tealiumiq.com" target="_blank" class="menu-list-item top-level tooltip-right" title="Tealium Support Desk">
+                          <span class="menu-large-icon">
+                            <i class="fal fa-life-ring"></i>
+                          </span>
+                          <span class="menu-context supportLinks_buttonTitle">Support Desk</span>
+                        </a>
+                          <span class="tooltiptext">Support Desk</span>
+                    </li>
+                </ul>
+            </div>
+            <ul class="menu-group as-main-navigation flex-0 bottom-align">
+              <li class="menu-divider"></li>
+              <li class="js-main-nav-section">
+                <a href="https://my.tealiumiq.com/" class="menu-list-item top-level tooltip-right" title="Tealium Customer Data Hub">
+                    <span class="menu-large-icon">
+                        <span class="as-platform-image square-xxxs is-rounded bg-transparent">
+                            <span class="inner-image UDH-icon">CDH</span>
+                        </span>
+                    </span>
+                    <span class="menu-context supportLinks_buttonTitle">Customer Data Hub</span>
+                </a>
+                          <span class="tooltiptext">Customer Data Hub</span>
+              </li>
+              <li class="menu-divider"></li>
+              <li class="js-toggle-leftframe">
+                <a href="#" class="menu-list-item top-level d-flex justify-content-end" title="Expand/Collapse">
+                    <span class="menu-large-icon d-flex align-items-center justify-content-center mr-0">
+                        <span class="as-platform-image square-xxxs is-rounded bg-transparent d-flex align-items-center justify-content-center">
+                            <i class="fa as-caret"></i>
+                        </span>
+                    </span>
+                </a>
+              </li>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+
+</nav>
+
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 pr4">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto vh-100 overflow-auto dn db-ns sticky-l pt4 pl125" style="width:280px;">
+<nav class="side-nav home-nav f6" role="navigation">
+  <ul class="list pa0 mt0">
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/" class="db link hover-primary-color pv1 mb2 text-color-primary hover-primary-color " data-target=".home">Home</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <span class="db mt2 text-color-disabled fw3 ttu pt3 pb1">Client-Side</span>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/iq-tag-management/" class="db link hover-primary-color pv1 mb2 text-color-primary hover-primary-color " data-target=".home-iq">iQ Tag Management</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <span class="db mt2 text-color-disabled fw3 ttu pt3 pb1">Server-Side</span>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/server-side/getting-started/eventstream-api-hub/introduction/" class="db link hover-primary-color pv1 mb2 text-color-primary hover-primary-color " data-target=".home-es">EventStream API Hub</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/server-side/getting-started/audiencestream-cdp/introduction/" class="db link hover-primary-color pv1 mb2 text-color-primary hover-primary-color " data-target=".home-as">AudienceStream CDP</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/server-side/functions/about/" class="db link hover-primary-color pv1 mb2 text-color-primary hover-primary-color " data-target=".home-fn">Functions</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/server-side/data-connect/about/" class="db link hover-primary-color pv1 mb2 text-color-primary hover-primary-color " data-target=".home-dc">Data Connect</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/predict/getting-started/about-predict/" class="db link hover-primary-color pv1 mb2 text-color-primary hover-primary-color " data-target=".home-ml">Predict ML</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/server-side/data-storage/about/" class="db link hover-primary-color pv1 mb2 text-color-primary hover-primary-color " data-target=".home-da">DataAccess</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <span class="db mt2 text-color-disabled fw3 ttu pt3 pb1">Integrations</span>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/client-side-tags/" class="db link hover-primary-color pv1 mb2 text-color-primary hover-primary-color " data-target=".home-tags">Client-Side Tags</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/server-side-connectors/" class="db link hover-primary-color pv1 mb2 text-color-primary hover-primary-color " data-target=".home-conn">Server-Side Connectors</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <span class="db mt2 text-color-disabled fw3 ttu pt3 pb1">Developers</span>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/platforms/" class="db link hover-primary-color pv1 mb2 text-color-primary hover-primary-color " data-target=".home-plat">Platforms</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5 mb4 break">
+      
+        <a href="/api/getting-started/auth/" class="db link hover-primary-color pv1 mb2 text-color-primary hover-primary-color " data-target=".home-api">API</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/industries/tealium-for-pharma/" class="db link hover-primary-color pv1 mb2 text-color-primary hover-primary-color " data-target=".">Tealium for Pharma</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/industries/tealium-identity-partners/" class="db link hover-primary-color pv1 mb2 text-color-primary hover-primary-color " data-target=".home-identity">Tealium Identity Partners</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5 selected">
+      
+        <a href="/tech-partners/" class="db link hover-primary-color pv1 mb2 bg-secondary primary-color" data-target=".">Technology Partners</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/glossary/" class="db link hover-primary-color pv1 mb2 text-color-primary hover-primary-color " data-target=".">Glossary</a>
+      
+      </li>
+        
+        
+
+      <li class="relative w-100 fw5 f5">
+      
+        <a href="/early-access/" class="db link hover-primary-color pv1 mb2 text-color-primary hover-primary-color " data-target=".home-ea">Early Access</a>
+      
+      </li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
+      <div class="documentation-copy ph4">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+  
+  <li class="mr1 f7 lvl0"><a class="f6 mb0 link mid-gray dim mr1" href="/">Home</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/tech-partners/">Technology Partners</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mt30 mb3">Tealium &#43; Google Analytics 4 Measurement Protocol Integration Guide</h1>
+</header>
+
+<div class="mv2 mid-gray fn w-100">
+  
+    <p class="f4 fw3 lh-copy">
+      This article describes how to configure and use the Google Analytics 4 Measurement Protocol Tag and Connector together with Tealium.
+    </p>
+  
+</div>
+
+<div class="prose nested-links" id="prose">
+  <h2 id="how-it-works">How it works</h2>
+<p>The <a href="/server-side-connectors/google-analytics-4-measurement-protocol-connector/">Google Analytics 4 Measurement Protocol Connector</a> allows developers to make HTTP requests that send events directly to Google Analytics servers. This helps developers measure how users interact with their business from any HTTP-enabled environment, which makes it easy to measure interactions that happen server-to-server.</p>
+<p>Tealium EventStream acts as a conduit to enable Google Analytics 4 tracking. It ties together support for Mobile, Internet of Things, and Offline Event and pageview tracking by:</p>
+<ul>
+<li>Tracking both web applications and apps.</li>
+<li>Tying online to offline behavior.</li>
+<li>Measuring interactions both client-side and server-side.</li>
+<li>Sending events that happen outside standard user interaction, such as offline conversations.</li>
+</ul>
+<figure><img src="/images/server-side-connectors/googleanalytics4measurementprotocoldiagram.png"
+         alt="GA 4 measurement protocol diagram"
+         title="GA 4 measurement protocol diagram"/>
+</figure>
+<p>Tealium supports the following actions with the Google Analytics 4 Measurement Protocol Connector:</p>
+<ul>
+<li>Send PageView Event</li>
+<li>Send Event</li>
+<li>Send Firebase Event</li>
+</ul>
+<p>For additional configuration details for the Google Analytics 4 Tag that appears in the diagram, see <a href="/client-side-tags/google-analytics-4-ga4-tag/">Google Analytics 4 (GA4) Tag Setup Guide</a>.</p>
+<h3 id="considerations">Considerations</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The Google Analytics Measurement Protocol for Google Analytics 4 connector is not a complete replacement for the client-side tag solution.</p>
+<h3 id="limitations">Limitations</h3>
+<ul>
+<li>If any session or user data is needed, the client-side tag is required.</li>
+<li>The <code>user_id</code> key requires both client-side and Measurement Protocol events to include the <code>user_id</code>.</li>
+<li>Session data is not supported by the current iteration of the GA4 Measurement Protocol API. To obtain automatic Google Analytics session data, you must use the Google Analytics 4 (GA4) Tag.
+<ul>
+<li>When you enable the tag, the <code>session_start</code> event or <code>first_start</code> is also sent.</li>
+</ul>
+</li>
+<li>Does not support <code>utm</code> parameters.</li>
+<li>Does not contain geographic data and the user agent.</li>
+</ul>
+<h2 id="authentication">Authentication</h2>
+<p>The Measurement Protocol API uses a measurement ID and API secret that are included in the URL as query parameters.</p>
+<pre tabindex="0"><code>https://google-analytics.com/mp/collect?measurement_id=G-1234567890&amp;api_secret=xxxxxxxxxx
+</code></pre><h2 id="configuration">Configuration</h2>
+<p>To configure the connector, enter the API Secret and either the Measurement ID or Firebase ID for the data stream.</p>
+<h2 id="responsedebugging">Response/Debugging</h2>
+<p>The Measurement Protocol always returns a <code>2xx</code> status code if the HTTP request was received. The Measurement Protocol does not return an error code if the payload data was malformed, or if the data in the payload was incorrect or was not processed by Google Analytics.</p>
+<p>Google supplies a separate endpoint for validating events:</p>
+<pre tabindex="0"><code>https://google-analytics.com/debug/mp/collect?
+</code></pre><p>The Tealium Measurement Protocol connector uses this endpoint during Trace, which displays the validation process of the event data.</p>
+<h3 id="recommendations-and-configuration-details">Recommendations and configuration details</h3>
+<p>To mitigate issues around the noted limitations and fully cover all data requirements, implement the <a href="/client-side-tags/google-analytics-4-ga4-tag/">Google Analytics 4 tag</a> in Tealium iQ Tag Management. Set the tag to load on all pages, with <strong>Send Page View</strong> set to <code>false</code>. In addition, add the Google Analytics Cookie Matching Service tag so that the Google <code>clientId</code> is automatically added as a <code>utag_main__ga</code> cookie value.</p>
+<p>All required events outside of Google’s automatically-collected events can then be configured in the Google Analytics connector in Tealium EventStream.</p>
+<p>The Google Analytics 4 tag automatically triggers a purchase event when <code>order_id </code>is present through the E-commerce extension mappings. If you have the E-commerce extension enabled and wish to track purchases through EventStream, configure a <a href="/iq-tag-management/extensions/extensions-list/set-data-values-extension/">Set Data Values</a> extension scoped to Google Analytics 4 to clear the <code>_corder</code> attribute.</p>
+<figure><img src="/images/server-side-connectors/googleanalytics4measurementprotocolsetdatavalues.png"
+         alt="google analytics 4 measurement protocol set data values"
+         title="google analytics 4 measurement protocol set data values"/>
+</figure>
+<p>Because Tealium can support a client-side implementation to better address web-client integrations, as well as supporting mobile and offline events through Tealium’s EventStream, Tealium can integrate with both solutions and create a combined approach.</p>
+<p>For more information for configuration of a client-side tag, see <a href="/client-side-tags/google-analytics-4-ga4-tag/">Google Analytics 4 (GA4) Tag Setup Guide</a>.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<table>
+<thead>
+<tr>
+<th>PRODUCT</th>
+<th>REQUIRED</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Google Analytics 4 account</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Tealium EventStream / AudienceStream</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Tealium iQ Tag Management</td>
+<td>Optional, but preferred</td>
+</tr>
+</tbody>
+</table>
+<h3 id="authentication-1">Authentication</h3>
+<table>
+<thead>
+<tr>
+<th>VALUE</th>
+<th>DESCRIPTION</th>
+<th>LOCATION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>API Secret (Required)</td>
+<td>An API Secret generated in the Google Analytics UI.</td>
+<td>To create a new secret, navigate to: <strong>Admin</strong> &gt; <strong>Data Streams</strong> &gt; <strong>choose your stream</strong> &gt; <strong>Measurement Protocol</strong> &gt; <strong>Additional Settings</strong> &gt; <strong>Measurement Protocol API secrets</strong>.</td>
+</tr>
+<tr>
+<td>Measurement ID (Optional)</td>
+<td>The measurement ID associated with a stream.</td>
+<td>In the Google Analytics UI, navigate to: <strong>Admin</strong> &gt; <strong>Data Streams</strong> &gt; <strong>choose your stream</strong> &gt; <strong>Measurement ID</strong> &gt; <strong>Create</strong>.</td>
+</tr>
+<tr>
+<td>Firebase App ID (Optional)</td>
+<td>The identifier for a Firebase app.</td>
+<td>In the Firebase console, navigate to: <strong>Project Settings</strong> &gt; <strong>General</strong> &gt; <strong>Your Apps</strong> &gt; <strong>App ID</strong>.</td>
+</tr>
+</tbody>
+</table>
+<p>API Version: Beta</p>
+<h3 id="event-parameters">Event Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>PARAMETER</th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Page Title</td>
+<td>The title of the page.</td>
+</tr>
+<tr>
+<td>Page Location</td>
+<td>Required. The full URL to the page.</td>
+</tr>
+<tr>
+<td>User Properties</td>
+<td>User properties describe segments of the user base, such as language preference or geographic location. You can configure these into the section <strong>Templates</strong>.</td>
+</tr>
+<tr>
+<td>Item ID</td>
+<td>Either Item ID or Item Name is required.</td>
+</tr>
+<tr>
+<td>Item Name</td>
+<td>Either Item ID or Item Name is required.</td>
+</tr>
+<tr>
+<td>Affiliation</td>
+<td>A product affiliation to designate a supplying company or physical store location. Event-level and item-level affiliation parameters are independent.</td>
+</tr>
+<tr>
+<td>Coupon</td>
+<td>The coupon name or code associated with the item. Event-level and item-level coupon parameters are independent.</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>The currency, in 3-letter ISO 4217 format. If set, event-level currency is ignored. Multiple currencies in an event are not supported, so all entries will contain the same currency value.</td>
+</tr>
+<tr>
+<td>Discount (number)</td>
+<td>The monetary discount value associated with the item.</td>
+</tr>
+<tr>
+<td>Index (number)</td>
+<td>The index or position of the item in the list.</td>
+</tr>
+<tr>
+<td>Item Brand</td>
+<td>The brand of the item.</td>
+</tr>
+<tr>
+<td>Item Category</td>
+<td>The category of the item. If used as part of a category hierarchy or taxonomy, then this is the first category.</td>
+</tr>
+<tr>
+<td>Item Category 2</td>
+<td>The second category hierarchy or additional taxonomy for the item.</td>
+</tr>
+<tr>
+<td>Item Category 3</td>
+<td>The third category hierarchy or additional taxonomy for the item.</td>
+</tr>
+<tr>
+<td>Item Category 4</td>
+<td>The fourth category hierarchy or additional taxonomy for the item.</td>
+</tr>
+<tr>
+<td>Item Category 5</td>
+<td>The fifth category hierarchy or additional taxonomy for the item.</td>
+</tr>
+<tr>
+<td>Item List ID</td>
+<td>The ID of the list in which the item was presented to the user. <ul><li>If set, event-level <code>item_list_id</code> is ignored.</li><li>If not set, event-level <code>item_list_id</code> is used (if present).</li></ul></td>
+</tr>
+<tr>
+<td>Item List Name</td>
+<td>The name of the list in which the item was presented to the user. <ul><li>If set, event-level <code>item_list_name</code> is ignored. </li><li>If not set, event-level <code>item_list_name</code> is used (if present). </li></ul></td>
+</tr>
+<tr>
+<td>Item Variant</td>
+<td>The item variant or unique code or description for additional item details or options.</td>
+</tr>
+<tr>
+<td>Location ID</td>
+<td>The location associated with the item. It&rsquo;s recommended that you use the Google Place ID that corresponds to the associated item. A custom location ID can also be used.  <ul><li>If set, event-level <code>location_id</code> is ignored.</li> <li>If not set, event-level <code>location_id</code> is used (if present).</li></ul></td>
+</tr>
+<tr>
+<td>Price (number)</td>
+<td>The monetary price of the item, in units of the specified currency parameter.</td>
+</tr>
+<tr>
+<td>Quantity (number)</td>
+<td>Item quantity.</td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td>Provide template variables as data input for templates. For more information, see <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>. Name nested template variables with the dot notation (For example: <code>items.name</code>). Nested template variables are typically built from data layer list attributes.</td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Provide templates to be referenced in User Properties. For more information, see <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>. Templates are injected by name with double curly braces into supported fields (for example: <code>{{SomeTemplateName}}</code>).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="send-pageview-event">Send PageView Event</h2>
+<h3 id="overview">Overview</h3>
+<p>This action is used to pass website page view events to Google Analytics.</p>
+<h3 id="body-parameters">Body Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>PARAMETER</th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Client ID</td>
+<td>Required. A unique identifier for a client.<br><br> This identifier must use the Client ID set by the Google Analytics 4 tag. For more information, see <a href="/client-side-tags/google-analytics-4-ga4-tag/">Google Analytics 4 (GA4) Tag Setup Guide</a>.</td>
+</tr>
+<tr>
+<td>Measurement ID Override</td>
+<td>Measurement ID. For example, the identifier for a Data Stream.</td>
+</tr>
+<tr>
+<td>Firebase App ID Override</td>
+<td>Required. The identifier for a Firebase app. This setting overrides Firebase App ID used in the <strong>Configuration</strong> section.</td>
+</tr>
+<tr>
+<td>User ID</td>
+<td>A unique identifier for a user. If you include <code>user_id</code> in your Google Analytics 4 Measurement Protocol events, you must also include it in the client-side events.</td>
+</tr>
+<tr>
+<td>Timestamp Micros</td>
+<td>A Unix timestamp (in microseconds) for the time to associate with the event. Set this to record events that happened in the past. This value can be overridden via <code>user_property</code> or event timestamps. Events can be backdated up to three calendar days based on the property’s timezone.</td>
+</tr>
+<tr>
+<td>Non Personalized Ads</td>
+<td>Set this to true to indicate these events are not used for personalized ads.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="event-parameters-1">Event Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>PARAMETER</th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Page Title</td>
+<td>The title of the page.</td>
+</tr>
+<tr>
+<td>Page Location</td>
+<td>Required. The full URL to the page.</td>
+</tr>
+</tbody>
+</table>
+<p>Additional parameters can be passed, but they are not required to allow tracking of the page view event.</p>
+<h4 id="google-payload">Google Payload</h4>
+<p>As shown in the following example payload, the <code>events.name</code> value is <code>page_view</code>, and required parameters are <code>page_location</code> and <code>client_id</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;events&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;page_view&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;params&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;page_location&#34;</span>: <span style="color:#e6db74">&#34;http://demosite.com/ecomm/category.html&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">...other</span> <span style="color:#960050;background-color:#1e0010">mapped</span> <span style="color:#960050;background-color:#1e0010">parameters...</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;client_id&#34;</span>: <span style="color:#e6db74">&#34;017f6ae7e7a40014b19d17739b3d05079002707100fb8&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="send-event">Send Event</h2>
+<h3 id="overview-1">Overview</h3>
+<p>This action is used to send a non-pageview event to Google Analytics. You can select the event type from a list of Google-defined events (for more information, see <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events">Measurement Protocol (Google Analytics 4) Events</a>). In addition, you can select a Custom Event and then map the custom event value to <strong>Custom Event Type</strong>.</p>
+<h3 id="body-parameters-1">Body Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>PARAMETER</th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Client ID</td>
+<td>Required. A unique identifier for a client. The Client ID set by the Google Analytics 4 tag. The Cookie Matching Tag is the preferred implementation method.</td>
+</tr>
+<tr>
+<td>Measurement ID Override</td>
+<td>Measurement ID. For example, the identifier for a Data Stream.</td>
+</tr>
+<tr>
+<td>Firebase App ID Override</td>
+<td>Required. The identifier for a Firebase app. This setting overrides Firebase App ID used in the <strong>Configuration</strong> section.</td>
+</tr>
+<tr>
+<td>User ID</td>
+<td>A unique identifier for a user. If you include <code>user_id</code> in your Google Analytics 4 Measurement Protocol events, you must also include it in the client-side events.</td>
+</tr>
+<tr>
+<td>Timestamp Micros</td>
+<td>A Unix timestamp (in microseconds) for the time to associate with the event. Set this to record events that happened in the past. This value can be overridden via <code>user_property</code> or event timestamps. Events can be backdated up to three calendar days based on the property&rsquo;s timezone</td>
+</tr>
+<tr>
+<td>Non Personalized Ads</td>
+<td>Set this to true to indicate these events are not used for personalized ads.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="event-and-event-parameters">Event and Event Parameters</h3>
+<p>In addition to the general event parameters listed previously, each event type accepts additional parameters. The following table lists required and optional parameters for each event type:</p>
+<table>
+<thead>
+<tr>
+<th>EVENT TYPE</th>
+<th>DESCRIPTION</th>
+<th>EVENT-SPECIFIC PARAMETERS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add Payment Information</td>
+<td>When a user has submitted their payment information.</td>
+<td>Event Parameters: <ul><li>Currency (Required)</li><li>Value (Required)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul></td>
+</tr>
+<tr>
+<td>Add Shipping Information</td>
+<td>When a user has submitted their shipping information.</td>
+<td>Event Parameters: <ul><li>Currency (Required)</li><li>Value (Required)</li><li>Coupon (optional)</li><li>Shipping Tier (optional)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul></td>
+</tr>
+<tr>
+<td>Add to Wishlist</td>
+<td>When an item was added to a wishlist. Use this event to identify popular gift items in your app.</td>
+<td>Event Parameters:<ul><li>Currency (Required)</li><li>Value (Required)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul></td>
+</tr>
+<tr>
+<td>Begin Checkout</td>
+<td>When a user has begun a checkout.</td>
+<td>Event Parameters:<ul><li>Currency (Required)</li><li>Value (Required)</li><li>Coupon (optional)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul></td>
+</tr>
+<tr>
+<td>Earn Virtual Currency</td>
+<td>When a user has been awarded virtual currency. Log this event with <code>spend_virtual_currency</code> to better understand your virtual economy.</td>
+<td>Event Parameters:<ul><li>Virtual Currency Name (optional) - The name of the virtual currency.</li><li>Value (optional) - The value of the virtual currency.</li></ul></td>
+</tr>
+<tr>
+<td>Generate Lead</td>
+<td>When a lead has been generated. Use this event to better understand the efficacy of your re-engagement campaigns.</td>
+<td>Event Parameters:<ul><li>Currency (Required)</li><li>Value (Required)</li></ul></td>
+</tr>
+<tr>
+<td>Join Group</td>
+<td>When a user joins a group, such as a guild, team, or family. Use this event to analyze how popular certain groups or social features are.</td>
+<td>Event Parameter:<ul><li>Group ID (optional) - The ID of the group.</li></ul></td>
+</tr>
+<tr>
+<td>Level Up</td>
+<td>When a player has leveled up. Use this event to measure the level distribution of your user base and identify levels that are difficult to complete.</td>
+<td>Event Parameters: <ul><li>Level (optional) - The level of the character.</li><li>Character (optional) - The character that leveled up.</li></ul></td>
+</tr>
+<tr>
+<td>Login</td>
+<td>When a user has logged in.</td>
+<td>Event Parameter:<ul><li>Method (optional) - method used to log in.</li></ul></td>
+</tr>
+<tr>
+<td>Post Score</td>
+<td>When a user posts a score. Use this event to understand how users are performing in your game and correlate high scores with audiences or behaviors.</td>
+<td>Event Parameters:<ul><li>score (Required) - score to post.</li><li>level (optional) - level of the character.</li><li>character (optional) - the character that leveled up.</li></ul></td>
+</tr>
+<tr>
+<td>Purchase</td>
+<td>When one or more items have been purchased by a user.</td>
+<td>Event Parameters:<ul><li>Transaction ID (Required)</li><li>Value (Required)</li><li>Currency (Required)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul></td>
+</tr>
+<tr>
+<td>Refund</td>
+<td>When a user was issued a refund.</td>
+<td>Event Parameters:<ul><li>Transaction_id (Required)</li><li>Value (Required)</li><li>Currency (Required)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul></td>
+</tr>
+<tr>
+<td>Remove from Cart</td>
+<td>When a user removed an item from a cart.</td>
+<td>Event Parameters:<ul><li>Currency (Required)</li><li>Value (Required)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul></td>
+</tr>
+<tr>
+<td>Search</td>
+<td>When a user performed a search. Use this event to help identify the most popular content in your app.</td>
+<td>Event Parameter:<ul><li>Search Term (Required)</li></ul></td>
+</tr>
+<tr>
+<td>Select Content</td>
+<td>When a user selected content of a certain type. Use this event to identify popular content and categories of content in your app.</td>
+<td>Event Parameter:<ul><li>Content Type (optional)</li><li>Item ID (optional)</li></ul></td>
+</tr>
+<tr>
+<td>Select Item</td>
+<td>When a user selected an item from a list.</td>
+<td>Event Parameter:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul></td>
+</tr>
+<tr>
+<td>Select Promotion</td>
+<td>When a user selected a promotion from a list.</td>
+<td>Event Parameters:<ul><li>Creative Name (optional)</li><li>Creative Slot (optional)</li><li>Location ID (optional)</li><li>Promotion ID (optional)</li><li>Promotion Name (optional)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul></td>
+</tr>
+<tr>
+<td>Share</td>
+<td>When a user shared content.</td>
+<td>Event Parameters:<ul><li>Method (optional)</li><li>Content Type (optional)</li><li>Item ID (optional)</li></ul></td>
+</tr>
+<tr>
+<td>Sign up</td>
+<td>When a user signs up for an account. Use this event to understand the difference between logged in and logged out users.</td>
+<td>Event Parameter:<ul><li>Method (optional)</li></ul></td>
+</tr>
+<tr>
+<td>Spend Virtual Currency</td>
+<td>When a user purchased virtual goods. Use this event to identify the most popular virtual goods.</td>
+<td>Event Parameters:<ul><li>Value (Required)</li><li>Virtual Currency Name (Required)</li></ul></td>
+</tr>
+<tr>
+<td>Tutorial Begin</td>
+<td>When a user started the on-boarding process. Use this in a funnel with <code>tutorial_complete</code> to measure how many users complete the tutorial.</td>
+<td>There are no required parameters for this event.</td>
+</tr>
+<tr>
+<td>Tutorial Complete</td>
+<td>When a user completed your on-boarding process. Use this in a funnel with <code>tutorial_begin</code> to measure how many users complete the tutorial.</td>
+<td>There are no required parameters for this event.</td>
+</tr>
+<tr>
+<td>Unlock Achievement</td>
+<td>When a user unlocked an achievement. Use this event to better understand how users experience your game.</td>
+<td>Event Parameter:<ul><li>Achievement ID (Required)</li></ul></td>
+</tr>
+<tr>
+<td>View Cart</td>
+<td>When a user viewed their cart.</td>
+<td>Event Parameters:<ul><li>Currency (Required)</li><li>Value (Required)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul></td>
+</tr>
+<tr>
+<td>View Item</td>
+<td>When a user viewed specific content. Use this event to identify the most popular viewed items.</td>
+<td>Event Parameters:<ul><li>Currency (Required)</li><li>Value (Required)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul></td>
+</tr>
+<tr>
+<td>View Item List</td>
+<td>When a user viewed a list of items of a certain category.</td>
+<td>Event Parameters:<ul><li>Item List ID (Required)</li><li>Item Name (Required)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul></td>
+</tr>
+<tr>
+<td>View Promotion</td>
+<td>When a user viewed a promotion from a list.</td>
+<td>Event Parameters:<ul><li>creative name (optional)</li><li>Creative Slot (optional)</li><li>Location ID (optional)</li><li>Promotion ID (optional)</li><li>Promotion Name (optional)</li></ul>Item Parameters:<ul><li>Item ID (Required)</li><li>Item Name (Required)</li></ul></td>
+</tr>
+<tr>
+<td>View Search Results</td>
+<td>When a user has been presented with search results.</td>
+<td>Event Parameter:<ul><li>Search Term (optional)</li></ul></td>
+</tr>
+<tr>
+<td>Custom Event</td>
+<td>Use this event to support custom events not defined by Google’s pre-set events.</td>
+<td>There are no required parameters for this event.</td>
+</tr>
+</tbody>
+</table>
+<p>To view a full list of supported events, see <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events.">Measurement Protocol - Google Analytics 4 events</a></p>
+<h2 id="send-firebase-event">Send Firebase Event</h2>
+<h3 id="overview-2">Overview</h3>
+<p>This action is used to send a Firebase event to Google Analytics. The configuration is the same as Send Event, but you also need to supply an App Instance ID.</p>
+<p>This connector action event type is primarily used to track Mobile Application data for passing to Firebase for analytics.</p>
+<table>
+<thead>
+<tr>
+<th>PARAMETERS</th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>App Instance ID</td>
+<td>Required. Uniquely identifies a specific installation of a Firebase app. This value can be retrieved through the Firebase SDK.</td>
+</tr>
+<tr>
+<td>Firebase App ID Override</td>
+<td>Required. The identifier for a Firebase app. This setting overrides Firebase App ID used in the <strong>Configuration</strong> section.</td>
+</tr>
+<tr>
+<td>User ID (Optional)</td>
+<td>A unique identifier for a user.</td>
+</tr>
+<tr>
+<td>Timestamp Micros (Optional)</td>
+<td>A Unix timestamp (in microseconds) for the time to associate with the event.</td>
+</tr>
+<tr>
+<td>Non Personalized Ads (Optional)</td>
+<td>Set this to true to indicate these events are not used for personalized ads.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="event-parameters-2">Event Parameters</h3>
+<p>This action supports the same general event parameters as the Send Event action, and it also supports the same event-specific parameters.</p>
+<h3 id="user-properties">User Properties</h3>
+<p>User properties describe segments of your user base, such as language preference or geographic location. Analytics <a href="https://support.google.com/analytics/answer/9268042">automatically logs some user properties</a>. If you want to collect additional properties, you can set up to 25 additional user properties per project. Read <a href="https://support.google.com/analytics/answer/9269570">GA4 Custom dimensions</a> and metrics and <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/user-properties?client_type=firebase#example_usage">Firebase Custom user properties</a> to learn how to set and register user properties.</p>
+
+</div>
+
+<div class="mv30 nested-links overflow-hidden dpn"><div class="fr">
+
+  
+  <a href="/tech-partners/ibm-websphere-commerce-integration-guide/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <section class="tl pr3">
+      <div>IBM WebSphere Commerce Integration Guide</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"IBM WebSphere Commerce Integration Guide"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
+  
+  
+</div></div>
+
+
+
+        <div class="bt-l b--moon-gray pv3 cb">
+          <div id="feedback_form" class="dpn">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">Was this page helpful?</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+Yes</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+No</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea><button id="feedback_submit" class="db ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">Send Feedback</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">Thank you for your feedback!</p>
+  </div>
+</div>
+
+        </div>
+        <div class="bt-l b--moon-gray pt3 f6">
+          <p>This page was last updated:  May 3, 2023 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns">
+      
+
+
+
+  <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">On this page</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#considerations">Considerations</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#limitations">Limitations</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#authentication">Authentication</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configuration">Configuration</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#responsedebugging">Response/Debugging</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#recommendations-and-configuration-details">Recommendations and configuration details</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#prerequisites">Prerequisites</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#authentication">Authentication</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-parameters">Event Parameters</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#send-pageview-event">Send PageView Event</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#overview">Overview</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#body-parameters">Body Parameters</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-parameters">Event Parameters</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#send-event">Send Event</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#overview">Overview</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#body-parameters">Body Parameters</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-and-event-parameters">Event and Event Parameters</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#send-firebase-event">Send Firebase Event</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#overview">Overview</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-parameters">Event Parameters</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#user-properties">User Properties</a></li>
+              </nav>
+  </aside></nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-primary-color-dark ph1-ns relative w-100" role="contentinfo">
+    <div class="center flex-ns flex-wrap justify-between mw9 w-90">
+    </div>
+
+    <div class="bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+<div class="globalmenu mobilemenu dn">
+    
+
+<ul class="list hidden dib ph0 ma0 scrolling-touch tc">
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Home
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/iq-tag-management/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          iQ Tag Management
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/getting-started/eventstream-api-hub/introduction/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          EventStream API Hub
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/getting-started/audiencestream-cdp/introduction/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/functions/about/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Functions
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/data-connect/about/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Data Connect
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/predict/getting-started/about-predict/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Predict ML
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/data-storage/about/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          DataAccess
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/client-side-tags/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Client-Side Tags
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side-connectors/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Server-Side Connectors
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Platforms
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/api/getting-started/auth/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium for Pharma
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Identity Partners
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tech-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Technology Partners
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/glossary/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Glossary
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/early-access/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Early Access
+        </a>
+    </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+</div>
+
+
+
+
+
+<div class="flex dn-l justify-between">
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link mr2 white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".globalmenu">Site</button>
+
+</div>
+</div>
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'Search',
+    buttonAriaLabel: 'Search',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'Clear the query',
+      resetButtonAriaLabel: 'Clear the query',
+      cancelButtonText: 'Cancel',
+      cancelButtonAriaLabel: 'Cancel',
+    },
+    startScreen: {
+      recentSearchesTitle: 'Recent',
+      noRecentSearchesText: 'No recent searches',
+      saveRecentSearchButtonTitle: 'Save this search',
+      removeRecentSearchButtonTitle: 'Remove this search from history',
+      favoriteSearchesTitle: 'Favorite',
+      removeFavoriteSearchButtonTitle: 'Remove this search from favorites',
+    },
+    errorScreen: {
+      titleText: 'Unable to fetch results',
+      helpText: 'You might want to check your network connection.',
+    },
+    footer: {
+      selectText: 'to select',
+      selectKeyAriaLabel: 'Enter key',
+      navigateText: 'to navigate',
+      navigateUpKeyAriaLabel: 'Arrow up',
+      navigateDownKeyAriaLabel: 'Arrow down',
+      closeText: 'to close',
+      closeKeyAriaLabel: 'Escape key',
+      searchByText: 'Search by',
+    },
+    noResultsScreen: {
+      noResultsText: 'No results for',
+      suggestedQueryText: 'Try searching for',
+      reportMissingResultsText: 'Believe this query should return results?',
+      reportMissingResultsLinkText: 'Let us know.',
+    },
+  },
+};
+var default_sections = [
+  "Platforms > JavaScript (Web)",
+  "Platforms > Getting Started for Websites",
+  "Platforms > Android (Kotlin)",
+  "Platforms > iOS (Swift)",
+  "Platforms > Getting Started for Mobile"
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+docsearch({
+  container: '#docsearch',
+  appId: '01G44CJWZ0',
+  apiKey: 'cb21a38c7ac4f7dddf727fa23008d220',
+  indexName: 'tealium',
+  placeholder: 'Search',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    optionalFilters: opt_filters
+  },
+  debug: "false"
+});
+</script>
+
+    
+
+  </body>
+</html>

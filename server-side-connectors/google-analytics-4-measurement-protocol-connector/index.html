@@ -718,13 +718,14 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="connector-actions">Connector actions</h2>
+  <p>This article describes how to set up the Google Analytics 4 Measurement Protocol connector.</p>
+<h2 id="connector-actions">Connector Actions</h2>
 <table>
 <thead>
 <tr>
-<th><strong>Action Name</strong></th>
-<th><strong>AudienceStream</strong></th>
-<th><strong>EventStream</strong></th>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
@@ -745,31 +746,20 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<h2 id="validation">Validation</h2>
 <p>The Google Analytics 4 Measurement Protocol supplies the following endpoint for validating events: <code>https://google-analytics.com/debug/mp/collect?</code>. The Tealium Google Analytics 4 Measurement Protocol connector uses this endpoint during <a href="/server-side/connectors/trace/about/">Trace</a>, giving you insights into the validation of the event data. You can view Google Analytics 4 Measurement Protocol validation messages in the HTTP Response Content of the API call within Trace.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>The Google Analytics 4 Measurement Protocol always returns a <code>2xx</code> status code if the HTTP request was received. The Protocol does not return an error code if the payload data was not formed correctly, the data in the payload was incorrect, or the payload data was not processed by Google Analytics.</p>
-<h2 id="limitations">Limitations</h2>
-<p>Google lists the following limitations when using the Google Analytics 4 Measurement Protocol:</p>
-<ul>
-<li>If you include <code>user_id</code> in your Google Analytics 4 Measurement Protocol events you must also include it in the client-side events.</li>
-<li>Session data is not supported.</li>
-<li>Requests, events, user property names and values, parameter names and values, and the post body all have limitations in the Google Analytics 4 Measurement Protocol. For a list of limitations, see the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events?client_type=firebase#limitations">Limitations</a> section in the Google documentation.</li>
-</ul>
-<p>The GA4 EventStream connector leverages the Measurement Protocol for GA4. For more information, see Google’s documentation on the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4">Measurement Protocol for GA4.</a></p>
-<h2 id="configure-settings">Configure settings</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/manage/">About Connectors</a> article.</p>
+<h2 id="configure-settings">Configure Settings</h2>
+<p>Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>API Secret</strong><br>
-Required: An API Secret generated in the Google Analytics UI. To create a new secret, navigate to <strong>Admin &gt; Data Streams &gt; Choose a Platform</strong> in the Google Analytics UI. Set up your Data Stream and select <strong>Measurement Protocol API secrets</strong> from the <strong>Additional Settings</strong> section of the <strong>Web stream details</strong> window.</li>
-<li><strong>Measurement ID</strong><br>
-The measurement ID associated with a stream located in the Google Analytics UI. After setting up your Data Stream, navigate to <strong>Admin &gt; Data Streams</strong> and select your stream. Your measurement ID is available in the <strong>Web stream details</strong> window.</li>
-<li><strong>Firebase App ID</strong><br>
-The identifier for a Firebase app. To find the Firebase app ID navigate to <strong>Project Settings &gt; General &gt; Your apps &gt; App ID</strong> in the Firebase console.</li>
+<li><strong>API Secret (Required)</strong><br>
+An API Secret generated in the Google Analytics UI. To create a new secret, navigate to: <strong>Admin &gt; Data Streams &gt; choose your stream &gt; Measurement Protocol &gt; Create</strong>.</li>
+<li><strong>Measurement ID (Optional)</strong><br>
+The measurement ID associated with a stream. Found in the Google Analytics UI under: Admin &gt; Data Streams &gt; choose your stream &gt; Measurement ID.</li>
+<li><strong>Firebase App ID (Optional)</strong><br>
+The Firebase App ID. The identifier for a Firebase app. Found in the Firebase console under: <strong>Project Settings &gt; General &gt; Your Apps &gt; App ID</strong>.</li>
 </ul>
-<p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
 <h2 id="action-parameters-and-options">Action parameters and options</h2>
-<p>Click <strong>Continue</strong> to configure the connector actions. Enter in a name for the action and then select the action type from the drop-down menu.</p>
+<p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="mapping-client-id">Mapping client ID</h3>
 <p>Client ID is a required parameter for web-based events that uniquely identifies a user instance of a web client.</p>
@@ -790,124 +780,116 @@ The identifier for a Firebase app. To find the Firebase app ID navigate to <stro
 </thead>
 <tbody>
 <tr>
-<td>Client ID (cid)</td>
-<td>(Required) A unique identifier of a user instance of a web client. This should match the client ID from the client-side tag, usually in the format of <code>XXXXXXXXXX.YYYYYYYYYY</code>. See <a href="#mapping-client-id">mapping client ID</a>.</td>
-</tr>
-<tr>
-<td>API Secret Override</td>
-<td>Measurement Protocol API Secret for the Data Stream. This setting overrides API Secret used in the configuration section.</td>
+<td>Client ID</td>
+<td>Required. A unique identifier for a client.</td>
 </tr>
 <tr>
 <td>Measurement ID Override</td>
-<td>The identifier for a Data Stream. This setting overrides Measurement ID used in the configuration section.</td>
+<td>Required. The identifier for a Data Stream. This setting overrides Measurement ID used in the <strong>Configuration</strong> section.</td>
+</tr>
+<tr>
+<td>API Secret Override</td>
+<td>Measurement Protocol API Secret for the Data Stream. This setting overrides API Secret used in the <strong>Configuration</strong> section.</td>
 </tr>
 <tr>
 <td>User ID</td>
-<td>If you include <code>user_id</code> in your Google Analytics 4 Measurement Protocol events you must also include it in the client-side events.</td>
+<td>A unique identifier for a user.</td>
 </tr>
 <tr>
 <td>Timestamp Micros</td>
 <td>A Unix timestamp (in microseconds) for the time to associate with the event.</td>
 </tr>
 <tr>
-<td>Non Personalized Ads (npa)</td>
-<td>Set to true to indicate these events should not be used for personalized ads.</td>
+<td>Non Personalized Ads</td>
+<td>Set to <code>true</code> to indicate these events should not be used for personalized ads.</td>
 </tr>
 <tr>
-<td>Page Title (dt)</td>
-<td></td>
+<td>Page Title</td>
+<td>The title of the page.</td>
 </tr>
 <tr>
-<td>Page Location (dl)</td>
-<td>(Required) The full URL to the page.</td>
+<td>Page Location</td>
+<td>Required. The full URL to the page.</td>
 </tr>
 <tr>
 <td>User Properties</td>
-<td>User properties describe segments of user base, such as language preference or geographic location.<br> Could be configured into the section &ldquo;Templates&rdquo;.</td>
+<td>User properties describe segments of user base, such as language preference or geographic location.</td>
 </tr>
 <tr>
 <td>Item ID</td>
-<td>Either <strong>Item ID</strong> or <strong>Item Name</strong> is required.</td>
+<td>The ID of the item.</td>
 </tr>
 <tr>
 <td>Item Name</td>
-<td>Either <strong>Item ID</strong> or <strong>Item Name</strong> is required.</td>
+<td>The name of the item.</td>
 </tr>
 <tr>
 <td>Affiliation</td>
-<td></td>
+<td>A product affiliation to designate a supplying company or brick and mortar store location.</td>
 </tr>
 <tr>
 <td>Coupon</td>
-<td></td>
+<td>The coupon name/code associated with the item.</td>
 </tr>
 <tr>
 <td>Currency</td>
-<td></td>
+<td>The currency, in 3-letter ISO 4217 format.</td>
 </tr>
 <tr>
-<td>Discount (number)</td>
-<td></td>
+<td>Discount</td>
+<td>The monetary discount value associated with the item.</td>
 </tr>
 <tr>
-<td>Index (number)</td>
-<td></td>
+<td>Index</td>
+<td>The index/position of the item in a list.</td>
 </tr>
 <tr>
 <td>Item Brand</td>
-<td></td>
+<td>The brand of the item.</td>
 </tr>
 <tr>
 <td>Item Category</td>
-<td></td>
+<td>The category of the item. If used as part of a category hierarchy or taxonomy then this will be the first category.</td>
 </tr>
 <tr>
 <td>Item Category 2</td>
-<td></td>
+<td>The second category hierarchy or additional taxonomy for the item.</td>
 </tr>
 <tr>
 <td>Item Category 3</td>
-<td></td>
+<td>The third category hierarchy or additional taxonomy for the item.</td>
 </tr>
 <tr>
 <td>Item Category 4</td>
-<td></td>
+<td>The fourth category hierarchy or additional taxonomy for the item.</td>
 </tr>
 <tr>
 <td>Item Category 5</td>
-<td></td>
+<td>The fifth category hierarchy or additional taxonomy for the item.</td>
 </tr>
 <tr>
 <td>Item List ID</td>
-<td></td>
+<td>The ID of the list in which the item was presented to the user.</td>
 </tr>
 <tr>
 <td>Item List Name</td>
-<td></td>
+<td>The name of the list in which the item was presented to the user.</td>
 </tr>
 <tr>
 <td>Item Variant</td>
-<td></td>
+<td>The item variant or unique code or description for additional item details/options.</td>
 </tr>
 <tr>
 <td>Location ID</td>
-<td></td>
+<td>The location associated with the item. It&rsquo;s recommended to use the Google Place ID that corresponds to the associated item. A custom location ID can also be used.</td>
 </tr>
 <tr>
-<td>Price (number)</td>
-<td></td>
+<td>Price</td>
+<td>The monetary price of the item, in units of the specified currency parameter.</td>
 </tr>
 <tr>
-<td>Quantity (number)</td>
-<td></td>
-</tr>
-<tr>
-<td>Template Variables</td>
-<td>Provide template variables as data input for templates (see: <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>).<br> Name nested template variables with the dot notation (For example: <code>items.name</code>).<br> Nested template variables are typically built from data layer list attributes.</td>
-</tr>
-<tr>
-<td>Templates</td>
-<td>Provide templates to be referenced in User Properties (see: <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>).<br> Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.</td>
+<td>Quantity</td>
+<td>Item quantity.</td>
 </tr>
 </tbody>
 </table>
@@ -923,251 +905,15 @@ The identifier for a Firebase app. To find the Firebase app ID navigate to <stro
 <tbody>
 <tr>
 <td>Client ID</td>
-<td>(Required) A unique identifier of a user instance of a web client. This should match the client ID from the client-side tag, usually in the format of <code>XXXXXXXXXX.YYYYYYYYYY</code>. See <a href="#mapping-client-id">mapping client ID</a>.</td>
-</tr>
-<tr>
-<td>API Secret Override</td>
-<td>Measurement Protocol API Secret for the Data Stream. This setting overrides API Secret used in the configuration section.</td>
+<td>Required. A unique identifier for a client.</td>
 </tr>
 <tr>
 <td>Measurement ID Override</td>
-<td>The identifier for a Data Stream. This setting overrides Measurement ID used in the configuration section.</td>
+<td>Required. The identifier for a Data Stream. This setting overrides Measurement ID used in the <strong>Configuration</strong> section.</td>
 </tr>
 <tr>
-<td>User ID</td>
-<td>If you include <code>user_id</code> in your Google Analytics 4 Measurement Protocol events you must also include it in the client-side events.</td>
-</tr>
-<tr>
-<td>Timestamp Micros</td>
-<td>A Unix timestamp (in microseconds) for the time to associate with the event.</td>
-</tr>
-<tr>
-<td>Non Personalized Ads</td>
-<td>Set to true to indicate these events should not be used for personalized ads.</td>
-</tr>
-<tr>
-<td>Event Type</td>
-<td>Select Event Type.<br> For more information and a list of available events, see <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events">Google Analytics Measurement Protocol &gt; Events</a>.</td>
-</tr>
-<tr>
-<td>Achievement ID</td>
-<td></td>
-</tr>
-<tr>
-<td>Affiliation</td>
-<td></td>
-</tr>
-<tr>
-<td>Character</td>
-<td></td>
-</tr>
-<tr>
-<td>Content Type</td>
-<td></td>
-</tr>
-<tr>
-<td>Coupon</td>
-<td></td>
-</tr>
-<tr>
-<td>Creative Name</td>
-<td></td>
-</tr>
-<tr>
-<td>Creative Slot</td>
-<td></td>
-</tr>
-<tr>
-<td>Currency</td>
-<td></td>
-</tr>
-<tr>
-<td>Custom Event Type</td>
-<td></td>
-</tr>
-<tr>
-<td>Group ID</td>
-<td></td>
-</tr>
-<tr>
-<td>Item ID</td>
-<td></td>
-</tr>
-<tr>
-<td>Item List ID</td>
-<td></td>
-</tr>
-<tr>
-<td>Item List Name</td>
-<td></td>
-</tr>
-<tr>
-<td>Item Name</td>
-<td></td>
-</tr>
-<tr>
-<td>Level (number)</td>
-<td></td>
-</tr>
-<tr>
-<td>Location ID</td>
-<td></td>
-</tr>
-<tr>
-<td>Method</td>
-<td></td>
-</tr>
-<tr>
-<td>Payment Type</td>
-<td></td>
-</tr>
-<tr>
-<td>Promotion ID</td>
-<td></td>
-</tr>
-<tr>
-<td>Promotion Name</td>
-<td></td>
-</tr>
-<tr>
-<td>Score (number)</td>
-<td></td>
-</tr>
-<tr>
-<td>Search Term</td>
-<td></td>
-</tr>
-<tr>
-<td>Shipping (number)</td>
-<td></td>
-</tr>
-<tr>
-<td>Shipping Tier</td>
-<td></td>
-</tr>
-<tr>
-<td>Tax (number)</td>
-<td></td>
-</tr>
-<tr>
-<td>Transaction ID</td>
-<td></td>
-</tr>
-<tr>
-<td>Value (number)</td>
-<td></td>
-</tr>
-<tr>
-<td>Virtual Currency Name</td>
-<td></td>
-</tr>
-<tr>
-<td>User Properties</td>
-<td>User properties describe segments of user base, such as language preference or geographic location.<br> Could be configured into the section &ldquo;Templates&rdquo;.</td>
-</tr>
-<tr>
-<td>Item ID</td>
-<td>Either <strong>Item ID</strong> or <strong>Item Name</strong> is required.</td>
-</tr>
-<tr>
-<td>Item Name</td>
-<td>Either <strong>Item ID</strong> or <strong>Item Name</strong> is required.</td>
-</tr>
-<tr>
-<td>Affiliation</td>
-<td></td>
-</tr>
-<tr>
-<td>Coupon</td>
-<td></td>
-</tr>
-<tr>
-<td>Currency</td>
-<td></td>
-</tr>
-<tr>
-<td>Discount (number)</td>
-<td></td>
-</tr>
-<tr>
-<td>Index (number)</td>
-<td></td>
-</tr>
-<tr>
-<td>Item Brand</td>
-<td></td>
-</tr>
-<tr>
-<td>Item Category</td>
-<td></td>
-</tr>
-<tr>
-<td>Item Category 2</td>
-<td></td>
-</tr>
-<tr>
-<td>Item Category 3</td>
-<td></td>
-</tr>
-<tr>
-<td>Item Category 4</td>
-<td></td>
-</tr>
-<tr>
-<td>Item Category 5</td>
-<td></td>
-</tr>
-<tr>
-<td>Item List ID</td>
-<td></td>
-</tr>
-<tr>
-<td>Item List Name</td>
-<td></td>
-</tr>
-<tr>
-<td>Item Variant</td>
-<td></td>
-</tr>
-<tr>
-<td>Location ID</td>
-<td></td>
-</tr>
-<tr>
-<td>Price (number)</td>
-<td></td>
-</tr>
-<tr>
-<td>Quantity (number)</td>
-<td></td>
-</tr>
-<tr>
-<td>Template Variables</td>
-<td>Provide template variables as data input for templates (see: <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>).<br> Name nested template variables with the dot notation (For example: <code>items.name</code>).<br> Nested template variables are typically built from data layer list attributes.</td>
-</tr>
-<tr>
-<td>Templates</td>
-<td>Provide templates to be referenced in User Properties (see: <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>).<br> Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="send-firebase-event">Send Firebase Event</h3>
-<h4 id="parameters-2">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>App Instance ID</td>
-<td>(Required) Uniquely identifies a specific installation of a Firebase app. This value needs to be retrieved through the Firebase SDK.</td>
-</tr>
-<tr>
-<td>Firebase App ID Override</td>
-<td>The identifier for a Firebase app. This is a required field, and this setting overrides Firebase App ID used in the configuration section.</td>
+<td>API Secret Override</td>
+<td>Measurement Protocol API Secret for the Data Stream. This setting overrides API Secret used in the <strong>Configuration</strong> section.</td>
 </tr>
 <tr>
 <td>User ID</td>
@@ -1179,211 +925,207 @@ The identifier for a Firebase app. To find the Firebase app ID navigate to <stro
 </tr>
 <tr>
 <td>Non Personalized Ads</td>
-<td>Set to true to indicate these events should not be used for personalized ads.</td>
+<td>Set to <code>true</code> to indicate these events should not be used for personalized ads.</td>
 </tr>
 <tr>
 <td>Event Type</td>
-<td>Select Event Type.<br> For more information and a list of available events, see <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events">Google Analytics Measurement Protocol &gt; Events</a>.</td>
-</tr>
-<tr>
-<td>Achievement ID</td>
-<td></td>
-</tr>
-<tr>
-<td>Affiliation</td>
-<td></td>
-</tr>
-<tr>
-<td>Character</td>
-<td></td>
-</tr>
-<tr>
-<td>Content Type</td>
-<td></td>
-</tr>
-<tr>
-<td>Coupon</td>
-<td></td>
-</tr>
-<tr>
-<td>Creative Name</td>
-<td></td>
-</tr>
-<tr>
-<td>Creative Slot</td>
-<td></td>
-</tr>
-<tr>
-<td>Currency</td>
-<td></td>
-</tr>
-<tr>
-<td>Custom Event Type</td>
-<td></td>
-</tr>
-<tr>
-<td>Group ID</td>
-<td></td>
-</tr>
-<tr>
-<td>Item ID</td>
-<td></td>
-</tr>
-<tr>
-<td>Item List ID</td>
-<td></td>
-</tr>
-<tr>
-<td>Item List Name</td>
-<td></td>
-</tr>
-<tr>
-<td>Item Name</td>
-<td></td>
-</tr>
-<tr>
-<td>Level (number)</td>
-<td></td>
-</tr>
-<tr>
-<td>Location ID</td>
-<td></td>
-</tr>
-<tr>
-<td>Method</td>
-<td></td>
-</tr>
-<tr>
-<td>Payment Type</td>
-<td></td>
-</tr>
-<tr>
-<td>Promotion ID</td>
-<td></td>
-</tr>
-<tr>
-<td>Promotion Name</td>
-<td></td>
-</tr>
-<tr>
-<td>Score (number)</td>
-<td></td>
-</tr>
-<tr>
-<td>Search Term</td>
-<td></td>
-</tr>
-<tr>
-<td>Shipping (number)</td>
-<td></td>
-</tr>
-<tr>
-<td>Shipping Tier</td>
-<td></td>
-</tr>
-<tr>
-<td>Tax (number)</td>
-<td></td>
-</tr>
-<tr>
-<td>Transaction ID</td>
-<td></td>
-</tr>
-<tr>
-<td>Value (number)</td>
-<td></td>
-</tr>
-<tr>
-<td>Virtual Currency Name</td>
-<td></td>
+<td>Select Event Type. For more information and a list of available events, see <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events">Events</a>.</td>
 </tr>
 <tr>
 <td>User Properties</td>
-<td>User properties describe segments of user base, such as language preference or geographic location.<br> Could be configured into the section &ldquo;Templates&rdquo;.</td>
+<td>User properties describe segments of user base, such as language preference or geographic location.</td>
 </tr>
 <tr>
 <td>Item ID</td>
-<td>Either Item ID or Item Name is required.</td>
+<td>The ID of the item.</td>
 </tr>
 <tr>
 <td>Item Name</td>
-<td>Either Item ID or Item Name is required.</td>
+<td>The name of the item.</td>
 </tr>
 <tr>
 <td>Affiliation</td>
-<td></td>
+<td>A product affiliation to designate a supplying company or brick and mortar store location.</td>
 </tr>
 <tr>
 <td>Coupon</td>
-<td></td>
+<td>The coupon name/code associated with the item.</td>
 </tr>
 <tr>
 <td>Currency</td>
-<td></td>
+<td>The currency, in 3-letter ISO 4217 format.</td>
 </tr>
 <tr>
-<td>Discount (number)</td>
-<td></td>
+<td>Discount</td>
+<td>The monetary discount value associated with the item.</td>
 </tr>
 <tr>
-<td>Index (number)</td>
-<td></td>
+<td>Index</td>
+<td>The index/position of the item in a list.</td>
 </tr>
 <tr>
 <td>Item Brand</td>
-<td></td>
+<td>The brand of the item.</td>
 </tr>
 <tr>
 <td>Item Category</td>
-<td></td>
+<td>The category of the item. If used as part of a category hierarchy or taxonomy then this will be the first category.</td>
 </tr>
 <tr>
 <td>Item Category 2</td>
-<td></td>
+<td>The second category hierarchy or additional taxonomy for the item.</td>
 </tr>
 <tr>
 <td>Item Category 3</td>
-<td></td>
+<td>The third category hierarchy or additional taxonomy for the item.</td>
 </tr>
 <tr>
 <td>Item Category 4</td>
-<td></td>
+<td>The fourth category hierarchy or additional taxonomy for the item.</td>
 </tr>
 <tr>
 <td>Item Category 5</td>
-<td></td>
+<td>The fifth category hierarchy or additional taxonomy for the item.</td>
 </tr>
 <tr>
 <td>Item List ID</td>
-<td></td>
+<td>The ID of the list in which the item was presented to the user.</td>
 </tr>
 <tr>
 <td>Item List Name</td>
-<td></td>
+<td>The name of the list in which the item was presented to the user.</td>
 </tr>
 <tr>
 <td>Item Variant</td>
-<td></td>
+<td>The item variant or unique code or description for additional item details/options.</td>
 </tr>
 <tr>
 <td>Location ID</td>
-<td></td>
+<td>The location associated with the item. It&rsquo;s recommended to use the Google Place ID that corresponds to the associated item. A custom location ID can also be used.</td>
 </tr>
 <tr>
-<td>Price (number)</td>
-<td></td>
+<td>Price</td>
+<td>The monetary price of the item, in units of the specified currency parameter.</td>
 </tr>
 <tr>
-<td>Quantity (number)</td>
-<td></td>
+<td>Quantity</td>
+<td>Item quantity.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-firebase-event">Send Firebase Event</h3>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>App Instance ID</td>
+<td>Required.</td>
 </tr>
 <tr>
-<td>Template Variables</td>
-<td>Provide template variables as data input for templates (see: <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>).<br> Name nested template variables with the dot notation (For example: <code>items.name</code>).<br> Nested template variables are typically built from data layer list attributes.</td>
+<td>Firebase App ID Override</td>
+<td>Required. The identifier for a Firebase app. This setting overrides Firebase App ID used in the <strong>Configuration</strong> section.</td>
 </tr>
 <tr>
-<td>Templates</td>
-<td>Provide templates to be referenced in User Properties (see: <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>).<br> Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName}}</code>.</td>
+<td>User ID</td>
+<td>A unique identifier for a user.</td>
+</tr>
+<tr>
+<td>Timestamp Micros</td>
+<td>A Unix timestamp (in microseconds) for the time to associate with the event.</td>
+</tr>
+<tr>
+<td>Non Personalized Ads</td>
+<td>Set to <code>true</code> to indicate these events should not be used for personalized ads.</td>
+</tr>
+<tr>
+<td>Event Type</td>
+<td>Select Event Type. For more information and a list of available events, see <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events">Events</a>.</td>
+</tr>
+<tr>
+<td>User Properties</td>
+<td>User properties describe segments of user base, such as language preference or geographic location.</td>
+</tr>
+<tr>
+<td>Item ID</td>
+<td>The ID of the item.</td>
+</tr>
+<tr>
+<td>Item Name</td>
+<td>The name of the item.</td>
+</tr>
+<tr>
+<td>Affiliation</td>
+<td>A product affiliation to designate a supplying company or brick and mortar store location.</td>
+</tr>
+<tr>
+<td>Coupon</td>
+<td>The coupon name/code associated with the item.</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>The currency, in 3-letter ISO 4217 format.</td>
+</tr>
+<tr>
+<td>Discount</td>
+<td>The monetary discount value associated with the item.</td>
+</tr>
+<tr>
+<td>Index</td>
+<td>The index/position of the item in a list.</td>
+</tr>
+<tr>
+<td>Item Brand</td>
+<td>The brand of the item.</td>
+</tr>
+<tr>
+<td>Item Category</td>
+<td>The category of the item. If used as part of a category hierarchy or taxonomy then this will be the first category.</td>
+</tr>
+<tr>
+<td>Item Category 2</td>
+<td>The second category hierarchy or additional taxonomy for the item.</td>
+</tr>
+<tr>
+<td>Item Category 3</td>
+<td>The third category hierarchy or additional taxonomy for the item.</td>
+</tr>
+<tr>
+<td>Item Category 4</td>
+<td>The fourth category hierarchy or additional taxonomy for the item.</td>
+</tr>
+<tr>
+<td>Item Category 5</td>
+<td>The fifth category hierarchy or additional taxonomy for the item.</td>
+</tr>
+<tr>
+<td>Item List ID</td>
+<td>The ID of the list in which the item was presented to the user.</td>
+</tr>
+<tr>
+<td>Item List Name</td>
+<td>The name of the list in which the item was presented to the user.</td>
+</tr>
+<tr>
+<td>Item Variant</td>
+<td>The item variant or unique code or description for additional item details/options.</td>
+</tr>
+<tr>
+<td>Location ID</td>
+<td>The location associated with the item. It&rsquo;s recommended to use the Google Place ID that corresponds to the associated item. A custom location ID can also be used.</td>
+</tr>
+<tr>
+<td>Price</td>
+<td>The monetary price of the item, in units of the specified currency parameter.</td>
+</tr>
+<tr>
+<td>Quantity</td>
+<td>Item quantity.</td>
 </tr>
 </tbody>
 </table>
@@ -1447,7 +1189,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 2, 2022 
+          <p>This page was last updated:  May 2, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1461,10 +1203,8 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector actions</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#validation">Validation</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#limitations">Limitations</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure settings</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-parameters-and-options">Action parameters and options</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#mapping-client-id">Mapping client ID</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#send-pageview-event-gtagjs">Send PageView Event (gtag.js)</a></li>
@@ -1631,6 +1371,10 @@ No</button>
           Early Access
         </a>
     </li>
+  
+  
+  
+  
   
   
   

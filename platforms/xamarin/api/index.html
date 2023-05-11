@@ -609,7 +609,7 @@ var utag_data = {
 </table>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>tealium.SetConsentStatus(ConsentManager.ConsentStatus.NotConsented);
 </span></span></code></pre></div><h3 id="setvisitorservicelistener"><code>SetVisitorServiceListener()</code></h3>
-<p>Sets a callback function to execute when the visitor profile has been updated. The updated <a href="#instance-ivisitorprofile"><code>VisitorProfile</code></a> is provided in the callback response. For use when <a href="/platforms/xamarin/install/#tealiumconfig"><code>visitorServiceEnabled</code></a> is set to true.</p>
+<p>Sets a callback function to execute when the visitor profile has been updated. The updated <a href="#instance-ivisitorprofile"><code>VisitorProfile</code></a> is provided in the callback response. For use when <a href="/platforms/xamarin/install/#config"><code>visitorServiceEnabled</code></a> is set to <code>true</code>.</p>
 <p>Use this feature if you are licensed for Tealium AudienceStream and you want to use the visitor profile to enhance the user experience in your mobile application.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> SetVisitorServiceListener(Action callback);
 </span></span></code></pre></div><table>
@@ -856,7 +856,7 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<p>These modules are enabled or disabled using the <code>Collectors</code> property set in  <a href="#tealiumconfig"><code>TealiumConfig</code></a>.</p>
+<p>These modules are enabled or disabled using the <code>Collectors</code> property set in  <a href="#class-tealiumconfig"><code>TealiumConfig</code></a>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>TealiumConfig tealConfig = <span style="color:#66d9ef">new</span> TealiumConfig(
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ...</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> List&lt;Collectors&gt; {
@@ -865,7 +865,7 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ...</span>
 </span></span><span style="display:flex;"><span>);
 </span></span></code></pre></div><h3 id="consentexpiry">ConsentExpiry</h3>
-<p>Sets the expiration of consent preferences on the <a href="#tealiumconfig"><code>TealiumConfig</code></a> object.</p>
+<p>Sets the expiration of consent preferences on the <a href="#class-tealiumconfig"><code>TealiumConfig</code></a> object.</p>
 <table>
 <thead>
 <tr>
@@ -893,7 +893,7 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...</span>
 </span></span><span style="display:flex;"><span>);
 </span></span></code></pre></div><h3 id="consentpolicy">ConsentPolicy</h3>
-<p>Sets the consent policy to use on the <a href="#tealiumconfig"><code>TealiumConfig</code></a> object. If a consent policy is not set, the consent manager is disabled.</p>
+<p>Sets the consent policy to use on the <a href="#class-tealiumconfig"><code>TealiumConfig</code></a> object. If a consent policy is not set, the consent manager is disabled.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>TealiumConfig config = <span style="color:#66d9ef">new</span> TealiumConfig(
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">//...</span>
 </span></span><span style="display:flex;"><span>  consentPolicy = ConsentPolicy.GDPR,
@@ -905,11 +905,11 @@ var utag_data = {
 <li><code>ConsentPolicy.CCPA</code></li>
 </ul>
 <h3 id="dispatchers">Dispatchers</h3>
-<p>Dispatchers are modules that send the data to a Tealium endpoint. These are set on the <a href="#tealiumconfig"><code>TealiumConfig</code></a> object.</p>
+<p>Dispatchers are modules that send the data to a Tealium endpoint. These are set on the <a href="#class-tealiumconfig"><code>TealiumConfig</code></a> object.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>TealiumConfig tealConfig = <span style="color:#66d9ef">new</span> TealiumConfig(
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ...</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> List&lt;Dispatchers&gt; {
-</span></span><span style="display:flex;"><span>        Collectors.Collect, Collectors.RemoteCommands
+</span></span><span style="display:flex;"><span>        Dispatchers.Collect, Dispatchers.RemoteCommands
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ...</span>
 </span></span><span style="display:flex;"><span>);
@@ -977,7 +977,7 @@ var utag_data = {
 </tbody>
 </table>
 <h2 id="ivisitorprofile"><code>IVisitorProfile</code></h2>
-<p>(For use with <a href="#object-tealiumconfig"><code>TealiumConfig.visitorServiceEnabled</code></a>.)</p>
+<p>(For use with <a href="#class-tealiumconfig"><code>TealiumConfig.visitorServiceEnabled</code></a>.)</p>
 <p>The visitor profile object contains visitor attributes returned from the visitor service. The <code>currentVisit</code> property contains attributes scoped to the current visit. Access each attribute value by ID using a subscript. If the attribute does not exist, <code>null</code> is returned.</p>
 <table>
 <thead>
@@ -1178,7 +1178,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 27, 2023 
+          <p>This page was last updated:  May 8, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1385,6 +1385,10 @@ No</button>
           Early Access
         </a>
     </li>
+  
+  
+  
+  
   
   
   

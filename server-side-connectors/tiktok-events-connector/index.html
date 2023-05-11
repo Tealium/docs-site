@@ -718,12 +718,13 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="api-information">API Information</h2>
+  <p>This article describes how to set up the TikTok Events connector.</p>
+<h2 id="api-information">API Information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
 <li>API Name: TikTok HTTP API</li>
-<li>API Version: v1.2</li>
-<li>API Endpoint: <code>https://business-api.tiktok.com/open_api/v1.2</code></li>
+<li>API Version: v1.3</li>
+<li>API Endpoint: <code>https://business-api.tiktok.com/open_api/v1.3</code></li>
 <li>Documentation: <a href="https://ads.tiktok.com/marketing_api/docs?rid=esb88xalm6m&amp;id=1701890977725441">TikTok Events API</a></li>
 </ul>
 <h2 id="batch-limits">Batch Limits</h2>
@@ -737,145 +738,145 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Action Name</th>
-<th style="text-align:left">AudienceStream</th>
-<th style="text-align:left">EventStream</th>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Send Web Event</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✓</td>
+<td>Send App Event</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send Web Event</td>
+<td>✓</td>
+<td>✓</td>
 </tr>
 </tbody>
 </table>
 <h2 id="configure-settings">Configure Settings</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/about/">About Connectors</a> article for general instructions on how to add a connector.</p>
-<p>After selecting your source, click <strong>Continue</strong> and then <strong>Add Connector</strong>. Enter a name for the connector and configure the following settings:</p>
+<p>Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>App ID</strong><br>
-Required if <strong>Access Token</strong> is not provided. Mobile App ID. For example, in the Apple App Store, the App ID is <code>A1B2C3D4E5.com.domainname.applicationname</code>. In the Google Play store, if the URL for the app is <code>https://play.google.com/store/apps/details?id=package_name</code>, <code>package_name</code> is your App ID. If you are using an Android app not in the Google Play store, use the package name.</li>
 <li><strong>Access Token</strong><br>
-An authorized Access Token configured in TikTok. For more information, see the <a href="https://ads.tiktok.com/marketing_api/docs?rid=esb88xalm6m&amp;id=1701890977725441">Events API</a> article in the TikTok documentation. You can generate an access token by navigating to <strong>TikTok Events Manager &gt; Events API &gt; Access Token Generation</strong>.</li>
+The Access Token that is configured in TikTok.</li>
 <li><strong>Pixel ID</strong><br>
-If you already have a TikTok Pixel integrated on the website, you can use the existing Pixel code. You can find the <code>pixel_code</code> by logging in your TikTok Ads Manager Account. TikTok recommends using one pixel per website.</li>
-<li><strong>TikTok App ID</strong><br>
-A unique code that is generated in the TikTok Ads Manager.</li>
+If you already have a TikTok pixel integrated for the website, you can use the existing pixel code. You can find the pixel_code by logging in your TikTok ads manager account. We recommend that you create one Pixel per website.</li>
 </ul>
-<p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
 <h3 id="action-settings--parameters-and-options">Action Settings — Parameters and Options</h3>
-<p>Click <strong>Continue</strong> to configure the connector actions. Enter in a name for the action and then select the action type from the drop-down menu.</p>
-<p>The following sections describe how to set up parameters and options for each action.</p>
-<h4 id="action--send-web-event">Action — Send Web Event</h4>
+<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<p>The following section describes how to set up parameters and options for each action.</p>
+<h4 id="action---send-web-event">Action - Send Web Event</h4>
 <h5 id="parameters">Parameters</h5>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Parameter</th>
-<th style="text-align:left">Description</th>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Event Type</td>
-<td style="text-align:left">(Required). Conversion event name.</td>
+<td>Event Type</td>
+<td>Required. Conversion event name.</td>
 </tr>
 <tr>
-<td style="text-align:left">Custom Event Name</td>
-<td style="text-align:left">(Required). App event name.</td>
+<td>Custom Event Name</td>
+<td>(Required). App event name.</td>
 </tr>
 <tr>
-<td style="text-align:left">Pixel ID Override</td>
-<td style="text-align:left">(Required). Pixel ID that can be found in the <strong>TikTok Events Manager</strong>. This setting overrides <strong>Pixel ID</strong> used in the <strong>Configuration</strong> section.</td>
+<td>Pixel ID Override</td>
+<td>(Required). Pixel ID that can be found in the <strong>TikTok Events Manager</strong>. This setting overrides <strong>Pixel ID</strong> used in the <strong>Configuration</strong> section.</td>
 </tr>
 <tr>
-<td style="text-align:left">Event ID</td>
-<td style="text-align:left">Any hashed ID that can identify a unique user or session. For example, <code>SessionID_RandomNumber</code>. If you set <a href="https://community.tealiumiq.com/t5/tkb/workflowpage/tkb-id/client-side-integrations/article-id/322#toc-hId--443811314">Generate Event ID in the TikTok Pixel tag</a> to <code>true</code>, this ID will be automatically generated for every TikTok tracking event.</td>
+<td>Event ID</td>
+<td>Any hashed ID that can identify a unique user or session. For example, <code>SessionID_RandomNumber</code>. If you set <a href="https://community.tealiumiq.com/t5/tkb/workflowpage/tkb-id/client-side-integrations/article-id/322#toc-hId--443811314">Generate Event ID in the TikTok Pixel tag</a> to <code>true</code>, this ID will be automatically generated for every TikTok tracking event.</td>
 </tr>
 <tr>
-<td style="text-align:left">IP</td>
-<td style="text-align:left">IP address of the browser. It should be the public IP and not hashed. To increase the probability of matching website visitor events with TikTok ads, we recommend sending both <strong>IP</strong> and <strong>User Agent</strong>.</td>
+<td>IP</td>
+<td>Public IP address of the browser. It must not be hashed. To increase the probability of matching website visitor events with TikTok ads, we recommend sending both <strong>IP</strong> and <strong>User Agent</strong>.</td>
 </tr>
 <tr>
-<td style="text-align:left">User Agent</td>
-<td style="text-align:left">Non-hashed user agent from the user&rsquo;s device. To increase the probability of matching website visitor events with TikTok ads, we recommend sending both <strong>IP</strong> and <strong>User Agent</strong>.</td>
+<td>User Agent</td>
+<td>Non-hashed user agent from the user&rsquo;s device. To increase the probability of matching website visitor events with TikTok ads, we recommend sending both <strong>IP</strong> and <strong>User Agent</strong>.</td>
 </tr>
 <tr>
-<td style="text-align:left">Test Event Code</td>
-<td style="text-align:left">To test event tracking, use this field to specify a test code. If the event is received in TikTok, this test code will display in the Test Events tab of the Pixel in TikTok Ads Manager.</td>
+<td>Test Event Code</td>
+<td>To test event tracking, use this field to specify a test code. If the event is received in TikTok, this test code will display in the <strong>Test Events</strong> tab of the TikTok Pixel in <strong>TikTok Ads Manager</strong>.</td>
 </tr>
 <tr>
-<td style="text-align:left">Timestamp</td>
-<td style="text-align:left">Timestamp that the event took place. Timestamp with ISO 8601 format <code>YYYY-MM-DDThh:mm:ssZ</code>. If no timestamp is provided, the current timestamp will be used.</td>
+<td>Timestamp</td>
+<td>Timestamp when the event took place with ISO 8601 format <code>YYYY-MM-DDThh:mm:ssZ</code>. If no timestamp is provided, the current timestamp will be used.</td>
 </tr>
 <tr>
-<td style="text-align:left">Callback</td>
-<td style="text-align:left">The value of <code>ttclid</code> used to match website visitor events with TikTok ads.</td>
+<td>Callback</td>
+<td>The value of <code>ttclid</code> used to match website visitor events with TikTok ads.</td>
 </tr>
 <tr>
-<td style="text-align:left">Referrer</td>
-<td style="text-align:left">Page referrer.</td>
+<td>Referrer</td>
+<td>Page referrer.</td>
 </tr>
 <tr>
-<td style="text-align:left">URL</td>
-<td style="text-align:left">Page URL when event happened.</td>
+<td>URL</td>
+<td>Page URL when event happened.</td>
 </tr>
 <tr>
-<td style="text-align:left">User External ID (apply SHA256 hash)</td>
-<td style="text-align:left">(Recommended). The external user ID. It must be hashed with SHA256. Use <strong>Apply SHA256 Hash</strong> option prior to sending. If already hashed, use <strong>Already SHA256 Hashed</strong> option.</td>
+<td>User External ID</td>
+<td>(Recommended). The external user ID. It must be hashed with SHA256.</td>
 </tr>
 <tr>
-<td style="text-align:left">User External ID (already SHA256 hashed)</td>
-<td style="text-align:left">(Recommended). The external user ID. It must be hashed with SHA256. Use <strong>Apply SHA256 Hash</strong> option prior to sending. If already hashed, use <strong>Already SHA256 Hashed</strong> option.</td>
+<td>User Phone Number</td>
+<td>(Recommended). User&rsquo;s phone number. It must be hashed with SHA256. Include country code with <code>+</code> and remove any other characters (spaces, <code>-</code>) between numbers (For instance, an example from the USA: <code>+12125551212</code>). If the country code is <code>86</code>, do not include country code (Example: <code>13800000000</code>).</td>
 </tr>
 <tr>
-<td style="text-align:left">User Phone Number (apply SHA256 hash)</td>
-<td style="text-align:left">(Recommended). User&rsquo;s phone number. It must be hashed with SHA256. Include country code with &lsquo;+&rsquo; and remove any other characters (spaces, &lsquo;-&rsquo;) between numbers (Example for US: <code>+12125551212</code>). If the country code is <code>86</code>, do not include country code (Example: <code>13800000000</code>). Use <strong>Apply SHA256 Hash</strong> if unhashed. If already hashed, use <strong>Already SHA256 Hashed</strong> option.</td>
+<td>User Email</td>
+<td>(Recommended). Email address. It must be hashed with SHA256.</td>
 </tr>
 <tr>
-<td style="text-align:left">User Phone Number (already SHA256 hashed)</td>
-<td style="text-align:left">(Recommended). User&rsquo;s phone number. It must be hashed with SHA256. Include country code with &lsquo;+&rsquo; and remove any other characters (spaces, &lsquo;-&rsquo;) between numbers (Example for US: <code>+12125551212</code>). If the country code is <code>86</code>, do not include country code (Example: <code>13800000000</code>). Use <strong>Apply SHA256 Hash</strong> if unhashed. If already hashed, use <strong>Already SHA256 Hashed</strong> option.</td>
+<td>Content Type</td>
+<td>The type of the product. This value must be <code>product</code> or <code>product_group</code>, depending on how your data feed is configured for your product catalog.</td>
 </tr>
 <tr>
-<td style="text-align:left">User Email (apply SHA256 hash)</td>
-<td style="text-align:left">(Recommended). Email address. Must be 256 Hashed. Use <strong>Apply SHA256 Hash</strong> option prior to sending. If already hashed, use <strong>Already SHA256 Hashed</strong> option.</td>
+<td>Content Price</td>
+<td>Price of the item. Supports number data type.</td>
 </tr>
 <tr>
-<td style="text-align:left">User Email (already SHA256 hashed)</td>
-<td style="text-align:left">(Recommended). Email address. Must be 256 Hashed. Use <strong>Apply SHA256 Hash</strong> option prior to sending. If already hashed, use <strong>Already SHA256 Hashed</strong> option.</td>
+<td>Content Quantity</td>
+<td>Number of items. Supports number data type.</td>
 </tr>
 <tr>
-<td style="text-align:left">Content Price</td>
-<td style="text-align:left">Price of the item. Supports number data type.</td>
+<td>Content ID</td>
+<td>Product ID in your system.</td>
 </tr>
 <tr>
-<td style="text-align:left">Content Type</td>
-<td style="text-align:left">A description of the product item (For example, <code>being purchased</code>).</td>
+<td>Content Brand</td>
+<td>The brand of the product item.</td>
 </tr>
 <tr>
-<td style="text-align:left">Content Quantity</td>
-<td style="text-align:left">Number of items. Supports number data type.</td>
+<td>Content Description</td>
+<td>A description of the product item.</td>
 </tr>
 <tr>
-<td style="text-align:left">Content ID</td>
-<td style="text-align:left">Product ID in your system.</td>
+<td>Description</td>
+<td>A description of the app event.</td>
 </tr>
 <tr>
-<td style="text-align:left">Description</td>
-<td style="text-align:left">A description of the app event.</td>
+<td>Currency</td>
+<td>3 character ISO-4217 code. For example, <code>EUR</code>, <code>USD</code>, <code>JPY</code>.</td>
 </tr>
 <tr>
-<td style="text-align:left">Currency</td>
-<td style="text-align:left">3 Digit ISO-4217 code. For example, <code>EUR</code>, <code>USD</code>, <code>JPY</code>.</td>
+<td>Value</td>
+<td>Total value of the order or items sold.</td>
 </tr>
 <tr>
-<td style="text-align:left">Value</td>
-<td style="text-align:left">Total value of the order or items sold.</td>
+<td>Query</td>
+<td>The text used in a search query.</td>
 </tr>
 <tr>
-<td style="text-align:left">Query</td>
-<td style="text-align:left">The text used in a search query.</td>
+<td>Tealium iQ Tag ID</td>
+<td>The ID of a Tealium TikTok Pixel tag to use for Automatic Deduplication of events. If provided, Tealium automatically looks for your Event ID value that is sent from Tealium iQ.</td>
 </tr>
 </tbody>
 </table>
@@ -939,7 +940,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 26, 2022 
+          <p>This page was last updated:  May 8, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1119,6 +1120,10 @@ No</button>
           Early Access
         </a>
     </li>
+  
+  
+  
+  
   
   
   

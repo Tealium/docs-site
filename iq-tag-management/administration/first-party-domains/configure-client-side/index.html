@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Using first-party domains | First-party domains |Tealium Docs</title>
+    <title>Configure client-side delivery | First-party domains |Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -189,9 +189,11 @@ var utag_data = {
     
     <main role="main" class="content-with-sidebar pb0-ns">
       
-  <div class="w-100 pr4">
-  <div class="flex">
 
+<div class="w-100 pr4">
+<div class="flex">
+
+    
       <div id="menu" class="order-0 w-auto vh-100 overflow-auto dn db-ns sticky-l pt3 pl125" style="width:280px;">
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 mt0 mb1">
@@ -555,11 +557,13 @@ var utag_data = {
         <ul class="bl b--primary bw1 pl2 first-party-domains desktopmenu animated fadeIn list "><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/administration/first-party-domains/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-first-party-domains">About first-party domains</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/administration/first-party-domains/configure-domains-and-certificates/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".configure-first-party-domains">Configure domains and certificates</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/administration/first-party-domains/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-first-party-domains">Managing first-party-domains</a>
+        <a href="/iq-tag-management/administration/first-party-domains/configure-server-side/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".configure-server-side-data-collection">Configure server-side data collection</a>
       </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/administration/first-party-domains/using/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".using-first-party-domains">Using first-party domains</a>
+        <a href="/iq-tag-management/administration/first-party-domains/configure-client-side/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".configure-client-side-delivery">Configure client-side delivery</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/administration/first-party-domains/update-endpoints/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".fpd-update-domains">Update endpoint configurations</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/administration/first-party-domains/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-first-party-domains">Manage First-Party-Domains</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".linking-to-github">Linking to GitHub</a>
@@ -667,10 +671,10 @@ var utag_data = {
       </li></ul></li></ul>
 </nav>
 </div>
+    
 
     <article id="main-content" class="order-1 overflow-auto max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
       <div class="documentation-copy ph4">
-
         <header class="flex-none w-100"><nav id="breadcrumb">
 <ul class="nav">
 
@@ -703,118 +707,114 @@ var utag_data = {
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Using first-party domains</h1>
-        </header>
+<h1 class="lh-title mt30 mb3">Configure client-side delivery</h1>
+</header>
 
-        <div class="mv2 mid-gray fn w-100">
-          
-            <p class="f4 fw3 lh-copy">
-              This article explains how to use first-party-domains
-            </p>
-          
-        </div>
+<div class="mv2 mid-gray fn w-100">
+  
+    <p class="f4 fw3 lh-copy">
+      This article describes how to configure First-Party Domains for Tealium iQ Tag Management client-side delivery.
+    </p>
+  
+</div>
 
-        <div class="prose nested-links" id="prose">
-         <p>After your domains are configured and the certificates are validated you can begin using your first-party domains with the following services:</p>
-<ul>
-<li>Tag Management</li>
-<li>Tealium Collect</li>
-</ul>
-
-        
-        
-          
-          
-          <h2 id="first-party-domains-and-environment-switcher">First-party domains and environment switcher</h2>
-<p>Environment switcher is a browser plugin that can be used to change the Tealium files (<code>utag.js</code> and <code>utag.sync.js</code>) that are loaded on a page, which is useful during testing. Environment switcher does not work properly when first-party domains is used for the <code>tags.tiqcdn.com</code> domain. In this case, you can setup a URL redirect for <code>tags.tiqcdn.com</code> in environment switcher.</p>
-<p>For more information, see <a href="/iq-tag-management/tealium-tools/environment-switcher/">Tealium Tools: Environment Switcher</a>.</p>
-
-          
-          
-          <h2 id="tag-management">Tag management</h2>
-<p>To use your first-party domain with iQ Tag Management you must also make the following changes:</p>
-<ul>
-<li>Update the Universal Tag (<code>utag.js</code>) code snippet wherever it is installed.</li>
-<li>Set the publishing URLs.</li>
-<li>Edit the template for <code>utag.js</code> to adjust the location of <code>utag.v.js</code>.</li>
-</ul>
-<h3 id="update-universal-tag-loading-script">Update universal tag loading script</h3>
-<p>To update the Universal Tag code snippet:</p>
+<div class="prose nested-links" id="prose">
+  <p>Use the following steps to configure First-Party Domains for Tealium iQ Tag Management client-side delivery:</p>
 <ol>
-<li>Navigate to <strong>User Admin Menu &gt; Code Center</strong>.</li>
-<li>Under <strong>Choose Domain</strong>, select your first-party domain.<br>
-<img src="/images/iq-tag-management/first-party-data-code-center.png" 
-         alt="first party data code center"
-         title="first party data code center" width="499" height="164"/></li>
-</ol>
-<p>The example code snippet is updated to use your first-party domain.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>The new URL only uses the profile name and environment in the path. The account name and <code>/utag/</code> portions are omitted.</p>
-<p>The URL to the Universal Tag on a first-party domain is:</p>
-<pre tabindex="0"><code>https://**sub.your_domain.com**/PROFILE/ENV/utag.js
-</code></pre><p>For example, the code snippet for <code>tags.tealiumecommerce.com</code> would be:</p>
-<pre tabindex="0"><code>&lt;!-- Loading script asynchronously --&gt;
-&lt;script type=&#34;text/javascript&#34;&gt;
-    (function(a,b,c,d){
-    a=&#39;**https://tags.tealiumecommerce.com/ecomm/prod/utag.js**&#39;;
-    b=document;c=&#39;script&#39;;d=b.createElement(c);d.src=a;d.type=&#39;text/java&#39;+c;d.async=true;
-    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
-    })();
-&lt;/script&gt;
-</code></pre><h3 id="set-publishing-urls">Set publishing URLs</h3>
-<p>The publishing URLs determine where to load the additional <code>utag.#.js</code> files for each default environment. If you forget this step, then the vendor tag files loaded after <code>utag.js</code> will not originate from your domain.</p>
-<p>To set the publishing URLs:</p>
-<ol>
-<li>Click <strong>Save/Publish</strong>, then click <strong>Configure Publish Settings&hellip;</strong>.</li>
-<li>Under <strong>Publishing URLs</strong>, enter a URL for each environment that uses your first-party domain.<br>
-<img src="/images/iq-tag-management/first-party-domains-publishing-urls.png" 
-         alt="first-party domains publishing urls"
-         title="first-party domains publishing urls" width="600" height="330"/><br>
-<strong>Dev</strong>: <code>//sub.your_domain.com/your_profile/dev/</code><br>
-<strong>QA</strong>: <code>//sub.your_domain.com/your_profile/qa/</code><br>
-<strong>Prod</strong>: <code>//sub.your_domain.com/your_profile/prod/</code></li>
-<li>Click <strong>Save</strong>.</li>
-</ol>
-<p>After all of these changes, save and publish to apply the changes to your site.</p>
-
-          
-          
-          <h2 id="tealium-collect">Tealium Collect</h2>
-<p>To use your first-party domain with Tealium EventStream or Tealium AudienceStream you need to update the data collection URL in your installation of Tealium Collect. For websites, this requires setting the <strong>Tealium Collect Endpoint</strong> field for the Tealium Collect tag.</p>
-<p>To update the Tealium Collect tag:</p>
-<ol>
-<li>Go to <strong>iQ Tag Management &gt; Tags</strong> and expand the Tealium Collect tag.</li>
-<li>In the <strong>Tealium Collect Endpoint</strong> field, enter your first-party domain endpoint.<br>
-Example: <code>sub.your_domain.com/your_account/your_profile/2/i.gif</code></li>
-<li>Click <strong>Apply</strong>.</li>
-</ol>
-<h3 id="collect-for-mobile">Collect for mobile</h3>
-<p>For mobile apps, you must override the dispatch URL in the Collect module.</p>
-<p>For more information on setting your first-party domain endpoint, see the following:</p>
+<li>In the user menu, select <strong>First-Party Domains</strong>.</li>
+<li>Under <strong>Client-Side Delivery</strong>, click <strong>Configure Certificate</strong> and select one of the following:
 <ul>
-<li>[Tealium for Swift: config.overrideCollectURL]/platforms/ios-swift/api/tealium-config/#overridecollecturl)</li>
-<li>[Tealium for Android: config.overrideCollectUrl]/platforms/android-kotlin/module-list/collect/#configuration-options)</li>
+<li><strong>Generate Certificate</strong> – Tealium generates and manages the certificates.</li>
+<li><strong>Provide Certificate</strong> – Provide your own certificate files. For information about the requirements and format for certificate files, see <a href="/iq-tag-management/administration/first-party-domains/about/#manage-your-own-certificates">Manage your own certificates</a>.</li>
 </ul>
+</li>
+<li>If you selected, <strong>Provide Certificate</strong>, upload the following files:
+<ul>
+<li>Certificate (required)</li>
+<li>Private Key (required)</li>
+<li>Certificate Chain (optional)</li>
+</ul>
+</li>
+<li>Select one of the following methods to validate domain ownership:
+<ul>
+<li><strong>DNS Validation</strong></li>
+<li><strong>Email Validation</strong></li>
+</ul>
+</li>
+<li>In the <strong>Add Domains</strong> section, enter a subdomain name, omitting <code>https://</code> and the ending slash.<br>
+For example, <code>tags.example.com</code>.</li>
+<li>To add another domain, click <strong>+ Add Domain</strong>.<br>
+First-party domains apply to all profiles in your account. Enter a subdomain for each site managed by this account.</li>
+<li>Click <strong>I Agree</strong> to give Tealium permission to manage certificates for the provided subdomains and to certify you own and manage these subdomains, then click <strong>Save</strong>.<br>
+After you save your configuration,
+<ul>
+<li><strong>DNS validation</strong> – The screen is updated to display the temporary CNAME records (one for each subdomain) that are used for validation. Add these temporary CNAME records to your DNS configuration. <figure><img src="/images/guides/iq/fpd-dns-confirm-gen-temp.png"/>
+</figure></li>
+<li><strong>Email validation</strong> – The following message is displayed:
+<figure><img src="/images/guides/iq/fpd-save-clientside-email-validation.png"
+         alt="fpd-save-clientside-email-validation"
+         title="fpd-save-clientside-email-validation"/>
+</figure></li>
+</ul>
+</li>
+<li>Complete the process for your validation method, as follows:
+<ul>
+<li>
+<p><strong>DNS validation</strong>: After you have added the validation CNAME records to your DNS configuration and the validation process is completed (this can take several hours), the permanent CNAME records for your subdomains are displayed. Add these permanent CNAME records to your DNS configuration. <p class="note"><i class="fa fa-exclamation-triangle"></i>Your DNS configuration must include the validation records and the permanent records. The validation records are used when you add subdomains to a certificate and for auto-renewal of the certificate.</p></p>
+</li>
+<li>
+<p><strong>Email validation</strong>: You will receive email from Amazon Web Services (one message for each subdomain) containing a validation token that expires in 72 hours. To complete the validation process, you must respond to the email message for each subdomain.
+If you did not receive the email or if the token has expired, in the Client-Side menu on the <strong>First-Party Domains Overview</strong> screen, click <strong>Resend Email</strong>.<figure><img src="/images/guides/iq/fpd-clientside-menu-resend-email.png"
+         alt="fpd-clientside-menu-resend-email"
+         title="fpd-clientside-menu-resend-email"/>
+</figure></p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="validation-confirmation">Validation Confirmation</h2>
+<p>The following message is displayed while your subdomain information is being validated:</p>
+<p><code>Please wait while domain information is validated. This won't take long.</code></p>
+<p>When the domain status in the <strong>First-Party Domains Overview</strong> is changed to <strong>Issued</strong>, your domains are ready to use.</p>
+<p>Validation must occur within 72 hours. If the validation period expires, request a new certificate for the same subdomain. The DNS validation records are the same for subsequent requests of the same subdomain.</p>
+<p>After the domain status is changed to <strong>Issued</strong>, you need to update your endpoint configuration to use first-party domains with Tealium iQ Tag Management. For more information, see <a href="/iq-tag-management/administration/first-party-domains/update-endpoints/">Update endpoint configurations</a>.</p>
 
-          
-        
-        </div>
+</div>
 
-        <div class="mv30 nested-links overflow-hidden dpn"><div class="di">
+<div class="mv30 nested-links overflow-hidden dpn"><div class="fr">
+
+  
+  <a href="/iq-tag-management/administration/first-party-domains/update-endpoints/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <section class="tl pr3">
+      <div>Update endpoint configurations</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"Update endpoint configurations"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
   
   
-  <a href="/iq-tag-management/administration/first-party-domains/manage/"
+</div><div class="di">
+  
+  
+  <a href="/iq-tag-management/administration/first-party-domains/configure-server-side/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Managing first-party-domains "</title>
+      <title>"Configure server-side data collection "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>Managing first-party-domains</div>
+      <div>Configure server-side data collection</div>
     </section>
   </a>
   
 
 </div></div>
+
+
+
         <div class="bt-l b--moon-gray pv3 cb">
           <div id="feedback_form" class="dpn">
   <div id="feedback_buttons">
@@ -838,7 +838,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  May 11, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -846,23 +846,19 @@ No</button>
     </article>
 
     <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns">
-        
+      
 
 
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#first-party-domains-and-environment-switcher">First-party domains and environment switcher</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-management">Tag management</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#update-universal-tag-loading-script">Update universal tag loading script</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#set-publishing-urls">Set publishing URLs</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tealium-collect">Tealium Collect</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#collect-for-mobile">Collect for mobile</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#validation-confirmation">Validation Confirmation</a></li>
               </nav>
   </aside></nav>
 
-  </div>
-  </div>
+</div>
+</div>
+    
 
     </main>
 
@@ -1018,6 +1014,10 @@ No</button>
           Early Access
         </a>
     </li>
+  
+  
+  
+  
   
   
   
