@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Pardot Connector Setup Guide for AudienceStream | Server-Side Connectors |Tealium Docs</title>
+    <title>Salesforce Pardot Connector Setup Guide for AudienceStream | Server-Side Connectors |Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -511,8 +511,6 @@ var utag_data = {
         <a href="/server-side-connectors/oracle-bluekai-mobile-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".oracle-bluekai-mobile-connector">Oracle BlueKai Mobile</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/oracle-infinity-analytics-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".oracle-infinity-analytics-connector">Oracle Infinity Analytics</a>
-      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side-connectors/pardot-connector/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".pardot-connector">Pardot</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/pega-webhook-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".pega-webhook-connector">Pega Webhook</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -565,6 +563,8 @@ var utag_data = {
         <a href="/server-side-connectors/salesforce-journey-builder-connector-deprecated/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".salesforce-journey-builder-connector-deprecated">Salesforce Journey Builder (Deprecated)</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/salesforce-journey-builder-with-oauth-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".salesforce-journey-builder-with-oauth-connector">Salesforce Journey Builder with OAuth</a>
+      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/pardot-connector/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".salesforce-pardot-connector">Salesforce Pardot</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/salesforce-standard-objects-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".salesforce-standard-objects-connector">Salesforce Standard Objects</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -706,23 +706,23 @@ var utag_data = {
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Pardot Connector Setup Guide for AudienceStream</h1>
+<h1 class="lh-title mt30 mb3">Salesforce Pardot Connector Setup Guide for AudienceStream</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
   
     <p class="f4 fw3 lh-copy">
-      With the Pardot Connector, you can send one-to-one emails based off of audiences. This article describes how to set up the Pardot Connector service in your Customer Data Hub profile.
+      This article describes how to set up the Salesforce Pardot Connector service in your Customer Data Hub profile.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="requirements">Requirements</h2>
+  <p>With the Salesforce Pardot Connector, you can send one-to-one emails based off of audiences.</p>
+<h2 id="requirements">Requirements</h2>
 <ul>
-<li>Pardot Account</li>
-<li>Email and Password</li>
-<li>API User Key (this can be found in your Pardot account settings)</li>
+<li>Pardot Business Unit ID</li>
+<li>Salesforce SSO</li>
 </ul>
 <h2 id="supported-actions">Supported Actions</h2>
 <table>
@@ -765,17 +765,20 @@ var utag_data = {
 <p>Go to the Connector Marketplace and add a new Pardot connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
 <p>To configure your vendor, follow these steps:</p>
 <ol>
-<li>
-<p>In the <strong>Configure</strong> tab, provide a title for the connector instance.</p>
+<li>In the <strong>Configuration</strong> tab, click <strong>Add Connector</strong>.</li>
+<li>Enter a Name for the connector and implementation Notes.</li>
+<li>Under <strong>Account Type</strong>, select the type of account you are connecting to: <strong>Developer</strong>, <strong>Sandbox</strong>, or <strong>Production</strong>.</li>
+<li>Enter the <strong>Pardot Business Unit ID</strong>.
+<ul>
+<li>You can find this value by navigating to <strong>Setup</strong> in Salesforce and entering <strong>Business Unit Setup</strong> in the <strong>Quick Find</strong> box.</li>
+<li>The <strong>Pardot Business Unit ID</strong> begins with <code>OUv</code> and is 18 characters long.</li>
+</ul>
 </li>
-<li>
-<p>Enter your email, password, and API user key that you obtained from Pardot.</p>
-</li>
-<li>
-<p>Provide additional notes about your implementation.</p>
-</li>
-<li>
-<p>Click <strong>Test Connection</strong>.</p>
+<li>Click <strong>Establish Connection</strong>.
+<ul>
+<li>A Salesforce Login window will appear. Enter your Salesforce SSO credentials and click <strong>Log In</strong>.</li>
+<li>If MFA is enabled, you may need to verify your Salesforce login.</li>
+</ul>
 </li>
 </ol>
 <h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
@@ -946,13 +949,13 @@ See: <a href="http://developer.pardot.com/kb/api-version-4/list-memberships/#sup
 <div class="mv30 nested-links overflow-hidden dpn"><div class="fr">
 
   
-  <a href="/server-side-connectors/pega-webhook-connector/"
+  <a href="/server-side-connectors/salesforce-standard-objects-connector/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Pega Webhook</div>
+      <div>Salesforce Standard Objects</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Pega Webhook"</title>
+      <title>"Salesforce Standard Objects"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -961,14 +964,14 @@ See: <a href="http://developer.pardot.com/kb/api-version-4/list-memberships/#sup
 </div><div class="di">
   
   
-  <a href="/server-side-connectors/oracle-infinity-analytics-connector/"
+  <a href="/server-side-connectors/salesforce-journey-builder-with-oauth-connector/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Oracle Infinity Analytics "</title>
+      <title>"Salesforce Journey Builder with OAuth "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>Oracle Infinity Analytics</div>
+      <div>Salesforce Journey Builder with OAuth</div>
     </section>
   </a>
   
@@ -1000,7 +1003,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 23, 2020 
+          <p>This page was last updated:  May 10, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

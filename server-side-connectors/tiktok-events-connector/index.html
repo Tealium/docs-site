@@ -512,8 +512,6 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/oracle-infinity-analytics-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".oracle-infinity-analytics-connector">Oracle Infinity Analytics</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side-connectors/pardot-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".pardot-connector">Pardot</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/pega-webhook-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".pega-webhook-connector">Pega Webhook</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/pegasystems-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".pegasystems-connector-setup-guide">Pegasystems</a>
@@ -565,6 +563,8 @@ var utag_data = {
         <a href="/server-side-connectors/salesforce-journey-builder-connector-deprecated/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".salesforce-journey-builder-connector-deprecated">Salesforce Journey Builder (Deprecated)</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/salesforce-journey-builder-with-oauth-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".salesforce-journey-builder-with-oauth-connector">Salesforce Journey Builder with OAuth</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/pardot-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".salesforce-pardot-connector">Salesforce Pardot</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/salesforce-standard-objects-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".salesforce-standard-objects-connector">Salesforce Standard Objects</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -765,6 +765,39 @@ The Access Token that is configured in TikTok.</li>
 <li><strong>Pixel ID</strong><br>
 If you already have a TikTok pixel integrated for the website, you can use the existing pixel code. You can find the pixel_code by logging in your TikTok ads manager account. We recommend that you create one Pixel per website.</li>
 </ul>
+<h3 id="deduplication-for-tiktok-pixel-and-tiktok-conversions-for-web-events">Deduplication for TikTok Pixel and TikTok Conversions for Web Events</h3>
+<p>To configure this connector to receive event IDs from the TikTok Pixel tag in your Tealium iQ Tag Management account, look for event attributes using the following naming convention:</p>
+<p>Format: <code>tiktok_event_id_&lt;TikTok Event&gt;_&lt;Tag UID&gt;</code>
+For example: <code>tiktok_event_id_Checkout_32</code></p>
+<p>For each event ID that matches the above format, configure a separate action. Map the event-specific <strong>Event ID</strong> attribute to <strong>Event ID</strong> and map the corresponding event name to <strong>Event Name</strong>.</p>
+<p>For example:</p>
+<table>
+<thead>
+<tr>
+<th>Tealium Attribute/Value</th>
+<th>TikTok Parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tiktok_event_id_Purchase</code></td>
+<td>Event ID</td>
+</tr>
+<tr>
+<td>&ldquo;Purchase&rdquo; (Custom Text)</td>
+<td>Event Name</td>
+</tr>
+</tbody>
+</table>
+<p>For more information, see <a href="/client-side-tags/tiktok-pixel-tag/">TikTok Pixel Tag Setup Guide</a>.</p>
+<h4 id="automatic-deduplication">Automatic Deduplication</h4>
+<p>If the <strong>Automatic Deduplication</strong> value is populated, the connector will look for the corresponding variable within the UDO object. You are no longer required to add an Event ID if this section is populated with a mapping to <strong>Tealium iQ Tag ID</strong> and you are using Tealium iQ. However, the following approach may still be needed when using EventStream without Tealium iQ.</p>
+<p>The connector uses the following order of operations:</p>
+<ul>
+<li>If the <strong>Automatic Deduplication</strong> contains a mapping and the value is found in the data layer (for example, <code>tiktok_event_id_ViewContent_30</code>), the data layer value supersedes anything mapped in <strong>Event ID</strong>.</li>
+<li>If <strong>Automatic Deduplication</strong> contains a mapping and the connector can’t find the tag ID version, but the connector can find the legacy version (with no ID attached), the value of the legacy version is used (for example, <code>tiktok_event_id_ViewContent</code>).</li>
+<li>If <strong>Automatic Deduplication</strong> contains a mapping, but the value isn’t found, the mapped <strong>Event ID</strong> is used, if it is populated.</li>
+</ul>
 <h3 id="action-settings--parameters-and-options">Action Settings — Parameters and Options</h3>
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
@@ -958,7 +991,8 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#batch-limits">Batch Limits</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings--parameters-and-options">Action Settings — Parameters and Options</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#deduplication-for-tiktok-pixel-and-tiktok-conversions-for-web-events">Deduplication for TikTok Pixel and TikTok Conversions for Web Events</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings--parameters-and-options">Action Settings — Parameters and Options</a></li>
               </nav>
   </aside></nav>
 
