@@ -236,6 +236,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/airship-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".airship-connector">Airship</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/algolia-insights-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".algolia-insights-connector">Algolia Insights</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-advertising-dsp-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-advertising-dsp-connector">Amazon Advertising DSP</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a>
@@ -728,9 +730,10 @@ var utag_data = {
 <ol>
 <li>Navigate to the <strong>Access Token</strong> section in Intercom.</li>
 <li>Request a token.</li>
-<li>Edit scope (if applicable). <figure><img src="/images/server-side-connectors/intercom-access-tokens.png"
+<li>Edit scope (if applicable). <figure><a class="slb" href="/images/server-side-connectors/intercom-access-tokens.png"><img src="/images/server-side-connectors/intercom-access-tokens.png"
          alt="intercom access tokens"
          title="intercom access tokens"/>
+    </a>
 </figure></li>
 </ol>
 <h2 id="customer-data-hub-configuration">Customer Data Hub Configuration</h2>
@@ -741,14 +744,16 @@ var utag_data = {
 <ol>
 <li>Log in to <a href="https://my.tealiumiq.com/">Tealium Customer Data Hub</a></li>
 <li>Navigate to <strong>Live Events</strong> under the <strong>Discover</strong> tab.</li>
-<li>Click <strong>+ Add Stream</strong> and <strong>Filter by Event Attribute</strong>. <figure><img src="/images/server-side-connectors/add-stream.png"
+<li>Click <strong>+ Add Stream</strong> and <strong>Filter by Event Attribute</strong>. <figure><a class="slb" href="/images/server-side-connectors/add-stream.png"><img src="/images/server-side-connectors/add-stream.png"
          alt="add stream"
          title="add stream"/>
+    </a>
 </figure></li>
 <li>Add a <strong>Title</strong>.</li>
-<li>Add the appropriate condition rules, depending on your variables and Data Layer. <figure><img src="/images/server-side-connectors/create-stream.png"
+<li>Add the appropriate condition rules, depending on your variables and Data Layer. <figure><a class="slb" href="/images/server-side-connectors/create-stream.png"><img src="/images/server-side-connectors/create-stream.png"
          alt="create stream"
          title="create stream"/>
+    </a>
 </figure></li>
 </ol>
 <h3 id="setting-up-a-webhook">Setting up a Webhook</h3>
@@ -767,24 +772,28 @@ var utag_data = {
 <li>Choose the source of your data (stream).</li>
 <li>Enter your API URL (check Intercom documentation, Users is <code>https://api.intercom.io/users</code>).</li>
 <li>Leave the <strong>URL Parameters</strong> section blank.</li>
-<li>Add two <strong>Headers</strong>, both with custom fields, one with <code>Map: applications/json To: Accept</code> and another with <code>Map: {{auth_template}} To: Authorization.</code> The authorization mapping uses a template, which we will configure later. Make sure you put within <code>{{}}</code>.<figure><img src="/images/server-side-connectors/headers.png"
+<li>Add two <strong>Headers</strong>, both with custom fields, one with <code>Map: applications/json To: Accept</code> and another with <code>Map: {{auth_template}} To: Authorization.</code> The authorization mapping uses a template, which we will configure later. Make sure you put within <code>{{}}</code>.<figure><a class="slb" href="/images/server-side-connectors/headers.png"><img src="/images/server-side-connectors/headers.png"
          alt="headers"
          title="headers"/>
+    </a>
 </figure></li>
 <li>Leave <strong>Cookies</strong> section blank.</li>
 <li>Select <strong>application/json</strong> in <strong>Body Content Type</strong>.</li>
-<li>Within the <strong>Body Data</strong> section, add a template mapping to Body. Make sure you put within {{}}.<figure><img src="/images/server-side-connectors/body-data.png"
+<li>Within the <strong>Body Data</strong> section, add a template mapping to Body. Make sure you put within {{}}.<figure><a class="slb" href="/images/server-side-connectors/body-data.png"><img src="/images/server-side-connectors/body-data.png"
          alt="Body data"
          title="Body data"/>
+    </a>
 </figure></li>
-<li>Within the <strong>Template Variables</strong> section, add the mappings of your event level attributes to template endpoints. Make sure you select Event Attributes in this section if you are a AudienceStream customer as this is an EventStream setup. Leave names in the &ldquo;To:&rdquo; fields without <code>{{}}</code><figure><img src="/images/server-side-connectors/template-variables.png"
+<li>Within the <strong>Template Variables</strong> section, add the mappings of your event level attributes to template endpoints. Make sure you select Event Attributes in this section if you are a AudienceStream customer as this is an EventStream setup. Leave names in the &ldquo;To:&rdquo; fields without <code>{{}}</code><figure><a class="slb" href="/images/server-side-connectors/template-variables.png"><img src="/images/server-side-connectors/template-variables.png"
          alt="template variables"
          title="template variables"/>
+    </a>
 </figure></li>
 <li>Under <strong>Templates</strong> add two templates, one for the <strong>Authorization</strong> and one for the <strong>Body</strong>. Use the exact same names as created in previous sections. In the Authorization template add the <strong>Access Token</strong> you generated in Intercom after <strong>Bearer</strong>. For the <strong>Body</strong> template, follow Intercom documentation along with <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Trimou Template Engine Guide</a>. Make sure you use &quot;&quot; as its use changes depending on variable type (integers, strings, et cetera). You will have to nest your Template Variables mapped in previous step within <code>{{}}</code> as a minimum.<br>
-<figure><img src="/images/server-side-connectors/templates.png"
+<figure><a class="slb" href="/images/server-side-connectors/templates.png"><img src="/images/server-side-connectors/templates.png"
          alt="templates"
          title="templates"/>
+    </a>
 </figure></li>
 <li>Save <strong>Action and Webhook</strong></li>
 <li>Save/Publish your profile.</li>
@@ -1313,6 +1322,7 @@ No</button>
   
   
   
+  
 
 </ul>
 
@@ -1419,6 +1429,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1430,7 +1448,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

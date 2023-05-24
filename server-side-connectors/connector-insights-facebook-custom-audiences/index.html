@@ -236,6 +236,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/airship-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".airship-connector">Airship</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/algolia-insights-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".algolia-insights-connector">Algolia Insights</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-advertising-dsp-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-advertising-dsp-connector">Amazon Advertising DSP</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a>
@@ -723,15 +725,17 @@ var utag_data = {
 <p>The insight for the Facebook Audiences connector provides a summary of the custom audience data received by Facebook. These insights are presented in a summary of the parameters and their values.</p>
 <h2 id="custom-audience-parameters">Custom Audience Parameters</h2>
 <p>The parameter summary shows the custom audience data received by Facebook from the connector for one audience. The parameter summary displays the <strong>Custom Audience Name/ID</strong>, each custom audience parameter collected by Facebook, and value for each parameter.</p>
-<figure><img src="/images/server-side-connectors/2022-03-28-09-56-45.png"
+<figure><a class="slb" href="/images/server-side-connectors/2022-03-28-09-56-45.png"><img src="/images/server-side-connectors/2022-03-28-09-56-45.png"
          alt="Facebook Custom Audiences Insights"
          title="Facebook Custom Audiences Insights"/>
+    </a>
 </figure>
 <h2 id="using-connector-insights">Using Connector Insights</h2>
 <p>To access Connector Insights, navigate to <strong>AudienceStream &gt; Audience Connectors</strong>, find the Facebook Audience connector, and click <strong>Insights</strong>.<br></p>
-<figure><img src="/images/server-side-connectors/connector-insights-btn.png"
+<figure><a class="slb" href="/images/server-side-connectors/connector-insights-btn.png"><img src="/images/server-side-connectors/connector-insights-btn.png"
          alt="Useing Connector Insights"
          title="Useing Connector Insights"/>
+    </a>
 </figure>
 <h2 id="understanding-facebook-custom-audiences-insights">Understanding Facebook Custom Audiences Insights</h2>
 <p>The Facebook Custom Audiences insight uses the <a href="https://developers.facebook.com/docs/marketing-api/reference/custom-audience/">Facebook Graph API for Audiences</a> to provide information about your configured audience.</p>
@@ -1285,6 +1289,7 @@ No</button>
   
   
   
+  
 
 </ul>
 
@@ -1391,6 +1396,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1402,7 +1415,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

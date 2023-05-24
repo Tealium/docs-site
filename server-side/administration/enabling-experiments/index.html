@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -844,9 +846,11 @@ Experiments in the Beta stage include features that will soon be available for G
 <ol>
 <li>Log into <strong>iQ Tag Management</strong>.</li>
 <li>In the left side bar, click <strong>Client-Side Experiments</strong> or <strong>Server-Side Experiment</strong>, which resembles a laboratory beaker.<br>
-<img src="/images/server-side/whiteui-tiq-enable-client-side-experiments.jpg" 
+<figure><a class="slb" href="/images/server-side/whiteui-tiq-enable-client-side-experiments.jpg"><img src="/images/server-side/whiteui-tiq-enable-client-side-experiments.jpg"
          alt="TiQ_Enable Client Side Experiments.jpg"
-         title="TiQ_Enable Client Side Experiments.jpg"/><br>
+         title="TiQ_Enable Client Side Experiments.jpg"/>
+    </a>
+</figure><br>
 The Experiments dialog displays.</li>
 <li>Use the toggle to turn a selected feature <strong>On</strong> or <strong>Off</strong>.</li>
 <li>Click <strong>Apply</strong>.<br>
@@ -915,7 +919,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  May 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1343,6 +1347,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1354,7 +1366,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

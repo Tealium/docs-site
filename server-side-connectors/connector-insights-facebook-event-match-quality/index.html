@@ -236,6 +236,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/airship-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".airship-connector">Airship</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/algolia-insights-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".algolia-insights-connector">Algolia Insights</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-advertising-dsp-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-advertising-dsp-connector">Amazon Advertising DSP</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a>
@@ -725,22 +727,25 @@ var utag_data = {
 <p>The event type summary shows the event types received by Facebook from the connector. The event types displayed are based on the <strong>Pixel ID</strong> in the connector configuration and the events configured in the connector actions.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>The <strong>Pixel ID</strong> is automatically detected from the connector configuration. If the <strong>Pixel ID</strong> is set dynamically as a mapped parameter in the connector action then the event type summary data cannot be retrieved from Facebook and the EMQ scores will not appear.</p>
 <p>Each event type has an event match quality score ranging from 1 to 10. The score indicates how well the customer information in those events matches up to existing Facebook accounts.</p>
-<figure><img src="/images/server-side-connectors/facebook-api-insights-events.png"
+<figure><a class="slb" href="/images/server-side-connectors/facebook-api-insights-events.png"><img src="/images/server-side-connectors/facebook-api-insights-events.png"
          alt="Facebook API Insights Events"
          title="Facebook API Insights Events"/>
+    </a>
 </figure>
 <h4 id="customer-information-summary">Customer Information Summary</h4>
 <p>The customer information summary shows the details for an event type. The summary table displays all customer information parameters received for the event type along with the percentage of events receiving each parameter. The higher percentage of events that contain customer information, the more likely the EMQ score will improve.</p>
-<figure><img src="/images/server-side-connectors/facebook-api-insights-customer-info.png"
+<figure><a class="slb" href="/images/server-side-connectors/facebook-api-insights-customer-info.png"><img src="/images/server-side-connectors/facebook-api-insights-customer-info.png"
          alt="Facebook API Insights Customer Info"
          title="Facebook API Insights Customer Info"/>
+    </a>
 </figure>
 <h3 id="using-connector-insights">Using Connector Insights</h3>
 <p>To access Connector Insights:</p>
 <p>Go to <strong>EventStream &gt; Connectors</strong>, find the Facebook Conversions connector, and click <strong>Insights</strong>.</p>
-<figure><img src="/images/server-side-connectors/connector-insights-btn.png"
+<figure><a class="slb" href="/images/server-side-connectors/connector-insights-btn.png"><img src="/images/server-side-connectors/connector-insights-btn.png"
          alt="Connector Insights button"
          title="Connector Insights button"/>
+    </a>
 </figure>
 <p>The event type summary displays.</p>
 <h4 id="event-type-summary-1">Event Type Summary</h4>
@@ -1286,6 +1291,7 @@ No</button>
   
   
   
+  
 
 </ul>
 
@@ -1392,6 +1398,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1403,7 +1417,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

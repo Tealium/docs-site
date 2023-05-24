@@ -236,6 +236,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/airship-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".airship-connector">Airship</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/algolia-insights-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".algolia-insights-connector">Algolia Insights</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-advertising-dsp-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-advertising-dsp-connector">Amazon Advertising DSP</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a>
@@ -745,9 +747,10 @@ var utag_data = {
 <p>Audiences is a tool in your <a href="http://ads.twitter.com">Twitter Ads</a> account that allows you to review and manage your audiences. You can access it by navigating to <strong>Tools &gt; Audiences</strong>.</p>
 <p>From there, you can use your Custom Audiences in your campaign targeting to directly reach the users you care about. Tealium provides the ability to create a Twitter Custom Audience through the user interface within AudienceStream and leverage your audience data to populate the Audience lists. Additionally, Audience lists can be created in your Twitter Ads account and populate into AudienceStream to add or remove users. Examples of audiences that you can re-target previous customers, web visitors who haven&rsquo;t yet converted, and/or target high-value customers.</p>
 <p>Tealium provides a list of hashed identifiers that can be sent to Twitter to add or remove a user from the custom audience list, and Twitter performs a match and produces segments that are made available against media buying on Twitter. Your lists are matched with @handles on Twitter so that you can directly target them in your campaigns, making your marketing highly relevant.</p>
-<figure><img src="/images/server-side-connectors/twitter-custom-audiences.jpg"
+<figure><a class="slb" href="/images/server-side-connectors/twitter-custom-audiences.jpg"><img src="/images/server-side-connectors/twitter-custom-audiences.jpg"
          alt="Twitter Custom Audiences"
          title="Twitter Custom Audiences"/>
+    </a>
 </figure>
 <h2 id="considerations">Considerations</h2>
 <ul>
@@ -1447,6 +1450,7 @@ No</button>
   
   
   
+  
 
 </ul>
 
@@ -1553,6 +1557,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1564,7 +1576,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

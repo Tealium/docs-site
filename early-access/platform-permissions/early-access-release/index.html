@@ -556,9 +556,10 @@ A list of the existing groups is displayed. By default, the list is sorted by Gr
 <li>On the server-side user menu, select <strong>Manage Permissions</strong>.</li>
 <li>Click the <strong>Users</strong> tab.<br>
 The list of users shows the email address and first and last name, as well as the account roles, the number of groups for the user, and the last login time.<br>
-<figure><img src="/images/early-access/plat-perms-user-list.png"
+<figure><a class="slb" href="/images/early-access/plat-perms-user-list.png"><img src="/images/early-access/plat-perms-user-list.png"
          alt="plat-perms-user-list.png"
          title="plat-perms-user-list.png"/>
+    </a>
 </figure></li>
 <li>To sort the list of users, click any column heading.</li>
 <li>To view details for a user, click a user in the list.<br>
@@ -588,14 +589,16 @@ Feature permissions are shown by profile. To select a different profile, click t
 <ol>
 <li>On the server-side user menu, click <strong>Manage Permissions</strong>.</li>
 <li>Click the <strong>Users</strong> tab.<br>
-<figure><img src="/images/early-access/plat-perms-admin-roles.png"
+<figure><a class="slb" href="/images/early-access/plat-perms-admin-roles.png"><img src="/images/early-access/plat-perms-admin-roles.png"
          alt="plat-perms-admin-roles.png"
          title="plat-perms-admin-roles.png"/>
+    </a>
 </figure></li>
 <li>Click the user you want to edit.<br>
-<figure><img src="/images/early-access/admin-roles-user-details.png"
+<figure><a class="slb" href="/images/early-access/admin-roles-user-details.png"><img src="/images/early-access/admin-roles-user-details.png"
          alt="admin-roles-user-details.png"
          title="admin-roles-user-details.png"/>
+    </a>
 </figure></li>
 <li>Select one or more <strong>Account Role Permissions</strong> and click <strong>Save</strong>.</li>
 </ol>
@@ -1021,6 +1024,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1032,7 +1043,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

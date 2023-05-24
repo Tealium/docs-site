@@ -716,8 +716,6 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/xandr-formerly-appnexus-seller-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-formerly-appnexus-seller-tag">Xandr (formerly AppNexus) Seller</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/client-side-tags/xandr-formerly-appnexus-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-formerly-appnexus-tag">Xandr (formerly AppNexus) Tag Setup Guide</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/xandr-universal-pixel-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-universal-pixel-tag">Xandr Universal Pixel</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/yahoo-id-cookie-sync-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".yahoo-id-cookie-sync-tag">Yahoo ID Cookie Sync</a>
@@ -800,9 +798,10 @@ var utag_data = {
 <li><code>dc_category</code> set to <code>cat</code></li>
 </ul>
 <p>Once completed the mappings will look like this:</p>
-<figure><img src="/images/client-side-tags/doubleclick-multi-tag-data-mappings.png"
+<figure><a class="slb" href="/images/client-side-tags/doubleclick-multi-tag-data-mappings.png"><img src="/images/client-side-tags/doubleclick-multi-tag-data-mappings.png"
          alt="doubleclick-multi-tag-data-mappings.png"
          title="doubleclick-multi-tag-data-mappings.png"/>
+    </a>
 </figure>
 <h2 id="extensions">Extensions</h2>
 <p>This solutions uses three extensions to construct all of the Floodlight tags we intend to fire. The following extensions will be added and must be ordered as they appear here:</p>
@@ -851,7 +850,8 @@ This verifies that a value exists for the tag to fire, otherwise it suppresses t
 </tbody>
 </table>
 <p>The Lookup Table extension should appear as follows:</p>
-<figure><img src="/images/client-side-tags/doubleclick-multi-tag-lookup-table.png"/>
+<figure><a class="slb" href="/images/client-side-tags/doubleclick-multi-tag-lookup-table.png"><img src="/images/client-side-tags/doubleclick-multi-tag-lookup-table.png"/>
+    </a>
 </figure>
 <p class="tip"><i class="fa fa-info-circle"></i>Use the <strong>Import from CSV&hellip;</strong> option to manage long lists.</p>
 <h3 id="set-data-layer-extension">Set data layer extension</h3>
@@ -895,7 +895,8 @@ This verifies that a value exists for the tag to fire, otherwise it suppresses t
 </tbody>
 </table>
 <p>The extension should appear as follows:</p>
-<figure><img src="/images/client-side-tags/doubleclick-multi-tag-set-data.png"/>
+<figure><a class="slb" href="/images/client-side-tags/doubleclick-multi-tag-set-data.png"><img src="/images/client-side-tags/doubleclick-multi-tag-set-data.png"/>
+    </a>
 </figure>
 <p class="tip"><i class="fa fa-info-circle"></i>Use the <strong>Add Condition</strong> to test that <code>dc_settings</code> is populated to ensure this will only run when there is a value.</p>
 <h3 id="javascript-code">JavaScript code</h3>
@@ -1462,7 +1463,6 @@ No</button>
   
   
   
-  
 
 </ul>
 
@@ -1569,6 +1569,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1580,7 +1588,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

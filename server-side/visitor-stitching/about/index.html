@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -839,9 +841,10 @@ var utag_data = {
 <p>Identity resolution is the process of collecting and matching <a href="/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/">user identifiers</a> across browsers and devices to create a unified view of a visitor&rsquo;s engagement with your brand.</p>
 <p>For example, when a new visitor interacts with your brand, on your website or app, Tealium Collect generates an <a href="/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/">anonymous ID</a> and includes it in the data sent to AudienceStream. This results in a new visitor profile, a record in AudienceStream that stores visitor attributes. The same visitor might have several profiles in AudienceStream, one for each device or browser, and over time they accumulate more data.</p>
 <p>When a visitor validates their identity, by providing a user identifier such as an email address, Tealium Collect sends this user identifier to AudienceStream to indicate that it is a known visitor. The user identifier populates a visitor ID attribute in AudienceStream, which triggers visitor stitching.</p>
-<figure><img src="/images/server-side/multiplevisitstounifiedprofile.png"
+<figure><a class="slb" href="/images/server-side/multiplevisitstounifiedprofile.png"><img src="/images/server-side/multiplevisitstounifiedprofile.png"
          alt="MultipleVisitsToUnifiedProfile.png"
          title="MultipleVisitsToUnifiedProfile.png"/>
+    </a>
 </figure>
 <p>Visitor stitching goes beyond combining the data from two or more profiles into one. To create the most accurate unified profile possible, Tealium’s proprietary technology ‘replays’ the data from each of the stitched profiles, in order of occurrence, building the new profile based on the sequence of the visitor&rsquo;s journey. Stitching occurs in real-time and newly combined profiles can be immediately acted upon, thus making personalization, remarketing, and retargeting actions much more personalized and effective.</p>
 <p>For more information, see <a href="/server-side/visitor-stitching/diagram/">Visitor Stitching Example</a>.</p>
@@ -852,21 +855,27 @@ var utag_data = {
 <ul>
 <li>
 <p><strong>New Anonymous Visitor</strong> – If the anonymous ID does not match an existing profile, a new visitor profile is created.</p>
-<img src="/images/server-side/icon-visitor-profile-unknown2.png" 
+<figure><a class="slb" href="/images/server-side/icon-visitor-profile-unknown2.png"><img src="/images/server-side/icon-visitor-profile-unknown2.png"
          alt="icon-visitor-profile-unknown2.png"
          title="icon-visitor-profile-unknown2.png"/>
+    </a>
+</figure>
 </li>
 <li>
 <p><strong>Updated Anonymous Visitor</strong> – If the anonymous ID matches a visitor profile, the event enriches the existing profile.</p>
-<img src="/images/server-side/anonuserenrichesprofile.png" 
+<figure><a class="slb" href="/images/server-side/anonuserenrichesprofile.png"><img src="/images/server-side/anonuserenrichesprofile.png"
          alt="AnonUserEnrichesProfile.png"
          title="AnonUserEnrichesProfile.png"/>
+    </a>
+</figure>
 </li>
 <li>
 <p><strong>Identified Visitor</strong> – If the event includes a user identifier that is configured to enrich a visitor ID attribute, and the visitor ID attribute is not populated already, the user identifier enriches the visitor ID attribute and the event enriches the existing profile.
-<img src="/images/server-side/useridtoknownuser.png" 
+<figure><a class="slb" href="/images/server-side/useridtoknownuser.png"><img src="/images/server-side/useridtoknownuser.png"
          alt="UserIDToKnownUser.png"
-         title="UserIDToKnownUser.png"/></p>
+         title="UserIDToKnownUser.png"/>
+    </a>
+</figure></p>
 </li>
 <li>
 <p><strong>Anonymous Visitor Matches Identified Visitor</strong> – If the event includes a user identifier that is configured to enrich a visitor ID attribute, and the user identifier matches the visitor ID attribute in an existing profile, the two profiles are stitched together.</p>
@@ -920,7 +929,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  May 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1346,6 +1355,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1357,7 +1374,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

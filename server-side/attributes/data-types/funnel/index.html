@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -833,9 +835,10 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <p>The funnel attribute is available in the following scopes: Visit and Visitor.</p>
-<figure><img src="/images/server-side/screenshot-2019-11-11-at-1.26.28-pm.png"
+<figure><a class="slb" href="/images/server-side/screenshot-2019-11-11-at-1.26.28-pm.png"><img src="/images/server-side/screenshot-2019-11-11-at-1.26.28-pm.png"
          alt="Screenshot 2019-11-11 at 1.26.28 PM.png"
          title="Screenshot 2019-11-11 at 1.26.28 PM.png"/>
+    </a>
 </figure>
 <h2 id="how-it-works">How it works</h2>
 <p>The funnel attribute tracks a sequence of steps, measuring the visitor&rsquo;s progress from start to finish. A step is recorded when the configured rule occurs. When a step is recorded, attribute values can also be captured as a snapshot of information about the step. Funnel steps can be required or optional, except for the last step which is always required.</p>
@@ -973,19 +976,22 @@ Rule: Free Trial Landing
 <h3 id="conversion-funnel">Conversion funnel</h3>
 <p>Create a funnel attribute name <code>Conversion Funnel</code>. Then click <strong>Create a Step</strong> for each step of the funnel.</p>
 <h4 id="step-1---viewed-a-product">Step 1 - Viewed a Product</h4>
-<figure><img src="/images/server-side/funnel-3.png"
+<figure><a class="slb" href="/images/server-side/funnel-3.png"><img src="/images/server-side/funnel-3.png"
          alt="Funnel - Viewed a product"
          title="Funnel - Viewed a product"/>
+    </a>
 </figure>
 <h4 id="step-2---viewed-cart-page">Step 2 - Viewed Cart Page</h4>
-<figure><img src="/images/server-side/funnel-4.png"
+<figure><a class="slb" href="/images/server-side/funnel-4.png"><img src="/images/server-side/funnel-4.png"
          alt="Funnel - Viewed cart"
          title="Funnel - Viewed cart"/>
+    </a>
 </figure>
 <h4 id="step-3---viewed-checkout-page-optional-as-the-user-may-already-be-logged-in">Step 3 - Viewed Checkout Page (optional as the user may already be logged in)</h4>
-<figure><img src="/images/server-side/funnel-5.png"
+<figure><a class="slb" href="/images/server-side/funnel-5.png"><img src="/images/server-side/funnel-5.png"
          alt="Funnel - Viewed checkout page"
          title="Funnel - Viewed checkout page"/>
+    </a>
 </figure>
 <p>The following steps are all required and mirror Step 2.</p>
 <h4 id="step-4---viewed-billing-page">Step 4 - Viewed Billing Page</h4>
@@ -1005,59 +1011,69 @@ Rule: Free Trial Landing
 </code></pre><h4 id="funnel-fallout">Funnel fallout</h4>
 <p>Knowing where a user dropped from the funnel is an important piece to many marketing campaigns, and AudienceStream can tell you the last step completed.</p>
 <p>First, several rules must be created for each step of the funnel. For example the rule <code>Conversion Funnel - Step 1 Complete</code> checks if <code>Step 1 - Product</code> has been completed.</p>
-<figure><img src="/images/server-side/no-title-1138i54b80adb945590ff.png"
+<figure><a class="slb" href="/images/server-side/no-title-1138i54b80adb945590ff.png"><img src="/images/server-side/no-title-1138i54b80adb945590ff.png"
          alt="Check Step 1"
          title="Check Step 1"/>
+    </a>
 </figure>
 <p>Then, create a string attribute named <code>Conversion Funnel - Last Step Completed</code>. This string attribute will have an enrichment for each step of the funnel and will check for each step of the funnel being completed using the rules above.</p>
-<figure><img src="/images/server-side/funnel-7.png"
+<figure><a class="slb" href="/images/server-side/funnel-7.png"><img src="/images/server-side/funnel-7.png"
          alt="String attribute created"
          title="String attribute created"/>
+    </a>
 </figure>
 <h4 id="abandonment">Abandonment</h4>
 <p>Abandonment must be determined at the end of the session to ensure that all page views have been accounted for. This can be done by creating a badge titled <code>Cart Abandoner</code> that looks at the conversion funnel at the end of the visit and checks to see if the funnel was started but not completed.</p>
-<figure><img src="/images/server-side/no-title-1140i2e61df3ec9067d5c.png"
+<figure><a class="slb" href="/images/server-side/no-title-1140i2e61df3ec9067d5c.png"><img src="/images/server-side/no-title-1140i2e61df3ec9067d5c.png"
          alt="Cart abandoned?"
          title="Cart abandoned?"/>
+    </a>
 </figure>
 <p>We also want to remove the badge upon the <code>Page View</code> event when the conversion funnel is completed.</p>
-<figure><img src="/images/server-side/funnel-8-remove-badge.png"
+<figure><a class="slb" href="/images/server-side/funnel-8-remove-badge.png"><img src="/images/server-side/funnel-8-remove-badge.png"
          alt="Remove badge"
          title="Remove badge"/>
+    </a>
 </figure>
 <h4 id="audience">Audience</h4>
 <p>We can then add an audience that makes use of the newly created badge. The audience should also verify we have some sort of identified about the customer, such as the email address, so that they are able to be targeted.</p>
-<figure><img src="/images/server-side/funnel-9-audience.png"
+<figure><a class="slb" href="/images/server-side/funnel-9-audience.png"><img src="/images/server-side/funnel-9-audience.png"
          alt="Create audience"
          title="Create audience"/>
+    </a>
 </figure>
 <h4 id="action">Action</h4>
 <p>This audience can now be used to trigger any connector (for example, to an ESP) to help get the customer back to the website and convert.</p>
 <p>The who: in our example this customer email address is used to tell the vendor who is the user.</p>
 <p>The what: we are telling the vendor the visitor abandoned the cart and at which step.</p>
-<figure><img src="/images/server-side/funnel-10-action2.png"
+<figure><a class="slb" href="/images/server-side/funnel-10-action2.png"><img src="/images/server-side/funnel-10-action2.png"
          alt="Funnel action 2"
          title="Funnel action 2"/>
+    </a>
 </figure>
 <h4 id="trace">Trace</h4>
 <p>To see how this works, perform a trace and navigate through each step of the conversion funnel.</p>
-<figure><img src="/images/server-side/trace-2.png"
+<figure><a class="slb" href="/images/server-side/trace-2.png"><img src="/images/server-side/trace-2.png"
          alt="Trace 3"
          title="Trace 3" width="262" height="263"/>
+    </a>
 </figure>
 <p>Notice how the trait is updated to show the last step completed, and the funnel is updated to show all steps completed.</p>
 <p>Upon session end, the <code>Cart Abandoner</code> badge is assigned, the <code>Cart Abandoners</code> audience is joined, and related connectors are triggered.</p>
-<figure><img src="/images/server-side/trace-part-1-enriched.png"
+<figure><a class="slb" href="/images/server-side/trace-part-1-enriched.png"><img src="/images/server-side/trace-part-1-enriched.png"
          alt="Cart abandoner enriched"
          title="Cart abandoner enriched"/>
+    </a>
 </figure>
-<figure><img src="/images/server-side/trace-part-2-enriched.png"
+<figure><a class="slb" href="/images/server-side/trace-part-2-enriched.png"><img src="/images/server-side/trace-part-2-enriched.png"
          alt="Cart abandoner enriched 2"
          title="Cart abandoner enriched 2"/>
+    </a>
 </figure>
-<figure><img src="/images/server-side/trace-audience.png"
+<figure><a class="slb" href="/images/server-side/trace-audience.png"><img src="/images/server-side/trace-audience.png"
          alt="Trace audience"
          title="Trace audience"/>
+    </a>
 </figure>
 
 </div>
@@ -1551,6 +1567,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1562,7 +1586,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

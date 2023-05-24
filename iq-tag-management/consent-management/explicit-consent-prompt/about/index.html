@@ -328,17 +328,17 @@ var utag_data = {
         <a href="/iq-tag-management/tags/tealium-pixel-container-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-pixel-container-tag">Tealium Pixel Container Tag</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/tags/tealium-custom-container-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-custom-container-tag">Tealium Custom Container Tag</a>
-      </li><li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".tag-templates">Tag templates</a>
-        <ul class=" tag-templates desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-templates">About templates</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-tag-templates">Manage templates</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/template-status-checker/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".template-status-checker">Template Status Checker</a>
-      </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/tags/tag-reporting/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tag-reporting">Tag reporting</a>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".templates">Templates</a>
+        <ul class=" templates desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-templates">About templates</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-templates">Manage templates</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/template-status-checker/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".template-status-checker">Template Status Checker</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".events">Events</a>
@@ -727,9 +727,10 @@ var utag_data = {
 <li>If the customer opts-in, the website can track the user behavior (commonly using third-party services).</li>
 </ul>
 <p>Explicit Consent Prompt example:</p>
-<figure><img src="/images/iq-tag-management/example-consent-prompt.png"
+<figure><a class="slb" href="/images/iq-tag-management/example-consent-prompt.png"><img src="/images/iq-tag-management/example-consent-prompt.png"
          alt="Example Consent Prompt"
          title="Example Consent Prompt" width="475" height="289"/>
+    </a>
 </figure>
 <p>The Explicit Consent Prompt Manager in iQ Tag Management makes it easy to create and deploy a consent prompt to your website using your existing installation. This feature can be used with the <a href="/iq-tag-management/consent-management/consent-preferences-dialog/">Consent Preferences Manager</a> to offer your customers more granular control over how they are tracked.</p>
 <p>The Explicit Consent Prompt satisfies a requirement of the General Data Protection Regulation that a data subject (EU residents) must give explicit consent before activity can be tracked.</p>
@@ -1055,6 +1056,12 @@ No</button>
       </li>
       
       <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/iq-tag-management/templates/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Templates
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/iq-tag-management/events/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
           Events
       </a>
@@ -1234,6 +1241,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1245,7 +1260,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

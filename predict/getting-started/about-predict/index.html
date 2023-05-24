@@ -326,9 +326,10 @@ var utag_data = {
   <p class="note"><i class="fa fa-exclamation-triangle"></i>Interested in Predict?<br>
 Predict is an add-on feature for customers who have AudienceStream. If you are already a Tealium customer, contact your Customer Success Manager for a demo and to learn more about Predict. If you are a new customer, <a href="https://tealium.com/predict-demo/">contact us</a> to request a demo.</p>
 <p>Tealium Predict is a built-in machine learning technology product used with the Tealium AudienceStream CDP product that takes a complicated discipline (machine learning) and distills it down to a fully-managed feature. Tealium Predict works with Tealium AudienceStream to build and create more intelligent audiences and activate trustworthy machine learning insights.</p>
-<figure><img src="/images/predict/high-level-predict-flow.png"
+<figure><a class="slb" href="/images/predict/high-level-predict-flow.png"><img src="/images/predict/high-level-predict-flow.png"
          alt="High level Predict flow.png"
          title="High level Predict flow.png"/>
+    </a>
 </figure>
 <p>Using Tealium Predict, you can create, optimize, and deploy data models that make meaningful predictions about visitor behavior allowing you to determine:</p>
 <ul>
@@ -912,6 +913,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -923,7 +932,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

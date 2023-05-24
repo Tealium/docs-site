@@ -341,49 +341,22 @@ Sends events to the Tealium Collect server in the region of the profile.</li>
 </tr>
 </tbody>
 </table>
-<h3 id="visitor-id-attribute">Visitor ID attribute</h3>
-<h4 id="visitor-identifiers">Visitor identifiers</h4>
-<p>If you are using Tealium AudienceStream CDP you must pass a known <a href="/server-side/visitor-stitching/visitor-id-attribute/">visitor identifier</a> attribute (secondary ID) with each tracking call (for example, <code>email_address</code> or <code>login_id</code>). If the events do not contain a visitor identifier each event will generate a new visit and visitor stitching will not be possible. Passing a known visitor identifier is especially important if using the Collect API on a web platform where you might be tracking anonymous users.</p>
-<p>A visitor identifier is also needed if you are using Tealium EventStream API Hub and need to provide an ID to a vendor connector.</p>
-<p>For more information about what makes a good visitor identifier, see <a href="/server-side/visitor-stitching/visitor-id-attribute/">Visitor ID Attribute</a>.</p>
-<h4 id="primary-visitor-id">Primary visitor ID</h4>
-<p>The <code>tealium_visitor_id</code> attribute is an anonymous identifier used by AudienceStream to associate a visitor between events and visits. This value should be a GUID (Globally Unique Identifier). Depending on your usage of the Tealium Collect API, you can use one of the following approaches:</p>
+<h2 id="visitor-identifiers">Visitor identifiers</h2>
+<p>AudineceStream tracks visitors using a combination of:</p>
 <ul>
-<li><strong>Known Visitors</strong> (Recommended)<br>
-When tracking events for a known visitor (when a value exists for a Visitor ID attribute such as <code>email_address</code>), include a concatenation of the account, profile, and the known visitor ID attribute ID and value, and a SHA256 hash of that concatenated value in the <code>tealium_visitor_id</code> parameter.</li>
+<li><strong>Primary Visitor ID</strong>: Used to track the visitor anonymously.</li>
+<li><strong>Secondary Visitor ID</strong>: Sent additionally once the visitor is known.</li>
 </ul>
+<h3 id="primary-visitor-id">Primary Visitor ID</h3>
+<p>The primary visitor ID is an anonymous identifier used by AudienceStream to associate a visitor between events and visits. This value should be a GUID (Globally Unique Identifier) and should be consistent for the visitor.</p>
+<p>In the Tealium Collect HTTP API, the key name of the primary visitor ID is <code>tealium_visitor_id</code>.</p>
+<p>Depending on your business case, you can use anonymous visitors or known visitors.</p>
+<h4 id="anonymous-visitors">Anonymous visitors</h4>
 <table>
 <thead>
 <tr>
-<th>AUDIENCESTREAM</th>
-<th>EVENTSTREAM</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Required</td>
-<td>Recommended</td>
-</tr>
-</tbody>
-</table>
-<p>Example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">`</span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_account&#34;</span>    : <span style="color:#e6db74">&#34;my_account&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_profile&#34;</span>    : <span style="color:#e6db74">&#34;main&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_event&#34;</span>      : <span style="color:#e6db74">&#34;user_login&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;email_address&#34;</span>      : <span style="color:#e6db74">&#34;user@example.com&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// SHA256 Hash of my_account_main_5102_user@example.com&lt;br&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span> : <span style="color:#e6db74">&#34;bad8145f125e0560d07872e77e98bc9cd8b7b763a4577adbbf52bfd7b164223e&#34;</span>
-</span></span><span style="display:flex;"><span>}<span style="color:#960050;background-color:#1e0010">`</span>
-</span></span></code></pre></div><ul>
-<li><strong>Anonymous Visitors</strong><br>
-When tracking events for an anonymous visitor from a website (without a known identifier), then the value of the <code>tealium_visitor_id</code> will need to match the value in the <code>utag_main_v_id</code> cookie. For more information about built-in variables from utag.js, see <a href="/platforms/javascript/data-layer/">Data Layer</a>.</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>AUDIENCESTREAM</th>
-<th>EVENTSTREAM</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
@@ -393,63 +366,64 @@ When tracking events for an anonymous visitor from a website (without a known id
 </tr>
 </tbody>
 </table>
-<h4 id="visitor-switching">Visitor switching</h4>
-<p>When a first-party cookie is unavailable, the server side uses incoming data in the following order of precedence to determine the ID of a visitor:</p>
-<ul>
-<li>The <code>TAPID</code> cookie, also called the <code>tealium_thirdparty_visitor_id</code></li>
-<li>The <code>tealium_visitor_id</code></li>
-<li>The <code>utag_main v_id</code>, also called the <code>tealium_firstparty_visitor_id</code></li>
-</ul>
-<p>AudienceStream gives the ID in the <code>TAPID</code> cookie precedence over other IDs to determine the visitor profile to use and provides parameters that control how the endpoint handles ID priority.</p>
-<p>For example, if a user logs in and their ID is added to the <code>TAPID</code> cookie, traffic from all the anonymous users on the device are logged to that user. AudienceStream will continue to log activity to the first user if a second user logs in to that device with an anonymous cookie. For example, if visitors use a shared smart television or a public kiosk, the visitors&rsquo; profile data can become contaminated.</p>
-<p>Use the following parameters to control how the Tealium Collect API endpoint handles the <code>tealium_visitor_id</code> and <code>tealium_thirdparty_visitor_id</code> values in the event:</p>
+<p>If you are using Tealium iQ Tag Management and sending API calls server-to-server to enrich anonymous visitor profiles, then the value of the <code>tealium_visitor_id</code> must match the value in the <code>utag_main_v_id</code> cookie. For more information about the built-in variables from utag.js, see <a href="/platforms/javascript/data-layer/">JavaScript (Web) &gt; Data Layer</a>.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If you are using Adobe Launch or Google Tag Manager, then the value needs to match the <code>v</code> part of the <strong>TEAL</strong> cookie.</p>
+<h4 id="known-visitors-server-to-server">Known visitors server-to-server</h4>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>tealium_override_tapid</code></td>
-<td>string</td>
-<td>Override <code>tealium_visitor_id</code> and <code>tealium_thirdparty_visitor_id</code> with this value.</td>
-</tr>
-<tr>
-<td><code>tealium_skip_3rd_party_vid_cookies</code></td>
-<td>boolean</td>
-<td>Set to <code>true</code> to skip collecting the <code>TAPID</code> third-party cookie.</td>
-</tr>
-<tr>
-<td><code>tealium_delete_3rd_party_vid_cookies</code></td>
-<td>boolean</td>
-<td>Set to <code>true</code> to delete the <code>TAPID</code> third-party cookie.</td>
+<td>Required</td>
+<td>Recommended</td>
 </tr>
 </tbody>
 </table>
+<p>When sending data for known visitors (when a value exists for a Visitor ID attribute such as <code>email_address</code>), include a concatenation of the account, profile, visitor ID attribute ID and value and the value in the <code>tealium_visitor_id</code> parameter.</p>
+<p>You can find the visitor ID attribute ID next to the attribute name in the attribute list or within the expanded details. For more information, see <a href="/server-side/attributes/about/#attribute-ids">About Attributes</a>.</p>
+<p>For example, for the following values:</p>
 <ul>
-<li>A <code>tealium_override_tapid</code> value prevents the <code>tealium_delete_3rd_party_vid_cookies</code> parameter from deleting the cookie.</li>
-<li>If removing the <code>account/profile</code> information from TAPID empties that cookie, <code>set-cookie maxAge=0</code> is returned to delete that cookie from the client.</li>
+<li>Account name: <code>my-account</code></li>
+<li>Profile: <code>main</code></li>
+<li>Visitor ID attribute ID: <code>7688</code></li>
+<li>Customer number value you want to pass: <code>45653454</code></li>
 </ul>
-<p>For more information and a demonstration of how to use visitor switching, see <a href="https://community.tealiumiq.com/t5/Customer-Data-Hub/Visitor-Switching/ta-p/37709">Visitor Switching</a>.</p>
+<p>you would concatenate these values in the following way:</p>
+<pre tabindex="0"><code>tealium_visitor_id&#34;:&#34;__my-account_main__7688_45653454__&#34;
+</code></pre><p class="note"><i class="fa fa-exclamation-triangle"></i>Ensure that your <code>tealium_visitor_id</code> is formatted correctly before proceeding. Incorrectly formed parameters will cause errors in AudienceStream and may not track properly.</p>
+<p>Example JSON:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_account&#34;</span>    : <span style="color:#e6db74">&#34;my-account&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_profile&#34;</span>    : <span style="color:#e6db74">&#34;main&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_event&#34;</span>      : <span style="color:#e6db74">&#34;user_login&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;email_address&#34;</span>      : <span style="color:#e6db74">&#34;user@example.com&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span> : <span style="color:#e6db74">&#34;__my-account_main__7688_45653454__&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>Whether you use anonymous visitors or known visitors, if your API calls do not contain a consistent <code>tealium_visitor_id</code>, each event will generate a new visit and visitor stitching will not be possible.</p>
+<h3 id="secondary-id">Secondary ID</h3>
+<p>When using AudienceStream, you can pass a known visitor identifier attribute, a secondary ID, with a tracking call. For example, <code>email_address</code> or <code>login_id</code>.</p>
+<p>A visitor identifier is also needed if you are using EventStream and need to provide an ID to a vendor connector.</p>
+<p>To learn more about creating visitor identifiers, see <a href="/server-side/visitor-stitching/visitor-id-attribute/">Visitor ID Attribute</a>.</p>
 <h2 id="permission-requirements">Permission requirements</h2>
 <ul>
 <li>Server-side publisher permission</li>
 </ul>
 <h2 id="authentication">Authentication</h2>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>The bearer token is used to authenticate all API calls and not the API key. The API key is only used in the authentication call. In addition to the bearer token, the authentication response includes a region-specific hostname that must be used in subsequent server-side API calls.</p>
-<p>See the [Tealium API <a href="/early-access/api-v3/tealium-api-v3-getting-started-early-access/">Tealium API V3 Getting Started</a> guide to learn about generating a bearer token from the API key.</p>
+<p>See the <a href="/early-access/api-v3/tealium-api-v3-getting-started-early-access/">Tealium API V3 Getting Started</a> guide to learn about generating a bearer token from the API key.</p>
 <h3 id="required-parameters">Required parameters</h3>
 <p>Tealium Collect supports the following standard parameters in each request:</p>
 <ul>
-<li><code>tealium_account</code> - the name of your Tealium account</li>
-<li><code>tealium_profile</code> - the name of your Tealium profile (default &ldquo;main&rdquo;)</li>
-<li><code>tealium_datasource</code> - (optional) the data source key from Customer Data Hub (<a href="/server-side/data-sources/about-data-sources/">learn more about Data Sources</a>)</li>
-<li><code>tealium_event</code> - (recommended) the name of the event for tracking purposes</li>
-<li><code>tealium_visitor_id</code> - (required for AudienceStream) an anonymized and unique identifier for the visitor associated with the event (see <a href="#visitor-identifiers">Visitor Identifiers</a> below)</li>
-<li><code>tealium_trace_id</code> - (optional) for use with <a href="/server-side/connectors/trace/about/">Trace</a></li>
+<li><code>tealium_account</code> - The name of your Tealium account.</li>
+<li><code>tealium_profile</code> - The name of your Tealium profile. The default is <strong>main</strong>.</li>
+<li><code>tealium_datasource</code> - (Optional) The data source key from Customer Data Hub. See <a href="/server-side/data-sources/about-data-sources/">About data sources</a> for more information.</li>
+<li><code>tealium_event</code> - (Recommended) The name of the event for tracking purposes.</li>
+<li><code>tealium_visitor_id</code> - (Required for AudienceStream) An anonymized and unique identifier for the visitor associated with the event (see <a href="#visitor-identifiers">Visitor Identifiers</a> section).</li>
+<li><code>tealium_trace_id</code> - (Optional) for use with <a href="/server-side/connectors/trace/about/">Trace</a>.</li>
 </ul>
 <p>The format of the request will vary depending on the HTTP method used. In the examples below placeholder values are represented with curly braces in the following format: <code>{VALUE}</code>.</p>
 <h4 id="custom-event-parameters">Custom event parameters</h4>
@@ -729,7 +703,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 30, 2023 
+          <p>This page was last updated:  May 23, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -746,7 +720,9 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#regional-and-global-endpoints">Regional and global endpoints</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#endpoint-mapping">Endpoint mapping</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#visitor-id-attribute">Visitor ID attribute</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#visitor-identifiers">Visitor identifiers</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#primary-visitor-id">Primary Visitor ID</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#secondary-id">Secondary ID</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#permission-requirements">Permission requirements</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#authentication">Authentication</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#required-parameters">Required parameters</a></li>
@@ -1104,6 +1080,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1115,7 +1099,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -833,9 +835,10 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <p>From the left navigation bar, navigate to <strong>AudienceStream</strong> <strong>&gt; Visitor / Visit Attributes</strong> to view your attributes. Optionally filter your view by clicking on any the available options on the left. Click the desired attribute to view the details.</p>
-<figure><img src="/images/server-side/whiteui-using-attributes-view-and-manage-attributes.png"
+<figure><a class="slb" href="/images/server-side/whiteui-using-attributes-view-and-manage-attributes.png"><img src="/images/server-side/whiteui-using-attributes-view-and-manage-attributes.png"
          alt="Using Attributes_View and Manage Attributes.png"
          title="Using Attributes_View and Manage Attributes.png"/>
+    </a>
 </figure>
 <h2 id="add-an-attribute">Add an attribute</h2>
 <p>The process of adding event and visit or visitor attributes is similar. The following steps show how to add an audience attribute:</p>
@@ -844,16 +847,20 @@ var utag_data = {
 You can optionally use the filters on the left to narrow your view.</li>
 <li>Click <strong>+ Add Attribute</strong>.</li>
 <li>In the <strong>Add Attribute</strong> dialog, select <strong>Visit</strong> or <strong>Visitor</strong> for the attribute scope and click <strong>Continue</strong>.<br>
-<img src="/images/server-side/whiteui-using-attributes-select-visit-or-visitor-scope.png" 
+<figure><a class="slb" href="/images/server-side/whiteui-using-attributes-select-visit-or-visitor-scope.png"><img src="/images/server-side/whiteui-using-attributes-select-visit-or-visitor-scope.png"
          alt="Using Attributes_Select Visit or Visitor Scope.png"
-         title="Using Attributes_Select Visit or Visitor Scope.png"/></li>
+         title="Using Attributes_Select Visit or Visitor Scope.png"/>
+    </a>
+</figure></li>
 <li>Select a data type (<strong>Visit</strong> or <strong>Visitor</strong>) and click Continue.</li>
 <li>(Required) In the <strong>Title</strong> field, enter a descriptive name.<br>
 For event attributes, the <strong>Title</strong> can only contain letters, numbers, underscore, dollar sign, square brackets, and period. The name of an event attribute must match the name of the variable implemented.<br>
 For visit and visitor attributes, you can use any ASCII character for <strong>Title</strong> other than double quotes.<br>
-<img src="/images/server-side/whiteui-using-attributes-addattribute-entertitle.png" 
+<figure><a class="slb" href="/images/server-side/whiteui-using-attributes-addattribute-entertitle.png"><img src="/images/server-side/whiteui-using-attributes-addattribute-entertitle.png"
          alt="Using Attributes_AddAttribute_EnterTItle.png"
-         title="Using Attributes_AddAttribute_EnterTItle.png"/></li>
+         title="Using Attributes_AddAttribute_EnterTItle.png"/>
+    </a>
+</figure></li>
 <li>In the <strong>Notes</strong> field, enter helpful notes that describe the purpose and/or mechanics of the attribute.</li>
 <li>(Optional) Select the <strong>Restricted Data</strong> checkbox if the visitor data includes PII data.</li>
 <li>(Optional) Check the <strong>AudienceDB</strong> checkbox to include the attribute as a column in AudienceDB.<br>
@@ -864,9 +871,11 @@ This step requires AudienceDB to be enabled in the profile.</li>
 <p>Use the following steps to duplicate an attribute:</p>
 <ol>
 <li>Click the attribute you want to duplicate and then click the duplicate icon.<br>
-<img src="/images/server-side/whiteui-usingattributes-duplicateattribute.png" 
+<figure><a class="slb" href="/images/server-side/whiteui-usingattributes-duplicateattribute.png"><img src="/images/server-side/whiteui-usingattributes-duplicateattribute.png"
          alt="UsingAttributes_DuplicateAttribute.png"
-         title="UsingAttributes_DuplicateAttribute.png"/></li>
+         title="UsingAttributes_DuplicateAttribute.png"/>
+    </a>
+</figure></li>
 <li>Edit if needed and then click <strong>Save</strong>.</li>
 <li>Save and publish your profile to apply the changes.</li>
 </ol>
@@ -915,7 +924,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  May 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1341,6 +1350,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1352,7 +1369,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

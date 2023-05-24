@@ -424,14 +424,16 @@ var utag_data = {
 <h2 id="how-it-works">How it works</h2>
 <h3 id="auth0-and-ciam">Auth0 and CIAM</h3>
 <p>Auth0 uses the Customer Identity Access Management (CIAM) model:</p>
-<figure><img src="/images/industries/screen-shot-2022-09-26-at-13.41.19.png"/>
+<figure><a class="slb" href="/images/industries/screen-shot-2022-09-26-at-13.41.19.png"><img src="/images/industries/screen-shot-2022-09-26-at-13.41.19.png"/>
+    </a>
 </figure>
 <p>When the user logs in to Auth0, their identity is confirmed by the Auth0 authorization server.</p>
 <p>Tealium appears as an Auth0 action, which can be used through drag and drop integration.</p>
 <p>The Auth0 Data Source appears under the new Identity category in Tealium.</p>
 <h3 id="uid-20">UID 2.0</h3>
 <p>The Trade Desk and other vendors use UID 2.0, which uses PII for deterministic identification. You will need to configure an enrichment and function code to assign a UID 2.0 to a visitor:</p>
-<figure><img src="/images/industries/screen-shot-2022-09-26-at-13.41.53.png"/>
+<figure><a class="slb" href="/images/industries/screen-shot-2022-09-26-at-13.41.53.png"><img src="/images/industries/screen-shot-2022-09-26-at-13.41.53.png"/>
+    </a>
 </figure>
 <p>For more information, see <a href="/server-side/functions/event-visitor-functions/uid2-token/">Using Tealium Functions to Generate a UID2.0 Token</a>.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>UID 2.0 cannot be used in the EU due to privacy restrictions.</p>
@@ -443,7 +445,8 @@ var utag_data = {
 <li>Cleanse and store first and third party data for businesses, which can group profiles into households, gather demographics, track NCOA (National Change of Address), and more.</li>
 <li>Identify visitors via probabalistic methods to &ldquo;stitch deterministically, enrich probabalistically.&rdquo;</li>
 </ul>
-<figure><img src="/images/industries/data-partners-&#43;-tealium---acxiom-%283%29.png"/>
+<figure><a class="slb" href="/images/industries/data-partners-&#43;-tealium---acxiom-%283%29.png"><img src="/images/industries/data-partners-&#43;-tealium---acxiom-%283%29.png"/>
+    </a>
 </figure>
 <h2 id="how-you-can-use-identity-providers">How you can use Identity Providers</h2>
 <p>You can use an identity provider to immediately share PII such as phone numbers and email addresses with Tealium to enrich customer profiles. This allows you to turn anonymous visitors into known visitors or customers.</p>
@@ -924,6 +927,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -935,7 +946,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

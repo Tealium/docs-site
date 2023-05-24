@@ -352,9 +352,10 @@ var utag_data = {
 <li>From the client-side’s User Menu, click <strong>Manage Users</strong>. The table displays a list of users on the account with their general permissions.</li>
 <li>Click <strong>Export Users</strong>.</li>
 </ol>
-<figure><img src="/images/early-access/2.png"
+<figure><a class="slb" href="/images/early-access/2.png"><img src="/images/early-access/2.png"
          alt="2.png"
          title="2.png" width="608" height="378"/>
+    </a>
 </figure>
 <h4 id="client-side-inventory-using-the-user-permissions-exporter-tool">Client-side inventory using the User Permissions Exporter Tool</h4>
 <p>Use the User Permissions Exporter Tealium Tool to export a CSV file that contains each user’s permission on client-side profiles.</p>
@@ -364,9 +365,10 @@ var utag_data = {
 </ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>You must have the Manage Users permission in the active account to run this tool.</p>
 <p>The following screenshot demonstrates a downloaded CSV file imported into a Google Sheet, with minor formatting adjustments on row 1 for readability:</p>
-<figure><img src="/images/early-access/1.png"
+<figure><a class="slb" href="/images/early-access/1.png"><img src="/images/early-access/1.png"
          alt="csv"
          title="csv" width="473" height="274"/>
+    </a>
 </figure>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Manage Site Scans will appear in the exported data. It is a legacy function, and you will not need it for migration purposes.</p>
 <p>In this example, <strong>user3</strong> appears three times in the <strong>User</strong> column. Unlike the other users, who have the same permission on all the profiles on the account, <strong>user3</strong> has different permissions on the profiles <strong>Website A</strong>, <strong>Website B</strong>, and <strong>Website C</strong>. Because of this, separate rows in the spreadsheet contain <strong>user3</strong>’s profile permissions.</p>
@@ -429,9 +431,10 @@ var utag_data = {
 <li>Repeat this process for each user.</li>
 </ol>
 <p>Based on the previous example, the following screenshot demonstrates a spreadsheet updated with server-side users and permissions:</p>
-<figure><img src="/images/early-access/2.png"
+<figure><a class="slb" href="/images/early-access/2.png"><img src="/images/early-access/2.png"
          alt="2.png"
          title="2.png" width="608" height="378"/>
+    </a>
 </figure>
 <p>In this example, <strong>user6</strong>, <strong>user7</strong>, and <strong>user8</strong> do not have any permissions on the client side, and they had to be added manually to the spreadsheet. Also, <strong>user7</strong> has different permissions on the server-side profiles <strong>App A</strong> and <strong>App B</strong>, so separate rows in the spreadsheet were created for <strong>user7</strong>’s profile permissions.</p>
 <p>You now have all the user permissions for client-side and server-side profiles from the legacy permissions system.</p>
@@ -709,9 +712,10 @@ var utag_data = {
 <p>If you disable a product for a user, but the user has server-side Publish permission and access to another product that shares elements with the first product, the user can still publish changes to those shared elements. For example, EventStream and AudienceStream share some elements, such as rules and labels. If a user has Publish permission and only has access to EventStream, they can publish changes to rules and labels they made in EventStream, and those changes will also affect AudienceStream. Similarly, if a user has Publish permission and only has access to AudienceStream, their published changes to rules and labels also affect EventStream.</p>
 <h4 id="update-the-spreadsheet">Update the spreadsheet</h4>
 <p>Create columns in the spreadsheet for each product and feature, and mark the level of access that the user should have on each.</p>
-<figure><img src="/images/early-access/3.png"
+<figure><a class="slb" href="/images/early-access/3.png"><img src="/images/early-access/3.png"
          alt="3.png"
          title="3.png"/>
+    </a>
 </figure>
 <p>Congratulations. You now have all your users&rsquo; individual needs in the spreadsheet.</p>
 <p>The next step is to organize the users into groups.</p>
@@ -725,9 +729,10 @@ var utag_data = {
 <li>Do you want to break down permission groups by product (AudienceStream, EventStream, Customer Data Hub, etc.)?</li>
 </ul>
 <p>For each Yes answer, add another column to the spreadsheet, and add notes in that column about how that question impacts that user&rsquo;s relationship to the organization and workflow.</p>
-<figure><img src="/images/early-access/4.png"
+<figure><a class="slb" href="/images/early-access/4.png"><img src="/images/early-access/4.png"
          alt="4.png"
          title="4.png"/>
+    </a>
 </figure>
 <h4 id="profile-audit">Profile audit</h4>
 <p>If you have only one main client-side profile and one main server-side profile, but your brand and organization is split among multiple regions and responsibility structures, this data can be useful as part of a future project to configure regional profiles on your account. However, Tealium recommends that you set up and test permissions on the new permissions system first.</p>
@@ -1246,6 +1251,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1257,7 +1270,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

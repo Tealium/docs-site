@@ -716,8 +716,6 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/xandr-formerly-appnexus-seller-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-formerly-appnexus-seller-tag">Xandr (formerly AppNexus) Seller</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/client-side-tags/xandr-formerly-appnexus-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-formerly-appnexus-tag">Xandr (formerly AppNexus) Tag Setup Guide</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/xandr-universal-pixel-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-universal-pixel-tag">Xandr Universal Pixel</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/yahoo-id-cookie-sync-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".yahoo-id-cookie-sync-tag">Yahoo ID Cookie Sync</a>
@@ -805,18 +803,20 @@ You will now have an additional template in the Manage Templates section where y
 <p>With the <code>utag.sync.js</code> file, you will not be able to assign load rules to this file. The only way to keep the code within <code>utag.sync.js</code> from running would be to use &ldquo;if&rdquo; statements or other conditions within the file itself.</p>
 <h2 id="download-mboxjs">Download mbox.js</h2>
 <p>After you have set up your campaign and offer within the Adobe interface you&rsquo;ll need to download the <code>mbox.js</code> file.</p>
-<figure><img src="/images/client-side-tags/no-title-704ibe6eea6542f7b685.png"
+<figure><a class="slb" href="/images/client-side-tags/no-title-704ibe6eea6542f7b685.png"><img src="/images/client-side-tags/no-title-704ibe6eea6542f7b685.png"
          alt="Download mbox.jps"
          title="Download mbox.jps"/>
+    </a>
 </figure>
 <h2 id="host-the-mboxjs-file-locally">Host the mbox.js file locally</h2>
 <p>You&rsquo;ll need to save the <code>mbox.js</code> file on all hosts (domains) serving mboxes. This needs to be a publicly accessible file so it can be loaded from your site.</p>
 <h2 id="configure-utagsyncjs">Configure utag.sync.js</h2>
 <p>Once you have downloaded the <code>mbox.js</code> file, open the file and copy its contents.</p>
 <p>Open the template for the <code>utag.sync.js</code> file (uTag sync) within the Tealium user interface. This is done by clicking on your name in the upper right hand corner of the screen and selecting <strong>Manage Templates</strong>. From the drop-down that appears, select <strong>uTag sync</strong>.</p>
-<figure><img src="/images/client-side-tags/no-title-705i000275e236003fa2.png"
+<figure><a class="slb" href="/images/client-side-tags/no-title-705i000275e236003fa2.png"><img src="/images/client-side-tags/no-title-705i000275e236003fa2.png"
          alt="Manage templates"
          title="Manage templates"/>
+    </a>
 </figure>
 <p>In the template copy and paste the following:</p>
 <pre tabindex="0"><code>var mboxjs_location = &#34;//path/to/mbox.js&#34;;
@@ -1390,7 +1390,6 @@ No</button>
   
   
   
-  
 
 </ul>
 
@@ -1497,6 +1496,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1508,7 +1515,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -858,87 +860,101 @@ The audiences requested to be created are tied to elements from a sample client&
 <p>In order for Google Analytics to properly store the hit from the Webhook, the Google Analytics Visitor ID must be provided in the <a href="/server-side/connectors/webhook-connectors/">Webhook</a>. This is done in Tealium iQ by parsing the cookie <code>_ga</code> using a <strong>Set Data Values extension</strong> and storing the 2 longest numbers at the end of the cookie value into a data layer variable. Declare <code>_ga</code> as type <strong>First Party Cookie</strong>, and <code>google_visitorid</code> as type <code>UDO Variable</code> in your <strong>Data Layer</strong> tab. Then create the <a href="/iq-tag-management/extensions/extensions-list/set-data-values-extension/">Set Data Values extension</a> as seen below.</p>
 <p>See the following code and screenshot example:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">b</span>[<span style="color:#e6db74">&#34;cp._ga&#34;</span>].<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;.&#34;</span>).<span style="color:#a6e22e">splice</span>(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>).<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34;.&#34;</span>)
-</span></span></code></pre></div><figure><img src="/images/server-side/google-analytics-visitor-id.png"
+</span></span></code></pre></div><figure><a class="slb" href="/images/server-side/google-analytics-visitor-id.png"><img src="/images/server-side/google-analytics-visitor-id.png"
          alt="Google Analytics Visitor ID"
          title="Google Analytics Visitor ID"/>
+    </a>
 </figure>
 <p>The <code>google_visitorid</code> value can then be stored as a a string.</p>
-<figure><img src="/images/server-side/set-string-to-google-visitorid.png"
+<figure><a class="slb" href="/images/server-side/set-string-to-google-visitorid.png"><img src="/images/server-side/set-string-to-google-visitorid.png"
          alt="set string to google visitorid"
          title="set string to google visitorid"/>
+    </a>
 </figure>
 <p>We will set a <a href="/server-side/attributes/data-types/boolean/">Boolean</a> to check if the data exists. This is important because the value stored in <code>google_visitorid</code> is required for Google Analytics to save the data received from the connector.</p>
-<figure><img src="/images/server-side/set-boolean-google-visitor-id.png"
+<figure><a class="slb" href="/images/server-side/set-boolean-google-visitor-id.png"><img src="/images/server-side/set-boolean-google-visitor-id.png"
          alt="set boolean google visitor id"
          title="set boolean google visitor id"/>
+    </a>
 </figure>
 <p>Last, we will eventually map the data to the <code>cid</code> parameter in the Webhook that we build for Google Analytics</p>
-<figure><img src="/images/server-side/map-to-cid.png"
+<figure><a class="slb" href="/images/server-side/map-to-cid.png"><img src="/images/server-side/map-to-cid.png"
          alt="map to cid"
          title="map to cid"/>
+    </a>
 </figure>
 <h2 id="step-2-capture-event-information-tealium-iq">Step 2: Capture event information (Tealium iQ)</h2>
 <p>Configure the events in Tealium iQ that will adjust the Lead Score metrics in AudienceStream. This usually involves calling <code>utag.link()</code> on specific website assets when they are clicked on or interacted with. For this step, you&rsquo;ll have the option to use the jQuery <code>onHandler()</code> extension or a JavaScript Code extension to capture these events. These will both submit the data Google Analytics and AudienceStream.</p>
 <p>For this use case, we&rsquo;ve chosen to use the <a href="/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Javascript Code extension</a> and used jQuery to capture all the events. Some examples of positive events from this use case are interactions with assets like case studies, white papers, videos, webinars, and more. It also includes negative events, such as Support, which will negatively impact Lead Score by either decrementing the value or resetting it to zero.</p>
-<figure><img src="/images/server-side/no-title-160ica6f830d8bd7a1ce.png"
+<figure><a class="slb" href="/images/server-side/no-title-160ica6f830d8bd7a1ce.png"><img src="/images/server-side/no-title-160ica6f830d8bd7a1ce.png"
          alt="1"
          title="1"/>
+    </a>
 </figure>
 <h2 id="step-3-create-rules-and-attributes-audiencestream">Step 3: Create rules and attributes (AudienceStream)</h2>
 <h3 id="lead-score">Lead Score</h3>
 <p>Initialize <strong>Lead Score</strong> to zero for all new visitors. This is done by using the <strong>Lifetime Event Count Number</strong> and checking if it is zero.</p>
-<figure><img src="/images/server-side/lead-score-lifetime.png"
+<figure><a class="slb" href="/images/server-side/lead-score-lifetime.png"><img src="/images/server-side/lead-score-lifetime.png"
          alt="lead score lifetime"
          title="lead score lifetime"/>
+    </a>
 </figure>
 <p>For all events with positive points, increment the <strong>Lead Score</strong> by a desired value.</p>
-<figure><img src="/images/server-side/increment-decrement-lead-score.png"
+<figure><a class="slb" href="/images/server-side/increment-decrement-lead-score.png"><img src="/images/server-side/increment-decrement-lead-score.png"
          alt="increment decrement lead score"
          title="increment decrement lead score"/>
+    </a>
 </figure>
 <p>For all negative events, apply the negative credit however it fits the model. In the case of <strong>Support</strong>, it resets the score to zero.</p>
-<figure><img src="/images/server-side/lead-score-support-user.png"
+<figure><a class="slb" href="/images/server-side/lead-score-support-user.png"><img src="/images/server-side/lead-score-support-user.png"
          alt="lead score support user"
          title="lead score support user"/>
+    </a>
 </figure>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>If the scoring model is still being refined (as in this use case), make sure to use small values initially so that when you end up refining the model with higher values, visitors with initial lower lead score values do not skew your audiences.</p>
 <h3 id="rules">Rules</h3>
 <p><code>Lead Score &gt; 3</code> or <code>Lead Score &gt;= 3</code>. These will be used to assign the Visitor Value String next.</p>
-<figure><img src="/images/server-side/ls-greater-equal-3.png"
+<figure><a class="slb" href="/images/server-side/ls-greater-equal-3.png"><img src="/images/server-side/ls-greater-equal-3.png"
          alt="LS greater equal 3"
          title="LS greater equal 3"/>
+    </a>
 </figure>
 <h3 id="visitor-value">Visitor Value</h3>
 <p>For this use case, the initial critical <strong>Lead Score</strong> threshold is <code>3</code>. If <strong>Lead Score</strong> is less than <code>3</code>, then set to <code>Standard Visitor</code>. If <strong>Lead Score</strong> is greater or equal to <code>3</code>, then set to <code>High Value Visitor</code>.</p>
-<figure><img src="/images/server-side/string-visitor-value.png"
+<figure><a class="slb" href="/images/server-side/string-visitor-value.png"><img src="/images/server-side/string-visitor-value.png"
          alt="string visitor value"
          title="string visitor value"/>
+    </a>
 </figure>
 <h2 id="step-4-create-audiences-audiencestream">Step 4: Create audiences (AudienceStream)</h2>
 <h3 id="high-value-visitors">High Value Visitors</h3>
 <p>When <strong>Visitor Value</strong> is <code>High Value Visitor</code>, visitor is a member of this audience.</p>
-<figure><img src="/images/server-side/high-value-audience.png"
+<figure><a class="slb" href="/images/server-side/high-value-audience.png"><img src="/images/server-side/high-value-audience.png"
          alt="high value audience"
          title="high value audience"/>
+    </a>
 </figure>
 <h3 id="standard-visitors">Standard Visitors</h3>
 <p>When <strong>Visitor Value</strong> is <code>Standard Visitor</code>, visitor is a member of this audience.</p>
-<figure><img src="/images/server-side/standard-audience.png"
+<figure><a class="slb" href="/images/server-side/standard-audience.png"><img src="/images/server-side/standard-audience.png"
          alt="Standard audience"
          title="Standard audience"/>
+    </a>
 </figure>
 <h2 id="step-5-configure-webhook-google-analytics-and-audiencestream">Step 5: Configure webhook (Google Analytics and AudienceStream)</h2>
 <h3 id="custom-dimensions">Custom Dimensions</h3>
 <p>Create <strong>Custom Dimensions</strong> in Google Analytics that the <a href="/server-side/connectors/webhook-connectors/">Webhook</a> will populate.</p>
-<figure><img src="/images/server-side/no-title-168i3748718d3d7cc6ec.png"
+<figure><a class="slb" href="/images/server-side/no-title-168i3748718d3d7cc6ec.png"><img src="/images/server-side/no-title-168i3748718d3d7cc6ec.png"
          alt="Custom dimensions"
          title="Custom dimensions"/>
+    </a>
 </figure>
 <h3 id="webhook-example">Webhook Example</h3>
 <p>The following example configuration is used to trigger the data to Google Analytics.</p>
-<figure><img src="/images/server-side/google-analytics-configurations.png"
+<figure><a class="slb" href="/images/server-side/google-analytics-configurations.png"><img src="/images/server-side/google-analytics-configurations.png"
          alt="Google Analytics Configurations"
          title="Google Analytics Configurations"/>
+    </a>
 </figure>
 <h3 id="required-parameters">Required parameters</h3>
 <p>The following table lists the primary fields that should be populated so the data can be saved correctly in Google Analytics.</p>
@@ -1027,21 +1043,24 @@ The audiences requested to be created are tied to elements from a sample client&
 </table>
 <h3 id="connectors">Connectors</h3>
 <p>There will be 2 connectors configured. Each one will fire based on when a visitor joins or changes audiences from <code>Standard Visitor</code> or <code>High Value Visitor</code>.</p>
-<figure><img src="/images/server-side/two-connectors.png"
+<figure><a class="slb" href="/images/server-side/two-connectors.png"><img src="/images/server-side/two-connectors.png"
          alt="Two Connectors"
          title="Two Connectors"/>
+    </a>
 </figure>
 <p>Every new visitor will fire the connector on their first pageview to flag them as a <code>Standard Visitor</code>. This first connector must fire because Google Analytics does not automatically assign a <code>NULL</code> value to custom dimensions. If you need a default value in a custom dimension, it must be populated with some value. If they eventually join the <code>High Value Visitor</code> audience, a second connector will fire to upgrade them to a <code>High Value Visitor</code>. If that visitor ever leaves that audience and re-joins the <code>Standard Visitor</code> audience, the connector will fire again.</p>
 <h2 id="step-6-act">Step 6: Act!</h2>
 <h3 id="example-custom-report">Example: Custom report</h3>
-<figure><img src="/images/server-side/no-title-171i447e852b607fbd60.png"
+<figure><a class="slb" href="/images/server-side/no-title-171i447e852b607fbd60.png"><img src="/images/server-side/no-title-171i447e852b607fbd60.png"
          alt="Custom report"
          title="Custom report"/>
+    </a>
 </figure>
 <h3 id="example-remarketing-list-based-on-high-value-visitor">Example: Remarketing list based on High Value Visitor</h3>
-<figure><img src="/images/server-side/no-title-172i85ee1c061f359fca.png"
+<figure><a class="slb" href="/images/server-side/no-title-172i85ee1c061f359fca.png"><img src="/images/server-side/no-title-172i85ee1c061f359fca.png"
          alt="Remarketing list"
          title="Remarketing list"/>
+    </a>
 </figure>
 <p>Google Analytics can now be integrated with your existing Display Ad campaigns to target your visitors.</p>
 
@@ -1533,6 +1552,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1544,7 +1571,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

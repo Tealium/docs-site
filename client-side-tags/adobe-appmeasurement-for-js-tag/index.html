@@ -716,8 +716,6 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/xandr-formerly-appnexus-seller-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-formerly-appnexus-seller-tag">Xandr (formerly AppNexus) Seller</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/client-side-tags/xandr-formerly-appnexus-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-formerly-appnexus-tag">Xandr (formerly AppNexus) Tag Setup Guide</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/xandr-universal-pixel-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-universal-pixel-tag">Xandr Universal Pixel</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/yahoo-id-cookie-sync-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".yahoo-id-cookie-sync-tag">Yahoo ID Cookie Sync</a>
@@ -780,7 +778,7 @@ var utag_data = {
 <ul>
 <li>To use the Adobe Experience Cloud ID Service, add the Adobe Experience Cloud ID Service tag before adding this tag.</li>
 <li>Not all legacy H26 features are supported with the AppMeasurement tag.</li>
-<li>Ensure that you enter the server value correctly. For example, third party servers may have 112.2o7.net or 122.2o7.net</li>
+<li>Ensure that you enter the server value correctly. For example, third party servers may have <code>112.2o7.net</code> or <code>122.2o7.net</code>.</li>
 <li>To use AppMeasurement for mobile, the Tealium Mobile SDK must be implemented in your application.</li>
 <li>For a list of supported plug-ins, see: <a href="https://marketing.adobe.com/resources/help/en_US/sc/implement/plugins_support.html">AppMeasurement Plugin Support</a>.</li>
 <li>For additional information, see: <a href="https://marketing.adobe.com/resources/help/en_US/sc/implement/appmeasure_mjs.htm">About AppMeasurement for JavaScript</a></li>
@@ -791,7 +789,7 @@ var utag_data = {
 <ul>
 <li><strong>Code Version</strong>
 <ul>
-<li>The version of the AppMeasurement.js library.</li>
+<li>The version of the <code>AppMeasurement.js</code> library.</li>
 </ul>
 </li>
 <li><strong>Device Type</strong>
@@ -893,6 +891,11 @@ var utag_data = {
 <li>Set the maximum number of attempts to load viewthrough before running only analytics.</li>
 </ul>
 </li>
+<li><strong>Send Timestamp</strong>
+<ul>
+<li>Allow a timestamp to be sent with each tracking call. Applies to mobile device tracking only.</li>
+</ul>
+</li>
 </ul>
 <h2 id="load-rules">Load Rules</h2>
 <p><a href="/iq-tag-management/load-rules/about/">Load Rules</a> determine when and where to load an instance of this tag on your site.</p>
@@ -948,6 +951,10 @@ var utag_data = {
 <tr>
 <td style="text-align:left"><code>charSet</code></td>
 <td style="text-align:left"><ul><li>Character set</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>collectHighEntropyUserAgentHits</code></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>contextData.myvar</code></td>
@@ -1089,9 +1096,10 @@ You can click the plus icon (<strong>+</strong>) to add additional value/trigger
 <h4 id="commerce">Commerce</h4>
 <p>Since the AppMeasurement tag is e-commerce enabled, it automatically uses the default <a href="/iq-tag-management/extensions/extensions-list/e-commerce-extension/">E-Commerce Extension</a> mappings. Manually mapping in this category is generally not needed unless you want to override any extension mappings or your desired e-commerce variable is not offered in the extension.</p>
 <p>Several SiteCatalyst variables, including the Product String, are automatically populated by the E-Commerce extension. SiteCatalyst uses the Product String to capture product information, revenue, units sold, and other pieces of information around purchases. A standard Product string looks like this:</p>
-<figure><img src="/images/client-side-tags/product-string.png"
+<figure><a class="slb" href="/images/client-side-tags/product-string.png"><img src="/images/client-side-tags/product-string.png"
          alt="product string.png"
          title="product string.png"/>
+    </a>
 </figure>
 <h5 id="best-practices-for-the-product-string">Best practices for the product string:</h5>
 <ul>
@@ -1328,9 +1336,10 @@ When event serialization detection is turned off, the tag does not detect colons
 <li>Map the UDO variable <code>serial</code> to <code>SERIAL_prodView</code> in the Event Serialization tab.</li>
 <li>Map the UDO variable <code>trigger</code> to <code>prodView</code> under Events.</li>
 <li>Map <code>fireEvt</code> as the trigger string for <code>prodView</code>.<br>
-<figure><img src="/images/client-side-tags/trigger-without-colon.jpeg"
+<figure><a class="slb" href="/images/client-side-tags/trigger-without-colon.jpeg"><img src="/images/client-side-tags/trigger-without-colon.jpeg"
          alt="trigger without colon"
          title="trigger without colon"/>
+    </a>
 </figure></li>
 </ol>
 <p>There are many scenarios that could occur in your data layer.</p>
@@ -1346,9 +1355,10 @@ The tag matches <code>fireEvt</code> with the mapped trigger and successfully fi
 Same result as above.</li>
 </ul>
 <p>A successful network call looks like this:</p>
-<figure><img src="/images/client-side-tags/scene-1-network-call-.png"
+<figure><a class="slb" href="/images/client-side-tags/scene-1-network-call-.png"><img src="/images/client-side-tags/scene-1-network-call-.png"
          alt="scene 1 network call"
          title="scene 1 network call"/>
+    </a>
 </figure>
 <h4 id="scenario-2-data-layer-trigger-is-fireevt123-and-the-serial-value-is-empty">Scenario 2: Data layer trigger is <code>fireEvt:123</code> and the <code>serial</code> value is empty</h4>
 <pre tabindex="0"><code>var utag_data = {
@@ -1359,9 +1369,10 @@ Same result as above.</li>
 <li>
 <p><strong>Event serialization detection: On</strong><br>
 The tag serializes <code>123</code> then matches <code>fireEvt</code> with the mapped trigger and successfully fires <code>prodView</code> on the page.<br>
-<figure><img src="/images/client-side-tags/scene-2-network-call.png"
+<figure><a class="slb" href="/images/client-side-tags/scene-2-network-call.png"><img src="/images/client-side-tags/scene-2-network-call.png"
          alt="scene 2 network call"
          title="scene 2 network call"/>
+    </a>
 </figure></p>
 </li>
 <li>
@@ -1378,18 +1389,20 @@ The tag fails to match <code>fireEvt:123</code> with your mapped trigger, as a r
 <li><strong>Event serialization detection: On</strong><br>
 Initially, the tag serializes <code>123</code> and matches <code>fireEvt</code> with your mapped trigger. Then <code>prodView</code> fires successfully and is serialized with <code>456</code> instead of <code>123</code>.<br>
 This happens because serial values detected by event serialization mapping (<code>456</code>) take precedence over those detected by event serialization detection (<code>123</code>).<br>
-<figure><img src="/images/client-side-tags/scene-3-network-call.png"
+<figure><a class="slb" href="/images/client-side-tags/scene-3-network-call.png"><img src="/images/client-side-tags/scene-3-network-call.png"
          alt="scene 3 network call.png"
          title="scene 3 network call.png"/>
+    </a>
 </figure></li>
 <li><strong>Event serialization detection: Off</strong><br>
 The tag fails to match <code>fireEvt:123</code> with your mapped trigger. As a result, <code>prodView</code> does not fire on the page.</li>
 </ul>
 <h4 id="example-mapped-trigger-with-a-colon">Example: Mapped trigger with a colon</h4>
 <p>This example follows the same path as scenario 2, but the mapped trigger is <code>fireEvt:123</code> instead of <code>fireEvt</code>.</p>
-<figure><img src="/images/client-side-tags/trigger-with-colon.png"
+<figure><a class="slb" href="/images/client-side-tags/trigger-with-colon.png"><img src="/images/client-side-tags/trigger-with-colon.png"
          alt="trigger with colon.png"
          title="trigger with colon.png"/>
+    </a>
 </figure>
 <h4 id="scenario-data-layer-trigger-is-fireevt123">Scenario: Data layer trigger is <code>fireEvt:123</code></h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_data</span> <span style="color:#f92672">=</span> {
@@ -1421,6 +1434,7 @@ Where <code>CUSTOM_EVENT</code> is the event you want to append to the <code>s.e
 <h2 id="supported-versions">Supported Versions</h2>
 <p>The following code versions of AppMeasurement for JavaScript are supported:</p>
 <ul>
+<li>2.23.0</li>
 <li>2.22.3</li>
 <li>2.22.0</li>
 <li>2.20.0</li>
@@ -1445,6 +1459,10 @@ Where <code>CUSTOM_EVENT</code> is the event you want to append to the <code>s.e
 <li>1.0.1</li>
 </ul>
 <h3 id="release-notes">Release Notes</h3>
+<h5 id="v2230-release-date-september-23">v2.23.0 Release Date September 23,</h5>
+<ul>
+<li>Added support for high entropy user agent information.</li>
+</ul>
 <h5 id="v2223-released-december-21-2021">v2.22.3 Released December 21, 2021</h5>
 <h5 id="v2200-released-march-5-2020">v2.20.0 Released March 5, 2020</h5>
 <ul>
@@ -2100,7 +2118,6 @@ No</button>
   
   
   
-  
 
 </ul>
 
@@ -2207,6 +2224,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -2218,7 +2243,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -828,9 +830,10 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <figure class="dib fr mv0"><img src="/images/server-side/audiencestream-audience.jpg"
+  <figure class="dib fr mv0"><a class="slb" href="/images/server-side/audiencestream-audience.jpg"><img src="/images/server-side/audiencestream-audience.jpg"
          alt="Audience"
          title="Audience" width="150" height="143"/>
+    </a>
 </figure>
 <p>An audience is a group of visitor profiles that share a set of attribute conditions. The more conditions you use to create an audience, the more specific your audience. Audiences are used to trigger vendor actions (connectors) in real-time.</p>
 <p>In this example we will create a simple <strong>VIP</strong> audience using the badge created in the previous steps, but will provide examples of how you could extend this audience to include more conditions.</p>
@@ -1337,6 +1340,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1348,7 +1359,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

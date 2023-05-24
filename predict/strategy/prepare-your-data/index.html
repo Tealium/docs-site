@@ -326,9 +326,10 @@ var utag_data = {
   <h2 id="data-wellness-concepts">Data wellness concepts</h2>
 <p>This section defines basic data wellness concepts you can use to examine, audit, and optimize to improve the overall wellness of your data. The goal is to ensure that you start with a trusted data foundation. As data maturity levels differ between businesses based on a number of factors, it is important to review and consider each of the following concepts.</p>
 <p>After reviewing and understanding the concepts, advance to the following data readiness steps:</p>
-<figure><img src="/images/predict/data-readiness.png"
+<figure><a class="slb" href="/images/predict/data-readiness.png"><img src="/images/predict/data-readiness.png"
          alt="data-readiness.png"
          title="data-readiness.png"/>
+    </a>
 </figure>
 <ul>
 <li>
@@ -938,6 +939,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -949,7 +958,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

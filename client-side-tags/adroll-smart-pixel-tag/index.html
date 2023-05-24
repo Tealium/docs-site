@@ -716,8 +716,6 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/xandr-formerly-appnexus-seller-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-formerly-appnexus-seller-tag">Xandr (formerly AppNexus) Seller</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/client-side-tags/xandr-formerly-appnexus-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-formerly-appnexus-tag">Xandr (formerly AppNexus) Tag Setup Guide</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/xandr-universal-pixel-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-universal-pixel-tag">Xandr Universal Pixel</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/yahoo-id-cookie-sync-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".yahoo-id-cookie-sync-tag">Yahoo ID Cookie Sync</a>
@@ -1409,7 +1407,6 @@ No</button>
   
   
   
-  
 
 </ul>
 
@@ -1516,6 +1513,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1527,7 +1532,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

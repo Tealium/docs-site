@@ -324,9 +324,10 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <p>In Tealium Predict, the <strong>ROC/AUC</strong> (under the curve) is a performance measurement reported for a trained model in the Model Explorer. In industry terms, the <em>ROC</em> is a true positive rate calculated as the number of true positives divided by the sum of the number of true positives and the number of false negatives. The ROC describes how well a model predicts the positive class when the actual outcome is positive. The true positive rate is also referred to as <em>Sensitivity</em>. Access the ROC/AUC Curve for your trained model by navigating to the <strong>Model Dashboard &gt; View Model Details &gt; Training &gt; View Training</strong> <strong>Details</strong>.</p>
-<figure><img src="/images/predict/predictv2-roc.png"
+<figure><a class="slb" href="/images/predict/predictv2-roc.png"><img src="/images/predict/predictv2-roc.png"
          alt="predictV2_roc.png"
          title="predictV2_roc.png"/>
+    </a>
 </figure>
 <p>The Receiver Operating Characteristics (ROC) curve and the area under this curve (referred to as AUC, for area under curve) are common tools in the machine learning community for evaluating the performance of a classification model.</p>
 <p>The ROC curve shows the trade-offs between different thresholds and consists of a plot of True Positive Rate (y-axis) against the False Positive Rate (x-axis), as follows:</p>
@@ -914,6 +915,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -925,7 +934,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

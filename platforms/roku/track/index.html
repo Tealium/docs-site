@@ -254,24 +254,10 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <h2 id="track-events">Track Events</h2>
-<p>Track events with the <a href="/platforms/roku/api/#trackevent"><code>TrackEvent()</code></a> method, as shown in the following example:</p>
+<p>The <a href="/platforms/roku/api/#trackevent"><code>TrackEvent()</code></a> method tracks events, as shown in the following example:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CreateObject</span>(<span style="color:#e6db74">&#34;roAssociativeArray&#34;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">someKey</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;KEY_VALUE&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">callback</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CreateObject</span>(<span style="color:#e6db74">&#34;roAssociativeArray&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">callback</span>.<span style="color:#a6e22e">callBack</span> <span style="color:#f92672">=</span> Function (<span style="color:#a6e22e">event</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">print</span> <span style="color:#e6db74">&#34;Callback called!&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">responseHeaders</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">GetResponseHeaders</span>()
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">responseKeys</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">responseHeaders</span>.<span style="color:#a6e22e">Keys</span>()
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">responseCode</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">GetResponseCode</span>()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">each</span> <span style="color:#a6e22e">key</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">responseKeys</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">responseHeaders</span>[<span style="color:#a6e22e">key</span>]
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">print</span> <span style="color:#a6e22e">key</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; : &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">value</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">End</span> <span style="color:#66d9ef">for</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">End</span> Function
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">teal</span>.<span style="color:#a6e22e">TrackEvent</span>(<span style="color:#e6db74">&#34;EVENT_NAME&#34;</span>, <span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">callback</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">teal</span>.<span style="color:#a6e22e">TrackEvent</span>(<span style="color:#e6db74">&#34;EVENT_NAME&#34;</span>, <span style="color:#a6e22e">data</span>)
 </span></span></code></pre></div>
 </div>
 
@@ -332,7 +318,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  May 17, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -673,6 +659,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -684,7 +678,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

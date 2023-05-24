@@ -328,17 +328,17 @@ var utag_data = {
         <a href="/iq-tag-management/tags/tealium-pixel-container-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-pixel-container-tag">Tealium Pixel Container Tag</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/tags/tealium-custom-container-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-custom-container-tag">Tealium Custom Container Tag</a>
-      </li><li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".tag-templates">Tag templates</a>
-        <ul class=" tag-templates desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-templates">About templates</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-tag-templates">Manage templates</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/template-status-checker/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".template-status-checker">Template Status Checker</a>
-      </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/tags/tag-reporting/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tag-reporting">Tag reporting</a>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".templates">Templates</a>
+        <ul class=" templates desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-templates">About templates</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-templates">Manage templates</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/template-status-checker/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".template-status-checker">Template Status Checker</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".events">Events</a>
@@ -759,9 +759,10 @@ var utag_data = {
 <p>This functionality is built into the Generic Tag. Simply enable the cache bust setting and specify the name of the cache bust parameter and the Generic Tag will generate and assign the random value for you.</p>
 <h2 id="tag-configuration">Tag configuration</h2>
 <p>First, go to the <strong>Tag Marketplace</strong> and add the Generic Tag to your profile.</p>
-<figure><img src="/images/iq-tag-management/tealium-generic-tag-configuration.png"
+<figure><a class="slb" href="/images/iq-tag-management/tealium-generic-tag-configuration.png"><img src="/images/iq-tag-management/tealium-generic-tag-configuration.png"
          alt="Tealium Generic Tag Configuration"
          title="Tealium Generic Tag Configuration"/>
+    </a>
 </figure>
 <p>After adding the Tag, configure the below settings:</p>
 <ul>
@@ -801,9 +802,10 @@ var utag_data = {
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">callback</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
 </span></span><span style="display:flex;"><span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;The tag has loaded, now do cool stuff!&#34;</span>);
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><figure><img src="/images/iq-tag-management/generic-tag-callback-extension.jpg"
+</span></span></code></pre></div><figure><a class="slb" href="/images/iq-tag-management/generic-tag-callback-extension.jpg"><img src="/images/iq-tag-management/generic-tag-callback-extension.jpg"
          alt="Generic Tag- Callback Extension"
          title="Generic Tag- Callback Extension"/>
+    </a>
 </figure>
 
 </div>
@@ -1117,6 +1119,12 @@ No</button>
       </li>
       
       <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/iq-tag-management/templates/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Templates
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/iq-tag-management/events/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
           Events
       </a>
@@ -1296,6 +1304,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1307,7 +1323,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

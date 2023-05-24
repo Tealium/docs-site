@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -849,9 +851,11 @@ When a <strong>Favorite Number</strong> contains multiple columns and only one (
 <li>Under <strong>Favorite Numbers</strong> at the bottom of the screen, click <strong>+ Add a Number</strong>.<br>
 The <strong>Add a Number</strong> dialog appears.</li>
 <li>Use the <strong>Search</strong> field to search for a specific attribute or filter the available attributes by Visit or Visitor attributes to locate and select.<br>
-<img src="/images/server-side/whiteui-udh-audiencediscovery-add-a-favorite-number.png" 
+<figure><a class="slb" href="/images/server-side/whiteui-udh-audiencediscovery-add-a-favorite-number.png"><img src="/images/server-side/whiteui-udh-audiencediscovery-add-a-favorite-number.png"
          alt="Add a Favorite Number"
-         title="Add a Favorite Number"/></li>
+         title="Add a Favorite Number"/>
+    </a>
+</figure></li>
 <li>Click an available attribute to select it.<br>
 The new <strong>Favorite Number</strong> appears as a selection on the bottom of the screen.</li>
 </ol>
@@ -860,9 +864,11 @@ The new <strong>Favorite Number</strong> appears as a selection on the bottom of
 <ol>
 <li>In the left sidebar, click <strong>AudienceStream &gt; Discover</strong>.</li>
 <li>Scroll down to the <strong>Favorite Number</strong> section and hover over the item you want to delete.<br>
-<img src="/images/server-side/whiteui-udh-audiencediscovery-favorite-numbers-delete.png" 
+<figure><a class="slb" href="/images/server-side/whiteui-udh-audiencediscovery-favorite-numbers-delete.png"><img src="/images/server-side/whiteui-udh-audiencediscovery-favorite-numbers-delete.png"
          alt="Favorite Numbers - Delete"
-         title="Favorite Numbers - Delete"/></li>
+         title="Favorite Numbers - Delete"/>
+    </a>
+</figure></li>
 <li>Click the <strong>X</strong> on the upper-right corner of the <strong>Favorite Number</strong> border.<br>
 The <strong>Favorite Number</strong> no longer appears.</li>
 </ol>
@@ -872,14 +878,18 @@ The <strong>Favorite Number</strong> no longer appears.</li>
 <ol>
 <li>In the left sidebar, click <strong>AudienceStream &gt; Discover</strong>.</li>
 <li>Hover over the <strong>Favorite Number</strong> for which you want to pin overlay details in the primary graph.<br>
-<img src="/images/server-side/whiteui-udh-audience-discovery-favorite-numbers-pin-and-unpin-favorites.png" 
+<figure><a class="slb" href="/images/server-side/whiteui-udh-audience-discovery-favorite-numbers-pin-and-unpin-favorites.png"><img src="/images/server-side/whiteui-udh-audience-discovery-favorite-numbers-pin-and-unpin-favorites.png"
          alt="Pin and Unpin Favorites"
-         title="Pin and Unpin Favorites"/></li>
+         title="Pin and Unpin Favorites"/>
+    </a>
+</figure></li>
 <li>Click the pin icon on the lower right of the Favorite Number border.<br>
 The Favorite Number results now display on the main image as overlay details for comparison.<br>
-<img src="/images/server-side/whiteui-udh-audiencediscovery-full-display-with-favorite-pinned.png" 
+<figure><a class="slb" href="/images/server-side/whiteui-udh-audiencediscovery-full-display-with-favorite-pinned.png"><img src="/images/server-side/whiteui-udh-audiencediscovery-full-display-with-favorite-pinned.png"
          alt="Full Display with Favorite Pinned"
-         title="Full Display with Favorite Pinned"/></li>
+         title="Full Display with Favorite Pinned"/>
+    </a>
+</figure></li>
 <li>To unpin the overlay details, click the pin icon on the lower-right corner of the border.<br>
 If the pin icon is pointed downward, the overlay details are not pinned. If it is pointed upwards, the details are pinned.</li>
 </ol>
@@ -943,7 +953,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  May 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1371,6 +1381,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1382,7 +1400,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

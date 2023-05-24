@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -834,9 +836,10 @@ var utag_data = {
 <div class="prose nested-links" id="prose">
   <p>This example uses the Google Sheets connector to show how to log events to a spreadsheet, but you may use your own vendor. To prepare for this step create a Google Sheets spreadsheet named <code>EventStream Test</code> and name the first three columns: <code>Timestamp</code>, <code>Search Term</code>, and <code>Search Results</code>.</p>
 <p>The spreadsheet looks like this:</p>
-<figure><img src="/images/server-side/es-getting-started-connector-google-sheet-spreadsheet.jpg"
+<figure><a class="slb" href="/images/server-side/es-getting-started-connector-google-sheet-spreadsheet.jpg"><img src="/images/server-side/es-getting-started-connector-google-sheet-spreadsheet.jpg"
          alt="Spreadsheet"
          title="Spreadsheet" width="440" height="219"/>
+    </a>
 </figure>
 <h2 id="add-the-google-sheets-connector">Add the Google Sheets Connector</h2>
 <p>Use the following steps to configure the Google Sheets connector in EventStream:</p>
@@ -852,9 +855,11 @@ var utag_data = {
 </li>
 <li>
 <p>Select <strong>Google Sheets</strong> then click <strong>Continue</strong>.
-<img src="/images/server-side/connectors-select-source.png" 
+<figure><a class="slb" href="/images/server-side/connectors-select-source.png"><img src="/images/server-side/connectors-select-source.png"
          alt="Select Source"
-         title="Select Source"/></p>
+         title="Select Source"/>
+    </a>
+</figure></p>
 </li>
 <li>
 <p>On the <strong>Source</strong> tab, select the Data Source and Event Feed that correspond to the data that you want to send, and provide a name for this action.</p>
@@ -880,7 +885,10 @@ Identifies the name of the worksheet within the spreadsheet to use.<br>
 Select the worksheet name from the drop-down, or enter the name of the worksheet to use (such as <code>Sheet1</code>).</li>
 <li><strong>Row ID</strong><br>
 Identifies the column that contains the unique row ID for each event. This is usually the event timestamp attribute. We named the column <code>Timestamp</code> to be used in the mapping.<br>
-<img src="/images/server-side/screen-shot-2020-05-27-at-2.52.47-pm.png" /><br>
+<figure><a class="slb" href="/images/server-side/screen-shot-2020-05-27-at-2.52.47-pm.png"><img src="/images/server-side/screen-shot-2020-05-27-at-2.52.47-pm.png"/>
+    </a><figcaption><p>Row ID</p>
+        </figcaption>
+</figure><br>
 Select your attribute from the <strong>Map</strong> list and enter the corresponding spreadsheet column name (Custom Value) in the <strong>To</strong> field. When the action fires, it searches for the attribute value in the specified column, then:
 <ul>
 <li>If the value exists, the matching row is updated as specified by the Row Data mappings (see next).</li>
@@ -889,7 +897,10 @@ Select your attribute from the <strong>Map</strong> list and enter the correspon
 </li>
 <li><strong>Row Data</strong><br>
 Map additional attributes that you want to add to the spreadsheet. Each attribute must have an assigned column name in the spreadsheet. In this case, we are logging the value of the <code>search_keyword</code> attribute into the spreadsheet column named <code>Search Term</code>.<br>
-<img src="/images/server-side/screen-shot-2020-05-27-at-2.53.25-pm.png" /></li>
+<figure><a class="slb" href="/images/server-side/screen-shot-2020-05-27-at-2.53.25-pm.png"><img src="/images/server-side/screen-shot-2020-05-27-at-2.53.25-pm.png"/>
+    </a><figcaption><p>Column name</p>
+        </figcaption>
+</figure></li>
 <li><strong>Exclude empty values when updating</strong><br>
 Check this box if you want to exclude empty attributes from updating or overriding existing data in your spreadsheet.</li>
 </ul>
@@ -959,7 +970,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  May 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1384,6 +1395,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1395,7 +1414,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

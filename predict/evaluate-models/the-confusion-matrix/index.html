@@ -325,9 +325,10 @@ var utag_data = {
 <div class="prose nested-links" id="prose">
   <p>A Confusion Matrix is a key tool used to evaluate a trained model. During the training and testing process that runs automatically when you create or retrain a model, Tealium Predict attempts to &ldquo;classify&rdquo; the visitors during the Training Date Range into two groups: <strong>true</strong> and <strong>false</strong>. These two groups reflect whether a user actually did the behavior signalled by the Target Attribute of your model, such as made a purchase or signed up for your email list.</p>
 <p>Access the Confusion Matrix for your trained model by navigating to the <strong>Model Dashboard &gt; View Model Details &gt; Training &gt; View Training</strong> <strong>Details</strong>. The Confusion Matrix allows you to easily view the accuracy of these predictions by comparing the true or false prediction value with the true or false actual value. There are four possible scenarios, as described quadrants description below.</p>
-<figure><img src="/images/predict/predictv2-confusion-matrix.png"
+<figure><a class="slb" href="/images/predict/predictv2-confusion-matrix.png"><img src="/images/predict/predictv2-confusion-matrix.png"
          alt="predictV2_confusion_matrix.png"
          title="predictV2_confusion_matrix.png"/>
+    </a>
 </figure>
 <p>This comparison is made possible by the fact that the model trains on historical data (the Training Date Range). Once your model is deployed, the scenario changes. If your deployed model makes a prediction for a particular visitor today and the prediction timeframe is &ldquo;in the next 10 days&rdquo;, results are not available for up to 10 days to determine whether the value returns as true or false.</p>
 <h2 id="quadrants-of-the-confusion-matrix">Quadrants of the Confusion Matrix</h2>
@@ -917,6 +918,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -928,7 +937,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

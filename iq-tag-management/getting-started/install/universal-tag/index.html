@@ -328,17 +328,17 @@ var utag_data = {
         <a href="/iq-tag-management/tags/tealium-pixel-container-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-pixel-container-tag">Tealium Pixel Container Tag</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/tags/tealium-custom-container-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-custom-container-tag">Tealium Custom Container Tag</a>
-      </li><li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".tag-templates">Tag templates</a>
-        <ul class=" tag-templates desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-templates">About templates</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-tag-templates">Manage templates</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/template-status-checker/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".template-status-checker">Template Status Checker</a>
-      </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/tags/tag-reporting/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tag-reporting">Tag reporting</a>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".templates">Templates</a>
+        <ul class=" templates desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-templates">About templates</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-templates">Manage templates</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/template-status-checker/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".template-status-checker">Template Status Checker</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".events">Events</a>
@@ -740,9 +740,10 @@ var utag_data = {
 <p>The code needed to load and run a vendor tag is also published to Tealium and stored in a tag configuration file numbered according to the UID of the tag, such as <code>utag.1.js</code>. Visitors&rsquo; browsers send HTTP requests to the Tealium server to get each tag configuration file when they go to a web page.</p>
 <p>While this file contains the settings and configuration for the vendor, it might not contain the vendor&rsquo;s JavaScript file. If so, an additional HTTP request is made to fetch the vendor&rsquo;s code. These requests are made asynchronously to minimize the impact on the time to render the page.</p>
 <p>Here is a simple example showing how one tag, Google Analytics, is loaded into the page:</p>
-<figure><img src="/images/platforms/javascript/utag-network-files.png"
+<figure><a class="slb" href="/images/platforms/javascript/utag-network-files.png"><img src="/images/platforms/javascript/utag-network-files.png"
          alt="UTAG Network Files"
          title="UTAG Network Files" width="750" height="150"/>
+    </a>
 </figure>
 <ul>
 <li><strong><code>utag.js</code></strong> (<code>tags.tiqcdn.com</code>) - the Tealium iQ Tag Management JavaScript library</li>
@@ -753,9 +754,10 @@ var utag_data = {
 <h2 id="run-tags">Run Tags</h2>
 <p>Once all tag files are loaded and the DOM Ready event is reached, the tracking beacons are triggered. The vendor code runs the same as if it was outside of Tealium, so the resulting HTTP requests is easy to identify.</p>
 <p>For example, Google Analytics is identified in the network request by the following two items: the <code>analytics.js</code> script and the collect image pixel. These same network requests occur even when Google Analytics is loaded via iQ Tag Management, as seen here:</p>
-<figure><img src="/images/platforms/javascript/utag-vendor-pixel.png"
+<figure><a class="slb" href="/images/platforms/javascript/utag-vendor-pixel.png"><img src="/images/platforms/javascript/utag-vendor-pixel.png"
          alt="UTAG Vendor Pixel"
          title="UTAG Vendor Pixel" width="750" height="75"/>
+    </a>
 </figure>
 
 </div>
@@ -1047,6 +1049,12 @@ No</button>
       </li>
       
       <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/iq-tag-management/templates/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Templates
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/iq-tag-management/events/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
           Events
       </a>
@@ -1226,6 +1234,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1237,7 +1253,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

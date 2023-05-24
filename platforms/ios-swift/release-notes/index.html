@@ -632,7 +632,7 @@ if you rely on that being called.</li>
 <li>Support for more expiration options for data variables. See <a href="/platforms/ios-swift/data-layer/">Data layer</a> for more information.</li>
 <li>Support for native session counting in lieu of using the session counting logic within utag.js. This provides more accurate session counts, and fixes some edge cases where background activities triggered new sessions, resulting in higher than expected session counts.</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>⚠️<strong>Important</strong>⚠️ If the <a href="/platforms/ios-swift/module-list/tag-management/">Tag Management Module</a> is being used as the dispatch option, you must also update the <code>mobile.html</code> template within the associated TiQ account/profile. If this action isn&rsquo;t performed, duplicate sessions are recorded in Tealium. <a href="/iq-tag-management/tags/tag-templates/about/">Learn more</a> about how to update a template or contact your Account Manager for assistance.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>⚠️<strong>Important</strong>⚠️ If the <a href="/platforms/ios-swift/module-list/tag-management/">Tag Management Module</a> is being used as the dispatch option, you must also update the <code>mobile.html</code> template within the associated TiQ account/profile. If this action isn&rsquo;t performed, duplicate sessions are recorded in Tealium. <a href="/iq-tag-management/templates/about/">Learn more</a> about how to update a template or contact your Account Manager for assistance.</p>
 <p><strong>High Impact Changes</strong></p>
 <ul>
 <li>Updated the API to be more in line with Swift best practices</li>
@@ -1110,6 +1110,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1121,7 +1129,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

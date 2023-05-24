@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -844,9 +846,10 @@ var utag_data = {
 <p>The number is the number of different visitor profiles from which we have seen this candidate stitching key. So if, for example, an email address had been seen in 3 visitor profiles, it would be expected that a user with this email address had logged in from 3 different devices during the time period for the report.</p>
 <p>What you are looking out for here is any out of place bar heights or a suspicious distribution. For example, if most email addresses had been seen from 1, 2 or 3 visitor profiles, but some email addresses had been seen from 50 or more visitor profiles, then this requires further investigation at this point. If all email addresses on the first page of the report had been seen from a suspiciously high number of devices, then this too requires further investigation.</p>
 <p>The first bar shows the number of visitors with <strong>no value &ldquo;(none)&rdquo;</strong>, which represents the unknown visitors that have not provided an email address yet.</p>
-<figure><img src="/images/server-side/as-getting-started-discovery-sample-data.jpg"
+<figure><a class="slb" href="/images/server-side/as-getting-started-discovery-sample-data.jpg"><img src="/images/server-side/as-getting-started-discovery-sample-data.jpg"
          alt="as-getting-started-discovery-sample-data.jpg"
          title="as-getting-started-discovery-sample-data.jpg"/>
+    </a>
 </figure>
 <p>The example above confirms that Email Address is being collected uniquely and accurately, so now it&rsquo;s time to complete our identity resolution strategy with the Visitor ID attribute.</p>
 <p>Click <strong>Next</strong> to create a Visitor ID attribute and start taking advantage of visitor stitching.</p>
@@ -1335,6 +1338,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1346,7 +1357,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

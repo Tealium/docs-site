@@ -381,9 +381,10 @@ All CSV files for this job must begin with this prefix.</li>
 <h3 id="editing-a-visitor-deletion-job">Editing a visitor deletion job</h3>
 <p>To modify a visitor deletion job:</p>
 <ol>
-<li>In the <strong>Visitor Deletion Jobs</strong> list, select a job. <figure><img src="/images/early-access/visitordeletionjobsummary.png"
+<li>In the <strong>Visitor Deletion Jobs</strong> list, select a job. <figure><a class="slb" href="/images/early-access/visitordeletionjobsummary.png"><img src="/images/early-access/visitordeletionjobsummary.png"
          alt="VisitorDeletionJobSummary.png"
          title="VisitorDeletionJobSummary.png"/>
+    </a>
 </figure><br>
 The <strong>Job Summary</strong> is displayed and shows the following for each file in the S3 bucket:
 <ul>
@@ -844,6 +845,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -855,7 +864,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

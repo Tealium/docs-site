@@ -324,9 +324,10 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <p>If you have the Tealium AudienceStream CDP product with data collection enabled, you have the ability to begin using Tealium Predict. We recommend reviewing our <a href="/predict/getting-started/prerequisites/">Prerequisites</a> to ensure you have enough event volume to create and train a model for the outcome you are trying to drive.</p>
-<figure><img src="/images/guides/predict/predict-workflow.png"
+<figure><a class="slb" href="/images/guides/predict/predict-workflow.png"><img src="/images/guides/predict/predict-workflow.png"
          alt="predictV2_workflow.png"
          title="predictV2_workflow.png"/>
+    </a>
 </figure>
 <p>Use the following steps to get started with Predict:</p>
 <ol>
@@ -901,6 +902,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -912,7 +921,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

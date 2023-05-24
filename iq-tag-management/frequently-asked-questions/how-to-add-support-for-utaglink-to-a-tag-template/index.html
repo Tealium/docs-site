@@ -328,17 +328,17 @@ var utag_data = {
         <a href="/iq-tag-management/tags/tealium-pixel-container-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-pixel-container-tag">Tealium Pixel Container Tag</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/tags/tealium-custom-container-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-custom-container-tag">Tealium Custom Container Tag</a>
-      </li><li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".tag-templates">Tag templates</a>
-        <ul class=" tag-templates desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-templates">About templates</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-tag-templates">Manage templates</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/template-status-checker/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".template-status-checker">Template Status Checker</a>
-      </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/tags/tag-reporting/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tag-reporting">Tag reporting</a>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".templates">Templates</a>
+        <ul class=" templates desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-templates">About templates</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-templates">Manage templates</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/template-status-checker/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".template-status-checker">Template Status Checker</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".events">Events</a>
@@ -723,18 +723,20 @@ var utag_data = {
 </ul>
 <p>Generally, this is based on the implementation guide the tag vendor provided, so if the vendor only specified code for a page view, then only utag.view support will be present in the template.</p>
 <h2 id="solution">Solution</h2>
-<p>Sometimes you might wish to add utag.link support to a tag that by default only supports utag.view. To begin, follow this document for instructions on how to edit a tag template: <a href="/iq-tag-management/tags/tag-templates/manage/">Edit a tag template</a>.</p>
+<p>Sometimes you might wish to add utag.link support to a tag that by default only supports utag.view. To begin, follow this document for instructions on how to edit a tag template: <a href="/iq-tag-management/templates/manage/">Edit a tag template</a>.</p>
 <p>Once you are editing the template, look for the line that starts with the following:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">ev</span><span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;view&#39;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>};
-</span></span></code></pre></div><figure><img src="/images/iq-tag-management/viewonly.png"
+</span></span></code></pre></div><figure><a class="slb" href="/images/iq-tag-management/viewonly.png"><img src="/images/iq-tag-management/viewonly.png"
          alt="viewonly.png"
          title="viewonly.png"/>
+    </a>
 </figure>
 <p>Edit this line to read:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">ev</span> <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;view&#39;</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;link&#39;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>};
-</span></span></code></pre></div><figure><img src="/images/iq-tag-management/view-link.png"
+</span></span></code></pre></div><figure><a class="slb" href="/images/iq-tag-management/view-link.png"><img src="/images/iq-tag-management/view-link.png"
          alt="view_link.png"
          title="view_link.png"/>
+    </a>
 </figure>
 <p>Save the tag template and re-publish the profile. Your tag will now respond to both utag.view and utag.link events.</p>
 
@@ -1029,6 +1031,12 @@ No</button>
       </li>
       
       <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/iq-tag-management/templates/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Templates
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/iq-tag-management/events/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
           Events
       </a>
@@ -1208,6 +1216,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1219,7 +1235,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

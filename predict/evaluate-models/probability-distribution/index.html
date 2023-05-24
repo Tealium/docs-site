@@ -324,9 +324,10 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <p>The Training Details screen for any version of any trained model shows a probability distribution of the predictions made by the model during training.</p>
-<figure><img src="/images/predict/predictv2-probability-distribution.png"
+<figure><a class="slb" href="/images/predict/predictv2-probability-distribution.png"><img src="/images/predict/predictv2-probability-distribution.png"
          alt="predictV2_probability_distribution.png"
          title="predictV2_probability_distribution.png"/>
+    </a>
 </figure>
 <p>The two colored curves of this chart represent the distributions of true and false predictions that the model made during training. Since the model training process uses historical data and you know whether each visitor actually performed the target behavior, it is possible to test the model by comparing the predictions for historical visitors versus the actual outcomes. The purpose of this comparison is to set aside a portion of the training dataset as the test subset.</p>
 <p>The probability distribution compares predictions against actual values for the visitors in the test subset. Visitors who were part of the True class (did perform the behavior) are displayed as part of the teal-colored curve and visitors who were part of the False class are part of the orange-colored curve.</p>
@@ -900,6 +901,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -911,7 +920,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

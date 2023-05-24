@@ -270,7 +270,7 @@ var utag_data = {
 <ul>
 <li><strong>Settings</strong><br>
 Tag settings are set once per instance of the tag and usually do not vary from page to page.
-<a href="/iq-tag-management/tags/tag-templates/manage/">Learn more about tag settings</a>.</li>
+<a href="/iq-tag-management/templates/manage/">Learn more about tag settings</a>.</li>
 <li><strong>Load Rule</strong><br>
 The load rule determines when the tag should load on a page or event. Load rule conditions are based on data layer values.
 <a href="/iq-tag-management/load-rules/about/">Learn more about load rules</a>.</li>
@@ -730,6 +730,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -741,7 +749,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

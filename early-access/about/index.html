@@ -300,9 +300,11 @@ var utag_data = {
 </li>
 <li>
 <p>Select the Early Access features of your choice and click <strong>OK</strong>.<br>
-<img src="/images/early-access/github-early-access-login.jpg" 
+<figure><a class="slb" href="/images/early-access/github-early-access-login.jpg"><img src="/images/early-access/github-early-access-login.jpg"
          alt="GitHub Early Access Login"
-         title="GitHub Early Access Login"/></p>
+         title="GitHub Early Access Login"/>
+    </a>
+</figure></p>
 </li>
 <li>
 <p>Continue the login process as usual.</p>
@@ -374,7 +376,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  May 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -737,6 +739,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -748,7 +758,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

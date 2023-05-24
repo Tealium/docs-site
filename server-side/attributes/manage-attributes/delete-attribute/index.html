@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -833,21 +835,26 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <p>From the left navigation bar, go to <strong>AudienceStream &gt; Visitor / Visit Attributes</strong> to view your attributes. You can optionally filter your view by clicking on any the available options on the left. Click the desired attribute to view the details.</p>
-<figure><img src="/images/server-side/whiteui-using-attributes-view-and-manage-attributes.png"
+<figure><a class="slb" href="/images/server-side/whiteui-using-attributes-view-and-manage-attributes.png"><img src="/images/server-side/whiteui-using-attributes-view-and-manage-attributes.png"
          alt="Using Attributes_View and Manage Attributes.png"
          title="Using Attributes_View and Manage Attributes.png"/>
+    </a>
 </figure>
 <p>Use the following steps to delete (or remove) an attribute:</p>
 <ol>
 <li>Click the attribute you want to delete.</li>
 <li>Click the trash icon.<br>
-<img src="/images/server-side/whiteui-usingattributes-deleteattribute.png" 
+<figure><a class="slb" href="/images/server-side/whiteui-usingattributes-deleteattribute.png"><img src="/images/server-side/whiteui-usingattributes-deleteattribute.png"
          alt="UsingAttributes_DeleteAttribute.png&#34;"
-         title="UsingAttributes_DeleteAttribute.png&amp;quot;"/><br>
+         title="UsingAttributes_DeleteAttribute.png&amp;quot;"/>
+    </a>
+</figure><br>
 If the attribute you attempt to delete is currently in use by a rule, an enrichment, or an audience, the following message is displayed:<br>
-<img src="/images/server-side/attribute-delete-in-use.png" 
+<figure><a class="slb" href="/images/server-side/attribute-delete-in-use.png"><img src="/images/server-side/attribute-delete-in-use.png"
          alt="attribute-delete-in-use.png"
-         title="attribute-delete-in-use.png"/><br>
+         title="attribute-delete-in-use.png"/>
+    </a>
+</figure><br>
 To delete the attribute, remove it from the rule, enrichment, or audience and try again.</li>
 <li>In the <strong>Delete Attribute</strong> dialog, click <strong>Delete</strong> to delete the attribute.</li>
 <li>Save and publish your profile to apply the changes.</li>
@@ -897,7 +904,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  May 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1318,6 +1325,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1329,7 +1344,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

@@ -716,8 +716,6 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/xandr-formerly-appnexus-seller-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-formerly-appnexus-seller-tag">Xandr (formerly AppNexus) Seller</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/client-side-tags/xandr-formerly-appnexus-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-formerly-appnexus-tag">Xandr (formerly AppNexus) Tag Setup Guide</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/xandr-universal-pixel-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-universal-pixel-tag">Xandr Universal Pixel</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/yahoo-id-cookie-sync-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".yahoo-id-cookie-sync-tag">Yahoo ID Cookie Sync</a>
@@ -915,9 +913,10 @@ Learn more about <a href="/server-side/attributes/data-layer-enrichment/enable/"
 <p>If you use a more restrictive load rule, and you&rsquo;ve noticed that you can&rsquo;t end a session in the trace tool, then a custom load rule is needed to allow the special event triggered by trace.</p>
 <p>Create the following load rule and assign it to the Tealium Collect tag using the <strong>Match Any Rule</strong> option.</p>
 <pre tabindex="0"><code>ut.event equals (ignore case) kill_visitor_session
-</code></pre><figure><img src="/images/client-side-tags/tealium-collect-load-rule-for-trace.png"
+</code></pre><figure><a class="slb" href="/images/client-side-tags/tealium-collect-load-rule-for-trace.png"><img src="/images/client-side-tags/tealium-collect-load-rule-for-trace.png"
          alt="Trace"
          title="Trace"/>
+    </a>
 </figure>
 <h2 id="implementing-with-mobile">Implementing with Mobile</h2>
 <p>For deployments using Tealium&rsquo;s <a href="https://community.tealiumiq.com/t5/Tealium-for-Android/Adding-Tealium-to-Your-Android-App/ta-p/16846">Android</a> and <a href="https://community.tealiumiq.com/t5/Tealium-for-iOS/Adding-Tealium-to-Your-iOS-App/ta-p/16327">iOS</a> integration libraries, note the following:</p>
@@ -1476,7 +1475,6 @@ No</button>
   
   
   
-  
 
 </ul>
 
@@ -1583,6 +1581,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1594,7 +1600,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

@@ -413,9 +413,10 @@ var utag_data = {
 <p>To install the Tealium extension:</p>
 <ol>
 <li>Place the <code>TealiumUDO.jsp</code> file and related <code>.jspf</code> files into the <code>/Stores/WebContent/ AuroraStorefrontAssetStore/Tealium</code> directory.</li>
-<li>Place the <code>tealium_udo_helper_1_2_0a.jar</code> file (or later version) into the <code>/Stores/WebContent/WEB-INF/lib/</code> directory.<figure><img src="/images/tech-partners/ibmwebsphere1.png"
+<li>Place the <code>tealium_udo_helper_1_2_0a.jar</code> file (or later version) into the <code>/Stores/WebContent/WEB-INF/lib/</code> directory.<figure><a class="slb" href="/images/tech-partners/ibmwebsphere1.png"><img src="/images/tech-partners/ibmwebsphere1.png"
          alt="Tealium UDO UI file"
          title="Tealium UDO UI file"/>
+    </a>
 </figure></li>
 <li>To activate the extension, insert the following entries into the database and restart the Websphere Commerce web server:</li>
 </ol>
@@ -432,18 +433,20 @@ var utag_data = {
 <li>Log into iQ Tag Management and navigate to the <strong>Data Layer</strong> tab.</li>
 <li>Click the drop-down next to <strong>Add Data Source</strong>, then click <strong>Add Common
 Data Sources</strong>.</li>
-<li>Under <strong>Provider Bundles</strong>, select <strong>IBM WebSphere Commerce</strong> and click <strong>Import This Bundle</strong>.<figure><img src="/images/tech-partners/ibmwebsphere2.png"
+<li>Under <strong>Provider Bundles</strong>, select <strong>IBM WebSphere Commerce</strong> and click <strong>Import This Bundle</strong>.<figure><a class="slb" href="/images/tech-partners/ibmwebsphere2.png"><img src="/images/tech-partners/ibmwebsphere2.png"
          alt="IBM WebSphere Data Source"
          title="IBM WebSphere Data Source"/>
+    </a>
 </figure></li>
 <li>Click <strong>Close</strong>.</li>
 <li><strong>Save/Publish</strong> the changes to your iQ Tag Management profile.</li>
 </ol>
 <h3 id="validation">Validation</h3>
 <p>To validate the implementation, navigate to your site and view the page source. In the page’s source, look for <code>utag_data</code> (Tealium’s UDO). You can also see the <code>Validation.txt</code> file included in the distribution package for sample values on specific commerce pages.</p>
-<p>Use a proxy tool or Chrome developer tools to confirm that the browser is loading the <code>utag.js</code> file. After you activate a tag in iQ Tag Management, such as IBM Digital Analytics, you can use Charles Proxy, HTTP Fox, or Chrome Developer Tools to see the data passing to your analytics vendor. <figure><img src="/images/tech-partners/ibmwebsphere3.png"
+<p>Use a proxy tool or Chrome developer tools to confirm that the browser is loading the <code>utag.js</code> file. After you activate a tag in iQ Tag Management, such as IBM Digital Analytics, you can use Charles Proxy, HTTP Fox, or Chrome Developer Tools to see the data passing to your analytics vendor. <figure><a class="slb" href="/images/tech-partners/ibmwebsphere3.png"><img src="/images/tech-partners/ibmwebsphere3.png"
          alt="Validation with Chrome Developer Tools"
          title="Validation with Chrome Developer Tools"/>
+    </a>
 </figure></p>
 <p>The values for <code>wc.tealium.account</code> and <code>wc.tealium.profile</code> are the Tealium account and profile associated with the site, respectively.</p>
 
@@ -822,6 +825,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -833,7 +844,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

@@ -514,6 +514,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -837,9 +839,10 @@ var utag_data = {
           
           <h2 id="replay-trace-events">Replay trace events</h2>
 <p>From the trace screen, you can replay, pause, or resume an event by clicking one of the icons in the trace summary.</p>
-<figure><img src="/images/server-side/trace-icons.png"
+<figure><a class="slb" href="/images/server-side/trace-icons.png"><img src="/images/server-side/trace-icons.png"
          alt="trace-icons"
          title="trace-icons"/>
+    </a>
 </figure>
 <p>The following table provides details on each of the trace icons.</p>
 <table>
@@ -851,44 +854,50 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td><figure><img src="/images/server-side/trace-icon-play-normal.png"
+<td><figure><a class="slb" href="/images/server-side/trace-icon-play-normal.png"><img src="/images/server-side/trace-icon-play-normal.png"
          alt="trace-icon-play-normal"
          title="trace-icon-play-normal"/>
+    </a>
 </figure></td>
 <td>Play at normal speed. The default setting used to replay an event is normal speed.</td>
 </tr>
 <tr>
-<td><figure><img src="/images/server-side/trace-icon-play-2x.png"
+<td><figure><a class="slb" href="/images/server-side/trace-icon-play-2x.png"><img src="/images/server-side/trace-icon-play-2x.png"
          alt="trace-icon-play-2x"
          title="trace-icon-play-2x"/>
+    </a>
 </figure></td>
 <td>Play at twice the normal speed.</td>
 </tr>
 <tr>
-<td><figure><img src="/images/server-side/trace-icon-pause.png"
+<td><figure><a class="slb" href="/images/server-side/trace-icon-pause.png"><img src="/images/server-side/trace-icon-pause.png"
          alt="trace-icon-pause"
          title="trace-icon-pause"/>
+    </a>
 </figure></td>
 <td>Pause the ongoing trace. When paused, trace continues to process new events behind the scenes but does not display new log entries until you click pause again to restart.</td>
 </tr>
 <tr>
-<td><figure><img src="/images/server-side/trace-icon-view-profile.png"
+<td><figure><a class="slb" href="/images/server-side/trace-icon-view-profile.png"><img src="/images/server-side/trace-icon-view-profile.png"
          alt="trace-icon-view-profile"
          title="trace-icon-view-profile"/>
+    </a>
 </figure></td>
 <td>View the latest visitor profile. Displays a snapshot of the profile for the latest visitor in JSON format. Click <strong>OK</strong> to exit this window.</td>
 </tr>
 <tr>
-<td><figure><img src="/images/server-side/trace-icon-get-code-replay.png"
+<td><figure><a class="slb" href="/images/server-side/trace-icon-get-code-replay.png"><img src="/images/server-side/trace-icon-get-code-replay.png"
          alt="trace-icon-get-code-replay"
          title="trace-icon-get-code-replay"/>
+    </a>
 </figure></td>
 <td>Get code to replay events generates a curl command for each event. You can run the curl commands in a terminal window to replay an event in trace without having to recreate the configuration steps on the web page.  <ul><li>To replay a single event, copy and paste the matching curl command in the terminal window and press <strong>Enter</strong> to run the command.</li><li>To replay multiple events, click <strong>Download Bash Script</strong> to download the .sh file. Use the terminal window to run the .sh script.</li></ul></td>
 </tr>
 <tr>
-<td><figure><img src="/images/server-side/trace-icon-exit-race.png"
+<td><figure><a class="slb" href="/images/server-side/trace-icon-exit-race.png"><img src="/images/server-side/trace-icon-exit-race.png"
          alt="trace-icon-exit-race"
          title="trace-icon-exit-race"/>
+    </a>
 </figure></td>
 <td>Exit the current trace. If the trace is still active on the web page, you can rejoin the trace using the Trace ID.</td>
 </tr>
@@ -899,9 +908,10 @@ var utag_data = {
           
           <h2 id="view-event-details">View event details</h2>
 <p>The following image shows the parts of the trace interface. The <strong>Trace Log</strong> is a real-time scrolling summary of actions, events, and audiences. The <strong>Overview Panel</strong> displays a snapshot of the detailed activity. <strong>Search</strong> can be used to find specific attributes in the list of visitor and visitor-scoped attributes. The attributes in the list are grouped by data type (Numbers, Dates, and so on). <strong>Filters</strong> can be used to filter these attributes.</p>
-<figure><img src="/images/server-side/trace-log-sections.png"
+<figure><a class="slb" href="/images/server-side/trace-log-sections.png"><img src="/images/server-side/trace-log-sections.png"
          alt="trace-log-sections"
          title="trace-log-sections"/>
+    </a>
 </figure>
 <h3 id="filters">Filters</h3>
 <p>Filtering allows you to determine if the attributes and the configurations tied to them are functioning properly. Using filters, you can choose how to view the attributes and their values. You can filter attributes by Label (if you have added labels for attributes) or by Type, where Type is one of the following</p>
@@ -1390,6 +1400,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1401,7 +1419,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

@@ -716,8 +716,6 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/xandr-formerly-appnexus-seller-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-formerly-appnexus-seller-tag">Xandr (formerly AppNexus) Seller</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/client-side-tags/xandr-formerly-appnexus-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-formerly-appnexus-tag">Xandr (formerly AppNexus) Tag Setup Guide</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/xandr-universal-pixel-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-universal-pixel-tag">Xandr Universal Pixel</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/yahoo-id-cookie-sync-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".yahoo-id-cookie-sync-tag">Yahoo ID Cookie Sync</a>
@@ -856,9 +854,10 @@ var utag_data = {
 <li>Select <code>tealium_event</code>from the variable drop-down list and click <strong>Select a Destination</strong>.</li>
 <li>In the <strong>Category</strong> section, select <strong>Events</strong>.</li>
 <li>Set the <strong>When mapped variable equals</strong> field to <code>Purchase</code>, which is the value <code>tealium_event</code> must equal to trigger a purchase.</li>
-<li>In the <strong>Trigger event</strong> drop-down list, select <code>Purchase</code>, which is the event that is triggered when <code>tealium_event</code> equals purchase.<figure><img src="/images/client-side-tags/a.png"
+<li>In the <strong>Trigger event</strong> drop-down list, select <code>Purchase</code>, which is the event that is triggered when <code>tealium_event</code> equals purchase.<figure><a class="slb" href="/images/client-side-tags/a.png"><img src="/images/client-side-tags/a.png"
          alt="Use Case: Purchase Event"
          title="Use Case: Purchase Event"/>
+    </a>
 </figure>If additional data needs to be sent with the purchase event that is not already covered by the built-in E-Commerce extension mappings, use <strong>Custom Parameters</strong> to map additional purchase data.</li>
 </ol>
 <p>The following example passes the product brand with the purchase event:</p>
@@ -867,9 +866,10 @@ var utag_data = {
 <li>In the <strong>Category</strong> section, select <strong>Event specific Parameters</strong>.</li>
 <li>Set the <strong>Destination</strong> field to the name <code>brand</code> for the Custom Parameter.</li>
 <li>In the <strong>For event</strong> drop-down list, select the event <code>Purchase</code> which the Custom Parameter collects with.<br>
-<figure><img src="/images/client-side-tags/c.png"
+<figure><a class="slb" href="/images/client-side-tags/c.png"><img src="/images/client-side-tags/c.png"
          alt="Event: Purchase"
          title="Event: Purchase"/>
+    </a>
 </figure></li>
 </ol>
 <p>Test the mappings by using the <a href="https://developers.facebook.com/docs/facebook-pixel/support/pixel-helper/">Facebook Pixel Helper</a> or the Developer Tools offered by your browser.</p>
@@ -877,9 +877,10 @@ var utag_data = {
 <li>Use the Network Panel and filtering for Facebook to display all the network requests containing Facebook as a keyword.</li>
 <li>Confirm the purchase event was successful by looking at the name of the request.</li>
 <li>Open the request and scroll down to the Query String Parameters to see the values of the the data mappings that were configured: <code>purchase</code> , <code>product_id</code> , and <code>product_brand</code>.<br>
-<figure><img src="/images/client-side-tags/d.png"
+<figure><a class="slb" href="/images/client-side-tags/d.png"><img src="/images/client-side-tags/d.png"
          alt="Facebook Pixel Helper"
          title="Facebook Pixel Helper"/>
+    </a>
 </figure></li>
 </ol>
 <h2 id="data-mappings">Data Mappings</h2>
@@ -2358,7 +2359,6 @@ No</button>
   
   
   
-  
 
 </ul>
 
@@ -2465,6 +2465,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -2476,7 +2484,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

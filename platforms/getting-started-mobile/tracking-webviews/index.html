@@ -336,7 +336,7 @@ This native code uses a JavaScript interface to receive the messages containing 
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="webview-with-tealium">Webview With Tealium</h3>
-<p>If the pages loaded in the webview already have the Tealium Universal Tag (utag.js), then add the JavaScript handler code using two <a href="/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">JavaScript Code extensions</a>: one to initialize the wrapper functions and one to forward existing tracking calls to the JavaScript interface.</p>
+<p>If the pages loaded in the webview already have the Tealium Universal Tag (<code>utag.js</code>), then add the JavaScript handler code using two <a href="/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">JavaScript Code extensions</a>: one to initialize the wrapper functions and one to forward existing tracking calls to the JavaScript interface.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>In this scenario the webview pages and the native app must be using different Tealium iQ profiles.</p>
 <ol>
 <li>
@@ -347,7 +347,7 @@ This native code uses a JavaScript interface to receive the messages containing 
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">a</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;view&#34;</span>) {
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tealView</span>(<span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">tealium_event</span>, <span style="color:#a6e22e">b</span>);
 </span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">a</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;link&#34;</span>) {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tealLink</span>(<span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">tealium_event</span>, <span style="color:#a6e22e">b</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">tealEvent</span>(<span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">tealium_event</span>, <span style="color:#a6e22e">b</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></li>
 </ol>
@@ -473,7 +473,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  May 19, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -909,6 +909,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -920,7 +928,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

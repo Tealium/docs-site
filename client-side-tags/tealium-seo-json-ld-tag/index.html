@@ -716,8 +716,6 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/xandr-formerly-appnexus-seller-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-formerly-appnexus-seller-tag">Xandr (formerly AppNexus) Seller</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/client-side-tags/xandr-formerly-appnexus-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-formerly-appnexus-tag">Xandr (formerly AppNexus) Tag Setup Guide</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/xandr-universal-pixel-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-universal-pixel-tag">Xandr Universal Pixel</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/yahoo-id-cookie-sync-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".yahoo-id-cookie-sync-tag">Yahoo ID Cookie Sync</a>
@@ -777,7 +775,7 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <h2 id="tag-configuration">Tag Configuration</h2>
-<p>First, go to the tag marketplace and add the Tealium SEO Tag to your profile (<a href="/iq-tag-management/tags/tag-templates/manage/">learn more about how to add a tag</a>).</p>
+<p>First, go to the tag marketplace and add the Tealium SEO Tag to your profile (<a href="/iq-tag-management/templates/manage/">learn more about how to add a tag</a>).</p>
 <p>After adding the tag, configure the below settings:</p>
 <ul>
 <li>
@@ -968,9 +966,10 @@ For example, if your search URL is <code>http://query.example.com/search?q=smart
 <ol>
 <li>
 <p>Create a data mapping for <code>contact_phone</code> and select the <strong>Custom JSON-LD Data</strong> destination.
-<figure><img src="/images/client-side-tags/json-ld-tag-data-mapping-custom.jpg"
+<figure><a class="slb" href="/images/client-side-tags/json-ld-tag-data-mapping-custom.jpg"><img src="/images/client-side-tags/json-ld-tag-data-mapping-custom.jpg"
          alt="data mapping custom"
          title="data mapping custom" width="651" height="384"/>
+    </a>
 </figure></p>
 </li>
 <li>
@@ -1550,7 +1549,6 @@ No</button>
   
   
   
-  
 
 </ul>
 
@@ -1657,6 +1655,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1668,7 +1674,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

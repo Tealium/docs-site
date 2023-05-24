@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -836,9 +838,10 @@ var utag_data = {
 <h3 id="daily-visitor-query-cap">Daily visitor query cap</h3>
 <p>Visitors are sampled by capping the daily visitor count, which determines the sample size of visitors used to project results in Audience Sizing and Audience Discovery queries. The actual query runs on the total visitors matched, not just the capped visitors. Likewise, jobs also run on the total number of matched visitors, not just the sampled visitors.</p>
 <p>The <strong>Sample Size of Daily Visitors to Process</strong> profile setting can only be modified by Tealium staff. To adjust this setting, contact your account representative.</p>
-<figure><img src="/images/server-side/daily-visitor-query-cap-setting.jpg"
+<figure><a class="slb" href="/images/server-side/daily-visitor-query-cap-setting.jpg"><img src="/images/server-side/daily-visitor-query-cap-setting.jpg"
          alt="Daily Visitor Query Cap Setting"
          title="Daily Visitor Query Cap Setting"/>
+    </a>
 </figure>
 <p>The default cap is 100,000. That means if your total visitor population is 1,000,000, the projections are performed on a random sample of a 100,000 visitors.</p>
 <h3 id="segments">Segments</h3>
@@ -1329,6 +1332,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1340,7 +1351,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

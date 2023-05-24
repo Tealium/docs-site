@@ -326,17 +326,17 @@ var utag_data = {
         <a href="/iq-tag-management/tags/tealium-pixel-container-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-pixel-container-tag">Tealium Pixel Container Tag</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/tags/tealium-custom-container-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-custom-container-tag">Tealium Custom Container Tag</a>
-      </li><li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".tag-templates">Tag templates</a>
-        <ul class=" tag-templates desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-templates">About templates</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-tag-templates">Manage templates</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/template-status-checker/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".template-status-checker">Template Status Checker</a>
-      </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/tags/tag-reporting/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tag-reporting">Tag reporting</a>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".templates">Templates</a>
+        <ul class=" templates desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-templates">About templates</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-templates">Manage templates</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/template-status-checker/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".template-status-checker">Template Status Checker</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".events">Events</a>
@@ -741,9 +741,11 @@ The name can be a maximum of 50 characters and only contain the following charac
 </li>
 <li>
 <p>Click <strong>Create Profile</strong> to create the profile.<br>
-<img src="/images/iq-tag-management/whiteui-tiq-managing-profiles-create-profile-dialog.jpg" 
+<figure><a class="slb" href="/images/iq-tag-management/whiteui-tiq-managing-profiles-create-profile-dialog.jpg"><img src="/images/iq-tag-management/whiteui-tiq-managing-profiles-create-profile-dialog.jpg"
          alt="Create Profile Dialog"
-         title="Create Profile Dialog"/><br>
+         title="Create Profile Dialog"/>
+    </a>
+</figure><br>
 The new profile display in the <strong>Profiles</strong> list.</p>
  <p class="tip"><i class="fa fa-info-circle"></i>Creating a profile happens immediately. If there are any required libraries present, they will be linked to the profile automatically. Any variables based on AudienceStream attributes will not be copied upon profile creation. You must manually add attribute-based variables to newly-created profiles.</p>
 </li>
@@ -817,9 +819,11 @@ The new profile display in the <strong>Profiles</strong> list.</p>
 <li>From the drop-down list, select the profile you want to switch to.</li>
 <li>Select the version of the profile to switch to.<br>
 The most recent version is the default selection.<br>
-<img src="/images/iq-tag-management/whiteui-tiq-managing-profiles-change-profiles.jpg" 
+<figure><a class="slb" href="/images/iq-tag-management/whiteui-tiq-managing-profiles-change-profiles.jpg"><img src="/images/iq-tag-management/whiteui-tiq-managing-profiles-change-profiles.jpg"
          alt="Change Profiles"
-         title="Change Profiles"/></li>
+         title="Change Profiles"/>
+    </a>
+</figure></li>
 <li>Click <strong>Load Version</strong>.</li>
 </ol>
 
@@ -1128,6 +1132,12 @@ No</button>
       </li>
       
       <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/iq-tag-management/templates/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Templates
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/iq-tag-management/events/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
           Events
       </a>
@@ -1307,6 +1317,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1318,7 +1336,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

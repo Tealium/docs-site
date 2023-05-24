@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -830,14 +832,16 @@ var utag_data = {
 <p>To begin, all active users should be working on the latest published version of a profile. Users are informed when changes are introduced by other active members, regardless of whether or not the change has been saved and published.</p>
 <h2 id="viewing-other-active-users">Viewing other active users</h2>
 <p>When you log in to the Customer Data Hub, the product component that you are working in is highlighted in blue in the left navigation bar. If another user is also logged into Customer Data Hub and active, that user&rsquo;s initials appear as a circle with a unique background color at the top of the screen. The same unique color is used to highlight which area of the product the other user is currently working in, as shown in the following example:</p>
-<figure><img src="/images/server-side/whiteui-udh-concurrent-user-management-udh-3-users-logged-in.png"
+<figure><a class="slb" href="/images/server-side/whiteui-udh-concurrent-user-management-udh-3-users-logged-in.png"><img src="/images/server-side/whiteui-udh-concurrent-user-management-udh-3-users-logged-in.png"
          alt="3 Users logged in"
          title="3 Users logged in"/>
+    </a>
 </figure>
 <h2 id="acknowledging-that-another-user-has-initiated-a-change">Acknowledging that another user has initiated a change</h2>
-<figure><img src="/images/server-side/whiteui-udh-concurrent-user-management-udh-acknowledge-change-message.png"
+<figure><a class="slb" href="/images/server-side/whiteui-udh-concurrent-user-management-udh-acknowledge-change-message.png"><img src="/images/server-side/whiteui-udh-concurrent-user-management-udh-acknowledge-change-message.png"
          alt="Acknowledge Change Message"
          title="Acknowledge Change Message"/>
+    </a>
 </figure>
 <p>If another active user has started a change, whether or not they have saved and published the change, a message appears to let you know that a change is in progress that has not been saved and published. Click <strong>Got it</strong> to acknowledge the message.</p>
 <p>Before you save, contact that user to ensure that your changes do not overwrite each other.</p>
@@ -1321,6 +1325,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1332,7 +1344,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

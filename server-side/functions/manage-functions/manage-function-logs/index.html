@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -873,10 +875,12 @@ var utag_data = {
 </ol>
 <p>There is a short delay while the logs are processed. Exported logs are stored for seven days after the export.</p>
 <p>When the exported logs are ready to download, a badge is displayed on the <strong>Logs</strong> tab to that indicates the number of log files available for download, as shown below.
-<figure><img src="/images/server-side/exported-logs-badge.png"/>
+<figure><a class="slb" href="/images/server-side/exported-logs-badge.png"><img src="/images/server-side/exported-logs-badge.png"/>
+    </a>
 </figure>
 The following message is also displayed on the <strong>Functions Overview</strong> page:
-<figure><img src="/images/server-side/exported-logs-msg.png"/>
+<figure><a class="slb" href="/images/server-side/exported-logs-msg.png"><img src="/images/server-side/exported-logs-msg.png"/>
+    </a>
 </figure></p>
 <h2 id="view-and-download-exported-logs">View and download exported logs</h2>
 <p>Use the following steps to view the list of exported logs and download log files:</p>
@@ -1372,6 +1376,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1383,7 +1395,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

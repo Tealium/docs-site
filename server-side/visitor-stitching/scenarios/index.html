@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -858,33 +860,38 @@ var utag_data = {
 <h2 id="scenario-1-a-different-email-address-from-the-same-device-and-browser">Scenario 1: a different email address from the same device and browser</h2>
 <p>A week later, the user visits the website using the same device and browser and submits a form with a different email address. The anonymous ID is the same, so the incoming event will match the profile that was created on the user&rsquo;s first visit. However, because a visitor ID attribute cannot be changed, the new email address hash value will not be used.</p>
 <p><strong>Result:</strong> One visitor profile with a visitor ID attribute set to the original email address hash.</p>
-<figure><img src="/images/server-side/two-emails-first.png"
+<figure><a class="slb" href="/images/server-side/two-emails-first.png"><img src="/images/server-side/two-emails-first.png"
          alt="two-emails-first.png"
          title="two-emails-first.png"/>
+    </a>
 </figure>
 <h2 id="scenario-2-a-different-email-from-a-different-device-or-browser">Scenario 2: a different email from a Different Device or Browser</h2>
 <p>A week later, the same user visits the website using a different device or browser and submits a form with a different email address. The anonymous ID is different, so the incoming event does not match the profile that was created on the user&rsquo;s first visit. A new profile is created and there are two profiles for this user after the second visit. No visitor stitching occurs, because the visitor ID attribute does not match (the email addresses are different). These two profiles could be stitched together later, if they matched on a second visitor ID attribute.</p>
 <p><strong>Result:</strong> Two visitor profiles, with each visitor ID attribute set to the corresponding email address hash.</p>
-<figure><img src="/images/server-side/two-emails-both.png"
+<figure><a class="slb" href="/images/server-side/two-emails-both.png"><img src="/images/server-side/two-emails-both.png"
          alt="two-emails-both.png"
          title="two-emails-both.png"/>
+    </a>
 </figure>
 <h2 id="example-of-two-visitor-profiles-matching-on-a-second-visitor-id-attribute">Example of two visitor profiles matching on a second visitor ID attribute</h2>
 <p>In this example, a user visits a web site from two different devices and is assigned a customer ID for each visit. The anonymous IDs do not match, and two separate profiles are created. The customer ID is configured to enrich visitor ID attribute #1, and the visitor ID attribute is enriched in each profile, as shown below.</p>
 <p>This scenario could only happen if the anonymous ID (<code>tealium_visitor_id</code>) is not known, or is different in the two profiles. If the anonymous IDs match, no user IDs or visitor ID attributes would be evaluated, and the second profile would not be created.</p>
-<figure><img src="/images/server-side/match-2nd-visid-first.png"
+<figure><a class="slb" href="/images/server-side/match-2nd-visid-first.png"><img src="/images/server-side/match-2nd-visid-first.png"
          alt="match-2nd-visID-first.png"
          title="match-2nd-visID-first.png"/>
+    </a>
 </figure>
 <p>The user visits the website again from the first device and provides an email address when submitting a form. The customer_email address attribute is configured to enrich visitor ID attribute #2. Visitor ID attribute #2 in Profile A is enriched with the email address, as shown below.</p>
-<figure><img src="/images/server-side/match-2nd-visid-second.png"
+<figure><a class="slb" href="/images/server-side/match-2nd-visid-second.png"><img src="/images/server-side/match-2nd-visid-second.png"
          alt="match-2nd-visID-second.png"
          title="match-2nd-visID-second.png"/>
+    </a>
 </figure>
 <p>When the user visits the website from the second device and provides the same email address when submitting a form, the email address matches visitor ID attribute #2 in Profile A, and the two profiles are stitched together to create Profile C, as shown below.</p>
-<figure><img src="/images/server-side/match-2nd-visid-third.png"
+<figure><a class="slb" href="/images/server-side/match-2nd-visid-third.png"><img src="/images/server-side/match-2nd-visid-third.png"
          alt="match-2nd-visID-third.png"
          title="match-2nd-visID-third.png"/>
+    </a>
 </figure>
 <p>Profile C contains a new <code>replaces</code> array, which holds values that are no longer stored in visitor ID attributes, but can still be used for visitor stitching in the future. Profile A and Profile B had different values for the anonymous ID and Visitor ID Attribute #1 (Customer ID). Because only one value can be set per visitor ID attribute, two values had to move to the <code>replaces</code> array. Profile B was the newer profile and had fewer events than Profile A, so the Profile B identifiers were moved to the <code>replaces</code> array.</p>
 <h3 id="http-api-and-file-import-data-sources">HTTP API and file import data sources</h3>
@@ -1431,6 +1438,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1442,7 +1457,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

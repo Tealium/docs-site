@@ -288,9 +288,10 @@ var utag_data = {
 <h2 id="how-it-works">How it works</h2>
 <p>Data Insights analyzes and provides visualization of structured data from EventDB and Audience DB. Data Insights has access to all tables in EventDB and AudienceDB. When Data Insights is enabled, it automatically connects to the DataAccess data sources that are available to the profile and displays the default dashboards.</p>
 <p>For example, the dashboard below shows graphs based on total visits data:</p>
-<figure><img src="/images/early-access/graph-examples.png"
+<figure><a class="slb" href="/images/early-access/graph-examples.png"><img src="/images/early-access/graph-examples.png"
          alt="graph-examples.png"
          title="graph-examples.png"/>
+    </a>
 </figure>
 <p>Data Insights users with the author role can create analyses of EventDB or AudienceDB data. The author can then publish the analysis as a dashboard, which users with the reader role can view.</p>
 <h3 id="requirements">Requirements</h3>
@@ -364,23 +365,26 @@ Some Tealium implementations may be using Amazon Redshift Spectrum and would nee
 </thead>
 <tbody>
 <tr>
-<td><figure><img src="/images/early-access/create-analysis-save-icon.png"
+<td><figure><a class="slb" href="/images/early-access/create-analysis-save-icon.png"><img src="/images/early-access/create-analysis-save-icon.png"
          alt="create-analysis-save-icon.png"
          title="create-analysis-save-icon.png"/>
+    </a>
 </figure></td>
 <td><strong>Save as</strong></td>
 </tr>
 <tr>
-<td><figure><img src="/images/early-access/analysis-print-download.png"
+<td><figure><a class="slb" href="/images/early-access/analysis-print-download.png"><img src="/images/early-access/analysis-print-download.png"
          alt="analysis-print-download.png"
          title="analysis-print-download.png"/>
+    </a>
 </figure></td>
 <td>(<strong>Export</strong>) Print or Save as PDF</td>
 </tr>
 <tr>
-<td><figure><img src="/images/early-access/analysis-publish-share.png"
+<td><figure><a class="slb" href="/images/early-access/analysis-publish-share.png"><img src="/images/early-access/analysis-publish-share.png"
          alt="analysis-publish-share.png"
          title="analysis-publish-share.png"/>
+    </a>
 </figure></td>
 <td>(<strong>Share</strong>) Publish dashboard or Share analysis</td>
 </tr>
@@ -874,6 +878,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -885,7 +897,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -835,9 +837,10 @@ var utag_data = {
   <h2 id="create-a-google-sheet">Create a Google Sheet</h2>
 <p>This example uses the Google Sheets connector to show how to log customer profile data to a spreadsheet, but you may use your own vendor. To prepare for this step, create a Google Sheets spreadsheet named &ldquo;AudienceStream Test&rdquo; and name the first two columns: &ldquo;email&rdquo; and &ldquo;lifetime value&rdquo;.</p>
 <p>The spreadsheet looks like this:</p>
-<figure><img src="/images/server-side/as-getting-started-sheet-name.jpg"
+<figure><a class="slb" href="/images/server-side/as-getting-started-sheet-name.jpg"><img src="/images/server-side/as-getting-started-sheet-name.jpg"
          alt="Spreadsheet example"
          title="Spreadsheet example" width="235" height="167"/>
+    </a>
 </figure>
 <h2 id="add-the-google-sheets-connector">Add the Google Sheets Connector</h2>
 <p>Use the following steps to configure the Google Sheets connector:</p>
@@ -894,17 +897,21 @@ Select <strong>Add Only</strong> to add new a row without lookup, <strong>Update
 <p><strong>Spreadsheet Name</strong><br>
 Identifies the name of the spreadsheet file to use.<br>
 Select the spreadsheet name from the drop-down, or enter the name of the spreadsheet file to use (such as &ldquo;AudienceStream Test&rdquo;).
-<img src="/images/server-side/spreadsheet.png" 
+<figure><a class="slb" href="/images/server-side/spreadsheet.png"><img src="/images/server-side/spreadsheet.png"
          alt="Spreadsheet"
-         title="Spreadsheet"/></p>
+         title="Spreadsheet"/>
+    </a>
+</figure></p>
 </li>
 <li>
 <p><strong>Worksheet Name</strong><br>
 Identifies the name of the worksheet within the spreadsheet to use.<br>
 Select the worksheet name from the drop-down, or enter the name of the worksheet to use (such as &ldquo;Sheet1&rdquo;).
-<img src="/images/server-side/worksheet.png" 
+<figure><a class="slb" href="/images/server-side/worksheet.png"><img src="/images/server-side/worksheet.png"
          alt="Worksheet"
-         title="Worksheet"/></p>
+         title="Worksheet"/>
+    </a>
+</figure></p>
 </li>
 <li>
 <p><strong>Row ID</strong><br>
@@ -991,7 +998,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  May 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1417,6 +1424,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1428,7 +1443,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

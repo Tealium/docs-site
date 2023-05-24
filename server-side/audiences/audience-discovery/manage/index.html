@@ -514,6 +514,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -837,9 +839,10 @@ var utag_data = {
           
           <p>The real-time visual representation of attributes in the interface provides insights into the behavior of your visitors. A live sampling of data displays visitors and attributes that meet your search criteria.</p>
 <p>Use the interactive tools, as described in the following image and table, to define and filter your search. You can then use the presentation of matching visitors as a guide as you continue to narrow or broaden your query to reach the desired visitor segment and create highly defined, targetable audiences.</p>
-<figure><img src="/images/server-side/whiteui-udh-audiencediscovery-white-ui-overview-labeled-masked.png"
+<figure><a class="slb" href="/images/server-side/whiteui-udh-audiencediscovery-white-ui-overview-labeled-masked.png"><img src="/images/server-side/whiteui-udh-audiencediscovery-white-ui-overview-labeled-masked.png"
          alt="Labeled_Masked"
          title="Labeled_Masked"/>
+    </a>
 </figure>
 <p>The following table describes the functions of each area of the interface labeled in the above image:</p>
 <table>
@@ -885,9 +888,11 @@ var utag_data = {
 </li>
 <li>
 <p>Enter the conditions for your filter.<br>
-<img src="/images/server-side/whiteui-udh-audiencediscovery-add-audience.png" 
+<figure><a class="slb" href="/images/server-side/whiteui-udh-audiencediscovery-add-audience.png"><img src="/images/server-side/whiteui-udh-audiencediscovery-add-audience.png"
          alt="Add Audience"
-         title="Add Audience"/></p>
+         title="Add Audience"/>
+    </a>
+</figure></p>
 <ul>
 <li>Under Conditions, select a value from the drop-down list.<br>
 In this example, <strong>Lifetime Visit Count</strong> is selected.</li>
@@ -910,9 +915,11 @@ In this example, the number three (<strong>3</strong>) is used.</li>
 <p>In the As a new audience field, enter a descriptive name for your audience.</p>
    <p class="note"><i class="fa fa-exclamation-triangle"></i>The name must not exceed 250 characters and must contain only ASCII characters (codes 0-127).</p>
 <p>In this example, the name Over 3 Visits is used.<br>
-<img src="/images/server-side/whiteui-udh-audiencediscovery-add-audience-save-save-as-new-audience.png" 
+<figure><a class="slb" href="/images/server-side/whiteui-udh-audiencediscovery-add-audience-save-save-as-new-audience.png"><img src="/images/server-side/whiteui-udh-audiencediscovery-add-audience-save-save-as-new-audience.png"
          alt="Save or Save As New Audience"
-         title="Save or Save As New Audience"/></p>
+         title="Save or Save As New Audience"/>
+    </a>
+</figure></p>
 </li>
 <li>
 <p>Click <strong>Save</strong>.</p>
@@ -930,9 +937,11 @@ In this example, the number three (<strong>3</strong>) is used.</li>
 <li>In the left sidebar, click <strong>AudienceStream &gt; Discover</strong>.</li>
 <li>From the <strong>Audiences</strong> drop-down list in the upper-right corner of the screen, click the <strong>Load</strong> tab.</li>
 <li>Select an audience to view.<br>
-<img src="/images/server-side/whiteui-udh-audiencediscovery-load-audience.png" 
+<figure><a class="slb" href="/images/server-side/whiteui-udh-audiencediscovery-load-audience.png"><img src="/images/server-side/whiteui-udh-audiencediscovery-load-audience.png"
          alt="Load Audience"
-         title="Load Audience"/><br>
+         title="Load Audience"/>
+    </a>
+</figure><br>
 In this example, the <strong>Over 3 Visits</strong> audience you created in the previous step is selected.</li>
 <li>Click the pencil icon to edit the audience filters.<br>
 The <strong>Edit Audience</strong> dialog appears.</li>
@@ -1490,6 +1499,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1501,7 +1518,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

@@ -253,12 +253,7 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>This guide shows how to add Tealium to your Roku app to track user activity.  Before you begin, here&rsquo;s a video introduction to the platform:</p>
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/AJLkm8gh3tY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
+  <p>This guide shows how to add Tealium to your Roku app to track user activity.</p>
 <h2 id="requirements">Requirements</h2>
 <ul>
 <li><a href="/server-side/getting-started/intro-cdh/">Tealium Customer Data Hub account</a></li>
@@ -266,43 +261,78 @@ var utag_data = {
 <li>Active <a href="https://developer.roku.com/developer">Roku developer account</a></li>
 <li>Roku Device</li>
 </ul>
-<p class="tip"><i class="fa fa-info-circle"></i>Developing in <a href="https://blog.roku.com/developer/2016/11/17/eclipse-plugin-update/">Eclipse with the Roku plugin</a> is recommended.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>We recommend that you develop in <a href="https://github.com/rokucommunity/vscode-brightscript-language">Visual Studio Code with the Brightscript Plugin</a>.</p>
 <h2 id="sample-apps">Sample Apps</h2>
-<p>To help familiarize yourself with our library, the tracking methods, and best practice implementation, it is recommended to download the <a href="https://github.com/Tealium/tealium-roku/tree/master/sample_app">Roku sample app</a>.</p>
-<p>The code for a sample app is available in the <a href="https://github.com/Tealium/tealium-roku/blob/master/sample_app/source/application/main.brs"><code>main.brs</code></a> file. The app provides examples of adding button tracking and defining a callback function.</p>
+<p>To help familiarize yourself with our library, the tracking methods, and best practice implementation, we recommend that you download the <a href="https://github.com/Tealium/tealium-roku/tree/master/TealiumRokuSample">Roku sample app</a>.</p>
+<p>The code for the sample app is available in the <a href="https://github.com/Tealium/tealium-roku/blob/master/TealiumRokuSample/components/TealiumSample.brs"><code>TealiumSample.brs</code></a> and the <a href="https://github.com/Tealium/tealium-roku/blob/master/TealiumRokuSample/components/TealiumSample.xml"><code>TealiumSample.xml</code></a> files. The app provides examples of adding button tracking via the supplied <code>TealiumTask</code> and <code>TealiumTaskInterface</code> files.</p>
 <h2 id="install">Install</h2>
-<p>Watch this video for an overview of the installation and setup of the code:</p>
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/S2JGrPNUqSs" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
-<p>To install the Tealium library for Roku:</p>
-<ol>
-<li>Download and install <a href="https://github.com/tealium/tealium-roku">Tealium for Roku</a> from GitHub. The code is organized as a sample app. The Tealium code files are located in <code>sample_app/source/tealium</code>.</li>
-</ol>
-<p class="tip"><i class="fa fa-info-circle"></i>We recommend cloning the library (instead of downloading) to make it easier to update to future releases.</p>
-<ol start="2">
-<li>
-<p>The following files must be imported into your project&rsquo;s source folder</p>
+<p>To install the Tealium library for Roku, use one of the two following methods:</p>
 <ul>
-<li><code>tealium.brs</code></li>
-<li><code>tealiumCollect.brs</code></li>
-<li><code>tealiumLog.brs</code></li>
+<li><a href="https://github.com/rokucommunity/ropm"><code>ROPM</code></a> (Community Driven Roku dependency manager)</li>
+<li>Download the repo</li>
 </ul>
+<h3 id="ropm">ROPM</h3>
+<p>If you use <code>ROPM</code>, we recomend aliasing the Tealium library. In your <code>package.json</code>, add the following dependency:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;tealium&#34;</span>: <span style="color:#e6db74">&#34;npm:tealium-roku-plugin@2.0.0&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We also recomend that you do not prefix via ROPM by adding the following code to your <code>package.json</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;ropm&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;noprefix&#34;</span>: [
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;tealium&#34;</span>
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>  }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span></code></pre></div><p>If you prefer to use prefixing and not aliasing, you can add the following line in your <code>package.json</code>:</p>
+<pre tabindex="0"><code>&#34;tealium-roku-plugin&#34;: &#34;2.0.0&#34;
+</code></pre><p>However, this method causes code samples in the documentation for the <code>brs</code> component to not properly match up with their references.</p>
+<p>And finally, run the <code>ropm install</code> command.</p>
+<h4 id="troubleshooting-ropm">Troubleshooting ROPM</h4>
+<ul>
+<li>
+<p>In some cases, auto path updating fails in ROPM. To resolve this issue, some manual changes need to be made in <code>TealiumTask.xml</code> <p class="note"><i class="fa fa-exclamation-triangle"></i>Ensure that you modify the <code>TealiumTask.xml</code> file in your project and not the one in the node module’s folder.</p></p>
 </li>
 <li>
-<p>If you are using Eclipse, refresh your project to access the Tealium components.</p>
-</li>
-</ol>
+<p>The imports may contain an <code>undefined</code> in the path. To fix this, update <code>undefined</code> to  your alias. If you followed the installation instructions above, the alias value is <code>tealium</code>:</p>
+<pre tabindex="0"><code>&lt;script type=&#34;text/brightscript&#34; uri=&#34;pkg:/components/roku_modules/undefined/TealiumTask.brs&#34; /&gt;
+&lt;script type=&#34;text/brightscript&#34; uri=&#34;pkg:/source/roku_modules/undefined/createTealium.brs&#34; /&gt;
+&lt;script type=&#34;text/brightscript&#34; uri=&#34;pkg:/source/roku_modules/undefined/tealiumBuilder.brs&#34; /&gt;
+&lt;script type=&#34;text/brightscript&#34; uri=&#34;pkg:/source/roku_modules/undefined/tealiumCollect.brs&#34; /&gt;
+&lt;script type=&#34;text/brightscript&#34; uri=&#34;pkg:/source/roku_modules/undefined/tealiumCore.brs&#34; /&gt;
+&lt;script type=&#34;text/brightscript&#34; uri=&#34;pkg:/source/roku_modules/undefined/tealiumLog.brs&#34; /&gt;
+</code></pre><p>Change this to:</p>
+<pre tabindex="0"><code>&lt;script type=&#34;text/brightscript&#34; uri=&#34;pkg:/components/roku_modules/tealium/TealiumTask.brs&#34; /&gt;
+&lt;script type=&#34;text/brightscript&#34; uri=&#34;pkg:/source/roku_modules/tealium/createTealium.brs&#34; /&gt;
+&lt;script type=&#34;text/brightscript&#34; uri=&#34;pkg:/source/roku_modules/tealium/tealiumBuilder.brs&#34; /&gt;
+&lt;script type=&#34;text/brightscript&#34; uri=&#34;pkg:/source/roku_modules/tealium/tealiumCollect.brs&#34; /&gt;
+&lt;script type=&#34;text/brightscript&#34; uri=&#34;pkg:/source/roku_modules/tealium/tealiumCore.brs&#34; /&gt;
+&lt;script type=&#34;text/brightscript&#34; uri=&#34;pkg:/source/roku_modules/tealium/tealiumLog.brs&#34; /&gt;
+</code></pre></li>
+</ul>
+<h3 id="download-repo">Download repo</h3>
+<p>The second option for installing the Tealium library is to download the repo and copy all of the files in the <code>components</code> and <code>source</code> directories over to your project.</p>
 <h2 id="initialize">Initialize</h2>
-<p>Tealium objects initialized with the <a href="/platforms/roku/api/#tealiumbuilder"><code>TealiumBuilder()</code></a> constructor, as shown in the following example:</p>
+<p>There are several options to using the Tealium library, but the simplest method is to initialize a builder object:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">builder</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">TealiumBuilder</span>(<span style="color:#e6db74">&#34;ACCOUNT&#34;</span>, <span style="color:#e6db74">&#34;PROFILE&#34;</span>, <span style="color:#a6e22e">LOG_LEVEL</span>)
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">builder</span>.<span style="color:#a6e22e">SetEnvironment</span>(<span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">builder</span>.<span style="color:#a6e22e">SetDatasource</span>(<span style="color:#e6db74">&#34;DATASOURCE&#34;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">teal</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">builder</span>.<span style="color:#a6e22e">Build</span>()
-</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>Be sure to set an appropriate log level when your app is released to production.</p>
-
+</span></span></code></pre></div><p>This generates a <code>teal</code> object that you can run track calls on. For more information about the <code>teal</code> object and the <code>TealiumBuilder</code> class, see <a href="/platforms/roku/api/"><code>API Reference</code></a>.</p>
+<p>If you are not using the supplied <code>TealiumTask</code> and <code>TealiumTaskInterface</code> code, see <a href="/platforms/roku/track/"><code>track call</code></a></p>
+<h3 id="advanced-control">Advanced control</h3>
+<p>For more advanced control, we recommend that you create and initialize your own Tealium object to be able to run anything you would like. If you are only interested in firing off tracking events, we recommend that you use the supplied <code>TealiumTask</code> and <code>TealiumTaskInterface</code>.</p>
+<p>You can use the supplied <code>TealiumTask</code> code by adding the following line to any component:</p>
+<pre tabindex="0"><code>  &lt;TealiumTask id=&#34;tealiumTask&#34;/&gt;
+</code></pre><h3 id="the-brs-component">The brs component</h3>
+<p>You must also import the <code>brs</code> component for the interface.</p>
+<pre tabindex="0"><code>  &lt;script type=&#34;text/brightscript&#34; uri=&#34;pkg:/source/roku_modules/tealium/TealiumTaskInterface.brs&#34;/&gt;
+</code></pre><p class="note"><i class="fa fa-exclamation-triangle"></i>If you prefixed the Tealium library instead of aliasing it, the code samples for the <code>brs</code> component will not properly match up with references in the documentation.<br><br>If you install the modules with a method other than <code>ROPM</code>, update the path in the <code>uri</code> parameter to the correct location.</p>
+<p>After you import the <code>brs</code> component, initialize your task in the <code>brs</code> code with the following code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">task</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">top</span>.<span style="color:#a6e22e">findNode</span>(<span style="color:#e6db74">&#34;tealiumTask&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">tealiumTask</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">TealiumTask</span>(<span style="color:#a6e22e">task</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">tealiumTask</span>.<span style="color:#a6e22e">init</span>(<span style="color:#e6db74">&#34;tealiummobile&#34;</span>, <span style="color:#e6db74">&#34;demo&#34;</span>)
+</span></span></code></pre></div>
 </div>
 
 <div class="mv30 nested-links overflow-hidden dpn"><div class="fr">
@@ -347,7 +377,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  May 18, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -364,7 +394,11 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#requirements">Requirements</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#sample-apps">Sample Apps</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#install">Install</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#initialize">Initialize</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#ropm">ROPM</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#download-repo">Download repo</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#initialize">Initialize</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#advanced-control">Advanced control</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#the-brs-component">The brs component</a></li>
               </nav>
   </aside></nav>
 
@@ -691,6 +725,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -702,7 +744,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

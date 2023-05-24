@@ -450,7 +450,8 @@ Save time and money for developers by eliminating constant requests for incremen
 </tr>
 </tbody>
 </table>
-<figure><img src="/images/platforms/getting-started-web/data-layer-data-to-vendors.png" width="700" height="350"/><figcaption><p>Data Layer Data to Vendors</p>
+<figure><a class="slb" href="/images/platforms/getting-started-web/data-layer-data-to-vendors.png"><img src="/images/platforms/getting-started-web/data-layer-data-to-vendors.png" width="700" height="350"/>
+    </a><figcaption><p>Data Layer Data to Vendors</p>
         </figcaption>
 </figure>
 
@@ -821,6 +822,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -832,7 +841,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

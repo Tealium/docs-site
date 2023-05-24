@@ -716,8 +716,6 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/xandr-formerly-appnexus-seller-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-formerly-appnexus-seller-tag">Xandr (formerly AppNexus) Seller</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/client-side-tags/xandr-formerly-appnexus-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-formerly-appnexus-tag">Xandr (formerly AppNexus) Tag Setup Guide</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/xandr-universal-pixel-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-universal-pixel-tag">Xandr Universal Pixel</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/yahoo-id-cookie-sync-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".yahoo-id-cookie-sync-tag">Yahoo ID Cookie Sync</a>
@@ -793,13 +791,16 @@ var utag_data = {
 <h4 id="adding-the-tag">Adding the Tag</h4>
 <p>Tealium iQ&rsquo;s Tag marketplace offers a wide variety of Tags. Click <a href="https://community.tealiumiq.com/t5/1-Getting-Started-Documentation/Tags-Tab/ta-p/5016">here</a> to learn how to add a Tag to your profile.</p>
 <h4 id="configuring-the-tag">Configuring the Tag</h4>
-<figure><img src="/images/client-side-tags/no-title-1024i83a5e04f7e903e54.png"/><figcaption><p>tag_config1.png</p>
+<figure><a class="slb" href="/images/client-side-tags/no-title-1024i83a5e04f7e903e54.png"><img src="/images/client-side-tags/no-title-1024i83a5e04f7e903e54.png"/>
+    </a><figcaption><p>tag_config1.png</p>
         </figcaption>
 </figure>
-<figure><img src="/images/client-side-tags/no-title-1025i528d8a79e781f8d3.png"/><figcaption><p>tag_config2.png</p>
+<figure><a class="slb" href="/images/client-side-tags/no-title-1025i528d8a79e781f8d3.png"><img src="/images/client-side-tags/no-title-1025i528d8a79e781f8d3.png"/>
+    </a><figcaption><p>tag_config2.png</p>
         </figcaption>
 </figure>
-<figure><img src="/images/client-side-tags/no-title-1026i376757c72484df88.png"/><figcaption><p>tag_config3.png</p>
+<figure><a class="slb" href="/images/client-side-tags/no-title-1026i376757c72484df88.png"><img src="/images/client-side-tags/no-title-1026i376757c72484df88.png"/>
+    </a><figcaption><p>tag_config3.png</p>
         </figcaption>
 </figure>
 <ol>
@@ -1460,7 +1461,6 @@ No</button>
   
   
   
-  
 
 </ul>
 
@@ -1567,6 +1567,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1578,7 +1586,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

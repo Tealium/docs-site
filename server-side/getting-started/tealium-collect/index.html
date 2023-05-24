@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -828,9 +830,10 @@ var utag_data = {
 <div class="prose nested-links" id="prose">
   <p>Tealium Collect is the primary method for server-side data collection  for websites, mobile apps, and server applications. Tealium Collect can be installed in many ways, depending on the platform.</p>
 <h2 id="web-and-mobile">Web and mobile</h2>
-<figure><img src="/images/server-side/tag-management-01.png"
+<figure><a class="slb" href="/images/server-side/tag-management-01.png"><img src="/images/server-side/tag-management-01.png"
          alt="Tag Management"
          title="Tag Management" width="386" height="191"/>
+    </a>
 </figure>
 <p>For customers with an iQ Tag Management account, use the Tealium Collect tag. Adding this tag to your client-side profile turns your installation of the Tealium Universal Tag into a data source for your server-side profile.</p>
 <p>The Tealium Collect tag sends each event tracking call to your server-side profile where the data will be processed into visitor profiles, audiences, cloud-based connectors, and data storage solutions.</p>
@@ -1337,6 +1340,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1348,7 +1359,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

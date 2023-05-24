@@ -302,7 +302,7 @@ var utag_data = {
 <ul>
 <li>Added support for native session counting in lieu of using the session counting logic within utag.js. This provides more accurate session counts, and fixes some edge cases where background activities triggered new sessions, resulting in higher than expected session counts.</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>⚠️ Important ⚠️ If Tag Management is enabled in the Mobile Publish Settings, you must also update the mobile.html template within the associated account. If this action isn&rsquo;t performed, duplicate sessions are recorded in Tealium. <a href="/iq-tag-management/tags/tag-templates/about/">Read more</a> about how to update a template.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>⚠️ Important ⚠️ If Tag Management is enabled in the Mobile Publish Settings, you must also update the mobile.html template within the associated account. If this action isn&rsquo;t performed, duplicate sessions are recorded in Tealium. <a href="/iq-tag-management/templates/about/">Read more</a> about how to update a template.</p>
 <h2 id="566-january-2020">5.6.6 (January 2020)</h2>
 <p><strong>Low Impact Changes</strong></p>
 <ul>
@@ -880,6 +880,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -891,7 +899,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

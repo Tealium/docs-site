@@ -236,6 +236,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/airship-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".airship-connector">Airship</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/algolia-insights-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".algolia-insights-connector">Algolia Insights</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-advertising-dsp-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-advertising-dsp-connector">Amazon Advertising DSP</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a>
@@ -752,9 +754,10 @@ For more information, see <a href="https://hubs.li/Q01lKrrX0">Managing API Keys<
 <li>Set <strong>URL</strong> to <code>https://integration.talon.one/cdp/audiences</code></li>
 </ul>
 <p>For example:</p>
-<figure><img src="/images/server-side-connectors/httprequestrequiredps.png"
+<figure><a class="slb" href="/images/server-side-connectors/httprequestrequiredps.png"><img src="/images/server-side-connectors/httprequestrequiredps.png"
          alt="HTTPRequestRequiredPs"
          title="HTTPRequestRequiredPs"/>
+    </a>
 </figure>
 <p>To send data to Talon.One, you also need to configure mappings for the following:</p>
 <ul>
@@ -1314,6 +1317,7 @@ No</button>
   
   
   
+  
 
 </ul>
 
@@ -1420,6 +1424,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1431,7 +1443,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

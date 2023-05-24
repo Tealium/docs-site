@@ -293,9 +293,11 @@ var utag_data = {
 </li>
 <li>
 <p>Copy the selected Universal Tag code to your clipboard</p>
-<img src="/images/platforms/getting-started-web/iq-code-center.png" 
+<figure><a class="slb" href="/images/platforms/getting-started-web/iq-code-center.png"><img src="/images/platforms/getting-started-web/iq-code-center.png"
          alt="Code Center"
          title="Code Center"/>
+    </a>
+</figure>
 </li>
 </ol>
 <h3 id="environments">Environments</h3>
@@ -448,14 +450,16 @@ In the page code, the Universal Data Object must be declared before the Universa
 <p>Use the following tools to validate that your installation is working properly.</p>
 <h3 id="universal-tag-debugger">Universal Tag Debugger</h3>
 <p>The Universal Tag Debugger (or &ldquo;utag debugger&rdquo;) provides an easy way to validate your data layer and tracking calls in real-time as you navigate your site.</p>
-<figure><img src="/images/platforms/javascript/utag-monitor.png" width="500" height="500"/><figcaption><p>UTAG Monitor</p>
+<figure><a class="slb" href="/images/platforms/javascript/utag-monitor.png"><img src="/images/platforms/javascript/utag-monitor.png" width="500" height="500"/>
+    </a><figcaption><p>UTAG Monitor</p>
         </figcaption>
 </figure>
 <p>The tracking calls made by <code>utag.js</code> are displayed and updated in the tool as you navigate or trigger in-page events.</p>
 <p>Learn more about the <a href="/iq-tag-management/troubleshooting/utag-debugger/">Universal Tag Debugger</a>.</p>
 <h3 id="web-companion">Web Companion</h3>
 <p>Web Companion is a browser tool that allows you to check your tag configuration, inspect data on your site, and create and test new configurations quickly and easily. Launching this tool quickly verifies that the <code>utag.js</code> library is loading properly on your site.</p>
-<figure><img src="/images/platforms/javascript/web-companion.png" width="375" height="550"/><figcaption><p>Web Companion</p>
+<figure><a class="slb" href="/images/platforms/javascript/web-companion.png"><img src="/images/platforms/javascript/web-companion.png" width="375" height="550"/>
+    </a><figcaption><p>Web Companion</p>
         </figcaption>
 </figure>
 <p>Learn more:</p>
@@ -503,7 +507,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 15, 2023 
+          <p>This page was last updated:  May 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -852,6 +856,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -863,7 +875,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

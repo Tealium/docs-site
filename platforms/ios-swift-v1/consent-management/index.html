@@ -428,7 +428,8 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">self</span>.tealium?.consentManager()?.setUserConsentStatus(status)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Define and call the following method in your Tealium Helper class when your app user consents to or declines tracking. If the user consents to tracking, the Consent Manager automatically opts them in to all tracking categories.</p>
-<figure><img src="/images/platforms/ios-swift/simple-consent" width="234" height="480"/><figcaption><p>Simple Consent</p>
+<figure><a class="slb" href="/images/platforms/ios-swift/simple-consent"><img src="/images/platforms/ios-swift/simple-consent" width="234" height="480"/>
+    </a><figcaption><p>Simple Consent</p>
         </figcaption>
 </figure>
 <h3 id="grouped-opt-in">Grouped Opt-in</h3>
@@ -463,7 +464,8 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>	  updateConsentPreferences(settingsDict)
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><figure><img src="/images/platforms/ios-swift/grouped-gif.gif" width="234" height="480"/><figcaption><p>Grouped</p>
+</span></span></code></pre></div><figure><a class="slb" href="/images/platforms/ios-swift/grouped-gif.gif"><img src="/images/platforms/ios-swift/grouped-gif.gif" width="234" height="480"/>
+    </a><figcaption><p>Grouped</p>
         </figcaption>
 </figure>
 <h3 id="category-based-opt-in">Category-based Opt-in</h3>
@@ -486,7 +488,8 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">let</span> settingsDict: [String: Any] = [<span style="color:#e6db74">&#34;consentStatus&#34;</span>: <span style="color:#e6db74">&#34;consented&#34;</span>, <span style="color:#e6db74">&#34;consentCategories&#34;</span>: categories]
 </span></span><span style="display:flex;"><span>	updateConsentPreferences(settingsDict)
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><figure><img src="/images/platforms/ios-swift/category-based" width="234" height="480"/><figcaption><p>Category-based</p>
+</span></span></code></pre></div><figure><a class="slb" href="/images/platforms/ios-swift/category-based"><img src="/images/platforms/ios-swift/category-based" width="234" height="480"/>
+    </a><figcaption><p>Category-based</p>
         </figcaption>
 </figure>
 
@@ -958,6 +961,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -969,7 +980,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

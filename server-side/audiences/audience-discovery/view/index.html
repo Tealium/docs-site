@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -839,14 +841,18 @@ var utag_data = {
 <li>In the left sidebar, click <strong>AudienceStream &gt; Discover</strong>.</li>
 <li>To display a list of available perspectives from which to view your audience data, click the default value <strong>Badges</strong> next to <strong>Perspectives</strong>.</li>
 <li>Use the <strong>Search</strong> field to search for a specific perspective, or filter the available perspective by Visit or Visitor scope.<br>
-<img src="/images/server-side/-whiteui-udh-audiencediscovery-view-different-perspectives.png" 
+<figure><a class="slb" href="/images/server-side/-whiteui-udh-audiencediscovery-view-different-perspectives.png"><img src="/images/server-side/-whiteui-udh-audiencediscovery-view-different-perspectives.png"
          alt="View Different Perspectives"
-         title="View Different Perspectives"/></li>
+         title="View Different Perspectives"/>
+    </a>
+</figure></li>
 <li>Click an available perspective to select it.<br>
 In the following example, the default value, Average visit duration in minutes is selected as a perspective from which to view the currently displayed audience data.<br>
-<img src="/images/server-side/whiteui-udh-audiencediscovery-perspective-view-filter.png" 
+<figure><a class="slb" href="/images/server-side/whiteui-udh-audiencediscovery-perspective-view-filter.png"><img src="/images/server-side/whiteui-udh-audiencediscovery-perspective-view-filter.png"
          alt="Perspective View Filter"
-         title="Perspective View Filter"/></li>
+         title="Perspective View Filter"/>
+    </a>
+</figure></li>
 <li>View your data from a variety of perspectives to analyze the data and refine your audiences to best fit your needs.</li>
 </ol>
 
@@ -894,7 +900,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  May 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1319,6 +1325,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1330,7 +1344,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

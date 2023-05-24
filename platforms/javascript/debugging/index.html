@@ -281,12 +281,14 @@ var utag_data = {
 <p>To enable debug mode, open the debugging tools in your favorite browser and run the following command:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>document.<span style="color:#a6e22e">cookie</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utagdb=true&#34;</span>;
 </span></span></code></pre></div><p>This cookie turns on debug mode within <code>utag.js</code>, which generates useful output to the console.</p>
-<figure><img src="/images/platforms/javascript/console-output.png" width="1000" height="500"/><figcaption><p>Console output</p>
+<figure><a class="slb" href="/images/platforms/javascript/console-output.png"><img src="/images/platforms/javascript/console-output.png" width="1000" height="500"/>
+    </a><figcaption><p>Console output</p>
         </figcaption>
 </figure>
 <p>Once debug mode is enabled, when you trigger actions on the page that are tracked, debug logs appear in the console. Inspect the console output for: <code>trigger: view</code> or <code>trigger: link</code></p>
 <p>The following example demonstrates how this looks in the console after an event is tracked:</p>
-<figure><img src="/images/platforms/javascript/debugging-console-utag-link.png" width="492" height="322"/><figcaption><p>Debug Console utag.link</p>
+<figure><a class="slb" href="/images/platforms/javascript/debugging-console-utag-link.png"><img src="/images/platforms/javascript/debugging-console-utag-link.png" width="492" height="322"/>
+    </a><figcaption><p>Debug Console utag.link</p>
         </figcaption>
 </figure>
 <p>Click the line under <code>trigger:view</code> or <code>trigger:link</code> to expand and collapse the event data object.</p>
@@ -302,7 +304,10 @@ var utag_data = {
 </li>
 <li>
 <p>Find the line with <code>return this.track(</code> and click the line number to set a breakpoint:<br>
-<img src="/images/platforms/javascript/debugging-utag-code.png"  width="385" height="63"/></p>
+<figure><a class="slb" href="/images/platforms/javascript/debugging-utag-code.png"><img src="/images/platforms/javascript/debugging-utag-code.png" width="385" height="63"/>
+    </a><figcaption><p>utag breakpoint</p>
+        </figcaption>
+</figure></p>
 </li>
 <li>
 <p>Return to the main window and perform an action to invoke one of the tracking calls. When a tracking call is made, one of the breakpoints stops the action in order to inspect the code.</p>
@@ -317,7 +322,8 @@ var utag_data = {
 <p><a href="https://developers.google.com/web/tools/chrome-devtools/javascript/breakpoints">Learn more</a> about setting breakpoints in Chrome Developer Tools.</p>
 <p class="tip"><i class="fa fa-info-circle"></i>One of the advantages of this method is the use of the Call Stack, reported through the Developer Tools in the Sources tab, to inspect the origin of the tracking call.</p>
 <p>The following is an example of where to look for the location of a <code>utag.link()</code> call:</p>
-<figure><img src="/images/platforms/javascript/utag-link-call-stack.png" width="1120" height="622"/><figcaption><p>utag link call stack</p>
+<figure><a class="slb" href="/images/platforms/javascript/utag-link-call-stack.png"><img src="/images/platforms/javascript/utag-link-call-stack.png" width="1120" height="622"/>
+    </a><figcaption><p>utag link call stack</p>
         </figcaption>
 </figure>
 <p>The preceding image shows the breakpoint in <code>utag.js</code> that was placed to trap the <code>utag.link()</code> call. Item (2), when clicked, shows the <code>utag.link()</code> call that is made within the source code (to the left).</p>
@@ -452,7 +458,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  May 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -837,6 +843,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -848,7 +862,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

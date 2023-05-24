@@ -353,7 +353,8 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>     <span style="color:#f92672">.</span><span style="color:#a6e22e">setUserConsentStatusWithCategories</span><span style="color:#f92672">(</span>ConsentManager<span style="color:#f92672">.</span><span style="color:#a6e22e">ConsentStatus</span><span style="color:#f92672">.</span><span style="color:#a6e22e">CONSENTED</span><span style="color:#f92672">,</span>
 </span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">new</span> String<span style="color:#f92672">[]</span> <span style="color:#f92672">{</span>ConsentManager<span style="color:#f92672">.</span><span style="color:#a6e22e">ConsentCategory</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ANALYTICS</span><span style="color:#f92672">});</span>
 </span></span></code></pre></div><p>For examples, you may choose to group the Tealium consent categories <code>&quot;big_data&quot;</code>, <code>&quot;analytics&quot;</code>, and <code>&quot;monitoring&quot;</code> under a single category called &ldquo;performance&rdquo;. This may be easier for the user than selecting from the full list of categories. You may choose to represent this in a slider interface, ranging from least-permissive to most permissive (all categories).</p>
-<figure><img src="/images/platforms/android/consent-slider.gif" width="320" height="623"/><figcaption><p>Consent slider</p>
+<figure><a class="slb" href="/images/platforms/android/consent-slider.gif"><img src="/images/platforms/android/consent-slider.gif" width="320" height="623"/>
+    </a><figcaption><p>Consent slider</p>
         </figcaption>
 </figure>
 <h3 id="category-based-opt-in">Category-based Opt-in</h3>
@@ -362,7 +363,8 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>   <span style="color:#f92672">.</span><span style="color:#a6e22e">setUserConsentStatusWithCategories</span><span style="color:#f92672">(</span>ConsentManager<span style="color:#f92672">.</span><span style="color:#a6e22e">ConsentStatus</span><span style="color:#f92672">.</span><span style="color:#a6e22e">CONSENTED</span><span style="color:#f92672">,</span>
 </span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">new</span> String<span style="color:#f92672">[]</span> <span style="color:#f92672">{</span>ConsentManager<span style="color:#f92672">.</span><span style="color:#a6e22e">ConsentCategory</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ANALYTICS</span><span style="color:#f92672">,</span>
 </span></span><span style="display:flex;"><span>                     ConsentManager<span style="color:#f92672">.</span><span style="color:#a6e22e">ConsentCategory</span><span style="color:#f92672">.</span><span style="color:#a6e22e">PERSONALIZATION</span><span style="color:#f92672">});</span>
-</span></span></code></pre></div><figure><img src="/images/platforms/android/consent-categories.gif" width="320" height="623"/><figcaption><p>Consent Categories</p>
+</span></span></code></pre></div><figure><a class="slb" href="/images/platforms/android/consent-categories.gif"><img src="/images/platforms/android/consent-categories.gif" width="320" height="623"/>
+    </a><figcaption><p>Consent Categories</p>
         </figcaption>
 </figure>
 
@@ -815,6 +817,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -826,7 +836,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

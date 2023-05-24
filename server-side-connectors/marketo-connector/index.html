@@ -236,6 +236,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/airship-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".airship-connector">Airship</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/algolia-insights-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".algolia-insights-connector">Algolia Insights</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-advertising-dsp-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-advertising-dsp-connector">Amazon Advertising DSP</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a>
@@ -965,12 +967,14 @@ API User must have permissions for &lsquo;Read-Write Lead&rsquo;, &lsquo;Read/Ex
 <h3 id="step-1-define-attributes-and-audience-conditions"><strong>Step 1: Define Attributes and Audience conditions.</strong></h3>
 <p>Create a new <a href="/server-side/visitor-stitching/visitor-id-attribute/">Visitor Id attribute</a> to store the users email address. It will be the unique value associated with the lead.</p>
 <p>NOTE: Although it is possible to create a lead solely from an email address, it would best to capture more information to associate with the lead. In step 6, we will be passing this &ldquo;Visitor Email&rdquo; visitor id attribute along with three <a href="https://community.tealiumiq.com/t5/AudienceStream/AudienceStream-Trait-Attribute-and-Set-Trait-Enrichment/ta-p/12228">trait attributes</a> for First name, Last name and Company.</p>
-<figure><img src="/images/server-side-connectors/no-title-598ib6f6a9cf62f594e5.png"/><figcaption><p>1._visit_email_id.png</p>
+<figure><a class="slb" href="/images/server-side-connectors/no-title-598ib6f6a9cf62f594e5.png"><img src="/images/server-side-connectors/no-title-598ib6f6a9cf62f594e5.png"/>
+    </a><figcaption><p>1._visit_email_id.png</p>
         </figcaption>
 </figure>
 <p>Then <a href="/server-side/audiences/create-an-audience/">create a new audience</a> titled &ldquo;Shoe Fans&rdquo; and set up logic so that all visitors with the &ldquo;Shoe Fan Badge&rdquo;, and a true &ldquo;Known User&rdquo; <a href="/server-side/attributes/data-types/boolean/">Flag attribute</a> will be added to the audience</p>
 <p>NOTE: &ldquo;Known user&rdquo; flag was created to determine whether or not we know who the user is. If there is an email address associated with user, it is set to true. If no email address, it is set to false. It is a necessary condition because we cannot convert a site user into a lead if we do not know who they are.</p>
-<figure><img src="/images/server-side-connectors/no-title-599i856f68983b98a19b.png"/><figcaption><p>2._audinece_config.png</p>
+<figure><a class="slb" href="/images/server-side-connectors/no-title-599i856f68983b98a19b.png"><img src="/images/server-side-connectors/no-title-599i856f68983b98a19b.png"/>
+    </a><figcaption><p>2._audinece_config.png</p>
         </figcaption>
 </figure>
 <h3 id="step-2create-a-custom-service-in-marketo">**Step 2:**<strong>Create a Custom Service in Marketo</strong></h3>
@@ -988,23 +992,27 @@ API User must have permissions for &lsquo;Read-Write Lead&rsquo;, &lsquo;Read/Ex
 <h3 id="step-3-add-the-marketo-connector"><strong>Step 3: Add the Marketo Connector</strong></h3>
 <br>
 <p>Navigate to the &ldquo;Act&rdquo; tab, then click onto &ldquo;Connectors&rdquo;. Next, click the &ldquo;+ Add Connector&rdquo; button to select from a list of available connectors. Click onto &ldquo;Marketo&rdquo;, then click the &ldquo;+ Add Connector&rdquo; button once more.</p>
-<figure><img src="/images/server-side-connectors/no-title-600id532f9574bd6bf0a.png"/><figcaption><p>4._add_marketo_connect.png</p>
+<figure><a class="slb" href="/images/server-side-connectors/no-title-600id532f9574bd6bf0a.png"><img src="/images/server-side-connectors/no-title-600id532f9574bd6bf0a.png"/>
+    </a><figcaption><p>4._add_marketo_connect.png</p>
         </figcaption>
 </figure>
 <h4 id="configure-rest-api-fieldsbr"><strong>Configure REST API Fields</strong><br></h4>
 <p>You should now have obtained all the information needed to properly set up your connector. Navigate the the &ldquo;Configure&rdquo; tab of your connector window to copy and paste the values obtained from step 3, along with your title and any relevant notes. Click &ldquo;Next&rdquo;.</p>
-<figure><img src="/images/server-side-connectors/no-title-601ibacd72591bbcae2c.png" width="345" height="611"/><figcaption><p>5._input_value.png</p>
+<figure><a class="slb" href="/images/server-side-connectors/no-title-601ibacd72591bbcae2c.png"><img src="/images/server-side-connectors/no-title-601ibacd72591bbcae2c.png" width="345" height="611"/>
+    </a><figcaption><p>5._input_value.png</p>
         </figcaption>
 </figure>
 <h4 id="configure-actionsbr"><strong>Configure Actions</strong><br></h4>
 <p>It is in this window where we will actually give the connector instructions on what to do. In the &ldquo;Actions&rdquo; dropdown, select the &ldquo;Create or Update a lead&rdquo; option. Then select the &ldquo;Shoes Fans&rdquo; audience, &ldquo;Create only&rdquo; for our &ldquo;Update Strategy&rdquo; and &ldquo;Email&rdquo; for our &ldquo;Lead Lookup Filter&rdquo;.</p>
 <p>Since a lead is only as good as the information associated with it, we will need to map the appropriate data and values. Under &ldquo;Lead Data to Set&rdquo; we will select the attribute created in step 1 along with any others, and map them to their corresponding values.</p>
-<figure><img src="/images/server-side-connectors/no-title-602i20e31d2f64b1d3a3.png"/><figcaption><p>6._values.png</p>
+<figure><a class="slb" href="/images/server-side-connectors/no-title-602i20e31d2f64b1d3a3.png"><img src="/images/server-side-connectors/no-title-602i20e31d2f64b1d3a3.png"/>
+    </a><figcaption><p>6._values.png</p>
         </figcaption>
 </figure>
 <h3 id="step-4-test--trace-configurationbr"><strong>Step 4: Test / Trace Configuration</strong><br></h3>
 <p>We have just finished setting up our configuration. Now, we need to check to make sure we did it properly. The best way to go about testing is to run a <a href="/server-side/connectors/trace/Manage/">trace</a> to make sure your events are handled properly and to check your Marketo dashboard to make sure your lead was created with the proper information.<br></p>
-<figure><img src="/images/server-side-connectors/no-title-603i22661cabc02f8459.png" width="607" height="399"/><figcaption><p>7._trace.png</p>
+<figure><a class="slb" href="/images/server-side-connectors/no-title-603i22661cabc02f8459.png"><img src="/images/server-side-connectors/no-title-603i22661cabc02f8459.png" width="607" height="399"/>
+    </a><figcaption><p>7._trace.png</p>
         </figcaption>
 </figure>
 <p>The image above shows 3 main things:</p>
@@ -1013,11 +1021,13 @@ API User must have permissions for &lsquo;Read-Write Lead&rsquo;, &lsquo;Read/Ex
 <li>My action was triggered (&ldquo;Marketo- Create leads&rdquo;)</li>
 <li>My action was processed successfully. ( &ldquo;1 action processed/ 0 actions failed&rdquo;)</li>
 </ol>
-<figure><img src="/images/server-side-connectors/no-title-604ie0894aac690e17b4.png" width="610" height="373"/><figcaption><p>&quot;1 Action Processed/ 0 Actions Failed&quot; - Expanded</p>
+<figure><a class="slb" href="/images/server-side-connectors/no-title-604ie0894aac690e17b4.png"><img src="/images/server-side-connectors/no-title-604ie0894aac690e17b4.png" width="610" height="373"/>
+    </a><figcaption><p>&quot;1 Action Processed/ 0 Actions Failed&quot; - Expanded</p>
         </figcaption>
 </figure>
 <h4 id="step-5verify-in-marketo">**Step 5:**<strong>Verify in Marketo</strong></h4>
-<figure><img src="/images/server-side-connectors/no-title-605ibc307b19ebb316f6.png"/><figcaption><p>Successful lead result</p>
+<figure><a class="slb" href="/images/server-side-connectors/no-title-605ibc307b19ebb316f6.png"><img src="/images/server-side-connectors/no-title-605ibc307b19ebb316f6.png"/>
+    </a><figcaption><p>Successful lead result</p>
         </figcaption>
 </figure>
 <p><strong>Summary:</strong><br></p>
@@ -1550,6 +1560,7 @@ No</button>
   
   
   
+  
 
 </ul>
 
@@ -1656,6 +1667,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1667,7 +1686,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

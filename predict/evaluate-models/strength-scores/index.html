@@ -328,14 +328,16 @@ var utag_data = {
 <h2 id="strength-scores">Strength scores</h2>
 <p>The strength scores for each trained version of each model provides a rating of the quality (strength) of the training and the model that resulted from the training. Models not yet deployed are not yet assigned a strength score. Strength scores are listed for both training models in the <strong>Training Details</strong> screen and for deployed models in the <strong>Live Performance</strong> screen.</p>
 <p><strong>Strength scores for trained models</strong></p>
-<figure><img src="/images/predict/predictv2-training-strength-score.png"
+<figure><a class="slb" href="/images/predict/predictv2-training-strength-score.png"><img src="/images/predict/predictv2-training-strength-score.png"
          alt="predictV2_training_strength_score.png"
          title="predictV2_training_strength_score.png"/>
+    </a>
 </figure>
 <p><strong>Strength scores for deployed models</strong></p>
-<p><figure><img src="/images/predict/predictv2-live-scores.png"
+<p><figure><a class="slb" href="/images/predict/predictv2-live-scores.png"><img src="/images/predict/predictv2-live-scores.png"
          alt="predictV2_live_scores.png"
          title="predictV2_live_scores.png"/>
+    </a>
 </figure>Each retraining represents a new and separate event, which makes this type of strength rating static and specific to each version. The rating for a version does not change over time.</p>
 <h3 id="recall">Recall</h3>
 <p>The proportion of true cases in the data that were correctly selected by the model. For example, measuring the model’s ability not to miss high-value visitors. Recall is a helpful metric to reduce false negatives and can be thought of as the capture rate for the behavior you are trying to predict.</p>
@@ -928,6 +930,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -939,7 +949,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

@@ -716,8 +716,6 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/xandr-formerly-appnexus-seller-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-formerly-appnexus-seller-tag">Xandr (formerly AppNexus) Seller</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/client-side-tags/xandr-formerly-appnexus-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-formerly-appnexus-tag">Xandr (formerly AppNexus) Tag Setup Guide</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/xandr-universal-pixel-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".xandr-universal-pixel-tag">Xandr Universal Pixel</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/yahoo-id-cookie-sync-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".yahoo-id-cookie-sync-tag">Yahoo ID Cookie Sync</a>
@@ -784,7 +782,7 @@ var utag_data = {
 <li>Conversion Pixel (legacy)</li>
 </ul>
 <h2 id="tag-configuration">Tag Configuration</h2>
-<p>First, go to the Tealium tag marketplace and add the Facebook Pixel tag to your profile. (<a href="/iq-tag-management/tags/tag-templates/manage/">Learn more</a>).</p>
+<p>First, go to the Tealium tag marketplace and add the Facebook Pixel tag to your profile. (<a href="/iq-tag-management/templates/manage/">Learn more</a>).</p>
 <p class="tip"><i class="fa fa-info-circle"></i>The best practice is to configure a single tag instance per pixel ID for standard PageView and event tracking.</p>
 <p>After adding the tag, configure the settings described in the following table:</p>
 <table>
@@ -1036,9 +1034,10 @@ For example, if you want to trigger the <strong>Purchase</strong> event when <co
 <h3 id="custom-events"><strong>Custom Events</strong></h3>
 <p>For custom events, select <strong>Custom</strong> and enter a name for the custom event.</p>
 <p>In this following example the custom event &ldquo;InboundLead&rdquo; will be triggered when the variable <code>event_name</code> equals <code>inbound_lead_event</code>.</p>
-<figure><img src="/images/client-side-tags/custom-event.png"
+<figure><a class="slb" href="/images/client-side-tags/custom-event.png"><img src="/images/client-side-tags/custom-event.png"
          alt="custom event"
          title="custom event"/>
+    </a>
 </figure>
 <p>To edit a custom event, single click on the destination input field to edit the event name directly. The values are entered in the form: <code>{VARIABLE_VALUE}:{DESTINATION_EVENT}</code>.</p>
 <ul>
@@ -1528,7 +1527,7 @@ For a <strong>Custom</strong> parameter, enter a name to identify the parameter.
 <li>This setting will fire event tracking only for the pixel IDs added for that tag.</li>
 <li>If your Facebook Pixel in Tealium iQ was added before March of 2018, you may not be able to take advantage of the trackSingle feature.
 <ul>
-<li>In this case, <a href="/iq-tag-management/tags/tag-templates/about/">update your Facebook tag template</a> to the latest version. Note that the trackSingle setting is set to <code>true</code> as default.</li>
+<li>In this case, <a href="/iq-tag-management/templates/about/">update your Facebook tag template</a> to the latest version. Note that the trackSingle setting is set to <code>true</code> as default.</li>
 <li>You must map to <code>track_single</code> and set the value to <code>false</code> to override and disable this feature.</li>
 </ul>
 </li>
@@ -1564,9 +1563,10 @@ For a <strong>Custom</strong> parameter, enter a name to identify the parameter.
 </li>
 <li>
 <p>Set the <strong>Query String</strong> to <code>id={{FACEBOOK_PIXEL_ID}}&amp;ev=PageView&amp;noscript=1&quot;</code>.<br>
-<figure><img src="/images/client-side-tags/facebook-tag-generic-tag-pixel.png"
+<figure><a class="slb" href="/images/client-side-tags/facebook-tag-generic-tag-pixel.png"><img src="/images/client-side-tags/facebook-tag-generic-tag-pixel.png"
          alt="facebook tag generic pixel"
          title="facebook tag generic pixel" width="487" height="620"/>
+    </a>
 </figure></p>
 </li>
 <li>
@@ -2152,7 +2152,6 @@ No</button>
   
   
   
-  
 
 </ul>
 
@@ -2259,6 +2258,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -2270,7 +2277,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

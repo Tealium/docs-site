@@ -231,6 +231,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/platforms/remote-commands/integrations/firebase/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-firebase">Firebase</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/integrations/fullstory/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-fullstory">FullStory</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/platforms/remote-commands/integrations/kochava/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-kochava">Kochava</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/platforms/remote-commands/integrations/skadnetwork/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-skadnetwork">SKAdNetwork</a>
@@ -302,7 +304,8 @@ A tag in iQ Tag Management that offers configuration options for the vendor&rsqu
 </ul>
 <h2 id="how-it-works">How it works</h2>
 <p>The following diagram illustrates how vendor integrations and custom remote commands trigger functionality in your native app. Beginning with a visitor purchase tracked in your app, the Tealium SDK triggers remote commands in apps like Firebase, Facebook, or your own custom remote command. The remote command can trigger any native method available in the SDK, such as logging a purchase in Firebase, tracking an event in Facebook App Events, or displaying a custom notification in your app.</p>
-<figure><img src="/images/platforms/remote-commands/remote_commands_data_flow_diagram.png" width="600" height="1070"/><figcaption><p>Remote command data flow diagram</p>
+<figure><a class="slb" href="/images/platforms/remote-commands/remote_commands_data_flow_diagram.png"><img src="/images/platforms/remote-commands/remote_commands_data_flow_diagram.png" width="600" height="1070"/>
+    </a><figcaption><p>Remote command data flow diagram</p>
         </figcaption>
 </figure>
 
@@ -725,6 +728,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -736,7 +747,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

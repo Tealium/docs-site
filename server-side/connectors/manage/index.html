@@ -514,6 +514,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -831,9 +833,10 @@ var utag_data = {
           
           <h2 id="turn-a-connector-or-action-on-or-off">Turn a connector or action on or off</h2>
 <p>Use the <strong>On/Off</strong> toggle to turn on or off a connector or action. If you turn off a connector, all associated actions for that connector are also turned off.</p>
-<figure><img src="/images/server-side/toggle-on-off-connector-workflow.png"
+<figure><a class="slb" href="/images/server-side/toggle-on-off-connector-workflow.png"><img src="/images/server-side/toggle-on-off-connector-workflow.png"
          alt="Toggle On Off Connector Workflow"
          title="Toggle On Off Connector Workflow"/>
+    </a>
 </figure>
 
           
@@ -842,13 +845,17 @@ var utag_data = {
 <p>Use the following steps to duplicate a connector and the actions associated with the connector:</p>
 <ol>
 <li>Navigate to the connector, expand the menu, and click <strong>Duplicate</strong>.<br>
-<img src="/images/server-side/connectorduplicateoptions.png" 
+<figure><a class="slb" href="/images/server-side/connectorduplicateoptions.png"><img src="/images/server-side/connectorduplicateoptions.png"
          alt="Connector Duplicate Options"
-         title="Connector Duplicate Options"/><br>
+         title="Connector Duplicate Options"/>
+    </a>
+</figure><br>
 A new, identical connector, including the associated actions, is shown in the list of connectors. The connector name is appended with &rsquo; - copy&rsquo;.<br>
-<img src="/images/server-side/connectorduplicatecopy.png" 
+<figure><a class="slb" href="/images/server-side/connectorduplicatecopy.png"><img src="/images/server-side/connectorduplicatecopy.png"
          alt="Connector Duplicate Copy"
-         title="Connector Duplicate Copy"/></li>
+         title="Connector Duplicate Copy"/>
+    </a>
+</figure></li>
 <li>(Recommended) Expand the menu again and click <strong>Edit</strong>.</li>
 <li>Rename the connector and click <strong>Done</strong>.</li>
 <li>(Optional) To add or edit actions associated with the new connector, click <strong>+ Add Action</strong>.</li>
@@ -882,9 +889,10 @@ A confirmation message appears.</li>
 <ol>
 <li>Navigate to <strong>Connectors</strong>.</li>
 <li>Expand the menu for the connector and click <strong>Get Connector ID</strong>.<br>
-<figure><img src="/images/server-side/connectormenu.png"
+<figure><a class="slb" href="/images/server-side/connectormenu.png"><img src="/images/server-side/connectormenu.png"
          alt="Connector Menu"
          title="Connector Menu"/>
+    </a>
 </figure></li>
 </ol>
 
@@ -896,9 +904,10 @@ A confirmation message appears.</li>
 <li>Navigate to <strong>Connectors</strong>.</li>
 <li>Select an action, then click <strong>Details</strong>.</li>
 <li>Click the copy icon for the <strong>Action ID</strong>.<br>
-<figure><img src="/images/server-side/actioniddetails.png"
+<figure><a class="slb" href="/images/server-side/actioniddetails.png"><img src="/images/server-side/actioniddetails.png"
          alt="Action ID Details"
          title="Action ID Details"/>
+    </a>
 </figure></li>
 </ol>
 
@@ -1388,6 +1397,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1399,7 +1416,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

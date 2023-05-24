@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -826,67 +828,109 @@ var utag_data = {
 <div class="mv2 mid-gray fn w-100">
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to use the HTTP API - Advanced data source to create an HTTP endpoint to collect real-time event data with support for flattening complex objects.
+      This article describes how to use the HTTP API - Advanced data source.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
-<p>The HTTP API - Advanced data source is a generic data source that can conditionally parse incoming request bodies. This data source offers an HTTP endpoint to collect real-time event data with support for flattening complex objects. The endpoint is flexible and can be implemented as a tracking pixel in a web page or as a JSON API in your custom application.</p>
-<p>This data source is similar to the HTTP API data source, but with additional support for complex JSON objects. Events sent using HTTP POST with a complex JSON object will be flattened as follows:</p>
+<p>The HTTP API - Advanced data source is a generic data source that can conditionally parse incoming request bodies. This data source offers an HTTP endpoint that allows you to collect real-time event data in a single HTTP call with support for complex objects flattening and batched events. The endpoint is flexible and can be implemented as a tracking pixel in a web page or as a JSON API in your custom application.</p>
+<p>This data source is similar to the HTTP API data source, but with additional support for complex JSON objects and batching. Events sent using HTTP POST with a complex JSON object will be flattened as follows:</p>
 <ul>
 <li>The event attributes names are created by lower-casing and joining the object properties with an underscore (&quot;_&quot;). For example:<br>
 Source data: <code>&quot;alpha&quot; : { &quot;beta&quot; : true }</code><br>
 Flattened event attribute: <code>&quot;alpha_beta&quot; : true</code></li>
-<li>Numbers, Booleans, and strings inside of an array are preserved.</li>
+<li>Numbers, booleans, and strings inside of an array are preserved.</li>
 <li>Objects and arrays inside of an array are stringified.</li>
 </ul>
 <p>Use this data source type when you need to send data in real-time and cannot modify the request to meet format requirements for the standard Tealium Collect endpoint.</p>
 <h2 id="batched-events">Batched events</h2>
-<p>The HTTP API - Advanced data source HTTP endpoint supports multiple events in a single request. These events are called batched events. For batched events, you receive one response code based on the status of all records. If a single record/event fails, only that event fails, the rest is processed.</p>
+<p>The HTTP API - Advanced data source HTTP endpoint supports multiple events in a single request. These events are called batched events. For batched events, you receive one response code based on the status of all records. If a single record/event fails, only that event fails and the rest is processed.</p>
 <h2 id="requirements">Requirements</h2>
 <ul>
 <li>Tealium EventStream or Tealium AudienceStream</li>
 </ul>
 <h2 id="request-format">Request format</h2>
-<p>The HTTP API - Advanced data source supports both the GET and POST methods.</p>
-<h3 id="api-endpoint">API endpoint</h3>
+<p>The HTTP API - Advanced data source supports the POST method. For GET method requests, use the <a href="/platforms/http-api/endpoint/">HTTP API</a>.</p>
+<h2 id="api-endpoint">API endpoint</h2>
 <p>Use the following endpoint to access the HTTP API - Advanced data source:</p>
 <pre tabindex="0"><code>https://collect.tealiumiq.com/integration/event/ACCOUNT/PROFILE/DATA_SOURCE_KEY?tealium_trace_id=TRACEID
-</code></pre><h3 id="supported-parameters">Supported parameters</h3>
-<p>The following default parameters are supported in each request:</p>
+</code></pre><p>The use of the <code>tealium_trace_id</code> query parameter is optional and should be used only when debugging the Trace tool. For more information about using a trace, see <a href="/server-side/connectors/trace/about/">About Trace</a>.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>To find your data source key, navigate to the <strong>Data Sources</strong> dashboard, click the data source you want to use, and copy the key from the <strong>Data Source Key</strong> field.</p>
+<h2 id="visitor-identifiers">Visitor identifiers</h2>
+<p>AudineceStream tracks visitors using a combination of:</p>
+<ul>
+<li><strong>Primary Visitor ID</strong>: Used to track the visitor anonymously.</li>
+<li><strong>Secondary Visitor ID</strong>: Sent additionally once the visitor is known.</li>
+</ul>
+<h3 id="primary-visitor-id">Primary Visitor ID</h3>
+<p>The primary visitor ID is an anonymous identifier used by AudienceStream to associate a visitor between events and visits. This value should be a GUID (Globally Unique Identifier) and should be consistent for the visitor.</p>
+<p>In the HTTP API Advanced webhook, the key name of the primary visitor ID is <code>tealium_visitor_id</code>.</p>
+<p>Depending on your business case, you can use anonymous visitors or known visitors.</p>
+<h4 id="anonymous-visitors">Anonymous visitors</h4>
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th>Description</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>tealium_event</code></td>
-<td>(Optional) The name of the event.</td>
-</tr>
-<tr>
-<td><code>tealium_trace_id</code></td>
-<td>(Optional) For use with Trace. Must be set as a query string parameter.<br> Example: <code>?tealium_trace_id=abc123456</code></td>
-</tr>
-<tr>
-<td><code>tealium_visitor_id</code></td>
-<td>(Optional) For use with Tealium AudienceStream. <p class="note"><i class="fa fa-exclamation-triangle"></i>If <code>tealium_visitor_id</code> is not set in a batched event request, all events in the batch get the same generated anonymous ID value. This implies that the events will be tied together in the same visitor profile, regardless of visitor stitching.</p></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
+<td>Required</td>
+<td>N/A</td>
 </tr>
 </tbody>
 </table>
-<h3 id="adding-the-data-source">Adding the data source</h3>
+<p>If you are using Tealium iQ Tag Management and sending API calls server-to-server to enrich anonymous visitor profiles, then the value of the <code>tealium_visitor_id</code> must match the value in the <code>utag_main_v_id</code> cookie. For more information about the built-in variables from utag.js, see <a href="/platforms/javascript/data-layer/">JavaScript (Web) &gt; Data Layer</a>.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If you are using Adobe Launch or Google Tag Manager, then the value needs to match the <code>v</code> part of the <strong>TEAL</strong> cookie.</p>
+<h4 id="known-visitors-server-to-server">Known visitors server-to-server</h4>
+<table>
+<thead>
+<tr>
+<th>AudienceStream</th>
+<th>EventStream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Required</td>
+<td>Recommended</td>
+</tr>
+</tbody>
+</table>
+<p>When sending data for known visitors (when a value exists for a Visitor ID attribute such as <code>email_address</code>), include a concatenation of the account, profile, visitor ID attribute ID and value and the value in the <code>tealium_visitor_id</code> parameter.</p>
+<p>You can find the visitor ID attribute ID next to the attribute name in the attribute list or within the expanded details. For more information, see <a href="/server-side/attributes/about/#attribute-ids">About Attributes</a>.</p>
+<p>For example, for the following values:</p>
+<ul>
+<li>Account name: <code>my-account</code></li>
+<li>Profile: <code>main</code></li>
+<li>Visitor ID attribute ID: <code>7688</code></li>
+<li>Customer number value you want to pass: <code>45653454</code></li>
+</ul>
+<p>you would concatenate these values in the following way:</p>
+<pre tabindex="0"><code>&#34;tealium_visitor_id&#34;:&#34;__my-account_main__7688_45653454__&#34;
+</code></pre><p class="note"><i class="fa fa-exclamation-triangle"></i>Ensure that your <code>tealium_visitor_id</code> is formatted correctly before proceeding. Incorrectly formed parameters will cause errors in AudienceStream and may not track properly.</p>
+<p>Example JSON:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_account&#34;</span>    : <span style="color:#e6db74">&#34;my-account&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_profile&#34;</span>    : <span style="color:#e6db74">&#34;main&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_event&#34;</span>      : <span style="color:#e6db74">&#34;user_login&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;email_address&#34;</span>      : <span style="color:#e6db74">&#34;user@example.com&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span> : <span style="color:#e6db74">&#34;__my-account_main__7688_45653454__&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>Whether you use anonymous visitors or known visitors, if your API calls do not contain a consistent <code>tealium_visitor_id</code>, each event will generate a new visit and visitor stitching will not be possible.</p>
+<h3 id="secondary-id">Secondary ID</h3>
+<p>When using AudienceStream, you can pass a known visitor identifier attribute, a secondary ID, with a tracking call. For example, <code>email_address</code> or <code>login_id</code>.</p>
+<p>A visitor identifier is also needed if you are using EventStream and need to provide an ID to a vendor connector.</p>
+<p>To learn more about creating visitor identifiers, see <a href="/server-side/visitor-stitching/visitor-id-attribute/">Visitor ID Attribute</a>.</p>
+<h2 id="adding-the-data-source">Adding the data source</h2>
 <p>This section provides guidance on how to add the HTTP API - Advanced data source and create a webhook.</p>
 <p>Add the HTTP API - Advanced data source before proceeding, then copy the generated endpoint for use in an external system.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The HTTP API - Advanced endpoint is not active until you add the data source and publish the profile.</p>
 <p>Related: <a href="/server-side/data-sources/about-data-sources/">How to Add a Data Source</a></p>
-<h3 id="response-codes">Response codes</h3>
+<h2 id="response-codes">Response codes</h2>
 <table>
 <thead>
 <tr>
@@ -911,64 +955,80 @@ Flattened event attribute: <code>&quot;alpha_beta&quot; : true</code></li>
 </table>
 <h2 id="examples">Examples</h2>
 <p>The HTTP API - Advanced Incoming Webhook is useful when you want to send an HTTP API Advanced call using Javascript, bash scripting or curl.</p>
-<h3 id="json-object">JSON Object</h3>
-<p>By default a JSON array will be treated as several events; so:</p>
+<h3 id="json-array-as-payload">JSON array as payload</h3>
+<p>If you pass a JSON array as the entire payload, it will be treated as several events (batching).</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>[
 </span></span><span style="display:flex;"><span>  {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Id&#34;</span>: <span style="color:#e6db74">&#34;1&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span>: <span style="color:#e6db74">&#34;503126878d17fcd6bde7df320ff6eb7c278a1c42f&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;my_string&#34;</span>: <span style="color:#e6db74">&#34;12345a&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Detail&#34;</span>: {
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Name&#34;</span>: <span style="color:#e6db74">&#34;Event A&#34;</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  },
 </span></span><span style="display:flex;"><span>  {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Id&#34;</span>: <span style="color:#e6db74">&#34;2&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span>: <span style="color:#e6db74">&#34;e0f7e1bb7c5efa1afeba05fc4ddf93aa86caee629&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;my_string&#34;</span>: <span style="color:#e6db74">&#34;12345b&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Detail&#34;</span>: {
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Name&#34;</span>: <span style="color:#e6db74">&#34;Event B&#34;</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>]
-</span></span></code></pre></div><p>Will be transformed into several events:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span> <span style="color:#75715e">// First Event
+</span></span></code></pre></div><p>This payload will be transformed into several events:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#75715e">// First Event
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Id&#34;</span>: <span style="color:#e6db74">&#34;1&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span>: <span style="color:#e6db74">&#34;503126878d17fcd6bde7df320ff6eb7c278a1c42f&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;my_string&#34;</span>: <span style="color:#e6db74">&#34;12345a&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;detail_name&#34;</span>:  <span style="color:#e6db74">&#34;Event A&#34;</span>
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Second Event
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Id&#34;</span>: <span style="color:#e6db74">&#34;2&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span>: <span style="color:#e6db74">&#34;e0f7e1bb7c5efa1afeba05fc4ddf93aa86caee629&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;my_string&#34;</span>: <span style="color:#e6db74">&#34;12345b&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;detail_name&#34;</span>:  <span style="color:#e6db74">&#34;Event B&#34;</span>
 </span></span><span style="display:flex;"><span>  }
-</span></span></code></pre></div><h4 id="before-flattening">Before flattening</h4>
+</span></span></code></pre></div><h3 id="json-array-as-key-value-in-a-payload">JSON array as key value in a payload</h3>
+<p>If you pass an array as the value of a key in the payload, the array will be flattened into an array of strings.</p>
+<p>For example, the following array:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;events&#34;</span>: [
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;1&#34;</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Event A&#34;</span>
-</span></span><span style="display:flex;"><span>        },
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;2&#34;</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Event B&#34;</span>
-</span></span><span style="display:flex;"><span>        },
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;3&#34;</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Event C&#34;</span>
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span>: <span style="color:#e6db74">&#34;503126878d17fcd6bde7df320ff6eb7c278a1c42f&#34;</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&#34;my_string&#34;</span>: <span style="color:#e6db74">&#34;12345a&#34;</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&#34;detail_name&#34;</span>: <span style="color:#e6db74">&#34;Event A&#34;</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&#34;events&#34;</span>: [
+</span></span><span style="display:flex;"><span>       {
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;1&#34;</span>,
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Event A&#34;</span>
+</span></span><span style="display:flex;"><span>       },
+</span></span><span style="display:flex;"><span>       {
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;2&#34;</span>,
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Event B&#34;</span>
+</span></span><span style="display:flex;"><span>       },
+</span></span><span style="display:flex;"><span>       {
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;3&#34;</span>,
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Event C&#34;</span>
+</span></span><span style="display:flex;"><span>       }
+</span></span><span style="display:flex;"><span>   ]
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h4 id="after-flattening">After flattening</h4>
+</span></span></code></pre></div><p>will be flattened into the following array of strings:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;events&#34;</span>: [
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span>: <span style="color:#e6db74">&#34;503126878d17fcd6bde7df320ff6eb7c278a1c42f&#34;</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&#34;my_string&#34;</span>: <span style="color:#e6db74">&#34;12345a&#34;</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&#34;detail_name&#34;</span>: <span style="color:#e6db74">&#34;Event A&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">&#34;events&#34;</span>: [
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;{\&#34;id\&#34;:\&#34;1\&#34;,\&#34;name\&#34;:\&#34;Event A\&#34;}&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;{\&#34;id\&#34;:\&#34;2\&#34;,\&#34;name\&#34;:\&#34;Event B\&#34;}&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;{\&#34;id\&#34;:\&#34;3\&#34;,\&#34;name\&#34;:\&#34;Event C\&#34;}&#34;</span>
 </span></span><span style="display:flex;"><span>    ]
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="complex-object">Complex object</h3>
+</span></span></code></pre></div><p>For complex business cases or requirements, consider using the <a href="/server-side/functions/data-transformation-functions/about/">Tealium Event Transformation functions</a> in addition to, or instead of, the HTTP API - Advanced endpoint.</p>
+<h2 id="complex-object">Complex object</h2>
 <p>This section provides examples of input code and the resulting (flattened) output for complex objects.</p>
-<h4 id="before-flattening-1">Before flattening</h4>
+<h3 id="before-flattening">Before flattening</h3>
 <p>The following purchase event example shows how client-side e-commerce events with complex objects get flattened.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span>: <span style="color:#e6db74">&#34;503126878d17fcd6bde7df320ff6eb7c278a1c42f&#34;</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&#34;my_string&#34;</span>: <span style="color:#e6db74">&#34;12345a&#34;</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&#34;detail_name&#34;</span>: <span style="color:#e6db74">&#34;Event A&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;ecommerce&#34;</span>: {
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;event&#34;</span>: <span style="color:#e6db74">&#34;purchase&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;purchase&#34;</span>: {
@@ -996,9 +1056,12 @@ Flattened event attribute: <code>&quot;alpha_beta&quot; : true</code></li>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h4 id="after-flattening-1">After flattening</h4>
+</span></span></code></pre></div><h3 id="after-flattening">After flattening</h3>
 <p>After flattening, the purchase event becomes:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span>: <span style="color:#e6db74">&#34;503126878d17fcd6bde7df320ff6eb7c278a1c42f&#34;</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&#34;my_string&#34;</span>: <span style="color:#e6db74">&#34;12345a&#34;</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&#34;detail_name&#34;</span>: <span style="color:#e6db74">&#34;Event A&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ecommerce_event&#34;</span>: <span style="color:#e6db74">&#34;purchase&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ecommerce_purchase_customer_id&#34;</span>: <span style="color:#e6db74">&#34;8237572&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ecommerce_purchase_customer_email&#34;</span>: <span style="color:#e6db74">&#34;john.smith@example.com&#34;</span>,
@@ -1011,14 +1074,14 @@ Flattened event attribute: <code>&quot;alpha_beta&quot; : true</code></li>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ecommerce_purchase_order_total&#34;</span>: <span style="color:#e6db74">&#34;2549.00&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ecommerce_purchase_product_name&#34;</span>: [<span style="color:#e6db74">&#34;Product One&#34;</span>, <span style="color:#e6db74">&#34;Product Two&#34;</span>],
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ecommerce_purchase_product_id&#34;</span>: [<span style="color:#e6db74">&#34;PROD123&#34;</span>,<span style="color:#e6db74">&#34;PROD456&#34;</span>],
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ecommerce_purchase_product_price&#34;</span>: [<span style="color:#e6db74">&#34;12.00&#34;</span>,<span style="color:#e6db74">&#34;1250.00&#34;</span>]
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ecommerce_purchase_product_brand&#34;</span>: [<span style="color:#e6db74">&#34;Ralph Lauren&#34;</span>,<span style="color:#e6db74">&#34;Lucky&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ecommerce_purchase_product_price&#34;</span>: [<span style="color:#e6db74">&#34;12.00&#34;</span>,<span style="color:#e6db74">&#34;1250.00&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ecommerce_purchase_product_brand&#34;</span>: [<span style="color:#e6db74">&#34;Ralph Lauren&#34;</span>,<span style="color:#e6db74">&#34;Lucky&#34;</span>],
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ecommerce_purchase_product_category&#34;</span>: [<span style="color:#e6db74">&#34;Apparel&#34;</span>,<span style="color:#e6db74">&#34;Apparel&#34;</span>],
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ecommerce_purchase_product_quantity&#34;</span>: [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>]
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="limitations">Limitations</h2>
 <ul>
-<li>The maximum Payload size is 3.5 MB.</li>
+<li>The maximum payload size is 3.5 MB.</li>
 <li>The number of records that can be processed per request is limited by the payload size.</li>
 </ul>
 
@@ -1081,7 +1144,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  May 23, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1099,13 +1162,18 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#batched-events">Batched events</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#requirements">Requirements</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#request-format">Request format</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#api-endpoint">API endpoint</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#supported-parameters">Supported parameters</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#adding-the-data-source">Adding the data source</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#api-endpoint">API endpoint</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#visitor-identifiers">Visitor identifiers</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#primary-visitor-id">Primary Visitor ID</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#secondary-id">Secondary ID</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#adding-the-data-source">Adding the data source</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#response-codes">Response codes</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#examples">Examples</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#json-object">JSON Object</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#complex-object">Complex object</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#examples">Examples</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#json-array-as-payload">JSON array as payload</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#json-array-as-key-value-in-a-payload">JSON array as key value in a payload</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#complex-object">Complex object</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#before-flattening">Before flattening</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#after-flattening">After flattening</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#limitations">Limitations</a></li>
               </nav>
   </aside></nav>
@@ -1517,6 +1585,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1528,7 +1604,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

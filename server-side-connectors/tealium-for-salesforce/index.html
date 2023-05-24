@@ -236,6 +236,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/airship-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".airship-connector">Airship</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/algolia-insights-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".algolia-insights-connector">Algolia Insights</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-advertising-dsp-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-advertising-dsp-connector">Amazon Advertising DSP</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a>
@@ -732,9 +734,10 @@ var utag_data = {
 <p>To add this custom field to the Lead object:</p>
 <ol>
 <li>From <strong>Setup</strong>, go to <strong>Lead &gt; Fields</strong>.<br>
-<figure><img src="/images/server-side-connectors/salesforce-ui-edit-leas-custom-field.png"
+<figure><a class="slb" href="/images/server-side-connectors/salesforce-ui-edit-leas-custom-field.png"><img src="/images/server-side-connectors/salesforce-ui-edit-leas-custom-field.png"
          alt="Salesforce UI Edit Leas Custom Field"
          title="Salesforce UI Edit Leas Custom Field"/>
+    </a>
 </figure></li>
 <li>Add a new custom field of type Text with the following settings:</li>
 </ol>
@@ -877,9 +880,10 @@ var utag_data = {
 </li>
 <li>
 <p>Map <code>tealium_id</code> in the Lead column to <strong>Tealium ID</strong>&ldquo;in the Contact column.<br>
-<figure><img src="/images/server-side-connectors/tealium-salesforce-lead-conversion-mapping.png"
+<figure><a class="slb" href="/images/server-side-connectors/tealium-salesforce-lead-conversion-mapping.png"><img src="/images/server-side-connectors/tealium-salesforce-lead-conversion-mapping.png"
          alt="Mapping"
          title="Mapping"/>
+    </a>
 </figure></p>
 </li>
 <li>
@@ -896,9 +900,10 @@ var utag_data = {
 <li><strong>Disable Protocol Security</strong>: Enable</li>
 </ul>
 <h4 id="remote-site-example">Remote Site Example</h4>
-<figure><img src="/images/server-side-connectors/screen-shot-2016-10-04-at-2.32.44-pm.png"
+<figure><a class="slb" href="/images/server-side-connectors/screen-shot-2016-10-04-at-2.32.44-pm.png"><img src="/images/server-side-connectors/screen-shot-2016-10-04-at-2.32.44-pm.png"
          alt="Remote site example"
          title="Remote site example" width="538" height="342"/>
+    </a>
 </figure>
 <h3 id="add-salesforce-event-attributes">Add Salesforce Event Attributes</h3>
 <p>The Salesforce variables used in the Apex trigger code must be defined in Tealium as event attributes. You can see what data is coming from Salesforce by inspecting the trigger code or by <a href="/server-side/live-events-feeds/about-live-events/">using <strong>Live Events</strong> to see the data in real-time</a>.</p>
@@ -1434,6 +1439,7 @@ No</button>
   
   
   
+  
 
 </ul>
 
@@ -1540,6 +1546,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1551,7 +1565,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

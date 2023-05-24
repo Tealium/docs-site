@@ -444,7 +444,10 @@ To find the Quantum Metric tag, type <strong>Quantum</strong> in the Vendor Name
 <li>Go to your Quantum Metric tag in iQ Tag Management.</li>
 <li>Expand the details and click <strong>Edit</strong>.</li>
 <li>Set the Send Replay URL field to <strong>True</strong>.<br>
-<img src="/images/tech-partners/quantum-metric-tag-configuration.jpg" /></li>
+<figure><a class="slb" href="/images/tech-partners/quantum-metric-tag-configuration.jpg"><img src="/images/tech-partners/quantum-metric-tag-configuration.jpg"/>
+    </a><figcaption><p>Quantum Metric Tag Configuration.jpg</p>
+        </figcaption>
+</figure></li>
 <li>Define the following fields:
 <ul>
 <li>Time Stamp</li>
@@ -461,7 +464,9 @@ To find the Quantum Metric tag, type <strong>Quantum</strong> in the Vendor Name
 <ol>
 <li>In the Customer Data Hub left sidebar, click <strong>Event Stream &gt; Live Events</strong>.</li>
 <li>Scroll down to find the events from Quantum Metric by filtering for events containing the event attribute <code>quantum_metric_replay_url</code> or <code>quantum_metric_user_id</code>.<br>
-<img src="/images/tech-partners/quantummetric-live-events.png" /></li>
+<figure><a class="slb" href="/images/tech-partners/quantummetric-live-events.png"><img src="/images/tech-partners/quantummetric-live-events.png"/>
+    </a>
+</figure></li>
 <li>Use these event attributes to enrich the profile with other <a href="/server-side/attributes/about/">AudienceStream attributes</a>.</li>
 </ol>
 
@@ -509,7 +514,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  May 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -826,6 +831,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -837,7 +850,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

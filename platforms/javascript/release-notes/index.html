@@ -531,7 +531,7 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on old
 <p>A blocking tag is a tag that must run before any other tags run. When you enter the location for the <a href="https://community.tealiumiq.com/t5/Tealium-iQ/Tag-Configuration-Advanced-Settings/ta-p/13600">custom script source advanced setting</a> for a tag, this tag automatically becomes a blocking tag. This tag still loads asynchronously, but subsequent asynchronous scripts. For example, <code>utag.10.js</code> does not load until the blocking tag is complete.</p>
 <p><strong>Best Practice:</strong> If you want to load custom JavaScript for a tag but you do not want it to be a blocking tag, use the <a href="/iq-tag-management/tags/tealium-generic-tag/">Tealium Generic Tag</a> to load it.</p>
 <p><strong>Wait Flag Improvement</strong></p>
-<p>The <a href="/iq-tag-management/tags/tag-templates/manage/">Wait Flag is an advanced setting</a> within tag configuration.</p>
+<p>The <a href="/iq-tag-management/templates/manage/">Wait Flag is an advanced setting</a> within tag configuration.</p>
 <p>Tags whose <strong>Wait Flag</strong> is set to  &ldquo;No&rdquo; load and fire immediately after the <code>utag.js</code> file loads. Those tags, whose <strong>Wait Flag</strong> is set to &ldquo;No&rdquo;, that load sooner may fire sooner, regardless of their order in Tealium iQ. For example, if Tag 2 loads before Tag 1, and Tag 1 is placed higher in the Tags tab in Tealium iQ, Tag 2 may still fire sooner, despite the order they&rsquo;re in. Previously, tags executed in the order specified in Tealium iQ. These tags then waited for tags placed higher in the order to load before loading themselves.</p>
 <p>This means that you may now have a mixture of tags with their Wait Flag set to &lsquo;No&rsquo; and tags with their Wait Flag set to &lsquo;Yes&rsquo; in the same profile.</p>
 <p><strong>Control Load Rules-based Tracking for AJAX</strong></p>
@@ -1107,6 +1107,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1118,7 +1126,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

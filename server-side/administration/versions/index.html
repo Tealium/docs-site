@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -828,21 +830,24 @@ var utag_data = {
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
 <p>In the sidebar, click <strong>Server-Side Versions</strong> to view an easy-to-understand display of Customer Data Hub version history.</p>
-<figure><img src="/images/server-side/diff3.png"
+<figure><a class="slb" href="/images/server-side/diff3.png"><img src="/images/server-side/diff3.png"
          alt="Versions interface"
          title="Versions interface"/>
+    </a>
 </figure>
 <h3 id="dashboard-filters">Dashboard filters</h3>
 <p>The colored box in the <strong>Showing</strong> list shows the latest version on the chart (default).</p>
 <p>The <strong>All Revisions</strong> list on the right of the screen displays all recent revisions (default). You can modify the list by selecting a specific date range in the start and end date textfield boxes above and clicking <strong>Update Date Range</strong>.</p>
 <h3 id="version-options">Version options</h3>
 <p>Clicking on a version in the <strong>Showing</strong> list allows you to change to it a different version. Alternatively, you can click on <strong>Add Another Version</strong> to show additional versions onto the chart.</p>
-<figure><img src="/images/server-side/diff4.png"
+<figure><a class="slb" href="/images/server-side/diff4.png"><img src="/images/server-side/diff4.png"
          alt="Diff of versions"
          title="Diff of versions"/>
+    </a>
 </figure>
 <p>The following chart shows two versions selected. You can close a version at any time by clicking on the <strong>X</strong> icon on the right side of the colored box.</p>
-<figure><img src="/images/server-side/diff5.png"/><figcaption><p>Two versions</p>
+<figure><a class="slb" href="/images/server-side/diff5.png"><img src="/images/server-side/diff5.png"/>
+    </a><figcaption><p>Two versions</p>
         </figcaption>
 </figure>
 <p>Each version on the chart is shown by a different (random color) line, and each point on the line refers to a different revision.</p>
@@ -857,9 +862,10 @@ var utag_data = {
 <p>Clicking on <strong>Switch to This Revision</strong> will take you to an overview page for that revision in the Customer Data Hub.</p>
 <h2 id="using-the-diff-tool">Using the Diff tool</h2>
 <p>Select two or more revisions from the <strong>All Revisions</strong> list, then click <strong>Show Diff</strong> to see differences between the two revisions.</p>
-<figure><img src="/images/server-side/diff1a.png"
+<figure><a class="slb" href="/images/server-side/diff1a.png"><img src="/images/server-side/diff1a.png"
          alt="The Diff tool"
          title="The Diff tool"/>
+    </a>
 </figure>
 <p>You will be taken to a new screen showing the differences between the two revisions (if any).</p>
 <ul>
@@ -867,9 +873,10 @@ var utag_data = {
 <li>The <strong>Changed</strong> column shows what rule or attribute has been modified</li>
 <li>The <strong>Removed</strong> column shows what rule or attribute has been removed.</li>
 </ul>
-<figure><img src="/images/server-side/diff2.png"
+<figure><a class="slb" href="/images/server-side/diff2.png"><img src="/images/server-side/diff2.png"
          alt="Differences between versions"
          title="Differences between versions"/>
+    </a>
 </figure>
 <p>The diff screen is a read-only screen, and no changes can be made here.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>When clicking the <strong>Back</strong> link to return to the previous screen, you will lose any changes you made on the server-side versions chart. Alternatively, clicking the <strong>Back</strong> button on the browser will just take you to the Customer Data Hub Overview page, and you will still lose your changes on the server-side versions chart.</p>
@@ -1361,6 +1368,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1372,7 +1387,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -830,9 +832,10 @@ var utag_data = {
 <p>Usage reports show metrics for events, visitors, connectors, and functions. This data allows you to analyze how these features are used by various Tealium services in your account and how usage has varied over time. Usage reports also help estimate costs for data usage so that you can make informed decisions about your implementation.</p>
 <h2 id="view-usage-reports">View usage reports</h2>
 <p>Navigate to <strong>Data Supply Chain &gt; Usage Reports</strong> for an account-level view specific to the profile you are logged in as. The default dashboard view varies depending on which profile you are logged into.</p>
-<figure><img src="/images/server-side/usage-reports.png"
+<figure><a class="slb" href="/images/server-side/usage-reports.png"><img src="/images/server-side/usage-reports.png"
          alt="Usage reports"
          title="Usage reports"/>
+    </a>
 </figure>
 <h3 id="view-reports-for-a-profile">View reports for a profile</h3>
 <p>Use the following steps to view a usage report for a profile:</p>
@@ -842,9 +845,11 @@ var utag_data = {
 </li>
 <li>
 <p>Select a profile and report type from the drop-down lists. (Default is <strong>All Profiles</strong> and <strong>All Usage Reports.</strong>)<br>
-<img src="/images/server-side/usage-reports-report-selector.png" 
+<figure><a class="slb" href="/images/server-side/usage-reports-report-selector.png"><img src="/images/server-side/usage-reports-report-selector.png"
          alt="Report selector"
-         title="Report selector" width="479" height="221"/></p>
+         title="Report selector" width="479" height="221"/>
+    </a>
+</figure></p>
 </li>
 <li>
 <p>Click the calendar fields to select the date range for the report.<br>
@@ -857,9 +862,10 @@ The requested reports appear.</p>
 </ol>
 <h2 id="interpreting-reports">Interpreting reports</h2>
 <p>Reports are displayed as line graphs. The date range is plotted on the horizontal axis and the metric, such as the number of events and visitors, is plotted along the vertical axis and marked by dots. Clicking a dot displays the aggregate metric values and the day on which it was aggregated.</p>
-<figure><img src="/images/server-side/whiteui-data-access-usage-reports-click-dot-to-display-metrics.jpg"
+<figure><a class="slb" href="/images/server-side/whiteui-data-access-usage-reports-click-dot-to-display-metrics.jpg"><img src="/images/server-side/whiteui-data-access-usage-reports-click-dot-to-display-metrics.jpg"
          alt="Click Dot to Display Metrics"
          title="Click Dot to Display Metrics"/>
+    </a>
 </figure>
 <p>You may view reports as part of the <strong>All Usage Report</strong> or select individual report types from the drop-down list.</p>
 <h2 id="report-types">Report types</h2>
@@ -985,7 +991,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  May 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1418,6 +1424,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1429,7 +1443,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

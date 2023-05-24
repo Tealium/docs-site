@@ -236,6 +236,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/airship-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".airship-connector">Airship</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/algolia-insights-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".algolia-insights-connector">Algolia Insights</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-advertising-dsp-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-advertising-dsp-connector">Amazon Advertising DSP</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a>
@@ -898,15 +900,17 @@ var utag_data = {
 <h3 id="step-1-define-attributes-and-audience-conditions">Step 1: Define attributes and audience conditions.</h3>
 <p>Create a new <a href="/server-side/visitor-stitching/visitor-id-attribute/">Visitor ID attribute</a> to store the user&rsquo;s email address. It will be the unique value associated with the lead.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Although it is possible to create a lead solely from an email address, it would best to capture more information to associate with the lead. In Step 6, we will be passing this &ldquo;Visitor Email&rdquo; visitor ID attribute along with three trait attributes for first name, last name, and company.</p>
-<figure><img src="/images/server-side-connectors/no-title-598ib6f6a9cf62f594e5.png"
+<figure><a class="slb" href="/images/server-side-connectors/no-title-598ib6f6a9cf62f594e5.png"><img src="/images/server-side-connectors/no-title-598ib6f6a9cf62f594e5.png"
          alt="1._visit_email_id.png"
          title="1._visit_email_id.png"/>
+    </a>
 </figure>
 <p>Then <a href="/server-side/audiences/create-an-audience/">create a new audience</a> titled &ldquo;Shoe Fans&rdquo; and set up logic so that all visitors with the &ldquo;Shoe Fan Badge&rdquo;, and a true &ldquo;Known User&rdquo; f<a href="/server-side/attributes/data-types/boolean/">lag attribute</a> will be added to the audience.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>The &ldquo;Known User&rdquo; flag was created to determine whether or not we know who the user is. If there is an email address associated with user, it is set to true. If no email address, it is set to false. It is a necessary condition because we cannot convert a site user into a lead if we do not know who they are.</p>
-<figure><img src="/images/server-side-connectors/no-title-599i856f68983b98a19b.png"
+<figure><a class="slb" href="/images/server-side-connectors/no-title-599i856f68983b98a19b.png"><img src="/images/server-side-connectors/no-title-599i856f68983b98a19b.png"
          alt="2._audinece_config.png"
          title="2._audinece_config.png"/>
+    </a>
 </figure>
 <h3 id="step-2-log-in-to-the-marketo-dashboardhttpsloginmarketocom">Step 2: Log in to the <a href="https://login.marketo.com/">Marketo Dashboard</a>.</h3>
 <h3 id="step-3-create-a-custom-service">Step 3: Create a &ldquo;Custom Service&rdquo;.</h3>
@@ -921,28 +925,32 @@ var utag_data = {
 <p>To learn how to create a Custom Service, see Marketo&rsquo;s <a href="http://developers.marketo.com/documentation/rest/custom-service/">Custom Services documentation</a>.</p>
 <h3 id="step-4-add-the-marketo-connector-in-audiencestream">Step 4: Add the Marketo Connector in AudienceStream.</h3>
 <p>Navigate to the <strong>Act</strong> tab, then click onto <strong>Connectors</strong>. Next, click the <strong>+ Add Connector</strong> button to select from a list of available connectors. Click onto <strong>Marketo</strong>, then click the <strong>+ Add Connector</strong> button once more.</p>
-<figure><img src="/images/server-side-connectors/no-title-600id532f9574bd6bf0a.png"
+<figure><a class="slb" href="/images/server-side-connectors/no-title-600id532f9574bd6bf0a.png"><img src="/images/server-side-connectors/no-title-600id532f9574bd6bf0a.png"
          alt="4._add_marketo_connect.png"
          title="4._add_marketo_connect.png"/>
+    </a>
 </figure>
 <h3 id="step-5-input-values">Step 5: Input Values</h3>
 <p>You should now have obtained all the information needed to properly set up your connector. Navigate the the <strong>Configure</strong> tab of your connector window to copy and paste the values obtained from Step 3, along with your title and any relevant notes. Then click <strong>Next</strong>.</p>
-<figure><img src="/images/server-side-connectors/no-title-601ibacd72591bbcae2c.png"
+<figure><a class="slb" href="/images/server-side-connectors/no-title-601ibacd72591bbcae2c.png"><img src="/images/server-side-connectors/no-title-601ibacd72591bbcae2c.png"
          alt="5._input_value.png"
          title="5._input_value.png"/>
+    </a>
 </figure>
 <h3 id="step-6-configure-actions">Step 6: Configure Actions</h3>
 <p>It&rsquo;s this window where we&rsquo;ll actually give the connector instructions on what to do. In the <strong>Actions</strong> dropdown, select the <strong>Create or Update a Lead</strong> option. Then select the <strong>Shoes Fans</strong> audience, <strong>Create Only</strong> for our Update Strategy and <strong>Email</strong> for our <strong>Lead Lookup Filter</strong>.</p>
 <p>Since a lead is only as good as the information associated with it, we will need to map the appropriate data and values. Under <strong>Lead Data to Set</strong> we will select the attribute created in Step 1 along with any others, and map them to their corresponding values.</p>
-<figure><img src="/images/server-side-connectors/no-title-602i20e31d2f64b1d3a3.png"
+<figure><a class="slb" href="/images/server-side-connectors/no-title-602i20e31d2f64b1d3a3.png"><img src="/images/server-side-connectors/no-title-602i20e31d2f64b1d3a3.png"
          alt="6._values.png"
          title="6._values.png"/>
+    </a>
 </figure>
 <h3 id="step-7-test-trace-configuration">Step 7: Test/ Trace Configuration</h3>
 <p>We&rsquo;ve just finished setting up our configuration. Now, we need to check to make sure we did it properly. The best way to go about testing is to run a <a href="/server-side/connectors/trace/Manage/">trace</a> to make sure your events are handled properly, and to check your Marketo dashboard to make sure your lead was created with the proper information.</p>
-<figure><img src="/images/server-side-connectors/no-title-603i22661cabc02f8459.png"
+<figure><a class="slb" href="/images/server-side-connectors/no-title-603i22661cabc02f8459.png"><img src="/images/server-side-connectors/no-title-603i22661cabc02f8459.png"
          alt="7._trace.png"
          title="7._trace.png"/>
+    </a>
 </figure>
 <p>The image above shows three main things:</p>
 <ol>
@@ -950,14 +958,16 @@ var utag_data = {
 <li>The action was triggered. (&ldquo;Marketo- Create leads&rdquo;)</li>
 <li>The action was processed successfully. ( &ldquo;1 action processed/ 0 actions failed&rdquo;)</li>
 </ol>
-<figure><img src="/images/server-side-connectors/no-title-604ie0894aac690e17b4.png"
+<figure><a class="slb" href="/images/server-side-connectors/no-title-604ie0894aac690e17b4.png"><img src="/images/server-side-connectors/no-title-604ie0894aac690e17b4.png"
          alt="&amp;quot;1 Action Processed/ 0 Actions Failed&amp;quot; - Expanded"
          title="&amp;quot;1 Action Processed/ 0 Actions Failed&amp;quot; - Expanded"/>
+    </a>
 </figure>
 <h3 id="step-8-verify-in-marketo">Step 8: Verify in Marketo</h3>
-<figure><img src="/images/server-side-connectors/no-title-605ibc307b19ebb316f6.png"
+<figure><a class="slb" href="/images/server-side-connectors/no-title-605ibc307b19ebb316f6.png"><img src="/images/server-side-connectors/no-title-605ibc307b19ebb316f6.png"
          alt="Successful lead result"
          title="Successful lead result"/>
+    </a>
 </figure>
 <h2 id="vendor-documentation">Vendor Documentation</h2>
 <p><a href="https://docs.marketo.com/display/public/DOCS/Welcome+to+Marketo+Docs">Marketo Documentation</a></p>
@@ -1494,6 +1504,7 @@ No</button>
   
   
   
+  
 
 </ul>
 
@@ -1600,6 +1611,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1611,7 +1630,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -875,9 +877,11 @@ You must configure the AudienceStore connector within AudienceStream in order fo
 <ol>
 <li>Select <strong>Existing Amazon S3 Location</strong>.</li>
 <li>Click <strong>Next</strong>.<br>
-<img src="/images/server-side/snowflake-create-stage.jpg" 
+<figure><a class="slb" href="/images/server-side/snowflake-create-stage.jpg"><img src="/images/server-side/snowflake-create-stage.jpg"
          alt="Snowflake Create Stage"
-         title="Snowflake Create Stage"/></li>
+         title="Snowflake Create Stage"/>
+    </a>
+</figure></li>
 <li>Proceed to the next section to enter your DataAccess credentials.</li>
 </ol>
 <h3 id="enter-your-dataaccess-credentials">Enter your DataAccess credentials</h3>
@@ -916,9 +920,11 @@ Select the region indicated by your bucket name, for example <strong>us-east-1</
 <li>
 <p>Click the plus (<strong>+</strong>) symbol next to the drop-down list.<br>
 The Create File Format dialog displays.<br>
-<img src="/images/server-side/snowflake-create-file-format.jpg" 
+<figure><a class="slb" href="/images/server-side/snowflake-create-file-format.jpg"><img src="/images/server-side/snowflake-create-file-format.jpg"
          alt="Snowflake Create File Format"
-         title="Snowflake Create File Format"/></p>
+         title="Snowflake Create File Format"/>
+    </a>
+</figure></p>
 </li>
 <li>
 <p>Enter the following information:</p>
@@ -952,9 +958,11 @@ Example: Tealium stores JSON data in Gzip compressed files.</li>
 <p>Use the following steps to continue manually loading data using the web interface, continue reading the steps below. You can optionally load data from the command line. If you select this method, skip to the Load Using Command Line section.</p>
 <ol>
 <li>Select your previously-named file format from the drop-down list.<br>
-<img src="/images/server-side/snowflake-manually-load-data-via-web-interface.jpg" 
+<figure><a class="slb" href="/images/server-side/snowflake-manually-load-data-via-web-interface.jpg"><img src="/images/server-side/snowflake-manually-load-data-via-web-interface.jpg"
          alt="Snowflake Manually Load Data via Web Interface"
-         title="Snowflake Manually Load Data via Web Interface"/></li>
+         title="Snowflake Manually Load Data via Web Interface"/>
+    </a>
+</figure></li>
 <li>Click <strong>Load</strong> to immediately load data or click <strong>Next</strong> to configure additional load options.</li>
 </ol>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>If the warehouse is not currently running, resuming the warehouse could take up to 5 minutes, in addition to the time required for loading.</p>
@@ -1163,7 +1171,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  May 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1600,6 +1608,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1611,7 +1627,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

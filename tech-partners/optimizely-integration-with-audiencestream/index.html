@@ -427,12 +427,16 @@ var utag_data = {
 <li>Select the <strong>Overview</strong> tab, then click <strong>Audiences</strong>.</li>
 <li>Under Conditions, click <strong>Tealium</strong>.</li>
 <li>Drag <strong>Tealium Audience</strong> or <strong>Tealium Badge</strong> to create an Optimizely Audience condition based on a Tealium audience.<br>
-<img src="/images/tech-partners/createaudience1.png" 
+<figure><a class="slb" href="/images/tech-partners/createaudience1.png"><img src="/images/tech-partners/createaudience1.png"
          alt="Create Audience"
-         title="Create Audience" width="600" height="511"/><br>
-<img src="/images/tech-partners/createaudience2.png" 
+         title="Create Audience" width="600" height="511"/>
+    </a>
+</figure><br>
+<figure><a class="slb" href="/images/tech-partners/createaudience2.png"><img src="/images/tech-partners/createaudience2.png"
          alt="Create Audience2"
-         title="Create Audience2" width="550" height="560"/></li>
+         title="Create Audience2" width="550" height="560"/>
+    </a>
+</figure></li>
 <li>Click <strong>Save Audience</strong>.</li>
 </ol>
 <h2 id="create-audience-based-experiments">Create audience-based experiments</h2>
@@ -503,7 +507,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  May 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -820,6 +824,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -831,7 +843,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

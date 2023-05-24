@@ -296,7 +296,8 @@ There are DLLs specific to each mobile platform which are referenced by the abst
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Lifecycle modules are included by default. Additional DLLs are not needed.</p>
 <h3 id="android-example">Android Example</h3>
 <p>The following example illustrates the Shared project and Android platform-specific project from a typical Xamarin based app:</p>
-<figure><img src="/images/platforms/xamarin/consent-manager-model.png" width="375" height="750"/><figcaption><p>Consent Manager Shared Project in Xamarin App</p>
+<figure><a class="slb" href="/images/platforms/xamarin/consent-manager-model.png"><img src="/images/platforms/xamarin/consent-manager-model.png" width="375" height="750"/>
+    </a><figcaption><p>Consent Manager Shared Project in Xamarin App</p>
         </figcaption>
 </figure>
 <p>As shown in the example, the Shared Project references only the <code>Tealium.Common.dll</code> library, whereas the Android-specific project references all of the following:</p>
@@ -936,6 +937,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -947,7 +956,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

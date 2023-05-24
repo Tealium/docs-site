@@ -430,9 +430,10 @@ var utag_data = {
 </ul>
 <h2 id="how-it-works">How it works</h2>
 <p>This hybrid solution uses both the client-side tag and server-side API to customer data and send conversion events, such as subscriptions, sign ups, and purchases, to Google. The customer data is matched to a signed-in Google user and the conversion event is attributed to ad clicks or views. The customer data is protected using a one-way hashing algorithm called SHA256, which keeps it secure and private.</p>
-<figure><img src="/images/tech-partners/tealium-google-ads-enhanced-conversions-flow.png"
+<figure><a class="slb" href="/images/tech-partners/tealium-google-ads-enhanced-conversions-flow.png"><img src="/images/tech-partners/tealium-google-ads-enhanced-conversions-flow.png"
          alt="tealium-google-ads-enhanced-conversions-flow.png"
          title="tealium-google-ads-enhanced-conversions-flow.png" width="601" height="246"/>
+    </a>
 </figure>
 <p>Enhanced conversions only work when one or more of the following customer attributes is available:</p>
 <ul>
@@ -986,6 +987,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -997,7 +1006,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -885,9 +887,11 @@ For additional information, see <a href="/server-side/attributes/about/">Using A
 All audiences are stored in AudienceDB.</li>
 <li><strong>Event feeds</strong><br>
 Event feeds must be configured for the data to be stored in EventDB.<br>
-<img src="/images/server-side/ss-feeds-event-storage-slider.png" 
+<figure><a class="slb" href="/images/server-side/ss-feeds-event-storage-slider.png"><img src="/images/server-side/ss-feeds-event-storage-slider.png"
          alt="feeds event storage slider"
-         title="feeds event storage slider"/><br>
+         title="feeds event storage slider"/>
+    </a>
+</figure><br>
 EventDB also collects preloaded attributes. Although preloaded attributes cannot be edited from the <strong>Attributes</strong> screen, you can adjust the preloaded attributes that are stored in EventDB using the <strong>DataAccess Console</strong>.</li>
 </ul>
 <p class="tip"><i class="fa fa-info-circle"></i>It is recommended to only enable EventDB for the specific event feeds that you need since the amount of data can become quite large depending on your volume. For additional information, see <a href="/server-side/live-events-feeds/about-event-feeds/">Live Events and Feeds</a>.</p>
@@ -903,9 +907,11 @@ EventDB also collects preloaded attributes. Although preloaded attributes cannot
 <li>
 <p>Select or deselect attributes to add or remove them from EventDB.<br>
 All all attributes are checked by default.<br>
-<img src="/images/server-side/whiteui-dataaccess-working-with-audiencedb-and-eventdb-adjusting-preloaded-eventdb-attributes.jpg" 
+<figure><a class="slb" href="/images/server-side/whiteui-dataaccess-working-with-audiencedb-and-eventdb-adjusting-preloaded-eventdb-attributes.jpg"><img src="/images/server-side/whiteui-dataaccess-working-with-audiencedb-and-eventdb-adjusting-preloaded-eventdb-attributes.jpg"
          alt="DataAccess Working with AudienceDB and EventDB Adjusting Preloaded EventDB Attributes"
-         title="DataAccess Working with AudienceDB and EventDB Adjusting Preloaded EventDB Attributes"/></p>
+         title="DataAccess Working with AudienceDB and EventDB Adjusting Preloaded EventDB Attributes"/>
+    </a>
+</figure></p>
    <p class="note"><i class="fa fa-exclamation-triangle"></i>DOM attributes, such as URL, domain, referrer, and user agent are always sent and cannot be excluded.</p>
 </li>
 <li>
@@ -921,9 +927,11 @@ All all attributes are checked by default.<br>
 <li>Go to <strong>DataAccess &gt; AudienceDB</strong>.</li>
 <li>Click <strong>Show AudienceDB Attributes</strong>.</li>
 <li>Select or deselect attributes to add or remove them from AudienceDB.<br>
-<img src="/images/server-side/whiteui-dataaccess-working-with-audiencedb-and-eventdb-adjusting-audiencedb-attributes.jpg" 
+<figure><a class="slb" href="/images/server-side/whiteui-dataaccess-working-with-audiencedb-and-eventdb-adjusting-audiencedb-attributes.jpg"><img src="/images/server-side/whiteui-dataaccess-working-with-audiencedb-and-eventdb-adjusting-audiencedb-attributes.jpg"
          alt="DataAccess Working with AudienceDB and EventDB Adjusting AudienceDB Attributes"
-         title="DataAccess Working with AudienceDB and EventDB Adjusting AudienceDB Attributes"/></li>
+         title="DataAccess Working with AudienceDB and EventDB Adjusting AudienceDB Attributes"/>
+    </a>
+</figure></li>
 <li>Click <strong>Save</strong>.</li>
 <li>Save and Publish your changes.</li>
 </ol>
@@ -938,9 +946,11 @@ All all attributes are checked by default.<br>
 <li>In the sidebar, click <strong>DataAccess &gt; EventDB</strong> or <strong>DataAccess &gt; AudienceDB</strong>.</li>
 <li>Click <strong>Get DB Connection Details</strong>.</li>
 <li>Click <strong>Regenerate DB Credentials</strong>. You need to regenerate credentials even if this is your first time getting credentials.<br>
-<img src="/images/server-side/connection-details.png" 
+<figure><a class="slb" href="/images/server-side/connection-details.png"><img src="/images/server-side/connection-details.png"
          alt="connection details"
-         title="connection details"/></li>
+         title="connection details"/>
+    </a>
+</figure></li>
 <li>Click <strong>Yes</strong> to confirm that you want to delete your existing credentials and generate new ones.<br>
 The <strong>DB Connection Details</strong> screen displays the following fields:
 <ul>
@@ -1018,7 +1028,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 25, 2023 
+          <p>This page was last updated:  May 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1455,6 +1465,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1466,7 +1484,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

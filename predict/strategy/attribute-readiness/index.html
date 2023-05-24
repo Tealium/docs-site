@@ -324,9 +324,10 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <p>When you create a model using Tealium Predict, you can choose from a list of potential target attributes from your AudienceStream dataset. Each attribute is given a rating of <strong>Ready</strong> or <strong>Not Ready</strong> to signify whether the attribute is ready for training. The readiness of an attribute displays next to each attribute in the drop-down list of available attributes when you click <strong>+ New Model</strong>. This feature helps you determine, in advance, whether an attribute candidate is a<strong>Ready</strong> or <strong>Not Ready</strong> to use as a target output attribute, as shown in the following example.</p>
-<figure><img src="/images/predict/predict-v2-target-attr-ready.png"
+<figure><a class="slb" href="/images/predict/predict-v2-target-attr-ready.png"><img src="/images/predict/predict-v2-target-attr-ready.png"
          alt="Predict V2 attribute ready"
          title="Predict V2 attribute ready"/>
+    </a>
 </figure>
 <p>Machine learning technology requires a high volume of data to succeed and machine learning models provide better results when trained on a large amount of data.</p>
 <p>The following two factors to define target attributes that are <strong>Ready</strong> or <strong>Not Ready</strong>:</p>
@@ -902,6 +903,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -913,7 +922,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

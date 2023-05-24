@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -841,9 +843,10 @@ Source indicates the origin of the data being acted upon. A source can be an aud
 </ul>
 <h3 id="consent-categories">Consent categories</h3>
 <p>Each connector in the marketplace has one or more consent categories assigned for each available action. To view the consent category for a specific connector, click the Information icon next to the connector action.</p>
-<figure><img src="/images/server-side/eventstream-connector-consent-categories.png"
+<figure><a class="slb" href="/images/server-side/eventstream-connector-consent-categories.png"><img src="/images/server-side/eventstream-connector-consent-categories.png"
          alt="EventStream Connector Consent Categories"
          title="EventStream Connector Consent Categories"/>
+    </a>
 </figure>
 <p>AudienceStream is categorized in the <strong>CDP</strong> consent category and DataAccess is categorized in the <strong>Big Data</strong> consent category. For additional information about server-side consent, see <a href="/iq-tag-management/consent-management/consent-preferences-dialog/manage/">Consent Preferences Manager</a>.</p>
 <h3 id="retries">Retries</h3>
@@ -878,9 +881,10 @@ Data source or audience associated with the connector.</li>
 Name of the feed or trigger for the action.</li>
 </ul>
 <p>Expand the <strong>Add Action</strong> menu to quickly access the <strong>Edit</strong>, <strong>Duplicate</strong>, <strong>Get Connector ID</strong>, or <strong>Remove</strong> features.</p>
-<figure><img src="/images/server-side/screenoverviewaddactionoptions.png"
+<figure><a class="slb" href="/images/server-side/screenoverviewaddactionoptions.png"><img src="/images/server-side/screenoverviewaddactionoptions.png"
          alt="Screen Overview Add Action Options"
          title="Screen Overview Add Action Options"/>
+    </a>
 </figure>
 <h3 id="deprecated-connectors-and-actions">Deprecated connectors and actions</h3>
 <p>Connectors and actions can be deprecated, which means they may be unsupported or removed in the future. Deprecation typically occurs when a connector or an action has been replaced with a newer version or a new connector or action that should be used instead.</p>
@@ -890,21 +894,24 @@ Name of the feed or trigger for the action.</li>
 <li><strong>Full Deprecation</strong> – The connector or action is deprecated and no longer works. Actions for a fully deprecated connector are not executed.</li>
 </ul>
 <p>When a connector or an action is deprecated, an icon is shown next to the connector or action in the connector list. When you hover over the icon, a message is displayed that specifies whether the deprecated connector or action still works.</p>
-<figure><img src="/images/server-side/deprecatedconnector.png"
+<figure><a class="slb" href="/images/server-side/deprecatedconnector.png"><img src="/images/server-side/deprecatedconnector.png"
          alt="Deprecated Connector"
          title="Deprecated Connector"/>
+    </a>
 </figure>
 <h3 id="reporting-chart-for-actions">Reporting chart for actions</h3>
 <p>The following sections describe how to view the reporting chart, view error details, and download error reports.</p>
-<figure><img src="/images/server-side/connector-reporting-graph-overview.png"
+<figure><a class="slb" href="/images/server-side/connector-reporting-graph-overview.png"><img src="/images/server-side/connector-reporting-graph-overview.png"
          alt="Connector Reporting Graph Overview"
          title="Connector Reporting Graph Overview"/>
+    </a>
 </figure>
 <h4 id="view-the-chart">View the chart</h4>
 <p>When you click on a connector action, the chart displays the number of times the action executed each day. You can view the graph for a rolling day, week, or month. Successful actions are shown in gray and errors are shown in red. Click any part of the chart to view a summary of the data for that display.
-<figure><img src="/images/server-side/successful-connector-triggers.png"
+<figure><a class="slb" href="/images/server-side/successful-connector-triggers.png"><img src="/images/server-side/successful-connector-triggers.png"
          alt="Successful Connector Triggers"
          title="Successful Connector Triggers"/>
+    </a>
 </figure></p>
 <h4 id="view-sampled-errors">View sampled errors</h4>
 <p>Use the following steps to view sampled errors for a connector:</p>
@@ -1403,6 +1410,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1414,7 +1429,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

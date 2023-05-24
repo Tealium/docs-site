@@ -299,7 +299,8 @@ var utag_data = {
 </ul>
 <p>Tealium Collect offers many benefits to a mobile application. If you have Tealium EventStream and the Collect module installed, then third-party vendor SDKs may be removed from your app and implemented as server-side connectors instead. Offloading vendors to an API hub such as EventStream helps to reduce app size, minimize network traffic, and conserve battery power on the device.</p>
 <p>The following diagram illustrates how the Tealium SDK uses Tealium Collect to transmit events directly to EventStream and AudienceStream using HTTPS requests so you can send data to vendors or put visitors into audiences, assign badges, and apply attributes.</p>
-<figure><img src="/images/platforms/getting-started-mobile/tealium_collect_data_flow_diagram.png" width="375" height="750"/><figcaption><p>Tealium Collect data flow diagram</p>
+<figure><a class="slb" href="/images/platforms/getting-started-mobile/tealium_collect_data_flow_diagram.png"><img src="/images/platforms/getting-started-mobile/tealium_collect_data_flow_diagram.png" width="375" height="750"/>
+    </a><figcaption><p>Tealium Collect data flow diagram</p>
         </figcaption>
 </figure>
 <h3 id="javascript-tag">JavaScript Tag</h3>
@@ -816,6 +817,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -827,7 +836,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

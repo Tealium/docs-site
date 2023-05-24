@@ -386,7 +386,8 @@ var utag_data = {
 </span></span></code></pre></div><p>Learn more about the <a href="https://community.tealiumiq.com/t5/TLC-Blog/What-Do-Apple-s-IDFA-Changes-Mean-for-Tealium/ba-p/33770#toc-hId-1473659672"><code>SKAdNetwork</code> framework</a>.</p>
 <h4 id="process">Process</h4>
 <p>The following diagram shows the path of an ad&rsquo;s install validation. App A is the source app that displays an ad, and App B is the advertised app that the user installs.</p>
-<figure><img src="/images/platforms/ios/skad-custom.png" width="750" height="550"/><figcaption><p>Skad Custom</p>
+<figure><a class="slb" href="/images/platforms/ios/skad-custom.png"><img src="/images/platforms/ios/skad-custom.png" width="750" height="550"/>
+    </a><figcaption><p>Skad Custom</p>
         </figcaption>
 </figure>
 <p>When a user clicks on an ad within an app or mobile web browser, the App Store is launched and the user is taken to the product screen for the ad campaign. In iOS 14.5+, advertisers have the option to choose to display a custom view-through ad or a StoreKit-rendered ad. If the user installs the advertised app, the device stores a pending install validation. If the user opens the app within an attribution time window, the device sends the install validation postback to the ad network.</p>
@@ -403,7 +404,8 @@ var utag_data = {
 <p>Additionally, if you have defined the <a href="/platforms/ios-swift/api/tealium-config/#skadconversionkeys"><code>skAdConversionKeys</code></a>, then the <code>SKAdNetwork.updateConversionValue(_:)</code> method is called and passed in the specified conversion value. Tealium permits you to manage your calls to <code>SKAdNetwork</code> through the tracking you already have in place.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>You may need to request tracking authorization from your users and add the appropriate keys to your <code>.plist</code> file.</p>
 <p>The following diagram shows shows how Tealium works with <code>SKAdNetwork</code>:</p>
-<figure><img src="/images/platforms/ios/skad-tealium-custom.png" width="750" height="400"/><figcaption><p>Skad Telium Custom</p>
+<figure><a class="slb" href="/images/platforms/ios/skad-tealium-custom.png"><img src="/images/platforms/ios/skad-tealium-custom.png" width="750" height="400"/>
+    </a><figcaption><p>Skad Telium Custom</p>
         </figcaption>
 </figure>
 <h4 id="validation">Validation</h4>
@@ -979,6 +981,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -990,7 +1000,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

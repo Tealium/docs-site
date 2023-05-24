@@ -330,9 +330,10 @@ Users assigned to this role have access to edit the configuration of the profile
 </li>
 <li>
 <p><strong>Data Warehouse Admin</strong><br>
-Users assigned to this role have access to DataAccess product features.<figure><img src="/images/early-access/screen-shot-2021-06-27-at-10.11.15-pm.png"
+Users assigned to this role have access to DataAccess product features.<figure><a class="slb" href="/images/early-access/screen-shot-2021-06-27-at-10.11.15-pm.png"><img src="/images/early-access/screen-shot-2021-06-27-at-10.11.15-pm.png"
          alt="Screen Shot 2021-06-27 at 10.11.15 PM.png"
          title="Screen Shot 2021-06-27 at 10.11.15 PM.png"/>
+    </a>
 </figure></p>
 </li>
 </ul>
@@ -382,9 +383,10 @@ Edit access to areas of the product to which the user has been granted access, a
 <ol>
 <li>In the admin menu, select <strong>Manage Users</strong>.</li>
 <li>Click the user to update.</li>
-<li>Go to <strong>Account Permissions</strong>. <figure><img src="/images/early-access/screen-shot-2021-06-27-at-10.30.25-pm.png"
+<li>Go to <strong>Account Permissions</strong>. <figure><a class="slb" href="/images/early-access/screen-shot-2021-06-27-at-10.30.25-pm.png"><img src="/images/early-access/screen-shot-2021-06-27-at-10.30.25-pm.png"
          alt="Screen Shot 2021-06-27 at 10.30.25 PM.png"
          title="Screen Shot 2021-06-27 at 10.30.25 PM.png"/>
+    </a>
 </figure></li>
 <li>Select the roles that are appropriate for the user’s job function.</li>
 <li>Click <strong>Save</strong>.<br>
@@ -392,9 +394,10 @@ Users in the account are not impacted until enforcement is enabled in the next s
 </ol>
 <h3 id="step-3-enable-enforcement">Step 3: Enable enforcement</h3>
 <p>After you assign permission roles to your users and are satisfied that the proper permissions are in place, click the enforcement toggle to the ON position.</p>
-<figure><img src="/images/early-access/screen-shot-2021-06-27-at-10.14.03-pm.png"
+<figure><a class="slb" href="/images/early-access/screen-shot-2021-06-27-at-10.14.03-pm.png"><img src="/images/early-access/screen-shot-2021-06-27-at-10.14.03-pm.png"
          alt="Screen Shot 2021-06-27 at 10.14.03 PM.png"
          title="Screen Shot 2021-06-27 at 10.14.03 PM.png"/>
+    </a>
 </figure>
 <p>Enforcement is immediate and cascades to all account users. The persistent alert bar no longer displays and users in the account are now governed by the new permissions.</p>
 <h3 id="disable-enforcement">Disable enforcement</h3>
@@ -820,6 +823,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -831,7 +842,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

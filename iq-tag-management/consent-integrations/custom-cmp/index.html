@@ -328,17 +328,17 @@ var utag_data = {
         <a href="/iq-tag-management/tags/tealium-pixel-container-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-pixel-container-tag">Tealium Pixel Container Tag</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/tags/tealium-custom-container-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-custom-container-tag">Tealium Custom Container Tag</a>
-      </li><li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".tag-templates">Tag templates</a>
-        <ul class=" tag-templates desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-templates">About templates</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-tag-templates">Manage templates</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/template-status-checker/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".template-status-checker">Template Status Checker</a>
-      </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/tags/tag-reporting/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tag-reporting">Tag reporting</a>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".templates">Templates</a>
+        <ul class=" templates desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-templates">About templates</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-templates">Manage templates</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/template-status-checker/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".template-status-checker">Template Status Checker</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".events">Events</a>
@@ -713,9 +713,60 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>To add a new custom integration, you can use the existing integrations and the provided example as a guide. The CMP-specific component of the integration is defined using the <code>window.tealiumCmpIntegration</code> object.</p>
-<p>The <code>window.tealiumCmpIntegration</code> object consists of a name <code>.cmpName</code>, version <code>.cmpIntegrationVersion</code>, and the following functions:</p>
+  <h2 id="how-it-works">How it works</h2>
+<p>Tealium Consent Integrations consist of two parts:</p>
+<ul>
+<li>A consent enforcement framework for Tealium iQ (the <code>utcm_framework</code> template).</li>
+<li>CMP-specific integration templates that leverage the Tealium iQ consent enforcement framework. These integration templates are designed to be as lightweight as possible.</li>
+</ul>
+<p>Our <a href="/iq-tag-management/consent-integrations/supported-vendors/">pre-built integrations</a> supports integration with various consent management platforms (CMPs). However, there are instances where a custom integration is recommended, such as:</p>
+<ul>
+<li>Using a CMP without a pre-built integration.</li>
+<li>Using an internal tool to capture consent.</li>
+<li>Using a supported CMP with extensive customizations that break the standard integration.</li>
+</ul>
+<p>In such cases, you can use a custom integration. By using JavaScript functions, any consent capture tool can leverage the enforcement framework.</p>
+<p>To add a new custom integration, use the existing integrations and the provided template as a guide.</p>
+<p>The following describes a basic workflow for creating a custom integration:</p>
+<ol>
+<li>Develop and debug the integration outside Tealium iQ (website where CMP is implemented).</li>
+<li>In Tealium iQ, add a new custom consent integration and purpose group. For more information, see <a href="/iq-tag-management/consent-integrations/about/">About Consent Integrations</a>.</li>
+<li>Assign Tealium iQ and the appropriate tags to the purposes within the purpose group.</li>
+<li>To create the template, save your profile.</li>
+<li><a href="/iq-tag-management/templates/manage/">Edit the newly created template</a>.</li>
+<li>Publish the template to a development or test environment to verify that everything works as expected, and then follow your normal testing and publishing flow.</li>
+</ol>
+<h2 id="develop-debug-and-validate-custom-integrations">Develop, debug, and validate custom integrations</h2>
+<p>To create your custom CMP integration, edit the <a href="#custom-integration-template">custom template</a> below to meet your CMP requirements. See the comments in the custom template for a working example.</p>
+<h3 id="develop-and-debug-before-publish">Develop and debug before publish</h3>
+<p>Complete the following steps to debug during development:</p>
+<ol>
+<li>Uncomment the <strong>Debugging</strong> block at the end of the <a href="#custom-integration-template">custom template</a>.</li>
+<li>Paste the template into the console of a website running the CMP you want to support.</li>
+<li>The debugging code block outputs the consent decision.</li>
+<li>Customize your decision and paste the template again to see the newly interpreted consent decision.</li>
+<li>When you are satisfied with your template, comment out the debugging block again before pasting and publishing it to Tealium iQ.</li>
+</ol>
+<p>You can also find the debugging snippet by saving your profile and <a href="/iq-tag-management/templates/manage/">editing the template</a>.</p>
+<h3 id="validate-after-publish">Validate after publish</h3>
+<p>There are two ways to debug and validate your template after publishing: using debug mode or using the <code>window.tealiumCmpOutput</code> object.</p>
+<h4 id="using-debug-mode">Using debug mode</h4>
+<p>To use <a href="/platforms/javascript/debugging/">debug mode</a>:</p>
+<ul>
+<li>Set the <code>utagdb</code> cookie to <code>true</code> with <code>document.cookie = &quot;utagdb=true&quot;</code> in the console.</li>
+<li>Set your console filter to see only the relevant output (the suggested filter is in the debug output).</li>
+<li>Test different options to make sure things work as expected.</li>
+</ul>
+<h4 id="using-the-windowtealiumcmpoutput-object">Using the <code>window.tealiumCmpOutput</code> object</h4>
+<p>To use the <code>window.tealiumCmpOutput</code> object:</p>
+<ul>
+<li>Paste the commented out debugging code block at the bottom of the template into the console to output only your decision and related output.</li>
+<li>If needed, you can also call the functions in the template individually or access the other useful properties of this object.</li>
+</ul>
+<p>For more detailed debugging tips for prebuilt and custom integrations, see <a href="/iq-tag-management/consent-integrations/validate-and-debug/">Validate and debug consent integrations</a>.</p>
 <h2 id="integration-functions">Integration functions</h2>
+<p>The CMP-specific component of the integration is defined using the <code>window.tealiumCmpIntegration</code> object.</p>
+<p>The <code>window.tealiumCmpIntegration</code> object consists of a name <code>.cmpName</code>, version <code>.cmpIntegrationVersion</code>, and the following functions:</p>
 <h3 id="determine-operating-mode">Determine operating mode</h3>
 <ul>
 <li><code>.cmpCheckIfOptInModel</code> - determines whether the integration should operate on the <code>opt-in</code> or <code>opt-out</code> model. Returns a boolean value.</li>
@@ -739,9 +790,126 @@ var utag_data = {
 <p><code>.cmpConvertResponseToGroupList</code> - converts the raw decision into a simple array of allowed purpose keys for downstream enforcement. Returns an array of consented purpose keys.</p>
 </li>
 </ul>
-<h2 id="debugging-custom-integrations">Debugging custom integrations</h2>
-<p>For detailed debugging tips for both prebuilt and custom integrations, see <a href="/iq-tag-management/consent-integrations/validate-and-debug/">Validating and debugging Consent Integrations</a>.</p>
-
+<h2 id="custom-integration-template">Custom Integration template</h2>
+<p>The following is a blank template to help you get started with your own custom integration. The template includes a debugging snippet at the end of the template that you can use to debug and validate your consent integration.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>;(<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">myCustomConsentIntegration</span> (window) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * This template is meant to be edited, for you to build your own support for a custom CMP / capture tool.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * The example code (commented out) is taken from an integration that checks for an opt-out cookie and returns one of two decisions:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    *  - [&#39;no-selling&#39;] (opt-out cookie with any value found) - always an explicit decision (an opt-out cookie has been set)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    *  - [&#39;no-selling&#39;, &#39;yes-selling&#39;] (no opt-out cookie found) - always an implicit decision (no cookie is set)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * The (case-sensitive) name of the opt-out cookie is taken from the &#39;Vendor ID&#39; field in the UI.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * For more, see https://docs.tealium.com/iq-tag-management/consent-integrations/supported-vendors/#opt-out-cookie--gpc 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * (The above integration was simplified for this example - the GPC logic was removed)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// CMP specific functionality and labels
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">||</span> {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Custom Example&#39;</span>
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpIntegrationVersion</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;v1.0.0&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpFetchCurrentConsentDecision</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpFetchCurrentConsentDecision</span>
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpFetchCurrentLookupKey</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpFetchCurrentLookupKey</span>
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpCheckIfOptInModel</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpCheckIfOptInModel</span>
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpCheckForWellFormedDecision</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpCheckForWellFormedDecision</span>
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpCheckForExplicitConsentDecision</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpCheckForExplicitConsentDecision</span>
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpCheckForTiqConsent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpCheckForTiqConsent</span>
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpConvertResponseToGroupList</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpConvertResponseToGroupList</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  // pull whatever&#39;s been entered as the Vendor ID in the UI for the single relevant integration
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  var optOutCookieName = (window.tealiumCmpIntegration &amp;&amp; window.tealiumCmpIntegration.map &amp;&amp; Object.keys(window.tealiumCmpIntegration.map)[0]) || &#39;error-no-map-found-so-no-cookie-name-available&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Should return a boolean, true if the CMP is running the &#39;Opt-in&#39; model (GDPR style)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// This opt-out cookie example only supports the Opt-out model (CCPA/CPRA style), so this is hardcoded to return false.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpCheckIfOptInModel</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Should return some CMP-specific raw object (must be an object) that contains the needed information about the decision.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// This output is used as the cmpRawOutput argument in functions below.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpFetchCurrentConsentDecision</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    // we can&#39;t use any tag manager functionality here because it hasn&#39;t been allowed to load yet
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    var readCookie = function (name) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      var reString = &#39;(?:(?:^|.*;\\s*)&#39; + name + &#39;\\s*\\=\\s*([^;]*).*$)|^.*$&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      var re = new RegExp(reString)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      var cookieValue = document.cookie.replace(re, &#39;$1&#39;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      if (!cookieValue) return undefined
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      return cookieValue
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    var cookie = readCookie(optOutCookieName) || &#39;opt-out-cookie-not-found&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return { cookieState: cookie } // we have to return an object for the integration to work - this lets us add in other properties (like Global Privacy Control) later
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Should return a string that helps Tealium iQ confirm that it&#39;s got the right CMP configuration (and not one from some other page / customer of the CMP)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpFetchCurrentLookupKey</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return optOutCookieName
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Should return a boolean - true if the raw decision meets our expectations for the CMP
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpCheckForWellFormedDecision</span> (<span style="color:#a6e22e">cmpRawOutput</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return typeof cmpRawOutput === &#39;object&#39; &amp;&amp; typeof cmpRawOutput.cookieState === &#39;string&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Should return a boolean - true if the consent decision was explicitly made by the user
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpCheckForExplicitConsentDecision</span> (<span style="color:#a6e22e">cmpRawOutput</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    // The only way we can tell if the decision is explicit in this example is to check if an opt-out cookie is set
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if ((typeof cmpRawOutput === &#39;object&#39; &amp;&amp; typeof cmpRawOutput.cookieState === &#39;string&#39; &amp;&amp; cmpRawOutput.cookieState !== &#39;opt-out-cookie-not-found&#39;)) return true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Should return an array of consented vendors/purposes - these should match the Purposes in Tealium iQ exactly
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpConvertResponseToGroupList</span> (<span style="color:#a6e22e">cmpRawOutput</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    var consentDecision = [&#39;no-selling&#39;] // tags that don&#39;t sell/share data are always allowed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    // very simple check for a non-empty opt-out cookie to determine if tags that sell data are allowed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if (cmpRawOutput.cookieState === &#39;opt-out-cookie-not-found&#39;) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      consentDecision.push(&#39;yes-selling&#39;) // we don&#39;t see a cookie, so we have to assume selling/sharing data is fine
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return consentDecision
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// You shouldn&#39;t need to change this function, or anything below it
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpCheckForTiqConsent</span> (<span style="color:#a6e22e">cmpRawOutput</span>, <span style="color:#a6e22e">tiqGroupName</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// treat things we don&#39;t understand as an opt-out
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">cmpCheckForWellFormedDecision</span>(<span style="color:#a6e22e">cmpRawOutput</span>) <span style="color:#f92672">!==</span> <span style="color:#66d9ef">true</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tiqGroupName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tiqGroupName</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;tiq-group-name-missing&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">allowedGroups</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpConvertResponseToGroupList</span>(<span style="color:#a6e22e">cmpRawOutput</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">allowedGroups</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#a6e22e">tiqGroupName</span>) <span style="color:#f92672">!==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>})(window)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  // Debugging / development output - uncomment this block, then paste/repaste this entire template on your test pages
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  var outputString = `${tealiumCmpIntegration.cmpCheckIfOptInModel() ? &#39;Opt-in&#39; : &#39;Opt-out&#39;} Model
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Checks:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    - id:          ${tealiumCmpIntegration.cmpFetchCurrentLookupKey()}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    - well-formed: ${tealiumCmpIntegration.cmpCheckForWellFormedDecision(tealiumCmpIntegration.cmpFetchCurrentConsentDecision())}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    - explicit:    ${tealiumCmpIntegration.cmpCheckForExplicitConsentDecision(tealiumCmpIntegration.cmpFetchCurrentConsentDecision())}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    - group list:  ${JSON.stringify(tealiumCmpIntegration.cmpConvertResponseToGroupList(tealiumCmpIntegration.cmpFetchCurrentConsentDecision()))}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  `
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  console.log(outputString);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span></code></pre></div>
 </div>
 
 <div class="mv30 nested-links overflow-hidden dpn"><div class="di">
@@ -786,7 +954,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 28, 2023 
+          <p>This page was last updated:  May 22, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -800,11 +968,15 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#integration-functions">Integration functions</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#develop-debug-and-validate-custom-integrations">Develop, debug, and validate custom integrations</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#develop-and-debug-before-publish">Develop and debug before publish</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#validate-after-publish">Validate after publish</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#integration-functions">Integration functions</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#determine-operating-mode">Determine operating mode</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#fetch-decision">Fetch decision</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#validate-and-standardize-the-decision">Validate and standardize the decision</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#debugging-custom-integrations">Debugging custom integrations</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#custom-integration-template">Custom Integration template</a></li>
               </nav>
   </aside></nav>
 
@@ -1030,6 +1202,12 @@ No</button>
       </li>
       
       <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/iq-tag-management/templates/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Templates
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/iq-tag-management/events/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
           Events
       </a>
@@ -1209,6 +1387,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1220,7 +1406,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

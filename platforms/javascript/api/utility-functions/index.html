@@ -317,7 +317,7 @@ var utag_data = {
 </tr>
 <tr>
 <td><code>loader()</code></td>
-<td>Tealium’s tag templates uses this function to load tags (loads iframes, images, scripts and allows for callbacks when a script is loaded)</td>
+<td>Tag templates use this function to load tags as iframes, images, or scripts and to trigger a callback when the tag is loaded.</td>
 </tr>
 <tr>
 <td><code>merge()</code></td>
@@ -401,7 +401,7 @@ var utag_data = {
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// {order_id: &#34;0123567&#34;, cart.total_items: 3, cart.total_amount: 123.45, order_tax: 9.97}
 </span></span></span></code></pre></div><h2 id="utaguthasown"><code>utag.ut.hasOwn()</code></h2>
 <p>Returns a boolean indicating whether the object has the specified property as its own property (as opposed to inheriting it). The function performs a <code>null</code> check and wraps the JavaScript function <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty"><code>hasOwnProperty()</code></a>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">ut</span>.<span style="color:#a6e22e">hasOwn</span>(<span style="color:#a6e22e">obj</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">ut</span>.<span style="color:#a6e22e">hasOwn</span>(<span style="color:#a6e22e">obj</span>, <span style="color:#a6e22e">key</span>)
 </span></span></code></pre></div><table>
 <thead>
 <tr>
@@ -416,15 +416,19 @@ var utag_data = {
 <td><code>Object</code></td>
 <td>The object to test</td>
 </tr>
+<tr>
+<td><code>key</code></td>
+<td><code>String</code></td>
+<td>The property to test</td>
+</tr>
 </tbody>
 </table>
 <p>Examples:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();     <span style="color:#75715e">// Create an object
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.14</span>;               <span style="color:#75715e">// Define a non-inherited local property
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">ut</span>.<span style="color:#a6e22e">hasOwn</span>(<span style="color:#a6e22e">x</span>);          <span style="color:#75715e">// true - x is a local property of obj
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">ut</span>.<span style="color:#a6e22e">hasOwn</span>(<span style="color:#a6e22e">y</span>);          <span style="color:#75715e">// false - obj doesn&#39;t have a property y
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">ut</span>.<span style="color:#a6e22e">hasOwn</span>(<span style="color:#e6db74">&#34;toString&#34;</span>); <span style="color:#75715e">// false - toString property is inherited from Object
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">ut</span>.<span style="color:#a6e22e">hasOwn</span>(<span style="color:#a6e22e">obj</span>, <span style="color:#e6db74">&#39;x&#39;</span>);          <span style="color:#75715e">// true - x is a local property of obj
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">ut</span>.<span style="color:#a6e22e">hasOwn</span>(<span style="color:#a6e22e">obj</span>, <span style="color:#e6db74">&#39;y&#39;</span>);          <span style="color:#75715e">// false - obj doesn&#39;t have a property y
 </span></span></span></code></pre></div><h2 id="utagutisempty"><code>utag.ut.isEmpty()</code></h2>
 <p>Returns a boolean <code>true</code> indicating the argument is empty, or boolean <code>false</code> if not empty.  It first determines the data type by using the <code>utag.ut.typeOf()</code> function, and returns the following based on the type:</p>
 <table>
@@ -613,7 +617,7 @@ var utag_data = {
 <p>Example:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">ut</span>.<span style="color:#a6e22e">pad</span>(<span style="color:#e6db74">&#34;Tealium&#34;</span>, <span style="color:#ae81ff">10</span>);   <span style="color:#75715e">// 000Tealium
 </span></span></span></code></pre></div><h2 id="utaguttypeof"><code>utag.ut.typeOf()</code></h2>
-<p>Returns an argument variables type as a <code>String</code>.</p>
+<p>Returns an argument&rsquo;s variable type as a <code>String</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">ut</span>.<span style="color:#a6e22e">typeOf</span>(<span style="color:#a6e22e">arg</span>)
 </span></span></code></pre></div><table>
 <thead>
@@ -684,7 +688,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  May 18, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1076,6 +1080,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1087,7 +1099,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

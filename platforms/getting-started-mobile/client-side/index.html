@@ -320,7 +320,8 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
 </span></span></code></pre></div><p>This client-side solution allows you to follow the traditional tag management workflow to deploy tags to your app and to adjust mobile settings related to tracking behavior.</p>
 <p>The following diagram illustrates how iQ Tag Management loads your vendor tag configuration as visitors use your mobile app. This example shows how the Tealium SDK converts a tracked purchase event to a JavaScript tracking call in the hidden webview. Your vendor tags run in the hidden webview, just as they would on a mobile web page, and tracking data is transmitted directly from the app (client-side) to the vendor.</p>
-<figure><img src="/images/platforms/getting-started-mobile/tag_management_data_flow_diagram.png" width="325" height="500"/><figcaption><p>Tag management data flow diagram</p>
+<figure><a class="slb" href="/images/platforms/getting-started-mobile/tag_management_data_flow_diagram.png"><img src="/images/platforms/getting-started-mobile/tag_management_data_flow_diagram.png" width="325" height="500"/>
+    </a><figcaption><p>Tag management data flow diagram</p>
         </figcaption>
 </figure>
 <h3 id="benefits">Benefits</h3>
@@ -861,6 +862,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -872,7 +881,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

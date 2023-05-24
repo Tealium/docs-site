@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -837,9 +839,11 @@ var utag_data = {
 <li>Navigate to <strong>Sources &gt; Data Sources</strong> and click <strong>+ Add Data Source</strong>.<br>
 The data source modal appears.</li>
 <li>In the <strong>Categories</strong> side panel, click <strong>Developer Languages</strong> and select <strong>HTTP API</strong>.<br>
-<img src="/images/tutorials/eventstream-getting-started-data-source-http.png" 
+<figure><a class="slb" href="/images/tutorials/eventstream-getting-started-data-source-http.png"><img src="/images/tutorials/eventstream-getting-started-data-source-http.png"
          alt="Data Source HTTP"
-         title="Data Source HTTP" width="213" height="360"/></li>
+         title="Data Source HTTP" width="213" height="360"/>
+    </a>
+</figure></li>
 <li>Enter a name and click <strong>Continue</strong>.<br>
 (The name can be changed later.)</li>
 <li>Click <strong>Continue</strong> and skip the steps about event specifications.<br>
@@ -864,9 +868,11 @@ Your new data source now appears in the list on the Data Sources screen.</li>
 <li>Enter a <strong>Title</strong> such as <code>Getting Started with EventStream</code>.</li>
 <li>Enter a description of your changes.</li>
 <li>Click the <strong>Publish</strong> checkbox on (if it isn&rsquo;t already).<br>
-<img src="/images/tutorials/eventstream-getting-started-save-publish.png" 
+<figure><a class="slb" href="/images/tutorials/eventstream-getting-started-save-publish.png"><img src="/images/tutorials/eventstream-getting-started-save-publish.png"
          alt="Save Publish"
-         title="Save Publish" width="213" height="267"/></li>
+         title="Save Publish" width="213" height="267"/>
+    </a>
+</figure></li>
 <li>Click <strong>OK</strong>.</li>
 </ol>
 <p>Click <strong>Next</strong> to see how to send test events to EventStream and observe them on the <strong>Live Events</strong> screen.</p>
@@ -930,7 +936,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  May 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1351,6 +1357,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1362,7 +1376,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

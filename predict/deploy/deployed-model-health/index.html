@@ -333,9 +333,10 @@ var utag_data = {
 <ul>
 <li>The <strong>version</strong> of the deployed model.</li>
 </ul>
-<figure><img src="/images/predict/predictv2-deployed-models.png"
+<figure><a class="slb" href="/images/predict/predictv2-deployed-models.png"><img src="/images/predict/predictv2-deployed-models.png"
          alt="predictV2_deployed_models.png"
          title="predictV2_deployed_models.png"/>
+    </a>
 </figure>
 <h2 id="evaluating-the-strength-of-deployed-models">Evaluating the strength of deployed models</h2>
 <p>The model strength ratings provide a label for the quality of a version. There are two types of strength ratings, <em>deployed</em> and <em>training</em>. The deployed strength is an ongoing rating for each deployed model. The training strength is a static ratings for each trained version. For more information, see <a href="/predict/evaluate-models/strength-scores/">Strength scores</a>.</p>
@@ -343,9 +344,10 @@ var utag_data = {
 <p>The deployed live performance score allows you to understand the ongoing quality of your model and know when it has degraded, which inevitably happens over time.</p>
 <p>In Tealium Predict, the recall, precision, and F1 score are automatically recalculated daily for deployed models using the most recent time window available. This window is defined in the <strong>Prediction Timeframe</strong>, which equates to the number of days specified in the model as &ldquo;in the next <strong>x</strong> days&rdquo;. For the daily recalculation to begin, the model must be deployed for the initial Prediction Timeframe so that actual true/false results are known and can be used in the calculation. The calculation window then moves forward one day, every day.</p>
 <p>On the <strong>Live Performance</strong> screen, the daily recall, precision, and F1 scores show you changes in model health over time. The <strong>Live Performance</strong> window also allows you to explore the <strong>Prediction Value</strong> over the Prediction Timeframe using the <strong>Prediction Distribution</strong> chart. The Prediction Value represents the likelihood that the target attribute results are set to True during the Visitor&rsquo;s next Visit within the Prediction Timeframe.</p>
-<figure><img src="/images/predict/predictv2-live-performance.png"
+<figure><a class="slb" href="/images/predict/predictv2-live-performance.png"><img src="/images/predict/predictv2-live-performance.png"
          alt="predictV2_live_performance.png"
          title="predictV2_live_performance.png"/>
+    </a>
 </figure>
 <p>In the <strong>Prediction Distribution</strong> chart, the y-axis is the number of times the Target Attribute behavior was either True or False within the prediction timeframe, while the x-axis is the prediction value. Ideal results demonstrate True counts falling in the upper range of the prediction value (for example, above 0.5) and False counts falling in the lower range of the prediction value (for example, below 0.5). If the shape of the prediction distribution is similar to the probability distribution from the training model, it is an indicator of strong model health over time.</p>
 <p>You can use live performance prediction distribution to help you decide thresholds for audience creation. For example, the Probability Distribution chart above shows most of the actual True counts in the range 0.75 to 1, so you can use 0.75 as a threshold to define an audience that are going to have a high likelihood of purchasing in the next two days. Similarly, you can define an audience below the 0.4 threshold as being less likely to purchase in the next two days.</p>
@@ -917,6 +919,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -928,7 +938,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

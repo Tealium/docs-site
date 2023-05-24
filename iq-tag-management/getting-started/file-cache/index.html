@@ -328,17 +328,17 @@ var utag_data = {
         <a href="/iq-tag-management/tags/tealium-pixel-container-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-pixel-container-tag">Tealium Pixel Container Tag</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/tags/tealium-custom-container-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-custom-container-tag">Tealium Custom Container Tag</a>
-      </li><li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".tag-templates">Tag templates</a>
-        <ul class=" tag-templates desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-templates">About templates</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-tag-templates">Manage templates</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/tags/tag-templates/template-status-checker/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".template-status-checker">Template Status Checker</a>
-      </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/tags/tag-reporting/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tag-reporting">Tag reporting</a>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".templates">Templates</a>
+        <ul class=" templates desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-templates">About templates</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-templates">Manage templates</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/templates/template-status-checker/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".template-status-checker">Template Status Checker</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".events">Events</a>
@@ -738,7 +738,7 @@ var utag_data = {
 <h2 id="universal-tag-caching">Universal Tag caching</h2>
 <p>In versions of the Universal Tag prior to 4.26, all <code>utag.js</code> files were refreshed after a publish. After every publish, the <code>utag.js</code> files invalidated their cache, causing the browser to make unneccessary network calls to fetch unmodified files, which affected page load performance.</p>
 <p>Starting with version <a href="/platforms/javascript/release-notes/">4.26+</a>, only new and modified files are refreshed and unmodified files remain cached in the browser, resulting in fewer network calls and improved page load performance.</p>
-<p class="tip"><i class="fa fa-info-circle"></i>If you are using a Universal Tag version older than 4.26, <a href="/iq-tag-management/tags/tag-templates/manage/">upgrade utag.js</a> to get the benefits of this caching behavior.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>If you are using a Universal Tag version older than 4.26, <a href="/iq-tag-management/templates/manage/">upgrade utag.js</a> to get the benefits of this caching behavior.</p>
 <h2 id="how-it-works">How it works</h2>
 <p>The caching behavior is controlled by a timestamp parameter named <code>utv</code>, called a &ldquo;cache busting&rdquo; parameter, that is appended to the URLs of the published files. The cache busting parameter changes the URL of the file, which forces the browser to update its cached version of the file. For version 4.39+ of the Universal Tag, the value of the <code>utv</code> parameter contains a timestamp and a version number.</p>
 <p>Cache busting parameter values by version of the Universal Tag:</p>
@@ -767,14 +767,16 @@ var utag_data = {
 <p class="note"><i class="fa fa-exclamation-triangle"></i>The <a href="/iq-tag-management/extensions/extensions-list/currency-converter-extension/">Currency Converter Extension</a> is never cached.</p>
 <h2 id="example">Example</h2>
 <p>The following example modifies or adds a tag with the UID #4, deactivates tag #1, and makes no changes to tag #2 and tag #3.</p>
-<figure><img src="/images/iq-tag-management/example-tags.png"
+<figure><a class="slb" href="/images/iq-tag-management/example-tags.png"><img src="/images/iq-tag-management/example-tags.png"
          alt="example tags"
          title="example tags"/>
+    </a>
 </figure>
 <p>In the publish URLs view of the web console, notice that <code>utag.4.js</code> was fetched from the servers since it&rsquo;s a new or modified file. Both <code>utag.2.js</code> and <code>utag.3.js</code> were fetched from the cache, since they were unmodified. <code>utag.1.js</code> did not load on the page since it was deactivated.</p>
-<figure><img src="/images/iq-tag-management/timestamps-on-qa.png"
+<figure><a class="slb" href="/images/iq-tag-management/timestamps-on-qa.png"><img src="/images/iq-tag-management/timestamps-on-qa.png"
          alt="Timestamps on QA"
          title="Timestamps on QA"/>
+    </a>
 </figure>
 
 </div>
@@ -1079,6 +1081,12 @@ No</button>
       </li>
       
       <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/iq-tag-management/templates/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Templates
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/iq-tag-management/events/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
           Events
       </a>
@@ -1258,6 +1266,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1269,7 +1285,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

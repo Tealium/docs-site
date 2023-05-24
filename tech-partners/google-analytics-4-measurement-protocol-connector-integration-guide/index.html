@@ -412,9 +412,10 @@ var utag_data = {
 <li>Measuring interactions both client-side and server-side.</li>
 <li>Sending events that happen outside standard user interaction, such as offline conversations.</li>
 </ul>
-<figure><img src="/images/server-side-connectors/googleanalytics4measurementprotocoldiagram.png"
+<figure><a class="slb" href="/images/server-side-connectors/googleanalytics4measurementprotocoldiagram.png"><img src="/images/server-side-connectors/googleanalytics4measurementprotocoldiagram.png"
          alt="GA 4 measurement protocol diagram"
          title="GA 4 measurement protocol diagram"/>
+    </a>
 </figure>
 <p>Tealium supports the following actions with the Google Analytics 4 Measurement Protocol Connector:</p>
 <ul>
@@ -451,9 +452,10 @@ var utag_data = {
 <p>To mitigate issues around the noted limitations and fully cover all data requirements, implement the <a href="/client-side-tags/google-analytics-4-ga4-tag/">Google Analytics 4 tag</a> in Tealium iQ Tag Management. Set the tag to load on all pages, with <strong>Send Page View</strong> set to <code>false</code>. In addition, add the Google Analytics Cookie Matching Service tag so that the Google <code>clientId</code> is automatically added as a <code>utag_main__ga</code> cookie value.</p>
 <p>All required events outside of Google’s automatically-collected events can then be configured in the Google Analytics connector in Tealium EventStream.</p>
 <p>The Google Analytics 4 tag automatically triggers a purchase event when <code>order_id </code>is present through the E-commerce extension mappings. If you have the E-commerce extension enabled and wish to track purchases through EventStream, configure a <a href="/iq-tag-management/extensions/extensions-list/set-data-values-extension/">Set Data Values</a> extension scoped to Google Analytics 4 to clear the <code>_corder</code> attribute.</p>
-<figure><img src="/images/server-side-connectors/googleanalytics4measurementprotocolsetdatavalues.png"
+<figure><a class="slb" href="/images/server-side-connectors/googleanalytics4measurementprotocolsetdatavalues.png"><img src="/images/server-side-connectors/googleanalytics4measurementprotocolsetdatavalues.png"
          alt="google analytics 4 measurement protocol set data values"
          title="google analytics 4 measurement protocol set data values"/>
+    </a>
 </figure>
 <p>Because Tealium can support a client-side implementation to better address web-client integrations, as well as supporting mobile and offline events through Tealium’s EventStream, Tealium can integrate with both solutions and create a combined approach.</p>
 <p>For more information for configuration of a client-side tag, see <a href="/client-side-tags/google-analytics-4-ga4-tag/">Google Analytics 4 (GA4) Tag Setup Guide</a>.</p>
@@ -1300,6 +1302,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1311,7 +1321,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

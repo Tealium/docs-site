@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -834,9 +836,10 @@ var utag_data = {
 <div class="prose nested-links" id="prose">
   <h2 id="what-is-audiencestream">What is AudienceStream?</h2>
 <p>Tealium AudienceStream CDP is a server-side platform used for identity resolution, visitor data enrichment, customer segmentation, and real-time integrations with your vendors.</p>
-<figure class="mv0"><img src="/images/tutorials/audiencestream-customer-evolution.jpg"
+<figure class="mv0"><a class="slb" href="/images/tutorials/audiencestream-customer-evolution.jpg"><img src="/images/tutorials/audiencestream-customer-evolution.jpg"
          alt="AudienceStream visitor"
          title="AudienceStream visitor" width="400" height="174"/>
+    </a>
 </figure>
 <p>Tealium AudienceStream offers the following benefits:</p>
 <ul>
@@ -847,9 +850,10 @@ var utag_data = {
 <h2 id="what-is-a-visitor-attribute">What is a visitor attribute?</h2>
 <p>An attribute captures information about a visitor&rsquo;s habits, preferences, actions, etc. These attributes can come from websites, mobile apps, or even offline data sources. Attributes can store everything from First Name and Email Address to Last Login Date and Lifetime Total Spend.</p>
 <p>The following attribute types are used in AudienceStream:</p>
-<figure class="dib fr mv0"><img src="/images/server-side/audience-stream-attributes.jpg"
+<figure class="dib fr mv0"><a class="slb" href="/images/server-side/audience-stream-attributes.jpg"><img src="/images/server-side/audience-stream-attributes.jpg"
          alt="AudienceStream attributes"
          title="AudienceStream attributes" width="167" height="192"/>
+    </a>
 </figure>
 <ul>
 <li><strong>Visitor</strong><br>
@@ -864,15 +868,17 @@ Examples: Support Call Duration, In-Store Transactions, or Purchase Reconciliati
 </ul>
 <p>Learn more about <a href="/server-side/attributes/about/">using attributes</a>.</p>
 <h2 id="what-is-a-visitor-profile">What is a visitor profile?</h2>
-<figure class="dib fr mv0"><img src="/images/server-side/audiencestream-profile.png"
+<figure class="dib fr mv0"><a class="slb" href="/images/server-side/audiencestream-profile.png"><img src="/images/server-side/audiencestream-profile.png"
          alt="AudienceStream profile"
          title="AudienceStream profile" width="149" height="133"/>
+    </a>
 </figure>
 <p>A visitor profile is a unified view of a customer across all touchpoints (web, mobile, email, et cetera). By using a special attribute called a visitor ID, AudienceStream can identify the same customer across many different platforms. A visitor profile comprises all the attributes that describe the behavior and state of that customer&rsquo;s engagement with each of your brands. This visitor profile enables the use of powerful strategies for personalization and targeted marketing and are the basis for building audiences.</p>
 <h2 id="what-is-an-audience">What is an audience?</h2>
-<figure class="dib fr mv0"><img src="/images/server-side/audiencestream-audience.jpg"
+<figure class="dib fr mv0"><a class="slb" href="/images/server-side/audiencestream-audience.jpg"><img src="/images/server-side/audiencestream-audience.jpg"
          alt="AudienceStream Audience"
          title="AudienceStream Audience" width="150" height="143"/>
+    </a>
 </figure>
 <p>An audience is a collection of visitor profiles that have acquired a shared set of attributes during their engagement with your brand. An audience is the target of a real-time action from one of the many integrations (connectors) available in the AudienceStream ecosystem (for example, email, online advertising, social, and customer relationship management).</p>
 <p>Learn more about <a href="/server-side/audiences/create-an-audience/">building an audience</a>.</p>
@@ -1356,6 +1362,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1367,7 +1381,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

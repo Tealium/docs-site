@@ -231,6 +231,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/platforms/remote-commands/integrations/firebase/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-firebase">Firebase</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/integrations/fullstory/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-fullstory">FullStory</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/platforms/remote-commands/integrations/kochava/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-kochava">Kochava</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/platforms/remote-commands/integrations/skadnetwork/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-skadnetwork">SKAdNetwork</a>
@@ -326,7 +328,8 @@ var utag_data = {
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">ev</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">remote_api</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span> }; <span style="color:#75715e">// remove &#34;view&#34; and &#34;link&#34; to avoid double-counting when remote_api is enabled
 </span></span></span></code></pre></div><p>The following example shows how to disable tracking in the Braze Mobile Remote Command tag. Map the <code>tealium_event</code> variable to the Braze command <code>Disable Data Collection (disableSDK)</code>.
 Learn more about <a href="/server-side/consent/event-specs/">consent event specifications</a>.</p>
-<figure><img src="/images/platforms/remote-commands/remote-command-tag-mapping-consent.png"/><figcaption><p>Remote command tag mapping consent</p>
+<figure><a class="slb" href="/images/platforms/remote-commands/remote-command-tag-mapping-consent.png"><img src="/images/platforms/remote-commands/remote-command-tag-mapping-consent.png"/>
+    </a><figcaption><p>Remote command tag mapping consent</p>
         </figcaption>
 </figure>
 <p>For more information on how to check which events a tag is set to listen to, see <a href="https://community.tealiumiq.com/t5/Tags/How-to-Check-if-a-Tag-will-Fire-on-View-or-Link-Calls/ta-p/5649">How to Check if a Tag will Fire on &lsquo;View&rsquo; or &lsquo;Link&rsquo; Calls</a>.</p>
@@ -758,6 +761,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -769,7 +780,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

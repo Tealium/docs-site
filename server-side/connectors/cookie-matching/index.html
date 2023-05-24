@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -847,9 +849,10 @@ var utag_data = {
 </ul>
 <h3 id="flow-diagram">Flow Diagram</h3>
 <p>The following diagram describes the flow of data between the Tealium Customer Data Hub and the customer website.</p>
-<figure><img src="/images/server-side/cookie-sync-persistence-diagram-1.jpg"
+<figure><a class="slb" href="/images/server-side/cookie-sync-persistence-diagram-1.jpg"><img src="/images/server-side/cookie-sync-persistence-diagram-1.jpg"
          alt="Cookie Sync Persistence Diagram_1.jpg"
          title="Cookie Sync Persistence Diagram_1.jpg"/>
+    </a>
 </figure>
 <ul>
 <li><strong>Standard Event Collection</strong><br>
@@ -903,9 +906,10 @@ In the final step, EventStream events now contain the persisted vendor identifie
 <li>Click <strong>+ Add Tag</strong>.</li>
 <li>In the left panel, click <strong>Cookie Match</strong>.<br>
 A list of available marketplace tags supporting the cookie matching service displays.<br>
-<figure><img src="/images/server-side/whiteui-tiq-add-tag-sort-by-cookie-match.jpg"
+<figure><a class="slb" href="/images/server-side/whiteui-tiq-add-tag-sort-by-cookie-match.jpg"><img src="/images/server-side/whiteui-tiq-add-tag-sort-by-cookie-match.jpg"
          alt="TiQ_Add Tag_Sort by Cookie Match.jpg"
          title="TiQ_Add Tag_Sort by Cookie Match.jpg"/>
+    </a>
 </figure></li>
 <li>Click <strong>+ Add</strong> next to the tag you want to add.</li>
 <li>Follow the onscreen instructions to configure your tag.</li>
@@ -1388,6 +1392,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1399,7 +1411,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

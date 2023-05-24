@@ -326,13 +326,17 @@ var utag_data = {
   <p>There are two ways to undeploy your model:</p>
 <ol>
 <li>From the <strong>Model Dashboard</strong>, click <strong>Undeploy</strong>.<br>
-<img src="/images/predict/predictv2-undeploy.png" 
+<figure><a class="slb" href="/images/predict/predictv2-undeploy.png"><img src="/images/predict/predictv2-undeploy.png"
          alt="predictV2_undeploy.png"
-         title="predictV2_undeploy.png"/></li>
+         title="predictV2_undeploy.png"/>
+    </a>
+</figure></li>
 <li>From the <strong>Training Details</strong>s creen, after reviewing the training details you can choose to undeploy.<br>
-<img src="/images/predict/predictv2-training-details-undeploy.png" 
+<figure><a class="slb" href="/images/predict/predictv2-training-details-undeploy.png"><img src="/images/predict/predictv2-training-details-undeploy.png"
          alt="predictV2_training_details_undeploy.png"
-         title="predictV2_training_details_undeploy.png"/></li>
+         title="predictV2_training_details_undeploy.png"/>
+    </a>
+</figure></li>
 </ol>
 <p>After you select to undeploy your model, complete the following steps:</p>
 <ol>
@@ -401,7 +405,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  May 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -901,6 +905,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -912,7 +924,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

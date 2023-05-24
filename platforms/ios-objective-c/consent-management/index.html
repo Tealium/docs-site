@@ -315,19 +315,22 @@ var utag_data = {
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span>[_tealium.consentManager setUserConsentStatus:Consented];
 </span></span></code></pre></div><p>This example shows you how to give your users a simple &ldquo;Opt-in/Opt-out&rdquo; option. If the user consents, they are automatically opted-in to all tracking categories. If they revoke their consent, no categories are active, and no tracking calls are sent.</p>
 <p>Define and call the following method in your Tealium Helper class when your app user consents to or declines tracking. If the user consents to tracking, the Consent Manager automatically opts them in to all tracking categories.</p>
-<figure><img src="/images/platforms/ios/consent-simple-optin.gif" width="296" height="528"/><figcaption><p>Consent Simple Opt-In</p>
+<figure><a class="slb" href="/images/platforms/ios/consent-simple-optin.gif"><img src="/images/platforms/ios/consent-simple-optin.gif" width="296" height="528"/>
+    </a><figcaption><p>Consent Simple Opt-In</p>
         </figcaption>
 </figure>
 <h3 id="use-case-grouped-opt-in">Use Case: Grouped Opt-in</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span>[_tealium.consentManager setUserConsentStatus:Consented withUserConsentCategories:<span style="color:#ae81ff">@[</span><span style="color:#e6db74">@&#34;analytics&#34;</span>, <span style="color:#e6db74">@&#34;monitoring&#34;</span>, <span style="color:#e6db74">@&#34;big_data&#34;</span>, <span style="color:#e6db74">@&#34;mobile&#34;</span>, <span style="color:#e6db74">@&#34;crm&#34;</span><span style="color:#ae81ff">]</span>];
 </span></span></code></pre></div><p>This example shows a category-based consent model, where tracking categories are grouped into a smaller number of higher-level categories, defined by you. For example, you may choose to group the Tealium consent categories <code>&quot;analytics&quot;</code>, <code>&quot;monitoring&quot;</code>, <code>&quot;big_data&quot;</code>, <code>&quot;mobile&quot;</code>, and <code>&quot;crm&quot;</code> under a single category called <code>&quot;performance&quot;</code>. This may be easier for the user than selecting from the full list of categories. You may choose to represent this in a slider interface, ranging from least-permissive to most-permissive (all categories).</p>
-<figure><img src="/images/platforms/ios/consent-group-optin.gif" width="296" height="528"/><figcaption><p>Consent Group Opt-In</p>
+<figure><a class="slb" href="/images/platforms/ios/consent-group-optin.gif"><img src="/images/platforms/ios/consent-group-optin.gif" width="296" height="528"/>
+    </a><figcaption><p>Consent Group Opt-In</p>
         </figcaption>
 </figure>
 <h3 id="use-case-category-based-opt-in">Use Case: Category-based Opt-in</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span>[_tealium.consentManager setUserConsentStatus:Consented withUserConsentCategories:<span style="color:#ae81ff">@[</span><span style="color:#e6db74">@&#34;analytics&#34;</span>, <span style="color:#e6db74">@&#34;personalization&#34;</span><span style="color:#ae81ff">]</span>];
 </span></span></code></pre></div><p>This example shows a category-based consent model where the user must explicitly select each category from the full list of categories. The default state of the Consent Manager is <code>&quot;Unknown&quot;</code>, which queues hits until the user provides their consent. If the user consents to any category, events are dequeued, and the consented category data is appended to each tracking call.</p>
-<figure><img src="/images/platforms/ios/consent-category-optin.gif" width="296" height="528"/><figcaption><p>Consent Category Opt-in</p>
+<figure><a class="slb" href="/images/platforms/ios/consent-category-optin.gif"><img src="/images/platforms/ios/consent-category-optin.gif" width="296" height="528"/>
+    </a><figcaption><p>Consent Category Opt-in</p>
         </figcaption>
 </figure>
 <h2 id="api-reference">API Reference</h2>
@@ -1040,6 +1043,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1051,7 +1062,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

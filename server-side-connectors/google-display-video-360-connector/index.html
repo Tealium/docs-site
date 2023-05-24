@@ -236,6 +236,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/airship-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".airship-connector">Airship</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/algolia-insights-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".algolia-insights-connector">Algolia Insights</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-advertising-dsp-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-advertising-dsp-connector">Amazon Advertising DSP</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a>
@@ -783,9 +785,10 @@ For more information, see <a href="https://support.google.com/displayvideo/answe
 <ol>
 <li>Click <strong>Create a New Segment</strong> from the top of the <strong>Actions</strong> selection drop-down list.</li>
 <li>Enter the <strong>Segment Name</strong>, <strong>Segment Member Lifespan</strong>, <strong>Integration Code</strong>, and <strong>Segment Description</strong>.<br>
-<figure><img src="/images/server-side-connectors/audiencestream-create-segment.jpg"
+<figure><a class="slb" href="/images/server-side-connectors/audiencestream-create-segment.jpg"><img src="/images/server-side-connectors/audiencestream-create-segment.jpg"
          alt="AudienceStream Create Segment"
          title="AudienceStream Create Segment"/>
+    </a>
 </figure></li>
 <li>Click <strong>Create Segment</strong>.<br>
 The Integration Code is an ID used by user list sellers to correlate IDs on their systems. If no ID is available, you can manually enter a random number between <code>1</code> and <code>1000</code>. Confirmation will appear in the form of a check mark next to the Create Segment button to verify that the segment has been created.</li>
@@ -1403,6 +1406,7 @@ No</button>
   
   
   
+  
 
 </ul>
 
@@ -1509,6 +1513,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1520,7 +1532,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

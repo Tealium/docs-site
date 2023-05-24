@@ -232,6 +232,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/platforms/remote-commands/integrations/firebase/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-firebase">Firebase</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/integrations/fullstory/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-fullstory">FullStory</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/platforms/remote-commands/integrations/kochava/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-kochava">Kochava</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/platforms/remote-commands/integrations/skadnetwork/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-skadnetwork">SKAdNetwork</a>
@@ -631,6 +633,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -642,7 +652,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 

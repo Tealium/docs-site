@@ -516,6 +516,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/usage-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".webhook-usage-examples">Usage examples</a>
@@ -852,9 +854,10 @@ var utag_data = {
 <h2 id="iq-tag-management">iQ Tag Management</h2>
 <h3 id="add-the-krux-control-tag">Add the Krux Control Tag</h3>
 <p>Add the Krux Control tag from the iQ Tag Management <a href="/iq-tag-management/tags/tag-marketplace/search-tag-marketplace/">Tag Marketplace</a>. Configure the tag with the Krux Configuration ID provided to you by Krux.</p>
-<figure><img src="/images/server-side/kruxtag.png"
+<figure><a class="slb" href="/images/server-side/kruxtag.png"><img src="/images/server-side/kruxtag.png"
          alt="kruxtag.png"
          title="kruxtag.png"/>
+    </a>
 </figure>
 <h3 id="set-cookie-with-krux-user-id">Set Cookie with Krux User ID</h3>
 <p>In order to match the user you are sending via the Webhook connector to a Krux user, you need to extract the Krux User ID from the Krux object populated by the Krux Control Tag. The Krux object&rsquo;s naming convention will vary per client. The code to extract the user ID will be similar to <code>Krux.ns.CLIENT('get', 'user')</code>, where CLIENT is your specific Krux client name. You can either ask your Krux representative for the naming convention of this object or examine the object in <a href="https://developers.google.com/web/tools/chrome-devtools/">Chrome DevTools</a> Console by typing <code>Krux.ns</code> and examining the resulting object.</p>
@@ -870,25 +873,29 @@ var utag_data = {
 <li>
 <p>Add a <a href="/iq-tag-management/extensions/extensions-list/set-data-values-extension/">Set Data Values Extension</a> to extract the Krux object User ID into <code>krux_id</code>. Set the <strong>Execution</strong> of this extension to &ldquo;After Tags&rdquo;. This gives the Krux Control Tag a chance to create the Krux object.</p>
  <p class="tip"><i class="fa fa-info-circle"></i>Set the conditions for this extension to only set the variable if the <code>utag_main_krux_id</code> cookie has not yet been set.</p>
-<img src="/images/server-side/krux-set-data-values" 
+<figure><a class="slb" href="/images/server-side/krux-set-data-values"><img src="/images/server-side/krux-set-data-values"
          alt="Krux set data values"
          title="Krux set data values"/>
+    </a>
+</figure>
 </li>
 <li>
 <p>Add a <a href="/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist Data Value Extension</a> to store the <code>krux_id</code> from the extension above in a cookie.</p>
 </li>
 </ol>
 <p class="tip"><i class="fa fa-info-circle"></i>Set the conditions to only store this cookie if the <code>krux_id</code> variable is populated and keep the first value set.</p>
-<figure><img src="/images/server-side/krux-persist"
+<figure><a class="slb" href="/images/server-side/krux-persist"><img src="/images/server-side/krux-persist"
          alt="krux persist"
          title="krux persist"/>
+    </a>
 </figure>
 <h2 id="customer-data-hub">Customer Data Hub</h2>
 <h3 id="set-visitor-attribute-with-krux-user-id">Set Visitor Attribute with Krux User ID</h3>
 <p>Create a Visitor-scoped String Attribute named &ldquo;Krux ID&rdquo;. Populate this attribute from the <code>utag_main_krux_id</code> cookie.</p>
-<figure><img src="/images/server-side/krux-id-attribute.png"
+<figure><a class="slb" href="/images/server-side/krux-id-attribute.png"><img src="/images/server-side/krux-id-attribute.png"
          alt="krux id attribute.png"
          title="krux id attribute.png"/>
+    </a>
 </figure>
 <h3 id="add-krux-http-api-webhook">Add Krux HTTP API Webhook</h3>
 <p>This section will define the parameters needed to create the Krux connector using the <a href="/server-side/connectors/webhook-connectors/action-parameters/">Webhook Send Custom Request Action</a>.</p>
@@ -935,9 +942,10 @@ var utag_data = {
 </table>
 </li>
 </ul>
-<figure><img src="/images/server-side/connector.png"
+<figure><a class="slb" href="/images/server-side/connector.png"><img src="/images/server-side/connector.png"
          alt="connector.png"
          title="connector.png"/>
+    </a>
 </figure>
 
 </div>
@@ -999,7 +1007,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 15, 2023 
+          <p>This page was last updated:  May 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1430,6 +1438,14 @@ var opt_filters = [];
 if(hier_filters.length) {
   opt_filters.push(hier_filters);
 }
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
@@ -1441,7 +1457,8 @@ docsearch({
     "hitsPerPage": 50,
     optionalFilters: opt_filters
   },
-  debug: "false"
+  debug: "false",
+  transformItems
 });
 </script>
 
