@@ -294,7 +294,7 @@ var utag_data = {
 <h4 id="option-1---tealium-collect-tag">Option 1 - Tealium Collect Tag</h4>
 <p>Add the Tealium Collect tag from the tag marketplace. In the Advanced Settings of the tag, toggle off the QA and Prod environments to avoid publishing the tag to production and incurring usage charges. Requests are sent out from the app as encoded JSON data in a POST request, so this is more difficult to use in conjunction with Charles Proxy, but the advantage is that you are able to see all data from the webview, including cookie data and variables modified by extensions. If you do not enter a specific profile in the tag config, data is sent to the same profile the app is targeting. If you wish to send data to a specific profile, see the <a href="/client-side-tags/tealium-collect-tag/">Tealium collect tag setup guide</a>.</p>
 <h4 id="option-2---tealium-collect-module">Option 2 - Tealium Collect Module</h4>
-<p>In your iQ account, go to the <strong>Mobile Publish Settings</strong> and enable &ldquo;Tealium Collect&rdquo;. The advantage to this method is that data is transmitted as a GET request, and each data variable is added to the query string in the form of easily-readable query parameters. This method is best if you intend to use Charles Proxy to inspect the data. Be sure to turn this setting off before pushing app to production to avoid unexpected usage charges. Only the exact data that was passed to Tealium by the app developers is seen, and not the data from the webview in this request such as cookie data or extension-generated data.</p>
+<p>In your Tealium iQ account, go to the <strong>Mobile Publish Settings</strong> and enable <strong>Tealium Collect</strong>. The advantage to this method is that data is transmitted as a GET request, and each data variable is added to the query string in the form of easily-readable query parameters. This method is best if you intend to use Charles Proxy to inspect the data. Be sure to turn this setting off before pushing app to production to avoid unexpected usage charges. Only the exact data that was passed to Tealium by the app developers is seen, and not the data from the webview in this request such as cookie data or extension-generated data.</p>
 <p>By default, data sent using this feature is sent to the &ldquo;main&rdquo; profile in your account and not the currently selected profile in your app. To adjust this, override the dispatch URL using the following code snippets in your app, and substitute the appropriate account/profile combination:</p>
 
 <div class="code-tabs">
@@ -459,15 +459,15 @@ var utag_data = {
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content"><div class="tab-pane" data-lang="Android" title="Android">
-  <p>Ensure the app is configured to allow <a href="https://developers.google.com/web/tools/chrome-devtools/remote-debugging/webviews?hl=en#configure_webviews_for_debugging">remote debugging</a> of the Tealium webview (Must be done by the app developer at build time).</p>
-<p>Launch the <a href="https://developers.google.com/web/tools/chrome-devtools/remote-debugging/webviews?hl=en#open_a_webview_in_devtools">web inspector</a> in Google Chrome.</p>
+  <p>Ensure the app is configured to allow <a href="https://developer.chrome.com/docs/devtools/remote-debugging/webviews/">remote debugging</a> of the Tealium webview (Must be done by the app developer at build time).</p>
+<p>Navigate to <a href="chrome://inspect/#devices">chrome://inspect/#devices</a> on a Chrome Browser</p>
 <p>Ensure your device is connected to your machine with a USB cable.</p>
 <p>In the list of web pages, look for the one hosted on <code>tags.tiqcdn.com</code>. This is the Tealium webview (<code>mobile.html</code>), which is inspected in the same way as described above. Whenever the app triggers a view or link request, any breakpoints you have set in your JavaScript tag templates are hit, and the value of the data layer is inspected as if it were a desktop website.</p>
 </div>
 <div class="tab-pane" data-lang="iOS" title="iOS">
   <p>Follow Apple&rsquo;s <a href="https://developer.apple.com/library/content/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/GettingStarted/GettingStarted.html">Safari Developer Guide</a> to enable the web inspector in Safari for Mac OSX and in the iPhone/iPad&rsquo;s device settings.</p>
-<p>Once you are able see your device on the &ldquo;develop&rdquo; menu, open &ldquo;tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/mobile.html&rdquo; in the list of open web pages on the device, and then continue to follow the instructions in method 5 above.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>This also works when using the iOS Simulator to debug your app</p>
+<p>When you are able see your device on the <strong>Develop</strong> menu, open <code>tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/mobile.html</code> in the list of open web pages on the device, and then continue to follow the instructions in method 5 above.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>This also works when using an iOS simulator to debug your app.<br><br>You cannot debug web views in apps installed through the App Store or Apple Configurator. Web views can only be debugged if the app has been installed via XCode and run either on an iOS simulator or a physical testing device.</p>
 </div>
 </div>
 </div>
@@ -517,7 +517,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 9, 2023 
+          <p>This page was last updated:  May 22, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
