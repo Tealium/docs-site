@@ -764,8 +764,47 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
+<h2 id="add-tealium-role-to-aws-account">Add Tealium role to AWS account</h2>
+<p>Before you configure the connector, you must create a role for the Tealium account ID and set it as a trusted entity:</p>
+<ol>
+<li>In the <strong>Identity and Access Management</strong> (IAM) console, locate the Amazon Resource Name (ARN) for the Kinesis stream in the <strong>Details</strong> tab.</li>
+<li>Navigate to <strong>Policies &gt; Create Policy</strong>. If this is the first policy you have created, click <strong>Get Started</strong> and <strong>Create Policy</strong>.</li>
+<li>Enter the ARN for the Kinesis Stream.</li>
+<li>Click <strong>{} JSON</strong>.</li>
+<li>Enter the following policy, replacing <code>arn:aws:kinesis:us-east-1:123456789:stream/example</code>  with the ARN from Step 1.</li>
+</ol>
+<pre tabindex="0"><code>{
+  &#34;Version&#34;: &#34;2023-06-01&#34;,
+  &#34;Statement&#34;: [
+    {
+      &#34;Effect&#34;: &#34;Allow&#34;,
+      &#34;Action&#34;: [
+        &#34;kinesis:PutRecord&#34;,
+        &#34;kinesis:PutRecords&#34;
+                ],
+      &#34;Resource&#34;: &#34;arn:aws:kinesis:us-east-1:123456789:stream/example&#34;
+    }
+  ]
+}
+</code></pre><ol start="6">
+<li>Click <strong>Next Step</strong>.</li>
+<li>Under <strong>Policy Name</strong>, enter <strong>TealiumKinesis</strong>.</li>
+<li>Click <strong>Create Policy</strong>.</li>
+<li>Navigate to <strong>Roles &gt; Create Role</strong>.</li>
+<li>Under <strong>Trusted entity type</strong>, select <strong>AWS Account</strong>.</li>
+<li>Select <strong>Another AWS account</strong>.</li>
+<li>Under <strong>Account ID</strong>, enter <code>719386139886</code>.</li>
+<li>Click <strong>Next: Permissions</strong>.</li>
+<li>Select the <strong>TealiumKinesis</strong> policy.</li>
+<li>Click <strong>Next: Review</strong>.</li>
+<li>For the Name, enter <strong>TealiumUser</strong>.</li>
+<li>Click <strong>Create Role</strong>.</li>
+</ol>
+<p>Kinesis will generate an ARN for the role similar to the following:</p>
+<pre tabindex="0"><code>arn:aws:kinesis:us-east-1:123456789:role/example
+</code></pre><p>For more information, see <a href="https://docs.aws.amazon.com/streams/latest/dev/controlling-access.html">Controlling Access to Amazon Kinesis Data Streams Resources Using IAM</a> and <a href="https://docs.aws.amazon.com/streams/latest/dev/tutorial-stock-data-kplkcl-iam.html">Create an IAM Policy and User</a>.</p>
 <h2 id="configure-settings">Configure Settings</h2>
-<p>Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
 <li><strong>Region</strong><br>
@@ -777,6 +816,7 @@ Required: Provide identifier for assumed role session. Length Constraints: Minim
 <li><strong>Assume Role: External ID</strong><br>
 Optional: {rovide external identifier. See: <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">How to Use an External ID</a>.</li>
 </ul>
+<p>After you configure the connector, click <strong>Test Connection</strong> to confirm that the connector can connect to Amazon.</p>
 <h2 id="actions">Actions</h2>
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
@@ -1080,6 +1120,7 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-tealium-role-to-aws-account">Add Tealium role to AWS account</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#actions">Actions</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---send-event-data-to-kinesis-stream">Action Settings - Send Event Data to Kinesis Stream</a></li>
