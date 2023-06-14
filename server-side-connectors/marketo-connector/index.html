@@ -470,8 +470,6 @@ var utag_data = {
       </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/marketo-connector/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".marketo-connector">Marketo</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side-connectors/marketo-connector-setup-guide/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".marketo-connector-setup-guide">Marketo</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/mediamath-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".mediamath-connector">MediaMath</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/microsoft-azure-event-hubs-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".microsoft-azure-event-hubs-connector">Microsoft Azure Event Hubs</a>
@@ -620,8 +618,6 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/tamber-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tamber-connector">Tamber</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side-connectors/tapjoy-conversion-postbacks-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tapjoy-conversion-postbacks-connector">Tapjoy Conversion Postbacks</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/tealium-for-salesforce/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-for-salesforce">Tealium for Salesforce</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/the-trade-desk-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".the-trade-desk-connector-setup-guide">The Trade Desk</a>
@@ -715,6 +711,10 @@ var utag_data = {
 
 <div class="mv2 mid-gray fn w-100">
   
+    <p class="f4 fw3 lh-copy">
+      This article describes how to set up the Marketo connector.
+    </p>
+  
 </div>
 
 <div class="prose nested-links" id="prose">
@@ -734,7 +734,17 @@ var utag_data = {
 <td>✗</td>
 </tr>
 <tr>
+<td>Add Lead to a List (Batched)</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
 <td>Remove Lead from a List</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Remove Lead from a List (Batched)</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
@@ -749,6 +759,11 @@ var utag_data = {
 <td>✗</td>
 </tr>
 <tr>
+<td>Create or Update a Lead (Batched)</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
 <td>Merge a Lead</td>
 <td>✓</td>
 <td>✗</td>
@@ -756,14 +771,13 @@ var utag_data = {
 </tbody>
 </table>
 <h2 id="configure-settings">Configure Settings</h2>
-<p>Go to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/manage/">Connector Overview</a> article for general instructions on how to add a connector.</p>
+<p>Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>REST API Client ID</strong>: Required: provide client ID found in <strong>Marketo &gt; Admin &gt; LaunchPoint</strong>.<br>
-API User must have permissions for &lsquo;Read-Write Lead&rsquo;, &lsquo;Read/Execute Campaigns&rsquo; and &lsquo;Read Lists&rsquo;. (Learn more about <a href="http://docs.marketo.com/display/public/DOCS/Create+a+Custom+Service+for+Use+with+ReST+API">How to Create a Custom Service</a>.)</li>
-<li><strong>REST API Client Secret</strong>: Required: provide client secret found in<strong>Marketo &gt; Admin &gt; LaunchPoint.</strong></li>
-<li><strong>REST API Endpoint URL</strong>: Required: REST API Endpoint can be found from <strong>Marketo &gt; Admin &gt; Web Service</strong>, example: <a href="https://123-ABC-123.mktorest.com/rest">https://123-ABC-123.mktorest.com/rest</a></li>
-<li><strong>REST API Identity URL</strong>: Required: REST API Identity can be found from <strong>Marketo &gt; Admin &gt; Web Service</strong>, example: <a href="https://123-ABC-123.mktorest.com/identity">https://123-ABC-123.mktorest.com/identity</a></li>
+<li><strong>REST API Client ID</strong>: (Required) Provide the client ID found in <strong>Marketo &gt; Admin &gt; LaunchPoint</strong>. The API user must have permissions for &lsquo;Read-Write Lead&rsquo;, &lsquo;Read/Execute Campaigns&rsquo; and &lsquo;Read Lists&rsquo;. (Learn more about <a href="http://docs.marketo.com/display/public/DOCS/Create+a+Custom+Service+for+Use+with+ReST+API">How to Create a Custom Service</a>.)</li>
+<li><strong>REST API Client Secret</strong>: (Required) Provide client secret found in <strong>Marketo &gt; Admin &gt; LaunchPoint.</strong></li>
+<li><strong>REST API Endpoint URL</strong>: (Required) REST API Endpoint can be found in <strong>Marketo &gt; Admin &gt; Web Service</strong>, example: <code>https://123-ABC-123.mktorest.com/rest</code></li>
+<li><strong>REST API Identity URL</strong>: Required. REST API Identity can be found in <strong>Marketo &gt; Admin &gt; Web Service</strong>, example: <code>https://123-ABC-123.mktorest.com/identity</code></li>
 </ul>
 <h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
 <p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
@@ -780,59 +794,70 @@ API User must have permissions for &lsquo;Read-Write Lead&rsquo;, &lsquo;Read/Ex
 <tbody>
 <tr>
 <td>Target Static List</td>
-<td><ul><li>Required: select list</li></ul></td>
+<td>Required: select list</td>
 </tr>
 <tr>
 <td>Target Lead ID</td>
-<td><ul><li>If the Lead ID for the user is known leave the Lead ID Lookup field blank and use this field.</li></ul></td>
+<td>If the <strong>Lead ID</strong> for the user is known, leave the <strong>Lead ID Lookup</strong> field blank and use this field.</td>
 </tr>
 <tr>
-<td>id</td>
+<td><code>id</code></td>
 <td></td>
 </tr>
 <tr>
-<td>cookies</td>
+<td><code>cookies</code></td>
 <td></td>
 </tr>
 <tr>
-<td>email</td>
+<td><code>email</code></td>
 <td></td>
 </tr>
 <tr>
-<td>twitterId</td>
+<td><code>twitterId</code></td>
 <td></td>
 </tr>
 <tr>
-<td>facebookId</td>
+<td><code>facebookId</code></td>
 <td></td>
 </tr>
 <tr>
-<td>linkedInId</td>
+<td><code>linkedInId</code></td>
 <td></td>
 </tr>
 <tr>
-<td>sfdcAccountId</td>
+<td><code>sfdcAccountId</code></td>
 <td></td>
 </tr>
 <tr>
-<td>sfdcContactId</td>
+<td><code>sfdcContactId</code></td>
 <td></td>
 </tr>
 <tr>
-<td>sfdcLeadId</td>
+<td><code>sfdcLeadId</code></td>
 <td></td>
 </tr>
 <tr>
-<td>sfdcLeadOwnerId</td>
+<td><code>sfdcLeadOwnerId</code></td>
 <td></td>
 </tr>
 <tr>
-<td>sfdcOpptyId</td>
+<td><code>sfdcOpptyId</code></td>
 <td></td>
+</tr>
+<tr>
+<td>Add lead</td>
+<td>Add lead if it does not exist.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---remove-lead-from-a-list">Action - Remove Lead from a List</h3>
+<h3 id="action---add-lead-to-a-list-batched">Action - Add Lead to a List (Batched)</h3>
+<h4 id="batch-limits">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 300</li>
+<li>Max time since oldest request: 30 minutes</li>
+<li>Max size of requests: 1 MB</li>
+</ul>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
@@ -844,59 +869,63 @@ API User must have permissions for &lsquo;Read-Write Lead&rsquo;, &lsquo;Read/Ex
 <tbody>
 <tr>
 <td>Target Static List</td>
-<td><ul><li>Required: select list</li></ul></td>
+<td>Required: select list.</td>
 </tr>
 <tr>
 <td>Target Lead ID</td>
-<td><ul><li>If the Lead ID for the user is known leave the Lead ID Lookup field blank and use this field.</li></ul></td>
+<td>If the <strong>Lead ID</strong> for the user is known, leave the <strong>Lead ID Lookup</strong> field blank and use this field.</td>
 </tr>
 <tr>
-<td>id</td>
+<td><code>id</code></td>
 <td></td>
 </tr>
 <tr>
-<td>cookies</td>
+<td><code>cookies</code></td>
 <td></td>
 </tr>
 <tr>
-<td>email</td>
+<td><code>email</code></td>
 <td></td>
 </tr>
 <tr>
-<td>twitterId</td>
+<td><code>twitterId</code></td>
 <td></td>
 </tr>
 <tr>
-<td>facebookId</td>
+<td><code>facebookId</code></td>
 <td></td>
 </tr>
 <tr>
-<td>linkedInId</td>
+<td><code>linkedInId</code></td>
 <td></td>
 </tr>
 <tr>
-<td>sfdcAccountId</td>
+<td><code>sfdcAccountId</code></td>
 <td></td>
 </tr>
 <tr>
-<td>sfdcContactId</td>
+<td><code>sfdcContactId</code></td>
 <td></td>
 </tr>
 <tr>
-<td>sfdcLeadId</td>
+<td><code>sfdcLeadId</code></td>
 <td></td>
 </tr>
 <tr>
-<td>sfdcLeadOwnerId</td>
+<td><code>sfdcLeadOwnerId</code></td>
 <td></td>
 </tr>
 <tr>
-<td>sfdcOpptyId</td>
+<td><code>sfdcOpptyId</code></td>
 <td></td>
+</tr>
+<tr>
+<td>Add lead</td>
+<td>Add lead if it does not exist.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---send-transactional-email">Action - Send Transactional Email</h3>
+<h3 id="action---remove-lead-from-a-list">Action - Remove Lead from a List</h3>
 <h4 id="parameters-2">Parameters</h4>
 <table>
 <thead>
@@ -907,20 +936,67 @@ API User must have permissions for &lsquo;Read-Write Lead&rsquo;, &lsquo;Read/Ex
 </thead>
 <tbody>
 <tr>
-<td>Target Email Campaign</td>
-<td><ul><li>Please select the Target Smart Campaign that was created according to: <a href="http://developers.marketo.com/blog/sending-a-transactional-email-from-marketo-using-the-api/">Sending a transactional email from Marketo using the API</a></li></ul></td>
+<td>Target Static List</td>
+<td>Required: select list.</td>
 </tr>
 <tr>
 <td>Target Lead ID</td>
-<td><ul><li>Required: provide target lead ID</li></ul></td>
+<td>If the <strong>Lead ID</strong> for the user is known, leave the <strong>Lead ID</strong> Lookup field blank and use this field.</td>
 </tr>
 <tr>
-<td>Token Data to Set</td>
-<td><ul><li><strong>Optional:</strong> Map token value to token name. Use the full token format as in the Marketo UI. For example, { { my.message } }</li></ul></td>
+<td><code>id</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>cookies</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>twitterId</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>facebookId</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>linkedInId</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sfdcAccountId</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sfdcContactId</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sfdcLeadId</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sfdcLeadOwnerId</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sfdcOpptyId</code></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---create-or-update-a-lead">Action - Create or Update a Lead</h3>
+<h3 id="action---remove-lead-from-a-list-batched">Action - Remove Lead from a List (Batched)</h3>
+<h4 id="batch-limits-1">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 300</li>
+<li>Max time since oldest request: 30 minutes</li>
+<li>Max size of requests: 1 MB</li>
+</ul>
 <h4 id="parameters-3">Parameters</h4>
 <table>
 <thead>
@@ -931,17 +1007,132 @@ API User must have permissions for &lsquo;Read-Write Lead&rsquo;, &lsquo;Read/Ex
 </thead>
 <tbody>
 <tr>
+<td>Target Static List</td>
+<td>Required: select list.</td>
+</tr>
+<tr>
+<td>Target Lead ID</td>
+<td>If the <strong>Lead ID</strong> for the user is known, leave the <strong>Lead ID Lookup</strong> field blank and use this field.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>cookies</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>twitterId</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>facebookId</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>linkedInId</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sfdcAccountId</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sfdcContactId</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sfdcLeadId</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sfdcLeadOwnerId</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sfdcOpptyId</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="action---send-transactional-email">Action - Send Transactional Email</h3>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Target Email Campaign</td>
+<td>Select the Target Smart Campaign that was created according to: <a href="http://developers.marketo.com/blog/sending-a-transactional-email-from-marketo-using-the-api/">Sending a transactional email from Marketo using the API</a></td>
+</tr>
+<tr>
+<td>Target Lead ID</td>
+<td>Required: provide a target lead ID.</td>
+</tr>
+<tr>
+<td>Token Data to Set</td>
+<td><strong>Optional:</strong> Map token value to token name. Use the full token format as in the Marketo UI. For example, <code>{ { my.message } }</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="action---create-or-update-a-lead">Action - Create or Update a Lead</h3>
+<h4 id="parameters-5">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td>Update Strategy</td>
-<td><ul><li>Required: select update strategy</li></ul></td>
+<td>Required: select update strategy</td>
 </tr>
 <tr>
 <td>Lead Lookup Filter</td>
-<td><ul><li>Optional: select filter field by which to lookup existing Lead</li><li>Selected lookup filter field must have value set in Lead Data section</li></ul></td>
+<td><ul><li>Optional: select filter field by which to look up an existing lead.</li><li>Selected lookup filter field must have value set in <strong>Lead Data</strong> section.</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h3 id="create-or-update-a-lead-batched">Create or Update a Lead (Batched)</h3>
+<h4 id="batch-limits-2">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 300</li>
+<li>Max time since oldest request: 30 minutes</li>
+<li>Max size of requests: 1 MB</li>
+</ul>
+<h4 id="parameters-6">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Update Strategy</td>
+<td>Required: select update strategy.</td>
+</tr>
+<tr>
+<td>Lead Lookup Filter</td>
+<td><ul><li>Optional: select filter field by which to look up an existing lead.</li><li>Selected lookup filter field must have value set in <strong>Lead Data</strong> section.</li></ul></td>
 </tr>
 </tbody>
 </table>
 <h3 id="action---merge-a-lead">Action - Merge a Lead</h3>
-<h4 id="parameters-4">Parameters</h4>
+<h4 id="parameters-7">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -965,75 +1156,87 @@ API User must have permissions for &lsquo;Read-Write Lead&rsquo;, &lsquo;Read/Ex
 </tbody>
 </table>
 <h2 id="use-case-example">Use Case Example</h2>
-<p><strong>In this example, you will using the Marketo connector to create and push a new lead into our lead database. More specifically, you will making those who join our &ldquo;Shoe Fans&rdquo; audience into leads</strong>.</p>
-<h3 id="step-1-define-attributes-and-audience-conditions"><strong>Step 1: Define Attributes and Audience conditions.</strong></h3>
-<p>Create a new <a href="/server-side/visitor-stitching/visitor-id-attribute/">Visitor Id attribute</a> to store the users email address. It will be the unique value associated with the lead.</p>
-<p>NOTE: Although it is possible to create a lead solely from an email address, it would best to capture more information to associate with the lead. In step 6, we will be passing this &ldquo;Visitor Email&rdquo; visitor id attribute along with three <a href="https://community.tealiumiq.com/t5/AudienceStream/AudienceStream-Trait-Attribute-and-Set-Trait-Enrichment/ta-p/12228">trait attributes</a> for First name, Last name and Company.</p>
-<figure><a class="slb" href="/images/server-side-connectors/no-title-598ib6f6a9cf62f594e5.png"><img src="/images/server-side-connectors/no-title-598ib6f6a9cf62f594e5.png"/>
-    </a><figcaption><p>1._visit_email_id.png</p>
-        </figcaption>
+<p>In this example, you will use the Marketo connector to create and push a new lead into our lead database. More specifically, you will make those who join the <strong>Shoe Fans</strong> audience into leads.</p>
+<h3 id="step-1-define-attributes-and-audience-conditions">Step 1: Define Attributes and Audience conditions.</h3>
+<p>Create a new <a href="/server-side/visitor-stitching/visitor-id-attribute/">Visitor ID attribute</a> to store the user&rsquo;s email address. It is the unique value associated with the lead.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Although it is possible to create a lead solely from an email address, we recommend that you capture more information to associate with the lead. In step 6, you will pass this &ldquo;Visitor Email&rdquo; visitor ID attribute along with three <a href="/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/">trait attributes</a> for First name, Last name and Company.</p>
+<figure><a class="slb" href="/images/server-side-connectors/no-title-598ib6f6a9cf62f594e5.png"><img src="/images/server-side-connectors/no-title-598ib6f6a9cf62f594e5.png"
+         alt="1. visit_email_id.png"
+         title=" visit_email_id.png  "/>
+    </a>
 </figure>
-<p>Then <a href="/server-side/audiences/create-an-audience/">create a new audience</a> titled &ldquo;Shoe Fans&rdquo; and set up logic so that all visitors with the &ldquo;Shoe Fan Badge&rdquo;, and a true &ldquo;Known User&rdquo; <a href="/server-side/attributes/data-types/boolean/">Flag attribute</a> will be added to the audience</p>
-<p>NOTE: &ldquo;Known user&rdquo; flag was created to determine whether or not we know who the user is. If there is an email address associated with user, it is set to true. If no email address, it is set to false. It is a necessary condition because we cannot convert a site user into a lead if we do not know who they are.</p>
-<figure><a class="slb" href="/images/server-side-connectors/no-title-599i856f68983b98a19b.png"><img src="/images/server-side-connectors/no-title-599i856f68983b98a19b.png"/>
-    </a><figcaption><p>2._audinece_config.png</p>
-        </figcaption>
+<p>Then <a href="/server-side/audiences/create-an-audience/">create a new audience</a> titled <code>Shoe Fans</code> and set up logic so that all visitors with the <strong>Shoe Fan</strong> badge and a true <strong>Known User</strong> <a href="/server-side/attributes/data-types/boolean/">boolean attribute</a> will be added to the audience.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The <strong>Known user</strong> boolean was created to determine whether or not the user is known. If there is an email address associated with user, it is set to <code>true</code>. If no email address, it is set to <code>false</code>. It is a necessary condition because you cannot convert a site user into a lead if you do not know who they are.</p>
+<figure><a class="slb" href="/images/server-side-connectors/no-title-599i856f68983b98a19b.png"><img src="/images/server-side-connectors/no-title-599i856f68983b98a19b.png"
+         alt="2. audience config.png"
+         title="audience config.png  "/>
+    </a>
 </figure>
-<h3 id="step-2create-a-custom-service-in-marketo">**Step 2:**<strong>Create a Custom Service in Marketo</strong></h3>
-<p>Log into your Marketo account: <a href="https://login.marketo.com/">https://login.marketo.com/</a></p>
+<h3 id="step-2-create-a-custom-service-in-marketo">Step 2: Create a Custom Service in Marketo</h3>
+<p>Log in to your Marketo account: <a href="https://login.marketo.com/">https://login.marketo.com/</a></p>
 <p>A custom service allows users to describe and define what data their client application can access. Before the application can be used, a Marketo Admin must associate it with a single API-only user with the ability to read, write, and merge leads, as well as being able to read, and execute campaigns.</p>
-<p><strong>You will need to obtain the:</strong></p>
+<p><strong>You need to obtain the following information:</strong></p>
 <ul>
 <li>REST API, Client ID</li>
 <li>REST API, Client Secret</li>
 <li>REST API, Complete REST endpoint URL</li>
 <li>REST API, Complete Identity endpoint URL</li>
 </ul>
-<p>Follow steps 1-7 in the link below to learn how to create a Custom Service in Marketo.</p>
-<p><a href="http://developers.marketo.com/documentation/rest/custom-service/">Custom Service</a></p>
-<h3 id="step-3-add-the-marketo-connector"><strong>Step 3: Add the Marketo Connector</strong></h3>
-<br>
-<p>Navigate to the &ldquo;Act&rdquo; tab, then click onto &ldquo;Connectors&rdquo;. Next, click the &ldquo;+ Add Connector&rdquo; button to select from a list of available connectors. Click onto &ldquo;Marketo&rdquo;, then click the &ldquo;+ Add Connector&rdquo; button once more.</p>
-<figure><a class="slb" href="/images/server-side-connectors/no-title-600id532f9574bd6bf0a.png"><img src="/images/server-side-connectors/no-title-600id532f9574bd6bf0a.png"/>
-    </a><figcaption><p>4._add_marketo_connect.png</p>
-        </figcaption>
+<p>Follow steps 1-7 on <a href="http://developers.marketo.com/documentation/rest/custom-service/">Marketo Custom Service</a>
+to learn how to create a Custom Service in Marketo.</p>
+<h3 id="step-3-add-the-marketo-connector">Step 3: Add the Marketo Connector</h3>
+<p>To add the Marketo connector, perform the following steps:</p>
+<ol>
+<li>Navigate to <strong>AudienceStream &gt; Connectors</strong>.</li>
+<li>Click <strong>+ Add Connector</strong>.</li>
+<li>Click <strong>Marketo</strong>.</li>
+<li>Click <strong>+ Add Connector</strong>.</li>
+</ol>
+<h4 id="configure-rest-api-fields">Configure REST API Fields</h4>
+<p>You should now have all the information needed to properly set up your connector:</p>
+<ol>
+<li>Navigate the the <strong>Configure</strong> tab of your connector window.</li>
+<li>Copy and paste the values obtained from step 3, along with your title and any relevant notes.</li>
+<li>Click <strong>Next</strong>.</li>
+</ol>
+<h4 id="configure-actions">Configure Actions</h4>
+<p>In this window, give the connector instructions on what to do.</p>
+<ol>
+<li>In the <strong>Actions</strong> drop-down, select <strong>Create or Update a lead</strong>.</li>
+<li>Select the <strong>Shoes Fans</strong> audience.</li>
+<li>For the <strong>Update Strategy</strong>, select <strong>Create only</strong>.</li>
+<li>For the <strong>Lead Lookup Filter</strong>, select <strong>Update Strategy</strong>.</li>
+</ol>
+<p>Since a lead is only as good as the information associated with it, map the appropriate data and values. Under <strong>Lead Data to Set</strong>, select the attribute created in step 1 along with any others, and map them to their corresponding values.</p>
+<figure><a class="slb" href="/images/server-side-connectors/no-title-602i20e31d2f64b1d3a3.png"><img src="/images/server-side-connectors/no-title-602i20e31d2f64b1d3a3.png"
+         alt="6. values.png"
+         title="values.png  "/>
+    </a>
 </figure>
-<h4 id="configure-rest-api-fieldsbr"><strong>Configure REST API Fields</strong><br></h4>
-<p>You should now have obtained all the information needed to properly set up your connector. Navigate the the &ldquo;Configure&rdquo; tab of your connector window to copy and paste the values obtained from step 3, along with your title and any relevant notes. Click &ldquo;Next&rdquo;.</p>
-<figure><a class="slb" href="/images/server-side-connectors/no-title-601ibacd72591bbcae2c.png"><img src="/images/server-side-connectors/no-title-601ibacd72591bbcae2c.png" width="345" height="611"/>
-    </a><figcaption><p>5._input_value.png</p>
-        </figcaption>
-</figure>
-<h4 id="configure-actionsbr"><strong>Configure Actions</strong><br></h4>
-<p>It is in this window where we will actually give the connector instructions on what to do. In the &ldquo;Actions&rdquo; dropdown, select the &ldquo;Create or Update a lead&rdquo; option. Then select the &ldquo;Shoes Fans&rdquo; audience, &ldquo;Create only&rdquo; for our &ldquo;Update Strategy&rdquo; and &ldquo;Email&rdquo; for our &ldquo;Lead Lookup Filter&rdquo;.</p>
-<p>Since a lead is only as good as the information associated with it, we will need to map the appropriate data and values. Under &ldquo;Lead Data to Set&rdquo; we will select the attribute created in step 1 along with any others, and map them to their corresponding values.</p>
-<figure><a class="slb" href="/images/server-side-connectors/no-title-602i20e31d2f64b1d3a3.png"><img src="/images/server-side-connectors/no-title-602i20e31d2f64b1d3a3.png"/>
-    </a><figcaption><p>6._values.png</p>
-        </figcaption>
-</figure>
-<h3 id="step-4-test--trace-configurationbr"><strong>Step 4: Test / Trace Configuration</strong><br></h3>
-<p>We have just finished setting up our configuration. Now, we need to check to make sure we did it properly. The best way to go about testing is to run a <a href="/server-side/connectors/trace/Manage/">trace</a> to make sure your events are handled properly and to check your Marketo dashboard to make sure your lead was created with the proper information.<br></p>
-<figure><a class="slb" href="/images/server-side-connectors/no-title-603i22661cabc02f8459.png"><img src="/images/server-side-connectors/no-title-603i22661cabc02f8459.png" width="607" height="399"/>
-    </a><figcaption><p>7._trace.png</p>
-        </figcaption>
+<h3 id="step-4-test--trace-configuration">Step 4: Test / Trace Configuration</h3>
+<p>After you finish setting up your configuration you need to test it. The best way to test your configuration is to run a <a href="/server-side/connectors/trace/about/">Trace</a> to make sure that your events are handled properly and to check your Marketo dashboard to make sure your lead was created with the proper information.</p>
+<figure><a class="slb" href="/images/server-side-connectors/no-title-603i22661cabc02f8459.png"><img src="/images/server-side-connectors/no-title-603i22661cabc02f8459.png"
+         alt="7. trace.png"
+         title="trace.png  " width="607" height="399"/>
+    </a>
 </figure>
 <p>The image above shows 3 main things:</p>
 <ol>
-<li>My audience was joined (&ldquo;Shoe Fans&rdquo;)</li>
-<li>My action was triggered (&ldquo;Marketo- Create leads&rdquo;)</li>
-<li>My action was processed successfully. ( &ldquo;1 action processed/ 0 actions failed&rdquo;)</li>
+<li>My audience was joined (<code>Shoe Fans</code>)</li>
+<li>My action was triggered (<code>Marketo- Create leads</code>)</li>
+<li>My action was processed successfully. (<code>1 action processed/ 0 actions failed</code>)</li>
 </ol>
-<figure><a class="slb" href="/images/server-side-connectors/no-title-604ie0894aac690e17b4.png"><img src="/images/server-side-connectors/no-title-604ie0894aac690e17b4.png" width="610" height="373"/>
-    </a><figcaption><p>&quot;1 Action Processed/ 0 Actions Failed&quot; - Expanded</p>
-        </figcaption>
+<figure><a class="slb" href="/images/server-side-connectors/no-title-604ie0894aac690e17b4.png"><img src="/images/server-side-connectors/no-title-604ie0894aac690e17b4.png"
+         alt="1 Action Processed/ 0 Actions Failed"
+         title="1 Action Processed/ 0 Actions Failed" width="610" height="373"/>
+    </a>
 </figure>
-<h4 id="step-5verify-in-marketo">**Step 5:**<strong>Verify in Marketo</strong></h4>
-<figure><a class="slb" href="/images/server-side-connectors/no-title-605ibc307b19ebb316f6.png"><img src="/images/server-side-connectors/no-title-605ibc307b19ebb316f6.png"/>
-    </a><figcaption><p>Successful lead result</p>
-        </figcaption>
+<h4 id="step-5-verify-in-marketo">Step 5: Verify in Marketo</h4>
+<figure><a class="slb" href="/images/server-side-connectors/no-title-605ibc307b19ebb316f6.png"><img src="/images/server-side-connectors/no-title-605ibc307b19ebb316f6.png"
+         alt="Successful lead result"
+         title="Successful lead result"/>
+    </a>
 </figure>
-<p><strong>Summary:</strong><br></p>
-<p>The Marketo connector would make an excellent addition in nearly any AudienceStream configuration. With its powerful features, and easy user interface, the possibilities to reach your prospects are endless.</p>
 
 </div>
 
@@ -1055,14 +1258,14 @@ API User must have permissions for &lsquo;Read-Write Lead&rsquo;, &lsquo;Read/Ex
 </div><div class="di">
   
   
-  <a href="/server-side-connectors/marketo-connector-setup-guide/"
+  <a href="/server-side-connectors/mandrill-connector/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Marketo "</title>
+      <title>"Mandrill "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>Marketo</div>
+      <div>Mandrill</div>
     </section>
   </a>
   
@@ -1094,7 +1297,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 23, 2020 
+          <p>This page was last updated:  June 9, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1112,16 +1315,18 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action Settings - Parameters and Options</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---add-lead-to-a-list">Action - Add Lead to a List</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---add-lead-to-a-list-batched">Action - Add Lead to a List (Batched)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---remove-lead-from-a-list">Action - Remove Lead from a List</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---remove-lead-from-a-list-batched">Action - Remove Lead from a List (Batched)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-transactional-email">Action - Send Transactional Email</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---create-or-update-a-lead">Action - Create or Update a Lead</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#create-or-update-a-lead-batched">Create or Update a Lead (Batched)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---merge-a-lead">Action - Merge a Lead</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#use-case-example">Use Case Example</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#step-1-define-attributes-and-audience-conditions">Step 1: Define Attributes and Audience conditions.</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#step-2create-a-custom-service-in-marketo">**Step 2:**Create a Custom Service in Marketo</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#step-2-create-a-custom-service-in-marketo">Step 2: Create a Custom Service in Marketo</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#step-3-add-the-marketo-connector">Step 3: Add the Marketo Connector</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#step-4-test--trace-configuration">Step 4: Test / Trace Configuration
-</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#step-4-test--trace-configuration">Step 4: Test / Trace Configuration</a></li>
               </nav>
   </aside></nav>
 
@@ -1322,8 +1527,6 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
-  
-  
   
   
   

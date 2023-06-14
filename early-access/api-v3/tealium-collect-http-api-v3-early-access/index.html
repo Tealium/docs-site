@@ -346,16 +346,16 @@ Sends events to the Tealium Collect server in the region of the profile.</li>
 </tbody>
 </table>
 <h2 id="visitor-identifiers">Visitor identifiers</h2>
-<p>AudineceStream tracks visitors using a combination of:</p>
+<p>AudienceStream tracks visitors using a combination of:</p>
 <ul>
-<li><strong>Primary Visitor ID</strong>: Used to track the visitor anonymously.</li>
-<li><strong>Secondary Visitor ID</strong>: Sent additionally once the visitor is known.</li>
+<li><strong>Anonymous ID</strong>: An ID usually used to track the visitor anonymously (for example, from a device or browser). In the case of a <a href="#known-visitors-server-to-server">known visitor</a>, you can use a value based on a user identifier.</li>
+<li><strong>User Identifier</strong>: Sent after the visitor is known. Based on a value that identifies the user instead of a particular device.</li>
 </ul>
-<h3 id="primary-visitor-id">Primary Visitor ID</h3>
-<p>The primary visitor ID is an anonymous identifier used by AudienceStream to associate a visitor between events and visits. This value should be a GUID (Globally Unique Identifier) and should be consistent for the visitor.</p>
-<p>In the Tealium Collect HTTP API, the key name of the primary visitor ID is <code>tealium_visitor_id</code>.</p>
-<p>Depending on your business case, you can use anonymous visitors or known visitors.</p>
-<h4 id="anonymous-visitors">Anonymous visitors</h4>
+<h3 id="anonymous-id">Anonymous ID</h3>
+<p>The Anonymous ID is an anonymous identifier used by AudienceStream to associate a visitor between events and visits. Ensure this value is a GUID and consistent for the visitor.</p>
+<p>The key name of the anonymous ID is <code>tealium_visitor_id</code>.</p>
+<p>Depending on your business case, you can use anonymous values or values based on known user identifiers.</p>
+<h4 id="anonymous-values">Anonymous values</h4>
 <table>
 <thead>
 <tr>
@@ -372,7 +372,7 @@ Sends events to the Tealium Collect server in the region of the profile.</li>
 </table>
 <p>If you are using Tealium iQ Tag Management and sending API calls server-to-server to enrich anonymous visitor profiles, then the value of the <code>tealium_visitor_id</code> must match the value in the <code>utag_main_v_id</code> cookie. For more information about the built-in variables from utag.js, see <a href="/platforms/javascript/data-layer/">JavaScript (Web) &gt; Data Layer</a>.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>If you are using Adobe Launch or Google Tag Manager, then the value needs to match the <code>v</code> part of the <strong>TEAL</strong> cookie.</p>
-<h4 id="known-visitors-server-to-server">Known visitors server-to-server</h4>
+<h4 id="known-visitors-server-to-server">Known-visitors server-to-server</h4>
 <table>
 <thead>
 <tr>
@@ -387,8 +387,21 @@ Sends events to the Tealium Collect server in the region of the profile.</li>
 </tr>
 </tbody>
 </table>
-<p>When sending data for known visitors (when a value exists for a Visitor ID attribute such as <code>email_address</code>), include a concatenation of the account, profile, visitor ID attribute ID and value and the value in the <code>tealium_visitor_id</code> parameter.</p>
-<p>You can find the visitor ID attribute ID next to the attribute name in the attribute list or within the expanded details. For more information, see <a href="/server-side/attributes/about/#attribute-ids">About Attributes</a>.</p>
+<p>When sending data for known visitors (when a value exists for a visitor ID attribute such as <code>email_address</code>), include a concatenation of the following:</p>
+<ul>
+<li>
+<p>Account</p>
+</li>
+<li>
+<p>Profile</p>
+</li>
+<li>
+<p>Visitor ID attribute ID and value <p class="tip"><i class="fa fa-info-circle"></i>You can find the visitor ID attribute ID next to the attribute name in the attribute list or within the expanded details. For more information, see <a href="/server-side/attributes/about/#attribute-ids">About Attributes</a>.</p></p>
+</li>
+<li>
+<p>Value in the <code>tealium_visitor_id</code> parameter</p>
+</li>
+</ul>
 <p>For example, for the following values:</p>
 <ul>
 <li>Account name: <code>my-account</code></li>
@@ -398,7 +411,7 @@ Sends events to the Tealium Collect server in the region of the profile.</li>
 </ul>
 <p>you would concatenate these values in the following way:</p>
 <pre tabindex="0"><code>tealium_visitor_id&#34;:&#34;__my-account_main__7688_45653454__&#34;
-</code></pre><p class="note"><i class="fa fa-exclamation-triangle"></i>Ensure that your <code>tealium_visitor_id</code> is formatted correctly before proceeding. Incorrectly formed parameters will cause errors in AudienceStream and may not track properly.</p>
+</code></pre><p class="note"><i class="fa fa-exclamation-triangle"></i>Ensure that your <code>tealium_visitor_id</code> is formatted correctly before proceeding. Incorrectly formatted parameters will cause errors in AudienceStream and may not track properly.</p>
 <p>Example JSON:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_account&#34;</span>    : <span style="color:#e6db74">&#34;my-account&#34;</span>,
@@ -408,10 +421,10 @@ Sends events to the Tealium Collect server in the region of the profile.</li>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span> : <span style="color:#e6db74">&#34;__my-account_main__7688_45653454__&#34;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>Whether you use anonymous visitors or known visitors, if your API calls do not contain a consistent <code>tealium_visitor_id</code>, each event will generate a new visit and visitor stitching will not be possible.</p>
-<h3 id="secondary-id">Secondary ID</h3>
-<p>When using AudienceStream, you can pass a known visitor identifier attribute, a secondary ID, with a tracking call. For example, <code>email_address</code> or <code>login_id</code>.</p>
-<p>A visitor identifier is also needed if you are using EventStream and need to provide an ID to a vendor connector.</p>
-<p>To learn more about creating visitor identifiers, see <a href="/server-side/visitor-stitching/visitor-id-attribute/">Visitor ID Attribute</a>.</p>
+<h3 id="user-identifiers">User Identifiers</h3>
+<p>When using AudienceStream, you can pass a known user identifier with a tracking call. For example, <code>email_address</code> or <code>login_id</code>.</p>
+<p>A user identifier is also needed if you are using EventStream and need to provide an ID to a vendor connector.</p>
+<p>In AudienceStream, these user identifiers are used to enrich <a href="/server-side/visitor-stitching/visitor-id-attribute/">visitor ID attributes</a>.</p>
 <h2 id="permission-requirements">Permission requirements</h2>
 <ul>
 <li>Server-side publisher permission</li>
@@ -707,7 +720,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 25, 2023 
+          <p>This page was last updated:  June 13, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -725,8 +738,8 @@ No</button>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#regional-and-global-endpoints">Regional and global endpoints</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#endpoint-mapping">Endpoint mapping</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#visitor-identifiers">Visitor identifiers</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#primary-visitor-id">Primary Visitor ID</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#secondary-id">Secondary ID</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#anonymous-id">Anonymous ID</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#user-identifiers">User Identifiers</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#permission-requirements">Permission requirements</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#authentication">Authentication</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#required-parameters">Required parameters</a></li>

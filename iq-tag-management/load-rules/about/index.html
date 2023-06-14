@@ -822,6 +822,17 @@ is_logged_in equals 1
 </tr>
 </tbody>
 </table>
+<h2 id="load-rules-and-consent-enforcement">Load rules and consent enforcement</h2>
+<p>While it is possible to add consent conditions into existing load rules, your use case may require you to use Consent Integrations for more reliable consent enforcement.</p>
+<p>Consent Integrations is a Tealium iQ Management feature that allows organizations to easily incorporate consent enforcement into their client-side data activation processes. Unlike load rules, which control when tags fire based on conditions such as page views or user interactions, Consent Integrations focus exclusively on ensuring user consent is respected during data collection and processing activities. For more information, see <a href="/iq-tag-management/consent-integrations/">Consent Integrations</a>.</p>
+<p>Using load rules for consent enforcement may result in the following issues:</p>
+<ul>
+<li>Missed initial events</li>
+<li>Data leaks</li>
+<li>Difficulty completely triggering server-side tools</li>
+</ul>
+<p>Additionally, you can fire tags without respecting load rules using an optional array of tag IDs (<code>uid_array</code>) in <a href="/platforms/javascript/track/">track</a> calls. When using load rules for consent enforcement together with the <code>uid_array</code> parameter, consent conditions are ignored along with the rest of the rule.</p>
+<p>For more information about load rules and Consent Integrations, see <a href="https://tealium.com/blog/data-governance-privacy/beyond-load-rules-leveraging-consent-integrations-for-compliance/">Beyond Load Rules: Leveraging Consent Integrations for Compliance</a>.</p>
 
 </div>
 
@@ -867,7 +878,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  June 14, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -883,6 +894,7 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#boolean-logic">Boolean logic</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#list-of-comparison-operators">List of comparison operators</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules-and-consent-enforcement">Load rules and consent enforcement</a></li>
               </nav>
   </aside></nav>
 

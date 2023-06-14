@@ -780,11 +780,38 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="overview">Overview</h2>
-<p>Google Analytics 4 (GA4) is the new version of Google Analytics. One of the differences between GA4 and Google Universal Analytics is that GA4 uses a different reporting method. If your site is currently running Google Universal Analytics, it is recommended that you run both Google Universal Analytics and GA4 concurrently for a few months before switching completely to GA4. This approach allows historical data to continue to be collected in Google Universal Analytics while you gain familiarity with the reporting in GA4.</p>
+  <h2 id="how-it-works">How it works</h2>
+<p>Google Analytics 4 (GA4) is the new version of Google Analytics. One of the differences between GA4 and Google Universal Analytics is that GA4 uses a different reporting method. If your site is currently running Google Universal Analytics, we recommend that you run both Google Universal Analytics and GA4 concurrently for a few months before switching completely to GA4. This approach allows historical data to continue to be collected in Google Universal Analytics while you gain familiarity with the reporting in GA4.</p>
 <p>Note that Google Universal Analytics will stop processing data on July 1, 2023 (October 1, 2023 for 360 accounts).</p>
 <p>Google Universal Analytics has several hit types, including event tracking, pageviews, timing events, and social shares. GA4 is completely event-based, meaning that there are only event hits. GA4 does not have the event categories, actions, labels, and values used in Google Universal Analytics. Instead, the data sent with GA4 events includes an event name and customizable event parameters that contain contextual data for the event.</p>
 <p>For more information about migrating to GA4 from Google Universal Analytics, see <a href="https://community.tealiumiq.com/t5/Tags/Migrating-from-Universal-Analytics-gtag-js-analytics-js-to/ta-p/35786">Migrating from Universal Analytics to Google Analytics 4</a>.</p>
+<h2 id="tag-tips">Tag tips</h2>
+<ul>
+<li>Use mappings to:
+<ul>
+<li>Dynamically override the E-Commerce extension values</li>
+<li>Setup event triggers</li>
+</ul>
+</li>
+<li>Supports the following E-Commerce extension values:
+<ul>
+<li>Order ID</li>
+<li>Order Total</li>
+<li>Shipping Amount</li>
+<li>Tax Amount</li>
+<li>Store</li>
+<li>Promo Code</li>
+<li>Customer ID</li>
+<li>List of Product IDs</li>
+<li>List of Names</li>
+<li>List of Brands</li>
+<li>List of Categories</li>
+<li>List of Prices</li>
+<li>List of Quantities</li>
+<li>List of Discounts</li>
+</ul>
+</li>
+</ul>
 <h2 id="configuring-the-google-analytics-4-tag">Configuring the Google Analytics 4 tag</h2>
 <p>Navigate to the Tag Marketplace to add a new tag. Read the <a href="/iq-tag-management/tags/about/">Tag Overview</a> article for general instructions on how to add a tag.</p>
 <p>When adding the tag, configure the following settings:</p>
@@ -820,6 +847,8 @@ var utag_data = {
 </ul>
 </li>
 </ul>
+<h2 id="load-rules">Load rules</h2>
+<p>Load the tag on all pages or set conditions for when your tag will load. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
 <h2 id="ga4-event-types">GA4 event types</h2>
 <p>GA4 is event-based and provides the following types of events:</p>
 <ul>
@@ -840,8 +869,40 @@ var utag_data = {
 <p>You can enable enhanced measurement options (events) in the Google Analytics interface to measure interactions with your content. No configuration in Tealium iQ is required. When you enable enhanced measurement options, additional events are sent that provide information on user activity such as file downloads and searches. For more information, see the GA4 documentation for <a href="https://support.google.com/analytics/answer/9216061?hl=en&amp;ref_topic=9756175">Enhanced Measurement Events</a>.</p>
 <h3 id="recommended-events">Recommended events</h3>
 <p>GA4 provides recommended events, including events recommended for all sites, as well as events specific to online sales and to games. Each recommended event has one or more parameters that provide additional context for the event. For more information on these events and their parameters, see the Google <a href="https://support.google.com/analytics/answer/9267735?hl=en&amp;ref_topic=9756175">Recommended Events</a> documentation.</p>
+<h3 id="dynamic-events-trigger">Dynamic Events Trigger</h3>
+<p>Map a data layer attribute to <strong>Dynamic Events Trigger</strong> to trigger a GA4 event based on the value of the mapped attribute.</p>
+<p>For example:</p>
+<ol>
+<li>Map <code>event_name</code> to the Dynamic Events Trigger.</li>
+<li>Map <code>variable1</code> to <code>variable2</code>.</li>
+<li>If the data layer is <code>{event_name:'value',variable1:'abc'}</code>, then the tag triggers <code>gtag('event','value',{variable2:'abc'})</code>.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>dynamic_event</code></td>
+<td style="text-align:left">Dynamic Events Trigger</td>
+</tr>
+</tbody>
+</table>
+<h4 id="check-the-tag-template-version">Check the tag template version.</h4>
+<p>To use Dynamic Events Trigger, you must update your template to the May 26, 2023 (<code>20230526</code>) template or newer. To check the template version and update it, perform the following steps;</p>
+<ol>
+<li>Navigate to the <strong>Tag Configuration</strong> tab, click <strong>Advanced Settings</strong></li>
+<li>Click <strong>Edit Template</strong>. The template window appears.</li>
+<li>At the top of the template is a date (timestamp) that begins with the template ID and the date in format <code>YYYYMMDD</code>.</li>
+<li>If you customized your tag template, edit the template to include those customizations.</li>
+<li>Click <strong>Update</strong> to update the template.</li>
+</ol>
+<p>For more information, see <a href="/iq-tag-management/templates/manage/">Manage Templates</a>.</p>
 <h3 id="custom-events">Custom events</h3>
-<p>If your event does not fit one of the three event types described above, send a custom event. For more information, see <a href="https://support.google.com/analytics/answer/12229021?hl=en&amp;ref_topic=9756175">GA4 Custom Events</a>.</p>
+<p>If your event does not fit one of the four event types described above, send a custom event. For more information, see <a href="https://support.google.com/analytics/answer/12229021?hl=en&amp;ref_topic=9756175">GA4 Custom Events</a>.</p>
 <h2 id="event-mapping-examples">Event mapping examples</h2>
 <p>This section provides mapping examples of event mapping for two events that will be sent to GA4:</p>
 <ul>
@@ -876,7 +937,7 @@ var utag_data = {
 <pre tabindex="0"><code>utag.link({
 	 &#34;tealium_event&#34; : &#34;contact us&#34;
  });
-</code></pre><p>This is event is not one of the GA4 recommended events, so it&rsquo;s mapped as a custom event, as follows:</p>
+</code></pre><p>This event is not one of the GA4 recommended events, so it&rsquo;s mapped as a custom event, as follows:</p>
 <ul>
 <li><code>tealium_event</code> – Select <strong>Event Triggers</strong> for the <strong>Category</strong>, and then enter <code>contact us</code> in the <strong>Trigger</strong> field. Select <code>Custom Event</code> for <strong>Event</strong> and enter <code>contact_us_click</code> in the <strong>Custom Name</strong> field.<br>
 <figure><a class="slb" href="/images/client-side-tags/map-contactus-example.png"><img src="/images/client-side-tags/map-contactus-example.png"
@@ -989,12 +1050,15 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#overview">Overview</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-tips">Tag tips</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configuring-the-google-analytics-4-tag">Configuring the Google Analytics 4 tag</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules">Load rules</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#ga4-event-types">GA4 event types</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#automatic-events">Automatic events</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#enhanced-measurement-events">Enhanced measurement events</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#recommended-events">Recommended events</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#dynamic-events-trigger">Dynamic Events Trigger</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#custom-events">Custom events</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-mapping-examples">Event mapping examples</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#login-event-example">Login event example</a></li>

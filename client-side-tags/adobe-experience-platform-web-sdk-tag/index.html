@@ -774,138 +774,251 @@ var utag_data = {
 <div class="mv2 mid-gray fn w-100">
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to set up the Adobe Experience Platform Web SDK tag in your Tealium iQ Tag Management account.
+      This article describes how to set up the Adobe Experience Platform Web SDK tag.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="tag-tips">Tag Tips</h2>
+  <p>Adobe Experience Platform Web SDK is a client-side JavaScript library that allows customers of the Adobe Experience Cloud to interact with the various services in the Experience Cloud through the Adobe Experience Platform Edge Network. Also referred to as Adobe Alloy.</p>
+<h2 id="tag-tips">Tag tips</h2>
 <ul>
-<li>Use mappings to override standard configuration values and set custom parameters.</li>
-<li>If you are configuring multiple instances, you must provide a unique Config ID and Org ID for each instance.</li>
-<li>Provide multiple values in a comma-separated list.</li>
+<li>Use mappings to override standard config values and set custom parameters.</li>
+<li>If you are configuring multiple instances, you must provide a unique <strong>Datastream ID</strong> and <strong>Org ID</strong> for each instance. Provide multiple values in a comma-separated list.</li>
 </ul>
-<h2 id="tag-configuration">Tag Configuration</h2>
-<p>First, go to the tag marketplace and add the Adobe Experience Platform Web SDK tag (Learn more about <a href="/iq-tag-management/tags/manage-tags/">how to add a tag</a>).</p>
-<p>After adding the tag, configure the following settings:</p>
+<h2 id="how-it-works">How it works</h2>
+<p>Mapping destinations are represented with a dot notation. The final API payload consists of a series of nested JSON objects based on the dot notation represented in the tag.</p>
+<p>The Adobe Experience Platform Web SDK tag includes the following mappings specific to the Adobe application you are using and include XDM and non-XDM data mappings. XDM data is an object whose content and structure matches a schema you have created within Adobe Experience Platform.</p>
 <ul>
-<li>
-<p><strong>Instance Name</strong></p>
+<li>XDM Event triggers: Use to trigger events with a specific <code>eventType</code> value.</li>
+<li>Event-specific parameters: Use to map both XDM and non-XDM attributes for specific events.</li>
+<li>Analytics XDM data: Use to map data to be passed in the XDM object.</li>
+<li>Target Data: Use to map non-XDM attributes to be passed in the data object to update a Target profile or send Target Recommendations attributes.</li>
+</ul>
+<p>For more information about sending XDM and non-XDM data to Adobe, see <a href="https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/tracking-events.html">Track Events</a> in the Adobe documentation.</p>
+<h3 id="event-example">Event example</h3>
+<p>Configure Adobe Experience Platform Web SDK events by selecting a variable that maps to an event and then specifying a trigger. Events are triggered when the variable is equal to a specific value, passing the chosen event name as <code>eventType</code>.</p>
+<h4 id="use-case-purchase-event-with-xdm-event-triggers">Use case: Purchase event with XDM Event Triggers</h4>
+<p>To set up a purchase event:</p>
+<ol>
+<li>Navigate to the <strong>Data Mappings</strong> screen of the Adobe Experience Platform Web SDK tag configuration.</li>
+<li>Select <code>tealium_event</code> from the variable drop-down list and click <strong>Select a Destination</strong>.</li>
+<li>In the <strong>Category</strong> section, select <strong>XDM Event Triggers</strong>.</li>
+<li>Set the <strong>When mapped variable equals</strong> field to <strong>Purchase</strong>. This is the value <code>tealium_event</code> must equal to trigger a purchase.</li>
+<li>In the <strong>Trigger event</strong> drop-down list, select <strong>Purchases</strong> <code>(commerce.purchases)</code> under the <strong>sendEvent: Commerce Events</strong> section. This is the event that is triggered when <code>tealium_event</code> equals a purchase event.</li>
+</ol>
+<figure><a class="slb" href="/images/client-side-tags/adobe-experience-web-sdk-mappings-example.png"><img src="/images/client-side-tags/adobe-experience-web-sdk-mappings-example.png"
+         alt="adobe experience web sdk mappings example"
+         title="adobe experience web sdk mappings example"/>
+    </a>
+</figure>
+<h4 id="use-case-purchase-event-with-event-specific-parameters">Use case: Purchase event with Event-specific Parameters</h4>
+<p>If you need to send data with the purchase event that is not already included in the existing E-Commerce extension mappings, use <strong>Event-specific Parameters</strong>. Select an attribute from the list or enter a custom destination. Ensure you follow the specific dot notation for the given event and attribute.</p>
+<p>The following example passes <code>purchaseOrderNumber</code> as XDM data with the purchase event:</p>
+<ol>
+<li>Navigate to the <strong>Data Mappings</strong> screen of the Adobe Experience Platform Web SDK tag configuration.</li>
+<li>Select <code>po_number</code> (or the relevant client-specific data layer element) from the variable drop-down list and click <strong>Select a Destination</strong>.</li>
+<li>In the <strong>Category</strong> section, select <strong>Event-specific Parameters</strong>.</li>
+<li>Because <code>purchaseOrderNumber</code> is not one of the default destinations, you must enter a <strong>Custom Parameter</strong>. Select <strong>Custom</strong> from the <strong>Parameter</strong> drop-down and enter the full dot notation path for the destination: <code>commerce.purchases.xdm.commerce.order.purchaseOrderNumber</code>.</li>
+<li>In the <strong>For event</strong> drop-down list, select the event <strong>Purchases</strong>.</li>
+<li>Click <strong>Add</strong> to add the parameter</li>
+</ol>
+<h4 id="use-case-non-xdm-dataadobe-target-data">Use case: Non-XDM data/Adobe Target data</h4>
+<p>Non-XDM, or Target data, can also be set using event mapping. In this use case, we will also send <code>product_brand</code> for use in Adobe Target.</p>
+<ol>
+<li>Navigate to the <strong>Data Mappings</strong> screen of the Adobe Experience Platform Web SDK tag configuration.</li>
+<li>Select <code>product_brand</code> from the variable drop-down list and click <strong>Select a Destination</strong>.</li>
+<li>In the <strong>Category</strong> section, select <strong>Target Data</strong>.</li>
+<li>Select <code>entity.brand</code> as the mapping destination.</li>
+<li>The purchase event sent to the Adobe Web SDK will now include <code>data.__adobe.target.entity.brand</code> in the payload.</li>
+</ol>
+<p>The following examples shows the resulting Adobe Web SDK call, including some default mappings from the E-Commerce extension. This example shows how the Adobe dot notation is broken out into a nested object for <code>commerce.purchases.xdm.commerce.order.purchaseOrderNumber</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">alloy</span>(<span style="color:#e6db74">&#34;sendEvent&#34;</span>,{
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;xdm&#34;</span><span style="color:#f92672">:</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;commerce&#34;</span><span style="color:#f92672">:</span>{
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;order&#34;</span><span style="color:#f92672">:</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;purchaseID&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;123456789&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;currencyCode&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;USD&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;priceTotal&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">39.98</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;purchaseOrderNumer&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;A1234&#34;</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;productListItems&#34;</span><span style="color:#f92672">:</span>[
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;SKU&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;HT105&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;The Big Floppy Hat&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;priceTotal&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">29.99</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;quantity&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__adobe</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">target</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;entity.brand&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Acme&#34;</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h2 id="managing-flicker-with-adobe-target">Managing Flicker with Adobe Target</h2>
+<p>Loading the Adobe Experience Platform Web SDK asynchronously can cause content flicker, as previously loaded content could be updated by Adobe Target. To minimize flicker, Adobe recommends adding a prehiding snippet. This snippet should be added the <code>utag.sync.js</code> template using a JavaScript extension.</p>
+<p>For more information about <code>utag.sync.js</code>, see <a href="/iq-tag-management/getting-started/install/utag-sync/">How <code>utag.sync.js</code> works</a>.</p>
+<p>For information about the prehiding snippet, see <a href="https://experienceleague.adobe.com/docs/experience-platform/edge/personalization/manage-flicker.html">Manage Flicker</a>.</p>
+<h2 id="tag-configuration">Tag configuration</h2>
+<p>Navigate to the Tag Marketplace to add a new tag. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
+<p>When adding the tag, configure the following settings:</p>
 <ul>
-<li>The namespace for your SDK.</li>
-<li>The default value is <code>alloy</code>.</li>
+<li><strong>Tag Version</strong>: Select the appropriate tag version. The default is version 2.16.0.</li>
+<li><strong>Instance Name</strong>: The namespace for your SDK. The default is <code>alloy</code>.</li>
+<li><strong>Org ID</strong>: Your Adobe-assigned Experience Cloud organization ID. For example, <code>XXX@AdobeOrg</code>.</li>
+<li><strong>Edge Domain</strong>: The domain that will be used to interact with Adobe services. Update the default setting if you mapped one of your first-party domains (using CNAME) to an Adobe-provisioned domain.</li>
+<li><strong>Datastream ID</strong>: Your Adobe-assigned datastream ID, which links the SDK to the appropriate accounts and configuration. Also referred to as the <code>edgeConfigId</code>.</li>
+<li><strong>Debug Enabled</strong>: Enables debugging messages to be displayed in the browser’s JavaScript console.</li>
+<li><strong>Edge Base Path</strong>: Configured in your Adobe account. The default is <code>ee</code>.</li>
+<li><strong>Auto Pageview Tracking</strong>: Fires the <code>web.webpagedetails.pageViews</code> event automatically for every page view.</li>
+<li><strong>Auto Purchase Tracking</strong>: Fires the <code>commerce.purchases</code> event automatically whenever an order ID is present.</li>
 </ul>
-</li>
-<li>
-<p><strong>Config ID</strong></p>
-<ul>
-<li>Your Adobe-assigned configuration ID.</li>
-<li>This ID links the SDK to the appropriate accounts and configuration.</li>
-</ul>
-</li>
-<li>
-<p><strong>Org ID</strong></p>
-<ul>
-<li>Your Adobe-assigned Experience Cloud organization ID.</li>
-</ul>
-</li>
-</ul>
-<h2 id="data-mappings">Data Mappings</h2>
-<p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-layer/data-layer-variables/">data layer variable</a> to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">data mappings</a>.</p>
+<h2 id="load-rules">Load rules</h2>
+<p>Load the tag on all pages or set conditions for when your tag will load. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
+<h2 id="data-mappings">Data mappings</h2>
+<p>Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see <a href="/iq-tag-management/data-mappings/about/">About data mappings</a>.</p>
 <p>The available categories are:</p>
 <h3 id="standard">Standard</h3>
 <table>
 <thead>
 <tr>
 <th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>library_version</code></td>
+<td>String</td>
+<td>Tag Version</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td>Array</td>
+<td>Context</td>
+</tr>
+<tr>
+<td><code>debugEnabled</code></td>
+<td>Boolean</td>
+<td>Debug Enabled</td>
+</tr>
+<tr>
+<td><code>decisionScopes</code></td>
+<td>Array</td>
+<td>Decision Scopes</td>
+</tr>
+<tr>
+<td><code>defaultConsent</code></td>
+<td>String</td>
+<td>Default Consent</td>
+</tr>
+<tr>
+<td><code>downloadLinkQualifier</code></td>
+<td>String</td>
+<td>Download Link Qualifier</td>
+</tr>
+<tr>
+<td><code>edgeConfigId</code></td>
+<td>String</td>
+<td>Datastream ID</td>
+</tr>
+<tr>
+<td><code>edgeDomain</code></td>
+<td>String</td>
+<td>Edge Domain</td>
+</tr>
+<tr>
+<td><code>edgeBasePath</code></td>
+<td>String</td>
+<td>Edge Base Path</td>
+</tr>
+<tr>
+<td><code>auto_page_tracking</code></td>
+<td>Boolean</td>
+<td>Auto Page Tracking</td>
+</tr>
+<tr>
+<td><code>auto_purchase_tracking</code></td>
+<td>Boolean</td>
+<td>Auto Purchase Tracking</td>
+</tr>
+<tr>
+<td><code>event_type</code></td>
+<td>String</td>
+<td>Event Type</td>
+</tr>
+<tr>
+<td><code>errorsEnabled</code></td>
+<td>Boolean</td>
+<td>Errors Enabled</td>
+</tr>
+<tr>
+<td><code>hasHidingSnippet</code></td>
+<td>Boolean</td>
+<td>Adobe Target Pre-Hiding Snippet</td>
+</tr>
+<tr>
+<td><code>instanceName</code></td>
+<td>String</td>
+<td>Instance Name</td>
+</tr>
+<tr>
+<td><code>orgId</code></td>
+<td>String</td>
+<td>Org ID</td>
+</tr>
+<tr>
+<td><code>renderDecisions</code></td>
+<td>Boolean</td>
+<td>Render Decisions</td>
+</tr>
+<tr>
+<td><code>documentUnloading</code></td>
+<td>Boolean</td>
+<td>Document Unloading</td>
+</tr>
+<tr>
+<td><code>custom.##</code></td>
+<td>-</td>
+<td>Custom Data</td>
+</tr>
+<tr>
+<td><code>commandCallback</code></td>
+<td>Function</td>
+<td>commandCallback Function</td>
+</tr>
+</tbody>
+</table>
+<h3 id="data-collection">Data Collection</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>clickCollectionEnabled</code></td>
-<td><ul><li>Boolean</li><li>Click Collection Enabled</li></ul></td>
-</tr>
-<tr>
-<td><code>context</code></td>
-<td><ul><li>Array</li><li>Context</li></ul></td>
-</tr>
-<tr>
-<td><code>cookieDestinationsEnabled</code></td>
-<td><ul><li>Boolean</li><li>Cookie Destinations Enabled</li></ul></td>
-</tr>
-<tr>
-<td><code>debugEnabled</code></td>
-<td><ul><li>Boolean</li><li>Debug Enabled</li></ul></td>
-</tr>
-<tr>
-<td><code>decisionScopes</code></td>
-<td><ul><li>Array</li><li>Decision Scopes</li></ul></td>
-</tr>
-<tr>
-<td><code>defaultConsent</code></td>
-<td><ul><li>String</li><li>Default Consent</li></ul></td>
-</tr>
-<tr>
-<td><code>downloadLinkQualifier</code></td>
-<td><ul><li>String</li><li>Download Link Qualifier</li></ul></td>
-</tr>
-<tr>
-<td><code>edgeConfigId</code></td>
-<td><ul><li>String</li><li>Config ID</li></ul></td>
-</tr>
-<tr>
-<td><code>edgeDomain</code></td>
-<td><ul><li>String</li><li>Edge Domain</li></ul></td>
-</tr>
-<tr>
-<td><code>event_type</code></td>
-<td><ul><li>String</li><li>Event Type</li></ul></td>
-</tr>
-<tr>
-<td><code>errorsEnabled</code></td>
-<td><ul><li>Boolean</li><li>Errors Enabled</li></ul></td>
-</tr>
-<tr>
-<td><code>idMigrationEnabled</code></td>
-<td><ul><li>Array</li><li>ID Migration Enabled</li></ul></td>
-</tr>
-<tr>
-<td><code>instanceName</code></td>
-<td><ul><li>String</li><li>Instance Name</li></ul></td>
+<td>Boolean</td>
+<td>Click Collection Enabled</td>
 </tr>
 <tr>
 <td><code>onBeforeEventSend</code></td>
-<td><ul><li>Function</li><li><code>onBeforeEventSend</code> function</li></ul></td>
+<td>Function</td>
+<td>onBeforeEventSend</td>
 </tr>
 <tr>
-<td><code>orgId</code></td>
-<td><ul><li>String</li><li>Org ID</li></ul></td>
-</tr>
-<tr>
-<td><code>prehidingStyle</code></td>
-<td><ul><li>String</li><li>Prehiding Style</li></ul></td>
-</tr>
-<tr>
-<td><code>renderDecisions</code></td>
-<td><ul><li>Boolean</li><li>Render Decisions</li></ul></td>
-</tr>
-<tr>
-<td><code>thirdPartyCookiesEnabled</code></td>
-<td><ul><li>Boolean</li><li>Third Party Cookies Enabled</li></ul></td>
-</tr>
-<tr>
-<td><code>urlDestinationsEnabled</code></td>
-<td><ul><li>Boolean</li><li>URL Destinations Enabled</li></ul></td>
-</tr>
-<tr>
-<td><code>custom.##</code></td>
-<td><ul><li>Custom Data</li></ul></td>
-</tr>
-<tr>
-<td><code>commandCallback</code></td>
-<td><ul><li>Function</li><li><code>commandCallback</code> Function</li></ul></td>
+<td><code>onBeforeLinkClickSend</code></td>
+<td>Function</td>
+<td>onBeforeLinkClickSend</td>
 </tr>
 </tbody>
 </table>
@@ -913,161 +1026,159 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th>Type</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>purchaseID</code></td>
-<td><ul><li>Order ID</li><li>Overrides <code>_corder</code>.</li></ul></td>
+<td style="text-align:left"><code>purchaseID</code> (Overrides <code>_corder</code>)</td>
+<td>String</td>
+<td style="text-align:left">Order ID</td>
 </tr>
 <tr>
-<td><code>priceTotal</code></td>
-<td><ul><li>Order Total</li><li>Overrides <code>_ctotal</code>.</li></ul></td>
+<td style="text-align:left"><code>priceTotal</code> (Overrides <code>_ctotal</code>)</td>
+<td>String</td>
+<td style="text-align:left">Order Total</td>
 </tr>
 <tr>
-<td><code>currencyCode</code></td>
-<td><ul><li>Currency</li><li>Overrides <code>_ccurrency</code>.</li></ul></td>
+<td style="text-align:left"><code>currencyCode</code> (Overrides <code>_ccurrency</code>)</td>
+<td>String</td>
+<td style="text-align:left">Currency</td>
 </tr>
 <tr>
-<td><code>product.name</code></td>
-<td><ul><li>Array</li><li>List of Names</li><li>Overrides <code>_cprodname</code>.</li></ul></td>
+<td style="text-align:left"><code>product.name</code> (Overrides <code>_cprodname</code>)</td>
+<td>Array</td>
+<td style="text-align:left">List of Names</td>
 </tr>
 <tr>
-<td><code>product.SKU</code></td>
-<td><ul><li>Array</li><li>List of SKUs</li><li>Overrides <code>_csku</code>.</li></ul></td>
+<td style="text-align:left"><code>product.SKU</code> (Overrides <code>_csku</code>)</td>
+<td>Array</td>
+<td style="text-align:left">List of SKUs</td>
 </tr>
 <tr>
-<td><code>product.quantity</code></td>
-<td><ul><li>Array</li><li>List of Quantities</li><li>Overrides <code>_cquan</code>.</li></ul></td>
+<td style="text-align:left"><code>product.quantity</code> (Overrides <code>_cquan</code>)</td>
+<td>Array</td>
+<td style="text-align:left">List of Quantities</td>
 </tr>
 <tr>
-<td><code>product.priceTotal</code></td>
-<td><ul><li>Array</li><li>List of Prices</li><li>Overrides <code>_cprice</code>.</li></ul></td>
+<td style="text-align:left"><code>product.priceTotal</code> (Overrides <code>_cprice</code>)</td>
+<td>Array</td>
+<td style="text-align:left">List of Prices</td>
 </tr>
 <tr>
-<td><code>payment.transactionID</code></td>
-<td><ul><li>Array</li><li>Payment Transaction ID</li></ul></td>
+<td style="text-align:left"><code>product.lineItemId</code> (Overrides <code>_ccat</code>)</td>
+<td>Array</td>
+<td style="text-align:left">List of Line Item Ids</td>
 </tr>
 <tr>
-<td><code>payment.paymentAmount</code></td>
-<td><ul><li>Array</li><li>Payment Amount</li></ul></td>
+<td style="text-align:left"><code>payment.transactionID</code></td>
+<td>Array</td>
+<td style="text-align:left">Payment Transaction ID</td>
 </tr>
 <tr>
-<td><code>payment.paymentType</code></td>
-<td><ul><li>Array</li><li>Payment Type</li></ul></td>
+<td style="text-align:left"><code>payment.paymentAmount</code></td>
+<td>Array</td>
+<td style="text-align:left">Payment Amount</td>
 </tr>
 <tr>
-<td><code>payment.currencyCode</code></td>
-<td><ul><li>Array</li><li>Payment Currency Code</li></ul></td>
+<td style="text-align:left"><code>payment.paymentType</code></td>
+<td>Array</td>
+<td style="text-align:left">Payment Type</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>payment.currencyCode</code></td>
+<td>Array</td>
+<td style="text-align:left">Payment Currency Code</td>
 </tr>
 </tbody>
 </table>
-<h3 id="commandsevents">Commands/Events</h3>
+<h3 id="privacy-options">Privacy Options</h3>
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th>Type</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>advertising.clicks</code></td>
-<td><ul><li>Clicks</li></ul></td>
+<td style="text-align:left"><code>defaultConsent</code></td>
+<td>String</td>
+<td style="text-align:left">Default Consent</td>
+</tr>
+</tbody>
+</table>
+<h3 id="personalization-options">Personalization Options</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th>Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>prehidingStyle</code></td>
+<td>String</td>
+<td style="text-align:left">Prehiding Style</td>
 </tr>
 <tr>
-<td><code>advertising.completes</code></td>
-<td><ul><li>Completes</li></ul></td>
+<td style="text-align:left"><code>targetMigrationEnabled</code></td>
+<td>Boolean</td>
+<td style="text-align:left">Target Migration Enabled</td>
+</tr>
+</tbody>
+</table>
+<h3 id="audiences-options">Audiences Options</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th>Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>cookieDestinationsEnabled</code></td>
+<td>Boolean</td>
+<td style="text-align:left">Cookie Destinations Enabled</td>
 </tr>
 <tr>
-<td><code>advertising.conversions</code></td>
-<td><ul><li>Conversions</li></ul></td>
+<td style="text-align:left"><code>urlDestinationsEnabled</code></td>
+<td>Boolean</td>
+<td style="text-align:left">Url Destinations Enabled</td>
+</tr>
+</tbody>
+</table>
+<h3 id="identity-options">Identity Options</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th>Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>idMigrationEnabled</code></td>
+<td>Boolean</td>
+<td style="text-align:left">ID Migration Enabled</td>
 </tr>
 <tr>
-<td><code>advertising.federated</code></td>
-<td><ul><li>Federated</li></ul></td>
+<td style="text-align:left"><code>thirdPartyCookiesEnabled</code></td>
+<td>Boolean</td>
+<td style="text-align:left">Third Party Cookies Enabled</td>
 </tr>
 <tr>
-<td><code>advertising.firstQuartiles</code></td>
-<td><ul><li>First Quartiles</li></ul></td>
-</tr>
-<tr>
-<td><code>advertising.impressions</code></td>
-<td><ul><li>Impressions</li></ul></td>
-</tr>
-<tr>
-<td><code>advertising.midpoints</code></td>
-<td><ul><li>Midpoints</li></ul></td>
-</tr>
-<tr>
-<td><code>advertising.starts</code></td>
-<td><ul><li>Starts</li></ul></td>
-</tr>
-<tr>
-<td><code>advertising.thirdQuartiles</code></td>
-<td><ul><li>Third Quartiles</li></ul></td>
-</tr>
-<tr>
-<td><code>advertising.timePlayed</code></td>
-<td><ul><li>Time Played</li></ul></td>
-</tr>
-<tr>
-<td><code>commerce.checkouts</code></td>
-<td><ul><li>Checkouts</li></ul></td>
-</tr>
-<tr>
-<td><code>commerce.productListAdds</code></td>
-<td><ul><li>Product List Adds</li></ul></td>
-</tr>
-<tr>
-<td><code>commerce.productListOpens</code></td>
-<td><ul><li>Product List Opens</li></ul></td>
-</tr>
-<tr>
-<td><code>commerce.productListRemovals</code></td>
-<td><ul><li>Product List Removals</li></ul></td>
-</tr>
-<tr>
-<td><code>commerce.productListReopens</code></td>
-<td><ul><li>Product List Reopens</li></ul></td>
-</tr>
-<tr>
-<td><code>commerce.productListViews</code></td>
-<td><ul><li>Product List Views</li></ul></td>
-</tr>
-<tr>
-<td><code>commerce.productViews</code></td>
-<td><ul><li>Product Views</li></ul></td>
-</tr>
-<tr>
-<td><code>commerce.purchases</code></td>
-<td><ul><li>Purchases</li></ul></td>
-</tr>
-<tr>
-<td><code>commerce.saveForLaters</code></td>
-<td><ul><li>Save For Laters</li></ul></td>
-</tr>
-<tr>
-<td><code>delivery.feedback</code></td>
-<td><ul><li>Feedback</li></ul></td>
-</tr>
-<tr>
-<td><code>web.webinteraction.linkClicks</code></td>
-<td><ul><li>Link Clicks</li></ul></td>
-</tr>
-<tr>
-<td><code>web.webpagedetails.pageView</code>s</td>
-<td><ul><li>Page Views</li></ul></td>
-</tr>
-<tr>
-<td><code>identityMap</code></td>
-<td><ul><li>Identity Map</li></ul></td>
-</tr>
-<tr>
-<td><code>custom</code></td>
-<td><ul><li>Custom</li></ul></td>
+<td style="text-align:left"><code>identityMap</code></td>
+<td>String</td>
+<td style="text-align:left">identity Map</td>
 </tr>
 </tbody>
 </table>
@@ -1075,26 +1186,1011 @@ var utag_data = {
 <table>
 <thead>
 <tr>
-<th>Variable</th>
-<th>Description</th>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>id_namespace</code></td>
-<td><ul><li>Array, String</li><li>ID Namespace</li></ul></td>
+<td style="text-align:left">ID Namespace <code>id_namespace</code></td>
+<td style="text-align:left">[Array, String]</td>
 </tr>
 <tr>
-<td><code>id</code></td>
-<td><ul><li>Array, String</li><li>ID</li></ul></td>
+<td style="text-align:left">ID <code>id</code></td>
+<td style="text-align:left">[Array, String]</td>
 </tr>
 <tr>
-<td><code>authenticatedState</code></td>
-<td><ul><li>Array, String</li><li>Authenticated State</li></ul></td>
+<td style="text-align:left">Authenticated State <code>authenticatedState</code></td>
+<td style="text-align:left">[Array, String]</td>
 </tr>
 <tr>
-<td><code>primary</code></td>
-<td><ul><li>Array, String</li><li>Primary</li></ul></td>
+<td style="text-align:left">Primary <code>primary</code></td>
+<td style="text-align:left">[Array, String]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="xdm-event-triggers">XDM Event Triggers</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>advertising.clicks</code></td>
+<td style="text-align:left">Clicks</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>advertising.completes</code></td>
+<td style="text-align:left">Completes</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>advertising.conversions</code></td>
+<td style="text-align:left">Conversions</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>advertising.federated</code></td>
+<td style="text-align:left">Federated</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>advertising.firstQuartiles</code></td>
+<td style="text-align:left">First Quartiles</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>advertising.impressions</code></td>
+<td style="text-align:left">Impressions</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>advertising.midpoints</code></td>
+<td style="text-align:left">Midpoints</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>advertising.starts</code></td>
+<td style="text-align:left">Starts</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>advertising.thirdQuartiles</code></td>
+<td style="text-align:left">Third Quartiles</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>advertising.timePlayed</code></td>
+<td style="text-align:left">Time Played</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>application.close</code></td>
+<td style="text-align:left">Close</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>application.launch</code></td>
+<td style="text-align:left">Launch</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>commerce.checkouts</code></td>
+<td style="text-align:left">Checkouts</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>commerce.productListAdds</code></td>
+<td style="text-align:left">Product List Adds</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>commerce.productListOpens</code></td>
+<td style="text-align:left">Product List Opens</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>commerce.productListRemovals</code></td>
+<td style="text-align:left">Product List Removals</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>commerce.productListReopens</code></td>
+<td style="text-align:left">Product List Reopens</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>commerce.productListViews</code></td>
+<td style="text-align:left">Product List Views</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>commerce.productViews</code></td>
+<td style="text-align:left">Product Views</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>commerce.purchases</code></td>
+<td style="text-align:left">Purchases</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>commerce.saveForLaters</code></td>
+<td style="text-align:left">Save For Laters</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>decisioning.propositionDisplay</code></td>
+<td style="text-align:left">Proposition Display</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>decisioning.propositionInteract</code></td>
+<td style="text-align:left">Proposition Interact</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>delivery.feedback</code></td>
+<td style="text-align:left">Feedback</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>directMarketing.emailBounced</code></td>
+<td style="text-align:left">Email Bounced</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>directMarketing.emailBouncedSoft</code></td>
+<td style="text-align:left">Email BouncedSoft</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>directMarketing.emailClicked</code></td>
+<td style="text-align:left">Email Clicked</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>directMarketing.emailDelivered</code></td>
+<td style="text-align:left">Email Delivered</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>directMarketing.emailOpened</code></td>
+<td style="text-align:left">Email Opened</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>directMarketing.emailUnsubscribed</code></td>
+<td style="text-align:left">Email Unsubscribed</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>inappmessageTracking.dismiss</code></td>
+<td style="text-align:left">Dismiss</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>inappmessageTracking.display</code></td>
+<td style="text-align:left">Display</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>inappmessageTracking.interact</code></td>
+<td style="text-align:left">Interact</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>leadOperation.callWebhook</code></td>
+<td style="text-align:left">Call Webhook</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>leadOperation.convertLead</code></td>
+<td style="text-align:left">Convert Lead</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>leadOperation.interestingMoment</code></td>
+<td style="text-align:left">Interesting Moment</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>leadOperation.newLead</code></td>
+<td style="text-align:left">New Lead</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>leadOperation.scoreChanged</code></td>
+<td style="text-align:left">Score Changed</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>leadOperation.statusInCampaignProgressionChanged </code></td>
+<td style="text-align:left">Status In Campaign Progression Changed</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>listOperation.addToList</code></td>
+<td style="text-align:left">Add To List</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>listOperation.removeFromList</code></td>
+<td style="text-align:left">Remove From List</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>message.feedback</code></td>
+<td style="text-align:left">Feedback</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>message.tracking</code></td>
+<td style="text-align:left">Tracking</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>opportunityEvent.addToOpportunity</code></td>
+<td style="text-align:left">Add To Opportunity</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>opportunityEvent.opportunityUpdated</code></td>
+<td style="text-align:left">Opportunity Updated</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>opportunityEvent.removeFromOpportunity</code></td>
+<td style="text-align:left">Remove From Opportunity</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>pushTracking.applicationOpened</code></td>
+<td style="text-align:left">Application Opened</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>pushTracking.customAction</code></td>
+<td style="text-align:left">Custom Action</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>web.webinteraction.linkClicks</code></td>
+<td style="text-align:left">Link Clicks</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>web.webpagedetails.pageViews</code></td>
+<td style="text-align:left">Page Views</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>web.formFilledOut</code></td>
+<td style="text-align:left">Form Filled Out</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>identityMap</code></td>
+<td style="text-align:left">identityMap</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Custom._experience.analytics.event1to100 </code></td>
+<td style="text-align:left">Experience Analytics Events 1-100</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Custom._experience.analytics.event101to200</code></td>
+<td style="text-align:left">Experience Analytics Events 101-200</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Custom._experience.analytics.event201to300</code></td>
+<td style="text-align:left">Experience Analytics Events 201-300</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Custom._experience.analytics.event301to400</code></td>
+<td style="text-align:left">Experience Analytics Events 301-400</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Custom._experience.analytics.event401to500</code></td>
+<td style="text-align:left">Experience Analytics Events 401-500</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Custom._experience.analytics.event501to600</code></td>
+<td style="text-align:left">Experience Analytics Events 501-600</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Custom._experience.analytics.event601to700</code></td>
+<td style="text-align:left">Experience Analytics Events 601-700</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Custom._experience.analytics.event701to800</code></td>
+<td style="text-align:left">Experience Analytics Events 701-800</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Custom._experience.analytics.event801to900</code></td>
+<td style="text-align:left">Experience Analytics Events 801-900</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Custom._experience.analytics.event901to1000</code></td>
+<td style="text-align:left">Experience Analytics Events 901-1000</td>
+</tr>
+<tr>
+<td style="text-align:left">Custom</td>
+<td style="text-align:left">Custom</td>
+</tr>
+</tbody>
+</table>
+<h3 id="analytics-xdm-data">Analytics XDM Data</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th>Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>xdm.timestamp</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.timestamp</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.application.isClose</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.application.isClose</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.application.isInstall</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.application.isInstall</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.application.isLaunch</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.application.isLaunch</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.application.closeType</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.application.closeType</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.application.name</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.application.name</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.application.isUpgrade</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.application.isUpgrade</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.application.version</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.application.version</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.application.sessionLength</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.application.sessionLength</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.web.webInteraction.URL</code></td>
+<td>String</td>
+<td style="text-align:left">web.webInteraction.URL</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.web.webInteraction.name</code></td>
+<td>String</td>
+<td style="text-align:left">web.webInteraction.name</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.web.webInteraction.type</code></td>
+<td>String</td>
+<td style="text-align:left">web.webInteraction.type</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.web.webPageDetails.URL</code></td>
+<td>String</td>
+<td style="text-align:left">web.webPageDetails.URL</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.web.webPageDetails.name</code></td>
+<td>String</td>
+<td style="text-align:left">web.webPageDetails.name</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.web.webPageDetails.isErrorPage</code></td>
+<td>String</td>
+<td style="text-align:left">web.webPageDetails.isErrorPage</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.web.webPageDetails.server</code></td>
+<td>String</td>
+<td style="text-align:left">web.webPageDetails.server</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.web.webPageDetails.siteSection</code></td>
+<td>String</td>
+<td style="text-align:left">web.webPageDetails.siteSection</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.web.webPageDetails.viewName</code></td>
+<td>String</td>
+<td style="text-align:left">web.webPageDetails.viewName</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.web.webReferrer.URL</code></td>
+<td>String</td>
+<td style="text-align:left">web.webReferrer.URL</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.commerce.checkouts.id</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.commerce.checkouts.id</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.commerce.checkouts.value</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.commerce.checkouts.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.commerce.order.currencyCode</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.commerce.order.currencyCode</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.commerce.order.purchaseID</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.commerce.order.purchaseID</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.commerce.order.transactionID</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.commerce.order.transactionID</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.commerce.productListAdds.id</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.commerce.productListAdds.id</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.commerce.productListAdds.value</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.commerce.productListAdds.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.commerce.productListOpens.id</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.commerce.productListOpens.id</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.commerce.productListOpens.value</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.commerce.productListOpens.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.commerce.productListRemovals.id</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.commerce.productListRemovals.id</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.commerce.productListRemovals.value</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.commerce.productListRemovals.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.commerce.productListViews.id</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.commerce.productListViews.id</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.commerce.productListViews.value</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.commerce.productListViews.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.commerce.productViews.id</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.commerce.productViews.id</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.commerce.productViews.value</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.commerce.productViews.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.commerce.purchases.value</code></td>
+<td>String</td>
+<td style="text-align:left">xdm.commerce.purchases.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.device.model</code></td>
+<td>String</td>
+<td style="text-align:left">device.model</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.device.colorDepth</code></td>
+<td>String</td>
+<td style="text-align:left">device.colorDepth</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.device.screenHeight</code></td>
+<td>String</td>
+<td style="text-align:left">device.screenHeight</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.device.screenWidth</code></td>
+<td>String</td>
+<td style="text-align:left">device.screenWidth</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.device.type</code></td>
+<td>String</td>
+<td style="text-align:left">device.type</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.environment.browserDetails.acceptLanguage</code></td>
+<td>String</td>
+<td style="text-align:left">environment.browserDetails.acceptLanguage</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.environment.browserDetails.cookiesEnabled</code></td>
+<td>String</td>
+<td style="text-align:left">environment.browserDetails.cookiesEnabled</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.environment.browserDetails.javaEnabled</code></td>
+<td>String</td>
+<td style="text-align:left">environment.browserDetails.javaEnabled</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.environment.browserDetails.userAgent</code></td>
+<td>String</td>
+<td style="text-align:left">environment.browserDetails.userAgent</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.environment.browserDetails.viewportHeight</code></td>
+<td>String</td>
+<td style="text-align:left">environment.browserDetails.viewportHeight</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.environment.browserDetails.viewportWidth</code></td>
+<td>String</td>
+<td style="text-align:left">environment.browserDetails.viewportWidth</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.environment.carrier</code></td>
+<td>String</td>
+<td style="text-align:left">environment.carrier</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.environment.connectionType</code></td>
+<td>String</td>
+<td style="text-align:left">environment.connectionType</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.environment.ipV4</code></td>
+<td>String</td>
+<td style="text-align:left">environment.ipV4</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.environment.language</code></td>
+<td>String</td>
+<td style="text-align:left">environment.language</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.environment.operatingSystem</code></td>
+<td>String</td>
+<td style="text-align:left">environment.operatingSystem</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.environment.operatingSystemVersion</code></td>
+<td>String</td>
+<td style="text-align:left">environment.operatingSystemVersion</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.xdm.identityMap.ECID</code></td>
+<td>Array</td>
+<td style="text-align:left">identityMap.ECID</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.marketing.trackingCode</code></td>
+<td>String</td>
+<td style="text-align:left">marketing.trackingCode</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.completes.value</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.completes.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.dropBeforeStart.value</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.dropBeforeStart.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.federated.value</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.federated.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.firstQuartiles.value</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.firstQuartiles.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.mediaSegmentView.value</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.mediaSegmentView.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.midpoints.value</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.midpoints.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.pauseTime.value</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.pauseTime.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.pauses.value</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.pauses.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.primaryAssetReference.@id</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.primaryAssetReference.@id</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.primaryAssetReference.dc:title</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.primaryAssetReference.dc:title</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.primaryAssetReference.iptc4xmpExt:Creator[N].iptc4xmpExt:Name</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.primaryAssetReference.iptc4xmpExt:Creator[N].iptc4xmpExt:Name</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.primaryAssetReference.iptc4xmpExt:Episode.iptc4xmpExt:Number</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.primaryAssetReference.iptc4xmpExt:Episode.iptc4xmpExt:Number</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.primaryAssetReference.iptc4xmpExt:Genre</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.primaryAssetReference.iptc4xmpExt:Genre</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.primaryAssetReference.iptc4xmpExt:Rating[N].iptc4xmpExt:RatingValue</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.primaryAssetReference.iptc4xmpExt:Rating</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.primaryAssetReference.iptc4xmpExt:Season.iptc4xmpExt:Number</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.primaryAssetReference.iptc4xmpExt:Season.iptc4xmpExt:Number</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.primaryAssetReference.iptc4xmpExt:Series.iptc4xmpExt:Identifier</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.primaryAssetReference.iptc4xmpExt:Series.iptc4xmpExt:Identifier</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.primaryAssetReference.iptc4xmpExt:Series.iptc4xmpExt:Name</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.primaryAssetReference.iptc4xmpExt:Series.iptc4xmpExt:Name</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.primaryAssetReference.showType</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.primaryAssetReference.showType</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.primaryAssetReference.xmpDM:duration</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.primaryAssetReference.xmpDM:duration</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.primaryAssetViewDetails.@id</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.primaryAssetViewDetails.@id</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.primaryAssetViewDetails.broadcastChannel</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.primaryAssetViewDetails.broadcastChannel</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.primaryAssetViewDetails.broadcastContentType</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.primaryAssetViewDetails.broadcastContentType</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.primaryAssetViewDetails.broadcastNetwork</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.primaryAssetViewDetails.broadcastNetwork</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.primaryAssetViewDetails.mediaSegmentView.value</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.primaryAssetViewDetails.mediaSegmentView.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.primaryAssetViewDetails.playerName</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.primaryAssetViewDetails.playerName</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.primaryAssetViewDetails.playerSDKVersion.version</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.primaryAssetViewDetails.playerSDKVersion.version</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.primaryAssetViewDetails.sourceFeed</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.primaryAssetViewDetails.sourceFeed</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.primaryAssetViewDetails.streamFormat</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.primaryAssetViewDetails.streamFormat</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimedxdm..progress10.value</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.progress10.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.progress95.value</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.progress95.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.resumes.value</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.resumes.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.starts.value</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.starts.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.thirdQuartiles.value</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.thirdQuartiles.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.timePlayed.value</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.timePlayed.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.media.mediaTimed.totalTimePlayed.value</code></td>
+<td>String</td>
+<td style="text-align:left">media.mediaTimed.totalTimePlayed.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.placeContext.geo.latitude</code></td>
+<td>String</td>
+<td style="text-align:left">placeContext.geo.latitude</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.placeContext.geo.longitude</code></td>
+<td>String</td>
+<td style="text-align:left">placeContext.geo.longitude</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.placeContext.geo.postalCode</code></td>
+<td>String</td>
+<td style="text-align:left">placeContext.geo.postalCode</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.placeContext.geo.stateProvince</code></td>
+<td>String</td>
+<td style="text-align:left">placeContext.geo.stateProvince</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.placeContext.localTime</code></td>
+<td>String</td>
+<td style="text-align:left">placeContext.localTime</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.productListItems.lineItemId</code></td>
+<td>Array</td>
+<td style="text-align:left">productListItems.lineItemId</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.productListItems.name</code></td>
+<td>Array</td>
+<td style="text-align:left">productListItems.name</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.productListItems.priceTotal</code></td>
+<td>Array</td>
+<td style="text-align:left">productListItems.priceTotal</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.productListItems.quantity</code></td>
+<td>Array</td>
+<td style="text-align:left">productListItems.quantity</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm.productListItems.SKU</code></td>
+<td>Array</td>
+<td style="text-align:left">productListItems.SKU</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm._experience.analytics.customDimensions.hierarchies.hier1</code></td>
+<td>String</td>
+<td style="text-align:left">_experience.analytics.customDimensions.hierarchies.hier1</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm._experience.analytics.customDimensions.hierarchies.hier2</code></td>
+<td>String</td>
+<td style="text-align:left">_experience.analytics.customDimensions.hierarchies.hier2</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm._experience.analytics.customDimensions.hierarchies.hier3</code></td>
+<td>String</td>
+<td style="text-align:left">_experience.analytics.customDimensions.hierarchies.hier3</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm._experience.analytics.customDimensions.hierarchies.hier4</code></td>
+<td>String</td>
+<td style="text-align:left">_experience.analytics.customDimensions.hierarchies.hier4</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm._experience.analytics.customDimensions.hierarchies.hier5</code></td>
+<td>String</td>
+<td style="text-align:left">_experience.analytics.customDimensions.hierarchies.hier5</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm._experience.analytics.customDimensions.listProps.prop1.delimiter</code></td>
+<td>String</td>
+<td style="text-align:left">_experience.analytics.customDimensions.listProps.prop1.delimiter</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm._experience.analytics.customDimensions.listProps.prop1.values</code></td>
+<td>Array</td>
+<td style="text-align:left">_experience.analytics.customDimensions.listProps.prop1.values</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm._experience.analytics.customDimensions.lists.list1.list</code></td>
+<td>Array</td>
+<td style="text-align:left">_experience.analytics.customDimensions.lists.list1.list</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm._experience.analytics.customDimensions.lists.list2.list</code></td>
+<td>Array</td>
+<td style="text-align:left">_experience.analytics.customDimensions.lists.list2.list</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm._experience.analytics.customDimensions.lists.list3.list</code></td>
+<td>Array</td>
+<td style="text-align:left">_experience.analytics.customDimensions.lists.list3.list</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm._experience.analytics.event1to100.event1.id</code></td>
+<td>String</td>
+<td style="text-align:left">_experience.analytics.event1to100.event1.id</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>xdm._experience.analytics.event1to100.event1.value</code></td>
+<td>String</td>
+<td style="text-align:left">_experience.analytics.event1to100.event1.value</td>
+</tr>
+</tbody>
+</table>
+<h3 id="target-data-non-xdm-data-object">Target Data (non-XDM, data object)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th>Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>data.__adobe.target.entity.id</code></td>
+<td>String</td>
+<td style="text-align:left">entity.id</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>data.__adobe.target.entity.name</code></td>
+<td>String</td>
+<td style="text-align:left">entity.name</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>data.__adobe.target.entity.categoryId</code></td>
+<td>String</td>
+<td style="text-align:left">entity.categoryId</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>data.__adobe.target.entity.pageUrl</code></td>
+<td>String</td>
+<td style="text-align:left">entity.pageUrl</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>data.__adobe.target.entity.thumbnailUrl</code></td>
+<td>String</td>
+<td style="text-align:left">entity.thumbnailUrl</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>data.__adobe.target.entity.message</code></td>
+<td>String</td>
+<td style="text-align:left">entity.message</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>data.__adobe.target.entity.value</code></td>
+<td>String</td>
+<td style="text-align:left">entity.value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>data.__adobe.target.entity.inventory</code></td>
+<td>String</td>
+<td style="text-align:left">entity.inventory</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>data.__adobe.target.entity.brand</code></td>
+<td>String</td>
+<td style="text-align:left">entity.brand</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>data.__adobe.target.entity.margin</code></td>
+<td>String</td>
+<td style="text-align:left">entity.margin</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>data.__adobe.target.entity.event.detailsOnly</code></td>
+<td>String</td>
+<td style="text-align:left">entity.event.detailsOnly</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>data.__adobe.target.entity.yourCustomAttributeName</code></td>
+<td>String</td>
+<td style="text-align:left">entity.yourCustomAttributeName</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>data.__adobe.target.excludedIds</code></td>
+<td>String</td>
+<td style="text-align:left">entity.excludedIds</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>data.__adobe.target.cartIds</code></td>
+<td>String</td>
+<td style="text-align:left">entity.cartIds</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>data.__adobe.target.productPurchasedId</code></td>
+<td>String</td>
+<td style="text-align:left">entity.productPurchasedId</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>data.__adobe.target.user.categoryId</code></td>
+<td>String</td>
+<td style="text-align:left">entity.user.categoryId</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>data.__adobe.target.profile.age</code></td>
+<td>String</td>
+<td style="text-align:left">entity.profile.age</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>data.__adobe.target.profile.gender</code></td>
+<td>String</td>
+<td style="text-align:left">entity.profile.gender</td>
+</tr>
+</tbody>
+</table>
+<h3 id="analytics-evars">Analytics eVars</h3>
+<p>This connector supports direct mapping for <code>eVar1</code>-<code>eVar250</code>. For example, mapping destinations will expand to <code>_experience.analytics.customDimensions.eVars.eVar1-250</code>.</p>
+<h3 id="analytics-props">Analytics Props</h3>
+<p>This connector supports direct mapping for <code>prop1</code>-<code>prop75</code>. For example, mapping destinations will expand to <code>_experience.analytics.customDimensions.props.prop1-75</code></p>
+<h3 id="xdm-legacy">XDM (Legacy)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th>Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>account_name</code></td>
+<td>String</td>
+<td style="text-align:left">Account Name</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>pageName</code></td>
+<td>String</td>
+<td style="text-align:left">Page Name</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>clientID</code></td>
+<td>String</td>
+<td style="text-align:left">Client ID</td>
+</tr>
+</tbody>
+</table>
+<h3 id="adobe-audience-manager-config-legacy">Adobe Audience Manager Config (Legacy)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th>Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>cookieDestinationsEnabled</code></td>
+<td>Boolean</td>
+<td style="text-align:left">Cookie Destinations Enabled</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>urlDestinationsEnabled</code></td>
+<td>Boolean</td>
+<td style="text-align:left">URL Destinations Enabled</td>
 </tr>
 </tbody>
 </table>
@@ -1172,13 +2268,28 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-tips">Tag Tips</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag Configuration</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data Mappings</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-tips">Tag tips</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-example">Event example</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#managing-flicker-with-adobe-target">Managing Flicker with Adobe Target</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag configuration</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules">Load rules</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data mappings</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#standard">Standard</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-collection">Data Collection</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#e-commerce">E-Commerce</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#commandsevents">Commands/Events</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#privacy-options">Privacy Options</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#personalization-options">Personalization Options</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#audiences-options">Audiences Options</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#identity-options">Identity Options</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#identitymap-parameters">identityMap Parameters</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#xdm-event-triggers">XDM Event Triggers</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#analytics-xdm-data">Analytics XDM Data</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#target-data-non-xdm-data-object">Target Data (non-XDM, data object)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#analytics-evars">Analytics eVars</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#analytics-props">Analytics Props</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#xdm-legacy">XDM (Legacy)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#adobe-audience-manager-config-legacy">Adobe Audience Manager Config (Legacy)</a></li>
               </nav>
   </aside></nav>
 
