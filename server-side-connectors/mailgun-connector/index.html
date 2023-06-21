@@ -268,6 +268,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/audiencestore-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".audiencestore-connector">AudienceStore</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/avo-inspector-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".avo-inspector-connector">Avo Inspector</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/awin-conversions-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".awin-conversions-connector">Awin Conversions</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/aws-kinesis-streams-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".aws-kinesis-streams-connector">AWS Kinesis Streams</a>
@@ -420,8 +422,6 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/intelliad-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".intelliad-connector">intealliAd</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side-connectors/intercom-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".intercom-connector">Intercom</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/intercom-webhook/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".intercom-webhook">Intercom Webhook</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/ispot-tv-conversion-tracking-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".ispot-tv-conversion-tracking-connector">iSpot TV Conversion Tracking</a>
@@ -439,6 +439,8 @@ var utag_data = {
         <a href="/server-side-connectors/klenty-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".klenty-connector">Klenty</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/kochava-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".kochava-connector">Kochava</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/launchdarkly-metric-import-api-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".launchdarkly-metric-import-api-connector">LaunchDarkly Metric Import API</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/leadsquared-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".leadsquared-connector">LeadSquared</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -718,13 +720,21 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="connector-ctions">Connector ctions</h2>
+  <h2 id="api-information">API Information</h2>
+<p>This connector uses the following vendor API:</p>
+<ul>
+<li>API Name: Mailgun API</li>
+<li>API Version: v3</li>
+<li>API Endpoint: <code>https://api.mailgun.net</code></li>
+<li>Documentation: <a href="https://documentation.mailgun.com/en/latest/">Mailgun API</a></li>
+</ul>
+<h2 id="connector-actions">Connector Actions</h2>
 <table>
 <thead>
 <tr>
-<th><strong>Action Name</strong></th>
-<th><strong>AudienceStream</strong></th>
-<th><strong>EventStream</strong></th>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
@@ -734,32 +744,22 @@ var utag_data = {
 <td>✓</td>
 </tr>
 <tr>
-<td>Add Member to List</td>
+<td>Upsert Member in List</td>
 <td>✓</td>
-<td>✗</td>
-</tr>
-<tr>
-<td>Update Member in List</td>
 <td>✓</td>
-<td>✗</td>
 </tr>
 </tbody>
 </table>
-<h2 id="configure-settings">Configure settings</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
+<h2 id="configure-settings">Configure Settings</h2>
+<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>Password</strong>
-<ul>
-<li>Your API key is the password.</li>
-<li>Click the <strong>Security</strong> tab under the Account section of the control panel to manage your API key.</li>
-<li>For more information on authentication, visit: <a href="https://documentation.mailgun.com/en/latest/api-intro.html#authentication">Mailgun API Reference: Authentication</a>.</li>
+<li><strong>Mailgun Domain</strong>: Required. Select the appropriate region-based domain.</li>
+<li><strong>API Key</strong>: Required. You can find your private API key on your Mailgun dashboard.</li>
 </ul>
-</li>
-</ul>
-<h2 id="action-settings---parameters-and-options">Action settings - parameters and options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
-<p>This section describes how to set up parameters and options for each action.</p>
+<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
+<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="action---send-email">Action - Send Email</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
@@ -771,32 +771,59 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>My Domain</td>
-<td><ul><li>The domain of your Mailgun account.</li><li>For more information, see: <a href="https://documentation.mailgun.com/en/latest/api-intro.html#base-url">Mailgun API Reference: Base URL</a>.</li></ul></td>
+<td>Sending Domain</td>
+<td>(Required) The domain of the Mailgun account.</td>
 </tr>
 <tr>
 <td>From</td>
-<td><ul><li>Email address of the sender.</li><li>For more information on this endpoint, see: <a href="https://documentation.mailgun.com/en/latest/api-sending.html#sending">Mailgun API Reference: Messaging &gt; Sending</a>.</li></ul></td>
+<td>(Required) Email address of the sender.</td>
 </tr>
 <tr>
 <td>To</td>
-<td><ul><li>Email address of the recipient.</li><li>Example: <code>bob@host.com</code> or <code>Bob &lt;bob@host.com&gt;</code>.</li></ul></td>
+<td>(Required) Email address of the recipient.</td>
 </tr>
 <tr>
 <td>Subject</td>
-<td><ul><li>Message subject.</li></ul></td>
+<td>Email subject.</td>
 </tr>
 <tr>
 <td>Text</td>
-<td><ul><li>Body of the message.</li></ul></td>
+<td>The body of the message.</td>
 </tr>
 <tr>
-<td>Additional Parameters</td>
-<td><ul><li>Additional optional parameters.</li><li>For more information on these fields, see: <a href="https://documentation.mailgun.com/en/latest/api-sending.html#sending">Mailgun API Reference: Messaging &gt; Sending</a>.</li></ul></td>
+<td>CC</td>
+<td>The email address or addresses to carbon copy.</td>
+</tr>
+<tr>
+<td>BCC</td>
+<td>The email address or addresses to blind carbon copy.</td>
+</tr>
+<tr>
+<td>Template Name</td>
+<td>A Mailgun email sending template name.</td>
+</tr>
+<tr>
+<td>Template Text</td>
+<td>Set this parameter to <strong>yes</strong> if you want to render the text of the message through the template.</td>
+</tr>
+<tr>
+<td>Template Version</td>
+<td>Send the email to a specific version of a template.</td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td>Map attributes to populate a JSON-encoded dictionary used as the input for template variable expansion. For more information, see <a href="https://documentation.mailgun.com/en/latest/api-sending.html#sending">Mailgun API Reference</a>.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---add-member-to-list">Action - Add Member to List</h3>
+<h3 id="action---upsert-member-in-list">Action - Upsert Member in List</h3>
+<h4 id="batch-limits">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 1000</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 1 MB</li>
+</ul>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
@@ -807,60 +834,28 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>List Address</td>
-<td><ul><li>Address of your list.</li><li>Example: <code>LIST@YOUR_DOMAIN_NAME.COM</code></li><li>For more information on this endpoint, see: <a href="https://documentation.mailgun.com/en/latest/api-mailinglists.html#mailing-lists">Mailgun API Reference: Mailing Lists</a>.</li></ul></td>
+<td>Address</td>
+<td>(Required) The email address of the list.</td>
 </tr>
 <tr>
 <td>Member Address</td>
-<td><ul><li>Valid email address of the member being added.</li></ul></td>
+<td>(Required) The email address to add to the list.</td>
 </tr>
 <tr>
-<td>Name</td>
-<td><ul><li>Optional member name.</li></ul></td>
+<td>Member Name</td>
+<td>The name of email address to add.</td>
 </tr>
 <tr>
-<td>Subscribed</td>
-<td><ul><li>Values are <strong>Yes</strong> or <strong>No</strong>.</li><li>The default value is <strong>Yes</strong>.</li><li><strong>Yes</strong> to add as subscribed.</li><li><strong>No</strong> to add as unsubscribed.</li></ul></td>
+<td>Subscribe</td>
+<td><ul><li><strong>yes</strong>: Subscribe the new member.</li><li><strong>no</strong>: Do not subscribe the new member.</li></ul></td>
 </tr>
 <tr>
 <td>Upsert</td>
-<td><ul><li>Values are <strong>Yes</strong> or <strong>No</strong>.</li><li>The default value is <strong>No</strong>.</li><li><strong>Yes</strong> to update member if present.</li><li><strong>No</strong> to raise error in case of a duplicate member.</li></ul></td>
+<td><ul><li><strong>yes</strong>: Update list member, if it exists in the list.</li><li><strong>no</strong>: Add list member, even if it is a duplicate.</li></ul></td>
 </tr>
 <tr>
-<td>Additional Parameters</td>
-<td><ul><li>Optional additional parameters.</li><li>Example: <strong>gender</strong>, <strong>age</strong>.</li></ul></td>
-</tr>
-</tbody>
-</table>
-<h3 id="action---update-member-in-list">Action - Update Member in List</h3>
-<h4 id="parameters-2">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>List Address</td>
-<td><ul><li>Address of your list.</li><li>Example: <code>LIST@YOUR_DOMAIN_NAME.COM</code></li><li>For more information on this endpoint, see see: <a href="https://documentation.mailgun.com/en/latest/api-mailinglists.html#mailing-lists">Mailgun API Reference: Mailing Lists</a>.</li></ul></td>
-</tr>
-<tr>
-<td>Member Address</td>
-<td><ul><li>Valid email address of member.</li></ul></td>
-</tr>
-<tr>
-<td>Name</td>
-<td><ul><li>Optional member name.</li></ul></td>
-</tr>
-<tr>
-<td>Subscribed</td>
-<td><ul><li>Values are <strong>Yes</strong> or <strong>No</strong>.</li><li><strong>Yes</strong> for subscribed.</li><li><strong>No</strong> for unsubscribed.</li></ul></td>
-</tr>
-<tr>
-<td>Additional Parameters</td>
-<td><ul><li>Optional additional parameters.</li><li>Example: <strong>gender</strong>, <strong>age</strong>.</li></ul></td>
+<td>Variables</td>
+<td>Map attributes to pass additional member parameters. For more information, see <a href="https://documentation.mailgun.com/en/latest/api-sending.html#sending">Mailgun API Reference</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -924,7 +919,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 13, 2021 
+          <p>This page was last updated:  June 15, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -938,12 +933,12 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-ctions">Connector ctions</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure settings</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action settings - parameters and options</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#api-information">API Information</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action Settings - Parameters and Options</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-email">Action - Send Email</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---add-member-to-list">Action - Add Member to List</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---update-member-in-list">Action - Update Member in List</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---upsert-member-in-list">Action - Upsert Member in List</a></li>
               </nav>
   </aside></nav>
 
@@ -1144,6 +1139,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

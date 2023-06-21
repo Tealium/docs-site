@@ -902,7 +902,7 @@ var utag_data = {
 </ol>
 <p>For more information, see <a href="/iq-tag-management/templates/manage/">Manage Templates</a>.</p>
 <h3 id="custom-events">Custom events</h3>
-<p>If your event does not fit one of the four event types described above, send a custom event. For more information, see <a href="https://support.google.com/analytics/answer/12229021?hl=en&amp;ref_topic=9756175">GA4 Custom Events</a>.</p>
+<p>If your event does not fit one of the event types described above, send a custom event. For more information, see <a href="https://support.google.com/analytics/answer/12229021?hl=en&amp;ref_topic=9756175">GA4 Custom Events</a>.</p>
 <h2 id="event-mapping-examples">Event mapping examples</h2>
 <p>This section provides mapping examples of event mapping for two events that will be sent to GA4:</p>
 <ul>
@@ -971,6 +971,10 @@ var utag_data = {
 <li>Product</li>
 </ul>
 <p>When translating requirements from Google Universal Analytics to GA4, consider passing session scoped variables as user scoped variables where it makes sense. GA4 does not currently offer an alternative for product scoped events.</p>
+<h3 id="user-properties">User properties</h3>
+<p>GA4 collects user-scoped properties, which describe segments of your visitors, such as their language preference or geographic location.</p>
+<p>To collect data from user properties, map the data layer attribute to a custom destination with the format <code>set.user_properties.USER_PROPERTY</code> where <code>USER_PROPERTY</code> represents the attribute name. For example, map the <code>annual_pass</code> attribute to <code>set.user_properties.annual_pass</code>.</p>
+<p>Learn more about <a href="/iq-tag-management/data-mappings/manage/#add-a-custom-data-mapping">custom data mappings</a>.</p>
 <h2 id="validating-a-ga4-implementation">Validating a GA4 implementation</h2>
 <h3 id="event-batching">Event batching</h3>
 <p>In Google Universal Analytics, one network call is made for each hit that was triggered. GA4 is different in that it batches events that occur within a few seconds into a single call. When investigating network calls to validate the implementation, be aware that multiple events may be sent with a single network request.</p>
@@ -1066,7 +1070,8 @@ No</button>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tracking-e-commerce-events">Tracking e-commerce events</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#items-parameter-for-recommended-events">Items parameter for recommended events</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#custom-dimensions">Custom dimensions</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#validating-a-ga4-implementation">Validating a GA4 implementation</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#user-properties">User properties</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#validating-a-ga4-implementation">Validating a GA4 implementation</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-batching">Event batching</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#reporting-latency">Reporting latency</a></li>
               </nav>

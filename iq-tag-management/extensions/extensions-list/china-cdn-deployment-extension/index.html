@@ -613,6 +613,8 @@ var utag_data = {
       </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-management/event-logging/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".event-logging-for-consent-management">Event logging</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/consent-management/release-notes/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".release-notes-consent-management">Release Notes</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".consent-integrations">Consent Integrations</a>
@@ -624,6 +626,8 @@ var utag_data = {
         <a href="/iq-tag-management/consent-integrations/validate-and-debug/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".validate-and-debug-consent-integrations">Validate and debug</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-integrations/custom-cmp/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".custom-consent-management-platform">Custom CMP Integrations</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/consent-integrations/release-notes/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".release-notes-consent-integrations">Release Notes</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".tealium-tools">Tealium Tools</a>
@@ -719,7 +723,8 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>You can use this extension when you cannot modify the source code for a web site to add logic to determine the user&rsquo;s location.</p>
+  <p>You can use this extension when you cannot modify the source code for a web site to add logic to determine the user’s location. This extension is also useful when a profile that primarily serves content from outside of China receives a small amount of traffic from within China.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If a large amount of your traffic is from China and you can modify the source code for your web site, we recommend that you create a dedicated profile for the <code>.cn</code> domain and add a customized script to the HTML code you paste in each page. For more information, see <a href="/iq-tag-management/getting-started/install/load-utag-china/#update-the-code-for-your-website">Update the code for your website</a>.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
 <li>To create a draft of a China CDN Deployment extension, you need the <strong>Manage JavaScript Code Extensions</strong> account-level permission.</li>
@@ -727,10 +732,11 @@ var utag_data = {
 <h2 id="how-it-works">How it works</h2>
 <p>The China CDN Deployment extension consists of a code editor pre-filled with JavaScript code that is executed during the pre-loader scope. This code contains logic to do the following:</p>
 <ul>
-<li>Determine the users location based on the users browser language, timezone, and IP address.</li>
+<li>Determine the user&rsquo;s location based on their browser language, timezone, and IP address.</li>
 <li>Set a cookie with the best CDN for that user.</li>
 </ul>
 <p>All subsequent site visits read the cookie value, if it is present, and fetch all utag content from the most specified CDN. Setting the cookie in the pre-loader scope means that the initial page request is served from the appropriate CDN.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Page load speeds will be impacted if content is delivered to China from outside the Chinese network. However, after the initial page load and setting of the CDN cookie, the extension will deliver available resources from the China CDN to China-based users to speed up their requests.</p>
 <h2 id="configuring-the-extension">Configuring the extension</h2>
 <p>When you add the China CDN Deployment extension to a profile, an Ace Editor window is displayed, which contains the default code for the extension. You can configure the <code>domainMap</code>, <code>languageMap</code>, and <code>gmtMap</code> variables for the extension. In addition, you can specify the <code>matchLogic</code> to determine a user&rsquo;s location.</p>
 <h3 id="setting-up-domain-mapping">Setting up domain mapping</h3>
@@ -825,7 +831,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  June 16, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

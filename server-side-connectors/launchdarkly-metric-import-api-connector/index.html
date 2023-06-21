@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Intercom Connector Setup Guide | Server-Side Connectors |Tealium Docs</title>
+    <title>LaunchDarkly Metric Import API Connector Setup Guide | Server-Side Connectors |Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -268,6 +268,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/audiencestore-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".audiencestore-connector">AudienceStore</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/avo-inspector-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".avo-inspector-connector">Avo Inspector</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/awin-conversions-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".awin-conversions-connector">Awin Conversions</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/aws-kinesis-streams-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".aws-kinesis-streams-connector">AWS Kinesis Streams</a>
@@ -419,8 +421,6 @@ var utag_data = {
         <a href="/server-side-connectors/insightly-crm-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".insightly-crm-connector">Insightly CRM</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/intelliad-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".intelliad-connector">intealliAd</a>
-      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side-connectors/intercom-connector/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".intercom-connector">Intercom</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/intercom-webhook/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".intercom-webhook">Intercom Webhook</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -439,6 +439,8 @@ var utag_data = {
         <a href="/server-side-connectors/klenty-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".klenty-connector">Klenty</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/kochava-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".kochava-connector">Kochava</a>
+      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/launchdarkly-metric-import-api-connector/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".launchdarkly-metric-import-api-connector">LaunchDarkly Metric Import API</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/leadsquared-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".leadsquared-connector">LeadSquared</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -706,60 +708,67 @@ var utag_data = {
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Intercom Connector Setup Guide</h1>
+<h1 class="lh-title mt30 mb3">LaunchDarkly Metric Import API Connector Setup Guide</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to set up the Intercom connector.
+      This article describes how to set up the LaunchDarkly Metric Import API connector.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="connector-actions">Connector Actions</h2>
+  <h2 id="api-information">API Information</h2>
+<p>This connector uses the following vendor API:</p>
+<ul>
+<li>API Name: LaunchDarkly API</li>
+<li>API Version: v2</li>
+<li>API Endpoint: <code>https://events.launchdarkly.com</code></li>
+<li>Documentation: <a href="https://docs.launchdarkly.com/home/creating-experiments/import-metric-events">LaunchDarkly API</a></li>
+</ul>
+<h2 id="batch-limits">Batch Limits</h2>
+<p>This connector uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 10000</li>
+<li>Max time since oldest request: 10 minutes</li>
+<li>Max size of requests: 10 MB</li>
+</ul>
+<h2 id="connector-actions">Connector Actions</h2>
 <table>
 <thead>
 <tr>
-<th><strong>Action Name</strong></th>
-<th><strong>AudienceStream</strong></th>
-<th><strong>EventStream</strong></th>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Create or Update User</td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr>
-<td>Add Tag Based on ID</td>
-<td>✓</td>
+<td>Send Metrics to Experimentation Function</td>
 <td>✗</td>
-</tr>
-<tr>
-<td>Add Tag Based on User ID</td>
 <td>✓</td>
-<td>✗</td>
-</tr>
-<tr>
-<td>Add Tag Based on Email</td>
-<td>✓</td>
-<td>✗</td>
 </tr>
 </tbody>
 </table>
 <h2 id="configure-settings">Configure Settings</h2>
-<p>Go to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
+<p>Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>Access Token</strong>: Access Tokens use the bearer authorization header when you make a request. For more information about creating an access token, see <a href="https://developers.intercom.com/docs/personal-access-tokens">Authorization: Access Tokens</a>.</li>
+<li><strong>Company Name</strong><br>
+Required. Name of your company in LaunchDarkly.</li>
+<li><strong>Project Key</strong><br>
+Required. Project key for your metric events environment. Locate the project key in LaunchDarkly account settings &gt; Projects &gt; Environments.</li>
+<li><strong>Environment Key</strong><br>
+Required. Environment key for the environment your metric events pertain to. Find these under Environments on the Projects tab in your LaunchDarkly <a href="https://app.launchdarkly.com/settings/members">Account</a> settings page.</li>
+<li><strong>Access Token</strong><br>
+Required. The access token must have a role that allows the <code>importEventData</code> action. LaunchDarkly strongly recommends using a dedicated access token with this permission. For more information, see <a href="https://docs.launchdarkly.com/home/account-security/api-access-tokens#scoping-personal-api-access-tokens">Scoping Personal API Tokens</a> and <a href="https://docs.launchdarkly.com/home/members/role-actions#environment-actions?q=import">Environment Actions</a>.</li>
 </ul>
-<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
-<p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action---create-or-update-user">Action - Create or Update User</h3>
+<h2 id="actions">Actions</h2>
+<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<p>The following section describes how to set up parameters and options for each action.</p>
+<h3 id="send-metrics-to-experimentation-function">Send Metrics to Experimentation Function</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -770,124 +779,20 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>User ID</td>
-<td><ul><li>A unique string identifier for the user. It is required on creation if an email is not supplied</li><li>Either <strong>User ID</strong> or <strong>Email</strong> must be supplied</li><li>Reference the following <a href="https://developers.intercom.com/v2.0/reference#create-or-update-user">API documentation</a> for more info</li></ul></td>
+<td>Key</td>
+<td>Required. Identifies your metric. The Event Name in your LaunchDarkly metric must match this value.</td>
 </tr>
 <tr>
-<td>Email</td>
-<td><ul><li>The user&rsquo;s email address. It is required on creation if a <code>user_id</code> is not supplied</li><li>Either <strong>User ID</strong> or <strong>Email</strong> must be supplied</li></ul></td>
+<td>Creation Date</td>
+<td>Timestamp of when the event is created, in Unix milliseconds.</td>
 </tr>
 <tr>
-<td>Phone Number</td>
-<td>The user&rsquo;s phone number</td>
+<td>Metric Value</td>
+<td>The value of your metric. Required for numeric metrics. Optional for conversion metrics. LaunchDarkly will ignore this value if provided for conversion metrics.</td>
 </tr>
 <tr>
-<td>ID</td>
-<td>The ID may be used for user updates</td>
-</tr>
-<tr>
-<td>Signed Up At</td>
-<td>The time the user signed up</td>
-</tr>
-<tr>
-<td>Name</td>
-<td>The user&rsquo;s full name</td>
-</tr>
-<tr>
-<td>Last Seen IP</td>
-<td>An IP address (for example <code>192.168.0.1</code>) representing the last IP address the user visited from your application form. (Used for updating location data)</td>
-</tr>
-<tr>
-<td>Last Seen User Agent</td>
-<td>The user agent the user last visited your application with</td>
-</tr>
-<tr>
-<td>Last Request At</td>
-<td>A UNIX timestamp (in seconds) representing the date the user last visited your application</td>
-</tr>
-<tr>
-<td>Unsubscribed From Emails</td>
-<td><ul><li>A Boolean value representing the users unsubscribed status</li><li>Default value if not sent is <code>false</code></li></ul></td>
-</tr>
-<tr>
-<td>Update Last Request At</td>
-<td><ul><li>A Boolean value, which if <code>true</code>, instructs Intercom to update the users&rsquo; <code>last_request_at</code> value to the current API service time in UTC</li><li>Default value if not sent is <code>false</code></li></ul></td>
-</tr>
-<tr>
-<td>New Session</td>
-<td>A Boolean value, which if <code>true</code>, instructs Intercom to register the request as a session</td>
-</tr>
-</tbody>
-</table>
-<h3 id="action---add-tag-based-on-id">Action - Add Tag Based on ID</h3>
-<h4 id="parameters-1">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Name</td>
-<td><ul><li>Name of the tag.</li><li>For more information on this endpoint, visit: <a href="https://developers.intercom.com/intercom-api-reference/reference#tag-or-untag-users-companies-leads-contacts">Tag or Untag Users Reference</a></li></ul></td>
-</tr>
-<tr>
-<td>ID</td>
-<td>ID of the user.</td>
-</tr>
-<tr>
-<td>Untag</td>
-<td><ul><li>To untag a company or user, each user or company object sent in the tagging request can be submitted with an untag field whose value is set to <code>true</code>.</li><li>Setting the untagvalue to <code>false</code> is the same as requesting the object be tagged.</li></ul></td>
-</tr>
-</tbody>
-</table>
-<h3 id="action---add-tag-based-on-user-id">Action - Add Tag Based on User ID</h3>
-<h4 id="parameters-2">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Name</td>
-<td>Name of the tag. For more information on this endpoint, visit: <a href="https://developers.intercom.com/intercom-api-reference/reference#tag-or-untag-users-companies-leads-contacts">Tag or Untag Users Reference</a></td>
-</tr>
-<tr>
-<td>User ID</td>
-<td>The User ID of the user</td>
-</tr>
-<tr>
-<td>Untag</td>
-<td><ul><li>To untag a company or user, each user or company object sent in the tagging request can be submitted with an <code>untag</code> field whose value is set to <code>true</code>.</li><li>Setting the untagvalue to false is the same as requesting the object be tagged.</li></ul></td>
-</tr>
-</tbody>
-</table>
-<h3 id="action---add-tag-based-on-email">Action - Add Tag Based on Email</h3>
-<h4 id="parameters-3">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Name</td>
-<td>The name of the tag. For more information on this endpoint, visit: <a href="https://developers.intercom.com/intercom-api-reference/reference#tag-or-untag-users-companies-leads-contacts">Tag or Untag Users Reference</a></td>
-</tr>
-<tr>
-<td>Email</td>
-<td>Email of the user</td>
-</tr>
-<tr>
-<td>Untag</td>
-<td><ul><li>To untag a company or user, each user or company object sent in the tagging request can be submitted with an untag field whose value is set to <code>true</code>.</li><li>Setting the <code>untag</code> value to <code>false</code> is the same as requesting the object be tagged.</li></ul></td>
+<td>Context Keys</td>
+<td>A JSON object with one or more properties that lists the context keys for each metric event context in the format: <code>&lt;contextKind&gt;: &lt;contextKey&gt;</code>. For example, if your experiment works with user contexts, you may have the following kind/key pair: <code>&quot;user&quot;: &quot;user-key-123abc&quot;</code>.<br>Each context kind and key must match the kind/key pair in the corresponding context provided to LaunchDarkly SDK evaluating flags used in your experiments.<br>For more information about using context kinds, see <a href="https://docs.launchdarkly.com/home/creating-experiments/allocation#randomization-units">Randomization units</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -897,13 +802,13 @@ var utag_data = {
 <div class="mv30 nested-links overflow-hidden dpn"><div class="fr">
 
   
-  <a href="/server-side-connectors/intercom-webhook/"
+  <a href="/server-side-connectors/leadsquared-connector/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Intercom Webhook</div>
+      <div>LeadSquared</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Intercom Webhook"</title>
+      <title>"LeadSquared"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -912,14 +817,14 @@ var utag_data = {
 </div><div class="di">
   
   
-  <a href="/server-side-connectors/intelliad-connector/"
+  <a href="/server-side-connectors/kochava-connector/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"intealliAd "</title>
+      <title>"Kochava "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>intealliAd</div>
+      <div>Kochava</div>
     </section>
   </a>
   
@@ -951,7 +856,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 24, 2020 
+          <p>This page was last updated:  June 20, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -965,13 +870,12 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#api-information">API Information</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#batch-limits">Batch Limits</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action Settings - Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---create-or-update-user">Action - Create or Update User</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---add-tag-based-on-id">Action - Add Tag Based on ID</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---add-tag-based-on-user-id">Action - Add Tag Based on User ID</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---add-tag-based-on-email">Action - Add Tag Based on Email</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#actions">Actions</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#send-metrics-to-experimentation-function">Send Metrics to Experimentation Function</a></li>
               </nav>
   </aside></nav>
 
@@ -1172,6 +1076,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

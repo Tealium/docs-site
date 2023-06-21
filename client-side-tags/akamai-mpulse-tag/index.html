@@ -800,50 +800,45 @@ Determines the timing of the tag firing. Prioritized tags fire immediately as <c
 <p>Use the following steps to apply load rules:</p>
 <ol>
 <li>Click <strong>Next</strong> to advance to the Load Rules tab.</li>
-<li>From Load Rules, click the <strong>Load on All Pages</strong> checkbox.<br>
+<li>From Load Rules, apply the <strong>Load on All Pages and Events</strong> rule.<br>
 This step is required to enable the tag to be bundled when configuring the Publish settings in the following steps.</li>
 <li>Click <strong>Finish</strong>.</li>
 <li>Click <strong>Save</strong> in the upper right corner but do not publish.</li>
 </ol>
-<h3 id="configure-and-publish-dettings-to-optimize-performance">Configure and publish dettings to optimize performance</h3>
+<h3 id="configure-and-publish-settings-to-optimize-performance">Configure and publish settings to optimize performance</h3>
 <p>Use the following steps to configure and publish settings that will optimize tag performance:</p>
 <ol>
-<li>Click <strong>Save/Publish</strong> in the upper right corner.<br>
-The Save/Publish dialog displays.</li>
-<li>In the upper right corner of the Save/Publish dialog, click <strong>Configure Publish Settings</strong>.<br>
-The Publish Configurations dialog displays.</li>
+<li>Navigate to the client-side user menu and click <strong>Configure Publish Settings</strong> in the <strong>Manage Client-Side</strong> section. The <strong>Publish Configuration</strong> dialog appears.</li>
 </ol>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>There are many Publish Settings options described on the Tealium support site. For Akamai mPulse, you can activate the following two (2) optional settings for Akamai to improve tag performance.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>There are many Publish Settings options described on the Tealium support site. For Akamai mPulse, activate the following two optional settings for Akamai to improve tag performance.</p>
 <ol>
-<li>From the Publish Configurations dialog, click the <strong>General Publishing</strong> tab.</li>
-<li>Scroll down to Performance Optimization and set the following to <strong>ON</strong>.</li>
-</ol>
+<li>
+<p>From the <strong>Publish Configurations</strong> dialog, click the <strong>General Publishing</strong> tab.</p>
+</li>
+<li>
+<p>Scroll down to <strong>Performance Optimization</strong> and set the <strong>Minify Tag Templates</strong> and <strong>Bundle Tags Loaded on All Pages</strong> toggles to <strong>ON</strong>.</p>
 <ul>
-<li>Bundle Tags Loaded on All Pages<br>
-Setting this option to On ensures that any tags that load on the All Pages load rule are included inline in your <code>utag.js </code>file instead of in a separate, numbered file. Although your <code>utag.js</code> file will be larger, it will remove one (1) http request (server call) as the page loads.</li>
-<li>Minify Tag Templates<br>
-Setting this option to On applies &ldquo;minification&rdquo; to the generated JavaScript, which removes unnecessary whitespace so that the file size downloaded is smaller.</li>
+<li>Setting the <strong>Performance Optimization</strong> option to <strong>On</strong> ensures that any tags that load on the All Pages load rule are included inline in your <code>utag.js </code>file instead of in a separate, numbered file. Although your <code>utag.js</code> file will be larger, it will remove one http request (server call) as the page loads.</li>
+<li>Setting the <strong>Minify Tag Templates</strong> option to <strong>On</strong> applies &ldquo;minification&rdquo; to the generated JavaScript, which removes unnecessary whitespace so that the file size downloaded is smaller.</li>
 </ul>
-<ol>
-<li>Click <strong>Apply</strong> to close the Publish Settings dialog.<br>
-You are now back at the Save / Publish dialog.</li>
+</li>
+<li>
+<p>Click <strong>Apply</strong> to close the <strong>Publish Settings</strong> dialog.</p>
+</li>
 </ol>
 <h3 id="publishing-and-testing">Publishing and testing</h3>
 <p>As a final step, publish and test your new tag as follows:</p>
 <ol>
-<li>From the Save/Publish dialog, click <strong>Save As</strong>.</li>
-</ol>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Using Save As saves your change as a new version, which enables you to roll back your changes if needed.</p>
-Once the updated `utag.js` hits the CDN, you can see Akamai firing in the browser.
-1. You can test that the tag is performing as expected by using a tag monitor, such as Ghostery, or you can view tag activity using your browser network monitoring tool.  
-You will know that the tag is firing correctly if you see the following request firing:  
-<figure><a class="slb" href="/images/client-side-tags/no-title-1727i9db56b2bbbbe8690.png"><img src="/images/client-side-tags/no-title-1727i9db56b2bbbbe8690.png"
+<li>In the <strong>Save/Publish dialog</strong>, do not select the <strong>Overwrite current version</strong> checkbox. <p class="note"><i class="fa fa-exclamation-triangle"></i>Using <strong>Save As</strong> saves your change as a new version, which enables you to roll back your changes if needed.</p>
+After the updated <code>utag.js</code> is loaded to the CDN, Akamai tag will appear in the browser.</li>
+<li>Use a tag monitor, such as Ghostery, to test that the tag is performing as expected, such as Ghostery. You can use your browser&rsquo;s network monitoring tool. You will know that the tag is firing correctly if you see the following request: <figure><a class="slb" href="/images/client-side-tags/no-title-1727i9db56b2bbbbe8690.png"><img src="/images/client-side-tags/no-title-1727i9db56b2bbbbe8690.png"
          alt="mpulse_network_trace.png"
          title="mpulse_network_trace.png"/>
     </a>
-</figure>
-1. Look for the request at <http://c.go-mpulse.net/boomerang>.  
-The key displayed will match the API key you entered when you configured the Akamai mPulse tag.
+</figure></li>
+<li>Monitor the request at <code>http://c.go-mpulse.net/boomerang</code>.</li>
+</ol>
+<p>The key displayed will match the API key you entered when you configured the Akamai mPulse tag.</p>
 
 </div>
 
@@ -921,7 +916,7 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag configuration</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#advanced-settings">Advanced settings</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules">Load rules</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-and-publish-dettings-to-optimize-performance">Configure and publish dettings to optimize performance</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-and-publish-settings-to-optimize-performance">Configure and publish settings to optimize performance</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#publishing-and-testing">Publishing and testing</a></li>
               </nav>
   </aside></nav>

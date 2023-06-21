@@ -774,19 +774,18 @@ var utag_data = {
 <div class="mv2 mid-gray fn w-100">
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to set up the Snap Pixel tag in your Tealium iQ Tag Management account.
+      This article describes how to set up the Snap Pixel tag.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="tag-tips">Tag Tips</h2>
+  <p>The Snap Pixel helps advertisers measure the cross-device impact of campaigns. Advertisers will be able to see how many Snapchatters take action on their websites after seeing their ad.</p>
+<h2 id="tag-tips">Tag tips</h2>
 <ul>
-<li>
-<p>Conversion fires when Order ID is set.</p>
-</li>
-<li>
-<p>Supports the following E-Commerce extension parameters:</p>
+<li>Purchase tracking fires automatically when Order ID is set. To disable automatic purchase tracking, set the destination <code>auto_page_tracking</code> to <code>false</code> via mappings.</li>
+<li>Automatic page view tracking is enabled by default. To disable automatic page view tracking, set <code>auto_page_tracking</code> to <code>false</code> via mappings.</li>
+<li>Supports the following E-Commerce extension parameters:
 <ul>
 <li>Order ID (<code>_corder</code>)</li>
 <li>Sub Total (<code>_csubtotal</code>)</li>
@@ -798,154 +797,407 @@ var utag_data = {
 <li>List of Prices (<code>_cprice</code>)</li>
 </ul>
 </li>
-<li>
-<p>User Email and Phone Number will be converted to SHA256 within the Snap Pixel SDK before being passed to Snap&rsquo;s server.</p>
-</li>
+<li>User Email and Phone Number are converted to SHA256 within the Snap Pixel SDK before being passed to Snap&rsquo;s server.</li>
+<li>To make Snap Pixel Event IDs available as server-side attributes, set <strong>Generate Event ID</strong> to <code>true</code> and use the latest version of the Tealium Collect tag.</li>
+<li>The event ID attribute names are in the format <code>snap_event_id_&lt;Event Name&gt;_&lt;Tag UID&gt;</code> (for example: <code>snap_event_id_PageView_512</code>).</li>
 </ul>
-<h3 id="tag-configuration">Tag Configuration</h3>
-<p>First, go to Tealium&rsquo;s tag marketplace and add the Snap Pixel tag (Learn more about <a href="/iq-tag-management/tags/manage-tags/">how to add a tag</a>).</p>
-<p>After adding the tag, configure the following settings:</p>
+<h2 id="tag-configuration">Tag configuration</h2>
+<p>Navigate to the Tag Marketplace to add a new tag. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
+<p>When adding the tag, configure the following settings:</p>
 <ul>
-<li><strong>Pixel ID</strong><br>
-Found in your <strong>Snapchat Ads Manager</strong>.</li>
+<li><strong>Pixel ID</strong>: Found in your Snapchat Ads Manager.</li>
+<li><strong>Generate Event ID</strong>: Automatically generate an Event ID for every Snap tracking event.</li>
 </ul>
-<h3 id="data-mappings">Data Mappings</h3>
-<p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-layer/data-layer-variables/">data layer variable</a> to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">Data Mappings</a>.</p>
+<h2 id="load-rules">Load rules</h2>
+<p>Load the tag on all pages or set conditions for when your tag will load. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
+<h2 id="data-mappings">Data mappings</h2>
+<p>Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see <a href="/iq-tag-management/data-mappings/about/">About data mappings</a>.</p>
 <p>The available categories are:</p>
-<h4 id="standard">Standard</h4>
+<h3 id="tag-configurations">Tag Configurations</h3>
 <table>
 <thead>
 <tr>
 <th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
 <th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">User Email</td>
-<td style="text-align:left"><ul><li>Email address of the currently signed in user.</li><li>For example,  <code>snaptr('init', 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',{user_email':user.email});</code> </li></ul></td>
+<td style="text-align:left"><code>pixel_id</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Pixel ID</td>
 </tr>
 <tr>
-<td style="text-align:left">User Phone Number</td>
-<td style="text-align:left"><ul><li>Phone number of the currently signed in user.</li><li>Only digits with country code, are code, and number.</li><li>Not other formatting characters, such as <code>1+815-483-4610</code>.</li><li>For example, <code>snaptr('init', 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',{user_phone_number:user.phone_number});</code> </li></ul></td>
+<td style="text-align:left"><code>auto_page_tracking</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Automatic Page Tracking</td>
 </tr>
 <tr>
-<td style="text-align:left">User Hashed Email</td>
-<td style="text-align:left"><ul><li>Hashed email address of the currently signed in users.</li><li>SHA256 hash of lower-cased email address with white space removed.</li><li>For example, <code>snaptr('init', 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',{user_hashed_email:user.sha256_email});</code> </li></ul></td>
+<td style="text-align:left"><code>auto_purchase_tracking</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Automatic Purchase Tracking</td>
 </tr>
 <tr>
-<td style="text-align:left">User Hashed Phone Number</td>
-<td style="text-align:left"><ul><li>Hashed phone number of the currently signed in user.</li><li>SHA256 hash of lower-cased phone number with white space removed.</li><li>For example, <code>snaptr('init', 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',{user_hashed_phone_number:user.sha256_phone_number});</code> </li></ul></td>
+<td style="text-align:left"><code>generate_event_id</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Generate Event IDs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="standard-parameters">Standard Parameters</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>currency</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Currency</td>
 </tr>
 <tr>
-<td style="text-align:left">Description</td>
 <td style="text-align:left"><code>description</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Description</td>
 </tr>
 <tr>
-<td style="text-align:left">Search String</td>
-<td style="text-align:left"><code>search_string</code></td>
+<td style="text-align:left"><code>item_category</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Item Category</td>
 </tr>
 <tr>
-<td style="text-align:left">Payment Info Available</td>
+<td style="text-align:left"><code>item_ids</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Item IDs</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>number_items</code></td>
+<td style="text-align:left">Integer</td>
+<td style="text-align:left">Number of Items</td>
+</tr>
+<tr>
 <td style="text-align:left"><code>payment_info_available</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Payment Info Available</td>
 </tr>
 <tr>
-<td style="text-align:left">Sign Up Method</td>
-<td style="text-align:left"><code>sign_up_method</code></td>
+<td style="text-align:left"><code>price</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Price</td>
 </tr>
 <tr>
-<td style="text-align:left">Success</td>
-<td style="text-align:left"><code>success</code></td>
-</tr>
-</tbody>
-</table>
-<h4 id="e-commerce">E-Commerce</h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Variable</th>
-<th style="text-align:left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>order_id</code></td>
-<td style="text-align:left"><ul><li>Order ID</li><li>Overrides <code>_corder</code></li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>order_subtotal</code></td>
-<td style="text-align:left"><ul><li>Subtotal</li><li>Overrides <code>_csubtotal</code></li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>order_currency</code></td>
-<td style="text-align:left"><ul><li>Currency</li><li>Overrides <code>_ccurrency</code></li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>customer_id</code></td>
-<td style="text-align:left"><ul><li>Customer ID</li><li>Overrides <code>_ccustid</code></li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>product_id</code></td>
-<td style="text-align:left"><ul><li>Array</li><li>List of Product IDs</li><li>Overrides <code>_cprod</code></li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>product_category</code></td>
-<td style="text-align:left"><ul><li>Array</li><li>List of Categories</li><li>Overrides <code>_ccat</code></li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>product_unit_price</code></td>
-<td style="text-align:left"><ul><li>Array</li><li>List of Prices</li><li>Overrides <code>_cprice</code></li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>product_quantity</code></td>
-<td style="text-align:left"><ul><li>Array</li><li>List of Quantities</li><li>Overrides <code>_cquan</code></li></ul></td>
-</tr>
-</tbody>
-</table>
-<h4 id="events">Events</h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Variable</th>
-<th style="text-align:left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>PURCHASE</code></td>
-<td style="text-align:left">Purchase</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>SAVE</code></td>
-<td style="text-align:left">Save</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>START_CHECKOUT</code></td>
-<td style="text-align:left">Start checkout</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>ADD_CART</code></td>
-<td style="text-align:left">Add cart</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VIEW_CONTENT</code></td>
-<td style="text-align:left">View content</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>ADD_BILLING</code></td>
-<td style="text-align:left">Add billing</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>SIGN_UP</code></td>
-<td style="text-align:left">Sign up</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>SEARCH</code></td>
+<td style="text-align:left"><code>search_string</code></td>
+<td style="text-align:left">String</td>
 <td style="text-align:left">Search</td>
 </tr>
 <tr>
+<td style="text-align:left"><code>sign_up_method</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Sign Up Method</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>success</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Success</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>transaction_id</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Transaction ID</td>
+</tr>
+</tbody>
+</table>
+<h3 id="e-commerce">E-Commerce</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>order_id</code> (Overrides <code>_corder</code>)</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Order ID</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>order_subtotal</code> (Overrides <code>_csubtotal</code>)</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Sub Total</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>order_currency</code> (Overrides <code>_ccurrency</code>)</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Currency</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>customer_id</code> (Overrides <code>_ccustid</code>)</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Customer ID</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>product_id</code> (Overrides <code>_cprod</code>)</td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">List of Product IDs</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>product_category</code> (Overrides <code>_ccat</code>)</td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">List of Categories</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>product_unit_price</code> (Overrides <code>_cprice</code>)</td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">List of Prices</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>product_quantity</code> (Overrides <code>_cquan</code>)</td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">List of Quantities</td>
+</tr>
+</tbody>
+</table>
+<h3 id="user-parameters">User Parameters</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>user_email</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Email address of currently signed in user.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>user_hashed_email</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">SHA256 hash of lowercase and whitespace-removed email address.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>user_hashed_phone_number</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">SHA256 hash of lowercase and whitespace-removed phone number.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>user_phone_number</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Only digits with country code, area code, and number. No other formatting characters.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="events">Events</h3>
+<p>To map events, refer to <a href="/iq-tag-management/data-mappings/manage/#add-an-event-mapping">Create an Event Mapping</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>ACHIEVEMENT_UNLOCKED</code></td>
+<td style="text-align:left">ACHIEVEMENT_UNLOCKED</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ADD_BILLING</code></td>
+<td style="text-align:left">ADD_BILLING</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ADD_CART</code></td>
+<td style="text-align:left">ADD_CART</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ADD_TO_WISHLIST</code></td>
+<td style="text-align:left">ADD_TO_WISHLIST</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>AD_CLICK</code></td>
+<td style="text-align:left">AD_CLICK</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>AD_VIEW</code></td>
+<td style="text-align:left">AD_VIEW</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>COMPLETE_TUTORIAL</code></td>
+<td style="text-align:left">COMPLETE_TUTORIAL</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>INVITE</code></td>
+<td style="text-align:left">INVITE</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>LIST_VIEW</code></td>
+<td style="text-align:left">LIST_VIEW</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>LOGIN</code></td>
+<td style="text-align:left">LOGIN</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>OPEN_APP</code></td>
+<td style="text-align:left">OPEN_APP</td>
+</tr>
+<tr>
 <td style="text-align:left"><code>PAGE_VIEW</code></td>
-<td style="text-align:left">Page View</td>
+<td style="text-align:left">PAGE_VIEW</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>PURCHASE</code></td>
+<td style="text-align:left">PURCHASE</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>RATE</code></td>
+<td style="text-align:left">RATE</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>RESERVE</code></td>
+<td style="text-align:left">RESERVE</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SAVE</code></td>
+<td style="text-align:left">SAVE</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SEARCH</code></td>
+<td style="text-align:left">SEARCH</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SHARE</code></td>
+<td style="text-align:left">SHARE</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SIGN_UP</code></td>
+<td style="text-align:left">SIGN_UP</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SPENT_CREDITS</code></td>
+<td style="text-align:left">SPENT_CREDITS</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>START_CHECKOUT</code></td>
+<td style="text-align:left">START_CHECKOUT</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>START_TRIAL</code></td>
+<td style="text-align:left">START_TRIAL</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SUBSCRIBE</code></td>
+<td style="text-align:left">SUBSCRIBE</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VIEW_CONTENT</code></td>
+<td style="text-align:left">VIEW_CONTENT</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>CUSTOM_EVENT_1</code></td>
+<td style="text-align:left">CUSTOM_EVENT_1</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>CUSTOM_EVENT_2</code></td>
+<td style="text-align:left">CUSTOM_EVENT_2</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>CUSTOM_EVENT_3</code></td>
+<td style="text-align:left">CUSTOM_EVENT_3</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>CUSTOM_EVENT_4</code></td>
+<td style="text-align:left">CUSTOM_EVENT_4</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>CUSTOM_EVENT_5</code></td>
+<td style="text-align:left">CUSTOM_EVENT_5</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Custom</code></td>
+<td style="text-align:left">Custom</td>
+</tr>
+</tbody>
+</table>
+<h3 id="event-specific-parameters">Event-specific Parameters</h3>
+<p>To map events, refer to <a href="/iq-tag-management/data-mappings/manage/#add-an-event-mapping">Create an Event Mapping</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>currency</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">ISO-4217 currency code</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>description</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Description</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>item_category</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Item category</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>item_ids</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Item IDs</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>number_items</code></td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">Number of items</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>payment_info_available</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Payment information available</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>price</code></td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">Price of the purchase</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>search_string</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Search string</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>sign_up_method</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Sign up method</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>success</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Success</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>transaction_id</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Transaction ID</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>custom_parameter</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Custom parameter</td>
 </tr>
 </tbody>
 </table>
@@ -1009,7 +1261,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 12, 2020 
+          <p>This page was last updated:  June 14, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1023,9 +1275,16 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-tips">Tag Tips</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag Configuration</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data Mappings</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-tips">Tag tips</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag configuration</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules">Load rules</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data mappings</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configurations">Tag Configurations</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#standard-parameters">Standard Parameters</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#e-commerce">E-Commerce</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#user-parameters">User Parameters</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#events">Events</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-specific-parameters">Event-specific Parameters</a></li>
               </nav>
   </aside></nav>
 
