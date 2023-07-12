@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Firebase Cloud Messaging Connector Setup Guide | Server-Side Connectors |Tealium Docs</title>
+    <title>Firebase Cloud Messaging (FCM) Connector Setup Guide | Server-Side Connectors |Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -388,6 +388,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/google-ads-enhanced-conversions-for-web-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".google-ads-enhanced-conversions-for-web-connector">Google Ads Enhanced Conversions for Web</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/google-ads-store-sales-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".google-ads-store-sales-connector">Google Ads Store Sales</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/google-adwords-customer-match-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".google-adwords-customer-match-connector">Google AdWords Customer Match</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/google-analytics-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".google-analytics-connector">Google Analytics</a>
@@ -708,281 +710,553 @@ var utag_data = {
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Firebase Cloud Messaging Connector Setup Guide</h1>
+<h1 class="lh-title mt30 mb3">Firebase Cloud Messaging (FCM) Connector Setup Guide</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
   
     <p class="f4 fw3 lh-copy">
-      Firebase Cloud Messaging is a cross-platform messaging solution that lets you reliably deliver messages at no cost. This article describes how to set up the Firebase Cloud Messaging Connector service in your Customer Data Hub profile.
+      This article describes how to set up the Firebase Cloud Messaging connector.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="requirements">Requirements</h2>
+  <h2 id="api-information">API Information</h2>
+<p>This connector uses the following vendor API:</p>
 <ul>
-<li>Firebase Cloud Messaging Server Key</li>
+<li>API Name: Google Firebase API</li>
+<li>API Version: v1</li>
+<li>API Endpoint: <code>https://fcm.googleapis.com/</code></li>
+<li>Documentation: <a href="https://firebase.google.com/docs/cloud-messaging/concept-options">Firebase Cloud Messaging</a></li>
 </ul>
-<h2 id="supported-actions">Supported Actions</h2>
+<h2 id="connector-actions">Connector Actions</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Action Name</strong></th>
-<th style="text-align:left"><strong>Trigger on Audience</strong></th>
-<th style="text-align:left"><strong>Trigger on Streams</strong></th>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Send Message to Android Device</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✓</td>
+<td>Send Message to Android Device</td>
+<td>✓</td>
+<td>✓</td>
 </tr>
 <tr>
-<td style="text-align:left">Send Message to iOS Device</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✓</td>
+<td>Send Message to iOS Device</td>
+<td>✓</td>
+<td>✓</td>
 </tr>
 <tr>
-<td style="text-align:left">Send Message to Web App</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✓</td>
+<td>Send Message to Web App</td>
+<td>✓</td>
+<td>✓</td>
 </tr>
 </tbody>
 </table>
 <h2 id="configure-settings">Configure Settings</h2>
-<p>Go to the Connector Marketplace and add a new Firebase Cloud Messaging connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
-<p>To configure your vendor, follow these steps:</p>
+<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>After adding the connector, configure the following settings:</p>
 <ul>
-<li>In the <strong>Configure</strong> tab, provide a title for the connector instance</li>
-<li>Enter the server key located under project settings on the <strong>Cloud Messaging</strong> tab</li>
-<li>Provide additional notes about your implementation</li>
+<li><strong>Firebase Project ID</strong><br>
+<strong>Required.</strong> Enter the project ID. You can find your Firebase project&rsquo;s ID using the Firebase console. Open <a href="https://console.firebase.google.com/project/_/settings/general/">Project settings</a>. The project ID appears in the top pane.</li>
+<li><strong>Client ID</strong><br>
+<strong>Required.</strong> Enter the client ID of the web application that has access to the Firebase Cloud Messaging API. Your <a href="https://console.developers.google.com/apis/credentials">Google API Console Credentials Page</a> must whitelist the authorized redirect URI: <code>https://my.tealiumiq.com/oauth/google/callback.html</code>. See <a href="https://developers.google.com/identity/protocols/OAuth2InstalledApp#creatingcred">Create Authorization Credentials</a>.</li>
+<li><strong>Client Secret</strong><br>
+<strong>Required.</strong> Enter web application client secret.</li>
 </ul>
-<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. It&rsquo;s where you&rsquo;ll set up actions and trigger them.</p>
-<p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action---send-message-to-android-device">Action - Send Message to Android Device</h3>
+<h2 id="actions">Actions</h2>
+<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<p>The following section describes how to set up parameters and options for each action.</p>
+<h3 id="send-message-to-android-device">Send Message to Android Device</h3>
 <h4 id="parameters">Parameters</h4>
-<ul>
-<li><strong>Message Options</strong>: (Required) Configure recipient, delivery behavior, and UI for a push notification</li>
-<li><strong>Data</strong>: (Optional) Specify non-visible data such as a call to synchronize</li>
-<li><strong>Template Variables</strong>: Map Attribute(s) to template variable names. Template variables are available for substitution and rendering of all templates Refer to our <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a> for details</li>
-<li><strong>Templates</strong>: Provide one or more templates to render. Typically, a single template is used to construct message data. Refer to our <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a> for common syntax and extensions</li>
-</ul>
-<h4 id="options---message-options">Options - Message Options</h4>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>To specify a target for the message, set <strong>only</strong> the one of the following parameters: <code>Token</code>, <code>Topic</code>, or <code>Condition</code>.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Option</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">To</td>
-<td style="text-align:left">The recipient of a message. The value can be a device&rsquo;s registration token, a device group&rsquo;s notification key, or a single topic (prefixed with <code>/topics/</code>)</td>
+<td>Token</td>
+<td>Registration token to send a message to.</td>
 </tr>
 <tr>
-<td style="text-align:left">Collapse Key</td>
-<td style="text-align:left">Identifies a group of messages (for example, with <code>collapse_key: &quot;Updates Available&quot;</code>) that can be collapsed, so that only the last message gets sent when delivery can be resumed. This is intended to avoid sending too many of the same messages when the device comes back online or becomes active</td>
+<td>Topic</td>
+<td>A subscribed topic name to send a message to. For example: <code>weather</code>. Note: Do not include the <code>/topics/</code> prefix.</td>
 </tr>
 <tr>
-<td style="text-align:left">Priority</td>
-<td style="text-align:left"><code>normal</code> or <code>high</code>. See: <a href="https://firebase.google.com/docs/cloud-messaging/concept-options#setting-the-priority-of-a-message">Setting the priority of a message</a></td>
+<td>Condition</td>
+<td>A subscribed condition of topics to send a message to. For example: <code>foo in topics &amp;&amp; bar in topics</code>.</td>
 </tr>
 <tr>
-<td style="text-align:left">Time to Live</td>
-<td style="text-align:left">Specify how long (in seconds) the message should be kept in FCM storage if the device is offline. See: <a href="https://firebase.google.com/docs/cloud-messaging/concept-options#ttl">Setting the lifespan of a message</a></td>
+<td>Analytics Label</td>
+<td>Label associated with the message&rsquo;s analytics data.</td>
 </tr>
 <tr>
-<td style="text-align:left">Restricted Package Name</td>
-<td style="text-align:left">Specify the package name of the application where the registration tokens must match in order to receive the message</td>
+<td>Collapse Key</td>
+<td>An identifier of a group of messages that can be collapsed, so that only the last message gets sent when delivery can be resumed. A maximum of four different collapse keys is allowed at any given time.</td>
 </tr>
 <tr>
-<td style="text-align:left">Dry Run</td>
-<td style="text-align:left">When set to true, allows developers to test a request without actually sending a message</td>
+<td>Priority</td>
+<td>Message priority. Value can be <code>NORMAL</code> or <code>HIGH</code>. For more information, see <a href="https://firebase.google.com/docs/cloud-messaging/concept-options#setting-the-priority-of-a-message">Setting the priority of a message</a>.</td>
 </tr>
 <tr>
-<td style="text-align:left">Title</td>
-<td style="text-align:left">User-visible notification title</td>
+<td>Time to Live</td>
+<td>A duration in seconds with up to nine fractional digits, ending with <code>s</code>. For example: <code>3.5s</code>. This field represents how long (in seconds) the message should be kept in FCM storage if the device is offline. The maximum supported time to live is four weeks, and the default value is four weeks if not set. Set it to <code>0</code> if you want to send the message immediately.</td>
 </tr>
 <tr>
-<td style="text-align:left">Body</td>
-<td style="text-align:left">User-visible notification body</td>
+<td>Restricted Package Name</td>
+<td>The package name of the application, which must match the registration token to receive the message.</td>
 </tr>
 <tr>
-<td style="text-align:left">Android Channel Id</td>
-<td style="text-align:left"><a href="https://developer.android.com/preview/features/notification-channels.html">Notification&rsquo;s channel ID</a></td>
+<td>Direct Boot Ok</td>
+<td>If set to <code>true</code>, messages will be delivered to the app while the device is in direct boot mode. See <a href="https://developer.android.com/training/articles/direct-boot">Support Direct Boot mode</a> for more details.</td>
 </tr>
 <tr>
-<td style="text-align:left">Icon</td>
-<td style="text-align:left">Must be a drawable resource name</td>
+<td>Title</td>
+<td>The notification&rsquo;s title.</td>
 </tr>
 <tr>
-<td style="text-align:left">Sound</td>
-<td style="text-align:left">Filename located in <code>/res/raw/</code></td>
+<td>Body</td>
+<td>The notification&rsquo;s body text.</td>
 </tr>
 <tr>
-<td style="text-align:left">Tag</td>
-<td style="text-align:left">Identifier used to replace existing notifications in the notification drawer. If not specified, each request creates a new notification. If specified and a notification with the same tag is already being shown, the new notification replaces the existing one in the notification drawer</td>
+<td>Icon</td>
+<td>The notification&rsquo;s icon. Sets the notification icon to <code>myicon</code> for drawable resource <code>myicon</code>. If not specified, FCM displays the launcher icon specified in your app manifest.</td>
 </tr>
 <tr>
-<td style="text-align:left">Color</td>
-<td style="text-align:left">Notification&rsquo;s icon color, expressed in <code>#rrggbb</code> format</td>
+<td>Color</td>
+<td>The notification icon color, expressed in <code>#rrggbb</code> format.</td>
 </tr>
 <tr>
-<td style="text-align:left">Click Action</td>
-<td style="text-align:left">Value used for an intent filter when the user clicks on the notification</td>
+<td>Sound</td>
+<td>The sound to play when the device receives the notification. Supports <code>default</code> or the filename of a sound resource bundled in the app. Sound files must reside in <code>/res/raw/</code>.</td>
+</tr>
+<tr>
+<td>Tag</td>
+<td>Identifier used to replace existing notifications in the notification drawer. If not specified, each request creates a new notification. If specified and a notification with the same tag is already being shown, the new notification replaces the existing one in the notification drawer.</td>
+</tr>
+<tr>
+<td>Click Action</td>
+<td>The action associated with a user click on the notification. If specified, an activity with a matching intent filter is launched when a user clicks on the notification.</td>
+</tr>
+<tr>
+<td>Body Localization Key</td>
+<td>The key for the body string in the app resources, which is used to localize the body text to the user&rsquo;s current locale. See <a href="https://developer.android.com/guide/topics/resources/string-resource.html">String Resources</a> for more information.</td>
+</tr>
+<tr>
+<td>Body Localization Args</td>
+<td>String values to be used in place of the format specifiers in the <strong>Body Localization Key</strong>, which is used to localize the body text to the user&rsquo;s current locale. See <a href="https://developer.android.com/guide/topics/resources/string-resource.html#FormattingAndStyling">Formatting and Styling</a> for more information.</td>
+</tr>
+<tr>
+<td>Title Localization Key</td>
+<td>The key for the title string in the app&rsquo;s resources, which is used to localize the title text to the user&rsquo;s current locale. See <a href="https://developer.android.com/guide/topics/resources/string-resource.html">String Resources</a> for more information.</td>
+</tr>
+<tr>
+<td>Title Localization Args</td>
+<td>String values to be used in place of format specifiers in the <strong>Title Localization Key</strong>, which is used to localize the title text to the user&rsquo;s current locale. See <a href="https://developer.android.com/guide/topics/resources/string-resource.html#FormattingAndStyling">Formatting and Styling</a> for more information.</td>
+</tr>
+<tr>
+<td>Channel ID</td>
+<td>The <a href="https://developer.android.com/develop/ui/views/notifications#ManageChannels">notification&rsquo;s channel ID</a> (new in Android O). The app must create a channel with this channel ID before any notification with this channel ID is received. If not specified, or if the provided channel ID has not yet been created by the app, FCM uses the channel ID specified in the app instead.</td>
+</tr>
+<tr>
+<td>Ticker</td>
+<td>This parameter sets the notification ticker text, which is sent to accessibility services. Prior to API level 21 (Lollipop), this parameter sets the text that is displayed in the status bar when the notification first arrives.</td>
+</tr>
+<tr>
+<td>Sticky</td>
+<td>If set to <code>false</code> or not specified, the notification is automatically dismissed when the user clicks it in the panel. When set to <code>true</code>, the notification persists even when the user clicks it.</td>
+</tr>
+<tr>
+<td>Event Time</td>
+<td>The time that the event in the notification occurred. Notifications in the panel are sorted by this time. A timestamp in RFC3339 UTC &ldquo;Zulu&rdquo; format, with nanosecond resolution and up to nine fractional digits. Examples: <code>2014-10-02T15:01:23Z</code> and <code>2014-10-02T15:01:23.045123456Z</code>.</td>
+</tr>
+<tr>
+<td>Local Only</td>
+<td>If set to <code>true</code>, indicates that the notification is relevant only to the current device.</td>
+</tr>
+<tr>
+<td>Notification Priority</td>
+<td>Set the relative priority for this notification. Priority is an indication of how critical the notification is. Value can be <code>PRIORITY_UNSPECIFIED</code>, <code>PRIORITY_MIN</code>, <code>PRIORITY_LOW</code>, <code>PRIORITY_DEFAULT</code>, <code>PRIORITY_HIGH</code>, or <code>PRIORITY_MAX</code>.</td>
+</tr>
+<tr>
+<td>Default Sound</td>
+<td>If set to <code>true</code>, use the Android framework&rsquo;s default sound for the notification.</td>
+</tr>
+<tr>
+<td>Default Vibrate Timings</td>
+<td>If set to <code>true</code>, use the Android framework&rsquo;s default vibrate pattern for the notification.</td>
+</tr>
+<tr>
+<td>Default Light Settings</td>
+<td>If set to <code>true</code>, use the Android framework&rsquo;s default LED light settings for the notification.</td>
+</tr>
+<tr>
+<td>Vibrate Timings</td>
+<td>Set the vibration pattern to use. A duration in seconds with up to nine fractional digits, ending with <code>s</code>. For example: <code>3.5s</code>. See <a href="https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#Notification">Firebase Resource: Message</a>.</td>
+</tr>
+<tr>
+<td>Visibility</td>
+<td>Set the <a href="https://developer.android.com/reference/android/app/Notification#visibility">visibility</a> of the notification. Value can be <code>VISIBILITY_UNSPECIFIED</code>, <code>PRIVATE</code>, <code>PUBLIC</code>, or <code>SECRET</code>.</td>
+</tr>
+<tr>
+<td>Notification Count</td>
+<td>Sets the number of items within this notification.</td>
+</tr>
+<tr>
+<td>Light On Duration</td>
+<td>Along with <strong>Light Off Duration</strong>, define the blink rate of LED flashes. A duration in seconds with up to nine fractional digits, ending with <code>s</code>. For example: <code>3.5s</code>.</td>
+</tr>
+<tr>
+<td>Light Off Duration</td>
+<td>Along with <strong>Light On Duration</strong>, define the blink rate of LED flashes. A duration in seconds with up to nine fractional digits, ending with <code>s</code>. Example: <code>3.5s</code>.</td>
+</tr>
+<tr>
+<td>Color Red</td>
+<td>A value between <code>0</code> and <code>1</code> that represents the amount of Red in the overall light color. Combine this value with the values you set for Color Green and Color Blue to determine the overall color. For example, Color Red = <code>1</code>, Color Blue = <code>.5</code>, and Color Green = <code>0</code> creates fushcia or deep pink.</td>
+</tr>
+<tr>
+<td>Color Green</td>
+<td>A value between <code>0</code> and <code>1</code> that represents the amount of Green in the overall light color. Combine this value with the values you set for Color red and Color Blue to determine the overall color.</td>
+</tr>
+<tr>
+<td>Color Blue</td>
+<td>A value between <code>0</code> and <code>1</code> that represents the amount of Blue in the overall light color. Combine this value with the values you set for Color Green and Color Red to determine the overall color.</td>
+</tr>
+<tr>
+<td>Color Alpha</td>
+<td>The fraction of this color that should be applied to the pixel. That is, the final pixel color is defined by the equation: <strong>pixel color = alpha * (this color) + (1.0 - alpha) * (background color)</strong>.</td>
+</tr>
+<tr>
+<td>Image</td>
+<td>The URL of an image to be displayed in the notification.</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>User-specified data in <code>&quot;key&quot; : &quot;value&quot;</code> pair</td>
+</tr>
+<tr>
+<td>format.</td>
+<td></td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td>Provide template variables as data input for <strong>Templates</strong>. See <a href="https://community.tealiumiq.com/t5/AudienceStream/Webhook-Send-Custom-Request-Template-Variables-Guide/ta-p/15245/">Template Variables Guide</a> documentation for usage examples.<ul><li>Name nested template variables with the dot notation. For example: <code>items.name</code>.</li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Provide templates to be referenced in <strong>Message Options</strong> and <strong>Notification Options</strong> sections. See <a href="https://community.tealiumiq.com/t5/AudienceStream/Webhook-Send-Custom-Request-Trimou-Templating-Engine-Guide/ta-p/15246/">Templates Guide</a> documentation. Templates are injected by name with double curly braces into supported fields. For example: <code>{{template_name}}</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---send-message-to-ios-device">Action - Send Message to iOS Device</h3>
+<ul>
+<li>
+<p>See <a href="https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#resource:-message">Resource: Message</a>, <a href="https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#androidconfig">AndroidConfig</a> documentation for usage examples.</p>
+</li>
+<li>
+<p>To support nested objects, use the <strong>Templates</strong> section to define a template. The template should be mapped using the <strong>Custom Text</strong> option by referencing its names with matching double curly braces: <code>{{template_name}}</code>.</p>
+</li>
+</ul>
+<h3 id="send-message-to-ios-device">Send Message to iOS Device</h3>
 <h4 id="parameters-1">Parameters</h4>
-<ul>
-<li><strong>Message Options:</strong> (Required) Configure recipient, delivery behavior, and UI for a push notification</li>
-<li><strong>Data:</strong> (Optional) Specify non-visible data such as a call to synchronize</li>
-<li><strong>Template Variables:</strong> Map Attribute(s) to template variable names. Template variables are available for substitution and rendering of all templates. Refer to our <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a> for details</li>
-<li><strong>Templates:</strong> Provide one or more templates to render. Typically, a single template is used to construct message data. Refer to our <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a> for common syntax and extensions</li>
-</ul>
-<h4 id="options---message-options-1">Options - Message Options</h4>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>To specify a target for the message, set <strong>only</strong> the one of the following parameters: <code>Token</code>, <code>Topic</code>, or <code>Condition</code>.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Option</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">To</td>
-<td style="text-align:left">Specifically, the recipient of a message. The value can be a device&rsquo;s registration token, a device group&rsquo;s notification key, or a single topic (prefixed with <code>/topics/</code>)</td>
+<td>Token</td>
+<td>Registration token to send a message to.</td>
 </tr>
 <tr>
-<td style="text-align:left">Collapse Key</td>
-<td style="text-align:left">Identifies a group of messages (for example, with <code>collapse_key: &quot;Updates Available&quot;</code>) that can be collapsed, so that only the last message gets sent when delivery can be resumed. This is intended to avoid sending too many of the same messages when the device comes back online or becomes active</td>
+<td>Topic</td>
+<td>A subscribed topic name to send a message to. For example: <code>weather</code>. Note: Do not include the <code>/topics/</code> prefix.</td>
 </tr>
 <tr>
-<td style="text-align:left">Priority</td>
-<td style="text-align:left"><code>normal</code> or <code>high</code>. See: <a href="https://firebase.google.com/docs/cloud-messaging/concept-options#setting-the-priority-of-a-message">Setting the priority of a message</a></td>
+<td>Condition</td>
+<td>A subscribed condition of topics to send a message to. For example: <code>foo in topics &amp;&amp; bar in topics</code>.</td>
 </tr>
 <tr>
-<td style="text-align:left">Content Available</td>
-<td style="text-align:left">When a notification or message is sent and this is set to true, an inactive client app is awoken, and the message is sent through APNs as a silent notification and not through the FCM connection server</td>
+<td>Analytics Label</td>
+<td>Label associated with the message&rsquo;s analytics data.</td>
 </tr>
 <tr>
-<td style="text-align:left">Mutable Content</td>
-<td style="text-align:left">When a notification is sent, and this is set to true, the content of the notification can be modified before it is displayed, using a Notification Service app extension</td>
+<td>Image</td>
+<td>The URL of an image to be displayed in the notification.</td>
 </tr>
 <tr>
-<td style="text-align:left">Time to Live</td>
-<td style="text-align:left">Specify how long (in seconds) the message should be kept in FCM storage if the device is offline. See: <a href="https://firebase.google.com/docs/cloud-messaging/concept-options#ttl">Setting the lifespan of a message</a></td>
+<td>Title</td>
+<td>The title of the notification. Apple Watch displays this string in the short look notification interface.</td>
 </tr>
 <tr>
-<td style="text-align:left">Restricted Package Name</td>
-<td style="text-align:left">Specify the package name of the application where the registration tokens must match in order to receive the message</td>
+<td>Subtitle</td>
+<td>Additional information that explains the purpose of the notification.</td>
 </tr>
 <tr>
-<td style="text-align:left">Dry Run</td>
-<td style="text-align:left">When set to true, allows developers to test a request without actually sending a message</td>
+<td>Body</td>
+<td>The content of the alert message.</td>
 </tr>
 <tr>
-<td style="text-align:left">Title</td>
-<td style="text-align:left">User-visible notification title</td>
+<td>Launch Image</td>
+<td>The name of the launch image file to display.</td>
 </tr>
 <tr>
-<td style="text-align:left">Body</td>
-<td style="text-align:left">User-visible notification body</td>
+<td>Title Localization Key</td>
+<td>The key for a localized title string. Specify this key instead of the <strong>Title</strong> key to retrieve the title from your app&rsquo;s <code>Localizable.strings</code> files. The value must contain the name of a key in your strings file.</td>
 </tr>
 <tr>
-<td style="text-align:left">Sound</td>
-<td style="text-align:left">Sound files can be in the main bundle of the client app or in the <code>Library/Sounds</code> folder of the app&rsquo;s data container</td>
+<td>Title Localization Args</td>
+<td>An array of strings containing replacement values for variables in your title string. Each <code>%@</code> character in the string specified by the <strong>Title Localization Key</strong> is replaced by a value from this array. The first item in the array replaces the first instance of the <code>%@</code> character in the string, the second item replaces the second instance, and so on.</td>
 </tr>
 <tr>
-<td style="text-align:left">Badge</td>
-<td style="text-align:left">Value of the badge on the home screen app icon. If not specified, the badge is not changed. If set to <code>0</code>, the badge is removed</td>
+<td>Subtitle Localization Key</td>
+<td>The key for a localized subtitle string. Use this key, instead of the <strong>Subtitle</strong> key, to retrieve the subtitle from your app&rsquo;s <code>Localizable.strings</code> file. The value must contain the name of a key in your strings file.</td>
 </tr>
 <tr>
-<td style="text-align:left">Click Action</td>
-<td style="text-align:left">Action associated with a user click on the notification. Corresponds to category in the APNs payload</td>
+<td>Subtitle Localization Args</td>
+<td>An array of strings containing replacement values for variables in your title string. Each <code>%@</code> character in the string specified by <strong>Subtitle Localization Key</strong> is replaced by a value from this array.</td>
 </tr>
 <tr>
-<td style="text-align:left">Subtitle</td>
-<td style="text-align:left">User-visible notification subtitle</td>
+<td>Body Localization Key</td>
+<td>The key for a localized message string. Use this key, instead of the <strong>Body</strong> key, to retrieve the message text from your app&rsquo;s <code>Localizable.strings</code> file. The value must contain the name of a key in your strings file.</td>
+</tr>
+<tr>
+<td>Body Localization Args</td>
+<td>An array of strings containing replacement values for variables in your message text. Each <code>%@</code> character in the string specified by <strong>Body Localization Key</strong> is replaced by a value from this array.</td>
+</tr>
+<tr>
+<td>Badge</td>
+<td>The number to display in a badge on your app&rsquo;s icon. Set this parameter to <code>0</code> to remove the current badge, if any.</td>
+</tr>
+<tr>
+<td>Sound Critical</td>
+<td>The critical alert flag. Set this parameter to <code>1</code> to enable the critical alert.</td>
+</tr>
+<tr>
+<td>Sound File Name</td>
+<td>The name of a sound file in your app&rsquo;s main bundle or in the Library/Sounds folder of your app&rsquo;s container directory. Set this value to the string <code>default</code> to play the system sound.</td>
+</tr>
+<tr>
+<td>Sound Volume</td>
+<td>The volume for the critical alert&rsquo;s sound. Set this parameter to a value between <code>0</code> (silent) and <code>1</code> (full volume).</td>
+</tr>
+<tr>
+<td>Thread ID</td>
+<td>An app-specific identifier for grouping related notifications.</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>The notification&rsquo;s type.</td>
+</tr>
+<tr>
+<td>Content Available</td>
+<td>The background notification flag. To perform a silent background update, specify the value <code>1</code> and don&rsquo;t include the <strong>Alert</strong>, <strong>Badge</strong>, or <strong>Sound</strong> keys in your payload.</td>
+</tr>
+<tr>
+<td>Mutable Content</td>
+<td>The notification service app extension flag. If the value is 1, the system passes the notification to your notification service app extension before delivery.</td>
+</tr>
+<tr>
+<td>Target Content ID</td>
+<td>The identifier of the window brought forward.</td>
+</tr>
+<tr>
+<td>Interruption Level</td>
+<td>The importance and delivery timing of a notification.</td>
+</tr>
+<tr>
+<td>Relevance Score</td>
+<td>The relevance score, a number between <code>0</code> and <code>1</code>, that the system uses to sort the notifications from your app.</td>
+</tr>
+<tr>
+<td>Filter Criteria</td>
+<td>A string that the system evaluates to determine if it displays the notification in the current <strong>Focus</strong>.</td>
+</tr>
+<tr>
+<td>Stale Date</td>
+<td>The UNIX timestamp that represents the date at which a <strong>Live Activity</strong> becomes stale, or out of date.</td>
+</tr>
+<tr>
+<td>Content State</td>
+<td>A JSON object that contains updated or final content for a <strong>Live Activity</strong>. The content of this parameter must match the data you describe with your custom <a href="https://developer.apple.com/documentation/activitykit/activityattributes">ActivityAttributes</a> implementation. This option supports templating.</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>The UNIX timestamp that specifies the time at which the remote notification will be sent to update or end a <strong>Live Activity</strong>.</td>
+</tr>
+<tr>
+<td>Events</td>
+<td>Specifies whether to update or end an ongoing <strong>Live Activity</strong> with the remote push notification. Value can be <code>update</code> or <code>end</code>.</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>User-specified data in <code>&quot;key&quot; : &quot;value&quot;</code> pair</td>
+</tr>
+<tr>
+<td>format.</td>
+<td></td>
+</tr>
+<tr>
+<td>Headers</td>
+<td>HTTP request headers defined in Apple Push Notification Service. See <a href="https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns">APNs request headers</a> for supported headers such as <strong>apns-expiration</strong> and <strong>apns-priority</strong>. See <a href="https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#Notification">Firebase Resource: Message</a> for details.</td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td>Provide template variables as data input for <strong>Templates</strong>. See <a href="https://community.tealiumiq.com/t5/AudienceStream/Webhook-Send-Custom-Request-Template-Variables-Guide/ta-p/15245/">Template Variables Guide</a> documentation for usage examples.<ul><li>Name nested template variables with the dot notation. For example: <code>items.name</code>.</li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Provide templates to be referenced in <strong>Message Options</strong> and <strong>Notification Options</strong> sections. See <a href="https://community.tealiumiq.com/t5/AudienceStream/Webhook-Send-Custom-Request-Trimou-Templating-Engine-Guide/ta-p/15246/">Templates Guide</a> documentation. Templates are injected by name with double curly braces into supported fields. For example: <code>{{template_name}}</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---send-message-to-web-app">Action - Send Message to Web App</h3>
+<ul>
+<li>
+<p>See <a href="https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#androidconfig">AndroidConfig</a> documentation for usage examples.</p>
+</li>
+<li>
+<p>To support nested objects, use the <strong>Templates</strong> section to define a template. The template should be mapped using the <strong>Custom Text</strong> option by referencing its names with matching double curly braces: <code>{{template_name}}</code></p>
+</li>
+</ul>
+<h3 id="send-message-to-web-app">Send Message to Web App</h3>
 <h4 id="parameters-2">Parameters</h4>
-<ul>
-<li><strong>Message Options:</strong> (Required) Configure recipient, delivery behavior, and UI for a push notification</li>
-<li><strong>Data:</strong> (Optional) Specify non-visible data such as a call to synchronize</li>
-<li><strong>Template Variables:</strong> Map Attribute(s) to template variable names. Template variables are available for substitution and rendering of all templates. Refer to our <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a> for details</li>
-<li><strong>Templates</strong>: Provide one or more template to render. Typically, a single template is used to construct message data. Refer to our <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a> for common syntax and extensions</li>
-</ul>
-<h4 id="options---message-options-2">Options - Message Options</h4>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>To specify a target for the message, set <strong>only</strong> the one of the following parameters: <code>Token</code>, <code>Topic</code>, or <code>Condition</code>.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Option</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">To</td>
-<td style="text-align:left">Specifically, the recipient of a message. The value can be a device&rsquo;s registration token, a device group&rsquo;s notification key, or a single topic (prefixed with <code>/topics/</code>)</td>
+<td>Token</td>
+<td>Registration token to send a message to.</td>
 </tr>
 <tr>
-<td style="text-align:left">Collapse Key</td>
-<td style="text-align:left">Identifies a group of messages (for example, with <code>collapse_key: &quot;Updates Available&quot;</code>) that can be collapsed, so that only the last message gets sent when delivery can be resumed. This is intended to avoid sending too many of the same messages when the device comes back online or becomes active</td>
+<td>Topic</td>
+<td>A subscribed topic name to send a message to. For example: <code>weather</code>. Note: Do not include the <code>/topics/</code> prefix.</td>
 </tr>
 <tr>
-<td style="text-align:left">Priority</td>
-<td style="text-align:left"><code>normal</code> or <code>high</code>. See: <a href="https://firebase.google.com/docs/cloud-messaging/concept-options#setting-the-priority-of-a-message">Setting the priority of a message</a></td>
+<td>Condition</td>
+<td>A subscribed condition of topics to send a message to. For example: <code>foo in topics &amp;&amp; bar in topics</code>.</td>
 </tr>
 <tr>
-<td style="text-align:left">Time to Live</td>
-<td style="text-align:left">Specify how long (in seconds) the message should be kept in FCM storage if the device is offline. See: <a href="https://firebase.google.com/docs/cloud-messaging/concept-options#ttl">Setting the lifespan of a message</a></td>
+<td>Analytics Label</td>
+<td>Label associated with the message&rsquo;s analytics data.</td>
 </tr>
 <tr>
-<td style="text-align:left">Restricted Package Name</td>
-<td style="text-align:left">Specify the package name of the application where the registration tokens must match in order to receive the message</td>
+<td>Link</td>
+<td>The secure link to open when the user clicks on the notification. Value must begin with <code>https://</code>.</td>
 </tr>
 <tr>
-<td style="text-align:left">Dry Run</td>
-<td style="text-align:left">When set to true, allows developers to test a request without actually sending a message</td>
+<td>Action</td>
+<td>A string identifying a user action to be displayed on the notification.</td>
 </tr>
 <tr>
-<td style="text-align:left">Title</td>
-<td style="text-align:left">User-visible notification title</td>
+<td>Action Title</td>
+<td>A string containing action text to be shown to the user.</td>
 </tr>
 <tr>
-<td style="text-align:left">Body</td>
-<td style="text-align:left">User-visible notification body</td>
+<td>Action Icon</td>
+<td>A string containing the URL of an icon to display with the action.</td>
 </tr>
 <tr>
-<td style="text-align:left">Icon</td>
-<td style="text-align:left">User-visible notification icon URL</td>
+<td>Badge</td>
+<td>The URL of the image used to represent the notification when there is not enough space to display the notification itself.</td>
 </tr>
 <tr>
-<td style="text-align:left">Click Action</td>
-<td style="text-align:left">For all URL values, secure HTTPS is required</td>
+<td>Title</td>
+<td>The title of the notification.</td>
+</tr>
+<tr>
+<td>Body</td>
+<td>The body string of the notification.</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>Returns a structured clone of the notification&rsquo;s data. This option supports templating.</td>
+</tr>
+<tr>
+<td>Direction</td>
+<td>The text direction of the notification.</td>
+</tr>
+<tr>
+<td>Icon</td>
+<td>The URL of the image used as an icon of the notification.</td>
+</tr>
+<tr>
+<td>Image</td>
+<td>The URL of an image to be displayed as part of the notification.</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>The language code of the notification.</td>
+</tr>
+<tr>
+<td>Renotify</td>
+<td>Specifies whether the user should be notified after a new notification replaces an old one.</td>
+</tr>
+<tr>
+<td>Require Interaction</td>
+<td>A boolean value indicating that a notification should remain active until the user clicks or dismisses it, rather than closing automatically.</td>
+</tr>
+<tr>
+<td>Silent</td>
+<td>Specifies whether the notification should be silent. If this parameter is set to <code>true</code>, no sounds or vibrations are issued, regardless of the device settings.</td>
+</tr>
+<tr>
+<td>Tag</td>
+<td>The ID of the notification.</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>Specifies the time at which a notification is created or applicable (past, present, or future).</td>
+</tr>
+<tr>
+<td>Vibrate</td>
+<td>Specifies a vibration pattern for devices with vibration hardware to emit. A duration in seconds with up to nine fractional digits, ending with <code>s</code>. For example: <code>3.5s</code>. See <a href="https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#Notification">Firebase Resource: Message</a>.</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>User-specified data in <code>&quot;key&quot; : &quot;value&quot;</code> pair</td>
+</tr>
+<tr>
+<td>format.</td>
+<td></td>
+</tr>
+<tr>
+<td>Headers</td>
+<td>HTTP headers defined in webpush protocol. Refer to <a href="https://www.rfc-editor.org/rfc/rfc8030#section-5">Webpush protocol</a> for supported headers. For example: <code>&quot;TTL&quot;: &quot;15&quot;</code>. See <a href="https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#Notification">Firebase Resource: Message</a> for details.</td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td>Provide template variables as data input for <strong>Templates</strong>. See <a href="https://community.tealiumiq.com/t5/AudienceStream/Webhook-Send-Custom-Request-Template-Variables-Guide/ta-p/15245/">Template Variables Guide</a> documentation for usage examples.<ul><li>Name nested template variables with the dot notation. For example: <code>items.name</code>.</li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Provide templates to be referenced in <strong>Message Options</strong> and <strong>Notification Options</strong> sections. See <a href="https://community.tealiumiq.com/t5/AudienceStream/Webhook-Send-Custom-Request-Trimou-Templating-Engine-Guide/ta-p/15246/">Templates Guide</a> documentation. Templates are injected by name with double curly braces into supported fields. For example: <code>{{template_name}}</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="vendor-documentation">Vendor Documentation</h2>
 <ul>
-<li><a href="https://firebase.google.com/docs/">Getting Started</a></li>
-<li><a href="https://firebase.google.com/docs/cloud-messaging/">Firebase Cloud Messaging</a></li>
-</ul>
-<h3 id="apis">APIs</h3>
-<ul>
-<li><a href="https://firebase.google.com/docs/cloud-messaging/http-server-ref">Firebase Cloud Messaging HTTP Protocol</a></li>
-</ul>
-<h3 id="additional-references">Additional References</h3>
-<ul>
-<li><a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a></li>
+<li>
+<p>See <a href="https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#androidconfig">AndroidConfig</a> documentation for usage examples.</p>
+</li>
+<li>
+<p>To support nested objects, use the <strong>Templates</strong> section to define a template. The template should be mapped using the <strong>Custom Text</strong> option by referencing its names with matching double curly braces: <code>{{template_name}}</code>.</li></ul></p>
+</li>
 </ul>
 
 </div>
@@ -1044,7 +1318,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 23, 2020 
+          <p>This page was last updated:  April 11, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1058,16 +1332,13 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#requirements">Requirements</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#supported-actions">Supported Actions</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#api-information">API Information</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action Settings - Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-message-to-android-device">Action - Send Message to Android Device</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-message-to-ios-device">Action - Send Message to iOS Device</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-message-to-web-app">Action - Send Message to Web App</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#vendor-documentation">Vendor Documentation</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#apis">APIs</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#additional-references">Additional References</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#actions">Actions</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#send-message-to-android-device">Send Message to Android Device</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#send-message-to-ios-device">Send Message to iOS Device</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#send-message-to-web-app">Send Message to Web App</a></li>
               </nav>
   </aside></nav>
 
@@ -1276,6 +1547,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

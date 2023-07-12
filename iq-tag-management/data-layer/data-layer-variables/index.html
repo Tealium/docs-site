@@ -291,6 +291,8 @@ var utag_data = {
         <a href="/iq-tag-management/profiles/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-profiles">About profiles</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/profiles/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-profiles">Manage profiles</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/profiles/profile-switcher/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".profile-switcher">Profile switcher</a>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".profile-libraries">Profile libraries</a>
         <ul class=" profile-libraries desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -808,16 +810,40 @@ var utag_data = {
 <p>These are built-in DOM variables that cannot be modified. They are set automatically in the page.</p>
 <p><a href="/platforms/javascript/built-in-variables/">Learn more about built-in utag.js variables</a>.</p>
 <h2 id="local-and-session-storage">Local and session storage</h2>
-<p>Select this type to reference an object from local storage or session storage.</p>
-<p>For more information about the differences between storage types and uses, see <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">Window.localStorage</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage">Window.sessionStorage</a> from  MDN Web Docs.</p>
-<p>Session and local storage are sub-domain based. For example, your data will not persist if you move between <code>www.example.com</code> to <code>secure.example.com</code>. For more information, see <a href="/server-side/attributes/data-layer-enrichment/about/#same-origin-policy">Same Origin Policy</a>.</p>
+<p>Select these types to reference an object from the browser&rsquo;s local storage or session storage:</p>
+<ul>
+<li>Local storage is saved across browser sessions. This data does not expire.</li>
+<li>Session storage expires when the page session ends.</li>
+</ul>
+<p>For more information about the differences between these storage types and their uses, see <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">Window.localStorage</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage">Window.sessionStorage</a> from MDN Web Docs.</p>
+<p>To set a value, use the <a href="/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Advanced JavaScript Code extension</a> with custom JavaScript code similar to the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">setItem</span>(<span style="color:#e6db74">&#34;key&#34;</span>, <span style="color:#a6e22e">value</span>)
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>You cannot use <a href="/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist Data Value</a> or <a href="/iq-tag-management/extensions/extensions-list/set-data-values-extension/">Set Data Values</a> extensions to set values on your browser for local or session storage.</p>
+<p>Session and local storage can only access data within the same subdomain. For example, data accessed on <code>www.example.com</code> cannot be accessed on <code>store.example.com</code>. For more information, see <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#cross-origin_data_storage_access">Same Origin Policy</a>.</p>
 <p>Reference these variables with JavaScript in an extension:</p>
 <ul>
 <li>Local storage: <code>b[&quot;ls.my_local_storage_var&quot;]</code></li>
 <li>Session storage: <code>b[&quot;ss.my_session_storage_var&quot;]</code></li>
 </ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>If you added local storage or session storage variables as the UDO type with the <code>ls.</code> or <code>ss.</code> prefix before March 1, 2023, they will not be converted to the new local storage and session storage variable types.</p>
-
+<h4 id="example-4">Example</h4>
+<p>Your system stores the variable <code>last_category_viewed</code> in local storage:</p>
+<figure><a class="slb" href="/images/iq-tag-management/data-layer/data-layer-variables/localandsessionstorage2.png"><img src="/images/iq-tag-management/data-layer/data-layer-variables/localandsessionstorage2.png"
+         alt="Reference the variable"
+         title="Reference the variable"/>
+    </a>
+</figure>
+<p>You can access this value from the page as:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">getItem</span>(<span style="color:#e6db74">&#34;last_category_viewed&#34;</span>).
+</span></span></code></pre></div><p>To add this variable to your configuration, create a data layer variable with <strong>Type</strong> set to <strong>Local Storage Variable</strong> and the <strong>Source</strong> set to <code>last_category_viewed</code>:</p>
+<figure><a class="slb" href="/images/iq-tag-management/data-layer/data-layer-variables/localandsessionstorage1.png"><img src="/images/iq-tag-management/data-layer/data-layer-variables/localandsessionstorage1.png"
+         alt="Create the variable"
+         title="Create the variable"/>
+    </a>
+</figure>
+<p>To set a value, use the <a href="/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Advanced JavaScript Code Extension</a> with custom JavaScript code similar to the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">setItem</span>(<span style="color:#e6db74">&#34;last_category_viewed&#34;</span>, <span style="color:#e6db74">&#34;Apparel&#34;</span>)
+</span></span></code></pre></div>
 </div>
 
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
@@ -877,7 +903,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 20, 2023 
+          <p>This page was last updated:  July 10, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
