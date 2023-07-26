@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>About file import | File Import |Tealium Docs</title>
+    <title>About file import | File Import | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -635,8 +635,6 @@ var utag_data = {
         <a href="/server-side/functions/manage-functions/manage-global-variables/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-functions-manage-global-variables s">Manage global variables</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/functions/manage-functions/view-function-statistics/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-view-function-statistics">View function statistics</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side/functions/event-visitor-functions/authentication/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".add-authentication-to-function">Add authentication</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".event-visitor-functions">Event and visitor functions</a>
@@ -652,6 +650,8 @@ var utag_data = {
         <a href="/server-side/functions/event-visitor-functions/function-examples-v2/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".v2-function-examples">Function examples (V2)</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/functions/event-visitor-functions/v3-function-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".v3-event-visitor-function-examples">Function examples (V3)</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/functions/event-visitor-functions/authentication/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".add-authentication-to-function">Add authentication</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/functions/event-visitor-functions/oauth2-authentication/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".functions-OAuth2-authentication">Add OAuth 2.0 authentication</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -898,6 +898,12 @@ After you set up your data source, upload your CSV files to your file service. F
 </ul>
 </li>
 </ul>
+<h4 id="tealium-s3-file-retention">Tealium S3 file retention</h4>
+<p>By using the Tealium S3 bucket in your file import configuration, you agree to the following file retention policy:</p>
+<ul>
+<li><strong>1-3 years</strong> - One year after uploading files to the Tealium S3 bucket, the files will be moved to a repository for long-term storage. Files will be accessible for up to three years. Retrieving files from long-term storage will incur a minimal to moderate service charge depending on the size and number of items requested. To retrieve any file, contact Tealium Support.</li>
+<li><strong>3 years or more</strong> - Three years after uploading files to the Tealium S3 bucket, files will be deleted permanently. If your business case requires storage for longer than three years, a longer data retention time must be explicitly stated in the customer contract. To request a longer retention policy, contact Tealium Support.</li>
+</ul>
 <h2 id="step-2-upload-your-files-to-a-file-transfer-service">Step 2: Upload your files to a file transfer service</h2>
 <p>After you complete your file import data source configuration, upload files to the file service you have selected.</p>
 <p>Tealium uses the following order of operations to import files:</p>
@@ -965,7 +971,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 28, 2023 
+          <p>This page was last updated:  July 21, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -999,7 +1005,7 @@ No</button>
     <div class="center flex-ns flex-wrap justify-between mw9 w-90">
     </div>
 
-    <div class="bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+    <div class="dpn bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
 <div class="globalmenu mobilemenu dn">
     
 
@@ -1368,11 +1374,6 @@ const translations = {
   },
 };
 var default_sections = [
-  "Platforms > JavaScript (Web)",
-  "Platforms > Getting Started for Websites",
-  "Platforms > Android (Kotlin)",
-  "Platforms > iOS (Swift)",
-  "Platforms > Getting Started for Mobile"
 ];
 var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
 if(ls_sections.indexOf("JAVASCRIPT") != -1) {
@@ -1415,15 +1416,17 @@ const transformItems = function(hits) {
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
-  apiKey: 'cb21a38c7ac4f7dddf727fa23008d220',
+  apiKey: '09633c367e743588b87dbb988dad4158',
   indexName: 'tealium',
   placeholder: 'Search',
   translations: translations,
   searchParameters: {
     "hitsPerPage": 50,
-    optionalFilters: opt_filters
+    "analytics": true ,
+    "analyticsTags": ["site"]
   },
-  debug: "false",
+  insights: true,
+  debug: false ,
   transformItems
 });
 </script>

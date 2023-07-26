@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Google Display and Video 360 Customer Match Connector Setup Guide | Server-Side Connectors |Tealium Docs</title>
+    <title>Google Display &amp; Video 360 Customer Match Connector Setup Guide | Server-Side Connectors | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -399,10 +399,10 @@ var utag_data = {
         <a href="/server-side-connectors/google-campaign-manager-360-floodlight-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".google-campaign-manager-360-floodlight-connector-setup-guide">Google Campaign Manager 360 Floodlight</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/google-cloud-pubsub-connector-service-account/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".google-cloud-pubsub-connector-service-account">Google Cloud Pub/Sub</a>
+      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/google-dv-360-customer-match-connector/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".google-dv360-customer-match-connector">Google Display &amp; Video 360 Customer Match</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/google-display-video-360-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".google-display-amp-video-360-connector-setup-guide">Google Display and Video 360</a>
-      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side-connectors/google-dv-360-customer-match-connector/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".google-dv360-customer-match-connector">Google Display and Video 360 Customer Match</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/google-sheets-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".google-sheets-connector">Google Sheets</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -708,7 +708,7 @@ var utag_data = {
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Google Display and Video 360 Customer Match Connector Setup Guide</h1>
+<h1 class="lh-title mt30 mb3">Google Display &amp; Video 360 Customer Match Connector Setup Guide</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -720,13 +720,21 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="connector-actions">Connector Actions</h2>
+  <h2 id="api-information">API Information</h2>
+<p>This connector uses the following vendor API:</p>
+<ul>
+<li>API Name: Google Audience Partner API</li>
+<li>API Version: v1</li>
+<li>API Endpoint: <code>https://audiencepartner.googleapis.com/v1</code></li>
+<li>Documentation: <a href="https://developers.google.com/google-ads/api/docs/remarketing/audience-types/customer-match/get-started">Google Ads API: Get started with Customer Match</a></li>
+</ul>
+<h2 id="connector-actions">Connector Actions</h2>
 <table>
 <thead>
 <tr>
-<th><strong>Action Name</strong></th>
-<th><strong>AudienceStream</strong></th>
-<th><strong>EventStream</strong></th>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
@@ -740,17 +748,21 @@ var utag_data = {
 <td>✓</td>
 <td>✓</td>
 </tr>
+<tr>
+<td>Add to Customer Match List (multiple identifiers)</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Remove from Customer Match List (multiple identifiers)</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
 </tbody>
 </table>
 <h2 id="requirements">Requirements</h2>
-<p>Before configuring this connector, add Tealium as a linked account in the Google DV360 UI (<strong>Tools and Settings</strong> &gt; <strong>Linked Accounts</strong>). For more information, see the <a href="https://support.google.com/displayvideo/answer/9649053?hl=en">Google article on sharing audience lists</a>.</p>
-<h2 id="batch-limits">Batch Limits</h2>
-<p>This connector uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following three thresholds is met:</p>
-<ul>
-<li>Maximum number of requests: 33000</li>
-<li>Maximum time since oldest request: 60 minutes</li>
-<li>Maximum size of requests: 40 MB</li>
-</ul>
+<p>Before configuring this connector, add Tealium as a linked account in your Google Display &amp; Video 360 account.</p>
+<p>For more information, see <a href="https://support.google.com/displayvideo/answer/9649053?hl=en">Google Display &amp; Video 360: Sharing audience lists from external data management platforms or customer match uploader partners</a>.</p>
 <h2 id="configure-settings">Configure Settings</h2>
 <p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/manage/">About Connectors</a>.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>When you add this connector, you are prompted to accept the vendor&rsquo;s data platform policy.</p>
@@ -758,7 +770,7 @@ var utag_data = {
 <ul>
 <li><strong>Customer ID</strong>
 <ul>
-<li><strong>Required.</strong> The account to which Tealium is linked in the DV360 UI (<strong>Tools and Settings</strong> &gt; <strong>Linked Accounts</strong>).</li>
+<li><strong>Required.</strong> Your Google Ads account that is linked to Tealium (<a href="https://support.google.com/google-ads/answer/1704344?hl=en">Google Ads Help: Find your Google Ads customer ID</a>).</li>
 </ul>
 </li>
 <li><strong>Target Product</strong>
@@ -771,18 +783,19 @@ var utag_data = {
 <h2 id="action-settings--parameters-and-options">Action Settings — Parameters and Options</h2>
 <p>Click <strong>Continue</strong> to configure the connector actions. Enter a name for the action and then select the action type from the drop-down menu.</p>
 <p>The following sections describe how to set up parameters and options for each action.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>We recommend that you use the single identifier actions unless you are passing multiple identifiers.</p>
 <h3 id="user-identifiers">User Identifiers</h3>
 <p>Each action requires a user identifier and these values must be normalized and hashed using SHA-256. Each user identifier value mapped must meet the following requirements:</p>
 <ul>
 <li>Lower-case</li>
-<li>Whitespace trimmed from the beginning and end of the text</li>
+<li>Blank spaces trimmed from the beginning and end of the text</li>
 <li>Hashed with SHA-256</li>
 </ul>
 <p>You can map attributes that are already normalized and hashed or you can allow the connector to normalize and hash them for you. Select the appropriate mapping for your scenario.</p>
 <p>The <code>User List</code> type you select determines the type of user identifier. The <code>User List</code> type can be one of the following:</p>
 <ul>
-<li>CONTACT_INFO</li>
-<li>MOBILE_ADVERTISING_ID</li>
+<li><code>CONTACT_INFO</code></li>
+<li><code>MOBILE_ADVERTISING_ID</code></li>
 </ul>
 <p>The following user identifier fields are supported:</p>
 <table>
@@ -803,7 +816,14 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<h3 id="action--add-to-customer-match-list">Action — Add to Customer Match List</h3>
+<h3 id="action--add-to-customer-match-list-single-identifier">Action — Add to Customer Match List (single identifier)</h3>
+<h4 id="batch-limits">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 100000</li>
+<li>Max time since oldest request: 1440 minutes</li>
+<li>Max size of requests: 50 MB</li>
+</ul>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -819,8 +839,61 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<h3 id="action--remove-from-customer-match-list">Action — Remove from Customer Match List</h3>
+<h3 id="action--remove-from-customer-match-list-single-identifier">Action — Remove from Customer Match List (single identifier)</h3>
+<h4 id="batch-limits-1">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 100000</li>
+<li>Max time since oldest request: 1440 minutes</li>
+<li>Max size of requests: 50 MB</li>
+</ul>
 <h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer Match List</td>
+<td>Select a Customer Match List. Only lists created via the Tealium connector are available.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="action--add-to-customer-match-list-multiple-identifiers">Action — Add to Customer Match List (multiple identifiers)</h3>
+<h4 id="batch-limits-2">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 33000</li>
+<li>Max time since oldest request: 1440 minutes</li>
+<li>Max size of requests: 50 MB</li>
+</ul>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer Match List</td>
+<td>Select a Customer Match List. Only lists created via the Tealium connector are available.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="action--remove-from-customer-match-list-multiple-identifiers">Action — Remove from Customer Match List (multiple identifiers)</h3>
+<h4 id="batch-limits-3">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 33000</li>
+<li>Max time since oldest request: 1440 minutes</li>
+<li>Max size of requests: 50 MB</li>
+</ul>
+<h4 id="parameters-3">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -841,13 +914,13 @@ var utag_data = {
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/server-side-connectors/google-sheets-connector/"
+  <a href="/server-side-connectors/google-display-video-360-connector/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Google Sheets</div>
+      <div>Google Display and Video 360</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Google Sheets"</title>
+      <title>"Google Display and Video 360"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -856,14 +929,14 @@ var utag_data = {
 </div><div class="di mr3">
   
   
-  <a href="/server-side-connectors/google-display-video-360-connector/"
+  <a href="/server-side-connectors/google-cloud-pubsub-connector-service-account/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Google Display and Video 360 "</title>
+      <title>"Google Cloud Pub/Sub "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>Google Display and Video 360</div>
+      <div>Google Cloud Pub/Sub</div>
     </section>
   </a>
   
@@ -909,14 +982,16 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#api-information">API Information</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#requirements">Requirements</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#batch-limits">Batch Limits</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings--parameters-and-options">Action Settings — Parameters and Options</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#user-identifiers">User Identifiers</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action--add-to-customer-match-list">Action — Add to Customer Match List</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action--remove-from-customer-match-list">Action — Remove from Customer Match List</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action--add-to-customer-match-list-single-identifier">Action — Add to Customer Match List (single identifier)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action--remove-from-customer-match-list-single-identifier">Action — Remove from Customer Match List (single identifier)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action--add-to-customer-match-list-multiple-identifiers">Action — Add to Customer Match List (multiple identifiers)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action--remove-from-customer-match-list-multiple-identifiers">Action — Remove from Customer Match List (multiple identifiers)</a></li>
               </nav>
   </aside></nav>
 
@@ -930,7 +1005,7 @@ No</button>
     <div class="center flex-ns flex-wrap justify-between mw9 w-90">
     </div>
 
-    <div class="bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+    <div class="dpn bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
 <div class="globalmenu mobilemenu dn">
     
 
@@ -1436,11 +1511,6 @@ const translations = {
   },
 };
 var default_sections = [
-  "Platforms > JavaScript (Web)",
-  "Platforms > Getting Started for Websites",
-  "Platforms > Android (Kotlin)",
-  "Platforms > iOS (Swift)",
-  "Platforms > Getting Started for Mobile"
 ];
 var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
 if(ls_sections.indexOf("JAVASCRIPT") != -1) {
@@ -1483,15 +1553,17 @@ const transformItems = function(hits) {
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
-  apiKey: 'cb21a38c7ac4f7dddf727fa23008d220',
+  apiKey: '09633c367e743588b87dbb988dad4158',
   indexName: 'tealium',
   placeholder: 'Search',
   translations: translations,
   searchParameters: {
     "hitsPerPage": 50,
-    optionalFilters: opt_filters
+    "analytics": true ,
+    "analyticsTags": ["site"]
   },
-  debug: "false",
+  insights: true,
+  debug: false ,
   transformItems
 });
 </script>

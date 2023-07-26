@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Attributes Badges | AudienceStream CDP |Tealium Docs</title>
+    <title>Attributes Badges | AudienceStream CDP | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -635,8 +635,6 @@ var utag_data = {
         <a href="/server-side/functions/manage-functions/manage-global-variables/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-functions-manage-global-variables s">Manage global variables</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/functions/manage-functions/view-function-statistics/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-view-function-statistics">View function statistics</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side/functions/event-visitor-functions/authentication/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".add-authentication-to-function">Add authentication</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".event-visitor-functions">Event and visitor functions</a>
@@ -652,6 +650,8 @@ var utag_data = {
         <a href="/server-side/functions/event-visitor-functions/function-examples-v2/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".v2-function-examples">Function examples (V2)</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/functions/event-visitor-functions/v3-function-examples/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".v3-event-visitor-function-examples">Function examples (V3)</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/functions/event-visitor-functions/authentication/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".add-authentication-to-function">Add authentication</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/functions/event-visitor-functions/oauth2-authentication/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".functions-OAuth2-authentication">Add OAuth 2.0 authentication</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -846,13 +846,14 @@ var utag_data = {
 <div class="mv2 mid-gray fn w-100">
   
     <p class="f4 fw3 lh-copy">
-      Badges are special visitor attributes that represent interesting behavior patterns. Badges are assigned or removed from visitors based on the logic of their enrichments. This logic usually combines multiple conditions into one to capture visitor segments or sets a threshold for when a particular value is reached.
+      This document explains visitor attributes badges.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="example-badges">Example badges</h2>
+  <p>Badges are special visitor attributes that represent interesting behavior patterns. Badges are assigned or removed from visitors based on the logic of their enrichments. This logic usually combines multiple conditions into one to capture visitor segments or sets a threshold for when a particular value is reached.</p>
+<h2 id="example-badges">Example badges</h2>
 <p>Here are some example badges:</p>
 <table>
 <thead>
@@ -865,30 +866,38 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td><figure><a class="slb" href="/images/server-side/getting-started-audiencestream-badge-test-group-b.png"><img src="/images/server-side/getting-started-audiencestream-badge-test-group-b.png"
+<td><img src="/images/server-side/getting-started/audiencestream-cdp/attributes-badges/big-spenders.png" 
+         alt="Big Spenders"
+         title="Big Spenders" width="150" height="150"/></td>
+<td><img src="/images/server-side/getting-started/audiencestream-cdp/attributes-badges/cart-abandoner.png" 
+         alt="Cart Abandoner"
+         title="Cart Abandoner" width="150" height="150"/></td>
+<td><img src="/images/server-side/getting-started/audiencestream-cdp/attributes-badges/multi-device-user.png" 
+         alt="Multi-Device User"
+         title="Multi-Device User" width="150" height="150"/></td>
+<td><img src="/images/server-side/getting-started/audiencestream-cdp/attributes-badges/test-group-b.png" 
          alt="Test Group B"
-         title="Test Group B" width="150" height="150"/>
-    </a>
-</figure> Is part of a randomly assigned test group</td>
-<td></td>
-<td></td>
-<td></td>
+         title="Test Group B" width="150" height="150"/></td>
+</tr>
+<tr>
+<td>Average Order Value is greater than 100.</td>
+<td>Had unpurchased items in cart when visit ended.</td>
+<td>Lifetime number of devices used is greater than 1.</td>
+<td>Part of a randomly assigned test group.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="create-a-badge">Create a badge</h2>
-<figure class="dib fr mv0"><a class="slb" href="/images/server-side/getting-started-audiencestream-badge-vip.png"><img src="/images/server-side/getting-started-audiencestream-badge-vip.png"
+<img src="/images/server-side/getting-started-audiencestream-badge-vip.png" class="dib fr mv0"
          alt="VIP"
          title="VIP" width="150" height="150"/>
-    </a>
-</figure>
 <p>We will build on the previous attribute, Lifetime Order Value, to create a <strong>VIP</strong> badge that will identify visitors that have spent more than $500.</p>
 <p>Follow these steps to create a badge:</p>
 <ol>
 <li>Navigate to <strong>AudienceStream &gt; Attributes</strong> and click <strong>Add Attribute</strong>.</li>
 <li>Select the scope of <strong>Visitor</strong> and click <strong>Continue</strong>.</li>
 <li>Select the data type <strong>Badge</strong> and click <strong>Continue</strong>.</li>
-<li>Enter the name of the attribute, <code>VIP</code>.</li>
+<li>Enter the name of the attribute: <code>VIP</code>.</li>
 <li>Click <strong>Add Enrichment</strong> and select <strong>Assign Badge</strong>.</li>
 <li>Leave the <strong>WHEN</strong> set to <strong>Any Event</strong>, then click <strong>Create a New Rule</strong>.</li>
 <li>Create a rule that identifies when the lifetime order amount has reached 500, for example:<br>
@@ -896,7 +905,6 @@ var utag_data = {
 <li>Click <strong>Save</strong>, then <strong>Finish</strong>.</li>
 </ol>
 <p>That&rsquo;s it! Now you have a visitor badge that will keep track of customers that match the behavior pattern defined in the enrichment rules.</p>
-<p>That takes care of one of the special visitor attributes. Click <strong>Next</strong> to learn about omnichannel attributes and how to import offline data.</p>
 
 </div>
 
@@ -957,7 +965,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  July 20, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -986,7 +994,7 @@ No</button>
     <div class="center flex-ns flex-wrap justify-between mw9 w-90">
     </div>
 
-    <div class="bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+    <div class="dpn bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
 <div class="globalmenu mobilemenu dn">
     
 
@@ -1355,11 +1363,6 @@ const translations = {
   },
 };
 var default_sections = [
-  "Platforms > JavaScript (Web)",
-  "Platforms > Getting Started for Websites",
-  "Platforms > Android (Kotlin)",
-  "Platforms > iOS (Swift)",
-  "Platforms > Getting Started for Mobile"
 ];
 var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
 if(ls_sections.indexOf("JAVASCRIPT") != -1) {
@@ -1402,15 +1405,17 @@ const transformItems = function(hits) {
 docsearch({
   container: '#docsearch',
   appId: '01G44CJWZ0',
-  apiKey: 'cb21a38c7ac4f7dddf727fa23008d220',
+  apiKey: '09633c367e743588b87dbb988dad4158',
   indexName: 'tealium',
   placeholder: 'Search',
   translations: translations,
   searchParameters: {
     "hitsPerPage": 50,
-    optionalFilters: opt_filters
+    "analytics": true ,
+    "analyticsTags": ["site"]
   },
-  debug: "false",
+  insights: true,
+  debug: false ,
   transformItems
 });
 </script>
