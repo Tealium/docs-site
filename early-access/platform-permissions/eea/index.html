@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Platform Permissions (Early Access) | Platform Permissions | Tealium Docs</title>
+    <title>Platform Permissions (Expanded Early Access) | Platform Permissions | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -212,10 +212,10 @@ var utag_data = {
         <a href="/early-access/linkedin-conversions-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".linkedin-conversions-connector">LinkedIn Conversions</a>
       </li><li class="relative w-100 fw8 f5  active">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2 primary-color expanded " data-target=".permissions">Platform Permissions</a>
-        <ul class="bl b--primary bw1 pl2 permissions desktopmenu animated fadeIn list "><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/early-access/platform-permissions/early-access-release/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".">Early Access Release</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/early-access/platform-permissions/expanded-release/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Expanded Early Access Release</a>
+        <ul class="bl b--primary bw1 pl2 permissions desktopmenu animated fadeIn list "><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/platform-permissions/ea/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Early Access Release</a>
+      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/platform-permissions/eea/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".">Expanded Early Access Release</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/platform-permissions/pii-account-roles/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">PII and Account Level Roles</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -282,7 +282,7 @@ var utag_data = {
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Platform Permissions (Early Access)</h1>
+<h1 class="lh-title mt30 mb3">Platform Permissions (Expanded Early Access)</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -295,59 +295,264 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <p>The Platform Permissions feature provides centralized management of permissions across Tealium products and services. You can control access to Tealium and Tealium features, and personal identifiable information (PII) data.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Platform Permissions is in Expanded Early Access (EEA) and is only available to select customers. If you are interested in trying this feature or need to migrate from EA to EEA, contact your Tealium Support representative.</p>
-<p>For more information about the Expanded Early Access improvements, see <a href="/early-access/platform-permissions/expanded-release/">Platform Permissions</a>.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Platform Permissions is in Expanded Early Access and is only available to select customers. If you are interested in trying this feature, contact your Tealium Support representative.</p>
 <h2 id="how-it-works">How it works</h2>
-<p>The Platform Permissions feature provides two categories of permissions: account role permissions and group permissions. Account role permissions are assigned to users to allow them to manage groups, users, privacy, and product configuration. The group permissions control which users can access PII data, the areas and features of Tealium that users can access, and the profiles users can access. Users are assigned to one or more groups, and have the permissions and access associated with the groups.</p>
+<p>The Platform Permissions feature provides three categories of permissions:</p>
+<ul>
+<li>Admin role permissions are assigned to users to allow them to manage groups, users, privacy, and product configuration.</li>
+<li>Group permissions control the areas and features of Tealium that users can access as well as the profiles users can access. Users are assigned to one or more groups, and have the permissions and access associated with the groups.</li>
+<li>User-based permissions control the user&rsquo;s access to PII (Personally Identifiable Information) data, MFA (Multi-Factor Authentication) access, and API key generation.</li>
+</ul>
 <p>After you have created the necessary groups and assigned account role permissions to users, turn on <strong>Permissions Enforcement</strong> to enforce the permission settings for the account.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Before turning on Permissions Enforcement, make sure that users have been added to groups and admin role permissions have been assigned to users that manage users, groups, and PII permissions. If you turn on permissions enforcement before you assign users to groups or admin roles to users, you may lose access to your account.</p>
-<h3 id="account-role-permissions">Account role permissions</h3>
-<p>Account role permissions are for users that perform administrative tasks (configuration, adding new users, and so on) and allow these users to manage Platform Permissions. You can assign multiple account role permissions to a user.</p>
-<p>There are three levels of account role permissions that specify the administrative tasks a user can perform:</p>
+<h3 id="admin-role-permissions">Admin role permissions</h3>
+<p>Admin role permissions are for users that perform administrative tasks (configuration, adding new users, and so on) and allow these users to manage Platform Permissions. You can assign multiple admin role permissions to a user.</p>
+<p>The following admin role permissions specify the administrative tasks a user can perform:</p>
 <ul>
-<li>
-<p><strong>User Admin</strong>: The user has access to the following features:</p>
+<li><strong>Account Admin</strong>: The user has full permissions on the account.</li>
+<li><strong>Account Viewer</strong>: The user can view everything in the account with read-only access. This role is useful for auditing or legal review purposes.</li>
+<li><strong>User Admin</strong>: The user has access to the following features:
 <ul>
 <li>Manage Permissions: Can add, edit, and remove groups and user permissions.</li>
-<li>Password Policy: Can update the password policy.</li>
-<li>API Key Authorization: Can grant users the ability to generate an authorization key.</li>
-<li>Reset MFA: Can reset multi-factor authentication for users.</li>
+<li>Manage Users: Can add, edit, and remove account users.</li>
+<li>Multi-Factor Authentication: Can enable or disable MFA on the account.</li>
+<li>Reset MFA for other users: Can grant users the ability to generate an authorization key.</li>
+<li>Set Password Policy: Can update the password policy.</li>
+<li>SSO Management: Enable, disable, and manage Single-Sign On (SSO).</li>
 </ul>
 </li>
-<li>
-<p><strong>Privacy Admin</strong>: Requires <strong>User Admin</strong> permission.The user has access to the following features:</p>
+<li><strong>Profile Admin</strong>: Profile admins have access to the following features:
 <ul>
-<li>PII View &amp; Manage: Can set PII permissions for groups and setup and manage data sources, connectors, attributes, enrichments, and rules.</li>
-<li>Tag Marketplace policy: Can update the Tag Marketplace Policy.</li>
-<li>Consent Management: Can manage global consent parameters and languages, which apply to all profiles that use consent management.</li>
+<li>Create New Profile: Can create new profiles in iQ Tag Management and assign permission groups to them.</li>
+<li>Manage Profiles: Can manage an existing profile.</li>
+<li>Manage Profile Libraries: Can manage profile libraries.</li>
 </ul>
 </li>
+<li><strong>Privacy Admin</strong>: Requires <strong>User Admin</strong> permission. In addition to having full access to PII data, privacy admins have access to the following features:
+<ul>
 <li>
-<p><strong>Technical Admin</strong>:  The user can access account configuration features, such as First-Party Domains.</p>
+<p>Consent Management: Can manage global consent parameters and languages, which apply to all profiles that use consent management.</p>
+</li>
+<li>
+<p>PII View &amp; Manage: Can set PII permissions for groups and set up and manage data sources, connectors, attributes, enrichments, and rules. <p class="note"><i class="fa fa-exclamation-triangle"></i>PII permissions management will be moving from group-based management to user-based management in the GA release.</p></p>
+</li>
+<li>
+<p>Tag Marketplace policy: Can update the Tag Marketplace Policy.</p>
+</li>
+</ul>
+</li>
+<li><strong>Technical Admin</strong>: The user has access to the following features:
+<ul>
+<li>First-Party Domains: Can manage first-party domains, including entering domain names and updating certificates.</li>
+<li>GitHub Account: Can link the account to a GitHub account for use with the Advanced JavaScript Code extension.</li>
+</ul>
 </li>
 </ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>To allow administrative users to manage groups and permissions, account role permissions must be assigned to users before <strong>Permissions Enforcement</strong> is turned on.</p>
-<p>The Account Admin has all of the permissions for the User Admin, Privacy Admin, and Technical Admin.</p>
+<h4 id="admin-roles-permissions-matrix">Admin roles permissions matrix</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Account Admin</th>
+<th>Privacy Admin</th>
+<th>Profile Admin</th>
+<th>Technical Admin</th>
+<th>User Admin</th>
+<th>Account Viewer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Accounts</strong></td>
+<td>View, Edit</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>View</td>
+</tr>
+<tr>
+<td><strong>First-Party Domains</strong></td>
+<td>View, Create, Edit, Delete</td>
+<td></td>
+<td></td>
+<td>View, Create, Edit, Delete</td>
+<td></td>
+<td>View</td>
+</tr>
+<tr>
+<td><strong>GitHub Account</strong></td>
+<td>View, Create, Edit, Delete</td>
+<td></td>
+<td></td>
+<td>View, Create, Edit, Delete</td>
+<td></td>
+<td>View</td>
+</tr>
+<tr>
+<td><strong>Global Consent Management</strong></td>
+<td>View, Create, Edit, Delete</td>
+<td>View, Create, Edit, Delete</td>
+<td></td>
+<td></td>
+<td></td>
+<td>View</td>
+</tr>
+<tr>
+<td><strong>Initiate CDN Purge Request</strong></td>
+<td>View, Edit</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>View</td>
+</tr>
+<tr>
+<td><strong>MFA Reset For Others</strong></td>
+<td>View, Edit</td>
+<td></td>
+<td></td>
+<td></td>
+<td>View, Edit</td>
+<td>View</td>
+</tr>
+<tr>
+<td><strong>MFA Toggle</strong></td>
+<td>View, Edit</td>
+<td></td>
+<td></td>
+<td></td>
+<td>View, Edit</td>
+<td>View</td>
+</tr>
+<tr>
+<td><strong>Password Policy</strong></td>
+<td>View, Create, Edit, Delete</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>View</td>
+</tr>
+<tr>
+<td><strong>Permission Groups</strong></td>
+<td>View, Create, Edit, Delete</td>
+<td></td>
+<td></td>
+<td></td>
+<td>View, Create, Edit</td>
+<td>View</td>
+</tr>
+<tr>
+<td><strong>PII and Restricted Data</strong></td>
+<td>View, Create, Edit, Delete</td>
+<td>View, Create, Edit, Delete</td>
+<td></td>
+<td></td>
+<td></td>
+<td>View</td>
+</tr>
+<tr>
+<td><strong>Permissions Enforcement</strong></td>
+<td>View, Edit</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>View</td>
+</tr>
+<tr>
+<td><strong>Profile Libraries</strong></td>
+<td>View, Create, Edit</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>View</td>
+</tr>
+<tr>
+<td><strong>Profiles</strong></td>
+<td>View, Create, Edit, Delete</td>
+<td></td>
+<td>View, Create, Edit</td>
+<td></td>
+<td>View</td>
+<td>View</td>
+</tr>
+<tr>
+<td><strong>SSO</strong></td>
+<td>View, Edit</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>View</td>
+</tr>
+<tr>
+<td><strong>Tag Marketplace Policy</strong></td>
+<td>View, Create, Edit, Delete</td>
+<td>View, Create, Edit, Delete</td>
+<td></td>
+<td></td>
+<td></td>
+<td>View</td>
+</tr>
+<tr>
+<td><strong>TiQ Profile Publish Dev</strong></td>
+<td>View, Edit</td>
+<td></td>
+<td>Edit</td>
+<td></td>
+<td></td>
+<td>View</td>
+</tr>
+<tr>
+<td><strong>TiQ Profile Publish Prod</strong></td>
+<td>View, Edit</td>
+<td></td>
+<td>Edit</td>
+<td></td>
+<td></td>
+<td>View</td>
+</tr>
+<tr>
+<td><strong>TiQ Profile Publish QA</strong></td>
+<td>View, Edit</td>
+<td></td>
+<td>Edit</td>
+<td></td>
+<td></td>
+<td>View</td>
+</tr>
+<tr>
+<td><strong>Users</strong></td>
+<td>View, Create, Edit, Delete</td>
+<td></td>
+<td></td>
+<td></td>
+<td>View, Create, Edit</td>
+<td>View</td>
+</tr>
+</tbody>
+</table>
 <h3 id="group-permissions">Group permissions</h3>
-<p>Permissions and profiles are assigned to groups. Users are assigned to one or more groups, and have the permissions for those groups and can access the profiles for those groups. User must be assigned to at least one group to be able to access Tealium.</p>
-<p>If a user is in multiple groups with different permissions, the highest permissions apply. For example, if a user is in group A, which has <strong>No PII</strong> permission, and is in group B, which has <strong>View</strong> PII permission, the user has <strong>View</strong> PII permission.</p>
-<p>There are three categories of group permissions: Server-Side Publish, PII permissions that specify the level of access to users have to PII data, and product permissions that specify the products and product features that users can access.</p>
-<h4 id="server-side-publish-permission">Server-Side publish permission</h4>
-<p>When Server-Side <strong>Publish Enabled</strong> is selected for a group, users in that group can publish server-side changes. This permission is not specific to products or product features.</p>
-<h4 id="pii-permissions">PII permissions</h4>
-<p>PII Permissions control who can see PII data and who can edit the <strong>Restricted Data</strong> property that identifies PII data. Only one level of PII permissions can be assigned to a group. The three levels of PII permissions are as follows:</p>
+<p>Permissions and profiles are assigned to groups. Users are assigned to one or more groups, and have the permissions for those groups and can access the profiles for those groups. User without an admin role must be assigned to at least one group to be able to access Tealium.</p>
+<p>If a user is in multiple groups with different permissions, the highest permissions apply. For example, if a user is in group A, which has View permission on a profile, and is in group B, which has Edit permission in that profile, the user has Edit permission.</p>
+<p>Also, a user&rsquo;s admin roles may affect profile permissions. For example, a user with the Account Admin role will have full permission on all profiles in the account.</p>
+<p>There are two categories of group permissions:</p>
 <ul>
-<li><strong>No PII</strong>: Users can view PII attributes, but cannot see the values of these attributes. PII is obscured wherever it is shown, including Trace and Live Events.</li>
-<li><strong>View</strong>: Users can view the values of PII attributes, data but cannot edit or manage PII data.</li>
-<li><strong>Manage &amp; View</strong>: Users can view, edit, and manage PII data.</li>
+<li>Server-Side Publish</li>
+<li>Product permissions that specify the products and product features that users can access.</li>
 </ul>
-<p>To edit the <strong>Restricted Data</strong> property for an attribute, users must have the <strong>Manage &amp; View</strong> PII permission and <strong>View, Edit &amp; Delete</strong> permission for that feature.</p>
-<p>For more information on the <strong>Restricted Data</strong> property, see <a href="/server-side/attributes/restricted-data/">About Restricted Data</a>.</p>
+<h4 id="server-side-publish-permission">Server-side publish permission</h4>
+<p>When Server-side <strong>Publish Enabled</strong> is selected for a group, users in that group can publish server-side changes. This permission is not specific to products or product features.</p>
 <h4 id="product-and-feature-permissions">Product and feature permissions</h4>
 <p>Product access permissions specify the Tealium products and features that users can access.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>To access Tealium, users must be assigned to one or more groups that provide the necessary product and feature permissions. Before turning on Permissions Enforcement, make sure that users have been added to groups and admin role permissions have been assigned to users that manage users, groups, and PII permissions. If you turn on permissions enforcement before you assign users to groups or admin roles to users, you may lose access to your account.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>To access Tealium, users must either have an admin role or must be assigned to one or more groups that provide the necessary product and feature permissions. If you turn on permissions enforcement before you assign users to groups or admin roles to users, you may lose access to your account.</p>
 <p>Currently, the following product permissions can be assigned to a group:</p>
 <ul>
+<li>Tealium iQ Tag Management</li>
 <li>AudienceStream</li>
 <li>EventStream</li>
 <li>Data Access</li>
@@ -357,8 +562,9 @@ var utag_data = {
 <li>Server-Side Tools</li>
 <li>Server-Side (Others)</li>
 </ul>
-<p>Feature permissions that can be assigned to a group vary depending on the product permissions assigned to the group, as shown in the following table.</p>
+<p>Feature permissions that can be assigned to a group vary depending on the product permissions assigned to the group, as shown in the following table:</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Users that have <strong>View &amp; Edit</strong> or <strong>View, Edit &amp; Delete</strong> permission also have <strong>Save</strong> permission.</p>
+<br>
 <table>
 <thead>
 <tr>
@@ -369,13 +575,28 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
+<td>iQ Tag Management (Phase 2)</td>
+<td><ul><li>JavaScript Extension</li><li>Advanced JavaScript Extension - Promote to Dev</li><li>Advanced JavaScript Extension - Promote to QA</li><li>Advanced JavaScript Extension - Promote to Prod</li><li>Publish to Dev/Custom</li><li>Publish to QA</li><li>Publish to Prod</li><li>Save</li><li>Publish Settings</li><li>Code Settings</li><li>Resource Lock</li></ul></td>
+<td><ul><li>No Access</li><li>View, Edit &amp; Delete</li></ul></td>
+</tr>
+<tr>
+<td>iQ Tag Management (Phase 2)</td>
+<td><ul><li>Client-Side Versions</li><li>Tag Templates</li></ul></td>
+<td><ul><li>No Access</li><li>View</li><li>View &amp; Edit</li></ul></td>
+</tr>
+<tr>
+<td>iQ Tag Management (Phase 2)</td>
+<td><ul><li>Tags</li><li>Extensions</li><li>Load Rules</li><li>Data Layer</li></ul></td>
+<td><ul><li>No Access</li><li>View</li><li>View &amp; Edit</li><li>View, Edit &amp; Delete</li></ul></td>
+</tr>
+<tr>
 <td>AudienceStream</td>
 <td><ul><li>Dashboard</li><li>Discovery/Sizing</li></ul></td>
 <td><ul><li>No Access</li><li>View</li></ul></td>
 </tr>
 <tr>
 <td>AudienceStream</td>
-<td><ul><li>Audiences</li><li>Audience Connectors</li><li>Visitor/Visit Attributes</li></ul></td>
+<td><ul><li>Audiences<li>Audience Connectors</li><li>Visitor/Visit Attributes</li></ul></td>
 <td><ul><li>No Access</li><li>View</li><li>View &amp; Edit</li><li>View, Edit &amp; Delete</li></ul></td>
 </tr>
 <tr>
@@ -385,12 +606,17 @@ var utag_data = {
 </tr>
 <tr>
 <td>DataAccess</td>
-<td><ul><li>Access Keys<li>AudienceDB</li><li>AudienceStore</li></ul></td>
+<td><ul><li>Access Keys</li><li>Data Insight</li><li>EventStore Legacy</li><ul></td>
 <td><ul><li>No Access</li><li>View</li></ul></td>
 </tr>
 <tr>
 <td>DataAccess</td>
-<td><ul><li>Data Insight</li><li>EventDB</li><li>EventStore</li><li>EventStore Legacy</li></ul></td>
+<td><ul><li>AudienceDB</li><li>EventDB</li><ul></td>
+<td><ul><li>No Access</li><li>View</li><li>View &amp; Edit</li><li>View, Edit &amp; Delete</li></ul></td>
+</tr>
+<tr>
+<td>Data Access</td>
+<td><ul><li>AudienceStore</li><li>EventStore</li><ul></td>
 <td><ul><li>No Access</li><li>View</li><li>View &amp; Edit</li><li>View, Edit &amp; Delete</li></ul></td>
 </tr>
 <tr>
@@ -416,7 +642,7 @@ var utag_data = {
 <tr>
 <td>Server-Side Tools</td>
 <td><ul><li>Manage Rules</li><li>Visitor Delete</li><li>Visitor Lookup</li></ul></td>
-<td><ul><li>No Access</li><li> View</li><li>View &amp; Edit</li><li>View, Edit &amp; Delete</li></ul></td>
+<td><ul><li>No Access</li><li>View</li><li>View &amp; Edit</li><li>View, Edit &amp; Delete</li></ul></td>
 </tr>
 <tr>
 <td>Server-Side Tools</td>
@@ -425,205 +651,229 @@ var utag_data = {
 </tr>
 <tr>
 <td>Server-Side (Others)</td>
-<td><ul><li>Labels<li>Trace</li><li>Versions</li></ul></td>
+<td><ul><li>Labels</li></ul></td>
+<td><ul><li>No Access</li><li>View</li><li>View &amp; Edit</li><li>View, Edit &amp; Delete</li></ul></td>
+</tr>
+<tr>
+<td>Server-Side (Others)</td>
+<td><ul><li>Trace</li><li>Versions</li></ul></td>
 <td><ul><li>No Access</li><li>View</li></ul></td>
 </tr>
 </tbody>
 </table>
-<p>Eventstream and AudienceStream share some elements, such as rules and labels. If a user has Publish permission and only has access to EventStream, publishing changes also affects AudienceStream if changes were made to shared elements. Similarly, if a user has Publish permission and only has access to AudienceStream, publishing changes also affects EventStream if changes were made to shared elements.</p>
-<h4 id="how-lack-of-permission-changes-the-user-interface">How lack of permission changes the user interface</h4>
+<p>EventStream and AudienceStream share some elements, such as rules and labels. If a user has Publish permission and only has access to EventStream, publishing changes also affect AudienceStream if changes were made to shared elements. Similarly, if a user has Publish permission and only has access to AudienceStream, publishing changes also affects EventStream if changes were made to shared elements.</p>
+<h4 id="how-a-users-permissions-change-the-user-interface">How a user&rsquo;s permissions change the user interface</h4>
 <p>When a user does not have permission for a product or feature, the user interface changes as follows:</p>
 <ul>
-<li>When a user does not have access to a product, that product is not shown in the navigation.</li>
+<li>When a user does not have access to a product, that product does not appear in the navigation.</li>
 <li>When a user has access to some features, but not others, they only see the features they can access in the navigation.</li>
 <li>When a user does not have Edit permission for a feature, the Edit button is not displayed on pages for that feature.</li>
 </ul>
-<h2 id="managing-permissions-enforcement-and-pii-permissions">Managing permissions enforcement and PII permissions</h2>
-<p>After you have created the necessary groups, assigned users and profiles to groups, and assigned account role permissions to users, turn on <strong>Permissions Enforcement</strong> to enforce the permission settings for all assigned groups and profiles for the account. To revert back to your original permission settings, toggle the feature to the <strong>OFF</strong> position.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Before turning on <strong>Permissions Enforcement</strong>, make sure that users have been added to groups and account role permissions have been assigned to users that manage users, groups, and PII permissions.</p>
-<p>If <strong>Permissions Enforcement</strong> is turned on before users have been added to groups, users will not have access to Tealium. If <strong>Permissions Enforcement</strong> is turned on before account role permissions are assigned, users will not be able to manage groups, users, and permissions.</p>
-<h3 id="turn-on-platform-permissions">Turn ON platform permissions</h3>
-<ol>
-<li>In the admin menu, click <strong>Manage Permissions</strong>.</li>
-<li>Toggle <strong>Permissions Enforcement</strong> to <strong>ON</strong>.</li>
-</ol>
-<h3 id="turn-off-platform-permissions">Turn OFF platform permissions</h3>
-<ol>
-<li>In the admin menu, click <strong>Manage Permissions</strong>.</li>
-<li>Toggle <strong>Permissions Enforcement</strong> to <strong>OFF</strong>.</li>
-</ol>
-<h3 id="turn-on-pii-permissions">Turn ON PII permissions</h3>
-<p>Platform Permissions must be turned off before you turn on PII Permissions. See <a href="#plat-perms-off">Turn OFF Platform Permissions</a>.</p>
-<ol>
-<li>In the admin menu, click <strong>Manage Users</strong>.</li>
-<li>Toggle <strong>PII Permission Enforcement</strong> to <strong>ON</strong>.</li>
-</ol>
-<p>To re-enable Platform Permissions, see <a href="#plat-perms-on">Turn On Platform Permissions</a>.</p>
-<h3 id="turn-off-pii-permissions">Turn OFF PII permissions</h3>
-<p>Platform Permissions must be turned off before you turn off PII Permissions. See <a href="#plat-perms-off">Turn OFF Platform Permissions</a>.</p>
-<ol>
-<li>In the admin menu, click <strong>Manage Users</strong>.</li>
-<li>Toggle <strong>PII Permission Enforcement</strong> to <strong>OFF</strong>.</li>
-</ol>
-<p>To re-enable Platform Permissions, see <a href="#plat-perms-on">Turn On Platform Permissions</a>.</p>
-<h2 id="managing-groups">Managing groups</h2>
-<p>To manage groups, users must have server-side <strong>User Admin</strong> permission or client-side <strong>Manage Account</strong> permission..</p>
-<h3 id="create-a-new-group">Create a new group</h3>
-<p>Use the following steps to create a group:</p>
-<ol>
-<li>In the admin menu, click <strong>Manage Permissions</strong>.</li>
-<li>Click <strong>+ Create New Group</strong>.</li>
-<li>For <strong>Group Type</strong>, select <strong>New Group</strong>, then click <strong>Next</strong>.</li>
-<li>Enter a unique <strong>Group Name</strong>.</li>
-<li>Select the <strong>PII Permissions</strong> for this group.</li>
-<li>Select <strong>Product Access</strong>:
+<h2 id="managing-permissions-enforcement">Managing Permissions Enforcement</h2>
+<p>After you have created the necessary groups, assigned users and profiles to groups, and assigned account role permissions to users, the Account Admin can turn on Permissions Enforcement to enforce the permission settings for all assigned groups and profiles for the account.</p>
+<p>Permissions Enforcement was released in two phases:</p>
 <ul>
-<li>AudienceStream</li>
-<li>EventStream</li>
-<li>Data Access</li>
-<li>Data Connect</li>
-<li>Predict</li>
-<li>Functions</li>
-<li>Server-Side Tools</li>
-<li>Server-Side (Others)</li>
+<li><strong>Phase 1</strong>: Server-side permissions and the privacy admin, technical admin, and user admin roles.</li>
+<li><strong>Phase 2</strong>: Client-side permissions, the Account Admin role, and the Profile Admin role.</li>
 </ul>
-</li>
-<li>Click <strong>Next</strong>.</li>
-<li>If this group needs to be able to publish server-side changes, select <strong>Publish Enabled</strong>.</li>
-<li>Select Feature Permissions for the selected products, then click <strong>Next</strong>.</li>
-<li>Select the account profiles that will have access to this group, then click <strong>Next</strong>.</li>
-<li>Enter, or copy and paste, an email address for each user to be added to this group, then click <strong>Save</strong>.</li>
-</ol>
-<h3 id="duplicate-an-existing-group">Duplicate an existing group</h3>
-<p>You can create a new group by duplicating an existing group and modifying the permissions and access for the new group. Use the following steps to duplicate a group:</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Before turning on Permissions Enforcement, make sure that users have been added to groups and admin role permissions have been assigned to users that manage users, groups, and PII permissions. If you turn on permissions enforcement before you assign users to groups or admin roles to users, you may lose access to your account.</p>
+<p>If Permissions Enforcement is turned on before users have been added to groups, users will not have access to Tealium. If Permissions Enforcement is turned on before admin role permissions are assigned, users will not be able to manage groups, users, and permissions.</p>
+<p>To turn on Permissions Enforcement:</p>
 <ol>
 <li>In the admin menu, click <strong>Manage Permissions</strong>.</li>
-<li>Click <strong>+ Create New Group</strong>.</li>
-<li>For <strong>Group Type</strong>, select <strong>Duplicate Group from Existing</strong>.</li>
-<li>Select the group to duplicate.</li>
-<li>Enter a name for the duplicate group, then click <strong>Next</strong>.</li>
-<li>Enter, or copy and paste, an email address for each user to be added to the group, then click <strong>Save</strong>.</li>
+<li>In the <strong>Permissions Enforcement</strong> section, click <strong>Manage</strong>.</li>
+<li>Toggle <strong>ON</strong> permissions enforcement for Phase 2 (and Phase 1) or Phase 1.</li>
+<li>A success message will appear, and the platform will enforce permissions for the sides of the platform that you selected.</li>
 </ol>
-<h3 id="add-users-to-a-group">Add users to a group</h3>
-<p>You can add existing users to groups. For information on adding new users, see <a href="/server-side/administration/user-permissions/about/">Managing Server-Side User Permissions</a>. You can also add a user to a group from the list of users. See <a href="#user-add-remove-groups">Add or Remove Groups for a User</a>.</p>
-<p>Use the following steps to add an existing user to a group.</p>
-<ol>
-<li>In the admin menu, click <strong>Manage Permissions</strong>.</li>
-<li>Click on the group you want to edit.</li>
-<li>Click <strong>+ Add Users</strong>.</li>
-<li>Enter, or copy and paste, an email address for each user you want to add, then click <strong>Save</strong>.</li>
-</ol>
-<p>To add a user to multiple groups, repeat these steps for each group.</p>
-<h3 id="change-feature-permissions-for-a-group">Change feature permissions for a group</h3>
-<p>To change the feature permissions for a group, edit the group as follows:</p>
-<ol>
-<li>In the admin menu, click <strong>Manage Permissions</strong>.</li>
-<li>Click on the group you want to edit.</li>
-<li>Click the <strong>Features</strong> tab.</li>
-<li>Select or deselect <strong>PII Permissions</strong>.</li>
-<li>Change product access and feature access as needed.</li>
-<li>Click <strong>Save</strong>.</li>
-</ol>
-<h3 id="add-or-remove-profiles-for-a-group">Add or remove profiles for a group</h3>
-<p>To add or remove profiles for a group, use the following steps:</p>
-<ol>
-<li>In the admin menu, click <strong>Manage Permissions</strong>.</li>
-<li>Click on the group you want to edit.</li>
-<li>Click the <strong>Profiles</strong> tab.</li>
-<li>To remove a profile, follow these steps:</li>
-<li>Click the profile menu and select <strong>Remove.</strong></li>
-<li>Click <strong>Remove</strong> in the confirmation dialog, then click <strong>Save</strong>.</li>
-<li>To add a profile, follow these steps:</li>
-<li>Click <strong>+ Add Profile</strong>.</li>
-<li>Select profiles, then click <strong>Save</strong>.</li>
-</ol>
+<p>To revert the account to the legacy permission settings, toggle that side <strong>OFF</strong>. You cannot revert Phase 1 permissions without also reverting Phase 2 permissions.</p>
+<h2 id="managing-groups">Managing groups</h2>
+<p>To manage groups, users must have server-side <strong>User Admin</strong> permission.</p>
 <h3 id="view-groups">View groups</h3>
 <p>To view the groups for an account, use the following steps:</p>
 <ol>
 <li>In the admin menu, click <strong>Manage Permissions</strong>.<br>
 A list of the existing groups is displayed. By default, the list is sorted by Group name in ascending alphabetical order.</li>
 <li>To sort the list by <strong>Group</strong> name (alphabetic, ascending or descending), click the <strong>Group</strong> column heading.</li>
-<li>To sort the list by number of profiles (ascending or descending), click the <strong>Number of Profiles</strong> column heading.</li>
-<li>To sort the list by the number of members in the group (ascending or descending), click the <strong>Number of Members</strong> column heading,</li>
-<li>To sort the list by creation date (ascending or descending), click the <strong>Creation Date</strong> column heading.</li>
+<li>To sort the list by number of profiles (ascending or descending), click the <strong>Profiles #</strong> column heading.</li>
+<li>To sort the list by the number of members in the group (ascending or descending), click the <strong>Users #</strong> column heading,</li>
+<li>To sort the list by creation date (ascending or descending), click the <strong>Date Created</strong> column heading.</li>
+</ol>
+<h3 id="create-a-new-group">Create a new group</h3>
+<p>Perform the following steps to create a group:</p>
+<ol>
+<li>In the admin menu, click <strong>Manage Permissions</strong>. The <strong>Manage Permissions</strong> screen will appear.</li>
+<li>Click <strong>+ New Group</strong>. The <strong>New Permission Group</strong> dialog appears.</li>
+<li>In the <strong>Group Name</strong> box, enter a name for the group.</li>
+<li>Select what the new group will initially contain:
+<ul>
+<li><strong>Blank Group</strong> - Start a new group without any existing settings.</li>
+<li><strong>Duplicate an Existing Group</strong> - Start a new group with the same permissions, profiles, and users of the group that you select.</li>
+</ul>
+</li>
+<li>Click <strong>Next</strong>. The <strong>Set Account Permissions</strong> dialog appears.</li>
+<li>If you want to give the group permissions to publish server-side profile changes, under <strong>Server-Side</strong> select <strong>Publish Changes</strong>.</li>
+<li>Select the products you want the group to access.</li>
+<li>Click <strong>Next</strong>. The <strong>Set Feature Permissions</strong> dialog appears.</li>
+<li>Select the access level for each product and its features.
+<ul>
+<li>Some features appear in multiple products. Feature access levels apply to the feature, regardless of which product it appears in.</li>
+<li>Edit access for a feature or product includes the ability to save changes to the profile.</li>
+</ul>
+</li>
+<li>Click <strong>Next</strong>. The <strong>Assign Profile Access to Group</strong> dialog appears.</li>
+<li>Select profiles to assign group access.</li>
+<li>Click <strong>Next</strong>. The <strong>Add Users to Group</strong> dialog appears.</li>
+<li>To add users to the group, select the appropriate checkboxes next to their  email addresses.</li>
+<li>Click <strong>Finish</strong>.
+<ul>
+<li>If you do not add any users to the group, a warning dialog will appear. If you want to add users later, click <strong>Continue</strong>. Otherwise, click <strong>Cancel</strong> and add users to the group.</li>
+</ul>
+</li>
+</ol>
+<p>The <strong>Manage Permissions</strong> screen will appear, and the new group will appear in the list.</p>
+<h3 id="edit-a-group">Edit a group</h3>
+<p>Perform the following steps to edit an existing group.</p>
+<ol>
+<li>In the admin menu, click <strong>Manage Permissions</strong>. The <strong>Manage Permissions</strong> screen will appear.</li>
+<li>Click the <strong>Groups</strong> tab.</li>
+<li>Click the permission group you want to edit. The group’s details will appear.</li>
+<li>Select the information you want to edit:
+<ul>
+<li><strong>Features</strong> - You can add or remove product features from the permission group, and you can set the permission group&rsquo;s access levels for product features.</li>
+<li><strong>Users</strong> - You can add or remove users from the permission group.</li>
+<li><strong>Profiles</strong> - You can add or remove profiles from the permission group, and you can set the permission group&rsquo;s access levels for that profile.</li>
+</ul>
+</li>
+<li>Click <strong>Save.</strong></li>
 </ol>
 <h3 id="remove-a-group">Remove a group</h3>
-<p>When a group is removed, user in the group no longer have the permissions associated with that group. To remove a group, use the following steps:</p>
+<p>When a group is removed, user in the group no longer have the permissions associated with that group. To remove a group or groups, use the following steps:</p>
 <ol>
 <li>In the admin menu, click <strong>Manage Permissions</strong>.</li>
-<li>In the group menu, select <strong>Remove</strong>.</li>
+<li>Select the checkboxes associated with the groups you want to remove.</li>
+<li>Click <strong>Bulk Actions</strong>, and then click <strong>Remove</strong>.</li>
 <li>In the confirmation dialog, click <strong>Remove</strong>.</li>
 </ol>
-<h3 id="view-user-information">View user information</h3>
+<p>You can also remove a group with the additional actions button at the end of the group&rsquo;s row.</p>
+<h2 id="managing-users">Managing users</h2>
+<p>To manage users, users must have the <strong>User Admin</strong> or <strong>Account Admin</strong> role.</p>
+<h3 id="export-users">Export users</h3>
+<p>The <strong>Export Users</strong> function allows you to download a comma-separated value (CSV) file with the account&rsquo;s users, profiles, and legacy user permissions for each profile. This makes it easy to audit your users and their permissions to build permission groups and assign admin roles in the new platform permissions system.</p>
+<h3 id="view-user-details">View user details</h3>
 <p>To view the current list of users, use these steps:</p>
 <ol>
 <li>In the admin menu, click <strong>Manage Permissions</strong>.</li>
 <li>Click the <strong>Users</strong> tab.<br>
-The list of users shows the email address and first and last name, as well as the account roles, the number of groups for the user, and the last login time.<br>
-<figure><a class="slb" href="/images/early-access/plat-perms-user-list.png"><img src="/images/early-access/plat-perms-user-list.png"
-         alt="plat-perms-user-list.png"
-         title="plat-perms-user-list.png"/>
-    </a>
-</figure></li>
+The list of users shows the email address and first and last name, as well as the account roles, the number of groups for the user, PII permissions, and the last login time.</li>
 <li>To sort the list of users, click any column heading.</li>
-<li>To view details for a user, click a user in the list.<br>
-The <strong>Basic Info</strong> tab is displayed by default and shows first name, last name, email address, and Account Role Permissions for this user.</li>
-<li>Select or deselect account role permissions.</li>
-<li>Click the <strong>Groups</strong> tab to view more details about the groups this user is in.</li>
-<li>Click the <strong>Feature Permissions</strong> tab to view the products and features this user can access.<br>
-Feature permissions are shown by profile. To select a different profile, click the currently displayed profile name.</li>
+<li>To view details for a user, click a user in the list.</li>
 </ol>
-<h3 id="add-or-remove-groups-for-a-user">Add or remove groups for a user</h3>
-<p>To add or remove groups for a user, you must have <strong>User Admin</strong> permission. User these steps to add or remove groups:</p>
+<p>The <strong>User Details</strong> dialog appears with the following three tabs:</p>
+<ul>
+<li><strong>Overview</strong> - The user&rsquo;s name, email address, and account memberships. This tab also displays the user&rsquo;s MFA and API Key settings.</li>
+<li><strong>Permissions</strong>- The user&rsquo;s admin roles and a table of product features within a profile and the user&rsquo;s permissions on those features.</li>
+<li><strong>Groups</strong>- The user&rsquo;s permission groups.</li>
+</ul>
+<h4 id="diagnosing-profile-permissions-issues">Diagnosing profile permissions issues</h4>
+<p>In the <strong>Permissions</strong> tab, select a profile from the <strong>Profile</strong> dropdown to view this user&rsquo;s permissions for product features on that profile. This information can help you diagnose any access issues your users have with profiles or ensure that users only have access to the features they require.</p>
+<p>Permissions are cumulative between the user&rsquo;s permission groups and admin roles. So, if a user is a member of a group with View rights, another group with View &amp; Edit rights, and the Account Admin role, the table will display a checkmark in the View, Edit &amp; Delete column.</p>
+<h3 id="add-new-users">Add new users</h3>
+<p>When you add new users, you will add email addresses to an invitation queue, assign user roles to the users, and then add the users to permission groups. When you are done assigning them roles and adding them to groups, you can send out the invitations.</p>
+<p>To add new users to your Tealium account:</p>
 <ol>
-<li>In the admin menu, click <strong>Manage Permissions</strong>.</li>
+<li>In the admin menu, click <strong>Manage Permissions</strong>. The <strong>Manage Permissions</strong> screen appears.</li>
 <li>Click the <strong>Users</strong> tab.</li>
-<li>Click the <strong>Groups</strong> tab.</li>
-<li>To add a group, do the following:</li>
-<li>Click <strong>+ Add Group</strong>.</li>
-<li>In the <strong>Add Groups</strong> screen, select one or more groups, then click <strong>Save</strong>.</li>
-<li>To remove a group, do the following:</li>
-<li>Click the group menu and click <strong>Remove</strong>.</li>
-<li>Click Remove in the confirmation dialog, then click <strong>Save</strong>.</li>
-<li>In the <strong>Group Details</strong> screen, click <strong>Save</strong> to save your changes to groups.</li>
+<li>In the <strong>User Manager</strong> dialog, click <strong>+ New User</strong>. The <strong>Add New Users</strong> dialog appears.</li>
+<li>In the <strong>Invite New User box</strong>, enter up to 25 email addresses.
+<ul>
+<li>You cannot send an invitation to a user that already exists in your Tealium account. If you want to change an existing user’s admin roles or permission group membership, edit the user from their <strong>User Details</strong> dialog.</li>
+</ul>
+</li>
+<li>To send the user invitations, click <strong>Add Users</strong>.</li>
 </ol>
-<h2 id="assign-account-role-permissions-to-a-user">Assign account role permissions to a user</h2>
-<p>Account role permissions can be added for existing users. For information on adding new users, see <a href="/server-side/administration/user-permissions/about/">Managing Server-Side User Permissions</a>.</p>
-<p>To assign account role permissions to a user, use the following steps:</p>
+<p>The <strong>Manage Permissions</strong> screen will appear, and the Customer Data Hub will send out email invitations to the new users. They will need to accept the invitation and set a password.</p>
+<h3 id="edit-a-user">Edit a user</h3>
+<p>To edit a user:</p>
 <ol>
-<li>In the admin menu, click <strong>Manage Permissions</strong>.</li>
-<li>Click the <strong>Users</strong> tab.<br>
-<figure><a class="slb" href="/images/early-access/plat-perms-admin-roles.png"><img src="/images/early-access/plat-perms-admin-roles.png"
-         alt="plat-perms-admin-roles.png"
-         title="plat-perms-admin-roles.png"/>
-    </a>
-</figure></li>
-<li>Click the user you want to edit.<br>
-<figure><a class="slb" href="/images/early-access/admin-roles-user-details.png"><img src="/images/early-access/admin-roles-user-details.png"
-         alt="admin-roles-user-details.png"
-         title="admin-roles-user-details.png"/>
-    </a>
-</figure></li>
-<li>Select one or more <strong>Account Role Permissions</strong> and click <strong>Save</strong>.</li>
+<li>In the admin menu, click <strong>Manage Permissions</strong>. The <strong>Manage Permissions</strong> screen appears.</li>
+<li>Click the <strong>Users</strong> tab.</li>
+<li>Click the user you want to edit. The <strong>Overview</strong> tab will appear.</li>
 </ol>
+<ul>
+<li>Select a profile from the dropdown list to review the user&rsquo;s permissions on products and features.</li>
+</ul>
+<ol>
+<li>To change to the user&rsquo;s admin roles, click the <strong>Permissions</strong>.
+<ul>
+<li>Select the admin roles that you want to grant or remove from the user.</li>
+</ul>
+</li>
+<li>To change to the user&rsquo;s permission group membership, click <strong>Groups</strong>.
+<ul>
+<li>Select the groups to add or remove from the user&rsquo;s membership list.</li>
+</ul>
+</li>
+<li>Click <strong>Save</strong>. The <strong>Manage Permissions</strong> screen will appear.</li>
+</ol>
+<p>You can also use the checkboxes and <strong>Bulk Actions</strong> to perform changes to multiple users at once.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Users without an admin role and are not a member of any permission groups will not be able to access any profile</p>
+<h4 id="pii-permissions">PII permissions</h4>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Only account admins and privacy admins can set PII permissions for a user.</p>
+<p>PII permissions control who can see PII data and who can edit the <strong>Restricted Data</strong> property that identifies PII data. Only one level of PII permissions can be assigned to a user. The three levels of PII permissions are as follows:</p>
+<ul>
+<li><strong>No PII</strong>: Users can view PII attributes, but cannot see the values of these attributes. PII is obscured wherever it is shown, including Trace and Live Events.</li>
+<li><strong>View</strong>: Users can view the values of PII attributes, data but cannot edit or manage PII data.</li>
+<li><strong>Manage &amp; View</strong>: Users can view, edit, and manage PII data.</li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Privacy admins have Manage &amp; View access to PII data.</p>
+<p>To edit the <strong>Restricted Data</strong> property for an attribute, users must have the <strong>Manage &amp; View</strong> PII permission and <strong>View, Edit &amp; Delete</strong> permission for that feature.</p>
+<p>For more information on the <strong>Restricted Data</strong> property, see <a href="/server-side/attributes/restricted-data/">About Restricted Data</a>.</p>
+<h3 id="remove-a-user">Remove a user</h3>
+<p>If a user no longer requires access to the account, you can remove that user from the account. This functionality will remove their group membership, admin roles, and settings for this account. However, this will not remove the user from the Tealium platform and any other accounts they have access to.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>This action cannot be undone. If you remove the user and then need to re-add them, you will need to set up their group memberships and admin roles again.</p>
+<p>To remove a user from your account:</p>
+<ol>
+<li>In the admin menu, click <strong>Manage Permissions</strong>. The <strong>Manage Permissions</strong> screen appears.</li>
+<li>Click the <strong>Users</strong> tab.</li>
+<li>Select the appropriate checkboxes for the user or users you wish to remove.</li>
+<li>Click <strong>Bulk Actions</strong>, and then click <strong>Remove Access</strong>.</li>
+<li>A confirmation dialog will appear. Click <strong>Remove Access</strong> to continue.</li>
+</ol>
+<p>The <strong>Manage Permissions</strong> screen will appear, and the Customer Data Hub will remove the user from the account.</p>
+<p>You can also remove a user from the account through the additional actions menu at the end of the user&rsquo;s row in the table or from the Edit User dialog.</p>
 
 </div>
 
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/early-access/platform-permissions/expanded-release/"
+  <a href="/early-access/platform-permissions/permissions-system-migration-guide/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Expanded Early Access Release</div>
+      <div>Migration Guide</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Expanded Early Access Release"</title>
+      <title>"Migration Guide"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
   
   
+</div><div class="di mr3">
+  
+  
+  <a href="/early-access/platform-permissions/ea/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"Early Access Release "</title>
+      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+    </svg>
+   <section class="tr pl3">
+      <div>Early Access Release</div>
+    </section>
+  </a>
+  
+
 </div></div>
 
 
@@ -651,7 +901,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 27, 2023 
+          <p>This page was last updated:  August 1, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -666,24 +916,20 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#account-role-permissions">Account role permissions</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#admin-role-permissions">Admin role permissions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#group-permissions">Group permissions</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#managing-permissions-enforcement-and-pii-permissions">Managing permissions enforcement and PII permissions</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#turn-on-platform-permissions">Turn ON platform permissions</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#turn-off-platform-permissions">Turn OFF platform permissions</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#turn-on-pii-permissions">Turn ON PII permissions</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#turn-off-pii-permissions">Turn OFF PII permissions</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#managing-groups">Managing groups</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#create-a-new-group">Create a new group</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#duplicate-an-existing-group">Duplicate an existing group</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-users-to-a-group">Add users to a group</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#change-feature-permissions-for-a-group">Change feature permissions for a group</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-or-remove-profiles-for-a-group">Add or remove profiles for a group</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#view-groups">View groups</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#managing-permissions-enforcement">Managing Permissions Enforcement</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#managing-groups">Managing groups</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#view-groups">View groups</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#create-a-new-group">Create a new group</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#edit-a-group">Edit a group</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#remove-a-group">Remove a group</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#view-user-information">View user information</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-or-remove-groups-for-a-user">Add or remove groups for a user</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#assign-account-role-permissions-to-a-user">Assign account role permissions to a user</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#managing-users">Managing users</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#export-users">Export users</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#view-user-details">View user details</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-new-users">Add new users</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#edit-a-user">Edit a user</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#remove-a-user">Remove a user</a></li>
               </nav>
   </aside></nav>
 

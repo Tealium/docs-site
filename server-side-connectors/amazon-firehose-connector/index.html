@@ -238,6 +238,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/algolia-insights-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".algolia-insights-connector">Algolia Insights</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/amazon-ads-conversions-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-ads-conversions-connector">Amazon Ads Conversions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-advertising-dsp-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-advertising-dsp-connector">Amazon Advertising DSP</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a>
@@ -748,8 +750,23 @@ var utag_data = {
 <td style="text-align:left">✗</td>
 </tr>
 <tr>
-<td style="text-align:left">Send Customized Data to Delivery Stream</td>
+<td style="text-align:left">Send Customized Data to Delivery Stream (Advanced)</td>
 <td style="text-align:left">✓</td>
+<td style="text-align:left">✓</td>
+</tr>
+<tr>
+<td style="text-align:left">Send Data for Connector Failures to Delivery Stream</td>
+<td style="text-align:left">✗</td>
+<td style="text-align:left">✓</td>
+</tr>
+<tr>
+<td style="text-align:left">Send Customized Data to Delivery Stream (Batched)</td>
+<td style="text-align:left">✓</td>
+<td style="text-align:left">✓</td>
+</tr>
+<tr>
+<td style="text-align:left">Send Event Data to Delivery Stream (Batched)</td>
+<td style="text-align:left">✗</td>
 <td style="text-align:left">✓</td>
 </tr>
 </tbody>
@@ -785,7 +802,7 @@ var utag_data = {
 <h3 id="action-send-event-data-to-delivery-steam">Action: Send Event Data to Delivery Steam</h3>
 <h4 id="parameters">Parameters</h4>
 <ul>
-<li><strong>Delivery Stream</strong> (Required): Select delivery stream to send data to. In order to see available streams, the <code>firehose:ListDeliveryStreams</code> permission must be granted.</li>
+<li><strong>Delivery Stream</strong> (Required): Select delivery stream to send data to. To see available streams, the <code>firehose:ListDeliveryStreams</code> permission must be granted.</li>
 <li><strong>Record Suffix</strong>: Select a value to append to the visitor data for the purposes of identifying individual records.</li>
 <li><strong>Print Attribute Names</strong>: Checking this box will display names for each event data attribute in the message payload.</li>
 </ul>
@@ -811,7 +828,7 @@ var utag_data = {
 <h3 id="action-send-visitor-data-to-delivery-steam">Action: Send Visitor Data to Delivery Steam</h3>
 <h4 id="parameters-1">Parameters</h4>
 <ul>
-<li><strong>Delivery Stream</strong> (Required): Select delivery stream to send data to. In order to see available streams, the <code>firehose:ListDeliveryStreams</code> permission must be granted.</li>
+<li><strong>Delivery Stream</strong> (Required): Select delivery stream to send data to. To see available streams, the <code>firehose:ListDeliveryStreams</code> permission must be granted.</li>
 <li><strong>Record Suffix</strong>: Select a value to append to the visitor data for the purposes of identifying individual records.</li>
 <li><strong>Include Current Visit Data</strong>: Checking this box will include current visit data in the message payload.</li>
 <li><strong>Print Attribute Names</strong>: Checking this box will display names for each visitor data Attribute in the message payload.</li>
@@ -838,11 +855,11 @@ var utag_data = {
 <h3 id="action-send-customized-data-to-delivery-steam-advanced">Action: Send Customized Data to Delivery Steam (Advanced)</h3>
 <h4 id="parameters-2">Parameters</h4>
 <ul>
-<li><strong>Delivery Stream</strong> (Required): Select delivery stream to send data to. In order to see available streams, the <code>firehose:ListDeliveryStreams</code> permission must be granted.</li>
+<li><strong>Delivery Stream</strong> (Required): Select delivery stream to send data to. To see available streams, the <code>firehose:ListDeliveryStreams</code> permission must be granted.</li>
 <li><strong>Record Suffix</strong>: Select a value to append to the visitor data for the purposes of identifying individual records.</li>
 <li><strong>Message Data</strong> (Required): Construct a custom message body. Map attribute(s) to names for simple one level JSON format, or reference a template name (surrounded in double curly braces) and select the <strong>Custom Message Definition</strong> option.</li>
 <li><strong>Message Template Variables</strong>: Map attribute(s) to template variable names. Template variables are available for substitution and rendering of all templates. Refer to our <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a> for details.</li>
-<li><strong>Message Templates</strong>: Provide one or more template to render. Typically, a single template is used to construct a message data. Refer to our <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a> for common syntax and extensions.</li>
+<li><strong>Message Templates</strong>: Provide one or more templates to render. Typically, a single template is used to construct a message data. Refer to our <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a> for common syntax and extensions.</li>
 </ul>
 <h4 id="options-record-suffix-2">Options: Record Suffix</h4>
 <table>
@@ -860,6 +877,69 @@ var utag_data = {
 <tr>
 <td style="text-align:left">No Delimiter</td>
 <td style="text-align:left">When selected, nothing is added to the visitor data object.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="action-send-customized-data-to-delivery-stream-batched">Action: Send Customized Data to Delivery Stream (Batched)</h3>
+<h4 id="batch-limits">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 500</li>
+<li>Max time since oldest request: 10 minutes</li>
+<li>Max size of requests: 4 MB</li>
+</ul>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Delivery Stream</td>
+<td>Select the delivery stream to send data to. To see available streams, the <code>firehose:ListDeliveryStreams</code> permission must be granted. There are limits on the Amazon Kinesis Data Firehose delivery stream. For more information, see <a href="https://docs.aws.amazon.com/firehose/latest/dev/limits.html">Amazon Kinesis Data Firehose Limits</a>.</td>
+</tr>
+<tr>
+<td>Record Suffix</td>
+<td>The suffix added to the end of each record to be used as a delimiter. Default: Newline (\n)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="custom-message-definition">Custom Message Definition</h5>
+<ul>
+<li><strong>Message Template Variables</strong>: Map attribute(s) to template variable names. Template variables are available for substitution and rendering of all templates. For more information, see <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>.</li>
+<li><strong>Message Templates</strong>: Provide one or more templates to render. Typically, a single template is used to construct a message data. For more information about syntax and extensions, see <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>.</li>
+</ul>
+<h3 id="action-send-event-data-to-delivery-stream-batched">Action: Send Event Data to Delivery Stream (Batched)</h3>
+<h4 id="batch-limits-1">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 500</li>
+<li>Max time since oldest request: 10 minutes</li>
+<li>Max size of requests: 4 MB</li>
+</ul>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Delivery Stream</td>
+<td>Select the delivery stream to send data to. To see available streams, the <code>firehose:ListDeliveryStreams</code> permission must be granted. There are limits on the Amazon Kinesis Data Firehose delivery stream. For more information, see <a href="https://docs.aws.amazon.com/firehose/latest/dev/limits.html">Amazon Kinesis Data Firehose Limits</a>.</td>
+</tr>
+<tr>
+<td>Record Suffix</td>
+<td>The suffix added to the end of each record to be used as a delimiter. Default: Newline (\n)</td>
+</tr>
+<tr>
+<td>Print Attribute Names</td>
+<td>If attribute names get updated, the names in the payload will reflect the update.</td>
 </tr>
 </tbody>
 </table>
@@ -952,6 +1032,8 @@ No</button>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-send-event-data-to-delivery-steam">Action: Send Event Data to Delivery Steam</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-send-visitor-data-to-delivery-steam">Action: Send Visitor Data to Delivery Steam</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-send-customized-data-to-delivery-steam-advanced">Action: Send Customized Data to Delivery Steam (Advanced)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-send-customized-data-to-delivery-stream-batched">Action: Send Customized Data to Delivery Stream (Batched)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-send-event-data-to-delivery-stream-batched">Action: Send Event Data to Delivery Stream (Batched)</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#vendor-documentation">Vendor Documentation</a></li>
               </nav>
   </aside></nav>
@@ -1161,6 +1243,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

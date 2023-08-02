@@ -238,6 +238,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/algolia-insights-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".algolia-insights-connector">Algolia Insights</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/amazon-ads-conversions-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-ads-conversions-connector">Amazon Ads Conversions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-advertising-dsp-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-advertising-dsp-connector">Amazon Advertising DSP</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-aws-sqs-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-aws-sqs-connector">Amazon AWS SQS</a>
@@ -724,7 +726,7 @@ var utag_data = {
 <p>The Webhook Connector allows you to send data to your vendor using customized HTTP requests and allows you to all aspects of an HTTP request, such as the URL, URL Parameters, Headers, Cookies, Body Content Type and Body Data. Webhook also supports a batching and a powerful templating feature designed to handle complex and dynamic data formats.</p>
 <p>There are three Webhook connectors to choose from based on the authorization requirements of your vendor, as follows:</p>
 <ul>
-<li><strong>Webhook</strong>(BasicAuth) – For services that do not require authentication or only require basic authentication with a username and password.</li>
+<li><strong>Webhook</strong> (BasicAuth) – For services that do not require authentication or only require basic authentication with a username and password.</li>
 <li><strong>Webhook OAuth2</strong> (3-Legged) – Requires the user to login to the service to obtain an access token.</li>
 <li><strong>Webhook OAuth2</strong> (2-Legged) – Does not require the user to login to the service. The webhook is configured with the information required to authenticate.</li>
 </ul>
@@ -734,69 +736,57 @@ var utag_data = {
 <h3 id="webhook-basicauth-configuration">Webhook (BasicAuth) Configuration</h3>
 <p>This webhook supports basic HTTP authentication using the HTTP header field <strong>Authorization</strong>. The credentials are passed as a Base64 encoded string of <code>{username}:{password}</code>.</p>
 <p>Use the following configuration settings for the BasicAuth Webhook configuration:</p>
-<ol>
-<li><strong>Title</strong></li>
-</ol>
+<ul>
+<li><strong>Title</strong>
 <ul>
 <li>Required</li>
 <li>Enter a descriptive title for the webhook.</li>
 </ul>
-<ol>
-<li><strong>BasicAuth Username</strong></li>
-</ol>
+</li>
+<li><strong>BasicAuth Username</strong>
 <ul>
 <li>Enter the username of your webhook&rsquo;s authentication.</li>
 </ul>
-<ol>
-<li><strong>BasicAuth Password</strong></li>
-</ol>
+</li>
+<li><strong>BasicAuth Password</strong>
 <ul>
 <li>Enter the password of your webhok&rsquo;s authentication.</li>
 </ul>
-<ol>
-<li>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab.</li>
-</ol>
+</li>
+</ul>
+<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab.</p>
 <ul>
-<li>Use the Actions tab to configure the HTTP request to trigger.</li>
+<li>Use the <strong>Actions</strong> tab to configure the HTTP request to trigger.</li>
 </ul>
 <h3 id="webhook-oauth2-3-legged-configuration">Webhook OAuth2 (3-Legged) Configuration</h3>
 <p>Webhook&rsquo;s OAuth implementation supports server-side applications only.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Be sure to register your web application with an OAuth 2.0 service. Your application must be configured to allow the redirect URL: <code>https://my.tealiumiq.com/oauth/webhook/callback.html</code></p>
 <p>Use the following configuration settings for the OAuth2 (3-legged) Webhook configuration:</p>
-<ol>
-<li><strong>Client ID</strong></li>
-</ol>
+<ul>
+<li><strong>Client ID</strong>
 <ul>
 <li>Required.</li>
 <li>Enter the client identifier assigned to your application from the OAuth service.</li>
 </ul>
-<ol>
-<li><strong>Client Secret</strong></li>
-</ol>
+</li>
+<li><strong>Client Secret</strong>
 <ul>
 <li>Required.</li>
 <li>Enter the client secret assigned to your application from the OAuth service.</li>
 </ul>
-<ol>
-<li><strong>Scope</strong></li>
-</ol>
+</li>
+<li><strong>Scope</strong>
 <ul>
 <li>Select the type of permission you want to request to access the application.</li>
 </ul>
-<ol>
-<li>
-<p><strong>Authorization URL</strong></p>
 </li>
-<li>
-<p>Required.</p>
+<li><strong>Authorization URL</strong>
+<ul>
+<li>Required.</li>
+<li>Enter the URL where you want to redirect the user after authorization.</li>
+</ul>
 </li>
-<li>
-<p>Enter the URL where you want to redirect the user after authorization.</p>
-</li>
-<li>
-<p><strong>Authorization URL Query Parameters</strong></p>
-</li>
-</ol>
+<li><strong>Authorization URL Query Parameters</strong>
 <ul>
 <li>Select one or more name-value pairs for the authorization URL.</li>
 <li>Separate multiple pairs using an ampersand (<code>&amp;</code>).</li>
@@ -807,79 +797,71 @@ var utag_data = {
 </ul>
 </li>
 </ul>
-<ol>
-<li><strong>Access Token URL</strong></li>
-</ol>
+</li>
+<li><strong>Access Token URL</strong>
 <ul>
 <li>Required.</li>
 <li>Enter the token URL to get the refresh token.</li>
 </ul>
-<ol>
-<li>Click <strong>Establish Connection</strong>.</li>
-</ol>
+</li>
+</ul>
+<p>Click <strong>Establish Connection</strong> to test the connection.</p>
 <h3 id="webhook-oauth2-2-legged-configuration">Webhook OAuth2 (2-Legged) Configuration</h3>
 <p>Tealium&rsquo;s Webhook OAuth2 connector allows you to send fully customized data as an HTTP request to an API of your choice that requires OAuth2 Two-Legged authorization and supports client credentials and resource owner password credentials grants.</p>
 <p>After adding the connector, use the following configuration settings for the OAuth2 2-Legged Webhook configuration:</p>
-<ol>
-<li><strong>Access Token URL</strong></li>
-</ol>
+<ul>
+<li><strong>Access Token URL</strong>
 <ul>
 <li>Required.</li>
 <li>Enter the API endpoint URL to request an access token.</li>
 </ul>
-<ol>
-<li><strong>Client ID</strong></li>
-</ol>
+</li>
+<li><strong>Client ID</strong>
 <ul>
 <li>Required.</li>
 <li>Enter your web application client ID.</li>
 </ul>
-<ol>
-<li><strong>Client Secret</strong></li>
-</ol>
+</li>
+<li><strong>Client Secret</strong>
 <ul>
 <li>Required.</li>
 <li>Enter your web application client secret.</li>
 </ul>
-<ol>
-<li><strong>Username</strong></li>
-</ol>
+</li>
+<li><strong>Username</strong>
 <ul>
 <li>Enter your username.</li>
 <li>Username is required if using Password grant type.</li>
 </ul>
-<ol>
-<li><strong>Password</strong></li>
-</ol>
+</li>
+<li><strong>Password</strong>
 <ul>
 <li>Enter your password.</li>
 <li>Password is required if using Password grant type.</li>
 </ul>
-<ol>
-<li><strong>Scope</strong></li>
-</ol>
+</li>
+<li><strong>Scope</strong>
 <ul>
 <li>Select the scope of permissions to request (only required for some OAuth2 services).</li>
 </ul>
-<ol>
-<li><strong>Extra Authorization Parameters</strong></li>
-</ol>
+</li>
+<li><strong>Extra Authorization Parameters</strong>
 <ul>
 <li>Add extra authorization parameters (only required for some OAuth2 services).</li>
 <li>Separate multiple parameters with <code>&amp;amp;</code>.</li>
 </ul>
-<ol>
-<li><strong>Authorization Token Location</strong></li>
-</ol>
+</li>
+<li><strong>Authorization Token Location</strong>
 <ul>
 <li>Specify where to place the authorization token.</li>
 </ul>
-<ol>
-<li><strong>Authorization Header Prefix</strong></li>
-</ol>
+</li>
+<li><strong>Authorization Header Prefix</strong>
 <ul>
 <li>Defaults value is <code>Bearer</code>.</li>
 <li>Specify a new value to override (only required for some OAuth2 services).</li>
+</ul>
+</li>
 </ul>
 <h2 id="action-parameters-for-all-webhook-actions">Action Parameters for all Webhook Actions</h2>
 <p>The following parameters are available to all Webhook Actions.</p>
@@ -1780,6 +1762,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
