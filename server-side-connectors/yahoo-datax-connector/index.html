@@ -722,7 +722,8 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="api-information">API Information</h2>
+  <p>Yahoo DataX is an aggregate Yahoo Ad Tech infrastructure that hosts various components that enable Yahoo Ad Tech to exchange data with its external partners in a secure, automated, and scalable manner. Through this integration, Tealium customers can exchange structured data against user identifiers, such as cookies, user-matched IDs, etc.</p>
+<h2 id="api-information">API Information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
 <li>API Name: Yahoo API</li>
@@ -731,7 +732,7 @@ var utag_data = {
 <li>Documentation: <a href="https://developer.yahooinc.com/datax/guide">Yahoo API</a></li>
 </ul>
 <h2 id="batch-limits">Batch Limits</h2>
-<p>This connector uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following 3 thresholds is met:</p>
+<p>This connector uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following three thresholds is met:</p>
 <ul>
 <li>Max number of requests: <code>10000</code></li>
 <li>Max time since oldest request: <code>60 minutes</code></li>
@@ -761,26 +762,60 @@ var utag_data = {
 </table>
 <h2 id="configure-settings">Configure Settings</h2>
 <p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/manage/">About Connectors</a> article.</p>
-<p>There are additional steps for configuring the Yahoo Data X connector in the <strong>Connector Configuration</strong> screen. If you are implementing this connector for the first time, follow these steps:</p>
+<p>When configuring the Yahoo DataX connector, you will be prompted with an End User Licensing Agreement (EULA) that must be accepted before continuing with the configuration. At the bottom of the window, you can download the agreement for legal review. Redlines are not accepted on the EULA.</p>
+<p>In the <strong>Connector Configuration</strong> section, perform the following steps:</p>
 <ol>
-<li>Click <strong>Update Taxonomy File</strong>.</li>
-<li>In the <strong>Update Taxonomy File</strong> screen, enter the Yahoo MDM Number to add it to the taxonomy branch.</li>
-<li><strong>Click Create Account (Profile) Segment</strong>.<br>
-This adds two nodes to the taxonomy file, one for your Tealium Account Name and one for the Tealium Profile Name.</li>
+<li>
+<p>Enter a name for this connector configuration and any optional notes for the connector.</p>
+</li>
+<li>
+<p>Under the <strong>Authentication</strong> section, set <strong>Environment</strong> to <strong>Production</strong>.</p>
+ <p class="note"><i class="fa fa-exclamation-triangle"></i>This value must always be set to <strong>Production</strong>, unless a Yahoo or Tealium representative instructs you to change it.</p>
+</li>
+<li>
+<p>Select the GDPR mode that will be assigned to the segments.</p>
+</li>
 </ol>
-<p>After you have updated the taxonomy file, or if you have previously configured this connector, follow these steps:</p>
+<p>The data that is sent to Yahoo must have the appropriate segment created within a Yahoo-hosted taxonomy file.</p>
+<p>If you are implementing this connector for the first time, perform the following steps:</p>
 <ol>
-<li>Click <strong>Add Audience to Taxonomy</strong>.</li>
-<li>Enter a <strong>Name</strong> for the audience.</li>
-<li>Select a <strong>GDPR Mode</strong> (required).</li>
-<li>Select a value for <strong>Euconsent</strong> (required).</li>
-<li>Click <strong>Add Audience</strong>.</li>
+<li>Click <strong>New Taxonomy Segments</strong>.</li>
+<li>On the <strong>Create New Taxonomy Segments</strong> screen, enter your Yahoo MDM Number to add it to the taxonomy branch.
+<ul>
+<li>If multiple users are being added, separate those entries with a comma.</li>
+</ul>
+</li>
+<li>Enter a name for the segment your audience data is being sent to. We recommend that this segment name match the Tealium audience name.</li>
+<li>(Optional) Enter a <strong>Description</strong>.</li>
+<li>Click <strong>Create Account (Profile) Segment</strong>.
+<ul>
+<li>This adds three nodes to the taxonomy file: your Tealium account name, Tealium profile name, and the audience segment that receives the data.</li>
+</ul>
+</li>
 </ol>
-<p>You can now configure an action for the connector. Select the <strong>Taxonomy ID</strong> that matches the ID that was assigned to the audience.</p>
+<p>If you have already created an account and profile segment for the taxonomy file (by setting up a different YahooX connector on your Tealium profile), perform the following steps:</p>
+<ol>
+<li>
+<p>Click <strong>Add Audience to Taxonomy</strong>.</p>
+</li>
+<li>
+<p>Enter an audience name.</p>
+</li>
+<li>
+<p>(Optional) Enter a <strong>Description</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Add Audience</strong>.</p>
+ <p class="note"><i class="fa fa-exclamation-triangle"></i>Yahoo’s process for setting up taxonomy segments can take up to 45 minutes. If you begin sending data during this window, it will not be accepted and will give an error because the segments do not yet exist in Yahoo.</p>
+</li>
+<li>
 <p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
+</li>
+</ol>
 <h2 id="action-settings--parameters-and-options">Action Settings — Parameters and Options</h2>
-<p>Click <strong>Continue</strong> to configure the connector actions. Enter in a name for the action and then select the action type from the drop-down menu.</p>
+<p>Click <strong>Continue</strong> to configure the connector actions. Enter a name for the action and then select the action type from the drop-down list.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Yahoo keeps the user data in their segment for only 30 days, at which point users need to be re-sent through the DataX connector. Tealium recommends performing <a href="/server-side/audiences/audience-sizing/about/">Audience Sizing</a> to capture the active visitors for the audience and then creating a job for the audience to send that data to Yahoo so Yahoo maintains the data in their segment.</p>
 <h3 id="action--add-user-to-segment">Action — Add User to Segment</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
@@ -793,11 +828,11 @@ This adds two nodes to the taxonomy file, one for your Tealium Account Name and 
 <tbody>
 <tr>
 <td>URN Type</td>
-<td>The user identifier (URN) Type.</td>
+<td>(Required) The user identifier (URN) type.</td>
 </tr>
 <tr>
 <td>URN Value</td>
-<td>The user identifier (URN) Value.</td>
+<td>(Required) The user identifier (URN) value.</td>
 </tr>
 <tr>
 <td>Taxonomy ID</td>
@@ -812,20 +847,8 @@ This adds two nodes to the taxonomy file, one for your Tealium Account Name and 
 <td>Represents when the qualification expires. A UNIX epoch time in seconds, up to 90 days in the future.</td>
 </tr>
 <tr>
-<td>Taxonomy ID</td>
-<td>(Required) The ID of the taxonomy.</td>
-</tr>
-<tr>
-<td>Timestamp</td>
-<td>Represents when the qualification occurs. A UNIX epoch time in seconds.</td>
-</tr>
-<tr>
-<td>Expiration Timestamp</td>
-<td>Represents when the qualification expires. A UNIX epoch time in seconds, up to 90 days in the future.</td>
-</tr>
-<tr>
-<td>Value</td>
-<td>The attribute&rsquo;s value.</td>
+<td>GDPR</td>
+<td>(Required) Whether the data is subject to GDPR regulations.</td>
 </tr>
 </tbody>
 </table>
@@ -841,11 +864,11 @@ This adds two nodes to the taxonomy file, one for your Tealium Account Name and 
 <tbody>
 <tr>
 <td>URN Type</td>
-<td>The user identifier (URN) Type.</td>
+<td>(Required) The user identifier (URN) type.</td>
 </tr>
 <tr>
 <td>URN Value</td>
-<td>The user identifier (URN) Value.</td>
+<td>(Required) The user identifier (URN) value.</td>
 </tr>
 <tr>
 <td>Taxonomy ID</td>
@@ -860,20 +883,8 @@ This adds two nodes to the taxonomy file, one for your Tealium Account Name and 
 <td>Represents when the qualification expires. A UNIX epoch time in seconds, up to 90 days in the future.</td>
 </tr>
 <tr>
-<td>Taxonomy ID</td>
-<td>(Required) The ID of the taxonomy.</td>
-</tr>
-<tr>
-<td>Timestamp</td>
-<td>Represents when the qualification occurs. A UNIX epoch time in seconds.</td>
-</tr>
-<tr>
-<td>Expiration Timestamp</td>
-<td>Represents when the qualification expires. A UNIX epoch time in seconds, up to 90 days in the future.</td>
-</tr>
-<tr>
-<td>Value</td>
-<td>The attribute&rsquo;s value.</td>
+<td>GDPR</td>
+<td>(Required) Whether the data is subject to GDPR regulations.</td>
 </tr>
 </tbody>
 </table>
@@ -937,7 +948,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 13, 2022 
+          <p>This page was last updated:  August 2, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
