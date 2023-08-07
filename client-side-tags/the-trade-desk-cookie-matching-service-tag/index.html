@@ -784,8 +784,13 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="how-it-works">How it works</h2>
-<p>This solution requires Tealium iQ and Tealium AudienceStream. The Trade Desk Cookie Matching Service tag sets a new variable named <code>ttd_uuid</code>. It is stored as a session cookie as well as a standard data layer variable and triggers only once per session, by default.</p>
+  <h2 id="requirements">Requirements</h2>
+<ul>
+<li>iQ Tag Management</li>
+<li>AudienceStream</li>
+</ul>
+<h2 id="how-it-works">How it works</h2>
+<p>The Trade Desk Cookie Matching Service tag sets a new variable named <code>ttd_uuid</code>. It is stored as a session cookie and as a standard data layer variable. The tag triggers only once per session, by default.</p>
 <p>The Trade Desk Cookie Matching Service tag communicates with the Trade Desk servers to request the current user&rsquo;s identifier. When this value is returned to the tag, it is passed to AudienceStream so that it can be used to populate a visitor attribute containing the synced user ID. This attribute can then be used in The Trade Desk connector actions as a mapping to &ldquo;Trade Desk ID (TDID)&rdquo;.</p>
 <h2 id="data-layer-variables">Data Layer Variables</h2>
 <p>Before you add the tag, create the following data layer variables:</p>
@@ -801,7 +806,7 @@ var utag_data = {
 </figure>
 <h2 id="tag-configuration">Tag Configuration</h2>
 <p>Go to the Tag Marketplace and add the Trade Desk Cookie Matching Service tag (<a href="/iq-tag-management/tags/manage/">see how to add a tag</a>).</p>
-<p>After adding the tag, configure the below settings:</p>
+<p>After adding the tag, configure the following settings:</p>
 <ul>
 <li><strong>Tealium Account</strong> - leave blank unless sending The Trade Desk user ID to a different account.</li>
 <li><strong>Tealium Profile</strong> - leave blank unless sending The Trade Desk user ID to a different profile.</li>
@@ -812,39 +817,17 @@ var utag_data = {
 <p><code>utag_main_ttd_uuid</code> is not defined</p>
 <p>The tag also has built-in logic to only fire when the cookie is not defined, but using a load rule will ensure that the tag is not loaded on a page when it has already run for the current session.</p>
 <h2 id="data-mappings">Data Mappings</h2>
-<p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-mappings/manage/">data layer variable</a> to the corresponding destination variable of the vendor Tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">data mappings</a>.</p>
-<table>
-<thead>
-<tr>
-<th><strong>Destination Name</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>tealium_account</code></td>
-<td>The Tealium account to sync the user ID to (defaults to current account).</td>
-</tr>
-<tr>
-<td><code>tealium_profile</code></td>
-<td>The Tealium profile to sync the user ID to (defaults to current profile).</td>
-</tr>
-<tr>
-<td><code>gdpr</code></td>
-<td>Pass a value that indicates if the current user resides in the European Union (EU), and therefore subject to GDPR.<br> Set to <code>0</code> (default) if the user is not subject to GDPR.<br> Set to <code>1</code> if the user is subject to GDPR.</td>
-</tr>
-<tr>
-<td><code>gdpr_consent_string</code></td>
-<td>Base64 URL-encoded GDPR consent string.</td>
-</tr>
-<tr>
-<td><code>order_id</code></td>
-<td>Overrides the <code>_corder</code> e-commerce extension value.</td>
-</tr>
-</tbody>
-</table>
+<p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-mappings/about/">data layer variable</a> to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">data mappings</a>.</p>
+<p>|<strong>Destination Name</strong>| <strong>Type</strong> | <strong>Description</strong>|
+|&mdash;| &mdash;|
+|<code>tealium_account</code>| String | The Tealium account to sync the user ID to. The default is the current account. |
+|<code>tealium_profile</code>| String | The Tealium profile to sync the user ID to. The default is the current profile. |
+|<code>gdpr</code>| Boolean | Pass a value that indicates if the current user resides in the European Union (EU), and therefore subject to GDPR.<br> Set to <code>0</code> (default) if the user is not subject to GDPR.<br> Set to <code>1</code> if the user is subject to GDPR. <br> If you set this value to <code>0</code> and the visitors are located in the EU, the Cookie Sync Service returns an empty array. |
+|<code>gdpr_consent_string</code>| String | Base64 URL-encoded GDPR consent string.|
+| <code>domain</code> | The domain where the cookie synchronization initiates. <br> NOTE: You must add this domain to <strong>Allowlist</strong> in The Trade Desk configuration. |
+|<code>order_id</code>| String | Overrides the <code>_corder</code> e-commerce extension value.|</p>
 <h2 id="audiencestream-setup">AudienceStream Setup</h2>
-<p>Once you save and publish your changes to Prod, the new variables will be available in AudienceStream. The <code>ttd_uuid</code> variable will appear as an event attribute, but you must create it as a visitor attribute so that it can be used in The Trade Desk connector action.</p>
+<p>After you save and publish your changes to Prod, the new variables will be available in AudienceStream. The <code>ttd_uuid</code> variable will appear as an event attribute, but you must create it as a visitor attribute so that it can be used in The Trade Desk connector action.</p>
 <p>To add a visitor attribute to store the <code>ttd_uuid</code> value:</p>
 <ol>
 <li>Navigate to <strong>AudienceStream &gt; Attributes</strong>.</li>
@@ -915,7 +898,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 3, 2021 
+          <p>This page was last updated:  August 7, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -929,7 +912,8 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#requirements">Requirements</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-layer-variables">Data Layer Variables</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag Configuration</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules">Load Rules</a></li>
