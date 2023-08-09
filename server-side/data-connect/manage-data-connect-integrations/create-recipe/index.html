@@ -368,11 +368,13 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/data-connect/rate-limits/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-rate-limits">Rate limits</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/data-connect/error-handling/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-data-connect-error-handling">Error handling</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/data-connect/roles/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-data-connect-roles">Roles</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side/data-connect/dashboard/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-data-connect-dashboard">Dashboard</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/data-connect/events/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-data-connect-events">Events</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/data-connect/dashboard/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-data-connect-dashboard">Dashboard</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/data-connect/usage-reports/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-data-connect-usage-reports">Usage reports</a>
       </li><li class="relative w-100 fw8 f5  active">
@@ -391,6 +393,8 @@ var utag_data = {
         <a href="/server-side/data-connect/manage-data-connect-integrations/create-recipe/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".server-side-create-recipe-data-connect">Create a recipe</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/data-connect/manage-data-connect-integrations/manage-recipes/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-manage-recipes-data-connect">Manage recipes</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/data-connect/manage-data-connect-integrations/troubleshooting-data-connect/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-troubleshoot-data-connect">Troubleshooting</a>
       </li></ul>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
@@ -845,6 +849,10 @@ var utag_data = {
 
 <div class="mv2 mid-gray fn w-100">
   
+    <p class="f4 fw3 lh-copy">
+      This article describes how to create a recipe in Data Connect.
+    </p>
+  
 </div>
 
 <div class="prose nested-links" id="prose">
@@ -894,11 +902,19 @@ Search for the <strong>app</strong> you want to integrate into Tealium. For sche
 </ol>
 <h3 id="step-2-configure-an-action">Step 2: Configure an action</h3>
 <ol>
-<li>Under <strong>Actions</strong> click <strong>+</strong>.</li>
-<li>Under <strong>What happens next?</strong> select <strong>Handle errors</strong>.<br>
-We recommend wrapping the Tealium Events app and related actions in an error monitoring step.</li>
-<li>Select any apps you need to prepare the data to be imported to Tealium. For example, use the <strong>Download file contents in Amazon S3</strong>, <strong>Decrypt and verify data</strong>, and <strong>Parse CSV</strong> apps together to prepare encrypted CSV data stored in an Amazon S3 bucket.</li>
-<li>You must use the <strong>Repeat action</strong> loop with the Tealium Events app.
+<li>
+<p>Under <strong>Actions</strong> click <strong>+</strong>.</p>
+</li>
+<li>
+<p>Under <strong>What happens next?</strong> select <strong>Handle errors</strong>.<br>
+We recommend wrapping the Tealium Events app and related actions in an error monitoring step. <p class="note"><i class="fa fa-exclamation-triangle"></i>Ensure you complete <a href="/server-side/data-connect/manage-data-connect-integrations/create-recipe/#step-3-configure-error-handling">Step 3</a> to finish configuring error handling in your recipe. If you do not stop the recipe as described in Step 3, automatic error notifications will not work.</p></p>
+</li>
+<li>
+<p>Select any apps you need to prepare the data to be imported to Tealium. For example, use the <strong>Download file contents in Amazon S3</strong>, <strong>Decrypt and verify data</strong>, and <strong>Parse CSV</strong> apps together to prepare encrypted CSV data stored in an Amazon S3 bucket.</p>
+</li>
+<li>
+<p>(Optional) If your data payload size exceeds 500 records, use the <strong>Repeat action</strong> loop with the Tealium Events app to break your data into smaller payload sizes.<br>
+To use this loop:</p>
 <ol>
 <li>Click the <strong>+</strong> to see a list of actions.</li>
 <li>Click <strong>Repeat action</strong>.</li>
@@ -906,71 +922,62 @@ We recommend wrapping the Tealium Events app and related actions in an error mon
 <li>Set the <strong>Batch size</strong> to the maximum batch size for your app.</li>
 </ol>
 </li>
-<li>Under <strong>Select an app and action</strong>, select the <strong>Tealium Events</strong> app.</li>
-<li>Click <strong>Show optional fields</strong>, and ensure all available fields are selected.
-Configure each field as needed for your use case.
+<li>
+<p>Under <strong>Select an app and action</strong>, select the <strong>Tealium Events V2</strong> app.</p>
+</li>
+<li>
+<p>Enter the information from your <a href="/server-side/data-connect/manage-data-connect-integrations/tealium-connect-data-source/">Tealium Connect data source</a>.</p>
+<ul>
+<li><strong>Tealium Connect API Domain</strong> - Enter the regional Tealium Collect API domain used in your Tealium Connect data source.</li>
+<li><strong>Data Source Key</strong> - Enter the data source key from your Tealium Connect data source.</li>
+<li><strong>Tealium Account Name</strong> and <strong>Tealium Profile Name</strong> - Enter your Tealium account name and profile name in the corresponding fields.<p class="note"><i class="fa fa-exclamation-triangle"></i>A single account may have multiple corresponding profiles. Specify the Tealium profile to which you want to send events from this recipe.</p></li>
+</ul>
+</li>
+<li>
+<p>In the <strong>Source Data</strong> section, add your source data to the app.</p>
 <ul>
 <li>
-<p><strong>Attribute mappings</strong> - Configure attribute mappings. If you do not map attributes, they will be sent to Tealium using the attribute names from your source data. Use this feature to edit key names to match existing Tealium configurations to minimize additional work for new attributes, enrichments, and/or rules. <p class="tip"><i class="fa fa-info-circle"></i>We recommend that you map attributes first so that you can use the appropriate mapped attribute names in the rest of the app configuration.</p></p>
+<p><strong>Source Data source list</strong> - Select the <a href="/server-side/data-connect/glossary/">datapill(s)</a> from the <strong>Recipe data</strong> slideout that represent data to send to Tealium. You can insert batched data from the  <strong>Recipe data</strong> slideout.</p>
 </li>
 <li>
-<p><strong>Source Attribute Name</strong> - Use the <strong>Text</strong> option and enter the API names of the data points you want to rename.</p>
+<p><strong>Visitor ID Value</strong> - Select a datapill for the visitor ID value.</p>
+<ul>
+<li><strong>If you are stitching to a known user identifier using a Visitor ID attribute</strong>: Select the datapill in your recipe that contains the value of the user identifier. Enter the corresponding visitor attribute ID in the <strong>Visitor Attribute ID</strong> field. You must set up enrichments for any visitor ID attributes you want to be set for events from the recipe. For more information, see <a href="/server-side/data-connect/manage-data-connect-integrations/tealium-connect-visitor-id-attr-enrichment/">Visitor ID attribute enrichment for Tealium Connect</a>.</li>
+<li><strong>If you are importing data based on an anonymous identifier</strong>: Select the datapill in your recipe that contains the anonymous identifier. Leave the <strong>Visitor Attribute ID</strong> field empty. This value directly sets the <code>tealium_visitor_id</code>.</li>
+</ul>
 </li>
 <li>
-<p><strong>Tealium Attribute Name</strong> - Use the <strong>Text</strong> option and enter the desired event attribute name.<p class="note"><i class="fa fa-exclamation-triangle"></i>Event attribute names can contain only letters, numbers, underscores, dollar signs, square brackets, and periods. Spaces are not allowed.</p></p>
+<p><strong>Visitor Attribute ID</strong> - This numeric value assists in matching the <code>tealium_visitor_id</code> to an existing visitor ID attribute. For example <code>_{Account}_{Profile}_{Visitor Attribute ID}_{Visitor ID Value}_</code>.</p>
+<ul>
+<li><strong>If you are stitching to a known user identifier using a visitor ID attribute</strong>: Enter the visitor attribute ID. Navigate to <strong>AudienceStream &gt; Visitor/Visit Attributes</strong>, select the visitor attribute you want to use, and copy the attribute ID to your Tealium Events app in Workato. For more information, see <a href="/server-side/attributes/about/#attribute-ids">Attribute IDs</a>.</li>
+<li><strong>If you are importing data based on an anonymous identifier</strong>: Leave this field empty.</li>
+</ul>
 </li>
 <li>
-<p><strong>Encode Visitor ID</strong> - Determines whether the visitor ID is encoded with SHA-256. The default value is <strong>No</strong>. <p class="note"><i class="fa fa-exclamation-triangle"></i><strong>Encode Visitor ID</strong> is applied only if <strong>Visitor Attribute ID</strong> is defined.</p></p>
-</li>
-<li>
-<p><strong>Attributes to remove</strong> - A comma-separated list of the API names of any attributes that should be removed. Use this option to remove sensitive or unnecessary attributes from the Tealium event.</p>
-</li>
-<li>
-<p><strong>Attributes to add</strong> - Specify the key and value to be added. For the key, use the <strong>Text</strong> input to type the desired attribute name. For the value, use the <strong>Text</strong> input to hardcode a value or use the <strong>Formula</strong> input to edit or create a value from a <a href="/server-side/data-connect/glossary/">datapill</a>. <p class="note"><i class="fa fa-exclamation-triangle"></i>We recommend using this feature to hardcode a <code>tealium_event</code> value to create an event specification.</p></p>
-</li>
-<li>
-<p><strong>Fields Separator</strong> - Set a fields separator when the visitor ID value is nested inside an object. The default separator is a vertical bar <code>|</code>. You can change the default value by using the <strong>Text</strong> option and typing in the separator for your use case.</p>
+<p><strong>Attributes to add</strong> - Expand the <strong>Attributes to add</strong> section. Specify the key and value for each event attribute in the event Workato sends to Tealium. <p class="note"><i class="fa fa-exclamation-triangle"></i>Ensure your <strong>Attributes to add</strong> contain fields with unique names, ignoring case. <br> Tealium processes all event field names in lowercase.</p></p>
+<ul>
+<li>Any data from your recipe that you do not add here is not sent to Tealium.</li>
+<li>For the key, use the <strong>Text</strong> input to type the desired event attribute name.</li>
+<li>For the value, use the <strong>Text</strong> input to hardcode an event attribute value or create a value from a datapill.</li>
+<li>Use this feature to edit key names to match existing Tealium configurations to minimize additional work for new attributes, enrichments, and/or rules.</li>
+<li>To create an event specification, add a <code>tealium_event</code> value in this section.</li>
+<li>(Optional) Add any additional attributes you want to send to Tealium that are not necessarily from your app. For example, <code>tealium_event</code>, your <code>tealium_trace_id</code>, or <code>_dc_ttl_</code>, which describes how long the visit will last. <p class="note"><i class="fa fa-exclamation-triangle"></i>When using <code>tealium_trace_id</code> for debug purposes, you cannot send more than five events in one batch.</p></li>
+</ul>
 </li>
 </ul>
 </li>
-<li>Configure the Tealium Events app using the information from your <a href="/server-side/data-connect/manage-data-connect-integrations/tealium-connect-data-source/">Tealium Connect data source</a>.
-<ol>
 <li>
-<p>Under <strong>Tealium API Domain</strong>, enter your regional Tealium API domain.</p>
-</li>
-<li>
-<p>Enter your <strong>Data Source Key</strong> from your Tealium Collect data source.</p>
-</li>
-<li>
-<p>Enter your Tealium account name and profile name.<p class="note"><i class="fa fa-exclamation-triangle"></i>A single account may have multiple corresponding profiles. Specify the Tealium profile connected to this recipe.</p></p>
-</li>
-<li>
-<p>In the <strong>Source Data</strong> field, select the datapill to populate the field with data to send to Tealium. When sending batched data to Tealium, click <strong>Formula</strong> input and select <strong>Batched</strong> from the <strong>Recipe data</strong> slideout. <p class="note"><i class="fa fa-exclamation-triangle"></i>Ensure your <strong>Source Data</strong> contains fields with unique names, ignoring case. Workato apps do not guarantee successful parsing of fields with matching names in different cases. For example, <code>field_name</code> and <code>Field_name</code> may cause an error during parsing. <br> Tealium processes all event field names in lowercase.</p></p>
-</li>
-<li>
-<p>Select a datapill for the <strong>Visitor ID Value</strong> or, if you mapped attributes previously, use the Tealium <strong>Attribute Name</strong> from your data mapping. This value directly sets the <code>tealium_visitor_id</code>.</p>
-</li>
-<li>
-<p>Enter a value for the corresponding <strong>Visitor Attribute ID</strong> found in your Tealium account.<br>
-Navigate to <strong>AudienceStream &gt; Visitor/Visit Attributes</strong>, select the visitor attribute you want to use, and copy the attribute ID to your Tealium Events app in Workato.</p>
-</li>
-<li>
-<p>(Optional) Add any additional attributes you want to send to Tealium that are not necessarily from your app. For example, <code>tealium_event</code>, your tealium<code>_trace_id</code>, or <code>_dc_ttl_</code>, which describes how long the visit will last.</p>
-</li>
-</ol>
+<p>(Optional) Select whether to enable <strong>Hash Visitor ID</strong>. If your use case requires visitor ID hashing, click <strong>Show optional fields</strong>, and enable <strong>Hash Visitor ID</strong>.</p>
+<ul>
+<li>If you defined the <strong>Visitor Attribute ID</strong> previously and you want to apply SHA-256 hashing to the constructed <code>tealium_visitor_id</code>, select <strong>Yes</strong>. For most purposes, you set this value to <strong>No</strong>.</li>
+<li>If you want to apply SHA-256 hashing to the value of the visitor ID attribute you are stitching with, use the Workato <code>encode_sha256</code> function in the <strong>Visitor ID Value</strong> field.</li>
+</ul>
 </li>
 </ol>
 <h3 id="step-3-configure-error-handling">Step 3: Configure error handling</h3>
 <ol>
 <li>Click the <strong>On Error</strong> step.</li>
 <li>Under <strong>Retry actions in Monitor block?</strong>, choose whether to retry actions.</li>
-<li>Create an email notification.
-<ol>
-<li>Select an app to trigger when an error occurs. For example, you can send an email with error information using the <strong>Email by Workato</strong> app.</li>
-<li>Configure the app with your contact information.</li>
-<li>From the <strong>Recipe data</strong> slideout, select datapills with information about the error monitoring to include in your email message.</li>
-</ol>
-</li>
 <li>Add a log message to the job report.
 <ol>
 <li>Click the <strong>+</strong> to add an additional action to fire when an error occurs.</li>
@@ -1000,6 +1007,7 @@ Navigate to <strong>AudienceStream &gt; Visitor/Visit Attributes</strong>, selec
 <li>Click <strong>Save</strong>.</li>
 <li>Click <strong>Test</strong> to test your recipe configuration.</li>
 </ol>
+<p class="tip"><i class="fa fa-info-circle"></i>To test the error handling, temporarily change the <strong>Tealium Connect API Domain</strong> setting in the Tealium Events V2 app to a domain that doesn&rsquo;t exist. For example, temporarily change the domain to <code>xcollect-eu-west-1.tealiumiq.com</code>, test the error handling, and then change the domain back to <code>collect-eu-west-1.tealiumiq.com</code> when your testing is complete.</p>
 
 </div>
 
@@ -1060,7 +1068,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 24, 2023 
+          <p>This page was last updated:  August 9, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

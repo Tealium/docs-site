@@ -556,7 +556,13 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/neustar-platformone-conversion-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".neustar-platformone-conversion-tag-setup-guide">Neustar</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/client-side-tags/neustar-real-user-measurement-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".neustar-real-user-measurement-tag">Neustar (Real User Measurement)</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/neustar-fabrick-id-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".neustar-fabrick-id-tag">Neustar Fabrick ID</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/client-side-tags/neustar-idmp-site-activity-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".neustar-idmp-site-activity-tag">Neustar IDMP Site Activity</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/client-side-tags/neustar-pageadvisor-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".neustar-pageadvisor-tag">Neustar PageAdvisor</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/nextag-roi-tracker-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".nextag-roi-tracker-tag">Nextag ROI Tracker</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -787,7 +793,10 @@ var utag_data = {
   <p class="note"><i class="fa fa-exclamation-triangle"></i>It is crucial to load the Cloud ID Service tag prior to other Adobe tags (such as Appmeasurement, JavaScript, and Heartbeat) that require Cloud ID. Bundle the tag on all pages and place it above all other Adobe tags in the Tags tab. This is the best way to ensure that the Cloud ID is accessible before other Adobe tags load on the page.</p>
 <h2 id="supported-versions">Supported Versions</h2>
 <ul>
-<li>v5.2 (latest and recommended)</li>
+<li>v5.5 (latest and recommended)</li>
+<li>v5.4</li>
+<li>v5.3</li>
+<li>v5.2</li>
 <li>v4.4</li>
 <li>v4.3</li>
 <li>v4.1</li>
@@ -797,43 +806,38 @@ var utag_data = {
 <p>First, go to Tealium&rsquo;s Tag Marketplace and add the Experience Cloud ID Service tag to your profile (<a href="/iq-tag-management/templates/manage/">how to add a Tag?</a>).</p>
 <p>After adding the tag, configure the following settings:</p>
 <ul>
-<li>
-<p><strong>Adobe Org ID</strong></p>
+<li><strong>Adobe Org ID</strong>
 <ul>
-<li>Required.</li>
-<li>Enter the alphanumeric Experience Cloud ID assigned to your organization.</li>
+<li>(Required) Enter the alphanumeric Experience Cloud ID assigned to your organization.</li>
 <li>Case sensitive.</li>
 <li>For example, <code>265H7Z562851TTX99W870V12</code>@AdobeOrg</li>
 </ul>
 </li>
-<li>
-<p><strong>Tracking Server</strong></p>
+<li><strong>Tracking Server</strong>
 <ul>
-<li>Required.</li>
-<li>Enter the domain used for your Adobe Analytics data collection.</li>
+<li>(Required) Enter the domain used for your Adobe Analytics data collection.</li>
 <li>This is where the image request and cookies are processed.</li>
-<li>For example, <strong>site.mydomain.com</strong></li>
+<li>For example, <code>site.mydomain.com</code></li>
 </ul>
 </li>
-<li>
-<p><strong>Tracking Server Secure</strong></p>
+<li><strong>Tracking Server Secure</strong>
 <ul>
-<li>Optional.</li>
-<li>If you are using a secure tracking server, enter the URL in this field.</li>
+<li>(Optional) If you are using a secure tracking server, enter the URL in this field.</li>
 </ul>
 </li>
-<li>
-<p><strong>Experience Cloud Server</strong></p>
+<li><strong>Experience Cloud Server</strong>
 <ul>
-<li>Optional.</li>
-<li>If you are using first-party data collection (CNAME) to utilize first-party cookies in a third-party context, enter the tracking server URL in this field.</li>
+<li>(Optional) If you are using first-party data collection (CNAME) to utilize first-party cookies in a third-party context, enter the tracking server URL in this field.</li>
 </ul>
 </li>
-<li>
-<p><strong>Experience Cloud Server Secure</strong></p>
+<li><strong>Experience Cloud Server Secure</strong>
 <ul>
-<li>Optional.</li>
-<li>If you are using a secure Experience Cloud Server, enter the URL in this field.</li>
+<li>(Optional) If you are using a secure Experience Cloud Server, enter the URL in this field.</li>
+</ul>
+</li>
+<li><strong>Code Version</strong>
+<ul>
+<li>(Required) Version 3.0 and later no longer support Internet Explorer versions 6 through 9.</li>
 </ul>
 </li>
 </ul>
@@ -848,30 +852,36 @@ var utag_data = {
 <table>
 <thead>
 <tr>
+<th><strong>Variable</strong></th>
 <th><strong>Destination Name</strong></th>
 <th><strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td><code>adobe_org_id</code></td>
 <td>Adobe Org ID</td>
-<td><ul><li>Alphanumeric ID assigned to your company&rsquo;s Experience Cloud Solution.</li></ul></td>
+<td>Alphanumeric ID assigned to your company&rsquo;s Experience Cloud Solution.</td>
 </tr>
 <tr>
+<td><code>config.trackingServer</code></td>
 <td>Tracking Server</td>
-<td><ul><li>Data collection server URL.</li></ul></td>
+<td>Data collection server URL.</td>
 </tr>
 <tr>
+<td><code>config.trackingServerSecure</code></td>
 <td>Tracking Server Secure</td>
-<td><ul><li>Data collection secure server URL.</li></ul></td>
+<td>Data collection secure server URL.</li></ul></td>
 </tr>
 <tr>
+<td><code>config.marketingCloudServer</code></td>
 <td>Experience Cloud Server</td>
-<td><ul><li>Data Collection server URL if CNAME is enabled.</li></ul></td>
+<td>Data Collection server URL if CNAME is enabled.</td>
 </tr>
 <tr>
+<td>config.marketingCloudServerSecure</td>
 <td>Experience Cloud Server Secure</td>
-<td><ul><li>Data Collection server URL if CNAME is enabled.</li></ul></td>
+<td>Data Collection server URL if CNAME is enabled.</td>
 </tr>
 </tbody>
 </table>
@@ -886,22 +896,42 @@ The property is sent when your supplied value is found in the data layer.</li>
 <table>
 <thead>
 <tr>
-<th><strong>Property Name</strong></th>
-<th><strong>Description</strong></th>
+<th style="text-align:left"><strong>Property Name</strong></th>
+<th style="text-align:left"><strong>Type</strong></th>
+<th style="text-align:left"><strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>ID</td>
-<td><ul><li>Additional ID for the same visitor.</li></ul></td>
+<td style="text-align:left"><code>ID</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Additional ID for the same visitor.</td>
 </tr>
 <tr>
-<td>authState</td>
-<td><ul><li>Indicates the authentication status.</li><li>Possible values are:  <ul><li><code>0</code> for unknown or not authenticated</li><li><code>1</code> for authenticated</li><li><code>2</code> for logged out</li></ul> </li></ul></td>
+<td style="text-align:left"><code>authState</code></td>
+<td style="text-align:left">Integer</td>
+<td style="text-align:left">Indicates the authentication status. Possible values are:  <ul><li><code>0</code> for unknown or not authenticated</li><li><code>1</code> for authenticated</li><li><code>2</code> for logged out</li></ul></td>
 </tr>
 </tbody>
 </table>
-<p>When you are finished, click <strong>Add</strong>.</p>
+<h3 id="events">Events</h3>
+<p>To map events, refer to <a href="/iq-tag-management/data-mappings/manage/#add-an-event-mapping">Create an Event Mapping</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Variable</strong></th>
+<th style="text-align:left"><strong>Type</strong></th>
+<th style="text-align:left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>setCustomerID</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Set Customer ID</td>
+</tr>
+</tbody>
+</table>
 <h2 id="vendor-documentation">Vendor Documentation</h2>
 <ul>
 <li><a href="https://marketing.adobe.com/resources/help/en_US/mcvid/">Experience Cloud ID Service</a></li>
@@ -988,6 +1018,7 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data Mappings</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#standard">Standard</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#customer-ids">Customer IDs</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#events">Events</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#vendor-documentation">Vendor Documentation</a></li>
               </nav>
   </aside></nav>
@@ -1197,6 +1228,9 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
+  
   
   
   
