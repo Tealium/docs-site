@@ -349,11 +349,7 @@ var utag_data = {
 <li>In your Xcode project, select the app target under the <strong>TARGETS</strong> section.</li>
 <li>Navigate to <strong>General &gt; Frameworks, Libraries &amp; Embedded Content</strong> and  select a Tealium Swift library to add it to your app target.</li>
 </ol>
-<p>Swift Package Manager has the following limitations:</p>
-<ul>
-<li>Due to lack of mixed-language source in a single target, the <a href="/platforms/ios-swift/module-list/crash-reporter/"><code>CrashReporter</code></a> and <a href="/platforms/ios-swift/module-list/autotracking/"><code>AutoTracking</code></a> modules are not supported through the Swift Package Manager. Verify that you do not need these modules before using Swift Package Manager.</li>
-<li>Restricting a target within a package to a specific platform is not possible. Modules such as <a href="/platforms/ios-swift/module-list/tag-management/"><code>TagManagement</code></a>, which are only supported for iOS, also become available to non-iOS targets. Adding one of these modules to an non-iOS target causes the compiler throws errors due to unavailable system libraries.</li>
-</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Swift Package Manager cannot limit a target in a package to a specific platform. For example, modules such as <a href="/platforms/ios-swift/module-list/tag-management/"><code>TagManagement</code></a>, supported only by iOS, also become available to non-iOS targets. Although these modules will technically be available via SPM on XCode to non-iOS targets, adding the modules to those targets will cause the compiler to throw errors due to unavailable system libraries. This limitation should not impact users because iOS-exclusive modules should only be added to iOS apps.</p>
 <h3 id="cocoapods">CocoaPods</h3>
 <p>To install the Tealium for iOS library with CocoaPods (recommended):</p>
 <ol>
@@ -443,7 +439,7 @@ var utag_data = {
 <li>Follow the instructions listed in the <a href="https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos">Carthage Getting Started</a> documentation to add the relevant build phases scripts, to ensure you don&rsquo;t run into any issues when submitting your app.</li>
 </ol>
 <h4 id="importing-modules">Importing Modules</h4>
-<p>The Tealium Swift SDK has been split up into separate modules/frameworks. This means you need only import the specific frameworks for the modules you need to use, which helps to reduce the binary size and, ultimately, increase your app&rsquo;s performance.</p>
+<p>The Tealium Swift SDK has been split up into separate modules/frameworks. Import only the specific frameworks for the modules you need to reduce the binary size and increase your app&rsquo;s performance.</p>
 <p><strong>Module import statements</strong></p>
 <ul>
 <li><strong>TealiumCore</strong> - required for Tealium, TealiumConfig, TealiumInstanceManager</li>
@@ -633,7 +629,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 3, 2023 
+          <p>This page was last updated:  August 10, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

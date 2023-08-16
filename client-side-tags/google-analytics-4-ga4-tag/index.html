@@ -264,6 +264,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/amazon-advertising-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-advertising-tag">Amazon Advertising</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/client-side-tags/amazon-advertising-cookie-matching-service-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-advertising-cooke-matching-service-tag">Amazon Advertising Cookie Matching Service</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/amobee-cooking-matching-service-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amobee-cooking-matching-service-tag">Amobee Cooking Matching Service</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/amobee-pixel-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amobee-pixel-tag">Amobee Pixel</a>
@@ -792,7 +794,7 @@ var utag_data = {
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
 <p>Google Analytics 4 (GA4) is the new version of Google Analytics. One of the differences between GA4 and Google Universal Analytics is that GA4 uses a different reporting method. If your site is currently running Google Universal Analytics, we recommend that you run both Google Universal Analytics and GA4 concurrently for a few months before switching completely to GA4. This approach allows historical data to continue to be collected in Google Universal Analytics while you gain familiarity with the reporting in GA4.</p>
-<p>Note that Google Universal Analytics will stop processing data on July 1, 2023 (October 1, 2023 for 360 accounts).</p>
+<p>Note that Google Universal Analytics stopped processing data on July 1, 2023 (October 1, 2023 for 360 accounts).</p>
 <p>Google Universal Analytics has several hit types, including event tracking, pageviews, timing events, and social shares. GA4 is completely event-based, meaning that there are only event hits. GA4 does not have the event categories, actions, labels, and values used in Google Universal Analytics. Instead, the data sent with GA4 events includes an event name and customizable event parameters that contain contextual data for the event.</p>
 <p>For more information about migrating to GA4 from Google Universal Analytics, see <a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363506-migrating-from-universal-analytics-gtag-jsanalytics-js-to-google-analytics-4-ga4-">Migrating from Universal Analytics to Google Analytics 4</a>.</p>
 <h2 id="tag-tips">Tag tips</h2>
@@ -819,6 +821,7 @@ var utag_data = {
 <li>List of Prices</li>
 <li>List of Quantities</li>
 <li>List of Discounts</li>
+<li>Custom Item-Scoped Dimensions</li>
 </ul>
 </li>
 </ul>
@@ -901,7 +904,7 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<h4 id="check-the-tag-template-version">Check the tag template version.</h4>
+<h4 id="check-the-tag-template-version">Check the tag template version</h4>
 <p>To use Dynamic Events Trigger, you must update your template to the May 26, 2023 (<code>20230526</code>) template or newer. To check the template version and update it, perform the following steps;</p>
 <ol>
 <li>Navigate to the <strong>Tag Configuration</strong> tab, click <strong>Advanced Settings</strong></li>
@@ -967,6 +970,9 @@ var utag_data = {
 <h3 id="items-parameter-for-recommended-events">Items parameter for recommended events</h3>
 <p>Some ecommerce events have an <code>items</code> parameter. For these events, the <code>items</code> array is automatically populated from E-commerce extension values, such as product name, category, and price.</p>
 <p>For more information, see <a href="/iq-tag-management/extensions/extensions-list/e-commerce-extension/">E-commerce Extension</a>.</p>
+<h3 id="custom-items">Custom items</h3>
+<p>If you want to map product-related data to item-scoped custom dimensions, map the <code>utag</code> data to a member of the <code>item.myDimension</code> array.</p>
+<p>For example, to capture and map the product color, map <code>utag_data.product_color</code> to <code>item.product_color</code>.</p>
 <h2 id="custom-dimensions">Custom dimensions</h2>
 <p>Currently, GA4 has two scopes for custom dimensions:</p>
 <ul>
@@ -1079,6 +1085,7 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#contact-us-link-event-example">Contact Us link event example</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tracking-e-commerce-events">Tracking e-commerce events</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#items-parameter-for-recommended-events">Items parameter for recommended events</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#custom-items">Custom items</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#custom-dimensions">Custom dimensions</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#user-properties">User properties</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#validating-a-ga4-implementation">Validating a GA4 implementation</a></li>
@@ -1292,6 +1299,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

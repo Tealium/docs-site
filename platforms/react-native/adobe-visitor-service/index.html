@@ -324,6 +324,22 @@ var utag_data = {
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">TealiumAdobeVisitor</span>.<span style="color:#a6e22e">decorateUrl</span>((<span style="color:#e6db74">&#34;https://tealium.com&#34;</span>, <span style="color:#a6e22e">value</span> =&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Decorated URL: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">value</span>);
 </span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h3 id="geturlparameterscallback"><code>getUrlParameters(callback)</code></h3>
+<p>Retrieves the Adobe Visitor URL parameters to be appended to a URL.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">TealiumAdobeVisitor</span>.<span style="color:#a6e22e">getUrlParameters</span>(<span style="color:#a6e22e">value</span> =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">undefined</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Adobe Visitor was null&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">key</span> <span style="color:#66d9ef">of</span> Object.<span style="color:#a6e22e">keys</span>(<span style="color:#a6e22e">value</span>)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Result: key = adobe_mc
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">//         value = MCMID=1234|MCORGID=12345@AdobeOrg|TS=1655826247
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// Only for demonstration purposes; call some method in your app that decorates the URL and then launches your webview
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Retrieved URL Parameters: &#34;</span>, <span style="color:#a6e22e">key</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;=&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">value</span>[<span style="color:#a6e22e">key</span>]);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><h3 id="resetvisitor"><code>resetVisitor()</code></h3>
 <p>Reset current visitor.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">TealiumAdobeVisitor</span>.<span style="color:#a6e22e">resetVisitor</span>();
@@ -387,7 +403,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 17, 2023 
+          <p>This page was last updated:  August 15, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -410,6 +426,7 @@ No</button>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#linkecidtoknownidentifierid-providerid-authstate-callback">linkEcidToKnownIdentifier(id, providerId, authState, callback)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#getadobevisitorcallback">getAdobeVisitor(callback)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#decorateurlurl-callback">decorateUrl(url, callback)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#geturlparameterscallback">getUrlParameters(callback)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#resetvisitor">resetVisitor()</a></li>
               </nav>
   </aside></nav>
