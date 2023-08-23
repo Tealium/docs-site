@@ -26,6 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side",
+    reading_time  : "2",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -237,7 +238,7 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/getting-started/eventstream-api-hub/trace-test-with-trace/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".eventstream-api-hub-trace-test-with-trace">Test with Trace</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side/getting-started/eventstream-api-hub/saving-and-publishing/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".eventstream-api-hub-saving-and-publishing">Saving and publishing</a>
+        <a href="/server-side/getting-started/eventstream-api-hub/saving-and-publishing/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".eventstream-api-hub-saving-and-publishing">Save and publish</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/getting-started/eventstream-api-hub/next-steps/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".eventstream-api-hub-next-steps">Next steps</a>
       </li></ul>
@@ -850,27 +851,31 @@ var utag_data = {
 <div class="mv2 mid-gray fn w-100">
   
     <p class="f4 fw3 lh-copy">
-      Event feeds are a collection of events that match specific conditions based on their attributes.The default event feed is named &ldquo;All Events&rdquo; and contains all incoming events, but you will create additional feeds to identify subsets of events based on their attributes.
+      Event feeds are a collection of events that match specific conditions based on their attributes.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="how-it-works">How it works</h2>
-<p>Feeds allow you to identify your most important types of events and take action on them by sending them to vendor connectors.</p>
+  <p>The default event feed is named <code>All Events</code> and contains all incoming events, but you can create new feeds to identify subsets of events based on their attributes.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>Feeds identify your most important types of events to take action on using vendor connectors.</p>
 <p>Here&rsquo;s how it works:</p>
 <ul>
-<li><strong>Feed Name</strong><br>
-An event feed has a name that identifies it throughout the UI, such as when configuring a connector action. Choose a user-friendly name that will make sense to you and your team.<br>
+<li><strong>Feed name</strong><br>
+An event feed has a name that identifies it throughout the interface, such as when configuring a connector action. Choose a user-friendly name that makes sense to you and your team.<br>
 Example: <code>Purchases with Order Total Over $1,000</code></li>
 <li><strong>Condition</strong><br>
-Each feed requires one or more conditions that filters it out of the <strong>All Events</strong> feeds. Use the values of your event attributes (data layer) to construct simple rules that identify a certain type of event.<br>
-Example:<br>
-<code>tealium_event EQUALS &quot;purchase&quot; AND order_total IS GREATER THAN 1000</code></li>
+Each feed requires one or more conditions that filters it out of the <strong>All Events</strong> feeds. Use the values of your event attributes to build simple rules that identify a certain type of event.<br>
+Example:
+<pre tabindex="0"><code class="language-none" data-lang="none">tealium_event EQUALS &#34;purchase&#34;
+AND
+order_total IS GREATER THAN 1000
+</code></pre></li>
 <li><strong>View in Live Events</strong><br>
-Once feeds are created, you can adjust Live Events to only display events from a specific feed. This is helpful for debugging, creating new event specifications, or just monitoring the health of your feeds.</li>
-<li><strong>Use in Connectors</strong><br>
-Once an event feed is created, you can use it in a connector to send data to a vendor. This is the API hub in action!</li>
+After you create a feed, view it in <strong>Live Events</strong> to display only those events. This interface is helpful for debugging, creating new event specifications, or just monitoring the health of your feeds.</li>
+<li><strong>Use in connectors</strong><br>
+After an event feed is created, use it in a connector to send data to a vendor. This is the API hub in action!</li>
 </ul>
 <h2 id="example">Example</h2>
 <p>Here is an example of an event feed that identifies <code>search</code> events that had <code>0</code> results. This feed could be used to monitor the health of your search engine and/or help to improve your search capabilities.</p>
@@ -885,7 +890,7 @@ Once an event feed is created, you can use it in a connector to send data to a v
          title="Event Feed Example" width="462" height="660"/>
     </a>
 </figure>
-<p>Click <strong>Next</strong> to see how to add an event feed.</p>
+<p>In the next tutorial, you will learn how to add an event feed.</p>
 
 </div>
 
@@ -946,14 +951,14 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  August 17, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
       </div>
     </article>
 
-    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns">
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
       
 
 

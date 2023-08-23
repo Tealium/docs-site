@@ -26,6 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side",
+    reading_time  : "2",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -237,7 +238,7 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/getting-started/eventstream-api-hub/trace-test-with-trace/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".eventstream-api-hub-trace-test-with-trace">Test with Trace</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side/getting-started/eventstream-api-hub/saving-and-publishing/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".eventstream-api-hub-saving-and-publishing">Saving and publishing</a>
+        <a href="/server-side/getting-started/eventstream-api-hub/saving-and-publishing/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".eventstream-api-hub-saving-and-publishing">Save and publish</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/getting-started/eventstream-api-hub/next-steps/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".eventstream-api-hub-next-steps">Next steps</a>
       </li></ul>
@@ -850,26 +851,27 @@ var utag_data = {
 <div class="mv2 mid-gray fn w-100">
   
     <p class="f4 fw3 lh-copy">
-      Event specifications are a way to organize and validate the quality of incoming data and they represent your data layer in EventStream. As mentioned earlier, events processed by EventStream are identified by the <code>tealium_event</code> attribute. The value of this attribute represents the name of the event and its associated specification. The specification also indicates which event attributes are required in the event.
+      Event specifications represent your data layer in EventStream and provide a way to organize and validate the quality of incoming data.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="how-it-works">How it works</h2>
-<p>Event specifications are used to identify and standardize the events you want to collect in your EventStream implementation.</p>
+  <p>As mentioned in earlier tutorials, events are identified by the <code>tealium_event</code> attribute. The value of this attribute represents the name of the event and its associated specification. The specification also indicates which event attributes are required in the event.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>Event specifications define and standardize the events you want to collect in your EventStream implementation.</p>
 <p>Here&rsquo;s how it works:</p>
 <ul>
-<li><strong>Event Name and Attributes</strong><br>
+<li><strong>Event name and attributes</strong><br>
 An event specification has a name and a list of required/optional attributes. The name is the value set in the <code>tealium_event</code> attribute. For example, an event that tracks when a user performs a search would be represented by <code>tealium_event=&quot;search&quot;</code> and would have required attributes <code>search_term</code> and <code>search_results</code> containing the searched term and the number of results returned respectively.</li>
-<li><strong>Marketplace or Custom Specs</strong><br>
-EventStream comes with a marketplace of predefined event specifications for the most commonly tracked events, such as <code>cart_add</code>, <code>screen_view</code>, <code>search</code>, et cetera. You can add these specifications to your account or create custom ones.</li>
-<li><strong>Associate with Data Sources</strong><br>
-Once you&rsquo;ve added specifications, they can be associated to data sources. Specs are platform neutral so a standard event such as <code>search</code> would be implemented consistently in each platform. At the same time, not all specifications will apply to every type of data source. From the <strong>Data Sources</strong> interface, you associate active specifications to the data sources that implement them.</li>
-<li><strong>Get Code/Installation Guide</strong><br>
-When specifications are associated to a data source, the installation guide will automatically include code samples for each one.</li>
-<li><strong>Data Validation</strong><br>
-The Live Events screen will now reflect the quality of your data based on which events match existing specifications and if they contain the required attributes.</li>
+<li><strong>Marketplace or custom specs</strong><br>
+EventStream comes with a marketplace of predefined event specifications for the most commonly tracked events, such as <code>cart_add</code>, <code>screen_view</code>, and <code>search</code> to name a few. You can use these built-in specifications or create custom ones.</li>
+<li><strong>Data sources</strong><br>
+After you add specifications, they can be associated to data sources. Specs are platform neutral, so a standard event such as <code>search</code> should be implemented the same in each platform. However, not all specifications apply to every type of data source. On the <strong>Data Sources</strong> screen, you associate specifications to the data sources that implement them.</li>
+<li><strong>Get code and installation guide</strong><br>
+When specifications are associated to a data source, the installation guide automatically includes code samples for each one.</li>
+<li><strong>Data validation</strong><br>
+The <strong>Live Events</strong> screen now reflects the quality of your data based on the events that match specifications and if they contain the required attributes.</li>
 </ul>
 <h2 id="example-event-specification">Example event specification</h2>
 <figure><a class="slb" href="/images/server-side/eventstream-getting-started-spec.png"><img src="/images/server-side/eventstream-getting-started-spec.png"
@@ -878,12 +880,12 @@ The Live Events screen will now reflect the quality of your data based on which 
     </a>
 </figure>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">tealium_event</span>   <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#f92672">&#34;search&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">search_keyword</span>  <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#f92672">&#34;STRING&#34;</span>,  <span style="color:#75715e">// the searched term
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#960050;background-color:#1e0010">search_results</span>  <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#960050;background-color:#1e0010">NUMBER,</span>    <span style="color:#75715e">// number of results
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#960050;background-color:#1e0010">product_on_page</span> <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#960050;background-color:#1e0010">[</span><span style="color:#f92672">&#34;STRING&#34;</span><span style="color:#960050;background-color:#1e0010">]</span> <span style="color:#75715e">// array of product strings
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_event&#34;</span>   : <span style="color:#e6db74">&#34;search&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;search_keyword&#34;</span>  : <span style="color:#e6db74">&#34;STRING&#34;</span>,  <span style="color:#75715e">// the searched term
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">&#34;search_results&#34;</span>  : <span style="color:#960050;background-color:#1e0010">NUMBER</span>,    <span style="color:#75715e">// number of results
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">&#34;product_on_page&#34;</span> : [<span style="color:#e6db74">&#34;STRING&#34;</span>] <span style="color:#75715e">// array of product strings
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span></code></pre></div><p>Click <strong>Next</strong> to see how to add an event specification.</p>
+</span></span></code></pre></div><p>The next tutorial explains how to add an event specification.</p>
 
 </div>
 
@@ -944,14 +946,14 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  August 17, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
       </div>
     </article>
 
-    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns">
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
       
 
 

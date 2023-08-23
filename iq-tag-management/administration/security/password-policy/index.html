@@ -26,6 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "iq-tag-management",
+    reading_time  : "3",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -738,8 +739,15 @@ var utag_data = {
 <li>Minimum special characters<br>
 Valid special characters: <strong>@ # $ % ^ &amp; * ( ) - _ = + &rsquo; &quot; <input disabled="" type="checkbox"> { } | ; : &lt; &gt; , . / ? !</strong></li>
 <li>Password history restriction - Prevents users from entering previously used passwords when updating their passwords.</li>
-<li>Password Expiration - The number of days before a password expires and a new one must be set.</li>
+<li>Password expiration - The number of days before a password expires and a new one must be set.</li>
 </ul>
+<p>The following two password policies cannot be changed or disabled:</p>
+<ul>
+<li>Does not match the username</li>
+<li>Does not appear in compromised password database</li>
+</ul>
+<p>Tealium hashes the password and checks a portion of the hash against a third-party database of compromised passwords. This method is secure and does not reveal the actual password.</p>
+<p>For more information about password requirements and why each is necessary, see <a href="https://csrc.nist.gov/pubs/sp/800/63/3/upd2/final">Digital Identity Guidelines by NIST</a>.</p>
 <h3 id="default-policy">Default policy</h3>
 <p>The default password policy contains the following requirements:</p>
 <ul>
@@ -749,6 +757,8 @@ Valid special characters: <strong>@ # $ % ^ &amp; * ( ) - _ = + &rsquo; &quot; <
 <li>Minimum one special character</li>
 <li>One password history restriction</li>
 <li>Password never expires</li>
+<li>Does not match the username</li>
+<li>Does not appear in database of compromised passwords</li>
 </ul>
 <h3 id="recommended-policy">Recommended policy</h3>
 <p>For your convenience, we offer a recommended policy. This is a stricter policy than the default policy and uses the following settings:</p>
@@ -759,6 +769,8 @@ Valid special characters: <strong>@ # $ % ^ &amp; * ( ) - _ = + &rsquo; &quot; <
 <li>Minimum one special character</li>
 <li>Two password history restrictions</li>
 <li>Password never expires</li>
+<li>Does not match the username</li>
+<li>Does not appear in database of compromised passwords</li>
 </ul>
 <h3 id="custom-policy">Custom policy</h3>
 <p>Select this option to configure your own password policy. The strength indicator will update as you adjust each policy setting. We strongly recommend using a policy with a minium strength of <strong>Strong</strong>.</p>
@@ -823,14 +835,14 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 27, 2023 
+          <p>This page was last updated:  August 15, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
       </div>
     </article>
 
-    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns">
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
       
 
 

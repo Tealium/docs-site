@@ -26,6 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side",
+    reading_time  : "3",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -237,7 +238,7 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/getting-started/eventstream-api-hub/trace-test-with-trace/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".eventstream-api-hub-trace-test-with-trace">Test with Trace</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side/getting-started/eventstream-api-hub/saving-and-publishing/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".eventstream-api-hub-saving-and-publishing">Saving and publishing</a>
+        <a href="/server-side/getting-started/eventstream-api-hub/saving-and-publishing/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".eventstream-api-hub-saving-and-publishing">Save and publish</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/getting-started/eventstream-api-hub/next-steps/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".eventstream-api-hub-next-steps">Next steps</a>
       </li></ul>
@@ -856,24 +857,24 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>This example uses the Google Sheets connector to show how to log events to a spreadsheet, but you may use your own vendor. To prepare for this step create a Google Sheets spreadsheet named <code>EventStream Test</code> and name the first three columns: <code>Timestamp</code>, <code>Search Term</code>, and <code>Search Results</code>.</p>
+  <p>This example uses the Google Sheets connector to show how to log events to a spreadsheet, but you may use your own vendor. To prepare for this step, create a Google Sheets spreadsheet named <code>EventStream Test</code> and name the first three columns: <code>Timestamp</code>, <code>Search Term</code>, and <code>Search Results</code>.</p>
 <p>The spreadsheet looks like this:</p>
 <figure><a class="slb" href="/images/server-side/es-getting-started-connector-google-sheet-spreadsheet.jpg"><img src="/images/server-side/es-getting-started-connector-google-sheet-spreadsheet.jpg"
          alt="Spreadsheet"
          title="Spreadsheet" width="440" height="219"/>
     </a>
 </figure>
-<h2 id="add-the-google-sheets-connector">Add the Google Sheets Connector</h2>
-<p>Use the following steps to configure the Google Sheets connector in EventStream:</p>
+<h2 id="add-the-google-sheets-connector">Add the Google Sheets connector</h2>
+<p>Use the following steps to configure the Google Sheets connector:</p>
 <ol>
 <li>
-<p>Navigate to <strong>EventStream &gt; Event Connectors</strong></p>
+<p>Go to <strong>EventStream &gt; Event Connectors</strong></p>
 </li>
 <li>
-<p>Click on the <strong>+ Add Connector</strong> button.</p>
+<p>Click <strong>+ Add Connector</strong>.</p>
 </li>
 <li>
-<p>Under <strong>Categories</strong> in the side navigation panel, click <strong>Big Data</strong> to narrow the selections.</p>
+<p>Under <strong>Categories</strong> in the side navigation panel, click <strong>Big Data</strong> to filter the list.</p>
 </li>
 <li>
 <p>Select <strong>Google Sheets</strong> then click <strong>Continue</strong>.
@@ -884,15 +885,13 @@ var utag_data = {
 </figure></p>
 </li>
 <li>
-<p>On the <strong>Source</strong> tab, select the Data Source and Event Feed that correspond to the data that you want to send, and provide a name for this action.</p>
+<p>On the <strong>Source</strong> tab, select the data source and event feed that correspond to the data that you want to send, and enter a name for this action.</p>
 </li>
 <li>
-<p>On the <strong>Configuration</strong> tab, click <strong>Add Connector</strong>, enter the Name of the connectiona and then click <strong>Establish Connection</strong>.<br>
-The authorization dialog for your Google account appears.</p>
+<p>On the <strong>Configuration</strong> tab, click <strong>Add Connector</strong>, enter the name of the connection, and then click <strong>Establish Connection</strong>. The authorization dialog for your Google account appears.</p>
 </li>
 <li>
-<p>Confirm your user account name and click <strong>Allow</strong>.<br>
-The configuration window for the connector now displays as Connected. Click <strong>Done</strong>.</p>
+<p>Confirm your user account name and click <strong>Allow</strong>. The configuration window for the connector now displays a <code>Connected</code> message. Click <strong>Done</strong>.</p>
 </li>
 <li>
 <p>On the <strong>Action</strong> tab, select the default action <strong>Add or Update Row</strong> and configure the following parameters:</p>
@@ -906,22 +905,24 @@ Select the spreadsheet name from the drop-down, or enter the name of the spreads
 Identifies the name of the worksheet within the spreadsheet to use.<br>
 Select the worksheet name from the drop-down, or enter the name of the worksheet to use (such as <code>Sheet1</code>).</li>
 <li><strong>Row ID</strong><br>
-Identifies the column that contains the unique row ID for each event. This is usually the event timestamp attribute. We named the column <code>Timestamp</code> to be used in the mapping.<br>
-<figure><a class="slb" href="/images/server-side/screen-shot-2020-05-27-at-2.52.47-pm.png"><img src="/images/server-side/screen-shot-2020-05-27-at-2.52.47-pm.png"/>
-    </a><figcaption><p>Row ID</p>
-        </figcaption>
+Identifies the column that contains the unique row ID for each event. This column is usually the event timestamp attribute. We named the column <code>Timestamp</code> to be used in the mapping.<br>
+<figure><a class="slb" href="/images/server-side/screen-shot-2020-05-27-at-2.52.47-pm.png"><img src="/images/server-side/screen-shot-2020-05-27-at-2.52.47-pm.png"
+         alt="Row ID"
+         title="Row ID"/>
+    </a>
 </figure><br>
 Select your attribute from the <strong>Map</strong> list and enter the corresponding spreadsheet column name (Custom Value) in the <strong>To</strong> field. When the action fires, it searches for the attribute value in the specified column, then:
 <ul>
-<li>If the value exists, the matching row is updated as specified by the Row Data mappings (see next).</li>
-<li>If the value does not exist, a new row is created with Row ID value and Attributes specified in Row Data.</li>
+<li>If the value exists, the matching row is updated as specified by the <strong>Row Data</strong> mappings (see next).</li>
+<li>If the value does not exist, a new row is created with a <strong>Row ID</strong> value and attributes specified in <strong>Row Data</strong>.</li>
 </ul>
 </li>
 <li><strong>Row Data</strong><br>
 Map additional attributes that you want to add to the spreadsheet. Each attribute must have an assigned column name in the spreadsheet. In this case, we are logging the value of the <code>search_keyword</code> attribute into the spreadsheet column named <code>Search Term</code>.<br>
-<figure><a class="slb" href="/images/server-side/screen-shot-2020-05-27-at-2.53.25-pm.png"><img src="/images/server-side/screen-shot-2020-05-27-at-2.53.25-pm.png"/>
-    </a><figcaption><p>Column name</p>
-        </figcaption>
+<figure><a class="slb" href="/images/server-side/screen-shot-2020-05-27-at-2.53.25-pm.png"><img src="/images/server-side/screen-shot-2020-05-27-at-2.53.25-pm.png"
+         alt="Column name"
+         title="Column name"/>
+    </a>
 </figure></li>
 <li><strong>Exclude empty values when updating</strong><br>
 Check this box if you want to exclude empty attributes from updating or overriding existing data in your spreadsheet.</li>
@@ -931,7 +932,7 @@ Check this box if you want to exclude empty attributes from updating or overridi
 <p>Click <strong>Continue</strong> to go to the <strong>Summary</strong> tab, and then click <strong>Finish</strong> to save.</p>
 </li>
 </ol>
-<p>Now save and publish your account and go the next step to start testing using the Trace tool.</p>
+<p>Now save and publish your account, and go the next step to start testing with the Trace tool.</p>
 
 </div>
 
@@ -992,21 +993,21 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 24, 2023 
+          <p>This page was last updated:  August 17, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
       </div>
     </article>
 
-    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns">
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
       
 
 
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-the-google-sheets-connector">Add the Google Sheets Connector</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-the-google-sheets-connector">Add the Google Sheets connector</a></li>
               </nav>
   </aside></nav>
 
