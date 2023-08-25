@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side-connectors",
-    reading_time  : "6",
+    reading_time  : "11",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -497,6 +497,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/monetate-personalization-engine-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".monetate-personalization-engine-connector">Monetate Personalization Engine</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/movable-ink-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".movable-ink-connector">Movable Ink</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/new-relic-browser-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".new-relic-browser-connector">New Relic Browser</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/new-relic-mobile-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".new-relic-mobile-connector">New Relic Mobile</a>
@@ -723,7 +725,15 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="connector-actions">Connector Actions</h2>
+  <h2 id="api-information">API Information</h2>
+<p>This connector uses the following vendor API:</p>
+<ul>
+<li>API Name: Leanplum API</li>
+<li>API Version: v1.0</li>
+<li>API Endpoint: <code>https://api.leanplum.com/api</code></li>
+<li>Documentation: <a href="https://docs.leanplum.com/reference/overview#introduction">Leanplum API</a></li>
+</ul>
+<h2 id="connector-actions">Connector Actions</h2>
 <table>
 <thead>
 <tr>
@@ -733,6 +743,11 @@ var utag_data = {
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>Send Multi Request (Batched)</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
 <tr>
 <td>Set User Attributes</td>
 <td>✓</td>
@@ -753,10 +768,22 @@ var utag_data = {
 <h2 id="configure-settings">Configure Settings</h2>
 <p>Go to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
 <p>After adding the connector, configure the following settings:</p>
-<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
+<ul>
+<li><strong>App ID</strong>: The application ID. To find yours, select your app in the navigation column, and click Manage Apps. Then click Keys &amp; Settings.</li>
+<li><strong>API Version</strong>: The version of the Leanplum API to use.</li>
+<li><strong>Client Key</strong>: Production key for your Leanplum App.</li>
+</ul>
+<h2 id="actions">Actions</h2>
+<p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action---set-user-attributes">Action - Set User Attributes</h3>
+<h3 id="send-multi-request-batched">Send Multi Request (Batched)</h3>
+<h4 id="batch-limits">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 50</li>
+<li>Max time since oldest request: 10 minutes</li>
+<li>Max size of requests: 1 MB</li>
+</ul>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -767,26 +794,136 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>App ID</td>
-<td><ul><li>The application ID.</li><li>To find your application ID:  <ul><li>Select your application in the navigation column, and click <strong>Edit Apps</strong>.</li><li>Under <strong>Keys</strong>, click <strong>Show</strong>.</li></ul> </li><li>For more information on this endpoint, see: <a href="https://docs.leanplum.com/reference#post_api-action-setuserattributes">Leanplum&rsquo;s documentation</a>.</li></ul></td>
+<td>Action</td>
+<td>API Action</td>
 </tr>
 <tr>
-<td>Client Key</td>
-<td><ul><li>The Production key for your Leanplum application.</li></ul></td>
+<td>Time</td>
+<td>The time at which the request was issued (UNIX time). This is used to resolve the time difference between Leanplum and the API caller when computing the times of events.</td>
+</tr>
+<tr>
+<td>User ID</td>
+<td>The current user ID. You can set this to whatever your company uses for user IDs. Leave it blank to use the device ID. For more info, see <a href="https://docs.leanplum.com/reference/selecting-a-user" target="_blank">selecting a user</a>.</td>
+</tr>
+<tr>
+<td>Device ID</td>
+<td>The unique ID for the device.</td>
+</tr>
+<tr>
+<td>App ID</td>
+<td>The application ID. To find yours, select your app in the navigation column, and click <strong>Manage Apps</strong>. Then click <strong>Keys &amp; Settings</strong>.</td>
 </tr>
 <tr>
 <td>API Version</td>
-<td><ul><li>The version of the Leanplum API to use. <p class="note"><i class="fa fa-exclamation-triangle"></i>At time of publishing this version, the most recent version is 1.0.6.</p></td>
+<td>The version of the Leanplum API to use.</td>
+</tr>
+<tr>
+<td>Create Disposition</td>
+<td>The policy that determines whether users are created by the API. The default value for this method is <strong>CreateIfNeeded</strong>.<br><br>Possible values are:  <ul><li><strong>CreateIfNeeded</strong> Creates a user with the given IDs if one does not already exist.</li><li><strong>CreateNever</strong> Requires that the user already exists, otherwise the API call is skipped and a warning will be returned.</ul></li></td>
+</tr>
+<tr>
+<td>Dev Mode</td>
+<td>Whether the user is in Development Mode (the user associated with the request is a developer and not a user). This is important for reporting purposes. Default value: <code>false</code>.</td>
+</tr>
+<tr>
+<td>Event</td>
+<td>The name of the event. Use &ldquo;Purchase&rdquo; to identify a monetization event, with the event value being the revenue.</td>
+</tr>
+<tr>
+<td>Message ID</td>
+<td>The message ID this event is associated with. Set this to track a user&rsquo;s interaction with a message. To track a message Send or a View, set the event argument to an empty string.</td>
+</tr>
+<tr>
+<td>Disposition</td>
+<td>Determines how tracked events affect sessions and user activity.<br><br>If present, the disposition must have one of the following values:  <ul><li><code>active</code> <ul><li>This is the default value.</li><li>Used for events reflect user activity.</li><li>Active events should mark the user as active and should be tracked within a session.</li><li>Replaces the deprecated option <code>allowOffline: false</code>.</li></ul> </li><li><code>passive</code> <ul><li>Used for events that do not correspond to user activity.</li><li>These events do not need to occur within a session and do not mark a user as active.</li><li>Example: Sending a user a message would be tracked passively, since it affects a user, but does not represent user activity.</li><li>Replaces the deprecated option <code>allowOffline: true</code>.</li></ul> </li><li><code>requireActive</code> <ul><li>Used for events that must only be tracked within a session.</li><li>These events are rejected and return a warning response with <code>ignored: true</code> if the user does not have an active session.</li><li>Clients should detect the warning by the ignored field, as warning messages may change.</li></ul> </li></ul> </li></td>
+</tr>
+<tr>
+<td>Force</td>
+<td>Whether to send the message regardless of whether the user meets the targeting criteria. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td>Created</td>
+<td>The time at which the user was created, in seconds since midnight UTC on January 1, 1970.</td>
+</tr>
+<tr>
+<td>Last Active</td>
+<td>The time at which the user was last active, in seconds since midnight UTC on January 1, 1970.</td>
+</tr>
+<tr>
+<td>Total Sessions</td>
+<td>The total number of sessions that a user has had in their lifetime.</td>
+</tr>
+<tr>
+<td>Time Spent In App</td>
+<td>The total number of seconds spent in the app in the user&rsquo;s lifetime.</td>
+</tr>
+<tr>
+<td>Locale</td>
+<td>The current locale the user is in. Example: en_US.</td>
+</tr>
+<tr>
+<td>Country</td>
+<td>The country the user is in, specified by <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank"><u>ISO 2-letter code</u></a>. Example: US for United States. Set to (detect) to detect the country based on the IP address of the user.</td>
+</tr>
+<tr>
+<td>Region</td>
+<td>The region (state) the user is in. Example: ca for California. Set to (detect) to detect the region based on the IP address of the user.</td>
+</tr>
+<tr>
+<td>City</td>
+<td>The city the user is in. Example: San Francisco. Set to (detect) to detect the city based on the IP address of the user.</td>
+</tr>
+<tr>
+<td>Location</td>
+<td>The location (latitude/longitude) of the user. Example: 37.775,-122.4183. Set to (detect) to detect the location based on the IP address of the user.</td>
+</tr>
+<tr>
+<td>Location Accuracy Type</td>
+<td>The type of location that is provided (IP, CELL, or GPS). Default: IP.</td>
+</tr>
+<tr>
+<td>Timezone</td>
+<td>The timezone abbreviation for the user. See list of timezone abbreviations.</td>
+</tr>
+<tr>
+<td>Timezone Offset Seconds</td>
+<td>The timezone offset from GMT in seconds.</td>
+</tr>
+<tr>
+<td>User Attributes</td>
+<td>A map of user attributes as key-value pairs. Each key must be a string. Attributes are saved across sessions. Only supplied attributes will be updated (for example, if you omit an existing attribute, it will be preserved).</td>
+</tr>
+<tr>
+<td>User Attribute Values To Add</td>
+<td>A map of values to add to existing user attribute sets. For example, supply {&ldquo;Interests&rdquo;:&ldquo;Sports&rdquo;} to add Sports to the existing set of Interests.</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>The event value. For example, for a purchase event, this would be the purchase price.</td>
+</tr>
+<tr>
+<td>Currency Code</td>
+<td>The ISO 4217 currency code associated with value. Leanplum will automatically convert value into your preferred currency, while retaining the original price and currency code as event parameters localCurrency and localPrice. Currency conversion rates are updated every hour.</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>Option to provide the UNIX timestamp for when the event occurred, which may be different from the current time.</td>
+</tr>
+<tr>
+<td>Info</td>
+<td>Any info attached to the event.</td>
+</tr>
+<tr>
+<td>Parameters</td>
+<td>A flat object of parameters as key-value pairs. Each key must be a string, and up to 50 parameters may be set.</td>
+</tr>
+<tr>
+<td>Values</td>
+<td>A JSON object of key-value pairs to override template variables used in the message.</td>
 </tr>
 </tbody>
 </table>
- </li></ul> |
-|User ID|  <ul><li>The current user ID.</li><li>Set to an email address or what you use at your company for user IDs.</li><li>Leave blank to use the device ID.</li><li>For more information, see: [Leanplum's documentation](https://docs.leanplum.com/reference#user-and-device-tracking>)</li></ul> |
-|Create Disposition|  <ul><li>The policy that determines whether users are created by the API.</li><li>The default value for this method is **CreateIfNeeded**.</li><li>Possible values are:  <ul><li>**CreateIfNeeded** Creates a user with the given IDs if one does not already exist.</li><li>**CreateNever** Requires that the user already exists, otherwise the API call is skipped and a warning will be returned.</li></ul> </li></ul> |
-|Dev Mode|  <ul><li>Whether the user is in Development mode (the caller is a developer and not a user).</li><li>Important for reporting purposes.</li><li>Value options are `true` or `false`.</li><li>Default Value: `false`.</li></ul> |
-|User Attributes|  <ul><li>A map of user attributes as key-value pairs.</li><li>Each key must be a string.</li><li>Attributes are saved across sessions.</li><li>Only supplied attributes are updated.</li><li>If you omit an existing attribute, it will be preserved.</li><li>Example: `{"gender":"F","age":21}`.</li></ul> |
-|User Attribute Values To Add|  <ul><li>A map of values to add to existing user attribute sets.</li><li>For example, supply `{"Interests":"Sports"}` to add Sports to the existing set of interests.</li></ul> |
-<h3 id="action---send-message">Action - Send Message</h3>
+<h3 id="set-user-attributes">Set User Attributes</h3>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
@@ -797,28 +934,88 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>App ID</td>
-<td><ul><li>The application ID.</li><li>To find your application ID:  <ul><li>Select your application in the navigation column, and click <strong>Edit Apps</strong>.</li><li>Under <strong>Keys</strong>, click <strong>Show</strong>.</li></ul> </li><li>For more information on this endpoint, visit: <a href="https://docs.leanplum.com/reference#post_api-action-setuserattributes">Leanplum&rsquo;s documentation</a>.</li></ul></td>
+<td>User ID</td>
+<td>The current user ID. You can set this to whatever your company uses for user IDs. Leave it blank to use the device ID. For more info, see <a href="https://docs.leanplum.com/reference/selecting-a-user" target="_blank">selecting a user</a>.</td>
 </tr>
 <tr>
-<td>Client Key</td>
-<td><ul><li>The Production key for your Leanplum App.</li></ul></td>
+<td>Device ID</td>
+<td>The unique ID for the device.</td>
+</tr>
+<tr>
+<td>User Attributes</td>
+<td>A map of user attributes as key-value pairs. Each key must be a string. Attributes are saved across sessions. Only supplied attributes will be updated (for example, if you omit an existing attribute, it will be preserved).</td>
+</tr>
+<tr>
+<td>App ID</td>
+<td>The application ID. To find yours, select your app in the navigation column, and click Manage Apps. Then click Keys &amp; Settings.</td>
 </tr>
 <tr>
 <td>API Version</td>
-<td><ul><li>The version of the Leanplum API to use. <p class="note"><i class="fa fa-exclamation-triangle"></i>At time of publishing this version, the most recent version is 1.0.6.</p></td>
+<td>The version of the Leanplum API to use.</td>
+</tr>
+<tr>
+<td>Create Disposition</td>
+<td>The policy that determines whether users are created by the API. The default value for this method is <strong>CreateIfNeeded</strong>.<br><br>Possible values are:  <ul><li><strong>CreateIfNeeded</strong> Creates a user with the given IDs if one does not already exist.</li><li><strong>CreateNever</strong> Requires that the user already exists, otherwise the API call is skipped and a warning will be returned.</ul></li></td>
+</tr>
+<tr>
+<td>User Attribute Values To Add</td>
+<td>A map of values to add to existing user attribute sets. For example, supply {&ldquo;Interests&rdquo;:&ldquo;Sports&rdquo;} to add Sports to the existing set of Interests.</td>
+</tr>
+<tr>
+<td>Dev Mode</td>
+<td>Whether the user is in Development Mode, for example, the user associated with the request is a developer and not a user. This is important for reporting purposes. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td>Created</td>
+<td>The time at which the user was created, in seconds since midnight UTC on January 1, 1970.</td>
+</tr>
+<tr>
+<td>Last Active</td>
+<td>The time at which the user was last active, in seconds since midnight UTC on January 1, 1970.</td>
+</tr>
+<tr>
+<td>Total Sessions</td>
+<td>The total number of sessions that a user has had in their lifetime.</td>
+</tr>
+<tr>
+<td>Time Spent In App</td>
+<td>The total number of seconds spent in the app in the user&rsquo;s lifetime.</td>
+</tr>
+<tr>
+<td>Locale</td>
+<td>The current locale the user is in. Example: en_US.</td>
+</tr>
+<tr>
+<td>Country</td>
+<td>The country the user is in, specified by <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank"><u>ISO 2-letter code</u></a>. Example: US for United States. Set to (detect) to detect the country based on the IP address of the user.</td>
+</tr>
+<tr>
+<td>Region</td>
+<td>The region (state) the user is in. Example: ca for California. Set to (detect) to detect the region based on the IP address of the user.</td>
+</tr>
+<tr>
+<td>City</td>
+<td>The city the user is in. Example: San Francisco. Set to (detect) to detect the city based on the IP address of the user.</td>
+</tr>
+<tr>
+<td>Location</td>
+<td>The location (latitude/longitude) of the user. Example: 37.775,-122.4183. Set to (detect) to detect the location based on the IP address of the user.</td>
+</tr>
+<tr>
+<td>Location Accuracy Type</td>
+<td>The type of location that is provided (IP, CELL, or GPS). Default: IP.</td>
+</tr>
+<tr>
+<td>Timezone</td>
+<td>The timezone abbreviation for the user. See list of timezone abbreviations.</td>
+</tr>
+<tr>
+<td>Timezone Offset Seconds</td>
+<td>The timezone offset from GMT in seconds.</td>
 </tr>
 </tbody>
 </table>
- </li></ul> |
-|User ID|  <ul><li>The current user ID.</li><li>Set to an email address, or what you use at your company for user IDs.</li><li>Leave blank to use the device ID.</li><li>For more information, see: [Leanplum's documentation](https://docs.leanplum.com/reference#user-and-device-tracking).</li></ul> |
-|Message ID|  <ul><li>The ID of the message, found in the URL when viewing a message.</li><li>For example: `[www.leanplum.com/dashboard#/{APP_ID}/messaging/{MESSAGE_ID](http://www.leanplum.com/dashboard#/{APP_ID}/messaging/{MESSAGE_ID)}`.</li><li>For more information on this endpoint, see: [Leanplum's documentation](https://docs.leanplum.com/reference#post_api-action-sendmessage).</li></ul> |
-|Dev Mode|  <ul><li>Whether the user is in Development mode (the caller is a developer and not a user).</li><li>Important for reporting purposes.</li><li>Value options are `true` or `false`.</li><li>Default Value: `false`.</li></ul> |
-|Device ID|  <ul><li>A unique ID for the device targeted by the call.</li><li>A `deviceID` and/or a `userID` is required.</li><li>For more information, see: [Leanplum's documentation](https://docs.leanplum.com/reference#user-and-device-tracking).</li></ul> |
-|Create Disposition|  <ul><li>The policy that determines whether users are created by the API.</li><li>The default value for this method is **CreateIfNeeded**.</li><li>Possible values are:  <ul><li>**CreateIfNeeded** Creates a user with the given IDs if one does not already exist.</li><li>**CreateNever** Requires that the user already exists, otherwise the API call is skipped and a warning will be returned.</li></ul> </li></ul> |
-|Force|  <ul><li>Whether to send the message regardless of whether the user meets the targeting criteria.</li><li>Value options are `true` or `false`.</li><li>Default Value: `false`.</li></ul> |
-|Values|  <ul><li>A JSON object of key-value pairs to override Jinja values in the message.</li></ul> |
-<h3 id="action---track-event">Action - Track Event</h3>
+<h3 id="track-event">Track Event</h3>
 <h4 id="parameters-2">Parameters</h4>
 <table>
 <thead>
@@ -829,32 +1026,111 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>App ID</td>
-<td><ul><li>To find your application ID:  <ul><li>Select your application in the navigation column, and click <strong>Edit Apps</strong>.</li><li>Under <strong>Keys</strong>, click <strong>Show</strong>.</li></ul> </li><li>For more information, see: <a href="https://docs.leanplum.com/reference#post_api-action-setuserattributes">Leanplum&rsquo;s documentation</a>.</li></ul></td>
+<td>User ID</td>
+<td>The current user ID. You can set this to whatever your company uses for user IDs. Leave it blank to use the device ID. For more info, see <a href="https://docs.leanplum.com/reference/post_api-action-track#selecting-a-user" target="_blank">selecting a user</a>.</td>
 </tr>
 <tr>
-<td>Client Key</td>
-<td><ul><li>The Production key for your Leanplum application.</li></ul></td>
+<td>Device ID</td>
+<td>The unique ID for the device.</td>
+</tr>
+<tr>
+<td>Event</td>
+<td>The name of the event. Use &ldquo;Purchase&rdquo; to identify a monetization event, with the event value being the revenue.</td>
+</tr>
+<tr>
+<td>App ID</td>
+<td>The application ID. To find yours, select your app in the navigation column, and click Manage Apps. Then click Keys &amp; Settings.</td>
 </tr>
 <tr>
 <td>API Version</td>
-<td><ul><li>The version of the Leanplum API to use. <p class="note"><i class="fa fa-exclamation-triangle"></i>At time of publishing this version, the most recent version is 1.0.6.</p></td>
+<td>The version of the Leanplum API to use.</td>
+</tr>
+<tr>
+<td>Create Disposition</td>
+<td>The policy that determines whether users are created by the API. The default value for this method is <strong>CreateIfNeeded</strong>.<br><br>Possible values are:  <ul><li><strong>CreateIfNeeded</strong> Creates a user with the given IDs if one does not already exist.</li><li><strong>CreateNever</strong> Requires that the user already exists, otherwise the API call is skipped and a warning will be returned.</ul></li></td>
+</tr>
+<tr>
+<td>Dev Mode</td>
+<td>Whether the user is in Development Mode, for example, the user associated with the request is a developer and not a user. This is important for reporting purposes. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>The event value. For example, for a purchase event, this would be the purchase price.</td>
+</tr>
+<tr>
+<td>Currency Code</td>
+<td>The ISO 4217 currency code associated with value. Leanplum will automatically convert value into your preferred currency, while retaining the original price and currency code as event parameters localCurrency and localPrice. Currency conversion rates are updated every hour.</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>Option to provide the UNIX timestamp for when the event occurred, which may be different from the current time.</td>
+</tr>
+<tr>
+<td>Info</td>
+<td>Any info attached to the event.</td>
+</tr>
+<tr>
+<td>Parameters</td>
+<td>A flat object of parameters as key-value pairs. Each key must be a string, and up to 50 parameters may be set.</td>
+</tr>
+<tr>
+<td>Message ID</td>
+<td>The message ID this event is associated with. Set this to track a user&rsquo;s interaction with a message. To track a message Send or a View, set the event argument to an empty string.</td>
+</tr>
+<tr>
+<td>Disposition</td>
+<td>Determines how tracked events affect sessions and user activity.<br><br>If present, the disposition must have one of the following values:  <ul><li><code>active</code> <ul><li>This is the default value.</li><li>Used for events reflect user activity.</li><li>Active events should mark the user as active and should be tracked within a session.</li><li>Replaces the deprecated option <code>allowOffline: false</code>.</li></ul> </li><li><code>passive</code> <ul><li>Used for events that do not correspond to user activity.</li><li>These events do not need to occur within a session and do not mark a user as active.</li><li>Example: Sending a user a message would be tracked passively, since it affects a user, but does not represent user activity.</li><li>Replaces the deprecated option <code>allowOffline: true</code>.</li></ul> </li><li><code>requireActive</code> <ul><li>Used for events that must only be tracked within a session.</li><li>These events are rejected and return a warning response with <code>ignored: true</code> if the user does not have an active session.</li><li>Clients should detect the warning by the ignored field, as warning messages may change.</li></ul> </li></ul> </li></td>
 </tr>
 </tbody>
 </table>
- </li></ul> |
-|User ID|  <ul><li>The current user ID.</li><li>Set to an email address, or what you use at your company for user IDs.</li><li>Leave blank to use the device ID.</li><li>For more information, see: [Leanplum's documentation](https://docs.leanplum.com/reference#user-and-device-tracking).</li></ul> |
-|Event|  <ul><li>The name of the event.</li><li>Use `Purchase` to identify a monetization event, with the event value being the revenue.</li><li>You can change the default monetization event name in Analytics by going to the metric chooser and clicking the **Monetization** metric category.</li><li>For more information, see: [Leanplum's documentation](https://docs.leanplum.com/reference#post_api-action-track)</li></ul> |
-|Device ID|  <ul><li>A unique ID for the device targeted by the call.</li><li>A Device ID and/or a User ID is required.</li><li>For more information, see: [Leanplum's documentation](https://docs.leanplum.com/reference#user-and-device-tracking).</li></ul> |
-|Dev Mode|  <ul><li>Whether the user is in Development mode (the caller is a developer and not a user).</li><li>Important for reporting purposes.</li><li>Value options are `true` or `false`.</li><li>Default Value: `false`.</li></ul> |
-|Create Disposition|  <ul><li>The policy that determines whether users are created by the API.</li><li>The default value for this method is **CreateIfNeeded**.</li><li>Possible values are:  <ul><li>**CreateIfNeeded** Creates a user with the given IDs if one does not already exist.</li><li>**CreateNever** Requires that the user already exists, otherwise the API call is skipped and a warning will be returned.</li></ul> </li></ul> |
-|Value|  <ul><li>The event value.</li><li>Example: For a purchase event, this would be the purchase price.</li></ul> |
-|Currency Code|  <ul><li>The ISO 4217 currency code associated with value.</li><li>Leanplum automatically converts the value into your preferred currency, while retaining the original price and currency code as event parameters `localCurrency` and `localPrice`.</li><li>Currency conversion rates are updated every hour.</li></ul> |
-|Info|  <ul><li>Any information attached to the event.</li></ul> |
-|Time|  <ul><li>Option to provide the Unix timestamp for when the event occurred, which may be different from the current time.</li></ul> |
-|Parameters|  <ul><li>Parameters as key-value pairs.</li><li>Each key must be a string, and up to 50 parameters may be set.</li></ul> |
-|Message ID|  <ul><li>The message ID this event is associated with.</li><li>Set this to track a user's interaction with a message.</li><li>To track a message Send or a View, set the event argument to an empty string.</li><li>For other interactions, set the event argument to the type of action. Example values: `Open`, `Cancel`, `Accept`.</li><li>The Leanplum SDK does this automatically, so this should be used for advanced use cases only.</li></ul> |
-|Disposition|  <ul><li>Determines how tracked events affect sessions and user activity.</li><li>If present, the disposition must have one of the following values:  <ul><li>`active` <ul><li>This is the default value.</li><li>Used for events reflect user activity.</li><li>Active events should mark the user as active and should be tracked within a session.</li><li>Replaces the deprecated option `allowOffline: false`.</li></ul> </li><li>`passive` <ul><li>Used for events that do not correspond to user activity.</li><li>These events do not need to occur within a session and do not mark a user as active.</li><li>Example: Sending a user a message would be tracked passively, since it affects a user, but does not represent user activity.</li><li>Replaces the deprecated option `allowOffline: true`.</li></ul> </li><li>`requireActive` <ul><li>Used for events that must only be tracked within a session.</li><li>These events are rejected and return a warning response with `ignored: true` if the user does not have an active session.</li><li>Clients should detect the warning by the ignored field, as warning messages may change.</li></ul> </li></ul> </li></ul> |
+<h3 id="send-message">Send Message</h3>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User ID</td>
+<td>The current user ID. You can set this to whatever your company uses for user IDs. Leave it blank to use the device ID. For more info, see <a href="https://docs.leanplum.com/reference/selecting-a-user" target="_blank">selecting a user</a>.</td>
+</tr>
+<tr>
+<td>Device ID</td>
+<td>The unique ID for the device.</td>
+</tr>
+<tr>
+<td>Message ID</td>
+<td>The ID of the message, found in the URL when viewing a message (for example, <code>www.leanplum.com/dashboard#/{APP_ID}/messaging/{MESSAGE_ID}</code>).</td>
+</tr>
+<tr>
+<td>App ID</td>
+<td>The application ID. To find yours, select your app in the navigation column, and click Manage Apps. Then click Keys &amp; Settings.</td>
+</tr>
+<tr>
+<td>API Version</td>
+<td>The version of the Leanplum API to use.</td>
+</tr>
+<tr>
+<td>Create Disposition</td>
+<td>The policy that determines whether users are created by the API. The default value for this method is <strong>CreateIfNeeded</strong>.<br><br>Possible values are:  <ul><li><strong>CreateIfNeeded</strong> Creates a user with the given IDs if one does not already exist.</li><li><strong>CreateNever</strong> Requires that the user already exists, otherwise the API call is skipped and a warning will be returned.</ul></li></td>
+</tr>
+<tr>
+<td>Dev Mode</td>
+<td>Whether the user is in Development Mode, for example, the user associated with the request is a developer and not a user. This is important for reporting purposes. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td>Values</td>
+<td>A JSON object of key-value pairs to override template variables used in the message.</td>
+</tr>
+<tr>
+<td>Force</td>
+<td>Whether to send the message regardless of whether the user meets the targeting criteria. Default: <code>false</code>.</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
@@ -929,12 +1205,14 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#api-information">API Information</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action Settings - Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---set-user-attributes">Action - Set User Attributes</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-message">Action - Send Message</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---track-event">Action - Track Event</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#actions">Actions</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#send-multi-request-batched">Send Multi Request (Batched)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#set-user-attributes">Set User Attributes</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#track-event">Track Event</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#send-message">Send Message</a></li>
               </nav>
   </aside></nav>
 
@@ -1143,6 +1421,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
