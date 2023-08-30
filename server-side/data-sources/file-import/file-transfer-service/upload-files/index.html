@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side",
-    reading_time  : "2",
+    reading_time  : "3",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -881,6 +881,51 @@ var utag_data = {
 <li><a href="/server-side/data-sources/file-import/file-transfer-service/s3-bucket/">Upload files to an empty S3 bucket using the Amazon CLI</a></li>
 </ul>
 <p class="tip"><i class="fa fa-info-circle"></i>After you set up a file import data source, use usage reports to review the number of file import rows or lines imported into AudienceStream. For more information, see <a href="/server-side/administration/understanding-the-usage-report/">Understanding the usage report</a>.</p>
+<h2 id="amazon-s3-access-configuration">Amazon S3 access configuration</h2>
+<p>If you use your company&rsquo;s own Amazon S3 bucket for your file service (not the included Tealium S3 bucket), you need to allow Tealium access to the Amazon S3 bucket before processing any files.</p>
+<h3 id="amazon-bucket-policies">Amazon bucket policies</h3>
+<p>Use the AWS Policy Generator and the Amazon S3 console to add a new bucket policy. The Amazon S3 bucket policies control access to buckets from specific virtual private cloud (VPC) endpoints.</p>
+<p>For more information about AWS bucket policies, see the following articles in the AWS documentation:</p>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/add-bucket-policy.html">Adding a bucket policy by using the Amazon S3 console</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies-vpc-endpoint.html">Controlling access from VPC endpoints with bucket policies</a></li>
+</ul>
+<p>Use the following configuration details to allow Tealium access to the Amazon S3 bucket used in your file import data source.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;YYYY-MM-DD&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Id&#34;</span>: <span style="color:#e6db74">&#34;VPCe and SourceIP&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Statement&#34;</span>: [{
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;VPCe and SourceIP&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Deny&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Principal&#34;</span>: <span style="color:#e6db74">&#34;*&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;s3:*&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Resource&#34;</span>: [
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;arns3:::name&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;arns3:::name/*&#34;</span>
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Condition&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;StringNotEquals&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;aws [
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672">                    &#34;</span><span style="color:#960050;background-color:#1e0010">vpce</span><span style="color:#ae81ff">-0e9</span><span style="color:#960050;background-color:#1e0010">f</span><span style="color:#ae81ff">123</span><span style="color:#960050;background-color:#1e0010">ab</span><span style="color:#ae81ff">6789</span><span style="color:#e6db74">&#34; // Replace this value with the vpcEndpointId that is trying to access your S3 bucket. You can find this ID in CloudTrail logs.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                ]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;</span><span style="color:#960050;background-color:#1e0010">NotIpAddress</span><span style="color:#e6db74">&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                &#34;</span><span style="color:#960050;background-color:#1e0010">aws</span> [  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//(Optional) To help diagnose potential connection problems, ask your Tealium Customer Service Manager 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//for the Tealium Office VPN IP Address(es) and add them below. The following addresses are examples only.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;54.206.4.11&#34;</span>,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;54.150.228.144&#34;</span>
+</span></span><span style="display:flex;"><span>                ]
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="vpce-addresses-to-allow">VPCe addresses to allow</h3>
+<p>Ensure that you allow both the VPCe for <code>us-west-1</code> and the VPCe for your profile region.</p>
+<p>To find your profile region, navigate to the server-side admin menu and select <strong>Server-Side Settings &gt; Region</strong>. After you locate your region, select the corresponding VPCe from <a href="/server-side/administration/ip-allow-list/">Tealium IP addresses to allow</a>.</p>
 <h2 id="file-upload-errors">File upload errors</h2>
 <p>When a file process failure occurs, the file is ignored. The system does not attempt to process the file again. The most common reasons for failure are:</p>
 <ul>
@@ -935,7 +980,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 28, 2023 
+          <p>This page was last updated:  August 29, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -950,7 +995,10 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#upload-and-manage-files-using-cyberduck-and-amazon-cli">Upload and manage files using Cyberduck and Amazon CLI</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#file-upload-errors">File upload errors</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#amazon-s3-access-configuration">Amazon S3 access configuration</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#amazon-bucket-policies">Amazon bucket policies</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#vpce-addresses-to-allow">VPCe addresses to allow</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#file-upload-errors">File upload errors</a></li>
               </nav>
   </aside></nav>
 

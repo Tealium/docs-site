@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side-connectors",
-    reading_time  : "2",
+    reading_time  : "6",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -736,7 +736,32 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>Add/Modify User Information</td>
+<td>Add/Modify User Information (Real-Time)</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Add/Modify User Information (Batched)</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Track Event (Real-Time)</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Track Event (Batched)</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Add User to Audience/Cohort</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Remove User from Audience/Cohort</td>
 <td>✓</td>
 <td>✓</td>
 </tr>
@@ -747,23 +772,22 @@ var utag_data = {
 <p>After adding the connector, configure the following settings:</p>
 <ul>
 <li>
-<p><strong>Username</strong></p>
-<ul>
-<li>Data API ID.</li>
-<li>See <a href="https://docs.moengage.com/docs/data-import-apis#section-authentication">MoEngage&rsquo;s documentation</a>.</li>
-</ul>
+<p><strong>Username</strong>
+(Required): The username for your MoEngage account is available on the MoEngage Dashboard. For more information, see the <a href="https://developers.moengage.com/hc/en-us/articles/4404674776724-Overview#01H815VFPB3Y06MX539856QSK4">Moengage documentation</a>.</p>
 </li>
 <li>
-<p><strong>Password</strong></p>
-<ul>
-<li>Data API Key</li>
-</ul>
+<p><strong>Password</strong>
+(Required): The password for your MoEngage account is available on the MoEngage Dashboard. For more information, see the <a href="https://developers.moengage.com/hc/en-us/articles/4404674776724-Overview#01H815VFPB3Y06MX539856QSK4">Moengage documentation</a>.</p>
+</li>
+<li>
+<p><strong>Data Center</strong>
+(Required): The Data Center used by your API. For more information see the <a href="https://help.moengage.com/hc/en-us/articles/360057030512-Data-Centers-in-MoEngage#01G5DQVXGT2KZMXTJPF77QPJ25">Moengage Data Center documentation</a>. Expected value: 0-4.</p>
 </li>
 </ul>
-<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
+<h2 id="actions">Actions</h2>
+<p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action---addmodify-user-information">Action - Add/Modify User Information</h3>
+<h3 id="addmodify-user-information-real-time">Add/Modify User Information (Real-Time)</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -775,63 +799,341 @@ var utag_data = {
 <tbody>
 <tr>
 <td>Customer ID</td>
-<td><ul><li>The unique identifier which is set and passed on from MoEngage SDK.</li><li>For more information, see: <a href="https://docs.moengage.com/docs/data-import-apis#section-addmodify-user-information">MoEngage&rsquo;s documentation</a>.</li></ul></td>
+<td>(Required) The unique identifier which is set and passed on from MoEngage SDK.</td>
 </tr>
 <tr>
 <td>Name</td>
-<td><ul><li>The name of the user you are updating.</li></ul></td>
+<td>Full name of the user.</td>
 </tr>
 <tr>
 <td>First Name</td>
-<td><ul><li>First name of the user.</li></ul></td>
+<td>First name of the user.</td>
 </tr>
 <tr>
 <td>Last Name</td>
-<td><ul><li>Last name of the user.</li></ul></td>
+<td>Last name of the user.</td>
 </tr>
 <tr>
 <td>Email</td>
-<td><ul><li>Email of the user.</li></ul></td>
+<td>Email address of the user.</td>
 </tr>
 <tr>
 <td>Age</td>
-<td><ul><li>Age of the user.</li></ul></td>
+<td>Age of the user.</td>
 </tr>
 <tr>
 <td>Gender</td>
-<td><ul><li>Male or female.</li><li>Case-sensitive.</li></ul></td>
+<td>Gender of the user.</td>
 </tr>
 <tr>
-<td>Mobile</td>
-<td><ul><li>Phone number of the user.</li></ul></td>
+<td>Mobile Number</td>
+<td>Mobile number of the user. Example: <strong>918888444411</strong>.</td>
 </tr>
 <tr>
-<td>Geography</td>
-<td><ul><li>Location of the user, latitude and longitude (<code>- lat,lng</code>).</li><li>Must be an array of numbers attribute type.</li></ul></td>
+<td>Latitude</td>
+<td>Latitude of location of the user.</td>
 </tr>
 <tr>
-<td>Source</td>
-<td><ul><li>Acquisition source of the user.</li></ul></td>
+<td>Longitude</td>
+<td>Longitude of location of the user.</td>
 </tr>
 <tr>
-<td>Created Time</td>
-<td><ul><li>User created time.</li></ul></td>
+<td>Publisher Name</td>
+<td>This is the publisher name of install. Example: <strong>Google Ads</strong>.</td>
+</tr>
+<tr>
+<td>First Seen</td>
+<td>The time when the user was created in ISO 8601 format. Example: <strong>2019-05-21T03:47:35Z</strong>.</td>
 </tr>
 <tr>
 <td>Last Seen</td>
-<td><ul><li>User last seen time.</li></ul></td>
+<td>Last Seen Time of the user in ISO 8601 format. Example: <strong>2020-05-01T03:52:35Z</strong>.</td>
 </tr>
 <tr>
-<td>Transactions</td>
-<td><ul><li>Number of transactions by the user.</li></ul></td>
+<td>Number of Conversions</td>
+<td>A total number of conversions made by the user in a lifetime.</td>
 </tr>
 <tr>
-<td>Revenue</td>
-<td><ul><li>Lifetime value of the user.</li></ul></td>
+<td>LTV</td>
+<td>Lifetime value of the user.</td>
+</tr>
+<tr>
+<td>Unsubscribe</td>
+<td>Email unsubscribe attribute. Emails are not sent to the user when the set value is <strong>true</strong>.</td>
 </tr>
 <tr>
 <td>Platform</td>
-<td><ul><li>The current platform on which the user is interacting with the system, such as Android, Windows, iOS, et cetera.</li></ul></td>
+<td>Value is based on the active platforms of the user. Allowed values are <strong>ANDROID</strong>, <strong>iOS</strong>, or <strong>web</strong>.</td>
+</tr>
+<tr>
+<td>Active</td>
+<td>The platform status.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="addmodify-user-information-batched">Add/Modify User Information (Batched)</h3>
+<h4 id="batch-limits">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 50</li>
+<li>Max time since oldest request: 10 minutes</li>
+<li>Max size of requests: 1 MB</li>
+</ul>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer ID</td>
+<td>(Required) The unique identifier which is set and passed on from MoEngage SDK.</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>Full name of the user.</td>
+</tr>
+<tr>
+<td>First Name</td>
+<td>First name of the user.</td>
+</tr>
+<tr>
+<td>Last Name</td>
+<td>Last name of the user.</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>Email address of the user.</td>
+</tr>
+<tr>
+<td>Age</td>
+<td>Age of the user.</td>
+</tr>
+<tr>
+<td>Gender</td>
+<td>Gender of the user.</td>
+</tr>
+<tr>
+<td>Mobile Number</td>
+<td>Mobile number of the user. Example: <strong>918888444411</strong>.</td>
+</tr>
+<tr>
+<td>Latitude</td>
+<td>Latitude of location of the user.</td>
+</tr>
+<tr>
+<td>Longitude</td>
+<td>Longitude of location of the user.</td>
+</tr>
+<tr>
+<td>Publisher Name</td>
+<td>This is the publisher name of install. Example: <strong>Google Ads</strong>.</td>
+</tr>
+<tr>
+<td>First Seen</td>
+<td>The time when the user was created in ISO 8601 format. Example: <strong>2019-05-21T03:47:35Z</strong>.</td>
+</tr>
+<tr>
+<td>Last Seen</td>
+<td>Last Seen Time of the user in ISO 8601 format. Example: <strong>2020-05-01T03:52:35Z</strong>.</td>
+</tr>
+<tr>
+<td>Number of Conversions</td>
+<td>A total number of conversions made by the user in a lifetime.</td>
+</tr>
+<tr>
+<td>LTV</td>
+<td>Lifetime value of the user.</td>
+</tr>
+<tr>
+<td>Unsubscribe</td>
+<td>Email unsubscribe attribute. Emails are not sent to the user when the set value is <strong>true</strong>.</td>
+</tr>
+<tr>
+<td>Platform</td>
+<td>Value is based on the active platforms of the user. Allowed values are <strong>ANDROID</strong>, <strong>iOS</strong>, or <strong>web</strong>.</td>
+</tr>
+<tr>
+<td>Active</td>
+<td>The platform status.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="track-event-real-time">Track Event (Real-Time)</h3>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer ID</td>
+<td>(Required) The unique identifier which is set and passed on from MoEngage SDK.</td>
+</tr>
+<tr>
+<td>Action</td>
+<td>(Required)</td>
+</tr>
+<tr>
+<td>Device ID</td>
+<td>The default value is the <strong>Customer ID</strong> value. The value is used to map events to specific devices.</td>
+</tr>
+<tr>
+<td>Platform</td>
+<td>Used to identify the platform on which the event happened. Allowed values are <strong>ANDROID</strong>, <strong>iOS</strong>, <strong>web</strong>, or <strong>unknown</strong>.</td>
+</tr>
+<tr>
+<td>App Version</td>
+<td>App version of the app on which the event originated.</td>
+</tr>
+<tr>
+<td>Local Time</td>
+<td>Local time at which the event happened in seconds.</td>
+</tr>
+<tr>
+<td>UTC Time</td>
+<td>UTC time at which the event happened in seconds.</td>
+</tr>
+<tr>
+<td>User Timezone Offset</td>
+<td>Should have a value in seconds which can be between -54000 to 54000. For example, for IST (UTC+0530), <strong>User Timezone Offset</strong> will be 19800.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="track-event-batched">Track Event (Batched)</h3>
+<h4 id="batch-limits-1">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
+<ul>
+<li>Max number of requests: 50</li>
+<li>Max time since oldest request: 10 minutes</li>
+<li>Max size of requests: 1 MB</li>
+</ul>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer ID</td>
+<td>(Required) The unique identifier which is set and passed on from MoEngage SDK.</td>
+</tr>
+<tr>
+<td>Action</td>
+<td>(Required)</td>
+</tr>
+<tr>
+<td>Device ID</td>
+<td>The default value is the <strong>Customer ID</strong> value. The value is used to map events to specific devices.</td>
+</tr>
+<tr>
+<td>Platform</td>
+<td>Used to identify the platform on which the event happened. Allowed values are <strong>ANDROID</strong>, <strong>iOS</strong>, <strong>web</strong>, or <strong>unknown</strong>.</td>
+</tr>
+<tr>
+<td>App Version</td>
+<td>App version of the app on which the event originated.</td>
+</tr>
+<tr>
+<td>Local Time</td>
+<td>Local time at which the event happened in seconds.</td>
+</tr>
+<tr>
+<td>UTC Time</td>
+<td>UTC Time at which the event happened in seconds.</td>
+</tr>
+<tr>
+<td>User Timezone Offset</td>
+<td>Should have a value in seconds which can be between -54000 to 54000. For example, for IST (UTC+0530), <strong>User Timezone Offset</strong> will be 19800.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="add-user-to-audiencecohort">Add User to Audience/Cohort</h3>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User ID</td>
+<td>User ID of registered/logged-in users. Either <strong>User ID</strong> or <strong>Anonymous ID</strong> must be provided. If both are present, <strong>User ID</strong> will be used first to resolve a user and if not user is available, will try to resolve a user basis the <strong>Anonymous ID</strong>.</td>
+</tr>
+<tr>
+<td>Anonymous ID</td>
+<td>Identifier for unregistered/non-logged in users.</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>Timestamp of the request in ISO 8601. Example: <strong>2019-05-21T03:47:35Z</strong>. If not mapped, it will be initialized with the current timestamp.</td>
+</tr>
+<tr>
+<td>Cohort Name</td>
+<td>Name of the cohort. This setting overrides Tealium Audience name selected in the <strong>Tealium Audience</strong> section.</td>
+</tr>
+<tr>
+<td>Cohort ID</td>
+<td>ID of the cohort. This setting overrides Tealium Audience ID selected in the <strong>Tealium Audience</strong> section.</td>
+</tr>
+<tr>
+<td>Cohort Description</td>
+<td>Description of the cohort.</td>
+</tr>
+<tr>
+<td>Tealium Audience</td>
+<td>Select Tealium Audience to use Tealium Audience ID and Tealium Audience name as ID and name of the MoEngage cohort.<br></td>
+</tr>
+</tbody>
+</table>
+<h3 id="remove-user-from-audiencecohort">Remove User from Audience/Cohort</h3>
+<h4 id="parameters-5">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User ID</td>
+<td>User ID of registered/logged-in users. Either <strong>User ID</strong> or <strong>Anonymous ID</strong> must be provided. If both are present, <strong>User ID</strong> will be used first to resolve a user and if not user is available, will try to resolve a user basis the <strong>Anonymous ID</strong>.</td>
+</tr>
+<tr>
+<td>Anonymous ID</td>
+<td>Identifier for unregistered/non-logged in users.</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>Timestamp of the request in ISO 8601. Example: <strong>2019-05-21T03:47:35Z</strong>. If not mapped, it will be initialized with the current timestamp.</td>
+</tr>
+<tr>
+<td>Cohort Name</td>
+<td>Name of the cohort. This setting overrides Tealium Audience name selected in the <strong>Tealium Audience</strong> section.</td>
+</tr>
+<tr>
+<td>Cohort ID</td>
+<td>ID of the cohort. This setting overrides Tealium Audience ID selected in the <strong>Tealium Audience</strong> section.</td>
+</tr>
+<tr>
+<td>Cohort Description</td>
+<td>Description of the cohort.</td>
+</tr>
+<tr>
+<td>Tealium Audience</td>
+<td>Select Tealium Audience to use Tealium Audience ID and Tealium Audience name as ID and name of the MoEngage cohort.</td>
 </tr>
 </tbody>
 </table>
@@ -911,8 +1213,13 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action Settings - Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---addmodify-user-information">Action - Add/Modify User Information</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#actions">Actions</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#addmodify-user-information-real-time">Add/Modify User Information (Real-Time)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#addmodify-user-information-batched">Add/Modify User Information (Batched)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#track-event-real-time">Track Event (Real-Time)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#track-event-batched">Track Event (Batched)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-user-to-audiencecohort">Add User to Audience/Cohort</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#remove-user-from-audiencecohort">Remove User from Audience/Cohort</a></li>
               </nav>
   </aside></nav>
 
