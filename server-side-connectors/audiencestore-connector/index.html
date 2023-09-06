@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side-connectors",
-    reading_time  : "2",
+    reading_time  : "3",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -635,6 +635,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/tiktok-audiences-connector-setup-guide/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tiktok-audiences-connector-setup-guide">TikTok Audiences</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/tiktok-audiences-tealium-provided-credentials-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tiktok-audiences-tealium-provided-credentials-connector-setup-guide">TikTok Audiences (Tealium-Provided Credentials)</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/tiktok-events-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tiktok-events-connector">TikTok Events</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/tiktok-offiline-events-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tiktok-offline-events-connector">TikTok Offline Events</a>
@@ -725,65 +727,105 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>The AudienceStore connector has two actions that allow you to specify the data to export and when to trigger the export. Data is compressed in log files and uploaded to the <code>audiences</code> folder in the S3 bucket ONLY after the data reaches 100 MB in size or 1 hour passes (whichever happens first). By default, data is stored as JSON key-value pairs. In S3, you can download the data and analyze it using the business intelligence tool of your choice.</p>
-<h2 id="requirements">Requirements</h2>
+  <h2 id="requirements">Requirements</h2>
 <ul>
 <li>AudienceStore must be enabled for your account. Contact your Tealium Account Manager for more information.</li>
 <li>Your account must have active audiences. For more information, see <a href="/server-side/audiences/manage/">Building an Audience</a>.</li>
 </ul>
-<h2 id="supported-actions">Supported Actions</h2>
+<h2 id="connector-actions">Connector Actions</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Action Type</th>
-<th style="text-align:left">Description</th>
-<th style="text-align:left">AudienceStream</th>
-<th style="text-align:left">EventStream</th>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Send Visitor Data to Bucket (All Attributes)</td>
-<td style="text-align:left">Store the entire visitor profile, with an option to capture event data from the last visit, for all Visitors in the Audience.</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✗</td>
+<td>Send Visitor Data to Bucket (All Attributes)</td>
+<td>✓</td>
+<td>✗</td>
 </tr>
 <tr>
-<td style="text-align:left">Send Visitor Data to Bucket (Selected Attributes)</td>
-<td style="text-align:left">Store specific visitor profile attributes for all Visitors in the Audience.</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✗</td>
+<td>Send Visitor Data to Bucket (Selected Attributes)</td>
+<td>✓</td>
+<td>✗</td>
 </tr>
 </tbody>
 </table>
-<h2 id="add-and-configure-the-connector">Add and Configure the Connector</h2>
-<p>For information on adding a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
-<p>To configure the AudienceStore connector action settings, use the following steps:</p>
-<ol>
-<li>In the <strong>Configuration</strong> tab, click <strong>Add Connector</strong>.</li>
-<li>Enter a <strong>Name</strong> for this connector instance.</li>
-<li>(Optional) Add <strong>Notes</strong> about your implementation.</li>
-<li>Click <strong>Done</strong>, then click <strong>Continue</strong>.</li>
-</ol>
-<h3 id="configure-action-settings">Configure Action Settings</h3>
-<p>Use the following steps to configure an action:</p>
-<ol>
-<li>Enter an <strong>Action Name</strong>.<br>
-The <strong>Action Name</strong> you specify is used in the DataAccess Console when browsing the data files.</li>
-<li>Select an <strong>Action Type</strong>.<br>
-The configurable parameters vary depending on the selected <strong>Action Type</strong>. For more information, see <a href="#configure-action-parameters">Configure Action Parameters</a>.</li>
-<li>After you have configured action parameters, click <strong>Finish</strong>.</li>
-</ol>
-<h3 id="configure-action-parameters">Configure Action Parameters</h3>
-<p>The <strong>Send Visitor Data to Bucket (All Attributes)</strong> action has the following parameters:</p>
-<ul>
-<li><strong>Include Current Visit Data</strong> – All event data for the most recent visit by the visitor is included.</li>
-<li><strong>Send By Attribute ID</strong> – By default, the visitor data JSON property keys are based on AudienceStream attribute names, which can change. Select <strong>Send By Attribute ID</strong> to use attribute IDs as JSON property keys and avoid issues that can occur if attribute names change.</li>
-</ul>
-<p>The <strong>Send Visitor Data to Bucket (Selected Attributes)</strong> action has one parameter:</p>
-<ul>
-<li><strong>Format Data as CSV</strong> – store data in CSV format instead of JSON.</li>
-</ul>
+<h2 id="configure-settings">Configure Settings</h2>
+<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>After adding the connector, configure the following settings:</p>
+<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
+<p>The AudienceStore connector has two actions that allow you to specify the data to export and when to trigger the export. Data is compressed in log files and uploaded to the <code>audiences</code> folder in the S3 bucket. By default, data is stored as JSON key-value pairs. In S3, you can download the data and analyze it using the business intelligence tool of your choice.</p>
+<p>The connector sends data when the batch reaches 100 MB in size or after 1 hour passes, whichever happens first. You can change the default behavior with the <strong>Record Count Maximum</strong>, <strong>Time to Live</strong>, and <strong>Payload Size Maximum</strong> parameters.</p>
+<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<p>The following section describes how to set up parameters and options for each action.</p>
+<h3 id="action---send-visitor-data-to-bucket-all-attributes">Action - Send Visitor Data to Bucket (All Attributes)</h3>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Include Current Visit Data</td>
+<td>All event data for the most recent visit by the visitor is included.</td>
+</tr>
+<tr>
+<td>Send By Attribute ID</td>
+<td>By default, the Visitor Data JSON property keys are based on AudienceStream attribute names. Select this option to send data keyed by AudienceStream attribute ID.</td>
+</tr>
+<tr>
+<td>Record Count Maximum</td>
+<td>The amount of records for the connector to collect before sending a batch to the <code>audiences</code> folder. Enter a value between 1,000 and 100,000 records.</td>
+</tr>
+<tr>
+<td>Time to Live</td>
+<td>The amount of time for the connector to wait before sending a batch to the <code>audiences</code> folder. Enter a value between 20 and 180 minutes.</td>
+</tr>
+<tr>
+<td>Payload Size Maximum</td>
+<td>The size of the payload for the connector to collect before sending a batch to the <code>audiences</code> folder. Enter a value between 1MB and 100MB.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="action---send-visitor-data-to-bucket-selected-attributes">Action - Send Visitor Data to Bucket (Selected Attributes)</h3>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visitor Attributes to Store</td>
+<td>Map visitor attributes to column header names.</td>
+</tr>
+<tr>
+<td>Format Data as CSV (JSON if unchecked)</td>
+<td>Store data in CSV format instead of JSON.</td>
+</tr>
+<tr>
+<td>Record Count Maximum</td>
+<td>The amount of records for the connector to collect before sending a batch to the <code>audiences</code> folder. Enter a value between 1,000 and 100,000 records.</td>
+</tr>
+<tr>
+<td>Time to Live</td>
+<td>The amount of time for the connector to wait before sending a batch to the <code>audiences</code> folder. Enter a value between 20 and 180 minutes.</td>
+</tr>
+<tr>
+<td>Payload Size Maximum</td>
+<td>The size of the payload for the connector to collect before sending a batch to the <code>audiences</code> folder. Enter a value between 1MB and 100MB.</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
@@ -844,7 +886,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 14, 2023 
+          <p>This page was last updated:  September 1, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -859,10 +901,11 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#requirements">Requirements</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#supported-actions">Supported Actions</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-and-configure-the-connector">Add and Configure the Connector</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-action-settings">Configure Action Settings</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-action-parameters">Configure Action Parameters</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action Settings - Parameters and Options</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-visitor-data-to-bucket-all-attributes">Action - Send Visitor Data to Bucket (All Attributes)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-visitor-data-to-bucket-selected-attributes">Action - Send Visitor Data to Bucket (Selected Attributes)</a></li>
               </nav>
   </aside></nav>
 
@@ -1071,6 +1114,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

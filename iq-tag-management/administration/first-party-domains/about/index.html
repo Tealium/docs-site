@@ -732,9 +732,9 @@ var utag_data = {
 <div class="prose nested-links" id="prose">
   <p>First-Party Domains allows Tealium services to use first-party requests, which can reduce data loss caused by ad blockers and similar technology.</p>
 <p class="tip"><i class="fa fa-info-circle"></i>Contact your Tealium account manager to have First-Party Domains enabled for your account.</p>
-<p>The first-party domain is the domain hosting the website the user is visiting. A third-party domain is any domain that does not match the domain of the current website.</p>
+<p>The first-party domain is the domain that hosts the website the user is visiting. A third-party domain is any domain that does not match the current website&rsquo;s domain.</p>
 <p>The services offered in the Tealium Customer Data Hub are hosted on Tealium domains by default. For example, JavaScript files for Tealium iQ Tag Management are served from the <code>tags.tiqcdn.com</code> subdomain and the data collection endpoint for Tealium EventStream API Hub uses the <code>collect.tealiumiq.com</code> subdomain. Both of these Tealium subdomains are considered third-party domains.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>First-Party Domains supports web use cases and is not compatible with Collect for Mobile. Contact your account manager to explore setting up a custom CNAME for Collect for Mobile. First-Party Domains does not support Tealium&rsquo;s Google Tag Manager or Adobe Launch integrations.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>First-Party Domains primarily supports web use cases and does not support Visitor Service for Mobile. Contact your account manager to explore setting up a custom CNAME for Visitor Service for Mobile if you need first-party Visitor Service support for non-web use cases. First-Party Domains does not support Tealium&rsquo;s Google Tag Manager or Adobe Launch integrations.</p>
 <h2 id="how-it-works">How it works</h2>
 <p>When you configure First-Party Domains for the <code>tags.tiqcdn.com</code> subdomain, Tealium provides a CNAME record that must be added to your DNS database. A CNAME record is an alias that maps one domain name to another. For example, for the website <code>www.example.com</code>, Tealium would provide a CNAME record for <code>tags.example.com</code> that points to the Tealium CDN to serve the files for iQ Tag Management.</p>
 <p>For the <code>collect.tealiumiq.com</code> subdomain, Tealium provides A records that must be added to your DNS configuration. An A record maps a subdomain name to the IP address for the domain. Two IP addresses for A records are provided for each subdomain configured for First-Party Domains. These two A records are used for load balancing of DNS servers.</p>
@@ -770,7 +770,7 @@ var utag_data = {
 <p>For more information about certificate requirements, see the AWS information about <a href="https://docs.aws.amazon.com/acm/latest/userguide/import-certificate-prerequisites.html">Prerequisites for importing certificates</a>.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>When you renew a certificate, select <strong>Reimport Certificate</strong> to upload the certificate. The new certificate replaces the previous one. If the previous certificate has not expired, there should be no downtime. If the previous certificate has expired, there may be a few hours delay while the certificate propagates to DNS servers.</p>
 <h3 id="limits-on-domains-per-certificate">Limits on domains per certificate</h3>
-<p>The maximum number of domains per certificate is determined when you sign up for First-Party Domains. The <strong>First-Party Domains Overview</strong> screen shows the number of domains that have been configured and the maximum number of domains per certificate for both <a href="/iq-tag-management/administration/first-party-domains/configure-server-side/">Server-Side Data Collection</a> and <a href="/iq-tag-management/administration/first-party-domains/configure-client-side/">Client-Side Delivery</a>. In the following example, no domains have been configured and the maximum number of domains for Server-Side Data Collection and Server-Side Delivery is 10 (0/10 Domains Configured).</p>
+<p>The maximum number of domains per certificate is determined when you sign up for First-Party Domains. The <strong>First-Party Domains Overview</strong> screen shows the number of domains that have been configured and the maximum number of domains per certificate for both <a href="/iq-tag-management/administration/first-party-domains/configure-server-side/">Server-Side Data Collection</a> and <a href="/iq-tag-management/administration/first-party-domains/configure-client-side/">Client-Side Delivery</a>. In the following example, no domains have been configured and the maximum number of domains for <strong>Server-Side Data Collection</strong> and <strong>Server-Side Delivery</strong> is 10 (0/10 Domains Configured).</p>
 <figure><a class="slb" href="/images/guides/iq/fpd-landing-page.png"><img src="/images/guides/iq/fpd-landing-page.png"
          alt="FPD landing page"
          title="FPD landing page"/>
@@ -781,12 +781,13 @@ var utag_data = {
 <p>We recommend DNS validation because it is usually a quicker process and because sometimes it can be difficult to track down who in your organization has access to the administrative emails. However, if you don&rsquo;t have access to edit your domain&rsquo;s DNS database, then you must use email validation.</p>
 <h4 id="dns-validation">DNS validation</h4>
 <p>To use the DNS validation method, you must have access to edit your DNS configuration. You will need to work with your production operations team or the person responsible for your domain registration and SSL/TLS certificates.</p>
-<p>After you have added domains, Tealium displays validation records for each domain requested, which you must add to your DNS configuration. The following example shows a validation CNAME record for one domain: <figure><a class="slb" href="/images/guides/iq/fpd-validation-record-example.png"><img src="/images/guides/iq/fpd-validation-record-example.png"
+<p>After you have added domains, Tealium displays validation records for each domain requested, which you must add to your DNS configuration. The following example shows a validation CNAME record for one domain:</p>
+<figure><a class="slb" href="/images/guides/iq/fpd-validation-record-example.png"><img src="/images/guides/iq/fpd-validation-record-example.png"
          alt="fpd-validation-record-example"
          title="fpd-validation-record-example"/>
     </a>
-</figure></p>
-<p>Validation can take up to 24 hours, but often happens much more quickly. When the validation is completed, Tealium displays permanent DNS records, which you must add to your DNS configuration, as follows:</p>
+</figure>
+<p>Validation can take up to 24 hours, but often happens sooner. When the validation is completed, Tealium displays permanent DNS records, which you must add to your DNS configuration, as follows:</p>
 <ul>
 <li>CNAME records are shown for Delivery subdomains.<br>
 Use these records in place of certain paths in <code>tags.tiqcdn.com</code>.</li>
@@ -811,7 +812,7 @@ Use these records in place of certain paths in<code>collect.tealiumiq.com</code>
 <li><strong>Issued</strong>: All domains are validated and the certificate is not expired nor about to expire.</li>
 <li><strong>Expired</strong>: The certificate is expired.</li>
 <li><strong>Pending Validation</strong>: One or more domains attached to the certificate are not validated.</li>
-<li><strong>Expiring Soon</strong>: The certificate will expire soon and needs to be renewed.</li>
+<li><strong>Expiring Soon</strong>: The certificate expires soon and needs to be renewed.</li>
 </ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>If you are managing your own certificates and have renewed a certificate, use the <strong>Reimport Certificate</strong> option to avoid having to configure your domains again. If the previous certificate is still valid, there should be no downtime. The new certificate replaces the previous one.</p>
 
@@ -859,7 +860,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 11, 2023 
+          <p>This page was last updated:  September 1, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

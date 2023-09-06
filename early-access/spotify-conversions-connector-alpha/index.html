@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>LinkedIn Conversions Connector Setup Guide | Early Access | Tealium Docs</title>
+    <title>Spotify Conversions Connector Setup Guide (Alpha) | Early Access | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "early-access",
-    reading_time  : "9",
+    reading_time  : "4",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -207,8 +207,8 @@ var utag_data = {
         <a href="/early-access/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">About Early Access</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/google-sa360-enhanced-conversions-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".google-sa360-enhanced-conversions-connector">Google SA360 Enhanced Conversions</a>
-      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/early-access/linkedin-conversions-connector/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".linkedin-conversions-connector">LinkedIn Conversions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/linkedin-conversions-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".linkedin-conversions-connector">LinkedIn Conversions</a>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".permissions">Platform Permissions</a>
         <ul class=" permissions desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -220,6 +220,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/platform-permissions/permissions-system-migration-guide/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Migration Guide</a>
       </li></ul>
+      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/spotify-conversions-connector-alpha/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".spotify-conversions-connector-alpha">Spotify Conversions Connector</a>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".api-v3">Tealium API v3</a>
         <ul class=" api-v3 desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -275,298 +277,145 @@ var utag_data = {
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">LinkedIn Conversions Connector Setup Guide</h1>
+<h1 class="lh-title mt30 mb3">Spotify Conversions Connector Setup Guide (Alpha)</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to set up the LinkedIn Conversions  connector.
+      This article describes how to set up the Spotify Conversions connector.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>The LinkedIn Conversions Connector is in Early Access and is only available to select customers. If you are interested in trying this feature, contact your Tealium Support representative. Some of this connector&rsquo;s features, such as Deduplication, may not be available or ready for use.</p>
-<p>The LinkedIn Conversions API (CAPI) is a conversion tracking tool that creates a direct connect between marketing data from an advertiser’s server and LinkedIn. This integration enables advertisers to measure the performance of their LinkedIn marketing campaigns no matter where the conversion happens and use this data to power campaign optimization. The Conversions API can help strengthen performance and decreate cost per action with more complete attribution, improved reliability, and better-optimized delivery.</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>This connector is currently in Alpha and is only available to select customers. If you are interested in trying this connector, contact your Tealium Support representative. The Spotify team must allow the Client ID to access the API.</p>
 <h2 id="api-information">API Information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
-<li>API Name: LinkedIn API</li>
-<li>API Version: 202302</li>
-<li>API Endpoint: <code>https://api.linkedin.com/rest</code></li>
-<li>Documentation: <a href="https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads-reporting/conversion-tracking">Conversion Tracking</a></li>
+<li>API Name: Spotify API</li>
+<li>API Version: v1.0</li>
+<li>API Endpoint: <code>https://api-partner.spotify.com/ads/v1</code></li>
 </ul>
 <h2 id="connector-actions">Connector Actions</h2>
 <table>
 <thead>
 <tr>
-<th>Action Name</th>
-<th>AudienceStream</th>
-<th>EventStream</th>
+<th>ACTION NAME</th>
+<th>AUDIENCESTREAM</th>
+<th>EVENTSTREAM</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Stream Conversion Event</td>
-<td>✗</td>
+<td>Send Conversion Event</td>
 <td>✓</td>
-</tr>
-<tr>
-<td>Batch Conversion Events</td>
-<td>✗</td>
 <td>✓</td>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-works">How it Works</h2>
+<p>The Spotify Conversions connector captures conversion event tracking and sends this data to Spotify, helping you track and measure ad spend for your web campaigns. The Conversion API is a direct, server-to-server integration that allows you to share conversion data without the need for a pixel.</p>
+<p>You may need to include the following information when you enable conversion tracking for your web campaigns:</p>
+<ul>
+<li><strong>Page Views</strong>: User visits a landing page on an advertiser’s site.</li>
+<li><strong>Complete Registration</strong>: User completes registration for the advertiser’s service.</li>
+<li><strong>Add to Cart</strong>: User adds to cart of a product or service on the advertiser’s site.</li>
+<li><strong>Check Out</strong>: User initiates checkout of a product or service on the advertiser’s site.</li>
+<li><strong>Purchase</strong>: User completes a purchase of a product or service on the advertiser’s site.</li>
+<li><strong>Search</strong>: User performs a search from the advertiser’s site.</li>
+<li><strong>Lead</strong>: User enters into a lead status from the advertiser’s site.</li>
+<li><strong>Subscribe</strong>: User signs up for the advertiser’s service, newsletter, or email communication.</li>
+</ul>
+<p>Spotify recommends only using the <strong>Purchase</strong> event for the initial Alpha.</p>
+<p>The Spotify Conversion API supports only email address as a matching identifier. Tealium provides the ability to apply SHA256 hashing, or you can map an already-hashed value to be used in the API.</p>
 <h2 id="configure-settings">Configure Settings</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>Go to the <strong>Connector Marketplace</strong> and add a new connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>Ad Account</strong>
-<strong>Required.</strong> Select ad account ID that aligns with your sponsored account.</li>
-</ul>
-<h2 id="deduplication">Deduplication</h2>
-<p>Deduplication is the ability for the system to identify the same event being sent from both the Insight Tag and CAPI, and then discard one to ensure proper counting. Deduplication enables you to send the same events through both sources, allowing CAPI to work in tandem with your LinkedIn Insight Tag to provide maximum visibility into the conversions your campaigns are driving.</p>
-<p>To configure this connector action to receive event IDs from the LinkedIn Insights tag in your iQ Tag Management account, look for event attributes using the following naming convention:</p>
-<pre tabindex="0"><code>linkedin_event_id_&lt;Conversion ID&gt;_&lt;TAG UID&gt;
-</code></pre><p>For example <code>linkedin_event_id_11563522_123</code></p>
-<p>Your <strong>Conversion ID</strong> can be found in your LinkedIn <strong>Campaign Manager</strong> account while configuring your LinkedIn Insights tag to track a specific event:</p>
-<ol>
-<li>Navigate to <strong>Analyze</strong> &gt; <strong>Conversion Tracking</strong>.</li>
-<li>Select <strong>Create Conversion</strong> &gt; <strong>Online Conversion</strong> or <strong>Offline Conversion,</strong> depending upon your use case. For more information, see <a href="#createaconversion">Create a Conversion</a>.</li>
-<li>Enter the required <strong>Settings values</strong>, including the <strong>Key Conversion Behavior</strong> that you want to track.</li>
-<li>Select <strong>Next Step</strong>.</li>
-<li>Select any campaigns to be tracked.</li>
-<li>Under <strong>Define your Conversion Tracking Method</strong>, select <strong>Event-Specific</strong> or use the <strong>Image Pixel</strong> code to view the Conversion ID.
+<li><strong>Conversion Tracker ID</strong>: Required.
 <ul>
-<li>Select the value of your <code>conversion_id</code> parameter when viewed.</li>
+<li>A Conversion Tracker ID is required for all event requests to the Spotify Conversions API. It is a unique ID used to attribute events to a specific advertiser’s campaigns.</li>
+<li>Click <strong>Create Tracker ID</strong> to create an ID.
+<ul>
+<li><strong>Advertiser Name</strong>: Required. The advertiser name.</li>
+<li><strong>Description</strong>: Required. A description of the type of events associated with the Tracker ID.</li>
 </ul>
 </li>
-<li>Click <strong>Create</strong> after all required forms are created and you have copied your <strong>Conversion ID</strong> value.</li>
-</ol>
-<h3 id="automatic-deduplication">Automatic Deduplication</h3>
-<p>When the <strong>Automatic Deduplication</strong> value is populated, the connector will look for the corresponding variable within the UDO object. You are no longer required to add an Event ID if this section is populated and you are using Tealium iQ. However, the following approach may still be needed when using EventStream without TealiumiQ.</p>
-<p>The connector uses the following order of operations:</p>
-<ol>
-<li>If <strong>Automatic Deduplication</strong> is populated, and the value is found in the data layer, (for example, <code>linkedin_event_id_10501014_30</code>) this value supersedes anything mapped in Event ID.</li>
-<li>If <strong>Automatic Deduplication</strong> is populated, but the value isn’t found, the mapped Event ID is used, if it is populated.</li>
-</ol>
-<h2 id="create-a-conversion">Create a Conversion</h2>
-<p>You can use Tealium’s platform to create a Conversion Event to be tracked within your <strong>Campaign Manager</strong> interface. Creating a conversion within Tealium&rsquo;s platform negates the need to configure a conversion event for tracking within the LinkedIn Campaign Manager. These values will be used to track the conversion events and be used to assosiate the conversion event values with campaigns being run. These will appear in the <strong>Analyze</strong> &gt; <strong>Conversion Tracking</strong> section. The events will appear with a Data Source value of Conversions API when viewing within the LinkedIn Campaign Manager platform.</p>
-<table>
-<thead>
-<tr>
-<th>Field / parameter</th>
-<th>Description</th>
-<th>Example and/or Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Account (<code>account</code>)</td>
-<td>The Sponsored Ad Account URN that this conversion resides under. This can be either specified in URL query parameter or in the request JSON body.</td>
-<td><code>urn:li:sponsoredAccount:1234567</code><br>URN</td>
-</tr>
-<tr>
-<td>Name (<code>name</code>)</td>
-<td>Short name for this rule, which will be shown in the UI and in reports.</td>
-<td><code>Summer_Sale CRM Conversions</code> / string</td>
-</tr>
-<tr>
-<td>Enabled (<code>enabled</code>)</td>
-<td>Set to <code>true</code> or <code>false</code> to enable or disable this rule from matching conversions. The initial state can be either, but only rules that are enabled will trigger conversion events. Default is <code>true</code>.</td>
-<td><code>true</code></td>
-</tr>
-<tr>
-<td>Post Click attribution window size (<code>postClickAttributionWindowSize</code>)</td>
-<td>Conversion window timeframe (in days) of a member clicking on a LinkedIn Ad (a post-click conversion) within which conversions will be attributed to a LinkedIn ad. Allowed values are <code>1</code>, <code>7</code>, <code>30</code>, or <code>90</code>. Default is <code>30</code></td>
-<td><code>90</code> (integer)</td>
-</tr>
-<tr>
-<td>Attribution Type (<code>attributionType</code>)<br>Parameter values:<ul><li><code>LAST_TOUCH_BY_CAMPAIGN</code></li><li><code>LAST_TOUCH_BY_CONVERSION</code></li></ul></td>
-<td>The model that describes how conversion actions are to be counted:<ul><li>Each Campaign: conversion actions are counted once for each campaign to which they can be attributed (Default)</li><li>Last Campaign: (single campaign) Conversion actions are counted once for each Conversion with at least one associated campaign.</li></ul></td>
-<td>Dropdown supporting both of the values in the left section:<ul><li>Each campaign: For a conversion action associated with multiple campaigns, every campaign that has had an interaction in the conversion window will get credited with a conversion.</li><li>Last campaign: For a conversion action associated with a campaign, the most recent campaign that has had an ad interaction in the conversion window will get credited with a conversion.</li></ul></td>
-</tr>
-<tr>
-<td>Type (<code>type</code>)</td>
-<td>Type of conversion to track for this conversion rule:<ul><li><code>ADD_TO_CART</code>: The user added one or more things to their shoppping cart.</li><li><code>DOWNLOAD</code>: The user downloaded a file.</li><li><code>INSTALL</code>: The user installed a plugin or an app.</li><li><code>KEY_PAGE_VIEW</code>: The user viewed an important web page/app screen.</li><li><code>LEAD</code>: The user filled out a lead generation form.</li><li><code>PURCHASE</code>: The user made a purchase.</li><li><code>SIGN_UP</code>: The user signed up for a web site / app service.</li><li><code>OTHER</code>: Something that’s not listed.</li><li><code>TALENT_LEAD</code>: User submitted their information as a lead on LInkedIn Talent Media’s Pipeline Builder page.</li><li><code>JOB_APPLY</code>: User clicked apply to a job on LinkedIn.</li><li><code>SAVE</code>: Saves a form or state in the flow.</li><li><code>START_CHECKOUT</code>: Begins the checkout process.</li><li><code>SCHEDULE</code>: Schedule a service or appointment.</li><li><code>VIEW_CONTENT</code>: The user viewed a section of the page or app screen (webview).</li><li><code>VIEW_VIDEO</code>: The user played a video.</li><li><code>ADD_BILLING_INFO</code>: The user added credit card or purchase details.</li><li><code>BOOK_APPOINTMENT</code>: The user reserved an appointment.</li><li><code>REQUEST_QUOTE</code>: The user requested a quote.</li><li><code>SEARCH</code>: The user searched within the app.</li><li><code>SUBSCRIBE</code>: The user subscribed to a service.</li><li><code>AD_CLICK</code>: The user clicked a 3rd party ad.</li><li><code>AD_VIEW</code>: The user viewed an ad.</li><li><code>COMPLETE_SIGNUP</code>: The user completed registration process.</li><li><code>SUBMIT_APPLICATION</code>: The user submitted an application (same as complete_singup).</li><li><code>PHONE_CALL</code>: The user started a call, or performed phone-call specific event or submission.</li><li><code>INVITE</code>: The user sent/shared an invite.</li><li><code>LOGIN</code>: The user logged in to advertiser’s service account.</li><li><code>SHARE</code>: The user shared content.</li><li><code>DONATE</code>: The user performed a donation.</li><li><code>ADD_TO_LIST</code>: The user added a product to a wishlist.</li><li><code>RATE</code>: The user rated a service or a product.</li><li><code>START_TRIAL</code>: The user started a trial subscription.</li><li><code>OUTBOUND_CLICK</code>: The user left the app or page by clicking a link.</li><li><code>CONTACT</code>: The user attempted to contact, by filling a form.</li></ul></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="associate-campaigns-to-conversions">Associate campaigns to conversions</h2>
-<p>It is important to associate the conversion events that are generated to the required campaign values. These conversion events can have a one-to-many relationship with LinkedIn campaigns that are running. Tealium will also retrieve conversion events for population into the actions that are to be mapped. Use the <strong>Associate Campaigns to Conversions</strong> overlay to map your Conversions to Campaigns. After you select your Conversion and Campaign values, select <strong>Create Association</strong> and wait for the <strong>Success</strong> message to appear.</p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Conversion</td>
-<td><strong>Required</strong>. Select the conversion or provide conversion ID as a custom text.</td>
-</tr>
-<tr>
-<td>Campaign</td>
-<td><strong>Required</strong>. Select the campaign or provide campaign ID as a custom text.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="actions">Actions</h2>
-<p>The connector&rsquo;s actions are used to send the contact information from the conversion to LinkedIn.</p>
-<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+</ul>
+</li>
+</ul>
+<p>Before partners can begin using the Conversions API, they must reach out to Spotify to link their Conversion Tracker ID to an advertiser/ad account.</p>
+<p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
+<h2 id="action-settings--parameters-and-options">Action Settings — Parameters and Options</h2>
+<p>Click <strong>Continue</strong> to configure the connector actions. Enter a name for the action and then select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
-<h3 id="stream-conversion-event">Stream Conversion Event</h3>
+<h3 id="action--send-conversion-event">Action — Send Conversion Event</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>During the connector&rsquo;s Alpha release, Spotify recommends that you only use the <strong>Purchase</strong> event.</p>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<th>PARAMETER</th>
+<th>DESCRIPTION</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Conversion</td>
-<td>Select the conversion rule created through the API. Conversion ID can be provided as a custom text.</td>
-</tr>
-<tr>
-<td>Email Address (already SHA256 hashed)</td>
-<td>Provide an email address which is a cleartext and has been already SHA256 hashed.</td>
-</tr>
-<tr>
-<td>Email Address (apply SHA256 hash)</td>
-<td>Provide a plain text email address and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
-</tr>
-<tr>
-<td>LinkedIn First Party Ads Tracking UUID</td>
-<td>First Party Cookie ID. Advertisers need to enable enhanced conversion tracking from <strong>Campaign Manager</strong> in order to activate first party cookies that appends a <strong>Click ID</strong> parameter <strong>li_fat_id</strong> to the click URLs.</td>
-</tr>
-<tr>
-<td>Axciom ID</td>
-<td>User identifier for matching with LiveRamp identity graph</td>
-</tr>
-<tr>
-<td>Oracle Moat ID</td>
-<td>User identifier for matching with Oracle Moat Identity</td>
-</tr>
-<tr>
-<td>First Name</td>
-<td>The first name of the contact to match the conversion</td>
-</tr>
-<tr>
-<td>Last Name</td>
-<td>The last name of the contact to match the conversion</td>
-</tr>
-<tr>
-<td>Company</td>
-<td>Represents the company of the contact to match</td>
-</tr>
-<tr>
-<td>Title</td>
-<td>Title name of the contact to match</td>
-</tr>
-<tr>
-<td>Country Code</td>
-<td>ISO standardized two letter country code representing the country of the contact</td>
-</tr>
-<tr>
-<td>Conversion Time</td>
-<td>Epoch timestamp in milliseconds at which the conversion event happened. If not mapped, it will be initialized with the current timestamp.</td>
-</tr>
-<tr>
-<td>Conversion Amount</td>
-<td>The monetary value for this conversion. Required to send <strong>conversionValue</strong> object.</td>
-</tr>
-<tr>
-<td>Currency Code</td>
-<td>Currency code in ISO format. Required to send <strong>conversionValue</strong> object</td>
+<td>Event Name</td>
+<td>Describes the conversion event.</td>
 </tr>
 <tr>
 <td>Event ID</td>
-<td>The unique ID generated by advertisers to indicate each event. This field will be used for deduplication.</td>
+<td>(Required) The event ID.</td>
 </tr>
-</tbody>
-</table>
-<h3 id="batch-conversion-events">Batch Conversion Events</h3>
-<h4 id="batch-limits">Batch Limits</h4>
-<p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
-<ul>
-<li>Max number of requests: 1000</li>
-<li>Max time since oldest request: 10 minutes</li>
-<li>Max size of requests: 1 MB</li>
-</ul>
-<h4 id="parameters-1">Parameters</h4>
-<table>
-<thead>
 <tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
+<td>Event Time</td>
+<td>The timestamp in RFC 3339 format. Indicates when the actual event occurred. The timestamp provided should represent a time in the past. For example, <code>2022-12-25T15:30:50Z</code>. If no timestamp is provided, the connector will use the current timestamp.</td>
 </tr>
-</thead>
-<tbody>
 <tr>
-<td>Conversion</td>
-<td>Select the conversion rule created through the API. Conversion ID can be provided as a custom text.<br></td>
+<td>Event Source URL</td>
+<td>The browser URL where the event happened. The URL should begin with <code>http://</code> or <code>https://</code> and match the verified domain.</td>
+</tr>
+<tr>
+<td>Amount</td>
+<td>Monetary value. Required for <strong>Purchase</strong> event.</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>Valid currency code as per ISO - 4217. Required for <strong>Purchase</strong> events.</td>
+</tr>
+<tr>
+<td>Content Name</td>
+<td>Product name or page name.</td>
+</tr>
+<tr>
+<td>Content Category  The category of the content associated with the event. Content category must correspond to <a href="https://www.google.com/basepages/producttype/taxonomy.en-US.txt">Google&rsquo;s Product Taxonomy</a>.</td>
+<td></td>
+</tr>
+<tr>
+<td>Action Source</td>
+<td>Part of an event. Must be one of the following:<ul><li><code>EMAIL</code> - Conversion happened over email.</li><li><code>WEBSITE</code> - Conversion was made on a website.</li><li><code>MOBILE</code> - Conversion was made in a mobile app.</li><li><code>PHONE_CALL</code> - Conversion was made over the phone.</li><li><code>CHAT</code> - Conversion was made via a messaging app, SMS, or online messaging feature.</li><li><code>IN_PERSON</code> - Conversion was made in person at your physical store.</li><li><code>PROGRAMMATIC</code> - Conversion happened programmatically, for example, a recurring transaction that happens monthly for a subscription service.</li></ul></td>
 </tr>
 <tr>
 <td>Email Address (already SHA256 hashed)</td>
-<td>Provide an email address which is a cleartext and has been already SHA256 hashed.</td>
+<td>Provide an email address (must include an <code>@</code>) that has already been SHA256 hashed.</td>
 </tr>
 <tr>
 <td>Email Address (apply SHA256 hash)</td>
-<td>Provide a plain text email address and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Provide a plain text email address and the connector will whitespace trim, lowercase, and hash this value using the SHA256 hash. If the user has more than one email address, list the email addresses as an array.</td>
 </tr>
 <tr>
-<td>LinkedIn First Party Ads Tracking UUID</td>
-<td>First Party Cookie ID. Advertisers need to enable enhanced conversion tracking from <strong>Campaign Manager</strong> in order to activate first party cookies that appends a <strong>Click ID</strong> parameter <strong>li_fat_id</strong> to the click URLs.</td>
+<td>IP Address</td>
+<td>The IP address sending the event.</td>
 </tr>
 <tr>
-<td>Axciom ID</td>
-<td>User identifier for matching with LiveRamp identity graph.</td>
+<td>Phone Number</td>
+<td>The user phone number.</td>
 </tr>
 <tr>
-<td>Oracle Moat ID</td>
-<td>User identifier for matching with Oracle Moat Identity.</td>
-</tr>
-<tr>
-<td>First Name</td>
-<td>The first name of the contact to match the conversion.</td>
-</tr>
-<tr>
-<td>Last Name</td>
-<td>The last name of the contact to match the conversion.</td>
-</tr>
-<tr>
-<td>Company</td>
-<td>Representing the company of the contact to match.</td>
-</tr>
-<tr>
-<td>Title</td>
-<td>Title name of the contact to match.</td>
-</tr>
-<tr>
-<td>Country Code</td>
-<td>ISO standardized two letter country code representing the country of the contact.</td>
-</tr>
-<tr>
-<td>Conversion Time</td>
-<td>Epoch timestamp in milliseconds at which the conversion event happened. If not mapped, it will be initialized with the current timestamp.</td>
-</tr>
-<tr>
-<td>Conversion Amount</td>
-<td>The monetary value for this conversion. Required to send <strong>conversionValue</strong> object.</td>
-</tr>
-<tr>
-<td>Currency Code</td>
-<td>Currency code in ISO format. Required to send <strong>conversionValue</strong> object.</td>
-</tr>
-<tr>
-<td>Event ID</td>
-<td>The unique ID generated by advertisers to indicate each event. This field will be used for deduplication.</td>
+<td>Opt Out Targeting</td>
+<td>A flag indicating that this event should not be used for retargeting. If set to <code>true</code>, use the event for attribution only.</td>
 </tr>
 </tbody>
 </table>
@@ -615,7 +464,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 23, 2022 
+          <p>This page was last updated:  May 16, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -631,14 +480,10 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#api-information">API Information</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it Works</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#deduplication">Deduplication</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#automatic-deduplication">Automatic Deduplication</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#create-a-conversion">Create a Conversion</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#associate-campaigns-to-conversions">Associate campaigns to conversions</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#actions">Actions</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#stream-conversion-event">Stream Conversion Event</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#batch-conversion-events">Batch Conversion Events</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings--parameters-and-options">Action Settings — Parameters and Options</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action--send-conversion-event">Action — Send Conversion Event</a></li>
               </nav>
   </aside></nav>
 
@@ -860,7 +705,7 @@ No</button>
       </li>
       
       <li  class="tl dib ma0 hover-bg-primary w-100">
-      <a href="https://docs.tealium.com/early-access/linkedin-conversions-connector/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+      <a href="https://docs.tealium.com/server-side-connectors/linkedin-conversions-connector/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
           LinkedIn Conversions
       </a>
       </li>
@@ -868,6 +713,12 @@ No</button>
       <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/early-access/platform-permissions/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
           Platform Permissions
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/spotify-conversions-connector-alpha/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Spotify Conversions Connector
       </a>
       </li>
       

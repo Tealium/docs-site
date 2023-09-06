@@ -726,7 +726,7 @@ var utag_data = {
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
 <p>The Tealium Universal Tag (<code>utag.js</code>) creates and maintains several first-party cookies.</p>
-<p>The <code>utag.js</code> script creates and maintains a single cookie called <code>utag_main</code>. Within that cookie are several built-in values that keep track of the visitor session. These variables can be easily added to your data layer using the <a href="/iq-tag-management/data-layer/manage-variables/about-data-bundles/">Tealium Built-In Data Bundle</a>. The expiration time of the <code>utag_main</code> cookie is set to one year.</p>
+<p>The <code>utag.js</code> script creates and maintains a single cookie called <code>utag_main</code>. Within that cookie are several built-in values that track the visitor session. These variables can be easily added to your data layer using the <a href="/iq-tag-management/data-layer/manage-variables/about-data-bundles/">Tealium Built-In Data Bundle</a>. The expiration time of the <code>utag_main</code> cookie is set to one year.</p>
 <h2 id="built-in-cookies">Built-in cookies</h2>
 <p>The built-in cookie variables are:</p>
 <table>
@@ -758,12 +758,16 @@ var utag_data = {
 <td>The number of pages viewed during the current session.</td>
 </tr>
 <tr>
+<td><code>_se</code></td>
+<td>The number of events during the current session.</td>
+</tr>
+<tr>
 <td><code>_sn</code></td>
 <td>The number of sessions for this visitor.</td>
 </tr>
 </tbody>
 </table>
-<p>You can add custom values to the <code>utag_main</code> cookie by creating a new variable of type <strong>First Party Cookie</strong> with the prefix <code>utag_main_</code> for example: <code>utag_main_mycookie</code>. This keeps cookies associated with your Tealium installation separated from the global cookie namespace, which helps to avoid name collisions reduces the overall number of cookies used for your site.</p>
+<p>You can add custom values to the <code>utag_main</code> cookie by creating a new variable of type <strong>First Party Cookie</strong> with the prefix <code>utag_main_</code>, for example: <code>utag_main_mycookie</code>. This keeps cookies associated with your Tealium installation separated from the global cookie namespace, which helps to avoid name collisions and reduces the overall number of cookies used for your site.</p>
 <figure><a class="slb" href="/images/iq-tag-management/whiteui-tiq-tealium-cookies-add-first-party-cookie-variable.jpg"><img src="/images/iq-tag-management/whiteui-tiq-tealium-cookies-add-first-party-cookie-variable.jpg"
          alt="Add First Party Cookie variable"
          title="Add First Party Cookie variable"/>
@@ -781,14 +785,14 @@ var utag_data = {
 <h2 id="cookies-from-consent-manager">Cookies from Consent Manager</h2>
 <p>The <strong>Consent Manager</strong> uses a cookie named <code>CONSENTMGR</code> to save the consent settings of a visitor.</p>
 <p>Learn more about <a href="/iq-tag-management/consent-management/about/">consent management</a>.</p>
-<p>To change the name of the <code>CONSENTMGR</code> cookie, first verify that you are using version 2.0.1 or higher of the cmGeneral template, then use a Javascript Code extension scoped to <strong>All Tags - Before Load Rules</strong> with the following code:</p>
+<p>To change the name of the <code>CONSENTMGR</code> cookie, first verify that you are using version 2.0.1 or later of the cmGeneral template, then use a Javascript Code extension scoped to <strong>All Tags - Before Load Rules</strong> with the following code:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span>.<span style="color:#a6e22e">cookieNS</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;NEW_COOKIE_NAME&#39;</span>;
 </span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>To change the retention period of the consent cookie, use the <a href="/platforms/javascript/settings/#consentperiod">configuration override setting</a> for <code>utag.js</code>.</p>
 <h2 id="cookies-from-web-companion">Cookies from Web Companion</h2>
-<p>Web Companion uses a cookie to remember which publish environment (Prod, QA, Dev, or Custom) you were viewing when you last visited your site. Viewing the default publish environment for your site does not set a cookie.</p>
+<p><a href="/iq-tag-management/troubleshooting/web-companion/">Web Companion</a> uses a cookie to save the publish environment (Prod, QA, Dev, or Custom) you were viewing when you last visited your site. Viewing the default publish environment for your site does not set a cookie.</p>
 <p>The last viewed publish environment is saved in the following cookie, where <code>{account}</code> and <code>{profile}</code> are replaced with your account and profile:</p>
 <p><code>utag_env_{account}_{profile}</code></p>
-<p>If you clear your browser&rsquo;s cookies, Web Companion does not remember which publish environment you were viewing, requiring you to re-select the environment to view.</p>
+<p>If you clear your browser&rsquo;s cookies, Web Companion does not save which publish environment you were viewing, requiring you to re-select the environment to view.</p>
 
 </div>
 
@@ -834,7 +838,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  August 31, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
