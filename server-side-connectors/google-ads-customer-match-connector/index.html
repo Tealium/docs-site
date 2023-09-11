@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Google Ads Customer Match Connector Setup Guide | Server-Side Connectors | Tealium Docs</title>
+    <title>Google Ads Customer Match (Tealium-Provided Credentials) Connector Setup Guide | Server-Side Connectors | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -239,6 +239,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/algolia-insights-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".algolia-insights-connector">Algolia Insights</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/amazon-ads-audience-management-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-ads-audience-management-connector">Amazon Ads Audience Management</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-ads-conversions-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-ads-conversions-connector">Amazon Ads Conversions</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/amazon-advertising-dsp-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".amazon-advertising-dsp-connector">Amazon Advertising DSP</a>
@@ -406,6 +408,8 @@ var utag_data = {
         <a href="/server-side-connectors/google-dv-360-customer-match-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".google-dv360-customer-match-connector">Google Display &amp; Video 360 Customer Match</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/google-display-video-360-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".google-display-amp-video-360-connector-setup-guide">Google Display and Video 360</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/google-sa360-enhanced-conversions-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".google-sa360-enhanced-conversions-connector">Google SA360 Enhanced Conversions</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/google-sheets-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".google-sheets-connector">Google Sheets</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -715,7 +719,7 @@ var utag_data = {
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Google Ads Customer Match Connector Setup Guide</h1>
+<h1 class="lh-title mt30 mb3">Google Ads Customer Match (Tealium-Provided Credentials) Connector Setup Guide</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -727,8 +731,7 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>This connector replaces the deprecated <a href="/server-side-connectors/google-adwords-customer-match-connector/">Google AdWords Customer Match connectors</a>.</p>
-<h3 id="connector-actions">Connector actions</h3>
+  <h2 id="connector-actions">Connector actions</h2>
 <table>
 <thead>
 <tr>
@@ -760,25 +763,25 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<h3 id="api-information">API information</h3>
+<h2 id="api-information">API information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
 <li>API Name: Google Ads API</li>
 <li>API Version: v14</li>
-<li>API Endpoint: <code>&lt;https://googleads.googleapis.com/&gt;</code></li>
+<li>API Endpoint: <code>https://googleads.googleapis.com/</code></li>
 <li>Documentation: <a href="https://developers.google.com/google-ads/api/docs/start">Google Ads API</a></li>
 </ul>
-<h3 id="configure-settings">Configure settings</h3>
+<h2 id="configure-settings">Configure settings</h2>
 <p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>When you add this connector you are prompted to accept the vendor&rsquo;s data platform policy.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
 <li><strong>Customer ID</strong><br>
-<br>Required: Provide Ads account customer ID to manage.</li>
+Required: Provide Ads account customer ID to manage.</li>
 <li><strong>Manager Customer ID</strong><br>
-<br>Optional: If you&rsquo;re accessing a client customer, the Manager Customer ID must be set.</li>
+Optional: If you&rsquo;re accessing a client customer, the Manager Customer ID must be set.</li>
 </ul>
-<h2 id="actions">Actions</h2>
+<h2 id="action-settings---parameters-and-options">Action settings - parameters and options</h2>
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="user-identifiers">User Identifiers</h3>
@@ -791,9 +794,9 @@ var utag_data = {
 <p>You can map attributes that are already normalized and hashed or you can allow the connector to normalize and hash them for you. Select the appropriate mapping for your scenario.</p>
 <p>The required user identifier is based on the <code>User List</code> type selected. The <code>User List</code> type can be one of the following:</p>
 <ul>
-<li>CONTACT_INFO</li>
-<li>CRM_ID</li>
-<li>MOBILE_ADVERTISING_ID</li>
+<li><code>CONTACT_INFO</code></li>
+<li><code>CRM_ID</code></li>
+<li><code>MOBILE_ADVERTISING_ID</code></li>
 </ul>
 <p>The following user identifier fields are supported:</p>
 <table>
@@ -818,7 +821,7 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<h3 id="add-user-to-remarketing-list">Add User to Remarketing List</h3>
+<h3 id="action---add-user-to-remarketing-list">Action - Add User to Remarketing List</h3>
 <h4 id="batch-limits">Batch Limits</h4>
 <p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
 <ul>
@@ -841,7 +844,7 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<h3 id="remove-user-from-remarketing-list">Remove User from Remarketing List</h3>
+<h3 id="action---remove-user-from-remarketing-list">Action - Remove User from Remarketing List</h3>
 <h4 id="batch-limits-1">Batch Limits</h4>
 <p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
 <ul>
@@ -864,7 +867,7 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<h3 id="bulk-add-users-to-remarketing-list">Bulk Add Users to Remarketing List</h3>
+<h3 id="action---bulk-add-users-to-remarketing-list">Action - Bulk Add Users to Remarketing List</h3>
 <h4 id="batch-limits-2">Batch Limits</h4>
 <p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
 <ul>
@@ -887,7 +890,7 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<h3 id="bulk-remove-users-from-remarketing-list">Bulk Remove Users from Remarketing List</h3>
+<h3 id="action---bulk-remove-users-from-remarketing-list">Action - Bulk Remove Users from Remarketing List</h3>
 <h4 id="batch-limits-3">Batch Limits</h4>
 <p>This action uses batched requests to support high-volume data transfers to the vendor. Requests are queued until one of the following thresholds is met:</p>
 <ul>
@@ -970,7 +973,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 19, 2022 
+          <p>This page was last updated:  September 7, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -984,15 +987,15 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector actions</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#api-information">API information</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure settings</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#actions">Actions</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action settings - parameters and options</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#user-identifiers">User Identifiers</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-user-to-remarketing-list">Add User to Remarketing List</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#remove-user-from-remarketing-list">Remove User from Remarketing List</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#bulk-add-users-to-remarketing-list">Bulk Add Users to Remarketing List</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#bulk-remove-users-from-remarketing-list">Bulk Remove Users from Remarketing List</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---add-user-to-remarketing-list">Action - Add User to Remarketing List</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---remove-user-from-remarketing-list">Action - Remove User from Remarketing List</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---bulk-add-users-to-remarketing-list">Action - Bulk Add Users to Remarketing List</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---bulk-remove-users-from-remarketing-list">Action - Bulk Remove Users from Remarketing List</a></li>
               </nav>
   </aside></nav>
 
@@ -1194,6 +1197,8 @@ No</button>
   
   
   
+  
+  
 </ul>
 
 </div>
@@ -1201,6 +1206,8 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
   
   
   
