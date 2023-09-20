@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "platforms",
-    reading_time  : "2",
+    reading_time  : "3",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -212,7 +212,7 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/platforms/javascript/universal-data-object/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Universal Data Object (utag_data)</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/platforms/javascript/data-layer-object/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Data Layer Object (b)</a>
+        <a href="/platforms/javascript/data-layer-object/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Data layer object (b)</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/platforms/javascript/single-page-applications/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Single-Page Applications</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -283,10 +283,47 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="utagloadersc"><code>utag.loader.SC()</code></h2>
-<p>This function sets and deletes multi-value cookies inside the namespace <code>utag_</code>. It is commonly used to set <code>utag_main</code> subcookies to avoid adding extra cookies.</p>
-<p>To minimize the number of cookies on your domain, we recommended setting a multi-value cookie object. A multi-value cookie stores several values, as key-value pairs, within one cookie namespace. The function is commonly used to set <code>utag_main</code></p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>This is the same function used by the <a href="/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist Data Value extension</a>.</p>
+  <h2 id="utagloaderrc"><code>utag.loader.RC</code></h2>
+<p>The method <code>utag.loader.RC</code> reads and returns all accessible cookies and groups cookies in the <code>utag_</code> namespace into objects.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">loader</span>.<span style="color:#a6e22e">RC</span>()
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;trace_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;123456&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;utagdb&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;true&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;utag_main&#34;</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;_sn&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ses_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1686564817915&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;persist_data_value&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1686564817918&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;_se&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;_ss&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;_st&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1686566634755&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;_pn&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;utag_custom&#34;</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;testval1&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;abc123&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;testval2&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;bcd234&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;some_other_cookie&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;someval&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The optional first argument returns the specified cookie if it exists, or an empty object if it doesn&rsquo;t.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">loader</span>.<span style="color:#a6e22e">RC</span>(<span style="color:#e6db74">&#34;trace_id&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74">&#34;123456&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">loader</span>.<span style="color:#a6e22e">RC</span>(<span style="color:#e6db74">&#34;some_other_cookie&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74">&#34;someval&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">loader</span>.<span style="color:#a6e22e">RC</span>(<span style="color:#e6db74">&#34;utag_custom&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;testval1&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;abc123&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;testval2&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;bcd234&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">loader</span>.<span style="color:#a6e22e">RC</span>(<span style="color:#e6db74">&#34;this_cookie_does_not_exist&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span> {}
+</span></span></code></pre></div><h2 id="utagloadersc"><code>utag.loader.SC</code></h2>
+<p>The <code>utag.loader.SC</code> method sets and deletes cookies within the <code>utag_</code> namespace.</p>
+<p>When set to use multi-value cookies, the <code>utag.js</code> script creates and manages a single cookie called <code>utag_main</code>. This cookie contains multiple values that keep track of the visitor session. Standalone cookies split this multi-value cookie into individual cookies that are easier to explain, audit and understand.</p>
+<p>Regardless of the <code>utag.js</code> version or the <code>split_cookie</code> setting, the changes take place behind the scenes in these cookie functions - all existing behavior is preserved, except for the way cookies are stored.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Migration to utag 4.50 doesn&rsquo;t require a technical update of existing implementations, but any cookie notices that inform your users about specific cookies should be updated.</p>
 <p>The following format demonstrates how to set a cookie by identifying the cookie&rsquo;s namespace, name, value, optional expiration time, and optional flag for specifying additional functionality:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">loader</span>.<span style="color:#a6e22e">SC</span>(<span style="color:#a6e22e">namespace</span>, {<span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value;exp-expiry&#34;</span>}, <span style="color:#a6e22e">flag</span>);
 </span></span></code></pre></div><table>
@@ -325,8 +362,9 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<p><strong>Expiry Options</strong><br>
-The following cookie expiry options are available:</p>
+<p class="tip"><i class="fa fa-info-circle"></i>This is the same function used by the <a href="/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist Data Value extension</a>.</p>
+<h3 id="expiry-options">Expiry Options</h3>
+<p>The following cookie expiry options are available:</p>
 <table>
 <thead>
 <tr>
@@ -364,20 +402,28 @@ The following cookie expiry options are available:</p>
 <li><strong>4.27+</strong> - default expiry is 1 year after the creation of the cookie.</li>
 <li><strong>4.26 or older</strong> - default expiry is the year 2099.</li>
 </ul>
-<p><strong>Set a Cookie</strong><br>
-To set a multi-value cookie, pass an object of key-value pairs of to the <code>value</code> parameter.</p>
-<p>The following example creates a multi-value cookie named <code>utag_multi</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">loader</span>.<span style="color:#a6e22e">SC</span>(<span style="color:#e6db74">&#34;utag_multi&#34;</span>, {
+<h3 id="set-a-cookie">Set a Cookie</h3>
+<p>To set a cookie, pass an object of key-value pairs to the <code>value</code> parameter as shown below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">loader</span>.<span style="color:#a6e22e">SC</span>(<span style="color:#e6db74">&#34;utag_cookie&#34;</span>, {
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;uid&#34;</span>      <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;012345689&#34;</span>,      <span style="color:#75715e">// default expiry
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#e6db74">&#34;test_seg&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;groupA;exp-12h&#34;</span>, <span style="color:#75715e">// 12 hour expiry
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#e6db74">&#34;aff&#34;</span>      <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;SiteAff1;exp-7d&#34;</span> <span style="color:#75715e">// 7 day expiry
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>});
-</span></span></code></pre></div><p><strong>Delete a Cookie</strong><br>
-To delete one or more cookie values, use the optional <code>flag</code> parameter.</p>
-<p>Delete one or more values from a multi-value cookie. Each key-value pair specified is deleted:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">loader</span>.<span style="color:#a6e22e">SC</span>(<span style="color:#e6db74">&#34;utag_multicookie&#34;</span>, {<span style="color:#e6db74">&#34;test_seg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;aff&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>}, <span style="color:#e6db74">&#34;d&#34;</span>);
-</span></span></code></pre></div><p>Delete all values from a multi-value cookie:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">loader</span>.<span style="color:#a6e22e">SC</span>(<span style="color:#e6db74">&#34;utag_multicookie&#34;</span>, {}, <span style="color:#e6db74">&#34;da&#34;</span>);
+</span></span></code></pre></div><p><strong>Standalone Cookies (recommended)</strong></p>
+<p>If the <code>split_cookie</code> setting is set to <code>true</code> (the default value in utag version 4.50 or later), the example above creates the following standalone cookies:</p>
+<ul>
+<li><code>utag_cookie_uid</code></li>
+<li><code>utag_cookie_test_seg</code></li>
+<li><code>utag_cookie_aff</code></li>
+</ul>
+<p><strong>Multi-value Cookie</strong></p>
+<p>If the <code>split_cookie</code> setting is set to <code>false</code> or the utag version is 4.49 or earlier, the example above creates a multi-value cookie named <code>utag_cookie</code> with three built-in values <code>uid</code>, <code>test_seg</code>, and <code>aff</code>.</p>
+<h3 id="delete-a-cookie">Delete a Cookie</h3>
+<p>To delete one or more cookie values, use the optional <code>flag</code> parameter.</p>
+<p>Delete one or more values from a <code>utag_</code> cookie namespace. Each key-value pair specified is deleted:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">loader</span>.<span style="color:#a6e22e">SC</span>(<span style="color:#e6db74">&#34;utag_cookie&#34;</span>, {<span style="color:#e6db74">&#34;test_seg&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;aff&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&#34;</span>}, <span style="color:#e6db74">&#34;d&#34;</span>);
+</span></span></code></pre></div><p>Delete all values in a <code>utag_</code> cookie namespace or a specified standalone cookie:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">loader</span>.<span style="color:#a6e22e">SC</span>(<span style="color:#e6db74">&#34;utag_cookie&#34;</span>, {}, <span style="color:#e6db74">&#34;da&#34;</span>);
 </span></span></code></pre></div>
 </div>
 
@@ -423,7 +469,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  September 20, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -437,7 +483,11 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#utagloadersc">utag.loader.SC()</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#utagloaderrc">utag.loader.RC</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#utagloadersc">utag.loader.SC</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#expiry-options">Expiry Options</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#set-a-cookie">Set a Cookie</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#delete-a-cookie">Delete a Cookie</a></li>
               </nav>
   </aside></nav>
 
@@ -674,7 +724,7 @@ No</button>
       
       <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/platforms/javascript/data-layer-object/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
-          Data Layer Object (b)
+          Data layer object (b)
       </a>
       </li>
       

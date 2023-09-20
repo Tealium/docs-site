@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "platforms",
-    reading_time  : "21",
+    reading_time  : "23",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -212,7 +212,7 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/platforms/javascript/universal-data-object/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Universal Data Object (utag_data)</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/platforms/javascript/data-layer-object/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Data Layer Object (b)</a>
+        <a href="/platforms/javascript/data-layer-object/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Data layer object (b)</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/platforms/javascript/single-page-applications/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Single-Page Applications</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -275,6 +275,34 @@ var utag_data = {
 <div class="prose nested-links" id="prose">
   <p>Below is a complete list of changes for each release of <code>utag.js</code>.</p>
 <p><a href="/iq-tag-management/templates/manage/">Update your copy of <code>utag.js</code></a> to take advantage of the latest fixes and enhancements.</p>
+<h2 id="450-august-2023">4.50 (August 2023)</h2>
+<p>Version 4.50 provides more transparency and control over cookies written by <code>utag.js</code>.</p>
+<p>Previously, we recommended using multi-value cookies (multicookies). However, due to the increasing demand for transparency and simplicity, particularly for data privacy audits, we have revised our recommendation. Now, we advise using standalone cookies, and they are also set as the default option.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Be sure to update Tealium Collect and all active Consent management templates, especially the Event Logging feature, when you update to <code>utag.js</code> version 4.50.</p>
+<p>This release includes the following updates:</p>
+<ul>
+<li>Writes standalone cookies instead of multi-value cookies for <code>utag_main</code> cookies by default - <code>utag_main</code> itself is no longer written. To keep the legacy multicookie behavior, set the <a href="/platforms/javascript/settings/#split_cookie"><code>split_cookie</code></a> setting to <code>false</code>.</li>
+<li>Moves responsibility for <code>utag_main_v_id</code> from utag to the Tealium Collect Tag by default. To set the <code>utag_main_v_id</code> cookie in <code>utag.js</code>, set <a href="/platforms/javascript/settings#always_set_v_id"><code>always_set_v_id</code></a> to <code>true</code>.</li>
+<li>Adds a new <code>id</code> element in the Consent Manager cookie for logging consent. When this cookie is first set, it&rsquo;ll match any <code>utag_main_v_id</code> values found, after which it won&rsquo;t be changed. That behavior prioritizes maintaining the link between the user and the logged events, and means that a match isn&rsquo;t guaranteed in all cases.</li>
+<li>Can easily be upgraded by updating the relevant <a href="/iq-tag-management/templates/about/">templates</a>.</li>
+<li>Adds the following utag settings:
+<ul>
+<li><a href="/platforms/javascript/settings/#split_cookie"><code>split_cookie</code></a> - Set to <code>false</code> to use legacy multi-value cookies.</li>
+<li><a href="/platforms/javascript/settings/#split_cookie_allowlist"><code>split_cookie_allowlist</code></a> - Specifies an array of allowed <code>utag_main</code> subcookies.</li>
+<li><a href="/platforms/javascript/settings/#always_set_v_id"><code>always_set_v_id</code></a> - Sets the <code>utag_main_v_id</code> cookie or the <code>v_id</code> component of <code>utag_main</code>.</li>
+</ul>
+</li>
+<li>Updates the following templates:
+<ul>
+<li>utag <code>loader</code> to version 4.50, to update cookie behavior</li>
+<li><code>cmGeneral</code> to version 3.0.12, to add centralized logic for generating or retreiving a device ID that can be called from consent logging templates</li>
+<li><code>cmDoNotSell</code> to version 1.4.0, to call the centralized logic</li>
+<li><code>fullConsentEventHandler</code> to version 1.0.3, to call the centralized logic</li>
+<li><code>partialConsentEventHandler</code> to version 1.0.3, to call the centralized logic</li>
+<li><code>Collect</code> to version <code>tv:20064.20230519</code> (released in May 2023)</li>
+</ul>
+</li>
+</ul>
 <h2 id="449-september-2022">4.49 (September 2022)</h2>
 <ul>
 <li>Values from <code>localStorage</code> and <code>sessionStorage</code> are automatically added to the <a href="/platforms/javascript/data-layer/#local-and-session-storage">data layer object</a>.</li>
@@ -289,10 +317,10 @@ var utag_data = {
 <h4 id="447-january-2021">4.47 (January 2021)</h4>
 <ul>
 <li>
-<p>Adds defensive code for potential jQuery vulnerability. Checks to make sure the <code>src</code> of a JavaScript file is set directly and not inherited from a compromised <code>Object.prototype</code>.  This issue was fixed in jQuery 3.5.0, but re-introduced in <a href="https://blog.jquery.com/2020/05/04/jquery-3-5-1-released-fixing-a-regression/">3.5.1</a>.</p>
+<p>Adds defensive code for potential jQuery vulnerability. Checks to make sure the <code>src</code> of a JavaScript file is set directly and not inherited from a compromised <code>Object.prototype</code>. This issue was fixed in jQuery 3.5.0, but re-introduced in <a href="https://blog.jquery.com/2020/05/04/jquery-3-5-1-released-fixing-a-regression/">3.5.1</a>.</p>
 </li>
 <li>
-<p>Update to check for <code>Array</code> type with the built-in <code>utag.ut.typeOf</code> function instead of using <code>instance of</code>.  Fixes issue with <code>utag.js</code> running in iframe in a testing environment (such as Cypress) and JavaScript <code>instance of</code> operation not working correctly.</p>
+<p>Update to check for <code>Array</code> type with the built-in <code>utag.ut.typeOf</code> function instead of using <code>instance of</code>. Fixes issue with <code>utag.js</code> running in iframe in a testing environment (such as Cypress) and JavaScript <code>instance of</code> operation not working correctly.</p>
 </li>
 </ul>
 <h4 id="446-june-2018">4.46 (June 2018)</h4>
@@ -303,11 +331,11 @@ var utag_data = {
 <li><code>tealium_session_event_number</code> - the cookie value in <code>utag.data['cp.utag_main__se']</code> that counts the number of tracking calls (<code>utag.view()</code>, <code>utag.link()</code>) in the current session (visit). This is useful for Single Page Apps (SPAs) where there is only one page load with many tracked events on that page. For pages using the <code>noview</code> flag, the value is &lsquo;1&rsquo; for both page load (load rule evaluation) and the first call to <code>utag.view()</code>.</li>
 </ul>
 </li>
-<li>Adds support for an empty param list passed into <code>utag.link</code>, <code>utag.view</code> or <code>utag.track</code> calls.  In previous versions, calls to <code>utag.link()</code> or <code>utag.view()</code> work fine, but gets an extra &ldquo;cfg&rdquo; object added to the data layer. Calls to <code>utag.track()</code> causes an exception in previous versions.</li>
+<li>Adds support for an empty param list passed into <code>utag.link</code>, <code>utag.view</code> or <code>utag.track</code> calls. In previous versions, calls to <code>utag.link()</code> or <code>utag.view()</code> work fine, but gets an extra &ldquo;cfg&rdquo; object added to the data layer. Calls to <code>utag.track()</code> causes an exception in previous versions.</li>
 <li>For pages using <code>noview</code> flag, there are two things to keep in mind:
 <ul>
 <li>The data layer will have a &lsquo;1&rsquo; value for <code>tealium_session_event_number</code> for both page load (<code>utag.js</code> uses data layer to loads in tags) and first call to <code>utag.view</code> (which fires tags and/or loads in more tags.)</li>
-<li>Because cookies are used and initialized at page load time, if the <code>utag.view</code> call does not happen in time on the first page, and the page is refreshed in browser, it moves to &lsquo;2&rsquo; for the first <code>utag.view</code> call which happens on second page.  This is an edge case since most implementations calls <code>utag.view</code> immediately after <code>utag.js</code> executes.</li>
+<li>Because cookies are used and initialized at page load time, if the <code>utag.view</code> call does not happen in time on the first page, and the page is refreshed in browser, it moves to &lsquo;2&rsquo; for the first <code>utag.view</code> call which happens on second page. This is an edge case since most implementations calls <code>utag.view</code> immediately after <code>utag.js</code> executes.</li>
 </ul>
 </li>
 <li>This update also includes fixes for the &ldquo;OU&rdquo; function used by legacy Privacy Manager Extension.
@@ -325,13 +353,13 @@ var utag_data = {
 <h4 id="444-june-2017">4.44 (June 2017)</h4>
 <ul>
 <li>Added support for visitor session counting for <code>utag.js</code> hosted on &ldquo;tags.tiqcdn.cn&rdquo; (China).</li>
-<li>Updated the default <code>utag_main</code> cookie domain logic for domains following the pattern &ldquo;example.XX.jp&rdquo; (where cookies cannot be set in the XX.jp domain, but are set in &ldquo;example.XX.jp&rdquo; domain).</li>
+<li>Updated the default <code>utag_main</code> cookie domain logic for domains following the pattern <code>example.XX.jp</code> (where cookies cannot be set in the XX.jp domain, but are set in <code>example.XX.jp</code> domain).</li>
 </ul>
 <h4 id="443-june-2017">4.43 (June 2017)</h4>
 <ul>
 <li>Removed use of global variable <code>i</code> &ndash; previously used in loop through global variable <code>utag_cfg_ovrd</code> (config override object)</li>
 <li>Removed legacy s2s support (as this was previously removed from Tealium iQ.)  Cloud Delivery supported in Tealium Customer Data Hub.</li>
-<li>Adds support for error handler function passed into <code>utag.ut.loader</code> utility function.  This is only for modern browsers (older browser may the standard callback &ldquo;cb&rdquo; function instead)</li>
+<li>Adds support for error handler function passed into <code>utag.ut.loader</code> utility function. This is only for modern browsers (older browser may the standard callback &ldquo;cb&rdquo; function instead)</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">ut</span>.<span style="color:#a6e22e">loader</span>({
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;src&#34;</span>   <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://www.example.com/path/file.js&#34;</span>,
@@ -351,7 +379,7 @@ The account string value in the path to the <code>utag.js</code> file</li>
 <li><code>tealium_profile</code>
 The profile string value in the path to the <code>utag.js</code> file</li>
 <li><code>tealium_environment</code>
-The environment string value in the path to the <code>utag.js</code> file. For example, &ldquo;dev&rdquo; or &ldquo;prod&rdquo;.</li>
+The environment string value in the path to the <code>utag.js</code> file. For example, &ldquo;dev&rdquo; or &ldquo;prod.&rdquo;</li>
 <li><code>tealium_datasource</code>
 The data source key from Tealium EventStream.</li>
 <li><code>tealium_random</code>
@@ -442,7 +470,7 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on old
 <ul>
 <li>Fixed a bug in which the Data Layer was not preserved for <code>utag.view()</code> calls made in rapid succession. Now a snapshot of the Data Layer is preserved for each call.</li>
 <li>Added more debugging output for manual <code>utag.view()</code> and <code>utag.link()</code> calls.</li>
-<li>Added a new utility function: <code>utag.ut.typeOf()</code>. For example, <code>utag.ut.typeOf([])</code> returns the value &ldquo;array&rdquo;.</li>
+<li>Added a new utility function: <code>utag.ut.typeOf()</code>. For example, <code>utag.ut.typeOf([])</code> returns the value &ldquo;array.&rdquo;</li>
 </ul>
 <h4 id="434-october-2014">4.34 (October 2014)</h4>
 <ul>
@@ -462,8 +490,8 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on old
 <h4 id="432-august-2014">4.32 (August 2014)</h4>
 <ul>
 <li>Fixed a bug with Publish Settings so that you may now enable both the <a href="/iq-tag-management/save-publish/publish-configuration/">Ready Wait Flag and Bundling Libs publish settings</a> for the same profile.</li>
-<li>Fixed a bug in which enabling the Ready Wait Flag setting caused the <a href="#version-4-26">utag.cfg.noview flag</a> to reset to &ldquo;false&rdquo; if you had set it to &ldquo;true&rdquo;.</li>
-<li>Introducing the new configuration flag, Wait Timer (<code>utag_cfg_ovrd.waittimer</code>). Tags do not load until the DOM Ready signal goes out. With this flag set exactly how long after the DOM Ready signal the Tags wait before they load. Setting this flag exposes the load time of a webpage without including the load times of 3rd-party vendor Tags. You set this value in milliseconds.</li>
+<li>Fixed a bug in which enabling the Ready Wait Flag setting caused the <a href="#version-4-26">utag.cfg.noview flag</a> to reset to &ldquo;false&rdquo; if you had set it to &ldquo;true.&rdquo;</li>
+<li>Introducing the new configuration flag, Wait Timer (<code>utag_cfg_ovrd.waittimer</code>). Tags do not load until the DOM Ready signal goes out. With this flag set exactly how long after the DOM Ready signal the Tags wait before they load. Setting this flag exposes the load time of a webpage without including the load times of third-party vendor Tags. You set this value in milliseconds.</li>
 </ul>
 <p>Here is an example of how to set the Wait Timer flag:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_cfg_ovrd</span><span style="color:#f92672">=</span>{};
@@ -481,7 +509,7 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on old
 <h4 id="430-april-2014">4.30 (April 2014)</h4>
 <ul>
 <li>Fixes a bug with the IE browser (9 and earlier) in which manual <code>utag.view</code> calls do not fire if your last Tag set to <a href="/iq-tag-management/templates/manage/">Wait = Yes</a> did not fire and <code>utag.X.js</code> files were cached.</li>
-<li>The <code>utag.js</code> now uses the values in the OPTOUTMULTI (<a href="/iq-tag-management/extensions/extensions-list/privacy-manager-extension/">Privacy Manager Extension</a>) cookie for every <code>utag.view</code> call.  Tags that are opted-out no longer fire for <code>utag.view</code> calls fired with AJAX content.</li>
+<li>The <code>utag.js</code> now uses the values in the OPTOUTMULTI (<a href="/iq-tag-management/extensions/extensions-list/privacy-manager-extension/">Privacy Manager Extension</a>) cookie for every <code>utag.view</code> call. Tags that are opted-out no longer fire for <code>utag.view</code> calls fired with AJAX content.</li>
 </ul>
 <h4 id="429-april-2014">4.29 (April 2014)</h4>
 <ul>
@@ -533,7 +561,7 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on old
 <p><strong>Best Practice:</strong> If you want to load custom JavaScript for a tag but you do not want it to be a blocking tag, use the <a href="/iq-tag-management/tags/tealium-generic-tag/">Tealium Generic Tag</a> to load it.</p>
 <p><strong>Wait Flag Improvement</strong></p>
 <p>The <a href="/iq-tag-management/templates/manage/">Wait Flag is an advanced setting</a> within tag configuration.</p>
-<p>Tags whose <strong>Wait Flag</strong> is set to  &ldquo;No&rdquo; load and fire immediately after the <code>utag.js</code> file loads. Those tags, whose <strong>Wait Flag</strong> is set to &ldquo;No&rdquo;, that load sooner may fire sooner, regardless of their order in Tealium iQ. For example, if Tag 2 loads before Tag 1, and Tag 1 is placed higher in the Tags tab in Tealium iQ, Tag 2 may still fire sooner, despite the order they&rsquo;re in. Previously, tags executed in the order specified in Tealium iQ. These tags then waited for tags placed higher in the order to load before loading themselves.</p>
+<p>Tags whose <strong>Wait Flag</strong> is set to  &ldquo;No&rdquo; load and fire immediately after the <code>utag.js</code> file loads. Those tags, whose <strong>Wait Flag</strong> is set to &ldquo;No,&rdquo; that load sooner may fire sooner, regardless of their order in Tealium iQ. For example, if Tag 2 loads before Tag 1, and Tag 1 is placed higher in the Tags tab in Tealium iQ, Tag 2 may still fire sooner, despite the order they&rsquo;re in. Previously, tags executed in the order specified in Tealium iQ. These tags then waited for tags placed higher in the order to load before loading themselves.</p>
 <p>This means that you may now have a mixture of tags with their Wait Flag set to &lsquo;No&rsquo; and tags with their Wait Flag set to &lsquo;Yes&rsquo; in the same profile.</p>
 <p><strong>Control Load Rules-based Tracking for AJAX</strong></p>
 <p>Subsequent <code>utag.view()</code> calls on the page trigger load rules to load new tags. In previous versions, a <code>utag.view</code> call does not load new tags. This feature is enabled by default in <code>utag.js</code> 4.26.</p>
@@ -617,7 +645,7 @@ Set this flag to <code>true</code> if you wish to control when the initial <code
 <p>Accidentally Firing Multiple Orders - The <code>utag.link</code> and <code>utag.view</code> calls now have all of the &ldquo;DOM&rdquo; type of data points available in every call. For example, the query string data such as <code>b[&quot;qp.order_id&quot;]</code> is read on the page load and trigger an order event. However, if you fire a <code>utag.link</code> call on that same order page, it also has the <code>b[&quot;qp.order_id&quot;]</code> data set and trigger a second order event.</p>
 </li>
 <li>
-<p>For most intuitive behavior, we recommend setting all <code>utag_data</code> values before you load in the <code>utag.js</code> file. And keep <code>utag.cfg.load_rules_at_wait</code> at &ldquo;false&rdquo;, which is the default.</p>
+<p>For most intuitive behavior, we recommend setting all <code>utag_data</code> values before you load in the <code>utag.js</code> file. And keep <code>utag.cfg.load_rules_at_wait</code> at &ldquo;false,&rdquo; which is the default.</p>
 </li>
 <li>
 <p>Be aware that updating to <code>utag.js</code> 4.26 changes the default behavior for lower casing your query string params. Values are no longer automatically lower-cased.</p>
@@ -718,7 +746,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 6, 2023 
+          <p>This page was last updated:  September 20, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -732,7 +760,8 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#449-september-2022">4.49 (September 2022)</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#450-august-2023">4.50 (August 2023)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#449-september-2022">4.49 (September 2022)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#445---448">4.45 - 4.48</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#443---444">4.43 - 4.44</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#440---442">4.40 - 4.42</a></li>
@@ -976,7 +1005,7 @@ No</button>
       
       <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/platforms/javascript/data-layer-object/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
-          Data Layer Object (b)
+          Data layer object (b)
       </a>
       </li>
       

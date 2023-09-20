@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "platforms",
-    reading_time  : "5",
+    reading_time  : "6",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -212,7 +212,7 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/platforms/javascript/universal-data-object/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Universal Data Object (utag_data)</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/platforms/javascript/data-layer-object/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Data Layer Object (b)</a>
+        <a href="/platforms/javascript/data-layer-object/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Data layer object (b)</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/platforms/javascript/single-page-applications/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Single-Page Applications</a>
       </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
@@ -291,7 +291,11 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td><a href="#cmcookiename"><code>cmcookiens</code></a></td>
+<td><a href="#always_set_v_id"><code>always_set_v_id</code></a></td>
+<td>Set the <code>utag_main_v_id</code> cookie or <code>v_id</code> component of <code>utag_main</code>. Default: <code>false</code></td>
+</tr>
+<tr>
+<td><a href="#cmcookiens"><code>cmcookiens</code></a></td>
 <td>Consent management cookie name.</td>
 </tr>
 <tr>
@@ -299,7 +303,7 @@ var utag_data = {
 <td>Set the number of days to retain the user&rsquo;s consent preference.</td>
 </tr>
 <tr>
-<td><a href="#dom-complete"><code>dom_complete</code></a></td>
+<td><a href="#dom_complete"><code>dom_complete</code></a></td>
 <td>Delay tags until the DOM complete (load) event.</td>
 </tr>
 <tr>
@@ -311,11 +315,11 @@ var utag_data = {
 <td>Specify the name of the data layer variable which stores the language setting to be used by the consent manager.</td>
 </tr>
 <tr>
-<td><a href="#load-rules-ajax"><code>load_rules_ajax</code></a></td>
+<td><a href="#load_rules_ajax"><code>load_rules_ajax</code></a></td>
 <td>Disable load rules after page load (legacy).</td>
 </tr>
 <tr>
-<td><a href="#load-rules-at-wait"><code>load_rules_at_wait</code></a></td>
+<td><a href="#load_rules_at_wait"><code>load_rules_at_wait</code></a></td>
 <td>Run load rules after extensions (legacy).</td>
 </tr>
 <tr>
@@ -347,12 +351,20 @@ var utag_data = {
 <td>Halt operations until the DOM-ready browser event.</td>
 </tr>
 <tr>
-<td><a href="#secure-cookie"><code>secure_cookie</code></a></td>
-<td>Set the attribute string to <code>secure</code> for all <code>utag_main</code> cookies set by the <a href="/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist Data Values extension</a> and the <a href="/platforms/javascript/api/cookie-functions/#utag-loader-sc"><code>SC()</code></a> function.</td>
+<td><a href="#secure_cookie"><code>secure_cookie</code></a></td>
+<td>Set the attribute string to <code>secure</code> for all <code>utag_main</code> cookies set by the <a href="/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist Data Values extension</a> and the <a href="/platforms/javascript/api/cookie-functions/#utagloadersc"><code>utag.loader.SC</code></a> method.</td>
 </tr>
 <tr>
-<td><a href="#session-timeout"><code>session_timeout</code></a></td>
+<td><a href="#session_timeout"><code>session_timeout</code></a></td>
 <td>Set the session expiration time (in milliseconds).</td>
+</tr>
+<tr>
+<td><a href="#split_cookie"><code>split_cookie</code></a></td>
+<td>Splits the <code>utag_main</code> cookie into standalone cookies. Default: <code>true</code></td>
+</tr>
+<tr>
+<td><a href="#split_cookie_allowlist"><code>split_cookie_allowlist</code></a></td>
+<td>An array of allowed <code>utag_main</code> subcookies or standalone cookies.</td>
 </tr>
 <tr>
 <td><a href="#waittimer"><code>waittimer</code></a></td>
@@ -368,7 +380,12 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<h3 id="cmcookiens"><code>cmcookiens</code></h3>
+<h3 id="always_set_v_id"><code>always_set_v_id</code></h3>
+<p><strong>Set the <code>utag_main_v_id</code> cookie or <code>v_id</code> component of <code>utag_main</code></strong><br>
+As of utag 4.50, the <code>v_id</code> component of <code>utag_main</code> is set by default in the Tealium Collect tag. <code>always_set_v_id</code> sets the <code>utag_main_v_id</code> cookie (if <a href="#split-cookie"><code>split_cookie</code></a> is enabled) or the <code>v_id</code> component of <code>utag_main</code> (if <a href="#split-cookie"><code>split_cookie</code></a> is disabled) in <code>utag.js</code> and not in Tealium Collect. (Default: <code>false</code>)</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Requires <code>utag.js</code> version 4.50</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JavaScript" data-lang="JavaScript"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">always_set_v_id</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span></code></pre></div><h3 id="cmcookiens"><code>cmcookiens</code></h3>
 <p><strong>Consent Management cookie name</strong><br>
 Customize the Consent Management cookie name, which is useful when different profiles share the same domain name.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JavaScript" data-lang="JavaScript"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">cmcookiens</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;CONSENTMGR_NL-CMB-CG1&#34;</span>;
@@ -378,7 +395,7 @@ Set the number of days to retain GDPR and CCPA consent status. The built-in expi
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">consentPeriod</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">60</span>;
 </span></span></code></pre></div><h3 id="dom_complete"><code>dom_complete</code></h3>
 <p><strong>Delay tags until the DOM complete (load) browser event</strong><br>
-Load tags at the <a href="https://developer.mozilla.org/en-US/docs/Web/Events/load">document load event</a> rather than at DOM Ready.  This also holds back any extensions scoped to DOM Ready.  (Default: <code>false</code>)</p>
+Load tags at the <a href="https://developer.mozilla.org/en-US/docs/Web/Events/load">document load event</a> rather than at DOM Ready. This also holds back any extensions scoped to DOM Ready. (Default: <code>false</code>)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">dom_complete</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><h3 id="domain"><code>domain</code></h3>
 <p><strong>Override cookie domain</strong><br>
@@ -392,11 +409,11 @@ Specify the name of the data layer variable which stores the language to be used
 </span></span><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">gdprDLRef</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;site_language&#34;</span>;
 </span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>Do not set the language code directly. This override setting expects a variable name, not a language code value.</p>
 <h3 id="ignorelocalstorage"><code>ignoreLocalStorage</code></h3>
-<p><strong>Ignore local storage variables</strong><br>
+<p><strong>Ignore local storage variables</strong>
 Ignores any local storage variables. (Default: <code>false</code>)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">ignoreLocalStorage</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><h3 id="ignoresessionstorage"><code>ignoreSessionStorage</code></h3>
-<p><strong>Ignore session storage variables</strong><br>
+<p><strong>Ignore session storage variables</strong>
 Ignores any session storage variables. (Default: <code>false</code>)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">ignoreSessionStorage</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><h3 id="load_rules_ajax"><code>load_rules_ajax</code></h3>
@@ -438,8 +455,8 @@ Only set this option if a visitor has explicitly opted out of all cookies. (Defa
 </span></span></code></pre></div><h3 id="path"><code>path</code></h3>
 <p><strong>Publish URL path</strong><br>
 Sets the publishing URL path for your tag templates, overriding the Publish URLs fields in the <a href="/iq-tag-management/save-publish/publish-configuration/">Publish Configuration dialog</a>, if specified. Setting the publishing URL path can be useful for self-hosting and <a href="/iq-tag-management/administration/first-party-domains/about/">First Party Domains</a> customers.</p>
-<pre tabindex="0"><code>window.utag_cfg_ovrd.path = &#39;//tags.example.com/main/prod&#39;
-</code></pre><h3 id="readywait"><code>readywait</code></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;//tags.example.com/main/prod&#39;</span>;
+</span></span></code></pre></div><h3 id="readywait"><code>readywait</code></h3>
 <p><strong>Delay operations until DOM-ready</strong><br>
 Halt all operations until the DOM-ready signal is received from the browser. Extensions scoped to <strong>Pre Loader</strong> still run when <code>utag.js</code> loads. (Default: <code>0</code>)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">readywait</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
@@ -449,12 +466,29 @@ Set the attribute string to <code>secure</code> for all <code>utag_main</code> c
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Requires <code>utag.js</code> version 4.48</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">secure_cookie</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><h3 id="session_timeout"><code>session_timeout</code></h3>
-<p><strong>Session timeout</strong><br>
+<p><strong>Session timeout</strong>
 Sets how long to wait, in milliseconds, before expiring the current session. This is normally adjusted using the publish configuration setting for Session Timeout. (Default: <code>1800000</code> (30 minutes))</p>
 <p>Example to set the timeout to 900000 milliseconds (15 minutes):</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">session_timeout</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">900000</span>;
+</span></span></code></pre></div><h3 id="split_cookie"><code>split_cookie</code></h3>
+<p><strong>Standalone cookies</strong></p>
+<p>Determines if <code>utag_</code> namespace cookies (like the built-in <code>utag_main</code> cookie) should be written as multi-value cookies or as standalone cookies by <a href="/platforms/javascript/api/cookie-functions/#utagloadersc"><code>utag.loader.SC</code></a>. (Default: <code>true</code>)</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Requires <code>utag.js</code> version 4.50</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">split_cookie</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span></code></pre></div><h3 id="split_cookie_allowlist"><code>split_cookie_allowlist</code></h3>
+<p><strong><code>utag_main</code> subcookies</strong></p>
+<p>Specifies an array of allowed <code>utag_main</code> subcookies. The allowlist is only enforced if <code>split_cookie</code> is set to <code>true</code>, which is the default setting in version 4.50 and later.</p>
+<p>If <code>split_cookie_allowlist</code> is defined and active, the following applies:</p>
+<ul>
+<li><code>utag.loader.SC</code> sets only <code>utag_main</code> cookies.</li>
+<li>Only subcookies in this list are set in the <code>utag_main</code> namespace.</li>
+</ul>
+<p>If <code>split_cookie_allowlist</code> is not defined or <code>split_cookie</code> is not <code>true</code>, all <code>utag_</code> namespace cookies are allowed.</p>
+<p>Using this option without allowing <code>ses_id</code>, <code>_st</code>, and <code>_ss</code>inflates visitor and session counts, making all visits look like &ldquo;single page sessions.&rdquo;</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Requires <code>utag.js</code> version 4.50.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">split_cookie_allowlist</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;v_id&#34;</span>, <span style="color:#e6db74">&#34;_ss&#34;</span>, <span style="color:#e6db74">&#34;_st&#34;</span>, <span style="color:#e6db74">&#34;ses_id&#34;</span>];
 </span></span></code></pre></div><h3 id="waittimer"><code>waittimer</code></h3>
-<p><strong>Delay tags with timer</strong><br>
+<p><strong>Delay tags with timer</strong>
 Sets how long to wait (in milliseconds) after the DOM Ready event before loading tags. (Default: not set)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">waittimer</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>;
 </span></span></code></pre></div>
@@ -517,7 +551,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 10, 2023 
+          <p>This page was last updated:  September 20, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -533,7 +567,8 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How It Works</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#settings">Settings</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#cmcookiens">cmcookiens</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#always_set_v_id">always_set_v_id</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#cmcookiens">cmcookiens</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#consentperiod">consentPeriod</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#dom_complete">dom_complete</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#domain">domain</a></li>
@@ -551,6 +586,8 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#readywait">readywait</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#secure_cookie">secure_cookie</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#session_timeout">session_timeout</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#split_cookie">split_cookie</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#split_cookie_allowlist">split_cookie_allowlist</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#waittimer">waittimer</a></li>
               </nav>
   </aside></nav>
@@ -788,7 +825,7 @@ No</button>
       
       <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/platforms/javascript/data-layer-object/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
-          Data Layer Object (b)
+          Data layer object (b)
       </a>
       </li>
       

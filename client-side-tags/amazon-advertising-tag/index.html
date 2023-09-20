@@ -799,11 +799,12 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>This article describes how to set up the Amazon Advertising tag.</p>
-<p>Amazon Advertising System is an online advertising service which runs ads on the Amazon network. It is used to drive traffic and boost sales.</p>
+  <p>Amazon Advertising System is an online advertising service which runs ads on the Amazon network. It is used to drive traffic and boost sales.</p>
 <h2 id="tag-tips">Tag tips</h2>
 <ul>
 <li>Use mappings to override or dynamically set the tag configurations.</li>
+<li>To make Amazon Ads Event IDs available as server-side attributes for deduplication, set <strong>Generate Event ID</strong> to <code>true</code> and use the latest version of the Tealium Collect tag.</li>
+<li>The event ID attribute names will be in the format <code>amazon_event_id_&lt;EventName&gt;_&lt;TagUID&gt;</code> (for example <code>amazon_event_id_PageView_512.</code>).</li>
 </ul>
 <h2 id="tag-configuration">Tag configuration</h2>
 <p>Navigate to the Tag Marketplace to add a new tag. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
@@ -813,6 +814,7 @@ var utag_data = {
 <li><strong>Tag IDs</strong>: Support multiple values with CSV format</li>
 <li><strong>Automatic Pageview Tracking</strong>: When Automatic Pageview Tracking is set to <code>true</code>, if event equals <code>view</code>, Amazon event is set to to <code>Pageview</code>.</li>
 <li><strong>Automatic Purchase Tracking</strong>: When Automatic Purchase Tracking is set to <code>true</code>, if <code>order_id</code> is defined, Amazon event is set to to <code>Purchase</code>.</li>
+<li><strong>Generate Event ID</strong>: Automatically generate an event ID for every Amazon Ads tracking event. The event ID attribute names will be in the format <code>amazon_event_id_&lt;EventName&gt;_&lt;TagUID&gt;</code> (for example: <code>amazon_event_id_PageView_512</code>).</li>
 </ul>
 <h2 id="load-rules">Load rules</h2>
 <p>Load the tag on all pages or set conditions for when your tag will load. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
@@ -873,6 +875,16 @@ var utag_data = {
 <td style="text-align:left">Boolean</td>
 <td style="text-align:left"><ul><li>Toggle to enable or disable automatic Purchase tracking.</li><li>Toggles whether or not to automatically trigger a Purchase event when <code>order_id</code> is present.</li><li>Overrides tag config selection.</li></ul></td>
 </tr>
+<tr>
+<td style="text-align:left">Generate Event ID <code>generate_event_id</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left"><ul><li>Automatically generate an event ID for every Amazon Ads tracking event.</li><li>The event ID attribute names will be in the format <code>amazon_event_id_&lt;Event Name&gt;_&lt;Tag UID&gt;</code> (for example: <code>amazon_event_id_PageView_512</code>).</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Event ID <code>event_id</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left"><ul><li>The generated event ID.</li></ul></td>
+</tr>
 </tbody>
 </table>
 <h3 id="e-commerce">E-Commerce</h3>
@@ -889,6 +901,33 @@ var utag_data = {
 <td style="text-align:left">Order ID <code>order_id</code> (Overrides <code>_corder</code>)</td>
 <td style="text-align:left">String</td>
 <td style="text-align:left"><ul><li>Unique identifier assigned to the final order.</li><li>Overrides <code>_corder</code>.</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h3 id="enhanced-conversions">Enhanced Conversions</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Hashed Email <code>email</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">A SHA256-hashed version of the user&rsquo;s email address.</td>
+</tr>
+<tr>
+<td style="text-align:left">GDPR Enabled <code>gdpr.enabled</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Whether GDPR restrictions are active on the account.<ul><li><code>1</code> - GDPR restrictions are enabled.</li><li><code>0</code> - GDPR restrictions are not enabled.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">GDPR Consent <code>gdpr.consent</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">A valid <a href="https://iabtechlab.com/standards/gdpr-transparency-and-consent-framework/">IAB version 1 or 2 consent string</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -1012,7 +1051,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 18, 2022 
+          <p>This page was last updated:  September 7, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1034,6 +1073,7 @@ No</button>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data mappings</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration-1">Tag Configuration</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#e-commerce">E-Commerce</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#enhanced-conversions">Enhanced Conversions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#events">Events</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-specific-parameters">Event-specific Parameters</a></li>
               </nav>

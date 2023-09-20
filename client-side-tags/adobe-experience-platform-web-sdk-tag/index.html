@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "client-side-tags",
-    reading_time  : "11",
+    reading_time  : "15",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -917,6 +917,159 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>(document, document.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">href</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#34;adobe_authoring_enabled&#34;</span>) <span style="color:#f92672">!==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;body { opacity: 0 !important }&#34;</span>, <span style="color:#ae81ff">3000</span>);
 </span></span></code></pre></div><p>Update the <code>&quot;body { opacity: 0 !important }&quot;</code> code with the element to target, such as a specific <code>div</code>. Otherwise, the default behavior of the code is to hide the whole body of the content.</p>
+<h2 id="adobe-analytics-migration-guide">Adobe Analytics migration guide</h2>
+<p>The Adobe Analytics tag is a legacy tag replaced by the Adobe Experience Platform Web SDK tag. The Adobe Experience Platform Web SDK tag sends data to Adobe Analytics by translating the Experience Data Model (XDM) into an Adobe Analytics format.</p>
+<p>The Adobe Experience Platform Web SDK tag supports legacy variables, properties, and events.</p>
+<h3 id="code-comparison">Code comparison</h3>
+<p>The following examples show the structural differences between calls in Adobe Analytics and Adobe Experience Platform Web SDK:</p>
+<h4 id="adobe-analytics">Adobe Analytics</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Load the AppMeasurement library
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">s</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">AppMeasurement</span>();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Set the report suite ID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">account</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;example-rsid&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Set the page name
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">pageName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Home Page&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Set other variables as needed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">prop1</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;value1&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">eVar1</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;value2&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">hellow</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;value3&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Send the data to Adobe Analytics servers
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">s_code</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">t</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">s_code</span>) document.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">s_code</span>);
+</span></span></code></pre></div><h4 id="adobe-experience-platform-web-sdk">Adobe Experience Platform Web SDK</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>window.<span style="color:#a6e22e">alloy</span>(<span style="color:#e6db74">&#34;sendEvent&#34;</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Set the type of event
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;viewStart&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Set the data for Adobe Analytics
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">xdm</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">web</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">webPageDetails</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">// Set the page name
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Home Page&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">_experience</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">analytics</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">customDimensions</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">props</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">prop1</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value1&#34;</span>
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">eVars</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">eVar1</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value2&#34;</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Set other variables as needed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">hellow</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value3&#34;</span>,
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  });
+</span></span></code></pre></div><h3 id="migrate-the-adobe-analytics-tag-using-tealium-tools">Migrate the Adobe Analytics tag using Tealium Tools</h3>
+<p>Using the Adobe Experience Platform Web SDK Migrator tool, you can migrate existing Adobe Analytics AppMeasurement tags into the Adobe Experience Platform Web SDK tag.</p>
+<p>Before using the Migrator Tool, note the following limitations:</p>
+<ul>
+<li>This tool does not migrate doPlugins or extensions. If your configuration uses doPlugins or extensions, you will need to migrate those manually. For instructions on migrating these elements, see the <a href="https://experienceleague.adobe.com/docs/experience-platform/edge/fundamentals/tracking-events.html?lang=en#modifying-events-globally">Migrate events globally</a> section of the Adobe documentation).</li>
+<li>The <code>link_name</code> and <code>link_trackvars</code> variables are not supported.</li>
+<li><code>products</code> variables must to be split into different attributes before they can be manually mapped as per Adobe specifications in the Adobe Experience Platform Web SDK tag. For more information, see <a href="https://experienceleague.adobe.com/docs/analytics/implementation/vars/page-vars/products.html?lang=en">products</a> in the Adobe documentation.</li>
+<li>Any events and attributes that do not automatically migrate with the tool will have an empty mapping. You can manually map these empty attributes using the <a href="#migrate-the-adobe-analytics-tag-manually">Migrate the Adobe Analytics tag manually</a> guide.</li>
+</ul>
+<p>Complete the following steps to migrate your Adobe Analytics tag using Tealium Tools:</p>
+<ol>
+<li>Add the Adobe Experience Platform Web SDK Migrator to your Tealium Tools using the JSON definition at the following URL: <a href="https://solutions.tealium.net/hosted/tealiumTools/aep_migrate/aep_migrate.json">https://solutions.tealium.net/hosted/tealiumTools/aep_migrate/aep_migrate.json</a>. For more information about adding custom tools, see <a href="/iq-tag-management/tealium-tools/browser-extension/#add-a-custom-tool">Manage Custom Tools</a>.</li>
+<li>Go to <strong>iQ Tag Management &gt; Tags</strong> and launch the Adobe Experience Platform Web SDK Migrator tool.</li>
+<li>To disable your existing Adobe Analytics tag as part of the migration, select <strong>Disable existing tag</strong>.</li>
+<li>Select the scope for the migration:
+<ul>
+<li>All AppMeasurement Tags</li>
+<li>All Active AppMeasurement Tags</li>
+<li>Specific AppMeasurement Tag (You will need to add the tag UID for the tag you want to migrate.)</li>
+</ul>
+</li>
+<li>Click <strong>Start</strong>.<br>
+The Migrator tool will automatically migrate existing Adobe Analytics AppMeasurement tags into the Adobe Experience Platform Web SDK tag.</li>
+<li>Save and publish your profile.</li>
+</ol>
+<p>If your configuration uses doPlugins or extensions, you will need to migrate those manually (see below).</p>
+<h3 id="migrate-the-adobe-analytics-tag-manually">Migrate the Adobe Analytics tag manually</h3>
+<p>To migrate from the Adobe Analytics tag to the Adobe Experience Platform Web SDK tag manually, complete the following steps.</p>
+<p>This migration guide uses the following example data mappings in the Adobe Analytics tag:</p>
+<figure><a class="slb" href="/images/client-side-tags/adobe-analytics-migration-example1.png"><img src="/images/client-side-tags/adobe-analytics-migration-example1.png"
+         alt="Adobe Analytics migration example data mappings"
+         title="Adobe Analytics migration example data mappings"/>
+    </a>
+</figure>
+<figure><a class="slb" href="/images/client-side-tags/adobe-analytics-migration-example2.png"><img src="/images/client-side-tags/adobe-analytics-migration-example2.png"
+         alt="Additional Adobe Analytics migration example data mappings"
+         title="Additional Adobe Analytics migration example data mappings"/>
+    </a>
+</figure>
+<ol>
+<li>Go to the Tag Marketplace to add a new Adobe Experience Platform Web SDK tag. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</li>
+<li>Configure the following tag settings in Tealium:
+<ul>
+<li><strong>Org ID</strong>: Your Adobe-assigned Experience Cloud organization ID. For example, <code>XXX@AdobeOrg</code>.</li>
+<li><strong>Datastream ID</strong>: Your Adobe-assigned datastream ID, which links the SDK to the appropriate accounts and configuration. Also referred to as the <code>edgeConfigId</code>.</li>
+</ul>
+</li>
+<li>Configure the following settings in Adobe Experience Platform:
+<ol>
+<li>Go to <strong>Datastreams</strong> and select the datastream you want to use in the migration.</li>
+<li>In your Datastream <strong>Configure</strong> screen, note the <strong>Event Schema</strong> used in your datastream and click <strong>Save</strong>. <figure><a class="slb" href="/images/client-side-tags/adobe-experience-platform-datastreams.png"><img src="/images/client-side-tags/adobe-experience-platform-datastreams.png"
+         alt="Adobe Experience Platform Datastreams"
+         title="Adobe Experience Platform Datastreams"/>
+    </a>
+</figure></li>
+<li>In the Datastream details screen, ensure your Adobe Analytics service is enabled and select the service. <figure><a class="slb" href="/images/client-side-tags/adobe-experience-platform-service.png"><img src="/images/client-side-tags/adobe-experience-platform-service.png"
+         alt="Adobe Experience Platform Service enabled"
+         title="Adobe Experience Platform Service enabled"/>
+    </a>
+</figure></li>
+<li>In the <strong>Adobe Analytics service</strong> screen, enter the Adobe <strong>Report Suite ID</strong> that points to the appropriate data stores.<figure><a class="slb" href="/images/client-side-tags/adobe-experience-platform-aa-enable.png"><img src="/images/client-side-tags/adobe-experience-platform-aa-enable.png"
+         alt="Adobe Experience Platform Service enabled"
+         title="Adobe Experience Platform Service enabled"/>
+    </a>
+</figure></li>
+<li>Go to <strong>Data Management &gt; Schemas</strong> and select the <strong>Event Schema</strong> that is linked to your datastream.</li>
+<li>Ensure that <strong>Field Groups</strong> includes the <strong>Adobe Analytics ExperienceEvent Template</strong> field group. <figure><a class="slb" href="/images/client-side-tags/adobe-experience-platform-schemas.png"><img src="/images/client-side-tags/adobe-experience-platform-schemas.png"
+         alt="Adobe Experience Platform Schemas"
+         title="Adobe Experience Platform Schemas"/>
+    </a>
+</figure></li>
+</ol>
+</li>
+<li>In this example, you would map the following legacy attributes, properties, and events to the Adobe Experience Platform Web SDK tag in Tealium. For more information, see <a href="/iq-tag-management/data-mappings/about/">About data mappings</a>.
+<ol>
+<li>In the Adobe Experience Platform Web SDK tag, go to <strong>Data Mappings</strong>.</li>
+<li>Select the <strong>sf (js)</strong> variable and map it to <strong>Analytics eVars &gt; evar181</strong> then click <strong>Done</strong>.</li>
+<li>Select the <strong>page_category (js)</strong> variable and map to <strong>Analytics Props &gt; prop5</strong> and lick <strong>Done</strong>.</li>
+<li>Select the <strong>medallia_custom_event(js)</strong> variable and <strong>XDM Event Trigger</strong>. Configure the mapping using the following values and click <strong>Done</strong>:
+<ul>
+<li>Add <code>MDigital_Invite_Displayed:_experience.analytics.event101to200</code> as a custom destination.</li>
+<li>When mapped variables equals: <strong>MDigital_Invite_Displayed</strong></li>
+<li>Trigger event: <strong>Experience Analytics Events 101-200 (_experience.analytics.event101to200)</strong></li>
+<li>Custom event name: <strong>200</strong></li>
+</ul>
+</li>
+<li>Select the <strong>page_category (js)</strong> variable and configure the mapping using the following values and click <strong>Done</strong>:
+<ul>
+<li>Add <code>xdm._experience.analytics.customDimension</code> and <code>data.channel</code> as custom destinations.</li>
+<li>Go to <strong>Non-XDM/Custom Schema</strong> and for <strong>Non-XDM/Custom Schema Path</strong> enter <strong>channel</strong>.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>Click <strong>Finish</strong>.</li>
+<li>Disable your <strong>Adobe Analytics tag</strong>.</li>
+<li>Save and publish.</li>
+</ol>
+<p>For more information about configuring Adobe Experience Platform Datastream, services, and schemas, see the following articles in the Adobe documentation:</p>
+<ul>
+<li><a href="https://experienceleague.adobe.com/docs/experience-platform/datastreams/configure.html?lang=en">Configure a Datastream</a></li>
+<li><a href="https://experienceleague.adobe.com/docs/experience-platform/xdm/ui/resources/schemas.html?lang=en">Create and edit schemas in the UI</a></li>
+<li><a href="https://experienceleague.adobe.com/docs/experience-platform/datastreams/configure.html?lang=en#analytics">Adobe Analytics settings</a></li>
+</ul>
 <h2 id="tag-configuration">Tag configuration</h2>
 <p>Navigate to the Tag Marketplace to add a new tag. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
 <p>When adding the tag, configure the following settings:</p>
@@ -2326,6 +2479,10 @@ No</button>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-example">Event example</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#manage-flicker-with-adobe-target">Manage Flicker with Adobe Target</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#blank-page-error-when-using-a-cookie-management-solution">Blank page error when using a Cookie Management Solution</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#adobe-analytics-migration-guide">Adobe Analytics migration guide</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#code-comparison">Code comparison</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#migrate-the-adobe-analytics-tag-using-tealium-tools">Migrate the Adobe Analytics tag using Tealium Tools</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#migrate-the-adobe-analytics-tag-manually">Migrate the Adobe Analytics tag manually</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag configuration</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules">Load rules</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data mappings</a></li>
