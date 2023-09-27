@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "client-side-tags",
-    reading_time  : "1",
+    reading_time  : "2",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -799,15 +799,197 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="tag-configuration">Tag Configuration</h2>
-<p>First, go to Tealium&rsquo;s tag Marketplace and add the Top.Mail.ru tag to your profile (<a href="/iq-tag-management/templates/manage/">how to add a tag?</a>).</p>
-<p>After adding the tag, configure the below settings:</p>
+  <h2 id="tag-configuration">Tag configuration</h2>
+<p>Navigate to the Tag Marketplace to add a new tag. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
+<p>When adding the tag, configure the following settings:</p>
 <ul>
-<li>ID (id): Your Site ID provided by Top.Mail.ru</li>
+<li><strong>Counter ID</strong>: (Required) Your Top Mail.ru Counter ID.</li>
 </ul>
-<h2 id="load-rules">Load Rules</h2>
-<p><a href="/iq-tag-management/load-rules/about/">Load Rules</a> determine when and where to load an instance of this tag on your site.</p>
-<p>Recommended Load Rule: <strong>All Pages</strong></p>
+<h2 id="load-rules">Load rules</h2>
+<p>Load the tag on all pages or set conditions for when your tag will load. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
+<h2 id="data-mappings">Data mappings</h2>
+<p>Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see <a href="/iq-tag-management/data-mappings/about/">About data mappings</a>.</p>
+<p>The available categories are:</p>
+<h3 id="standard">Standard</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>base_url</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Base URL</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>id</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Counter ID</td>
+</tr>
+</tbody>
+</table>
+<h3 id="e-commerce">E-commerce</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>productid</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Product ID</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>value</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>pagetype</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Page type</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>list</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">List</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>userid</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">User ID</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>totalvalue</code></td>
+<td style="text-align:left">Number or String</td>
+<td style="text-align:left">Total value</td>
+</tr>
+</tbody>
+</table>
+<h3 id="events">Events</h3>
+<p>To map events, see <a href="/iq-tag-management/data-mappings/manage/#add-an-event-mapping">Create an Event Mapping</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>pageView</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Page view</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>viewProduct</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">View product</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>addToCart</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Add To cart</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>purchase</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Purchase</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>itemView</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Item view</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>custom</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Custom</td>
+</tr>
+</tbody>
+</table>
+<h3 id="event-specific-parameters">Event-specific Parameters</h3>
+<p>To map events, see <a href="/iq-tag-management/data-mappings/manage/#add-an-event-mapping">Create an Event Mapping</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>productid</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Product ID</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>value</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>pagetype</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Page type</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>list</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">List</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>userid</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">User ID</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>totalvalue</code></td>
+<td style="text-align:left">Number or String</td>
+<td style="text-align:left">Total value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>custom_parameter</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Custom parameter</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>pageView</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Page view</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>viewProduct</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">View product</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>addToCart</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Add To cart</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>purchase</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Purchase</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>custom_event</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Custom event</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
@@ -868,7 +1050,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 11, 2017 
+          <p>This page was last updated:  September 25, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -882,8 +1064,13 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag Configuration</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules">Load Rules</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag configuration</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules">Load rules</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data mappings</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#standard">Standard</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#e-commerce">E-commerce</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#events">Events</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-specific-parameters">Event-specific Parameters</a></li>
               </nav>
   </aside></nav>
 

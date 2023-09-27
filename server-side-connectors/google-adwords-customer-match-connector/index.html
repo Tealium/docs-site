@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Sizmek Connector Setup Guide | Server-Side Connectors | Tealium Docs</title>
+    <title>Google AdWords Customer Match Connector Setup Guide | Server-Side Connectors | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side-connectors",
-    reading_time  : "2",
+    reading_time  : "3",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -392,6 +392,8 @@ var utag_data = {
         <a href="/server-side-connectors/google-ads-enhanced-conversions-for-web-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".google-ads-enhanced-conversions-for-web-connector">Google Ads Enhanced Conversions for Web</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/google-ads-store-sales-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".google-ads-store-sales-connector">Google Ads Store Sales</a>
+      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/google-adwords-customer-match-connector/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".google-adwords-customer-match-connector">Google AdWords Customer Match</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/google-analytics-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".google-analytics-connector">Google Analytics</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -600,8 +602,6 @@ var utag_data = {
         <a href="/server-side-connectors/silverpop-engage-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".silverpop-engage-connector">Silverpop Engage</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/singular-events-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".singular-events-connector">Singular Events</a>
-      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side-connectors/sizmek-connector/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".sizmek-connector">Sizmek</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/slack-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".slack-connector">Slack</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -717,168 +717,145 @@ var utag_data = {
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Sizmek Connector Setup Guide</h1>
+<h1 class="lh-title mt30 mb3">Google AdWords Customer Match Connector Setup Guide</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to set up the Sizmek connector.
+      This article describes how to set up the Google AdWords Customer Match (Customer-Provided Credentials and Tealium-Provided Credentials) connectors.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="connector-actions">Connector Actions</h2>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>This connector is now deprecated and no longer available in the tag marketplace.<br>
+<strong>The underlying Google AdWords API is planning to be retired on April 27, 2022.</strong> Learn more from the <strong><a href="https://ads-developers.googleblog.com/2021/04/upgrade-to-google-ads-api-from-adwords.html">Google Ads Developer Blog</a>.</strong><br>
+You need to replace your existing Google AdWords connectors with the updated <a href="/server-side-connectors/google-ads-customer-match-connector/">Google Ads Customer Match connector</a>.</p>
+<hr>
+<h2 id="requirements">Requirements</h2>
+<p>There are two types of Google AdWords Customer Match Connectors. Ensure that you select the appropriate one when adding the connector.</p>
+<ul>
+<li>
+<p><strong>Google Adwords Customer Match (Customer-Provided Credentials)</strong></p>
+<ul>
+<li>Requires <a href="https://developers.google.com/google-ads/api/docs/first-call/dev-token">Google</a> approval.</li>
+</ul>
+</li>
+<li>
+<p><strong>Google Adwords Customer Match (Tealium-Provided Credentials)</strong></p>
+<ul>
+<li>Tealium has been pre-approved to handle volume, bypassing your need to go through the application process.</li>
+</ul>
+</li>
+</ul>
+<h2 id="connector-actions">Connector actions</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Action Name</strong></th>
-<th style="text-align:left"><strong>AudienceStream</strong></th>
-<th style="text-align:left"><strong>EventStream</strong></th>
+<th><strong>Action Name</strong></th>
+<th><strong>AudienceStream</strong></th>
+<th><strong>EventStream</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Add User To Sizmek Segment(s)</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✓</td>
+<td>Add User to Remarketing List</td>
+<td>✓</td>
+<td>✓</td>
 </tr>
 <tr>
-<td style="text-align:left">Remove User From Sizmek Segment(s)</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✓</td>
-</tr>
-<tr>
-<td style="text-align:left">Replace all Sizemek Segments for User</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✓</td>
+<td>Remove User from Remarketing List</td>
+<td>✓</td>
+<td>✓</td>
 </tr>
 </tbody>
 </table>
-<h2 id="configure-settings">Configure Settings</h2>
+<h2 id="api-information">API information</h2>
+<p>This connector uses the following vendor API:</p>
+<ul>
+<li>API Name: Google Audience Partner API DmpUserListService</li>
+<li>API Version: v201809</li>
+<li>API Endpoint: <code>&lt;https://ddp.googleapis.com/&gt;</code></li>
+<li>Documentation: <a href="https://developers.google.com/google-ads/api/docs/first-call/dev-token">AdWords API</a></li>
+</ul>
+<h2 id="batch-limits">Batch limits</h2>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 100000</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 100 MB</li>
+</ul>
+<h2 id="configure-settings">Configure settings</h2>
 <p>Go to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/manage/">Connector Overview</a> article for general instructions on how to add a connector.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>When you add this connector you are prompted to accept the vendor&rsquo;s data platform policy.</p>
 <p>After adding the connector, configure the following settings:</p>
-<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
+<ul>
+<li>
+<p><strong>AdWords Customer ID</strong></p>
+<ul>
+<li>Required</li>
+<li>Provide the Adwords account Customer ID to manage.</li>
+</ul>
+</li>
+<li>
+<p><strong>Developer Token</strong></p>
+<ul>
+<li>Required</li>
+<li>Provide the API developer token that has been approved by Google to make production volume API requests.</li>
+<li>Obtaining and approving a developer token is a multi-step process that you will need to own and manage.</li>
+<li>To get started, click <a href="https://developers.google.com/adwords/api/docs/guides/signup">here</a>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="action-settings---parameters-and-options">Action settings - parameters and options</h2>
 <p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
 <p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action---add-user-to-sizmek-segments">Action - Add User To Sizmek Segment(s)</h3>
+<h3 id="action---add-user-to-remarketing-list">Action - Add User to Remarketing List</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Parameter</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>cookie_id</code></td>
-<td style="text-align:left"><ul><li>Required.</li><li>Obtain the value from the visitor&rsquo;s browser.</li></ul></td>
+<td>Remarketing List</td>
+<td><ul><li>Select a remarketing user list to add user to.</li><li>For more information, see: <a href="https://developers.google.com/adwords/api/docs/guides/remarketing">Remarketing and Audience Targeting</a>.</li><li>Available options contain only user lists of first party CRM data type.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>segments</code></td>
-<td style="text-align:left"><ul><li>Required.</li><li>Pipe-separated list of segment IDs.</li><li>If you pass an array type, Tealium will correctly format the data to be passed.</li></ul></td>
+<td>User Identifier</td>
+<td><ul><li>Required.</li><li>Map applicable user identifier.</li><li>For additional information, see: <a href="https://developers.google.com/adwords/api/docs/guides/remarketing">Remarketing and Audience Targeting</a>.</li><li>Required fields depend on the list type selected, as follows:  <ul><li><strong>Contact Info</strong> (<code>CONTACT_INFO</code>) <ul><li>Minimum Required: Email, Phone Number or All Address information.</li><li>Email, Phone Number, First and Last Name must be trimmed of whitespace, lowercased and SHA-256 encoded.</li><li>If mapped values are plain text, check the <strong>Contact Info Hash</strong> check box in the optional section.</li><li>Country Code must follow the 2-letter ISO-3166 Alpha-2 format.</li></ul> </li><li><strong>CRM</strong> (<code>CRM_ID</code>) <ul><li>Required</li><li>User ID</li><li>Advertiser generated and accessible to whitelisted clients only.</li></ul> </li><li><strong>Mobile Advertising</strong> (<code>MOBILE_ADVERTISING_ID</code>) <ul><li>Required</li><li>Mobile ID</li><li>Mobile Device ID (advertising ID/IDFA).</li></ul> </li></ul> </li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>advertiser_id</code></td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Sizmek Advertiser ID. </li><li>Set <code>advertiser_id</code> to zero (<code>0</code>) for a third-party advertiser.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>account_id</code></td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Account ID</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>adid</code></td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Android ID used for mobile users.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>idfa</code></td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Apple IDFA used for mobile users.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Additional Information</td>
-<td style="text-align:left"><ul><li>This action is an incremental update of the user&rsquo;s segments.</li><li>To send any other query parameter key-value pairs, map a Custom value key to the value.</li></ul></td>
+<td>Contact Info Hash</td>
+<td><ul><li>Optional</li><li>Check if mapped contact information is in plain text.</li><li>Values are automatically SHA-256 hashed.</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---remove-user-from-sizmek-segments">Action - Remove User From Sizmek Segment(s)</h3>
+<h3 id="action---remove-user-from-remarketing-list">Action - Remove User from Remarketing List</h3>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Parameter</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>cookie_id</code></td>
-<td style="text-align:left"><ul><li>Required.</li><li>Obtain the value from the visitor&rsquo;s browser.</li></ul></td>
+<td>Remarketing List</td>
+<td><ul><li>Select a remarketing user list to remove user from.</li><li>For more information, see: <a href="https://developers.google.com/adwords/api/docs/guides/remarketing">Remarketing and Audience Targeting</a>.</li><li>Available options contain only user lists of first party CRM data type.</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>segments</code></td>
-<td style="text-align:left"><ul><li>Required.</li><li>Pipe-separated list of segment IDs.</li><li>If you pass an array type, Tealium will correctly format the data to be passed.</li></ul></td>
+<td>User Identifier</td>
+<td><ul><li>Required.</li><li>Map applicable user identifier.</li><li>For additional information, see: <a href="https://developers.google.com/adwords/api/docs/guides/remarketing">Remarketing and Audience Targeting</a>.</li><li>Required fields depend on the list type selected, as follows:  <ul><li><strong>Contact Info</strong> (<code>CONTACT_INFO</code>)  <ul><li>Minimum Required: Email, Phone Number or All Address information.</li><li>Email, Phone Number, First and Last Name must be trimmed of whitespace, lowercased and SHA-256 encoded.</li><li>If mapped values are plain text, check the <strong>Contact Info Hash</strong> check box in the optional section.</li><li>Country Code must follow the 2-letter ISO-3166 Alpha-2 format.</li></ul> </li><li><strong>CRM</strong> (<code>CRM_ID</code>)  <ul><li>Required</li><li>User ID</li><li>Advertiser generated and accessible to whitelisted clients only.</li></ul> </li><li><strong>Mobile Advertising</strong> (<code>MOBILE_ADVERTISING_ID</code>)  <ul><li>Required</li><li>Mobile ID</li><li>Mobile Device ID (advertising ID/IDFA).</li></ul> </li></ul> </li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>advertiser_id</code></td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Sizmek Advertiser ID. </li><li>Set <code>advertiser_id</code> to zero (<code>0</code>) for a third-party advertiser.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>account_id</code></td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Account ID</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>adid</code></td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Android ID used for mobile users.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>idfa</code></td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Apple IDFA used for mobile users.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Additional Information</td>
-<td style="text-align:left"><ul><li>This action is an incremental update of the user&rsquo;s segments.</li><li>To send any other query parameter key-value pairs, map a Custom value key to the value.</li></ul></td>
-</tr>
-</tbody>
-</table>
-<h4 id="action---replace-all-sizemek-segments-for-user">Action - Replace all Sizemek Segments for User</h4>
-<h4 id="parameters-2">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"><strong>Parameter</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>cookie_id</code></td>
-<td style="text-align:left"><ul><li>Required.</li><li>Obtain the value from the visitor&rsquo;s browser.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>segments</code></td>
-<td style="text-align:left"><ul><li>Required.</li><li>Pipe-separated list of segment IDs.</li><li>If you pass an array type, Tealium will correctly format the data to be passed.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>advertiser_id</code></td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Sizmek Advertiser ID. </li><li>Set <code>advertiser_id</code> to zero (<code>0</code>) for a third-party advertiser.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>account_id</code></td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Account ID</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>adid</code></td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Android ID used for mobile users.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>idfa</code></td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Apple IDFA used for mobile users.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Additional Information</td>
-<td style="text-align:left"><ul><li>This action is an incremental update of the user&rsquo;s segments.</li><li>To send any other query parameter key-value pairs, map a Custom value key to the value.</li></ul></td>
+<td>Contact Info Hash</td>
+<td><ul><li>Optional</li><li>Check if mapped contact information is in plain text.</li><li>Values are automatically SHA-256 hashed.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -888,13 +865,13 @@ var utag_data = {
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/server-side-connectors/slack-connector/"
+  <a href="/server-side-connectors/google-analytics-4-measurement-protocol-connector/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Slack</div>
+      <div>Google Analytics 4 Measurement Protocol</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Slack"</title>
+      <title>"Google Analytics 4 Measurement Protocol"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -903,14 +880,14 @@ var utag_data = {
 </div><div class="di mr3">
   
   
-  <a href="/server-side-connectors/singular-events-connector/"
+  <a href="/server-side-connectors/google-ads-store-sales-connector/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Singular Events "</title>
+      <title>"Google Ads Store Sales "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>Singular Events</div>
+      <div>Google Ads Store Sales</div>
     </section>
   </a>
   
@@ -942,7 +919,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 24, 2020 
+          <p>This page was last updated:  May 5, 2022 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -956,11 +933,14 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action Settings - Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---add-user-to-sizmek-segments">Action - Add User To Sizmek Segment(s)</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---remove-user-from-sizmek-segments">Action - Remove User From Sizmek Segment(s)</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#requirements">Requirements</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector actions</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#api-information">API information</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#batch-limits">Batch limits</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure settings</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action settings - parameters and options</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---add-user-to-remarketing-list">Action - Add User to Remarketing List</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---remove-user-from-remarketing-list">Action - Remove User from Remarketing List</a></li>
               </nav>
   </aside></nav>
 

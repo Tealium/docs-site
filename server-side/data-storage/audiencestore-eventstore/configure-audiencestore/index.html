@@ -505,6 +505,8 @@ var utag_data = {
         <a href="/server-side/connectors/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-connectors">Manage connectors</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/delayed-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">About delayed actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".frequency-capping">Frequency capping</a>
         <ul class=" frequency-capping desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -522,8 +524,6 @@ var utag_data = {
         <a href="/server-side/connectors/webhook-connectors/basicauth-oauth2/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">BasicAuth and OAuth2</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -881,24 +881,46 @@ var utag_data = {
 <p>To configure an AudienceStore connector, you must have created at least one audience.</p>
 <p>Use the following steps to configure an AudienceStore connector:</p>
 <ol>
-<li>Navigate to <strong>AudienceStream &gt; Audience Connectors</strong> and click <strong>Add Connector</strong>.</li>
-<li>Locate and select the <strong>AudienceStore</strong> connector.</li>
-<li>Click <strong>Continue</strong>.</li>
-<li>Select an <strong>Audience</strong> to send to the connector.</li>
-<li>Select the <strong>Trigger</strong> to send the data.</li>
-<li>Click <strong>Continue</strong>.</li>
-<li>Click <strong>Add Connector</strong>.</li>
-<li>In the <strong>Name</strong>, enter a descriptive name for this instance of the connector.<br>
-Add <strong>Notes</strong>, if needed.</li>
-<li>Click <strong>Done</strong>, then click <strong>Continue</strong>.</li>
-<li>Enter an <strong>Action Name</strong>.</li>
-<li>Select one of the following for <strong>Action Type</strong>:
+<li>
+<p>Navigate to <strong>AudienceStream &gt; Audience Connectors</strong> and click <strong>Add Connector</strong>.</p>
+</li>
+<li>
+<p>Locate and select the <strong>AudienceStore</strong> connector.</p>
+</li>
+<li>
+<p>Click <strong>Continue</strong>.</p>
+</li>
+<li>
+<p>Select an <strong>Audience</strong> to send to the connector. <p class="note"><i class="fa fa-exclamation-triangle"></i>Audience names must be fewer than 128 characters in length. Otherwise, DataAccess may trim the audience name and errors may occur.</p></p>
+</li>
+<li>
+<p>Select the <strong>Trigger</strong> to send the data.</p>
+</li>
+<li>
+<p>Click <strong>Continue</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Add Connector</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Name</strong>, enter a descriptive name for this instance of the connector.<br>
+Add <strong>Notes</strong>, if needed.</p>
+</li>
+<li>
+<p>Click <strong>Done</strong>, then click <strong>Continue</strong>.</p>
+</li>
+<li>
+<p>Enter an <strong>Action Name</strong>.</p>
+</li>
+<li>
+<p>Select one of the following for <strong>Action Type</strong>:</p>
 <ul>
 <li><strong>Send Visitor Data to Bucket (All Attributes)</strong></li>
 <li><strong>Send Visitor Data to Bucket (Selected Attributes)</strong></li>
 </ul>
 </li>
-<li>If you select <strong>Send Visitor Data to Bucket (All Attributes)</strong> for <strong>ActionType</strong>, there are additional steps, as follows:
+<li>
+<p>If you select <strong>Send Visitor Data to Bucket (All Attributes)</strong> for <strong>ActionType</strong>, there are additional steps, as follows:</p>
 <ol>
 <li>To include all event data for the current visit, select <strong>Include Current Visit Data</strong>.</li>
 <li>To use AudienceStream attributes as keys in the JSON file, select <strong>Send by Attribute ID</strong>. By default, attribute names are used as keys.</li>
@@ -906,8 +928,12 @@ Add <strong>Notes</strong>, if needed.</li>
 To format the data as a CSV file instead of the default JSON file, select <strong>Format Data as CSV (JSON if unchecked)</strong>.</li>
 </ol>
 </li>
-<li>Click <strong>Finish</strong>.</li>
-<li>Save and publish.</li>
+<li>
+<p>Click <strong>Finish</strong>.</p>
+</li>
+<li>
+<p>Save and publish.</p>
+</li>
 </ol>
 <p>For more information, see the <a href="/server-side-connectors/audiencestore-connector/">AudienceStore Connector Setup Guide</a>.</p>
 <p>After the AudienceStore connector is configured, the details page for the connector lists the actions, how many times they have been triggered, and their status.</p>
@@ -973,7 +999,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 11, 2023 
+          <p>This page was last updated:  September 20, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

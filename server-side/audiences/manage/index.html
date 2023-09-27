@@ -505,6 +505,8 @@ var utag_data = {
         <a href="/server-side/connectors/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-connectors">Manage connectors</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/delayed-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">About delayed actions</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".frequency-capping">Frequency capping</a>
         <ul class=" frequency-capping desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -522,8 +524,6 @@ var utag_data = {
         <a href="/server-side/connectors/webhook-connectors/basicauth-oauth2/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">BasicAuth and OAuth2</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/action-parameters/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Action parameters</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side/connectors/webhook-connectors/batched-actions/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Validate webhook action</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -866,22 +866,39 @@ var utag_data = {
 <h2 id="create-an-audience">Create an audience</h2>
 <p>Use the following steps to create an audience:</p>
 <ol>
-<li>Go to <strong>AudienceStream &gt; Audiences</strong>.</li>
-<li>Click <strong>+ New Audience</strong>.</li>
-<li>Enter a <strong>Name</strong> for the audience.</li>
-<li>To add a condition for the audience, select an attribute, an operator, and a value.<br>
+<li>
+<p>Go to <strong>AudienceStream &gt; Audiences</strong>.</p>
+</li>
+<li>
+<p>Click <strong>+ New Audience</strong>.</p>
+</li>
+<li>
+<p>Enter a <strong>Name</strong> for the audience. <p class="note"><i class="fa fa-exclamation-triangle"></i>If you use a <a href="/server-side/data-storage/about/">DataAccess</a> product (EventStore, AudienceStore, EventDB, or AudienceDB), the audience name must be fewer than 128 characters in length. Otherwise, DataAccess may trim the audience name and errors may occur.</p></p>
+</li>
+<li>
+<p>To add a condition for the audience, select an attribute, an operator, and a value.<br>
 When you hover over an attribute, the enrichment for the attribute is displayed.<br>
 If you select a badge for the attribute, select <strong>is assigned</strong> or <strong>is not assigned</strong>.<br>
-For operators that specify a time frame, select a value and the time frame.</li>
-<li>To add another condition, click <strong>+ Add Condition</strong>.</li>
-<li>To save this segment, click the <strong>Save</strong> icon. <figure><a class="slb" href="/images/guides/server-side/int-aud-save-segment-icon.png"><img src="/images/guides/server-side/int-aud-save-segment-icon.png"/>
+For operators that specify a time frame, select a value and the time frame.</p>
+</li>
+<li>
+<p>To add another condition, click <strong>+ Add Condition</strong>.</p>
+</li>
+<li>
+<p>To save this segment, click the <strong>Save</strong> icon. <figure><a class="slb" href="/images/guides/server-side/int-aud-save-segment-icon.png"><img src="/images/guides/server-side/int-aud-save-segment-icon.png"/>
     </a>
 </figure>
-Enter a <strong>Name</strong> for the segment, then click <strong>Done</strong>.</li>
-<li>To add a segment, click <strong>+ Add Segment</strong>, then add conditions for the segment.</li>
-<li>To add a previously saved segment, click the down-arrow next to <strong>+ Add Segment</strong> and select a segment.<br>
-When you hover over a segment, the conditions for the segment are displayed.</li>
-<li>To add a label or notes, or change the retention time, click <strong>More Options</strong>.
+Enter a <strong>Name</strong> for the segment, then click <strong>Done</strong>.<p class="note"><i class="fa fa-exclamation-triangle"></i>If you use a <a href="/server-side/data-storage/about/">DataAccess</a> product (EventStore, AudienceStore, EventDB, or AudienceDB), the segment name must be fewer than 128 characters in length. Otherwise, DataAccess may trim the segment name and errors may occur.</p></p>
+</li>
+<li>
+<p>To add a segment, click <strong>+ Add Segment</strong>, then add conditions for the segment.</p>
+</li>
+<li>
+<p>To add a previously saved segment, click the down-arrow next to <strong>+ Add Segment</strong> and select a segment.<br>
+When you hover over a segment, the conditions for the segment are displayed.</p>
+</li>
+<li>
+<p>To add a label or notes, or change the retention time, click <strong>More Options</strong>.</p>
 <ol>
 <li>To add a label, click <strong>Add Label</strong> and select a label.</li>
 <li>Enter notes, if needed.</li>
@@ -889,10 +906,16 @@ When you hover over a segment, the conditions for the segment are displayed.</li
 The time of a visitor&rsquo;s last visit determines the start of the retention time for that visitor.</li>
 </ol>
 </li>
-<li>To immediately activate the audience, click <strong>Connect &amp; Activate</strong>, then select and configure a connector.<br>
-For more information, refer to the setup guide for the selected connector.</li>
-<li>To save the audience without activating it, click <strong>Done</strong>.</li>
-<li>Save and publish.</li>
+<li>
+<p>To immediately activate the audience, click <strong>Connect &amp; Activate</strong>, then select and configure a connector.<br>
+For more information, refer to the setup guide for the selected connector.</p>
+</li>
+<li>
+<p>To save the audience without activating it, click <strong>Done</strong>.</p>
+</li>
+<li>
+<p>Save and publish.</p>
+</li>
 </ol>
 <h2 id="create-an-audience-from-an-existing-audience">Create an audience from an existing audience</h2>
 <p>You can duplicate an audience from the list of audiences, or from the audience detail view, then modify the duplicate to create a new audience.</p>
@@ -901,7 +924,7 @@ For more information, refer to the setup guide for the selected connector.</li>
 <li>Go to <strong>AudienceStream &gt; Audiences</strong>.</li>
 <li>In the audience menu, select <strong>Duplicate</strong>.<br>
 The copy of the audience is displayed.</li>
-<li>Click <strong>Edit</strong> to modify the <strong>Name</strong> and conditions as needed for the new audience.</li>
+<li>Click <strong>Edit</strong> to modify the <strong>Name</strong> and conditions as needed for the new audience.</li>
 <li>Click <strong>Done</strong> or <strong>Connect &amp; Activate</strong>.</li>
 <li>Save and publish.</li>
 </ol>
@@ -1023,7 +1046,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 13, 2023 
+          <p>This page was last updated:  September 20, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
