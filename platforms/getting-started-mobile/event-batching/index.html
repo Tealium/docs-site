@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "platforms",
-    reading_time  : "2",
+    reading_time  : "3",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -278,21 +278,38 @@ var utag_data = {
 <div class="mv2 mid-gray fn w-100">
   
     <p class="f4 fw3 lh-copy">
-      Learn about the event batching feature for mobile.
+      This document explains how event batching works in the Tealium Collect mobile module.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Event batching is a feature of the Tealium Collect module that optimizes the transmission of data between a mobile device and Tealium by <em>sending multiple events in a single HTTP request</em>. Event batching works with a new data collection endpoint that is optimized to eliminate repetitive data layer variables and to accept payloads compressed with gzip.</p>
+  <p>Event batching is a feature of the Tealium Collect module that optimizes the transmission of data between a mobile device and Tealium by sending multiple events in a single HTTP request. Event batching works with a dedicated data collection endpoint that is optimized to eliminate repetitive data layer variables and to accept payloads compressed with gzip.</p>
 <h2 id="batch-vs-queue">Batch vs. Queue</h2>
-<p>Event <em>batching</em> refers to how data is transmitted across the network. The event <em>queue</em> refers to how event data is stored temporarily on the device  before it is dispatched. Event batching combines multiple events into a single network request as opposed to each tracked event in its own request. The event queue is used when a device is offline so that tracking calls can be stored until the device regains a connection, at which point the queue is processed. Event batching works with the event queue by processing multiple events at once until the queue is empty.</p>
-<p>For example, if a device is offline and the event queue grows to contain 25 events, once the device comes online the queue is processed in batches of 10 events until the queue is empty. In this case, two batched requests with 10 events each and one batch for the remaining 5 events are sent, for a total of 25 tracked events using only 3 network requests.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Currently, the batch size maximum is 10.</p>
-<h2 id="data-layer-optimization">Data Layer Optimization</h2>
-<p>The Tealium mobile libraries contribute a lot of <a href="/platforms/getting-started-mobile/data-layer/">device information to the data layer</a>, such as app name, screen resolution, and OS version. These variables are included in every network request even though their values do not change between events. Event batching optimizes the data layer so that these common variables are <em>only sent once per batch</em>.</p>
-<h2 id="payload-compression">Payload Compression</h2>
-<p>The event batch payload is compressed with gzip to minimize the size of the HTTP request. This compression reduces the size of each network request by up to 90%.</p>
+<p>Event batching refers to how a device transmits data across the network. The event queue refers to how the device stores data temporarily before dispatching it. Event batching combines multiple events into a single network request, as opposed to each tracked event in its own request.</p>
+<p>The device uses batching under the following conditions:</p>
+<ul>
+<li>Batching is enabled in <strong>Publish Configuration &gt; Mobile Library Publishing &gt; Batching</strong>. For more information, see <a href="/iq-tag-management/profiles/creating-a-mobile-profile/#batching">Create a mobile profile</a>.</li>
+<li>The device has no stable internet connection. The device stores events until a connection is available.</li>
+<li>The user has not selected any preferences in the <strong>Consent Manager</strong>. The device stores events until the user selects a <strong>Consent Manager</strong> preference. For more information, see <a href="/iq-tag-management/consent-management/about/">About consent management</a>.</li>
+</ul>
+<p>The device&rsquo;s batch sending behavior depends on the app&rsquo;s status on the device:</p>
+<ul>
+<li>If the user sends the app to the background:
+<ul>
+<li>The device sends the lifecycle &ldquo;sleep&rdquo; event.</li>
+<li>If an interet connection is available, the device immediately sends any events generated prior to the app going to the background.</li>
+</ul>
+</li>
+<li>If the user sends the app ito the foreground:
+<ul>
+<li>The device sends any events in the queue, in addition to the lifecycle &ldquo;wake&rdquo; event.</li>
+</ul>
+</li>
+</ul>
+<p>Event batching works with the event queue by processing multiple events at once until the queue is empty.</p>
+<p>For example, a device is offline and the event queue grows to contain 25 events. After the device comes online, the device processes the queue in batches of 10 events until the queue is empty. In this case, two batched requests with 10 events each and one batch for the remaining five events are sent, for a total of 25 tracked events using only three network requests.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The batch size maximum is 10 events.</p>
 <h2 id="benefits">Benefits</h2>
 <p>The benefits of event batching include:</p>
 <ul>
@@ -300,7 +317,12 @@ var utag_data = {
 <li>Fewer network requests for the same number of events.</li>
 <li>Improved battery performance on the device.</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Event batching is not available for Tealium iQ Tag Management.</p>
+<h3 id="data-layer-optimization">Data Layer Optimization</h3>
+<p>The Tealium mobile libraries send a lot of <a href="/platforms/getting-started-mobile/data-layer/">device information to the data layer</a>, such as app name, screen resolution, and OS version. The device includes these variables in every network request, even though their values do not change between events. Event batching optimizes the data layer so that the device sends these common variables only once per batch.</p>
+<h3 id="payload-compression">Payload Compression</h3>
+<p>The device compresses the event batch payload with gzip to minimize the size of the HTTP request. This compression reduces the size of each network request by up to 90%.</p>
+<h3 id="event-batching-for-tealium-iq-tag-management">Event batching for Tealium iQ Tag Management</h3>
+<p>If the <strong>Tag Management</strong> module is in use and event batching is enabled, the device queues these events as normal, and then dispatches them as individual JavaScript calls to the WKWebView instance. The device triggers any configured tags individually, which results in multiple requests leaving the device (one per event in the batch). This reduces the device&rsquo;s battery consumption because the device&rsquo;s radio does not need to wake up as frequently as sending events in real-time.</p>
 <h2 id="supported-platforms">Supported Platforms</h2>
 <p>The following platforms support event batching:</p>
 <ul>
@@ -367,7 +389,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  September 28, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -382,10 +404,11 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#batch-vs-queue">Batch vs. Queue</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-layer-optimization">Data Layer Optimization</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#payload-compression">Payload Compression</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#benefits">Benefits</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#supported-platforms">Supported Platforms</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-layer-optimization">Data Layer Optimization</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#payload-compression">Payload Compression</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-batching-for-tealium-iq-tag-management">Event batching for Tealium iQ Tag Management</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#supported-platforms">Supported Platforms</a></li>
               </nav>
   </aside></nav>
 
