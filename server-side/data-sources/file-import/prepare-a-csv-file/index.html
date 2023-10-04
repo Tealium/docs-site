@@ -664,7 +664,7 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/functions/event-visitor-functions/oauth2-authentication/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".functions-OAuth2-authentication">Add OAuth 2.0 authentication</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side/functions/event-visitor-functions/uid2-token/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".use-visitor-function-get-uid20">Generate a UID2.0 token</a>
+        <a href="/server-side/functions/event-visitor-functions/uid2/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".use-visitor-function-get-uid20">Generate a UID2</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".data-transformation-functions">Data transformation functions</a>
@@ -869,7 +869,7 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <h2 id="prepare-data-to-import">Prepare data to import</h2>
-<p>We recommend using File Import data source with the following types of data sets:</p>
+<p>We recommend using the file import data source with the following types of data sets:</p>
 <ul>
 <li>Demographic data</li>
 <li>Prospect and lead data</li>
@@ -878,10 +878,10 @@ var utag_data = {
 </ul>
 <p>To ensure efficient processing of your files, we strongly recommend breaking up large files into smaller files of 100,000 rows each. While larger file sizes are supported, we don’t recommend exceeding file sizes of 50MB as it may increase the likelihood of errors.</p>
 <p class="tip"><i class="fa fa-info-circle"></i>To get the most out of your imported data, ensure that every row in your CSV file has a column with a unique visitor ID that associates the data to a customer. For more information, see <a href="/server-side/data-sources/file-import/visitor-identification/">Visitor Identification using File Import Data Source</a>.</p>
-<h2 id="file-names">File names</h2>
+<h2 id="file-naming-conventions">File naming conventions</h2>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Multiple files uploaded through SFTP or S3 are processed alphabetically by their file names.</p>
 <h3 id="file-name-prefix">File name prefix</h3>
-<p>CSV files must be named using the following format: <code>{prefix}_{version}.csv</code>. This format consists of the following parts:</p>
+<p>CSV files must use the following name format: <code>{prefix}_{version}.csv</code>. This format consists of the following parts:</p>
 <table>
 <thead>
 <tr>
@@ -902,10 +902,15 @@ var utag_data = {
 </table>
 <p class="tip"><i class="fa fa-info-circle"></i>We strongly recommend using a version number to differentiate CSV file versions.</p>
 <p>The file name prefix you use must be unique. For example, using the prefixes <code>store-transactions</code> and <code>store-transactions-returns</code> will cause unexpected results because they share the same initial prefix: <code>store-transactions</code>.</p>
-<p>File names are case-sensitive and may not contain special characters other than hyphen &lsquo;-&rsquo; and underscore &lsquo;_&rsquo;.</p>
-<h3 id="file-naming-examples">File naming examples</h3>
-<p><strong>Multiple files</strong><br>
-The following example is for in-store purchases dated March 19, 2017 and separated into two files, <code>a</code> and <code>b</code>.</p>
+<h3 id="file-name-limitations">File name limitations</h3>
+<p>File names must adhere to the following rules:</p>
+<ul>
+<li>File names may only contain the following characters: letters (<code>a-z</code> or <code>A-Z</code>), numbers (<code>0-9</code>), hyphens (<code>-</code>), underscores (<code>_</code>), and periods (<code>.</code>).</li>
+<li>File names are case-sensitive. For example, <code>store-transactions_20230319-a.csv</code> and <code>Store-Transactions_20230319-a.csv</code> are different files, so we recommend that you use lowercase file names to avoid confusion.</li>
+</ul>
+<h3 id="file-name-examples">File name examples</h3>
+<h4 id="multiple-files">Multiple files</h4>
+<p>The following example is for in-store purchases dated March 19, 2023 and separated into two files, <code>a</code> and <code>b</code>.</p>
 <table>
 <thead>
 <tr>
@@ -917,18 +922,18 @@ The following example is for in-store purchases dated March 19, 2017 and separat
 <tbody>
 <tr>
 <td><code>storepurchases</code></td>
-<td><code>20170319-a</code></td>
-<td><code>storepurchases_20170319-a.csv</code></td>
+<td><code>20230319-a</code></td>
+<td><code>storepurchases_20230319-a.csv</code></td>
 </tr>
 <tr>
 <td><code>storepurchases</code></td>
-<td><code>20170319-b</code></td>
-<td><code>storepurchases_20170319-b.csv</code></td>
+<td><code>20230319-b</code></td>
+<td><code>storepurchases_20230319-b.csv</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Multiple versions</strong><br>
-This example is a file named for in-store returns from March 14, 2017 and March 15, 2017.</p>
+<h4 id="multiple-versions">Multiple versions</h4>
+<p>The following example is for two files with in-store returns from March 14, 2023 and March 15, 2023.</p>
 <table>
 <thead>
 <tr>
@@ -940,25 +945,26 @@ This example is a file named for in-store returns from March 14, 2017 and March 
 <tbody>
 <tr>
 <td><code>storereturns</code></td>
-<td><code>20170314</code></td>
-<td><code>storereturns_20170314.csv</code></td>
+<td><code>20230314</code></td>
+<td><code>storereturns_20230314.csv</code></td>
 </tr>
 <tr>
 <td><code>storereturns</code></td>
-<td><code>20170315</code></td>
-<td><code>storereturns_20170315.csv</code></td>
+<td><code>20230315</code></td>
+<td><code>storereturns_20230315.csv</code></td>
 </tr>
 </tbody>
 </table>
 <h2 id="file-data-format">File data format</h2>
 <h3 id="file-organization">File organization</h3>
+<p>We recommend that you organize your files with the following guidelines:</p>
 <ul>
 <li><strong>File encoding</strong><br>
 We suggest UTF-8 <a href="https://en.wikipedia.org/wiki/Byte_order_mark#UTF-8">(without BOM encoding)</a>.</li>
 <li><strong>Column names</strong>
 <ul>
 <li>The first line of the CSV file must contain the file column names. Each line after that represents an event or a visitor record and must contain at least one <a href="/server-side/visitor-stitching/visitor-id-attribute/">visitor identifier attribute</a>.</li>
-<li>Column names may not contain &ldquo;#&rdquo;, &ldquo;^&rdquo;, or whitespace characters.</li>
+<li>Column names may not contain hash (<code>#</code>), caret (<code>^</code>), or whitespace characters.</li>
 <li>Column names are case-sensitive and must match the attribute names exactly.</li>
 </ul>
 </li>
@@ -967,14 +973,15 @@ Column values should not exceed 1,000 characters. Any characters over this limit
 <li><strong>Column Order</strong><br>
 The order of the columns does not matter, but we recommend placing the visitor ID column first.</li>
 <li><strong>Extra/Missing Columns</strong><br>
-Extra columns that are not configured as AudienceStream attributes will be ignored.  Mapped columns not present in the CSV file will be skipped.</li>
+Extra columns that are not configured as AudienceStream attributes will be ignored. Mapped columns not present in the CSV file will be skipped.</li>
 <li><strong>Group Rows by Visitor ID</strong><br>
 Each row has a <a href="/server-side/visitor-stitching/visitor-id-attribute/">visitor ID</a> column and file may contain multiple rows for the same visitor. Rows that contain the same visitor ID should be grouped together to optimize the import process.</li>
 </ul>
 <h3 id="data-type-formats">Data type formats</h3>
+<p>We recommend that you format the following data types accordingly:</p>
 <ul>
 <li><strong>Double-Quote Values with Commas</strong><br>
-If a value contains a comma (,) it must be surrounded by double-quotes to ensure the integrity of the CSV columns. We recommend putting all values in double-quotes. Use a doubled double quote (&quot;&quot;) to indicate a double quote character in the data.</li>
+If a value contains a comma (<code>,</code>), it must be surrounded by double-quotes to ensure the integrity of the CSV columns. We recommend putting all values in double-quotes. Use a doubled double quote (<code>&quot;&quot;</code>) to indicate a double quote character in the data.</li>
 <li><strong>Array of strings format</strong><br>
 Use the following example format for file attributes that are to be mapped to an array of strings:
 <pre tabindex="0"><code>&#34;[&#34;&#34;one&#34;&#34;,&#34;&#34;two&#34;&#34;,&#34;&#34;three&#34;&#34;]&#34;
@@ -990,7 +997,7 @@ Use the following example format for file attributes that are to be mapped to an
 <li><strong>Normalize Dates</strong>
 <ul>
 <li>Date values must be consistent throughout a file for a given field.</li>
-<li>Each date value must match the format specified for that column. For example, if the expected format is &ldquo;yyyy-MM-dd&rdquo;, the values must contain 4-digit years and 2-digit month and day values, for example, &ldquo;2021-02-09&rdquo;.</li>
+<li>Each date value must match the format specified for that column. For example, if the expected format is <code>yyyy-MM-dd</code>, the values must contain 4-digit years and 2-digit month and day values, for example, <code>2021-02-09</code>.</li>
 <li>The following date components are supported: Year, Month, Day, Hour, Minutes, Seconds, Milliseconds, AM/PM, ISO, RFC, Era. For more information about supported date components, see <a href="https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html">Java SimpleDateFormat Patterns</a>.</li>
 <li>Dates are stored in Tealium as epoch timestamps in milliseconds.</li>
 </ul>
@@ -1082,7 +1089,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 14, 2023 
+          <p>This page was last updated:  October 3, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1097,9 +1104,10 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#prepare-data-to-import">Prepare data to import</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#file-names">File names</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#file-naming-conventions">File naming conventions</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#file-name-prefix">File name prefix</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#file-naming-examples">File naming examples</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#file-name-limitations">File name limitations</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#file-name-examples">File name examples</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#file-data-format">File data format</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#file-organization">File organization</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-type-formats">Data type formats</a></li>
