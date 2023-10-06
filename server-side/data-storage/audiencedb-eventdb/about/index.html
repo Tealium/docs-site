@@ -359,6 +359,8 @@ var utag_data = {
         <a href="/server-side/data-sources/data-sources-for-iq-tag-management/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Data sources for iQ Tag Management</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/data-sources/vdata-endpoint/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Import data using Visitor Data Enrichment (/vdata)</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/data-sources/release-notes/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".release-notes-data-sources">Release notes</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".data-connect">Data Connect</a>
@@ -702,7 +704,7 @@ var utag_data = {
         <ul class="bl b--primary bw1 pl2 audiencedb-eventdb desktopmenu animated fadeIn list "><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/data-storage/audiencedb-eventdb/about/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".about-audiencedb-and-eventdb">About</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side/data-storage/audiencedb-eventdb/enable-audiencedb-eventdb/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".enable-audiencedb-eventdb">Enable AudienceDB and EventDB</a>
+        <a href="/server-side/data-storage/audiencedb-eventdb/config-audiencedb-eventdb/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".enable-audiencedb-eventdb">Configure AudienceDB and EventDB</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/data-storage/audiencedb-eventdb/audiencedb-data-guide/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".audiencedb-data-guide">AudienceDB data guide</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -730,6 +732,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/data-storage/frequently-asked-questions/how-long-is-data-stored/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".data-storage-how-long-is-data-stored">How long is the data stored in DataAccess?</a>
       </li></ul>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/data-storage/release-notes/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".release-notes-server-side-data-access">Release Notes</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".ss-consent">Consent</a>
@@ -796,6 +800,8 @@ var utag_data = {
         <a href="/server-side/administration/data-supply-chain-dashboard/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-data-supply-chain-dashboard">Data Supply Chain dashboard</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/administration/understanding-the-usage-report/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-understanding-the-usage-report">Usage report</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/administration/release-notes/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".release-notes-server-side-administration">Release Notes</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".ss-tealium-tools">Tealium Tools</a>
@@ -817,6 +823,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/frequently-asked-questions/when-are-records-created-updated-and-deleted-in-audiencedb/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">When are records created, updated, and deleted in AudienceDB?</a>
       </li></ul>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/release-notes/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".server-side-release-notes">Release notes</a>
       </li></ul></li></ul>
 </nav>
 </div>
@@ -861,6 +869,8 @@ var utag_data = {
 
 <div class="mv2 mid-gray fn w-100">
   
+
+  
     <p class="f4 fw3 lh-copy">
       This article describes how to work with AudienceDB and EventDB.
     </p>
@@ -869,12 +879,13 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
-<p>AudienceDB and EventDB services store structured audience and event data in Amazon Redshift, which is a data warehouse similar to Postgres. New data is stored in EventDB and AudienceDB within one hour after it reaches EventStore or AudienceStore.</p>
-<p>You can then query and analyze the data in Amazon Redshift using your preferred SQL client or Business Intelligence (BI) tool.</p>
+<p>AudienceDB and EventDB services store structured audience and event data in Amazon Redshift, a data warehouse based on PostgreSQL. You can query and analyze the data in Amazon Redshift using your preferred SQL client or Business Intelligence (BI) tool.</p>
 <h3 id="prerequisites">Prerequisites</h3>
-<p>AudienceDB and EventDB must be activated for your account. For additional information, contact your account manager. When EventDB or AudienceDB is activated, a database is created in Amazon Redshift to store your data. New data is stored in EventDB and AudienceDB within one hour after it reaches EventStore or AudienceStore.</p>
-<p>Each profile has its own database schema within the same Redshift instance, which means that each user has a specific Username and Password for each database schema (profile). The database schemas for AudienceDB and EventDB are created automatically when EventDB or AudienceDB are enabled for a user’s profile.</p>
-<p>After AudienceDB and EventDB have been activated, you must enable both and select the attributes to be stored. For more information, see <a href="/server-side/data-storage/audiencedb-eventdb/enable-audiencedb-eventdb/">Enable AudienceDB and EventDB</a>.</p>
+<p>Contact your account manager to have AudienceDB and EventDB enabled for your account. After EventDB and AudienceDB are enabled, a database is created in Amazon Redshift to store your data. New data is stored in EventDB and AudienceDB within one hour after it reaches EventStore or AudienceStore.</p>
+<p>Each profile has its own database schema within the same Redshift instance, which means that each user has a their own username and password for each database schema (profile). The database schemas for AudienceDB and EventDB are created automatically when EventDB or AudienceDB are enabled for a user’s profile.</p>
+<p>After AudienceDB and EventDB have been enabled, you must select the attributes to be stored. For more information, see <a href="/server-side/data-storage/audiencedb-eventdb/config-audiencedb-eventdb/">Configure AudienceDB and EventDB</a>.</p>
+<h3 id="data-retention">Data retention</h3>
+<p>The data stored in EventDB and AudienceDB remains available in Amazon RedShift for the length of time stated in your contract, usually 90 days. Contact your account manager to review the terms of your contract that determine the length of time your data is stored.</p>
 <h2 id="tables-views-and-normalized-views">Tables, views, and normalized views</h2>
 <p>The columns in the Redshift database tables are named according to the attribute type and the internal attribute ID. Views and normalized views of data contain the same data as tables, but have user friendly names that make it easier to write queries. The normalized view name is similar to the view name but with the attribute ID omitted from the table name. Table names and view names are created as follows:</p>
 <ul>
@@ -889,8 +900,6 @@ Column names are user-friendly names without attribute IDs.<br>
 For example: <code>visitor - badge - fan</code></li>
 </ul>
 <p>Views and normalized views simplify the process of running queries with aggregations such as <code>SUM()</code> , <code>MIN()</code>, and <code>MAX()</code>.</p>
-<h3 id="data-retention">Data retention</h3>
-<p>The structured data stored in EventDB and AudienceDB remains available in Amazon RedShift for the length of time stated in your contract, usually 90 days. Contact your Account Manager to review the terms of your contract that determine the length of time your data is stored.</p>
 <h2 id="audiencedb-tables">AudienceDB tables</h2>
 <p>Visit and visitor attributes are stored in database table columns according to their attribute type and name. Audiences are stored as columns in the visitors table. The keys for the tables are <code>visit_id</code> or <code>visitor_id</code>.</p>
 <p>The following tables are available for visit and visitor data:</p>
@@ -905,7 +914,7 @@ For example: <code>visitor - badge - fan</code></li>
 <li>Tally: <code>visit_tallies</code>, <code>visitor_tallies</code></li>
 </ul>
 <p>For detailed information, see the <a href="/server-side/data-storage/audiencedb-eventdb/audiencedb-data-guide/">AudienceDB data guide</a>.</p>
-<h3 id="eventdb-tables">EventDB tables</h3>
+<h2 id="eventdb-tables">EventDB tables</h2>
 <p>EventDB table data includes event attributes for all events in the event feed. Table columns are named according to the attribute type and name, with only some attributes referencing internal ID&rsquo;s. Standard Universal Data Object (UDO) variables are named with a <code>udo_</code> prefix and most column names match their corresponding attribute names, for example: <code>udo_event_name</code>. For additional information, see <a href="/server-side/live-events-feeds/">Live Events and Feeds</a>.</p>
 <p class="tip"><i class="fa fa-info-circle"></i>Event data coming from the Tealium Collect tag also includes information about which tags executed on the page and page performance metrics. For more information, see <a href="/client-side-tags/tealium-collect-tag/">Tealium Collect</a>.</p>
 <p>The following tables are available for event data:</p>
@@ -918,13 +927,13 @@ For example: <code>visitor - badge - fan</code></li>
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/server-side/data-storage/audiencedb-eventdb/enable-audiencedb-eventdb/"
+  <a href="/server-side/data-storage/audiencedb-eventdb/config-audiencedb-eventdb/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Enable AudienceDB and EventDB</div>
+      <div>Configure AudienceDB and EventDB</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Enable AudienceDB and EventDB"</title>
+      <title>"Configure AudienceDB and EventDB"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -957,7 +966,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 25, 2023 
+          <p>This page was last updated:  October 6, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -973,10 +982,10 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#prerequisites">Prerequisites</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-retention">Data retention</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tables-views-and-normalized-views">Tables, views, and normalized views</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-retention">Data retention</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#audiencedb-tables">AudienceDB tables</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#eventdb-tables">EventDB tables</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#audiencedb-tables">AudienceDB tables</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#eventdb-tables">EventDB tables</a></li>
               </nav>
   </aside></nav>
 
@@ -1149,6 +1158,14 @@ No</button>
   
   
   
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/release-notes/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Release Notes
+        </a>
+    </li>
+  
+  
+  
   
   
   
@@ -1292,6 +1309,12 @@ No</button>
       <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/server-side/frequently-asked-questions/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
           Frequently Asked Questions
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/server-side/release-notes/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Release notes
       </a>
       </li>
       
