@@ -729,7 +729,11 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="connector-actions">Connector actions</h2>
+  <h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Google Ads account with an Enhanced Conversions-enabled conversion. For more information, see <a href="https://support.google.com/google-ads/answer/13261987?visit_id=638313598805594644-2275068296&amp;rd=1">About enhanced conversions for web in the Google Ads API</a>.</li>
+</ul>
+<h2 id="connector-actions">Connector actions</h2>
 <table>
 <thead>
 <tr>
@@ -786,7 +790,7 @@ Optional. If you&rsquo;re accessing a client customer, the Manager Customer ID m
 <tbody>
 <tr>
 <td>Conversion Action</td>
-<td>Select an existing conversion action. Conversion actions need to be configured in the Google Ads UI with a type of <strong>WEBPAGE,</strong> enhanced conversions enabled, and enhanced conversion implementation method set to <strong>API</strong>. For more information about enhanced conversations, see: <a href="https://support.google.com/google-ads/answer/9888656">Google Ads Enhanced Conversion Tracking</a>.</td>
+<td>Select an existing conversion action. Conversion actions need to be configured in the Google Ads UI with a type of <strong>WEBPAGE</strong>, enhanced conversions enabled, and enhanced conversion implementation method set to <strong>API</strong>. For more information about enhanced conversations, see <a href="https://support.google.com/google-ads/answer/9888656">Google Ads Enhanced Conversion Tracking</a>.</td>
 </tr>
 <tr>
 <td>Transaction ID</td>
@@ -826,7 +830,7 @@ Optional. If you&rsquo;re accessing a client customer, the Manager Customer ID m
 </tr>
 <tr>
 <td>Phone Number (apply SHA256 hash)</td>
-<td>When a plain text phone number is provided, the connector will remove all non-digit symbols, prefix the number with a plus sign (+), whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>When a plain text phone number is provided, the connector will remove all non-digit symbols, prefix the number with a plus sign (<code>+</code>), whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
 </tr>
 <tr>
 <td>Address Info: First Name (already SHA256 hashed)</td>
@@ -885,7 +889,7 @@ Optional. If you&rsquo;re accessing a client customer, the Manager Customer ID m
 <li><strong>INVALID_USER_CUSTOMER_AUTHORIZATION</strong>: The login used to authenticate to the Google Ads platform during connector setup needs to have at least read-only access for the account owning the audience list.</li>
 <li><strong>Invalid Parameter - Action has invalid parameter value or missing required parameter</strong>: This is an internal validation error from the connector raised when required fields are missing. One of the following Action Errors will be returned:
 <ul>
-<li><strong>Transaction ID cannot be empty:</strong> If a conversion does not have an order ID, <code>tealium_random</code> can be mapped in the client-side tag and the connector action configuration.</li>
+<li><strong>Transaction ID cannot be empty</strong>: If a conversion does not have an order ID, <code>tealium_random</code> can be mapped in the client-side tag and the connector action configuration.</li>
 <li><strong>Email or Phone Number or All Address Info need to be provided</strong>: Required PII for Enhanced Conversions are one set of the following:<br>
 a) customer email<br>
 b) customer first name, last name, street address, city, state, country, and zip code<br>
@@ -968,7 +972,8 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector actions</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#prerequisites">Prerequisites</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#api-information">API information</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#batch-limits">Batch limits</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure settings</a></li>

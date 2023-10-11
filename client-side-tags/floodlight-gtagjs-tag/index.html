@@ -823,7 +823,7 @@ var utag_data = {
 </ul>
 </li>
 <li>Pass custom event parameters by mapping to &ldquo;DoubleClick Custom Parameters&rdquo; and replacing <code>myvar</code> with your custom variable name.</li>
-<li>If you do not need a Session ID while using a list, place an empty space/string in its place.</li>
+<li>If you do not need a Session ID while using a list, place an empty space or empty string in its place.</li>
 <li>For additional information, see the <a href="https://support.google.com/dcm/partner/answer/7568534">Floodlight documentation</a>.</li>
 </ul>
 <h2 id="tag-configuration">Tag configuration</h2>
@@ -832,8 +832,7 @@ var utag_data = {
 <ul>
 <li><strong>Advertiser ID</strong>
 <ul>
-<li>A single or comma separated list of advertiser identifiers that are the source of the Floodlight activity.</li>
-<li>Example: DC-123456789</li>
+<li>A single or comma separated list of advertiser identifiers that are the source of the Floodlight activity, or example, <code>DC-123456789</code>.</li>
 </ul>
 </li>
 <li><strong>Group Tag String</strong>
@@ -860,25 +859,28 @@ var utag_data = {
 <li>If counting method is not set it will be set to transactions.</li>
 </ul>
 </li>
-<li><strong>Allow Custom Scripts</strong></li>
+<li><strong>Allow Custom Scripts</strong>
+<ul>
+<li>Enables Dynamic tags to integrate third-party tools for tracking website activity.</li>
+</ul>
+</li>
 <li><strong>Global Object</strong>
 <ul>
-<li>This is the name of the Global Object used for the event queue.</li>
-<li>If not specified, &ldquo;gtag&rdquo; is used.</li>
+<li>This value is the name of the Global Object used for the event queue.</li>
+<li>If not specified, <code>gtag</code> is used.</li>
 <li>Not required for most implementations.</li>
 </ul>
 </li>
 <li><strong>Data Layer Name</strong>
 <ul>
-<li>By default, the data layer initiated and referenced by the global site tag is named <strong>dataLayer</strong>.</li>
+<li>By default, the data layer initiated and referenced by the global site tag is named <code>dataLayer</code>.</li>
 <li>Rename the data layer only if your project requires a separate name.</li>
 </ul>
 </li>
 <li><strong>Cross-Tracking Domains</strong>
 <ul>
 <li>A comma-separated list of domains to use with Cross-Domain Tracking (<code>setAllowLinker</code>).</li>
-<li>This should be the top-level domain.</li>
-<li>Example: tealiumiq.com</li>
+<li>This value should be the top-level domain, for example, <code>tealiumiq.com</code>.</li>
 </ul>
 </li>
 </ul>
@@ -896,74 +898,47 @@ var utag_data = {
 <tbody>
 <tr>
 <td>Advertiser ID <code>advertiser_id</code></td>
-<td><ul><li>Required</li><li>String/Array</li><li>One or more Advertiser IDs separated by commas</li><li>Example: DC-12345678</li><li>Data will be sent to all IDs</li><li>Case-sensitive</li></ul></td>
+<td><ul><li>Required</li><li>String/Array</li><li>One or more Advertiser IDs separated by commas.</li><li>Example: DC-12345678</li><li>Data will be sent to all IDs.</li><li>Case-sensitive</li></ul></td>
 </tr>
 <tr>
 <td>Group Tag String <code>activity_group</code></td>
-<td><ul><li>Required</li><li>String/Array</li><li>One or more group tag strings separated by commas</li><li>Must match the length of Advertiser ID</li><li>Case-sensitive</li></ul></td>
+<td><ul><li>Required</li><li>String/Array</li><li>One or more group tag strings separated by commas.</li><li>Must match the length of Advertiser ID.</li><li>Case-sensitive</li></ul></td>
 </tr>
 <tr>
 <td>Activity Tag String <code>activity</code></td>
-<td><ul><li>Required</li><li>String/Array</li><li>One or more activity tag strings separated by commas</li><li>Must match the length of Advertiser ID</li><li>Case-sensitive</li></ul></td>
+<td><ul><li>Required</li><li>String/Array</li><li>One or more activity tag strings separated by commas.</li><li>Must match the length of Advertiser ID.</li><li>Case-sensitive</li></ul></td>
 </tr>
 <tr>
 <td>Counting Method <code>counting_method</code></td>
-<td><ul><li>Required</li><li>String/Array</li><li>One or more counting method names separated by commas</li><li>Must match the length of Advertiser ID</li><li>Converts to lowercase</li></ul></td>
+<td><ul><li>Required</li><li>String/Array</li><li>One or more counting method names separated by commas.</li><li>Must match the length of Advertiser ID.</li><li>Converts to lowercase.</li></ul></td>
 </tr>
 <tr>
 <td>Session ID <code>session_id</code></td>
-<td><ul><li>String/Array</li><li>Map none, one, or a set of values matching the length of Advertiser ID</li><li>Place blanks where not needed</li></ul></td>
+<td><ul><li>String/Array</li><li>Map none, one, or a set of values matching the length of Advertiser ID.</li><li>Place blanks where not needed.</li></ul></td>
 </tr>
 <tr>
 <td>Event Name <code>event_name</code></td>
-<td><ul><li>The name of the current event</li></ul></td>
-</tr>
-<tr>
-<td>Auto Fire Purchase Event <code>fire_purchase</code></td>
-<td><ul><li>Values are <strong>True</strong> or <strong>False</strong></li><li>Fires purchase event when an Order ID is present</li><li>If counting method is not set, it will be set to transactions</li></ul></td>
-</tr>
-<tr>
-<td>Allow Custom Scripts <code>custom_scripts</code></td>
-<td><ul><li>Values are <strong>True</strong> or <strong>False</strong></li><li>The default value is <strong>True</strong></li><li>Enables Dynamic tags to integrate third-party tools for tracking website activity</li><li>Use to override the configuration value</li></ul></td>
-</tr>
-</tbody>
-</table>
-<h3 id="standard-1">Standard</h3>
-<table>
-<thead>
-<tr>
-<th><strong>Destination Name</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Advertiser ID <code>advertiser_id</code></td>
-<td><ul><li>Use to override the configuration value.</li><li>Accepts either a comma separated string or an array.</li></ul></td>
-</tr>
-<tr>
-<td>Group Tag String <code>activity_group</code></td>
-<td><ul><li>Use to override the configuration value.</li><li>Must match the length of Advertiser ID.</li><li>Accepts either a comma separated string or an array.</li></ul></td>
-</tr>
-<tr>
-<td>Activity Tag String <code>activity</code></td>
-<td><ul><li>Use to override the configuration value.</li><li>Must match the length of Advertiser ID.</li><li>Accepts either a comma separated string or an array.</li></ul></td>
-</tr>
-<tr>
-<td>Counting Method <code>counting_method</code></td>
-<td><ul><li>Use to override the configuration value.</li><li>Must match the length of Advertiser ID.</li><li>Accepts either a comma separated string or an array.</li><li>Converts to lowercase.</li></ul></td>
-</tr>
-<tr>
-<td>Event Name <code>event_action</code></td>
 <td><ul><li>The name of the current event.</li></ul></td>
 </tr>
 <tr>
-<td>Auto Fire Purchase Event<br> <code>fire_purchase</code></td>
-<td><ul><li>Values are True or False.</li><li>Fires purchase event when an Order ID is present.</li><li>If counting method is not set, it will be set to transactions.</li></ul></td>
+<td>Auto Fire Purchase Event <code>fire_purchase</code></td>
+<td><ul><li>Values are <code>True</code> or <code>False</code>.</li><li>Fires purchase event when an Order ID is present.</li><li>If counting method is not set, it will be set to transactions.</li></ul></td>
 </tr>
 <tr>
 <td>Allow Custom Scripts <code>custom_scripts</code></td>
-<td><ul><li>Values are True or False.</li><li>Use to override the configuration value.</li></ul></td>
+<td><ul><li>Values are <code>True</code> or <code>False</code>.</li><li>The default value is <code>True</code>.</li><li>Enables Dynamic tags to integrate third-party tools for tracking website activity.</li><li>Use to override the configuration value&lt;./li&gt;</ul></td>
+</tr>
+<tr>
+<td>Cross-Tracking Domains <code>cross_track_domains</code></td>
+<td><ul><li>A comma-separated list of domains to use with Cross-Domain Tracking.</li></ul></td>
+</tr>
+<tr>
+<td>Match ID <code>dc_custom_params.match_id</code></td>
+<td><ul><li>A unique advertiser-created identifier (passed via Floodlight) that you can sync with Google to attribute offline conversions.</li><li>This value is case sensitive, limited to 100 characters, and contains only letters (<code>a-z</code> or <code>A-Z</code>), numbers (<code>0-9</code>), underscores (<code>_</code>), hyphens (<code>-</code>), and periods (<code>.</code>).</li></ul></td>
+</tr>
+<tr>
+<td>Ordinal <code>dc_custom_params.ord</code></td>
+<td><ul><li>A unique random number that acts as a cachebuster to prevent the browser from loading ad images and clickthrough URLs from cache.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -996,7 +971,7 @@ The event triggers when the supplied value is found in the data layer.</li>
 </tbody>
 </table>
 <h3 id="e-commerce">E-Commerce</h3>
-<p>As the Floodlight (gtag.js) tag is e-commerce enabled, it will automatically use the default E-Commerce extension mappings. Manually mapping in this category is generally not needed unless you want to override any extension mappings to your desired e-commerce variable is not offered in the extension.</p>
+<p>As the Floodlight (<code>gtag.js</code>) tag is e-commerce enabled, it will automatically use the default E-Commerce extension mappings. Manually mapping in this category is generally not needed unless you want to override any extension mappings to your desired e-commerce variable is not offered in the extension.</p>
 <table>
 <thead>
 <tr>
@@ -1007,23 +982,23 @@ The event triggers when the supplied value is found in the data layer.</li>
 <tbody>
 <tr>
 <td>Order ID <code>order_id</code></td>
-<td><ul><li>Overrides <code>_corder</code></li></ul></td>
+<td><ul><li>Overrides <code>_corder</code>.</li></ul></td>
 </tr>
 <tr>
 <td>Order Total <code>order_total</code></td>
-<td><ul><li>Overrides <code>_ctotal</code></li></ul></td>
+<td><ul><li>Overrides <code>_ctotal</code>.</li></ul></td>
 </tr>
 <tr>
-<td>List of IDs<br> <code>product_id</code></td>
-<td><ul><li>Array</li><li>Overrides <code>_cprod</code></li></ul></td>
+<td>List of IDs <code>product_id</code></td>
+<td><ul><li>Array</li><li>Overrides <code>_cprod</code>.</li></ul></td>
 </tr>
 <tr>
 <td>List of Quantities <code>product_quantity</code></td>
-<td><ul><li>Array</li><li>Overrides <code>_cquan</code></li><li>Accepts a single number override or an array of values</li></ul></td>
+<td><ul><li>Array</li><li>Overrides <code>_cquan</code>.</li><li>Accepts a single number override or an array of values.</li></ul></td>
 </tr>
 <tr>
-<td>List of Prices<br> <code>product_unit_price</code></td>
-<td><ul><li>Array</li><li>Overrides <code>_cprice</code></li></ul></td>
+<td>List of Prices <code>product_unit_price</code></td>
+<td><ul><li>Array</li><li>Overrides <code>_cprice</code>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -1042,91 +1017,91 @@ The event triggers when the supplied value is found in the data layer.</li>
 </tr>
 <tr>
 <td>Custom Variable 1 <code>custom.u1</code></td>
-<td><ul><li>Use to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u1</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u1</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable 2 <code>custom.u2</code></td>
-<td><ul><li>Use to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u2</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u2</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable 3 <code>custom.u3</code></td>
-<td><ul><li>Use to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u3</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u3</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable 4 <code>custom.u4</code></td>
-<td><ul><li>Use to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u4</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u4</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable 5 <code>custom.u5</code></td>
-<td><ul><li>Use to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u5</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u5</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable 6 <code>custom.u6</code></td>
-<td><ul><li>Use to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u6</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u6</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable 7 <code>custom.u7</code></td>
-<td><ul><li>Use to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u7</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u7</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable 8 <code>custom.u8</code></td>
-<td><ul><li>Use to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u8</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u8</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable 9 <code>custom.u9</code></td>
-<td><ul><li>Use to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u9</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u9</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable 10 <code>custom.u10</code></td>
-<td><ul><li>Use to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u10</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u10</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable 11 <code>custom.u11</code></td>
-<td><ul><li>Use to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u11</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u11</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable 12 <code>custom.u12</code></td>
-<td><ul><li>Use to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u12</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u12</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable 13 <code>custom.u13</code></td>
-<td><ul><li>Use to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u13</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u13</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable 14 <code>custom.u14</code></td>
-<td><ul><li>Use to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u14</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u14</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable 15 <code>custom.u15</code></td>
-<td><ul><li>Use to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u15</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u15</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable 16 <code>custom.u16</code></td>
-<td><ul><li>Use to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u16</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u16</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable 17 <code>custom.u17</code></td>
-<td><ul><li>Use to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u17</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u17</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable 18 <code>custom.u18</code></td>
-<td><ul><li>Use to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u18</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u18</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable 19 <code>custom.u19</code></td>
-<td><ul><li>Use to add custom metrics and dimension.s</li><li>Associate with the custom Floodlight variable <code>u19</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u19</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable 20 <code>custom.u20</code></td>
-<td><ul><li>Use to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u20</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions.</li><li>Associate with the custom Floodlight variable <code>u20</code>.</li><li>Defaults to dimension or metric name if not provided in mapping.</li></ul></td>
 </tr>
 <tr>
 <td>Custom Variable 21+ <code>custom.u#</code></td>
-<td><ul><li>Use to add custom metrics and dimensions beyond 20 (not supported in Floodlight Search).</li><li>Associate with the custom Floodlight variable <code>u#</code>.</li><li>Replace the <code>#</code> sign in mapping with the desired number.</li></ul></td>
+<td><ul><li>Use this custom parameter to add custom metrics and dimensions beyond 20 (not supported in Floodlight Search).</li><li>Associate with the custom Floodlight variable <code>u#</code>.</li><li>Replace the <code>#</code> sign in mapping with the desired number.</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h4 id="ab-transparency-and-consent-framework-v2">AB Transparency and Consent Framework v2</h4>
+<h4 id="iab-transparency-and-consent-framework-v2">IAB Transparency and Consent Framework v2</h4>
 <table>
 <thead>
 <tr>
@@ -1137,7 +1112,7 @@ The event triggers when the supplied value is found in the data layer.</li>
 <tbody>
 <tr>
 <td>Enable TCF Support <code>tag_enable_tcf_support</code></td>
-<td><ul><li>Values are <strong>true</strong> or <strong>false</strong>.</li></ul></td>
+<td><ul><li>Values are <code>true</code> or <code>false</code>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -1281,7 +1256,6 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag configuration</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data mappings</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#standard">Standard</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#standard-1">Standard</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#events">Events</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#e-commerce">E-Commerce</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#custom">Custom</a></li>

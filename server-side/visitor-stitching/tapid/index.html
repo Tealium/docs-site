@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side",
-    reading_time  : "5",
+    reading_time  : "6",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -873,7 +873,7 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
-<p>TAPID is an HTTP-only browser cookie. It was originally designed to facilitate cross-domain identification, and it stores the primary identifiers for Tealium’s server-side products, such as AudienceStream.</p>
+<p>TAPID is an HTTP-only browser cookie. It was originally designed to facilitate cross-domain identification, and it stores the <a href="/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/#anonymous-id">anonymous ID</a> that Tealium’s server-side products use, such as AudienceStream.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>If a visitor&rsquo;s computer doesn&rsquo;t already have a TAPID cookie set on the <a href="/client-side-tags/tealium-collect-tag/">Collect Tag</a> target domain, the domain will generate one based on the Collect Tag payload.</p>
 <p>The TAPID cookie&rsquo;s value is set to that user&rsquo;s visitor ID. This value normally comes from the client device. TAPID stores the value in a concatenated list of values for the accounts and profiles that a user&rsquo;s device has visited, using the following format:</p>
 <pre tabindex="0"><code>account-1/profile-1&gt;visitor_id_value-1|account-2/profile-2&gt;visitor_id_value-2
@@ -893,17 +893,22 @@ var utag_data = {
 </ol>
 <h2 id="identity-resolution">Identity resolution</h2>
 <p>AudienceStream determines the visitor profile ID based on the following order:</p>
-<ul>
+<ol>
 <li>The TAPID cookie, also called <code>tealium_thirdparty_visitor_id</code>.</li>
 <li>The <code>tealium_visitor_id</code> event attribute.</li>
 <li>The <code>utag_main v_id cookie</code>, also called <code>tealium_firstparty_visitor_id</code>.</li>
-</ul>
+</ol>
 <p>AudienceStream always uses the TAPID identifier as the primary identifier if it is present in an incoming request. If a user is tracked across two domains, AudienceStream does not use the second domain&rsquo;s first party cookie to identify the user. Therefore, you cannot look up the user based on the second domain&rsquo;s first party cookie in AudienceStream.</p>
 <h3 id="visitor-stitching-issues">Visitor stitching issues</h3>
 <p>A visitor&rsquo;s profile data can be contaminated if multiple visitors use a device, such as a shared smart television or a public kiosk. If a second user logs in to that device with an anonymous cookie, AudienceStream continues to log activity to the first user. Traffic from all the anonymous users on a device are logged to the first user in the TAPID cookie.</p>
 <p>For more information, see <a href="/platforms/http-api/endpoint/#visitor-switching">Visitor Switching</a>.</p>
 <h3 id="browser-support">Browser support</h3>
 <p>As browser support for third-party cookies continues to decline, the ability to track users anonymously across domains is becoming more difficult. With <a href="/server-side/visitor-stitching/about/">Visitor Stitching</a>, AudienceStream can resolve a user across two or more domains when that user identifies themselves in the data layer.</p>
+<h2 id="first-party-domains-and-tapid">First-party domains and TAPID</h2>
+<p>First-party domains allow Tealium services to use first-party requests, which can reduce data loss caused by ad blockers and similar technology.</p>
+<p>The first-party domain is the domain that hosts the website the user is visiting. A third-party domain is any domain that does not match the current website&rsquo;s domain.</p>
+<p>When you use first-party domains, the TAPID cookie remains an HTTP-only browser cookie, but it is assigned to the first-party domain that hosts your website instead of Tealium&rsquo;s third-party domain. Therefore, first-party domains cause the TAPID cookie to lose its cross-domain tracking functionality.</p>
+<p>For more information, see <a href="/iq-tag-management/administration/first-party-domains/about/">About First-Party Domains</a>.</p>
 <h2 id="change-the-tapid-cookie-data">Change the TAPID cookie data</h2>
 <p>The API request contains 3 parameters that allow you to change the value of the TAPID cookie. These parameters only affect the account and profile value in TAPID related to the current incoming API request. It does not change any other account and profile values.</p>
 <p>The parameters support the following endpoints:</p>
@@ -1137,7 +1142,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 6, 2023 
+          <p>This page was last updated:  October 9, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1156,7 +1161,8 @@ No</button>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#identity-resolution">Identity resolution</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#visitor-stitching-issues">Visitor stitching issues</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#browser-support">Browser support</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#change-the-tapid-cookie-data">Change the TAPID cookie data</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#first-party-domains-and-tapid">First-party domains and TAPID</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#change-the-tapid-cookie-data">Change the TAPID cookie data</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#examples">Examples</a></li>
               </nav>
   </aside></nav>

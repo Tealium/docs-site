@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side-connectors",
-    reading_time  : "5",
+    reading_time  : "6",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -730,7 +730,7 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <p>Amazon Ads Audience Management streamlines the upload, management, and use of audiences within Amazon Marketing Cloud (AMC). With the Amazon Ads Audience connector, you can create and upload audiences through the Audience Management Service that are eligible for follow-on actions through the Amazon DSP, AMC UI workflows, or API actions, such as AMC rule-based audiences.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>This connector can add visitors to either AMC or DSP audiences.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>This connector can add visitors to either AMC or DSP audiences. For AMC audiences, you must create an AMC connection during the <a href="#configure-settings"><strong>Configuration</strong></a> process. For DSP audiences, you must select an Advertiser ID when you <a href="#action--add-visitor-to-dsp-audience">create the DSP audience</a>.</p>
 <h2 id="api-information">API Information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
@@ -769,22 +769,22 @@ var utag_data = {
 </table>
 <h2 id="configure-settings">Configure Settings</h2>
 <p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
-<p>After adding the connector, configure the following settings:</p>
-<ul>
-<li><strong>API Base URL</strong>: Required. Select your API Base URL.</li>
-</ul>
-<h3 id="amazon-connection-configuration">Amazon connection configuration</h3>
-<p>You must configure a connection with Amazon before you can select an audience in this connector&rsquo;s actions. Amazon Ads stores connections in objects that store the mapping of AMC instances and Amazon DSP advertiser IDs.</p>
-<p>To establish a connection with Amazon:</p>
+<h3 id="amazon-authentication">Amazon authentication</h3>
+<p>To authenticate the connector with Amazon:</p>
 <ol>
+<li>In the <strong>API Base URL</strong> drop-down, select your API base URL.</li>
 <li>Click <strong>Establish Connection</strong>. An Amazon <strong>Sign in</strong> dialog appears.</li>
-<li>Sign in to Amazon with your credentials. After you establish the connection with Amazon, select the audience for the connector to use.</li>
+<li>Sign in to Amazon with your credentials.</li>
+</ol>
+<h3 id="amc-audience-connection">AMC audience connection</h3>
+<p>AMC audiences require a connection object to configure an audience. Amazon stores connections in objects that store the mapping of AMC instances and DSP audiences.</p>
+<p>To establish an AMC connection with Amazon:</p>
+<ol>
 <li>Click <strong>Create AMC Connection</strong>. The <strong>Create AMC Connection</strong> dialog appears.</li>
 <li>Under the <strong>AMC Instance</strong> drop-down, select the AMC instance to use for audience uploads.</li>
-<li>Under the <strong>DSP Advertiser ID</strong> drop-down, select a DSP Advertiser ID to synchronize the audience to DSP.</li>
+<li>(optional) Under the <strong>DSP Advertiser ID</strong> drop-down, select a DSP Advertiser ID to synchronize the audience to DSP.</li>
 <li>Click <strong>Done</strong>, then click <strong>Create</strong>.</li>
 </ol>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Audiences that you create via this connector prepend the prefix <code>Tealium:</code> before they are sent to Amazon.</p>
 <h2 id="action-settings--actions">Action settings — Actions</h2>
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
@@ -800,7 +800,7 @@ var utag_data = {
 <tbody>
 <tr>
 <td>Audience ID</td>
-<td>Click <strong>Create Audience</strong> to create a new audience. Click <strong>Verify Audience ID</strong> to verify the audience ID.</td>
+<td>The Audience ID to add a visitor to.<ol><li>Click <strong>Create Audience</strong> to create a new audience.</li><li>Select an <strong>AMC Connection</strong> from the drop-down.</li><li>Enter an <strong>Audience Name</strong>.</li><li>Enter an audience description in the <strong>Description</strong> field.</li><li>Enter an <strong>External Audience ID</strong>.</li><li>Click <strong>Done</strong>.</li><li>Click <strong>Verify Audience ID</strong> to verify the audience ID.</li></ol>Audiences that you create with this connector prepend the prefix <code>Tealium:</code> to the audience name before they are sent to Amazon.</td>
 </tr>
 <tr>
 <td>External User ID</td>
@@ -876,7 +876,7 @@ var utag_data = {
 <tbody>
 <tr>
 <td>Audience ID</td>
-<td>Click <strong>Create Audience</strong> to create a new audience. Click <strong>Verify Audience ID</strong> to verify the audience ID.</td>
+<td>The Audience ID to add a visitor to.<ol><li>Click <strong>Create Audience</strong> to create a new audience. The <strong>Create Audience</strong> dialog will appear.</li><li>Select a <strong>DSP Advertiser</strong> from the drop-down.</li><li>Enter an <strong>Audience Name</strong>.</li><li>Enter an audience description in the <strong>Description</strong> field.</li><li>Enter an <strong>External Audience ID</strong>.</li><li>Click <strong>Done</strong>.</li><li>Click <strong>Verify Audience ID</strong> to verify the audience ID.</li></ol> Audiences that you create with this connector prepend the prefix <code>Tealium:</code> to the audience name before they are sent to Amazon.</td>
 </tr>
 <tr>
 <td>External User ID</td>
@@ -1018,7 +1018,8 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#batch-limits">Batch Limits</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#amazon-connection-configuration">Amazon connection configuration</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#amazon-authentication">Amazon authentication</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#amc-audience-connection">AMC audience connection</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings--actions">Action settings — Actions</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action--add-visitor-to-amc-audience">Action — Add Visitor to AMC Audience</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action--add-visitor-to-dsp-audience">Action — Add Visitor to DSP Audience</a></li>

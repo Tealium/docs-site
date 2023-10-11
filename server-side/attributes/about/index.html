@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side",
-    reading_time  : "7",
+    reading_time  : "6",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -907,9 +907,9 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<h3 id="session-length">Session Length</h3>
-<p>Sessions represent the amount of time for a visit after the first event is received by AudienceStream.</p>
-<p>In AudienceStream, session length is set based on the platform of the events:</p>
+<h3 id="session-length">Session length</h3>
+<p>Session length determines when AudienceStream ends a visit. When a visit reaches the session length without a new event, the visit ends and AudienceStream performs end-of-visit processing. The next event from the visitor starts a new visit. AudienceStream has a maximum visit length of 24 hours, regardless of event activity.</p>
+<p>In AudienceStream, the default session length is set based on the platform that sends the events:</p>
 <ul>
 <li><strong>Web</strong>: 30 min (10 min if one event and no follow-up events)</li>
 <li><strong>Mobile App</strong>: 2 min</li>
@@ -920,12 +920,9 @@ var utag_data = {
 <p>The platform is based on the reserved attribute named <code>platform</code> according to the following values:</p>
 <ul>
 <li><strong>Web</strong> - <code>platform</code> is set to <code>web</code> or not set.</li>
-<li><strong>Mobile</strong> - platform is set one of <code>android|ios|win|bb10|native_mobile</code>.</li>
+<li><strong>Mobile</strong> - <code>platform</code> is set to one of <code>android</code>,<code>ios</code>,<code>win</code>,<code>bb10</code>,<code>native_mobile</code>.</li>
 </ul>
-<p>To customize the session length, set the data layer variable <code>_dc_ttl_</code> to a value in milliseconds on the first event of a session. For example, to set the session length to 30 minutes add the following to the event: <code>&quot;_dc_ttl_&quot;: 1800000</code>. The session length cannot be changed after it has been set.</p>
-<p>When a visit reaches the session length without a new event, the visit ends and AudienceStream performs end-of-visit processing. The next event from the visitor starts a new visit.  AudienceStream has a maximum visit length of 24 hours, regardless of event activity.</p>
-<p>The following example sets the session length to 30 minutes (180000 milliseconds): <code>&quot;_dc_ttl_&quot;: 1800000</code></p>
-<p>If you change the session length, all currently active sessions use the previously-set session session length until they end.</p>
+<p>To customize the session length, set the data layer variable <code>_dc_ttl_</code> to a value in milliseconds on the first event of a session. For example, to set the session length to 5 minutes, add the following to the event: <code>&quot;_dc_ttl_&quot;: 300000</code>. The session length cannot be changed after it has been set.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>To set a custom length, you must omit the <code>platform</code> variable. If you set a custom value for <code>platform</code>, the session length defaults to 30 minutes.</p>
 <h2 id="data-types">Data Types</h2>
 <p>Attributes come in a variety of types, from a basic number to the more powerful tally and badge. The data type determines the format in which the attribute value is stored.</p>
@@ -1253,7 +1250,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 3, 2023 
+          <p>This page was last updated:  October 6, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1268,7 +1265,7 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#scope">Scope</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#session-length">Session Length</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#session-length">Session length</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-types">Data Types</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#scope-and-data-type-matrix">Scope and Data Type Matrix</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#attribute-ids">Attribute IDs</a></li>
