@@ -714,7 +714,7 @@ var utag_data = {
 
   
     <p class="f4 fw3 lh-copy">
-      The Persist Data Value extension is used to set a value into a persistent cookie. Choose the cookie name and persistence duration.
+      The Persist Data Value extension is used to set a value in a first-party cookie.
     </p>
   
 </div>
@@ -722,21 +722,21 @@ var utag_data = {
 <div class="prose nested-links" id="prose">
   <h2 id="prerequisites">Prerequisites</h2>
 <ul>
-<li>utag v4.38 or higher. (See: <a href="/iq-tag-management/templates/manage/">How to upgrade utag.js</a>)</li>
+<li>Version 4.38 or later of <code>utag.js</code>. (See: <a href="/iq-tag-management/templates/manage/">How to upgrade utag.js</a>)</li>
 <li><a href="/iq-tag-management/extensions/about/">How extensions work</a></li>
-<li><a href="/iq-tag-management/data-layer/data-layer-variables/">Data Layer Variables: First Party Cookies</a></li>
+<li><a href="/iq-tag-management/data-layer/data-layer-variables/#first-party-cookies">Data Layer Variables: First-party cookies</a></li>
 </ul>
 <h2 id="how-it-works">How it works</h2>
-<p>The Persist Data Value extension sets first-party cookies using custom text values or values from the data layer. Set the cookie to either the default Tealium cookie <code>utag_main</code>, an existing first-party cookie, or a new one. Each cookie you set must also be created as a data layer variable.</p>
-<p>The expiration of the cookie is based on the user&rsquo;s session or a specified duration of time in hours or days. The cookie is either set once, updated on every page view, or set based on conditions that you define.</p>
+<p>The Persist Data Value extension sets first-party cookies using text values or values from a data layer variable. The cookie you set must also be created as a data layer variable. For more information, see <a href="/iq-tag-management/data-layer/data-layer-variables/#first-party-cookies">first-party cookie variables</a>.</p>
+<p>The expiration of the cookie is based either on the user&rsquo;s session or a duration of time in hours or days. The cookie can be set once, updated on every page view, or set based on a condition.</p>
 <h2 id="using-the-extension">Using the extension</h2>
-<p>Once the extension is added, the following configuration options are available:</p>
+<p>After the extension is added, the following configuration options are available:</p>
 <ul>
 <li>
-<p><strong>Persist</strong>: Select the value to save in the cookie:</p>
+<p><strong>Persist</strong>: Select the type of value to save in the cookie:</p>
 <ul>
 <li><strong>Text</strong>: Set the cookie value to the text you enter.</li>
-<li><strong>Variable</strong>: Set the cookie to the value of a variable in the data layer.</li>
+<li><strong>Variable</strong>: Set the cookie to the value of a data layer variable.</li>
 </ul>
 </li>
 <li>
@@ -746,15 +746,15 @@ var utag_data = {
 </ul>
   <p class="note"><i class="fa fa-exclamation-triangle"></i>Session cookies are deleted when the current session ends. The browser defines when the current session ends, and some browsers use session restoring when restarting. Session restoring can cause session cookies to last indefinitely.</p>
 <ul>
-<li><strong>Visitor</strong>: The data remains in the cookie until the visitor deletes the cookie.</li>
-<li><strong>Hours</strong>: The data remains in the cookie for the number of hours you specify.</li>
-<li><strong>Days</strong>: The data remains in the cookie for the number of days you specify.</li>
+<li><strong>Visitor</strong>: The data remains in the cookie until the visitor or the browser deletes the cookie.</li>
+<li><strong>Hours</strong>: The data remains in the cookie for the number of hours you specify or until the browser deletes it.</li>
+<li><strong>Days</strong>: The data remains in the cookie for the number of days you specify or until the browser deletes it.</li>
 </ul>
 </li>
 <li>
-<p><strong>Update</strong>: Select when to replace or update the value.</p>
+<p><strong>Update</strong>: Select when to set or update the value.</p>
 <ul>
-<li><strong>Allow Update on Page View</strong>: Every time the visitor views the page, the data is updated. The duration timer resets with each update.</li>
+<li><strong>Allow Update on Page View</strong>: Every time the visitor views a page, the data is updated. The duration timer resets with each update.</li>
 <li><strong>Keep First Value Set</strong>: Only the data from the first visit is saved. Subsequent visits do not alter this value.</li>
 </ul>
 </li>
@@ -765,8 +765,15 @@ var utag_data = {
 <p><strong>Store in Cookie</strong>: Select the cookie variable to set. Click the <strong>+</strong> button to create a new one.</p>
 </li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>To store a value in the Tealium cookie, name the cookie variable in the format <code>utag_main_&lt;name&gt;</code>, where <code>&lt;name&gt;</code> is the name of your cookie. <a href="/iq-tag-management/data-layer/data-layer-variables/">Learn more about Tealium cookies</a>.</p>
-<h2 id="example-user-location-cookie">Example: User location cookie</h2>
+<h3 id="version-449-and-earlier">Version 4.49 and earlier</h3>
+<p>In versions 4.49 and earlier of <code>utag.js</code>, the Tealium cookie is a single multi-value cookie named <code>utag_main</code>. To store a value in the Tealium cookie, name the cookie variable in the format <code>utag_main_NAME</code>, where <code>NAME</code> is the name of your cookie.</p>
+<figure><a class="slb" href="/images/iq-tag-management/whiteui-tiq-tealium-cookies-add-first-party-cookie-variable.jpg"><img src="/images/iq-tag-management/whiteui-tiq-tealium-cookies-add-first-party-cookie-variable.jpg"
+         alt="Add First Party Cookie variable"
+         title="Add First Party Cookie variable"/>
+    </a>
+</figure>
+<p>For more information, see <a href="/iq-tag-management/data-layer/cookies/">Tealium cookies</a>.</p>
+<h2 id="example-visitor-location-cookie">Example: Visitor location cookie</h2>
 <p>This example demonstrates how to persist the visitor&rsquo;s location to a cookie. The location is retrieved from an existing data layer variable named <code>city_state_zip</code>. This variable might only be available on one page, but the value is needed on all pages throughout the site, so the Persist Data Value extension is used to save it to a cookie that will last for the life of the session.</p>
 <p>To create the location cookie:</p>
 <ol>
@@ -846,7 +853,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 21, 2023 
+          <p>This page was last updated:  October 12, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -863,7 +870,8 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#prerequisites">Prerequisites</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#using-the-extension">Using the extension</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#example-user-location-cookie">Example: User location cookie</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#version-449-and-earlier">Version 4.49 and earlier</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#example-visitor-location-cookie">Example: Visitor location cookie</a></li>
               </nav>
   </aside></nav>
 

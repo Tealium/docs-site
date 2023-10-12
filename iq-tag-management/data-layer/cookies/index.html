@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "iq-tag-management",
-    reading_time  : "5",
+    reading_time  : "4",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -708,44 +708,38 @@ var utag_data = {
 
   
     <p class="f4 fw3 lh-copy">
-      This article explains how cookies from the Universal Tag (utag.js) work and how to work with your own cookies within Tealium iQ Tag Management.
+      This article provides an overview of the cookies used by Tealium iQ Tag Management and the various methods by which additional cookies can be created and modified.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="how-it-works">How it works</h2>
-<p>The Tealium Universal Tag (<code>utag.js</code>) creates and maintains first-party cookies in most cases.</p>
-<p>In utag <a href="/platforms/javascript/release-notes#450-august-2023">version 4.50</a> or later, when the <a href="/platforms/javascript/settings/#split_cookie"><code>split_cookie</code></a> setting is enabled (default), the <code>utag.js</code> script creates and manages standalone cookies within the <code>utag_</code> namespace.</p>
-<p>In earlier versions of utag, or when the <a href="/platforms/javascript/settings/#split_cookie"><code>split_cookie</code></a> utag setting is <code>false</code>, the <code>utag.js</code> script creates and maintains a single <code>utag_main</code> cookie with several delimited key/value pairs that keep track of the visitor session.</p>
-<p>The cookie variables in the data layer are the same, regardless of that setting. These variables can be easily added to your data layer using the <a href="/iq-tag-management/data-layer/data-bundles/">Tealium Built-In Data Bundle</a>.</p>
-<p>The <a href="/platforms/javascript/settings/#split_cookie_allowlist"><code>split_cookie_allowlist</code></a> setting can be used to limit which cookies are allowed to be set, but only when <a href="/platforms/javascript/settings/#split_cookie"><code>split_cookie</code></a> is active.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>The <code>split_cookie</code> and <code>split_cookie_allowlist</code> settings require <code>utag.js</code> version 4.50 and later.</p>
-<h2 id="built-in-cookies">Built-in cookies</h2>
-<p>The built-in cookie variables are:</p>
+  <h2 id="built-in-cookies">Built-in cookies</h2>
+<p>The Tealium Universal Tag (<code>utag.js</code>) maintains several first-party cookies for internal use. These variables can be added to your data layer using the <a href="/iq-tag-management/data-layer/data-bundles/">Tealium Built-In Data Bundle</a>.</p>
+<p>The following table lists the cookies created and maintained by <code>utag.js</code>:</p>
 <table>
 <thead>
 <tr>
-<th><strong>Cookie Variable</strong></th>
-<th><strong>Description</strong></th>
+<th>Cookie Variable</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>tag_main_ses_id</code></td>
+<td><code>utag_main_ses_id</code></td>
 <td>The Unix/Epoch timestamp of the session start, in milliseconds.</td>
 </tr>
 <tr>
 <td><code>utag_main__st</code></td>
-<td>The Unix/Epoch timestamp of the session timeout, in milliseconds - updated on new events.</td>
+<td>The Unix/Epoch timestamp of the session timeout, in milliseconds. The value is updated on new events.</td>
 </tr>
 <tr>
-<td><code>tag_main_v_id</code></td>
-<td>A unique, partially random identifier. In utag version 4.50 and later, not set by default. - the Collect tag writes this cookie when needed.</td>
+<td><code>utag_main_v_id</code></td>
+<td>A unique, partially random identifier. In version 4.50 and later, not set by default. The Tealium Collect tag writes this cookie when needed.</td>
 </tr>
 <tr>
-<td><code>tag_main__ss</code></td>
-<td>A Boolean that indicates if the page viewed is the first in a session. A value of <code>1</code> means yes and <code>0</code> means no.</td>
+<td><code>utag_main__ss</code></td>
+<td>A boolean that indicates if the page viewed is the first in a session. A value of <code>1</code> means that the current page is the first page viewed in the session and a value of <code>0</code> means the current page is not the first page viewed in the session.</td>
 </tr>
 <tr>
 <td><code>utag_main__pn</code></td>
@@ -757,41 +751,47 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<p>Since utag 4.50, the <code>v_id</code> component of <code>utag_main</code> is no longer set by default in utag, but inside the Tealium Collect tag to ensure that it&rsquo;s never set without a clear purpose. To override this behavior and generate this cookie for all visitors, enable the utag setting <a href="/platforms/javascript/settings/#always_set_v_id"><code>always_set_v_id</code></a>.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Starting with version 4.50, <code>utag_main_v_id</code> is no longer generated in utag by default. Responsibility for that ID has been moved to the Tealium Collect tag (the only place it&rsquo;s used), to ensure that it&rsquo;s never set without a clear purpose. To override this behavior and generate this cookie for all visitors, use the utag setting <a href="/platforms/javascript/settings/#always_set_v_id"><code>always_set_v_id</code></a>. For information about how to update and ensure you&rsquo;re using the latest utag, see <a href="/iq-tag-management/templates/about/">Managing Templates</a>.</p>
-<p>You can reference custom <code>utag_main</code> cookies by creating a new variable of type <strong>First Party Cookie</strong> with the prefix <code>utag_main_</code> (for example, <code>utag_main_mycookie</code>). This keeps cookies associated with your Tealium installation separated from the global cookie namespace, which helps to avoid name collisions and makes it clear which cookies come from your tag manager.</p>
-<figure><a class="slb" href="/images/iq-tag-management/whiteui-tiq-tealium-cookies-add-first-party-cookie-variable.jpg"><img src="/images/iq-tag-management/whiteui-tiq-tealium-cookies-add-first-party-cookie-variable.jpg"
-         alt="Add First Party Cookie variable"
-         title="Add First Party Cookie variable"/>
+<h3 id="version-450-and-later">Version 4.50 and later</h3>
+<p><a href="/platforms/javascript/release-notes#450-august-2023">Versions 4.50 and later</a> of <code>utag.js</code> create and manage standalone cookies using the <code>utag_main_</code> prefix. This means that <code>utag.js</code> stores each value separately in a cookie that has a name beginning with <code>utag_main_</code>.</p>
+<p>In the browser console, these separate cookies look like this:</p>
+<figure><a class="slb" href="/images/iq-tag-management/data-layer/utag-separate-cookies.png"><img src="/images/iq-tag-management/data-layer/utag-separate-cookies.png"/>
+    </a>
+</figure>
+<p>You can override this default behavior and force <code>utag.js</code> to store all <code>utag_main</code> cookies in a single multi-value cookie using the <a href="/platforms/javascript/settings/#split_cookie"><code>split_cookie</code></a> setting. With the default standalone cookie behavior, use the <a href="/platforms/javascript/settings/#split_cookie_allowlist"><code>split_cookie_allowlist</code></a> setting to limit which cookies can be set.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Starting with version 4.50 of <code>utag.js</code>, the <code>v_id</code> variable of <code>utag_main</code> is set by the Tealium Collect tag to ensure that it complies with data privacy and consent purposes. To override this behavior and generate this cookie for all visitors, enable the <a href="/platforms/javascript/settings/#always_set_v_id"><code>always_set_v_id</code></a> setting.</p>
+<h3 id="version-449-and-earlier">Version 4.49 and earlier</h3>
+<p>Versions 4.49 and earlier of <code>utag.js</code> create and maintain a single multi-value cookie named <code>utag_main</code> with several delimited key/value pairs.</p>
+<p>In the browser console, this single multi-value cookie looks like this:</p>
+<figure><a class="slb" href="/images/iq-tag-management/data-layer/utag-multivalue-cookie.png"><img src="/images/iq-tag-management/data-layer/utag-multivalue-cookie.png"/>
     </a>
 </figure>
 <h2 id="cookie-functions">Cookie functions</h2>
-<p>Tealium iQ exposes two cookie functions which provide an easy interface to set and read custom cookies, with governance, from anywhere. For more information, see <a href="/platforms/javascript/api/cookie-functions">Cookie Functions</a>.</p>
-<p>Customers can use the <a href="/platforms/javascript/settings/#split_cookie_allowlist"><code>split_cookie_allowlist</code></a> setting to limit which cookies are set. This setting ensures that tags and custom functionalities don&rsquo;t set undeclared cookies. It also prevents <a href="/platforms/javascript/api/cookie-functions#utagloadersc">utag.loader.SC</a> from writing disallowed cookies.</p>
+<p><code>utag.js</code> uses two cookie functions that provide an easy method to read and write cookies. For more information, see <a href="/platforms/javascript/api/cookie-functions/">cookie functions</a>.</p>
+<p>Use the <a href="/platforms/javascript/settings/#split_cookie_allowlist"><code>split_cookie_allowlist</code></a> setting to restrict which cookies can be set. This setting ensures that tags and custom functions don&rsquo;t set undeclared cookies. It also prevents <a href="/platforms/javascript/api/cookie-functions/#utagloadersc"><code>utag.loader.SC</code></a> from writing undeclared cookies.</p>
 <h2 id="cookies-from-extensions">Cookies from extensions</h2>
-<p>The <a href="/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist Data Value</a>, <a href="/iq-tag-management/extensions/extensions-list/split-segmentation-extension/">Split Segmentation</a>, and <a href="/iq-tag-management/extensions/extensions-list/privacy-manager-extension/">Privacy Manager</a> extensions create and leverage cookies when used.</p>
-<h2 id="cookies-from-tags">Cookies from tags</h2>
-<p>Some tags create and leverage cookies when used to persist identifiers or other information, using Tealium&rsquo;s <a href="/platforms/javascript/api/cookie-functions">Cookie Functions</a>.</p>
-<h2 id="cookies-from-tag-scripts">Cookies from tag scripts</h2>
-<p>Some tags generate cookies that store identifiers or other data using third-party scripts to create cookies right after the tag is triggered. This process doesn&rsquo;t involve any Tealium functionality to write the cookie.</p>
-<p>These cookies are not controlled by Tealium iQ, and are not limited by the <a href="/platforms/javascript/settings/#split_cookie_allowlist"><code>split_cookie_allowlist</code></a> setting, or any other built-in Tag Management functionality.</p>
-<h3 id="persist-data-value-cookie">Persist Data Value (cookie)</h3>
-<p>The <strong>Persist Data Value</strong> extension allows you to create a cookie in which you can persist the value of a variable. To persist the value for a variable, you can create a new cookie or use an existing cookie. You may persist the value for a variable in the <strong>utag_main</strong> cookie by prefixing <code>utag_main_</code> to the name of the cookie variable, for example: <code>utag_main_mycookievar</code>.</p>
+<h3 id="persist-data-value">Persist Data Value</h3>
+<p>The <strong>Persist Data Value</strong> extension can be used to set cookies from the iQ Tag Management interface. Cookies can be set with or without the <code>utag_main</code> prefix.</p>
+<p>For more information, see the <a href="/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist Data Value extension</a>.</p>
 <h3 id="split-segmentation">Split Segmentation</h3>
-<p>The purpose of the <strong>Split Segmentation</strong> extension is to divide visitors into segments you specify. The extension stores the segment data in the cookie variable you create.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>If this extension is scoped to <strong>Preloader</strong>, you must use a cookie other than <code>utag_main</code> .</p>
+<p>The <strong>Split Segmentation</strong> extension is used create visitor segments, usually for A/B testing. The extension stores the segment name in a cookie.</p>
+<p>For more information, see the <a href="/iq-tag-management/extensions/extensions-list/split-segmentation-extension/">Split Segmentation extension</a>.</p>
 <h3 id="privacy-manager">Privacy Manager</h3>
-<p>The <strong>Privacy Manager</strong> extension uses a cookie named <code>OPTOUTMULTI</code> to save the privacy settings for a visitor for the next time they visit your site. The settings you select in Privacy Manager are saved as parameters in the cookie.</p>
+<p>The <strong>Privacy Manager</strong> extension uses a cookie named <code>OPTOUTMULTI</code> to save the privacy settings for a visitor for the next time they visit your site.</p>
+<p>For more information, see the <a href="/iq-tag-management/extensions/extensions-list/privacy-manager-extension/">Privacy Manager extension</a>.</p>
+<h2 id="cookies-from-tags">Cookies from tags</h2>
+<p>Some tags in the tag marketplace use <a href="/platforms/javascript/api/cookie-functions/">cookie functions</a> to persist anonymous identifiers or other information.</p>
+<h2 id="cookies-from-third-party-tags">Cookies from third-party tags</h2>
+<p>Some third-party tags generate cookies that store identifiers or other data.</p>
+<p>These cookies are not controlled by Tealium, and are not limited by the <a href="/platforms/javascript/settings/#split_cookie_allowlist"><code>split_cookie_allowlist</code></a> setting, or any other feature of Tealium iQ Tag Management.</p>
 <h2 id="cookies-from-consent-manager">Cookies from Consent Manager</h2>
 <p>The <strong>Consent Manager</strong> uses a cookie named <code>CONSENTMGR</code> to save the consent settings of a visitor.</p>
 <p>Learn more about <a href="/iq-tag-management/consent-management/about/">consent management</a>.</p>
-<p>To change the name of the <code>CONSENTMGR</code> cookie, first verify that you are using version 2.0.1 or later of the cmGeneral template, then use a Javascript Code extension scoped to <strong>All Tags - Before Load Rules</strong> with the following code:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span>.<span style="color:#a6e22e">cookieNS</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;NEW_COOKIE_NAME&#39;</span>;
-</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>To change the retention period of the consent cookie, use the <a href="/platforms/javascript/settings/#consentperiod">configuration override setting</a> for <code>utag.js</code>.</p>
+<p>To change the name of the <code>CONSENTMGR</code> cookie, first verify that you are using version 2.0.1 or later of the <code>cmGeneral</code> template, then use a Javascript Code extension scoped to <strong>All Tags - Before Load Rules</strong> with the following code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span>.<span style="color:#a6e22e">cmcookiens</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;NEW_COOKIE_NAME&#39;</span>;
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>To change the retention period of the consent cookie, use the <a href="/platforms/javascript/settings/#consentperiod"><code>consentPeriod</code></a> setting.</p>
 <h2 id="cookies-from-web-companion">Cookies from Web Companion</h2>
 <p><a href="/iq-tag-management/troubleshooting/web-companion/">Web Companion</a> uses a cookie to save the publish environment (Prod, QA, Dev, or Custom) you were viewing when you last visited your site. Viewing the default publish environment for your site does not set a cookie.</p>
-<p>The last viewed publish environment is saved in the following cookie, where <code>{account}</code> and <code>{profile}</code> are replaced with your account and profile:</p>
-<p><code>utag_env_{account}_{profile}</code></p>
+<p>The last viewed publish environment is saved in the following cookie, where <code>{account}</code> and <code>{profile}</code> are replaced with your account and profile: <code>utag_env_{account}_{profile}</code></p>
 <p>If you clear your browser&rsquo;s cookies, Web Companion does not save which publish environment you were viewing, requiring you to re-select the environment to view.</p>
 
 </div>
@@ -838,7 +838,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 20, 2023 
+          <p>This page was last updated:  October 12, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -852,16 +852,17 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#built-in-cookies">Built-in cookies</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#cookie-functions">Cookie functions</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#built-in-cookies">Built-in cookies</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#version-450-and-later">Version 4.50 and later</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#version-449-and-earlier">Version 4.49 and earlier</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#cookie-functions">Cookie functions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#cookies-from-extensions">Cookies from extensions</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#cookies-from-tags">Cookies from tags</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#cookies-from-tag-scripts">Cookies from tag scripts</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#persist-data-value-cookie">Persist Data Value (cookie)</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#persist-data-value">Persist Data Value</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#split-segmentation">Split Segmentation</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#privacy-manager">Privacy Manager</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#cookies-from-consent-manager">Cookies from Consent Manager</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#cookies-from-tags">Cookies from tags</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#cookies-from-third-party-tags">Cookies from third-party tags</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#cookies-from-consent-manager">Cookies from Consent Manager</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#cookies-from-web-companion">Cookies from Web Companion</a></li>
               </nav>
   </aside></nav>
