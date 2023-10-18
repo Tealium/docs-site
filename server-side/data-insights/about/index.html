@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side",
-    reading_time  : "2",
+    reading_time  : "3",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -753,9 +753,15 @@ var utag_data = {
       </li><li class="relative w-100 fw8 f5  active">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2 primary-color expanded " data-target=".data-insights">Data Insights</a>
         <ul class="bl b--primary bw1 pl2 data-insights desktopmenu animated fadeIn list "><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side/data-insights/about/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".">About Data Insights</a>
+        <a href="/server-side/data-insights/about/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".about-data-insights">About Data Insights</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side/data-insights/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Manage dashboards, analyses, and datasets</a>
+        <a href="/server-side/data-insights/about-templates/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-templates">About templates</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/data-insights/manage-dashboards/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-dashboards">Manage dashboards</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/data-insights/manage-datasets/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-datasets">Manage datasets</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/data-insights/manage-analyses/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-analyses">Manage analyses</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".ss-save-publish">Save and publish</a>
@@ -868,85 +874,67 @@ var utag_data = {
 
   
     <p class="f4 fw3 lh-copy">
-      This article provides information on Data Insights, how it works, and the default dashboards.
+      This article provides information about requirements, user roles, templates, and dashboards.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Data Insights analyzes structured data from EventDB and Audience DB and provides visualizations of this data as dashboards.</p>
+  <p>Data Insights is powered by AWS Quicksight and creates visualizations of your data. Visualizations are charts and graphs, such as event counts per day or visit counts per quarter, that are based on your data.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Data Insights must be enabled for your account. For additional information, contact your account manager.</p>
 <h2 id="how-it-works">How it works</h2>
-<p>Data Insights has access to all tables in EventDB and AudienceDB. When Data Insights is enabled, it automatically connects to the DataAccess data sources that are available to the profile and displays the default dashboards.</p>
-<p>For example, the dashboard below shows graphs based on total visits data:</p>
-<figure><a class="slb" href="/images/server-side/data-insights/graph-examples.png"><img src="/images/server-side/data-insights/graph-examples.png"
-         alt="graph of total visits data"
-         title="graph of total visits data"/>
-    </a>
-</figure>
-<p>Data Insights users with the author role can create analyses of EventDB or AudienceDB data. The author can then publish the analysis as a dashboard, which users with the reader role can view.</p>
-<h3 id="requirements">Requirements</h3>
+<p>Using Data Insights templates, you can quickly generate predefined dashboards for your data without the need to configure datasets and dashboards. The Connectors dashboard and DataAccess dashboard are based on metrics from a TimeStream database. The other predefined dashboards are based on predefined attributes, which are defined by Tealium and available to all profiles by default. Generated dashboards can be exported to PDF and downloaded.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>To generate the Mobile dashboard, the Mobile library must be installed for your profile.</p>
+<p>Generating a dashboard from a template creates visualizations using data from the following data sources:</p>
 <ul>
-<li>Platform Permissions must be enabled.<br>
-View access is required for AudienceDB and EventDB.</li>
-<li>DataAccess must be enabled for your account.</li>
-<li>EventDB or Audience DB must be enabled for your account.</li>
-<li>Amazon Redshift<br>
-Some Tealium implementations may be using Amazon Redshift Spectrum and would need to be migrated to Amazon Redshift to use Data Insights.</li>
+<li><strong>Amazon Redshift</strong> – A data warehouse service used to store your event, visit, and visitor data. This data source is only available when DataAccess is enabled.</li>
+<li><strong>Timestream</strong> – A database that is used to collect time-based metrics for predefined dashboards. This database is available for all accounts.</li>
+<li><strong>RDS (Amazon Relational Database Service)</strong> – Used to store static user-friendly information related to metrics, such as connector and action names, that is displayed in dashboards.</li>
 </ul>
-<h3 id="user-roles">User roles</h3>
-<p>Data Insights is enabled at the profile level and has the following user roles:</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Amazon Redshift Spectrum is not supported.</p>
+<p>For more information on templates, see <a href="/iq-tag-management/templates/">Data Insights Templates</a>.</p>
+<h3 id="datasets">Datasets</h3>
+<p>The datasets for predefined dashboards are based either on data from DataAccess or on metrics from Timestream. DataAccess datasets can be edited. Timestream datasets are read-only.</p>
+<p>Data Insights uses SPICE (Super-fast Parallel In-memory Calculation Engine) datasets for all predefined dashboards. Data for SPICE datasets is stored in quick access memory used by Amazon QuickSight.</p>
+<p>Data Insights datasets are automatically created when predefined dashboards are generated. Each predefined dashboard has its own dataset.</p>
+<h2 id="data-insights-permissions">Data Insights permissions</h2>
+<p>Access to Data Insights is controlled by the following Data Insights user roles:</p>
 <ul>
-<li><strong>Author</strong> – Users with this role can create and manage analyses and dashboards.</li>
-<li><strong>Reader</strong> – Users with this role can view the interactive dashboards, receive emailed reports, and download data.</li>
-</ul>
-<p>A Data Insights user role is assigned to each profile based on the server-side permission role for the profile, as follows:</p>
-<table>
-<thead>
-<tr>
-<th>Server-Side Permission Role for the Profile</th>
-<th>Data Insights Role for the Profile</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Publisher</td>
-<td>Author</td>
-</tr>
-<tr>
-<td>Editor</td>
-<td>Author</td>
-</tr>
-<tr>
-<td>Reader</td>
-<td>Reader</td>
-</tr>
-<tr>
-<td>No Access</td>
-<td>No Access</td>
-</tr>
-</tbody>
-</table>
-<p>The dashboard reader role is limited to 10 users.</p>
-<h2 id="default-dashboards">Default dashboards</h2>
-<p>Dashboards provide visual representations of EventDB or AudienceDB data. Data Insights provides the following default dashboards:</p>
+<li><strong>Author role</strong> – Users with the author role can do the following:
 <ul>
-<li><strong>Total Events Count</strong> from the start to the current time period (time frame is customizable) for data quality and billing/auditing.</li>
-<li><strong>Total Visits Count</strong> from the start to the current time period (the time frame is customizable).</li>
-<li><strong>Total Visitors Count</strong> from the start to the current time period (the time frame is customizable).</li>
+<li>Create dashboards and share them with other users in the account.</li>
+<li>Create analyses and datasets.</li>
+<li>Edit a predefined analysis and save it as a new analysis.</li>
+<li>Create dashboards from a predefined analysis.</li>
 </ul>
+</li>
+<li><strong>Reader role</strong> – Users with the Reader role can do the following:
+<ul>
+<li>View dashboards.</li>
+<li>Create a PDF for a dashboard.</li>
+</ul>
+</li>
+</ul>
+<p>A user can be assigned only one role. By default, two author roles and ten reader roles are available per profile.</p>
+<p>To enable users with the Author role to create analyses, datasets, and dashboards, users with the Author role also need the following server-side permissions:</p>
+<ul>
+<li><strong>Account role</strong>: Data Warehouse Admin</li>
+<li><strong>Profile role</strong>: Publisher</li>
+</ul>
+<p>For more information on server-side permissions, see <a href="/early-access/platform-permissions/eea/">Platform Permissions</a>.</p>
 
 </div>
 
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/server-side/data-insights/manage/"
+  <a href="/server-side/data-insights/about-templates/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Manage dashboards, analyses, and datasets</div>
+      <div>About templates</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Manage dashboards, analyses, and datasets"</title>
+      <title>"About templates"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -979,7 +967,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 25, 2023 
+          <p>This page was last updated:  October 18, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -994,9 +982,8 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#requirements">Requirements</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#user-roles">User roles</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#default-dashboards">Default dashboards</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#datasets">Datasets</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-insights-permissions">Data Insights permissions</a></li>
               </nav>
   </aside></nav>
 

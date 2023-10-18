@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "early-access",
-    reading_time  : "5",
+    reading_time  : "7",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -230,16 +230,22 @@ var utag_data = {
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2 primary-color expanded " data-target=".iq-profiles-api">iQ Profiles</a>
         <ul class="bl b--primary bw1 pl2 iq-profiles-api desktopmenu animated fadeIn list "><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/api-v3/iq-profiles/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-v3-api">About iQ Profiles</a>
+      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-profiles-api-objects/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".early-access-iq-profiles-api-objects">iQ Profiles API Objects</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/api-v3/iq-profiles/iq-get-profile-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-get-profile-api">iQ GET Profile API</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/api-v3/iq-profiles/iq-javascript-extension-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-javascript-extension-api">iQ JavaScript Extension API</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/early-access/api-v3/iq-profiles/iq-load-rules-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-load-rules-api">iQ Load Rules API</a>
-      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/early-access/api-v3/iq-profiles/iq-profiles-api-objects/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".early-access-iq-profiles-api-objects">iQ Profiles API Objects</a>
+        <a href="/early-access/api-v3/iq-profiles/iq-events-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-events-api">iQ Events API</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/api-v3/iq-profiles/iq-variables-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-variables-api">iQ Variables API</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-load-rules-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-load-rules-api">iQ Load Rules API</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-tags-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-tags-api">iQ Tags API</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-tag-templates-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-tag-template-api">iQ Tag Template API</a>
       </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/api-v3/tealium-collect-http-api-v3-early-access/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-collect-http-api-v3-early-access">Tealium Collect HTTP API</a>
@@ -314,89 +320,109 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>account</td>
+<td><code>account</code></td>
 <td>String</td>
 <td>The Tealium account name.</td>
 </tr>
 <tr>
-<td>profile</td>
+<td><code>profile</code></td>
 <td>String</td>
 <td>The Tealium profile name.</td>
 </tr>
 <tr>
-<td>versionTitle</td>
+<td><code>versionTitle</code></td>
 <td>String</td>
-<td>The title of this version of the iQ profile.</td>
+<td>The title of this version of the iQ profile. If not specified, the <code>versionTitle</code> will be formatted as <code>API | {TIMESTAMP}</code>.</td>
 </tr>
 <tr>
-<td>version</td>
+<td><code>version</code></td>
 <td>String</td>
 <td>The version ID of this iQ profile.</td>
 </tr>
 <tr>
-<td>minorVersion</td>
+<td><code>minorVersion</code></td>
 <td>String</td>
 <td>The version ID that is updated after you save a profile whether published or not. If you save and then publish, the <code>minorVersion</code> and <code>version</code> will not match. They will match only if you perform a Save As.</td>
 </tr>
 <tr>
-<td>creation</td>
+<td><code>parentVersion</code></td>
+<td>String</td>
+<td>The originating profile version for <code>save</code> or <code>saveAs</code> operations.</td>
+</tr>
+<tr>
+<td><code>creation</code></td>
 <td>Date</td>
 <td>Date of profile creation.</td>
 </tr>
 <tr>
-<td>customTargets</td>
+<td><code>customTargets</code></td>
 <td>String</td>
 <td>List of user-defined custom target environments.</td>
 </tr>
 <tr>
-<td>versionDetails</td>
+<td><code>versionDetails</code></td>
 <td>Object</td>
 <td>Details about the current version including: location of where the current profile version is published to, the email of user who published the profile, and notes about the profile.</td>
 </tr>
 <tr>
-<td>environmentVersions</td>
+<td><code>environmentVersions</code></td>
 <td>Object</td>
 <td>List of the current published profile version for each environment.</td>
 </tr>
 <tr>
-<td>dataCloudLinkedProfiles</td>
+<td><code>dataCloudLinkedProfiles</code></td>
 <td>String</td>
 <td>The linked server-side profile name.</td>
 </tr>
 <tr>
-<td>libraryType</td>
+<td><code>libraryType</code></td>
 <td>String</td>
-<td>The type of library being inherited. If no library is inherited, the value is <code>NONE</code>. <code>Required</code> - All profiles include this library automatically.<br> <code>Optional</code> - You specify which profiles include this library.<code>NONE</code> - Indicates the given profile is not a library.</td>
+<td>The type of library being inherited. If no library is inherited, the value is <code>NONE</code>.<br> <code>Required</code> - All profiles include this library automatically.<br> <code>Optional</code> - You specify which profiles include this library.<br><code>NONE</code> - Indicates the given profile is not a library.</td>
 </tr>
 <tr>
-<td>linkedProfiles</td>
+<td><code>linkedProfiles</code></td>
 <td>Array[object]</td>
 <td>For libraries, this field lists the values that the profiles inherit from this library. For profiles, this value is <code>null</code>.</td>
 </tr>
 <tr>
-<td>linkedLibraries</td>
+<td><code>linkedLibraries</code></td>
 <td>Array[object]</td>
 <td>For profiles, this field represents the libraries linked to the profile. For libraries this value is <code>null</code>.</td>
 </tr>
 <tr>
-<td>variables</td>
+<td><code>variables</code></td>
 <td>Array of variables</td>
 <td>Array of variable objects in the profile.</td>
 </tr>
 <tr>
-<td>tags</td>
+<td><code>tags</code></td>
 <td>Array of tags</td>
 <td>Array of tags objects in the profile.</td>
 </tr>
 <tr>
-<td>loadRules</td>
-<td>Array of loadrules</td>
-<td>Array of loadrules objects in the profile.</td>
+<td><code>loadRules</code></td>
+<td>Array of load rules</td>
+<td>Array of load rules objects in the profile.</td>
 </tr>
 <tr>
-<td>extensions</td>
+<td><code>extensions</code></td>
 <td>Array of extensions</td>
 <td>Array of extensions objects in the profile.</td>
+</tr>
+<tr>
+<td><code>events</code></td>
+<td>Array of events</td>
+<td>Array of event objects in the profile.</td>
+</tr>
+<tr>
+<td><code>versionIds</code></td>
+<td>Array</td>
+<td>List of previous versions.</td>
+</tr>
+<tr>
+<td><code>templateList</code></td>
+<td>&ndash;</td>
+<td>Lists all the tag templates associated with the profile.</td>
 </tr>
 </tbody>
 </table>
@@ -407,6 +433,7 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;versionTitle&#34;</span>: <span style="color:#e6db74">&#34;Version 2022.03.22.2108&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;202203222108&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;minorVersion&#34;</span>: <span style="color:#e6db74">&#34;202203222108&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;parentVersion&#34;</span>: <span style="color:#e6db74">&#34;202309191127&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;creation&#34;</span>: <span style="color:#e6db74">&#34;202201131654&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;customTargets&#34;</span>: <span style="color:#66d9ef">null</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;versionDetails&#34;</span>: {},
@@ -415,10 +442,13 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;libraryType&#34;</span>: <span style="color:#e6db74">&#34;NONE&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;linkedProfiles&#34;</span>: <span style="color:#66d9ef">null</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;linkedLibraries&#34;</span>: [],
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;variables&#34;</span>: [],
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;extensions&#34;</span>: [],
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;loadRules&#34;</span>: [],
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tags&#34;</span>: []
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;variables&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;extensions&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;loadRules&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tags&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;events&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;versionIds&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;templateList&#34;</span>: <span style="color:#66d9ef">null</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="variables">Variables</h2>
 <table>
@@ -431,52 +461,52 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>id</td>
+<td><code>id</code></td>
 <td>Number</td>
 <td>Variable ID.</td>
 </tr>
 <tr>
-<td>uniqueIdentifier</td>
+<td><code>uniqueIdentifier</code></td>
 <td>String</td>
 <td>Variable identifier used to refer to the variable from extension <code>conditions</code>, tag <code>dataMappings</code>, and load rule <code>loadRuleCondition</code>.</td>
 </tr>
 <tr>
-<td>name</td>
+<td><code>name</code></td>
 <td>String</td>
 <td>The variable title.</td>
 </tr>
 <tr>
-<td>alias</td>
+<td><code>alias</code></td>
 <td>String</td>
 <td>The variable name.</td>
 </tr>
 <tr>
-<td>type</td>
+<td><code>type</code></td>
 <td>String</td>
-<td>A prefix representing the variable type.<br> <code>udo</code> - Universal Data Object<br> <code>qp</code> - Query string parameter<br> <code>cp</code> - Cookie<br> <code>js_page</code> - JavaScript page variable<br> <code>meta</code> - Meta data element<br> <code>va</code> - AudienceStream attribute</td>
+<td>A prefix representing the variable type.<br>  <code>ls</code> - Local storage <br> <code>ss</code> - Session storage <br> <code>udo</code> - Universal Data Object<br> <code>qp</code> - Query string parameter<br> <code>cp</code> - Cookie<br> <code>js</code> - JavaScript  variable<br> <code>meta</code> - Meta data element<br> <code>va</code> - AudienceStream attribute</td>
 </tr>
 <tr>
-<td>notes</td>
+<td><code>notes</code></td>
 <td>String</td>
 <td>Notes about the variable.</td>
 </tr>
 <tr>
-<td>context</td>
+<td><code>context</code></td>
 <td>Array</td>
 <td>The scope for attributes imported from AudienceStream.<br> Values: <code>current_visit</code> or <code>visitor</code></td>
 </tr>
 <tr>
-<td>library</td>
+<td><code>library</code></td>
 <td>String</td>
 <td>Name of the library from which the variable is inherited.</td>
 </tr>
 <tr>
-<td>imported</td>
+<td><code>imported</code></td>
 <td>String</td>
 <td>The source of an imported variable. This is set to <code>AudienceStream</code> for all AudienceStream attributes.</td>
 </tr>
 <tr>
-<td>usedIn</td>
+<td><code>usedIn</code></td>
 <td>Object</td>
 <td>The list of IDs where this variable is used.</td>
 </tr>
@@ -493,77 +523,82 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>id</td>
+<td><code>id</code></td>
 <td>Number</td>
 <td>The unique ID of the tag.</td>
 </tr>
 <tr>
-<td>tagID</td>
+<td><code>tagID</code></td>
 <td>Number</td>
 <td>The system ID for this tag type. This value is the same for all tags of the same type. For example, <code>6037</code> for the Facebook Pixel tag.</td>
 </tr>
 <tr>
-<td>tagName</td>
+<td><code>tagName</code></td>
 <td>String</td>
 <td>The system name for this tag type. This value is the same for all tags of the same type. For example, <code>Facebook Pixel</code> for the Facebook Pixel tag.</td>
 </tr>
 <tr>
-<td>name</td>
+<td><code>name</code></td>
 <td>String</td>
 <td>The user generated tag name from the tag configuration.</td>
 </tr>
 <tr>
-<td>library</td>
+<td><code>library</code></td>
 <td>String</td>
 <td>Name of the library from which the tag is inherited.</td>
 </tr>
 <tr>
-<td>status</td>
+<td><code>status</code></td>
 <td>String</td>
 <td>The on/off status: <code>active</code> or <code>inactive</code>.</td>
 </tr>
 <tr>
-<td>notes</td>
+<td><code>notes</code></td>
 <td>String</td>
 <td>Notes about the tag.</td>
 </tr>
 <tr>
-<td>loadrule</td>
+<td><code>loadRule</code></td>
 <td>Mixed</td>
 <td>A comma-separated list of load rule IDs, or <code>all</code> for All Pages.</td>
 </tr>
 <tr>
-<td>loadRuleJoinOperator</td>
+<td><code>loadRuleJoinOperator</code></td>
 <td>String</td>
 <td>Indicates the join operator used, if any. <br> <code>all</code> — match all <code>any</code> — match any</td>
 </tr>
 <tr>
-<td>dataMappings</td>
+<td><code>dataMappings</code></td>
 <td>Map &lt;String, String&gt;</td>
 <td>Returns Tealium IQ variable and its corresponding mapped destination.</td>
 </tr>
 <tr>
-<td>selectedTargets</td>
+<td><code>selectedTargets</code></td>
 <td>Map&lt;String, Boolean&gt;</td>
 <td>An object of environments where the tag is allowed to be published.</td>
 </tr>
 <tr>
-<td>environmentVersions</td>
+<td><code>environmentVersions</code></td>
 <td>Map&lt;String, Boolean&gt;</td>
 <td>An array of the environments where this tag was last published.</td>
 </tr>
 <tr>
-<td>advancedConfiguration</td>
+<td><code>advancedConfiguration</code></td>
 <td>Object</td>
-<td>A set of advanced configurations corresponding to the tag configuration settings. <code>advConfigBundle</code> — <strong>True</strong> or <strong>False</strong><br> <code>advConfigLoadType</code> — <strong>True</strong> or <strong>False</strong><br> <code>advConfigOptOut</code> — <strong>True</strong><br> <code>advConfigSend</code>— <strong>True</strong> or <strong>False</strong> <code>advConfigSrc</code> — Text field<br> <code>tagTiming</code> — <strong>DOM Ready</strong> or <strong>Prioritized</strong></td>
+<td>A set of advanced configurations corresponding to the tag configuration settings.<br> <code>advConfigBundle</code> — <strong>True</strong> or <strong>False</strong><br> <code>advConfigLoadType</code> — <strong>True</strong> or <strong>False</strong><br> <code>advConfigOptOut</code> — <strong>True</strong><br> <code>advConfigSend</code>— <strong>True</strong> or <strong>False</strong> <code>advConfigSrc</code> — Text field<br> <code>tagTiming</code> — <strong>DOM Ready</strong> or <strong>Prioritized</strong></td>
 </tr>
 <tr>
-<td>configuration</td>
+<td><code>configuration</code></td>
 <td>Map &lt;String, Object&gt;</td>
 <td>A String and Object Map of tag configurations made available by the vendor.</td>
 </tr>
 <tr>
-<td>template</td>
+<td><code>rules</code></td>
+<td>Object</td>
+<td>The load rules to apply or exclude from the tag.</td>
+</tr>
+<tr>
+<td><code>template</code></td>
 <td>Object</td>
 <td>Returns the full tag template. Requires <code>includes = tags.template</code> in the request.</td>
 </tr>
@@ -580,58 +615,58 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>id</td>
+<td><code>id</code></td>
 <td>Number</td>
 <td>The unique ID of the load rule.</td>
 </tr>
 <tr>
-<td>name</td>
+<td><code>name</code></td>
 <td>String</td>
 <td>The name of load rule.</td>
 </tr>
 <tr>
-<td>status</td>
+<td><code>status</code></td>
 <td>String</td>
 <td>The on/off status: <code>active</code> or <code>inactive</code>.</td>
 </tr>
 <tr>
-<td>library</td>
+<td><code>library</code></td>
 <td>String</td>
 <td>The name of the associated library.</td>
 </tr>
 <tr>
-<td>notes</td>
+<td><code>notes</code></td>
 <td>String</td>
 <td>Notes about the load rules.</td>
 </tr>
 <tr>
-<td>startDate</td>
+<td><code>startDate</code></td>
 <td>Date</td>
 <td>For scheduled load rules, the start date.</td>
 </tr>
 <tr>
-<td>endDate</td>
+<td><code>endDate</code></td>
 <td>Date</td>
 <td>For scheduled load rules, the end date.</td>
 </tr>
 <tr>
-<td>environmentVersions</td>
+<td><code>environmentVersions</code></td>
 <td>Map&lt;String, Boolean&gt;</td>
 <td>List of the current published load rule version for each environment.</td>
 </tr>
 <tr>
-<td>usedIn</td>
+<td><code>usedIn</code></td>
 <td>Object</td>
 <td>The list of IDs where this load rule is used.</td>
 </tr>
 <tr>
-<td>loadRuleCondition</td>
+<td><code>loadRuleCondition</code></td>
 <td>Array[object]</td>
 <td>An array of objects that include variable name, operator, and value. Each object within an array is associated by an <code>and</code>operator while each array within the array is associated by an <code>or</code> operator.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="extensions">Extensions</h3>
+<h2 id="extensions">Extensions</h2>
 <table>
 <thead>
 <tr>
@@ -642,74 +677,166 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>id</td>
+<td><code>id</code></td>
 <td>Number</td>
 <td>The unique ID of the extension.</td>
 </tr>
 <tr>
-<td>extensionId</td>
+<td><code>extensionId</code></td>
 <td>Number</td>
 <td>The system ID for this extension type. This value is the same for all extensions of the same type. For example, <code>100036</code> for the JavaScript Code extension.</td>
 </tr>
 <tr>
-<td>extensionType</td>
+<td><code>extesnionType</code></td>
 <td>String</td>
 <td>The system name for this extension type. This value is the same for all extensions of the same type. For example, <code>Javascript Code</code> for the JavaScript Code extension.</td>
 </tr>
 <tr>
-<td>name</td>
+<td><code>name</code></td>
 <td>String</td>
 <td>The name of extension.</td>
 </tr>
 <tr>
-<td>library</td>
+<td><code>library</code></td>
 <td>String</td>
 <td>The name of the associated library.</td>
 </tr>
 <tr>
-<td>notes</td>
+<td><code>notes</code></td>
 <td>String</td>
 <td>The notes entered for the extension.</td>
 </tr>
 <tr>
-<td>loadRule</td>
+<td><code>loadRule</code></td>
 <td>Mixed</td>
 <td>A comma-separated list of load rule IDs, or <code>all</code> for All Pages.</td>
 </tr>
 <tr>
-<td>scope</td>
+<td><code>scope</code></td>
 <td>String</td>
-<td>The name of the extension scope or, for tag-scoped extensions, a comma-separated list of tag IDs. <code>utag Sync</code><br> <code>Pre Loader</code><br> <code>Before Load Rules</code><br> <code>After Load Rules</code><br> <code>DOM Ready</code><br> <code>Tag Scoped Extensions</code><br> <code>After Tag Extensions</code> For more information about tag-scoped extensions and how they work with <code>occurrence</code>, see <a href="/iq-tag-management/extensions/about/#understanding-scope">Understanding Scope</a>.</td>
+<td>The name of the extension scope or, for tag-scoped extensions, a comma-separated list of tag IDs. <br> <code>utag Sync</code><br> <code>Pre Loader</code><br> <code>Before Load Rules</code><br> <code>After Load Rules</code><br> <code>DOM Ready</code><br> <code>Tag Scoped Extensions</code><br> <code>After Tag Extensions</code> For more information about tag-scoped extensions and how they work with <code>occurrence</code>, see <a href="/iq-tag-management/extensions/about/#understanding-scope">Understanding Scope</a>.</td>
 </tr>
 <tr>
-<td>occurrence</td>
+<td><code>occurrence</code></td>
 <td>String</td>
 <td>Determines the number of times the JavaScript code extension runs per page load. Values: <code>Run Once</code> or <code>Run Always</code>.</td>
 </tr>
 <tr>
-<td>status</td>
+<td><code>status</code></td>
 <td>String</td>
 <td>The on/off status: <code>active</code> or <code>inactive</code>.</td>
 </tr>
 <tr>
-<td>selectedTargets</td>
+<td><code>selectedTargets</code></td>
 <td>Map&lt;String, Boolean&gt;</td>
 <td>Environments where the extension is allowed to be published.</td>
 </tr>
 <tr>
-<td>environmentVersions</td>
+<td><code>environmentVersions</code></td>
 <td>Map&lt;String, Boolean&gt;</td>
 <td>An array of the environments where the extension is published.</td>
 </tr>
 <tr>
-<td>conditions</td>
+<td><code>conditions</code></td>
 <td>String or Boolean</td>
 <td>The conditions set for the specific extension.</td>
 </tr>
 <tr>
-<td>configuration</td>
+<td><code>configuration</code></td>
 <td>Map &lt;String, Object&gt;</td>
 <td>A Map of configurations for each extension.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="events">Events</h2>
+<table>
+<thead>
+<tr>
+<th>OBJECT</th>
+<th>TYPE</th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>Number</td>
+<td>The unique ID of the event.</td>
+</tr>
+<tr>
+<td><code>eventID</code></td>
+<td>Number</td>
+<td>The system ID for this event type. This value is the same for all events of the same type.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>Name of the event.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>String</td>
+<td>The on/off status: <code>active</code> or <code>inactive</code>.</td>
+</tr>
+<tr>
+<td><code>eventType</code></td>
+<td>String</td>
+<td>Type of event being tracked. <ul><li><a href="/iq-tag-management/events/event-types/click-event/"><code>mouseEvents</code></a>- Includes the following user actions:<ul><li><code>click</code> - When a visitor clicks their mouse on a page.</li><li><code>mousedown</code> - When a visitor moves their mouse down.</li><li><code>mouseup</code> - When a visitor moves their mouse down.</li></ul><li><a href="/iq-tag-management/events/event-types/mouseover-event/"><code>mouseOver</code></a> - When a visitor hovers their mouse over a specific element on a page.</li><li> <a href="/iq-tag-management/events/event-types/form-submission-event/"><code>formSubmit</code></a> - When a visitor submits a form on a page.</li><li><a href="/iq-tag-management/events/event-types/youtube-event/"><code>youtubeVideo</code></a> - When a visitor interacts with an embedded YouTube video on a page.</li><li><a href="/iq-tag-management/events/event-types/vimeo-event/"><code>vimeoVideo</code></a> - When a visitor interacts with an embedded Vimeo video on a page.</li><li><a href="/iq-tag-management/events/event-types/html5-video-event/"><code>html5Video</code></a> - When a visitor interacts with an embedded HTML5 video on a page.</li><li><a href="/iq-tag-management/events/event-types/page-view-event/"><code>pageView</code></a> - When a visitor views a page.</li><li><a href="/iq-tag-management/events/event-types/scroll-event/"><code>scroll</code></a> - When a visitor scrolls through a page, vertically or horizontally.</li><li><a href="/iq-tag-management/events/event-types/element-visibility-event/"><code>elementVisibility</code></a> - When the page displays a screen element to a visitor.</li></li></ul></td>
+</tr>
+<tr>
+<td><code>scope</code></td>
+<td>String</td>
+<td>The name of the extension scope or, for tag-scoped extensions, a comma-separated list of tag IDs.<br><code>After Load Rules</code><br><code>DOM Ready</code><br>For more information about tag-scoped events, see <a href="/iq-tag-management/events/event-scope/">Scope</a>.</td>
+</tr>
+<tr>
+<td><code>trackingEvent</code></td>
+<td>String</td>
+<td>The event call made when the event takes place.</td>
+</tr>
+<tr>
+<td><code>notes</code></td>
+<td>String</td>
+<td>Notes about the event.</td>
+</tr>
+<tr>
+<td><code>library</code></td>
+<td>String</td>
+<td>The name of the associated library.</td>
+</tr>
+<tr>
+<td><code>eventLoadRulesList</code></td>
+<td>String</td>
+<td>A list of all load rules used in the event.</td>
+</tr>
+<tr>
+<td><code>eventTrigger</code></td>
+<td>Object</td>
+<td>Configurations specific to each event type. For more information about event triggers, see <a href="/iq-tag-management/events/triggers-and-frequency/">Events &gt; Event Triggers</a>.</td>
+</tr>
+<tr>
+<td><code>selectedTargets</code></td>
+<td>Map&lt;String, Boolean&gt;</td>
+<td>Environments where the event is allowed to be published.</td>
+</tr>
+<tr>
+<td><code>environmentVersions</code></td>
+<td>Map&lt;String, Boolean&gt;</td>
+<td>An array of the environments where the event is published.</td>
+</tr>
+<tr>
+<td><code>eventVariables</code></td>
+<td>Object</td>
+<td>Variables specific to each event type.</td>
+</tr>
+<tr>
+<td><code>rules</code></td>
+<td>Object</td>
+<td>Rules that dictate when an event listener is loaded on the page.</td>
+</tr>
+<tr>
+<td><code>usedIn</code></td>
+<td>Object</td>
+<td>The list of IDs where this event is used.</td>
 </tr>
 </tbody>
 </table>
@@ -719,13 +846,13 @@ var utag_data = {
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/early-access/api-v3/iq-profiles/iq-variables-api/"
+  <a href="/early-access/api-v3/iq-profiles/iq-get-profile-api/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>iQ Variables API</div>
+      <div>iQ GET Profile API</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"iQ Variables API"</title>
+      <title>"iQ GET Profile API"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -734,14 +861,14 @@ var utag_data = {
 </div><div class="di mr3">
   
   
-  <a href="/early-access/api-v3/iq-profiles/iq-load-rules-api/"
+  <a href="/early-access/api-v3/iq-profiles/about/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"iQ Load Rules API "</title>
+      <title>"About iQ Profiles "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>iQ Load Rules API</div>
+      <div>About iQ Profiles</div>
     </section>
   </a>
   
@@ -773,7 +900,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 30, 2023 
+          <p>This page was last updated:  October 13, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -791,7 +918,8 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#variables">Variables</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tags">Tags</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules">Load rules</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#extensions">Extensions</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#extensions">Extensions</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#events">Events</a></li>
               </nav>
   </aside></nav>
 

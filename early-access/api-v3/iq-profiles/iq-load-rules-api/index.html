@@ -231,15 +231,21 @@ var utag_data = {
         <ul class="bl b--primary bw1 pl2 iq-profiles-api desktopmenu animated fadeIn list "><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/api-v3/iq-profiles/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-v3-api">About iQ Profiles</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-profiles-api-objects/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-api-objects">iQ Profiles API Objects</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/api-v3/iq-profiles/iq-get-profile-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-get-profile-api">iQ GET Profile API</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/api-v3/iq-profiles/iq-javascript-extension-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-javascript-extension-api">iQ JavaScript Extension API</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-events-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-events-api">iQ Events API</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-variables-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-variables-api">iQ Variables API</a>
       </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/api-v3/iq-profiles/iq-load-rules-api/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".early-access-iq-load-rules-api">iQ Load Rules API</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/early-access/api-v3/iq-profiles/iq-profiles-api-objects/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-api-objects">iQ Profiles API Objects</a>
+        <a href="/early-access/api-v3/iq-profiles/iq-tags-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-tags-api">iQ Tags API</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/early-access/api-v3/iq-profiles/iq-variables-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-variables-api">iQ Variables API</a>
+        <a href="/early-access/api-v3/iq-profiles/iq-tag-templates-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-tag-template-api">iQ Tag Template API</a>
       </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/api-v3/tealium-collect-http-api-v3-early-access/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-collect-http-api-v3-early-access">Tealium Collect HTTP API</a>
@@ -306,14 +312,13 @@ var utag_data = {
   <p>To learn more about this API and available object fields, see <a href="/early-access/api-v3/iq-profiles/about/">iQ Profiles API</a> and <a href="/early-access/api-v3/iq-profiles/iq-profiles-api-objects/">iQ Profiles Objects</a>.</p>
 <h2 id="how-it-works">How it works</h2>
 <p>Use the <code>PATCH</code> method to create, update, and delete load rules in the iQ Profile object.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PATCH /v3/tiq/accounts/<span style="color:#f92672">{</span>account<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>profile<span style="color:#f92672">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PATCH /v3/tiq/accounts/<span style="color:#f92672">{</span>ACCOUNT<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>PROFILE<span style="color:#f92672">}</span>
 </span></span></code></pre></div><p>When you use the PATCH method you are making changes to your profile load rules programmatically using a save or save-as. After making changes with the API you must still log into the application to publish.</p>
-<p>iQ Load Rules API only works with profiles that do not inherit other libraries. If a profile inherits a library, it cannot be accessed with this endpoint. Likewise, library profiles cannot be accessed by this endpoint.</p>
 <h3 id="example-curl-request">Example cURL request</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --location --request PATCH <span style="color:#e6db74">&#39;https://platform.tealiumapis.com/v3/tiq/{account}/profiles/{profile}&#39;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--header <span style="color:#e6db74">&#39;Authorization: Bearer eyJ0eXAiOi...&#39;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--header <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--data-raw <span style="color:#960050;background-color:#1e0010">&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --location --request PATCH <span style="color:#e6db74">&#39;https://platform.tealiumapis.com/v3/tiq/accounts/{ACCOUNT}/profiles/{PROFILE}&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --header <span style="color:#e6db74">&#39;Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUx...MiJ9&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --header <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --data <span style="color:#960050;background-color:#1e0010">&#39;</span>
 </span></span></code></pre></div><h2 id="authentication">Authentication</h2>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>The bearer token is used to authenticate all API calls and not the API key. The API key is only used in the authentication call. In addition to the bearer token, the authentication response includes a region-specific hostname that must be used in subsequent server-side API calls.</p>
 <p>See the <a href="/early-access/api-v3/tealium-api-v3-getting-started-early-access/">Tealium API V3 Getting Started</a> guide to learn about generating a bearer token from the API key.</p>
@@ -333,19 +338,13 @@ var utag_data = {
 <td><code>versionTitle</code></td>
 <td>String</td>
 <td>Optional</td>
-<td>The title of the resulting saved version.<br> Default with <code>saveType</code> set to <code>saveAs</code> : <code>API | {timestamp}</code><br> Default with <code>saveType</code> set to <code>save</code>: Existing version title</td>
+<td>The title of the resulting saved version.<br> Default with <code>saveType</code> set to <code>saveAs</code> : <code>API | {TIMESTAMP}</code><br> Default with <code>saveType</code> set to <code>save</code>: Existing version title</td>
 </tr>
 <tr>
 <td><code>saveType</code></td>
 <td>String</td>
 <td>Optional</td>
 <td>The type of save to perform with the PATCH request: <code>save</code> or <code>saveAs</code>. Default is <code>saveAs</code>.</td>
-</tr>
-<tr>
-<td><code>parentVersion</code></td>
-<td>String</td>
-<td>Optional</td>
-<td>The originating profile version for the <code>save</code> or <code>saveAs</code> operations.</td>
 </tr>
 <tr>
 <td><code>notes</code></td>
@@ -362,7 +361,7 @@ var utag_data = {
 <tr>
 <td><code>path</code></td>
 <td>String</td>
-<td>Required<br> (for replace/remove)</td>
+<td>Required</td>
 <td>The component type and ID to update, in the format:<code>/loadRules</code>.</td>
 </tr>
 <tr>
@@ -374,7 +373,7 @@ var utag_data = {
 <tr>
 <td><code>value.name</code></td>
 <td>String</td>
-<td>Required</td>
+<td>Required (for add/replace)</td>
 <td>The name of load rule.</td>
 </tr>
 <tr>
@@ -405,44 +404,38 @@ var utag_data = {
 <td><code>value.loadRuleCondition</code></td>
 <td>Array[object]</td>
 <td>Required</td>
-<td>An array of objects that include variable name, operator, and value. Each object within an array is associated by an <code>and</code>operator while each array within the array is associated by an <code>or</code> operator. The following operators do not accept a value:<code>is defined</code><br> <code>is badge assigned</code><br> <code>is badge not assigned</code><br> <code>is not defined</code><br> <code>is not populated</code></td>
+<td>An array of objects that include variable name, operator, and value. Each object within an array is associated by an <code>and</code>operator while each array within the array is associated by an <code>or</code> operator. The following operators do not accept a value:<br><code>is defined</code><br> <code>is badge assigned</code><br> <code>is badge not assigned</code><br> <code>is not defined</code><br> <code>is not populated</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Example profile object</strong></p>
+<h3 id="example-request">Example request</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;versionTitle&#34;</span>: <span style="color:#e6db74">&#34;My Updated Rule&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;versionTitle&#34;</span>: <span style="color:#e6db74">&#34;Adding Rule&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;saveType&#34;</span>: <span style="color:#e6db74">&#34;saveAs&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;updated a new load rule&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;version notes here&#34;</span>, 
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;operationList&#34;</span>: [
 </span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;op&#34;</span>: <span style="color:#e6db74">&#34;replace&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;/loadRules/49&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;op&#34;</span>: <span style="color:#e6db74">&#34;add&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;/loadRules&#34;</span>,
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;value&#34;</span>:{
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;object&#34;</span>: <span style="color:#e6db74">&#34;loadRule&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">49</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;US Site Only&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;status&#34;</span>:<span style="color:#e6db74">&#34;active&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;update notes&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;new rule API Dom variable&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;active&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;Load Rule notes here&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;startDate&#34;</span>: <span style="color:#e6db74">&#34;202202020000&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;endDate&#34;</span>: <span style="color:#e6db74">&#34;202202020000&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;loadRuleCondition&#34;</span>: [
 </span></span><span style="display:flex;"><span>          [
 </span></span><span style="display:flex;"><span>            {
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;udo.variable1&#34;</span>,
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;operator&#34;</span>: <span style="color:#e6db74">&#34;contains_ignore_case&#34;</span>,
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;value&#34;</span>: <span style="color:#e6db74">&#34;453&#34;</span>
-</span></span><span style="display:flex;"><span>            },
-</span></span><span style="display:flex;"><span>            {
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;js.order_discount&#34;</span>,
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;udo.new_name&#34;</span>,
 </span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;operator&#34;</span>: <span style="color:#e6db74">&#34;does_not_equal&#34;</span>,
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;value&#34;</span>: <span style="color:#e6db74">&#34;2&#34;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;value&#34;</span>: <span style="color:#ae81ff">10</span>
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>          ]
-</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>        ]   
 </span></span><span style="display:flex;"><span>      }
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>  ] 
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="patch-operation-parameters">PATCH Operation Parameters</h2>
 <p>Instead of <code>POST</code>, <code>PUT</code>, and <code>DELETE</code> methods, the <code>PATCH</code> method uses the <code>op</code> parameter to specify the action to perform.</p>
@@ -452,99 +445,88 @@ var utag_data = {
 <li><code>replace</code> - Update the component.</li>
 <li><code>remove</code> - Delete the component.</li>
 </ul>
-<p>To specify the the type and ID of the component, use the <code>path</code> parameter. The <code>path</code> parameter format is <code>/{type}/{id}</code>.</p>
+<p>To specify the the type and ID of the component, use the <code>path</code> parameter. The <code>path</code> parameter format is <code>/{TYPE}/{ID}</code>.</p>
 <p>For example, to add a load rule use:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;op&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;add&#34;</span><span style="color:#960050;background-color:#1e0010">,</span>
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;path&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;/loadRules&#34;</span>
 </span></span></code></pre></div><p>To update a specific load rule, add the ID to the path:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;op&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;replace&#34;</span><span style="color:#960050;background-color:#1e0010">,</span>
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;path&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;/loadRules/503&#34;</span>
-</span></span></code></pre></div><h3 id="create-load-rule">Create load rule</h3>
+</span></span></code></pre></div><h2 id="create-load-rule">Create load rule</h2>
 <p>This PATCH method takes a profile load rule object and additional load rule fields.</p>
-<p><strong>Example Body</strong></p>
+<h3 id="example-request-1">Example request</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;versionTitle&#34;</span>: <span style="color:#e6db74">&#34;My New Rule&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;versionTitle&#34;</span>: <span style="color:#e6db74">&#34;Adding Rule&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;saveType&#34;</span>: <span style="color:#e6db74">&#34;saveAs&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;add a new load rule&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;version notes here&#34;</span>, 
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;operationList&#34;</span>: [
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;op&#34;</span>: <span style="color:#e6db74">&#34;add&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;/loadRules/49&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;/loadRules&#34;</span>,
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;value&#34;</span>:{
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;object&#34;</span>: <span style="color:#e6db74">&#34;loadRule&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">49</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;US Site Only&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;status&#34;</span>:<span style="color:#e6db74">&#34;active&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;update notes&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;new rule API Dom variable&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;active&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;Load Rule notes here&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;startDate&#34;</span>: <span style="color:#e6db74">&#34;202202020000&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;endDate&#34;</span>: <span style="color:#e6db74">&#34;202202020000&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;loadRuleCondition&#34;</span>: [
 </span></span><span style="display:flex;"><span>          [
 </span></span><span style="display:flex;"><span>            {
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;udo.variable1&#34;</span>,
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;operator&#34;</span>: <span style="color:#e6db74">&#34;contains_ignore_case&#34;</span>,
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;value&#34;</span>: <span style="color:#e6db74">&#34;453&#34;</span>
-</span></span><span style="display:flex;"><span>            },
-</span></span><span style="display:flex;"><span>            {
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;js.order_discount&#34;</span>,
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;udo.new_name&#34;</span>,
 </span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;operator&#34;</span>: <span style="color:#e6db74">&#34;does_not_equal&#34;</span>,
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;value&#34;</span>: <span style="color:#e6db74">&#34;2&#34;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;value&#34;</span>: <span style="color:#ae81ff">10</span>
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>          ]
-</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>        ]   
 </span></span><span style="display:flex;"><span>      }
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>  ] 
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="update-load-rule">Update load rule</h3>
+</span></span></code></pre></div><h2 id="update-load-rule">Update load rule</h2>
 <p>This PATCH method takes a profile load rule object and additional load rule fields.</p>
-<p><strong>Example Body</strong></p>
+<h3 id="example-request-2">Example request</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;versionTitle&#34;</span>: <span style="color:#e6db74">&#34;My Updated Rule&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;versionTitle&#34;</span>: <span style="color:#e6db74">&#34;Adding Rule&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;saveType&#34;</span>: <span style="color:#e6db74">&#34;saveAs&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;replace a load rule&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;version notes here&#34;</span>, 
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;operationList&#34;</span>: [
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;op&#34;</span>: <span style="color:#e6db74">&#34;replace&#34;</span>,
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;/loadRules/49&#34;</span>,
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;value&#34;</span>:{
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;object&#34;</span>: <span style="color:#e6db74">&#34;loadRule&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">49</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;US Site Only&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;status&#34;</span>:<span style="color:#e6db74">&#34;active&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;update notes&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;new rule API Dom variable&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;active&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;Load Rule notes here&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;startDate&#34;</span>: <span style="color:#e6db74">&#34;202202020000&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;endDate&#34;</span>: <span style="color:#e6db74">&#34;202202020000&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;loadRuleCondition&#34;</span>: [
 </span></span><span style="display:flex;"><span>          [
 </span></span><span style="display:flex;"><span>            {
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;udo.variable1&#34;</span>,
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;operator&#34;</span>: <span style="color:#e6db74">&#34;contains_ignore_case&#34;</span>,
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;value&#34;</span>: <span style="color:#e6db74">&#34;453&#34;</span>
-</span></span><span style="display:flex;"><span>            },
-</span></span><span style="display:flex;"><span>            {
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;js.order_discount&#34;</span>,
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;udo.new_name&#34;</span>,
 </span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;operator&#34;</span>: <span style="color:#e6db74">&#34;does_not_equal&#34;</span>,
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;value&#34;</span>: <span style="color:#e6db74">&#34;2&#34;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;value&#34;</span>: <span style="color:#ae81ff">10</span>
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>          ]
-</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>        ]   
 </span></span><span style="display:flex;"><span>      }
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>  ] 
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="delete-load-rule">Delete load rule</h3>
+</span></span></code></pre></div><h2 id="delete-load-rule">Delete load rule</h2>
 <p>This PATCH method takes a profile load rules object and additional load rules fields.</p>
+<h3 id="example-request-3">Example request</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;versionTitle&#34;</span>: <span style="color:#e6db74">&#34;My New Load Rule&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;versionTitle&#34;</span>: <span style="color:#e6db74">&#34;Adding Rule&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;saveType&#34;</span>: <span style="color:#e6db74">&#34;saveAs&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;Added by v3 API&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;version notes here&#34;</span>, 
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;operationList&#34;</span>: [
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;op&#34;</span>: <span style="color:#e6db74">&#34;remove&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;/loadRules&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;value&#34;</span>: {
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;object&#34;</span>: <span style="color:#e6db74">&#34;loadRule&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;/loadRules/49&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;value&#34;</span>:{
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;object&#34;</span>: <span style="color:#e6db74">&#34;loadRule&#34;</span>
 </span></span><span style="display:flex;"><span>      }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  ]
@@ -561,19 +543,19 @@ var utag_data = {
 <tbody>
 <tr>
 <td>400</td>
-<td><code>&quot;Validate patch request failed due to path extension id and value.id not equal&quot;</code><br>   <code>&quot;Validate patch request failed due to unsupported extension type {extensionType}&quot;</code><br>   <code>&quot;Unsupported extension type {extensionType}&quot;</code><br>   <code>&quot;Validate patch request failed due to %s&quot;</code><br>   <code>&quot;Cannot set tag scope extension with tags that do not exist, id: {ID} - {account} | profile: {profile}&quot;</code> <br>  <code>&quot;Cannot set extension scope to sync if the setting is not turned on - {account} | profile: {profile}&quot;</code><br>   <code>&quot;Error in getting next extension id - {account} | profile: {profile}&quot;</code><br>   <code>&quot;Profile libraries are out of date, merge changes before patching profile - {account} | profile: {profile}&quot;</code> <br>  <code>&quot;Not Supported&quot;</code> <br> <code>&quot;patchProfile.arg2.notes: must not be empty&quot;</code></td>
+<td><code>&quot;Validate patch request failed due to %s&quot;</code><br>   <code>&quot;Cannot set tag scope extension with tags that do not exist, id: {ID} - {ACCOUNT} | profile: {PROFILE}&quot;</code> <br>  <code>&quot;Cannot set extension scope to sync if the setting is not turned on - {ACCOUNT} | profile: {PROFILE}&quot;</code><br>   <code>&quot;Error in getting next extension id - {ACCOUNT} | profile: {PROFILE}&quot;</code><br>   <code>&quot;Profile libraries are out of date, merge changes before patching profile - {ACCOUNT} | profile: {PROFILE}&quot;</code> <br>  <code>&quot;Not Supported&quot;</code> <br> <code>&quot;patchProfile.arg2.notes: must not be empty&quot;</code></td>
 </tr>
 <tr>
 <td>404</td>
-<td><code>&quot;Extension validation failed - extensionId: {id} | account: {account} | profile: {profile}. Cause: not found&quot;</code> <br>  <code>&quot;Users are currently viewing the same account: {account} profile: {profile}&quot;</code> <br>  <code>&quot;Extension ID {id} not found in the profile {profile}&quot;</code><br>   <code>&quot;Account: {account}, profile: {profile} not found&quot;</code></td>
+<td><code>&quot;Account: {ACCOUNT}, profile: {PROFILE} not found&quot;</code></td>
 </tr>
 <tr>
 <td>409</td>
-<td><code>&quot;Conflict with profile extension: _id: {id}, extType: {extType}, title: {title}&quot;</code> <br>  <code>Error saving profile: {profile} for account: {account}, duplicate versions: {versions}</code> <br>  <code>&quot;The given publish revision {revision} was not found - account: {account} | profile: {profile}&quot;</code></td>
+<td><code>&quot;Users are currently viewing the same account: {ACCOUNT} profile: {PROFILE}&quot;</code> <br> <code>Error saving profile: {PROFILE} for account: {ACCOUNT}, duplicate versions: {VERSIONS}</code></td>
 </tr>
 <tr>
 <td>500</td>
-<td><code>&quot;An error occurred&quot;</code> <br>  <code>&quot;Profile: {profile} inherits from library profile&quot;</code><br>   <code>&quot;Unable to invoke request: unknown host, see logs for more detail.&quot;</code><br>   <code>&quot;Error processing json for extension - account: {account} | profile: {profile}&quot;</code> <br>  <code>&quot;Error saving profile metadata - account: {account} | profile: {profile}&quot;</code><br>   <code>&quot;Error saving profile - account: {account} | profile: {profile}&quot;</code><br>   <code>&quot;Error saving profile(legacy) - {account} | profile: {profile}&quot;</code></td>
+<td><code>&quot;An error occurred&quot;</code> <br>  <code>&quot;Profile: {PROFILE} inherits from library profile&quot;</code><br>   <code>&quot;Unable to invoke request: unknown host, see logs for more detail.&quot;</code><br>  <code>&quot;Error saving profile metadata - account: {ACCOUNT} | profile: {PROFILE}&quot;</code><br>   <code>&quot;Error saving profile - account: {ACCOUNT} | profile: {PROFILE}&quot;</code><br>   <code>&quot;Error saving profile(legacy) - {ACCOUNT} | profile: {PROFILE}&quot;</code></td>
 </tr>
 </tbody>
 </table>
@@ -583,13 +565,13 @@ var utag_data = {
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/early-access/api-v3/iq-profiles/iq-profiles-api-objects/"
+  <a href="/early-access/api-v3/iq-profiles/iq-tags-api/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>iQ Profiles API Objects</div>
+      <div>iQ Tags API</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"iQ Profiles API Objects"</title>
+      <title>"iQ Tags API"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -598,14 +580,14 @@ var utag_data = {
 </div><div class="di mr3">
   
   
-  <a href="/early-access/api-v3/iq-profiles/iq-javascript-extension-api/"
+  <a href="/early-access/api-v3/iq-profiles/iq-variables-api/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"iQ JavaScript Extension API "</title>
+      <title>"iQ Variables API "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>iQ JavaScript Extension API</div>
+      <div>iQ Variables API</div>
     </section>
   </a>
   
@@ -637,7 +619,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 30, 2023 
+          <p>This page was last updated:  October 13, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -655,10 +637,14 @@ No</button>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#example-curl-request">Example cURL request</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#authentication">Authentication</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#profile-fields">Profile fields</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#patch-operation-parameters">PATCH Operation Parameters</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#create-load-rule">Create load rule</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#update-load-rule">Update load rule</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#delete-load-rule">Delete load rule</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#example-request">Example request</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#patch-operation-parameters">PATCH Operation Parameters</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#create-load-rule">Create load rule</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#example-request-1">Example request</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#update-load-rule">Update load rule</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#example-request-2">Example request</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#delete-load-rule">Delete load rule</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#example-request-3">Example request</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#error-messages">Error messages</a></li>
               </nav>
   </aside></nav>

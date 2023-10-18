@@ -231,15 +231,21 @@ var utag_data = {
         <ul class="bl b--primary bw1 pl2 iq-profiles-api desktopmenu animated fadeIn list "><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/api-v3/iq-profiles/about/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".early-access-iq-profiles-v3-api">About iQ Profiles</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-profiles-api-objects/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-api-objects">iQ Profiles API Objects</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/api-v3/iq-profiles/iq-get-profile-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-get-profile-api">iQ GET Profile API</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/api-v3/iq-profiles/iq-javascript-extension-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-javascript-extension-api">iQ JavaScript Extension API</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/early-access/api-v3/iq-profiles/iq-load-rules-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-load-rules-api">iQ Load Rules API</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/early-access/api-v3/iq-profiles/iq-profiles-api-objects/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-api-objects">iQ Profiles API Objects</a>
+        <a href="/early-access/api-v3/iq-profiles/iq-events-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-events-api">iQ Events API</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/api-v3/iq-profiles/iq-variables-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-variables-api">iQ Variables API</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-load-rules-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-load-rules-api">iQ Load Rules API</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-tags-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-tags-api">iQ Tags API</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/early-access/api-v3/iq-profiles/iq-tag-templates-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-tag-template-api">iQ Tag Template API</a>
       </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/api-v3/tealium-collect-http-api-v3-early-access/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-collect-http-api-v3-early-access">Tealium Collect HTTP API</a>
@@ -297,35 +303,35 @@ var utag_data = {
 
   
     <p class="f4 fw3 lh-copy">
-      iQ Profiles uses JSON objects to retrieve data from an iQ Tag Management account profile and update the basic JavaScript Code extension, which allows you to use custom code deployment processes to manage iQ Tag Management profiles.
+      This article describes how to get started using the Tealium iQ Profiles API.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
-<p>iQ Profiles is an API endpoint that makes your iQ Tag Management configuration available programmatically. Use this endpoint to retrieve specific configuration components, such as tags, extensions, and load rules, and to add, edit, and delete a limited subset of components.</p>
+<p>iQ Profiles is an API endpoint that makes your iQ Tag Management configuration available programmatically. Use this endpoint to retrieve specific configuration components, such as tags, extensions, load rules, events, and variables, and to add, edit, and delete a limited subset of components.</p>
 <p>Use this API to access the versions and change history of your profiles and integrate your own SDLC.</p>
 <p>iQ Profiles currently supports two requests:</p>
 <ul>
 <li><strong>GET</strong><br>
-Returns specific content about iQ Tag Management account profiles, including: load rules, tags, extensions, variables, and version IDs.</li>
+Returns specific content about iQ Tag Management account profiles, including: load rules, tags, tag templates, events, extensions, variables, and version IDs.</li>
 <li><strong>PATCH</strong><br>
 Perform create, update, and delete operations on a limited subset of configuration components. Using this method results in new saved versions of your profile.</li>
 </ul>
-<h3 id="working-with-profiles">Working with profiles</h3>
-<p>When updating a profile, iQ Profiles checks for concurrent users and will lock the profile to protect against concurrent changes. If another user is viewing the same profile or the profile has just been updated (within 15 seconds), the PATCH method will receive an error.</p>
-<h3 id="saving-versioning-and-publishing">Saving, versioning, and publishing</h3>
-<p>Using the PATCH request to update a profile creates a new version in the application, equivalent to a &ldquo;Save As&rdquo; operation. To distinguish versions generated by the API from versions created in the application, the API formats the version name as <code>&quot;API | {timestamp}&quot;</code>.</p>
-<p>To publish this profile, log into the application, navigate to the latest saved version of your profile after the patch and publish.</p>
-<h3 id="permission-requirements">Permission requirements</h3>
+<h2 id="concurrent-users-and-api-users">Concurrent users and API users</h2>
+<p>When updating a profile, iQ Profiles scans for concurrent users and will lock the profile to protect against concurrent changes. If another user is viewing the same profile or the profile has just been updated (within 15 seconds), the PATCH method will receive an error.</p>
+<h2 id="saving-versioning-and-publishing">Saving, versioning, and publishing</h2>
+<p>Using the PATCH request to update a profile creates a new or updated version in the application. To distinguish versions generated by the API from versions created in the application, the API formats the version name as <code>API | {TIMESTAMP}</code>.</p>
+<p>To publish this profile after a successful PATCH call, log into the application, navigate to the latest saved version of your profile after the patch and publish.</p>
+<h2 id="permission-requirements">Permission requirements</h2>
 <ul>
 <li><strong>GET Profile</strong><br>
 Save and Save as New Versions permission</li>
 <li><strong>PATCH Profile</strong><br>
 Save Existing Versions or Save as New Versions permission</li>
 </ul>
-<h3 id="authentication">Authentication</h3>
+<h2 id="authentication">Authentication</h2>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>The bearer token is used to authenticate all API calls and not the API key. The API key is only used in the authentication call. In addition to the bearer token, the authentication response includes a region-specific hostname that must be used in subsequent server-side API calls.</p>
 <p>See the <a href="/early-access/api-v3/tealium-api-v3-getting-started-early-access/">Tealium API V3 Getting Started</a> guide to learn about generating a bearer token from the API key.</p>
 
@@ -334,13 +340,13 @@ Save Existing Versions or Save as New Versions permission</li>
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/early-access/api-v3/iq-profiles/iq-get-profile-api/"
+  <a href="/early-access/api-v3/iq-profiles/iq-profiles-api-objects/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>iQ GET Profile API</div>
+      <div>iQ Profiles API Objects</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"iQ GET Profile API"</title>
+      <title>"iQ Profiles API Objects"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -373,7 +379,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 30, 2023 
+          <p>This page was last updated:  October 13, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -388,7 +394,7 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#working-with-profiles">Working with profiles</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#concurrent-users-and-api-users">Concurrent users and API users</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#saving-versioning-and-publishing">Saving, versioning, and publishing</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#permission-requirements">Permission requirements</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#authentication">Authentication</a></li>
