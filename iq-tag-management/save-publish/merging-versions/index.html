@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "iq-tag-management",
-    reading_time  : "4",
+    reading_time  : "5",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -720,14 +720,13 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <p>For example, you could be testing the old version in Dev or QA environments and it is finally ready to be merged into the Prod environment. Using this built-in feature, you can pick older changes, merge them in the current version, and continue to save and publish as usual.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>This feature does not support <a href="/iq-tag-management/profiles/profile-libraries/about/">profile libraries</a>.</p>
 <figure><a class="slb" href="/images/iq-tag-management/merge-version-dropdown.png"><img src="/images/iq-tag-management/merge-version-dropdown.png"
          alt="Merge version dropdown"
          title="Merge version dropdown" width="378" height="224"/>
     </a>
 </figure>
 <h2 id="show-version-relationship">Show version relationship</h2>
-<p>Enabling this checkbox in the <strong>Versions</strong> tab highlights the origin path, showing how each version is related to the other versions in the publish history. This is important because the origin path is your visual guide for determining which versions you can or cannot merge.</p>
+<p>The <strong>Show version relationship</strong> checkbox in the <strong>Versions</strong> tab, which is checked by default, highlights the origin path. This feature shows how each version is related to the other versions in the publish history. This is important because the origin path is your visual guide for determining which versions you can or cannot merge.</p>
 <figure><a class="slb" href="/images/iq-tag-management/show-relationship.png"><img src="/images/iq-tag-management/show-relationship.png"
          alt="Show relationship"
          title="Show relationship" width="220" height="339"/>
@@ -741,12 +740,13 @@ var utag_data = {
          title="Example screenshots" width="660" height="321"/>
     </a>
 </figure>
-<p>As you can see,</p>
+<p>As you can see:</p>
 <ul>
 <li>Version 1 is NOT in the same path as version 2, which means they can be merged. This is also true for version 1.1.</li>
 <li>Version 2 and the initial publish are lined up in the same path, which is why they cannot be merged.</li>
 </ul>
 <h2 id="merging-changes-into-current-session">Merging changes into current session</h2>
+<p>To merge changes from one version into the current version:</p>
 <ol>
 <li>
 <p>From the <strong>Merge Changes into Current Session</strong> drop-down list, select the version you want to merge into this session.</p>
@@ -767,7 +767,7 @@ var utag_data = {
 <p><strong>Save/Publish</strong> the current version. You have the option to save as a new version (Save As) or overwrite the existing version (Save).</p>
 </li>
 </ol>
-<p>Here&rsquo;s a quick video tutorial on how to merge changes between versions:</p>
+<p>The following video tutorial demonstrates how to merge changes between versions:</p>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
   <iframe src="https://www.youtube.com/embed/jwJLifIDRcc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
@@ -805,79 +805,44 @@ var utag_data = {
 </ol>
 <h2 id="resolving-merge-errors">Resolving merge errors</h2>
 <p>The following are common errors, and their solutions:</p>
-<ul>
-<li>Version cannot be merged</li>
-<li>Cannot Merge Version</li>
-<li>Unable to Merge</li>
-<li>Sorry you don&rsquo;t have the required permission to perform this action</li>
-</ul>
 <h3 id="alert-message-version-cannot-be-merged">Alert message: &ldquo;Version cannot be merged&rdquo;</h3>
-<figure><a class="slb" href="/images/iq-tag-management/version-cannot-be-merged.png"><img src="/images/iq-tag-management/version-cannot-be-merged.png"
-         alt="Version cannot be merged"
-         title="Version cannot be merged" width="337" height="275"/>
-    </a>
-</figure>
-<p>This message informs you that the version cannot be merged because it is lined up in the same origin path as the current version. You will notice this message for other versions that are also lined up in the same path.</p>
-<p><strong>Solution</strong>: Make sure that the current and incoming versions belong to distinct origin paths.</p>
-<h3 id="alert-message-cannot-merge-version">Alert message: &ldquo;Cannot Merge Version&rdquo;</h3>
-<figure><a class="slb" href="/images/iq-tag-management/cannot-merge-save-first.png"><img src="/images/iq-tag-management/cannot-merge-save-first.png"
-         alt="Cannot merge-save first"
-         title="Cannot merge-save first" width="415" height="163"/>
-    </a>
-</figure>
-<p>This message appears when you attempt to merge any unsaved or pending changes, whether they are in the current or incoming versions.</p>
-<p><strong>Solution</strong>: Save/Publish the version in question before merging.</p>
-<h3 id="alert-message-unable-to-merge">Alert message: &ldquo;Unable to Merge&rdquo;</h3>
-<p>This alert informs you that the merge operation has failed due to one or more reasons. Here are the possibilities:</p>
-<ul>
-<li>
-<p><strong>&ldquo;You do not have the permission to edit JavaScript Extensions&rdquo;</strong></p>
-<figure><a class="slb" href="/images/iq-tag-management/js-permission-error.png"><img src="/images/iq-tag-management/js-permission-error.png"
-         alt="JS permission error"
-         title="JS permission error" width="412" height="182"/>
-    </a>
-</figure>
-<p>This indicates certain changes contain one or more JavaScript extensions that you are not permitted to access or edit. This error may occur when merging between versions or between concurrent users.</p>
+<p>This message informs you that the version cannot be merged because the changes in the incoming version are already a part of this version. This situation is due to the fact that the two versions exist in the same origin path.</p>
+<p><strong>Solution</strong>: If you need to remove any changes, remove any components from previous or incoming versions.</p>
+<h3 id="alert-message-permissions">Alert message: &ldquo;Permissions&rdquo;</h3>
+<p>This alert informs you that the merge operation has failed due to permissions issues. Here are the possibilities:</p>
+<h4 id="alert-message-you-do-not-have-the-permission-to-edit-javascript-extensions">Alert Message: &ldquo;You do not have the permission to edit JavaScript Extensions&rdquo;</h4>
+<p>This alert indicates certain changes contain one or more JavaScript extensions that you are not permitted to access or edit. This error may occur when merging between versions or between concurrent users.</p>
 <p><strong>Solution</strong>: Make sure your account admin grants you <strong>Manage Javascript Code Extension</strong> permissions.</p>
-<figure><a class="slb" href="/images/iq-tag-management/manage-js-perm.png"><img src="/images/iq-tag-management/manage-js-perm.png"
-         alt="Manage JS permission"
-         title="Manage JS permission" width="412" height="159"/>
-    </a>
-</figure>
-</li>
-<li>
-<p><strong>&ldquo;You do not have permissions to resource locks.&rdquo;</strong></p>
-<figure><a class="slb" href="/images/iq-tag-management/rl-error.png"><img src="/images/iq-tag-management/rl-error.png"
-         alt="RL error"
-         title="RL error" width="404" height="143"/>
-    </a>
-</figure>
-<p>This indicates that certain changes are secured by resource locks. You cannot perform the merge operation unless you have the required permissions to access or edit any resource locks. This error may occur when merging between versions or between concurrent users.</p>
+<h4 id="alert-message-sorry-you-dont-have-the-required-permission-to-perform-this-action">Alert Message: Sorry you don&rsquo;t have the required permission to perform this action&hellip;</h4>
+<p><strong>Solution</strong>: Contact your Account Manager for further assistance.</p>
+<h4 id="alert-message-you-do-not-have-permissions-to-resource-locks">Alert Message: &ldquo;You do not have permissions to resource locks.&rdquo;</h4>
+<p>This alert indicates that certain changes are secured by resource locks. You cannot perform the merge operation unless you have the permission to access or edit resource locks. This error may occur when merging between versions or between concurrent users.</p>
 <p><strong>Solution</strong>: Make sure your account admin grants you the <strong>Manage Resource Locks</strong> permission.</p>
 <figure><a class="slb" href="/images/iq-tag-management/labels-perm-missing.png"><img src="/images/iq-tag-management/labels-perm-missing.png"
          alt="Labels permission missing"
          title="Labels permission missing" width="413" height="142"/>
     </a>
 </figure>
-</li>
-<li>
-<p><strong>&ldquo;Current version is linked to the library&rdquo;</strong></p>
-<figure><a class="slb" href="/images/iq-tag-management/linked-library-error.png"><img src="/images/iq-tag-management/linked-library-error.png"
-         alt="linked library error"
-         title="linked library error" width="411" height="137"/>
+<h3 id="alert-message-you-have-pending-changes">Alert Message: &ldquo;You have pending changes&rdquo;</h3>
+<p>This alert indicates that there are pending changes on one or more of the versions that you are trying to merge.</p>
+<p><strong>Solution</strong>: Save all pending changes on both of the versions you are trying to merge.</p>
+<h3 id="alert-message-your-libraries-are-mismatched">Alert Message: &ldquo;Your libraries are mismatched&rdquo;</h3>
+<p>This alert informs you that when you try to merge profile versions that are linked to libraries, the incoming profile version must be linked to every library that the current profile version is linked to, and those library versions must match.</p>
+<p><strong>Solution</strong>: Link each profile version to the same library versions as the other profile versions.</p>
+<h4 id="example-older-library-version">Example: Older library version</h4>
+<p>If Version A is linked to Library 1 and Version B is linked to an older version of Library 1, the merge between Version A and Version B will fail. To resolve this, navigate to Version B and either overwrite Version B with the updates from Library 1 or save as a new version (Version C) with the updates from Library 1. The merge will now succeed because each profile version is linked to the same library version.</p>
+<figure><a class="slb" href="/images/iq-tag-management/save-publish/merge-libraries-diagram-1.png"><img src="/images/iq-tag-management/save-publish/merge-libraries-diagram-1.png"
+         alt="Merge diagram 1"
+         title="Merge diagram 1"/>
     </a>
 </figure>
-<p>This informs you that one of the versions, either current or incoming, is still linked to a library. This scenario may occur when you attempt to merge between versions. Merging is NOT supported for linked libraries.</p>
-<p><strong>Solution</strong>: Make sure to unlink the libraries from both current and incoming versions. To do that, navigate to <strong>Account Admin</strong> &raquo; <strong>Manage Profiles</strong> and click <strong>Remove</strong> next to the library that needs to be unlinked.</p>
-</li>
-</ul>
-<h3 id="alert-message-sorry-you-dont-have-the-required-permission-to-perform-this-action">Alert Message: Sorry you don&rsquo;t have the required permission to perform this action&hellip;</h3>
-<figure><a class="slb" href="/images/iq-tag-management/save-perm-error.png"><img src="/images/iq-tag-management/save-perm-error.png"
-         alt="save perm error"
-         title="save perm error" width="636" height="123"/>
+<h4 id="example-missing-library-link">Example: Missing library link</h4>
+<p>If Version A is linked to Library 1 and Library 2 and Version B is only linked to Library 1, the merge between Version A and Version B will fail. To resolve this, navigate to Version B and link it to Library 2. Then overwrite Version B or save as a new version (Version C) with the links to Library 1 and Library 2. The merge will now succeed because each profile version is linked to the same library versions as the other profile versions.</p>
+<figure><a class="slb" href="/images/iq-tag-management/save-publish/merge-libraries-diagram-2.png"><img src="/images/iq-tag-management/save-publish/merge-libraries-diagram-2.png"
+         alt="Merge diagram 2"
+         title="Merge diagram 2"/>
     </a>
 </figure>
-<p><strong>Solution</strong>: Contact your Account Manager for further assistance.</p>
 
 </div>
 
@@ -938,7 +903,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 24, 2023 
+          <p>This page was last updated:  October 24, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -958,9 +923,9 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#resolving-merge-conflicts">Resolving merge conflicts</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#resolving-merge-errors">Resolving merge errors</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#alert-message-version-cannot-be-merged">Alert message: “Version cannot be merged”</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#alert-message-cannot-merge-version">Alert message: “Cannot Merge Version”</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#alert-message-unable-to-merge">Alert message: “Unable to Merge”</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#alert-message-sorry-you-dont-have-the-required-permission-to-perform-this-action">Alert Message: Sorry you don’t have the required permission to perform this action…</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#alert-message-permissions">Alert message: “Permissions”</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#alert-message-you-have-pending-changes">Alert Message: “You have pending changes”</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#alert-message-your-libraries-are-mismatched">Alert Message: “Your libraries are mismatched”</a></li>
               </nav>
   </aside></nav>
 
