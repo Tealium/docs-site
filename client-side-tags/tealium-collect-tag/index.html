@@ -419,6 +419,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/facebook-pixel-legacy/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".facebook-pixel-legacy">Facebook Pixel Setup Guide (Legacy)</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/client-side-tags/fathom-analytics-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".fathom-analytics-tag">Fathom Analytics</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/firebase-remote-command-order-event-example/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".firebase-remote-command-order-event-example">Firebase Remote Command Order Event Example</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/client-side-tags/firebase-remote-command-tag/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".firebase-remote-command-tag">Firebase Remote Command Tag Setup Guide (Mobile)</a>
@@ -807,7 +809,7 @@ var utag_data = {
 <ul>
 <li>Contact your account manager to enable this functionality for your account.</li>
 </ul>
-<h2 id="how-it-works">How it Works</h2>
+<h2 id="how-it-works">How it works</h2>
 <p>The Tealium Collect tag captures a mix of predefined data and dynamic data from the page. Using this tag, there is no need for mapping, the tag automatically sends everything set in <code>utag.data</code> or any data passed to a tracking call.</p>
 <p>See the <a href="/server-side/data-storage/audiencestore-eventstore/eventstore-data-guide/">EventStore Data Guide</a> for a full list of collected variables.</p>
 <p>Learn more about <a href="/server-side/live-events-feeds/about-live-events/">Live Events</a> to see the incoming data from the Tealium Collect tag.</p>
@@ -817,19 +819,19 @@ var utag_data = {
 Use this tag with EventStream and event feeds to transition client-side tags to server-side connectors, such as the <a href="/server-side/connectors/webhook-connectors/about/">Webhook connector</a>.</li>
 <li><strong>AudienceStream</strong><br>
 Use this tag with AudienceStream to identify and take action on your visitors.</li>
-<li><strong>DataAcces</strong><br>
+<li><strong>DataAccess</strong><br>
 The event data coming from this tag can also be made available to DataAccess, where it can be analyzed using Business Intelligence (BI) tools of your choice.</li>
 <li><strong>Enrich your data layer</strong><br>
 Use the data enrichment setting to add visit and visitor attributes from AudienceStream to your data layer.<br>
 Learn more about <a href="/server-side/attributes/data-layer-enrichment/enable/">data layer enrichment</a>.</li>
 </ul>
-<h2 id="tag-tips">Tag Tips</h2>
+<h2 id="tag-tips">Tag tips</h2>
 <ul>
 <li>This tag automatically sends all data in<code>utag.data</code>on initial page load or any data object passed to<code>utag.view()</code>or<code>utag.link()</code>.</li>
 <li>When using proxy tools to inspect network requests, look for the <code>POST</code> method (instead of GET).</li>
 <li>Specify a value in the <strong>Tealium Profile</strong> field only when <strong>Tealium Collect Endpoint</strong> field is blank and your server-side data collection profile is something other than the current profile.</li>
 </ul>
-<h2 id="tag-configuration">Tag Configuration</h2>
+<h2 id="tag-configuration">Tag configuration</h2>
 <p>First, go to the tag marketplace and add the Tealium Collect tag (Learn more about <a href="/iq-tag-management/tags/manage/">how to add a tag</a>).</p>
 <p>After adding the tag, configure the following settings:</p>
 <ul>
@@ -936,9 +938,9 @@ Learn more about <a href="/server-side/attributes/data-layer-enrichment/enable/"
 <h2 id="advanced">Advanced</h2>
 <p>For first-party CNAME of the Tealium visitor service endpoint used for data layer enrichment, use a JavaScript Code extension scoped to the Tealium Collect tag to override the URL with the following code:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">visitor_service_override</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://visitor-service.example.co.uk&#34;</span>;
-</span></span></code></pre></div><h2 id="load-rules">Load Rules</h2>
+</span></span></code></pre></div><h2 id="load-rules">Load rules</h2>
 <p>The best practice is to use the <strong>All Pages</strong> load rule to load this tag on all pages.</p>
-<h3 id="working-with-trace">Working with Trace</h3>
+<h3 id="working-with-trace">Working with trace</h3>
 <p>If you use a more restrictive load rule, and you&rsquo;ve noticed that you can&rsquo;t end a session in the trace tool, then a custom load rule is needed to allow the special event triggered by trace.</p>
 <p>Create the following load rule and assign it to the Tealium Collect tag using the <strong>Match Any Rule</strong> option.</p>
 <pre tabindex="0"><code>ut.event equals (ignore case) kill_visitor_session
@@ -947,8 +949,8 @@ Learn more about <a href="/server-side/attributes/data-layer-enrichment/enable/"
          title="Trace"/>
     </a>
 </figure>
-<h2 id="implementing-with-mobile">Implementing with Mobile</h2>
-<p>For deployments using Tealium&rsquo;s <a href="/platforms/android-kotlin/install/">Android</a> and <a href="/platforms/ios-swift/install/">iOS</a> integration libraries, note the following:</p>
+<h2 id="implementing-with-mobile">Implementing with mobile</h2>
+<p>For deployments using <a href="/platforms/android-kotlin/install/">Tealium for Android</a> or <a href="/platforms/ios-swift/install/">Tealium for iOS</a>, note the following:</p>
 <ul>
 <li>The default <a href="/iq-tag-management/profiles/creating-a-mobile-profile/#configure-mobile-settings">mobile publish settings</a> enables the native mobile Tealium Collect service by default.<br>
 Learn more about the <a href="/platforms/getting-started-mobile/server-side/#native-module">native Collect module for mobile</a>.</li>
@@ -1029,13 +1031,13 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#requirements">Requirements</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it Works</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-tips">Tag Tips</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag Configuration</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-tips">Tag tips</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag configuration</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#advanced">Advanced</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules">Load Rules</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#working-with-trace">Working with Trace</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#implementing-with-mobile">Implementing with Mobile</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules">Load rules</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#working-with-trace">Working with trace</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#implementing-with-mobile">Implementing with mobile</a></li>
               </nav>
   </aside></nav>
 
@@ -1254,6 +1256,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
