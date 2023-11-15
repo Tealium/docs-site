@@ -309,6 +309,8 @@ var utag_data = {
 <p>Visitor lookups are based on a <a href="/server-side/visitor-stitching/visitor-id-attribute/">Visitor ID</a> attribute from your account.</p>
 <h3 id="limits-and-intended-use">Limits and intended use</h3>
 <p>The Visitor Privacy API is intended to satisfy regulatory requirements such as GDPR and CCPA and is not designed for high volume usage. Tealium recommends that you have a maximum of one (1) connection open to this API at any given time. Contact your account manager if you estimate that your usage will exceed 1000 API calls per day.</p>
+<h2 id="rate-limits">Rate Limits</h2>
+<p>The Visitor Privacy API has a default rate limit of 50 requests/second.</p>
 <h2 id="authentication">Authentication</h2>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>The bearer token is used to authenticate all API calls and not the API key. The API key is only used in the authentication call. In addition to the bearer token, the authentication response includes a region-specific hostname that must be used in subsequent server-side API calls.</p>
 <p>See the <a href="/early-access/api-v3/tealium-api-v3-getting-started-early-access/">Tealium API V3 Getting Started</a> guide to learn about generating a bearer token from the API key.</p>
@@ -439,7 +441,7 @@ var utag_data = {
 <tbody>
 <tr>
 <td>400</td>
-<td><code>{&quot;message&quot;: &quot;You are missing an attribute Id or Attribute Value&quot;}</code></td>
+<td><code>{ &quot;message&quot;: &quot;You are missing an attribute Id or Attribute Value&quot;}</code></td>
 </tr>
 <tr>
 <td>401</td>
@@ -448,6 +450,10 @@ var utag_data = {
 <tr>
 <td>404</td>
 <td><code>Visitor not found in system {  &quot;transactionId&quot;: {transactionId}  }</code></td>
+</tr>
+<tr>
+<td>429</td>
+<td><code>{ &quot;message&quot;: &quot;Too many requests&quot;}</code></td>
 </tr>
 <tr>
 <td>500</td>
@@ -503,7 +509,7 @@ The value to look up.</li>
 <tbody>
 <tr>
 <td>400</td>
-<td><code>{&quot;message&quot;: &quot;You are missing an attribute Id or Attribute Value&quot;}</code></td>
+<td><code>{ &quot;message&quot;: &quot;You are missing an attribute Id or Attribute Value&quot;}</code></td>
 </tr>
 <tr>
 <td>401</td>
@@ -512,6 +518,10 @@ The value to look up.</li>
 <tr>
 <td>404</td>
 <td><code>Visitor not found in system {  &quot;transactionId&quot;: {transactionId}  }</code></td>
+</tr>
+<tr>
+<td>429</td>
+<td><code>{ &quot;message&quot;: &quot;Too many requests&quot;}</code></td>
 </tr>
 </tbody>
 </table>
@@ -550,6 +560,10 @@ The value to look up.</li>
 <td>404</td>
 <td><code>Visitor not found in system {  &quot;transactionId&quot;: {transactionId}  }</code></td>
 </tr>
+<tr>
+<td>429</td>
+<td><code>{ &quot;message&quot;: &quot;Too many requests&quot;}</code></td>
+</tr>
 </tbody>
 </table>
 <h2 id="get-visitor-id-attributes">GET Visitor ID Attributes</h2>
@@ -585,6 +599,10 @@ The value to look up.</li>
 <tr>
 <td>404</td>
 <td><code>{ &quot;message&quot; : &quot;No Visitor ids were found for the account and profile&quot;}</code></td>
+</tr>
+<tr>
+<td>429</td>
+<td><code>{ &quot;message&quot;: &quot;Too many requests&quot;}</code></td>
 </tr>
 <tr>
 <td>500</td>
@@ -652,7 +670,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 31, 2023 
+          <p>This page was last updated:  November 14, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -668,7 +686,8 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#limits-and-intended-use">Limits and intended use</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#authentication">Authentication</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#rate-limits">Rate Limits</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#authentication">Authentication</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#visitor-fields">Visitor fields</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#example-response">Example Response</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#get-visitor">GET Visitor</a></li>

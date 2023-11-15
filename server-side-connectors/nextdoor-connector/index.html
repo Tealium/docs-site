@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Reddit Conversions Connector Setup Guide | Server-Side Connectors | Tealium Docs</title>
+    <title>Nextdoor Connector Setup Guide | Server-Side Connectors | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side-connectors",
-    reading_time  : "3",
+    reading_time  : "5",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -311,6 +311,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/connector-insights-facebook-event-match-quality/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".connector-insights-facebook-event-match-quality">Connector Insights Facebook Event Match Quality</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/connector-insights-google-ads-customer-match/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".connector-insights-google-ads-customer-match">Connector Insights Google Ads Customer Match</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/connector-insights-twitter-custom-audiences/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".connector-insights-twitter-custom-audiences">Connector Insights Twitter Custom Audiences</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/cordial-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".cordial-connector">Cordial</a>
@@ -516,6 +518,8 @@ var utag_data = {
         <a href="/server-side-connectors/new-relic-mobile-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".new-relic-mobile-connector">New Relic Mobile</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/new-relic-mobile-crash-tracking-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".new-relic-mobile-crash-tracking-connector">New Relic Mobile Crash Tracking</a>
+      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/nextdoor-connector/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".nextdoor-connector">Nextdoor</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/onesignal-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".onesignal-connector">OneSignal</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -554,8 +558,6 @@ var utag_data = {
         <a href="/server-side-connectors/qualtrics-xm-directory-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".qualtrics-xm-directory-connector">Qualtrics XM Directory</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/quantcast-audiences-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".quantcast-audiences-connector">Quantcast Audiences</a>
-      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side-connectors/reddit-conversions-connector/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".reddit-conversions-connector">Reddit Conversions</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/referralcandy-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".referralcandy-connector">ReferralCandy</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -727,7 +729,7 @@ var utag_data = {
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Reddit Conversions Connector Setup Guide</h1>
+<h1 class="lh-title mt30 mb3">Nextdoor Connector Setup Guide</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -735,26 +737,19 @@ var utag_data = {
 
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to set up the Reddit Conversions connector.
+      This article describes how to set up the Nextdoor connector.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="api-information">API information</h2>
+  <h2 id="api-information">API Information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
-<li>API Name: Reddit API</li>
-<li>API Version: v2.0</li>
-<li>API Endpoint: <code>https://ads-api.reddit.com/api/v2.0</code></li>
-<li>Documentation: <a href="https://ads-api.reddit.com/docs/v2">Reddit API</a></li>
-</ul>
-<h2 id="batch-limits">Batch limits</h2>
-<p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
-<ul>
-<li>Max number of requests: 1000</li>
-<li>Max time since oldest request: 60 minutes</li>
-<li>Max size of requests: 1 MB</li>
+<li>API Name: Nextdoor API</li>
+<li>API Version: v2</li>
+<li>API Endpoint: <code>https://ads.nextdoor.com/v2/api</code></li>
+<li>Documentation: <a href="https://documenter.getpostman.com/view/27150393/2s93z6d3yj">Nextdoor API</a></li>
 </ul>
 <h2 id="connector-actions">Connector Actions</h2>
 <table>
@@ -774,11 +769,11 @@ var utag_data = {
 </tbody>
 </table>
 <h2 id="configure-settings">Configure Settings</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>Navigate to the Connector Marketplace and add a new  connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>Account ID</strong><br>
-Required. The ID of the Reddit Ad account that the conversion event belongs to. To find the Reddit Ad account ID , go to <strong>Conversions Events &gt; Pixel ID</strong> in the Reddit Ads UI.</li>
+<li><strong>API Token</strong><br>
+Required: Obtain an authentication token specific to a logged-in user and their associated account on the Nextdoor Ads Manager account page.</li>
 </ul>
 <h2 id="actions">Actions</h2>
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
@@ -795,87 +790,179 @@ Required. The ID of the Reddit Ad account that the conversion event belongs to. 
 <tbody>
 <tr>
 <td>Event Name</td>
-<td>The type of the conversion tracking event. The event name can be one of the listed values, or it can be a custom string value.</td>
+<td>The type of the conversion tracking event. Select a value from the drop-down list or enter a custom string value.</td>
+</tr>
+<tr>
+<td>Action Source</td>
+<td>The channel through which conversion happened. Select a value from the drop-down list.</td>
+</tr>
+<tr>
+<td>Client ID</td>
+<td>(Required)  Nextdoor Ads Manager Advertiser ID.</td>
+</tr>
+<tr>
+<td>Partner ID</td>
+<td>The Nextdoor-generated ID associated with a single partner. This value is required in all Conversion API calls.</td>
+</tr>
+<tr>
+<td>Action Source URL</td>
+<td>The browser URL where the event happened. The URL must begin with <code>http://</code> or <code>https://</code>, and it must should match the verified domain. This value is required for website events.</td>
+</tr>
+<tr>
+<td>Event ID</td>
+<td>Any string or hashed ID that can identify a unique event. This value is required to deduplicate events from CAPI and pixel tracking.</td>
 </tr>
 <tr>
 <td>Event Time</td>
-<td>The RFC3339 timestamp when the conversion event occurred. By default, the connector will send the current time.</td>
+<td>Timestamp of the event in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format.</td>
 </tr>
 <tr>
-<td>Transaction ID</td>
-<td>The transaction ID for the event.</td>
+<td>Event Timezone</td>
+<td>Time zone indicating where the conversion event took place.</td>
 </tr>
 <tr>
-<td>Transaction Value (Decimal)</td>
-<td>The value of the transaction in the base unit of the currency.</td>
-</tr>
-<tr>
-<td>Currency</td>
-<td>The three-character ISO 4217 currency code for the value provided.</td>
-</tr>
-<tr>
-<td>Item Count</td>
-<td>The number of items in the event.</td>
-</tr>
-<tr>
-<td>Test Mode</td>
-<td>Set to <code>true</code> to test the API integration. No data will be posted to the account.</td>
-</tr>
-<tr>
-<td>Reddit Click ID</td>
-<td>The Reddit-generated ID associated with a single ad click.</td>
+<td>Test Event</td>
+<td>This value indicates if this event is a test event. The default value is <code>False</code>.</td>
 </tr>
 <tr>
 <td>Email Address (already SHA256 hashed)</td>
-<td>Provide an email address which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+<td>Provide an email address which has already been SHA256 hashed.</td>
 </tr>
 <tr>
 <td>Email Address (apply SHA256 hash)</td>
 <td>Provide a plain text email address and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
 </tr>
 <tr>
-<td>IP Address</td>
-<td>The connector will SHA256 hash the mapped IP address.</td>
+<td>Phone Number (already SHA256 hashed)</td>
+<td>Provide a phone number which has already been SHA256 hashed.</td>
 </tr>
 <tr>
-<td>User Agent</td>
-<td>The user agent of the user&rsquo;s browser.</td>
+<td>Phone Number (apply SHA256 hash)</td>
+<td>Provide a plain text phone number and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
 </tr>
 <tr>
-<td>External ID (already SHA256 hashed)</td>
-<td>An advertiser-assigned persistent identifier for the user (must accompany the Reddit Click ID or an additional attribution signal). Provide a value which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+<td>First Name (already SHA256 hashed)</td>
+<td>Provide a first name which has already been SHA256 hashed.</td>
 </tr>
 <tr>
-<td>External ID (apply SHA256 hash)</td>
-<td>An advertiser-assigned persistent identifier for the user (must accompany the Reddit Click ID or an additional attribution signal). The connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>First Name (apply SHA256 hash)</td>
+<td>Provide a plain text first name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
 </tr>
 <tr>
-<td>IDFA (already SHA256 hashed)</td>
-<td>The IDFA of the user&rsquo;s device. Provide a value which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+<td>Last Name (already SHA256 hashed)</td>
+<td>Provide a last name which has already been SHA256 hashed.</td>
 </tr>
 <tr>
-<td>IDFA (apply SHA256 hash)</td>
-<td>The IDFA of the user&rsquo;s device. The connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Last Name (apply SHA256 hash)</td>
+<td>Provide a plain text last name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
 </tr>
 <tr>
-<td>AAID (already SHA256 hashed)</td>
-<td>The AAID of the user&rsquo;s device. Provide a value which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+<td>Date of Birth (already SHA256 hashed)</td>
+<td>Provide a date of birth which has already been SHA256 hashed and in <code>YYYYMMDD</code> format.</td>
 </tr>
 <tr>
-<td>AAID (apply SHA256 hash)</td>
-<td>The AAID of the user&rsquo;s device. The connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+<td>Date of Birth (apply SHA256 hash)</td>
+<td>Provide a plain text date of birth and the connector will whitespace trim and hash this value using SHA256 hash in <code>YYYYMMDD</code> format.</td>
 </tr>
 <tr>
-<td>Opt Out</td>
-<td>A flag indicating whether the user has opted out of tracking.</td>
+<td>Street Address (already SHA256 hashed)</td>
+<td>Provide a street address which has already been SHA256 hashed.</td>
 </tr>
 <tr>
-<td>Screen Height</td>
-<td>The height of the user&rsquo;s screen in pixels.</td>
+<td>Street Address (apply SHA256 hash)</td>
+<td>Provide a plain text street address and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
 </tr>
 <tr>
-<td>Screen Width</td>
-<td>The width of the user&rsquo;s screen in pixels.</td>
+<td>City (already SHA256 hashed)</td>
+<td>Provide a city which has already been SHA256 hashed.</td>
+</tr>
+<tr>
+<td>City (apply SHA256 hash)</td>
+<td>Provide a plain text city and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>State (already SHA256 hashed)</td>
+<td>Provide a state abbreviation which has already been lowercased in two letter <a href="https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard_state_code">ANSI abbreviation code</a>.</td>
+</tr>
+<tr>
+<td>State (apply SHA256 hash)</td>
+<td>Provide a state abbreviation and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash in two letter <a href="https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard_state_code">ANSI abbreviation code</a>.</td>
+</tr>
+<tr>
+<td>Zip Code (already SHA256 hashed)</td>
+<td>Provide a ZIP code which has already been SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Zip Code (apply SHA256 hash)</td>
+<td>Provide a plain text ZIP code and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Country (already SHA256 hashed)</td>
+<td>Provide a 2-letter country code which has already been whitespace trimmed and SHA256 hashed in <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>.</td>
+</tr>
+<tr>
+<td>Country (apply SHA256 hash)</td>
+<td>Provide a plain text country code and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash using <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>.</td>
+</tr>
+<tr>
+<td>Pixel ID</td>
+<td>The Pixel ID associated with your Ad Account.</td>
+</tr>
+<tr>
+<td>Click ID</td>
+<td>This is the same as the <code>ndclid</code> parameter attached to the clickthrough URL.</td>
+</tr>
+<tr>
+<td>Client IP Address</td>
+<td>Provide a valid IPv4 or IPv6 address.</td>
+</tr>
+<tr>
+<td>Delivery Optimization</td>
+<td><ul><li><code>True</code> - Indicates data can be used for optimization.</li><li><code>False</code> - Indicates the data will only be used for attribution.</li></ul></td>
+</tr>
+<tr>
+<td>Order Value</td>
+<td>(Required) Required for purchase events. The currency code in <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a> format followed by the total numeric value (up to two decimal places) associated with the event.</td>
+</tr>
+<tr>
+<td>Order ID</td>
+<td>The order ID for a transaction. This value is required for offline events.</td>
+</tr>
+<tr>
+<td>App ID</td>
+<td>Corresponds to a unique ID for advertisers. Use the mobile app ID from App Store and Google Play Store.</td>
+</tr>
+<tr>
+<td>Platform</td>
+<td>The user&rsquo;s platform. Values can be <code>iOS</code> or <code>Android</code>.</td>
+</tr>
+<tr>
+<td>App Version</td>
+<td>Mobile App Version.</td>
+</tr>
+<tr>
+<td>Delivery Category</td>
+<td><ul><li><b>In Store</b> - Customer needs to enter the store to get the purchased product.</li><li><b>Curbside</b> - Customer picks up their order by driving to a store and waiting inside their vehicle.</li><li><b>Home Delivery</b> - Purchase is delivered to the customer&rsquo;s home.</li></ul></td>
+</tr>
+<tr>
+<td>ID</td>
+<td>(Required) Product ID.</td>
+</tr>
+<tr>
+<td>Content Name</td>
+<td>Product name.</td>
+</tr>
+<tr>
+<td>Quantity</td>
+<td>Product quantity.</td>
+</tr>
+<tr>
+<td>Item Price</td>
+<td>Product item price.</td>
+</tr>
+<tr>
+<td>App Tracking Enabled</td>
+<td>Users opt-out settings for ATT.</td>
 </tr>
 </tbody>
 </table>
@@ -885,13 +972,13 @@ Required. The ID of the Reddit Ad account that the conversion event belongs to. 
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/server-side-connectors/referralcandy-connector/"
+  <a href="/server-side-connectors/onesignal-connector/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>ReferralCandy</div>
+      <div>OneSignal</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"ReferralCandy"</title>
+      <title>"OneSignal"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -900,14 +987,14 @@ Required. The ID of the Reddit Ad account that the conversion event belongs to. 
 </div><div class="di mr3">
   
   
-  <a href="/server-side-connectors/quantcast-audiences-connector/"
+  <a href="/server-side-connectors/new-relic-mobile-crash-tracking-connector/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Quantcast Audiences "</title>
+      <title>"New Relic Mobile Crash Tracking "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>Quantcast Audiences</div>
+      <div>New Relic Mobile Crash Tracking</div>
     </section>
   </a>
   
@@ -939,7 +1026,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 31, 2023 
+          <p>This page was last updated:  November 14, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -953,8 +1040,7 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#api-information">API information</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#batch-limits">Batch limits</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#api-information">API Information</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#actions">Actions</a></li>
@@ -1177,6 +1263,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

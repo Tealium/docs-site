@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side-connectors",
-    reading_time  : "8",
+    reading_time  : "12",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -311,6 +311,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/connector-insights-facebook-event-match-quality/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".connector-insights-facebook-event-match-quality">Connector Insights Facebook Event Match Quality</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/connector-insights-google-ads-customer-match/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".connector-insights-google-ads-customer-match">Connector Insights Google Ads Customer Match</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/connector-insights-twitter-custom-audiences/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".connector-insights-twitter-custom-audiences">Connector Insights Twitter Custom Audiences</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/cordial-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".cordial-connector">Cordial</a>
@@ -517,6 +519,8 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/new-relic-mobile-crash-tracking-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".new-relic-mobile-crash-tracking-connector">New Relic Mobile Crash Tracking</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/nextdoor-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".nextdoor-connector">Nextdoor</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/onesignal-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".onesignal-connector">OneSignal</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/ontraport-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".ontraport-connector">Ontraport</a>
@@ -554,8 +558,6 @@ var utag_data = {
         <a href="/server-side-connectors/qualtrics-xm-directory-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".qualtrics-xm-directory-connector">Qualtrics XM Directory</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/quantcast-audiences-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".quantcast-audiences-connector">Quantcast Audiences</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side-connectors/reddit-conversions-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".reddit-conversions-connector">Reddit Conversions</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/referralcandy-connector/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".referralcandy-connector">ReferralCandy</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -770,6 +772,26 @@ var utag_data = {
 <td style="text-align:left">Update User Subscription Group Status (Non-Batch)</td>
 <td style="text-align:left">✓</td>
 <td style="text-align:left">✗</td>
+</tr>
+<tr>
+<td style="text-align:left">Send Campaign Message</td>
+<td style="text-align:left">✓</td>
+<td style="text-align:left">✓</td>
+</tr>
+<tr>
+<td style="text-align:left">Send Canvas Message</td>
+<td style="text-align:left">✓</td>
+<td style="text-align:left">✓</td>
+</tr>
+<tr>
+<td style="text-align:left">Send Transactional Email</td>
+<td style="text-align:left">✓</td>
+<td style="text-align:left">✓</td>
+</tr>
+<tr>
+<td style="text-align:left">Identify User</td>
+<td style="text-align:left">✓</td>
+<td style="text-align:left">✓</td>
 </tr>
 </tbody>
 </table>
@@ -1068,7 +1090,7 @@ For more information, see <a href="https://www.braze.com/docs/api/basics/?redire
 </tr>
 <tr>
 <td style="text-align:left">Purchase Time</td>
-<td style="text-align:left">The time of the purchase in ISO 8601 format. Automatically set to &ldquo;now&rdquo; unless explicitly mapped.</td>
+<td style="text-align:left">The time of the purchase in ISO 8601 format. Automatically set to <code>now</code> unless explicitly mapped.</td>
 </tr>
 <tr>
 <td style="text-align:left">Update Existing Only (Purchases)</td>
@@ -1158,6 +1180,203 @@ For more information, see <a href="https://www.braze.com/docs/api/basics/?redire
 </tr>
 </tbody>
 </table>
+<h3 id="send-campaign-message">Send Campaign Message</h3>
+<h4 id="batch-limits-1">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 50</li>
+<li>Max time since oldest request: 10 minutes</li>
+<li>Max size of requests: 1 MB</li>
+</ul>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Campaign ID</td>
+<td>(Required) The campaign ID.</td>
+</tr>
+<tr>
+<td>Send ID</td>
+<td>Key either generated by Braze or created by you for a given message send under which the analytics should be tracked.</td>
+</tr>
+<tr>
+<td>Alias Name</td>
+<td>The value of the alias.</td>
+</tr>
+<tr>
+<td>Alias Label</td>
+<td>The key of the alias.</td>
+</tr>
+<tr>
+<td>External User ID</td>
+<td>A value used to identify the same user profile across multiple devices.</td>
+</tr>
+<tr>
+<td>Send to Existing Only</td>
+<td>Defaults to <code>true</code>. If <code>false</code>, an attributes object must also be included.</td>
+</tr>
+<tr>
+<td>Trigger Properties</td>
+<td>Personalization key-value pairs that can be referenced in your message template.<br>Use templating for nested objects.</td>
+</tr>
+<tr>
+<td>Recipient Attributes</td>
+<td>Create or update a recipient attribute.</td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td>Provide template variables as data input for <b>Templates</b>.<br>See <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a> documentation for usage examples.<br>Name nested template variables with the dot notation. Example: <code>items.name</code>.<br>Nested template variables are typically built from data layer list attributes.</td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Provide templates to be referenced in Trigger Properties, see <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>.<br>Templates are injected by name with double curly braces into supported fields (Example: <code>{{SomeTemplateName}}</code>).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-canvas-message">Send Canvas Message</h3>
+<h4 id="batch-limits-2">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 50</li>
+<li>Max time since oldest request: 10 minutes</li>
+<li>Max size of requests: 1 MB</li>
+</ul>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Canvas Data</td>
+<td><b>Canvas ID</b> - Random key generated by Braze for a given Canvas within the Braze dashboard.</td>
+</tr>
+<tr>
+<td>Alias Name</td>
+<td>The alias value.</td>
+</tr>
+<tr>
+<td>Alias Label</td>
+<td>The alias key.</td>
+</tr>
+<tr>
+<td>External User ID</td>
+<td>A value used to identify the same user profile across multiple devices.</td>
+</tr>
+<tr>
+<td>Send to Existing Only</td>
+<td>Defaults to <code>true</code>. If <code>false</code>, an attributes object must also be included.</td>
+</tr>
+<tr>
+<td>Trigger Properties</td>
+<td>Personalization key-value pairs that can be referenced in your message template.<br>Use templating for nested objects.</td>
+</tr>
+<tr>
+<td>Recipient Attributes</td>
+<td>Create or update a recipient attribute.</td>
+</tr>
+<tr>
+<td>Canvas Entry Properties</td>
+<td>Personalization key-value pairs that can be referenced in your message template.<br>Use templating for nested objects.</td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td>Provide template variables as data input for <b>Templates</b>.<br>See <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a> documentation for usage examples.<br>Name nested template variables with the dot notation. Example: <code>items.name</code>.<br>Nested template variables are typically built from data layer list attributes.</td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Provide templates to be referenced in Trigger Properties, see <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>.<br>Templates are injected by name with double curly braces into supported fields (Example: <code>{{SomeTemplateName}}</code>).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="send-transactional-email">Send Transactional Email</h3>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Campaign ID</td>
+<td>(Required) The campaign ID.</td>
+</tr>
+<tr>
+<td>External Send ID</td>
+<td>Identifier for a particular send. When passed, this identifier will also be used as a deduplication key, which Braze will store for 24 hours.</td>
+</tr>
+<tr>
+<td>Alias Name</td>
+<td>The alias value.</td>
+</tr>
+<tr>
+<td>Alias Label</td>
+<td>The alias key.</td>
+</tr>
+<tr>
+<td>External User ID</td>
+<td>A value used to identify the same user profile across multiple devices.</td>
+</tr>
+<tr>
+<td>Trigger Properties</td>
+<td>Personalization key-value pairs that can be referenced in your message template.<br>Use templating for nested objects.</td>
+</tr>
+<tr>
+<td>Recipient Attributes</td>
+<td>Create or update a recipient attribute.</td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td>Provide template variables as data input for <b>Templates</b>.<br>See <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a> documentation for usage examples.<br>Name nested template variables with the dot notation. Example: <code>items.name</code>.<br>Nested template variables are typically built from data layer list attributes.</td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Provide templates to be referenced in Trigger Properties, see <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>.<br>Templates are injected by name with double curly braces into supported fields (Example: <code>{{SomeTemplateName}}</code>).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="identify-user">Identify User</h3>
+<h4 id="batch-limits-3">Batch Limits</h4>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 50</li>
+<li>Max time since oldest request: 10 minutes</li>
+<li>Max size of requests: 1 MB</li>
+</ul>
+<h4 id="parameters-5">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>External ID</td>
+<td>Select an attribute to map to an external ID in Braze.</td>
+</tr>
+<tr>
+<td>Alias Name</td>
+<td>(Required) The alias name.</td>
+</tr>
+<tr>
+<td>Alias Label</td>
+<td>(Required) The alias label.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 <h3 id="how-does-this-connector-work-with-other-braze-integrations">How does this connector work with other Braze integrations?</h3>
 <p>In addition to the Track User API, Braze has additional data collection methods, both of which support mapping of user attributes in Braze. Tealium supports Braze SDKs for Web and Native Mobile in the following two independent, but similar integrations:</p>
@@ -1226,7 +1445,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 8, 2021 
+          <p>This page was last updated:  November 10, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1247,6 +1466,10 @@ No</button>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---track-user-batchnon-batch">Action - Track User (Batch/Non-Batch)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---delete-user-non-batch">Action - Delete User (Non-Batch)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---update-user-subscription-group-status-non-batch">Action - Update User Subscription Group Status (Non-Batch)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#send-campaign-message">Send Campaign Message</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#send-canvas-message">Send Canvas Message</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#send-transactional-email">Send Transactional Email</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#identify-user">Identify User</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#frequently-asked-questions">Frequently Asked Questions</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-does-this-connector-work-with-other-braze-integrations">How does this connector work with other Braze integrations?</a></li>
               </nav>
@@ -1467,6 +1690,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
