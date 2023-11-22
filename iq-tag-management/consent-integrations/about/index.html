@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "iq-tag-management",
-    reading_time  : "10",
+    reading_time  : "9",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -404,6 +404,10 @@ var utag_data = {
         <a href="/iq-tag-management/data-mappings/about/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".about-data-mappings">About data mappings</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/data-mappings/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-data-mappings">Manage data mappings</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/load-rules/release-notes/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".load-rules-data-mappings">Release notes</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/data-mappings/release-notes/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".release-notes-data-mappings">Release notes</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".extensions">Extensions</a>
@@ -617,6 +621,8 @@ var utag_data = {
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2 primary-color expanded " data-target=".consent-integrations">Consent Integrations</a>
         <ul class="bl b--primary bw1 pl2 consent-integrations desktopmenu animated fadeIn list "><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-integrations/about/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".about-consent-integrations">About Consent Integrations</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/consent-integrations/consent-integrations-decision-flow/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".consent-integrations-decision-flow">Consent Integrations decision flow</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-integrations/supported-vendors/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".vendor-specific-configuration">Supported Vendor Integrations</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -871,41 +877,19 @@ If you opted to configure your integration with the default vendor categories in
 <li><code>tci.purposes_with_consent_unprocessed</code> (with refiring)</li>
 <li><code>tci.purposes_with_consent_all</code> (without refiring)</li>
 </ul>
-<h3 id="opt-in-model">Opt-in model</h3>
-<figure><a class="slb" href="https://raw.githubusercontent.com/jaquith/cmp-integrations/main/docs-src/static/tiq-cmp-integration-flow-opt-in.png"><img src="https://raw.githubusercontent.com/jaquith/cmp-integrations/main/docs-src/static/tiq-cmp-integration-flow-opt-in.png"/>
-    </a>
-</figure>
-<p>Tealium iQ will not fire tags or set cookies until a consent decision is received from the CMP. If the expected CMP is not active on the page or Tealium iQ has not been consented, Tealium iQ will not run and no tags will be fired.</p>
-<p>If no consent decision is found when Tealium iQ loads, Tealium iQ consent integration polls until one is found.</p>
-<p>Until a consent decision is received from the CMP, all events are queued to be processed once a decision is found. If no consent decision is received, no events are processed.</p>
-<p>If a consent decision ( <code>implicit</code> or <code>explicit</code> ) is available from the CMP, the following takes place:</p>
-<ul>
-<li>Tealium iQ consent integration first checks if Tealium iQ is allowed to run (since it sets cookies).</li>
-<li>If Tealium iQ is allowed to run, it checks if each tag can run</li>
-<li>If the tags can run, it then triggers the tags according to consent for all queued events.</li>
-</ul>
-<p>If the consent decision is implicit, the events go into a different queue after implicitly consented tags are fired so that they can be reprocessed for newly consented tags when the user makes an explicit decision. The solution searches for an explicit decision until one is found.</p>
-<p>If the consent decision is explicit, all queues are emptied and polling stops. Tags fired on an implicit consent are not re-fired when the explicit consent decision is processed unless tag refire is enabled and there are new consent purposes to process.</p>
-<p>When a user reopens the interactive CMP layer and makes a new explicit consent decision, previous events are not reprocessed with the new consent decision.</p>
-<p>For new events processed after Tealium iQ is first loaded, the new consent decision is retrieved from the CMP as each event is processed by Tealium iQ to ensure that the CMP is treated as a universal source of truth.</p>
-<h3 id="opt-out-model">Opt-out model</h3>
-<figure><a class="slb" href="https://raw.githubusercontent.com/jaquith/cmp-integrations/main/docs-src/static/tiq-cmp-integration-flow-opt-out.png"><img src="https://raw.githubusercontent.com/jaquith/cmp-integrations/main/docs-src/static/tiq-cmp-integration-flow-opt-out.png"/>
-    </a>
-</figure>
-<p>The opt-out model is similar to the Opt-in model, but explicit decision is not polled as it is more restrictive than the default setting (CCPA/CPRA style) in the Opt-out model.</p>
 
 </div>
 
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/iq-tag-management/consent-integrations/supported-vendors/"
+  <a href="/iq-tag-management/consent-integrations/consent-integrations-decision-flow/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Supported Vendor Integrations</div>
+      <div>Consent Integrations decision flow</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Supported Vendor Integrations"</title>
+      <title>"Consent Integrations decision flow"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -938,7 +922,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 12, 2023 
+          <p>This page was last updated:  November 22, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -964,8 +948,6 @@ No</button>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#access-the-consent-decision-from-extensions">Access the consent decision from extensions</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#using-the-javascript-console">Using the JavaScript console</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#server-side-attributes---using-collect-with-consent-integrations">Server-side attributes - using Collect with Consent Integrations</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#opt-in-model">Opt-in model</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#opt-out-model">Opt-out model</a></li>
               </nav>
   </aside></nav>
 
@@ -1143,6 +1125,8 @@ No</button>
           Release Notes
         </a>
     </li>
+  
+  
   
   
   

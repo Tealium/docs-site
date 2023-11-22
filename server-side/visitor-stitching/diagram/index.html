@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side",
-    reading_time  : "1",
+    reading_time  : "2",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -561,6 +561,8 @@ var utag_data = {
       </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/connectors/cookie-matching/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".">Persistent cookie matching</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side/connectors/release-notes/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".release-notes--connectors">Release Notes</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".audiences">Audiences</a>
@@ -872,16 +874,63 @@ var utag_data = {
 
   
     <p class="f4 fw3 lh-copy">
-      This article provides an example of visitor stitching.
+      This article provides an example of the visitor stitching process that occurs when a visitor uses different devices during a series of visits to a website.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>The following diagram shows how visitor stitching works when a user visits a website from three different devices. As each visitor session is identified to be the same user based on email address, a new visitor profile is created in AudienceStream to combine the previous known profiles. This is the visitor stitching process in action.</p>
-<figure><a class="slb" href="/images/server-side/aboutvisitorstitchingexample.jpeg"><img src="/images/server-side/aboutvisitorstitchingexample.jpeg"/>
-    </a>
-</figure>
+  <h2 id="first-visit">First visit</h2>
+<p>A new visitor visits your website from their laptop.</p>
+<ol>
+<li>An anonymous ID is assigned to the visitor and profile A is created. The anonymous ID allows one profile to be maintained for multiple visits.</li>
+<li>When the visitor authenticates with a never before seen email address, <a href="mailto:user@example.com">user@example.com</a>, the email address is assigned to a user identifier.</li>
+<li>A visitor ID attribute in profile A is enriched with the value of the user identifier (the email address).
+<img src="/images/server-side/visitor-stitching-example-first-visit.png"  width="473px" height="120px"/></li>
+</ol>
+<h2 id="second-visit">Second visit</h2>
+<p>The next day, the same person visits your website from their tablet.</p>
+<ol>
+<li>An anonymous ID is assigned to the visitor and profile B is created.</li>
+<li>The visitor logs in to the website using the same email address stored in profile A, <a href="mailto:user@example.com">user@example.com</a>.
+<img src="/images/server-side/visitor-stitching-example-second-visit.png"  width="400px" height="111px"/><br>
+A visitor ID attribute in profile B is set to the email address, <a href="mailto:user@example.com">user@example.com</a>.</li>
+<li>AudienceStream performs a visitor ID lookup on the email address. Profile A and profile B have a visitor ID attribute set to the same email address and the profiles are determined to be associated.</li>
+<li>AudienceStream stitches profiles A and B together and creates profile C.<br>
+<img src="/images/server-side/visitor-stitching-profile-c-created.png"  width="356px" height="206px"/>
+<ul>
+<li>Profile C is now used for both the desktop and tablet and contains the following:
+<ul>
+<li>All the events and historical data from profiles A and B.</li>
+<li>A <code>replaces</code> array that contains links to profile A and profile B.</li>
+</ul>
+</li>
+<li>The <code>replaced by</code> attribute in profiles A and B contains a link to profile C.</li>
+<li>Lookup can still be performed on the anonymous IDs in profiles A and B.</li>
+</ul>
+</li>
+</ol>
+<h2 id="third-visit">Third visit</h2>
+<p>A few days later, a nurture campaign sends an email to <code>user@example.com</code>.</p>
+<ol>
+<li>The user opens the email on their phone and taps the link to your website.</li>
+<li>The email address is passed in a query string parameter in the URL, allowing AudienceStream to identify the user upon page load.</li>
+<li>Profile D is created with a user identifier set to the email address.<br>
+<img src="/images/server-side/visitor-stitching-third-visit-profile-d-created.png"  width="359px" height="112px"/><br>
+The email address in profile D matches the email address in the visitor ID attribute in profile C and the two profiles are stitched together, creating profile E.
+<img src="/images/server-side/visitor-stitching-profile-e-created.png"  width="356px" height="206px"/>
+<ul>
+<li>Profile E is now used for the desktop, tablet, and phone and contains the following:
+<ul>
+<li>All the events and historical data from profiles C and D.</li>
+<li>A <code>replaces</code> array that contains links to profile C and profile D.</li>
+</ul>
+</li>
+<li>The <code>replaced by</code> attribute in profiles C and D contains a link to profile E.</li>
+<li>Lookup can still be performed on the anonymous IDs in profiles A, B, C, and D.</li>
+</ul>
+</li>
+</ol>
 
 </div>
 
@@ -942,7 +991,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  November 15, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -954,7 +1003,13 @@ No</button>
 
 
 
-  </nav>
+  <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">On this page</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#first-visit">First visit</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#second-visit">Second visit</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#third-visit">Third visit</a></li>
+              </nav>
+  </aside></nav>
 
 </div>
 </div>
@@ -1130,6 +1185,8 @@ No</button>
           Release Notes
         </a>
     </li>
+  
+  
   
   
   
