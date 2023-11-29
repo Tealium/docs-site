@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "iq-tag-management",
-    reading_time  : "9",
+    reading_time  : "5",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -624,11 +624,15 @@ var utag_data = {
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-integrations/consent-integrations-decision-flow/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".consent-integrations-decision-flow">Consent Integrations decision flow</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/consent-integrations/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".manage-consent-integrations">Manage Consent Integrations and purpose groups</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-integrations/supported-vendors/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".vendor-specific-configuration">Supported Vendor Integrations</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-integrations/validate-and-debug/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".validate-and-debug-consent-integrations">Validate and debug</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-integrations/custom-cmp/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".custom-consent-management-platform">Custom CMP Integrations</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/consent-integrations/enforcement-conditions-conflict/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".enforcement-conditions-conflict">Handling conflicts in enforcement conditions</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/consent-integrations/release-notes/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".release-notes-consent-integrations">Release Notes</a>
       </li></ul>
@@ -730,10 +734,10 @@ var utag_data = {
 <p>The following terms are related to the consent integrations framework:</p>
 <ul>
 <li><strong>Purpose</strong> - A specific data use purpose to which your website users can consent (or withhold consent).</li>
-<li><strong>Purpose Group</strong> - A list of purposes. A representation of an enforcement policy in the form of a group of consent purposes to which tags are assigned.</li>
+<li><strong>Purpose group</strong> - A list of purposes. A representation of an enforcement policy in the form of a group of consent purposes to which tags are assigned.</li>
 <li><strong>Exemption</strong> - A case where no enforcement is necessary and no tags need to be blocked based on consent decisions. Enforcement exemptions differ from the behavior when no consent integration enforcement rules apply. Unless there&rsquo;s an explicit exemption, or matching consent integration and the appropriate consent decision, no tags are allowed to fire.</li>
-<li><strong>Enforcement Rule</strong> - Rules that determine when to enforce a consent integration or exemption.</li>
-<li><strong>Consent Decision</strong> - An array of purposes that have been consented to. Consent Decision is determined with a <code>type</code> attribute and is either <code>implicit</code> or <code>explicit</code>, depending on whether the user has made an active decision (<code>implicit</code>) or not (<code>explicit</code>).</li>
+<li><strong>Enforcement rule</strong> - Rules that determine when to enforce a consent integration or exemption.</li>
+<li><strong>Consent decision</strong> - An array of purposes that have been consented to. Consent Decision is determined with a <code>type</code> attribute and is either <code>implicit</code> or <code>explicit</code>, depending on whether the user has made an active decision (<code>implicit</code>) or not (<code>explicit</code>).</li>
 <li><strong>Implicit decision</strong> - A decision inferred from a user&rsquo;s behavior. By visiting a site, a user consents to the necessary tags as described in the site’s privacy policy. A user can object to the sale of their data, but by default this is enabled (there is an implicit &lsquo;it&rsquo;s OK, to share/sell my data&rsquo; decision).</li>
 <li><strong>Explicit decision</strong> - A clear and precise consent decision by a user about what tracking they consent to.</li>
 <li><strong>Integration</strong> A set of features and configurations (pre-loaded or custom) that capture a consent decision from a specified CMP. An integration is associated with a purpose group.</li>
@@ -745,106 +749,6 @@ var utag_data = {
 <p>You can set up an integration with a supported CMP in the Tealium iQ dashboard, or create a custom integration by editing the <strong>Custom template</strong>.</p>
 <h2 id="supported-integrations">Supported integrations</h2>
 <p>See <a href="/iq-tag-management/consent-integrations/supported-vendors/">Supported Vendor Integrations</a> for a full list of currently supported integrations.</p>
-<h2 id="manage-integrations">Manage integrations</h2>
-<p>In the Tealium iQ dashboard, the Consent Integrations screen provides the ability to add and configure consent integrations.</p>
-<h3 id="add-an-integration">Add an integration</h3>
-<p>Follow the steps below to add an integration:</p>
-<ol>
-<li>Go to <strong>iQ Tag Management &gt; Consent Integrations.</strong></li>
-<li>Click <strong>+ Add Integration</strong> to open the integration configuration modals.</li>
-</ol>
-<h4 id="step-1-configure-integrations">Step 1: Configure integrations</h4>
-<ol>
-<li>In the <strong>Configure Integrations</strong> tab, enter a descriptive name for your integration.</li>
-<li>Select a vendor from the <strong>Vendor</strong> list. Depending on your vendor selection, additional fields may be required, usually an identifier for the CMP configuration you want to integrate with.</li>
-<li>Enter a description.</li>
-<li>Click <strong>Next</strong>.</li>
-</ol>
-<h4 id="step-2-enforcement-rules">Step 2: Enforcement Rules</h4>
-<p>Use the dropdown list to create a new rule, or select an existing rule. This rule determines when to enforce a consent integration.</p>
-<p>To create a new rule:</p>
-<ol>
-<li>Click <strong>+ New Rule</strong>.</li>
-<li>In the Add Rule dialog, add a <strong>Title</strong> for the load rule, and optional <strong>Notes</strong> if needed.</li>
-<li>Use the drop-down lists to select a <strong>Variable</strong> and an <strong>Operator</strong>, then enter a <strong>Value</strong>.</li>
-<li>To add another condition using AND logic, do one of the following:
-<ol>
-<li>Click <strong>+</strong> next to the default conditional statement.</li>
-<li>To create a copy of a conditional statement using AND logic by clicking the row menu and selecting <strong>Duplicate Row</strong>.<br>
-The duplicate conditional statement can be edited as needed.</li>
-</ol>
-</li>
-<li>To add another condition using OR logic, do one of the following:
-<ol>
-<li>Click <strong>+OR</strong>.</li>
-<li>Create a copy of a condition using OR logic by clicking the condition menu and selecting <strong>Duplicate</strong>.  The duplicate condition can be edited to create a new condition.</li>
-</ol>
-</li>
-<li>To remove a conditional statement from a condition, click the row menu and select <strong>Remove Row</strong>.</li>
-<li>Click <strong>Done.</strong></li>
-</ol>
-<h4 id="step-3-publish-locations">Step 3: Publish locations</h4>
-<ol>
-<li>Select the environments where you want this integration&rsquo;s enforcement to apply.</li>
-<li>Click <strong>Next</strong>.</li>
-</ol>
-<h4 id="step-4-purpose-group">Step 4: Purpose group</h4>
-<ol>
-<li>Select a purpose group for your integration from the <strong>Purpose Group</strong> drop down list.
-If you opted to configure your integration with the default vendor categories in step 4, complete the following steps and continue with step 9:
-<ol>
-<li>Select <strong>&lt;Vendor&gt; Default</strong> from the list.</li>
-</ol>
-</li>
-<li>If you did not opt to configure your integration with the default vendor categories in step 4:
-<ol>
-<li>Select <strong>+ New Purpose Group</strong> from the drop down list.</li>
-<li>In the <strong>New Purpose Group</strong> modal, click <strong>Create Purpose Group</strong>. This redirects you to the Purpose Group wizard. Your progress in the Add Integration wizard is saved and you will be redirected back after configuring your purpose group.</li>
-<li>In the <strong>Purpose Group</strong> wizard, complete steps 4 to 13 of the <a href="#add-a-purpose-group">Add a Purpose Group</a> Section.</li>
-<li>In the <strong>Add Integration</strong> wizard, select your purpose group from the <strong>Purpose Group</strong> drop down list.</li>
-</ol>
-</li>
-<li>Click <strong>Save</strong> to create your new Integration.</li>
-</ol>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>If you are using OneTrust default vendor categories for the first time, after creating your integration, follow the steps in <a href="#edit-a-purpose-group">edit purpose group</a> to assign tags to the <strong>Default</strong> purpose group.</p>
-<h2 id="manage-purpose-groups">Manage purpose groups</h2>
-<p>To manage your purpose groups, navigate to <strong>iQ Tag Management &gt; Consent Integrations &gt; Purpose Groups</strong> tab.</p>
-<h3 id="add-a-purpose-group">Add a purpose group</h3>
-<p>Follow the steps below to add a purpose group:</p>
-<ol>
-<li>Click <strong>+ Add Purpose Group</strong> to open the purpose group configuration modals.</li>
-</ol>
-<h4 id="step-1-purpose-group">Step 1: Purpose group</h4>
-<ol>
-<li>Enter a name and description.</li>
-<li>Click <strong>Next</strong>.</li>
-</ol>
-<h4 id="step-2-purposes">Step 2: Purposes</h4>
-<ol>
-<li>Enter purpose name and description. Each purpose name must match the name of a consent category for the vendor you are integrating with.</li>
-<li>You can create multiple purposes in a purpose group. To add more purposes to your purpose group, click <strong>+ Add Purpose</strong></li>
-<li>Click <strong>Next</strong>.</li>
-</ol>
-<h4 id="step-3-tealium-iq-purpose">Step 3: Tealium iQ purpose</h4>
-<ol>
-<li>Select a purpose to map to Tealium iQ from the <strong>Tealium Tag Purpose</strong>. Tealium iQ controls all tag operations and must be mapped to a purpose for any tags to function.</li>
-<li>Click <strong>Next</strong>.</li>
-</ol>
-<h4 id="step-4-map-tags">Step 4: Map tags</h4>
-<p>All tags must be mapped to a purpose before they can be triggered.</p>
-<ol>
-<li>To map your tags to the newly created purposes, for each tag, click <strong>Assign/Map</strong> and select the purpose you want to map that tag with from the drop down list.</li>
-<li>To enable or disable tag refire for each tag, toggle the <strong>OFF/ON</strong> button under the <strong>Tag Refire</strong> column. For more information about tag refire, see the Tag refire section.</li>
-<li>Click <strong>Save</strong> to create your new purpose group.</li>
-</ol>
-<h3 id="edit-a-purpose-group">Edit a purpose group</h3>
-<p>Follow the steps below to edit a purpose group:</p>
-<ol>
-<li>Click the options icon beside the Purpose Group you want to edit.</li>
-<li>Click <strong>Edit</strong> to open the purpose group configuration.</li>
-<li>Click the tab for the section you want to edit. To map tags to a new default purpose group, click <strong>Map Tags</strong>.</li>
-<li>Click <strong>Save</strong> to save your changes.</li>
-</ol>
 <h2 id="tag-refire">Tag refire</h2>
 <p>Each tag has a <strong>Tag Refire</strong> switch in the <strong>Map Tags</strong> screen:</p>
 <figure><a class="slb" href="/images/early-access/map-tags.png"><img src="/images/early-access/map-tags.png"
@@ -855,21 +759,6 @@ If you opted to configure your integration with the default vendor categories in
 <p>If you enable this option, the tag can be triggered up to twice for each user action (once with the implicit decision and once with the explicit decision). Note that no tags are triggered if the mapped purposes are not consented to.</p>
 <p>Most tags don&rsquo;t need to be triggered again if they have consent in each of these cases. Triggering tags again may result in double tracking in some cases, which should be avoided.</p>
 <p>Customer Data Hub customers (especially EventStream customers) can benefit from refiring the Collect tag and using the <code>purposes_with_consent_unprocessed</code>  attribute for the server-side activation logic to ensure that no server-side activation is refired for the same event. Using the <code>purposes_with_consent_unprocessed</code> attribute allows server-side activations to be triggered as quickly as possible without triggering twice for the same event.</p>
-<h2 id="access-the-consent-decision-within-tealium-iq">Access the consent decision within Tealium iQ</h2>
-<p>​Consent decisions (<code>ConsentDecision</code>) are provided in the <code>b object</code> for each event in the following attributes, which can be used in tags and are automatically sent by the <a href="/client-side-tags/tealium-collect-tag/">Collect tag</a>, but are not available for extensions.</p>
-<ul>
-<li><code>tci.consent_type</code>  - The ConsentDecision&rsquo;s <code>type</code> attribute ( <code>implicit</code> or <code>explicit</code> ).</li>
-<li><code>tci.purposes_with_consent_all</code>  - The full <code>ConsentDecision</code> array, all permitted purposes.</li>
-<li><code>tci.purposes_with_consent_processed</code> - The array of processed consented purposes.</li>
-<li><code>tci.purposes_with_consent_unprocessed</code> - The array of unprocessed consented purposes.</li>
-</ul>
-<h3 id="access-the-consent-decision-from-extensions">Access the consent decision from extensions</h3>
-<p><code>tealiumCmpIntegration.GetCurrentConsentDecision()</code> returns the current consent decision and can be used to access consent decisions from extensions.</p>
-<p>The following command adds the current consent decision to the <code>b object</code> for all subsequent extensions and passes it to tags along with the <code>tci.*</code> attributes:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">currentConsentDecision</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">getCurrentConsentDecision</span>()
-</span></span></code></pre></div><h2 id="using-the-javascript-console">Using the JavaScript console</h2>
-<p>When active, you can interact with a consent integration in the JavaScript console on pages where utag.js (Tealium iQ) is implemented. Using the JavaScript console allows you to get the current consent decision that is retrieved from the CMP on every event. The consent decision is never cached by Tealium to ensure it is always up to date.</p>
-<p>For more details, see the related <a href="/iq-tag-management/consent-integrations/validate-and-debug/">debugging documentation</a>.</p>
 <h2 id="server-side-attributes---using-collect-with-consent-integrations">Server-side attributes - using Collect with Consent Integrations</h2>
 <p>Tealium Collect, like all other tags, must be mapped to a consented purpose. However, the <code>refiringAllowed</code> option allows tags to be refired on new decisions. This process indicates that the tag is being used for a variety of server-side purposes, and available server-side filters and logic are used to ensure that the signal is only processed appropriately while allowing it to refire.</p>
 <p>Depending on which server-side tools you use, the Collect tag is triggered with the following event-level attributes for each event:</p>
@@ -877,6 +766,21 @@ If you opted to configure your integration with the default vendor categories in
 <li><code>tci.purposes_with_consent_unprocessed</code> (with refiring)</li>
 <li><code>tci.purposes_with_consent_all</code> (without refiring)</li>
 </ul>
+<h2 id="accessing-the-consent-decision-within-tealium-iq">Accessing the consent decision within Tealium iQ</h2>
+<p>​Consent decisions (<code>ConsentDecision</code>) are provided in the <code>b object</code> for each event in the following attributes, which can be used in tags and are automatically sent by the <a href="/client-side-tags/tealium-collect-tag/">Collect tag</a>, but are not available for extensions.</p>
+<ul>
+<li><code>tci.consent_type</code>  - The ConsentDecision&rsquo;s <code>type</code> attribute ( <code>implicit</code> or <code>explicit</code> ).</li>
+<li><code>tci.purposes_with_consent_all</code>  - The full <code>ConsentDecision</code> array, all permitted purposes.</li>
+<li><code>tci.purposes_with_consent_processed</code> - The array of processed consented purposes.</li>
+<li><code>tci.purposes_with_consent_unprocessed</code> - The array of unprocessed consented purposes.</li>
+</ul>
+<h3 id="accessing-the-consent-decision-from-extensions">Accessing the consent decision from extensions</h3>
+<p><code>tealiumCmpIntegration.GetCurrentConsentDecision()</code> returns the current consent decision and can be used to access consent decisions from extensions.</p>
+<p>The following command adds the current consent decision to the <code>b object</code> for all subsequent extensions and passes it to tags along with the <code>tci.*</code> attributes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">currentConsentDecision</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">getCurrentConsentDecision</span>()
+</span></span></code></pre></div><h2 id="using-the-javascript-console">Using the JavaScript console</h2>
+<p>When active, you can interact with a consent integration in the JavaScript console on pages where utag.js (Tealium iQ) is implemented. Using the JavaScript console allows you to get the current consent decision that is retrieved from the CMP on every event. The consent decision is never cached by Tealium to ensure it is always up to date.</p>
+<p>For more details, see the related <a href="/iq-tag-management/consent-integrations/validate-and-debug/">debugging documentation</a>.</p>
 
 </div>
 
@@ -922,7 +826,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 22, 2023 
+          <p>This page was last updated:  November 29, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -938,16 +842,11 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#supported-integrations">Supported integrations</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#manage-integrations">Manage integrations</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-an-integration">Add an integration</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#manage-purpose-groups">Manage purpose groups</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-a-purpose-group">Add a purpose group</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#edit-a-purpose-group">Edit a purpose group</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-refire">Tag refire</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#access-the-consent-decision-within-tealium-iq">Access the consent decision within Tealium iQ</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#access-the-consent-decision-from-extensions">Access the consent decision from extensions</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#using-the-javascript-console">Using the JavaScript console</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-refire">Tag refire</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#server-side-attributes---using-collect-with-consent-integrations">Server-side attributes - using Collect with Consent Integrations</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#accessing-the-consent-decision-within-tealium-iq">Accessing the consent decision within Tealium iQ</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#accessing-the-consent-decision-from-extensions">Accessing the consent decision from extensions</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#using-the-javascript-console">Using the JavaScript console</a></li>
               </nav>
   </aside></nav>
 

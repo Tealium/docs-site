@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "early-access",
-    reading_time  : "5",
+    reading_time  : "6",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -244,8 +244,6 @@ var utag_data = {
         <a href="/early-access/api-v3/iq-profiles/iq-load-rules-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-load-rules-api">iQ Load Rules API</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/api-v3/iq-profiles/iq-tags-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-tags-api">iQ Tags API</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/early-access/api-v3/iq-profiles/iq-tag-templates-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-tag-template-api">iQ Tag Template API</a>
       </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/api-v3/tealium-collect-http-api-v3-early-access/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-collect-http-api-v3-early-access">Tealium Collect HTTP API</a>
@@ -399,7 +397,7 @@ var utag_data = {
 <td><code>value.scope</code></td>
 <td>String</td>
 <td>Optional</td>
-<td>The name of the extension scope or, for tag-scoped extensions, a comma-separated list of tag IDs.<br> <code>utag Sync</code><br> <code>Pre Loader</code><br> <code>Before Load Rules</code><br> <code>After Load Rules</code><br> <code>DOM Ready</code><br> <code>Tag Scoped Extensions</code><br> <code>After Tag Extensions</code></td>
+<td>The name of the extension scope or, for tag-scoped extensions, a comma-separated list of tag IDs.<br> <code>Before Load Rules</code><br> <code>After Load Rules</code><br> <code>DOM Ready</code><br> <code>Tag Scoped Extensions</code><br> <code>After Tag Extensions</code></td>
 </tr>
 <tr>
 <td><code>value.occurrence</code></td>
@@ -420,6 +418,12 @@ var utag_data = {
 <td>An object of environments to publish the component to:<br> <code>{   &quot;prod&quot; : true|false,   &quot;qa&quot; : true|false,   &quot;dev&quot; : true|false }</code> Default: All environments set to <code>true</code>.</td>
 </tr>
 <tr>
+<td><code>value.conditions</code></td>
+<td>Array[object]</td>
+<td>Optional</td>
+<td>The conditions object for the extension that includes the variable, operator, and value. If you do not include conditions in your PATCH request, but they exist in the profile, the request will be seen as a <code>remove</code> action.</td>
+</tr>
+<tr>
 <td><code>value.configuration</code></td>
 <td>Array[object]</td>
 <td>Required</td>
@@ -438,9 +442,9 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;path&#34;</span>:<span style="color:#e6db74">&#34;/extensions&#34;</span>,
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;value&#34;</span>:{
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;object&#34;</span>: <span style="color:#e6db74">&#34;extension&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Lowercase extension&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;My extension&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;notes&#34;</span>: <span style="color:#e6db74">&#34;extension notes here&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;Lower-Casing&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;Javascript Code&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;scope&#34;</span>: <span style="color:#e6db74">&#34;After Load Rules&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;occurence&#34;</span>: <span style="color:#e6db74">&#34;Run Always&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;active&#34;</span>,
@@ -449,12 +453,19 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;dev&#34;</span>: <span style="color:#66d9ef">true</span>,
 </span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;prod&#34;</span>: <span style="color:#66d9ef">true</span>
 </span></span><span style="display:flex;"><span>        },
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;configuration&#34;</span>:[
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;conditions&#34;</span>: [
+</span></span><span style="display:flex;"><span>          [
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;va.badges.30&#34;</span>,
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;operator&#34;</span>: <span style="color:#e6db74">&#34;is_badge_assigned&#34;</span>,
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;value&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>          ]
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;configuration&#34;</span>: [
 </span></span><span style="display:flex;"><span>          {
-</span></span><span style="display:flex;"><span>           <span style="color:#f92672">&#34;all&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>           <span style="color:#f92672">&#34;lower_case_arrays&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;constructor&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;initialize&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;code&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;value&#34;</span>: <span style="color:#e6db74">&#34;b.page_name ||= \&#34;Generic Page\&#34;;&#34;</span>
 </span></span><span style="display:flex;"><span>          }
 </span></span><span style="display:flex;"><span>        ]
 </span></span><span style="display:flex;"><span>      }
@@ -653,7 +664,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 13, 2023 
+          <p>This page was last updated:  November 22, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

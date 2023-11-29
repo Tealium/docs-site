@@ -244,8 +244,6 @@ var utag_data = {
         <a href="/early-access/api-v3/iq-profiles/iq-load-rules-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-load-rules-api">iQ Load Rules API</a>
       </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/api-v3/iq-profiles/iq-tags-api/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".early-access-iq-tags-api">iQ Tags API</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/early-access/api-v3/iq-profiles/iq-tag-templates-api/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".early-access-iq-tag-template-api">iQ Tag Template API</a>
       </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/early-access/api-v3/tealium-collect-http-api-v3-early-access/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".tealium-collect-http-api-v3-early-access">Tealium Collect HTTP API</a>
@@ -385,7 +383,7 @@ var utag_data = {
 <tr>
 <td><code>value.status</code></td>
 <td>String</td>
-<td>Required</td>
+<td>Optional</td>
 <td>The on/off status: <code>active</code> or <code>inactive</code>.</td>
 </tr>
 <tr>
@@ -409,13 +407,13 @@ var utag_data = {
 <tr>
 <td><code>value.tagConfiguration</code></td>
 <td>Map &lt;String, Object&gt;</td>
-<td>Required</td>
+<td>Optional</td>
 <td>A String and Object Map of tag configurations made available by the vendor. Configurations are specific to each tag. For more information, see the documentation for your tag.</td>
 </tr>
 <tr>
 <td><code>value.advancedConfiguration</code></td>
 <td>Object</td>
-<td>Required</td>
+<td>Optional</td>
 <td>A set of advanced configurations corresponding to the tag configuration settings. <br><code>advConfigBundle</code> — <strong>True</strong> or <strong>False</strong><br> <code>advConfigLoadType</code> — <strong>True</strong> or <strong>False</strong><br> <code>advConfigOptOut</code> — <strong>True</strong><br> <code>advConfigSend</code>— <strong>True</strong> or <strong>False</strong> <br> <code>advConfigSrc</code> — Text field<br> <code>tagTiming</code> — <strong>DOM Ready</strong> or <strong>Prioritized</strong></td>
 </tr>
 <tr>
@@ -428,7 +426,7 @@ var utag_data = {
 <td><code>value.dataMappings</code></td>
 <td>Map &lt;String, String&gt;</td>
 <td>Optional</td>
-<td>The Tealium IQ variable and its corresponding mapped destination.</td>
+<td>The Tealium IQ variable and its corresponding mapped destination. You can verify the specific format for the mapped variable triggers in the <strong>Data Mappings</strong> screen in your tag configuration.</td>
 </tr>
 </tbody>
 </table>
@@ -484,9 +482,19 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>        },
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;dataMappings&#34;</span>: [
 </span></span><span style="display:flex;"><span>          {
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;page_name&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;mappings&#34;</span>: [<span style="color:#e6db74">&#34;true:present_offer&#34;</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;va&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;badges.30&#34;</span>
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;mappings&#34;</span>: [<span style="color:#e6db74">&#34;event.start_date&#34;</span>],
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;udo&#34;</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;mappings&#34;</span>: [<span style="color:#e6db74">&#34;config.page_title&#34;</span>]
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;dates.23&#34;</span>
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;mappings&#34;</span>: [<span style="color:#e6db74">&#34;config.page_title&#34;</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;udo&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;variable&#34;</span>: <span style="color:#e6db74">&#34;page_name&#34;</span>
 </span></span><span style="display:flex;"><span>          }
 </span></span><span style="display:flex;"><span>        ],
 </span></span><span style="display:flex;"><span>      }
@@ -643,17 +651,11 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;notes&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;operationList&#34;</span>: [
 </span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;versionTitle&#34;</span>: <span style="color:#e6db74">&#34;Version 2022.03.22.2108&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;notes&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;operationList&#34;</span>: [
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;op&#34;</span>: <span style="color:#e6db74">&#34;remove&#34;</span>,
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;/tags/230&#34;</span>,
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;value&#34;</span>:{
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;object&#34;</span>:<span style="color:#e6db74">&#34;tag&#34;</span>
-</span></span><span style="display:flex;"><span>          }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;op&#34;</span>: <span style="color:#e6db74">&#34;remove&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;/tags/230&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;value&#34;</span>:{
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;object&#34;</span>:<span style="color:#e6db74">&#34;tag&#34;</span>
+</span></span><span style="display:flex;"><span>      }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  ]
 </span></span><span style="display:flex;"><span>}
@@ -688,22 +690,7 @@ var utag_data = {
 
 </div>
 
-<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
-
-  
-  <a href="/early-access/api-v3/iq-profiles/iq-tag-templates-api/"
-    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
-    <section class="tl pr3">
-      <div>iQ Tag Template API</div>
-    </section>
-    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"iQ Tag Template API"</title>
-      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-    </svg>
-  </a>
-  
-  
-</div><div class="di mr3">
+<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="di mr3">
   
   
   <a href="/early-access/api-v3/iq-profiles/iq-load-rules-api/"
@@ -745,7 +732,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 13, 2023 
+          <p>This page was last updated:  November 22, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
