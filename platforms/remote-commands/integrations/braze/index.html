@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "platforms",
-    reading_time  : "10",
+    reading_time  : "12",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -593,7 +593,9 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;enable_geofences&#34;</span>: <span style="color:#66d9ef">true</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;enable_automatic_geofences&#34;</span>: <span style="color:#66d9ef">true</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;enable_automatic_location&#34;</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;push_story_identifier&#34;</span>: <span style="color:#e6db74">&#34;YOUR_IDENTIFIER&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;push_story_identifier&#34;</span>: <span style="color:#e6db74">&#34;YOUR_IDENTIFIER&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;use_uuid_as_device_id&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;forward_universal_links&#34;</span>: <span style="color:#66d9ef">true</span>
 </span></span><span style="display:flex;"><span>    },
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;mappings&#34;</span>: {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;customer_id&#34;</span>: <span style="color:#e6db74">&#34;user_id&#34;</span>,
@@ -830,6 +832,16 @@ var utag_data = {
 <td><code>trigger_interval_seconds</code></td>
 <td><code>Int</code> (seconds)</td>
 <td>Override the minimum interval between in-app message triggers (default is <code>30</code> seconds).</td>
+</tr>
+<tr>
+<td><code>use_uuid_as_device_id</code></td>
+<td><code>Bool</code></td>
+<td>(iOS) Determines if a randomly generated UUID should be used as the device ID (default is <code>true</code>).</td>
+</tr>
+<tr>
+<td><code>forward_universal_links</code></td>
+<td><code>Bool</code> (seconds)</td>
+<td>Specifies if the SDK should automatically recognize and forward universal links to the system methods (default is <code>false</code>).</td>
 </tr>
 </tbody>
 </table>
@@ -1611,6 +1623,36 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
+<h2 id="accessing-the-braze-instance-ios">Accessing the Braze instance (iOS)</h2>
+<p>The remote command offers a convenient way to map some of the functionality offered by Braze into your app, such as logging of events and purchases.
+However, some Braze features, such as content cards, feature flags, or notifications, have to be integrated into your app using the Braze instance.</p>
+<p>To access the Braze instance directly, use the <code>onReady</code> method. The <code>onReady</code> method returns the Braze instance in the completion block once it&rsquo;s properly configured.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>brazeRemoteCommand.onReady { braze <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// use the Braze instance here</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Once you have a reference to the Braze instance, use it as described in the Braze documentation.</p>
+<h3 id="automatic-push-integration">Automatic push integration</h3>
+<p>The latest Braze version supports a way to automate the processing of remote notifications. For more information, see <a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/swift/push_notifications/integration/#automatic-push-integration">Braze Developer Guide: Automatic push integration</a>.</p>
+<p>To use this feature the Braze instance must be initialized synchronously on the main thread in the <code>didFinishLaunchingWithOptions</code> method of the app delegate. This means you must configure the Braze instance directly instead of using our remote command configuration.</p>
+<p>To configure the Braze instance directly, use this code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">application</span>(<span style="color:#66d9ef">_</span> application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -&gt; Bool {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> brazeConfig = Braze.Configuration(apiKey: <span style="color:#e6db74">&#34;YOUR_API_KEY&#34;</span>, endpoint: <span style="color:#e6db74">&#34;YOUR_ENDPOINT&#34;</span>)
+</span></span><span style="display:flex;"><span>    brazeConfig.push.automation = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// add all your other configuration here</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> brazeInstanceWrapper = BrazeInstance()
+</span></span><span style="display:flex;"><span>    brazeInstanceWrapper.initializeBraze(brazeConfig: brazeConfig)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> brazeCommand = BrazeRemoteCommand(brazeInstance: brazeInstanceWrapper)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> tealiumConfig = TealiumConfig(...)
+</span></span><span style="display:flex;"><span>    tealiumConfig.remoteCommands = [brazeCommand]
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ... </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// complete tealium initialization</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="manual-push-integration">Manual push integration</h3>
+<p>To implement the manual push integration, keep the remote command configuration and enable the push integration directly by accessing the Braze instance.</p>
+<p>For more information, see <a href="https://www.braze.com/docs/developer_guide/platform_integration_guides/swift/push_notifications/integration/#manual-push-integration">Braze Developer Guide: Manual push integration</a>.</p>
 
 </div>
 
@@ -1671,7 +1713,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 14, 2023 
+          <p>This page was last updated:  November 29, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1701,6 +1743,9 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#purchase-tracking">Purchase Tracking</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#location-tracking">Location Tracking</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-privacy-consent-options">Data Privacy (Consent Options)</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#accessing-the-braze-instance-ios">Accessing the Braze instance (iOS)</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#automatic-push-integration">Automatic push integration</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#manual-push-integration">Manual push integration</a></li>
               </nav>
   </aside></nav>
 
