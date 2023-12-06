@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side",
-    reading_time  : "3",
+    reading_time  : "4",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -706,7 +706,7 @@ var utag_data = {
         <ul class="bl b--primary bw1 pl2 audiencedb-eventdb desktopmenu animated fadeIn list "><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/data-storage/audiencedb-eventdb/about/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".about-audiencedb-and-eventdb">About</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side/data-storage/audiencedb-eventdb/config-audiencedb-eventdb/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".enable-audiencedb-eventdb">Configure AudienceDB and EventDB</a>
+        <a href="/server-side/data-storage/audiencedb-eventdb/configure/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".enable-audiencedb-eventdb">Configure</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side/data-storage/audiencedb-eventdb/audiencedb-data-guide/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".audiencedb-data-guide">AudienceDB data guide</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -886,15 +886,19 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>To have EventDB and AudienceDB enabled for your account and profile, contact your account manager.</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>To have EventDB and AudienceDB enabled for your account and profile, contact your customer success manager.</p>
 <h2 id="how-it-works">How it works</h2>
 <p>AudienceDB and EventDB services store structured audience and event data in Amazon Redshift, a data warehouse based on PostgreSQL. You can query and analyze the data in Amazon Redshift using your preferred SQL client or Business Intelligence (BI) tool.</p>
-<h3 id="prerequisites">Prerequisites</h3>
-<p>When EventDB and AudienceDB are enabled, a database is created in Amazon Redshift to store your data. New data is stored in EventDB and AudienceDB within one hour after it reaches EventStore or AudienceStore.</p>
-<p>Each profile has its own database schema within the same Redshift instance, which means that each user has a their own username and password for each database schema (profile). The database schemas for AudienceDB and EventDB are created automatically when EventDB or AudienceDB are enabled for a user’s profile.</p>
-<p>After AudienceDB and EventDB have been enabled, you must select the attributes to be stored. For more information, see <a href="/server-side/data-storage/audiencedb-eventdb/config-audiencedb-eventdb/">Configure AudienceDB and EventDB</a>.</p>
+<p>EventDB uses EventStore as a data source, importing the data from the EventStore S3 bucket into the Amazon Redshift database provided by Tealium.</p>
+<p>AudienceStore is not a prerequisite to activate AudienceDB; these services operate independently. AudienceDB saves visitor profile data at the end of each visitor session.</p>
+<p>After AudienceDB and EventDB have been enabled, you must select the attributes to be stored. For more information, see <a href="/server-side/data-storage/audiencedb-eventdb/configure/">Configure AudienceDB and EventDB</a>.</p>
+<h3 id="database-schemas">Database schemas</h3>
+<p>When EventDB and AudienceDB are enabled, a database is created in Amazon Redshift to store your data. Each profile has its own database schema within the same Redshift instance, which means that each user has their own username and password for each database schema (profile). The database schemas for AudienceDB and EventDB are created automatically when EventDB or AudienceDB are enabled for a profile.</p>
 <h3 id="data-retention">Data retention</h3>
 <p>The data stored in EventDB and AudienceDB remains available in Amazon RedShift for the length of time stated in your contract, usually 90 days. Contact your account manager to review the terms of your contract that determine the length of time your data is stored.</p>
+<h4 id="changes-to-stored-eventdb-and-audiencedb-attributes">Changes to stored EventDB and AudienceDB attributes</h4>
+<p>If you remove an attribute that was previously added for EventDB, the attribute is no longer sent to EventDB and is also removed from EventDB. Changes to EventDB attributes have no effect on EventStore files.</p>
+<p>If you remove an attribute that was previously added for AudienceDB, the attribute is no longer sent to AudienceDB and is also removed from AudienceDB. Changes to AudienceDB attributes have no effect on AudienceStore files.</p>
 <h2 id="tables-views-and-normalized-views">Tables, views, and normalized views</h2>
 <p>The columns in the Redshift database tables are named according to the attribute type and the internal attribute ID. Views and normalized views of data contain the same data as tables, but have user friendly names that make it easier to write queries. The normalized view name is similar to the view name but with the attribute ID omitted from the table name. Table names and view names are created as follows:</p>
 <ul>
@@ -936,13 +940,13 @@ For example: <code>visitor - badge - fan</code></li>
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/server-side/data-storage/audiencedb-eventdb/config-audiencedb-eventdb/"
+  <a href="/server-side/data-storage/audiencedb-eventdb/configure/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Configure AudienceDB and EventDB</div>
+      <div>Configure</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Configure AudienceDB and EventDB"</title>
+      <title>"Configure"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -975,7 +979,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 10, 2023 
+          <p>This page was last updated:  December 5, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -990,7 +994,7 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#prerequisites">Prerequisites</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#database-schemas">Database schemas</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-retention">Data retention</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tables-views-and-normalized-views">Tables, views, and normalized views</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#audiencedb-tables">AudienceDB tables</a></li>
