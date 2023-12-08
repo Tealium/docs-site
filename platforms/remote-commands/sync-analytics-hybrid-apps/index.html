@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     
+    <title>How to sync analytics sessions in hybrid apps | Remote Commands | Tealium Docs</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+     <meta name="generator" content="Hugo 0.98.0" />
+
+      
+        <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+      
+
+    <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+
+  </head>
+  <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
+      
+        
+<script>
+var utag_data = {
+    site_section  : "platforms",
+    reading_time  : "9",
+    site_language : "en",
+    tealium_event : "page_view"
+}
+</script>
+
+<script>
+ (function(a,b,c,d){
+    a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+  })();
+</script>
+
+      
+
+    
+<nav class="w-100 sticky-t bg-primary-color-light bb b--light-gray dpn" role="navigation">
+
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
+
+    <div class="lh-solid ml0-ns mr0 mr4-l mv3 pl15 dib db-ns">
+      <a href="https://docs.tealium.com/"><img src="/images/icons/tealium-documentation-logo-color.svg" class="v-mid dib" width="186" height="31"></a>
+    </div>
+    
+    <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-ns">
+      
+        <li class="f5 dib mr3" role="menuitem">
+            
+          <a href="https://community.tealiumiq.com/t5/Discussions/ct-p/tealiumlearningcommunity" class="dim link mid-gray">
+          Forums
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 32 32" class="fill-current v-base" aria-label="External Link">
+<path d="M25.152 16.576v5.696q0 2.144-1.504 3.648t-3.648 1.504h-14.848q-2.144 0-3.648-1.504t-1.504-3.648v-14.848q0-2.112 1.504-3.616t3.648-1.536h12.576q0.224 0 0.384 0.16t0.16 0.416v1.152q0 0.256-0.16 0.416t-0.384 0.16h-12.576q-1.184 0-2.016 0.832t-0.864 2.016v14.848q0 1.184 0.864 2.016t2.016 0.864h14.848q1.184 0 2.016-0.864t0.832-2.016v-5.696q0-0.256 0.16-0.416t0.416-0.16h1.152q0.256 0 0.416 0.16t0.16 0.416zM32 1.152v9.12q0 0.48-0.352 0.8t-0.8 0.352-0.8-0.352l-3.136-3.136-11.648 11.648q-0.16 0.192-0.416 0.192t-0.384-0.192l-2.048-2.048q-0.192-0.16-0.192-0.384t0.192-0.416l11.648-11.648-3.136-3.136q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h9.12q0.48 0 0.8 0.352t0.352 0.8z"></path>
+</svg>
+</a>
+        </li></ul>
+
+    <ul class="list ma0 pa0 dn dib-ns">
+      <li class="f5 dib">
+         <i class="fa fa-globe" style="color: rgba(255, 255, 255, .6)" aria-hidden="true"></i>
+      </li>
+      <li class="f5 dib mr4"><a href="https://docs.tealium.co.jp/" class="dim link mid-gray">日本語</a>
+</li>
+    </ul>
+
+  </div>
+
+
+<div id="mainAppInner" class="padd-54 dpn">
+    <div id="leftFrame">
+        <div class="main-nav-container">
+            <div class="flex-1">
+                <ul id="navCategoryHome" class="menu-group as-main-navigation">
+                    <li class="js-main-nav-section" data-section="home">
+                        <a href="https://community.tealiumiq.com/" class="menu-list-item top-level tooltip-right" title="Tealium Learning Center">
+                          <span class="menu-large-icon">
+                              <span class="as-platform-image square-xxxs is-rounded bg-transparent">
+                                  <span class="inner-image UDH-icon">TLC</span>
+                              </span>
+                          </span>
+                          <span class="menu-context supportLinks_buttonTitle">Tealium Learning Center</span>
+                        </a>
+                          <span class="tooltiptext">Tealium Learning <br>Center</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a href="https://community.tealiumiq.com/t5/Forums/ct-p/tealiumlearningcommunity" class="menu-list-item top-level tooltip-right" title="Discussions">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-comments"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">Discussions</span>
+                        </a>
+                          <span class="tooltiptext">Discussions</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section active">
+                        <a href="https://docs.tealium.com/" class="menu-list-item top-level tooltip-right" title="Documentation">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-book"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">Documentation</span>
+                        </a>
+                          <span class="tooltiptext">Documentation</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section" data-section="kb">
+                        <a href="https://support.tealiumiq.com/en/support/solutions" class="menu-list-item top-level tooltip-right" title="Knowledge Base">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-head-side-brain"></i>
+                            </span>
+                            <span class="menu-context">Knowledge Base</span>
+                        </a>
+                          <span class="tooltiptext"> Knowledge Base </span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a href="https://university.tealium.com/" class="menu-list-item top-level tooltip-right" title="Tealium Education">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-graduation-cap"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">Education</span>
+                        </a>
+                          <span class="tooltiptext">Tealium Education</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a href="https://community.tealiumiq.com/t5/TLC-Blog/bg-p/TLC-Blog" class="menu-list-item top-level tooltip-right" title="TLC Blog">
+                            <span class="menu-large-icon">
+                                <i class="fal fa-newspaper"></i>
+                            </span>
+                            <span class="menu-context supportLinks_buttonTitle">TLC Blog</span>
+                        </a>
+                          <span class="tooltiptext">TLC Blog</span>
+                    </li>
+                    <li class="menu-divider"></li>
+                    <li class="js-main-nav-section">
+                        <a  href="https://support.tealiumiq.com" target="_blank" class="menu-list-item top-level tooltip-right" title="Tealium Support Desk">
+                          <span class="menu-large-icon">
+                            <i class="fal fa-life-ring"></i>
+                          </span>
+                          <span class="menu-context supportLinks_buttonTitle">Support Desk</span>
+                        </a>
+                          <span class="tooltiptext">Support Desk</span>
+                    </li>
+                </ul>
+            </div>
+            <ul class="menu-group as-main-navigation flex-0 bottom-align">
+              <li class="menu-divider"></li>
+              <li class="js-main-nav-section">
+                <a href="https://my.tealiumiq.com/" class="menu-list-item top-level tooltip-right" title="Tealium Customer Data Hub">
+                    <span class="menu-large-icon">
+                        <span class="as-platform-image square-xxxs is-rounded bg-transparent">
+                            <span class="inner-image UDH-icon">CDH</span>
+                        </span>
+                    </span>
+                    <span class="menu-context supportLinks_buttonTitle">Customer Data Hub</span>
+                </a>
+                          <span class="tooltiptext">Customer Data Hub</span>
+              </li>
+              <li class="menu-divider"></li>
+              <li class="js-toggle-leftframe">
+                <a href="#" class="menu-list-item top-level d-flex justify-content-end" title="Expand/Collapse">
+                    <span class="menu-large-icon d-flex align-items-center justify-content-center mr-0">
+                        <span class="as-platform-image square-xxxs is-rounded bg-transparent d-flex align-items-center justify-content-center">
+                            <i class="fa as-caret"></i>
+                        </span>
+                    </span>
+                </a>
+              </li>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+
+</nav>
+
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 pr4">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto vh-100 overflow-auto dn db-ns sticky-l pt3 pl125" style="width:280px;">
+<nav class="side-nav f6" role="navigation">
+  <ul class="list pa0 mt0 mb1">
+  
+    <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/platforms/" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>Platforms</a></li>
+  
+  </ul>
+  <ul class="list pa0"><li class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><span class="pb2">Remote Commands</span>
+        <ul class="remote-commands desktopmenu animated fadeIn list pl0 mt2"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/how-it-works/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-how-it-works">How It Works</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/custom-commands/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-custom-commands">Custom Commands</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/consent-management/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-consent-management">Consent Management</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/json-file/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-json-file">JSON File</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/vendor-integrations/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-vendor-integrations">Vendor Integrations</a>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  pl0 pr2  " data-target=".remote-commands-integrations">Integrations</a>
+        <ul class=" remote-commands-integrations desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/integrations/adjust/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-adjust">Adjust</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/integrations/airship/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-airship">Airship</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/integrations/appsflyer/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-appsflyer">AppsFlyer</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/integrations/branch/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-branch">Branch</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/integrations/braze/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-braze">Braze</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/integrations/contentsquare/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-contentsquare">Contentsquare</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/integrations/facebook/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-facebook">Facebook</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/integrations/firebase/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-firebase">Firebase</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/integrations/fullstory/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-fullstory">FullStory</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/integrations/kochava/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-kochava">Kochava</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/integrations/skadnetwork/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-skadnetwork">SKAdNetwork</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/integrations/usabilla/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".remote-commands-usabilla">Usabilla</a>
+      </li></ul>
+      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/platforms/remote-commands/sync-analytics-hybrid-apps/" class="db link ind2 pr2 pv2 bg-secondary primary-color" data-target=".remote-commands-sync-analytics">Sync sessions in hybrid apps</a>
+      </li></ul></li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
+      <div class="documentation-copy ph4">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+    
+  
+  <li class="mr1 f7 lvl0"><a class="f6 mb0 link mid-gray dim mr1" href="/">Home</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/platforms/">Platforms</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl2"><a class="f6 mb0 link mid-gray dim mr1" href="/platforms/remote-commands/">Remote Commands</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mt30 mb3">How to sync analytics sessions in hybrid apps</h1>
+</header>
+
+<div class="mv2 mid-gray fn w-100">
+  
+
+  
+    <p class="f4 fw3 lh-copy">
+      This document describes how to sync a session in a hybrid app.
+    </p>
+  
+</div>
+
+<div class="prose nested-links" id="prose">
+  <h2 id="overview">Overview</h2>
+<p>A hybrid app combines components written in native code, such as Objective-C for iOS or Java for Android, and one or more webview components written in HTML and JavaScript. A common use case is a shopping app where a native code component is used for browsing products and a webview component is used for the checkout and payment processing.</p>
+<h3 id="problem">Problem</h3>
+<p>A common challenge for analytics vendors on hybrid apps is being able to track a session between the native component and the webview component. Even if the vendor is integrated into both components, a visitor will be assigned a separate session identifier in each and the vendor&rsquo;s reports will show inflated numbers for sessions.</p>
+<p>To solve this problem, the native and webview components must share information. You can share information between these components by appending a query string parameter to the webview URL loaded by the native code. This parameter contains the shared session ID that is used in both the native and webview components.</p>
+<p>The initiation and sharing of that session ID is accomplished with some configuration in Tealium iQ and with some custom code in your native app. The custom remote command tag facilitates the sharing of that session ID between the hidden webview and the native code, where it&rsquo;s  passed to your website that loads from a visible webview.</p>
+<h3 id="solution">Solution</h3>
+<p>This article demonstrates this solution using Google Analytics, but it applies to any vendor that supports session management. For the Google Analytics solution we retrieve a session ID (<code>clientId</code>) in the Tealium iQ SDK (generated in a hidden webview and passed to the native code via a remote command), pass it to the webview component of a hybrid app via a query string parameter, then use Tealium iQ to pass the session ID back to Google Analytics running on the website inside the webview. This example will focus mainly on Android, but the process for iOS is the same.</p>
+<p>Here are the requirements for this solution:</p>
+<ol>
+<li>Native code
+<ul>
+<li><strong>Custom remote command</strong><br>
+A custom command defined in the native code to be called by the custom remote command tag. This allows the hidden webview to pass the session ID to the native code.</li>
+<li><strong>Webview Query String Parameter</strong><br>
+A query string parameter containing the session ID is appended to the URL that loads the webview component of your hybrid app.</li>
+</ul>
+</li>
+<li>iQ profile for mobile app<br>
+The profile that manages your native app requires the following configuration:
+<ul>
+<li><strong>Custom Remote Command tag</strong> - A tag that facilitates communication between the hidden webview and the native app code.</li>
+<li><code>session_id</code> - A UDO variable to store the vendor session ID that is passed by the custom remote command tag to the native code.</li>
+<li><strong>JavaScript Code extension</strong> - JavaScript code to get the current session ID from the vendor and pass it to the custom remote command tag.</li>
+</ul>
+</li>
+<li>iQ profile for mobile web<br>
+The following customizations are required in the iQ profile for the webview component of your hybrid app:
+<ul>
+<li><strong><code>session_id</code></strong> - A query string variable used in the URL of the webview to pass the session ID from the native code.</li>
+<li><strong>Custom JavaScript</strong> - JavaScript code (extension or tag template) to pass the session ID to the vendor tag.</li>
+</ul>
+</li>
+</ol>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>This article assumes that you are using Tealium for Android/iOS v5.0+ and requires that you redeploy your app.</p>
+<p>Here is a summary of the solution for each component in the hybrid app:</p>
+<table style="border: 1px solid rgb(237, 237, 237) !important"><thead><tr><td colspan="4" style="text-align: center;"><strong>Hybrid App</strong></td></tr></thead><tbody><tr ><th style="border: 1px solid rgb(237, 237, 237) !important;vertical-align: top; text-align: center;text-transform:uppercase;" class="bg-secondary" colspan="2">Native Code<br>Component</th><td rowspan="3" style="vertical-align: top; text-align: center;border: 1px solid rgb(237, 237, 237) !important">Native code loads webview at URL with:<br><code>&session_id=SESSION</code><p>&nbsp;</p></td><th style="vertical-align: top; text-align: center;text-transform:uppercase;" class="bg-secondary">Webview<br>Component</th></tr><tr><td style="vertical-align: top; text-align: center;">iQ Mobile Profile<br>(run in hidden webview)</td><td style="border: 1px solid rgb(237, 237, 237) !important;vertical-align: top; text-align: center;">Native Code</td><td style="vertical-align: top; text-align: center;">iQ Profile for Website</td></tr><tr><td style="vertical-align: top;"><p>Configure custom remote command <code>syncSessionId</code> command</p><p>JavaScript Code Extension to get session ID from vendor</p><p>Call to <code>utag.link()</code> to trigger custom remote command, passing session ID</p></td><td style="vertical-align: top;border: 1px solid rgb(237, 237, 237) !important"><p>Custom code to handle remote calls to syncSessionId</p><p>Custom code to pass session ID variable to the webview</p></td><td style="vertical-align: top;"><p>Query string variable <code>session_id</code> from the webview URL</p><p>Vendor Tag with data mapping for <code>session_id</code></p></td></tr></tbody></table>
+<h2 id="implementation">Implementation</h2>
+<h3 id="add-a-remote-command-native-code">Add a remote command (native code)</h3>
+<p>Use the <code>addRemoteCommand</code> method to define a new command for the custom remote command tag to utilize. This allows the hidden Tealium webview to pass data to the Tealium library in the native code environment.</p>
+<h4 id="android-java-code">Android (Java code):</h4>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Although fully functional, this code is simply a sample to show how to accomplish this task. Use your own judgment, and always test before deploying code in your live app</p>
+<ol>
+<li>Define a new remote command called <code>syncSessionId</code> that stores the passed session ID value into a native variable called <code>sessionId</code>. Place this code in the Tealium <code>init</code> block (often this will be in a helper file):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// initialize Tealium
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span> config <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">create</span><span style="color:#f92672">(</span>application<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// create a new Tealium instance with the above config object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Tealium inst <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">createInstance</span><span style="color:#f92672">(</span>TEALIUM<span style="color:#960050;background-color:#1e0010">\</span>_INSTANCENAME<span style="color:#f92672">,</span> config<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// register a new RemoteCommand with Tealium called &#34;syncGASession&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>inst<span style="color:#f92672">.</span><span style="color:#a6e22e">addRemoteCommand</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> RemoteCommand<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;syncSessionId&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Syncs the Analytics Session ID&#34;</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// onInvoke will be called when Tealium iQ triggers the command
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onInvoke</span><span style="color:#f92672">(</span>Response response<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// grab the response object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        JSONObject resp <span style="color:#f92672">=</span> response<span style="color:#f92672">.</span><span style="color:#a6e22e">getRequestPayload</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// set the application-level &#34;gaSessionId&#34; String variable to the value of the key &#34;sessionId&#34; in the response
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// assumes you created this shared variable in your Application class. See sample app for details.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        DemoApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">sessionId</span> <span style="color:#f92672">=</span> resp<span style="color:#f92672">.</span><span style="color:#a6e22e">optString</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;sessionId&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">});</span>
+</span></span></code></pre></div></li>
+<li>Customize your webview to append the query string parameter <code>session_id</code> with the session value stored in the native code. Here&rsquo;s an example of a webview being created and the session ID being passed as a query string parameter:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WebviewActivity</span> <span style="color:#66d9ef">extends</span> AppCompatActivity <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCreate</span><span style="color:#f92672">(</span>Bundle savedInstanceState<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">onCreate</span><span style="color:#f92672">(</span>savedInstanceState<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        setContentView<span style="color:#f92672">(</span>R<span style="color:#f92672">.</span><span style="color:#a6e22e">layout</span><span style="color:#f92672">.</span><span style="color:#a6e22e">activity_webview</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        webview mywebview <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>webview<span style="color:#f92672">)</span> findViewById<span style="color:#f92672">(</span>R<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">.</span><span style="color:#a6e22e">webview</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        mywebview<span style="color:#f92672">.</span><span style="color:#a6e22e">clearCache</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        mywebview<span style="color:#f92672">.</span><span style="color:#a6e22e">getSettings</span><span style="color:#f92672">().</span><span style="color:#a6e22e">setJavaScriptEnabled</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        mywebview<span style="color:#f92672">.</span><span style="color:#a6e22e">loadUrl</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;https://solutions.tealium.net/hosted/cpr/mobile_ga_demo.html?session_id=&#34;</span> <span style="color:#f92672">+</span> DemoApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">sessionId</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+</ol>
+<h4 id="ios-objective-c-code">iOS (Objective-C code)</h4>
+<p>Here&rsquo;s a fragment of the equivalent Objective-C code required to achieve the same thing on iOS. This code does not include the creation of the webview and is included as a starting point:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span><span style="color:#75715e">// replace with your instance name
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Tealium <span style="color:#f92672">*</span>instanceHandle <span style="color:#f92672">=</span> [Tealium instanceForKey: <span style="color:#e6db74">@&#34;tealium&#34;</span>]; 
+</span></span><span style="display:flex;"><span>[instanceHandle addRemoteCommandID:<span style="color:#e6db74">@&#34;syncSessionId&#34;</span>
+</span></span><span style="display:flex;"><span>   description:<span style="color:#e6db74">@&#34;Syncs the Session ID&#34;</span>
+</span></span><span style="display:flex;"><span>   targetQueue:dispatch_get_main_queue()
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">// response is generated from the mappings set up in Tealium iQ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   responseBlock:<span style="color:#f92672">^</span>(TEALRemoteCommandResponse <span style="color:#f92672">*</span> _Nonnull response) {
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">// grab the Session ID from the response object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       NSString <span style="color:#f92672">*</span>session_id <span style="color:#f92672">=</span> response.requestPayload[<span style="color:#e6db74">@&#34;sessionId&#34;</span>];
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">/* now that you have the session ID, store it somewhere you can 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> access it later on when you create your webview. See Android code
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> for an example */</span>
+</span></span><span style="display:flex;"><span>}<span style="color:#960050;background-color:#1e0010">\</span>];
+</span></span></code></pre></div><h3 id="add-the-custom-remote-command-tag-iq-profile-for-mobile-web">Add the custom remote command tag (iQ profile for mobile web)</h3>
+<p>In your iQ mobile profile, use the custom remote command tag to trigger the remote command you defined in your native code. When you add data mappings to this tag, the remote command will receive that data.</p>
+<p>Follow these steps in your iQ profile for mobile web:</p>
+<ol>
+<li>Add the following UDO variable to your data layer: <code>session_id</code></li>
+<li>Add the <strong>Custom Remote Command</strong> tag:<br>
+<figure><a class="slb" href="/images/platforms/remote-commands/sync-analytics1.jpg"><img src="/images/platforms/remote-commands/sync-analytics1.jpg"/>
+    </a>
+</figure></li>
+<li>Set the <strong>Command ID</strong> to <code>syncSessionId</code> (the name of the remote command defined in the native code):<br>
+<figure><a class="slb" href="/images/platforms/remote-commands/sync-analytics2.jpg"><img src="/images/platforms/remote-commands/sync-analytics2.jpg"/>
+    </a>
+</figure></li>
+<li>Add a data mapping for <code>session_id</code> to <code>sessionId</code>.<br>
+<figure><a class="slb" href="/images/platforms/remote-commands/sync-analytics3.jpg"><img src="/images/platforms/remote-commands/sync-analytics3.jpg"/>
+    </a>
+</figure></li>
+</ol>
+<h3 id="add-the-vendor-tag-iq-profile-for-mobile-app">Add the vendor tag (iQ profile for mobile app)</h3>
+<p>In your iQ profile for the mobile app, you will use a vendor tag (Google Analytics in this example) to initiate a session and pass the session ID value to the custom remote command tag using a call to <code>utag.link()</code>. Most likely you will already have this tag added to your mobile profile for the purpose of native app tracking (as many popular analytics tag are mobile enabled).</p>
+<p>Follow these steps to add and configure the vendor tag:</p>
+<ol>
+<li>Add your vendor tag (if you haven&rsquo;t already).</li>
+<li>Add a JavaScript Code extension scoped to the vendor tag (Google Analytics) with the following contents. Replace <code>UID</code> with the UID of the custom remote command tag.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">setTimeout</span>(<span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">// Vendor Specific: Retrieve a session ID from Google Analytics
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">tracker</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">ga</span>.<span style="color:#a6e22e">getByName</span>(<span style="color:#e6db74">&#39;tealium_0&#39;</span>); <span style="color:#75715e">// assumes you only have one GA tracker on the page
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">clientId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tracker</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;clientId&#39;</span>);
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">// A tracking call picked up custom remote command
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     <span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">link</span>({<span style="color:#a6e22e">session_id</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">clientId</span>}, <span style="color:#66d9ef">null</span>, [<span style="color:#e6db74">&#39;UID&#39;</span>])
+</span></span><span style="display:flex;"><span>}, <span style="color:#ae81ff">1000</span>);
+</span></span></code></pre></div></li>
+</ol>
+<p>This extension waits for 1 second to give the tag enough time to load, and then gets the session ID from the vendor. Then it calls <code>utag.link()</code> to trigger the custom remote command tag, passing <code>session_id</code> as a parameter. Then the custom remote command tag passes that data to the remote command <code>syncSessionId</code> where the native code stores it for later use.</p>
+<h3 id="add-the-vendor-tag-iq-profile-for-mobile-web">Add the vendor tag (iQ profile for mobile web)</h3>
+<p>In your iQ Web Profile (the profile used for the website that is loaded in the webview component of your hybrid app) you will define a new data layer variable to detect the query string parameter used for the session ID and map that variable into the vendor tag.</p>
+<p>Follow these steps to configure your vendor tag to sync the session ID:</p>
+<ol>
+<li>Add your vendor tag, if you haven&rsquo;t already.</li>
+<li>Add a new data layer variable named <code>session_id</code> of type query string parameter.</li>
+<li>In the vendor tag, add a data mapping for <code>session_id</code> to <code>clientId</code> (specific to Google Analytics in this example).</li>
+</ol>
+<p>You&rsquo;re now finished. Assuming you&rsquo;ve followed all the steps above, the webviews in your app will receive the same session identifier as the native app, and your users will now be using a single session (as far as Google Analytics is concerned).</p>
+<h3 id="validate-the-results">Validate the results</h3>
+<p>After deploying the code above, you can use a local proxy, such as Charles Proxy or Fiddler, to view the output from the app. If you inspect the outgoing hits to <code>www.google-analytics.com</code>, you can verify that the <code>cid</code> parameter is the same in the hit coming from your native app as well as from the webview component.</p>
+<p>To learn more, see <a href="/platforms/getting-started-mobile/troubleshooting/">Troubleshooting a mobile installation</a>.</p>
+<p>Shared session ID from the native app:</p>
+<figure><a class="slb" href="/images/platforms/remote-commands/sync-analytics4.png"><img src="/images/platforms/remote-commands/sync-analytics4.png"/>
+    </a>
+</figure>
+<p>Shared session ID from from the in-app webview:</p>
+<figure><a class="slb" href="/images/platforms/remote-commands/sync-analytics5.png"><img src="/images/platforms/remote-commands/sync-analytics5.png"/>
+    </a>
+</figure>
+<p>Download the sample app as an Android Studio project: <a href="/images/platforms/remote-commands/GAwebviewDemo.zip">GAwebviewDemo.zip</a>.</p>
+<h2 id="additional-solutions">Additional solutions</h2>
+<p>This guide describes how to sync the session IDs for Google Analytics, but the same steps can easily be adapted for use with other vendors, such as Webtrends, Webtrekk, and Adobe Analytics. Depending on the vendor, you might need to read cookie values if there is no API that provides the session ID.</p>
+<p>The solution documented in this article could also be used to pass other information to your app, outside of the scope of your analytics tools. It is possible to pass more than one parameter at a time by adding more mappings in the custom remote command tag, but you will need to adapt the native remote command code to handle additional parameters in the response object.</p>
+
+</div>
+
+<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="di mr3">
+  
+  
+  <a href="/platforms/remote-commands/vendor-integrations/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"Vendor Integrations "</title>
+      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+    </svg>
+   <section class="tr pl3">
+      <div>Vendor Integrations</div>
+    </section>
+  </a>
+  
+
+</div></div>
+
+
+
+        <div class="bt-l b--moon-gray pv3 cb">
+          <div id="feedback_form" class="dpn">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">Was this page helpful?</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+Yes</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+No</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea><button id="feedback_submit" class="db ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">Send Feedback</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">Thank you for your feedback!</p>
+  </div>
+</div>
+
+        </div>
+        <div class="bt-l b--moon-gray pt3 f6">
+          <p>This page was last updated:  December 7, 2023 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
+      
+
+
+
+  <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">On this page</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#overview">Overview</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#problem">Problem</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#solution">Solution</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#implementation">Implementation</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-a-remote-command-native-code">Add a remote command (native code)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-the-custom-remote-command-tag-iq-profile-for-mobile-web">Add the custom remote command tag (iQ profile for mobile web)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-the-vendor-tag-iq-profile-for-mobile-app">Add the vendor tag (iQ profile for mobile app)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-the-vendor-tag-iq-profile-for-mobile-web">Add the vendor tag (iQ profile for mobile web)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#validate-the-results">Validate the results</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#additional-solutions">Additional solutions</a></li>
+              </nav>
+  </aside></nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-primary-color-dark ph1-ns relative w-100" role="contentinfo">
+    <div class="center flex-ns flex-wrap justify-between mw9 w-90">
+    </div>
+
+    <div class="dpn bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+<div class="globalmenu mobilemenu dn">
+    
+
+<ul class="list hidden dib ph0 ma0 scrolling-touch tc">
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Home
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/iq-tag-management/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          iQ Tag Management
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/getting-started/eventstream-api-hub/introduction/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          EventStream API Hub
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/getting-started/audiencestream-cdp/introduction/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/functions/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Functions
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/data-connect/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Data Connect
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/predict/getting-started/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Predict ML
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/data-storage/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          DataAccess
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/client-side-tags/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Client-Side Tags
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side-connectors/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Server-Side Connectors
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Platforms
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/api/getting-started/auth/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium for Pharma
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Identity Partners
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tech-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Technology Partners
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Partner Integrations
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/glossary/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Glossary
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/early-access/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Early Access
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/release-notes/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Release Notes
+        </a>
+    </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+</div>
+
+
+<div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
+    <ul class="list dib ph0 ma0 scrolling-touch tc">
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/platforms/remote-commands/how-it-works/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          How It Works
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/platforms/remote-commands/custom-commands/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Custom Commands
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/platforms/remote-commands/consent-management/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Consent Management
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/platforms/remote-commands/json-file/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          JSON File
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/platforms/remote-commands/vendor-integrations/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Vendor Integrations
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/platforms/remote-commands/integrations/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Integrations
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/platforms/remote-commands/sync-analytics-hybrid-apps/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Sync sessions in hybrid apps
+      </a>
+      </li>
+      
+      
+  
+
+</ul>
+
+</div>
+
+
+
+
+<div class="flex dn-l justify-between">
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link mr2 white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".globalmenu">Site</button>
+
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".docsmenu">Section</button>
+
+</div>
+</div>
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'Search',
+    buttonAriaLabel: 'Search',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'Clear the query',
+      resetButtonAriaLabel: 'Clear the query',
+      cancelButtonText: 'Cancel',
+      cancelButtonAriaLabel: 'Cancel',
+    },
+    startScreen: {
+      recentSearchesTitle: 'Recent',
+      noRecentSearchesText: 'No recent searches',
+      saveRecentSearchButtonTitle: 'Save this search',
+      removeRecentSearchButtonTitle: 'Remove this search from history',
+      favoriteSearchesTitle: 'Favorite',
+      removeFavoriteSearchButtonTitle: 'Remove this search from favorites',
+    },
+    errorScreen: {
+      titleText: 'Unable to fetch results',
+      helpText: 'You might want to check your network connection.',
+    },
+    footer: {
+      selectText: 'to select',
+      selectKeyAriaLabel: 'Enter key',
+      navigateText: 'to navigate',
+      navigateUpKeyAriaLabel: 'Arrow up',
+      navigateDownKeyAriaLabel: 'Arrow down',
+      closeText: 'to close',
+      closeKeyAriaLabel: 'Escape key',
+      searchByText: 'Search by',
+    },
+    noResultsScreen: {
+      noResultsText: 'No results for',
+      suggestedQueryText: 'Try searching for',
+      reportMissingResultsText: 'Believe this query should return results?',
+      reportMissingResultsLinkText: 'Let us know.',
+    },
+  },
+};
+var default_sections = [
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
+docsearch({
+  container: '#docsearch',
+  appId: '01G44CJWZ0',
+  apiKey: '09633c367e743588b87dbb988dad4158',
+  indexName: 'tealium',
+  placeholder: 'Search',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    "analytics": true ,
+    "analyticsTags": ["site"]
+  },
+  insights: true,
+  debug: false ,
+  transformItems
+});
+</script>
+
+    
+
+  </body>
+</html>

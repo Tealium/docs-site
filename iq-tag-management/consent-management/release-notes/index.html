@@ -548,8 +548,21 @@ var utag_data = {
         <a href="/iq-tag-management/administration/security/mfa-faq/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".multi-factor-authentication-faq">Multi-factor authentication FAQ</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/administration/security/api-keys/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".managing-and-generating-api-keys">Manage and generate API keys</a>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2  ind2 pr2  " data-target=".single-sign-on">Single sign-on (SSO)</a>
+        <ul class=" single-sign-on desktopmenu animated fadeIn list  dn"><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/administration/single-sign-on/sso/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".set-up-single-sign-on">Set up SSO</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/iq-tag-management/administration/security/sso/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".set-up-single-sign-on">Set Up SSO</a>
+        <a href="/iq-tag-management/administration/single-sign-on/certificates/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".single-sign-on-certificate-status">Certificate status</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/administration/single-sign-on/manage/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".single-sign-on-manage-connections">Manage connections</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/administration/single-sign-on/adfs/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".sso-adfs-idp">ADFS (Active Directory)</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/administration/single-sign-on/azure/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".sso-azure-idp">Azure</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/iq-tag-management/administration/single-sign-on/okta/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".sso-okta-idp">Okta</a>
       </li></ul>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/iq-tag-management/administration/user-settings/" class="db link ind2 pr2 pv2 text-color-primary hover-primary-color " data-target=".user-settings">User settings</a>
@@ -731,7 +744,7 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <h2 id="september-2023">September 2023</h2>
-<h4 id="newcool-stuff">New/Cool Stuff</h4>
+<h4 id="updates-and-fixes">Updates and fixes</h4>
 <ul>
 <li>
 <p>Updated event logging to use a new dedicated <code>id</code> parameter in the <code>CONSENTMGR</code> cookie (with support for custom namespaces), instead of using the <code>utag_main_v_id</code>.</p>
@@ -746,92 +759,64 @@ var utag_data = {
 </li>
 </ul>
 <h2 id="may-2023">May 2023</h2>
-<h4 id="fixes">Fixes</h4>
+<h4 id="updates-and-fixes-1">Updates and fixes</h4>
 <ul>
 <li>The <code>cmDoNotSell</code> template (a template used by the Opt-out Privacy Banner and Popup) has been updated to version 1.3.0. <code>##UTDNSCONSENTEVENT##</code> has been replaced with nearly identical logic (which is exposed for customization). The only change in behavior is that <code>consent_categories</code> is now an empty array ([]) instead of an empty string (&quot;&quot;) to match the behavior in Opt-in consent models.</li>
 </ul>
 <h2 id="march-2023">March 2023</h2>
-<h4 id="newcool-stuff-1">New/Cool Stuff</h4>
+<h4 id="updates">Updates</h4>
 <ul>
-<li>
-<p><strong>Rename legacy consent management tools to remove specific regulation names</strong><br>
-Updated the name of Consent Management components to remove references to specific regulations and remove GDPR Rule Creator. There are no changes in behavior.</p>
-</li>
-<li>
-<p><strong>Added new Consent logging templates to Template Status Checker</strong><br>
-Added support for the new consent logging templates <code>fullConsentEventHandler</code> and <code>partialConsentEventHandler</code> to Tealium iQ’s <a href="/iq-tag-management/templates/template-status-checker/">Template Status Checker</a>.</p>
-</li>
-<li>
-<p><strong>Updated <code>partialConsentEventHandler</code> and <code>fullConsentEventHandler</code> templates to version 1.0.2</strong><br>
-Updated <code>partialConsentEventHandler</code> and <code>fullConsentEventHandler</code> templates to version 1.0.2. This fixes an issue where consent logging payloads could include the wrong cookie value as the <code>trace_id</code> if a cookie name included the string “trace_id”.</p>
-</li>
-<li>
-<p><strong>Updated Tealium GPC support to be more conservative and compliant out-of-the-box</strong><br>
-The opt-out logic related to Global Privacy Control (GPC) in the <code>cmDoNotSell</code> template has been updated to be more conservative out-of-the-box. Previously, when a user&rsquo;s consent cookie explicitly allowed tracking but the GPC signal indicated an opt-out, the GPC opt-out signal was ignored in favor of the cookie. As of version 1.2.0 of <code>cmDoNotSell</code>, the GPC opt-out signal is always respected, even if there is a cookie indicating that the user agrees to the sale or sharing of their data.</p>
-</li>
+<li><strong>Renamed legacy consent management tools to remove specific regulation names</strong><br>
+Updated the name of Consent Management components to remove references to specific regulations and remove GDPR Rule Creator. There are no changes in behavior.</li>
+<li><strong>Added new Consent logging templates to Template Status Checker</strong><br>
+Added support for the new consent logging templates <code>fullConsentEventHandler</code> and <code>partialConsentEventHandler</code> to Tealium iQ’s <a href="/iq-tag-management/templates/template-status-checker/">Template Status Checker</a>.</li>
+<li><strong>Updated <code>partialConsentEventHandler</code> and <code>fullConsentEventHandler</code> templates to version 1.0.2</strong><br>
+Updated <code>partialConsentEventHandler</code> and <code>fullConsentEventHandler</code> templates to version 1.0.2. This fixes an issue where consent logging payloads could include the wrong cookie value as the <code>trace_id</code> if a cookie name included the string “trace_id”.</li>
+<li><strong>Updated Tealium GPC support to be more conservative and compliant out-of-the-box</strong><br>
+The opt-out logic related to Global Privacy Control (GPC) in the <code>cmDoNotSell</code> template has been updated to be more conservative out-of-the-box. Previously, when a user&rsquo;s consent cookie explicitly allowed tracking but the GPC signal indicated an opt-out, the GPC opt-out signal was ignored in favor of the cookie. As of version 1.2.0 of <code>cmDoNotSell</code>, the GPC opt-out signal is always respected, even if there is a cookie indicating that the user agrees to the sale or sharing of their data.</li>
 </ul>
 <h2 id="january-2023">January 2023</h2>
-<h4 id="newcool-stuff-2">New/Cool Stuff</h4>
+<h4 id="updates-and-fixes-2">Updates and fixes</h4>
 <ul>
-<li><strong>Updated CCPA <strong>Display Rule</strong> to Enforcement Rule</strong><br>
+<li><strong>Renamed the CCPA Display Rule to Enforcement Rule</strong><br>
 Updated the rule label in the CCPA (Opt-Out) model from <strong>Display Rule</strong> to <strong>Enforcement Rule</strong> to be consistent with the rest of the Consent Management components and the actual behavior. There is no change in behavior.</li>
-</ul>
-<h4 id="fixes-1">Fixes</h4>
-<ul>
 <li>Fixed an issue where <code>cmShowPreferences</code> version 2.1.0 was incorrectly flagged as non-current in the Tag Status Checker.</li>
 </ul>
 <h2 id="december-2022">December 2022</h2>
-<h4 id="newcool-stuff-3">New/Cool Stuff</h4>
+<h4 id="updates-and-fixes-3">Updates and fixes</h4>
 <ul>
-<li>
-<p><strong>Updated <code>cmGeneral</code> template to version 3.0.11</strong><br>
-Updated <code>cmGeneral</code> template to version 3.0.11. This update fixes an issue introduced in version 3.0.10 where sometimes <code>null</code> is included in the <code>consent_categories</code> array instead of the expected category key when categories have been deactivated.</p>
-</li>
-<li>
-<p><strong>Updated <code>fullConsentEventHander</code> and <code>partialConsentEventHandler</code> consent logging templates</strong><br>
-The <code>fullConsentEventHander</code> and <code>partialConsentEventHandler</code> consent logging templates have been updated with the following:</p>
+<li><strong>Updated <code>cmGeneral</code> template to version 3.0.11</strong><br>
+Updated <code>cmGeneral</code> template to version 3.0.11. This update fixes an issue introduced in version 3.0.10 where sometimes <code>null</code> is included in the <code>consent_categories</code> array instead of the expected category key when categories have been deactivated.</li>
+<li><strong>Updated <code>fullConsentEventHander</code> and <code>partialConsentEventHandler</code> consent logging templates</strong><br>
+The <code>fullConsentEventHander</code> and <code>partialConsentEventHandler</code> consent logging templates have been updated with the following:
 <ul>
 <li>Include the value of the <code>trace_id</code> cookie as <code>cp.trace_id</code> in the logging request, if present.</li>
-<li>Use an array of consent categories instead of a comma-separated string.</li>
+<li>Use an array of consent categories instead of a comma-separated string.<br>
+These changes are included in a new template version, which gives you the flexibility to decide if and when to upgrade and tailor the requirements to your specific needs.</li>
 </ul>
-<p>These changes are included in a new template version, giving customers the flexibility to decide if and when to upgrade and tailor the requirements to their specific needs.</p>
 </li>
-</ul>
-<h4 id="fixes-2">Fixes</h4>
-<ul>
 <li>Fixed an issue where the Edge browser was incorrectly recognized as Chrome in the <strong>Active browser type</strong> and <strong>Active browser version</strong> preloaded attributes. This bug will be fixed with the first publish of each CDH profile after this release. This is because the preloaded logic is part of the configuration of each CDH profile.</li>
 </ul>
 <h2 id="november-2022">November 2022</h2>
-<h4 id="fixes-3">Fixes</h4>
+<h4 id="updates-1">Updates</h4>
 <ul>
-<li>Moved consent logging events to editable templates - no changes to behavior.</li>
+<li>Moved consent logging events to editable templates. No changes to behavior.</li>
 </ul>
 <h2 id="october-2022">October 2022</h2>
-<h4 id="newcool-stuff-4">New/Cool Stuff</h4>
+<h4 id="updates-2">Updates</h4>
 <ul>
-<li>
-<p><strong>Added support for Global Privacy Control (GPC) signal to the CCPA Consent Manager</strong><br>
-The <code>cmDoNotSell</code> template has been updated to version 1.1.0. This adds built-in respect for Global Privacy Control (GPC) signal to the CCPA Consent Manager.</p>
-</li>
-<li>
-<p><strong>Remove consent based filtering of Tealium consent change events in EventStream</strong><br>
-Removed consent-based filtering of <a href="/server-side/consent/event-specs/">Tealium consent change events</a> in EventStream. These events can now be streamed to any consent logging destination. No changes to consent-related filtering of other events or AudienceStream behavior.</p>
-</li>
+<li><strong>Added support for Global Privacy Control (GPC) signal to the CCPA Consent Manager</strong><br>
+The <code>cmDoNotSell</code> template has been updated to version 1.1.0. This adds built-in respect for Global Privacy Control (GPC) signal to the CCPA Consent Manager.</li>
+<li><strong>Remove consent based filtering of Tealium consent change events in EventStream</strong><br>
+Removed consent-based filtering of <a href="/server-side/consent/event-specs/">Tealium consent change events</a> in EventStream. These events can now be streamed to any consent logging destination. No changes to consent-related filtering of other events or AudienceStream behavior.</li>
 </ul>
 <h2 id="september-2022">September 2022</h2>
-<h4 id="newcool-stuff-5">New/Cool Stuff</h4>
+<h4 id="updates-and-fixes-4">Updates and fixes</h4>
 <ul>
-<li>
-<p><strong>Updated default language behavior in Consent Management models</strong><br>
-Updated the <strong>Default Language</strong> behavior of all consent management models to ensure that a default language is enabled when no language is selected. This fixes an exception that occasionally appears in Tealium IQ when trying to access the <strong>Consent Management</strong> tab when no default language is selected.</p>
-</li>
-<li>
-<p><strong>Updated <code>cmGeneral</code> template to version 3.0.10</strong><br>
-Updated <code>cmGeneral template</code> to 3.0.10. This fixes a bug where <code>getSelectedCategories</code> could return categories that weren&rsquo;t displayed to the user.</p>
-</li>
-</ul>
-<h4 id="fixes-4">Fixes</h4>
-<ul>
+<li><strong>Updated default language behavior in Consent Management models</strong><br>
+Updated the <strong>Default Language</strong> behavior of all consent management models to ensure that a default language is enabled when no language is selected. This fixes an exception that occasionally appears in Tealium IQ when trying to access the <strong>Consent Management</strong> tab when no default language is selected.</li>
+<li><strong>Updated <code>cmGeneral</code> template to version 3.0.10</strong><br>
+Updated <code>cmGeneral template</code> to 3.0.10. This fixes a bug where <code>getSelectedCategories</code> could return categories that weren&rsquo;t displayed to the user.</li>
 <li>Renamed <strong>Display Rule</strong> to <strong>Enforcement Rule</strong> in Explicit Consent Prompt to better reflect it&rsquo;s functionality.</li>
 <li>Removed misleading <strong>Consent Category</strong> section from AudienceStream connector actions UI.</li>
 </ul>
@@ -879,7 +864,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 8, 2023 
+          <p>This page was last updated:  December 7, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
