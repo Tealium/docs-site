@@ -751,7 +751,7 @@ var utag_data = {
 <p>The Adobe Experience Platform connector provides an optimized way to interact with any Adobe Experience Platform service. This connector sends event data through the Adobe Experience Platform to Adobe Experience Cloud services, such as Adobe Analytics, Adobe Audience Manager, Adobe Target, and Adobe CDP.</p>
 <h3 id="data-types">Data types</h3>
 <p>The Adobe Experience Platform connector supports all Tealium data types, but arrays and maps are transformed within the connector before data is sent to Adobe.</p>
-<h4 id="mapping-arrays">Mapping arrays</h4>
+<h4 id="mapping-arrays-of-objects">Mapping arrays of objects</h4>
 <p>To map an array of objects with dynamic lengths, the connector accepts an array per object attribute. The connector then merges these properties into a well-formed JSON array of objects.</p>
 <p>For example, if you want to send an Adobe Analytics list, you can use this connector to send the data as an array of objects. The connector will map the list in the following ways:</p>
 <ul>
@@ -785,7 +785,8 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>If an optional empty or null array value is pass to the connector, then the connector will pass an empty value in the object sent to Adobe. If the schema requires an attribute and it is not included in the array, the entire object will not be included in the data sent to Adobe.</p>
+</span></span></code></pre></div><p>If you pass an empty optional array value to the connector, then the connector passes an empty value in the corresponding object&rsquo;s attribute. For example, if you mapped <code>experience.analytics.customDimensions.lists.list1.list.key</code> to <code>['clothing','','accessories']</code>, the attribute key will not be present for the second object in the list array.</p>
+<p>If the schema requires an attribute and it is not included in the array, the entire object will not be included in the array sent to Adobe.</p>
 <h4 id="sending-map-attributes">Sending map attributes</h4>
 <p>Your connector configuration may require map attributes with identity namespaces. To send this data to Adobe, use strings, numbers, and array of strings attributes. We recommend using strings or arrays of strings for numerical values because arrays of numbers cannot include null or empty values.</p>
 <p>For example, if you want to send the following <code>segmentMembership</code> values to Adobe:</p>
@@ -1128,12 +1129,7 @@ Optional. If you want the API calls to refer to a different environment than the
 </ul>
 <h4 id="configure-the-adobe-experience-platform-connector-in-tealium-1">Configure the Adobe Experience Platform connector in Tealium</h4>
 <p>To configure the connector to send data to Adobe Audience Manager, complete the steps in the <a href="#configure-the-adobe-experience-platform-connector-in-tealium">Configure the Adobe Experience Platform connector in Tealium</a> section.</p>
-<p>The following image shows example mappings in Tealium:</p>
-<figure><a class="slb" href="/images/server-side-connectors/adobe-analytics-tealium-setup.png"><img src="/images/server-side-connectors/adobe-analytics-tealium-setup.png"
-         alt="Mapping XDM schema parameters in Tealium"
-         title="Mapping XDM schema parameters in Tealium"/>
-    </a>
-</figure>
+<p>For more information about available data mappings in Adobe Audience Manager and their corresponding XDM fields, see <a href="https://experienceleague.adobe.com/docs/experience-platform/sources/connectors/adobe-applications/mapping/audience-manager.html?lang=en">Audience Manager field mappings</a> in the Adobe documentation.</p>
 <h3 id="send-data-to-adobe-target">Send data to Adobe Target</h3>
 <p>To use the Adobe Experience Platform connector to send audience data to Adobe Target, you first need to configure the XDM schema details in Adobe Experience Platform. After you complete the Adobe configuration, you can then configure the connector in Tealium.</p>
 <p>For a full list of Adobe Target and XDM field mappings, see <a href="https://experienceleague.adobe.com/docs/experience-platform/sources/connectors/adobe-applications/mapping/target.html?lang=en">Audience Target field mappings</a> in the Adobe documentation.</p>
@@ -1376,7 +1372,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 4, 2023 
+          <p>This page was last updated:  December 11, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
