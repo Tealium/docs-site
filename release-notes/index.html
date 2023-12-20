@@ -103,7 +103,7 @@ var utag_data = {
                     </li>
                     <li class="menu-divider"></li>
                     <li class="js-main-nav-section active">
-                        <a href="https://docs.tealium.com/" class="menu-list-item top-level tooltip-right" title="Documentation">
+                        <a href="/" class="menu-list-item top-level tooltip-right" title="Documentation">
                             <span class="menu-large-icon">
                                 <i class="fal fa-book"></i>
                             </span>
@@ -415,10 +415,15 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="client-side-tags-release-notes"><a href="/client-side-tags/release-notes/">Client-side tags </a></h2>
-          <h2 id="december-7-2023">December 7, 2023</h2>
-<h4 id="fixes">Fixes</h4>
+          <h2 id="december-13-2023">December 13, 2023</h2>
+<h4 id="updates-and-fixes">Updates and fixes</h4>
 <ul>
-<li>Updated the <a href="/client-side-tags/criteo-onetag-tag/">Criteo OneTag tag</a> to add <code>page_view_id</code> in the event JSON.</li>
+<li>Updated the <a href="/client-side-tags/epsilon-partner-sync-web-service-tag/">Epsilon Partner Sync Web Service Tag</a> to correct the base URL.</li>
+<li>Updated the <a href="/client-side-tags/fathom-analytics-tag/">Fathom Analytics tag</a>. The <code>trackGoal</code> event has been replaced with <code>trackEvent</code>, which is an object with two attributes, <code>_site_id</code> and <code>_value</code>.</li>
+<li>Updated the <a href="/client-side-tags/google-ads-conversion-tracking-and-remarketing-gtagjs-tag/">Google Ads Conversion Tracking &amp; Remarketing tag</a> to correct an issue that prevented the tag from being triggered.</li>
+<li>Updated the <a href="/client-side-tags/rakuten-advertising-tag/">Rakuten Advertising Performance tag</a> to correct an issue with tax calculation.</li>
+<li>Updated <a href="/client-side-tags/session-ai-tag/">Session AI tag</a> to resolve an issue that occurs when <code>productId</code> is empty. <code>cart</code> is now an array of items. <code>coupons</code> is now an array of objects. Display of event-specific parameters has been updated to only display the parameters linked to each event. Removed <code>price_sale</code> and  <code>price_orig</code>; use <code>items.priceSale</code> and <code>items.priceOrg</code> instead.</li>
+<li>Rewrote the <a href="/client-side-tags/true-fit-integration-tag/">True Fit Integration tag</a>.</li>
 </ul>
         
           
@@ -445,20 +450,19 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="consent-management-release-notes"><a href="/iq-tag-management/consent-management/release-notes/">Consent management </a></h2>
-          <h2 id="september-2023">September 2023</h2>
+          <h2 id="december-13-2023">December 13, 2023</h2>
 <h4 id="updates-and-fixes">Updates and fixes</h4>
 <ul>
-<li>
-<p>Updated event logging to use a new dedicated <code>id</code> parameter in the <code>CONSENTMGR</code> cookie (with support for custom namespaces), instead of using the <code>utag_main_v_id</code>.</p>
-<p>The following templates have been updated to support this update:</p>
+<li>Updated the Consent Integrations <code>utcm_framework</code> template to v1.1.1 as follows:
 <ul>
-<li><code>cmGeneral</code> has been updated to version 3.0.12 to add centralized logic for generating consent forms ID that can be called from consent logging templates.</li>
-<li><code>cmDoNotSell</code> has been updated to version 1.4.0 to call the centralized logic.</li>
-<li><code>fullConsentEventHandler</code> has been updated to version 1.0.3 to call the centralized logic.</li>
-<li><code>partialConsentEventHandler</code> has been updated to version 1.0.3 to call the centralized logic.</li>
+<li>Ensure Tealium iQ cookies aren&rsquo;t set before the appropriate consent decision is received.</li>
+<li>Ensure &lsquo;before load rules&rsquo; and &lsquo;after load rules&rsquo; extensions only run once for events processed from the implicitEventQueue.</li>
+<li>Improve the examples and comments in the utcm_framework template.</li>
 </ul>
-<p>For more information about this change and related changes to <code>utag.js</code>, see the <a href="/platforms/javascript/release-notes#450-august-2023">release notes for version 4.50</a>.</p>
 </li>
+<li>Resolved an issue in which a purpose that was removed was shown as undefined.</li>
+<li>Resolved an issue in which incoming event attributes are not displayed.</li>
+<li>Update to ensure preloaded rules in Consent Integrations Exemptions and Purpose Groups cannot be edited.</li>
 </ul>
         
           
@@ -475,10 +479,10 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="data-sources-release-notes"><a href="/server-side/data-sources/release-notes/">Data sources </a></h2>
-          <h2 id="november-29-2023">November 29, 2023</h2>
+          <h2 id="december-13-2023">December 13, 2023</h2>
 <h4 id="updates">Updates</h4>
 <ul>
-<li>Updated the file import data source to add the ability to filter completed or failed file uploads by time periods. Filter options include 7 days, 30 days, 60 days, and a custom date range.</li>
+<li>Updated configuration of file import data sources. Attribute mapping is now the second step in configuring a new inbound source.</li>
 </ul>
         
           
@@ -504,6 +508,16 @@ var utag_data = {
           
           
 
+          <h2 class="rn-section" id="labels-release-notes"><a href="/iq-tag-management/labels/release-notes/">Labels </a></h2>
+          <h2 id="december-13-2023">December 13, 2023</h2>
+<h4 id="fixes">Fixes</h4>
+<ul>
+<li>Corrected an issue where labels are lost when an error occurs during a label request.</li>
+</ul>
+        
+          
+          
+
           <h2 class="rn-section" id="load-rules-release-notes"><a href="/iq-tag-management/load-rules/release-notes/">Load rules </a></h2>
           <h2 id="november-15-2023">November 15, 2023</h2>
 <h4 id="fixes">Fixes</h4>
@@ -515,14 +529,10 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="save-and-publish-release-notes"><a href="/iq-tag-management/save-publish/release-notes/">Save and publish </a></h2>
-          <h2 id="december-7-2023">December 7, 2023</h2>
-<h4 id="enhancements">Enhancements</h4>
-<ul>
-<li>Removed ability to make a copy for individual versions from the <strong>Version Details</strong> drop-down list.</li>
-</ul>
+          <h2 id="december-13-2023">December 13, 2023</h2>
 <h4 id="fixes">Fixes</h4>
 <ul>
-<li>Resolve possible JavaScript error that prevented users from merging with a profile save version.</li>
+<li>Corrected an issue in which the <strong>Lock Profile</strong> publish setting could not be turned off.</li>
 </ul>
         
           
@@ -539,10 +549,15 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="server-side-connectors-release-notes"><a href="/server-side-connectors/release-notes/">Server-side connectors </a></h2>
-          <h2 id="december-7-2023">December 7, 2023</h2>
+          <h2 id="december-13-2023">December 13, 2023</h2>
+<h4 id="newcool-stuff">New/Cool Stuff</h4>
+<ul>
+<li>New marketplace connector: <a href="/server-side-connectors/reddit-conversions-connector/">Reddit Conversions</a>.</li>
+</ul>
 <h4 id="fixes">Fixes</h4>
 <ul>
-<li>Updated the <a href="/server-side-connectors/adobe-aep-connector/">Adobe Experience Platform connector</a> to fix an issue where users could not select multiple namespaces and to add additional tutorial documentation.</li>
+<li>Updated <a href="/server-side-connectors/campaign-monitor-connector/">Campaign Monitor connector</a> to allow clearing of custom fields.</li>
+<li>Updated <a href="/server-side-connectors/pardot-connector/">Pardot connector</a> to add <strong>Verify Campaign ID</strong>, <strong>Verify Email Template</strong>, <strong>Verify List ID</strong> buttons to configuration screens.</li>
 </ul>
         
           
@@ -688,6 +703,7 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-sources-release-notes">Data sources </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#dataaccess-release-notes">DataAccess </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#extensions-release-notes">Extensions </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#labels-release-notes">Labels </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules-release-notes">Load rules </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#save-and-publish-release-notes">Save and publish </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#server-side-administration-release-notes">Server-side administration </a></li>
