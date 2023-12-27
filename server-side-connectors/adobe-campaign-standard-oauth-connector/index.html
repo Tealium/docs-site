@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
      
-    <title>Enchant Connector Setup Guide | Server-Side Connectors | Tealium Docs</title>
+    <title>Adobe Campaign Standard (oAuth) Connector Setup Guide | Server-Side Connectors | Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
 
@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side-connectors",
-    reading_time  : "2",
+    reading_time  : "3",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -232,8 +232,8 @@ var utag_data = {
         <a href="/server-side-connectors/adobe-campaign-classic-batch-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".adobe-campaign-classic-batch-connector">Adobe Campaign Classic Batch</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/adobe-campaign-standard-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".adobe-campaign-standard-connector">Adobe Campaign Standard</a>
-      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side-connectors/adobe-campaign-standard-oauth-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".adobe-campaign-standard-oauth-connector">Adobe Campaign Standard (oAuth)</a>
+      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/adobe-campaign-standard-oauth-connector/" class="db link pr2 pv2 bg-secondary primary-color" data-target=".adobe-campaign-standard-oauth-connector">Adobe Campaign Standard (oAuth)</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/adobe-aep-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".adobe-aep-connector">Adobe Experience Platform</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -356,8 +356,8 @@ var utag_data = {
         <a href="/server-side-connectors/emailicious-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".emailicious-connector">Emailicious</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/emarsys-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".emarsys-connector">Emarsys</a>
-      </li><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
-        <a href="/server-side-connectors/enchant-connector/" class="db link pr2 pv2 bg-secondary primary-color" data-target=".enchant-connector">Enchant</a>
+      </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
+        <a href="/server-side-connectors/enchant-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".enchant-connector">Enchant</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
         <a href="/server-side-connectors/epsilon-event-api-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".epsilon-event-api-connector">Epsilon Event API</a>
       </li><li class="relative w-100 hover-accent-color-light fw4 f5 ">
@@ -735,7 +735,7 @@ var utag_data = {
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Enchant Connector Setup Guide</h1>
+<h1 class="lh-title mt30 mb3">Adobe Campaign Standard (oAuth) Connector Setup Guide</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -743,55 +743,82 @@ var utag_data = {
 
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to set up the Enchant connector in your Customer Data Hub account.
+      This article describes how to set up the Adobe Campaign Standard (oAuth) connector.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="connector-actions">Connector actions</h2>
+  <h2 id="api-information">API Information</h2>
+<p>This connector uses the following vendor API:</p>
+<ul>
+<li>API Name: Adobe Campaign Standard (OAuth)</li>
+<li>API Version: v1.0</li>
+<li>API Endpoint: <code>https://mc.adobe.io/</code></li>
+</ul>
+<h2 id="connector-actions">Connector Actions</h2>
 <table>
 <thead>
 <tr>
-<th><strong>Action Name</strong></th>
-<th><strong>AudienceStream</strong></th>
-<th><strong>EventStream</strong></th>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Create a New Customer</td>
+<td>Send Transactional Event</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>Update a Customer</td>
+<td>Trigger Signal Activity</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 <tr>
-<td>Create a Contact</td>
+<td>Create or Update Profile</td>
 <td>✓</td>
 <td>✗</td>
 </tr>
 </tbody>
 </table>
-<h2 id="configure-settings">Configure settings</h2>
+<h2 id="configure-settings">Configure Settings</h2>
 <p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>Access token</strong>
+<li><strong>Technical Account ID</strong>
 <ul>
-<li>To get an access token, install the API app from the apps tab of your help desk settings.</li>
-<li>Each instance of the API application has it&rsquo;s own access token.</li>
-<li>For more information about authentication, see the <a href="https://dev.enchant.com/api/v1#auth%22%3Ehttps://dev.enchant.com/api/v1#auth">Enchant Rest API</a> documenation.</li>
+<li>The Technical Account ID can be found in the <a href="https://console.adobe.io/">Adobe I/O Console</a>.</li>
+<li>For more information, see <a href="https://www.adobe.io/apis/experienceplatform/home/tutorials/alltutorials.html#!api-specification/markdown/narrative/tutorials/authenticate_to_acp_tutorial/authenticate_to_acp_tutorial.md#login-to-adobe-io-console">Authenticating and accessing Adobe Experience Platform APIs</a>.</li>
+</ul>
+</li>
+<li><strong>Organization ID</strong>
+<ul>
+<li>The Organization ID can be found in the <a href="https://console.adobe.io/">Adobe I/O Console</a>.</li>
+</ul>
+</li>
+<li><strong>Tenant ID</strong>
+<ul>
+<li>The Tenant ID can be found in your Adobe Marketing Cloud URL.</li>
+<li>Example: <a href="https://yourtenantid.experiencecloud.adobe.com/campaign.html">https://yourtenantid.experiencecloud.adobe.com/campaign.html</a></li>
+</ul>
+</li>
+<li><strong>API Key</strong>
+<ul>
+<li>The API Key (Client ID) can be found in the <a href="https://console.adobe.io/">Adobe I/O Console</a>.</li>
+</ul>
+</li>
+<li><strong>Secret Key</strong>
+<ul>
+<li>The Client Secret can be found in the <a href="https://console.adobe.io/">Adobe I/O Console</a>.</li>
 </ul>
 </li>
 </ul>
 <h2 id="action-settings---parameters-and-options">Action settings - parameters and options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
-<p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action---create-a-new-customer">Action - Create a New Customer</h3>
+<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<p>The following section describes how to set up parameters and options for each action.</p>
+<h3 id="action---send-transactional-event">Action - Send Transactional Event</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -802,20 +829,40 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>First name</td>
-<td><ul><li>First name of the customer.</li><li>For more information on this endpoint, see: <a href="https://dev.enchant.com/api/v1#customers">https://dev.enchant.com/api/v1#customers</a></li></ul></td>
+<td>Email</td>
+<td><ul><li>Required.</li><li>The email address of the recipient.</li></ul></td>
 </tr>
 <tr>
-<td>Last name</td>
-<td><ul><li>Last name of the customer.</li></ul></td>
+<td>Event ID</td>
+<td><ul><li>Required.</li><li>The type of event you want to send.</li><li>This ID is generated when creating the event definition.</li><li>For additional information, see the <a href="https://helpx.adobe.com/campaign/standard/administration/using/configuring-transactional-messaging.html">Adobe Campaign Documentation</a>.</li></ul></td>
 </tr>
 <tr>
-<td>Summary</td>
-<td><ul><li>Custom summary information.</li></ul></td>
+<td>Expiration Date</td>
+<td><ul><li>Optional.</li><li>The sending of the transactional event will be cancelled after this date.</li></ul></td>
+</tr>
+<tr>
+<td>Scheduled Send Date</td>
+<td><ul><li>Optional.</li><li>The transactional event will be processed and the transactional message will be sent at this date.</li></ul></td>
+</tr>
+<tr>
+<td>Transactional API Endpoint</td>
+<td><ul><li>Optional.</li><li>Specify to override default value of <code>mc</code> followed by Tenant ID from connector configuration.</li><li>This is typically applicable when working in your stage instance.</li><li>For example, if stage Tenant ID is <code>geometrixx-mkt-stage3</code>, then override Transactional API Endpoint to <code>geometrixx</code>.</li></ul></td>
+</tr>
+<tr>
+<td>Template Name</td>
+<td><ul><li>If using a template to pass data, input with <strong>Transactional Message Content Template</strong> and enter name of main template.</li><li>Do not include double curly braces in name. For example, use <code>SomeTemplateName</code> not <code>{{SomeTemplateName}}</code>.</li></ul></td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td><ul><li>Provide template variables as data input for <strong>Transactional Message Content Template</strong>.</li><li>For additional information, see: <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>).</li><li>Name nested template variables with the dot notation.</li><li>Example: <code>items.name</code></li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
+</tr>
+<tr>
+<td>Transactional Message Content Template</td>
+<td><ul><li>Template describing enriched transactional message content.</li><li>Templates are injected by name with double curly braces into supported fields.</li><li>Example: <code>{{SomeTemplateName}}</code></li><li>For additional information about using enriched message content, see Adobe&rsquo;s <a href="https://helpx.adobe.com/campaign/standard/administration/using/configuring-transactional-messaging.html">Campaign Documentation.</a></li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---update-a-customer">Action - Update a Customer</h3>
+<h3 id="action---trigger-signal-activity">Action - Trigger Signal Activity</h3>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
@@ -826,24 +873,20 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>Customer ID</td>
-<td><ul><li>ID of the customer.</li><li>For more information on this endpoint, see: <a href="https://dev.enchant.com/api/v1#customers">https://dev.enchant.com/api/v1#customers</a></li></ul></td>
+<td>Workflow ID</td>
+<td><ul><li>The ID of the workflow configured in your Adobe console.</li></ul></td>
 </tr>
 <tr>
-<td>First name</td>
-<td><ul><li>First name of the customer.</li></ul></td>
+<td>Source</td>
+<td><ul><li>Used to indicate the triggering request source.</li></ul></td>
 </tr>
 <tr>
-<td>Last name</td>
-<td><ul><li>Last name of the customer.</li></ul></td>
-</tr>
-<tr>
-<td>Summary</td>
-<td><ul><li>Custom summary information.</li></ul></td>
+<td>Parameter Map</td>
+<td><ul><li>It is possible to call a workflow with parameters.</li><li>Map a parameter&rsquo;s value to it&rsquo;s name.</li><li>String, Number, Boolean, and Date/Time types are supported.</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---create-a-contact">Action - Create a Contact</h3>
+<h3 id="action---create-or-update-profile">Action - Create or Update Profile</h3>
 <h4 id="parameters-2">Parameters</h4>
 <table>
 <thead>
@@ -854,16 +897,24 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>Customer ID</td>
-<td><ul><li>ID of the customer.</li><li>For more information on this endpoint, see: <a href="https://dev.enchant.com/api/v1#contacts">https://dev.enchant.com/api/v1#contacts</a></li></ul></td>
+<td>Update Strategy</td>
+<td><ul><li>Required</li><li>Select applicable update strategy.  <ul><li><strong>Create Only</strong> — Look up an existing profile and if not found, create a new profile.</li><li><strong>Update Only</strong> — Look up an existing profile and update it.</li><li><strong>Create or Update</strong> — Look up an existing profile and if found, update it, otherwise create a new profile.</li></ul> </li></ul></td>
 </tr>
 <tr>
-<td>Type</td>
-<td><ul><li>Either &ldquo;email&rdquo; or &ldquo;twitter.&quot;</li></ul></td>
+<td>Filter</td>
+<td><ul><li>Required when Update Strategy is <strong>Create Or Update</strong> or <strong>Update Only</strong>.</li><li>It is strongly recommended to select filters that return unique results.</li><li>For additional information, see <a href="https://experienceleague.adobe.com/docs/campaign-standard/using/developing/adding-or-extending-a-resource/uc-calling-resource-id-key.html?lang=en">Composite Identification Key</a>.</li><li>If the search result returns multiple profiles, only the first one is updated.</li></ul></td>
 </tr>
 <tr>
-<td>Value</td>
-<td><ul><li>Email or Twitter value.</li></ul></td>
+<td>Is Custom Filter</td>
+<td><ul><li>See <a href="https://experienceleague.adobe.com/docs/campaign-standard/using/working-with-apis/global-concepts/additional-operations/filtering.html?lang=en#custom-filters">about custom filters.</a></li></ul></td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td><ul><li>Provide template variables as data input.</li><li>For additional information, see <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>.</li><li>Name nested template variables with the dot notation.</li><li>Example: <code>items.name</code></li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
+</tr>
+<tr>
+<td>Templates</td>
+<td><ul><li>Provide templates to be referenced in body data.</li><li>For additional information, see <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Trimou Templating Engine Guide</a>.</li><li>Templates are injected by name with double curly braces into supported fields.</li><li>Example: <code>{{SomeTemplateName}}</code></li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -873,13 +924,13 @@ var utag_data = {
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/server-side-connectors/epsilon-event-api-connector/"
+  <a href="/server-side-connectors/adobe-campaign-standard-connector/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Epsilon Event API</div>
+      <div>Adobe Campaign Standard</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Epsilon Event API"</title>
+      <title>"Adobe Campaign Standard"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -888,14 +939,14 @@ var utag_data = {
 </div><div class="di mr3">
   
   
-  <a href="/server-side-connectors/emarsys-connector/"
+  <a href="/server-side-connectors/adobe-campaign-connector/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Emarsys "</title>
+      <title>"Adobe Campaign "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>Emarsys</div>
+      <div>Adobe Campaign</div>
     </section>
   </a>
   
@@ -927,7 +978,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 24, 2020 
+          <p>This page was last updated:  December 27, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -941,12 +992,13 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector actions</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure settings</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#api-information">API Information</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action settings - parameters and options</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---create-a-new-customer">Action - Create a New Customer</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---update-a-customer">Action - Update a Customer</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---create-a-contact">Action - Create a Contact</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-transactional-event">Action - Send Transactional Event</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---trigger-signal-activity">Action - Trigger Signal Activity</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---create-or-update-profile">Action - Create or Update Profile</a></li>
               </nav>
   </aside></nav>
 
