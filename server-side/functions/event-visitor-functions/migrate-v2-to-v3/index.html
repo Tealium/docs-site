@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side",
-    reading_time  : "2",
+    reading_time  : "4",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -865,66 +865,235 @@ var utag_data = {
 
   
     <p class="f4 fw3 lh-copy">
-      New event and visitor functions use the V3 runtime. Existing functions that use the V2 runtime need to be migrated to the V3 runtime. This article provides information on the migration process.
+      New event and visitor functions use the <strong>Action V3</strong> runtime. Existing functions that use the <strong>Action V2</strong> runtime need to be migrated to the <strong>Action V3</strong> runtime. This article provides information on the migration process.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Event and visitor functions that use the V3 runtime differ from V2 functions as follows:</p>
+  <h2 id="how-v3-and-v2-functions-differ">How V3 and V2 functions differ</h2>
+<p>Event and visitor functions that use the V3 runtime differ from V2 functions as follows:</p>
 <ul>
-<li>Input data is provided as parameters instead of named exports.
+<li><strong>Parameters and named exports</strong> – Input data is provided as parameters instead of named exports.
 <ul>
 <li>An event function has two parameters: <code>event</code> and <code>helper</code>.</li>
 <li>A visitor function has three parameters: <code>visitor</code>, <code>visit</code>, and <code>helper</code>.</li>
 </ul>
 </li>
-<li>The <code>helper</code> object is used to get an authentication token ID or retrieve global variables. <code>auth.get()</code> and <code>store.get()</code> have been replaced with <code>helper.getAuth()</code> and <code>helper.getGlobalVariable()</code>.</li>
-<li><code>track()</code> is used to send events to Tealium Collect.</li>
+<li><strong>Helper functions</strong> – The <code>helper</code> object is used to get an authentication token ID or retrieve global variables.
+<ul>
+<li><code>auth.get()</code> has been replaced with <code>helper.getAuth()</code>.</li>
+<li><code>store.get()</code> has been replaced with <code>helper.getGlobalVariable()</code>.</li>
 </ul>
-<h2 id="migrate-function-code">Migrate function code</h2>
-<p>To migrate a V2 function to the V3 runtime, follow these steps:</p>
+</li>
+<li><strong>Collect event</strong>
+<ul>
+<li><code>tealium.sendCollectEvent()</code> has been replaced by <code>track()</code>, which uses named parameters.</li>
+</ul>
+</li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Data transformation functions use the <strong>Transformation V0</strong> runtime and are not affected by the release of the V3 runtime.</p>
+<h3 id="example-v2-function">Example V2 function</h3>
+<p>The following code examples show a V2 event function that sends an event to the collect endpoint and the V3 version of this event function.</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content"><div class="tab-pane" data-lang="V2" title="V2">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">event</span>, <span style="color:#a6e22e">tealium</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;tealium&#34;</span>;
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">async</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">searchQuery</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">URLSearchParams</span>({ <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">dom</span>.<span style="color:#a6e22e">pathname</span>, <span style="color:#a6e22e">query</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">dom</span>.<span style="color:#a6e22e">search_query</span> });
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newEvent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">`https://getnew.event.com?</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">searchQuery</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`Network response was not ok. Status code: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.`</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tealium</span>.<span style="color:#a6e22e">sendCollectEvent</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">newEvent</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">account</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">profile</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;abc123&#39;</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>){
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`Network response was not ok. Status code: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.`</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">text</span>();
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">data</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Result : &#39;</span>, <span style="color:#a6e22e">data</span>))
+</span></span><span style="display:flex;"><span>        .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>));
+</span></span><span style="display:flex;"><span>})();
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="V3" title="V3">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">event</span> }) =&gt; {  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">searchQuery</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">URLSearchParams</span>({ <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">dom</span>.<span style="color:#a6e22e">pathname</span>, <span style="color:#a6e22e">query</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">dom</span>.<span style="color:#a6e22e">search_query</span> });
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newEvent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">`https://getnew.event.com?</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">searchQuery</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`Network response was not ok. Status code: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.`</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">newEvent</span>, {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">tealium_account</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">account</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">tealium_profile</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">profile</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">tealium_datasource</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;abc123&#39;</span>
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>){
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`Network response was not ok. Status code: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.`</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">text</span>();
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">data</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Result : &#39;</span>, <span style="color:#a6e22e">data</span>))
+</span></span><span style="display:flex;"><span>        .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>));
+</span></span><span style="display:flex;"><span>})();
+</span></span></code></pre></div>
+</div>
+</div>
+</div>
+
+<h2 id="create-a-v3-function">Create a V3 function</h2>
+<p>To migrate an event or visitor function to V3, create a V3 event or visitor function, depending on the type of function to be migrated. For more information, see <a href="/server-side/functions/manage-functions/create-function/">Create a function</a>. Then do the following:</p>
 <ol>
-<li>Create a new function of the appropriate type (event or visitor).<br>
-For more information, see <a href="/server-side/functions/manage-functions/create-function/">Create a function</a>.</li>
-<li>Replace the default function code with an empty event or visitor function, as follows:<br>
+<li>
+<p>In the code editor, delete all of the the default code for the V3 function, then add the following event or visitor code, which is an empty function.<br>
+We will add the function code in the next step, then modify the code.
 
 <div class="code-tabs">
   <ul class="nav nav-tabs"></ul>
   <div class="tab-content"><div class="tab-pane" data-lang="Event function" title="Event function">
-  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">event</span>, <span style="color:#a6e22e">helper</span> }) =&gt; {  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">event</span> }) =&gt; {  
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div>
 </div>
 <div class="tab-pane" data-lang="Visitor function" title="Visitor function">
-  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">visitor</span>, <span style="color:#a6e22e">visit</span>, <span style="color:#a6e22e">helper</span> }) =&gt; {  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">visitor</span>, <span style="color:#a6e22e">visit</span> }) =&gt; {  
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div>
 </div>
 </div>
 </div>
+</p>
 </li>
-<li>Copy the code from your V2 function that is between the opening and closing curly braces, { }, for the function. The import statements and the function declaration are not needed.</li>
-<li>Paste the code into the new function.</li>
-<li>If your V2 function used other libraries, such as CrytpoES, import them as before. For more information on importing libraries, see <a href="/server-side/functions/modules/">APIs and libraries for functions</a>. For example:<br>
-<code>import CryptoES from 'crypto-es';</code></li>
-<li>If your V2 function used <code>auth.get()</code> or <code>store.get()</code> add <code>helper</code> to the function parameters. For example:<br>
-<code>activate(async ({ event, helper }) =&gt; {</code></li>
-<li>Replace any instances of <code>auth.get()</code> with <code>helper.getAuth()</code>.</li>
-<li>Replace any instances of <code>store.get()</code> with <code>helper.getGlobalVariable()</code>.</li>
-<li>If your V2 function used <code>tealium.sendCollectEvent()</code>, replace these calls with <code>track()</code> calls, as follows:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(({ <span style="color:#a6e22e">event</span> }) =&gt; {
+<li>
+<p>Copy the code from the V2 function, starting after the first line of the function, shown below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>(<span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">event</span>, <span style="color:#a6e22e">helper</span>) =&gt; {
+</span></span></code></pre></div><p>and ending above the last line of the function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>})();
+</span></span></code></pre></div></li>
+<li>
+<p>Paste the copied code into the empty V3 function, between the <code>activate</code> line and the ending line <code>});</code>.</p>
+</li>
+</ol>
+<h2 id="update-the-function-code">Update the function code</h2>
+<p>If your function uses libraries or helper functions, or sends events to Tealium Collect, the code copied into the empty function needs to be modified as described in the following sections.</p>
+<h3 id="send-events-to-tealium-collect">Send events to Tealium Collect</h3>
+<p>The example function uses <code>tealium.sendCollectEvent()</code>. This call needs to be replaced with a <code>track()</code> call. The examples below show the V2 <code>tealium.sendCollectEvent()</code> call and the V3 <code>track()</code> call.</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content"><div class="tab-pane" data-lang="V2" title="V2">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">event</span>, <span style="color:#a6e22e">tealium</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">async</span> () =&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newEvent</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">udo</span> };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tealium</span>.<span style="color:#a6e22e">sendCollectEvent</span>(<span style="color:#a6e22e">newEvent</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">account</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">profile</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;abc123&#39;</span>)
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>})();
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="V3" title="V3">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(({ <span style="color:#a6e22e">event</span> }) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newEvent</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">udo</span> };
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">newEvent</span>, {
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">tealium_account</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">account</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">tealium_profile</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">profile</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">tealium_datasource</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;abc123&#39;</span>
 </span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    ...
 </span></span><span style="display:flex;"><span>})
-</span></span></code></pre></div></li>
-</ol>
+</span></span></code></pre></div>
+</div>
+</div>
+</div>
+
+<p>In the <code>track()</code> call, replace <code>'abc123'</code> with your data source key.</p>
+<h3 id="use-libraries">Use libraries</h3>
+<p>If your V2 function uses libraries, such as CrytpoES, add the import line before the <code>activate</code> line.</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content"><div class="tab-pane" data-lang="V2" title="V2">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">event</span>, <span style="color:#a6e22e">tealium</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;tealium&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">CryptoES</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;crypto-es&#39;</span>;
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="V3" title="V3">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">CryptoES</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;crypto-es&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">event</span>, <span style="color:#a6e22e">helper</span> }) =&gt; {  
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div>
+</div>
+</div>
+</div>
+
+<h3 id="authentication-tokens-and-global-variables">Authentication tokens and global variables</h3>
+<p>If your V2 function uses authentication tokens or global variables, add <code>helper</code> to the function parameters in the <code>activate</code> line of the V3 function. For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(<span style="color:#66d9ef">async</span> ({ <span style="color:#a6e22e">event</span>, <span style="color:#a6e22e">helper</span> }) =&gt; {
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>Replace any instances of <code>auth.get()</code> in the V2 code with <code>helper.getAuth()</code>. For example:</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content"><div class="tab-pane" data-lang="V2" title="V2">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">auth</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">token</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">auth</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;myAuthToken&#34;</span>);
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="V3" title="V3">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(({<span style="color:#a6e22e">event</span>, <span style="color:#a6e22e">helper</span> }) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">token</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">helper</span>.<span style="color:#a6e22e">getAuth</span>(<span style="color:#e6db74">&#34;myAuthToken&#34;</span>);
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div>
+</div>
+</div>
+</div>
+
+<p>Replace any instances of <code>store.get()</code> with <code>helper.getGlobalVariable()</code>. For example:</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content"><div class="tab-pane" data-lang="V2" title="V2">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> {<span style="color:#a6e22e">store</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">gVar</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;myGlobalVar&#34;</span>);
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="V3" title="V3">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">activate</span>(({<span style="color:#a6e22e">event</span>, <span style="color:#a6e22e">helper</span> }) =&gt; {    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">gVar</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">helper</span>.<span style="color:#a6e22e">getGlobalVariable</span>(<span style="color:#e6db74">&#34;myGlobalVar&#34;</span>);
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div>
+</div>
+</div>
+</div>
+
 
 </div>
 
@@ -985,7 +1154,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 28, 2023 
+          <p>This page was last updated:  December 29, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -999,7 +1168,13 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#migrate-function-code">Migrate function code</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-v3-and-v2-functions-differ">How V3 and V2 functions differ</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#example-v2-function">Example V2 function</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#create-a-v3-function">Create a V3 function</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#update-the-function-code">Update the function code</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#send-events-to-tealium-collect">Send events to Tealium Collect</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#use-libraries">Use libraries</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#authentication-tokens-and-global-variables">Authentication tokens and global variables</a></li>
               </nav>
   </aside></nav>
 

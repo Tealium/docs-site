@@ -756,11 +756,11 @@ var utag_data = {
 <ul>
 <li>When the current version has been published to production, to preserve the option to revert back, use <strong>Save As</strong>.</li>
 <li>When beginning a new project, use <strong>Save As</strong> to create a new version to separate it from the previous work.</li>
-<li>When you unsure which option to choose, the <strong>Save As</strong> method is safest because it allows you to revert to the previous version.</li>
+<li>When you are unsure which option to choose, the <strong>Save As</strong> method is safest because it allows you to revert to the previous version.</li>
 </ul>
-<p>Learn more about <a href="/iq-tag-management/save-publish/about-saving/">saving and publishing</a>.</p>
+<p>For more information, see <a href="/iq-tag-management/save-publish/about-saving/">About saving</a> and <a href="/iq-tag-management/save-publish/about-publishing/">About publishing</a>.</p>
 <h4 id="example-save-as-vs-overwrite-to-preserve-the-prod-version">Example: Save As vs Overwrite to preserve the Prod version</h4>
-<p>In this example, there is a version published to Prod and we want to preserve that version that we can revert back it if necessary.</p>
+<p>In this example, there is a version published to Prod and we want to preserve that version so we can revert it back if necessary.</p>
 <h5 id="correct">Correct</h5>
 <p>&ldquo;Version A&rdquo; is published to all three environments (Dev, QA, and Prod). After making changes, a <strong>Save As</strong> is performed to create a new version, &ldquo;Version B&rdquo;. It is then published to all environments again. This provides the option to rollback to the previous Prod version (Version A) if necessary.</p>
 <h5 id="incorrect">Incorrect</h5>
@@ -804,33 +804,10 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
+<p>For more information, see <a href="/iq-tag-management/labels/about/">About Labels</a>.</p>
 <h2 id="data-layer-object">Data layer object</h2>
-<p>This content has been moved: <a href="/iq-tag-management/data-layer/best-practices/">Data layer best practices</a></p>
+<p>See <a href="/iq-tag-management/data-layer/best-practices/">Data layer best practices</a>.</p>
 <h2 id="event-tracking">Event tracking</h2>
-<h3 id="replace-hard-coded-vendor-tags">Replace hard-coded vendor tags</h3>
-<p>When adding event tracking code to your site, we recommend replacing all existing hard-coded vendor tags with Universal Tag tracking code. The behavior of individual tags can be controlled within the Tealium iQ Tag Management console.</p>
-<table>
-<thead>
-<tr>
-<th>Pros</th>
-<th>Cons</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Centralizes the management of event tracking to the Tealium iQ console.</td>
-<td>Developers might be more familiar with the vendor&rsquo;s code.</td>
-</tr>
-<tr>
-<td>Once you learn to do event tracking within Tealium, you will not have to learn vendor-specific event tracking solutions.</td>
-<td></td>
-</tr>
-<tr>
-<td>You can reuse event names and variables for multiple vendors, which eliminates duplicate work.</td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h3 id="event-names">Event names</h3>
 <p>Tealium uses the variable <code>tealium_event</code> to uniquely identify each event type that is tracked on the site. Set this variable to a value identifying the event being tracked (Tealium naming convention applies).</p>
 <p>Suggested values include, but are not limited to:</p>
@@ -880,7 +857,7 @@ var utag_data = {
 <ul>
 <li>Implementation is clearer due to consistent variable names and values.</li>
 <li>Data mapping is easier because there is a single identifier for event types.</li>
-<li>Event are grouped into categories by the prefix of the name (<code>product_</code>, <code>cart_</code>, <code>user_</code>).</li>
+<li>Events are grouped into categories by the prefix of the name (<code>product_</code>, <code>cart_</code>, <code>user_</code>).</li>
 </ul>
 <h4 id="sample-event-tracking-script">Sample event tracking script</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">link</span>({
@@ -889,27 +866,20 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">product_price</span>    <span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;12.50&#34;</span>],
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">product_quantity</span> <span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;2&#34;</span>]
 </span></span><span style="display:flex;"><span>});
-</span></span></code></pre></div><h3 id="event-listeners-versus-utaglink">Event listeners versus utag.link()</h3>
-<p>Tealium has two options for tracking clicks and other events on a site:</p>
-<ul>
-<li>Configuring <a href="/iq-tag-management/events/about/">event listeners</a> in the Tealium iQ interface.</li>
-<li>Coding <code>utag.link()</code> directly in the page.</li>
-</ul>
-<p>Consider using event listeners in the following situations:</p>
-<ul>
-<li>The website, development team, or release cycles do not allow for hardcoded tracking calls.</li>
-<li>Scroll tracking and video tracking are much easier to implement with event listeners.</li>
-<li>Strong selectors and tracking data elements are available.</li>
-</ul>
-<p>Consider using hardcoded <code>utag.link()</code> calls in the following situations:</p>
-<ul>
-<li>The event requires data not available in the DOM.</li>
-<li>Business-critical KPIs (Key Performance Indicators).</li>
-<li>When easier to integrate with site functionality, such as modals and form validation.</li>
-</ul>
-<h2 id="performance">Performance</h2>
+</span></span></code></pre></div><h2 id="performance">Performance</h2>
+<h3 id="update-utagjs">Update utag.js</h3>
+<p>We recommend that you keep current with the <a href="/platforms/javascript/release-notes/">latest version of <code>utag.js</code></a> to reduce your QA work and to ensure that your profile contains the test optimizations and features.</p>
+<p>For more information, see <a href="/iq-tag-management/templates/manage/">Manage Templates</a>.</p>
+<h3 id="update-tag-templates-to-latest-version">Update tag templates to latest version</h3>
+<p>We recommend that you update all tags and tag templates to the latest versions to ensure that tags fire correctly. Run the <a href="/iq-tag-management/templates/template-status-checker/">Template Status Checker</a> tool to see which tags need to be updated. Also, check the <a href="/client-side-tags/release-notes/">Release notes for client-side tags</a> for news of updated or deprecated tags.</p>
+<p>For more information, see <a href="/iq-tag-management/templates/manage/#update-a-template">Update a template</a>.</p>
+<h3 id="combine-multiple-vendor-tags">Combine multiple vendor tags</h3>
+<p>When you combine multiple tags from one vendor into a single instance of the tag, the page performance improves because fewer <code>utag.#.js</code> files are loaded on the page. This approach also makes it easier to maintain the configuration for the vendor tag in Tealium iQ.</p>
+<p>For more information, see <a href="/client-side-tags/configuring-multiple-floodlight-tags/">Configuring Multiple Floodlight Tags</a></p>
 <h3 id="load-utagjs-asynchronously">Load utag.js asynchronously</h3>
-<p>The best practice is to loading all tags and vendor code asynchronously. In this method, tags are loaded in parallel to the rest of the page content. This means that even if the tag is slow to respond or to load, it will not slow down the rest of the site.</p>
+<p>The best practice is to load all tags and vendor code asynchronously. In this method, tags are loaded in parallel to the rest of the page content. Even if the tag is slow to respond or to load, it will not slow down the rest of the site.</p>
+<p>Synchronous loading is necessary is when tags or vendor code are dependent on each other to load, such as when code to retrieve data for personalization of page content is needed. This option will slow down the loading of the site, but it will ensure that the correct data is loaded (for example, the visitor&rsquo;s name or shipping location) before the rest of the page is displayed.</p>
+<p>For more information, see <a href="/iq-tag-management/tags/advanced-settings/#synchronous-load">Synchronous Load</a>.</p>
 <table>
 <thead>
 <tr>
@@ -924,13 +894,17 @@ var utag_data = {
 </tr>
 <tr>
 <td>External files that are slow to respond will not halt page load or break the page.</td>
+<td>If granular control is required, use <code>utag.sync</code> and include any personalization or A/B testing functionality in there.</td>
+</tr>
+<tr>
 <td></td>
+<td>External vendor scripts and files that respond slowly may miss tracking calls.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="bundle-tags">Bundle tags</h3>
-<p>The <strong>Bundle Tags</strong> feature is set within the publish settings of the profile. Enabling this feature will cause the vendor tag code to be included in the main utag.js file. This reduces the number of HTTP requests that are sent from your page and improves performance.</p>
-<p>Learn More: <a href="/iq-tag-management/tags/advanced-settings/#bundle-flag">Tags: Advanced Settings (Bundle Flag)</a></p>
+<p>The <strong>Bundle Tags</strong> feature is set within the publish settings of the profile. Enabling this feature will cause the vendor tag code to be included in the main <code>utag.js</code> file. This reduces the number of HTTP requests that are sent from your page and improves performance.</p>
+<p>For more information, see <a href="/iq-tag-management/tags/advanced-settings/#bundle-flag">Bundle Flag</a>.</p>
 <table>
 <thead>
 <tr>
@@ -941,20 +915,21 @@ var utag_data = {
 <tbody>
 <tr>
 <td>Reduces the overall size of Tealium files that load on your site due to more efficient gzip compression.</td>
-<td>Added risk that a published syntax error in a bundled tag will cause the <code>utag.js</code> file to fail.</td>
+<td>None</td>
 </tr>
 <tr>
 <td>Important tags (analytics) execute sooner which improves tracking on landing pages.</td>
 <td></td>
 </tr>
 <tr>
-<td>Fewer network requests from the page since more tags are placed within utag.js instead of their own utag.#.js files.</td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <h3 id="page-code-placement">Page code placement</h3>
 <p>We recommend that the Universal Tag (<code>utag.js</code>) be placed at the top of the body tag (as opposed to the head or footer), keeping in mind that the data layer object must be declared and populated prior to this. This placement provides the best compatibility with the greatest number of vendors.</p>
+<p>For more information, see <a href="/iq-tag-management/getting-started/install/code-center/">Code Center</a>.</p>
 <table>
 <thead>
 <tr>
@@ -976,6 +951,7 @@ var utag_data = {
 <h3 id="tag-timing">Tag timing</h3>
 <p>The <strong>Tag Timing</strong> setting determines if a tag is fired immediately or at DOM Ready. When <strong>Tag Timing</strong> is set to <code>Prioritized</code>, the tag is executed as soon as it&rsquo;s loaded into the page. When <strong>Tag Timing</strong> is set to <code>DOM Ready</code>, the tag waits until the DOM Ready event to execute. This setting is found in the <a href="/iq-tag-management/tags/advanced-settings/#tag-timing">Advanced Settings for each tag</a>.</p>
 <p class="tip"><i class="fa fa-info-circle"></i>To prioritize the execution of important tags (such as analytics), set the <strong>Wait Flag</strong> to off.</p>
+<p>For more information, see <a href="/iq-tag-management/tags/advanced-settings/#tag-timing">Tag Timing</a>.</p>
 <table>
 <thead>
 <tr>
@@ -1012,6 +988,7 @@ Variables referenced in code must use the actual name, which can be cryptic or u
 Built-in extensions are guaranteed to generate the same consistent code every time you publish, eliminating the risk of syntax errors.<br>
 Custom JavaScript code always runs the risk of introducing unexpected syntax errors (although the publish engine will usually catch these) or runtime errors.</li>
 </ul>
+<p>For more information, see <a href="/iq-tag-management/extensions/about/">About Extensions</a>.</p>
 <table>
 <thead>
 <tr>
@@ -1022,7 +999,7 @@ Custom JavaScript code always runs the risk of introducing unexpected syntax err
 <tbody>
 <tr>
 <td>Easier to understand and maintain for most users.</td>
-<td>May take slightly longer to set up.</td>
+<td>None</td>
 </tr>
 <tr>
 <td>Easier to debug when an issue arises.</td>
@@ -1034,6 +1011,8 @@ Custom JavaScript code always runs the risk of introducing unexpected syntax err
 </tr>
 </tbody>
 </table>
+<h3 id="remove-tag-code-from-extensions">Remove tag code from extensions</h3>
+<p>We recommend that you run tag code from the Tag Marketplace or a custom container instead of running the code snippet from an extension. This makes it easier for you to maintain tags.</p>
 <h3 id="global-vs-local-javascript-variables">Global vs. local JavaScript variables</h3>
 <p>In JavaScript Code extensions, be sure to explicitly define global and local variables using <code>var</code> and <code>window</code>. This prevents naming conflicts with the variables declared in <code>utag.js</code> or globally in the page.</p>
 <p>Incorrect:</p>
@@ -1051,18 +1030,19 @@ Custom JavaScript code always runs the risk of introducing unexpected syntax err
 <tbody>
 <tr>
 <td>Avoids collisions with other variables elsewhere on the site.</td>
-<td></td>
+<td>None</td>
 </tr>
 </tbody>
 </table>
 <h2 id="load-rules">Load rules</h2>
 <h3 id="check-variables-to-ensure-they-exist">Check variables to ensure they exist</h3>
-<p>Tealium recommends that you verify that a variable exists before you check the value of that variable. The following example verifies if <code>MyVariable</code> is defined before checking if its value is equal to 1000: <figure><a class="slb" href="/images/iq-tag-management/load-rules/variable-is-defined.png"><img src="/images/iq-tag-management/load-rules/variable-is-defined.png"
+<p>We recommend that you verify that a variable exists before you check the value of that variable. The following example verifies if <code>MyVariable</code> is defined before checking if its value is equal to 1000: <figure><a class="slb" href="/images/iq-tag-management/load-rules/variable-is-defined.png"><img src="/images/iq-tag-management/load-rules/variable-is-defined.png"
          alt="Is the variable defined"
          title="Is the variable defined"/>
     </a>
 </figure></p>
 <p>If you do not verify that the variable exists and its value is <code>null</code>, the code throws an error and may cause the tag not to fire.</p>
+<p>For more information, see <a href="/iq-tag-management/load-rules/about/">About Load Rules</a>.</p>
 <table>
 <thead>
 <tr>
@@ -1073,7 +1053,7 @@ Custom JavaScript code always runs the risk of introducing unexpected syntax err
 <tbody>
 <tr>
 <td>Avoids error condition if the variable is not defined.</td>
-<td></td>
+<td>None</td>
 </tr>
 </tbody>
 </table>
@@ -1122,7 +1102,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 30, 2023 
+          <p>This page was last updated:  December 29, 2023 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1141,17 +1121,19 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#labels-and-titles">Labels and titles</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-layer-object">Data layer object</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-tracking">Event tracking</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#replace-hard-coded-vendor-tags">Replace hard-coded vendor tags</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-names">Event names</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-listeners-versus-utaglink">Event listeners versus utag.link()</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-names">Event names</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#performance">Performance</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-utagjs-asynchronously">Load utag.js asynchronously</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#update-utagjs">Update utag.js</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#update-tag-templates-to-latest-version">Update tag templates to latest version</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#combine-multiple-vendor-tags">Combine multiple vendor tags</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-utagjs-asynchronously">Load utag.js asynchronously</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#bundle-tags">Bundle tags</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#page-code-placement">Page code placement</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-timing">Tag timing</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#only-load-event-listeners-when-necessary">Only load event listeners when necessary</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#extensions">Extensions</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#use-built-in-extensions">Use built-in extensions</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#remove-tag-code-from-extensions">Remove tag code from extensions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#global-vs-local-javascript-variables">Global vs. local JavaScript variables</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules">Load rules</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#check-variables-to-ensure-they-exist">Check variables to ensure they exist</a></li>

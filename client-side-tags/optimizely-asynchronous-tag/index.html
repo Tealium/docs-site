@@ -814,10 +814,10 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <p class="note"><i class="fa fa-exclamation-triangle"></i>For options to implement Optimizely synchronously see this <a href="/client-side-tags/optimizely-synchronous-implementation/">POST</a>.</p>
-<p>There are two methods of implementing the Optimizely Asynchronous tag. The content of your site and your testing requirements will determine which approach to use. It is recommended that you try the two methods in the order they appear in this post.</p>
+<p>There are two methods of implementing the Optimizely Asynchronous tag. The content of your site and your testing requirements will determine which approach to use. We recommend that you try the two methods in the order they appear in this post.</p>
 <p><strong>NOTE:</strong> Both methods assume the <code>utag.js</code> file is coded asynchronously on the page.</p>
 <h2 id="method-1-recommended-bundle-optimizely-async-tag-and-load-on-all-pages">Method 1 (RECOMMENDED): Bundle Optimizely Async Tag and load on all pages</h2>
-<p>This method is recommended because the tag will not block anything else from loading in the page.</p>
+<p>We recommend this method because the tag will not block anything else from loading in the page.</p>
 <h3 id="step-1-enable-the-bundling-feature-for-tags-that-will-load-on-all-pages">Step 1: Enable the Bundling feature for Tags that will load on all pages.</h3>
 <ol>
 <li>In the admin menu, click <strong>Configure Publish Settings</strong>. The <strong>Publish Configuration</strong> dialog appears.</li>
@@ -872,7 +872,7 @@ For example:  <code>&lt;script src=&quot;//cdn.optimizely.com/js/123456789.js&qu
 </tbody>
 </table>
 <h3 id="step-3-savepublish-your-profile">STEP 3: Save/Publish your profile.</h3>
-<p><strong>IMPORTANT</strong>: For the Async Tag to fire as soon as possible, make sure the <code>utag.js</code> file is coded as high in the page as possible. Tealium recommends placing the utag.js at the top of the HTML &lt;body&gt; tag. Tealium will load the Optimizely JavaScript file and take care of the rest.</p>
+<p><strong>IMPORTANT</strong>: For the Async Tag to fire as soon as possible, make sure the <code>utag.js</code> file is coded as high in the page as possible. We recommend placing the utag.js at the top of the HTML &lt;body&gt; tag. Tealium will load the Optimizely JavaScript file and take care of the rest.</p>
 <h2 id="method-2-run-optimizely-as-blocking-tag">Method 2: Run Optimizely as blocking Tag</h2>
 <p>Optimizely typically prefers to be synchronous on the page so it can run &ldquo;sooner&rdquo; and determine the test before other stuff (like your Analytics tool) runs. However, the only way to have Optimizely run soon enough and still be asynchronous is by serving its <code>.js</code> library from an alternate location. In doing so, the Optimizely Async Tag becomes a blocking Tag and any subsequent asynchronous scripts (for example, <code>utag.10.js</code>) will not load until the <a href="/iq-tag-management/templates/manage/">blocking Tag</a> is complete.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Make sure to upgrade the <code>utag.js</code> version if you are not already using the latest (see <a href="/platforms/javascript/release-notes/">utag.js Release Notes</a>).</p>

@@ -342,8 +342,20 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="tealium-universal-tag-utag-js-release-notes"><a href="/platforms/javascript/release-notes/">Tealium Universal Tag (utag.js) </a></h2>
-          <p><a href="/iq-tag-management/templates/manage/">Update your copy of <code>utag.js</code></a> to take advantage of the latest fixes and enhancements.</p>
+          <p><a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">Update your <code>utag.js</code> template</a> to take advantage of the latest fixes and enhancements.</p>
 <h2 id="september-2023">September 2023</h2>
+<h3 id="updating-to-utagjs-version-450-or-later">Updating to <code>utag.js</code> version 4.50 or later</h3>
+<p>We recommend the following steps to ensure a smooth transition when updating to version 4.50 or later:</p>
+<ul>
+<li>Be sure to update the Tealium Collect tag and all active Consent management templates, especially the Event Logging feature.</li>
+<li>If you have multiple iQ profiles running on the same site, complete these steps to ensure that all instances of <code>utag.js</code> on your site start using the new cookie behavior simultaneously, preventing conflicts or compatibility issues:
+<ol>
+<li>Update all <code>utag.js</code> templates to the latest version.</li>
+<li>Set the <a href="/platforms/javascript/settings/#split_cookie"><code>split_cookie</code></a> override to <code>false</code> on each profile to use legacy cookie behavior and maintain compatibility with older versions of utag.js still running on your site for the duration of the transition.</li>
+<li>Once all <code>utag.js</code> templates have been updated and are setting the <code>split_cookie</code> override to maintain the legacy cookie behavior, you can remove the cookie override on all profiles at the same time.</li>
+</ol>
+</li>
+</ul>
 <h3 id="451">4.51</h3>
 <ul>
 <li>Fixes cookie expiration issues, including one in specific browser and timezone/region settings when using <code>utag.js</code> version 4.50.</li>
@@ -351,7 +363,6 @@ var utag_data = {
 <h3 id="450">4.50</h3>
 <p>Version 4.50 provides more transparency and control over cookies written by <code>utag.js</code>.</p>
 <p>Previously, we recommended using multi-value cookies (multicookies). However, due to the increasing demand for transparency and simplicity, particularly for data privacy audits, we have revised our recommendation. Now, we advise using standalone cookies, which is now the default behavior in <code>utag.js</code>.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Be sure to update the Tealium Collect tag and all active Consent management templates, especially the Event Logging feature, when you update to <code>utag.js</code> version 4.50.</p>
 <p>This release includes the following updates:</p>
 <ul>
 <li>Writes separate <code>utag_main</code> cookies instead of a single multi-value cookie. To use the legacy behavior that stores multiple values in a single cookie, set <a href="/platforms/javascript/settings/#split_cookie"><code>split_cookie</code></a> to <code>false</code>.</li>
