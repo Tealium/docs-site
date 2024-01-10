@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "platforms",
-    reading_time  : "2",
+    reading_time  : "3",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -202,8 +202,8 @@ var utag_data = {
     <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/platforms/" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>Platforms</a></li>
   
   </ul>
-  <ul class="list pa0"><li class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><span class="pb2">Magento 2.x</span>
-        <ul class="pl2 magento desktopmenu animated fadeIn list pl0 mt2"><li class="selected relative w-100 hover-accent-color-light fw4 f5 ">
+  <ul class="list pa0"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><span class="pb2">Magento 2.x</span>
+        <ul data-level="1" class="magento desktopmenu animated fadeIn list pl0 mt2"><li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/platforms/magento/install/" class="db link pr2 pv2 bg-secondary primary-color" data-target=".magento-install">Install</a>
       </li></ul></li></ul>
 </nav>
@@ -261,21 +261,51 @@ var utag_data = {
 <li>The Tealium environment to use (prod, qa, dev, or custom)</li>
 </ul>
 <h2 id="how-it-works">How it Works</h2>
-<p>In its current state, Tealium for Magento 2 is an implementation of minimal boilerplate code for implementing and extending universal data objects (UDOs) for various page types. It relies heavily on Magento&rsquo;s prescribed dependency injection system and layout systems. Included is a simple script that will scaffold out boilerplate code when creating a new UDO. It allows you to specify any UDOs that it may extend, and which pages of the site the new UDO should appear on. When finished, you&rsquo;re left with a scaffolded template that needs to be filled in with any data specific logic for your particular use case.</p>
-<p>To learn more, see the <a href="/platforms/getting-started-web/data-layer/an-introduction-to-the-data-layer/">Introduction to the Data Layer</a>.</p>
-<p>Learn more in the <a href="http://devdocs.magento.com/">Magento Documentation</a>.</p>
+<p>The Tealium for Magento extension provides a robust implementation of minimal boilerplate code to implement and extend universal data objects (UDOs) across various page types. Leveraging Magento&rsquo;s prescribed dependency injection and layout systems, the module simplifies the process of creating and extending UDOs.</p>
+<p>The extension includes a simple script that scaffolds out boilerplate code when creating a new UDO. It allows you to specify any UDOs that it may extend and which pages of the site the new UDO should appear on. When finished, you will have a scaffolded template that needs to be filled in with any data-specific logic for your particular use case.</p>
+<p>For more information about Magento, see <a href="http://devdocs.magento.com/">Magento Documentation</a>.</p>
 <h2 id="install">Install</h2>
-<p>Install Magento 2.x by copying the Tealium folder from Github to the app/code within your Magento folder as follows:</p>
-<pre tabindex="0"><code>sudo php bin/magento setup:upgrade
-
-sudo php -d set_time_limit=3600 -d memory_limit=1024M bin/magento setup:di:compile
-</code></pre><h2 id="configure">Configure</h2>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The following prodecure uses commands for an Ubuntu server environment. For other server environments, adjust the commands accordingly.</p>
+<p>To install Tealium in your Magneto system:</p>
+<ol>
+<li><strong>Enable maintenance mode</strong>: Enable maintenance mode before installing the extension to avoid any user issues. To enable maintenance mode, run the following command:
+<pre tabindex="0"><code>php bin/magento maintenance:enable
+</code></pre></li>
+<li><strong>Copy the Tealium folder</strong>: Copy the Tealium folder from <a href="https://github.com/Tealium/integration-magento2/tree/DependencyUpdates">GitHub</a> to <code>app/code/Tealium/Tags</code> within your Magento folder. If <code>app/code/Tealium/Tags</code> doesn’t exist, create it.</li>
+<li><strong>Update changes</strong>: Run the following commands to update changes:
+<pre tabindex="0"><code>php bin/magento setup:upgrade
+php bin/magento setup:di:compile
+php bin/magento setup:static-content:deploy -f
+php bin/magento cache:flush
+</code></pre></li>
+<li><strong>Disable maintenance mode</strong>: After the installation is complete, disable maintenance mode to allow users to access the site. To disable maintenance mode, run the following command:
+<pre tabindex="0"><code>php bin/magento maintenance:disable
+</code></pre></li>
+</ol>
+<h2 id="configure">Configure</h2>
 <p>To configure Magento 2, perform the following steps:</p>
 <ol>
-<li>In the admin panel under store configuration, set the options for the extension: <strong>Stores &gt; Configuration &gt; Tealium &gt; Tag Management</strong>.</li>
-<li>Enable the extension and enter your iQ account, profile, and environment.</li>
+<li>In the admin panel, go to <strong>Stores &gt; Configuration &gt; Tealium &gt; Tag Management</strong>.</li>
+<li>Enable the extension and enter your Tealium iQ account, profile, and environment.</li>
+<li>If you are using a first-party domain, enter your client domain in the <strong>First Party Domain</strong> field.</li>
+<li>To allow plaintext customer email addresses, select <strong>No</strong> under the <strong>Allow plain text customer email</strong> drop-down list. Otherwise, email addresses will be encrypted using a SHA-256 hash.</li>
 </ol>
+<h2 id="tests">Tests</h2>
+<p>To test your Tealium and Magento configuration to ensure that they are working properly together, use the following tests:</p>
+<ul>
+<li><a href="https://developer.adobe.com/commerce/marketplace/guides/sellers/code-sniffer/">Code Sniffer</a></li>
+<li><a href="https://developer.adobe.com/commerce/marketplace/guides/sellers/installation-and-varnish-tests/">Installation and Varnish Tests</a></li>
+<li><a href="https://developer.adobe.com/commerce/marketplace/guides/sellers/mftf-magento/">MFTF Commerce-supplied Tests</a></li>
+</ul>
 <h2 id="release-notes">Release Notes</h2>
+<h4 id="320">3.2.0</h4>
+<ul>
+<li>Optional FPD (First-Party Domain) configuration. For more information, see <a href="/iq-tag-management/administration/first-party-domains/manage/">Manage First-Party Domains</a>.</li>
+<li>Email Hashing: If set to <strong>Yes</strong>, SHA256() will be applied to email addresses in <code>customer_email</code> parameterss.</li>
+<li>Updated the <code>csp_whitelist.xml</code> file in the extension&rsquo;s <code>etc</code> directory (<code>public_html/integration-magento/etc</code>).</li>
+<li>CSP (Content Security Policy) updates for Magento 2.4.6</li>
+<li>Bug fixes</li>
+</ul>
 <h4 id="310">3.1.0</h4>
 <ul>
 <li>Update for support of Magento 2.4</li>
@@ -332,7 +362,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 22, 2023 
+          <p>This page was last updated:  January 4, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -350,6 +380,7 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it Works</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#install">Install</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure">Configure</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tests">Tests</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#release-notes">Release Notes</a></li>
               </nav>
   </aside></nav>

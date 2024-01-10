@@ -423,19 +423,20 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="client-side-consent-management-release-notes"><a href="/iq-tag-management/consent-management/release-notes/">Client-side consent management </a></h2>
-          <h2 id="december-13-2023">December 13, 2023</h2>
+          <h2 id="september-2023">September 2023</h2>
 <h4 id="updates-and-fixes">Updates and fixes</h4>
 <ul>
-<li>Updated the Consent Integrations <code>utcm_framework</code> template to v1.1.1 as follows:
+<li>
+<p>Updated event logging to use a new dedicated <code>id</code> parameter in the <code>CONSENTMGR</code> cookie (with support for custom namespaces), instead of using the <code>utag_main_v_id</code>.</p>
+<p>The following templates have been updated to support this update:</p>
 <ul>
-<li>Ensure Tealium iQ cookies aren&rsquo;t set before the appropriate consent decision is received.</li>
-<li>Ensure &lsquo;before load rules&rsquo; and &lsquo;after load rules&rsquo; extensions only run once for events processed from the implicitEventQueue.</li>
-<li>Improve the examples and comments in the utcm_framework template.</li>
+<li><code>cmGeneral</code> has been updated to version 3.0.12 to add centralized logic for generating consent forms ID that can be called from consent logging templates.</li>
+<li><code>cmDoNotSell</code> has been updated to version 1.4.0 to call the centralized logic.</li>
+<li><code>fullConsentEventHandler</code> has been updated to version 1.0.3 to call the centralized logic.</li>
+<li><code>partialConsentEventHandler</code> has been updated to version 1.0.3 to call the centralized logic.</li>
 </ul>
+<p>For more information about this change and related changes to <code>utag.js</code>, see the <a href="/platforms/javascript/release-notes#450-august-2023">release notes for version 4.50</a>.</p>
 </li>
-<li>Resolved an issue in which a purpose that was removed was shown as undefined.</li>
-<li>Resolved an issue in which incoming event attributes are not displayed.</li>
-<li>Update to ensure preloaded rules in Consent Integrations Exemptions and Purpose Groups cannot be edited.</li>
 </ul>
         
           
@@ -464,10 +465,19 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="consent-integrations-release-notes"><a href="/iq-tag-management/consent-integrations/release-notes/">Consent Integrations </a></h2>
-          <h2 id="november-8-2023">November 8, 2023</h2>
-<h4 id="fixes">Fixes</h4>
+          <h2 id="december-13-2023">December 13, 2023</h2>
+<h4 id="updates-and-fixes">Updates and fixes</h4>
 <ul>
-<li>Updated template based on user feedback to make it simpler and easier to understand.</li>
+<li>Updated the Consent Integrations <code>utcm_framework</code> template to v1.1.1 as follows:
+<ul>
+<li>Ensure Tealium iQ cookies aren&rsquo;t set before the appropriate consent decision is received.</li>
+<li>Ensure &lsquo;before load rules&rsquo; and &lsquo;after load rules&rsquo; extensions only run once for events processed from the implicitEventQueue.</li>
+<li>Improve the examples and comments in the utcm_framework template.</li>
+</ul>
+</li>
+<li>Resolved an issue in which a purpose that was removed was shown as undefined.</li>
+<li>Resolved an issue in which incoming event attributes are not displayed.</li>
+<li>Update to ensure preloaded rules in Consent Integrations Exemptions and Purpose Groups cannot be edited.</li>
 </ul>
         
           
@@ -631,7 +641,6 @@ var utag_data = {
 
           <h2 class="rn-section" id="tealium-universal-tag-utag-js-release-notes"><a href="/platforms/javascript/release-notes/">Tealium Universal Tag (utag.js) </a></h2>
           <p><a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">Update your <code>utag.js</code> template</a> to take advantage of the latest fixes and enhancements.</p>
-<h2 id="september-2023">September 2023</h2>
 <h3 id="updating-to-utagjs-version-450-or-later">Updating to <code>utag.js</code> version 4.50 or later</h3>
 <p>We recommend the following steps to ensure a smooth transition when updating to version 4.50 or later:</p>
 <ul>
@@ -644,6 +653,7 @@ var utag_data = {
 </ol>
 </li>
 </ul>
+<h2 id="september-2023">September 2023</h2>
 <h3 id="451">4.51</h3>
 <ul>
 <li>Fixes cookie expiration issues, including one in specific browser and timezone/region settings when using <code>utag.js</code> version 4.50.</li>
