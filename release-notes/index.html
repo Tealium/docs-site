@@ -443,11 +443,10 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="client-side-tags-release-notes"><a href="/client-side-tags/release-notes/">Client-side tags </a></h2>
-          <h2 id="january-11-2024">January 11, 2024</h2>
+          <h2 id="january-18-2024">January 18, 2024</h2>
 <h4 id="fixes">Fixes</h4>
 <ul>
-<li>Updated data mappings to add color coding to the <strong>Mapped Variables</strong> view.</li>
-<li>Fixed incorrect tag version dates.</li>
+<li>Updated the <a href="/client-side-tags/adobe-appmeasurement-for-js-tag/">Adobe Analytics AppMeasurement for JS tag</a> to correct an issue with updating the template to version 2.25.0.</li>
 </ul>
         
           
@@ -539,6 +538,16 @@ var utag_data = {
           
           
 
+          <h2 class="rn-section" id="profiles-release-notes"><a href="/iq-tag-management/profiles/release-notes/">Profiles </a></h2>
+          <h2 id="january-18-2024">January 18, 2024</h2>
+<h4 id="fixes">Fixes</h4>
+<ul>
+<li>Fixed an issue with the older profile version banner not being displayed when viewing an older profile version.</li>
+</ul>
+        
+          
+          
+
           <h2 class="rn-section" id="save-and-publish-release-notes"><a href="/iq-tag-management/save-publish/release-notes/">Save and publish </a></h2>
           <h2 id="december-20-2023">December 20, 2023</h2>
 <h4 id="enhancements">Enhancements</h4>
@@ -560,19 +569,13 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="server-side-connectors-release-notes"><a href="/server-side-connectors/release-notes/">Server-side connectors </a></h2>
-          <h2 id="january-11-2024">January 11, 2024</h2>
+          <h2 id="january-18-2024">January 18, 2024</h2>
 <h4 id="fixes">Fixes</h4>
 <ul>
-<li>Updated the <a href="/server-side-connectors/agillic-recipients-connector/">Agillic Recipients connector</a> with new mappings to allow empty values to be sent for unused attributes.</li>
-<li>Updated the <a href="/server-side-connectors/avo-inspector-connector/">Avo Inspector connector</a> to add the <strong>Track all the events</strong> action to enable or disable all events tracking.</li>
-<li>Updated the <a href="/server-side-connectors/pulsepoint-npi-list-connector/">PulsePoint NPI List connector</a> to fix an issue where the connector was throwing timeout and 429 errors.</li>
-<li>Updated the <a href="/server-side-connectors/reddit-conversions-connector/">Reddit Conversions connector</a> to fix an issue where emails where not normalized correctly.</li>
-<li>Updated the <a href="/server-side-connectors/amazon-ads-audience-management-connector/">Amazon Ads Audience Management connector</a> with the following:
-<ul>
-<li>Removed the <strong>External Audience ID</strong> field from the <strong>Create Audience</strong> page.</li>
-<li>Added <code>connection_id</code> field to the <strong>Add Visitor to Amazon Marketing Cloud (AMC)</strong> action.</li>
-</ul>
-</li>
+<li>Updated the <a href="/server-side-connectors/adobe-campaign-connector/">Adobe Campaign connector</a> to enable the <code>Send Custom SOAP Request</code> action for EventStream.</li>
+<li>Updated the <a href="/server-side-connectors/agillic-recipients-connector/">Agillic Recipients connector</a> to resolve an API error that occurs when the response does not contain JSON.</li>
+<li>Updated the <a href="/server-side-connectors/google-analytics-connector/">Google Analytics connector</a> to resolve an issue in which the Hit Type for events sent with the Send Analytics Event Data (Mobile Optimized) action is set to <code>screenview</code> instead of <code>event</code>.</li>
+<li>Updated the <a href="/server-side-connectors/pegasystems-connector/">Pegasystems connector</a> to add the new <code>ID Merge</code> action.</li>
 </ul>
         
           
@@ -628,11 +631,23 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="tealium-for-ios-swift-release-notes"><a href="/platforms/ios-swift/release-notes/">Tealium for iOS (Swift) </a></h2>
-          <h2 id="2101-august-2023">2.10.1 (August 2023)</h2>
+          <h2 id="2110-january-2024">2.11.0 (January 2024)</h2>
+<p><strong>Medium Impact Changes</strong></p>
+<ul>
+<li>Increased minimum supported operating system versions: iOS 11.0, TvOS 11.0, WatchOS 4.0, and MacOS 10.13.</li>
+<li>Changed the storage default directory on disk for TvOS from <code>Application Support</code> to <code>Caches</code> because <code>Application Support</code> was not supported on the TVs.</li>
+<li>Removed the <code>iAd</code> framework from the <code>Attribution</code> module because it was disabled by Apple and will be removed soon.</li>
+</ul>
 <p><strong>Low Impact Changes</strong></p>
 <ul>
-<li>Removed data from the data layer that remained from a previous migration from the Objective-C library: <code>app_version</code>, <code>uuid</code>, <code>visitor_id</code>, <code>last_track_event</code> and <code>last_session_created</code>.</li>
-<li>Prevented an eventual crash on XCode 15 beta due to <code>+load</code> method being defined on an <code>obj-c</code> category of a Swift class.</li>
+<li>Implemented the option to disable the whole SDK from remote settings.</li>
+<li>Updated the list of device names, including Mac devices and the newest iOS devices.</li>
+<li>Fixed <code>TealiumVisitorProfile</code> parsing to gracefully accept <code>null</code> strings.</li>
+<li>Improved error logs readability.</li>
+</ul>
+<p><strong>Known Issues</strong></p>
+<ul>
+<li>This is our final release targeting XCode 14. Note that XCode 15 dropped support for iOS 11. To install on XCode 15, you must manually increase the minimum deployment target of the Tealium library to iOS 12 after installing it or the app will crash on launch. For more information, see <a href="https://github.com/Tealium/tealium-swift/issues/311">TEALIUM SWIFT BUG: Runtime crash on launch with Xcode 15 Release</a>.</li>
 </ul>
         
           
@@ -731,6 +746,7 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#extensions-release-notes">Extensions </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#labels-release-notes">Labels </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules-release-notes">Load rules </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#profiles-release-notes">Profiles </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#save-and-publish-release-notes">Save and publish </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#server-side-administration-release-notes">Server-side administration </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#server-side-connectors-release-notes">Server-side connectors </a></li>

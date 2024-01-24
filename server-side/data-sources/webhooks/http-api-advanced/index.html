@@ -873,18 +873,23 @@ var utag_data = {
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
 <p>The HTTP API - Advanced data source is a generic data source that can conditionally parse incoming request bodies. This data source offers an HTTP endpoint that allows you to collect real-time event data in a single HTTP call with support for complex objects flattening and batched events. The endpoint is flexible and can be implemented as a tracking pixel in a web page or as a JSON API in your custom application.</p>
-<p>This data source is similar to the HTTP API data source, but with additional support for complex JSON objects and batching. Events sent using HTTP POST with a complex JSON object will be flattened as follows:</p>
+<p>This data source is similar to the HTTP API data source, but with additional support for complex JSON objects and batching.</p>
+<p>Events sent using HTTP POST with a complex JSON object will be flattened as follows:</p>
 <ul>
-<li>The event attributes names are created by lower-casing and joining the object properties with an underscore (&quot;_&quot;). For example:<br>
+<li>Event attribute names are created by lower-casing and joining the object properties with an underscore (&quot;_&quot;). For example:<br>
 Source data: <code>&quot;alpha&quot; : { &quot;beta&quot; : true }</code><br>
 Flattened event attribute: <code>&quot;alpha_beta&quot; : true</code></li>
 <li>Numbers, booleans, and strings inside of an array are preserved.</li>
 <li>Objects and arrays inside of an array are stringified.</li>
 </ul>
 <p>Use this data source type when you need to send data in real-time and cannot modify the request to meet format requirements for the standard Tealium Collect endpoint.</p>
-<h2 id="batched-events">Batched events</h2>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>Tealium EventStream or Tealium AudienceStream</li>
+</ul>
+<h3 id="batched-events">Batched events</h3>
 <p>The HTTP API - Advanced data source HTTP endpoint supports multiple events in a single request. These events are called batched events. For batched events, you receive one response code based on the status of all records. If a single record/event fails, only that event fails and the rest is processed.</p>
-<h2 id="rate-limits">Rate limits</h2>
+<h3 id="rate-limits">Rate limits</h3>
 <p>The HTTP API - Advanced data source supports a maximum rate limit of 100 events/second.</p>
 <p>For example, if you send:</p>
 <ul>
@@ -894,16 +899,11 @@ Flattened event attribute: <code>&quot;alpha_beta&quot; : true</code></li>
 </ul>
 <p>If you exceed the rate limit, Tealium will send an HTTP 429 response indicating too many requests.</p>
 <p class="tip"><i class="fa fa-info-circle"></i>If your business needs require higher event limits, contact your Tealium account manager.</p>
-<h2 id="requirements">Requirements</h2>
-<ul>
-<li>Tealium EventStream or Tealium AudienceStream</li>
-</ul>
-<h2 id="request-format">Request format</h2>
+<h2 id="post-method">POST method</h2>
 <p>The HTTP API - Advanced data source supports the POST method. For GET method requests, use the <a href="/platforms/http-api/endpoint/">HTTP API</a>.</p>
-<h2 id="api-endpoint">API endpoint</h2>
 <p>Use the following endpoint to access the HTTP API - Advanced data source:</p>
-<pre tabindex="0"><code>https://collect.tealiumiq.com/integration/event/ACCOUNT/PROFILE/DATA_SOURCE_KEY?tealium_trace_id=TRACEID
-</code></pre><p>The use of the <code>tealium_trace_id</code> query parameter is optional and should be used only when debugging the Trace tool. For more information about using a trace, see <a href="/server-side/connectors/trace/about/">About Trace</a>.</p>
+<pre tabindex="0"><code>https://collect.tealiumiq.com/integration/event/ACCOUNT/PROFILE/DATA_SOURCE_KEY
+</code></pre><p>Use the optional <code>tealium_trace_id</code> query parameter (<code>tealium_trace_id=TRACEID</code>) to support debugging with the Trace tool. For more information about using a trace, see <a href="/server-side/connectors/trace/about/">About Trace</a>.</p>
 <p class="tip"><i class="fa fa-info-circle"></i>To find your data source key, navigate to the <strong>Data Sources</strong> dashboard, click the data source you want to use, and copy the key from the <strong>Data Source Key</strong> field.</p>
 <h2 id="visitor-identifiers">Visitor identifiers</h2>
 <p>AudienceStream tracks visitors using a combination of:</p>
@@ -1204,7 +1204,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 14, 2023 
+          <p>This page was last updated:  January 24, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1219,11 +1219,10 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#requirements">Requirements</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#batched-events">Batched events</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#rate-limits">Rate limits</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#requirements">Requirements</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#request-format">Request format</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#api-endpoint">API endpoint</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#post-method">POST method</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#visitor-identifiers">Visitor identifiers</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#anonymous-id">Anonymous ID</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#user-identifiers">User Identifiers</a></li>

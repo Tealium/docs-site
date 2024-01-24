@@ -331,11 +331,23 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="tealium-for-ios-swift-release-notes"><a href="/platforms/ios-swift/release-notes/">Tealium for iOS (Swift) </a></h2>
-          <h2 id="2101-august-2023">2.10.1 (August 2023)</h2>
+          <h2 id="2110-january-2024">2.11.0 (January 2024)</h2>
+<p><strong>Medium Impact Changes</strong></p>
+<ul>
+<li>Increased minimum supported operating system versions: iOS 11.0, TvOS 11.0, WatchOS 4.0, and MacOS 10.13.</li>
+<li>Changed the storage default directory on disk for TvOS from <code>Application Support</code> to <code>Caches</code> because <code>Application Support</code> was not supported on the TVs.</li>
+<li>Removed the <code>iAd</code> framework from the <code>Attribution</code> module because it was disabled by Apple and will be removed soon.</li>
+</ul>
 <p><strong>Low Impact Changes</strong></p>
 <ul>
-<li>Removed data from the data layer that remained from a previous migration from the Objective-C library: <code>app_version</code>, <code>uuid</code>, <code>visitor_id</code>, <code>last_track_event</code> and <code>last_session_created</code>.</li>
-<li>Prevented an eventual crash on XCode 15 beta due to <code>+load</code> method being defined on an <code>obj-c</code> category of a Swift class.</li>
+<li>Implemented the option to disable the whole SDK from remote settings.</li>
+<li>Updated the list of device names, including Mac devices and the newest iOS devices.</li>
+<li>Fixed <code>TealiumVisitorProfile</code> parsing to gracefully accept <code>null</code> strings.</li>
+<li>Improved error logs readability.</li>
+</ul>
+<p><strong>Known Issues</strong></p>
+<ul>
+<li>This is our final release targeting XCode 14. Note that XCode 15 dropped support for iOS 11. To install on XCode 15, you must manually increase the minimum deployment target of the Tealium library to iOS 12 after installing it or the app will crash on launch. For more information, see <a href="https://github.com/Tealium/tealium-swift/issues/311">TEALIUM SWIFT BUG: Runtime crash on launch with Xcode 15 Release</a>.</li>
 </ul>
         
           

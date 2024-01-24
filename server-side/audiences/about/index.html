@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side",
-    reading_time  : "5",
+    reading_time  : "6",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -870,37 +870,59 @@ var utag_data = {
 <li>The ability to create a set of conditions to define a dynamic, real-time audience.</li>
 <li>The ability to connect an audience to a connector and define triggers that determine when connectors are fired.</li>
 <li>The ability to save frequently used audience segments (groups of conditions) and reuse them in other audiences.</li>
-<li>Audience details can be viewed with the following tabs:
-<ul>
-<li><strong>Insights</strong> – Displays graphs of visitors and audience activity.</li>
-<li><strong>Activations</strong> – Lists activations and enables you to manage activations for the audience.</li>
-<li><strong>Functions</strong> – Lists the functions that are triggered by the audience.</li>
-</ul>
-</li>
 </ul>
 <h2 id="how-it-works">How it works</h2>
 <p>An audience is a group of visitors identified by a shared set of attributes. The conditions for an audience specify the attribute values for visitors in that audience. The more conditions you add, the more specific your audience becomes. Audiences are dynamic, meaning visitors can join or leave audiences as events come in from active visitor sessions.</p>
+<p>The <strong>Audiences</strong> page has the following tabs:</p>
+<ul>
+<li><strong>Audiences</strong> – Displays the list of audiences in the profile.</li>
+<li><strong>Segments</strong> – Displays the list of saved segments. For more information, see <a href="#saved-segments">Saved segments</a>.</li>
+</ul>
+<h2 id="audience-details">Audience details</h2>
+<p>When you select an audience on the <strong>Audiences</strong> page, the audience details page is displayed and has the following tabs:</p>
+<ul>
+<li><strong>Configuration</strong> – Displays the audience conditions and enables you to edit the conditions.</li>
+<li><strong>Insights</strong> – Displays graphs of visitors and audience activity. The time period for the graphs can be one of the following: <strong>Today</strong>, last 7 days (<strong>7D</strong>), last 30 days (<strong>30D</strong>), last 2 months (<strong>2M</strong>), or last 3 months (<strong>3M</strong>). The default time period is <strong>7D</strong>.
+<ul>
+<li>The <strong>Visitors</strong> graph shows the number of visitors per day.</li>
+<li>The <strong>Activity</strong> graph shows the number of visitors that have left (orange bar) or joined (green bar) the audience per day. The following figure shows an example of <strong>Insights</strong> graphs:<br>
+<figure><a class="slb" href="/images/server-side/audience-insights.png"><img src="/images/server-side/audience-insights.png"
+         alt="graphs showing visitors per day and visitor activity for the audience"
+         title="graphs showing visitors per day and visitor activity for the audience"/>
+    </a>
+</figure></li>
+</ul>
+</li>
+<li><strong>Activations</strong> – Displays a list of activations for the audience and enables you to edit, activate, or deactivate activations.</li>
+<li><strong>Functions</strong> – Displays a list of the functions that are triggered by the audience.</li>
+</ul>
 <h2 id="audience-conditions-and-segments">Audience conditions and segments</h2>
 <p>An audience is created by defining one or more conditions using visit or visitor attributes. An audience segment is a modular set of conditions that can be used as a building block for audiences. Segments can be layered with AND or OR logic to create an audience. You can use excluding logic to remove visitors that meet the audience conditions. Visitors that meet these audience conditions are added or removed from an audience in real-time based on user-generated events.</p>
 <h3 id="and-logic-example">AND logic example</h3>
 <p>A segment for an audience containing visitors who have spent over $1000 and have the Fan badge would have the following conditions:</p>
-<figure><a class="slb" href="/images/guides/server-side/int-aud-fan-spent-1000.png"><img src="/images/guides/server-side/int-aud-fan-spent-1000.png"/>
+<figure><a class="slb" href="/images/guides/server-side/int-aud-fan-spent-1000.png"><img src="/images/guides/server-side/int-aud-fan-spent-1000.png"
+         alt="example of conditions for Fan badge assigned and lifetime spending more than 1000 dollars"
+         title="example of conditions for Fan badge assigned and lifetime spending more than 1000 dollars"/>
     </a>
 </figure>
 <h3 id="or-logic-example">OR logic example</h3>
 <p>Additional visitors can be added to an audience by combining segments with OR logic. The following example combines two segments to create an audience that contains visitors with the <code>Fan</code> badge or visitors who have spent over $500. Visitors that match the conditions for either segment are included in the audience.</p>
-<figure><a class="slb" href="/images/guides/server-side/int-aud-fan-or-spent-500.png"><img src="/images/guides/server-side/int-aud-fan-or-spent-500.png"/>
+<figure><a class="slb" href="/images/guides/server-side/int-aud-fan-or-spent-500.png"><img src="/images/guides/server-side/int-aud-fan-or-spent-500.png"
+         alt="example of conditions for Fan badge assigned or visitors with lifetime spending more than 500 dollars"
+         title="example of conditions for Fan badge assigned or visitors with lifetime spending more than 500 dollars"/>
     </a>
 </figure>
 <h3 id="excluding-logic-example">Excluding logic example</h3>
-<p>To exclude specific visitors from an audience, use excluding logic. For example, to create an audience of frequent visitors that have not visited in the last three days, you could use the following conditions: <figure><a class="slb" href="/images/guides/server-side/int-aud-excluding-logic.png"><img src="/images/guides/server-side/int-aud-excluding-logic.png"/>
+<p>To exclude specific visitors from an audience, use excluding logic. For example, to create an audience of frequent visitors that have not visited in the last three days, you could use the following conditions: <figure><a class="slb" href="/images/guides/server-side/int-aud-excluding-logic.png"><img src="/images/guides/server-side/int-aud-excluding-logic.png"
+         alt="example of conditions for Frequent Visitor badge assigned excluding visitors with days since last visit less than 4"
+         title="example of conditions for Frequent Visitor badge assigned excluding visitors with days since last visit less than 4"/>
     </a>
 </figure></p>
 <h2 id="saved-segments">Saved segments</h2>
 <p>You can save segments while you are adding conditions to an audience. For example:
 <figure><a class="slb" href="/images/guides/server-side/audiences-save-a-segment.png"><img src="/images/guides/server-side/audiences-save-a-segment.png"
-         alt="save button for segment"
-         title="save button for segment"/>
+         alt="save icon for segments"
+         title="save icon for segments"/>
     </a>
 </figure></p>
 <p>You can view and create segments on the <strong>Segments</strong> tab on the <strong>Audiences</strong> page. For example:
@@ -1064,7 +1086,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 13, 2023 
+          <p>This page was last updated:  January 19, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1079,6 +1101,7 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#audience-details">Audience details</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#audience-conditions-and-segments">Audience conditions and segments</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#and-logic-example">AND logic example</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#or-logic-example">OR logic example</a></li>

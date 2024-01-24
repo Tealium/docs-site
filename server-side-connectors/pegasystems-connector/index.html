@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side-connectors",
-    reading_time  : "7",
+    reading_time  : "8",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -787,9 +787,14 @@ var utag_data = {
 <td>✗</td>
 <td>✓</td>
 </tr>
+<tr>
+<td>ID Merge</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
 </tbody>
 </table>
-<p class="tip"><i class="fa fa-info-circle"></i>While Tealium can support batched actions to Pega, we recommend that you discuss your use case configuration and need for batching with your Pega account team.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>While Tealium can support batched actions to Pega, we recommend that you discuss your use case configuration and need for batching with your Pega account team.</p>
 <h2 id="configure-settings">Configure settings</h2>
 <p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/manage/">About Connectors</a> article.</p>
 <p>After adding the connector, configure the following settings:</p>
@@ -798,17 +803,35 @@ var utag_data = {
 <li><strong>Client Secret</strong> Required: The password that the system assigns to the client to authenticate with the Pega Platform authorization module.</li>
 <li><strong>Access Token URL</strong> Required: The request URL used to receive an access token for the client as a response after authentication.</li>
 </ul>
-<p class="tip"><i class="fa fa-info-circle"></i>Your REST service authenticates the client by using the <strong>Client ID</strong> and <strong>Client Secret</strong>.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The REST service authentication used by the client requires <strong>Client ID</strong> and <strong>Client Secret</strong> credentials.</p>
 <p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
 <h2 id="how-it-works">How it works</h2>
 <p>Accurate predictions of customer’s preferences and next best products rely on a good understanding of that customer and most recent interactions across all touchpoints. Tealium enhances Pega’s Customer Decision Hub by making it easy to connect this accurate and rich customer data to inform decisions and recommendations.</p>
 <p>The Pegasystems connector connects valuable customer data in two ways:</p>
 <ol>
-<li>Tealium and Pega share consolidated customer information based on a 360° view of the customer, aggregating all cross-channel signals in a standardized customer profile.</li>
+<li>Tealium and Pega share consolidated customer information based on a 360-degree view of the customer, aggregating all cross-channel signals in a standardized customer profile.</li>
 <li>Tealium streams customer interactions across web, app, call-center and other channels in real-time to Pega to provide in-the-moment context for decision making.</li>
 </ol>
-<p>The Pegasystems connector supports both EventStream and AudienceStream actions and lets you track page views/interactions through EventStream. Using a Customer Identifier or Cookie ID you can configure and map differing page types to send interaction history to Pega.</p>
+<p>The Pegasystems connector supports both EventStream and AudienceStream actions and lets you track page views/interactions through EventStream. Using a Customer Identifier or Cookie ID, you can configure and map differing page types to send interaction history to Pega.</p>
 <p>Additionally, trigger next best actions within the Pega Customer Decision Hub by sending audience segments and statuses to Pega along with a Customer Identifier.</p>
+<h3 id="suggested-setup-in-tealium">Suggested setup in Tealium</h3>
+<p>We recommend that you perform the following steps in Tealium to work with the Pegasystems connector:</p>
+<ol>
+<li>Create the following attributes:
+<ul>
+<li><strong>Pega Customer ID</strong>: (String) Inherited from the data layer.</li>
+<li><strong>Pega Customer IDs</strong>: (Set of Strings) Stitch the <strong>Pega Customer ID</strong>s together.</li>
+<li><strong>Pega Customer IDs count</strong>: (Number) The length of the <strong>Pega Customer IDs</strong> set of strings.</li>
+</ul>
+</li>
+<li>Create an audience with the name <strong>Pega match check</strong>, where the condition is <code>Pega Customer IDs count &gt; 1</code>.</li>
+<li>Add a <strong>Merge customer behavioral data</strong> action to the existing Pega connector, where:
+<ul>
+<li><strong>Trigger</strong>: <code>In Audience at end of visit</code>.</li>
+<li><strong>Uncheck</strong>: <code>And was not a member of this Audience at start of visit</code>.</li>
+</ul>
+</li>
+</ol>
 <h2 id="action-settings--parameters-and-options">Action settings — parameters and options</h2>
 <p>Click <strong>Continue</strong> to configure the connector actions. Enter in a name for the action and then select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
@@ -1000,6 +1023,31 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
+<h3 id="action--id-merge">Action — ID Merge</h3>
+<p>Use this action to merge customer behavioral information to produce more accurate recommendations and next-best-action decisions based on cumulative bevaioral data.</p>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary ID / Secondary ID</td>
+<td>(Required) An array of strings that contains the Primary ID and Secondary IDs. The first value is Primary ID, and subsequent values are Secondary IDs. For example <code>[&quot;ID12345&quot;,&quot;ID12346&quot;,&quot;ID12347&quot;]</code>.</td>
+</tr>
+<tr>
+<td>Application Name</td>
+<td>The ID of the application in which the data of the known customer and unknown prospect is saved. If this value is not passed, the application ID is identified from the value of the application alias in the service URL.</td>
+</tr>
+<tr>
+<td>Context Name</td>
+<td>Select the Context Name or enter a custom Context Name: <strong>Customer</strong>, <strong>Provider</strong>, or <strong>Subscriber</strong>.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="vendor-resources">Vendor resources</h2>
 <ul>
 <li><a href="https://docs.pega.com/bundle/components/page/customer-decision-hub/components/tealium-installation-guide.html#con-tealium-installation-guide">Installing the Tealium Customer Data Connector</a></li>
@@ -1064,7 +1112,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 4, 2022 
+          <p>This page was last updated:  January 23, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1082,11 +1130,13 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure settings</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings--parameters-and-options">Action settings — parameters and options</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#suggested-setup-in-tealium">Suggested setup in Tealium</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings--parameters-and-options">Action settings — parameters and options</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action--send-custom-audience-data-real-time">Action — Send Custom Audience Data (Real-Time)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action--send-custom-audience-data-batched">Action — Send Custom Audience Data (Batched)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action--send-custom-event-data-real-time">Action — Send Custom Event Data (Real-Time)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action--send-custom-event-data-batched">Action — Send Custom Event Data (Batched)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action--id-merge">Action — ID Merge</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#vendor-resources">Vendor resources</a></li>
               </nav>
   </aside></nav>
