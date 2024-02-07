@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side-connectors",
-    reading_time  : "7",
+    reading_time  : "15",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -579,6 +579,8 @@ var utag_data = {
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/yahoo-japan-ads-api-connector-setup-guide/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".yahoo-japan-ads-api-connector-setup-guide">Yahoo! JAPAN Ads API</a>
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/yandex-metrica-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".yandex-metrica-connector">Yandex Metrica</a>
+      </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/ytel-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".ytel-connector">Ytel</a>
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/zendesk-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".zendesk-connector">Zendesk</a>
@@ -675,6 +677,8 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 <li><a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#getting_the_client_id_from_the_cookie">Google Analytics &gt; Getting the Client ID from the cookie</a>.</li>
 <li><a href="https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#cid">Google Analytics Measurement Protocol &gt; Parameter Reference &gt; Client ID</a>.</li>
 </ul>
+<h3 id="consent">Consent</h3>
+<p>The connector will not send any consent signals by default. If you don&rsquo;t specify consent, then Google Analytics will use the consent settings from corresponding online interactions for the client instance. Consent states are either granted or denied when setting consent for <code>ad_user_data</code> and <code>ad_personalization</code>.</p>
 <h3 id="action---send-pageview-event-gtagjs">Action - Send PageView Event (gtag.js)</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
@@ -709,6 +713,17 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 <td>Non Personalized Ads</td>
 <td>Set to <code>true</code> to indicate these events should not be used for personalized ads.</td>
 </tr>
+</tbody>
+</table>
+<h5 id="event-parameters">Event Parameters</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Page Title</td>
 <td>The title of the page.</td>
@@ -717,10 +732,99 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 <td>Page Location</td>
 <td>Required. The full URL to the page.</td>
 </tr>
+</tbody>
+</table>
+<h5 id="user-provided-data">User-Provided Data</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email Address (already SHA256 hashed)</td>
+<td>Provide an email address that has been already whitespace trimmed, lowercased and SHA256 hashed. Remove all periods (<code>.</code>) that precede the domain name in <code>gmail.com</code> and <code>googlemail.com</code> email addresses before hashing.</td>
+</tr>
+<tr>
+<td>Email Address (apply SHA256 hash)</td>
+<td>Provide a plaintext email address and the connector will remove all periods (<code>.</code>) that precede the domain name in <code>gmail.com</code> and <code>googlemail.com</code> email addresses, and whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Phone Number (already SHA256 hashed)</td>
+<td>Provide a phone number according to the E164 standard that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Phone Number (apply SHA256 hash)</td>
+<td>Provide a plaintext phone number and the connector will remove all non-digit symbols, prefix the number with a plus sign (+), whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Address Info: First Name (already SHA256 hashed)</td>
+<td>Provide first name that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Address Info: First Name (apply SHA256 hash)</td>
+<td>Provide a plaintext first name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Address Info: Last Name (already SHA256 hashed)</td>
+<td>Provide last name that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Address Info: Last Name (apply SHA256 hash)</td>
+<td>Provide a plaintext last name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Address Info: Street Address (already SHA256 hashed)</td>
+<td>Provide street address that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Address Info: Street Address (apply SHA256 hash)</td>
+<td>Provide a plaintext street address and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Address Info: City</td>
+<td>City of the user&rsquo;s address.</td>
+</tr>
+<tr>
+<td>Address Info: State</td>
+<td>State code of the user&rsquo;s address.</td>
+</tr>
+<tr>
+<td>Address Info: Postal Code</td>
+<td>Postal code of the user&rsquo;s address.</td>
+</tr>
+<tr>
+<td>Address Info: Country</td>
+<td>Two-letter country code in ISO-3166-1 alpha-2 format of the user&rsquo;s address.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="user-properties">User Properties</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>User Properties</td>
 <td>User properties describe segments of user base, such as language preference or geographic location.</td>
 </tr>
+</tbody>
+</table>
+<h5 id="items-data">Items Data</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Item ID</td>
 <td>The ID of the item.</td>
@@ -797,9 +901,40 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 <td>Quantity</td>
 <td>Item quantity.</td>
 </tr>
+</tbody>
+</table>
+<h5 id="additional-parameters">Additional Parameters</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Debug</td>
 <td>This connector uses the GA4 debug endpoint by default when using Trace. Map a boolean value to override this behavior.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="consent-1">Consent</h5>
+<p>Consent states are either <code>granted</code> or <code>denied</code>. If you don&rsquo;t specify consent, then Google Analytics will use the consent settings from corresponding online interactions for the client instance.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ad User Data</td>
+<td>Sets consent for sending user data to Google for advertising purposes.</td>
+</tr>
+<tr>
+<td>Ad Personalization</td>
+<td>Sets consent for personalized advertising.</td>
 </tr>
 </tbody>
 </table>
@@ -841,10 +976,222 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 <td>Event Type</td>
 <td>Select Event Type. For more information and a list of available events, see <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events">Events</a>.</td>
 </tr>
+</tbody>
+</table>
+<h5 id="event-parameters-1">Event Parameters</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Achievement ID</td>
+<td>The ID of the achievement that was unlocked.</td>
+</tr>
+<tr>
+<td>Affiliation</td>
+<td>A product affiliation to designate a supplying company or brick and mortar store location.</td>
+</tr>
+<tr>
+<td>Character</td>
+<td>The character that achieved the score.</td>
+</tr>
+<tr>
+<td>Content Type</td>
+<td>The type of selected content.</td>
+</tr>
+<tr>
+<td>Coupon</td>
+<td>The coupon name/code associated with the event.</td>
+</tr>
+<tr>
+<td>Creative Name</td>
+<td>The name of the promotional creative.</td>
+</tr>
+<tr>
+<td>Creative Slot</td>
+<td>The name of the promotional creative slot associated with the event.</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>Currency of the items associated with the event, in 3-letter ISO 4217 format.</td>
+</tr>
+<tr>
+<td>Custom Event Type</td>
+<td>The custom event type.</td>
+</tr>
+<tr>
+<td>Group ID</td>
+<td>The ID of the group.</td>
+</tr>
+<tr>
+<td>Item ID</td>
+<td>The identifier for the item that was selected or shared.</td>
+</tr>
+<tr>
+<td>Item List ID</td>
+<td>The ID of the list in which the item was presented to the user.</td>
+</tr>
+<tr>
+<td>Item List Name</td>
+<td>The name of the list in which the item was presented to the user.</td>
+</tr>
+<tr>
+<td>Item Name</td>
+<td>The name of the item the virtual currency is being used for.</td>
+</tr>
+<tr>
+<td>Level (number)</td>
+<td>The level of the character.</td>
+</tr>
+<tr>
+<td>Location ID</td>
+<td>The ID of the location.</td>
+</tr>
+<tr>
+<td>Method</td>
+<td>The method used to login/sign up/share.</td>
+</tr>
+<tr>
+<td>Payment Type</td>
+<td>The chosen method of payment.</td>
+</tr>
+<tr>
+<td>Promotion ID</td>
+<td>The ID of the promotion associated with the event.</td>
+</tr>
+<tr>
+<td>Promotion Name</td>
+<td>The name of the promotion associated with the event.</td>
+</tr>
+<tr>
+<td>Score (number)</td>
+<td>The score to post.</td>
+</tr>
+<tr>
+<td>Search Term</td>
+<td>The term that was searched for.</td>
+</tr>
+<tr>
+<td>Shipping (number)</td>
+<td>Shipping cost associated with a transaction.</td>
+</tr>
+<tr>
+<td>Shipping Tier</td>
+<td>The shipping tier (for example, Ground, Air, Next-day) selected for delivery of the purchased item.</td>
+</tr>
+<tr>
+<td>Tax (number)</td>
+<td>Tax cost associated with a transaction.</td>
+</tr>
+<tr>
+<td>Transaction ID</td>
+<td>The unique identifier of a transaction.</td>
+</tr>
+<tr>
+<td>Value (number)</td>
+<td>The monetary value of the event.</td>
+</tr>
+<tr>
+<td>Virtual Currency Name</td>
+<td>The name of the virtual currency.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="user-provided-data-1">User-Provided Data</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email Address (already SHA256 hashed)</td>
+<td>Provide an email address that has been already whitespace trimmed, lowercased, and SHA256 hashed. Remove all periods (.) that precede the domain name in <code>gmail.com</code> and <code>googlemail.com</code> email addresses before hashing.</td>
+</tr>
+<tr>
+<td>Email Address (apply SHA256 hash)</td>
+<td>Provide a plaintext email address and the connector will remove all periods (<code>.</code>) that precede the domain name in <code>gmail.com</code> and <code>googlemail.com</code> email addresses, and whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Phone Number (already SHA256 hashed)</td>
+<td>Provide a phone number according to the E164 standard that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Phone Number (apply SHA256 hash)</td>
+<td>Provide a plaintext phone number and the connector will remove all non-digit symbols, prefix the number with a plus sign (<code>+</code>), whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Address Info: First Name (already SHA256 hashed)</td>
+<td>Provide first name that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Address Info: First Name (apply SHA256 hash)</td>
+<td>Provide a plaintext first name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Address Info: Last Name (already SHA256 hashed)</td>
+<td>Provide last name that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Address Info: Last Name (apply SHA256 hash)</td>
+<td>Provide a plaintext last name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Address Info: Street Address (already SHA256 hashed)</td>
+<td>Provide street address that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Address Info: Street Address (apply SHA256 hash)</td>
+<td>Provide a plaintext street address and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Address Info: City</td>
+<td>City of the user&rsquo;s address.</td>
+</tr>
+<tr>
+<td>Address Info: State</td>
+<td>State code of the user&rsquo;s address.</td>
+</tr>
+<tr>
+<td>Address Info: Postal Code</td>
+<td>Postal code of the user&rsquo;s address.</td>
+</tr>
+<tr>
+<td>Address Info: Country</td>
+<td>Two-letter country code in ISO-3166-1 alpha-2 format of the user&rsquo;s address.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="user-properties-1">User Properties</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>User Properties</td>
 <td>User properties describe segments of user base, such as language preference or geographic location.</td>
 </tr>
+</tbody>
+</table>
+<h5 id="items-data-1">Items Data</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Item ID</td>
 <td>The ID of the item.</td>
@@ -911,7 +1258,7 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 </tr>
 <tr>
 <td>Location ID</td>
-<td>The location associated with the item. It&rsquo;s recommended to use the Google Place ID that corresponds to the associated item. A custom location ID can also be used.</td>
+<td>The location associated with the item. We recommend using the Google Place ID that corresponds to the associated item. A custom location ID can also be used.</td>
 </tr>
 <tr>
 <td>Price</td>
@@ -921,9 +1268,39 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 <td>Quantity</td>
 <td>Item quantity.</td>
 </tr>
+</tbody>
+</table>
+<h5 id="additional-parameters-1">Additional Parameters</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Debug</td>
 <td>This connector uses the GA4 debug endpoint by default when using Trace. Map a boolean value to override this behavior.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="consent-2">Consent</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ad User Data</td>
+<td>Sets consent for sending user data to Google for advertising purposes.</td>
+</tr>
+<tr>
+<td>Ad Personalization</td>
+<td>Sets consent for personalized advertising.</td>
 </tr>
 </tbody>
 </table>
@@ -961,10 +1338,222 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 <td>Event Type</td>
 <td>Select Event Type. For more information and a list of available events, see <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events">Events</a>.</td>
 </tr>
+</tbody>
+</table>
+<h5 id="event-parameters-2">Event Parameters</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Achievement ID</td>
+<td>The id of the achievement that was unlocked.</td>
+</tr>
+<tr>
+<td>Affiliation</td>
+<td>A product affiliation to designate a supplying company or brick and mortar store location.</td>
+</tr>
+<tr>
+<td>Character</td>
+<td>The character that achieved the score.</td>
+</tr>
+<tr>
+<td>Content Type</td>
+<td>The type of selected content.</td>
+</tr>
+<tr>
+<td>Coupon</td>
+<td>The coupon name/code associated with the event.</td>
+</tr>
+<tr>
+<td>Creative Name</td>
+<td>The name of the promotional creative.</td>
+</tr>
+<tr>
+<td>Creative Slot</td>
+<td>The name of the promotional creative slot associated with the event.</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>Currency of the items associated with the event, in 3-letter ISO 4217 format.</td>
+</tr>
+<tr>
+<td>Custom Event Type</td>
+<td>The custom event type.</td>
+</tr>
+<tr>
+<td>Group ID</td>
+<td>The ID of the group.</td>
+</tr>
+<tr>
+<td>Item ID</td>
+<td>The identifier for the item that was selected or shared.</td>
+</tr>
+<tr>
+<td>Item List ID</td>
+<td>The ID of the list in which the item was presented to the user.</td>
+</tr>
+<tr>
+<td>Item List Name</td>
+<td>The name of the list in which the item was presented to the user.</td>
+</tr>
+<tr>
+<td>Item Name</td>
+<td>The name of the item the virtual currency is being used for.</td>
+</tr>
+<tr>
+<td>Level (number)</td>
+<td>The level of the character.</td>
+</tr>
+<tr>
+<td>Location ID</td>
+<td>The ID of the location.</td>
+</tr>
+<tr>
+<td>Method</td>
+<td>The method used to login/sign up/share.</td>
+</tr>
+<tr>
+<td>Payment Type</td>
+<td>The chosen method of payment.</td>
+</tr>
+<tr>
+<td>Promotion ID</td>
+<td>The ID of the promotion associated with the event.</td>
+</tr>
+<tr>
+<td>Promotion Name</td>
+<td>The name of the promotion associated with the event.</td>
+</tr>
+<tr>
+<td>Score (number)</td>
+<td>The score to post.</td>
+</tr>
+<tr>
+<td>Search Term</td>
+<td>The term that was searched for.</td>
+</tr>
+<tr>
+<td>Shipping (number)</td>
+<td>Shipping cost associated with a transaction.</td>
+</tr>
+<tr>
+<td>Shipping Tier</td>
+<td>The shipping tier (for example, Ground, Air, Next-day) selected for delivery of the purchased item.</td>
+</tr>
+<tr>
+<td>Tax (number)</td>
+<td>Tax cost associated with a transaction.</td>
+</tr>
+<tr>
+<td>Transaction ID</td>
+<td>The unique identifier of a transaction.</td>
+</tr>
+<tr>
+<td>Value (number)</td>
+<td>The monetary value of the event.</td>
+</tr>
+<tr>
+<td>Virtual Currency Name</td>
+<td>The name of the virtual currency.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="user-provided-data-2">User-Provided Data</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email Address (already SHA256 hashed)</td>
+<td>Provide an email address that has been already whitespace trimmed, lowercased, and SHA256 hashed. Remove all periods (.) that precede the domain name in <code>gmail.com</code> and <code>googlemail.com</code> email addresses before hashing.</td>
+</tr>
+<tr>
+<td>Email Address (apply SHA256 hash)</td>
+<td>Provide a plaintext email address and the connector will remove all periods (<code>.</code>) that precede the domain name in <code>gmail.com</code> and <code>googlemail.com</code> email addresses, and whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Phone Number (already SHA256 hashed)</td>
+<td>Provide a phone number according to the E164 standard that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Phone Number (apply SHA256 hash)</td>
+<td>Provide a plaintext phone number and the connector will remove all non-digit symbols, prefix the number with a plus sign (<code>+</code>), whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Address Info: First Name (already SHA256 hashed)</td>
+<td>Provide first name that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Address Info: First Name (apply SHA256 hash)</td>
+<td>Provide a plaintext first name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Address Info: Last Name (already SHA256 hashed)</td>
+<td>Provide last name that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Address Info: Last Name (apply SHA256 hash)</td>
+<td>Provide a plaintext last name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Address Info: Street Address (already SHA256 hashed)</td>
+<td>Provide street address that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Address Info: Street Address (apply SHA256 hash)</td>
+<td>Provide a plaintext street address and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Address Info: City</td>
+<td>City of the user&rsquo;s address.</td>
+</tr>
+<tr>
+<td>Address Info: State</td>
+<td>State code of the user&rsquo;s address.</td>
+</tr>
+<tr>
+<td>Address Info: Postal Code</td>
+<td>Postal code of the user&rsquo;s address.</td>
+</tr>
+<tr>
+<td>Address Info: Country</td>
+<td>Two-letter country code in ISO-3166-1 alpha-2 format of the user&rsquo;s address.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="user-properties-2">User Properties</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>User Properties</td>
 <td>User properties describe segments of user base, such as language preference or geographic location.</td>
 </tr>
+</tbody>
+</table>
+<h5 id="items-data-2">Items Data</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Item ID</td>
 <td>The ID of the item.</td>
@@ -1041,9 +1630,39 @@ The Firebase App ID. The identifier for a Firebase app. Found in the Firebase co
 <td>Quantity</td>
 <td>Item quantity.</td>
 </tr>
+</tbody>
+</table>
+<h5 id="additional-parameters-2">Additional Parameters</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Debug</td>
 <td>This connector uses the GA4 debug endpoint by default when using Trace. Map a boolean value to override this behavior.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="consent-3">Consent</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ad User Data</td>
+<td>Sets consent for sending user data to Google for advertising purposes.</td>
+</tr>
+<tr>
+<td>Ad Personalization</td>
+<td>Sets consent for personalized advertising.</td>
 </tr>
 </tbody>
 </table>
@@ -1107,7 +1726,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 7, 2023 
+          <p>This page was last updated:  February 7, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1125,6 +1744,7 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action Settings - parameters and options</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#mapping-client-id">Mapping client ID</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#consent">Consent</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-pageview-event-gtagjs">Action - Send PageView Event (gtag.js)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-event-gtagjs">Action - Send Event (gtag.js)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---send-firebase-event">Action - Send Firebase Event</a></li>
@@ -1392,6 +2012,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

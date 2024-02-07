@@ -303,30 +303,23 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="client-side-consent-management-release-notes"><a href="/iq-tag-management/consent-management/release-notes/">Client-side consent management </a></h2>
-          <h2 id="september-2023">September 2023</h2>
+          <h2 id="january-31-2024">January 31, 2024</h2>
 <h4 id="updates-and-fixes">Updates and fixes</h4>
 <ul>
-<li>
-<p>Updated event logging to use a new dedicated <code>id</code> parameter in the <code>CONSENTMGR</code> cookie (with support for custom namespaces), instead of using the <code>utag_main_v_id</code>.</p>
-<p>The following templates have been updated to support this update:</p>
-<ul>
-<li><code>cmGeneral</code> has been updated to version 3.0.12 to add centralized logic for generating consent forms ID that can be called from consent logging templates.</li>
-<li><code>cmDoNotSell</code> has been updated to version 1.4.0 to call the centralized logic.</li>
-<li><code>fullConsentEventHandler</code> has been updated to version 1.0.3 to call the centralized logic.</li>
-<li><code>partialConsentEventHandler</code> has been updated to version 1.0.3 to call the centralized logic.</li>
-</ul>
-<p>For more information about this change and related changes to <code>utag.js</code>, see the <a href="/platforms/javascript/release-notes#450-august-2023">release notes for version 4.50</a>.</p>
-</li>
+<li>Updated Consent Manager Event Logging templates (<code>fullConsentEventHandler</code> and <code>partialConsentEventHandler</code>) to include fallbacks for newly centralized logic for customers still using the legacy Consent Manager v1. For v1 customers, a fallback for <code>cmDoNotSell</code> is not required because it was not available for this version.</li>
 </ul>
         
           
           
 
           <h2 class="rn-section" id="client-side-tags-release-notes"><a href="/client-side-tags/release-notes/">Client-side tags </a></h2>
-          <h2 id="january-25-2024">January 25, 2024</h2>
+          <h2 id="january-31-2024">January 31, 2024</h2>
 <h4 id="fixes">Fixes</h4>
 <ul>
-<li>Updated <a href="/client-side-tags/google-consent-mode-tag-beta/">Google Consent Mode tag</a> to version 2 and added Ad User Data and Ad Personalization categories.</li>
+<li>Updated the <a href="/client-side-tags/google-analytics-4-ga4-tag/">Google Analytics 4 tag</a> to support user-provided data mappings.</li>
+<li>Updated the <a href="/client-side-tags/reddit-pixel-tag/">Reddit Pixel tag</a> to support advanced matching parameters and deduplication.</li>
+<li>Updated the <a href="/client-side-tags/rtb-house-tag/">RTB House Retargeting tag</a>  to add UID logic using the <code>uid</code> standard mapping parameter.</li>
+<li>Deprecated the Tealium Benchmark tag.</li>
 </ul>
         
           
@@ -343,10 +336,21 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="consent-integrations-release-notes"><a href="/iq-tag-management/consent-integrations/release-notes/">Consent Integrations </a></h2>
-          <h2 id="january-25-2024">January 25, 2024</h2>
+          <h2 id="january-31-2024">January 31, 2024</h2>
+<h4 id="updates-and-fixes">Updates and fixes</h4>
+<ul>
+<li>Updated the framework template to v1.1.3 to fix an issue that caused tags to be triggered incorrectly. This update also improves performance in cases of prolonged polling.</li>
+</ul>
+        
+          
+          
+
+          <h2 class="rn-section" id="data-layer-release-notes"><a href="/iq-tag-management/data-layer/release-notes/">Data layer </a></h2>
+          <h2 id="january-31-2024">January 31, 2024</h2>
 <h4 id="fixes">Fixes</h4>
 <ul>
-<li>Fixed edit window to properly handle purpose group creation and management.</li>
+<li>Fixed an issue where applying a data layer variable that contains special characters to a page view event would result in a JavaScript error that prevented iQ Tag Management from loading.</li>
+<li>Updated event trigger variables executed in <code>utag.js</code> to no longer have extra single quotes (<code>'</code>) added into the resulting value if the value contains double quotes (<code>&quot;</code>).</li>
 </ul>
         
           
@@ -443,22 +447,32 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="server-side-connectors-release-notes"><a href="/server-side-connectors/release-notes/">Server-side connectors </a></h2>
-          <h2 id="january-25-2024">January 25, 2024</h2>
+          <h2 id="january-31-2024">January 31, 2024</h2>
 <h4 id="fixes">Fixes</h4>
 <ul>
-<li>Updated [Eloqua Connector]/server-side-connectors/eloqua-connector/ to add Upload Contact via Bulk API action.</li>
-<li>Updated <a href="/server-side-connectors/google-ads-enhanced-conversions-for-web-connector/">Google Ads Enhanced Conversions for Web</a> to use Dynamic Customer ID.</li>
-<li>Updated the following Google connectors to use Google Ads API version 15 and consent options:
+<li>Updated the <a href="/server-side-connectors/algolia-insights-connector/">Algolia Insights connector</a> by adding new Object Data configuration fields to fix a problem when mapping the <code>product_position_number</code> parameter to <code>Positions</code>.</li>
+<li>Updated the <a href="/server-side-connectors/amazon-ads-audience-management-connector/">Amazon Ads Audience Management connector</a> with the following changes:
 <ul>
-<li><a href="/server-side-connectors/google-ads-conversions-connector/">Google Ads Conversions Connector</a></li>
-<li><a href="/server-side-connectors/google-ads-customer-match-connector/">Google Ads Customer Match Connector</a></li>
-<li><a href="/server-side-connectors/google-ads-store-sales-connector/">Google Ads Store Sales Connector</a></li>
-<li><a href="/server-side-connectors/google-ads-enhanced-conversions-for-web-connector/">Google Ads Enhanced Conversions for Web Connector</a></li>
-<li><a href="/server-side-connectors/google-ads-enhanced-conversions-for-leads-connector/">Google Ads Enhanced Conversions for Leads Connector</a></li>
+<li>Added EventStream support.</li>
+<li>Deprecated the <code>/amc/partner/instances</code> endpoint and migrate to <code>/amc/instances</code>.</li>
 </ul>
 </li>
-<li>Updated <a href="/server-side-connectors/agillic-recipients-connector/">Agillic Recipient Connector</a> to use their new Batch API.</li>
-<li>Fixed <a href="/server-side-connectors/amazon-firehose-connector/">Amazon Firehose Connector</a> to properly process batched actions.</li>
+<li>Updated the <a href="/server-side-connectors/amazon-ads-conversions-connector/">Amazon Ads Conversions connector</a> to support additional user match keys.</li>
+<li>Updated the <a href="/server-side-connectors/amazon-advertising-dsp-connector/">Amazon Advertising DSP connector</a> to support country code for audience creation.</li>
+<li>Updated the <a href="/server-side-connectors/firebase-cloud-messaging-connector/">Firebase Cloud Messaging connector</a> to correct an issue with template rendering.</li>
+<li>Updated the <a href="/server-side-connectors/linkedin-conversions-connector/">LinkedIn Conversions connector</a> to fix an error with sending the email parameter. When sending any additional user information, such as company, title, or country code, the user first name and last name are required, even if an email or UUID is provided.</li>
+<li>Updated the <a href="/server-side-connectors/reddit-conversions-connector/">Reddit Conversions connector</a> to remove <code>transaction_id</code> and add <code>conversion_id</code> and product parameters to the Conversion Event mapping section.</li>
+<li>Updated the <a href="/server-side-connectors/google-analytics-4-measurement-protocol-connector/">Google Analytics 4 Measurement Protocol connector</a> to remove character limits for <code>page_title</code>, <code>page_location</code>, and <code>page_referrer</code> and support user-provided data and consent states.</li>
+<li>Updated the <a href="/server-side-connectors/yandex-metrica-connector/">Yandex Metrica connector</a> with the following changes:
+<ul>
+<li>Configuration: The <strong>Counter ID</strong> value is now a part of the connector configuration.</li>
+<li>The Yandex Client ID (<code>_ym_uid</code>) is mappable and now a required parameter.</li>
+<li>The <strong>Products</strong> parameter is now two arrays, an array that represents the product IDs (key) and another that represents quantities of each product (value).</li>
+<li>Send Order Event: Now requires a date type attribute.</li>
+<li>Send Ecommerce Event: The <strong>Currency code</strong> is now mappable and the <strong>Action Field</strong> is now <strong>Purchase Fields</strong> and is no longer required.</li>
+<li>Upsert Contact Event: <code>clientID</code> is no longer accepted. To pass Client IDs, use <code>client_ids</code>.</li>
+</ul>
+</li>
 </ul>
         
           
@@ -514,24 +528,12 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="tealium-for-ios-swift-release-notes"><a href="/platforms/ios-swift/release-notes/">Tealium for iOS (Swift) </a></h2>
-          <h2 id="2110-january-2024">2.11.0 (January 2024)</h2>
+          <h2 id="2120-february-2024">2.12.0 (February 2024)</h2>
 <p><strong>Medium Impact Changes</strong></p>
 <ul>
-<li>Increased minimum supported operating system versions: iOS 11.0, TvOS 11.0, WatchOS 4.0, and MacOS 10.13.</li>
-<li>Changed the storage default directory on disk for TvOS from <code>Application Support</code> to <code>Caches</code> because <code>Application Support</code> was not supported on the TVs.</li>
-<li>Removed the <code>iAd</code> framework from the <code>Attribution</code> module because it was disabled by Apple and will be removed soon.</li>
-</ul>
-<p><strong>Low Impact Changes</strong></p>
-<ul>
-<li>Implemented the option to disable the whole SDK from remote settings.</li>
-<li>Updated the list of device names, including Mac devices and the newest iOS devices.</li>
-<li>Fixed <code>TealiumVisitorProfile</code> parsing to gracefully accept <code>null</code> strings.</li>
-<li>Improved error logs readability.</li>
-<li>Updated list of iOS device models.</li>
-</ul>
-<p><strong>Known Issues</strong></p>
-<ul>
-<li>This is our final release targeting XCode 14. Note that XCode 15 dropped support for iOS 11. To install on XCode 15, you must manually increase the minimum deployment target of the Tealium library to iOS 12 after installing it or the app will crash on launch. For more information, see <a href="https://github.com/Tealium/tealium-swift/issues/311">TEALIUM SWIFT BUG: Runtime crash on launch with Xcode 15 Release</a>.</li>
+<li>Now officially supporting XCode 15.</li>
+<li>Increased minimum supported operating system versions: iOS 12.0, TvOS 12.0, and MacOS 10.14.</li>
+<li>Added Privacy Manifest in the SDK for discoling the privacy API usage reasons. <a href="/platforms/ios-swift/privacy-manifests">Learn more</a></li>
 </ul>
         
           
@@ -624,6 +626,7 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#client-side-tags-release-notes">Client-side tags </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connectors-release-notes">Connectors </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#consent-integrations-release-notes">Consent Integrations </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-layer-release-notes">Data layer </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings-release-notes">Data mappings </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-sources-release-notes">Data sources </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#dataaccess-release-notes">DataAccess </a></li>

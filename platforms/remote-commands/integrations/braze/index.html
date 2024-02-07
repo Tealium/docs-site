@@ -470,7 +470,6 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;api_key&#34;</span>: <span style="color:#e6db74">&#34;YOUR_API_KEY&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;custom_endpoint&#34;</span>: <span style="color:#e6db74">&#34;sdk.iad-01.braze.com&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;session_timeout&#34;</span>: <span style="color:#ae81ff">30</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;disable_location&#34;</span>: <span style="color:#66d9ef">false</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;trigger_interval_seconds&#34;</span>: <span style="color:#ae81ff">100</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;enable_geofences&#34;</span>: <span style="color:#66d9ef">true</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;enable_automatic_geofences&#34;</span>: <span style="color:#66d9ef">true</span>,
@@ -505,9 +504,9 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;start_date&#34;</span>: <span style="color:#e6db74">&#34;event.start_date&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;high_score&#34;</span>: <span style="color:#e6db74">&#34;event.high_score&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;product_id&#34;</span>: <span style="color:#e6db74">&#34;product_id&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;product_quantity&#34;</span>: <span style="color:#e6db74">&#34;quantity&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;product_quantity&#34;</span>: <span style="color:#e6db74">&#34;product_qty&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;product_unit_price&#34;</span>: <span style="color:#e6db74">&#34;product_unit_price&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;currency_code&#34;</span>: <span style="color:#e6db74">&#34;order_currency&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;currency_code&#34;</span>: <span style="color:#e6db74">&#34;product_currency&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;rewards_member&#34;</span>: <span style="color:#e6db74">&#34;purchase.rewards_member&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;rewards_points_earned&#34;</span>: <span style="color:#e6db74">&#34;purchase.rewards_points_earned&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;date_joined_program&#34;</span>: <span style="color:#e6db74">&#34;purchase.date_joined_program&#34;</span>,
@@ -554,6 +553,10 @@ var utag_data = {
 <tr>
 <td><code>emailnotification</code></td>
 <td><code>user.set(emailSubscriptionState:)</code></td>
+</tr>
+<tr>
+<td><code>enablesdk</code></td>
+<td><code>enabled = true/false</code></td>
 </tr>
 <tr>
 <td><code>flush</code></td>
@@ -622,6 +625,10 @@ var utag_data = {
 <tr>
 <td><code>useridentifier</code></td>
 <td><code>changeUser()</code></td>
+</tr>
+<tr>
+<td><code>wipedata</code></td>
+<td><code>wipeData()</code></td>
 </tr>
 </tbody>
 </table>
@@ -722,7 +729,7 @@ var utag_data = {
 </tr>
 <tr>
 <td><code>forward_universal_links</code></td>
-<td><code>Bool</code> (seconds)</td>
+<td><code>Bool</code></td>
 <td>Specifies if the SDK should automatically recognize and forward universal links to the system methods (default is <code>false</code>).</td>
 </tr>
 </tbody>
@@ -951,15 +958,13 @@ var utag_data = {
 <thead>
 <tr>
 <th>Remote Command</th>
-<th>Braze Method (iOS)</th>
-<th>Braze Method (Android)</th>
+<th>Braze Method</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>setcustomattribute</code></td>
 <td><code>user.setCustomAttribute</code></td>
-<td><code>setCustomUserAttribute</code></td>
 </tr>
 </tbody>
 </table>
@@ -990,15 +995,13 @@ var utag_data = {
 <thead>
 <tr>
 <th>Remote Command</th>
-<th>Braze Method (iOS)</th>
-<th>Braze Method (Android)</th>
+<th>Braze Method</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>setcustomattribute</code></td>
 <td><code>user.unsetCustomAttribute</code></td>
-<td><code>unsetCustomUserAttribute</code></td>
 </tr>
 </tbody>
 </table>
@@ -1066,15 +1069,13 @@ var utag_data = {
 <thead>
 <tr>
 <th>Remote Command</th>
-<th>Braze Method (iOS)</th>
-<th>Braze Method (Android)</th>
+<th>Braze Method</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>setcustomarrayattribute</code></td>
 <td><code>user.setCustomAttributeArray</code></td>
-<td><code>setCustomAttributeArray</code></td>
 </tr>
 </tbody>
 </table>
@@ -1105,15 +1106,13 @@ var utag_data = {
 <thead>
 <tr>
 <th>Remote Command</th>
-<th>Braze Method (iOS)</th>
-<th>Braze Method (Android)</th>
+<th>Braze Method</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>appendcustomarrayattribute</code></td>
 <td><code>user.addToCustomAttributeArray</code></td>
-<td><code>addToCustomAttributeArray</code></td>
 </tr>
 </tbody>
 </table>
@@ -1144,15 +1143,13 @@ var utag_data = {
 <thead>
 <tr>
 <th>Remote Command</th>
-<th>Braze Method (iOS)</th>
-<th>Braze Method (Android)</th>
+<th>Braze Method</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>removecustomarrayattribute</code></td>
 <td><code>user.removeFromCustomAttributeArray</code></td>
-<td><code>removeFromCustomAttributeArray</code></td>
 </tr>
 </tbody>
 </table>
@@ -1260,6 +1257,70 @@ var utag_data = {
 </ul>
 </li>
 </ul>
+<h4 id="add-to-subscription-group">Add to subscription group</h4>
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>addtosubscriptiongroup</code></td>
+<td><code>user.addToSubscriptionGroup(id:)</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>subscription_group_id</code> (required)</td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a href="https://www.braze.com/docs/user_guide/message_building_by_channel/email/managing_user_subscriptions/#updating-email-subscription-states">Braze Developer Guide: Subscription Groups</a></li>
+</ul>
+<h4 id="remove-from-subscription-group">Remove from subscription group</h4>
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Braze Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>removefromsubscriptiongroup</code></td>
+<td><code>user.removeFromSubscriptionGroup(id:)</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>subscription_group_id</code> (required)</td>
+<td><code>String</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a href="https://www.braze.com/docs/user_guide/message_building_by_channel/email/managing_user_subscriptions/#updating-email-subscription-states">Braze Developer Guide: Subscription Groups</a></li>
+</ul>
 <h4 id="push-notifications">Push Notifications</h4>
 <table>
 <thead>
@@ -1310,7 +1371,7 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>logpurchase</td>
+<td><code>logpurchase</code></td>
 <td><code>logPurchase</code></td>
 </tr>
 </tbody>
@@ -1328,7 +1389,7 @@ var utag_data = {
 <td><code>[String]</code> / <code>String[]</code></td>
 </tr>
 <tr>
-<td><code>currency</code> (required)</td>
+<td><code>product_currency</code> (required)</td>
 <td><code>String</code> / <code>String</code></td>
 </tr>
 <tr>
@@ -1336,7 +1397,7 @@ var utag_data = {
 <td><code>[Double]</code> / <code>Double[]</code></td>
 </tr>
 <tr>
-<td><code>quantity</code></td>
+<td><code>product_qty</code></td>
 <td><code>[Int]</code> / <code>Int[]</code></td>
 </tr>
 <tr>
@@ -1595,7 +1656,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 12, 2024 
+          <p>This page was last updated:  January 26, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

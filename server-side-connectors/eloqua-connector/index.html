@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side-connectors",
-    reading_time  : "5",
+    reading_time  : "7",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -579,6 +579,8 @@ var utag_data = {
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/yahoo-japan-ads-api-connector-setup-guide/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".yahoo-japan-ads-api-connector-setup-guide">Yahoo! JAPAN Ads API</a>
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/yandex-metrica-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".yandex-metrica-connector">Yandex Metrica</a>
+      </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/ytel-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".ytel-connector">Ytel</a>
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/zendesk-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".zendesk-connector">Zendesk</a>
@@ -643,6 +645,11 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
+<td>Update Contact via Bulk API</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
 <td>Add Contact to Shared List</td>
 <td>✓</td>
 <td>✗</td>
@@ -689,6 +696,13 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
+<h2 id="batch-limits">Batch Limits</h2>
+<p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 100,000</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 32 MB</li>
+</ul>
 <h2 id="configure-settings">Configure settings</h2>
 <p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
 <p>After adding the connector, configure the following required settings:</p>
@@ -697,12 +711,62 @@ var utag_data = {
 <li>Username</li>
 <li>Password</li>
 </ul>
+<h3 id="configure-new-import-definition">Configure New Import Definition</h3>
+<p>The import definition creates a structure for your uploaded data. In the definition, you configure the fields you will be uploading to Tealium. You can also configure data syncs to a contact list or an email list.</p>
+<p>After you create the import definition, Tealium will automatically synchronize the data when you import it.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import Definition Name</td>
+<td>Required. The name of your contact import definition.</td>
+</tr>
+<tr>
+<td>Contact Fields</td>
+<td>Required. Select contact fields to use during upload.</td>
+</tr>
+<tr>
+<td>Identifier Field Name</td>
+<td>Required. Select the field to check the imported data against existing records within Eloqua. It should match one of the <strong>Contact Fields</strong> and contain unique data for each record.</td>
+</tr>
+<tr>
+<td>Optional - Update Rule</td>
+<td>Select the action to update values in the Eloqua database from values imported with this import definition:<ul><li><code>always</code>: Always update the value.</li><li><code>ifNewIsNotNull</code>: Update the value if the new value is not blank.</li><li><code>ifExistingIsNull</code>: Update the value if the existing value is blank.</li><li><code>useFieldRule</code>: Use the field level-defined rule.</li></ul></td>
+</tr>
+<tr>
+<td>Optional - Sync to Contact List</td>
+<td>Select a contact list to sync this contact to.</td>
+</tr>
+<tr>
+<td>Optional - Sync to Contact List Action</td>
+<td>Select the sync action of the contact list for this import definition: <code>add</code> or <code>remove</code>.</td>
+</tr>
+<tr>
+<td>Optional - Sync to Email Group</td>
+<td>Select an email group to sync this contact to.</td>
+</tr>
+<tr>
+<td>Optional - Sync to Email Group Action</td>
+<td>Select the sync action of the email group for this import definition: <code>subscribed</code> or <code>unsubscribed</code>.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="action-settings---parameters-and-options">Action settings - parameters and options</h2>
 <p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
 <p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action---add-contact-to-shared-list">Action - Add Contact to Shared List</h3>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Only the first 1,000 Shared Lists are retrieved from your account. If you cannot find a specific Shared List, use the &ldquo;Custom Text&rdquo; option, providing only the numeric ID of the Shared List. Entering the text name may result in errors.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>If &ldquo;API Contact ID&rdquo; is not specified, an extra API call will be made to search the Target Contact according the fields specified.</p>
+<h3 id="action---update-contact-via-bulk-api">Action - Update Contact via Bulk API</h3>
+<p>The Bulk API queues requests until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 100,000</li>
+<li>Max time since oldest request: 60 minutes</li>
+<li>Max size of requests: 32 MB</li>
+</ul>
+<p>For more information, see <a href="https://docs.oracle.com/en/cloud/saas/marketing/eloqua-develop/Developers/BulkAPI/bulk-API.htm">Oracle Eloqua Bulk API</a>.</p>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -713,17 +777,18 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>Target Shared List</td>
-<td>Required. Target Shared List for the Target Contact.</td>
+<td>Contact Import Definition</td>
+<td>Required. Select the import definition for this batch upload.</td>
 </tr>
 <tr>
-<td>Contact Lookup</td>
-<td><ul><li>API Contact ID – Target Contact ID</li><li>Contact Fields – If &ldquo;API Contact ID&rdquo; is not specified, these fields will be used to search for the Target Contact.</li><li>Date attributes are converted to the following format: <code>yyyy-MM-dd HH:mm:ss</code></li></ul></td>
+<td>Contact Data</td>
+<td>Map attributes to the import definition fields.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---remove-contact-from-shared-list">Action - Remove Contact from Shared List</h3>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>If &ldquo;API Contact ID&rdquo; is not specified, an extra API call will be made to search the Target Contact according the fields specified.</p>
+<h3 id="action---add-contact-to-shared-list">Action - Add Contact to Shared List</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Only the first 1,000 Shared Lists are retrieved from your account. If you cannot find a specific Shared List, use the &ldquo;Custom Text&rdquo; option, providing only the numeric ID of the Shared List. Entering the text name may result in errors.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If &ldquo;API Contact ID&rdquo; is not specified, an extra API call will be made to search the Target Contact according to <strong>Contact Fields</strong> specified in the <strong>Contact Lookup</strong> parameter.</p>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
@@ -739,13 +804,34 @@ var utag_data = {
 </tr>
 <tr>
 <td>Contact Lookup</td>
-<td><ul><li>API Contact ID – Target Contact ID</li><li>Contact Fields – if &ldquo;API Contact ID&rdquo; is not specified, these fields will be used to search for the Target Contact.  </li></ul> <ul><li>Date attributes are converted to the following format: <code>yyyy-MM-dd HH:mm:ss</code></li></ul></td>
+<td><ul><li>API Contact ID – Target Contact ID</li><li>Contact Fields – If &ldquo;API Contact ID&rdquo; is not specified, the <strong>Contact Fields</strong> will be used to search for the Target Contact.</li><li>Date attributes are converted to the following format: <code>yyyy-MM-dd HH:mm:ss</code></li></ul></td>
+</tr>
+</tbody>
+</table>
+<h3 id="action---remove-contact-from-shared-list">Action - Remove Contact from Shared List</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If &ldquo;API Contact ID&rdquo; is not specified, an extra API call will be made to search the Target Contact according to <strong>Contact Fields</strong> specified in the <strong>Contact Lookup</strong> parameter.</p>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Target Shared List</td>
+<td>Required. Target Shared List for the Target Contact.</td>
+</tr>
+<tr>
+<td>Contact Lookup</td>
+<td><ul><li>API Contact ID – Target Contact ID</li><li>Contact Fields – if &ldquo;API Contact ID&rdquo; is not specified, the <strong>Contact Fields</strong> will be used to search for the Target Contact.  </li><li>Date attributes are converted to the following format: <code>yyyy-MM-dd HH:mm:ss</code></li></ul></td>
 </tr>
 </tbody>
 </table>
 <h3 id="action---insert-or-update-contact">Action - Insert or Update Contact</h3>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>If &ldquo;API Contact ID&rdquo; is not specified, an extra API call will be made to search the Target Contact according to the fields specified.</p>
-<h4 id="parameters-2">Parameters</h4>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If &ldquo;API Contact ID&rdquo; is not specified, an extra API call will be made to search the Target Contact according to <strong>Contact Fields</strong> specified in the <strong>Contact Lookup</strong> parameter.</p>
+<h4 id="parameters-3">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -773,7 +859,7 @@ var utag_data = {
 </tbody>
 </table>
 <h3 id="action---insert-contact">Action - Insert Contact</h3>
-<h4 id="parameters-3">Parameters</h4>
+<h4 id="parameters-4">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -789,8 +875,8 @@ var utag_data = {
 </tbody>
 </table>
 <h3 id="action---update-contact">Action - Update Contact</h3>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>If &ldquo;API Contact ID&rdquo; is not specified, an extra API call will be made to search the Target Contact according the fields specified.</p>
-<h4 id="parameters-4">Parameters</h4>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If &ldquo;API Contact ID&rdquo; is not specified, an extra API call will be made to search the Target Contact according to <strong>Contact Fields</strong> specified in the <strong>Contact Lookup</strong> parameter.</p>
+<h4 id="parameters-5">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -810,28 +896,7 @@ var utag_data = {
 </tbody>
 </table>
 <h3 id="action---subscribe-contact-to-email-group">Action - Subscribe Contact to Email Group</h3>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>If &ldquo;API Contact ID&rdquo; is not specified, an extra API call will be made to search the Target Contact according the fields specified.</p>
-<h4 id="parameters-5">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Target Email Group</td>
-<td><ul><li>Required.</li><li>Target Email Group for the Target Contact</li></ul></td>
-</tr>
-<tr>
-<td>Contact Lookup</td>
-<td><ul><li>API Contact ID – Target Contact ID</li><li>Contact Fields – if &ldquo;API Contact ID&rdquo; is not specified, these fields will be used to search for the Target Contact.  </li></ul> <ul><li>Date attributes are converted to the following format: <code>yyyy-MM-dd HH:mm:ss</code></li></ul></td>
-</tr>
-</tbody>
-</table>
-<h3 id="action---unsubscribe-contact-from-email-group">Action - Unsubscribe Contact from Email Group</h3>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>If &ldquo;API Contact ID&rdquo; is not specified, an extra API call will be made to search the Target Contact according the fields specified.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If &ldquo;API Contact ID&rdquo; is not specified, an extra API call will be made to search the Target Contact according to <strong>Contact Fields</strong> specified in the <strong>Contact Lookup</strong> parameter.</p>
 <h4 id="parameters-6">Parameters</h4>
 <table>
 <thead>
@@ -847,12 +912,33 @@ var utag_data = {
 </tr>
 <tr>
 <td>Contact Lookup</td>
-<td><ul><li>API Contact ID – Target Contact ID</li><li>Contact Fields – if &ldquo;API Contact ID&rdquo; is not specified, these fields will be used to search for the Target Contact. </li></ul> <ul><li>Date attributes are converted to the following format: <code>yyyy-MM-dd HH:mm:ss</code></li></ul></td>
+<td><ul><li>API Contact ID – Target Contact ID</li><li>Contact Fields – if &ldquo;API Contact ID&rdquo; is not specified, the <strong>Contact Fields</strong> will be used to search for the Target Contact.  </li><li>Date attributes are converted to the following format: <code>yyyy-MM-dd HH:mm:ss</code></li></ul></td>
+</tr>
+</tbody>
+</table>
+<h3 id="action---unsubscribe-contact-from-email-group">Action - Unsubscribe Contact from Email Group</h3>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If &ldquo;API Contact ID&rdquo; is not specified, an extra API call will be made to search the Target Contact according to <strong>Contact Fields</strong> specified in the <strong>Contact Lookup</strong> parameter.</p>
+<h4 id="parameters-7">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Target Email Group</td>
+<td><ul><li>Required.</li><li>Target Email Group for the Target Contact</li></ul></td>
+</tr>
+<tr>
+<td>Contact Lookup</td>
+<td><ul><li>API Contact ID – Target Contact ID</li><li>Contact Fields – if &ldquo;API Contact ID&rdquo; is not specified, the <strong>Contact Fields</strong> will be used to search for the Target Contact. </li><li>Date attributes are converted to the following format: <code>yyyy-MM-dd HH:mm:ss</code></li></ul></td>
 </tr>
 </tbody>
 </table>
 <h3 id="action---insert-custom-object-data-for-contact">Action - Insert Custom Object Data for Contact</h3>
-<h4 id="parameters-7">Parameters</h4>
+<h4 id="parameters-8">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -876,7 +962,7 @@ var utag_data = {
 </tbody>
 </table>
 <h3 id="action---insert-or-update-custom-object-data-for-contact">Action - Insert or Update Custom Object Data for Contact</h3>
-<h4 id="parameters-8">Parameters</h4>
+<h4 id="parameters-9">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -967,7 +1053,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 14, 2021 
+          <p>This page was last updated:  January 29, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -983,9 +1069,12 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#requirements">Requirements</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#supported-actions">Supported actions</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#batch-limits">Batch Limits</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure settings</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action settings - parameters and options</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---add-contact-to-shared-list">Action - Add Contact to Shared List</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-new-import-definition">Configure New Import Definition</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings---parameters-and-options">Action settings - parameters and options</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---update-contact-via-bulk-api">Action - Update Contact via Bulk API</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---add-contact-to-shared-list">Action - Add Contact to Shared List</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---remove-contact-from-shared-list">Action - Remove Contact from Shared List</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---insert-or-update-contact">Action - Insert or Update Contact</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action---insert-contact">Action - Insert Contact</a></li>
@@ -1258,6 +1347,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

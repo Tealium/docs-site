@@ -427,8 +427,6 @@ var utag_data = {
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/merkle-merkury-tag/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".merkle-merkury-tag-setup-guide">Merkle Merkury</a>
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/client-side-tags/microsoft-advertising-uet-tag/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".microsoft-advertising-uet-tag">Microsoft Advertising UET Tag Set Up Guide</a>
-      </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/microsoft-advertising-universal-event-tracking-uet-tag/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".microsoft-advertising-universal-event-tracking-uet-tag">Microsoft Advertising Universal Event Tracking (UET)</a>
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/mixpanel-tag/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".mixpanel-tag">Mixpanel</a>
@@ -691,10 +689,11 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>ContentSquare unlocks customer insights for your entire digital team. It&rsquo;s one platform that&rsquo;s powerful enough for every digital role, from marketers to product managers to IT.</p>
+  <p>ContentSquare unlocks customer insights for your entire digital team. It&rsquo;s one platform that is powerful enough for every digital role, from marketers to product managers to IT.</p>
 <h2 id="tag-tips">Tag Tips</h2>
 <ul>
-<li>Use mappings to:
+<li>
+<p>Use mappings to:</p>
 <ul>
 <li>Dynamically override config data</li>
 <li>Dynamically override the E-Commerce extension values</li>
@@ -703,37 +702,44 @@ var utag_data = {
 <li>Event trigger</li>
 </ul>
 </li>
-<li>Supports the following E-Commerce extension values:
+<li>
+<p>Supports the following E-Commerce extension values:</p>
 <ul>
 <li>Order ID</li>
 <li>Product Price</li>
 <li>Currency</li>
 </ul>
 </li>
-<li>This is a Mobile Remote Command companion tag for the native mobile app SDK.</li>
+<li>
+<p>This is a Mobile Remote Command companion tag for the native mobile app SDK.</p>
+</li>
 </ul>
 <h2 id="tag-configuration">Tag Configuration</h2>
-<p>First, go to the tag marketplace and add the ContentSquare Mobile Remote Command tag (Learn more about <a href="/iq-tag-management/tags/manage/">how to add a tag</a>).</p>
-<p>After adding the tag, configure the following settings:</p>
-<h2 id="data-mappings">Data Mappings</h2>
-<p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-layer/data-layer-variables/">data layer variable</a> to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">data mappings</a>.</p>
+<p>Navigate to the Tag Marketplace to add a new tag. For more information, see <a href="/iq-tag-management/tags/about/">About tags</a>.</p>
+<h2 id="load-rules">Load rules</h2>
+<p>Load the tag on all pages or set conditions for when your tag will load. For more information, see <a href="/iq-tag-management/load-rules/about/">About load rules</a>.</p>
+<h2 id="data-mappings">Data mappings</h2>
+<p>Mapping is the process of sending data from a data layer variable to the corresponding destination variable of the vendor tag. For more information, see <a href="/iq-tag-management/data-mappings/about/">About data mappings</a>.</p>
 <p>The available categories are:</p>
 <h3 id="settings">Settings</h3>
 <table>
 <thead>
 <tr>
 <th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
 <th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Screen Name (<code>screen_name</code>) (required)</td>
-<td style="text-align:left">[String]</td>
+<td style="text-align:left"><code>screen_name</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Required. Screen name</td>
 </tr>
 <tr>
-<td style="text-align:left">Dynamic Variable</td>
-<td style="text-align:left">(<code>dynamic_var</code>) (required)</td>
+<td style="text-align:left"><code>dynamic_var</code></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Required. Dynamic variable</td>
 </tr>
 </tbody>
 </table>
@@ -742,25 +748,30 @@ var utag_data = {
 <thead>
 <tr>
 <th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
 <th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Price (<code>purchase.price</code>) (Overrides <code>_cprice</code>) (required)</td>
-<td style="text-align:left">[Array]</td>
+<td style="text-align:left"><code>purchase.price</code> (Overrides <code>_ctotal</code>)</td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">Required. Price</td>
 </tr>
 <tr>
-<td style="text-align:left">Currency (<code>purchase.currency</code>) (Overrides <code>_ccurrency</code>) (required)</td>
-<td style="text-align:left">[String]</td>
+<td style="text-align:left"><code>purchase.currency</code> (Overrides <code>_ccurrency</code>)</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Required.  Currency</td>
 </tr>
 <tr>
-<td style="text-align:left">Transaction Id (<code>purchase.transaction_id</code>) (Overrides <code>_corder</code>)</td>
-<td style="text-align:left">[String]</td>
+<td style="text-align:left"><code>purchase.transaction_id</code> (Overrides <code>_corder</code>)</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Transaction ID</td>
 </tr>
 </tbody>
 </table>
 <h3 id="events">Events</h3>
+<p>To map events, refer to <a href="/iq-tag-management/data-mappings/manage/#add-an-event-mapping">Create an Event Mapping</a></p>
 <table>
 <thead>
 <tr>
@@ -770,44 +781,45 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Send Screen View (<code>sendscreenview</code>)</td>
-<td style="text-align:left">sendscreenview</td>
+<td style="text-align:left"><code>sendscreenview</code></td>
+<td style="text-align:left">Send screen view</td>
 </tr>
 <tr>
-<td style="text-align:left">Send Transaction (<code>sendtransaction</code>)</td>
-<td style="text-align:left">sendtransaction</td>
+<td style="text-align:left"><code>sendtransaction</code></td>
+<td style="text-align:left">Send transaction</td>
 </tr>
 <tr>
-<td style="text-align:left">Send Dynamic Var (<code>senddynamicvar</code>)</td>
-<td style="text-align:left">senddynamicvar</td>
+<td style="text-align:left"><code>senddynamicvar</code></td>
+<td style="text-align:left">Send dynamic variable</td>
 </tr>
 <tr>
-<td style="text-align:left">Stop Tracking (<code>stoptracking</code>)</td>
-<td style="text-align:left">stoptracking</td>
+<td style="text-align:left"><code>stoptracking</code></td>
+<td style="text-align:left">Stop tracking</td>
 </tr>
 <tr>
-<td style="text-align:left">Resume Tracking (<code>resumetracking</code>)</td>
-<td style="text-align:left">resumetracking</td>
+<td style="text-align:left"><code>resumeTracking</code></td>
+<td style="text-align:left">Resume tracking</td>
 </tr>
 <tr>
-<td style="text-align:left">Forget Me (<code>forgetme</code>)</td>
-<td style="text-align:left">forgetme</td>
+<td style="text-align:left"><code>forgetme</code></td>
+<td style="text-align:left">Forget me</td>
 </tr>
 <tr>
-<td style="text-align:left">Opt In (<code>optin</code>)</td>
-<td style="text-align:left">optin</td>
+<td style="text-align:left"><code>optin</code></td>
+<td style="text-align:left">Opt in</td>
 </tr>
 <tr>
-<td style="text-align:left">Opt Out (<code>optout</code>)</td>
-<td style="text-align:left">optout</td>
+<td style="text-align:left"><code>optout</code></td>
+<td style="text-align:left">Opt out</td>
 </tr>
 <tr>
+<td style="text-align:left"><code>custom</code></td>
 <td style="text-align:left">Custom</td>
-<td style="text-align:left">custom</td>
 </tr>
 </tbody>
 </table>
 <h3 id="event-parameters">Event Parameters</h3>
+<p>To map events, refer to <a href="/iq-tag-management/data-mappings/manage/#add-an-event-mapping">Create an Event Mapping</a></p>
 <table>
 <thead>
 <tr>
@@ -817,40 +829,40 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Send Screen View (<code>sendscreenview</code>)</td>
-<td style="text-align:left">sendscreenview</td>
+<td style="text-align:left"><code>sendscreenview</code></td>
+<td style="text-align:left">Send screen view</td>
 </tr>
 <tr>
-<td style="text-align:left">Send Transaction (<code>sendtransaction</code>)</td>
-<td style="text-align:left">sendtransaction</td>
+<td style="text-align:left"><code>sendtransaction</code></td>
+<td style="text-align:left">Send transaction</td>
 </tr>
 <tr>
-<td style="text-align:left">Send Dynamic Var (<code>senddynamicvar</code>)</td>
-<td style="text-align:left">senddynamicvar</td>
+<td style="text-align:left"><code>senddynamicvar</code></td>
+<td style="text-align:left">Send dynamic variable</td>
 </tr>
 <tr>
-<td style="text-align:left">Stop Tracking (<code>stoptracking</code>)</td>
-<td style="text-align:left">stoptracking</td>
+<td style="text-align:left"><code>stoptracking</code></td>
+<td style="text-align:left">Stop tracking</td>
 </tr>
 <tr>
-<td style="text-align:left">Resume Tracking (<code>resumeTracking</code>)</td>
-<td style="text-align:left">resumeTracking</td>
+<td style="text-align:left"><code>resumeTracking</code></td>
+<td style="text-align:left">Resume tracking</td>
 </tr>
 <tr>
-<td style="text-align:left">Forget Me (<code>forgetme</code>)</td>
-<td style="text-align:left">forgetme</td>
+<td style="text-align:left"><code>forgetme</code></td>
+<td style="text-align:left">Forget me</td>
 </tr>
 <tr>
-<td style="text-align:left">Opt In (<code>optin</code>)</td>
-<td style="text-align:left">optin</td>
+<td style="text-align:left"><code>optin</code></td>
+<td style="text-align:left">Opt in</td>
 </tr>
 <tr>
-<td style="text-align:left">Opt Out (<code>optout</code>)</td>
-<td style="text-align:left">optout</td>
+<td style="text-align:left"><code>optout</code></td>
+<td style="text-align:left">Opt out</td>
 </tr>
 <tr>
+<td style="text-align:left"><code>custom</code></td>
 <td style="text-align:left">Custom</td>
-<td style="text-align:left">custom</td>
 </tr>
 </tbody>
 </table>
@@ -914,7 +926,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 7, 2021 
+          <p>This page was last updated:  February 1, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -930,7 +942,8 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-tips">Tag Tips</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag Configuration</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data Mappings</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules">Load rules</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data mappings</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#settings">Settings</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#e-commerce">E-Commerce</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#events">Events</a></li>
@@ -1199,7 +1212,6 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
-  
   
   
   

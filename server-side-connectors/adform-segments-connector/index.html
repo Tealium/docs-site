@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side-connectors",
-    reading_time  : "4",
+    reading_time  : "5",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -579,6 +579,8 @@ var utag_data = {
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/yahoo-japan-ads-api-connector-setup-guide/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".yahoo-japan-ads-api-connector-setup-guide">Yahoo! JAPAN Ads API</a>
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/yandex-metrica-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".yandex-metrica-connector">Yandex Metrica</a>
+      </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/ytel-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".ytel-connector">Ytel</a>
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/zendesk-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".zendesk-connector">Zendesk</a>
@@ -619,14 +621,13 @@ var utag_data = {
 
   
     <p class="f4 fw3 lh-copy">
-      Adform is the only global, independent, and fully integrated advertising platform built for modern marketing. Its unique enterprise technology – Adform Flow – harnesses superior user experience and a scalable, modular, and open architecture to enable seamless management of the whole campaign life cycle. Adform provides a variety of solutions for tracking website, mobile app, or server-side activities. This service allows you to manage your audiences - groups of internet visitors who share the same categories, behaviors, and attributes (age, gender, and geographic location).
+      This article describes how to set up the Adform Segments connector.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>This article describes how to set up the Adform Segments connector.</p>
-<h2 id="api-information">API Information</h2>
+  <h2 id="api-information">API Information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
 <li>API Name: Adform API</li>
@@ -667,7 +668,7 @@ var utag_data = {
 </ul>
 <p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
 <h2 id="audience-segment">Audience Segment</h2>
-<p>Segments can be created and deleted, and you can add or remove users to audience segments. AudienceStream utilizes an API endpoint to retrieve, create, and delete segments within your Tealium AudienceStream instance.</p>
+<p>Segments can be created and deleted, and you can add users to or remove users from audience segments. AudienceStream utilizes an API endpoint to retrieve, create, and delete segments within your Tealium AudienceStream instance.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>By default, the ability to dynamically create audiences is not available. To use this feature, ask your Adform administrator to make this feature available.</p>
 <p>Only account administrators can make dynamic audience generation available or adjust the default settings for all dynamically-generated audiences. Administrators can set the price, indicate the to live (TTL) in days, and specify a data type.</p>
 <p>To create a segment, click <strong>Create Segment</strong> for the following parameters:</p>
@@ -717,7 +718,10 @@ var utag_data = {
 <p>To delete a segment, click <strong>Delete Audience</strong> and select the audience segment to be deleted.</p>
 <p>Additionally, the status of the segment appears in parentheses next to the audience segment name.</p>
 <p>For example: Cart Abandoners (active)</p>
-<h3 id="action-settings--parameters-and-options">Action Settings — Parameters and Options</h3>
+<h2 id="action-settings--parameters-and-options">Action settings — parameters and options</h2>
+<p>Click <strong>Continue</strong> to configure the connector actions. Enter a name for the action and then select the action type from the drop-down menu.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The Adform Segments connector does not support sending the <code>UID</code> parameter. If the <code>UID</code> parameter is necessary. Adform suggests using <a href="/client-side-tags/adform-tag/">their Tealium tag</a>.</p>
+<h3 id="action-settings--parameters-and-options-1">Action Settings — Parameters and Options</h3>
 <p>Click <strong>Continue</strong> to configure the connector actions. Enter in a name for the action and then select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="action--add-user-to-audience-segment">Action — Add User to Audience Segment</h3>
@@ -737,10 +741,6 @@ var utag_data = {
 <tr>
 <td>Adform Partner ID</td>
 <td>(Required) The Adform Partner ID of your account.</td>
-</tr>
-<tr>
-<td>UID (<code>uid</code>)</td>
-<td>Adform ID Visitor Attribute</td>
 </tr>
 <tr>
 <td>GAID (<code>gaid</code>)</td>
@@ -781,10 +781,6 @@ var utag_data = {
 <tr>
 <td>Adform Partner ID</td>
 <td>(Required) The Adform Partner ID of your account.</td>
-</tr>
-<tr>
-<td>UID (<code>uid</code>)</td>
-<td>Adform ID Visitor Attribute</td>
 </tr>
 <tr>
 <td>GAID (<code>gaid</code>)</td>
@@ -913,7 +909,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 25, 2022 
+          <p>This page was last updated:  February 2, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -931,7 +927,8 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector Actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure-settings">Configure Settings</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#audience-segment">Audience Segment</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings--parameters-and-options">Action Settings — Parameters and Options</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings--parameters-and-options">Action settings — parameters and options</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-settings--parameters-and-options-1">Action Settings — Parameters and Options</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action--add-user-to-audience-segment">Action — Add User to Audience Segment</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action--remove-user-from-audience-segment">Action — Remove User from Audience Segment</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#first-party-id">First Party ID</a></li>
@@ -1199,6 +1196,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

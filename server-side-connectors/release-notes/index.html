@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side-connectors",
-    reading_time  : "8",
+    reading_time  : "9",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -579,6 +579,8 @@ var utag_data = {
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/yahoo-japan-ads-api-connector-setup-guide/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".yahoo-japan-ads-api-connector-setup-guide">Yahoo! JAPAN Ads API</a>
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/yandex-metrica-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".yandex-metrica-connector">Yandex Metrica</a>
+      </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/ytel-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".ytel-connector">Ytel</a>
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/zendesk-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".zendesk-connector">Zendesk</a>
@@ -623,8 +625,35 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="january-25-2024">January 25, 2024</h2>
+  <h2 id="january-31-2024">January 31, 2024</h2>
 <h4 id="fixes">Fixes</h4>
+<ul>
+<li>Updated the <a href="/server-side-connectors/algolia-insights-connector/">Algolia Insights connector</a> by adding new Object Data configuration fields to fix a problem when mapping the <code>product_position_number</code> parameter to <code>Positions</code>.</li>
+<li>Updated the <a href="/server-side-connectors/amazon-ads-audience-management-connector/">Amazon Ads Audience Management connector</a> with the following changes:
+<ul>
+<li>Added EventStream support.</li>
+<li>Deprecated the <code>/amc/partner/instances</code> endpoint and migrate to <code>/amc/instances</code>.</li>
+</ul>
+</li>
+<li>Updated the <a href="/server-side-connectors/amazon-ads-conversions-connector/">Amazon Ads Conversions connector</a> to support additional user match keys.</li>
+<li>Updated the <a href="/server-side-connectors/amazon-advertising-dsp-connector/">Amazon Advertising DSP connector</a> to support country code for audience creation.</li>
+<li>Updated the <a href="/server-side-connectors/firebase-cloud-messaging-connector/">Firebase Cloud Messaging connector</a> to correct an issue with template rendering.</li>
+<li>Updated the <a href="/server-side-connectors/linkedin-conversions-connector/">LinkedIn Conversions connector</a> to fix an error with sending the email parameter. When sending any additional user information, such as company, title, or country code, the user first name and last name are required, even if an email or UUID is provided.</li>
+<li>Updated the <a href="/server-side-connectors/reddit-conversions-connector/">Reddit Conversions connector</a> to remove <code>transaction_id</code> and add <code>conversion_id</code> and product parameters to the Conversion Event mapping section.</li>
+<li>Updated the <a href="/server-side-connectors/google-analytics-4-measurement-protocol-connector/">Google Analytics 4 Measurement Protocol connector</a> to remove character limits for <code>page_title</code>, <code>page_location</code>, and <code>page_referrer</code> and support user-provided data and consent states.</li>
+<li>Updated the <a href="/server-side-connectors/yandex-metrica-connector/">Yandex Metrica connector</a> with the following changes:
+<ul>
+<li>Configuration: The <strong>Counter ID</strong> value is now a part of the connector configuration.</li>
+<li>The Yandex Client ID (<code>_ym_uid</code>) is mappable and now a required parameter.</li>
+<li>The <strong>Products</strong> parameter is now two arrays, an array that represents the product IDs (key) and another that represents quantities of each product (value).</li>
+<li>Send Order Event: Now requires a date type attribute.</li>
+<li>Send Ecommerce Event: The <strong>Currency code</strong> is now mappable and the <strong>Action Field</strong> is now <strong>Purchase Fields</strong> and is no longer required.</li>
+<li>Upsert Contact Event: <code>clientID</code> is no longer accepted. To pass Client IDs, use <code>client_ids</code>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="january-25-2024">January 25, 2024</h2>
+<h4 id="fixes-1">Fixes</h4>
 <ul>
 <li>Updated [Eloqua Connector]/server-side-connectors/eloqua-connector/ to add Upload Contact via Bulk API action.</li>
 <li>Updated <a href="/server-side-connectors/google-ads-enhanced-conversions-for-web-connector/">Google Ads Enhanced Conversions for Web</a> to use Dynamic Customer ID.</li>
@@ -641,7 +670,7 @@ var utag_data = {
 <li>Fixed <a href="/server-side-connectors/amazon-firehose-connector/">Amazon Firehose Connector</a> to properly process batched actions.</li>
 </ul>
 <h2 id="january-18-2024">January 18, 2024</h2>
-<h4 id="fixes-1">Fixes</h4>
+<h4 id="fixes-2">Fixes</h4>
 <ul>
 <li>Updated the <a href="/server-side-connectors/adobe-campaign-connector/">Adobe Campaign connector</a> to enable the <code>Send Custom SOAP Request</code> action for EventStream.</li>
 <li>Updated the <a href="/server-side-connectors/agillic-recipients-connector/">Agillic Recipients connector</a> to resolve an API error that occurs when the response does not contain JSON.</li>
@@ -649,7 +678,7 @@ var utag_data = {
 <li>Updated the <a href="/server-side-connectors/pegasystems-connector/">Pegasystems connector</a> to add the new <code>ID Merge</code> action.</li>
 </ul>
 <h2 id="january-11-2024">January 11, 2024</h2>
-<h4 id="fixes-2">Fixes</h4>
+<h4 id="fixes-3">Fixes</h4>
 <ul>
 <li>Updated the <a href="/server-side-connectors/agillic-recipients-connector/">Agillic Recipients connector</a> with new mappings to allow empty values to be sent for unused attributes.</li>
 <li>Updated the <a href="/server-side-connectors/avo-inspector-connector/">Avo Inspector connector</a> to add the <strong>Track all the events</strong> action to enable or disable all events tracking.</li>
@@ -666,9 +695,9 @@ var utag_data = {
 <h4 id="newcool-stuff">New/Cool Stuff</h4>
 <ul>
 <li>New marketplace connector: <a href="/server-side-connectors/adobe-campaign-standard-oauth-connector/">Adobe Campaign Standard (oAuth)</a>.</li>
-<li>New marketplace connector: Yandex Metrica</li>
+<li>New marketplace connector: <a href="/server-side-connectors/yandex-metrica-connector/">Yandex Metrica</a></li>
 </ul>
-<h4 id="fixes-3">Fixes</h4>
+<h4 id="fixes-4">Fixes</h4>
 <ul>
 <li>Updated the <a href="/server-side-connectors/adobe-analytics-connector/">Adobe Analytics connector</a> to support new brand actions.</li>
 <li>Updated the <a href="/server-side-connectors/facebook-audiences-customer-provided-credentials-connector/">Facebook Audience (Customer Provided Credentials) connector</a> to fix an issue in which the callback URL wasn&rsquo;t redirecting back to Tealium correctly.</li>
@@ -678,18 +707,18 @@ var utag_data = {
 <ul>
 <li>New marketplace connector: <a href="/server-side-connectors/reddit-conversions-connector/">Reddit Conversions</a>.</li>
 </ul>
-<h4 id="fixes-4">Fixes</h4>
+<h4 id="fixes-5">Fixes</h4>
 <ul>
 <li>Updated <a href="/server-side-connectors/campaign-monitor-connector/">Campaign Monitor connector</a> to allow clearing of custom fields.</li>
 <li>Updated <a href="/server-side-connectors/pardot-connector/">Pardot connector</a> to add <strong>Verify Campaign ID</strong>, <strong>Verify Email Template</strong>, <strong>Verify List ID</strong> buttons to configuration screens.</li>
 </ul>
 <h2 id="december-7-2023">December 7, 2023</h2>
-<h4 id="fixes-5">Fixes</h4>
+<h4 id="fixes-6">Fixes</h4>
 <ul>
 <li>Updated the <a href="/server-side-connectors/adobe-aep-connector/">Adobe Experience Platform connector</a> to fix an issue where users could not select multiple namespaces and to add additional tutorial documentation.</li>
 </ul>
 <h2 id="november-29-2023">November 29, 2023</h2>
-<h4 id="fixes-6">Fixes</h4>
+<h4 id="fixes-7">Fixes</h4>
 <ul>
 <li>Updated the <a href="/server-side-connectors/adobe-analytics-connector/">Adobe Analytics connector</a> to support User Agent Client Hints mappings.</li>
 <li>Updated the <a href="/server-side-connectors/airship-connector/">Airship connector</a> to correct issue where strings were converted to floats if they contained certain characters.</li>
@@ -717,7 +746,7 @@ var utag_data = {
 <ul>
 <li>New marketplace connector: <a href="/server-side-connectors/nextdoor-connector/">Nextdoor Conversion API connector</a>.</li>
 </ul>
-<h4 id="fixes-7">Fixes</h4>
+<h4 id="fixes-8">Fixes</h4>
 <ul>
 <li>Updated list in the connector marketplace to properly identify new connectors.</li>
 <li>Fixed multiple issues with the Adobe Experience Platform connector:
@@ -737,12 +766,12 @@ var utag_data = {
 <li>Updated <a href="/server-side-connectors/microsoft-dynamics-365-connector/">Microsoft Dynamics 365 connector</a> to add <strong>Remove Contact from Marketing List</strong> action.</li>
 </ul>
 <h2 id="november-8-2023">November 8, 2023</h2>
-<h4 id="fixes-8">Fixes</h4>
+<h4 id="fixes-9">Fixes</h4>
 <ul>
 <li>Updated <a href="/server-side-connectors/braze-connector/">Braze connector</a> to add new <strong>Send Campaign Message</strong>, <strong>Send Canvas Message</strong>, <strong>Send Transactional Email</strong>, and <strong>Identify User</strong> actions.</li>
 </ul>
 <h2 id="november-1-2023">November 1, 2023</h2>
-<h4 id="fixes-9">Fixes</h4>
+<h4 id="fixes-10">Fixes</h4>
 <ul>
 <li>Updated <a href="/server-side-connectors/google-ads-store-sales-connector/">Google Ads Store Sales connector</a> to not send <code>itemAttribute</code> if no item attributes are mapped and populated.</li>
 <li>Updated <a href="/server-side-connectors/the-trade-desk-first-party-data-connector/">The Trade Desk First Party Data connector</a> to allow for multiple data value pairs to be sent and updated the name from The Trade Desk connector.</li>
@@ -754,13 +783,13 @@ var utag_data = {
 <li>New marketplace connector: <a href="/server-side-connectors/the-trade-desk-third-party-data-connector/">The Trade Desk Third Party Data</a></li>
 <li>New marketplace connector: <a href="/server-side-connectors/pendo-engage-api-connector/">Pendo Engage API</a></li>
 </ul>
-<h4 id="fixes-10">Fixes</h4>
+<h4 id="fixes-11">Fixes</h4>
 <ul>
 <li>Updated the <a href="/server-side-connectors/facebook-audiences-connector/">Facebook Audiences connector</a> to verify that the user has accepted the Facebook Terms of Service for Facebook Custom Audiences before establishing a connection to Facebook.</li>
 <li>Updated the <a href="/server-side-connectors/impact-page-loads-connector/">Impact Page Loads connector</a> to make the referring URL parameter optional.</li>
 </ul>
 <h2 id="october-18-2023">October 18, 2023</h2>
-<h4 id="fixes-11">Fixes</h4>
+<h4 id="fixes-12">Fixes</h4>
 <ul>
 <li>Updated the <a href="/server-side-connectors/braze-connector/">Braze connector</a> to support the following new API endpoints:
 <ul>
@@ -771,7 +800,7 @@ var utag_data = {
 <li>Update to the <a href="/server-side-connectors/salesforce-email-studio-oauth2-exacttarget-connector/">SalesForce Email Studio OAuth2 (Exact Target) connector</a> to correct an issue with invalid data in one record causing an error for the entire batch of records.</li>
 </ul>
 <h2 id="october-2023">October 2023</h2>
-<h4 id="fixes-12">Fixes</h4>
+<h4 id="fixes-13">Fixes</h4>
 <ul>
 <li>Fixed <a href="/server-side-connectors/facebook-audiences-connector/">Facebook Audiences connector</a> app-related user data mappings.</li>
 <li>Fixed incorrect documentation link for <a href="/server-side-connectors/google-sa360-enhanced-conversions-connector/">Google SA360 Enhanced Conversions connector</a>.</li>
@@ -795,7 +824,7 @@ var utag_data = {
 <ul>
 <li>New marketplace connector: <a href="/server-side-connectors/amazon-ads-audience-management-connector/">Amazon Ads Audience Management connector</a></li>
 </ul>
-<h4 id="fixes-13">Fixes</h4>
+<h4 id="fixes-14">Fixes</h4>
 <ul>
 <li>Updated <a href="/server-side-connectors/amazon-ads-audience-management-connector/">Amazon Ads Audience Management connector</a> with the following:
 <ul>
@@ -826,7 +855,7 @@ var utag_data = {
 <li>New marketplace connector: <a href="/server-side-connectors/tiktok-audiences-tealium-provided-credentials-connector/">TikTok Audiences (Tealium-Provided Credentials)</a></li>
 <li>New marketplace connector - <a href="/server-side-connectors/movable-ink-connector/">Movable Ink</a></li>
 </ul>
-<h4 id="fixes-14">Fixes</h4>
+<h4 id="fixes-15">Fixes</h4>
 <ul>
 <li>Updated the <a href="/server-side-connectors/emarsys-connector/">Emarsys connector</a> to add the Trigger External Event action.</li>
 <li>Updated the <a href="/server-side-connectors/klaviyo-connector/">Klaviyo connector</a> to increase the number of lists fetched for selection in action configuration.</li>
@@ -916,7 +945,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 30, 2024 
+          <p>This page was last updated:  February 7, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -930,7 +959,8 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#january-25-2024">January 25, 2024</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#january-31-2024">January 31, 2024</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#january-25-2024">January 25, 2024</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#january-18-2024">January 18, 2024</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#january-11-2024">January 11, 2024</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#december-20-2023">December 20, 2023</a></li>
@@ -1209,6 +1239,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

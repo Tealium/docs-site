@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side-connectors",
-    reading_time  : "2",
+    reading_time  : "4",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -579,6 +579,8 @@ var utag_data = {
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/yahoo-japan-ads-api-connector-setup-guide/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".yahoo-japan-ads-api-connector-setup-guide">Yahoo! JAPAN Ads API</a>
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/yandex-metrica-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".yandex-metrica-connector">Yandex Metrica</a>
+      </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/ytel-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".ytel-connector">Ytel</a>
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/zendesk-connector/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".zendesk-connector">Zendesk</a>
@@ -685,6 +687,17 @@ var utag_data = {
 <td>Conversion Definition</td>
 <td>Select a conversion definition or click <strong>Create Definition</strong> to create a new definition.</td>
 </tr>
+</tbody>
+</table>
+<h5 id="conversion-data">Conversion Data</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Country Code</td>
 <td>(Required) The country where the user performing the event is located, in ISO 3166-1 alpha-2 format.</td>
@@ -709,16 +722,88 @@ var utag_data = {
 <td>Dedupe ID</td>
 <td>If you are tracking conversions in both the tag and the connector, specify a deduplication ID. The value should match for both events.</td>
 </tr>
+</tbody>
+</table>
+<h5 id="user-data">User Data</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Email (already SHA256 hashed)</td>
 <td>Provide an email address that has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
 </tr>
 <tr>
 <td>Email (apply SHA256 hash)</td>
-<td>When a plain text email address is provided, the connector whitespace trims, lowercases, and hashes this value using an SHA256 hash.</td>
+<td>When a plain text email address is provided, the connector whitespace trim, lowercase, and hashes this value using an SHA256 hash.</td>
+</tr>
+<tr>
+<td>Phone (already SHA256 hashed)</td>
+<td>Provide a phone number which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Phone (apply SHA256 hash)</td>
+<td>Provide a plaintext phone number and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>First Name (already SHA256 hashed)</td>
+<td>Provide a first name which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>First Name (apply SHA256 hash)</td>
+<td>Provide a plaintext first name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Last Name (already SHA256 hashed)</td>
+<td>Provide a last name which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Last Name (apply SHA256 hash)</td>
+<td>Provide a plaintext Last name and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Address (already SHA256 hashed)</td>
+<td>Provide an address which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Address (apply SHA256 hash)</td>
+<td>Provide a plaintext address and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>City (already SHA256 hashed)</td>
+<td>Provide a city which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>City (apply SHA256 hash)</td>
+<td>Provide a plaintext city and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>State (already SHA256 hashed)</td>
+<td>Provide a state which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>State (apply SHA256 hash)</td>
+<td>Provide a plaintext state and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Postal Code (already SHA256 hashed)</td>
+<td>Provide a postal code which has been already whitespace trimmed, lowercased, and SHA256 hashed.</td>
+</tr>
+<tr>
+<td>Postal Code (apply SHA256 hash)</td>
+<td>Provide a plaintext postal code and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>MAID</td>
+<td>Mobile Identifier - MAID, ADID, IDFA, or FIREADID accepted.</td>
 </tr>
 </tbody>
 </table>
+<p>For more information about formatting and normalization requirements, see <a href="https://advertising.amazon.com/help/GCCXMZYCK4RXWS6C">Format audience file for hashing</a>.</p>
 
 </div>
 
@@ -779,7 +864,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 3, 2023 
+          <p>This page was last updated:  February 2, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1062,6 +1147,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

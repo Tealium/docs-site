@@ -150,6 +150,8 @@ var utag_data = {
       </li></ul>
       </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/data-layer/cookies/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".iq-tealium-cookies">Tealium cookies</a>
+      </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/iq-tag-management/data-layer/release-notes/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".release-notes-data-layer">Release notes</a>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".iq-profiles">Profiles</a>
@@ -606,30 +608,31 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="client-side-consent-management-release-notes"><a href="/iq-tag-management/consent-management/release-notes/">Client-side consent management </a></h2>
-          <h2 id="september-2023">September 2023</h2>
+          <h2 id="january-31-2024">January 31, 2024</h2>
 <h4 id="updates-and-fixes">Updates and fixes</h4>
 <ul>
-<li>
-<p>Updated event logging to use a new dedicated <code>id</code> parameter in the <code>CONSENTMGR</code> cookie (with support for custom namespaces), instead of using the <code>utag_main_v_id</code>.</p>
-<p>The following templates have been updated to support this update:</p>
-<ul>
-<li><code>cmGeneral</code> has been updated to version 3.0.12 to add centralized logic for generating consent forms ID that can be called from consent logging templates.</li>
-<li><code>cmDoNotSell</code> has been updated to version 1.4.0 to call the centralized logic.</li>
-<li><code>fullConsentEventHandler</code> has been updated to version 1.0.3 to call the centralized logic.</li>
-<li><code>partialConsentEventHandler</code> has been updated to version 1.0.3 to call the centralized logic.</li>
-</ul>
-<p>For more information about this change and related changes to <code>utag.js</code>, see the <a href="/platforms/javascript/release-notes#450-august-2023">release notes for version 4.50</a>.</p>
-</li>
+<li>Updated Consent Manager Event Logging templates (<code>fullConsentEventHandler</code> and <code>partialConsentEventHandler</code>) to include fallbacks for newly centralized logic for customers still using the legacy Consent Manager v1. For v1 customers, a fallback for <code>cmDoNotSell</code> is not required because it was not available for this version.</li>
 </ul>
         
           
           
 
           <h2 class="rn-section" id="consent-integrations-release-notes"><a href="/iq-tag-management/consent-integrations/release-notes/">Consent Integrations </a></h2>
-          <h2 id="january-25-2024">January 25, 2024</h2>
+          <h2 id="january-31-2024">January 31, 2024</h2>
+<h4 id="updates-and-fixes">Updates and fixes</h4>
+<ul>
+<li>Updated the framework template to v1.1.3 to fix an issue that caused tags to be triggered incorrectly. This update also improves performance in cases of prolonged polling.</li>
+</ul>
+        
+          
+          
+
+          <h2 class="rn-section" id="data-layer-release-notes"><a href="/iq-tag-management/data-layer/release-notes/">Data layer </a></h2>
+          <h2 id="january-31-2024">January 31, 2024</h2>
 <h4 id="fixes">Fixes</h4>
 <ul>
-<li>Fixed edit window to properly handle purpose group creation and management.</li>
+<li>Fixed an issue where applying a data layer variable that contains special characters to a page view event would result in a JavaScript error that prevented iQ Tag Management from loading.</li>
+<li>Updated event trigger variables executed in <code>utag.js</code> to no longer have extra single quotes (<code>'</code>) added into the resulting value if the value contains double quotes (<code>&quot;</code>).</li>
 </ul>
         
           
@@ -738,6 +741,7 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#client-side-consent-management-release-notes">Client-side consent management </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#consent-integrations-release-notes">Consent Integrations </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-layer-release-notes">Data layer </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings-release-notes">Data mappings </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#extensions-release-notes">Extensions </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#labels-release-notes">Labels </a></li>
