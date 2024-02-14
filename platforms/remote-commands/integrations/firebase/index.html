@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "platforms",
-    reading_time  : "7",
+    reading_time  : "12",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -177,16 +177,16 @@ var utag_data = {
 <div class="prose nested-links" id="prose">
   <h2 id="requirements">Requirements</h2>
 <ul>
-<li>One of these mobile libraries:
+<li>One of the following libraries:
 <ul>
 <li><a href="/platforms/android-kotlin/">Tealium for Android-Kotlin</a> (1.0.0 and later)</li>
 <li><a href="/platforms/android-java/">Tealium for Android-Java</a> (5.9.0 or later for Firebase 2.0.0+, or 5.9.0 or earlier for previous versions)</li>
 <li><a href="/platforms/ios-swift/">Tealium for iOS-Swift</a></li>
 </ul>
 </li>
-<li>One of these remote command integrations:
+<li>One of the following remote command integrations:
 <ul>
-<li><a href="/platforms/remote-commands/integrations/firebase/#json-template">Firebase Remote Command JSON File</a> (Requires Android-Kotlin 1.0.0  and later or iOS-Swift 2.1.0 and later)</li>
+<li><a href="/platforms/remote-commands/integrations/firebase/#json-template">Firebase Remote Command JSON File</a> (Requires Android-Kotlin 1.0.0 and later or iOS-Swift 2.1.0 and later)</li>
 <li><a href="/client-side-tags/firebase-remote-command-tag/">Firebase Remote Command tag</a> in Tealium iQ Tag Management</li>
 </ul>
 </li>
@@ -233,7 +233,6 @@ var utag_data = {
 </span></span></code></pre></div><p>The <code>TealiumFirebase</code> pod includes the following <code>TealiumSwift</code> dependencies:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/Core&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/RemoteCommands&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TagManagement&#39;</span>
 </span></span></code></pre></div></li>
 <li>
 <p>Import the modules <code>TealiumSwift</code> and <code>TealiumFirebase</code> in your <code>TealiumHelper</code> file, and any other files that access the <code>Tealium</code> class, or the Firebase remote command.</p>
@@ -605,7 +604,11 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;screen_class&#34;</span>: <span style="color:#e6db74">&#34;firebase_screen_class&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;customer_property&#34;</span>: <span style="color:#e6db74">&#34;firebase_property_name&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;customer_value&#34;</span>: <span style="color:#e6db74">&#34;firebase_property_value&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;customer_id&#34;</span>: <span style="color:#e6db74">&#34;firebase_user_id&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;customer_id&#34;</span>: <span style="color:#e6db74">&#34;firebase_user_id&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;consent_ad_storage&#34;</span>: <span style="color:#e6db74">&#34;firebase_consent_settings.ad_storage&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;consent_analytics_storage&#34;</span>: <span style="color:#e6db74">&#34;firebase_consent_settings.analytics_storage&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;consent_ad_user_data&#34;</span>: <span style="color:#e6db74">&#34;firebase_consent_settings.ad_user_data&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;consent_ad_personalization&#34;</span>: <span style="color:#e6db74">&#34;firebase_consent_settings.ad_personalization&#34;</span>
 </span></span><span style="display:flex;"><span>    },
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;commands&#34;</span>: {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;launch&#34;</span>: <span style="color:#e6db74">&#34;config&#34;</span>,
@@ -629,12 +632,951 @@ import &#39;package:tealium_firebase/tealium_firebase.dart&#39;;
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;checkout&#34;</span>: <span style="color:#e6db74">&#34;logevent,setscreenname&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;checkout_progress&#34;</span>: <span style="color:#e6db74">&#34;logevent&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;email_signup&#34;</span>: <span style="color:#e6db74">&#34;logevent&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;order&#34;</span>: <span style="color:#e6db74">&#34;logevent,setscreenname&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;order&#34;</span>: <span style="color:#e6db74">&#34;logevent,setscreenname&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;setconsent&#34;</span>: <span style="color:#e6db74">&#34;setconsent&#34;</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="track">Track</h2>
-<p>Events triggered by basic interactions with your app are tracked automatically. <a href="https://support.google.com/firebase/answer/6317485?hl=en">Learn more</a> about Firebase automatically collected events.</p>
-<p>Learn about <a href="/client-side-tags/firebase-remote-command-tag/">Firebase Mobile Remote Command Tag setup</a>.</p>
+</span></span></code></pre></div><h2 id="supported-methods">Supported Methods</h2>
+<p>We map a command to each Firebase method. To trigger a Firebase method, pass the corresponding command in the specified format.</p>
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Firebase Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config</code></td>
+<td><code>configure()</code></td>
+</tr>
+<tr>
+<td><code>logevent</code></td>
+<td><code>logEvent(name, parameters)</code></td>
+</tr>
+<tr>
+<td><code>setscreenname</code></td>
+<td><code>logEvent(name (AnalyticsEventScreenView), parameters)</code></td>
+</tr>
+<tr>
+<td><code>setdefaultparameters</code></td>
+<td><code>setDefaultEventParameters(parameters)</code></td>
+</tr>
+<tr>
+<td><code>setuserproperty</code></td>
+<td><code>setUserProperty(value, name)</code></td>
+</tr>
+<tr>
+<td><code>setuserid</code></td>
+<td><code>setUserId(id)</code></td>
+</tr>
+<tr>
+<td><code>initiateconversionmeasurement</code> (iOS)</td>
+<td><code>initiateOnDeviceConversionMeasurement(emailAddress)</code></td>
+</tr>
+<tr>
+<td><code>setconsent</code></td>
+<td><code>setConsent(consentSettings)</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="sdk-set-up">SDK Set up</h3>
+<h3 id="configure">Configure</h3>
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Firebase Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config</code></td>
+<td><code>configure()</code></td>
+</tr>
+</tbody>
+</table>
+<p>The following parameters are used to set up the SDK:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>firebase_session_timeout_seconds</code></td>
+<td><code>String</code></td>
+<td>A string representation of the length of the session in seconds.</td>
+</tr>
+<tr>
+<td><code>firebase_analytics_enabled</code></td>
+<td><code>String</code></td>
+<td>A string representation of a boolean to enable or disable analytics (default <code>true</code>).</td>
+</tr>
+<tr>
+<td><code>firebase_log_level</code> (iOS)</td>
+<td><code>String</code></td>
+<td>The log level min</td>
+</tr>
+</tbody>
+</table>
+<h3 id="track">Track</h3>
+<p>Events triggered by basic interactions with your app are tracked automatically. For more information, see <a href="https://support.google.com/firebase/answer/6317485?hl=en">[GA4] Automatically collected events</a>.</p>
+<h4 id="log-event">Log Event</h4>
+<p>Log an event with parameters and, optionally, an array of items.</p>
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Firebase Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>logevent</code></td>
+<td><code>logEvent(name, parameters)</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>firebase_event_name</code> (required)</td>
+<td><code>String</code></td>
+<td>The event name, mapped to a list of Firebase event names.</td>
+</tr>
+<tr>
+<td><code>event</code> (JSON)</td>
+<td><code>[String:Any]</code></td>
+<td>An object containing all of the parameters for this event, mapped to a list of firebase parameters.</td>
+</tr>
+<tr>
+<td><code>firebase_event_params</code> (Tag)</td>
+<td><code>[String:Any]</code></td>
+<td>An object containing all the parameters for this event (used by the tag), mapped to a list of Firebase parameters.</td>
+</tr>
+<tr>
+<td><code>items</code> (JSON)</td>
+<td><code>[String:[Any]]</code></td>
+<td>An object contining array of items for this event. All arrays contain the same number of elements, and all elements can be normalized into a single array of items.</td>
+</tr>
+<tr>
+<td><code>param_items</code> (Tag)</td>
+<td><code>[[String:Any]]</code></td>
+<td>An array of items for this event (used by the tag).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="set-screen-name">Set screen name</h4>
+<p>This command is a specific log event that is added as a utility.</p>
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Firebase Method (iOS)</th>
+<th>Firebase Method (Android)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setscreenname</code></td>
+<td><code>logEvent(name (AnalyticsEventScreenView), parameters)</code></td>
+<td><code>setCurrentScreen(currentActivity, screenName, screenClass)</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>firebase_screen_name</code> (required)</td>
+<td><code>String</code></td>
+<td>The name of the current screen.</td>
+</tr>
+<tr>
+<td><code>firebase_screen_class</code></td>
+<td><code>String</code></td>
+<td>The class of the current screen.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="set-default-parameters">Set Default Parameters</h4>
+<p>This command sets parameters that are sent on every log event.</p>
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Firebase Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setdefaultparameters</code></td>
+<td><code>setDefaultEventParameters(parameters)</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>default</code> (JSON)</td>
+<td><code>[String:Any]</code></td>
+<td>An object with key-value default parameters.</td>
+</tr>
+<tr>
+<td><code>firebase_default_params</code> (Tag)</td>
+<td><code>String</code></td>
+<td>An object with key-value default parameters (used by the tag).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mapping">Mapping</h3>
+<p>Parameters and events sent in <code>logEvent</code> methods are mapped from Tealium values to Firebase constant names.</p>
+<p>The following table lists available keys mapped to constants in iOS and Android. If a parameter is missing from Tealium&rsquo;s mapping, you can directly use the Firebase constant value.</p>
+<h4 id="events-mapping">Events mapping</h4>
+<table>
+<thead>
+<tr>
+<th>Tealium Key</th>
+<th>Firebase Event (iOS)</th>
+<th>Firebase Event (Android)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event_ad_impression</code></td>
+<td><code>AnalyticsEventAdImpression</code></td>
+<td><code>AD_IMPRESSION</code></td>
+</tr>
+<tr>
+<td><code>event_add_payment_info</code></td>
+<td><code>AnalyticsEventAddPaymentInfo</code></td>
+<td><code>ADD_PAYMENT_INFO</code></td>
+</tr>
+<tr>
+<td><code>event_add_shipping_info</code></td>
+<td><code>AnalyticsEventAddShippingInfo</code></td>
+<td><code>ADD_SHIPPING_INFO</code></td>
+</tr>
+<tr>
+<td><code>event_add_to_cart</code></td>
+<td><code>AnalyticsEventAddToCart</code></td>
+<td><code>ADD_TO_CART</code></td>
+</tr>
+<tr>
+<td><code>event_add_to_wishlist</code></td>
+<td><code>AnalyticsEventAddToWishlist</code></td>
+<td><code>ADD_TO_WISHLIST</code></td>
+</tr>
+<tr>
+<td><code>event_app_open</code></td>
+<td><code>AnalyticsEventAppOpen</code></td>
+<td><code>APP_OPEN</code></td>
+</tr>
+<tr>
+<td><code>event_begin_checkout</code></td>
+<td><code>AnalyticsEventBeginCheckout</code></td>
+<td><code>BEGIN_CHECKOUT</code></td>
+</tr>
+<tr>
+<td><code>event_campaign_details</code></td>
+<td><code>AnalyticsEventCampaignDetails</code></td>
+<td><code>CAMPAIGN_DETAILS</code></td>
+</tr>
+<tr>
+<td><code>event_earn_virtual_currency</code></td>
+<td><code>AnalyticsEventEarnVirtualCurrency</code></td>
+<td><code>EARN_VIRTUAL_CURRENCY</code></td>
+</tr>
+<tr>
+<td><code>event_generate_lead</code></td>
+<td><code>AnalyticsEventGenerateLead</code></td>
+<td><code>GENERATE_LEAD</code></td>
+</tr>
+<tr>
+<td><code>event_join_group</code></td>
+<td><code>AnalyticsEventJoinGroup</code></td>
+<td><code>JOIN_GROUP</code></td>
+</tr>
+<tr>
+<td><code>event_level_end</code></td>
+<td><code>AnalyticsEventLevelEnd</code></td>
+<td><code>LEVEL_END</code></td>
+</tr>
+<tr>
+<td><code>event_level_start</code></td>
+<td><code>AnalyticsEventLevelStart</code></td>
+<td><code>LEVEL_START</code></td>
+</tr>
+<tr>
+<td><code>event_level_up</code></td>
+<td><code>AnalyticsEventLevelUp</code></td>
+<td><code>LEVEL_UP</code></td>
+</tr>
+<tr>
+<td><code>event_login</code></td>
+<td><code>AnalyticsEventLogin</code></td>
+<td><code>LOGIN</code></td>
+</tr>
+<tr>
+<td><code>event_post_score</code></td>
+<td><code>AnalyticsEventPostScore</code></td>
+<td><code>POST_SCORE</code></td>
+</tr>
+<tr>
+<td><code>event_purchase</code></td>
+<td><code>AnalyticsEventPurchase</code></td>
+<td><code>PURCHASE</code></td>
+</tr>
+<tr>
+<td><code>event_refund</code></td>
+<td><code>AnalyticsEventRefund</code></td>
+<td><code>REFUND</code></td>
+</tr>
+<tr>
+<td><code>event_remove_cart</code></td>
+<td><code>AnalyticsEventRemoveFromCart</code></td>
+<td><code>REMOVE_FROM_CART</code></td>
+</tr>
+<tr>
+<td><code>event_screen_view</code></td>
+<td><code>AnalyticsEventScreenView</code></td>
+<td><code>SCREEN_VIEW</code></td>
+</tr>
+<tr>
+<td><code>event_search</code></td>
+<td><code>AnalyticsEventSearch</code></td>
+<td><code>SEARCH</code></td>
+</tr>
+<tr>
+<td><code>event_select_content</code></td>
+<td><code>AnalyticsEventSelectContent</code></td>
+<td><code>SELECT_CONTENT</code></td>
+</tr>
+<tr>
+<td><code>event_select_item</code></td>
+<td><code>AnalyticsEventSelectItem</code></td>
+<td><code>SELECT_ITEM</code></td>
+</tr>
+<tr>
+<td><code>event_select_promotion</code></td>
+<td><code>AnalyticsEventSelectPromotion</code></td>
+<td><code>SELECT_PROMOTION</code></td>
+</tr>
+<tr>
+<td><code>event_share</code></td>
+<td><code>AnalyticsEventShare</code></td>
+<td><code>SHARE</code></td>
+</tr>
+<tr>
+<td><code>event_signup</code></td>
+<td><code>AnalyticsEventSignUp</code></td>
+<td><code>SIGN_UP</code></td>
+</tr>
+<tr>
+<td><code>event_spend_virtual_currency</code></td>
+<td><code>AnalyticsEventSpendVirtualCurrency</code></td>
+<td><code>SPEND_VIRTUAL_CURRENCY</code></td>
+</tr>
+<tr>
+<td><code>event_tutorial_begin</code></td>
+<td><code>AnalyticsEventTutorialBegin</code></td>
+<td><code>TUTORIAL_BEGIN</code></td>
+</tr>
+<tr>
+<td><code>event_tutorial_complete</code></td>
+<td><code>AnalyticsEventTutorialComplete</code></td>
+<td><code>TUTORIAL_COMPLETE</code></td>
+</tr>
+<tr>
+<td><code>event_unlock_achievement</code></td>
+<td><code>AnalyticsEventUnlockAchievement</code></td>
+<td><code>UNLOCK_ACHIEVEMENT</code></td>
+</tr>
+<tr>
+<td><code>event_view_cart</code></td>
+<td><code>AnalyticsEventViewCart</code></td>
+<td><code>VIEW_CART</code></td>
+</tr>
+<tr>
+<td><code>event_view_item</code></td>
+<td><code>AnalyticsEventViewItem</code></td>
+<td><code>VIEW_ITEM</code></td>
+</tr>
+<tr>
+<td><code>event_view_item_list</code></td>
+<td><code>AnalyticsEventViewItemList</code></td>
+<td><code>VIEW_ITEM_LIST</code></td>
+</tr>
+<tr>
+<td><code>event_view_promotion</code></td>
+<td><code>AnalyticsEventViewPromotion</code></td>
+<td><code>VIEW_PROMOTION</code></td>
+</tr>
+<tr>
+<td><code>event_view_search_results</code></td>
+<td><code>AnalyticsEventViewSearchResults</code></td>
+<td><code>VIEW_SEARCH_RESULTS</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="parameters-mapping">Parameters mapping</h4>
+<table>
+<thead>
+<tr>
+<th>Tealium Key</th>
+<th>Firebase Parameter (iOS)</th>
+<th>Firebase Parameter (Android)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>param_achievement_id</code></td>
+<td><code>AnalyticsParameterAchievementID</code></td>
+<td><code>ACHIEVEMENT_ID</code></td>
+</tr>
+<tr>
+<td><code>param_ad_format</code></td>
+<td><code>AnalyticsParameterAdFormat</code></td>
+<td><code>AD_FORMAT</code></td>
+</tr>
+<tr>
+<td><code>param_ad_network_click_id</code></td>
+<td><code>AnalyticsParameterAdNetworkClickID</code></td>
+<td><code>ACLID</code></td>
+</tr>
+<tr>
+<td><code>param_ad_platform</code></td>
+<td><code>AnalyticsParameterAdPlatform</code></td>
+<td><code>AD_PLATFORM</code></td>
+</tr>
+<tr>
+<td><code>param_ad_source</code></td>
+<td><code>AnalyticsParameterAdSource</code></td>
+<td><code>AD_SOURCE</code></td>
+</tr>
+<tr>
+<td><code>param_ad_unit_name</code></td>
+<td><code>AnalyticsParameterAdUnitName</code></td>
+<td><code>AD_UNIT_NAME</code></td>
+</tr>
+<tr>
+<td><code>param_affiliation</code></td>
+<td><code>AnalyticsParameterAffiliation</code></td>
+<td><code>AFFILIATION</code></td>
+</tr>
+<tr>
+<td><code>param_cp1</code></td>
+<td><code>AnalyticsParameterCP1</code></td>
+<td><code>CP1</code></td>
+</tr>
+<tr>
+<td><code>param_campaign</code></td>
+<td><code>AnalyticsParameterCampaign</code></td>
+<td><code>CAMPAIGN</code></td>
+</tr>
+<tr>
+<td><code>param_campaign_id</code></td>
+<td><code>AnalyticsParameterCampaignID</code></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>param_character</code></td>
+<td><code>AnalyticsParameterCharacter</code></td>
+<td><code>CHARACTER</code></td>
+</tr>
+<tr>
+<td><code>param_content</code></td>
+<td><code>AnalyticsParameterContent</code></td>
+<td><code>CONTENT</code></td>
+</tr>
+<tr>
+<td><code>param_content_type</code></td>
+<td><code>AnalyticsParameterContentType</code></td>
+<td><code>CONTENT_TYPE</code></td>
+</tr>
+<tr>
+<td><code>param_coupon</code></td>
+<td><code>AnalyticsParameterCoupon</code></td>
+<td><code>COUPON</code></td>
+</tr>
+<tr>
+<td><code>param_creative_format</code></td>
+<td><code>AnalyticsParameterCreativeFormat</code></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>param_creative_name</code></td>
+<td><code>AnalyticsParameterCreativeName</code></td>
+<td><code>CREATIVE_NAME</code></td>
+</tr>
+<tr>
+<td><code>param_creative_slot</code></td>
+<td><code>AnalyticsParameterCreativeSlot</code></td>
+<td><code>CREATIVE_SLOT</code></td>
+</tr>
+<tr>
+<td><code>param_currency</code></td>
+<td><code>AnalyticsParameterCurrency</code></td>
+<td><code>CURRENCY</code></td>
+</tr>
+<tr>
+<td><code>param_destination</code></td>
+<td><code>AnalyticsParameterDestination</code></td>
+<td><code>DESTINATION</code></td>
+</tr>
+<tr>
+<td><code>param_discount</code></td>
+<td><code>AnalyticsParameterDiscount</code></td>
+<td><code>DISCOUNT</code></td>
+</tr>
+<tr>
+<td><code>param_end_date</code></td>
+<td><code>AnalyticsParameterEndDate</code></td>
+<td><code>END_DATE</code></td>
+</tr>
+<tr>
+<td><code>param_extend_session</code></td>
+<td><code>AnalyticsParameterExtendSession</code></td>
+<td><code>EXTEND_SESSION</code></td>
+</tr>
+<tr>
+<td><code>param_flight_number</code></td>
+<td><code>AnalyticsParameterFlightNumber</code></td>
+<td><code>FLIGHT_NUMBER</code></td>
+</tr>
+<tr>
+<td><code>param_group_id</code></td>
+<td><code>AnalyticsParameterGroupID</code></td>
+<td><code>GROUP_ID</code></td>
+</tr>
+<tr>
+<td><code>param_index</code></td>
+<td><code>AnalyticsParameterIndex</code></td>
+<td><code>INDEX</code></td>
+</tr>
+<tr>
+<td><code>param_item_brand</code></td>
+<td><code>AnalyticsParameterItemBrand</code></td>
+<td><code>ITEM_BRAND</code></td>
+</tr>
+<tr>
+<td><code>param_item_category</code></td>
+<td><code>AnalyticsParameterItemCategory</code></td>
+<td><code>ITEM_CATEGORY</code></td>
+</tr>
+<tr>
+<td><code>param_item_category2</code></td>
+<td><code>AnalyticsParameterItemCategory2</code></td>
+<td><code>ITEM_CATEGORY2</code></td>
+</tr>
+<tr>
+<td><code>param_item_category3</code></td>
+<td><code>AnalyticsParameterItemCategory3</code></td>
+<td><code>ITEM_CATEGORY3</code></td>
+</tr>
+<tr>
+<td><code>param_item_category4</code></td>
+<td><code>AnalyticsParameterItemCategory4</code></td>
+<td><code>ITEM_CATEGORY4</code></td>
+</tr>
+<tr>
+<td><code>param_item_category5</code></td>
+<td><code>AnalyticsParameterItemCategory5</code></td>
+<td><code>ITEM_CATEGORY5</code></td>
+</tr>
+<tr>
+<td><code>param_item_id</code></td>
+<td><code>AnalyticsParameterItemID</code></td>
+<td><code>ITEM_ID</code></td>
+</tr>
+<tr>
+<td><code>param_item_list_id</code></td>
+<td><code>AnalyticsParameterItemListID</code></td>
+<td><code>ITEM_LIST_ID</code></td>
+</tr>
+<tr>
+<td><code>param_item_list_name</code></td>
+<td><code>AnalyticsParameterItemListName</code></td>
+<td><code>ITEM_LIST_NAME</code></td>
+</tr>
+<tr>
+<td><code>param_item_name</code></td>
+<td><code>AnalyticsParameterItemName</code></td>
+<td><code>ITEM_NAME</code></td>
+</tr>
+<tr>
+<td><code>param_item_variant</code></td>
+<td><code>AnalyticsParameterItemVariant</code></td>
+<td><code>ITEM_VARIANT</code></td>
+</tr>
+<tr>
+<td><code>param_items</code></td>
+<td><code>AnalyticsParameterItems</code></td>
+<td><code>ITEMS</code></td>
+</tr>
+<tr>
+<td><code>param_level</code></td>
+<td><code>AnalyticsParameterLevel</code></td>
+<td><code>LEVEL</code></td>
+</tr>
+<tr>
+<td><code>param_level_name</code></td>
+<td><code>AnalyticsParameterLevelName</code></td>
+<td><code>LEVEL_NAME</code></td>
+</tr>
+<tr>
+<td><code>param_location</code></td>
+<td><code>AnalyticsParameterLocation</code></td>
+<td><code>LOCATION</code></td>
+</tr>
+<tr>
+<td><code>param_location_id</code></td>
+<td><code>AnalyticsParameterLocationID</code></td>
+<td><code>LOCATION_ID</code></td>
+</tr>
+<tr>
+<td><code>param_marketing_tactic</code></td>
+<td><code>AnalyticsParameterMarketingTactic</code></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>param_medium</code></td>
+<td><code>AnalyticsParameterMedium</code></td>
+<td><code>MEDIUM</code></td>
+</tr>
+<tr>
+<td><code>param_method</code></td>
+<td><code>AnalyticsParameterMethod</code></td>
+<td><code>METHOD</code></td>
+</tr>
+<tr>
+<td><code>param_number_nights</code></td>
+<td><code>AnalyticsParameterNumberOfNights</code></td>
+<td><code>NUMBER_OF_NIGHTS</code></td>
+</tr>
+<tr>
+<td><code>param_number_pax</code></td>
+<td><code>AnalyticsParameterNumberOfPassengers</code></td>
+<td><code>NUMBER_OF_PASSENGERS</code></td>
+</tr>
+<tr>
+<td><code>param_number_rooms</code></td>
+<td><code>AnalyticsParameterNumberOfRooms</code></td>
+<td><code>NUMBER_OF_ROOMS</code></td>
+</tr>
+<tr>
+<td><code>param_origin</code></td>
+<td><code>AnalyticsParameterOrigin</code></td>
+<td><code>ORIGIN</code></td>
+</tr>
+<tr>
+<td><code>param_payment_type</code></td>
+<td><code>AnalyticsParameterPaymentType</code></td>
+<td><code>PAYMENT_TYPE</code></td>
+</tr>
+<tr>
+<td><code>param_price</code></td>
+<td><code>AnalyticsParameterPrice</code></td>
+<td><code>PRICE</code></td>
+</tr>
+<tr>
+<td><code>param_promotion_id</code></td>
+<td><code>AnalyticsParameterPromotionID</code></td>
+<td><code>PROMOTION_ID</code></td>
+</tr>
+<tr>
+<td><code>param_promotion_name</code></td>
+<td><code>AnalyticsParameterPromotionName</code></td>
+<td><code>PROMOTION_NAME</code></td>
+</tr>
+<tr>
+<td><code>param_quantity</code></td>
+<td><code>AnalyticsParameterQuantity</code></td>
+<td><code>QUANTITY</code></td>
+</tr>
+<tr>
+<td><code>param_score</code></td>
+<td><code>AnalyticsParameterScore</code></td>
+<td><code>SCORE</code></td>
+</tr>
+<tr>
+<td><code>param_search_term</code></td>
+<td><code>AnalyticsParameterSearchTerm</code></td>
+<td><code>SEARCH_TERM</code></td>
+</tr>
+<tr>
+<td><code>param_shipping</code></td>
+<td><code>AnalyticsParameterShipping</code></td>
+<td><code>SHIPPING</code></td>
+</tr>
+<tr>
+<td><code>param_shipping_tier</code></td>
+<td><code>AnalyticsParameterShippingTier</code></td>
+<td><code>SHIPPING_TIER</code></td>
+</tr>
+<tr>
+<td><code>param_screen_name</code></td>
+<td><code>AnalyticsParameterScreenName</code></td>
+<td><code>SCREEN_NAME</code></td>
+</tr>
+<tr>
+<td><code>param_screen_class</code></td>
+<td><code>AnalyticsParameterScreenClass</code></td>
+<td><code>SCREEN_CLASS</code></td>
+</tr>
+<tr>
+<td><code>param_source</code></td>
+<td><code>AnalyticsParameterSource</code></td>
+<td><code>SOURCE</code></td>
+</tr>
+<tr>
+<td><code>param_source_platform</code></td>
+<td><code>AnalyticsParameterSourcePlatform</code></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>param_start_date</code></td>
+<td><code>AnalyticsParameterStartDate</code></td>
+<td><code>START_DATE</code></td>
+</tr>
+<tr>
+<td><code>param_success</code></td>
+<td><code>AnalyticsParameterSuccess</code></td>
+<td><code>SUCCESS</code></td>
+</tr>
+<tr>
+<td><code>param_tax</code></td>
+<td><code>AnalyticsParameterTax</code></td>
+<td><code>TAX</code></td>
+</tr>
+<tr>
+<td><code>param_term</code></td>
+<td><code>AnalyticsParameterTerm</code></td>
+<td><code>TERM</code></td>
+</tr>
+<tr>
+<td><code>param_transaction_id</code></td>
+<td><code>AnalyticsParameterTransactionID</code></td>
+<td><code>TRANSACTION_ID</code></td>
+</tr>
+<tr>
+<td><code>param_travel_class</code></td>
+<td><code>AnalyticsParameterTravelClass</code></td>
+<td><code>TRAVEL_CLASS</code></td>
+</tr>
+<tr>
+<td><code>param_value</code></td>
+<td><code>AnalyticsParameterValue</code></td>
+<td><code>VALUE</code></td>
+</tr>
+<tr>
+<td><code>param_virtual_currency_name</code></td>
+<td><code>AnalyticsParameterVirtualCurrencyName</code></td>
+<td><code>VIRTUAL_CURRENCY_NAME</code></td>
+</tr>
+<tr>
+<td><code>param_user_signup_method</code></td>
+<td><code>AnalyticsUserPropertySignUpMethod</code></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>param_user_allow_ad_personalization_signals</code></td>
+<td><code>AnalyticsUserPropertyAllowAdPersonalizationSignals</code></td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h3 id="set-user">Set User</h3>
+<h4 id="set-user-property">Set User property</h4>
+<p>This command sets a single or list of user property names and values.</p>
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Firebase Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setuserproperty</code></td>
+<td><code>setUserProperty(value, name)</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>firebase_property_name</code> (required)</td>
+<td><code>String|[String]</code></td>
+<td>The property name or an array of property names</td>
+</tr>
+<tr>
+<td><code>firebase_property_value</code> (required)</td>
+<td><code>String|[String]]</code></td>
+<td>The property value or an array of property values. If this parameter is an array, it must match the <code>firebase_property_name</code> array length and item order.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="set-user-id">Set User ID</h4>
+<p>This command sets the user ID.</p>
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Firebase Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setuserid</code></td>
+<td><code>setUserId(id)</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>firebase_user_id</code> (required)</td>
+<td><code>String</code></td>
+<td>The User ID to set</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conversion-measurement-ios">Conversion Measurement (iOS)</h3>
+<p>This command initiates Conversion Measurement.</p>
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Firebase Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config</code></td>
+<td><code>configure()</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>param_email_address</code> (required)</td>
+<td><code>String</code></td>
+<td>The User email address</td>
+</tr>
+</tbody>
+</table>
+<h3 id="consent">Consent</h3>
+<p>This command sets consent modes.</p>
+<table>
+<thead>
+<tr>
+<th>Remote Command</th>
+<th>Firebase Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setconsent</code></td>
+<td><code>setConsent(consentSettings)</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>firebase_consent_settings</code> (required)</td>
+<td><code>[String:String]</code></td>
+<td>An object containing the consent settings. Keys are consent types, values are <code>granted</code> or <code>denied</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="supported-consent-types">Supported Consent Types</h4>
+<table>
+<thead>
+<tr>
+<th>Consent Type</th>
+<th>Minimum Firebase iOS Version</th>
+<th>Minimum Firebase Android Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ad_storage</code></td>
+<td>10.7.0</td>
+<td>18.0.0</td>
+</tr>
+<tr>
+<td><code>analytics_storage</code></td>
+<td>10.7.0</td>
+<td>18.0.0</td>
+</tr>
+<tr>
+<td><code>ad_personalization</code></td>
+<td>10.17.0</td>
+<td>21.5.0</td>
+</tr>
+<tr>
+<td><code>ad_user_data</code></td>
+<td>10.17.0</td>
+<td>21.5.0</td>
+</tr>
+</tbody>
+</table>
+<p>For more information, see <a href="/client-side-tags/firebase-remote-command-tag/">Firebase Mobile Remote Command Tag setup</a>.</p>
 
 </div>
 
@@ -695,7 +1637,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 25, 2024 
+          <p>This page was last updated:  February 7, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -716,7 +1658,14 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#manual-installation">Manual Installation</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#initialize">Initialize</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#json-template">JSON Template</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#supported-methods">Supported Methods</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#sdk-set-up">SDK Set up</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configure">Configure</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#track">Track</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#mapping">Mapping</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#set-user">Set User</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#conversion-measurement-ios">Conversion Measurement (iOS)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#consent">Consent</a></li>
               </nav>
   </aside></nav>
 

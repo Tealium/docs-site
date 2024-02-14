@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "client-side-tags",
-    reading_time  : "2",
+    reading_time  : "3",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -475,6 +475,8 @@ var utag_data = {
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/oracle-cx-tag/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".oracle-cx-tag">Oracle CX</a>
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/client-side-tags/orbee-tag/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".Orbee-tag">Orbee</a>
+      </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/pardot-tag/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".pardot-tag">Pardot Tag Set Up Guide</a>
       </li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/partnerize-event-tracker-tag/" class="db link pr2 pv2 text-color-primary hover-primary-color " data-target=".partnerize-event-tracker-tag-setup-guide">Partnerize Event Tracker</a>
@@ -689,28 +691,31 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="tag-tips">Tag Tips</h2>
+  <p>The Reddit Pixel tracks actions that users take after viewing or engaging with advertisers’ ads and enables conversion reporting within our interface. Brands can also leverage the Reddit Pixel to retarget redditors who have already visited their website, and drive them further down the conversion funnel.</p>
+<h2 id="tag-tips">Tag Tips</h2>
 <ul>
 <li>Use mapping to override the standard configuration values and trigger events.</li>
-<li>Purchase event fires when Order ID is set.</li>
+<li>Purchase event fires when <strong>Order ID</strong> is set.</li>
+<li>To make Reddit Pixel Event IDs available as server-side attributes, set <strong>Generate Event ID</strong> to <code>true</code> and use the latest version of the <a href="/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a>.</li>
+<li>We recommend using the <a href="/server-side-connectors/reddit-conversions-connector/">Reddit Conversions connector</a> Conversion ID configuration only if you are implementing both the Reddit Pixel tag and the Reddit Conversions connector. Using the Conversion ID configuration prevents the same conversion event from being counted twice if it is sent across both sources. If this value is passed improperly, it will impact attribution and campaign performance.</li>
+<li>We recommend using Advanced Matching for the most accurate conversion tracking and reporting from Reddit. Email addresses can be passed as either plain values or pre-hashed with SHA256. The Reddit library applies SHA256 hashing to plain email addresses before sending.</li>
 </ul>
 <h2 id="tag-configuration">Tag Configuration</h2>
 <p>First, go to the tag marketplace and add the Reddit Pixel tag (Learn more about <a href="/iq-tag-management/tags/manage/">how to add a tag</a>).</p>
 <p>After adding the tag, configure the following settings:</p>
 <ul>
-<li>
-<p><strong>Account ID</strong></p>
+<li><strong>Account ID</strong>
 <ul>
 <li>Your Reddit Account ID.</li>
 </ul>
 </li>
-<li>
-<p><strong>Send Page Visit</strong></p>
+<li><strong>Send Page Visit</strong>
 <ul>
 <li>By default, Page Visit events are automatically recorded each page on your site.</li>
 <li>If you do not want the snippet to send a Page Visit event to the Reddit Pixel, set the this option to false.</li>
 </ul>
 </li>
+<li><strong>Generate Event ID</strong>: Automatically generate an Event ID for every Reddit tracking event.</li>
 </ul>
 <h2 id="data-mappings">Data Mappings</h2>
 <p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-layer/data-layer-variables/">data layer variable</a> to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">data mappings</a>.</p>
@@ -720,60 +725,243 @@ var utag_data = {
 <thead>
 <tr>
 <th>Variable</th>
+<th>Data Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>account_id</code></td>
-<td><ul><li>String</li><li>Account ID</li></ul></td>
+<td>String</td>
+<td>Account ID</td>
 </tr>
 <tr>
 <td><code>send_page_visit</code></td>
-<td><ul><li>Boolean</li><li>Send Page Visit</li></ul></td>
+<td>Boolean</td>
+<td>Send page visit</td>
+</tr>
+<tr>
+<td><code>generate_event_id</code></td>
+<td>Boolean</td>
+<td>Generate event ID</td>
+</tr>
+<tr>
+<td><code>event_id</code></td>
+<td>String</td>
+<td>Event ID</td>
 </tr>
 </tbody>
 </table>
-<h3 id="events">Events</h3>
+<h3 id="e-commerce">E-commerce</h3>
 <table>
 <thead>
 <tr>
 <th>Variable</th>
+<th>Data Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>PageVisit</code></td>
-<td><ul><li>Page Visit</li><li>Enter the value of the mapped variable needed to trigger the selected event.</li></ul></td>
+<td><code>itemCount</code></td>
+<td>Number</td>
+<td>Item Count</td>
 </tr>
 <tr>
-<td><code>ViewContent</code></td>
-<td><ul><li>View Content</li><li>Enter the value of the mapped variable needed to trigger the selected event.</li></ul></td>
+<td><code>value</code></td>
+<td>Number</td>
+<td>Value</td>
 </tr>
 <tr>
-<td><code>Search</code></td>
-<td><ul><li>Search</li><li>Enter the value of the mapped variable needed to trigger the selected event.</li></ul></td>
+<td><code>currency</code></td>
+<td>String</td>
+<td>Currency (Overrides <code>_ccurrency</code>)</td>
 </tr>
 <tr>
-<td><code>AddToCart</code></td>
-<td><ul><li>Add to cart</li><li>Enter the value of the mapped variable needed to trigger the selected event.</li></ul></td>
+<td><code>transactionId</code></td>
+<td>String</td>
+<td>Transaction ID</td>
+</tr>
+</tbody>
+</table>
+<h3 id="events">Events</h3>
+<p>Enter the value of the mapped variable needed to trigger the selected event.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>PageVisit</code></td>
+<td style="text-align:left">Page visit</td>
 </tr>
 <tr>
-<td><code>AddToWishlist</code></td>
-<td><ul><li>Add to Wish List</li><li>Enter the value of the mapped variable needed to trigger the selected event.</li></ul></td>
+<td style="text-align:left"><code>ViewContent</code></td>
+<td style="text-align:left">View content</td>
 </tr>
 <tr>
-<td><code>Purchase</code></td>
-<td><ul><li>Purchase</li><li>Enter the value of the mapped variable needed to trigger the selected event.</li></ul></td>
+<td style="text-align:left"><code>Search</code></td>
+<td style="text-align:left">Search</td>
 </tr>
 <tr>
-<td><code>Lead</code></td>
-<td><ul><li>Lead</li><li>Enter the value of the mapped variable needed to trigger the selected event.</li></ul></td>
+<td style="text-align:left"><code>AddToCart</code></td>
+<td style="text-align:left">Add to cart</td>
 </tr>
 <tr>
-<td><code>SignUp</code></td>
-<td><ul><li>SignUp</li><li>Enter the value of the mapped variable needed to trigger the selected event.</li></ul></td>
+<td style="text-align:left"><code>AddToWishlist</code></td>
+<td style="text-align:left">Add to wishlist</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Purchase</code></td>
+<td style="text-align:left">Purchase</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Lead</code></td>
+<td style="text-align:left">Lead</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SignUp</code></td>
+<td style="text-align:left">Sign up</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Custom</code></td>
+<td style="text-align:left">Custom events</td>
+</tr>
+</tbody>
+</table>
+<h3 id="event-specific-parameters">Event-specific Parameters</h3>
+<p>To map events, refer to <a href="/iq-tag-management/data-mappings/manage/#add-an-event-mapping">Create an Event Mapping</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>currency</code></td>
+<td style="text-align:left">Currency</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>content_category</code></td>
+<td style="text-align:left">Content category</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>content_name</code></td>
+<td style="text-align:left">Content name</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>content_ids</code></td>
+<td style="text-align:left">Content IDs</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>content_type</code></td>
+<td style="text-align:left">Content type</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>contents</code></td>
+<td style="text-align:left">Contents</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>predicted_ltv</code></td>
+<td style="text-align:left">Predicted lifetime value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>search_string</code></td>
+<td style="text-align:left">Search string</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>status</code></td>
+<td style="text-align:left">Status</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>num_items</code></td>
+<td style="text-align:left">Number of items</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>value</code></td>
+<td style="text-align:left">Value</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Custom_Parameter</code></td>
+<td style="text-align:left">Custom parameter</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>PageVisit</code></td>
+<td style="text-align:left">Page visit</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ViewContent</code></td>
+<td style="text-align:left">View content</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Search</code></td>
+<td style="text-align:left">Search</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>AddToCart</code></td>
+<td style="text-align:left">Add to cart</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>AddToWishlist</code></td>
+<td style="text-align:left">Add to wishlist</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Purchase</code></td>
+<td style="text-align:left">Purchase</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Lead</code></td>
+<td style="text-align:left">Lead</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SignUp</code></td>
+<td style="text-align:left">Sign up</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Custom_Event</code></td>
+<td style="text-align:left">Custom event</td>
+</tr>
+</tbody>
+</table>
+<h3 id="advanced-matching">Advanced Matching</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Variable</th>
+<th style="text-align:left">Data Type</th>
+<th style="text-align:left">Destination</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>email</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Email address</td>
+<td style="text-align:left">City</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>idfa</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">IDFA</td>
+<td style="text-align:left">State</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>aaid</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">AAID</td>
+<td style="text-align:left">Zip code</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>externalId</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">External ID</td>
+<td style="text-align:left">External ID</td>
 </tr>
 </tbody>
 </table>
@@ -855,7 +1043,10 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tag-configuration">Tag Configuration</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings">Data Mappings</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#standard">Standard</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#e-commerce">E-commerce</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#events">Events</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-specific-parameters">Event-specific Parameters</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#advanced-matching">Advanced Matching</a></li>
               </nav>
   </aside></nav>
 
@@ -1120,6 +1311,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
