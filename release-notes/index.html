@@ -303,24 +303,42 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="client-side-consent-management-release-notes"><a href="/iq-tag-management/consent-management/release-notes/">Client-side consent management </a></h2>
-          <h2 id="january-31-2024">January 31, 2024</h2>
+          <h2 id="february-14-2024">February 14, 2024</h2>
 <h4 id="updates-and-fixes">Updates and fixes</h4>
 <ul>
-<li>Updated Consent Manager Event Logging templates (<code>fullConsentEventHandler</code> and <code>partialConsentEventHandler</code>) to include fallbacks for newly centralized logic for customers still using the legacy Consent Manager v1. For v1 customers, a fallback for <code>cmDoNotSell</code> is not required because it was not available for this version.</li>
+<li>Updated the Consent Manager <code>cmGeneral</code> template to v3.13:
+<ul>
+<li>Renamed the <code>shouldTagFire</code> function to <code>shouldBlockTag</code> to better reflect its purpose without changing behavior.</li>
+<li>Fixed an issue that caused tags called by UID to be blocked for opted out users even when consent enforcement shouldn&rsquo;t apply.</li>
+<li>Improved opt-in and opt-out module interactaction when both are used.</li>
+</ul>
+</li>
 </ul>
         
           
           
 
           <h2 class="rn-section" id="client-side-tags-release-notes"><a href="/client-side-tags/release-notes/">Client-side tags </a></h2>
-          <h2 id="february-7-2024">February 7, 2024</h2>
-<h4 id="new-tags">New tags</h4>
-<ul>
-<li>New marketplace tag: <a href="/client-side-tags/orbee-tag/">Orbee</a></li>
-</ul>
+          <h2 id="february-22-2024">February 22, 2024</h2>
 <h4 id="updates-and-fixes">Updates and fixes</h4>
 <ul>
-<li>Updated the <a href="/client-side-tags/google-consent-mode-tag-beta/">Google Consent mode tag</a> with additional consent configurations for Ad User Data and Ad Personalization consent categories.</li>
+<li>Deprecated the DataXu Cookie Matching Service tag.</li>
+<li>Updated <a href="/client-side-tags/google-analytics-4-ga4-tag/">Google Analytics 4 tag</a> to fix an issue with incorrect naming of the User Provided Data <strong>Email Address</strong> parameter.</li>
+<li>Updated the <a href="/client-side-tags/google-consent-mode-tag-beta/">Google Consent Mode tag</a> with the following changes:
+<ul>
+<li>Supports Consent Integrations consent-emitted events.</li>
+<li>Supports Google-specific mapping attributes to ease integration with consent management.</li>
+</ul>
+</li>
+<li>Updated the <a href="/client-side-tags/reddit-pixel-tag/">Reddit Pixel tag</a> to support Reddit Data Processing and Limited Data Use (LDU) flags.</li>
+</ul>
+<h2 id="february-14-2024">February 14, 2024</h2>
+<h4 id="updates-and-fixes-1">Updates and fixes</h4>
+<ul>
+<li>Updated the <a href="/client-side-tags/google-analytics-4-ga4-tag/">Google Analytics 4 tag</a> to correct undefined error issue and incorrect tag template version.</li>
+<li>Updated the <a href="/client-side-tags/google-consent-mode-tag-beta/">Google Consent Mode tag</a> to trigger a consent update when Consent Integrations initiates a refire of the tag triggered by the user updating consent preferences.</li>
+<li>Updated the <a href="/client-side-tags/linkedin-insight-tag/">LinkedIn Insight tag</a> to remove unused e-commerce mappings.</li>
+<li>Updated <a href="/client-side-tags/snap-pixel-tag/">Snap Pixel tag</a> to better support multiple pixel IDs.</li>
 </ul>
         
           
@@ -337,10 +355,11 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="consent-integrations-release-notes"><a href="/iq-tag-management/consent-integrations/release-notes/">Consent Integrations </a></h2>
-          <h2 id="january-31-2024">January 31, 2024</h2>
+          <h2 id="february-22-2024">February 22, 2024</h2>
 <h4 id="updates-and-fixes">Updates and fixes</h4>
 <ul>
-<li>Updated the framework template to v1.1.3 to fix an issue that caused tags to be triggered incorrectly. This update also improves performance in cases of prolonged polling.</li>
+<li>Fixed an issue that caused special symbols in Consent Integrations to be displayed incorrectly.</li>
+<li>Updated the Consent Integrations framework template to v1.2.0, adding <code>tealiumConsentRegister</code> functionality to make consent signals easier to access.</li>
 </ul>
         
           
@@ -388,10 +407,10 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="extensions-release-notes"><a href="/iq-tag-management/extensions/release-notes/">Extensions </a></h2>
-          <h2 id="december-7-2023">December 7, 2023</h2>
-<h4 id="fixes">Fixes</h4>
+          <h2 id="february-14-2024">February 14, 2024</h2>
+<h4 id="updates-and-fixes">Updates and fixes</h4>
 <ul>
-<li>Fixed an issue where the <strong>Extension</strong> tab search field would reset after a user updated the extension.</li>
+<li>Updated global search to improve search navigation and element selection.</li>
 </ul>
         
           
@@ -428,10 +447,10 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="save-and-publish-release-notes"><a href="/iq-tag-management/save-publish/release-notes/">Save and publish </a></h2>
-          <h2 id="december-20-2023">December 20, 2023</h2>
-<h4 id="enhancements">Enhancements</h4>
+          <h2 id="february-14-2024">February 14, 2024</h2>
+<h4 id="updates-and-fixes">Updates and fixes</h4>
 <ul>
-<li>Increased the number of visible versions on the <a href="/iq-tag-management/save-publish/version-history/"><strong>Versions</strong> screen</a> to 20.</li>
+<li>Fixed issue that prevented publishing to a custom environment named &ldquo;custom&rdquo;.</li>
 </ul>
         
           
@@ -448,25 +467,38 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="server-side-connectors-release-notes"><a href="/server-side-connectors/release-notes/">Server-side connectors </a></h2>
-          <h2 id="february-7-2024">February 7, 2024</h2>
+          <h2 id="february-22-2024">February 22, 2024</h2>
 <h4 id="updates-and-fixes">Updates and fixes</h4>
 <ul>
-<li>Updated the <a href="/server-side-connectors/adobe-campaign-classic-connector/">Adobe Campaign Classic connector</a> to rename the current action to &ldquo;Custom SOAP request (Batched)&rdquo; and add a new action, &ldquo;Custom SOAP request&rdquo;.</li>
-<li>Updated the <a href="/server-side-connectors/adobe-aep-connector/">Adobe Experience Platform connector</a> to fix an issue with the incorrect conversion of Map objects to XDM schema parameters.</li>
-<li>Updated the <a href="/server-side-connectors/google-analytics-4-measurement-protocol-connector/">Google Analytics 4 Measurement Protocol connector</a> to support campaign details mappings.</li>
-<li>Updated the <a href="/server-side-connectors/linkedin-matched-audiences-connector-setup-guide/">LinkedIn Matched Audiences</a> and <a href="/server-side-connectors/linkedin-conversions-connector/">LinkedIn Conversions</a> connectors to use version 202311 of the LinkedIn API.</li>
-<li>Deprecated the following connectors:
+<li>Updated the <a href="/server-side-connectors/facebook-conversions-connector/">Facebook Conversions connector</a> to convert EventStream date attributes from milliseconds to seconds when mapped to the <strong>Event Time</strong> parameter.</li>
+<li>Updated the following connectors to Facebook Marketing API version 18.0:
 <ul>
-<li>Retently</li>
-<li>Sarbacane</li>
-<li>Send Pulse</li>
-<li>SendWithUs</li>
-<li>Campayn</li>
-<li>Chameleon</li>
-<li>Close.io</li>
-<li>Ask Nicely</li>
+<li><a href="/server-side-connectors/facebook-app-events-connector/">Facebook App Events</a></li>
+<li><a href="/server-side-connectors/facebook-audiences-connector/">Facebook Audiences</a></li>
+<li><a href="/server-side-connectors/facebook-audiences-customer-provided-credentials-connector/">Facebook Audiences Customer-Provided Credentials</a></li>
+<li><a href="/server-side-connectors/facebook-conversions-connector/">Facebook Conversions</a></li>
+<li><a href="/server-side-connectors/facebook-messenger-connector/">Facebook Messenger</a></li>
 </ul>
 </li>
+<li>Updated the <a href="/server-side-connectors/iterable-connector/">Iterable connector</a> to let users use an European Union (EU) host for their EU customers.</li>
+<li>Updated the <a href="/server-side-connectors/google-ads-enhanced-conversions-for-web-connector/">Google Enhanced Conversions for Web connector</a> to make <strong>Customer ID</strong> and <strong>Manager Customer ID</strong> fields mappable.</li>
+<li>Updated the <a href="/server-side-connectors/google-sa360-enhanced-conversions-connector/">Google SA360 Enhanced Conversions connector</a> to support quantity arrays and calculate the sum of the array.</li>
+<li>Updated the <a href="/server-side-connectors/pegasystems-connector/">Pega Connector</a>  to add authentication methods (POST or Basic) to the connector configuration.</li>
+</ul>
+<h2 id="february-14-2024">February 14, 2024</h2>
+<h4 id="new-connectors">New connectors</h4>
+<ul>
+<li>New marketplace connector: <a href="/server-side-connectors/sas-360-match-connector/">SAS 360 Match</a></li>
+</ul>
+<h4 id="updates-and-fixes-1">Updates and fixes</h4>
+<ul>
+<li>Updated the <a href="/server-side-connectors/google-dv-360-customer-match-connector/">Google Display &amp; Video 360 Customer Match</a> and <a href="/server-side-connectors/google-ad-manager-360-connector/">Google Ad Manager 360</a> connectors with the following changes:
+<ul>
+<li>Updated to v2 of the Google Audience Partner API.</li>
+<li>Added a new consent object with default values to the <code>OffineUserDataJob.create</code> object for Add To User List actions.</li>
+</ul>
+</li>
+<li>Deprecated the Google Adwords Customer Match and Google AdWords Customer Match (Tealium-Provided Credentials) connectors.</li>
 </ul>
         
           
@@ -483,10 +515,10 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="tags-release-notes"><a href="/iq-tag-management/tags/release-notes/">Tags </a></h2>
-          <h2 id="december-7-2023">December 7, 2023</h2>
-<h4 id="fixes">Fixes</h4>
+          <h2 id="february-14-2024">February 14, 2024</h2>
+<h4 id="updates-and-fixes">Updates and fixes</h4>
 <ul>
-<li>Fixed an issue where the <strong>Tabs</strong> tab search field would reset after a user updated the tag.</li>
+<li>Updated global search to improve search navigation and element selection.</li>
 </ul>
         
           
@@ -581,6 +613,16 @@ var utag_data = {
 </ul>
 <p>For more information about the new settings for enhanced transparency in utag 4.50 or later, see <a href="https://tealium.com/blog/customer-experience/enhancing-cookie-transparency-with-utag-4-51-a-comprehensive-introduction/">Enhancing Cookie Transparency with utag 4.51</a>.</p>
         
+          
+          
+
+          <h2 class="rn-section" id="templates-release-notes"><a href="/iq-tag-management/templates/release-notes/">Templates </a></h2>
+          <h2 id="february-14-2024">February 14, 2024</h2>
+<h4 id="updates-and-fixes">Updates and fixes</h4>
+<ul>
+<li>Fix an issue that incorrectly allowed inherited tag templates to be editable. Inherited tag templates are now read-only.</li>
+</ul>
+        
         </div>
 
         <div class="bt-l b--moon-gray pv3 cb">
@@ -638,6 +680,7 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tealium-for-cordova-release-notes">Tealium for Cordova </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tealium-for-ios-swift-release-notes">Tealium for iOS (Swift) </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tealium-universal-tag-utag-js-release-notes">Tealium Universal Tag (utag.js) </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#templates-release-notes">Templates </a></li>
               </nav>
   </aside></nav>
 

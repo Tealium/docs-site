@@ -452,6 +452,7 @@ The Integration Code is an ID used by user list sellers to correlate IDs on thei
 <p>This section describes how to set up parameters and options for each action.</p>
 <h3 id="action---add-visitor-to-user-list-or-segment">Action - Add Visitor to User-List or Segment</h3>
 <h4 id="parameters">Parameters</h4>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>You must use one of the following ID parameters: <strong>Partner Provided ID (already MD5 hashed)</strong>, <strong>Partner Provided ID (apply MD5 hash)</strong>, <strong>Google User ID</strong>, <strong>iOS Advertising ID</strong>, <strong>Android Advertising ID</strong>, <strong>RIDA</strong>, <strong>AFAI</strong>, or <strong>MSAI</strong>.</p>
 <table>
 <thead>
 <tr>
@@ -463,6 +464,14 @@ The Integration Code is an ID used by user list sellers to correlate IDs on thei
 <tr>
 <td style="text-align:left">Select the Target User-list/Segment</td>
 <td style="text-align:left"><ul><li>Required</li><li>User map identifier.</li><li>Specifies the user that this operation applies to.</li><li>This is the target User-list/Segment where the user will be added to.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Partner Provided ID (already MD5 hashed)</td>
+<td style="text-align:left"><ul><li>This parameter is sent to Google by the Tealium iQ cookie matching service tag. The default cookie match tag implementation sends the Tealium Visitor ID as an MD5 hash. If you are using this ID as the default, map this attribute to the MD5 hash option. </li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Partner Provided ID (apply MD5 hash)</td>
+<td style="text-align:left"><ul><li>This parameter is similar to <strong>Partner Provided ID (already MD5 hashed)</strong>, except that it will MD5 hash the value for you.</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Google User ID</td>
@@ -494,6 +503,8 @@ The Integration Code is an ID used by user list sellers to correlate IDs on thei
 </tr>
 </tbody>
 </table>
+<h5 id="consent">Consent</h5>
+<p>When using the <strong>Add Visitor to User List</strong> action, the connector will send consent as <code>true</code>. Use audience logic to prevent non-consented visitors from being added to lists. Use the <strong>Remove Visitor from User List</strong> action to remove non-consented visitors from lists.</p>
 <h3 id="action---remove-visitor-from-user-list-or-segment">Action - Remove Visitor from User-List or Segment</h3>
 <h4 id="parameters-1">Parameters</h4>
 <table>
@@ -511,26 +522,6 @@ The Integration Code is an ID used by user list sellers to correlate IDs on thei
 <tr>
 <td style="text-align:left">Google User ID</td>
 <td style="text-align:left"><ul><li>Google User ID</li><li>Provided by the ADX cookie-matching service.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">iOS Advertising ID</td>
-<td style="text-align:left"><ul><li>iOS Advertising ID</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Android Advertising ID</td>
-<td style="text-align:left"><ul><li>Android Advertising ID</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">RIDA</td>
-<td style="text-align:left"><ul><li>Roku ID</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">AFAI</td>
-<td style="text-align:left"><ul><li>Amazon Fire TV ID</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">MSAI</td>
-<td style="text-align:left"><ul><li>Xbox/Microsoft ID</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Data Source ID</td>
@@ -598,7 +589,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 29, 2022 
+          <p>This page was last updated:  February 23, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
