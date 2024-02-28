@@ -75,7 +75,7 @@ var utag_data = {
 <div class="flex">
 
     
-      <div id="menu" class="order-0 w-auto vh-100 overflow-auto dn db-ns sticky-l pt3 pl125" style="width:280px;">
+      <div id="menu" class="order-0 w-auto overflow-auto dn db-ns sticky-l pt3 pl125 h-auto" style="width:280px;">
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 mt0 mb1">
   
@@ -85,7 +85,10 @@ var utag_data = {
   <ul class="list pa0"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><a href="/server-side/" class="dib w-100 link text-color-primary hover-primary-color"><span class="pb2">Server-Side CDH</span></a>
         <ul data-level="1" class="server-side desktopmenu animated fadeIn list pl0 mt2"><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-gs">Getting started</a>
-        <ul class="pl2  ss-gs desktopmenu animated fadeIn list  dn"><li class="relative w-100 fw8 f5 ">
+        <ul class="pl2  ss-gs desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/getting-started/intro-cdh/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-introduction-to-customer-data-hub">Introduction to Customer Data Hub</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/getting-started/tealium-collect/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-installing-tealium">Install Tealium Collect</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/getting-started/order-of-operations/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-audiencestream-order-of-operations">Order of operations</a></li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-gs-es">EventStream API Hub</a>
         <ul class="pl2  ss-gs-es desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/getting-started/eventstream-api-hub/introduction/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-introduction-to-eventstream">Introduction to EventStream</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -127,10 +130,7 @@ var utag_data = {
         <a href="/server-side/getting-started/audiencestream-cdp/saving-and-publishing/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-gs-as-saving-and-publishing">Saving and Publishing</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/getting-started/audiencestream-cdp/next-steps/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-gs-as-next-steps">Next Steps</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/getting-started/audiencestream-cdp/audiencestream-install-options-for-web/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Install options for web</a></li></ul>
-      </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/getting-started/tealium-collect/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-installing-tealium">Install Tealium Collect</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/getting-started/order-of-operations/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-audiencestream-order-of-operations">Order of operations</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/getting-started/intro-cdh/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-introduction-to-customer-data-hub">Introduction to Customer Data Hub</a></li></ul>
+      </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".data-sources">Data sources</a>
         <ul class="pl2  data-sources desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -535,43 +535,85 @@ var utag_data = {
 <li><strong>Functions</strong> – Displays a list of the functions that are triggered by the audience.</li>
 </ul>
 <h2 id="audience-conditions-and-segments">Audience conditions and segments</h2>
-<p>An audience is created by defining one or more conditions using visit or visitor attributes. An audience segment is a modular set of conditions that can be used as a building block for audiences. Segments can be layered with AND or OR logic to create an audience. You can use excluding logic to remove visitors that meet the audience conditions. Visitors that meet these audience conditions are added or removed from an audience in real-time based on user-generated events.</p>
+<p>An audience is created by defining one or more conditions using visit or visitor attributes. An audience segment is a set of conditions that can be be saved and used as a building block in multiple audiences.</p>
+<p>Segments can be layered with AND or OR logic to create an audience. You can use excluding logic to remove visitors that meet the audience conditions. Visitors that meet these audience conditions are added or removed from an audience in real-time based on user-generated events.</p>
 <h3 id="and-logic-example">AND logic example</h3>
-<p>A segment for an audience containing visitors who have spent over $1000 and have the Fan badge would have the following conditions:</p>
+<p>This example shows a segment for visitors who have spent over $1000 and have the Fan badge, which combines the following conditions with AND logic:</p>
+<ul>
+<li><code>Fan badge is assigned</code></li>
+<li><code>lifetime_spending is greater than 1000</code></li>
+</ul>
 <figure><a class="slb" href="/images/guides/server-side/int-aud-fan-spent-1000.png"><img src="/images/guides/server-side/int-aud-fan-spent-1000.png"
          alt="example of conditions for Fan badge assigned and lifetime spending more than 1000 dollars"
          title="example of conditions for Fan badge assigned and lifetime spending more than 1000 dollars"/>
     </a>
 </figure>
 <h3 id="or-logic-example">OR logic example</h3>
-<p>Additional visitors can be added to an audience by combining segments with OR logic. The following example combines two segments to create an audience that contains visitors with the <code>Fan</code> badge or visitors who have spent over $500. Visitors that match the conditions for either segment are included in the audience.</p>
+<p>Additional visitors can be added to an audience by combining segments with OR logic. If two segments are combined with OR logic, visitors that match the conditions for either segment are included in the audience.</p>
+<p>This example shows a segment for visitors with the <code>Fan</code> badge or visitors who have spent over $500, which combines the following conditions with OR logic:</p>
+<ul>
+<li><code>Fan badge is assigned</code></li>
+<li><code>lifetime_spending is greater than 500</code></li>
+</ul>
 <figure><a class="slb" href="/images/guides/server-side/int-aud-fan-or-spent-500.png"><img src="/images/guides/server-side/int-aud-fan-or-spent-500.png"
          alt="example of conditions for Fan badge assigned or visitors with lifetime spending more than 500 dollars"
          title="example of conditions for Fan badge assigned or visitors with lifetime spending more than 500 dollars"/>
     </a>
 </figure>
 <h3 id="excluding-logic-example">Excluding logic example</h3>
-<p>To exclude specific visitors from an audience, use excluding logic. For example, to create an audience of frequent visitors that have not visited in the last three days, you could use the following conditions: <figure><a class="slb" href="/images/guides/server-side/int-aud-excluding-logic.png"><img src="/images/guides/server-side/int-aud-excluding-logic.png"
+<p>To exclude specific visitors from an audience, use excluding logic. For example, to create an audience of frequent visitors that have not visited in the last three days, you could combine the following conditions with excluding logic:</p>
+<ul>
+<li><code>Frequent visitor is assigned</code></li>
+<li><code>Days since last visit is less than 4</code></li>
+</ul>
+<figure><a class="slb" href="/images/guides/server-side/int-aud-excluding-logic.png"><img src="/images/guides/server-side/int-aud-excluding-logic.png"
          alt="example of conditions for Frequent Visitor badge assigned excluding visitors with days since last visit less than 4"
          title="example of conditions for Frequent Visitor badge assigned excluding visitors with days since last visit less than 4"/>
     </a>
-</figure></p>
+</figure>
 <h2 id="saved-segments">Saved segments</h2>
-<p>You can save segments while you are adding conditions to an audience. For example:
+<p>Saved segments can be used in multiple audiences, avoiding the need to create the same conditions for each audience. You can save segments while you are adding conditions to an audience, as shown in the following figure:
 <figure><a class="slb" href="/images/guides/server-side/audiences-save-a-segment.png"><img src="/images/guides/server-side/audiences-save-a-segment.png"
-         alt="save icon for segments"
-         title="save icon for segments"/>
+         alt="audiences page, tooltip for save icon for segments displayed"
+         title="audiences page, tooltip for save icon for segments displayed"/>
     </a>
 </figure></p>
-<p>You can view and create segments on the <strong>Segments</strong> tab on the <strong>Audiences</strong> page. For example:
-<figure><a class="slb" href="/images/guides/server-side/audiences-segments-tab.png"><img src="/images/guides/server-side/audiences-segments-tab.png"
-         alt="segments tab on audiences page"
-         title="segments tab on audiences page"/>
-    </a>
-</figure></p>
-<p>After you create a new segment, it is automatically saved. Save and publish is not required. For more information, see <a href="/server-side/audiences/manage-segments/">Manage segments</a>.</p>
+<p>You can also create segments on the <strong>Segments</strong> tab on the <strong>Audiences</strong> page. After you save or create a segment, it is automatically saved. Save and publish is not required. For more information, see <a href="/server-side/audiences/manage-segments/">Manage segments</a>.</p>
 <p>Segments are only evaluated when they are used in an audience and the audience is evaluated. Segments are not available in Data Layer Enrichment (DLE) as part of a visitor profile. Segments are used in audiences and the audiences a visitor has joined are returned as part of DLE.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Currently, segments that are being used in audiences cannot be edited.</p>
+<h3 id="segment-examples">Segment examples</h3>
+<p><strong>Example 1: Audience of loyalty members who have previously purchased and have abandoned their cart</strong></p>
+<p>In this example, two saved segments are used to create an audience of loyalty members who have previously purchased and have abandoned their cart. The loyalty members segment has the following conditions:
+<figure><a class="slb" href="/images/server-side/audiences-segment-loyalty.png"><img src="/images/server-side/audiences-segment-loyalty.png"
+         alt="loyalty segment showing condition is email address is assigned"
+         title="loyalty segment showing condition is email address is assigned"/>
+    </a>
+</figure></p>
+<p>The cart abandoned and have previously purchased segment has the following conditions:
+<figure><a class="slb" href="/images/server-side/audiences-segment-abandoned-purchases.png"><img src="/images/server-side/audiences-segment-abandoned-purchases.png"
+         alt="abandoned cart, previous purchases segment showing conditions are cart abandoner is assigned and lifetime spending is greater than zero"
+         title="abandoned cart, previous purchases segment showing conditions are cart abandoner is assigned and lifetime spending is greater than zero"/>
+    </a>
+</figure></p>
+<p>The audience of loyalty members who have previously purchased and have abandoned their cart uses these two segments, as follows:
+<figure><a class="slb" href="/images/server-side/audiences-loyal-purchases-abandoned.png"><img src="/images/server-side/audiences-loyal-purchases-abandoned.png"
+         alt="audience containing these two segments"
+         title="audience containing these two segments"/>
+    </a>
+</figure></p>
+<p><strong>Example 2: Audience of loyalty members who have not visited in the last 60 days</strong></p>
+<p>This example uses the loyalty members segment from the previous example and the following segment for visitors with no visits in the last 60 days that checks to see if the <strong>Last Visit</strong> attribute is greater than 60:
+<figure><a class="slb" href="/images/server-side/audiences-segment-last-visit-60days.png"><img src="/images/server-side/audiences-segment-last-visit-60days.png"
+         alt="segment with condition for Last Visit attribute greater than 60"
+         title="segment with condition for Last Visit attribute greater than 60"/>
+    </a>
+</figure></p>
+<p>The <code>Loyalty member, no visits in last 60 days</code> audience uses both of these segments as follows:
+<figure><a class="slb" href="/images/server-side/audiences-loyal-novisit-60d.png"><img src="/images/server-side/audiences-loyal-novisit-60d.png"
+         alt="audience of loyalty members with no visits in the last 60 days"
+         title="audience of loyalty members with no visits in the last 60 days"/>
+    </a>
+</figure></p>
 <h3 id="favorite-segments">Favorite segments</h3>
 <p>You can save segments to your favorites on the <strong>Segments</strong> tab, which allows you to filter on favorites for easy access to frequently used segments. For example:
 <figure><a class="slb" href="/images/guides/server-side/audiences-favorites-example.png"><img src="/images/guides/server-side/audiences-favorites-example.png"
@@ -585,17 +627,6 @@ var utag_data = {
          title="example of filtered segments list"/>
     </a>
 </figure></p>
-<h3 id="segment-example">Segment example</h3>
-<p>The following example shows an audience that uses saved segments in an audience:</p>
-<ul>
-<li>The <strong>First time visitors</strong> segment adds a condition for first time visitors.</li>
-<li>The <strong>Abandon Cart</strong> segment is used in an <strong>Excluding</strong> condition, which removes visitors that meet the first two conditions and abandoned their cart.</li>
-</ul>
-<figure><a class="slb" href="/images/guides/server-side/audiences-segments-example.png"><img src="/images/guides/server-side/audiences-segments-example.png"
-         alt="example of modular segments in an audience"
-         title="example of modular segments in an audience"/>
-    </a>
-</figure>
 <h2 id="visitor-retention-time">Visitor retention time</h2>
 <p>Visitor retention time refers to the length of time that AudienceStream retains visitor profiles after their last activity. Each incoming event associated with a visitor profile restarts the retention start time. If a visitor has been inactive for the length of the retention period, the profile is purged from the system.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>To make changes to retention time for an audience, contact Tealium Support.</p>
@@ -724,7 +755,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 19, 2024 
+          <p>This page was last updated:  February 27, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -745,8 +776,8 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#or-logic-example">OR logic example</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#excluding-logic-example">Excluding logic example</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#saved-segments">Saved segments</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#favorite-segments">Favorite segments</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#segment-example">Segment example</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#segment-examples">Segment examples</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#favorite-segments">Favorite segments</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#visitor-retention-time">Visitor retention time</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#example">Example</a></li>
               </nav>
@@ -826,7 +857,7 @@ No</button>
   
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
-        <a href="https://docs.tealium.com/server-side/getting-started/eventstream-api-hub/introduction/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+        <a href="https://docs.tealium.com/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           EventStream API Hub
         </a>
     </li>
@@ -834,7 +865,7 @@ No</button>
   
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
-        <a href="https://docs.tealium.com/server-side/getting-started/audiencestream-cdp/introduction/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+        <a href="https://docs.tealium.com/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           AudienceStream CDP
         </a>
     </li>
