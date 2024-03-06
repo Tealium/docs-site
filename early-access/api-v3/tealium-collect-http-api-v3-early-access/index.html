@@ -75,7 +75,7 @@ var utag_data = {
 <div class="flex">
 
     
-      <div id="menu" class="order-0 w-auto overflow-auto dn db-ns sticky-l pt3 pl125 h-auto" style="width:280px;">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-hidden overflow-y-scroll dn db-ns sticky-l pt3 pl125" style="width:280px;">
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 mt0 mb1">
   
@@ -179,6 +179,16 @@ Sends events to the nearest Tealium Collect server (one with the least latency).
 Sends events to the Tealium Collect server in the region of the profile.</li>
 </ul>
 <p>For secured Tealium Collect endpoints, the global endpoints are internally mapped to <code>collect.tealiumiq.com</code> and regional endpoints are mapped to <code>collect-&lt;region&gt;.tealiumiq.com</code>.</p>
+<h3 id="rate-limits">Rate limits</h3>
+<p>The Tealium Collect HTTP API — V3 supports a maximum rate limit of 100 events/second.</p>
+<p>For example, if you send:</p>
+<ul>
+<li>1 event per call, you can send 100 calls/second.</li>
+<li>10 events per call, you can send 10 calls/second.</li>
+<li>100 events per call, you can send 1 call/second.</li>
+</ul>
+<p>If you exceed the rate limit, Tealium will send an HTTP 429 response indicating too many requests.</p>
+<p class="tip"><i class="fa fa-info-circle"></i>If your business needs require higher event limits, contact your Tealium account manager.</p>
 <h3 id="endpoint-mapping">Endpoint mapping</h3>
 <p>The following table shows a mapping of unsecured Tealium Collect endpoints to secured Tealium Collect endpoints.</p>
 <table>
@@ -590,7 +600,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 29, 2024 
+          <p>This page was last updated:  February 29, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -606,6 +616,7 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#regional-and-global-endpoints">Regional and global endpoints</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#rate-limits">Rate limits</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#endpoint-mapping">Endpoint mapping</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#visitor-identifiers">Visitor identifiers</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#anonymous-id">Anonymous ID</a></li>

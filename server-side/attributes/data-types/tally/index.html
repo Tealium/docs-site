@@ -75,7 +75,7 @@ var utag_data = {
 <div class="flex">
 
     
-      <div id="menu" class="order-0 w-auto overflow-auto dn db-ns sticky-l pt3 pl125 h-auto" style="width:280px;">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-hidden overflow-y-scroll dn db-ns sticky-l pt3 pl125" style="width:280px;">
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 mt0 mb1">
   
@@ -509,7 +509,7 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="how-it-works">How It Works</h2>
+  <h2 id="how-it-works">How it works</h2>
 <p>The tally attribute stores a collection of key/value pairs that count the occurrences of named items across many events.</p>
 <p>For example, to keep track of the product categories that a visitor purchases from, use a tally named &ldquo;Product Category Purchases&rdquo; and enrich it with the names of product categories found in the event attribute <code>product_category</code> when purchase events occur. Over time the tally will provide valuable information about the visitor&rsquo;s buying habits.</p>
 <table>
@@ -542,20 +542,20 @@ var utag_data = {
 <li>The key represents the name of the item that occurred, for example the value of the <code>product_category</code> attribute &ldquo;Shoes&rdquo;.</li>
 <li>The value represents the number of times it occurred.</li>
 </ul>
-<p>There are no storage capacity limits for tallies, but these attributes are still limited by the maximum size of the profile after encryption and compression.</p>
+<p>Tallies are limited to 30,000 key/value pairs. These attributes are still limited by the maximum size of the profile after encryption and compression.</p>
 <h3 id="scope">Scope</h3>
 <p>The tally attribute is available in the following scopes: Visit, Visitor.</p>
 <figure><a class="slb" href="/images/server-side/screenshot-2019-11-11-at-1.26.28-pm.png"><img src="/images/server-side/screenshot-2019-11-11-at-1.26.28-pm.png"/>
     </a>
 </figure>
-<h3 id="tally-favorite">Tally Favorite</h3>
+<h3 id="tally-favorite">Tally favorite</h3>
 <p>By default, each tally attribute generates a corresponding string attribute that automatically captures the name of the tally entry with the highest value. This string attribute has the same name as the tally, but with the word &ldquo;(favorite)&rdquo; appended. For example, a tally named &ldquo;Product Categories Purchased&rdquo; would also have a string attribute named &ldquo;Product Categories Purchased (Favorite)&rdquo;.</p>
-<h4 id="tally-tie-breaker-logic">Tally Tie Breaker Logic</h4>
+<h4 id="tally-tie-breaker-logic">Tally tie breaker logic</h4>
 <p>A tally tie occurs when multiple keys have the same value. When this happens, the favorite is chosen based on the following logic:</p>
 <ul>
 <li>If a tie occurs, the most recently incremented key becomes the favorite.</li>
 <li>If more than one key was incremented simultaneously using an array of values, the last entry processed becomes the favorite.</li>
-<li>If the order in which mulitple keys were incremented is unclear, the favorite is chosen using an alphabetical sort.</li>
+<li>If the order in which multiple keys were incremented is unclear, the favorite is chosen using an alphabetical sort.</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <p>The events below describes some possible tally tie scenarios and the chosen favorite in each scenario.</p>
@@ -626,7 +626,7 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<h2 id="tally-attribute-enrichments">Tally Attribute Enrichments</h2>
+<h2 id="tally-attribute-enrichments">Tally attribute enrichments</h2>
 <h3 id="increment-tally">Increment Tally</h3>
 <p>Increment a number within a tally based on the value of another attribute. For example, to track the number of times each product category is viewed, use a tally named Product Category Viewed and enrich it with the <code>product_category</code> attribute. The values of <code>product_category</code> become entries in the tally.</p>
 <p>The number attribute stores a number for browsing metrics such as visits, page views, and events. Common examples include Lifetime Value, Order Total Transaction, or Days Since Last Purchase.</p>
@@ -717,7 +717,7 @@ var utag_data = {
 <ul>
 <li><strong>Starting Value</strong>: <code>{&quot;Shoes&quot;: 7, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 3, &quot;Jeans&quot;: 10}</code></li>
 <li><strong>Enriched With</strong>: <code>product_catgory : &quot;Shoes&quot;</code></li>
-<li><strong>Resulting Value</strong>: <code>[&quot;Pants&quot;: 1, &quot;Shirts&quot;: 3, &quot;Jeans&quot;: 10]</code></li>
+<li><strong>Resulting Value</strong>: <code>{&quot;Pants&quot;: 1, &quot;Shirts&quot;: 3, &quot;Jeans&quot;: 10}</code></li>
 </ul>
 <h3 id="increment-by-1-for-each-item-in-an-array">Increment by 1 for Each Item in an Array</h3>
 <p>Increment by one (1) for each item in an array. For example, use a tally named &ldquo;Product Category Purchased&rdquo; and enrich it with the array attribute <code>product_category</code> when a purchase event occurs.</p>
@@ -725,7 +725,7 @@ var utag_data = {
 <ul>
 <li><strong>Starting Value</strong>: <code>{&quot;Shoes&quot;: 1, &quot;Pants&quot;: 1, &quot;Shirts&quot;: 3}</code></li>
 <li><strong>Enriched With</strong>: <code>product_category : [&quot;Pants&quot;, &quot;Ties&quot;]</code></li>
-<li><strong>Resulting Value</strong>: <code>{&quot;Shoes&quot;: 1, &quot;Pants&quot;: 2, &quot;Shirts&quot;: 3, &quot;Ties&quot;: 1]</code></li>
+<li><strong>Resulting Value</strong>: <code>{&quot;Shoes&quot;: 1, &quot;Pants&quot;: 2, &quot;Shirts&quot;: 3, &quot;Ties&quot;: 1}</code></li>
 </ul>
 
 </div>
@@ -787,7 +787,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 28, 2023 
+          <p>This page was last updated:  March 6, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -801,11 +801,11 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How It Works</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#scope">Scope</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tally-favorite">Tally Favorite</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tally-favorite">Tally favorite</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#example">Example</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tally-attribute-enrichments">Tally Attribute Enrichments</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tally-attribute-enrichments">Tally attribute enrichments</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#increment-tally">Increment Tally</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#increment-tally-value">Increment Tally Value</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#increment-tally-by-tally">Increment Tally by Tally</a></li>

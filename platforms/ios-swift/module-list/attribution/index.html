@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "platforms",
-    reading_time  : "7",
+    reading_time  : "8",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -75,7 +75,7 @@ var utag_data = {
 <div class="flex">
 
     
-      <div id="menu" class="order-0 w-auto overflow-auto dn db-ns sticky-l pt3 pl125 h-auto" style="width:280px;">
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-hidden overflow-y-scroll dn db-ns sticky-l pt3 pl125" style="width:280px;">
 <nav class="side-nav f6" role="navigation">
   <ul class="list pa0 mt0 mb1">
   
@@ -178,7 +178,7 @@ var utag_data = {
 <div class="prose nested-links" id="prose">
   <h2 id="usage">Usage</h2>
 <p>The Attribution module adds the user-resettable advertising identifier (IDFA) to each tracking call and, optionally, implements the Apple Search Ads API to gather attribution information. Learn more about <a href="https://developer.apple.com/documentation/iad/setting_up_apple_search_ads_attribution">setting up Apple Search Ads attribution</a>.</p>
-<p>In version 2.1.1+, the attribution module also includes <code>SKAdNetwork</code> support and adds the <code>ATTransparency.AuthorizationStatus</code> to the dispatch payload.</p>
+<p>In version 2.1.1 and later, the attribution module also includes <code>SKAdNetwork</code> support and adds the <code>ATTransparency.AuthorizationStatus</code> to the dispatch payload.</p>
 <p>Use of this module is optional. Take the time to read about its functionality and decide if you need it, as it introduces additional dependencies. You are required to explain to Apple why you are using IDFA when you submit your app. If you do not state that you are using IDFA, Apple rejects your app. Learn more about <a href="https://developer.apple.com/app-store/review/rejections/">IDFA usage and rejections</a>.</p>
 <p>The following platforms are supported:</p>
 <ul>
@@ -188,19 +188,18 @@ var utag_data = {
 <ul>
 <li>UIKit</li>
 <li>AdSupport</li>
-<li>iAd</li>
-<li>iOS 14+: AppTrackingTransparency</li>
-<li>iOS 14+: StoreKit</li>
+<li>iOS 14 or later: AppTrackingTransparency</li>
+<li>iOS 14 or later: StoreKit</li>
 </ul>
 <h2 id="install">Install</h2>
 <p>Install the Attribution module with Swift Package Manager, CocoaPods or Carthage.</p>
 <h3 id="swift-package-manager-recommended">Swift Package Manager (Recommended)</h3>
-<p>Supported in version 1.9.0+, the Swift Package Manager is the recommended and simplest way to install the Tealium Swift library:</p>
+<p>Supported in version 1.9.0 and later, the Swift Package Manager is the recommended and simplest way to install the Tealium Swift library:</p>
 <ol>
 <li>In your Xcode project, select <strong>File &gt; Swift Packages &gt; Add Package Dependency</strong></li>
 <li>Enter the repository URL: <code>https://github.com/tealium/tealium-swift</code></li>
 <li>Configure the version rules. Typically, <code>&quot;Up to next major&quot;</code> is recommended. If the current Tealium Swift library version does not appears in the list, then reset your Swift package cache.</li>
-<li>Select the <code>Attribution</code> module from the list of modules to install and add it each of your app targets in your Xcode project, under <strong>Frameworks &gt; Libraries &amp; Embedded Content</strong></li>
+<li>Select the <code>Attribution</code> module from the list of modules to install and add it each of your app targets in your Xcode project, under <strong>Frameworks &gt; Libraries &amp; Embedded Content</strong>.</li>
 </ol>
 <p>Learn more about the <a href="/platforms/ios-swift/install/#swift-package-manager-recommended">Swift Package Manager installation for iOS</a>.</p>
 <h3 id="cocoapods">CocoaPods</h3>
@@ -210,11 +209,8 @@ var utag_data = {
 <h3 id="carthage">Carthage</h3>
 <p>To install the Attribution module with Carthage, following these steps:</p>
 <ol>
-<li>
-<p>Go to the app target&rsquo;s General configuration page in Xcode.</p>
-</li>
-<li>
-<p>Add the following framework to the <strong>Embedded Binaries</strong> section:</p>
+<li>Go to the app target&rsquo;s General configuration page in Xcode.</li>
+<li>Add the following framework to the <strong>Embedded Binaries</strong> section:
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>TealiumAttribution<span style="color:#f92672">.</span>framework
 </span></span></code></pre></div></li>
 </ol>
@@ -224,7 +220,7 @@ var utag_data = {
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.collectors = [Collectors.Attribution]
 </span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>Review the <a href="/platforms/ios-swift/modules/#collectors">Collectors</a> documentation to understand how to correctly specify the collectors you require.</p>
 <h2 id="attribution-in-ios-14">Attribution in iOS 14+</h2>
-<p>In iOS 14+, apps are required to receive user permission to access the device&rsquo;s advertising identifier (IDFA). The user is prompted to grant &ldquo;Permission to track&rdquo; when the app launches for the first time. If the user declines, then the IDFA is not available to the app.</p>
+<p>In iOS 14 and later, apps are required to receive user permission to access the device&rsquo;s advertising identifier (IDFA). The user is prompted to grant &ldquo;Permission to track&rdquo; when the app launches for the first time. If the user declines, then the IDFA is not available to the app.</p>
 <p>When the IDFA is not available, <code>SKAdNetwork</code> provides a method for registered advertising networks to attribute app installs to a campaign by receiving a signed signal directly from Apple. The advertising network only receives confirmation that the app was successfully installed, along with the campaign ID and optional conversion value.</p>
 <p>Learn more about the <code>AppTrackingTransparency</code> and <code>SKAdNetwork</code> frameworks in <a href="https://community.tealiumiq.com/t5/TLC-Blog/What-Do-Apple-s-IDFA-Changes-Mean-for-Tealium/ba-p/33770#toc-hId-1331108563">What Do Apple&rsquo;s IDFA Changes Mean for Tealium?</a> <!-- blog --></p>
 <h3 id="apptrackingtransparency-att">AppTrackingTransparency (ATT)</h3>
@@ -234,7 +230,7 @@ var utag_data = {
 <p>Tealium automatically calls <code>SKAdNetwork.registerAppForAdNetworkAttribution()</code> on launch if <code>config.skAdAttributionEnabled</code> is set to <code>true</code>. This permits advertising networks to anonymously validate app installs. If the <code>config.skAdConversionKeys</code> dictionary is defined, then <code>SKAdNetwork.updateConversionValue()</code> is automatically called on the specified event and sent the value of the specified conversion key.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.skAdConversionKeys = [<span style="color:#e6db74">&#34;EVENT_NAME&#34;</span>: <span style="color:#e6db74">&#34;DATA_LAYER_VARIABLE&#34;</span>]
 </span></span></code></pre></div><p>The conversion value must be an <code>Int</code> with a value between <code>0</code> and <code>63</code>. If the conversion value is a decimal, it must be converted to an integer before calling the conversion event.</p>
-<p>Example:</p>
+<p>For example:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.skAdConversionKeys = [<span style="color:#e6db74">&#34;purchase&#34;</span>: <span style="color:#e6db74">&#34;conversion_value&#34;</span>]
 </span></span><span style="display:flex;"><span>...
 </span></span><span style="display:flex;"><span>tealium?.track(<span style="color:#e6db74">&#34;purchase&#34;</span>, dataLayer: [<span style="color:#e6db74">&#34;order_subtotal&#34;</span>: <span style="color:#ae81ff">456.87</span>, <span style="color:#e6db74">&#34;conversion_value&#34;</span>: conversionValue])
@@ -245,17 +241,17 @@ var utag_data = {
     </a><figcaption><p>Skad Custom</p>
         </figcaption>
 </figure>
-<p>When a user clicks on an ad within an app or mobile web browser, the App Store is launched and the user is taken to the product screen for the ad campaign. In iOS 14.5+, advertisers have the option to choose to display a custom view-through ad or a StoreKit-rendered ad. If the user installs the advertised app, the device stores a pending install validation. If the user opens the app within an attribution time window, the device sends the install validation postback to the ad network.</p>
+<p>When a user clicks an ad within an app or mobile web browser, the App Store is launched and the user is taken to the product screen for the ad campaign. In iOS 14.5 and later, advertisers have the option to choose to display a custom view-through ad or a StoreKit-rendered ad. If the user installs the advertised app, the device stores a pending install validation. If the user opens the app within an attribution time window, the device sends the install validation postback to the ad network.</p>
 <p>The notification is signed by Apple and includes the campaign ID, but excludes user or device-specific data. The postback may include a conversion value and the source app’s ID if Apple determines that providing the values meets Apple’s privacy threshold.</p>
 <p>Learn more about <a href="https://developer.apple.com/documentation/storekit/skadnetwork">advertisement-driven app installations</a>.</p>
 <h4 id="tealiums-role">Tealium&rsquo;s Role</h4>
 <p>There are three main parties involved in Apple&rsquo;s <code>SKAdNetwork</code> solution:</p>
-<ol>
+<ul>
 <li>Ad networks</li>
 <li>Source app</li>
 <li>Advertised apps</li>
-</ol>
-<p>Tealium wraps the calls to <code>SKAdNetwork</code>.  If the <code>TealiumAttribution</code> module and the configuration flag are enabled, then <code>SKAdNetwork.registerAppForAdNetworkAttribution()</code> is called on app launch.</p>
+</ul>
+<p>Tealium wraps calls to <code>SKAdNetwork</code>. If the <code>TealiumAttribution</code> module and the configuration flag are enabled, then <code>SKAdNetwork.registerAppForAdNetworkAttribution()</code> is called on app launch.</p>
 <p>Additionally, if you have defined the <a href="/platforms/ios-swift/api/tealium-config/#skadconversionkeys"><code>skAdConversionKeys</code></a>, then the <code>SKAdNetwork.updateConversionValue(_:)</code> method is called and passed in the specified conversion value. Tealium permits you to manage your calls to <code>SKAdNetwork</code> through the tracking you already have in place.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>You may need to request tracking authorization from your users and add the appropriate keys to your <code>.plist</code> file.</p>
 <p>The following diagram shows shows how Tealium works with <code>SKAdNetwork</code>:</p>
@@ -266,8 +262,21 @@ var utag_data = {
 <h4 id="validation">Validation</h4>
 <p>Learn about <a href="https://developer.apple.com/documentation/storekit/skadnetwork/verifying_an_install_validation_postback">validating the calls to <code>SKAdNetwork</code></a>.</p>
 <h2 id="search-ads-api">Search Ads API</h2>
-<p>To use Apple Search Ads API, enable the <a href="/platforms/ios-swift/api/tealium-config/#searchadsenabled"><code>searchAdsEnabled</code></a> property of the <a href="/platforms/ios-swift/api/tealium-config/#tealiumconfig"><code>TealiumConfig</code></a> object. Then use the <a href="https://developer.apple.com/documentation/iad/setting_up_apple_search_ads_attribution">iAd</a> framework to <a href="https://developer.apple.com/documentation/iad/adclient/1614620-requestattributiondetails">retrieve the attribution dictionary</a> which contains the attribution object. The Tealium library does this as soon as the app launches, but it is possible that the information is not retrieved in a timely manner. The information is added to the data layer after receiving it from Apple, typically during the launch event.</p>
+<p>To use Apple Search Ads API, enable the <a href="/platforms/ios-swift/api/tealium-config/#searchadsenabled"><code>searchAdsEnabled</code></a> property of the <a href="/platforms/ios-swift/api/tealium-config/#tealiumconfig"><code>TealiumConfig</code></a> object. Then we use the <a href="https://developer.apple.com/documentation/adservices/aaattribution"><code>AAAttribution</code></a> class to retrieve a token used to fetch the attribution object. The Tealium library does this as soon as the app launches, but it is possible that the information is not retrieved in a timely manner. The information is added to the data layer after receiving it from Apple, typically during the launch event.</p>
 <p>In some cases there may be several events after launch. These variables are only retrieved from Apple&rsquo;s servers once during the app&rsquo;s lifetime, and are stored as persistent variables so that they become available on future app launches.</p>
+<h3 id="from-iad-framework-to-adservices-framework">From iAd framework to AdServices framework</h3>
+<p>In iOS 14.3 and later, Apple deprecated the <code>iAd</code> framework in favor of the new <code>AdServices</code>.</p>
+<ul>
+<li>The <a href="https://developer.apple.com/documentation/iad"><code>iAd</code></a> framework returned the same type of attribution data, but more in detail, only to users who consented via ATT.</li>
+<li>The new <a href="https://developer.apple.com/documentation/adservices"><code>AdServices</code></a> framework is less detailed, but offers the attribution data for all of the users.</li>
+</ul>
+<p>In version 2.9.0 of the TealiumSwift SDK, we included a new version of the attribution module that uses the new <code>AdServices</code> for iOS 14.3 and later.</p>
+<p>On February 7, 2023, Apple officially shut down the old <code>iAd</code> framework and announced it will soon be removed from iOS, advising developers to remove the dependency from all of the apps and SDKs.</p>
+<p>In version 2.11.0 of the TealiumSwift SDK, we removed the <code>iAd</code> framework entirely because it was no longer supported by Apple. Moving forward, we will only use the new <code>AdServices</code> framework.</p>
+<p>To avoid any discontinuity for our customers, all of the data that is included in the <code>AdServices</code> is mapped to the same data layer variables of the old <code>iAd</code> framework.
+Some of the <code>iAd</code> attribution keys are not returned anymore by Apple, so we are deprecating them. You can still receive that data in case users received them before the <code>iAd</code> framework was finally shut down, but not for new installations.</p>
+<h3 id="action-required">Action Required</h3>
+<p>The only required action for our customers is to update to version 2.11.0 or later of the TealiumSwift SDK. This action removes the <code>iAd</code> framework from their app and ensures that, for new installations, they are using only non-deprecated attribution keys from our data layer, as described below, as the deprecated keys will be empty.</p>
 <h2 id="data-layer">Data Layer</h2>
 <p>The following variables are transmitted with each tracking call while the module is enabled:</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Variables prefixed with <code>ad_</code> are only set if <a href="#search-ads-api">Search Ads</a> has been enabled.</p>
@@ -282,57 +291,62 @@ var utag_data = {
 <tbody>
 <tr>
 <td><code>ad_campaign_id</code></td>
-<td>The corresponding ad&rsquo;s campaign ID</td>
+<td>The corresponding ad&rsquo;s campaign ID.</td>
 <td><code>1234567890</code></td>
 </tr>
 <tr>
-<td><code>ad_campaign_name</code></td>
-<td>The corresponding ad&rsquo;s campaign name</td>
+<td><code>ad_campaign_name</code> (deprecated)</td>
+<td>The corresponding ad&rsquo;s campaign name.</td>
 <td><code>CampaignName</code></td>
 </tr>
 <tr>
-<td><code>ad_creativeset_id</code></td>
-<td>The ID of the Creative Set which the corresponding advertisement was part of.</td>
+<td><code>ad_creativeset_id</code> (deprecated)</td>
+<td>The ID of the creative set which the corresponding advertisement was part of.</td>
 <td><code>456093</code></td>
 </tr>
 <tr>
-<td><code>ad_creativeset_name</code></td>
-<td>The name of the Creative Set which the corresponding advertisement was part of.</td>
+<td><code>ad_creativeset_name</code> (deprecated)</td>
+<td>The name of the creative set which the corresponding advertisement was part of.</td>
 <td><code>Beast Images</code></td>
 </tr>
 <tr>
 <td><code>ad_group_id</code></td>
-<td>The corresponding ad&rsquo;s campaign group ID</td>
+<td>The corresponding ad&rsquo;s campaign group ID .</td>
 <td><code>1234567890</code></td>
 </tr>
 <tr>
-<td><code>ad_group_name</code></td>
-<td>The corresponding ad&rsquo;s campaign group name</td>
+<td><code>ad_group_name</code> (deprecated)</td>
+<td>The corresponding ad&rsquo;s campaign group name.</td>
 <td><code>AdGroupName</code></td>
 </tr>
 <tr>
 <td><code>ad_keyword</code></td>
-<td>The keyword that drove the advertisement impression which led to the corresponding click</td>
-<td><code>Keyword</code></td>
+<td>The keyword from <code>iAd</code> or the keywordId from <code>AdServices</code>.</td>
+<td><code>1234567890</code></td>
 </tr>
 <tr>
-<td><code>ad_keyword_matchtype</code></td>
+<td><code>ad_keyword_matchtype</code> (deprecated)</td>
 <td>This may either be Broad, Exact or Search Match.</td>
 <td><code>Exact</code></td>
 </tr>
 <tr>
+<td><code>ad_id</code></td>
+<td>The identifier representing the assignment relationship between an ad object and an ad group (only for iOS 15.2 and later).</td>
+<td><code>AdID</code></td>
+</tr>
+<tr>
 <td><code>ad_org_id</code></td>
-<td>The corresponding ad&rsquo;s campaign organization ID</td>
+<td>The corresponding ad&rsquo;s campaign organization ID.</td>
 <td><code>OrgID</code></td>
 </tr>
 <tr>
-<td><code>ad_org_name</code></td>
-<td>The corresponding ad&rsquo;s campaign organization name</td>
+<td><code>ad_org_name</code> (deprecated)</td>
+<td>The corresponding ad&rsquo;s campaign organization name.</td>
 <td><code>OrgName</code></td>
 </tr>
 <tr>
-<td><code>ad_purchase_date</code></td>
-<td>Date and time the user first downloaded your app. In the case where <code>iadconversion-type = &quot;Redownload&quot;</code>, this represents the original purchase date. This may or may not have been associated with an Apple Search Ad.</td>
+<td><code>ad_purchase_date</code> (deprecated)</td>
+<td>Date and time the user first downloaded your app. In the case where <code>iadconversion-type = &quot;Redownload&quot;</code>, this represents the original purchase date. This parameter may or may not have been associated with an Apple Search Ad.</td>
 <td><code>2016-12-05T17:31:40Z</code></td>
 </tr>
 <tr>
@@ -342,42 +356,42 @@ var utag_data = {
 </tr>
 <tr>
 <td><code>ad_user_clicked_last_30_days</code></td>
-<td>Boolean indicating if user clicked on a Search Ads impression within 30 days prior to app download</td>
+<td>Boolean indicating if user clicked on a Search Ads impression within 30 days prior to app download.</td>
 <td><code>true</code></td>
 </tr>
 <tr>
 <td><code>ad_user_conversion_type</code></td>
-<td>Identifies new download or re-download of the app</td>
+<td>Identifies new download or re-download of the app.</td>
 <td><code>Download</code></td>
 </tr>
 <tr>
 <td><code>ad_user_date_clicked</code></td>
-<td>Date and time the user clicked on a corresponding ad</td>
+<td>Date and time the user clicked on a corresponding ad.</td>
 <td><code>2016-12-05T17:31:40Z</code></td>
 </tr>
 <tr>
-<td><code>ad_user_date_ converted</code></td>
-<td>Date and time the user downloaded the app</td>
+<td><code>ad_user_date_converted</code> (deprecated)</td>
+<td>Date and time the user downloaded the app.</td>
 <td><code>2016-12-05T17:31:40Z</code></td>
 </tr>
 <tr>
 <td><code>device_tracking_authorization</code></td>
-<td>iOS 14+ only. <a href="https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus"><code>ATTrackingManager.AuthorizationStatus</code></a></td>
+<td>iOS 14 and later only. <a href="https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus"><code>ATTrackingManager.AuthorizationStatus</code></a></td>
 <td>[<code>notDetermined</code>, <code>restricted</code>,  <code>denied</code>, <code>authorized</code>]</td>
 </tr>
 <tr>
 <td><code>device_advertising_enabled</code></td>
-<td>Boolean indicating if the user allowed advertisement tracking (if <code>false</code>, the advertising ID appears as a string of <code>0</code>&rsquo;s)</td>
+<td>Boolean indicating if the user allowed advertisement tracking (if <code>false</code>, the advertising ID appears as a string of zeroes).</td>
 <td><code>true</code></td>
 </tr>
 <tr>
 <td><code>device_advertising_id</code></td>
-<td>User-resettable advertising identifier (IDFA)</td>
+<td>User-resettable advertising identifier (IDFA).</td>
 <td><code>6D92078A-8246...</code></td>
 </tr>
 <tr>
 <td><code>device_advertising_vendor_id</code></td>
-<td>Unique ID guaranteed to be the same across all apps on the same device from a single vendor (apps with the same 1st 2 parts of the RDNS bundle identifier. For example, com.tealium or com.acme)</td>
+<td>Unique ID guaranteed to be the same across all apps on the same device from a single vendor (apps with the same first two parts of the RDNS bundle identifier. For example, <code>com.tealium</code> or <code>com.acme</code>.)</td>
 <td><code>6D92078A-8246...</code></td>
 </tr>
 </tbody>
@@ -442,7 +456,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 6, 2023 
+          <p>This page was last updated:  March 6, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -467,7 +481,9 @@ No</button>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#apptrackingtransparency-att">AppTrackingTransparency (ATT)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#skadnetwork">SKAdNetwork</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#search-ads-api">Search Ads API</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-layer">Data Layer</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#from-iad-framework-to-adservices-framework">From iAd framework to AdServices framework</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#action-required">Action Required</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-layer">Data Layer</a></li>
               </nav>
   </aside></nav>
 
