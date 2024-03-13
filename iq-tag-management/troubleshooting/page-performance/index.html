@@ -462,7 +462,7 @@ var utag_data = {
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium does not host or control the performance of third-party files.</p>
 <h2 id="browser-file-cache">Browser file cache</h2>
 <p>Browsers have their own methods of optimizing page performance, the most widely known is file caching. The browser will save a copy of a file so that it doesn&rsquo;t request the same content over the network repeatedly. This reduces network traffic and allows site pages to load more quickly once the initial assets are cached in the browser.</p>
-<p>Learn more about <a href="/iq-tag-management/getting-started/file-cache/">how Universal Tag files are cached in the browser.</a></p>
+<p>For more information, see <a href="/iq-tag-management/getting-started/file-cache/">How Tealium files are cached</a>.</p>
 <h2 id="asynchronous-javascript">Asynchronous JavaScript</h2>
 <p>Asynchronous JavaScript is a method for delaying the loading of non-essential elements to prioritize page rendering to the user. You can think of asynchronous requests in a page like a &ldquo;To Do&rdquo; list for the browser: when the browser doesn&rsquo;t have other, higher priority elements to render, it will process the items in its asynchronous &ldquo;To Do&rdquo; list. The opposite effect is achieved when using synchronous JavaScript, which behaves like a &ldquo;Must Do&rdquo; list for the browser: the browser must block the rendering of the page in order to process items in its synchronous &ldquo;Must Do&rdquo; list.</p>
 <p>All modern tag vendors have switched to the asynchronous method, which is one of the most common ways to improve page load speed.</p>
@@ -473,9 +473,9 @@ var utag_data = {
 <li><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/page-speed-rules-and-recommendations#optimize_javascript_use">Optimize JavaScript</a></li>
 </ul>
 <h2 id="dom-ready-event">DOM-ready event</h2>
-<p>The DOM-ready event, also known as <code>DOMContentLoaded</code>, is the browser&rsquo;s way of indicating when it has completed the loading of the main content in the page. This event is commonly used as the trigger for loading non-essential elements of the page to ensure that the page renders as quickly as possible, which improves the percieved load time.</p>
+<p>The DOM-ready event, also known as <code>DOMContentLoaded</code>, is the browser&rsquo;s way of indicating when it has completed the loading of the main content in the page. This event is commonly used as the trigger for loading non-essential elements of the page to ensure that the page renders as quickly as possible, which improves the perceived load time.</p>
 <p>In iQ Tag Management, vendor tracking is delayed until the DOM-Ready event to minimize the impact on page rendering.</p>
-<p>For more information, read:</p>
+<p>For more information, see:</p>
 <ul>
 <li><a href="/iq-tag-management/getting-started/order-of-operations/">Understanding Order of Operations</a></li>
 <li><a href="/iq-tag-management/getting-started/order-of-operations/">DOMContentLoaded - Event reference | Mozilla Developer Network</a></li>
@@ -495,13 +495,13 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
 </span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
 </span></span></code></pre></div><p>The best practice is to place the <code>utag.js</code> code snippet at the top of the <code>&lt;body&gt;</code>. This position allows your tag management configuration to load asynchronously while the page continues to render so that your tags are ready to fire at the DOM-Ready event. The <code>utag.js</code> file can be placed lower in the <code>&lt;body&gt;</code> if needed. In general, this will result in delayed loading of tags and/or a slightly faster perceived load time.</p>
-<p>Read more about <a href="/platforms/javascript/install">utag.js code placement</a>.</p>
+<p>For more information, see <a href="/platforms/javascript/install">utag.js code placement</a>.</p>
 <h3 id="ready-wait-flag">Ready Wait flag</h3>
 <p>The Ready Wait flag can be found in <a href="/iq-tag-management/save-publish/publish-configuration/">the <strong>Publish Configuration</strong> area</a>. It controls when <code>utag.js</code> will begin executing. By default, this flag is <strong>Off</strong> and <code>utag.js</code> begins executing as soon as it loads into the page. When this flag is set to <strong>On</strong>, <code>utag.js</code> will wait for the DOM-Ready event before executing. You can deprioritize your tags in favor of possible gains in page load time by turning this flag on.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Setting <strong>Ready Wait Flag</strong> to <strong>On</strong> could lead to lost tracking due to visitors navigating away from the page before the tags have loaded. Always perform thorough testing before releasing new settings to your live site.</p>
 <h3 id="file-compression-and-minification">File compression and minification</h3>
-<p>The files delivered from Tealium&rsquo;s servers are compressed using the GZip industry standard. This ensures the JavaScript files (text files) are as small as possible upon delivery to the browser. This behavior cannot be changed. The code within those JavaScript files is also minified by default. Minification adds another step of compressing the code files to only their essential text by removing comment lines and white space. You can turn this setting off if needed for debugging purposes.</p>
-<p>Read more about the <a href="/iq-tag-management/save-publish/publish-configuration/">Minify Tag Templates setting</a>.</p>
+<p>Files sent from Tealium&rsquo;s servers are compressed using the Brotli industry standard for most browsers. (Older browsers that can&rsquo;t handle Brotli use Gzip compression instead.) This ensures the JavaScript files (text files) are as small as possible upon delivery to the browser. This behavior cannot be changed. The code within those JavaScript files is also minified by default. Minification adds another step of compressing the code files to only their essential text by removing comment lines and white space. You can turn this setting off if needed for debugging purposes.</p>
+<p>For more information, see <a href="/iq-tag-management/save-publish/publish-configuration/">Minify Tag Templates setting</a>.</p>
 <h3 id="bundling">Bundling</h3>
 <p>Bundling allows vendor tag code to be included in the main <code>utag.js</code> file to eliminate additional HTTP requests from the page. By default, the vendor tags configured in iQ Tag Management are loaded as separate files (for example, <code>utag.4.js</code>) into the page. This is done to minimize the risk of introducing a code error into the main <code>utag.js</code> file (for example, an error in one file will not affect the others). However, using separate files increases the number of HTTP requests the page makes to load your tags. And while the delivery of these files is optimized via Tealium&rsquo;s servers and browser caching, if you need to optimize further then bundling is an option to consider.</p>
 <p>Here is a simple example where bundling tags resulted in an 80% improvement in load time for the files coming from Tealium.</p>
@@ -527,13 +527,13 @@ var utag_data = {
          title="Network uTag Bundle" width="769" height="121"/>
     </a>
 </figure>
-<p>Read more about <a href="/iq-tag-management/tags/advanced-settings/#bundle-flag">bundling individual tags</a> or <a href="/iq-tag-management/save-publish/publish-configuration/#performance-optimization">bundling any tag using the <strong>All Pages</strong> load rule</a>.</p>
+<p>For more information, see <a href="/iq-tag-management/tags/advanced-settings/#bundle-flag">Bundling individual tags</a> or <a href="/iq-tag-management/save-publish/publish-configuration/#performance-optimization">Bundling any tag using the <strong>All Pages</strong> load rule</a>.</p>
 <h3 id="tag-timing-tags">Tag timing (tags)</h3>
 <p>As mentioned, the default behavior in <code>utag.js</code> is to wait for the DOM-Ready event before firing the vendor tags. The <strong>Tag Timing</strong> setting is a tag-level setting that controls this logic for individual tags. The default setting is <strong>DOM Ready (default)</strong>, which means &ldquo;wait for DOM-Ready&rdquo;. When this flag is set to <strong>Prioritized</strong>, the individual tag will run as soon as possible (usually prior to DOM-Ready).</p>
-<p>Read more about <a href="/iq-tag-management/tags/advanced-settings/#tag-timing">tag timing for tags</a>.</p>
+<p>For more information, see <a href="/iq-tag-management/tags/advanced-settings/#tag-timing">Tag timing for tags</a>.</p>
 <h3 id="tag-ordering">Tag ordering</h3>
 <p>Your configured tags are loaded into the page in the same order as they appear in the iQ Tag Management console. You can drag and drop tags into the desired order of loading. The Tealium best practice is to put your analytics tag(s) and other high priority tags at the top of the list to ensure they are the first ones loaded.</p>
-<p>Read more about <a href="/iq-tag-management/tags/manage/#load-order">tag ordering.</a></p>
+<p>For more information, see <a href="/iq-tag-management/tags/manage/#load-order">Tag ordering</a>.</p>
 
 </div>
 
@@ -594,7 +594,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 30, 2023 
+          <p>This page was last updated:  March 11, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

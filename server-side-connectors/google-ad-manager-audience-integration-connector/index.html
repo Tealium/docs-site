@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side-connectors",
-    reading_time  : "2",
+    reading_time  : "3",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -373,7 +373,14 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="api-information">API Information</h2>
+  <p>The Google Ad Manager Audience Integration connector allows publishers to add visitors to Google Ad Manager user lists using a Publisher Provided ID (PPID). Publishers can then serve ads based on the PPID and target new users by matching audiences similar to your most valuable customers. For more information, see <a href="https://support.google.com/admanager/answer/2880055?hl=en">Google Ad Manager Help: About publisher provided identifiers</a></p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Link Tealium to Google Ad Manager through <strong>Linked Accounts</strong> in the Google Ad Manager UI.</li>
+<li>Generate and send a PPID client-side for logged-in users using <a href="/client-side-tags/google-ad-manager-360-audience-pixel-tag/">Google Ad Manager 360 Audience Pixel tag</a> or <a href="/client-side-tags/google-publisher-tag/">Google Publisher tag</a>.</li>
+<li>Set up the PPID as a Tealium attribute for use in the connector.</li>
+</ul>
+<h2 id="api-information">API Information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
 <li>API Name: Google Audience Partner API</li>
@@ -466,6 +473,12 @@ Required. Customer ID for the account linked to Tealium in the Ad Manger UI. To 
 </tr>
 </tbody>
 </table>
+<h2 id="consent">Consent</h2>
+<p>For actions like <strong>Add to Audience List</strong>, the connector automatically sends <code>adUserData</code> and <code>adPersonalization</code> as <code>GRANTED</code>. Implement audience logic to ensure that only visitors who have consented are added to user lists. For visitors without consent, use the <strong>Remove from Audience List</strong> action to remove them from user lists.</p>
+<h2 id="tips-and-troubleshooting">Tips and troubleshooting</h2>
+<ul>
+<li>To ensure the PPID is present, include logic in the event feed or audience setup used for the connector action. This helps avoid <code>MISSING_USER_IDENTIFIER</code> errors.</li>
+</ul>
 
 </div>
 
@@ -526,7 +539,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 6, 2024 
+          <p>This page was last updated:  March 8, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -540,12 +553,15 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#api-information">API Information</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#prerequisites">Prerequisites</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#api-information">API Information</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connector-actions">Connector actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configuration">Configuration</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#actions">Actions</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-to-audience-list">Add to Audience List</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#remove-from-audience-list">Remove from Audience List</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#consent">Consent</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tips-and-troubleshooting">Tips and troubleshooting</a></li>
               </nav>
   </aside></nav>
 

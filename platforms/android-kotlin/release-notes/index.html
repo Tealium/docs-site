@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "platforms",
-    reading_time  : "7",
+    reading_time  : "8",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -166,7 +166,49 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>See the <a href="https://github.com/Tealium/tealium-kotlin/blob/master/CHANGELOG.md">GitHub change log</a> for a complete list of changes to Tealium for Android (Kotlin).</p>
+  <p>For a complete list of changes to Tealium for Android (Kotlin), see the <a href="https://github.com/Tealium/tealium-kotlin/blob/master/CHANGELOG.md">GitHub change log</a>.</p>
+<h2 id="155-september-2023">1.5.5 (September 2023)</h2>
+<ul>
+<li>BugFix: ProGuard adjustment resolve missing <code>BatchDispatch$Companion</code> class.</li>
+<li>Minor lint warning fixes</li>
+</ul>
+<h2 id="154-august-2023">1.5.4 (August 2023)</h2>
+<ul>
+<li>Core 1.5.4
+<ul>
+<li>Session Data Expiration BugFix: fixes an issue whereby session scoped data may not be expired on launch</li>
+<li>Event Router events Buffering: buffers events until sdk is ready so events are not missed during startup</li>
+<li>Database Lock crash BugFix: Some uncaught exceptions in persistence led to possible crashes</li>
+<li>ProGuard rules updates to reinstate incorrectly obfuscated <code>BatchDispatch</code> class</li>
+</ul>
+</li>
+<li>AdIdentifier 1.1.2
+<ul>
+<li>BugFix: DataLayer writes moved onto Tealium background thread</li>
+</ul>
+</li>
+</ul>
+<h2 id="153-june-2023">1.5.3 (June 2023)</h2>
+<ul>
+<li>Database BugFix: add database status check before performing writable actions, and allow event queuing until database is fully operational</li>
+<li>Library Settings BugFix: update how remote settings were fetched and saved</li>
+<li>Module Manager BugFix: update to thread-safe collection</li>
+</ul>
+<h2 id="152-april-2023">1.5.2 (April 2023)</h2>
+<ul>
+<li>Connectivity Collector BugFix:
+<ul>
+<li>Fixes an issue in the event where there is a blank string returned from <code>telephonyManager.networkOperator</code></li>
+</ul>
+</li>
+<li>Deep Link Reporting BugFix:
+<ul>
+<li>Deep Link handling limited to Activities launched with Intents where action == Intent.ACTION_VIEW</li>
+<li>Empty Uris are ignored, and deep links that match what is already stored is a <code>no*op</code></li>
+<li>Handling pushed onto Tealium background thread.</li>
+</ul>
+</li>
+</ul>
 <h2 id="151-october-2022">1.5.1 (October 2022)</h2>
 <ul>
 <li>Bug fix - Fixed an issue where events arrived at dispatchers in the incorrect order</li>
@@ -195,7 +237,7 @@ var utag_data = {
 <li>TagManagement 1.2.0
 <ul>
 <li><code>QueryParameterProvider</code> - to add additional parameters to the URL for the Tag Management module</li>
-<li>Improved WebView instantiation and page load management</li>
+<li>Improved webview instantiation and page load management</li>
 </ul>
 </li>
 <li>Kotlin Dependency updates
@@ -288,7 +330,7 @@ var utag_data = {
 <ul>
 <li>Core 1.3.1
 <ul>
-<li>Stability fix for failed WebView creation</li>
+<li>Stability fix for failed webview creation</li>
 <li>Stability fix for connectivity exception handling</li>
 <li>In App Purchase auto tracking 1.0.0 release.</li>
 </ul>
@@ -459,7 +501,7 @@ var utag_data = {
 </ul>
 <h2 id="121-march-2021">1.2.1 (March 2021)</h2>
 <ul>
-<li>Proguard and Consumer Rules revision; added missing public classes, and the consumer rules have been revised</li>
+<li>ProGuard and Consumer Rules revision; added missing public classes, and the consumer rules have been revised</li>
 <li>Core 1.2.1, Collect Dispatcher 1.0.3, TagManagement Dispatcher 1.0.3, Install Referrer 1.0.2, Lifecycle 1.0.3, Location 1.0.3, VisitorService 1.0.3, RemoteCommand Dispatcher 1.0.2, Hosted DataLayer 1.0.2, Crash Reporter 1.0.1, Ad Identifier 1.0.1</li>
 </ul>
 <h2 id="120-january-2021">1.2.0 (January 2021)</h2>
@@ -473,7 +515,7 @@ var utag_data = {
 </li>
 <li>Visitor ID: New method manually regenerates a Visitor ID for the device
 <ul>
-<li>Proguard: Initial proguard rules added to generated binaries and consumer proguard rules</li>
+<li>ProGuard: Initial ProGuard rules added to generated binaries and consumer ProGuard rules</li>
 </ul>
 </li>
 <li>AdIdentifier 1.0.0
@@ -488,7 +530,7 @@ var utag_data = {
 </li>
 <li>Collect Dispatcher 1.0.2, Hosted DataLayer 1.0.1, InstallReferrer 1.0.1, Lifecycle 1.0.2, Location 1.0.2, RemoteCommand Dispatcher 1.0.1, TagManagement Dispatcher 1.0.1, Visitor Service 1.0.2
 <ul>
-<li>Proguard - Initial proguard rules added to generated binaries and consumer proguard rules</li>
+<li>ProGuard - Initial ProGuard rules added to generated binaries and consumer ProGuard rules</li>
 </ul>
 </li>
 </ul>
@@ -588,7 +630,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 6, 2023 
+          <p>This page was last updated:  March 12, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -602,7 +644,11 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#151-october-2022">1.5.1 (October 2022)</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#155-september-2023">1.5.5 (September 2023)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#154-august-2023">1.5.4 (August 2023)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#153-june-2023">1.5.3 (June 2023)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#152-april-2023">1.5.2 (April 2023)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#151-october-2022">1.5.1 (October 2022)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#150-october-2022">1.5.0 (October 2022)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#143-september-2022">1.4.3 (September 2022)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#142-june-2022">1.4.2 (June 2022)</a></li>
