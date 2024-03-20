@@ -105,6 +105,7 @@ var utag_data = {
         <a href="/platforms/ios-swift-v1/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-v1">iOS (Swift) 1.x</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/platforms/ios-swift/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift">iOS (Swift) 2.x</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/platforms/nativescript/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nativescript">NativeScript</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/platforms/dotnet-maui/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".dotnet-maui">.NET MAUI</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/platforms/react-native-v1/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".react-native-v1">React Native 1.x</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/platforms/react-native/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".react-native">React Native 2.x</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/platforms/unity-v1/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".unity-v1">Unity 1.x</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -175,10 +176,10 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="tealium-for-ios-swift-release-notes"><a href="/platforms/ios-swift/release-notes/">Tealium for iOS (Swift) </a></h2>
-          <h2 id="2122-february-2024">2.12.2 (February 2024)</h2>
+          <h2 id="2123-march-2024">2.12.3 (March 2024)</h2>
 <p><strong>Low Impact Changes</strong></p>
 <ul>
-<li>Fixed possible clashes with Privacy Manifests when installing with CocoaPods.</li>
+<li>Fixed Privacy Manifest <code>NSPrivacyAccessedAPITypeReasons</code> for the disk space category.</li>
 </ul>
         
           
@@ -190,14 +191,23 @@ var utag_data = {
 <p>We recommend the following steps to ensure a smooth transition when updating to version 4.50 or later:</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Be sure to update the Tealium Collect tag and all active Consent management templates, especially the Event Logging feature.</p>
 <ul>
-<li>If you have multiple iQ profiles running on the same site, complete these steps to ensure that all instances of <code>utag.js</code> on your site start using the new cookie behavior simultaneously, preventing conflicts or compatibility issues:
+<li>
+<p>If you have multiple iQ profiles running on the same site, complete these steps to ensure that all instances of <code>utag.js</code> on your site start using the new cookie behavior simultaneously, preventing conflicts or compatibility issues:</p>
 <ol>
 <li>Update all <code>utag.js</code> templates to the latest version.</li>
 <li>Set the <a href="/platforms/javascript/settings/#split_cookie"><code>split_cookie</code></a> override to <code>false</code> on each profile to use legacy cookie behavior and maintain compatibility with older versions of utag.js still running on your site for the duration of the transition.</li>
 <li>Once all <code>utag.js</code> templates have been updated and are setting the <code>split_cookie</code> override to maintain the legacy cookie behavior, you can remove the cookie override on all profiles at the same time.</li>
 </ol>
 </li>
+<li>
+<p>If you have dependencies on the Visitor ID (<code>v_id</code>) outside of the Tealium Collect tag, set the <code>always_set_v_id</code> option to <code>true</code>  to ensure that value continues to be set in time. The most common examples of Visitor ID use are:</p>
+<ul>
+<li>Cookie sync tags.</li>
+<li>Mapping <code>tealium_visitor_id</code> to an analytics tag such as Adobe or GA4 for troubleshooting and use in downstream data warehouses.</li>
 </ul>
+</li>
+</ul>
+<p>For more information, see <a href="/platforms/javascript/settings/#always_set_v_id">Settings: <code>always_set_v_id</code></a>.</p>
 <h2 id="september-2023">September 2023</h2>
 <h3 id="451">4.51</h3>
 <ul>

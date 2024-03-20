@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "platforms",
-    reading_time  : "5",
+    reading_time  : "6",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -159,12 +159,20 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
+<td><a href="#addcustomremotecommand"><code>addCustomRemoteCommand()</code></a></td>
+<td>Adds a remote command callback to the remote command manager.</td>
+</tr>
+<tr>
 <td><a href="#addremotecommand"><code>addRemoteCommand()</code></a></td>
 <td>Adds a remote command to the remote command manager</td>
 </tr>
 <tr>
 <td><a href="#addtodatalayer"><code>addToDataLayer()</code></a></td>
 <td>Adds data to persistent data layer</td>
+</tr>
+<tr>
+<td><a href="#clearstoredvisitorids"><code>clearStoredVisitorIds()</code></a></td>
+<td>Deletes the stored cache of visitor IDs and calls <code>resetVisitorId</code>.</td>
 </tr>
 <tr>
 <td><a href="#deletefromdatalayer"><code>deleteFromDataLayer()</code></a></td>
@@ -211,6 +219,10 @@ var utag_data = {
 <td>Removes a remote command from the remote command manager</td>
 </tr>
 <tr>
+<td><a href="#resetvisitorid"><code>resetVisitorId()</code></a></td>
+<td>Generates a new visitor ID for the user.</td>
+</tr>
+<tr>
 <td><a href="#setconsentcategories"><code>setConsentCategories()</code></a></td>
 <td>Sets the consent categories of a user</td>
 </tr>
@@ -221,6 +233,10 @@ var utag_data = {
 <tr>
 <td><a href="#setconsentstatus"><code>setConsentStatus()</code></a></td>
 <td>Sets the user&rsquo;s consent status</td>
+</tr>
+<tr>
+<td><a href="#setvisitoridlistener"><code>setVisitorIdListener()</code></a></td>
+<td>Add a listerner for changes on <code>visitorId</code>.</td>
 </tr>
 <tr>
 <td><a href="#setvisitorservicelistener"><code>setVisitorServiceListener()</code></a></td>
@@ -236,9 +252,9 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<h3 id="addremotecommand"><code>addRemoteCommand()</code></h3>
-<p>Adds a remote command to the remote command manager.</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.addRemoteCommand(id, callback);
+<h3 id="addcustomremotecommand"><code>addCustomRemoteCommand()</code></h3>
+<p>Adds a custom remote command to the remote command manager, backed up by a Tag on Tealium iQ Tag Management.</p>
+<pre tabindex="0"><code>Tealium.addCustomRemoteCommand(id, callback);
 </code></pre><table>
 <thead>
 <tr>
@@ -264,16 +280,37 @@ var utag_data = {
 </tbody>
 </table>
 <p>Example:</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.addRemoteCommand(&#39;firebase&#39;, (payload) =&gt; {
-
-  var eventName = payload[&#39;firebase_event_name&#39;];
-  var eventProperties = payload[&#39;firebase_event_properties&#39;];
-
-  analytics.logEvent(eventName, eventProperties);
+<pre tabindex="0"><code>Tealium.addRemoteCommand(&#39;CUSTOM_COMMAND_ID&#39;, (payload) =&gt; {
+  print(JsonEncoder().convert(payload));
 });
+</code></pre><h3 id="addremotecommand"><code>addRemoteCommand()</code></h3>
+<p>Adds a remote command to the remote command manager.</p>
+<pre tabindex="0"><code>Tealium.addRemoteCommand(remoteCommand);
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>remoteCommand</code></td>
+<td><code>RemoteCommand</code></td>
+<td>A prebuilt remote command with either path, URL, or webview configurations.</td>
+<td>See example below.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre tabindex="0"><code>Tealium.addRemoteCommand(RemoteCommand(TealiumFirebase.commandName, path: &#34;firebase.json&#34;)); // local
+Tealium.addRemoteCommand(RemoteCommand(TealiumFirebase.commandName, url: &#34;www.tealium.com/path_to_remote_command/firebase.json&#34;)); // remote
+Tealium.addRemoteCommand(RemoteCommand(TealiumFirebase.commandName)); // webview
 </code></pre><h3 id="addtodatalayer"><code>addToDataLayer()</code></h3>
 <p>Adds data to the persistent data layer for the given expiration.</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.addToDataLayer(data, expiry);
+<pre tabindex="0"><code>Tealium.addToDataLayer(data, expiry);
 </code></pre><table>
 <thead>
 <tr>
@@ -298,9 +335,12 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<h3 id="deletefromdatalayer"><code>deleteFromDataLayer()</code></h3>
+<h3 id="clearstoredvisitorids"><code>clearStoredVisitorIds()</code></h3>
+<p>Clears all previously stored visitor IDs and hashed customer identifiers.</p>
+<pre tabindex="0"><code>Tealium.clearStoredVisitorIds()
+</code></pre><h3 id="deletefromdatalayer"><code>deleteFromDataLayer()</code></h3>
 <p>Deletes a single key-value pair from the data layer that was previously set using <code>addToDataLayer()</code>.</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.deleteFromDataLayer(key);
+<pre tabindex="0"><code>Tealium.deleteFromDataLayer(key);
 </code></pre><table>
 <thead>
 <tr>
@@ -321,7 +361,7 @@ var utag_data = {
 </table>
 <h3 id="getfromdatalayer"><code>getFromDataLayer()</code></h3>
 <p>Gets the value for a specified key in the persistent data layer as a callback function.</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.getFromDataLayer(key);
+<pre tabindex="0"><code>Tealium.getFromDataLayer(key);
 </code></pre><table>
 <thead>
 <tr>
@@ -344,11 +384,11 @@ var utag_data = {
 </tbody>
 </table>
 <p>Example:</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.getFromDataLayer(&#39;key&#39;)
+<pre tabindex="0"><code>Tealium.getFromDataLayer(&#39;key&#39;)
     .then((value) =&gt; print(&#39;Value From data layer: $value&#39;)));
 </code></pre><h3 id="getconsentcategories"><code>getConsentCategories()</code></h3>
 <p>Gets the user&rsquo;s consented categories.</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.getConsentCategories();
+<pre tabindex="0"><code>Tealium.getConsentCategories();
 </code></pre><table>
 <thead>
 <tr>
@@ -366,12 +406,12 @@ var utag_data = {
 </tbody>
 </table>
 <p>Example:</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.getConsentCategories()
+<pre tabindex="0"><code>Tealium.getConsentCategories()
   .then((categories) =&gt;
       print(&#39;Consent Categories: &#39; + categories.join(&#34;,&#34;))));
 </code></pre><h3 id="getconsentstatus"><code>getConsentStatus()</code></h3>
 <p>Gets the user&rsquo;s consent status as a callback function.</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.getConsentStatus(callback);
+<pre tabindex="0"><code>Tealium.getConsentStatus(callback);
 </code></pre><table>
 <thead>
 <tr>
@@ -389,11 +429,11 @@ var utag_data = {
 </tbody>
 </table>
 <p>Example:</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.getConsentStatus()
+<pre tabindex="0"><code>Tealium.getConsentStatus()
   .then((status) =&gt; print(&#39;Consent Status: $status&#39;)));
 </code></pre><h3 id="getvisitorid"><code>getVisitorId()</code></h3>
 <p>Gets the user&rsquo;s visitor ID as a callback function.</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.getVisitorId();
+<pre tabindex="0"><code>Tealium.getVisitorId();
 </code></pre><table>
 <thead>
 <tr>
@@ -412,7 +452,7 @@ var utag_data = {
 </table>
 <h3 id="initialize"><code>initialize()</code></h3>
 <p>Initialize Tealium before calling any other method.</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.initialize(config);
+<pre tabindex="0"><code>Tealium.initialize(config);
 </code></pre><table>
 <thead>
 <tr>
@@ -435,7 +475,7 @@ var utag_data = {
 </tbody>
 </table>
 <p>Example:</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">let config: TealiumConfig =
+<pre tabindex="0"><code>let config: TealiumConfig =
 {
 	account: &#39;ACCOUNT&#39;,
 	profile: &#39;PROFILE&#39;,
@@ -469,7 +509,7 @@ var utag_data = {
         });
 </code></pre><h3 id="jointrace"><code>joinTrace()</code></h3>
 <p>Joins a trace with the specified ID. Learn more about <a href="/platforms/getting-started-mobile/trace/">Trace</a>.</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.joinTrace(id);
+<pre tabindex="0"><code>Tealium.joinTrace(id);
 </code></pre><table>
 <thead>
 <tr>
@@ -490,10 +530,10 @@ var utag_data = {
 </table>
 <h3 id="leavetrace"><code>leaveTrace()</code></h3>
 <p>Leaves a previously joined traced and ends the visitor session. The trace remains active for the duration of the app session until this method is called.</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.leaveTrace();
+<pre tabindex="0"><code>Tealium.leaveTrace();
 </code></pre><h3 id="removefromdatalayer"><code>removeFromDataLayer()</code></h3>
 <p>Remove persistent data that was previously set using <code>Tealium.setPersistentData()</code>.</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.removeFromDataLayer(keys);
+<pre tabindex="0"><code>Tealium.removeFromDataLayer(keys);
 </code></pre><table>
 <thead>
 <tr>
@@ -514,7 +554,7 @@ var utag_data = {
 </table>
 <h3 id="removeremotecommand"><code>removeRemoteCommand()</code></h3>
 <p>Removes a remote command from the remote command manager.</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.removeRemoteCommand(id);
+<pre tabindex="0"><code>Tealium.removeRemoteCommand(id);
 </code></pre><table>
 <thead>
 <tr>
@@ -534,10 +574,13 @@ var utag_data = {
 </tbody>
 </table>
 <p>Example:</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.removeRemoteCommand(&#39;test_command&#39;);
+<pre tabindex="0"><code>Tealium.removeRemoteCommand(&#39;test_command&#39;);
+</code></pre><h3 id="resetvisitorid"><code>resetVisitorId()</code></h3>
+<p>Generates a new visitor ID for the user.</p>
+<pre tabindex="0"><code>Tealium.resetVisitorId()
 </code></pre><h3 id="setconsentcategories"><code>setConsentCategories()</code></h3>
 <p>Sets the consent categories of a user. Pass in an array of Strings to set the categories. Default is an empty array until <code>ConsentStatus</code> is set to <code>.consented</code>. If the consent status is <code>.consented</code> and no categories are specified with the <code>setConsentCategories()</code> method, then all categories are set.</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.setConsentCategories(categories);
+<pre tabindex="0"><code>Tealium.setConsentCategories(categories);
 </code></pre><table>
 <thead>
 <tr>
@@ -557,7 +600,7 @@ var utag_data = {
 </tbody>
 </table>
 <p>Example:</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.setConsentCategories([ConsentCategories.analytics, ConsentCategories.email]);
+<pre tabindex="0"><code>Tealium.setConsentCategories([ConsentCategories.analytics, ConsentCategories.email]);
 </code></pre><h4 id="consent-categories">Consent Categories</h4>
 <p>The following consent categories are available:</p>
 <table>
@@ -632,7 +675,7 @@ var utag_data = {
 </table>
 <h3 id="setconsentexpirylistener"><code>setConsentExpiryListener()</code></h3>
 <p>Sets a callback to execute after the user&rsquo;s consent preferences have expired according the <code>ConsentExpiry</code>.</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.setConsentExpiryListener(callback);
+<pre tabindex="0"><code>Tealium.setConsentExpiryListener(callback);
 </code></pre><table>
 <thead>
 <tr>
@@ -649,12 +692,12 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.setConsentExpiryListener(() =&gt; {
+<pre tabindex="0"><code>Tealium.setConsentExpiryListener(() =&gt; {
     print(&#39;Consent Expired&#39;);
 });
 </code></pre><h3 id="setconsentstatus"><code>setConsentStatus()</code></h3>
 <p>Sets the consent status of a user. Default is <code>.unknown</code> until the status is updated.</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.setConsentStatus(status);
+<pre tabindex="0"><code>Tealium.setConsentStatus(status);
 </code></pre><table>
 <thead>
 <tr>
@@ -672,7 +715,7 @@ var utag_data = {
 </tbody>
 </table>
 <p>Example:</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.setConsentStatus(ConsentStatus.consented);
+<pre tabindex="0"><code>Tealium.setConsentStatus(ConsentStatus.consented);
 </code></pre><h4 id="consent-status">Consent Status</h4>
 <p>The following consent statuses are available:</p>
 <table>
@@ -697,11 +740,34 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
-<h3 id="setvisitorservicelistener"><code>setVisitorServiceListener()</code></h3>
+<h3 id="setvisitoridlistener"><code>setVisitorIdListener()</code></h3>
+<p>Sets a callback to execute when the visitor ID changes.</p>
+<pre tabindex="0"><code>Tealium.setVisitorIdListener(callback);
+</code></pre><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>callback</code></td>
+<td><code>Function</code></td>
+<td>Code to execute with the updated <code>visitorId</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre tabindex="0"><code>Tealium.setVisitorIdListener((newVisitorId) =&gt; {
+    print(newVisitorId);
+});
+</code></pre><h3 id="setvisitorservicelistener"><code>setVisitorServiceListener()</code></h3>
 <p>Sets a callback to execute when the visitor profile is updated. The updated <code>VisitorProfile</code> is provided in the callback response.</p>
 <p>The VisitorService module implements the <a href="/server-side/attributes/data-layer-enrichment/enable/">Data Layer Enrichment</a> feature of the Tealium Customer Data Hub.</p>
 <p>Usage of this module is recommended if you are licensed for Tealium AudienceStream and you want to use the visitor profile to enhance the user experience in your mobile application. If you are not licensed for AudienceStream, usage of this module is not recommended as no visitor profile is returned.</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.setVisitorServiceListener(callback);
+<pre tabindex="0"><code>Tealium.setVisitorServiceListener(callback);
 </code></pre><table>
 <thead>
 <tr>
@@ -719,15 +785,15 @@ var utag_data = {
 </tbody>
 </table>
 <p>Example:</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.setVisitorServiceListener((profile) =&gt; {
+<pre tabindex="0"><code>Tealium.setVisitorServiceListener((profile) =&gt; {
     print(JsonEncoder().convert(profile));
 });
 </code></pre><h3 id="terminateinstance"><code>terminateInstance()</code></h3>
 <p>Terminates the Tealium instance by disabling the Tealium library and removing all module references. Re-enable by creating a new Tealium instance, if required.</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.terminateIntance();
+<pre tabindex="0"><code>Tealium.terminateIntance();
 </code></pre><h3 id="track"><code>track()</code></h3>
 <p>Track an event with either a <code>TealiumEvent</code> or <code>TealiumView</code> dispatch.</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.track(dispatch);
+<pre tabindex="0"><code>Tealium.track(dispatch);
 </code></pre><table>
 <thead>
 <tr>
@@ -749,7 +815,7 @@ var utag_data = {
 <h3 id="gathertrackdata"><code>gatherTrackData()</code></h3>
 <p>Gathers all data from all collectors and data layer.</p>
 <p>Example:</p>
-<pre tabindex="0"><code class="language-flutter" data-lang="flutter">Tealium.gatherTrackData()
+<pre tabindex="0"><code>Tealium.gatherTrackData()
   .then((data) =&gt; developer.log(&#39;Gather track Data: $data&#39;))
 </code></pre>
 </div>
@@ -796,7 +862,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  March 15, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -811,8 +877,10 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#class-tealium">Class: Tealium</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#addremotecommand">addRemoteCommand()</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#addcustomremotecommand">addCustomRemoteCommand()</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#addremotecommand">addRemoteCommand()</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#addtodatalayer">addToDataLayer()</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#clearstoredvisitorids">clearStoredVisitorIds()</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#deletefromdatalayer">deleteFromDataLayer()</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#getfromdatalayer">getFromDataLayer()</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#getconsentcategories">getConsentCategories()</a></li>
@@ -823,9 +891,11 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#leavetrace">leaveTrace()</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#removefromdatalayer">removeFromDataLayer()</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#removeremotecommand">removeRemoteCommand()</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#resetvisitorid">resetVisitorId()</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#setconsentcategories">setConsentCategories()</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#setconsentexpirylistener">setConsentExpiryListener()</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#setconsentstatus">setConsentStatus()</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#setvisitoridlistener">setVisitorIdListener()</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#setvisitorservicelistener">setVisitorServiceListener()</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#terminateinstance">terminateInstance()</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#track">track()</a></li>

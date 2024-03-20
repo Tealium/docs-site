@@ -192,7 +192,8 @@ var utag_data = {
         <a href="/server-side/data-connect/manage-data-connect-integrations/tealium-connect-visitor-id-attr-enrichment/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-tealium-connect-visitor-id-attr-enrichment">Tealium Connect visitor ID attribute enrichment</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-connect/manage-data-connect-integrations/create-recipe/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-create-recipe-data-connect">Create a recipe</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-connect/manage-data-connect-integrations/manage-recipes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-recipes-data-connect">Manage recipes</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/data-connect/manage-data-connect-integrations/troubleshooting-data-connect/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-troubleshoot-data-connect">Troubleshooting</a></li></ul>
+        <a href="/server-side/data-connect/manage-data-connect-integrations/troubleshooting-data-connect/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-troubleshoot-data-connect">Troubleshooting</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-connect/manage-data-connect-integrations/facebook-lead-ads-data-connect-integration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-facebook-lead-ads-data-connect-integration">Facebook Lead Ads Data Connect Integration Setup Guide</a></li></ul>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".event-specifications">Event specifications</a>
@@ -347,7 +348,7 @@ var utag_data = {
         <a href="/server-side/functions/manage-functions/test-functions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-functions-test-functions">Test functions</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/functions/manage-functions/delete-function/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-functions-delete-function">Delete a function</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/functions/manage-functions/manage-function-logs/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-function-logs">Manage logs</a></li><li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/functions/manage-functions/manage-global-variables/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".manage-functions-manage-global-variables s">Manage global variables</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/functions/manage-functions/manage-global-variables/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".manage-functions-manage-global-variables">Manage global variables</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/functions/manage-functions/view-function-statistics/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-view-function-statistics">View function statistics</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".event-visitor-functions">Event and visitor functions</a>
@@ -508,7 +509,10 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>The <code>store</code> is a key-value map used to manage global variables that can be accessed by event and visitor functions. Global variables can be added, edited, and deleted from the <strong>Code</strong> tab of the functions code editor. Event and visitor functions can can retrieve the value of a global variable using the <code>store.get()</code> method. For more information, see <a href="/server-side/functions/event-visitor-functions/about/">Event and Visitor Functions</a>.</p>
+  <p>Global variables are variables that can be retrieved by all functions in a profile. These variables can contain numeric or string constants and provide a way to share data with multiple functions.</p>
+<p>Global variables are stored as key/value pairs. The key is generated when you create a variable and is based on the variable name. Functions can retrieve the value of a global variable, but cannot modify it. You can add, edit, and delete global variables on the <strong>Code</strong> tab of the functions code editor.</p>
+<p>V3 event and visitor functions can retrieve the value of a global variable using <code>helper.getGlobalVariable()</code>. For more information, see <a href="/server-side/functions/event-visitor-functions/event-visitor-v3/">Event and Visitor Functions V3</a> and <a href="/server-side/functions/event-visitor-functions/v3-function-examples/#get-the-value-of-a-global-variable">V3 Event and visitor function examples</a>.</p>
+<p>V2 event and visitor functions can retrieve the value of a global variable using <code>store.get()</code>. For more information, see <a href="/server-side/functions/event-visitor-functions/v2-functions/">Event and Visitor Functions V2</a>.</p>
 <h2 id="add-a-global-variable-for-event-or-visitor-functions">Add a global variable for event or visitor functions</h2>
 <p>To add a global variable, follow these steps:</p>
 <ol>
@@ -521,6 +525,10 @@ The <strong>Key</strong> field is automatically populated with the specified nam
 <li>Click <strong>Add</strong>, then click <strong>Close</strong>.</li>
 <li>Click <strong>Save/Publish</strong>.</li>
 </ol>
+<p>The following example shows the name, key, and value after creating a global variable named <code>Cloud Function URL</code> that contains the URL of a Google cloud function.
+<figure><a class="slb" href="/images/server-side/functions-global-variable.png"><img src="/images/server-side/functions-global-variable.png"/>
+    </a>
+</figure></p>
 <h2 id="edit-a-global-variable">Edit a global variable</h2>
 <p>To edit a global variable, follow these steps:</p>
 <ol>
@@ -600,7 +608,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 7, 2023 
+          <p>This page was last updated:  March 20, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

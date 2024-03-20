@@ -26,7 +26,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side",
-    reading_time  : "7",
+    reading_time  : "5",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -192,7 +192,8 @@ var utag_data = {
         <a href="/server-side/data-connect/manage-data-connect-integrations/tealium-connect-visitor-id-attr-enrichment/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-tealium-connect-visitor-id-attr-enrichment">Tealium Connect visitor ID attribute enrichment</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-connect/manage-data-connect-integrations/create-recipe/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-create-recipe-data-connect">Create a recipe</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-connect/manage-data-connect-integrations/manage-recipes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-recipes-data-connect">Manage recipes</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/data-connect/manage-data-connect-integrations/troubleshooting-data-connect/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-troubleshoot-data-connect">Troubleshooting</a></li></ul>
+        <a href="/server-side/data-connect/manage-data-connect-integrations/troubleshooting-data-connect/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-troubleshoot-data-connect">Troubleshooting</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-connect/manage-data-connect-integrations/facebook-lead-ads-data-connect-integration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-facebook-lead-ads-data-connect-integration">Facebook Lead Ads Data Connect Integration Setup Guide</a></li></ul>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".event-specifications">Event specifications</a>
@@ -347,7 +348,7 @@ var utag_data = {
         <a href="/server-side/functions/manage-functions/test-functions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-functions-test-functions">Test functions</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/functions/manage-functions/delete-function/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-functions-delete-function">Delete a function</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/functions/manage-functions/manage-function-logs/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-function-logs">Manage logs</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/functions/manage-functions/manage-global-variables/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-functions-manage-global-variables s">Manage global variables</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/functions/manage-functions/manage-global-variables/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-functions-manage-global-variables">Manage global variables</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/functions/manage-functions/view-function-statistics/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-view-function-statistics">View function statistics</a></li></ul>
       </li><li class="relative w-100 fw8 f5  active">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".event-visitor-functions">Event and visitor functions</a>
@@ -512,7 +513,26 @@ var utag_data = {
 <h2 id="named-exports">Named exports</h2>
 <p>The Tealium module exports five named exports for event and visitor functions: <code>auth</code>, <code>event</code>, <code>visitor</code>, <code>store</code>, and <code>tealium</code>. Functions import these named exports as follows:</p>
 <pre tabindex="0"><code>import { auth, visitor, event, store, tealium } from &#34;tealium&#34;; 
-</code></pre><h3 id="event-object">Event object</h3>
+</code></pre><h2 id="auth-object-authget">Auth object: auth.get()</h2>
+<p>Event and visitor functions require authentication to access some service providers, such as Facebook or Google. For more information, see <a href="/server-side/functions/event-visitor-functions/authentication/">Adding an Authentication to a Function</a>. When you add an authentication, an access token is returned.</p>
+<p>The access token is passed to the <code>auth.get()</code> method, which returns an ID for the authentication that can be used in HTTP requests.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Data Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>authName</td>
+<td>string</td>
+<td>Specifies the name of the authentication, which is the name entered when the authentication was added to the function.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="event-object">Event object</h2>
 <p>The <code>event</code> object is available when a function is triggered by the event feed and contains the event data.</p>
 <table>
 <thead>
@@ -548,9 +568,19 @@ var utag_data = {
 <td>object</td>
 <td>An object that contains event attribute data, such as <code>event.data.udo.page_category</code> or <code>event.data.udo.order_id</code>.</td>
 </tr>
+<tr>
+<td><code>function getAttributeNameById(id)</code></td>
+<td>string</td>
+<td>Returns a string containing the name of the specified attribute. <code>id</code> is a string that specifies the attribute ID.</td>
+</tr>
+<tr>
+<td><code>function getAttributeValueById(id)</code></td>
+<td>any</td>
+<td>Returns the value of the specified attribute. <code>id</code> is a string that specifies the attribute ID.</td>
+</tr>
 </tbody>
 </table>
-<h4 id="event-object-example">Event object example</h4>
+<h3 id="event-object-example">Event object example</h3>
 <p>The following shows an example of event object data:</p>
 <pre tabindex="0"><code>{
   &#34;account&#34;: &#34;your-account&#34;,
@@ -612,7 +642,61 @@ var utag_data = {
     data.tealium_event = event?.data?.udo?.tealium_event;
     data.tealium_account = event?.data?.udo?.tealium_account;
     data.tealium_profile = event?.data?.udo?.tealium_profile;
-</code></pre><h3 id="visitor-object">Visitor object</h3>
+</code></pre><h2 id="store-object-storeget">Store object: store.get()</h2>
+<p>The <code>store</code> object is used to store key/value pairs, referred to as global variables, which can be used to share data with multiple functions. The key is the name of the variable. The value can be a numeric or string constant. You can add, edit, and delete global variables on the <strong>Code</strong> tab of the functions code editor. Functions can retrieve the value of a global variable, but cannot modify it.</p>
+<p>V2 functions can retrieve a value for a key by calling the <code>store.get()</code> method and passing the key as the parameter.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Data Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>globalParameterKey</td>
+<td>string</td>
+<td>Specifies the key of the global variable to get.</td>
+</tr>
+</tbody>
+</table>
+<p>For more information on adding, editing, and using global variables, see <a href="/server-side/functions/manage-functions/manage-global-variables/">Manage global variables</a>.</p>
+<h2 id="tealium-object-sendcollectevent">Tealium object: sendCollectEvent()</h2>
+<p>The <code>sendCollectEvent()</code> method sends an event to Tealium Collect HTTP API and returns a string.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Data Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event</td>
+<td>EventsClientEventObject</td>
+<td>An event object to send to Tealium Collect HTTP API.</td>
+</tr>
+<tr>
+<td>account</td>
+<td>string</td>
+<td>Optional. If specified, replaces the value of event.tealium_account.</td>
+</tr>
+<tr>
+<td>profile</td>
+<td>string</td>
+<td>Optional. If specified, replaces the value of event.tealium_profile.</td>
+</tr>
+<tr>
+<td>dataSourceId</td>
+<td>string</td>
+<td>Optional. If specified, replaces the value of event.tealium_datasource.</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>Response</code> interface of the Tealium Collect HTTP API represents the response to a request. The <code>Response</code> model is the same as for <code>fetch</code> API, except that the URL is not available in the result from the collect client.</p>
+<h2 id="visitor-object">Visitor object</h2>
 <p>The <code>visitor</code> object is available when a function is triggered by the audience feed and contains the visitor data.</p>
 <table>
 <thead>
@@ -738,9 +822,19 @@ var utag_data = {
 <td>boolean</td>
 <td>Current visit events compressed.</td>
 </tr>
+<tr>
+<td><code>function getAttributeNameById(id)</code></td>
+<td>string</td>
+<td>Returns a string containing the name of the specified attribute. <code>id</code> is a string that specifies the attribute ID.</td>
+</tr>
+<tr>
+<td><code>function getAttributeValueById(id)</code></td>
+<td>any</td>
+<td>Returns the value of the specified attribute. <code>id</code> is a string that specifies the attribute ID.</td>
+</tr>
 </tbody>
 </table>
-<h4 id="visitor-object-example">Visitor object example</h4>
+<h3 id="visitor-object-example">Visitor object example</h3>
 <p>The following is an example of visitor object data:</p>
 <pre tabindex="0"><code>{
   &#34;metrics&#34;: {
@@ -798,150 +892,6 @@ var utag_data = {
     &#34;Audience 1&#34;: 1603363523014,
     &#34;Audience 2&#34;: 1603363523014
   }
-}
-</code></pre><h2 id="auth-object-authget">Auth object: auth.get()</h2>
-<p>Functions require authentication to access some service providers, such as Facebook or Google. For more information, see <a href="/server-side/functions/event-visitor-functions/authentication/">Adding an Authentication to a Function</a>. When you add an authentication, an access token is returned.</p>
-<p>The <code>auth.get()</code> method returns a string that contains a unique auto-generated ID for the authentication token. When a function makes an HTTP request using this token ID, it is automatically replaced with the token before the request is sent.</p>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Data Type</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>authName</td>
-<td>string</td>
-<td>Specifies the name of the authentication, which is the name entered when the authentication was added to the function.</td>
-</tr>
-</tbody>
-</table>
-<p>The following example shows how to use <code>auth.get()</code> to get the token ID:</p>
-<pre tabindex="0"><code>console.log(auth.get(&#34;TEST_AUTH&#34;));
-</code></pre><h2 id="tealium-object-sendcollectevent">Tealium object: sendCollectEvent()</h2>
-<p>The <code>sendCollectEvent()</code> method sends an event to Tealium Collect HTTP API and returns a string.</p>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Data Type</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>event</td>
-<td>EventsClientEventObject</td>
-<td>An event object to send to Tealium Collect HTTP API.</td>
-</tr>
-<tr>
-<td>account</td>
-<td>string</td>
-<td>Optional. If specified, replaces the value of event.tealium_account.</td>
-</tr>
-<tr>
-<td>profile</td>
-<td>string</td>
-<td>Optional. If specified, replaces the value of event.tealium_profile.</td>
-</tr>
-<tr>
-<td>dataSourceId</td>
-<td>string</td>
-<td>Optional. If specified, replaces the value of event.tealium_datasource.</td>
-</tr>
-</tbody>
-</table>
-<p>The <code>Response</code> interface of the Tealium Collect HTTP API represents the response to a request. The <code>Response</code> model is the same as for <code>fetch</code> API, except that the URL is not available in the result from the collect client.</p>
-<h3 id="sending-an-event-to-tealium-collect">Sending an event to Tealium Collect</h3>
-<p>The following example shows how to send an event to the Tealium Collect HTTP API.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> {<span style="color:#a6e22e">event</span>, <span style="color:#a6e22e">tealium</span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium&#39;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">newEvent</span> <span style="color:#f92672">=</span> {<span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#a6e22e">key</span><span style="color:#960050;background-color:#1e0010">’</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#a6e22e">value</span><span style="color:#960050;background-color:#1e0010">’</span>};
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tealium</span>.<span style="color:#a6e22e">sendCollectEvent</span>(<span style="color:#a6e22e">newEvent</span>, <span style="color:#e6db74">&#39;newAccount&#39;</span>, <span style="color:#e6db74">&#39;newProfile&#39;</span>, <span style="color:#e6db74">&#39;datasourceId&#39;</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`Network response was not ok. Status code: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.`</span>);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Status code:&#39;</span>, <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">text</span>();
-</span></span><span style="display:flex;"><span>    })
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">data</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Result:&#39;</span>, <span style="color:#a6e22e">data</span>))
-</span></span><span style="display:flex;"><span>    .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>));
-</span></span></code></pre></div><h2 id="store-object-storeget">Store object: store.get()</h2>
-<p>The <code>store</code> object contains key/value pairs, referred to as global variables, that specify variables or constants that can be used in multiple functions. Global variables can be added, edited, and deleted from the <strong>Code</strong> tab of the functions code editor. Functions can retrieve the value of a global variable, but cannot modify it.</p>
-<p>Functions can retrieve a value for a key by calling the <code>store.get()</code> method and passing the key as the parameter. For more information on adding and editing global variables, see <a href="/server-side/functions/manage-functions/manage-global-variables/">Manage global variables</a>.</p>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Data Type</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>globalParameterKey</td>
-<td>string</td>
-<td>Specifies the key of the global variable to get.</td>
-</tr>
-</tbody>
-</table>
-<p>For example, if you create a global variable with a key named <code>date</code>, a function would retrieve the value for <code>date</code> as follows:</p>
-<p><code>store.get('date')</code></p>
-<h2 id="getting-an-attribute-name-or-attribute-value-by-attribute-id">Getting an attribute name or attribute value by attribute ID</h2>
-<p>Attribute names can be changed, which can cause problems when code references attributes by name. To avoid problems with attribute names changing, you can reference attributes by ID. Event and visitor objects have a <code>getAttributeNameById()</code> method that you can use to get an attribute name based on its ID. You can also get the value of an attribute using the <code>getAttributeValueById()</code> method. The following example shows how this works.</p>
-<p>If you enter the following in the code editor, when you enter the opening parenthesis, a list of attributes and associated IDs is displayed: <figure><a class="slb" href="/images/server-side/functions-code-completion-attr-name.png"><img src="/images/server-side/functions-code-completion-attr-name.png"
-         alt="code completion attribute name"
-         title="code completion attribute name"/>
-    </a>
-</figure></p>
-<p>You can enter part of the attribute name to filter the list. When you select an attribute, its ID is added to your code after the parenthesis. The list of attributes works the same way for <code>getAttributeValueById()</code>.</p>
-<h2 id="using-the-fetch-api-to-make-http-requests">Using the fetch() API to make HTTP requests</h2>
-<p>The fetch API is available for functions to make HTTP requests, as shown in the following example. For more information, see <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch">Fetch</a>.</p>
-<pre tabindex="0"><code>fetch(&#39;https://restcountries.eu/rest/v2/name/usa&#39;)
-  .then(response =&gt; {
-    if (!response.ok) {
-      throw new Error(`Network response was not ok. Status code: ${response.status}.`);
-    }
-    return response.json();
-  })
-  .then(data =&gt; console.log(&#39;Capital:&#39;, data[0].capital))
-  .catch(error =&gt; console.log(&#39;Error:&#39;, error.message));
-</code></pre><p>The following example shows fetching a resource from the network, returning a promise that is fulfilled when the response is available.</p>
-<pre tabindex="0"><code>const fetchResponsePromise = fetch(resource [, init])
-</code></pre><p>The Request interface of the Fetch API represents a resource request and is defined as follows:</p>
-<pre tabindex="0"><code>const myRequest = new Request(input[, init]);
-</code></pre><p>Functions can use the Headers interface of the Fetch API to perform various actions on HTTP request and response headers. Headers() is defined as follows:</p>
-<pre tabindex="0"><code>const myHeaders = new Headers(init);
-</code></pre><p>The Response interface of the Fetch API represents the response to a request and is defined as follows:</p>
-<pre tabindex="0"><code>const myResponse = new Response(body, init);
-</code></pre><p>The following browser-specific functionality is not supported:</p>
-<ul>
-<li>cache</li>
-<li>credentials</li>
-<li>referrer</li>
-<li>referrerPolicy</li>
-<li>signal</li>
-<li>keepalive</li>
-<li>redirect</li>
-<li>mode</li>
-</ul>
-<h2 id="using-urlsearchparams-methods-to-build-a-url-query-string">Using URLSearchParams methods to build a URL query string</h2>
-<p>The URLSearchParams interface defines utility methods to work with the query string of a URL. This example shows using URLSearchParams to build a query string for a URL.</p>
-<pre tabindex="0"><code>function jsonToURLSearchParams(data) {    const params = new URLSearchParams();    buildURLSearchParams(params, data);    return params;}function buildURLSearchParams(params, data, parentKey) {
-    if (data &amp;&amp; typeof data === &#39;object&#39; &amp;&amp; !(data instanceof Date)) {
-        Object.keys(data).forEach(key =&gt; {
-            buildURLSearchParams(params, data[key], parentKey ? `${parentKey}[${key}]` : key);
-        });
-    } else {
-        const value = data == null ? &#39;&#39; : data;
-
-        params.append(parentKey, value);
-    }
 }
 </code></pre>
 </div>
@@ -1003,7 +953,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 21, 2023 
+          <p>This page was last updated:  March 20, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1018,15 +968,13 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#named-exports">Named exports</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-object">Event object</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#visitor-object">Visitor object</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#auth-object-authget">Auth object: auth.get()</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tealium-object-sendcollectevent">Tealium object: sendCollectEvent()</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#sending-an-event-to-tealium-collect">Sending an event to Tealium Collect</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#auth-object-authget">Auth object: auth.get()</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-object">Event object</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#event-object-example">Event object example</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#store-object-storeget">Store object: store.get()</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#getting-an-attribute-name-or-attribute-value-by-attribute-id">Getting an attribute name or attribute value by attribute ID</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#using-the-fetch-api-to-make-http-requests">Using the fetch() API to make HTTP requests</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#using-urlsearchparams-methods-to-build-a-url-query-string">Using URLSearchParams methods to build a URL query string</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tealium-object-sendcollectevent">Tealium object: sendCollectEvent()</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#visitor-object">Visitor object</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#visitor-object-example">Visitor object example</a></li>
               </nav>
   </aside></nav>
 
