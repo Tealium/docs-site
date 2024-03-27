@@ -18,7 +18,15 @@
       
 
     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
-
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
   </head>
   <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
       
@@ -26,7 +34,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side",
-    reading_time  : "2",
+    reading_time  : "3",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -265,7 +273,8 @@ var utag_data = {
         <a href="/server-side/connectors/add/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".add-a-connector">Add a connector</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-connectors">Manage connectors</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/delayed-actions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">About delayed actions</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/batched-actions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="/server-side/connectors/batched-actions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/connectors/connectors-dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connectors-dashboard">Connectors Dashboard</a></li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".frequency-capping">Frequency capping</a>
         <ul class="pl2  frequency-capping desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/frequency-capping/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-frequency-capping">About frequency capping</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -547,6 +556,24 @@ To save the dataset and create a new analysis, click <strong>PUBLISH &amp; VISUA
 <li>Go to <strong>Insights &gt; Dashboards</strong>, and click <strong>Datasets</strong>.</li>
 <li>Click the menu for a dataset, and select <strong>Delete</strong>.</li>
 </ol>
+<h2 id="update-the-dataset-structure-for-a-dashboard">Update the dataset structure for a dashboard</h2>
+<p>When a dataset structure has been updated, the dataset will also need to be updated. A message will be displayed on the dashboard indicating that the dataset structure is obsolete and needs to be updated.</p>
+<p>To update the dataset, use the following steps:</p>
+<ol>
+<li>In the message, click <strong>Update</strong>.<br>
+You can also go to the <strong>Datasets</strong> screen and click <strong>Update</strong>.</li>
+<li>In the confirmation message, click <strong>Submit</strong>.<br>
+When the dataset update is completed, a success message is displayed.</li>
+</ol>
+<h2 id="refresh-a-dataset">Refresh a dataset</h2>
+<p>When a dataset has reached its maximum capacity, a message will be displayed on the dashboard indicating that the dataset has reached its capacity limit and needs to be refreshed.</p>
+<p>To refresh the data in a dataset, use the following steps:</p>
+<ol>
+<li>In the message, click <strong>Run Refresh</strong>.<br>
+You can also go to the <strong>Datasets</strong> screen and click <strong>Run Refresh</strong>.</li>
+<li>In the confirmation message, click <strong>Submit</strong>.<br>
+The dataset refresh is executed in the background. When the refresh is completed, the dataset will contain only the latest 800 million rows.</li>
+</ol>
 
 </div>
 
@@ -607,7 +634,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 13, 2024 
+          <p>This page was last updated:  March 26, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -621,9 +648,11 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#create-a-new-dataset">Create a new dataset</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#edit-a-dataset">Edit a dataset</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#delete-a-dataset">Delete a dataset</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-new-dataset" href="javascript:void(0)">Create a new dataset</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#edit-a-dataset" href="javascript:void(0)">Edit a dataset</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#delete-a-dataset" href="javascript:void(0)">Delete a dataset</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#update-the-dataset-structure-for-a-dashboard" href="javascript:void(0)">Update the dataset structure for a dashboard</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#refresh-a-dataset" href="javascript:void(0)">Refresh a dataset</a></li>
               </nav>
   </aside></nav>
 

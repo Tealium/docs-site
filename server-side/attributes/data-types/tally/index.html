@@ -18,7 +18,15 @@
       
 
     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
-
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
   </head>
   <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
       
@@ -265,7 +273,8 @@ var utag_data = {
         <a href="/server-side/connectors/add/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".add-a-connector">Add a connector</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-connectors">Manage connectors</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/delayed-actions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">About delayed actions</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/batched-actions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="/server-side/connectors/batched-actions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/connectors/connectors-dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connectors-dashboard">Connectors Dashboard</a></li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".frequency-capping">Frequency capping</a>
         <ul class="pl2  frequency-capping desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/frequency-capping/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-frequency-capping">About frequency capping</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -802,24 +811,24 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#size-limits">Size limits</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#scope">Scope</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tally-favorite">Tally favorite</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tally-tie-breaker-logic">Tally tie breaker logic</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#examples">Examples</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#example">Example</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tally-attribute-enrichments">Tally attribute enrichments</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#increment-tally">Increment Tally</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#increment-tally-value">Increment Tally Value</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#increment-tally-by-tally">Increment Tally by Tally</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#increment-tally-by-set-of-strings">Increment Tally by Set of Strings</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#set-rolling-average-based-on-timeline">Set Rolling Average Based on Timeline</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#set-rolling-sum-based-on-timeline">Set Rolling Sum Based on Timeline</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#set-tally-by-corresponding-arrays">Set Tally by Corresponding Arrays</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#remove-tally">Remove Tally</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#remove-an-entry-in-a-tally">Remove an Entry in a Tally</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#increment-by-1-for-each-item-in-an-array">Increment by 1 for Each Item in an Array</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#size-limits" href="javascript:void(0)">Size limits</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#scope" href="javascript:void(0)">Scope</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tally-favorite" href="javascript:void(0)">Tally favorite</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tally-tie-breaker-logic" href="javascript:void(0)">Tally tie breaker logic</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#examples" href="javascript:void(0)">Examples</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#example" href="javascript:void(0)">Example</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tally-attribute-enrichments" href="javascript:void(0)">Tally attribute enrichments</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#increment-tally" href="javascript:void(0)">Increment Tally</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#increment-tally-value" href="javascript:void(0)">Increment Tally Value</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#increment-tally-by-tally" href="javascript:void(0)">Increment Tally by Tally</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#increment-tally-by-set-of-strings" href="javascript:void(0)">Increment Tally by Set of Strings</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-rolling-average-based-on-timeline" href="javascript:void(0)">Set Rolling Average Based on Timeline</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-rolling-sum-based-on-timeline" href="javascript:void(0)">Set Rolling Sum Based on Timeline</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-tally-by-corresponding-arrays" href="javascript:void(0)">Set Tally by Corresponding Arrays</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-tally" href="javascript:void(0)">Remove Tally</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-an-entry-in-a-tally" href="javascript:void(0)">Remove an Entry in a Tally</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#increment-by-1-for-each-item-in-an-array" href="javascript:void(0)">Increment by 1 for Each Item in an Array</a></li>
               </nav>
   </aside></nav>
 

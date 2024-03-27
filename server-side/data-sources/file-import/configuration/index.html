@@ -18,7 +18,15 @@
       
 
     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
-
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
   </head>
   <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
       
@@ -265,7 +273,8 @@ var utag_data = {
         <a href="/server-side/connectors/add/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".add-a-connector">Add a connector</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-connectors">Manage connectors</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/delayed-actions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">About delayed actions</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/batched-actions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="/server-side/connectors/batched-actions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/connectors/connectors-dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connectors-dashboard">Connectors Dashboard</a></li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".frequency-capping">Frequency capping</a>
         <ul class="pl2  frequency-capping desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/frequency-capping/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-frequency-capping">About frequency capping</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -678,15 +687,15 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#1-add-a-file-import-data-source">1. Add a file import data source</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#2-upload-a-sample-file-optional">2. Upload a sample file (optional)</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#3-configure-column-mappings">3. Configure column mappings</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#4-map-visitor-id-attributes">4. Map visitor ID attributes</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#5-configure-a-file-transfer-service">5. Configure a file transfer service</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#complete-an-existing-file-service-configuration">Complete an existing file service configuration</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#add-a-new-file-service-configuration">Add a new file service configuration</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#6-summary">6. Summary</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#edit-a-file-import-data-source-configuration">Edit a File Import data source configuration</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#1-add-a-file-import-data-source" href="javascript:void(0)">1. Add a file import data source</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2-upload-a-sample-file-optional" href="javascript:void(0)">2. Upload a sample file (optional)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#3-configure-column-mappings" href="javascript:void(0)">3. Configure column mappings</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#4-map-visitor-id-attributes" href="javascript:void(0)">4. Map visitor ID attributes</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#5-configure-a-file-transfer-service" href="javascript:void(0)">5. Configure a file transfer service</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#complete-an-existing-file-service-configuration" href="javascript:void(0)">Complete an existing file service configuration</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-a-new-file-service-configuration" href="javascript:void(0)">Add a new file service configuration</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#6-summary" href="javascript:void(0)">6. Summary</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#edit-a-file-import-data-source-configuration" href="javascript:void(0)">Edit a File Import data source configuration</a></li>
               </nav>
   </aside></nav>
 

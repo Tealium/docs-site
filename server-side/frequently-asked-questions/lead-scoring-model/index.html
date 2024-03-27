@@ -18,7 +18,15 @@
       
 
     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
-
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
   </head>
   <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
       
@@ -265,7 +273,8 @@ var utag_data = {
         <a href="/server-side/connectors/add/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".add-a-connector">Add a connector</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-connectors">Manage connectors</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/delayed-actions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">About delayed actions</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/batched-actions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="/server-side/connectors/batched-actions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/connectors/connectors-dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connectors-dashboard">Connectors Dashboard</a></li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".frequency-capping">Frequency capping</a>
         <ul class="pl2  frequency-capping desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/frequency-capping/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-frequency-capping">About frequency capping</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -797,26 +806,26 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#introduction">Introduction</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#step-1-get-the-google-analytics-visitor-id-tealium-iq">Step 1: Get the Google Analytics Visitor ID (Tealium iQ)</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#step-2-capture-event-information-tealium-iq">Step 2: Capture event information (Tealium iQ)</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#step-3-create-rules-and-attributes-audiencestream">Step 3: Create rules and attributes (AudienceStream)</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#lead-score">Lead Score</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#rules">Rules</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#visitor-value">Visitor Value</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#step-4-create-audiences-audiencestream">Step 4: Create audiences (AudienceStream)</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#high-value-visitors">High Value Visitors</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#standard-visitors">Standard Visitors</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#step-5-configure-webhook-google-analytics-and-audiencestream">Step 5: Configure webhook (Google Analytics and AudienceStream)</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#custom-dimensions">Custom Dimensions</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#webhook-example">Webhook Example</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#required-parameters">Required parameters</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#optional-parameters">Optional Parameters</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#audiencestream-dynamic-parameters">AudienceStream dynamic parameters</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connectors">Connectors</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#step-6-act">Step 6: Act!</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#example-custom-report">Example: Custom report</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#example-remarketing-list-based-on-high-value-visitor">Example: Remarketing list based on High Value Visitor</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#introduction" href="javascript:void(0)">Introduction</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-1-get-the-google-analytics-visitor-id-tealium-iq" href="javascript:void(0)">Step 1: Get the Google Analytics Visitor ID (Tealium iQ)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-2-capture-event-information-tealium-iq" href="javascript:void(0)">Step 2: Capture event information (Tealium iQ)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-3-create-rules-and-attributes-audiencestream" href="javascript:void(0)">Step 3: Create rules and attributes (AudienceStream)</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#lead-score" href="javascript:void(0)">Lead Score</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rules" href="javascript:void(0)">Rules</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#visitor-value" href="javascript:void(0)">Visitor Value</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-4-create-audiences-audiencestream" href="javascript:void(0)">Step 4: Create audiences (AudienceStream)</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#high-value-visitors" href="javascript:void(0)">High Value Visitors</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#standard-visitors" href="javascript:void(0)">Standard Visitors</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-5-configure-webhook-google-analytics-and-audiencestream" href="javascript:void(0)">Step 5: Configure webhook (Google Analytics and AudienceStream)</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#custom-dimensions" href="javascript:void(0)">Custom Dimensions</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook-example" href="javascript:void(0)">Webhook Example</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#required-parameters" href="javascript:void(0)">Required parameters</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#optional-parameters" href="javascript:void(0)">Optional Parameters</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#audiencestream-dynamic-parameters" href="javascript:void(0)">AudienceStream dynamic parameters</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connectors" href="javascript:void(0)">Connectors</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-6-act" href="javascript:void(0)">Step 6: Act!</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#example-custom-report" href="javascript:void(0)">Example: Custom report</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#example-remarketing-list-based-on-high-value-visitor" href="javascript:void(0)">Example: Remarketing list based on High Value Visitor</a></li>
               </nav>
   </aside></nav>
 

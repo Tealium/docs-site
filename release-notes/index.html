@@ -18,7 +18,15 @@
       
 
     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
-
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
   </head>
   <body class="sidebar ma0 sans-serif text-color-primary  hg-section">
       
@@ -319,14 +327,15 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="client-side-tags-release-notes"><a href="/client-side-tags/release-notes/">Client-side tags </a></h2>
-          <h2 id="march-20-2024">March 20, 2024</h2>
+          <h2 id="march-27-2024">March 27, 2024</h2>
 <h4 id="updates-and-fixes">Updates and fixes</h4>
 <ul>
-<li>Updated <a href="/client-side-tags/pinterest-tag/">Pinterest tag</a> to fix an issue where the tag sent an incorrect event name when you set <strong>Auto Page Visit</strong> event to <code>true</code>.</li>
-<li>Updated <a href="/client-side-tags/adobe-experience-platform-web-sdk-tag/">Adobe Experience Platform Web SDK tag</a> to fix incorrect object format for <code>linkClicks</code> events.</li>
-<li>Fixed an issue where local storage and session storage variables were not correctly mapped in a tag&rsquo;s <code>u.map</code> object.</li>
-<li>Fixed an issue in the UI where the <strong>Reload</strong> dialog remained visible after dismissal, covering other menu items.</li>
-<li>Deprecated the Yahoo Search Marketing tag.</li>
+<li>Updated the <a href="/client-side-tags/rtb-house-tag/">RTB House Retargeting tag</a> with the following changes:
+<ul>
+<li>Removed automatic mapping of <strong>Category ID</strong> from <code>_ccat</code>.</li>
+<li>Updated <code>eventObject</code> for events using <code>offerIds</code> to pull this value (as an array) from the e-commerce <code>offerId</code> mapping.</li>
+</ul>
+</li>
 </ul>
         
           
@@ -474,21 +483,11 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="server-side-connectors-release-notes"><a href="/server-side-connectors/release-notes/">Server-side connectors </a></h2>
-          <h2 id="march-20-2024">March 20, 2024</h2>
-<h4 id="new-connectors">New connectors</h4>
-<ul>
-<li>New marketplace connector: <a href="/server-side-connectors/session-ai-connector/">Session AI</a></li>
-</ul>
+          <h2 id="march-27-2024">March 27, 2024</h2>
 <h4 id="updates-and-fixes">Updates and fixes</h4>
 <ul>
-<li>Updated the <a href="/server-side-connectors/facebook-audiences-connector/">Facebook Audiences connector</a> to properly display errors in the connector configuration tab.</li>
-<li>Updated the <a href="/server-side-connectors/movable-ink-connector/">Movable Ink connector</a> to fix an issue where it won’t fire when all categories are consented to, due to a spelling mismatch.</li>
-<li>Updated the <a href="/server-side-connectors/linkedin-conversions-connector/">LinkedIn Conversions connector</a> to replace the <code>event_id</code> parameter with <code>eventId</code> to support LinkedIn updates.</li>
-<li>Updated the <a href="/server-side-connectors/reddit-conversions-connector/">Reddit Conversions connector</a> to add the following <code>dataProcessingOptions</code> fields: <code>mode</code>, <code>country</code> and <code>region</code>.</li>
-<li>Updated the <a href="/server-side-connectors/amazon-ads-audience-management-connector/">Amazon Ads Audience Management connector</a> to add the <code>dataSourceCountry</code> field for DSP audience creation.</li>
-<li>Updated the <a href="/server-side-connectors/amazon-ads-conversions-connector/">Amazon Ads Conversions connector</a> to change the batch size to 100 records.</li>
-<li>Updated the <a href="/server-side-connectors/google-sheets-connector/">Google Sheets connector</a> to remove dependencies on restricted scopes and migrate the spreadsheet ID from a lookup function to a text field.</li>
-<li>Updated <a href="/server-side-connectors/tiktok-events-connector/">TikTok Events connector</a> to improve content type mapping options.</li>
+<li>Updated the <a href="/server-side-connectors/session-ai-connector/">Session AI connector</a> to fix an issue where an action throws a null pointer exception when purchase attributes are added.</li>
+<li>Updated the <a href="/server-side-connectors/pinterest-conversions/">Pinterest Conversions connector</a> to add <strong>Click ID</strong> parameter to the user data.</li>
 </ul>
         
           
@@ -509,6 +508,15 @@ var utag_data = {
 <h4 id="updates-and-fixes">Updates and fixes</h4>
 <ul>
 <li>Updated global search to improve search navigation and element selection.</li>
+</ul>
+        
+          
+          
+
+          <h2 class="rn-section" id="tealium-for--net-maui-release-notes"><a href="/platforms/dotnet-maui/release-notes/">Tealium for .NET MAUI </a></h2>
+          <h2 id="101-feb-2024">1.0.1 (Feb 2024)</h2>
+<ul>
+<li>Updates to our NuGet packaging. Due to changes in the packaging format, users on version 1.0.0 may experience issues.</li>
 </ul>
         
           
@@ -536,9 +544,11 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="tealium-for-cordova-release-notes"><a href="/platforms/cordova/release-notes/">Tealium for Cordova </a></h2>
-          <h2 id="231-april-2023">2.3.1 (April 2023)</h2>
+          <h2 id="240-march-2024">2.4.0 (March 2024)</h2>
 <ul>
-<li>Handling of <code>Map</code> type from the Ionic plugin. <code>Map</code> types are converted to <code>Object</code> where necessary.</li>
+<li>Upgrade native iOS and Android Tealium dependencies to the latest versions.</li>
+<li>Target XCode 15 for iOS and bump iOS minimum deployment target to iOS 12.</li>
+<li>Fixed Firebase plugin installation ordering issue that could cause Firebase not to work if installed before the main plugin.</li>
 </ul>
         
           
@@ -655,31 +665,32 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#audiences-release-notes">Audiences </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#client-side-consent-management-release-notes">Client-side consent management </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#client-side-tags-release-notes">Client-side tags </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#connectors-release-notes">Connectors </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#consent-integrations-release-notes">Consent Integrations </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-layer-release-notes">Data layer </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-mappings-release-notes">Data mappings </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#data-sources-release-notes">Data sources </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#dataaccess-release-notes">DataAccess </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#events-release-notes">Events </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#extensions-release-notes">Extensions </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#labels-release-notes">Labels </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#load-rules-release-notes">Load rules </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#profiles-release-notes">Profiles </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#save-and-publish-release-notes">Save and publish </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#server-side-administration-release-notes">Server-side administration </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#server-side-connectors-release-notes">Server-side connectors </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#server-side-consent-management-release-notes">Server-side consent management </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tags-release-notes">Tags </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tealium-for-android-java-release-notes">Tealium for Android (Java) </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tealium-for-android-kotlin-release-notes">Tealium for Android (Kotlin) </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tealium-for-cordova-release-notes">Tealium for Cordova </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tealium-for-ios-swift-release-notes">Tealium for iOS (Swift) </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#tealium-universal-tag-utag-js-release-notes">Tealium Universal Tag (utag.js) </a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#templates-release-notes">Templates </a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#audiences-release-notes" href="javascript:void(0)">Audiences </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#client-side-consent-management-release-notes" href="javascript:void(0)">Client-side consent management </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#client-side-tags-release-notes" href="javascript:void(0)">Client-side tags </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connectors-release-notes" href="javascript:void(0)">Connectors </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent-integrations-release-notes" href="javascript:void(0)">Consent Integrations </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-layer-release-notes" href="javascript:void(0)">Data layer </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-mappings-release-notes" href="javascript:void(0)">Data mappings </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-sources-release-notes" href="javascript:void(0)">Data sources </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#dataaccess-release-notes" href="javascript:void(0)">DataAccess </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#events-release-notes" href="javascript:void(0)">Events </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#extensions-release-notes" href="javascript:void(0)">Extensions </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#labels-release-notes" href="javascript:void(0)">Labels </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#load-rules-release-notes" href="javascript:void(0)">Load rules </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#profiles-release-notes" href="javascript:void(0)">Profiles </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#save-and-publish-release-notes" href="javascript:void(0)">Save and publish </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#server-side-administration-release-notes" href="javascript:void(0)">Server-side administration </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#server-side-connectors-release-notes" href="javascript:void(0)">Server-side connectors </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#server-side-consent-management-release-notes" href="javascript:void(0)">Server-side consent management </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tags-release-notes" href="javascript:void(0)">Tags </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-for--net-maui-release-notes" href="javascript:void(0)">Tealium for .NET MAUI </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-for-android-java-release-notes" href="javascript:void(0)">Tealium for Android (Java) </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-for-android-kotlin-release-notes" href="javascript:void(0)">Tealium for Android (Kotlin) </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-for-cordova-release-notes" href="javascript:void(0)">Tealium for Cordova </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-for-ios-swift-release-notes" href="javascript:void(0)">Tealium for iOS (Swift) </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-universal-tag-utag-js-release-notes" href="javascript:void(0)">Tealium Universal Tag (utag.js) </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#templates-release-notes" href="javascript:void(0)">Templates </a></li>
               </nav>
   </aside></nav>
 

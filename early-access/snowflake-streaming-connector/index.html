@@ -18,7 +18,15 @@
       
 
     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
-
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
   </head>
   <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
       
@@ -84,8 +92,7 @@ var utag_data = {
   </ul>
   <ul class="list pa0"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><a href="/early-access/" class="dib w-100 link text-color-primary hover-primary-color"><span class="pb2">Early Access</span></a>
         <ul data-level="1" class="early-access desktopmenu animated fadeIn list pl0 mt2"><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/early-access/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">About Early Access</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/early-access/connectors-dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connectors-dashboard">Connectors Dashboard</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="/early-access/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">About Early Access</a></li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".moments-iq">Moments iQ</a>
         <ul class="pl2  moments-iq desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/moments-iq/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">About Moments iQ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -197,7 +204,7 @@ var utag_data = {
 <li>1 event feed per table</li>
 <li>1 audience per table</li>
 </ul>
-<p>Concurrent writing of tables by more than one feed or audience may result in performance errors.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Concurrent writing of tables by more than one feed or audience may result in performance errors.</p>
 <h2 id="configuration">Configuration</h2>
 <p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
@@ -363,14 +370,14 @@ To successfully assign the public key to the user, ensure the following:
 </div><div class="di mr3">
   
   
-  <a href="/early-access/connectors-dashboard/"
+  <a href="/early-access/about/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Connectors Dashboard "</title>
+      <title>"About Early Access "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>Connectors Dashboard</div>
+      <div>About Early Access</div>
     </section>
   </a>
   
@@ -402,7 +409,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 20, 2024 
+          <p>This page was last updated:  March 21, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -416,14 +423,14 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#actions">Actions</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#best-practices">Best practices</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#configuration">Configuration</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#actions-1">Actions</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#send-custom-event-data">Send Custom Event Data</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#send-entire-event-data">Send Entire Event Data</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#send-custom-visitor-data">Send Custom Visitor Data</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#send-entire-visitor-data">Send Entire Visitor Data</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#best-practices" href="javascript:void(0)">Best practices</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions-1" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-event-data" href="javascript:void(0)">Send Custom Event Data</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-event-data" href="javascript:void(0)">Send Entire Event Data</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-visitor-data" href="javascript:void(0)">Send Custom Visitor Data</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-entire-visitor-data" href="javascript:void(0)">Send Entire Visitor Data</a></li>
               </nav>
   </aside></nav>
 
@@ -691,12 +698,6 @@ No</button>
       <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/early-access/about/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
           About Early Access
-      </a>
-      </li>
-      
-      <li  class="tl dib ma0 hover-bg-primary w-100">
-      <a href="https://docs.tealium.com/early-access/connectors-dashboard/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
-          Connectors Dashboard
       </a>
       </li>
       

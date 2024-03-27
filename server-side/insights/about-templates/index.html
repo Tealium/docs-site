@@ -18,7 +18,15 @@
       
 
     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
-
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
   </head>
   <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
       
@@ -265,7 +273,8 @@ var utag_data = {
         <a href="/server-side/connectors/add/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".add-a-connector">Add a connector</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-connectors">Manage connectors</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/delayed-actions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">About delayed actions</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/batched-actions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="/server-side/connectors/batched-actions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/connectors/connectors-dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connectors-dashboard">Connectors Dashboard</a></li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".frequency-capping">Frequency capping</a>
         <ul class="pl2  frequency-capping desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/frequency-capping/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-frequency-capping">About frequency capping</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -505,11 +514,14 @@ var utag_data = {
 <div class="prose nested-links" id="prose">
   <p>Insights Templates enable you to generate predefined dashboards, such as <code>Total Events Count</code> or <code>Total Visits Count</code>, on demand.</p>
 <h2 id="how-it-works">How it works</h2>
-<p>A template consists of a dataset, an analysis, and a dashboard. A dataset is a collection of data in a database to be displayed in a dashboard. An analysis specifies the database fields and the charts and graphs displayed in the dashboard.</p>
-<p>For example, the following dashboard example displays graphs of total visits per day, total visits per quarter, total visits for the entire time period, browsers used during visits, and total event counts per visit:
-<figure><a class="slb" href="/images/server-side/data-insights/graph-examples.png"><img src="/images/server-side/data-insights/graph-examples.png"
-         alt="charts of visits data"
-         title="charts of visits data"/>
+<p>A template consists of a dataset, an analysis, and a dashboard. A dataset is a collection of data in a database to be displayed in a dashboard. An analysis specifies the database fields and the visuals displayed in the dashboard.</p>
+<p>The <strong>Template Details</strong> screen displays example of each of the visuals for the dashboard and a summary of information for each dataset used in the template.</p>
+<p>For example, the following <strong>Template Details</strong> example shows a visual for the total events count dashboard:
+<figure><a class="slb" href="/images/server-side/data-insights/data-insights-template-details.png"><img src="/images/server-side/data-insights/data-insights-template-details.png"/>
+    </a>
+</figure></p>
+<p>The dataset information is displayed after the visuals, as follows:
+<figure><a class="slb" href="/images/server-side/data-insights/data-insights-templates-dataset-info.png"><img src="/images/server-side/data-insights/data-insights-templates-dataset-info.png"/>
     </a>
 </figure></p>
 <h2 id="templates-for-predefined-dashboards">Templates for predefined dashboards</h2>
@@ -524,15 +536,15 @@ Displays information about visitors and visitor activity.</li>
 </ul>
 <p>The data displayed in the events count, visits count, and visitors count dashboards is refreshed once a day, at night.</p>
 <h2 id="template-status">Template status</h2>
-<p>The templates listed on the <strong>Templates</strong> page may have one of the following labels:</p>
+<p>The templates listed on the <strong>Templates</strong> screen may have one of the following labels:</p>
 <ul>
-<li><strong>Generated</strong> – The dashboard has been generated and can be viewed on the dashboards page. For example: <figure><a class="slb" href="/images/server-side/data-insights/generated-label.png"><img src="/images/server-side/data-insights/generated-label.png"/>
+<li><strong>Generated</strong> – The dashboard has been generated and can be viewed on the dashboards screen. For example: <figure><a class="slb" href="/images/server-side/data-insights/generated-label.png"><img src="/images/server-side/data-insights/generated-label.png"/>
     </a>
 </figure></li>
 <li><strong>Update available</strong> – A new version of the template is available for a generated dashboard.</li>
 </ul>
 <p>If a template has no label, the dashboard has not been generated.</p>
-<p>When updates are available for one or more templates, the following message is displayed on the <strong>Dashboards</strong> page:
+<p>When updates are available for one or more templates, the following message is displayed on the <strong>Dashboards</strong> screen:
 <figure><a class="slb" href="/images/server-side/data-insights/datainsights-updates-available-message.png"><img src="/images/server-side/data-insights/datainsights-updates-available-message.png"
          alt="template updates available message"
          title="template updates available message"/>
@@ -541,14 +553,12 @@ Displays information about visitors and visitor activity.</li>
 <h2 id="update-a-template">Update a template</h2>
 <p>When a new version is available for a template, use the following steps to update the template:</p>
 <ol>
-<li>Click <strong>View Updates</strong> in the message on the <strong>Dashboards</strong> page.<br>
-You can also go to the <strong>Templates</strong> page.</li>
+<li>Click <strong>View Updates</strong> in the message on the <strong>Dashboards</strong> screen or go to the <strong>Templates</strong> screen.</li>
 <li>For the template you want to update, click <strong>View Details</strong>.</li>
 <li>Click <strong>Update Dashboard</strong>.</li>
 <li>In the <strong>Confirm Update</strong> dialog, click <strong>Update</strong>.<br>
-The default dataset for the dashboard will also be updated, which will affect other dashboards and analyses that use this dataset. The default analysis will not be changed.</li>
+The default dataset for the dashboard will also be updated, which will affect other dashboards and analyses that use this dataset. The default analysis will not be changed. Save and publish is not required after updating a template.</li>
 </ol>
-<p>Save and publish is not required after updating templates.</p>
 
 </div>
 
@@ -609,7 +619,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 12, 2023 
+          <p>This page was last updated:  March 26, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -623,10 +633,10 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#how-it-works">How it works</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#templates-for-predefined-dashboards">Templates for predefined dashboards</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#template-status">Template status</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" href="#update-a-template">Update a template</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#templates-for-predefined-dashboards" href="javascript:void(0)">Templates for predefined dashboards</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#template-status" href="javascript:void(0)">Template status</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#update-a-template" href="javascript:void(0)">Update a template</a></li>
               </nav>
   </aside></nav>
 
