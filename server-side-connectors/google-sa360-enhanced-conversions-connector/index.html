@@ -34,7 +34,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side-connectors",
-    reading_time  : "6",
+    reading_time  : "7",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -383,12 +383,12 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <p>The Google SA360 Enhanced Conversions connector can improve the accuracy of your conversion measurement and unlock more powerful bidding. It supplements your existing client-side conversion tags by sending hashed first-party conversion data from your website to Google in a privacy-safe way.</p>
-<p>Conversions are recorded via the client-side <a href="/client-side-tags/floodlight-gtagjs-tag/">Floodlight (gtag.js) tag</a> and are indexed by Google. The Google SA360 Enhanced Conversions connector can be used to enhance these conversions with personally identifiable information (PII) via a server-to-server API call.</p>
+<p>Conversions are recorded through the client-side <a href="/client-side-tags/floodlight-gtagjs-tag/">Floodlight (<code>gtag.js</code>) tag</a> and are indexed by Google. The Google SA360 Enhanced Conversions connector can be used to enhance these conversions with personally identifiable information (PII) using a server-to-server API call.</p>
 <h2 id="requirements">Requirements</h2>
 <ul>
 <li>To obtain a profile ID to use in the connector configuration, add the <code>api@tealium.com</code> user to your Google Campaign Manager 360 account. This user must have Update Offline Conversions permissions.</li>
-<li>The <a href="/client-side-tags/floodlight-gtagjs-tag/">Floodlight gtag.js tag</a> is required for this connector to update the tag payload with PII data.</li>
-<li>Update the Floodlight gtag.js to the latest version.</li>
+<li>The <a href="/client-side-tags/floodlight-gtagjs-tag/">Floodlight <code>gtag.js</code> tag</a> is required for this connector to update the tag payload with PII data.</li>
+<li>Update the Floodlight <code>gtag.js</code> to the latest version.</li>
 <li>Map an attribute containing a unique value to <code>match_id</code> in the tag. For example, <code>tealium_random</code>. Use the same value in the connector so that Google can identify the conversion to enhance.</li>
 </ul>
 <h2 id="api-information">API Information</h2>
@@ -410,10 +410,16 @@ var utag_data = {
 <h2 id="trace">Trace</h2>
 <p>The Tealium <a href="/server-side/connectors/trace/about/">Trace</a> feature bypasses configured batching and delays to permit real-time debugging. The Google indexing of client-side conversions is not immediate, and you will encounter 404 Not Found errors when using Trace with this connector.</p>
 <h2 id="pii-mapping-restrictions">PII mapping restrictions</h2>
-<p>Ensure that you adhere to the following restrictions with PII data when using the Floodlight (gtag.js) tag with this connector:</p>
+<p>Ensure that you adhere to the following restrictions with PII data when using the Floodlight (<code>gtag.js</code>) tag with this connector:</p>
 <ul>
-<li>Send PII data either through the Floodlight (gtag.js) tag or the Google SA360 Enhanced Conversions connector, but not both. Mapping PII in both will result in <code>conversion already enhanced</code> errors in the connector.</li>
-<li>If the connector data does not include any PII when it connects with Google, the connector will generate a missing PII error and it will not send any data to Google.</li>
+<li>You must send PII data for the connector to work. If the connector data does not include any PII when it connects with Google, the connector will generate a missing PII error and it will not send any data to Google. The PII data must include at least one of the following:
+<ul>
+<li>Email Address</li>
+<li>Phone Number</li>
+<li>All Address information (First Name, Last Name, Street Address, City, State, Postal Code, Country Code)</li>
+</ul>
+</li>
+<li>Send PII data either through the Floodlight (<code>gtag.js</code>) tag or the Google SA360 Enhanced Conversions connector, but not both. Mapping PII in both will result in <code>conversion already enhanced</code> errors in the connector.</li>
 <li>To avoid connector errors, we recommend restricting any conversions without PII by adding conditions to the event feed or event specifications requiring PII.</li>
 </ul>
 <h2 id="connector-actions">Connector Actions</h2>
@@ -464,11 +470,11 @@ var utag_data = {
 </tr>
 <tr>
 <td>Match ID</td>
-<td>(Required) A unique advertiser-created event identifier that Google uses to match the connector-enhanced conversion calls with a client-side Floodlight event. Use the same attribute value in both this connector and the Floodlight gtag.js tag.</td>
+<td>(Required) A unique advertiser-created event identifier that Google uses to match the connector-enhanced conversion calls with a client-side Floodlight event. Use the same attribute value in both this connector and the Floodlight <code>gtag.js</code> tag.</td>
 </tr>
 <tr>
 <td>Ordinal</td>
-<td>(Required) The ordinal of the conversion. This parameter can be used to deduplicate conversions of the same user and day by passing the same value (for example, 1) for each event. Use a unique value to disable deduplication, for example, <code>tealium_random</code>. Use the same attribute value in both this connector and the Floodlight gtag.js tag.</td>
+<td>(Required) The ordinal of the conversion. This parameter can be used to deduplicate conversions of the same user and day by passing the same value (for example, 1) for each event. Use a unique value to disable deduplication, for example, <code>tealium_random</code>. Use the same attribute value in both this connector and the Floodlight <code>gtag.js</code> tag.</td>
 </tr>
 <tr>
 <td>Timestamp Micros</td>
@@ -476,11 +482,11 @@ var utag_data = {
 </tr>
 <tr>
 <td>Quantity</td>
-<td>(Required) Quantity of the conversion. If you map an array, the connector sums the values in the array. Use the same attribute value in both this connector and the Floodlight gtag.js tag, unless you want to update the value.</td>
+<td>(Required) Quantity of the conversion. If you map an array, the connector sums the values in the array. Use the same attribute value in both this connector and the Floodlight <code>gtag.js</code> tag, unless you want to update the value.</td>
 </tr>
 <tr>
 <td>Value</td>
-<td>(Required) Value of the conversion. Use the same attribute value in both this connector and the Floodlight gtag.js tag, unless you want to update the value.</td>
+<td>(Required) Value of the conversion. Use the same attribute value in both this connector and the Floodlight <code>gtag.js</code> tag, unless you want to update the value.</td>
 </tr>
 <tr>
 <td>Profile ID</td>
@@ -669,7 +675,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 20, 2024 
+          <p>This page was last updated:  April 1, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -916,8 +922,6 @@ No</button>
           Release Notes
         </a>
     </li>
-  
-  
   
   
   
