@@ -300,6 +300,24 @@ var utag_data = {
           
           
 
+          <h2 class="rn-section" id="administration"><a href="/administration/release-notes/">Administration </a></h2>
+          <div class="f3"id="april-2024">April 2024</div>
+<h4 id="updates-and-fixes">Updates and fixes</h4>
+<p>Tealium’s infrastructure is being expanded to maintain seamless operations with increased server-side traffic. We are adding IP addresses to all of our data processing regions.</p>
+<p>If you are using allowlists (also known as safelists or whitelists), include the new IP addresses to continue operating without increased error rates.</p>
+<p>The additional IP addresses will be introduced on the following dates:</p>
+<ul>
+<li>Apr 29, 2024 - US (Oregon)</li>
+<li>May 6, 2024 - EU (Ireland and Frankfurt)</li>
+<li>May 13, 2024 - APJ (Hong Kong, Sydney, Tokyo)</li>
+<li>May 20, 2024 - US (US East 1)</li>
+</ul>
+<p>If the new IP addresses are not added to your current allowlist before the roll-out date, you may notice increased connector errors, function action errors, and files not being read from non-S3 file services.</p>
+<p>For a full list of IP addresses to allow and how to test your configuration for any issues after the change, see <a href="/server-side/administration/ip-allow-list/">Tealium IP addresses to allow</a>.</p>
+        
+          
+          
+
           <h2 class="rn-section" id="audiences"><a href="/server-side/audiences/release-notes/">Audiences </a></h2>
           <div class="f3"id="november-8-2023">November 8, 2023</div>
 <h4 id="fixes">Fixes</h4>
@@ -498,10 +516,22 @@ var utag_data = {
           
 
           <h2 class="rn-section" id="server-side-consent-management"><a href="/server-side/consent/release-notes/">Server-side consent management </a></h2>
-          <div class="f3"id="january-18-2024">January 18, 2024</div>
+          <div class="f3"id="october-2022">October 2022</div>
 <h4 id="fixes">Fixes</h4>
 <ul>
-<li>Updated to make the <code>Vendor ID</code> field required for custom Consent Integrations.</li>
+<li>Exposed the Global Privacy Control header (Sec-GPC) as <code>global_privacy_control_opt_out</code> in incoming event payloads.
+<ul>
+<li>No event-level attribute is automatically added.</li>
+<li>Possible values are <code>true</code>, (Sec-GPC: 1), <code>false</code> (Sec-GPC:0) or unassigned (if there is no header).</li>
+<li>For more information about GPC and how to respect the GPC signal with Tealium, see <a href="/iq-tag-management/consent/consent-management/global-privacy-control/about/">About Global Privacy Control</a>.</li>
+</ul>
+</li>
+<li>Removed consent-based filtering of <a href="/server-side/consent/event-specs/">Tealium consent change events</a> in EventStream.
+<ul>
+<li>These events can now be streamed to any consent logging destination.</li>
+<li>There are no changes to consent-related filtering of other events or AudienceStream behavior.</li>
+</ul>
+</li>
 </ul>
         
           
@@ -718,7 +748,8 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#audiences" href="javascript:void(0)">Audiences </a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#administration" href="javascript:void(0)">Administration </a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#audiences" href="javascript:void(0)">Audiences </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#client-side-consent-management" href="javascript:void(0)">Client-side consent management </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#client-side-tags" href="javascript:void(0)">Client-side tags </a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connectors" href="javascript:void(0)">Connectors </a></li>

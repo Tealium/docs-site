@@ -34,7 +34,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side",
-    reading_time  : "2",
+    reading_time  : "3",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -125,6 +125,7 @@ var utag_data = {
         <a href="/server-side/getting-started/audiencestream-cdp/enrichments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-attributes-enrichments">Attributes Enrichments</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/getting-started/audiencestream-cdp/badges/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-attributes-badges">Attributes Badges</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/getting-started/audiencestream-cdp/offline-data/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-attributes-offline-data-omnichannel">Attributes Offline Data (Omnichannel)</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/getting-started/audiencestream-cdp/preloaded/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-preloaded-attributes">Preloaded attributes</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/getting-started/audiencestream-cdp/audiencestream-visitor-stitching/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-stitching">Visitor Stitching</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/getting-started/audiencestream-cdp/audiencestream-visitor-stitching-visitor-id/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-stitching-visitor-id">Visitor Stitching Visitor ID</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/getting-started/audiencestream-cdp/audiencestream-visitor-id-part-1/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-part-1">Visitor ID Part 1</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -217,7 +218,8 @@ var utag_data = {
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".attributes">Attributes</a>
         <ul class="pl2  attributes desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/attributes/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-attributes">About attributes</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="/server-side/attributes/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-attributes">About attributes</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/attributes/preloaded/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".preloaded-attributes">Preloaded attributes</a></li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".manage-attributes">Manage attributes</a>
         <ul class="pl2  manage-attributes desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/attributes/manage-attributes/add-attribute/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-add-attribute">Add an attribute</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -506,13 +508,31 @@ var utag_data = {
 
   
     <p class="f4 fw3 lh-copy">
-      This article lists the IP addresses that customers need to whitelist to allow the Customer Data Hub (CDH) to communicate with external systems.
+      This article lists the IP addresses that customers need to allowlist to allow the Customer Data Hub (CDH) to communicate with external systems.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>The CDH communicates with external systems during the following operations:</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>We are adding IP addresses to all of our data processing regions to maintain seamless operations with increased server-side traffic. If the new IP addresses are not added to your current allowlist before the roll-out date, you may notice increased connector errors, function action errors, and files not being read from non-S3 file services.</p>
+<h2 id="additional-ip-addresses">Additional IP addresses</h2>
+<p>If you are using allowlists (also known as safelists or whitelists), include the new IP addresses to continue operating without increased error rates.</p>
+<p>The additional IP addresses will be introduced on the following dates:</p>
+<ul>
+<li>Apr 29, 2024 - US (Oregon)</li>
+<li>May 6, 2024 - EU (Ireland and Frankfurt)</li>
+<li>May 13, 2024 - APJ (Hong Kong, Sydney, Tokyo)</li>
+<li>May 20, 2024 - US (US East 1)</li>
+</ul>
+<p>After the change, you can check the following three indicators to test if you are being impacted due to missing IP addresses from your allowlist in your firewall configuration:</p>
+<ul>
+<li>Increased connector or function action errors as seen in the Tealium UI (error message will depend on the third-party vendor).</li>
+<li>Reduced traffic from Tealium to your vendor endpoints.</li>
+<li>File import files are no longer getting processed (Tealium is being blocked from pulling files from your non-AWS S3 file service location).</li>
+</ul>
+<p>This change will not impact customers who use IP allowlists as an additional security measure to control user login access to the Tealium platform. The scope is limited to traffic flowing through Tealium’s platform and does not include our UI.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>The CDH communicates with external systems during the following operations:</p>
 <ul>
 <li>Sending data to external systems with connector actions.</li>
 <li>Performing custom actions in functions.</li>
@@ -529,42 +549,42 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>50.18.192.141<br>54.193.243.80</td>
+<td>50.18.192.141<br>52.52.159.89<br>54.153.15.248<br>54.176.233.190<br>54.183.127.212<br>54.193.243.80</td>
 <td><code>us-west-1</code></td>
 <td>San Jose, California</td>
 </tr>
 <tr>
-<td>34.208.6.185<br>35.163.73.149<br>44.238.18.189</td>
+<td>34.208.6.185<br>35.83.9.139<br>35.155.164.60<br>35.155.225.25<br>35.163.73.149<br>44.228.182.113<br>44.231.202.70<br>44.238.18.189<br>52.32.22.16</td>
 <td><code>us-west-2</code></td>
 <td>Oregon</td>
 </tr>
 <tr>
-<td>3.210.6.72<br>3.210.238.60<br>107.23.142.239</td>
+<td>3.210.6.72<br>3.210.238.60<br>3.214.63.89<br>23.23.136.136<br>34.224.220.100<br>44.220.225.247<br>54.82.200.66<br>54.164.73.126<br>107.23.142.239</td>
 <td><code>us-east-1</code></td>
 <td>Ashburn, Virginia</td>
 </tr>
 <tr>
-<td>52.30.45.164<br>52.31.156.52<br>52.48.110.59<br>54.229.215.104</td>
+<td>34.251.234.107<br>52.30.45.164<br>52.31.156.52<br>52.48.83.213<br>52.209.154.50<br>54.76.122.246<br>54.195.193.79<br>54.229.215.104<br>108.128.75.88</td>
 <td><code>eu-west-1</code></td>
 <td>Dublin, Ireland</td>
 </tr>
 <tr>
-<td>3.72.173.191<br>18.195.141.132<br>18.198.88.136<br>52.29.185.253</td>
+<td>3.72.173.191<br>3.79.77.159<br>3.125.211.165<br>18.193.100.101<br>18.195.141.132<br>18.198.88.136<br>18.199.16.199<br>52.29.52.87<br>52.29.185.253<br>54.93.104.232</td>
 <td><code>eu-central-1</code></td>
 <td>Frankfurt, Germany</td>
 </tr>
 <tr>
-<td>18.166.4.167<br>18.167.208.249<br>43.199.6.88</td>
+<td>16.163.133.41<br>16.163.255.152<br>18.163.149.136<br>18.167.208.249<br>18.167.237.249<br>43.198.29.150<br>43.198.173.159<br>18.166.4.167<br>43.199.6.88</td>
 <td><code>ap-east-1</code></td>
 <td>Hong Kong</td>
 </tr>
 <tr>
-<td>13.112.219.50<br>52.68.25.59<br>54.64.29.101</td>
+<td>13.112.219.50<br>35.72.125.147<br>35.74.186.82<br>35.76.187.92<br>52.68.25.59<br>52.69.49.172<br>52.196.255.145<br>54.64.29.101<br>54.64.71.25</td>
 <td><code>ap-northeast-1</code></td>
 <td>Tokyo, Japan</td>
 </tr>
 <tr>
-<td>10.6.57.227 <br>13.54.118.13<br>52.62.159.75<br>52.64.214.94<br></td>
+<td>3.25.4.61<br>13.54.68.127<br>13.54.118.13<br>13.237.193.244<br>13.237.225.69<br>52.62.159.75<br>52.64.214.94<br>52.64.154.49<br>54.253.220.122</td>
 <td><code>ap-southeast-2</code></td>
 <td>Sydney, Australia</td>
 </tr>
@@ -680,7 +700,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 2, 2024 
+          <p>This page was last updated:  April 5, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -694,7 +714,9 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#aws-s3" href="javascript:void(0)">AWS S3</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#additional-ip-addresses" href="javascript:void(0)">Additional IP addresses</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#aws-s3" href="javascript:void(0)">AWS S3</a></li>
               </nav>
   </aside></nav>
 
