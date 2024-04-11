@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.98.0" />
+     <meta name="generator" content="Hugo 0.111.3">
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -307,6 +307,7 @@ var utag_data = {
         <a href="/server-side-connectors/sparkpost-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".sparkpost-connector">SparkPost</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/splunk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".splunk-connector">Splunk</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/swrve-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".swrve-app-events-connector">Swrve App Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/taboola-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".taboola-audiences-connector">Taboola Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/talonone-cam/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".talon-one-campaign-audience-manager-connector">Talon.One CAM</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/talonone-webhook-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".talonone-webhook-connector">Talon.One Webhook</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/tamber-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tamber-connector">Tamber</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -445,6 +446,13 @@ var utag_data = {
 </tr>
 </tbody>
 </table>
+<h2 id="client-id">Client ID</h2>
+<p>The Google Analytics Connector requires either a client ID or user ID for all actions. You can retreive the client ID from the <code>_ga</code> cookie, but it must be parsed before use.</p>
+<p>For example, if your <code>_ga</code> cookie is,</p>
+<p><code>GA1.2.447986009.1565955334</code></p>
+<p>the client ID value is the value after <code>GA1.2.</code>:</p>
+<p><code>447986009.1565955334</code></p>
+<p>To assist in parsing client IDs, use the <a href="/client-side-tags/google-analytics-cookie-matching-service-tag/">Google Analtyics Cookie Matching Service tag</a> in your workflow and then use the <code>cp.utag_main__ga</code> cookie instead of using <code>cp._ga</code> directly.</p>
 <h2 id="configure-settings">Configure settings</h2>
 <p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/manage/">About Connectors</a> article.</p>
 <p>After adding the connector, configure the following settings:</p>
@@ -1017,6 +1025,7 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#client-id" href="javascript:void(0)">Client ID</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure settings</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action settings - parameters and options</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-analytics-event-data" href="javascript:void(0)">Action - Send Analytics Event Data</a></li>
@@ -1291,6 +1300,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

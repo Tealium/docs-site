@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.98.0" />
+     <meta name="generator" content="Hugo 0.111.3">
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -34,7 +34,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side-connectors",
-    reading_time  : "7",
+    reading_time  : "6",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -307,6 +307,7 @@ var utag_data = {
         <a href="/server-side-connectors/sparkpost-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".sparkpost-connector">SparkPost</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/splunk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".splunk-connector">Splunk</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/swrve-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".swrve-app-events-connector">Swrve App Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/taboola-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".taboola-audiences-connector">Taboola Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/talonone-cam/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".talon-one-campaign-audience-manager-connector">Talon.One CAM</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/talonone-webhook-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".talonone-webhook-connector">Talon.One Webhook</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/tamber-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tamber-connector">Tamber</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -382,8 +383,7 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>This article describes how to set up the Impact Conversions connector.</p>
-<h2 id="connector-actions">Connector Actions</h2>
+  <h2 id="connector-actions">Connector Actions</h2>
 <table>
 <thead>
 <tr>
@@ -413,7 +413,26 @@ Required. Defined by Impact (for example, <code>t0k5Lr3GciUAqR0JNj1CzxKE2XTEmK5i
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="action---send-conversion">Action - Send Conversion</h3>
-<h4 id="parameters">Parameters</h4>
+<h4 id="conversion-parameters">Conversion Parameters</h4>
+<p>You must include the following two parameters:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Campaign ID</td>
+<td>(Required) Unique integer campaign identifier provided by Impact.</td>
+</tr>
+<tr>
+<td>Order ID</td>
+<td>(Required) The unique alphanumeric trackable ID for the in-app conversion.</td>
+</tr>
+</tbody>
+</table>
 <p>You must include one of the following two parameters:</p>
 <table>
 <thead>
@@ -429,7 +448,7 @@ Required. Defined by Impact (for example, <code>t0k5Lr3GciUAqR0JNj1CzxKE2XTEmK5i
 </tr>
 <tr>
 <td>Event Type Code</td>
-<td>The conversion event type. Navigate to <strong>Events Types &gt; Actions &gt; View/Edit &gt; Codes</strong> in Impact&rsquo;s platform to view all codes.</td>
+<td>The conversion event type. Go to <strong>Events Types &gt; Actions &gt; View/Edit &gt; Codes</strong> in the Impact platform to view all codes.</td>
 </tr>
 </tbody>
 </table>
@@ -444,15 +463,15 @@ Required. Defined by Impact (for example, <code>t0k5Lr3GciUAqR0JNj1CzxKE2XTEmK5i
 <tbody>
 <tr>
 <td>Custom Profile ID</td>
-<td>Advertiser’s user identifier value of string type. If Custom Profile ID is passed when a visitor lands on the website event, the same Custom Profile ID value must be passed here.</td>
+<td>Advertiser’s own user identifier value of string type. If custom profile ID was passed when the user logged an initial visit event, the same custom profile ID value must be passed here.</td>
 </tr>
 <tr>
 <td>Click ID</td>
-<td>ClickId string value that was captured on the landing page URL or in the Page Load API response.</td>
+<td>Click ID string value that was captured on the landing page URL or in the Page Load API response.</td>
 </tr>
 <tr>
 <td>Customer ID</td>
-<td>The unique alphanumeric customer identifier that your platform assigns to customer accounts.</td>
+<td>Unique alphanumeric customer identifier your platform assigns to customer accounts.</td>
 </tr>
 <tr>
 <td>Unique Conversion URL</td>
@@ -460,19 +479,19 @@ Required. Defined by Impact (for example, <code>t0k5Lr3GciUAqR0JNj1CzxKE2XTEmK5i
 </tr>
 <tr>
 <td>Google Advertising ID</td>
-<td>The Google Advertising ID associated with the mobile device the customer used to convert.</td>
+<td>Google advertising ID associated with the mobile device the customer converted on.</td>
 </tr>
 <tr>
 <td>IDFA</td>
-<td>The Apple ID for Advertising (IDFA) associated with the mobile device the customer used to convert.</td>
+<td>Apple ID for advertising (IDFA) associated with the mobile device the customer converted on.</td>
 </tr>
 <tr>
 <td>IDFV</td>
-<td>The Apple ID for Vendors (IDFV) associated with the mobile device the customer used to convert.</td>
+<td>Apple ID for vendors (IDFV) associated with the mobile device the customer converted on.</td>
 </tr>
 <tr>
 <td>Media ID</td>
-<td>The unique identifier of the partner or source to which you want to force attribution.</td>
+<td>Unique identifier of the partner or source to which you want to force attribution.</td>
 </tr>
 </tbody>
 </table>
@@ -485,54 +504,6 @@ Required. Defined by Impact (for example, <code>t0k5Lr3GciUAqR0JNj1CzxKE2XTEmK5i
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>Campaign ID</td>
-<td>Required. The unique integer campaign identifier provided by Impact.</td>
-</tr>
-<tr>
-<td>Order ID</td>
-<td>Required. The unique alphanumeric trackable ID for the in-app conversion.</td>
-</tr>
-<tr>
-<td>Customer Email</td>
-<td>A SHA1 hash string of the customer’s email.</td>
-</tr>
-<tr>
-<td>Customer Status</td>
-<td>The customer&rsquo;s status. Use string values of <code>New</code> or <code>Returning</code>.</td>
-</tr>
-<tr>
-<td>Customer Post Code</td>
-<td>The customer’s postal code (for example: <code>12345</code>).</td>
-</tr>
-<tr>
-<td>Payment Type</td>
-<td>A string representing payment type of the order (for example: <code>credit</code>).</td>
-</tr>
-<tr>
-<td>Order Rebate</td>
-<td>A decimal number representing the amount of the order rebate. Used for reporting only.</td>
-</tr>
-<tr>
-<td>Event Date</td>
-<td>The conversion event&rsquo;s date. Use string values of <code>NOW</code> or dates in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO-8601</a> or <code>dd-MMM-yyyy HH:mm:ss z</code> format. <code>NOW</code> is used by default.</td>
-</tr>
-<tr>
-<td>Order Promo Code</td>
-<td>Coupon / Promo code string. Empty string can be passed if there is no promo code for the order. Empty string is used by default. No support for multiple codes, only single code can be reported.</td>
-</tr>
-<tr>
-<td>Currency Code</td>
-<td>The currency code of the transaction. Required for Sale Actions. USD is used by default. Accepts <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a> currency codes.</td>
-</tr>
-<tr>
-<td>User Agent</td>
-<td>A string that identifies the browser and operating system.</td>
-</tr>
-<tr>
-<td>IP Address</td>
-<td>A string that represents the IP Address of the customer.</td>
-</tr>
 <tr>
 <td>Device Manufacturer</td>
 <td>The manufacturer of the mobile device the customer used to convert.<ul><li>Android: <code>manufacturer = android.os.Build.MANUFACTURER;</code></li><li>Apple: <code>NSString *manufacturer = @&quot;Apple&quot;;</code></li></ul></td>
@@ -567,7 +538,7 @@ Required. Defined by Impact (for example, <code>t0k5Lr3GciUAqR0JNj1CzxKE2XTEmK5i
 </tr>
 <tr>
 <td>Property ID</td>
-<td>For mobile app conversions, this value is the &ldquo;System App ID&rdquo; of your app in impact.com. To find this value, navigate to <strong>Settings &gt; Mobile Apps</strong> on Impact&rsquo;s platform.</td>
+<td>For mobile app conversions, this value is the <strong>System App ID</strong> of your app on <code>impact.com</code>. To find this value, go to <strong>Settings &gt; Mobile Apps</strong> on the Impact platform.</td>
 </tr>
 <tr>
 <td>Tracking Consent</td>
@@ -581,10 +552,51 @@ Required. Defined by Impact (for example, <code>t0k5Lr3GciUAqR0JNj1CzxKE2XTEmK5i
 <td>Disposition Code</td>
 <td>If you have a custom disposition code configured in Impact&rsquo;s event type settings, you can submit that value as a default disposition for the action that results from this conversion.</td>
 </tr>
+<tr>
+<td>Customer Email</td>
+<td>SHA1 hash string of customer’s email.</td>
+</tr>
+<tr>
+<td>Customer Status</td>
+<td>Use string values of <code>New</code> or <code>Returning</code>.</td>
+</tr>
+<tr>
+<td>Customer Post Code</td>
+<td>Customer’s postal code.</td>
+</tr>
+<tr>
+<td>Payment Type</td>
+<td>String representing payment type of the order.</td>
+</tr>
+<tr>
+<td>Order Rebate</td>
+<td>Decimal representing amount of the order rebate. Used for reporting only.</td>
+</tr>
+<tr>
+<td>Event Date</td>
+<td>Use a string value of <code>NOW</code> or dates in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO-8601</a> or &ldquo;dd-MMM-yyyy HH:mm:ss z&rdquo; formats. <code>NOW</code> is used by default.</td>
+</tr>
+<tr>
+<td>Order Promo Code</td>
+<td>Coupon or promo code string. If there is no promo code for the order, use an empty string. The default value is an empty string. This parameter only supports single codes; it does not support  multiple codes.</td>
+</tr>
+<tr>
+<td>Currency Code</td>
+<td>Required for Sale Actions. <code>USD</code> is used by default. Accepts <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a> currency codes.</td>
+</tr>
+<tr>
+<td>User Agent</td>
+<td>String identifying the browser and operating system.</td>
+</tr>
+<tr>
+<td>IP Address</td>
+<td>String representing IP Address of the customer.</td>
+</tr>
 </tbody>
 </table>
 <h4 id="conversion-sale-items">Conversion Sale Items</h4>
 <p>If you are passing item-level details, the following item parameters are required:</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>All arrays and lists must be of equal length. Single value attributes are expanded to an array that is the same length as all other arrays, repeating the value.</p>
 <table>
 <thead>
 <tr>
@@ -595,23 +607,23 @@ Required. Defined by Impact (for example, <code>t0k5Lr3GciUAqR0JNj1CzxKE2XTEmK5i
 <tbody>
 <tr>
 <td>Item Category</td>
-<td><ul><li>Item category identifier of string type.</li><li>Required under Conversion Sale Items.</li><li>Map array and list values to keys to pass to Impact.</li><li>All arrays and lists must be of equal length.</li><li>Single value attributes are expanded to an array that is the same length as all other arrays, repeating the value.</li></ul></td>
+<td>Item category identifier of string type. Map array and list values to keys to pass to Impact.</td>
 </tr>
 <tr>
 <td>Item SKU</td>
-<td><ul><li>Required under Conversion Sale Items.</li><li>Alphanumeric item-specific identifier.</li><li>Map array and list values to keys to pass to Impact.</li><li>All arrays and lists must be of equal length.</li><li>Single value attributes are expanded to an array that is the same length as all other arrays, repeating the value.</li></ul></td>
+<td>Alphanumeric item-specific identifier. Map array and list values to keys to pass to Impact.</td>
 </tr>
 <tr>
 <td>Item Subtotal</td>
-<td><ul><li>Required under Conversion Sale Items.</li><li>Map array and list values to keys to pass to Impact.</li><li>All arrays and lists must be of equal length.</li><li>Single value attributes are expanded to an array that is the same length as all other arrays, repeating the value.</li></ul></td>
+<td>Map array and list values to keys to pass to Impact.</td>
 </tr>
 <tr>
 <td>Item Quantity</td>
-<td><ul><li>Integer value representing quantity of the line item.</li><li>Required under Conversion Sale Items.</li><li>Map array and list values to keys to pass to Impact.</li><li>All arrays and lists must be of equal length.</li><li>Single value attributes are expanded to an array that is the same length as all other arrays, repeating the value.</li></ul></td>
+<td>Integer value representing quantity of the line item. Map array and list values to keys to pass to Impact.</td>
 </tr>
 <tr>
 <td>Item Price</td>
-<td>Individual unit price for each product in this item. If you use Item Subtotal, do not set a value for this parameter.</td>
+<td>Individual unit price for each product in this item. If you use <strong>Item Subtotal</strong>, do not set a value for this parameter.</td>
 </tr>
 </tbody>
 </table>
@@ -654,7 +666,7 @@ Required. Defined by Impact (for example, <code>t0k5Lr3GciUAqR0JNj1CzxKE2XTEmK5i
 </tr>
 <tr>
 <td>Item Delivery Type</td>
-<td>Type of delivery method specified for this item (for example, <code>STORE</code>).</td>
+<td>Type of delivery method specified for this item, for example, <code>STORE</code>.</td>
 </tr>
 <tr>
 <td>Payment Type</td>
@@ -682,7 +694,7 @@ Required. Defined by Impact (for example, <code>t0k5Lr3GciUAqR0JNj1CzxKE2XTEmK5i
 </tr>
 <tr>
 <td>Gift Purchase</td>
-<td>If you tracking gift purchases, set to <code>true</code> to mark the order in the conversion as a gift purchase. Set to <code>false</code> if the order isn&rsquo;t a gift purchase.</td>
+<td>If you are tracking gift purchases, set to <code>true</code> to mark the order in the conversion as a gift purchase. Set to <code>false</code> if the order isn&rsquo;t a gift purchase.</td>
 </tr>
 </tbody>
 </table>
@@ -746,7 +758,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 16, 2023 
+          <p>This page was last updated:  April 9, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1026,6 +1038,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

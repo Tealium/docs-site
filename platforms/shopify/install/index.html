@@ -11,7 +11,7 @@
     <meta name="MobileOptimized" content="320">
 
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.98.0" />
+     <meta name="generator" content="Hugo 0.111.3">
 
       
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
@@ -34,7 +34,7 @@
 <script>
 var utag_data = {
     site_section  : "platforms",
-    reading_time  : "4",
+    reading_time  : "7",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -139,54 +139,86 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="how-it-works">How it works</h2>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium Shopify integration does not currently support Shopify version 2.0. Alternatively, you can use the <a href="/platforms/http-api/">Tealium HTTP API</a> to send network requests to server-side directly using the web pixels.</p>
+<h2 id="how-it-works">How it works</h2>
 <p>To use Tealium with Shopify, you must customize your Shopify theme to use Tealium code with the Tealium Shopify integration. The Tealium code provides a Universal Data Object (UDO) and loads the necessary Tealium assets on each page of your site.</p>
 <p>The code snippet for the order status page also appears on the &ldquo;Thank you&rdquo; page of the checkout. The code snippet provides the UDO for conversion tracking. Since the order status page may be revisited after the order is placed, it is recommended to configure logic in Tealium iQ Tag Management in order not to track conversions twice.</p>
 <p>Only Shopify Plus customers have access to the <code>checkout.liquid</code> file, which loads <code>utag.js</code> throughout the checkout funnel. This integration does not currently support the checkout funnel. However you may implement your own <code>checkout.liquid</code> following the patterns used on other pages.</p>
 <h2 id="setup-instructions">Setup Instructions</h2>
-<h3 id="settings">Settings</h3>
-<p>Copy the following JSON object into the JSON array contained in the <a href="https://help.shopify.com/themes/development/theme-editor/settings-schema">Config/settings_schema.json</a> file of your Shopify theme. This enables the Tealium-specific settings for your theme.</p>
-<pre tabindex="0"><code>{
-  &#34;name&#34;: &#34;Tealium&#34;,
-  &#34;settings&#34;: [
-    {
-      &#34;type&#34;: &#34;text&#34;,
-      &#34;id&#34;: &#34;tealium_account&#34;,
-      &#34;label&#34;: &#34;Account&#34;,
-      &#34;info&#34;: &#34;Name of your acount&#34;
-    },
-    {
-      &#34;type&#34;: &#34;text&#34;,
-      &#34;id&#34;: &#34;tealium_profile&#34;,
-      &#34;label&#34;: &#34;Profile&#34;,
-      &#34;default&#34;: &#34;main&#34;,
-      &#34;info&#34;: &#34;Which profile to load your tags from&#34;,
-      &#34;placeholder&#34;: &#34;main&#34;
-    },
-    {
-      &#34;type&#34;: &#34;text&#34;,
-      &#34;id&#34;: &#34;tealium_environment&#34;,
-      &#34;label&#34;: &#34;Environment&#34;,
-      &#34;default&#34;: &#34;prod&#34;,
-      &#34;info&#34;: &#34;Which environment to load your tags from&#34;,
-      &#34;placeholder&#34;: &#34;prod&#34;
-    },
-    {
-      &#34;type&#34;: &#34;checkbox&#34;,
-      &#34;id&#34;: &#34;tealium_enabled&#34;,
-      &#34;label&#34;: &#34;Enable&#34;,
-      &#34;default&#34;: false,
-      &#34;info&#34;: &#34;Check to enable Tealium&#34;
-    }
-  ]
-}
-</code></pre><p>Edit your Tealium-specific settings in the <strong>General Settings</strong> tab when customizing your theme.</p>
-<h3 id="snippets">Snippets</h3>
-<p>Drop the files from the <strong>Snippets</strong> folder of <a href="https://github.com/Tealium/integration-shopify">this GitHub repository</a> into the <strong>Snippets folder</strong> of your Shopify theme. These files contain the UDO implementations for the various page types.</p>
-<p>For more information, see Shopify&rsquo;s <a href="https://help.shopify.com/themes/development/templates#snippets">theme snippets</a> documentation.</p>
-<h2 id="templates">Templates</h2>
-<p>On each page, include the correct snippet corresponding to the data layer of that page. Go to the page&rsquo;s <a href="https://help.shopify.com/themes/development/templates">template</a>, or the section for specific pages such as the index (home) page, and insert the relevant snippet. For example, the <code>product.liquid</code> template file in the default Debut theme that Shopify provides looks like the following, where the <code>product_udo</code> snippet has been added at the beginning of the file.</p>
-<pre tabindex="0"><code>{% include &#39;product_udo&#39; %}
+<p>To customize your Shopify theme for Tealium integration, follow these steps:</p>
+<ol>
+<li><a href="#enable-tealium-settings">Enable Tealium settings</a>.</li>
+<li><a href="#install-utagjs-and-on-page-data-layer">Install utag.js and the on-page data layer</a>.</li>
+<li><a href="#install-script-for-order-status-page">Install the script for the order status page</a>.</li>
+<li>(For Shopify Plus customers) <a href="#install-script-for-checkout-shopify-plus-only">Install the script for the checkout process</a>. <p class="note"><i class="fa fa-exclamation-triangle"></i>Shopify will deprecate the <code>checkout.liquid</code> theme file on August 13, 2024. For details, see <a href="https://shopify.dev/docs/apps/checkout#upgrade">Shopify.dev docs: Upgrade</a>.</p></li>
+</ol>
+<h3 id="enable-tealium-settings">Enable Tealium settings</h3>
+<p>Copy and paste the following JSON object into the JSON array in the <a href="https://help.shopify.com/themes/development/theme-editor/settings-schema">Config/settings_schema.json</a> file of your Shopify theme. The JSON object enables the Tealium-specific settings for your theme.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Tealium&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;settings&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;text&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;tealium_account&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;label&#34;</span>: <span style="color:#e6db74">&#34;Account&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;info&#34;</span>: <span style="color:#e6db74">&#34;Name of your acount&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;text&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;tealium_profile&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;label&#34;</span>: <span style="color:#e6db74">&#34;Profile&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;default&#34;</span>: <span style="color:#e6db74">&#34;main&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;info&#34;</span>: <span style="color:#e6db74">&#34;Which profile to load your tags from&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;placeholder&#34;</span>: <span style="color:#e6db74">&#34;main&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;text&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;tealium_environment&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;label&#34;</span>: <span style="color:#e6db74">&#34;Environment&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;default&#34;</span>: <span style="color:#e6db74">&#34;prod&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;info&#34;</span>: <span style="color:#e6db74">&#34;Which environment to load your tags from&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;placeholder&#34;</span>: <span style="color:#e6db74">&#34;prod&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;checkbox&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;tealium_enabled&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;label&#34;</span>: <span style="color:#e6db74">&#34;Enable&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;default&#34;</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;info&#34;</span>: <span style="color:#e6db74">&#34;Check to enable Tealium&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Edit your Tealium-specific settings in the <strong>General Settings</strong> tab when customizing your theme.</p>
+<h3 id="install-utagjs-and-on-page-data-layer">Install utag.js and on-page data layer</h3>
+<p>Follow these steps to install <code>utag.js</code> and set up an on-page data layer for your Shopify store. This process involves adding specific snippets to your Shopify theme, which are provided in the <a href="https://github.com/Tealium/integration-shopify">Tealium Integration for Shopify GitHub repository</a>. These snippets enable the Universal Data Object (UDO) implementations, necessary for tracking and analytics on different types of pages within your store.</p>
+<h4 id="step-1---access-your-themes-code">Step 1 - Access your theme&rsquo;s code</h4>
+<ol>
+<li>Log in to your Shopify account.</li>
+<li>Go to <strong>Online Store &gt; Themes</strong> to view your current theme.</li>
+<li>Find the theme you want to edit, click on the <strong>Actions</strong> drop-down menu, and select <strong>Edit code</strong>. Alternatively, you can access the code editor directly by clicking the <strong>Customize</strong> button for your theme.</li>
+</ol>
+<h4 id="step-2---add-the-udo-implementation-snippets">Step 2 - Add the UDO implementation snippets</h4>
+<ol>
+<li>Access the <a href="https://github.com/Tealium/integration-shopify">Tealium Integration for Shopify GitHub repository</a> to download the necessary code snippets for UDO implementations across various page types.</li>
+<li>In the Shopify theme code editor, click the <strong>Snippets</strong> folder to expand it.</li>
+<li>Drag and drop the appropriate snippets from the GitHub repository into the <strong>Snippets</strong> folder in your Shopify theme editor. For more information, see <a href="https://help.shopify.com/themes/development/templates#snippets">Shopify.dev docs: Theme snippets</a>.</li>
+</ol>
+<h4 id="step-3---reference-the-snippets-in-your-templates">Step 3 - Reference the snippets in your templates</h4>
+<ol>
+<li>
+<p>After adding the snippets, click the <strong>Templates</strong> folder to expand it.</p>
+</li>
+<li>
+<p>For each template that corresponds to a page type (such as product, home, about us), insert a reference to the relevant UDO snippet at the beginning of the template file. These references ensure the data layer is initialized correctly for each page type.</p>
+<p>For example, to integrate the data layer on a product page, edit the <code>product.liquid</code> template as follows:</p>
+<ul>
+<li>
+<p>At the beginning of the <code>product.liquid</code> file, add the following line to include the <code>product_udo</code> snippet, previously added to the <strong>Snippets</strong> folder:</p>
+<pre tabindex="0"><code class="language-liquid" data-lang="liquid">{% include &#39;product_udo&#39; %}
+</code></pre></li>
+<li>
+<p>This line should be placed before any existing content in the template file to ensure the data layer is initialized before any other scripts run. The <code>product.liquid</code> template should be similar to this after including the <code>product_udo</code> snippet:</p>
+<pre tabindex="0"><code class="language-liquid" data-lang="liquid">{% include &#39;product_udo&#39; %}
 
 {% comment %}
   The contents of the product.liquid template can be found in /sections/product-template.liquid
@@ -204,14 +236,38 @@ var utag_data = {
     unavailable: {{ &#39;products.product.unavailable&#39; | t | json }}
   }
 &lt;/script&gt;
-</code></pre><h3 id="order-status">Order Status</h3>
-<p>Unlike other pages, the order status page doesn&rsquo;t have access to the admin Settings, so you must reconfigure your Tealium account information. Define the settings in the <strong>Additional scripts</strong> box of the <strong>Order processing</strong> section, as described in the <a href="https://help.shopify.com/themes/customization/order-status">Shopify documentation</a>:</p>
-<ol>
-<li>From your Shopify admin, click <strong>Settings</strong> and then click <strong>Checkout</strong>.</li>
-<li>Near the bottom of the Order processing section, find <strong>Additional content &amp; scripts</strong>.</li>
-<li>Add the following code.</li>
+</code></pre></li>
+<li>
+<p>Continue this process for each template corresponding to different page types, using the appropriate snippet name in place of <code>product_udo</code>. Generally, the names of the snippets and the templates they correspond to are similar, without the <code>_udo</code> suffix in the snippet names. For example:</p>
+<ul>
+<li>For the <code>index.liquid</code> template (the homepage), include the <code>home_udo</code> snippet.</li>
+<li>For generic templates like <code>404.liquid</code>, use the <code>page_udo</code> snippet to ensure a broad coverage.
+For more information, see <a href="https://help.shopify.com/themes/development/templates">Shopify.dev docs: Theme architecture</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>After adding the <code>include</code> statement to a template, click <strong>Save</strong> to apply your changes.</p>
+</li>
+<li>
+<p>To verify your changes, open the developer console in your web browser and inspect <code>utag.data</code>.</p>
+</li>
 </ol>
-<pre tabindex="0"><code>    &#34;product_price&#34;: [
+<h3 id="install-script-for-order-status-page">Install script for order status page</h3>
+<p>Unlike other pages, the order status page doesn&rsquo;t have access to the admin settings, so you must reconfigure your Tealium account information. Follow these steps to define these settings:</p>
+<ol>
+<li>
+<p>From your Shopify admin, click <strong>Settings</strong> and then click <strong>Checkout</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Checkout</strong> settings, scroll to <strong>Order status page</strong> near the bottom of the page.</p>
+</li>
+<li>
+<p>In <strong>Additional scripts</strong>, add the following code:</p>
+<pre tabindex="0"><code class="language-liquid" data-lang="liquid">&lt;script&gt;
+  {
+    &#34;product_price&#34;: [
     {% for line_item in checkout.line_items %}
       &#34;{{ line_item.price | money_without_currency }}&#34;{% unless forloop.last %},{% endunless %}
     {% endfor %}
@@ -263,12 +319,32 @@ var utag_data = {
     })();
 &lt;/script&gt;
 {% else %}
-&lt;!-- Please configure your Tealium account information for the order confirmation page. --&gt;
+&lt;!-- Configure your Tealium account information for the order confirmation page. --&gt;
 {% endif %}
-</code></pre><ol start="4">
-<li>Set <code>tealium_enabled</code> to <code>true</code>.</li>
-<li>Set the <code>tealium_account</code>, <code>tealium_profile</code>, and <code>tealium_environment</code> variables to match what you configured in the settings.</li>
+</code></pre><p>For more information, see <a href="https://help.shopify.com/themes/customization/order-status">Shopify help center: Order status page</a></p>
+</li>
+<li>
+<p>Set <code>tealium_enabled</code> to <code>true</code>.</p>
+</li>
+<li>
+<p>Set the <code>tealium_account</code>, <code>tealium_profile</code>, and <code>tealium_environment</code> variables to match what you configured in the settings.</p>
+</li>
 </ol>
+<h3 id="install-script-for-checkout-shopify-plus-only">Install script for checkout (Shopify Plus only)</h3>
+<p>This step is for Shopify Plus customers who want to integrate <code>utag.js</code> throughout the checkout funnel using the <code>checkout.liquid</code> file.</p>
+<h4 id="accessing-checkoutliquid">Accessing <code>checkout.liquid</code></h4>
+<ul>
+<li><strong>Shopify Plus Customers</strong>: You can request access to your <code>checkout.liquid</code> file if it&rsquo;s not already accessible. This file loads <code>utag.js</code> during the checkout process. If you haven&rsquo;t previously modified this file, you&rsquo;ll need to contact Shopify Support to gain access before you can proceed with the installation.</li>
+<li><strong>Non-Shopify Plus Customers</strong>: Shopify Support does not grant access to the <code>checkout.liquid</code> file for customers without a Shopify Plus account. This limitation means that the <code>utag.js</code> script cannot be installed on checkout pages. However, completing the prior steps ensures that <code>utag.js</code> is installed on other important pages, such as the shopping cart and order confirmation pages.</li>
+</ul>
+<h4 id="installation-instructions">Installation instructions</h4>
+<ol>
+<li>Open the <code>checkout_udo.liquid</code> file.</li>
+<li>In line 10, replace the placeholders with your Tealium iQ account and profile information.</li>
+<li>Copy the modified content and paste it in the Shopify checkout liquid file.</li>
+<li>Save your changes and test to ensure the integration works as expected.</li>
+</ol>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>This  checkout code serves as a foundational template. Depending on your Shopify site&rsquo;s specific requirements and setup, customizations may be necessary for optimal performance.</p>
 <h2 id="release-notes">Release Notes</h2>
 <h4 id="102">1.0.2</h4>
 <ul>
@@ -317,7 +393,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 2, 2024 
+          <p>This page was last updated:  April 8, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -333,10 +409,10 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#setup-instructions" href="javascript:void(0)">Setup Instructions</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#settings" href="javascript:void(0)">Settings</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#snippets" href="javascript:void(0)">Snippets</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#templates" href="javascript:void(0)">Templates</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#order-status" href="javascript:void(0)">Order Status</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enable-tealium-settings" href="javascript:void(0)">Enable Tealium settings</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#install-utagjs-and-on-page-data-layer" href="javascript:void(0)">Install utag.js and on-page data layer</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#install-script-for-order-status-page" href="javascript:void(0)">Install script for order status page</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#install-script-for-checkout-shopify-plus-only" href="javascript:void(0)">Install script for checkout (Shopify Plus only)</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#release-notes" href="javascript:void(0)">Release Notes</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#license" href="javascript:void(0)">License</a></li>
               </nav>
