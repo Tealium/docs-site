@@ -172,30 +172,22 @@ var utag_data = {
 
   
     <p class="f4 fw3 lh-copy">
-      This article provides a example of Moments iQ experience leading a visitor through expertise assessment and enriching a visitor profile with this information.
+      This article provides an example of Moments iQ experience leading a visitor through expertise assessment and enriching a visitor profile with this information.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>In the following example, we will embed an experience on an electronics site to ask the visitor what their level of expertise is. Then, we will enrich the visitor profile with this information. This will help you determine the level of comfort the visitor has with product line, which you might use for suggested additional services and products such as home installation services, speaker cables, or extended warranties.</p>
+  <p>In the following example, we embed an experience on an electronics site to ask the visitor what their level of expertise is. Then, we enrich the visitor profile with this information. This helps you determine the level of comfort the visitor has with the product line, which you might use for suggesting additional services and products such as home installation services, speaker cables, or extended warranties.</p>
 <h2 id="requirements">Requirements</h2>
 <p>This example requires the following:</p>
 <ul>
 <li>Moments iQ.</li>
 <li>Tealium AudienceStream.</li>
-<li><a href="/server-side/attributes/data-layer-enrichment/">Data Layer Enrichment</a> enabled.</li>
 <li>The most recent version of the <a href="/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a>.</li>
 </ul>
-<h2 id="step-1-create-data-layer-variables">Step 1: Create data layer variables</h2>
-<p>Add the following Moments iQ variables to the data layer using <strong>Bulk Import From CSV</strong>:</p>
-<pre tabindex="0"><code>momentsiq_question1, UDO Variable
-momentsiq_question1_type, UDO Variable
-momentsid_id, UDO Variable
-momentsiq_answer1, UDO Variable
-</code></pre><p>For more information about adding data layer variables in bulk, see <a href="/iq-tag-management/data-layer/manage-variables/#bulk-import-variables">Manage variables</a>.</p>
-<h2 id="step-2-create-tag">Step 2: Create tag</h2>
-<p>The following experience will appear on a category page.</p>
+<h2 id="step-1-create-tag">Step 1: Create tag</h2>
+<p>The following experience appears on the home page.</p>
 <p><a href="/early-access/moments-iq/manage/#create-a-moments-iq-tag">Create a Moments iQ experience</a> for the first engagement with the visitor by adding a Tealium Moments iQ tag with the following properties:</p>
 <ul>
 <li><strong>Title</strong>: <code>Visitor expertise</code></li>
@@ -218,7 +210,7 @@ momentsiq_answer1, UDO Variable
 <li><strong>Value</strong>: <code>home</code></li>
 </ul>
 <p>For the purposes of this example, let&rsquo;s assume that the tag UID is <code>123</code>.</p>
-<h2 id="step-4-create-audiencestream-attributes">Step 4: Create AudienceStream attributes</h2>
+<h2 id="step-2-create-audiencestream-attributes">Step 2: Create AudienceStream attributes</h2>
 <p>To configure AudienceStream to enrich attributes with the values from the experiences, use the following steps:</p>
 <ol>
 <li>If they do not exist already, create the following attributes:
@@ -236,19 +228,18 @@ momentsiq_answer1, UDO Variable
 </li>
 </ol>
 <p>Because you will eventually create multiple experiences or sets of experiences, you need to ensure that the <code>tealium_event</code> values from experiences only enrich the attributes they are meant to. Update the rules for the attributes to check if the <code>tealium_event</code> values are coming from the appropriate experiences.</p>
-<p>For this example, update the rule for the <strong>Customer_Expertise</strong> visit attribute to check if <code>momentsiq_id</code> matches the UID of the experience you created. This will ensure that only the experience in this example will enrich the <strong>Customer_Expertise</strong> attribute.</p>
-<pre tabindex="0"><code>Set Customer_Expertise to momentsiq_answer1
-WHEN Any event
-IF &#34;Expertise Level Answered&#34;
-  tealium_event equals momentsiq_submit
-  AND
-  momentsiq_id equals 123
-</code></pre><h2 id="results">Results</h2>
-<p>When the visitor loads the home page, the home page will embed the experience after the beginning of the <code>div.col-main</code> property.</p>
+<p>For this example, update the rule for the <strong>Customer_Expertise</strong> visit attribute to check if <code>momentsiq_id</code> matches the UID of the experience you created. This ensures that only the experience in this example enriches the <strong>Customer_Expertise</strong> attribute.</p>
+<figure><a class="slb" href="/images/early-access/moments-iq/moments-iq-expertise-conditions.png"><img src="/images/early-access/moments-iq/moments-iq-expertise-conditions.png"
+         alt="Attribute conditions"
+         title="Attribute conditions"/>
+    </a>
+</figure>
+<h2 id="results">Results</h2>
+<p>When the visitor loads the home page, the home page embeds the experience after the beginning of the <code>div.col-main</code> property.</p>
 <figure><a class="slb" href="/images/moments-iq/momentsiq-example-home-theater.png"><img src="/images/moments-iq/momentsiq-example-home-theater.png"/>
     </a>
 </figure>
-<p>When the customer answers the question, the answer will be stored in their visitor profile and they will be assigned a badge based on their answer.</p>
+<p>When the customer answers the question, the answer is stored in their visitor profile and they are assigned a badge based on their answer.</p>
 
 </div>
 
@@ -294,7 +285,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 22, 2024 
+          <p>This page was last updated:  April 12, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -309,10 +300,9 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-1-create-data-layer-variables" href="javascript:void(0)">Step 1: Create data layer variables</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-2-create-tag" href="javascript:void(0)">Step 2: Create tag</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-1-create-tag" href="javascript:void(0)">Step 1: Create tag</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-load-rule" href="javascript:void(0)">Create load rule</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-4-create-audiencestream-attributes" href="javascript:void(0)">Step 4: Create AudienceStream attributes</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-2-create-audiencestream-attributes" href="javascript:void(0)">Step 2: Create AudienceStream attributes</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#results" href="javascript:void(0)">Results</a></li>
               </nav>
   </aside></nav>

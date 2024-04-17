@@ -179,14 +179,24 @@ var utag_data = {
   <h2 id="track-views">Track Views</h2>
 <p>To track screen views, pass an instance of <code>TealiumView(viewName:dataLayer:)</code> to the <a href="/platforms/android-kotlin/api/tealium/#track"><code>track()</code></a> method.  <code>TealiumView</code> is comprised of a view name, which appears in the tracking call as <code>tealium_event</code>, and an optional data dictionary.</p>
 <p>The following is an example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val tealView <span style="color:#f92672">=</span> TealiumView<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;VIEW_NAME&#34;</span><span style="color:#f92672">,</span> mutableMapOf<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;key&#34;</span> to <span style="color:#e6db74">&#34;value&#34;</span><span style="color:#f92672">))</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val tealView <span style="color:#f92672">=</span> TealiumView<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;VIEW_NAME&#34;</span><span style="color:#f92672">,</span> mutableMapOf<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;KEY&#34;</span> to <span style="color:#e6db74">&#34;VALUE&#34;</span><span style="color:#f92672">))</span>
 </span></span><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">track</span><span style="color:#f92672">(</span>tealView<span style="color:#f92672">);</span>
-</span></span></code></pre></div><h2 id="track-events">Track Events</h2>
+</span></span></code></pre></div><p>Replace the following:</p>
+<ul>
+<li><code>VIEW_NAME</code> with the name of the screen view you want to track.</li>
+<li><code>KEY:VALUE</code>: an object of key-value pairs with data associated with the event you want to track.</li>
+</ul>
+<h2 id="track-events">Track Events</h2>
 <p>To track non-view events, pass an instance of <code>TealiumEvent(eventName:dataLayer:)</code> to the <a href="/platforms/android-kotlin/api/tealium/#track"><code>track()</code></a> method.  <code>TealiumEvent</code> is comprised of an event name, which appears in the tracking call as <code>tealium_event</code>, and an optional data dictionary.</p>
 <p>The following is an example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val tealEvent <span style="color:#f92672">=</span> TealiumEvent<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;EVENT_NAME&#34;</span><span style="color:#f92672">,</span> mutableMapOf<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;key&#34;</span> to <span style="color:#e6db74">&#34;value&#34;</span><span style="color:#f92672">))</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val tealEvent <span style="color:#f92672">=</span> TealiumEvent<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;EVENT_NAME&#34;</span><span style="color:#f92672">,</span> mutableMapOf<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;KEY&#34;</span> to <span style="color:#e6db74">&#34;VALUE&#34;</span><span style="color:#f92672">))</span>
 </span></span><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">track</span><span style="color:#f92672">(</span>tealEvent<span style="color:#f92672">);</span>
-</span></span></code></pre></div><h2 id="timed-events">Timed Events</h2>
+</span></span></code></pre></div><p>Replace the following:</p>
+<ul>
+<li><code>EVENT_NAME</code> with the name of the non-view event you want to track.</li>
+<li><code>KEY:VALUE</code>: an object of key-value pairs with data associated with the event you want to track.</li>
+</ul>
+<h2 id="timed-events">Timed Events</h2>
 <p><a href="/platforms/getting-started-mobile/timed-events/">Timed events</a> measure the duration of an event or the duration between two events. Timed events are triggered automatically or manually.</p>
 <h3 id="automatic-triggers">Automatic Triggers</h3>
 <p>Automatically track the duration between events by setting <a href="/platforms/android-kotlin/api/tealium-config/#timedeventtriggers"><code>timedEventTriggers</code></a> to a list of <code>EventTrigger</code> objects, specifying the names of the start and stop events.</p>
@@ -206,7 +216,12 @@ var utag_data = {
 <h3 id="join-trace">Join Trace</h3>
 <p>Join a trace with the specified ID by calling <a href="/platforms/android-kotlin/api/tealium/#jointrace"><code>joinTrace()</code></a>. Learn more about the <a href="/server-side/connectors/trace/manage/">Trace</a> feature in the Tealium Customer Data Hub.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;INSTANCE_NAME&#34;</span><span style="color:#f92672">]?.</span><span style="color:#a6e22e">joinTrace</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;TRACE_ID&#34;</span><span style="color:#f92672">)</span>
-</span></span></code></pre></div><h3 id="leave-trace">Leave trace</h3>
+</span></span></code></pre></div><p>Replace the following:</p>
+<ul>
+<li><code>INSTANCE_NAME</code>: the instance name you used when initializing the Tealium Kotlin library.</li>
+<li><code>TRACE_ID</code>: the ID of the trace you want to join.</li>
+</ul>
+<h3 id="leave-trace">Leave trace</h3>
 <p>A trace remains active for the duration of the app session until you call <a href="/platforms/android-kotlin/api/tealium/#leavetrace"><code>leaveTrace()</code></a>, which leaves a previously joined trace and ends the visitor session.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;INSTANCE_NAME&#34;</span><span style="color:#f92672">]?.</span><span style="color:#a6e22e">leaveTrace</span><span style="color:#f92672">()</span>
 </span></span></code></pre></div><p>End the visitor session remotely with <a href="/platforms/android-kotlin/api/tealium/#endtracevisitorsession"><code>endTraceVisitorSession()</code></a>, which does not terminate the SDK session or reset the session ID.</p>
@@ -271,7 +286,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 9, 2024 
+          <p>This page was last updated:  April 17, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

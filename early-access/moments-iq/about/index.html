@@ -180,16 +180,22 @@ var utag_data = {
 <div class="prose nested-links" id="prose">
   <p class="note"><i class="fa fa-exclamation-triangle"></i>Moments iQ is in Early Access and is only available to select customers. If you are interested in trying this feature, contact your Tealium Support representative.</p>
 <h2 id="requirements">Requirements</h2>
-<p>If you plan to integrate Moments iQ with server-side products, you will need the following:</p>
+<p>Moments iQ requires the following product:</p>
 <ul>
-<li>Tealium AudienceStream or Tealium EventStream.</li>
-<li><a href="/server-side/attributes/data-layer-enrichment/">Data Layer Enrichment</a> enabled.</li>
-<li>The most recent version of the <a href="/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a>.</li>
+<li>Tealium iQ Tag Management</li>
 </ul>
-<h2 id="how-it-works">How it works</h2>
-<p>Moments iQ allows you to create an experience on your website that collects preferences and sentiments (aka zero-party data) in real-time directly from your visitors. With this data, you can better understand what your visitors want and how they want to be seen by your brand, without the need for additional tools. You can create more robust audiences, which lead to deeper and more meaningful customer relationships that you can use to further personalize the visitor experience or engage with them through connectors.</p>
-<p>Zero-party data is information that you collect directly from a customer. You can ask them specific questions about their preferences, purchase intentions, or recent shopping experiences. Zero-party data is declarative, while first-party data in inferred from visitor activity, such as their browsing activity on your site and their purchases.</p>
-<p>An experience example:</p>
+<p>To integrate Moments iQ with server-side products, you will need the following:</p>
+<ul>
+<li>Tealium AudienceStream or Tealium EventStream</li>
+<li>The most recent version of the <a href="/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a></li>
+</ul>
+<p>To use AudienceStream variables in Moments iQ rules, you will need the following:</p>
+<ul>
+<li><a href="/server-side/attributes/data-layer-enrichment/">Data Layer Enrichment</a> enabled</li>
+</ul>
+<h2 id="about-moments-iq">About Moments iQ</h2>
+<p>Moments iQ lets you create an embedded or modal experience on your website that collects preferences and sentiments (aka zero-party data) in real time directly from your visitors. Zero-party data is information that you collect directly from a customer, while first-party data is inferred from visitor activity, such as their browsing activity on your site and their purchases. With this data, you can better understand what your visitors want, their current intentions, and how they want to be seen by your brand, without the need for additional tools. If you enrich visitor profiles with this data, you can create more robust and accurate audiences that let you engage with your customers in a more meaningful way that fosters an open and trusted relationship with your brand.</p>
+<p>The following example collects information about a visitor&rsquo;s job function:</p>
 <figure><a class="slb" href="/images/moments-iq/moments-iq-example.png"><img src="/images/moments-iq/moments-iq-example.png"
          alt="Moments iQ Example"
          title="Moments iQ Example"/>
@@ -198,26 +204,27 @@ var utag_data = {
 <h2 id="features">Features</h2>
 <p>Moments iQ provides the following features:</p>
 <ul>
+<li><strong>Easy installation</strong>
+Moments iQ configuration is bundled with your existing installation of our JavaScript library (<code>utag.js</code>). No additional code on your site is necessary.</li>
 <li><strong>Multiple question formats</strong><br>
-Customize the question that will guide the visitor to the right experience on your site.</li>
+Supports radio buttons, checkboxes, and text box answers.</li>
 <li><strong>Custom style and appearance</strong><br>
 Match the look and feel of your site to provide your visitors with a seamless experience. You can also position the experience anywhere on a page or you can pop up the experience in a styled modal window.</li>
-<li><strong>Target with rules and events</strong><br>
-Set the conditions to determine whether the experience appears on a page or the visitor behavior that triggers the appearance of the experience.</li>
+<li><strong>Precision targeting</strong><br>
+Determine when, where, and to whom an experience is displayed by leveraging load rules, visitor data and event listeners</li>
 <li><strong>Privacy by design</strong><br>
-Data is collected, processed, and stored appropriately based on your profile configuration.</li>
+Data is collected, transformed, and sent appropriately through built-in tracking calls based on the visitor’s consent preferences.</li>
 <li><strong>Seamless integration</strong><br>
 Send the event data to AudienceStream to enhance visitor profiles, assign badges, or update audience membership to trigger connectors.</li>
 <li><strong>Real-time data collection</strong><br>
-Instantly update the visitor&rsquo;s profile for immediate personalization and a better user experience.</li>
+Instantly update the visitor&rsquo;s profile for immediate personalization, more accurate visitor profiles, or send responses to any of our thousands of integrations.</li>
 </ul>
-<p>Moments iQ configuration is bundled with your existing installation of our JavaScript library (<code>utag.js</code>). No additional code on your site is necessary.</p>
 <h2 id="steps">Steps</h2>
 <p>Moments iQ is set up through the following screens in the <a href="/early-access/moments-iq/manage/">Moments iQ tag</a>:</p>
 <ul>
-<li><strong>Tag configuration</strong>: Configure the tag&rsquo;s position and appearance on the page.</li>
-<li><strong>Load rules and event listeners</strong>: Set the conditions to determine whether the experience appears on a page or the visitor behavior that triggers the appearance of the experience.</li>
-<li><strong>Data mapping</strong>: Set overrides for configuration options.</li>
+<li><strong>Tag configuration</strong>: Configure the experience&rsquo;s position and appearance on the page.</li>
+<li><strong>Load rules and event listeners</strong>: Set the conditions to determine when, where, and to whom an experience is displayed.</li>
+<li><strong>Data mapping</strong>: Advanced settings to set and override prompt styling or configuration.</li>
 </ul>
 <h2 id="events">Events</h2>
 <p>When the visitor submits or closes the experience, the browser sends a <code>utag.track</code> call with the relevant data for your tags and extensions to process.</p>
@@ -241,8 +248,14 @@ Instantly update the visitor&rsquo;s profile for immediate personalization and a
 <tr>
 <td><code>momentsiq_question1</code></td>
 <td>String</td>
-<td>The name of the question that the visitor answered. If they did not answer a question, this variable is blank.</td>
+<td>The question asked in the experience.</td>
 <td><code>What is your favorite color?</code></td>
+</tr>
+<tr>
+<td><code>momentsiq_questions_answered</code></td>
+<td>String</td>
+<td>The question that the visitor answered. If the visitor did not answer a question, this variable is blank. This variable lets you to eventually filter out blank values to avoid contaminating your data.</td>
+<td><code>&quot;test1&quot;</code></td>
 </tr>
 <tr>
 <td><code>momentsiq_question1_type</code></td>
@@ -262,6 +275,12 @@ Instantly update the visitor&rsquo;s profile for immediate personalization and a
 <td>If the visitor clicked the primary button, the answer or answers that the visitor entered or selected. Multiple answers are separated by the pipe (|) character.</td>
 <td><code>Red</code></td>
 </tr>
+<tr>
+<td><code>momentsiq_suppress</code></td>
+<td>Whether to automatically suppress experiences for returning visitors.</td>
+<td><code>never</code></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h3 id="examples">Examples</h3>
@@ -270,6 +289,7 @@ Instantly update the visitor&rsquo;s profile for immediate personalization and a
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_event&#34;</span>: <span style="color:#e6db74">&#34;momentsiq_submit&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;momentsiq_id&#34;</span>: <span style="color:#e6db74">&#34;54&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;momentsiq_question1_type&#34;</span>: <span style="color:#e6db74">&#34;radio&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;momentsiq_questions_answered&#34;</span>: <span style="color:#e6db74">&#34;question1&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;momentsiq_question1&#34;</span>: <span style="color:#e6db74">&#34;What is your favorite color?&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;momentsiq_answer1&#34;</span>: <span style="color:#e6db74">&#34;Blue&#34;</span>
 </span></span><span style="display:flex;"><span>}
@@ -278,12 +298,14 @@ Instantly update the visitor&rsquo;s profile for immediate personalization and a
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_event&#34;</span>: <span style="color:#e6db74">&#34;momentsiq_submit&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;momentsiq_id&#34;</span>: <span style="color:#e6db74">&#34;55&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;momentsiq_question1_type&#34;</span>: <span style="color:#e6db74">&#34;checkbox&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;momentsiq_questions_answered&#34;</span>: <span style="color:#e6db74">&#34;question1&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;momentsiq_question1&#34;</span>: <span style="color:#e6db74">&#34;What is your favorite color?&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;momentsiq_answer1&#34;</span>: <span style="color:#e6db74">&#34;Blue|Purple&#34;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>This is the event for an experience that the visitor closed before answering or submitting:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;tealium_event&#34;</span> : <span style="color:#e6db74">&#34;momentsiq_close&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;momentsiq_questions_answered&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;momentsiq_id&#34;</span>  : <span style="color:#e6db74">&#34;56&#34;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>For a basic example of a Moments iQ experience, see <a href="/early-access/moments-iq/example/">Moments iQ example</a>.</p>
@@ -332,7 +354,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 22, 2024 
+          <p>This page was last updated:  April 12, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -347,7 +369,7 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#about-moments-iq" href="javascript:void(0)">About Moments iQ</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#features" href="javascript:void(0)">Features</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#steps" href="javascript:void(0)">Steps</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#events" href="javascript:void(0)">Events</a></li>

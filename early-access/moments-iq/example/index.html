@@ -172,27 +172,20 @@ var utag_data = {
 
   
     <p class="f4 fw3 lh-copy">
-      This article provides a example of Moments iQ experience leading a visitor through expertise assessment.
+      This article provides an example of Moments iQ experience leading a visitor through expertise assessment.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>In the following example, we will embed an experience on an electronics site to ask the visitor what their level of expertise is. This will help you determine the level of comfort the visitor has with product line, which you might use for suggested additional services and products such as home installation services or additional accessories like speaker cable or extended warranties.</p>
+  <p>In the following example, we embed an experience on an electronics site to ask the visitor what their level of expertise is. This helps you determine the level of comfort the visitor has with the product line, which you might use for suggesting additional services and products such as home installation services or additional accessories like speaker cable or extended warranties.</p>
 <h2 id="requirements">Requirements</h2>
 <p>This example requires the following:</p>
 <ul>
 <li>Moments iQ.</li>
 </ul>
-<h2 id="step-1-create-data-layer-variables">Step 1: Create data layer variables</h2>
-<p>Add the following Moments iQ variables to the data layer using <strong>Bulk Import From CSV</strong>:</p>
-<pre tabindex="0"><code>momentsiq_question1, UDO Variable
-momentsiq_question1_type, UDO Variable
-momentsid_id, UDO Variable
-momentsiq_answer1, UDO Variable
-</code></pre><p>For more information about adding data layer variables in bulk, see <a href="/iq-tag-management/data-layer/manage-variables/#bulk-import-variables">Manage variables</a>.</p>
-<h2 id="step-2-create-tag">Step 2: Create tag</h2>
-<p>The following experience will appear on a category page.</p>
+<h2 id="step-1-create-tag">Step 1 Create tag</h2>
+<p>The following experience appears on the home page.</p>
 <p><a href="/early-access/moments-iq/manage/#create-a-moments-iq-tag">Create a Moments iQ experience</a> for the first engagement with the visitor by adding a Tealium Moments iQ tag with the following properties:</p>
 <ul>
 <li><strong>Title</strong>: <code>Visitor expertise</code></li>
@@ -214,23 +207,20 @@ momentsiq_answer1, UDO Variable
 <li><strong>Operator</strong>: <code>equals (ignore case)</code></li>
 <li><strong>Value</strong>: <code>home</code></li>
 </ul>
-<h2 id="step-3-store-the-answer">Step 3: Store the answer</h2>
-<p>To personalize the visitor experience using the visitor responses to Moments iQ experiences, you need to store the visitor&rsquo;s responses in local or session storage, depending on the application and use case.</p>
-<p>To accomplish this, use a JavaScript Code extension to store the answer in local storage using the variable <code>momentsiq_id</code> (the UID of the Moments iQ tag) to specify a dynamic key.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">setItem</span>(<span style="color:#e6db74">&#39;moments_answer_&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>[<span style="color:#e6db74">&#39;momentsiq_id&#39;</span>], <span style="color:#a6e22e">b</span>[<span style="color:#e6db74">&#39;momentsiq_answer1&#39;</span>]);
-</span></span></code></pre></div><p>Be sure to add a condition to the extension so that it only runs when the <code>momentsiq_submit</code> event occurs:</p>
-<figure><a class="slb" href="/images/moments-iq/moments-js-code-extension-condition.png"><img src="/images/moments-iq/moments-js-code-extension-condition.png"/>
+<p>For the purposes of this example, assume that the tag UID is <code>123</code>.</p>
+<h2 id="step-2-store-the-answer">Step 2: Store the answer</h2>
+<p>To personalize the visitor experience using the visitor responses to Moments iQ experiences, you need to store the visitor&rsquo;s responses. Because this example uses only client-side functionality and the visitor&rsquo;s web browser, use a Persist data values extension to store the values in a cookie.</p>
+<p>In the following example, we are storing the value in the cookie <code>MomentsiQExp123</code> for as long as the visitor&rsquo;s browser is set to store cookies:</p>
+<figure><a class="slb" href="/images/early-access/moments-iq/manage-moments-persist-data-value.png"><img src="/images/early-access/moments-iq/manage-moments-persist-data-value.png"
+         alt="Persist Data Value"
+         title="Persist Data Value"/>
     </a>
 </figure>
-<p>The resulting key/value in local storage will look like this:</p>
-<figure><a class="slb" href="/images/moments-iq/moments-local-storage.png"><img src="/images/moments-iq/moments-local-storage.png"/>
-    </a>
-</figure>
-<p>If you need to retrieve the value that has been stored:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">answer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">getItem</span>(<span style="color:#e6db74">&#39;moments_answer_&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>[<span style="color:#e6db74">&#39;momentsiq_id&#39;</span>]);
-</span></span></code></pre></div><p>For more information, see <a href="/iq-tag-management/data-layer/data-layer-variables/#local-and-session-storage">Local and session storage</a> and <a href="/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Advanced JavaScript Code Extension</a>.</p>
+<p>Be sure to add a condition to the extension so that it runs only when the <code>momentsiq_submit</code> event occurs. In this case, we check for <code>momentsiq_id</code> to equal <code>123</code>.</p>
+<p>You can access the data from the cookie through a JavaScript extension as <code>b[&quot;MomentsiQExp123&quot;,&quot;momentsiq_answer1&quot;]</code> or through the <code>MomentsiQExp123</code> cookie variable.</p>
+<p>For more information, see <a href="/iq-tag-management/extensions/extensions-list/persist-data-value-extension/">Persist data value extension</a>.</p>
 <h2 id="results">Results</h2>
-<p>When the visitor loads the home page, the home page will embed the experience after the beginning of the <code>div.col-main</code> element.</p>
+<p>When the visitor loads the home page, the home page embeds the experience after the beginning of the <code>div.col-main</code> element.</p>
 <figure><a class="slb" href="/images/moments-iq/momentsiq-example-home-theater.png"><img src="/images/moments-iq/momentsiq-example-home-theater.png"/>
     </a>
 </figure>
@@ -294,7 +284,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 22, 2024 
+          <p>This page was last updated:  April 12, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -309,10 +299,9 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-1-create-data-layer-variables" href="javascript:void(0)">Step 1: Create data layer variables</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-2-create-tag" href="javascript:void(0)">Step 2: Create tag</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-1-create-tag" href="javascript:void(0)">Step 1 Create tag</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-load-rule" href="javascript:void(0)">Create load rule</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-3-store-the-answer" href="javascript:void(0)">Step 3: Store the answer</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-2-store-the-answer" href="javascript:void(0)">Step 2: Store the answer</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#results" href="javascript:void(0)">Results</a></li>
               </nav>
   </aside></nav>

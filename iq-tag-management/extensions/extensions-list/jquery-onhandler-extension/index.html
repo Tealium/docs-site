@@ -433,15 +433,17 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="prerequisites">Prerequisites</h2>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>The built-in event listener system provides a no-code solution that does not require jQuery to listen for and trigger tracking events. For more information, see <a href="/iq-tag-management/events/about/">About events</a>.</p>
+<h2 id="requirements">Requirements</h2>
+<p>This extension requires the following:</p>
 <ul>
-<li>jQuery version 1.7 and up</li>
+<li>jQuery version 1.7 and later</li>
 </ul>
 <h2 id="how-it-works">How it works</h2>
-<p>Use the jQuery onHandler extension works by selecting a jQuery selector identifier to be tracked, and then selecting the type of trigger action event. Standard on-page events, such as click, mouse down, focus, and others may be tracked by providing custom JavaScript code.</p>
+<p>The jQuery onHandler extension works by selecting a jQuery selector identifier to be tracked, and then selecting the type of trigger action event. Standard on-page events, such as click, mouse down, focus, and others may be tracked by providing custom JavaScript code.</p>
 <h2 id="using-the-extension">Using the extension</h2>
 <p>Before you begin, familiarize yourself with <a href="/iq-tag-management/extensions/about/">how extensions work</a>.</p>
-<p>Once the extension is added, it has several configuration options. If you are fimilar with the <a href="http://api.jquery.com/on/">jQuery on() method</a> then these settings will be familiar.</p>
+<p>Once the extension is added, it has several configuration options. If you are familiar with the <a href="http://api.jquery.com/on/">jQuery on() method</a>, then these settings will be familiar.</p>
 <ul>
 <li>
 <p><strong>jQuery Selector</strong>: A selector string to filter the elements from the primary selected elements that trigger the event.</p>
@@ -472,7 +474,10 @@ var utag_data = {
 </ul>
 </li>
 <li>
-<p><strong>Set To</strong>: Used with the link and view actions, this allows you to set data layer variables to be passed to <code>utag.view()</code> and <code>utag.link()</code>.</p>
+<p><strong>Set</strong>: Select the variables you want to set.</p>
+</li>
+<li>
+<p><strong>To</strong>: Select the type of value you want to assign to the variable. In the adjacent text field, enter the new value. If you want to set more variables, click the <strong>+</strong> button at the end of the text box.</p>
 </li>
 <li>
 <p><strong>Condition</strong>: (Optional) A condition can be added to control if the extension should run at all.</p>
@@ -501,11 +506,11 @@ var utag_data = {
 <h3 id="order-of-operations">Order of operations</h3>
 <p>It&rsquo;s important to note that this extension always runs at DOM Ready. This means it runs once on page load and out of band from the All Tags extensions. Learn more about <a href="/iq-tag-management/getting-started/order-of-operations/">Order of Operations</a>.</p>
 <h3 id="working-with-the-data-layer">Working with the data layer</h3>
-<p>It&rsquo;s common to need to reference variables in your data layer in this extension, either to create conditions or to set values in the tracking call. It&rsquo;s important to know how this works so that you can be sure the extension is doing what you expect.</p>
+<p>It&rsquo;s common to need to reference variables in your data layer in this extension, either to create conditions or to set values in the tracking call. It&rsquo;s important to know how this works so that you can ensure that the extension is doing what you expect.</p>
 <h3 id="conditions">Conditions</h3>
 <p>If you add a condition to this extension, the values will be referenced in the object <code>utag.data</code> . This is the data object that gets created as the Universal Tag runs in the page.</p>
 <h3 id="set-variables">Set variables</h3>
-<p>If you trigger a view or link event, then you will likley also be setting data layer variables as part of the tracking event. If you don&rsquo;t set any variables, then an empty tracking is made:</p>
+<p>If you trigger a view or link event, then you will likely also be setting data layer variables as part of the tracking event. If you don&rsquo;t set any variables, then an empty tracking call is made:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">link</span>(); <span style="color:#75715e">// or utag.view()
 </span></span></span></code></pre></div><p>If you do set variables, then they will be set and passed in an anonymous data object to the tracking call, like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">link</span>({
@@ -602,7 +607,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  April 12, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -616,7 +621,7 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#prerequisites" href="javascript:void(0)">Prerequisites</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#using-the-extension" href="javascript:void(0)">Using the extension</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#generated-code" href="javascript:void(0)">Generated code</a></li>
