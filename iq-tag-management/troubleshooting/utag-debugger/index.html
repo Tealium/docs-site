@@ -189,7 +189,6 @@ var utag_data = {
         <a href="/iq-tag-management/events/event-types/click-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".click-event">Click event</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/events/event-types/element-visibility-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".element-visibility-event">Element visibility event</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/events/event-types/form-submission-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".form-submission-event">Form submission event</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/iq-tag-management/events/event-types/hash-change-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".hash-change-event">Hash change event</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/events/event-types/html5-video-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".html5-video-event">HTML5 video event</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/events/event-types/mouseover-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mouseover-event">Mouseover event</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/iq-tag-management/events/event-types/page-view-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".page-view-event">Page view event</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -432,12 +431,14 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
-<p>The Universal Tag (UTAG) Debugger is a tool used for validating the <a href="/platforms/javascript/universal-data-object/">Universal Data Object</a> and <a href="/platforms/javascript/track/">event tracking calls</a>. The UTAG Debugger displays the data layer and the data captured by each tracking event within <code>utag.js</code>.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>The data objects displayed in the tool are captured after extensions scoped to <strong>All Tags - Before Load Rules</strong> and before extensions scoped to <strong>All Tags - After Load Rules</strong>. Learn more about <a href="/iq-tag-management/getting-started/order-of-operations/">order of operations</a>.</p>
+<p>The Universal Tag (UTAG) Debugger tool displays the <a href="/platforms/javascript/universal-data-object/">Universal Data Object</a> and event tracking callstriggered by <code>utag.js</code> on a site.</p>
+<figure><a class="slb" href="/images/iq-tag-management/utag-debugger.png"><img src="/images/iq-tag-management/utag-debugger.png"/>
+    </a>
+</figure>
 <h2 id="install">Install</h2>
 <h3 id="tealium-tools">Tealium Tools</h3>
-<p>To install as a Tealium Tool, you must first install the <a href="/iq-tag-management/tealium-tools/browser-extension/">Tealium Tools Browser Extension</a>.</p>
-<p>After you install the extension, use the following steps to add the custom tool:</p>
+<p>To install UTAG Debugger as a Tealium Tool, first install the <a href="/iq-tag-management/tealium-tools/browser-extension/">Tealium Tools Browser Extension</a>.</p>
+<p>After you install the extension, follow these steps to add the custom tool:</p>
 <ol>
 <li>Click the Tealium icon in the upper-right of your browser to open Tealium Tools.</li>
 <li>Go to the <strong>Custom Tools</strong> tab and click the square for <strong>+ Custom Tools</strong>, then click <strong>Add Custom Tools</strong>.</li>
@@ -449,71 +450,78 @@ var utag_data = {
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;no_ui&#34;</span> : <span style="color:#66d9ef">true</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;scripts&#34;</span> : {
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;utag_monitor&#34;</span> : {
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;js&#34;</span> : <span style="color:#e6db74">&#34;void(window.open(\&#34;\&#34;,\&#34;utagmon\&#34;,\&#34;width=600,height=600,location=0,menubar=0,status=1,toolbar=0,resizable=1,scrollbars=1\&#34;).document.write(\&#34;&lt;script language=&#39;JavaScript&#39; id=&#39;utagmon&#39; src=&#39;//tags.tiqcdn.com/utag/tealium-solutions/main/prod/utag.4.js?opt_show_enrich=0&amp;opt_show_meta=0&amp;opt_show_query=0&amp;opt_show_jspage=0&amp;opt_show_tiq=1&amp;opt_show_cookie=0&amp;_cb=\&#34;+Math.random()+\&#34;&#39;&gt;&lt;/\&#34;+\&#34;script&gt;\&#34;));&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;js&#34;</span> : <span style="color:#e6db74">&#34;void(window.open(\&#34;\&#34;,\&#34;utagmon\&#34;,\&#34;width=700,height=600,location=0,menubar=0,status=1,toolbar=0,resizable=1,scrollbars=1\&#34;).document.write(\&#34;&lt;script language=&#39;JavaScript&#39; id=&#39;utagmon&#39; src=&#39;//tags.tiqcdn.com/utag/tealium-solutions/main/prod/utag.4.js?opt_show_enrich=0&amp;opt_show_meta=0&amp;opt_show_query=0&amp;opt_show_jspage=0&amp;opt_show_tiq=1&amp;opt_show_cookie=0&amp;_cb=\&#34;+Math.random()+\&#34;&#39;&gt;&lt;/\&#34;+\&#34;script&gt;\&#34;));&#34;</span>,
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;auto_inject&#34;</span> : <span style="color:#66d9ef">true</span>
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></li>
-<li>When complete, a new button with the tool name will display on the <strong>Custom Tools</strong> tab.</li>
+<li>When complete, a new button with the tool name appears on the <strong>Custom Tools</strong> tab.</li>
 </ol>
 <h3 id="bookmarklet">Bookmarklet</h3>
-<p>You can optionally create a bookmarklet to launch the tool.</p>
-<p>To create the bookmarklet, copy the following code into the URL of the new bookmark:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">javascript</span><span style="color:#f92672">:</span><span style="color:#66d9ef">void</span>(window.<span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#e6db74">&#34;utagmon&#34;</span>,<span style="color:#e6db74">&#34;width=600,height=600,location=0,menubar=0,status=1,toolbar=0,
+<p>To install UTAG Debugger as a bookmark, copy the following code into the URL of a new bookmark:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">javascript</span><span style="color:#f92672">:</span><span style="color:#66d9ef">void</span>(window.<span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#e6db74">&#34;utagmon&#34;</span>,<span style="color:#e6db74">&#34;width=700,height=600,location=0,menubar=0,status=1,toolbar=0,
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">resizable=1,scrollbars=1&#34;</span>).document.<span style="color:#a6e22e">write</span>(<span style="color:#e6db74">&#34;&lt;script language=&#39;JavaScript&#39; id=&#39;utagmon&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">src=&#39;//tags.tiqcdn.com/utag/tealium-solutions/main/prod/utag.4.js?
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">opt_show_enrich=0&amp;opt_show_meta=0&amp;opt_show_tiq=1&amp;opt_show_dom=0&amp;opt_show_jspage=0&amp;opt_show_cookie=0&amp;_cb=&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">+</span>Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;&#39;&gt;&lt;/&#34;</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;script&gt;&#34;</span>))
-</span></span></code></pre></div><h2 id="using-the-utag-debugger-tool">Using the UTAG Debugger tool</h2>
-<p>Use the following steps to begin using the UTAG Debugger tool:</p>
+</span></span></code></pre></div><h2 id="use-utag-debugger">Use UTAG Debugger</h2>
+<p>To launch UTAG Debugger, follow these steps:</p>
 <ol>
-<li>Navigate to your desired website.</li>
-<li>Open Tealium Tools and click the <strong>Custom Tools</strong> tab.</li>
-<li>Click the <strong>Ud</strong> button.<br>
-The <strong>Universal Tag Debugger</strong> tool appears.<br>
-If you created a bookmark to use, simply click the bookmarklet in your toolbar.<figure><a class="slb" href="/images/iq-tag-management/screen-shot-2020-10-12-at-11.48.29-am.png"><img src="/images/iq-tag-management/screen-shot-2020-10-12-at-11.48.29-am.png"
-         alt="Toolbar Bookmarklet for UTAG Debugger"
-         title="Toolbar Bookmarklet for UTAG Debugger" width="427" height="425"/>
-    </a>
-</figure></li>
+<li>Navigate to your site.</li>
+<li>For Tealium Tools, open Tealium Tools, click the <strong>Custom Tools</strong> tab, and click the <strong>Ud</strong> button.<br>
+<figure><a class="slb" href="/images/iq-tag-management/utag-debugger-custom-tool.png"><img src="/images/iq-tag-management/utag-debugger-custom-tool.png"/>
+        </a>
+    </figure></li>
+<li>For the bookmarklet, click the bookmark in your browser toolbar.
+<figure><a class="slb" href="/images/iq-tag-management/utag-debugger-bookmarklet.png"><img src="/images/iq-tag-management/utag-debugger-bookmarklet.png"/>
+        </a>
+    </figure></li>
 </ol>
-<p>The top section displays which <code>utag.js</code> file was detected on the page and contains the following:</p>
+<h3 id="version-and-display-options">Version and display options</h3>
+<p>When UTAG Debugger is open, the top section displays the <code>utag.js</code> file detected on the page with the following information:</p>
 <ul>
-<li><code>account/profile/environment</code> path</li>
-<li>the version of <code>utag</code></li>
-<li>a number of display options for changing what data will display in the viewing area</li>
+<li>The <code>account/profile/environment</code> of the <code>utag.js</code> file on the page.</li>
+<li>The version of the <code>utag.js</code> file on the page.</li>
 </ul>
-<h3 id="options">Options</h3>
-<p>The following options are available to help you use and navigate the tool:</p>
-<ul>
-<li><strong>Bookmarklet</strong> – You can re-save your display options by dragging the bookmarklet link from the upper-right corner of the popup back to your toolbar.</li>
-<li><strong>Events</strong> – The tracking events detected on the page will either be <code>view</code> events or <code>link</code> events, toggle these checkboxes to filter the display.</li>
-<li><strong>Show Data</strong> – The UDO data will always be displayed, but additional data sources collected by UTAG can be displayed by toggling these checkboxes.</li>
-</ul>
-<h3 id="data-variables">Data variables</h3>
-<p>The following data variables are available:</p>
-<figure><a class="slb" href="/images/iq-tag-management/screen-shot-2020-10-12-at-11.52.33-am.png"><img src="/images/iq-tag-management/screen-shot-2020-10-12-at-11.52.33-am.png"
-         alt="Data Layer Variables"
-         title="Data Layer Variables" width="424" height="88"/>
+<figure><a class="slb" href="/images/iq-tag-management/utag-debugger-options.png"><img src="/images/iq-tag-management/utag-debugger-options.png"/>
     </a>
 </figure>
+<p>Use the following features:</p>
 <ul>
-<li><strong>iQ</strong> – Built-in data collected by <code>utag.js</code>, including DOM attributes and variables prefixed with <code>ut</code> (for example: <code>ut.profile</code>)</li>
-<li><strong>Cookie</strong> – All first party cookies available in the page</li>
-<li><strong>JS Page</strong> – JavaScript page variables defined in your data layer (variables other than <code>utag_data</code>)</li>
-<li><strong>Querystring</strong> – Query string variables found in the URL</li>
-<li><strong>Meta</strong> – All meta data values available in the page</li>
-<li><strong>AudienceStream</strong> – Variables populated by data layer enrichment</li>
+<li>
+<p><strong>Bookmarklet</strong> – Save your preferred display options by dragging the link to your browser&rsquo;s toolbar.</p>
+</li>
+<li>
+<p><strong>Events</strong> – The tracking events detected on the page are either <code>view</code> events or <code>link</code> events. Toggle these checkboxes to filter the display.</p>
+</li>
+<li>
+<p><strong>Scope</strong> - Select the scope of the UDO data to display. The default is <strong>Before load rules</strong>.</p>
+  <p class="tip"><i class="fa fa-info-circle"></i>The UDO variables displayed in the tool are captured after extensions scoped to <strong>All Tags - Before Load Rules</strong> and after extensions scoped to <strong>All Tags - After Load Rules</strong>. Learn more about <a href="/iq-tag-management/getting-started/order-of-operations/">order of operations</a>.</p>
+</li>
+<li>
+<p><strong>Show Data</strong> – Select the variable types to display. The UDO variables are always displayed.</p>
+</li>
 </ul>
-<h3 id="event-display-area">Event display area</h3>
-<p>The event display area automatically updates as you navigate or trigger in-page events. New pages are listed as <code>utag_view</code> events and in-page events are listed as <code>utag_link</code> events.</p>
-<figure><a class="slb" href="/images/iq-tag-management/utagmon-event-display.jpg"><img src="/images/iq-tag-management/utagmon-event-display.jpg"
-         alt="UTAG Event Display"
-         title="UTAG Event Display" width="538" height="344"/>
+<h3 id="variable-types">Variable types</h3>
+<p>The following variable types are available:</p>
+<ul>
+<li><strong>iQ</strong> – Built-in data collected by <code>utag.js</code>, including DOM attributes and variables prefixed with <code>ut.</code> (for example: <code>ut.profile</code>).</li>
+<li><strong>Cookie</strong> – All first-party cookies available in the page.</li>
+<li><strong>JS Page</strong> – JavaScript page variables defined in your data layer (variables other than <code>utag_data</code>).</li>
+<li><strong>Querystring</strong> – Query string variables found in the URL.</li>
+<li><strong>Meta</strong> – All meta data values available in the page.</li>
+<li><strong>AudienceStream</strong> – Variables populated by data layer enrichment.</li>
+<li><strong>Local storage</strong> – Local storage variables defined in your data layer.</li>
+<li><strong>Session storage</strong> – Session storage variables defined in your data layer.</li>
+</ul>
+<p>For more information, see <a href="/iq-tag-management/data-layer/data-layer-variables/">Data layer variable types</a>.</p>
+<h3 id="events">Events</h3>
+<p>The data display area automatically updates as you navigate or trigger events. New pages are listed as <code>utag_view</code> events and in-page events are listed as <code>utag_link</code> events.</p>
+<p>The following example shows two pages visited and one event triggered. The result is two <code>utag_view</code> entries and one <code>utag_link</code> entry. The most recent activity always appears at the top.</p>
+<figure><a class="slb" href="/images/iq-tag-management/utagmon-event-display.jpg"><img src="/images/iq-tag-management/utagmon-event-display.jpg"/>
     </a>
 </figure>
-<p>The example above shows two pages visited and one event triggered. This results in two <code>utag_view</code> entries and one <code>utag_link</code>. The most recent activity always appears at the top.</p>
 
 </div>
 
@@ -559,7 +567,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 18, 2024 
+          <p>This page was last updated:  April 25, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -577,10 +585,10 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#install" href="javascript:void(0)">Install</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-tools" href="javascript:void(0)">Tealium Tools</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#bookmarklet" href="javascript:void(0)">Bookmarklet</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#using-the-utag-debugger-tool" href="javascript:void(0)">Using the UTAG Debugger tool</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#options" href="javascript:void(0)">Options</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-variables" href="javascript:void(0)">Data variables</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-display-area" href="javascript:void(0)">Event display area</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#use-utag-debugger" href="javascript:void(0)">Use UTAG Debugger</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#version-and-display-options" href="javascript:void(0)">Version and display options</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#variable-types" href="javascript:void(0)">Variable types</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#events" href="javascript:void(0)">Events</a></li>
               </nav>
   </aside></nav>
 

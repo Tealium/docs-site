@@ -522,6 +522,8 @@ var utag_data = {
 <li>Functions have 32 MB of memory.<br>
 If a function attempts to use more than 32 MB, the following error is written to the log:<br>
 <code>Exception 400 BAD REQUEST - OutOfMemoryError: memory limit 32 mb is exceeded.</code></li>
+<li>Maximum function size is 64 KB, which is approximately 1500 lines of code.<br>
+Functions larger than 64 KB cannot be saved until the size has been reduced.</li>
 </ul>
 <h3 id="runtime-versions">Runtime Versions</h3>
 <p>The execution environment for functions, referred to as the runtime version, varies depending on the function type, as follows:</p>
@@ -535,14 +537,12 @@ If a function attempts to use more than 32 MB, the following error is written to
 </ul>
 </li>
 </ul>
-<p>The runtime version for a function is shown in the code tab of the code editor, as shown below: <figure><a class="slb" href="/images/server-side/functions-runtime-version-location.png"><img src="/images/server-side/functions-runtime-version-location.png"
-         alt="functions-runtime-version-location.png"
-         title="functions-runtime-version-location.png"/>
+<p>The runtime version for a function is shown in the code tab of the code editor, as shown below: <figure><a class="slb" href="/images/server-side/functions-runtime-version-location.png"><img src="/images/server-side/functions-runtime-version-location.png"/>
     </a>
 </figure></p>
 <p>Runtime versions may be updated to provide new features. When a new runtime version is available, a message similar to the following is displayed on the <strong>Functions Overview</strong> page: <figure><a class="slb" href="/images/server-side/functions-new-runtime-available.png"><img src="/images/server-side/functions-new-runtime-available.png"
-         alt="functions-runtime-version-location.png"
-         title="functions-runtime-version-location.png"/>
+         alt="Alert message that says new runtime version is available and includes the name and a summary of the updates."
+         title="Alert message that says new runtime version is available and includes the name and a summary of the updates."/>
     </a>
 </figure></p>
 <p>As Tealium releases new runtime versions, older versions will be deprecated, and will eventually become obsolete. A message is displayed on the <strong>Functions Overview</strong> screen and on the <strong>Code</strong> tab for a function when the runtime version in use is deprecated or becomes obsolete.</p>
@@ -558,8 +558,8 @@ If a function exceeds the 150 milliseconds execution time, the following error i
 <p>These execution limits are based on the account and the region. The sum of the execution time and the number of invocations for all functions in an account for a region cannot exceed these limits.</p>
 <p>If either limit is exceeded, function execution is briefly stopped (throttled). The following message is displayed in the <strong>Functions Overview</strong> and a yellow alert icon is displayed next to a throttled function, as follows:</p>
 <figure><a class="slb" href="/images/server-side/throttle-msg.png"><img src="/images/server-side/throttle-msg.png"
-         alt="throttle-msg.png"
-         title="throttle-msg.png"/>
+         alt="In the last 24 hours, some functions in your profile have reached their rate limits and are being throttled."
+         title="In the last 24 hours, some functions in your profile have reached their rate limits and are being throttled."/>
     </a>
 </figure>
 <p>For information on how to view details for throttled functions, see <a href="/server-side/functions/manage-functions/view-function-statistics/">View function statistics</a>.</p>
@@ -642,7 +642,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 21, 2023 
+          <p>This page was last updated:  April 19, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

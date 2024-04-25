@@ -157,7 +157,7 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <p><a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">Update your <code>utag.js</code> template</a> to take advantage of the latest fixes and enhancements.</p>
-<h3 id="updating-to-utagjs-version-450-or-later">Updating to <code>utag.js</code> version 4.50 or later</h3>
+<h2 id="updating-to-utagjs-version-450-or-later">Updating to <code>utag.js</code> version 4.50 or later</h2>
 <p>We recommend the following steps to ensure a smooth transition when updating to version 4.50 or later:</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Be sure to update the Tealium Collect tag and all active Consent management templates, especially the Event Logging feature.</p>
 <ul>
@@ -178,12 +178,13 @@ var utag_data = {
 </li>
 </ul>
 <p>For more information, see <a href="/platforms/javascript/settings/#always_set_v_id">Settings: <code>always_set_v_id</code></a>.</p>
-<h2 id="september-2023">September 2023</h2>
-<h3 id="451">4.51</h3>
+<h2 id="451">4.51</h2>
+<p>(September 2023)</p>
 <ul>
 <li>Fixes cookie expiration issues, including one in specific browser and timezone/region settings when using <code>utag.js</code> version 4.50.</li>
 </ul>
-<h3 id="450">4.50</h3>
+<h2 id="450">4.50</h2>
+<p>(September 2023)</p>
 <p>Version 4.50 provides more transparency and control over cookies written by <code>utag.js</code>.</p>
 <p>Previously, we recommended using multi-value cookies (multicookies). However, due to the increasing demand for transparency and simplicity, particularly for data privacy audits, we have revised our recommendation. Now, we advise using standalone cookies, which is now the default behavior in <code>utag.js</code>.</p>
 <p>This release includes the following updates:</p>
@@ -211,19 +212,20 @@ var utag_data = {
 </li>
 </ul>
 <p>For more information about the new settings for enhanced transparency in utag 4.50 or later, see <a href="https://tealium.com/blog/customer-experience/enhancing-cookie-transparency-with-utag-4-51-a-comprehensive-introduction/">Enhancing Cookie Transparency with utag 4.51</a>.</p>
-<h2 id="september-2022">September 2022</h2>
-<h3 id="449">4.49</h3>
+<h2 id="449">4.49</h2>
+<p>(September 2022)</p>
 <ul>
 <li>Values from <code>localStorage</code> and <code>sessionStorage</code> are automatically added to the <a href="/platforms/javascript/data-layer/#local-and-session-storage">data layer object</a>.</li>
 <li>Added override options <a href="/platforms/javascript/settings/#ignorelocalstorage"><code>ignoreSessionStorage</code></a> and <a href="/platforms/javascript/settings/#ignoresessionstorage"><code>ignoreLocalStorage</code></a>.</li>
 <li>Fixed an issue where <code>tealium_environment</code> and <code>ut.env</code> were not set correctly for first-party domain customers.</li>
 </ul>
-<h2 id="445---448">4.45 - 4.48</h2>
-<h4 id="448-april-2021">4.48 (April 2021)</h4>
+<h2 id="448">4.48</h2>
+<p>(April 2021)</p>
 <ul>
 <li><code>utag.js</code> version 4.48 template updated with <code>secure_cookie</code> setting.</li>
 </ul>
-<h4 id="447-january-2021">4.47 (January 2021)</h4>
+<h2 id="447">4.47</h2>
+<p>(January 2021)</p>
 <ul>
 <li>
 <p>Adds defensive code for potential jQuery vulnerability. Checks to make sure the <code>src</code> of a JavaScript file is set directly and not inherited from a compromised <code>Object.prototype</code>. This issue was fixed in jQuery 3.5.0, but re-introduced in <a href="https://blog.jquery.com/2020/05/04/jquery-3-5-1-released-fixing-a-regression/">3.5.1</a>.</p>
@@ -232,7 +234,8 @@ var utag_data = {
 <p>Update to check for <code>Array</code> type with the built-in <code>utag.ut.typeOf</code> function instead of using <code>instance of</code>. Fixes issue with <code>utag.js</code> running in iframe in a testing environment (such as Cypress) and JavaScript <code>instance of</code> operation not working correctly.</p>
 </li>
 </ul>
-<h4 id="446-june-2018">4.46 (June 2018)</h4>
+<h2 id="446">4.46</h2>
+<p>(June 2018)</p>
 <ul>
 <li>Adds support for the following new built-in variables:
 <ul>
@@ -240,7 +243,7 @@ var utag_data = {
 <li><code>tealium_session_event_number</code> - the cookie value in <code>utag.data['cp.utag_main__se']</code> that counts the number of tracking calls (<code>utag.view()</code>, <code>utag.link()</code>) in the current session (visit). This is useful for Single Page Apps (SPAs) where there is only one page load with many tracked events on that page. For pages using the <code>noview</code> flag, the value is &lsquo;1&rsquo; for both page load (load rule evaluation) and the first call to <code>utag.view()</code>.</li>
 </ul>
 </li>
-<li>Adds support for an empty param list passed into <code>utag.link</code>, <code>utag.view</code> or <code>utag.track</code> calls. In previous versions, calls to <code>utag.link()</code> or <code>utag.view()</code> work fine, but gets an extra &ldquo;cfg&rdquo; object added to the data layer. Calls to <code>utag.track()</code> causes an exception in previous versions.</li>
+<li>Adds support for an empty param list passed into <code>utag.link</code>, <code>utag.view</code> or <code>utag.track</code> calls. In previous versions, calls to <code>utag.link()</code> or <code>utag.view()</code> work fine, but gets an extra <code>cfg</code> object added to the data layer. Calls to <code>utag.track()</code> causes an exception in previous versions.</li>
 <li>For pages using <code>noview</code> flag, there are two things to keep in mind:
 <ul>
 <li>The data layer will have a &lsquo;1&rsquo; value for <code>tealium_session_event_number</code> for both page load (<code>utag.js</code> uses data layer to loads in tags) and first call to <code>utag.view</code> (which fires tags and/or loads in more tags.)</li>
@@ -254,29 +257,31 @@ var utag_data = {
 </ul>
 </li>
 </ul>
-<h4 id="445-january-2018">4.45 (January 2018)</h4>
+<h2 id="445">4.45</h2>
+<p>(January 2018)</p>
 <ul>
 <li>Fixes bug introduced in version 4.40 that added an extra entry in browser history for pages that loaded the same tag in an iframe more than once. This issue likely impacted Single Page Apps (SPAs) using iframe-based tag vendors.</li>
 </ul>
-<h2 id="443---444">4.43 - 4.44</h2>
-<h4 id="444-june-2017">4.44 (June 2017)</h4>
+<h2 id="444">4.44</h2>
+<p>(June 2017)</p>
 <ul>
 <li>Added support for visitor session counting for <code>utag.js</code> hosted on &ldquo;tags.tiqcdn.cn&rdquo; (China).</li>
 <li>Updated the default <code>utag_main</code> cookie domain logic for domains following the pattern <code>example.XX.jp</code> (where cookies cannot be set in the XX.jp domain, but are set in <code>example.XX.jp</code> domain).</li>
 </ul>
-<h4 id="443-june-2017">4.43 (June 2017)</h4>
+<h2 id="443">4.43</h2>
+<p>(June 2017)</p>
 <ul>
 <li>Removed use of global variable <code>i</code> &ndash; previously used in loop through global variable <code>utag_cfg_ovrd</code> (config override object)</li>
 <li>Removed legacy s2s support (as this was previously removed from Tealium iQ.)  Cloud Delivery supported in Tealium Customer Data Hub.</li>
-<li>Adds support for error handler function passed into <code>utag.ut.loader</code> utility function. This is only for modern browsers (older browser may the standard callback &ldquo;cb&rdquo; function instead)</li>
+<li>Adds support for error handler function passed into <code>utag.ut.loader</code> utility function. This is only for modern browsers (older browser may the standard callback <code>cb</code> function instead)</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">ut</span>.<span style="color:#a6e22e">loader</span>({
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;src&#34;</span>   <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://www.example.com/path/file.js&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;cb&#34;</span>    <span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(){<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;CALLBACK&#34;</span>)},
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;error&#34;</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(){<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;ERROR IN LOADING&#34;</span>)}
 </span></span><span style="display:flex;"><span>        });
-</span></span></code></pre></div><h2 id="440---442">4.40 - 4.42</h2>
-<h4 id="442-august-2016">4.42 (August 2016)</h4>
+</span></span></code></pre></div><h2 id="442">4.42</h2>
+<p>(August 2016)</p>
 <p>Add new built-in Tealium event attributes. These new attributes are added to the data layer with each Tealium view or link event.</p>
 <ul>
 <li><code>tealium_visitor_id</code>
@@ -304,10 +309,11 @@ Current ISO string timestamp for UTC time zone (not available on older browsers)
 <li><code>tealium_timestamp_local</code>
 Current ISO string timestamp for browser&rsquo;s time zone (not available on older browsers)</li>
 </ul>
-<h4 id="441">4.41</h4>
+<h2 id="441">4.41</h2>
 <p><strong>Minor update to fix typo for the fallback function in <code>utag.ut.encode</code>.</strong></p>
 <p>The <code>encodeURIComponent</code> call now falls back to use JavaScript&rsquo;s <code>escape</code> call for the exception when encoding badly formed unicode characters.</p>
-<h4 id="440-april-2016">4.40 (April 2016)</h4>
+<h2 id="440">4.40</h2>
+<p>(April 2016)</p>
 <p><strong>Improvements in behavior in Single Page App (SPA) sites using <code>utag.link</code> and <code>utag.view</code></strong></p>
 <p>Previously, items in current data layer passed to <code>utag.link/view</code> were merged into the <code>utag.data</code> global object. This was required to re-evaluate load rules for each <code>utag.link/view</code> call. The <code>utag.js </code>4.40 template takes advantage of a publish engine update so that this is no longer required. In version 4.40, the <code>utag.data</code> global object is not updated with each <code>utag.link</code> or <code>utag.view</code> call.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>You may use the following JS Extension to test for backwards compatibility with 4.39 behavior before updating to 4.40.</p>
@@ -330,12 +336,13 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on old
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// JS Extension scoped to &#34;Before Load Rules&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">b</span>[<span style="color:#e6db74">&#34;_t_visitor_id&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>[<span style="color:#e6db74">&#34;cp.utag_main_v_id&#34;</span>];
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span>[<span style="color:#e6db74">&#34;_t_session_id&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>[<span style="color:#e6db74">&#34;cp.utag_main_ses_id&#34;</span>];
-</span></span></code></pre></div><h2 id="436---439">4.36 - 4.39</h2>
-<h4 id="439-july-2015">4.39 (July 2015)</h4>
+</span></span></code></pre></div><h2 id="439">4.39</h2>
+<p>(July 2015)</p>
 <ul>
 <li>Adds support for the <a href="/client-side-tags/tealium-collect-tag/">Tealium Collect Tag</a> that writes visitor enrichment data to a profile-specific location in local storage.</li>
 </ul>
-<h4 id="438-june-2015">4.38 (June 2015)</h4>
+<h2 id="438">4.38</h2>
+<p>(June 2015)</p>
 <ul>
 <li>Supports a new drop-down list for selecting when to execute an All-Tags-scoped Extension.
 <ul>
@@ -350,12 +357,14 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on old
 <li>Added support for calling <code>utag.view</code> before all the Tags have loaded; this fixes a bug when calling <code>utag.view</code> to fire a specific Tag by its UID inside a DOM Ready-scoped Extension.</li>
 <li>Added support for calling <code>utag.link</code> for a specific Tag by its UID.</li>
 </ul>
-<h4 id="437-february-2015">4.37 (February 2015)</h4>
+<h2 id="437">4.37</h2>
+<p>(February 2015)</p>
 <ul>
 <li>Fixed a bug that incorrectly decodes any instance of $ value in the <code>utag_main</code> cookie and render it as a separator instead. Following this fix, the <code>utag_main</code> cookie values are not &lsquo;double decoded&rsquo; anymore.</li>
 <li>Fixed a bug that caused the <code>utag_main__ss</code> cookie to be set incorrectly when the <a href="/iq-tag-management/save-publish/publish-configuration/">readywait flag</a> was set and /or the <code>utag_data</code> object was absent from the page.</li>
 </ul>
-<h4 id="436-january-2015">4.36 (January 2015)</h4>
+<h2 id="436">4.36</h2>
+<p>(January 2015)</p>
 <ul>
 <li>Load new tags on call to <a href="/platforms/javascript/track/"><code>utag.link()</code></a>. Calling <code>utag.link()</code> can load tags not already on the page.</li>
 <li>Fixed a bug in which the <code>utag.data</code> object was not initialized for DOM Ready-scoped extensions when the <code>waittimer</code> and <code>readywait</code> flags were set to <code>true</code>.</li>
@@ -374,14 +383,15 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on old
 <li>Fixed a bug that prevented the loading of multiple synchronous blocking Tags from cache for older of Internet Explorer.</li>
 <li>Added debugging to output the Data Layer at the point right before All Tags-scoped extensions run.</li>
 </ul>
-<h2 id="426---435">4.26 - 4.35</h2>
-<h4 id="435-december-2014">4.35 (December 2014)</h4>
+<h2 id="435">4.35</h2>
+<p>(December 2014)</p>
 <ul>
 <li>Fixed a bug in which the Data Layer was not preserved for <code>utag.view()</code> calls made in rapid succession. Now a snapshot of the Data Layer is preserved for each call.</li>
 <li>Added more debugging output for manual <code>utag.view()</code> and <code>utag.link()</code> calls.</li>
 <li>Added a new utility function: <code>utag.ut.typeOf()</code>. For example, <code>utag.ut.typeOf([])</code> returns the value &ldquo;array.&rdquo;</li>
 </ul>
-<h4 id="434-october-2014">4.34 (October 2014)</h4>
+<h2 id="434">4.34</h2>
+<p>(October 2014)</p>
 <ul>
 <li>Added an override (<code>utag_cfg_ovrd</code>) flag to <code>utag.js</code> in order to delay the loading of Tags until the DOM readyState &ldquo;complete&rdquo; (AKA &ldquo;load&rdquo;) event. This flag provides a delay that may improve page display time speeds by causing all Tags with the <a href="/iq-tag-management/templates/manage/">Wait = Yes setting</a> to execute even later. Set this flag by entering the following code into a PreLoader-scoped <a href="/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">JavaScript Code extension</a>:</li>
 </ul>
@@ -390,13 +400,15 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on old
 </span></span></code></pre></div><ul>
 <li>Fixed a bug for the Internet Explorer browser in which the DOM readyState was reported as &ldquo;interactive&rdquo; prematurely. An extra delay for readyState &ldquo;complete&rdquo; was added for older of Internet Explorer.</li>
 </ul>
-<h4 id="433-september-2014">4.33 (September 2014)</h4>
+<h2 id="433">4.33</h2>
+<p>(September 2014)</p>
 <ul>
 <li>Added two new DOM Variables (formerly Data Sources): browser height (<code>dom.viewport_height</code>) and browser width (<code>dom.viewport_width</code>). Use these in Load Rules to detect when a visitor is using a certain devices to browse your site. For example, when this value is less than 480, you might assume the visitor is using a phone device. <a href="http://viewportsizes.com/mine/">Try this</a> on your phone for fun.</li>
 <li>Added support for custom attributes on iframes/scripts to the <code>utag.ut.loader</code> function.</li>
 <li>Fixed a bug in which Tags were not loading in order indicated in the Tags tab when fired by a manual <code>utag.view</code> call.</li>
 </ul>
-<h4 id="432-august-2014">4.32 (August 2014)</h4>
+<h2 id="432">4.32</h2>
+<p>(August 2014)</p>
 <ul>
 <li>Fixed a bug with Publish Settings so that you may now enable both the <a href="/iq-tag-management/save-publish/publish-configuration/">Ready Wait Flag and Bundling Libs publish settings</a> for the same profile.</li>
 <li>Fixed a bug in which enabling the Ready Wait Flag setting caused the <a href="#version-4-26">utag.cfg.noview flag</a> to reset to &ldquo;false&rdquo; if you had set it to &ldquo;true.&rdquo;</li>
@@ -406,32 +418,33 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on old
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_cfg_ovrd</span><span style="color:#f92672">=</span>{};
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">waittimer</span><span style="color:#f92672">=</span><span style="color:#ae81ff">3000</span>;
 </span></span></code></pre></div><p>This code snippet delays the loading of all Tags until 3 seconds after the DOM Ready signal.</p>
-<h4 id="431-may-2014">4.31 (May 2014)</h4>
+<h2 id="431">4.31</h2>
+<p>(May 2014)</p>
 <ul>
-<li>
-<p>Fixed a UTAG utility function bug for IE browsers when bringing in external JavaScript files and running a callback function. This addresses a rare timing issue in which the callback function runs too soon.</p>
-</li>
-<li>
-<p>Introduces additional debugging output for when <code>utag.view</code> is called before all Tags are loaded. The Tag UID which may have an error now shows up in the output.</p>
-</li>
+<li>Fixed a UTAG utility function bug for Internet Explorer browsers when bringing in external JavaScript files and running a callback function. This addresses a rare timing issue in which the callback function runs too soon.</li>
+<li>Introduces additional debugging output for when <code>utag.view</code> is called before all Tags are loaded. The Tag UID which may have an error now shows up in the output.</li>
 </ul>
-<h4 id="430-april-2014">4.30 (April 2014)</h4>
+<h2 id="430">4.30</h2>
+<p>(April 2014)</p>
 <ul>
-<li>Fixes a bug with the IE browser (9 and earlier) in which manual <code>utag.view</code> calls do not fire if your last Tag set to <a href="/iq-tag-management/templates/manage/">Wait = Yes</a> did not fire and <code>utag.X.js</code> files were cached.</li>
+<li>Fixes a bug with the Internet Explorer browser (9 and earlier) in which manual <code>utag.view</code> calls do not fire if your last Tag set to <a href="/iq-tag-management/templates/manage/">Wait = Yes</a> did not fire and <code>utag.X.js</code> files were cached.</li>
 <li>The <code>utag.js</code> now uses the values in the OPTOUTMULTI (<a href="/iq-tag-management/extensions/extensions-list/privacy-manager-extension/">Privacy Manager Extension</a>) cookie for every <code>utag.view</code> call. Tags that are opted-out no longer fire for <code>utag.view</code> calls fired with AJAX content.</li>
 </ul>
-<h4 id="429-april-2014">4.29 (April 2014)</h4>
+<h2 id="429">4.29</h2>
+<p>(April 2014)</p>
 <ul>
 <li>Fixes a bug which prevented support for more than one <a href="/iq-tag-management/templates/manage/">blocking Tag</a>. You may now have more than one Tag act as a blocking Tag. For example, <a href="/client-side-tags/tealium-currency-converter-tag/">Tealium Currency Converter</a> with another external <code>.js </code>file.</li>
 <li>Extensions scoped to &ldquo;All Tags&rdquo; run after any blocking Tags complete.</li>
 <li>The <code>utag.v.js</code> file is no longer sent in the situation that you are <a href="/iq-tag-management/getting-started/install/self-host/">self-hosting the <code>utag.js</code> file</a>.</li>
 <li>Removed &ldquo;top.&rdquo; from visitor ID generation logic. This fixes issues with iframes.</li>
 </ul>
-<h4 id="428-february-2014">4.28 (February 2014)</h4>
+<h2 id="428">4.28</h2>
+<p>(February 2014)</p>
 <ul>
 <li>Fixes an issue in which the page number (<code>_pn</code>) and session number (<code>_sn</code>) values are set to <a href="http://en.wikipedia.org/wiki/NaN">NaN</a> whenever a visitor visits a website in which the <code>utag_main</code> session cookies was already set by a version of <code>utag.js</code> prior to 4.27. These values are now reset to 1.</li>
 </ul>
-<h4 id="427-february-2014">4.27 (February 2014)</h4>
+<h2 id="427">4.27</h2>
+<p>(February 2014)</p>
 <ul>
 <li>Introduces support for AudienceStream <a href="/server-side/attributes/data-layer-enrichment/about/">Data Layer Enrichment</a>. This requires <a href="/server-side/getting-started/audiencestream-cdp/introduction/">AudienceStream</a> and the <a href="/client-side-tags/tealium-collect-tag/">DataCloud Tag</a>.</li>
 <li>The <code>utag.js</code> reads <a href="http://en.wikipedia.org/wiki/Meta_element">Meta tags</a> with every <code>utag.view</code> call in order to capture dynamic Meta tags.</li>
@@ -462,7 +475,8 @@ Current ISO string timestamp for browser&rsquo;s time zone (not available on old
 </li>
 <li>Introduces the <strong>utag.ut.flatten</strong> function, which flattens objects. This is primarily used with Data Layer Enrichment for AudienceStream.</li>
 </ul>
-<h4 id="426-january-2014">4.26 (January 2014)</h4>
+<h2 id="426">4.26</h2>
+<p>(January 2014)</p>
 <p>Load rules are re-evaluated for both <code>utag.view()</code> and <code>utag.link()</code> calls.</p>
 <p>Changes to the way the <code>utag.js</code> 4.26 file handles query string parameters and meta tags means that they are no longer lower-cased by default. If you have query string parameters or meta tags identified as data sources in your profile, you may need to update those data source names in the Data Layer tab to match upper case and lower case letters exactly.</p>
 <p><strong>Custom Script Source is a Blocking Tag</strong></p>
@@ -567,25 +581,30 @@ Set this flag to <code>true</code> if you wish to control when the initial <code
 <p><strong>Known Issues</strong></p>
 <ul>
 <li>The Data Layer&rsquo;s <code>utag_data</code> object becomes a reference to <code>utag.data</code>, and changing one changes the other.</li>
-<li>IE8 may introduce timing issues if your Data Layer is defined at the end of your <code>&lt;body&gt;</code> element, just before DOM Ready (and the <code>utag.js</code> is already loaded). As a best practice, always declare your <code>utag_data</code> object before you load the <code>utag.js</code> file.</li>
+<li>Internet Explorer 8 may introduce timing issues if your Data Layer is defined at the end of your <code>&lt;body&gt;</code> element, just before DOM Ready (and the <code>utag.js</code> is already loaded). As a best practice, always declare your <code>utag_data</code> object before you load the <code>utag.js</code> file.</li>
 </ul>
-<h2 id="4006---4011">4.006 - 4.011</h2>
-<h4 id="4011-november-2013">4.011 (November 2013)</h4>
+<h2 id="4011">4.011</h2>
+<p>(November 2013)</p>
 <p>Adding support for Server to Server. There is now a &lsquo;Server to Server&rsquo; Advanced Setting that enables a Tag to use the Server to Server functionality.</p>
-<h4 id="4010-november-2013">4.010 (November 2013)</h4>
+<h2 id="4010">4.010</h2>
+<p>(November 2013)</p>
 <p>Fixes a bug when using the Tealium Currency Converter tag or any Tag with a value set for Custom Source Advanced setting, in which the Tag waits until for a force timeout threshold of 3 seconds or greater to call the u.send function for the other Tags.</p>
-<h4 id="4009-september-2013">4.009 (September 2013)</h4>
+<h2 id="4009">4.009</h2>
+<p>(September 2013)</p>
 <p>Fixes a bug in which &ldquo;Wait = Yes&rdquo; tags wait for a &ldquo;load&rdquo; event instead of DOM Ready event when <code>utag.js</code> was executed after DOM Ready.</p>
 <p>For many sites, this is a significant performance boost and loads tags that are set to wait for DOM Ready much sooner.</p>
-<h4 id="4008-march-2013">4.008 (March 2013)</h4>
+<h2 id="4008">4.008</h2>
+<p>(March 2013)</p>
 <p>Update to support domains ending in &ldquo;.edu.au&rdquo; and &ldquo;.net.au&rdquo; (using &ldquo;au&rdquo; for an example.) The previous <code>utag.js</code> only supported &ldquo;.com.au&rdquo; and &ldquo;.org.au&rdquo;</p>
 <p>Update to <code>utag.loader.GV </code>(the internal &ldquo;Get Variables in Object&rdquo; function) to use hasOwnProperty. This is the safer way to iterate.</p>
-<h4 id="4007-january-2013">4.007 (January 2013)</h4>
-<p>Fixes an issue in which the customer may an exception in the &ldquo;pre&rdquo; function by entering something like <code>myobj.utag_data</code> for the &ldquo;Page Data Object&rdquo; Publish Setting (assuming the <code>myobj</code> doesn&rsquo;t exist). This exception caused pieces of code to get skipped and resulted in checking .length for a <code>utag.handler.extend</code> variable that was never defined. There is now a check to see if <code>utag.handler.extend</code> is defined.</p>
-<h4 id="4006-january-2013">4.006 (January 2013)</h4>
+<h2 id="4007">4.007</h2>
+<p>(January 2013)</p>
+<p>Fixes an issue in which the customer may see an exception in the &ldquo;pre&rdquo; function by entering something like <code>myobj.utag_data</code> for the &ldquo;Page Data Object&rdquo; Publish Setting (assuming the <code>myobj</code> doesn&rsquo;t exist). This exception caused pieces of code to get skipped and resulted in checking .length for a <code>utag.handler.extend</code> variable that was never defined. There is now a check to see if <code>utag.handler.extend</code> is defined.</p>
+<h2 id="4006">4.006</h2>
+<p>(January 2013)</p>
 <p>The Publish Engine builds a <code>utag.loader.cfgsort</code> variable that is an Array of the Tag UIDs. This Array is in the right order of the Tags in Tealium iQ. Tags now fire in the order that matches the Tealium iQ&rsquo;s order.</p>
-<h2 id="4000-4005">4.000-4.005</h2>
-<h4 id="4005-december-2012">4.005 (December 2012)</h4>
+<h2 id="4005">4.005</h2>
+<p>(December 2012)</p>
 <p>Adds the utility function <code>utag.ut.decode</code>.</p>
 <p>Also adds support for a &ldquo;no cookie&rdquo; flag <code>utag.cfg.nocookie</code>. When the <code>utag.cfg.nocookie </code>value is defined and set to true then <code>utag.js</code> does not write any <code>utag_main</code> cookies.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Existing <code>utag_main</code> cookies are not modified or removed. Some tags expect that <code>utag_main</code> cookies exist, so use this flag at your own risk.</p>
@@ -593,22 +612,27 @@ Set this flag to <code>true</code> if you wish to control when the initial <code
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_cfg_ovrd</span><span style="color:#f92672">=</span>{};  
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">nocookie</span><span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>;
 </span></span></code></pre></div><p><code>utag.ut.decode</code> is a safer version of <code>decodeURIComponent</code> (if <code>decodeURIComponent</code> issues an exception, then unescape is used)</p>
-<h4 id="4004-november-2012">4.004 (November 2012)</h4>
-<p>Includes a fix for an Internet Explorer DOM Ready Extension &ldquo;timing&rdquo; issue in IE7 and IE8 in which IE may or may not run the DOM Ready Extensions before Tags are loaded. This version fixes the issue to ensure that DOM Ready Extensions run first. This provides consistent behavior in all browsers.</p>
+<h2 id="4004">4.004</h2>
+<p>(November 2012)</p>
+<p>Includes a fix for an Internet Explorer DOM Ready Extension &ldquo;timing&rdquo; issue in Internet Explorer 7 and Internet Explorer 8 in which Internet Explorer may or may not run the DOM Ready Extensions before Tags are loaded. This version fixes the issue to ensure that DOM Ready Extensions run first. This provides consistent behavior in all browsers.</p>
 <p>Changes in <code>utag.DB</code>. This function is changed so that every <code>utag.DB</code> call does not &ldquo;re-check&rdquo; the cookie for <code>utagdb=true</code>; this makes for a high-performance <code>utag.DB</code> function.</p>
 <p>Adds additional <code>utag.DB</code> calls in <code>utag.js</code>.</p>
 <p>How do you turn on debugging? Run this in a console: <code>document.cookie=&quot;utagdb=true&quot;</code></p>
 <p>Sample <code>utag.DB</code> call:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">DB</span>(<span style="color:#e6db74">&#34;Inside of DOM Ready Extension&#34;</span>);
-</span></span></code></pre></div><h4 id="4003-october-2012">4.003 (October 2012)</h4>
+</span></span></code></pre></div><h2 id="4003">4.003</h2>
+<p>(October 2012)</p>
 <p>Adds the ability to set a <code>utag_main</code> cookie to expire at a specific timestamp.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">loader</span>.<span style="color:#a6e22e">SC</span>(<span style="color:#e6db74">&#34;utag_main&#34;</span>,{<span style="color:#e6db74">&#34;mycookie123&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;testing123;exp-1351111959896u&#34;</span>});
-</span></span></code></pre></div><p>Note the &ldquo;u&rdquo; at the end of the timestamp</p>
-<h4 id="4002-august-2012">4.002 (August 2012)</h4>
+</span></span></code></pre></div><p>Note the <code>u</code> at the end of the timestamp</p>
+<h2 id="4002">4.002</h2>
+<p>(August 2012)</p>
 <p>Runs through the <code>utag.link</code> also for each of the sub profile tags.</p>
-<h4 id="4001-august-2012">4.001 (August 2012)</h4>
+<h2 id="4001">4.001</h2>
+<p>(August 2012)</p>
 <p>Fixes a cookie decode issue in which the cookie had strange characters.</p>
-<h4 id="4000-initial">4.000 (Initial)</h4>
+<h2 id="4000">4.000</h2>
+<p>(Initial)</p>
 <p>There are multiple iterations of this file with no version number changes.</p>
 </div>
 
@@ -654,7 +678,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 2, 2024 
+          <p>This page was last updated:  April 23, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -668,19 +692,45 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#updating-to-utagjs-version-450-or-later" href="javascript:void(0)">Updating to utag.js version 4.50 or later</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#september-2023" href="javascript:void(0)">September 2023</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#451" href="javascript:void(0)">4.51</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#updating-to-utagjs-version-450-or-later" href="javascript:void(0)">Updating to utag.js version 4.50 or later</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#451" href="javascript:void(0)">4.51</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#450" href="javascript:void(0)">4.50</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#september-2022" href="javascript:void(0)">September 2022</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#449" href="javascript:void(0)">4.49</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#445---448" href="javascript:void(0)">4.45 - 4.48</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#443---444" href="javascript:void(0)">4.43 - 4.44</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#440---442" href="javascript:void(0)">4.40 - 4.42</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#436---439" href="javascript:void(0)">4.36 - 4.39</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#426---435" href="javascript:void(0)">4.26 - 4.35</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#4006---4011" href="javascript:void(0)">4.006 - 4.011</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#4000-4005" href="javascript:void(0)">4.000-4.005</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#449" href="javascript:void(0)">4.49</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#448" href="javascript:void(0)">4.48</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#447" href="javascript:void(0)">4.47</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#446" href="javascript:void(0)">4.46</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#445" href="javascript:void(0)">4.45</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#444" href="javascript:void(0)">4.44</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#443" href="javascript:void(0)">4.43</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#442" href="javascript:void(0)">4.42</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#441" href="javascript:void(0)">4.41</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#440" href="javascript:void(0)">4.40</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#439" href="javascript:void(0)">4.39</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#438" href="javascript:void(0)">4.38</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#437" href="javascript:void(0)">4.37</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#436" href="javascript:void(0)">4.36</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#435" href="javascript:void(0)">4.35</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#434" href="javascript:void(0)">4.34</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#433" href="javascript:void(0)">4.33</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#432" href="javascript:void(0)">4.32</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#431" href="javascript:void(0)">4.31</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#430" href="javascript:void(0)">4.30</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#429" href="javascript:void(0)">4.29</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#428" href="javascript:void(0)">4.28</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#427" href="javascript:void(0)">4.27</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#426" href="javascript:void(0)">4.26</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#4011" href="javascript:void(0)">4.011</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#4010" href="javascript:void(0)">4.010</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#4009" href="javascript:void(0)">4.009</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#4008" href="javascript:void(0)">4.008</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#4007" href="javascript:void(0)">4.007</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#4006" href="javascript:void(0)">4.006</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#4005" href="javascript:void(0)">4.005</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#4004" href="javascript:void(0)">4.004</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#4003" href="javascript:void(0)">4.003</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#4002" href="javascript:void(0)">4.002</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#4001" href="javascript:void(0)">4.001</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#4000" href="javascript:void(0)">4.000</a></li>
               </nav>
   </aside></nav>
 

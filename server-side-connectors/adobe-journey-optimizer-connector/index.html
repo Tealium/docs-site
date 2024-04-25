@@ -34,7 +34,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side-connectors",
-    reading_time  : "2",
+    reading_time  : "3",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -391,13 +391,6 @@ var utag_data = {
 <li>API Endpoint: <code>https://platform.adobe.io</code></li>
 <li>Documentation: <a href="https://developer.adobe.com/journey-optimizer-apis/">Adobe Journey Optimizer APIs</a></li>
 </ul>
-<h2 id="batch-limits">Batch Limits</h2>
-<p>This connector uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
-<ul>
-<li>Max number of requests: 20</li>
-<li>Max time since oldest request: 5 minutes</li>
-<li>Max size of requests: 1 MB</li>
-</ul>
 <h2 id="actions">Actions</h2>
 <table>
 <thead>
@@ -409,7 +402,12 @@ var utag_data = {
 </thead>
 <tbody>
 <tr>
-<td>Unitary message execution</td>
+<td>Unitary message execution (Real-time)</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Unitary message execution (Batched)</td>
 <td>✓</td>
 <td>✓</td>
 </tr>
@@ -422,15 +420,21 @@ var utag_data = {
 <li><strong>Client ID</strong><br>
 (Required) The client ID (API key) can be found in the <a href="https://www.adobe.com/go/devs_console_ui">Adobe Developer Console</a> in your Adobe account.</li>
 <li><strong>Client Secret</strong><br>
-(Required )The client secret can be found in the Adobe Developer Console in your Adobe account.</li>
+(Required) The client secret can be found in the Adobe Developer Console in your Adobe account.</li>
 <li><strong>Organization ID</strong><br>
-(Required)The organization ID can be found in the Adobe Developer Console in your Adobe account.</li>
+(Required) The organization ID can be found in the Adobe Developer Console in your Adobe account.</li>
 <li><strong>Sandbox</strong><br>
 Specify whether you want the API calls to refer to a different environment than the default (prod).</li>
 </ul>
 <h2 id="actions-1">Actions</h2>
 <p>The following section lists the supported parameters for each action.</p>
-<h3 id="unitary-message-execution">Unitary message execution</h3>
+<h3 id="unitary-message-execution-batched">Unitary message execution (Batched)</h3>
+<p>This action uses batched requests to support high-volume data transfers to the vendor. For more information, see <a href="/server-side/connectors/batched-actions/">Batched Actions</a>. Requests are queued until one of the following thresholds is met or the profile is published:</p>
+<ul>
+<li>Max number of requests: 20</li>
+<li>Max time since oldest request: 5 minutes</li>
+<li>Max size of requests: 1 MB</li>
+</ul>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -489,7 +493,74 @@ Specify whether you want the API calls to refer to a different environment than 
 </tr>
 <tr>
 <td>Template Variables</td>
-<td>Provide template variables as data input for <strong>Templates</strong>. See the <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a> documentation for usage examples. <br>Name nested template variables with the dot notation. Example: <code>items.name</code>.<br>Nested template variables are typically built from data layer list attributes.</td>
+<td>Provide template variables as data input for <strong>Templates</strong>. See the <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a> documentation for usage examples. <br>Name nested template variables with the dot notation. For example: <code>items.name</code>.<br>Nested template variables are typically built from data layer list attributes.</td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>Provide templates to be referenced in Body Parameters. See the  <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>.<br>Templates are injected by name with double curly braces into supported fields. For example: <code>{{SomeTemplateName}}</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="unitary-message-execution-real-time">Unitary message execution (Real-time)</h3>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Campaign ID</td>
+<td>(Required) The campaign identifier.</td>
+</tr>
+<tr>
+<td>Request ID</td>
+<td>The unique request identifier.</td>
+</tr>
+<tr>
+<td>Namespace</td>
+<td>The AEP profile namespace.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="recipient-parameters-1">Recipient Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>(Required) The recipient type. For example, <code>aep</code>.</td>
+</tr>
+<tr>
+<td>User ID</td>
+<td>(Required) The AEP profile identifier.</td>
+</tr>
+<tr>
+<td>Context</td>
+<td>The context data used for dynamic variable substitution in message content.</td>
+</tr>
+<tr>
+<td>Email Address</td>
+<td>The recipient email address, which is also the external user ID.</td>
+</tr>
+<tr>
+<td>Mobile Phone Number</td>
+<td>The recipient mobile phone number for SMS text messages.</td>
+</tr>
+<tr>
+<td>Profile</td>
+<td>The profile data used for dynamic variable substitution in message content.</td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td>Provide template variables as data input for <strong>Templates</strong>. See the <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a> documentation for usage examples. <br>Name nested template variables with the dot notation. For example: <code>items.name</code>.<br>Nested template variables are typically built from data layer list attributes.</td>
 </tr>
 <tr>
 <td>Templates</td>
@@ -557,7 +628,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 17, 2024 
+          <p>This page was last updated:  April 19, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -572,11 +643,11 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch Limits</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#unitary-message-execution" href="javascript:void(0)">Unitary message execution</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#unitary-message-execution-batched" href="javascript:void(0)">Unitary message execution (Batched)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#unitary-message-execution-real-time" href="javascript:void(0)">Unitary message execution (Real-time)</a></li>
               </nav>
   </aside></nav>
 
