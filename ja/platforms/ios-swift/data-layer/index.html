@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     
+    <title>データレイヤー | iOS（Swift）用Tealium | Tealium開発者ドキュメント</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+     <meta name="generator" content="Hugo 0.111.3">
+
+      
+        <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+      
+
+    
+    
+      
+        <link rel="alternate" hreflang="en" href="https://docs.tealium.com/platforms/ios-swift/data-layer/">
+      
+    
+      
+    
+    
+
+     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
+  </head>
+  <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
+      
+        
+<script>
+var utag_data = {
+    site_section  : "platforms",
+    reading_time  : "4",
+    site_language : "ja",
+    tealium_event : "page_view"
+}
+</script>
+
+<script>
+ (function(a,b,c,d){
+    a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+  })();
+</script>
+
+      
+
+    
+<nav class="w-100 sticky-t bg-primary-color-light bb b--light-gray dpn" role="navigation">
+
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
+
+    <div class="lh-solid ml0-ns mr0 mr4-l mv3 pl15 dib db-ns">
+      <a href="/ja/"><img src="/images/icons/tealium-documentation-logo-color.svg" class="v-mid dib" width="186" height="31"></a>
+    </div>
+    
+    <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-ns">
+      <li class="f5 dib">
+         <i class="fa fa-globe" style="color: rgba(255, 255, 255, .6)" aria-hidden="true"></i>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+          <a href="/platforms/ios-swift/data-layer/" class="dim link mid-gray">English</a>
+        
+      
+        
+      
+      </li>
+            
+    </ul>
+
+  </div>
+  
+</nav>
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 pr4">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-hidden overflow-y-scroll dn db-ns sticky-l pt3 pl125" style="width:280px;">
+<nav class="side-nav f6" role="navigation">
+  <ul class="list pa0 mt0 mb1">
+  
+    <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/ja/platforms" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>プラットフォーム</a></li>
+  
+  </ul>
+  <ul class="list pa0" data-nav-section="ios-swift"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><span class="pb2">iOS (Swift) 2.x</span>
+        <ul data-level="1" class="ios-swift desktopmenu animated fadeIn list pl0 mt2"><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/ios-swift/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-install">インストール</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/ios-swift/track/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-track">トラッキング</a></li><li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/ios-swift/data-layer/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".ios-swift-data-layer">データレイヤー</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/ios-swift/consent-management/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-consent-management">同意管理</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/ios-swift/app-extensions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-app-extensions">アプリ拡張</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/ios-swift/modules/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-modules">モジュール</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/ios-swift/with-objective-c/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".with-objective-c">Objective-Cとの連携</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ios-swift-module-list">モジュールリスト</a>
+        <ul class="pl2  ios-swift-module-list desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/module-list/appdata/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-appdata">AppDataモジュール</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/module-list/adobe-visitor-service/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-adobe-visitor-service">AdobeVisitorServiceモジュール</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/module-list/attribution/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-attribution">属性モジュール</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/module-list/autotracking/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-autotracking">自動追跡モジュール</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/module-list/collect/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-collect">コレクトモジュール</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/module-list/connectivity/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-connectivity">接続性モジュール</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/module-list/crash-reporter/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-crashreporter">CrashReporter モジュール</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/module-list/device-data/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-devicedata">DeviceData モジュール</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/module-list/in-app-purchase/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-inapppurchase">アプリ内購入モジュール</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/module-list/lifecycle/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-lifecycle">ライフサイクルモジュール</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/module-list/location/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-location">位置モジュール</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/module-list/media/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-media">メディアモジュール</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/module-list/remote-commands/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-remotecommands">RemoteCommands モジュール</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/module-list/tag-management/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-tagmanagement">TagManagement モジュール</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/module-list/visitor-service/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-module-visitor-service">VisitorServiceモジュール</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ios-swift-api">APIリファレンス</a>
+        <ul class="pl2  ios-swift-api desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/api/location-module/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-api-location-module">LocationModule</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/api/media-session/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-api-media-session">MediaSession</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/api/tealium/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-api-tealium">Tealium（ティリウム）</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/api/tealium-config/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-api-tealium-config">TealiumConfig</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/api/tealium-consent-categories/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-api-tealium-consent-categories">TealiumConsentCategories</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/api/tealium-consent-manager/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-api-tealium-consent-manager">TealiumConsentManager</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/api/tealium-data-layer/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-api-tealium-data-layer">TealiumDataLayer</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/ios-swift/api/tealium-instance-manager/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-api-tealium-instance-manager">TealiumInstanceManager</a></li></ul>
+      </li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/ios-swift/charles-proxy-iosdevice/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".charles-proxy-iosdevice">iOSデバイスのプロキシ</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/ios-swift/proxy-appletv/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".proxy-an-apple-tv">Apple TVをプロキシする</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/ios-swift/privacy-manifests/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-privacy-manifests">プライバシーマニフェスト</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/ios-swift/release-notes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ios-swift-release-notes">リリースノート</a></li></ul></li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
+      <div class="documentation-copy ph4">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+    
+  
+  <li class="mr1 f7 lvl0"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/">ホーム</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/platforms/">プラットフォーム</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl2"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/platforms/ios-swift/">iOS（Swift）用Tealium</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mt30 mb3">データレイヤー</h1>
+</header>
+
+<div class="mv2 mid-gray fn w-100">
+  
+
+  
+    <p class="f4 fw3 lh-copy">
+      各モジュールが提供する共通のデータレイヤーの値とデータの管理方法について学びます。
+    </p>
+  
+</div>
+
+<div class="prose nested-links" id="prose">
+  <h2 id="カスタムデータ">カスタムデータ</h2>
+<p>すべてのイベントで一般的なデータレイヤーの値が必要な場合がよくあります。これらの値をすべてのトラッキングコールに追加する必要がないようにするために、<code>tealium.dataLayer</code>メソッドを使用して、すべてのトラッキングコールに適用されるデータレイヤーの値を永続化します。値が保存されると、自動的にすべてのトラッキングイベントに含まれます。</p>
+<h3 id="データの有効期限">データの有効期限</h3>
+<p>データレイヤーの値には有効期限があり、有効期限が切れるとデータレイヤーから削除されます。カスタムデータレイヤーの値を構成する際に、値の有効期限をオプションで構成することができます。デフォルトの有効期間は現在のセッションです。</p>
+<p>次の有効期限のタイプが利用可能です：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">タイプ</th>
+<th style="text-align:left">値</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="#session-data">セッション</a> (デフォルト)</td>
+<td style="text-align:left"><code>.session</code></td>
+<td style="text-align:left">現在のセッションの終了時に有効期限が切れます</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="#restart-data">再起動</a></td>
+<td style="text-align:left"><code>.untilRestart</code></td>
+<td style="text-align:left">アプリが閉じられるか再起動されると有効期限が切れます</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="#forever-data">永久</a></td>
+<td style="text-align:left"><code>.forever</code></td>
+<td style="text-align:left">有効期限が切れることはありません</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="#custom-date-data">カスタム日付</a></td>
+<td style="text-align:left"><code>.after</code></td>
+<td style="text-align:left">指定した日付で有効期限が切れます</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="#custom-duration-data">カスタム期間</a></td>
+<td style="text-align:left"><code>.afterCustom</code></td>
+<td style="text-align:left">指定した期間で有効期限が切れます。期間は次の時間単位で指定します：<code>.minutes</code>, <code>.hours</code>, <code>.days</code>, <code>.months</code>, <code>.years</code></td>
+</tr>
+</tbody>
+</table>
+<p>有効期限のタイプに基づいて、<a href="/platforms/ios-swift/api/tealium-data-layer/#add">add()</a>を使用してデータをデータレイヤーに保存します。</p>
+<h4 id="セッションデータ">セッションデータ</h4>
+<p>セッションデータの値はセッションの間永続化されます。セッションは、一定の時間枠内でのユーザーのアクティビティによって決まります。セッションは、ユーザーの非アクティビティが30分続いた後に終了します。</p>
+<p>セッションの後に有効期限が切れるデータレイヤーの値を永続化するには、次のようにします：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>tealium?.dataLayer.add(key: <span style="color:#e6db74">&#34;mysessionvar&#34;</span>, value: <span style="color:#e6db74">&#34;hello&#34;</span>, expiry: .session)
+</span></span></code></pre></div><p>すべてのセッションデータを取得するには：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> sessionData = tealium?.dataLayer.allSessionData
+</span></span></code></pre></div><h4 id="再起動データ">再起動データ</h4>
+<p>再起動データの値は、各イベントの間永続化されます。アプリが閉じられるか再起動されると、データは削除されます。</p>
+<p>次のアプリの再起動までデータレイヤーの値を永続化するには：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>tealium?.dataLayer.add(key: <span style="color:#e6db74">&#34;myrestartvar&#34;</span>, value: <span style="color:#e6db74">&#34;foo&#34;</span>, expiry: .untilRestart)
+</span></span></code></pre></div><h4 id="永久データ">永久データ</h4>
+<p>永久データの値は、現在のアプリのバージョンの寿命の間永続化されます。アプリがアンインストールされるか更新されると、データはデータレイヤーから削除されます。</p>
+<p>永久データを永続化するには：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>tealium?.dataLayer.add(key: <span style="color:#e6db74">&#34;myforevervar&#34;</span>, value: <span style="color:#e6db74">&#34;world&#34;</span>, expiry: .forever)
+</span></span></code></pre></div><h4 id="カスタム日付データ">カスタム日付データ</h4>
+<p>カスタム日付データの値は、指定した日付で永続化されます。</p>
+<p>カスタム日付の有効期限を持つデータレイヤーの値を永続化するには：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>tealium?.dataLayer.add(key: <span style="color:#e6db74">&#34;customdate&#34;</span>, value: <span style="color:#e6db74">&#34;bar&#34;</span>, expiry: .after(yourDate))
+</span></span></code></pre></div><h4 id="カスタム期間データ">カスタム期間データ</h4>
+<p>カスタム期間データの値は、指定した期間の後に永続化されます。</p>
+<p>1日後に有効期限が切れるデータレイヤーの値を永続化するには：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>tealium?.dataLayer.add(key: <span style="color:#e6db74">&#34;lengthoftime&#34;</span>, value: <span style="color:#e6db74">&#34;days&#34;</span>, expiry: .afterCustom((.days, <span style="color:#ae81ff">1</span>)))
+</span></span></code></pre></div><p>1ヶ月後に有効期限が切れるデータレイヤーの値を永続化するには：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>tealium?.dataLayer.add(key: <span style="color:#e6db74">&#34;lengthoftime&#34;</span>, value: <span style="color:#e6db74">&#34;months&#34;</span>, expiry: .afterCustom((.months, <span style="color:#ae81ff">1</span>)))
+</span></span></code></pre></div><h3 id="すべてのデータの取得">すべてのデータの取得</h3>
+<p>データレイヤーに現在保存されているすべてのデータを取得するには、<a href="/platforms/ios-swift/api/tealium-data-layer/#all">all()</a>メソッドを使用します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> data: [String: Any] = tealium?.dataLayer.all
+</span></span></code></pre></div><p>また、<a href="/platforms/ios-swift/api/tealium/#gathertrackdata"><code>Tealium.gatherTrackData()</code></a>も参照してください。</p>
+<h3 id="データのクリア">データのクリア</h3>
+<p>特定のキーのデータをクリアするには、<a href="/platforms/ios-swift/api/tealium-data-layer/#delete">delete()</a>メソッドを使用します：</p>
+<ul>
+<li>複数のキー：<code>dataLayer.delete(forKeys:)</code></li>
+<li>単一のキー：<code>dataLayer.delete(forKey:)</code></li>
+</ul>
+<p>すべてのデータをクリアするには、<a href="/platforms/ios-swift/api/tealium-data-layer/#delete"><code>deleteAll()</code></a>メソッドを使用します。</p>
+<h3 id="例">例</h3>
+<p>以下の例は、上記のメソッドを示しています：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TealiumHelper</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> tealium: Tealium?
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">let</span> config = TealiumConfig(...)
+</span></span><span style="display:flex;"><span>	tealium = Tealium(config: config) { [<span style="color:#66d9ef">weak</span> <span style="color:#66d9ef">self</span>] <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> self = <span style="color:#66d9ef">self</span>, <span style="color:#66d9ef">let</span> teal = <span style="color:#66d9ef">self</span>.tealium <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		teal.dataLayer.add(key: <span style="color:#e6db74">&#34;mysessionvar&#34;</span>, value: <span style="color:#ae81ff">123456</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		teal.dataLayer.add(key: <span style="color:#e6db74">&#34;myvarforever&#34;</span>, value: <span style="color:#e6db74">&#34;hello&#34;</span>, expiry: .forever)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		teal.dataLayer.add(key: <span style="color:#e6db74">&#34;campaign&#34;</span>, value: <span style="color:#e6db74">&#34;summer&#34;</span>, expiry: .afterCustom((.months, <span style="color:#ae81ff">3</span>)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		print(<span style="color:#e6db74">&#34;All event data: </span><span style="color:#e6db74">\(</span>teal.dataLayer.all<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>		print(<span style="color:#e6db74">&#34;All session data: </span><span style="color:#e6db74">\(</span>teal.dataLayer.allSessionData<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>		print(<span style="color:#e6db74">&#34;Single event data key `campaign`: </span><span style="color:#e6db74">\(</span>teal.dataLayer.all[<span style="color:#e6db74">&#34;campaign&#34;</span>]<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		teal.dataLayer.delete(forKeys: [<span style="color:#e6db74">&#34;myvarforever&#34;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		teal.dataLayer.deleteAll()
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="モジュールデータ">モジュールデータ</h2>
+<h3 id="アプリデータコレクター">アプリデータコレクター</h3>
+<p>以下の変数は、<a href="/platforms/ios-swift/module-list/appdata/"><code>AppData</code></a>モジュールによってデータレイヤーに追加されます。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">変数名</th>
+<th style="text-align:left">説明</th>
+<th style="text-align:left">例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>app_build</code></td>
+<td style="text-align:left">アプリのマイナービルドバージョン</td>
+<td style="text-align:left"><code>2213</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>app_name</code></td>
+<td style="text-align:left">アプリの名前（通常はApp Storeの名前）</td>
+<td style="text-align:left"><code>Digital Velocity</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>app_rdns</code></td>
+<td style="text-align:left">アプリバンドルの完全修飾名</td>
+<td style="text-align:left"><code>com.tealium.digitalvelocity</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>app_uuid</code></td>
+<td style="text-align:left">ランダムな<code>uuid</code>。永続保存モジュールのいずれかが有効になっている場合、アプリのインストールの期間中永続化されます。アプリがアンインストールされるとリセットされます。</td>
+<td style="text-align:left"><code>123e4567-e89b-12d3-a456-556642440000</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>app_version</code></td>
+<td style="text-align:left">アプリバンドルのバージョン</td>
+<td style="text-align:left"><code>1.0</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>tealium_vid</code></td>
+<td style="text-align:left">永続的なTealiumビジターID</td>
+<td style="text-align:left"><code>t3aL...1uM</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>tealium_visitor_id</code></td>
+<td style="text-align:left"><code>tealium_vid</code>と同じで、レガシーの理由で含まれています</td>
+<td style="text-align:left"><code>t3aL...1uM</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="アトリビューションコレクター">アトリビューションコレクター</h3>
+<p>以下の変数は、<a href="/platforms/ios-swift/module-list/attribution/"><code>Attribution</code></a>モジュールによってデータレイヤーに追加されます。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">変数名</th>
+<th style="text-align:left">説明</th>
+<th style="text-align:left">例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>ad_campaign_id</code></td>
+<td style="text-align:left">対応する広告のキャンペーンID</td>
+<td style="text-align:left"><code>1234567890</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ad_campaign_name</code></td>
+<td style="text-align:left">対応する広告のキャンペーン名</td>
+<td style="text-align:left"><code>CampaignName</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ad_creativeset_id</code></td>
+<td style="text-align:left">対応する広告が所属するクリエイティブセットのID</td>
+<td style="text-align:left"><code>456093</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ad_creativeset_name</code></td>
+<td style="text-align:left">対応する広告が所属するクリエイティブセットの名前</td>
+<td style="text-align:left"><code>Beast Images</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ad_group_id</code></td>
+<td style="text-align:left">対応する広告のキャンペーングループID</td>
+<td style="text-align:left"><code>1234567890</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ad_group_name</code></td>
+<td style="text-align:left">対応する広告のキャンペーングループ名</td>
+<td style="text-align:left"><code>AdGroupName</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ad_keyword</code></td>
+<td style="text-align:left">対応する広告のインプレッションを生成したキーワード</td>
+<td style="text-align:left"><code>Keyword</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ad_keyword_matchtype</code></td>
+<td style="text-align:left">ブロード、エクサクト、または検索マッチのいずれかであるキーワードマッチタイプ</td>
+<td style="text-align:left"><code>Exact</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ad_org_id</code></td>
+<td style="text-align:left">対応する広告のキャンペーン組織ID</td>
+<td style="text-align:left"><code>OrgID</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ad_org_name</code></td>
+<td style="text-align:left">対応する広告のキャンペーン組織名</td>
+<td style="text-align:left"><code>OrgName</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ad_purchase_date</code></td>
+<td style="text-align:left">ユーザーがアプリを初めてダウンロードした日時。<code>iadconversion-type = &quot;Redownload&quot;</code>の場合、これは元の購入日です。これはApple Search Adに関連付けられている場合もあります。</td>
+<td style="text-align:left"><code>2016-12-05T17:31:40Z</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ad_region</code></td>
+<td style="text-align:left">インストールを駆動したキャンペーンに関連付けられた国または地域を識別します。</td>
+<td style="text-align:left"><code>US</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ad_user_clicked_last_30_days</code></td>
+<td style="text-align:left">ユーザーがアプリのダウンロードの30日前にSearch Adsのインプレッションをクリックしたかどうかを示すブール値</td>
+<td style="text-align:left"><code>true</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ad_user_conversion _type</code></td>
+<td style="text-align:left">アプリの新規ダウンロードまたは再ダウンロードを識別します</td>
+<td style="text-align:left"><code>Download</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ad_user_date_clicked</code></td>
+<td style="text-align:left">ユーザーが対応する広告をクリックした日時</td>
+<td style="text-align:left"><code>2016-12-05T17:31:40Z</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ad_user_date_converted</code></td>
+<td style="text-align:left">ユーザーがアプリをダウンロードした日時</td>
+<td style="text-align:left"><code>2016-12-05T17:31:40Z</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>device_advertising_enabled</code></td>
+<td style="text-align:left">ユーザーが広告のトラッキングを許可したかどうかを示すブール値（<code>false</code>の場合、広告IDはゼロの文字列として表示されます）</td>
+<td style="text-align:left"><code>true</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>device_advertising_id</code></td>
+<td style="text-align:left">ユーザーがリセット可能な広告識別子（IDFA）</td>
+<td style="text-align:left"><code>6D92078A-8246...</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>device_advertising_vendor_id</code></td>
+<td style="text-align:left">同じベンダーから提供される同じデバイス上のすべてのアプリで同じであることが保証される一意のID（RDNSバンドル識別子の最初の2つの部分が同じであるアプリ、例えばcom.tealiumまたはcom.acme）</td>
+<td style="text-align:left"><code>6D92078A-8246...</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>device_tracking_authorization</code></td>
+<td style="text-align:left">ディスパッチペイロードに追加されるトラッキングの<a href="https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus">承認ステータス</a></td>
+<td style="text-align:left"><code>authorized</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="オートトラッキングコレクター">オートトラッキングコレクター</h3>
+<p>以下の変数は、<a href="/platforms/ios-swift/module-list/autotracking/"><code>Autotracking</code></a>モジュールによってデータレイヤーに追加されます。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">変数名</th>
+<th style="text-align:left">説明</th>
+<th style="text-align:left">例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>autotracked</code></td>
+<td style="text-align:left"><code>true</code>に構成され、各自動トラッキングのトラッキングコールに追加されます</td>
+<td style="text-align:left"><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="collectディスパッチャー">Collectディスパッチャー</h3>
+<p>以下の変数は、<a href="/platforms/ios-swift/module-list/collect/"><code>Collect</code></a>ディスパッチャーによってデータレイヤーに追加されます。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">変数名</th>
+<th style="text-align:left">説明</th>
+<th style="text-align:left">例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>dispatch_service</code></td>
+<td style="text-align:left">トラッキングコールの元となるモジュールを示す静的な文字列</td>
+<td style="text-align:left"><code>collect</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>tealium_event_type</code></td>
+<td style="text-align:left">ディスパッチされているイベントタイプを示す文字列</td>
+<td style="text-align:left"><code>view</code>または<code>event</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="consent-managerモジュール">Consent Managerモジュール</h3>
+<p>以下の変数は、<a href="/platforms/ios-swift/consent-management/"><code>ConsentManager</code></a>モジュールが有効になっている場合にデータレイヤーに追加されます。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">変数名</th>
+<th style="text-align:left">説明</th>
+<th style="text-align:left">例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>consent_categories</code></td>
+<td style="text-align:left">ユーザーが選択した同意カテゴリの配列</td>
+<td style="text-align:left"><code>[&quot;analytics&quot;, &quot;cdp&quot;]</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>consent_status</code></td>
+<td style="text-align:left">ユーザーの現在の同意ステータス</td>
+<td style="text-align:left"><code>consented</code>, <code>notConsented</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>policy</code></td>
+<td style="text-align:left">同意ポリシー</td>
+<td style="text-align:left"><code>gdpr</code>, <code>ccpa</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>do_not_sell</code></td>
+<td style="text-align:left">ユーザーがデータの販売を希望しないかどうか（CCPAの場合のみ）</td>
+<td style="text-align:left"><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="core">Core</h3>
+<p>以下の変数は、<code>Core</code>モジュールによってデータレイヤーに追加されます。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">変数名</th>
+<th style="text-align:left">説明</th>
+<th style="text-align:left">例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>enabled_modules</code></td>
+<td style="text-align:left">現在有効なすべてのモジュールのリスト</td>
+<td style="text-align:left"><code>tagmanagement</code>, <code>collect</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>screen_title</code></td>
+<td style="text-align:left">trackViewコールに渡されるスクリーンタイトル</td>
+<td style="text-align:left"><code>homescreen </code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>tealium_datasource</code></td>
+<td style="text-align:left">データソース名を指定します（すべてのディスパッチに追加されます）</td>
+<td style="text-align:left"><code>a1b2c3</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>tealium_event</code></td>
+<td style="text-align:left">トラッキングされているイベントの名前</td>
+<td style="text-align:left"><code>checkout</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>queue_reason</code></td>
+<td style="text-align:left">トラッキングリクエストが接続の欠如によりキューに入れられた場合、トラックコールに追加される理由。キューに入れられたイベントにのみ存在し、他のイベントには存在しません。</td>
+<td style="text-align:left"><code>connectivity</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>was_queued</code></td>
+<td style="text-align:left">トラッキングコールが接続の欠如によりキューに入れられたかどうかを示します。キューに入れられたイベントにのみ存在し、他のイベントには存在しません。</td>
+<td style="text-align:left"><code>true</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>tealium_account</code></td>
+<td style="text-align:left">現在のTealiumアカウント（TealiumConfigオブジェクトから）</td>
+<td style="text-align:left"><code>tealium</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>tealium_environment</code></td>
+<td style="text-align:left">現在のTealium環境（TealiumConfigオブジェクトから）</td>
+<td style="text-align:left"><code>dev</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>tealium_library_name</code></td>
+<td style="text-align:left">Tealiumライブラリ名</td>
+<td style="text-align:left"><code>swift</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>tealium_library_version</code></td>
+<td style="text-align:left">Tealiumライブラリのバージョン</td>
+<td style="text-align:left"><code>1.8.0</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>tealium_profile</code></td>
+<td style="text-align:left">現在のTealiumプロファイル（TealiumConfigオブジェクトから）</td>
+<td style="text-align:left"><code>mobile</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>tealium_random</code></td>
+<td style="text-align:left">ランダムな番号</td>
+<td style="text-align:left"><code>8449989974958830</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>tealium_session_id</code></td>
+<td style="text-align:left">TealiumセッションID</td>
+<td style="text-align:left"><code>1511262829677</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>tealium_timestamp_epoch</code></td>
+<td style="text-align:left">現在のUnixタイムスタンプ（1970年のエポック）（秒単位）</td>
+<td style="text-align:left"><code>1511262829</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>timestamp</code></td>
+<td style="text-align:left">イベントのタイムスタンプをISO8601形式（Zulu Time）、UTCで表したもの</td>
+<td style="text-align:left"><code>2017-11-20T14:48:00Z</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>timestamp_local</code></td>
+<td style="text-align:left">イベントのタイムスタンプをISO8601形式のローカルタイムゾーンで表したもの</td>
+<td style="text-align:left"><code>2017-11-20T06:48:00</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>timestamp_offset</code></td>
+<td style="text-align:left">現在のオフセット時間（UTCからの時間単位）</td>
+<td style="text-align:left"><code>-8</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>timestamp_unix</code></td>
+<td style="text-align:left">現在のUnixタイムスタンプ（1970年のエポック）（秒単位）</td>
+<td style="text-align:left"><code>1511189280</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>timestamp_unix_milliseconds</code></td>
+<td style="text-align:left">現在のUnixタイムスタンプ（1970年のエポック）（ミリ秒単位）</td>
+<td style="text-align:left"><code>1511189280337</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>deep_link_url</code></td>
+<td style="text-align:left"><code>String</code></td>
+<td style="text-align:left">アプリを開いたディープリンクの完全なURL（クエリパラメータを含む）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>deep_link_param_X</code></td>
+<td style="text-align:left"><code>String</code></td>
+<td style="text-align:left">ディープリンクURLの各クエリパラメータ。<code>X</code>はパラメータの名前であり、<code>deep_link_param_campaign_code</code>などです。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>deep_link_referrer_url</code> (iOS)</td>
+<td style="text-align:left"><code>String</code></td>
+<td style="text-align:left">ディープリンクがクリックされたブラウザページの完全なURL。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>deep_link_referrer_app</code> (iOS)</td>
+<td style="text-align:left"><code>String</code></td>
+<td style="text-align:left">ディープリンクが別のアプリでカスタムスキーマから来た場合のリファラーアプリの識別子。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="クラッシュコレクター">クラッシュコレクター</h3>
+<p>以下の変数は、<a href="/platforms/ios-swift/module-list/crash-reporter/"><code>CrashReporter</code></a>モジュールによってデータレイヤーに追加されます。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">変数名</th>
+<th style="text-align:left">説明</th>
+<th style="text-align:left">例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>app_memory_usage</code></td>
+<td style="text-align:left">クラッシュ時のデバイス上のアプリの現在のメモリ使用量</td>
+<td style="text-align:left"><code>143.57MB</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>crash_cause</code></td>
+<td style="text-align:left">クラッシュの原因</td>
+<td style="text-align:left"><code>Crash Reason</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>crash_name</code></td>
+<td style="text-align:left">クラッシュのフレンドリーな名前（利用可能な場合）</td>
+<td style="text-align:left"><code>Crash Name</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>crash_libraries</code></td>
+<td style="text-align:left">クラッシュ時にロードされたライブラリのリスト</td>
+<td style="text-align:left"><code>{ &quot;baseAddress&quot;: &quot;0xa3e0000&quot;, &quot;codeType&quot;: { &quot;arch&quot;: 64, &quot;typeEncoding&quot;: &quot;Mach&quot;}, &quot;imageName&quot;: &quot;/Applications/Xcode9.3.app/ Contents/Developer/Platforms/ iPhoneOS.platform/Developer/ Library/CoreSimulator/Profiles/ Runtimes/iOS.simruntime/ Contents/Resources/ RuntimeRoot/usr/lib/dyld_sim&quot;, &quot;imageSize&quot;: 212992, &quot;imageUuid&quot;: &quot;4015e9b70bde&quot; }</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>crash_process_id</code></td>
+<td style="text-align:left">クラッシュ時のアプリのPID</td>
+<td style="text-align:left"><code>84351</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>crash_process_path</code></td>
+<td style="text-align:left">アプリが実行されているパス</td>
+<td style="text-align:left"><code>/DemoApp.app/DemoApp</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>crash_parent_process</code></td>
+<td style="text-align:left">アプリを起動した親プロセス</td>
+<td style="text-align:left"><code>launchd_sim</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>crash_parent_process_id</code></td>
+<td style="text-align:left">親プロセスのPID</td>
+<td style="text-align:left"><code>83183</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>crash_signal_address</code></td>
+<td style="text-align:left">クラッシュのシグナルアドレス</td>
+<td style="text-align:left"><code>4572945982</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>crash_signal_code</code></td>
+<td style="text-align:left">クラッシュのシグナルコード</td>
+<td style="text-align:left"><code>#0</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>crash_signal_name</code></td>
+<td style="text-align:left">クラッシュのシグナル名</td>
+<td style="text-align:left"><code>SIGABRT</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>crash_threads</code></td>
+<td style="text-align:left">クラッシュ時のすべてのアクティブスレッドを返します。</td>
+<td style="text-align:left"><code>{&quot;crashed&quot;: 1,&quot;registers&quot;: {&quot;cs&quot;: &quot;0x07&quot;},&quot;stack&quot;: {&quot;instructionPointer&quot;: 4572945982,&quot;symbolInfo&quot;: {&quot;symbolName&quot;: &quot;&quot;,&quot;symbolStartAddr&quot;: 0},&quot;threadId&quot;: &quot;&quot;}}</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>crash_uuid</code></td>
+<td style="text-align:left">この特定のクラッシュの一意の識別子</td>
+<td style="text-align:left"><code>CC2DA0E9-E544-429A-AC5E-A268FC62F02A</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>device_memory_usage</code></td>
+<td style="text-align:left">クラッシュ時のデバイス上のアプリの現在のメモリ使用量</td>
+<td style="text-align:left"><code>143.57MB</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>device_memory_available</code></td>
+<td style="text-align:left">クラッシュ時のデバイス上の空きメモリ</td>
+<td style="text-align:left"><code>1068.88MB</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>device_os_build</code></td>
+<td style="text-align:left">現在のOSビルド番号</td>
+<td style="text-align:left"><code>15E217</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>memory_free</code></td>
+<td style="text-align:left">クラッシュ時のデバイス上の空きメモリ</td>
+<td style="text-align:left"><code>1068.88MB</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="デバイスデータコレクター">デバイスデータコレクター</h3>
+<p>以下の変数は、<a href="/platforms/ios-swift/module-list/device-data/"><code>DeviceData</code></a>モジュールによってデータレイヤーに追加されます。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">変数名</th>
+<th style="text-align:left">説明</th>
+<th style="text-align:left">例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>app_memory_usage</code></td>
+<td style="text-align:left">デバイス上の現在のプロセス/アプリのメモリ使用量（メガバイト単位）</td>
+<td style="text-align:left"><code>35.75MB</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>carrier</code></td>
+<td style="text-align:left">モバイルネットワークのキャリア名</td>
+<td style="text-align:left"><code>EE</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>carrier_iso</code></td>
+<td style="text-align:left">モバイルキャリアのISOコード</td>
+<td style="text-align:left"><code>gb</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>carrier_mcc</code></td>
+<td style="text-align:left">キャリアのモバイル国コード</td>
+<td style="text-align:left"><code>234</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>carrier_mnc</code></td>
+<td style="text-align:left">キャリアのモバイルネットワークコード</td>
+<td style="text-align:left"><code>34</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>connection_type</code></td>
+<td style="text-align:left">現在の接続タイプ</td>
+<td style="text-align:left"><code>wifi</code>, <code>cellular</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>device</code></td>
+<td style="text-align:left">デバイス名</td>
+<td style="text-align:left"><code>iPhone 7 Plus</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>device_architecture</code></td>
+<td style="text-align:left">デバイスのアーキテクチャ</td>
+<td style="text-align:left"><code>64</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>device_battery_percent</code></td>
+<td style="text-align:left">トラックコール時の現在のバッテリー残量</td>
+<td style="text-align:left"><code>58</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>device_cputype</code></td>
+<td style="text-align:left">デバイスのCPUタイプ</td>
+<td style="text-align:left"><code>ARM64v8</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>device_ischarging</code></td>
+<td style="text-align:left">デバイスが現在充電中かどうかを示すブール値</td>
+<td style="text-align:left"><code>true</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>device_language</code></td>
+<td style="text-align:left">現在のデバイスの言語</td>
+<td style="text-align:left"><code>en-US</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>device_orientation</code></td>
+<td style="text-align:left">シンプルな方向</td>
+<td style="text-align:left"><code>Portrait</code>, <code>Landscape</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>device_orientation_extended</code></td>
+<td style="text-align:left">フルの方向</td>
+<td style="text-align:left"><code>Face Up</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>device_os_version</code></td>
+<td style="text-align:left">オペレーティングシステムのバージョン</td>
+<td style="text-align:left"><code>11.1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>device_resolution</code></td>
+<td style="text-align:left">物理的な画面解像度（幅x高さ）</td>
+<td style="text-align:left"><code>828x1792</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>device_logical_resolution</code></td>
+<td style="text-align:left">論理的な画面解像度（幅x高さ）</td>
+<td style="text-align:left"><code>414x896</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>device_type</code></td>
+<td style="text-align:left">Apple内部のデバイス識別子</td>
+<td style="text-align:left"><code>iPhone12,1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>memory_active*</code></td>
+<td style="text-align:left">デバイス上の合計アクティブメモリ</td>
+<td style="text-align:left"><code>997.78MB</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>memory_compressed*</code></td>
+<td style="text-align:left">デバイス上の合計圧縮メモリ</td>
+<td style="text-align:left"><code>153.39MB</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>memory_free*</code></td>
+<td style="text-align:left">デバイス上の合計空きメモリ</td>
+<td style="text-align:left"><code>120.81MB</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>memory_inactive*</code></td>
+<td style="text-align:left">デバイス上の合計非アクティブメモリ</td>
+<td style="text-align:left"><code>441.83MB</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>memory_physical*</code></td>
+<td style="text-align:left">デバイス上の合計物理メモリ（RAM）（メガバイト単位）</td>
+<td style="text-align:left"><code>2013.50MB</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>memory_wired*</code></td>
+<td style="text-align:left">デバイス上の合計有線メモリ</td>
+<td style="text-align:left"><code>207.12MB</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>model_name</code></td>
+<td style="text-align:left">モデル名</td>
+<td style="text-align:left"><code>iPhone 7 Plus</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>model_variant</code></td>
+<td style="text-align:left">モデルのバリアント（一般的にはデバイスで利用可能な無線技術を示します）</td>
+<td style="text-align:left"><code>CDMA</code>, <code>GSM</code>, <code>WiFi</code>, <code>Cellular</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>network_iso_country_code</code></td>
+<td style="text-align:left">モバイルネットワークのISO国コード</td>
+<td style="text-align:left"><code>gb</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>os_name</code></td>
+<td style="text-align:left">オペレーティングシステム名</td>
+<td style="text-align:left"><code>iOS</code>, <code>tvOS</code>, <code>watchOS</code>, <code>macOS</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>platform</code></td>
+<td style="text-align:left">オペレーティングシステム名</td>
+<td style="text-align:left"><code>iOS</code>, <code>tvOS</code>, <code>watchOS</code>, <code>macOS</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="ライフサイクルコレクター">ライフサイクルコレクター</h3>
+<p>以下の変数は、<a href="/platforms/ios-swift/module-list/lifecycle/"><code>Lifecycle</code></a>モジュールによってデータレイヤーに追加されます。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">変数名</th>
+<th style="text-align:left">説明</th>
+<th style="text-align:left">例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>lifecycle_dayofweek_local</code></td>
+<td style="text-align:left">コールが行われたローカルの曜日。1=日曜日、2=月曜日など</td>
+<td style="text-align:left"><code>4</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_dayssincelastwake</code></td>
+<td style="text-align:left">整数の増分で最後に検出された起動からの日数</td>
+<td style="text-align:left"><code>1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_dayssincelaunch</code></td>
+<td style="text-align:left">整数の増分で最初の起動からの日数</td>
+<td style="text-align:left"><code>23</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_dayssinceupdate</code></td>
+<td style="text-align:left">整数の増分で最後に検出されたアプリバージョンの更新からの日数</td>
+<td style="text-align:left"><code>46</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_diddetect_crash</code></td>
+<td style="text-align:left">この起動/起床イベント中にクラッシュが検出されたかどうか（<code>true</code>の場合のみ表示されます）</td>
+<td style="text-align:left"><code>true</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_firstlaunchdate</code></td>
+<td style="text-align:left">最初に検出された起動/起床のGMTタイムスタンプ（Zulu timeのISO8601形式）</td>
+<td style="text-align:left"><code>2013-07-11T17:55:04Z</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_firstlaunchdate_MMDDYYYY</code></td>
+<td style="text-align:left">MM/DD/YYYYの形式にフォーマットされたGMTタイムスタンプ</td>
+<td style="text-align:left"><code>01/17/2012 </code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_hourofday_local</code></td>
+<td style="text-align:left">コールが行われたローカルの時間（24時間形式）</td>
+<td style="text-align:left"><code>true</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_isfirstlaunch</code></td>
+<td style="text-align:left">コールが最初の起動/起床コールである場合にのみ存在します</td>
+<td style="text-align:left"><code>true</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_isfirstlaunchupdate</code></td>
+<td style="text-align:left">コールが最初の起動/起床コールで、更新が検出された後である場合にのみ存在します</td>
+<td style="text-align:left"><code>true</code>, <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_isfirstwakemonth</code></td>
+<td style="text-align:left">コールが月の最初の起動/起床コールである場合にのみ存在します</td>
+<td style="text-align:left"><code>true</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_isfirstwaketoday</code></td>
+<td style="text-align:left">コールがその日の最初の起動/起床コールである場合にのみ存在します</td>
+<td style="text-align:left"><code>true</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_launchcount</code></td>
+<td style="text-align:left">アプリのこのバージョンの総起動回数（最後の更新以降）</td>
+<td style="text-align:left"><code>3</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_priorsecondsawake</code></td>
+<td style="text-align:left">ランチのみの場合、前のすべての起動からのアプリが起動していた秒数の合計。<code>lifecycle_type:launch</code>コールのみで送信されます。</td>
+<td style="text-align:left"><code>126</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_secondsawake</code></td>
+<td style="text-align:left">最新の起動/起床からのアプリが起動していた秒数の合計</td>
+<td style="text-align:left"><code>30</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_sleepcount</code></td>
+<td style="text-align:left">アプリがスリープに入った回数の合計（更新された場合にリセットされます）</td>
+<td style="text-align:left"><code>5</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_totalcrashcount</code></td>
+<td style="text-align:left">インストール以降にカウントされたクラッシュの合計回数（アプリが削除される場合のみリセットされます）</td>
+<td style="text-align:left"><code>21</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_totallaunchcount</code></td>
+<td style="text-align:left">インストール以降の起動の合計回数（アプリが削除される場合のみリセットされます）</td>
+<td style="text-align:left"><code>3</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_totalsecondsawake</code></td>
+<td style="text-align:left">アプリが起動している/アクティブな状態である秒数の合計（アプリが削除される場合のみリセットされます）</td>
+<td style="text-align:left"><code>36</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_totalsleepcount</code></td>
+<td style="text-align:left">アプリがバックグラウンドに入った回数の合計（アプリが削除される場合のみリセットされます）</td>
+<td style="text-align:left"><code>400</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_totalwakecount</code></td>
+<td style="text-align:left">インストール以降の起動+起床の合計回数（アプリが削除される場合のみリセットされます）</td>
+<td style="text-align:left"><code>563</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_type</code></td>
+<td style="text-align:left">ライフサイクルコールのタイプ</td>
+<td style="text-align:left"><code>launch</code>, <code>wake</code>, <code>sleep</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_updatelaunchdate</code></td>
+<td style="text-align:left">バージョンの更新が検出された後の最初の起動/起床のGMTタイムスタンプ</td>
+<td style="text-align:left"><code>2014-09-08T18:10:01Z</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>lifecycle_wakecount</code></td>
+<td style="text-align:left">このバージョンのアプリの起動+起床の合計回数（更新される場合にリセットされます）</td>
+<td style="text-align:left"><code>29</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="ロケーションコレクター">ロケーションコレクター</h3>
+<p>以下の変数は、<a href="/platforms/ios-swift/module-list/location/"><code>Location</code></a>モジュールによってデータレイヤーに追加されます。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">変数  名</th>
+<th style="text-align:left">説明</th>
+<th style="text-align:left">例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>geofence_name</code></td>
+<td style="text-align:left">ジオフェンス領域の名前</td>
+<td style="text-align:left"><code>Tealium_San_Diego</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>geofence_transition_type</code></td>
+<td style="text-align:left">ジオフェンスのトランジションイベントのタイプ</td>
+<td style="text-align:left"><code>entered</code>,<code>exited</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>location_timestamp</code></td>
+<td style="text-align:left">ユーザーがジオフェンス領域に入った/出た日時（GMT）</td>
+<td style="text-align:left"><code>2020-01-28 16:29:46 +0000</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>latitude</code></td>
+<td style="text-align:left">ユーザーの最新の位置の緯度</td>
+<td style="text-align:left"><code>32.906119</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>longitude</code></td>
+<td style="text-align:left">ユーザーの最新の位置の経度</td>
+<td style="text-align:left"><code>-117.23791632509666</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>movement_speed</code></td>
+<td style="text-align:left">デバイスの瞬間的な速度（メートル/秒）</td>
+<td style="text-align:left"><code>1.0</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>location_accuracy</code></td>
+<td style="text-align:left">位置モジュールの精度構成</td>
+<td style="text-align:left"><code>high</code>, <code>low</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="タグ管理">タグ管理</h3>
+<p>以下の変数は、<a href="/platforms/ios-swift/module-list/tag-management/"><code>Tag Management</code></a>モジュールによってデータレイヤーに追加されます。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">変数名</th>
+<th style="text-align:left">説明</th>
+<th style="text-align:left">例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>dispatch_service</code></td>
+<td style="text-align:left">トラッキングコールの元となるモジュールを示す静的な文字列</td>
+<td style="text-align:left"><code>tagmanagement</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>tealium_event_type</code></td>
+<td style="text-align:left">トラッキングされているイベントタイプを示す文字列</td>
+<td style="text-align:left"><code>view</code>または<code>event</code></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
+
+  
+  <a href="/ja/platforms/ios-swift/consent-management/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <section class="tl pr3">
+      <div>同意管理</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"同意管理"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
+  
+  
+</div><div class="di mr3">
+  
+  
+  <a href="/ja/platforms/ios-swift/track/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"トラッキング "</title>
+      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+    </svg>
+   <section class="tr pl3">
+      <div>トラッキング</div>
+    </section>
+  </a>
+  
+
+</div></div>
+
+
+
+        <div class="bt-l b--moon-gray pv3 cb">
+          <div id="feedback_form" class="dpn">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">このページはお役にたちましたでしょうか？</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+はい</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+いいえ</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="ページの改善にご協力ください。" rows="4" cols="60"></textarea><button id="feedback_submit" class="db ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">フィードバックを送信</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">ご意見有難うございます。</p>
+  </div>
+</div>
+
+        </div>
+        <div class="bt-l b--moon-gray pt3 f6">
+          <p>最終更新日 ::  2024年March月29日
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
+      
+
+
+
+  <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">このページで</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">カスタムデータ</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%9C%89%E5%8A%B9%E6%9C%9F%E9%99%90" href="javascript:void(0)">データの有効期限</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%8F%96%E5%BE%97" href="javascript:void(0)">すべてのデータの取得</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%82%AF%E3%83%AA%E3%82%A2" href="javascript:void(0)">データのクリア</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%8B" href="javascript:void(0)">例</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">モジュールデータ</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%83%97%E3%83%AA%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B3%E3%83%AC%E3%82%AF%E3%82%BF%E3%83%BC" href="javascript:void(0)">アプリデータコレクター</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%83%88%E3%83%AA%E3%83%93%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%B3%E3%83%AC%E3%82%AF%E3%82%BF%E3%83%BC" href="javascript:void(0)">アトリビューションコレクター</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AA%E3%83%BC%E3%83%88%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0%E3%82%B3%E3%83%AC%E3%82%AF%E3%82%BF%E3%83%BC" href="javascript:void(0)">オートトラッキングコレクター</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#collect%E3%83%87%E3%82%A3%E3%82%B9%E3%83%91%E3%83%83%E3%83%81%E3%83%A3%E3%83%BC" href="javascript:void(0)">Collectディスパッチャー</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent-manager%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB" href="javascript:void(0)">Consent Managerモジュール</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#core" href="javascript:void(0)">Core</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%83%83%E3%82%B7%E3%83%A5%E3%82%B3%E3%83%AC%E3%82%AF%E3%82%BF%E3%83%BC" href="javascript:void(0)">クラッシュコレクター</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B3%E3%83%AC%E3%82%AF%E3%82%BF%E3%83%BC" href="javascript:void(0)">デバイスデータコレクター</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%E3%82%B3%E3%83%AC%E3%82%AF%E3%82%BF%E3%83%BC" href="javascript:void(0)">ライフサイクルコレクター</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%B3%E3%83%AC%E3%82%AF%E3%82%BF%E3%83%BC" href="javascript:void(0)">ロケーションコレクター</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E7%AE%A1%E7%90%86" href="javascript:void(0)">タグ管理</a></li>
+              </nav>
+  </aside></nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-secondary ph1-ns relative w-100 pv4 bt b--light-gray" role="contentinfo">
+  <div class="center flex-ns flex-wrap justify-between mw9 w-90 dn db-ns">
+
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="nav-list footer-heading-title">
+          <div class="footer-logo-wrapper">
+            <img class="logo" src="https://tealium.com/wp-content/uploads/2015/12/tealium_footer_logo_01-206x49.png" alt="tealium_footer_logo_01">
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Support</li>
+<li class="mb2"><a class="link" href="https://university.tealium.com/">Tealium University</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/en/support/solutions">Knowledge Base</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/" target="">Support Desk</a></li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Company</li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/">Tealium.com</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/blog/">Blog</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="https://tealium.com/careers/">Careers</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+  <div class="dpn bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+<div class="globalmenu mobilemenu dn">
+    
+
+<ul class="list hidden dib ph0 ma0 scrolling-touch tc">
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ホーム
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/iq-tag-management/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          iQ Tag Management
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          EventStream API Hub
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/functions/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          機能
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-connect/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          データコネクト
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/predict/getting-started/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Predict ML
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-storage/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          DataAccess
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/client-side-tags/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          クライアントサイド タグ
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side-connectors/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          サーバーサイド コネクタ
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/platforms/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          プラットフォーム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/api/getting-started/auth/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          管理
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ファーマ向けティーリアム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ティーリアムアイデンティティパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/tech-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          テクノロジーパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          パートナー統合
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/glossary/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          用語集
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/early-access/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          早期アクセス
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/release-notes/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          リリースノート
+        </a>
+    </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+</div>
+
+
+<div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
+    <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+</ul>
+
+</div>
+
+
+
+
+<div class="flex dn-l justify-between">
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link mr2 white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".globalmenu">Site</button>
+
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".docsmenu">Section</button>
+
+</div>
+</div>
+
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'ドキュメントの検索',
+    buttonAriaLabel: 'ドキュメントの検索',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'クエリを消去',
+      resetButtonAriaLabel: 'クエリを消去',
+      cancelButtonText: 'キャンセル',
+      cancelButtonAriaLabel: 'キャンセル',
+    },
+    startScreen: {
+      recentSearchesTitle: '最近',
+      noRecentSearchesText: '最近の検索はありません',
+      saveRecentSearchButtonTitle: 'この検索を保存',
+      removeRecentSearchButtonTitle: 'この検索を履歴から削除',
+      favoriteSearchesTitle: 'お気に入り',
+      removeFavoriteSearchButtonTitle: 'このクエリをお気に入りから削除',
+    },
+    errorScreen: {
+      titleText: '結果を取得できません',
+      helpText: 'ネットワーク接続を確認してください',
+    },
+    footer: {
+      selectText: '選択する',
+      selectKeyAriaLabel: 'キーを入力してください',
+      navigateText: 'ナビゲートする',
+      navigateUpKeyAriaLabel: '上',
+      navigateDownKeyAriaLabel: '下',
+      closeText: '閉じる',
+      closeKeyAriaLabel: 'エスケープキー',
+      searchByText: '次で検索：',
+    },
+    noResultsScreen: {
+      noResultsText: '次の結果はありません：',
+      suggestedQueryText: '次で検索してみてください：',
+      reportMissingResultsText: 'このクエリで結果が返ってくるはずですか?',
+      reportMissingResultsLinkText: '連絡願います',
+    },
+  },
+};
+var default_sections = [
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
+docsearch({
+  container: '#docsearch',
+  appId: '2V5C0M31GH',
+  apiKey: '32b47c4ec1ccc76fbe18808c48f9d8b6',
+  indexName: 'tealium_jp',
+  placeholder: 'ドキュメントの検索',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    "analytics": true ,
+    "analyticsTags": ["site"]
+  },
+  insights: true,
+  debug: false ,
+  transformItems
+});
+</script>
+
+    
+
+  </body>
+</html>

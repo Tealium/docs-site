@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     
+    <title>インストール | Salesforce Commerce CloudのためのTealium | Tealium開発者ドキュメント</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+     <meta name="generator" content="Hugo 0.111.3">
+
+      
+        <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+      
+
+    
+    
+      
+        <link rel="alternate" hreflang="en" href="https://docs.tealium.com/platforms/salesforce/install/">
+      
+    
+      
+    
+    
+
+     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
+  </head>
+  <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
+      
+        
+<script>
+var utag_data = {
+    site_section  : "platforms",
+    reading_time  : "3",
+    site_language : "ja",
+    tealium_event : "page_view"
+}
+</script>
+
+<script>
+ (function(a,b,c,d){
+    a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+  })();
+</script>
+
+      
+
+    
+<nav class="w-100 sticky-t bg-primary-color-light bb b--light-gray dpn" role="navigation">
+
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
+
+    <div class="lh-solid ml0-ns mr0 mr4-l mv3 pl15 dib db-ns">
+      <a href="/ja/"><img src="/images/icons/tealium-documentation-logo-color.svg" class="v-mid dib" width="186" height="31"></a>
+    </div>
+    
+    <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-ns">
+      <li class="f5 dib">
+         <i class="fa fa-globe" style="color: rgba(255, 255, 255, .6)" aria-hidden="true"></i>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+          <a href="/platforms/salesforce/install/" class="dim link mid-gray">English</a>
+        
+      
+        
+      
+      </li>
+            
+    </ul>
+
+  </div>
+  
+</nav>
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 pr4">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-hidden overflow-y-scroll dn db-ns sticky-l pt3 pl125" style="width:280px;">
+<nav class="side-nav f6" role="navigation">
+  <ul class="list pa0 mt0 mb1">
+  
+    <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/ja/platforms" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>プラットフォーム</a></li>
+  
+  </ul>
+  <ul class="list pa0" data-nav-section="salesforce"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><span class="pb2">Salesforce</span>
+        <ul data-level="1" class="salesforce desktopmenu animated fadeIn list pl0 mt2"><li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/salesforce/install/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".salesforce-install">インストール</a></li></ul></li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
+      <div class="documentation-copy ph4">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+    
+  
+  <li class="mr1 f7 lvl0"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/">ホーム</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/platforms/">プラットフォーム</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl2"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/platforms/salesforce/">Salesforce Commerce CloudのためのTealium</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mt30 mb3">インストール</h1>
+</header>
+
+<div class="mv2 mid-gray fn w-100">
+  
+
+  
+    <p class="f4 fw3 lh-copy">
+      この記事では、Salesforce Commerce CloudにTealiumカートリッジをインストールする方法を説明します。
+    </p>
+  
+</div>
+
+<div class="prose nested-links" id="prose">
+  <h2 id="動作原理">動作原理</h2>
+<p>Tealiumカートリッジを使用すると、マーケターは1行のコードと直感的なWebインターフェースを介してタグ要件を自分自身で管理できます。ITリソースは必要ありません。コード中心のアプローチを好む他のソリューションとは異なり、TealiumはJavaScriptの知識を必要としない使いやすいテンプレートを提供します。これにより、デジタルマーケティングベンダータグを簡単に追加、編集、または削除することができます。Tealiumは、マーケターがより迅速かつ効率的になるために設計されています。</p>
+<p>Tealiumカートリッジの基本的なインストールでは、Tealiumは追加のカスタマイズなしで、コンテンツナビゲーション、検索トラッキング、製品表示、チェックアウト、注文トラッキングなど、豊富な訪問イベントデータを自動的に収集します。</p>
+<p>Tealiumカートリッジは、サーバーサイドのCommerce Cloud実装からシンプルなTealiumクライアントサイドコンソールに多くの作業を移行することで、マーケターのベンダータグスイートのフルポテンシャルを引き出します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>TealiumカートリッジにはTealiumのサブスクリプションが必要です。</p>
+<h2 id="ユースケース">ユースケース</h2>
+<p>Tealiumカートリッジの基本的なインストールでは、追加のカスタマイズなしで、コンテンツナビゲーション、検索トラッキング、製品表示、チェックアウト、注文トラッキングなど、豊富な訪問イベントデータを自動的に収集します。</p>
+<p>その後、Tealium iQは、ITリソースやCommerce Cloudストアフロントの変更を必要とせずに、シームレスで完全なベンダータグの統合を提供します。</p>
+<h2 id="セットアップ">セットアップ</h2>
+<p>次の手順に従って、TealiumカートリッジをCommerce Cloudストアフロントに統合します。これらの手順は、標準のSite Genesisストアフロントを基にしています。</p>
+<ol>
+<li>Tealiumカートリッジを<strong>Commerce Cloud Studioワークスペース</strong>にインポートします：
+<ul>
+<li><strong>Commerce Cloud Studio</strong>を開きます。</li>
+<li><strong>ファイル &gt; インポート &gt; 一般 &gt; 既存のプロジェクトをワークスペースにインポート</strong>に移動します。</li>
+<li><code>int_tealium</code>ディレクトリに移動します。</li>
+<li><strong>完了</strong>をクリックします。</li>
+<li>カートリッジをサンドボックスにリンクするように求められた場合は、<strong>OK</strong>をクリックします。</li>
+</ul>
+</li>
+<li><strong>カスタムサイト構成</strong>をCommerce Cloud Business Managerにインポートします。
+<ul>
+<li><strong>Commerce Cloud Business Manager</strong>にログインします。</li>
+<li><strong>管理 &gt; サイト開発 &gt; インポートとエクスポート</strong>に移動します。</li>
+<li><strong>アップロード</strong>をクリックします。</li>
+<li><code>./int_tealium/metadata/Tealium_Meta.xml</code>ファイルを参照します。</li>
+<li>ページの下部にある**&laquo;戻る**をクリックします。</li>
+<li><strong>インポート</strong>をクリックします。</li>
+<li><code>Tealium_Meta.xml</code>ファイルを選択します。</li>
+<li><strong>次へ</strong>をクリックします。</li>
+<li><strong>インポート</strong>をクリックします。</li>
+</ul>
+</li>
+<li>Commerce Cloud Business Managerを使用して、Tealiumカスタム構成を構成します。
+<ul>
+<li>Tealiumを構成する各サイトにログインします：</li>
+<li>ページの上部にあるタブから正しいサイトを選択します。</li>
+<li><strong>Merchant Tools &gt; サイト構成 &gt; カスタム構成 &gt; Tealium</strong>に移動します。</li>
+<li>実装中に、Tealiumから入力する値が提供されます。</li>
+<li><strong>Tealium Environment</strong>フィールドには、<code>dev</code>、<code>qa</code>、または<code>prod</code>を入力します（たとえば、サンドボックス/開発インスタンスには<code>dev</code>を使用します）。</li>
+<li>この統合を有効にするためにチェックボックスをオンにし、ページの下部近くにある<strong>適用</strong>をクリックします。
+<figure><a class="slb" href="/images/platforms/salesforce/commerce-cloud-instance-tealium-settings.png"><img src="/images/platforms/salesforce/commerce-cloud-instance-tealium-settings.png"
+         alt="Commerce Cloud Instance - Tealium settings"
+         title="Commerce Cloud Instance - Tealium settings"/>
+    </a>
+</figure></li>
+</ul>
+</li>
+<li>TealiumカートリッジをEffective Cartridge Pathに追加します。
+<ul>
+<li>ステージングサーバーの<strong>Commerce Cloud Business Manager</strong>にログインします。</li>
+<li>各リストされたサイトとBusiness Managerサイトに対して<strong>管理 &gt; サイト &gt; サイトの管理</strong>に移動します：
+<ul>
+<li>リストからサイトを選択します。</li>
+<li><strong>構成</strong>タブをクリックします。</li>
+<li>**Cartridges:**フィールドに<code>:int_tealium</code>を追加します。</li>
+<li><strong>適用</strong>をクリックします。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>footer.isml</code>にTealiumフッターコードを追加します。
+<ul>
+<li><strong>Commerce Cloud Studio</strong>を開きます。</li>
+<li><code>/cartridge/templates/default/components/footer/pageFooter.isml</code>ストアフロントフッターファイルを開き、次のテキストをファイルに追加します：</li>
+</ul>
+</li>
+</ol>
+<pre tabindex="0"><code>  &lt;isinclude url=&#34;${URLUtils.url(&#39;Tealium_utag-RenderTealium&#39;,
+&#39;title&#39;, request.pageMetaData.title,
+&#39;pagecontexttype&#39;, (&#39;pageContext&#39; in this &amp;&amp; !empty(pageContext)) ? &#39;&#39;+pageContext.type : null,
+&#39;pagecontexttitle&#39;, (&#39;pageContext&#39; in this &amp;&amp; !empty(pageContext)) ? &#39;&#39;+pageContext.title : null,
+&#39;searchterm&#39;, request.httpParameterMap.q.stringValue,
+&#39;searchresultscount&#39;, (!empty(pdict.productSearch) ? &#39;&#39;+pdict.productSearch.count : null),
+&#39;productid&#39;, (!empty(pdict.product) &amp;&amp; !empty(pdict.product.id) ? &#39;&#39;+pdict.product.id : null),
+&#39;pagecgid&#39;, request.httpParameterMap.cgid.stringValue,
+&#39;orderno&#39;, (!empty(pdict.order) ? pdict.order.orderNumber : null)
+)}&#34;/&gt;
+</code></pre><ol start="6">
+<li>以下のCommerce Cloudテンプレート（<code>.isml</code>ファイル）を更新して、<code>pageContext</code>オブジェクトを含めます：
+<ul>
+<li><strong>Commerce Cloud Studio</strong>を開きます。</li>
+<li><code>/cartridge/templates/default/cart/cart.isml</code>ストアフロントファイルを開き、テンプレートの上部に次の行を追加します：</li>
+</ul>
+<pre tabindex="0"><code>&lt;isscript&gt;var pageContext={title:&#39;Cart&#39;, type:&#39;cart&#39;, ns:&#39;cart&#39;};&lt;/isscript&gt;
+</code></pre><ul>
+<li><code>/cartridge/templates/default/checkout/checkout.isml</code>ストアフロントファイルを開き、テンプレートの上部に次の行を追加します：</li>
+</ul>
+<pre tabindex="0"><code>&lt;isscript&gt;var pageContext={title:&#39;Checkout&#39;,type:&#39;checkout&#39;,ns:&#39;checkout&#39;};&lt;/isscript&gt;
+</code></pre><ul>
+<li><code>/cartridge/templates/default/account/order/history.isml</code>ストアフロントファイルを開き、テンプレートの上部に次の行を追加します：</li>
+</ul>
+<pre tabindex="0"><code>&lt;isscript&gt;var pageContext={title:&#39;OrderHistory&#39;,type:&#39;orderhistory&#39;,ns:&#39;orderhistory&#39;};&lt;/isscript&gt;
+</code></pre></li>
+</ol>
+<h3 id="構成">構成</h3>
+<p>Tealiumの構成で適切なTealiumアカウントとTealiumプロファイルを構成してください。セットアップセクションのステップ3で構成したものと一致する必要があります。</p>
+<p>その他のCommerce Cloudの構成は必要ありません。</p>
+<p>Tealium iQを使用してマーケティングタグをカスタマイズする方法については、Tealiumアカウントマネージャーと相談してください。</p>
+<h3 id="カスタムコード">カスタムコード</h3>
+<p>基本的な統合では、上記のセットアップ手順以外にカスタムコードは必要ありません。</p>
+<h3 id="互換性">互換性</h3>
+<p>最新のSFRAの更新前の旧バージョンのインストールについては、<a href="https://github.com/Tealium/integration-demandware/releases">TealiumのGitHubのDemandwareリリース</a>を参照してください。</p>
+<h3 id="外部インターフェース">外部インターフェース</h3>
+<p>Tealium iQコンソールを使用してマーケティングタグを管理できるようになりました。詳細については、Tealiumアカウントマネージャーにお問い合わせください。</p>
+<h3 id="プライバシー支払い">プライバシー、支払い</h3>
+<p>Tealiumカートリッジは、従来のWebアナリティクスベンダーと同じレベルのユーザーの行動を収集するように設計されています。Tealiumカートリッジは、Commerce Cloudクライアントのプライバシーポリシーを完全に尊重するために、収集するデータのレベルを増減させることができます。</p>
+<h3 id="サポート">サポート</h3>
+<p>必要なサポートについては、Tealiumアカウントマネージャーにお問い合わせください。</p>
+<h2 id="テスト">テスト</h2>
+<p>カートリッジをデプロイした後、正しいデプロイメントを確認するために、ブラウザ内でストアフロントのページソースを表示するのが最も効果的なテストです。フッターには、<code>utag_data</code>という変数に構成されたJSON構造が含まれているはずです。確認するために、この変数を検索してください。この下に<code>utag.js</code>ファイルを含めるための追加のスクリプトもあります。</p>
+<p>すべてのページのスクリプトブロックは、次の例のようになります。Tealiumの<code>ACCOUNT</code>、<code>PROFILE</code>、および<code>ENVIRONMENT</code>の値は、セットアップのステップ3で構成したものと一致する必要があります。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">a</span>,<span style="color:#a6e22e">b</span>,<span style="color:#a6e22e">c</span>,<span style="color:#a6e22e">d</span>){
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">a</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;//tags.tiqcdn.com/utag/ACCOUNT/PROFILE/ENVIRONMENT/utag.js&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span><span style="color:#f92672">=</span>document;<span style="color:#a6e22e">c</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;script&#39;</span>;<span style="color:#a6e22e">d</span><span style="color:#f92672">=</span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">createElement</span>(<span style="color:#a6e22e">c</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#a6e22e">a</span>;<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;text/java&#39;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">c</span>;<span style="color:#a6e22e">d</span>.<span style="color:#66d9ef">async</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">a</span><span style="color:#f92672">=</span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">getElementsByTagName</span>(<span style="color:#a6e22e">c</span>)[<span style="color:#ae81ff">0</span>];<span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">parentNode</span>.<span style="color:#a6e22e">insertBefore</span>(<span style="color:#a6e22e">d</span>,<span style="color:#a6e22e">a</span>);
+</span></span><span style="display:flex;"><span>})();
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</span></span></code></pre></div><h3 id="ホームページ">ホームページ</h3>
+<p>ホームページでは、データレイヤーは最小限です。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_data</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;SiteGenesis Online Store&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;content&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;storefront&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_title&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;storefront&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_anonymous&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;true&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_authenticated&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_registered&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;customer_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;abZAaNVUFZJNZz7PUAZrRjr1E5&#34;</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</span></span></code></pre></div><h3 id="検索結果ページ">検索結果ページ</h3>
+<p>このページでは、<code>search_results</code>（<code>count</code>）と<code>search_term</code>（<code>keyword</code>）の新しいデータポイントが追加されます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_data</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Sites-SiteGenesis-Site&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;search&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;search&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_title&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;product search results&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_anonymous&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;true&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_authenticated&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_registered&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;customer_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;abZAaNVUFZJNZz7PUAZrRjr1E5&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;search_results&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;7&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;search_term&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;suit&#34;</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</span></span></code></pre></div><h3 id="製品詳細ページ">製品詳細ページ</h3>
+<p>このページでは、<code>page_type</code>変数は<code>product</code>に等しいです。<code>product_XX</code>配列の値はすべて単一の文字列値です。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>空の文字列値は、Commerce Cloudの製品カタログデータベースが不完全であることを示す場合があります。以下の値はサンプル値です。お使いのサイトでは、&lsquo;page_type&rsquo;と&rsquo;page_context_type&rsquo;がおそらく同じになるでしょう。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_data</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Platinum Blue Stripes Easy Care Fitted Shirt &#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;product&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;product&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_title&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;platinum blue stripes easy care fitted shirt&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_anonymous&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;true&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_authenticated&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_registered&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;customer_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;abZAaNVUFZJNZz7PUAZrRjr1E5&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_id&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;008884303989&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_sku&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;null&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_name&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Platinum Blue Stripes Easy Care Fitted Shirt &#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_brand&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;null&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_category&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;womens-clothing-tops&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_unit_price&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;75.00&#34;</span>
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</span></span></code></pre></div><h3 id="カート表示ページ">カート表示ページ</h3>
+<p>このページでは、複数の製品固有のクーポンがカート内のすべてのアイテムに適用されます。割引は、同じ製品IDのすべてのアイテムの合計割引額を表します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_data</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Sites-SiteGenesis-Site&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;checkout&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cart&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_title&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cart&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_anonymous&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;true&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_authenticated&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_registered&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;customer_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;abZAaNVUFZJNZz7PUAZrRjr1E5&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;coupon_codes&#34;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;FIVEOFF&#34;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_id&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;750518894553&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;sanyo-dp50747&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_sku&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;null&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;null&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_name&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Charcoal Single Pleat Wool Suit&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Sanyo 50\&#34; LCD High Definition Television&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_brand&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;null&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Sanyo&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_category&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;mens-clothing-suits&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;electronics-televisions-flat-screen&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_unit_price&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;299.99&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;2996.25&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_quantity&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;5&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_coupon_discount&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;-5&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;-25&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_coupon_promo&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;FIVEOFF&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;FIVEOFF&#34;</span>
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="注文ありがとうございますページ">注文「ありがとうございます」ページ</h3>
+<p>このページでは、注文に関する詳細が表示され、<code>order_</code>で始まるすべての値が追加されます。このデータレイヤーには、購入されたすべてのアイテムも含まれます。<code>product_</code>配列は、各配列内のアイテム数が同じであり、各アイテムが他の配列内の同じ位置のアイテムに対応している必要があります。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_data</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;confirmation&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;checkout&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;orderconfirmation&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_title&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;order confirmation&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_anonymous&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;true&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_authenticated&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_registered&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;customer_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;abZAaNVUFZJNZz7PUAZrRjr1E5&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;order_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;00000451&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;order_discount&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0.00&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;order_subtotal&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;75.00&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;order_tax&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;4.05&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;order_shipping&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;5.99&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;order_payment_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;BML&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;order_total&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;85.04&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;order_currency&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;USD&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;order_postal_code&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;92868&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_name&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Platinum Blue Stripes Easy Care Fitted Shirt &#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_brand&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;null&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_unit_price&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;75&#34;</span> ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_sku&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;null&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_id&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;008884304023&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_category&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;womens-clothing-tops&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_quantity&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1&#34;</span> ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_coupon_discount&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;0&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;product_coupon_promo&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</span></span></code></pre></div><h3 id="注文履歴ページ">注文履歴ページ</h3>
+<p>注文履歴では、以前の注文や未処理の注文に関する詳細が表示されます。このデータレイヤーには、以前に購入したすべてのアイテムが含まれていないはずです。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_data</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Sites-SiteGenesis-Site&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;content&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;orderhistory&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_context_title&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;order history&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_anonymous&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;false&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_authenticated&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;true&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;user_registered&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;true&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;customer_id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;adtkksWZjpbo9fdawQex7njjMb&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;customer_email&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;xxxxxxxxxx@yahoo.com&#34;</span>
+</span></span><span style="display:flex;"><span>}; <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</span></span></code></pre></div>
+</div>
+
+<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"></div>
+
+
+
+        <div class="bt-l b--moon-gray pv3 cb">
+          <div id="feedback_form" class="dpn">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">このページはお役にたちましたでしょうか？</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+はい</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+いいえ</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="ページの改善にご協力ください。" rows="4" cols="60"></textarea><button id="feedback_submit" class="db ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">フィードバックを送信</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">ご意見有難うございます。</p>
+  </div>
+</div>
+
+        </div>
+        <div class="bt-l b--moon-gray pt3 f6">
+          <p>最終更新日 ::  2024年March月29日
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
+      
+
+
+
+  <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">このページで</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9" href="javascript:void(0)">ユースケース</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97" href="javascript:void(0)">セットアップ</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B3%E3%83%BC%E3%83%89" href="javascript:void(0)">カスタムコード</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BA%92%E6%8F%9B%E6%80%A7" href="javascript:void(0)">互換性</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%A4%96%E9%83%A8%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9" href="javascript:void(0)">外部インターフェース</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E6%94%AF%E6%89%95%E3%81%84" href="javascript:void(0)">プライバシー、支払い</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88" href="javascript:void(0)">サポート</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%86%E3%82%B9%E3%83%88" href="javascript:void(0)">テスト</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%9B%E3%83%BC%E3%83%A0%E3%83%9A%E3%83%BC%E3%82%B8" href="javascript:void(0)">ホームページ</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A4%9C%E7%B4%A2%E7%B5%90%E6%9E%9C%E3%83%9A%E3%83%BC%E3%82%B8" href="javascript:void(0)">検索結果ページ</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A3%BD%E5%93%81%E8%A9%B3%E7%B4%B0%E3%83%9A%E3%83%BC%E3%82%B8" href="javascript:void(0)">製品詳細ページ</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%83%BC%E3%83%88%E8%A1%A8%E7%A4%BA%E3%83%9A%E3%83%BC%E3%82%B8" href="javascript:void(0)">カート表示ページ</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%B3%A8%E6%96%87%E3%81%82%E3%82%8A%E3%81%8C%E3%81%A8%E3%81%86%E3%81%94%E3%81%96%E3%81%84%E3%81%BE%E3%81%99%E3%83%9A%E3%83%BC%E3%82%B8" href="javascript:void(0)">注文「ありがとうございます」ページ</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%B3%A8%E6%96%87%E5%B1%A5%E6%AD%B4%E3%83%9A%E3%83%BC%E3%82%B8" href="javascript:void(0)">注文履歴ページ</a></li>
+              </nav>
+  </aside></nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-secondary ph1-ns relative w-100 pv4 bt b--light-gray" role="contentinfo">
+  <div class="center flex-ns flex-wrap justify-between mw9 w-90 dn db-ns">
+
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="nav-list footer-heading-title">
+          <div class="footer-logo-wrapper">
+            <img class="logo" src="https://tealium.com/wp-content/uploads/2015/12/tealium_footer_logo_01-206x49.png" alt="tealium_footer_logo_01">
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Support</li>
+<li class="mb2"><a class="link" href="https://university.tealium.com/">Tealium University</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/en/support/solutions">Knowledge Base</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/" target="">Support Desk</a></li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Company</li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/">Tealium.com</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/blog/">Blog</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="https://tealium.com/careers/">Careers</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+  <div class="dpn bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+<div class="globalmenu mobilemenu dn">
+    
+
+<ul class="list hidden dib ph0 ma0 scrolling-touch tc">
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ホーム
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/iq-tag-management/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          iQ Tag Management
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          EventStream API Hub
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/functions/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          機能
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-connect/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          データコネクト
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/predict/getting-started/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Predict ML
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-storage/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          DataAccess
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/client-side-tags/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          クライアントサイド タグ
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side-connectors/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          サーバーサイド コネクタ
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/platforms/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          プラットフォーム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/api/getting-started/auth/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          管理
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ファーマ向けティーリアム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ティーリアムアイデンティティパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/tech-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          テクノロジーパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          パートナー統合
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/glossary/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          用語集
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/early-access/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          早期アクセス
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/release-notes/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          リリースノート
+        </a>
+    </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+</div>
+
+
+<div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
+    <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+</ul>
+
+</div>
+
+
+
+
+<div class="flex dn-l justify-between">
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link mr2 white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".globalmenu">Site</button>
+
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".docsmenu">Section</button>
+
+</div>
+</div>
+
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'ドキュメントの検索',
+    buttonAriaLabel: 'ドキュメントの検索',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'クエリを消去',
+      resetButtonAriaLabel: 'クエリを消去',
+      cancelButtonText: 'キャンセル',
+      cancelButtonAriaLabel: 'キャンセル',
+    },
+    startScreen: {
+      recentSearchesTitle: '最近',
+      noRecentSearchesText: '最近の検索はありません',
+      saveRecentSearchButtonTitle: 'この検索を保存',
+      removeRecentSearchButtonTitle: 'この検索を履歴から削除',
+      favoriteSearchesTitle: 'お気に入り',
+      removeFavoriteSearchButtonTitle: 'このクエリをお気に入りから削除',
+    },
+    errorScreen: {
+      titleText: '結果を取得できません',
+      helpText: 'ネットワーク接続を確認してください',
+    },
+    footer: {
+      selectText: '選択する',
+      selectKeyAriaLabel: 'キーを入力してください',
+      navigateText: 'ナビゲートする',
+      navigateUpKeyAriaLabel: '上',
+      navigateDownKeyAriaLabel: '下',
+      closeText: '閉じる',
+      closeKeyAriaLabel: 'エスケープキー',
+      searchByText: '次で検索：',
+    },
+    noResultsScreen: {
+      noResultsText: '次の結果はありません：',
+      suggestedQueryText: '次で検索してみてください：',
+      reportMissingResultsText: 'このクエリで結果が返ってくるはずですか?',
+      reportMissingResultsLinkText: '連絡願います',
+    },
+  },
+};
+var default_sections = [
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
+docsearch({
+  container: '#docsearch',
+  appId: '2V5C0M31GH',
+  apiKey: '32b47c4ec1ccc76fbe18808c48f9d8b6',
+  indexName: 'tealium_jp',
+  placeholder: 'ドキュメントの検索',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    "analytics": true ,
+    "analyticsTags": ["site"]
+  },
+  insights: true,
+  debug: false ,
+  transformItems
+});
+</script>
+
+    
+
+  </body>
+</html>

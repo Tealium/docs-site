@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     
+    <title>Adobe Visitor Service Module | モバイル用の開始ガイド | Tealium開発者ドキュメント</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+     <meta name="generator" content="Hugo 0.111.3">
+
+      
+        <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+      
+
+    
+    
+      
+        <link rel="alternate" hreflang="en" href="https://docs.tealium.com/platforms/getting-started-mobile/adobe-visitor-service/">
+      
+    
+      
+    
+    
+
+     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
+  </head>
+  <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
+      
+        
+<script>
+var utag_data = {
+    site_section  : "platforms",
+    reading_time  : "3",
+    site_language : "ja",
+    tealium_event : "page_view"
+}
+</script>
+
+<script>
+ (function(a,b,c,d){
+    a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+  })();
+</script>
+
+      
+
+    
+<nav class="w-100 sticky-t bg-primary-color-light bb b--light-gray dpn" role="navigation">
+
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
+
+    <div class="lh-solid ml0-ns mr0 mr4-l mv3 pl15 dib db-ns">
+      <a href="/ja/"><img src="/images/icons/tealium-documentation-logo-color.svg" class="v-mid dib" width="186" height="31"></a>
+    </div>
+    
+    <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-ns">
+      <li class="f5 dib">
+         <i class="fa fa-globe" style="color: rgba(255, 255, 255, .6)" aria-hidden="true"></i>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+          <a href="/platforms/getting-started-mobile/adobe-visitor-service/" class="dim link mid-gray">English</a>
+        
+      
+        
+      
+      </li>
+            
+    </ul>
+
+  </div>
+  
+</nav>
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 pr4">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-hidden overflow-y-scroll dn db-ns sticky-l pt3 pl125" style="width:280px;">
+<nav class="side-nav f6" role="navigation">
+  <ul class="list pa0 mt0 mb1">
+  
+    <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/ja/platforms" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>プラットフォーム</a></li>
+  
+  </ul>
+  <ul class="list pa0" data-nav-section="getting-started-mobile"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><span class="pb2">モバイルで始める</span>
+        <ul data-level="1" class="getting-started-mobile desktopmenu animated fadeIn list pl0 mt2"><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/getting-started-mobile/quick-start/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".getting-started-quick-start">クイックスタートガイド</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/getting-started-mobile/mobile-concepts/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".getting-started-mobile-concepts">モバイルコンセプト</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/getting-started-mobile/client-side/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".getting-started-client-side">クライアントサイド</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/getting-started-mobile/server-side/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".getting-started-server-side">サーバーサイド</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/getting-started-mobile/tracking-webviews/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".getting-started-javascript-interface">Webviewsの追跡</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/getting-started-mobile/data-layer/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".getting-started-data-layer">データレイヤー</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/getting-started-mobile/consent-management/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".getting-started-consent-management">同意管理</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/getting-started-mobile/identity-resolution/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".getting-started-identity-resolution">アイデンティティ解決</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/getting-started-mobile/event-batching/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".getting-started-event-batching">イベントバッチング</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/getting-started-mobile/location/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".getting-started-geolocation">ユーザーの位置情報とジオフェンシング</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/getting-started-mobile/media/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".getting-started-media">メディアトラッキング</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/getting-started-mobile/deep-linking/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".getting-started-deep-linking">ディープリンク</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/getting-started-mobile/timed-events/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".getting-started-timed-events">タイムドイベント</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/getting-started-mobile/trace/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".getting-started-trace">トレース</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/getting-started-mobile/hosted-data-layer/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".getting-started-hosted-data-layer">ホストされたデータレイヤー</a></li><li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/getting-started-mobile/adobe-visitor-service/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".getting-started-adobe-visitor-service">Adobe Visitor Service Module</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/getting-started-mobile/feature-comparison/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".getting-started-feature-comparison">機能比較</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/getting-started-mobile/troubleshooting/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".getting-started-troubleshooting">トラブルシューティング</a></li></ul></li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
+      <div class="documentation-copy ph4">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+    
+  
+  <li class="mr1 f7 lvl0"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/">ホーム</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/platforms/">プラットフォーム</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl2"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/platforms/getting-started-mobile/">モバイル用の開始ガイド</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mt30 mb3">Adobe Visitor Service Module</h1>
+</header>
+
+<div class="mv2 mid-gray fn w-100">
+  
+
+  
+    <p class="f4 fw3 lh-copy">
+      Adobe Visitor Serviceモジュールについて学びましょう。
+    </p>
+  
+</div>
+
+<div class="prose nested-links" id="prose">
+  <p>Adobe Visitor Serviceモジュールは、AdobeのREST APIと直接連携して、訪問のExperience Cloud ID（ECID）を取得および維持します。ECIDは、Adobe TargetやAdobe AnalyticsなどのAdobeエコシステムの異なる部分で同じ訪問を識別し、一意の訪問を識別します。</p>
+<p>AdobeのトラッキングSDKからTealium SDKに移行する場合、Adobe Visitor Serviceモジュールを使用してトラッキングペイロードでECIDを渡します。データレイヤーの新しいECIDは、Tealium EventStreamまたはTealium AudienceStreamのサーバーサイドのAdobeコネクタでマッピングされる場合があります。Adobe Visitor Serviceモジュールは、既存のECIDが存在する場合は再利用し、存在しない場合は新しいECIDを生成して、アプリ内の訪問の正確な数を確保することで、Tealium SDKへのシームレスな移行を提供します。</p>
+<h2 id="サポートされているプラットフォーム">サポートされているプラットフォーム</h2>
+<p>次のプラットフォームは、Adobe Visitor Serviceモジュールをサポートしています：</p>
+<ul>
+<li><a href="/platforms/android-kotlin/module-list/adobe-visitor-service/">Tealium for Android</a></li>
+<li><a href="/platforms/ios-swift/module-list/adobe-visitor-service/">Tealium for iOS</a></li>
+<li><a href="/platforms/react-native/adobe-visitor-service/">Tealium for React Native</a></li>
+<li><a href="/platforms/flutter/adobe-visitor-service/">Tealium for Flutter</a></li>
+</ul>
+<h2 id="ユースケース">ユースケース</h2>
+<h3 id="サーバーサイドアナリティクスへの移行">サーバーサイドアナリティクスへの移行</h3>
+<p>Adobeの統合をサーバーサイドに移行し、Adobe Analyticsサーバーサイドを介してコネクタの<code>marketingCloudVisitorID</code>パラメータにECIDをマッピングし、複数のAdobe製品が連携して動作するために有効なECIDが必要です。 Tealium SDKは、EventStreamに任意のコールを送信する前にECIDをAdobeから要求し、ECIDはAdobe Analyticsコネクタの<code>marketingCloudVisitorID</code>プロパティにマッピングされます。</p>
+<h3 id="tealium-iqタグ管理">Tealium iQタグ管理</h3>
+<p>Adobe Analyticsタグを使用する場合、Tealium iQタグ管理を使用することをお勧めします。これにより、ECIDがすぐに利用可能になり、保存に永続化され、非表示のWebビュー内のクッキーストアに依存しないようになります。</p>
+<h3 id="adobe-sdkからtealium-sdkへの移行">Adobe SDKからTealium SDKへの移行</h3>
+<p>Adobe SDKからTealiumモジュールへの移行はシームレスです。アプリが現在Adobe SDKに依存してECIDを管理している場合、Adobe SDKがTealium SDKと並行してアプリに存在するように移行期間を設けることをお勧めします。訪問に既存のAdobe ECIDがある場合は、<code>config.adobeVisitorExistingEcid</code>プロパティを介してTealiumモジュールに渡します。初期化時にプロパティが構成されている場合、既存のECIDが使用されます。プロパティが構成されていない場合、TealiumモジュールはAdobe APIから新しいECIDを取得します。</p>
+<h3 id="同じデバイス上の異なる訪問をトラッキングする">同じデバイス上の異なる訪問をトラッキングする</h3>
+<p>アプリ内で異なる訪問アカウントを検出した場合、ECIDをリセットして各訪問を別々にトラッキングするために、<code>tealium.adobeVisitor?.resetVisitor()</code>を呼び出します。これにより、現在のECIDがリセットされ、Adobe APIから自動的に新しいECIDが要求されます。</p>
+<h3 id="独自の訪問idと認証状態を構成する">独自の訪問IDと認証状態を構成する</h3>
+<p>Visitor APIに独自の訪問IDを<a href="#passing-your-own-visitor-id">渡すためのいくつかの方法</a>があります。これにより、IDサービスが匿名のECIDを既知のIDにマッチングできます。</p>
+<h4 id="既知の訪問idを構成する">既知の訪問IDを構成する</h4>
+<p>初期化時に訪問のIDと認証状態が既知の場合は、<code>adobeVisitorDataProviderId</code>構成プロパティを使用して、モジュールの開始時に訪問の既知のIDを構成します：</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content"><div class="tab-pane" data-lang="Kotlin" title="Kotlin">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>config.adobeVisitorDataProviderId = <span style="color:#e6db74">&#34;01&#34;</span> <span style="color:#75715e">// このタイプの訪問IDのデータプロバイダID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>config.adobeVisitorAuthState = <span style="color:#a6e22e">AdobeAuthState</span>.AUTH_STATE_AUTHENTICATED
+</span></span><span style="display:flex;"><span>config.adobeVisitorCustomVisitorId = <span style="color:#e6db74">&#34;customeremail@emailprovider.com&#34;</span>
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="Swift" title="Swift">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.adobeVisitorDataProviderId = <span style="color:#e6db74">&#34;01&#34;</span> <span style="color:#75715e">// このタイプの訪問IDのデータプロバイダID</span>
+</span></span><span style="display:flex;"><span>config.adobeVisitorAuthState = .authenticated
+</span></span><span style="display:flex;"><span>config.adobeVisitorCustomVisitorId = <span style="color:#e6db74">&#34;customeremail@emailprovider.com&#34;</span>
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="React Native" title="React Native">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">adobeVisitorDataProviderId</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;01&#34;</span> <span style="color:#75715e">// このタイプの訪問IDのデータプロバイダID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">adobeVisitorAuthState</span> <span style="color:#f92672">=</span> .<span style="color:#a6e22e">authenticated</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">adobeVisitorCustomVisitorId</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;customeremail@emailprovider.com&#34;</span>
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="Flutter" title="Flutter">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">adobeVisitorDataProviderId</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;01&#34;</span> <span style="color:#75715e">// このタイプの訪問IDのデータプロバイダID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">adobeVisitorAuthState</span> <span style="color:#f92672">=</span> .<span style="color:#a6e22e">authenticated</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">adobeVisitorCustomVisitorId</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;customeremail@emailprovider.com&#34;</span>
+</span></span></code></pre></div>
+</div>
+</div>
+</div>
+
+<p>モジュールは、必要に応じて新しいIDを自動的に要求し、その後、<code>TealiumConfig</code>プロパティで指定された既知のIDとECIDをリンクするために追加のAPIコールを送信します。</p>
+<p>訪問がログイン時にIDと認証状態を渡す必要がある場合は、次のメソッドを呼び出して、訪問の既知のIDを匿名のECIDにリンクします：</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content"><div class="tab-pane" data-lang="Kotlin" title="Kotlin">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>tealium.adobeVisitorApi<span style="color:#f92672">?.</span>linkEcidToKnownIdentifier(<span style="color:#e6db74">&#34;myidentifier&#34;</span>, <span style="color:#e6db74">&#34;123456&#34;</span>, <span style="color:#a6e22e">AdobeAuthState</span>.AUTH_STATE_AUTHENTICATED, <span style="color:#66d9ef">null</span>)
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="Swift" title="Swift">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>tealium?.adobeVisitorApi?.linkECIDToKnownIdentifier(<span style="color:#e6db74">&#34;myidentifier&#34;</span>, adobeDataProviderId: <span style="color:#e6db74">&#34;123456&#34;</span>, .unknown)
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="React Native" title="React Native">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">TealiumAdobeVisitor</span>.<span style="color:#a6e22e">linkEcidToKnownIdentifier</span>(<span style="color:#e6db74">&#34;myidentifier&#34;</span>, <span style="color:#e6db74">&#34;123456&#34;</span>, <span style="color:#a6e22e">AuthState</span>.<span style="color:#a6e22e">unknown</span>, <span style="color:#a6e22e">value</span> =&gt; {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;AdobeVisitor Data: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">value</span>))
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="Flutter" title="Flutter">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">TealiumAdobeVisitor</span>.<span style="color:#a6e22e">linkEcidToKnownIdentifier</span>(<span style="color:#e6db74">&#34;myidentifier&#34;</span>, <span style="color:#e6db74">&#34;123456&#34;</span>, <span style="color:#a6e22e">AuthState</span>.<span style="color:#a6e22e">unknown</span>)
+</span></span></code></pre></div>
+</div>
+</div>
+</div>
+
+<h2 id="トラブルシューティング">トラブルシューティング</h2>
+<p>次に、異なるAPIの失敗動作のリストを示します：</p>
+<ul>
+<li>
+<p><strong>Adobe組織IDが見つからない場合</strong><br>
+モジュールが有効になっているが、Adobe組織IDが<code>TealiumConfig</code>オブジェクトに渡されていない場合、モジュールは無効になり、トラッキングコールはAdobe ECIDなしで続行されます。</p>
+</li>
+<li>
+<p><strong>無効なAdobe組織ID</strong><br>
+モジュールは、リトライ制限（デフォルト：5）までリトライを試みます。リトライ制限を超えた後、トラッキングコールはECIDなしで通常通り続行され、キューに入っているリクエストはすぐに送信されます。</p>
+</li>
+<li>
+<p><strong>Adobe APIがエラーまたは空の応答を返す場合</strong><br>
+リクエストの送信中にエラーが返された場合、接続の失敗など、モジュールはリトライ制限（デフォルト：5）までリトライを試みます。リトライ制限を超えた後、トラッキングコールはECIDなしで通常通り続行され、キューに入っているリクエストはすぐに送信されます。</p>
+</li>
+<li>
+<p>モジュールが上記の（2）または（3）に遭遇したが、訪問の以前のECIDが<code>TealiumConfig</code>オブジェクトで提供されている場合。最大リトライ後、モジュールは提供された訪問IDの値を使用し、リクエストをブロックしません。</p>
+</li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>データをTealiumに送信することが最優先である場合は、リトライ回数を0に構成して、失敗した場合にECIDを取得しないようにします。リトライ回数は<code>config.adobeVisitorRetries</code>プロパティで制御されます。</p>
+<h2 id="データレイヤー">データレイヤー</h2>
+<p>次の変数がデータレイヤーに追加されます：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">変数</th>
+<th style="text-align:left">タイプ</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>adobe_ecid</code></td>
+<td style="text-align:left"><code>String</code></td>
+<td style="text-align:left">Adobe ECID。モジュールがAdobe Visitor APIからECIDを正常に取得した場合、すべてのトラッキングコールに存在します。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>adobe_error</code></td>
+<td style="text-align:left"><code>String</code></td>
+<td style="text-align:left">エラータイプの説明。例：<code>Org ID Not Set. ECID is not included from track requests</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>queue_reason</code></td>
+<td style="text-align:left"><code>String</code></td>
+<td style="text-align:left">訪問IDが利用可能になる前にモジュールによってイベントがキューに入れられます。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="urlデコレーション">URLデコレーション</h2>
+<p>Adobeの製品は、Adobe Analytics JavaScriptタグなどのWebコンテキストでロードされる場合、自動的にExperience Cloud IDを使用します。このIDは、Webページのクエリ文字列で<code>adobe_mc</code>パラメータとして渡されます。<code>adobe_mc</code>パラメータには、パイプ文字（<code>|</code>）で区切られた複数の値が含まれます。</p>
+<table>
+<thead>
+<tr>
+<th>コンポーネント</th>
+<th>説明</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MCMID</td>
+<td>Adobe Visitor Serviceから取得したExperience Cloud ID</td>
+<td>1234</td>
+</tr>
+<tr>
+<td>MCORGID</td>
+<td>Adobe組織ID</td>
+<td>12345@AdobeOrg</td>
+</tr>
+<tr>
+<td>TS</td>
+<td>タイムスタンプ（秒単位）</td>
+<td>1655826247</td>
+</tr>
+</tbody>
+</table>
+<p>結果のURLは次のとおりです：</p>
+<p><code>https://tealium.com/?adobe_mc=MCMID=1234|MCORGID=12345@AdobeOrg|TS=1655826247</code></p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><code>adobe_mc</code>パラメータはURLエンコードされています。</p>
+<p>Adobe Visitor Serviceモジュールには、この機能をサポートするための2つのメソッドが用意されています。</p>
+<h3 id="タグ管理モジュール">タグ管理モジュール</h3>
+<p><code>adobe_mc</code>パラメータは、タグ管理モジュールのTealium Webビューで使用されるURLに自動的に追加されます。</p>
+<h3 id="カスタムwebビュー">カスタムWebビュー</h3>
+<p>アプリがコンテンツを表示するためにWebビューを使用する場合、Adobe ECIDをそのWebビューで利用可能にする必要があります。これにより、WebビューでロードされるすべてのAdobe製品がユーザーのECIDを知ることができます。これにより、ユーザーがネイティブアプリとWebビューの両方で異なるユーザーとして表示されることが防止されます。</p>
+<p>Adobe Visitor Serviceモジュールには、WebビューのURLにクエリ文字列パラメータを追加するためのメソッドが用意されています。これにより、Adobe AnalyticsがExperience Cloud IDサービスのJavaScriptタグの代わりにモジュールによって生成されたECIDを使用するようになります。例に示すように、URLを<code>decorateURL</code>メソッドに渡し、返されたURLをアプリ内でWebビューをロードするときに使用します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>このメソッドは、既にURLに存在するクエリパラメータを保持します</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content"><div class="tab-pane" data-lang="Kotlin" title="Kotlin">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>adobeVisitorModule<span style="color:#f92672">?.</span>decorateUrl(
+</span></span><span style="display:flex;"><span>            URL(url),
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">object</span> <span style="color:#960050;background-color:#1e0010">: </span><span style="color:#a6e22e">UrlDecoratorHandler</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">onDecorateUrl</span>(url: URL) {
+</span></span><span style="display:flex;"><span>                  <span style="color:#75715e">// Resulting URL = https://tealium.com/?myparam=abc&amp;myparam2=bcd&amp;adobe_mc=MCMID%3D1234%7CMCORGID%3D12345%40AdobeOrg%7CTS%3D1655826247
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                  <span style="color:#75715e">// Only for demonstration purposes; launch your app&#39;s webview with the resulting URL
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    myApp.launchWebview(url)
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        )
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="Swift" title="Swift">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> url = URL(string: <span style="color:#e6db74">&#34;https://tealium.com/?myparam=abc&amp;myparam2=bcd&#34;</span>)<span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>tealium.adobeVisitorApi?.decorateURL(url) { url <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Resulting URL = https://tealium.com/?myparam=abc&amp;myparam2=bcd&amp;adobe_mc=MCMID%3D1234%7CMCORGID%3D12345%40AdobeOrg%7CTS%3D1655826247</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Only for demonstration purposes; launch your app&#39;s webview with the resulting URL</span>
+</span></span><span style="display:flex;"><span>    myApp.launchWebview(url)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="React Native" title="React Native">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">TealiumAdobeVisitor</span>.<span style="color:#a6e22e">decorateUrl</span>(<span style="color:#e6db74">&#34;https://tealium.com&#34;</span>, <span style="color:#a6e22e">value</span> =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Resulting URL = https://tealium.com/?myparam=abc&amp;myparam2=bcd&amp;adobe_mc=MCMID%3D1234%7CMCORGID%3D12345%40AdobeOrg%7CTS%3D1655826247
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// Only for demonstration purposes; launch your app&#39;s webview with the resulting URL
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">launchUrl</span>(<span style="color:#a6e22e">value</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="Flutter" title="Flutter">
+  <pre tabindex="0"><code class="language-flutter" data-lang="flutter">// Resulting URL = https://tealium.com/?myparam=abc&amp;myparam2=bcd&amp;adobe_mc=MCMID%3D1234%7CMCORGID%3D12345%40AdobeOrg%7CTS%3D1655826247
+// Only for demonstration purposes; launch your app&#39;s webview with the resulting URL
+TealiumAdobeVisitor.decorateUrl(&#34;https://tealium.com&#34;).then(
+                    (value) =&gt;
+                        launchUrl(value));
+</code></pre>
+</div>
+</div>
+</div>
+
+<p>アプリがAngularなどの非標準のURLスキームを使用してWebビューをロードする場合、Adobe Visitor APIのクエリパラメータを取得し、URLに手動で追加する必要があります。これらのメソッドは、URLエンコードされていないパラメータ名と値を返すため、値をURLに追加する前に値をエンコードする必要があります。</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content"><div class="tab-pane" data-lang="Kotlin" title="Kotlin">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>adobeVisitorApi<span style="color:#f92672">?.</span>getUrlParameters(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">object</span> <span style="color:#960050;background-color:#1e0010">: </span><span style="color:#a6e22e">GetUrlParametersHandler</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">onRetrieveParameters</span>(params: Map&lt;String, String&gt;?) {
+</span></span><span style="display:flex;"><span>            params<span style="color:#f92672">?.</span>let {
+</span></span><span style="display:flex;"><span>                params.forEach {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">Log</span>.d(<span style="color:#e6db74">&#34;ADB Visitor&#34;</span>,<span style="color:#e6db74">&#34;Retrieved URL Parameters:</span><span style="color:#e6db74">${it.key}</span><span style="color:#e6db74"> = </span><span style="color:#e6db74">${it.value}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="Swift" title="Swift">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>tealium.adobeVisitorApi.adobeVisitorApi?.getURLParameters { params <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> params = params <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                completion(<span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Result: params.name = adobe_mc</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//         params.value = MCMID=1234|MCORGID=12345@AdobeOrg|TS=1655826247</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Only for demonstration purposes; call some method in your app that decorates the URL and then launches your webview</span>
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;Retrieved URL Parameters:</span><span style="color:#e6db74">\(</span>params.name<span style="color:#e6db74">)</span><span style="color:#e6db74"> = </span><span style="color:#e6db74">\(</span>params.value<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="React Native" title="React Native">
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">TealiumAdobeVisitor</span>.<span style="color:#a6e22e">getUrlParameters</span>(<span style="color:#a6e22e">value</span> =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">undefined</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Adobe Visitor was null&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">key</span> <span style="color:#66d9ef">of</span> Object.<span style="color:#a6e22e">keys</span>(<span style="color:#a6e22e">value</span>)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Result: key = adobe_mc
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">//         value = MCMID=1234|MCORGID=12345@AdobeOrg|TS=1655826247
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// Only for demonstration purposes; call some method in your app that decorates the URL and then launches your webview
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Retrieved URL Parameters: &#34;</span>, <span style="color:#a6e22e">key</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;=&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">value</span>[<span style="color:#a6e22e">key</span>]);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="Flutter" title="Flutter">
+  <pre tabindex="0"><code class="language-flutter" data-lang="flutter">TealiumAdobeVisitor.getUrlParameters().then(
+                            (value) =&gt;
+                            value?.forEach((key, value) {
+                                // Result: key = adobe_mc
+                                //         value = MCMID=1234|MCORGID=12345@AdobeOrg|TS=1655826247
+                                // Only for demonstration purposes; call some method in your app that decorates the URL and then launches your webview
+                                print(&#34;Retrieved URL Parameters: $key = $value&#34;);
+                            })
+                    )
+</code></pre>
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
+
+  
+  <a href="/ja/platforms/getting-started-mobile/feature-comparison/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <section class="tl pr3">
+      <div>機能比較</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"機能比較"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
+  
+  
+</div><div class="di mr3">
+  
+  
+  <a href="/ja/platforms/getting-started-mobile/hosted-data-layer/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"ホストされたデータレイヤー "</title>
+      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+    </svg>
+   <section class="tr pl3">
+      <div>ホストされたデータレイヤー</div>
+    </section>
+  </a>
+  
+
+</div></div>
+
+
+
+        <div class="bt-l b--moon-gray pv3 cb">
+          <div id="feedback_form" class="dpn">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">このページはお役にたちましたでしょうか？</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+はい</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+いいえ</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="ページの改善にご協力ください。" rows="4" cols="60"></textarea><button id="feedback_submit" class="db ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">フィードバックを送信</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">ご意見有難うございます。</p>
+  </div>
+</div>
+
+        </div>
+        <div class="bt-l b--moon-gray pt3 f6">
+          <p>最終更新日 ::  2024年March月29日
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
+      
+
+
+
+  <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">このページで</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0" href="javascript:void(0)">サポートされているプラットフォーム</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9" href="javascript:void(0)">ユースケース</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%82%A2%E3%83%8A%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AF%E3%82%B9%E3%81%B8%E3%81%AE%E7%A7%BB%E8%A1%8C" href="javascript:void(0)">サーバーサイドアナリティクスへの移行</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-iq%E3%82%BF%E3%82%B0%E7%AE%A1%E7%90%86" href="javascript:void(0)">Tealium iQタグ管理</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#adobe-sdk%E3%81%8B%E3%82%89tealium-sdk%E3%81%B8%E3%81%AE%E7%A7%BB%E8%A1%8C" href="javascript:void(0)">Adobe SDKからTealium SDKへの移行</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E3%81%98%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E4%B8%8A%E3%81%AE%E7%95%B0%E3%81%AA%E3%82%8B%E8%A8%AA%E5%95%8F%E3%82%92%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8B" href="javascript:void(0)">同じデバイス上の異なる訪問をトラッキングする</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%8B%AC%E8%87%AA%E3%81%AE%E8%A8%AA%E5%95%8Fid%E3%81%A8%E8%AA%8D%E8%A8%BC%E7%8A%B6%E6%85%8B%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">独自の訪問IDと認証状態を構成する</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0" href="javascript:void(0)">トラブルシューティング</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC" href="javascript:void(0)">データレイヤー</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#url%E3%83%87%E3%82%B3%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">URLデコレーション</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E7%AE%A1%E7%90%86%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB" href="javascript:void(0)">タグ管理モジュール</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0web%E3%83%93%E3%83%A5%E3%83%BC" href="javascript:void(0)">カスタムWebビュー</a></li>
+              </nav>
+  </aside></nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-secondary ph1-ns relative w-100 pv4 bt b--light-gray" role="contentinfo">
+  <div class="center flex-ns flex-wrap justify-between mw9 w-90 dn db-ns">
+
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="nav-list footer-heading-title">
+          <div class="footer-logo-wrapper">
+            <img class="logo" src="https://tealium.com/wp-content/uploads/2015/12/tealium_footer_logo_01-206x49.png" alt="tealium_footer_logo_01">
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Support</li>
+<li class="mb2"><a class="link" href="https://university.tealium.com/">Tealium University</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/en/support/solutions">Knowledge Base</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/" target="">Support Desk</a></li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Company</li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/">Tealium.com</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/blog/">Blog</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="https://tealium.com/careers/">Careers</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+  <div class="dpn bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+<div class="globalmenu mobilemenu dn">
+    
+
+<ul class="list hidden dib ph0 ma0 scrolling-touch tc">
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ホーム
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/iq-tag-management/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          iQ Tag Management
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          EventStream API Hub
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/functions/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          機能
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-connect/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          データコネクト
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/predict/getting-started/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Predict ML
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-storage/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          DataAccess
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/client-side-tags/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          クライアントサイド タグ
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side-connectors/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          サーバーサイド コネクタ
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/platforms/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          プラットフォーム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/api/getting-started/auth/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          管理
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ファーマ向けティーリアム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ティーリアムアイデンティティパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/tech-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          テクノロジーパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          パートナー統合
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/glossary/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          用語集
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/early-access/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          早期アクセス
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/release-notes/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          リリースノート
+        </a>
+    </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+</div>
+
+
+<div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
+    <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+</ul>
+
+</div>
+
+
+
+
+<div class="flex dn-l justify-between">
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link mr2 white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".globalmenu">Site</button>
+
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".docsmenu">Section</button>
+
+</div>
+</div>
+
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'ドキュメントの検索',
+    buttonAriaLabel: 'ドキュメントの検索',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'クエリを消去',
+      resetButtonAriaLabel: 'クエリを消去',
+      cancelButtonText: 'キャンセル',
+      cancelButtonAriaLabel: 'キャンセル',
+    },
+    startScreen: {
+      recentSearchesTitle: '最近',
+      noRecentSearchesText: '最近の検索はありません',
+      saveRecentSearchButtonTitle: 'この検索を保存',
+      removeRecentSearchButtonTitle: 'この検索を履歴から削除',
+      favoriteSearchesTitle: 'お気に入り',
+      removeFavoriteSearchButtonTitle: 'このクエリをお気に入りから削除',
+    },
+    errorScreen: {
+      titleText: '結果を取得できません',
+      helpText: 'ネットワーク接続を確認してください',
+    },
+    footer: {
+      selectText: '選択する',
+      selectKeyAriaLabel: 'キーを入力してください',
+      navigateText: 'ナビゲートする',
+      navigateUpKeyAriaLabel: '上',
+      navigateDownKeyAriaLabel: '下',
+      closeText: '閉じる',
+      closeKeyAriaLabel: 'エスケープキー',
+      searchByText: '次で検索：',
+    },
+    noResultsScreen: {
+      noResultsText: '次の結果はありません：',
+      suggestedQueryText: '次で検索してみてください：',
+      reportMissingResultsText: 'このクエリで結果が返ってくるはずですか?',
+      reportMissingResultsLinkText: '連絡願います',
+    },
+  },
+};
+var default_sections = [
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
+docsearch({
+  container: '#docsearch',
+  appId: '2V5C0M31GH',
+  apiKey: '32b47c4ec1ccc76fbe18808c48f9d8b6',
+  indexName: 'tealium_jp',
+  placeholder: 'ドキュメントの検索',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    "analytics": true ,
+    "analyticsTags": ["site"]
+  },
+  insights: true,
+  debug: false ,
+  transformItems
+});
+</script>
+
+    
+
+  </body>
+</html>

@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     
+    <title>リモートコマンド：FullStory | 統合 | Tealium開発者ドキュメント</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+     <meta name="generator" content="Hugo 0.111.3">
+
+      
+        <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+      
+
+    
+    
+      
+        <link rel="alternate" hreflang="en" href="https://docs.tealium.com/platforms/remote-commands/integrations/fullstory/">
+      
+    
+      
+    
+    
+
+     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
+  </head>
+  <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
+      
+        
+<script>
+var utag_data = {
+    site_section  : "platforms",
+    reading_time  : "2",
+    site_language : "ja",
+    tealium_event : "page_view"
+}
+</script>
+
+<script>
+ (function(a,b,c,d){
+    a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+  })();
+</script>
+
+      
+
+    
+<nav class="w-100 sticky-t bg-primary-color-light bb b--light-gray dpn" role="navigation">
+
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
+
+    <div class="lh-solid ml0-ns mr0 mr4-l mv3 pl15 dib db-ns">
+      <a href="/ja/"><img src="/images/icons/tealium-documentation-logo-color.svg" class="v-mid dib" width="186" height="31"></a>
+    </div>
+    
+    <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-ns">
+      <li class="f5 dib">
+         <i class="fa fa-globe" style="color: rgba(255, 255, 255, .6)" aria-hidden="true"></i>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+          <a href="/platforms/remote-commands/integrations/fullstory/" class="dim link mid-gray">English</a>
+        
+      
+        
+      
+      </li>
+            
+    </ul>
+
+  </div>
+  
+</nav>
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 pr4">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-hidden overflow-y-scroll dn db-ns sticky-l pt3 pl125" style="width:280px;">
+<nav class="side-nav f6" role="navigation">
+  <ul class="list pa0 mt0 mb1">
+  
+    <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/ja/platforms" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>プラットフォーム</a></li>
+  
+  </ul>
+  <ul class="list pa0" data-nav-section="remote-commands"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><span class="pb2">リモートコマンド</span>
+        <ul data-level="1" class="remote-commands desktopmenu animated fadeIn list pl0 mt2"><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/remote-commands/how-it-works/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-how-it-works">仕組みについて</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/remote-commands/custom-commands/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-custom-commands">カスタムコマンド</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/remote-commands/consent-management/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-consent-management">同意管理</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/remote-commands/json-file/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-json-file">JSONファイル</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/remote-commands/vendor-integrations/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-vendor-integrations">ベンダー統合</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/remote-commands/sync-analytics-hybrid-apps/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-sync-analytics">ハイブリッドアプリでのセッションの同期</a></li><li class="relative w-100 fw8 f5  active">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".remote-commands-integrations">統合</a>
+        <ul class="pl2 bl b--primary bw1 remote-commands-integrations desktopmenu animated fadeIn list "><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/adjust/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-adjust">Adjust</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/appsflyer/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-appsflyer">AppsFlyer</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/airship/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-airship">エアシップ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/branch/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-branch">Branch</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/braze/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-braze">Braze</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/contentsquare/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-contentsquare">Contentsquare</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/facebook/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-facebook">Facebook</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/firebase/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-firebase">Firebase</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/kochava/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-kochava">Kochava</a></li><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/fullstory/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".remote-commands-fullstory">FullStory</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/skadnetwork/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-skadnetwork">SKAdNetwork</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/usabilla/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-usabilla">Usabilla</a></li></ul>
+      </li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/remote-commands/release-notes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".release-notes">リリースノート</a></li></ul></li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
+      <div class="documentation-copy ph4">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+    
+    
+  
+  <li class="mr1 f7 lvl0"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/">ホーム</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/platforms/">プラットフォーム</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl2"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/platforms/remote-commands/">リモートコマンド</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl3"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/platforms/remote-commands/integrations/">統合</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mt30 mb3">リモートコマンド：FullStory</h1>
+</header>
+
+<div class="mv2 mid-gray fn w-100">
+  
+
+  
+    <p class="f4 fw3 lh-copy">
+      AndroidおよびSwift/iOSのFullStoryに対するTealiumリモートコマンドの統合。
+    </p>
+  
+</div>
+
+<div class="prose nested-links" id="prose">
+  <h2 id="要件">要件</h2>
+<ul>
+<li>以下のいずれかのモバイルライブラリ：
+<ul>
+<li><a href="/platforms/android-kotlin/">Tealium for Android-Kotlin</a> (1.0.0+)</li>
+<li><a href="/platforms/android-java/">Tealium for Android-Java</a> (FullStory 1.0.0+の場合は5.9.0+、それ以前のバージョンの場合は5.9.0未満)</li>
+<li><a href="/platforms/ios-swift/">Tealium for iOS-Swift</a></li>
+</ul>
+</li>
+<li>以下のいずれかのリモートコマンド統合：
+<ul>
+<li><a href="/platforms/remote-commands/integrations/fullstory/#json-template">FullStoryリモートコマンドJSONファイル</a> (Android-Kotlin 1.0.0+またはiOS-Swift 2.1.0+が必要)</li>
+<li><a href="/ja/client-side-tags/fullstory-tag/">FullStoryリモートコマンドタグ</a>をTealium iQタグ管理に追加</li>
+</ul>
+</li>
+</ul>
+<h2 id="動作方法">動作方法</h2>
+<p>FullStory統合には3つのコンポーネントが使用されます：</p>
+<ol>
+<li>FullStoryネイティブSDK。</li>
+<li>FullStoryメソッドをラップするリモートコマンドモジュール。</li>
+<li>イベントトラッキングをネイティブのFullStory呼び出しに変換するJSON構成ファイルまたはリモートコマンドタグ。</li>
+</ol>
+<p>FullStoryリモートコマンドモジュールをアプリに追加すると、必要なFullStoryライブラリが自動的にインストールおよびビルドされます。依存関係マネージャーのインストールを使用している場合は、FullStory SDKを別途インストールする必要はありません。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>CocoaPodsまたはCarthageを依存関係マネージャーとして使用している場合は、<a href="#ios-build-script">ビルドスクリプト</a>として追加するためにFullStoryコマンドラインツールを手動でダウンロードする必要があります。</p>
+<p>リモートコマンドのオプションは2つあります：</p>
+<ul>
+<li>JSON構成ファイル（推奨）を使用し、リモートまたはアプリ内でホストします。</li>
+<li>iQタグ管理を使用してマッピングを構成し、ベンダー統合のためにリモートコマンドタグを追加します。</li>
+</ul>
+<p>詳細については、<a href="/platforms/remote-commands/how-it-works/#vendor-integrations">ベンダー統合</a>を参照してください。</p>
+<h2 id="インストール">インストール</h2>
+<h3 id="依存関係マネージャー">依存関係マネージャー</h3>
+<p>以下の依存関係マネージャーのいずれかを使用してモジュールをインストールすることをお勧めします：</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content"><div class="tab-pane" data-lang="Swift Package Manager" title="Swift Package Manager">
+  <ol>
+<li>Xcodeプロジェクトで、「ファイル」&gt;「パッケージの追加&hellip;」&gt;「パッケージの依存関係を追加」を選択します。</li>
+<li>次のリポジトリURLを入力します：<code>https://github.com/tealium/tealium-ios-fullstory-remote-command</code> 。</li>
+<li>バージョンルールを構成します。<code>次のメジャーバージョンまで</code>の構成をお勧めします。現在の<code>TealiumFullstory</code>バージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットします。</li>
+<li>インストールする<code>TealiumFullstory</code>モジュールを選択し、モジュールをインストールするアプリのターゲットを選択します。</li>
+</ol>
+<p>プロジェクトに複数のアプリターゲットがある場合で、<code>TealiumFullstory</code>モジュールを複数のアプリターゲットに追加する必要がある場合は、<strong>フレームワーク、ライブラリ、および埋め込みコンテンツ</strong>セクションに手動で追加する必要があります。</p>
+<p>追加のアプリターゲットに<code>TealiumFullstory</code>を追加するには：</p>
+<ol>
+<li><strong>プロジェクトナビゲーター</strong>でXcodeプロジェクトを選択します。</li>
+<li>Xcodeプロジェクトで、<strong>TARGETS</strong>セクションのアプリターゲットを選択します。</li>
+<li><strong>一般 &gt; フレームワーク、ライブラリ、および埋め込みコンテンツ</strong>に移動し、<code>TealiumFullstory</code>モジュールをアプリターゲットに追加します。</li>
+</ol>
+<p>Tealium Swiftライブラリから追加のモジュールを追加するには、<a href="/platforms/ios-swift/install/#swift-package-manager-recommended">Swift Package Manager</a>の手順に従ってください。</p>
+</div>
+<div class="tab-pane" data-lang="CocoaPods" title="CocoaPods">
+  <p>CocoaPodsを使用してiOSのFullStoryリモートコマンドをインストールするには：</p>
+<ol>
+<li>すでにPodfileに<code>tealium-swift</code>が存在する場合は、削除します。<code>tealium-swift</code>の依存関係は、<code>TealiumFullstory</code>フレームワークにすでに含まれています。</li>
+<li>Podfileに次の依存関係を追加します：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>pod <span style="color:#e6db74">&#34;TealiumFullstory&#34;</span>
+</span></span></code></pre></div><p><code>TealiumFullstory</code>ポッドには、次の<code>TealiumSwift</code>の依存関係が含まれています：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/Core&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TealiumRemoteCommands&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;tealium-swift/TealiumTagManagement&#39;</span>
+</span></span></code></pre></div><ol start="3">
+<li><code>TealiumSwift</code>および<code>TealiumFullstory</code>モジュールを<code>TealiumHelper</code>ファイルおよび<code>Tealium</code>クラスまたはFullStoryリモートコマンドにアクセスする他のファイルにインポートします。</li>
+</ol>
+</div>
+<div class="tab-pane" data-lang="Carthage" title="Carthage">
+  <p>Carthageを使用してiOSのFullStoryリモートコマンドをインストールするには：</p>
+<ol>
+<li>Cartfileから<code>tealium-swift</code>を削除します。<code>tealium-swift</code>の依存関係は、<code>TealiumFullstory</code>フレームワークにすでに含まれています。</li>
+<li>Cartfileに次の依存関係を追加します：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>github <span style="color:#e6db74">&#34;tealium/tealium-ios-fullstory-remote-command&#34;</span>
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="Maven" title="Maven">
+  <p>Mavenを使用してAndroidのFullStoryリモートコマンドをインストールするには：</p>
+<ol>
+<li><a href="/platforms/android-kotlin/install/">Tealium for Android (Kotlin)</a>または<a href="/platforms/android-java/install/">Tealium for Android (Java)</a>をインストールし、プロジェクトのトップレベルの<code>build.gradle</code>ファイルにTealium Maven URLを追加します（まだ行っていない場合）。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>allprojects <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>repositories <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>mavenCentral<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>maven <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>url <span style="color:#e6db74">&#34;https://maven.tealiumiq.com/android/releases/&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ol start="2">
+<li>アプリプロジェクトの<code>build.gradle</code>ファイルに次の依存関係を追加して、FullStory SDKとTealium-FullStoryリモートコマンドをインポートします：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>dependencies <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>implementation <span style="color:#e6db74">&#39;com.tealium.remotecommands:fullstory:1.0.0&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ol start="3">
+<li>App/Module <code>build.gradle</code>にFullStory Gradleプラグインを追加します。<a href="https://help.fullstory.com/hc/en-us/articles/360040596093-Getting-Started-with-Android-Data-Capture#01F5E7XFMG19SNYS77NYETKDMQ">利用可能なプロパティ</a>で<code>&lt;PLUGIN PROPERTIES&gt;</code>を置き換えます：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>fullstory <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span>PLUGIN PROPERTIES<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div>
+</div>
+</div>
+</div>
+
+<h3 id="手動インストールios">手動インストール（iOS）</h3>
+<p>FullStoryリモートコマンドの手動インストールには、<a href="/platforms/ios-swift/">Tealium for Swift</a>ライブラリのインストールが必要です。iOSプロジェクトにFullStoryリモートコマンドをインストールするには、次の手順に従ってください：</p>
+<ol>
+<li><a href="https://help.fullstory.com/hc/en-us/articles/360042772333-Getting-Started-with-iOS-Data-Capture">FullStory SDK</a>をインストールします（まだ行っていない場合）。</li>
+<li><a href="https://github.com/tealium/tealium-ios-fullstory-remote-command">Tealium iOS FullStoryリモートコマンド</a>リポジトリをクローンし、<code>Sources</code>フォルダ内のファイルをプロジェクトにドラッグします。</li>
+<li><code>Dispatchers.RemoteCommands</code>をディスパッチャーとして追加します。</li>
+<li><a href="/platforms/ios-swift/api/tealium-config/#remoteapienabled"><code>remoteAPIEnabled</code></a>構成フラグを<code>true</code>に構成します。</li>
+</ol>
+<h2 id="初期化">初期化</h2>
+<p>すべてのTealiumライブラリに対して、初期化時にFullStoryリモートコマンドを登録します。</p>
+<h3 id="androidkotlin">Android（Kotlin）</h3>
+<p>Android（Java）ライブラリのTealiumのJSON構成ファイルまたはリモートコマンドタグを使用してリモートコマンドを初期化します。</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content"><div class="tab-pane" data-lang="JSONリモートコマンド" title="JSONリモートコマンド">
+  <p>ローカルファイルオプションを使用して、JSONリモートコマンド機能を使用する場合のコードは次のとおりです：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> config = TealiumConfig(application,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;PROFILE&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Environment</span>.DEV,
+</span></span><span style="display:flex;"><span>dispatchers = mutableSetOf(<span style="color:#a6e22e">Dispatchers</span>.RemoteCommands));
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium = <span style="color:#a6e22e">Tealium</span>.create(TEALIUM_MAIN, config) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// FullStoryリモートコマンドの初期化
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> fullstoryCommand = FullStoryRemoteCommand()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// コマンドを登録
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>remoteCommands<span style="color:#f92672">?.</span>add(fullstoryCommand, filename = 
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;tealium-fullstory.json&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="リモートコマンドタグ" title="リモートコマンドタグ">
+  <p>リモートコマンドタグ機能を使用する場合のコードは次のとおりです：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">val</span> config = TealiumConfig(application,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;PROFILE&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Environment</span>.DEV,
+</span></span><span style="display:flex;"><span>dispatchers = mutableSetOf(<span style="color:#a6e22e">Dispatchers</span>.RemoteCommands));
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium = <span style="color:#a6e22e">Tealium</span>.create(TEALIUM_MAIN, config) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// FullStoryリモートコマンドの初期化
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> fullstoryCommand = FullStoryRemoteCommand()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// コマンドを登録
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>remoteCommands<span style="color:#f92672">?.</span>add(fullstoryCommand)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</div>
+</div>
+</div>
+
+<h3 id="androidjava">Android（Java）</h3>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content"><div class="tab-pane" data-lang="JSONリモートコマンド" title="JSONリモートコマンド">
+  <p>AndroidのJSONリモートコマンドファイル機能は、Kotlin SDKのみで利用可能です。</p>
+</div>
+<div class="tab-pane" data-lang="リモートコマンドタグ" title="リモートコマンドタグ">
+  <p>リモートコマンドタグ機能を使用する場合のコードは次のとおりです：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span> config <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">create</span><span style="color:#f92672">(</span>application<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ACCOUNT&#34;</span><span style="color:#f92672">,</span> 
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;PROFILE&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>Tealium teal <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">createInstance</span><span style="color:#f92672">(</span>TEALIUM_MAIN<span style="color:#f92672">,</span> config<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>FullstoryRemoteCommand fullstory <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FullstoryRemoteCommand<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// コマンドを登録
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>teal<span style="color:#f92672">.</span><span style="color:#a6e22e">addRemoteCommand</span><span style="color:#f92672">(</span>fullstory<span style="color:#f92672">);</span>
+</span></span></code></pre></div>
+</div>
+</div>
+</div>
+
+<h3 id="iosswift">iOS（Swift）</h3>
+<p>iOS（Swift）ライブラリのTealiumのJSON構成ファイルまたはリモートコマンドタグを使用してリモートコマンドを初期化します。</p>
+
+<div class="code-tabs">
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content"><div class="tab-pane" data-lang="JSONリモートコマンド" title="JSONリモートコマンド">
+  <p>ローカルファイルオプションを使用して、JSONリモートコマンド機能を使用する場合のコードは次のとおりです：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
+</span></span><span style="display:flex;"><span> profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
+</span></span><span style="display:flex;"><span> environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,
+</span></span><span style="display:flex;"><span> dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>,
+</span></span><span style="display:flex;"><span> optionalData: <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>config.dispatchers = [Dispatchers.TagManagement, 
+</span></span><span style="display:flex;"><span>Dispatchers.RemoteCommands]
+</span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span> <span style="color:#75715e">// リモートコマンドを使用するために必要</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> fullstory = FullstoryRemoteCommand(type: .local(file: 
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;fullstory&#34;</span>))
+</span></span><span style="display:flex;"><span>remoteCommands.add(fullstory)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</div>
+<div class="tab-pane" data-lang="リモートコマンドタグ" title="リモートコマンドタグ">
+  <p>リモートコマンドタグ機能を使用する場合のコードは次のとおりです：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> tealium : Tealium?
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
+</span></span><span style="display:flex;"><span> profile: <span style="color:#e6db74">&#34;PROFILE&#34;</span>,
+</span></span><span style="display:flex;"><span> environment: <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span>,<span style="color:#960050;background-color:#1e0010">˜˜</span>
+</span></span><span style="display:flex;"><span> dataSource: <span style="color:#e6db74">&#34;DATASOURCE&#34;</span>,
+</span></span><span style="display:flex;"><span> optionalData: <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>config.dispatchers = [Dispatchers.TagManagement, 
+</span></span><span style="display:flex;"><span>Dispatchers.RemoteCommands]
+</span></span><span style="display:flex;"><span>config.remoteAPIEnabled = <span style="color:#66d9ef">true</span> <span style="color:#75715e">// リモートコマンドを使用するために必要</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tealium = Tealium(config: config) { <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> remoteCommands = <span style="color:#66d9ef">self</span>.tealium?.remoteCommands <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> fullstory = FullstoryRemoteCommand()
+</span></span><span style="display:flex;"><span>remoteCommands.add(fullstory)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</div>
+</div>
+</div>
+
+<h2 id="jsonテンプレート">JSONテンプレート</h2>
+<p>リモートコマンドを<a href="/platforms/remote-commands/how-it-works/#json-configuration-file">JSON構成ファイル</a>を使用して構成する場合は、次のテンプレートを参照して開始します。テンプレートには、標準的なeコマースインストールで使用される一般的なマッピングが含まれています。必要に応じてマッピングを編集します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;config&#34;</span>: {},
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;mappings&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_event&#34;</span>: <span style="color:#e6db74">&#34;event_name&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;uid&#34;</span>: <span style="color:#e6db74">&#34;uid_str&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;email&#34;</span>: <span style="color:#e6db74">&#34;user_variables.email_str&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;phone&#34;</span>: <span style="color:#e6db74">&#34;user_variables.phone_str&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;cart_id&#34;</span>: <span style="color:#e6db74">&#34;event.cart_id_str&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;product_id&#34;</span>: <span style="color:#e6db74">&#34;event.product_id_str&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;price&#34;</span>: <span style="color:#e6db74">&#34;event.price_real&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;event.name_str&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;category&#34;</span>: <span style="color:#e6db74">&#34;event.categoryProperties&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;commands&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;launch&#34;</span>: <span style="color:#e6db74">&#34;logevent&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;identify_user&#34;</span>: <span style="color:#e6db74">&#34;identify&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealiumSampleEvent&#34;</span>: <span style="color:#e6db74">&#34;logevent&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealiumSampleEventWithData&#34;</span>: <span style="color:#e6db74">&#34;logevent&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="サポートされているメソッド">サポートされているメソッド</h2>
+<p>次のFullStoryメソッドは、FullStoryリモートコマンドタグのデータマッピングを使用してトリガーされます。以下のTealiumコマンドを使用します：</p>
+<table>
+<thead>
+<tr>
+<th>リモートコマンド</th>
+<th>FullStoryメソッド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>logevent</code></td>
+<td><code>logEvent()</code></td>
+</tr>
+<tr>
+<td><code>identify</code></td>
+<td><code>identifyUser()</code></td>
+</tr>
+<tr>
+<td><code>setuservariables</code></td>
+<td><code>setUserData()</code></td>
+</tr>
+</tbody>
+</table>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>FullStory SDKはTealium SDKと一緒にインストールされるため、Tealium FullStoryリモートコマンドタグで提供されていない機能でも、SDKを直接呼び出すことで任意のネイティブFullStory機能をトリガーできます。</p>
+<h3 id="sdkのセットアップ">SDKのセットアップ</h3>
+<h4 id="初期化-1">初期化</h4>
+<p>FullStory SDKは、起動時に自動的に初期化されます。</p>
+<p>FullStory開発者ガイド：初期SDKセットアップ</p>
+<ul>
+<li><a href="https://help.fullstory.com/hc/en-us/articles/360040596093-Getting-Started-with-Android-Data-Capture">Android</a></li>
+<li><a href="https://help.fullstory.com/hc/en-us/articles/360042772333-Getting-Started-with-iOS-Data-Capture">iOS</a></li>
+</ul>
+<h3 id="イベントの記録">イベントの記録</h3>
+<table>
+<thead>
+<tr>
+<th>リモートコマンド</th>
+<th>FullStoryメソッド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>logevent</code></td>
+<td><code>event</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>パラメーター</th>
+<th>タイプ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>eventName</code>（必須）</td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>eventData</code></td>
+<td>Map</td>
+</tr>
+</tbody>
+</table>
+<p>FullStory開発者ガイド：イベントの記録</p>
+<ul>
+<li><a href="https://help.fullstory.com/hc/en-us/articles/360020623274-FS-event-API-Sending-custom-event-data-into-FullStory">Android</a></li>
+<li><a href="https://help.fullstory.com/hc/en-us/articles/360020623274-FS-event-API-Sending-custom-event-data-into-FullStory">iOS</a></li>
+</ul>
+<h3 id="ユーザーの識別">ユーザーの識別</h3>
+<table>
+<thead>
+<tr>
+<th>リモートコマンド</th>
+<th>FullStoryメソッド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>identify</code></td>
+<td><code>identifyUser</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>パラメーター</th>
+<th>タイプ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code>（必須）</td>
+<td>String</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>Map</td>
+</tr>
+</tbody>
+</table>
+<p>FullStory開発者ガイド：識別</p>
+<ul>
+<li><a href="https://help.fullstory.com/hc/en-us/articles/360020828113-FS-identify-Identifying-users">Android</a></li>
+<li><a href="https://help.fullstory.com/hc/en-us/articles/360020828113-FS-identify-Identifying-users">iOS</a></li>
+</ul>
+<h3 id="ユーザー変数の構成">ユーザー変数の構成</h3>
+<table>
+<thead>
+<tr>
+<th>リモートコマンド</th>
+<th>FullStoryメソッド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>setuservariables </code></td>
+<td><code>setUserData</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>パラメーター</th>
+<th>タイプ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code>（必須）</td>
+<td>Map</td>
+</tr>
+</tbody>
+</table>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><code>data</code>パラメーターは、キーが<code>strings</code>で値がデータ型でサフィックスが付いたオブジェクトを受け取ります（例：<code>_str</code>、<code>_int</code>、<code>_bool</code>）。詳細については、<a href="https://help.fullstory.com/hc/en-us/articles/4446290296599-Setting-custom-API-properties">FullStoryのカスタムAPIプロパティの構成ドキュメント</a>を参照してください。</p>
+<p>FullStory開発者ガイド：ユーザー変数の構成</p>
+<ul>
+<li><a href="https://help.fullstory.com/hc/en-us/articles/360020623294-FS-setUserVars-API-Capturing-custom-user-properties">Android</a></li>
+<li><a href="https://help.fullstory.com/hc/en-us/articles/360020623294-FS-setUserVars-API-Capturing-custom-user-properties">iOS</a></li>
+</ul>
+
+</div>
+
+<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
+
+  
+  <a href="/ja/platforms/remote-commands/integrations/skadnetwork/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <section class="tl pr3">
+      <div>SKAdNetwork</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"SKAdNetwork"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
+  
+  
+</div><div class="di mr3">
+  
+  
+  <a href="/ja/platforms/remote-commands/integrations/kochava/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"Kochava "</title>
+      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+    </svg>
+   <section class="tr pl3">
+      <div>Kochava</div>
+    </section>
+  </a>
+  
+
+</div></div>
+
+
+
+        <div class="bt-l b--moon-gray pv3 cb">
+          <div id="feedback_form" class="dpn">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">このページはお役にたちましたでしょうか？</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+はい</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+いいえ</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="ページの改善にご協力ください。" rows="4" cols="60"></textarea><button id="feedback_submit" class="db ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">フィードバックを送信</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">ご意見有難うございます。</p>
+  </div>
+</div>
+
+        </div>
+        <div class="bt-l b--moon-gray pt3 f6">
+          <p>最終更新日 ::  2024年March月29日
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
+      
+
+
+
+  <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">このページで</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E6%96%B9%E6%B3%95" href="javascript:void(0)">動作方法</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" href="javascript:void(0)">インストール</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BE%9D%E5%AD%98%E9%96%A2%E4%BF%82%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3%E3%83%BC" href="javascript:void(0)">依存関係マネージャー</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%89%8B%E5%8B%95%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%ABios" href="javascript:void(0)">手動インストール（iOS）</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%9D%E6%9C%9F%E5%8C%96" href="javascript:void(0)">初期化</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#androidkotlin" href="javascript:void(0)">Android（Kotlin）</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#androidjava" href="javascript:void(0)">Android（Java）</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#iosswift" href="javascript:void(0)">iOS（Swift）</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#json%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88" href="javascript:void(0)">JSONテンプレート</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89" href="javascript:void(0)">サポートされているメソッド</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sdk%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97" href="javascript:void(0)">SDKのセットアップ</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E8%A8%98%E9%8C%B2" href="javascript:void(0)">イベントの記録</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E8%AD%98%E5%88%A5" href="javascript:void(0)">ユーザーの識別</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%A4%89%E6%95%B0%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">ユーザー変数の構成</a></li>
+              </nav>
+  </aside></nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-secondary ph1-ns relative w-100 pv4 bt b--light-gray" role="contentinfo">
+  <div class="center flex-ns flex-wrap justify-between mw9 w-90 dn db-ns">
+
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="nav-list footer-heading-title">
+          <div class="footer-logo-wrapper">
+            <img class="logo" src="https://tealium.com/wp-content/uploads/2015/12/tealium_footer_logo_01-206x49.png" alt="tealium_footer_logo_01">
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Support</li>
+<li class="mb2"><a class="link" href="https://university.tealium.com/">Tealium University</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/en/support/solutions">Knowledge Base</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/" target="">Support Desk</a></li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Company</li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/">Tealium.com</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/blog/">Blog</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="https://tealium.com/careers/">Careers</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+  <div class="dpn bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+<div class="globalmenu mobilemenu dn">
+    
+
+<ul class="list hidden dib ph0 ma0 scrolling-touch tc">
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ホーム
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/iq-tag-management/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          iQ Tag Management
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          EventStream API Hub
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/functions/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          機能
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-connect/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          データコネクト
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/predict/getting-started/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Predict ML
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-storage/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          DataAccess
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/client-side-tags/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          クライアントサイド タグ
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side-connectors/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          サーバーサイド コネクタ
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/platforms/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          プラットフォーム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/api/getting-started/auth/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          管理
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ファーマ向けティーリアム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ティーリアムアイデンティティパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/tech-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          テクノロジーパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          パートナー統合
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/glossary/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          用語集
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/early-access/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          早期アクセス
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/release-notes/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          リリースノート
+        </a>
+    </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+</div>
+
+
+<div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
+    <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+</ul>
+
+</div>
+
+
+
+
+<div class="flex dn-l justify-between">
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link mr2 white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".globalmenu">Site</button>
+
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".docsmenu">Section</button>
+
+</div>
+</div>
+
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'ドキュメントの検索',
+    buttonAriaLabel: 'ドキュメントの検索',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'クエリを消去',
+      resetButtonAriaLabel: 'クエリを消去',
+      cancelButtonText: 'キャンセル',
+      cancelButtonAriaLabel: 'キャンセル',
+    },
+    startScreen: {
+      recentSearchesTitle: '最近',
+      noRecentSearchesText: '最近の検索はありません',
+      saveRecentSearchButtonTitle: 'この検索を保存',
+      removeRecentSearchButtonTitle: 'この検索を履歴から削除',
+      favoriteSearchesTitle: 'お気に入り',
+      removeFavoriteSearchButtonTitle: 'このクエリをお気に入りから削除',
+    },
+    errorScreen: {
+      titleText: '結果を取得できません',
+      helpText: 'ネットワーク接続を確認してください',
+    },
+    footer: {
+      selectText: '選択する',
+      selectKeyAriaLabel: 'キーを入力してください',
+      navigateText: 'ナビゲートする',
+      navigateUpKeyAriaLabel: '上',
+      navigateDownKeyAriaLabel: '下',
+      closeText: '閉じる',
+      closeKeyAriaLabel: 'エスケープキー',
+      searchByText: '次で検索：',
+    },
+    noResultsScreen: {
+      noResultsText: '次の結果はありません：',
+      suggestedQueryText: '次で検索してみてください：',
+      reportMissingResultsText: 'このクエリで結果が返ってくるはずですか?',
+      reportMissingResultsLinkText: '連絡願います',
+    },
+  },
+};
+var default_sections = [
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
+docsearch({
+  container: '#docsearch',
+  appId: '2V5C0M31GH',
+  apiKey: '32b47c4ec1ccc76fbe18808c48f9d8b6',
+  indexName: 'tealium_jp',
+  placeholder: 'ドキュメントの検索',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    "analytics": true ,
+    "analyticsTags": ["site"]
+  },
+  insights: true,
+  debug: false ,
+  transformItems
+});
+</script>
+
+    
+
+  </body>
+</html>
