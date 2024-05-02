@@ -467,7 +467,9 @@ var utag_data = {
         <a href="/server-side/frequently-asked-questions/lead-scoring-model/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-lead-scoring-model">Create a lead scoring model</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/frequently-asked-questions/browser-support/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-browser-support">Browser support</a></li></ul>
       </li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/server-side/release-notes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-release-notes">Release notes</a></li></ul></li></ul>
+        <a href="/server-side/release-notes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-release-notes">Release notes</a></li></ul></li><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><a href="/server-side/" class="dib w-100 link text-color-primary hover-primary-color"><span class="pb2">save-publish</span></a>
+        <ul data-level="1" class=" desktopmenu animated fadeIn list pl0 mt2"><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/server-side/save-publish/release-notes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-save-and-publish-release-notes">Release notes</a></li></ul></li></ul>
 </nav>
 </div>
     
@@ -520,13 +522,13 @@ var utag_data = {
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="how-it-works">How it Works</h2>
+  <h2 id="how-it-works">How it works</h2>
 <p>Badges are the building blocks for <a href="/server-side/audiences/audience-discovery/about/">discovering audiences</a>. A behavior is defined using attributes and rules that describe its conditions.</p>
 <p>For example, you might be interested in the behavior of visitors that frequently browse your site but do not make a purchase. In this case, the following behaviors might characterize this type of visitor:</p>
 <ul>
-<li><strong>Visited</strong> - has visited the site 3 times in the last 7 days.</li>
-<li><strong>Showed Interest</strong> - has viewed a product details page or read an article.</li>
-<li><strong>Did Not Convert</strong> - has not purchased or signed up for a service.</li>
+<li><strong>Visited</strong>: Has visited the site three times in the last 7 days.</li>
+<li><strong>Showed Interest</strong>: Has viewed a product details page or read an article.</li>
+<li><strong>Did Not Convert</strong>: Has not purchased or signed up for a service.</li>
 </ul>
 <p>This pattern of behavior could be configured as a badge attribute named &ldquo;Window Shopper&rdquo; to identify the visitors that match its behavior.</p>
 <p>The badge attribute is available in the following scopes: Visitor.</p>
@@ -537,38 +539,38 @@ var utag_data = {
 </figure>
 <h3 id="size-limits">Size Limits</h3>
 <p>The size of a each badge is not limited, but these attributes are still limited by the maximum size of the profile after encryption and compression (400 KB).</p>
-<h3 id="badge-associations">Badge Associations</h3>
-<p>Badge associations allow you to quickly assign multiple badges based on other badges the visitor has earned. Typically, you would trigger a badge assignment based on a certain browsing behavior or criteria, but with badge associations you can trigger more than one badge assignment after the visitor has successfully earned the qualifying badge(s).</p>
+<h3 id="badge-associations">Badge associations</h3>
+<p>Badge associations allow you to quickly assign multiple badges based on other badges the visitor has earned. Typically, you would trigger a badge assignment based on a certain browsing behavior or criteria, but with badge associations you can trigger more than one badge assignment after the visitor has successfully earned the qualifying badge or badges.</p>
 <p>Learn more about <a href="#badge-associations">setting up badge associations</a>.</p>
 <h2 id="enrichments">Enrichments</h2>
-<p>Badges are assigned to and removed from visitors based on the logic of their rules. Each new visitor is assigned a default badge named &ldquo;Unbadged&rdquo;. This badge is automatically removed once the visitor earns a custom badge. Badges are assigned (and removed) using the following enrichments.</p>
-<h3 id="assign-badge">Assign Badge</h3>
-<p>Assigns the badge to a visitor when a set of conditions are met. All visitors are initially unbadged. For example, to assign the &ldquo;Window Shopper&rdquo; badge, it must be determined if the visitor navigated away from the site without purchasing.</p>
+<p>Badges are assigned to and removed from visitors based on the logic of their rules. Each new visitor is assigned a default badge named <strong>Unbadged</strong>. This badge is automatically removed after the visitor earns a custom badge. Badges are assigned (and removed) using the following enrichments.</p>
+<h3 id="assign-badge">Assign badge</h3>
+<p>Assigns the badge to a visitor when a set of conditions are met. All visitors are initially unbadged. For example, to assign the <strong>Window Shopper</strong> badge, it must be determined if the visitor navigated away from the site without purchasing.</p>
 <p><strong>Attribute Name</strong>: &ldquo;Window Shopper&rdquo;</p>
 <ul>
 <li><strong>Starting Value</strong>: <code>&quot;Unbadged&quot;</code></li>
 <li><strong>Resulting Value</strong>: <code>&quot;Window Shopper&quot;</code></li>
 </ul>
-<h3 id="remove-badge">Remove Badge</h3>
-<p>Removes an assigned badge when the visitor no longer satisfies the conditions. For example, a &ldquo;Window Shopper&rdquo; badge is removed once the visitor makes a purchase.</p>
+<h3 id="remove-badge">Remove badge</h3>
+<p>Removes an assigned badge when the visitor no longer satisfies the conditions. For example, a <strong>Window Shopper</strong> badge is removed after the visitor makes a purchase.</p>
 <p><strong>Attribute Name</strong>: &ldquo;Window Shopper&rdquo;</p>
 <ul>
 <li><strong>Starting Value</strong>:  <code>&quot;Window Shopper&quot;</code></li>
 <li><strong>Resulting Value</strong>: <code>&quot;Unbadged&quot;</code></li>
 </ul>
-<h3 id="assign-badge-from-another-badge">Assign Badge from Another Badge</h3>
-<p>Assigns a badge based on another badge. For example, a &ldquo;Window Shopper&rdquo; badge is replaced with a &ldquo;Cart Abandoner&rdquo; badge once the visitor abandons a cart. Of course, a visitor can have more than one badge, so a visitor can be a &ldquo;Window Shopper&rdquo; and a &ldquo;Cart Abandoner&rdquo;.</p>
+<h3 id="assign-badge-from-another-badge">Assign badge from another badge</h3>
+<p>Assigns a badge based on another badge. For example, a <strong>Window Shopper</strong> badge is replaced with a <strong>Cart Abandoner</strong> badge after the visitor abandons a cart. Of course, a visitor can have more than one badge, so a visitor can be a <strong>Window Shopper</strong> and a <strong>Cart Abandoner</strong>.</p>
 <p><strong>Attribute Name</strong>: &ldquo;Cart Abandoner&rdquo;</p>
 <ul>
 <li><strong>Starting Value</strong>:  <code>&quot;Window Shopper&quot;</code></li>
 <li><strong>Resulting Value</strong>: <code>&quot;Cart Abandoner&quot;</code></li>
 </ul>
-<h2 id="popular-badges">Popular Badges</h2>
-<p>These are popular badges. For a more complete list of popular badges, see <a href="/server-side/attributes/data-types/popular-badges/">Popular Badges</a>.</p>
+<h2 id="popular-badges">Popular badges</h2>
+<p>The following table lists several popular badges. For a complete list of popular badges, see <a href="/server-side/attributes/data-types/popular-badges/">Popular Badges</a>.</p>
 <table>
 <thead>
 <tr>
-<th>Badge Name</th>
+<th>Badge name</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -604,82 +606,62 @@ var utag_data = {
 </tbody>
 </table>
 <h2 id="badge-associations-1">Badge Associations</h2>
-<h3 id="creating-the-enrichment-for-new-or-existing-badges">Creating the Enrichment (for new or existing Badges)</h3>
+<h3 id="creating-the-enrichment-for-new-or-existing-badges">Creating the enrichment (for new or existing badges)</h3>
 <ol>
-<li>
-<p>Navigate to the Attributes menu located under the Enrich tab.</p>
-</li>
-<li>
-<p>Add a new Badge or click the edit icon for the Badge to which you want to append other Badge(s).</p>
-</li>
-<li>
-<p>Click &lsquo;Create Enrichment&rsquo; and select &ldquo;Assign Badge from another Badge&rdquo;.<br>
-<figure><a class="slb" href="/images/server-side/badge-enrichments.png"><img src="/images/server-side/badge-enrichments.png"
+<li>Go to <strong>Attributes &gt; Visitor / Visit Attributes</strong>.</li>
+<li>Add a new badge or click the edit icon for the badge to which you want to append another badge or badges.</li>
+<li>Click <strong>Add Enrichment</strong> and select <strong>Assign badge from another badge</strong>.<br>
+<figure><a class="slb" href="/images/server-side/attributes/badge-enrichments.png"><img src="/images/server-side/attributes/badge-enrichments.png"
          alt="badge enrichments.png"
          title="badge enrichments.png"/>
     </a>
-</figure></p>
-</li>
-<li>
-<p>From the drop-down, select the Badge you wish to assign.</p>
-</li>
-<li>
-<p>Repeat steps 2 - 4 to assign more Badges.<br>
-<figure><a class="slb" href="/images/server-side/select-sample-badge.png"><img src="/images/server-side/select-sample-badge.png"
-         alt="select sample badge.png"
-         title="select sample badge.png"/>
+</figure></li>
+<li>From the drop-down list, select the badge you want to assign.
+<figure><a class="slb" href="/images/server-side/attributes/select-a-badge-to-associate.png"><img src="/images/server-side/attributes/select-a-badge-to-associate.png"
+         alt="Select a badge to associate.png"
+         title="Select a badge to associate.png"/>
     </a>
-</figure></p>
-</li>
-<li>
-<p>Click <strong>Save</strong>.</p>
-</li>
-<li>
-<p>When you are done, save your profile to apply the changes.</p>
-</li>
+</figure></li>
+<li>Repeat steps 2 - 4 to assign more badges.</li>
+<li>Click <strong>Finish</strong>.</li>
+<li>When you are done, save your profile to apply the changes.</li>
 </ol>
-<h3 id="using-the-badge-association-wizard-for-existing-badges-only">Using the Badge Association Wizard (for existing Badges only)</h3>
+<h3 id="using-the-badge-association-wizard-for-existing-badges-only">Using the Badge Association Wizard (for existing badges only)</h3>
 <ol>
 <li>
-<p>In the Attributes tab, locate the Badge to which you want to assign and expand its settings.</p>
+<p>In the <strong>Visitor / Visit Attributes</strong> table, click the badge to which you want to assign.</p>
 </li>
 <li>
-<p>Click the Badge Association icon in the top-right tip of the panel.<br>
-<figure><a class="slb" href="/images/server-side/badge-association-icon.png"><img src="/images/server-side/badge-association-icon.png"
+<p>Click the Badge Association icon in the top-right corner of the panel.<br>
+<figure><a class="slb" href="/images/server-side/attributes/badge-association-icon.png"><img src="/images/server-side/attributes/badge-association-icon.png"
          alt="badge association icon.png"
          title="badge association icon.png"/>
     </a>
 </figure></p>
 </li>
 <li>
-<p>Click the + icon and select a Badge that you wish to assign.</p>
+<p>Click the <code>+</code> icon and select the badge that you wish to assign.</p>
 </li>
 </ol>
-<figure><a class="slb" href="/images/server-side/select.png"><img src="/images/server-side/select.png"
-         alt="select.png"
-         title="select.png"/>
+<figure><a class="slb" href="/images/server-side/attributes/badge-select.png"><img src="/images/server-side/attributes/badge-select.png"
+         alt="Select a badge"
+         title="Select a badge"/>
     </a>
 </figure>
-<h3 id="understanding-the-badge-association-wizard">Understanding the Badge Association Wizard</h3>
-<p>Click on an existing Badge to display this wizard. You will notice the currently-assigned Badge is always in the center column with arrows on each side. The arrows always point in the direction of the recipient Badge. You can assign any number of Badges to the current and the recipient badge; however you can&rsquo;t reassign a recipient back to its donor Badge. Take a look at the example below.</p>
-<figure><a class="slb" href="/images/server-side/car-badge-example1.png"><img src="/images/server-side/car-badge-example1.png"
-         alt="car badge example1.png"
-         title="car badge example1.png"/>
+<h3 id="understanding-the-badge-association-wizard">Understanding the badge association wizard</h3>
+<p>Click on an existing badge to display this wizard. You will notice the currently-assigned badge is always in the center column with arrows on each side. The arrows always point in the direction of the recipient badge. You can assign any number of badges to the current and the recipient badge; however you can&rsquo;t reassign a recipient back to its source badge. Take a look at the example below.</p>
+<figure><a class="slb" href="/images/server-side/attributes/car-badge-example.png"><img src="/images/server-side/attributes/car-badge-example.png"
+         alt="Car badge example"
+         title="Car badge example"/>
     </a>
 </figure>
-<p>Notice the &lsquo;Car Badge&rsquo; in the center is currently assigned to qualifying visitors. Here&rsquo;s how the other Badge assignments will trigger.</p>
+<p>The <strong>Car badge</strong> in the center is currently assigned to qualifying visitors. Here&rsquo;s how the other badge assignments will trigger.</p>
 <ol>
-<li>Qualifying visitors receive the Car Badge.</li>
-<li>Car Badge visitors are automatically assigned &lsquo;Tesla&rsquo; and &lsquo;Fun Cars&rsquo; badges.</li>
-<li>Fancy Cars Badge visitors are automatically assigned &lsquo;Car&rsquo;, &lsquo;Tesla&rsquo; and &lsquo;Fun Cars&rsquo; badges.</li>
-<li>Electric Badge visitors are automatically assigned &lsquo;Car&rsquo;, &lsquo;Tesla&rsquo; and &lsquo;Fun Cars&rsquo; badges.</li>
+<li>Qualifying visitors receive the <strong>Car badge</strong>.</li>
+<li><strong>Car badge</strong> visitors are automatically assigned <strong>Fancy cars</strong> and <strong>Electric</strong> badges.</li>
+<li><strong>Tesla</strong> badge visitors are automatically assigned <strong>Car badge</strong>, <strong>Fancy cars</strong>, and <strong>Electric cars</strong> badges.</li>
+<li><strong>Fun cars</strong> badge visitors are automatically assigned <strong>Car badge</strong>, <strong>Fancy cars</strong> and <strong>Electric</strong> badges.</li>
 </ol>
-<p><strong>REMEMBER</strong>: You can&rsquo;t assign any of the recipient Badges (&lsquo;FancyCars&rsquo; or &lsquo;Electric&rsquo;) back to its donors (&lsquo;Tesla or Fun Cars&rsquo;). If you attempt to do so, you will see this error message.</p>
-<figure><a class="slb" href="/images/server-side/error.png"><img src="/images/server-side/error.png"
-         alt="error.png"
-         title="error.png"/>
-    </a>
-</figure>
 
 </div>
 
@@ -725,7 +707,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 6, 2024 
+          <p>This page was last updated:  April 25, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -739,18 +721,18 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it Works</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#size-limits" href="javascript:void(0)">Size Limits</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#badge-associations" href="javascript:void(0)">Badge Associations</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#badge-associations" href="javascript:void(0)">Badge associations</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enrichments" href="javascript:void(0)">Enrichments</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#assign-badge" href="javascript:void(0)">Assign Badge</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-badge" href="javascript:void(0)">Remove Badge</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#assign-badge-from-another-badge" href="javascript:void(0)">Assign Badge from Another Badge</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#popular-badges" href="javascript:void(0)">Popular Badges</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#assign-badge" href="javascript:void(0)">Assign badge</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-badge" href="javascript:void(0)">Remove badge</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#assign-badge-from-another-badge" href="javascript:void(0)">Assign badge from another badge</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#popular-badges" href="javascript:void(0)">Popular badges</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#badge-associations" href="javascript:void(0)">Badge Associations</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#creating-the-enrichment-for-new-or-existing-badges" href="javascript:void(0)">Creating the Enrichment (for new or existing Badges)</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#using-the-badge-association-wizard-for-existing-badges-only" href="javascript:void(0)">Using the Badge Association Wizard (for existing Badges only)</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#understanding-the-badge-association-wizard" href="javascript:void(0)">Understanding the Badge Association Wizard</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#creating-the-enrichment-for-new-or-existing-badges" href="javascript:void(0)">Creating the enrichment (for new or existing badges)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#using-the-badge-association-wizard-for-existing-badges-only" href="javascript:void(0)">Using the Badge Association Wizard (for existing badges only)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#understanding-the-badge-association-wizard" href="javascript:void(0)">Understanding the badge association wizard</a></li>
               </nav>
   </aside></nav>
 
@@ -1123,6 +1105,14 @@ No</button>
       
       <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/server-side/release-notes/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Release notes
+      </a>
+      </li>
+      
+      
+  
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/server-side/save-publish/release-notes/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
           Release notes
       </a>
       </li>

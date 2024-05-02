@@ -251,6 +251,7 @@ var utag_data = {
         <a href="/server-side-connectors/new-relic-mobile-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".new-relic-mobile-connector">New Relic Mobile</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/new-relic-mobile-crash-tracking-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".new-relic-mobile-crash-tracking-connector">New Relic Mobile Crash Tracking</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/nextdoor-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nextdoor-connector">Nextdoor</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/nine-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nine-audience-match-connector">Nine Audience Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/onesignal-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".onesignal-connector">OneSignal</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/ontraport-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ontraport-connector">Ontraport</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/optimizely-data-platform-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-data-platform-connector">Optimizely Data Platform</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -385,8 +386,9 @@ var utag_data = {
 
 <div class="prose nested-links" id="prose">
   <h2 id="requirements">Requirements</h2>
+<p>The LINE connector requires the following:</p>
 <ul>
-<li>LINE Channel Access Token (<a href="https://developers.line.me/messaging-api/getting-started">Get started with the LINE Developers Messaging API.</a>)</li>
+<li>LINE Channel Access Token. For more information, see <a href="https://developers.line.biz/en/docs/messaging-api/overview/">Messaging API overview</a>.</li>
 </ul>
 <h2 id="supported-actions">Supported Actions</h2>
 <table>
@@ -445,58 +447,166 @@ var utag_data = {
 </li>
 </ul>
 <h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. It&rsquo;s where you&rsquo;ll set up actions and trigger them.</p>
+<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab to set up actions and trigger them.</p>
 <p>This section describes how to set up parameters and options for each action.</p>
 <h3 id="action---push-message---text">Action - Push Message - Text</h3>
 <h4 id="parameters">Parameters</h4>
-<ul>
-<li><strong>Contact ID</strong> (Required): This is the ID received from the Webhook that is configured in the Channel Console in LINE Business Center. When a user performs an action such as adding your account or sending a message, an HTTPS POST request is sent to the Webhook URL.</li>
-<li><strong>Message Data</strong> (Required): The content of the message to send to the user. This field is limited to 2000 characters and supports unicode emoticons. This field also supports the Tealium templating engine.</li>
-<li><strong>Template Variables</strong> (Optional): If using the templating engine, template variables will be used. These fields map Attributes to variable names that are used in the message data.</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contact ID</td>
+<td>(Required) This parameter is the ID received from the webhook that is configured in the Channel Console in LINE Business Center. When a user performs an action such as adding an account or sending a message, an HTTPS POST request is sent to the webhook URL.</td>
+</tr>
+<tr>
+<td>Message Data</td>
+<td>(Required) The content of the message to send to the user. This field is limited to 2,000 characters, supports Unicode emoticons, and supports the <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Tealium template engine</a>.</td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td>These fields map attributes to variable names that are used in the message data. Name nested template variables with dot notation. For example, <code>items.name</code>. For more information, see <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="action---push-message---image">Action - Push Message - Image</h3>
 <h4 id="parameters-1">Parameters</h4>
-<ul>
-<li><strong>Contact ID</strong> (Required): This is the ID received from the Webhook that is configured in the Channel Console in LINE Business Center. When a user performs an action such as adding your account or sending a message, an HTTPS POST request is sent to the Webhook URL.</li>
-<li><strong>Original Content URL</strong> (Required): The URL of the image to send to the user. The URL must use HTTPS and should not exceed 1000 characters. The image must be a JPEG with a maximum dimension of 1024x1024 and a maximum size of 1 MB.</li>
-<li><strong>Preview Image URL</strong> (Required): The URL of the preview image to send to the user. The URL must use HTTP and should not exceed 1000 characters. The image must be a JPEG with a maximum dimension of 240x240 and a maximum size of 1 MB.</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contact ID</td>
+<td>(Required) This parameter is the ID received from the webhook that is configured in the Channel Console in LINE Business Center. When a user performs an action such as adding an account or sending a message, an HTTPS POST request is sent to the webhook URL.</td>
+</tr>
+<tr>
+<td>Original Content URL</td>
+<td>(Required) The URL of the image to send to the user. The URL must use HTTPS and should not exceed 1,000 characters. The image must be a JPEG with maximum dimensions of 1,024 pixels by 1,024 pixels and a maximum size of 1 MB.</td>
+</tr>
+<tr>
+<td>Preview Image URL</td>
+<td>(Required) The URL of the preview image to send to the user. The URL must use HTTP and should not exceed 1,000 characters. The image must be in JPEG format with a maximum dimension of 240 pixels by 240 pixels and a maximum size of 1 MB.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="action---push-message---video">Action - Push Message - Video</h3>
 <h4 id="parameters-2">Parameters</h4>
-<ul>
-<li><strong>Contact ID</strong> (Required): This is the ID received from the Webhook that is configured in the Channel Console in LINE Business Center. When a user performs an action such as adding your account or sending a message, an HTTPS POST request is sent to the Webhook URL.</li>
-<li><strong>Original Content URL</strong> (Required): The URL of the video to send to the user. The URL must use HTTPS and should not exceed 1000 characters. The video must be a MP4 with a maximum duration of 1 minute and a maximum size of 10 MB.</li>
-<li><strong>Preview Image URL</strong> (Required): The URL of the preview image to send to the user. The URL must use HTTP and should not exceed 1000 characters. The image must be a JPEG with a maximum dimension of 240x240 and a maximum size of 1 MB.</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contact ID</td>
+<td>(Required) This parameter is the ID received from the webhook that is configured in the Channel Console in LINE Business Center. When a user performs an action such as adding an account or sending a message, an HTTPS POST request is sent to the webhook URL.</td>
+</tr>
+<tr>
+<td>Original Content URL</td>
+<td>(Required) The URL of the video to send to the user. The URL must use HTTPS and should not exceed 1,000 characters. The video must be in MP4 format with a maximum duration of one minute and a maximum size of 10 MB.</td>
+</tr>
+<tr>
+<td>Preview Image URL</td>
+<td>(Required) The URL of the preview image to send to the user. The URL must use HTTP and should not exceed 1,000 characters. The image must be in JPEG format with a maximum dimension of 240 pixels by 240 pixels and a maximum size of 1 MB.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="action---push-message---audio">Action - Push Message - Audio</h3>
 <h4 id="parameters-3">Parameters</h4>
-<ul>
-<li><strong>Contact ID</strong> (Required): This is the ID received from the Webhook that is configured in the Channel Console in LINE Business Center. When a user performs an action such as adding your account or sending a message, an HTTPS POST request is sent to the Webhook URL.</li>
-<li><strong>Original Content URL</strong> (Required): The URL of the audio to send to the user. The URL must use HTTPS and should not exceed 1000 characters. The audio must be a M4A with a maximum duration of 1 minute and a maximum size of 10 MB.</li>
-<li><strong>Duration</strong> (Required): The length of the audio file in milliseconds.</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contact ID</td>
+<td>(Required) This parameter is the ID received from the webhook that is configured in the Channel Console in LINE Business Center. When a user performs an action such as adding an account or sending a message, an HTTPS POST request is sent to the webhook URL.</td>
+</tr>
+<tr>
+<td>Original Content URL</td>
+<td>(Required) The URL of the audio to send to the user. The URL must use HTTPS and should not exceed 1,000 characters. The audio must be be in M4A format with a maximum duration of one minute and a maximum size of 10 MB.</td>
+</tr>
+<tr>
+<td>Duration</td>
+<td>(Required) The length of the audio file in milliseconds.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="action---push-message---location">Action - Push Message - Location</h3>
 <h4 id="parameters-4">Parameters</h4>
-<ul>
-<li><strong>Contact ID</strong> (Required): This is the ID received from the Webhook that is configured in the Channel Console in LINE Business Center. When a user performs an action such as adding your account or sending a message, an HTTPS POST request is sent to the Webhook URL.</li>
-<li><strong>Title</strong> (Required): The name of the location to send to the user.</li>
-<li><strong>Address</strong> (Required): The address of the location to send to the user.</li>
-<li><strong>Latitude</strong> (Required): The latitude of the location to send to the user.</li>
-<li><strong>Longitude</strong> (Required): The longitude of the location to send to the user.</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contact ID</td>
+<td>(Required) This parameter is the ID received from the webhook that is configured in the Channel Console in LINE Business Center. When a user performs an action such as adding an account or sending a message, an HTTPS POST request is sent to the webhook URL.</td>
+</tr>
+<tr>
+<td>Title</td>
+<td>(Required) The name of the location to send to the user.</td>
+</tr>
+<tr>
+<td>Address</td>
+<td>(Required) The address of the location to send to the user.</td>
+</tr>
+<tr>
+<td>Latitude</td>
+<td>(Required) The latitude of the location to send to the user.</td>
+</tr>
+<tr>
+<td>Longitude</td>
+<td>(Required) The longitude of the location to send to the user.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="action---push-message---sticker">Action - Push Message - Sticker</h3>
 <h4 id="parameters-5">Parameters</h4>
-<ul>
-<li><strong>Contact ID</strong> (Required): This is the ID received from the Webhook that is configured in the Channel Console in LINE Business Center. When a user performs an action such as adding your account or sending a message, an HTTPS POST request is sent to the Webhook URL.</li>
-<li><strong>Package ID</strong> (Required): The ID of the package to which a sticker belongs.</li>
-<li><strong>Sticker ID</strong> (Required): The ID of the sticker to send to the user</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contact ID</td>
+<td>(Required) This parameter is the ID received from the webhook that is configured in the Channel Console in LINE Business Center. When a user performs an action such as adding an account or sending a message, an HTTPS POST request is sent to the webhook URL.</td>
+</tr>
+<tr>
+<td>Package ID</td>
+<td>(Required) The ID of the package to which a sticker belongs.</td>
+</tr>
+<tr>
+<td>Sticker ID</td>
+<td>(Required) The ID of the sticker to send to the user.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="vendor-documentation">Vendor Documentation</h2>
 <ul>
-<li><a href="https://developers.line.me/messaging-api/getting-started">LINE Developers - Messaging API - Getting Started</a></li>
-<li><a href="https://devdocs.line.me/en/?shell#webhooks">LINE API Reference - Webhooks</a></li>
-<li><a href="https://devdocs.line.me/en/?shell#push-message">LINE API Reference - Push Message</a></li>
-<li><a href="https://devdocs.line.me/en/?shell#send-message-object">LINE API Reference - Send Message Object (Text, Image, Sticker, etc.)</a></li>
+<li><a href="https://developers.line.biz/en/docs/messaging-api/">LINE Developers - Messaging API</a></li>
+<li><a href="https://developers.line.biz/en/reference/messaging-api/#webhooks">LINE API Reference - Webhooks</a></li>
+<li><a href="https://developers.line.biz/en/reference/messaging-api/#send-push-message">LINE API Reference - Push Message</a></li>
+<li><a href="https://developers.line.biz/en/docs/messaging-api/sending-messages/">LINE API Reference - Send Message Object (Text, Image, Sticker, etc.)</a></li>
 </ul>
 <h5 id="additional-references">Additional References</h5>
 <ul>
@@ -562,7 +672,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  January 23, 2020 
+          <p>This page was last updated:  April 29, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -849,6 +959,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

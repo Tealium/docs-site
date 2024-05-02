@@ -34,7 +34,7 @@
 <script>
 var utag_data = {
     site_section  : "server-side-connectors",
-    reading_time  : "6",
+    reading_time  : "7",
     site_language : "en",
     tealium_event : "page_view"
 }
@@ -251,6 +251,7 @@ var utag_data = {
         <a href="/server-side-connectors/new-relic-mobile-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".new-relic-mobile-connector">New Relic Mobile</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/new-relic-mobile-crash-tracking-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".new-relic-mobile-crash-tracking-connector">New Relic Mobile Crash Tracking</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/nextdoor-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nextdoor-connector">Nextdoor</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/nine-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".nine-audience-match-connector">Nine Audience Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/onesignal-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".onesignal-connector">OneSignal</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/ontraport-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ontraport-connector">Ontraport</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/optimizely-data-platform-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".optimizely-data-platform-connector">Optimizely Data Platform</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -454,31 +455,61 @@ var utag_data = {
 <tbody>
 <tr>
 <td>Customer ID</td>
-<td><ul><li>Select customer account ID.</li><li>Available options reflect accessible customer accounts for authenticated user.</li></ul></td>
+<td>(Required) Select the customer account ID. Available options reflect accessible customer accounts for authenticated user.</td>
 </tr>
 <tr>
 <td>Conversion Action</td>
-<td><ul><li>Select existing conversion action.</li><li>For more information, see <a href="https://support.google.com/google-ads/answer/1722022">Google Ads Conversion Tracking</a>.</li></ul></td>
+<td>(Required) Select existing conversion action. For more information, see <a href="https://support.google.com/google-ads/answer/1722022">Google Ads Conversion Tracking</a>.</td>
 </tr>
+</tbody>
+</table>
+<h4 id="conversion-data-parameters">Conversion Data parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Caller ID</td>
-<td><ul><li>Required</li><li>The called ID from which this call was placed.</li><li>Caller ID is expected in E.164 format and preceded by the plus (<code>+</code>) character.</li><li>Example: <code>+16502531234</code></li></ul></td>
+<td>(Required) The caller ID from which this call was placed. Caller ID is expected in E.164 format and preceded by the plus (<code>+</code>) character. For example, <code>+16502531234</code></td>
 </tr>
 <tr>
 <td>Call Start Datetime</td>
-<td><ul><li>Required</li><li>The date time at which the call occurred.</li><li>The timezone must be specified.</li><li>The format is <strong>yyyy-mm-dd hh:mm:ss</strong></li><li>Example: <code>2020-01-01 12:32:45-8:00</code>.</li></ul></td>
+<td>(Required) The date and time at which the call occurred. The timezone must be specified. The format is <strong>yyyy-mm-dd hh:mm:ss</strong>. For example, <code>2020-01-01 12:32:45-8:00</code>.</td>
 </tr>
 <tr>
 <td>Conversion Datetime</td>
-<td><ul><li>Required</li><li>The date time at which the conversion occurred.</li><li>Must be after the call time.</li><li>The timezone must be specified.</li><li>The format is <strong>yyyy-mm-dd hh:mm:ss</strong></li><li>Example: <code>2020-01-01 12:32:45-8:00</code>.</li></ul></td>
+<td>(Required) The and date time at which the conversion occurred. This date and time must be after the call time. The timezone must be specified. The format is <strong>yyyy-mm-dd hh:mm:ss</strong> For example, <code>2020-01-01 12:32:45-8:00</code>.</td>
 </tr>
 <tr>
 <td>Conversion Value</td>
-<td><ul><li>The value of the conversion for the advertiser.</li></ul></td>
+<td>The value of the conversion for the advertiser.</td>
 </tr>
 <tr>
 <td>Currency Code</td>
-<td><ul><li>Currency associated with the conversion value.</li><li>This is the ISO 4217 3-character currency code.</li><li>Examples: <code>USD</code>, <code>EUR</code></li></ul></td>
+<td>The currency associated with the conversion value. This is the ISO 4217 3-character currency code. For example,<code>USD</code> or <code>EUR</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="optional-parameters">Optional parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conversion Action Override</td>
+<td>Provide a conversion action ID to override the <strong>Conversion Action</strong> parameter. This field lets you use EventStream variables to populate the <strong>Conversion Action ID</strong> parameter.</td>
+</tr>
+<tr>
+<td>Custom Variables</td>
+<td>The custom variables associated with this conversion. For more information, see: <a href="https://developers.google.com/google-ads/api/reference/rpc/v8/CustomVariable">Custom Variable</a>.</td>
 </tr>
 <tr>
 <td>Ad User Data Consent</td>
@@ -498,71 +529,112 @@ var utag_data = {
 <tbody>
 <tr>
 <td>Customer ID</td>
-<td><ul><li>Select customer account ID.</li><li>Available options reflect accessible customer accounts for authenticated user.</li></ul></td>
+<td>Select the customer account ID. Available options reflect accessible customer accounts for authenticated user.</td>
 </tr>
 <tr>
 <td>Conversion Action</td>
-<td><ul><li>Select existing conversion action.</li><li>For more information, see: <a href="https://support.google.com/google-ads/answer/1722022">Google Ads Conversion Tracking</a>.</li></ul></td>
+<td>Select the existing conversion action. For more information, see <a href="https://support.google.com/google-ads/answer/1722022">Google Ads Conversion Tracking</a>.</td>
 </tr>
+</tbody>
+</table>
+<h4 id="conversion-data-parameters-1">Conversion Data parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Google Click ID</td>
-<td><ul><li>Required</li><li>The Google Click ID (<code>gclid)</code> associated with this conversion.</li></ul></td>
+<td>(Required) The Google click ID (<code>gclid)</code> associated with this conversion.</td>
 </tr>
 <tr>
 <td>Conversion Datetime</td>
-<td><ul><li>Required</li><li>The date time at which the conversion occurred.</li><li>Must be after the click time.</li><li>The timezone must be specified.</li><li>The format is <strong>yyyy-mm-dd hh:mm:ss</strong></li><li>Example <code>2020-01-01 12:32:45-8:00</code>.</li></ul></td>
+<td>(Required) The date and time at which the conversion occurred. This date and time must be after the call time. The timezone must be specified. The format is <strong>yyyy-mm-dd hh:mm:ss</strong>For example, <code>2020-01-01 12:32:45-8:00</code>.</td>
 </tr>
 <tr>
 <td>Conversion Value</td>
-<td><ul><li>The value of the conversion for the advertiser.</li></ul></td>
+<td>The value of the conversion for the advertiser.</td>
 </tr>
 <tr>
 <td>Currency Code</td>
-<td><ul><li>Currency associated with the conversion value.</li><li>This is the ISO 4217 3-character currency code.</li><li>Examples: <code>USD</code>, <code>EUR</code></li></ul></td>
+<td>Currency associated with the conversion value. This is the ISO 4217 3-character currency code. For example, <code>USD</code> or <code>EUR</code>.</td>
 </tr>
 <tr>
 <td>Order ID</td>
-<td><ul><li>Required</li><li>The Order ID associated with the conversion.</li><li>An Order ID can only be used for one conversion per conversion action.</li></ul></td>
+<td>(Required) The order ID associated with the conversion. An order ID can only be used for one conversion per conversion action.</td>
 </tr>
 <tr>
 <td>External Attribution Credit</td>
-<td><ul><li>Represents the fraction of the conversion that is attributed to the Google Ads click.</li></ul></td>
+<td>This parameter represents the fraction of the conversion that is attributed to the Google Ads click.</td>
 </tr>
 <tr>
 <td>External Attribution Model</td>
-<td><ul><li>Specified the attribution model name.</li><li>For more information, see <a href="https://developers.google.com/google-ads/api/reference/rpc/v3/ClickConversion">Google Ads API Click Conversion</a>.</li></ul></td>
+<td>The specified attribution model name. For more information, see <a href="https://developers.google.com/google-ads/api/reference/rpc/v3/ClickConversion">Google Ads API Click Conversion</a>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="optional-parameters-1">Optional parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conversion Action Override</td>
+<td>Provide a conversion action ID to override the <strong>Conversion Action</strong> parameter. This field lets you use EventStream variables to populate the <strong>Conversion Action ID</strong> parameter.</td>
 </tr>
 <tr>
-<td>Merchant ID</td>
-<td><ul><li>The Merchant Center ID where the items are uploaded.</li></ul></td>
-</tr>
-<tr>
-<td>Feed Country Code</td>
-<td><ul><li>The country code associated with the feed where the items are uploaded.</li></ul></td>
-</tr>
-<tr>
-<td>Feed Language Code</td>
-<td><ul><li>The language code associated with the feed where the items are uploaded.</li></ul></td>
-</tr>
-<tr>
-<td>Local Transaction</td>
-<td><ul><li>Sum of all transaction level discounts, such as free shipping and coupon discounts for the whole cart.</li><li>The currency code is the same as that in the <code>ClickConversion</code> message.</li></ul></td>
-</tr>
-<tr>
-<td>Product ID</td>
-<td><ul><li>The shopping ID of the item.</li><li>Must be equal to the Merchant Center product identifier.</li><li>Use an array to add multiple items.</li><li>Array type attributes must be of equal length.</li></ul></td>
-</tr>
-<tr>
-<td>Quantity</td>
-<td><ul><li>Number of items sold.</li><li>Use an array to add multiple items.</li><li>Array type attributes must be of equal length.</li></ul></td>
-</tr>
-<tr>
-<td>Unit Price</td>
-<td><ul><li>Unit price excluding tax, shipping, and any transaction level discounts.</li><li>The currency code is the same as that in the <code>ClickConversion</code> message.</li><li>Use an array to add multiple items.</li><li>Array type attributes must be of equal length.</li></ul></td>
+<td>Custom Variables</td>
+<td>The custom variables associated with this conversion. For more information, see: <a href="https://developers.google.com/google-ads/api/reference/rpc/v8/CustomVariable">Custom Variable</a>.</td>
 </tr>
 <tr>
 <td>Ad User Data Consent</td>
 <td>Consent for ad user data. The default value is <code>GRANTED</code>. Valid values are <code>GRANTED</code> and <code>DENIED</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="cart-data-parameters">Cart Data parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Merchant ID</td>
+<td>The Merchant Center ID where the items are uploaded.</td>
+</tr>
+<tr>
+<td>Feed Country Code</td>
+<td>The country code associated with the feed where the items are uploaded.</td>
+</tr>
+<tr>
+<td>Feed Language Code</td>
+<td>The language code associated with the feed where the items are uploaded.</td>
+</tr>
+<tr>
+<td>Local Transaction</td>
+<td>The sum of all transaction level discounts, such as free shipping and coupon discounts for the whole cart. The currency code is the same as that in the <code>ClickConversion</code> message.</td>
+</tr>
+<tr>
+<td>Product ID</td>
+<td>The shopping ID of the item. This value must be equal to the Merchant Center product identifier. Use an array to add multiple items. Array type attributes must be of equal length.</td>
+</tr>
+<tr>
+<td>Quantity</td>
+<td>The number of items sold. Use an array to add multiple items. Array type attributes must be of equal length.</td>
+</tr>
+<tr>
+<td>Unit Price</td>
+<td>The unit price excluding tax, shipping, and any transaction level discounts. The currency code is the same as that in the <code>ClickConversion</code> message. Use an array to add multiple items. Array type attributes must be of equal length.</td>
 </tr>
 </tbody>
 </table>
@@ -579,7 +651,7 @@ var utag_data = {
 <tbody>
 <tr>
 <td>Conversion Action</td>
-<td>Select existing conversion action.<br> For more information, see: <a href="https://support.google.com/google-ads/answer/7686447">Google Ads Conversion Adjustments</a>.</td>
+<td>Select existing conversion action. For more information, see <a href="https://support.google.com/google-ads/answer/7686447">Google Ads Conversion Adjustments</a>.</td>
 </tr>
 <tr>
 <td>Restatement Value</td>
@@ -587,7 +659,7 @@ var utag_data = {
 </tr>
 <tr>
 <td>Restatement Date Time</td>
-<td>(Required) The date time at which the adjustment occurred. The format is <strong>yyyy-mm-dd hh:mm:ss+|-hh:mm</strong>. Date attributes will be converted to the format Google expects.</td>
+<td>(Required) The date and time at which the adjustment occurred. The format is <strong>yyyy-mm-dd hh:mm:ss+|-hh:mm</strong>. Date attributes will be converted to the format Google expects.</td>
 </tr>
 <tr>
 <td>Order ID</td>
@@ -599,11 +671,26 @@ var utag_data = {
 </tr>
 <tr>
 <td>Conversion Date Time</td>
-<td>If used, should be in the format <strong>yyyy-mm-dd hh:mm:ss+|-hh:mm</strong>. Date attributes will be converted to the format Google expects.</td>
+<td>The date and time of the conversion. The format is <strong>yyyy-mm-dd hh:mm:ss+|-hh:mm</strong>. Date attributes will be converted to the format Google expects.</td>
 </tr>
 <tr>
 <td>Currency Code</td>
 <td>The currency of the restated value. If not provided, then the default currency from the conversion action is used.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="optional-parameter">Optional parameter</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conversion Action Override</td>
+<td>Provide a conversion action ID to override the <strong>Conversion Action</strong> parameter. This field lets you use EventStream variables to populate the <strong>Conversion Action ID</strong> parameter.</td>
 </tr>
 </tbody>
 </table>
@@ -620,11 +707,11 @@ var utag_data = {
 <tbody>
 <tr>
 <td>Conversion Action</td>
-<td>Select existing conversion action.<br> For more information, see: <a href="https://support.google.com/google-ads/answer/7686447">Google Ads Conversion Adjustments</a>.</td>
+<td>Select existing conversion action. For more information, see <a href="https://support.google.com/google-ads/answer/7686447">Google Ads Conversion Adjustments</a>.</td>
 </tr>
 <tr>
 <td>Retraction Date Time</td>
-<td>(Required) The date time at which the retraction occurred. The format is <strong>yyyy-mm-dd hh:mm:ss+|-hh:mm</strong>. Date attributes will be converted to the format Google expects.</td>
+<td>(Required) The date and time at which the retraction occurred. The format is <strong>yyyy-mm-dd hh:mm:ss+|-hh:mm</strong>. Date attributes will be converted to the format Google expects.</td>
 </tr>
 <tr>
 <td>Order ID</td>
@@ -636,7 +723,11 @@ var utag_data = {
 </tr>
 <tr>
 <td>Conversion Date Time</td>
-<td>If used, should be in the format <strong>yyyy-mm-dd hh:mm:ss+|-hh:mm</strong>. Date attributes will be converted to the format Google expects.</td>
+<td>This parameter must be in the format <strong>yyyy-mm-dd hh:mm:ss+|-hh:mm</strong>. Date attributes will be converted to the format Google expects.</td>
+</tr>
+<tr>
+<td>Conversion Action Override</td>
+<td>Provide a conversion action ID to override the <strong>Conversion Action</strong> parameter. This field lets you use EventStream variables to populate the <strong>Conversion Action ID</strong> parameter.</td>
 </tr>
 </tbody>
 </table>
@@ -645,8 +736,8 @@ var utag_data = {
 <p>Consider one of the following strategies to use the connector in this manner:</p>
 <ul>
 <li>Upload historical conversion data using a file import or the Collect API.</li>
+<li>Send the data to a Google Sheet and manually upload the data to Google Ads.</li>
 </ul>
-<p>Send the data to a Google Sheet and manually upload the data to Google Ads.</p>
 
 </div>
 
@@ -707,7 +798,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 9, 2024 
+          <p>This page was last updated:  April 29, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -995,6 +1086,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
