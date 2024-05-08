@@ -421,12 +421,12 @@ var utag_data = {
 <div class="prose nested-links" id="prose">
   <h2 id="requirements">Requirements</h2>
 <ul>
-<li>Contact your account manager to enable this functionality for your account.</li>
+<li>Contact your account manager to enable this tag for your account.</li>
 </ul>
 <h2 id="how-it-works">How it works</h2>
-<p>The Tealium Collect tag captures a mix of predefined data and dynamic data from the page. Using this tag, there is no need for mapping, the tag automatically sends everything set in <code>utag.data</code> or any data passed to a tracking call.</p>
-<p>See the <a href="/server-side/data-storage/audiencestore-eventstore/eventstore-data-guide/">EventStore Data Guide</a> for a full list of collected variables.</p>
-<p>Learn more about <a href="/server-side/live-events-feeds/about-live-events/">Live Events</a> to see the incoming data from the Tealium Collect tag.</p>
+<p>The Tealium Collect tag captures a mix of predefined data and dynamic data from the page. Using this tag, there is no need for mapping; the tag automatically sends everything set in <code>utag.data</code> or any data passed to a tracking call.</p>
+<p>For a full list of collected variables, see <a href="/server-side/data-storage/audiencestore-eventstore/eventstore-data-guide/">EventStore data guide</a>.</p>
+<p>To see the incoming data from the Tealium Collect tag, see <a href="/server-side/live-events-feeds/about-live-events/">Live Events</a>.</p>
 <p>Use the Tealium Collect tag with the following features:</p>
 <ul>
 <li><strong>Reduce pixel requests with EventStream</strong><br>
@@ -437,7 +437,7 @@ Use this tag with AudienceStream to identify and take action on your visitors.</
 The event data coming from this tag can also be made available to DataAccess, where it can be analyzed using Business Intelligence (BI) tools of your choice.</li>
 <li><strong>Enrich your data layer</strong><br>
 Use the data enrichment setting to add visit and visitor attributes from AudienceStream to your data layer.<br>
-Learn more about <a href="/server-side/attributes/data-layer-enrichment/enable/">data layer enrichment</a>.</li>
+To learn more, see (<a href="/server-side/attributes/data-layer-enrichment/enable/">Enable Data Layer Enrichment</a>).</li>
 </ul>
 <h2 id="tag-tips">Tag tips</h2>
 <ul>
@@ -467,9 +467,9 @@ Learn more about <a href="/server-side/attributes/data-layer-enrichment/enable/"
 <li>Enables AudienceStream data layer enrichment.</li>
 <li>Choose the frequency for enriching your data layer with AudienceStream data.
 <ul>
-<li><strong>None</strong> (default) – enrichment does not occur.</li>
-<li><strong>Infrequent</strong>– (recommended) enrichment occurs once per session.</li>
-<li><strong>Frequent</strong>– enrichment occurs on every page load.</li>
+<li><strong>None</strong>: (default) enrichment does not occur.</li>
+<li><strong>Infrequent</strong>: (recommended) enrichment occurs once per session.</li>
+<li><strong>Frequent</strong>: enrichment occurs on every page load.</li>
 </ul>
 </li>
 </ul>
@@ -483,7 +483,7 @@ Learn more about <a href="/server-side/attributes/data-layer-enrichment/enable/"
 </li>
 <li><strong>Tealium Data Source Key</strong> (Optional)
 <ul>
-<li>The unique identifier of the data source you are tracking through Customer Data Hub.</li>
+<li>The unique identifier of the data source you are tracking through the Customer Data Hub.</li>
 <li>Default: (not set)</li>
 </ul>
 </li>
@@ -502,8 +502,8 @@ Learn more about <a href="/server-side/attributes/data-layer-enrichment/enable/"
 </li>
 <li><strong>Use SendBeacon</strong>
 <ul>
-<li>Set to <strong>true</strong> to use <code>navigator.sendBeacon()</code> to send tracking calls.</li>
-<li>Set to <strong>false</strong> to use the legacy browser method <code>XMLHttpRequest</code> to send tracking calls.</li>
+<li>Set to <code>true</code> to use <code>navigator.sendBeacon()</code> to send tracking calls.</li>
+<li>Set to <code>false</code> to use the legacy browser method <code>XMLHttpRequest</code> to send tracking calls.</li>
 <li>SendBeacon is intended for small amounts of data and has a data size limit of 64Kb in most browsers. For more infomrmation, see <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon">Navigator:sendBeacon() method</a>.</li>
 <li>Default: <code>true</code></li>
 </ul>
@@ -535,15 +535,16 @@ Learn more about <a href="/server-side/attributes/data-layer-enrichment/enable/"
 </li>
 <li>Filter data sent to the the Tealium Collect endpoint using the following settings:
 <ul>
-<li><strong>Send UDO Variables</strong> - The default is <code>true</code>.</li>
-<li><strong>Send Cookie Values</strong> - The default is <code>true</code>.</li>
-<li><strong>Send Meta Values</strong> - The default is <code>true</code>.</li>
-<li><strong>Send QP Values</strong> - The default is <code>true</code>.</li>
-<li><strong>Send Session Storage Variables</strong> - The default is <code>false</code>.</li>
-<li><strong>Send LocalStorage Variables</strong> - The default is <code>false</code>.</li>
+<li><strong>Send UDO Variables</strong>: The default is <code>true</code>.</li>
+<li><strong>Send Cookie Values</strong>: The default is <code>true</code>.</li>
+<li><strong>Send Meta Values</strong>: The default is <code>true</code>.</li>
+<li><strong>Send QP Values</strong>: The default is <code>true</code>.</li>
+<li><strong>Send Session Storage Variables</strong>: The default is <code>false</code>.</li>
+<li><strong>Send LocalStorage Variables</strong>: The default is <code>false</code>.</li>
 </ul>
 </li>
 </ul>
+<h2 id="best-practices">Best practices</h2>
 <p>Apply the following best practices in your implementation:</p>
 <ul>
 <li>To prioritize third-party client-side tags, position this tag last in your list of tags to allow them to run first.</li>
@@ -554,9 +555,9 @@ Learn more about <a href="/server-side/attributes/data-layer-enrichment/enable/"
 <p>For first-party CNAME of the Tealium visitor service endpoint used for data layer enrichment, use a JavaScript Code extension scoped to the Tealium Collect tag to override the URL with the following code:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">visitor_service_override</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://visitor-service.example.co.uk&#34;</span>;
 </span></span></code></pre></div><h2 id="load-rules">Load rules</h2>
-<p>The best practice is to use the <strong>All Pages</strong> load rule to load this tag on all pages.</p>
+<p>The best practice is to use the <strong>All Pages and Events</strong> load rule to load this tag on all pages.</p>
 <h3 id="working-with-trace">Working with trace</h3>
-<p>If you use a more restrictive load rule, and you&rsquo;ve noticed that you can&rsquo;t end a session in the trace tool, then a custom load rule is needed to allow the special event triggered by trace.</p>
+<p>If you use a more restrictive load rule and you&rsquo;ve noticed that you can&rsquo;t end a session in the trace tool, a custom load rule is needed to allow the special event triggered by trace.</p>
 <p>Create the following load rule and assign it to the Tealium Collect tag using the <strong>Match Any Rule</strong> option.</p>
 <pre tabindex="0"><code>ut.event equals (ignore case) kill_visitor_session
 </code></pre><figure><a class="slb" href="/images/client-side-tags/tealium-collect-load-rule-for-trace.png"><img src="/images/client-side-tags/tealium-collect-load-rule-for-trace.png"
@@ -571,6 +572,13 @@ Learn more about <a href="/server-side/attributes/data-layer-enrichment/enable/"
 Learn more about the <a href="/platforms/getting-started-mobile/server-side/#native-module">native Collect module for mobile</a>.</li>
 <li>When using the <a href="/platforms/getting-started-mobile/server-side/#javascript-tag">Tealium Collect tag with the Tag Management module for mobile</a>, ensure that the <strong>Tealium Collect</strong> option in the <a href="/iq-tag-management/profiles/creating-a-mobile-profile/#configure-mobile-settings">mobile publish settings</a> is off to avoid duplicate tracking.</li>
 </ul>
+<h2 id="legacy-cookies">Legacy cookies</h2>
+<p>For compatibility reasons, the Tealium Collect tag creates the following legacy cookies:</p>
+<ul>
+<li><code>utag_main_dc_event</code>: a duplicate of the <code>utag_main__se</code> Session Event cookie.</li>
+<li><code>utag_main_dc_visit</code>: a duplicate of the <code>utag_main__sn</code> Session Number cookie.</li>
+</ul>
+<p>For more information about these cookies, see <a href="/platforms/javascript/data-layer/#cookies">Data Layer: Cookies</a>.</p>
 
 </div>
 
@@ -631,7 +639,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 14, 2022 
+          <p>This page was last updated:  May 3, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -649,10 +657,12 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-tips" href="javascript:void(0)">Tag tips</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-configuration" href="javascript:void(0)">Tag configuration</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#best-practices" href="javascript:void(0)">Best practices</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#advanced" href="javascript:void(0)">Advanced</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#load-rules" href="javascript:void(0)">Load rules</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#working-with-trace" href="javascript:void(0)">Working with trace</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#implementing-with-mobile" href="javascript:void(0)">Implementing with mobile</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#legacy-cookies" href="javascript:void(0)">Legacy cookies</a></li>
               </nav>
   </aside></nav>
 
