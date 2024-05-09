@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     
+    <title>ハイブリッドアプリでのアナリティクスセッションの同期方法 | リモートコマンド | Tealium開発者ドキュメント</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+     <meta name="generator" content="Hugo 0.111.3">
+
+      
+        <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+      
+
+    
+    
+      
+        <link rel="alternate" hreflang="en" href="https://docs.tealium.com/platforms/remote-commands/sync-analytics-hybrid-apps/">
+      
+    
+      
+    
+    
+
+     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
+  </head>
+  <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
+      
+        
+<script>
+var utag_data = {
+    site_section  : "platforms",
+    reading_time  : "2",
+    site_language : "ja",
+    tealium_event : "page_view"
+}
+</script>
+
+<script>
+ (function(a,b,c,d){
+    a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+  })();
+</script>
+
+      
+
+    
+<nav class="w-100 sticky-t bg-primary-color-light bb b--light-gray dpn" role="navigation">
+
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
+
+    <div class="lh-solid ml0-ns mr0 mr4-l mv3 pl15 dib db-ns">
+      <a href="/ja/"><img src="/images/icons/tealium-documentation-logo-color.svg" class="v-mid dib" width="186" height="31"></a>
+    </div>
+    
+    <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-ns">
+      <li class="f5 dib">
+         <i class="fa fa-globe" style="color: rgba(255, 255, 255, .6)" aria-hidden="true"></i>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+          <a href="/platforms/remote-commands/sync-analytics-hybrid-apps/" class="dim link mid-gray">English</a>
+        
+      
+        
+      
+      </li>
+            
+    </ul>
+
+  </div>
+  
+</nav>
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 pr4">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-hidden overflow-y-scroll dn db-ns sticky-l pt3 pl125" style="width:280px;">
+<nav class="side-nav f6" role="navigation">
+  <ul class="list pa0 mt0 mb1">
+  
+    <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/ja/platforms" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>プラットフォーム</a></li>
+  
+  </ul>
+  <ul class="list pa0" data-nav-section="remote-commands"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><span class="pb2">リモートコマンド</span>
+        <ul data-level="1" class="remote-commands desktopmenu animated fadeIn list pl0 mt2"><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/remote-commands/how-it-works/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-how-it-works">仕組みについて</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/remote-commands/custom-commands/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-custom-commands">カスタムコマンド</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/remote-commands/consent-management/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-consent-management">同意管理</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/remote-commands/json-file/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-json-file">JSONファイル</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/remote-commands/vendor-integrations/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-vendor-integrations">ベンダー統合</a></li><li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/remote-commands/sync-analytics-hybrid-apps/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".remote-commands-sync-analytics">ハイブリッドアプリでのセッションの同期</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".remote-commands-integrations">統合</a>
+        <ul class="pl2  remote-commands-integrations desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/adjust/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-adjust">Adjust</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/appsflyer/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-appsflyer">AppsFlyer</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/airship/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-airship">エアシップ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/branch/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-branch">Branch</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/braze/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-braze">Braze</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/contentsquare/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-contentsquare">Contentsquare</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/facebook/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-facebook">Facebook</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/firebase/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-firebase">Firebase</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/kochava/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-kochava">Kochava</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/fullstory/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-fullstory">FullStory</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/skadnetwork/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-skadnetwork">SKAdNetwork</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/platforms/remote-commands/integrations/usabilla/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".remote-commands-usabilla">Usabilla</a></li></ul>
+      </li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/remote-commands/release-notes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".release-notes">リリースノート</a></li></ul></li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
+      <div class="documentation-copy ph4">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+    
+  
+  <li class="mr1 f7 lvl0"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/">ホーム</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/platforms/">プラットフォーム</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl2"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/platforms/remote-commands/">リモートコマンド</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mt30 mb3">ハイブリッドアプリでのアナリティクスセッションの同期方法</h1>
+</header>
+
+<div class="mv2 mid-gray fn w-100">
+  
+
+  
+    <p class="f4 fw3 lh-copy">
+      このドキュメントでは、ハイブリッドアプリでセッションを同期する方法について説明します。
+    </p>
+  
+</div>
+
+<div class="prose nested-links" id="prose">
+  <h2 id="概要">概要</h2>
+<p>ハイブリッドアプリは、ネイティブコード（iOSの場合はObjective-C、Androidの場合はJavaなど）で書かれたコンポーネントと、HTMLとJavaScriptで書かれた1つ以上のWebビューコンポーネントを組み合わせたものです。一般的な使用例は、ネイティブコードのコンポーネントで商品の閲覧を行い、Webビューコンポーネントでチェックアウトや支払い処理を行うショッピングアプリです。</p>
+<h3 id="問題">問題</h3>
+<p>ハイブリッドアプリのアナリティクスベンダーにとって、ネイティブコンポーネントとWebビューコンポーネントの間でセッションを追跡することは一般的な課題です。ベンダーが両方のコンポーネントに統合されていても、訪問者はそれぞれに別々のセッション識別子が割り当てられ、ベンダーのレポートではセッション数が過大評価されます。</p>
+<p>この問題を解決するには、ネイティブコードとWebビューコンポーネントで情報を共有する必要があります。これらのコンポーネント間で情報を共有するためには、ネイティブコードによってロードされるWebビューのURLにクエリ文字列パラメータを追加する必要があります。このパラメータには、ネイティブコードとWebビューコンポーネントの両方で使用される共有セッションIDが含まれます。</p>
+<p>このセッションIDの開始と共有は、Tealium iQの設定とネイティブアプリのカスタムコードを使用して行われます。カスタムリモートコマンドタグは、非表示のWebビューとネイティブコードの間でセッションIDを共有するために使用され、それが可視なWebビューからロードされるウェブサイトに渡されます。</p>
+<h3 id="解決策">解決策</h3>
+<p>この記事では、Google Analyticsを使用した解決策を示しますが、セッション管理をサポートする他のベンダーにも適用できます。Google Analyticsの解決策では、Tealium iQ SDKでセッションID（<code>clientId</code>）を取得し（非表示のWebビューで生成され、リモートコマンドを介してネイティブコードに渡される）、クエリ文字列パラメータを介してハイブリッドアプリのWebビューコンポーネントにセッションIDを渡し、Tealium iQを使用してセッションIDをWebビュー内のウェブサイトで実行されるGoogle Analyticsに戻します。この例では、主にAndroidに焦点を当てますが、iOSのプロセスも同じです。</p>
+<p>この解決策の要件は次のとおりです。</p>
+<ol>
+<li>ネイティブコード
+<ul>
+<li><strong>カスタムリモートコマンド</strong><br>
+ネイティブコードで定義されたカスタムコマンドで、カスタムリモートコマンドタグによって呼び出されることができます。これにより、非表示のWebビューがセッションIDをネイティブコードに渡すことができます。</li>
+<li><strong>Webビューのクエリ文字列パラメータ</strong><br>
+ハイブリッドアプリのWebビューコンポーネントをロードするURLに、セッションIDが含まれるクエリ文字列パラメータを追加します。</li>
+</ul>
+</li>
+<li>モバイルアプリ用のiQプロファイル<br>
+ネイティブアプリを管理するプロファイルには、次の設定が必要です。
+<ul>
+<li><strong>カスタムリモートコマンドタグ</strong> - 非表示のWebビューとネイティブアプリコードの間の通信を容易にするタグ。</li>
+<li><code>session_id</code> - カスタムリモートコマンドタグからネイティブコードに渡されるベンダーセッションIDを格納するUDO変数。</li>
+<li><strong>JavaScriptコード拡張</strong> - ベンダーから現在のセッションIDを取得し、それをカスタムリモートコマンドタグに渡すためのJavaScriptコード。</li>
+</ul>
+</li>
+<li>モバイルWeb用のiQプロファイル<br>
+ハイブリッドアプリのWebビューコンポーネントには、次のカスタマイズが必要です。
+<ul>
+<li><strong><code>session_id</code></strong> - WebビューのURLで使用されるクエリ文字列変数で、ネイティブコードからセッションIDを渡します。</li>
+<li><strong>カスタムJavaScript</strong> - セッションIDをベンダータグに渡すためのJavaScriptコード（拡張またはタグテンプレート）。</li>
+</ul>
+</li>
+</ol>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>この記事では、Android/iOS v5.0以降のTealiumを使用していることを前提としており、アプリを再デプロイする必要があります。</p>
+<p>以下は、ハイブリッドアプリの各コンポーネントに対する解決策の概要です。</p>
+<table style="border: 1px solid rgb(237, 237, 237) !important"><thead><tr><td colspan="4" style="text-align: center;"><strong>ハイブリッドアプリ</strong></td></tr></thead><tbody><tr ><th style="border: 1px solid rgb(237, 237, 237) !important;vertical-align: top; text-align: center;text-transform:uppercase;" class="bg-secondary" colspan="2">ネイティブコード<br>コンポーネント</th><td rowspan="3" style="vertical-align: top; text-align: center;border: 1px solid rgb(237, 237, 237) !important">ネイティブコードは、次のURLでWebビューをロードします：<br><code>&session_id=SESSION</code><p>&nbsp;</p></td><th style="vertical-align: top; text-align: center;text-transform:uppercase;" class="bg-secondary">Webビュー<br>コンポーネント</th></tr><tr><td style="vertical-align: top; text-align: center;">iQモバイルプロファイル<br>（非表示のWebビューで実行）</td><td style="border: 1px solid rgb(237, 237, 237) !important;vertical-align: top; text-align: center;">ネイティブコード</td><td style="vertical-align: top; text-align: center;">ウェブサイト用iQプロファイル</td></tr><tr><td style="vertical-align: top;"><p>カスタムリモートコマンド<code>syncSessionId</code>コマンドの設定</p><p>ベンダーからセッションIDを取得するJavaScriptコード拡張</p><p>セッションIDを渡すための<code>utag.link()</code>の呼び出し</p></td><td style="vertical-align: top;border: 1px solid rgb(237, 237, 237) !important"><p>syncSessionIdを同期するためのリモートコマンドのカスタムコード</p><p>セッションID変数をWebビューに渡すためのカスタムコード</p></td><td style="vertical-align: top;"><p>WebビューURLのクエリ文字列変数<code>session_id</code></p><p><code>session_id</code>のデータマッピングを持つベンダータグ</p></td></tr></tbody></table>
+<h2 id="実装">実装</h2>
+<h3 id="リモートコマンドの追加ネイティブコード">リモートコマンドの追加（ネイティブコード）</h3>
+<p><code>addRemoteCommand</code>メソッドを使用して、カスタムリモートコマンドタグが利用するための新しいコマンドを定義します。これにより、非表示のTealium Webビューがネイティブコード環境のTealiumライブラリにデータを渡すことができます。</p>
+<h4 id="androidjavaコード">Android（Javaコード）：</h4>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>このコードは完全に機能しますが、このタスクを達成するためのサンプルコードです。ご自身の判断で使用し、ライブアプリにデプロイする前に必ずテストしてください。</p>
+<ol>
+<li><code>syncSessionId</code>という新しいリモートコマンドを定義し、渡されたセッションIDの値を<code>sessionId</code>というネイティブ変数に格納します。このコードをTealiumの<code>init</code>ブロックに配置します（これは通常、ヘルパーファイルになります）：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Tealiumの初期化
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span> config <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">create</span><span style="color:#f92672">(</span>application<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 上記のconfigオブジェクトを使用して新しいTealiumインスタンスを作成します
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Tealium inst <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">createInstance</span><span style="color:#f92672">(</span>TEALIUM<span style="color:#960050;background-color:#1e0010">\</span>_INSTANCENAME<span style="color:#f92672">,</span> config<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// &#34;syncSessionId&#34;という名前の新しいRemoteCommandをTealiumに登録します
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>inst<span style="color:#f92672">.</span><span style="color:#a6e22e">addRemoteCommand</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> RemoteCommand<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;syncSessionId&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;セッションIDを同期します&#34;</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// onInvokeは、Tealium iQがコマンドをトリガーしたときに呼び出されます
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onInvoke</span><span style="color:#f92672">(</span>Response response<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// レスポンスオブジェクトを取得します
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        JSONObject resp <span style="color:#f92672">=</span> response<span style="color:#f92672">.</span><span style="color:#a6e22e">getRequestPayload</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// レスポンス内のキー&#34;sessionId&#34;の値をアプリケーションレベルの&#34;gaSessionId&#34;文字列変数に設定します
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// これは、Applicationクラスでこの共有変数を作成したことを前提としています。詳細については、サンプルアプリを参照してください。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        DemoApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">sessionId</span> <span style="color:#f92672">=</span> resp<span style="color:#f92672">.</span><span style="color:#a6e22e">optString</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;sessionId&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">});</span>
+</span></span></code></pre></div></li>
+<li>Webビューをカスタマイズして、ネイティブコードに格納されたセッション値をクエリ文字列パラメータ<code>session_id</code>として追加します。以下は、Webビューが作成され、セッションIDがクエリ文字列パラメータとして渡される例です：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WebviewActivity</span> <span style="color:#66d9ef">extends</span> AppCompatActivity <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCreate</span><span style="color:#f92672">(</span>Bundle savedInstanceState<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">onCreate</span><span style="color:#f92672">(</span>savedInstanceState<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        setContentView<span style="color:#f92672">(</span>R<span style="color:#f92672">.</span><span style="color:#a6e22e">layout</span><span style="color:#f92672">.</span><span style="color:#a6e22e">activity_webview</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        webview mywebview <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>webview<span style="color:#f92672">)</span> findViewById<span style="color:#f92672">(</span>R<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">.</span><span style="color:#a6e22e">webview</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        mywebview<span style="color:#f92672">.</span><span style="color:#a6e22e">clearCache</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        mywebview<span style="color:#f92672">.</span><span style="color:#a6e22e">getSettings</span><span style="color:#f92672">().</span><span style="color:#a6e22e">setJavaScriptEnabled</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        mywebview<span style="color:#f92672">.</span><span style="color:#a6e22e">loadUrl</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;https://solutions.tealium.net/hosted/cpr/mobile_ga_demo.html?session_id=&#34;</span> <span style="color:#f92672">+</span> DemoApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">sessionId</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+</ol>
+<h4 id="iosobjective-cコード">iOS（Objective-Cコード）</h4>
+<p>以下は、同じことをiOSで実現するために必要なObjective-Cコードの一部です。このコードにはWebビューの作成は含まれておらず、出発点として含まれています。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-objc" data-lang="objc"><span style="display:flex;"><span><span style="color:#75715e">// インスタンス名を置き換えてください
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Tealium <span style="color:#f92672">*</span>instanceHandle <span style="color:#f92672">=</span> [Tealium instanceForKey: <span style="color:#e6db74">@&#34;tealium&#34;</span>]; 
+</span></span><span style="display:flex;"><span>[instanceHandle addRemoteCommandID:<span style="color:#e6db74">@&#34;syncSessionId&#34;</span>
+</span></span><span style="display:flex;"><span>   description:<span style="color:#e6db74">@&#34;セッションIDを同期します&#34;</span>
+</span></span><span style="display:flex;"><span>   targetQueue:dispatch_get_main_queue()
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">// レスポンスは、Tealium iQで設定したマッピングから生成されます
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   responseBlock:<span style="color:#f92672">^</span>(TEALRemoteCommandResponse <span style="color:#f92672">*</span> _Nonnull response) {
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">// レスポンスオブジェクトからセッションIDを取得します
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       NSString <span style="color:#f92672">*</span>session_id <span style="color:#f92672">=</span> response.requestPayload[<span style="color:#e6db74">@&#34;sessionId&#34;</span>];
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">/* セッションIDを取得したので、後でWebビューを作成するときにアクセスできる場所に保存します。詳細については、Androidコードを参照してください */</span>
+</span></span><span style="display:flex;"><span>}<span style="color:#960050;background-color:#1e0010">\</span>];
+</span></span></code></pre></div><h3 id="カスタムリモートコマンドタグの追加モバイルweb用のiqプロファイル">カスタムリモートコマンドタグの追加（モバイルWeb用のiQプロファイル）</h3>
+<p>iQモバイルプロファイルでは、カスタムリモートコマンドタグを使用して、ネイティブコードで定義したリモートコマンドをトリガーします。このタグにデータマッピングを追加すると、リモートコマンドがそのデータを受け取ります。</p>
+<p>モバイルWeb用のiQプロファイルで以下の手順に従ってください。</p>
+<ol>
+<li>データレイヤーに次のUDO変数を追加します：<code>session_id</code></li>
+<li><strong>カスタムリモートコマンド</strong>タグを追加します：<br>
+<figure><a class="slb" href="/images/platforms/remote-commands/sync-analytics1.jpg"><img src="/images/platforms/remote-commands/sync-analytics1.jpg"/>
+    </a>
+</figure></li>
+<li><strong>コマンドID</strong>を<code>syncSessionId</code>（ネイティブコードで定義したリモートコマンドの名前）に設定します：<br>
+<figure><a class="slb" href="/images/platforms/remote-commands/sync-analytics2.jpg"><img src="/images/platforms/remote-commands/sync-analytics2.jpg"/>
+    </a>
+</figure></li>
+<li><code>session_id</code>を<code>sessionId</code>にマッピングするデータマッピングを追加します。<br>
+<figure><a class="slb" href="/images/platforms/remote-commands/sync-analytics3.jpg"><img src="/images/platforms/remote-commands/sync-analytics3.jpg"/>
+    </a>
+</figure></li>
+</ol>
+<h3 id="ベンダータグの追加モバイルアプリ用のiqプロファイル">ベンダータグの追加（モバイルアプリ用のiQプロファイル）</h3>
+<p>モバイルアプリのiQプロファイルでは、ベンダータグ（この例ではGoogle Analytics）を使用してセッションを開始し、<code>utag.link()</code>を呼び出してカスタムリモートコマンドタグにセッションIDの値を渡します。おそらく、ネイティブアプリのトラッキングの目的で既にこのタグをモバイルプロファイルに追加しているでしょう（多くの人気のあるアナリティクスタグはモバイル対応しています）。</p>
+<p>ベンダータグを追加して設定する手順は次のとおりです。</p>
+<ol>
+<li>ベンダータグを追加します（まだ追加していない場合）。</li>
+<li>ベンダータグ（Google Analyticsの場合）にスコープが設定されたJavaScriptコード拡張を追加します。以下はその内容です。<code>UID</code>をカスタムリモートコマンドタグのUIDに置き換えてください。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>window.<span style="color:#a6e22e">setTimeout</span>(<span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">// ベンダー固有: Google AnalyticsからセッションIDを取得します
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">tracker</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">ga</span>.<span style="color:#a6e22e">getByName</span>(<span style="color:#e6db74">&#39;tealium_0&#39;</span>); <span style="color:#75715e">// ページ上にGAトラッカーが1つしかない場合を想定しています
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">clientId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tracker</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;clientId&#39;</span>);
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">// カスタムリモートコマンドがトリガーされたトラッキングコール
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     <span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">link</span>({<span style="color:#a6e22e">session_id</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">clientId</span>}, <span style="color:#66d9ef">null</span>, [<span style="color:#e6db74">&#39;UID&#39;</span>])
+</span></span><span style="display:flex;"><span>}, <span style="color:#ae81ff">1000</span>);
+</span></span></code></pre></div></li>
+</ol>
+<p>この拡張は、タグがロードされるのに十分な時間を与えるために1秒待機し、ベンダーからセッションIDを取得します。その後、<code>utag.link()</code>を呼び出してカスタムリモートコマンドタグをトリガーし、パラメータとして<code>session_id</code>を渡します。その後、カスタムリモートコマンドタグはそのデータをリモートコマンド<code>syncSessionId</code>に渡し、ネイティブコードでそれを後で使用するために保存します。</p>
+<h3 id="ベンダータグの追加モバイルweb用のiqプロファイル">ベンダータグの追加（モバイルWeb用のiQプロファイル）</h3>
+<p>ハイブリッドアプリのWebビューコンポーネントでロードされるウェブサイト用のiQ Webプロファイル（Webプロファイル）では、セッションIDに使用されるクエリ文字列パラメータを検出し、その変数をベンダータグにマッピングします。</p>
+<p>セッションIDを同期するためにベンダータグを構成する手順は次のとおりです。</p>
+<ol>
+<li>ベンダータグを追加します（まだ追加していない場合）。</li>
+<li>クエリ文字列パラメータのタイプである<code>session_id</code>という名前の新しいデータレイヤー変数を追加します。</li>
+<li>ベンダータグに、<code>session_id</code>を<code>clientId</code>にマッピングするデータマッピングを追加します（Google Analyticsの場合）。</li>
+</ol>
+<p>以上で完了です。上記の手順に従った場合、アプリのWebビューはネイティブアプリと同じセッション識別子を受け取り、ユーザーはGoogle Analyticsの観点からは単一のセッションを使用することになります。</p>
+<h3 id="結果の検証">結果の検証</h3>
+<p>上記のコードをデプロイした後、Charles ProxyやFiddlerなどのローカルプロキシを使用して、アプリの出力を表示できます。<code>www.google-analytics.com</code>への送信ヒットを検査すると、ネイティブアプリからのヒットとWebビューコンポーネントからのヒットで<code>cid</code>パラメータが同じであることを確認できます。</p>
+<p>詳細については、<a href="/platforms/getting-started-mobile/troubleshooting/">モバイルインストールのトラブルシューティング</a>を参照してください。</p>
+<p>ネイティブアプリからの共有セッションID：</p>
+<figure><a class="slb" href="/images/platforms/remote-commands/sync-analytics4.png"><img src="/images/platforms/remote-commands/sync-analytics4.png"/>
+    </a>
+</figure>
+<p>インアプリのWebビューからの共有セッションID：</p>
+<figure><a class="slb" href="/images/platforms/remote-commands/sync-analytics5.png"><img src="/images/platforms/remote-commands/sync-analytics5.png"/>
+    </a>
+</figure>
+<p>Android Studioプロジェクトとしてサンプルアプリをダウンロード：<a href="/images/platforms/remote-commands/GAWebViewDemo.zip">GAwebviewDemo.zip</a>。</p>
+<h2 id="その他の解決策">その他の解決策</h2>
+<p>このガイドでは、Google AnalyticsのセッションIDを同期する方法について説明しましたが、同じ手順をWebtrends、Webtrekk、Adobe Analyticsなどの他のベンダーにも簡単に適用できます。ベンダーによっては、セッションIDを提供するAPIがない場合、クッキーの値を読み取る必要があるかもしれません。</p>
+<p>この記事で文書化された解決策は、アナリティクスツールの範囲外でアプリに他の情報を渡すためにも使用できます。カスタムリモートコマンドタグにさらにマッピングを追加することで、1回の呼び出しで複数のパラメータを渡すことも可能ですが、レスポンスオブジェクト内の追加のパラメータを処理するためにネイティブリモートコマンドコードを適応する必要があります。</p>
+
+</div>
+
+<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
+
+  
+  <a href="/ja/platforms/remote-commands/release-notes/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <section class="tl pr3">
+      <div>リリースノート</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"リリースノート"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
+  
+  
+</div><div class="di mr3">
+  
+  
+  <a href="/ja/platforms/remote-commands/vendor-integrations/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"ベンダー統合 "</title>
+      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+    </svg>
+   <section class="tr pl3">
+      <div>ベンダー統合</div>
+    </section>
+  </a>
+  
+
+</div></div>
+
+
+
+        <div class="bt-l b--moon-gray pv3 cb">
+          <div id="feedback_form" class="dpn">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">このページはお役にたちましたでしょうか？</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+はい</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+いいえ</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="ページの改善にご協力ください。" rows="4" cols="60"></textarea><button id="feedback_submit" class="db ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">フィードバックを送信</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">ご意見有難うございます。</p>
+  </div>
+</div>
+
+        </div>
+        <div class="bt-l b--moon-gray pt3 f6">
+          <p>最終更新日 ::  2024年April月11日
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
+      
+
+
+
+  <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">このページで</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A6%82%E8%A6%81" href="javascript:void(0)">概要</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%95%8F%E9%A1%8C" href="javascript:void(0)">問題</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A7%A3%E6%B1%BA%E7%AD%96" href="javascript:void(0)">解決策</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%AE%9F%E8%A3%85" href="javascript:void(0)">実装</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%AE%E8%BF%BD%E5%8A%A0%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%96%E3%82%B3%E3%83%BC%E3%83%89" href="javascript:void(0)">リモートコマンドの追加（ネイティブコード）</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%82%BF%E3%82%B0%E3%81%AE%E8%BF%BD%E5%8A%A0%E3%83%A2%E3%83%90%E3%82%A4%E3%83%ABweb%E7%94%A8%E3%81%AEiq%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB" href="javascript:void(0)">カスタムリモートコマンドタグの追加（モバイルWeb用のiQプロファイル）</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%E3%82%BF%E3%82%B0%E3%81%AE%E8%BF%BD%E5%8A%A0%E3%83%A2%E3%83%90%E3%82%A4%E3%83%AB%E3%82%A2%E3%83%97%E3%83%AA%E7%94%A8%E3%81%AEiq%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB" href="javascript:void(0)">ベンダータグの追加（モバイルアプリ用のiQプロファイル）</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%E3%82%BF%E3%82%B0%E3%81%AE%E8%BF%BD%E5%8A%A0%E3%83%A2%E3%83%90%E3%82%A4%E3%83%ABweb%E7%94%A8%E3%81%AEiq%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB" href="javascript:void(0)">ベンダータグの追加（モバイルWeb用のiQプロファイル）</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%B5%90%E6%9E%9C%E3%81%AE%E6%A4%9C%E8%A8%BC" href="javascript:void(0)">結果の検証</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E8%A7%A3%E6%B1%BA%E7%AD%96" href="javascript:void(0)">その他の解決策</a></li>
+              </nav>
+  </aside></nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-secondary ph1-ns relative w-100 pv4 bt b--light-gray" role="contentinfo">
+  <div class="center flex-ns flex-wrap justify-between mw9 w-90 dn db-ns">
+
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="nav-list footer-heading-title">
+          <div class="footer-logo-wrapper">
+            <img class="logo" src="https://tealium.com/wp-content/uploads/2015/12/tealium_footer_logo_01-206x49.png" alt="tealium_footer_logo_01">
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Support</li>
+<li class="mb2"><a class="link" href="https://university.tealium.com/">Tealium University</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/en/support/solutions">Knowledge Base</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/" target="">Support Desk</a></li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Company</li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/">Tealium.com</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/blog/">Blog</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="https://tealium.com/careers/">Careers</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+  <div class="dpn bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+<div class="globalmenu mobilemenu dn">
+    
+
+<ul class="list hidden dib ph0 ma0 scrolling-touch tc">
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ホーム
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/iq-tag-management/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          iQ Tag Management
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          EventStream API Hub
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/functions/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          機能
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-connect/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          データコネクト
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/predict/getting-started/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Predict ML
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-storage/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          DataAccess
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/client-side-tags/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          クライアントサイド タグ
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side-connectors/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          サーバーサイド コネクタ
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/platforms/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          プラットフォーム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/api/getting-started/auth/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          管理
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ファーマ向けティーリアム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ティーリアムアイデンティティパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/tech-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          テクノロジーパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          パートナー統合
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/glossary/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          用語集
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/early-access/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          早期アクセス
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/release-notes/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          リリースノート
+        </a>
+    </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+</div>
+
+
+<div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
+    <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+</ul>
+
+</div>
+
+
+
+
+<div class="flex dn-l justify-between">
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link mr2 white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".globalmenu">Site</button>
+
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".docsmenu">Section</button>
+
+</div>
+</div>
+
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'ドキュメントの検索',
+    buttonAriaLabel: 'ドキュメントの検索',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'クエリを消去',
+      resetButtonAriaLabel: 'クエリを消去',
+      cancelButtonText: 'キャンセル',
+      cancelButtonAriaLabel: 'キャンセル',
+    },
+    startScreen: {
+      recentSearchesTitle: '最近',
+      noRecentSearchesText: '最近の検索はありません',
+      saveRecentSearchButtonTitle: 'この検索を保存',
+      removeRecentSearchButtonTitle: 'この検索を履歴から削除',
+      favoriteSearchesTitle: 'お気に入り',
+      removeFavoriteSearchButtonTitle: 'このクエリをお気に入りから削除',
+    },
+    errorScreen: {
+      titleText: '結果を取得できません',
+      helpText: 'ネットワーク接続を確認してください',
+    },
+    footer: {
+      selectText: '選択する',
+      selectKeyAriaLabel: 'キーを入力してください',
+      navigateText: 'ナビゲートする',
+      navigateUpKeyAriaLabel: '上',
+      navigateDownKeyAriaLabel: '下',
+      closeText: '閉じる',
+      closeKeyAriaLabel: 'エスケープキー',
+      searchByText: '次で検索：',
+    },
+    noResultsScreen: {
+      noResultsText: '次の結果はありません：',
+      suggestedQueryText: '次で検索してみてください：',
+      reportMissingResultsText: 'このクエリで結果が返ってくるはずですか?',
+      reportMissingResultsLinkText: '連絡願います',
+    },
+  },
+};
+var default_sections = [
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
+docsearch({
+  container: '#docsearch',
+  appId: '2V5C0M31GH',
+  apiKey: '32b47c4ec1ccc76fbe18808c48f9d8b6',
+  indexName: 'tealium_jp',
+  placeholder: 'ドキュメントの検索',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    "analytics": true ,
+    "analyticsTags": ["site"]
+  },
+  insights: true,
+  debug: false ,
+  transformItems
+});
+</script>
+
+    
+
+  </body>
+</html>

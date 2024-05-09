@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     
+    <title>Omnichannel File Status APIエンドポイント | オムニチャネルファイルステータス | Tealium開発者ドキュメント</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+     <meta name="generator" content="Hugo 0.111.3">
+
+      
+        <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+      
+
+    
+    
+      
+        <link rel="alternate" hreflang="en" href="https://docs.tealium.com/api-v1/omnichannel-file-status/endpoints/">
+      
+    
+      
+    
+    
+
+     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
+  </head>
+  <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
+      
+        
+<script>
+var utag_data = {
+    site_section  : "api-v1",
+    reading_time  : "3",
+    site_language : "ja",
+    tealium_event : "page_view"
+}
+</script>
+
+<script>
+ (function(a,b,c,d){
+    a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+  })();
+</script>
+
+      
+
+    
+<nav class="w-100 sticky-t bg-primary-color-light bb b--light-gray dpn" role="navigation">
+
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
+
+    <div class="lh-solid ml0-ns mr0 mr4-l mv3 pl15 dib db-ns">
+      <a href="/ja/"><img src="/images/icons/tealium-documentation-logo-color.svg" class="v-mid dib" width="186" height="31"></a>
+    </div>
+    
+    <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-ns">
+      <li class="f5 dib">
+         <i class="fa fa-globe" style="color: rgba(255, 255, 255, .6)" aria-hidden="true"></i>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+          <a href="/api-v1/omnichannel-file-status/endpoints/" class="dim link mid-gray">English</a>
+        
+      
+        
+      
+      </li>
+            
+    </ul>
+
+  </div>
+  
+</nav>
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 pr4">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-hidden overflow-y-scroll dn db-ns sticky-l pt3 pl125" style="width:280px;">
+<nav class="side-nav f6" role="navigation">
+  <ul class="list pa0 mt0 mb1">
+  
+    <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/ja/" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>家</a></li>
+  
+  </ul>
+  <ul class="list pa0" data-nav-section="api-v1"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><a href="/ja/api-v1/" class="dib w-100 link text-color-primary hover-primary-color"><span class="pb2">Tealium API (V1)</span></a>
+        <ul data-level="1" class="api-v1 desktopmenu animated fadeIn list pl0 mt2"><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".api-v1-getting-started">はじめに</a>
+        <ul class="pl2  api-v1-getting-started desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/api-v1/getting-started/auth/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".api-v1-authentication">認証</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/api-v1/getting-started/request-format/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".api-v1-request-format">リクエスト形式</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".iq-revisions-v1">iQ リビジョン</a>
+        <ul class="pl2  iq-revisions-v1 desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/api-v1/iq-revisions/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".v1-about-iq-revisions-v1">概要</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/api-v1/iq-revisions/data-objects/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".v1-iq-revisions-objects-v1">データオブジェクト</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/api-v1/iq-revisions/endpoints/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".v1-iq-revisions-endpoints-v1">エンドポイント</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".hosted-data-layer-v1">ホストされたデータレイヤー</a>
+        <ul class="pl2  hosted-data-layer-v1 desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/api-v1/hosted-data-layer/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".v1-about-hosted-data-layer-v1">概要</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/api-v1/hosted-data-layer/data-objects/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".v1-hosted-data-layer-objects-v1">データオブジェクト</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/api-v1/hosted-data-layer/endpoints/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".v1-hosted-data-layer-endpoints-v1">エンドポイント</a></li></ul>
+      </li><li class="relative w-100 fw8 f5  active">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".omnichannel-file-status-v1">オムニチャネルファイルステータス</a>
+        <ul class="pl2 bl b--primary bw1 omnichannel-file-status-v1 desktopmenu animated fadeIn list "><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/api-v1/omnichannel-file-status/data-objects/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".v1-omnichannel-file-status-objects-v1">データオブジェクト</a></li><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/api-v1/omnichannel-file-status/endpoints/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".v1-omnichannel-file-status-endpoints-v1">エンドポイント</a></li></ul>
+      </li></ul></li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
+      <div class="documentation-copy ph4">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+    
+  
+  <li class="mr1 f7 lvl0"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/">ホーム</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/api-v1/">Tealium API</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl2"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/api-v1/omnichannel-file-status/">オムニチャネルファイルステータス</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mt30 mb3">Omnichannel File Status APIエンドポイント</h1>
+</header>
+
+<div class="mv2 mid-gray fn w-100">
+  
+
+  
+    <p class="f4 fw3 lh-copy">
+      ファイルの詳細なステータス情報を取得するために、ファイルインポートステータスGETリクエストを使用します。
+    </p>
+  
+</div>
+
+<div class="prose nested-links" id="prose">
+  <p>これは<a href="/ja/server-side/data-sources/file-import/about/">現在のTealium Omnichannel File Status API</a>の古いバージョンです。</p>
+<h2 id="ファイル数">ファイル数</h2>
+<p>アップロードされたファイルの数を返します。同じファイルプレフィックスを持つファイルにのみ適用されます。</p>
+<p>以下のクエリパラメータが使用されます：</p>
+<ul>
+<li><strong>filePrefix</strong> - Omnichannelファイル定義に一致するファイルプレフィックス、例：<code>sales_transactions</code>。</li>
+<li><strong>startDate</strong> - クエリするファイルの範囲の開始日、例：<code>2017-01-01T12:34Z</code>。</li>
+<li><strong>endDate</strong> - クエリするファイルの範囲の終了日、例：<code>2017-01-08T12:34Z</code>。</li>
+</ul>
+<pre tabindex="0"><code>GET /v1/omnichannel/accounts/{account}/profiles/{profile}/files/count?utk={utk token}&amp;filePrefix={file prefix}&amp;startDate={start date}&amp;endDate={end date}
+</code></pre><h3 id="curlリクエスト">cURLリクエスト</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cURL -i -b JSESSIONID<span style="color:#f92672">={</span>session_id<span style="color:#f92672">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  https://api.tealiumiq.com/v1/omnichannel/accounts/<span style="color:#f92672">{</span>account<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>profile<span style="color:#f92672">}</span>/files/count?utk<span style="color:#f92672">={</span>token<span style="color:#f92672">}</span>&amp;filePrefix<span style="color:#f92672">={</span>filePrefix<span style="color:#f92672">}</span>&amp;startDate<span style="color:#f92672">={</span>startDate<span style="color:#f92672">}</span>&amp;endDate<span style="color:#f92672">={</span>endDate<span style="color:#f92672">}</span>
+</span></span></code></pre></div><p class="tip"><i class="fa fa-info-circle"></i>ファイル数が50を超える場合は、日付範囲パラメータを絞り込んでください。</p>
+<h3 id="レスポンス例">レスポンス例</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;count&#34;</span> : <span style="color:#ae81ff">42</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="エラーメッセージ">エラーメッセージ</h3>
+<table>
+<thead>
+<tr>
+<th>エラータイプ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>400 Bad request</td>
+<td>* ファイル定義のプレフィックスが150文字を超えています<br> * ファイル定義のプレフィックス、開始日、または終了日が指定されていません<br> * 開始/終了日の形式が無効です<br> * 終了日が開始日よりも前です</td>
+</tr>
+</tbody>
+</table>
+<h2 id="単一ファイルのステータス">単一ファイルのステータス</h2>
+<pre tabindex="0"><code>GET /v1/omnichannel/accounts/{account}/profiles/{profile}/files/{fileName}?utk={utk token}
+</code></pre><h3 id="curlリクエスト-1">cURLリクエスト</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cURL -i -b JSESSIONID<span style="color:#f92672">={</span>session_id<span style="color:#f92672">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  https://api.tealiumiq.com/v1/omnichannel/accounts/<span style="color:#f92672">{</span>account<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>profile<span style="color:#f92672">}</span>/files/<span style="color:#f92672">{</span>filename<span style="color:#f92672">}</span>.csv?utk<span style="color:#f92672">={</span>utk token<span style="color:#f92672">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -o <span style="color:#f92672">{</span>filename<span style="color:#f92672">}</span>.txt
+</span></span></code></pre></div><h3 id="レスポンス例-1">レスポンス例</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;_id&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;$oid&#34;</span>: <span style="color:#e6db74">&#34;5702ea6db993f8f8cbea334c&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;account&#34;</span>: <span style="color:#e6db74">&#34;acme&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;created_at&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-04-04T22:27:56.993Z&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;file&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;sales-transaction_2016feb4v50.csv&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;size&#34;</span>: <span style="color:#ae81ff">2744</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;checksum&#34;</span>: <span style="color:#e6db74">&#34;44b12d35ea9fffdeeb69f98b03004f22&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;source&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;s3&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;host&#34;</span>: <span style="color:#e6db74">&#34;johndoe:&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;line_count&#34;</span>: <span style="color:#ae81ff">35</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;node_id&#34;</span>: <span style="color:#e6db74">&#34;bulk_downloader_i-cd504b49&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;profile&#34;</span>: <span style="color:#e6db74">&#34;main&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;status&#34;</span>: [
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;state&#34;</span>: <span style="color:#e6db74">&#34;DOWNLOADING&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;timestamp&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-04-04T22:27:57.285Z&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;state&#34;</span>: <span style="color:#e6db74">&#34;DOWNLOADED&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;timestamp&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-04-04T22:27:57.722Z&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;state&#34;</span>: <span style="color:#e6db74">&#34;PROCESSING&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;timestamp&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-04-04T22:27:57.780Z&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;lines_skipped&#34;</span>: <span style="color:#ae81ff">34</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;state&#34;</span>: <span style="color:#e6db74">&#34;PROCESSED&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;timestamp&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-04-04T22:27:58.797Z&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div><h3 id="エラーメッセージ-1">エラーメッセージ</h3>
+<table>
+<thead>
+<tr>
+<th>エラータイプ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>404 Not Found</td>
+<td>指定されたファイル名が見つかりません</td>
+</tr>
+<tr>
+<td>400 Bad request</td>
+<td>ファイル名が150文字を超えています</td>
+</tr>
+</tbody>
+</table>
+<h2 id="複数のファイルステータス">複数のファイルステータス</h2>
+<p>指定された日付範囲内のファイルステータスの配列を返します。同じファイルプレフィックスを持つファイルにのみ適用されます。</p>
+<pre tabindex="0"><code>GET /v1/omnichannel/accounts/{account}/profiles/{profile}/files/search?utk={utk token}&amp;filePrefix={filePrefix}&amp;startDate={startDate}&amp;endDate={endDate}
+</code></pre><h3 id="curlリクエスト-2">cURLリクエスト</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cURL -i -b JSESSIONID<span style="color:#f92672">={</span>session_id<span style="color:#f92672">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  https://api.tealiumiq.com/v1/omnichannel/accounts/<span style="color:#f92672">{</span>account<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>profile<span style="color:#f92672">}</span>/files/search?utk<span style="color:#f92672">={</span>token<span style="color:#f92672">}</span>&amp;filePrefix<span style="color:#f92672">={</span>filePrefix<span style="color:#f92672">}</span>&amp;startDate<span style="color:#f92672">={</span>startDate<span style="color:#f92672">}</span>&amp;endDate<span style="color:#f92672">={</span>endDate<span style="color:#f92672">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -o <span style="color:#f92672">{</span>filename<span style="color:#f92672">}</span>.txt
+</span></span></code></pre></div><h3 id="レスポンス例-2">レスポンス例</h3>
+<p>以下は、すべてが <code>sales-transaction</code> で始まる3つのファイルのサンプルファイルステータスです。各ファイルプレフィックスの後には <code>_</code> と一意の日付識別子が続きます。各ファイルエントリには、ファイルサイズ、行数、および処理された行数（処理エラーを含む）に関する情報が含まれています。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;_id&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;$oid&#34;</span>: <span style="color:#e6db74">&#34;5702ea6db993f8f8cbea334c&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;account&#34;</span>: <span style="color:#e6db74">&#34;acme&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;created_at&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-04-04T22:27:56.993Z&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;file&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;sales-transaction_2016feb4v50.csv&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;size&#34;</span>: <span style="color:#ae81ff">2744</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;checksum&#34;</span>: <span style="color:#e6db74">&#34;44b12d35ea9fffdeeb69f98b03004f22&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;source&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;s3&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;host&#34;</span>: <span style="color:#e6db74">&#34;johndoe:&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;line_count&#34;</span>: <span style="color:#ae81ff">35</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;node_id&#34;</span>: <span style="color:#e6db74">&#34;bulk_downloader_i-cd504b49&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;profile&#34;</span>: <span style="color:#e6db74">&#34;main&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;status&#34;</span>: [
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;state&#34;</span>: <span style="color:#e6db74">&#34;DOWNLOADING&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;timestamp&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-04-04T22:27:57.285Z&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;state&#34;</span>: <span style="color:#e6db74">&#34;DOWNLOADED&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;timestamp&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-04-04T22:27:57.722Z&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;state&#34;</span>: <span style="color:#e6db74">&#34;PROCESSING&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;timestamp&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-04-04T22:27:57.780Z&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;lines_skipped&#34;</span>: <span style="color:#ae81ff">34</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;state&#34;</span>: <span style="color:#e6db74">&#34;PROCESSED&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;timestamp&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-04-04T22:27:58.797Z&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;_id&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;$oid&#34;</span>: <span style="color:#e6db74">&#34;5702ea6bb993f8f8cbea334b&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;account&#34;</span>: <span style="color:#e6db74">&#34;acme&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;created_at&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-04-04T22:27:55.562Z&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;file&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;sales-transaction_2016feb4v49.csv&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;size&#34;</span>: <span style="color:#ae81ff">2744</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;checksum&#34;</span>: <span style="color:#e6db74">&#34;7b8f92474e220c275bf9931c0337abf3&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;source&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;s3&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;host&#34;</span>: <span style="color:#e6db74">&#34;johndoe:&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;line_count&#34;</span>: <span style="color:#ae81ff">35</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;node_id&#34;</span>: <span style="color:#e6db74">&#34;bulk_downloader_i-cd504b49&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;profile&#34;</span>: <span style="color:#e6db74">&#34;main&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;status&#34;</span>: [
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;state&#34;</span>: <span style="color:#e6db74">&#34;DOWNLOADING&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;timestamp&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-04-04T22:27:55.601Z&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;state&#34;</span>: <span style="color:#e6db74">&#34;DOWNLOADED&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;timestamp&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-04-04T22:27:55.887Z&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;state&#34;</span>: <span style="color:#e6db74">&#34;PROCESSING&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;timestamp&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-04-04T22:27:56.045Z&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;lines_skipped&#34;</span>: <span style="color:#ae81ff">34</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;state&#34;</span>: <span style="color:#e6db74">&#34;PROCESSED&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;timestamp&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-04-04T22:27:56.669Z&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;_id&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;$oid&#34;</span>: <span style="color:#e6db74">&#34;5702ea69b993f8f8cbea3349&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;account&#34;</span>: <span style="color:#e6db74">&#34;acme&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;created_at&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-04-04T22:27:53.276Z&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;file&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;sales-transaction_2016feb4v53.csv&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;size&#34;</span>: <span style="color:#ae81ff">2744</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;checksum&#34;</span>: <span style="color:#e6db74">&#34;44b12d35ea9fffdeeb69f98b03004f22&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;source&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;s3&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;host&#34;</span>: <span style="color:#e6db74">&#34;johndoe:&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;line_count&#34;</span>: <span style="color:#ae81ff">35</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;node_id&#34;</span>: <span style="color:#e6db74">&#34;bulk_downloader_i-cd504b49&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;profile&#34;</span>: <span style="color:#e6db74">&#34;profile&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;status&#34;</span>: [
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;state&#34;</span>: <span style="color:#e6db74">&#34;DOWNLOADING&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;timestamp&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-04-04T22:27:53.307Z&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;state&#34;</span>: <span style="color:#e6db74">&#34;DOWNLOADED&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;timestamp&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-04-04T22:27:54.249Z&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;state&#34;</span>: <span style="color:#e6db74">&#34;PROCESSING&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;timestamp&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-04-04T22:27:54.289Z&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;lines_skipped&#34;</span>: <span style="color:#ae81ff">34</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;state&#34;</span>: <span style="color:#e6db74">&#34;PROCESSED&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;timestamp&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-04-04T22:27:55.480Z&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>  },
+</span></span></code></pre></div><h3 id="エラーメッセージ-2">エラーメッセージ</h3>
+<table>
+<thead>
+<tr>
+<th>エラータイプ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>400 Bad request</td>
+<td>* ファイル定義のプレフィックスが150文字を超えています<br> * ファイル定義のプレフィックス、開始日、または終了日が指定されていません<br> * 開始/終了日の形式が無効です<br> * 終了日が開始日よりも前です</td>
+</tr>
+</tbody>
+</table>
+<h2 id="omnichannelファイルエラー">Omnichannelファイルエラー</h2>
+<p>ファイル処理は、無効なサービス資格情報、行データの欠落、内部サーバーエラーなどの理由で失敗する場合があります。ファイルステータスでは、これらの特定のエラーは <code>last_failure</code> キーの値に記録されます。</p>
+<p>以下は、ファイルステータスの一部のサンプルです（一部省略）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">...</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;state&#34;</span>: <span style="color:#e6db74">&#34;PROCESSING&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;timestamp&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;$date&#34;</span>: <span style="color:#e6db74">&#34;2016-10-05T18:09:54.014Z&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;lines_failed_processing&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;last_failure&#34;</span>: <span style="color:#e6db74">&#34;Failed to find attribute for column with id&#34;</span>
+</span></span><span style="display:flex;"><span>    }<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">...</span>
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>以下にリストされているエラーは、Omnichannelファイル固有のものであり、APIエンドポイントのエラーとは異なります。</p>
+<h3 id="処理およびダウンロードエラー">処理およびダウンロードエラー</h3>
+<table>
+<thead>
+<tr>
+<th>エラーメッセージ</th>
+<th>その意味</th>
+<th>解決方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unknown file prefix, unable to parse file</td>
+<td>指定されたプレフィックス（名前）のファイルが見つかりませんでした。ファイルが存在しないか、プレフィックスにタイプミスがある可能性があります。</td>
+<td>ファイルを再アップロードし、Omnichannel Definitionsタブでファイルプレフィックスをダブルチェックしてください。エラーが解消しない場合は、Tealiumのアカウントマネージャにお問い合わせください。</td>
+</tr>
+<tr>
+<td>DBObject of size <code>{###}`` is over Max BSON size </code>{###}`</td>
+<td>ファイルが処理できるサイズを超えています</td>
+<td>ファイルデータを複数のファイル定義に分割してください</td>
+</tr>
+<tr>
+<td>Failed to download (FTP, SFTP, S3) file</td>
+<td>サービス資格情報にエラーがあるため、ファイルをダウンロードできませんでした（<a href="/ja/server-side/data-sources/file-import/configuration/">File Import Service Configuration</a>を参照）。</td>
+<td>* FTP/SFTPの場合、ホスト名、ユーザー名、パスワードをダブルチェックしてください<br> * S3/Tealium S3の場合、アクセスキー/シークレットキーとバケット/プレフィックスをダブルチェックしてください</td>
+</tr>
+<tr>
+<td>Invalid connection type<br> <strong>OR</strong><br> Could not find required (FTP, SFTP, S3) configuration parameters for definition</td>
+<td>サービス資格情報（<a href="/ja/server-side/data-sources/file-import/configuration/">File Import Service Configuration</a>）が認証できませんでした。</td>
+<td>* FTP/SFTPの場合、ホスト名、ユーザー名、パスワードをダブルチェックしてください<br> * S3/Tealium S3の場合、アクセスキー/シークレットキーとバケット/プレフィックスをダブルチェックしてください</td>
+</tr>
+</tbody>
+</table>
+<h3 id="構成および定義エラー">構成および定義エラー</h3>
+<p>これらのエラーは、<a href="/ja/server-side/data-sources/file-import/configuration/">Column Mapping screen</a>での不正な列マッピングによって引き起こされます。</p>
+<table>
+<thead>
+<tr>
+<th>エラーメッセージ</th>
+<th>その意味</th>
+<th>解決方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Failed to find attribute for column with id</td>
+<td>AudienceStreamは、マッピングした列名のためのOmnichannel属性を生成できませんでした。</td>
+<td>問題のある列ヘッダーを新しいものに置き換え、ファイルを再アップロードしてください</td>
+</tr>
+<tr>
+<td>Exception thrown while processing file</td>
+<td>マッピングした列ヘッダーの値をOmnichannel属性にパースできませんでした。</td>
+<td>問題のある列値を置き換え、ファイルを再アップロードしてください。</td>
+</tr>
+<tr>
+<td>Secondary visitor ID column= <code>{column_name_here}</code> does not exist in the file, unable to continue</td>
+<td>ビジターIDフィールドにマッピングした列ヘッダーがファイルに存在しません。これは、タイプミスまたはヘッダーが定義されていないことが原因です。</td>
+<td>提供した列ヘッダーがファイルと一致していることを確認してください</td>
+</tr>
+<tr>
+<td><code>{date_format_here}</code> could not be parsed as a Date</td>
+<td>マッピングした列名の日付形式がファイルに存在しません。</td>
+<td>提供した日付形式がファイルと一致していることを確認してください</td>
+</tr>
+<tr>
+<td>The number of columns to be processed <code>{##}</code> must match the number of CellProcessors <code>{##}</code>: check that the number of CellProcessors you have defined matches the expected number of columns being read/written</td>
+<td>Omnichannel属性の下にマッピングした列名がファイルに存在しません。これは、タイプミスまたはヘッダーが定義されていないことが原因です。</td>
+<td>提供した列ヘッダーがファイルと一致していることを確認してください</td>
+</tr>
+</tbody>
+</table>
+<h3 id="内部サーバーエラー">内部サーバーエラー</h3>
+<p>これらのエラーは、ファイルを処理するさまざまなサーバー間で通信できない場合に発生します。</p>
+<ul>
+<li><code>Connection is already closed due to connection error; cause: com.rabbitmq.client.MissedHeartbeatException</code></li>
+<li><code>Can't connect to new replica set master [##.#.#.###:###], err: couldn't connect to server [##.#.#.###:###], error querying server</code></li>
+<li><code>DBClientBase::findN: transport error</code></li>
+<li><code>socket exception [SEND_ERROR]</code></li>
+</ul>
+<p><strong>解決方法</strong>: ファイルを再アップロードしてください。</p>
+
+</div>
+
+<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="di mr3">
+  
+  
+  <a href="/ja/api-v1/omnichannel-file-status/data-objects/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"データオブジェクト "</title>
+      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+    </svg>
+   <section class="tr pl3">
+      <div>データオブジェクト</div>
+    </section>
+  </a>
+  
+
+</div></div>
+
+
+
+        <div class="bt-l b--moon-gray pv3 cb">
+          <div id="feedback_form" class="dpn">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">このページはお役にたちましたでしょうか？</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+はい</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+いいえ</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="ページの改善にご協力ください。" rows="4" cols="60"></textarea><button id="feedback_submit" class="db ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">フィードバックを送信</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">ご意見有難うございます。</p>
+  </div>
+</div>
+
+        </div>
+        <div class="bt-l b--moon-gray pt3 f6">
+          <p>最終更新日 ::  2024年March月29日
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
+      
+
+
+
+  <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">このページで</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E6%95%B0" href="javascript:void(0)">ファイル数</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#curl%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88" href="javascript:void(0)">cURLリクエスト</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E4%BE%8B" href="javascript:void(0)">レスポンス例</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8" href="javascript:void(0)">エラーメッセージ</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8D%98%E4%B8%80%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9" href="javascript:void(0)">単一ファイルのステータス</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#curl%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88" href="javascript:void(0)">cURLリクエスト</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E4%BE%8B" href="javascript:void(0)">レスポンス例</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8" href="javascript:void(0)">エラーメッセージ</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A4%87%E6%95%B0%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9" href="javascript:void(0)">複数のファイルステータス</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#curl%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88" href="javascript:void(0)">cURLリクエスト</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E4%BE%8B" href="javascript:void(0)">レスポンス例</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8" href="javascript:void(0)">エラーメッセージ</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#omnichannel%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%A8%E3%83%A9%E3%83%BC" href="javascript:void(0)">Omnichannelファイルエラー</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%87%A6%E7%90%86%E3%81%8A%E3%82%88%E3%81%B3%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%82%A8%E3%83%A9%E3%83%BC" href="javascript:void(0)">処理およびダウンロードエラー</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%8A%E3%82%88%E3%81%B3%E5%AE%9A%E7%BE%A9%E3%82%A8%E3%83%A9%E3%83%BC" href="javascript:void(0)">構成および定義エラー</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%86%85%E9%83%A8%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%A8%E3%83%A9%E3%83%BC" href="javascript:void(0)">内部サーバーエラー</a></li>
+              </nav>
+  </aside></nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-secondary ph1-ns relative w-100 pv4 bt b--light-gray" role="contentinfo">
+  <div class="center flex-ns flex-wrap justify-between mw9 w-90 dn db-ns">
+
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="nav-list footer-heading-title">
+          <div class="footer-logo-wrapper">
+            <img class="logo" src="https://tealium.com/wp-content/uploads/2015/12/tealium_footer_logo_01-206x49.png" alt="tealium_footer_logo_01">
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Support</li>
+<li class="mb2"><a class="link" href="https://university.tealium.com/">Tealium University</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/en/support/solutions">Knowledge Base</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/" target="">Support Desk</a></li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Company</li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/">Tealium.com</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/blog/">Blog</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="https://tealium.com/careers/">Careers</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+  <div class="dpn bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+<div class="globalmenu mobilemenu dn">
+    
+
+<ul class="list hidden dib ph0 ma0 scrolling-touch tc">
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ホーム
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/iq-tag-management/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          iQ Tag Management
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          EventStream API Hub
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/functions/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          機能
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-connect/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          データコネクト
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/predict/getting-started/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Predict ML
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-storage/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          DataAccess
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/client-side-tags/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          クライアントサイド タグ
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side-connectors/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          サーバーサイド コネクタ
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/platforms/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          プラットフォーム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/api/getting-started/auth/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          管理
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ファーマ向けティーリアム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ティーリアムアイデンティティパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/tech-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          テクノロジーパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          パートナー統合
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/glossary/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          用語集
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/early-access/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          早期アクセス
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/release-notes/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          リリースノート
+        </a>
+    </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+</div>
+
+
+<div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
+    <ul class="list dib ph0 ma0 scrolling-touch tc">
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/api-v1/getting-started/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          はじめに
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/api-v1/iq-revisions/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          iQ リビジョン
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/api-v1/hosted-data-layer/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          ホストされたデータレイヤー
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/api-v1/omnichannel-file-status/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4 bg-primary-color">
+          オムニチャネルファイルステータス
+      </a>
+      </li>
+      
+      
+  
+
+</ul>
+
+</div>
+
+
+
+
+<div class="flex dn-l justify-between">
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link mr2 white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".globalmenu">Site</button>
+
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".docsmenu">Section</button>
+
+</div>
+</div>
+
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'ドキュメントの検索',
+    buttonAriaLabel: 'ドキュメントの検索',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'クエリを消去',
+      resetButtonAriaLabel: 'クエリを消去',
+      cancelButtonText: 'キャンセル',
+      cancelButtonAriaLabel: 'キャンセル',
+    },
+    startScreen: {
+      recentSearchesTitle: '最近',
+      noRecentSearchesText: '最近の検索はありません',
+      saveRecentSearchButtonTitle: 'この検索を保存',
+      removeRecentSearchButtonTitle: 'この検索を履歴から削除',
+      favoriteSearchesTitle: 'お気に入り',
+      removeFavoriteSearchButtonTitle: 'このクエリをお気に入りから削除',
+    },
+    errorScreen: {
+      titleText: '結果を取得できません',
+      helpText: 'ネットワーク接続を確認してください',
+    },
+    footer: {
+      selectText: '選択する',
+      selectKeyAriaLabel: 'キーを入力してください',
+      navigateText: 'ナビゲートする',
+      navigateUpKeyAriaLabel: '上',
+      navigateDownKeyAriaLabel: '下',
+      closeText: '閉じる',
+      closeKeyAriaLabel: 'エスケープキー',
+      searchByText: '次で検索：',
+    },
+    noResultsScreen: {
+      noResultsText: '次の結果はありません：',
+      suggestedQueryText: '次で検索してみてください：',
+      reportMissingResultsText: 'このクエリで結果が返ってくるはずですか?',
+      reportMissingResultsLinkText: '連絡願います',
+    },
+  },
+};
+var default_sections = [
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
+docsearch({
+  container: '#docsearch',
+  appId: '2V5C0M31GH',
+  apiKey: '32b47c4ec1ccc76fbe18808c48f9d8b6',
+  indexName: 'tealium_jp',
+  placeholder: 'ドキュメントの検索',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    "analytics": true ,
+    "analyticsTags": ["site"]
+  },
+  insights: true,
+  debug: false ,
+  transformItems
+});
+</script>
+
+    
+
+  </body>
+</html>

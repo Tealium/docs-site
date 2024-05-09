@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     
+    <title>ビジタースティッチングのガイドライン | ビジターのスティッチング | Tealium開発者ドキュメント</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+     <meta name="generator" content="Hugo 0.111.3">
+
+      
+        <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+      
+
+    
+    
+      
+        <link rel="alternate" hreflang="en" href="https://docs.tealium.com/server-side/visitor-stitching/guidelines/">
+      
+    
+      
+    
+    
+
+     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
+  </head>
+  <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
+      
+        
+<script>
+var utag_data = {
+    site_section  : "server-side",
+    reading_time  : "1",
+    site_language : "ja",
+    tealium_event : "page_view"
+}
+</script>
+
+<script>
+ (function(a,b,c,d){
+    a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+  })();
+</script>
+
+      
+
+    
+<nav class="w-100 sticky-t bg-primary-color-light bb b--light-gray dpn" role="navigation">
+
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
+
+    <div class="lh-solid ml0-ns mr0 mr4-l mv3 pl15 dib db-ns">
+      <a href="/ja/"><img src="/images/icons/tealium-documentation-logo-color.svg" class="v-mid dib" width="186" height="31"></a>
+    </div>
+    
+    <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-ns">
+      <li class="f5 dib">
+         <i class="fa fa-globe" style="color: rgba(255, 255, 255, .6)" aria-hidden="true"></i>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+          <a href="/server-side/visitor-stitching/guidelines/" class="dim link mid-gray">English</a>
+        
+      
+        
+      
+      </li>
+            
+    </ul>
+
+  </div>
+  
+</nav>
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 pr4">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-hidden overflow-y-scroll dn db-ns sticky-l pt3 pl125" style="width:280px;">
+<nav class="side-nav f6" role="navigation">
+  <ul class="list pa0 mt0 mb1">
+  
+    <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/ja/" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>家</a></li>
+  
+  </ul>
+  <ul class="list pa0" data-nav-section="server-side"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><a href="/ja/server-side/" class="dib w-100 link text-color-primary hover-primary-color"><span class="pb2">サーバーサイド CDH</span></a>
+        <ul data-level="1" class="server-side desktopmenu animated fadeIn list pl0 mt2"><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-gs">はじめに</a>
+        <ul class="pl2  ss-gs desktopmenu animated fadeIn list  dn"><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-gs-es">EventStream API ハブ</a>
+        <ul class="pl2  ss-gs-es desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/eventstream-api-hub/introduction/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-introduction-to-eventstream">EventStreamへの導入</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/eventstream-api-hub/tutorial/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventstream-api-hub-introduction">EventStreamチュートリアルを開始する</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/eventstream-api-hub/data-sources/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventstream-api-hub-data-sources">データソース</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/eventstream-api-hub/add-data-source/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventstream-api-hub-data-sources-add-a-data-source">データソースを追加する</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/eventstream-api-hub/install-test/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventstream-api-hub-data-sources-install-and-test">インストールとテスト</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/eventstream-api-hub/live-events/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventstream-api-hub-live-events">ライブイベント</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/eventstream-api-hub/event-spec/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventstream-api-hub-event-specifications">イベント仕様</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/eventstream-api-hub/add-spec/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventstream-api-hub-event-specifications-add-a-spec">仕様を追加する</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/eventstream-api-hub/data-quality/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventstream-api-hub-event-specifications-data-quality">イベントデータ品質</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/eventstream-api-hub/event-feeds/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventstream-api-hub-event-feeds">イベントフィード</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/eventstream-api-hub/add-feed/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventstream-api-hub-event-feeds-add-a-feed">フィードを追加する</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/eventstream-api-hub/connectors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventstream-api-hub-connectors">コネクタ</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/eventstream-api-hub/add-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventstream-api-hub-connectors-add-a-connector">コネクタを追加する</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/eventstream-api-hub/trace/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventstream-api-hub-trace">トレース</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/eventstream-api-hub/test-trace/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventstream-trace-test-with-trace">トレースでテスト</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/eventstream-api-hub/save-publish/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventstream-api-hub-save-and-publish">保存と公開</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/eventstream-api-hub/next-steps/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventstream-api-hub-next-steps">次のステップ</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-gs-as">AudienceStream CDP</a>
+        <ul class="pl2  ss-gs-as desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/introduction/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-introduction-to-audiencestream">AudienceStreamへの導入</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/tutorial/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-gs-as-introduction">AudienceStreamチュートリアルを開始する</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-attributes">属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/enrichments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-attributes-enrichments">属性の豊富さ</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/offline-data/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-attributes-offline-data-omnichannel">属性オフラインデータ（オムニチャネル）</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/badges/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-attributes-badges">属性バッジ</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/preloaded/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-preloaded-attributes">プリロードされた属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-stitching/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-stitching">ビジターステッチング</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-stitching-visitor-id/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-stitching-visitor-id">ビジタースティッチングビジターID</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-part-1/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-part-1">ビジターID パート1</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-discovery/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-discovery">ビジターIDの発見</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/visitor-id-part-2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-visitor-id-part-2">ビジターID パート2</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/audiences/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-audiences">オーディエンス</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/connectors/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-connectors">コネクタ</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/add-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-connectors-add-a-connector">コネクター: コネクターの追加</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/trace/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-trace">トレース</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/test-trace/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-trace-test-with-trace">トレースでテスト</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/save-publish/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-save-and-publish">保存と公開</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/next-steps/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-next-steps">次のステップ</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/audiencestream-cdp/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">ウェブ用のインストールオプション</a></li></ul>
+      </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/tealium-collect/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-installing-tealium">Tealium Collectのインストール</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/order-of-operations/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-audiencestream-order-of-operations">操作の順序</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/intro-cdh/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-introduction-to-customer-data-hub">カスタマーデータハブへの導入</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/getting-started/data-supply-chain-dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-data-supply-chain-dashboard">データ供給チェーンダッシュボード</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".data-sources">データソース</a>
+        <ul class="pl2  data-sources desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/about-data-sources/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-data-sources">データソースについて</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".file-import">ファイルのインポート</a>
+        <ul class="pl2  file-import desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/file-import/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-file-import">ファイルのインポートについて</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/file-import/prepare-a-csv-file/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-prepare-csv-file-for-import">CSVファイルのインポート準備</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/file-import/visitor-identification/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-file-import-visitor-identification">ファイルインポートデータソースを使用した訪問の識別</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/file-import/encryption-and-compression/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-encryption-and-compression-file-import">暗号化と圧縮</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/file-import/configuration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-configure-file-import">ファイルインポート構成</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".file-transfer-service">ファイル転送サービスの構成</a>
+        <ul class="pl2  file-transfer-service desktopmenu animated fadeIn list  dn"><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/file-import/file-transfer-service/upload-files/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".file-transfer-service-upload-files">サービスにファイルをアップロードする</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/file-import/file-transfer-service/cyberduck/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".file-transfer-service-configure-cyberduck">Cyberduck</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/file-import/file-transfer-service/aws-cli/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".file-transfer-service-amazon-command-line-interface">Amazon CLI</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/file-import/file-transfer-service/s3-bucket/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".file-transfer-service-s3-bucket">S3バケット</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/file-import/file-transfer-service/view-import-status/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".file-transfer-service-view-import-status">インポートステータスの表示</a></li></ul>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".webhooks">受信Webhooks</a>
+        <ul class="pl2  webhooks desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/webhooks/affirm/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-affirm-incoming-webhook-setup-guide">Affirm</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/webhooks/airship/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-airship-incoming-webhook-setup-guide">Airship</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/webhooks/braze-currents/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-braze-currents-data-source-setup-guide">Braze Currents</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/webhooks/google-ads-leads/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-google-ads-leads">Google Ads Leads</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/webhooks/http-api-advanced/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-http-api-advanced-incoming-webhook-setup-guide">HTTP API Advanced</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/webhooks/hubspot/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-hubspot-workflow-incoming-webhook-setup-guide">Hubspot</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/webhooks/intercom/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-intercom-incoming-webhook-setup-guide">Intercom</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/webhooks/iterable/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-iterable-incoming-webhook-setup-guide">Iterable</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/webhooks/mailchimp/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-mailchimp-incoming-webhook-setup-guide">Mailchimp</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/webhooks/pulsepoint-hcp365/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-pulsepoint-incoming-webhook-setup-guide">PulsePoint HCP365</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/webhooks/sendgrid/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-sendgrid-incoming-webhook-setup-guide">SendGrid</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/webhooks/zapier/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-zapier-webhook-data-source">Zapier</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/webhooks/insider/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-insider-data-source-setup-guide">インサイダー</a></li></ul>
+      </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/create-data-source/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">データソースを作成する</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/connect-to-data-source/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-connect-cdh-data-source">データソースに接続する</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/edit-data-source-settings/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-edit-data-sources-settings">データソース構成の編集</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/data-sources-for-iq-tag-management/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">iQタグ管理のデータソース</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/vdata-endpoint/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">ビジターデータエンリッチメント(/vdata)を使用してデータをインポートする</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-sources/release-notes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".release-notes-data-sources">リリースノート</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".event-specifications">イベント仕様</a>
+        <ul class="pl2  event-specifications desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/event-specifications/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-event-specifications">イベント仕様について</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/event-specifications/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".use-event-specifications">イベント仕様の管理</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".data-connect">データコネクト</a>
+        <ul class="pl2  data-connect desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-connect/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-data-connect">について</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-connect/glossary/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-workato-glossary">用語集</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-connect/rate-limits/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-rate-limits">レート制限</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-connect/error-handling/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-data-connect-error-handling">エラーハンドリング</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-connect/roles/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-data-connect-roles">役割</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-connect/events/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-data-connect-events">イベント</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-connect/dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-data-connect-dashboard">ダッシュボード</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-connect/usage-reports/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-data-connect-usage-reports">使用レポート</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".mangage-data-connect-integrations">データコネクト統合を管理する</a>
+        <ul class="pl2  mangage-data-connect-integrations desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-connect/manage-data-connect-integrations/about-integrations/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-data-connect-integrations">統合について</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-connect/manage-data-connect-integrations/best-practices/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-data-connect-recipe-best-practices">ベストプラクティス</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-connect/manage-data-connect-integrations/tealium-connect-data-source/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-tealium-connect-data-source">Tealium Connect データソース</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-connect/manage-data-connect-integrations/tealium-connect-event-spec/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-tealium-connect-event-spec">Tealium Connect イベント仕様</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-connect/manage-data-connect-integrations/tealium-connect-visitor-id-attr-enrichment/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-tealium-connect-visitor-id-attr-enrichment">Tealium Connect訪問ID属性のエンリッチメント</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-connect/manage-data-connect-integrations/create-recipe/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-create-recipe-data-connect">レシピを作成する</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-connect/manage-data-connect-integrations/manage-recipes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-recipes-data-connect">レシピの管理</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-connect/manage-data-connect-integrations/troubleshooting-data-connect/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-troubleshoot-data-connect">トラブルシューティング</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-connect/manage-data-connect-integrations/facebook-lead-ads-data-connect-integration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-facebook-lead-ads-data-connect-integration">Facebook Lead Ads Data Connect インテグレーションセットアップガイド</a></li></ul>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".live-events-feeds">ライブイベントとフィード</a>
+        <ul class="pl2  live-events-feeds desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/live-events-feeds/about-live-events/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-live-events">ライブイベントについて</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/live-events-feeds/about-event-feeds/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-event-feeds">イベントフィードについて</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".attributes">属性</a>
+        <ul class="pl2  attributes desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-attributes">属性について</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/preloaded/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".preloaded-attributes">プリロードされた属性</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".manage-attributes">属性を管理する</a>
+        <ul class="pl2  manage-attributes desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/manage-attributes/add-attribute/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-add-attribute">属性を追加する</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/manage-attributes/edit-attribute/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-edit-attribute">属性を編集する</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/manage-attributes/delete-attribute/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-delete-attribute">属性を削除する</a></li></ul>
+      </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/enrichments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-enrichments">エンリッチメントについて</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".manage-enrichments">エンリッチメントの管理</a>
+        <ul class="pl2  manage-enrichments desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/manage-enrichments/add-enrichment/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-add-enrichment">エンリッチメントを追加する</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/manage-enrichments/usage-examples/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-usage-examples">使用例</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".data-types">データ型</a>
+        <ul class="pl2  data-types desktopmenu animated fadeIn list  dn"><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".data-type-arrays">配列</a>
+        <ul class="pl2  data-type-arrays desktopmenu animated fadeIn list  dn"><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/arrays/array-of-booleans/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-arrays-booleans">ブール値の配列</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/arrays/array-of-numbers/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-arrays-numbers">数値の配列</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/arrays/arrays/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-arrays-strings">文字列の配列</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/arrays/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-arrayss">配列について</a></li></ul>
+      </li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/timeline/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-timeline-attribute">タイムライン属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/badge/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-badge-attribute">バッジ属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/funnel/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-funnel-attribute">ファネル属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/boolean/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-boolean-attribute">ブーリアン属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/popular-badges/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-popular-badges">人気のバッジ</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/number/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-number-attribute">数値属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/set-of-strings/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-set-of-strings-attribute">文字列のセット属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/string/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-string-attribute">文字列属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/date/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-date-attribute">日付属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/tally/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">集計属性</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".data-layer-enrichment">データレイヤーのエンリッチメント</a>
+        <ul class="pl2  data-layer-enrichment desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-layer-enrichment/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-data-layer-enrichment">データレイヤーエンリッチメントについて</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-layer-enrichment/enable/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-enable-data-layer-enrichment">データレイヤーエンリッチメントを有効にする</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-layer-enrichment/tealium-collect-dle/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-add-configure-tealium-collect-tag">Tealium Collectタグの追加と構成</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-layer-enrichment/dle-object/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-data-layer-enrichment-object">データレイヤーエンリッチメントオブジェクト</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".data-layer-enrichment-api">データレイヤーエンリッチメントAPI</a>
+        <ul class="pl2  data-layer-enrichment-api desktopmenu animated fadeIn list  dn"><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/dle-objects/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-data-layer-enrichment-api-object">オブジェクト</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-data-layer-enrichment-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-manage-data-layer-enrichment-public-api">GETデータレイヤーエンリッチメント公開API</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/get-profile-definition-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-get-profile-definition-api">GETプロファイル定義API</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-layer-enrichment/data-layer-enrichment-api/data-layer-enrichment-public-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-data-layer-enrichment-public-api">データレイヤーエンリッチメント公開APIについて</a></li></ul>
+      </li></ul>
+      </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/restricted-data/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-restricted-data">制限されたデータについて</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".connectors">コネクタ</a>
+        <ul class="pl2  connectors desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-connectors">コネクタについて</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/interface/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-interface">コネクターインターフェース</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/add/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".add-a-connector">コネクタを追加する</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-connectors">コネクタの管理</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/delayed-actions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">遅延アクションについて</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".webhook-connectors">Webhookコネクタ</a>
+        <ul class="pl2  webhook-connectors desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhookコネクタについて</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/basicauth-oauth2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">BasicAuthとOAuth2</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/action-parameters/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">アクションパラメーター</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/validate-webhook-action/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhookアクションの検証</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/usage-examples/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".webhook-usage-examples">使用例</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/changelog/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".webhook-changelog">変更履歴</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhook - カスタムリクエストの送信 - Trimouテンプレートエンジンガイド</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/template-variables/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhook - カスタムリクエストの送信 - テンプレート変数ガイド</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".vendor-examples">ベンダーの例</a>
+        <ul class="pl2  vendor-examples desktopmenu animated fadeIn list  dn"><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/vendor-examples/webhook-keenio-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-webhook-keenio-api">Webhook - Keen.io API</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/vendor-examples/webhook-kony-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-webhook-kony-api">Webhook - Kony API</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/vendor-examples/webhook-facebook-app-events-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-webhook-facebook-app-events-api">Webhook Facebook App Events APIの構成方法</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/vendor-examples/webhook-krux-deprecated/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-webhook-krux-deprecated">Webhook Krux (廃止予定)</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/webhook-connectors/vendor-examples/webhook-salesforce-predictive-intelligence-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-webhook-salesforce-predictive-intelligence-api">Webhook Salesforce Predictive Intelligence APIの構成</a></li></ul>
+      </li></ul>
+      </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/batched-actions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".batched-actions">バッチ処理アクション</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".frequency-capping">頻度制限</a>
+        <ul class="pl2  frequency-capping desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/frequency-capping/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-frequency-capping">頻度制限について</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/frequency-capping/cooldown/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".cooldown-groups">クールダウングループ</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/frequency-capping/example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".frequency-capping-example">例</a></li></ul>
+      </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/connectors-dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connectors-dashboard">コネクタダッシュボード</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-trace">トレース</a>
+        <ul class="pl2  ss-trace desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/trace/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-trace">Traceについて</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/trace/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-traces">トレースの管理</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/trace/view/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".view-trace">トレースを表示する</a></li></ul>
+      </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/cookie-matching/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">永続的なクッキーマッチング</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/connectors/release-notes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".release-notes--connectors">リリースノート</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".audiences">オーディエンス</a>
+        <ul class="pl2  audiences desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/audiences/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-audiences">オーディエンスについて</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/audiences/audiencestream-dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestream-dashboard">ダッシュボード</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".audience-discovery">オーディエンスの発見</a>
+        <ul class="pl2  audience-discovery desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/audiences/audience-discovery/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-audience-discovery">について</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/audiences/audience-discovery/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-audience-discovery">管理</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/audiences/audience-discovery/favorite-numbers/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".favorite-numbers">お気に入りの数字</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".audience-sizing">オーディエンスの規模</a>
+        <ul class="pl2  audience-sizing desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/audiences/audience-sizing/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-audience-sizing">オーディエンスサイジングについて</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/audiences/audience-sizing/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-audience-sizing">オーディエンスサイジングの管理</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/audiences/audience-sizing/examples/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audience-sizing-examples">オーディエンスサイジングの例</a></li></ul>
+      </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/audiences/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-audiences">オーディエンスの管理</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/audiences/manage-segments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-segments">セグメントの管理</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/audiences/visitor-profile-sampler/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-profile-sampler">ビジタープロファイルサンプラー</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/audiences/visitor-lookup-tool/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-lookup-tool">訪問検索ツール</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/audiences/rule-conditions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-rule-condition-definitions">ルール条件の定義</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/audiences/release-notes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".release-notes-audiences">リリースノート</a></li></ul>
+      </li><li class="relative w-100 fw8 f5  active">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".visitor-stitching">ビジターのスティッチング</a>
+        <ul class="pl2 bl b--primary bw1 visitor-stitching desktopmenu animated fadeIn list "><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/visitor-stitching/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-visitor-stitching">ビジタースティッチングについて</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".anonymous-user-visitor-id-attributes">匿名ID、ユーザー識別子、訪問ID属性</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/visitor-stitching/visitor-id-attribute/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-id-attribute">ビジターID属性</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/visitor-stitching/diagram/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-stitching-example">訪問のスティッチング例</a></li><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/visitor-stitching/guidelines/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".visitor-stitching-guidelines">ビジタースティッチングのガイドライン</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/visitor-stitching/create-a-visitor-id-attribute/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".create-visitor-id-attribute">訪問者ID属性を作成する</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/visitor-stitching/scenarios/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-stitching-scenarios">訪問のスティッチングシナリオ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/visitor-stitching/tapid/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-tapid-cookies">TAPIDクッキーについて</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".functions">関数</a>
+        <ul class="pl2  functions desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-functions">関数について</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/triggers/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".function-triggers">関数トリガー</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/environment/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-execution-env-rate-limits">環境と制限</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/code-editor/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-code-editor">関数コードエディタ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/modules/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-use-apis-libraries">APIとライブラリ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/best-practices/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-best-practices">ベストプラクティス</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".manage-functions">関数の管理</a>
+        <ul class="pl2  manage-functions desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/manage-functions/create-function/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-functions-create-function">関数の作成</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/manage-functions/test-functions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-functions-test-functions">テスト関数</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/manage-functions/delete-function/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-functions-delete-function">関数の削除</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/manage-functions/manage-function-logs/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-function-logs">ログの管理</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/manage-functions/manage-global-variables/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-functions-manage-global-variables s">グローバル変数の管理</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/manage-functions/view-function-statistics/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-view-function-statistics">関数統計を表示する</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".event-visitor-functions">イベントとビジター関数</a>
+        <ul class="pl2  event-visitor-functions desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/event-visitor-functions/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-event-and-visitor-functions">イベントとビジター関数について</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/event-visitor-functions/v2-functions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".event-visitor-functions-v2">V2の関数</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/event-visitor-functions/event-visitor-v3/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".event-visitor-functions-v3">V3 関数</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/event-visitor-functions/migrate-v2-to-v3/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".migrate-v2-function-to-v3">V2関数をV3に移行する</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/event-visitor-functions/function-examples-v2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".v2-function-examples">関数の例（V2）</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/event-visitor-functions/v3-function-examples/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".v3-event-visitor-function-examples">関数の例 (V3)</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/event-visitor-functions/authentication/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".add-authentication-to-function">認証を追加する</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/event-visitor-functions/oauth2-authentication/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-OAuth2-authentication">OAuth 2.0認証を追加する</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/event-visitor-functions/uid2/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".use-visitor-function-get-uid20">UID2の生成</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".data-transformation-functions">データ変換関数</a>
+        <ul class="pl2  data-transformation-functions desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/data-transformation-functions/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-data-transformation-functions">データ変換について</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/data-transformation-functions/transforms-event-parameter/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".transforms-event-parameter">イベントパラメータ</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/data-transformation-functions/transforms-flatten-library/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".transforms-flatten-library">ネストされたオブジェクトのフラット化</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/functions/data-transformation-functions/functions-transforms-example-code/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".functions-transforms-example-code">例のコード</a></li></ul>
+      </li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".data-storage">データストレージ</a>
+        <ul class="pl2  data-storage desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-storage/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-dataaccess">DataAccessについて</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".audiencestore-eventstore">AudienceStoreとEventstore</a>
+        <ul class="pl2  audiencestore-eventstore desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-storage/audiencestore-eventstore/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestore-and-eventstore">について</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-storage/audiencestore-eventstore/configure-audiencestore/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".configure-audience-store">AudienceStoreの構成</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-storage/audiencestore-eventstore/configure-eventstore/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".configure-event-store">EventStoreの構成</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-storage/audiencestore-eventstore/dataaccess-view-files/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".view-files-audiencestore-and-eventstore">ファイルを表示する</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-storage/audiencestore-eventstore/audiencestore-data-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencestore-data-guide">AudienceStoreデータガイド</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-storage/audiencestore-eventstore/eventstore-data-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventstore-data-guide">EventStoreデータガイド</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".audiencedb-eventdb">AudienceDBとEventDB</a>
+        <ul class="pl2  audiencedb-eventdb desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-storage/audiencedb-eventdb/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-audiencedb-and-eventdb">について</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-storage/audiencedb-eventdb/configure/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".enable-audiencedb-eventdb">構成</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-storage/audiencedb-eventdb/audiencedb-data-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".audiencedb-data-guide">AudienceDBデータガイド</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-storage/audiencedb-eventdb/eventdb-data-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".eventdb-data-guide">EventDBデータガイド</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-storage/audiencedb-eventdb/connect/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connect-to-databases">EventDBとAudienceDBに接続する</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".data-viz-tools">データビジュアライゼーションツール</a>
+        <ul class="pl2  data-viz-tools desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-storage/data-viz-tools/connecting-sql-workbench/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connecting-sql-workbench">SQL Workbench/Jに接続する方法</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-storage/data-viz-tools/connecting-snowflake/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connecting-snowflake">Snowflakeへの接続</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-storage/data-viz-tools/connecting-tableau/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connecting-tableau">Tableauへの接続</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-storage/data-viz-tools/connecting-microsoft-power-bi/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connecting-microsoft-power-bi">Microsoft Power BIへの接続</a></li></ul>
+      </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/data-storage/release-notes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".release-notes-server-side-data-access">リリースノート</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".insights">Tealium Insights</a>
+        <ul class="pl2  insights desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/insights/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-data-insights">Tealium Insightsについて</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/insights/about-templates/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-templates">テンプレートについて</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/insights/manage-dashboards/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-dashboards">ダッシュボードの管理</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/insights/manage-datasets/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-datasets">データセットの管理</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/insights/manage-analyses/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-analyses">分析の管理</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-consent">同意</a>
+        <ul class="pl2  ss-consent desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/consent/consent-management/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-server-side-consent-management">同意管理</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/consent/event-specs/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-consent-change-event-specifications">同意変更イベントの仕様</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/consent/sample-privacy-policy-excerpts/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-sample-privacy-policy-excerpts">サンプルプライバシーポリシーの抜粋</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/consent/server-side-support-gpc/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-global-privacy-control">サーバーサイドのグローバルプライバシーコントロール</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/consent/release-notes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".release-notes-server-side-consent">リリースノート</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-save-publish">保存して公開</a>
+        <ul class="pl2  ss-save-publish desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/save-publish/about-save-publish/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-about-save-publish">変更を保存して公開する</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/save-publish/test/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-test-publish">テストについて</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/save-publish/with-tealium-iq/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-save-notes">Tealium iQとの統合</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-labels">ラベル</a>
+        <ul class="pl2  ss-labels desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/labels/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-about-labels">ラベルについて</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/labels/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-manage-labels">ラベルの管理</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/labels/use/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-use-labels">ラベルの使用</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-administration">管理</a>
+        <ul class="pl2  ss-administration desktopmenu animated fadeIn list  dn"><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-user-permissions">ユーザー権限</a>
+        <ul class="pl2  ss-user-permissions desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/administration/user-permissions/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-managing-server-side-user-permissions">権限について</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/administration/user-permissions/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-user-permissions">ユーザー権限の管理</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/administration/user-permissions/faq/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".faq">FAQ</a></li></ul>
+      </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/administration/concurrent-users/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".concurrent-user-management">同時接続ユーザー</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/administration/account-settings/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-account-settings">アカウント構成</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/administration/versions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-versions">バージョン</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/administration/enabling-experiments/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">実験の有効化</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/administration/ip-allow-list/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-ip-addresses-for-allow">許可するIPアドレス</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/administration/tealium-content-security-policies-reference-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-content-security-policy">コンテンツセキュリティポリシー</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/administration/understanding-the-usage-report/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-understanding-the-usage-report">使用レポート</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/administration/release-notes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".release-notes-server-side-administration">リリースノート</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-tealium-tools">Tealiumツール</a>
+        <ul class="pl2  ss-tealium-tools desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/tealium-tools/optimizely-helper/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Optimizelyヘルパー</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/tealium-tools/mobile-qr-trace/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">モバイルQRトレース</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".ss-faq">よくある質問</a>
+        <ul class="pl2  ss-faq desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/frequently-asked-questions/%E3%83%AA%E3%83%BC%E3%83%89%E3%82%B9%E3%82%B3%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-lead-scoring-model">リードスコアリングモデルの作成</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/frequently-asked-questions/browser-support/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ss-browser-support">ブラウザのサポート</a></li></ul>
+      </li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/server-side/release-notes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-release-notes">リリースノート</a></li></ul></li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
+      <div class="documentation-copy ph4">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+    
+  
+  <li class="mr1 f7 lvl0"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/">ホーム</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/server-side/">サーバーサイド</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl2"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/server-side/visitor-stitching/">ビジターのスティッチング</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mt30 mb3">ビジタースティッチングのガイドライン</h1>
+</header>
+
+<div class="mv2 mid-gray fn w-100">
+  
+
+  
+    <p class="f4 fw3 lh-copy">
+      この記事では、ビジタースティッチングのガイドラインについて説明します。
+    </p>
+  
+</div>
+
+<div class="prose nested-links" id="prose">
+  <p>以下は、ビジターID属性とビジタースティッチングに関する重要なガイドラインです：</p>
+<ul>
+<li><strong>一意性</strong><br>
+ビジターID属性は、少なくとも3つの一意の文字を持ち、少なくとも6文字の長さが必要です。<br>
+<a href="/ja/server-side/visitor-stitching/visitor-id-attribute/">ビジターID属性の要件</a>について詳しく学びましょう。</li>
+<li><strong>大文字と小文字の区別</strong><br>
+ビジターID属性の値は大文字と小文字を区別するため、<code>UserName@example.com</code>は<code>username@example.com</code>とは異なります。属性値にこれらのバリエーションが含まれている場合は、<a href="/ja/server-side/attributes/data-types/string/">小文字化エンリッチメント</a>を使用して正規化します。</li>
+<li><strong>複数のID</strong><br>
+複数のビジターID属性は、属性IDの順序（最も古いものから最も新しいものへ）でOR条件として評価されます。</li>
+<li><strong>堅牢性</strong><br>
+ビジターID属性には、デバイス間でビジターと一致することが保証されている<a href="/ja/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/">ユーザー識別子</a>のみを使用する必要があります。</li>
+<li><strong>ステッチされたビジタープロファイル</strong><br>
+複数のビジタープロファイルがステッチされると、元のプロファイルは残り、ステッチされたプロファイルを保存する新しいビジタープロファイルが作成されます。</li>
+<li><strong>テストデータの回避</strong><br>
+ユーザー識別子にデフォルト値やテスト値（<code>undefined</code>、<code>unknown</code>、<code>not set</code>など）を取り込まないように注意してください。</li>
+<li><strong>共有ID</strong><br>
+スティッチングが有効になる前に、図書館や大学で使用されるような共有IDをどのように処理するかを決定し、複数のビジターが誤ってステッチされないようにします。</li>
+</ul>
+
+</div>
+
+<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
+
+  
+  <a href="/ja/server-side/visitor-stitching/create-a-visitor-id-attribute/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <section class="tl pr3">
+      <div>訪問者ID属性を作成する</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"訪問者ID属性を作成する"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
+  
+  
+</div><div class="di mr3">
+  
+  
+  <a href="/ja/server-side/visitor-stitching/diagram/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"訪問のスティッチング例 "</title>
+      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+    </svg>
+   <section class="tr pl3">
+      <div>訪問のスティッチング例</div>
+    </section>
+  </a>
+  
+
+</div></div>
+
+
+
+        <div class="bt-l b--moon-gray pv3 cb">
+          <div id="feedback_form" class="dpn">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">このページはお役にたちましたでしょうか？</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+はい</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+いいえ</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="ページの改善にご協力ください。" rows="4" cols="60"></textarea><button id="feedback_submit" class="db ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">フィードバックを送信</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">ご意見有難うございます。</p>
+  </div>
+</div>
+
+        </div>
+        <div class="bt-l b--moon-gray pt3 f6">
+          <p>最終更新日 ::  2024年March月29日
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
+      
+
+
+
+  </nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-secondary ph1-ns relative w-100 pv4 bt b--light-gray" role="contentinfo">
+  <div class="center flex-ns flex-wrap justify-between mw9 w-90 dn db-ns">
+
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="nav-list footer-heading-title">
+          <div class="footer-logo-wrapper">
+            <img class="logo" src="https://tealium.com/wp-content/uploads/2015/12/tealium_footer_logo_01-206x49.png" alt="tealium_footer_logo_01">
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Support</li>
+<li class="mb2"><a class="link" href="https://university.tealium.com/">Tealium University</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/en/support/solutions">Knowledge Base</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/" target="">Support Desk</a></li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Company</li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/">Tealium.com</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/blog/">Blog</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="https://tealium.com/careers/">Careers</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+  <div class="dpn bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+<div class="globalmenu mobilemenu dn">
+    
+
+<ul class="list hidden dib ph0 ma0 scrolling-touch tc">
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ホーム
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/iq-tag-management/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          iQ Tag Management
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          EventStream API Hub
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/functions/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          機能
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-connect/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          データコネクト
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/predict/getting-started/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Predict ML
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-storage/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          DataAccess
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/client-side-tags/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          クライアントサイド タグ
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side-connectors/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          サーバーサイド コネクタ
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/platforms/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          プラットフォーム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/api/getting-started/auth/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          管理
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ファーマ向けティーリアム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ティーリアムアイデンティティパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/tech-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          テクノロジーパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          パートナー統合
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/glossary/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          用語集
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/early-access/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          早期アクセス
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/release-notes/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          リリースノート
+        </a>
+    </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+</div>
+
+
+<div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
+    <ul class="list dib ph0 ma0 scrolling-touch tc">
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/server-side/getting-started/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          はじめに
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/server-side/data-sources/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          データソース
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/server-side/event-specifications/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          イベント仕様
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/server-side/data-connect/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          データコネクト
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/server-side/live-events-feeds/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          ライブイベントとフィード
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/server-side/attributes/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          属性
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/server-side/connectors/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          コネクタ
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/server-side/audiences/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          オーディエンス
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/server-side/visitor-stitching/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4 bg-primary-color">
+          ビジターのスティッチング
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/server-side/functions/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          関数
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/server-side/data-storage/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          データストレージ
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/server-side/insights/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Tealium Insights
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/server-side/consent/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          同意
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/server-side/save-publish/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          保存して公開
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/server-side/labels/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          ラベル
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/server-side/administration/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          管理
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/server-side/tealium-tools/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Tealiumツール
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/server-side/frequently-asked-questions/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          よくある質問
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/server-side/release-notes/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          リリースノート
+      </a>
+      </li>
+      
+      
+  
+
+</ul>
+
+</div>
+
+
+
+
+<div class="flex dn-l justify-between">
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link mr2 white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".globalmenu">Site</button>
+
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".docsmenu">Section</button>
+
+</div>
+</div>
+
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'ドキュメントの検索',
+    buttonAriaLabel: 'ドキュメントの検索',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'クエリを消去',
+      resetButtonAriaLabel: 'クエリを消去',
+      cancelButtonText: 'キャンセル',
+      cancelButtonAriaLabel: 'キャンセル',
+    },
+    startScreen: {
+      recentSearchesTitle: '最近',
+      noRecentSearchesText: '最近の検索はありません',
+      saveRecentSearchButtonTitle: 'この検索を保存',
+      removeRecentSearchButtonTitle: 'この検索を履歴から削除',
+      favoriteSearchesTitle: 'お気に入り',
+      removeFavoriteSearchButtonTitle: 'このクエリをお気に入りから削除',
+    },
+    errorScreen: {
+      titleText: '結果を取得できません',
+      helpText: 'ネットワーク接続を確認してください',
+    },
+    footer: {
+      selectText: '選択する',
+      selectKeyAriaLabel: 'キーを入力してください',
+      navigateText: 'ナビゲートする',
+      navigateUpKeyAriaLabel: '上',
+      navigateDownKeyAriaLabel: '下',
+      closeText: '閉じる',
+      closeKeyAriaLabel: 'エスケープキー',
+      searchByText: '次で検索：',
+    },
+    noResultsScreen: {
+      noResultsText: '次の結果はありません：',
+      suggestedQueryText: '次で検索してみてください：',
+      reportMissingResultsText: 'このクエリで結果が返ってくるはずですか?',
+      reportMissingResultsLinkText: '連絡願います',
+    },
+  },
+};
+var default_sections = [
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
+docsearch({
+  container: '#docsearch',
+  appId: '2V5C0M31GH',
+  apiKey: '32b47c4ec1ccc76fbe18808c48f9d8b6',
+  indexName: 'tealium_jp',
+  placeholder: 'ドキュメントの検索',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    "analytics": true ,
+    "analyticsTags": ["site"]
+  },
+  insights: true,
+  debug: false ,
+  transformItems
+});
+</script>
+
+    
+
+  </body>
+</html>
