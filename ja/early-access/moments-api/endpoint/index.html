@@ -175,10 +175,10 @@
 <div class="prose nested-links" id="prose">
   <h2 id="仕組み">仕組み</h2>
 <p>モーメントAPIエンジンは、あなたの地域、アカウント、プロファイルに対してユニークなエンドポイントを作成します。各エンジンは、各エンドポイントにユニークなエンジンIDを割り当てます。</p>
-<p>訪問者のデータは、エンジンを有効にし、訪問者がアクティブなセッションをログし、システム内でイベントを生成した後に利用可能になります。訪問者のデータをリクエストし、まだアクティブなセッションをログしていない場合、APIはデータを返しません。</p>
+<p>訪問者のデータは、エンジンを有効にし、訪問者がアクティブなセッションをログに記録し、システム内でイベントを生成した後に利用可能になります。訪問者のデータをリクエストし、まだアクティブなセッションをログに記録していない場合、APIはデータを返しません。</p>
 <p>訪問者のデータを取得するには、<a href="/ja/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Tealium iQ Advanced JavaScript Code Extension</a>を設定して、<a href="/ja/early-access/moments-api/endpoint/">Moments API endpoint</a>にリクエストを行います。</p>
 <h2 id="getメソッド">GETメソッド</h2>
-<p>GETメソッドを使用して、Moments APIエンジンで指定したオーディエンス、バッジ、属性データを取得します：</p>
+<p>GETメソッドを使用して、モーメントAPIエンジンで指定したオーディエンス、バッジ、属性データを取得します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET  https://personalization-api.<span style="color:#f92672">{</span>REGION<span style="color:#f92672">}</span>.prod.tealiumapis.com/personalization/accounts/<span style="color:#f92672">{</span>ACCOUNT<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>PROFILE<span style="color:#f92672">}</span>/engines/<span style="color:#f92672">{</span>ENGINE_ID<span style="color:#f92672">}</span>/visitors/<span style="color:#f92672">{</span>IDENTIFIER<span style="color:#f92672">}</span>?ignoreTapid<span style="color:#f92672">={</span>IGNORE_TAPID<span style="color:#f92672">}</span>&amp;suppressNotFound<span style="color:#f92672">={</span>SUPPRESS_NOT_FOUND<span style="color:#f92672">}</span>
 </span></span></code></pre></div><p>このコマンドは以下のパラメータを使用します：</p>
 <table>
@@ -208,8 +208,8 @@
 </tbody>
 </table>
 <h2 id="オブジェクト">オブジェクト</h2>
-<p>Moments APIは、エンジン設定で指定したオーディエンス、バッジ、属性フィールドを含むJSONオブジェクトとして訪問者データを返します。</p>
-<p>訪問者の属性をIDまたは名前で返すように設定できます。以下のレスポンスボディの例を参照してください：</p>
+<p>モーメントAPIは、エンジン設定で指定したオーディエンス、バッジ、属性フィールドを含むJSONオブジェクトとして訪問者データを返します。</p>
+<p>訪問者の属性をIDまたは名前で返すように設定できます。以下にレスポンスボディの例を示します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;audiences&#34;</span>: [
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;VIP&#34;</span>, 
@@ -221,28 +221,83 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;26&#34;</span>,
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;52&#34;</span>
 </span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;metrics&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;5048&#34;</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    },
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;properties&#34;</span>: {
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;5063&#34;</span>: <span style="color:#ae81ff">6.0</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;6021&#34;</span>: <span style="color:#e6db74">&#34;banner_007&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;6022&#34;</span>: <span style="color:#e6db74">&#34;voucher_614&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;6023&#34;</span>: <span style="color:#e6db74">&#34;https://domain.com/example.html&#34;</span>
-</span></span><span style="display:flex;"><span>    }  
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;5050&#34;</span>: <span style="color:#e6db74">&#34;&lt;attr_value&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;flags&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;5052&#34;</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;dates&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;5054&#34;</span>: <span style="color:#ae81ff">123456789</span>
+</span></span><span style="display:flex;"><span>    } 
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>以下のデータタイプは、Moments APIではサポートされていません：</p>
-<ul>
-<li>PIIとしてマークされた属性</li>
-<li>ブール値の配列</li>
-<li>数値の配列</li>
-<li>文字列の配列</li>
-<li>ファネル</li>
-<li>文字列のセット</li>
-<li>集計</li>
-<li>タイムライン</li>
-</ul>
+</span></span></code></pre></div><p>以下の表は、モーメントAPIがサポートするデータタイプをまとめたものです：</p>
+<table>
+<thead>
+<tr>
+<th><strong>属性タイプ</strong></th>
+<th><strong>サポート</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>バッジ</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>ブール値</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>日付</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>数値</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>文字列</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>ブール値の配列</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>数値の配列</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>文字列の配列</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>ファネル</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>文字列のセット</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>タリー</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>タイムライン</td>
+<td>✗</td>
+</tr>
+</tbody>
+</table>
+<p>PIIとしてマークされた属性はサポートされていません。</p>
 <h2 id="ヘッダー">ヘッダー</h2>
-<p>以下のHTTPヘッダーは、Moments APIリクエストで必要です：</p>
+<p>モーメントAPIリクエストには以下のHTTPヘッダーが必要です：</p>
 <ul>
-<li><strong>Referer</strong> - ドメイン許可リストと比較される値。リファラーと許可リストが一致しない場合、リクエストは拒否されます。
+<li><strong>Referer</strong> - ドメイン許可リストと比較される値。リファラと許可リストが一致しない場合、リクエストは拒否されます。
 <ul>
 <li>例：<code>https://www.example.com/</code></li>
 </ul>
@@ -273,7 +328,7 @@
 </tr>
 <tr>
 <td>403</td>
-<td>モーメントAPIエンジンが有効化されていません。</td>
+<td>モーメントAPIエンジンが有効になっていません。</td>
 </tr>
 <tr>
 <td>404</td>
@@ -341,7 +396,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月15日
+          <p>最終更新日 ::  2024年May月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

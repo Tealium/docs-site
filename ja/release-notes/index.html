@@ -390,28 +390,54 @@
 </ul>
           </div>
         
-        <div class="release-note-item" data-title="Tealium for Android (Kotlin) リリースノート" data-date="2023-09-06">
+        <div class="release-note-item" data-title="Tealium for Android (Kotlin) リリースノート" data-date="2024-05-15">
           
           
 
           <h2 class="rn-section" id="tealium-for-android-kotlin-リリースノート"><a href="/ja/platforms/android-kotlin/release-notes/">Tealium for Android (Kotlin) リリースノート</a></h2>
           <p>Tealium for Android (Kotlin) の変更の完全なリストについては、<a href="https://github.com/Tealium/tealium-kotlin/blob/master/CHANGELOG.md">GitHubの変更ログ</a>を参照してください。</p>
-<div class="f3"id="155-2023年9月">1.5.5 (2023年9月)</div>
+<div class="f3"id="160-2024年5月15日">1.6.0 (2024年5月15日)</div>
 <ul>
-<li>バグ修正: ProGuardの調整により、<code>BatchDispatch$Companion</code>クラスが見つからない問題を解決しました。</li>
-<li>マイナーなlintの警告修正</li>
+<li>Core 1.6.0
+<ul>
+<li><code>HttpClient</code>は、再試行がサポートされるレスポンスコードのみでのみ再試行をサポートするようになりました。</li>
+<li>修正: <code>ResourceRetriever</code>のリフレッシュ間隔がライブラリの設定の取得に頻繁に影響を与える問題を修正しました。</li>
+<li>修正: 欠落していた<code>ResourceEntity</code>クラスを復元しました。</li>
+</ul>
+</li>
+<li>RemoteCommandDispatcher 1.4.0
+<ul>
+<li>リモートURL構成でRemoteCommandを追加する場合、最初の起動時に<code>{command id}.json</code>という名前の<code>Asset</code>から読み込むようにフォールバックするようになりました。
+<ul>
+<li>ファイル名も指定されている場合は、その名前を使用して<code>Asset</code>を検索します。</li>
+<li>新しいリモートコマンドを追加する際に<code>filename</code>パラメータの<code>.json</code>拡張子を省略しても安全ですが、実際のファイルの<code>.json</code>拡張子は引き続き存在している必要があります。</li>
+<li>修正: リフレッシュ間隔が守られていなかった問題を修正しました。</li>
+</ul>
+</li>
+<li><code>com.tealium:kotlin-core</code>のモジュール依存関係の最小バージョンを<code>1.6.0</code>に更新しました。</li>
+</ul>
+</li>
+<li>TagManagementDispatcher 1.2.2
+<ul>
+<li>最新のIQ設定が利用可能であることを確認するために、新しいセッションでWebビューを更新します。</li>
+</ul>
+</li>
 </ul>
           </div>
         
-        <div class="release-note-item" data-title="Tealium for iOS（Swift）リリースノート" data-date="2024-03-19">
+        <div class="release-note-item" data-title="Tealium for iOS（Swift）リリースノート" data-date="2024-05-01">
           
           
 
           <h2 class="rn-section" id="tealium-for-iosswiftリリースノート"><a href="/ja/platforms/ios-swift/release-notes/">Tealium for iOS（Swift）リリースノート</a></h2>
-          <div class="f3"id="21232024年3月">2.12.3（2024年3月）</div>
-<p><strong>低影響の変更</strong></p>
+          <div class="f3"id="21302024年5月1日">2.13.0（2024年5月1日）</div>
+<p><strong>中程度の影響の変更</strong></p>
 <ul>
-<li>ディスクスペースカテゴリのプライバシーマニフェスト<code>NSPrivacyAccessedAPITypeReasons</code>を修正しました。</li>
+<li>ローカルの<code>RemoteCommands</code>を改善し、拡張子の有無に関係なくファイルパスを受け入れるようにしました。</li>
+<li>リモートコマンドとリモート設定の更新メカニズムとキャッシュを修正しました。</li>
+<li>リモートコマンドとリモート設定のリトライメカニズムを改善しました。</li>
+<li>URL <code>RemoteCommands</code>で、リモートファイルをダウンロードできない場合またはキャッシュされていない場合、<code>commandId</code>を名前として使用してバンドルされたローカルファイルを使用できるようにしました。</li>
+<li>セッションの有効期限が切れた後に<code>TagManagementWebview</code>をリフレッシュするようにしました。</li>
 </ul>
           </div>
         
@@ -497,26 +523,23 @@
 </ul>
           </div>
         
-        <div class="release-note-item" data-title="サーバーサイドコネクタのリリースノート" data-date="2024-05-08">
+        <div class="release-note-item" data-title="サーバーサイドコネクタのリリースノート" data-date="2024-05-22">
           
           
 
           <h2 class="rn-section" id="サーバーサイドコネクタのリリースノート"><a href="/ja/server-side-connectors/release-notes/">サーバーサイドコネクタのリリースノート</a></h2>
-          <div class="f3"id="2024年5月15日">2024年5月15日</div>
+          <div class="f3"id="2024年5月22日">2024年5月22日</div>
 <h4 id="新しいコネクタ">新しいコネクタ</h4>
 <ul>
-<li>新しいマーケットプレイスコネクタ：<a href="/ja/server-side-connectors/tune-postback-tracking-connector/">Tune Postback Trackingコネクタ</a></li>
+<li>新しいマーケットプレイスコネクタ: <a href="/ja/server-side-connectors/exactag-s2s-tracking-connector/">Exactag S2S Tracking</a></li>
 </ul>
 <h4 id="更新と修正">更新と修正</h4>
 <ul>
-<li>マーケットプレイスから非推奨の<a href="/ja/server-side-connectors/ambassador-connector/">Ambassadorコネクタ</a>を削除しました。</li>
-<li><a href="/ja/server-side-connectors/agillic-recipients-connector/">Agillic Recipientsコネクタ</a>を更新して、空の日付の処理に関する問題を修正しました。</li>
-<li><a href="/ja/server-side-connectors/criteo-audience-match-connector/">Criteo Audience Matchコネクタ</a>のAPIをバージョン2024-01に更新しました。</li>
-<li><a href="/ja/server-side-connectors/quantcast-audiences-connector/">Quantcast Audiencesコネクタ</a>を更新して、サポートされていない<strong>Remove User from Segment</strong>アクションを削除しました。</li>
-<li>マーケットプレイスから<a href="/ja/server-side-connectors/replyai-connector/">Reply.aiコネクタ</a>を削除しました。</li>
-<li><a href="/ja/server-side-connectors/session-ai-connector/">Session AIコネクタ</a>を更新して、<strong>Event Name</strong>を属性にマッピングできるようにしました。</li>
-<li><a href="">Salesforce Email Studio (ExactTarget)コネクタ</a>と<a href="">Salesforce Email Studio OAuth2 (ExactTarget)コネクタ</a>を更新して、数値データを含む文字列が空の文字列の場合に発生するエラーを解決しました。</li>
-<li><a href="/ja/server-side-connectors/snapchat-audience-match-connector/">Snapchat Audience Matchコネクタ</a>と<a href="/ja/server-side-connectors/snapchat-conversions-connector/">Snapchat Conversionsコネクタ</a>を更新して、MSAに追加事項を追加しました。</li>
+<li><a href="/ja/server-side-connectors/adobe-aep-connector/">Adobe Experience Platformコネクタ</a>を更新し、サンドボックス構成ヘッダーがコネクタフィールドに渡されない問題を解決しました。</li>
+<li><a href="/ja/server-side-connectors/google-dv-360-customer-match-connector/">Google DV360 Customer Matchコネクタ</a>を更新し、InsightsテーブルにMatch Rate Percentage列を追加しました。</li>
+<li><a href="/ja/server-side-connectors/nine-audience-match-connector/">Nine Audience Matchコネクタ</a>を更新し、Remove User from All SegmentsアクションのSegment Nameパラメータを削除しました。このパラメータはこのアクションのデフォルト値として<strong>REMOVE_FROM_ALL</strong>に設定されます。</li>
+<li><a href="/ja/server-side-connectors/nine-audience-match-connector/">Nine Audience Matchコネクタ</a>を更新し、ドキュメントのリンクを修正しました。</li>
+<li><a href="/ja/server-side-connectors/snapchat-conversions-connector/">Snapchat Conversionsコネクタ</a>を更新し、コネクタパラメータの更新を含む新しいCAPIを使用するようにしました。</li>
 </ul>
           </div>
         
@@ -556,21 +579,15 @@
 </ul>
           </div>
         
-        <div class="release-note-item" data-title="イベントリリースノート" data-date="2024-03-13">
+        <div class="release-note-item" data-title="イベントリリースノート" data-date="2024-05-22">
           
           
 
           <h2 class="rn-section" id="イベントリリースノート"><a href="/ja/iq-tag-management/events/release-notes/">イベントリリースノート</a></h2>
-          <div class="f3"id="2024年3月13日">2024年3月13日</div>
-<h4 id="新機能クールな機能">新機能/クールな機能</h4>
+          <div class="f3"id="2024年5月22日">2024年5月22日</div>
+<h4 id="更新と修正">更新と修正</h4>
 <ul>
-<li>以下の新機能を追加して、イベントUIを更新しました：
-<ul>
-<li><strong>イベント</strong>ページを更新して、<strong>ラベル</strong>列とは別に<strong>ライブラリ</strong>の列を追加しました。</li>
-<li>イベントの<strong>詳細</strong>スライドアウトを更新して、左列にUIDを表示します。</li>
-<li><strong>公開場所</strong>セクションを拡張して、より多くの情報を表示します。</li>
-</ul>
-</li>
+<li>YouTubeイベントの更新で、ビデオデータの収集に関する問題を解決しました。</li>
 </ul>
           </div>
         
@@ -635,7 +652,7 @@
 </ul>
           </div>
         
-        <div class="release-note-item" data-title="クライアントサイドタグのリリースノート" data-date="2024-05-08">
+        <div class="release-note-item" data-title="クライアントサイドタグのリリースノート" data-date="2024-05-15">
           
           
 
@@ -644,9 +661,9 @@
 <h4 id="更新と修正">更新と修正</h4>
 <ul>
 <li><a href="/ja/client-side-tags/adobe-appmeasurement-for-js-tag/">Adobe Analytics AppMeasurement for JSタグ</a>をバージョン2.26.0に更新しました。</li>
-<li><a href="/ja/client-side-tags/bloomreach-tag/">BloomReachタグ</a>を更新して、オブジェクト参照エラーを解消しました。</li>
-<li><a href="/ja/client-side-tags/contentsquare-ux-analytics-tag/">Contentsquare UX Analytics</a>を更新して、重複するPageViewイベントが送信される問題を解消しました。</li>
-<li><a href="/ja/client-side-tags/snap-pixel-tag/">Snap Pixelタグ</a>を更新して、<code>pixel_id</code>のマッピングに関する問題を解消しました。</li>
+<li><a href="/ja/client-side-tags/bloomreach-tag/">BloomReachタグ</a>を更新して、オブジェクト参照エラーを解決しました。</li>
+<li><a href="/ja/client-side-tags/contentsquare-ux-analytics-tag/">Contentsquare UX Analytics</a>を更新して、重複するPageViewイベントが送信される問題を解決しました。</li>
+<li><a href="/ja/client-side-tags/snap-pixel-tag/">Snap Pixelタグ</a>を更新して、<code>pixel_id</code>のマッピングに関する問題を解決しました。</li>
 </ul>
           </div>
         
@@ -789,15 +806,14 @@
 <p>許可するIPアドレスの完全なリストと、変更後の問題に対する設定のテスト方法については、<a href="/ja/server-side/administration/ip-allow-list/">許可するTealium IPアドレス</a>を参照してください。</p>
           </div>
         
-        <div class="release-note-item" data-title="同意統合リリースノート" data-date="2024-03-20">
+        <div class="release-note-item" data-title="同意統合リリースノート" data-date="2024-05-22">
           
           
 
           <h2 class="rn-section" id="同意統合リリースノート"><a href="/ja/iq-tag-management/consent/consent-integrations/release-notes/">同意統合リリースノート</a></h2>
-          <div class="f3"id="2024年3月20日">2024年3月20日</div>
-<h4 id="更新と修正">更新と修正</h4>
+          <div class="f3"id="2024年5月22日">2024年5月22日</div>
 <ul>
-<li>タグ名に特殊文字（<code>&lt;</code>、<code>&gt;</code>、<code>&amp;</code>など）が表示されない問題を修正しました。</li>
+<li>同意統合で<strong>未マッピングのタグ</strong>エラーが表示される問題を修正しました（未マッピングのタグがない場合）。</li>
 </ul>
           </div>
         

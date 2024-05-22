@@ -231,28 +231,54 @@
 </ul>
           </div>
         
-        <div class="release-note-item" data-title="Tealium for Android (Kotlin) リリースノート" data-date="2023-09-06">
+        <div class="release-note-item" data-title="Tealium for Android (Kotlin) リリースノート" data-date="2024-05-15">
           
           
 
           <h2 class="rn-section" id="tealium-for-android-kotlin-リリースノート"><a href="/ja/platforms/android-kotlin/release-notes/">Tealium for Android (Kotlin) リリースノート</a></h2>
           <p>Tealium for Android (Kotlin) の変更の完全なリストについては、<a href="https://github.com/Tealium/tealium-kotlin/blob/master/CHANGELOG.md">GitHubの変更ログ</a>を参照してください。</p>
-<div class="f3"id="155-2023年9月">1.5.5 (2023年9月)</div>
+<div class="f3"id="160-2024年5月15日">1.6.0 (2024年5月15日)</div>
 <ul>
-<li>バグ修正: ProGuardの調整により、<code>BatchDispatch$Companion</code>クラスが見つからない問題を解決しました。</li>
-<li>マイナーなlintの警告修正</li>
+<li>Core 1.6.0
+<ul>
+<li><code>HttpClient</code>は、再試行がサポートされるレスポンスコードのみでのみ再試行をサポートするようになりました。</li>
+<li>修正: <code>ResourceRetriever</code>のリフレッシュ間隔がライブラリの設定の取得に頻繁に影響を与える問題を修正しました。</li>
+<li>修正: 欠落していた<code>ResourceEntity</code>クラスを復元しました。</li>
+</ul>
+</li>
+<li>RemoteCommandDispatcher 1.4.0
+<ul>
+<li>リモートURL構成でRemoteCommandを追加する場合、最初の起動時に<code>{command id}.json</code>という名前の<code>Asset</code>から読み込むようにフォールバックするようになりました。
+<ul>
+<li>ファイル名も指定されている場合は、その名前を使用して<code>Asset</code>を検索します。</li>
+<li>新しいリモートコマンドを追加する際に<code>filename</code>パラメータの<code>.json</code>拡張子を省略しても安全ですが、実際のファイルの<code>.json</code>拡張子は引き続き存在している必要があります。</li>
+<li>修正: リフレッシュ間隔が守られていなかった問題を修正しました。</li>
+</ul>
+</li>
+<li><code>com.tealium:kotlin-core</code>のモジュール依存関係の最小バージョンを<code>1.6.0</code>に更新しました。</li>
+</ul>
+</li>
+<li>TagManagementDispatcher 1.2.2
+<ul>
+<li>最新のIQ設定が利用可能であることを確認するために、新しいセッションでWebビューを更新します。</li>
+</ul>
+</li>
 </ul>
           </div>
         
-        <div class="release-note-item" data-title="Tealium for iOS（Swift）リリースノート" data-date="2024-03-19">
+        <div class="release-note-item" data-title="Tealium for iOS（Swift）リリースノート" data-date="2024-05-01">
           
           
 
           <h2 class="rn-section" id="tealium-for-iosswiftリリースノート"><a href="/ja/platforms/ios-swift/release-notes/">Tealium for iOS（Swift）リリースノート</a></h2>
-          <div class="f3"id="21232024年3月">2.12.3（2024年3月）</div>
-<p><strong>低影響の変更</strong></p>
+          <div class="f3"id="21302024年5月1日">2.13.0（2024年5月1日）</div>
+<p><strong>中程度の影響の変更</strong></p>
 <ul>
-<li>ディスクスペースカテゴリのプライバシーマニフェスト<code>NSPrivacyAccessedAPITypeReasons</code>を修正しました。</li>
+<li>ローカルの<code>RemoteCommands</code>を改善し、拡張子の有無に関係なくファイルパスを受け入れるようにしました。</li>
+<li>リモートコマンドとリモート設定の更新メカニズムとキャッシュを修正しました。</li>
+<li>リモートコマンドとリモート設定のリトライメカニズムを改善しました。</li>
+<li>URL <code>RemoteCommands</code>で、リモートファイルをダウンロードできない場合またはキャッシュされていない場合、<code>commandId</code>を名前として使用してバンドルされたローカルファイルを使用できるようにしました。</li>
+<li>セッションの有効期限が切れた後に<code>TagManagementWebview</code>をリフレッシュするようにしました。</li>
 </ul>
           </div>
         

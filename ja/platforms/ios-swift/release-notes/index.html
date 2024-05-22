@@ -173,45 +173,53 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="21232024年3月">2.12.3（2024年3月）</h2>
-<p><strong>低影響の変更</strong></p>
+  <h2 id="21302024年5月1日">2.13.0（2024年5月1日）</h2>
+<p><strong>中程度の影響の変更</strong></p>
+<ul>
+<li>ローカルの<code>RemoteCommands</code>を改善し、拡張子の有無に関係なくファイルパスを受け入れるようにしました。</li>
+<li>リモートコマンドとリモート設定の更新メカニズムとキャッシュを修正しました。</li>
+<li>リモートコマンドとリモート設定のリトライメカニズムを改善しました。</li>
+<li>URL <code>RemoteCommands</code>で、リモートファイルをダウンロードできない場合またはキャッシュされていない場合、<code>commandId</code>を名前として使用してバンドルされたローカルファイルを使用できるようにしました。</li>
+<li>セッションの有効期限が切れた後に<code>TagManagementWebview</code>をリフレッシュするようにしました。</li>
+</ul>
+<h2 id="21232024年3月">2.12.3（2024年3月）</h2>
+<p><strong>低い影響の変更</strong></p>
 <ul>
 <li>ディスクスペースカテゴリのプライバシーマニフェスト<code>NSPrivacyAccessedAPITypeReasons</code>を修正しました。</li>
 </ul>
 <h2 id="21222024年2月">2.12.2（2024年2月）</h2>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
 <li>CocoaPodsでインストールする際にプライバシーマニフェストとの競合が発生する可能性がある問題を修正しました。</li>
 </ul>
 <h2 id="21212024年2月">2.12.1（2024年2月）</h2>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
-<li>ライブラリのバージョンを最新の（2.12.1）に修正しました。</li>
+<li>ライブラリのバージョンを最新のもの（2.12.1）に修正しました。</li>
 </ul>
 <h2 id="21202024年2月">2.12.0（2024年2月）</h2>
 <p><strong>中程度の影響の変更</strong></p>
 <ul>
 <li>XCode 15を公式にサポートするようになりました。</li>
 <li>サポートされる最小のオペレーティングシステムバージョンを増やしました：iOS 12.0、TvOS 12.0、およびMacOS 10.14。</li>
-<li>プライバシーマニフェストをSDKに追加し、プライバシーAPIの使用理由を開示します。<a href="/platforms/ios-swift/privacy-manifests">詳細を見る</a></li>
+<li>プライバシーマニフェストをSDKに追加して、プライバシーAPIの使用理由を開示します。<a href="/platforms/ios-swift/privacy-manifests">詳細を見る</a></li>
 </ul>
 <h2 id="21112024年1月">2.11.1（2024年1月）</h2>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
-<li>機能に変更はありません。<code>Swift Package Manager</code>の最小サポートオペレーティングシステムバージョンの定義を修正しました。</li>
+<li>機能的な変更はありません。<code>Swift Package Manager</code>の最小サポートオペレーティングシステムバージョンの定義を修正しました。</li>
 </ul>
 <h2 id="21102024年1月">2.11.0（2024年1月）</h2>
 <p><strong>中程度の影響の変更</strong></p>
 <ul>
 <li>サポートされる最小のオペレーティングシステムバージョンを増やしました：iOS 11.0、TvOS 11.0、WatchOS 4.0、およびMacOS 10.13。</li>
-<li><code>Application Support</code>はテレビでサポートされていないため、TvOSのディスク上のデフォルトディレクトリを<code>Application Support</code>から<code>Caches</code>に変更しました。</li>
-<li><code>iAd</code>フレームワークを<code>Attribution</code>モジュールから削除しました。Appleによって無効化され、近日中に削除される予定です。</li>
+<li><code>Attribution</code>モジュールから<code>iAd</code>フレームワークを削除しました。Appleによって無効化され、近日中に削除されるためです。</li>
 </ul>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
 <li>リモート設定からSDK全体を無効にするオプションを実装しました。</li>
 <li>Macデバイスと最新のiOSデバイスを含むデバイス名のリストを更新しました。</li>
-<li><code>TealiumVisitorProfile</code>のパースを改善し、<code>null</code>文字列を優雅に受け入れるようにしました。</li>
+<li><code>TealiumVisitorProfile</code>のパースを改善して、<code>null</code>文字列を優雅に受け入れるようにしました。</li>
 <li>エラーログの可読性を向上させました。</li>
 <li>iOSデバイスモデルのリストを更新しました。</li>
 </ul>
@@ -220,93 +228,96 @@
 <li>これはXCode 14を対象とした最終リリースです。XCode 15ではiOS 11のサポートが削除されたことに注意してください。XCode 15にインストールするには、インストール後にTealiumライブラリの最小デプロイメントターゲットをiOS 12に手動で増やす必要があります。そうしないと、アプリが起動時にクラッシュします。詳細については、<a href="https://github.com/Tealium/tealium-swift/issues/311">TEALIUM SWIFT BUG: Runtime crash on launch with Xcode 15 Release</a>を参照してください。</li>
 </ul>
 <h2 id="21012023年8月">2.10.1（2023年8月）</h2>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
-<li>Objective-Cライブラリからの以前の移行から残ったデータレイヤーのデータ（<code>app_version</code>、<code>uuid</code>、<code>visitor_id</code>、<code>last_track_event</code>、<code>last_session_created</code>）を削除しました。</li>
+<li>Objective-Cライブラリからの以前の移行時に残ったデータレイヤーのデータ（<code>app_version</code>、<code>uuid</code>、<code>visitor_id</code>、<code>last_track_event</code>、<code>last_session_created</code>）を削除しました。</li>
 <li><code>+load</code>メソッドがSwiftクラスの<code>obj-c</code>カテゴリで定義されているため、XCode 15ベータ版でクラッシュする可能性がある問題を修正しました。</li>
 </ul>
 <h2 id="21002023年5月">2.10.0（2023年5月）</h2>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
-<li>Tealiumインスタンスで<code>getTagManagementWebView</code>メソッドを追加し、クライアントが<code>isInspectable</code>フラグを設定してXCode 14.3+でデバッグできるようにしました。</li>
-<li>2つの<code>TealiumConfig</code>オブジェクトを比較する際に発生する可能性のあるクラッシュを修正しました。</li>
+<li>Tealiumインスタンスで内部のTagManagement WebViewにアクセスするための<code>getTagManagementWebView</code>メソッドを追加しました。これにより、クライアントは<code>isInspectable</code>フラグを設定してXCode 14.3以上でデバッグできます。</li>
+<li><code>TealiumConfig</code>オブジェクト内にある<code>WKWebViewConfiguration</code>を比較する際に発生する可能性のあるクラッシュを修正しました。</li>
 <li>いくつかの内部ファイルが意図せずにバックアップされ、異なるデバイスで再利用される可能性のあるエッジケースを修正しました。</li>
 </ul>
 <h2 id="2922023年4月">2.9.2（2023年4月）</h2>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
 <li>大容量のデータレイヤーの場合の起動パフォーマンスを改善しました。</li>
 <li>一部の内部モジュールでパブリッシュ設定が正しく更新されないバグを修正しました。</li>
 </ul>
 <h2 id="2912023年2月">2.9.1（2023年2月）</h2>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
-<li>JSONリモートコマンドの複合キーのオーバーライドを導入し、デフォルトの区切り文字（<code>,</code>と<code>:</code>）を新しい構成キー<code>keys_separation_delimiter</code>と<code>keys_equality_delimiter</code>で置き換えるためのオーバーライドを追加しました。</li>
+<li>JSONリモートコマンドの複合キーのオーバーライドを導入し、デフォルトの区切り文字（<code>,</code>と<code>:</code>）を新しい構成キー<code>keys_separation_delimiter</code>と<code>keys_equality_delimiter</code>で置き換えるようにしました。</li>
 <li>ライブラリを更新する際にデバイス上のTealium内部ファイルがリセットされる可能性のあるバグを修正しました。</li>
 </ul>
 <h2 id="2902023年1月">2.9.0（2023年1月）</h2>
 <p><strong>中程度の影響の変更</strong></p>
 <ul>
 <li>iOS 14.5+向けに新しいApple Search Ads APIを実装しました（Attributionモジュール）。</li>
-<li>JSONリモートコマンドに新しい静的オブジェクトマッピングと複合キー機能を追加し、使用の柔軟性を向上させました。</li>
+<li>JSONリモートコマンドに対する新しい静的オブジェクトマッピングと複合キー機能を追加し、使用の柔軟性を向上させました。</li>
 </ul>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
 <li>デバイス名のルックアップファイルを更新しました。</li>
 </ul>
 <h2 id="2822022年10月">2.8.2（2022年10月）</h2>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
-<li>ビジターIDの切り替え後に古いビジター識別子に対するビジタープロファイルリクエストが実行されないようにしました。</li>
+<li>ビジターIDが切り替わった後に古いビジター識別子に対するビジタープロファイルリクエストが実行されないようにしました。</li>
 </ul>
 <h2 id="2812022年10月">2.8.1（2022年10月）</h2>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
-<li>機能に変更はありません。Carthageでのビルドエラーを解決するために、Carthageでのビルド時にCarthageのためのクラッシュを回避しました。</li>
+<li>機能的な変更はありません。Carthageでのビルドエラーを回避するために、Carthageでのビルド時にCarthageのためのクラッシュを防ぎました。</li>
 </ul>
 <h2 id="2802022年10月">2.8.0（2022年10月）</h2>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
-<li>タグ管理モジュールのコードとスレッドセキュリティを改善しました。</li>
+<li>Tag Managementモジュールのコードとスレッドセキュリティを改善しました。</li>
 <li>VisitorServiceの<a href="/platforms/ios-swift/module-list/visitor-service/#requestvisitorprofile"><code>requestVisitorProfile</code></a>は、<code>visitorServiceRefresh</code>構成キーで設定されたタイムアウトをスキップするようになりました。</li>
-<li><code>Tealium</code>クラスの<a href="/platforms/ios-swift/api/tealium/#onvisitorid"><code>onVisitorId</code></a>の変更を通知するためのオブザーバブルを追加し、<code>resetVisitorId</code>が呼び出された場合や自動的に新しいビジターに切り替わった場合に新しいIDを通知します。</li>
+<li><code>Tealium</code>クラスの<a href="/platforms/ios-swift/api/tealium/#onvisitorid"><code>onVisitorId</code></a>の変更を通知するために、<a href="/platforms/ios-swift/api/tealium/#onvisitorid"><code>onVisitorId</code></a>の観測可能なオブジェクトを<code>Tealium</code>クラスに追加しました。これは、<code>resetVisitorId</code>が呼び出された場合や自動的に新しいビジターに切り替わった場合に新しいIDを通知するためです。</li>
 <li>新しいビジター切り替えAPIのための<a href="/platforms/ios-swift/api/tealium-config/#visitoridentitykey"><code>visitorIdentityKey</code></a>構成キーを追加しました。</li>
 <li><code>app_uuid</code>ストレージをデータレイヤーに移行し、必要に応じてアプリケーションが削除できるようにしました。</li>
-<li>現在のおよび以前のIDのすべてのストアドビジターIDを削除し、現在の<code>visitorId</code>をリセットするための<a href="/platforms/ios-swift/api/tealium/#clearstoredvisitorids"><code>clearStoredVisitorIds</code></a>メソッドを<code>Tealium</code>クラスに追加しました。</li>
-<li><a href="/platforms/ios-swift/api/tealium/#decorateurl"><code>AdobeVisitorService</code></a>モジュールの<a href="/platforms/ios-swift/api/tealium/#decorateurl"><code>decorateUrl</code></a>メソッドを追加し、AdobeクエリパラメータをURLに追加します。</li>
+<li>現在のおよび以前のIDのすべての保存されたビジターIDを削除し、現在の<code>visitorId</code>をリセットするための<a href="/platforms/ios-swift/api/tealium/#clearstoredvisitorids"><code>clearStoredVisitorIds</code></a>メソッドを<code>Tealium</code>クラスに追加しました。</li>
+<li><a href="/platforms/ios-swift/api/tealium/#decorateurl"><code>AdobeVisitorService</code></a>モジュールの<a href="/platforms/ios-swift/api/tealium/#decorateurl"><code>decorateUrl</code></a>メソッドを追加し、URLにAdobeクエリパラメータを追加する機能を追加しました。</li>
 </ul>
 <p><strong>新機能</strong></p>
 <ul>
-<li>Adobe ECIDのクエリパラメータプロバイダ機能をTag Managementモジュールに追加し、WebビューURLにAdobeクエリパラメータを追加します。</li>
-<li>リモートコマンドで<code>all_events</code>および<code>all_views</code>のコマンドマッピングをサポートし、それぞれイベントとビューでトリガーされます。</li>
-<li><a href="/platforms/getting-started-mobile/identity-resolution/#visitor-switching">ビジター切り替え</a>のサポートを追加しました。</li>
+<li>Adobe ECIDのクエリパラメータプロバイダ機能をTag Managementモジュールに追加し、WebビューURLにAdobeクエリパラメータを追加する機能を追加しました。</li>
+<li>リモートコマンドで<code>all_events</code>および<code>all_views</code>に対するコマンドマッピングをサポートしました。これらはそれぞれイベントとビューでトリガされます。</li>
+<li><a href="/platforms/getting-started-mobile/identity-resolution/#visitor-switching">ビジタースイッチング</a>のサポートを追加しました。</li>
 </ul>
 <h2 id="2702022年9月">2.7.0（2022年9月）</h2>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
 <li><code>SKAdNetwork</code>の呼び出しを更新し、iOS 15の場合は<code>updatePostbackConversionValue</code>を使用するようにしました。</li>
 </ul>
-<p><strong>高影響の変更</strong></p>
+<p><strong>高い影響の変更</strong></p>
 <ul>
-<li><code>trackUserConsentCategories</code>への初回呼び出しを削除しました。これにより、それが呼び出されることを期待している場合に影響を与える可能性があります。</li>
+<li><code>trackUserConsentCategories</code>への初期呼び出しを削除しました。これにより、依存関係がある場合に影響を受ける可能性があります。</li>
 </ul>
 <p><strong>新機能</strong></p>
 <ul>
-<li>カスタムサーバーサイドの同意の強制をサポートするために、Tealium同意カテゴリ属性の名前を上書きするための<a href="/platforms/ios-swift/api/tealium-config/#overrideconsentcategorieskey"><code>overrideConsentCategoriesKey</code></a>構成オプションを追加しました。</li>
+<li>カスタムサーバーサイドの同意のカスタム強制をサポートするために、<a href="/platforms/ios-swift/api/tealium-config/#overrideconsentcategorieskey"><code>overrideConsentCategoriesKey</code></a>の設定オプションを追加しました。</li>
 </ul>
 <h2 id="2652022年5月">2.6.5（2022年5月）</h2>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
-<li>機能に変更はありません。プリビルドフレームワークでコンパイルエラーが発生する問題を修正しました。</li>
+<li>機能的な変更はありません。プリビルドフレームワークでのコンパイルエラーを修正しました。</li>
 </ul>
 <h2 id="2642022年5月">2.6.4（2022年5月）</h2>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
-<li>ビジタープロファイルのためのビジターIDの格納と更新ロジックを改善しました。</li>
-<li>アプリケーションの内部ファイルが意図せずにバックアップされ、異なるデバイスで再利用される可能性のあるエッジケースを修正しました。</li>
+<li>ビジタープロファイルのための<code>visitorId</code>の保存と更新ロジックを改善しました。</li>
+<li>アプリがバックグラウンドで実行されている場合に位置情報の更新を有効にするための設定フラグ<a href="/platforms/ios-swift/api/tealium-config/#enablebackgroundlocation"><code>enableBackgroundLocation</code></a>を追加しました。</li>
+<li>キューに入れられたトラッキングイベントの有効期限を指定するための<a href="/platforms/ios-swift/api/tealium-config/#dispatchexpiration"><code>dispatchExpiration</code></a>ロジックを修正し、-1を指定してキューに入れられたトラッキングイベントが期限切れにならないようにしました。</li>
+<li>ビルドエラーを解決するために、プリビルドフレームワークでのCatalystのサポートを削除しました。</li>
+<li>リモートコマンドの名前とバージョンのトラッキングを修正しました。</li>
 </ul>
 <h2 id="2632022年3月">2.6.3（2022年3月）</h2>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
 <li>パブリッシュ設定が複数回取得される可能性のあるバグを修正しました。</li>
 <li><code>untilRestart</code>の有効期限を持つ<code>dataLayer</code>変数が削除されないバグを修正しました。</li>
@@ -319,128 +330,149 @@
 </li>
 </ul>
 <h2 id="2622022年2月">2.6.2（2022年2月）</h2>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
-<li>セッションの2番目のイベントでセッションヒットが送信されるようにセッションカウントロジックを修正しました。</li>
+<li>セッションのカウントロジックを修正し、セッションの2番目のイベントでセッションヒットを送信するようにしました。</li>
 </ul>
 <h2 id="2612022年2月">2.6.1（2022年2月）</h2>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
 <li>列挙型ベースのエラーのログを改善しました。</li>
-<li><code>TealiumConfig</code>の<a href="/platforms/ios-swift/api/tealium-config/#sessioncountingenabled"><code>sessioncountingenabled</code></a>フラグを追加し、セルフホスト型のJavaScriptファイルを使用するTealium iQアカウントでのセッションカウントを無効にすることができるようにしました。</li>
+<li><code>TealiumConfig</code>の<a href="/platforms/ios-swift/api/tealium-config/#sessioncountingenabled"><code>sessioncountingenabled</code></a>フラグを追加し、セルフホスト型のJavaScriptファイルを使用するTealium iQアカウントでセッションカウントを無効にすることができるようにしました。</li>
 </ul>
 <h2 id="2602022年1月">2.6.0（2022年1月）</h2>
 <p><strong>中程度の影響の変更</strong></p>
 <ul>
-<li>新しい<a href="/platforms/ios-swift/module-list/in-app-purchase/"><code>TealiumInAppPurchase</code></a>モジュールを追加し、アプリ内購入を自動的にトラッキングします。</li>
-</ul>
-<p><strong>低影響の変更</strong></p>
-<ul>
-<li>データレイヤーとCollectorの変数をすべて<a href="/platforms/ios-swift/api/tealium/#gathertrackdata"><code>Tealium.gatherTrackData()</code></a>メソッドを使用して利用できるようにしました。</li>
+<li>新しいApple Search Ads API（iOS 14.5+）をAttributionモジュールに実装しました。</li>
+<li>データレイヤーとCollectorの変数をすべてのデータレイヤーとCollectorの変数を使用して取得するためのメソッド<a href="/platforms/ios-swift/api/tealium/#gathertrackdata"><code>Tealium.gatherTrackData()</code></a>を追加しました。</li>
 <li><code>TealiumKeys</code>を<code>TealiumDataKeys</code>に名前変更し、<a href="/platforms/ios-swift/api/tealium/#gathertrackdata"><code>gatherTrackData()</code></a>で使用するために追加しました。</li>
+<li>リリースビルドでは非コーダブルな値を無視し、デバッグビルドではクラッシュするようにすることで、Codableのサポートを改善しました。</li>
+<li>ジオフェンスの読み込みに対するメインスレッドの使用を減らしました。</li>
+</ul>
+<p><strong>新機能</strong></p>
+<ul>
+<li>ストリーミングメディアをアプリ内で自動的にトラッキングする<a href="/platforms/ios-swift/module-list/media/">メディアモジュール</a>を追加しました。</li>
+<li><a href="/platforms/ios-swift/module-list/in-app-purchase/"><code>TealiumInAppPurchase</code></a>モジュールを追加し、アプリ内購入を自動的にトラッキングする機能を追加しました。</li>
+</ul>
+<p><strong>低い影響の変更</strong></p>
+<ul>
+<li>デバイスモデル名のリストを更新しました。</li>
+</ul>
+<h2 id="2512021年12月">2.5.1（2021年12月）</h2>
+<p><strong>中程度の影響の変更</strong></p>
+<ul>
+<li>静的ライブラリとしてコンパイルする場合にSwiftコードのインポートをObjective-Cファイルで修正しました。これにより、Carthageを使用して依存関係を追加する場合にAppStoreの提出エラーが発生しなくなります。</li>
+<li>Carthageでビルドするために、<code>tealium-swift.xcodeproj</code>内の<code>TealiumAttribution</code>スキームを追加しました。</li>
+</ul>
+<h2 id="2502021年11月">2.5.0（2021年11月）</h2>
+<p><strong>低い影響の変更</strong></p>
+<ul>
+<li>Apple Watchでのトラッキングができなくなるバグを修正しました。</li>
+<li>AppDelegateでのディープリンクトラッキングができなくなるバグを修正しました。</li>
+<li>Objective-Cライブラリからの移行時にクラッシュする可能性のあるライフサイクルモジュールを修正しました。</li>
+</ul>
+<p><strong>新機能</strong></p>
+<ul>
+<li>SwiftUIとUIKitの両方をサポートし、クロスプラットフォーム（iOS、watchOS、tvOS、macOS）で使用できる<a href="/platforms/ios-swift/module-list/autotracking/">AutoTrackingモジュール</a>を追加しました。</li>
+</ul>
+<p><strong>低い影響の変更</strong></p>
+<ul>
+<li>AutoTrackingモジュールのSPMサポートを追加しました。</li>
+<li>シーンデリゲートとSwiftUIアプリのディープリンクの自動ハンドリングを追加しました。</li>
+<li>自動ディープリンクトラッキングを無効にするための値が<code>false</code>の<code>TealiumAutotrackingDeepLinkEnabled</code>というinfo.plistフラグを追加しました。</li>
+<li>ディープリンクの手動トラッキングをサポートするために、SwiftUIの場合は<code>trackingAppOpenUrl()</code>ビューモディファイアまたは<code>TealiumAppTrackable</code>コンテナビューを使用し、UIKitの場合はAppDelegateまたはSceneDelegateから<code>handleDeepLink()</code>を使用します。</li>
+</ul>
+<p><strong>低い影響の変更</strong></p>
+<ul>
+<li><a href="/platforms/ios-swift/api/tealium/#gathertrackdata"><code>Tealium.gatherTrackData()</code></a>を使用してすべてのデータレイヤーとCollectorの変数を利用できるようにしました。</li>
+<li>一貫性のために<code>TealiumKeys</code>を<code>TealiumDataKeys</code>に名前変更しました。</li>
 <li>リリースビルドでは非コーダブルな値を無視し、デバッグビルドではクラッシュするようにすることで、Codableのサポートを改善しました。</li>
 <li>ジオフェンスの読み込みに対するメインスレッドの使用を減らしました。</li>
 </ul>
 <p><strong>既知の問題</strong></p>
 <ul>
-<li>CocoaPodsプラットフォームのiOSバージョンは、リンティングの問題により11に増加しています（ただし、必要に応じてポストインストールスクリプトで9に下げても安全です）。</li>
+<li>CocoaPodsのプラットフォームiOSバージョンは、リンティングの問題により11に増加しています（ただし、必要に応じてポストインストールスクリプトで9に下げても安全です）。</li>
 <li>CarthageはXcode 13で警告を生成します（https://github.com/Carthage/Carthage/issues/3238）。</li>
 </ul>
 <h2 id="2462021年10月">2.4.6（2021年10月）</h2>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
-<li>HTTPリクエストを内部コマンドに送信する前にRemoteCommandを解放するとクラッシュする可能性のあるバグを修正しました。</li>
-<li>セッションが30分を超える場合にデータレイヤー変数が永続化されないバグを修正しました。</li>
-<li><code>batterySaver</code>機能が無効化されている場合に<code>isLowPowerModeEnabled</code>通知の登録を回避し、iOS 15の内部デッドロックでクラッシュする可能性を回避しました。</li>
-<li>トラッキング設定が正しく更新されないバグを修正しました。</li>
+<li><code>RemoteCommand</code>を解放する前にHTTPリクエストを送信するとクラッシュする可能性のあるバグを修正しました。</li>
+<li>セッションが30分以上続く場合にデータレイヤー変数が永続化されないバグを修正しました。</li>
+<li><code>batterySaver</code>機能が無効化されている場合に<code>isLowPowerModeEnabled</code>の通知に登録しないようにし、iOS 15の内部デッドロックでクラッシュする可能性を回避しました。</li>
+<li>既定のクッキーの移行ロジックを削除しました。これは、<code>UIWebView</code>から<code>WKWebView</code>にクッキーを移行するために使用されていました。</li>
+<li>URLのバリデーションに使用される正規表現を更新しました。これにより、localhost、ローカルIP、およびポートを持つURLなど、より一般的でないURLを使用できるようになりました。</li>
 </ul>
-<h2 id="2452021年9月">2.4.5（2021年9月）</h2>
-<p><strong>高影響の変更</strong></p>
+<h2 id="2322021年6月">2.3.2（2021年6月）</h2>
+<p><strong>中程度の影響の変更</strong></p>
 <ul>
-<li>Apple Watchでのトラッキングができないバグを修正しました。</li>
-<li>AppDelegateでのディープリンクトラッキングができないバグを修正しました。</li>
+<li>永続ストレージモジュールを更新し、iOS 14.7+へのアップグレード時に永続データが削除されないようにしました。</li>
+</ul>
+<p><strong>低い影響の変更</strong></p>
+<ul>
+<li>リモートコマンドモジュールの内部の<code>NotificationCenter</code>を削除し、デリゲートパターンに置き換えました。</li>
+</ul>
+<h2 id="2312021年5月">2.3.1（2021年5月）</h2>
+<p><strong>低い影響の変更</strong></p>
+<ul>
+<li><code>policy</code>キーを<code>TealiumConsentPolicy</code>に変更し、デフォルトの同意ポリシーを<code>policy</code>に戻しました。</li>
+</ul>
+<h2 id="2302021年4月">2.3.0（2021年4月）</h2>
+<p><strong>高い影響の変更</strong></p>
+<ul>
+<li>リモートコマンド機能が更新され、リモートまたはローカルにホストされたJSON構成ファイルを使用する新しいオプションが追加され、Webビューが不要になりました。リモートコマンドタグオプションを使用する場合、iQ Tag ManagementでWebビューが必要です。<a href="/platforms/remote-commands/how-it-works/#json-configuration-file">JSON制御リモートコマンド</a>について詳しくは、<a href="/platforms/remote-commands/how-it-works/#json-configuration-file">こちら</a>をご覧ください。</li>
+<li>iOS 14+の_Approximate Location Tracking_をサポートするためのサポートを追加しました。<code>TealiumLocation</code>モジュールを介して<code>requestTemporaryFullAccuracyAuthorization(purposeKey:)</code>関数を使用します。<a href="/platforms/ios-swift/module-list/location/#approximate-location-tracking-ios-14">iOS 14 Location Updates</a>と<a href="https://developer.apple.com/documentation/corelocation/cllocationmanager/3600217-requesttemporaryfullaccuracyauth">requesting temporary full authorization</a>について詳しくは、こちらをご覧ください。</li>
 </ul>
 <p><strong>中程度の影響の変更</strong></p>
 <ul>
-<li>Objective-Cライブラリからの移行時にライフサイクルモジュールがクラッシュする問題を修正しました。</li>
+<li><code>platform</code>変数の値を小文字に変更して、モバイルセッションタイマーを修正しました。以前は、セッションはWebと同様に測定されていました（一貫したアクティビティの30分）。<code>platform</code>変数を小文字に変更することで、Customer Data Hubは受信データをモバイルセッションとして認識し、セッションの長さが2分に短縮されます。</li>
 </ul>
-<p><strong>低影響の変更</strong></p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Loadルールが<code>platform</code>の値を区別するように設定されている場合（<code>iOS</code> vs <code>ios</code>など）、Loadルールを更新して<code>tealium_event_type</code>を確認するようにしてください。</p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
-<li>構成内の<code>visitorServiceDelegate</code>と<code>webViewDelegates</code>を弱参照に変更し、メモリリークの可能性を回避しました。</li>
-<li>同じ<code>commandId</code>を持つ2つのリモートコマンドの競合を回避するためのチェックを追加しました。</li>
-<li>ディープリンクが自動的に検出され、リファラが存在する場合、または<code>Tealium.handleDeepLink(_:referrer:)</code>に渡された場合に追加される新しいキー<code>deep_link_referrer_app</code>と<code>deep_link_referrer_url</code>を追加しました。</li>
-<li>ディープリンクのクエリパラメータの処理を改善し、同じセッション中に複数のディープリンクを受け取る場合に古いクエリパラメータを削除するようにしました。</li>
-<li>最新のiPhone、iPad、およびApple Watchモデルを含むデバイスモデル名のリストを更新しました。</li>
-</ul>
-<h2 id="2442021年9月">2.4.4（2021年9月）</h2>
-<ul>
-<li>パブリッシングの問題により、バージョンがスキップされました。</li>
-</ul>
-<h2 id="2422021年8月">2.4.2（2021年8月）</h2>
-<p><strong>低影響の変更</strong></p>
-<ul>
-<li>IDFAとATTの承認ステータスが実行時に更新されない可能性のあるバグを修正しました。</li>
-</ul>
-<h2 id="2412021年7月">2.4.1（2021年7月）</h2>
-<p><strong>低影響の変更</strong></p>
-<ul>
-<li>IDFAとATTの承認ステータスが実行時に更新されない可能性のあるバグを修正しました。</li>
-<li>Objective-Cライブラリからの移行がデフォルトで無効になっていたバグを修正しました。</li>
-</ul>
-<h2 id="2402021年7月">2.4.0（2021年7月）</h2>
-<p><strong>中程度の影響の変更</strong></p>
-<ul>
-<li>同意のステータスの有効期限を設定し、ステータスが期限切れになったときにトリガーされるコールバックを設定するオプションを追加しました。<a href="/platforms/ios-swift/consent-management/">同意管理について詳しく見る</a>。</li>
-<li>ユーザーのビジターIDをリセットするためのパブリックメソッドを追加しました。<a href="/platforms/ios-swift/api/tealium/#resetvisitorid"><code>resetVisitorId</code></a>を参照してください。</li>
-<li>Tealiumのリリース時にLifecycleリスナーを削除しました。</li>
-</ul>
-<p><strong>低影響の変更</strong></p>
-<ul>
-<li><code>TealiumCore</code>を埋め込みフレームワークから削除し、Carthageを使用して依存関係を設定している場合にAppStoreの提出エラーが発生する問題を解決しました。</li>
-<li>Carthageでビルドするために<code>tealium-swift.xcodeproj</code>内の<code>TealiumAttribution</code>スキームを再追加しました。</li>
+<li><code>origin: mobile</code>をトラックペイロードに追加しました。</li>
 </ul>
 <h2 id="2222021年1月">2.2.2（2021年1月）</h2>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
-<li>パーシステントデータがiOS 14.7+にアップグレードする際に削除されないように、パーシステントストレージモジュールを更新しました。</li>
-</ul>
-<p><strong>低影響の変更</strong></p>
-<ul>
-<li>リモートコマンドのタグオプションを使用している場合、関連するTiQアカウント/プロファイルの<code>mobile.html</code>テンプレートも更新する必要があります。この操作を実行しないと、Tealiumで重複したセッションが記録されます。テンプレートの更新方法については、<a href="/platforms/ios-swift/install/#logging">テンプレートについて</a>を参照するか、アカウントマネージャーに連絡してサポートを受けてください。</li>
+<li>ユーザーの同意ステータスの有効期限を設定し、同意が期限切れになったときにトリガーされるコールバックを追加するオプションを追加しました。同意管理について詳しくは、<a href="/platforms/ios-swift/consent-management/">同意管理</a>のドキュメントをご覧ください。</li>
+<li>ユーザーのビジターIDをリセットするためのパブリックメソッドを追加しました。</li>
+<li>Tealiumのデイリゲートを解放する際にリスナーを削除しました。</li>
 </ul>
 <h2 id="2212021年1月">2.2.1（2021年1月）</h2>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
-<li>Carthageを使用して依存関係を設定している場合、AppStoreの提出エラーが発生する問題を解決するために、埋め込みフレームワークとしての<code>TealiumCore</code>を削除しました。</li>
+<li>Carthageを使用して依存関係を追加する場合にAppStoreの提出エラーが発生するため、<code>TealiumCore</code>を埋め込みフレームワークから削除しました。</li>
+<li>Carthageでビルドするために、<code>tealium-swift.xcodeproj</code>内の<code>TealiumAttribution</code>スキームを追加しました。</li>
 </ul>
 <h2 id="2202020年11月">2.2.0（2020年11月）</h2>
 <p><strong>新機能</strong></p>
 <ul>
-<li>同意管理モジュールにCCPA APIを追加しました。<a href="/platforms/ios-swift/consent-management/">同意管理</a>のドキュメントで詳細を確認してください。</li>
-<li>ネイティブホストされたデータレイヤーサポート</li>
-<li>ユーザーがアプリをディープリンク、ユニバーサルリンク、またはクエリ文字列パラメータから開いた場合に、ディープリンクURL、ユニバーサルリンクURL、およびクエリ文字列パラメータをデータレイヤーに追加する自動ディープリンクトラッキング</li>
+<li>同意管理モジュールにCCPA APIを追加しました。同意管理については、<a href="/platforms/ios-swift/consent-management/">同意管理</a>のドキュメントをご覧ください。</li>
+<li>ネイティブホステッドデータレイヤーサポート</li>
+<li>ユーザーがアプリをディープリンク、ユニバーサルリンク、またはクエリ文字列パラメータを使用して開いた場合に、ディープリンクURL、ユニバーサルリンクURL、およびクエリ文字列パラメータをデータレイヤーに追加する自動ディープリンクトラッキング</li>
 <li>Customer Data Hub UIからQRコードをスキャンしてトレースを開始する機能</li>
-<li>Appleが推奨する<a href="https://developer.apple.com/documentation/os/oslog"><code>OSLog</code></a>を使用する新しい<code>TealiumLogger</code>を追加しました。<code>TealiumConfig</code>オブジェクトの<code>logType</code>プロパティを設定することで、引き続きprintを使用するオプションもあります。<a href="/platforms/ios-swift/install/#logging">ログ記録</a>について詳しく読む。</li>
-<li>パフォーマンスの向上のために、複数の補助モジュールをCoreライブラリに統合し、インストールがより迅速かつ簡単になりました。詳細については、<a href="/platforms/ios-swift/modules/">モジュールセクション</a>を参照してください。</li>
-<li>より明確なスクリーンとイベントのトラッキングを提供するために、<code>track()</code>メソッドを更新しました。<a href="/platforms/ios-swift/track/">更新された<code>track()</code>メソッドについて詳しく読む</a>。</li>
-<li>データ変数の有効期限のオプションをサポートするようになりました。詳細については、<a href="/platforms/ios-swift/data-layer/">データレイヤー</a>を参照してください。</li>
-<li>セッションカウントのロジックを使用せずにネイティブのセッションカウントをサポートするようになりました。これにより、より正確なセッションカウントが可能になり、バックグラウンドのアクティビティが新しいセッションをトリガーし、予想よりも高いセッションカウントが発生するエッジケースが修正されます。</li>
+<li>Appleが推奨する<a href="https://developer.apple.com/documentation/os/oslog"><code>OSLog</code></a>を使用する新しい<code>TealiumLogger</code>を追加しました。<code>TealiumConfig</code>オブジェクトの<code>logType</code>プロパティを設定することで、引き続き<code>print</code>を使用するオプションもあります。<a href="/platforms/ios-swift/install/#logging">Logging</a>について詳しくは、こちらをご覧ください。</li>
+<li>パフォーマンスの向上のために、いくつかの補助モジュールをCoreライブラリに統合しました。詳細については、<a href="/platforms/ios-swift/modules/">モジュールセクション</a>をご覧ください。</li>
+<li>更新された<code>track()</code>メソッドを使用して、<code>Dispatch</code>タイプの<code>View</code>または<code>Event</code>を受け入れるようにしました。これにより、1つの<code>track</code>メソッドをサポートし、スクリーンとイベントのトラッキングについてより明確にします。更新された<code>track()</code>メソッドについては、<a href="/platforms/ios-swift/track/">こちら</a>をご覧ください。</li>
+<li>データ変数の有効期限のさらなるオプションをサポートしました。詳細については、<a href="/platforms/ios-swift/data-layer/">データレイヤー</a>をご覧ください。</li>
+<li>セッションカウントのためのutag.js内のセッションカウントロジックの代わりに、ネイティブのセッションカウントをサポートしました。これにより、より正確なセッションカウントが可能になり、バックグラウンドのアクティビティが新しいセッションをトリガーし、予想よりもセッションカウントが高くなるエッジケースが修正されます。</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>⚠️<strong>重要</strong>⚠️ タグ管理モジュールをディスパッチオプションとして使用している場合、関連するTiQアカウント/プロファイルの関連する<code>mobile.html</code>テンプレートも更新する必要があります。この操作を実行しないと、Tealiumで重複したセッションが記録されます。テンプレートの更新方法については、<a href="/platforms/ios-swift/install/#logging">テンプレートについて</a>を参照するか、アカウントマネージャーに連絡してサポートを受けてください。</p>
-<p><strong>高影響の変更</strong></p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>⚠️<strong>重要</strong>⚠️ もし<a href="/platforms/ios-swift/module-list/tag-management/">Tag Managementモジュール</a>をディスパッチオプションとして使用している場合、関連するTiQアカウント/プロファイルの<code>mobile.html</code>テンプレートも更新する必要があります。この手順を実行しないと、Tealiumで重複したセッションが記録されます。テンプレートの更新方法については、<a href="/iq-tag-management/templates/about/">テンプレートについて</a>をご覧いただくか、アカウントマネージャーにお問い合わせください。</p>
+<p><strong>高い影響の変更</strong></p>
 <ul>
 <li>Swiftのベストプラクティスに合わせてAPIを更新しました。</li>
-<li>パフォーマンスを向上させるためにモジュールシステムを最適化しました。</li>
-<li>パフォーマンスを向上させるために各モジュールを最適化しました。</li>
+<li>パフォーマンス向上のためにモジュールシステムを最適化しました。</li>
+<li>パフォーマンス向上のために各モジュールを最適化しました。</li>
 <li>APIのシンプルさのために複数のデリゲートオプションを削除しました。</li>
 <li>接続のチェックを改善しました - サポートされているデバイスでは<code>NWPathMonitor</code>を使用します。</li>
 <li>プロジェクトからCrashReporterモジュールを削除し、使用する場合は別のリポジトリに追加しました。</li>
 <li>RemoteCommandsモジュールのNotificationCenterを削除し、デリゲートパターンに置き換えました。</li>
 </ul>
-<p><strong>低影響の変更</strong></p>
+<p><strong>低い影響の変更</strong></p>
 <ul>
 <li>テスト可能性のためにより多くのプロトコルと結果タイプを追加しました。</li>
-<li>一貫性のあるクラス名を更新しました。</li>
+<li>一貫性のためにクラス名を更新しました。</li>
 <li>インラインのコードドキュメントを追加しました。</li>
 <li>ユニットテストを更新し、パフォーマンステストを追加しました。</li>
 </ul>
@@ -489,7 +521,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月16日
+          <p>最終更新日 ::  2024年May月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -503,7 +535,8 @@
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#21232024%E5%B9%B43%E6%9C%88" href="javascript:void(0)">2.12.3（2024年3月）</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#21302024%E5%B9%B45%E6%9C%881%E6%97%A5" href="javascript:void(0)">2.13.0（2024年5月1日）</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#21232024%E5%B9%B43%E6%9C%88" href="javascript:void(0)">2.12.3（2024年3月）</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#21222024%E5%B9%B42%E6%9C%88" href="javascript:void(0)">2.12.2（2024年2月）</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#21212024%E5%B9%B42%E6%9C%88" href="javascript:void(0)">2.12.1（2024年2月）</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#21202024%E5%B9%B42%E6%9C%88" href="javascript:void(0)">2.12.0（2024年2月）</a></li>
@@ -524,12 +557,12 @@
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2622022%E5%B9%B42%E6%9C%88" href="javascript:void(0)">2.6.2（2022年2月）</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2612022%E5%B9%B42%E6%9C%88" href="javascript:void(0)">2.6.1（2022年2月）</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2602022%E5%B9%B41%E6%9C%88" href="javascript:void(0)">2.6.0（2022年1月）</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2512021%E5%B9%B412%E6%9C%88" href="javascript:void(0)">2.5.1（2021年12月）</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2502021%E5%B9%B411%E6%9C%88" href="javascript:void(0)">2.5.0（2021年11月）</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2462021%E5%B9%B410%E6%9C%88" href="javascript:void(0)">2.4.6（2021年10月）</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2452021%E5%B9%B49%E6%9C%88" href="javascript:void(0)">2.4.5（2021年9月）</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2442021%E5%B9%B49%E6%9C%88" href="javascript:void(0)">2.4.4（2021年9月）</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2422021%E5%B9%B48%E6%9C%88" href="javascript:void(0)">2.4.2（2021年8月）</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2412021%E5%B9%B47%E6%9C%88" href="javascript:void(0)">2.4.1（2021年7月）</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2402021%E5%B9%B47%E6%9C%88" href="javascript:void(0)">2.4.0（2021年7月）</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2322021%E5%B9%B46%E6%9C%88" href="javascript:void(0)">2.3.2（2021年6月）</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2312021%E5%B9%B45%E6%9C%88" href="javascript:void(0)">2.3.1（2021年5月）</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2302021%E5%B9%B44%E6%9C%88" href="javascript:void(0)">2.3.0（2021年4月）</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2222021%E5%B9%B41%E6%9C%88" href="javascript:void(0)">2.2.2（2021年1月）</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2212021%E5%B9%B41%E6%9C%88" href="javascript:void(0)">2.2.1（2021年1月）</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2202020%E5%B9%B411%E6%9C%88" href="javascript:void(0)">2.2.0（2020年11月）</a></li>

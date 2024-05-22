@@ -172,77 +172,100 @@
 
 <div class="prose nested-links" id="prose">
   <p>Tealium for Android (Kotlin) の変更の完全なリストについては、<a href="https://github.com/Tealium/tealium-kotlin/blob/master/CHANGELOG.md">GitHubの変更ログ</a>を参照してください。</p>
+<h2 id="160-2024年5月15日">1.6.0 (2024年5月15日)</h2>
+<ul>
+<li>Core 1.6.0
+<ul>
+<li><code>HttpClient</code>は、再試行がサポートされるレスポンスコードのみでのみ再試行をサポートするようになりました。</li>
+<li>修正: <code>ResourceRetriever</code>のリフレッシュ間隔がライブラリの設定の取得に頻繁に影響を与える問題を修正しました。</li>
+<li>修正: 欠落していた<code>ResourceEntity</code>クラスを復元しました。</li>
+</ul>
+</li>
+<li>RemoteCommandDispatcher 1.4.0
+<ul>
+<li>リモートURL構成でRemoteCommandを追加する場合、最初の起動時に<code>{command id}.json</code>という名前の<code>Asset</code>から読み込むようにフォールバックするようになりました。
+<ul>
+<li>ファイル名も指定されている場合は、その名前を使用して<code>Asset</code>を検索します。</li>
+<li>新しいリモートコマンドを追加する際に<code>filename</code>パラメータの<code>.json</code>拡張子を省略しても安全ですが、実際のファイルの<code>.json</code>拡張子は引き続き存在している必要があります。</li>
+<li>修正: リフレッシュ間隔が守られていなかった問題を修正しました。</li>
+</ul>
+</li>
+<li><code>com.tealium:kotlin-core</code>のモジュール依存関係の最小バージョンを<code>1.6.0</code>に更新しました。</li>
+</ul>
+</li>
+<li>TagManagementDispatcher 1.2.2
+<ul>
+<li>最新のIQ設定が利用可能であることを確認するために、新しいセッションでWebビューを更新します。</li>
+</ul>
+</li>
+</ul>
 <h2 id="155-2023年9月">1.5.5 (2023年9月)</h2>
 <ul>
-<li>バグ修正: ProGuardの調整により、<code>BatchDispatch$Companion</code>クラスが見つからない問題を解決しました。</li>
-<li>マイナーなlintの警告修正</li>
+<li>修正: ProGuardの調整により、<code>BatchDispatch$Companion</code>クラスが見つからない問題を解決しました。</li>
+<li>マイナーリントの警告修正</li>
 </ul>
 <h2 id="154-2023年8月">1.5.4 (2023年8月)</h2>
 <ul>
 <li>Core 1.5.4
 <ul>
-<li>セッションデータの有効期限バグ修正: 起動時にセッションスコープのデータが期限切れにならない問題を修正しました。</li>
-<li>イベントルーターのイベントバッファリング: SDKが準備完了するまでイベントをバッファリングし、起動時にイベントが見逃されないようにしました。</li>
-<li>データベースロックのクラッシュバグ修正: 永続性の問題により、いくつかの未処理の例外がクラッシュの原因となる可能性があるため、修正しました。</li>
+<li>セッションデータの有効期限のバグ修正: セッションスコープのデータが起動時に期限切れにならない問題を修正しました。</li>
+<li>イベントルーターイベントのバッファリング: SDKが準備完了するまでイベントをバッファリングし、起動時にイベントが見逃されないようにします。</li>
+<li>データベースロックのクラッシュバグ修正: 永続性の未処理例外がクラッシュの可能性につながる問題を修正しました。</li>
 <li>ProGuardルールの更新により、誤って難読化された<code>BatchDispatch</code>クラスを復元しました。</li>
 </ul>
 </li>
 <li>AdIdentifier 1.1.2
 <ul>
-<li>バグ修正: DataLayerの書き込みをTealiumのバックグラウンドスレッドに移動しました。</li>
+<li>修正: データレイヤーの書き込みをTealiumのバックグラウンドスレッドに移動しました。</li>
 </ul>
 </li>
 </ul>
 <h2 id="153-2023年6月">1.5.3 (2023年6月)</h2>
 <ul>
-<li>データベースのバグ修正: 書き込み可能なアクションを実行する前にデータベースの状態をチェックし、データベースが完全に動作するまでイベントのキューイングを許可しました。</li>
-<li>ライブラリ設定のバグ修正: リモート設定の取得と保存方法を更新しました。</li>
+<li>データベースのバグ修正: 書き込み可能なアクションを実行する前にデータベースの状態をチェックし、データベースが完全に動作するまでイベントのキューイングを許可します。</li>
+<li>ライブラリの設定のバグ修正: リモート設定の取得と保存方法を更新しました。</li>
 <li>モジュールマネージャーのバグ修正: スレッドセーフなコレクションに更新しました。</li>
 </ul>
 <h2 id="152-2023年4月">1.5.2 (2023年4月)</h2>
 <ul>
-<li>接続性コレクターのバグ修正:
+<li>接続性コレクタのバグ修正: <code>telephonyManager.networkOperator</code>が空の文字列を返す場合の問題を修正しました。</li>
+<li>ディープリンクの報告のバグ修正:
 <ul>
-<li><code>telephonyManager.networkOperator</code>から返される空の文字列の問題を修正しました。</li>
-</ul>
-</li>
-<li>ディープリンクレポートのバグ修正:
-<ul>
-<li><code>Intent.ACTION_VIEW</code>として起動されたアクティビティに限定してディープリンクを処理するようにしました。</li>
+<li><code>action == Intent.ACTION_VIEW</code>のインテントで起動されたアクティビティに限定されたディープリンクの処理</li>
 <li>空のURIは無視され、既に保存されているディープリンクと一致するディープリンクは<code>no*op</code>となります。</li>
-<li>ディープリンクの処理はTealiumのバックグラウンドスレッドに追加されます。</li>
+<li>処理はTealiumのバックグラウンドスレッドに移されました。</li>
 </ul>
 </li>
 </ul>
 <h2 id="151-2022年10月">1.5.1 (2022年10月)</h2>
 <ul>
-<li>バグ修正 - イベントが不正な順序でディスパッチャーに到着する問題を修正しました。</li>
+<li>バグ修正: イベントが正しい順序でディスパッチャーに到着しない問題を修正しました。</li>
 </ul>
 <h2 id="150-2022年10月">1.5.0 (2022年10月)</h2>
 <ul>
-<li>ビジタースイッチング
+<li>Visitor Switching
 <ul>
-<li><a href="/platforms/android-kotlin/api/tealium-config/#visitoridentitykey"><code>TealiumConfig.visitorIdentityKey</code></a>を追加し、データレイヤーで既知のIDを表すキーを指定できるようにしました。</li>
+<li><a href="/platforms/android-kotlin/api/tealium-config/#visitoridentitykey"><code>TealiumConfig.visitorIdentityKey</code></a>を追加して、データレイヤーで既知のIDを表すキーを指定できるようにしました。</li>
 <li>既知のIDはハッシュ化され、<code>tealium_visitor_id</code>にリンクされ、既知のID間でのスイッチングを改善します。</li>
 </ul>
 </li>
 <li>次のリスナーを追加しました:
 <ul>
-<li><code>VisitorIdUpdatedListener</code> - ビジターIDが更新されたときに通知します。IDの切り替えやビジターIDのリセットによってビジターIDが更新された場合に通知されます。</li>
-<li><code>DataLayerUpdatedListener</code> - データレイヤーのキー/値の更新を監視します。</li>
-<li><code>onDataUpdated(String, Any)</code> - データレイヤーの値が更新されたときに通知します。</li>
-<li><code>onDataRemoved(Set&lt;String&gt;)</code> - 指定されたキーがユーザーの操作やデータの有効期限によってデータレイヤーから削除されたときに通知します。</li>
+<li><code>VisitorIdUpdatedListener</code>: ビジターIDが更新されたときに通知します。IDの切り替えやビジターIDのリセットの結果として更新された場合です。</li>
+<li><code>DataLayerUpdatedListener</code>: データレイヤーのキー/値の更新を監視します。</li>
+<li><code>onDataUpdated(String, Any)</code>: データレイヤーの値が更新されたときに通知します。</li>
+<li><code>onDataRemoved(Set&lt;String&gt;)</code>: ユーザーの操作やデータの有効期限によって指定されたキーがデータレイヤーから削除されたときに通知します。</li>
 </ul>
 </li>
 <li>RemoteCommandDispatcher 1.2.0
 <ul>
-<li>JSONマッピングファイルでの<code>all_events</code>と<code>all_views</code>のデフォルトマッピングのサポートを追加し、特定のビューやイベントに応じて特定のコマンドをトリガーできるようにしました。</li>
+<li>JSONマッピングファイルでの<code>all_events</code>および<code>all_views</code>のデフォルトマッピングをサポートし、各ビューやイベントに対して特定のコマンドをトリガーすることができるようになりました。</li>
 </ul>
 </li>
 <li>TagManagement 1.2.0
 <ul>
-<li><code>QueryParameterProvider</code> - Tag ManagementモジュールのURLに追加のパラメータを追加するためのインターフェースを追加しました。</li>
-<li>WebViewのインスタンス化とページの読み込み管理の改善</li>
+<li><code>QueryParameterProvider</code>: Tag ManagementモジュールのURLに追加のパラメータを追加しました。</li>
+<li>Webビューのインスタンス化とページの読み込み管理の改善</li>
 </ul>
 </li>
 <li>Kotlinの依存関係の更新
@@ -256,26 +279,26 @@
 <ul>
 <li>Core 1.4.3
 <ul>
-<li>DeviceCollectorのバグ修正 - <code>tealium_logical_resolution</code>の正しい計算方法を修正しました。</li>
+<li>DeviceCollectorのバグ修正: <code>tealium_logical_resolution</code>の正しい計算方法</li>
 </ul>
 </li>
 <li>TagManagement 1.1.3
 <ul>
-<li>バグ修正 - <code>sessionCountingEnabled</code>を移動して、新規起動時のカウントが正しくなるようにしました。</li>
+<li>バグ修正: <code>sessionCountingEnabled</code>を移動して、新しい起動時の誤ったカウントを修正しました。</li>
 </ul>
 </li>
 <li>VisitorService 1.1.1
 <ul>
-<li>バグ修正 - Visitorサービスプロファイルのオーバーライドを初期化時に移動しました。</li>
+<li>バグ修正: Visitorサービスプロファイルのオーバーライドを初期化の早い段階に移動しました。</li>
 </ul>
 </li>
-<li>Location: 新しいクラスのProguardルールが抜けていたため追加しました。</li>
+<li>Location: 新しいクラスのProGuardルールの追加</li>
 </ul>
 <h2 id="142-2022年6月">1.4.2 (2022年6月)</h2>
 <ul>
 <li>Core 1.4.2
 <ul>
-<li>カスタムの同意カテゴリーキーを追加するための<a href="/platforms/android-kotlin/api/consent-manager/#overrideconsentcategorieskey"><code>overrideConsentCategoriesKey</code></a>を<code>TealiumConfig</code>に追加しました。</li>
+<li><code>TealiumConfig</code>に<a href="/platforms/android-kotlin/api/consent-manager/#overrideconsentcategorieskey"><code>overrideConsentCategoriesKey</code></a>を追加して、カスタムの同意カテゴリキーを追加できるようにしました。</li>
 </ul>
 </li>
 </ul>
@@ -283,7 +306,7 @@
 <ul>
 <li>Core 1.4.1
 <ul>
-<li>バグ修正 - 同意ステータスを<code>enum</code>値ではなく<code>string</code>で返すように更新しました。</li>
+<li>バグ修正: 同意ステータスを<code>enum</code>値ではなく<code>string</code>で返すように更新しました。</li>
 </ul>
 </li>
 </ul>
@@ -291,7 +314,7 @@
 <ul>
 <li>Core 1.4.0
 <ul>
-<li><a href="/platforms/android-kotlin/api/tealium/#gathertrackdata"><code>gatherTrackData</code></a>を追加し、すべてのデータレイヤーとコレクター変数を公開します。</li>
+<li><a href="/platforms/android-kotlin/api/tealium/#gathertrackdata"><code>gatherTrackData</code></a>を追加して、すべてのデータレイヤーとコレクタ変数を公開します。</li>
 </ul>
 </li>
 </ul>
@@ -312,22 +335,22 @@
 <ul>
 <li>Core 1.3.2
 <ul>
-<li>スタートアップ時にリスナーを追加するための<code>events</code>プロパティを<code>TealiumConfig</code>に追加しました。これにより、起動時にイベントが見逃される問題が解決されます。</li>
+<li><code>TealiumConfig</code>に<code>events</code>プロパティを追加して、起動時にリスナーを追加できるようにしました。これにより、起動時にイベントが見逃される問題が解決されます。</li>
 </ul>
 </li>
 <li>Lifecycle 1.1.1
 <ul>
-<li>バグ修正 - 一部の属性のデフォルト値がTag Managementモジュールと組み合わせた場合にイベントが見逃される問題を修正しました。</li>
+<li>デフォルト値のバグ修正: 一部の属性のデフォルト値がTag Managementモジュールと組み合わせた場合にイベントが見逃される可能性がある問題を修正しました。</li>
 </ul>
 </li>
 <li>InAppPurchase 1.0.1
 <ul>
-<li>ISO-8601形式で提供される追加の<code>purchase_date</code>キーを追加しました。</li>
+<li>ISO-8601形式で提供される追加の<code>purchase_date</code>キー</li>
 </ul>
 </li>
 <li>TagManagement 1.1.2
 <ul>
-<li><code>TealiumConfig</code>に<a href="/platforms/android-kotlin/api/tealium-config/#sessioncountingenabled"><code>sessionCountingEnabled</code></a>フラグを追加し、Tealium iQアカウントでセルフホストされたJavaScriptファイルを使用する場合にセッションのカウントを無効にできるようにしました。</li>
+<li><code>TealiumConfig</code>に<a href="/platforms/android-kotlin/api/tealium-config/#sessioncountingenabled"><code>sessionCountingEnabled</code></a>フラグを追加して、セッションカウントを無効にするようにします。Tealium iQアカウントでセルフホストされたJavaScriptファイルを使用する場合</li>
 </ul>
 </li>
 </ul>
@@ -335,9 +358,9 @@
 <ul>
 <li>Core 1.3.1
 <ul>
-<li>ウェブビューの作成に失敗した場合の安定性の修正</li>
-<li>接続例外の処理に関する安定性の修正</li>
-<li>In App Purchase auto tracking 1.0.0リリース。</li>
+<li>失敗したWebビューの作成の安定性修正</li>
+<li>接続例外処理の安定性修正</li>
+<li>In App Purchase auto tracking 1.0.0リリース</li>
 </ul>
 </li>
 </ul>
@@ -345,19 +368,19 @@
 <ul>
 <li>Core 1.3.0
 <ul>
-<li>Javaライブラリから抜けていた変数を追加しました:
+<li>Javaライブラリから欠落していた変数を復元しました:
 <ul>
-<li>デフォルト: <code>tealium_random</code>と<code>was_queued</code></li>
-<li>DeviceCollector - <code>device_battery_percent</code>と<code>device_ischarging</code></li>
-<li>TimeCollector - <code>timestamp_epoch</code></li>
+<li>デフォルト: <code>tealium_random</code>および<code>was_queued</code></li>
+<li>DeviceCollector: <code>device_battery_percent</code>および<code>device_ischarging</code></li>
+<li>TimeCollector: <code>timestamp_epoch</code></li>
 </ul>
 </li>
-<li>DataLayerのパフォーマンスの改善、および<code>JSONArray</code>オブジェクトの保存のサポートの追加</li>
-<li>日付は標準でISO 8601形式でフォーマットされます。</li>
+<li>データレイヤーのパフォーマンスの改善、および<code>JSONArray</code>オブジェクトの保存のサポートの追加</li>
+<li>日付は標準でISO-8601形式でフォーマットされます</li>
 <li>Kotlin、Coroutines、Android Target Version、AGP 7、Java 11、MockK、Robolectricの依存関係の更新</li>
 <li>バグ修正:
 <ul>
-<li>不透明なURIはDeepLinkHandlerで適切に処理されるようになりました。</li>
+<li>Opaque URIはDeepLinkHandlerによって適切に処理されるようになりました</li>
 </ul>
 </li>
 <li>未使用のコードの非推奨化</li>
@@ -374,25 +397,25 @@
 <li>Coreとの依存関係の更新</li>
 </ul>
 </li>
-<li>CollectDispatcher 1.1.0, TagManagementDispatcher 1.1.0
+<li>CollectDispatcher 1.1.0、TagManagementDispatcher 1.1.0
 <ul>
 <li>シリアル化を<code>JsonUtils</code>を使用するように標準化しました</li>
 <li>Coreとの依存関係の更新</li>
 </ul>
 </li>
-<li>CrashReporter 1.1.0, HostedDataLayer 1.1.0, InstallReferrer 1.1.0, Lifecycle 1.1.0, Location 1.1.0, Media 1.1.0, RemoteCommandDispatcher 1.1.0
+<li>CrashReporter 1.1.0、HostedDataLayer 1.1.0、InstallReferrer 1.1.0、Lifecycle 1.1.0、Location 1.1.0、Media 1.1.0、RemoteCommandDispatcher 1.1.0
 <ul>
 <li>Coreとの依存関係の更新</li>
 </ul>
 </li>
 <li>VisitorService 1.1.0
 <ul>
-<li>Visitorを更新する際に使用するTealiumプロファイル名をオーバーライドするための追加の設定オプション<code>config.overrideVisitorServiceProfile</code>を追加しました。</li>
+<li>Visitorを更新する際に使用するTealiumプロファイル名をオーバーライドするための追加の設定オプション<code>config.overrideVisitorServiceProfile</code></li>
 <li>シリアル化/デシリアル化のパフォーマンスの改善</li>
 <li>Coreとの依存関係の更新</li>
 <li>バグ修正:
 <ul>
-<li>日付のパース例外が0の場合に発生する問題を修正しました。</li>
+<li>日付のパース例外が0の場合</li>
 </ul>
 </li>
 </ul>
@@ -402,23 +425,23 @@
 <ul>
 <li>Core 1.2.8
 <ul>
-<li><a href="/platforms/android-kotlin/api/tealium-config/#loglevel"><code>TealiumConfig.logLevel</code></a>を追加し、環境から派生したログレベルを上書きするためのオプションを有効にしました。</li>
+<li><a href="/platforms/android-kotlin/api/tealium-config/#loglevel"><code>TealiumConfig.logLevel</code></a>を追加して、環境から派生したログレベルを上書きできるようにしました。</li>
 <li>同意マネージャーによってトリガーされた各イベントのペイロードに<code>consent_last_updated</code>タイムスタンプを追加しました。</li>
 <li>ペイロードキーの定数を<code>Dispatch.Keys.XXX</code>に移行し、アクセスしやすくしました。</li>
 <li>バグ修正
 <ul>
-<li><code>app_name</code>は、非ローカライズバージョンのアプリラベルにフォールバックするようになりました。</li>
-<li>スレッドに関連するイベントルーターのクラッシュを修正しました。</li>
-<li><code>screen_title</code>をデフォルトで<code>TealiumView</code>のペイロードに再追加し、コンテキストデータで提供されていない場合は<code>viewName</code>に設定されるようにしました。</li>
-<li><code>tealium-settings.json</code>をアセットとしてロードしようとする際の不要なログを削除しました。</li>
+<li><code>app_name</code>は、非ローカライズされたアプリラベルにフォールバックするようになりました。</li>
+<li>スレッドによるイベントルーターのクラッシュを修正しました。</li>
+<li><code>screen_title</code>はデフォルトで<code>TealiumView</code>のペイロードに再追加され、コンテキストデータで提供されていない場合は<code>viewName</code>に設定されます。</li>
+<li><code>tealium-settings.json</code>をアセットとして読み込もうとする際の不要なログを削除しました。</li>
 <li>セッション中に複数のディープリンクが発生する場合、前のディープリンクパラメータは新しいパラメータが追加される前にデータレイヤーから削除されるようになりました。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>CollectDispatcher 1.0.6, HostedDataLayer 1.0.4, RemoteCommandDispatcher 1.0.5, TagManagement 1.0.7
+<li>CollectDispatcher 1.0.6、HostedDataLayer 1.0.4、RemoteCommandDispatcher 1.0.5、TagManagement 1.0.7
 <ul>
-<li>イベントキーの参照を新しい<code>Dispatch.Keys.XXX</code>を使用するように更新しました（Core 1.2.8以上でのみ使用可能）。</li>
+<li>イベントキーの参照を新しい<code>Dispatch.Keys.XXX</code>に更新しました（Core 1.2.8以上でのみ使用可能）。</li>
 </ul>
 </li>
 </ul>
@@ -426,7 +449,7 @@
 <ul>
 <li>Core 1.2.7
 <ul>
-<li>デバイスデータモジュールから<code>device_logical_resolution</code>をデータレイヤーに追加しました。</li>
+<li><code>DeviceCollector</code>モジュールから<code>device_logical_resolution</code>をデータレイヤーに追加しました。</li>
 </ul>
 </li>
 </ul>
@@ -434,9 +457,9 @@
 <ul>
 <li>Core 1.2.6
 <ul>
-<li><code>TealiumConfig.existingVisitorId</code>を追加し、独自の一意の識別子を使用するためのサポートを追加しました。</li>
-<li><code>TealiumConfig.consentManagerLoggingProfile</code>を追加し、同意ログのプロファイルを上書きするためのサポートを追加しました。</li>
-<li>同意ログイベントを有効にするためにすべての有効なディスパッチャーにルーティングされるようにしました。</li>
+<li><code>TealiumConfig.existingVisitorId</code>を追加して、独自の一意の識別子を使用するサポートを追加しました。</li>
+<li><code>TealiumConfig.consentManagerLoggingProfile</code>を追加して、同意ログのプロファイルを上書きするサポートを追加しました。</li>
+<li>同意ログイベントを有効なディスパッチャーすべてにルーティングするようにしました。</li>
 <li>データレイヤー変数<code>app_build</code>と<code>app_version</code>の値を更新しました。</li>
 </ul>
 </li>
@@ -452,7 +475,7 @@
 </li>
 <li>Visitor Service 1.0.5
 <ul>
-<li>格納された長整数値のデシリアライズのバグ修正。</li>
+<li>デシリアライズされた格納された長整数値の修正。</li>
 </ul>
 </li>
 </ul>
@@ -466,14 +489,14 @@
 <li>
 <p>Core 1.2.4</p>
 <ul>
-<li>新しいデータレイヤー変数<code>enabled_modules</code>と<code>enabled_modules_versions</code>を追加しました。両方とも文字列の配列で、使用中のモジュールとそのバージョン番号のソートされたリストを含みます。各モジュールの最新バージョンを取得するために必要なすべての最新バージョンが必要です。</li>
+<li>新しいデータレイヤー変数<code>enabled_modules</code>と<code>enabled_modules_versions</code>を追加しました。両方とも文字列の配列で、使用中のモジュールとそのバージョン番号のソートされたリストを含みます。各モジュールの最新バージョンを取得するために必要なすべての最新バージョンが含まれています。</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>モジュール名も&quot;UPPER_SNAKE_CASE&quot;から&quot;PascalCase&quot;に変更されました。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>モジュール名も<code>UPPER_SNAKE_CASE</code>から<code>PascalCase</code>に変更されました。</p>
 <ul>
-<li><code>remoteApiEnabled</code>の設定オプションを追加し、RemoteCommandsとTagManagementモジュールを使用する場合に<code>remote_api</code>イベントを無効にできるようにしました。</li>
-<li><code>overrideCollectProfile</code>の設定オプションを追加し、イベントペイロードの<code>tealium_profile</code>の値を上書きして、イベントを<code>TealiumConfig</code>オブジェクトで設定されたプロファイルとは異なるTealiumプロファイルにルーティングできるようにしました。</li>
-<li><code>HttpRemoteCommand</code>を使用する場合に、<code>application/json</code>と<code>x-www-form-urlencoded</code>の両方のコンテンツタイプをサポートするようにしました。</li>
-<li>特定のコレクションが正しくエンコードされない問題を修正しました。</li>
+<li><code>remoteApiEnabled</code>設定オプションを追加して、RemoteCommandsとTagManagementモジュールを使用する場合に<code>remote_api</code>イベントを無効にすることを許可します。</li>
+<li><code>overrideCollectProfile</code>設定オプションを追加して、イベントペイロードの<code>tealium_profile</code>の値を上書きして、イベントを<code>TealiumConfig</code>オブジェクトで設定されたものとは異なるTealiumプロファイルにルーティングできるようにします。</li>
+<li><code>HttpRemoteCommand</code>を使用する場合、<code>application/json</code>および<code>x-www-form-urlencoded</code>の両方のコンテンツタイプをサポートするように修正しました。</li>
+<li>特定のコレクションのエンコードが正しく行われない問題を修正しました。</li>
 </ul>
 </li>
 </ul>
@@ -481,13 +504,13 @@
 <ul>
 <li>Core 1.2.3
 <ul>
-<li>同意管理: カスタム同意ポリシーを設定するオプションを追加しました。</li>
-<li><code>device_language</code>、<code>os_name</code>をDeviceCollectorモジュールに追加しました。</li>
+<li>同意管理: 提供された同意の有効期限を設定するオプションを追加しました。</li>
+<li>カスタム同意ポリシーを設定するためのオプションを追加しました。</li>
 </ul>
 </li>
 <li>Crash Reporter 1.0.2
 <ul>
-<li>CrashReporterモジュールのキーを更新しました: <code>crash_exception_name</code>を<code>crash_name</code>に変更し、<code>crash_exception_cause</code>を<code>crash_cause</code>に変更しました。</li>
+<li>CrashReporterモジュールのキーを更新: <code>crash_exception_name</code>を<code>crash_name</code>に変更し、<code>crash_exception_cause</code>を<code>crash_cause</code>に変更しました。</li>
 </ul>
 </li>
 </ul>
@@ -498,7 +521,7 @@
 <li>イベントとビューペイロードに<code>request_uuid</code>を追加しました。</li>
 </ul>
 </li>
-<li>TagManagement Dispatcher 1.0.4, RemoteCommand Dispatcher 1.0.3
+<li>TagManagement Dispatcher 1.0.4、RemoteCommand Dispatcher 1.0.3
 <ul>
 <li>実行のために<code>HttpRemoteCommand</code>をバックグラウンドスレッドにルーティングするバグ修正</li>
 </ul>
@@ -506,44 +529,44 @@
 </ul>
 <h2 id="121-2021年3月">1.2.1 (2021年3月)</h2>
 <ul>
-<li>ProGuardとConsumer Rulesの修正; 不足していたパブリッククラスが追加され、Consumer Rulesが修正されました。</li>
-<li>Core 1.2.1, Collect Dispatcher 1.0.3, TagManagement Dispatcher 1.0.3, Install Referrer 1.0.2, Lifecycle 1.0.3, Location 1.0.3, VisitorService 1.0.3, RemoteCommand Dispatcher 1.0.2, Hosted DataLayer 1.0.2, Crash Reporter 1.0.1, Ad Identifier 1.0.1</li>
+<li>ProGuardとコンシューマールールの見直し。不足しているパブリッククラスが追加され、コンシューマールールが見直されました。</li>
+<li>Core 1.2.1、Collect Dispatcher 1.0.3、TagManagement Dispatcher 1.0.3、Install Referrer 1.0.2、Lifecycle 1.0.3、Location 1.0.3、VisitorService 1.0.3、RemoteCommand Dispatcher 1.0.2、Hosted DataLayer 1.0.2、Crash Reporter 1.0.1、Ad Identifier 1.0.1</li>
 </ul>
 <h2 id="120-2021年1月">1.2.0 (2021年1月)</h2>
 <ul>
 <li>同意管理
 <ul>
-<li>同意の有効期限: 提供された同意の有効期限を設定する機能を追加しました。</li>
-<li><code>consentManagerEnabled</code>の設定プロパティを非推奨にし、有効なConsentPolicyを設定すると自動的にConsent Managerが有効になるようにしました。</li>
+<li>同意の有効期限の設定を追加</li>
+<li><code>consentManagerEnabled</code>設定プロパティを非推奨にし、有効な同意ポリシーを設定すると自動的に同意マネージャーが有効になるようにしました。</li>
 <li>データレイヤーの同意コレクターロジックの修正</li>
 </ul>
 </li>
-<li>ビジターID: デバイスのビジターIDを手動で再生成する新しいメソッドを追加しました。</li>
-<li>ProGuard: 生成されたバイナリとコンシューマーのProGuardルールに初期のProGuardルールを追加しました。</li>
+<li>ビジターID: デバイスのビジターIDを手動で再生成する新しいメソッドを追加</li>
+<li>ProGuard: 生成されたバイナリとコンシューマーのProGuardルールに初期のProGuardルールを追加しました</li>
 <li>AdIdentifier 1.0.0
 <ul>
-<li>AdIdentifierモジュールの初回リリース: 利用可能な場合、AdIdentifierが各Dispatchに追加されます。</li>
+<li>AdIdentifierモジュールの初回リリース: 利用可能な場合、AdIdentifierが各ディスパッチに追加されます</li>
 </ul>
 </li>
 <li>CrashReporter 1.0.0
 <ul>
-<li>CrashReporterモジュールの初回リリース: クラッシュを引き起こす未処理の例外が記録され、アプリが再起動したときに次のディスパッチでクラッシュデータが送信されます。</li>
+<li>CrashReporterモジュールの初回リリース: クラッシュを引き起こす未処理の例外が記録され、アプリが再起動したときに次のディスパッチでクラッシュデータが送信されます</li>
 </ul>
 </li>
-<li>Collect Dispatcher 1.0.2, Hosted DataLayer 1.0.1, InstallReferrer 1.0.1, Lifecycle 1.0.2, Location 1.0.2, RemoteCommand Dispatcher 1.0.1, TagManagement Dispatcher 1.0.1, Visitor Service 1.0.2
+<li>Collect Dispatcher 1.0.2、Hosted DataLayer 1.0.1、InstallReferrer 1.0.1、Lifecycle 1.0.2、Location 1.0.2、RemoteCommand Dispatcher 1.0.1、TagManagement Dispatcher 1.0.1、Visitor Service 1.0.2
 <ul>
-<li>ProGuard - 生成されたバイナリとコンシューマーのProGuardルールに初期のProGuardルールを追加しました。</li>
+<li>ProGuard - 生成されたバイナリとコンシューマーのProGuardルールに初期のProGuardルールを追加しました</li>
 </ul>
 </li>
 </ul>
 <h2 id="110-2020年11月">1.1.0 (2020年11月)</h2>
 <ul>
-<li>タイムイベントのサポート: ユーザーの興味のあるイベント間の経過時間を報告するためのタイムイベントのサポート</li>
-<li><code>DeviceCollector</code>モジュールから提供される新しい<code>device_model</code>と<code>device_manufacturer</code>のデータキー</li>
-<li>Github Actionsを使用したマスターへのPRの自動ユニットテストとインストルメントテスト</li>
+<li>タイムイベントのサポート: ユーザーの関心のあるイベント間の経過時間を報告するためのサポート</li>
+<li><code>DeviceCollector</code>モジュールから提供される新しい<code>device_model</code>および<code>device_manufacturer</code>のデータキー</li>
+<li>GitHubアクションを使用して、マスターへのPRに対する自動化されたユニットテストとインストルメントテスト</li>
 <li>Collect Dispatcher 1.0.1
 <ul>
-<li>追加のCollect URLのオーバーライド</li>
+<li>追加のCollect URLオーバーライド</li>
 <li>テストカバレッジの増加</li>
 </ul>
 </li>
@@ -560,7 +583,7 @@
 </li>
 <li>Location 1.0.1
 <ul>
-<li>バグ修正: 近くのジオフェンスを自動的に追加する際の問題</li>
+<li>問題が発生した場合に近くのジオフェンスを自動的に追加する問題を修正</li>
 <li>テストカバレッジの増加</li>
 </ul>
 </li>
@@ -575,7 +598,7 @@
 <ul>
 <li>Tealiumの複数インスタンスのサポート
 <ul>
-<li>Tealiumインスタンスの構築に関する破壊的な変更が導入されました。</li>
+<li>Tealiumインスタンスの構築に関する破壊的な変更が導入されました</li>
 </ul>
 </li>
 <li>旧バージョンのAndroidでの接続性の問題の修正</li>
@@ -635,7 +658,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月16日
+          <p>最終更新日 ::  2024年May月22日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -649,7 +672,8 @@
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#155-2023%E5%B9%B49%E6%9C%88" href="javascript:void(0)">1.5.5 (2023年9月)</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#160-2024%E5%B9%B45%E6%9C%8815%E6%97%A5" href="javascript:void(0)">1.6.0 (2024年5月15日)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#155-2023%E5%B9%B49%E6%9C%88" href="javascript:void(0)">1.5.5 (2023年9月)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#154-2023%E5%B9%B48%E6%9C%88" href="javascript:void(0)">1.5.4 (2023年8月)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#153-2023%E5%B9%B46%E6%9C%88" href="javascript:void(0)">1.5.3 (2023年6月)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#152-2023%E5%B9%B44%E6%9C%88" href="javascript:void(0)">1.5.2 (2023年4月)</a></li>
