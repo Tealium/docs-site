@@ -195,6 +195,7 @@
 <p>When you configure an engine, you select only the audiences, badges, and attributes necessary for your use case. The Moments API engine shows you the JSON response as you build it, which lets you verify the accuracy and scope of your requests.</p>
 <p>Data for visitors becomes available after you enable the engine and visitors log active sessions and generate events in the system. For example, when a customer visits your site, Moments API determines if the new visitor events impact the audiences, badges, and attributes defined in your engine configuration. Data is written to a unique data store for each engine only when visitor data needs to be updated.</p>
 <p>Engines update their data stores in real-time, so the API endpoint data remains up-to-date as visitors interact with you brand.</p>
+<p>By default, you can create up to 10 engines per profile so that you can create a customized engine for each specific business case. If you need additional engines, contact your Tealium account manager.</p>
 <h3 id="endpoints">Endpoints</h3>
 <p>Moments API creates a unique endpoint for each engine. Visitor data is returned as a JSON object.</p>
 <p>Tealium has benchmarked the average Moments API endpoint performance at 60 ms for payload sizes of 1 kB and smaller,</p>
@@ -229,14 +230,14 @@
 <p class="tip"><i class="fa fa-info-circle"></i>Purging data only deletes Moments API engine data. Visitor records in AudienceStream are not affected.</p>
 <p>For more information about purging engine data, see <a href="/early-access/moments-api/manage/#purge-data">Manage Moments API engines &gt; Purge data</a>.</p>
 <h2 id="domain-allow-list">Domain allow list</h2>
-<p>An allow list prevents untrusted domains from making requests to your Moments API endpoints. You must create an allow list for Moments API engines.</p>
 <p class="tip"><i class="fa fa-info-circle"></i>We recommend creating a domain allow list only after you test the API endpoint.</p>
-<p>You can add specific domains to the allow list when you configure the engine.</p>
+<p>An allow list prevents untrusted domains from making requests to your Moments API endpoints. You can add specific domains to the allow list when you configure the engine.</p>
 <p>Moments API allows or restricts calls to the endpoint by comparing the domain in the <code>Referer</code> HTTP request header to the allow list defined in the Moments API engine:</p>
 <ul>
 <li>Domains match: The request is processed.</li>
 <li>Domains do not match: The request is not processed and returns a 403 error.</li>
 </ul>
+<p>If you do not list any domains, all domains will be allowed.</p>
 <h3 id="subdomains">Subdomains</h3>
 <p>When you add a domain to the allow list, all of its subdomains are automatically included. For example, if you allow <code>example.com</code>, any subdomain that matches <code>*.example.com</code> is included.</p>
 <h2 id="permissions">Permissions</h2>
@@ -370,7 +371,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 3, 2024 
+          <p>This page was last updated:  May 21, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

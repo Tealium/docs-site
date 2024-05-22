@@ -193,16 +193,38 @@
 </ul>
           </div>
         
-        <div class="release-note-item" data-title="Tealium for Android (Kotlin) release notes" data-date="2023-09-06">
+        <div class="release-note-item" data-title="Tealium for Android (Kotlin) release notes" data-date="2024-05-15">
           
           
 
           <h2 class="rn-section" id="tealium-for-android-kotlin"><a href="/platforms/android-kotlin/release-notes/">Tealium for Android (Kotlin) </a></h2>
           <p>For a complete list of changes to Tealium for Android (Kotlin), see the <a href="https://github.com/Tealium/tealium-kotlin/blob/master/CHANGELOG.md">GitHub change log</a>.</p>
-<div class="f3"id="155-september-2023">1.5.5 (September 2023)</div>
+<div class="f3"id="160-may-15-2024">1.6.0 (May 15, 2024)</div>
 <ul>
-<li>BugFix: ProGuard adjustment resolve missing <code>BatchDispatch$Companion</code> class.</li>
-<li>Minor lint warning fixes</li>
+<li>Core 1.6.0
+<ul>
+<li><code>HttpClient</code> now supports only retrying on response codes that support retries.</li>
+<li>Fix: <code>ResourceRetriever</code> refresh interval affecting library settings being fetched too often.</li>
+<li>Fix: Reinstated missing <code>ResourceEntity</code> class</li>
+</ul>
+</li>
+<li>RemoteCommandDispatcher 1.4.0.
+<ul>
+<li>Adding a RemoteCommand with a remote URL config now supports falling back to loading from an <code>Asset</code> named <code>{command id}.json</code> on the first launch.
+<ul>
+<li>If a file name is also provided, then it will use that name to lookup the <code>Asset</code>.</li>
+<li>It is now safe to omit the <code>.json</code> extension on the <code>filename</code> parameter when adding a new remote command, although the <code>.json</code> extension of the actual file should still be present.</li>
+<li>Fix: Refresh interval was not being adhered to</li>
+</ul>
+</li>
+<li>Updated the module dependency minimum on <code>com.tealium:kotlin-core</code> to <code>1.6.0</code>.</li>
+</ul>
+</li>
+<li>TagManagementDispatcher 1.2.2
+<ul>
+<li>The webview is refreshed on new sessions to ensure that the latest IQ configuration is available.</li>
+</ul>
+</li>
 </ul>
           </div>
         
@@ -232,15 +254,19 @@
 </ul>
           </div>
         
-        <div class="release-note-item" data-title="Tealium for iOS (Swift) release notes" data-date="2024-03-19">
+        <div class="release-note-item" data-title="Tealium for iOS (Swift) release notes" data-date="2024-05-01">
           
           
 
           <h2 class="rn-section" id="tealium-for-ios-swift"><a href="/platforms/ios-swift/release-notes/">Tealium for iOS (Swift) </a></h2>
-          <div class="f3"id="2123-march-2024">2.12.3 (March 2024)</div>
-<p><strong>Low Impact Changes</strong></p>
+          <div class="f3"id="2130-may-1-2024">2.13.0 (May 1, 2024)</div>
+<p><strong>Medium Impact Changes</strong></p>
 <ul>
-<li>Fixed Privacy Manifest <code>NSPrivacyAccessedAPITypeReasons</code> for the disk space category.</li>
+<li>Improved local <code>RemoteCommands</code> to accept files path with or without the extension</li>
+<li>Fixed remote commands and remote settings refresh mechanism and caching</li>
+<li>Improved remote commands and remote settings retry mechanism</li>
+<li>Allow URL <code>RemoteCommands</code> to use a bundled local file with the <code>commandId</code> as the name while downloading the remote file or if it can&rsquo;t be downloaded and is not cached</li>
+<li>Added a <code>TagManagementWebview</code> refresh after a session is expired</li>
 </ul>
           </div>
         

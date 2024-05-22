@@ -172,51 +172,74 @@
 
 <div class="prose nested-links" id="prose">
   <p>For a complete list of changes to Tealium for Android (Kotlin), see the <a href="https://github.com/Tealium/tealium-kotlin/blob/master/CHANGELOG.md">GitHub change log</a>.</p>
+<h2 id="160-may-15-2024">1.6.0 (May 15, 2024)</h2>
+<ul>
+<li>Core 1.6.0
+<ul>
+<li><code>HttpClient</code> now supports only retrying on response codes that support retries.</li>
+<li>Fix: <code>ResourceRetriever</code> refresh interval affecting library settings being fetched too often.</li>
+<li>Fix: Reinstated missing <code>ResourceEntity</code> class</li>
+</ul>
+</li>
+<li>RemoteCommandDispatcher 1.4.0.
+<ul>
+<li>Adding a RemoteCommand with a remote URL config now supports falling back to loading from an <code>Asset</code> named <code>{command id}.json</code> on the first launch.
+<ul>
+<li>If a file name is also provided, then it will use that name to lookup the <code>Asset</code>.</li>
+<li>It is now safe to omit the <code>.json</code> extension on the <code>filename</code> parameter when adding a new remote command, although the <code>.json</code> extension of the actual file should still be present.</li>
+<li>Fix: Refresh interval was not being adhered to</li>
+</ul>
+</li>
+<li>Updated the module dependency minimum on <code>com.tealium:kotlin-core</code> to <code>1.6.0</code>.</li>
+</ul>
+</li>
+<li>TagManagementDispatcher 1.2.2
+<ul>
+<li>The webview is refreshed on new sessions to ensure that the latest IQ configuration is available.</li>
+</ul>
+</li>
+</ul>
 <h2 id="155-september-2023">1.5.5 (September 2023)</h2>
 <ul>
-<li>BugFix: ProGuard adjustment resolve missing <code>BatchDispatch$Companion</code> class.</li>
+<li>Fix: ProGuard adjustment resolve missing <code>BatchDispatch$Companion</code> class.</li>
 <li>Minor lint warning fixes</li>
 </ul>
 <h2 id="154-august-2023">1.5.4 (August 2023)</h2>
 <ul>
 <li>Core 1.5.4
 <ul>
-<li>Session Data Expiration BugFix: fixes an issue whereby session scoped data may not be expired on launch</li>
-<li>Event Router events Buffering: buffers events until sdk is ready so events are not missed during startup</li>
-<li>Database Lock crash BugFix: Some uncaught exceptions in persistence led to possible crashes</li>
+<li>Session data expiration bug fix: fixes an issue whereby session scoped data may not be expired on launch</li>
+<li>Event router events buffering: buffers events until SDK is ready so events are not missed during startup</li>
+<li>Database lock crash bug fix: Some uncaught exceptions in persistence led to possible crashes</li>
 <li>ProGuard rules updates to reinstate incorrectly obfuscated <code>BatchDispatch</code> class</li>
 </ul>
 </li>
 <li>AdIdentifier 1.1.2
 <ul>
-<li>BugFix: DataLayer writes moved onto Tealium background thread</li>
+<li>Fix: Data layer writes moved onto Tealium background thread</li>
 </ul>
 </li>
 </ul>
 <h2 id="153-june-2023">1.5.3 (June 2023)</h2>
 <ul>
-<li>Database BugFix: add database status check before performing writable actions, and allow event queuing until database is fully operational</li>
-<li>Library Settings BugFix: update how remote settings were fetched and saved</li>
-<li>Module Manager BugFix: update to thread-safe collection</li>
+<li>Database bug fix: Add database status check before performing writable actions, and allow event queuing until database is fully operational</li>
+<li>Library settings bug fix: Update how remote settings were fetched and saved</li>
+<li>Module manager bug fix: Update to thread-safe collection</li>
 </ul>
 <h2 id="152-april-2023">1.5.2 (April 2023)</h2>
 <ul>
-<li>Connectivity Collector BugFix:
+<li>Connectivity collector bug fix: Fixed an issue in the event where <code>telephonyManager.networkOperator</code> returns a blank string</li>
+<li>Deep link reporting bug fix:
 <ul>
-<li>Fixes an issue in the event where there is a blank string returned from <code>telephonyManager.networkOperator</code></li>
-</ul>
-</li>
-<li>Deep Link Reporting BugFix:
-<ul>
-<li>Deep Link handling limited to Activities launched with Intents where action == Intent.ACTION_VIEW</li>
-<li>Empty Uris are ignored, and deep links that match what is already stored is a <code>no*op</code></li>
-<li>Handling pushed onto Tealium background thread.</li>
+<li>Deep link handling limited to activities launched with intents where <code>action == Intent.ACTION_VIEW</code></li>
+<li>Empty URIs are ignored, and deep links that match what is already stored is a <code>no*op</code></li>
+<li>Handling pushed on to Tealium background thread.</li>
 </ul>
 </li>
 </ul>
 <h2 id="151-october-2022">1.5.1 (October 2022)</h2>
 <ul>
-<li>Bug fix - Fixed an issue where events arrived at dispatchers in the incorrect order</li>
+<li>Bug fix: Fixed an issue where events arrived at dispatchers in the incorrect order</li>
 </ul>
 <h2 id="150-october-2022">1.5.0 (October 2022)</h2>
 <ul>
@@ -228,10 +251,10 @@
 </li>
 <li>Added the following listeners:
 <ul>
-<li><code>VisitorIdUpdatedListener</code> - notifies when the visitor ID is updated as a result of switching identities or resetting the visitor ID</li>
-<li><code>DataLayerUpdatedListener</code> - listens for updates to key/value pairs in the data layer</li>
-<li><code>onDataUpdated(String, Any)</code> - notifies when a value is updated in the data layer</li>
-<li><code>onDataRemoved(Set&lt;String&gt;)</code> - notifies when the specified key is removed from the data layer by user interaction or data expiration</li>
+<li><code>VisitorIdUpdatedListener</code>: notifies when the visitor ID is updated as a result of switching identities or resetting the visitor ID</li>
+<li><code>DataLayerUpdatedListener</code>: listens for updates to key/value pairs in the data layer</li>
+<li><code>onDataUpdated(String, Any)</code>: notifies when a value is updated in the data layer</li>
+<li><code>onDataRemoved(Set&lt;String&gt;)</code>: notifies when the specified key is removed from the data layer by user interaction or data expiration</li>
 </ul>
 </li>
 <li>RemoteCommandDispatcher 1.2.0
@@ -241,11 +264,11 @@
 </li>
 <li>TagManagement 1.2.0
 <ul>
-<li><code>QueryParameterProvider</code> - to add additional parameters to the URL for the Tag Management module</li>
+<li><code>QueryParameterProvider</code>: added additional parameters to the URL for the Tag Management module</li>
 <li>Improved webview instantiation and page load management</li>
 </ul>
 </li>
-<li>Kotlin Dependency updates
+<li>Kotlin dependency updates
 <ul>
 <li>Stdlib: 1.6.21</li>
 <li>Coroutines: 1.6.2</li>
@@ -256,20 +279,20 @@
 <ul>
 <li>Core 1.4.3
 <ul>
-<li>DeviceCollector bug fix - Correct calculation for <code>tealium_logical_resolution</code></li>
+<li>DeviceCollector bug fix: Correct calculation for <code>tealium_logical_resolution</code></li>
 </ul>
 </li>
 <li>TagManagement 1.1.3
 <ul>
-<li>Bug fix - Relocate <code>sessionCountingEnabled</code> to fix miscount on fresh launch</li>
+<li>Bug fix: Relocate <code>sessionCountingEnabled</code> to fix miscount on fresh launch</li>
 </ul>
 </li>
 <li>VisitorService 1.1.1
 <ul>
-<li>Bug fix - Move Visitor service profile override to earlier initialization</li>
+<li>Bug fix: Move visitor service profile override to earlier initialization</li>
 </ul>
 </li>
-<li>Location: Add missing Proguard rules for new classes</li>
+<li>Location: Add missing ProGuard rules for new classes</li>
 </ul>
 <h2 id="142-june-2022">1.4.2 (June 2022)</h2>
 <ul>
@@ -283,7 +306,7 @@
 <ul>
 <li>Core 1.4.1
 <ul>
-<li>Bug fix - Update consent status to return <code>string</code> instead of <code>enum</code> value</li>
+<li>Bug fix: Update consent status to return <code>string</code> instead of <code>enum</code> value</li>
 </ul>
 </li>
 </ul>
@@ -317,7 +340,7 @@
 </li>
 <li>Lifecycle 1.1.1
 <ul>
-<li>Bug fix - Fixed the default values for some attributes that caused missed events when combined with the Tag Management module</li>
+<li>Bug fix: Fixed the default values for some attributes that caused missed events when combined with the Tag Management module</li>
 </ul>
 </li>
 <li>InAppPurchase 1.0.1
@@ -327,7 +350,7 @@
 </li>
 <li>Tag Management 1.1.2
 <ul>
-<li>Added the <a href="/platforms/android-kotlin/api/tealium-config/#sessioncountingenabled"><code>sessionCountingEnabled</code></a> flag to <code>TealiumConfig</code> to disable session counting for Tealium iQ accounts that use self-hosted JavaScript files.</li>
+<li>Added the <a href="/platforms/android-kotlin/api/tealium-config/#sessioncountingenabled"><code>sessionCountingEnabled</code></a> flag to <code>TealiumConfig</code> to disable session counting for Tealium iQ accounts that use self-hosted JavaScript files</li>
 </ul>
 </li>
 </ul>
@@ -337,7 +360,7 @@
 <ul>
 <li>Stability fix for failed webview creation</li>
 <li>Stability fix for connectivity exception handling</li>
-<li>In App Purchase auto tracking 1.0.0 release.</li>
+<li>In App Purchase auto tracking 1.0.0 release</li>
 </ul>
 </li>
 </ul>
@@ -348,16 +371,16 @@
 <li>Missing variables reinstated from the Java library:
 <ul>
 <li>Default: <code>tealium_random</code> and <code>was_queued</code></li>
-<li>DeviceCollector - <code>device_battery_percent</code> and <code>device_ischarging</code></li>
-<li>TimeCollector - <code>timestamp_epoch</code></li>
+<li>DeviceCollector: <code>device_battery_percent</code> and <code>device_ischarging</code></li>
+<li>TimeCollector: <code>timestamp_epoch</code></li>
 </ul>
 </li>
-<li>DataLayer performance improvements, and additional support for storing <code>JSONArray</code> objects</li>
-<li>Dates now get formatted as ISO 8601 as standard</li>
+<li>Data layer performance improvements, and additional support for storing <code>JSONArray</code> objects</li>
+<li>Dates now get formatted as ISO-8601 as standard</li>
 <li>Dependency updates to Kotlin, Coroutines, Android Target Version, AGP 7, Java 11, MockK, Robolectric</li>
 <li>BugFixes:
 <ul>
-<li>Opaque URI&rsquo;s are now appropriately handled by the DeepLinkHandler</li>
+<li>Opaque URIs are now appropriately handled by the DeepLinkHandler</li>
 </ul>
 </li>
 <li>Deprecations to unused code</li>
@@ -390,7 +413,7 @@
 <li>Additional configuration option to override the Tealium Profile name to use when updating a Visitor: <code>config.overrideVisitorServiceProfile</code></li>
 <li>Serialization/Deserialization performance improvements</li>
 <li>Dependency Updates in line with Core.</li>
-<li>BugFix:
+<li>Bug fix:
 <ul>
 <li>Date parsing exception when dates are 0</li>
 </ul>
@@ -402,15 +425,15 @@
 <ul>
 <li>Core 1.2.8
 <ul>
-<li>Added <a href="/platforms/android-kotlin/api/tealium-config/#loglevel"><code>TealiumConfig.logLevel</code></a> to enable overriding the log level derived from the environment.</li>
-<li>Added <code>consent_last_updated</code> timestamp to the payload of each event triggered by the Consent Manager.</li>
-<li>Payload key constants migrated to <code>Dispatch.Keys.XXX</code> for ease of access.</li>
-<li>Bug Fixes
+<li>Added <a href="/platforms/android-kotlin/api/tealium-config/#loglevel"><code>TealiumConfig.logLevel</code></a> to enable overriding the log level derived from the environment</li>
+<li>Added <code>consent_last_updated</code> timestamp to the payload of each event triggered by the Consent Manager</li>
+<li>Payload key constants migrated to <code>Dispatch.Keys.XXX</code> for ease of access</li>
+<li>Bug fixes
 <ul>
-<li><code>app_name</code> now falls back to a non-localized version of the app label.</li>
+<li><code>app_name</code> now falls back to a non-localized version of the app label</li>
 <li>Fixed event router crashes caused by threading.</li>
 <li><code>screen_title</code> re-added to the <code>TealiumView</code> payload by default, and set to the <code>viewName</code> when one is not provided in the context data</li>
-<li>Unnecessary logging removed when trying to load <code>tealium-settings.json</code> as an Asset.</li>
+<li>Unnecessary logging removed when trying to load <code>tealium-settings.json</code> as an asset.</li>
 <li>Where multiple deep links occur during a session, previous deep link parameters are now removed from the data layer prior to adding the new ones.</li>
 </ul>
 </li>
@@ -435,24 +458,24 @@
 <li>Core 1.2.6
 <ul>
 <li>Added <code>TealiumConfig.existingVisitorId</code> to support using your own unique identifier.</li>
-<li>Added <code>TealiumConfig.consentManagerLoggingProfile</code> to support to overriding the profile for Consent Logging.</li>
-<li>Consent Logging event routed through all enabled Dispatchers.</li>
+<li>Added <code>TealiumConfig.consentManagerLoggingProfile</code> to support to overriding the profile for consent logging</li>
+<li>Consent Logging event routed through all enabled dispatchers.</li>
 <li>Updated values for data layer variables <code>app_build</code> and <code>app_version</code>.</li>
 </ul>
 </li>
 <li>Tag Management Dispatcher 1.0.6
 <ul>
-<li>Support for Consent Logging profile override.</li>
+<li>Support for consent logging profile override.</li>
 </ul>
 </li>
 <li>Collect Dispatcher 1.0.5
 <ul>
-<li>Support for Consent Logging profile override.</li>
+<li>Support for consent logging profile override.</li>
 </ul>
 </li>
 <li>Visitor Service 1.0.5
 <ul>
-<li>Bug fix: deserializing stored long values.</li>
+<li>Bug fix: Deserializing stored long values.</li>
 </ul>
 </li>
 </ul>
@@ -468,7 +491,7 @@
 <ul>
 <li>Added new data layer variables <code>enabled_modules</code> and <code>enabled_modules_versions</code>. Both are arrays of strings, containing a sorted list of modules in use and their version number - latest versions of all modules required to retrieve their version.</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>module names have also been changed from &ldquo;UPPER_SNAKE_CASE&rdquo; to &ldquo;PascalCase&rdquo; to match Swift.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>module names have also been changed from <code>UPPER_SNAKE_CASE</code> to <code>PascalCase</code> to match Swift.</p>
 <ul>
 <li>New config option <code>remoteApiEnabled</code> to permit disabling of <code>remote_api</code> events when using the RemoteCommands and TagManagement modules.</li>
 <li>New config option <code>overrideCollectProfile</code> to permit overriding the value of <code>tealium_profile</code> in the event payload, routing events to a different Tealium profile to the one set on the <code>TealiumConfig</code> object.</li>
@@ -481,13 +504,13 @@
 <ul>
 <li>Core 1.2.3
 <ul>
-<li>Consent Management: Added option for setting a custom consent policy.</li>
+<li>Consent Management: Added option for setting a custom consent policy</li>
 <li>Add new <code>device_language</code>, <code>os_name</code> to DeviceCollector module.</li>
 </ul>
 </li>
 <li>Crash Reporter 1.0.2
 <ul>
-<li>Updated keys for CrashReporter module: <code>crash_exception_name</code> changed to <code>crash_name</code>, <code>crash_exception_cause</code> changed to <code>crash_cause</code>.</li>
+<li>Updated keys for CrashReporter module: <code>crash_exception_name</code> changed to <code>crash_name</code>, <code>crash_exception_cause</code> changed to <code>crash_cause</code></li>
 </ul>
 </li>
 </ul>
@@ -506,7 +529,7 @@
 </ul>
 <h2 id="121-march-2021">1.2.1 (March 2021)</h2>
 <ul>
-<li>ProGuard and Consumer Rules revision; added missing public classes, and the consumer rules have been revised</li>
+<li>ProGuard and consumer rules revision; added missing public classes, and the consumer rules have been revised</li>
 <li>Core 1.2.1, Collect Dispatcher 1.0.3, TagManagement Dispatcher 1.0.3, Install Referrer 1.0.2, Lifecycle 1.0.3, Location 1.0.3, VisitorService 1.0.3, RemoteCommand Dispatcher 1.0.2, Hosted DataLayer 1.0.2, Crash Reporter 1.0.1, Ad Identifier 1.0.1</li>
 </ul>
 <h2 id="120-january-2021">1.2.0 (January 2021)</h2>
@@ -525,7 +548,7 @@
 </li>
 <li>AdIdentifier 1.0.0
 <ul>
-<li>Initial release of the AdIdentifier module: if available, AdIdentifier is added to each Dispatch</li>
+<li>Initial release of the AdIdentifier module: if available, AdIdentifier is added to each dispatch</li>
 </ul>
 </li>
 <li>CrashReporter 1.0.0
@@ -541,9 +564,9 @@
 </ul>
 <h2 id="110-november-2020">1.1.0 (November 2020)</h2>
 <ul>
-<li>Timed Events support for reporting the time taken between user events of interest</li>
+<li>Timed events support for reporting the time taken between user events of interest</li>
 <li>New <code>device_model</code> and <code>device_manufacturer</code> data keys provided by the <code>DeviceCollector</code></li>
-<li>Automated unit and instrumented tests for PRs into master using Github Actions</li>
+<li>Automated unit and instrumented tests for PRs into master using GitHub actions</li>
 <li>Collect Dispatcher 1.0.1
 <ul>
 <li>Additional Collect URL overrides</li>
@@ -635,7 +658,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 16, 2024 
+          <p>This page was last updated:  May 22, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -649,7 +672,8 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#155-september-2023" href="javascript:void(0)">1.5.5 (September 2023)</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#160-may-15-2024" href="javascript:void(0)">1.6.0 (May 15, 2024)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#155-september-2023" href="javascript:void(0)">1.5.5 (September 2023)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#154-august-2023" href="javascript:void(0)">1.5.4 (August 2023)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#153-june-2023" href="javascript:void(0)">1.5.3 (June 2023)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#152-april-2023" href="javascript:void(0)">1.5.2 (April 2023)</a></li>
