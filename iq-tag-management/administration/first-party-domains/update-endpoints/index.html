@@ -430,15 +430,16 @@
 
 <div class="prose nested-links" id="prose">
   <p>After you have configured First-Party Domains and validation has been completed, you need to update your endpoint configurations to use First-Party Domains with Tealium iQ Tag Management and <a href="/client-side-tags/tealium-collect-tag/">Tealium Collect</a>.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The information in this article applies only to C-NAMEs and A-NAMEs that were created using First-Party Domains.</p>
 <h2 id="tag-management">Tag management</h2>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium&rsquo;s environment switcher supports First-Party Domains. However, the environment switcher <strong>Basic</strong> option does not work with First-Party Domains. Use the <strong>URL redirect</strong> option on the <strong>Advanced</strong> tab. For more information, see <a href="/iq-tag-management/tealium-tools/environment-switcher/">Tealium Tools: Environment Switcher</a>.</p>
 <p>To use your first-party domain with Tealium iQ Tag Management you must also make the following changes:</p>
 <ul>
 <li>Update the Universal Tag (<code>utag.js</code>) code snippet wherever it is installed.</li>
 <li>Set the publishing URLs.</li>
 </ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>The Tealium environment switcher supports First-Party Domains. However, the environment switcher <strong>Basic</strong> option does not work with First-Party Domains. Use the <strong>URL redirect</strong> option on the <strong>Advanced</strong> tab. For more information, see <a href="/iq-tag-management/tealium-tools/environment-switcher/">Tealium Tools: Environment Switcher</a>.</p>
 <h3 id="update-universal-tag-loading-script">Update universal tag loading script</h3>
-<p>To update the Universal Tag code snippet:</p>
+<p>To update the Universal Tag code snippet, follow these steps:</p>
 <ol>
 <li>In the admin menu, click <strong>Code Center</strong>.</li>
 <li>Under <strong>Choose Domain</strong>, select your first-party domain.<br>
@@ -449,10 +450,10 @@
     </figure></li>
 </ol>
 <p>The example code snippet is updated to use your first-party domain.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>The new URL only uses the profile name and environment in the path. The account name and <code>/utag/</code> portions are omitted.</p>
-<p>The URL to the Universal Tag on a first-party domain is:</p>
-<pre tabindex="0"><code>https://**sub.your_domain.com**/PROFILE/ENV/utag.js
-</code></pre><p>For example, the code snippet for <code>tags.tealiumecommerce.com</code> would be:</p>
+<p>For the current version of First-Party Domains, the URL for the Universal tag only includes the profile name and environment in the path. The account name and <code>utag</code> portions are omitted.</p>
+<p>The URL for the Universal Tag for earlier versions of First-Party Domains, and for most other scenarios, includes the account name and <code>utag</code> portions. For example:</p>
+<p><code>https://tags.tiqcdn.com/utag/example-account/example-profile/prod/utag.js</code></p>
+<p>In the following code snippet example for the current version of First-Party Domains, the code snippet for <code>tags.tealiumecommerce.com/ecomm/prod</code> would be:</p>
 <pre tabindex="0"><code>&lt;!-- Loading script asynchronously --&gt;
 &lt;script type=&#34;text/javascript&#34;&gt;
     (function(a,b,c,d){
@@ -462,9 +463,9 @@
     })();
 &lt;/script&gt;
 </code></pre><h3 id="update-publishing-urls">Update publishing URLs</h3>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>If you have multiple first-party domains configured for a profile, see <a href="#update-publishing-urls-when-a-profile-has-multiple-first-party-domains">Update publishing URLs when a profile has multiple first-party domain</a> for information about updating the publishing URLs.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If you have multiple first-party domains configured for a profile, see <a href="#update-publishing-urls-when-a-profile-has-multiple-first-party-domains">Update publishing URLs when a profile has multiple first-party domains</a> for information about updating the publishing URLs.</p>
 <p>The publishing URLs determine where to load the additional <code>utag.#.js</code> files for each default environment. If the publishing URLs are not updated, then the vendor tag files loaded after <code>utag.js</code> will not originate from your domain.</p>
-<p>Follow these steps to set the publishing URLs:</p>
+<p>To set the publishing URLs, use the following steps:</p>
 <ol>
 <li>In the admin menu, click <strong>Configure Publish Settings</strong>.</li>
 <li>Scroll down to <strong>Publishing URLs</strong>, then enter a URL for each environment that uses your first-party domain. For example, <code>tags.example.com</code> and <code>collect.example.com</code>.
@@ -481,7 +482,7 @@
 </ol>
 <h3 id="update-publishing-urls-when-a-profile-has-multiple-first-party-domains">Update publishing URLs when a profile has multiple first-party domains</h3>
 <p>If you have multiple first-party domains configured for a profile, you will not be able to update the publishing URLs from the client-side menu.</p>
-<p>You need to add a script similar to the following to update the publishing URLs, replacing the example path with the appropriate path for the page (it will match the utag.js inclusion path, which can be updated at the same time). This script must be added before the script that specifies the URL for <code>utag.js</code>.</p>
+<p>You need to add a script similar to the following to update the publishing URLs, replacing the example path with the appropriate path for the page (it will match the <code>utag.js</code> inclusion path, which can be updated at the same time). This script must be added before the script that specifies the URL for <code>utag.js</code>.</p>
 <pre tabindex="0"><code>&lt;script&gt;
 window.utag_cfg_ovrd = window.utag_cfg_ovrd || {}
 window.utag_cfg_ovrd.path = &#39;//tags.example.com/main/prod&#39;
@@ -489,7 +490,7 @@ window.utag_cfg_ovrd.path = &#39;//tags.example.com/main/prod&#39;
 </code></pre><p>For more information, see <a href="/platforms/javascript/settings/">Settings</a>.</p>
 <h2 id="update-tealium-collect-endpoint">Update Tealium Collect endpoint</h2>
 <p>To use your first-party domain with Tealium EventStream API Hub or Tealium AudienceStream CDP, you need to update the data collection URL in your installation of Tealium Collect. For websites, this requires setting the <strong>Tealium Collect Endpoint</strong> field for the <a href="/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a>. To use the visitor service, you also need to provide a Visitor Service Override.</p>
-<p>To update the Tealium Collect tag:</p>
+<p>To update the Tealium Collect tag, use the following steps:</p>
 <ol>
 <li>Navigate to <strong>Tags</strong> and expand the Tealium Collect tag.</li>
 <li>In the <strong>Tealium Collect Endpoint</strong> field, enter your first-party domain endpoint.<br>
@@ -497,6 +498,7 @@ For example: <code>sub.your_domain.com/your_account/your_profile/2/i.gif</code><
 <li>In the <strong>Visitor Service Override</strong> field, enter the visitor service URL. Omit the protocol and path. For example: <code>your-visitor-service.example.com</code></li>
 <li>Click <strong>Apply</strong>.</li>
 </ol>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>A separate Collect tag must be used for each subdomain unless an extension is used to map the values dynamically.</p>
 
 </div>
 
@@ -557,7 +559,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 6, 2023 
+          <p>This page was last updated:  May 23, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
