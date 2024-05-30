@@ -299,7 +299,7 @@
         <a href="/ja/iq-tag-management/administration/first-party-domains/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-first-party-domains">ファーストパーティドメインについて</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/administration/first-party-domains/configure-server-side/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".configure-server-side-data-collection">サーバーサイドデータ収集の構成</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/administration/first-party-domains/configure-client-side/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".configure-client-side-delivery">クライアントサイド配信の構成</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/administration/first-party-domains/update-endpoints/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".fpd-update-domains">エンドポイント構成の更新</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/administration/first-party-domains/update-endpoints/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".fpd-update-domains">エンドポイント設定の更新</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/administration/first-party-domains/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-first-party-domains">ファーストパーティドメインの管理</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".linking-to-github">GitHubへのリンク</a>
@@ -431,24 +431,22 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="要件">要件</h2>
+  <h2 id="必要条件">必要条件</h2>
 <ul>
-<li>utag v4.38以降。<code>utag.js</code>テンプレートの更新についての詳細は、ナレッジベースの記事<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">utag.jsの最新バージョンへの更新のベストプラクティス</a>を参照してください。</li>
+<li>utag v4.38以降。<code>utag.js</code>テンプレートの更新についての詳細は、当社のナレッジベースの記事<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">utag.jsの最新バージョンへの更新のベストプラクティス</a>を参照してください。</li>
 </ul>
-<h2 id="動作方法">動作方法</h2>
+<h2 id="仕組み">仕組み</h2>
 <p>要素の可視性イベントは、訪問者がページ上の特定の要素を見たときにトラッキングします。要素が訪問者に見えると、トラッキングコールがトリガーされます。</p>
-<p>イベントリスナーの追加方法についての詳細は、<a href="/ja/iq-tag-management/events/manage/">イベントの管理</a>を参照してください。</p>
+<p>イベントリスナーを追加する方法についての詳細は、<a href="/ja/iq-tag-management/events/manage/">イベントの管理</a>を参照してください。</p>
 <h2 id="イベントトリガー">イベントトリガー</h2>
 <p>イベントトリガーは、イベントリスナーがトラッキングする特定のアクションです。</p>
 <p>イベントのデフォルトは、要素の可視性イベントトリガーです。このトリガーには以下の閾値を設定できます：</p>
 <ul>
-<li><strong>パーセント表示</strong> - イベントリスナーがトリガーするために表示する必要がある要素のパーセンテージ。</li>
-<li><strong>最小期間</strong> - イベントリスナーがトリガーするために要素が表示される必要がある時間（秒）。デフォルトは0秒で、イベントリスナーはすぐにトリガーします。</li>
+<li><strong>パーセント可視</strong> - イベントリスナーがトリガーするために可視である必要がある要素のパーセンテージ。</li>
+<li><strong>最小持続時間</strong> - イベントリスナーがトリガーするために要素が可視である必要がある時間（秒）。デフォルトは0秒で、イベントリスナーはすぐにトリガーします。</li>
 </ul>
 <h3 id="要素セレクター">要素セレクター</h3>
 <p>要素セレクターは、イベントリスナーをトリガーするページ上のどの要素を指定するかを指定します。詳細については、<a href="/ja/iq-tag-management/events/selectors/">イベント要素セレクター</a>を参照してください。</p>
-<h3 id="トリガー頻度">トリガー頻度</h3>
-<p>トリガー頻度は、イベントトリガーがトラッキングコールを結果とする回数を決定します。詳細については、<a href="/ja/iq-tag-management/events/triggers-and-frequency/">イベントトリガー</a>を参照してください。</p>
 <h2 id="イベントトリガー変数">イベントトリガー変数</h2>
 <p>イベントトリガー変数は、イベントがトラッキングコールと共に送信する値です。要素の可視性イベントには、以下のデフォルトのイベントトリガー変数があります：</p>
 <table>
@@ -463,19 +461,19 @@
 <tbody>
 <tr>
 <td><code>tealium_event</code></td>
-<td>Tealiumイベント名。</td>
+<td>Tealiumのイベント名。</td>
 <td><code>element_visible</code></td>
 <td>文字列</td>
 </tr>
 <tr>
 <td><code>percent_visible</code></td>
-<td>可視だった要素のパーセンテージ。</td>
+<td>可視であった要素のパーセンテージ。</td>
 <td><code>100</code></td>
 <td>数値</td>
 </tr>
 <tr>
 <td><code>duration</code></td>
-<td>要素が可視だった時間（秒）。</td>
+<td>要素が可視であった時間（秒）。</td>
 <td><code>5</code></td>
 <td>数値</td>
 </tr>
@@ -498,7 +496,7 @@
 <tbody>
 <tr>
 <td><code>tealium_event=&quot;element_visible&quot;</code></td>
-<td>訪問者が指定した要素を一定の可視性パーセンテージと最小時間で表示しました。</td>
+<td>訪問者が指定した要素を一定の可視性のパーセンテージと最小時間で表示しました。</td>
 </tr>
 </tbody>
 </table>
@@ -568,11 +566,10 @@
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E6%96%B9%E6%B3%95" href="javascript:void(0)">動作方法</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">必要条件</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC" href="javascript:void(0)">イベントトリガー</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E7%B4%A0%E3%82%BB%E3%83%AC%E3%82%AF%E3%82%BF%E3%83%BC" href="javascript:void(0)">要素セレクター</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E9%A0%BB%E5%BA%A6" href="javascript:void(0)">トリガー頻度</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E5%A4%89%E6%95%B0" href="javascript:void(0)">イベントトリガー変数</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E7%B4%A0%E3%81%AE%E5%8F%AF%E8%A6%96%E6%80%A7" href="javascript:void(0)">要素の可視性</a></li>
               </nav>
