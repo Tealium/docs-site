@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "10",
+        reading_time  : "11",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -248,6 +248,7 @@
 <li><strong>Radio</strong>: The visitor can select only a single answer from the displayed list.</li>
 <li><strong>Text</strong>: The visitor can enter their answer in a single line text box.</li>
 <li><strong>Checkbox</strong>: The visitor can select one or more checkboxes with a label.</li>
+<li><strong>Buttons</strong>: The visitor can select one of two answers displayed as buttons.</li>
 </ul>
 </li>
 <li><strong>Answers</strong>: The answers to the question:
@@ -258,6 +259,8 @@ Example: <code>Red|Green|Blue|Teal</code></li>
 Example: <code>[&quot;What is your favorite color?&quot;]</code></li>
 <li><strong>Checkbox</strong>: A pipe (|) delimited list of answers to display next to each checkbox.<br>
 Example: <code>Red|Green|Blue|Teal</code></li>
+<li><strong>Buttons</strong>: A pipe (|) delimited list of answers to override the primary and secondary button text. Moments iQ uses only the first two values.
+Example: <code>Red|Green</code></li>
 </ul>
 </li>
 <li><strong>Primary Button Text</strong>: The text label for the primary button. The default value is <code>Submit</code>.</li>
@@ -299,6 +302,11 @@ Example: <code>Red|Green|Blue|Teal</code></li>
 <td><code>#1B1B1B</code></td>
 </tr>
 <tr>
+<td><strong>Secondary Button Text Color</strong></td>
+<td>The color of the secondary button text, as a hex code or standard color name. The default value is <code>#FFFFFF</code>.</td>
+<td><code>#1B1B1B</code></td>
+</tr>
+<tr>
 <td><strong>Header Text Font Family</strong></td>
 <td>The font family of the header text. The default value is <code>Arial</code>.</td>
 <td><code>Arial</code></td>
@@ -321,6 +329,11 @@ Example: <code>Red|Green|Blue|Teal</code></li>
 <tr>
 <td><strong>Primary Button Font Family</strong></td>
 <td>The font family of the primary button. The default value is <code>Arial</code>.</td>
+<td><code>Arial</code></td>
+</tr>
+<tr>
+<td><strong>Secondary Button Font Family</strong></td>
+<td>The font family of the secondary button. The default value is <code>Arial</code>.</td>
 <td><code>Arial</code></td>
 </tr>
 <tr>
@@ -349,6 +362,11 @@ Example: <code>Red|Green|Blue|Teal</code></li>
 <td><code>16px</code></td>
 </tr>
 <tr>
+<td><strong>Secondary Button Text Font Size</strong></td>
+<td>The secondary button text size. The default value is <code>16px</code>.</td>
+<td><code>16px</code></td>
+</tr>
+<tr>
 <td><strong>Header Text Font Style</strong></td>
 <td>The font style of the header text. The default value is <code>normal</code>.</td>
 <td><code>normal</code></td>
@@ -371,6 +389,11 @@ Example: <code>Red|Green|Blue|Teal</code></li>
 <tr>
 <td><strong>Primary Button Text Font Style</strong></td>
 <td>The font style of the primary button. The default value is <code>normal</code>.</td>
+<td><code>normal</code></td>
+</tr>
+<tr>
+<td><strong>Secondary Button Text Font Style</strong></td>
+<td>The font style of the secondary button. The default value is <code>normal</code>.</td>
 <td><code>normal</code></td>
 </tr>
 <tr>
@@ -399,6 +422,11 @@ Example: <code>Red|Green|Blue|Teal</code></li>
 <td><code>400</code></td>
 </tr>
 <tr>
+<td><strong>Secondary Button Text Font Weight</strong></td>
+<td>The font weight of the secondary button text. The default value is <code>400</code>.</td>
+<td><code>400</code></td>
+</tr>
+<tr>
 <td><strong>Outer Container Background Color</strong></td>
 <td>The background color of the experience, as a hex code or standard color name. The default value is <code>#FCFCFC</code>.</td>
 <td><code>#1B1B1B</code></td>
@@ -406,6 +434,11 @@ Example: <code>Red|Green|Blue|Teal</code></li>
 <tr>
 <td><strong>Primary Button Background Color</strong></td>
 <td>The background color of the primary button. The default value is <code>#1B1B1B</code>.</td>
+<td><code>#1B1B1B</code></td>
+</tr>
+<tr>
+<td><strong>Secondary Button Background Color</strong></td>
+<td>The background color of the secondary button. The default value is <code>#1B1B1B</code>.</td>
 <td><code>#1B1B1B</code></td>
 </tr>
 <tr>
@@ -484,22 +517,22 @@ Example: <code>Red|Green|Blue|Teal</code></li>
 <tr>
 <td style="text-align:left"><code>type</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Experience Type</td>
+<td style="text-align:left">Experience type</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>placement</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Experience Placement</td>
+<td style="text-align:left">Experience placement</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>selector</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Placement Selector</td>
+<td style="text-align:left">Placement selector</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>position</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Experience Position</td>
+<td style="text-align:left">Experience position</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>imagePosition</code></td>
@@ -524,7 +557,7 @@ Example: <code>Red|Green|Blue|Teal</code></li>
 <tr>
 <td style="text-align:left"><code>redirect_open_tab</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Redirect Opens Tab</td>
+<td style="text-align:left">Redirect opens tab</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>zindex</code></td>
@@ -534,27 +567,37 @@ Example: <code>Red|Green|Blue|Teal</code></li>
 <tr>
 <td style="text-align:left"><code>headerText</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Header Text</td>
+<td style="text-align:left">Header text</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>mainText</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Main Text</td>
+<td style="text-align:left">Main text</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>questionText</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Question Text</td>
+<td style="text-align:left">Question text</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>answerType</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Answer Type</td>
+<td style="text-align:left">Answer type</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>answers</code></td>
 <td style="text-align:left">Array</td>
 <td style="text-align:left">Answers</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>primaryText</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Primary button text</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>trackType</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Tealium track type</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>primaryText</code></td>
@@ -586,127 +629,152 @@ Example: <code>Red|Green|Blue|Teal</code></li>
 <tr>
 <td style="text-align:left"><code>headerTitle.color</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Header Text Color</td>
+<td style="text-align:left">Header text color</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>headerTitle.fontFamily</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Header Text Font Family</td>
+<td style="text-align:left">Header text font family</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>headerTitle.fontSize</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Header Text Font Size</td>
+<td style="text-align:left">Header text font size</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>headerTitle.fontStyle</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Header Text Font Style</td>
+<td style="text-align:left">Header text font style</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>headerTitle.fontWeight</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Header Font Weight</td>
+<td style="text-align:left">Header font weight</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>mainBodyText.color</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Main Text Color</td>
+<td style="text-align:left">Main text color</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>mainBodyText.fontFamily</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Main Text Font Family</td>
+<td style="text-align:left">Main text font family</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>mainBodyText.fontSize</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Main Text Font Size</td>
+<td style="text-align:left">Main text font size</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>mainBodyText.fontStyle</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Main Text Font Style</td>
+<td style="text-align:left">Main text font style</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>mainBodyText.fontWeight</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Main Text Font Weight</td>
+<td style="text-align:left">Main text font weight</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>questionContainer.color</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Question Text Color</td>
+<td style="text-align:left">Question text color</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>questionContainer.fontFamily</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Question Text Font Family</td>
+<td style="text-align:left">Question text font family</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>questionContainer.fontSize</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Question Text Font Size</td>
+<td style="text-align:left">Question text font size</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>questionContainer.fontStyle</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Question Text Font Style</td>
+<td style="text-align:left">Question text font style</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>questionContainer.fontWeight</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Question Font Weight</td>
+<td style="text-align:left">Question font weight</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>answerContainer.color</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Answer Text Color</td>
+<td style="text-align:left">Answer text color</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>answerContainer.fontFamily</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Answer Text Font Family</td>
+<td style="text-align:left">Answer text font family</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>answerContainer.fontSize</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Answer Text Font Size</td>
+<td style="text-align:left">Answer text font size</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>answerContainer.fontStyle</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Answer Text Font Style</td>
+<td style="text-align:left">Answer text font style</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>answerContainer.fontWeight</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Answer Font Weight</td>
+<td style="text-align:left">Answer font weight</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>primaryButton.color</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Primary Button Text Color</td>
+<td style="text-align:left">Primary button text color</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>primaryButton.fontFamily</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Primary Button Font Family</td>
+<td style="text-align:left">Primary button font family</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>primaryButton.fontSize</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Primary Button Text Font Size</td>
+<td style="text-align:left">Primary button text font size</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>primaryButton.fontStyle</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Primary Button Font Style</td>
+<td style="text-align:left">Primary button font style</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>primaryButton.fontWeight</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Primary Button Font Weight</td>
+<td style="text-align:left">Primary button font weight</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>secondaryButton.color</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Secondary button text color</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>secondaryButton.fontFamily</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Secondary button font family</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>secondaryButton.fontSize</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Secondary button text font size</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>secondaryButton.fontStyle</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Secondary button font style</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>secondaryButton.fontWeight</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Secondary button font weight</td>
 </tr>
 </tbody>
 </table>
@@ -715,7 +783,6 @@ Example: <code>Red|Green|Blue|Teal</code></li>
 <thead>
 <tr>
 <th style="text-align:left">Variable</th>
-<th style="text-align:left">Type</th>
 <th style="text-align:left">Description</th>
 </tr>
 </thead>
@@ -723,97 +790,86 @@ Example: <code>Red|Green|Blue|Teal</code></li>
 <tr>
 <td style="text-align:left"><code>outerContainer.background</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Outer Container Background Color</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>outerContainer.margin</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Outer Container Margin</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>outerContainer.borderStyle</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Outer Container Border Style</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>outerContainer.borderColor</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Outer Container Border Color</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>outerContainer.borderRadius</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Outer Container Border Radius</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>outerContainer.width</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Outer Container Width</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>questionContainer.margin</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Question Container Margin</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>questionContainer.textAlign</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Question Container Text Align</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>answerContainer.margin</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Answer Container Margin</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>answerContainer.textAlign</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Answer Container Text Align</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>primaryButton.background</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Primary Button Background Color</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>primaryButton.borderRadius</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Primary Button Border Radius</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>secondaryButton.background</code></td>
+<td style="text-align:left">String</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>secondaryButton.borderRadius</code></td>
+<td style="text-align:left">String</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>radioContainer.alignItems</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Radio Answer Container Align Items</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>radioContainer.flexDirection</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Radio Answer Container Flex Direction</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>checkboxContainer.alignItems</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Checkbox Answer Container Align Items</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>checkboxContainer.flexDirection</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Checkbox Answer Container Flex Direction</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>textFieldContainer.alignItems</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Text Field Answer Container Align Items</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>textFieldContainer.flexDirection</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Text Field Answer Container Flex Direction</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>textFieldContainer.alignItems</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">Footer Container Align Items</td>
 </tr>
 </tbody>
 </table>
@@ -850,37 +906,42 @@ Example: <code>Red|Green|Blue|Teal</code></li>
 <tr>
 <td style="text-align:left"><code>primaryButton</code></td>
 <td style="text-align:left">[Object]</td>
-<td style="text-align:left">Primary Button</td>
+<td style="text-align:left">Primary button</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>secondaryButton</code></td>
+<td style="text-align:left">[Object]</td>
+<td style="text-align:left">Secondary button</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>outerContainer</code></td>
 <td style="text-align:left">[Object]</td>
-<td style="text-align:left">Outer Container</td>
+<td style="text-align:left">Outer container</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>radioContainer</code></td>
 <td style="text-align:left">[Object]</td>
-<td style="text-align:left">Radio Answer Container</td>
+<td style="text-align:left">Radio answer container</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>checkboxContainer</code></td>
 <td style="text-align:left">[Object]</td>
-<td style="text-align:left">Checkbox Answer Container</td>
+<td style="text-align:left">Checkbox answer container</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>textFieldContainer</code></td>
 <td style="text-align:left">[Object]</td>
-<td style="text-align:left">Text Field Answer Container</td>
+<td style="text-align:left">Text field answer container</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>footerContainer</code></td>
 <td style="text-align:left">[Object]</td>
-<td style="text-align:left">Footer Container</td>
+<td style="text-align:left">Footer container</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>imageNode</code></td>
 <td style="text-align:left">[Object]</td>
-<td style="text-align:left">Image Element</td>
+<td style="text-align:left">Image element</td>
 </tr>
 </tbody>
 </table>
@@ -974,7 +1035,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 30, 2024 
+          <p>This page was last updated:  June 4, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
