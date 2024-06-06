@@ -349,7 +349,7 @@
         <a href="/ja/server-side-connectors/connector-insights-facebook-event-match-quality/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-facebook-event-match-quality">コネクタインサイトFacebookイベントマッチ品質</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/connector-insights-facebook-custom-audiences/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-facebook-custom-audiences">コネクタインサイトFacebookカスタムオーディエンス</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/connector-insights-google-ads-customer-match/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-google-ads-customer-match">コネクターインサイト Google Ads Customer Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side-connectors/connector-insights-google-dv360-customer-match/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-google-dv360-customer-match">コネクターインサイト Google DV360カスタマーマッチコネクター</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/connector-insights-google-dv360-customer-match/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-google-dv360-customer-match">コネクターインサイト Google DV360 カスタマーマッチコネクター</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/connector-insights-twitter-custom-audiences/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-twitter-custom-audiences">コネクターインサイトTwitterカスタムオーディエンス</a></li></ul>
 </nav>
 </div>
@@ -447,7 +447,7 @@
 <p><strong>接続のテスト</strong></p>
 <ul>
 <li>ピクセルが Tealium にホワイトリスト登録され、Tealium で有効になっている場合、<strong>TealiumTestConnector</strong> イベントがピクセルでトラッキングされます。<strong>テスト接続</strong> をクリックして、<strong>TealiumConnectorTest</strong> という名前のテストイベントを送信します。</li>
-<li>Facebook イベントマネージャーのピクセルの概要を確認して、イベントが受信されたことを確認します。</li>
+<li>Facebook イベントマネージャーピクセルの概要を確認して、イベントが受信されたことを確認します。</li>
 <li>テストが失敗した場合は、設定を再確認してください。</li>
 </ul>
 </li>
@@ -456,11 +456,11 @@
 <p><strong>次へ</strong> をクリックするか、<strong>アクション</strong> タブをクリックします。アクションタブでコネクタのアクションのパラメータとオプションを構成します。</p>
 <p>このセクションでは、各アクションのパラメータとオプションの設定方法について説明します。</p>
 <h3 id="facebook-pixel-および-facebook-conversions-api-の重複排除">Facebook Pixel および Facebook Conversions API の重複排除</h3>
-<p>このコネクタアクションを設定して、Facebook Pixel タグからのイベント ID を iQ タグ管理アカウントで受け取るようにするには、次の命名規則を使用してイベント属性を構成します。</p>
+<p>このコネクタアクションを設定して、Facebook Pixel タグから iQ タグ管理アカウントでイベント ID を受け取るようにするには、次の命名規則を使用してイベント属性を構成します。</p>
 <p><code>fb_event_id_&lt;Facebook Event&gt;_&lt;Tag UID&gt;</code></p>
 <p>例: <code>fb_event_id_Purchase_32</code> または <code>fb_event_id_PageView</code></p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>以前は <code>fb_event_id_&lt;Facebook Event&gt;</code> として生成されていた ID も引き続き生成されますが、これらはレガシーと見なされます。新しい ID は、単一のページで複数の Facebook タグが発火する場合に使用でき、関連するタグにより強力な関連付けが可能です。レガシーバージョンを使用している場合は、コネクタを新しい ID に変更する必要があります。</p>
-<p>各種イベント ID ごとに別個のアクションを使用します。イベント固有のイベント ID 属性をイベント ID にマッピングし、マッチングするイベント名を <strong>Event Name</strong> にマッピングします。例:</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>以前は <code>fb_event_id_&lt;Facebook Event&gt;</code> として生成されていました。これらの ID は引き続き生成されますが、レガシーと見なされます。新しい ID は、単一のページで複数の Facebook タグが発火する場合に使用でき、関連するタグにより強力な関連付けが可能です。レガシーバージョンを使用している場合は、コネクタを新しい ID に変更する必要があります。</p>
+<p>各種イベント ID に対して個別のアクションを使用します。イベント固有のイベント ID 属性をイベント ID にマップし、マッチングするイベント名を <strong>Event Name</strong> にマップします。例:</p>
 <table>
 <thead>
 <tr>
@@ -481,19 +481,19 @@
 </table>
 <p><a href="/ja/client-side-tags/facebook-pixel-tag/">Facebook Pixel タグセットアップガイド</a>を参照してください。</p>
 <h4 id="自動重複排除">自動重複排除</h4>
-<p><strong>自動重複排除</strong> の値が入力されている場合、コネクタは UDO オブジェクト内の対応する変数を検索します。このセクションが入力されており、Tealium iQ を使用している場合、Event ID を追加する必要はありません。ただし、TealiumiQ を使用せずに EventStream を使用している場合は、次のアプローチが引き続き必要になる場合があります。</p>
+<p><strong>自動重複排除</strong> の値が入力されている場合、コネクタは UDO オブジェクト内の対応する変数を検索します。このセクションが入力されている場合、Tealium iQ を使用していない場合でも、EventStream を使用している場合には次のアプローチが必要です。</p>
 <p>コネクタは次の操作順序を使用します。</p>
 <ul>
-<li><strong>自動重複排除</strong> が入力されており、データレイヤーでその値が見つかった場合（たとえば、<code>fb_event_id_ViewContent_30</code>）、この値は Event ID にマッピングされたものより優先されます。</li>
-<li><strong>自動重複排除</strong> が入力されており、タグ ID バージョンが見つからないが、レガシーバージョン（ID なし）が見つかった場合、その値が使用されます（たとえば、<code>fb_event_id_ViewContent</code>）。</li>
-<li><strong>自動重複排除</strong> が入力されており、値が見つからない場合、マッピングされた Event ID が入力されている場合は、それが使用されます。</li>
+<li><strong>自動重複排除</strong> が入力されており、データレイヤーでその値が見つかった場合（例: <code>fb_event_id_ViewContent_30</code>）、この値は Event ID にマップされ、Event ID にマップされたものより優先されます。</li>
+<li><strong>自動重複排除</strong> が入力されており、タグ ID バージョンが見つからない場合、ただしレガシーバージョン（ID なし）が見つかる場合、その値が使用されます（例: <code>fb_event_id_ViewContent</code>）。</li>
+<li><strong>自動重複排除</strong> が入力されており、値が見つからない場合、マップされた Event ID が入力されている場合は、マップされた Event ID が使用されます。</li>
 </ul>
 <h3 id="オフラインコンバージョン">オフラインコンバージョン</h3>
-<p>新しい統合には、<a href="/ja/server-side-connectors/facebook-offline-conversions-connector/">Facebook オフラインコンバージョンコネクタ</a> の代わりに Facebook Conversions コネクタを使用することをお勧めします。</p>
+<p>新しい統合には、Facebook オフラインコンバージョンコネクタ(<a href="/ja/server-side-connectors/facebook-offline-conversions-connector/">Facebook Offline Conversions connector</a>) の代わりに Facebook Conversions コネクタを使用することをお勧めします。</p>
 <p>Facebook Conversions コネクタを介してオフラインおよびストアイベントを処理するには、<code>action_source</code> パラメータを <code>physical_store</code> に設定します。</p>
 <h3 id="アクション---イベントを送信する">アクション - イベントを送信する</h3>
 <h4 id="パラメータ">パラメータ</h4>
-<p><strong>ユーザーデータ</strong> パラメータについて、次の表は、いくつかのパラメータの重要度レベルを示しています。重要度レベルは、イベントの一致品質に対するパラメータの影響度を説明しています。たとえば、<strong>Email (em)</strong> の重要度レベルは <strong>最高</strong> であり、<strong>Phone Number (ph)</strong> の重要度レベルは <strong>高</strong> です。</p>
+<p><strong>ユーザーデータ</strong> パラメータについて、次の表は、一部のパラメータの重要度レベルを示しています。重要度レベルは、イベントの一致品質に対するパラメータの影響度を説明します。たとえば、<strong>Email (em)</strong> は <strong>最高</strong> の重要度レベルを持ち、<strong>Phone Number (ph)</strong> は <strong>高</strong> の重要度レベルを持ちます。</p>
 <table>
 <thead>
 <tr>
@@ -503,299 +503,299 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Event Source URL</td>
-<td style="text-align:left">イベントが発生したブラウザの URL。このパラメータは、<strong>Action Source</strong> がウェブサイトに設定されている場合に必要です。 <ul><li><strong>EventStream</strong> - <strong>Action Source</strong> がウェブサイトに設定されており、このフィールドがマッピングされていない場合、EventStream の <strong>Current URL</strong> 属性に自動的にマッピングされます。</li><li><strong>AudienceStream</strong> - <strong>Action Source</strong> がウェブサイトに設定されており、このフィールドがマッピングされていない場合、AudienceStream の <strong>Last Event URL</strong> 属性に自動的にマッピングされます。</li></ul></td>
+<td style="text-align:left">イベントソース URL</td>
+<td style="text-align:left">イベントが発生したブラウザの URL。このパラメータは、<strong>アクションソース</strong> がウェブサイトに設定されている場合に必要です。 <ul><li><strong>EventStream</strong> - <strong>アクションソース</strong> がウェブサイトに設定されており、このフィールドがマップされていない場合、EventStream の <strong>Current URL</strong> 属性に自動的にマップされます。</li><li><strong>AudienceStream</strong> - <strong>アクションソース</strong> がウェブサイトに設定されており、このフィールドがマップされていない場合、AudienceStream の <strong>Last Event URL</strong> 属性に自動的にマップされます。</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Test Event Code</td>
-<td style="text-align:left">テストイベントウィンドウでイベントアクティビティを表示するために、<code>test_event_code</code> パラメータでテスト ID を送信します。<code>test_event_code</code> で送信されるイベントは破棄されず、代わりにイベントマネージャーにフローし、ターゲティングおよび広告測定の目的で使用されます。</td>
+<td style="text-align:left">テストイベントコード</td>
+<td style="text-align:left"><code>test_event_code</code> パラメータにテスト ID を送信して、テストイベントウィンドウでイベントアクティビティを表示できるようにします。<code>test_event_code</code> で送信されるイベントは破棄されず、代わりにイベントマネージャーにフローされ、ターゲティングと広告測定の目的で使用されます。</td>
 </tr>
 <tr>
-<td style="text-align:left">Data Processing Options</td>
-<td style="text-align:left">(必須) この値を <code>LDU</code> にマッピングすると、Facebook は制限付きデータ使用でイベントを処理します。それ以外の場合は、この値を <code>None</code> にマッピングして、イベントを制限付きデータ使用で処理しないように指定します。詳細については、<a href="https://developers.facebook.com/docs/marketing-apis/data-processing-options">Facebook Data Processing Options</a> を参照してください。</td>
+<td style="text-align:left">データ処理オプション</td>
+<td style="text-align:left">(必須) この値を <code>LDU</code> にマップすると、Facebook は制限付きデータ使用でイベントを処理します。それ以外の場合は、この値を <code>None</code> にマップして、イベントを制限付きデータ使用で処理しないように指定します。詳細については、<a href="https://developers.facebook.com/docs/marketing-apis/data-processing-options">Facebook データ処理オプション</a>を参照してください。</td>
 </tr>
 <tr>
-<td style="text-align:left">Event Name</td>
+<td style="text-align:left">イベント名</td>
 <td style="text-align:left">(必須) Facebook ピクセルの標準イベントまたはカスタムイベントの名前。</td>
 </tr>
 <tr>
-<td style="text-align:left">Debugging Level</td>
+<td style="text-align:left">デバッグレベル</td>
 <td style="text-align:left">イベントのトレースレベルを指定します。  <ul><li><code>1</code> はエラー</li><li><code>2</code> は情報</li><li><code>3</code> はデバッグ</li></ul></li></ul>データのハッシュ化を検証するために Trace を使用する場合、Trace の上部に表示される <code>user_data - EMAIL</code> などのデータは、コネクタに入力されたデータであり、Facebook に送信されたデータではありません。Facebook に送信されるデータは、Trace の <strong>Request Body セクション</strong> に表示されます。</td>
 </tr>
 <tr>
-<td style="text-align:left">Action Source</td>
+<td style="text-align:left">アクションソース</td>
 <td style="text-align:left">(必須) コンバージョンが発生した場所を指定するフィールドです。有効なアクションソースは次のとおりです:  <ul><li><code>email</code></li><li><code>website</code></li><li><code>app</code></li><li><code>phone_call</code></li><li><code>chat</code></li><li><code>physical_store</code></li><li><code>system_generated</code></li><li><code>other</code></li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Dataset ID Override</td>
-<td style="text-align:left">この文字列値を使用して、初期のコネクタ構成で使用される値を上書きできます。指定しない場合、コネクタ構成のデータセット ID が使用されます。</td>
+<td style="text-align:left">データセット ID のオーバーライド</td>
+<td style="text-align:left">この文字列値を使用して、初期のコネクタ構成で使用される値をオーバーライドできます。指定しない場合、コネクタ構成からのデータセット ID が使用されます。</td>
 </tr>
 <tr>
-<td style="text-align:left">Data Processing Options Country</td>
-<td style="text-align:left">ユーザーイベントに関連する国コードをマッピングします。<strong>Data Processing Options</strong> を <code>LDU</code> にマッピングする場合、このパラメータが必要です。受け入れられるコード値:  <ul><li>アメリカ合衆国の場合は <code>1</code></li><li>Facebook によるジオロケーションをリクエストする場合は <code>0</code></li></ul>  ジオロケーションには、<strong>Client IP Address</strong> 属性のマッピングも必要です。</td>
+<td style="text-align:left">データ処理オプションの国</td>
+<td style="text-align:left">ユーザーイベントに関連する国コードをマップします。<strong>データ処理オプション</strong> が <code>LDU</code> にマップされている場合、このパラメータが必要です。受け入れられるコード値:  <ul><li>アメリカ合衆国の場合は <code>1</code></li><li>Facebook によるジオロケーションをリクエストする場合は <code>0</code></li></ul>  ジオロケーションには、<strong>Client IP Address</strong> 属性のマッピングも必要です。</td>
 </tr>
 <tr>
-<td style="text-align:left">Event ID</td>
-<td style="text-align:left">Facebook がサーバーとブラウザの両方から送信された同じイベントを重複排除するために使用される ID。この値がブラウザとサーバーから送信されたイベントのペアに対して一意の ID であることを確認してください。</td>
+<td style="text-align:left">イベント ID</td>
+<td style="text-align:left">サーバーとブラウザの両方から送信される同じイベントを重複排除するために Facebook が使用する ID。この値がブラウザとサーバーから送信されるイベントのペアに対して一意の ID であることを確認してください。このマッピングは、Tealium Visitor ID で自動的に入力されますが、自動マッピングが無効になっている場合は手動で入力する必要があります。</td>
 </tr>
 <tr>
-<td style="text-align:left">Event Time</td>
-<td style="text-align:left">実際のイベントが発生した Unix タイムスタンプ（秒単位）。コネクタはマッピングされた日付属性を秒単位に変換し、属性が存在しない場合はイベント時刻を自動的に設定します。</td>
+<td style="text-align:left">イベント時間</td>
+<td style="text-align:left">実際のイベントが発生した Unix タイムスタンプ（秒単位）。コネクタはマップされた日付属性を秒単位に変換し、属性が存在しない場合はイベント時間を自動的に入力します。</td>
 </tr>
 <tr>
-<td style="text-align:left">Data Processing Options State</td>
-<td style="text-align:left"><strong>Data Processing Options</strong> を <code>LDU</code> にマッピングする場合、このパラメータが必要です。ユーザーイベントに関連する州コードをマッピングします。受け入れられるコード値:  <ul><li>カリフォルニア州の場合は <code>1000</code></li><li>Facebook によるジオロケーションをリクエストする場合は <code>0</code></li></ul> ジオロケーションには、<strong>Client IP Address</strong> 属性のマッピングも必要です。</td>
+<td style="text-align:left">データ処理オプションの州</td>
+<td style="text-align:left"><strong>データ処理オプション</strong> が <code>LDU</code> にマップされている場合、このパラメータが必要です。ユーザーイベントに関連する州コードをマップします。受け入れられるコード値:  <ul><li>カリフォルニア州の場合は <code>1000</code></li><li>Facebook によるジオロケーションをリクエストする場合は <code>0</code></li></ul> ジオロケーションには、<strong>Client IP Address</strong> 属性のマッピングも必要です。</td>
 </tr>
 <tr>
-<td style="text-align:left">Opt Out</td>
-<td style="text-align:left">広告配信の最適化にこのイベントを使用しないことを示すブール値。この値を <code>true</code> に設定すると、イベントはアトリビューションにのみ使用されます。</td>
+<td style="text-align:left">オプトアウト</td>
+<td style="text-align:left">広告配信の最適化にこのイベントを使用しないようにするためのブール値。この値を <code>true</code> に設定すると、イベントはアトリビューションにのみ使用されます。</td>
 </tr>
 <tr>
-<td style="text-align:left">Zip (zip)</td>
+<td style="text-align:left">郵便番号 (zip)</td>
 <td style="text-align:left">郵便番号。例: <code>94035</code>。 <strong>重要度: 中</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">FB Login ID</td>
+<td style="text-align:left">FB ログイン ID</td>
 <td style="text-align:left">アプリのインスタンスに最初にログインしたときに Facebook が発行する ID。このパラメータは <a href="https://developers.facebook.com/docs/development/support#app-scoped-ids">App-Scoped ID</a> とも呼ばれます。この値をハッシュ化しないでください。</td>
 </tr>
 <tr>
-<td style="text-align:left">Partner ID</td>
+<td style="text-align:left">パートナー ID</td>
 <td style="text-align:left">パートナーの ID。このパラメータは、Liveramp や TradeDesk などのサードパーティ ID プロバイダが追加のユーザー識別子として使用できます。この値をハッシュ化しないでください。</td>
 </tr>
 <tr>
-<td style="text-align:left">Partner Name</td>
+<td style="text-align:left">パートナー名</td>
 <td style="text-align:left">パートナーの名前。このパラメータは、Liveramp や TradeDesk などのサードパーティ ID プロバイダが追加のユーザー識別子として使用できます。この値をハッシュ化しないでください。</td>
 </tr>
 <tr>
-<td style="text-align:left">Client User Agent (ua)</td>
-<td style="text-align:left">このパラメータは、<strong>Action Source</strong> がウェブサイトに設定されている場合に必要です。イベントに対応するブラウザのユーザーエージェント。この値をハッシュ化しないでください。  <ul><li><strong>EventStream</strong> - <strong>Action Source</strong> がウェブサイトに設定されており、このフィールドがマッピングされていない場合、EventStream の <strong>User Agent</strong> 属性に自動的にマッピングされます。</li><li><strong>AudienceStream</strong> - <strong>Action Source</strong> がウェブサイトに設定されており、このフィールドがマッピングされていない場合、AudienceStream の訪問者の最後のユーザーエージェントに自動的にマッピングされます。</li></ul> <strong>重要度: 高</strong></td>
+<td style="text-align:left">クライアントユーザーエージェント (ua)</td>
+<td style="text-align:left">このパラメータは、<strong>アクションソース</strong> がウェブサイトに設定されている場合に必要です。イベントに対応するブラウザのユーザーエージェント。この値をハッシュ化しないでください。  <ul><li><strong>EventStream</strong> - <strong>アクションソース</strong> がウェブサイトに設定されており、このフィールドがマップされていない場合、EventStream の <strong>User Agent</strong> 属性に自動的にマップされます。</li><li><strong>AudienceStream</strong> - <strong>アクションソース</strong> がウェブサイトに設定されており、このフィールドがマップされていない場合、AudienceStream の訪問者の最後の <strong>User Agent</strong> に自動的にマップされます。</li></ul> <strong>重要度: 高</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">Client IP Address (ip)</td>
+<td style="text-align:left">クライアント IP アドレス (ip)</td>
 <td style="text-align:left">イベントに対応するブラウザの IP アドレス。Tealium はクライアント IP アドレスをキャプチャできますが、デフォルトでは使用できません。この機能を有効にするには、カスタマーサクセスマネージャーに連絡してください。詳細については、<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363403-enabling-ip-address-collection-in-server-side-tealium-products">サーバーサイド Tealium 製品での IP アドレスの収集の有効化</a>を参照してください。この値をハッシュ化しないでください。 <strong>重要度: 高</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">Phone (ph)</td>
+<td style="text-align:left">電話番号 (ph)</td>
 <td style="text-align:left">電話番号。国コード、市外局番、番号のみを含めます。例: <code>16505551212</code>。 <strong>重要度: 高</strong> </li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">State (st)</td>
+<td style="text-align:left">州 (st)</td>
 <td style="text-align:left">米国の州の略称。例: <code>ca</code>。 <strong>重要度: 中</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">Email (em)</td>
+<td style="text-align:left">メールアドレス (em)</td>
 <td style="text-align:left">メールアドレス。例: <code>user@example.com</code>。 <strong>重要度: 最高</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">Last Name (ln)</td>
+<td style="text-align:left">姓 (ln)</td>
 <td style="text-align:left">英小文字の姓。例: <code>smith</code>。 <strong>重要度: 中</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">First Name (fn)</td>
+<td style="text-align:left">名 (fn)</td>
 <td style="text-align:left">英小文字の名。例: <code>joe</code>。 <strong>重要度: 中</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">Lead ID</td>
+<td style="text-align:left">リード ID</td>
 <td style="text-align:left">Facebook の <a href="https://developers.facebook.com/docs/marketing-api/guides/lead-ads">リード広告</a> で生成されたリードに関連する ID。この値をハッシュ化しないでください。</td>
 </tr>
 <tr>
-<td style="text-align:left">City (ct)</td>
-<td style="text-align:left">小文字でスペースや句読点を含まない都市名。例: <code>menlopark</code>。 <strong>重要度: 中</strong></td>
+<td style="text-align:left">都市 (ct)</td>
+<td style="text-align:left">スペースや句読点を含まない英小文字の都市。例: <code>menlopark</code>。 <strong>重要度: 中</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">Country (country)</td>
-<td style="text-align:left">小文字の 2 文字の国コード。例: <code>us</code>。 <strong>重要度: 中</strong></td>
+<td style="text-align:left">国 (country)</td>
+<td style="text-align:left">英小文字の二文字国コード。例: <code>us</code>。 <strong>重要度: 中</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">External ID</td>
-<td style="text-align:left">広告主からの一意の ID。例えば、ロイヤリティメンバーシップ ID、ユーザー ID、または外部クッキー ID など。この値をハッシュ化しないでください。</td>
+<td style="text-align:left">外部 ID</td>
+<td style="text-align:left">広告主からの一意の ID。これには、ロイヤリティメンバーシップ ID、ユーザー ID、または外部クッキー ID などが含まれます。この値をハッシュ化しないでください。</td>
 </tr>
 <tr>
-<td style="text-align:left">Browser ID (fpb)</td>
-<td style="text-align:left">Facebook の <code>_fbp</code> クッキーに格納されているブラウザ ID の値。このパラメータは自動マッピングされますが、自動マッピングを無効にしない限り、自動マッピングされません。この値をハッシュ化しないでください。 <strong>重要度: 高</strong></td>
+<td style="text-align:left">ブラウザ ID (fpb)</td>
+<td style="text-align:left">Facebook の <code>_fbp</code> クッキーに格納されているブラウザ ID 値。このパラメータは自動マッピングされますが、自動マッピングを無効にした場合は手動でマッピングする必要があります。この値をハッシュ化しないでください。 <strong>重要度: 高</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">Subscription ID</td>
+<td style="text-align:left">サブスクリプション ID</td>
 <td style="text-align:left">このトランザクションのユーザーのサブスクリプション ID。これは個々の製品の注文 ID に類似しています。例: <code>anid1234</code>。この値をハッシュ化しないでください。</td>
 </tr>
 <tr>
-<td style="text-align:left">Gender</td>
-<td style="text-align:left">小文字の単一文字の性別値。オプション:  <ul><li>女性の場合は <code>f</code></li><li>男性の場合は <code>m</code></li></ul></td>
+<td style="text-align:left">性別</td>
+<td style="text-align:left">英小文字の一文字の性別値。オプションは次のとおりです:  <ul><li>女性の場合は <code>f</code></li><li>男性の場合は <code>m</code></li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Date of Birth</td>
+<td style="text-align:left">生年月日</td>
 <td style="text-align:left">年、月、日で指定された誕生日。例: 19971226（1997 年 12 月 26 日）。</td>
 </tr>
 <tr>
-<td style="text-align:left">Click ID (fbc)</td>
-<td style="text-align:left">Facebook の <code>_fbc</code> クッキーに格納されている Facebook クリック ID の値。このパラメータは自動マッピングされますが、自動マッピングが無効になっていない限り、自動マッピングされません。この値をハッシュ化しないでください。<strong>重要度: 高</strong></td>
+<td style="text-align:left">クリック ID (fbc)</td>
+<td style="text-align:left">Facebook の <code>_fbc</code> クッキーに格納されている Facebook クリック ID 値。このパラメータは自動マッピングされますが、自動マッピングが無効になっている場合は手動でマッピングする必要があります。この値をハッシュ化しないでください。Facebook は <code>fbclid</code> クッキーを保存して永続化することを推奨しています。 <strong>重要度: 高</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">User Data is already hashed</td>
+<td style="text-align:left">ユーザーデータはすでにハッシュ化されています</td>
 <td style="text-align:left">Facebook Conversions コネクタでは、Facebook Pixel タグが必要であり、ユーザーデータが自動的にハッシュ化されます。このピクセルの機能は変更できません。データを再度ハッシュ化しないようにするには、このオプションを選択します。</td>
 </tr>
 <tr>
-<td style="text-align:left">Currency</td>
-<td style="text-align:left">適用される場合、指定された値に関連する通貨。通貨は有効な ISO 4217 の 3 桁の通貨コードである必要があります。例: <code>usd</code>。</td>
+<td style="text-align:left">通貨</td>
+<td style="text-align:left">適用される場合、指定された値の通貨。通貨は有効な ISO 4217 の 3 桁の通貨コードである必要があります。例: <code>usd</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Content Name</td>
+<td style="text-align:left">コンテンツ名</td>
 <td style="text-align:left">イベントに関連するページまたは製品の名前。例: <code>lettuce</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Number of Items</td>
-<td style="text-align:left"><strong>InitiateCheckout</strong> イベントで使用します。ユーザーがチェックアウト中に購入しようとするアイテムの数。例: <code>4</code>。</td>
+<td style="text-align:left">アイテム数</td>
+<td style="text-align:left"><strong>InitiateCheckout</strong> イベントでのみ使用します。ユーザーがチェックアウト中に購入しようとするアイテムの数。例: <code>4</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Search String</td>
+<td style="text-align:left">検索文字列</td>
 <td style="text-align:left">ユーザーが行った検索クエリ。検索イベントでのみ使用します。例: <strong>lettuce</strong></td>
 </tr>
 <tr>
-<td style="text-align:left">Order ID</td>
+<td style="text-align:left">注文 ID</td>
 <td style="text-align:left">このトランザクションの注文 ID。例: <code>order1234</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Content Type</td>
-<td style="text-align:left">この値は <code>product</code> または <code>product_group</code> のいずれかである必要があります。 <ul><li><strong>Content IDs</strong> または <strong>Content Product</strong> に送信するキーが <strong>Content IDs</strong> にある場合は <code>product</code> に設定します。<strong>Content Product</strong> は製品を表します。</li><li><strong>Content IDs</strong> に送信するキーがある場合は <code>product_group</code> に設定します。<strong>Content Product</strong> は製品グループを表します。</li></ul></td>
+<td style="text-align:left">コンテンツタイプ</td>
+<td style="text-align:left">この値は <code>product</code> または <code>product_group</code> のいずれかである必要があります。 <ul><li><strong>Content IDs</strong> または <strong>Content Product</strong> に送信するキーが <strong>Content IDs</strong> または <strong>Content Product</strong> にマップされている場合は <code>product</code> に設定します。<strong>Content Product</strong> は製品を表します。</li><li><strong>Content IDs</strong> に送信するキーが <strong>Content IDs</strong> にマップされている場合は <code>product_group</code> に設定します。<strong>Content Product</strong> は製品グループを表します。</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Predicted Lifetime Value</td>
+<td style="text-align:left">予測されるライフタイムバリュー</td>
 <td style="text-align:left">コンバージョンイベントの予測されるライフタイムバリュー。例: <code>432.12</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Content IDs</td>
-<td style="text-align:left">イベントに関連するコンテンツ ID（たとえば、AddToCart イベントのアイテムの製品 SKU）です。例: <code>['ABC123', 'XYZ789']</code>。非配列のイベント属性が提供された場合、それは単一アイテムの配列に変換されます。<strong>Content Type</strong> が <code>product</code> の場合、このマッピングされた値は非配列のイベント属性または単一要素の配列である必要があります。</td>
+<td style="text-align:left">コンテンツ ID</td>
+<td style="text-align:left">イベントに関連するコンテンツ ID。たとえば、AddToCart イベントのアイテムの商品 SKU。例: <code>['ABC123', 'XYZ789']</code>。非配列イベント属性が提供された場合、それは単一アイテムの配列に変換されます。<strong>Content Type</strong> が <code>product</code> の場合、このマップされた値は非配列イベント属性または単一要素配列である必要があります。</td>
 </tr>
 <tr>
-<td style="text-align:left">Value</td>
-<td style="text-align:left">このイベントに関連する数値の値。これは通貨値または他のメトリックの値である場合があります。例: <code>142.54</code>。</td>
+<td style="text-align:left">値</td>
+<td style="text-align:left">このイベントに関連する数値の値。これは通貨の値または他のメトリックの値である場合があります。例: <code>142.54</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Content Category</td>
+<td style="text-align:left">コンテンツカテゴリ</td>
 <td style="text-align:left">イベントに関連するコンテンツのカテゴリ。例: <code>grocery</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Quantities</td>
+<td style="text-align:left">数量</td>
 <td style="text-align:left">製品の数量。</td>
 </tr>
 <tr>
-<td style="text-align:left">Prices</td>
+<td style="text-align:left">価格</td>
 <td style="text-align:left">製品の個別の価格。</td>
 </tr>
 <tr>
-<td style="text-align:left">IDs</td>
+<td style="text-align:left">ID</td>
 <td style="text-align:left">製品の ID。</td>
 </tr>
 <tr>
-<td style="text-align:left">JSON Template Variables</td>
-<td style="text-align:left">テンプレートにデータ入力としてテンプレート変数を提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a>を参照してください。ネストされたテンプレート変数は、ドット表記法で名前付けされます。例: <code>items.name</code>。ネストされたテンプレート変数は、通常、データレイヤーリスト属性から構築されます。</td>
+<td style="text-align:left">JSON テンプレート変数</td>
+<td style="text-align:left">テンプレート変数をデータ入力として提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a>を参照してください。ネストされたテンプレート変数は、ドット表記法で名前付けされます。たとえば、<code>items.name</code>。ネストされたテンプレート変数は、通常、データレイヤーリスト属性から構築されます。</td>
 </tr>
 <tr>
-<td style="text-align:left">JSON Templates</td>
-<td style="text-align:left">サポートされるフィールドに名前で参照される有効な JSON テンプレートを提供します。テンプレートは、ダブルカーリーブラケットで名前を挿入してフィールドに挿入されます。例: <code>{{SomeTemplateName}}</code>。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">Webhook - Send Custom Request - Trimou Templating Engine ガイド</a>を参照してください。</td>
+<td style="text-align:left">JSON テンプレート</td>
+<td style="text-align:left">サポートされるフィールドに名前で参照される有効な JSON テンプレートを提供します。たとえば、<code>{{SomeTemplateName}}</code>。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">Webhook - カスタムリクエストの送信 - Trimou テンプレートエンジンガイド</a>を参照してください。</td>
 </tr>
 <tr>
-<td style="text-align:left">Tealium iQ Tag ID</td>
-<td style="text-align:left">Facebook Pixel タグの ID。</td>
+<td style="text-align:left">Tealium iQ タグ ID</td>
+<td style="text-align:left">Facebook Pixel タグ ID。</td>
 </tr>
 <tr>
-<td style="text-align:left">Disable Automapping</td>
+<td style="text-align:left">自動マッピングの無効化</td>
 <td style="text-align:left">パラメータの自動マッピングを無効にします。</td>
 </tr>
 <tr>
-<td style="text-align:left">Automatic Deduplication</td>
-<td style="text-align:left">Tealium iQ Tag ID を指定すると、コネクタは自動的に Tealium iQ が送信する <strong>Event ID</strong> 値を検索します。</td>
+<td style="text-align:left">自動重複排除</td>
+<td style="text-align:left">Tealium iQ タグ ID を指定すると、コネクタは自動的に Tealium iQ が送信する <strong>Event ID</strong> 値を検索します。</td>
 </tr>
 <tr>
-<td style="text-align:left">Advertiser Tracking Enabled</td>
-<td style="text-align:left">必須です。このフィールドを使用して、iOS 14.5+ デバイスでの ATT 許可を指定します。無効にする場合は <code>0</code>、有効にする場合は <code>1</code> に設定します。</td>
+<td style="text-align:left">広告主トラッキングの有効化</td>
+<td style="text-align:left">必須。このフィールドを使用して、iOS 14.5+ デバイスでの ATT 許可を指定します。無効にする場合は <code>0</code>、有効にする場合は <code>1</code> に設定します。</td>
 </tr>
 <tr>
-<td style="text-align:left">Application Tracking Enabled</td>
-<td style="text-align:left">必須です。このパラメータはアプリレベルでの広告トラッキングを有効にします。SDK はアプリ開発者がアプリにオプトアウト設定を入れることができるようにする必要があります。このフィールドを使用して、ユーザーの選択を指定します。無効にする場合は <code>0</code>、有効にする場合は <code>1</code> に設定します。</td>
+<td style="text-align:left">アプリトラッキングの有効化</td>
+<td style="text-align:left">必須。このパラメータはアプリレベルでの広告トラッキングを有効にします。SDK はアプリ開発者がアプリにオプトアウト設定を入れることができるようにする必要があります。このフィールドを使用して、ユーザーの選択肢を指定します。無効にする場合は <code>0</code>、有効にする場合は <code>1</code> に設定します。</td>
 </tr>
 <tr>
-<td style="text-align:left">App Version</td>
-<td style="text-align:left">必須です。Android の場合は <code>a2</code>、iOS の場合は <code>i2</code> にする必要があります。</td>
+<td style="text-align:left">アプリバージョン</td>
+<td style="text-align:left">必須。バージョンは Android の場合は <code>a2</code>、iOS の場合は <code>i2</code> である必要があります。</td>
 </tr>
 <tr>
-<td style="text-align:left">OS Version</td>
-<td style="text-align:left">必須です。OS のバージョン。例: <code>13.4.1</code>。</td>
+<td style="text-align:left">OS バージョン</td>
+<td style="text-align:left">必須。OS バージョン、例: <code>13.4.1</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">App Package Name</td>
-<td style="text-align:left">アプリのパッケージ名。例: <code>com.facebook.sdk.samples.hellofacebook</code>。</td>
+<td style="text-align:left">アプリパッケージ名</td>
+<td style="text-align:left">アプリのパッケージ名、例: <code>com.facebook.sdk.samples.hellofacebook</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Short Version</td>
-<td style="text-align:left">短いバージョン。例: <code>1.0</code>。</td>
+<td style="text-align:left">短いバージョン</td>
+<td style="text-align:left">短いバージョン、例: <code>1.0</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Long Version</td>
-<td style="text-align:left">長いバージョン。例: <code>1.0 long</code>。</td>
+<td style="text-align:left">長いバージョン</td>
+<td style="text-align:left">長いバージョン、例: <code>1.0 long</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Device Model Name</td>
-<td style="text-align:left">デバイスのモデル名。例: <code>iPhone5,1</code>。</td>
+<td style="text-align:left">デバイスモデル名</td>
+<td style="text-align:left">デバイスモデル名、例: <code>iPhone5,1</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Locale</td>
-<td style="text-align:left">ロケール。例: <code>En_US</code>。</td>
+<td style="text-align:left">ロケール</td>
+<td style="text-align:left">ロケール、例: <code>En_US</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Timezone Abbreviation</td>
-<td style="text-align:left">タイムゾーンの略称。例: <code>PDT</code>。</td>
+<td style="text-align:left">タイムゾーンの略称</td>
+<td style="text-align:left">タイムゾーンの略称、例: <code>PDT</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Carrier</td>
-<td style="text-align:left">キャリア。例: <code>AT&amp;T</code>。</td>
+<td style="text-align:left">キャリア</td>
+<td style="text-align:left">キャリア、例: <code>AT&amp;T</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Screen Width</td>
-<td style="text-align:left">画面の幅。例: <code>320</code>。</td>
+<td style="text-align:left">画面の幅</td>
+<td style="text-align:left">画面の幅、例: <code>320</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Screen Height</td>
-<td style="text-align:left">画面の高さ。例: <code>568</code>。</td>
+<td style="text-align:left">画面の高さ</td>
+<td style="text-align:left">画面の高さ、例: <code>568</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Screen Density</td>
-<td style="text-align:left">画面の密度。例: <code>2</code>。</td>
+<td style="text-align:left">画面の密度</td>
+<td style="text-align:left">画面の密度、例: <code>2</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">CPU Cores</td>
-<td style="text-align:left">CPU のコア数。例: <code>2</code>。</td>
+<td style="text-align:left">CPU コア数</td>
+<td style="text-align:left">CPU コア数、例: <code>2</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Storage Size (GB)</td>
-<td style="text-align:left">外部ストレージのサイズ (GB)。例: <code>13</code>。</td>
+<td style="text-align:left">ストレージサイズ (GB)</td>
+<td style="text-align:left">外部ストレージのサイズ (GB)、例: <code>13</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Free Storage (GB)</td>
-<td style="text-align:left">外部ストレージの空き容量 (GB)。例: <code>8</code>。</td>
+<td style="text-align:left">空き容量 (GB)</td>
+<td style="text-align:left">外部ストレージの空き容量 (GB)、例: <code>8</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Device Timezone</td>
-<td style="text-align:left">デバイスのタイムゾーン。例: <code>USA/New York</code>。</td>
+<td style="text-align:left">デバイスタイムゾーン</td>
+<td style="text-align:left">デバイスのタイムゾーン、例: <code>USA/New York</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">Campaign IDs</td>
-<td style="text-align:left">Facebook からリンクをクリックしたユーザーがアウトバウンド URL（たとえば、<code>ad_destination_url</code>）またはディープリンク（App Aggregated Event Manager の場合）に追加される暗号化された文字列と非ユーザーメタデータ。</td>
+<td style="text-align:left">キャンペーン ID</td>
+<td style="text-align:left">Facebook からリンクをクリックしたユーザーがアウトバウンド URL（例: <code>ad_destination_url</code>）またはディープリンク（App Aggregated Event Manager の場合）に追加される暗号化された文字列と非ユーザーメタデータ。</td>
 </tr>
 <tr>
-<td style="text-align:left">Install Referrer</td>
-<td style="text-align:left">サードパーティのインストールリファラー。現在は Android のみで利用可能です。詳細については、<a href="https://developers.google.com/analytics/devguides/collection/android/v4/campaigns?fbclid=IwAR0vdnDVr5OsK-VRvhw5qCOwOwVSFbs-pqgU_MIrQwdLGtZzbWIjjT2ttnA">Campaign Measurement</a> を参照してください。</td>
+<td style="text-align:left">インストールリファラ</td>
+<td style="text-align:left">サードパーティのインストールリファラ。現在は Android のみで利用可能です。詳細については、<a href="https://developers.google.com/analytics/devguides/collection/android/v4/campaigns?fbclid=IwAR0vdnDVr5OsK-VRvhw5qCOwOwVSFbs-pqgU_MIrQwdLGtZzbWIjjT2ttnA">キャンペーン測定</a>を参照してください。</td>
 </tr>
 <tr>
-<td style="text-align:left">Installer Package</td>
+<td style="text-align:left">インストーラーパッケージ</td>
 <td style="text-align:left">Android SDK の内部で使用されます。</td>
 </tr>
 <tr>
-<td style="text-align:left">URL Schemes (Array)</td>
+<td style="text-align:left">URL スキーム (配列)</td>
 <td style="text-align:left">iOS および Android SDK の内部で使用されます。</td>
 </tr>
 <tr>
-<td style="text-align:left">Windows Attribution ID</td>
+<td style="text-align:left">Windows アトリビューション ID</td>
 <td style="text-align:left">Windows 10 で使用されるアトリビューショントークン。</td>
 </tr>
 <tr>
@@ -808,16 +808,16 @@
 </tr>
 </tbody>
 </table>
-<h5 id="disable-automapping">Disable Automapping</h5>
+<h5 id="自動マッピングの無効化">自動マッピングの無効化</h5>
 <p>コネクタはデフォルトで次のパラメータを自動マッピングします。</p>
 <ul>
-<li>Browser ID (<code>fbp</code>)</li>
-<li>User Agent (<code>fbc</code>)</li>
+<li>ブラウザ ID (<code>fbp</code>)</li>
+<li>ユーザーエージェント (<code>fbc</code>)</li>
 </ul>
-<p>自動マッピングを無効にするには、<strong>Disable Automapping</strong> を <code>true</code> に設定します。自動マッピングされたパラメータはベンダーに送信されません。</p>
+<p>自動マッピングを無効にするには、<strong>自動マッピングの無効化</strong> を <code>true</code> に設定します。自動マッピングされたパラメータはベンダーに送信されません。</p>
 <h3 id="アクション---リードイベントを送信する">アクション - リードイベントを送信する</h3>
 <h4 id="バッチ制限">バッチ制限</h4>
-<p>このアクションは、高容量のデータ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかのしきい値が満たされるか、プロファイルが公開されるまでキューに入れられます。</p>
+<p>このアクションは、ベンダーへの高容量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかのしきい値が満たされるか、プロファイルが公開されるまでキューに入れられます。</p>
 <ul>
 <li>最大リクエスト数: 1000</li>
 <li>最も古いリクエストからの経過時間の最大値: 10 分</li>
@@ -833,24 +833,24 @@
 </thead>
 <tbody>
 <tr>
-<td>Lead ID</td>
-<td>(必須) ダウンロードしたリードから取得した Facebook が生成した 15 または 16 桁の <code>leadgen_id</code>。この番号は、リードジェネレーションウェブフックの <code>leadgen_id</code> フィールドから取得され、<code>user_data</code> パラメータに含まれます。</td>
+<td>リード ID</td>
+<td>(必須) ダウンロードしたリードから取得した Facebook が生成した 15 または 16 桁の <code>leadgen_id</code>。この番号は、リードジェネレーションウェブフックの <code>leadgen_id</code> フィールドから取得し、<code>user_data</code> パラメータに含めます。</td>
 </tr>
 <tr>
-<td>Event Name</td>
+<td>イベント名</td>
 <td>(必須) CRM で使用するリードステージをキャプチャします。<code>event_name</code> パラメータは、CRM でのセールスファネルを通過するリードを示します。更新されるたびにすべてのステージを送信し、生のリードも含めて送信してください。</td>
 </tr>
 <tr>
-<td>Event Time</td>
-<td>CRM によってリードステージの更新イベントが更新された Unix タイムスタンプ（秒単位）。タイムスタンプはリード生成時間より後である必要があります。このフィールドがマッピングされていない場合、現在のタイムスタンプで初期化されます。</td>
+<td>イベント時間</td>
+<td>CRM によってリードステージの更新イベントが更新された Unix タイムスタンプ（秒単位）。タイムスタンプはリード生成時間より後である必要があります。このフィールドがマップされていない場合、現在のタイムスタンプで初期化されます。</td>
 </tr>
 <tr>
-<td>Test Event Code</td>
-<td>サーバーイベントが Facebook に正しく受信されているかどうかを確認するために、<strong>イベントマネージャー</strong> の <strong>テストイベント</strong> 機能を使用します。ツールを見つけるには、<strong>イベントマネージャー &gt; データソース &gt; ピクセル &gt; テストイベント</strong> に移動します。</td>
+<td>テストイベントコード</td>
+<td>サーバーイベントが Facebook に正しく受信されているかどうかを確認するために、<strong>イベントマネージャー</strong> の <strong>イベントのテスト</strong> 機能を使用します。ツールを見つけるには、<strong>イベントマネージャー &gt; データソース &gt; ピクセル &gt; イベントのテスト</strong> に移動します。</td>
 </tr>
 <tr>
-<td>Lead Event Source</td>
-<td>イベントが発生している CRM の名前。</td>
+<td>リードイベントソース</td>
+<td>イベントの送信元となる CRM の名前。</td>
 </tr>
 </tbody>
 </table>
@@ -859,18 +859,18 @@
 <ul>
 <li><a href="https://www.facebook.com/events_manager2/partner_integrations/tealium"><strong>Facebook パートナー統合ギャラリー</strong></a><br>
 <figure><a class="slb" href="/images/server-side-connectors/facebook-partner-integration-gallery.png"><img src="/images/server-side-connectors/facebook-partner-integration-gallery.png"
-         alt="Facebook Partner Integration Gallery"
-         title="Facebook Partner Integration Gallery"/>
+         alt="Facebook パートナー統合ギャラリー"
+         title="Facebook パートナー統合ギャラリー"/>
     </a>
 </figure></li>
 <li>ピクセルの <strong>設定</strong> タブから <strong>パートナーを選択</strong> ボタンを使用する:<figure><a class="slb" href="/images/server-side-connectors/choosepartner.png"><img src="/images/server-side-connectors/choosepartner.png"
-         alt="Choose partner"
-         title="Choose partner"/>
+         alt="パートナーを選択"
+         title="パートナーを選択"/>
     </a>
 </figure></li>
 <li>ウェブシグナルのセットアップフローとサーバーサイド API ガイダンスカード: <figure><a class="slb" href="/images/server-side-connectors/setup.png"><img src="/images/server-side-connectors/setup.png"
-         alt="Set up"
-         title="Set up"/>
+         alt="セットアップ"
+         title="セットアップ"/>
     </a>
 </figure></li>
 </ul>
@@ -881,28 +881,28 @@
 <li><code>POST</code> リクエストでの <code>PIXEL_ID</code> に対応するピクセルをクリックします。</li>
 </ol>
 <figure><a class="slb" href="/images/server-side-connectors/datasources.png"><img src="/images/server-side-connectors/datasources.png"
-         alt="Data Sources"
-         title="Data Sources"/>
+         alt="データソース"
+         title="データソース"/>
     </a>
 </figure>
 <h3 id="概要タブ">概要タブ</h3>
 <p><strong>概要</strong> タブで、表示を <strong>すべて</strong> から <strong>サーバー</strong> に変更すると、正常に送信されたイベントの数が表示されます。</p>
 <figure><a class="slb" href="/images/server-side-connectors/overview.png"><img src="/images/server-side-connectors/overview.png"
-         alt="Overview"
-         title="Overview"/>
+         alt="概要"
+         title="概要"/>
     </a>
 </figure>
 <h3 id="詳細タブ">詳細タブ</h3>
 <p><strong>詳細</strong> タブでは、正常に送信されたイベントの詳細が表示されます。ドロップされたイベントは <strong>Server Events Received</strong> 列に表示されません。</p>
 <figure><a class="slb" href="/images/server-side-connectors/breakdown.png"><img src="/images/server-side-connectors/breakdown.png"
-         alt="Breakdown"
-         title="Breakdown"/>
+         alt="詳細"
+         title="詳細"/>
     </a>
 </figure>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>イベントは、サーバーから送信してから 20 分以内に確認できます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>イベントを送信してから 20 分以内にイベントを確認できます。</p>
 <h3 id="検証">検証</h3>
 <p>検証には、Facebook の <a href="https://developers.facebook.com/docs/marketing-api/server-side-api/payload-helper">Payload Helper</a> を使用して、データパラメータフィールドとともにペイロードを構造化する方法を確認します。詳細については、Facebook のトラブルシューティングのための <a href="https://developers.facebook.com/docs/marketing-api/server-side-api/support">サポート</a> ページを参照してください。</p>
-<p>Conversions API の詳細については、Facebook の <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/using-the-api">Using the Conversions API</a> を参照してください。</p>
+<p>Conversions API についての詳細は、Facebook の <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/using-the-api">Using the Conversions API</a> を参照してください。</p>
 
 </div>
 
@@ -963,7 +963,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月16日
+          <p>最終更新日 ::  2024年June月6日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
