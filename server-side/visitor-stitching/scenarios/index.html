@@ -51,8 +51,11 @@
     <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
 </div>
 </div><ul class="list ma0 pa0 dn dib-ns">
-      <li class="f5 dib">
-         <i class="fa fa-globe" style="color: rgba(255, 255, 255, .6)" aria-hidden="true"></i>
+      <li class="f5 dib mr4">
+         <a href="https://support.tealiumiq.com/en/support/solutions" class="dim link mid-gray">Knowledge Base&nbsp;<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 32 32" class="fill-current v-base" aria-label="External Link">
+<path d="M25.152 16.576v5.696q0 2.144-1.504 3.648t-3.648 1.504h-14.848q-2.144 0-3.648-1.504t-1.504-3.648v-14.848q0-2.112 1.504-3.616t3.648-1.536h12.576q0.224 0 0.384 0.16t0.16 0.416v1.152q0 0.256-0.16 0.416t-0.384 0.16h-12.576q-1.184 0-2.016 0.832t-0.864 2.016v14.848q0 1.184 0.864 2.016t2.016 0.864h14.848q1.184 0 2.016-0.864t0.832-2.016v-5.696q0-0.256 0.16-0.416t0.416-0.16h1.152q0.256 0 0.416 0.16t0.16 0.416zM32 1.152v9.12q0 0.48-0.352 0.8t-0.8 0.352-0.8-0.352l-3.136-3.136-11.648 11.648q-0.16 0.192-0.416 0.192t-0.384-0.192l-2.048-2.048q-0.192-0.16-0.192-0.384t0.192-0.416l11.648-11.648-3.136-3.136q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h9.12q0.48 0 0.8 0.352t0.352 0.8z"></path>
+</svg>
+</a>
       </li>
         
       <li class="f5 dib mr4">
@@ -538,14 +541,27 @@
 </tbody>
 </table>
 <h2 id="scenario-1-a-different-email-address-from-the-same-device-and-browser">Scenario 1: a different email address from the same device and browser</h2>
-<p>A week later, the user visits the website using the same device and browser and submits a form with a different email address. The anonymous ID is the same, so the incoming event will match the profile that was created on the user&rsquo;s first visit. However, because a visitor ID attribute cannot be changed, the new email address hash value will not be used.</p>
-<p><strong>Result:</strong> One visitor profile with a visitor ID attribute set to the original email address hash.</p>
+<p>A week later, a user visits the website using the same device and browser and submits a form with a different email address. There are two ways this can happen, as follows:</p>
+<ul>
+<li>Case A: The same user visits and submits a form with a different email address.</li>
+<li>Case B: Two users share a device and a different user submits a form with a different email address.</li>
+</ul>
+<h3 id="case-a">Case A</h3>
+<p>The anonymous ID is the same, so the incoming event will match the profile that was created on the user&rsquo;s first visit. However, because a visitor ID attribute cannot be changed, the new email address hash value will not be used.</p>
+<p><strong>Result for case A:</strong> One visitor profile with a visitor ID attribute set to the original email address hash.</p>
 <figure><a class="slb" href="/images/server-side/two-emails-first.png"><img src="/images/server-side/two-emails-first.png"
          alt="two-emails-first.png"
          title="two-emails-first.png"/>
     </a>
 </figure>
-<h2 id="scenario-2-a-different-email-from-a-different-device-or-browser">Scenario 2: a different email from a Different Device or Browser</h2>
+<h3 id="case-b">Case B</h3>
+<p>Users sharing a device and visiting the same websites using different user identifiers (an email address in this case) is referred to as visitor switching. Tealium Support or Professional Services can assist you with implementing a solution to handle visitor switching. For more information, see the following Tealium knowledge base articles:</p>
+<ul>
+<li><a href="https://support.tealiumiq.com/en/support/solutions/articles/36000441645-anonymous-user-tracking-under-itp-with-visitor-switching-in-audiencestream">Anonymous User Tracking under ITP with Visitor Switching in AudienceStream</a></li>
+<li><a href="https://support.tealiumiq.com/en/support/solutions/articles/36000419055-visitor-switching-in-iq">Visitor Switching in iQ</a></li>
+<li><a href="https://support.tealiumiq.com/en/support/solutions/articles/36000493080-visitor-switching-in-tealium-mobile-sdks">Visitor Switching in Tealium Mobile SDKs</a></li>
+</ul>
+<h2 id="scenario-2-a-different-email-from-a-different-device-or-browser">Scenario 2: a different email from a different device or browser</h2>
 <p>A week later, the same user visits the website using a different device or browser and submits a form with a different email address. The anonymous ID is different, so the incoming event does not match the profile that was created on the user&rsquo;s first visit. A new profile is created and there are two profiles for this user after the second visit. No visitor stitching occurs, because the visitor ID attribute does not match (the email addresses are different). These two profiles could be stitched together later, if they matched on a second visitor ID attribute.</p>
 <p><strong>Result:</strong> Two visitor profiles, with each visitor ID attribute set to the corresponding email address hash.</p>
 <figure><a class="slb" href="/images/server-side/two-emails-both.png"><img src="/images/server-side/two-emails-both.png"
@@ -702,7 +718,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  June 12, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -717,7 +733,9 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#scenario-1-a-different-email-address-from-the-same-device-and-browser" href="javascript:void(0)">Scenario 1: a different email address from the same device and browser</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#scenario-2-a-different-email-from-a-different-device-or-browser" href="javascript:void(0)">Scenario 2: a different email from a Different Device or Browser</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#case-a" href="javascript:void(0)">Case A</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#case-b" href="javascript:void(0)">Case B</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#scenario-2-a-different-email-from-a-different-device-or-browser" href="javascript:void(0)">Scenario 2: a different email from a different device or browser</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#example-of-two-visitor-profiles-matching-on-a-second-visitor-id-attribute" href="javascript:void(0)">Example of two visitor profiles matching on a second visitor ID attribute</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#http-api-and-file-import-data-sources" href="javascript:void(0)">HTTP API and file import data sources</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#additional-scenarios" href="javascript:void(0)">Additional scenarios</a></li>

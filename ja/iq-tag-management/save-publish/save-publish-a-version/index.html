@@ -51,8 +51,11 @@
     <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
 </div>
 </div><ul class="list ma0 pa0 dn dib-ns">
-      <li class="f5 dib">
-         <i class="fa fa-globe" style="color: rgba(255, 255, 255, .6)" aria-hidden="true"></i>
+      <li class="f5 dib mr4">
+         <a href="https://support.tealiumiq.com/en/support/solutions" class="dim link mid-gray">知識ベース&nbsp;<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 32 32" class="fill-current v-base" aria-label="External Link">
+<path d="M25.152 16.576v5.696q0 2.144-1.504 3.648t-3.648 1.504h-14.848q-2.144 0-3.648-1.504t-1.504-3.648v-14.848q0-2.112 1.504-3.616t3.648-1.536h12.576q0.224 0 0.384 0.16t0.16 0.416v1.152q0 0.256-0.16 0.416t-0.384 0.16h-12.576q-1.184 0-2.016 0.832t-0.864 2.016v14.848q0 1.184 0.864 2.016t2.016 0.864h14.848q1.184 0 2.016-0.864t0.832-2.016v-5.696q0-0.256 0.16-0.416t0.416-0.16h1.152q0.256 0 0.416 0.16t0.16 0.416zM32 1.152v9.12q0 0.48-0.352 0.8t-0.8 0.352-0.8-0.352l-3.136-3.136-11.648 11.648q-0.16 0.192-0.416 0.192t-0.384-0.192l-2.048-2.048q-0.192-0.16-0.192-0.384t0.192-0.416l11.648-11.648-3.136-3.136q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h9.12q0.48 0 0.8 0.352t0.352 0.8z"></path>
+</svg>
+</a>
       </li>
         
       <li class="f5 dib mr4">
@@ -427,11 +430,30 @@
 <div class="prose nested-links" id="prose">
   <h2 id="保存公開ダイアログ">保存/公開ダイアログ</h2>
 <p>構成を保存し公開する準備ができたら、<strong>保存/公開</strong>をクリックします。</p>
-<figure><a class="slb" href="/images/iq-tag-management/save-publish/iq-save-publish-window.png"><img src="/images/iq-tag-management/save-publish/iq-save-publish-window.png"
+<figure><a class="slb" href="/images/iq-tag-management/save-publish/client-side-publish-window.png"><img src="/images/iq-tag-management/save-publish/client-side-publish-window.png"
          alt="Save/Publish window"
          title="Save/Publish window"/>
     </a>
 </figure>
+<h3 id="公開詳細">公開詳細</h3>
+<p><strong>公開詳細</strong>テーブルには、このバージョンでの変更に関する情報が表示されます：</p>
+<ul>
+<li><strong>変更</strong><br>
+このタブには、このバージョンに保存され公開される変更された要素がリストされています。これには、更新された<a href="/ja/iq-tag-management/profiles/profile-libraries/about/">プロファイルライブラリ</a>の結果としての変更も含まれます。要素ごとにテーブルをソート、フィルタ、検索することができます。
+<ul>
+<li><strong>タイプ</strong>: 要素のタイプ（<code>extension</code>、<code>tag</code>、<code>event</code>、<code>load rule</code>、<code>variable</code>または<code>template</code>）。</li>
+<li><strong>要素名</strong>: 要素のタイトル。</li>
+<li><strong>変更</strong>: 要素に対して行われた変更（<code>追加</code>、<code>更新</code>、<code>削除</code>、<code>オンに切り替え</code>、<code>オフに切り替え</code>）。</li>
+<li><strong>ライブラリ</strong>: この要素が来るプロファイルライブラリ。</li>
+<li><strong>UID</strong>: 要素の一意のID。</li>
+</ul>
+</li>
+<li><strong>リンクされたプロファイル</strong> (プロファイルライブラリのみ)<br>
+このオプションのタブには、このプロファイルライブラリにリンクされているプロファイルがリストされています。ライブラリへの変更は、それをロードするすべてのプロファイルに自動的に伝播しません。ライブラリへの変更を含めるためには、各プロファイルを再公開する必要があります。</li>
+</ul>
+<h3 id="環境別の最終公開">環境別の最終公開</h3>
+<p>画面の環境別の最終公開バージョンセクションには、環境名、バージョン名、タイムスタンプ、変更の著者、ノートなどの履歴詳細がリストされています。</p>
+<h2 id="バージョンの保存公開">バージョンの保存/公開</h2>
 <p>変更を含む新しいバージョンを保存し公開するには、以下の手順を実行します：</p>
 <ol>
 <li><strong>バージョン</strong>フィールドに新しいバージョンの名前を入力します。
@@ -440,39 +462,31 @@
 <li>これは必須フィールドです。デフォルトでは、<strong>バージョン</strong>フィールドには日付とタイムスタンプが表示されます。</li>
 </ul>
 </li>
-<li>（オプション）現在のバージョンを上書きしたい場合は、<strong>現在のバージョンを上書き</strong>を選択します。このオプションを選択すると、現在のバージョンが置き換えられ、それに対する変更は元に戻すことができません。</li>
+<li>(オプション) 現在のバージョンを上書きしたい場合は、<strong>現在のバージョンを上書き</strong>を選択します。このオプションを選択すると、現在のバージョンが置き換えられ、それに対する変更は元に戻すことができません。</li>
 <li><strong>ノート</strong>フィールドに、バージョンに対して行った変更についてのノートを入力します。
 このフィールドに入力されたノートは、将来このバージョンにロールバックする必要がある場合に役立ちます。これは必須フィールドであり、ノートを入力せずにバージョンを保存することはできません。</li>
-<li>（オプション）一つ以上の<a href="/ja/iq-tag-management/save-publish/about-publishing/">Publish Locations</a>を選択して、このバージョンを公開環境に公開します。また、<strong>カスタム</strong>チェックボックスを選択して、<a href="/ja/iq-tag-management/save-publish/custom-publish-environments/">カスタム環境</a>を選択することもできます。</li>
+<li>(オプション) 1つ以上の<a href="/ja/iq-tag-management/save-publish/about-publishing/">公開場所</a>を選択して、このバージョンを公開環境に公開します。また、<strong>カスタム</strong>を選択して<a href="/ja/iq-tag-management/save-publish/custom-publish-environments/">カスタム環境</a>を選択することもできます。</li>
 </ol>
-<p><strong>公開詳細</strong>テーブルは、このバージョンでの変更についての情報を表示します：</p>
-<ul>
-<li><strong>変更</strong><br>
-このタブは、このバージョンに保存され、公開される変更された要素をリストします。これには、更新された<a href="/ja/iq-tag-management/profiles/profile-libraries/about/">プロファイルライブラリ</a>の結果としての変更も含まれます。ライブラリへの変更は自動的にそれをロードするすべてのプロファイルに伝播しません。ライブラリへの変更を含めるためには、各プロファイルを再公開する必要があります。</li>
-<li><strong>リンクされたプロファイル</strong>（プロファイルライブラリのみ）<br>
-このオプションのタブは、このプロファイルライブラリにリンクされているプロファイルをリストします。ライブラリへの変更は自動的にそれをロードするすべてのプロファイルに伝播しません。ライブラリへの変更を含めるためには、各プロファイルを再公開する必要があります。</li>
-</ul>
-<p>ウィンドウの右側には、**最後に公開されたバージョン（環境別）**セクションが表示されます。このセクションには、環境名、バージョン名、タイムスタンプ、変更の著者、ノートなどの履歴詳細がリストされます。</p>
-<p>保存および/または公開する準備ができたら、ウィンドウの右下隅にある<strong>保存</strong>または<strong>公開</strong>ボタンをクリックします。</p>
-<p>公開環境を少なくとも一つ選択すると、アクションボタンには<strong>公開</strong>が表示されます。それ以外の場合は、<strong>保存</strong>が表示されます。<strong>公開</strong>または<strong>保存</strong>ボタンをクリックして、バージョンの保存および/または公開のプロセスを開始します。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>承認ワークフローについての詳細は、<a href="/ja/iq-tag-management/save-publish/publish-workflow-management/">Publish Workflow Management</a>を参照してください。</p>
+<p>保存または公開する準備ができたら、<strong>保存</strong>または<strong>公開</strong>をクリックします。</p>
+<p>公開環境を少なくとも1つ選択すると、アクションボタンには<strong>公開</strong>が表示されます。それ以外の場合は、<strong>保存</strong>が表示されます。<strong>公開</strong>または<strong>保存</strong>をクリックして、バージョンの保存および/または公開のプロセスを開始します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>承認ワークフローについての詳細は、<a href="/ja/iq-tag-management/save-publish/publish-workflow-management/">公開ワークフロー管理</a>を参照してください。</p>
 <h2 id="検証">検証</h2>
-<p>保存と公開を完了すると、新しいコードが生成され、ファイルが更新されます。このプロセスには数分かかることがあります。サイト上のユニバーサルタグ（<code>utag.js</code>）のステータスを確認する主要なツールはWeb Companionです。</p>
-<p><a href="/ja/iq-tag-management/troubleshooting/web-companion/">Web Companionの使用</a>について詳しく学びましょう。</p>
+<p>保存と公開を完了すると、新しいコードが生成され、ファイルが更新されます。このプロセスには数分かかることがあります。サイト上のユニバーサルタグ（<code>utag.js</code>）のステータスを確認する主要なツールは<strong>Web Companion</strong>です。</p>
+<p>詳細については、<a href="/ja/iq-tag-management/troubleshooting/web-companion/">Web Companion</a>を参照してください。</p>
 <h3 id="バージョン番号とタイムスタンプ">バージョン番号とタイムスタンプ</h3>
-<p>バージョン番号、または現在のバージョンのタイムスタンプは、変更がサイト上でライブになっていることを確認する最良の方法です。Web Companionからのタイムスタンプを最後に公開したタイムスタンプと照合して、変更がライブになっていることを確認します。</p>
+<p>現在のバージョンのバージョン番号、またはタイムスタンプは、変更がサイト上でライブになっていることを確認する最良の方法です。Web Companionからのタイムスタンプを最後の公開のタイムスタンプと照合して、変更がライブになっていることを確認します。</p>
 <figure><a class="slb" href="/images/iq-tag-management/iq-versions-timestamp.png"><img src="/images/iq-tag-management/iq-versions-timestamp.png"
          alt="Versions Timestamp"
          title="Versions Timestamp"/>
     </a>
 </figure>
-<p>バージョンがページ上で再ロードされた後、<strong>Web Companion</strong>に表示されるバージョンとタイムスタンプを比較します。</p>
+<p>ページ上でバージョンが再ロードされた後、<strong>Web Companion</strong>に表示されるバージョンとタイムスタンプを比較します。</p>
 <figure><a class="slb" href="/images/iq-tag-management/wc2.png"><img src="/images/iq-tag-management/wc2.png"
          alt="WC2"
          title="WC2" width="292" height="342"/>
     </a>
 </figure>
-<p class="note"><i class="fa fa-exclamation-triangle"></i><strong>Tealium iQ</strong>で報告されるタイムゾーンはGMTで、<strong>Web Companion</strong>内で報告されるタイムゾーンはローカルです。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><strong>Tealium iQ</strong>で報告されるタイムゾーンはGMTで、<strong>Web Companion</strong>内ではローカルタイムで報告されます。</p>
 
 </div>
 
@@ -533,7 +547,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2024年June月12日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -548,6 +562,9 @@
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BF%9D%E5%AD%98%E5%85%AC%E9%96%8B%E3%83%80%E3%82%A4%E3%82%A2%E3%83%AD%E3%82%B0" href="javascript:void(0)">保存/公開ダイアログ</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%85%AC%E9%96%8B%E8%A9%B3%E7%B4%B0" href="javascript:void(0)">公開詳細</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%92%B0%E5%A2%83%E5%88%A5%E3%81%AE%E6%9C%80%E7%B5%82%E5%85%AC%E9%96%8B" href="javascript:void(0)">環境別の最終公開</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%AE%E4%BF%9D%E5%AD%98%E5%85%AC%E9%96%8B" href="javascript:void(0)">バージョンの保存/公開</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A4%9C%E8%A8%BC" href="javascript:void(0)">検証</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E7%95%AA%E5%8F%B7%E3%81%A8%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%97" href="javascript:void(0)">バージョン番号とタイムスタンプ</a></li>
               </nav>

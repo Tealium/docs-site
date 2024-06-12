@@ -51,8 +51,11 @@
     <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
 </div>
 </div><ul class="list ma0 pa0 dn dib-ns">
-      <li class="f5 dib">
-         <i class="fa fa-globe" style="color: rgba(255, 255, 255, .6)" aria-hidden="true"></i>
+      <li class="f5 dib mr4">
+         <a href="https://support.tealiumiq.com/en/support/solutions" class="dim link mid-gray">知識ベース&nbsp;<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 32 32" class="fill-current v-base" aria-label="External Link">
+<path d="M25.152 16.576v5.696q0 2.144-1.504 3.648t-3.648 1.504h-14.848q-2.144 0-3.648-1.504t-1.504-3.648v-14.848q0-2.112 1.504-3.616t3.648-1.536h12.576q0.224 0 0.384 0.16t0.16 0.416v1.152q0 0.256-0.16 0.416t-0.384 0.16h-12.576q-1.184 0-2.016 0.832t-0.864 2.016v14.848q0 1.184 0.864 2.016t2.016 0.864h14.848q1.184 0 2.016-0.864t0.832-2.016v-5.696q0-0.256 0.16-0.416t0.416-0.16h1.152q0.256 0 0.416 0.16t0.16 0.416zM32 1.152v9.12q0 0.48-0.352 0.8t-0.8 0.352-0.8-0.352l-3.136-3.136-11.648 11.648q-0.16 0.192-0.416 0.192t-0.384-0.192l-2.048-2.048q-0.192-0.16-0.192-0.384t0.192-0.416l11.648-11.648-3.136-3.136q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h9.12q0.48 0 0.8 0.352t0.352 0.8z"></path>
+</svg>
+</a>
       </li>
         
       <li class="f5 dib mr4">
@@ -330,7 +333,7 @@
         <a href="/ja/server-side/visitor-stitching/diagram/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-stitching-example">訪問のスティッチング例</a></li><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/visitor-stitching/guidelines/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".visitor-stitching-guidelines">ビジタースティッチングのガイドライン</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/visitor-stitching/create-a-visitor-id-attribute/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".create-visitor-id-attribute">訪問者ID属性を作成する</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/visitor-stitching/scenarios/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-stitching-scenarios">訪問のスティッチングシナリオ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/visitor-stitching/scenarios/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-stitching-scenarios">ビジタースティッチングのシナリオ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/visitor-stitching/tapid/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-tapid-cookies">TAPIDクッキーについて</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".functions">関数</a>
@@ -512,19 +515,29 @@
 <ul>
 <li><strong>一意性</strong><br>
 ビジターID属性は、少なくとも3つの一意の文字を持ち、少なくとも6文字の長さが必要です。<br>
-<a href="/ja/server-side/visitor-stitching/visitor-id-attribute/">ビジターID属性の要件</a>について詳しく学びましょう。</li>
+<a href="/ja/server-side/visitor-stitching/visitor-id-attribute/">ビジターID属性の要件</a>について詳しくはこちらをご覧ください。</li>
 <li><strong>大文字と小文字の区別</strong><br>
 ビジターID属性の値は大文字と小文字を区別するため、<code>UserName@example.com</code>は<code>username@example.com</code>とは異なります。属性値にこれらのバリエーションが含まれている場合は、<a href="/ja/server-side/attributes/data-types/string/">小文字化エンリッチメント</a>を使用して正規化します。</li>
 <li><strong>複数のID</strong><br>
-複数のビジターID属性は、属性IDの順序（最も古いものから最も新しいものへ）でOR条件として評価されます。</li>
+複数のビジターID属性は、属性IDの順序（最古から最新）でOR条件として評価されます。</li>
 <li><strong>堅牢性</strong><br>
 ビジターID属性には、デバイス間でビジターと一致することが保証されている<a href="/ja/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/">ユーザー識別子</a>のみを使用する必要があります。</li>
 <li><strong>ステッチされたビジタープロファイル</strong><br>
 複数のビジタープロファイルがステッチされると、元のプロファイルは残り、ステッチされたプロファイルを保存する新しいビジタープロファイルが作成されます。</li>
 <li><strong>テストデータの回避</strong><br>
-ユーザー識別子にデフォルト値やテスト値（<code>undefined</code>、<code>unknown</code>、<code>not set</code>など）を取り込まないように注意してください。</li>
+ユーザー識別子にデフォルト値やテスト値（<code>undefined</code>、<code>unknown</code>、<code>not set</code>など）を取り込まないよう注意してください。</li>
 <li><strong>共有ID</strong><br>
 スティッチングが有効になる前に、図書館や大学で使用されるような共有IDをどのように処理するかを決定し、複数のビジターが誤ってステッチされないようにします。</li>
+<li><strong>サイズ制限</strong><br>
+暗号化と圧縮後のビジタープロファイルの最大サイズは400 KBです。</li>
+<li><strong>共有デバイス</strong><br>
+2人のユーザーがデバイスを共有する場合、両方のユーザーは同じ匿名IDを持ちます。彼らが同じウェブサイトを訪れるが、異なるユーザー識別子（メールアドレスや顧客IDなど）を使用する場合、これをビジタースイッチングと呼びます。Tealiumサポートまたはプロフェッショナルサービスがビジタースイッチングを処理するソリューションの実装を支援できます。詳細については、以下のTealiumのナレッジベース記事を参照してください：
+<ul>
+<li><a href="https://support.tealiumiq.com/en/support/solutions/articles/36000441645-anonymous-user-tracking-under-itp-with-visitor-switching-in-audiencestream">AudienceStreamでのITP下の匿名ユーザートラッキングとビジタースイッチング</a></li>
+<li><a href="https://support.tealiumiq.com/en/support/solutions/articles/36000419055-visitor-switching-in-iq">iQでのビジタースイッチング</a></li>
+<li><a href="https://support.tealiumiq.com/en/support/solutions/articles/36000493080-visitor-switching-in-tealium-mobile-sdks">Tealium Mobile SDKsでのビジタースイッチング</a></li>
+</ul>
+</li>
 </ul>
 
 </div>
@@ -586,7 +599,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2024年June月12日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
