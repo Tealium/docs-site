@@ -158,7 +158,7 @@
         <a href="/ja/iq-tag-management/tags/tag-marketplace/tag-marketplace-policy/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-tag-marketplace-policy">タグマーケットプレイスポリシー</a></li></ul>
       </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tags/advanced-settings/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tag-advanced-settings">高度なタグ構成</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/tags/tealium-generic-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-generic-tag">Tealiumジェネリックタグ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/tags/tealium-generic-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-generic-tag">ティーリアムジェネリックタグ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tags/tealium-pixel-container-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-pixel-container-tag">Tealiumピクセルコンテナタグ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tags/tealium-custom-container-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-custom-container-tag">Tealiumカスタムコンテナタグ</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/tags/tag-reporting/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tag-reporting">タグレポート</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -428,7 +428,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、アクセストークンを使用してGitHubアカウントとiQタグ管理アカウント間の安全なリンクを作成する方法について説明します。リンクが作成されると、Advanced JavaScript Code拡張機能を使用してGitHubリポジトリからファイルを参照し、同期することができます。コードはGitHubに安全に保存されていますが、iQの構成で公開することができます。
+      この記事では、アクセストークンを使用してGitHubアカウントとiQタグ管理アカウント間の安全なリンクを作成する方法について説明します。リンクが作成されると、Advanced JavaScript Code拡張機能を使用してGitHubリポジトリからファイルを参照し、同期することができます。コードはGitHubに安全に保存されていますが、iQ構成で公開することができます。
     </p>
   
 </div>
@@ -436,15 +436,16 @@
 <div class="prose nested-links" id="prose">
   <h2 id="前提条件">前提条件</h2>
 <ul>
-<li>少なくとも1つの公開リポジトリを持つGitHubアカウント。</li>
+<li>最低でも1つの公開リポジトリを持つGitHubアカウント。リポジトリは空でも構いません。</li>
 <li><a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">GitHubの個人アクセストークン</a>。</li>
-<li>GitHubの知識とGitHubリポジトリの操作経験。</li>
+<li>GitHubの操作方法についての知識と、GitHubリポジトリの操作経験。</li>
 <li>Tealiumアカウントでのアカウント管理権限。</li>
 </ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>GitHubを使用していない場合や、公開GitHubリポジトリがないために<a href="/ja/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Advanced JavaScript拡張機能</a>で権限問題が発生した場合は、GitHubへのリンクの代わりに<a href="/ja/early-access/api-v3/iq-profiles/iq-javascript-extension-api/">iQ JavaScript拡張API</a>を使用することをお勧めします。</p>
 <h2 id="仕組み">仕組み</h2>
 <p>GitHubの統合は、GitHubでのコード管理プロセスとiQタグ管理での公開との間でシームレスなワークフローを作成します。GitHubのユーザー名と<a href="https://github.com/settings/tokens">個人アクセストークン</a>を使用してGitHubアカウントへのリンクを作成します。Tealiumアカウント内のすべてのプロファイルに対して1つのリンクだけが必要です。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>リンクを成功させるためには、GitHubアカウントには少なくとも1つの公開リポジトリが必要です。</p>
-<p>アカウントがリンクされると、リポジトリ内のJavaScriptファイルはiQタグ管理の構成で参照可能になります。GitHubリポジトリから参照されたファイルは、GitHubリポジトリに安全に保管されたままですが、そのコードはiQタグ管理の構成の一部として公開することができるようになります。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>リンクが成功するためには、GitHubアカウントには少なくとも1つの公開リポジトリが必要です。</p>
+<p>アカウントがリンクされると、リポジトリ内のJavaScriptファイルがiQタグ管理構成で参照可能になります。GitHubリポジトリからファイルが参照されると、そのファイルはGitHubリポジトリに安全に保管されたままですが、そのコードはiQタグ管理構成の一部として公開することができます。</p>
 <p>GitHubリポジトリの参照ファイルに変更をコミットすると、iQタグ管理でそれらのファイルを同期する必要があります。参照ファイルを同期すると、保存して公開する必要がある未保存の変更が発生します。</p>
 <h2 id="サポートされている機能">サポートされている機能</h2>
 <p>以下の機能がGitHubの統合をサポートしています：</p>
@@ -496,7 +497,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2024年June月20日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
