@@ -303,7 +303,7 @@
         <a href="/client-side-tags/pricegrabber-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".pricegrabber-tag">PriceGrabber</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/pulsepoint-hcp365-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">PulsePoint HCP365 Pixel</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/pushengage-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".pushengage-tag">PushEngage</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/client-side-tags/qualatroo-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".qualaroo-tag">Qualaroo</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/client-side-tags/qualaroo-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".qualaroo-tag">Qualaroo</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/quantcast-cookie-matching-service-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".quantcast-cookie-matching-service-tag">Quantcast Cookie Matching Service</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/quantcast-easy-tag-for-advertise/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".quantcast-easy-tag-for-advertise">Quantcast Easy Tag for Advertise</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/quantcast-easy-tag-for-measure/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".quantcast-easy-tag-for-measure">Quantcast Easy Tag for Measure</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -413,7 +413,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      The Tealium Collect tag is the primary data collection tag for use with Tealium EventStream and AudienceStream. This article describes how to add and configure the Tealium Collect tag in your iQ Tag Management profile.
+      The Tealium Collect tag is the primary data collection tag for Tealium EventStream and AudienceStream. This article explains how to add and configure the Tealium Collect tag in your iQ Tag Management profile.
     </p>
   
 </div>
@@ -424,7 +424,7 @@
 <li>Contact your account manager to enable this tag for your account.</li>
 </ul>
 <h2 id="how-it-works">How it works</h2>
-<p>The Tealium Collect tag captures a mix of predefined data and dynamic data from the page. Using this tag, there is no need for mapping; the tag automatically sends everything set in <code>utag.data</code> or any data passed to a tracking call.</p>
+<p>The Tealium Collect tag captures a mix of predefined data and dynamic data from the page. This tag requires no mapping; it automatically sends everything set in <code>utag.data</code> or any data passed to a tracking call.</p>
 <p>For a full list of collected variables, see <a href="/server-side/data-storage/audiencestore-eventstore/eventstore-data-guide/">EventStore data guide</a>.</p>
 <p>To see the incoming data from the Tealium Collect tag, see <a href="/server-side/live-events-feeds/about-live-events/">Live Events</a>.</p>
 <p>Use the Tealium Collect tag with the following features:</p>
@@ -432,7 +432,7 @@
 <li><strong>Reduce pixel requests with EventStream</strong><br>
 Use this tag with EventStream and event feeds to transition client-side tags to server-side connectors, such as the <a href="/server-side/connectors/webhook-connectors/about/">Webhook connector</a>.</li>
 <li><strong>AudienceStream</strong><br>
-Use this tag with AudienceStream to identify and take action on your visitors.</li>
+Use this tag with AudienceStream to identify and action your visitors.</li>
 <li><strong>DataAccess</strong><br>
 The event data coming from this tag can also be made available to DataAccess, where it can be analyzed using Business Intelligence (BI) tools of your choice.</li>
 <li><strong>Enrich your data layer</strong><br>
@@ -555,14 +555,14 @@ To learn more, see (<a href="/server-side/attributes/data-layer-enrichment/enabl
 <p>For first-party CNAME of the Tealium visitor service endpoint used for data layer enrichment, use a JavaScript Code extension scoped to the Tealium Collect tag to override the URL with the following code:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">visitor_service_override</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://visitor-service.example.co.uk&#34;</span>;
 </span></span></code></pre></div><h2 id="load-rules">Load rules</h2>
-<p>The best practice is to use the <strong>All Pages and Events</strong> load rule to load this tag on all pages.</p>
+<p>The best practice is to use the <strong>All Pages and Events</strong> load rule. Loading this tag on all pages ensures that all events are tracked server-side, which allows for full activation of both event and audience data. Using custom load rules on this tag limits the data that can be activated server-side and is not recommended.</p>
 <h3 id="working-with-trace">Working with trace</h3>
 <p>If you use a more restrictive load rule and you&rsquo;ve noticed that you can&rsquo;t end a session in the trace tool, a custom load rule is needed to allow the special event triggered by trace.</p>
-<p>Create the following load rule and assign it to the Tealium Collect tag using the <strong>Match Any Rule</strong> option.</p>
+<p>Create the following load rule and assign it to the Tealium Collect tag.</p>
 <pre tabindex="0"><code>ut.event equals (ignore case) kill_visitor_session
 </code></pre><figure><a class="slb" href="/images/client-side-tags/tealium-collect-load-rule-for-trace.png"><img src="/images/client-side-tags/tealium-collect-load-rule-for-trace.png"
-         alt="Trace"
-         title="Trace"/>
+         alt="Tealium Collect load rule for trace"
+         title="Tealium Collect load rule for trace"/>
     </a>
 </figure>
 <h2 id="implementing-with-mobile">Implementing with mobile</h2>
@@ -639,7 +639,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 3, 2024 
+          <p>This page was last updated:  June 25, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -816,7 +816,7 @@ No</button>
   
   
     <li  class="tl dib ma0 hover-bg-primary w-100">
-        <a href="https://docs.tealium.com/api/getting-started/auth/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+        <a href="https://docs.tealium.com/api/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           API
         </a>
     </li>
