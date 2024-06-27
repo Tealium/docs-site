@@ -428,7 +428,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Tealium APIとの認証に使用されるAPIキーの管理と生成方法について説明します。
+      この記事では、Tealium APIで認証に使用されるAPIキーの管理と生成方法について説明します。
     </p>
   
 </div>
@@ -436,23 +436,23 @@
 <div class="prose nested-links" id="prose">
   <h2 id="要件">要件</h2>
 <ul>
-<li>自分のAPIキーを生成または無効化するには、同じプライマリアカウント内の別のユーザーによって、Manage Usersレガシーパーミッションまたは<a href="/ja/administration/admin-roles/">ユーザー管理者ロール</a>が必要です。</li>
+<li>自分のAPIキーを生成または無効化するには、同じプライマリアカウント内の別のユーザーによって<a href="/ja/administration/admin-roles/">ユーザー管理者ロール</a>またはManage Usersレガシーパーミッションで認証されている必要があります。</li>
 <li>同じプライマリアカウント内のユーザーに対してAPIキーを認証するには：
 <ul>
-<li>Manage Usersレガシーパーミッションまたは<a href="/ja/administration/admin-roles/">ユーザー管理者ロール</a>が必要です。</li>
-<li>同じプライマリアカウントに所属している必要があります。</li>
+<li>Manage Usersレガシーパーミッションまたは<a href="/ja/administration/admin-roles/">ユーザー管理者ロール</a>を持っている必要があります。</li>
+<li>同じプライマリアカウントにいる必要があります。</li>
 <li>ユーザーは少なくとも一度はプラットフォームにログインしている必要があります。</li>
 </ul>
 </li>
 </ul>
 <h2 id="仕組み">仕組み</h2>
-<p>APIキーは、<a href="/api/">Tealium API</a>との認証に使用され、個々のユーザーアカウントにリンクされています。</p>
-<p>APIキーの生成は以下のように行われます：</p>
+<p>APIキーは、<a href="/api/">Tealium API</a>で認証するために使用され、個々のユーザーアカウントにリンクされています。</p>
+<p>APIキーは以下のように生成されます：</p>
 <ol>
 <li>Manage Usersレガシーパーミッションまたは<a href="/ja/administration/admin-roles/">ユーザー管理者ロール</a>を持つ管理者が、1人以上のユーザーに対してAPIキーを認証します。</li>
-<li>認証アクションは、影響を受けるユーザーにメールをトリガーし、APIキーを生成する権限が与えられたことを通知します。これらのユーザーは、自分自身のAPIキーを生成することができます。</li>
+<li>認証アクションは、影響を受けるユーザーにメールをトリガーし、APIキーを生成するための認証が行われたことを通知します。これらのユーザーはその後、自分のAPIキーを生成することができます。</li>
 </ol>
-<p>APIキーは認証、無効化、生成が可能です。APIキーが生成され、ユーザーに表示された後は、再度取得することはできません。紛失または忘れたキーは、Manage Usersパーミッションを持つユーザーによってリセットまたは無効化する必要があります。</p>
+<p>APIキーは認証、無効化、生成することができます。APIキーが生成され、ユーザーに表示された後は、再度取得することはできません。紛失または忘れたキーは、Manage Usersパーミッションを持つユーザーによってリセットまたは無効化する必要があります。</p>
 <h3 id="manage-usersパーミッションについて">Manage Usersパーミッションについて</h3>
 <p><strong>Manage Users</strong>パーミッションを持つユーザーは以下のことができます：</p>
 <ul>
@@ -461,24 +461,24 @@
 </ul>
 <p>APIキーの生成を認証された任意のユーザーは以下のことができます：</p>
 <ul>
-<li>自分自身のAPIキーを生成またはリセットします。</li>
-<li>自分自身のAPIキーを無効化します。</li>
+<li>自分のAPIキーを生成またはリセットします。</li>
+<li>自分のAPIキーを無効化します。</li>
 </ul>
 <h2 id="apiキーの管理">APIキーの管理</h2>
 <p>このセクションでは、以下の方法について説明します：</p>
 <ul>
-<li>ユーザーが自分自身のAPIキーを生成することを認証します。</li>
-<li>自分自身のAPIキーを生成します。</li>
-<li>1人以上のユーザーのAPIキーを管理します（認証、リセット、または無効化）。</li>
+<li>ユーザーが自分のAPIキーを生成するための認証を行います。</li>
+<li>自分のAPIキーを生成します。</li>
+<li>1人以上のユーザーのAPIキー（認証、リセット、または無効化）を管理します。</li>
 </ul>
-<h3 id="ユーザーがapiキーを生成することを認証する">ユーザーがAPIキーを生成することを認証する</h3>
-<p>ユーザーがAPIキーを生成することを認証するには、Manage Usersレガシーパーミッションまたは<a href="/ja/administration/admin-roles/">ユーザー管理者ロール</a>を持つ管理者である必要があります。このステップでは、ユーザーのためにキーを生成するのではなく、ユーザーが自分自身のAPIキーを生成することを認証します。</p>
-<p>ユーザーが自分自身のAPIキーを生成することを認証するための手順は以下の通りです：</p>
+<h3 id="ユーザーがapiキーを生成するための認証">ユーザーがAPIキーを生成するための認証</h3>
+<p>ユーザーがAPIキーを生成するために認証を行うには、Manage Usersレガシーパーミッションまたは<a href="/ja/administration/admin-roles/">ユーザー管理者ロール</a>を持つ管理者である必要があります。このステップでは、ユーザーのためにキーを生成するのではなく、ユーザーが自分のAPIキーを生成するための認証を行います。</p>
+<p>ユーザーが自分のAPIキーを生成するための認証を行うには、以下の手順を使用します：</p>
 <ol>
 <li>管理メニューで、<strong>Manage Users</strong>をクリックします。<strong>User Manager</strong>ダイアログが表示されます。</li>
 <li>チェックボックスを使用して、管理するユーザーを1人以上選択します。</li>
 <li><strong>Edit/View User Settings</strong>をクリックします。</li>
-<li>左側のパネルで、<strong>API Key</strong>をクリックします。</li>
+<li>左側のパネルで<strong>API Key</strong>をクリックします。</li>
 <li><strong>Authorize Generation</strong>をクリックします。<br>
 <figure><a class="slb" href="/images/iq-tag-management/whiteui-tiq-managing-and-generating-api-keys-authorize-generation.jpg"><img src="/images/iq-tag-management/whiteui-tiq-managing-and-generating-api-keys-authorize-generation.jpg"
              alt="Managing and Generating API Keys Authorize Generation"
@@ -489,19 +489,19 @@ APIキーの認証メールが送信されたことを示すメッセージが�
 <li><strong>Close</strong>をクリックしてウィンドウを閉じます。</li>
 </ol>
 <h3 id="apiキーの生成">APIキーの生成</h3>
-<p>ユーザーは、自分自身のAPIキーを生成するための事前認証を受ける必要があります。認証が完了すると、ユーザーはAPIキーを生成するように指示するメール通知を受け取ります。</p>
-<p>メールが受信された後、ユーザーは以下の手順で自分自身のAPIキーを生成することができます：</p>
+<p>ユーザーは自分のAPIキーを生成するために事前に認証を受ける必要があります。認証されると、ユーザーはAPIキーを生成するよう指示するメール通知を受け取ります。</p>
+<p>メールが受信された後、ユーザーは以下の手順を使用して自分のAPIキーを生成することができます：</p>
 <ol>
 <li>
 <p>管理メニューで、<strong>Edit/View User Settings</strong>をクリックします。</p>
 </li>
 <li>
-<p>左側のパネルで、<strong>API Key</strong>をクリックします。</p>
+<p>左側のパネルで<strong>API Key</strong>をクリックします。</p>
 </li>
 <li>
 <p><strong>Generate Key</strong>をクリックします。<br>
 APIキーが生成され、ポップアップウィンドウに表示されます。</p>
-   <p class="tip"><i class="fa fa-info-circle"></i>APIキーは一度だけ表示され、後から表示することはできません。このウィンドウを閉じると、APIキーは再表示できません。</p>
+   <p class="tip"><i class="fa fa-info-circle"></i>APIキーは一度だけ表示され、後で表示することはできません。このウィンドウを閉じると、APIキーは再表示できません。</p>
 </li>
 <li>
 <p>進む前に、APIキーを安全な場所にコピーします。</p>
@@ -522,11 +522,11 @@ APIキーが生成され、ポップアップウィンドウに表示されま�
              title="User Manager - Edit - View User Settings"/>
         </a>
     </figure></li>
-<li>左側のパネルで、<strong>API Key</strong>をクリックします。</li>
+<li>左側のパネルで<strong>API Key</strong>をクリックします。</li>
 <li>次のアクションのいずれかを選択します：
 <ul>
 <li><strong>Authorize Generation</strong><br>
-ユーザーが自分自身のキーを生成することを認証します。</li>
+ユーザーが自分のキーを生成するための認証を行います。</li>
 <li><strong>Reset Key</strong><br>
 既存のキーをリセットし、新しいキーの生成を認証します。</li>
 <li><strong>Revoke Key</strong><br>
@@ -537,7 +537,7 @@ APIキーが生成され、ポップアップウィンドウに表示されま�
 </ol>
 <h3 id="複数ユーザーのapiキーを管理する">複数ユーザーのAPIキーを管理する</h3>
 <p>APIキーは、一括で認証、リセット、または無効化することができます。</p>
-<p>APIキーを一括で管理するための手順は以下の通りです：</p>
+<p>一括でAPIキーを管理するには、以下の手順を使用します：</p>
 <ol>
 <li>管理メニューで、ドロップダウンリストから<strong>Manage Users</strong>をクリックします。<strong>User Manager</strong>ダイアログが表示されます。</li>
 <li>APIキーを管理したい各ユーザーの隣にあるチェックボックスをクリックします。</li>
@@ -559,7 +559,7 @@ APIキーが生成され、ポップアップウィンドウに表示されま�
 <li><strong>Revoke Keys</strong>
 <ul>
 <li>選択したユーザーの既存のAPIキーを無効化します。</li>
-<li>無効化されたキーは、選択したユーザーに対してすぐに無効となります。</li>
+<li>無効化されたキーは、選択したユーザーに対してすぐに非アクティブになります。</li>
 </ul>
 </li>
 </ul>
@@ -613,7 +613,7 @@ APIキーが生成され、ポップアップウィンドウに表示されま�
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月22日
+          <p>最終更新日 ::  2024年June月27日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -631,7 +631,7 @@ APIキーが生成され、ポップアップウィンドウに表示されま�
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#manage-users%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6" href="javascript:void(0)">Manage Usersパーミッションについて</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api%E3%82%AD%E3%83%BC%E3%81%AE%E7%AE%A1%E7%90%86" href="javascript:void(0)">APIキーの管理</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%8Capi%E3%82%AD%E3%83%BC%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%82%92%E8%AA%8D%E8%A8%BC%E3%81%99%E3%82%8B" href="javascript:void(0)">ユーザーがAPIキーを生成することを認証する</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%8Capi%E3%82%AD%E3%83%BC%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E8%AA%8D%E8%A8%BC" href="javascript:void(0)">ユーザーがAPIキーを生成するための認証</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api%E3%82%AD%E3%83%BC%E3%81%AE%E7%94%9F%E6%88%90" href="javascript:void(0)">APIキーの生成</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8D%98%E4%B8%80%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AEapi%E3%82%AD%E3%83%BC%E3%82%92%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B" href="javascript:void(0)">単一ユーザーのAPIキーを管理する</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A4%87%E6%95%B0%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AEapi%E3%82%AD%E3%83%BC%E3%82%92%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B" href="javascript:void(0)">複数ユーザーのAPIキーを管理する</a></li>

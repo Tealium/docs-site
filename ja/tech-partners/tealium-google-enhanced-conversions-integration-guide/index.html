@@ -308,7 +308,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、iQタグ管理のGoogle Ads Conversion Tracking &amp; Remarketing (gtag.js)タグとEventStream API HubのGoogle Ads Enhanced Conversions for Webコネクタを設定することで、TealiumとGoogle Ads Enhanced Conversionを最大限に活用する方法について説明します。
+      この記事では、iQタグ管理のGoogle Ads Conversion Tracking＆Remarketing（gtag.js）タグとEventStream API HubのGoogle Ads Enhanced Conversions for Webコネクタを構成することで、TealiumとGoogle Ads Enhanced Conversionを最大限に活用する方法について説明します。
     </p>
   
 </div>
@@ -322,38 +322,38 @@
 </ul>
 <p>このソリューションの成功した実装は、コンバージョン率に以下のようなポジティブな影響をもたらしました：</p>
 <ul>
-<li>検索：平均3.5%のコンバージョン率の増加（範囲：1-5%）</li>
-<li>YouTube：平均12%の広告コンバージョン率の増加（範囲：7-25%）</li>
+<li>検索：平均3.5％のコンバージョン率の増加（範囲：1-5％）</li>
+<li>YouTube：平均12％の広告コンバージョン率の増加（範囲：7-25％）</li>
 </ul>
 <h2 id="前提条件">前提条件</h2>
 <ul>
 <li>Tealium
 <ul>
-<li>iQタグ管理：<a href="/ja/client-side-tags/google-ads-conversion-tracking-and-remarketing-gtagjs-tag/">Google Ads Conversion and Remarketing (gtag.js)タグ</a>または<a href="/ja/client-side-tags/floodlight-gtagjs-tag/">Floodlight (gtag.js)タグ</a></li>
+<li>iQタグ管理：<a href="/ja/client-side-tags/google-ads-conversion-tracking-and-remarketing-gtagjs-tag/">Google Ads Conversion and Remarketing（gtag.js）タグ</a>または<a href="/ja/client-side-tags/floodlight-gtagjs-tag/">Floodlight（gtag.js）タグ</a></li>
 <li>EventStream：<a href="/ja/server-side-connectors/google-ads-enhanced-conversions-for-web-connector/">Google Ads Enhanced Conversions for Webコネクタ</a></li>
 </ul>
 </li>
 <li>Google
 <ul>
-<li>Enhanced Conversionsが有効なコンバージョンを持つGoogle Adsアカウント。詳細については、<a href="https://support.google.com/google-ads/answer/13261987?visit_id=638313598805594644-2275068296&amp;rd=1">Google Ads APIのウェブ向け強化コンバージョンについて</a>を参照してください。</li>
+<li>Enhanced Conversionsが有効なコンバージョンを持つGoogle Adsアカウント。詳細については、<a href="https://support.google.com/google-ads/answer/13261987?visit_id=638313598805594644-2275068296&amp;rd=1">Google Ads APIのウェブ向けエンリッチメントコンバージョンについて</a>を参照してください。</li>
 </ul>
 </li>
 </ul>
 <h2 id="仕組み">仕組み</h2>
-<p>このハイブリッドソリューションは、クライアントサイドのタグとサーバーサイドのAPIを使用して、顧客データとコンバージョンイベント（例：サブスクリプション、サインアップ、購入）をGoogleに送信します。顧客データは、サインインしたGoogleユーザーとマッチングされ、コンバージョンイベントは広告クリックやビューに帰属されます。顧客データは、SHA256と呼ばれる一方向ハッシュアルゴリズムを使用して保護され、安全かつプライベートに保たれます。</p>
+<p>このハイブリッドソリューションは、クライアントサイドのタグとサーバーサイドのAPIを使用して、顧客データとコンバージョンイベント（例：サブスクリプション、サインアップ、購入）をGoogleに送信します。顧客データは、サインインしたGoogleユーザーとマッチングされ、コンバージョンイベントは広告クリックまたはビューに帰属されます。顧客データは、SHA256と呼ばれる一方向ハッシュアルゴリズムを使用して保護され、安全でプライベートに保たれます。</p>
 <figure><a class="slb" href="/images/tech-partners/tealium-google-ads-enhanced-conversions-flow.png"><img src="/images/tech-partners/tealium-google-ads-enhanced-conversions-flow.png"
          alt="tealium-google-ads-enhanced-conversions-flow.png"
          title="tealium-google-ads-enhanced-conversions-flow.png" width="601" height="246"/>
     </a>
 </figure>
-<p>強化コンバージョンは、以下の顧客属性の1つ以上が利用可能な場合にのみ機能します：</p>
+<p>エンリッチメントコンバージョンは、以下の顧客属性の1つ以上が利用可能な場合にのみ機能します：</p>
 <ul>
 <li>メールアドレス（推奨）</li>
 <li>氏名と自宅の住所</li>
 <li>電話番号（他のいずれかと組み合わせる必要があります）</li>
 </ul>
 <h2 id="顧客データ">顧客データ</h2>
-<p>以下の顧客パラメータが期待されます。クライアントサイドのタグがこれらの値を正規化しますが、iQの拡張機能やEventStreamのエンリッチメントを使用してこれらの値を正規化する必要があります。</p>
+<p>以下の顧客パラメータが必要です。クライアントサイドのタグはこれらの値を正規化しますが、iQの拡張機能やEventStreamのエンリッチメントを使用してこれらの値を正規化する必要があります。</p>
 <table>
 <thead>
 <tr>
@@ -364,7 +364,7 @@
 <tbody>
 <tr>
 <td>メールアドレス</td>
-<td>小文字にし、Gmailのアドレスの場合はすべてのピリオドを削除します。<br> 例：<code>janedoe@gmail.com</code></td>
+<td>小文字にし、Gmailアドレスの場合はすべてのピリオドを削除します。<br> 例：<code>janedoe@gmail.com</code></td>
 </tr>
 <tr>
 <td>電話番号</td>
@@ -401,7 +401,7 @@
 </tbody>
 </table>
 <h2 id="コンバージョンデータ">コンバージョンデータ</h2>
-<p>以下のGoogleコンバージョンパラメータがタグとコネクタによって期待されます：</p>
+<p>以下のGoogleコンバージョンパラメータがタグに必要です：</p>
 <table>
 <thead>
 <tr>
@@ -411,82 +411,101 @@
 </thead>
 <tbody>
 <tr>
-<td>Conversion Tracking ID</td>
-<td>広告主アカウントのユニークなトラッキングID。</td>
+<td>コンバージョンID</td>
+<td>コンバージョンの一意のトラッキングID。</td>
 </tr>
 <tr>
-<td>Conversion Label</td>
+<td>コンバージョンラベル</td>
 <td>エンコードされたコンバージョントラッキングIDとコンバージョンタイプ。</td>
 </tr>
 <tr>
-<td>Conversion Type</td>
-<td>コンバージョンイベントのタイプ。コンバージョンラベルが利用できない場合のみ使用されます。</td>
-</tr>
-<tr>
-<td>Transaction ID</td>
-<td>イベントのユニークな識別子で、広告主が生成します。<br> <a href="https://support.google.com/google-ads/answer/6386790?hl=en&amp;ref_topic=3165803">Google Adsヘルプ：トランザクションIDを使用して重複コンバージョンを最小限に抑える</a>を参照してください。</td>
-</tr>
-<tr>
-<td>Conversion Value</td>
+<td>コンバージョン値</td>
 <td>トランザクション固有の値またはこのコンバージョンタイプに使用される値。<br> <a href="https://support.google.com/google-ads/answer/3419241?hl=en">Google Adsヘルプ：コンバージョン値について</a>を参照してください。</td>
 </tr>
 <tr>
-<td>Currency Code</td>
-<td>コンバージョン値の通貨コード。</td>
+<td>注文ID</td>
+<td>E-Commerce拡張機能からの注文IDまたはトランザクションID、または直接マッピングされたもの。</td>
+</tr>
+</tbody>
+</table>
+<p>以下のGoogleコンバージョンパラメータがコネクタに必要です：</p>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>コンバージョンアクション</td>
+<td>Google Ads UIで構成されたコンバージョンアクション。</td>
 </tr>
 <tr>
-<td>User Agent</td>
-<td>コンバージョンイベントが発生したブラウザのユーザーエージェント。</td>
+<td>トランザクションID</td>
+<td>広告主としてあなたが生成した、コンバージョンイベントを一意に識別するID。クライアントサイドのイベントと同じ値を持つべきです。</td>
+</tr>
+<tr>
+<td>コンバージョン値</td>
+<td>コンバージョンの金額。</td>
+</tr>
+<tr>
+<td>コンバージョン通貨</td>
+<td>コンバージョンの通貨コード。</td>
+</tr>
+<tr>
+<td>コンバージョン時間</td>
+<td>元のコンバージョンが発生した日時。</td>
 </tr>
 </tbody>
 </table>
 <h2 id="クライアントサイドのウェブサイトトラッキングタグ">クライアントサイドのウェブサイトトラッキングタグ</h2>
-<p>iQタグ管理でGoogle Ads Conversion and Remarketingタグを設定するには、以下が必要です：</p>
+<p>iQタグ管理でGoogle Ads Conversion and Remarketingタグを構成するには、以下が必要です：</p>
 <ul>
 <li>トラッキングするコンバージョンイベントを識別するロードルール。</li>
-<li>Google Adsのコンバージョン設定、具体的にはコンバージョントラッキングIDとコンバージョンラベル。</li>
+<li>Google Adsのコンバージョン構成、特にコンバージョントラッキングIDとコンバージョンラベル。</li>
 </ul>
-<p>以下の手順は、<a href="/ja/client-side-tags/google-ads-conversion-tracking-and-remarketing-gtagjs-tag/">Google Ads Conversion Tracking &amp; Remarketing (gtag.js)タグ設定ガイド</a>で詳しく説明されています。</p>
-<h3 id="タグ設定">タグ設定</h3>
-<p>Tealiumの<a href="/ja/iq-tag-management/tags/tag-marketplace/about/">tag marketplace</a>にアクセスし、Google Ads Conversion &amp; Remarketing (<code>gtag.js</code>)タグを追加します。</p>
+<p>以下の手順は、<a href="/ja/client-side-tags/google-ads-conversion-tracking-and-remarketing-gtagjs-tag/">Google Ads Conversion Tracking＆Remarketing（gtag.js）タグ構成ガイド</a>で詳しく説明されています。</p>
+<h3 id="タグ構成">タグ構成</h3>
+<p>Tealiumの<a href="/ja/iq-tag-management/tags/tag-marketplace/about/">tag marketplace</a>にアクセスし、Google Ads Conversion＆Remarketing（<code>gtag.js</code>）タグを追加します。</p>
 <h3 id="ロードルール">ロードルール</h3>
-<p>コンバージョンイベントに一致するロードルールを設定します。これは、コンバージョンが発生するページまたはコンバージョンを表すイベントである可能性があります。</p>
-<p>ロードルールの例：</p>
+<p>コンバージョンイベントに一致するロードルールを構成します。これは、コンバージョンが発生するページまたはコンバージョンを表すイベントである可能性があります。</p>
+<p>ロードルールの例には以下のようなものがあります：</p>
 <ul>
 <li><strong>購入</strong> - <code>tealium_event EQUALS &quot;purchase&quot;</code></li>
 <li><strong>サインアップ</strong> - <code>tealium_event EQUALS &quot;newsletter_signup&quot;</code></li>
 </ul>
 <h3 id="データマッピング">データマッピング</h3>
-<p>タグを追加した後、<strong>Data Mappings</strong>セクションに移動して、追加のマッピングを設定します。</p>
+<p>タグを追加した後、<strong>Data Mappings</strong>セクションに移動して、追加のマッピングを構成します。</p>
 <p>E-Commerce拡張機能を使用している場合、以下のマッピングは自動的に行われます：</p>
 <ul>
-<li>Order Subtotal/Conversion Value</li>
-<li>Order Currency/Conversion Currency</li>
-<li>Order ID/Transaction ID</li>
+<li>注文小計/コンバージョン値</li>
+<li>注文通貨/コンバージョン通貨</li>
+<li>注文ID/トランザクションID</li>
 </ul>
 <h2 id="サーバーサイドコネクタ">サーバーサイドコネクタ</h2>
-<p>EventStreamでGoogle Ads Enhanced Conversions for Webコネクタを設定するには、以下が必要です：</p>
+<p>EventStreamでGoogle Ads Enhanced Conversions for Webコネクタを構成するには、以下が必要です：</p>
 <ul>
 <li>トラッキングするコンバージョンイベントを識別するイベントフィード。</li>
-<li>Google Adsのコンバージョン設定。</li>
+<li>Google Adsのコンバージョン構成。</li>
 </ul>
-<p>以下の手順は、<a href="/ja/server-side-connectors/google-ads-enhanced-conversions-for-web-connector/">Google Ads Enhanced Conversions for Webコネクタ設定ガイド</a>で詳しく説明されています。</p>
+<p>以下の手順は、<a href="/ja/server-side-connectors/google-ads-enhanced-conversions-for-web-connector/">Google Ads Enhanced Conversions for Webコネクタ構成ガイド</a>で詳しく説明されています。</p>
 <h3 id="コネクタの追加">コネクタの追加</h3>
 <p>コネクタマーケットプレイスにアクセスし、Google Ads Enhanced Conversions for WebコネクタのEventStreamアクションを追加します。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>このコネクタを設定するには、Tealium Customer Data HubとGoogle Adsアカウント間の接続を確立しますので、コネクタを設定する前にGoogleアカウントにログインしておくと便利です。</p>
-<p>次に以下を設定します：</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>このコネクタを構成するには、Tealium Customer Data HubとGoogle Adsアカウント間の接続を確立しますので、コネクタを構成する前にGoogleアカウントにログインしておくと便利です。</p>
+<p>次に、以下を構成します：</p>
 <ul>
-<li><strong>Data Source</strong> - コンバージョンイベントが発生するウェブサイトを表すデータソースを選択します。</li>
-<li><strong>Event Feed</strong> - トラッキングするコンバージョンイベントのみを含むフィードを選択します。</li>
+<li><strong>データソース</strong> - コンバージョンイベントが発生するウェブサイトを表すデータソースを選択します。</li>
+<li><strong>イベントフィード</strong> - トラッキングするコンバージョンイベントのみを含むフィードを選択します。</li>
 </ul>
 <p>Googleアカウントとの接続を確立し、<strong>Send Conversion</strong>アクションタイプを選択します。</p>
 <h3 id="データマッピング-1">データマッピング</h3>
-<p><strong>Send Conversion</strong>アクションは、コンバージョンイベントをGoogleのサーバーサイドAPIに送信し、強化コンバージョンを行います。</p>
-<p>強化コンバージョンAPI呼び出しには以下のデータマッピングが必要です：</p>
+<p><strong>Send Conversion</strong>アクションは、コンバージョンイベントをエンリッチメントコンバージョンのためのGoogleサーバーサイドAPIに送信します。</p>
+<p>エンリッチメントコンバージョンAPI呼び出しには、以下のデータマッピングが必要です：</p>
 <ul>
-<li><strong>Transaction ID</strong> - コンバージョンイベントを一意に識別するIDで、広告主が生成します。購入イベントの場合、これは注文IDです。</li>
+<li><strong>トランザクションID</strong> - 広告主としてあなたが生成した、コンバージョンイベントを一意に識別するID。購入イベントの場合、これは注文IDです。</li>
 </ul>
-<p>以下の顧客データマッピングのうち少なくとも1つが必要です：</p>
+<p>以下の顧客データマッピングのうち、少なくとも1つが必要です：</p>
 <ul>
 <li><strong>メールアドレス</strong> - コンバージョン時点のユーザーのメールアドレス。<strong>または</strong></li>
 <li><strong>氏名と住所</strong>（名前、姓、住所、市区町村、地域、郵便番号、国）
@@ -498,9 +517,9 @@
 <p>Google Enhanced Conversionsについては、以下の点を注意してください：</p>
 <ul>
 <li><strong>Gclid</strong><br>
-Gclidはオプションで、帰属、レポーティング、入札には使用されません。</li>
-<li><strong>User agent</strong><br>
-User agentはウェブコンバージョンに必要で、同一デバイスとクロスデバイスのコンバージョンを別々にレポートすることができます。</li>
+Gclidはオプションで、アトリビューション、レポーティング、または入札には使用されません。</li>
+<li><strong>ユーザーエージェント</strong><br>
+ユーザーエージェントはウェブコンバージョンに必要で、同一デバイスとクロスデバイスのコンバージョンを別々に報告することができます。</li>
 </ul>
 <p>現時点では、以下のコンバージョンイベントは対象外です：</p>
 <ul>
@@ -511,8 +530,7 @@ User agentはウェブコンバージョンに必要で、同一デバイスと�
 <h2 id="追加のリソース">追加のリソース</h2>
 <ul>
 <li><a href="https://tealium.com/google-integrations/">Better Together: Tealium + Google</a></li>
-<li><a href="https://youtu.be/4HZqnFeCb8E">Tealium + Google Enhanced Conversions設定の概要</a> (ビデオ)</li>
-<li><a href="https://support.google.com/google-ads/answer/9888656?hl=en&amp;ref_topic=3165803">Google Adsヘルプ：強化コンバージョン（ベータ版）について</a></li>
+<li><a href="https://support.google.com/google-ads/answer/9888656?hl=en&amp;ref_topic=3165803">Google Ads Help: About enhanced conversions (beta)</a></li>
 </ul>
 
 </div>
@@ -574,7 +592,7 @@ User agentはウェブコンバージョンに必要で、同一デバイスと�
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年April月25日
+          <p>最終更新日 ::  2024年June月27日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -593,7 +611,7 @@ User agentはウェブコンバージョンに必要で、同一デバイスと�
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%A1%A7%E5%AE%A2%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">顧客データ</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">コンバージョンデータ</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%81%AE%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0%E3%82%BF%E3%82%B0" href="javascript:void(0)">クライアントサイドのウェブサイトトラッキングタグ</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E8%A8%AD%E5%AE%9A" href="javascript:void(0)">タグ設定</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグ構成</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%89%E3%83%AB%E3%83%BC%E3%83%AB" href="javascript:void(0)">ロードルール</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データマッピング</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF" href="javascript:void(0)">サーバーサイドコネクタ</a></li>

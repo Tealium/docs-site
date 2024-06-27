@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Snowflakeデータソースについて | スノーフレークデータソース |Tealiumドキュメント</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.111.3">
+    
+    <meta NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+    
+    
+    <link rel="alternate" hreflang="en" href="https://docs.tealium.com/early-access/snowflake-data-source/about/">
+    <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
+  </head>
+  <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
+    <script>
+    var utag_data = {
+        site_section  : "early-access",
+        reading_time  : "1",
+        site_language : "ja",
+        tealium_event : "page_view"
+    }
+    </script>
+
+    <script>
+     (function(a,b,c,d){
+        a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+        b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+        a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+      })();
+    </script>
+<nav class="w-100 sticky-t bg-primary-color-light bb b--light-gray dpn" role="navigation">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
+    <div class="lh-solid ml0-ns mr0 mr4-l mv3 pl15 dib db-ns">
+      <a href="/ja/"><img src="/images/icons/tealium-documentation-logo-color.svg" class="v-mid dib" width="186" height="31"></a>
+    </div>
+    
+    <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-ns">
+      <li class="f5 dib mr4">
+         <a href="https://support.tealiumiq.com/en/support/solutions" class="dim link mid-gray">知識ベース&nbsp;<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 32 32" class="fill-current v-base" aria-label="External Link">
+<path d="M25.152 16.576v5.696q0 2.144-1.504 3.648t-3.648 1.504h-14.848q-2.144 0-3.648-1.504t-1.504-3.648v-14.848q0-2.112 1.504-3.616t3.648-1.536h12.576q0.224 0 0.384 0.16t0.16 0.416v1.152q0 0.256-0.16 0.416t-0.384 0.16h-12.576q-1.184 0-2.016 0.832t-0.864 2.016v14.848q0 1.184 0.864 2.016t2.016 0.864h14.848q1.184 0 2.016-0.864t0.832-2.016v-5.696q0-0.256 0.16-0.416t0.416-0.16h1.152q0.256 0 0.416 0.16t0.16 0.416zM32 1.152v9.12q0 0.48-0.352 0.8t-0.8 0.352-0.8-0.352l-3.136-3.136-11.648 11.648q-0.16 0.192-0.416 0.192t-0.384-0.192l-2.048-2.048q-0.192-0.16-0.192-0.384t0.192-0.416l11.648-11.648-3.136-3.136q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h9.12q0.48 0 0.8 0.352t0.352 0.8z"></path>
+</svg>
+</a>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+          <a href="/early-access/snowflake-data-source/about/" class="dim link mid-gray">English</a>
+        
+      
+        
+      
+      </li>
+            
+    </ul>
+  </div>
+</nav>
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 pr4">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-hidden overflow-y-scroll dn db-ns sticky-l pt3 pl125" style="width:280px;">
+<nav class="side-nav f6" role="navigation">
+  <ul class="list pa0 mt0 mb1">
+  
+    <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/ja/" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>家</a></li>
+  
+  </ul>
+  <ul class="list pa0" data-nav-section="early-access"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><a href="/ja/early-access/" class="dib w-100 link text-color-primary hover-primary-color"><span class="pb2">早期アクセス</span></a>
+        <ul data-level="1" class="early-access desktopmenu animated fadeIn list pl0 mt2"><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/early-access/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">アーリーアクセスについて</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/server-side-connectors/linkedin-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".linkedin-conversions-connector">LinkedIn Conversions</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/early-access/snowflake-streaming-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snowflake-streaming-connector">Snowflakeストリーミングコネクタ</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/early-access/spotify-conversions-connector-alpha/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".spotify-conversions-connector-alpha">Spotify Conversionsコネクタ</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".api-v3">Tealium API v3</a>
+        <ul class="pl2  api-v3 desktopmenu animated fadeIn list  dn"><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".iq-profiles-api">iQプロファイル</a>
+        <ul class="pl2  iq-profiles-api desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api-v3/iq-profiles/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-v3-api">iQプロファイルについて</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api-v3/iq-profiles/iq-profiles-api-objects/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-api-objects">iQ Profiles APIオブジェクト</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api-v3/iq-profiles/iq-get-profile-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-get-profile-api">iQ GETプロフィールAPI</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api-v3/iq-profiles/iq-javascript-extension-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-javascript-extension-api">iQ JavaScript拡張API</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api-v3/iq-profiles/iq-events-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-events-api">iQイベントAPI</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api-v3/iq-profiles/iq-variables-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-variables-api">iQ変数API</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api-v3/iq-profiles/iq-load-rules-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-load-rules-api">iQロードルールAPI</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api-v3/iq-profiles/iq-tags-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-tags-api">iQタグAPI</a></li></ul>
+      </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api-v3/tealium-collect-http-api-v3-early-access/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-collect-http-api-v3-early-access">Tealium Collect HTTP API</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/api/v3/visitor-privacy/tealium-api-v3-visitor-privacy-api-formerly-visitor-lookup-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-api-v3-visitor-privacy-api-formerly-visitor-lookup-api">Visitor Privacy API</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/api/v3/visitor-profile/tealium-api-visitor-profile-api-early-access/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-api-v3-visitor-profile-api-early-access">Visitor Profile API</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/api/v3/getting-started/tealium-api-v3-getting-started-early-access/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-api-v3-getting-started-early-access">認証とリクエスト形式</a></li></ul>
+      </li><li class="relative w-100 fw8 f5  active">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".snowflake-data-source">スノーフレークデータソース</a>
+        <ul class="pl2 bl b--primary bw1 snowflake-data-source desktopmenu animated fadeIn list "><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/snowflake-data-source/about/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".about-snowflake-data-source">について</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/snowflake-data-source/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-snowflake-data-source">管理</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/snowflake-data-source/error-logs/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-snowflake-data-source-error-logs">エラーログ</a></li></ul>
+      </li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/early-access/visitor-deletion-jobs/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-deletion-jobs">ビジター削除ジョブ</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".platform-permissions">プラットフォームの権限</a>
+        <ul class="pl2  platform-permissions desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/platform-permissions/ea/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">早期アクセスリリース</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/platform-permissions/pii-account-roles/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">PIIとアカウントレベルのロール</a></li></ul>
+      </li><li class="relative w-100 fw8 f5 ">
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".moments-iq">モーメンツiQ</a>
+        <ul class="pl2  moments-iq desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/moments-iq/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Moments iQについて</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/moments-iq/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Moments iQの管理</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/moments-iq/example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">専門知識の例</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/moments-iq/audiencestream-example/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">AudienceStreamの例</a></li></ul>
+      </li></ul></li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
+      <div class="documentation-copy ph4">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+    
+  
+  <li class="mr1 f7 lvl0"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/">ホーム</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/early-access/">アーリーアクセス</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl2"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/early-access/snowflake-data-source/">スノーフレークデータソース</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mt30 mb3">Snowflakeデータソースについて</h1>
+</header>
+
+<div class="mv2 mid-gray fn w-100">
+  
+
+  
+    <p class="f4 fw3 lh-copy">
+      この記事では、SnowflakeデータをTealiumにインポートする方法について説明します。
+    </p>
+  
+</div>
+
+<div class="prose nested-links" id="prose">
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>Snowflakeデータソースは早期アクセス段階にあり、一部のお客様のみが利用可能です。この機能を試してみたい場合は、Tealiumサポート担当者にお問い合わせください。</p>
+<h2 id="要件">要件</h2>
+<p>この機能を利用するには以下が必要です：</p>
+<ul>
+<li>Tealium EventStreamまたはTealium AudienceStream</li>
+<li>Snowflakeアカウント</li>
+<li><code>USAGE</code>権限を持つSnowflakeロール</li>
+</ul>
+<h2 id="仕組み">仕組み</h2>
+<p>Snowflakeデータソースを使用して、Snowflakeテーブルまたはビューから大量のデータをほぼリアルタイムでインポートします。データをインポートした後、それをTealiumの属性に変換・マッピングし、ターゲット指向のアクティベーションのためのより良いオーディエンスを構築します。</p>
+<p>始めるには、Snowflakeテーブルまたはビューごとに1つのSnowflakeデータソースを作成し、データセットのためのクエリモードとSQLの<code>WHERE</code>句をカスタマイズします。次に、データベースの列をTealiumの属性にマッピングします。Snowflakeソースからインポートされた各行はTealiumでイベントとして処理されます。</p>
+<h2 id="レート制限">レート制限</h2>
+<p>Snowflakeからのインポートは通常、アカウントごとに秒あたり50イベントに制限されていますが、これは変動する場合があります。標準の属性サイズ制限は依然として適用されます。詳細については、<a href="/ja/server-side/attributes/about/#size-limits">属性について &gt; サイズ制限</a>を参照してください。</p>
+<p>Snowflakeデータソースは、一度に最大1,000行のデータを取得します。</p>
+<h2 id="snowflakeテーブル">Snowflakeテーブル</h2>
+<p>各Snowflakeデータソースは、1つのSnowflakeテーブルまたはビューからのデータのインポートをサポートします。複数のSnowflakeテーブルからデータをインポートするには、Snowflakeでビューを作成し、データソース構成でそのビューを選択します。Snowflakeのビューについての詳細は、<a href="https://docs.snowflake.com/en/user-guide/views-introduction">Snowflake: ビューの概要</a>を参照してください。</p>
+<h2 id="データタイプ">データタイプ</h2>
+<p>Snowflakeデータソースは、すべてのSnowflakeデータタイプをサポートします。データが正しくインポートされるように、以下のガイドラインに従ってSnowflakeのデータタイプをマッピングしてください：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Snowflake</th>
+<th style="text-align:left">Tealium</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">数値データタイプ</td>
+<td style="text-align:left">数値属性</td>
+</tr>
+<tr>
+<td style="text-align:left">文字列とバイナリデータタイプ</td>
+<td style="text-align:left">文字列属性</td>
+</tr>
+<tr>
+<td style="text-align:left">論理データタイプ</td>
+<td style="text-align:left">ブール属性</td>
+</tr>
+<tr>
+<td style="text-align:left">日付と時間のデータタイプ</td>
+<td style="text-align:left">日付属性</td>
+</tr>
+<tr>
+<td style="text-align:left">配列</td>
+<td style="text-align:left">文字列の配列、数値の配列、またはブールの配列</td>
+</tr>
+<tr>
+<td style="text-align:left">オブジェクト、バリアント、地理、幾何、ベクトルデータタイプ</td>
+<td style="text-align:left">文字列属性</td>
+</tr>
+</tbody>
+</table>
+<p>Snowflakeのデータタイプについての詳細は、<a href="https://docs.snowflake.com/en/sql-reference/intro-summary-data-types">Snowflake: データタイプの概要</a>を参照してください。</p>
+<h2 id="イベント">イベント</h2>
+<p>デフォルトのTealium <a href="/ja/server-side/getting-started/order-of-operations/">データ収集の操作順序</a>では、Snowflakeデータソースからのイベントは<strong>イベント受信</strong>ステップの前に処理され、操作の順序は変わりません。</p>
+<p>Snowflakeデータソースからのイベントは、以下の重要な例外を除き、他のデータソースからのイベントと同様にEventStreamとAudienceStreamに送信されます：</p>
+<ul>
+<li><strong>ブラウザ固有の属性</strong>：ユーザーエージェントなどのブラウザ固有の属性は入力されません。</li>
+<li><strong>エンリッチメント</strong>：AudienceStreamの事前読み込み属性に対するエンリッチメントは実行されません。ただし、<code>First visit</code>属性は例外です。</li>
+<li><strong>関数</strong>：データ変換関数は実行されません。</li>
+<li><strong>単一ページ訪問</strong>：受信イベントは単一ページ訪問/訪問の基準から除外されます。他のデータソースからの単一ページ訪問と訪問はAudienceStreamに保存されません。詳細については、<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363388-how-are-single-page-visits-processed-in-audiencestream-">AudienceStreamで単一ページ訪問はどのように処理されますか？</a> (Tealiumのログインが必要)を参照してください。</li>
+<li><strong>訪問の長さ</strong>：Snowflakeデータソースイベントによって開始された訪問は60秒間続きます。</li>
+<li><strong>訪問IDのマッピング</strong>：Snowflakeデータソース構成でAudienceStream訪問ID属性をマッピングすると、訪問IDは選択した列の値に直接構成され、追加のエンリッチメントは必要ありません。</li>
+</ul>
+<h2 id="構成">構成</h2>
+<h3 id="クエリモード">クエリモード</h3>
+<p>Snowflakeデータソースは、Snowflakeテーブルまたはビューからデータをインポートする方法を制御するための3つのクエリモードをサポートしています：</p>
+<ul>
+<li><strong>タイムスタンプ + インクリメント</strong>：（推奨）Tealiumは、タイムスタンプ列と自動インクリメント列に基づいて新規または変更された行をインポートします。このモードでは、前回のインポートより新しいタイムスタンプと、最後にインポートされた行より大きな自動インクリメント値を持つ行がインポートされます。これは、すべての行が期待通りにインポートされることを確実にする最も信頼性の高いモードです。</li>
+<li><strong>タイムスタンプ</strong>：Tealiumは、タイムスタンプ列に基づいて新規または変更された行をインポートします。このモードでは、前回のインポートより新しいタイムスタンプを持つ行がインポートされます。テーブルにタイムスタンプ列があり、それがすべての更新で構成または更新される場合、このモードを使用します。</li>
+<li><strong>インクリメント</strong>：Tealiumは、自動インクリメント列に基づいて行をインポートします。このモードでは、最後にインポートされた行より大きな自動インクリメント値を持つ行がインポートされます。これは既存の行の変更や削除を検出しません。自動インクリメント列のみを持ち、タイムスタンプ列を持っていない場合、このモードを使用します。</li>
+</ul>
+<p>Snowflakeデータソースは、一括クエリモードをサポートしていません。</p>
+<h3 id="クエリモードの例">クエリモードの例</h3>
+<p>以下の例は、行のバッチ処理とクエリモードがどのように連携して動作するかを示しています。以下の表では、<code>modification_time</code>がタイムスタンプ列で、<code>customer_id</code>がインクリメント列です。</p>
+<table>
+<thead>
+<tr>
+<th><code>customer_id</code></th>
+<th><code>modification_time</code></th>
+<th><code>customer_segment</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>01Apr 13:00</td>
+<td>A</td>
+</tr>
+<tr>
+<td>2</td>
+<td>01Apr 13:00</td>
+<td>B</td>
+</tr>
+<tr>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>01Apr 13:00</td>
+<td>D</td>
+</tr>
+<tr>
+<td>1001</td>
+<td>01Apr 13:00</td>
+<td>E</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>02Apr 14:00</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+<p>Snowflakeデータソースは、一度に最大1,000行のデータを取得し、データのバッチからタイムスタンプと/またはインクリメント列の最大値をマークします。</p>
+<ul>
+<li><strong>タイムスタンプ + インクリメント</strong>モードを使用する場合：データソースは行1-1000を取得します。次にデータソースがデータを取得するとき、次のいずれかの行を探します。<br>
+<code>modification_time</code>が<code>01Apr 13:00</code>で、<code>customer_id</code>が<code>1000</code>より大きい<br>
+または<br>
+<code>modification_time</code>が<code>01Apr 13:00</code>より大きい</li>
+<li><strong>タイムスタンプ</strong>モードを使用する場合（例では<code>modification_time</code>）：データソースは行1-1000を取得し、最大タイムスタンプ<code>01Apr 13:00</code>をマークします。次にデータソースがデータを取得するとき、<code>01Apr 13:00</code>より大きいタイムスタンプを探します。この場合、行1001は同じタイムスタンプ値を持つが、異なるデータバッチで取得されたため、スキップされます。</li>
+<li><strong>インクリメント</strong>モードを使用する場合：データソースは行1-1000を取得し、最大の自動インクリメント値<code>1000</code>をマークしますが、新しいデータと更新されたタイムスタンプ列を持つ行は処理されません。インクリメント列をさらに増加させる新たに追加された行のみが処理されます（例では<code>customer_id</code>）。</li>
+</ul>
+<h3 id="sqlクエリ">SQLクエリ</h3>
+<p>Snowflakeデータソースの<strong>クエリ構成</strong>で、Tealiumにインポートしたい列を選択します。処理の追加条件を構成するには、SQLの<code>WHERE</code>句を使用します。このオプションは、クエリに<code>WHERE</code>文を追加します。<code>WHERE</code>文は基本的なSQL構文をサポートします。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><code>WHERE</code>句は、複数のテーブルからのサブクエリをサポートしていません。複数のSnowflakeテーブルからデータをインポートするには、Snowflakeでビューを作成し、データソース構成でそのビューを選択します。詳細については、<a href="https://docs.snowflake.com/en/user-guide/views-introduction">Snowflake: ビューの概要</a>を参照してください。</p>
+<h3 id="列マッピング">列マッピング</h3>
+<p>列マッピング構成は、Snowflakeテーブルの各列に対応するイベント属性を決定します。
+カラム名は、Customer Data Hubの属性名とはしばしば異なるため、このマッピングによりデータが適切にインポートされます。例えば、テーブルには<code>postalCode</code>という名前のカラムがあるかもしれませんが、対応するイベント属性は<code>customer_zip</code>と名付けられているため、それらを関連付けるマッピングが必要です。</p>
+<p>Snowflakeのデータ型をTealiumのデータ型にマッピングする方法については、<a href="#data-types">データ型</a>セクションを参照してください。</p>
+<h3 id="ビジターidのマッピング">ビジターIDのマッピング</h3>
+<p>インポートされたデータがウェブ、モバイル、HTTP APIなどの他のソースとステッチされることを確認するために、Snowflakeテーブルの各行には一意のビジターIDを持つカラムがあることを確認してください。その後、ビジターIDカラムと対応するイベント属性をビジターID属性（AudienceStreamでのビジター識別のための一意の属性タイプ）にマッピングできます。マッピングされたイベント属性の値は、<code>tealium_visitor_id</code>属性に割り当てられ、既存のビジタープロファイルに直接マッチします。</p>
+<p>AudienceStreamでのビジターIDマッピングについての詳細は、<a href="/ja/server-side/data-sources/visitor-identification/">Tealiumデータソースを使用したビジター識別</a>を参照してください。</p>
+<h2 id="許可するipアドレス">許可するIPアドレス</h2>
+<p>あなたのSnowflakeアカウントがどのシステムからのリクエストを受け入れるかについて厳格なルールがある場合は、<a href="/ja/server-side/administration/ip-allow-list/">TealiumのIPアドレス</a>をSnowflakeの許可リストに追加してください。</p>
+
+</div>
+
+<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
+
+  
+  <a href="/ja/early-access/snowflake-data-source/manage/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <section class="tl pr3">
+      <div>管理</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"管理"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
+  
+  
+</div></div>
+
+
+
+        <div class="bt-l b--moon-gray pv3 cb">
+          <div id="feedback_form" class="dpn">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">このページはお役にたちましたでしょうか？</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+はい</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+いいえ</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="ページの改善にご協力ください。" rows="4" cols="60"></textarea><button id="feedback_submit" class="db ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">フィードバックを送信</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">ご意見有難うございます。</p>
+  </div>
+</div>
+
+        </div>
+        <div class="bt-l b--moon-gray pt3 f6">
+          <p>最終更新日 ::  2024年June月27日
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
+      
+
+
+
+  <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">このページで</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AC%E3%83%BC%E3%83%88%E5%88%B6%E9%99%90" href="javascript:void(0)">レート制限</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#snowflake%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB" href="javascript:void(0)">Snowflakeテーブル</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BF%E3%82%A4%E3%83%97" href="javascript:void(0)">データタイプ</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">イベント</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%82%A8%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%89" href="javascript:void(0)">クエリモード</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%82%A8%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%89%E3%81%AE%E4%BE%8B" href="javascript:void(0)">クエリモードの例</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sql%E3%82%AF%E3%82%A8%E3%83%AA" href="javascript:void(0)">SQLクエリ</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%88%97%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">列マッピング</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%93%E3%82%B8%E3%82%BF%E3%83%BCid%E3%81%AE%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">ビジターIDのマッピング</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%B1%E5%8F%AF%E3%81%99%E3%82%8Bip%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9" href="javascript:void(0)">許可するIPアドレス</a></li>
+              </nav>
+  </aside></nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-secondary ph1-ns relative w-100 pv4 bt b--light-gray" role="contentinfo">
+  <div class="center flex-ns flex-wrap justify-between mw9 w-90 dn db-ns">
+
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="nav-list footer-heading-title">
+          <div class="footer-logo-wrapper">
+            <img class="logo" src="https://tealium.com/wp-content/uploads/2015/12/tealium_footer_logo_01-206x49.png" alt="tealium_footer_logo_01">
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Support</li>
+<li class="mb2"><a class="link" href="https://university.tealium.com/">Tealium University</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/en/support/solutions">Knowledge Base</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/" target="">Support Desk</a></li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Company</li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/">Tealium.com</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/blog/">Blog</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="https://tealium.com/careers/">Careers</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+  <div class="dpn bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+<div class="globalmenu mobilemenu dn">
+    
+
+<ul class="list hidden dib ph0 ma0 scrolling-touch tc">
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ホーム
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/iq-tag-management/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          iQ Tag Management
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          EventStream API Hub
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/functions/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          機能
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-connect/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          データコネクト
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/predict/getting-started/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Predict ML
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side/data-storage/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          DataAccess
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/client-side-tags/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          クライアントサイド タグ
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/server-side-connectors/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          サーバーサイド コネクタ
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/platforms/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          プラットフォーム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/api/getting-started/auth/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          管理
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ファーマ向けティーリアム
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          ティーリアムアイデンティティパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/tech-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          テクノロジーパートナー
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          パートナー統合
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/glossary/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          用語集
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/early-access/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          早期アクセス
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/ja/release-notes/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          リリースノート
+        </a>
+    </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+</div>
+
+
+<div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
+    <ul class="list dib ph0 ma0 scrolling-touch tc">
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/early-access/about/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          アーリーアクセスについて
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/server-side-connectors/linkedin-conversions-connector/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          LinkedIn Conversions
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/early-access/snowflake-streaming-connector/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Snowflakeストリーミングコネクタ
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/early-access/spotify-conversions-connector-alpha/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Spotify Conversionsコネクタ
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/early-access/api-v3/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Tealium API v3
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/early-access/snowflake-data-source/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4 bg-primary-color">
+          スノーフレークデータソース
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/early-access/visitor-deletion-jobs/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          ビジター削除ジョブ
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/early-access/platform-permissions/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          プラットフォームの権限
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/ja/early-access/moments-iq/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          モーメンツiQ
+      </a>
+      </li>
+      
+      
+  
+
+</ul>
+
+</div>
+
+
+
+
+<div class="flex dn-l justify-between">
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link mr2 white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".globalmenu">Site</button>
+
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".docsmenu">Section</button>
+
+</div>
+</div>
+
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'ドキュメントの検索',
+    buttonAriaLabel: 'ドキュメントの検索',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'クエリを消去',
+      resetButtonAriaLabel: 'クエリを消去',
+      cancelButtonText: 'キャンセル',
+      cancelButtonAriaLabel: 'キャンセル',
+    },
+    startScreen: {
+      recentSearchesTitle: '最近',
+      noRecentSearchesText: '最近の検索はありません',
+      saveRecentSearchButtonTitle: 'この検索を保存',
+      removeRecentSearchButtonTitle: 'この検索を履歴から削除',
+      favoriteSearchesTitle: 'お気に入り',
+      removeFavoriteSearchButtonTitle: 'このクエリをお気に入りから削除',
+    },
+    errorScreen: {
+      titleText: '結果を取得できません',
+      helpText: 'ネットワーク接続を確認してください',
+    },
+    footer: {
+      selectText: '選択する',
+      selectKeyAriaLabel: 'キーを入力してください',
+      navigateText: 'ナビゲートする',
+      navigateUpKeyAriaLabel: '上',
+      navigateDownKeyAriaLabel: '下',
+      closeText: '閉じる',
+      closeKeyAriaLabel: 'エスケープキー',
+      searchByText: '次で検索：',
+    },
+    noResultsScreen: {
+      noResultsText: '次の結果はありません：',
+      suggestedQueryText: '次で検索してみてください：',
+      reportMissingResultsText: 'このクエリで結果が返ってくるはずですか?',
+      reportMissingResultsLinkText: '連絡願います',
+    },
+  },
+};
+var default_sections = [
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
+docsearch({
+  container: '#docsearch',
+  appId: '01G44CJWZ0',
+  apiKey: '09633c367e743588b87dbb988dad4158',
+  indexName: 'tealium_ja',
+  placeholder: 'ドキュメントの検索',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    "analytics": true ,
+    "analyticsTags": ["site"]
+  },
+  insights: true,
+  debug: false ,
+  transformItems
+});
+</script>
+
+    
+
+  </body>
+</html>

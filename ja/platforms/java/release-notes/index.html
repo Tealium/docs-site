@@ -129,6 +129,8 @@
 
 <div class="mv2 mid-gray fn w-100">
   
+    <p class="f4 fw3 lh-copy nested-links"><a href="/release-notes/">すべてのリリースノートを見る</a></p>
+  
 
   
     <p class="f4 fw3 lh-copy">
@@ -138,33 +140,37 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="132">1.3.2</h2>
+  <h2 id="140-2024年6月">1.4.0 (2024年6月)</h2>
 <ul>
-<li>永続データの削除 - DataManagerクラスに<code>deletePersistentData</code>メソッドを追加しました。</li>
+<li>追加の依存関係なしで新しいJDKをサポートするために、不要な参照<code>javax.xml.ws.http.HTTPException</code>を削除しました。</li>
 </ul>
-<h2 id="131">1.3.1</h2>
+<h2 id="132-2023年1月">1.3.2 (2023年1月)</h2>
 <ul>
-<li>バグ修正 - イベントデータが予期せずに保存されるのを防ぐために、trackメソッドを永続データのコピーを使用するように更新しました</li>
+<li>永続的なデータ削除 - DataManagerクラスに<code>deletePersistentData</code>メソッドを追加しました。</li>
 </ul>
-<h2 id="130">1.3.0</h2>
+<h2 id="131-2021年2月">1.3.1 (2021年2月)</h2>
 <ul>
-<li><code>visitor_id</code>を削除し、<code>&quot;event&quot;</code>エンドポイントに切り替えました</li>
-<li><code>tealium_visitor_id</code>と<code>tealium_vid</code>を削除しました</li>
-<li>POSTメソッドとJSONを使用して<code>&quot;event&quot;</code>エンドポイントを使用します</li>
-<li>曖昧な<code>Map&lt;String, Object&gt;</code>の代わりにデータを表現するための<code>Udo</code>データオブジェクトを作成しました</li>
-<li>データのための<code>Map&lt;String, Object&gt;</code>を使用するAPIメソッドを非推奨にし、<code>Udo</code>データタイプを使用するメソッドを更新しました</li>
-<li>多くのリファクタリングと、ライブラリ内のより保守性の高いコードを奨励するためのTDDの導入</li>
+<li>バグ修正 - イベントデータが予期せずに保存されるのを防ぐために、Persistent Dataのコピーを使用するようにtrackメソッドを更新しました。</li>
 </ul>
-<h2 id="120">1.2.0</h2>
+<h2 id="130-2019年2月">1.3.0 (2019年2月)</h2>
 <ul>
-<li>データソースを追加しました</li>
-<li>新しい変数<code>tealium_datasource</code>を追加しました</li>
-<li>永続ファイル名を<code>account.profile.data</code>に変更しました（以前のバージョンからアップグレードする場合、ファイルはもうアクセスできません）</li>
-<li>ユニットテストのバグ修正</li>
+<li><code>visitor_id</code>を削除し、<code>&quot;event&quot;</code>エンドポイントに切り替えました。</li>
+<li><code>tealium_visitor_id</code>と<code>tealium_vid</code>を削除しました。</li>
+<li>JSONを使用したPOSTメソッドで<code>&quot;event&quot;</code>エンドポイントを使用します。</li>
+<li>データを表すために曖昧な<code>Map&lt;String, Object&gt;</code>の代わりに<code>Udo</code>データオブジェクトを作成しました。</li>
+<li>データのための<code>Map&lt;String, Object&gt;</code>を使用するAPIメソッドを非推奨にし、<code>Udo</code>データタイプを使用するようにメソッドを更新しました。</li>
+<li>多くのリファクタリングと、ライブラリ内のより保守可能なコードを奨励するTDDの導入を行いました。</li>
 </ul>
-<h2 id="110">1.1.0</h2>
+<h2 id="120-2017年6月">1.2.0 (2017年6月)</h2>
 <ul>
-<li>新しい変数<code>tealium_event_type</code>を追加しました</li>
+<li>データソースを追加しました。</li>
+<li>新しい変数<code>tealium_datasource</code>を追加しました。</li>
+<li>永続的なファイル名を<code>account.profile.data</code>に変更しました（以前のバージョンからアップグレードする場合、ファイルはもうアクセスできません）。</li>
+<li>ユニットテストのバグ修正を行いました。</li>
+</ul>
+<h2 id="110-2017年2月">1.1.0 (2017年2月)</h2>
+<ul>
+<li>新しい変数<code>tealium_event_type</code>を追加しました。</li>
 <li>新しい主要な<code>track</code>メソッドとして<code>track(type, title, data, completion)</code>を追加しました。利用可能なタイプは以下の通りです：
 <ul>
 <li><code>activity</code></li>
@@ -174,18 +180,18 @@
 <li><code>view</code></li>
 </ul>
 </li>
-<li><code>DispatchCallback</code>を更新して、<code>encodedUrl -&gt; ( boolean, map&lt;String, Object&gt;, error)</code>の代わりに情報辞書を返すようにしました</li>
-<li>便利なリトライ<code>track(string, callBack)</code>の削除</li>
+<li><code>DispatchCallback</code>を更新して、単に<code>encodedUrl -&gt; ( boolean, map&lt;String, Object&gt;, error)</code>ではなく、情報辞書を返すようにしました。</li>
+<li>便利な再試行<code>track(string, callBack)</code>の削除を行いました。</li>
 </ul>
-<h2 id="101">1.0.1</h2>
+<h2 id="101-2016年9月">1.0.1 (2016年9月)</h2>
 <ul>
-<li>バグ修正 - <code>LogLevel</code>列挙型を公開APIに変換しました</li>
+<li>バグ修正 - <code>LogLevel</code>列挙型を公開APIに変換しました。</li>
 </ul>
 <h2 id="100-初期">1.0.0 (初期)</h2>
 <ul>
 <li>すべてのディスパッチに対してTealiumのユニバーサルデータソースを追加しました：
 <ul>
-<li><code>event_name</code> (遷移期 - 廃止予定)</li>
+<li><code>event_name</code> (遷移的 - 廃止予定)</li>
 <li><code>tealium_account</code></li>
 <li><code>tealium_environment</code></li>
 <li><code>tealium_event</code></li>
@@ -244,7 +250,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月15日
+          <p>最終更新日 ::  2024年June月27日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -258,12 +264,13 @@
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#132" href="javascript:void(0)">1.3.2</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#131" href="javascript:void(0)">1.3.1</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#130" href="javascript:void(0)">1.3.0</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#120" href="javascript:void(0)">1.2.0</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#110" href="javascript:void(0)">1.1.0</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#101" href="javascript:void(0)">1.0.1</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#140-2024%E5%B9%B46%E6%9C%88" href="javascript:void(0)">1.4.0 (2024年6月)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#132-2023%E5%B9%B41%E6%9C%88" href="javascript:void(0)">1.3.2 (2023年1月)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#131-2021%E5%B9%B42%E6%9C%88" href="javascript:void(0)">1.3.1 (2021年2月)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#130-2019%E5%B9%B42%E6%9C%88" href="javascript:void(0)">1.3.0 (2019年2月)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#120-2017%E5%B9%B46%E6%9C%88" href="javascript:void(0)">1.2.0 (2017年6月)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#110-2017%E5%B9%B42%E6%9C%88" href="javascript:void(0)">1.1.0 (2017年2月)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#101-2016%E5%B9%B49%E6%9C%88" href="javascript:void(0)">1.0.1 (2016年9月)</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#100-%E5%88%9D%E6%9C%9F" href="javascript:void(0)">1.0.0 (初期)</a></li>
               </nav>
   </aside></nav>
