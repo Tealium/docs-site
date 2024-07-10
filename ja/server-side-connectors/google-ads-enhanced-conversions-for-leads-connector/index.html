@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Google Ads Enhanced Conversions for Leads コネクタ設定ガイド | サーバーサイドコネクタ |Tealiumドキュメント</title>
+    <title>Google Ads Enhanced Conversions for Leads コネクタ構成ガイド | サーバーサイドコネクタ |Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -186,7 +186,7 @@
         <a href="/ja/server-side-connectors/google-ads-enhanced-conversions-legacy-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-enhanced-conversions-legacy-connector">Google Ads Enhanced Conversions - レガシー</a></li><li data-level="1" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/google-ads-enhanced-conversions-for-leads-connector/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".google-ads-enhanced-conversions-for-leads-connector">Google Ads Enhanced Conversions for Leads</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/google-ads-enhanced-conversions-for-web-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-enhanced-conversions-for-web-connector">Google Ads Enhanced Conversions for Web</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side-connectors/google-ads-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-conversions-connector">Google Adsコンバージョン</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/google-ads-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-conversions-connector">Google Ads コンバージョン</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/google-ads-store-sales-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-store-sales-connector">Google Adsストアセールス</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/google-adwords-customer-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-adwords-customer-match-connector">Google AdWords Customer Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/google-analytics-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-analytics-connector">Google Analytics</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -383,7 +383,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Google Ads Enhanced Conversions for Leads コネクタ設定ガイド</h1>
+<h1 class="lh-title mt30 mb3">Google Ads Enhanced Conversions for Leads コネクタ構成ガイド</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -391,7 +391,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Google Ads Enhanced Conversions for Leads コネクタの設定方法について説明します。
+      この記事では、Google Ads Enhanced Conversions for Leads コネクタの構成方法について説明します。
     </p>
   
 </div>
@@ -417,34 +417,34 @@
 <h2 id="api情報">API情報</h2>
 <p>このコネクタは以下のベンダーAPIを使用します：</p>
 <ul>
-<li>API名: Google Ads API</li>
-<li>APIバージョン: v15</li>
-<li>APIエンドポイント: <code>https://googleads.googleapis.com/</code></li>
-<li>ドキュメンテーション: <a href="https://developers.google.com/google-ads/api/docs/conversions/upload-identifiers">Google Ads API: Enhanced Conversions For Leadsのアップロード</a></li>
+<li>API名：Google Ads API</li>
+<li>APIバージョン：v17</li>
+<li>APIエンドポイント：<code>https://googleads.googleapis.com/</code></li>
+<li>ドキュメンテーション：<a href="https://developers.google.com/google-ads/api/docs/conversions/upload-identifiers">Google Ads API: Enhanced Conversions For Leadsのアップロード</a></li>
 </ul>
 <h2 id="バッチ制限">バッチ制限</h2>
 <p>このコネクタは、ベンダーへの大量のデータ転送をサポートするためにバッチリクエストを使用します。詳細は、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
-<li>リクエストの最大数: 2000</li>
-<li>最も古いリクエストからの最大時間: 10分</li>
-<li>リクエストの最大サイズ: 2 MB</li>
+<li>リクエストの最大数：2000</li>
+<li>最古のリクエストからの最大時間：10分</li>
+<li>リクエストの最大サイズ：2 MB</li>
 </ul>
 <h3 id="同意">同意</h3>
-<p>コネクタはデフォルトで<code>adUserData</code>に<code>GRANTED</code>の値を送信します。デフォルトを上書きするには、関連するEventStream属性を<code>Ad User Data Consent</code>にマップし、値を<code>DENIED</code>に設定します。</p>
-<h2 id="設定の構成">設定の構成</h2>
+<p>コネクタはデフォルトで<code>adUserData</code>に<code>GRANTED</code>の値を送信します。デフォルトを上書きするには、関連するEventStream属性を<code>Ad User Data Consent</code>にマップし、値を<code>DENIED</code>に構成します。</p>
+<h2 id="構成の構成">構成の構成</h2>
 <p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/server-side/connectors/manage/">コネクタについて</a>の記事を参照してください。</p>
-<p>コネクタを追加した後、以下の設定を構成します：</p>
+<p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
 <li><strong>顧客ID</strong><br>
-必須: 管理する広告アカウントの顧客IDを提供します。</li>
+必須：管理する広告アカウントの顧客IDを提供します。</li>
 <li><strong>マネージャー顧客ID</strong><br>
-オプション: クライアント顧客にアクセスする場合、マネージャー顧客IDを設定する必要があります。</li>
+オプション：クライアント顧客にアクセスする場合、マネージャー顧客IDを構成する必要があります。</li>
 </ul>
-<p>コネクタの設定が完了したら、<strong>完了</strong>をクリックします。</p>
-<h2 id="アクション設定--パラメータとオプション">アクション設定 — パラメータとオプション</h2>
-<p><strong>続行</strong>をクリックしてコネクタのアクションを設定します。アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
-<p>以下のセクションでは、各アクションのパラメータとオプションの設定方法について説明します。</p>
-<h3 id="アクション--コンバージョンを送信">アクション — コンバージョンを送信</h3>
+<p>コネクタの構成が完了したら、<strong>完了</strong>をクリックします。</p>
+<h2 id="アクション構成---パラメータとオプション">アクション構成 - パラメータとオプション</h2>
+<p><strong>続行</strong>をクリックしてコネクタアクションを構成します。アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
+<p>以下のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
+<h3 id="アクション---コンバージョンを送信">アクション - コンバージョンを送信</h3>
 <h4 id="パラメータ">パラメータ</h4>
 <table>
 <thead>
@@ -460,7 +460,7 @@
 </tr>
 <tr>
 <td>メールアドレス（既にSHA256でハッシュ化済み）</td>
-<td>すでに空白をトリムし、小文字に変換し、SHA256でハッシュ化したメールアドレスを提供します。ハッシュ化する前に、<code>gmail.com</code>および<code>googlemail.com</code>のメールアドレスでドメイン名の前にあるすべてのピリオド（<code>.</code>）を削除します。</td>
+<td>すでに空白をトリムし、小文字に変換し、SHA256でハッシュ化したメールアドレスを提供します。<code>gmail.com</code>および<code>googlemail.com</code>のメールアドレスでドメイン名の前にあるすべてのピリオド（<code>.</code>）をハッシュ化する前に削除します。</td>
 </tr>
 <tr>
 <td>メールアドレス（SHA256ハッシュを適用）</td>
@@ -468,7 +468,7 @@
 </tr>
 <tr>
 <td>電話番号（既にSHA256でハッシュ化済み）</td>
-<td><a href="https://en.wikipedia.org/wiki/E.164">E164標準</a>に従った電話番号を提供します。この電話番号はすでに空白をトリムし、SHA256でハッシュ化されている必要があります。</td>
+<td><a href="https://en.wikipedia.org/wiki/E.164">E164標準</a>に従った電話番号を提供し、すでに空白をトリムし、SHA256でハッシュ化しています。</td>
 </tr>
 <tr>
 <td>電話番号（SHA256ハッシュを適用）</td>
@@ -476,7 +476,7 @@
 </tr>
 <tr>
 <td>gclid</td>
-<td>コンバージョンに関連するGoogleクリックID（gclid）。注：<code>gclid</code>と<code>user_identifiers</code>（メール/電話）をコンバージョンに提供すると、Google Adsは<code>user_identifiers</code>を無視します。</td>
+<td>コンバージョンに関連するGoogleクリックID（gclid）。注：コンバージョンに<code>gclid</code>と<code>user_identifiers</code>（メール/電話）を提供すると、Google Adsは<code>user_identifiers</code>を無視します。</td>
 </tr>
 <tr>
 <td>コンバージョン値</td>
@@ -512,23 +512,23 @@
 </tr>
 <tr>
 <td>ローカルトランザクションコスト</td>
-<td>全体のカートに対する無料配送やクーポン割引など、すべてのトランザクションレベルの割引の合計。</td>
+<td>全カートに対する無料配送やクーポン割引など、すべてのトランザクションレベルの割引の合計。</td>
 </tr>
 <tr>
 <td>商品ID</td>
-<td>アイテムのショッピングID。Merchant Centerの商品識別子と等しくなければなりません。複数のアイテムを追加するために配列タイプの属性を提供します。配列タイプの属性は等しい長さでなければなりません。単一値の属性を使用することもでき、各アイテムに適用されます。</td>
+<td>アイテムのショッピングID。Merchant Centerの商品識別子と等しくなければなりません。複数のアイテムを追加するために配列タイプの属性を提供します。配列タイプの属性は等しい長さでなければなりません。単一値の属性を使用し、各アイテムに適用することができます。</td>
 </tr>
 <tr>
 <td>数量</td>
-<td>売れたアイテムの数。複数のアイテムを追加するために配列タイプの属性を提供します。配列タイプの属性は等しい長さでなければなりません。単一値の属性を使用することもでき、各アイテムに適用されます。</td>
+<td>売れたアイテムの数。複数のアイテムを追加するために配列タイプの属性を提供します。配列タイプの属性は等しい長さでなければなりません。単一値の属性を使用し、各アイテムに適用することができます。</td>
 </tr>
 <tr>
 <td>単価</td>
-<td>税金、送料、および任意のトランザクションレベルの割引を除いた単価。複数のアイテムを追加するために配列タイプの属性を提供します。配列タイプの属性は等しい長さでなければなりません。単一値の属性を使用することもでき、各アイテムに適用されます。</td>
+<td>税金、送料、および任意のトランザクションレベルの割引を除いた単価。複数のアイテムを追加するために配列タイプの属性を提供します。配列タイプの属性は等しい長さでなければなりません。単一値の属性を使用し、各アイテムに適用することができます。</td>
 </tr>
 <tr>
 <td>コンバージョンアクションオーバーライド</td>
-<td>（オプション）コンバージョンアクションIDを提供して、<strong>必須</strong>セクションのコンバージョンアクションを上書きします。このパラメータを使用すると、EventStream変数を使用してコンバージョンアクションIDを入力できます。コンバージョンアクションIDを見つけるには、Google Adsダッシュボードに移動し、コンバージョンをクリックします。コンバージョンアクションIDは、ウェブサイトURLの<code>ctId</code>クエリパラメータの値です。例えば、URLが<code>https://ads.google.com/aw/conversions/detail?ctId=987654321</code>の場合、コンバージョンアクションIDは<code>987654321</code>です。</td>
+<td>（オプション）コンバージョンアクションIDを提供して、<strong>必須</strong>セクションのコンバージョンアクションを上書きします。このパラメータを使用すると、EventStream変数を使用してConversion Action IDを入力することができます。Conversion Action IDを見つけるには、Google Adsダッシュボードに移動し、コンバージョンをクリックします。Conversion Action IDは、ウェブサイトURLの<code>ctId</code>クエリパラメータの値です。例えば、URLが<code>https://ads.google.com/aw/conversions/detail?ctId=987654321</code>の場合、Conversion Action IDは<code>987654321</code>です。</td>
 </tr>
 </tbody>
 </table>
@@ -610,9 +610,9 @@
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api%E6%83%85%E5%A0%B1" href="javascript:void(0)">API情報</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%90%E3%83%83%E3%83%81%E5%88%B6%E9%99%90" href="javascript:void(0)">バッチ制限</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E6%84%8F" href="javascript:void(0)">同意</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AD%E5%AE%9A%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">設定の構成</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E8%A8%AD%E5%AE%9A--%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション設定 — パラメータとオプション</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">アクション — コンバージョンを送信</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成の構成</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90---%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 - パラメータとオプション</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">アクション - コンバージョンを送信</a></li>
               </nav>
   </aside></nav>
 

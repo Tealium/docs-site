@@ -183,7 +183,6 @@
         <a href="/server-side-connectors/google-ad-manager-audience-integration-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ad-manager-audience-integration-connector">Google Ad Manager Audience Integration</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-ads-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-conversions-connector">Google Ads Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-ads-customer-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-customer-match-connector">Google Ads Customer Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/google-ads-enhanced-conversions-legacy-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-enhanced-conversions-legacy-connector">Google Ads Enhanced Conversions - Legacy</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-ads-enhanced-conversions-for-leads-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-enhanced-conversions-for-leads-connector">Google Ads Enhanced Conversions for Leads</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-ads-enhanced-conversions-for-web-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-enhanced-conversions-for-web-connector">Google Ads Enhanced Conversions for Web</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/google-ads-store-sales-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-store-sales-connector">Google Ads Store Sales</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -297,6 +296,7 @@
         <a href="/server-side-connectors/smartsurvey-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".smartsurvey-connector">SmartSurvey</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/snapchat-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-audience-match-connector">Snapchat Audience Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/snapchat-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-conversions-connector">Snapchat Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/snowflake-streaming-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snowflake-streaming-connector">Snowflake Streaming Connector</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/sparkpost-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".sparkpost-connector">SparkPost</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/splunk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".splunk-connector">Splunk</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/swrve-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".swrve-app-events-connector">Swrve App Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -411,7 +411,7 @@
 <li><strong>User-Defined Event</strong> - Add any additional events that you’ve defined for the purpose of audience targeting. Unique events are not available for conversion reporting.</li>
 </ul>
 <h2 id="deduplication">Deduplication</h2>
-<p>When redundant implementations are put into place, (for example, the Pinterest Conversion API and <a href="/client-side-tags/pinterest-tag/">Pinterest Tag</a>, deduplication is required to avoid double-counting of a single event when it is sent through both solutions. By using deduplication, advertisers can expect more conversions being attributed than if the connector or tag solution are used independently.</p>
+<p>When redundant implementations are put into place (for example, the Pinterest Conversion API and <a href="/client-side-tags/pinterest-tag/">Pinterest Tag</a>), deduplication is required to avoid double-counting of a single event when it is sent through both solutions. By using deduplication, advertisers can expect more conversions being attributed than if the connector or tag solution are used independently.</p>
 <h3 id="deduplication-for-pinterest-tag-and-pinterest-conversions-api">Deduplication for Pinterest Tag and Pinterest Conversions API</h3>
 <p>The <a href="/client-side-tags/pinterest-tag/">Pinterest Tag</a> and Pinterest Conversion API use the Event ID for deduplication. Ensure this value is included when multiple sources are used to track conversion data. To find your Event IDs, complete the following steps:</p>
 <ol>
@@ -616,11 +616,11 @@
 </tr>
 <tr>
 <td>External ID (already SHA256 hashed)</td>
-<td>Provide an external ID which has already been whitespace trimmed and SHA256 hashed.</td>
+<td>Provide one or more external IDs, already whitespace trimmed and SHA256 hashed, and formatted as an array if there are multiple External IDs. For more information, see <a href="https://developers.pinterest.com/docs/api-features/conversion-best-practices/#what-is-an-external-id">Pinterest: What is an External ID?</a>.</td>
 </tr>
 <tr>
 <td>External ID (apply SHA256 hash)</td>
-<td>Provide a plain text external ID and the connector will whitespace trim and hash this value using SHA256 hash.</td>
+<td>Provide one or more plain text external IDs and the connector will whitespace trim and hash these values using SHA256 hash. If you provide multiple External IDs, format them as an array.</td>
 </tr>
 <tr>
 <td>Click ID</td>
@@ -696,7 +696,7 @@
 </tr>
 <tr>
 <td>WiFi</td>
-<td>Whether the event occurred when the user device was connected to wifi.</td>
+<td>Whether the event occurred when the user device was connected to WiFi.</td>
 </tr>
 <tr>
 <td>Language</td>
@@ -772,7 +772,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 20, 2024 
+          <p>This page was last updated:  July 8, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

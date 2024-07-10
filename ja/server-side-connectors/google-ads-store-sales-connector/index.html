@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -186,7 +186,7 @@
         <a href="/ja/server-side-connectors/google-ads-enhanced-conversions-legacy-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-enhanced-conversions-legacy-connector">Google Ads Enhanced Conversions - レガシー</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/google-ads-enhanced-conversions-for-leads-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-enhanced-conversions-for-leads-connector">Google Ads Enhanced Conversions for Leads</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/google-ads-enhanced-conversions-for-web-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-enhanced-conversions-for-web-connector">Google Ads Enhanced Conversions for Web</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side-connectors/google-ads-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-conversions-connector">Google Adsコンバージョン</a></li><li data-level="1" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/google-ads-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-ads-conversions-connector">Google Ads コンバージョン</a></li><li data-level="1" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/google-ads-store-sales-connector/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".google-ads-store-sales-connector">Google Adsストアセールス</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/google-adwords-customer-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-adwords-customer-match-connector">Google AdWords Customer Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/google-analytics-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".google-analytics-connector">Google Analytics</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -398,10 +398,10 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="api情報">API情報</h2>
-<p>このコネクタは、以下のベンダーAPIを使用します：</p>
+<p>このコネクタは以下のベンダーAPIを使用します：</p>
 <ul>
 <li>API名：Google Ads API</li>
-<li>APIバージョン：v14</li>
+<li>APIバージョン：v17</li>
 <li>APIエンドポイント：<code>https://googleads.googleapis.com/</code></li>
 <li>ドキュメンテーション：<a href="https://developers.google.com/google-ads/api/docs/start">Google Ads API</a></li>
 </ul>
@@ -461,25 +461,36 @@
 <td>コンバージョンアクション</td>
 <td>コンバージョンアクションは、<code>STORE_SALES</code>または<code>STORE_SALES_DIRECT_UPLOAD</code>のタイプでなければなりません。</td>
 </tr>
+</tbody>
+</table>
+<h5 id="ユーザー識別子">ユーザー識別子</h5>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>住所情報：国コード</td>
-<td>ユーザーの住所の国コードをISO-3166-1 alpha-2形式の2文字で使用します。</td>
+<td>ユーザーの住所に使用される2文字のISO-3166-1 alpha-2形式の国コード。</td>
 </tr>
 <tr>
 <td>住所情報：名（すでにSHA256でハッシュ化されている）</td>
-<td>すでに空白をトリムし、小文字にし、SHA256でハッシュ化されたユーザーの名前を提供します。</td>
+<td>すでに空白を削除し、小文字に変換し、SHA256でハッシュ化されたユーザーの名前を提供します。</td>
 </tr>
 <tr>
 <td>住所情報：名（SHA256ハッシュを適用）</td>
-<td>ユーザーのプレーンテキストの名前を提供し、コネクタはこの値を空白トリム、小文字化、SHA256ハッシュ化します。</td>
+<td>ユーザーのプレーンテキストの名前を提供し、コネクタはこの値を空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>住所情報：姓（すでにSHA256でハッシュ化されている）</td>
-<td>すでに空白をトリムし、小文字にし、SHA256でハッシュ化されたユーザーの姓を提供します。</td>
+<td>すでに空白を削除し、小文字に変換し、SHA256でハッシュ化されたユーザーの姓を提供します。</td>
 </tr>
 <tr>
 <td>住所情報：姓（SHA256ハッシュを適用）</td>
-<td>ユーザーのプレーンテキストの姓を提供し、コネクタはこの値を空白トリム、小文字化、SHA256ハッシュ化します。</td>
+<td>ユーザーのプレーンテキストの姓を提供し、コネクタはこの値を空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>住所情報：郵便番号</td>
@@ -487,31 +498,42 @@
 </tr>
 <tr>
 <td>メールアドレス（すでにSHA256でハッシュ化されている）</td>
-<td>すでに空白をトリムし、小文字にし、SHA256でハッシュ化されたユーザーのメールアドレスを提供します。</td>
+<td>すでに空白を削除し、小文字に変換し、SHA256でハッシュ化されたユーザーのメールアドレスを提供します。</td>
 </tr>
 <tr>
 <td>メールアドレス（SHA256ハッシュを適用）</td>
-<td>ユーザーのプレーンテキストのメールアドレスを提供し、コネクタはこの値を空白トリム、小文字化、SHA256ハッシュ化します。</td>
+<td>ユーザーのプレーンテキストのメールアドレスを提供し、コネクタはこの値を空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>電話番号（すでにSHA256でハッシュ化されている）</td>
-<td>すでに空白をトリムし、SHA256でハッシュ化されたユーザーの電話番号を提供します。</td>
+<td>すでに空白を削除し、SHA256でハッシュ化されたユーザーの電話番号を提供します。</td>
 </tr>
 <tr>
 <td>電話番号（SHA256ハッシュを適用）</td>
-<td>ユーザーのプレーンテキストの電話番号を提供し、コネクタはこの値を空白トリム、SHA256ハッシュ化します。</td>
+<td>ユーザーのプレーンテキストの電話番号を提供し、コネクタはこの値を空白を削除し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
-<td>第三者ユーザーID</td>
-<td>第三者が割り当てたユーザーID。</td>
+<td>サードパーティユーザーID</td>
+<td>サードパーティに割り当てられたユーザーID。</td>
 </tr>
+</tbody>
+</table>
+<h5 id="トランザクションデータ">トランザクションデータ</h5>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>トランザクション日時</td>
-<td>（必須）トランザクションが発生したタイムスタンプ。形式：<code>YYYY-MM-DD HH:MM:SS[+/-HH:MM]</code>、ここで<code>[+/-HH:MM]</code>はUTCからのオプションのタイムゾーンオフセットです。</td>
+<td>（必須）トランザクションが発生したタイムスタンプ。形式：<code>YYYY-MM-DD HH:MM:SS[+/-HH:MM]</code>、ここで<code>[+/-HH:MM]</code>はUTCからのオプションのタイムゾーンオフセット。</td>
 </tr>
 <tr>
 <td>トランザクション金額</td>
-<td>（必須）トランザクション金額をマイクロ単位で、ここで100万は1通貨単位に相当します。</td>
+<td>（必須）トランザクション金額（マイクロ単位）。1,000,000が1通貨単位に相当します。</td>
 </tr>
 <tr>
 <td>通貨コード</td>
@@ -519,7 +541,7 @@
 </tr>
 <tr>
 <td>トランザクションアップロード比率</td>
-<td>（必須）アップロードされたセールスと顧客との全体のセールスとの比率。この値は0と1の間（0を除く）でなければなりません。例えば、顧客と関連付けることができるセールスの半分をアップロードする場合、この値は0.5になります。</td>
+<td>（必須）顧客と関連付けられた全体の売上に対するアップロードされた売上の比率。この値は0と1の間（0を除く）でなければなりません。例えば、顧客と関連付けられる売上の半分をアップロードする場合、この値は0.5になります。</td>
 </tr>
 <tr>
 <td>トランザクション注文ID</td>
@@ -535,11 +557,11 @@
 </tr>
 <tr>
 <td>ストアコード</td>
-<td>Googleに以前にアップロードされたユニークなストアID。</td>
+<td>事前にGoogleにアップロードされたユニークなストアID。</td>
 </tr>
 <tr>
 <td>アイテムID</td>
-<td>製品のユニークな識別子。これは、Merchant CenterのアイテムIDまたはGTIN（Global Trade Item Number）のいずれかになります。</td>
+<td>製品のユニークな識別子。Merchant CenterのアイテムIDまたはGTIN（Global Trade Item Number）のいずれかになります。</td>
 </tr>
 <tr>
 <td>数量</td>
@@ -547,15 +569,35 @@
 </tr>
 <tr>
 <td>国コード</td>
-<td>アイテムがアップロードされているフィードに関連付けられた国のCommon Locale Data Repository（CLDR）の地域コード。</td>
+<td>アイテムがアップロードされるフィードに関連付けられた国のCommon Locale Data Repository（CLDR）地域コード。</td>
 </tr>
 <tr>
 <td>言語コード</td>
-<td>アイテムがアップロードされているフィードに関連付けられた言語のISO 639-1コード</td>
+<td>アイテムがアップロードされるフィードに関連付けられた言語のISO 639-1コード。</td>
 </tr>
 <tr>
 <td>マーチャントID</td>
 <td>Merchant CenterアカウントのID。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="同意">同意</h5>
+<p>コネクタは、<code>adUserData</code>と<code>adPersonalization</code>の同意について、デフォルトで<code>GRANTED</code>の値を送信します。デフォルトを上書きするには、<code>Ad User Data Consent</code>および/または<code>Ad Personalization Consent</code>に対して、<code>DENIED</code>の値を持つ関連するEventStream属性をマップします。</p>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ad User Data Consent</td>
+<td>広告ユーザーデータの同意。デフォルト値は<code>GRANTED</code>です。有効な値は<code>GRANTED</code>と<code>DENIED</code>です。</td>
+</tr>
+<tr>
+<td>Ad Personalization Consent</td>
+<td>広告のパーソナライゼーションの同意。デフォルト値は<code>GRANTED</code>です。有効な値は<code>GRANTED</code>と<code>DENIED</code>です。</td>
 </tr>
 </tbody>
 </table>
@@ -580,25 +622,36 @@
 <td>コンバージョンアクション</td>
 <td>コンバージョンアクションは、<code>STORE_SALES</code>または<code>STORE_SALES_DIRECT_UPLOAD</code>のタイプでなければなりません。</td>
 </tr>
+</tbody>
+</table>
+<h5 id="ユーザー識別子-1">ユーザー識別子</h5>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>住所情報：国コード</td>
-<td>ユーザーの住所の国コードをISO-3166-1 alpha-2形式の2文字で使用します。</td>
+<td>ユーザーの住所に使用される2文字のISO-3166-1 alpha-2形式の国コード。</td>
 </tr>
 <tr>
 <td>住所情報：名（すでにSHA256でハッシュ化されている）</td>
-<td>すでに空白をトリムし、小文字にし、SHA256でハッシュ化されたユーザーの名前を提供します。</td>
+<td>すでに空白を削除し、小文字に変換し、SHA256でハッシュ化されたユーザーの名前を提供します。</td>
 </tr>
 <tr>
 <td>住所情報：名（SHA256ハッシュを適用）</td>
-<td>ユーザーのプレーンテキストの名前を提供し、コネクタはこの値を空白トリム、小文字化、SHA256ハッシュ化します。</td>
+<td>ユーザーのプレーンテキストの名前を提供し、コネクタはこの値を空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>住所情報：姓（すでにSHA256でハッシュ化されている）</td>
-<td>すでに空白をトリムし、小文字にし、SHA256でハッシュ化されたユーザーの姓を提供します。</td>
+<td>すでに空白を削除し、小文字に変換し、SHA256でハッシュ化されたユーザーの姓を提供します。</td>
 </tr>
 <tr>
 <td>住所情報：姓（SHA256ハッシュを適用）</td>
-<td>ユーザーのプレーンテキストの姓を提供し、コネクタはこの値を空白トリム、小文字化、SHA256ハッシュ化します。</td>
+<td>ユーザーのプレーンテキストの姓を提供し、コネクタはこの値を空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>住所情報：郵便番号</td>
@@ -606,47 +659,58 @@
 </tr>
 <tr>
 <td>メールアドレス（すでにSHA256でハッシュ化されている）</td>
-<td>すでに空白をトリムし、小文字にし、SHA256でハッシュ化されたユーザーのメールアドレスを提供します。</td>
+<td>すでに空白を削除し、小文字に変換し、SHA256でハッシュ化されたユーザーのメールアドレスを提供します。</td>
 </tr>
 <tr>
 <td>メールアドレス（SHA256ハッシュを適用）</td>
-<td>ユーザーのプレーンテキストのメールアドレスを提供し、コネクタはこの値を空白トリム、小文字化、SHA256ハッシュ化します。</td>
+<td>ユーザーのプレーンテキストのメールアドレスを提供し、コネクタはこの値を空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>電話番号（すでにSHA256でハッシュ化されている）</td>
-<td>すでに空白をトリムし、SHA256でハッシュ化されたユーザーの電話番号を提供します。</td>
+<td>すでに空白を削除し、SHA256でハッシュ化されたユーザーの電話番号を提供します。</td>
 </tr>
 <tr>
 <td>電話番号（SHA256ハッシュを適用）</td>
-<td>ユーザーのプレーンテキストの電話番号を提供し、コネクタはこの値を空白トリム、SHA256ハッシュ化します。</td>
+<td>ユーザーのプレーンテキストの電話番号を提供し、コネクタはこの値を空白を削除し、SHA256ハッシュを使用してハッシュ化します。</td>
 </tr>
 <tr>
 <td>第三者ユーザーID</td>
 <td>第三者が割り当てたユーザーID。</td>
 </tr>
+</tbody>
+</table>
+<h5 id="トランザクションデータ-1">トランザクションデータ</h5>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>トランザクション日時</td>
-<td>（必須）トランザクションが発生したタイムスタンプ。形式：<code>YYYY-MM-DD HH:MM:SS[+/-HH:MM]</code>、ここで<code>[+/-HH:MM]</code>はUTCからのオプションのタイムゾーンオフセットです。</td>
+<td>(必須) トランザクションが発生したタイムスタンプ。形式: <code>YYYY-MM-DD HH:MM:SS[+/-HH:MM]</code>、ここで <code>[+/-HH:MM]</code> はUTCからのオプションのタイムゾーンオフセット。</td>
 </tr>
 <tr>
 <td>トランザクション金額</td>
-<td>（必須）トランザクション金額をマイクロ単位で、ここで100万は1通貨単位に相当します。</td>
+<td>(必須) トランザクション金額（マイクロ単位）。1,000,000が1通貨単位に相当します。</td>
 </tr>
 <tr>
 <td>通貨コード</td>
-<td>（必須）ISO-4217の3文字形式のトランザクション通貨コード。</td>
+<td>(必須) ISO-4217形式の3文字のトランザクション通貨コード。</td>
 </tr>
 <tr>
 <td>トランザクションアップロード比率</td>
-<td>（必須）アップロードされたセールスと顧客との全体のセールスとの比率。この値は0と1の間（0を除く）でなければなりません。例えば、顧客と関連付けることができるセールスの半分をアップロードする場合、この値は0.5になります。</td>
+<td>(必須) アップロードされた売上の比率と顧客に関連する全体の売上の比率。この値は0から1の間でなければならず（0は除く）。例えば、顧客に関連付けられる売上の半分をアップロードする場合、この値は0.5になります。</td>
 </tr>
 <tr>
-<td>トランザクション注文ID</td>
-<td>トランザクションの注文ID。</td>
+<td>トランザクションオーダーID</td>
+<td>トランザクションのオーダーID。</td>
 </tr>
 <tr>
 <td>カスタムキー</td>
-<td>ストアセールスカスタム変数キーの名前。トランザクションに適用できる事前定義されたキーで、後でレポートのカスタムセグメンテーションに使用できます。</td>
+<td>ストアセールスのカスタム変数キーの名前。トランザクションに適用できる事前定義されたキーで、後でレポートのカスタムセグメンテーションに使用できます。</td>
 </tr>
 <tr>
 <td>カスタム値</td>
@@ -654,11 +718,11 @@
 </tr>
 <tr>
 <td>ストアコード</td>
-<td>Googleに以前にアップロードされたユニークなストアID。</td>
+<td>Googleに事前にアップロードされたユニークなストアID。</td>
 </tr>
 <tr>
 <td>アイテムID</td>
-<td>製品のユニークな識別子。これは、Merchant CenterのアイテムIDまたはGTIN（Global Trade Item Number）のいずれかになります。</td>
+<td>商品のユニークな識別子。これはMerchant CenterのアイテムIDまたはGTIN（Global Trade Item Number）のいずれかになります。</td>
 </tr>
 <tr>
 <td>数量</td>
@@ -666,15 +730,35 @@
 </tr>
 <tr>
 <td>国コード</td>
-<td>アイテムがアップロードされているフィードに関連付けられた国のCommon Locale Data Repository（CLDR）の地域コード。</td>
+<td>フィードにアップロードされたアイテムに関連する国のCommon Locale Data Repository (CLDR) 地域コード。</td>
 </tr>
 <tr>
 <td>言語コード</td>
-<td>アイテムがアップロードされているフィードに関連付けられた言語のISO 639-1コード</td>
+<td>フィードにアップロードされたアイテムに関連する言語のISO 639-1コード</td>
 </tr>
 <tr>
 <td>マーチャントID</td>
 <td>Merchant CenterアカウントのID。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="同意-1">同意</h5>
+<p>コネクタは、<code>adUserData</code>と<code>adPersonalization</code>の同意について、デフォルトで<code>GRANTED</code>の値を送信します。デフォルトを上書きするには、<code>Ad User Data Consent</code>および/または<code>Ad Personalization Consent</code>に対して<code>DENIED</code>の値を持つ関連するEventStream属性をマップします。</p>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ad User Data Consent</td>
+<td>広告ユーザーデータの同意。デフォルト値は<code>GRANTED</code>です。有効な値は<code>GRANTED</code>と<code>DENIED</code>です。</td>
+</tr>
+<tr>
+<td>Ad Personalization Consent</td>
+<td>広告のパーソナライゼーションの同意。デフォルト値は<code>GRANTED</code>です。有効な値は<code>GRANTED</code>と<code>DENIED</code>です。</td>
 </tr>
 </tbody>
 </table>
@@ -702,11 +786,11 @@
   <a href="/ja/server-side-connectors/google-ads-conversions-connector/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Google Adsコンバージョン "</title>
+      <title>"Google Ads コンバージョン "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>Google Adsコンバージョン</div>
+      <div>Google Ads コンバージョン</div>
     </section>
   </a>
   

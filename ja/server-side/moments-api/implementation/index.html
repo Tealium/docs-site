@@ -523,12 +523,12 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="仕組み">仕組み</h2>
-<p>Moments APIは、あなたのウェブサイトやアプリケーションに統合できるユニークなエンドポイントを作成します。</p>
-<p>以下の手順を完了して、<a href="/ja/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Tealium iQ Advanced JavaScript Code Extension</a>を使用してTealiumワークフローにMoments APIを実装します。次の例では、Fetch APIを使用してMoments APIから訪問者のデータをリクエストしますが、<code>XMLHttpRequest</code>などの他のJavaScriptオプションもサポートされています。</p>
-<h2 id="ステップ1-訪問者idを取得する">ステップ1: 訪問者IDを取得する</h2>
+<p>Moments APIは、ウェブサイトやアプリケーションに統合できるユニークなエンドポイントを作成します。</p>
+<p>以下の手順を完了して、<a href="/ja/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Tealium iQ Advanced JavaScript Code Extension</a>を使用してTealiumワークフローにMoments APIを実装します。次の例では、Fetch APIを使用してMoments APIから訪問のデータをリクエストしますが、<code>XMLHttpRequest</code>などの他のJavaScriptオプションもサポートされています。</p>
+<h2 id="ステップ1-訪問idを取得する">ステップ1: 訪問IDを取得する</h2>
 <p>Tealiumの<code>utag_main</code>クッキーから<code>v_id</code>を解析します。</p>
-<p>以下のコードを、<code>utag.js</code>のバージョンに応じて拡張機能にコピーします。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i><code>ignoreTapid</code>が<code>false</code>に設定されている場合は、このステップをスキップします。</p>
+<p>次のコードを、<code>utag.js</code>のバージョンに応じて拡張機能にコピーします。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><code>ignoreTapid</code>が<code>false</code>に構成されている場合は、このステップをスキップします。</p>
 <ul>
 <li><strong>タイトル</strong>: utag.jsクッキーから識別子を解析 [Moments API]</li>
 <li><strong>スコープ</strong>: プレローダー</li>
@@ -554,7 +554,7 @@
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_cookies</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">read_utag_cookies</span>();
 </span></span><span style="display:flex;"><span><span style="color:#75715e">//Tealium Visitor IDをメモリに保存
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">moments_identifier</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">cookies</span>[<span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#a6e22e">v_id</span><span style="color:#960050;background-color:#1e0010">’</span>] <span style="color:#f92672">||</span> <span style="color:#66d9ef">null</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">moments_identifier</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">utag_cookies</span>[<span style="color:#e6db74">&#34;v_id&#34;</span>] <span style="color:#f92672">||</span> <span style="color:#66d9ef">null</span>
 </span></span></code></pre></div><h3 id="utag-js-4-49-and-below"><code>utag.js</code> 4.49以下</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getCookie</span>(<span style="color:#a6e22e">cname</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cname</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;=&#34;</span>;
@@ -572,58 +572,61 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// utag_mainクッキーから訪問者IDを抽出
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// utag_mainクッキーから訪問IDを抽出
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_cookie</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">getCookie</span>(<span style="color:#e6db74">&#34;utag_main&#34;</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">//Tealium Visitor IDをメモリに保存
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">moments_identifer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">utag_cookie</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;v_id:&#34;</span>)[<span style="color:#ae81ff">1</span>].<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;$&#34;</span>)[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">moments_identifier</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">utag_cookie</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;v_id:&#34;</span>)[<span style="color:#ae81ff">1</span>].<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;$&#34;</span>)[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;&#34;</span>;
 </span></span></code></pre></div><h2 id="ステップ2-moments-apiを呼び出す">ステップ2: Moments APIを呼び出す</h2>
-<p>Moments APIエンドポイントをリクエストし、レスポンスデータをローカルストレージに保存して、オンサイトマーケティング活動やパーソナライゼーションに使用します。</p>
-<p>以下のテンプレートコードを別のAdvanced JavaScript拡張機能に追加し、あなたのアカウントとターゲットエンジンに合わせて更新します。このコードは、前の拡張機能で割り当てられた<code>moments_identifier</code>変数をAPIのURLエンドポイントの識別子パラメータにマッピングします。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>このコードが前のJavaScript拡張機能の後にロードされるように、<a href="/ja/iq-tag-management/getting-started/order-of-operations/">Order of Operations</a>に従ってください。</p>
+<p>Moments APIエンドポイントをリクエストし、レスポンスデータをローカル保存に保存して、オンサイトマーケティング活動やパーソナライゼーションに使用します。</p>
+<p>以下のテンプレートコードを別のAdvanced JavaScript拡張機能に追加し、アカウントとターゲットエンジンに合わせて更新します。このコードは、前の拡張機能で割り当てられた<code>moments_identifier</code>変数をAPIのURLエンドポイントの識別子パラメータにマッピングします。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>このコードが前のJavaScript拡張機能の後にロードされるように、<a href="/ja/iq-tag-management/getting-started/order-of-operations/">Order of Operations</a>を確認してください。</p>
 <ul>
 <li><strong>タイトル</strong>: [Moments API]</li>
 <li><strong>スコープ</strong>: プレローダー</li>
 <li><strong>タイプ</strong>: Advanced JavaScript</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">region</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;your_region&#34;</span>; <span style="color:#75715e">// 例: &#34;us&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">account</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;your_account&#34;</span>; <span style="color:#75715e">// Tealiumアカウントの名前
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">profile</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;your_profile&#34;</span>; <span style="color:#75715e">// あなたのTealiumプロファイルの名前 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">engine_id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;your_engine_id&#34;</span>; <span style="color:#75715e">// リクエストするエンジンID 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tealiumの実装にファーストパーティドメインを使用している場合はtrueに設定 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ignoreTapid</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span> ; 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// リクエストしたいエンジンIDを割り当てます
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">engine_id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;your_engine_id&#34;</span>; 
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 訪問者が見つからない場合のHTTP 404をfalseに設定 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">suppressNotFound</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// API URLを構築
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ignoreTapidとsuppressNotFoundはオプションのパラメータです
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">apiUrl</span> <span style="color:#f92672">=</span><span style="color:#e6db74">`https://personalization-api.</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">region</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.prod.tealiumapis.com/personalization/accounts/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">account</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/profiles/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">profile</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/engines/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">engine_id</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/visitors/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">moments_identifer</span><span style="color:#e6db74">}</span><span style="color:#e6db74">?ignoreTapid=</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">ignoreTapid</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&amp;suppressNotFound=</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">suppressNotFound</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tealiumの実装にファーストパーティドメインを使用している場合は、trueに構成します
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// var ignoreTapid = true ; 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 訪問が見つからない場合のHTTP 404をfalseに構成します
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// var suppressNotFound = true;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// APIのURLを構築します
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// この例ではオプションのパラメータは含まれていません
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 必要に応じてオプションのパラメータを追加します
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">apiUrl</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;MOMENTS_API_ENDPOINT_URL&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">moments_identifier</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Moments APIのレスポンスをlocalStorageに書き込む関数を追加
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 例: &#34;https://personalization-api.us-west.prod.tealiumapis.com/personalization/accounts/example/profiles/main/engines/abc123/visitors/&#34; + &#34;0123456789&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Moments APIのレスポンスをlocalStorageに書き込む関数を追加します
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">writeToLocalStorage</span>(<span style="color:#a6e22e">obj</span>, <span style="color:#a6e22e">engineId</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// localStorageのキーのプレフィックス
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">prefix</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`moments_</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">engineId</span><span style="color:#e6db74">}</span><span style="color:#e6db74">_`</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">prefix</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;moments_&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">engineId</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;_&#39;</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// オブジェクトのプロパティをlocalStorageに保存する関数
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">saveToLocalStorage</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span>) =&gt; {
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">setItem</span>(<span style="color:#a6e22e">prefix</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">value</span>));
 </span></span><span style="display:flex;"><span>    };
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// オブジェクトの各トップレベルのプロパティをループ
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// オブジェクトの各トップレベルのプロパティをループします
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">key</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">obj</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">hasOwnProperty</span>(<span style="color:#a6e22e">key</span>)) {
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">writeToLocalStorage</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">obj</span>[<span style="color:#a6e22e">key</span>]);
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">saveToLocalStorage</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">obj</span>[<span style="color:#a6e22e">key</span>]);
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// APIをフェッチ
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// APIをフェッチします
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">apiUrl</span>)
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; {
@@ -633,17 +636,17 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
 </span></span><span style="display:flex;"><span>    })
 </span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">data</span> =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// レスポンスデータを処理
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">data</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">length</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 例: データをlocalStorageに保存
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">saveToLocalStorage</span>(<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">engine_id</span>) 
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// レスポンスデータを処理します
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">data</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// データをlocalStorageに保存します。例えば、属性、バッジ、オーディエンスなどのグループに分けて保存します。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">writeToLocalStorage</span>(<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">engine_id</span>) 
 </span></span><span style="display:flex;"><span>            
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    })
-</span></span><span style="display:flex;"><span>    .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;There has been a problem with your fetch operation:&#39;</span>, <span style="color:#a6e22e">error</span>));
+</span></span><span style="display:flex;"><span>    .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Moments API error:&#39;</span>, <span style="color:#a6e22e">error</span>));
 </span></span><span style="display:flex;"><span><span style="color:#75715e">//
 </span></span></span></code></pre></div><h2 id="ステップ3-ワークフローに統合する">ステップ3: ワークフローに統合する</h2>
-<p>データを、あなたのユースケースに応じたオンサイトパフォーマンスまたはパーソナライゼーションベンダーと統合します。</p>
+<p>データを、使用ケースに応じてオンサイトパフォーマンスまたはパーソナライゼーションベンダーと統合します。</p>
 <p class="tip"><i class="fa fa-info-circle"></i>DNSリクエストプロセスを最適化するために、DNSプリフェッチを検討してみてください。詳細については、<a href="https://www.chromium.org/developers/design-documents/dns-prefetching/">The Chromium Projects &gt; DNS Prefetching</a>を参照してください。</p>
 
 </div>
@@ -705,7 +708,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年June月27日
+          <p>最終更新日 ::  2024年July月10日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -720,7 +723,7 @@
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%971-%E8%A8%AA%E5%95%8F%E8%80%85id%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B" href="javascript:void(0)">ステップ1: 訪問者IDを取得する</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%971-%E8%A8%AA%E5%95%8Fid%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B" href="javascript:void(0)">ステップ1: 訪問IDを取得する</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#utagjs-450" href="javascript:void(0)">utag.js 4.50&#43;</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#utagjs-449%E4%BB%A5%E4%B8%8B" href="javascript:void(0)">utag.js 4.49以下</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%972-moments-api%E3%82%92%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%99" href="javascript:void(0)">ステップ2: Moments APIを呼び出す</a></li>
