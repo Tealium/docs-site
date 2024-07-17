@@ -542,8 +542,41 @@
 
 });
 </code></pre><p>Change the code between the first and last lines of the default code to suit your needs.</p>
+<h2 id="track-function">track() function</h2>
+<p>Functions can use the global <code>track()</code> function to send an event to Tealium Collect. <code>track()</code> has two input parameters, as follows:</p>
+<ul>
+<li><code>data</code> object – The event data to be sent to Tealium Collect.</li>
+<li><code>config</code> object – Optional. Contains the following fields:
+<ul>
+<li><code>tealium_account</code> – Specifies the account name.</li>
+<li><code>tealium_profile</code> – Specifies the profile.</li>
+<li><code>tealium_datasource</code> – Specifies the datasource.<br>
+If the account, profile, and datasource fields are included in the <code>data</code> object, the <code>config</code> object is not required.</li>
+</ul>
+</li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Each function invocation can make a maximum of six calls to <code>track()</code>.</p>
+<p>The following example shows <code>track()</code> called with the <code>data</code> and <code>config</code> parameters:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">data</span>, {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">tealium_account</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">account</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">tealium_profile</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">profile</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">tealium_datasource</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;x3p4b7&#39;</span>
+</span></span><span style="display:flex;"><span>        })  
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Code to process the response goes here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        })
+</span></span></code></pre></div><p>The following example shows <code>track()</code> called with only the <code>data</code> parameter:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">track</span>(<span style="color:#a6e22e">data</span>)  
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Code to process the response goes here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>  })
+</span></span></code></pre></div><p>For a more detailed example for the <code>track()</code> function, see <a href="/server-side/functions/event-visitor-functions/v3-function-examples/#send-an-event-to-the-tealium-collect-http-api">Send an event to the Tealium Collect HTTP API</a>.</p>
 <h2 id="event-object">Event object</h2>
-<p>The <code>event</code> object is available when a function is triggered by the event feed and contains the event data.</p>
+<p>The <code>event</code> object is available for event functions and contains the event data.</p>
 <table>
 <thead>
 <tr>
@@ -707,7 +740,7 @@
 })
 </code></pre><p>The authentication toke is create when the authentication is added to the function. For information on adding authentication to a function, see <a href="/server-side/functions/event-visitor-functions/authentication/">Add authentication to an event or visitor function</a>.</p>
 <h2 id="visitor-object">Visitor object</h2>
-<p>The <code>visitor</code> object is available when a function is triggered by the audience feed and contains the visitor data.</p>
+<p>The <code>visitor</code> object is available for visitor functions and contains the visitor data.</p>
 <table>
 <thead>
 <tr>
@@ -935,7 +968,7 @@
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="visit-object">Visit object</h2>
-<p>The <code>visit</code> object is available when a function is triggered by the audience feed and contains the data for the current visit.</p>
+<p>The <code>visit</code> object is available for visitor functions and contains the data for the current visit.</p>
 <table>
 <thead>
 <tr>
@@ -1174,7 +1207,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 20, 2024 
+          <p>This page was last updated:  July 17, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1190,6 +1223,7 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#input-data" href="javascript:void(0)">Input data</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#activate-function" href="javascript:void(0)">activate() function</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#track-function" href="javascript:void(0)">track() function</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-object" href="javascript:void(0)">Event object</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-object" href="javascript:void(0)">Data object</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-object-example" href="javascript:void(0)">Event object example</a></li>
