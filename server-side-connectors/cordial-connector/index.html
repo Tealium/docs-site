@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "2",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -323,6 +323,7 @@
         <a href="/server-side-connectors/twitter-custom-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".twitter-custom-audiences-connector">Twitter Custom Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/userlist-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".userlist-connector">Userlist</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/veeva-crm-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Veeva CRM</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/veritonic-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".veritonic-connector">Veritonic</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/vkontakte-ads-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".vkontakte-ads-connector">VKontakte Ads</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/webhook-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".webhook-connector-setup-guide">Webhook</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/webtrekk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".webtrekk-connector">Webtrekk</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -382,114 +383,509 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Action Name</strong></th>
-<th style="text-align:left"><strong>AudienceStream</strong></th>
-<th style="text-align:left"><strong>EventStream</strong></th>
+<th><strong>Action Name</strong></th>
+<th><strong>AudienceStream</strong></th>
+<th><strong>EventStream</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Update List Value of a User</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✓</td>
+<td>Upsert contact</td>
+<td>✓</td>
+<td>✓</td>
 </tr>
 <tr>
-<td style="text-align:left">Upsert Contact</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✗</td>
+<td>Add cart to contact</td>
+<td>✗</td>
+<td>✓</td>
 </tr>
 <tr>
-<td style="text-align:left">Contact Activities</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✗</td>
+<td>Record contact activity (event)</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Add or delete a contact from an account list</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Create a new order</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send notification</td>
+<td>✓</td>
+<td>✓</td>
 </tr>
 </tbody>
 </table>
+<h2 id="api-information">API Information</h2>
+<p>This connector uses the following vendor API:</p>
+<ul>
+<li>API Name: Cordial API</li>
+<li>API Version: v1.0</li>
+<li>Documentation: <a href="https://support.cordial.com/hc/en-us/categories/12092749097741-Developer-resources">Cordial API</a></li>
+</ul>
 <h2 id="configure-settings">Configure Settings</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
+<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>API key</strong><br>
-Cordial uses HTTP Basic Authentication (BA). From within the Cordial platform, you can generate an encoded API key for your account. This key is then used as the <code>username</code> for your BA credentials.<br>
-For more information, see <a href="https://support.cordial.com/hc/en-us/articles/203885498-RESTful-API-Summary-and-Usage">RESTful API Summary and Usage</a> in the Cordial documentation.</li>
+<li><strong>API Key</strong><br>
+Cordial uses HTTP Basic Authentication (BA). From within the Cordial platform, you can generate an encoded API key for your account. This key is then used as the <code>username</code> for your BA credentials. For more information, see <a href="https://support.cordial.com/hc/en-us/articles/203885498-RESTful-API-summary-and-usage">RESTful API Summary and Usage</a>.</li>
+<li><strong>Path-URL</strong><br>
+Select one of the following Path URLs or type it manually.
+<ul>
+<li><code>https://api.cordial.io/v2/</code> - Use this URL if your admin panel URL is <code>https://admin.cordial.io/</code>.</li>
+<li><code>https://api.usw2.cordial.io/v2/</code> - Use this URL if your admin panel URL is <code>https://usw2.admin.cordial.io/</code>.</li>
+</ul>
+</li>
 </ul>
 <p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
 <h2 id="action-settings--parameters-and-options">Action Settings — Parameters and Options</h2>
 <p>Click <strong>Continue</strong> to configure the connector actions. Enter in a name for the action and then select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
-<h3 id="action--update-list-value-of-a-user">Action — Update List Value of a User</h3>
+<h3 id="action---upsert-contact">Action - Upsert contact</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Parameter</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Primary Key</td>
-<td style="text-align:left">The <strong>Primary Key</strong> is defined by the contact&rsquo;s unique email address value.</td>
+<td>Contact Identifier Key</td>
+<td>The contact identifier key. For example, <code>email</code>, <code>cID</code>.</td>
 </tr>
 <tr>
-<td style="text-align:left">List Name</td>
-<td style="text-align:left">Name of the list the contact will be added to within the Cordial database. Note that the lists are created prior to updating the contact.<br> For more information about updating Cordial database contacts, see <a href="https://cordial.zendesk.com/hc/en-us/articles/203885958-Contacts">Contacts</a> in the Cordial documentation.</td>
+<td>Contact Identifier Value</td>
+<td>The contact identifier value.</td>
+</tr>
+<tr>
+<td>Email Address</td>
+<td>Unique channel address to identify and reference the contact.</td>
+</tr>
+<tr>
+<td>Subscribe Status</td>
+<td>Promotional messages will not be sent unless set to <code>subscribed</code>. Default is <code>none</code>. Possible values: <code>none</code>, <code>subscribed</code> or <code>unsubscribed</code>.</td>
+</tr>
+<tr>
+<td>Suppress Triggers</td>
+<td>If <code>true</code>, suppresses message triggers that are based on updates to contact attribute values. Default is <code>true</code>.</td>
+</tr>
+<tr>
+<td>Force Subscribe</td>
+<td>If unsubscribed, this key must be used to update subscribe status to subscribed. Possible values: <code>true</code>, <code>false</code>.</td>
+</tr>
+<tr>
+<td>Invalid</td>
+<td>No email message will be sent unless set to <code>false</code>. Default is <code>false</code>. Possible values: <code>true</code>, <code>false</code>.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="action--upsert-contact">Action — Upsert Contact</h3>
+<h4 id="optional-parameters">Optional Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Account Lists</td>
+<td>Adds or removes the contact from a list. Possible values: true, false.</td>
+</tr>
+<tr>
+<td>String Parameters</td>
+<td>Adds a string attribute value when the attribute type is set as string.</td>
+</tr>
+<tr>
+<td>Number Parameters</td>
+<td>Adds a number attribute value when the attribute type is set as number.</td>
+</tr>
+<tr>
+<td>Date Parameters</td>
+<td>Adds a date attribute value when the attribute type is set as date.</td>
+</tr>
+<tr>
+<td>Geo Parameters</td>
+<td>Adds a geo attribute value when the attribute type is set as geo. Note that geo attributes contain following set schema of key names: <ul><li>Street Address</li><li>Street Address 2</li><li>City</li><li>State</li><li>Postal Code</li><li>Country ISO</li><li>Time Zone</li><li>Location</li><ul><li>Latitude</li><li>Longitude</li></ul></ul></td>
+</tr>
+<tr>
+<td>Array Parameters</td>
+<td>Adds array attribute values when the attribute type is set as array. The default behavior is to replace the array value with the provided one. An object specifying add/remove behavior can be specified to override the default. If the max items limit is exceeded (default is 25), newer values will replace the oldest values.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="action---add-cart-to-contact">Action - Add cart to contact</h3>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Parameter</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Email</td>
-<td style="text-align:left">Email address of the contact to upsert.</td>
+<td>Contact Identifier Key</td>
+<td>The contact identifier key. For example, <code>email</code>, <code>cID</code>.</td>
 </tr>
 <tr>
-<td style="text-align:left">Subscribed Status</td>
-<td style="text-align:left">(Optional) Set the subscription status to one of the following: <code>subscribed</code>, <code>unsubscribed</code>, <code>none</code>.</td>
+<td>Contact Identifier Value</td>
+<td>The contact identifier value.</td>
 </tr>
 <tr>
-<td style="text-align:left">Contact Attributes</td>
-<td style="text-align:left">Contact attributes to set or update for the user (string or number values). For list updates use boolean values. For example: <code>{list_name} : true</code>.</td>
+<td>Message Contact ID</td>
+<td>The message contact ID.</td>
+</tr>
+<tr>
+<td>Customer ID</td>
+<td>The customer ID.</td>
+</tr>
+<tr>
+<td>Link ID</td>
+<td>The link ID.</td>
+</tr>
+<tr>
+<td>Cart URL</td>
+<td>The cart URL.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="action--contact-activities">Action — Contact Activities</h3>
+<h4 id="cart-item-parameters">Cart Item Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product ID</td>
+<td>The item identifier.</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>The item name.</td>
+</tr>
+<tr>
+<td>SKU</td>
+<td>The item number.</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>The item category.</td>
+</tr>
+<tr>
+<td>Quantity</td>
+<td>The quantity in the cart.</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>The image names or paths. If item has more than one image the provided value will be split by comma (<code>,</code>).</td>
+</tr>
+<tr>
+<td>Item Price</td>
+<td>The price per item.</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>The item description.</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>The link to the item.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="action---record-contact-activity-event">Action - Record contact activity (event)</h3>
 <h4 id="parameters-2">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Parameter</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Action Name</td>
-<td style="text-align:left">Set the name of the action or activity to record for the user to one of the following: <code>click</code>, <code>open</code>, <code>send</code>, or any user defined actions.</td>
+<td>Contact Identifier Key</td>
+<td>The contact identifier key. For example, <code>email</code>, <code>cID</code>.</td>
 </tr>
 <tr>
-<td style="text-align:left">Contact Primary Key</td>
-<td style="text-align:left">The name of the primary key used to identify the user. For example: <code>email</code>.</td>
+<td>Contact Identifier Value</td>
+<td>The contact identifier value.</td>
 </tr>
 <tr>
-<td style="text-align:left">Contact Primary Key Value</td>
-<td style="text-align:left">The value of the primary key used to identify the user. For example: <code>user@test.com</code>.</td>
+<td>Action</td>
+<td>Defines a custom action to create, such as browse, order, cart, or any other custom action. The maximum length of the parameter is <code>40</code> characters. Note that reserved actions cannot be added via the <code>POST</code> method. For more information, see <a href="https://support.cordial.com/hc/en-us/articles/203885968-Contact-activities-events-API#reservedEvents">Contact activities (events) API</a></td>
 </tr>
 <tr>
-<td style="text-align:left">Action Properties</td>
-<td style="text-align:left">Additional data about the action or activity to record for the user.</td>
+<td>Action Timestamp</td>
+<td>Action timestamp. If undefined, the current date and time will be used. Date format is <code>ISO 8601</code> standard.</td>
 </tr>
 <tr>
-<td style="text-align:left">Action Timestamp</td>
-<td style="text-align:left">Timestamp of the action or activity. Cordial automatically populates the timestamp if not provided in the request.</td>
+<td>Properties</td>
+<td>An object of additional event attributes. The default maximum number of properties an event can have is <code>1,000</code>. Note that property keys consisting of numeric-only values (such as <code>57</code>) or keys containing a <code>dot</code> (such as <code>shoes.color</code>) are stripped.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="action---add-or-delete-a-contact-from-an-account-list">Action - Add or delete a contact from an account list</h3>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Account List</td>
+<td>Select account list or enter a list ID.</td>
+</tr>
+<tr>
+<td>Action</td>
+<td>Choose action <code>Add</code> or <code>Delete</code>.</td>
+</tr>
+<tr>
+<td>Contact Identifier Key</td>
+<td>The contact identifier key. For example, <code>email</code>, <code>cID</code>.</td>
+</tr>
+<tr>
+<td>Contact Identifier Value</td>
+<td>The contact identifier value.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="action---create-a-new-order">Action - Create a new order</h3>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contact Identifier Key</td>
+<td>The contact identifier key. For example, <code>email</code>, <code>cID</code>.</td>
+</tr>
+<tr>
+<td>Contact Identifier Value</td>
+<td>The contact identifier value.</td>
+</tr>
+<tr>
+<td>Order ID</td>
+<td>Unique identifier assigned for the order.</td>
+</tr>
+<tr>
+<td>Purchase Date</td>
+<td>A date value signifying the purchase data and time. Date format is <code>ISO 8601</code>.</td>
+</tr>
+<tr>
+<td>mcID</td>
+<td>Cordial ID that represents the account, contact and the message. Required to track revenue attribution to an email.</td>
+</tr>
+<tr>
+<td>msID</td>
+<td>Cordial ID that represents the message.</td>
+</tr>
+<tr>
+<td>Customer ID</td>
+<td>An ID value assigned by the eCommerce or CRM system.</td>
+</tr>
+<tr>
+<td>Link ID</td>
+<td>Cordial ID that represents the message and link. Required to track revenue attribution to a specific link.</td>
+</tr>
+<tr>
+<td>Total Amount</td>
+<td>Auto-calculated as the sum of each <code>item.amount</code>.</td>
+</tr>
+<tr>
+<td>Tax</td>
+<td>The amount of the tax.</td>
+</tr>
+<tr>
+<td>Shipping and Handling</td>
+<td>The amount charged for shipping and handling.</td>
+</tr>
+<tr>
+<td>Properties</td>
+<td>Key value pairs describing the properties of the order.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="shipping-address">Shipping Address</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Address</td>
+<td>The address.</td>
+</tr>
+<tr>
+<td>City</td>
+<td>The city.</td>
+</tr>
+<tr>
+<td>Country</td>
+<td>The country.</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>The name.</td>
+</tr>
+<tr>
+<td>Postal Code</td>
+<td>The postal code.</td>
+</tr>
+<tr>
+<td>State</td>
+<td>The state.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="billing-address">Billing Address</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Address</td>
+<td>The address.</td>
+</tr>
+<tr>
+<td>City</td>
+<td>The city.</td>
+</tr>
+<tr>
+<td>Country</td>
+<td>The country.</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>The name.</td>
+</tr>
+<tr>
+<td>Postal Code</td>
+<td>The postal code.</td>
+</tr>
+<tr>
+<td>State</td>
+<td>The state.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="item-parameters">Item Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product ID</td>
+<td>The item identifier.</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>The item name.</td>
+</tr>
+<tr>
+<td>SKU</td>
+<td>The item number.</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>The item category.</td>
+</tr>
+<tr>
+<td>Quantity</td>
+<td>The number of items purchased. Defaults to <code>1</code> if not passed.</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>The image names or paths. If item has more than one image the provided value will be split by comma (<code>,</code>).</td>
+</tr>
+<tr>
+<td>Item Price</td>
+<td>The price per item.</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>The item description.</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>The link to the item.</td>
+</tr>
+<tr>
+<td>Amount</td>
+<td>Auto-calculated as <code>qty</code> x <code>itemPrice</code>. If a value not equal to <code>qty</code> x <code>itemPrice</code> is passed, it is overwritten.</td>
+</tr>
+<tr>
+<td>Tags</td>
+<td>A comma separated array of values to describe the product. Only accepts alphanumeric characters or dashes.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="action---send-notification">Action - Send notification</h3>
+<h4 id="parameters-5">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Automation Template</td>
+<td>Select template or provide template ID.</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>The email.</td>
+</tr>
+<tr>
+<td>CID</td>
+<td>The contact ID.</td>
+</tr>
+<tr>
+<td>Identify By</td>
+<td>Specifies which identifier key in the request body should be used to look up the contact.</td>
+</tr>
+<tr>
+<td>External Variables</td>
+<td>The external variables. Supports templates.</td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td><ul><li>Provide template variables as external variables input. For more information, see <a href="/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a></li><li>Name nested template variables with the dot notation (For example, <code>items.name</code>).</li><li>Nested template variables are typically built from data layer list attributes.</li></ul></td>
+</tr>
+<tr>
+<td>Templates</td>
+<td><ul><li>Provide templates to be referenced in Parameters. For more information, see <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>.</li><li>Templates are injected by name with double curly braces into supported fields. For example, <code>{{SomeTemplateName&amp;}}</code>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -568,11 +964,15 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings--parameters-and-options" href="javascript:void(0)">Action Settings — Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--update-list-value-of-a-user" href="javascript:void(0)">Action — Update List Value of a User</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--upsert-contact" href="javascript:void(0)">Action — Upsert Contact</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--contact-activities" href="javascript:void(0)">Action — Contact Activities</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---upsert-contact" href="javascript:void(0)">Action - Upsert contact</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---add-cart-to-contact" href="javascript:void(0)">Action - Add cart to contact</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---record-contact-activity-event" href="javascript:void(0)">Action - Record contact activity (event)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---add-or-delete-a-contact-from-an-account-list" href="javascript:void(0)">Action - Add or delete a contact from an account list</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---create-a-new-order" href="javascript:void(0)">Action - Create a new order</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-notification" href="javascript:void(0)">Action - Send notification</a></li>
               </nav>
   </aside></nav>
 
@@ -835,6 +1235,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
