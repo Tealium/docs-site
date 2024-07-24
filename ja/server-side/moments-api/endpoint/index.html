@@ -516,7 +516,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、モーメントAPIエンドポイントについて説明します。
+      この記事では、モーメントAPIのエンドポイントについて説明します。
     </p>
   
 </div>
@@ -524,11 +524,11 @@
 <div class="prose nested-links" id="prose">
   <h2 id="仕組み">仕組み</h2>
 <p>モーメントAPIエンジンは、あなたの地域、アカウント、プロファイルに対してユニークなエンドポイントを作成します。各エンジンは、各エンドポイントにユニークなエンジンIDを割り当てます。</p>
-<p>訪問者のデータは、エンジンを有効にし、訪問者がアクティブなセッションをログに記録し、システム内でイベントを生成した後に利用可能になります。訪問者のデータをリクエストし、まだアクティブなセッションをログに記録していない場合、APIはデータを返しません。</p>
-<p>訪問者のデータを取得するには、<a href="/ja/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Tealium iQ Advanced JavaScript Code Extension</a>を設定して、<a href="/ja/server-side/moments-api/endpoint/">Moments API endpoint</a>にリクエストを行います。</p>
+<p>訪問のデータは、エンジンを有効にし、訪問がアクティブなセッションをログし、システム内でイベントを生成した後に利用可能になります。訪問のデータをリクエストし、まだアクティブなセッションをログしていない場合、APIはデータを返しません。</p>
+<p>訪問のデータを取得するには、<a href="/ja/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Tealium iQ Advanced JavaScript Code Extension</a>を構成して、モーメントAPIエンドポイントにリクエストを行います。</p>
 <h2 id="getメソッド">GETメソッド</h2>
 <p>GETメソッドを使用して、モーメントAPIエンジンで指定したオーディエンス、バッジ、属性データを取得します：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET  https://personalization-api.<span style="color:#f92672">{</span>REGION<span style="color:#f92672">}</span>.prod.tealiumapis.com/personalization/accounts/<span style="color:#f92672">{</span>ACCOUNT<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>PROFILE<span style="color:#f92672">}</span>/engines/<span style="color:#f92672">{</span>ENGINE_ID<span style="color:#f92672">}</span>/visitors/<span style="color:#f92672">{</span>IDENTIFIER<span style="color:#f92672">}</span>?ignoreTapid<span style="color:#f92672">={</span>IGNORE_TAPID<span style="color:#f92672">}</span>&amp;suppressNotFound<span style="color:#f92672">={</span>SUPPRESS_NOT_FOUND<span style="color:#f92672">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET  https://personalization-api.<span style="color:#f92672">{</span>REGION<span style="color:#f92672">}</span>.prod.tealiumapis.com/personalization/accounts/<span style="color:#f92672">{</span>ACCOUNT<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>PROFILE<span style="color:#f92672">}</span>/engines/<span style="color:#f92672">{</span>ENGINE_ID<span style="color:#f92672">}</span>/visitors/<span style="color:#f92672">{</span>IDENTIFIER<span style="color:#f92672">}</span>?suppressNotFound<span style="color:#f92672">={</span>SUPPRESS_NOT_FOUND<span style="color:#f92672">}</span>
 </span></span></code></pre></div><p>このコマンドは以下のパラメータを使用します：</p>
 <table>
 <thead>
@@ -542,23 +542,18 @@
 <tr>
 <td><code>identifier</code></td>
 <td>文字列<br>パスパラメータ</td>
-<td>Tealiumの匿名訪問者ID。<code>ignoreTapid</code>が<code>true</code>に設定されている場合は必須です。</td>
-</tr>
-<tr>
-<td><code>ignoreTapid</code></td>
-<td>ブール値<br>クエリパラメータ</td>
-<td>APIがTAPIDクッキーからの訪問者IDを使用するか、URLパスパラメータからの訪問者IDを使用するかを決定します。デフォルトは<code>false</code>です。 <ul><li><code>false</code> - APIはTAPIDクッキーからの訪問者ID値を使用します。</li><li><code>true</code> - APIはURLパスパラメータからの訪問者IDを使用します。</li></ul></td>
+<td>Tealiumの匿名訪問ID。</td>
 </tr>
 <tr>
 <td><code>suppressNotFound</code></td>
 <td>ブール値<br>クエリパラメータ</td>
-<td>訪問者が見つからない場合に返されるレスポンスタイプを決定します。デフォルトは<code>false</code>です。 <ul><li><code>true</code> - HTTP 200コードと空のレスポンスボディを返します。</li><li><code>false</code> - HTTP 404コードを返します。</li></ul></td>
+<td>訪問が見つからない場合の返答タイプを決定します。デフォルトは<code>false</code>です。 <ul><li><code>true</code> - HTTP 200コードと空のレスポンスボディを返します。</li><li><code>false</code> - HTTP 404コードを返します。</li></ul></td>
 </tr>
 </tbody>
 </table>
 <h2 id="オブジェクト">オブジェクト</h2>
-<p>モーメントAPIは、エンジン設定で指定したオーディエンス、バッジ、属性フィールドを含むJSONオブジェクトとして訪問者データを返します。</p>
-<p>訪問者の属性をIDまたは名前で返すように設定できます。以下にレスポンスボディの例を示します：</p>
+<p>モーメントAPIは、エンジン構成で指定したオーディエンス、バッジ、属性フィールドを含むJSONオブジェクトとして訪問データを返します。</p>
+<p>訪問の属性をIDまたは名前で返すように構成できます。以下のレスポンスボディの例を参照してください：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;audiences&#34;</span>: [
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;VIP&#34;</span>, 
@@ -633,7 +628,7 @@
 <td>✗</td>
 </tr>
 <tr>
-<td>タリー</td>
+<td>集計</td>
 <td>✗</td>
 </tr>
 <tr>
@@ -642,9 +637,9 @@
 </tr>
 </tbody>
 </table>
-<p>PIIとしてマークされた属性はサポートされていません。</p>
+<p>PIIとマークされた属性はサポートされていません。</p>
 <h2 id="ヘッダー">ヘッダー</h2>
-<p>モーメントAPIリクエストには以下のHTTPヘッダーが必要です：</p>
+<p>以下のHTTPヘッダーは、モーメントAPIリクエストで必要です：</p>
 <ul>
 <li><strong>Referer</strong> - ドメイン許可リストと比較される値。リファラと許可リストが一致しない場合、リクエストは拒否されます。
 <ul>
@@ -677,11 +672,11 @@
 </tr>
 <tr>
 <td>403</td>
-<td>モーメントAPIエンジンが有効になっていません。</td>
+<td>モーメントAPIエンジンが有効化されていません。</td>
 </tr>
 <tr>
 <td>404</td>
-<td>見つかりません。Tealium訪問者IDはデータベースにモーメントが保存されていません。</td>
+<td>見つかりません。Tealium訪問IDはデータベースにモーメントが保存されていません。</td>
 </tr>
 </tbody>
 </table>
@@ -745,7 +740,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年June月27日
+          <p>最終更新日 ::  2024年July月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

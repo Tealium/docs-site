@@ -189,8 +189,10 @@
         <a href="/ja/iq-tag-management/events/event-types/click-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".click-event">クリックイベント</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/events/event-types/scroll-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".scroll-event">スクロールイベント</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/events/event-types/hash-change-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".hash-change-event">ハッシュ変更イベント</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/events/event-types/form-submission-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".form-submission-event">フォーム送信イベント</a></li><li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/events/event-types/form-submission-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".form-submission-event">フォーム送信イベント</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/events/event-types/browser-history-change-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".browser-history-change-event">ブラウザ履歴変更イベント</a></li><li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/events/event-types/page-view-event/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".page-view-event">ページビューイベント</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/events/event-types/page-load-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".page-load-event">ページロードイベント</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/events/event-types/mouseover-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mouseover-event">マウスオーバーイベント</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/events/event-types/element-visibility-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".element-visibility-event">要素の可視性イベント</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
@@ -428,30 +430,31 @@
 
   
     <p class="f4 fw3 lh-copy">
-      ページビューイベントは、訪問者がページを閲覧するときにトラッキングデータを送信します。
+      ページビューイベントは、訪問がページを閲覧するときにトラッキングデータを送信します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="要件">要件</h2>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>ページビューイベントリスナーは現在非推奨です。現在のイベントリスナーについては、<a href="/ja/iq-tag-management/events/event-types/page-load-event/">ページロードイベントリスナー</a>を参照してください。</p>
+<h2 id="要件">要件</h2>
 <ul>
-<li>utag v4.38以降。<code>utag.js</code>テンプレートの更新についての詳細は、当社のナレッジベース記事<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">utag.jsの最新バージョンへの更新のベストプラクティス</a>をご覧ください。</li>
+<li>utag v4.38以降。<code>utag.js</code>テンプレートの更新についての詳細は、当社のナレッジベース記事<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">utag.jsの最新バージョンへの更新のベストプラクティス</a>を参照してください。</li>
 </ul>
-<h2 id="仕組み">仕組み</h2>
-<p>ページビューイベントは、訪問者がページを閲覧するときにトラッキングします。訪問者がアクションを実行すると、イベントリスナーはそのデータを既存のトラッキングコールに追加します。</p>
-<p class="tip"><i class="fa fa-info-circle"></i>この動作は、ページビューのペイロードを定義し、指定されたページまたはページが閲覧されたときにタグを発火するロードルールを持つ<a href="/ja/iq-tag-management/extensions/extensions-list/set-data-values-extension/">Set Data Values</a>拡張と似ています。</p>
-<p>イベントリスナーの追加方法についての詳細は、<a href="/ja/iq-tag-management/events/manage/">Manage events</a>をご覧ください。</p>
+<h2 id="動作方法">動作方法</h2>
+<p>ページビューイベントは、訪問がページを閲覧するときにトラッキングします。訪問がアクションを実行すると、イベントリスナーはそのデータを既存のトラッキング呼び出しに追加します。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>この動作は、ページビューのペイロードを定義し、指定されたページまたはページが閲覧されたときにタグを発火するロードルールを持つ<a href="/ja/iq-tag-management/extensions/extensions-list/set-data-values-extension/">データ値構成</a>拡張機能に似ています。</p>
+<p>イベントリスナーの追加方法についての詳細は、<a href="/ja/iq-tag-management/events/manage/">イベントの管理</a>を参照してください。</p>
 <h3 id="ユースケース">ユースケース</h3>
-<p class="tip"><i class="fa fa-info-circle"></i>このイベントリスナーは、すでに他のイベントリスナーを購読しているタグと一緒に使用します。</p>
-<p>訪問者がページを閲覧すると、ページビューイベントがタグを発火し、ページビューイベントの変数をタグのペイロードに含めるように、他のイベントとのOR関係でページビューイベントを追加します。</p>
-<h2 id="トラッキングイベント">トラッキングイベント</h2>
-<p>ページビューイベントは<code>utag.ut.merge()</code>関数を実行して、このページビューイベントを別のイベントとマージします。詳細については、<a href="/platforms/javascript/api/utility-functions/#utagutmerge">Utility functions</a>をご覧ください。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>このイベントリスナーは、すでに他のイベントリスナーに登録しているタグと一緒に使用します。</p>
+<p>訪問がページを閲覧すると、ページビューイベントがタグを発火し、ページビューイベントの変数をタグのペイロードに含めるように、他のイベントとのOR関係にページビューイベントを追加します。</p>
+<h2 id="イベントのトラッキング">イベントのトラッキング</h2>
+<p>ページビューイベントは、このページビューイベントを別のイベントとマージするための<code>utag.ut.merge()</code>関数を実行します。詳細については、<a href="/platforms/javascript/api/utility-functions/#utagutmerge">ユーティリティ関数</a>を参照してください。</p>
 <h2 id="イベントトリガー">イベントトリガー</h2>
 <p>イベントトリガーは、イベントリスナーがトラッキングする特定のアクションです。</p>
 <p>イベントのデフォルトはページビューイベントトリガーです。</p>
 <h2 id="イベントトリガー変数">イベントトリガー変数</h2>
-<p>イベントトリガー変数は、イベントリスナーがトラッキングコールと一緒に送信する値です。ページビューイベントには、以下のデフォルトのイベントトリガー変数があります：</p>
+<p>イベントトリガー変数は、イベントリスナーがトラッキング呼び出しと一緒に送信する値です。ページビューイベントには、以下のデフォルトのイベントトリガー変数があります：</p>
 <h3 id="ページビュー">ページビュー</h3>
 <table>
 <thead>
@@ -463,11 +466,11 @@
 <tbody>
 <tr>
 <td><code>tealium_event=&quot;page_view&quot;</code></td>
-<td>訪問者が指定されたページを閲覧しました。</td>
+<td>訪問が指定されたページを閲覧しました。</td>
 </tr>
 <tr>
 <td><code>iq_event_id</code></td>
-<td>イベントを送信したイベントリスナーのUID。</td>
+<td>イベントを送信したイベントリスナーのUIDです。</td>
 </tr>
 </tbody>
 </table>
@@ -497,14 +500,14 @@
 </div><div class="di mr3">
   
   
-  <a href="/ja/iq-tag-management/events/event-types/youtube-event/"
+  <a href="/ja/iq-tag-management/events/event-types/page-load-event/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"YouTubeイベント "</title>
+      <title>"ページロードイベント "</title>
       <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
     </svg>
    <section class="tr pl3">
-      <div>YouTubeイベント</div>
+      <div>ページロードイベント</div>
     </section>
   </a>
   
@@ -536,7 +539,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年April月11日
+          <p>最終更新日 ::  2024年July月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -551,9 +554,9 @@
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E6%96%B9%E6%B3%95" href="javascript:void(0)">動作方法</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9" href="javascript:void(0)">ユースケース</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">トラッキングイベント</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">イベントのトラッキング</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC" href="javascript:void(0)">イベントトリガー</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E5%A4%89%E6%95%B0" href="javascript:void(0)">イベントトリガー変数</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%9A%E3%83%BC%E3%82%B8%E3%83%93%E3%83%A5%E3%83%BC" href="javascript:void(0)">ページビュー</a></li>

@@ -151,17 +151,18 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="セットアップ">セットアップ</h2>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/ja/iq-tag-management/events/about/">イベントシステム</a>は、JQuery拡張などの以前のイベント追跡ソリューションを置き換えます。<a href="/ja/iq-tag-management/events/event-types/browser-history-change-event/">ブラウザ履歴変更</a>、<a href="/ja/iq-tag-management/events/event-types/page-load-event/">ページロード</a>、<a href="/ja/iq-tag-management/events/event-types/hash-change-event/">ハッシュ変更</a>イベントリスナーは、シングルページアプリケーションに特に有用です。</p>
+<h2 id="セットアップ">セットアップ</h2>
 <p>シングルページアプリケーション（SPA）では、ページが訪問ごとに <code>utag.js</code> を一度だけロードするため、自動的なページビュートラッキングの呼び出しを抑制し、アプリケーションがこれらの呼び出しを直接行うことができます。</p>
 <p>自動的なページトラッキングをオーバーライドするには、<code>utag.js</code> をロードする前にページに以下の行を追加します:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">utag_cfg_ovrd</span> <span style="color:#f92672">||</span> {};
 </span></span><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span>.<span style="color:#a6e22e">noview</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
 </span></span></code></pre></div><p>アプリケーションがロードされ（そして <code>utag.js</code> がロードされたら）、ページコード内で <code>utag.view()</code> トラッキング呼び出しをトリガーします。これらの呼び出しは通常、DOM-readyイベントやコンテンツビューのリフレッシュを引き起こすイベントでトリガーされます。<code>utag.js</code> の動作を調整するための利用可能な構成については、<a href="/platforms/javascript/settings/">こちら</a>をご覧ください。</p>
-<p>初期ページ着陸時に宣言された <code>utag_data</code> オブジェクトは、これらの呼び出しで再利用されません。初期ページ着陸からのデータを使用するには、再宣言して関数呼び出しで再度渡す必要があります。</p>
-<p>これらの呼び出し中には、グローバルおよびタグスコープの拡張が実行されます。プリローダーとDOM Ready拡張は、これらの呼び出し中には実行されません。</p>
+<p>初期ページ着陸時に宣言された <code>utag_data</code> オブジェクトは、これらの呼び出しで再利用されません。初期ページ着陸からのデータを使用するには、それを再宣言し、関数呼び出しで再度渡す必要があります。</p>
+<p>グローバルおよびタグスコープの拡張は、これらの呼び出し中に実行されます。プリローダーとDOM Ready拡張は、これらの呼び出し中には実行されません。</p>
 <h2 id="ビューの追跡">ビューの追跡</h2>
-<p>シングルページアプリケーションでのビューの追跡は、<a href="/platforms/javascript/api/tracking-functions/#utag-view"><code>utag.view()</code></a> 関数を使用して行います。</p>
-<p>以下の <code>utag.view()</code> 関数呼び出しは、キーと値のペアを使用してデータを渡す方法を示しています:</p>
+<p>シングルページアプリケーションでのビューの追跡は、<a href="/platforms/javascript/api/tracking-functions/#utag-view"><code>utag.view()</code></a>関数を使用して行います。</p>
+<p>以下の <code>utag.view()</code> 関数呼び出しは、キー-値ペアを使用してデータを渡す方法を示しています:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">view</span>({ <span style="color:#a6e22e">variable1</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;VARIABLE1 VALUE&#34;</span>, <span style="color:#a6e22e">variable2</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;VARIABLE2 VALUE&#34;</span>, <span style="color:#a6e22e">variable3</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;VARIABLE3 VALUE&#34;</span> });
 </span></span></code></pre></div><h3 id="例">例</h3>
 <p>以下は、訪問が &ldquo;政治&rdquo; を検索したコンテンツサイトの例です:</p>
@@ -172,9 +173,9 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;demo_event&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;View &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">name</span>
 </span></span><span style="display:flex;"><span>})
 </span></span></code></pre></div><h2 id="イベントの追跡">イベントの追跡</h2>
-<p>シングルページアプリケーションでのリンクとイベントの追跡は、<a href="/platforms/javascript/api/tracking-functions/#utag-view"><code>utag.link()</code></a> 関数を使用して行います。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>jQueryがインストールされている場合、<a href="/ja/iq-tag-management/extensions/extensions-list/jquery-onhandler-extension/">jQuery onHandler</a> 拡張を使用するオプションがあります。この拡張は、<code>utag.link()</code> および <code>utag.view()</code> 関数をトリガーする特定のイベントバインディングに対して構成可能です。これにより、トラッキングロジックをサイドコードにハードコーディングする必要がなくなります。</p>
-<p>以下の <code>utag.link()</code> 関数呼び出しは、キーと値のペアを使用してデータを渡す方法を示しています:</p>
+<p>シングルページアプリケーションでのリンクとイベントの追跡は、<a href="/platforms/javascript/api/tracking-functions/#utag-view"><code>utag.link()</code></a>関数を使用して行います。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>jQueryがインストールされている場合、<a href="/ja/iq-tag-management/extensions/extensions-list/jquery-onhandler-extension/">jQuery onHandler</a>拡張を使用するオプションがあります。この拡張は、<code>utag.link()</code> および <code>utag.view()</code> 関数をトリガーする特定のイベントバインディングに対して構成可能です。これにより、トラッキングロジックをサイドコードにハードコーディングすることを避けることができます。</p>
+<p>以下の <code>utag.link()</code> 関数呼び出しは、キー-値ペアを使用してデータを渡す方法を示しています:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">link</span>({ <span style="color:#a6e22e">variable1</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;VARIABLE1 VALUE&#39;</span>, <span style="color:#a6e22e">variable2</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;VARIABLE2 VALUE&#39;</span> });
 </span></span></code></pre></div><h3 id="例-1">例</h3>
 <p>以下は、ソーシャルメディアの共有アクションの追跡を示すコンテンツサイトの例です:</p>
@@ -296,7 +297,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月15日
+          <p>最終更新日 ::  2024年July月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

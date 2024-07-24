@@ -516,26 +516,25 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Moments APIをTealium iQタグ管理ワークフローに実装する方法について説明します。
+      この記事では、Tealium iQタグ管理ワークフローにMoments APIを実装する方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="仕組み">仕組み</h2>
-<p>Moments APIは、ウェブサイトやアプリケーションに統合できるユニークなエンドポイントを作成します。</p>
+<p>Moments APIは、あなたのウェブサイトやアプリケーションに統合できるユニークなエンドポイントを作成します。</p>
 <p>以下の手順を完了して、<a href="/ja/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Tealium iQ Advanced JavaScript Code Extension</a>を使用してTealiumワークフローにMoments APIを実装します。次の例では、Fetch APIを使用してMoments APIから訪問のデータをリクエストしますが、<code>XMLHttpRequest</code>などの他のJavaScriptオプションもサポートされています。</p>
 <h2 id="ステップ1-訪問idを取得する">ステップ1: 訪問IDを取得する</h2>
 <p>Tealiumの<code>utag_main</code>クッキーから<code>v_id</code>を解析します。</p>
-<p>次のコードを、<code>utag.js</code>のバージョンに応じて拡張機能にコピーします。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i><code>ignoreTapid</code>が<code>false</code>に構成されている場合は、このステップをスキップします。</p>
+<p>以下のコードを、<code>utag.js</code>のバージョンに応じて拡張機能にコピーします。</p>
 <ul>
-<li><strong>タイトル</strong>: utag.jsクッキーから識別子を解析 [Moments API]</li>
+<li><strong>タイトル</strong>: utag.jsクッキーから識別子を解析する [Moments API]</li>
 <li><strong>スコープ</strong>: プレローダー</li>
 <li><strong>タイプ</strong>: Advanced JavaScript</li>
 </ul>
 <h3 id="utagjs-450"><code>utag.js</code> 4.50+</h3>
-<p class="note"><i class="fa fa-exclamation-triangle"></i><code>split_cookie=false</code>オプションを使用している場合は、<a href="#utag-js-4-49-and-below"><code>utag.js</code> 4.49以下</a>のコード例を使用してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><code>split_cookie=false</code>オプションを使用する場合は、<a href="#utag-js-4-49-and-below"><code>utag.js</code> 4.49以下</a>のコード例を使用してください。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">read_utag_cookies</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>document.<span style="color:#a6e22e">cookie</span> <span style="color:#f92672">||</span> document.<span style="color:#a6e22e">cookie</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;&#34;</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {};
@@ -581,22 +580,19 @@
 </span></span></code></pre></div><h2 id="ステップ2-moments-apiを呼び出す">ステップ2: Moments APIを呼び出す</h2>
 <p>Moments APIエンドポイントをリクエストし、レスポンスデータをローカル保存に保存して、オンサイトマーケティング活動やパーソナライゼーションに使用します。</p>
 <p>以下のテンプレートコードを別のAdvanced JavaScript拡張機能に追加し、アカウントとターゲットエンジンに合わせて更新します。このコードは、前の拡張機能で割り当てられた<code>moments_identifier</code>変数をAPIのURLエンドポイントの識別子パラメータにマッピングします。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>このコードが前のJavaScript拡張機能の後にロードされるように、<a href="/ja/iq-tag-management/getting-started/order-of-operations/">Order of Operations</a>を確認してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>このコードが前のJavaScript拡張機能の後にロードされるように、<a href="/ja/iq-tag-management/getting-started/order-of-operations/">Order of Operations</a>を参照してください。</p>
 <ul>
 <li><strong>タイトル</strong>: [Moments API]</li>
 <li><strong>スコープ</strong>: プレローダー</li>
 <li><strong>タイプ</strong>: Advanced JavaScript</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// リクエストしたいエンジンIDを割り当てます
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// リクエストしたいエンジンIDを指定します
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">engine_id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;your_engine_id&#34;</span>; 
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// ignoreTapidとsuppressNotFoundはオプションのパラメータです
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// suppressNotFoundはオプションのパラメータです
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tealiumの実装にファーストパーティドメインを使用している場合は、trueに構成します
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// var ignoreTapid = true ; 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 訪問が見つからない場合のHTTP 404をfalseに構成します
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 訪問が見つからない場合はHTTP 404に構成します
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// var suppressNotFound = true;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// APIのURLを構築します
@@ -708,7 +704,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年July月10日
+          <p>最終更新日 ::  2024年July月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

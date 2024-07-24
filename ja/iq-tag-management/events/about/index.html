@@ -190,7 +190,9 @@
         <a href="/ja/iq-tag-management/events/event-types/scroll-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".scroll-event">スクロールイベント</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/events/event-types/hash-change-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".hash-change-event">ハッシュ変更イベント</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/events/event-types/form-submission-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".form-submission-event">フォーム送信イベント</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/events/event-types/browser-history-change-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".browser-history-change-event">ブラウザ履歴変更イベント</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/events/event-types/page-view-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".page-view-event">ページビューイベント</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/events/event-types/page-load-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".page-load-event">ページロードイベント</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/events/event-types/mouseover-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mouseover-event">マウスオーバーイベント</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/events/event-types/element-visibility-event/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".element-visibility-event">要素の可視性イベント</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
@@ -430,31 +432,33 @@
 <div class="prose nested-links" id="prose">
   <h2 id="仕組み">仕組み</h2>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>イベントシステムは、JQuery拡張などの以前のイベントトラッキングソリューションを置き換えます。</p>
-<p>イベントリスナー、別名 <em>イベント</em> は、特定の訪問者のアクションをページで追跡するための、事前に構築され、設定可能なJavaScriptリスナーです。</p>
-<p>イベントリスナーは、訪問者がページ上で特定のアクションを実行したとき、例えば、要素をクリックしたり、ページをスクロールしたり、ビデオプレーヤーを使用したりするときに追跡します。訪問者がアクションを実行すると、イベントリスナーの変数を含むトラッキングコールがトリガーされます。</p>
-<p>コードなしのイベントリスナーを使用すると、以下のことが可能になります：</p>
+<p>イベントリスナー、別名 <em>イベント</em> は、ページ上の特定の訪問のアクションを追跡する構成可能なJavaScriptリスナーです。</p>
+<p>イベントリスナーは、訪問がページ上で特定のアクションを実行したとき、例えば要素をクリックしたり、ページをスクロールしたり、ビデオプレーヤーを使用したりするときに追跡します。訪問がアクションを実行すると、イベントリスナーの変数を含むトラッキングコールがトリガーされます。</p>
+<p>コードなしのイベントリスナーを使用すると、以下のことができます：</p>
 <ul>
-<li>自分のユニークなニーズに合わせてイベントリスナーを設定します。</li>
+<li>自分のユニークなニーズに合わせてイベントリスナーを構成します。</li>
 <li>イベントリスナーがページ上でロードされるタイミングを決定するさまざまなスコープから選択します。</li>
-<li>イベントリスナーをロードするページを決定するための高度なルールロジックを設定します。</li>
-<li>トラッキングニーズに基づいて設定できるユニークなイベントトリガーを設定します。</li>
+<li>イベントリスナーをロードするページを決定するための高度なルールロジックを構成します。</li>
+<li>トラッキングニーズに基づいて構成できるユニークなイベントトリガーを構成します。</li>
 <li>イベントリスナーでページ上の特定の要素をターゲットにします。</li>
-<li>アクションが発生したときに送信されるデータペイロードを設定します。</li>
+<li>アクションが発生したときに送信されるデータペイロードを構成します。</li>
 </ul>
 <h2 id="イベントの種類と変数">イベントの種類と変数</h2>
 <p>以下の種類のイベントがこの機能を通じて利用可能です：</p>
 <ul>
-<li><a href="/ja/iq-tag-management/events/event-types/click-event/"><strong>クリック</strong></a> - 訪問者がページ上でマウスをクリックしたとき。</li>
-<li><a href="/ja/iq-tag-management/events/event-types/mouseover-event/"><strong>マウスオーバー</strong></a> - 訪問者がページ上の特定の要素にマウスをホバーしたとき。</li>
-<li><a href="/ja/iq-tag-management/events/event-types/form-submission-event/"><strong>フォーム送信</strong></a> - 訪問者がページ上のフォームを送信したとき。</li>
-<li><a href="/ja/iq-tag-management/events/event-types/youtube-event/"><strong>YouTube</strong></a> - 訪問者がページ上の埋め込みYouTubeビデオを操作したとき。</li>
-<li><a href="/ja/iq-tag-management/events/event-types/vimeo-event/"><strong>Vimeo</strong></a> - 訪問者がページ上の埋め込みVimeoビデオを操作したとき。</li>
-<li><a href="/ja/iq-tag-management/events/event-types/html5-video-event/"><strong>HTML5ビデオ</strong></a> - 訪問者がページ上の埋め込みHTML5ビデオを操作したとき。</li>
-<li><a href="/ja/iq-tag-management/events/event-types/page-view-event/"><strong>ページビュー</strong></a> - 訪問者がページを閲覧したとき。</li>
-<li><a href="/ja/iq-tag-management/events/event-types/scroll-event/"><strong>スクロール</strong></a> - 訪問者がページを縦または横にスクロールしたとき。</li>
-<li><a href="/ja/iq-tag-management/events/event-types/element-visibility-event/"><strong>要素の可視性</strong></a> - ページが訪問者にスクリーン要素を表示したとき。</li>
+<li><a href="/ja/iq-tag-management/events/event-types/click-event/"><strong>クリック</strong></a> - 訪問がページ上でマウスをクリックしたとき。</li>
+<li><a href="/ja/iq-tag-management/events/event-types/mouseover-event/"><strong>マウスオーバー</strong></a> - 訪問がページ上の特定の要素にマウスをホバーしたとき。</li>
+<li><a href="/ja/iq-tag-management/events/event-types/form-submission-event/"><strong>フォーム送信</strong></a> - 訪問がページ上のフォームを送信したとき。</li>
+<li><a href="/ja/iq-tag-management/events/event-types/youtube-event/"><strong>YouTube</strong></a> - 訪問がページ上の埋め込まれたYouTubeビデオを操作したとき。</li>
+<li><a href="/ja/iq-tag-management/events/event-types/vimeo-event/"><strong>Vimeo</strong></a> - 訪問がページ上の埋め込まれたVimeoビデオを操作したとき。</li>
+<li><a href="/ja/iq-tag-management/events/event-types/html5-video-event/"><strong>HTML5ビデオ</strong></a> - 訪問がページ上の埋め込まれたHTML5ビデオを操作したとき。</li>
+<li><a href="/ja/iq-tag-management/events/event-types/page-load-event/"><strong>ページロード</strong></a> - 訪問がページをロードしたとき。</li>
+<li><a href="/ja/iq-tag-management/events/event-types/scroll-event/"><strong>スクロール</strong></a> - 訪問がページを縦または横にスクロールしたとき。</li>
+<li><a href="/ja/iq-tag-management/events/event-types/element-visibility-event/"><strong>要素の可視性</strong></a> - ページが訪問にスクリーン要素を表示したとき。</li>
+<li><a href="/ja/iq-tag-management/events/event-types/browser-history-change-event/"><strong>ブラウザ履歴の変更</strong></a> - 訪問がシングルページアプリケーション（SPA）をナビゲートしたとき。</li>
+<li><a href="/ja/iq-tag-management/events/event-types/hash-change-event/"><strong>ハッシュ変更</strong></a> - ページのURLのハッシュ記号（<code>#</code>）の後のアンカー部分が変更されたとき。</li>
 </ul>
-<p>これらのイベントのそれぞれは、そのイベントに特有の<code>tealium_event</code>値（例えば、スクロールイベントの場合は<code>scroll</code>）で事前に設定されています。これらのイベントタイプの一部には、デフォルトで追加のイベント変数が含まれており、必要に応じてイベント変数をカスタマイズまたは追加できます。</p>
+<p>これらのイベントのそれぞれは、そのイベントに特有の<code>tealium_event</code>値（例えば、スクロールイベントの場合は<code>scroll</code>）で事前に構成されています。これらのイベントタイプの一部には、デフォルトで追加のイベント変数が含まれており、必要に応じてイベント変数をカスタマイズまたは追加できます。</p>
 <p>詳細については、<a href="/ja/iq-tag-management/getting-started/best-practices/#event-tracking">ベストプラクティス - イベントトラッキング</a>を参照してください。</p>
 
 </div>
@@ -501,7 +505,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月15日
+          <p>最終更新日 ::  2024年July月24日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

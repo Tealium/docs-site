@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -335,6 +335,7 @@
         <a href="/ja/server-side-connectors/twitter-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".twitter-conversions-connector">Twitterコンバージョン</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/userlist-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".userlist-connector">Userlist</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/veeva-crm-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Veeva CRM</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/veritonic-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".veritonic-connector">Veritonic</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/vkontakte-ads-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".vkontakte-ads-connector">VKontakte広告</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/webhook-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".webhook-connector-setup-guide">Webhook</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/webtrekk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".webtrekk-connector">Webtrekk</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -401,114 +402,509 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>アクション名</strong></th>
-<th style="text-align:left"><strong>AudienceStream</strong></th>
-<th style="text-align:left"><strong>EventStream</strong></th>
+<th><strong>アクション名</strong></th>
+<th><strong>AudienceStream</strong></th>
+<th><strong>EventStream</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">ユーザーのリスト値を更新する</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✓</td>
+<td>Upsert contact</td>
+<td>✓</td>
+<td>✓</td>
 </tr>
 <tr>
-<td style="text-align:left">コンタクトをアップサートする</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✗</td>
+<td>Add cart to contact</td>
+<td>✗</td>
+<td>✓</td>
 </tr>
 <tr>
-<td style="text-align:left">コンタクトのアクティビティ</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✗</td>
+<td>Record contact activity (event)</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Add or delete a contact from an account list</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Create a new order</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Send notification</td>
+<td>✓</td>
+<td>✓</td>
 </tr>
 </tbody>
 </table>
-<h2 id="構成を構成する">構成を構成する</h2>
-<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>の記事を参照してください。</p>
+<h2 id="api情報">API情報</h2>
+<p>このコネクタは以下のベンダーAPIを使用します：</p>
+<ul>
+<li>API名: Cordial API</li>
+<li>APIバージョン: v1.0</li>
+<li>ドキュメンテーション: <a href="https://support.cordial.com/hc/en-us/categories/12092749097741-Developer-resources">Cordial API</a></li>
+</ul>
+<h2 id="構成の構成">構成の構成</h2>
+<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">About Connectors</a>を参照してください。</p>
 <p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
 <li><strong>APIキー</strong><br>
-CordialはHTTP Basic Authentication (BA)を使用します。Cordialプラットフォーム内から、アカウント用のエンコードされたAPIキーを生成できます。このキーは、BA認証の<code>username</code>として使用されます。<br>
-詳細については、Cordialのドキュメンテーション内の<a href="https://support.cordial.com/hc/en-us/articles/203885498-RESTful-API-Summary-and-Usage">RESTful APIの概要と使用方法</a>を参照してください。</li>
+CordialはHTTP Basic Authentication (BA)を使用します。Cordialプラットフォーム内から、アカウント用のエンコードされたAPIキーを生成できます。このキーはBA認証の<code>username</code>として使用されます。詳細については、<a href="https://support.cordial.com/hc/en-us/articles/203885498-RESTful-API-summary-and-usage">RESTful API Summary and Usage</a>を参照してください。</li>
+<li><strong>Path-URL</strong><br>
+以下のPath URLのいずれかを選択するか、手動で入力します。
+<ul>
+<li><code>https://api.cordial.io/v2/</code> - 管理パネルのURLが<code>https://admin.cordial.io/</code>の場合、このURLを使用します。</li>
+<li><code>https://api.usw2.cordial.io/v2/</code> - 管理パネルのURLが<code>https://usw2.admin.cordial.io/</code>の場合、このURLを使用します。</li>
 </ul>
-<p>コネクタの構成が完了したら、<strong>完了</strong>をクリックします。</p>
-<h2 id="アクション構成---パラメータとオプション">アクション構成 - パラメータとオプション</h2>
-<p><strong>続行</strong>をクリックしてコネクタアクションを構成します。アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
+</li>
+</ul>
+<p>コネクタの構成が完了したら、<strong>Done</strong>をクリックします。</p>
+<h2 id="アクション構成--パラメータとオプション">アクション構成 — パラメータとオプション</h2>
+<p><strong>Continue</strong>をクリックしてコネクタアクションを構成します。アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
 <p>以下のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
-<h3 id="アクション---ユーザーのリスト値を更新する">アクション - ユーザーのリスト値を更新する</h3>
+<h3 id="アクション---upsert-contact">アクション - Upsert contact</h3>
 <h4 id="パラメータ">パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>パラメータ</strong></th>
-<th style="text-align:left"><strong>説明</strong></th>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">プライマリキー</td>
-<td style="text-align:left"><strong>プライマリキー</strong>は、コンタクトの一意のメールアドレス値によって定義されます。</td>
+<td>Contact Identifier Key</td>
+<td>コンタクト識別キー。例：<code>email</code>, <code>cID</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">リスト名</td>
-<td style="text-align:left">Cordialデータベース内でコンタクトが追加されるリストの名前。リストは、コンタクトを更新する前に作成されていることに注意してください。<br> Cordialデータベースのコンタクトを更新する方法についての詳細は、Cordialのドキュメンテーション内の<a href="https://cordial.zendesk.com/hc/en-us/articles/203885958-Contacts">Contacts</a>を参照してください。</td>
+<td>Contact Identifier Value</td>
+<td>コンタクト識別値。</td>
+</tr>
+<tr>
+<td>Email Address</td>
+<td>コンタクトを識別し参照するためのユニークなチャネルアドレス。</td>
+</tr>
+<tr>
+<td>Subscribe Status</td>
+<td><code>subscribed</code>に構成されていない限り、プロモーションメッセージは送信されません。デフォルトは<code>none</code>。可能な値：<code>none</code>, <code>subscribed</code>または<code>unsubscribed</code>。</td>
+</tr>
+<tr>
+<td>Suppress Triggers</td>
+<td><code>true</code>に構成すると、コンタクト属性値の更新に基づくメッセージトリガーが抑制されます。デフォルトは<code>true</code>。</td>
+</tr>
+<tr>
+<td>Force Subscribe</td>
+<td>退会した場合、このキーを使用して購読ステータスを購読中に更新する必要があります。可能な値：<code>true</code>, <code>false</code>。</td>
+</tr>
+<tr>
+<td>Invalid</td>
+<td><code>false</code>に構成されていない限り、電子メールメッセージは送信されません。デフォルトは<code>false</code>。可能な値：<code>true</code>, <code>false</code>。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション---コンタクトをアップサートする">アクション - コンタクトをアップサートする</h3>
+<h4 id="オプションパラメータ">オプションパラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Account Lists</td>
+<td>コンタクトをリストに追加または削除します。可能な値：true, false。</td>
+</tr>
+<tr>
+<td>String Parameters</td>
+<td>属性タイプが文字列として構成されている場合、文字列属性値を追加します。</td>
+</tr>
+<tr>
+<td>Number Parameters</td>
+<td>属性タイプが数値として構成されている場合、数値属性値を追加します。</td>
+</tr>
+<tr>
+<td>Date Parameters</td>
+<td>属性タイプが日付として構成されている場合、日付属性値を追加します。</td>
+</tr>
+<tr>
+<td>Geo Parameters</td>
+<td>属性タイプが地理として構成されている場合、地理属性値を追加します。地理属性には以下のキー名のセットスキーマが含まれていることに注意してください：<ul><li>Street Address</li><li>Street Address 2</li><li>City</li><li>State</li><li>Postal Code</li><li>Country ISO</li><li>Time Zone</li><li>Location</li><ul><li>Latitude</li><li>Longitude</li></ul></ul></td>
+</tr>
+<tr>
+<td>Array Parameters</td>
+<td>属性タイプが配列として構成されている場合、配列属性値を追加します。デフォルトの動作は、提供された値で配列値を置き換えることです。デフォルトを上書きするために、追加/削除の動作を指定するオブジェクトを指定できます。最大アイテム数の制限を超えると（デフォルトは25）、新しい値が最も古い値を置き換えます。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="アクション---add-cart-to-contact">アクション - Add cart to contact</h3>
 <h4 id="パラメータ-1">パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>パラメータ</strong></th>
-<th style="text-align:left"><strong>説明</strong></th>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">メール</td>
-<td style="text-align:left">アップサートするコンタクトのメールアドレス。</td>
+<td>Contact Identifier Key</td>
+<td>コンタクト識別キー。例：<code>email</code>, <code>cID</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">購読ステータス</td>
-<td style="text-align:left">（オプション）購読ステータスを次のいずれかに構成します：<code>subscribed</code>、<code>unsubscribed</code>、<code>none</code>。</td>
+<td>Contact Identifier Value</td>
+<td>コンタクト識別値。</td>
 </tr>
 <tr>
-<td style="text-align:left">コンタクト属性</td>
-<td style="text-align:left">ユーザーに構成または更新するコンタクト属性（文字列または数値）。リストの更新にはブール値を使用します。例：<code>{list_name} : true</code>。</td>
+<td>Message Contact ID</td>
+<td>メッセージコンタクトID。</td>
+</tr>
+<tr>
+<td>Customer ID</td>
+<td>顧客ID。</td>
+</tr>
+<tr>
+<td>Link ID</td>
+<td>リンクID。</td>
+</tr>
+<tr>
+<td>Cart URL</td>
+<td>カートURL。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション---コンタクトのアクティビティ">アクション - コンタクトのアクティビティ</h3>
+<h4 id="cart-item-parameters">Cart Item Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product ID</td>
+<td>アイテム識別子。</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>アイテム名。</td>
+</tr>
+<tr>
+<td>SKU</td>
+<td>アイテム番号。</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>アイテムカテゴリ。</td>
+</tr>
+<tr>
+<td>Quantity</td>
+<td>カート内の数量。</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>画像名またはパス。アイテムに複数の画像がある場合、提供された値はカンマ（<code>,</code>）で分割されます。</td>
+</tr>
+<tr>
+<td>Item Price</td>
+<td>アイテムごとの価格。</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>アイテムの説明。</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>アイテムへのリンク。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="アクション---record-contact-activity-event">アクション - Record contact activity (event)</h3>
 <h4 id="パラメータ-2">パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>パラメータ</strong></th>
-<th style="text-align:left"><strong>説明</strong></th>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">アクション名</td>
-<td style="text-align:left">ユーザーの記録するアクションまたはアクティビティの名前を次のいずれかに構成します：<code>click</code>、<code>open</code>、<code>send</code>、または任意のユーザー定義アクション。</td>
+<td>Contact Identifier Key</td>
+<td>コンタクト識別キー。例：<code>email</code>, <code>cID</code>。</td>
 </tr>
 <tr>
-<td style="text-align:left">コンタクトのプライマリキー</td>
-<td style="text-align:left">ユーザーを識別するために使用されるプライマリキーの名前。例：<code>email</code>。</td>
+<td>Contact Identifier Value</td>
+<td>コンタクト識別値。</td>
 </tr>
 <tr>
-<td style="text-align:left">コンタクトのプライマリキー値</td>
-<td style="text-align:left">ユーザーを識別するために使用されるプライマリキーの値。例：<code>user@test.com</code>。</td>
+<td>Action</td>
+<td>ブラウズ、注文、カートなどのカスタムアクションを作成するための定義。パラメータの最大長は<code>40</code>文字です。予約済みのアクションは<code>POST</code>メソッドで追加できないことに注意してください。詳細については、<a href="https://support.cordial.com/hc/en-us/articles/203885968-Contact-activities-events-API#reservedEvents">Contact activities (events) API</a>を参照してください。</td>
 </tr>
 <tr>
-<td style="text-align:left">アクションプロパティ</td>
-<td style="text-align:left">ユーザーの記録するアクションまたはアクティビティに関する追加データ。</td>
+<td>Action Timestamp</td>
+<td>アクションのタイムスタンプ。未定義の場合、現在の日付と時刻が使用されます。日付形式は<code>ISO 8601</code>標準です。</td>
 </tr>
 <tr>
-<td style="text-align:left">アクションのタイムスタンプ</td>
-<td style="text-align:left">アクションまたはアクティビティのタイムスタンプ。リクエストに提供されていない場合、Cordialが自動的にタイムスタンプを入力します。</td>
+<td>Properties</td>
+<td>追加のイベント属性のオブジェクト。イベントが持つことができるプロパティのデフォルトの最大数は<code>1,000</code>です。数値のみからなるプロパティキー（例：<code>57</code>）や<code>dot</code>を含むキー（例：<code>shoes.color</code>）は削除されることに注意してください。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="アクション---add-or-delete-a-contact-from-an-account-list">アクション - Add or delete a contact from an account list</h3>
+<h4 id="パラメータ-3">パラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Account List</td>
+<td>アカウントリストを選択するか、リストIDを入力します。</td>
+</tr>
+<tr>
+<td>Action</td>
+<td><code>Add</code>または<code>Delete</code>のアクションを選択します。</td>
+</tr>
+<tr>
+<td>Contact Identifier Key</td>
+<td>コンタクト識別キー。例：<code>email</code>, <code>cID</code>。</td>
+</tr>
+<tr>
+<td>Contact Identifier Value</td>
+<td>コンタクト識別値。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="アクション---create-a-new-order">アクション - Create a new order</h3>
+<h4 id="パラメータ-4">パラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contact Identifier Key</td>
+<td>コンタクト識別キー。例：<code>email</code>, <code>cID</code>。</td>
+</tr>
+<tr>
+<td>Contact Identifier Value</td>
+<td>コンタクト識別値。</td>
+</tr>
+<tr>
+<td>Order ID</td>
+<td>注文に割り当てられたユニークな識別子。</td>
+</tr>
+<tr>
+<td>Purchase Date</td>
+<td>購入データと時間を示す日付値。日付形式は<code>ISO 8601</code>。</td>
+</tr>
+<tr>
+<td>mcID</td>
+<td>アカウント、コンタクト、メッセージを表すCordial ID。収益の帰属をメールに追跡するために必要です。</td>
+</tr>
+<tr>
+<td>msID</td>
+<td>メッセージを表すCordial ID。</td>
+</tr>
+<tr>
+<td>Customer ID</td>
+<td>eCommerceまたはCRMシステムによって割り当てられたID値。</td>
+</tr>
+<tr>
+<td>Link ID</td>
+<td>メッセージとリンクを表すCordial ID。特定のリンクへの収益の帰属を追跡するために必要です。</td>
+</tr>
+<tr>
+<td>Total Amount</td>
+<td>各<code>item.amount</code>の合計として自動計算されます。</td>
+</tr>
+<tr>
+<td>Tax</td>
+<td>税金の額。</td>
+</tr>
+<tr>
+<td>Shipping and Handling</td>
+<td>送料と手数料の額。</td>
+</tr>
+<tr>
+<td>Properties</td>
+<td>注文のプロパティを説明するキーと値のペア。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="shipping-address">Shipping Address</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Address</td>
+<td>住所。</td>
+</tr>
+<tr>
+<td>City</td>
+<td>市区町村。</td>
+</tr>
+<tr>
+<td>Country</td>
+<td>国。</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>名前。</td>
+</tr>
+<tr>
+<td>Postal Code</td>
+<td>郵便番号。</td>
+</tr>
+<tr>
+<td>State</td>
+<td>州。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="billing-address">Billing Address</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Address</td>
+<td>住所。</td>
+</tr>
+<tr>
+<td>City</td>
+<td>市区町村。</td>
+</tr>
+<tr>
+<td>Country</td>
+<td>国。</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>名前。</td>
+</tr>
+<tr>
+<td>Postal Code</td>
+<td>郵便番号。</td>
+</tr>
+<tr>
+<td>State</td>
+<td>州。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="item-parameters">Item Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product ID</td>
+<td>アイテム識別子。</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>アイテム名。</td>
+</tr>
+<tr>
+<td>SKU</td>
+<td>アイテム番号。</td>
+</tr>
+<tr>
+<td>カテゴリー</td>
+<td>アイテムのカテゴリー。</td>
+</tr>
+<tr>
+<td>数量</td>
+<td>購入したアイテムの数。指定されていない場合、デフォルトは <code>1</code> になります。</td>
+</tr>
+<tr>
+<td>画像</td>
+<td>画像の名前またはパス。アイテムに複数の画像がある場合、提供された値はカンマ (<code>,</code>) で分割されます。</td>
+</tr>
+<tr>
+<td>アイテム価格</td>
+<td>アイテムごとの価格。</td>
+</tr>
+<tr>
+<td>説明</td>
+<td>アイテムの説明。</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>アイテムへのリンク。</td>
+</tr>
+<tr>
+<td>金額</td>
+<td><code>qty</code> x <code>itemPrice</code> として自動計算されます。<code>qty</code> x <code>itemPrice</code> と等しくない値が渡されると、それが上書きされます。</td>
+</tr>
+<tr>
+<td>タグ</td>
+<td>製品を説明するための値のカンマ区切りの配列。英数字またはダッシュのみを受け入れます。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="アクション---通知を送る">アクション - 通知を送る</h3>
+<h4 id="パラメータ-5">パラメータ</h4>
+<table>
+<thead>
+<tr>
+<th><strong>パラメータ</strong></th>
+<th><strong>説明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Automation Template</td>
+<td>テンプレートを選択するか、テンプレートIDを提供します。</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>メール。</td>
+</tr>
+<tr>
+<td>CID</td>
+<td>コンタクトID。</td>
+</tr>
+<tr>
+<td>Identify By</td>
+<td>リクエストボディ内のどの識別キーを使用してコンタクトを検索するかを指定します。</td>
+</tr>
+<tr>
+<td>External Variables</td>
+<td>外部変数。テンプレートをサポートします。</td>
+</tr>
+<tr>
+<td>Template Variables</td>
+<td><ul><li>テンプレート変数を外部変数入力として提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>を参照してください。</li><li>ネストされたテンプレート変数はドット表記法で名前を付けます（例：<code>items.name</code>）。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+</tr>
+<tr>
+<td>Templates</td>
+<td><ul><li>パラメータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>を参照してください。</li><li>テンプレートは、例えば <code>{{SomeTemplateName&amp;}}</code> のように、名前で二重中括弧を使用してサポートフィールドに注入されます。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -587,11 +983,15 @@ CordialはHTTP Basic Authentication (BA)を使用します。Cordialプラット
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタアクション</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">構成を構成する</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90---%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 - パラメータとオプション</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E3%83%AA%E3%82%B9%E3%83%88%E5%80%A4%E3%82%92%E6%9B%B4%E6%96%B0%E3%81%99%E3%82%8B" href="javascript:void(0)">アクション - ユーザーのリスト値を更新する</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%82%B3%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%88%E3%82%92%E3%82%A2%E3%83%83%E3%83%97%E3%82%B5%E3%83%BC%E3%83%88%E3%81%99%E3%82%8B" href="javascript:void(0)">アクション - コンタクトをアップサートする</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%82%B3%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%88%E3%81%AE%E3%82%A2%E3%82%AF%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3" href="javascript:void(0)">アクション - コンタクトのアクティビティ</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api%E6%83%85%E5%A0%B1" href="javascript:void(0)">API情報</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成の構成</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90--%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 — パラメータとオプション</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---upsert-contact" href="javascript:void(0)">アクション - Upsert contact</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---add-cart-to-contact" href="javascript:void(0)">アクション - Add cart to contact</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---record-contact-activity-event" href="javascript:void(0)">アクション - Record contact activity (event)</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---add-or-delete-a-contact-from-an-account-list" href="javascript:void(0)">アクション - Add or delete a contact from an account list</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---create-a-new-order" href="javascript:void(0)">アクション - Create a new order</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E9%80%9A%E7%9F%A5%E3%82%92%E9%80%81%E3%82%8B" href="javascript:void(0)">アクション - 通知を送る</a></li>
               </nav>
   </aside></nav>
 
@@ -856,6 +1256,7 @@ CordialはHTTP Basic Authentication (BA)を使用します。Cordialプラット
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
