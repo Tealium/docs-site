@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -268,6 +268,7 @@
         <a href="/server-side-connectors/qualtrics-xm-directory-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".qualtrics-xm-directory-connector">Qualtrics XM Directory</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/quantcast-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".quantcast-audiences-connector">Quantcast Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/reddit-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-conversions-connector">Reddit Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/reddit-custom-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-custom-audiences-connector">Reddit Custom Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/referralcandy-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".referralcandy-connector">ReferralCandy</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/responsys-connector-soap-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".responsys-connector-soap-api">Responsys (SOAP API)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/responsys-marketing-cloud-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".responsys-marketing-cloud-connector">Responsys Marketing Cloud</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -426,6 +427,17 @@ A unique identifier from the Veritonic dashboard.</li>
 <td>Event Type</td>
 <td>A string that indicates the type of action that the user performed.</td>
 </tr>
+</tbody>
+</table>
+<h3 id="event-attributes">Event Attributes</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>User IP Address</td>
 <td>The network address of the user’s device.</td>
@@ -449,6 +461,45 @@ A unique identifier from the Veritonic dashboard.</li>
 <tr>
 <td>Event Type Attributes</td>
 <td>Optional event type attributes.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="event-type-attributes">Event Type Attributes</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Event Type</strong></th>
+<th><strong>Additional Parameters (optional)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>view</code></td>
+<td><ul><li>None</li></ul></td>
+</tr>
+<tr>
+<td><code>addtocart</code></td>
+<td><ul><li><code>value</code>, <code>currency</code>, <code>quantity</code>, <code>product_id</code>, <code>product_name</code>, <code>product_type</code>, <code>product_vendor</code>, <code>variant_id</code>, <code>variant_name</code></li></ul></td>
+</tr>
+<tr>
+<td><code>checkout</code></td>
+<td><ul><li><code>value</code>, <code>currency</code>, <code>discount_code</code>, <code>quantity</code>, <code>line_items</code></li><li><code>line_items</code> is an array of objects with the following optional attributes: <code>value</code>, <code>quantity</code>, <code>product_id</code>, <code>product_name</code>, <code>product_type</code>, <code>product_vendor</code>, <code>variant_id</code>, <code>variant_name</code></li><li>The user must be able to map an array of numbers or array of strings to each of the following parameters:<ul><li><code>line_items.value</code></li><li><code>line_items.quantity</code></li><li><code>line_items.product_id</code></li><li><code>line_items.product_name</code></li><li><code>line_items.product_type</code></li><li><code>line_items.product_vendor</code></li><li><code>line_items.variant_id</code></li><li><code>line_items.variant_name</code></li></ul></li><li>The final array of objects needs to be built in the backend, so for instance, if you have:<ul><li><code>line_items.quantity</code> = [1,2]</li><li><code>line_items.product_id</code> = [a,b]</li><li>The line_items array will look like this: <code>[{product_id:a,quantity:1},{product_id:b,quantity:2}]</code></ul></li></li></ul></td>
+</tr>
+<tr>
+<td><code>lead</code></td>
+<td><ul><li><code>value</code>, <code>currency</code>, <code>type</code>,<code>category</code></li></ul></td>
+</tr>
+<tr>
+<td><code>product</code></td>
+<td><ul><li><code>value</code>, <code>currency</code>, <code>product_id</code>, <code>product_name</code>, <code>product_type</code>, <code>product_vendor</code></li></ul></td>
+</tr>
+<tr>
+<td><code>purchase</code></td>
+<td><ul><li><code>value</code>, <code>currency</code>, <code>discount_code</code>, <code>quantity</code>, <code>line_items</code></li><li><code>line_items</code>: Same as the checkout event</li></ul></td>
+</tr>
+<tr>
+<td><code>app_install</code></td>
+<td><ul><li><code>app_name</code>, <code>app_id</code>, <code>integration</code></li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -512,7 +563,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 24, 2024 
+          <p>This page was last updated:  July 31, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -530,6 +581,8 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-event" href="javascript:void(0)">Action - Send Event</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-attributes" href="javascript:void(0)">Event Attributes</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#event-type-attributes" href="javascript:void(0)">Event Type Attributes</a></li>
               </nav>
   </aside></nav>
 
@@ -792,6 +845,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
