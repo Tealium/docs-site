@@ -430,48 +430,49 @@
 
   
     <p class="f4 fw3 lh-copy">
-      中国のネットワークからユニバーサルタグをロードする際のパフォーマンスを向上させるために、中国本土内部のコンテンツ配信を加速させるとともに、世界中での配信も可能にするtags.tiqcdn.cnを使用できます。tags.tiqcdn.cnは、ユーザーに最も近いノードを通じてAkamaiから配信され、そのノードはネットワークセキュリティ内部または外部に存在することがあります。
+      この記事では、中国のネットワークからユニバーサルタグをロードする際のパフォーマンス向上について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="考慮事項">考慮事項</h2>
+  <p>tags.tiqcdn.cnを使用して、中国本土内部だけでなく、世界中でコンテンツ配信を迅速化します。ドメイン<code>tags.tiqcdn.cn</code>は、ユーザーに最も近いノードを通じてAkamaiから配信され、そのノードはネットワークセキュリティ内部または外部にあることがあります。</p>
+<h2 id="考慮事項">考慮事項</h2>
 <ul>
 <li>
-<p><strong>ユニバーサルタグのロード方法を選択する</strong></p>
+<p><strong>ユニバーサルタグのロードに以下の方法のいずれかを選択します</strong>:</p>
 <ul>
-<li>サイトのソースコードを変更でき、大量のトラフィックが中国から来ている場合は、ウェブサイトに追加するコードで <code>tags.tiqcdn.cn</code> を使用することをお勧めします。</li>
-<li>サイトのソースコードを変更できない、または中国からのトラフィックが少ない場合は、<a href="/ja/iq-tag-management/extensions/extensions-list/china-cdn-deployment-extension/">China CDN Deployment Extension</a>を使用してください。</li>
+<li><strong>ウェブサイトのコードを更新します</strong>: サイトのソースコードを変更でき、大量のトラフィックが中国から来ている場合は、ウェブサイトに追加するコードで<code>tags.tiqcdn.cn</code>を使用することをお勧めします。</li>
+<li><strong>中国CDNデプロイメントエクステンションを使用します</strong>: サイトのソースコードを変更できない、または少量のトラフィックが中国から来ている場合は、<a href="/ja/iq-tag-management/extensions/extensions-list/china-cdn-deployment-extension/">中国CDNデプロイメントエクステンション</a>を使用します。<p class="note"><i class="fa fa-exclamation-triangle"></i>一つの方法だけを使用してください。両方を使用しないでください。</p></li>
 </ul>
 </li>
 <li>
-<p><strong>ユニークなプロファイルを使用する</strong><br>
-各ウェブサイトに対してユニークなプロファイルを使用します。複数のプロファイルを使用することで、各ウェブサイトにタグを付け、そのウェブサイトのTealiumベースのコンテンツの配信をカスタマイズできます。</p>
+<p><strong>ユニークなプロファイルを使用します</strong><br>
+各ウェブサイトに対してユニークなプロファイルを使用します。複数のプロファイルを使用することで、各ウェブサイトにタグを付け、そのウェブサイトのすべてのTealiumベースのコンテンツの配信をカスタマイズできます。</p>
 </li>
 <li>
 <p><strong>tags.tiqcdn.cn</strong><br>
-<code>tags.tiqcdn.cn</code>は、ユーザーに最も近いノードを通じてAkamaiから利用できます。これは、中国のファイアウォールの外側にいるユーザーに対して <code>.cn</code> ドメインを使用しても、それらのユーザーのパフォーマンスに影響を与えないことを意味します。</p>
+<code>tags.tiqcdn.cn</code>は、ユーザーに最も近いノードを通じてAkamaiから利用できます。これは、中国のファイアウォール外のユーザーに対して<code>.cn</code>ドメインを使用しても、それらのユーザーのパフォーマンスに影響を与えないことを意味します。</p>
 </li>
 <li>
 <p><strong>インターネットコンテンツプロバイダー（ICP）ライセンス</strong><br>
-中国本土でウェブコンテンツを配信するためには、ウェブサイトに有効なICPライセンスが必要です。</p>
+中国本土で配信されるすべてのウェブコンテンツには、有効なICPライセンスが必要です。</p>
 </li>
 </ul>
 <h2 id="ウェブサイトのコードを更新する">ウェブサイトのコードを更新する</h2>
-<p>ウェブサイトのコードを更新するには：</p>
+<p>ウェブサイトのコードを更新するには:</p>
 <ol>
-<li><code>.cn</code> ドメインのプロファイルを作成します。詳細については、<a href="/ja/iq-tag-management/profiles/manage/">Manage Profiles</a>を参照してください。
+<li><code>.cn</code>ドメインのプロファイルを作成します。詳細については、<a href="/ja/iq-tag-management/profiles/manage/">プロファイルの管理</a>を参照してください。
 <ul>
-<li>新しい専用 <code>.cn</code> ドメインプロファイルの構成を容易にするために、<a href="/ja/iq-tag-management/profiles/profile-libraries/about/">profile libraries</a>を使用してプロファイル間で構成を共有することを検討してください。</li>
+<li>新しい専用の<code>.cn</code>ドメインプロファイルの構成を容易にするために、<a href="/ja/iq-tag-management/profiles/profile-libraries/about/">プロファイルライブラリ</a>を使用してプロファイル間で構成を共有することを検討してください。</li>
 </ul>
 </li>
-<li><strong>Publish Configuration</strong>の公開URLを更新して、<code>.cn</code> CDNパスを指定します。例えば：
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://tags.tiqcdn.cn/utag/ACCOUNT/PROFILE/dev/utag.js
-</span></span><span style="display:flex;"><span>https://tags.tiqcdn.cn/utag/ACCOUNT/PROFILE/qa/utag.js
-</span></span><span style="display:flex;"><span>https://tags.tiqcdn.cn/utag/ACCOUNT/PROFILE/prod/utag.js
-</span></span></code></pre></div>詳細については、<a href="/ja/iq-tag-management/save-publish/publish-configuration/">Publish Configuration</a>を参照してください。</li>
-<li>HTMLソースに、<code>tags.tiqcdn.cn</code>を使用する次のJavaScriptを追加します。
+<li><strong>公開構成</strong>の公開URLを更新して、<code>.cn</code>CDNパスを指定します。例えば:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://tags.tiqcdn.cn/utag/ACCOUNT/PROFILE/dev/
+</span></span><span style="display:flex;"><span>https://tags.tiqcdn.cn/utag/ACCOUNT/PROFILE/qa/
+</span></span><span style="display:flex;"><span>https://tags.tiqcdn.cn/utag/ACCOUNT/PROFILE/prod/
+</span></span></code></pre></div>詳細については、<a href="/ja/iq-tag-management/save-publish/publish-configuration/">公開構成</a>を参照してください。</li>
+<li>HTMLソースに、<code>tags.tiqcdn.cn</code>を使用する以下のJavaScriptを追加します。
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">a</span>,<span style="color:#a6e22e">b</span>,<span style="color:#a6e22e">c</span>,<span style="color:#a6e22e">d</span>){
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">a</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;https://tags.tiqcdn.cn/utag/ACCOUNT/PROFILE/prod/utag.js&#39;</span>;
@@ -482,7 +483,7 @@
 </span></span></code></pre></div></li>
 </ol>
 <h2 id="中国cdnデプロイメントエクステンションを使用する">中国CDNデプロイメントエクステンションを使用する</h2>
-<p>ユーザーの位置を判断し、適切なCDNから <code>utag.js</code> を提供するための中国CDNデプロイメントエクステンションを作成し、構成します。エクステンションの作成についての詳細は、<a href="/ja/iq-tag-management/extensions/extensions-list/china-cdn-deployment-extension/">China CDN Deployment Extension</a>を参照してください。</p>
+<p>ユーザーの位置を決定し、適切なCDNから<code>utag.js</code>を提供するために、中国CDNデプロイメントエクステンションを作成し、構成します。エクステンションの作成についての詳細は、<a href="/ja/iq-tag-management/extensions/extensions-list/china-cdn-deployment-extension/">中国CDNデプロイメントエクステンション</a>を参照してください。</p>
 
 </div>
 
@@ -528,7 +529,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2024年August月1日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -430,7 +430,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      Adobe Target コンテンツ変更拡張とAdobe Targetタグを使用してHTML要素のコンテンツを変更します。
+      Adobe Target コンテンツ変更拡張を Adobe Target タグまたは Adobe Experience Platform Web SDK タグと一緒に使用して、HTML要素のコンテンツを変更します。
     </p>
   
 </div>
@@ -438,28 +438,28 @@
 <div class="prose nested-links" id="prose">
   <h2 id="前提条件">前提条件</h2>
 <ul>
-<li>utag v4.38以降。<code>utag.js</code>テンプレートの更新についての詳細は、当社のナレッジベース記事<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">Best Practices for Updating to the Latest Version of utag.js</a>を参照してください。</li>
-<li><a href="/ja/client-side-tags/adobe-target-using-global-mbox-with-utagsyncjs/">Using Global Mbox with utag.sync.js</a></li>
+<li>utag v4.38 またはそれ以降。<code>utag.js</code> テンプレートの更新についての詳細は、ナレッジベースの記事 <a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">utag.jsの最新バージョンへの更新のベストプラクティス</a> を参照してください。</li>
+<li><a href="/ja/client-side-tags/adobe-target-using-global-mbox-with-utagsyncjs/">utag.sync.js でのグローバル Mbox の使用</a></li>
 </ul>
-<h2 id="使い方">使い方</h2>
-<p>Adobe Target コンテンツ変更拡張とAdobe Targetタグは、HTML要素のコンテンツを変更するために使用されます。これは条件に基づいてA/Bコンテンツを表示するために使用されます。この拡張機能を動作させるためには、<a href="/ja/client-side-tags/adobe-test-target-tag/">Adobe Target tag</a>にスコープを構成する必要があります。</p>
-<p>この拡張機能は初期化コードを必要とします。これは、ページの<code>&lt;head&gt;</code>セクションに<code>utag.sync.js</code>スニペットを配置することで行われます。<a href="/ja/iq-tag-management/getting-started/install/utag-sync/">using utag.sync.js</a>について詳しく学びましょう。</p>
+<h2 id="仕組み">仕組み</h2>
+<p>Adobe Target コンテンツ変更拡張は、Adobe Target タグまたは Adobe Experience Platform Web SDK タグと一緒に使用して、HTML要素のコンテンツを変更します。これは、条件に基づいてA/Bコンテンツを表示するために使用されます。この拡張機能を動作させるためには、<a href="/ja/client-side-tags/adobe-test-target-tag/">Adobe Target タグ</a>または <a href="/ja/client-side-tags/adobe-experience-platform-web-sdk-tag/">Adobe Experience Platform Web SDK タグ</a>にスコープを構成する必要があります。</p>
+<p>この拡張機能は初期化コードを必要とします。これは、<code>utag.sync.js</code> スニペットをページの <code>&lt;head&gt;</code> セクションに配置することで行われます。<a href="/ja/iq-tag-management/getting-started/install/utag-sync/">utag.sync.jsの使用</a>について詳しく学びましょう。</p>
 <h3 id="拡張機能の使用">拡張機能の使用</h3>
-<p>始める前に、<a href="/ja/iq-tag-management/extensions/about/">how extensions work</a>について理解しておきましょう。</p>
-<p>この拡張機能のスコープはAdobe Targetのタグに構成する必要があります。</p>
-<p>拡張機能が追加されたら、グローバルmbox以外に追加のmboxが必要な場合は、<strong>mboxを追加</strong>ボタンをクリックして拡張機能を構成します。以下の構成オプションが利用可能です：</p>
+<p>始める前に、<a href="/ja/iq-tag-management/extensions/about/">拡張機能の仕組み</a>について理解しておいてください。</p>
+<p>この拡張機能のスコープは、Adobe Target タグまたは Adobe Experience Platform Web SDK タグに構成する必要があります。</p>
+<p>拡張機能が追加されたら、グローバル mbox 以外に追加の mbox が必要な場合は、<strong>mbox を追加</strong> ボタンをクリックして拡張機能を構成します。以下の構成オプションが利用可能です：</p>
 <ul>
 <li>
-<p><strong>要素タイプ</strong>：ページのコンテンツが大幅に変更されるとXPath識別子が変更されるため、要素を識別するためにDOM IDの使用を推奨します。</p>
+<p><strong>要素タイプ</strong>：要素を識別するためには、ページのコンテンツが大幅に変更されると XPath 識別子が変更されるため、DOM ID の使用を推奨します。</p>
 <ul>
-<li><strong>DOM ID</strong>または<strong>XPath</strong>を選択します。</li>
+<li><strong>DOM ID</strong> または <strong>XPath</strong> を選択します。</li>
 </ul>
 </li>
 <li>
-<p><strong>DOM ID</strong>：要素のDOM IDまたはXPath識別子の値を入力します。</p>
+<p><strong>DOM ID</strong>：要素の DOM ID または XPath 識別子の値を入力します。</p>
 </li>
 <li>
-<p><strong>Mod Position</strong>：新しいコンテンツを配置する場所を指定します：</p>
+<p><strong>Mod Position</strong>：新しいコンテンツを配置する場所を、識別した要素に対して指定します：</p>
 <ul>
 <li><strong>Before Node</strong>：識別した要素の前にコンテンツを配置します。</li>
 <li><strong>After Node</strong>：識別した要素の後にコンテンツを配置します。</li>
@@ -467,20 +467,20 @@
 <li><strong>End of Node</strong>：識別した要素の終わりにコンテンツを配置します。</li>
 <li><strong>Replace Node Content</strong>：要素のコンテンツを置き換えます。</li>
 <li><strong>Replace Node</strong>：要素全体を置き換えます。</li>
-<li><strong>Replace Node Content (leave default)</strong>：要素のコンテンツを置き換えますが、AdobeのTargetサービスが一時的に利用できない場合は、テストコンテンツの代わりにデフォルトのコンテンツが表示されます。フリッカーフリー機能を使用する場合は、<strong>このMod Position</strong>を選択する必要があります。</li>
+<li><strong>Replace Node Content (leave default)</strong>：要素のコンテンツを置き換えますが、Adobeの Target サービスが一時的に利用できない場合は、テストコンテンツの代わりにデフォルトのコンテンツが表示されます。フリッカーフリー機能を使用する場合は、<strong>この Mod Position</strong> を選択する必要があります。</li>
 </ul>
 </li>
 <li>
-<p><strong>mBox Div ID</strong>：（Adobeから提供）テストのmBox IDを入力します。</p>
+<p><strong>mBox Div ID</strong>：（Adobe から提供）テストの mBox ID を入力します。</p>
 </li>
 <li>
-<p><strong>Static Params</strong>（オプション）：このフィールドにクエリ文字列形式で静的パラメータを追加します。これはアンパサンド(<code>&amp;</code>)文字で区切ります。</p>
+<p><strong>Static Params</strong>（オプション）このフィールドにクエリ文字列形式で静的パラメータを追加します。これはアンパサンド (<code>&amp;</code>) 文字で区切ります。</p>
 </li>
 <li>
-<p><strong>Timeout</strong>：Adobeからの応答を待つ時間（ミリ秒）。この機能は、通信問題や同意構成のためにAdobe Targetタグのパーソナライゼーションデータが利用できない場合に、ページのレンダリングを完了させることができます。</p>
+<p><strong>Timeout</strong>：Adobeからの応答を待つ時間（ミリ秒）。この機能は、通信問題や同意構成のために Adobe Target タグまたは Adobe Experience Platform Web SDK タグのパーソナライゼーションデータが利用できない場合に、ページのレンダリングを完了させることができます。</p>
 </li>
 </ul>
-<p><strong>条件を追加</strong>をクリックして、拡張機能がコンテンツを変更するタイミングと場所を決定するロジックステートメントを作成します。さらにコンテンツ変更エントリを追加するには、拡張機能構成の右上角にある**+**ボタンをクリックします。別のオプションとして、各エントリごとに拡張機能を複製することも可能ですが、一つの拡張機能内に複数のエントリを保持する方が、この拡張機能内のすべてのエントリが拡張機能のロード条件を共有するため、実装がスッキリします。</p>
+<p><strong>条件を追加</strong>をクリックして、拡張機能がコンテンツを変更するタイミングと場所を決定するロジックステートメントを作成します。さらにコンテンツ変更エントリを追加するには、拡張機能構成の右上隅にある <strong>+</strong> ボタンをクリックします。別のオプションとして、各エントリごとに拡張機能を複製することも可能ですが、一つの拡張機能に複数のエントリを保持する方が、この拡張機能内のすべてのエントリが拡張機能のロード条件を共有するため、実装がすっきりします。</p>
 
 </div>
 
@@ -541,7 +541,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年July月24日
+          <p>最終更新日 ::  2024年August月1日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -556,7 +556,7 @@
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">前提条件</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E3%81%84%E6%96%B9" href="javascript:void(0)">使い方</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%AE%E4%BD%BF%E7%94%A8" href="javascript:void(0)">拡張機能の使用</a></li>
               </nav>
   </aside></nav>

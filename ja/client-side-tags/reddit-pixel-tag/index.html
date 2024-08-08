@@ -426,88 +426,286 @@
   <h2 id="タグのヒント">タグのヒント</h2>
 <ul>
 <li>マッピングを使用して標準の構成値を上書きし、イベントをトリガーします。</li>
-<li>Order IDが構成されると、Purchaseイベントが発火します。</li>
+<li><strong>Order ID</strong>が構成されると、購入イベントが発火します。</li>
+<li>Reddit Pixel Event IDをサーバーサイドの属性として利用可能にするには、<strong>Generate Event ID</strong>を<code>true</code>に構成し、<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a>の最新バージョンを使用します。</li>
+<li>Reddit PixelタグとReddit Conversionsコネクタの両方を実装している場合にのみ、<a href="/ja/server-side-connectors/reddit-conversions-connector/">Reddit Conversions connector</a> Conversion ID構成の使用を推奨します。Conversion ID構成を使用すると、同じコンバージョンイベントが両方のソースで送信された場合に二重にカウントされるのを防ぎます。この値が不適切に渡されると、アトリビューションとキャンペーンのパフォーマンスに影響を与えます。</li>
+<li>最も正確なコンバージョントラッキングとRedditからのレポートを得るために、Advanced Matchingの使用を推奨します。メールアドレスは、プレーンな値またはSHA256で事前にハッシュ化された形で渡すことができます。Redditライブラリは、送信前にプレーンなメールアドレスにSHA256ハッシュを適用します。</li>
 </ul>
-<h2 id="タグの構成">タグの構成</h2>
-<p>まず、タグマーケットプレイスに移動し、Reddit Pixelタグを追加します（<a href="/ja/iq-tag-management/tags/manage/">タグの追加方法</a>について詳しくはこちら）。</p>
-<p>タグを追加した後、以下の構成を行います：</p>
+<h2 id="タグ構成">タグ構成</h2>
+<p>新しいタグを追加するために、タグマーケットプレイスに移動します。詳細については、<a href="/ja/iq-tag-management/tags/about/">About tags</a>を参照してください。</p>
+<p>タグを追加する際には、以下の構成を行います：</p>
 <ul>
-<li>
-<p><strong>アカウントID</strong></p>
+<li><strong>Account ID</strong>
 <ul>
 <li>あなたのRedditアカウントID。</li>
 </ul>
 </li>
-<li>
-<p><strong>ページ訪問の送信</strong></p>
+<li><strong>Send Page Visit</strong>
 <ul>
 <li>デフォルトでは、ページ訪問イベントはあなたのサイトの各ページで自動的に記録されます。</li>
-<li>スニペットがReddit Pixelにページ訪問イベントを送信しないようにするには、このオプションをfalseに構成します。</li>
+<li>スニペットがReddit Pixelにページ訪問イベントを送信しないようにする場合は、このオプションをfalseに構成します。</li>
+</ul>
+</li>
+<li><strong>Generate Event ID</strong>:
+<ul>
+<li>Redditのトラッキングイベントごとに自動的にイベントIDを生成します。</li>
 </ul>
 </li>
 </ul>
+<h2 id="ロードルール">ロードルール</h2>
+<p>すべてのページでタグをロードするか、タグがロードされる条件を構成します。詳細については、<a href="/ja/iq-tag-management/load-rules/about/">About load rules</a>を参照してください。</p>
 <h2 id="データマッピング">データマッピング</h2>
-<p>マッピングは、<a href="/ja/iq-tag-management/data-layer/data-layer-variables/">データレイヤー変数</a>からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマップする方法については、<a href="/iq-tag-management/data-mappings/manage/">データマッピング</a>を参照してください。</p>
-<p>利用可能なカテゴリは以下の通りです：</p>
+<p>マッピングは、データレイヤー変数からベンダータグの対応する宛先変数にデータを送信するプロセスです。詳細については、<a href="/ja/iq-tag-management/data-mappings/about/">About data mappings</a>を参照してください。</p>
+<p>利用可能なカテゴリーは以下の通りです：</p>
 <h3 id="標準">標準</h3>
 <table>
 <thead>
 <tr>
 <th>変数</th>
+<th>データタイプ</th>
 <th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>account_id</code></td>
-<td><ul><li>文字列</li><li>アカウントID</li></ul></td>
+<td>文字列</td>
+<td>アカウントID</td>
 </tr>
 <tr>
 <td><code>send_page_visit</code></td>
-<td><ul><li>ブール値</li><li>ページ訪問の送信</li></ul></td>
+<td>ブール値</td>
+<td>ページ訪問を送信</td>
+</tr>
+<tr>
+<td><code>generate_event_id</code></td>
+<td>ブール値</td>
+<td>イベントIDを生成</td>
+</tr>
+<tr>
+<td><code>event_id</code></td>
+<td>文字列</td>
+<td>イベントID</td>
 </tr>
 </tbody>
 </table>
-<h3 id="イベント">イベント</h3>
+<h3 id="e-commerce">E-commerce</h3>
 <table>
 <thead>
 <tr>
 <th>変数</th>
+<th>データタイプ</th>
 <th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>PageVisit</code></td>
-<td><ul><li>ページ訪問</li><li>選択したイベントをトリガーするために必要なマップ変数の値を入力します。</li></ul></td>
+<td><code>itemCount</code></td>
+<td>数値</td>
+<td>アイテム数</td>
 </tr>
 <tr>
-<td><code>ViewContent</code></td>
-<td><ul><li>コンテンツ表示</li><li>選択したイベントをトリガーするために必要なマップ変数の値を入力します。</li></ul></td>
+<td><code>value</code></td>
+<td>数値</td>
+<td>値</td>
 </tr>
 <tr>
-<td><code>Search</code></td>
-<td><ul><li>検索</li><li>選択したイベントをトリガーするために必要なマップ変数の値を入力します。</li></ul></td>
+<td><code>currency</code></td>
+<td>文字列</td>
+<td>通貨 ( <code>_ccurrency</code>を上書き)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="イベント">イベント</h3>
+<p>選択したイベントをトリガーするために必要なマップ変数の値を入力します。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">変数</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>PageVisit</code></td>
+<td style="text-align:left">ページ訪問</td>
 </tr>
 <tr>
-<td><code>AddToCart</code></td>
-<td><ul><li>カートに追加</li><li>選択したイベントをトリガーするために必要なマップ変数の値を入力します。</li></ul></td>
+<td style="text-align:left"><code>ViewContent</code></td>
+<td style="text-align:left">コンテンツ表示</td>
 </tr>
 <tr>
-<td><code>AddToWishlist</code></td>
-<td><ul><li>ウィッシュリストに追加</li><li>選択したイベントをトリガーするために必要なマップ変数の値を入力します。</li></ul></td>
+<td style="text-align:left"><code>Search</code></td>
+<td style="text-align:left">検索</td>
 </tr>
 <tr>
-<td><code>Purchase</code></td>
-<td><ul><li>購入</li><li>選択したイベントをトリガーするために必要なマップ変数の値を入力します。</li></ul></td>
+<td style="text-align:left"><code>AddToCart</code></td>
+<td style="text-align:left">カートに追加</td>
 </tr>
 <tr>
-<td><code>Lead</code></td>
-<td><ul><li>リード</li><li>選択したイベントをトリガーするために必要なマップ変数の値を入力します。</li></ul></td>
+<td style="text-align:left"><code>AddToWishlist</code></td>
+<td style="text-align:left">ウィッシュリストに追加</td>
 </tr>
 <tr>
-<td><code>SignUp</code></td>
-<td><ul><li>サインアップ</li><li>選択したイベントをトリガーするために必要なマップ変数の値を入力します。</li></ul></td>
+<td style="text-align:left"><code>Purchase</code></td>
+<td style="text-align:left">購入</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Lead</code></td>
+<td style="text-align:left">リード</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SignUp</code></td>
+<td style="text-align:left">サインアップ</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Custom</code></td>
+<td style="text-align:left">カスタムイベント</td>
+</tr>
+</tbody>
+</table>
+<h3 id="イベント固有のパラメータ">イベント固有のパラメータ</h3>
+<p>イベントをマップするには、<a href="/iq-tag-management/data-mappings/manage/#add-an-event-mapping">Create an Event Mapping</a>を参照してください。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">変数</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>currency</code></td>
+<td style="text-align:left">通貨</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>content_category</code></td>
+<td style="text-align:left">コンテンツカテゴリ</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>content_name</code></td>
+<td style="text-align:left">コンテンツ名</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>content_ids</code></td>
+<td style="text-align:left">コンテンツID</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>content_type</code></td>
+<td style="text-align:left">コンテンツタイプ</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>contents</code></td>
+<td style="text-align:left">コンテンツ</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>num_items</code></td>
+<td style="text-align:left">アイテム数</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>value</code></td>
+<td style="text-align:left">値</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>PageVisit</code></td>
+<td style="text-align:left">ページ訪問</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ViewContent</code></td>
+<td style="text-align:left">コンテンツ表示</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Search</code></td>
+<td style="text-align:left">検索</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>AddToCart</code></td>
+<td style="text-align:left">カートに追加</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>AddToWishlist</code></td>
+<td style="text-align:left">ウィッシュリストに追加</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Purchase</code></td>
+<td style="text-align:left">購入</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Lead</code></td>
+<td style="text-align:left">リード</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SignUp</code></td>
+<td style="text-align:left">サインアップ</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Custom_Event</code></td>
+<td style="text-align:left">カスタムイベント</td>
+</tr>
+</tbody>
+</table>
+<h3 id="advanced-matching">Advanced Matching</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">変数</th>
+<th style="text-align:left">データタイプ</th>
+<th style="text-align:left">宛先</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>email</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">メールアドレス</td>
+<td style="text-align:left">市区町村</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>idfa</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">IDFA</td>
+<td style="text-align:left">州</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>aaid</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">AAID</td>
+<td style="text-align:left">郵便番号</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>externalId</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">外部ID</td>
+<td style="text-align:left">外部ID</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ldu">LDU</h3>
+<p>Reddit Pixelがデータ処理モードで初期化されると、ページから発火されるすべてのコンバージョンイベントには自動的に以下のパラメータが含まれます：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">変数</th>
+<th style="text-align:left">データタイプ</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>dpm</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">データ処理モード。デフォルト値は<code>LDU</code>です。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>dpcc</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">ISO 3166-1 alpha-2国コード形式のデータ処理国コード。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>dprc</code></td>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left">国プレフィックスの有無に関わらず、ISO 3166-2地域コード形式のデータ処理地域コード。</td>
 </tr>
 </tbody>
 </table>
@@ -571,7 +769,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2021年July月16日
+          <p>最終更新日 ::  2024年August月7日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -586,10 +784,15 @@
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E3%83%92%E3%83%B3%E3%83%88" href="javascript:void(0)">タグのヒント</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグの構成</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグ構成</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%89%E3%83%AB%E3%83%BC%E3%83%AB" href="javascript:void(0)">ロードルール</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データマッピング</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%99%E6%BA%96" href="javascript:void(0)">標準</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e-commerce" href="javascript:void(0)">E-commerce</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">イベント</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E5%9B%BA%E6%9C%89%E3%81%AE%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">イベント固有のパラメータ</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#advanced-matching" href="javascript:void(0)">Advanced Matching</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ldu" href="javascript:void(0)">LDU</a></li>
               </nav>
   </aside></nav>
 
