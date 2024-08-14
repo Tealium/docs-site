@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Amazon Advertising DSP コネクタのセットアップガイド | サーバーサイドコネクタ |Tealiumドキュメント</title>
+    <title>Amazon Advertising DSPコネクタ構成ガイド | サーバーサイドコネクタ |Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -387,7 +387,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Amazon Advertising DSP コネクタのセットアップガイド</h1>
+<h1 class="lh-title mt30 mb3">Amazon Advertising DSPコネクタ構成ガイド</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -395,13 +395,14 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Amazon Advertising DSP コネクタのセットアップ方法について説明します。
+      この記事では、Amazon Advertising DSPコネクタの構成方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Amazon広告APIを使用すると、Amazon広告主およびAmazon広告パートナーネットワークのメンバーは広告運用をプログラムで管理できます。TealiumのAmazon Ads Data Provider APIとの統合により、クライアントはAmazon Ads DSP内のオーディエンスに訪問者を追加および削除することができます。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>このコネクタは現在非推奨です。現行のコネクタについては、<a href="/ja/server-side-connectors/amazon-ads-audience-management-connector/">Amazon Ads Audience Management connector</a>を参照してください。</p>
+<p>Amazon Ads APIは、Amazonの広告主とAmazon Advertising Partner Networkのメンバーが広告操作をプログラム的に管理することを可能にします。TealiumのAmazon Ads Data Provider APIとの統合により、クライアントはAmazon Ads DSP内のオーディエンスに訪問を追加したり削除したりすることができます。</p>
 <h2 id="コネクタのアクション">コネクタのアクション</h2>
 <table>
 <thead>
@@ -429,25 +430,25 @@
 </tr>
 </tbody>
 </table>
-<h2 id="設定の構成">設定の構成</h2>
-<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>の記事を参照してください。</p>
+<h2 id="構成の構成">構成の構成</h2>
+<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">About Connectors</a>の記事を参照してください。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>このコネクタを追加すると、ベンダーのデータプラットフォームポリシーを受け入れるように求められます。</p>
-<p>コネクタを追加した後、次の設定を構成します。</p>
+<p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
 <li>
-<p><strong>APIベースURL</strong><br>
-APIベースURLを選択します。</p>
+<p><strong>API Base URLs</strong><br>
+API Base URLを選択します。</p>
 </li>
 <li>
-<p><strong>Amazon広告主ID</strong><br>
-Amazon広告アカウントIDを入力します。</p>
+<p><strong>Amazon Advertiser ID</strong><br>
+Amazon AdvertisingアカウントIDを入力します。</p>
 </li>
 </ul>
-<p>また、Amazonとの接続を確立する必要があります。<strong>接続の確立</strong>をクリックし、TealiumコネクタアプリをAmazon広告アカウントに接続するための手順に従ってください。</p>
-<p>コネクタの構成が完了したら、<strong>完了</strong>をクリックします。</p>
-<h2 id="アクションの設定---パラメータとオプション">アクションの設定 - パラメータとオプション</h2>
-<p><strong>続行</strong>をクリックしてコネクタのアクションを構成します。アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
-<p>Amazon Advertising DSPコネクタは、次のアクションをサポートしています。</p>
+<p>また、Amazonとの接続を確立する必要があります。<strong>Establish Connection</strong>をクリックし、ページの指示に従ってTealium Connector AppをAmazon Advertisingアカウントに接続します。</p>
+<p>コネクタの構成が完了したら、<strong>Done</strong>をクリックします。</p>
+<h2 id="アクション構成--パラメータとオプション">アクション構成 — パラメータとオプション</h2>
+<p><strong>Continue</strong>をクリックしてコネクタのアクションを構成します。アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
+<p>Amazon Advertising DSPコネクタは以下のアクションをサポートしています：</p>
 <ul>
 <li>
 <p>ハッシュ化されたレコードを追加</p>
@@ -459,16 +460,16 @@ Amazon広告アカウントIDを入力します。</p>
 <p>オーディエンスから削除</p>
 </li>
 </ul>
-<p>以下のセクションでは、各アクションのパラメータとオプションの設定方法について説明します。</p>
-<h3 id="アクション---ハッシュ化されたレコードを追加">アクション - ハッシュ化されたレコードを追加</h3>
-<p>このアクションは、ハッシュ化されたPIIと外部識別子（例：顧客ID）をAmazon DSPに送信し、Amazonショッパーを名前、メールアドレス、携帯電話番号、住所、郵便番号などを含むハッシュ化された顧客レコードとマッチングさせるために使用されます。広告主は、以前に送信された外部識別子を使用してデータプロバイダAPIを使用して顧客をオーディエンスに追加することができます。</p>
-<p>たとえば、<strong>既知の顧客</strong>オーディエンスを構成し、訪問者がプロフィールにメールアドレスと顧客IDの両方を持っている場合に参加するようにします。次に、訪問者が<strong>既知の顧客</strong>オーディエンスに参加したときにトリガーされる<strong>ハッシュ化されたレコードを追加</strong>アクションを持つAmazon DSPコネクタを構成します。コネクタのアクションは、ハッシュ化されたメールアドレスと顧客IDをAmazonに送信します。その顧客IDは、後で<strong>オーディエンスに追加</strong>のAmazon DSPコネクタアクションを使用してその訪問者をオーディエンスに追加するために使用できます。</p>
+<p>以下のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
+<h3 id="アクション--ハッシュ化されたレコードを追加">アクション — ハッシュ化されたレコードを追加</h3>
+<p>このアクションは、ハッシュ化されたPIIと外部識別子（例えば、顧客ID）をAmazon DSPに送信し、Amazonのショッパーとハッシュ化された顧客レコード（名前、メール、モバイル、住所、郵便番号を含む）をマッチさせるために使用されます。広告主はその後、データプロバイダAPIを使用して、以前に送信した外部識別子を使用して顧客をオーディエンスに追加することができます。</p>
+<p>例えば、プロフィールにメールと顧客IDが両方存在する場合に訪問が参加する<strong>Known Customer</strong>オーディエンスを構成します。次に、訪問が<strong>Known Customer</strong>オーディエンスに参加するときにトリガーされる<strong>Add Hashed Record</strong>アクションを持つAmazon DSPコネクタを構成します。コネクタのアクションは、ハッシュ化されたメールと顧客IDをAmazonに送信します。その顧客IDは、その後、その訪問を<strong>Add to Audience</strong> Amazon DSPコネクタアクションを介してオーディエンスに追加するために使用することができます。</p>
 <h4 id="バッチ制限">バッチ制限</h4>
-<p>このアクションは、ベンダーへの高容量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます。</p>
+<p>このアクションは、ベンダーへの大量のデータ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">Batched Actions</a>を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロフィールが公開されるまでキューに入れられます：</p>
 <ul>
-<li>最大リクエスト数：5000</li>
-<li>最も古いリクエストからの経過時間の最大値：10分</li>
-<li>リクエストの最大サイズ：5 MB</li>
+<li>リクエストの最大数：5000</li>
+<li>最古のリクエストからの最大時間：10分</li>
+<li>リクエストの最大サイズ：5MB</li>
 </ul>
 <h4 id="パラメータ">パラメータ</h4>
 <table>
@@ -481,83 +482,83 @@ Amazon広告アカウントIDを入力します。</p>
 <tbody>
 <tr>
 <td>外部ID</td>
-<td><ul><li>このレコードの外部識別子。</li><li>これは、呼び出し元の独自のIDである必要があります。</li><li>この識別子はAmazon Adsのハッシュ化されたレコードとマッチングされ、以前に送信された外部識別子を使用してユーザーをオーディエンスに追加するために使用できます。</li></ul></td>
+<td><ul><li>このレコードの外部識別子。</li><li>これは、呼び出し元の独自の識別空間でレコードに固有のIDであることができます。</li><li>この識別子はAmazon Adsのハッシュ化されたレコードとマッチし、その後ユーザーをオーディエンスに追加するために使用することができます。</li></ul></td>
 </tr>
 <tr>
-<td>メールアドレス（すでにSHA256ハッシュ化済み）</td>
-<td><ul><li>メールアドレス。</li><li>すでにハッシュ化されている場合は、<strong>すでにSHA256ハッシュ化済み</strong>オプションを使用します。ホワイトスペースをトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化された値を指定します。</li></ul></td>
+<td>メールアドレス（既にSHA256でハッシュ化）</td>
+<td><ul><li>メールアドレス。 </li><li>SHA256でハッシュ化する必要があります。 </li><li>既にハッシュ化されている場合は、<strong>Already SHA256 Hashed</strong>オプションを使用します。空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化された値を提供します。 </li></ul></td>
 </tr>
 <tr>
 <td>メールアドレス（SHA256ハッシュを適用）</td>
-<td><ul><li>メールアドレス。</li><li>SHA256ハッシュ化する必要があります。</li><li><strong>SHA256ハッシュを適用</strong>オプションを使用し、プレーンテキストの値を指定します。コネクタは、この値をホワイトスペースをトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</li></ul></td>
+<td><ul><li>メールアドレス。 </li><li>SHA256でハッシュ化する必要があります。 </li><li><strong>Apply SHA256 Hash</strong>オプションをプレーンテキスト値とともに使用します。コネクタはこの値を空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。 </li></ul></td>
 </tr>
 <tr>
-<td>名（すでにSHA256ハッシュ化済み）</td>
-<td><ul><li>名。</li><li>すでにハッシュ化されている場合は、<strong>すでにSHA256ハッシュ化済み</strong>オプションを使用します。ホワイトスペースをトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化された値を指定します。</li></ul></td>
+<td>名（既にSHA256でハッシュ化）</td>
+<td><ul><li>名。 </li><li>SHA256でハッシュ化する必要があります。 </li><li>既にハッシュ化されている場合は、<strong>Already SHA256 Hashed</strong>オプションを使用します。空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化された値を提供します。 </li></ul></td>
 </tr>
 <tr>
 <td>名（SHA256ハッシュを適用）</td>
-<td><ul><li>名。</li><li>SHA256ハッシュ化する必要があります。</li><li><strong>SHA256ハッシュを適用</strong>オプションを使用し、プレーンテキストの値を指定します。コネクタは、この値をホワイトスペースをトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</li></ul></td>
+<td><ul><li>名。 </li><li>SHA256でハッシュ化する必要があります。 </li><li><strong>Apply SHA256 Hash</strong>オプションをプレーンテキスト値とともに使用します。コネクタはこの値を空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</li></ul></td>
 </tr>
 <tr>
-<td>姓（すでにSHA256ハッシュ化済み）</td>
-<td><ul><li>姓。</li><li>すでにハッシュ化されている場合は、<strong>すでにSHA256ハッシュ化済み</strong>オプションを使用します。ホワイトスペースをトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化された値を指定します。</li></ul></td>
+<td>姓（既にSHA256でハッシュ化）</td>
+<td><ul><li>姓。 </li><li>SHA256でハッシュ化する必要があります。 </li><li>既にハッシュ化されている場合は、<strong>Already SHA256 Hashed</strong>オプションを使用します。空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化された値を提供します。 </li></ul></td>
 </tr>
 <tr>
 <td>姓（SHA256ハッシュを適用）</td>
-<td><ul><li>姓。</li><li>SHA256ハッシュ化する必要があります。</li><li><strong>SHA256ハッシュを適用</strong>オプションを使用し、プレーンテキストの値を指定します。コネクタは、この値をホワイトスペースをトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</li></ul></td>
+<td><ul><li>姓。 </li><li>SHA256でハッシュ化する必要があります。 </li><li><strong>Apply SHA256 Hash</strong>オプションをプレーンテキスト値とともに使用します。コネクタはこの値を空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</li></ul></td>
 </tr>
 <tr>
-<td>住所（すでにSHA256ハッシュ化済み）</td>
-<td><ul><li>住所。</li><li>すでにハッシュ化されている場合は、<strong>すでにSHA256ハッシュ化済み</strong>オプションを使用します。ホワイトスペースをトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化された値を指定します。</li></ul></td>
+<td>住所（既にSHA256でハッシュ化）</td>
+<td><ul><li>住所。 </li><li>SHA256でハッシュ化する必要があります。 </li><li>既にハッシュ化されている場合は、<strong>Already SHA256 Hashed</strong>オプションを使用します。空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化された値を提供します。 </li></ul></td>
 </tr>
 <tr>
 <td>住所（SHA256ハッシュを適用）</td>
-<td><ul><li>住所。</li><li>SHA256ハッシュ化する必要があります。</li><li><strong>SHA256ハッシュを適用</strong>オプションを使用し、プレーンテキストの値を指定します。コネクタは、この値をホワイトスペースをトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</li></ul></td>
+<td><ul><li>住所。 </li><li>SHA256でハッシュ化する必要があります。 </li><li><strong>Apply SHA256 Hash</strong>オプションをプレーンテキスト値とともに使用します。コネクタはこの値を空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</li></ul></td>
 </tr>
 <tr>
-<td>電話番号（すでにSHA256ハッシュ化済み）</td>
-<td><ul><li>電話番号。</li><li>すでにハッシュ化されている場合は、<strong>すでにSHA256ハッシュ化済み</strong>オプションを使用します。ホワイトスペースをトリムし、SHA256ハッシュを使用してハッシュ化された値を指定します。</li></ul></td>
+<td>電話番号（既にSHA256でハッシュ化）</td>
+<td><ul><li>電話番号。 </li><li>SHA256でハッシュ化する必要があります。 </li><li>既にハッシュ化されている場合は、<strong>Already SHA256 Hashed</strong>オプションを使用します。空白を削除し、SHA256ハッシュを使用してハッシュ化された値を提供します。 </li></ul></td>
 </tr>
 <tr>
 <td>電話番号（SHA256ハッシュを適用）</td>
-<td><ul><li>電話番号。</li><li>SHA256ハッシュ化する必要があります。</li><li><strong>SHA256ハッシュを適用</strong>オプションを使用し、プレーンテキストの値を指定します。コネクタは、この値をホワイトスペースをトリムし、SHA256ハッシュを使用してハッシュ化します。</li></ul></td>
+<td><ul><li>電話番号。 </li><li>SHA256でハッシュ化する必要があります。 </li><li><strong>Apply SHA256 Hash</strong>オプションをプレーンテキスト値とともに使用します。コネクタはこの値を空白を削除し、SHA256ハッシュを使用してハッシュ化します。</li></ul></td>
 </tr>
 <tr>
-<td>市（すでにSHA256ハッシュ化済み）</td>
-<td><ul><li>市。</li><li>すでにハッシュ化されている場合は、<strong>すでにSHA256ハッシュ化済み</strong>オプションを使用します。ホワイトスペースをトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化された値を指定します。</li></ul></td>
+<td>市区町村（既にSHA256でハッシュ化）</td>
+<td><ul><li>市区町村。 </li><li>SHA256でハッシュ化する必要があります。 </li><li>既にハッシュ化されている場合は、<strong>Already SHA256 Hashed</strong>オプションを使用します。空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化された値を提供します。 </li></ul></td>
 </tr>
 <tr>
-<td>市（SHA256ハッシュを適用）</td>
-<td><ul><li>市。</li><li>SHA256ハッシュ化する必要があります。</li><li><strong>SHA256ハッシュを適用</strong>オプションを使用し、プレーンテキストの値を指定します。コネクタは、この値をホワイトスペースをトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</li></ul></td>
+<td>市区町村（SHA256ハッシュを適用）</td>
+<td><ul><li>市区町村。 </li><li>SHA256でハッシュ化する必要があります。 </li><li><strong>Apply SHA256 Hash</strong>オプションをプレーンテキスト値とともに使用します。コネクタはこの値を空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</li></ul></td>
 </tr>
 <tr>
-<td>郵便番号（すでにSHA256ハッシュ化済み）</td>
-<td><ul><li>郵便番号。</li><li>すでにハッシュ化されている場合は、<strong>すでにSHA256ハッシュ化済み</strong>オプションを使用します。ホワイトスペースをトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化された値を指定します。</li></ul></td>
+<td>郵便番号（既にSHA256でハッシュ化）</td>
+<td><ul><li>郵便番号。 </li><li>SHA256でハッシュ化する必要があります。 </li><li>既にハッシュ化されている場合は、<strong>Already SHA256 Hashed</strong>オプションを使用します。空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化された値を提供します。 </li></ul></td>
 </tr>
 <tr>
 <td>郵便番号（SHA256ハッシュを適用）</td>
-<td><ul><li>郵便番号。</li><li>SHA256ハッシュ化する必要があります。</li><li><strong>SHA256ハッシュを適用</strong>オプションを使用し、プレーンテキストの値を指定します。コネクタは、この値をホワイトスペースをトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</li></ul></td>
+<td><ul><li>郵便番号。 </li><li>SHA256でハッシュ化する必要があります。 </li><li><strong>Apply SHA256 Hash</strong>オプションをプレーンテキスト値とともに使用します。コネクタはこの値を空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</li></ul></td>
 </tr>
 <tr>
-<td>州（すでにSHA256ハッシュ化済み）</td>
-<td><ul><li>州。</li><li>すでにハッシュ化されている場合は、<strong>すでにSHA256ハッシュ化済み</strong>オプションを使用します。ホワイトスペースをトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化された値を指定します。</li></ul></td>
+<td>都道府県（既にSHA256でハッシュ化）</td>
+<td><ul><li>都道府県。 </li><li>SHA256でハッシュ化する必要があります。 </li><li>既にハッシュ化されている場合は、<strong>Already SHA256 Hashed</strong>オプションを使用します。空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化された値を提供します。 </li></ul></td>
 </tr>
 <tr>
-<td>州（SHA256ハッシュを適用）</td>
-<td><ul><li>州。</li><li>SHA256ハッシュ化する必要があります。</li><li><strong>SHA256ハッシュを適用</strong>オプションを使用し、プレーンテキストの値を指定します。コネクタは、この値をホワイトスペースをトリムし、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</li></ul></td>
+<td>都道府県（SHA256ハッシュを適用）</td>
+<td><ul><li>都道府県。 </li><li>SHA256でハッシュ化する必要があります。 </li><li><strong>Apply SHA256 Hash</strong>オプションをプレーンテキスト値とともに使用します。コネクタはこの値を空白を削除し、小文字に変換し、SHA256ハッシュを使用してハッシュ化します。</li></ul></td>
 </tr>
 </tbody>
 </table>
 <h4 id="ハッシュ化された属性">ハッシュ化された属性</h4>
-<p>マッピングされた値は、Amazonの<a href="https://advertising.amazon.com/dsp/help/ss/en/audiences/advertiser-audiences/advertiser-hashed-audience/#GA6BC9BW52YFXBNE">ハッシュ化オーディエンスドキュメント</a>に従って正規化およびハッシュ化する必要があります。</p>
-<h3 id="アクション---オーディエンスに追加">アクション - オーディエンスに追加</h3>
-<p>このアクションは、訪問者をAmazon DSP内のオーディエンスに追加するために使用されます。たとえば、特定のライフタイムの支出閾値に達したときに、訪問者を特定のAmazon DSPオーディエンスに再ターゲティングするために追加することができます。</p>
+<p>マッピングされた値は、Amazonの<a href="https://advertising.amazon.com/dsp/help/ss/en/audiences/advertiser-audiences/advertiser-hashed-audience/#GA6BC9BW52YFXBNE">Hashed Audience documentation</a>に従って正規化およびハッシュ化する必要があります。</p>
+<h3 id="アクション--オーディエンスに追加">アクション — オーディエンスに追加</h3>
+<p>このアクションは、Amazon DSP内のオーディエンスに訪問を追加するために使用されます。例えば、訪問が特定のライフタイム支出閾値に達したときに、特定のAmazon DSPオーディエンスに訪問を追加してリターゲティングすることができます。</p>
 <h4 id="バッチ制限-1">バッチ制限</h4>
-<p>このアクションは、ベンダーへの高容量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます。</p>
+<p>このアクションは、ベンダーへの大量のデータ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
-<li>最大リクエスト数：2000</li>
-<li>最も古いリクエストからの経過時間の最大値：10分</li>
+<li>リクエストの最大数：2000</li>
+<li>最も古いリクエストからの最大時間：10分</li>
 <li>リクエストの最大サイズ：1 MB</li>
 </ul>
 <h4 id="パラメータ-1">パラメータ</h4>
@@ -571,11 +572,11 @@ Amazon広告アカウントIDを入力します。</p>
 <tbody>
 <tr>
 <td>オーディエンスID</td>
-<td>既存のTealium作成のAmazonオーディエンスを使用する場合は、既存のTealiumコネクタアクション構成にあるTealiumオーディエンスIDを入力します。<br> Amazon DSPで新しいオーディエンスを作成する場合は、<strong>オーディエンスの作成</strong>をクリックし、次の情報を入力します：<ul><li>新しいAmazon DSPオーディエンスの名前</li><li>説明</li><li>一意の外部オーディエンスID</li><li>2文字の国コードのカンマ区切りリスト。これは、ユーザーオーディエンスデータのソースを表すDMA関連のフィールドです。デフォルト値は<code>UNKNOWN</code>です。</li></ul>オーディエンスを選択または作成した後、<strong>オーディエンスIDの検証</strong>をクリックして、オーディエンスが正しいことを確認します。</td>
+<td>既存のTealium作成のAmazonオーディエンスを使用するには、既存のTealiumコネクタアクション構成にあるTealiumオーディエンスIDを入力します。<br> Amazon DSPで新しいオーディエンスを作成するには、<strong>オーディエンスを作成</strong>をクリックして以下の情報を入力します：<ul><li>新しいAmazon DSPオーディエンスの名前</li><li>説明</li><li>ユニークな外部オーディエンスID</li><li>2文字の国コードのカンマ区切りリスト。これは、ユーザーオーディエンスデータのソースを表すDMA関連フィールドです。デフォルト値は<code>UNKNOWN</code>です。</li></ul>オーディエンスを選択または作成した後、<strong>オーディエンスIDを確認</strong>をクリックして、オーディエンスが正しいことを確認します。</td>
 </tr>
 <tr>
 <td>外部ID</td>
-<td>ハッシュマッチングを介して以前にAmazonに送信された外部IDです。</td>
+<td>ハッシュマッチングを介して以前にAmazonに送信された外部ID。</td>
 </tr>
 <tr>
 <td>MAID</td>
@@ -583,17 +584,17 @@ Amazon広告アカウントIDを入力します。</p>
 </tr>
 <tr>
 <td>Amazon Cookie</td>
-<td>クッキー同期を介して取得したクッキー。</td>
+<td>Cookie同期を介して取得したCookie。</td>
 </tr>
 </tbody>
 </table>
 <h3 id="アクション---オーディエンスから削除">アクション - オーディエンスから削除</h3>
-<p>このアクションは、訪問者をAmazon DSP内のオーディエンスから削除するために使用されます。たとえば、訪問者がAudiencestreamオーディエンスを離れるときに特定のAmazon DSPオーディエンスから訪問者を削除して、再ターゲティングされないようにすることができます。</p>
+<p>このアクションは、Amazon DSP内のオーディエンスから訪問を削除するために使用されます。例えば、訪問がAudiencestreamオーディエンスを離れるときに、特定のAmazon DSPオーディエンスから訪問を削除してリターゲティングされないようにすることができます。</p>
 <h4 id="バッチ制限-2">バッチ制限</h4>
-<p>このアクションは、ベンダーへの高容量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます。</p>
+<p>このアクションは、ベンダーへの大量のデータ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
-<li>最大リクエスト数：2000</li>
-<li>最も古いリクエストからの経過時間の最大値：10分</li>
+<li>リクエストの最大数：2000</li>
+<li>最も古いリクエストからの最大時間：10分</li>
 <li>リクエストの最大サイズ：1 MB</li>
 </ul>
 <h4 id="パラメータ-2">パラメータ</h4>
@@ -607,11 +608,11 @@ Amazon広告アカウントIDを入力します。</p>
 <tbody>
 <tr>
 <td>オーディエンスID</td>
-<td>既存のTealium作成のAmazonオーディエンスを使用する場合は、そのIDを入力し、<strong>オーディエンスIDの検証</strong>をクリックして、オーディエンスが正しいことを確認します。<br>「オーディエンスに追加」アクション構成で作成されたオーディエンスIDをコピーします。Amazonインターフェースに表示されるIDではなく、既存のTealiumコネクタアクション構成からこの名前をコピーして貼り付けてください。</td>
+<td>既存のTealium作成のAmazonオーディエンスを使用するには、そのIDを入力し、<strong>オーディエンスIDを確認</strong>をクリックして、オーディエンスが正しいことを確認します。<br> &ldquo;オーディエンスに追加&quot;アクション構成で作成したオーディエンスIDをコピーできます。この名前は、既存のTealiumコネクタアクション構成からコピー＆ペーストしてください。Amazonインターフェースに表示されているIDからではありません。</td>
 </tr>
 <tr>
 <td>外部ID</td>
-<td>ハッシュマッチングを介して以前にAmazonに送信された外部IDです。</td>
+<td>ハッシュマッチングを介して以前にAmazonに送信された外部ID。</td>
 </tr>
 <tr>
 <td>MAID</td>
@@ -619,44 +620,44 @@ Amazon広告アカウントIDを入力します。</p>
 </tr>
 <tr>
 <td>Amazon Cookie</td>
-<td>クッキー同期を介して取得したクッキー。</td>
+<td>Cookie同期を介して取得したCookie。</td>
 </tr>
 </tbody>
 </table>
 <h2 id="統合戦略">統合戦略</h2>
-<p>Amazon DSPオーディエンスに訪問者を追加する際のユーザー識別には、3つのオプションがあります。</p>
+<p>Amazon DSPオーディエンスに訪問を追加する際のユーザー識別には3つのオプションがあります：</p>
 <ul>
 <li>Cookie ID</li>
 <li>外部ID</li>
 <li>MAID</li>
 </ul>
-<p>ユーザー識別子によって統合戦略が異なります。</p>
+<p>使用するユーザー識別子によって、統合戦略が異なります。</p>
 <h3 id="cookie-id">Cookie ID</h3>
-<p>Cookie ID識別子は、Amazonシステム内のサードパーティクッキーにマッチングされるファーストパーティ識別子であり、このCookie ID識別子はブラウザレベルで匿名の訪問者をターゲットにするために使用できます。Amazon Advertising Cookie Matching ServiceのTiQタグを使用すると、簡単に統合できます。このタグは、最初のパーティ<code>tealium_visitor_id</code>をAmazonにマッチングするために渡します。</p>
-<p>この<code>tealium_visitor_id</code>の値を保持するために、訪問または訪問者レベルの属性を作成できます。この属性は、Amazon DSPコネクタでCookie IDにマッピングされます。</p>
+<p>Cookie ID識別子は、Amazonシステム内の第三者クッキーにマッチした第一者識別子で、このCookie ID識別子は、ブラウザレベルで匿名の訪問をターゲットにするために使用できます。Amazon Advertising Cookie Matching Service TiQタグは、第一者の<code>tealium_visitor_id</code>をAmazonにマッチングするための簡単な統合を提供します。</p>
+<p>訪問または訪問レベルの属性を作成して、この<code>tealium_visitor_id</code>値を保持することができます。この属性は、Amazon DSPコネクタでCookie IDにマッピングされます。</p>
 <h3 id="外部id">外部ID</h3>
-<p>外部IDは、最初にAmazon DSPシステムでハッシュ化されたPIIとマッチングされた訪問者の一意の識別子です。このIDは、顧客IDなどのクライアント所有の識別子、または<code>tealium_visitor_id</code>などのTealium生成の識別子である場合があります。この識別子は、訪問者のライフタイムにわたって永続化され、デバイスごとに変更されることはありません。</p>
-<p>外部IDを<strong>オーディエンスに追加</strong>アクションで使用する前に、顧客はまず<strong>ハッシュ化されたレコードを追加</strong>アクションを使用してIDとハッシュ化されたPIIをAmazonに送信する必要があります。</p>
-<p>次の2つの例の実装では、ハッシュ化されたPIIとしてメールアドレスが使用され、メールアドレスが訪問者スコープの属性にキャプチャされていると想定しています。</p>
+<p>外部IDは、訪問のためのユニークな識別子で、最初にAmazon DSPシステムでハッシュ化されたPIIとマッチングされます。このIDは、顧客IDのようなクライアントが所有する識別子であるか、または<code>tealium_visitor_id</code>のようなTealiumが生成する識別子であることができます。識別子は訪問のライフタイム中に持続し、デバイスごとに変更されるべきではありません。</p>
+<p><strong>オーディエンスに追加</strong>アクションで外部IDを使用する前に、顧客は最初にIDとハッシュ化されたPIIを<strong>ハッシュレコードを追加</strong>アクションを使用してAmazonに送信する必要があります。</p>
+<p>以下の2つの例の実装は、ハッシュ化されたPIIとしてメールが使用され、メールアドレスが訪問スコープの属性でキャプチャされると仮定しています：</p>
 <h4 id="顧客idの例">顧客IDの例</h4>
-<p>次の例では、<code>Customer ID</code>がクライアントのシステムによって訪問者スコープの属性<code>Customer ID</code>に入力されると想定しています。</p>
+<p>以下の例では、<code>Customer ID</code>がクライアントのシステムによって構成された訪問スコープの属性であると仮定しています：</p>
 <ol>
-<li><code>Customer Email</code>と<code>Customer ID</code>の両方がプロフィールに存在する場合に参加する<strong>既知の顧客</strong>オーディエンスを構成します。</li>
-<li><strong>ハッシュ化されたレコードを追加</strong>アクションが<strong>既知の顧客</strong>オーディエンスに参加したときにトリガーされるAmazon DSPコネクタを構成します。</li>
-<li>このアクションでは、<code>Customer ID</code>を<code>External ID</code>としてマッピングし、<code>Customer Email</code>をハッシュ化された識別子としてマッピングします。</li>
-<li>コネクタのアクションは、ハッシュ化されたメールアドレスと顧客IDをAmazonに送信します。</li>
-<li><code>Customer ID</code>の値は、後で<strong>Add to Audience</strong>のAmazon DSPコネクタアクションを使用してその訪問者をオーディエンスに追加するために使用できます。</li>
+<li><code>Customer Email</code>と<code>Customer ID</code>の両方がプロファイルに存在するときに訪問が参加する<strong>Known Customer</strong>オーディエンスを構成します。</li>
+<li><strong>Known Customer</strong>オーディエンスに参加したときにトリガーされるAmazon DSPコネクタの<strong>Add Hashed Record</strong>アクションを構成します。</li>
+<li>このアクションでは、<code>Customer ID</code>を<code>External ID</code>として、<code>Customer Email</code>をハッシュ化された識別子としてマッピングします。</li>
+<li>コネクタのアクションは、ハッシュ化されたメールと顧客IDをAmazonに送信します。</li>
+<li><code>Customer ID</code>の値は、その後、<strong>Add to Audience</strong>コネクタアクションを介してその訪問をオーディエンスに追加するために使用できます。</li>
 </ol>
 <h4 id="tealium-visitor-idの例">Tealium Visitor IDの例</h4>
 <ol>
-<li>訪問者スコープの属性<code>First Tealium VID</code>を構成します。この属性は、訪問者スコープの属性が入力されていない場合に<code>tealium_visitor_id</code>イベント属性をキャプチャします。</li>
-<li><strong>Amazon DSP</strong>というオーディエンスを作成し、訪問者が<code>First Tealium VID</code>と<code>Customer Email</code>が入力されている場合に参加するようにします。</li>
-<li>Amazon DSPコネクタで<strong>ハッシュ化されたレコードを追加</strong>アクションを構成し、訪問者が<strong>Amazon DSP</strong>オーディエンスに参加したときにトリガーされるようにします。
-このアクションでは、<code>First Tealium VID</code>を<code>External ID</code>としてマッピングし、<code>Customer Email</code>をハッシュ化された識別子としてマッピングします。</li>
-<li><code>First Tealium VID</code>の値は、<strong>Add to Audience</strong>コネクタアクションを使用して訪問者をAmazonオーディエンスに追加するために使用できます。</li>
+<li>訪問スコープの属性<code>First Tealium VID</code>を構成します。これは、訪問スコープの属性が構成されていない場合に<code>tealium_visitor_id</code>イベント属性をキャプチャします。</li>
+<li><code>First Tealium VID</code>と<code>Customer Email</code>が構成されているときに訪問が参加する<strong>Amazon DSP</strong>オーディエンスを作成します。</li>
+<li>訪問が<strong>Amazon DSP</strong>オーディエンスに参加したときにトリガーされるAmazon DSPコネクタの<strong>Add Hashed Record</strong>アクションを構成します。
+このアクションでは、<code>First Tealium VID</code>を<code>External ID</code>として、<code>Customer Email</code>をハッシュ化された識別子としてマッピングします。</li>
+<li><code>First Tealium VID</code>の値は、その後、<strong>Add to Audience</strong>コネクタアクションを使用して訪問をAmazonオーディエンスに追加するために使用できます。</li>
 </ol>
 <h3 id="maid">MAID</h3>
-<p>モバイル広告識別子（MAID）は、モバイル電話に関連付けられた一意の擬似匿名識別子です。Cookie IDと同様に、この識別子はデバイスベースであり、PIIに依存しません。MAID識別子を保持するために、訪問者レベルの属性を作成し、この属性をユーザー識別子として<strong>オーディエンスに追加</strong>コネクタアクションで使用します。</p>
+<p>モバイル広告識別子（MAID）は、モバイル電話に関連付けられたユニークな擬似匿名識別子です。Cookie IDと同様に、この識別子はデバイスベースであり、PIIに依存していません。MAID識別子を保持するための訪問レベルの属性を作成し、その後、ユーザー識別子として<strong>Add to Audience</strong>コネクタアクションで使用します。</p>
 
 </div>
 
@@ -717,7 +718,7 @@ Amazon広告アカウントIDを入力します。</p>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年June月6日
+          <p>最終更新日 ::  2024年August月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -732,10 +733,10 @@ Amazon広告アカウントIDを入力します。</p>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタのアクション</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AD%E5%AE%9A%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">設定の構成</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E8%A8%AD%E5%AE%9A---%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクションの設定 - パラメータとオプション</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%83%8F%E3%83%83%E3%82%B7%E3%83%A5%E5%8C%96%E3%81%95%E3%82%8C%E3%81%9F%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">アクション - ハッシュ化されたレコードを追加</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%AB%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">アクション - オーディエンスに追加</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成の構成</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90--%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 — パラメータとオプション</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%83%8F%E3%83%83%E3%82%B7%E3%83%A5%E5%8C%96%E3%81%95%E3%82%8C%E3%81%9F%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">アクション — ハッシュ化されたレコードを追加</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3--%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%AB%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">アクション — オーディエンスに追加</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%82%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%8B%E3%82%89%E5%89%8A%E9%99%A4" href="javascript:void(0)">アクション - オーディエンスから削除</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%B5%B1%E5%90%88%E6%88%A6%E7%95%A5" href="javascript:void(0)">統合戦略</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cookie-id" href="javascript:void(0)">Cookie ID</a></li>

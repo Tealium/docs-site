@@ -523,35 +523,57 @@
 
   
     <p class="f4 fw3 lh-copy">
-      データレイヤーエンリッチメントは、AudienceStreamの訪問と訪問の属性をTealium iQ構成で利用可能にし、そのデータをデータレイヤーに反映します。
+      データレイヤーエンリッチメントは、AudienceStreamの訪問と訪問の属性をTealium iQ構成に利用可能にし、そのデータをデータレイヤーに反映します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>データレイヤーエンリッチメントは、AudienceStreamの<a href="/ja/server-side/attributes/about/">属性</a>をTealium iQアカウントにインポートし、それらをデータレイヤーの一部として利用可能にします。AudienceStreamで収集された顧客データは、ウェブサイトのデータレイヤーに反映されます。これらの属性は、iQアカウントのロードルール、拡張機能、タグで使用でき、顧客にパーソナライズされた体験を提供するために使用できます。</p>
+  <p>データレイヤーエンリッチメントは、AudienceStreamの<a href="/ja/server-side/attributes/about/">属性</a>をTealium iQアカウントにインポートし、それらをデータレイヤーの一部として利用可能にします。AudienceStreamで収集された訪問データは、ウェブサイトのデータレイヤーに反映されます。これらの属性は、iQアカウントのロードルール、拡張機能、タグで使用でき、訪問にパーソナライズされた体験を提供するために使用できます。</p>
+<h2 id="必要条件">必要条件</h2>
+<p>データレイヤーエンリッチメントには以下が必要です：</p>
+<ul>
+<li>アクティブな<strong>AudienceStream</strong>プロファイルで、訪問と訪問の属性が定義されていること。</li>
+<li>アクティブな<strong>Tealium Collectタグ</strong>。</li>
+<li><code>utag.js</code>バージョン4.27以降。<code>utag.js</code>テンプレートの更新についての詳細は、ナレッジベースの記事<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">utag.jsの最新バージョンへの更新のベストプラクティス</a>を参照してください。</li>
+</ul>
 <h2 id="仕組み">仕組み</h2>
-<p>データレイヤーエンリッチメントは、iQのプロファイルレベルの構成で、対応するAudienceStreamプロファイルにリンクします。データレイヤーエンリッチメントが有効になると、新しいタイプのデータレイヤー変数であるAudienceStream属性が、データレイヤー画面の変数リストに表示されます。AudienceStreamプロファイルからの訪問と訪問の属性がインポートされ、他のデータレイヤー変数と同様に使用できるようになります。</p>
+<p>データレイヤーエンリッチメントは、iQのプロファイルレベルの構成で、対応するAudienceStreamプロファイルにリンクします。データレイヤーエンリッチメントが有効になると、データレイヤー画面の変数リストに新しいタイプのデータレイヤー変数であるAudienceStream属性が表示されます。AudienceStreamプロファイルからの訪問と訪問の属性がインポートされ、他のデータレイヤー変数と同様に使用できるようになります。</p>
 <figure><a class="slb" href="/images/server-side/whiteui-datalayerenrichment-audiencestreamattributes.png"><img src="/images/server-side/whiteui-datalayerenrichment-audiencestreamattributes.png"
          alt="DataLayerEnrichment_AudienceStreamAttributes.png"
          title="DataLayerEnrichment_AudienceStreamAttributes.png"/>
     </a>
 </figure>
-<p>これらの属性は、リアルタイムの顧客データを<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collect Tag</a>を使用してUniversal Data Object (UDO)に反映します。</p>
-<p>訪問が初めてサイトを訪れると、Tealium CollectタグはAudienceStreamに呼び出しを送り、最新の訪問プロファイル属性を取得します。データは、将来の使用のためにブラウザのローカル保存に配置されます。</p>
-<p>2回目のトラッキング呼び出しでは、AudienceStreamの属性がUDOにあり、それらを使用して構成されたロードルール、拡張機能、またはタグに影響を与えます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>タグは非同期にロードされるため、最新に取得した属性セットは、現在のページのイベントではなく、次のトラッキング呼び出しで使用できます。</p>
+<p>これらの属性は、リアルタイムの顧客データをUniversal Data Object (UDO)に<a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collectタグ</a>を使用して反映します。</p>
+<p>訪問が初めてサイトを訪れたとき、Tealium CollectタグはAudienceStreamにコールを送り、最新の訪問プロファイル属性を取得します。データはブラウザのローカル保存に保存され、将来の使用のために保持されます。</p>
+<p>2回目のトラッキングコールでは、AudienceStreamの属性がUDOに反映され、それらを構成したロードルール、拡張機能、またはタグに影響を与えます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>タグは非同期にロードされるため、最新に取得した属性セットは現在のページのイベントではなく、次のトラッキングコールで使用できます。</p>
 <h3 id="同一オリジンポリシー">同一オリジンポリシー</h3>
-<p>顧客データを保存するために使用されるブラウザのメカニズム、localStorageは、セキュリティ目的で<a href="https://en.wikipedia.org/wiki/Same-origin_policy">同一オリジンポリシー</a>に準拠していることに注意が必要です。これは、データレイヤーエンリッチメントがhttpプロトコルやサブドメイン間で持続しないことを意味します。</p>
-<p>例えば、<a href="http://www.tealium.com">www.tealium.com </a>のページからsecure.tealium.comのページに移動すると、localStorageに保存されたデータレイヤーエンリッチメントデータは新しいサブドメインには持続しません。したがって、ユーザーがサブドメインやプロトコルを変更すると、新たにデータレイヤーエンリッチメントの呼び出しを行ってlocalStorageを再度反映させる必要があり、データは次のトラッキング呼び出しまで利用できない場合があります。</p>
-<h2 id="前提条件">前提条件</h2>
-<p>データレイヤーエンリッチメントを使用するための要件は以下の通りです：</p>
+<p>訪問データは、セキュリティ目的で<a href="https://en.wikipedia.org/wiki/Same-origin_policy">同一オリジンポリシー</a>に従って<code>localStorage</code>を使用してブラウザに保存されることに注意が必要です。これは、データレイヤーエンリッチメントが<code>http</code>プロトコルやサブドメイン間で持続しないことを意味します。</p>
+<p>例えば、<code>www.tealium.com</code>のページから<code>secure.tealium.com</code>のページに移動したとき、<code>localStorage</code>に保存されたデータレイヤーエンリッチメントデータは新しいサブドメインには持続しません。したがって、ユーザーがサブドメインやプロトコルを変更すると、新たにデータレイヤーエンリッチメントコールを行って<code>localStorage</code>を再度反映させる必要があり、データは次のトラッキングコールまで利用できない場合があります。</p>
+<h3 id="ドメイン許可リスト">ドメイン許可リスト</h3>
+<p>デフォルトでは、データレイヤーエンリッチメントは、リクエストがどのドメインから来たかに関係なく、TAPIDクッキーが存在する場合は訪問プロファイルを検索します。</p>
+<p>許可リストを作成することで、信頼できないドメインからTAPIDクッキーに基づいて訪問プロファイルにアクセスすることを防ぎます。</p>
+<p>データレイヤーエンリッチメントは、リクエストドメインと構成した許可リストに基づいて訪問IDを取得します：</p>
 <ul>
-<li><strong>AudienceStream</strong> – 訪問と訪問の属性が定義された有効なAudienceStreamアカウントが必要です。AudienceStreamアカウントをお持ちでない場合は、アカウントマネージャーにお問い合わせください。</li>
-<li><strong>iQでのデータレイヤーエンリッチメントの有効化</strong>– データレイヤーエンリッチメントを活用するために、アカウントマネージャーに連絡してアカウントを有効化してください。</li>
-<li><strong>Tealium Collectタグ</strong> – Tealium iQプロファイルにTealium Collectタグを追加する必要があります。</li>
-<li><strong>最新バージョンのutag.js</strong> – <code>utag.js</code>バージョン4.27以降が必要です。<code>utag.js</code>テンプレートの更新についての詳細は、ナレッジベースの記事<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">Best Practices for Updating to the Latest Version of utag.js</a>をご覧ください。</li>
+<li><strong>ドメインが一致</strong><br>
+リファラが許可リストのドメインと一致する場合、データレイヤーエンリッチメントは、存在する場合はサードパーティのTAPIDクッキーの訪問IDを使用します。それ以外の場合は、URLパスの訪問IDが使用されます。</li>
+<li><strong>ドメインが一致しない</strong><br>
+リファラが許可リストのドメインと一致しない場合、データレイヤーエンリッチメントはTAPIDクッキーを無視し、URLパスの訪問IDを使用します。</li>
 </ul>
+<h4 id="サブドメイン">サブドメイン</h4>
+<p>許可リストにドメインを追加すると、そのすべてのサブドメインが自動的に含まれます。例えば、<code>example.com</code>を許可すると、<code>*.example.com</code>に一致する任意のサブドメインが含まれます。</p>
+<pre tabindex="0"><code>http://example.com
+https://mobile.example.com/xyz/index.html
+http://app.mobile.example.com
+</code></pre><h4 id="許可リストの作成">許可リストの作成</h4>
+<p>特定の信頼できるドメインからのリクエストのみを制限するために、プロファイル内に許可リストを作成します。</p>
+<ol>
+<li><strong>管理メニュー &gt; データレイヤーエンリッチメント</strong>に移動します。</li>
+<li>信頼するドメインのカンマ区切りリストを入力します。プロファイルごとに最大250のドメインを追加できます。ドメインの前に<code>http</code>または<code>https</code>プロトコルを含めないでください（例：<code>example.com</code>）。</li>
+<li><strong>保存</strong>をクリックします。</li>
+<li>変更を保存して公開します。</li>
+</ol>
 
 </div>
 
@@ -597,7 +619,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2024年August月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -611,9 +633,10 @@
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">必要条件</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E4%B8%80%E3%82%AA%E3%83%AA%E3%82%B8%E3%83%B3%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC" href="javascript:void(0)">同一オリジンポリシー</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">前提条件</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E8%A8%B1%E5%8F%AF%E3%83%AA%E3%82%B9%E3%83%88" href="javascript:void(0)">ドメイン許可リスト</a></li>
               </nav>
   </aside></nav>
 

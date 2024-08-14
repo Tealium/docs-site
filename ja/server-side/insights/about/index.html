@@ -523,7 +523,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Insightsは、AWS QuickSightによって動作するカスタマイズ可能なレポーティングツールです。Insightsは、EventDBからのイベントデータとAudienceDBからの訪問と訪問データを視覚化する事前定義されたダッシュボードを提供します。これらのダッシュボードは、Tealiumによって定義された事前定義された属性に基づいており、デフォルトですべてのプロファイルで利用可能です。</p>
+  <p>Insightsは、AWS QuickSightによって動かされるカスタマイズ可能なレポーティングツールです。Insightsは、EventDBからのイベントデータとAudienceDBからの訪問と訪問データを視覚化する事前定義されたダッシュボードを提供します。これらのダッシュボードは、Tealiumによって定義された事前定義された属性に基づいており、デフォルトですべてのプロファイルで利用可能です。</p>
 <p>新しい分析を作成し、それをダッシュボードとして公開することで、カスタムダッシュボードも作成できます。詳細については、<a href="/ja/server-side/insights/manage-analyses/">分析の管理</a>を参照してください。</p>
 <p>収集したデータの量や品質、トリガーされたアクションの成功/失敗率などの運用データ、または顧客体験チャネルへのトラフィックやオーディエンスセグメントの人口などの顧客行動データに対して視覚化を作成することができます。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Insightsはあなたのアカウントで有効にする必要があります。詳細については、カスタマーサクセスマネージャーにお問い合わせください。</p>
@@ -531,35 +531,43 @@
 <p>Insightsには以下のDataAccess製品が必要です：</p>
 <ul>
 <li><strong>EventDB</strong> – イベントデータに基づくダッシュボードを有効にする必要があります。</li>
-<li><strong>AudienceDB</strong> – 訪問と訪問データに基づくダッシュボードを有効にする必要があります。</li>
+<li><strong>AudienceDB</strong> – 訪問と訪問デーアに基づくダッシュボードを有効にする必要があります。</li>
 </ul>
 <h2 id="仕組み">仕組み</h2>
 <p>Insightsは、事前定義されたダッシュボードを生成するために使用できるダッシュボードテンプレートを提供します。テンプレートは、データセット（データのソース）とダッシュボードに使用されるフィールド、表示されるグラフの種類を指定します。詳細については、<a href="/ja/server-side/insights/about-templates/">テンプレートについて</a>と<a href="/ja/server-side/insights/manage-dashboards/">ダッシュボードの管理</a>を参照してください。</p>
 <p>テンプレートを使用すると、データセットとダッシュボードを構成する必要なく、データの事前定義されたダッシュボードをすばやく生成できます。生成されたダッシュボードはPDFまたはCSVにエクスポートしてダウンロードできます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>ダッシュボードにエラーが発生した場合は、<strong>テンプレート &gt; テンプレート詳細</strong>画面を確認してください。データセットを更新する必要があるかもしれません。詳細については、<a href="/ja/server-side/insights/manage-datasets/#refresh-a-dataset">データセットの更新</a>を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>ダッシュボードのエラーが発生した場合は、<strong>テンプレート &gt; テンプレート詳細</strong>画面を確認してください。データセットを更新する必要があるかもしれません。詳細については、<a href="/ja/server-side/insights/manage-datasets/#refresh-a-dataset">データセットの更新</a>を参照してください。</p>
 <h3 id="カスタムダッシュボード">カスタムダッシュボード</h3>
 <p>カスタムダッシュボードを作成するには、分析を作成します。分析は、データセット、グラフに含めるデータセットからのフィールド、ダッシュボードのグラフを指定します。既存のデータセットを使用するか、既存のデータソースに基づいて新しいデータセットを構成できます。分析を作成した後、それをダッシュボードとして公開できます。</p>
 <h4 id="カスタムダッシュボードのエクスポートとインポート">カスタムダッシュボードのエクスポートとインポート</h4>
-<p>複数のプロファイルでカスタムダッシュボードを作成する必要がないように、カスタムダッシュボードをJSONファイルにエクスポートし、このJSONファイルを他のプロファイルにインポートできます。詳細については、<a href="/ja/server-side/insights/manage-dashboards/#export-a-custom-dashboard">カスタムダッシュボードのエクスポート</a>を参照してください。</p>
+<p>複数のプロファイルでカスタムダッシュボードを作成する手間を省くために、カスタムダッシュボードをJSONファイルにエクスポートし、このJSONファイルを他のプロファイルにインポートできます。詳細については、<a href="/ja/server-side/insights/manage-dashboards/#export-a-custom-dashboard">カスタムダッシュボードのエクスポート</a>を参照してください。</p>
 <h3 id="データセット">データセット</h3>
 <p>事前定義されたダッシュボードのデータセットは、DataAccess（EventDBとAudienceDB）に保存されている事前定義された属性に基づいています。データセットは編集可能です。</p>
 <p>Insightsは、すべての事前定義されたダッシュボードにSPICE（Super-fast Parallel In-memory Calculation Engine）データセットを使用します。SPICEデータセットのデータは、Amazon QuickSightが使用するクイックアクセスメモリに保存されます。</p>
 <p>Insightsのデータセットは、事前定義されたダッシュボードが生成されると自動的に作成されます。各事前定義ダッシュボードには独自のデータセットがあります。</p>
-<h2 id="著者と読者の役割">著者と読者の役割</h2>
+<h2 id="作成者と読者の役割">作成者と読者の役割</h2>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Insightsのユーザーは、Insights機能への表示アクセスを持つ権限グループのメンバーである必要があります。詳細については、<a href="/ja/administration/admin-roles/#user-admin">管理者の役割</a>と<a href="/ja/administration/permission-groups/">権限グループ</a>を参照してください。Insightsユーザーの役割を管理するには、カスタマーサクセスマネージャーにお問い合わせください。</p>
 <p>Insightsは以下のユーザー役割を提供します：</p>
 <ul>
-<li><strong>Reader</strong> – リーダーの役割を持つユーザーは、ダッシュボードを表示し、ダッシュボードのPDFを作成できます。</li>
-<li><strong>Author</strong> – 著者の役割を持つユーザーは以下のことができます：
+<li><strong>すべてのユーザー</strong> – デフォルトでは、プロファイル内のすべてのユーザーは以下のことができます：
 <ul>
-<li>ダッシュボードを作成し、アカウント内の他のユーザーと共有する。</li>
-<li>分析とデータセットを作成する。</li>
-<li>事前定義された分析を編集し、新しい分析として保存する。</li>
-<li>事前定義された分析からダッシュボードを作成する。</li>
+<li>テンプレートからダッシュボードを生成し、更新します。</li>
+<li>カスタムダッシュボードをエクスポートまたはインポートします。</li>
+<li>ダッシュボードを表示し、ダッシュボードのPDFを作成します。</li>
+</ul>
+</li>
+<li><strong>リーダー</strong> – リーダー役割を持つユーザーは、すべてのデフォルトの権限に加えて、ダッシュボードの既存のメールスケジュールに登録することができます。</li>
+<li><strong>作成者</strong> – 作成者役割を持つユーザーは、すべてのデフォルトとリーダーの権限に加えて、以下のことができます：
+<ul>
+<li>ダッシュボードを作成し、アカウント内の他のユーザーと共有します。</li>
+<li>分析とデータセットを作成します。</li>
+<li>事前定義された分析を編集し、新しい分析として保存します。</li>
+<li>事前定義された分析からダッシュボードを作成します。</li>
+<li>ダッシュボードのメール配信スケジュールを作成し、登録します。</li>
 </ul>
 </li>
 </ul>
-<p>Insightsは、プロファイルごとに5つのリーダー役割と2つの著者役割を提供します。追加のリーダーと著者の役割を購入することができます。詳細については、カスタマーサクセスマネージャーにお問い合わせください。</p>
+<p>Insightsは、プロファイルごとに5つのリーダー役割と2つの作成者役割を提供します。追加のリーダーと作成者の役割を購入することができます。詳細については、カスタマーサクセスマネージャーにお問い合わせください。</p>
 
 </div>
 
@@ -605,7 +613,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年August月1日
+          <p>最終更新日 ::  2024年August月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -623,7 +631,7 @@
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89" href="javascript:void(0)">カスタムダッシュボード</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88" href="javascript:void(0)">データセット</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%91%97%E8%80%85%E3%81%A8%E8%AA%AD%E8%80%85%E3%81%AE%E5%BD%B9%E5%89%B2" href="javascript:void(0)">著者と読者の役割</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%9C%E6%88%90%E8%80%85%E3%81%A8%E8%AA%AD%E8%80%85%E3%81%AE%E5%BD%B9%E5%89%B2" href="javascript:void(0)">作成者と読者の役割</a></li>
               </nav>
   </aside></nav>
 

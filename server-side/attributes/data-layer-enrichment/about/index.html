@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "4",
+        reading_time  : "3",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -529,6 +529,13 @@
 
 <div class="prose nested-links" id="prose">
   <p>Data Layer Enrichment imports your AudienceStream <a href="/server-side/attributes/about/">attributes</a> into your Tealium iQ account and makes them available as part of your data layer. The visitor data collected in AudienceStream is populated in the data layer on your website. Those attributes can then be used in load rules, extensions, and tags in your iQ account to create personalized experiences for your visitors.</p>
+<h2 id="requirements">Requirements</h2>
+<p>Data Layer Enrichment requires the following:</p>
+<ul>
+<li>An active <strong>AudienceStream</strong> profile with visit and visitor attributes defined.</li>
+<li>An active <strong>Tealium Collect tag</strong>.</li>
+<li><code>utag.js</code> version 4.27 or later. For more information about updating the <code>utag.js</code> template, see our knowledge base article <a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">Best Practices for Updating to the Latest Version of utag.js</a>.</li>
+</ul>
 <h2 id="how-it-works">How it works</h2>
 <p>Data Layer Enrichment is a profile-level setting in iQ that links to a corresponding AudienceStream profile. After Data Layer Enrichment is enabled, a new type of data layer variable called AudienceStream Attribute appears in the list of variables on the Data Layer screen. The visit and visitor attributes from the AudienceStream profile are imported and become available to use just like any other data layer variable.</p>
 <figure><a class="slb" href="/images/server-side/whiteui-datalayerenrichment-audiencestreamattributes.png"><img src="/images/server-side/whiteui-datalayerenrichment-audiencestreamattributes.png"
@@ -555,25 +562,17 @@ If the referrer does not match a domain in the allow list, Data Layer Enrichment
 </ul>
 <h4 id="subdomains">Subdomains</h4>
 <p>When you add a domain to the allow list, all of its subdomains are automatically included. For example, if you allow <code>example.com</code>, any subdomain that matches <code>*.example.com</code> is included.</p>
-<pre tabindex="0"><code> http://example.com
- https://mobile.example.com/xyz/index.html
- http://app.mobile.example.com
+<pre tabindex="0"><code>http://example.com
+https://mobile.example.com/xyz/index.html
+http://app.mobile.example.com
 </code></pre><h4 id="create-an-allow-list">Create an allow list</h4>
 <p>To limit requests from only specific, trusted domains, create an allow list in your profile.</p>
 <ol>
 <li>Go to <strong>Admin menu &gt; Data Layer Enrichment</strong>.</li>
-<li>Enter the comma-separated list of domains you trust. You can add a maximum of 250 domains per profile. Do not insert the <code>http</code> or <code>https</code> protocol before the domain.</li>
+<li>Enter the comma-separated list of domains you trust. You can add a maximum of 250 domains per profile. Do not include the <code>http</code> or <code>https</code> protocol before the domain (for example, <code>example.com</code>).</li>
 <li>Click <strong>Save</strong>.</li>
 <li>Save and publish your changes.</li>
 </ol>
-<h2 id="prerequisites">Prerequisites</h2>
-<p>These are the requirements for using data layer enrichment:</p>
-<ul>
-<li><strong>AudienceStream</strong> – You need an active AudienceStream account with visit and visitor attributes defined. If you do not have an AudienceStream account, contact your account manager.</li>
-<li><strong>Data Layer Enrichment enabled in iQ</strong>– Contact your account manager to enable your account to take advantage of Data Layer Enrichment.</li>
-<li><strong>Tealium Collect tag</strong> – You need to add the Tealium Collect tag to your Tealium iQ profile.</li>
-<li><strong>Latest version of utag.js</strong> – You need <code>utag.js</code> version 4.27 or later. For more information about updating the <code>utag.js</code> template, see our knowledge base article <a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">Best Practices for Updating to the Latest Version of utag.js</a>.</li>
-</ul>
 
 </div>
 
@@ -619,7 +618,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2024 
+          <p>This page was last updated:  August 14, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -633,10 +632,10 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#same-origin-policy" href="javascript:void(0)">Same origin policy</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#domain-allow-list" href="javascript:void(0)">Domain allow list</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#prerequisites" href="javascript:void(0)">Prerequisites</a></li>
               </nav>
   </aside></nav>
 

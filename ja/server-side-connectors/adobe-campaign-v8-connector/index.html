@@ -395,14 +395,14 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Adobe Campaign v8 コネクタの構成方法について説明します。
+      この記事では、Adobe Campaign v8コネクタの構成方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="構成">構成</h2>
-<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
+<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">About Connectors</a>を参照してください。</p>
 <p>コネクタを追加した後、以下の構成を行います：</p>
 <ul>
 <li><strong>クライアントID</strong>
@@ -418,10 +418,13 @@
 <li><strong>サーバーホスト</strong>
 <ul>
 <li>必須：サーバーホストを提供します。<br>
-例えば、API URL &ldquo;<a href="https://example.campaign.adobe.com/nl/jsp/soaprouter.jsp%22">https://example.campaign.adobe.com/nl/jsp/soaprouter.jsp&quot;</a>のホストは<code>example.campaign.adobe.com</code>です。</li>
+例えば、API URL <code>https://example.campaign.adobe.com/nl/jsp/soaprouter.jsp</code>のホストは<code>example.campaign.adobe.com</code>です。</li>
 </ul>
 </li>
 </ul>
+<h2 id="許可するipアドレス">許可するIPアドレス</h2>
+<p><a href="/ja/server-side/administration/ip-allow-list/">Tealium IPアドレス</a>を<a href="https://experience.adobe.com/#/controlpanel/instances">Adobe Campaign許可リスト</a>に追加する必要があります（<strong>Adobe Experience Platform</strong> &gt; <strong>Control Panel</strong> &gt; <strong>Instances</strong>）。</p>
+<p>詳細については、<a href="https://experienceleague.adobe.com/en/docs/control-panel-learn/tutorials/instance-settings/allowlist-ip-adresses">Adobe Campaign: Allowlist IP addresses</a>を参照してください。</p>
 <h2 id="アクション">アクション</h2>
 <table>
 <thead>
@@ -445,10 +448,10 @@
 </tbody>
 </table>
 <p>アクションの名前を入力し、ドロップダウンメニューからアクションタイプを選択します。</p>
-<p>以下のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
+<p>次のセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
 <h3 id="カスタムsoapリクエストの送信バッチ処理">カスタムSOAPリクエストの送信（バッチ処理）</h3>
 <h4 id="バッチ制限">バッチ制限</h4>
-<p>このアクションは、ベンダーへの大量のデータ転送をサポートするためにバッチリクエストを使用します。リクエストは、以下のいずれかの閾値が満たされるまでキューに入れられます：</p>
+<p>このアクションは、ベンダーへの大量データ転送をサポートするためにバッチリクエストを使用します。リクエストは、以下のいずれかの閾値が満たされるまでキューに入れられます：</p>
 <ul>
 <li>リクエストの最大数：200</li>
 <li>最古のリクエストからの最大時間：10分</li>
@@ -469,7 +472,7 @@
 </tr>
 <tr>
 <td>SOAPリクエストボディプレフィックス</td>
-<td><code>SOAP</code>リクエストの開始部分のテンプレートを提供します。例：<br><code>&lt;?xml version=&quot;</code>1<code>.0&quot; encoding=&quot;utf-</code>8<code>&quot;?&gt;&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:urn=&quot;urn:nms:rtEvent&quot;&gt;&lt;soapenv:Header/&gt;&lt;soapenv:Body&gt;&lt;urn:PushEvent&gt;&lt;urn:domEvent&gt;</code>。<br><code>SOAP</code>リクエストボディプレフィックスにテンプレート変数を使用することができます（詳細は<a href="/server-side/connectors/webhook-connectors/trimou-templating-engine//">Templates Guide</a>を参照）。</td>
+<td><code>SOAP</code>リクエストの開始部分のテンプレートを提供します。例：<br><code>&lt;?xml version=&quot;</code>1<code>.0&quot; encoding=&quot;utf-</code>8<code>&quot;?&gt;&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:urn=&quot;urn:nms:rtEvent&quot;&gt;&lt;soapenv:Header/&gt;&lt;soapenv:Body&gt;&lt;urn:PushEvent&gt;&lt;urn:domEvent&gt;</code>。<br><code>SOAP</code>リクエストボディプレフィックスにテンプレート変数を使用することができます（詳細については<a href="/server-side/connectors/webhook-connectors/trimou-templating-engine//">Templates Guide</a>を参照してください）。</td>
 </tr>
 <tr>
 <td>SOAPリクエストボディデータ</td>
@@ -485,7 +488,7 @@
 </tr>
 <tr>
 <td>SOAPリクエストテンプレート変数</td>
-<td><code>SOAPリクエストボディプレフィックス</code>、<code>SOAPリクエストボディデータ</code>、<code>SOAPリクエストボディサフィックス</code>のデータ入力としてテンプレート変数を提供します（詳細は<a href="/server-side/connectors/webhook-connectors/template-variables//">Template Variables Guide</a>を参照）。<br>ネストしたテンプレート変数はドット表記法で名前を付けます。例えば、<code>items.name</code>。ネストしたテンプレート変数は通常、データレイヤーリスト属性から作成されます。</td>
+<td><code>SOAPリクエストボディプレフィックス</code>、<code>SOAPリクエストボディデータ</code>、<code>SOAPリクエストボディサフィックス</code>のデータ入力としてテンプレート変数を提供します（詳細については<a href="/server-side/connectors/webhook-connectors/template-variables//">Template Variables Guide</a>を参照してください）。<br>ネストしたテンプレート変数はドット表記法で名前を付けます。例えば、<code>items.name</code>。ネストしたテンプレート変数は通常、データレイヤーリスト属性から作成されます。</td>
 </tr>
 <tr>
 <td>SOAPレスポンスエラー識別子</td>
@@ -513,7 +516,7 @@
 </tr>
 <tr>
 <td>SOAPリクエストボディテンプレート変数</td>
-<td><code>SOAPリクエストボディテンプレート</code>のデータ入力としてテンプレート変数を提供します。詳細については<a href="/server-side/connectors/webhook-connectors/template-variables//">Template Variables Guide</a>を参照してください。ネストしたテンプレート変数はドット表記法で名前を付けます。例えば<code>items.name</code>。ネストしたテンプレート変数は通常、データレイヤーリスト属性から作成されます。</td>
+<td><code>SOAPリクエストボディテンプレート</code>のデータ入力としてテンプレート変数を提供します。詳細については<a href="/server-side/connectors/webhook-connectors/template-variables//">Template Variables Guide</a>を参照してください。ネストしたテンプレート変数はドット表記法で名前を付けます。例えば、<code>items.name</code>。ネストしたテンプレート変数は通常、データレイヤーリスト属性から作成されます。</td>
 </tr>
 <tr>
 <td>SOAPレスポンスエラー識別子</td>
@@ -581,7 +584,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年August月7日
+          <p>最終更新日 ::  2024年August月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -596,6 +599,7 @@
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%B1%E5%8F%AF%E3%81%99%E3%82%8Bip%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9" href="javascript:void(0)">許可するIPアドレス</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0soap%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E9%80%81%E4%BF%A1%E3%83%90%E3%83%83%E3%83%81%E5%87%A6%E7%90%86" href="javascript:void(0)">カスタムSOAPリクエストの送信（バッチ処理）</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0soap%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E9%80%81%E4%BF%A1" href="javascript:void(0)">カスタムSOAPリクエストの送信</a></li>

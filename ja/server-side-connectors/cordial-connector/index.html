@@ -423,7 +423,7 @@
 </tr>
 <tr>
 <td>Record contact activity (event)</td>
-<td>✗</td>
+<td>✓</td>
 <td>✓</td>
 </tr>
 <tr>
@@ -452,12 +452,15 @@
 </ul>
 <h2 id="構成の構成">構成の構成</h2>
 <p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">About Connectors</a>を参照してください。</p>
-<p>コネクタを追加したら、以下の構成を構成します：</p>
+<p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
-<li><strong>APIキー</strong><br>
-CordialはHTTP Basic Authentication (BA)を使用します。Cordialプラットフォーム内から、アカウント用のエンコードされたAPIキーを生成できます。このキーはBAの資格情報の<code>username</code>として使用されます。詳細については、<a href="https://support.cordial.com/hc/en-us/articles/203885498-RESTful-API-summary-and-usage">RESTful API Summary and Usage</a>を参照してください。</li>
-<li><strong>Path-URL</strong><br>
-以下のPath URLのいずれかを選択するか、手動で入力します。
+<li>
+<p><strong>APIキー</strong><br>
+CordialはHTTP Basic Authentication (BA)を使用します。Cordialプラットフォーム内から、アカウント用のエンコードされたAPIキーを生成できます。このキーは、BA認証の<code>username</code>として使用されます。詳細については、<a href="https://support.cordial.com/hc/en-us/articles/203885498-RESTful-API-summary-and-usage">RESTful API Summary and Usage</a>を参照してください。<p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/ja/server-side/administration/ip-allow-list/">Tealium IP addresses</a>をCordialの<code>API_KEY</code>ホワイトリストに追加する必要があります。</p></p>
+</li>
+<li>
+<p><strong>Path-URL</strong><br>
+以下のPath URLのいずれかを選択するか、手動で入力します。</p>
 <ul>
 <li><code>https://api.cordial.io/v2/</code> - 管理パネルのURLが<code>https://admin.cordial.io/</code>の場合、このURLを使用します。</li>
 <li><code>https://api.usw2.cordial.io/v2/</code> - 管理パネルのURLが<code>https://usw2.admin.cordial.io/</code>の場合、このURLを使用します。</li>
@@ -500,7 +503,7 @@ CordialはHTTP Basic Authentication (BA)を使用します。Cordialプラット
 </tr>
 <tr>
 <td>Force Subscribe</td>
-<td>退会した場合、このキーを使用して購読ステータスを購読中に更新する必要があります。可能な値：<code>true</code>, <code>false</code>。</td>
+<td>退会済みの場合、このキーを使用して購読ステータスを購読済みに更新する必要があります。可能な値：<code>true</code>, <code>false</code>。</td>
 </tr>
 <tr>
 <td>Invalid</td>
@@ -519,7 +522,7 @@ CordialはHTTP Basic Authentication (BA)を使用します。Cordialプラット
 <tbody>
 <tr>
 <td>Account Lists</td>
-<td>リストからコンタクトを追加または削除します。可能な値：true, false。</td>
+<td>コンタクトをリストに追加または削除します。可能な値：true, false。</td>
 </tr>
 <tr>
 <td>String Parameters</td>
@@ -535,11 +538,11 @@ CordialはHTTP Basic Authentication (BA)を使用します。Cordialプラット
 </tr>
 <tr>
 <td>Geo Parameters</td>
-<td>属性タイプが地理として構成されている場合、地理属性値を追加します。地理属性には以下のキー名のセットスキーマが含まれていることに注意してください：<ul><li>Street Address</li><li>Street Address 2</li><li>City</li><li>State</li><li>Postal Code</li><li>Country ISO</li><li>Time Zone</li><li>Location</li><ul><li>Latitude</li><li>Longitude</li></ul></ul></td>
+<td>属性タイプが地理として構成されている場合、地理属性値を追加します。地理属性には以下のキー名のセットスキーマが含まれています：<ul><li>Street Address</li><li>Street Address 2</li><li>City</li><li>State</li><li>Postal Code</li><li>Country ISO</li><li>Time Zone</li><li>Location</li><ul><li>Latitude</li><li>Longitude</li></ul></ul></td>
 </tr>
 <tr>
 <td>Array Parameters</td>
-<td>属性タイプが配列として構成されている場合、配列属性値を追加します。デフォルトの動作は、提供された値で配列値を置き換えることです。デフォルトを上書きするために、追加/削除の動作を指定するオブジェクトを指定できます。最大アイテム数の制限を超えると（デフォルトは25）、新しい値が最も古い値を置き換えます。</td>
+<td>属性タイプが配列として構成されている場合、配列属性値を追加します。デフォルトの動作は、提供された値で配列値を置き換えることです。追加/削除の動作を指定するオブジェクトを指定してデフォルトを上書きすることができます。最大アイテム数の制限を超えると（デフォルトは25）、新しい値が最も古い値を置き換えます。</td>
 </tr>
 </tbody>
 </table>
@@ -646,7 +649,7 @@ CordialはHTTP Basic Authentication (BA)を使用します。Cordialプラット
 </tr>
 <tr>
 <td>Action</td>
-<td>ブラウズ、オーダー、カートなどのカスタムアクションを作成するための定義。パラメータの最大長は<code>40</code>文字です。予約済みのアクションは<code>POST</code>メソッドで追加できないことに注意してください。詳細については、<a href="https://support.cordial.com/hc/en-us/articles/203885968-Contact-activities-events-API#reservedEvents">Contact activities (events) API</a>を参照してください。</td>
+<td>ブラウズ、オーダー、カートなどのカスタムアクションを作成するための定義。パラメータの最大長は<code>40</code>文字です。予約済みのアクションは<code>POST</code>メソッドを介して追加することはできません。詳細については、<a href="https://support.cordial.com/hc/en-us/articles/203885968-Contact-activities-events-API#reservedEvents">Contact activities (events) API</a>を参照してください。</td>
 </tr>
 <tr>
 <td>Action Timestamp</td>
@@ -654,7 +657,7 @@ CordialはHTTP Basic Authentication (BA)を使用します。Cordialプラット
 </tr>
 <tr>
 <td>Properties</td>
-<td>追加のイベント属性のオブジェクト。イベントが持つことができるプロパティのデフォルトの最大数は<code>1,000</code>です。数値のみからなるプロパティキー（例：<code>57</code>）や<code>dot</code>を含むキー（例：<code>shoes.color</code>）は削除されます。</td>
+<td>追加のイベント属性のオブジェクト。イベントが持つことができるプロパティのデフォルトの最大数は<code>1,000</code>です。数値のみの値（例：<code>57</code>）や<code>dot</code>を含むキー（例：<code>shoes.color</code>）は削除されます。</td>
 </tr>
 </tbody>
 </table>
@@ -726,7 +729,7 @@ CordialはHTTP Basic Authentication (BA)を使用します。Cordialプラット
 </tr>
 <tr>
 <td>Link ID</td>
-<td>メッセージとリンクを表すCordial ID。特定のリンクへの収益の帰属を追跡するために必要です。</td>
+<td>メッセージとリンクを表すCordial ID。特定のリンクに対する収益の帰属を追跡するために必要です。</td>
 </tr>
 <tr>
 <td>Total Amount</td>
@@ -746,7 +749,7 @@ CordialはHTTP Basic Authentication (BA)を使用します。Cordialプラット
 </tr>
 </tbody>
 </table>
-<h4 id="shipping-address">Shipping Address</h4>
+<h4 id="配送先住所">配送先住所</h4>
 <table>
 <thead>
 <tr>
@@ -781,7 +784,7 @@ CordialはHTTP Basic Authentication (BA)を使用します。Cordialプラット
 </tr>
 </tbody>
 </table>
-<h4 id="billing-address">Billing Address</h4>
+<h4 id="請求先住所">請求先住所</h4>
 <table>
 <thead>
 <tr>
@@ -816,7 +819,7 @@ CordialはHTTP Basic Authentication (BA)を使用します。Cordialプラット
 </tr>
 </tbody>
 </table>
-<h4 id="item-parameters">Item Parameters</h4>
+<h4 id="アイテムパラメータ">アイテムパラメータ</h4>
 <table>
 <thead>
 <tr>
@@ -838,16 +841,16 @@ CordialはHTTP Basic Authentication (BA)を使用します。Cordialプラット
 <td>アイテム番号。</td>
 </tr>
 <tr>
-<td>Category</td>
-<td>アイテムカテゴリ。</td>
+<td>カテゴリー</td>
+<td>アイテムのカテゴリー。</td>
 </tr>
 <tr>
-<td>Quantity</td>
-<td>購入したアイテムの数。渡されない場合、デフォルトは<code>1</code>です。</td>
+<td>数量</td>
+<td>購入したアイテムの数。指定されていない場合、デフォルトは <code>1</code> です。</td>
 </tr>
 <tr>
 <td>画像</td>
-<td>画像の名前またはパス。アイテムに複数の画像がある場合、提供された値はコンマ（<code>,</code>）で分割されます。</td>
+<td>画像の名前またはパス。アイテムに複数の画像がある場合、提供された値はカンマ (<code>,</code>) で分割されます。</td>
 </tr>
 <tr>
 <td>アイテム価格</td>
@@ -863,11 +866,11 @@ CordialはHTTP Basic Authentication (BA)を使用します。Cordialプラット
 </tr>
 <tr>
 <td>金額</td>
-<td><code>qty</code> x <code>itemPrice</code>として自動計算されます。<code>qty</code> x <code>itemPrice</code>と等しくない値が渡されると、それが上書きされます。</td>
+<td><code>qty</code> x <code>itemPrice</code> として自動計算されます。<code>qty</code> x <code>itemPrice</code> と等しくない値が渡されると、それが上書きされます。</td>
 </tr>
 <tr>
 <td>タグ</td>
-<td>製品を説明するための値のカンマ区切りの配列。英数字またはダッシュのみを受け入れます。</td>
+<td>製品を説明するためのカンマ区切りの値の配列。英数字またはダッシュのみを受け付けます。</td>
 </tr>
 </tbody>
 </table>
@@ -882,11 +885,11 @@ CordialはHTTP Basic Authentication (BA)を使用します。Cordialプラット
 </thead>
 <tbody>
 <tr>
-<td>自動化テンプレート</td>
+<td>Automation Template</td>
 <td>テンプレートを選択するか、テンプレートIDを提供します。</td>
 </tr>
 <tr>
-<td>メール</td>
+<td>Email</td>
 <td>メール。</td>
 </tr>
 <tr>
@@ -894,20 +897,20 @@ CordialはHTTP Basic Authentication (BA)を使用します。Cordialプラット
 <td>コンタクトID。</td>
 </tr>
 <tr>
-<td>識別子</td>
-<td>リクエストボディ内のどの識別子キーを使用してコンタクトを検索するかを指定します。</td>
+<td>Identify By</td>
+<td>リクエストボディ内のどの識別キーを使用してコンタクトを検索するかを指定します。</td>
 </tr>
 <tr>
-<td>外部変数</td>
+<td>External Variables</td>
 <td>外部変数。テンプレートをサポートします。</td>
 </tr>
 <tr>
-<td>テンプレート変数</td>
-<td><ul><li>テンプレート変数を外部変数入力として提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>を参照してください。</li><li>ネストされたテンプレート変数はドット表記法（例：<code>items.name</code>）で名前を付けます。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+<td>Template Variables</td>
+<td><ul><li>テンプレート変数を外部変数入力として提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>を参照してください。</li><li>ネストされたテンプレート変数はドット表記法で名前を付けます（例：<code>items.name</code>）。</li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
-<td>テンプレート</td>
-<td><ul><li>パラメータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>を参照してください。</li><li>テンプレートは、例えば<code>{{SomeTemplateName&amp;}}</code>のように、名前で二重中括弧を使用してサポートされるフィールドに注入されます。</li></ul></td>
+<td>Templates</td>
+<td><ul><li>パラメータで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>を参照してください。</li><li>テンプレートは、例えば <code>{{SomeTemplateName&amp;}}</code> のように、名前で二重中括弧を使用してサポートフィールドに注入されます。</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -971,7 +974,7 @@ CordialはHTTP Basic Authentication (BA)を使用します。Cordialプラット
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年August月7日
+          <p>最終更新日 ::  2024年August月14日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
