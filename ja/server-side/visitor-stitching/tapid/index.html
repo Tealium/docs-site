@@ -517,57 +517,58 @@
 
   
     <p class="f4 fw3 lh-copy">
-      このドキュメントでは、TAPIDクッキーとTealiumプラットフォームの使用方法について説明します。
+      このドキュメントでは、TAPIDクッキーとは何か、Tealiumプラットフォームがそれをどのように使用するかについて説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="動作原理">動作原理</h2>
-<p>TAPIDはHTTP専用のブラウザクッキーです。元々はクロスドメインの識別を容易にするために設計され、Tealiumのサーバーサイド製品（例：AudienceStream）で使用される<a href="/ja/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/#anonymous-id">匿名ID</a>を保存します。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>訪問のコンピュータにTAPIDクッキーが<a href="/ja/client-side-tags/tealium-collect-tag/">Collectタグ</a>のターゲットドメインに構成されていない場合、ドメインはCollectタグのペイロードに基づいてTAPIDクッキーを生成します。</p>
-<p>TAPIDクッキーの値は、ユーザーの訪問IDに構成されます。この値は通常、クライアントデバイスから取得されます。TAPIDは、ユーザーのデバイスが訪れたアカウントとプロファイルの値を、次の形式で連結された値のリストとして保存します。</p>
+  <h2 id="仕組み">仕組み</h2>
+<p>TAPIDはHTTP専用のブラウザクッキーです。元々はクロスドメイン識別を容易にするために設計され、Tealiumのサーバーサイド製品（例：AudienceStream）が使用する<a href="/ja/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/#anonymous-id">匿名ID</a>を保存します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>訪問のコンピュータに<a href="/ja/client-side-tags/tealium-collect-tag/">Collect Tag</a>のターゲットドメインに構成されたTAPIDクッキーがまだない場合、そのドメインはCollect Tagのペイロードに基づいて一つを生成します。</p>
+<p>TAPIDクッキーの値はそのユーザーの訪問IDに構成されます。この値は通常、クライアントデバイスから来ます。TAPIDは、ユーザーのデバイスが訪れたアカウントとプロファイルの値の連結リストに値を保存します。以下の形式を使用します：</p>
 <pre tabindex="0"><code>account-1/profile-1&gt;visitor_id_value-1|account-2/profile-2&gt;visitor_id_value-2
-</code></pre><p>TAPIDは通常、サードパーティのクッキーですが、<a href="/ja/iq-tag-management/administration/first-party-domains/about/">ファーストパーティドメイン</a>ではファーストパーティのクッキーになることもあります。</p>
-<p>一度構成されたら、クッキー内の<code>visitor_id_value</code>は通常変更されません。</p>
-<h3 id="tapid内のアカウントとプロファイルの値">TAPID内のアカウントとプロファイルの値</h3>
-<p>WebページのTAPIDクッキーのアカウントとプロファイルの値を見つけるには、次の手順を実行します。</p>
+</code></pre><p>TAPIDは通常、サードパーティのクッキーですが、<a href="/ja/iq-tag-management/administration/first-party-domains/about/">ファーストパーティドメイン</a>を使用すると、ファーストパーティのクッキーになることもあります。</p>
+<p>一度構成されると、クッキー内の<code>visitor_id_value</code>は通常変更されません。</p>
+<h3 id="tapidのアカウントとプロファイルの値">TAPIDのアカウントとプロファイルの値</h3>
+<p>ウェブページ上のTAPIDクッキーのアカウントとプロファイルの値を見つけるには、以下の手順を実行します：</p>
 <ol>
-<li>ブラウザでTealium Collectタグを読み込むWebページを開きます。</li>
+<li>ブラウザでTealium Collectタグを読み込むウェブページを開きます。</li>
 <li>ブラウザの開発者コンソールを開きます。</li>
-<li><code>teal</code>という名前の<strong>Network</strong>リクエストをフィルタリングします。</li>
-<li>ページをリフレッシュします。</li>
-<li>Collectタグの参照（<code>i.gif</code>または<code>/event</code>）を見つけます。</li>
-<li>リクエストヘッダーを調べて、ターゲットのアカウントとプロファイルを特定します。</li>
-<li>レスポンスを調べて、TAPIDクッキーの値を確認します。</li>
-<li>TAPIDクッキーのアカウントとプロファイルに関連する部分を抽出します。</li>
+<li><code>teal</code>で<strong>Network</strong>リクエストをフィルタリングします。</li>
+<li>ページを更新します。</li>
+<li>collectタグの参照（<code>i.gif</code>または<code>/event</code>）を見つけます。</li>
+<li>リクエストヘッダーを調べて、ターゲットアカウントとプロファイルを決定します。</li>
+<li>TAPIDクッキーの値を確認するためにレスポンスを調べます。</li>
+<li>アカウントとプロファイルに関連するTAPIDクッキーの部分を抽出します。</li>
 </ol>
-<h2 id="idの解決">IDの解決</h2>
-<p>AudienceStreamは、次の順序で訪問プロファイルIDを決定します。</p>
+<h2 id="アイデンティティ解決">アイデンティティ解決</h2>
+<p>AudienceStreamは、以下の順序に基づいて訪問プロファイルIDを決定します：</p>
 <ol>
-<li>TAPIDクッキー（<code>tealium_thirdparty_visitor_id</code>とも呼ばれます）。</li>
+<li>TAPIDクッキー、別名<code>tealium_thirdparty_visitor_id</code>。</li>
 <li><code>tealium_visitor_id</code>イベント属性。</li>
-<li><code>utag_main v_id cookie</code>（<code>tealium_firstparty_visitor_id</code>とも呼ばれます）。</li>
+<li><code>utag_main v_id cookie</code>、別名<code>tealium_firstparty_visitor_id</code>。</li>
 </ol>
-<p>AudienceStreamは、TAPID識別子が受信リクエストに存在する場合、常に主要な識別子として使用します。ユーザーが2つのドメインを跨いで追跡されている場合、AudienceStreamは2番目のドメインのファーストパーティクッキーを使用してユーザーを識別しません。したがって、AudienceStreamでは、2番目のドメインのファーストパーティクッキーを使用してユーザーを検索することはできません。</p>
-<h3 id="訪問スティッチングの問題">訪問スティッチングの問題</h3>
-<p>訪問のプロファイルデータは、共有スマートテレビや公共のキオスクなどのデバイスを複数の訪問が使用する場合、汚染される可能性があります。2番目のユーザーが匿名クッキーでそのデバイスにログインした場合、AudienceStreamは引き続き最初のユーザーにアクティビティを記録します。デバイス上のすべての匿名ユーザーのトラフィックは、TAPIDクッキー内の最初のユーザーに記録されます。</p>
-<p>詳細については、<a href="/platforms/http-api/endpoint/#visitor-switching">訪問スイッチング</a>を参照してください。</p>
+<p>AudienceStreamは、入力リクエストに存在する場合、常にTAPID識別子を主要な識別子として使用します。ユーザーが2つのドメイン間で追跡されている場合、AudienceStreamは2つ目のドメインのファーストパーティクッキーを使用してユーザーを識別しません。したがって、AudienceStreamでは、2つ目のドメインのファーストパーティクッキーに基づいてユーザーを検索することはできません。</p>
+<h3 id="訪問のスティッチング問題">訪問のスティッチング問題</h3>
+<p>複数の訪問がデバイス（共有スマートテレビや公共のキオスクなど）を使用すると、訪問のプロファイルデータが汚染される可能性があります。2番目のユーザーが匿名クッキーでそのデバイスにログインすると、AudienceStreamは最初のユーザーの活動を続けて記録します。デバイス上のすべての匿名ユーザーからのトラフィックは、TAPIDクッキーの最初のユーザーに記録されます。</p>
+<p>詳細については、<a href="/platforms/http-api/endpoint/#visitor-switching">訪問の切り替え</a>を参照してください。</p>
 <h3 id="ブラウザのサポート">ブラウザのサポート</h3>
-<p>サードパーティクッキーのブラウザサポートが続けば、ドメイン間での匿名ユーザーの追跡能力はますます困難になります。<a href="/ja/server-side/visitor-stitching/about/">訪問スティッチング</a>を使用すると、ユーザーがデータレイヤーで自分自身を識別した場合、AudienceStreamは2つ以上のドメインを跨いでユーザーを解決できます。</p>
+<p>サードパーティクッキーに対するブラウザのサポートが減少し続ける中で、ドメイン間でユーザーを匿名で追跡する能力はますます困難になっています。<a href="/ja/server-side/visitor-stitching/about/">訪問のスティッチング</a>を使用すると、AudienceStreamはデータレイヤーで自分自身を識別するユーザーを2つ以上のドメイン間で解決することができます。</p>
 <h2 id="ファーストパーティドメインとtapid">ファーストパーティドメインとTAPID</h2>
-<p>ファーストパーティドメインを使用すると、Tealiumサービスはファーストパーティリクエストを使用できるため、広告ブロッカーや同様の技術によるデータの損失を軽減できます。</p>
-<p>ファーストパーティドメインは、ユーザーが訪れているウェブサイトをホストするドメインです。サードパーティドメインは、現在のウェブサイトのドメインと一致しないすべてのドメインです。</p>
-<p>ファーストパーティドメインを使用する場合、TAPIDクッキーは引き続きHTTP専用のブラウザクッキーですが、Tealiumのサードパーティドメインではなく、ウェブサイトをホストするファーストパーティドメインに割り当てられます。したがって、ファーストパーティドメインでは、TAPIDクッキーはクロスドメインのトラッキング機能を失います。</p>
+<p>ファーストパーティドメインを使用すると、Tealiumのサービスはファーストパーティリクエストを使用でき、これにより広告ブロッカーや同様の技術によるデータ損失を減らすことができます。</p>
+<p>ファーストパーティドメインとは、ユーザーが訪れているウェブサイトをホストするドメインのことです。サードパーティドメインとは、現在のウェブサイトのドメインと一致しない任意のドメインを指します。</p>
+<p>ファーストパーティドメインを使用すると、TAPIDクッキーは引き続きHTTP専用のブラウザクッキーとなりますが、Tealiumのサードパーティドメインではなく、ウェブサイトをホストするファーストパーティドメインに割り当てられます。したがって、ファーストパーティドメインはTAPIDクッキーがクロスドメイン追跡機能を失う原因となります。</p>
 <p>詳細については、<a href="/ja/iq-tag-management/administration/first-party-domains/about/">ファーストパーティドメインについて</a>を参照してください。</p>
 <h2 id="tapidクッキーデータの変更">TAPIDクッキーデータの変更</h2>
-<p>APIリクエストには、TAPIDクッキーの値を変更するための3つのパラメータが含まれています。これらのパラメータは、現在の受信APIリクエストに関連するTAPID内のアカウントとプロファイルの値のみに影響します。他のアカウントとプロファイルの値は変更されません。</p>
-<p>パラメータは次のエンドポイントに対してサポートされています。</p>
+<p>APIリクエストには、TAPIDクッキーの値を変更するための3つのパラメータが含まれています。これらのパラメータは、現在の入力リクエストに関連するTAPIDのアカウントとプロファイルの値のみに影響を与えます。それ以外のアカウントとプロファイルの値は変更されません。</p>
+<p>パラメータは以下のエンドポイントをサポートします：</p>
 <ul>
-<li><code>i.gif</code> - <a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collectタグ</a></li>
-<li><code>/event</code> - <a href="/platforms/http-api/endpoint/#visitor-switching">HTTP API</a></li>
+<li><code>i.gif</code> - <a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collect tag</a></li>
 <li><code>vdata</code> - <a href="/ja/server-side/data-sources/vdata-endpoint/">Visitor Data Enrichment</a></li>
+<li><code>/event</code> - <a href="/platforms/http-api/endpoint/#visitor-switching">HTTP API</a></li>
 </ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><code>/event</code>エンドポイントは、事前に構成されたTAPIDの値を読み取ることができますが、TAPIDクッキー内の値を変更することはできません。</p>
 <table>
 <thead>
 <tr>
@@ -580,25 +581,25 @@
 <tbody>
 <tr>
 <td><code>tealium_override_tapid</code></td>
-<td>文字列</td>
-<td><ul><li>AudienceStreamとサーバーサイド製品が、このイベントで提供された値を訪問IDとして使用するようにします。</li><li><code>i.gif</code>および<code>vdata</code>に対してのみ、<code>Set-Cookie</code>レスポンスヘッダーを変更して、指定した値を使用してTAPIDを変更します。</li></ul></td>
-<td>このパラメータを使用すると、TAPIDをクロスドメインのトラッキングに保持しながら、最後に知られているユーザーに基づいて訪問スイッチングを有効にすることができます。</td>
+<td>String</td>
+<td><ul><li>このイベントの訪問IDとして提供された値をAudienceStreamとサーバーサイド製品が使用するようにします。</li><li><code>i.gif</code>と<code>vdata</code>では、しかし<code>/event</code>ではなく、<code>Set-Cookie</code>レスポンスヘッダーを変更して、TAPIDを変更するために渡す値を使用します。</li></ul></td>
+<td>このパラメータは、クロスドメイン追跡のためのTAPIDを保持しながら、最後に知られているユーザーに基づいて訪問の切り替えを可能にします。</td>
 </tr>
 <tr>
 <td><code>tealium_delete_3rd_party_vid_cookies</code></td>
-<td>ブール値</td>
-<td><ul><li>AudienceStreamとサーバーサイド製品が、このイベントの訪問プロファイルIDの優先順位を確認する際に、TAPIDクッキーの受信リクエスト値を無視するようにします。</li><li><code>i.gif</code>および<code>vdata</code>に対してのみ、<code>Set-Cookie</code>レスポンスヘッダーを変更して、現在のアカウントとプロファイルのTAPIDを削除します。</li></ul></td>
+<td>Boolean</td>
+<td><ul><li>このイベントの訪問プロファイルIDの優先順位を見るときに、AudienceStreamとサーバーサイド製品がTAPIDクッキーの入力リクエスト値を無視します。</li><li><code>i.gif</code>と<code>vdata</code>では、しかし<code>/event</code>ではなく、現在のアカウントとプロファイルのTAPIDを削除するために<code>Set-Cookie</code>レスポンスヘッダーを変更します。</li></ul></td>
 <td></td>
 </tr>
 <tr>
 <td><code>tealium_skip_3rd_party_vid_cookies</code></td>
-<td>ブール値</td>
-<td>AudienceStreamとサーバーサイド製品が、このイベントのTAPID値を無視します。</td>
+<td>Boolean</td>
+<td>このイベントのTAPID値をAudienceStreamとサーバーサイド製品が無視します。</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<p>これらのパラメータは現在のイベントのみに影響します。たとえば、1つのイベントで<code>skip</code>パラメータを構成し、次のイベントで構成しない場合、次のイベントではTAPIDクッキーはスキップされません。ただし、<code>override</code>パラメータを1度構成すると、TAPIDが指定した値に変更されます。</p>
+<p>パラメータは現在のイベントのみに影響します。例えば、一つのイベントで<code>skip</code>パラメータを渡し、次のイベントでは渡さない場合、次のイベントはTAPIDクッキーをスキップしません。しかし、<code>override</code>パラメータを一度構成すると、TAPIDは指定した値に変更されます。</p>
 <h3 id="例">例</h3>
 <p>以下の例は、3つのパラメータがTAPIDデータをどのように変更するかを示しています。</p>
 <h4 id="オーバーライド">オーバーライド</h4>
@@ -613,7 +614,7 @@
 </code></pre><p><strong>クッキー:</strong></p>
 <pre tabindex="0"><code>TAPID=tealium/main&gt;12345|tealium/alt&gt;67890|;
 </code></pre><h5 id="レスポンス">レスポンス</h5>
-<p>クッキーの構成（オーバーライド）：<code>i.gif</code>および<code>vdata</code>のみ</p>
+<p>Set Cookie (オーバーライド):  <code>i.gif</code>と<code>vdata</code>のみ、<code>/event</code>ではない</p>
 <pre tabindex="0"><code>TAPID=tealium/alt&gt;user|tealium/main&gt;12345|;
 </code></pre><h5 id="イベント">イベント</h5>
 <pre tabindex="0"><code>{
@@ -633,7 +634,7 @@
 </code></pre><p><strong>クッキー:</strong></p>
 <pre tabindex="0"><code>TAPID=tealium/main&gt;12345|tealium/alt&gt;67890|;
 </code></pre><h5 id="レスポンス-1">レスポンス</h5>
-<p>クッキーの構成：<code>i.gif</code>および<code>vdata</code>のみ</p>
+<p>Set Cookie:  <code>i.gif</code>と<code>vdata</code>のみ、<code>/event</code>ではない</p>
 <pre tabindex="0"><code>TAPID=tealium/alt&gt;67890|tealium/main&gt;12345|;
 </code></pre><h5 id="イベント-1">イベント</h5>
 <pre tabindex="0"><code>{
@@ -653,36 +654,36 @@
 </code></pre><p><strong>クッキー:</strong></p>
 <pre tabindex="0"><code>TAPID=tealium/main&gt;12345|tealium/alt&gt;67890|;
 </code></pre><h5 id="レスポンス-2">レスポンス</h5>
-<p>クッキーの構成（リセット）：<code>i.gif</code>および<code>vdata</code>のみ</p>
+<p>Set Cookie (リセット):  <code>i.gif</code>と<code>vdata</code>のみ、<code>/event</code>ではない</p>
 <pre tabindex="0"><code>TAPID=tealium/main&gt;12345|;
-</code></pre><p>TAPIDの<code>account/profile</code>部分を削除した後、TAPIDが空になった場合、クライアントからクッキーを削除するために<code>set-cookie maxAge=0</code>が返されます。<code>i.gif</code>および<code>vdata</code>のみ</p>
+</code></pre><p>TAPIDが<code>account/profile</code>部分のTAPIDを削除した後に空になる場合、<code>set-cookie maxAge=0</code>がクライアントからクッキーを完全に削除するために返されます。<code>i.gif</code>と<code>vdata</code>のみ、<code>/event</code>ではない</p>
 <h5 id="イベント-2">イベント</h5>
 <pre tabindex="0"><code>{
   &#34;visitorId&#34;: &#34;user@tealium.com&#34;,
   &#34;firstPartyCookieId&#34;: &#34;user@tealium.com&#34;
 }
-</code></pre><h4 id="オーバーライドとスキップ">オーバーライドとスキップ</h4>
+</code></pre><h4 id="オーバーライド--スキップ">オーバーライド &amp; スキップ</h4>
 <h5 id="リクエスト-3">リクエスト</h5>
 <p><strong>ボディ:</strong></p>
 <pre tabindex="0"><code>{
   &#34;tealium_account&#34;: &#34;tealium&#34;,
   &#34;tealium_profile&#34;: &#34;alt&#34;,
-  &#34;tealium_visitor_id&#34;: &#34;user@tealium.com&#34;,
+&#34;tealium_visitor_id&#34;: &#34;user@tealium.com&#34;,
   &#34;tealium_override_tapid&#34;: &#34;user&#34;,
   &#34;tealium_skip_3rd_party_vid_cookies&#34;: true
 }
 </code></pre><p><strong>クッキー:</strong></p>
 <pre tabindex="0"><code>TAPID=tealium/main&gt;12345|tealium/alt&gt;67890|;
 </code></pre><h5 id="レスポンス-3">レスポンス</h5>
-<p>クッキーの構成（オーバーライド）：<code>i.gif</code>および<code>vdata</code>のみ</p>
+<p>クッキー構成（上書き）:  <code>i.gif</code>と<code>vdata</code>のみ、<code>/event</code>は除く</p>
 <pre tabindex="0"><code>TAPID=tealium/alt&gt;user|tealium/main&gt;12345|;
 </code></pre><h5 id="イベント-3">イベント</h5>
 <pre tabindex="0"><code>{
-  &#34;visitorId&#34;: &#34;user@tealium.com&#34;, // TAPIDスキップ
+  &#34;visitorId&#34;: &#34;user@tealium.com&#34;, // TAPIDはスキップされます
   &#34;firstPartyCookieId&#34;: &#34;user@tealium.com&#34;,
-  &#34;thirdPartyCookieId&#34;: &#34;user&#34; // オーバーライド
+  &#34;thirdPartyCookieId&#34;: &#34;user&#34; // 上書きされます
 }
-</code></pre><h4 id="オーバーライドと削除">オーバーライドと削除</h4>
+</code></pre><h4 id="上書き--削除">上書き &amp; 削除</h4>
 <h5 id="リクエスト-4">リクエスト</h5>
 <p><strong>ボディ:</strong></p>
 <pre tabindex="0"><code>{
@@ -695,16 +696,16 @@
 </code></pre><p><strong>クッキー:</strong></p>
 <pre tabindex="0"><code>TAPID=tealium/main&gt;12345|tealium/alt&gt;67890|;
 </code></pre><h5 id="レスポンス-4">レスポンス</h5>
-<p>クッキーの構成：<code>i.gif</code>および<code>vdata</code>のみ</p>
+<p>クッキー構成:  <code>i.gif</code>と<code>vdata</code>のみ、<code>/event</code>は除く</p>
 <pre tabindex="0"><code>TAPID=tealium/alt&gt;user|tealium/main&gt;12345|;
-</code></pre><p><code>tealium_override_tapid</code>は<code>tealium_delete_3rd_party_vid_cookies</code>よりも優先されます。</p>
+</code></pre><p><code>tealium_override_tapid</code>は<code>tealium_delete_3rd_party_vid_cookies</code>より優先されます</p>
 <h5 id="イベント-4">イベント</h5>
 <pre tabindex="0"><code>{
   &#34;visitorId&#34;: &#34;user&#34;, 
   &#34;firstPartyCookieId&#34;: &#34;user@tealium.com&#34;,
-  &#34;thirdPartyCookieId&#34;: &#34;user&#34; // オーバーライド
+  &#34;thirdPartyCookieId&#34;: &#34;user&#34; // 上書きされます
 }
-</code></pre><h4 id="スキップと削除">スキップと削除</h4>
+</code></pre><h4 id="スキップ--削除">スキップ &amp; 削除</h4>
 <h5 id="リクエスト-5">リクエスト</h5>
 <p><strong>ボディ:</strong></p>
 <pre tabindex="0"><code>{
@@ -717,15 +718,15 @@
 </code></pre><p><strong>クッキー:</strong></p>
 <pre tabindex="0"><code>TAPID=tealium/main&gt;12345|tealium/alt&gt;67890|;
 </code></pre><h5 id="レスポンス-5">レスポンス</h5>
-<p>クッキーの構成（リセット）：<code>i.gif</code>および<code>vdata</code>のみ</p>
+<p>クッキー構成（リセット）:  <code>i.gif</code>と<code>vdata</code>のみ、<code>/event</code>は除く</p>
 <pre tabindex="0"><code>TAPID=tealium/main&gt;12345|;
-</code></pre><p>TAPIDの<code>account/profile</code>部分を削除した後、TAPIDが空になった場合、クライアントからクッキーを削除するために<code>set-cookie maxAge=0</code>が返されます。<code>i.gif</code>および<code>vdata</code>のみ</p>
+</code></pre><p>TAPIDが<code>account/profile</code>部分のTAPIDを削除した後に空になる場合、クライアントからクッキーを完全に削除するために<code>set-cookie maxAge=0</code>が返されます。<code>i.gif</code>と<code>vdata</code>のみ、<code>/event</code>は除く</p>
 <h5 id="イベント-5">イベント</h5>
 <pre tabindex="0"><code>{
-  &#34;visitorId&#34;: &#34;user@tealium.com&#34;, // TAPID削除され、スキップされる
+  &#34;visitorId&#34;: &#34;user@tealium.com&#34;, // TAPIDは削除され、とにかくスキップされます
   &#34;firstPartyCookieId&#34;: &#34;user@tealium.com&#34;
 }
-</code></pre><h4 id="オーバーライドスキップおよび削除">オーバーライド、スキップ、および削除</h4>
+</code></pre><h4 id="上書きスキップ-削除">上書き、スキップ、&amp; 削除</h4>
 <h5 id="リクエスト-6">リクエスト</h5>
 <p><strong>ボディ:</strong></p>
 <pre tabindex="0"><code>{
@@ -739,14 +740,14 @@
 </code></pre><p><strong>クッキー:</strong></p>
 <pre tabindex="0"><code>TAPID=tealium/main&gt;12345|tealium/alt&gt;67890|;
 </code></pre><h5 id="レスポンス-6">レスポンス</h5>
-<p>クッキーの構成：<code>i.gif</code>および<code>vdata</code>のみ</p>
+<p>クッキー構成:  <code>i.gif</code>と<code>vdata</code>のみ、<code>/event</code>は除く</p>
 <pre tabindex="0"><code>TAPID=tealium/alt&gt;user|tealium/main&gt;12345|;
-</code></pre><p><code>tealium_override_tapid</code>は<code>tealium_delete_3rd_party_vid_cookies</code>よりも優先されます。</p>
+</code></pre><p><code>tealium_override_tapid</code>は<code>tealium_delete_3rd_party_vid_cookies</code>より優先されます</p>
 <h5 id="イベント-6">イベント</h5>
 <pre tabindex="0"><code>{
-  &#34;visitorId&#34;: &#34;user@tealium.com&#34;, // TAPIDスキップ
+  &#34;visitorId&#34;: &#34;user@tealium.com&#34;, // TAPIDはスキップされます
   &#34;firstPartyCookieId&#34;: &#34;user@tealium.com&#34;,
-  &#34;thirdPartyCookieId&#34;: &#34;user&#34; // オーバーライド
+  &#34;thirdPartyCookieId&#34;: &#34;user&#34; // 上書きされます
 }
 </code></pre>
 </div>
@@ -793,7 +794,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2024年August月21日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -807,10 +808,10 @@
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tapid%E5%86%85%E3%81%AE%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%A8%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E5%80%A4" href="javascript:void(0)">TAPID内のアカウントとプロファイルの値</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#id%E3%81%AE%E8%A7%A3%E6%B1%BA" href="javascript:void(0)">IDの解決</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E3%82%B9%E3%83%86%E3%82%A3%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%81%AE%E5%95%8F%E9%A1%8C" href="javascript:void(0)">訪問スティッチングの問題</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tapid%E3%81%AE%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%A8%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E5%80%A4" href="javascript:void(0)">TAPIDのアカウントとプロファイルの値</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%A4%E3%83%87%E3%83%B3%E3%83%86%E3%82%A3%E3%83%86%E3%82%A3%E8%A7%A3%E6%B1%BA" href="javascript:void(0)">アイデンティティ解決</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E3%81%AE%E3%82%B9%E3%83%86%E3%82%A3%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E5%95%8F%E9%A1%8C" href="javascript:void(0)">訪問のスティッチング問題</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%AE%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88" href="javascript:void(0)">ブラウザのサポート</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%95%E3%82%A1%E3%83%BC%E3%82%B9%E3%83%88%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%81%A8tapid" href="javascript:void(0)">ファーストパーティドメインとTAPID</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tapid%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%A4%89%E6%9B%B4" href="javascript:void(0)">TAPIDクッキーデータの変更</a></li>
