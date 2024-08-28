@@ -382,115 +382,134 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="connector-actions">Connector Actions</h2>
+  <h2 id="api-information">API Information</h2>
+<p>This connector uses the following vendor API:</p>
+<ul>
+<li>
+<p>API Name: ActiveCampaign API</p>
+</li>
+<li>
+<p>API Version: v3</p>
+</li>
+<li>
+<p>Documentation: <a href="https://developers.activecampaign.com/reference/overview">ActiveCampaign API</a></p>
+</li>
+</ul>
+<h2 id="configuration">Configuration</h2>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>After adding the connector, configure the following settings:</p>
+<ul>
+<li><strong>Account Name</strong>
+<ul>
+<li>Access the API using a base URL that is specific to your account.</li>
+<li>Go to ActiveCampaign and click <strong>Settings &gt; Developer</strong> to get your API URL.</li>
+</ul>
+</li>
+<li><strong>API Token</strong>
+<ul>
+<li>Go to ActiveCampaign and click <strong>Settings &gt; Developer</strong> to get your API token.</li>
+<li>Each user in your ActiveCampaign account has their own unique API token.</li>
+</ul>
+</li>
+</ul>
+<h2 id="actions">Actions</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Action Name</strong></th>
-<th style="text-align:left"><strong>AudienceStream</strong></th>
-<th style="text-align:left"><strong>EventStream</strong></th>
+<th>Action Name</th>
+<th>AudienceStream</th>
+<th>EventStream</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Add New Contact</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✗</td>
+<td>Upsert Contact</td>
+<td>✓</td>
+<td>✓</td>
 </tr>
 <tr>
-<td style="text-align:left">Add Tags to Contact</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✗</td>
+<td>Add Tags to Contact</td>
+<td>✓</td>
+<td>✓</td>
 </tr>
 <tr>
-<td style="text-align:left">Add Contact to Automation</td>
-<td style="text-align:left">✓</td>
-<td style="text-align:left">✗</td>
+<td>Add Contact to Automation</td>
+<td>✓</td>
+<td>✓</td>
 </tr>
 </tbody>
 </table>
-<h2 id="configure-settings">Configure Settings</h2>
-<p>Go to the Connector Marketplace and add a new connector. Read the <a href="/server-side/connectors/about/">Connector Overview</a> article for general instructions on how to add a connector.</p>
-<p>After adding the connector, configure the following settings:</p>
-<ul>
-<li>
-<p><strong>API URL</strong></p>
-<ul>
-<li>Go to ActiveCampaign and click <strong>Settings &gt; Developer</strong>.</li>
-<li>For more information, see: <a href="https://account.api-us1.com">ActiveCampaign Documentation</a>.</li>
-</ul>
-</li>
-<li>
-<p><strong>API Key</strong></p>
-<ul>
-<li>Go to ActiveCampaign and click <strong>Settings &gt; Developer</strong>.</li>
-</ul>
-</li>
-</ul>
-<h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
-<p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action---add-new-contact">Action - Add New Contact</h3>
+<p>Enter a name for the action and select the action type from the drop-down menu.</p>
+<p>The following section describes how to set up parameters and options for each action.</p>
+<h3 id="upsert-contact">Upsert Contact</h3>
+<h4 id="contact-parameters">Contact Parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email</td>
+<td>Email address of the contact to sync.</td>
+</tr>
+<tr>
+<td>First Name</td>
+<td>First name of contact.</td>
+</tr>
+<tr>
+<td>Last Name</td>
+<td>Last name of contact.</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>Phone number of contact.</td>
+</tr>
+<tr>
+<td>Field Values</td>
+<td>Array of the contact’s field values. Customer field values are referenced by ID and not the field name. This will be an integer value and must be found through the ActiveCampaign field management.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="add-tags-to-contact">Add Tags to Contact</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Parameter</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Email</td>
-<td style="text-align:left"><ul><li>Email of the new contact. for example, <code>test@example.com</code>.</li></ul></td>
+<td>Contact ID</td>
+<td>The ID of the Contact.</td>
 </tr>
 <tr>
-<td style="text-align:left">List ID</td>
-<td style="text-align:left"><ul><li>Assign a contact to a list.</li><li>Specify the integer value of the list, for example, <code>12345</code>.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Additional Fields</td>
-<td style="text-align:left"><ul><li>Optional.</li><li>Include additional data about the contact.</li><li>For a list of available fields, see: <a href="https://www.activecampaign.com/api/example.php?call=contact_add">https://www.activecampaign.com/api/example.php?call=contact_add</a>.</li></ul></td>
+<td>Tag ID</td>
+<td>Enter the exact name of the tag to assign the visitor to. Select the tag from the drop-down.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="action---add-tags-to-contact">Action - Add Tags to Contact</h3>
+<h3 id="add-contact-to-automation">Add Contact to Automation</h3>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>Parameter</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Email</td>
-<td style="text-align:left"><ul><li>Email of the new contact, for example <code>test@example.com</code>.</li></ul></td>
+<td>Contact ID</td>
+<td>The ID of the contact.</td>
 </tr>
 <tr>
-<td style="text-align:left">Tags</td>
-<td style="text-align:left"><ul><li>Tags to add to the contact.</li><li>Pass a string for one tag, an array (set of strings) for multiple tags, or a comma-separated list of custom values.</li></ul></td>
-</tr>
-</tbody>
-</table>
-<h3 id="action---add-contact-to-automation">Action - Add Contact to Automation</h3>
-<h4 id="parameters-2">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"><strong>Parameter</strong></th>
-<th style="text-align:left"><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Contact Email</td>
-<td style="text-align:left"><ul><li>Email of the new contact, for example, <code>test@example.com</code>.</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Automation IDs</td>
-<td style="text-align:left"><ul><li>The automation IDs to add the contact to.</li><li>You may use multiple, comma-separated values.</li></ul></td>
+<td>Automation ID</td>
+<td>The ID of the automation.</td>
 </tr>
 </tbody>
 </table>
@@ -554,7 +573,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 15, 2021 
+          <p>This page was last updated:  August 28, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -568,12 +587,12 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action Settings - Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---add-new-contact" href="javascript:void(0)">Action - Add New Contact</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---add-tags-to-contact" href="javascript:void(0)">Action - Add Tags to Contact</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---add-contact-to-automation" href="javascript:void(0)">Action - Add Contact to Automation</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#upsert-contact" href="javascript:void(0)">Upsert Contact</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-tags-to-contact" href="javascript:void(0)">Add Tags to Contact</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-contact-to-automation" href="javascript:void(0)">Add Contact to Automation</a></li>
               </nav>
   </aside></nav>
 

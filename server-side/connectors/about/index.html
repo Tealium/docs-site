@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "5",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -308,7 +308,8 @@
         <a href="/server-side/connectors/webhook-connectors/template-variables/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhook - Send Custom Request - Template Variables Guide</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhook - Send Custom Request - Trimou Templating Engine Guide</a></li></ul>
       </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/cookie-matching/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Persistent cookie matching</a></li></ul>
+        <a href="/server-side/connectors/cookie-matching/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Persistent cookie matching</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/connectors/release-notes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".release-notes--connectors">Release Notes</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".audiences">Audiences</a>
         <ul class="pl2  audiences desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -554,7 +555,11 @@ Source indicates the origin of the data being acted upon. A source can be an aud
 <li>503 – Service Unavailable</li>
 <li>504 – Gateway Timeout</li>
 </ul>
-<p>A retry is not attempted when a <strong>Response Timeout - Vendor API did not respond within 5000 milliseconds</strong> response is received. The request payload was sent, but the vendor did not send a response within our allowed time of 5 seconds. The request may have succeeded on the vendor&rsquo;s side but because it took longer than 5 seconds to get a response, we treat it as a failure.</p>
+<p>A retry is not attempted when a <strong>Response Timeout - Vendor API did not respond within 5000 milliseconds</strong> response is received. The request payload was sent, but the vendor did not send a response within our allowed time of 5 seconds. The request may have succeeded on the vendor&rsquo;s side, but because it took longer than 5 seconds to get a response, we treat it as a failure.</p>
+<h3 id="overload-protection">Overload protection</h3>
+<p>Connectors perform actions through multiple instances of a data handler. Sometimes, data handlers encounter transmission errors with vendors. If errors exceed a configured threshold, Tealium can pause or throttle data transmission to vendors until the error rate drops.</p>
+<p>For example, if the overall rate of failure for an instance exceeds 40% per 100 attempts, that instance will pause processing actions for 1 minute. The instance then attempts to process half of the actions in the queue. If the failure rate for these 50 attempts remains above 20%, the instance pauses for another 60 seconds before trying again. Otherwise, the instance resumes full operation.</p>
+<p>Tealium activates and adjusts the thresholds at the various levels as needed to ensure maximum success and performance for customers.</p>
 <h3 id="restricted-data">Restricted data</h3>
 <p>Restricted data settings do not apply to connectors. Attributes marked as restricted data are always included, whether you are sending them through mappings or as part of the visitor profile. This cannot be changed. Learn more about <a href="/server-side/attributes/restricted-data/">Restricted Data</a>.</p>
 <h3 id="ip-whitelists">IP whitelists</h3>
@@ -670,7 +675,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 31, 2023 
+          <p>This page was last updated:  July 9, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -688,6 +693,7 @@ No</button>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#terminology" href="javascript:void(0)">Terminology</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent-categories" href="javascript:void(0)">Consent categories</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#retries" href="javascript:void(0)">Retries</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#overload-protection" href="javascript:void(0)">Overload protection</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#restricted-data" href="javascript:void(0)">Restricted data</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ip-whitelists" href="javascript:void(0)">IP whitelists</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#screen-navigation" href="javascript:void(0)">Screen navigation</a></li>

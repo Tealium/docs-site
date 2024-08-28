@@ -308,7 +308,8 @@
         <a href="/server-side/connectors/webhook-connectors/template-variables/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhook - Send Custom Request - Template Variables Guide</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhook - Send Custom Request - Trimou Templating Engine Guide</a></li></ul>
       </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/cookie-matching/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Persistent cookie matching</a></li></ul>
+        <a href="/server-side/connectors/cookie-matching/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Persistent cookie matching</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/connectors/release-notes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".release-notes--connectors">Release Notes</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".audiences">Audiences</a>
         <ul class="pl2  audiences desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -537,7 +538,7 @@
     </a>
 </figure>
 <h2 id="date-formatter">Date formatter</h2>
-<p>To convert a string attribute to a date, use the date formatter. Select the timestamp components from the date format panel that match the string values. For example, a string value such as &ldquo;01/31/2020&rdquo; can be converted to a date using a format of &ldquo;MM/dd/yyyy&rdquo;.</p>
+<p>To convert a string attribute to a date, use the date formatter. Select the timestamp components from the date format panel that match the string values. For example, a string value such as <code>01/31/2020</code> can be converted to a date using a format of <code>MM/dd/yyyy</code>.</p>
 <p>Date and time string patterns:</p>
 <pre tabindex="0"><code>G Era designator (before christ, after christ)
 y Year (e.g. 12 or 2012). Use either yy or yyyy.
@@ -554,11 +555,12 @@ Z RFC 822 Time Zone
 &#39; Escape for text delimiter
 &#39; Single quote
 </code></pre><p>Reference (with examples): <a href="https://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html">SimpleDateFormat Java Class</a></p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If the string includes a <code>T</code>, ensure that you include single quotes before and after the <code>T</code> in the expression (for example, a <code>2024-08-22T10:24:58.905</code> string will use the expression <code>yyyy-MM-dd'T'HH:mm:ss.SSS</code>).</p>
 <h3 id="size-limits">Size Limits</h3>
 <p>The size of a each date attribute is limited to the following range:</p>
 <ul>
-<li>Minimum: “-292275055-05-16T16:47:04.192Z”</li>
-<li>Maximum: “+292278994-08-17T07:12:55.807Z”</li>
+<li>Minimum: <code>-292275055-05-16T16:47:04.192Z</code></li>
+<li>Maximum: <code>+292278994-08-17T07:12:55.807Z</code></li>
 </ul>
 <p>These attributes are also limited by the maximum size of the profile after encryption and compression (400 KB).</p>
 <h2 id="date-enrichments">Date enrichments</h2>
@@ -576,9 +578,19 @@ Z RFC 822 Time Zone
 <p><strong>Attribute Name</strong>: Last Purchase Date</p>
 <ul>
 <li><strong>Starting Value</strong>: <code>&quot;&quot;</code></li>
-<li><strong>Enriched With</strong>:| <code>1491233145706</code></li>
-<li><strong>Resulting Value</strong>: <code>1491233145706</code></li>
+<li><strong>Enriched with String</strong>:| <code>01/04/2019</code></li>
+<li><strong>Using Format</strong>: <code>dd/MM/yyy</code></li>
 </ul>
+<p>When you use the <strong>Set date</strong> enrichment to set an EventStream date from another date attribute (EventStream or AudienceStream), you can use a placeholder for the format string. For example, in the <strong>Set Date</strong> enrichment, set the following:</p>
+<ul>
+<li><strong>Set date to</strong>: The date attribute you want to set the value to. In this example,<code>date_of_birth</code>.</li>
+<li><strong>with date format</strong>: Enter any placeholder, for example, <code>x</code>.</li>
+</ul>
+<figure><a class="slb" href="/images/server-side/attributes/set_date_enrichment_example.png"><img src="/images/server-side/attributes/set_date_enrichment_example.png"
+         alt="Set date enrichment with placeholder date format value"
+         title="Set date enrichment with placeholder date format value"/>
+    </a>
+</figure>
 <h3 id="remove-date">Remove date</h3>
 <p>The Remove Date enrichment erases the value of a date attribute. This enrichment is available for attributes: event, visit and visitor.</p>
 <p><strong>Attribute Name</strong>: Last Visit Date</p>
@@ -586,8 +598,8 @@ Z RFC 822 Time Zone
 <li><strong>Starting Value</strong>: <code>1491233145706</code></li>
 <li><strong>Resulting Value</strong>: <code>&quot;&quot;</code></li>
 </ul>
-<h3 id="format-date">Format date</h3>
-<p>The Format Date enrichment sets the value based on an expected date format of incoming values. It is used when neither a &ldquo;TiQ Variable&rdquo; nor native attribute type exists.</p>
+<h3 id="convert-from-date-format">Convert from date format</h3>
+<p>The Format Date enrichment sets the value based on an expected date format of incoming values. This enrichment is used to convert string data types sent from the Collect tag or API into a date type. Use the <a href="#date-formatter">Date Formatter</a> to convert the string data to a date.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>This enrichment is only available for event attributes.</p>
 
 </div>
@@ -649,7 +661,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 6, 2024 
+          <p>This page was last updated:  August 28, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -670,7 +682,7 @@ No</button>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#capture-date" href="javascript:void(0)">Capture date</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-date" href="javascript:void(0)">Set date</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-date" href="javascript:void(0)">Remove date</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#format-date" href="javascript:void(0)">Format date</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#convert-from-date-format" href="javascript:void(0)">Convert from date format</a></li>
               </nav>
   </aside></nav>
 

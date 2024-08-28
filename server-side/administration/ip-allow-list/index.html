@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "3",
+        reading_time  : "2",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -308,7 +308,8 @@
         <a href="/server-side/connectors/webhook-connectors/template-variables/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhook - Send Custom Request - Template Variables Guide</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/webhook-connectors/trimou-templating-engine/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Webhook - Send Custom Request - Trimou Templating Engine Guide</a></li></ul>
       </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/cookie-matching/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Persistent cookie matching</a></li></ul>
+        <a href="/server-side/connectors/cookie-matching/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Persistent cookie matching</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/connectors/release-notes/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".release-notes--connectors">Release Notes</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".audiences">Audiences</a>
         <ul class="pl2  audiences desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -522,24 +523,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>We are adding IP addresses to all of our data processing regions to maintain seamless operations with increased server-side traffic. If the new IP addresses are not added to your current allowlist before the roll-out date, you may notice increased connector errors, function action errors, and files not being read from S3 file services outside of Tealium.</p>
-<h2 id="additional-ip-addresses">Additional IP addresses</h2>
-<p>If you are using allowlists (also known as safelists or whitelists), include the new IP addresses to continue operating without increased error rates.</p>
-<p>The additional IP addresses will be introduced on the following dates:</p>
-<ul>
-<li>Apr 29, 2024 - US (Oregon)</li>
-<li>May 6, 2024 - EU (Ireland and Frankfurt)</li>
-<li>May 13, 2024 - APJ (Hong Kong, Sydney, Tokyo)</li>
-<li>May 20, 2024 - US (US East 1)</li>
-</ul>
-<p>After the change, you can check the following three indicators to test if you are being impacted due to missing IP addresses from your allowlist in your firewall configuration:</p>
-<ul>
-<li>Increased connector or function action errors as seen in the Tealium UI (error message will depend on the third-party vendor).</li>
-<li>Reduced traffic from Tealium to your vendor endpoints.</li>
-<li>File import files are no longer getting processed (Tealium is being blocked from pulling files from your non-AWS S3 file service location).</li>
-</ul>
-<p>This change will not impact customers who use IP allowlists as an additional security measure to control user login access to the Tealium platform. The scope is limited to traffic flowing through Tealium’s platform and does not include our UI.</p>
-<h2 id="how-it-works">How it works</h2>
+  <h2 id="how-it-works">How it works</h2>
 <p>The CDH communicates with external systems during the following operations:</p>
 <ul>
 <li>Sending data to external systems with connector actions.</li>
@@ -558,17 +542,17 @@
 </thead>
 <tbody>
 <tr>
-<td>50.18.192.141 *<br>52.52.159.89 *<br>54.153.15.248<br>54.176.233.190 *<br>54.183.127.212<br>54.193.243.80</td>
+<td>50.18.192.141<br>52.52.159.89<br>54.153.15.248<br>54.176.233.190<br>54.183.127.212<br>54.193.243.80</td>
 <td><code>us-west-1</code></td>
 <td>San Jose, California</td>
 </tr>
 <tr>
-<td>34.208.6.185<br>35.83.9.139<br>35.155.164.60 *<br>35.155.225.25 *<br>35.163.73.149<br>44.228.182.113<br>44.231.202.70<br>44.238.18.189 *<br>52.32.22.16</td>
+<td>34.208.6.185<br>35.83.9.139<br>35.155.164.60<br>35.155.225.25<br>35.163.73.149<br>44.228.182.113<br>44.231.202.70<br>44.238.18.189<br>52.32.22.16</td>
 <td><code>us-west-2</code></td>
 <td>Oregon</td>
 </tr>
 <tr>
-<td>3.210.6.72 *<br>3.210.238.60 *<br>3.214.63.89<br>23.23.136.136<br>34.224.220.100<br>44.220.225.247<br>54.82.200.66<br>54.164.73.126<br>107.23.142.239 *</td>
+<td>3.210.6.72<br>3.210.238.60<br>3.214.63.89<br>23.23.136.136<br>34.224.220.100<br>44.220.225.247<br>54.82.200.66<br>54.164.73.126<br>107.23.142.239</td>
 <td><code>us-east-1</code></td>
 <td>Ashburn, Virginia</td>
 </tr>
@@ -578,28 +562,29 @@
 <td>Dublin, Ireland</td>
 </tr>
 <tr>
-<td>3.72.173.191<br>3.79.77.159<br>3.125.211.165<br>18.193.100.101<br>18.195.141.132<br>18.198.88.136<br>18.199.16.199<br>52.29.52.87<br>52.29.185.253 *<br>54.93.104.232</td>
+<td>3.72.173.191<br>3.79.77.159<br>3.125.211.165<br>18.193.100.101<br>18.195.141.132<br>18.198.88.136<br>18.199.16.199<br>52.29.52.87<br>52.29.185.253<br>54.93.104.232</td>
 <td><code>eu-central-1</code></td>
 <td>Frankfurt, Germany</td>
 </tr>
 <tr>
-<td>16.163.133.41 *<br>16.163.255.152<br>18.163.149.136 *<br>18.166.4.167 *<br>18.167.208.249<br>18.167.237.249<br>43.198.29.150<br>43.198.173.159<br>43.199.6.88</td>
+<td>16.163.133.41<br>16.163.255.152<br>18.163.149.136<br>18.166.4.167<br>18.167.208.249<br>18.167.237.249<br>43.198.29.150<br>43.198.173.159<br>43.199.6.88</td>
 <td><code>ap-east-1</code></td>
 <td>Hong Kong</td>
 </tr>
 <tr>
-<td>13.112.219.50 *<br>35.72.125.147<br>35.74.186.82<br>35.76.187.92<br>52.68.25.59<br>52.69.49.172 *<br>52.196.255.145<br>54.64.29.101<br>54.64.71.25 *</td>
+<td>13.112.219.50<br>35.72.125.147<br>35.74.186.82<br>35.76.187.92<br>52.68.25.59<br>52.69.49.172<br>52.196.255.145<br>54.64.29.101<br>54.64.71.25</td>
 <td><code>ap-northeast-1</code></td>
 <td>Tokyo, Japan</td>
 </tr>
 <tr>
-<td>3.25.4.61 *<br>13.54.68.127<br>13.54.118.13<br>13.237.193.244 *<br>13.237.225.69<br>52.62.159.75 *<br>52.64.214.94<br>52.64.154.49<br>54.253.220.122</td>
+<td>3.25.4.61<br>13.54.68.127<br>13.54.118.13<br>13.237.193.244<br>13.237.225.69<br>52.62.159.75<br>52.64.214.94<br>52.64.154.49<br>54.253.220.122</td>
 <td><code>ap-southeast-2</code></td>
 <td>Sydney, Australia</td>
 </tr>
 </tbody>
 </table>
-<p>* Original IP address list</p>
+<h2 id="pc-hmt">PC-HMT</h2>
+<p>Users of the <code>PC-HMT</code> environment should also add 52.36.206.227 to their approved list of IP addresses.</p>
 <h2 id="aws-s3">AWS S3</h2>
 <p>Tealium <a href="/server-side/data-sources/file-import/about/">File Import</a> can retrieve files from either the included Tealium S3 bucket or your S3 bucket. If you want to retrieve files from your company&rsquo;s own S3 bucket (not the included Tealium S3 bucket), the AWS bucket policy allowlist must include the VPCe IDs (VPC endpoint IDs) below and the above IP addresses.</p>
 <p>For more information about AWS bucket policies, see the following articles in the AWS documentation:</p>
@@ -709,7 +694,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 8, 2024 
+          <p>This page was last updated:  August 28, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -723,8 +708,8 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#additional-ip-addresses" href="javascript:void(0)">Additional IP addresses</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#pc-hmt" href="javascript:void(0)">PC-HMT</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#aws-s3" href="javascript:void(0)">AWS S3</a></li>
               </nav>
   </aside></nav>

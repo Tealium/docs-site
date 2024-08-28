@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "7",
+        reading_time  : "8",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -382,7 +382,14 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="connector-actions">Connector actions</h2>
+  <h2 id="how-it-works">How it works</h2>
+<p>A Google Ads conversion occurs when a user performs a specified action after clicking an ad or viewing a Display Network ad. The Google Ads Conversions connector uses the Google Ads API, which supports uploading offline conversions and adjusting previously captured conversion values. You can use the connector to upload offline click conversions into Google Ads to track ads that led to sales in the offline world, such as over the phone or through a sales representative. You can upload offline call conversions to track when ads lead to phone calls and when those phone calls lead to valuable customer actions.</p>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>To send offline conversions, configure a Google Ads Import conversion action, and specify either calls or clicks as the source. For more information, see <a href="https://support.google.com/google-ads/answer/2998031?sjid=13815989904284925133-NC">Google Help documentation regarding offline conversions</a>.</li>
+<li>To adjust a conversion, you must have the original conversion&rsquo;s transaction ID or have the <code>gclid</code> and conversion date and time to locate the conversion you want to adjust.</li>
+</ul>
+<h2 id="connector-actions">Connector actions</h2>
 <table>
 <thead>
 <tr>
@@ -435,11 +442,16 @@
 <h3 id="consent">Consent</h3>
 <p>The connector sends the value of <code>GRANTED</code> for <code>adUserData</code> and <code>adPersonalization</code> consent by default. To override the default, map a relevant EventStream attribute to <code>Ad User Data Consent</code> and/or <code>Ad Personalization Consent</code> with a value of <code>DENIED</code>.</p>
 <h2 id="configure-settings">Configure settings</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
 <p>After adding the connector, configure the following settings:</p>
+<ul>
+<li><strong>Customer ID</strong>: The unique identifier assigned to your individual Google Ads account.</li>
+<li><strong>Manager Customer ID</strong>: If accessing a managed account, enter the <strong>Manager Customer ID</strong>, and the <strong>Customer ID</strong>.</li>
+</ul>
+<p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
 <h2 id="action-settings---parameters-and-options">Action settings - parameters and options</h2>
-<p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
-<p>This section describes how to set up parameters and options for each action.</p>
+<p>Click <strong>Continue</strong> to configure the connector actions. Enter a name for the action and then select the action type from the drop-down menu.</p>
+<p>The following section describes how to set up parameters and options for each action.</p>
 <h3 id="action---upload-call-conversion">Action - Upload Call Conversion</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
@@ -456,7 +468,7 @@
 </tr>
 <tr>
 <td>Conversion Action</td>
-<td>(Required) Select existing conversion action. For more information, see <a href="https://support.google.com/google-ads/answer/1722022">Google Ads Conversion Tracking</a>.</td>
+<td>(Required) Select existing conversion action. Only Google Ads conversion actions of type <code>UPLOAD_CALLS</code> will be displayed. For more information, see <a href="https://support.google.com/google-ads/answer/1722022">Google Ads Conversion Tracking</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -573,29 +585,6 @@
 </tr>
 </tbody>
 </table>
-<h4 id="optional-parameters-1">Optional parameters</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Parameter</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Conversion Action Override</td>
-<td>Provide a conversion action ID to override the <strong>Conversion Action</strong> parameter. This field lets you use EventStream variables to populate the <strong>Conversion Action ID</strong> parameter.</td>
-</tr>
-<tr>
-<td>Custom Variables</td>
-<td>The custom variables associated with this conversion. For more information, see: <a href="https://developers.google.com/google-ads/api/reference/rpc/v8/CustomVariable">Custom Variable</a>.</td>
-</tr>
-<tr>
-<td>Ad User Data Consent</td>
-<td>Consent for ad user data. The default value is <code>GRANTED</code>. Valid values are <code>GRANTED</code> and <code>DENIED</code>.</td>
-</tr>
-</tbody>
-</table>
 <h4 id="cart-data-parameters">Cart Data parameters</h4>
 <table>
 <thead>
@@ -632,6 +621,29 @@
 <tr>
 <td>Unit Price</td>
 <td>The unit price excluding tax, shipping, and any transaction level discounts. The currency code is the same as that in the <code>ClickConversion</code> message. Use an array to add multiple items. Array type attributes must be of equal length.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="optional-parameters-1">Optional parameters</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conversion Action Override</td>
+<td>Provide a conversion action ID to override the <strong>Conversion Action</strong> parameter. You can use EventStream variables to populate the <strong>Conversion Action ID</strong> parameter.</td>
+</tr>
+<tr>
+<td>Custom Variables</td>
+<td>The custom variables associated with this conversion. For more information, see: <a href="https://developers.google.com/google-ads/api/reference/rpc/v8/CustomVariable">Custom Variable</a>.</td>
+</tr>
+<tr>
+<td>Ad User Data Consent</td>
+<td>Consent for ad user data. The default value is <code>GRANTED</code>. Valid values are <code>GRANTED</code> and <code>DENIED</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -724,17 +736,10 @@
 </tr>
 <tr>
 <td>Conversion Action Override</td>
-<td>Provide a conversion action ID to override the <strong>Conversion Action</strong> parameter. This field lets you use EventStream variables to populate the <strong>Conversion Action ID</strong> parameter.</td>
+<td>Provide a conversion action ID to override the <strong>Conversion Action</strong> parameter. You can use EventStream variables to populate the <strong>Conversion Action ID</strong> parameter.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="considerations-for-real-time-web-traffic">Considerations for Real-Time Web Traffic</h2>
-<p>A click-through associated with a Google Click ID must have occurred at least 6 hours prior to activating the connector, otherwise Google will reject the request. We recommend additional consideration when using this connector for the activation of real-time web traffic due to the fact that many of the Google Click IDs are associated with clicks that occurred less than 6 hours before the conversion event.</p>
-<p>Consider one of the following strategies to use the connector in this manner:</p>
-<ul>
-<li>Upload historical conversion data using a file import or the Collect API.</li>
-<li>Send the data to a Google Sheet and manually upload the data to Google Ads.</li>
-</ul>
 
 </div>
 
@@ -795,7 +800,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 28, 2024 
+          <p>This page was last updated:  August 27, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -809,7 +814,9 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector actions</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector actions</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API information</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#batch-limits" href="javascript:void(0)">Batch limits</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#delayed-actions" href="javascript:void(0)">Delayed actions</a></li>
@@ -820,7 +827,6 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---upload-click-conversion" href="javascript:void(0)">Action - Upload Click Conversion</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--conversion-restatement" href="javascript:void(0)">Action — Conversion Restatement</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--conversion-retraction" href="javascript:void(0)">Action — Conversion Retraction</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#considerations-for-real-time-web-traffic" href="javascript:void(0)">Considerations for Real-Time Web Traffic</a></li>
               </nav>
   </aside></nav>
 
