@@ -523,32 +523,15 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>サーバーサイドのトラフィックが増加することにより、シームレスな運用を維持するために、すべてのデータ処理地域にIPアドレスを追加しています。新しいIPアドレスがロールアウト日前に現在の許可リストに追加されていない場合、コネクタエラーや関数アクションエラーの増加、Tealium以外のS3ファイルサービスからのファイルが読み込まれないといった問題が発生する可能性があります。</p>
-<h2 id="追加のipアドレス">追加のIPアドレス</h2>
-<p>許可リスト（またはセーフリスト、ホワイトリストとも呼ばれます）を使用している場合、新しいIPアドレスを追加してエラーレートの増加なしに運用を続けてください。</p>
-<p>追加のIPアドレスは以下の日付で導入されます：</p>
-<ul>
-<li>2024年4月29日 - US（オレゴン）</li>
-<li>2024年5月6日 - EU（アイルランドとフランクフルト）</li>
-<li>2024年5月13日 - APJ（香港、シドニー、東京）</li>
-<li>2024年5月20日 - US（US East 1）</li>
-</ul>
-<p>変更後、ファイアウォールの構成で許可リストからIPアドレスが欠けているために影響を受けているかどうかをテストするための以下の3つの指標を確認できます：</p>
-<ul>
-<li>Tealium UIで見られるようなコネクタまたは関数アクションエラーの増加（エラーメッセージはサードパーティのベンダーによります）。</li>
-<li>Tealiumからのベンダーエンドポイントへのトラフィックの減少。</li>
-<li>ファイルインポートファイルが処理されなくなる（Tealiumが非AWS S3ファイルサービスの場所からファイルを引き出すのをブロックしています）。</li>
-</ul>
-<p>この変更は、Tealiumプラットフォームへのユーザーログインアクセスを制御する追加のセキュリティ対策としてIP許可リストを使用する顧客には影響しません。範囲はTealiumのプラットフォームを通じて流れるトラフィックに限定され、UIは含まれません。</p>
-<h2 id="仕組み">仕組み</h2>
+  <h2 id="仕組み">仕組み</h2>
 <p>CDHは、以下の操作中に外部システムと通信します：</p>
 <ul>
-<li>コネクタアクションで外部システムにデータを送信する。</li>
-<li>関数でカスタムアクションを実行する。</li>
-<li>AWS S3を除くファイルインポートデータソースからファイルを取得する。</li>
+<li>コネクタアクションで外部システムにデータを送信。</li>
+<li>関数でカスタムアクションを実行。</li>
+<li>AWS S3を除くFile Importデータソースからのファイルの取得。</li>
 </ul>
-<p>外部システムがアクセスを承認されたIPアドレスのリストに制限している場合、以下のすべてのIPアドレスを許可リストに追加してください：</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>OAuthコール、テスト接続、<a href="/ja/server-side-connectors/snowflake-streaming-connector/">Snowflake Streaming connector</a>、およびファイルインポートデータソースのテスト接続（AWS S3を除く）はUS-West-1地域を使用します。Snowflakeコネクタはまた、プロファイルにサーバーサイドのプロファイル地域のアドレスを追加することも必要です。OAuthコールとテスト接続を通じてパスするのはログイン情報のみで、クライアントデータは含まれません。</p>
+<p>外部システムがアクセスを承認されたIPアドレスのリストに限定している場合は、以下のすべてのIPアドレスを許可リストに追加してください：</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>OAuthコール、テスト接続、<a href="/ja/server-side-connectors/snowflake-streaming-connector/">Snowflake Streaming connector</a>、およびFile Importデータソースのテスト接続（AWS S3を除く）はUS-West-1地域を使用します。Snowflakeコネクタはまた、サーバーサイドプロファイル地域のアドレスをプロファイルに追加することも必要です。OAuthコールとテスト接続を通じてクライアントデータではなくログイン情報のみが通過します。</p>
 <table>
 <thead>
 <tr>
@@ -559,54 +542,55 @@
 </thead>
 <tbody>
 <tr>
-<td>50.18.192.141 *<br>52.52.159.89 *<br>54.153.15.248<br>54.176.233.190 *<br>54.183.127.212<br>54.193.243.80</td>
+<td>50.18.192.141<br>52.52.159.89<br>54.153.15.248<br>54.176.233.190<br>54.183.127.212<br>54.193.243.80</td>
 <td><code>us-west-1</code></td>
-<td>サンノゼ, カリフォルニア</td>
+<td>サンノゼ、カリフォルニア</td>
 </tr>
 <tr>
-<td>34.208.6.185<br>35.83.9.139<br>35.155.164.60 *<br>35.155.225.25 *<br>35.163.73.149<br>44.228.182.113<br>44.231.202.70<br>44.238.18.189 *<br>52.32.22.16</td>
+<td>34.208.6.185<br>35.83.9.139<br>35.155.164.60<br>35.155.225.25<br>35.163.73.149<br>44.228.182.113<br>44.231.202.70<br>44.238.18.189<br>52.32.22.16</td>
 <td><code>us-west-2</code></td>
 <td>オレゴン</td>
 </tr>
 <tr>
-<td>3.210.6.72 *<br>3.210.238.60 *<br>3.214.63.89<br>23.23.136.136<br>34.224.220.100<br>44.220.225.247<br>54.82.200.66<br>54.164.73.126<br>107.23.142.239 *</td>
+<td>3.210.6.72<br>3.210.238.60<br>3.214.63.89<br>23.23.136.136<br>34.224.220.100<br>44.220.225.247<br>54.82.200.66<br>54.164.73.126<br>107.23.142.239</td>
 <td><code>us-east-1</code></td>
-<td>アシュバーン, バージニア</td>
+<td>アシュバーン、バージニア</td>
 </tr>
 <tr>
 <td>34.251.234.107<br>52.30.45.164<br>52.31.156.52<br>52.48.83.213<br>52.209.154.50<br>54.76.122.246<br>54.195.193.79<br>54.229.215.104 *<br>108.128.75.88</td>
 <td><code>eu-west-1</code></td>
-<td>ダブリン, アイルランド</td>
+<td>ダブリン、アイルランド</td>
 </tr>
 <tr>
-<td>3.72.173.191<br>3.79.77.159<br>3.125.211.165<br>18.193.100.101<br>18.195.141.132<br>18.198.88.136<br>18.199.16.199<br>52.29.52.87<br>52.29.185.253 *<br>54.93.104.232</td>
+<td>3.72.173.191<br>3.79.77.159<br>3.125.211.165<br>18.193.100.101<br>18.195.141.132<br>18.198.88.136<br>18.199.16.199<br>52.29.52.87<br>52.29.185.253<br>54.93.104.232</td>
 <td><code>eu-central-1</code></td>
-<td>フランクフルト, ドイツ</td>
+<td>フランクフルト、ドイツ</td>
 </tr>
 <tr>
-<td>16.163.133.41 *<br>16.163.255.152<br>18.163.149.136 *<br>18.166.4.167 *<br>18.167.208.249<br>18.167.237.249<br>43.198.29.150<br>43.198.173.159<br>43.199.6.88</td>
+<td>16.163.133.41<br>16.163.255.152<br>18.163.149.136<br>18.166.4.167<br>18.167.208.249<br>18.167.237.249<br>43.198.29.150<br>43.198.173.159<br>43.199.6.88</td>
 <td><code>ap-east-1</code></td>
 <td>香港</td>
 </tr>
 <tr>
-<td>13.112.219.50 *<br>35.72.125.147<br>35.74.186.82<br>35.76.187.92<br>52.68.25.59<br>52.69.49.172 *<br>52.196.255.145<br>54.64.29.101<br>54.64.71.25 *</td>
+<td>13.112.219.50<br>35.72.125.147<br>35.74.186.82<br>35.76.187.92<br>52.68.25.59<br>52.69.49.172<br>52.196.255.145<br>54.64.29.101<br>54.64.71.25</td>
 <td><code>ap-northeast-1</code></td>
-<td>東京, 日本</td>
+<td>東京、日本</td>
 </tr>
 <tr>
-<td>3.25.4.61 *<br>13.54.68.127<br>13.54.118.13<br>13.237.193.244 *<br>13.237.225.69<br>52.62.159.75 *<br>52.64.214.94<br>52.64.154.49<br>54.253.220.122</td>
+<td>3.25.4.61<br>13.54.68.127<br>13.54.118.13<br>13.237.193.244<br>13.237.225.69<br>52.62.159.75<br>52.64.214.94<br>52.64.154.49<br>54.253.220.122</td>
 <td><code>ap-southeast-2</code></td>
-<td>シドニー, オーストラリア</td>
+<td>シドニー、オーストラリア</td>
 </tr>
 </tbody>
 </table>
-<p>* 元のIPアドレスリスト</p>
+<h2 id="pc-hmt">PC-HMT</h2>
+<p><code>PC-HMT</code>環境のユーザーは、承認されたIPアドレスのリストに52.36.206.227も追加する必要があります。</p>
 <h2 id="aws-s3">AWS S3</h2>
-<p>Tealium <a href="/ja/server-side/data-sources/file-import/about/">File Import</a>は、TealiumのS3バケットまたはあなたのS3バケットからファイルを取得することができます。あなたの会社の独自のS3バケット（TealiumのS3バケットではない）からファイルを取得したい場合、AWSバケットポリシーの許可リストには以下のVPCe ID（VPCエンドポイントID）と上記のIPアドレスを含める必要があります。</p>
+<p>Tealiumの<a href="/ja/server-side/data-sources/file-import/about/">File Import</a>は、TealiumのS3バケットまたはあなたのS3バケットからファイルを取得できます。あなたの会社のS3バケット（TealiumのS3バケットではない）からファイルを取得したい場合、AWSバケットポリシーの許可リストには、以下のVPCe ID（VPCエンドポイントID）と上記のIPアドレスを含める必要があります。</p>
 <p>AWSバケットポリシーについての詳細は、AWSドキュメンテーションの以下の記事を参照してください：</p>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/add-bucket-policy.html">Amazon S3コンソールを使用してバケットポリシーを追加する</a></li>
-<li><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies-vpc-endpoint.html">バケットポリシーを使用してVPCエンドポイントからのアクセスを制御する</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies-vpc-endpoint.html">バケットポリシーでVPCエンドポイントからのアクセスを制御する</a></li>
 </ul>
 <table>
 <thead>
@@ -710,7 +694,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年August月8日
+          <p>最終更新日 ::  2024年August月28日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -724,8 +708,8 @@
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%BF%BD%E5%8A%A0%E3%81%AEip%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9" href="javascript:void(0)">追加のIPアドレス</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#pc-hmt" href="javascript:void(0)">PC-HMT</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#aws-s3" href="javascript:void(0)">AWS S3</a></li>
               </nav>
   </aside></nav>
