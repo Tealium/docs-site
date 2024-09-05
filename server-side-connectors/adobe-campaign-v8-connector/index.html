@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "3",
+        reading_time  : "5",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -312,6 +312,7 @@
         <a href="/server-side-connectors/the-trade-desk-first-party-data-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".the-trade-desk-first-party-data-connector-setup-guide">The Trade Desk First Party Data</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/the-trade-desk-in-app-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".the-trade-desk-in-app-events-connector">The Trade Desk In-App Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/the-trade-desk-offline-conversion-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".the-trade-desk-offline-conversion-connector">The Trade Desk Offline Conversion</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/the-trade-desk-real-time-conversion-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".the-trade-desk-real-time-conversion-events-connector">The Trade Desk Real-Time Conversion Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/the-trade-desk-third-party-data-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".the-trade-desk-third-party-data-connector-setup-guide">The Trade Desk Third-Party Data</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/tiktok-audiences-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tiktok-audiences-connector-setup-guide">TikTok Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/tiktok-audiences-tealium-provided-credentials-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tiktok-audiences-tealium-provided-credentials-connector-setup-guide">TikTok Audiences (Tealium-Provided Credentials)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -328,6 +329,7 @@
         <a href="/server-side-connectors/userlist-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".userlist-connector">Userlist</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/veeva-crm-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Veeva CRM</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/veritonic-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".veritonic-connector">Veritonic</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/viant-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".viant-connector">Viant</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/vkontakte-ads-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".vkontakte-ads-connector">VKontakte Ads</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/webhook-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".webhook-connector-setup-guide">Webhook</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/whatsapp-business-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".whatsapp-business-connector">WhatsApp Business</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -383,17 +385,37 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="configuration">Configuration</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
-<p>After adding the connector, configure the following settings:</p>
+<p>To configure the Adobe Campaign v8 connector in Tealium, you first need to generate the OAuth server-to-server credentials for the connection in Adobe. For more information, see <a href="https://developer.adobe.com/developer-console/docs/guides/services/services-add-api-oauth-s2s/">Adobe: Add API to project using OAuth Server-to-Server credential</a>.</p>
+<p>Complete the following steps to generate Adobe credentials and configure the connector:</p>
+<ol>
+<li>Create a new Adobe Developer Console project or use an existing project. For more information, see <a href="https://developer.adobe.com/developer-console/docs/guides/projects/">Adobe: Projects Overview</a>.</li>
+<li>Add the Adobe services to the project that you want associated with the project credentials. For more information, see <a href="https://developer.adobe.com/developer-console/docs/guides/services/">Adobe: Services Overview</a>. This connector requires the following services:
+<ul>
+<li>Adobe Campaign API</li>
+<li>I/O Management API</li>
+</ul>
+</li>
+<li>Select the Adobe Campaign API product profiles you want to manage with these credentials.</li>
+<li>After you add the services to the project, you can access the project credentials. For more information, see <a href="https://developer.adobe.com/developer-console/docs/guides/credentials/">Adobe: Credentials</a>.<br>
+Go to your project overview and select <strong>OAuth Server-to-Server</strong> in the <strong>Credentials</strong> section. The following credentials are required for this connector:
+<ul>
+<li>Client ID (API Key)</li>
+<li>Client secret</li>
+<li>Technical Account Email</li>
+</ul>
+</li>
+<li>Note your credentials and return to Tealium to complete the connector configuration.</li>
+<li>In Tealium, go to the Connector Marketplace and add a new Adobe Campaign v8 connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</li>
+<li>After adding the connector, configure the following settings:
 <ul>
 <li><strong>Client ID</strong>
 <ul>
-<li>Required: The Client ID (API Key) can be found in the <a href="https://www.adobe.com/go/devs_console_ui">Adobe Developer Console</a>.</li>
+<li>Required: The Client ID (API Key).</li>
 </ul>
 </li>
 <li><strong>Client Secret</strong>
 <ul>
-<li>Required: The Client Secret can be found in the <a href="https://www.adobe.com/go/devs_console_ui">Adobe Developer Console</a>.</li>
+<li>Required: The Client Secret.</li>
 </ul>
 </li>
 <li><strong>Server Host</strong>
@@ -403,6 +425,39 @@ For example, the host is <code>example.campaign.adobe.com</code> for the API URL
 </ul>
 </li>
 </ul>
+</li>
+<li>In Adobe, go to the <strong>Developers</strong> section in the <strong>Adobe Admin</strong> console. For more information, see <a href="https://helpx.adobe.com/enterprise/using/manage-developers.html#add-developers">Adobe: Manage developers</a>.</li>
+<li>Add a new developer with the Technical Account Email from the Adobe project credentials.</li>
+<li>Grant access to Adobe Campaign v8 for the developer you just added.
+<ol>
+<li>From the <strong>Adobe Admin</strong> console, add a user.</li>
+<li>Add the email of the developer you just added.</li>
+<li>Add the Adobe Campaign Managed Cloud service and include your selected product profiles while creating the credentials.
+For more information, see <a href="https://experienceleague.adobe.com/en/docs/campaign/campaign-v8/admin/permissions/manage-permissions">Adobe: Manage user permissions</a>.</li>
+</ol>
+</li>
+<li>Update the newly created technical operator in the Adobe Campaign client console. For more information, see <a href="https://experienceleague.adobe.com/en/docs/campaign/technotes-ac/tn-new/ims-migration#ims-migration-step-9">Adobe: Update the technical account operator within the Campaign client console</a>.</li>
+</ol>
+<h2 id="migration">Migration</h2>
+<p>Migrate existing Adobe Campaign Classic connectors to Adobe Campaign V8 connectors using the Adobe Campaign Classic to v8 Migrator tool.</p>
+<p>Complete the following steps to migrate your Adobe Analytics tag using Tealium Tools:</p>
+<ol>
+<li>Add the Adobe Campaign Classic to v8 Migrator to your Tealium Tools using the JSON definition at the following URL: <code>https://solutions.tealium.net/hosted/tealiumTools/acc_to_v8/acc_to_v8.json</code>. For more information about adding custom tools, see <a href="/iq-tag-management/tealium-tools/browser-extension/#add-a-custom-tool">Manage Custom Tools</a>.</li>
+<li>Go to either <strong>Event Connectors</strong> or <strong>Audience Connectors</strong> and launch the Adobe Campaign Classic to v8 Migrator tool from Tealium Tools.</li>
+<li>Select how actions should be migrated. To disable your existing Adobe Campaign Classic actions as part of the migration, select <strong>Disable existing action</strong>. To migrate only active actions, select <strong>Migrate only active actions.</strong></li>
+<li>Select the scope for the migration from the drop-down list:
+<ul>
+<li>All Adobe Campaign Classic actions</li>
+<li>Specific Adobe Campaign Classic action</li>
+<li>Specific Adobe Campaign Classic connector</li>
+</ul>
+</li>
+<li>Enter the Adobe Campaign Client ID and Client secret for the project. The server host is automatically extracted from the existing Adobe Campaign Classic configuration.</li>
+<li>Click <strong>Start</strong>.<br>
+The Migrator tool automatically migrates existing Adobe Campaign Classic connectors to new Adobe Campaign v8 connectors. The name of the connector will be the same, with the suffix  <code>V8 (Migrated)</code>.</li>
+<li>Verify the new connector configurations and actions.</li>
+<li>Save and publish your profile.</li>
+</ol>
 <h2 id="ip-addresses-to-allow">IP addresses to allow</h2>
 <p>You will need to add the <a href="/server-side/administration/ip-allow-list/">Tealium IP addresses</a> to your <a href="https://experience.adobe.com/#/controlpanel/instances">Adobe Campaign allow list</a> (<strong>Adobe Experience Platform</strong> &gt; <strong>Control Panel</strong> &gt; <strong>Instances</strong>).</p>
 <p>For more information, see <a href="https://experienceleague.adobe.com/en/docs/control-panel-learn/tutorials/instance-settings/allowlist-ip-adresses">Adobe Campaign: Allowlist IP addresses</a>.</p>
@@ -565,7 +620,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 9, 2024 
+          <p>This page was last updated:  September 3, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -580,6 +635,7 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#migration" href="javascript:void(0)">Migration</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#ip-addresses-to-allow" href="javascript:void(0)">IP addresses to allow</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#send-custom-soap-request-batched" href="javascript:void(0)">Send Custom SOAP Request (Batched)</a></li>
@@ -846,6 +902,8 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
   
   
   

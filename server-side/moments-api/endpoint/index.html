@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "2",
+        reading_time  : "3",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -528,7 +528,8 @@
 <p>Data for visitors becomes available after you enable the engine and visitors log active sessions and generate events in the system. If you request data for a visitor and they have not logged an active session yet, the API will not return any data.</p>
 <p>To retrieve visitor data, configure a <a href="/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">Tealium iQ Advanced JavaScript Code Extension</a> to make a request to the Moments API endpoint.</p>
 <h2 id="get-method">GET method</h2>
-<p>Use the GET method to retrieve audience, badge, and attribute data that you specified in your Moments API engine:</p>
+<p>Use the GET method to retrieve audience, badge, and attribute data that you specified in your Moments API engine.</p>
+<h3 id="tealium-anonymous-visitor-id">Tealium anonymous visitor ID</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET  https://personalization-api.<span style="color:#f92672">{</span>REGION<span style="color:#f92672">}</span>.prod.tealiumapis.com/personalization/accounts/<span style="color:#f92672">{</span>ACCOUNT<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>PROFILE<span style="color:#f92672">}</span>/engines/<span style="color:#f92672">{</span>ENGINE_ID<span style="color:#f92672">}</span>/visitors/<span style="color:#f92672">{</span>IDENTIFIER<span style="color:#f92672">}</span>?suppressNotFound<span style="color:#f92672">={</span>SUPPRESS_NOT_FOUND<span style="color:#f92672">}</span>
 </span></span></code></pre></div><p>This command uses the following parameters:</p>
 <table>
@@ -552,6 +553,36 @@
 </tr>
 </tbody>
 </table>
+<h3 id="secondary-visitor-id">Secondary visitor ID</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET  https://personalization-api.<span style="color:#f92672">{</span>REGION<span style="color:#f92672">}</span>.prod.tealiumapis.com/personalization/accounts/<span style="color:#f92672">{</span>ACCOUNT<span style="color:#f92672">}</span>/profiles/<span style="color:#f92672">{</span>PROFILE<span style="color:#f92672">}</span>/engines/<span style="color:#f92672">{</span>ENGINE_ID<span style="color:#f92672">}</span>?attributeId<span style="color:#f92672">={</span>attributeId<span style="color:#f92672">}</span>&amp;attributeValue<span style="color:#f92672">={</span>attributeValue<span style="color:#f92672">}</span>&amp;suppressNotFound<span style="color:#f92672">={</span>SUPPRESS_NOT_FOUND<span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>This command uses the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>attributeId</code></td>
+<td>String<br>Query parameter</td>
+<td>The numeric ID representing a <a href="/server-side/visitor-stitching/visitor-id-attribute/">Visitor ID attribute</a> from your account.</td>
+</tr>
+<tr>
+<td><code>attributeValue</code></td>
+<td>String<br>Query parameter</td>
+<td>The value to look up. Values containing special characters must be URL encoded.</td>
+</tr>
+<tr>
+<td><code>suppressNotFound</code></td>
+<td>Boolean<br>Query parameter</td>
+<td>Determines the response type returned when a visitor is not found. The default is <code>false</code>. <ul><li><code>true</code> - Returns an HTTP 200 code with an empty response body.</li><li><code>false</code> - Returns an HTTP 404 code.</li></ul></td>
+</tr>
+</tbody>
+</table>
+<p>For more information about anonymous IDs and secondary visitor IDs, see <a href="/server-side/visitor-stitching/anonymous-user-visitor-id-attributes/">Anonymous IDs, user identifiers, and visitor ID attributes</a>.</p>
 <h2 id="objects">Objects</h2>
 <p>Moments API returns visitor data as JSON objects that contain the audience, badge, and attribute fields you specify in the engine configuration.</p>
 <p>You can configure visitor attributes to be returned with the ID or name, as seen in the following response body example:</p>
@@ -741,7 +772,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 22, 2024 
+          <p>This page was last updated:  August 30, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -757,7 +788,9 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#get-method" href="javascript:void(0)">GET method</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#objects" href="javascript:void(0)">Objects</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-anonymous-visitor-id" href="javascript:void(0)">Tealium anonymous visitor ID</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#secondary-visitor-id" href="javascript:void(0)">Secondary visitor ID</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#objects" href="javascript:void(0)">Objects</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#headers" href="javascript:void(0)">Headers</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#error-messages" href="javascript:void(0)">Error messages</a></li>
               </nav>
