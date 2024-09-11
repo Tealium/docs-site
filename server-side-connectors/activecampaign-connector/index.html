@@ -274,6 +274,7 @@
         <a href="/server-side-connectors/qualtrics-xm-directory-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".qualtrics-xm-directory-connector">Qualtrics XM Directory</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/quantcast-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".quantcast-audiences-connector">Quantcast Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/reddit-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-conversions-connector">Reddit Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/reddit-custom-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".reddit-custom-audiences-connector">Reddit Custom Audiences</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/referralcandy-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".referralcandy-connector">ReferralCandy</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/rokt-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".rokt-events-connector">ROKT Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/sailthru-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".sailthru-connector">Sailthru</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -378,7 +379,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to set up the ActiveCampaign connector in your Customer Data Hub account.
+      This article describes how to set up the ActiveCampaign connector.
     </p>
   
 </div>
@@ -387,15 +388,9 @@
   <h2 id="api-information">API Information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
-<li>
-<p>API Name: ActiveCampaign API</p>
-</li>
-<li>
-<p>API Version: v3</p>
-</li>
-<li>
-<p>Documentation: <a href="https://developers.activecampaign.com/reference/overview">ActiveCampaign API</a></p>
-</li>
+<li>API Name: ActiveCampaign API</li>
+<li>API Version: v3</li>
+<li>Documentation: <a href="https://developers.activecampaign.com/reference/overview">ActiveCampaign API</a></li>
 </ul>
 <h2 id="configuration">Configuration</h2>
 <p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
@@ -443,7 +438,7 @@
 </table>
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
-<h3 id="upsert-contact">Upsert Contact</h3>
+<h3 id="action---upsert-contact">Action - Upsert Contact</h3>
 <h4 id="contact-parameters">Contact Parameters</h4>
 <table>
 <thead>
@@ -455,27 +450,43 @@
 <tbody>
 <tr>
 <td>Email</td>
-<td>Email address of the contact to sync.</td>
+<td>Required. Email address of the contact to synchronize.</td>
 </tr>
 <tr>
 <td>First Name</td>
-<td>First name of contact.</td>
+<td>Required. First name of contact.</td>
 </tr>
 <tr>
 <td>Last Name</td>
-<td>Last name of contact.</td>
+<td>Required. Last name of contact.</td>
 </tr>
 <tr>
 <td>Phone</td>
-<td>Phone number of contact.</td>
-</tr>
-<tr>
-<td>Field Values</td>
-<td>Array of the contact’s field values. Customer field values are referenced by ID and not the field name. This will be an integer value and must be found through the ActiveCampaign field management.</td>
+<td>Required. Phone number of contact.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="add-tags-to-contact">Add Tags to Contact</h3>
+<h4 id="field-values">Field Values</h4>
+<p>An array of the contact’s field values. Customer field values are referenced by <code>id</code> and not the field name. This is an integer value and must be found through the ActiveCampaign field management.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Field</td>
+<td>The field name.</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>The value of the field.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="action---add-tags-to-contact">Action - Add Tags to Contact</h3>
 <h4 id="parameters">Parameters</h4>
 <table>
 <thead>
@@ -495,7 +506,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="add-contact-to-automation">Add Contact to Automation</h3>
+<h3 id="action---add-contact-to-automation">Action - Add Contact to Automation</h3>
 <h4 id="parameters-1">Parameters</h4>
 <table>
 <thead>
@@ -575,7 +586,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 28, 2024 
+          <p>This page was last updated:  September 11, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -592,9 +603,9 @@ No</button>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configuration" href="javascript:void(0)">Configuration</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#actions" href="javascript:void(0)">Actions</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#upsert-contact" href="javascript:void(0)">Upsert Contact</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-tags-to-contact" href="javascript:void(0)">Add Tags to Contact</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-contact-to-automation" href="javascript:void(0)">Add Contact to Automation</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---upsert-contact" href="javascript:void(0)">Action - Upsert Contact</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---add-tags-to-contact" href="javascript:void(0)">Action - Add Tags to Contact</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---add-contact-to-automation" href="javascript:void(0)">Action - Add Contact to Automation</a></li>
               </nav>
   </aside></nav>
 
@@ -857,6 +868,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
