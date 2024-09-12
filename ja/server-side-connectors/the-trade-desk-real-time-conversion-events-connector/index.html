@@ -438,8 +438,8 @@
 </tbody>
 </table>
 <h2 id="構成">構成</h2>
-<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
-<p>The Trade Desk リアルタイムコンバージョンコネクタは、イベントマッピングとURLマッピングのトラッキングをサポートしています。コネクタを構成する際には、以下のパラメータをアプローチに応じて構成します：</p>
+<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法については、<a href="/ja/server-side/connectors/about/">コネクタについて</a>を参照してください。</p>
+<p>The Trade Desk リアルタイムコンバージョンコネクタは、イベントマッピングとURLマッピングのトラッキングをサポートしています。コネクタを構成する際には、以下のパラメータを構成します：</p>
 <ul>
 <li><strong>URLマッピング</strong> - このアプローチでは、ユーザーが訪れたページのURLがTTDプラットフォーム内でリターゲティングとコンバージョン測定の基礎として割り当てられます。
 <ul>
@@ -448,7 +448,7 @@
 <li>構成パラメータ：<strong>広告主ID</strong>と<strong>Universal Pixel ID</strong>。</li>
 </ul>
 </li>
-<li><strong>イベントマッピング</strong> - このアプローチでは、コンバージョンはイベント名（例：<code>Purchase</code>、<code>Addtocart</code>）とオプションの関連するコマース製品詳細を使用してキャプチャされます。イベント名と製品は、リターゲティングとコンバージョン測定の基礎としてTTDプラットフォーム内で評価されます。
+<li><strong>イベントマッピング</strong> - このアプローチでは、コンバージョンはイベント名（例：<code>Purchase</code>、<code>Addtocart</code>）とオプションの関連コマース製品詳細を使用してキャプチャされます。イベント名と製品は、リターゲティングとコンバージョン測定の基礎としてTTDプラットフォーム内で評価されます。
 <ul>
 <li>構成パラメータ：<strong>Merchant ID</strong>と<strong>Event Tracker ID</strong>。</li>
 </ul>
@@ -459,16 +459,16 @@
 <li><strong>広告主ID</strong><br>
 <strong>Merchant ID</strong>が提供されていない場合に必要です。トラッキングコールが行われた広告主の<code>advertiserId</code>です。</li>
 <li><strong>Merchant ID</strong><br>
-<strong>広告主ID</strong>が提供されていない場合に必要です。<code>merchantId</code>はTTDによってオンボーディングプロセス中に提供されます。</li>
+<strong>広告主ID</strong>が提供されていない場合に必要です。<code>merchantId</code>はTTDからオンボーディングプロセス中に提供されます。</li>
 <li><strong>Pixel ID</strong><br>
 <strong>Event Tracker ID</strong>が提供されていない場合に必要です。イベントのユニバーサルピクセルIDです。</li>
 <li><strong>Event Tracker ID</strong><br>
 <strong>Pixel ID</strong>が提供されていない場合に必要です。イベントトラッカーのプラットフォームIDです。</li>
 </ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i><strong>広告主ID</strong>を提供し、<strong>Universal Pixel ID</strong>を提供しない場合、コネクタリクエストはエラーを返します。
-また、<strong>構成ウィンドウ</strong>のすべてのパラメータに値を入力するのではなく、選択したアプローチの値のみを提供することをお勧めします。例えば、<strong>広告主ID</strong>と<strong>Merchant ID</strong>の両方を提供するべきではありません。代わりに、トラッキング方法に必要な構成構成のみを入力します。</p>
+また、<strong>構成ウィンドウ</strong>のすべてのパラメータに値を入力するのではなく、選択したアプローチの値のみを提供することをお勧めします。例えば、<strong>広告主ID</strong>と<strong>Merchant ID</strong>の両方を提供するべきではありません。代わりに、トラッキング方法に必要な構成を入力します。</p>
 <h2 id="アクション-1">アクション</h2>
-<p>次のセクションでは、各アクションのサポートされるパラメータをリストします。</p>
+<p>以下のセクションでは、各アクションのサポートされるパラメータをリストします。</p>
 <h3 id="コンバージョンイベントの送信">コンバージョンイベントの送信</h3>
 <p>イベントが適切にTTDインスタンス内で定義されていることを確認してください。そうでない場合、TTDから402エラーが発生する可能性があります。</p>
 <h4 id="パラメータ">パラメータ</h4>
@@ -505,7 +505,7 @@
 </tr>
 <tr>
 <td>TDID</td>
-<td>このユーザーのThe Trade Deskの36文字のGUID（ダッシュを含む）。<a href="/ja/client-side-tags/the-trade-desk-cookie-matching-service-tag/">The Trade Desk Cookie Matching Service Tag</a>を通じて取得できます。</td>
+<td>このユーザーのThe Trade Desk 36文字のGUID（ダッシュを含む）。<a href="/ja/client-side-tags/the-trade-desk-cookie-matching-service-tag/">The Trade Desk Cookie Matching Service Tag</a>を通じて取得できます。</td>
 </tr>
 <tr>
 <td>IDFA</td>
@@ -530,7 +530,7 @@
 </tbody>
 </table>
 <h4 id="イベントパラメータ">イベントパラメータ</h4>
-<p>以下のパラメータは、コンバージョンイベントに関連し、説明で指定された特定のイベントを除き、オプションです。</p>
+<p>以下のパラメータは、コンバージョンイベントに関連し、説明で特定のイベントに必要とされていない限り、オプションです。</p>
 <table>
 <thead>
 <tr>
@@ -541,7 +541,7 @@
 <tbody>
 <tr>
 <td>注文ID</td>
-<td>イベントの関連注文識別子。</td>
+<td>イベントに関連する注文識別子。</td>
 </tr>
 <tr>
 <td>リファラーURL</td>
@@ -566,7 +566,7 @@
 </tbody>
 </table>
 <h4 id="アイテムパラメータ">アイテムパラメータ</h4>
-<p>アイテムをマッピングするときは、複数のアイテムを割り当てるために文字列データ属性の配列を使用します。マッピングされた属性が受信したコンバージョンイベントからの適切なデータで入力されていることを確認します。</p>
+<p>アイテムをマッピングするときは、複数のアイテムを割り当てるために文字列データ属性の配列を使用します。マッピングされた属性が受け取ったコンバージョンイベントから適切なデータで入力されていることを確認してください。</p>
 <table>
 <thead>
 <tr>
@@ -581,7 +581,7 @@
 </tr>
 <tr>
 <td><code>name</code></td>
-<td>アイテムコードに関連する名前。</td>
+<td>アイテムコードに関連付けられた名前。</td>
 </tr>
 <tr>
 <td><code>qty</code></td>
@@ -593,7 +593,7 @@
 </tr>
 <tr>
 <td><code>cat</code></td>
-<td>アイテムのカテゴリID。注：Real-Time Conversion Events APIは、指定されたアイテムコードを含む商品カタログがあり、そのカテゴリIDが異なる場合を除き、提供された値をすべてのケースで使用します。この場合、商品カタログのカテゴリIDが使用されます。</td>
+<td>アイテムのカテゴリID。注：Real-Time Conversion Events APIは、指定されたアイテムコードが含まれているが、異なるカテゴリIDがある商品カタログを持つマーチャントの場合を除き、提供された値を使用します。この場合、商品カタログのカテゴリIDが使用されます。</td>
 </tr>
 </tbody>
 </table>
@@ -613,7 +613,7 @@
 </tr>
 <tr>
 <td><code>is_applicable</code></td>
-<td><code>privacy_type</code>パラメータで指定された値が適用可能かどうかを示します。CCPAの場合、クライアントのIPアドレスがCCPAの適用可能性を判断するために使用されます。</td>
+<td><code>privacy_type</code>パラメータで指定された値が適用可能かどうかを示します。CCPAの場合、クライアントのIPアドレスがCCPAが適用可能かどうかを判断するために使用されます。</td>
 </tr>
 <tr>
 <td><code>consent_string</code></td>
@@ -683,7 +683,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年September月6日
+          <p>最終更新日 ::  2024年September月12日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

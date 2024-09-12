@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Webhookコネクタの構成ガイド | サーバーサイドコネクタ |Tealiumドキュメント</title>
+    <title>Webhookコネクタ構成ガイド | サーバーサイドコネクタ |Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "2",
+        reading_time  : "4",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -394,7 +394,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Webhookコネクタの構成ガイド</h1>
+<h1 class="lh-title mt30 mb3">Webhookコネクタ構成ガイド</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -402,31 +402,32 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Webhookコネクタのセットアップ方法について説明します。
+      この記事では、Webhookコネクタの構成方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="webhookコネクタについて">Webhookコネクタについて</h2>
-<p>Webhookコネクタを使用すると、カスタマイズされたHTTPリクエストを使用してベンダーにデータを送信できます。URL、URLパラメータ、ヘッダー、クッキー、ボディのコンテンツタイプ、およびボディデータなど、HTTPリクエストのすべての側面を制御できます。Webhookは、バッチ処理と複雑で動的なデータ形式を処理するために設計された強力なテンプレート機能もサポートしています。</p>
-<p>ベンダーの認証要件に基づいて、次の3つのWebhookコネクタから選択できます。</p>
+<p>Webhookコネクタを使用すると、カスタマイズされたHTTPリクエストを使用してデータをベンダーに送信し、HTTPリクエストのすべての側面（URL、URLパラメータ、ヘッダ、クッキー、ボディコンテンツタイプ、ボディデータ）を制御できます。Webhookは、バッチ処理と複雑で動的なデータ形式を処理するために設計された強力なテンプレート機能もサポートしています。</p>
+<p>ベンダーの認証要件に基づいて、以下の4つのWebhookコネクタから選択できます：</p>
 <ul>
-<li><strong>Webhook</strong>（BasicAuth）- 認証が不要またはユーザー名とパスワードの基本認証のみが必要なサービスに使用します。</li>
-<li><strong>Webhook OAuth2</strong>（3-Legged）- ユーザーがサービスにログインしてアクセストークンを取得する必要があります。</li>
-<li><strong>Webhook OAuth2</strong>（2-Legged）- ユーザーがサービスにログインする必要はありません。Webhookは、認証に必要な情報で構成されます。</li>
+<li><strong>Webhook</strong> (BasicAuth) – 認証が不要なサービス、またはユーザー名とパスワードで基本認証が必要なサービス向け。</li>
+<li><strong>Webhook OAuth2</strong> (3-Legged) – ユーザーがサービスにログインしてアクセストークンを取得する必要があります。</li>
+<li><strong>Webhook OAuth2</strong> (2-Legged) – ユーザーがサービスにログインする必要はありません。Webhookは認証に必要な情報で構成されます。</li>
+<li><strong>Webhook JWT</strong> – JSONウェブトークン認証を使用します。ユーザーがサービスにログインする必要はありません。Webhookは認証に必要な情報で構成されます。</li>
 </ul>
-<p>Webhook OAuth2は、明示的にOAuth 2.0認証が必要なサービスに使用されます。</p>
-<p>始めるには、コネクタマーケットプレイスに移動し、使用するWebhookインスタンスを追加します。コネクタを追加する方法の一般的な手順については、<a href="/ja/server-side/connectors/about/">コネクタの概要</a>を参照してください。</p>
-<p>以下のセクションでは、各タイプのWebhookコネクタの構成方法について説明します。</p>
-<h3 id="webhookbasicauthの構成">Webhook（BasicAuth）の構成</h3>
-<p>このWebhookは、HTTPヘッダーフィールド<strong>Authorization</strong>を使用した基本的なHTTP認証をサポートしています。認証情報は、Base64エンコードされた文字列<code>{username}:{password}</code>として渡されます。</p>
-<p>BasicAuth Webhookの構成には、次の構成を使用します。</p>
+<p>Webhook OAuth2は、明示的にOAuth 2.0認証を必要とするサービスに使用されます。</p>
+<p>始めるには、コネクタマーケットプレイスに移動し、使用したいWebhookインスタンスを追加します。コネクタの追加方法の一般的な指示については、<a href="/ja/server-side/connectors/about/">Connector Overview</a>を参照してください。</p>
+<p>以下のセクションでは、各タイプのWebhookコネクタの構成構成を順を追って説明します。</p>
+<h3 id="webhook-basicauth-構成">Webhook (BasicAuth) 構成</h3>
+<p>このWebhookは、HTTPヘッダフィールドの<strong>Authorization</strong>を使用して基本的なHTTP認証をサポートします。資格情報は、<code>{username}:{password}</code>のBase64エンコードされた文字列として渡されます。</p>
+<p>BasicAuth Webhook構成のための以下の構成構成を使用します：</p>
 <ul>
 <li><strong>タイトル</strong>
 <ul>
 <li>必須</li>
-<li>Webhookの説明的なタイトルを入力します。</li>
+<li>Webhookの詳細なタイトルを入力します。</li>
 </ul>
 </li>
 <li><strong>BasicAuthユーザー名</strong>
@@ -439,118 +440,123 @@
 <li>Webhookの認証のパスワードを入力します。</li>
 </ul>
 </li>
+<li><strong>JWT</strong> 認証
+<ul>
+<li>JSONウェブトークンを入力します。</li>
+</ul>
+</li>
 </ul>
 <p><strong>次へ</strong>をクリックするか、<strong>アクション</strong>タブに移動します。</p>
 <ul>
 <li><strong>アクション</strong>タブを使用して、トリガーするHTTPリクエストを構成します。</li>
 </ul>
-<h3 id="webhook-oauth23-leggedの構成">Webhook OAuth2（3-Legged）の構成</h3>
-<p>WebhookのOAuth実装は、サーバーサイドアプリケーションのみをサポートしています。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>OAuth 2.0サービスでWebアプリケーションを登録してください。アプリケーションは、<code>https://my.tealiumiq.com/oauth/webhook/callback.html</code>というリダイレクトURLを許可するように構成する必要があります。</p>
-<p>OAuth2（3-legged）Webhookの構成には、次の構成を使用します。</p>
+<h3 id="webhook-oauth2-3-legged-構成">Webhook OAuth2 (3-Legged) 構成</h3>
+<p>WebhookのOAuth実装は、サーバーサイドアプリケーションのみをサポートします。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>OAuth 2.0サービスでウェブアプリケーションを登録することを忘れないでください。アプリケーションは、次のリダイレクトURLを許可するように構成する必要があります：<code>https://my.tealiumiq.com/oauth/webhook/callback.html</code></p>
+<p>OAuth2 (3-legged) Webhook構成のための以下の構成構成を使用します：</p>
 <ul>
 <li><strong>クライアントID</strong>
 <ul>
-<li>必須</li>
-<li>OAuthサービスから割り当てられたクライアント識別子を入力します。</li>
+<li>必須。</li>
+<li>OAuthサービスからアプリケーションに割り当てられたクライアント識別子を入力します。</li>
 </ul>
 </li>
 <li><strong>クライアントシークレット</strong>
 <ul>
-<li>必須</li>
-<li>OAuthサービスから割り当てられたクライアントシークレットを入力します。</li>
+<li>必須。</li>
+<li>OAuthサービスからアプリケーションに割り当てられたクライアントシークレットを入力します。</li>
 </ul>
 </li>
 <li><strong>スコープ</strong>
 <ul>
-<li>アプリケーションへのアクセスを要求するための許可の種類を選択します。</li>
+<li>アプリケーションへのアクセスを要求する許可のタイプを選択します。</li>
 </ul>
 </li>
 <li><strong>認証URL</strong>
 <ul>
-<li>必須</li>
-<li>認証後にユーザーをリダイレクトするURLを入力します。</li>
+<li>必須。</li>
+<li>ユーザーを認証後にリダイレクトしたいURLを入力します。</li>
 </ul>
 </li>
 <li><strong>認証URLクエリパラメータ</strong>
 <ul>
-<li>認証URLの名前と値のペアを1つ以上選択します。</li>
-<li>アンパサンド（<code>&amp;</code>）を使用して複数のペアを区切ります。</li>
-<li>先頭にアンパサンド（<code>&amp;</code>）を使用しないでください。
+<li>認証URLの1つ以上の名前-値ペアを選択します。</li>
+<li>複数のペアはアンパサンド(<code>&amp;</code>)で区切ります。</li>
+<li>先頭にアンパサンド(<code>&amp;</code>)を使用しないでください。
 <ul>
-<li>正しい例：<code>access_type=offline&amp;prompt=consent</code></li>
-<li>間違った例：<code>&amp;access_type=offline&amp;prompt=consent</code></li>
+<li>正しい：<code>access_type=offline&amp;prompt=consent</code></li>
+<li>不正確：<code>&amp;access_type=offline&amp;prompt=consent</code></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><strong>アクセストークンURL</strong>
 <ul>
-<li>必須</li>
+<li>必須。</li>
 <li>リフレッシュトークンを取得するためのトークンURLを入力します。</li>
 </ul>
 </li>
 </ul>
-<p><strong>接続を確立する</strong>をクリックして接続をテストします。</p>
-<h3 id="webhook-oauth22-leggedの構成">Webhook OAuth2（2-Legged）の構成</h3>
-<p>TealiumのWebhook OAuth2コネクタを使用すると、OAuth2 Two-Legged認証が必要な選択したAPIに対して、HTTPリクエストとして完全にカスタマイズされたデータを送信できます。クライアント資格情報とリソースオーナーパスワード資格情報の両方をサポートしています。</p>
-<p>コネクタを追加した後、OAuth2 2-Legged Webhookの構成には、次の構成を使用します。</p>
+<p><strong>接続を確立</strong>をクリックして接続をテストします。</p>
+<h3 id="webhook-oauth2-2-legged-構成">Webhook OAuth2 (2-Legged) 構成</h3>
+<p>TealiumのWebhook OAuth2コネクタを使用すると、OAuth2 Two-Legged認証を必要とし、クライアント資格情報とリソース所有者パスワード資格情報の付与をサポートするAPIに対して、完全にカスタマイズされたデータをHTTPリクエストとして送信できます。</p>
+<p>コネクタを追加した後、以下の構成構成を使用してOAuth2 2-Legged Webhook構成を行います：</p>
 <ul>
 <li><strong>アクセストークンURL</strong>
 <ul>
-<li>必須</li>
-<li>アクセストークンを要求するためのAPIエンドポイントURLを入力します。</li>
+<li>必須。</li>
+<li>アクセストークンをリクエストするためのAPIエンドポイントURLを入力します。</li>
 </ul>
 </li>
 <li><strong>クライアントID</strong>
 <ul>
-<li>必須</li>
-<li>WebアプリケーションのクライアントIDを入力します。</li>
+<li>必須。</li>
+<li>ウェブアプリケーションのクライアントIDを入力します。</li>
 </ul>
 </li>
 <li><strong>クライアントシークレット</strong>
 <ul>
-<li>必須</li>
-<li>Webアプリケーションのクライアントシークレットを入力します。</li>
+<li>必須。</li>
+<li>ウェブアプリケーションのクライアントシークレットを入力します。</li>
 </ul>
 </li>
 <li><strong>ユーザー名</strong>
 <ul>
 <li>ユーザー名を入力します。</li>
-<li>パスワードグラントタイプを使用する場合は、ユーザー名が必要です。</li>
+<li>パスワード付与タイプを使用する場合は、ユーザー名が必要です。</li>
 </ul>
 </li>
 <li><strong>パスワード</strong>
 <ul>
 <li>パスワードを入力します。</li>
-<li>パスワードグラントタイプを使用する場合は、パスワードが必要です。</li>
+<li>パスワード付与タイプを使用する場合は、パスワードが必要です。</li>
 </ul>
 </li>
 <li><strong>スコープ</strong>
 <ul>
-<li>要求するアクセス許可のスコープを選択します（一部のOAuth2サービスにのみ必要）。</li>
+<li>リクエストする権限の範囲を選択します（一部のOAuth2サービスのみ必要）。</li>
 </ul>
 </li>
 <li><strong>追加の認証パラメータ</strong>
 <ul>
-<li>追加の認証パラメータを追加します（一部のOAuth2サービスにのみ必要）。</li>
-<li>複数のパラメータを<code>&amp;amp;</code>で区切ります。</li>
+<li>追加の認証パラメータを追加します（一部のOAuth2サービスのみ必要）。</li>
+<li>複数のパラメータは<code>&amp;amp;</code>で区切ります。</li>
 </ul>
 </li>
-<li><strong>認証トークンの場所</strong>
+<li><strong>認証トークンの位置</strong>
 <ul>
 <li>認証トークンを配置する場所を指定します。</li>
 </ul>
 </li>
-<li><strong>認証ヘッダーの接頭辞</strong>
+<li><strong>認証ヘッダプレフィックス</strong>
 <ul>
 <li>デフォルト値は<code>Bearer</code>です。</li>
-<li>上書きするための新しい値を指定します（一部のOAuth2サービスにのみ必要）。</li>
+<li>新しい値を指定して上書きします（一部のOAuth2サービスのみ必要）。</li>
 </ul>
 </li>
 </ul>
 <h2 id="すべてのwebhookアクションのアクションパラメータ">すべてのWebhookアクションのアクションパラメータ</h2>
-<p>次のパラメータは、すべてのWebhookアクションで使用できます。</p>
+<p>以下のパラメータは、すべてのWebhookアクションで利用可能です。</p>
 <table>
 <thead>
 <tr>
@@ -565,69 +571,69 @@
 <td style="text-align:left">メソッド</td>
 <td style="text-align:left">必須</td>
 <td style="text-align:left"></td>
-<td style="text-align:left">次のメソッドをサポートしています：<ul><li>GET</li><li>POST</li><li>PUT</li><li>DELETE</li><li>PATCH</li></ul></td>
+<td style="text-align:left">以下のメソッドをサポートします：<ul><li>GET</li><li>POST</li><li>PUT</li><li>DELETE</li><li>PATCH</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">URL</td>
 <td style="text-align:left">必須</td>
 <td style="text-align:left">✔</td>
-<td style="text-align:left"><ul><li>リクエストを送信するURLを指定します。</li></ul></td>
+<td style="text-align:left"><ul><li>リクエストを送信するURLを提供します</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">URLパラメータ</td>
-<td style="text-align:left">オプション</td>
+<td style="text-align:left">任意</td>
 <td style="text-align:left">✔</td>
-<td style="text-align:left"><ul><li><strong>マップ</strong>ドロップダウンリストから、送信する属性の値を選択します。</li><li><strong>To</strong>フィールドに、構成するURLパラメータの名前を入力します。</li></ul></td>
+<td style="text-align:left"><ul><li><strong>Map</strong>ドロップダウンリストから、送信したい属性の値を選択します。</li><li><strong>To</strong>フィールドに、構成するURLパラメータの名前を入力します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">ヘッダー</td>
-<td style="text-align:left">オプション</td>
+<td style="text-align:left">Webhook (BasicAuth)の場合は任意、<a href="/ja/server-side/connectors/webhook-connectors/validate-webhook-action/">Webhook OAuth2</a>の場合は必須</td>
 <td style="text-align:left">✔</td>
-<td style="text-align:left"><ul><li><strong>マップ</strong>ドロップダウンリストから、送信する属性の値を選択します。</li><li><strong>To</strong>フィールドに、値を受け取るヘッダーのヘッダー名を入力します。</li></ul></td>
+<td style="text-align:left"><ul><li><strong>Map</strong>ドロップダウンリストから、送信したい属性の値を選択します。</li><li><strong>To</strong>フィールドに、値を受け取るヘッダーの名前を入力します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">クッキー</td>
-<td style="text-align:left">オプション</td>
+<td style="text-align:left">任意</td>
 <td style="text-align:left">✔</td>
-<td style="text-align:left"><ul><li><strong>マップ</strong>ドロップダウンリストから、送信する属性の値を選択します。</li><li><strong>To</strong>フィールドに、値を受け取るクッキーのクッキー名を入力します。</li></ul></td>
+<td style="text-align:left"><ul><li><strong>Map</strong>ドロップダウンリストから、送信したい属性の値を選択します。</li><li><strong>To</strong>フィールドに、値を受け取るクッキーの名前を入力します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">ボディコンテンツタイプ</td>
-<td style="text-align:left">オプション</td>
+<td style="text-align:left">任意</td>
 <td style="text-align:left"></td>
-<td style="text-align:left"><ul><li><code>Content-Type</code>ヘッダーを指定します。</li><li>すべてのタイプはUTF-8文字セットを使用します。</li><li>GETメソッドではこの構成を無視します。</li></ul></td>
+<td style="text-align:left"><ul><li><code>Content-Type</code>ヘッダーを指定します。</li><li>すべてのタイプはUTF-8文字セットを使用します。</li><li>GETメソッドの場合、この構成は無視します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">ボディデータ</td>
-<td style="text-align:left">オプション</td>
+<td style="text-align:left">任意</td>
 <td style="text-align:left">✔</td>
-<td style="text-align:left"><ul><li><strong>カスタムデータをHTTPリクエスト経由で送信する</strong>アクションでのみサポートされます</li><li>GETメソッドではこの構成を無視します。</li><li>ボディコンテンツタイプが<code>application/x-www-form-urlencoded</code>の場合は、名前/値のペアを指定します</li><li>より複雑なペイロードの場合は、テンプレート名を指定します。</li></ul></td>
+<td style="text-align:left"><ul><li><strong>HTTPリクエスト経由でカスタマイズデータを送信</strong>アクションのみがサポートされています</li><li>GETメソッドの場合、この構成は無視します。</li><li>ボディコンテンツタイプが<code>application/x-www-form-urlencoded</code>の場合、名前/値のペアを提供します</li><li>より複雑なペイロードの場合、テンプレート名を提供します。</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">バッチオプション</td>
-<td style="text-align:left">オプション</td>
+<td style="text-align:left">バッチングオプション</td>
+<td style="text-align:left">任意</td>
 <td style="text-align:left">✔</td>
-<td style="text-align:left"><ul><li>レコード数の最大値は10から10,000です。</li><li>有効期間は5から60分です。</li></ul></td>
+<td style="text-align:left"><ul><li>レコード数の最大値は、10から10,000の間です。</li><li>生存時間は、5から60分の間です。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">テンプレート変数</td>
-<td style="text-align:left">オプション</td>
+<td style="text-align:left">任意</td>
 <td style="text-align:left"></td>
-<td style="text-align:left"><ul><li><a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a>を参照してください。</li></ul></td>
+<td style="text-align:left"><ul><li>参照：<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a></li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">テンプレート</td>
-<td style="text-align:left">オプション</td>
+<td style="text-align:left">任意</td>
 <td style="text-align:left"></td>
-<td style="text-align:left"><ul><li><a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">Trimouテンプレートガイド</a>を参照してください。</li><li>各テンプレートには一意の名前が必要です</li><li>テンプレートは、二重の中括弧で囲まれた名前を参照して、サポートされるフィールドに挿入されます</li><li>テンプレートはURL、URLパラメータ、ヘッダー、クッキー、またはボディデータフィールドに挿入できます</li></ul></td>
+<td style="text-align:left"><ul><li>参照：<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">Trimouテンプレートガイド</a></li><li>各テンプレートには一意の名前が必要です</li><li>その名前を二重中括弧で囲んで参照することで、テンプレートを任意のサポートフィールドに注入できます</li><li>テンプレートはURL、URLパラメータ、ヘッダー、クッキー、ボディデータフィールドに注入できます</li></ul></td>
 </tr>
 </tbody>
 </table>
-<p><strong>テンプレートサポートに関する注意</strong>: カスタムテンプレートのフィールド値を入力するために、その名前を二重の中括弧で囲んで参照します。たとえば、テンプレートの名前が<code>some-template</code>である場合、レンダリングされたコンテンツは、フィールドに挿入するために<code>{{some-template}}</code>を参照することで注入されます。</p>
+<p><strong>テンプレートサポートについて</strong>：テンプレートの名前を二重中括弧で囲むことで、カスタムテンプレートからフィールド値を入力できます。例えば、テンプレートの名前が<code>some-template</code>の場合、レンダリングされた内容は<code>{{some-template}}</code>を参照することでフィールドに注入できます。</p>
 <h2 id="要件">要件</h2>
 <ul>
-<li>イベントデータのために有効化されたTealiumアカウント（イベントデータ用）</li>
-<li>訪問データのために有効化されたTealiumアカウント（訪問データ用）</li>
+<li>EventStreamが有効化されたTealiumアカウント（イベントデータ用）</li>
+<li>AudienceStreamが有効化されたTealiumアカウント（訪問データ用）</li>
 </ul>
 <h2 id="コネクタアクション">コネクタアクション</h2>
 <table>
@@ -635,60 +641,60 @@
 <tr>
 <th style="text-align:left"><strong>アクション名</strong></th>
 <th style="text-align:left"><strong>説明</strong></th>
-<th style="text-align:left"><strong>Webhook（BasicAuth）</strong></th>
+<th style="text-align:left"><strong>Webhook (BasicAuth)</strong></th>
 <th style="text-align:left"><strong>Webhook OAuth2</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><a href="#action-send-event-data">イベントデータをHTTPリクエストで送信する</a></td>
-<td style="text-align:left">イベントオブジェクト全体をURLエンコードされたJSON文字列またはJSONペイロードとして送信します。</td>
+<td style="text-align:left"><a href="#action-send-event-data">HTTPリクエスト経由でイベントデータを送信</a></td>
+<td style="text-align:left">イベントオブジェクト全体を、URLエンコードされたJSON文字列またはJSONペイロードとして送信します。</td>
 <td style="text-align:left">✓</td>
 <td style="text-align:left">✗</td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="#action-send-visitor-data">訪問データをHTTPリクエストで送信する</a></td>
-<td style="text-align:left">訪問プロファイルオブジェクト全体をURLエンコードされたJSON文字列またはJSONペイロードとして送信します。</td>
+<td style="text-align:left"><a href="#action-send-visitor-data">HTTPリクエスト経由で訪問データを送信</a></td>
+<td style="text-align:left">訪問プロファイルオブジェクト全体を、URLエンコードされたJSON文字列またはJSONペイロードとして送信します。</td>
 <td style="text-align:left">✓</td>
 <td style="text-align:left">✗</td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="#action-send-custom-data">カスタマイズされたデータをHTTPリクエストで送信する（高度）</a></td>
-<td style="text-align:left">マッピングで指定された個々のイベント/訪問属性を送信します</td>
+<td style="text-align:left"><a href="#action-send-custom-data">HTTPリクエスト経由でカスタマイズデータを送信（アドバンス）</a></td>
+<td style="text-align:left">マッピングを通じて指定された個々のイベント/訪問属性を送信します</td>
 <td style="text-align:left">✓</td>
 <td style="text-align:left">✓</td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="#action-send-batch-custom-data">バッチ処理されたカスタマイズされたデータをHTTPリクエストで送信する（高度）</a></td>
-<td style="text-align:left">マッピングで指定されたバッチ処理されたイベント/訪問属性を送信します。</td>
+<td style="text-align:left"><a href="#action-send-batch-custom-data">HTTPリクエスト経由でバッチ化されたカスタマイズデータを送信（アドバンス）</a></td>
+<td style="text-align:left">マッピングを通じて指定されたバッチ化されたイベント/訪問属性を送信します。</td>
 <td style="text-align:left">✓</td>
 <td style="text-align:left">✓</td>
 </tr>
 </tbody>
 </table>
 <h2 id="構成の構成">構成の構成</h2>
-<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタの追加方法の一般的な手順については、<a href="/server-side/connectors/manage/">コネクタの概要</a>の記事を読んでください。</p>
-<p>コネクタを追加した後、次の構成を構成します。</p>
+<p>コネクタマーケットプレイスに移動し、新しいコネクタを追加します。コネクタを追加する一般的な手順については、<a href="/server-side/connectors/manage/">コネクタ概要</a>の記事を参照してください。</p>
+<p>コネクタを追加した後、以下の構成を構成します：</p>
 <ul>
 <li>
 <p><strong>基本認証</strong></p>
 <ul>
-<li>ユーザー名（オプション）</li>
-<li>基本認証がAPIエンドポイントで必要な場合は、ユーザー名を入力します。</li>
+<li>ユーザー名（任意）</li>
+<li>APIエンドポイントが基本認証を必要とする場合は、ユーザー名を入力します</li>
 </ul>
 </li>
 <li>
 <p><strong>基本認証</strong></p>
 <ul>
-<li>パスワード（オプション）</li>
-<li>基本認証がAPIエンドポイントで必要な場合は、パスワードを入力します。</li>
+<li>パスワード（任意）</li>
+<li>APIエンドポイントが基本認証を必要とする場合は、パスワードを入力します</li>
 </ul>
 </li>
 </ul>
 <h2 id="アクション構成---パラメータとオプション">アクション構成 - パラメータとオプション</h2>
 <p><strong>次へ</strong>をクリックするか、<strong>アクション</strong>タブに移動します。ここでコネクタアクションを構成します。</p>
 <p>このセクションでは、各アクションのパラメータとオプションの構成方法について説明します。</p>
-<h3 id="アクション---イベントデータをhttpリクエストで送信する">アクション - イベントデータをHTTPリクエストで送信する</h3>
+<h3 id="アクション---httpリクエスト経由でイベントデータを送信">アクション - HTTPリクエスト経由でイベントデータを送信</h3>
 <h4 id="パラメータ">パラメータ</h4>
 <table>
 <thead>
@@ -700,39 +706,47 @@
 <tbody>
 <tr>
 <td style="text-align:left">メソッド</td>
-<td style="text-align:left"><ul><li>必須：リクエストメソッドを選択します。</li><li><strong>GET</strong>が選択された場合、イベントデータはJSON URLエンコードされたクエリ文字列パラメータとして<code>data</code>キーで送信されます。</li></ul></td>
+<td style="text-align:left"><ul><li>必須: リクエストメソッドを選択します。</li><li><strong>GET</strong>が選択された場合、イベントデータは<code>data</code>キーを持つJSON URLエンコードされたクエリストリングパラメータとして配信されます。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">URL</td>
-<td style="text-align:left"><ul><li>必須。</li><li>リクエストを送信するURLを指定します。</li><li>テンプレートサポート：テンプレートからURLを生成するためにテンプレート名を参照します。</li></ul></td>
+<td style="text-align:left"><ul><li>必須。</li><li>リクエストを送信するURLを提供します。</li><li>テンプレートサポート: テンプレートからURLを生成するためのテンプレート名を参照します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">URLパラメータ</td>
-<td style="text-align:left"><ul><li>オプション。</li><li>URLに追加するパラメータを指定します。</li><li>テンプレートサポート：テンプレートからパラメータ値を生成するためにテンプレート名を参照します。</li></ul></td>
+<td style="text-align:left"><ul><li>オプション。</li><li>URLに追加するパラメータを提供します。</li><li>テンプレートサポート: テンプレートからパラメータ値を生成するためのテンプレート名を参照します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">ヘッダー</td>
-<td style="text-align:left"><ul><li>オプション。</li><li>HTTPヘッダーの値をヘッダー名にマッピングします。</li><li>テンプレートサポート：テンプレートからヘッダー値を生成するためにテンプレート名を参照します。</li></ul></td>
+<td style="text-align:left"><ul><li>オプション。</li><li>HTTPヘッダー値をヘッダー名にマップします。</li><li>テンプレートサポート: テンプレートからヘッダー値を生成するためのテンプレート名を参照します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">クッキー</td>
-<td style="text-align:left"><ul><li>オプション。</li><li>クッキーの値をクッキー名にマッピングします。</li><li>クッキーは単一のHTTPヘッダー値として追加されます。例：<code>Cookie: name1=value1; name2=value2</code></li><li>テンプレートサポート：テンプレートからクッキーの値を生成するためにテンプレート名を参照します。</li></ul></td>
+<td style="text-align:left"><ul><li>オプション。</li><li>クッキー値をクッキー名にマップします。</li><li>クッキーは単一のHTTPヘッダー値として追加されます。例: <code>Cookie: name1=value1; name2=value2</code></li><li>テンプレートサポート: テンプレートからクッキー値を生成するためのテンプレート名を参照します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">ボディコンテンツタイプ</td>
-<td style="text-align:left"><ul><li>オプション。</li><li>利用可能なタイプを選択するか、カスタム値を指定します。</li><li>すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：<code>Content-Type: text/plain; charset=UTF-8</code></li><li>ボディデータが提供される場合は、コンテンツタイプが必要です。</li></ul></td>
+<td style="text-align:left"><ul><li>オプション。</li><li>利用可能なタイプを選択するか、カスタム値を提供します。</li><li>すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例: <code>Content-Type: text/plain; charset=UTF-8</code></li><li>ボディデータが提供されている場合、コンテンツタイプが必要です。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">テンプレート変数</td>
-<td style="text-align:left"><ul><li>オプション。</li><li>テンプレート変数をテンプレートのデータ入力として提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a>を参照してください。</li><li>ネストされたテンプレート変数は、ドット表記法で名前を付けます。例：<code>items.name</code></li><li>ネストされたテンプレート変数は、通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+<td style="text-align:left"><ul><li>オプション。</li><li>テンプレートのデータ入力としてテンプレート変数を提供します。詳細は<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>を参照してください。</li><li>ドット表記法を使用してネストしたテンプレート変数を名付けます。例: <code>items.name</code></li><li>ネストしたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">テンプレート</td>
-<td style="text-align:left"><ul><li>オプション。</li><li>URL、URLパラメータ、ヘッダー、またはボディデータのいずれかに挿入するために参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">テンプレートガイド</a>を参照してください。</li><li>テンプレートは、二重の中括弧で囲まれた名前を参照して挿入されます。例：<code>{{SomeTemplateName}}</code></li><li>OAuthを使用する場合、テンプレート変数<code>{{webhook_access_token}}</code>は、認証リクエストで返されるトークンを参照します。</li></ul></td>
+<td style="text-align:left"><ul><li>オプション。</li><li>URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。詳細は<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>を参照してください。</li><li>テンプレートは、名前で二重中括弧を使用してサポートされるフィールドに注入されます。例: <code>{{SomeTemplateName}}</code></li><li>OAuthを使用する場合、テンプレート変数<code> {{webhook_access_token}}</code>は認証リクエストによって返されるトークンを参照します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">属性名の印刷</td>
+<td style="text-align:left"><ul><li>属性名が更新されると、ペイロード内の名前も更新されます。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">リダイレクション</td>
+<td style="text-align:left"><ul><li>メソッドがGETの場合のみリダイレクションを許可します。</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション---訪問データをhttpリクエストで送信する">アクション - 訪問データをHTTPリクエストで送信する</h3>
+<h3 id="アクション---httpリクエスト経由で訪問データを送信">アクション - HTTPリクエスト経由で訪問データを送信</h3>
 <h4 id="パラメータ-1">パラメータ</h4>
 <table>
 <thead>
@@ -744,39 +758,51 @@
 <tbody>
 <tr>
 <td style="text-align:left">メソッド</td>
-<td style="text-align:left"><ul><li>必須</li><li>リクエストメソッドを選択します。</li><li><strong>GET</strong>が選択された場合、訪問データはJSON URLエンコードされたクエリ文字列パラメータとして<code>data</code>キーで送信されます。</li></ul></td>
+<td style="text-align:left"><ul><li>必須</li><li>リクエストメソッドを選択します。</li><li><strong>GET</strong>が選択された場合、訪問データは<code>data</code>キーを持つJSON URLエンコードされたクエリストリングパラメータとして配信されます。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">URL</td>
-<td style="text-align:left"><ul><li>必須。</li><li>リクエストを送信するURLを指定します。</li><li>テンプレートサポート：テンプレートからURLを生成するためにテンプレート名を参照します。</li></ul></td>
+<td style="text-align:left"><ul><li>必須。</li><li>リクエストを送信するURLを提供します。</li><li>テンプレートサポート：テンプレートからURLを生成するためのテンプレート名を参照します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">URLパラメータ</td>
-<td style="text-align:left"><ul><li>オプション。</li><li>URLに追加するパラメータを指定します。</li><li>テンプレートサポート：テンプレートからパラメータ値を生成するためにテンプレート名を参照します。</li></ul></td>
+<td style="text-align:left"><ul><li>オプション。</li><li>URLに追加するパラメータを提供します。</li><li>テンプレートサポート：テンプレートからパラメータ値を生成するためのテンプレート名を参照します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">ヘッダー</td>
-<td style="text-align:left"><ul><li>オプション。</li><li>HTTPヘッダーの値をヘッダー名にマッピングします。</li><li>テンプレートサポート：テンプレートからヘッダー値を生成するためにテンプレート名を参照します。</li></ul></td>
+<td style="text-align:left"><ul><li>オプション。</li><li>HTTPヘッダー値をヘッダー名にマッピングします。</li><li>テンプレートサポート：テンプレートからヘッダー値を生成するためのテンプレート名を参照します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">クッキー</td>
-<td style="text-align:left"><ul><li>オプション。</li><li>クッキーの値をクッキー名にマッピングします。</li><li>クッキーは単一のHTTPヘッダー値として追加されます。例：<code>Cookie: name1=value1; name2=value2</code></li><li>テンプレートサポート：テンプレートからクッキーの値を生成するためにテンプレート名を参照します。</li></ul></td>
+<td style="text-align:left"><ul><li>オプション。</li><li>クッキー値をクッキー名にマッピングします。</li><li>クッキーは単一のHTTPヘッダー値として追加されます。例：<code>Cookie: name1=value1; name2=value2</code></li><li>テンプレートサポート：テンプレートからクッキー値を生成するためのテンプレート名を参照します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">ボディコンテンツタイプ</td>
-<td style="text-align:left"><ul><li>オプション。</li><li>利用可能なタイプを選択するか、カスタム値を指定します。</li><li>すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：<code>Content-Type: text/plain; charset=UTF-8</code></li><li>ボディデータが提供される場合は、コンテンツタイプが必要です。</li></ul></td>
+<td style="text-align:left"><ul><li>オプション。</li><li>利用可能なタイプを選択するか、カスタム値を提供します。</li><li>すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：<code>Content-Type: text/plain; charset=UTF-8</code></li><li>ボディデータが提供されている場合、コンテンツタイプが必要です。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">テンプレート変数</td>
-<td style="text-align:left"><ul><li>オプション。</li><li>テンプレート変数をテンプレートのデータ入力として提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a>を参照してください。</li><li>ネストされたテンプレート変数は、ドット表記法で名前を付けます。例：<code>items.name</code></li><li>ネストされたテンプレート変数は、通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+<td style="text-align:left"><ul><li>オプション。</li><li>テンプレートのデータ入力としてテンプレート変数を提供します。詳細は<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a>を参照してください。</li><li>ドット表記法を使用してネストしたテンプレート変数の名前を付けます。例：<code>items.name</code></li><li>ネストしたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">テンプレート</td>
-<td style="text-align:left"><ul><li>オプション。</li><li>URL、URLパラメータ、ヘッダー、またはボディデータのいずれかに挿入するために参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">テンプレートガイド</a>を参照してください。</li><li>テンプレートは、二重の中括弧で囲まれた名前を参照して挿入されます。例：<code>{{SomeTemplateName}}</code></li><li>OAuthを使用する場合、テンプレート変数<code>{{webhook_access_token}}</code>は、認証リクエストで返されるトークンを参照します。</li></ul></td>
+<td style="text-align:left"><ul><li>オプション。</li><li>URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。詳細は<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">テンプレートガイド</a>を参照してください。</li><li>テンプレートは名前で二重中括弧を使用してサポートフィールドに注入されます。例：<code>{{SomeTemplateName}}</code></li><li>OAuthを使用する場合、テンプレート変数<code>{{webhook_access_token}}</code>は認証リクエストによって返されるトークンを参照します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">現在の訪問データを含める</td>
+<td style="text-align:left"><ul><li>現在の訪問データを含めたい場合は、このボックスをチェックします。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">属性名を印刷</td>
+<td style="text-align:left"><ul><li>属性名が更新されると、ペイロード内の名前は更新を反映します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">リダイレクション</td>
+<td style="text-align:left"><ul><li>メソッドがGETの場合のみリダイレクションを許可します。</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション---カスタマイズされたデータをhttpリクエストで送信する高度">アクション - カスタマイズされたデータをHTTPリクエストで送信する（高度）</h3>
+<h3 id="アクション---httpリクエストを介してカスタマイズされたデータを送信アドバンス">アクション - HTTPリクエストを介してカスタマイズされたデータを送信（アドバンス）</h3>
 <h4 id="パラメータ-2">パラメータ</h4>
 <table>
 <thead>
@@ -788,49 +814,49 @@
 <tbody>
 <tr>
 <td style="text-align:left">メソッド</td>
-<td style="text-align:left"><ul><li>必須。</li><li>詳細については、<a href="/ja/server-side-connectors/webhook-connector-setup-guide/">Webhookカスタムリクエストガイド</a>を参照してください。</li><li>リクエストメソッドを選択します。</li></ul></td>
+<td style="text-align:left"><ul><li>必須。</li><li>詳細は<a href="/ja/server-side-connectors/webhook-connector-setup-guide/">Webhook Send Custom Request Guide</a>を参照してください。</li><li>リクエストメソッドを選択します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">URL</td>
-<td style="text-align:left"><ul><li>必須。</li><li>リクエストを送信するURLを指定します。</li><li>テンプレートサポート：テンプレートからURLを生成するためにテンプレート名を参照します。</li></ul></td>
+<td style="text-align:left"><ul><li>必須。</li><li>リクエストを送信するURLを提供します。</li><li>テンプレートサポート：テンプレートからURLを生成するためのテンプレート名を参照します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">URLパラメータ</td>
-<td style="text-align:left"><ul><li>オプション。</li><li>URLに追加するパラメータを指定します。</li><li>テンプレートサポート：テンプレートからパラメータ値を生成するためにテンプレート名を参照します。</li></ul></td>
+<td style="text-align:left"><ul><li>オプション。</li><li>URLに追加するパラメータを提供します。</li><li>テンプレートサポート：テンプレート名を参照して、テンプレートからパラメータ値を生成します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">ヘッダー</td>
-<td style="text-align:left"><ul><li>オプション。</li><li>HTTPヘッダーの値をヘッダー名にマッピングします。</li><li>テンプレートサポート：テンプレートからヘッダー値を生成するためにテンプレート名を参照します。</li></ul></td>
+<td style="text-align:left"><ul><li>オプション。</li><li>HTTPヘッダー値をヘッダー名にマッピングします。</li><li>テンプレートサポート：テンプレート名を参照して、テンプレートからヘッダー値を生成します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">クッキー</td>
-<td style="text-align:left"><ul><li>オプション。</li><li>クッキーの値をクッキー名にマッピングします。</li><li>クッキーは単一のHTTPヘッダー値として追加されます。例：<code>Cookie: name1=value1; name2=value2</code></li><li>テンプレートサポート：テンプレートからクッキーの値を生成するためにテンプレート名を参照します。</li></ul></td>
+<td style="text-align:left"><ul><li>オプション。</li><li>クッキー値をクッキー名にマッピングします。</li><li>クッキーは単一のHTTPヘッダー値として追加されます。例：<code>Cookie: name1=value1; name2=value2</code></li><li>テンプレートサポート：テンプレート名を参照して、テンプレートからクッキー値を生成します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">ボディコンテンツタイプ</td>
-<td style="text-align:left"><ul><li>オプション。</li><li>利用可能なタイプを選択するか、カスタム値を指定します。</li><li>すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：<code>Content-Type: text/plain; charset=UTF-8</code></li><li>ボディデータが提供される場合は、コンテンツタイプが必要です。</li></ul></td>
+<td style="text-align:left"><ul><li>オプション。</li><li>利用可能なタイプを選択するか、カスタム値を提供します。</li><li>すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：<code>Content-Type: text/plain; charset=UTF-8</code></li><li>ボディデータが提供されている場合、コンテンツタイプが必要です。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">ボディデータ</td>
-<td style="text-align:left"><ul><li>オプション。</li><li>メッセージボディを構築するためのデータを提供します。</li><li>テンプレートサポート：テンプレートからボディデータを生成するためにテンプレート名を参照します。</li><li>ボディコンテンツタイプが<code>multipart/form-data</code>または<code>application/x-www-form-urlencoded</code>の場合は、値を名前にマッピングします。それ以外の場合は、テンプレート名を参照して<strong>ボディ</strong>オプションのみを選択します。</li></ul></td>
+<td style="text-align:left"><ul><li>オプション。</li><li>メッセージボディを構築するためのデータを提供します。</li><li>テンプレートサポート：テンプレート名を参照して、テンプレートからボディデータを生成します。</li><li>ボディコンテンツタイプが<code>multipart/form-data</code>または<code>application/x-www-form-urlencoded</code>の場合は、値を名前にマッピングします。それ以外の場合は、テンプレート名を参照し、<strong>Body</strong>オプションのみを選択します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">テンプレート変数</td>
-<td style="text-align:left"><ul><li>オプション。</li><li>テンプレート変数をテンプレートのデータ入力として提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">テンプレート変数ガイド</a>を参照してください。</li><li>ネストされたテンプレート変数は、ドット表記法で名前を付けます。例：<code>items.name</code></li><li>ネストされたテンプレート変数は、通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+<td style="text-align:left"><ul><li>オプション。</li><li>テンプレートにデータ入力としてテンプレート変数を提供します。詳細は<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>を参照してください。</li><li>ドット表記法を使用してネストしたテンプレート変数を名前付けします。例：<code>items.name</code></li><li>ネストしたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">テンプレート</td>
-<td style="text-align:left"><ul><li>オプション。</li><li>URL、URLパラメータ、ヘッダー、またはボディデータのいずれかに挿入するために参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">テンプレートガイド</a>を参照してください。</li><li>テンプレートは、二重の中括弧で囲まれた名前を参照して挿入されます。例：<code>{{SomeTemplateName}}</code></li><li>OAuthを使用する場合、テンプレート変数<code>{{webhook_access_token}} </code>は、認証リクエストで返されるトークンを参照します。</li></ul></td>
+<td style="text-align:left"><ul><li>オプション。</li><li>URL、URLパラメータ、ヘッダー、またはボディデータで参照されるテンプレートを提供します。詳細は<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>を参照してください。</li><li>テンプレートは、名前で二重中括弧を使用してサポートフィールドに注入されます。例：<code>{{SomeTemplateName}}</code></li><li>OAuthを使用する場合、テンプレート変数<code>{{webhook_access_token}} </code>は認証リクエストによって返されるトークンを参照します。</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="アクション---バッチ処理されたカスタマイズされたデータをhttpリクエストで送信する高度">アクション - バッチ処理されたカスタマイズされたデータをHTTPリクエストで送信する（高度）</h3>
+<h3 id="アクション---httpリクエストを介してバッチ化されたカスタマイズデータを送信アドバンス">アクション - HTTPリクエストを介してバッチ化されたカスタマイズデータを送信（アドバンス）</h3>
 <h4 id="バッチ制限">バッチ制限</h4>
-<p>このアクションは、ベンダーへの高容量データ転送をサポートするためにバッチリクエストを使用します。詳細については、<a href="/ja/server-side/connectors/batched-actions/">バッチアクション</a>を参照してください。リクエストは、次のいずれかの閾値が満たされるか、プロファイルが公開されるまでキューに入れられます。</p>
+<p>このアクションは、バッチリクエストを使用して、ベンダーへの大量のデータ転送をサポートします。詳細は<a href="/ja/server-side/connectors/batched-actions/">Batched Actions</a>を参照してください。リクエストは、以下のいずれかの閾値が達成されるか、プロファイルが公開されるまでキューに入れられます：</p>
 <ul>
-<li>最大リクエスト数：100</li>
-<li>最も古いリクエストからの経過時間の最大値：60分</li>
-<li>リクエストの最大サイズ：16 MB</li>
+<li>リクエストの最大数：100</li>
+<li>最も古いリクエストからの最大時間：60分</li>
+<li>リクエストの最大サイズ：16MB</li>
 </ul>
 <h4 id="パラメータ-3">パラメータ</h4>
 <table>
@@ -843,18 +869,287 @@
 <tbody>
 <tr>
 <td style="text-align:left">メソッド</td>
-<td style="text-align:left"><ul><li>必須。</li><li>詳細については、<a href="/ja/server-side-connectors/webhook-connector-setup-guide/">Webhookカスタムリクエストガイド</a>を参照してください。</li><li>リクエストメソッドを選択します。</li></ul></td>
+<td style="text-align:left"><ul><li>必須。</li><li>詳細は<a href="/ja/server-side-connectors/webhook-connector-setup-guide/">Webhook Send Custom Request Guide</a>を参照してください。</li><li>リクエストメソッドを選択します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">URL</td>
-<td style="text-align:left"><ul><li>必須。</li><li>リクエストを送信するURLを指定します。</li><li>テンプレートサポート：テンプレートからURLを生成するためにテンプレート名を参照します。</li></ul></td>
+<td style="text-align:left"><ul><li>必須。</li><li>リクエストを送信するURLを提供します。</li><li>テンプレートサポート：テンプレート名を参照して、テンプレートからURLを生成します。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">ボディコンテンツタイプ</td>
-<td style="text-align:left"><ul><li>オプション。</li><li>利用可能なタイプを選択するか、カスタム値を指定します。</li><li>すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：<code>Content-Type: text/plain; charset=UTF-8</code></li><li>ボディデータが提供される場合は、コンテンツタ</td>
+<td style="text-align:left"><ul><li>オプション。</li><li>利用可能なタイプを選択するか、カスタム値を提供します。</li><li>すべてのタイプはUTF-8でエンコードされ、ヘッダーとして追加されます。例：<code>Content-Type: text/plain; charset=UTF-8</code></li><li>ボディデータが提供されている場合、コンテンツタイプが必要です。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">ボディデータ</td>
+<td style="text-align:left"><ul><li>オプション。</li><li>メッセージボディを構築するためのデータを提供します。</li><li>テンプレートサポート：テンプレート名を参照して、テンプレートからボディデータを生成します。</li><li>ボディコンテンツタイプが<code>multipart/form-data</code>または<code>application/x-www-form-urlencoded</code>の場合は、値を名前にマッピングします。それ以外の場合は、テンプレート名を参照し、<code>Body</code>オプションのみを選択します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Suffix</td>
+<td style="text-align:left"><ul><li>Body Dataに続くリクエストの非反復部分。詳細については、<a href="/ja/server-side-connectors/webhook-connector-setup-guide/">Webhook - HTTPリクエストアクションを介してカスタマイズされたデータを送信する（高度）</a>を参照してください。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Prefix</td>
+<td style="text-align:left"><ul><li>Body Dataに先行するリクエストの非反復部分。詳細については、<a href="/ja/server-side-connectors/webhook-connector-setup-guide/">Webhook - HTTPリクエストアクションを介してカスタマイズされたデータを送信する（高度）</a>を参照してください。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Joiner</td>
+<td style="text-align:left"><ul><li>Body Data内の個々のデータ項目を分割する文字または文字列。詳細については、<a href="/ja/server-side-connectors/webhook-connector-setup-guide/">Webhook - HTTPリクエストアクションを介してカスタマイズされたデータを送信する（高度）</a>を参照してください。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Record Count Maximum</td>
+<td style="text-align:left"><ul><li>最大レコード数。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Time To Live (minutes)</td>
+<td style="text-align:left"><ul><li>生存時間（分）。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">URL Parameters</td>
+<td style="text-align:left"><ul><li>オプション。</li><li>URLに追加するパラメータを提供します。</li><li>テンプレートサポート：テンプレート名を参照して、テンプレートからパラメータ値を生成します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Headers</td>
+<td style="text-align:left"><ul><li>オプション。</li><li>HTTPヘッダー値をヘッダー名にマッピングします。</li><li>テンプレートサポート：テンプレート名を参照して、テンプレートからヘッダー値を生成します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Cookies</td>
+<td style="text-align:left"><ul><li>オプション。</li><li>クッキー値をクッキー名にマッピングします。</li><li>クッキーは単一のHTTPヘッダー値として追加されます。例：<code>Cookie: name1=value1; name2=value2</code></li><li>テンプレートサポート：テンプレート名を参照して、テンプレートからクッキー値を生成します。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Template Variables</td>
+<td style="text-align:left"><ul><li>オプション。</li><li>テンプレート変数をテンプレートのデータ入力として提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/template-variables/">Template Variables Guide</a>を参照してください。</li><li>ドット表記法を使用してネストされたテンプレート変数を名付けます。例：<code>items.name</code></li><li>ネストされたテンプレート変数は通常、データレイヤーリスト属性から構築されます。</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">Templates</td>
+<td style="text-align:left"><ul><li>オプション。</li><li>URL、URLパラメータ、ヘッダ、またはBody Dataで参照されるテンプレートを提供します。詳細については、<a href="/ja/server-side/connectors/webhook-connectors/trimou-templating-engine/">Templates Guide</a>を参照してください。</li><li>テンプレートは、名前で二重中括弧を使用してサポートフィールドに注入されます。例：<code>{{SomeTemplateName}}</code></li><li>OAuthを使用する場合、テンプレート変数<code>{{webhook_access_token}}</code>は認証リクエストによって返されるトークンを指します。</li></ul></td>
 </tr>
 </tbody>
 </table>
+<h2 id="イベントデータjson">イベントデータJSON</h2>
+<p>イベントに対する期待されるJSONペイロードには、イベントの一部であるすべての標準属性と、イベントを送信したプラットフォーム固有の追加属性が含まれます。例えば、ウェブサイトから受信したイベントにはDOMとクッキーの属性が含まれ、モバイルデバイスから受信したイベントにはデバイスとキャリアの属性が含まれます。</p>
+<p>イベントデータJSONオブジェクト形式の例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;account&#34;</span>: <span style="color:#e6db74">&#34;tealium&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;profile&#34;</span>: <span style="color:#e6db74">&#34;main&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;env&#34;</span>: <span style="color:#e6db74">&#34;prod&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;data&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;dom&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;referrer&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;domain&#34;</span>: <span style="color:#e6db74">&#34;tealium.com&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;title&#34;</span>: <span style="color:#e6db74">&#34;Tealium | Customer Data Hub and Enterprise Tag Management&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;query_string&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;http://tealium.com/&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;pathname&#34;</span>: <span style="color:#e6db74">&#34;/&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;udo&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;tealium_event&#34;</span>: <span style="color:#e6db74">&#34;page_view&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;page_name&#34;</span>: <span style="color:#e6db74">&#34;Tealium | Customer Data Hub and Enterprise Tag Management&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;page_type&#34;</span>: <span style="color:#e6db74">&#34;home&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;device_type&#34;</span>: <span style="color:#e6db74">&#34;desktop&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;firstparty_tealium_cookies&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;trace_id&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;s_fid&#34;</span>: <span style="color:#e6db74">&#34;3EF757DF6253B144-0D0194366CD4479B&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;utag_main_ses_id&#34;</span>: <span style="color:#ae81ff">1383677957942</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;s_cc&#34;</span>: <span style="color:#e6db74">&#34;true&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;utag_mainst&#34;</span>: <span style="color:#ae81ff">1383678970903</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;TID&#34;</span>: <span style="color:#e6db74">&#34;2cff51e585ed4a5a9330324d5dbc6bb7&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;s_sq&#34;</span>: <span style="color:#e6db74">&#34;[[B]]&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;post_time&#34;</span>: <span style="color:#ae81ff">1500999541000</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;useragent&#34;</span>: <span style="color:#e6db74">&#34;PostmanRuntime/6.1.6&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;event_id&#34;</span>: <span style="color:#e6db74">&#34;1a1ee055-1456-46f8-ab4d-779628c05dd4&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;visitor_id&#34;</span>: <span style="color:#e6db74">&#34;1a1ee055145646f8ab4d779628c05dd4&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="訪問データjson">訪問データJSON</h2>
+<p>訪問に対する期待されるJSONペイロードには、その訪問に適用可能なすべての訪問属性が含まれます。データオブジェクトは属性タイプで整理されています。属性が割り当てられていない場合、訪問オブジェクトには表示されません。現在の訪問のデータも<code>current_visit</code>キーの下に含まれます。</p>
+<p>訪問データJSONオブジェクト形式の例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;metrics&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Weeks since first visit&#34;</span>: <span style="color:#ae81ff">0.0</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Lifetime visit count&#34;</span>: <span style="color:#ae81ff">1.0</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Lifetime event count&#34;</span>: <span style="color:#ae81ff">1.0</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Total direct visits&#34;</span>: <span style="color:#ae81ff">1.0</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;dates&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Last visit&#34;</span>: <span style="color:#ae81ff">1500999541000</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;last_visit_start_ts&#34;</span>: <span style="color:#ae81ff">1500999541000</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;First visit&#34;</span>: <span style="color:#ae81ff">1500999541000</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;properties&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;profile&#34;</span>: <span style="color:#e6db74">&#34;main&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;visitor_id&#34;</span>: <span style="color:#e6db74">&#34;1a1ee055145646f8ab4d779628c05dd4&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;account&#34;</span>: <span style="color:#e6db74">&#34;tealium&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;flags&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Is Registered&#34;</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;audiences&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;New Users&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;badges&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Product Browser&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;preloaded&#34;</span>: <span style="color:#66d9ef">false</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;creation_ts&#34;</span>: <span style="color:#ae81ff">1500999541000</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;_id&#34;</span>: <span style="color:#e6db74">&#34;1a1ee055145646f8ab4d779628c05dd4&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;_partition&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;shard_token&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;current_visit&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;metrics&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;Event count&#34;</span>: <span style="color:#ae81ff">1.0</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;dates&#34;</span>: {
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&#34;訪問開始&#34;</span>: <span style="color:#ae81ff">1500999541000</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;last_event_ts&#34;</span>: <span style="color:#ae81ff">1500999541000</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;properties&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;アクティブなブラウザタイプ&#34;</span>: <span style="color:#e6db74">&#34;Chrome&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;アクティブなオペレーティングシステム&#34;</span>: <span style="color:#e6db74">&#34;MacOS&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;アクティブなブラウザバージョン&#34;</span>: <span style="color:#e6db74">&#34;53&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;アクティブなプラットフォーム&#34;</span>: <span style="color:#e6db74">&#34;browser&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;アクティブなデバイス&#34;</span>: <span style="color:#e6db74">&#34;other&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;flags&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;直接訪問&#34;</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;property_sets&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;アクティブなデバイス&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;other&#34;</span>
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;アクティブなブラウザバージョン&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;53&#34;</span>
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;アクティブなオペレーティングシステム&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;MacOS&#34;</span>
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;アクティブなプラットフォーム&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;browser&#34;</span>
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;アクティブなブラウザタイプ&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;Chrome&#34;</span>
+</span></span><span style="display:flex;"><span>            ]
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;creation_ts&#34;</span>: <span style="color:#ae81ff">1500999541000</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;_id&#34;</span>: <span style="color:#e6db74">&#34;9a20caf81d4adc55cfb958da81a513feff62e3324e9f840ed8bf28ca8a39a37d&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;shard_token&#34;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;_dc_ttl_&#34;</span>: <span style="color:#ae81ff">60000</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;total_event_count&#34;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;events_compressed&#34;</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;_dctrace&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;local_visitor_processor_visitor_processor&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;new_visitor&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;audiences_joined_at&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;tealium_main_101&#34;</span>: <span style="color:#ae81ff">1500999542434</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="使用例">使用例</h2>
+<p>このセクションでは、HTTPリクエストの例を提供します。これらの例では、明確さのために単純なJSONオブジェクトが使用されています。実際に送信されるデータは、完全なイベントまたは訪問オブジェクトです。また、追加のパラメータがどのように送信されるかを示すために、<code>param1</code>が<code>value1</code>の値を受け取る単一のURLパラメータも含めています。</p>
+<h3 id="イベント訪問の送信---getメソッド">イベント/訪問の送信 - GETメソッド</h3>
+<p>イベントデータの送信または訪問データの送信のアクションでGETメソッドを使用すると、データは<code>data</code>という名前の単一のクエリストリングパラメータとして送信されます。値はイベント/訪問データオブジェクトのURLエンコードされたJSON文字列です。構成されたURLパラメータは、追加のクエリストリングパラメータとして追加されます。</p>
+<p>この例では、データは次のとおりです：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;foo&#34;</span> : <span style="color:#e6db74">&#34;bar&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>結果のURLエンコードされたJSON文字列は次のとおりです：</p>
+<p><code>%7B%22foo%22%3A%22bar%22%7D</code></p>
+<p>これが最終的なGETリクエストで次のクエリストリングパラメータとして表示されることがわかります：</p>
+<p><code>data=%7B%22foo%22%3A%22bar%22%7D</code></p>
+<pre tabindex="0"><code>**GET** /webhook-service?data=%7B%22foo%22%3A%22bar%22%7D&amp;param1=value1
+
+バージョン: HTTP/1.1
+接続: close
+受け入れエンコーディング: gzip
+X-ヘッダーキー: header_value
+クッキー: cookie_key=cookie_valie,cfduid=d63c6b0e0a23195e9a7142f314360b4e11502122913
+ユーザーエージェント: Apache-HttpClient/4.5.1 (Java/1.8.0_111)
+</code></pre><h3 id="イベント訪問の送信---postメソッド">イベント/訪問の送信 - POSTメソッド</h3>
+<p>以下は、**<code>application/json</code>**と<code>application/x-www-form-urlencoded</code>コンテンツタイプのPOSTリクエストのサンプルです。</p>
+<h4 id="content-type-applicationjson">Content-Type: application/json</h4>
+<p>本文データはJSONペイロードとして送信されます。</p>
+<pre tabindex="0"><code>POST /webhook-service?param1=value1
+
+バージョン: HTTP/1.1
+接続: close
+受け入れエンコーディング: gzip
+X-ヘッダーキー: header_value
+クッキー: cookie_key=cookie_valie
+コンテンツタイプ: application/json; charset=UTF-8
+ユーザーエージェント: Apache-HttpClient/4.5.1 (Java/1.8.0_111)
+コンテンツ長: 13
+
+{
+    &#34;foo&#34;: &#34;bar&#34;
+}
+</code></pre><h4 id="content-type-applicationx-form-urlencoded">Content-Type: application/x-form-urlencoded</h4>
+<p>本文データは、<code>data</code>という名前のフォームデータフィールドを使用してURLエンコードされたJSON文字列として送信されます。</p>
+<pre tabindex="0"><code>POST /webhook-service?param1=value1
+
+バージョン: HTTP/1.1
+接続: close
+受け入れエンコーディング: gzip
+X-ヘッダーキー: header_value
+クッキー: cookie_key=cookie_valie,cfduid=d63c6b0e0a23195e9a7142f314360b4e11502122913
+コンテンツタイプ: application/x-www-form-urlencoded; charset=UTF-8
+ユーザーエージェント: Apache-HttpClient/4.5.1 (Java/1.8.0_111)
+コンテンツ長: 32
+
+data=%7B%22foo%22%3A%22bar%22%7D
+</code></pre><h2 id="ベンダーの使用事例">ベンダーの使用事例</h2>
+<p>以下のリソースは、高度なWebhook構成の例を提供し、カスタムリクエストで可能なことの基礎と概要を提供します。</p>
+<ul>
+<li><a href="/ja/server-side/connectors/webhook-connectors/vendor-examples/webhook-kony-api/">Kony API</a></li>
+<li><a href="/ja/server-side/connectors/webhook-connectors/vendor-examples/webhook-keenio-api/">Keen.io API</a></li>
+<li><a href="/ja/server-side/connectors/webhook-connectors/vendor-examples/webhook-salesforce-predictive-intelligence-api/">Salesforce Predictive Intelligence (formerly iGoDigital) API</a></li>
+<li><a href="/ja/server-side/connectors/webhook-connectors/vendor-examples/webhook-facebook-app-events-api/">Facebook App Events API</a></li>
+</ul>
+<h2 id="faq">FAQ</h2>
+<h3 id="httpレスポンスクッキーはどのように処理されますか">HTTPレスポンスクッキーはどのように処理されますか？</h3>
+<p>クッキーベースのセッション管理はウェブブラウザでは一般的ですが、ステートレスAPIと通信するサーバー間の環境では一般的に推奨されません。そのため、Webhookコネクタはクッキーベースのセッションを追跡せず、HTTPレスポンスの<code>Set-Cookie</code>ヘッダー値を効果的に無視します。</p>
+<h2 id="変更ログ">変更ログ</h2>
+<h4 id="2021年11月30日">2021年11月30日</h4>
+<ul>
+<li>Webhookコネクタの構成オプションを追加し、構成時に302レスポンスをサポートします。</li>
+</ul>
+<h4 id="2021年7月20日">2021年7月20日</h4>
+<ul>
+<li>コネクタアクションテーブルに、各アクションへのリンクを追加しました。</li>
+</ul>
+<h4 id="2021年6月7日">2021年6月7日</h4>
+<ul>
+<li>アクション - HTTPリクエストを介したバッチ化されたカスタマイズデータの送信（アドバンスド）アクションとバッチ制限セクションを追加しました。</li>
+</ul>
+<h4 id="2020年11月5日">2020年11月5日</h4>
+<ul>
+<li>Webhook 2-Legged OAuth2と3-Legged OAuth2コネクタにバッチサポートを追加しました。</li>
+</ul>
+<h4 id="2018年12月18日">2018年12月18日</h4>
+<ul>
+<li>WebhookコネクタのApacheクッキー管理を無効化し、ドメインレベルのクッキーが共有されるのを防ぎました。</li>
+</ul>
+<h4 id="2017年8月24日">2017年8月24日</h4>
+<ul>
+<li>新しいアクションを追加しました：HTTPリクエストを介したイベントデータの送信と訪問データの送信。</li>
+<li>次の2つのアクションを削除しました：POST-visitorとPUT-visitor。これらのアクションはアクションのドロップダウンリストには表示されなくなりましたが、Tealiumは現在プロファイルにインストールされているアクションを引き続きサポートします。</li>
+</ul>
+<h4 id="2017年3月2日">2017年3月2日</h4>
+<ul>
+<li>OAuthサービスをサポートするための新しいWebhook OAuth2コネクタを追加しました。このサービスはWebhook（BasicAuth）コネクタとは別です。</li>
+</ul>
+<h4 id="2016年11月13日">2016年11月13日</h4>
+<ul>
+<li>複雑なJSONとXMLペイロードをサポートするための新しいSend Custom Requestアクションを追加しました。ネストされたJSONを翻訳するための組み込みテンプレートユーティリティをサポートします。</li>
+<li>GET、POST、PUTメソッドを新しいアクションの下に移動しました。これらはもはや別々のアクションとして扱われません。</li>
+</ul>
+<h4 id="2016年6月14日">2016年6月14日</h4>
+<ul>
+<li>AudienceDirectコネクタはWebhookに置き換えられました。</li>
+<li>POST-visitorとPUT-Visitorアクションは新しいWebhook（BasicAuth）コネクタに統合されました。</li>
+<li>プロファイルに非機能/非推奨のAudienceDirectアクションが含まれている場合、新しいWebhookインスタンスでそれらを再構成する必要があります。</li>
+</ul>
 
 </div>
 
@@ -930,18 +1225,27 @@
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6" href="javascript:void(0)">Webhookコネクタについて</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhookbasicauth%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">Webhook（BasicAuth）の構成</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook-oauth23-legged%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">Webhook OAuth2（3-Legged）の構成</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook-oauth22-legged%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">Webhook OAuth2（2-Legged）の構成</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook-basicauth-%E6%A7%8B%E6%88%90" href="javascript:void(0)">Webhook (BasicAuth) 構成</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook-oauth2-3-legged-%E6%A7%8B%E6%88%90" href="javascript:void(0)">Webhook OAuth2 (3-Legged) 構成</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#webhook-oauth2-2-legged-%E6%A7%8B%E6%88%90" href="javascript:void(0)">Webhook OAuth2 (2-Legged) 構成</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AEwebhook%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF" href="javascript:void(0)">すべてのWebhookアクションのアクションパラメータ</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">コネクタアクション</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A7%8B%E6%88%90%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">構成の構成</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E6%A7%8B%E6%88%90---%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">アクション構成 - パラメータとオプション</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92http%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%A7%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B" href="javascript:void(0)">アクション - イベントデータをHTTPリクエストで送信する</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92http%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%A7%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B" href="javascript:void(0)">アクション - 訪問データをHTTPリクエストで送信する</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA%E3%81%95%E3%82%8C%E3%81%9F%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92http%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%A7%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B%E9%AB%98%E5%BA%A6" href="javascript:void(0)">アクション - カスタマイズされたデータをHTTPリクエストで送信する（高度）</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---%E3%83%90%E3%83%83%E3%83%81%E5%87%A6%E7%90%86%E3%81%95%E3%82%8C%E3%81%9F%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA%E3%81%95%E3%82%8C%E3%81%9F%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92http%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%A7%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B%E9%AB%98%E5%BA%A6" href="javascript:void(0)">アクション - バッチ処理されたカスタマイズされたデータをHTTPリクエストで送信する（高度）</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---http%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E7%B5%8C%E7%94%B1%E3%81%A7%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">アクション - HTTPリクエスト経由でイベントデータを送信</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---http%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E7%B5%8C%E7%94%B1%E3%81%A7%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1" href="javascript:void(0)">アクション - HTTPリクエスト経由で訪問データを送信</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---http%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E4%BB%8B%E3%81%97%E3%81%A6%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA%E3%81%95%E3%82%8C%E3%81%9F%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1%E3%82%A2%E3%83%89%E3%83%90%E3%83%B3%E3%82%B9" href="javascript:void(0)">アクション - HTTPリクエストを介してカスタマイズされたデータを送信（アドバンス）</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3---http%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%92%E4%BB%8B%E3%81%97%E3%81%A6%E3%83%90%E3%83%83%E3%83%81%E5%8C%96%E3%81%95%E3%82%8C%E3%81%9F%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1%E3%82%A2%E3%83%89%E3%83%90%E3%83%B3%E3%82%B9" href="javascript:void(0)">アクション - HTTPリクエストを介してバッチ化されたカスタマイズデータを送信（アドバンス）</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%87%E3%83%BC%E3%82%BFjson" href="javascript:void(0)">イベントデータJSON</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E3%83%87%E3%83%BC%E3%82%BFjson" href="javascript:void(0)">訪問データJSON</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E7%94%A8%E4%BE%8B" href="javascript:void(0)">使用例</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E8%A8%AA%E5%95%8F%E3%81%AE%E9%80%81%E4%BF%A1---get%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89" href="javascript:void(0)">イベント/訪問の送信 - GETメソッド</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E8%A8%AA%E5%95%8F%E3%81%AE%E9%80%81%E4%BF%A1---post%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89" href="javascript:void(0)">イベント/訪問の送信 - POSTメソッド</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%E3%81%AE%E4%BD%BF%E7%94%A8%E4%BA%8B%E4%BE%8B" href="javascript:void(0)">ベンダーの使用事例</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#faq" href="javascript:void(0)">FAQ</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#http%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC%E3%81%AF%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB%E5%87%A6%E7%90%86%E3%81%95%E3%82%8C%E3%81%BE%E3%81%99%E3%81%8B" href="javascript:void(0)">HTTPレスポンスクッキーはどのように処理されますか？</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%A4%89%E6%9B%B4%E3%83%AD%E3%82%B0" href="javascript:void(0)">変更ログ</a></li>
               </nav>
   </aside></nav>
 
