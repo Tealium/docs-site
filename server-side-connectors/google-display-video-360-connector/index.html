@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "4",
+        reading_time  : "5",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -342,6 +342,7 @@
         <a href="/server-side-connectors/yahoo-datax-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-datax-connector">Yahoo DataX</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/yahoo-japan-ads-api-connector-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yahoo-japan-ads-api-connector-setup-guide">Yahoo! JAPAN Ads API</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/yandex-metrica-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yandex-metrica-connector">Yandex Metrica</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side-connectors/yelp-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".yelp-conversions-connector">Yelp Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/ytel-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ytel-connector">Ytel</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/zendesk-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".zendesk-connector">Zendesk</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/zoho-crm-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".zoho-crm-connector">Zoho CRM</a></li></ul>
@@ -385,14 +386,9 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>Before you use this connector, you must request that Google add your account to their whitelist. This allows Tealium AudienceStream to create segments in your Google account. (<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363452-doubleclick-cookie-matching-request-dmp-whitelist-and-configure-connector-credentials">Learn more</a>)</p>
-<h2 id="api-information">API Information</h2>
-<p>This connector uses the following vendor API:</p>
-<ul>
-<li>API Name: Google Authorized Buyers</li>
-<li>API Endpoint: <code>https://cm.g.doubleclick.net/upload</code></li>
-<li>Documentation: <a href="https://developers.google.com/authorized-buyers/rtb/bulk-uploader">Google Authorized Buyers API</a></li>
-</ul>
+  <h2 id="requirements">Requirements</h2>
+<p>To grant Tealium access to create, list, and update Google audiences, link your account to Tealium in the Google DV360 interface (<strong>Linked Accounts &gt; Link New Account &gt; External Data Partner &gt; Tealium</strong>). For more information, see <a href="https://support.google.com/displayvideo/answer/9649053?hl=en">Google: Sharing audience lists from external data management platforms or customer match uploader partners</a>.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Previously, this connector required that you request for Google to add your account to their allowlist. The latest version of the connector no longer has this requirement.</p>
 <h2 id="connector-actions">Connector Actions</h2>
 <table>
 <thead>
@@ -415,6 +411,26 @@
 </tr>
 </tbody>
 </table>
+<h2 id="api-information">API Information</h2>
+<p>This connector uses the following vendor APIs:</p>
+<ul>
+<li>User List Operations (creation/listing)
+<ul>
+<li>API Name: Google Audience Partner API</li>
+<li>API Version: v2</li>
+<li>API Endpoint: <code>https://audiencepartner.googleapis.com</code></li>
+<li>Documentation: <a href="https://developers.google.com/ad-manager/api/start">Google Ad Manager API</a></li>
+</ul>
+</li>
+<li>User List Uploading
+<ul>
+<li>API Name: Google Authorized Buyers</li>
+<li>API Version: v2</li>
+<li>API Endpoint: <code>https://cm.g.doubleclick.net/upload</code></li>
+<li>Documentation: <a href="https://developers.google.com/authorized-buyers/rtb/bulk-uploader">Google Authorized Buyers API</a></li>
+</ul>
+</li>
+</ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>It may take up to 72 hours from when the connector fires before the visitor becomes available for use. <br>
 For more information, see <a href="https://support.google.com/displayvideo/answer/6212219?hl=en&amp;ref_topic=2726036">Tips for using third-party audience lists</a>.</p>
 <h2 id="configure-settings">Configure Settings</h2>
@@ -604,7 +620,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 23, 2024 
+          <p>This page was last updated:  September 17, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -618,8 +634,9 @@ No</button>
 
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#requirements" href="javascript:void(0)">Requirements</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#api-information" href="javascript:void(0)">API Information</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#create-a-new-segment" href="javascript:void(0)">Create a New Segment</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action Settings - Parameters and Options</a></li>
@@ -887,6 +904,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

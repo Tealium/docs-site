@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "3",
+        reading_time  : "2",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -160,6 +160,7 @@
         <ul class="pl2  webhooks desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/webhooks/affirm/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-affirm-incoming-webhook-setup-guide">Affirm</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/webhooks/airship/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-airship-incoming-webhook-setup-guide">Airship</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-sources/webhooks/auth0/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-auth0-incoming-webhook-setup-guide">Auth0</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/webhooks/braze-currents/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-braze-currents-data-source-setup-guide">Braze Currents</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/webhooks/google-ads-leads/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-google-ads-leads">Google Ads Leads</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/webhooks/http-api-advanced/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-http-api-advanced-incoming-webhook-setup-guide">HTTP API Advanced</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -280,7 +281,7 @@
         <a href="/server-side/connectors/interface/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-interface">Connector interface</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/add/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".add-a-connector">Add a connector</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-connectors">Manage connectors</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/connectors/delayed-actions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">About delayed actions</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/connectors/delayed-actions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-delayed-actions">Delayed actions</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/batched-actions/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".batched-actions">Batched actions</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/connectors/connectors-dashboard/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connectors-dashboard">Connectors Dashboard</a></li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".frequency-capping">Frequency capping</a>
@@ -518,13 +519,13 @@
 
   
     <p class="f4 fw3 lh-copy">
-      A data source is any system that sends data to the Customer Data Hub. This article describes how data sources work, how to add them to your account, and where to use them within your account.
+      This article describes the different types of data sources that you can use to send data to Tealium.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>A data sources represents a digital property that sends data to the Customer Data Hub. These systems include websites, mobile apps, or any custom application that generates visitor event data.</p>
+  <p>A data source represents a digital property that sends data to the Customer Data Hub. These systems include including websites, mobile apps, cloud data warehouses, offline data in the form of a CSV file, or any custom application that generates visitor event data.</p>
 <p>Examples of data source platforms:</p>
 <ul>
 <li>iQ Tag Management (websites)</li>
@@ -535,25 +536,14 @@
 <li>Roku</li>
 <li>Python</li>
 <li>Java</li>
-<li>File Import</li>
-</ul>
-<p>Each data source has the following properties:</p>
-<ul>
-<li><strong>Name</strong><br>
-A name for the data source. For example: &ldquo;US Mobile (iOS)&rdquo;</li>
-<li><strong>Description</strong><br>
-A short description of the data source.</li>
-<li><strong>Platform</strong><br>
-The platform type, such as &ldquo;iOS&rdquo;.</li>
-<li><strong>Data source key</strong><br>
-The unique key used to install the data source. For example: &ldquo;abc123&rdquo;</li>
-<li><strong>Event specifications</strong><br>
-The event specifications associated with the data source. For example, a data source created for an e-commerce website might include event specifications for <code>product_view</code>, <code>cart_add</code>, <code>search</code>, and <code>purchase</code>.</li>
+<li>File import</li>
+<li>Cloud data warehouse (For example, Snowflake)</li>
 </ul>
 <h2 id="how-it-works">How it works</h2>
 <p>Data sources are used to identify and keep track of the applications that send data to your Tealium account. Before you install Tealium in a new application or website, create a data source for it.</p>
-<p>When you create a data source, a unique value called a <em>data source key</em> is generated. You will use the data source key in the installation code to match to the data source in your account.</p>
-<p>After you create a data source and the code is installed with the data source key, use Live Events to identify events being sent from that data source. In Live Events you can inspect and validate incoming events.</p>
+<p>After you configure a data source, use Live Events to inspect and validate events coming into that data source.</p>
+<h3 id="platforms-and-apis">Platforms and APIs</h3>
+<p>When you create a platform or API data source, a unique value called a <em>data source key</em> is generated. You will use the data source key in the installation code to match to the data source in your account.</p>
 <h2 id="import-offline-data">Import offline data</h2>
 <p>Tealium supports several methods to import offline data into Tealium for enrichment and activation. Depending on your business case, your development support, and your import needs, you can select one of the following:</p>
 <ul>
@@ -646,7 +636,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 28, 2024 
+          <p>This page was last updated:  September 18, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -661,7 +651,8 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#import-offline-data" href="javascript:void(0)">Import offline data</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#platforms-and-apis" href="javascript:void(0)">Platforms and APIs</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#import-offline-data" href="javascript:void(0)">Import offline data</a></li>
               </nav>
   </aside></nav>
 
