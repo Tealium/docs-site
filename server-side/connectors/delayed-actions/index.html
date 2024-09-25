@@ -351,7 +351,8 @@
         <a href="/server-side/visitor-stitching/guidelines/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-stitching-guidelines">Visitor stitching guidelines</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/visitor-stitching/create-a-visitor-id-attribute/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".create-visitor-id-attribute">Create a visitor ID attribute</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/visitor-stitching/scenarios/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".visitor-stitching-scenarios">Visitor stitching scenarios</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/visitor-stitching/tapid/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-tapid-cookies">About TAPID cookies</a></li></ul>
+        <a href="/server-side/visitor-stitching/tapid/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".about-tapid-cookies">About TAPID cookies</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/visitor-stitching/single-event-visitor/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".single-event-visitor">Single event visitor</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".functions">Functions</a>
         <ul class="pl2  functions desktopmenu animated fadeIn list  dn"><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -526,14 +527,20 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
-<p>Delayed actions are supported for AudienceStream connectors. A delayed action can be configured for an AudienceStream connector when the trigger is set to <strong>In Audience at the end of visit</strong>, as shown in the following example:</p>
+<p>A delayed action is an AudienceStream connector action that is delayed based on a set of conditions or time criteria. A delayed action can be configured for an AudienceStream connector when the trigger is set to <strong>In Audience at the end of visit</strong>, as shown in the following example:</p>
 <figure><a class="slb" href="/images/server-side/001.png"><img src="/images/server-side/001.png"
          alt="Connector actions"
          title="Connector actions"/>
     </a>
 </figure>
-<p class="tip"><i class="fa fa-info-circle"></i>In this article, scheduling time is the time at the end of a visit when connector actions are scheduled for delayed activation. Activation time is the time after the delay when connector actions are triggered.</p>
-<p>&ldquo;In Audience at end of visit&rdquo; means that the visitor is in the selected audience when the visit ends. A delay can be scheduled for an action for a specific number of hours or days and is scheduled only if the visitor is in the audience at the end of current visit. The delayed action is triggered only if the visitor is still in the audience at the scheduled activation time.</p>
+<p>A delay can be scheduled for an action for a specific number of hours or days and is scheduled only if the visitor is in the audience at the end of current visit. The delayed action is triggered only if the visitor is still in the audience at the scheduled activation time.</p>
+<p>If a visitor returns for a second visit after a delayed action has been triggered, and the visitor meets the condition <strong>In Audience at the end of visit</strong> when the second visit ends, then a new delayed action is scheduled.</p>
+<p>This article uses the following terms:</p>
+<ul>
+<li><strong>Scheduling time</strong> - The time at the end of a visit when connector actions are scheduled for delayed activation.</li>
+<li><strong>Activation time</strong> - The time after the delay when connector actions are triggered.</li>
+<li><strong>In Audience at end of visit</strong> - The visitor is in the selected audience when the visit ends.</li>
+</ul>
 <p>The end of a visit is determined by user inactivity. For more information, see <a href="/server-side/attributes/about/#session-length">Session length</a>.</p>
 <p>Delayed actions can only be scheduled for activated connectors. To learn more about audience connectors and the trigger setting, see <a href="/server-side/connectors/add/#select-a-source-for-audiencestream">Add a Connector</a>.</p>
 <h3 id="how-delayed-actions-are-scheduled-and-processed">How delayed actions are scheduled and processed</h3>
@@ -557,6 +564,7 @@
          title="delayed action scheduled"/>
     </a>
 </figure>
+<p>If the visitor returns for a second visit 12 hours after the first visit ended AND the visitor meets the condition <strong>In Audience at end of visit</strong> when the second visit ends, then the original delayed action will be rescheduled to 1 day (24 hours) after the second visit ends. In other words, the delayed action is now scheduled to 36 hours after the first visit ends.</p>
 <p>The maximum allowed delay for an action is 365 days or 8760 hours. The number of days or hours must be a whole number, decimal values such as <code>1.5</code> or <code>0.75</code> are not allowed. The smallest delay that can be configured is 1 hour.</p>
 <h2 id="delay-an-action-only-if-the-visitor-joined-the-audience-during-the-current-visit">Delay an action only if the visitor joined the audience during the current visit</h2>
 <p>The <strong>In Audience at the end of visit</strong> condition is easily met, and may include visitors that were in the audience at the start of the visit. The <strong>AND was not a member of this Audience at start of visit</strong> option can be used to schedule a delayed action only if the visitor is in the audience at the end of the visit AND the visitor joined the audience during this visit.</p>
@@ -577,17 +585,12 @@ The connector action is not triggered. The audience ID for the connector action 
 <li>The delay period was changed.<br>
 This does not have any effect on already scheduled delayed actions.</li>
 <li>The connector action was deactivated.<br>
-This does not affect already scheduled delayed actions. They will still trigger.   Deactivating a delayed connector action only prevents new delayed actions from being scheduled.</li>
+This does not affect already scheduled delayed actions. They will still trigger. Deactivating a delayed connector action only prevents new delayed actions from being scheduled.</li>
 <li>The connector action was deleted.<br>
 Scheduled delayed actions will not trigger because their configuration cannot be retrieved.</li>
 <li>The connector action was changed in some other way (for example, the attributes mapped have been changed).<br>
 The connector configuration at activation time (not scheduling time) is used.</li>
 </ul>
-<h2 id="faqs">FAQs</h2>
-<h4 id="what-happens-when-a-visitor-returns-before-the-delayed-action-has-triggered">What happens when a visitor returns before the delayed action has triggered?</h4>
-<p>In the <strong>DELAY Action for 1 Days</strong> example above, a delayed action is scheduled 1 day (24 hours) later at the end of the visitor&rsquo;s first visit. If the visitor returns for a second visit 12 hours after the first visit ended AND the visitor meets the condition <strong>In Audience at end of visit</strong> when the second visit ends, then the original delayed action will be rescheduled to 1 day (24 hours) after the second visit ends. In other words, the delayed action is now scheduled to 36 hours after the first visit ends.</p>
-<h4 id="what-happens-when-a-visitor-returns-after-the-delayed-action-has-already-been-triggered">What happens when a visitor returns after the delayed action has already been triggered?</h4>
-<p>If a visitor returns for a second visit after the original delayed action has been triggered, and the visitor meets the condition <strong>In Audience at the end of visit</strong> when the second visit ends, then a new delayed action is scheduled.</p>
 
 </div>
 
@@ -648,7 +651,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  September 18, 2024 
+          <p>This page was last updated:  September 23, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -668,7 +671,6 @@ No</button>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#delay-an-action-for-hours-or-days" href="javascript:void(0)">Delay an action for hours or days</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#delay-an-action-only-if-the-visitor-joined-the-audience-during-the-current-visit" href="javascript:void(0)">Delay an action only if the visitor joined the audience during the current visit</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#changing-a-connector-after-delayed-actions-are-scheduled" href="javascript:void(0)">Changing a connector after delayed actions are scheduled</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#faqs" href="javascript:void(0)">FAQs</a></li>
               </nav>
   </aside></nav>
 
