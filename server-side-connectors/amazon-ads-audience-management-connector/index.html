@@ -292,7 +292,6 @@
         <a href="/server-side-connectors/singular-events-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".singular-events-connector">Singular Events</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/slack-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".slack-connector">Slack</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/smart-digital/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".smart-digital-connector">Smart Digital</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side-connectors/smartfocus-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".smartfocus-connector">SmartFocus</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/smartsurvey-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".smartsurvey-connector">SmartSurvey</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/snapchat-audience-match-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-audience-match-connector">Snapchat Audience Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side-connectors/snapchat-conversions-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".snapchat-conversions-connector">Snapchat Conversions</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -425,6 +424,14 @@
 </table>
 <h2 id="configure-settings">Configure Settings</h2>
 <p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
+<p>After adding the connector, configure the following settings:</p>
+<ul>
+<li><strong>Amazon Ads Account Region</strong>
+<ul>
+<li>Required. Select the region of your Amazon Ads Account.</li>
+</ul>
+</li>
+</ul>
 <h3 id="amazon-authentication">Amazon authentication</h3>
 <p>To authenticate the connector with Amazon:</p>
 <ol>
@@ -441,6 +448,9 @@
 <li>(Optional) Select a DSP Advertiser ID from the <strong>DSP Advertiser ID</strong> drop-down to synchronize the audience to DSP.</li>
 <li>Click <strong>Done</strong> and then click <strong>Create</strong>.</li>
 </ol>
+<h3 id="country-code">Country code</h3>
+<p>The country code is a two-character string in ISO-3166 format that indicates from which country the data was collected. <strong>Country code</strong> is an optional parameter, but we strongly recommend that you include it when uploading data. A country code added to records overrides the country code added to an audience.</p>
+<p>For more information, see <a href="https://advertising.amazon.com/API/docs/en-us/guides/amazon-marketing-cloud/audiences/audience-management-service#country-code">Amazon Ads: Country Code</a>.</p>
 <h2 id="action-settings--actions">Action settings — Actions</h2>
 <p>Enter a name for the action and select the action type from the drop-down menu.</p>
 <p>The following section describes how to set up parameters and options for each action.</p>
@@ -518,6 +528,10 @@
 <td>Postal Code (apply SHA256 hash)</td>
 <td>Provide a plain text postal code and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
 </tr>
+<tr>
+<td>Country Code</td>
+<td>Provide a two-character string in ISO-3166 format that indicates from which country the data was collected. A country code added to records overrides the country code added to an audience.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="action--add-visitor-to-dsp-audience">Action — Add Visitor to DSP Audience</h3>
@@ -593,6 +607,10 @@
 <tr>
 <td>Postal Code (apply SHA256 hash)</td>
 <td>Provide a plain text postal code and the connector will whitespace trim, lowercase, and hash this value using SHA256 hash.</td>
+</tr>
+<tr>
+<td>Country Code</td>
+<td>Provide a two-character string in ISO-3166 format that indicates from which country the data was collected. A country code added to records overrides the country code added to an audience.</td>
 </tr>
 </tbody>
 </table>
@@ -732,7 +750,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 15, 2024 
+          <p>This page was last updated:  September 30, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -752,6 +770,7 @@ No</button>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#amazon-authentication" href="javascript:void(0)">Amazon authentication</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#amc-audience-connection" href="javascript:void(0)">AMC audience connection</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#country-code" href="javascript:void(0)">Country code</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings--actions" href="javascript:void(0)">Action settings — Actions</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--add-visitor-to-amc-audience" href="javascript:void(0)">Action — Add Visitor to AMC Audience</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action--add-visitor-to-dsp-audience" href="javascript:void(0)">Action — Add Visitor to DSP Audience</a></li>
@@ -1018,7 +1037,6 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
-  
   
   
   

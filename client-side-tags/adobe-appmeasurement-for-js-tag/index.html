@@ -425,8 +425,8 @@
 <li>Not all legacy H26 features are supported with the AppMeasurement tag.</li>
 <li>Ensure that you enter the server value correctly. For example, third party servers may have <code>112.2o7.net</code> or <code>122.2o7.net</code>.</li>
 <li>To use AppMeasurement for mobile, the Tealium Mobile SDK must be implemented in your application.</li>
-<li>For a list of supported plug-ins, see: <a href="https://marketing.adobe.com/resources/help/en_US/sc/implement/plugins_support.html">AppMeasurement Plugin Support</a>.</li>
-<li>For additional information, see: <a href="https://marketing.adobe.com/resources/help/en_US/sc/implement/appmeasure_mjs.htm">About AppMeasurement for JavaScript</a></li>
+<li>For a list of supported plug-ins, see: <a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/vars/plugins/impl-plugins">Adobe: AppMeasurement Plug-ins Overview</a>.</li>
+<li>For additional information, see: <a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/js/overview">Adobe: Implement Adobe Analytics with AppMeasurement for JavaScript</a></li>
 </ul>
 <h2 id="tag-configuration">Tag Configuration</h2>
 <p>Go to the Tag Marketplace and add the Adobe Analytics AppMeasurement for JS tag (learn more about <a href="/iq-tag-management/tags/manage/">how to add a tag</a>).</p>
@@ -517,7 +517,7 @@
 <li>Optional.</li>
 <li>Your Adobe Experience Cloud ID.</li>
 <li>If using the Visitor API supported in versions 1.3.x and higher, enter your Enterprise Cloud ID here.</li>
-<li>Learn more about the <a href="https://marketing.adobe.com/resources/help/en_US/mcvid/mcvid-requirements.html">Adobe Enterprise Cloud ID Service</a>.</li>
+<li>For more information, see <a href="https://experienceleague.adobe.com/en/docs/id-service/using/home">Adobe: Enterprise Cloud ID Service</a>.</li>
 </ul>
 </li>
 <li><strong>Run Advertising Cloud Viewthrough</strong>
@@ -539,6 +539,14 @@
 <li><strong>Send Timestamp</strong>
 <ul>
 <li>Allow a timestamp to be sent with each tracking call. Applies to mobile device tracking only.</li>
+</ul>
+</li>
+<li><strong>Decode Link Parameters</strong>
+<ul>
+<li>Set to <code>false</code> to encode link tracking variables once.</li>
+<li>Set to <code>true</code> to encode link tracking variables twice.</li>
+<li>Default value is <code>false</code>.</li>
+<li>For more information, see <a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/vars/config-vars/decodelinkparameters">Adobe: <code>decodeLinkParameters</code></a>.</li>
 </ul>
 </li>
 </ul>
@@ -598,8 +606,8 @@
 <td style="text-align:left"><ul><li>Character set</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left"></td>
 <td style="text-align:left"><code>collectHighEntropyUserAgentHits</code></td>
+<td style="text-align:left"><ul><li>Boolean</li><li>Collect High Entropy User Agent Hints</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>contextData.myvar</code></td>
@@ -692,7 +700,7 @@ You can click the plus icon (<strong>+</strong>) to add additional value/trigger
 </tr>
 </tbody>
 </table>
-<p>SiteCatalyst allows you to use 75 custom props, also called traffic variables. Props contain data that is not meant to persist beyond a page view, so if you want to correlate a prop with another variable you have to make sure both variables get set on the same page. You can use Events to hold certain numeric values when passed in the <a href="#product_string">product string</a> or being serialized.</p>
+<p>SiteCatalyst allows you to use 75 custom props, also called traffic variables. Props contain data that is not meant to persist beyond a page view. If you want to correlate a prop with another variable, ensure both variables get set on the same page. Use events to hold certain numeric values when passed in the product string or being serialized.</p>
 <p>Use the following steps to map custom destinations:</p>
 <ol>
 <li>Map a variable to any prop destination.</li>
@@ -965,7 +973,7 @@ You can click the plus icon (<strong>+</strong>) to add additional value/trigger
 </tbody>
 </table>
 <h3 id="event-serialization-detection">Event Serialization Detection</h3>
-<p>The AppMeasurement tag automatically detects <a href="https://marketing.adobe.com/resources/help/en_US/sc/implement/event_serialization_impl.html">event serialization</a> within the trigger values of your data layer. When the tag fires, the tag attempts to match the trigger string mapped in the <strong>Events</strong> tab with the trigger value in the data layer, checking to see if either trigger contains a colon.</p>
+<p>The AppMeasurement tag automatically detects <a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/vars/page-vars/events/event-serialization">event serialization</a> within the trigger values of your data layer. When the tag fires, the tag attempts to match the trigger string mapped in the <strong>Events</strong> tab with the trigger value in the data layer, checking to see if either trigger contains a colon.</p>
 <ul>
 <li><strong>Event serialization detection: On</strong><br>
 When event serialization detection is turned on (default setting), the tag detects the trigger value next to the colon and attempts to match the remaining string with your mapped trigger. If there is an exact match, the event is serialized.</li>
@@ -1079,11 +1087,17 @@ Where <code>CUSTOM_EVENT</code> is the event you want to append to the <code>s.e
 <h2 id="supported-versions">Supported Versions</h2>
 <p>The following code versions of AppMeasurement for JavaScript are supported:</p>
 <ul>
+<li>2.26.0 bundled optimized</li>
+<li>2.26.0</li>
+<li>2.25.0</li>
+<li>2.24.0</li>
 <li>2.23.0</li>
+<li>2.22.4</li>
 <li>2.22.3</li>
 <li>2.22.0</li>
+<li>2.21.0</li>
 <li>2.20.0</li>
-<li>2.19.0</li>
+<li>2.18.0</li>
 <li>2.17.0</li>
 <li>2.15.0</li>
 <li>2.14.0</li>
@@ -1096,11 +1110,16 @@ Where <code>CUSTOM_EVENT</code> is the event you want to append to the <code>s.e
 <li>2.3.0</li>
 <li>2.1.0</li>
 <li>1.8.0</li>
-<li>1.6.3, 1.6.1, 1.6.0</li>
-<li>1.5.3, 1.5.2, 1.5.1</li>
+<li>1.6.3</li>
+<li>1.6.1</li>
+<li>1.6.0</li>
+<li>1.5.3</li>
+<li>1.5.2</li>
+<li>1.5.1</li>
 <li>1.4.1</li>
 <li>1.3.2</li>
-<li>1.2.2, 1.2.1</li>
+<li>1.2.2</li>
+<li>1.2.1</li>
 <li>1.0.1</li>
 </ul>
 <h3 id="release-notes">Release Notes</h3>
@@ -1177,7 +1196,7 @@ Where <code>CUSTOM_EVENT</code> is the event you want to append to the <code>s.e
 <ul>
 <li>Supports AppMeasurement JavaScript 1.8.0.</li>
 <li>Supports Marketing Cloud ID Service version 2.0.0.</li>
-<li>Added two call hooks: <code>s.registerPreTrackCallback</code> and <code>s.registerPostTrackCallback</code>. <a href="https://marketing.adobe.com/resources/help/en_US/sc/appmeasurement/release/c_release_notes_mjs.html">Learn more</a>.</li>
+<li>Added two call hooks: <a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/vars/functions/registerpretrackcallback"><code>s.registerPreTrackCallback</code></a> and <a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/vars/functions/registerposttrackcallback"><code>s.registerPostTrackCallback</code></a>.</li>
 </ul>
 <h5 id="v163-released-august-23-2016">v1.6.3 Released August 23, 2016</h5>
 <ul>
@@ -1187,7 +1206,7 @@ Where <code>CUSTOM_EVENT</code> is the event you want to append to the <code>s.e
 <li>Separated the Marketing Cloud ID support (aka Visitor API) into a new Tag called the Marketing Cloud ID Service Tag.</li>
 </ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>The Marketing Cloud ID Service Tag has to load before all other Adobe Tags (including AppMeasurement) in your profile. Without that, you&rsquo;ll lose visitor tracking integrity. To load the tag first, enable the <a href="/iq-tag-management/tags/advanced-settings/">bundle setting</a> on All Pages and load it before other Adobe tags.</p>
-<p>View <a href="https://marketing.adobe.com/resources/help/en_US/sc/appmeasurement/release/c_release_notes_mjs.html">full Adobe AppMeasurement release notes</a>.</p>
+<p>View <a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/appmeasurement-updates">full Adobe AppMeasurement release notes</a>.</p>
 <h5 id="v161-released-july-28-2016">v1.6.1 Released July 28, 2016</h5>
 <p>The following updates affect AppMeasurement&rsquo;s Events, Value Events, and Event Serialization:</p>
 <ul>
@@ -1199,15 +1218,15 @@ Where <code>CUSTOM_EVENT</code> is the event you want to append to the <code>s.e
 <li>Added new version 1.6.1</li>
 <li>Supports Visitor API versions 1.5.7 and 1.5.6</li>
 <li>Improved mechanism for handling link click tracking in Firefox.</li>
-<li>View full Adobe AppMeasurement release notes <a href="https://marketing.adobe.com/resources/help/en_US/sc/appmeasurement/release/c_release_notes_mjs.html">here</a>.</li>
 </ul>
+<p>View <a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/appmeasurement-updates">full Adobe AppMeasurement release notes</a>.</p>
 <h2 id="vendor-documentation">Vendor Documentation</h2>
 <ul>
-<li><a href="https://experienceleague.adobe.com/docs/analytics/implementation/js/overview.html?lang=en">Adobe Experience League: About AppMeasurement for JavaScript</a></li>
-<li><a href="https://marketing.adobe.com/resources/help/en_US/sc/appmeasurement/release/c_release_notes_mjs.html">Adobe Experience League: AppMeasurement Release History</a></li>
-<li><a href="https://marketing.adobe.com/resources/help/en_US/analytics/activitymap/activitymap-enable.html">Adobe Experience League: Enabling activity map</a></li>
-<li><a href="https://experienceleague.adobe.com/docs/mobile-services/using/get-started-ug/mobile-metrics/metrics.html?lang=en">Adobe Experience League: Understanding Mobile Metrics</a></li>
-<li><a href="https://marketing.adobe.com/resources/help/en_US/mobile/metrics_reference.html">Adobe Experience League: Mobile Metrics Reference</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/js/overview">Adobe Experience League: About AppMeasurement for JavaScript</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/appmeasurement-updates">Adobe Experience League: AppMeasurement Release History</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics/analyze/activity-map/getting-started">Adobe Experience League: Enabling activity map</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics/components/metrics/overview">Adobe Experience League: Understanding Mobile Metrics</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics/components/metrics/lifecycle-metrics">Adobe Experience League: Mobile Metrics Reference</a></li>
 </ul>
 
 </div>
@@ -1269,7 +1288,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 12, 2022 
+          <p>This page was last updated:  October 1, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -147,12 +147,15 @@
         <a href="/server-side/data-sources/file-import/prepare-a-csv-file/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-prepare-csv-file-for-import">Prepare a CSV file for import</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/file-import/encryption-and-compression/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-encryption-and-compression-file-import">Encryption and compression</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/file-import/configuration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-configure-file-import">File import configuration</a></li><li class="relative w-100 fw8 f5 ">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".file-transfer-service">File transfer service configuration</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".file-transfer-service">Upload files</a>
         <ul class="pl2  file-transfer-service desktopmenu animated fadeIn list  dn"><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/file-import/file-transfer-service/upload-files/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".file-transfer-service-upload-files">Upload files to a service</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/file-import/file-transfer-service/cyberduck/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".file-transfer-service-configure-cyberduck">Cyberduck</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/file-import/file-transfer-service/aws-cli/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".file-transfer-service-amazon-command-line-interface">Amazon CLI</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/data-sources/file-import/file-transfer-service/s3-bucket/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".file-transfer-service-s3-bucket">S3 Bucket</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-sources/file-import/file-transfer-service/aws-s3/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-s3">AWS S3</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-sources/file-import/file-transfer-service/azure/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".azure">Azure</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-sources/file-import/file-transfer-service/ftp-sftp/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ftp-sftp">FTP/SFTP</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-sources/file-import/file-transfer-service/tealium-s3/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-s3">Tealium S3</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/file-import/file-transfer-service/view-import-status/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".file-transfer-service-view-import-status">View import status</a></li></ul>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
@@ -570,43 +573,37 @@ To set up a file import data source, map columns from your CSV file to event att
 After you set up your data source, upload your CSV files to your file service. File uploading is done outside of Tealium.</p>
 </li>
 </ol>
-<h3 id="step-1-csv-column-mapping-and-file-transfer-service-configuration">Step 1: CSV column mapping and file transfer service configuration</h3>
-<h4 id="column-mapping">Column mapping</h4>
+<h2 id="step-1-csv-column-mapping-and-file-transfer-service-configuration">Step 1: CSV column mapping and file transfer service configuration</h2>
+<h3 id="column-mapping">Column mapping</h3>
 <p>The column mapping configuration determines the event attributes that correspond to each column in the CSV file. The column names are often different from the attribute names in the Customer Data Hub, so this mapping ensures that the data is imported properly. For example, a CSV file might have a column named <code>postalCode</code>, but the matching event attribute is named <code>customer_zip</code>, so you need to map these columns to associate them.</p>
 <p>Mappings can be configured based on an existing event specification or as a custom event.</p>
-<h5 id="event-specification-mapping">Event specification mapping</h5>
+<h4 id="event-specification-mapping">Event specification mapping</h4>
 <p>Each row of the CSV file is processed as an event. When you select an event specification mapping, event attributes are pre-selected in the <strong>Column Mapping</strong> table. Each row is processed as an event of the selected specification, for example <code>tealium_event = &quot;purchase&quot;</code>.</p>
-<h5 id="custom-mapping">Custom mapping</h5>
+<h4 id="custom-mapping">Custom mapping</h4>
 <p>If you select a custom event mapping, specify the event attribute that corresponds to each CSV column. Each row is processed as an event with the following event identifier:</p>
 <p><code>tealium_event = &quot;imported&quot;</code></p>
-<h5 id="visitor-id-mapping">Visitor ID mapping</h5>
-<p>To ensure your imported data is stitched with other sources, such as web, mobile or HTTP API, ensure that every row in a file import source file has a column with a unique visitor ID. You can then map the visitor ID column and corresponding event attribute to a visitor ID attribute (a unique attribute type for visitor identification in AudienceStream). The value in the mapped event attribute is assigned to the <code>tealium_visitor_id</code> attribute and matched directly to any existing visitor profiles.</p>
+<h4 id="visitor-id-mapping">Visitor ID mapping</h4>
+<p>To ensure your imported data is stitched with other sources, such as web, mobile, or HTTP API, ensure that every row in a file import source file has a column with a unique visitor ID. You can then map the visitor ID column and corresponding event attribute to a visitor ID attribute (a unique attribute type for visitor identification in AudienceStream). The value in the mapped event attribute is assigned to the <code>tealium_visitor_id</code> attribute and matched directly to any existing visitor profiles.</p>
 <p>For more information about Visitor ID Mapping in AudienceStream, see <a href="/server-side/data-sources/visitor-identification/">Visitor Identification using Tealium Data Sources</a>.</p>
-<h4 id="file-transfer-service">File transfer service</h4>
+<h3 id="file-transfer-service">File transfer service</h3>
 <p>The file transfer service is a secure location where you upload the files to be imported. Tealium supports the following file transfer services:</p>
 <ul>
-<li>
-<p>Amazon S3 (Tealium bucket or your own bucket) - Tealium uses <a href="https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-services-overview.html">VPC endpoints to access Tealium S3 buckets</a> directly through the AWS network.<p class="note"><i class="fa fa-exclamation-triangle"></i>Storing large numbers of files in your S3 bucket may slow read times. We recommend regularly removing processed files from your S3 bucket to maintain efficient read times.</p></p>
-</li>
-<li>
-<p>Microsoft Azure File/Blob Storage</p>
-</li>
-<li>
-<p>FTP/SFTP - Supports the following authentication methods:</p>
+<li>Amazon S3
 <ul>
-<li>Password</li>
-<li>Upload Private Key File</li>
-<li>Generate Key Pair</li>
+<li><a href="/server-side/data-sources/file-import/file-transfer-service/aws-s3/">AWS S3 bucket</a></li>
+<li><a href="/server-side/data-sources/file-import/file-transfer-service/tealium-s3/">Tealium S3 bucket</a></li>
 </ul>
 </li>
+<li><a href="/server-side/data-sources/file-import/file-transfer-service/azure/">Microsoft Azure File/Blob Storage</a></li>
+<li><a href="/server-side/data-sources/file-import/file-transfer-service/ftp-sftp/">FTP/SFTP</a></li>
 </ul>
-<h5 id="tealium-s3-file-retention">Tealium S3 file retention</h5>
+<h4 id="tealium-s3-file-retention">Tealium S3 file retention</h4>
 <p>By using the Tealium S3 bucket in your file import configuration, you agree to the following file retention policy:</p>
 <ul>
 <li><strong>1-3 years</strong> - One year after uploading files to the Tealium S3 bucket, the files will be moved to a repository for long-term storage. Files will be accessible for up to three years. Retrieving files from long-term storage will incur a minimal to moderate service charge depending on the size and number of items requested. To retrieve any file, contact Tealium Support.</li>
 <li><strong>3 years or more</strong> - Three years after uploading files to the Tealium S3 bucket, files will be deleted permanently. If your business case requires storage for longer than three years, a longer data retention time must be explicitly stated in the customer contract. To request a longer retention policy, contact Tealium Support.</li>
 </ul>
-<h3 id="step-2-upload-your-files-to-a-file-transfer-service">Step 2: Upload your files to a file transfer service</h3>
+<h2 id="step-2-upload-your-files-to-a-file-transfer-service">Step 2: Upload your files to a file transfer service</h2>
 <p>After you complete your file import data source configuration, upload files to the file service you have selected.</p>
 <p>Tealium uses the following order of operations to import files:</p>
 <ol>
@@ -673,7 +670,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 24, 2024 
+          <p>This page was last updated:  October 1, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -692,8 +689,10 @@ No</button>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#rate-limits" href="javascript:void(0)">Rate limits</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#events" href="javascript:void(0)">Events</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-up-a-file-import-data-source" href="javascript:void(0)">Set up a file import data source</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-1-csv-column-mapping-and-file-transfer-service-configuration" href="javascript:void(0)">Step 1: CSV column mapping and file transfer service configuration</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-2-upload-your-files-to-a-file-transfer-service" href="javascript:void(0)">Step 2: Upload your files to a file transfer service</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-1-csv-column-mapping-and-file-transfer-service-configuration" href="javascript:void(0)">Step 1: CSV column mapping and file transfer service configuration</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#column-mapping" href="javascript:void(0)">Column mapping</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#file-transfer-service" href="javascript:void(0)">File transfer service</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-2-upload-your-files-to-a-file-transfer-service" href="javascript:void(0)">Step 2: Upload your files to a file transfer service</a></li>
               </nav>
   </aside></nav>
 

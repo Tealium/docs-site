@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Upload files to a service | File transfer service configuration |Tealium Docs</title>
+    <title>Upload files to a service | Upload files |Tealium Docs</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "3",
+        reading_time  : "2",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -147,12 +147,15 @@
         <a href="/server-side/data-sources/file-import/prepare-a-csv-file/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-about-prepare-csv-file-for-import">Prepare a CSV file for import</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/file-import/encryption-and-compression/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-encryption-and-compression-file-import">Encryption and compression</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/file-import/configuration/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-configure-file-import">File import configuration</a></li><li class="relative w-100 fw8 f5  active">
-        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".file-transfer-service">File transfer service configuration</a>
+        <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".file-transfer-service">Upload files</a>
         <ul class="pl2 bl b--primary bw1 file-transfer-service desktopmenu animated fadeIn list "><li data-level="5" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/file-import/file-transfer-service/upload-files/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".file-transfer-service-upload-files">Upload files to a service</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/file-import/file-transfer-service/cyberduck/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".file-transfer-service-configure-cyberduck">Cyberduck</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/file-import/file-transfer-service/aws-cli/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".file-transfer-service-amazon-command-line-interface">Amazon CLI</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/server-side/data-sources/file-import/file-transfer-service/s3-bucket/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".file-transfer-service-s3-bucket">S3 Bucket</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-sources/file-import/file-transfer-service/aws-s3/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".aws-s3">AWS S3</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-sources/file-import/file-transfer-service/azure/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".azure">Azure</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-sources/file-import/file-transfer-service/ftp-sftp/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".ftp-sftp">FTP/SFTP</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/server-side/data-sources/file-import/file-transfer-service/tealium-s3/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-s3">Tealium S3</a></li><li data-level="5" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/server-side/data-sources/file-import/file-transfer-service/view-import-status/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".file-transfer-service-view-import-status">View import status</a></li></ul>
       </li></ul>
       </li><li class="relative w-100 fw8 f5 ">
@@ -515,7 +518,7 @@
 
   
   
-  <li class="mr1 f7 lvl4"><a class="f6 mb0 link mid-gray dim mr1" href="/server-side/data-sources/file-import/file-transfer-service/">File transfer service configuration</a></li>
+  <li class="mr1 f7 lvl4"><a class="f6 mb0 link mid-gray dim mr1" href="/server-side/data-sources/file-import/file-transfer-service/">Upload files</a></li>
   
 
   
@@ -532,67 +535,32 @@
 
   
     <p class="f4 fw3 lh-copy">
-      This article describes how to configure your file service to prepare files for import.
+      This article describes how to get started uploading files to your file service.
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>After you set up your data source, upload your CSV files to your file service using a third-party app. Though you may use any client for this purpose, we recommend Cyberduck because it&rsquo;s free and supports FTP and Amazon S3.</p>
+  <p>Tealium supports the following file transfer services for file import:</p>
+<ul>
+<li>Amazon S3
+<ul>
+<li><a href="/server-side/data-sources/file-import/file-transfer-service/aws-s3/">AWS S3 bucket</a></li>
+<li><a href="/server-side/data-sources/file-import/file-transfer-service/tealium-s3/">Tealium S3 bucket</a></li>
+</ul>
+</li>
+<li><a href="/server-side/data-sources/file-import/file-transfer-service/azure/">Microsoft Azure File/Blob Storage</a></li>
+<li><a href="/server-side/data-sources/file-import/file-transfer-service/ftp-sftp/">FTP/SFTP</a></li>
+</ul>
 <h2 id="upload-and-manage-files-using-cyberduck-and-amazon-cli">Upload and manage files using Cyberduck and Amazon CLI</h2>
+<p>After you set up your data source, upload your CSV files to your file service using a third-party app. Though you may use any client for this purpose, we recommend Cyberduck because it&rsquo;s free and supports FTP/SFTP and Amazon S3.</p>
 <p>Use the following articles to get started uploading and managing your files:</p>
 <ul>
-<li><a href="/server-side/data-sources/file-import/file-transfer-service/cyberduck/">Upload a file via FTP or Amazon S3 with Cyberduck</a></li>
+<li><a href="/server-side/data-sources/file-import/file-transfer-service/cyberduck/">Upload a file via FTP/SFTP or Amazon S3 with Cyberduck</a></li>
 <li><a href="/server-side/data-sources/file-import/file-transfer-service/aws-cli/">Upload and manage files using the Amazon Command Line Interface</a></li>
-<li><a href="/server-side/data-sources/file-import/file-transfer-service/s3-bucket/">Upload files to an empty S3 bucket using the Amazon CLI</a></li>
 </ul>
-<p class="tip"><i class="fa fa-info-circle"></i>After you set up a file import data source, use usage reports to review the number of file import rows or lines imported into AudienceStream. For more information, see <a href="/server-side/administration/understanding-the-usage-report/">Understanding the usage report</a>.</p>
-<h2 id="amazon-s3-access-configuration">Amazon S3 access configuration</h2>
-<p>If you use your company&rsquo;s own Amazon S3 bucket for your file service (not the included Tealium S3 bucket), you need to allow Tealium access to the Amazon S3 bucket before processing any files.</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Storing large numbers of files in your S3 bucket may slow read times. We recommend regularly removing processed files from your S3 bucket to maintain efficient read times.</p>
-<h3 id="amazon-bucket-policies">Amazon bucket policies</h3>
-<p>Use the AWS Policy Generator and the Amazon S3 console to add a new bucket policy. The Amazon S3 bucket policies control access to buckets from specific virtual private cloud (VPC) endpoints.</p>
-<p>For more information about AWS bucket policies, see the following articles in the AWS documentation:</p>
-<ul>
-<li><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/add-bucket-policy.html">Adding a bucket policy by using the Amazon S3 console</a></li>
-<li><a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies-vpc-endpoint.html">Controlling access from VPC endpoints with bucket policies</a></li>
-</ul>
-<p>Use the following configuration details to allow Tealium access to the Amazon S3 bucket used in your file import data source.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;YYYY-MM-DD&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Id&#34;</span>: <span style="color:#e6db74">&#34;VPCe and SourceIP&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Statement&#34;</span>: [{
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Sid&#34;</span>: <span style="color:#e6db74">&#34;VPCe and SourceIP&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Deny&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Principal&#34;</span>: <span style="color:#e6db74">&#34;*&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Action&#34;</span>: <span style="color:#e6db74">&#34;s3:*&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Resource&#34;</span>: [
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;arns3:::name&#34;</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;arns3:::name/*&#34;</span>
-</span></span><span style="display:flex;"><span>        ],
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;Condition&#34;</span>: {
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;StringNotEquals&#34;</span>: {
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;aws [
-</span></span></span><span style="display:flex;"><span><span style="color:#f92672">                    &#34;</span><span style="color:#960050;background-color:#1e0010">vpce</span><span style="color:#ae81ff">-0e9</span><span style="color:#960050;background-color:#1e0010">f</span><span style="color:#ae81ff">123</span><span style="color:#960050;background-color:#1e0010">ab</span><span style="color:#ae81ff">6789</span><span style="color:#e6db74">&#34; // Replace this value with the vpcEndpointId that is trying to access your S3 bucket. You can find this ID in CloudTrail logs.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                ]
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            },
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;</span><span style="color:#960050;background-color:#1e0010">NotIpAddress</span><span style="color:#e6db74">&#34;: {
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                &#34;</span><span style="color:#960050;background-color:#1e0010">aws</span> [  
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">//(Optional) To help diagnose potential connection problems, ask your Tealium Customer Service Manager 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//for the Tealium Office VPN IP Address(es) and add them below. The following addresses are examples only.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;54.206.4.11&#34;</span>,
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;54.150.228.144&#34;</span>
-</span></span><span style="display:flex;"><span>                ]
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }]
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="vpce-addresses-to-allow">VPCe addresses to allow</h3>
-<p>Ensure that you allow both the VPCe for <code>us-west-1</code> and the VPCe for your profile region.</p>
-<p>To find your profile region, navigate to the server-side admin menu and select <strong>Server-Side Settings &gt; Region</strong>. After you locate your region, select the corresponding VPCe from <a href="/server-side/administration/ip-allow-list/">Tealium IP addresses to allow</a>.</p>
+<h2 id="usage-reports">Usage reports</h2>
+<p>After you set up a file import data source, use usage reports to review the number of file import rows or lines imported into AudienceStream. For more information, see <a href="/server-side/administration/understanding-the-usage-report/">Understanding the usage report</a>.</p>
 <h2 id="file-upload-errors">File upload errors</h2>
 <p>When a file process failure occurs, the file is ignored. The system does not attempt to process the file again. The most common reasons for failure are:</p>
 <ul>
@@ -647,7 +615,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 29, 2023 
+          <p>This page was last updated:  September 23, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -662,10 +630,8 @@ No</button>
   <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#upload-and-manage-files-using-cyberduck-and-amazon-cli" href="javascript:void(0)">Upload and manage files using Cyberduck and Amazon CLI</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#amazon-s3-access-configuration" href="javascript:void(0)">Amazon S3 access configuration</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#amazon-bucket-policies" href="javascript:void(0)">Amazon bucket policies</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#vpce-addresses-to-allow" href="javascript:void(0)">VPCe addresses to allow</a></li>
-              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#file-upload-errors" href="javascript:void(0)">File upload errors</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#usage-reports" href="javascript:void(0)">Usage reports</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#file-upload-errors" href="javascript:void(0)">File upload errors</a></li>
               </nav>
   </aside></nav>
 
