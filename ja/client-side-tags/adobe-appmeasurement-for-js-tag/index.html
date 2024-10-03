@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Adobe Analytics AppMeasurement for JS タグの構成ガイド | クライアントサイドタグ |Tealiumドキュメント</title>
+    <title>Adobe Analytics AppMeasurement for JSタグ構成ガイド | クライアントサイドタグ |Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "client-side-tags",
-        reading_time  : "3",
+        reading_time  : "4",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -410,7 +410,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">Adobe Analytics AppMeasurement for JS タグの構成ガイド</h1>
+<h1 class="lh-title mt30 mb3">Adobe Analytics AppMeasurement for JSタグ構成ガイド</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -418,7 +418,7 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、iQ Tag ManagementアカウントでAdobe Analytics AppMeasurement for JSタグを構成する方法について説明します。
+      この記事では、iQタグ管理アカウントでAdobe Analytics AppMeasurement for JSタグを構成する方法について説明します。
     </p>
   
 </div>
@@ -427,133 +427,141 @@
   <h2 id="タグのヒント">タグのヒント</h2>
 <ul>
 <li>Adobe Experience Cloud IDサービスを使用するには、このタグを追加する前にAdobe Experience Cloud IDサービスタグを追加してください。</li>
-<li>AppMeasurementタグでは、すべてのレガシーH26の機能がサポートされているわけではありません。</li>
-<li>サーバーの値を正しく入力してください。たとえば、サードパーティのサーバーでは <code>112.2o7.net</code> または <code>122.2o7.net</code> などがあります。</li>
-<li>モバイルでAppMeasurementを使用するには、アプリケーションにTealium Mobile SDKを実装する必要があります。</li>
-<li>サポートされているプラグインのリストについては、<a href="https://marketing.adobe.com/resources/help/en_US/sc/implement/plugins_support.html">AppMeasurementプラグインサポート</a>を参照してください。</li>
-<li>追加の情報については、<a href="https://marketing.adobe.com/resources/help/en_US/sc/implement/appmeasure_mjs.htm">JavaScript用AppMeasurementについて</a>を参照してください。</li>
+<li>AppMeasurementタグでは、すべてのレガシーH26機能がサポートされているわけではありません。</li>
+<li>サーバーの値を正しく入力してください。例えば、サードパーティのサーバーでは<code>112.2o7.net</code>や<code>122.2o7.net</code>があるかもしれません。</li>
+<li>モバイル用のAppMeasurementを使用するには、Tealium Mobile SDKをアプリケーションに実装する必要があります。</li>
+<li>サポートされているプラグインのリストについては、次を参照してください：<a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/vars/plugins/impl-plugins">Adobe: AppMeasurementプラグインの概要</a>。</li>
+<li>追加情報については、次を参照してください：<a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/js/overview">Adobe: JavaScript用AppMeasurementを使用したAdobe Analyticsの実装</a></li>
 </ul>
 <h2 id="タグの構成">タグの構成</h2>
-<p>タグマーケットプレイスに移動し、Adobe Analytics AppMeasurement for JSタグを追加します（<a href="/ja/iq-tag-management/tags/manage/">タグの追加方法について詳しくはこちら</a>）。</p>
-<p>タグを追加した後、次の構成を行います。</p>
+<p>タグマーケットプレイスに移動し、Adobe Analytics AppMeasurement for JSタグを追加します（<a href="/ja/iq-tag-management/tags/manage/">タグの追加方法</a>について詳しくはこちら）。</p>
+<p>タグを追加したら、以下の構成を行います：</p>
 <ul>
 <li><strong>コードバージョン</strong>
 <ul>
-<li><code>AppMeasurement.js</code> ライブラリのバージョンです。</li>
+<li><code>AppMeasurement.js</code>ライブラリのバージョン。</li>
 </ul>
 </li>
 <li><strong>デバイスタイプ</strong>
 <ul>
-<li>実装プラットフォームに基づいて次のいずれかを選択します：
+<li>実装のプラットフォームに基づいて以下のいずれかを選択します：
 <ul>
-<li>デスクトップウェブサイトのインストールには <strong>Standard</strong> を選択します。</li>
-<li><a href="/platforms/ios-swift/">Tealium for iOS</a> または <a href="/platforms/android-kotlin/">Tealium for Android</a> を使用したネイティブモバイルのインストールには <strong>Mobile App</strong> を選択します。</li>
+<li><strong>Standard</strong> デスクトップウェブサイトのインストール用。</li>
+<li><strong>Mobile App</strong> ネイティブモバイルのインストール用。<a href="/platforms/ios-swift/">Tealium for iOS</a>または<a href="/platforms/android-kotlin/">Tealium for Android</a>を使用。</li>
 </ul>
 </li>
 </ul>
 </li>
 <li><strong>レポートスイート</strong>
 <ul>
-<li>必須です。</li>
-<li>動的にレポートスイートを構成するためのマッピングを使用している場合でも、デフォルト値を構成してください。</li>
-<li>使用するデフォルトのレポートスイート。Dynamic Acct Listで構成された値に基づいて変更される場合があります。</li>
-<li>AppMeasurement.jsを参照： <code>s.account</code></li>
+<li>必須。</li>
+<li>レポートスイートを動的に構成するためのマッピングを使用しても、デフォルト値を構成します。</li>
+<li>使用するデフォルトのレポートスイート。動的アカウントリストで構成された値に基づいて変更される場合があります。</li>
+<li>AppMeasurement.jsの参照：<code>s.account</code></li>
 </ul>
 </li>
 <li><strong>サーバー</strong>
 <ul>
-<li>必須です。</li>
-<li>データ収集サーバーです。</li>
-<li>AppMeasurement.jsを参照： <code>s.trackingServer</code></li>
-<li>たとえば、<code>metrics.tealium.com</code> または <code>tealiumclient.122.2o7.net</code> などです。</li>
+<li>必須。</li>
+<li>データ収集サーバー。</li>
+<li>AppMeasurement.jsの参照：<code>s.trackingServer</code></li>
+<li>例：<code>metrics.tealium.com</code>または<code>tealiumclient.122.2o7.net</code></li>
 </ul>
 </li>
-<li><strong>セキュアサーバー</strong>
+<li><strong>サーバーセキュア</strong>
 <ul>
-<li>必須です。</li>
-<li><code>https</code> データ収集サーバーです。</li>
-<li>AppMeasurement.jsを参照： <code>s.trackingServerSecure</code></li>
-<li>たとえば、<code>smetrics.tealium.com</code> または <code>tealiumclient.122.2o7.net</code> などです。</li>
+<li>必須。</li>
+<li><code>https</code>データ収集サーバー。</li>
+<li>AppMeasurement.jsの参照：<code>s.trackingServerSecure</code></li>
+<li>例：<code>smetrics.tealium.com</code>または<code>tealiumclient.122.2o7.net</code></li>
 </ul>
 </li>
-<li><strong>自動イベントシリアル化の検出</strong>
+<li><strong>自動イベントシリアライゼーション検出</strong>
 <ul>
-<li>トリガー文字列内でイベントのシリアル化を自動的に検出します。</li>
-<li>イベントトリガー値にコロン（<code>:</code>）が含まれる場合は、<strong>No</strong> に構成する必要があります。</li>
+<li>トリガー文字列内のイベントシリアライゼーションを自動的に検出します。</li>
+<li>イベントトリガー値にコロン文字（<code>:</code>）が含まれている場合は、<strong>No</strong>に構成する必要があります。</li>
 </ul>
 </li>
 <li><strong>自動リンクトラッキング</strong>
 <ul>
-<li>デフォルト値は <strong>Yes</strong> で、推奨される選択肢です。</li>
-<li><strong>No</strong> に構成する場合、<a href="/ja/iq-tag-management/extensions/extensions-list/link-tracking-extension/">Link Tracking Extension</a> などの他の方法を使用して自動リンクトラッキングを再現する必要があります。</li>
+<li>デフォルト値は<strong>Yes</strong>で、推奨される選択です。</li>
+<li><strong>No</strong>に構成した場合は、<a href="/ja/iq-tag-management/extensions/extensions-list/link-tracking-extension/">リンクトラッキング拡張</a>などの他の方法を使用して自動リンクトラッキングを再現する必要があります。</li>
 </ul>
 </li>
 <li><strong>内部リンクフィルター</strong>
 <ul>
-<li>カンマ区切りのドメインのリストで、内部として分類されるリンククリックがAdobeレポートに出口クリックとして報告されないようにします。</li>
-<li>AppMeasurement.jsを参照： <code>s.linkInternalFilters</code></li>
-<li>たとえば、<code>tealium.com,tealiumiq.com</code> などです。</li>
+<li>内部として分類されたドメインのカンマ区切りリストで、リンククリックがAdobeレポートに対して退出クリックとして報告されないようにするために使用されます。</li>
+<li>AppMeasurement.jsの参照：<code>s.linkInternalFilters</code></li>
+<li>例：<code>tealium.com,tealiumiq.com</code></li>
 </ul>
 </li>
-<li><strong>clearVarsを実行</strong>
+<li><strong>clearVarsの実行</strong>
 <ul>
-<li>デフォルト値は <strong>No</strong> です。</li>
-<li>各トラッキングリクエスト後にグローバルSオブジェクトで構成されたprops、eVars、およびイベントをクリアします。</li>
-<li><strong>Data Mapping</strong> スクリーンでは、<code>clearVars_in_RPTCallback</code> パラメータを使用して <code>registerPostTrack</code> コールバック内で <code>clearVars</code> アクションを割り当てます。</li>
+<li>デフォルト値は<strong>No</strong>です。</li>
+<li>トラッキングリクエストごとにグローバルS-Object内のprops、eVars、およびイベントをクリアします。</li>
+<li><strong>Data Mapping</strong>画面で、<code>clearVars_in_RPTCallback</code>パラメータを使用して、<code>clearVars</code>アクションを<code>registerPostTrack</code>コールバック内で発生するように割り当てます。</li>
 </ul>
 </li>
 <li><strong>S-Object名</strong>
 <ul>
-<li>必須です。</li>
-<li>デフォルト名は <code>s</code> です。</li>
-<li>ページ上で複数のインスタンスのAdobe AnalyticsまたはAppMeasurementを実行している場合は、異なる名前を構成してください。</li>
+<li>必須。</li>
+<li>デフォルト名は<code>s</code>です。</li>
+<li>ページ上でAdobe AnalyticsまたはAppMeasurementの複数のインスタンスを実行している場合は、別の名前を構成します。</li>
 </ul>
 </li>
-<li><strong>名前空間</strong>
+<li><strong>ネームスペース</strong>
 <ul>
-<li>オプションです。</li>
-<li>訪問の名前空間です。</li>
-<li>サーバーとセキュアサーバーが <code>2o7.net</code> で終わる場合にのみ適用されます。</li>
-<li>AppMeasurement.jsを参照： <code>s.visitorNamespace</code></li>
+<li>任意。</li>
+<li>訪問のネームスペース。</li>
+<li>サーバーとサーバーセキュアが<code>2o7.net</code>で終わる場合にのみ、サードパーティのクッキーに適用されます。</li>
+<li>AppMeasurement.jsの参照：<code>s.visitorNamespace</code></li>
 </ul>
 </li>
 <li><strong>Experience Cloud ID</strong>
 <ul>
-<li>オプションです。</li>
-<li>Adobe Experience Cloud IDです。</li>
-<li>バージョン1.3.x以降でサポートされているVisitor APIを使用している場合は、Enterprise Cloud IDをここに入力してください。</li>
-<li><a href="https://marketing.adobe.com/resources/help/en_US/mcvid/mcvid-requirements.html">Adobe Enterprise Cloud ID Service</a>について詳しくはこちらをご覧ください。</li>
+<li>任意。</li>
+<li>あなたのAdobe Experience Cloud ID。</li>
+<li>バージョン1.3.x以降でサポートされているVisitor APIを使用している場合は、ここにエンタープライズクラウドIDを入力します。</li>
+<li>詳細については、<a href="https://experienceleague.adobe.com/en/docs/id-service/using/home">Adobe: Enterprise Cloud ID Service</a>を参照してください。</li>
 </ul>
 </li>
-<li><strong>Advertising Cloud Viewthroughを実行</strong>
+<li><strong>Advertising Cloud Viewthroughの実行</strong>
 <ul>
 <li>バージョン2.17以降でのみ利用可能です。</li>
-<li>Advertising Cloud Viewthroughファイルをロードし、ビュースルーデータを送信します。</li>
+<li>Advertising Cloud Viewthroughファイルをロードし、viewthroughデータを送信します。</li>
 </ul>
 </li>
-<li><strong>Viewthroughインターバル</strong>
+<li><strong>Viewthrough間隔</strong>
 <ul>
-<li>ビュースループスクリプトをロードする間隔（ミリ秒単位）を構成します。</li>
+<li>viewthroughスクリプトをロードする試みの間隔をミリ秒単位で構成します。</li>
 </ul>
 </li>
 <li><strong>Viewthrough最大試行回数</strong>
 <ul>
-<li>ビュースループをロードする前に最大試行回数を構成します。</li>
+<li>viewthroughのロードを試みる最大回数を構成します。これを超えると、アナリティクスのみが実行されます。</li>
 </ul>
 </li>
 <li><strong>タイムスタンプの送信</strong>
 <ul>
-<li>各トラッキングコールと共にタイムスタンプを送信することを許可します。モバイルデバイストラッキングのみに適用されます。</li>
+<li>トラッキングコールごとにタイムスタンプを送信することを許可します。モバイルデバイスのトラッキングのみに適用されます。</li>
+</ul>
+</li>
+<li><strong>リンクパラメータのデコード</strong>
+<ul>
+<li>リンクトラッキング変数を一度エンコードするには<code>false</code>に構成します。</li>
+<li>リンクトラッキング変数を二度エンコードするには<code>true</code>に構成します。</li>
+<li>デフォルト値は<code>false</code>です。</li>
+<li>詳細については、<a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/vars/config-vars/decodelinkparameters">Adobe: <code>decodeLinkParameters</code></a>を参照してください。</li>
 </ul>
 </li>
 </ul>
 <h2 id="ロードルール">ロードルール</h2>
-<p><a href="/ja/iq-tag-management/load-rules/about/">ロードルール</a> は、サイト上のこのタグのインスタンスをいつ、どこにロードするかを決定します。</p>
+<p><a href="/ja/iq-tag-management/load-rules/about/">ロードルール</a>は、このタグのインスタンスをサイトのどこに、いつロードするかを決定します。</p>
 <p>推奨されるロードルール：<strong>すべてのページ</strong>。</p>
 <h2 id="データマッピング">データマッピング</h2>
-<p>マッピングは、<a href="/ja/iq-tag-management/data-layer/about/">データレイヤー変数</a> のデータをベンダータグの対応する変数に送信するプロセスです。変数をタグの宛先にマッピングする方法についての手順は、<a href="/iq-tag-management/data-mappings/manage/">データマッピング</a>を参照してください。</p>
-<p>利用可能なカテゴリは次のとおりです：</p>
-<h3 id="標準">標準</h3>
+<p>マッピングは、<a href="/ja/iq-tag-management/data-layer/about/">データレイヤー変数</a>からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、<a href="/iq-tag-management/data-mappings/manage/">データマッピング</a>を参照してください。</p>
+<p>利用可能なカテゴリーは以下の通りです：</p>
+<h3 id="スタンダード">スタンダード</h3>
 <table>
 <thead>
 <tr>
@@ -568,7 +576,7 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>pageName</code></td>
-<td style="text-align:left"><ul><li>ページ名</li><li>これはページのURLやパス名ではありません。</li><li>代わりに、<code>ホームページ</code> や <code>チェックアウト</code> などのビジネスユーザーが認識できるものにする必要があります。</li></ul></td>
+<td style="text-align:left"><ul><li>ページ名</li><li>これはページのURLやパス名ではありません。</li><li>ビジネスユーザーが認識するもの、例えば<code>ホームページ</code>や<code>チェックアウト</code>などにするべきです。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>channel</code></td>
@@ -576,15 +584,15 @@
 </tr>
 <tr>
 <td style="text-align:left"><code>server</code></td>
-<td style="text-align:left"><ul><li>ウェブページのドメインまたはこの宛先をホストするサーバー。</li></ul></td>
+<td style="text-align:left"><ul><li>ウェブページのドメインまたはページをホストするサーバーをこの宛先に。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>visitorID</code></td>
-<td style="text-align:left"><ul><li>一意の訪問ID。</li><li>最大100文字の英数字。</li><li>ハイフンは含めることはできません。</li></ul></td>
+<td style="text-align:left"><ul><li>ユニークな訪問ID。</li><li>最大100文字の英数字。</li><li>ハイフンを含むことはできません。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>s_account</code></td>
-<td style="text-align:left"><ul><li>レポートスイートのオーバーライド。</li><li>この宛先でマッピングを使用している場合、タグの構成で構成されたレポートスイートがオーバーライドされます。</li></ul></td>
+<td style="text-align:left"><ul><li>レポートスイートのオーバーライド。</li><li>この宛先へのマッピングは、タグ構成で構成されたレポートスイートをオーバーライドします。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>linkTrackVars</code></td>
@@ -596,40 +604,40 @@
 </tr>
 <tr>
 <td style="text-align:left">リンク変数の結合</td>
-<td style="text-align:left"><ul><li>値は <code>true</code> または <code>false</code> です。</li></ul></td>
+<td style="text-align:left"><ul><li>値は<code>true</code>または<code>false</code>。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>charSet</code></td>
 <td style="text-align:left"><ul><li>文字セット</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left"></td>
 <td style="text-align:left"><code>collectHighEntropyUserAgentHits</code></td>
+<td style="text-align:left"><ul><li>ブール値</li><li>高エントロピーユーザーエージェントヒントの収集</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>contextData.myvar</code></td>
-<td style="text-align:left"><ul><li>カスタムコンテキストデータ。</li><li>一般的なコンテキスト変数：<ul><li>定義できるコンテキスト変数の数に制限はありません。</li><li>コンテキスト変数に配置できる文字の制限はありません。</li><li>任意の名前を含めることができます。</li></ul> </li><li>コンテキストデータを使用すると、特定の値を割り当てる変数の名前を定義できます。</li><li>SiteCatalystが通常渡すデータに追加の詳細を提供します。</li><li>必要に応じて実装を標準化するための簡略化された方法です。たとえば、異なるサイトからデータを組み合わせる場合などに使用できます。</li><li>データの組織は任意であり、Tealiumを介してマッピングすることでコンテキストデータ変数を定義できます。</li></ul></td>
+<td style="text-align:left"><ul><li>カスタムコンテキストデータ。</li><li>一般的なコンテキスト変数：<ul><li>定義できるコンテキスト変数の数に制限はありません。</li><li>コンテキスト変数に入れることができる文字に制限はありません。</li><li>任意の名前を含めることができます。</li></ul> </li><li>コンテキストデータを使用すると、特定の値を割り当てる変数の名前を定義できます。</li><li>SiteCatalystが伝統的に渡すものに追加の詳細を提供します。</li><li>異なるサイトからのデータを組み合わせるなど、実装を標準化する能力を簡素化します。</li><li>データの組織化はあなたの裁量に任されており、Tealiumを通じてマッピングすることでコンテキストデータ変数を定義できます。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>contextData.namespace.myvar</code></td>
-<td style="text-align:left"><ul><li>カスタム名前空間を持つカスタムコンテキストデータ。</li><li>変数名の競合を回避するために名前空間の接頭辞を使用します。</li><li>名前空間 <code>a</code> はモバイル実装用に予約されています。</li></ul></td>
+<td style="text-align:left"><ul><li>カスタムネームスペース付きのカスタムコンテキストデータ。</li><li>変数名の競合を避けるためにネームスペースプレフィックスを使用します。</li><li>ネームスペース<code>a</code>はモバイル実装用に予約されています。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>clearVars_in_RPTCallback</code></td>
-<td style="text-align:left"><ul><li>ブール値</li><li> <strong>Run clearVars</strong> を <strong>Yes</strong> に構成する必要があります。</li><li><code>clearVars_in_RPTCallback</code> が <code>true</code> に構成されている場合、<code>clearVars</code> アクションは <code>registerPostTrack</code>（RPT）コールバック内で発生します。 <code>false</code> に構成されている場合、<code>clearVars</code> アクションはRPTコールバックの外で発生します。</li><li>デフォルトは <code>false</code> です。</li></ul></td>
+<td style="text-align:left"><ul><li>ブール値</li><li><strong>Run clearVars</strong>を<strong>Yes</strong>に構成する必要があります。</li><li><code>clearVars_in_RPTCallback</code>が<code>true</code>に構成されている場合、<code>clearVars</code>アクションは<code>registerPostTrack</code>（RPT）コールバック内で発生します。<code>false</code>に構成されている場合、<code>clearVars</code>アクションはRPTコールバックの外で発生します。</li><li>デフォルトは<code>false</code>です。</li></ul></td>
 </tr>
 </tbody>
 </table>
 <h3 id="イベント">イベント</h3>
 <p>イベントのマッピングは、他の宛先のマッピングとは異なります。</p>
-<p>イベントをマッピングするには、次の手順を使用します：</p>
+<p>イベントをマッピングするには、以下の手順を使用します：</p>
 <ol>
-<li><strong>データマッピング</strong> で、<strong>Variables</strong> ドロップダウンリストからイベント変数を選択します。</li>
-<li><strong>Select Destination</strong> をクリックし、<strong>Event Triggers</strong> カテゴリに移動します。</li>
-<li><strong>Value</strong> フィールドに、マッピングする変数の値を入力します。<br>
+<li><strong>データマッピング</strong>の下で、<strong>変数</strong>ドロップダウンリストからイベント変数を選択します。</li>
+<li><strong>宛先を選択</strong>をクリックし、<strong>イベントトリガー</strong>カテゴリに移動します。</li>
+<li><strong>値</strong>フィールドに、マッピングされる変数の値を入力します。<br>
 この変数がトリガー文字列になります。</li>
-<li><strong>Trigger</strong> ドロップダウンリストから、トリガーするイベントを選択します。<br>
-追加の値/トリガーの組み合わせを追加するには、プラスアイコン（<strong>+</strong>）をクリックします。</li>
+<li><strong>トリガー</strong>ドロップダウンリストから、トリガーしたいイベントを選択します。<br>
+プラスアイコン（<strong>+</strong>）をクリックして、追加の値/トリガーの組み合わせを追加することができます。</li>
 </ol>
 <table>
 <thead>
@@ -640,17 +648,17 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Value</td>
+<td style="text-align:left">値</td>
 <td style="text-align:left"><ul><li>割り当てられたイベントをトリガーするマッピングされた変数の値。</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left">Trigger</td>
-<td style="text-align:left"><ul><li>トリガーするイベント。</li><li>次を選択します：  <ul><li>製品ビューの場合は <strong>prodView</strong>。</li><li>新しいショッピングカートの開始/初期化の場合は <strong>scOpen</strong>。</li><li>商品をショッピングカートに追加する場合は <strong>scAdd</strong>。</li><li>ショッピングカートから商品を削除する場合は <strong>scRemove</strong>。</li><li>ショッピングカートを表示する場合は <strong>scView</strong>。</li><li>チェックアウトを開始する場合は <strong>scCheckout</strong>。</li><li>注文を完了する場合は <strong>purchase</strong>。</li><li>カスタムイベントを構成する場合は <strong>event1</strong> から <strong>event1000</strong>。 <br><strong>注：イベント101〜1000はライブラリバージョン1.4以降でのみ使用できます。</strong> <ul><li>SiteCatalystでは、通常値を含まない特定のサイトで発生するイベントを100個使用できます。これらのイベントは、ログインやフォームビューなどの特定のサイトで発生する特定の事柄を通常数えるために使用されます。</li></ul> </li></ul> </li></ul></td>
+<td style="text-align:left">トリガー</td>
+<td style="text-align:left"><ul><li>トリガーするイベント。</li><li>選択:  <ul><li><strong>prodView</strong> 商品の閲覧のため。</li><li><strong>scOpen</strong> 新しいショッピングカートを開く/初期化するため。</li><li><strong>scAdd</strong> ショッピングカートにアイテムを追加するため。</li><li><strong>scRemove</strong> ショッピングカートからアイテムを削除するため。</li><li><strong>scView</strong> ショッピングカートを閲覧するため。</li><li><strong>scCheckout</strong> チェックアウトを開始するため。</li><li><strong>purchase</strong> 注文を完了するため。</li><li><strong>event1</strong> から <strong>event1000</strong> までカスタムイベントを構成するため。 <br><strong>注: イベント101-1000は、ライブラリバージョン1.4以上でのみ利用可能です。</strong> <ul><li>SiteCatalystでは、成功イベントとも呼ばれる100のカスタムイベントを使用できます。</li><li>これらのイベントは、通常、サイト上で特定のことが起こる数をカウントし、通常はログインやフォームの閲覧などの値を含まない。</li></ul> </li></ul> </li></ul></td>
 </tr>
 </tbody>
 </table>
-<h4 id="製品レベルのイベント">製品レベルのイベント</h4>
-<p>SiteCatalystでは、製品固有のアクションを送信するための100の宛先が用意されています。</p>
+<h4 id="商品レベルのイベント">商品レベルのイベント</h4>
+<p>SiteCatalystは、商品特有のアクションを送信するための100の宛先を提供します。</p>
 <table>
 <thead>
 <tr>
@@ -660,13 +668,13 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>PRODUCTS_event1</code> から <code>PRODUCTS_event100</code></td>
-<td style="text-align:left">割り当てる製品イベント。</td>
+<td style="text-align:left"><code>PRODUCTS_event1</code> から <code>PRODUCTS_event100</code> まで</td>
+<td style="text-align:left">割り当てる商品イベント。</td>
 </tr>
 </tbody>
 </table>
 <h4 id="値イベント">値イベント</h4>
-<p>SiteCatalystでは、値イベントを送信するための100の宛先が用意されています。</p>
+<p>SiteCatalystは、値イベントを送信するための100の宛先を提供します。</p>
 <table>
 <thead>
 <tr>
@@ -676,13 +684,13 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>VALUE_event1</code> から <code>VALUE_event100</code></td>
+<td style="text-align:left"><code>VALUE_event1</code> から <code>VALUE_event100</code> まで</td>
 <td style="text-align:left">割り当てる値イベント。</td>
 </tr>
 </tbody>
 </table>
 <h4 id="props">Props</h4>
-<p>SiteCatalystでは、カスタムプロップ（トラフィック変数）を使用できます。</p>
+<p>SiteCatalystでは、カスタムprops（トラフィック変数とも呼ばれる）を使用できます。</p>
 <table>
 <thead>
 <tr>
@@ -692,17 +700,17 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>PRODUCTS_event1</code> から <code>PRODUCTS_event100</code></td>
-<td style="text-align:left"><ul><li>割り当てる製品イベント。</li><li>75以上のプロップはマッピングツールボックスに組み込まれていません。</li></ul></td>
+<td style="text-align:left"><code>PRODUCTS_event1</code> から <code>PRODUCTS_event100</code> まで</td>
+<td style="text-align:left"><ul><li>割り当てる商品イベント。</li><li>Props 75以上はマッピングツールボックスに組み込まれていません。</li></ul></td>
 </tr>
 </tbody>
 </table>
-<p>SiteCatalystでは、カスタムプロップ（トラフィック変数）を使用できます。プロップには、ページビューを超えて持続するデータが含まれており、プロップと他の変数を同じページで構成する必要があります。数値を保持するためにイベントを使用することもできます。</p>
-<p>カスタム宛先をマッピングする手順は次のとおりです。</p>
+<p>SiteCatalystでは、75のカスタムprops（トラフィック変数とも呼ばれる）を使用できます。Propsには、ページビューを超えて持続することを意図していないデータが含まれています。別の変数とpropを相関させたい場合は、両方の変数が同じページで構成されるようにします。製品文字列に渡されるときやシリアライズされるときに特定の数値を保持するためにイベントを使用します。</p>
+<p>カスタム宛先をマッピングするには、次の手順を使用します：</p>
 <ol>
-<li>変数を任意のプロップ宛先にマッピングします。</li>
+<li>任意のprop宛先に変数をマッピングします。</li>
 <li>上部のテキストボックスに、選択した組み込み宛先の代わりにカスタム宛先を入力します。</li>
-<li>他の変数をマッピングするか、<strong>Done</strong> をクリックして終了します。</li>
+<li>他の変数のマッピングを続けるか、<strong>完了</strong>をクリックして終了します。</li>
 </ol>
 <h4 id="evars">eVars</h4>
 <table>
@@ -715,16 +723,16 @@
 <tbody>
 <tr>
 <td style="text-align:left"><code>eVar0</code></td>
-<td style="text-align:left"><ul><li>キャンペーン。</li><li>キャンペーン/プロモーションのトラッキングに使用します</li></ul></td>
+<td style="text-align:left"><ul><li>キャンペーン。</li><li>キャンペーン/プロモーションの追跡のため</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>eVar1</code> から <br> <code>eVar250</code></td>
-<td style="text-align:left"><ul><li>SiteCatalystでは、250のeVar（変換変数とも呼ばれる）を使用できます。</li><li><code>evar76</code> から <code>evar250</code> はライブラリバージョン1.4以降でのみ使用できます。</li><li>eVarには、単一のページビューを超えて持続するデータが含まれており、eVarから他の変数にデータを関連付けることができます。レポートの構成方法によっては、eVarから他の変数にデータを関連付けることができます。内部検索用語、A/Bテスト、キャンペーン/プロモーションのトラッキング、商品カテゴリ、ユーザータイプなどが一般的なeVarの使用例です。</li></ul></td>
+<td style="text-align:left"><code>eVar1</code> から <br> <code>eVar250</code> まで</td>
+<td style="text-align:left"><ul><li>SiteCatalystでは、250のeVars（コンバージョン変数とも呼ばれる）を使用できます。</li><li><code>evar76</code> から <code>evar250</code> までは、ライブラリバージョン1.4以上でのみ利用可能です。</li><li>eVarsには、単一のページビューを超えて持続することを意図したデータが含まれており、Omniture内でレポートを構成する方法により、eVarから別の変数へのデータを相関させるために使用できます。</li><li>eVarsには通常、内部検索用語、A/Bテスト、キャンペーン/プロモーションの追跡、商品カテゴリ、ユーザータイプなどが含まれます。</li></ul></td>
 </tr>
 </tbody>
 </table>
 <h4 id="マーチャンダイジングevars">マーチャンダイジングeVars</h4>
-<p>マーチャンダイジングeVarを使用すると、製品を指定のカテゴリに加えて他の値と関連付けることができます。</p>
+<p>マーチャンダイジングeVarsを使用すると、商品文字列で指定するカテゴリに加えて、商品に何らかの値を関連付けることができます。</p>
 <table>
 <thead>
 <tr>
@@ -735,79 +743,79 @@
 <tbody>
 <tr>
 <td style="text-align:left"><code>eVar0</code></td>
-<td style="text-align:left"><ul><li>キャンペーン。</li><li>キャンペーン/プロモーションのトラッキングに使用します</li></ul></td>
+<td style="text-align:left"><ul><li>キャンペーン。</li><li>キャンペーン/プロモーションの追跡のため</li></ul></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>PRODUCTS_eVar1</code> から <code>PRODUCTS_eVar75</code></td>
-<td style="text-align:left"><ul><li>SiteCatalystでは、250のeVarパラメータ（変換変数とも呼ばれる）を使用できます。</li><li>eVarには、単一のページビューを超えて持続するデータが含まれており、eVarから他の変数にデータを関連付けることができます。レポートの構成方法によっては、eVarから他の変数にデータを関連付けることができます。</ul> eVarには、内部検索用語、A/Bテスト、キャンペーン/プロモーションのトラッキング、商品カテゴリ、ユーザータイプなどが一般的に含まれます。</td>
+<td style="text-align:left"><code>PRODUCTS_eVar1</code> から <code>PRODUCTS_eVar75</code> まで</td>
+<td style="text-align:left"><ul><li>SiteCatalystでは、250のeVarパラメータ（コンバージョン変数とも呼ばれる）を使用できます。</li><li>eVarsには、単一のページビューを超えて持続することを意図したデータが含まれており、Omniture内でレポートを構成する方法により、eVarから別の変数へのデータを相関させるために使用できます。</li></ul> eVarsには通常、内部検索用語、A/Bテスト、キャンペーン/プロモーションの追跡、商品カテゴリ、ユーザータイプなどが含まれます。</td>
 </tr>
 </tbody>
 </table>
 <h4 id="コマース">コマース</h4>
-<p>AppMeasurementタグは、Eコマース対応であり、デフォルトの<a href="/ja/iq-tag-management/extensions/extensions-list/e-commerce-extension/">E-Commerce Extension</a>のマッピングを自動的に使用します。通常、このカテゴリで手動でマッピングする必要はありません。ただし、拡張マッピングまたは所望のEコマース変数が拡張で提供されていない場合には、手動でマッピングする必要があります。</p>
-<p>Eコマース拡張によって、製品文字列などの情報が自動的に入力されます。SiteCatalystは、製品情報、収益、販売数量などの情報を製品文字列でキャプチャします。標準の製品文字列は次のようになります：</p>
+<p>AppMeasurementタグはeコマース対応しているため、デフォルトの<a href="/ja/iq-tag-management/extensions/extensions-list/e-commerce-extension/">E-Commerce Extension</a>マッピングを自動的に使用します。このカテゴリで手動でマッピングする必要は通常ありませんが、拡張マッピングを上書きしたい場合や、希望するeコマース変数が拡張機能に含まれていない場合は必要です。</p>
+<p>E-Commerce拡張機能によって、Product Stringを含むいくつかのSiteCatalyst変数が自動的に入力されます。SiteCatalystはProduct Stringを使用して、商品情報、収益、販売単位、購入に関するその他の情報をキャプチャします。標準的なProduct stringは次のようになります：</p>
 <figure><a class="slb" href="/images/client-side-tags/product-string.png"><img src="/images/client-side-tags/product-string.png"
          alt="product string.png"
          title="product string.png"/>
     </a>
 </figure>
-<h5 id="製品文字列のベストプラクティス">製品文字列のベストプラクティス：</h5>
+<h5 id="商品文字列のベストプラクティス">商品文字列のベストプラクティス：</h5>
 <ul>
-<li>セミコロン <code>;</code> は、製品文字列のほとんどの項目の標準の区切り記号です。</li>
-<li>複数のマーチャンダイジングeVarは、パイプ（<code>|</code>）文字で区切ります。</li>
-<li>複数の製品インスタンスは、カンマ（<code>,</code>）で区切ります。</li>
-<li>合計価格は、単価に数量を掛けたものです。Eコマース拡張の合計価格（<code>_ctotal</code>）は、自動的に製品文字列にマッピングされません。</li>
-<li>SiteCatalystのベストプラクティスでは、カテゴリを空のままにしておくことをお勧めします。カテゴリを後から変更することはできませんが、変換時にカテゴリを構成することができるため、後でカテゴリを変更する必要がない場合は、Tealiumを使用して変換時にカテゴリを構成できます。</li>
+<li>セミコロン <code>;</code> は、Products stringのほとんどのアイテムの標準的なセパレータです。</li>
+<li>複数のマーチャンダイジングeVarsをパイプ (<code>|</code>) 文字で区切ります。</li>
+<li>複数の商品インスタンスをコンマ (<code>,</code>) で区切ります。</li>
+<li>合計価格は、単価に数量を掛けたものです。E-Commerce extensionの合計価格 (<code>_ctotal</code>) 出力は、自動的にProducts stringにマッピングされません。</li>
+<li>SiteCatalystのベストプラクティスは、商品のカテゴリをSiteCatalystで構成した後に変更できないため、カテゴリを空白にすることです。ただし、Tealiumでは、後でカテゴリを変更することが問題でない場合、コンバージョン時にカテゴリを構成することができます。</li>
 </ul>
-<h4 id="eコマースの宛先">Eコマースの宛先</h4>
-<p>次のEコマースの宛先がツールボックスに組み込まれています：</p>
+<h4 id="e-commerce宛先">E-Commerce宛先</h4>
+<p>以下のe-commerce宛先はツールボックスに組み込まれています：</p>
 <table>
 <thead>
 <tr>
 <th style="text-align:left">宛先名</th>
 <th style="text-align:left">説明</th>
-<th style="text-align:left">Eコマース拡張変数</th>
+<th style="text-align:left">Ecommerce Extension Variable</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left">purchaseID</td>
-<td style="text-align:left"><ul><li>この宛先への一意の注文識別子。</li></ul></td>
+<td style="text-align:left"><ul><li>この宛先に固有の注文識別子。</li></ul></td>
 <td style="text-align:left"><code>_corder</code></td>
 </tr>
 <tr>
 <td style="text-align:left">transactionID</td>
-<td style="text-align:left"><ul><li>オフラインデータをオンライントランザクションに関連付けるための識別子。</li></ul></td>
+<td style="text-align:left"><ul><li>オフラインデータをオンライントランザクションに関連付けます。</li></ul></td>
 <td style="text-align:left">N/A</td>
 </tr>
 <tr>
 <td style="text-align:left">state</td>
-<td style="text-align:left"><ul><li>変換で指定された州の名前</li></ul></td>
+<td style="text-align:left"><ul><li>コンバージョンで指定された州の名前</li></ul></td>
 <td style="text-align:left">N/A</td>
 </tr>
 <tr>
 <td style="text-align:left">zip</td>
-<td style="text-align:left"><ul><li>変換で指定された郵便番号</li></ul></td>
+<td style="text-align:left"><ul><li>コンバージョンで指定された郵便番号</li></ul></td>
 <td style="text-align:left">N/A</td>
 </tr>
 <tr>
-<td style="text-align:left">製品ID（配列）</td>
-<td style="text-align:left"><ul><li>製品配列内の各製品の一意のID</li></ul></td>
+<td style="text-align:left">Product IDs (array)</td>
+<td style="text-align:left"><ul><li>商品配列内の各商品の固有ID</li></ul></td>
 <td style="text-align:left"><code>_cprod</code></td>
 </tr>
 <tr>
-<td style="text-align:left">製品カテゴリ（配列）</td>
-<td style="text-align:left"><ul><li>製品配列内の各カテゴリの名前</li></ul></td>
+<td style="text-align:left">Product Categories (array)</td>
+<td style="text-align:left"><ul><li>商品配列内の各カテゴリの名前</li></ul></td>
 <td style="text-align:left"><code>_ccat</code></td>
 </tr>
 <tr>
-<td style="text-align:left">製品数量（配列）</td>
-<td style="text-align:left"><ul><li>製品配列内の各製品の数量</li></ul></td>
+<td style="text-align:left">Product Quantities (array)</td>
+<td style="text-align:left"><ul><li>商品配列内の各商品の数量</li></ul></td>
 <td style="text-align:left"><code>_cquan</code></td>
 </tr>
 <tr>
-<td style="text-align:left">製品価格（配列）</td>
-<td style="text-align:left"><ul><li>製品配列内の各製品の単価</li></ul></td>
+<td style="text-align:left">Product Prices (array)</td>
+<td style="text-align:left"><ul><li>商品配列内の各商品の単価</li></ul></td>
 <td style="text-align:left"><code>_cprice</code></td>
 </tr>
 </tbody>
@@ -823,7 +831,7 @@
 <tbody>
 <tr>
 <td style="text-align:left">リンクトラッキング - doneActionパラメータ</td>
-<td style="text-align:left">（H25のみ）</td>
+<td style="text-align:left">(H25のみ)</td>
 </tr>
 <tr>
 <td style="text-align:left">リスト1</td>
@@ -861,7 +869,7 @@
 <td style="text-align:left">(<code>contextData.a.OSEnvironment</code>)</td>
 </tr>
 <tr>
-<td style="text-align:left">オペレーティングシステムのバージョン</td>
+<td style="text-align:left">オペレーティングシステムバージョン</td>
 <td style="text-align:left">(<code>contextData.a.OSVersion</code>)</td>
 </tr>
 <tr>
@@ -881,11 +889,11 @@
 <td style="text-align:left">(<code>contextData.a.Launches</code>)</td>
 </tr>
 <tr>
-<td style="text-align:left">最初の使用からの日数</td>
+<td style="text-align:left">初回使用からの日数</td>
 <td style="text-align:left">(<code>contextData.a.DaysSinceFirstUse</code>)</td>
 </tr>
 <tr>
-<td style="text-align:left">最後の使用からの日数</td>
+<td style="text-align:left">最終使用からの日数</td>
 <td style="text-align:left">(<code>contextData.a.DaysSinceLastUse</code>)</td>
 </tr>
 <tr>
@@ -909,7 +917,7 @@
 <td style="text-align:left">(<code>contextData.a.PrevSessionLength</code>)</td>
 </tr>
 <tr>
-<td style="text-align:left">時間帯</td>
+<td style="text-align:left">1日の時間</td>
 <td style="text-align:left">(<code>contextData.a.HourOfDay</code>)</td>
 </tr>
 <tr>
@@ -917,32 +925,32 @@
 <td style="text-align:left">(<code>contextData.a.DayOfWeek</code>)</td>
 </tr>
 <tr>
-<td style="text-align:left">最後のアップグレードからの日数</td>
+<td style="text-align:left">最終アップグレードからの日数</td>
 <td style="text-align:left">(<code>contextData.a.DaysSinceLastUpgrade</code>)</td>
 </tr>
 <tr>
-<td style="text-align:left">アップグレード後の起動数</td>
+<td style="text-align:left">アップグレード以降の起動回数</td>
 <td style="text-align:left">(<code>contextData.a.LaunchesSinceUpgrade</code>)</td>
 </tr>
 <tr>
-<td style="text-align:left">デイリーエンゲージユーザー</td>
+<td style="text-align:left">日次エンゲージメントユーザー数</td>
 <td style="text-align:left">(<code>contextData.a.DailyEngUserEvent</code>)</td>
 </tr>
 <tr>
-<td style="text-align:left">マンスリーエンゲージユーザー</td>
+<td style="text-align:left">月次エンゲージメントユーザー数</td>
 <td style="text-align:left">(<code>contextData.a.MonthlyEngUserEvent</code>)</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>disable_wake_track</code></td>
-<td style="text-align:left"><ul><li>ウェイクトラッキングを無効にする</li><li>値は <code>true</code> または <code>false</code> です。</li></ul></td>
+<td style="text-align:left"><ul><li>ウェイクトラッキングの無効化</li><li>値は <code>true</code> または <code>false</code>。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>disable_sleep_track</code></td>
-<td style="text-align:left"><ul><li>スリープトラッキングを無効にする</li><li>値は <code>true</code> または <code>false</code> です。</li></ul></td>
+<td style="text-align:left"><ul><li>スリープトラッキングの無効化</li><li>値は <code>true</code> または <code>false</code>。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>send_timestamp</code></td>
-<td style="text-align:left"><ul><li>タイムスタンプの送信を切り替える</li><li>値は <code>true</code> または <code>false</code> です。</li></ul></td>
+<td style="text-align:left"><ul><li>タイムスタンプ送信トグル</li><li>値は <code>true</code> または <code>false</code>。</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left"><code>timestamp</code></td>
@@ -969,76 +977,262 @@
 </tr>
 </tbody>
 </table>
-<h3 id="イベントシリアル化の検出">イベントシリアル化の検出</h3>
-<p>AppMeasurementタグは、データレイヤーのトリガー値内での<a href="https://marketing.adobe.com/resources/help/en_US/sc/implement/event_serialization_impl.html">イベントシリアル化</a>を自動的に検出します。タグが発火すると、タグはデータマッピングの<strong>Events</strong>タブでマッピングされたトリガー文字列とデータレイヤーのトリガー値を照合し、どちらかのトリガーがコロンを含んでいるかどうかをチェックします。</p>
+<h3 id="イベントシリアライゼーション検出">イベントシリアライゼーション検出</h3>
+<p>AppMeasurementタグは、データレイヤーのトリガー値内の<a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/vars/page-vars/events/event-serialization">イベントシリアライゼーション</a>を自動的に検出します。タグが発火するとき、タグは<strong>イベント</strong>タブでマッピングされたトリガー文字列とデータレイヤー内のトリガー値を比較し、どちらかのトリガーにコロンが含まれているかどうかを確認します。</p>
 <ul>
-<li><strong>イベントシリアル化の検出：オン</strong><br>
-イベントシリアル化の検出がオンになっている場合（デフォルト構成）、タグはコロンの隣にあるトリガー値を検出し、残りの文字列をマッピングされたトリガーと一致させようとします。完全一致がある場合、イベントはシリアル化されます。</li>
-<li><strong>イベントシリアル化の検出：オフ</strong><br>
-イベントシリアル化の検出がオフになっている場合、タグはコロンを検出しません。タグは、マッピングされたトリガーの両方を完全に一致させようとします。トリガー文字列にコロンが含まれる場合、イベントが正しくトリガーされる唯一の方法です。</li>
+<li><strong>イベントシリアライゼーション検出：オン</strong><br>
+イベントシリアライゼーション検出がオンになっている場合（デフォルト構成）、タグはコロンの隣のトリガー値を検出し、残りの文字列をマッピングされたトリガーと一致させようとします。完全に一致する場合、イベントはシリアライズされます。</li>
+<li><strong>イベントシリアライゼーション検出：オフ</strong><br>
+イベントシリアライゼーション検出がオフになっている場合、タグはコロンを検出しません。タグは、両方のトリガー値を全体として一致させようとします。この構成は、マッピングされたトリガー文字列にコロンが含まれている場合に強く推奨されます。イベントシリアライゼーション検出をオフにすることで、コロンを含む値でイベントが正しくトリガーされる唯一の方法です。</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>イベントシリアル化の検出がオンまたはオフであっても、<strong>Event Serialization</strong>タブで直接マッピングされたシリアルは常に優先されます（<a href="#scenario3">シナリオ3の例を参照</a>）。</p>
-<p>次のシナリオは、コロンの有無に応じてトリガー値をどのように解釈するかを理解するのに役立ちます。</p>
-<p class="tip"><i class="fa fa-info-circle"></i>このセクション全体で、「マッピングされたトリガー」とは、タグのデータマッピング構成の値を指し、「データレイヤーのトリガー」とは、ウェブサイトのデータレイヤーで見つかる値を指します。</p>
-<h4 id="シナリオ1データレイヤーのトリガーが-fireevt-でserial-の値が空の場合">シナリオ1：データレイヤーのトリガーが <code>fireEvt</code> で、<code>serial</code> の値が空の場合</h4>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>イベントシリアライゼーション検出がオンでもオフでも、<strong>イベントシリアライゼーション</strong>タブを介して直接マッピングされたシリアルは常に優先されます（<a href="#scenario3">シナリオ3の例</a>を参照）。</p>
+<p>以下のシナリオは、イベントシリアライゼーション検出がコロンを含むトリガー値をどのように解釈するかを理解するのに役立ちます。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>このセクション全体で、「マッピングされたトリガー」はタグのデータマッピング構成の値を、「データレイヤートリガー」はウェブサイトのデータレイヤーに見つかる値を指します。</p>
+<h4 id="例コロンを含まないマッピングされたトリガー">例：コロンを含まないマッピングされたトリガー</h4>
+<p>例えば、ページに<code>fireEvt</code>が含まれているときに<code>prodView</code>イベントをトリガーし、それをシリアライズする場合、次のようにします：</p>
+<ol>
+<li>UDO変数<code>serial</code>をイベントシリアライゼーションタブの<code>SERIAL_prodView</code>にマッピングします。</li>
+<li>UDO変数<code>trigger</code>をイベントの<code>prodView</code>にマッピングします。</li>
+<li><code>fireEvt</code>を<code>prodView</code>のトリガー文字列としてマッピングします。<br>
+<figure><a class="slb" href="/images/client-side-tags/trigger-without-colon.jpeg"><img src="/images/client-side-tags/trigger-without-colon.jpeg"
+         alt="コロンなしのトリガー"
+         title="コロンなしのトリガー"/>
+    </a>
+</figure></li>
+</ol>
+<p>データレイヤーで発生する可能性のあるシナリオは多数あります。</p>
+<h4 id="シナリオ1データレイヤートリガーがfireevtでserial値が空">シナリオ1：データレイヤートリガーが<code>fireEvt</code>で、<code>serial</code>値が空</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_data</span> <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">trigger</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;fireEvt&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">serial</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ul>
-<li><strong>イベントシリアル化の検出：オン</strong><br>
-タグは <code>fireEvt</code> をマッピングされたトリガーと一致させ、ページ上で <code>prodView</code> を正常に発火しますが、シリアル化は行われません。</li>
-<li><strong>イベントシリアル化の検出：オフ</strong><br>
+<li><strong>イベントシリアライゼーション検出：オン</strong><br>
+タグは<code>fireEvt</code>をマッピングされたトリガーと一致させ、ページ上で<code>prodView</code>を成功させますが、シリアライゼーションはありません。</li>
+<li><strong>イベントシリアライゼーション検出：オフ</strong><br>
 上記と同じ結果です。</li>
 </ul>
 <p>成功したネットワークコールは次のようになります：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">events</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;prodView&#34;</span>;
-</span></span></code></pre></div><h4 id="シナリオ2データレイヤーのトリガーが-fireevt123-でserial-の値が空の場合">シナリオ2：データレイヤーのトリガーが <code>fireEvt:123</code> で、<code>serial</code> の値が空の場合</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_data</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">trigger</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;fireEvt:123&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">serial</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><ul>
-<li><strong>イベントシリアル化の検出：オン</strong><br>
-タグは <code>123</code> をシリアル化し、<code>fireEvt</code> をマッピングされたトリガーと一致させ、ページ上で <code>prodView</code> を正常に発火します。<br>
-成功したネットワークコールは次のようになります：</li>
+<figure><a class="slb" href="/images/client-side-tags/scene-1-network-call-.png"><img src="/images/client-side-tags/scene-1-network-call-.png"
+         alt="シーン1ネットワークコール"
+         title="シーン1ネットワークコール"/>
+    </a>
+</figure>
+<h4 id="シナリオ2データレイヤートリガーがfireevt123でserial値が空">シナリオ2：データレイヤートリガーが<code>fireEvt:123</code>で、<code>serial</code>値が空</h4>
+<pre tabindex="0"><code>var utag_data = {
+  trigger: &#34;fireEvt:123&#34;,
+  serial: &#34;&#34;
+}
+</code></pre><ul>
+<li>
+<p><strong>イベントシリアライゼーション検出：オン</strong><br>
+タグは<code>123</code>をシリアライズし、<code>fireEvt</code>をマッピングされたトリガーと一致させ、ページ上で<code>prodView</code>を成功させます。<br>
+<figure><a class="slb" href="/images/client-side-tags/scene-2-network-call.png"><img src="/images/client-side-tags/scene-2-network-call.png"
+         alt="シーン2ネットワークコール"
+         title="シーン2ネットワークコール"/>
+    </a>
+</figure></p>
+</li>
+<li>
+<p><strong>イベントシリアライゼーション検出：オフ</strong><br>
+タグは<code>fireEvt:123</code>をマッピングされたトリガーと一致させることができず、その結果、<code>prodView</code>はページ上で発火しません。</p>
+</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">events</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;prodView:123&#34;</span>;
-</span></span></code></pre></div><ul>
-<li><strong>イベントシリアル化の検出：オフ</strong><br>
-タグは <code>fireEvt:123</code> をマッピングされたトリガーと一致させることができず、<code>prodView</code> はページ上で発火しません。</li>
-</ul>
-<h4 id="scenario3">シナリオ3：データレイヤーのトリガーが <code>fireEvt:123</code> で、<code>serial</code> の値が <code>456</code> の場合</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_data</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">trigger</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;fireEvt:123&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">serial</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;456&#34;</span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><ul>
-<li><strong>イベントシリアル化の検出：オン</strong><br>
-最初に、タグは <code>123</code> をシリアル化し、<code>fireEvt</code> をマッピングされたトリガーと一致させます。その後、<code>prodView</code> が正常に発火し、<code>123</code> の代わりに <code>456</code> でシリアル化されます。<br>
-これは、イベントシリアル化マッピングによって検出されたシリアル値（<code>456</code>）が、イベントシリアル化検出によって検出されたシリアル値（<code>123</code>）よりも優先されるためです。<br>
-成功したネットワークコールは次のようになります：</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">events</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;prodView:456&#34;</span>;
-</span></span></code></pre></div><ul>
-<li><strong>イベントシリアル化の検出：オフ</strong><br>
-タグは <code>fireEvt:123</code> をマッピングされたトリガーと一致させることができず、<code>prodView</code> はページ上で発火しません。</li>
+<h4 id="scenario3">シナリオ3：データレイヤートリガーが<code>fireEvt:123</code>で、シリアル値が<code>456</code></h4>
+<pre tabindex="0"><code>var utag_data = {
+  trigger: &#34;fireEvt:123&#34;,
+  serial: &#34;456&#34;
+}
+</code></pre><ul>
+<li><strong>イベントシリアライゼーション検出：オン</strong><br>
+最初に、タグは<code>123</code>をシリアライズし、<code>fireEvt</code>をマッピングされたトリガーと一致させます。その後、<code>prodView</code>が成功して発火し、<code>123</code>ではなく<code>456</code>でシリアライズされます。<br>
+これは、イベントシリアライゼーションマッピングによって検出されたシリアル値（<code>456</code>）が、イベントシリアライゼーション検出によって検出されたもの（<code>123</code>）よりも優先されるためです。<br>
+<figure><a class="slb" href="/images/client-side-tags/scene-3-network-call.png"><img src="/images/client-side-tags/scene-3-network-call.png"
+         alt="シーン3ネットワークコール.png"
+         title="シーン3ネットワークコール.png"/>
+    </a>
+</figure></li>
+<li><strong>イベントシリアライゼーション検出：オフ</strong><br>
+タグは<code>fireEvt:123</code>をマッピングされたトリガーと一致させることができず、その結果、<code>prodView</code>はページ上で発火しません。</li>
 </ul>
 <h4 id="例コロンを含むマッピングされたトリガー">例：コロンを含むマッピングされたトリガー</h4>
-<p>この例は、シナリオ2と同じ経路をたどりますが、マッピングされたトリガーが <code>fireEvt</code> ではなく <code>fireEvt:123</code> です。</p>
+<p>この例はシナリオ2と同じ経路をたどりますが、マッピングされたトリガーは<code>fireEvt</code>ではなく<code>fireEvt:123</code>です。</p>
+<figure><a class="slb" href="/images/client-side-tags/trigger-with-colon.png"><img src="/images/client-side-tags/trigger-with-colon.png"
+         alt="コロン付きトリガー.png"
+         title="コロン付きトリガー.png"/>
+    </a>
+</figure>
+<h4 id="シナリオデータレイヤートリガーがfireevt123">シナリオ：データレイヤートリガーが<code>fireEvt:123</code></h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">utag_data</span> <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">trigger</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;fireEvt:123&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">serial</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ul>
-<li><strong>イベントシリアル化の検出：オン</strong><br>
-タグは <code>123</code> をシリアル化しますが、マッピングされたトリガーの <code>fireEvt</code> と一致させることができません。そのため、<code>prodView</code> はページ上で発火しません。</li>
-<li><strong>イベントシリアル化の検出：オフ</strong><br>
-タグは <code>fireEvt:123</code> をマッピングされたトリガーと一致させ、<code>prodView</code> が正常に発火します。このため、文字列にコロンが含まれる場合は、イベントシリアル化の検出をオフにすることをお勧めします。</li>
+<li><strong>イベントシリアライゼーション検出：オン</strong><br>
+タグは<code>123</code>をシリアライズしますが、<code>fireEvt</code>をマッピングされたトリガーと一致させることができず、その結果、<code>prodView</code>はページ上で発火しません。</li>
+<li><strong>イベントシリアライゼーション検出：オフ</strong><br>
+タグは<code>fireEvt:123</code>をマッピングされたトリガーと一致させ、<code>prodView</code>が成功して発火します。このため、文字列にコロンが含まれている場合は、イベントシリアライゼーション検出をオフにすることを推奨します。</li>
 </ul>
 <h2 id="高度な構成">高度な構成</h2>
 <h3 id="seventsの構成">s.eventsの構成</h3>
-<p>Tealiumでは、<code>u.addEvent()</code> 関数を使用して <code>s.event</code> 文字列を構成するためのサポートを提供しています。このメソッドは、新しい値を <code>s.events</code> の末尾に追加する</p>
+<p>Tealiumは、<code>s.event</code>文字列を構成するための関数<code>u.addEvent()</code>を提供しています。このメソッドは、新しい値を<code>s.events</code>の末尾に追加するため、すべての以前に構成されたイベントを保持したまま、必要に応じて別のイベントを追加することができます。このメソッドを使用するには、構成に<code>sc_events</code>という名前の変数を追加します。</p>
+<p><code>s.events</code>を<code>u.addEvent</code>を使用してカスタマイズするには、次の手順を使用します：</p>
+<ol>
+<li><a href="/ja/iq-tag-management/extensions/extensions-list/set-data-values-extension/">Set Data Values</a>拡張機能を追加します。</li>
+<li><strong>Scope</strong>をAdobe Analyticsタグに構成します。</li>
+<li><strong>Set</strong>メニューから<strong>sc_events</strong>を選択します。</li>
+<li><strong>To</strong>メニューから<strong>JS Code</strong>を選択します。</li>
+<li>テキストフィールドに、次のように入力します：<code>u.addEvent(&quot;CUSTOM_EVENT&quot;)</code><br>
+ここで、<code>CUSTOM_EVENT</code>は<code>s.events </code>文字列に追加したいイベント、例えば<code>event10</code>です。</li>
+<li>一度に複数のイベントを追加するには、次のように<code>u.addEvent</code>に配列を渡します：<br>
+<code>u.addEvent([&quot;event1&quot;,&quot;event2&quot;,&quot;scView&quot;]);</code></li>
+</ol>
+<p>関数に渡される文字列(s)内に直接値を追加するには：<code>u.addEvent(['event500=500', 'event501=' + b.demo_event_value]);</code></p>
+<p>関数に渡される文字列(s)内に直接シリアライゼーションを追加するには：<code>u.addEvent(&quot;event78:&quot; + b.booking_reference);</code></p>
+<h2 id="サポートされているバージョン">サポートされているバージョン</h2>
+<p>以下のAppMeasurement for JavaScriptのコードバージョンがサポートされています：</p>
+<ul>
+<li>2.26.0 バンドル最適化版</li>
+<li>2.26.0</li>
+<li>2.25.0</li>
+<li>2.24.0</li>
+<li>2.23.0</li>
+<li>2.22.4</li>
+<li>2.22.3</li>
+<li>2.22.0</li>
+<li>2.21.0</li>
+<li>2.20.0</li>
+<li>2.18.0</li>
+<li>2.17.0</li>
+<li>2.15.0</li>
+<li>2.14.0</li>
+<li>2.12.0</li>
+<li>2.9.0</li>
+<li>2.8.2</li>
+<li>2.7.0</li>
+<li>2.6.0</li>
+<li>2.4.0</li>
+<li>2.3.0</li>
+<li>2.1.0</li>
+<li>1.8.0</li>
+<li>1.6.3</li>
+<li>1.6.1</li>
+<li>1.6.0</li>
+<li>1.5.3</li>
+<li>1.5.2</li>
+<li>1.5.1</li>
+<li>1.4.1</li>
+<li>1.3.2</li>
+<li>1.2.2</li>
+<li>1.2.1</li>
+<li>1.0.1</li>
+</ul>
+<h3 id="リリースノート">リリースノート</h3>
+<h5 id="v2230-リリース日-9月23日">v2.23.0 リリース日 9月23日</h5>
+<ul>
+<li>高エントロピーユーザーエージェント情報のサポートを追加しました。</li>
+</ul>
+<h5 id="v2223-リリース日-2021年12月21日">v2.22.3 リリース日 2021年12月21日</h5>
+<h5 id="v2200-リリース日-2020年3月5日">v2.20.0 リリース日 2020年3月5日</h5>
+<ul>
+<li>IE検出を更新し、JSLint警告を抑制してセキュリティ関連の問題を修正しました。</li>
+</ul>
+<h5 id="v2180-リリース日2020年2月13日">v2.18.0 リリース日：2020年2月13日</h5>
+<ul>
+<li>AppMeasurementは、<code>writeSecureCookies</code>変数を構成することで、クッキーにSecure属性を強制的に含めることができるようになりました。この変数をサポートするためには、クライアントのウェブサイト全体がHTTPSを使用して安全に提供されている必要があります。</li>
+</ul>
+<h5 id="v2170-リリース日2019年8月23日">v2.17.0 リリース日：2019年8月23日</h5>
+<ul>
+<li>Baiduクエリ文字列の並べ替えに対応しました。</li>
+<li>オプトイン待ちでキューに入れられたヒットで古い訪問値が発生する問題を修正しました。</li>
+</ul>
+<h5 id="v2150-リリース日2019年7月15日">v2.15.0 リリース日：2019年7月15日</h5>
+<ul>
+<li>
+<p>Activity Map拡張機能にActivityMapスクロールリーチトラッキングを追加しました（AN-172949）</p>
+</li>
+<li>
+<p>DIL 9.2をAppMeasurementに追加しました（AN-182472）</p>
+</li>
+</ul>
+<h5 id="v290-リリース日2018年5月24日">v2.9.0 リリース日：2018年5月24日</h5>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Experience Cloud ID Serviceを使用する顧客には、Visitor API 3.0以上が必要です。Adobeは、at.js、AppMeasurement.jsなどの関連コードライブラリが更新されたときに、最新のVisitor APIバージョンにアップグレードすることを推奨します。</p>
+<ul>
+<li>AppMeasurementを更新して、IDのリクエストに更新されたVisitorインターフェースを使用するようにしました。（AN-151483）</li>
+<li>リンクトラッキングがオフになった後にリンクトラッキングクッキーが書き込まれる問題を修正しました。（AN-156332）</li>
+<li><code>registerPreTrackCallback</code>と<code>registerPostTrackCallback</code>が複数回呼び出されるとコールバック関数のシグネチャが壊れる問題を修正しました。（AN-158566）</li>
+</ul>
+<h5 id="v282-リリース日2018年4月12日">v2.8.2 リリース日：2018年4月12日</h5>
+<ul>
+<li>AppMeasurementを更新して、IDのリクエストに更新されたvisitorインターフェースを使用するようにしました。</li>
+<li>リンクトラッキングクッキーの問題を修正しました。</li>
+<li>AppMeasurementのデフォルトのクッキー寿命を5年から2年に短縮しました。</li>
+<li>Visitor API（別名 Enterprise Cloud ID Service）バージョン3.1.2をサポートします。</li>
+</ul>
+<h5 id="v270-リリース日2018年1月18日">v2.7.0 リリース日：2018年1月18日</h5>
+<ul>
+<li>Internet Explorer（IE）バージョン6から9のサポートを非推奨としました。</li>
+<li>DIL v7.00を含みます。</li>
+<li>Visitor API（別名 Marketing Cloud ID Service）バージョン3.0をサポートします。</li>
+</ul>
+<h5 id="v260-リリース日2017年11月9日">v2.6.0 リリース日：2017年11月9日</h5>
+<ul>
+<li><code>s_gl</code>が呼び出されたときにAppMeasurementライブラリが常に正しいアカウントの組み合わせを構成しない問題を修正しました。（AN-152153）</li>
+<li><code>dil.js</code> 6.12（Audience Managerモジュール）を含みます。</li>
+<li>Visitor API 2.5.0をサポートします。</li>
+</ul>
+<h5 id="v230-リリース日2017年8月22日">v2.3.0 リリース日：2017年8月22日</h5>
+<ul>
+<li><code>s.Util.getQueryParam</code>が<code>#</code>をキャプチャするバグを修正しました。</li>
+<li>最新バージョンの<code>dil.js</code>（v6.10）を含みます。</li>
+<li>複数のAppMeasurementインスタンス化順序をサポートします。</li>
+<li>Visitor API（別名 Marketing Cloud ID Service）バージョン2.2.0をサポートします。</li>
+</ul>
+<h5 id="v210-リリース日2017年5月11日">v2.1.0 リリース日：2017年5月11日</h5>
+<ul>
+<li>AppMeasurement JavaScript 2.1.0をサポートします。</li>
+<li>Marketing Cloud ID Serviceバージョン2.1.0をサポートします。</li>
+<li>最新バージョンの<code>dil.js</code>を含みます。</li>
+<li>ページリファラーを上書きする<code>adobe_mc_ref</code>パラメータのサポートを追加しました。</li>
+<li><code>mcorgid</code>パラメータを追加しました。</li>
+<li><code>cp</code>（customerPerspective）パラメータを追加しました。</li>
+</ul>
+<h5 id="v180-リリース日2017年3月10日">v1.8.0 リリース日：2017年3月10日</h5>
+<ul>
+<li>AppMeasurement JavaScript 1.8.0をサポートします。</li>
+<li>Marketing Cloud ID Serviceバージョン2.0.0をサポートします。</li>
+<li>2つのコールフックを追加しました：<a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/vars/functions/registerpretrackcallback"><code>s.registerPreTrackCallback</code></a>と<a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/vars/functions/registerposttrackcallback"><code>s.registerPostTrackCallback</code></a>。</li>
+</ul>
+<h5 id="v163-リリース日2016年8月23日">v1.6.3 リリース日：2016年8月23日</h5>
+<ul>
+<li>AppMeasurementがリクエスト接続を早期に終了する問題を修正しました。</li>
+<li>AppMeasurementがVisitor APIの間違った難読化メソッドを呼び出す問題を修正しました。</li>
+<li>JavaScriptエラー：&ldquo;Attribute only valid on v:image&quot;を引き起こす問題を修正しました。</li>
+<li>Marketing Cloud IDサポート（別名 Visitor API）を新しいタグ、Marketing Cloud ID Service Tagに分離しました。</li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Marketing Cloud ID Service Tagは、プロファイル内のすべての他のAdobeタグ（AppMeasurementを含む）よりも先にロードする必要があります。それがないと、訪問のトラッキングの整合性が失われます。タグを最初にロードするには、<a href="/ja/iq-tag-management/tags/advanced-settings/">バンドル構成</a>をすべてのページで有効にし、他のAdobeタグよりも先にロードします。</p>
+<p><a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/appmeasurement-updates">完全なAdobe AppMeasurementリリースノート</a>を見る。</p>
+<h5 id="v161-リリース日2016年7月28日">v1.6.1 リリース日：2016年7月28日</h5>
+<p>以下の更新は、AppMeasurementのイベント、値イベント、およびイベントシリアライゼーションに影響します：</p>
+<ul>
+<li>データマッピングツールボックスに新しいイベントシリアライゼーションマッピングタブを追加しました。</li>
+<li>AppMeasurementタグ構成に、イベントシリアライゼーションのON/OFFを切り替える新しいドロップダウンリストを追加しました。</li>
+</ul>
+<h5 id="v161-リリース日2016年7月14日">v1.6.1 リリース日：2016年7月14日</h5>
+<ul>
+<li>新しいバージョン1.6.1を追加しました。</li>
+<li>Visitor APIバージョン1.5.7と1.5.6をサポートします。</li>
+<li>Firefoxでのリンククリックトラッキングの処理方法を改善しました。</li>
+</ul>
+<p><a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/appmeasurement-updates">完全なAdobe AppMeasurementリリースノート</a>を見る。</p>
+<h2 id="ベンダー文書">ベンダー文書</h2>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/js/overview">Adobe Experience League：JavaScript用AppMeasurementについて</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics/implementation/appmeasurement-updates">Adobe Experience League：AppMeasurementリリース履歴</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics/analyze/activity-map/getting-started">Adobe Experience League：アクティビティマップの有効化</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics/components/metrics/overview">Adobe Experience League：モバイルメトリクスの理解</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/analytics/components/metrics/lifecycle-metrics">Adobe Experience League：モバイルメトリクスリファレンス</a></li>
+</ul>
 
 </div>
 
@@ -1099,7 +1293,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2022年August月12日
+          <p>最終更新日 ::  2024年October月2日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1117,11 +1311,14 @@
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグの構成</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%89%E3%83%AB%E3%83%BC%E3%83%AB" href="javascript:void(0)">ロードルール</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データマッピング</a></li>
-              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%99%E6%BA%96" href="javascript:void(0)">標準</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%80%E3%83%BC%E3%83%89" href="javascript:void(0)">スタンダード</a></li>
               <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">イベント</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%AB%E5%8C%96%E3%81%AE%E6%A4%9C%E5%87%BA" href="javascript:void(0)">イベントシリアル化の検出</a></li>
+              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E6%A4%9C%E5%87%BA" href="javascript:void(0)">イベントシリアライゼーション検出</a></li>
               </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%AB%98%E5%BA%A6%E3%81%AA%E6%A7%8B%E6%88%90" href="javascript:void(0)">高度な構成</a></li>
               <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sevents%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">s.eventsの構成</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3" href="javascript:void(0)">サポートされているバージョン</a></li>
+              <ul class="toc-h3"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%88" href="javascript:void(0)">リリースノート</a></li>
+              </ul><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%E6%96%87%E6%9B%B8" href="javascript:void(0)">ベンダー文書</a></li>
               </nav>
   </aside></nav>
 
