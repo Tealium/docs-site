@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>プラットフォームリリースノート | Tealiumドキュメント</title>
+    <title>プラットフォームリリースノート |  Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -12,8 +12,6 @@
     
     <meta NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
     
-    
-    <link rel="alternate" hreflang="en" href="https://docs.tealium.com/platforms/release-notes/">
     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
     <script>
       history.scrollRestoration = "manual";
@@ -56,16 +54,6 @@
 </svg>
 </a>
       </li>
-        
-      <li class="f5 dib mr4">
-      
-        
-          <a href="/platforms/release-notes/" class="dim link mid-gray">English</a>
-        
-      
-        
-      
-      </li>
             
     </ul>
   </div>
@@ -74,7 +62,7 @@
     <main role="main" class="content-with-sidebar pb0-ns">
       
 
-<div class="w-100 pr4">
+<div class="release-notes w-100 pr4">
 <div class="flex">
 
     
@@ -127,9 +115,18 @@
 </div>
     
 
-    <article id="main-content" class="order-1 overflow-auto max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
+    <article id="main-content" class="order-1 overflow-auto vh-100 max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
       <div class="release-notes ph4">
         <header class="flex-none w-100">
+        <nav id="breadcrumb">
+        <ul class="nav">
+          <li class="mr1 f7 lvl0"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/">家</a>&nbsp;>&nbsp;</li>
+          
+          <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/platforms/">プラットフォーム</a>&nbsp;>&nbsp;</li>
+          
+          <li class="mr1 f7 lvl2"><a class="f6 mb0 link mid-gray dim mr1" href="/ja/platforms/release-notes/">プラットフォームリリースノート</a></li>
+        </ul>
+        </nav>
         <h1 class="f2 f2-l fw6 m0 mt3 pb3">プラットフォームリリースノート</h1>
         </header>
 
@@ -137,261 +134,223 @@
           
         </div>
 
-        <div class="mv2 flex flex-row-reverse w-100">
-          <div class="toggle-wrapper" id="tag-buttons">
-            <div class="toggle-inner">
-              <button tabindex="0" class="toggle-selected toggle-button" data-sortby="title" data-order="asc">
-                <div tabindex="-1" class="toggle-button-inner">トピック別</div>
-              </button>
-            </div>
-            <div class="toggle-inner">
-              <button tabindex="0" class="toggle-button" data-sortby="date" data-order="desc">
-                <div tabindex="-1" class="toggle-button-inner">日付順</div>
-              </button>
-            </div>
-          </div>
-        </div>
-
- <div class="prose topic nested-links" id="prose">
+        <div class="prose topic nested-links" id="prose"><div class="multi-select-wrapper bb b--light mb4">
+<div class="multi-select">
+    <div class="dropdown">
+        <button class="dropdown-toggle">絞り込み条件<span class="chevron">&#9662;</span></button>
+        <div class="dropdown-menu">
+        
+            <label class="bt b--light-gray"><span>Category</span></label>
+            <label class="bt b--light-gray"><span>Feature</span></label></div>
+    </div>
+</div>
+<div class="selected-filter">
     
-    
-        
-        
-          
-        
+</div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const filterOptions = {};
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    const selectedTagsContainer = document.querySelector('.selected-filter');
+
+    if(dropdownToggle && dropdownMenu && selectedTagsContainer) {
+
+        dropdownToggle.addEventListener('click', (event) => {
+            dropdownMenu.parentElement.classList.toggle('open');
+            event.stopPropagation(); 
+        });
 
         
-        <div class="release-note-item" data-title=".NET MAUI用Tealiumリリースノート" data-date="2024-02-14">
-          
-          
+        document.addEventListener('click', (event) => {
+            if (!dropdownMenu.contains(event.target)) {
+                dropdownMenu.parentElement.classList.remove('open');
+            }
+        });
 
-          <h2 class="rn-section" id="net-maui用tealiumリリースノート"><a href="/ja/platforms/dotnet-maui/release-notes/">.NET MAUI用Tealiumリリースノート</a></h2>
-          <div class="f3"id="101-2024年2月">1.0.1 (2024年2月)</div>
-<ul>
-<li>NuGetパッケージングへの更新。パッケージング形式の変更により、バージョン1.0.0のユーザーは問題が発生する可能性があります。</li>
-</ul>
+        
+        dropdownMenu.addEventListener('change', (event) => {
+            const checkbox = event.target;
+            const filterKey = checkbox.value;
+            const label = checkbox.parentElement.textContent.trim();
+
+            const obj = filterOptions[filterKey];
+            if(obj && obj['label']) {
+                if (checkbox.checked) {
+                    addTag(filterKey);
+                    addFilterToURL(filterKey);
+                } else {
+                    removeTag(filterKey);
+                    removeFilterFromURL(filterKey);
+                }
+            }
+
+            
+            filterContent();
+        });
+
+        
+        function addTag(filterKey) {
+            obj = filterOptions[filterKey];
+            if(obj && obj['label']) {
+                const label = obj['label'];
+                const className = obj['class'];
+
+                const tag = document.createElement('div');
+                tag.className = 'badge';
+                if(className) {
+                    tag.className = [tag.className, className].join(' ');                        
+                }
+                tag.dataset.value = filterKey;
+                tag.innerHTML = `<span class="badge-label">${label}</span> <span class="badge-remove">&times;</span>`;
+                selectedTagsContainer.appendChild(tag);
+
+                tag.querySelector('.badge-remove').addEventListener('click', () => {
+                    removeTag(filterKey);
+                    document.querySelector(`input[value="${filterKey}"]`).checked = false;
+                    filterContent();
+                    removeFilterFromURL(filterKey);
+                });
+            }
+        }
+
+        
+        function addFilterToURL(filterOption) {
+            const url = new URL(window.location.href);
+            const params = new URLSearchParams(url.search);
+            
+            
+            let currentFilters = params.get('filter') ? params.get('filter').split(',') : [];
+            
+            
+            if (!currentFilters.includes(filterOption)) {
+                currentFilters.push(filterOption);
+            }
+
+            
+            params.set('filter', currentFilters.join(','));
+
+            
+            window.history.pushState({}, '', `${url.pathname}?${params.toString()}`);
+        }
+
+        
+        function removeFilterFromURL(filterOption) {
+            const url = new URL(window.location.href);
+            const params = new URLSearchParams(url.search);
+            
+            
+            let currentFilters = params.get('filter') ? params.get('filter').split(',') : [];
+
+            
+            currentFilters = currentFilters.filter(item => item !== filterOption);
+
+            if (currentFilters.length > 0) {
+                
+                params.set('filter', currentFilters.join(','));
+            } else {
+                
+                params.delete('filter');
+            }
+
+            
+            window.history.pushState({}, '', `${url.pathname}?${params.toString()}`);
+        }
+
+        
+        function removeTag(filterKey) {
+            const tagToRemove = document.querySelector(`.badge[data-value="${filterKey}"]`);
+            if (tagToRemove) {
+                tagToRemove.remove();
+            }
+        }
+
+        function filterContent() {
+            const selectedValues = Array.from(selectedTagsContainer.querySelectorAll('.badge'))
+                .map(tag => tag.dataset.value);
+            const rnItems = document.querySelectorAll('.release-note-item');
+
+            if(selectedValues.length > 0) {
+                
+                for(let i=0; i < rnItems.length; i++) {
+                    if(!selectedValues.includes(rnItems[i].getAttribute("data-rn-category"))
+                        && !selectedValues.includes(rnItems[i].getAttribute("data-rn-feature"))) {
+                        rnItems[i].classList.add("dn");
+                    }
+                    else {
+                        rnItems[i].classList.remove("dn");
+                    }
+                }
+            }
+            else {
+                
+                for(let i=0; i < rnItems.length; i++) {
+                    rnItems[i].classList.remove("dn");
+                }
+            }
+
+            
+            
+            
+            const headers = document.querySelectorAll('h2.rn-date-separator');
+            headers.forEach(header => {
+                
+                let nextElement = header.nextElementSibling;
+
+                
+                let visibleSiblingCount = 0;
+                while (nextElement && nextElement.tagName === 'DIV' && nextElement.classList.contains("release-note-item")) {
+                    if(nextElement.checkVisibility()) {
+                        visibleSiblingCount++;
+                    }
+                      
+                    nextElement = nextElement.nextElementSibling;
+                }
+
+                
+                const tocID = header.getAttribute("id");
+                const tocLink = document.querySelector(`#TableOfContents ul > li > a[data-id="#${tocID}"]`);
+                if(visibleSiblingCount == 0) {
+                    
+                    header.classList.add("dn");
+                    if(tocLink) {
+                        tocLink.parentElement.classList.add("dn");
+                        tocLink.parentElement.classList.remove("db");
+
+                    }
+                }
+                else {
+                    
+                    header.classList.remove("dn");
+                    if(tocLink) {
+                        tocLink.parentElement.classList.remove("dn");
+                        tocLink.parentElement.classList.add("db");
+                    }        
+                }
+            });
+        }
+
+        
+        const url = new URL(window.location.href);
+        const params = new URLSearchParams(url.search);
+        const filterValue = params.get('filter');
+        if(filterValue) {
+            filterValue.split(',').map((tag) => {
+                addTag(tag.trim());
+                document.querySelector(`input[value="${tag}"]`).checked = true;
+
+            });
+            filterContent();
+        }
+    }
+});
+</script>
           </div>
-        
-        <div class="release-note-item" data-title="Cordova用Tealiumリリースノート" data-date="2024-03-27">
-          
-          
 
-          <h2 class="rn-section" id="cordova用tealiumリリースノート"><a href="/ja/platforms/cordova/release-notes/">Cordova用Tealiumリリースノート</a></h2>
-          <div class="f3"id="231-2023年4月">2.3.1 (2023年4月)</div>
-<ul>
-<li>Ionicプラグインからの<code>Map</code>タイプの処理。必要に応じて<code>Map</code>タイプは<code>Object</code>に変換されます。</li>
-</ul>
-          </div>
-        
-        <div class="release-note-item" data-title="Flutter用Tealiumリリースノート" data-date="2024-03-20">
-          
-          
-
-          <h2 class="rn-section" id="flutter用tealiumリリースノート"><a href="/ja/platforms/flutter/release-notes/">Flutter用Tealiumリリースノート</a></h2>
-          <div class="f3"id="250-2024年3月">2.5.0 (2024年3月)</div>
-<ul>
-<li>XCode 15をサポートするためにiOSの依存関係を更新しました。</li>
-<li>最小のiOSデプロイメントターゲットを12.0に引き上げました。</li>
-<li>Androidの依存関係を最新バージョンに更新しました。</li>
-</ul>
-          </div>
-        
-        <div class="release-note-item" data-title="Java用Tealiumリリースノート" data-date="2024-06-26">
-          
-          
-
-          <h2 class="rn-section" id="java用tealiumリリースノート"><a href="/ja/platforms/java/release-notes/">Java用Tealiumリリースノート</a></h2>
-          <div class="f3"id="140-2024年6月">1.4.0 (2024年6月)</div>
-<ul>
-<li>追加の依存関係なしで新しいJDKをサポートするために、不要な参照<code>javax.xml.ws.http.HTTPException</code>を削除しました。</li>
-</ul>
-          </div>
-        
-        <div class="release-note-item" data-title="Nativescript用Tealiumリリースノート" data-date="2022-07-11">
-          
-          
-
-          <h2 class="rn-section" id="nativescript用tealiumリリースノート"><a href="/ja/platforms/nativescript/release-notes/">Nativescript用Tealiumリリースノート</a></h2>
-          <div class="f3"id="114-2022年7月">1.1.4 (2022年7月)</div>
-<ul>
-<li>Kotlinの依存関係を1.4.1にアップグレード</li>
-<li>Swiftの依存関係を2.6.4にアップグレード</li>
-<li>設定に<a href="/platforms/nativescript/api/tealium-config/#overridecollectprofile"><code>overrideCollectProfile</code></a>、<a href="/platforms/nativescript/api/tealium-config/#overridecollectdomain"><code>overrideCollectDomain</code></a>、および<a href="/platforms/nativescript/api/tealium-config/#sessioncountingenabled"><code>sessionCountingEnabled</code></a>キーを追加</li>
-<li>Tealiumインスタンスに<a href="/platforms/nativescript/api/tealium/#gathertrackdata"><code>gatherTrackData</code></a>メソッドを追加</li>
-</ul>
-          </div>
-        
-        <div class="release-note-item" data-title="React Native用Tealiumリリースノート" data-date="2023-11-16">
-          
-          
-
-          <h2 class="rn-section" id="react-native用tealiumリリースノート"><a href="/ja/platforms/react-native/release-notes/">React Native用Tealiumリリースノート</a></h2>
-          <div class="f3"id="232-2023年11月">2.3.2 (2023年11月)</div>
-<ul>
-<li>親プロジェクトからのKotlinバージョンの使用を許可するために、Androidの<code>build.gradle</code>ファイルを更新しました。</li>
-</ul>
-          </div>
-        
-        <div class="release-note-item" data-title="Tealium for Android (Java) リリースノート" data-date="2023-07-26">
-          
-          
-
-          <h2 class="rn-section" id="tealium-for-android-java-リリースノート"><a href="/ja/platforms/android-java/release-notes/">Tealium for Android (Java) リリースノート</a></h2>
-          <p>Tealium for Androidの変更点の完全なリストについては、<a href="https://github.com/Tealium/tealium-android/blob/master/CHANGELOG.md">GitHubの変更ログ</a>を参照してください。</p>
-<div class="f3"id="596-2023年7月">5.9.6 (2023年7月)</div>
-<ul>
-<li>Gradleの更新、およびAndroidの<code>compileSdkVersion</code>と<code>targetSdkVersion</code>がすべてのモジュールでバージョン33に増加。</li>
-</ul>
-          </div>
-        
-        <div class="release-note-item" data-title="Tealium for Android (Kotlin) リリースノート" data-date="2024-05-15">
-          
-          
-
-          <h2 class="rn-section" id="tealium-for-android-kotlin-リリースノート"><a href="/ja/platforms/android-kotlin/release-notes/">Tealium for Android (Kotlin) リリースノート</a></h2>
-          <p>Tealium for Android (Kotlin) の変更の完全なリストについては、<a href="https://github.com/Tealium/tealium-kotlin/blob/master/CHANGELOG.md">GitHubの変更ログ</a>を参照してください。</p>
-<div class="f3"id="160-2024年5月15日">1.6.0 (2024年5月15日)</div>
-<ul>
-<li>Core 1.6.0
-<ul>
-<li><code>HttpClient</code>は、再試行がサポートされるレスポンスコードのみでのみ再試行をサポートするようになりました。</li>
-<li>修正: <code>ResourceRetriever</code>のリフレッシュ間隔がライブラリの設定の取得に頻繁に影響を与える問題を修正しました。</li>
-<li>修正: 欠落していた<code>ResourceEntity</code>クラスを復元しました。</li>
-</ul>
-</li>
-<li>RemoteCommandDispatcher 1.4.0
-<ul>
-<li>リモートURL構成でRemoteCommandを追加する場合、最初の起動時に<code>{command id}.json</code>という名前の<code>Asset</code>から読み込むようにフォールバックするようになりました。
-<ul>
-<li>ファイル名も指定されている場合は、その名前を使用して<code>Asset</code>を検索します。</li>
-<li>新しいリモートコマンドを追加する際に<code>filename</code>パラメータの<code>.json</code>拡張子を省略しても安全ですが、実際のファイルの<code>.json</code>拡張子は引き続き存在している必要があります。</li>
-<li>修正: リフレッシュ間隔が守られていなかった問題を修正しました。</li>
-</ul>
-</li>
-<li><code>com.tealium:kotlin-core</code>のモジュール依存関係の最小バージョンを<code>1.6.0</code>に更新しました。</li>
-</ul>
-</li>
-<li>TagManagementDispatcher 1.2.2
-<ul>
-<li>最新のIQ設定が利用可能であることを確認するために、新しいセッションでWebビューを更新します。</li>
-</ul>
-</li>
-</ul>
-          </div>
-        
-        <div class="release-note-item" data-title="Tealium for iOS（Swift）リリースノート" data-date="2024-05-01">
-          
-          
-
-          <h2 class="rn-section" id="tealium-for-iosswiftリリースノート"><a href="/ja/platforms/ios-swift/release-notes/">Tealium for iOS（Swift）リリースノート</a></h2>
-          <div class="f3"id="21302024年5月1日">2.13.0（2024年5月1日）</div>
-<p><strong>中程度の影響の変更</strong></p>
-<ul>
-<li>ローカルの<code>RemoteCommands</code>を改善し、拡張子の有無に関係なくファイルパスを受け入れるようにしました。</li>
-<li>リモートコマンドとリモート設定の更新メカニズムとキャッシュを修正しました。</li>
-<li>リモートコマンドとリモート設定のリトライメカニズムを改善しました。</li>
-<li>URL <code>RemoteCommands</code>で、リモートファイルをダウンロードできない場合またはキャッシュされていない場合、<code>commandId</code>を名前として使用してバンドルされたローカルファイルを使用できるようにしました。</li>
-<li>セッションの有効期限が切れた後に<code>TagManagementWebview</code>をリフレッシュするようにしました。</li>
-</ul>
-          </div>
-        
-        <div class="release-note-item" data-title="Tealium Universal Tag (utag.js) リリースノート" data-date="2023-09-28">
-          
-          
-
-          <h2 class="rn-section" id="tealium-universal-tag-utagjs-リリースノート"><a href="/ja/platforms/javascript/release-notes/">Tealium Universal Tag (utag.js) リリースノート</a></h2>
-          <p><a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">最新の修正と改善を活用するために <code>utag.js</code> テンプレートを更新</a>してください。</p>
-<div class="f3"id="utagjs-バージョン-450-以降への更新"><code>utag.js</code> バージョン 4.50 以降への更新</div>
-<p>バージョン 4.50 以降に更新する際には、以下の手順をお勧めします。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium Collect タグとすべてのアクティブな同意管理テンプレート、特にイベントログ機能を更新してください。</p>
-<ul>
-<li>
-<p>同じサイトで複数の iQ プロファイルを実行している場合、サイト上のすべての <code>utag.js</code> テンプレートが新しいクッキーの動作を同時に使用するようにするために、次の手順を完了してください。これにより、競合や互換性の問題が防止されます。</p>
-<ol>
-<li>すべての <code>utag.js</code> テンプレートを最新バージョンに更新してください。</li>
-<li>各プロファイルの <a href="/ja/platforms/javascript/settings/#split_cookie"><code>split_cookie</code></a> オーバーライドを <code>false</code> に設定して、レガシーのクッキーの動作を使用し、サイト上でまだ実行されている古いバージョンの utag.js との互換性を維持します。</li>
-<li>すべての <code>utag.js</code> テンプレートが更新され、レガシーのクッキーの動作を維持するために <code>split_cookie</code> オーバーライドが設定されている場合、すべてのプロファイルからクッキーオーバーライドを同時に削除できます。</li>
-</ol>
-</li>
-<li>
-<p>Tealium Collect タグの Visitor ID (<code>v_id</code>) に依存関係がある場合は、<code>always_set_v_id</code> オプションを <code>true</code> に設定して、その値が適切なタイミングで設定され続けるようにしてください。Visitor ID の使用例は次のとおりです。</p>
-<ul>
-<li>Cookie 同期タグ。</li>
-<li>トラブルシューティングおよびダウンストリームデータウェアハウスでの使用のために、<code>tealium_visitor_id</code> を Adobe や GA4 のようなアナリティクスタグにマッピングすること。</li>
-</ul>
-</li>
-</ul>
-<p>詳細については、<a href="/platforms/javascript/settings/#always_set_v_id">Settings: <code>always_set_v_id</code></a>を参照してください。</p>
-<div class="f3"id="451">4.51</div>
-<p>(2023年9月)</p>
-<ul>
-<li><code>utag.js</code> バージョン 4.50 を使用した場合の特定のブラウザとタイムゾーン/地域設定でのクッキーの有効期限の問題を修正しました。</li>
-</ul>
-<div class="f3"id="450">4.50</div>
-<p>(2023年9月)</p>
-<p>バージョン 4.50 では、<code>utag.js</code> によって書き込まれるクッキーに対してより多くの透明性と制御が提供されます。</p>
-<p>以前は、マルチバリュークッキー（マルチクッキー）の使用を推奨していました。しかし、データプライバシーオーディットなどの透明性とシンプルさへの要求の増加により、推奨事項を見直しました。現在は、スタンドアロンのクッキーを使用することを推奨しており、これが <code>utag.js</code> のデフォルトの動作になっています。</p>
-<p>このリリースには、以下の更新が含まれています。</p>
-<ul>
-<li>単一のマルチバリュークッキーではなく、個別の <code>utag_main</code> クッキーを書き込みます。複数の値を単一のクッキーに格納する従来の動作を使用するには、<a href="/ja/platforms/javascript/settings/#split_cookie"><code>split_cookie</code></a> を <code>false</code> に設定してください。</li>
-<li><code>utag_main_v_id</code> の責任を <code>utag.js</code> から Tealium Collect タグに移します。<code>utag.js</code> が <code>utag_main_v_id</code> クッキーを設定するようにするには、<a href="/ja/platforms/javascript/settings/#always_set_v_id"><code>always_set_v_id</code></a> を <code>true</code> に設定してください。</li>
-<li>同意管理クッキーのログ記録のための同意マネージャクッキーに新しい <code>id</code> 要素を追加します。このクッキーが最初に設定されると、見つかったすべての <code>utag_main_v_id</code> の値と一致しますが、その後は変更されません。この動作は、ユーザーとログ記録されたイベントのリンクを維持することを優先するものですが、すべての場合で一致が保証されるわけではありません。</li>
-<li>関連する <a href="/ja/iq-tag-management/templates/about/">テンプレート</a> を更新することで簡単にアップグレードできます。</li>
-<li>次の utag 設定を追加しました：
-<ul>
-<li><a href="/ja/platforms/javascript/settings/#split_cookie"><code>split_cookie</code></a> - レガシーの単一のマルチバリュークッキーを使用するには <code>false</code> に設定します。</li>
-<li><a href="/ja/platforms/javascript/settings/#split_cookie_allowlist"><code>split_cookie_allowlist</code></a> - <code>utag_main</code> 名前空間を使用して設定できるクッキー名の配列を指定します。</li>
-<li><a href="/ja/platforms/javascript/settings/#always_set_v_id"><code>always_set_v_id</code></a> - <code>utag.js</code> が <code>utag_main_v_id</code> クッキーまたは <code>utag_main</code> の <code>v_id</code> コンポーネントを設定するように強制します。</li>
-</ul>
-</li>
-<li>次のテンプレートを更新しました：
-<ul>
-<li><code>utag.js</code> (<code>loader</code>) をバージョン 4.50 に更新して、クッキーの動作を更新します。</li>
-<li><code>cmGeneral</code> をバージョン 3.0.12 に更新して、同意ログテンプレートからデバイス ID を生成または取得するための集中ロジックを追加します。</li>
-<li><code>cmDoNotSell</code> をバージョン 1.4.0 に更新して、集中ロジックを呼び出します。</li>
-<li><code>fullConsentEventHandler</code> をバージョン 1.0.3 に更新して、集中ロジックを呼び出します。</li>
-<li><code>partialConsentEventHandler</code> をバージョン 1.0.3 に更新して、集中ロジックを呼び出します。</li>
-<li><code>Collect</code> をバージョン <code>tv:20064.20230519</code>（2023年5月にリリース）に更新します。</li>
-</ul>
-</li>
-</ul>
-<p>utag 4.50 以降の透明性向上のための新しい設定の詳細については、<a href="https://tealium.com/blog/customer-experience/enhancing-cookie-transparency-with-utag-4-51-a-comprehensive-introduction/">Enhancing Cookie Transparency with utag 4.51</a>を参照してください。</p>
-          </div>
-        
-        <div class="release-note-item" data-title="Xamarin用Tealiumリリースノート" data-date="2023-02-14">
-          
-          
-
-          <h2 class="rn-section" id="xamarin用tealiumリリースノート"><a href="/ja/platforms/xamarin/release-notes/">Xamarin用Tealiumリリースノート</a></h2>
-          <div class="f3"id="210-2023年2月">2.1.0 (2023年2月)</div>
-<ul>
-<li>Tealiumのネイティブライブラリ依存関係を更新しました。Tealium Swift <code>2.9.1</code> と Tealium Kotlin <code>1.5.1</code>。</li>
-<li>訪問者の切り替えをサポートするためのメソッドを実装しました：
-<ul>
-<li>アプリで複数のユーザーを識別するために使用されるキーを指定するための設定オプション<a href="/platforms/xamarin/api/#class-tealiumconfig"><code>visitorIdentityKey</code></a>のサポートを追加しました。</li>
-<li>新しい訪問者IDをクリアして生成する<a href="/platforms/xamarin/api/#resetvisitorid"><code>ResetVisitorId()</code></a>メソッドを追加しました。</li>
-<li>デバイス上のすべての保存された訪問者IDをクリアするための設定オプション<a href="/platforms/xamarin/api/#clearstoredvisitorids"><code>clearStoredVisitorIds</code></a>のサポートを追加しました。</li>
-</ul>
-</li>
-<li>同意イベントで送信される同意カテゴリ属性の名前を上書きするための設定オプション<a href="/platforms/xamarin/api/#class-tealiumconfig"><code>overrideConsentCategoriesKey</code></a>を追加しました。</li>
-</ul>
-          </div>
-        
-        <div class="release-note-item" data-title="リモートコマンドリリースノート" data-date="2024-05-01">
-          
-          
-
-          <h2 class="rn-section" id="リモートコマンドリリースノート"><a href="/ja/platforms/remote-commands/release-notes/">リモートコマンドリリースノート</a></h2>
-          <div class="f3"id="2024年3月">2024年3月</div>
-<ul>
-<li>AttributionモジュールのSKAdNetwork実装をXCode15をサポートするように更新しました。</li>
-</ul>
-          </div>
-        
-  </div>
-
-        <div class="bt-l b--moon-gray pv3 cb">
-          <div id="feedback_form" class="dpn">
+          <div class="bt-l b--moon-gray pv3 cb">
+            <div id="feedback_form" class="dpn">
   <div id="feedback_buttons">
 	  <p class="di f5 pr2">このページはお役にたちましたでしょうか？</p>
 		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
@@ -411,36 +370,20 @@
   </div>
 </div>
 
-        </div>
+          </div>
       </div>
     </article>
 
-    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns">
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
       
 
 
 
-  <aside class="fixed-lTK mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
-      <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#net-maui%E7%94%A8tealium%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%88" href="javascript:void(0)">.NET MAUI用Tealiumリリースノート</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cordova%E7%94%A8tealium%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%88" href="javascript:void(0)">Cordova用Tealiumリリースノート</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#flutter%E7%94%A8tealium%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%88" href="javascript:void(0)">Flutter用Tealiumリリースノート</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#java%E7%94%A8tealium%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%88" href="javascript:void(0)">Java用Tealiumリリースノート</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#nativescript%E7%94%A8tealium%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%88" href="javascript:void(0)">Nativescript用Tealiumリリースノート</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#react-native%E7%94%A8tealium%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%88" href="javascript:void(0)">React Native用Tealiumリリースノート</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-for-android-java-%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%88" href="javascript:void(0)">Tealium for Android (Java) リリースノート</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-for-android-kotlin-%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%88" href="javascript:void(0)">Tealium for Android (Kotlin) リリースノート</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-for-iosswift%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%88" href="javascript:void(0)">Tealium for iOS（Swift）リリースノート</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-universal-tag-utagjs-%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%88" href="javascript:void(0)">Tealium Universal Tag (utag.js) リリースノート</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#xamarin%E7%94%A8tealium%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%88" href="javascript:void(0)">Xamarin用Tealiumリリースノート</a></li>
-              <li class="mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%88" href="javascript:void(0)">リモートコマンドリリースノート</a></li>
-              </nav>
-  </aside></nav>
+  </nav>
 
   
   </div>
 </div>
-
 
     </main>
 
