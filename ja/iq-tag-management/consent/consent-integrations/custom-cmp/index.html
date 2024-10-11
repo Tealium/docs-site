@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>同意統合 - カスタムCMP統合 | 同意統合 | Tealiumドキュメント</title>
+    <title>カスタムCMP統合 | 同意統合 | Tealiumドキュメント</title>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
@@ -418,7 +418,7 @@
 </ul>
 </nav>
 
-<h1 class="lh-title mt30 mb3">同意統合 - カスタムCMP統合</h1>
+<h1 class="lh-title mt30 mb3">カスタムCMP統合</h1>
 </header>
 
 <div class="mv2 mid-gray fn w-100">
@@ -426,110 +426,110 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Tealium iQ Consent Integrationsでカスタム同意管理プラットフォームを設定する方法について説明します。
+      この記事では、Tealium iQ Consent Integrationsでカスタムの同意管理プラットフォームを構成する方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="動作原理">動作原理</h2>
-<p>Tealium Consent Integrationsは、2つのパートで構成されています。</p>
+  <h2 id="仕組み">仕組み</h2>
+<p>Tealium Consent Integrationsは2つの部分で構成されています：</p>
 <ul>
-<li>Tealium iQの同意強制フレームワーク（<code>utcm_framework</code>テンプレート）。</li>
-<li>Tealium iQの同意強制フレームワークを活用するCMP固有の統合テンプレート。これらの統合テンプレートは、できるだけ軽量に設計されています。</li>
+<li>Tealium iQのための同意強制フレームワーク（<code>utcm_framework</code>テンプレート）。</li>
+<li>Tealium iQの同意強制フレームワークを活用するCMP特有の統合テンプレート。これらの統合テンプレートは、できるだけ軽量に設計されています。</li>
 </ul>
-<p>当社の<a href="/ja/iq-tag-management/consent/consent-integrations/supported-vendors/">事前構築済みの統合</a>は、さまざまな同意管理プラットフォーム（CMP）との統合をサポートしています。ただし、次の場合にはカスタム統合が推奨されます。</p>
+<p>私たちの<a href="/ja/iq-tag-management/consent/consent-integrations/supported-vendors/">事前構築された統合</a>は、さまざまな同意管理プラットフォーム（CMP）との統合をサポートしています。しかし、カスタム統合が推奨される場合もあります。例えば：</p>
 <ul>
-<li>事前構築済みの統合がないCMPを使用する場合。</li>
-<li>同意をキャプチャするための内部ツールを使用する場合。</li>
-<li>標準の統合を破壊する大幅なカスタマイズが施されたサポートされているCMPを使用する場合。</li>
+<li>事前構築された統合がないCMPを使用する。</li>
+<li>同意を取得するための内部ツールを使用する。</li>
+<li>標準統合を破壊する大規模なカスタマイズを持つサポートされているCMPを使用する。</li>
 </ul>
-<p>このような場合、カスタム統合を使用できます。JavaScript関数を使用することで、どの同意キャプチャツールでも強制フレームワークを活用できます。</p>
+<p>このような場合、カスタム統合を使用できます。JavaScript関数を使用することで、任意の同意取得ツールが強制フレームワークを活用できます。</p>
 <p>新しいカスタム統合を追加するには、既存の統合と提供されたテンプレートをガイドとして使用します。</p>
-<p>以下は、カスタム統合を作成するための基本的なワークフローの説明です。</p>
+<p>以下に、カスタム統合を作成するための基本的なワークフローを説明します：</p>
 <ol>
-<li>Tealium iQの外部（CMPが実装されているウェブサイト）で統合を開発およびデバッグします。</li>
+<li>Tealium iQの外部（CMPが実装されているウェブサイト）で統合を開発し、デバッグします。</li>
 <li>Tealium iQで新しいカスタム同意統合と目的グループを追加します。詳細については、<a href="/ja/iq-tag-management/consent/consent-integrations/manage/">同意統合と目的グループの管理</a>を参照してください。</li>
 <li>Tealium iQと適切なタグを目的グループ内の目的に割り当てます。</li>
 <li>テンプレートを作成するために、プロファイルを保存します。</li>
-<li>新しく作成したテンプレートを編集します。詳細については、<a href="/ja/iq-tag-management/templates/manage/">テンプレートの管理</a>を参照してください。</li>
-<li>テンプレートを開発環境またはテスト環境に公開して、すべてが予想どおりに動作することを確認し、通常のテストおよび公開フローに従います。</li>
+<li>新しく作成されたテンプレートを編集します。詳細については、<a href="/ja/iq-tag-management/templates/manage/">テンプレートの管理</a>を参照してください。</li>
+<li>テンプレートを開発またはテスト環境に公開して、すべてが期待通りに動作することを確認し、通常のテストと公開フローに従います。</li>
 </ol>
 <h2 id="カスタム統合の開発デバッグ検証">カスタム統合の開発、デバッグ、検証</h2>
-<p>カスタムCMP統合を作成するには、以下の手順を完了します。</p>
+<p>カスタムCMP統合を作成するには、以下の<a href="#custom-integration-template">カスタムテンプレート</a>を編集して、CMPの要件を満たすようにします。カスタムテンプレートのコメントには、動作する例が記載されています。</p>
 <h3 id="公開前の開発とデバッグ">公開前の開発とデバッグ</h3>
-<p>開発中にデバッグするには、次の手順を実行します。</p>
+<p>開発中にデバッグするための以下の手順を完了します：</p>
 <ol>
-<li><a href="#custom-integration-template">カスタムテンプレート</a>の末尾にある<strong>デバッグ</strong>ブロックのコメントを解除します。</li>
-<li>テンプレートを、サポートするCMPが実行されているウェブサイトのコンソールに貼り付けます。</li>
-<li>デバッグコードブロックが同意の決定を出力します。</li>
-<li>決定をカスタマイズし、テンプレートを再度貼り付けて新しく解釈された同意の決定を確認します。</li>
-<li>テンプレートに満足したら、テンプレートをTealium iQに貼り付けて公開する前に、再度デバッグブロックのコメントを解除します。</li>
+<li><a href="#custom-integration-template">カスタムテンプレート</a>の最後にある<strong>デバッグ</strong>ブロックのコメントを解除します。</li>
+<li>テンプレートを、サポートしたいCMPを実行しているウェブサイトのコンソールに貼り付けます。</li>
+<li>デバッグコードブロックが同意決定を出力します。</li>
+<li>あなたの決定をカスタマイズし、テンプレートを再度貼り付けて新しく解釈された同意決定を確認します。</li>
+<li>テンプレートに満足したら、再度デバッグブロックのコメントを解除して、Tealium iQに貼り付けて公開します。</li>
 </ol>
-<p>また、プロファイルを保存し、<a href="/ja/iq-tag-management/templates/manage/">テンプレートを編集</a>することで、デバッグスニペットを見つけることもできます。</p>
+<p>プロファイルを保存して<a href="/ja/iq-tag-management/templates/manage/">テンプレートを編集</a>することで、デバッグスニペットを見つけることもできます。</p>
 <h3 id="公開後の検証">公開後の検証</h3>
-<p>公開後のテンプレートのデバッグと検証には、デバッグモードまたは<code>window.tealiumCmpOutput</code>オブジェクトを使用する方法があります。</p>
+<p>公開後にテンプレートをデバッグし、検証する方法は2つあります：デバッグモードを使用するか、<code>window.tealiumCmpOutput</code>オブジェクトを使用するかです。</p>
 <h4 id="デバッグモードの使用">デバッグモードの使用</h4>
-<p><a href="/ja/platforms/javascript/debugging/">デバッグモード</a>を使用するには、次の手順を実行します。</p>
+<p><a href="/ja/platforms/javascript/debugging/">デバッグモード</a>を使用するには：</p>
 <ul>
-<li>コンソールで<code>document.cookie = &quot;utagdb=true&quot;</code>と入力して、<code>utagdb</code>クッキーを<code>true</code>に設定します。</li>
-<li>コンソールのフィルタを設定して、関連する出力のみ表示します（デバッグ出力には推奨されるフィルタが含まれています）。</li>
-<li>予想どおりに動作するかを確認するために、さまざまなオプションをテストします。</li>
+<li>コンソールで<code>document.cookie = &quot;utagdb=true&quot;</code>を使用して<code>utagdb</code>クッキーを<code>true</code>に構成します。</li>
+<li>コンソールフィルタを構成して、関連する出力のみを表示します（提案されるフィルタはデバッグ出力にあります）。</li>
+<li>期待通りに動作することを確認するために、異なるオプションをテストします。</li>
 </ul>
 <h4 id="windowtealiumcmpoutputオブジェクトの使用"><code>window.tealiumCmpOutput</code>オブジェクトの使用</h4>
-<p><code>window.tealiumCmpOutput</code>オブジェクトを使用するには、次の手順を実行します。</p>
+<p><code>window.tealiumCmpOutput</code>オブジェクトを使用するには：</p>
 <ul>
-<li>テンプレートの末尾にコメントアウトされたデバッグコードブロックをコンソールに貼り付けて、決定と関連する出力のみを表示します。</li>
-<li>必要に応じて、テンプレート内の関数を個別に呼び出すか、このオブジェクトの他の有用なプロパティにアクセスすることもできます。</li>
+<li>テンプレートの最後にあるコメントを解除したデバッグコードブロックをコンソールに貼り付けて、あなたの決定と関連する出力のみを出力します。</li>
+<li>必要に応じて、テンプレートの関数を個別に呼び出すか、このオブジェクトの他の有用なプロパティにアクセスすることもできます。</li>
 </ul>
-<p>事前構築済みおよびカスタム統合の詳細なデバッグのヒントについては、<a href="/ja/iq-tag-management/consent/consent-integrations/validate-and-debug/">同意統合の検証とデバッグ</a>を参照してください。</p>
+<p>事前構築された統合とカスタム統合の詳細なデバッグのヒントについては、<a href="/ja/iq-tag-management/consent/consent-integrations/validate-and-debug/">同意統合の検証とデバッグ</a>を参照してください。</p>
 <h2 id="統合関数">統合関数</h2>
-<p>統合のCMP固有のコンポーネントは、<code>window.tealiumCmpIntegration</code>オブジェクトを使用して定義されます。</p>
-<p><code>window.tealiumCmpIntegration</code>オブジェクトは、<code>.cmpName</code>、<code>.cmpIntegrationVersion</code>の名前とバージョン、および次の関数から構成されています。</p>
-<h3 id="動作モードの判定">動作モードの判定</h3>
+<p>統合のCMP特有のコンポーネントは、<code>window.tealiumCmpIntegration</code>オブジェクトを使用して定義されます。</p>
+<p><code>window.tealiumCmpIntegration</code>オブジェクトは、名前<code>.cmpName</code>、バージョン<code>.cmpIntegrationVersion</code>、および以下の関数で構成されています：</p>
+<h3 id="動作モードの決定">動作モードの決定</h3>
 <ul>
-<li><code>.cmpCheckIfOptInModel</code> - 統合が<code>オプトイン</code>モデルまたは<code>オプトアウト</code>モデルで動作するかを判定します。ブール値を返します。</li>
+<li><code>.cmpCheckIfOptInModel</code> - 統合が<code>opt-in</code>モデルまたは<code>opt-out</code>モデルで動作するべきかを決定します。ブール値を返します。</li>
 </ul>
 <h3 id="決定の取得">決定の取得</h3>
 <ul>
-<li><code>.cmpFetchCurrentConsentDecision</code> - 同意の決定の現在の生のバージョン（CMPからの生のバージョン）を取得します。結果はオブジェクトである必要があり、すべての後続の関数に引数として渡されます。</li>
+<li><code>.cmpFetchCurrentConsentDecision</code> - 同意決定の現在の生バージョンを取得します（CMPからの生バージョン）。結果はオブジェクトでなければならず、すべての後続の関数に引数として渡されます。</li>
 </ul>
 <h3 id="決定の検証と標準化">決定の検証と標準化</h3>
 <ul>
 <li>
-<p><code>.cmpCheckForWellFormedDecision</code> - 同意の決定の生のバージョンが正しく形成されて理解可能かどうかをチェックします。ブール値を返します。</p>
+<p><code>.cmpCheckForWellFormedDecision</code> - 同意決定の生バージョンが整形されていて理解できるかどうかを確認します。ブール値を返します。</p>
 </li>
 <li>
-<p><code>.cmpCheckForTiqConsent</code> - 同意の決定にTealium iQによるデータ処理の許可が含まれているかどうかを判定します。falseの場合、何も実行されません。ブール値を返します。</p>
+<p><code>.cmpCheckForTiqConsent</code> - 生の同意決定がTealium iQによるデータ処理の許可を含んでいるかどうかを決定します。偽の場合、何も実行されません。ブール値を返します。</p>
 </li>
 <li>
-<p><code>.cmpCheckForExplicitConsentDecision</code> - 同意の決定が<code>明示的</code>または<code>暗黙的</code>かどうかを判定します。ブール値を返します。</p>
+<p><code>.cmpCheckForExplicitConsentDecision</code> - 生の同意決定が<code>explicit</code>（明示的）か<code>implicit</code>（暗黙的）かを決定します。ブール値を返します。</p>
 </li>
 <li>
 <p><code>.cmpConvertResponseToGroupList</code> - 生の決定を、下流の強制のための許可された目的キーの単純な配列に変換します。同意された目的キーの配列を返します。</p>
 </li>
 </ul>
 <h2 id="カスタム統合テンプレート">カスタム統合テンプレート</h2>
-<p>以下は、独自のカスタム統合を作成するための空のテンプレートです。テンプレートの末尾には、同意統合をデバッグおよび検証するために使用できるデバッグスニペットが含まれています。</p>
+<p>以下は、独自のカスタム統合を始めるのに役立つ空白のテンプレートです。テンプレートには、同意統合をデバッグし、検証するために使用できるデバッグスニペットがテンプレートの最後に含まれています。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>;(<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">myCustomConsentIntegration</span> (window) {
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * このテンプレートは編集するために作成されており、独自のカスタムCMP / キャプチャツールのサポートを構築するために使用します。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * このテンプレートは編集するためのもので、カスタムCMP / キャプチャツールのサポートを自分で構築するためのものです。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    *
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * 例のコード（コメントアウトされています）は、オプトアウトクッキーをチェックし、次の2つの決定のいずれかを返します。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    *  - [&#39;no-selling&#39;]（任意の値を持つオプトアウトクッキーが見つかった場合） - 常に明示的な決定（オプトアウトクッキーが設定されています）
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    *  - [&#39;no-selling&#39;, &#39;yes-selling&#39;]（オプトアウトクッキーが見つからない場合） - 常に暗黙的な決定（クッキーが設定されていません）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * 例示コード（コメントアウトされている）は、オプトアウトクッキーをチェックし、2つの決定のいずれかを返す統合から取られています：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    *  - [&#39;no-selling&#39;]（任意の値を持つオプトアウトクッキーが見つかった） - 常に明示的な決定（オプトアウトクッキーが構成されています）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    *  - [&#39;no-selling&#39;, &#39;yes-selling&#39;]（オプトアウトクッキーが見つからない） - 常に暗黙的な決定（クッキーが構成されていません）
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    *
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * オプトアウトクッキーの（大文字と小文字を区別する）名前は、UIの「ベンダーID」フィールドから取得されます。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * オプトアウトクッキーの（大文字と小文字を区別する）名前は、UIの&#39;Vendor ID&#39;フィールドから取得されます。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    *
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * 詳細については、https://docs.tealium.com/iq-tag-management/consent-integrations/supported-vendors/#opt-out-cookie--gpc を参照してください。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * 
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * （上記の統合は、この例のために簡略化されており、GPCロジックは削除されています）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    * （上記の統合はこの例のために簡略化されました - GPCロジックは削除されました）
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// CMP固有の機能とラベル
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// CMP特有の機能とラベル
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">||</span> {}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;カスタム例&#39;</span>
+</span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Custom Example&#39;</span>
 </span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpIntegrationVersion</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;v1.0.0&#39;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpFetchCurrentConsentDecision</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpFetchCurrentConsentDecision</span>
@@ -541,23 +541,22 @@
 </span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">cmpConvertResponseToGroupList</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cmpConvertResponseToGroupList</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  // UIで入力されたベンダーIDを取得する
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  // UIの単一の関連する統合の&#39;Vendor ID&#39;フィールドに入力されたものを引っ張ってきます
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">  var optOutCookieName = (window.tealiumCmpIntegration &amp;&amp; window.tealiumCmpIntegration.map &amp;&amp; Object.keys(window.tealiumCmpIntegration.map)[0]) || &#39;error-no-map-found-so-no-cookie-name-available&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// CMPが「オプトイン」モデル（GDPRスタイル）で実行されている場合はtrueを返す必要があります
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// このオプトアウトクッキーの例は、オプトアウトモデル（CCPA/CPRAスタイル）のみをサポートしているため、ハードコードされたfalseを返します。
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// CMPが&#39;Opt-in&#39;モデル（GDPRスタイル）を実行しているかどうかを真偽値で返すべきです
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// このオプトアウトクッキーの例はオプトアウトモデル（CCPA/CPRAスタイル）のみをサポートしているため、これはハードコードされてfalseを返します。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpCheckIfOptInModel</span> () {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return false
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 必要な情報を含む、CMP固有の生のオブジェクト（オブジェクトである必要があります）を返す必要があります
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// この出力は、後続の関数のcmpRawOutput引数として使用されます
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 必要な情報を含むCMP固有の生のオブジェクト（オブジェクトでなければならない）を返すべきです。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// この出力は、以下の関数のcmpRawOutput引数として使用されます。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpFetchCurrentConsentDecision</span> () {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    // ここではタグマネージャの機能を使用できないため、クッキーを読み取る関数を定義します
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    // まだロードが許可されていないため、ここではタグマネージャーの機能を使用できません
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    var readCookie = function (name) {
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">      var reString = &#39;(?:(?:^|.*;\\s*)&#39; + name + &#39;\\s*\\=\\s*([^;]*).*$)|^.*$&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">      var re = new RegExp(reString)
@@ -566,46 +565,46 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">      return cookieValue
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    var cookie = readCookie(optOutCookieName) || &#39;opt-out-cookie-not-found&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return { cookieState: cookie } // 統合が機能するためにはオブジェクトを返さなければならないため、他のプロパティ（例：Global Privacy Control）を追加できます
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return { cookieState: cookie } // インテグレーションが機能するためにはオブジェクトを返さなければならない - これにより、後で他のプロパティ（Global Privacy Controlなど）を追加できる
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Tealium iQが正しいCMP構成を持っていることを確認するための文字列を返す必要があります
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Tealium iQが正しいCMP構成を持っていることを確認するのに役立つ文字列を返すべきです（CMPの他のページ/顧客からのものではない）
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpFetchCurrentLookupKey</span> () {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return optOutCookieName
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// ブール値を返す必要があります。生の決定がCMPの期待に合致している場合はtrueです
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 生の決定がCMPの期待に合致している場合は真偽値 - trueを返すべきです
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpCheckForWellFormedDecision</span> (<span style="color:#a6e22e">cmpRawOutput</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return typeof cmpRawOutput === &#39;object&#39; &amp;&amp; typeof cmpRawOutput.cookieState === &#39;string&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// ブール値を返す必要があります。同意の決定がユーザーによって明示的に行われた場合はtrueです
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 同意の決定がユーザーによって明示的に行われた場合は真偽値 - trueを返すべきです
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpCheckForExplicitConsentDecision</span> (<span style="color:#a6e22e">cmpRawOutput</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    // この例では、決定が明示的かどうかを判断する唯一の方法は、オプトアウトクッキーが設定されているかどうかを確認することです
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    // この例では、明示的な決定があるかどうかを確認する唯一の方法は、オプトアウトクッキーが構成されているかどうかを確認することです
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if ((typeof cmpRawOutput === &#39;object&#39; &amp;&amp; typeof cmpRawOutput.cookieState === &#39;string&#39; &amp;&amp; cmpRawOutput.cookieState !== &#39;opt-out-cookie-not-found&#39;)) return true
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return false
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 同意されたベンダー/目的の配列を返す必要があります。これらはTealium iQの目的と完全に一致する必要があります
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 同意したベンダー/目的の配列を返すべきです - これらはTealium iQの目的と完全に一致するべきです
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpConvertResponseToGroupList</span> (<span style="color:#a6e22e">cmpRawOutput</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    var consentDecision = [&#39;no-selling&#39;] // データを販売/共有しないタグは常に許可されます
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    // セルデータを販売するタグが許可されているかどうかを判断するための非常にシンプルなオプトアウトクッキーのチェック
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    // 非空のオプトアウトクッキーがあるかどうかを非常に単純に確認して、データを販売するタグが許可されているかどうかを判断します
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if (cmpRawOutput.cookieState === &#39;opt-out-cookie-not-found&#39;) {
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      consentDecision.push(&#39;yes-selling&#39;) // クッキーが見つからないため、データの販売/共有は問題ないと仮定する必要があります
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      consentDecision.push(&#39;yes-selling&#39;) // クッキーが見えないので、データの販売/共有が問題ないと仮定しなければなりません
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    return consentDecision
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// この関数やそれ以下の内容を変更する必要はありません
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// この関数やそれ以下のものを変更する必要はありません
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cmpCheckForTiqConsent</span> (<span style="color:#a6e22e">cmpRawOutput</span>, <span style="color:#a6e22e">tiqGroupName</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 理解できないものはオプトアウトとして扱います
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">cmpCheckForWellFormedDecision</span>(<span style="color:#a6e22e">cmpRawOutput</span>) <span style="color:#f92672">!==</span> <span style="color:#66d9ef">true</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
@@ -618,9 +617,9 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/*
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">  // デバッグ/開発出力 - このブロックのコメントを解除し、テストページにこのテンプレート全体を貼り付け/再貼り付けします
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  var outputString = `${tealiumCmpIntegration.cmpCheckIfOptInModel() ? &#39;オプトイン&#39; : &#39;オプトアウト&#39;} モデル
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  var outputString = `${tealiumCmpIntegration.cmpCheckIfOptInModel() ? &#39;Opt-in&#39; : &#39;Opt-out&#39;} Model
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  チェック:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Checks:
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    - id:          ${tealiumCmpIntegration.cmpFetchCurrentLookupKey()}
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    - well-formed: ${tealiumCmpIntegration.cmpCheckForWellFormedDecision(tealiumCmpIntegration.cmpFetchCurrentConsentDecision())}
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">    - explicit:    ${tealiumCmpIntegration.cmpCheckForExplicitConsentDecision(tealiumCmpIntegration.cmpFetchCurrentConsentDecision())}
@@ -688,7 +687,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月15日
+          <p>最終更新日 ::  2024年October月11日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -702,12 +701,12 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86" href="javascript:void(0)">動作原理</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E7%B5%B1%E5%90%88%E3%81%AE%E9%96%8B%E7%99%BA%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E6%A4%9C%E8%A8%BC" href="javascript:void(0)">カスタム統合の開発、デバッグ、検証</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%85%AC%E9%96%8B%E5%89%8D%E3%81%AE%E9%96%8B%E7%99%BA%E3%81%A8%E3%83%87%E3%83%90%E3%83%83%E3%82%B0" href="javascript:void(0)">公開前の開発とデバッグ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%85%AC%E9%96%8B%E5%BE%8C%E3%81%AE%E6%A4%9C%E8%A8%BC" href="javascript:void(0)">公開後の検証</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%B5%B1%E5%90%88%E9%96%A2%E6%95%B0" href="javascript:void(0)">統合関数</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E3%83%A2%E3%83%BC%E3%83%89%E3%81%AE%E5%88%A4%E5%AE%9A" href="javascript:void(0)">動作モードの判定</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E3%83%A2%E3%83%BC%E3%83%89%E3%81%AE%E6%B1%BA%E5%AE%9A" href="javascript:void(0)">動作モードの決定</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%B1%BA%E5%AE%9A%E3%81%AE%E5%8F%96%E5%BE%97" href="javascript:void(0)">決定の取得</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%B1%BA%E5%AE%9A%E3%81%AE%E6%A4%9C%E8%A8%BC%E3%81%A8%E6%A8%99%E6%BA%96%E5%8C%96" href="javascript:void(0)">決定の検証と標準化</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E7%B5%B1%E5%90%88%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88" href="javascript:void(0)">カスタム統合テンプレート</a></li>

@@ -433,7 +433,7 @@
 
 <div class="prose nested-links" id="prose">
   <p>新しいConsent Enforcement Frameworkは、Tealium iQ Consent Integrationsの主要な機能であり、Tealium iQ Tag Managementの外部でキャプチャされた同意信号の強力で信頼性の高い強制を可能にします。この機能は、顧客の同意が得られないか曖昧な場合にトラッキングをブロックします。</p>
-<p>Tealium iQ Consent Integrationsは、サポートされている同意管理プラットフォーム（CMP）に対して、オプトイン（GDPRスタイル）とオプトアウト（CCPAスタイル）の両方の強制パターンを提供します。統合は、ほとんどのCMPまたはカスタムソリューションをサポートするテンプレートの形式で記述することができます。</p>
+<p>Tealium iQ Consent Integrationsは、サポートされている同意管理プラットフォーム（CMP）に対して、オプトイン（GDPRスタイル）とオプトアウト（CCPAスタイル）の強制パターンの両方を提供します。統合は、ほとんどのCMPまたはカスタムソリューションをサポートするテンプレートの形式で記述することができます。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>Tealium iQ Consent Integrationsは、最新のutagバージョン4.49に依存しています。以前のバージョンでサポートを有効にするには、<strong>uTag Loader</strong>テンプレートを編集し、<code>##UTGEN##</code>publish engine flagの下に<code>##UTCM##</code>を追加します。</p>
 <p>以下の用語は、同意統合フレームワークに関連しています：</p>
 <ul>
@@ -441,13 +441,13 @@
 <li><strong>目的グループ</strong> - 目的のリスト。タグが割り当てられる同意目的のグループの形での強制ポリシーの表現。</li>
 <li><strong>免除</strong> - 強制が必要ない場合と、同意の決定に基づいてタグをブロックする必要がない場合。強制免除は、同意統合強制ルールが適用されない場合の動作とは異なります。明示的な免除がない限り、または一致する同意統合と適切な同意決定がない限り、タグは発火することは許可されません。</li>
 <li><strong>強制ルール</strong> - 同意統合または免除を強制するタイミングを決定するルール。</li>
-<li><strong>同意決定</strong> - 同意された目的の配列。同意決定は<code>type</code>属性で決定され、ユーザーがアクティブな決定を下したか（<code>explicit</code>）否か（<code>implicit</code>）により、<code>explicit</code>または<code>implicit</code>のいずれかになります。</li>
-<li><strong>暗黙の決定</strong> - ユーザーの行動から推測される決定。サイトを訪問することで、ユーザーはサイトのプライバシーポリシーに記載されている必要なタグに同意します。ユーザーは自分のデータの販売に反対することができますが、デフォルトではこれが有効になっています（暗黙の&rsquo;それはOK、私のデータを共有/販売する&rsquo;決定があります）。</li>
+<li><strong>同意決定</strong> - 同意された目的の配列。同意決定は<code>type</code>属性で決定され、ユーザーがアクティブな決定を下したか（<code>explicit</code>）、下さなかったか（<code>implicit</code>）により、<code>explicit</code>または<code>implicit</code>のいずれかになります。</li>
+<li><strong>暗黙の決定</strong> - ユーザーの行動から推測される決定。サイトを訪問することで、ユーザーはサイトのプライバシーポリシーで説明されている必要なタグに同意します。ユーザーは自分のデータの販売に反対することができますが、デフォルトではこれが有効になっています（暗黙の&rsquo;それはOK、私のデータを共有/販売する&rsquo;決定があります）。</li>
 <li><strong>明示的な決定</strong> - ユーザーによる明確で正確なトラッキングへの同意決定。</li>
 <li><strong>統合</strong> 特定のCMPから同意決定をキャプチャする機能と構成（事前ロードまたはカスタム）のセット。統合は目的グループに関連付けられています。</li>
 </ul>
 <h2 id="仕組み">仕組み</h2>
-<p>Tealium iQ Consent Integrationsを使用すると、サポートされている非Tealiumの同意管理プラットフォームと統合できます。あなたのCMPは、必要に応じてエンドユーザーに目的ベースの同意を求め、そのユーザーの同意決定をキャプチャして保存します。統合がアクティブな場合、タグは目的グループ内の目的に割り当てられる前にトリガーする必要があります。その目的に同意される前に、その目的に割り当てられたタグをトリガーすることができます。</p>
+<p>Tealium iQ Consent Integrationsを使用すると、サポートされている非Tealiumの同意管理プラットフォームと統合できます。あなたのCMPは、必要に応じてエンドユーザーに目的ベースの同意を求め、そのユーザーの同意決定をキャプチャして保存します。統合がアクティブな場合、タグは目的グループ内の目的に割り当てられる必要があります。目的に同意されると、その目的に割り当てられたタグがトリガーされます。</p>
 <p>各同意統合は、基礎となるフレームワークに、単一のCMPとどのように通信するかを指示します。一度にアクティブにできる統合は1つだけです。ただし、必要に応じて<strong>強制ルール</strong>を使用して、複数のアクティブな統合を条件付きで適用し、競合を避けることができます。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>ページにCMPを注入するタグは、Tealium iQ Consent Integrationと互換性がありません。統合は、タグがロードされる前にCMPからの信号を必要とします。Consent IntegrationsとあなたのCMPを統合するには、Pre LoaderまたはDOM Ready拡張機能を使用するか、CMPをTealium iQの外部のページに追加します。</p>
 <p>Tealium iQダッシュボードでサポートされているCMPとの統合を構成するか、<strong>カスタムテンプレート</strong>を編集してカスタム統合を作成することができます。</p>
@@ -460,12 +460,12 @@
          title="map_tags.png" width="790" height="417"/>
     </a>
 </figure>
-<p>このオプションを有効にすると、タグは各ユーザーアクションごとに最大2回トリガーすることができます（暗黙の決定と明示的な決定で1回ずつ）。マップされた目的が同意されていない場合、タグはトリガーされません。</p>
+<p>このオプションを有効にすると、タグは各ユーザーアクションごとに最大2回トリガーされます（一度は暗黙の決定で、一度は明示的な決定で）。マップされた目的が同意されていない場合、タグはトリガーされません。</p>
 <p>ほとんどのタグは、これらのケースのそれぞれで同意がある場合、再度トリガーする必要はありません。タグを2回トリガーすると、ダブルトラッキングが発生する可能性があり、これは避けるべきです。</p>
-<p>サーバーサイドコネクタ（特にイベントコネクタ）を持つアカウントは、Tealium Collectタグを再発火させて、<code>tci.purposes_with_consent_unprocessed</code>属性を使用することで利益を得ることができます。これにより、同じイベントに対してサーバーサイドコネクタが再発火されないことが保証されます。<code>tci.purposes_with_consent_unprocessed</code>属性を使用すると、サーバーサイドコネクタが重複せずに可能な限り迅速にトリガーすることができます。</p>
+<p>サーバーサイドコネクタ（特にイベントコネクタ）を持つアカウントは、Tealium Collectタグを再発火させて、<code>tci.purposes_with_consent_unprocessed</code>属性を使用することで利益を得ることができます。これにより、同じイベントに対してサーバーサイドコネクタが再発火されないことを確認します。<code>tci.purposes_with_consent_unprocessed</code>属性を使用すると、サーバーサイドコネクタが重複せずに可能な限り迅速にトリガーできます。</p>
 <h2 id="サーバーサイド属性---consent-integrationsとcollectの使用">サーバーサイド属性 - Consent IntegrationsとCollectの使用</h2>
-<p>Tealium Collectは、他のすべてのタグと同様に、同意された目的にマップする必要があります。ただし、<code>refiringAllowed</code>オプションにより、新しい決定でタグを再発火することができます。このプロセスは、タグがさまざまなサーバーサイド目的に使用されており、利用可能なサーバーサイドフィルタとロジックが使用されて、信号が適切にのみ処理されるようにしながら再発火を許可することを示しています。</p>
-<p>使用するサーバーサイドツールによりますが、Tealium Collectは、各イベントに対して以下のイベントレベルの属性でトリガーされます：</p>
+<p>Tealium Collectは、他のすべてのタグと同様に、同意された目的にマップする必要があります。ただし、<code>refiringAllowed</code>オプションにより、新しい決定でタグを再発火することができます。このプロセスは、タグがさまざまなサーバーサイド目的に使用されており、利用可能なサーバーサイドフィルタとロジックが使用されて、信号が適切に処理されるだけであり、再発火を許可することを示しています。</p>
+<p>使用するサーバーサイドツールによりますが、Tealium Collectは、各イベントに対して以下のイベントレベル属性でトリガーされます：</p>
 <ul>
 <li><code>tci.purposes_with_consent_unprocessed</code>（再発火あり）</li>
 <li><code>tci.purposes_with_consent_all</code>（再発火なし）</li>
@@ -486,8 +486,8 @@
 <p>アクティブな場合、utag.js（Tealium iQ）が実装されているページのJavaScriptコンソールで同意統合と対話できます。JavaScriptコンソールを使用すると、CMPから取得される現在の同意決定を取得できます。同意決定はキャッシュされず、常に最新の状態を保証します。</p>
 <p>詳細については、<a href="/ja/iq-tag-management/consent/consent-integrations/validate-and-debug/">Validate and debug consent integrations</a>を参照してください。</p>
 <h2 id="同意登録">同意登録</h2>
-<p>同意統合は、同意構成がロードまたは更新されたときにイベントを発行するためにTealium同意登録を使用できます。これらの変更はページ全体で利用可能であり、ウェブサイト全体で同意決定を管理するのがより簡単になります。詳細については、<a href="/ja/iq-tag-management/consent/consent-register/">Tealium consent register</a>を参照してください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>同意登録は、同意統合フレームワークテンプレートバージョン1.2.0以降が必要です。このテンプレートを更新するには、<a href="/ja/iq-tag-management/templates/manage/#update-a-template">Update a template</a>を参照してください。</p>
+<p>同意統合は、Tealiumの同意登録を使用して、同意構成がロードまたは更新されたときにイベントを発行できます。これらの変更はページ全体で利用可能であり、ウェブサイト全体で同意決定を管理するのがより簡単になります。詳細については、<a href="/ja/iq-tag-management/consent/consent-register/">Tealium consent register</a>を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>同意登録は、同意統合フレームワークテンプレートのバージョン1.2.0以降が必要です。このテンプレートを更新するには、<a href="/ja/iq-tag-management/templates/manage/#update-a-template">テンプレートを更新する</a>を参照してください。</p>
 
 </div>
 
@@ -533,7 +533,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月15日
+          <p>最終更新日 ::  2024年October月11日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
