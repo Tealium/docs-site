@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "8",
+        reading_time  : "10",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -379,20 +379,20 @@
   <h2 id="how-it-works">How it works</h2>
 <p>The Snapchat Conversions connector uses the Snap Conversions API. The Snap Conversions API is a structured, privacy-centric interface that allows you to directly pass web, app, and offline events to Snap via a Server-to-Server (S2S) integration. This API supports similar event tracking as the Snap Pixel and broken out into the Device Type used to make the conversion as well. This trigger allows for the Snap App ID to be used for mobile conversions and the Pixel ID for web and offline conversion events.</p>
 <p>Snap Conversions API can be deployed standalone or in-conjunction with the client side Snap Pixel.</p>
-<p>For more information about Snap&rsquo;s Conversions API, see the <a href="https://businesshelp.snapchat.com/s/article/conversions-api?language=en_US">Conversion API</a> article in the Snapchat documentation.</p>
+<p>For more information about Snap&rsquo;s Conversions API, see <a href="https://businesshelp.snapchat.com/s/article/conversions-api?language=en_US">Snap: Conversion API</a>.</p>
 <h2 id="api-information">API Information</h2>
 <p>This connector uses the following vendor API:</p>
 <ul>
 <li>API Name: Snapchat Marketing API - Conversion API</li>
-<li>API Version: v2</li>
-<li>API Endpoint: <code>https://tr.snapchat.com/v2/conversion</code></li>
+<li>API Version: v3</li>
+<li>API Endpoint: <code>https://tr.snapchat.com/v3/conversion</code></li>
 </ul>
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
 <li>After adding the connector, you must invite <a href="mailto:%22asintegrations@tealium.com">asintegrations@tealium.com</a> to your Snapchat Business manager with the <strong>Member</strong> role and assign to applicable Ad Account with the <strong>Data Manager</strong> role.</li>
 </ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>This step may take up to three working days for approval. You can confirm whether the invitation has been accepted by viewing the users in your Snapchat Ads account.</p>
-<p>For additional information, see: <a href="https://businesshelp.snapchat.com/s/topic/0TO0y000000YVcVGAW/manage-members-and-roles">Manage Members and Roles</a>.</p>
+<p>For additional information, see: <a href="https://businesshelp.snapchat.com/s/topic/0TO0y000000YVcVGAW/manage-members-and-roles">Snap: Manage Members and Roles</a>.</p>
 <h2 id="considerations">Considerations</h2>
 <ul>
 <li>To unlock campaign optimization, we recommend that you send events as soon as they occur, ideally within an hour of the event occurring.</li>
@@ -423,18 +423,19 @@ When sending data from multiple integrations, we recommend sending redundant dat
 </ul>
 <p>Depending on your deduplication use case, use the following parameters:</p>
 <ul>
-<li><strong>Client dedup ID</strong> - Deduplicates unique events for web and offline channels. Allows for a 48 hour deduplication window.</li>
+<li><strong>Event ID</strong> - Deduplicates unique events for web and offline channels. Allows for a 48 hour deduplication window.</li>
 <li><strong>Transaction ID</strong> - Eligible for deduplicating purchase events for all channels (web, mobile, and offline). Allows for a 30 day deduplication window.</li>
 <li><strong>Mobile Ad ID</strong> - Use a shared device identifier like AAID or hashed IDFV for unique event deduplication.</li>
 </ul>
-<p>For more information, see the <a href="https://marketingapi.snapchat.com/docs/conversion.html#deduplication">Deduplication section</a> of the Snap Conversions API documentation.</p>
+<p>For more information, see <a href="https://developers.snap.com/api/marketing-api/Conversions-API/BestPractices#deduplication">Snap: Best Practices - Deduplication</a>.</p>
 <h4 id="automatic-deduplication">Automatic deduplication</h4>
-<p>When the <strong>Automatic Deduplication</strong> value is populated, the connector looks for the corresponding event attribute. You are no longer required to add an <strong>Client Dedup ID</strong> if this section is populated and you are using Tealium iQ. However, the following approach may still be needed when using EventStream without Tealium iQ.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>In version 3, the connector uses <strong>Event ID</strong> for deduplication instead of <strong>Client Dedup ID</strong>.</p>
+<p>When the <strong>Automatic Deduplication</strong> value is populated, the connector looks for the corresponding event attribute. If this section is populated and you are using Tealium iQ, you are no longer required to add an <strong>Event ID</strong>. However, the following approach may still be needed when using EventStream without Tealium iQ.</p>
 <p>The connector order of operations is as follows:</p>
 <ul>
-<li>If <strong>Automatic Deduplication</strong> is populated, and the value is found in the data layer, (for example, <code>6V5xX1T0n9pC42luElKD</code>) this value supersedes anything mapped in <strong>Client Dedup ID</strong>.</li>
+<li>If <strong>Automatic Deduplication</strong> is populated, and the value is found in the data layer, (for example, <code>6V5xX1T0n9pC42luElKD</code>) this value supersedes anything mapped in <strong>Event ID</strong>.</li>
 <li>If <strong>Automatic Deduplication</strong> is populated, but it cannot find the tag ID version, but it can find the legacy version (with no ID attached), that value is used (for example, <code>6V5xX1T0n9pC42luElKD</code>).</li>
-<li>If <strong>Automatic Deduplication</strong> is populated, but the value isn&rsquo;t found, the mapped <strong>Client Dedup ID</strong> is used, if it is populated.</li>
+<li>If <strong>Automatic Deduplication</strong> is populated, but the value isn&rsquo;t found, the mapped <strong>Event ID</strong> is used, if it is populated.</li>
 </ul>
 <h2 id="connector-actions">Connector Actions</h2>
 <table>
@@ -447,7 +448,7 @@ When sending data from multiple integrations, we recommend sending redundant dat
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Send Conversion</td>
+<td style="text-align:left">Send Conversion V3</td>
 <td style="text-align:left">✓</td>
 <td style="text-align:left">✓</td>
 </tr>
@@ -457,12 +458,12 @@ When sending data from multiple integrations, we recommend sending redundant dat
 <p>Go to the Connector Marketplace and add a new connector. See the <a href="/server-side/connectors/about/">Connector Overview</a> for general instructions on how to add a connector.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
-<li><strong>Long Lived Token</strong>: This method of authentication does not need the 3-legged OAuth flow and does not expire. For more information, see <a href="https://marketingapi.snapchat.com/docs/conversion.html#static-long-lived-tokens">Snapchat: Static Long Lived Tokens</a></li>
+<li><strong>Long Lived Token</strong>: This method of authentication does not need the 3-legged OAuth flow and does not expire. For more information, see <a href="https://marketingapi.snapchat.com/docs/conversion.html#static-long-lived-tokens">Snap: Static Long Lived Tokens</a></li>
 </ul>
 <h2 id="action-settings---parameters-and-options">Action Settings - Parameters and Options</h2>
 <p>Click <strong>Next</strong> or go to the <strong>Actions</strong> tab. This is where you configure connector actions.</p>
 <p>This section describes how to set up parameters and options for each action.</p>
-<h3 id="action---send-conversion">Action - Send Conversion</h3>
+<h3 id="action---send-conversion-v3">Action - Send Conversion V3</h3>
 <h3 id="parameters">Parameters</h3>
 <table>
 <thead>
@@ -474,127 +475,434 @@ When sending data from multiple integrations, we recommend sending redundant dat
 <tbody>
 <tr>
 <td>Event Type</td>
-<td><ul><li>Select event type from drop-down list.</li></ul></td>
+<td>Select the event type from the drop-down list.</td>
 </tr>
 <tr>
 <td>Event Conversion Type</td>
-<td><ul><li>Where the event took place. For example, offline, web, or mobile app.</li></ul></td>
+<td>Where the event took place. For example, <code>OFFLINE</code>, <code>WEB</code>, or <code>MOBILE_APP</code>.</td>
 </tr>
+</tbody>
+</table>
+<h4 id="conversion-data">Conversion Data</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>Pixel ID</td>
-<td><ul><li>The Pixel ID associated with your Ad Account.</li></ul></td>
+<td>The Pixel ID associated with your Ad Account.</td>
 </tr>
 <tr>
 <td>App ID</td>
-<td><ul><li>The unique ID assigned for a given application.</li><li>Numeric for iOS.</li><li>Google Android Advertising ID (AAID).</li></ul></td>
+<td>The unique ID assigned for a given application. iOS IDs are numeric, and Android IDs are the Google Advertising ID (<code>GAID</code>)</td>
 </tr>
 <tr>
 <td>Snap App ID</td>
-<td><ul><li>The Snap App ID associated with your app (a unique code generated in Ads Manager and included in your MMP dashboard).</li></ul></td>
+<td>The Snap App ID associated with your app, which is a unique code generated in Ads Manager and included in your MMP dashboard.</td>
 </tr>
 <tr>
 <td>Event Tag</td>
-<td><ul><li>Custom event set label.</li><li>Example: in-store, weekend sales, back-to-school campaign</li><li>May be used for future tagging and audience targeting.</li></ul></td>
+<td>Custom event set label. For example, in-store, weekend sales, back-to-school campaign. This parameter can be used for future tagging and audience targeting.</td>
 </tr>
 <tr>
-<td>Timestamp</td>
-<td><ul><li>The Epoch timestamp for the conversion happening.</li><li>If this field is not mapped, it will be initialized with the current timestamp.</li></ul></td>
+<td>Event Time</td>
+<td>The Epoch timestamp for this conversion. If this field is not mapped, it will be initialized with the current timestamp.</td>
+</tr>
+<tr>
+<td>Event Source URL</td>
+<td>The URL of the Event Source.</td>
+</tr>
+<tr>
+<td>Event ID</td>
+<td>The Event ID.</td>
+</tr>
+<tr>
+<td>Data Processing Options</td>
+<td>Indicates either opt in or opt out for <code>WEB</code> events. For users of iOS 14.5 and above that opt out, set this parameter’s value to a list that has a single element of the value <code>LMU</code>. Otherwise, do not set this parameter. Currently accepted values are: <code>LMU</code>, <code>DELETE</code>.</td>
+</tr>
+<tr>
+<td>Advertiser Tracking Enabled</td>
+<td>Indicates either opt in or opt out for <code>MOBILE_APP</code> events. Accepted values are: <code>True</code> for opt in or <code>False</code> for opt out.</td>
+</tr>
+<tr>
+<td>Test Event Code</td>
+<td>The event test code.</td>
 </tr>
 <tr>
 <td>Description</td>
-<td><ul><li>A string description for additional information.</li></ul></td>
-</tr>
-<tr>
-<td>Number Items</td>
-<td><ul><li>Number of items (integer, singular value).</li><li>If this field is mapped to array, it will be converted to the sum of array elements.</li></ul></td>
-</tr>
-<tr>
-<td>Currency</td>
-<td><ul><li>Standard ISO 4217 code.</li><li>Example: <code>EUR</code>, <code>USD</code>, <code>JPY</code>.</li></ul></td>
-</tr>
-<tr>
-<td>Transaction ID</td>
-<td><ul><li>Transaction ID or order ID tied to the conversion event.</li></ul></td>
+<td>The string description for additional info.</td>
 </tr>
 <tr>
 <td>Level</td>
-<td><ul><li>Represents a level in the context of a game.</li></ul></td>
+<td>Represents a level in the context of a game.</td>
 </tr>
 <tr>
-<td>Client Dedup ID</td>
-<td><ul><li>ID that is used to identify this single request.</li><li>Used to differentiate this request from other requests in the same batch. </li></ul>Note: This is an advanced feature; first ensure that you are confident with your approach if using this as a deduplication key.</td>
+<td>Integration</td>
+<td>There are two types of integrations. Direct or through a partner. If you are using a partner integration, set this parameter with the partner or connector name. For example, <code>tealium</code> or <code>mparticle</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="content-data">Content Data</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content Category</td>
+<td>Category of item(s).</td>
 </tr>
 <tr>
-<td>Data Use</td>
-<td><ul><li>For iOS 14.5 and above users, indicate if we should treat the event as opt-in or opt-out.</li><li>For <code>OPT_OUT</code> user events, value is a list with only the value of <code>lmu</code>.</li></ul></td>
+<td>Content IDs</td>
+<td>The Content IDs.</td>
+</tr>
+<tr>
+<td>Content Name</td>
+<td>The name of the page or product associated with the event.</td>
+</tr>
+<tr>
+<td>Content Type</td>
+<td>The <code>content_type</code> field indicates what the keys in <code>content_ids</code> or <code>contents</code> represent. Choose <code>product</code> for individual items or <code>product_group</code> for items that have multiple options in either size, color, or any other variation.</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>Standard ISO-4217 code, for example <code>EUR</code>, <code>USD</code>, <code>JPY</code>.</td>
+</tr>
+<tr>
+<td>Number Items</td>
+<td>Number of items (integer, singular value). If this field is mapped to array, it will be converted to the sum of array elements.</td>
+</tr>
+<tr>
+<td>Order ID</td>
+<td>ID of the purchased order.</td>
+</tr>
+<tr>
+<td>Predicted Lifetime Value</td>
+<td>The predicted lifetime value of a conversion event.</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>The purchase value associated with the specific event. Required for <code>PURCHASE</code> event.</td>
 </tr>
 <tr>
 <td>Search String</td>
-<td><ul><li>The text that was searched for.</li></ul></td>
-</tr>
-<tr>
-<td>Page Url</td>
-<td><ul><li>The URL of the web page where the event took place.</li><li>Must include protocol.</li></ul></td>
+<td>The text that was searched for.</td>
 </tr>
 <tr>
 <td>Sign Up Method</td>
-<td><ul><li>A string indicating the sign up method, such as <code>Facebook</code>, <code>Email</code>, or <code>X</code>.</li></ul></td>
+<td>The string indicating the sign up method, Facebook, Email, X, etc.</td>
 </tr>
 <tr>
-<td>Item Category</td>
-<td><ul><li>Category of item(s).</li></ul></td>
+<td>Brands</td>
+<td>Brands associated with the <code>item_ids</code> in the conversion event.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="content-info">Content Info</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID</td>
+<td>The item ID.</td>
 </tr>
 <tr>
-<td>Item ID</td>
-<td><ul><li>International Article Number (EAN), when applicable, or other product or category identifier.</li><li>Map array and list values to keys to be passed to Snapchat.</li><li>All arrays and lists should be of equal length.</li><li>Single value attribute will be converted to array containing single value.</li></ul></td>
+<td>Quantity</td>
+<td>The item quantity.</td>
 </tr>
 <tr>
-<td>Price</td>
-<td><ul><li>Price of the item.</li></ul></td>
+<td>Item Price</td>
+<td>The item price.</td>
 </tr>
 <tr>
-<td>Email Address (apply SHA256 hashed)</td>
-<td><ul><li>Provide a lowercased plain text email address and the connector will hash this value in the format Snapchat expects.</li><li>Empty or null hashed values are ignored.</li></ul></td>
+<td>Delivery Category</td>
+<td>The delivery method used for the order.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="user-info">User Info</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phone Number</td>
+<td>(apply SHA256 hash) Provide a lowercased plain text email address and the connector will hash this value in the format Snapchat expects. Empty or null hashed values are ignored.</td>
 </tr>
 <tr>
-<td>Email Address (already SHA256 hash)</td>
-<td><ul><li>Provide an email address that has been SHA256 hashed.</li></ul></td>
+<td>Phone Number</td>
+<td>(already SHA256 hashed) Provide a phone number that has been SHA256 hashed.</td>
 </tr>
 <tr>
-<td>Mobile Ad ID (already SHA256 hashed)</td>
-<td><ul><li>Provide a mobile ad ID.</li><li>Example: <code>iOS</code>, <code>IDFA</code>, or <code>AAID</code>, that has been SHA256 hashed.</li><li>Empty or null hashed values are ignored.</li></ul></td>
+<td>Mobile Ad ID</td>
+<td>The mobile advertiser ID.</td>
 </tr>
 <tr>
-<td>Mobile Ad ID (apply SHA256 hash)</td>
-<td><ul><li>Provide a lowercased plain text mobile ad ID.</li><li>Example: <code>iOS</code>, <code>IDFA</code>, or <code>AAID</code> and the connector will hash this value in the format Snapchat expects.</li></ul></td>
+<td>IP Address</td>
+<td>The IP Address of the device.</td>
 </tr>
 <tr>
-<td>Phone Number (already SHA256 hashed)</td>
-<td><ul><li>Provide a phone number that has been SHA256 hashed.</li><li>Empty or null hashed values are ignored.</li></ul></td>
+<td>Vendor Identifier</td>
+<td>Provide a plain text vendor identifier and the connector will hash this value in the format Snapchat expects.</td>
 </tr>
 <tr>
-<td>Phone Number (apply SHA256 hash)</td>
-<td><ul><li>Provide a plain text phone number and the connector will hash this value in the format Snapchat expects.</li></ul></td>
+<td>First Name</td>
+<td>First name in lower case letters only.</td>
 </tr>
 <tr>
-<td>IP Address (already SHA256 hashed)</td>
-<td><ul><li>Provide a IP address that has been SHA256 hashed.</li><li>Empty or null hashed values are ignored.</li></ul></td>
+<td>Last Name</td>
+<td>Last name in lower case letters only.</td>
 </tr>
 <tr>
-<td>IP Address (apply SHA256 hash)</td>
-<td><ul><li>Provide a plain text IP address and the connector will hash this value in the format Snapchat expects.</li><li>Use the Client IP attribute (recommended).</li></ul></td>
+<td>Gender</td>
+<td>Customer gender. Supported values: <code>f</code> for female, <code>m</code> for male.</td>
 </tr>
 <tr>
-<td>Vendor Identifier (already SHA256 hashed)</td>
-<td><ul><li>Provide a vendor identifier that has been SHA256 hashed.</li><li>Empty or null hashed values are ignored.</li></ul></td>
+<td>City</td>
+<td>City associated with the conversion in lower case letters only.</td>
 </tr>
 <tr>
-<td>Vendor Identifier (apply SHA256 hash)</td>
-<td><ul><li>Provide a plain text vendor identifier and the connector will hash this value in the format Snapchat expects.</li></ul></td>
+<td>State</td>
+<td>State associated with the conversion.</td>
 </tr>
 <tr>
-<td>User Agent</td>
-<td><ul><li>Use the User Agent attribute.</li><li>If this field is not mapped in EventStream, it will be auto-mapped to the attribute User Agent.</li><li>If this field is not mapped in AudienceStream, it will be auto-mapped to the visitor&rsquo;s last User Agent.</li></ul></td>
+<td>Zip</td>
+<td>Zip or postal code in lowercase.</td>
+</tr>
+<tr>
+<td>Country</td>
+<td>Country associated with the event.</td>
+</tr>
+<tr>
+<td>External ID</td>
+<td>A unique ID, such as a loyalty card ID or some other identifier.</td>
+</tr>
+<tr>
+<td>Subscription ID</td>
+<td>The subscription ID for the user who generated this event.</td>
+</tr>
+<tr>
+<td>Lead ID</td>
+<td>The identifier associated with your Snapchat Lead Ad.</td>
+</tr>
+<tr>
+<td>Anon ID</td>
+<td>This parameter is only for app events. It represents a unique application install ID.</td>
+</tr>
+<tr>
+<td>Download ID</td>
+<td>The ID associated with an app download event</td>
+</tr>
+<tr>
+<td>Click ID</td>
+<td>The ID value stored in the landing page URL’s <strong>&amp;ScCid=</strong> query parameter. Using this ID improves ad measurement performance. We also encourage advertisers who are using <strong>Click ID</strong> to pass the full URL in the <strong>Page Url</strong> field. For more details, please refer to <a href="https://marketingapi.snapchat.com/docs/conversion.html#sending-a-click-id">Snap: Sending a Click ID</a>.</td>
+</tr>
+<tr>
+<td>Cookie1</td>
+<td>If you are using the Pixel SDK, you can access a first-party cookie by looking at the <code>_scid</code> value under your domain.</td>
+</tr>
+<tr>
+<td>Client User Agent</td>
+<td>The user agent string of the user&rsquo;s web browser.</td>
+</tr>
+<tr>
+<td>Email address</td>
+<td>(already SHA256 hashed) Provide an email address which has been SHA256 hashed.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="dynamic-travel-ads">Dynamic Travel Ads</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Checkin Date</td>
+<td>The desired hotel check-in date in the hotel&rsquo;s time-zone. Accepted formats are <code>`YYYYMMDD`</code>, <code>`YYYY`-MM-`DD`</code>, <code>`YYYY`-MM-DDThh:mmTZD</code> and <code>`YYYY`-MM-DDThh:mm:ssTZD</code>.</td>
+</tr>
+<tr>
+<td>Travel End</td>
+<td>End date of travel.</td>
+</tr>
+<tr>
+<td>Travel Start</td>
+<td>Start date of travel.</td>
+</tr>
+<tr>
+<td>Suggested Destinations</td>
+<td>The suggested destinations.</td>
+</tr>
+<tr>
+<td>Destination Airport</td>
+<td>The IATA code of the destination airport.</td>
+</tr>
+<tr>
+<td>Country</td>
+<td>The country, based on the location the user intends to visit.</td>
+</tr>
+<tr>
+<td>City</td>
+<td>The city, based on the location the user intends to visit.</td>
+</tr>
+<tr>
+<td>Region</td>
+<td>The state, district, or region of interest to the user.</td>
+</tr>
+<tr>
+<td>Neighborhood</td>
+<td>The neighborhood the user is interested in.</td>
+</tr>
+<tr>
+<td>Departing Departure Date</td>
+<td>The starting date and time for travel.</td>
+</tr>
+<tr>
+<td>Departing Arrival Date</td>
+<td>The arrival date and time at the destination for travel.</td>
+</tr>
+<tr>
+<td>Num Adults</td>
+<td>The number of adults staying.</td>
+</tr>
+<tr>
+<td>Airport Code</td>
+<td>The official IATA code of origin airport.</td>
+</tr>
+<tr>
+<td>Returning Departure Date</td>
+<td>The starting date and time of the return journey.</td>
+</tr>
+<tr>
+<td>Returning Arrival Date</td>
+<td>The date and time when the return journey is complete.</td>
+</tr>
+<tr>
+<td>Number of Children</td>
+<td>The number of children staying.</td>
+</tr>
+<tr>
+<td>Hotel Score</td>
+<td>The hotel&rsquo;s score, relative to other hotels to an advertiser.</td>
+</tr>
+<tr>
+<td>Postal Code</td>
+<td>The postal or ZIP code.</td>
+</tr>
+<tr>
+<td>Number of Infants</td>
+<td>The number of infants staying.</td>
+</tr>
+<tr>
+<td>Preferred Neighborhoods</td>
+<td>Any preferred neighborhoods for the stay.</td>
+</tr>
+<tr>
+<td>Preferred Star Ratings</td>
+<td>The minimum and maximum hotel star rating supplied as a tuple. For example, <code>star1,star2</code> or <code>[&quot;star1&quot;, &quot;star2&quot;]</code>.</td>
+</tr>
+<tr>
+<td>Suggested Hotels</td>
+<td>The suggested hotels.</td>
+</tr>
+<tr>
+<td>Destination IDs</td>
+<td>The ID representative of the destination in the catalog.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="extended-device-info">Extended Device Info</h4>
+<p>Required parameters:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version</td>
+<td>The version.</td>
+</tr>
+<tr>
+<td>App Package Name</td>
+<td>The app package name.</td>
+</tr>
+<tr>
+<td>Short Version</td>
+<td>The short version of the application. For example, <code>1</code>.</td>
+</tr>
+<tr>
+<td>Long Version</td>
+<td>The long version of the application. For example, <code>1.0.12.1</code>.</td>
+</tr>
+<tr>
+<td>OS Version</td>
+<td>The OS version.</td>
+</tr>
+<tr>
+<td>Device Model Name</td>
+<td>The device model name.</td>
+</tr>
+<tr>
+<td>Locale</td>
+<td>The locale.</td>
+</tr>
+<tr>
+<td>Timezone Abbreviation</td>
+<td>The timezone abbreviation.</td>
+</tr>
+<tr>
+<td>Carrier</td>
+<td>The carrier.</td>
+</tr>
+<tr>
+<td>Screen Width</td>
+<td>The screen width.</td>
+</tr>
+<tr>
+<td>Screen Height</td>
+<td>The screen height.</td>
+</tr>
+<tr>
+<td>Screen Density</td>
+<td>The screen density.</td>
+</tr>
+<tr>
+<td>CPU Cores</td>
+<td>The number of CPU cores.</td>
+</tr>
+<tr>
+<td>External Storage Size in GB</td>
+<td>The external storage size in GB.</td>
+</tr>
+<tr>
+<td>Free Space on External Storage in GB</td>
+<td>The free space on external storage in GB.</td>
+</tr>
+<tr>
+<td>Device Timezone</td>
+<td>The device timezone.</td>
 </tr>
 </tbody>
 </table>
@@ -608,8 +916,8 @@ When sending data from multiple integrations, we recommend sending redundant dat
 </thead>
 <tbody>
 <tr>
-<td>Tealium iQ Tag ID</td>
-<td>When the Tealium iQ Tag ID is provided, the connector automatically looks for the <strong>Client Dedup ID</strong> value that is sent from Tealium iQ.</td>
+<td>Disable Automapping</td>
+<td>If Automapping is disabled, any automapped parameters will not be sent to the vendor by default.</td>
 </tr>
 </tbody>
 </table>
@@ -673,7 +981,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 9, 2022 
+          <p>This page was last updated:  October 10, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -696,7 +1004,7 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#connector-actions" href="javascript:void(0)">Connector Actions</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#configure-settings" href="javascript:void(0)">Configure Settings</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action-settings---parameters-and-options" href="javascript:void(0)">Action Settings - Parameters and Options</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-conversion" href="javascript:void(0)">Action - Send Conversion</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#action---send-conversion-v3" href="javascript:void(0)">Action - Send Conversion V3</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#parameters" href="javascript:void(0)">Parameters</a></li>
               </nav>
   </aside></nav>

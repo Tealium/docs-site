@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "client-side-tags",
-        reading_time  : "10",
+        reading_time  : "12",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -263,6 +263,7 @@
         <a href="/client-side-tags/mediamind-burstingpipe-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mediamind-burstingpipe-tag">MediaMind (BurstingPipe)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/merkle-merkury-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".merkle-merkury-tag-setup-guide">Merkle Merkury</a></li><li data-level="1" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/microsoft-advertising-universal-event-tracking-uet-tag/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".microsoft-advertising-universal-event-tracking-uet-tag">Microsoft Advertising Universal Event Tracking (UET)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/client-side-tags/microsoft-clarity-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".microsoft-clarity-tag">Microsoft Clarity</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/mixpanel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mixpanel-tag">Mixpanel</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/mntn-smarter-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".mntn-smarter-pixel-tag">MNTN Smarter Pixel</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/monetate-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".monetate-tag">Monetate</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -454,9 +455,37 @@
 <p>First, go to the Tealium tag marketplace and add the Microsoft Advertising Universal Event Tracking (UET) tag. For more information, see <a href="/iq-tag-management/tags/manage/#add-a-tag">Manage Tags</a>.</p>
 <p>After adding the tag, configure the following settings:</p>
 <ul>
-<li><strong>Tag ID</strong><br>
-Your Microsoft Advertising tag identifier (Tag ID).</li>
+<li><strong>Tag ID</strong>: Your Microsoft Advertising tag identifier.</li>
+<li><strong>Ad Storage Consent</strong>: Set the default consent for Ad Storage. Dynamically update this value by mapping the <code>ad_storage</code> parameter in the <strong>Data Mappings</strong> section.</li>
+<li><strong>Automatically read from Tealium Consent Cookie</strong>: If set to true, consent is set based on the <a href="/iq-tag-management/consent/consent-management/about/">Tealium Consent Manager</a>.</li>
 </ul>
+<h2 id="consent-mode">Consent mode</h2>
+<p>There are two options to implement consent mode for this tag:</p>
+<ul>
+<li>Use <a href="/iq-tag-management/consent/consent-management/about/">Tealium Consent Management</a> and automatically read the Tealium Consent cookie.</li>
+<li>Add a <a href="/iq-tag-management/extensions/extensions-list/javascript-code-basic-extension/">JavaScript Code extension</a> to map consent choices and category mappings from your consent management platform (CMP) to this tag.</li>
+</ul>
+<p>As visitors make their consent choices, the tag will choose the appropriate approach for first and third-party cookies:</p>
+<ul>
+<li><strong>Granted</strong>: Both first-party and third-party cookies can be read and written.</li>
+<li><strong>Denied</strong>: First-party cookies are neither read nor written, and third-party cookies are read-only for fraud and spam purposes, not for advertising.</li>
+</ul>
+<h3 id="tealium-consent-management">Tealium Consent Management</h3>
+<p>To implement consent mode for this tag using Tealium Consent Management, set <strong>Automatically read from Tealium Consent Cookie</strong> to <code>true</code> in the tag configuration.</p>
+<h3 id="javascript-code-extension">JavaScript Code extension</h3>
+<p>To map end-user consent choices to Microsoft consent mode settings, use the JavaScript Code extension. Configure the extension as follows:</p>
+<ul>
+<li>Set <strong>Scope</strong> to <strong>After Load Rules (default)</strong></li>
+<li>Set <strong>Occurrence</strong> to <strong>Run Always</strong></li>
+<li>Enter the JavaScript code for your CMP. You can customize the following code template for your CMP by replacing <code>CUSTOM_LOGIC</code> with the logic for your vendor.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">consent_decision</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">tealiumConsentRegister</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">tealiumConsentRegister</span>.<span style="color:#a6e22e">currentDecision</span>) <span style="color:#f92672">||</span> [];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">microsoft_ad_storage_consent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CUSTOM_LOGIC</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;granted&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;denied&#39;</span>;
+</span></span></code></pre></div><p>For example, the following code is for OneTrust.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// After Load Rules - Run Always
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">consent_decision</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">tealiumConsentRegister</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">tealiumConsentRegister</span>.<span style="color:#a6e22e">currentDecision</span>) <span style="color:#f92672">||</span> [];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">microsoft_ad_storage_consent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">consent_decision</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#39;C0004&#39;</span>) <span style="color:#f92672">!==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>  <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;granted&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;denied&#39;</span>;
+</span></span></code></pre></div><p>If you use these exact variable names, no additional mapping is required. The latest version of the tag uses these variables by default. Overwrite these variables by mapping the <code>ad_storage</code> parameter to attributes for your specific case.</p>
 <h2 id="data-mappings">Data Mappings</h2>
 <p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-layer/data-layer-variables/">data layer variable</a> to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">Data Mappings</a>.</p>
 <p>The available categories are:</p>
@@ -1135,13 +1164,13 @@ If using a custom parameter, enter a name with which to identify it.</li>
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/client-side-tags/mixpanel-tag/"
+  <a href="/client-side-tags/microsoft-clarity-tag/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>Mixpanel</div>
+      <div>Microsoft Clarity</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"Mixpanel"</title>
+      <title>"Microsoft Clarity"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -1189,7 +1218,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 5, 2024 
+          <p>This page was last updated:  October 16, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1205,7 +1234,10 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-tips" href="javascript:void(0)">Tag Tips</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-configuration" href="javascript:void(0)">Tag Configuration</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-mappings" href="javascript:void(0)">Data Mappings</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent-mode" href="javascript:void(0)">Consent mode</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-consent-management" href="javascript:void(0)">Tealium Consent Management</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#javascript-code-extension" href="javascript:void(0)">JavaScript Code extension</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-mappings" href="javascript:void(0)">Data Mappings</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#standard" href="javascript:void(0)">Standard</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e-commerce" href="javascript:void(0)">E-Commerce</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#events-and-engagements" href="javascript:void(0)">Events and Engagements</a></li>
@@ -1478,6 +1510,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
