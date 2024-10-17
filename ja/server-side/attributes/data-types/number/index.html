@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "2",
+        reading_time  : "1",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -536,38 +536,39 @@
 <ul>
 <li>小数値はゼロ（0）以上の小数桁を持つことができます。</li>
 <li>例：<code>12</code>、<code>12.0</code>、<code>12.345</code></li>
-<li>小数値はJava Doubleクラスを使用します。詳細については、<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html">Class Double</a>を参照してください。</li>
+<li>小数値はJavaのDoubleクラスを使用します。詳細は、<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Double.html">Class Double</a>を参照してください。</li>
 <li>通貨値を表す属性に推奨されます。</li>
 </ul>
 </li>
 <li><strong>整数</strong>
 <ul>
-<li>整数値のみが保存されます。</li>
+<li>保存されるのは整数値のみです。</li>
 <li>例：<code>12</code>、<code>-4</code>、<code>3214</code></li>
 <li>数量、カウンター、スコアを表す数値属性に便利です。</li>
 </ul>
 </li>
 </ul>
-<p>数値属性は次のスコープで利用可能です：イベント、訪問、訪問者。</p>
+<p>数値属性は次のスコープで利用可能です：イベント、訪問、訪問。</p>
 <figure><a class="slb" href="/images/server-side/scope-3checks.png"><img src="/images/server-side/scope-3checks.png"/>
     </a>
 </figure>
 <h3 id="サイズ制限">サイズ制限</h3>
-<p>数値属性のストレージ容量制限はありませんが、これらの属性は依然としてプロファイルの最大サイズに制限されます（暗号化と圧縮後の400 KB）。</p>
+<p>数値属性の小数値はdoubleデータ型として保存され、<code>-1.7976931348623157×10^308</code>から<code>1.7976931348623157×10^308</code>の範囲内でなければなりません。数値属性の整数値は<code>-2147483647</code>から<code>2147483647</code>の範囲内でなければなりません。詳細は、<a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html">Oracle: Primitive Data Types</a>を参照してください。</p>
+<p>数値属性は、暗号化と圧縮後のプロファイルの最大サイズ（400 KB）によっても制限されます。</p>
 <h2 id="数値のエンリッチメント">数値のエンリッチメント</h2>
 <h3 id="数値の増減エンリッチメント">数値の増減エンリッチメント</h3>
 <p>このエンリッチメントは、正の値（増加）または負の値（減少）で数値を変更します。変更値は別の数値属性または定数値であることができます。</p>
-<p>例えば、訪問者の注文のライフタイムトータルバリュー（LTV）を計算するために、このエンリッチメントを使用して<code>purchase</code>イベントが発生するたびに<code>order_total</code>属性の値で属性を増加させます。</p>
+<p>例えば、訪問の注文のライフタイムトータルバリュー（LTV）を計算するために、このエンリッチメントを使用して<code>purchase</code>イベントが発生するたびに<code>order_total</code>属性の値で属性を増加させます。</p>
 <p><strong>属性名</strong>：ライフタイムトータルバリュー</p>
 <ul>
 <li><strong>初期値</strong>：<code>121.78</code></li>
 <li><strong>エンリッチメント対象</strong>：  order_total <code>220.00</code></li>
 <li><strong>結果</strong>：<code>341.78</code></li>
 </ul>
-<h3 id="比率の設定">比率の設定</h3>
-<p>2つの数値の商を新しい比率数として設定します。</p>
-<p>例えば、平均カートアイテム数を計算するために、このエンリッチメントを使用して、購入したカートアイテムの合計属性と完了した注文の合計属性の比率を設定します。</p>
-<p><strong>属性名</strong>：平均カートアイテム数</p>
+<h3 id="比率の構成">比率の構成</h3>
+<p>2つの数値の商を新しい比率の数値として構成します。</p>
+<p>例えば、平均カートアイテム数/注文数を計算するために、このエンリッチメントを使用して、購入したカートアイテムの合計属性と完了した注文の合計属性の比率を構成します。</p>
+<p><strong>属性名</strong>：平均カートアイテム数/注文数</p>
 <ul>
 <li><strong>初期値</strong>：&mdash;</li>
 <li><strong>エンリッチメント対象</strong>：<br>
@@ -575,8 +576,8 @@
 完了した注文の合計: <code>3.00</code></li>
 <li><strong>結果</strong>：<code>16.00</code></li>
 </ul>
-<h3 id="積の設定">積の設定</h3>
-<p>2つの数値の積を新しい数値として設定します。</p>
+<h3 id="積の構成">積の構成</h3>
+<p>2つの数値の積を新しい数値として構成します。</p>
 <p>例えば、<code>coupon_discount_amount</code>を計算するために、このエンリッチメントを使用して<code>order_subtotal</code>と<code>coupon_discount_percent</code>を掛け合わせます。</p>
 <p><strong>属性名</strong>：<code>coupon_discount_amount</code></p>
 <ul>
@@ -586,8 +587,8 @@ order_subtotal: <code>42.00</code><br>
 coupon_discount_percent: <code>0.05</code></li>
 <li><strong>結果</strong>：<code>2.10</code></li>
 </ul>
-<h3 id="差の設定">差の設定</h3>
-<p>2つの数値の差を新しい数値として設定します。</p>
+<h3 id="差の構成">差の構成</h3>
+<p>2つの数値の差を新しい数値として構成します。</p>
 <p><strong>属性名</strong>：<code>order_subtotal</code></p>
 <ul>
 <li><strong>初期値</strong>：<code>42.00 </code></li>
@@ -596,9 +597,9 @@ order_subtotal: <code>42.00</code><br>
 coupon_discount_amount: <code>2.10</code></li>
 <li><strong>結果</strong>：<code>39.90</code></li>
 </ul>
-<h3 id="合計の設定">合計の設定</h3>
-<p>2つの数値の合計に設定します。</p>
-<p>例えば、<code>order_total</code>を<code>order_subtotal</code>と<code>order_tax_amount</code>の合計に設定します。</p>
+<h3 id="合計の構成">合計の構成</h3>
+<p>2つの数値の合計に構成します。</p>
+<p>例えば、<code>order_total</code>を<code>order_subtotal</code>と<code>order_tax_amount</code>の合計に構成します。</p>
 <p><strong>属性名</strong>：<code>order_total</code></p>
 <ul>
 <li><strong>初期値</strong>：&mdash;</li>
@@ -607,16 +608,16 @@ order_subtotal: <code>39.90</code><br>
 order_tax_amount: <code>3.29</code></li>
 <li><strong>結果</strong>：<code>43.19</code></li>
 </ul>
-<h3 id="数値の設定">数値の設定</h3>
-<p>数値を特定の数値に設定します。</p>
-<p>例えば、<code>purchase</code>イベントが発生するたびに、最後の購入金額を<code>order_total</code>の値に設定します。</p>
+<h3 id="数値の構成">数値の構成</h3>
+<p>数値を特定の数値に構成します。</p>
+<p>例えば、<code>purchase</code>イベントが発生するたびに、Last Purchase Amountを<code>order_total</code>の値に構成します。</p>
 <p><strong>属性名</strong>：最後の購入金額</p>
 <ul>
 <li><strong>初期値</strong>：&mdash;</li>
 <li><strong>エンリッチメント対象</strong>： order_total:<code>43.19</code></li>
 <li><strong>結果</strong>：<code>43.19</code></li>
 </ul>
-<h3 id="2つの日付間の差の設定">2つの日付間の差の設定</h3>
+<h3 id="2つの日付間の差の構成">2つの日付間の差の構成</h3>
 <p>2つのイベント間の経過時間を計算します。経過時間は以下のいずれかで表現できます：</p>
 <ul>
 <li>分</li>
@@ -625,7 +626,7 @@ order_tax_amount: <code>3.29</code></li>
 <li>週</li>
 <li>月</li>
 </ul>
-<p>差は常に正の値として保存されるため、日付は任意の順序で設定できます。</p>
+<p>差は常に正の値として保存されるため、日付は任意の順序で構成できます。</p>
 <p>例えば、最後の購入日と現在の訪問日との間の日数の差として、最後の購入からの日数を計算します。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>日付属性はUnixタイムスタンプとして保存されますが、これらの例では読みやすさのためにフォーマットされた日付を使用しています。</p>
 <p><strong>属性名</strong>：最後の購入からの日数</p>
@@ -636,40 +637,40 @@ order_tax_amount: <code>3.29</code></li>
 現在の訪問日: <code>&quot;2019/11/01&quot;</code></li>
 <li><strong>結果</strong>：<code>367</code></li>
 </ul>
-<h3 id="タイムラインに基づく移動平均の設定">タイムラインに基づく移動平均の設定</h3>
-<p>移動平均は、時間経過とともに取得された数値の算術平均です。これらの値は、<a href="/ja/server-side/attributes/data-types/timeline/">timeline</a>内のエントリとして収集される数値とtally](/ja/server-side/attributes/data-types/tally/)属性から来ます。タイムラインの有効期限が最終平均にどのエントリを考慮に入れるかを決定します。有効期限がない場合、それは単純な平均解です。</p>
+<h3 id="タイムラインに基づくローリング平均の構成">タイムラインに基づくローリング平均の構成</h3>
+<p>ローリング平均は、時間経過とともに取得された数値の算術平均です。これらの値は、<a href="/ja/server-side/attributes/data-types/timeline/">timeline</a>内のエントリとして収集される数値とtally](/ja/server-side/attributes/data-types/tally/)属性から来ます。タイムラインの有効期限が最終平均にどのエントリを含めることができるかを決定します。有効期限がない場合、それは単純な平均解です。</p>
 <p><strong>属性名</strong>：平均注文値</p>
 <ul>
 <li><strong>初期値</strong>：&mdash;</li>
-<li><strong>エンリッチメント対象</strong>： <code>[20.00, 30.00, 40.00, 50.00]</code></li>
-<li><strong>結果</strong>： <code>35.00</code></li>
+<li><strong>エンリッチメント対象</strong>：<code>[20.00, 30.00, 40.00, 50.00]</code></li>
+<li><strong>結果</strong>：<code>35.00</code></li>
 </ul>
-<h3 id="タイムラインに基づく移動合計の設定">タイムラインに基づく移動合計の設定</h3>
-<p>移動合計は、数値または<a href="/ja/server-side/attributes/data-types/tally/">tally</a>属性の数値値の集計で、これらは<a href="/ja/server-side/attributes/data-types/timeline/">timeline</a>内のエントリとして取得されます。タイムラインの有効期限が集計中にどのエントリを考慮に入れるかを決定します。</p>
+<h3 id="タイムラインに基づくローリング合計の構成">タイムラインに基づくローリング合計の構成</h3>
+<p>ローリング合計は、数値または<a href="/ja/server-side/attributes/data-types/tally/">tally</a>属性の数値の集計で、これらは<a href="/ja/server-side/attributes/data-types/timeline/">timeline</a>内のエントリとして取得されます。タイムラインの有効期限が、集計中にどのエントリを含めることができるかを決定します。</p>
 <p><strong>属性名</strong>：合計注文値</p>
 <ul>
 <li><strong>初期値</strong>：&mdash;</li>
-<li><strong>エンリッチメント対象</strong>： <code>[10.00, 20.00, 30.00, 40.00, 50.00]</code></li>
-<li><strong>結果</strong>： <code>150.00</code></li>
+<li><strong>エンリッチメント対象</strong>：<code>[10.00, 20.00, 30.00, 40.00, 50.00]</code></li>
+<li><strong>結果</strong>：<code>150.00</code></li>
 </ul>
-<h3 id="タイムラインのエントリ数に数値を設定">タイムラインのエントリ数に数値を設定</h3>
-<p>数値をタイムラインのエントリ数に設定します。</p>
+<h3 id="タイムラインのエントリ数に数値を構成">タイムラインのエントリ数に数値を構成</h3>
+<p>数値をタイムラインのエントリ数に構成します。</p>
 <p><strong>属性名</strong>：合計注文数</p>
 <ul>
 <li><strong>初期値</strong>：&mdash;</li>
-<li><strong>エンリッチメント対象</strong>： <code>[10.00, 20.00, 30.00, 40.00, 50.00]</code></li>
-<li><strong>結果</strong>： <code>5.00</code></li>
+<li><strong>エンリッチメント対象</strong>：<code>[10.00, 20.00, 30.00, 40.00, 50.00]</code></li>
+<li><strong>結果</strong>：<code>5.00</code></li>
 </ul>
-<h3 id="数値をtally値に設定">数値をtally値に設定</h3>
-<p>数値をtally内の特定の値に設定します。tally属性とtally内のエントリの名前を指定します。例えば、サイトカテゴリビューのtallyには&quot;Shoes&quot;というエントリがあるかもしれません。</p>
+<h3 id="数値をtally値に構成">数値をtally値に構成</h3>
+<p>数値をtally内の特定の値に構成します。tally属性とtally内のエントリの名前を指定します。例えば、サイトカテゴリビューのtallyには&quot;Shoes&quot;というエントリがあるかもしれません。</p>
 <p><strong>属性名</strong>：シューズカテゴリビューカウント</p>
 <ul>
 <li><strong>初期値</strong>：&mdash;</li>
-<li><strong>エンリッチメント対象</strong>： サイトカテゴリビュー: <code>{&quot;Shoes&quot;: 42}</code></li>
-<li><strong>結果</strong>： <code>42</code></li>
+<li><strong>エンリッチメント対象</strong>：サイトカテゴリビュー: <code>{&quot;Shoes&quot;: 42}</code></li>
+<li><strong>結果</strong>：<code>42</code></li>
 </ul>
-<h3 id="数値をtallyのエントリ数に設定">数値をtallyのエントリ数に設定</h3>
-<p>属性をtallyのエントリ数に設定します。例えば、サイトカテゴリビューのtallyには3つのエントリがあるかもしれません。</p>
+<h3 id="数値をtallyのエントリ数に構成">数値をtallyのエントリ数に構成</h3>
+<p>属性をtallyのエントリ数に構成します。例えば、サイトカテゴリビューのtallyには3つのエントリがあるかもしれません。</p>
 <p><strong>属性名</strong>：閲覧したカテゴリ数</p>
 <ul>
 <li><strong>初期値</strong>：&mdash;</li>
@@ -681,35 +682,35 @@ order_tax_amount: <code>3.29</code></li>
   &#34;Pants&#34;: 8
 } 
 </code></pre><ul>
-<li><strong>結果</strong>： <code>3.00</code></li>
+<li><strong>結果</strong>：<code>3.00</code></li>
 </ul>
-<h3 id="文字列セットのアイテム数に数値を設定">文字列セットのアイテム数に数値を設定</h3>
-<p>数値を文字列セットのアイテム数に設定します。例えば、アクティブなブラウザタイプの文字列セットには3つのエントリがあるかもしれません。</p>
+<h3 id="文字列セットのアイテム数に数値を構成">文字列セットのアイテム数に数値を構成</h3>
+<p>数値を文字列セットのアイテム数に構成します。例えば、アクティブなブラウザタイプの文字列セットには3つのエントリがあるかもしれません。</p>
 <p><strong>属性名</strong>：アクティブなブラウザタイプの数</p>
 <ul>
 <li><strong>初期値</strong>：&mdash;</li>
-<li><strong>エンリッチメント対象</strong>： <code>[&quot;Firefox&quot;, &quot;Safari&quot;, &quot;Chrome&quot;]</code></li>
-<li><strong>結果</strong>： <code>3.00</code></li>
+<li><strong>エンリッチメント対象</strong>：<code>[&quot;Firefox&quot;, &quot;Safari&quot;, &quot;Chrome&quot;]</code></li>
+<li><strong>結果</strong>：<code>3.00</code></li>
 </ul>
-<h3 id="タイムラインに基づくtallyの移動最大値に数値を設定">タイムラインに基づくtallyの移動最大値に数値を設定</h3>
-<p>数値を、タイムライン内で取得された別の数値の移動最大値に設定します。</p>
+<h3 id="タイムラインに基づくtallyのローリング最大値に数値を構成">タイムラインに基づくtallyのローリング最大値に数値を構成</h3>
+<p>数値を、タイムライン内で取得されたtallyの別の数値のローリング最大値に構成します。</p>
 <p><strong>属性名</strong>：最高注文値</p>
 <ul>
 <li><strong>初期値</strong>：&mdash;</li>
-<li><strong>エンリッチメント対象</strong>： <code>[10.00, 20.00, 30.00, 40.00, 50.00]</code></li>
-<li><strong>結果</strong>： <code>50.00</code></li>
+<li><strong>エンリッチメント対象</strong>：<code>[10.00, 20.00, 30.00, 40.00, 50.00]</code></li>
+<li><strong>結果</strong>：<code>50.00</code></li>
 </ul>
-<h3 id="数値の変化に数値を設定">数値の変化に数値を設定</h3>
-<p>この属性を、最後のイベントからの別の属性との差に設定します。例えば、このエンリッチメントを使用して、前回の注文金額と現在の注文金額の差を取得します。注文値の変化という属性を設定するには、前回の注文から<code>order_subtotal</code>の変化を設定します。</p>
+<h3 id="数値の変化に数値を構成">数値の変化に数値を構成</h3>
+<p>この属性を、最後のイベントから別の属性との差に構成します。例えば、このエンリッチメントを使用して、前回の注文金額と現在の注文金額の差を取得します。注文値の変化という属性を構成するには、前回の注文から<code>order_subtotal</code>の変化を構成します。</p>
 <p><strong>属性名</strong>：注文値の変化</p>
 <ul>
 <li><strong>初期値</strong>：<code>30.00 </code></li>
 <li><strong>エンリッチメント対象</strong>： order_subtotal: <code>42.00</code></li>
-<li><strong>結果</strong>： <code>12.00</code></li>
+<li><strong>結果</strong>：<code>12.00</code></li>
 </ul>
-<h3 id="日付の変化に数値を設定">日付の変化に数値を設定</h3>
-<p>この属性を、このイベントと最後のイベントの間の選択された値の変化に設定します。例えば、このエンリッチメントを使用して、購入が行われるたびに最後の購入日の日付属性の月数の変化を取得します。</p>
-<p>日付の変化は以下のいずれかで表現できます：</p>
+<h3 id="日付の変化に数値を構成">日付の変化に数値を構成</h3>
+<p>この属性を、このイベントと最後のイベントとの間で選択した値の変化に構成します。例えば、このエンリッチメントを使用して、購入が行われるたびに最後の購入日の日付属性の月数の変化を取得します。
+日付の変更は以下のいずれかで表現できます：</p>
 <ul>
 <li>分</li>
 <li>時間</li>
@@ -719,19 +720,19 @@ order_tax_amount: <code>3.29</code></li>
 </ul>
 <p><strong>属性名</strong>：最後の購入からの月数</p>
 <ul>
-<li><strong>初期値</strong>：</li>
-<li><strong>エンリッチメント対象</strong>：<br>
-最後の購入日（最後のイベント）: <code>&quot;10/31/2019&quot;</code><br>
-最後の購入日（このイベント）: <code>&quot;12/31/2019&quot;</code></li>
-<li><strong>結果</strong>： 2 (月)</li>
+<li><strong>初期</strong>：</li>
+<li><strong>エンリッチメント情報</strong>：<br>
+最後の購入日（最後のイベント）：<code>&quot;10/31/2019&quot;</code><br>
+最後の購入日（このイベント）：<code>&quot;12/31/2019&quot;</code></li>
+<li><strong>結果</strong>：2（月）</li>
 </ul>
-<h3 id="配列内のアイテム数に設定">配列内のアイテム数に設定</h3>
-<p>配列内のアイテム数に設定します。例えば、カート内の商品数を保存するために、このエンリッチメントを使用して<code>cart_product_id</code>配列内のアイテム数を取得します。</p>
+<h3 id="配列内のアイテム数に構成する">配列内のアイテム数に構成する</h3>
+<p>配列内のアイテム数に構成します。例えば、カート内の商品数を保存するためには、このエンリッチメント情報を使用して<code>cart_product_id</code>配列内のアイテム数を取得します。</p>
 <p><strong>属性名</strong>：<code>num_cart_items</code></p>
 <ul>
-<li><strong>初期値</strong>：&mdash;</li>
-<li><strong>エンリッチメント対象</strong>： product_id: <code>[&quot;prod123&quot;, &quot;prod456&quot;]</code></li>
-<li><strong>結果</strong>： <code>2.00</code></li>
+<li><strong>初期</strong>：&mdash;</li>
+<li><strong>エンリッチメント情報</strong>：product_id: <code>[&quot;prod123&quot;, &quot;prod456&quot;]</code></li>
+<li><strong>結果</strong>：<code>2.00</code></li>
 </ul>
 
 </div>
@@ -793,7 +794,7 @@ order_tax_amount: <code>3.29</code></li>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年April月17日
+          <p>最終更新日 ::  2024年October月16日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -811,22 +812,22 @@ order_tax_amount: <code>3.29</code></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%82%A4%E3%82%BA%E5%88%B6%E9%99%90" href="javascript:void(0)">サイズ制限</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%95%B0%E5%80%A4%E3%81%AE%E3%82%A8%E3%83%B3%E3%83%AA%E3%83%83%E3%83%81%E3%83%A1%E3%83%B3%E3%83%88" href="javascript:void(0)">数値のエンリッチメント</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%95%B0%E5%80%A4%E3%81%AE%E5%A2%97%E6%B8%9B%E3%82%A8%E3%83%B3%E3%83%AA%E3%83%83%E3%83%81%E3%83%A1%E3%83%B3%E3%83%88" href="javascript:void(0)">数値の増減エンリッチメント</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%AF%94%E7%8E%87%E3%81%AE%E8%A8%AD%E5%AE%9A" href="javascript:void(0)">比率の設定</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%A9%8D%E3%81%AE%E8%A8%AD%E5%AE%9A" href="javascript:void(0)">積の設定</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%B7%AE%E3%81%AE%E8%A8%AD%E5%AE%9A" href="javascript:void(0)">差の設定</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%88%E8%A8%88%E3%81%AE%E8%A8%AD%E5%AE%9A" href="javascript:void(0)">合計の設定</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%95%B0%E5%80%A4%E3%81%AE%E8%A8%AD%E5%AE%9A" href="javascript:void(0)">数値の設定</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2%E3%81%A4%E3%81%AE%E6%97%A5%E4%BB%98%E9%96%93%E3%81%AE%E5%B7%AE%E3%81%AE%E8%A8%AD%E5%AE%9A" href="javascript:void(0)">2つの日付間の差の設定</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%AB%E5%9F%BA%E3%81%A5%E3%81%8F%E7%A7%BB%E5%8B%95%E5%B9%B3%E5%9D%87%E3%81%AE%E8%A8%AD%E5%AE%9A" href="javascript:void(0)">タイムラインに基づく移動平均の設定</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%AB%E5%9F%BA%E3%81%A5%E3%81%8F%E7%A7%BB%E5%8B%95%E5%90%88%E8%A8%88%E3%81%AE%E8%A8%AD%E5%AE%9A" href="javascript:void(0)">タイムラインに基づく移動合計の設定</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%AE%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AA%E6%95%B0%E3%81%AB%E6%95%B0%E5%80%A4%E3%82%92%E8%A8%AD%E5%AE%9A" href="javascript:void(0)">タイムラインのエントリ数に数値を設定</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%95%B0%E5%80%A4%E3%82%92tally%E5%80%A4%E3%81%AB%E8%A8%AD%E5%AE%9A" href="javascript:void(0)">数値をtally値に設定</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%95%B0%E5%80%A4%E3%82%92tally%E3%81%AE%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AA%E6%95%B0%E3%81%AB%E8%A8%AD%E5%AE%9A" href="javascript:void(0)">数値をtallyのエントリ数に設定</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%96%87%E5%AD%97%E5%88%97%E3%82%BB%E3%83%83%E3%83%88%E3%81%AE%E3%82%A2%E3%82%A4%E3%83%86%E3%83%A0%E6%95%B0%E3%81%AB%E6%95%B0%E5%80%A4%E3%82%92%E8%A8%AD%E5%AE%9A" href="javascript:void(0)">文字列セットのアイテム数に数値を設定</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%AB%E5%9F%BA%E3%81%A5%E3%81%8Ftally%E3%81%AE%E7%A7%BB%E5%8B%95%E6%9C%80%E5%A4%A7%E5%80%A4%E3%81%AB%E6%95%B0%E5%80%A4%E3%82%92%E8%A8%AD%E5%AE%9A" href="javascript:void(0)">タイムラインに基づくtallyの移動最大値に数値を設定</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%95%B0%E5%80%A4%E3%81%AE%E5%A4%89%E5%8C%96%E3%81%AB%E6%95%B0%E5%80%A4%E3%82%92%E8%A8%AD%E5%AE%9A" href="javascript:void(0)">数値の変化に数値を設定</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%97%A5%E4%BB%98%E3%81%AE%E5%A4%89%E5%8C%96%E3%81%AB%E6%95%B0%E5%80%A4%E3%82%92%E8%A8%AD%E5%AE%9A" href="javascript:void(0)">日付の変化に数値を設定</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%85%8D%E5%88%97%E5%86%85%E3%81%AE%E3%82%A2%E3%82%A4%E3%83%86%E3%83%A0%E6%95%B0%E3%81%AB%E8%A8%AD%E5%AE%9A" href="javascript:void(0)">配列内のアイテム数に設定</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%AF%94%E7%8E%87%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">比率の構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%A9%8D%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">積の構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%B7%AE%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">差の構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%88%E8%A8%88%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">合計の構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%95%B0%E5%80%A4%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">数値の構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#2%E3%81%A4%E3%81%AE%E6%97%A5%E4%BB%98%E9%96%93%E3%81%AE%E5%B7%AE%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">2つの日付間の差の構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%AB%E5%9F%BA%E3%81%A5%E3%81%8F%E3%83%AD%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0%E5%B9%B3%E5%9D%87%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">タイムラインに基づくローリング平均の構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%AB%E5%9F%BA%E3%81%A5%E3%81%8F%E3%83%AD%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0%E5%90%88%E8%A8%88%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">タイムラインに基づくローリング合計の構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%AE%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AA%E6%95%B0%E3%81%AB%E6%95%B0%E5%80%A4%E3%82%92%E6%A7%8B%E6%88%90" href="javascript:void(0)">タイムラインのエントリ数に数値を構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%95%B0%E5%80%A4%E3%82%92tally%E5%80%A4%E3%81%AB%E6%A7%8B%E6%88%90" href="javascript:void(0)">数値をtally値に構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%95%B0%E5%80%A4%E3%82%92tally%E3%81%AE%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AA%E6%95%B0%E3%81%AB%E6%A7%8B%E6%88%90" href="javascript:void(0)">数値をtallyのエントリ数に構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%96%87%E5%AD%97%E5%88%97%E3%82%BB%E3%83%83%E3%83%88%E3%81%AE%E3%82%A2%E3%82%A4%E3%83%86%E3%83%A0%E6%95%B0%E3%81%AB%E6%95%B0%E5%80%A4%E3%82%92%E6%A7%8B%E6%88%90" href="javascript:void(0)">文字列セットのアイテム数に数値を構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%AB%E5%9F%BA%E3%81%A5%E3%81%8Ftally%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0%E6%9C%80%E5%A4%A7%E5%80%A4%E3%81%AB%E6%95%B0%E5%80%A4%E3%82%92%E6%A7%8B%E6%88%90" href="javascript:void(0)">タイムラインに基づくtallyのローリング最大値に数値を構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%95%B0%E5%80%A4%E3%81%AE%E5%A4%89%E5%8C%96%E3%81%AB%E6%95%B0%E5%80%A4%E3%82%92%E6%A7%8B%E6%88%90" href="javascript:void(0)">数値の変化に数値を構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%97%A5%E4%BB%98%E3%81%AE%E5%A4%89%E5%8C%96%E3%81%AB%E6%95%B0%E5%80%A4%E3%82%92%E6%A7%8B%E6%88%90" href="javascript:void(0)">日付の変化に数値を構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%85%8D%E5%88%97%E5%86%85%E3%81%AE%E3%82%A2%E3%82%A4%E3%83%86%E3%83%A0%E6%95%B0%E3%81%AB%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">配列内のアイテム数に構成する</a></li>
               </nav>
   </aside></nav>
 

@@ -110,7 +110,7 @@
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".iq-profiles-api">iQプロファイル</a>
         <ul class="pl2  iq-profiles-api desktopmenu animated fadeIn list  dn"><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api-v3/iq-profiles/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-v3-api">iQプロファイルについて</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/early-access/api-v3/iq-profiles/iq-profiles-api-objects/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-api-objects">iQ Profiles APIオブジェクト</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/api-v3/iq-profiles/iq-profiles-api-objects/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-profiles-api-objects">iQプロファイルAPIオブジェクト</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api-v3/iq-profiles/iq-get-profile-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-get-profile-api">iQ GETプロフィールAPI</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api-v3/iq-profiles/iq-javascript-extension-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-javascript-extension-api">iQ JavaScript拡張API</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/api-v3/iq-profiles/iq-events-api/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".early-access-iq-events-api">iQイベントAPI</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -172,10 +172,11 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>Consent Orchestration機能は現在、早期アクセス段階にあり、リクエストによりのみ利用可能です。この機能を試して改善に協力していただくことに興味がある場合は、カスタマーサクセスマネージャーにご連絡ください。現段階では、イベントレベルの強制のみが利用可能で、Audiencesでは<a href="/ja/server-side/consent/consent-management/#manual-enforcement-instructions">手動強制</a>が必要です。</p>
-<p>Tealium Consent Orchestrationは、イベントレベルのアクティベーションの同意条件を中央で制御することができます。ユーザーの同意をリアルタイムで強制し、データ処理がユーザーの構成と法的要件に準拠することを確認します。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>Consent Orchestration機能は現在、早期アクセス中で、リクエストによりのみ利用可能です。この機能を試して改善に協力していただくことに興味がある場合は、カスタマーサクセスマネージャーにお問い合わせください。</p>
+<p>Tealium Consent Orchestrationでは、イベントレベルのアクティベーションの同意条件を中央で制御できます。リアルタイムでユーザーの同意を強制し、データ処理がユーザーの構成と法的要件に準拠することを確認します。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>現在、イベントレベルの強制のみが利用可能で、Audiencesでは<a href="/ja/server-side/consent/consent-management/#step-2-audiencestream-connectors-functions-and-audiencestore">手動強制</a>が必要です。</p>
 <h2 id="仕組み">仕組み</h2>
-<p>サーバーサイドでConsent Orchestrationを使用して、同意ルールを目的グループにまとめることができます。これらの目的グループは、イベントレベルのアクティベーションがユーザーの同意とプライバシールールを遵守することを確認するのに役立ちます。必要に応じて、明示的なユーザーの同意なしに必要なデータを追跡するための免除を使用することができます。</p>
+<p>サーバーサイドのConsent Orchestrationでは、同意ルールを目的グループにまとめることができます。これらの目的グループは、イベントレベルのアクティベーションがユーザーの同意とプライバシールールを遵守することを確認するのに役立ちます。必要に応じて、明示的なユーザーの同意なしに必要なデータを追跡するための免除を使用することができます。</p>
 <h3 id="イベントレベルのアクティベーション">イベントレベルのアクティベーション</h3>
 <p>Consent Orchestrationは、以下の機能の同意ルールに対する中央制御を提供します：</p>
 <ul>
@@ -187,19 +188,19 @@
 </ul>
 <p>現在、Consent OrchestrationはAudienceStreamのアクティベーションを制御していません。この機能は後のフェーズで導入される予定です。</p>
 <h3 id="目的グループと同意ポリシー">目的グループと同意ポリシー</h3>
-<p>目的グループは、データ収集または処理の特定の目的を含む同意ポリシーを定義し適用するために使用されます。目的グループは、イベントレベルのアクティベーションが同意されたデータのみを処理することを確認します。各目的グループには、ユーザーの同意が尊重されることを確認するために、イベントレベルのアクティベーションにマッピングされるデータ処理目的のリストが含まれています。目的の一般的な例には、<strong>マーケティング</strong>や<strong>必要</strong>などのカテゴリー、またはユーザーに提供する同意選択に応じたベンダー固有の目的（<strong>Google Analytics</strong>など）があります。</p>
+<p>目的グループは、データ収集または処理の特定の目的を含む同意ポリシーを定義し適用するために使用されます。目的グループは、イベントレベルのアクティベーションが同意されたデータのみを処理することを確認します。各目的グループ内には、ユーザーの同意が尊重されることを確認するために、イベントレベルのアクティベーションにマッピングされるデータ処理目的のリストがあります。目的の一般的な例には、<strong>マーケティング</strong>や<strong>必要</strong>などのカテゴリーや、ユーザーに提供する同意選択により、<strong>Google Analytics</strong>などのベンダー固有の目的が含まれます。</p>
 <h3 id="強制ルール">強制ルール</h3>
-<p>複数の目的グループや免除を管理するために、強制ルールを使用することができます。1つ以上の強制ルールが適用される場合の詳細については、<a href="/ja/early-access/consent-orchestration/enforcement-conditions-conflict/">実施条件の競合の取り扱い</a>を参照してください。</p>
+<p>複数の目的グループや免除を管理するために強制ルールを使用することができます。もし複数の強制ルールが適用される場合の詳細については、<a href="/ja/early-access/consent-orchestration/enforcement-conditions-conflict/">実施条件の競合の取り扱い</a>をご覧ください。</p>
 <h3 id="免除">免除</h3>
 <p>免除は、データプライバシーコントロールなしで特定の条件下でのデータ追跡を許可します。規制要件や運用上のニーズに基づいて同意強制の明確な例外のために免除を作成します。このアプローチは、データ保護規制の遵守を確保しながら柔軟性を提供します。</p>
 <p>免除の例には以下のようなものがあります：</p>
 <ul>
-<li>地理的な免除：データプライバシーコントロールがない国については、同意コントロールを強制せずにデータ処理を許可する免除が適用されます。CCPAを持つ米国（カリフォルニア）やGDPRを持つヨーロッパなど、データプライバシー法がある他の国については、それぞれのポリシー（目的グループとして実装）が適用されます。</li>
-<li>データソースキー：データソースキーに基づく免除、例えば、すでに同意されている特定のファイルインポートからデータが来る場合など、さらなる同意コントロールは必要ありません。</li>
+<li>地理的な免除：データプライバシーコントロールがない国については、同意コントロールを強制せずにデータ処理を許可する免除が適用されます。US（カリフォルニア州のCCPA）やEurope（GDPR）のようなデータプライバシー法がある他の国については、それぞれのポリシー（目的グループとして実装）が適用されます。</li>
+<li>データソースキー：データソースキーに基づく免除、例えばデータがすでに同意されている特定のファイルインポートから来る場合など、さらなる同意コントロールは必要ありません。</li>
 </ul>
 <h3 id="レガシー強制の置き換え">レガシー強制の置き換え</h3>
-<p>この機能は<a href="/ja/server-side/consent/consent-management/">サーバーサイド同意管理</a>を無効にしますが、目的ルール内の<code>consent_categories</code>配列は引き続き使用できます。</p>
-<h2 id="consent-orchestrationフロー">Consent Orchestrationフロー</h2>
+<p>この機能は<a href="/ja/server-side/consent/consent-management/">サーバーサイドの同意管理</a>を無効にしますが、目的ルール内の<code>consent_categories</code>配列は引き続き使用できます。</p>
+<h2 id="同意オーケストレーションフロー">同意オーケストレーションフロー</h2>
 <figure><a class="slb" href="/images/early-access/consent-orchestration-flow.png"><img src="/images/early-access/consent-orchestration-flow.png"
          alt="Consent Integrations decision flow"
          title="Consent Integrations decision flow" width="1500" height="2000"/>
@@ -250,7 +251,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年July月17日
+          <p>最終更新日 ::  2024年October月16日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -270,7 +271,7 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BC%B7%E5%88%B6%E3%83%AB%E3%83%BC%E3%83%AB" href="javascript:void(0)">強制ルール</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%85%8D%E9%99%A4" href="javascript:void(0)">免除</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AC%E3%82%AC%E3%82%B7%E3%83%BC%E5%BC%B7%E5%88%B6%E3%81%AE%E7%BD%AE%E3%81%8D%E6%8F%9B%E3%81%88" href="javascript:void(0)">レガシー強制の置き換え</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent-orchestration%E3%83%95%E3%83%AD%E3%83%BC" href="javascript:void(0)">Consent Orchestrationフロー</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E6%84%8F%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%95%E3%83%AD%E3%83%BC" href="javascript:void(0)">同意オーケストレーションフロー</a></li>
               </nav>
   </aside></nav>
 

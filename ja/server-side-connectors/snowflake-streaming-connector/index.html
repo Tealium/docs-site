@@ -359,9 +359,9 @@
         <a href="/ja/server-side-connectors/zoho-crm-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".zoho-crm-connector">Zoho CRM</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/acoustic-campaign-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".acoustic-campaign-connector">アコースティックキャンペーン</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/impact-page-loads-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".impact-page-loads-connector">インパクトページロード</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side-connectors/connector-insights-google-ads-customer-match/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-google-ads-customer-match">コネクタインサイト Google Ads Customer Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/connector-insights-facebook-event-match-quality/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-facebook-event-match-quality">コネクタインサイトFacebookイベントマッチ品質</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/connector-insights-facebook-custom-audiences/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-facebook-custom-audiences">コネクタインサイトFacebookカスタムオーディエンス</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side-connectors/connector-insights-google-ads-customer-match/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-google-ads-customer-match">コネクターインサイト Google Ads Customer Match</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/connector-insights-google-dv360-customer-match/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-google-dv360-customer-match">コネクターインサイト Google DV360 カスタマーマッチコネクター</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side-connectors/connector-insights-twitter-custom-audiences/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".connector-insights-x-custom-audiences">コネクターインサイトXカスタムオーディエンス</a></li></ul>
 </nav>
@@ -442,8 +442,8 @@
 </tbody>
 </table>
 <h2 id="仕組み">仕組み</h2>
-<p>Snowflakeストリーミングコネクタは、強力なSnowflake Snowpipeストリーミング機能を活用して、イベントデータとビジターデータをほぼリアルタイムでSnowflakeのステージングテーブルに直接インポートし、データの遅延を10秒以下に抑えながら即時に処理と分析が可能になります。全データセットまたは特定の属性をステージングテーブルに送信し、ビジネスニーズに合わせたカスタマイズ可能なデータ統合を実現します。</p>
-<p>Snowpipeストリーミングを使用すると、データのアクセシビリティと分析能力をSnowflake内で向上させ、遅延とコストを削減します。サードパーティの統合を排除し、Snowpipeストリーミングのサーバーレスコンピューティングモデルを使用することで、Snowflakeストリーミングコネクタはコスト効果的で安全な接続を提供します。</p>
+<p>Snowflakeストリーミングコネクタは、強力なSnowflake Snowpipeストリーミング機能を活用して、イベントデータとビジターデータをほぼリアルタイムで直接Snowflakeのステージングテーブルにインポートし、データの遅延を10秒以下に抑えながら、即時に処理と分析が可能な状態にします。全データセットまたは特定の属性をステージングテーブルに送信し、ビジネスニーズに合わせたカスタマイズ可能なデータ統合を実現します。</p>
+<p>Snowpipeストリーミングを使用すると、データのアクセシビリティと分析能力をSnowflake内で向上させ、遅延とコストを削減します。サードパーティの統合を排除し、Snowpipeストリーミングのサーバーレスコンピューティングモデルを使用することで、Snowflakeストリーミングコネクタはコスト効率の良い、安全な接続を提供します。</p>
 <p>Snowflakeストリーミングコネクタを使用すると、以下のようなユースケースを解放することができます:</p>
 <ul>
 <li>アイデンティティ: クレンジングされ、正規化されたリアルタイムのアイデンティティデータを使用してアイデンティティグラフを作成し、活性化します。</li>
@@ -452,9 +452,9 @@
 <li>同意: インサイトと活性化が常に顧客のプライバシーと構成を尊重することを確認します。</li>
 </ul>
 <h3 id="ステージングテーブル">ステージングテーブル</h3>
-<p>Tealiumからデータを受け取ることを目的としたSnowflakeのステージングテーブルには、選択したコネクタアクションに応じて特定の列が含まれている必要があります。</p>
-<p><strong>全イベントデータを送信</strong>または<strong>全ビジターデータを送信</strong>のアクションを使用する場合、ステージングテーブルにはデータセットを受け取るための<code>VARIANT</code>列とタイムスタンプを受け取るための列が必要です。タイムスタンプ列は、送信されるタイムスタンプのデータ形式をサポートする必要があります。</p>
-<p><strong>カスタムイベントデータを送信</strong>または<strong>カスタムビジターデータを送信</strong>を使用する場合、ステージングテーブルには各データタイプの列が必要です。各データ属性は列に割り当てられる必要があります。各属性が受け入れられるSnowflakeのデータタイプであり、その列がこのデータタイプを受け取るために適切にフォーマットされていることを確認します。タイムスタンプをマップするには、別のタイムスタンプ列を追加する必要があります。</p>
+<p>Tealiumからデータを受け取ることを想定したSnowflakeのステージングテーブルには、選択したコネクタアクションに応じて特定の列が含まれている必要があります。</p>
+<p><strong>全イベントデータを送信</strong>または<strong>全ビジターデータを送信</strong>のアクションを使用する場合、ステージングテーブルにはデータセットを受け取るための<code>VARIANT</code>列と、タイムスタンプを受け取るための列が必要です。タイムスタンプ列は、送信されるタイムスタンプデータ形式をサポートする必要があります。</p>
+<p><strong>カスタムイベントデータを送信</strong>または<strong>カスタムビジターデータを送信</strong>を使用する場合、ステージングテーブルには各データタイプの列が必要です。各データ属性は列に割り当てられる必要があります。各属性がSnowflakeの受け入れ可能なデータタイプであり、列がこのデータタイプを受け取るために適切にフォーマットされていることを確認します。タイムスタンプをマップするには、別のタイムスタンプ列を追加する必要があります。</p>
 <p>詳細については、<a href="https://docs.snowflake.com/en/user-guide/data-load-snowpipe-streaming-overview#supported-java-data-types">Snowflake: サポートされるJavaデータタイプ</a>を参照してください。</p>
 <h3 id="データタイプ">データタイプ</h3>
 <p>以下の表は、Snowflakeストリーミングコネクタがサポートするデータタイプをまとめたものです:</p>
@@ -514,11 +514,11 @@
 <li>コレーション付きの列</li>
 <li><code>TRANSIENT</code>または<code>TEMPORARY</code>テーブル</li>
 <li><code>AUTOINCREMENT</code>または<code>IDENTITY</code>列構成を持つテーブル</li>
-<li>デフォルトの列値が<code>NULL</code>でない場合</li>
+<li>デフォルトの列値が<code>NULL</code>でないもの</li>
 </ul>
 <h3 id="許可するipアドレス">許可するIPアドレス</h3>
 <p>Snowflakeは、どのシステムからのリクエストを受け入れるかについて厳格なルールがあります。<a href="/ja/server-side/administration/ip-allow-list/">TealiumのIPアドレス</a>をSnowflakeの許可リストに追加する必要があります。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i><code>us-west-1</code>とサーバーサイドプロファイルリージョンのアドレスを許可リストに追加する必要があります。これらのアドレスを許可リストに追加しないと、データを取得しようとするとエラーが表示されます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><code>us-west-1</code>とサーバーサイドプロファイルリージョンのアドレスを許可リストに追加する必要があります。これらのアドレスを許可リストに追加しないと、データを取得しようとするとエラーが表示されます。Tealiumはコネクタ構成中に<code>us-west-1</code>のIPアドレスを使用します。</p>
 <h2 id="ベストプラクティス">ベストプラクティス</h2>
 <p>Snowflakeストリーミングコネクタに対して、以下のSnowflakeテーブル構成を推奨します:</p>
 <ul>
@@ -540,7 +540,7 @@ Snowflakeアカウントのユーザー名。データを受け取るSnowflake�
 </li>
 <li>
 <p><strong>URL</strong><br>
-次の形式のSnowflakeアカウントURL: <code>&lt;account_identifier&gt;.snowflakecomputing.com</code></p>
+以下の形式のSnowflakeアカウントURL: <code>&lt;account_identifier&gt;.snowflakecomputing.com</code></p>
 </li>
 <li>
 <p><strong>プライベートキー</strong><br>
@@ -551,10 +551,10 @@ Snowflakeアカウントのユーザー名。データを受け取るSnowflake�
 暗号化されたプライベートキーを使用するための暗号化されたプライベートキーパスフレーズ。プライベートキーが暗号化されていない場合は、値を割り当てないでください。</p>
 </li>
 </ul>
-<p>コネクタの認証を完了するために、以下の手順を使用して、Snowflake内の上記ユーザーに公開キーの詳細を変更します:</p>
+<p>コネクタの認証を完了するために、以下の手順を使用して、Snowflake内で上記のユーザーを公開キー詳細で変更します:</p>
 <ol>
 <li>Snowflakeで公開キーを生成します。詳細については、<a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#generate-a-public-key">公開キーの生成</a>を参照してください。</li>
-<li><code>ALTER USER</code>コマンドを使用して、公開キーを上記のユーザーに割り当てます。ユーザーの所有者またはSECURITYADMINロール以上のユーザーのみがユーザーを変更できます。詳細については、<a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#assign-the-public-key-to-a-snowflake-user">公開キーをSnowflakeユーザーに割り当てる</a>を参照してください。<br>
+<li>Snowflakeで<code>ALTER USER</code>コマンドを使用して公開キーを上記のユーザーに割り当てます。ユーザーの所有者またはSECURITYADMINロール以上のユーザーのみがユーザーを変更できます。詳細については、<a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#assign-the-public-key-to-a-snowflake-user">公開キーをSnowflakeユーザーに割り当てる</a>を参照してください。<br>
 公開キーをユーザーに正常に割り当てるためには、以下を確認してください:
 <ul>
 <li>Snowflakeのユーザー名を二重引用符(<code>&quot;</code>)で入力します。例えば、<code>&quot;SNOWFLAKE.USER&quot;</code>。</li>
@@ -565,7 +565,7 @@ Snowflakeアカウントのユーザー名。データを受け取るSnowflake�
 </ol>
 <p class="tip"><i class="fa fa-info-circle"></i>Snowflakeは公開キーとプライベートキーのローテーションをサポートしています。詳細については、<a href="https://docs.snowflake.com/en/user-guide/key-pair-auth#configuring-key-pair-rotation">キーペアローテーションの構成</a>を参照してください。</p>
 <h2 id="アクション-1">アクション</h2>
-<p>以下のセクションでは、各アクションでサポートされるパラメータをリストアップします。</p>
+<p>以下のセクションでは、各アクションでサポートされているパラメータをリストアップしています。</p>
 <h3 id="カスタムイベントデータを送信">カスタムイベントデータを送信</h3>
 <h4 id="パラメータ">パラメータ</h4>
 <table>
@@ -685,7 +685,7 @@ Snowflakeアカウントのユーザー名。データを受け取るSnowflake�
 <td>訪問データを記録するための<strong>VARIANT</strong>列を選択します。</td>
 </tr>
 <tr>
-<td>現在の訪問データを含む</td>
+<td>現在の訪問データを含める</td>
 <td>このオプションを選択すると、訪問データと現在の訪問データの両方がSnowflakeに送信されるデータに含まれます。</td>
 </tr>
 <tr>
@@ -694,7 +694,7 @@ Snowflakeアカウントのユーザー名。データを受け取るSnowflake�
 </tr>
 <tr>
 <td>タイムスタンプ属性</td>
-<td>（オプション）デフォルトでは、アクションの現在のタイムスタンプが送信されます。異なる形式を送信したい場合は、タイムスタンプとして割り当てる属性を選択します。詳細については、<a href="https://docs.snowflake.com/en/user-guide/data-load-snowpipe-streaming-overview#supported-java-data-types">Snowflake: サポートされているJavaデータタイプ</a>を参照してください。属性が割り当てられ、空の値を生成する場合、現在のタイムスタンプを送信します。</td>
+<td>(オプション) デフォルトでは、アクションの現在のタイムスタンプが送信されます。異なる形式を送信したい場合は、タイムスタンプとして割り当てる属性を選択します。詳細については、<a href="https://docs.snowflake.com/en/user-guide/data-load-snowpipe-streaming-overview#supported-java-data-types">Snowflake: サポートされているJavaデータタイプ</a>を参照してください。属性が割り当てられ、空の値を生成する場合、現在のタイムスタンプを送信します。</td>
 </tr>
 </tbody>
 </table>
@@ -758,7 +758,7 @@ Snowflakeアカウントのユーザー名。データを受け取るSnowflake�
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年October月2日
+          <p>最終更新日 ::  2024年October月16日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

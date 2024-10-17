@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "administration",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -160,53 +160,50 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="ユーザーのエクスポート">ユーザーのエクスポート</h2>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>この機能は、アカウントのアカウント管理権限と、すべてのプロファイルのユーザー管理権限が必要です。ファイルには、現在ログインしているユーザーがユーザー管理権限を持つプロファイルのユーザーとレガシーユーザー権限のみが含まれます。権限の強制がオンになっている場合、このボタンは表示されなくなります。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>この機能は、アカウントのアカウント管理権限と、すべてのプロファイルのユーザー管理権限が必要です。ファイルには、現在ログインしているユーザーがユーザー管理権限を持つプロファイルのユーザーとレガシーユーザー権限のみが含まれます。権限の強制がオンになっている場合、このボタンは表示されません。</p>
 <p>ユーザーのエクスポート機能を使用すると、アカウントのユーザー、プロファイル、各プロファイルのレガシーユーザー権限を含むカンマ区切りの値（CSV）ファイルをダウンロードできます。これにより、ユーザーとその権限を監査し、プラットフォーム権限システムで権限グループを作成し、管理者ロールを割り当てることが容易になります。</p>
 <ol>
-<li>クライアントサイドの管理メニューで、<strong>ユーザー管理</strong>をクリックします。テーブルには、アカウント上のユーザーの一覧とその一般的な権限が表示されます。</li>
-<li><strong>ユーザーのエクスポート</strong>をクリックします。</li>
-</ol>
+<li>クライアント側の管理メニューで、<strong>ユーザー管理</strong>をクリックします。テーブルには、アカウント上のユーザーの一覧とその一般的な権限が表示されます。</li>
+<li><strong>ユーザーのエクスポート</strong>をクリックします。
 <ul>
-<li>管理メニューで、<strong>ユーザー管理</strong>をクリックします。<strong>ユーザー管理</strong>ダイアログが表示されたら、<strong>ユーザーのエクスポート</strong>をクリックします。</li>
-<li>管理メニューで、<strong>権限管理</strong>をクリックし、次に<strong>ユーザー</strong>タブをクリックします。<strong>ユーザー</strong>テーブルが表示されたら、<strong>ユーザーのエクスポート</strong>をクリックします。</li>
+<li>レガシー権限: 管理メニューで、<strong>ユーザー管理</strong>をクリックします。<strong>ユーザー管理</strong>ダイアログが表示されたら、<strong>ユーザーのエクスポート</strong>をクリックします。</li>
+<li>プラットフォーム権限: 管理メニューで、<strong>権限管理</strong>をクリックし、次に<strong>ユーザー</strong>タブをクリックします。<strong>ユーザー</strong>テーブルが表示されたら、<strong>ユーザーのエクスポート</strong>をクリックします。</li>
 </ul>
+</li>
+</ol>
 <p>CSVファイルでは、権限の値を<code>TRUE</code>または<code>FALSE</code>でリストします。</p>
-<p>次のスクリーンショットは、ダウンロードしたCSVファイルをGoogleシートにインポートし、行1の微調整と<code>TRUE</code>と<code>FALSE</code>のエントリーを読みやすさのために<code>Y</code>と<code>N</code>に変更した例を示しています：</p>
+<p>以下のスクリーンショットは、ダウンロードしたCSVファイルをGoogleシートにインポートし、行1の微調整と<code>TRUE</code>と<code>FALSE</code>のエントリーを読みやすさのために<code>Y</code>と<code>N</code>に変更した例を示しています：</p>
 <figure><a class="slb" href="/images/platform-permissions/permissionssystemmigrationguide-1.png"><img src="/images/platform-permissions/permissionssystemmigrationguide-1.png"/>
     </a>
 </figure>
-<ul>
-<li>Tealium Tool Browser Extensionのインストールと使用方法については、<a href="/ja/iq-tag-management/tealium-tools/browser-extension/">Tealium Tools Browser Extension</a>を参照してください。</li>
-<li>User Permissions Exporterのインストールと使用方法については、<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363500-tealium-tool-user-permissions-exporter">Tealium Tool User Permissions Exporter</a>を参照してください。</li>
-</ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Manage Site Scansはエクスポートされたデータに表示されます。これはレガシー機能であり、移行の目的で必要とは限りません。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>エクスポートされたデータにはManage Site Scansが表示されます。これはレガシー機能であり、移行の目的では必要ありません。</p>
 <p>この例では、<strong>user3</strong>が<strong>User</strong>列に3回表示されます。他のユーザーとは異なり、アカウント上のすべてのプロファイルで同じ権限を持つ<strong>user3</strong>は、<strong>Website A</strong>、<strong>Website B</strong>、<strong>Website C</strong>のプロファイルで異なる権限を持っています。そのため、スプレッドシートの別の行に<strong>user3</strong>のプロファイル権限が含まれています。</p>
-<h2 id="クライアントサイドとサーバーサイドのユーザーと権限の手動インベントリ">クライアントサイドとサーバーサイドのユーザーと権限の手動インベントリ</h2>
-<p>自動エクスポートを使用できない場合や、手動でインベントリを作成することを選択した場合、クライアントサイドの各ユーザーの権限を手動で収集する必要があります。</p>
-<h3 id="クライアントサイド">クライアントサイド</h3>
-<p>クライアントサイドの各ユーザーの権限をエクスポートするには、次の手順を実行します：</p>
+<h2 id="クライアント側とサーバー側のユーザーと権限の手動インベントリ">クライアント側とサーバー側のユーザーと権限の手動インベントリ</h2>
+<p>自動エクスポートを使用できない場合や、手動でインベントリを作成することを選択した場合、クライアント側の各ユーザーの権限を手動で収集する必要があります。</p>
+<h3 id="クライアント側">クライアント側</h3>
+<p>クライアント側の各ユーザーの権限をエクスポートするには、以下の手順を実行します：</p>
 <ol>
-<li>クライアントサイドの管理メニューで、<strong>ユーザー管理</strong>をクリックします。テーブルには、アカウント上のユーザーの一覧とその一般的な権限が表示されます。</li>
-<li>スプレッドシートを作成し、最初の列に<strong>Users</strong>とラベルを付けます。</li>
+<li>クライアント側の管理メニューで、<strong>ユーザー管理</strong>をクリックします。テーブルには、アカウント上のユーザーの一覧とその一般的な権限が表示されます。</li>
+<li>スプレッドシートを作成し、最初の列に<strong>ユーザー</strong>とラベルを付けます。</li>
 <li>スプレッドシートに、ユーザーリストを最初の列に追加します。</li>
-<li>スプレッドシートに、2番目の列に<strong>Profile</strong>とラベルを付けます。</li>
+<li>スプレッドシートで、2番目の列に<strong>プロファイル</strong>とラベルを付けます。</li>
 <li>最初のアカウントをクリックします。</li>
-<li><strong>Edit/View User Settings</strong>をクリックします。ダイアログボックスには、アカウントと各プロファイルのユーザーの権限（Full、Partial、None）が表示されます。</li>
-<li>スプレッドシートに、この情報を含む3つの新しい列を作成し、後でManage AccountとManage Usersの管理者ロールを構成するときに使用する列名をメモします：<br>
+<li><strong>ユーザー構成の編集/表示</strong>をクリックします。ダイアログボックスには、アカウントと各プロファイルのユーザーの権限（フル、部分、なし）が表示されます。</li>
+<li>スプレッドシートに、この情報を含む3つの新しい列を作成し、後でアカウント管理とユーザー管理の管理者ロールを構成するときに使用する列名をメモします：
 <ul>
-<li><strong>Account</strong></li>
-<li><strong>Profiles</strong></li>
-<li><strong>JavaScript Code</strong></li>
+<li><strong>アカウント</strong></li>
+<li><strong>プロファイル</strong></li>
+<li><strong>JavaScriptコード</strong></li>
 </ul>
 </li>
-<li><strong>Close</strong>をクリックします。</li>
-<li><strong>Edit/View User Permissions</strong>をクリックします。ダイアログボックスには、Account、Profiles、JavaScriptの権限が表示されます（この情報はすでに持っています）。</li>
-<li><strong>Next</strong>をクリックします。</li>
-<li>**Select from Currently Assigned Profile(s)**を選択します。</li>
-<li>ドロップダウンボックスから各プロファイルを選択し、<strong>Next</strong>をクリックします。ダイアログボックスには、各プロファイルのユーザーの権限が表示されます。</li>
-<li>ユーザーがすべてのプロファイルで同じ権限を持っている場合は、スプレッドシートの<strong>Profile</strong>列に<strong>All</strong>を入力し、ユーザーの権限をメモします。ユーザーがプロファイルによって異なる権限を持っている場合は、スプレッドシートのユーザーの行を複製して、各行が異なるプロファイルを表すようにし、<strong>Profile</strong>列にプロファイル名を入力し、以下のタイトルの列にその権限をメモします：
+<li><strong>閉じる</strong>をクリックします。</li>
+<li><strong>ユーザー権限の編集/表示</strong>をクリックします。ダイアログボックスには、アカウント、プロファイル、JavaScriptの権限が表示されます（この情報はすでに持っています）。</li>
+<li><strong>次へ</strong>をクリックします。</li>
+<li><strong>現在割り当てられているプロファイルから選択</strong>を選択します。</li>
+<li>ドロップダウンボックスから各プロファイルを選択し、<strong>次へ</strong>をクリックします。ダイアログボックスには、各プロファイルのユーザーの権限が表示されます。</li>
+<li>ユーザーがすべてのプロファイルで同じ権限を持っている場合は、スプレッドシートの<strong>プロファイル</strong>列に<strong>すべて</strong>を入力し、ユーザーの権限をメモします。ユーザーがプロファイルごとに異なる権限を持っている場合は、スプレッドシートのユーザーの行を複製して、各行が異なるプロファイルを表すようにし、<strong>プロファイル</strong>列にプロファイル名を入力し、以下のタイトルの列にその権限をメモします：
 <ul>
-<li>ユーザーの管理</li>
+<li>ユーザー管理</li>
 <li>リソースロックの管理</li>
 <li>Dev/Custom環境への公開</li>
 <li>QA環境への公開</li>
@@ -219,35 +216,35 @@
 <li>Prod環境への昇格</li>
 </ul>
 </li>
-<li><strong>Cancel</strong>をクリックします。</li>
+<li><strong>キャンセル</strong>をクリックします。</li>
 <li>このプロセスを各ユーザーに対して繰り返します。</li>
 </ol>
 <p><figure><a class="slb" href="/images/platform-permissions/permissionssystemmigrationguide-2.png"><img src="/images/platform-permissions/permissionssystemmigrationguide-2.png"/>
     </a>
 </figure>
-これで、クライアントサイドのユーザー権限がすべて揃いました。</p>
-<h3 id="サーバーサイド">サーバーサイド</h3>
-<p>サーバーサイドの各ユーザーの権限をエクスポートするには、次の手順を実行します：</p>
+これで、クライアント側のユーザー権限がすべて揃いました。</p>
+<h3 id="サーバー側">サーバー側</h3>
+<p>サーバー側の各ユーザーの権限をエクスポートするには、以下の手順を実行します：</p>
 <ol>
-<li>サーバーサイドの管理メニューで、<strong>ユーザー管理</strong>をクリックします。スプレッドシートにすでに存在しないサーバーサイドのユーザーがいる場合は、それを最初の列に追加します。</li>
+<li>サーバー側の管理メニューで、<strong>ユーザー管理</strong>をクリックします。スプレッドシートにまだ存在しないサーバー側のユーザーがいる場合は、それを最初の列に追加します。</li>
 <li>ユーザーアカウントをクリックします。</li>
-<li>**Next.**をクリックします。ダイアログには、各プロファイルのユーザーの権限が表示されます。</li>
-<li>ユーザーがすべてのプロファイルで同じ権限を持っている場合は、<strong>Profile</strong>列に<strong>All</strong>を入力し、スプレッドシートにユーザーの権限をメモします。ユーザーがプロファイルによって異なる権限を持っている場合は、スプレッドシートのユーザーの行を複製して、各行が異なるプロファイルを表すようにし、<strong>Profile</strong>列にプロファイル名を入力し、適切な行に権限をメモします。
+<li><strong>次へ</strong>をクリックします。ダイアログには、各プロファイルのユーザーの権限が表示されます。</li>
+<li>ユーザーがすべてのプロファイルで同じ権限を持っている場合は、<strong>プロファイル</strong>列に<strong>すべて</strong>を入力し、スプレッドシートにユーザーの権限をメモします。ユーザーがプロファイルごとに異なる権限を持っている場合は、スプレッドシートのユーザーの行を複製して、各行が異なるプロファイルを表すようにし、<strong>プロファイル</strong>列にプロファイル名を入力し、適切な行に権限をメモします。
 <ul>
-<li><strong>No Access</strong> - プロファイルにアクセスできません。</li>
-<li><strong>Reader</strong> - プロファイルへの読み取り専用アクセス。</li>
-<li><strong>Editor</strong> - プロファイルを編集し保存できますが、公開はできません。</li>
-<li><strong>Publisher</strong> - Editorに加えて、プロファイルを保存し公開できます。また、すべてのサーバーサイドの製品と機能にフルアクセスがあります。</li>
+<li><strong>アクセスなし</strong> - プロファイルにアクセスできません。</li>
+<li><strong>リーダー</strong> - プロファイルへの読み取り専用アクセス。</li>
+<li><strong>エディター</strong> - プロファイルを編集し保存できますが、公開はできません。</li>
+<li><strong>パブリッシャー</strong> - エディターに加えて、プロファイルを保存し公開できます。また、すべてのサーバーサイドの製品と機能にフルアクセスがあります。</li>
 </ul>
 </li>
-<li><strong>Close</strong>をクリックします。</li>
+<li><strong>閉じる</strong>をクリックします。</li>
 <li>このプロセスを各ユーザーに対して繰り返します。</li>
 </ol>
-<p>前の例に基づいて、次のスクリーンショットは、サーバーサイドのユーザーと権限で更新されたスプレッドシートを示しています：</p>
-<p>この例では、<strong>user6</strong>、<strong>user7</strong>、<strong>user8</strong>はクライアントサイドには権限がなく、スプレッドシートに手動で追加する必要がありました。また、<strong>user7</strong>はサーバーサイドのプロファイル<strong>App A</strong>と<strong>App B</strong>で異なる権限を持っているため、<strong>user7</strong>のプロファイル権限のためにスプレッドシートに別の行が作成されました。</p>
-<p>これで、レガシー権限システムからクライアントサイドとサーバーサイドのプロファイルのすべてのユーザー権限が揃いました。</p>
+<p>前述の例に基づいて、以下のスクリーンショットは、サーバーサイドのユーザーと権限で更新されたスプレッドシートを示しています：</p>
+<p>この例では、<strong>user6</strong>、<strong>user7</strong>、<strong>user8</strong>はクライアント側には権限がなく、スプレッドシートに手動で追加する必要がありました。また、<strong>user7</strong>はサーバーサイドのプロファイル<strong>App A</strong>と<strong>App B</strong>で異なる権限を持っているため、<strong>user7</strong>のプロファイル権限のためにスプレッドシートに別の行が作成されました。</p>
+<p>これで、レガシー権限システムからクライアント側とサーバー側のプロファイルのすべてのユーザー権限を持つことができます。</p>
 <h2 id="スプレッドシートの監査">スプレッドシートの監査</h2>
-<p>すべてのユーザーの権限がスプレッドシートにあるので、彼らの仕事を遂行するために必要なプロファイルへのアクセスが過剰または不足しているユーザーをチェックします。ユーザーがプロファイルのリソースにアクセスするためには、少なくとも1つの権限グループに所属している必要があることを覚えておいてください。彼らの実際のニーズを反映するようにスプレッドシートを更新します。</p>
+<p>すべてのユーザーの権限がスプレッドシートにあるので、彼らが仕事を遂行するために必要なプロファイルへのアクセスが過剰または不足しているユーザーをチェックします。ユーザーは、プロファイルのリソースにアクセスするために、少なくとも1つの権限グループに所属している必要があります。彼らの実際のニーズを反映するようにスプレッドシートを更新します。</p>
 <p>また、会社を退職したユーザーやアカウントへのアクセスが必要ないユーザーを削除することを忘れないでください。</p>
 <h2 id="個々のユーザーのニーズをスプレッドシートに追加">個々のユーザーのニーズをスプレッドシートに追加</h2>
 <p>スプレッドシートに各ユーザーのプロファイル権限があるので、各ユーザーの最終的な製品とデータレベルのニーズをスプレッドシートに追加する必要があります：</p>
@@ -257,17 +254,340 @@
 <li>各ユーザーが各製品機能に対して持つべきアクセスレベル。</li>
 </ul>
 <h3 id="piiデータのニーズ">PIIデータのニーズ</h3>
-<p>PII Permissionsは、誰がPIIデータを見ることができ、誰がPIIデータを識別する<strong>Restricted Data</strong>プロパティを編集できるかを制御します。PII権限はグループに1つのレベルしか割り当てることができません。PII権限の3つのレベルは次のとおりです：</p>
+<p>PII権限は、誰がPIIデータを見ることができ、誰がPIIデータを識別する<strong>制限されたデータ</strong>プロパティを編集できるかを制御します。PII権限はグループに1つだけ割り当てることができます。PII権限の3つのレベルは次のとおりです：</p>
 <ul>
 <li><strong>No PII</strong> – ユーザーはPII属性を表示できますが、これらの属性の値を見ることはできません。PIIは、TraceやLive Eventsなど、表示される場所で隠されます。</li>
 <li><strong>View</strong> – ユーザーはPII属性の値を表示できますが、PIIデータを編集または管理することはできません。</li>
 <li><strong>Manage &amp; View</strong> – ユーザーはPIIデータを表示、編集、管理することができます。</li>
 </ul>
-<p>スプレッドシートに、ユーザーがPIIに対してアクセスなし、Viewアクセス、またはManage &amp; Viewアクセスを持つべきかをメモします。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>EAとEEAでは、PII権限はグループによって管理されていました。GAでは、PII権限の管理がグループベースの管理からユーザーベースの管理に移行しました。EAとEEAでグループに構成されたPII権限は、自動的にユーザーベースのPII権限に移行します。</p>
+<p>スプレッドシートに、ユーザーがアクセスなし、表示アクセス、または管理＆表示アクセスを持つべきかをメモします。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>EAとEEAでは、PIIの許可はグループによって管理されていました。GAでは、PIIの許可管理がグループベースの管理からユーザーベースの管理に移行しました。EAとEEAでグループによって構成されたPIIの許可は、自動的にユーザーベースのPIIの許可に移行します。</p>
 <h3 id="製品と機能のニーズ">製品と機能のニーズ</h3>
-<p>製品アクセス権限は、ユーザーがアクセスできるTealiumの製品と機能を指定します。</p>
-<p>製品アクセ</p>
+<p>製品アクセス許可は、ユーザーがアクセスできるTealiumの製品と機能を指定します。</p>
+<p>製品アクセス許可は機能許可に分けられ、グループに割り当てられた製品許可によって異なる場合があります。以下の表を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><strong>表示 &amp; 編集</strong> または <strong>表示、編集 &amp; 削除</strong> の許可を持つユーザーは、<strong>保存</strong> の許可も持っています。</p>
+<h4 id="iqタグ管理">iQタグ管理</h4>
+<table>
+<thead>
+<tr>
+<th>機能</th>
+<th style="text-align:left">利用可能な許可</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JavaScript拡張機能</td>
+<td style="text-align:left">アクセスなし、表示、編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>高度なJavaScript拡張機能 - Devへの昇格</td>
+<td style="text-align:left">アクセスなし、表示、編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>高度なJavaScript拡張機能 - QAへの昇格</td>
+<td style="text-align:left">アクセスなし、表示、編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>高度なJavaScript拡張機能 - Prodへの昇格</td>
+<td style="text-align:left">アクセスなし、表示、編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>Dev/Customへの公開</td>
+<td style="text-align:left">アクセスなし、表示、編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>QAへの公開</td>
+<td style="text-align:left">アクセスなし、表示、編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>Prodへの公開</td>
+<td style="text-align:left">アクセスなし、表示、編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>保存</td>
+<td style="text-align:left">アクセスなし、表示、編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>公開構成</td>
+<td style="text-align:left">アクセスなし、表示、編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>コード構成</td>
+<td style="text-align:left">アクセスなし、表示、編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>リソースロック</td>
+<td style="text-align:left">アクセスなし、表示、編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>クライアントサイドバージョン</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集</td>
+</tr>
+<tr>
+<td>タグテンプレート</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集</td>
+</tr>
+<tr>
+<td>タグ、拡張機能、ロードルール、データレイヤー</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集、表示編集 &amp; 削除</td>
+</tr>
+</tbody>
+</table>
+<h4 id="audiencestream">AudienceStream</h4>
+<table>
+<thead>
+<tr>
+<th>機能</th>
+<th style="text-align:left">利用可能な許可</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ダッシュボード</td>
+<td style="text-align:left">アクセスなし、表示</td>
+</tr>
+<tr>
+<td>ディスカバリー/サイジング</td>
+<td style="text-align:left">アクセスなし、表示</td>
+</tr>
+<tr>
+<td>オーディエンス</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集、表示編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>オーディエンスコネクタ</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集、表示編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>ビジター/訪問属性</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集、表示編集 &amp; 削除</td>
+</tr>
+</tbody>
+</table>
+<h4 id="eventstream">EventStream</h4>
+<table>
+<thead>
+<tr>
+<th>機能</th>
+<th style="text-align:left">利用可能な許可</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>データソース</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集、表示編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>イベント属性</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集、表示編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>イベントコネクタ</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集、表示編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>イベント仕様</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集、表示編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>ライブイベント</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集、表示編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>オムニチャネル</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集、表示編集 &amp; 削除</td>
+</tr>
+</tbody>
+</table>
+<h4 id="dataaccess">DataAccess</h4>
+<table>
+<thead>
+<tr>
+<th>機能</th>
+<th style="text-align:left">利用可能な許可</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>アクセスキー</td>
+<td style="text-align:left">アクセスなし、表示</td>
+</tr>
+<tr>
+<td>Tealium Insights*</td>
+<td style="text-align:left">アクセスなし、表示</td>
+</tr>
+<tr>
+<td>EventStore Legacy</td>
+<td style="text-align:left">アクセスなし、表示</td>
+</tr>
+<tr>
+<td>AudienceDB</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集、表示編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>EventDB</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集、表示編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>AudienceStore</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集、表示編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>EventStore</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集、表示編集 &amp; 削除</td>
+</tr>
+</tbody>
+</table>
+<p>* Tealium Insightsの許可は、ユーザー管理者が <strong>Insights &gt; ユーザー管理</strong> ページを通じて構成できます。詳細については、<a href="/ja/server-side/insights/about/">Tealium Insightsについて</a>を参照してください。</p>
+<h4 id="predict">Predict</h4>
+<table>
+<thead>
+<tr>
+<th>機能</th>
+<th style="text-align:left">利用可能な許可</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>すべての機能</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集、表示編集 &amp; 削除</td>
+</tr>
+</tbody>
+</table>
+<h4 id="functions">Functions</h4>
+<table>
+<thead>
+<tr>
+<th>機能</th>
+<th style="text-align:left">利用可能な許可</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>資格情報/認証、グローバル変数</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集、表示編集 &amp; 削除</td>
+</tr>
+</tbody>
+</table>
+<h4 id="サーバーサイドツール">サーバーサイドツール</h4>
+<table>
+<thead>
+<tr>
+<th>機能</th>
+<th style="text-align:left">利用可能な許可</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ルール管理</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集、表示編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>ビジター削除</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集、表示編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>ビジタールックアップ</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集、表示編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>ビジタープロファイルサンプラー</td>
+<td style="text-align:left">アクセスなし、表示</td>
+</tr>
+</tbody>
+</table>
+<h4 id="サーバーサイドその他">サーバーサイド（その他）</h4>
+<table>
+<thead>
+<tr>
+<th>機能</th>
+<th style="text-align:left">利用可能な許可</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ラベル</td>
+<td style="text-align:left">アクセスなし、表示、表示 &amp; 編集、表示編集 &amp; 削除</td>
+</tr>
+<tr>
+<td>トレース</td>
+<td style="text-align:left">アクセスなし、表示</td>
+</tr>
+<tr>
+<td>バージョン</td>
+<td style="text-align:left">アクセスなし、表示</td>
+</tr>
+</tbody>
+</table>
+<h4 id="横断的な機能許可の問題">横断的な機能許可の問題</h4>
+<p>機能や製品へのアクセスを無効にする際は慎重に考えてください。ユーザーの機能へのアクセスを無効にすると、そのユーザーはそれに依存する他の機能でもその機能にアクセスできなくなります。例えば：</p>
+<ul>
+<li>ユーザーのAudienceStreamオーディエンスへのアクセスを無効にすると、そのユーザーはAudienceStreamコネクタでアクションを起こすためのオーディエンスを選択できません。</li>
+<li>ユーザーのサーバーサイドラベルへのアクセスを無効にすると、ユーザーはサーバーサイドでラベルを見ることができません。彼らはラベルが付いているコネクタや他の機能にアクセスできますが、ラベル自体を見たり編集したりすることはできません。</li>
+<li>EventStreamとAudienceStreamは一部の機能を共有しています。例えば、ルールやラベルなどです。ユーザーがEventStreamだけにアクセス権を持っていて、EventStreamとAudienceStreamで共有されているルールを編集すると、AudienceStreamのルールも変更されます。</li>
+</ul>
+<h3 id="スプレッドシートの更新">スプレッドシートの更新</h3>
+<p>スプレッドシートに各製品と機能の列を作成し、ユーザーが各項目でどのレベルのアクセスを持つべきかをマークします。</p>
+<figure><a class="slb" href="/images/platform-permissions/permissionssystemmigrationguide-3.png"><img src="/images/platform-permissions/permissionssystemmigrationguide-3.png"/>
+    </a>
+</figure>
+<p>おめでとうございます。これで、スプレッドシートにすべてのユーザーの個々のニーズが記録されました。</p>
+<p>次のステップは、ユーザーをグループにまとめることです。</p>
+<h2 id="組織情報の追加">組織情報の追加</h2>
+<p>すべての組織には独自の構造、ニーズ、ワークフローがあります。許可を組織のワークフローに合わせて構成することで、各人がその職務に適したアクセスを持ち、プライバシー規制によりデータへのアクセスがないことを確認できます。そのため、ユーザーや組織についていくつかの質問をすることで、彼らをグループに分けるのに役立ちます。</p>
+<p>以下にいくつかの提案をします：</p>
+<ul>
+<li>組織の異なる部分がこれらの製品を管理しているため、クライアントサイドとサーバーサイドのプロファイルに対して別々の許可グループを作りたいですか？</li>
+<li>職責に基づいて許可グループを作成したいですか（開発者、QA、データマネージャー、エンジニア、コンプライアンスなど）？これにより、ユーザーを追加、移動、削除する際に、その職種に基づいて迅速に許可を割り当てることができます。</li>
+<li>プロファイルとユーザーが地理的なキャンペーンやサイトによって組織化されており、それぞれに異なるデータ保存とデータプライバシー法が適用されるため、地域ごとに許可グループを分けたいですか？</li>
+<li>製品ごとに許可グループを分けたいですか（AudienceStream、EventStream、Customer Data Hubなど）？</li>
+</ul>
+<p>Yesと答えた各項目について、スプレッドシートに別の列を追加し、その質問がユーザーの組織やワークフローとの関係にどのように影響するかについてその列にメモを追加します。</p>
+<figure><a class="slb" href="/images/platform-permissions/permissionssystemmigrationguide-4.png"><img src="/images/platform-permissions/permissionssystemmigrationguide-4.png"/>
+    </a>
+</figure>
+<h3 id="プロファイルの監査">プロファイルの監査</h3>
+<p>主要なクライアントサイドプロファイルと主要なサーバーサイドプロファイルが1つずつしかない場合でも、ブランドと組織が複数の地域と責任構造に分かれている場合、このデータはアカウントに地域プロファイルを構成する将来のプロジェクトの一部として役立つ可能性があります。ただし、まずプラットフォームの許可システムで許可を構成し、テストすることをお勧めします。</p>
+<h2 id="ユーザーをグループに分ける">ユーザーをグループに分ける</h2>
+<p>スプレッドシートにすべてのユーザーのニーズと組織との関係を記録したので、各列でユーザーを分類します。</p>
+<p>これで、共通のニーズとアクセス権を持つユーザーをグループにまとめることができます：</p>
+<ul>
+<li>グループのユーザーがアクセスする必要があるプロファイル。</li>
+<li>各プロファイルに対するグループメンバーのアクセスレベル。</li>
+<li>グループメンバーがクライアント側とサーバー側のプロファイルに対して公開権限を持つべきかどうか。サーバー側の公開権限を持つユーザーは、すべてのサーバー側の製品と機能に完全にアクセスできるため、どのグループにそれらの権限を付与するかは慎重に選ぶべきです。サーバー側のパブリッシャーのために、<strong>サーバー側の公開</strong>という専用のグループを作成することをお勧めします。</li>
+<li>各グループがアクセスできるべき製品と製品の機能。</li>
+<li>各グループが各製品の機能に対して持つべきアクセスレベル。</li>
+<li>ユーザーがPIIデータにアクセスできるべきかどうか。</li>
+<li>ユーザーがクライアント側、サーバー側、または両方でプロファイルを保存および/または公開できるべきかどうか。
+<ul>
+<li>製品または機能に対する<strong>編集</strong>アクセスは、ユーザーがプロファイルに対して変更を<strong>保存</strong>する権限も付与します。</li>
+<li>サーバー側の公開アクセスには、サーバー側の製品と機能への完全なアクセスが含まれます。</li>
+</ul>
+</li>
+</ul>
+<p>ユーザーを部門や職務機能による管理、地理的なグループ分けなど、組織の他のニーズに基づいてより小さなグループに分けることができます。</p>
+<p>これらの最終的なユーザーグループが、作成する必要がある権限グループです。</p>
+<h2 id="管理者ロールの追加">管理者ロールの追加</h2>
+<p>グループの計画ができたら、次は管理者ロールの計画を立てることです。</p>
+<p>スプレッドシートを見て、アカウント自体についていくつかの質問を自分自身に投げかけてみてください：</p>
+<ul>
+<li>誰がアカウントへの完全なアクセス権を必要としていますか？</li>
+<li>誰がアカウントのグループ内のユーザーとユーザーメンバーシップを管理していますか？</li>
+<li>誰がアカウントの技術的な構成を管理していますか？</li>
+<li>誰がアカウント上の個人識別情報（PII）データの権利を管理していますか？</li>
+<li>誰がアカウントのプロファイルを管理していますか？</li>
+</ul>
+<p>クライアント側のユーザー権限のインベントリからのAdminとProfilesの構成は、プラットフォームの権限システムでアカウントの管理者ロールを誰が得るべきかを決定するのに役立ちます：</p>
+<ul>
+<li><strong>アカウント管理者</strong> - このロールはアカウントへの完全なアクセス権を持っています（他のロールの権限を含む）。</li>
+<li><strong>ユーザー管理者</strong> - このロールは権限グループとユーザー権限を管理します。ユーザーの追加、編集、権限グループへの割り当てを担当する人は、このロールを持つべきです。</li>
+<li><strong>技術管理者</strong> - このロールは、ファーストパーティドメインなどのアカウント構成機能を管理します。</li>
+<li><strong>プライバシー管理者</strong> - このロールはグループ内のPII権限レベルを管理します（ユーザー管理者ロールが必要）。データプライバシーとコンプライアンスを担当する人は、このロールの候補者となるべきです。</li>
+<li><strong>プロファイル管理者</strong> - このロールはプロファイルとライブラリへのアクセスを管理します。アカウント上でプロファイルを構築し、整理する人は、このロールを持つべきです。このロールにはプロファイルの編集や公開権限は含まれておらず、それらは権限グループ内の権利を通じて付与されます。</li>
+</ul>
+<p>管理者ロールについての詳細は、<a href="/ja/administration/admin-roles/">管理者ロール</a>を参照してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><strong>ユーザー管理者</strong>の管理者ロールは、移行プロセスに特に役立ちます。これらの人々は、ユーザーがプラットフォームの権限システムをテストするにつれて、権限グループを洗練させるのを助けることができます。</p>
+<p>おめでとうございます。あなたは今、作成する必要がある権限グループと割り当てる必要がある管理者ロールを知っています。</p>
 
 </div>
 
@@ -328,7 +648,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月15日
+          <p>最終更新日 ::  2024年October月16日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -343,13 +663,18 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88" href="javascript:void(0)">ユーザーのエクスポート</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%81%A8%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%A8%E6%A8%A9%E9%99%90%E3%81%AE%E6%89%8B%E5%8B%95%E3%82%A4%E3%83%B3%E3%83%99%E3%83%B3%E3%83%88%E3%83%AA" href="javascript:void(0)">クライアントサイドとサーバーサイドのユーザーと権限の手動インベントリ</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89" href="javascript:void(0)">クライアントサイド</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89" href="javascript:void(0)">サーバーサイド</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E5%81%B4%E3%81%A8%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E5%81%B4%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%A8%E6%A8%A9%E9%99%90%E3%81%AE%E6%89%8B%E5%8B%95%E3%82%A4%E3%83%B3%E3%83%99%E3%83%B3%E3%83%88%E3%83%AA" href="javascript:void(0)">クライアント側とサーバー側のユーザーと権限の手動インベントリ</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E5%81%B4" href="javascript:void(0)">クライアント側</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E5%81%B4" href="javascript:void(0)">サーバー側</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%97%E3%83%AC%E3%83%83%E3%83%89%E3%82%B7%E3%83%BC%E3%83%88%E3%81%AE%E7%9B%A3%E6%9F%BB" href="javascript:void(0)">スプレッドシートの監査</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%80%8B%E3%80%85%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E3%83%8B%E3%83%BC%E3%82%BA%E3%82%92%E3%82%B9%E3%83%97%E3%83%AC%E3%83%83%E3%83%89%E3%82%B7%E3%83%BC%E3%83%88%E3%81%AB%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">個々のユーザーのニーズをスプレッドシートに追加</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#pii%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%8B%E3%83%BC%E3%82%BA" href="javascript:void(0)">PIIデータのニーズ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A3%BD%E5%93%81%E3%81%A8%E6%A9%9F%E8%83%BD%E3%81%AE%E3%83%8B%E3%83%BC%E3%82%BA" href="javascript:void(0)">製品と機能のニーズ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%97%E3%83%AC%E3%83%83%E3%83%89%E3%82%B7%E3%83%BC%E3%83%88%E3%81%AE%E6%9B%B4%E6%96%B0" href="javascript:void(0)">スプレッドシートの更新</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%B5%84%E7%B9%94%E6%83%85%E5%A0%B1%E3%81%AE%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">組織情報の追加</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%9B%A3%E6%9F%BB" href="javascript:void(0)">プロファイルの監査</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%92%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%81%AB%E5%88%86%E3%81%91%E3%82%8B" href="javascript:void(0)">ユーザーをグループに分ける</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%AE%A1%E7%90%86%E8%80%85%E3%83%AD%E3%83%BC%E3%83%AB%E3%81%AE%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">管理者ロールの追加</a></li>
               </nav>
   </aside></nav>
 

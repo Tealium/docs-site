@@ -159,33 +159,33 @@
 <p><code>utag.js</code> 4.26ファイルがクエリストリングパラメータとメタタグを扱う方法の変更により、これらはデフォルトでは小文字にならなくなりました。プロファイルでクエリストリングパラメータやメタタグをデータソースとして識別している場合、データレイヤータブでそれらのデータソース名を更新して、大文字と小文字を正確に一致させる必要があるかもしれません。</p>
 <h2 id="カスタムスクリプトソースはブロッキングタグです">カスタムスクリプトソースはブロッキングタグです</h2>
 <p>ブロッキングタグは、他のすべてのタグが実行される前に実行しなければならないタグです。タグの<a href="/ja/iq-tag-management/templates/manage/">カスタムスクリプトソースの高度な構成</a>の場所を入力すると、このタグは自動的にブロッキングタグになります。このタグは非同期でロードされますが、その後の非同期スクリプトは、例えば<code>utag.10.js</code>はブロッキングタグが完了するまでロードされません。</p>
-<p><strong>ベストプラクティス:</strong> タグのカスタムJavaScriptをロードしたいが、それをブロッキングタグにしたくない場合は、<a href="/ja/iq-tag-management/tags/tealium-generic-tag/">Tealium Generic Tag</a>を使用してロードします。</p>
+<p><strong>ベストプラクティス:</strong> タグにカスタムJavaScriptをロードしたいが、それをブロッキングタグにしたくない場合は、<a href="/ja/iq-tag-management/tags/tealium-generic-tag/">Tealium Generic Tag</a>を使用してロードします。</p>
 <h2 id="waitフラグの改善">Waitフラグの改善</h2>
 <p><a href="/ja/iq-tag-management/templates/manage/">Waitフラグはタグ構成内の高度な構成</a>です。</p>
-<p><strong>Wait Flag</strong>が&quot;No&quot;に構成されているタグは、<code>utag.js</code>ファイルがロードされた直後にロードされ、発火します。<strong>Wait Flag</strong>が&quot;No&quot;に構成されているタグは、Tealium iQ内で早くロードされると、その順序に関係なく早く発火する可能性があります。例えば、Tag 2がTag 1よりも先にロードされ、Tag 1がTealium iQ内のTagsタブで上位に配置されている場合、Tag 2はそれらの順序に関係なく早く発火する可能性があります。以前は、タグはTealium iQで指定された順序で実行され、それらのタグは自分自身がロードされる前に順序が高いタグを待つようになっていました。</p>
+<p><strong>Wait Flag</strong>が&quot;No&quot;に構成されているタグは、<code>utag.js</code>ファイルがロードされた直後にロードされ、発火します。<strong>Wait Flag</strong>が&quot;No&quot;に構成されているタグは、Tealium iQ内で早くロードされると、その順序に関係なく早く発火する可能性があります。例えば、Tag 2がTag 1よりも先にロードされ、Tag 1がTealium iQのTagsタブで上位に配置されている場合、Tag 2は順序に関係なく早く発火する可能性があります。以前は、タグはTealium iQで指定された順序で実行され、その後、順序で上位に配置されたタグがロードされるのを待ってから自身をロードしていました。</p>
 <p>これは、プロファイル内にWait Flagが&rsquo;No&rsquo;に構成されているタグとWait Flagが&rsquo;Yes&rsquo;に構成されているタグが混在している可能性があることを意味します。</p>
 <h2 id="トラッキングコールが新しいタグをロードします">トラッキングコールが新しいタグをロードします</h2>
 <p>初期ページロード後、<code>utag.view()</code>への後続の呼び出しはロードルールを再評価して新しいタグをロードします。以前のバージョンでは、<code>utag.view</code>への呼び出しは新しいタグをロードすることができませんでした。この機能は<code>utag.js</code> 4.26ではデフォルトで有効になっています。</p>
-<p>この機能を無効にして現在の動作を維持します。詳細については、以下の<a href="/javscript/settings/"><code>utag.cfg.load_rules_ajax</code>フラグ</a>を参照してください。</p>
+<p>この機能を無効にして現在の動作を維持します。詳細については、以下の<a href="/platforms/javascript/settings/"><code>utag.cfg.load_rules_ajax</code>フラグ</a>を参照してください。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i><code>utag.link()</code>の呼び出しは新しいタグをロードしません。新しいタグをロードするのは<code>utag.view()</code>の呼び出しのみです。</p>
-<h2 id="uidによるタグのロード">UIDによるタグのロード</h2>
-<p>高度な実装、特にAJAXを使用している場合は、<code>utag.view()</code>の呼び出しを使用して新しいタグを取り込み、Tealium iQのTagsタブで見られるタグのUIDに基づいてそれを発火させます。これはすべてのロードルールをバイパスします。</p>
+<h2 id="uidでタグをロードする">UIDでタグをロードする</h2>
+<p>高度な実装、特にAJAXを使用している場合は、<code>utag.view()</code>の呼び出しを使用して新しいタグを取り込み、Tealium iQのTagsタブで見られるタグのUIDに基づいて発火させます。これはすべてのロードルールをバイパスします。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">view</span>({<span style="color:#a6e22e">page_name</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;New Page&#34;</span>}, <span style="color:#66d9ef">null</span>, [<span style="color:#ae81ff">5</span>]);
 </span></span></code></pre></div><ul>
 <li>パラメータ1: データレイヤー</li>
 <li>パラメータ2: コールバック関数（またはnull）</li>
 <li>パラメータ3: ロードして発火するUIDの配列</li>
 </ul>
-<h2 id="新しいメタタグの読み取り">新しいメタタグの読み取り</h2>
-<p>これらのタイプのメタタグは、&ldquo;name=&ldquo;があるものが以前の<code>utag.js</code>バージョンでピックアップされました：</p>
+<h2 id="新しいメタタグを読み込む">新しいメタタグを読み込む</h2>
+<p>&ldquo;name=&ldquo;を持つこれらのタイプのメタタグは、以前のバージョンの<code>utag.js</code>でピックアップされました：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;keywords&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Apple,Tab&#34;</span> /&gt;
-</span></span></code></pre></div><p>新しい<code>utag.js</code> 4.26では、<code>property=</code>があるものをピックアップします（&ldquo;Open Graph&quot;メタタグを参照）</p>
+</span></span></code></pre></div><p>新しい<code>utag.js</code> 4.26では、<code>property=</code>を持つものをピックアップします（&ldquo;Open Graph&quot;メタタグを参照）</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">property</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;og:type&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;video.movie&#34;</span> /&gt; 
 </span></span></code></pre></div><h2 id="クエリストリングまたはメタ変数を小文字にする">クエリストリングまたはメタ変数を小文字にする</h2>
 <p>これは<code>utag.data</code>のデフォルトの動作のロジック変更です。<a href="#utagcfglowerqp"><code>utag.cfg.lowerqp</code>フラグ</a>を<code>true</code>に構成して自動的に小文字にします。ただし、デフォルトの構成は混在したケースを保持します。</p>
 <p class="tip"><i class="fa fa-info-circle"></i>以前の<code>utag.js</code>の動作との後方互換性のために、<code>utag.cfg.lowerqp</code>フラグをtrueに構成します。</p>
 <p>メタタグの小文字化を有効にするには、<code>utag.cfg.lowermeta</code>フラグを<code>true</code>に構成します。これはそのメタタグの名前/値ペアの名前にのみ適用されます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>混在したケースのクエリストリングパラメータがある場合は、データソースの名前をデータソースタブで更新して正確に一致させる必要があります。このクエリストリングタイプのデータソースを参照するコードも更新する必要があります。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>混在したケースのクエリストリングパラメータを持っている場合は、データソースの名前をデータソースタブで正確に一致するように更新する必要があります。このクエリストリングタイプのデータソースを参照するコードも更新する必要があります。</p>
 <h2 id="新しいクッキー値">新しいクッキー値</h2>
 <p><code>utag_main</code>クッキーには新しいクッキー名/値ペアがあります：</p>
 <ul>
@@ -199,7 +199,7 @@
 </ul>
 <p>（以前のクッキー値<code>utag_main__st</code>と<code>utag_main_ses_id</code>はまだ構成されています。）</p>
 <h2 id="セッショントラッキング">セッショントラッキング</h2>
-<p>訪問のセッション開始時に空のファイル、<code>utag.v.js</code>へのリクエストが一度だけ行われます。これはTealiumがセッション数をログに記録するために内部的に使用されます。HTTPリクエストURLは次のようになります：</p>
+<p>訪問のセッション開始時に空のファイル、<code>utag.v.js</code>へのリクエストが一度だけ行われます。これはTealiumがセッションカウントをログに記録するために内部的に使用されます。HTTPリクエストURLは次のようになります：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>http://tags.tiqcdn.com/utag/tiqapp/utag.v.js?a<span style="color:#f92672">=</span>tealium/main/201306012057&amp;cb<span style="color:#f92672">=</span><span style="color:#ae81ff">1370276499302</span>
 </span></span></code></pre></div><p>新しいクッキー値<code>utag_main__ss</code>は、いつ発火するかを決定するために使用されます。これはセッションの最初のイベントでのみ送信されます。このリクエストは、すべてのタグが発火した後に最後に送信されます。</p>
 <h2 id="urlフラグメント">URLフラグメント</h2>
@@ -210,8 +210,8 @@
 </span></span></code></pre></div><p>新しい：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;qp.param1&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value1&#34;</span>, <span style="color:#e6db74">&#34;qp.param2&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value2&#34;</span>, <span style="color:#e6db74">&#34;qp.hash1&#34;</span>  <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value3&#34;</span>}
 </span></span></code></pre></div><h2 id="すべてのページデータがトラッキングコールに利用可能">すべてのページデータがトラッキングコールに利用可能</h2>
-<p>以前は、<code>utag.view</code>と<code>utag.link</code>の呼び出しは、あなたがそれらに渡したデータしか知りませんでした。<code>b[&quot;qp.campaign&quot;]</code>のような項目は利用できませんでした。現在では、URL、メタ、クッキー値などのすべての&quot;組み込み&quot;データポイントが<code>utag.link</code>と<code>utag.view</code>の呼び出しのデータレイヤーに追加されます。</p>
-<p>また、AJAXサイトで変更された可能性のある動的項目（<code>b[&quot;dom.url&quot;]</code>など）は再構築され、現在の値を使用します。現在の値は、AJAXページに初めて着陸した時の値とは異なる可能性があります。</p>
+<p>以前は、<code>utag.view</code>と<code>utag.link</code>の呼び出しは、あなたがそれらに渡したデータだけを知っていました。<code>b[&quot;qp.campaign&quot;]</code>のような項目は利用できませんでした。現在では、URL、メタ、クッキー値などのすべての&quot;組み込み&quot;データポイントが<code>utag.link</code>と<code>utag.view</code>の呼び出しのデータレイヤーに追加されます。</p>
+<p>また、AJAXサイトで変更された可能性がある動的項目（<code>b[&quot;dom.url&quot;]</code>など）は再構築され、現在の値を使用します。現在の値は、AJAXページに初めて着陸した時点の値と異なる場合があります。</p>
 <h2 id="新しいオーバーライド構成">新しいオーバーライド構成</h2>
 <p>&ldquo;Pre Loader&quot;にスコープを持つJavaScript Code拡張とグローバル変数<code>window.utag_cfg_ovrd</code>を使用します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>window.<span style="color:#a6e22e">utag_cfg_ovrd</span> <span style="color:#f92672">=</span> {
@@ -222,30 +222,30 @@
 </span></span></code></pre></div><h2 id="追加の構成">追加の構成</h2>
 <ul>
 <li><code>utag.cfg.load_rules_ajax</code><br>
-このフラグを<code>false</code>に構成すると、各<code>utag.view</code>と<code>utag.link</code>の呼び出しでロードルールを&quot;再評価&quot;したくない場合に構成します。<code>utag.view</code>の場合、これは初期ページビューでロードされなかった新しい<code>utag.X.js</code>ファイルもロードする可能性があります。</li>
+このフラグを<code>false</code>に構成すると、各<code>utag.view</code>と<code>utag.link</code>の呼び出しでロードルールを&quot;再評価&quot;したくない場合です。<code>utag.view</code>の場合、これは初期ページビューでロードされなかった新しい<code>utag.X.js</code>ファイルもロードするかもしれません。</li>
 <li><code>utag.udoname</code><br>
-データオブジェクトの名前。<code>utag.js</code>コードは、データオブジェクトがグローバル変数であると仮定します。例えば、他のオブジェクト内のオブジェクトではありません。デフォルトでは、これは<code>utag_data</code>に構成されています。</li>
+データオブジェクトの名前。<code>utag.js</code>コードは、データオブジェクトがグローバル変数であると仮定します。例えば、他のオブジェクト内のオブジェクトではありません。デフォルトでは、これは<code>utag_data</code>に構成されています</li>
 <li><code>utag.cfg.load_rules_at_wait</code><br>
-このフラグを<code>true</code>に構成すると、Wait（DOM Ready）でロードルールを再評価したい場合に構成します。これは、<code>utag.js</code>がロードされた後にデータが構成され、このデータを使用してDOM Readyを待つように構成されたタグを発火させたい場合のレガシーサポートを有効にします。</li>
+このフラグを<code>true</code>に構成すると、Wait（DOM Ready）でロードルールを再評価したい場合です。これは、<code>utag.js</code>がロードされた後にデータが構成され、このデータを使用してDOM Readyを待つタグを発火させたい場合のレガシーサポートを有効にします。</li>
 <li><code>utag.cfg.lowerqp</code><br>
-このフラグを<code>true</code>に構成すると、クエリストリングの名前/値ペアを小文字にしたい場合に構成します。これは以前のデフォルトの動作でした。</li>
+このフラグを<code>true</code>に構成すると、クエリストリングの名前/値ペアを小文字にしたい場合です。これは以前のデフォルトの動作でした。</li>
 <li><code>utag.cfg.lowermeta</code><br>
-このフラグを<code>true</code>に構成すると、メタタグの名前を小文字にしたい場合に構成します。メタタグの名前/値ペアの値は小文字になりません。</li>
+このフラグを<code>true</code>に構成すると、メタタグの名前を小文字にしたい場合です。メタタグの名前/値ペアの値は小文字になりません。</li>
 <li><code>utag.cfg.noview</code><br>
-このフラグを<code>true</code>に構成すると、初期の<code>utag.view</code>呼び出しがいつ行われるかを制御したい場合に構成します。これは、あなたのアプリケーションがページビューイベントを制御するAJAXサイトに一般的です（初期のページロードアクションではありません。）</li>
+このフラグを<code>true</code>に構成すると、初期の<code>utag.view</code>呼び出しがいつ行われるかを制御したい場合です。これは、アプリケーションがページビューイベントを制御するAJAXサイトに一般的です（初期のページロードアクションではありません。）</li>
 </ul>
 <h2 id="考慮事項">考慮事項</h2>
 <ul>
-<li>誤って複数の注文を発行する - <code>utag.link</code>と<code>utag.view</code>の呼び出しは、すべての&quot;DOM&quot;タイプのデータポイントをすべての呼び出しで利用できるようになりました。例えば、クエリストリングデータ（<code>b[&quot;qp.order_id&quot;]</code>など）はページの読み込み時に読み取られ、注文イベントをトリガーします。しかし、同じ注文ページで<code>utag.link</code>を発行すると、<code>b[&quot;qp.order_id&quot;]</code>データセットも持っており、二度目の注文イベントをトリガーします。</li>
+<li>誤って複数の注文を発行する - <code>utag.link</code>と<code>utag.view</code>の呼び出しは、すべての&quot;DOM&quot;タイプのデータポイントをすべての呼び出しで利用できるようになりました。例えば、クエリストリングデータ（<code>b[&quot;qp.order_id&quot;]</code>など）はページの読み込み時に読み取られ、注文イベントをトリガーします。しかし、同じ注文ページで<code>utag.link</code>を発火させると、<code>b[&quot;qp.order_id&quot;]</code>データセットも持っており、二度目の注文イベントをトリガーします。</li>
 <li>最も直感的な動作のために、<code>utag.js</code>ファイルを読み込む前にすべての<code>utag_data</code>値を構成することをお勧めします。そして、<code>utag.cfg.load_rules_at_wait</code>をデフォルトの&quot;false&quot;に保つことをお勧めします。</li>
 <li><code>utag.js</code> 4.26への更新により、クエリストリングパラメータを小文字にするデフォルトの動作が変更されました。値はもはや自動的に小文字にはなりません。</li>
-<li>&ldquo;All Tags&quot;スコープの拡張機能は、DOM Readyスコープの拡張機能の前に実行されるかもしれませんし、実行されないかもしれません。順序は保証されません。All Tagsスコープの拡張機能でデータレイヤー要素を操作すると、Content Modification Extensionの基準に影響を与える可能性があります。</li>
+<li>&ldquo;All Tags&quot;スコープの拡張機能は、DOM Readyスコープの拡張機能の前に実行されるかもしれませんし、されないかもしれません。順序は保証されません。All Tagsスコープの拡張機能でデータレイヤー要素を操作すると、Content Modification Extensionの基準に影響を与える可能性があります。</li>
 </ul>
 <p><strong>ベストプラクティス：</strong> 元のデータレイヤーオブジェクトを変更しないでください。値を変更する必要がある場合は、新しい変数を使用してください。</p>
 <h2 id="既知の問題">既知の問題</h2>
 <ul>
 <li><code>utag_data</code>オブジェクトは<code>utag.data</code>への参照となり、一方を変更すると他方も変更されます。</li>
-<li>Internet Explorer 8では、Data Layerが<code>&lt;body&gt;</code>要素の最後、つまりDOM Readyの直前（そして<code>utag.js</code>はすでに読み込まれている）に定義されていると、タイミングの問題が発生する可能性があります。ベストプラクティスとして、<code>utag.js</code>ファイルを読み込む前に常に<code>utag_data</code>オブジェクトを宣言してください。</li>
+<li>Internet Explorer 8では、Data Layerが<code>&lt;body&gt;</code>要素の最後、つまりDOM Ready直前（そして<code>utag.js</code>はすでに読み込まれている）に定義されている場合、タイミングの問題が発生する可能性があります。ベストプラクティスとして、<code>utag.js</code>ファイルを読み込む前に常に<code>utag_data</code>オブジェクトを宣言してください。</li>
 </ul>
 
 </div>
@@ -292,7 +292,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年October月11日
+          <p>最終更新日 ::  2024年October月16日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -310,8 +310,8 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AF%E3%83%96%E3%83%AD%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0%E3%82%BF%E3%82%B0%E3%81%A7%E3%81%99" href="javascript:void(0)">カスタムスクリプトソースはブロッキングタグです</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#wait%E3%83%95%E3%83%A9%E3%82%B0%E3%81%AE%E6%94%B9%E5%96%84" href="javascript:void(0)">Waitフラグの改善</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0%E3%82%B3%E3%83%BC%E3%83%AB%E3%81%8C%E6%96%B0%E3%81%97%E3%81%84%E3%82%BF%E3%82%B0%E3%82%92%E3%83%AD%E3%83%BC%E3%83%89%E3%81%97%E3%81%BE%E3%81%99" href="javascript:void(0)">トラッキングコールが新しいタグをロードします</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#uid%E3%81%AB%E3%82%88%E3%82%8B%E3%82%BF%E3%82%B0%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89" href="javascript:void(0)">UIDによるタグのロード</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%96%B0%E3%81%97%E3%81%84%E3%83%A1%E3%82%BF%E3%82%BF%E3%82%B0%E3%81%AE%E8%AA%AD%E3%81%BF%E5%8F%96%E3%82%8A" href="javascript:void(0)">新しいメタタグの読み取り</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#uid%E3%81%A7%E3%82%BF%E3%82%B0%E3%82%92%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B" href="javascript:void(0)">UIDでタグをロードする</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%96%B0%E3%81%97%E3%81%84%E3%83%A1%E3%82%BF%E3%82%BF%E3%82%B0%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80" href="javascript:void(0)">新しいメタタグを読み込む</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%82%A8%E3%83%AA%E3%82%B9%E3%83%88%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%BE%E3%81%9F%E3%81%AF%E3%83%A1%E3%82%BF%E5%A4%89%E6%95%B0%E3%82%92%E5%B0%8F%E6%96%87%E5%AD%97%E3%81%AB%E3%81%99%E3%82%8B" href="javascript:void(0)">クエリストリングまたはメタ変数を小文字にする</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%96%B0%E3%81%97%E3%81%84%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC%E5%80%A4" href="javascript:void(0)">新しいクッキー値</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%88%E3%83%A9%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0" href="javascript:void(0)">セッショントラッキング</a></li>
