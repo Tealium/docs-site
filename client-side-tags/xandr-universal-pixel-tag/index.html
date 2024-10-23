@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "client-side-tags",
-        reading_time  : "2",
+        reading_time  : "3",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -355,6 +355,7 @@
         <a href="/client-side-tags/tribal-fusion-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tribal-fusion-tag">Tribal Fusion Tag Setup Guide</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/true-fit-integration-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".true-fit-integration-tag">True Fit Integration Tag Setup Guide</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/trusted-shops-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".trusted-shops-tag">Trusted Shops</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/client-side-tags/tv-scientific-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tv-scientific-tag">TV Scientific</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/uim-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".uim-tag">UIM Retargeting</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/uplift-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".uplift-tag">Uplift</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/client-side-tags/userway-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".userway-tag">UserWay Tag Setup</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -444,7 +445,36 @@
 <li>You may enter multiple IDs in a comma-separated list.</li>
 </ul>
 </li>
+<li><strong>Ad Storage Consent</strong>: Set the default consent for Ad Storage. Dynamically update this value by mapping the <code>ad_storage</code> parameter in the <strong>Data Mappings</strong> section.</li>
+<li><strong>Automatically read from Tealium Consent Cookie</strong>: If set to true, consent is set based on the <a href="/iq-tag-management/consent/consent-management/about/">Tealium Consent Manager</a>.</li>
 </ul>
+<h2 id="consent-mode">Consent mode</h2>
+<p>There are two options to implement consent mode for this tag:</p>
+<ul>
+<li>Use <a href="/iq-tag-management/consent/consent-management/about/">Tealium Consent Management</a> and automatically read the Tealium Consent cookie.</li>
+<li>Add a <a href="/iq-tag-management/extensions/extensions-list/javascript-code-basic-extension/">JavaScript Code extension</a> to map consent choices and category mappings from your consent management platform (CMP) to this tag.</li>
+</ul>
+<p>As visitors make their consent choices, the tag will choose the appropriate approach for first and third-party cookies:</p>
+<ul>
+<li><strong>Granted</strong>: Both first-party and third-party cookies can be read and written.</li>
+<li><strong>Denied</strong>: First-party cookies are neither read nor written, and third-party cookies are read-only for fraud and spam purposes, not for advertising.</li>
+</ul>
+<h3 id="tealium-consent-management">Tealium Consent Management</h3>
+<p>To implement consent mode for this tag using Tealium Consent Management, set <strong>Automatically read from Tealium Consent Cookie</strong> to <code>true</code> in the tag configuration.</p>
+<h3 id="javascript-code-extension">JavaScript Code extension</h3>
+<p>To map end-user consent choices to Xandr consent mode settings, use the JavaScript Code extension. Configure the extension as follows:</p>
+<ul>
+<li>Set <strong>Scope</strong> to <strong>After Load Rules (default)</strong></li>
+<li>Set <strong>Occurrence</strong> to <strong>Run Always</strong></li>
+<li>Enter the JavaScript code for your CMP. You can customize the following code template for your CMP by replacing <code>CUSTOM_LOGIC</code> with the logic for your vendor.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">consent_decision</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">tealiumConsentRegister</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">tealiumConsentRegister</span>.<span style="color:#a6e22e">currentDecision</span>) <span style="color:#f92672">||</span> [];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">xandr_ad_storage_consent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CUSTOM_LOGIC</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;granted&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;denied&#39;</span>;
+</span></span></code></pre></div><p>For example, the following code is for OneTrust.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// After Load Rules - Run Always
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">consent_decision</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">tealiumConsentRegister</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">tealiumConsentRegister</span>.<span style="color:#a6e22e">currentDecision</span>) <span style="color:#f92672">||</span> [];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">xandr_ad_storage_consent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">consent_decision</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#39;C0004&#39;</span>) <span style="color:#f92672">!==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>  <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;granted&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;denied&#39;</span>;
+</span></span></code></pre></div><p>If you use these exact variable names, no additional mapping is required. The latest version of the tag uses these variables by default. Overwrite these variables by mapping the <code>ad_storage</code> parameter to attributes for your specific case.</p>
 <h2 id="data-mappings">Data mappings</h2>
 <p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-layer/data-layer-variables/">data layer variable</a> to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">Data Mappings</a>.</p>
 <p>The available categories are:</p>
@@ -680,7 +710,10 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-tips" href="javascript:void(0)">Tag tips</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-configuration" href="javascript:void(0)">Tag configuration</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-mappings" href="javascript:void(0)">Data mappings</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent-mode" href="javascript:void(0)">Consent mode</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-consent-management" href="javascript:void(0)">Tealium Consent Management</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#javascript-code-extension" href="javascript:void(0)">JavaScript Code extension</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-mappings" href="javascript:void(0)">Data mappings</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-configurations" href="javascript:void(0)">Tag Configurations</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e-commerce" href="javascript:void(0)">E-Commerce</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#events" href="javascript:void(0)">Events</a></li>
@@ -744,6 +777,16 @@ No</button>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           Home
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/guides/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Guides
         </a>
     </li>
   
@@ -947,6 +990,7 @@ No</button>
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

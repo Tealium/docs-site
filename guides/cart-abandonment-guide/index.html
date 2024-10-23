@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/ilp4lxb.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Cart abandonment guide | Guides | Tealium Docs</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.111.3">
+    
+    <meta NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+    
+    
+    <link rel="alternate" hreflang="ja" href="https://docs.tealium.com/ja/guides/cart-abandonment-guide/">
+    <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
+    <script>
+      history.scrollRestoration = "manual";
+      if (location.hash) {
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 10);
+      }
+    </script>
+  </head>
+  <body class="sidebar ma0 sans-serif text-color-primary  hg-page">
+    <script>
+    var utag_data = {
+        site_section  : "guides",
+        reading_time  : "7",
+        site_language : "en",
+        tealium_event : "page_view"
+    }
+    </script>
+
+    <script>
+     (function(a,b,c,d){
+        a="//tags.tiqcdn.com/utag/tealium/docs/prod/utag.js";
+        b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+        a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+      })();
+    </script>
+<nav class="w-100 sticky-t bg-primary-color-light bb b--light-gray dpn" role="navigation">
+  <div class="flex-ns flex-wrap items-center justify-start mw9">
+    <div class="lh-solid ml0-ns mr0 mr4-l mv3 pl15 dib db-ns">
+      <a href="/"><img src="/images/icons/tealium-documentation-logo-color.svg" class="v-mid dib" width="186" height="31"></a>
+    </div>
+    
+    <div class="dib ml3 mr4 mv3 pl15"><div id="docsearch">
+</div>
+</div><ul class="list ma0 pa0 dn dib-ns">
+      <li class="f5 dib mr4">
+         <a href="https://support.tealiumiq.com/en/support/solutions" class="dim link mid-gray">Knowledge Base&nbsp;<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 32 32" class="fill-current v-base" aria-label="External Link">
+<path d="M25.152 16.576v5.696q0 2.144-1.504 3.648t-3.648 1.504h-14.848q-2.144 0-3.648-1.504t-1.504-3.648v-14.848q0-2.112 1.504-3.616t3.648-1.536h12.576q0.224 0 0.384 0.16t0.16 0.416v1.152q0 0.256-0.16 0.416t-0.384 0.16h-12.576q-1.184 0-2.016 0.832t-0.864 2.016v14.848q0 1.184 0.864 2.016t2.016 0.864h14.848q1.184 0 2.016-0.864t0.832-2.016v-5.696q0-0.256 0.16-0.416t0.416-0.16h1.152q0.256 0 0.416 0.16t0.16 0.416zM32 1.152v9.12q0 0.48-0.352 0.8t-0.8 0.352-0.8-0.352l-3.136-3.136-11.648 11.648q-0.16 0.192-0.416 0.192t-0.384-0.192l-2.048-2.048q-0.192-0.16-0.192-0.384t0.192-0.416l11.648-11.648-3.136-3.136q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h9.12q0.48 0 0.8 0.352t0.352 0.8z"></path>
+</svg>
+</a>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+      
+        
+          <a href="/ja/guides/cart-abandonment-guide/" class="dim link mid-gray">日本語</a>
+        
+      
+      </li>
+            
+    </ul>
+  </div>
+</nav>
+    
+    <main role="main" class="content-with-sidebar pb0-ns">
+      
+
+<div class="w-100 pr4">
+<div class="flex">
+
+    
+      <div id="menu" class="order-0 w-auto max-vh-100 overflow-hidden overflow-y-scroll dn db-ns sticky-l pt3 pl125" style="width:280px;">
+<nav class="side-nav f6" role="navigation">
+  <ul class="list pa0 mt0 mb1">
+  
+    <li class="w-100 fw4 f5 text-color-primary pv1 pl2"><a href="/" class="w-100 link text-color-primary hover-primary-color pv2 pl0 pr2"><img src="/images/icons/icon-arrow.svg" height="10" width="16" class="di v-mid pr1"/>Home</a></li>
+  
+  </ul>
+  <ul class="list pa0" data-nav-section="guides"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><a href="/guides/" class="dib w-100 link text-color-primary hover-primary-color mb2"><span class="pb2">Guides</span></a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/guides/abandonment-strategy/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Abandonment strategy</a></li><li data-level="1" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/guides/cart-abandonment-guide/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".">Cart abandonment</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/guides/lifetime-value/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">Lifetime value</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/guides/vip-badge-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">VIP badge</a></li></ul>
+</nav>
+</div>
+    
+
+    <article id="main-content" class="order-1 overflow-auto vh-100 max-vh-100 pt4 ph4 mid-gray mt0-ns w-100" style="flex:1;scroll-padding-top:96px;">
+      <div class="documentation-copy ph4">
+        <header class="flex-none w-100"><nav id="breadcrumb">
+<ul class="nav">
+
+    
+    
+  
+  <li class="mr1 f7 lvl0"><a class="f6 mb0 link mid-gray dim mr1" href="/">Home</a>&nbsp;>&nbsp;</li>
+  
+
+  
+  
+  <li class="mr1 f7 lvl1"><a class="f6 mb0 link mid-gray dim mr1" href="/guides/">Guides</a></li>
+  
+
+  
+  
+
+</ul>
+</nav>
+
+<h1 class="lh-title mt30 mb3">Cart abandonment guide</h1>
+</header>
+
+<div class="mv2 mid-gray fn w-100">
+  
+
+  
+    <p class="f4 fw3 lh-copy">
+      This guide shows how to target visitors who added products to the shopping cart but didn&rsquo;t complete a purchase.
+    </p>
+  
+</div>
+
+<div class="prose nested-links" id="prose">
+  <p>This guide shows how to track basic cart abandonment by combining Tealium iQ Tag Management (optional), Tealium AudienceStream CDP, and your email marketing connector.</p>
+<figure><a class="slb" href="/images/guides/cart-abandonment-flow-diagram.png"><img src="/images/guides/cart-abandonment-flow-diagram.png"
+         alt="Diagram showing incoming data going through Tealium AudienceStream and then being activated and sent to vendors."
+         title="Diagram showing incoming data going through Tealium AudienceStream and then being activated and sent to vendors."/>
+    </a>
+</figure>
+<p>The solution in this guide covers the following steps:</p>
+<ul>
+<li><a href="#step-1-track-events">Step 1: Track events</a></li>
+<li><a href="#step-2-define-visitor-attributes">Step 2: Define visitor attributes</a></li>
+<li><a href="#step-3-define-an-audience">Step 3: Define an audience</a></li>
+<li><a href="#step-4-configure-a-connector">Step 4: Configure a connector</a></li>
+</ul>
+<h2 id="required-events-and-attributes">Required events and attributes</h2>
+<p>The following events should be tracked:</p>
+<ul>
+<li><code>cart_add</code></li>
+<li><code>purchase</code></li>
+</ul>
+<p>In general, the following event attributes will be helpful in tracking cart abandonment activity. Your actual attribute names might differ.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute Name</th>
+<th>Example value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cart_product_id</code></td>
+<td><code>[&quot;PROD123&quot;, &quot;PROD456&quot;]</code></td>
+</tr>
+<tr>
+<td><code>cart_product_price</code></td>
+<td><code>[&quot;12.00&quot;, &quot;25.99&quot;]</code></td>
+</tr>
+<tr>
+<td><code>cart_product_quantity</code></td>
+<td><code>[&quot;2&quot;, &quot;2&quot;]</code></td>
+</tr>
+<tr>
+<td><code>cart_product_sku</code></td>
+<td><code>[&quot;PR-RED-123&quot;, &quot;PR-BLK-456&quot;]</code></td>
+</tr>
+<tr>
+<td><code>product_category</code></td>
+<td><code>[&quot;Shirts&quot;]</code></td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td><code>[&quot;PROD678&quot;]</code></td>
+</tr>
+<tr>
+<td><code>product_image_url</code></td>
+<td><code>[&quot;//example.com/path/image.gif&quot;]</code></td>
+</tr>
+<tr>
+<td><code>product_name</code></td>
+<td><code>[&quot;Product Three&quot;]</code></td>
+</tr>
+<tr>
+<td><code>product_price</code></td>
+<td><code>[&quot;18.00&quot;]</code></td>
+</tr>
+<tr>
+<td><code>product_quantity</code></td>
+<td><code>[&quot;2&quot;]</code></td>
+</tr>
+<tr>
+<td><code>product_sku</code></td>
+<td><code>[&quot;PR-BLU-678&quot;]</code></td>
+</tr>
+<tr>
+<td><code>product_subcategory</code></td>
+<td><code>[&quot;T-Shirts&quot;]</code></td>
+</tr>
+<tr>
+<td><code>tealium_event</code></td>
+<td><code>&quot;cart_add&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<p>For more information about tracking e-commerce events, see <a href="/platforms/getting-started-web/data-layer/definitions/retail/">Retail</a>.</p>
+<h2 id="required-visitor-attributes">Required visitor attributes</h2>
+<table>
+<thead>
+<tr>
+<th>Attribute Name</th>
+<th>Type</th>
+<th>Scope</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Added to Cart</td>
+<td>Boolean</td>
+<td>Visitor</td>
+<td>Signifies that a product was added to the shopping cart in the last visit.</td>
+</tr>
+<tr>
+<td>Did Purchase</td>
+<td>Boolean</td>
+<td>Visitor</td>
+<td>Signifies that a purchase was made within the last visit.</td>
+</tr>
+<tr>
+<td>Cart Abandoner</td>
+<td>Badge</td>
+<td>Visitor</td>
+<td>Signifies that the conditions for cart abandonment have been met.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="step-1-track-events">Step 1: Track events</h2>
+<p>In this step, we use Tealium iQ events to send event and product information when a visitor adds a product to their cart.</p>
+<p>If you already collect <code>cart_add</code> events, skip this step.</p>
+<h3 id="track-add-to-cart-events">Track Add to Cart events</h3>
+<p>To start, we need to know when a visitor adds something to their cart. Create an event listener to track when a user adds something to their cart.</p>
+<p>In this use case, we are setting <code>tealium_event</code> to <code>cart_add</code>.</p>
+<ol>
+<li>Go to <strong>iQ Tag Management &gt; Events</strong> and click <strong>+New Event</strong>.</li>
+<li>In the <strong>Event Types</strong> screen, select the <strong>Click</strong> event type and click <strong>Next</strong>.</li>
+<li>In the <strong>Configuration</strong> screen, set the following values for your click event:
+<ul>
+<li><strong>Name</strong>: Add to Cart</li>
+<li><strong>Scope</strong>: DOM Ready</li>
+<li><strong>Tracking Event</strong>: Link</li>
+<li><strong>Event Triggers</strong>: Mousedown</li>
+<li><strong>Element Selector</strong>: The selector that works best for your website, beginning with a hash <code>#</code>. For example, your website may have the selector <code>#add-to-cart</code> for the <strong>Add to Cart</strong> button.</li>
+<li>Event Trigger Variables: Set Tealium Event to Text and enter <code>cart_add</code></li>
+</ul>
+</li>
+<li>Click <strong>Next</strong>.</li>
+</ol>
+<figure><a class="slb" href="/images/guides/event_add_cart_to_pages.png"><img src="/images/guides/event_add_cart_to_pages.png"
+         alt="Event type configuration screenshot"
+         title="Event type configuration screenshot"/>
+    </a>
+</figure>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Test your event configurations before publishing to production.</p>
+<h2 id="step-2-define-visitor-attributes">Step 2: Define visitor attributes</h2>
+<p>Now we need to create two boolean attributes:</p>
+<ul>
+<li><strong>Added to Cart (Boolean)</strong>: determines if the visitor has added a product to their cart.</li>
+<li><strong>Did Purchase (Boolean)</strong>: determines if the visitor completed a purchase during their last visit.</li>
+</ul>
+<h3 id="added-to-cart-boolean">Added to cart boolean</h3>
+<p>Create a visitor boolean attribute to track when a <code>cart_add</code> event has occurred.</p>
+<ol>
+<li>Go to <strong>AudienceStream &gt; Visitor/Visit Attributes</strong> and click <strong>+Add Attribute</strong>.</li>
+<li>In the <strong>Add Attribute</strong> screen, click <strong>Visitor</strong> and <strong>Continue</strong>.</li>
+<li>Select <strong>Boolean</strong> and click <strong>Continue</strong>.</li>
+<li>In the <strong>Properties</strong> section, enter <code>Added to Cart </code>as the title.</li>
+<li>Click <strong>Add Enrichment</strong> to set the <strong>Added to Cart</strong> boolean to <code>false</code> and the scope to <strong>NEW VISIT</strong>.</li>
+<li>Click <strong>Add Enrichment</strong> and set the <strong>Added to Cart</strong> boolean to <code>true</code> and the scope to <strong>ANY EVENT</strong>.</li>
+<li>Create a rule if it does not already exist:
+<ul>
+<li><strong>Title</strong>: Event cart_add</li>
+<li>Click <strong>+Attribute Condition</strong>.</li>
+<li>Select <code>tealium_event</code> is <strong>equal (ignore case)</strong> to <code>cart_add</code>.</li>
+</ul>
+</li>
+<li>Click <strong>Save</strong>.</li>
+</ol>
+<figure><a class="slb" href="/images/guides/boolean_added_to_cart.png"><img src="/images/guides/boolean_added_to_cart.png"
+         alt="Add boolean for add to cart"
+         title="Add boolean for add to cart"/>
+    </a>
+</figure>
+<h3 id="did-purchase-boolean">Did Purchase boolean</h3>
+<p>Create a visitor boolean attribute to track when a <code>purchase</code> event has occurred.</p>
+<ol>
+<li>Go to <strong>AudienceStream &gt; Visitor/Visit Attributes</strong> and click <strong>+Add Attribute</strong>.</li>
+<li>In the <strong>Add Attribute</strong> screen, click <strong>Visitor</strong> and <strong>Continue</strong>.</li>
+<li>Select <strong>Boolean</strong> and click <strong>Continue</strong>.</li>
+<li>In the <strong>Properties</strong> section, enter <code>Did Purchase</code> as the title.</li>
+<li>Click <strong>Add Enrichment</strong> to set the <strong>Purchase</strong> boolean to <code>false</code> and the scope to <strong>NEW VISIT</strong>.</li>
+<li>Click <strong>Add Enrichment</strong> to set the <strong>Purchase</strong> boolean to <code>true</code> for <strong>Any Event</strong>.</li>
+<li>Create the following rule if it does not already exist:
+<ul>
+<li><strong>Title</strong>: Purchase event</li>
+<li>Click <strong>+Attribute Condition</strong>.</li>
+<li>Select <code>tealium_event</code> <strong>contains (ignore case)</strong> <code>purchase</code>.
+<figure><a class="slb" href="/images/guides/boolean_purchase.png"><img src="/images/guides/boolean_purchase.png"
+             alt="Add boolean for purchase"
+             title="Add boolean for purchase"/>
+        </a>
+    </figure></li>
+</ul>
+</li>
+<li>Click <strong>Save</strong>.</li>
+<li>Click <strong>Finish</strong>.</li>
+</ol>
+<h3 id="cart-abandoner-badge-and-rule">Cart Abandoner badge and rule</h3>
+<p>Before you create your audience, you&rsquo;ll need to create a badge to assign to visitors if they&rsquo;ve abandoned their cart using the boolean attributes you&rsquo;ve just created.</p>
+<ol>
+<li>Go to <strong>AudienceStream &gt; Visitor/Visit Attributes</strong> and click <strong>+Add Attribute</strong>.</li>
+<li>Select <strong>Visitor</strong> and then select <strong>Badge</strong>.</li>
+<li>In the <strong>Properties</strong> section, enter <code>Cart Abandoner </code>as the title.</li>
+<li>Click <strong>Add Enrichment</strong> and <strong>Assign a badge</strong>.</li>
+<li>For <strong>Assign this badge to visitor</strong>, select <strong>VISIT ENDED</strong> from the drop-down list.</li>
+<li>Click <strong>Create Rule</strong> and set the following attribute conditions:
+<ul>
+<li><strong>Added to Cart</strong> boolean:  is <code>true</code></li>
+<li><strong>Purchase boolean</strong>: is <code>false</code></li>
+</ul>
+</li>
+<li>Click <strong>Add Enrichment</strong> and <strong>Remove badge</strong>.</li>
+<li>For <strong>Remove this badge from Visitor</strong> select <strong>ANY EVENT</strong>.</li>
+<li>Click <strong>Create Rule</strong> and create the following rule if it does not already exist:
+<ul>
+<li>Set <code>tealium_event</code> to <strong>contains (ignore case)</strong> and <code>purchase</code>.</li>
+</ul>
+</li>
+<li>Click <strong>Finish</strong>.</li>
+</ol>
+<figure><a class="slb" href="/images/guides/badge_cart_abandoner.png"><img src="/images/guides/badge_cart_abandoner.png"
+         alt="Add badge for cart abandoner"
+         title="Add badge for cart abandoner"/>
+    </a>
+</figure>
+<h2 id="step-3-define-an-audience">Step 3: Define an audience</h2>
+<p>Now you can easily create an audience using the badge you&rsquo;ve just created.</p>
+<ol>
+<li>Go to <strong>AudienceStream &gt; Audiences</strong> and click <strong>+New Audience</strong>.</li>
+<li>Add the following audience:
+<ul>
+<li><strong>Name</strong>: Cart Abandoners</li>
+<li>Select the <strong>Cart Abandoner</strong> badge from the first drop-down list and <strong>is assigned</strong> from the second drop-down list.</li>
+</ul>
+</li>
+<li>Click <strong>Done</strong>.</li>
+<li>Save and publish your profile.</li>
+</ol>
+<figure><a class="slb" href="/images/guides/audience_cart_abandoners.png"><img src="/images/guides/audience_cart_abandoners.png"
+         alt="Add audience for cart abandoners"
+         title="Add audience for cart abandoners"/>
+    </a>
+</figure>
+<h2 id="step-4-configure-a-connector">Step 4: Configure a connector</h2>
+<p>With your attributes, badges, and audiences set up, you&rsquo;re ready to connect this new audience to your email marketing tools to retarget and convert these visitors.</p>
+<p>Some of the common connectors and actions for cart abandonment include:</p>
+<ul>
+<li><a href="/server-side-connectors/adobe-campaign-classic-connector/">Adobe Campaign Classic</a></li>
+<li><a href="/server-side-connectors/iterable-connector/">Iterable</a>: <strong>Subscribe User to a List</strong>, <strong>Upsert User</strong> action</li>
+<li><a href="/server-side-connectors/marketo-connector/">Marketo</a>: <strong>Add Lead to List</strong> action</li>
+<li><a href="/server-side-connectors/sendgrid-connector/">SendGrid</a>: <strong>Upsert Contact</strong> action</li>
+</ul>
+<h3 id="delayed-actions">Delayed actions</h3>
+<p>While you can often send an email to a user right after they abandon their cart, you may have a better chance of conversion by delaying the email. Use delayed actions to control the timing of your retargeting campaign connector.</p>
+<p>For more information, see <a href="/server-side/connectors/delayed-actions/">Delayed actions</a>.</p>
+<h2 id="additional-tracking">Additional tracking</h2>
+<h3 id="cart-value">Cart value</h3>
+<p>Consider tracking the value of the abandoned cart to allow you to create more specific segments of cart abandoners. These segments would use the <code>cart_total_value</code> attribute to determine the total value of all products in the cart.</p>
+<ul>
+<li><strong>Cart Abandoner - High Value</strong><br>
+Has added a product to their cart, cart total value is greater than high custom value, and have not purchased.</li>
+<li><strong>Cart Abandoner - Medium Value</strong><br>
+Has added a product to their cart, cart total value is between high and low custom values, and have not purchased.</li>
+<li><strong>Cart Abandoner - Low Value</strong><br>
+Has added a product to their cart, cart total value is less than low custom value, and have not purchased.</li>
+</ul>
+<h3 id="supplemental-attributes">Supplemental attributes</h3>
+<p>Increase your understanding of customer behavior by tracking additional customer activity.</p>
+<p>The following table lists more attributes to track for cart abandonment campaigns:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute Name</th>
+<th>Attribute Type</th>
+<th>Scope</th>
+<th>Category</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cart abandoner</td>
+<td>Boolean/Badge</td>
+<td>Visitor</td>
+<td>Purchase Behavior</td>
+<td>Applied at end of session if items added to cart and no purchase made this session</td>
+</tr>
+<tr>
+<td>Furthest stage of funnel reached</td>
+<td>Badge</td>
+<td>Visit</td>
+<td>Purchase Behavior</td>
+<td>Can be used in the following user flow: Acquisition &gt; Browsing &gt; Product Detail Page (PDP) view &gt; Add to cart &gt; View cart &gt; Purchase.</td>
+</tr>
+<tr>
+<td>Cart viewed this session</td>
+<td>Boolean</td>
+<td>Visit</td>
+<td>Purchase Behavior</td>
+<td>Signifies if the user viewed the cart or only added to their cart.</td>
+</tr>
+<tr>
+<td>Total cart value</td>
+<td>Number</td>
+<td>Visit</td>
+<td>Purchase Behavior</td>
+<td>Useful for analysis, opportunity sizing and for future expansion into paid media.</td>
+</tr>
+<tr>
+<td>Days since last cart abandonment</td>
+<td>Number</td>
+<td>Visitor</td>
+<td>Purchase Behavior</td>
+<td>Simple date count to assist with eligibility for Cart Abandoner. Can also be used for analysis.</td>
+</tr>
+<tr>
+<td>Number of carts abandoned</td>
+<td>Number</td>
+<td>Visitor</td>
+<td>Lifetime Behavior</td>
+<td>Number that increments +1 for each abandonment event.</td>
+</tr>
+<tr>
+<td>Average order value</td>
+<td>Number</td>
+<td>Visitor</td>
+<td>Lifetime Behavior</td>
+<td>General behavioral understanding and future use case expansions.</td>
+</tr>
+<tr>
+<td>Average item value</td>
+<td>Number</td>
+<td>Visitor</td>
+<td>Lifetime Behavior</td>
+<td>General behavioral understanding and future use case expansions.</td>
+</tr>
+<tr>
+<td>Favorite categories</td>
+<td>Tally</td>
+<td>Visitor</td>
+<td>Lifetime Behavior</td>
+<td>General behavioral understanding and future use case expansions.</td>
+</tr>
+</tbody>
+</table>
+<p>For more robust retargeting, combine this basic cart abandonment configuration with mobile, and offline point of sale (POS) systems to monitor all potential product browsing and purchasing behavior. By including offline POS system data, users who purchase in-store can be automatically removed from online campaigns which makes retargeting campaigns more efficient.</p>
+<h2 id="next-steps">Next steps</h2>
+<p>Now that you&rsquo;ve defined attributes for cart abandoners, they can also be used for personalization with solutions like Moments API.</p>
+<p>For more information, see <a href="/server-side/moments-api/about/">About Moments API</a>.</p>
+
+</div>
+
+<div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
+
+  
+  <a href="/guides/lifetime-value/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <section class="tl pr3">
+      <div>Lifetime value</div>
+    </section>
+    <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"Lifetime value"</title>
+      <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+    </svg>
+  </a>
+  
+  
+</div><div class="di mr3">
+  
+  
+  <a href="/guides/abandonment-strategy/"
+    class="inline-flex items-center-ns ba b--black-10 br3 pa3">
+    <svg class="w1" data-icon="chevronLeft" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
+      <title>"Abandonment strategy "</title>
+      <path d="M20 1 L24 5 L14 16 L24 27 L20 31 L6 16 z"></path>
+    </svg>
+   <section class="tr pl3">
+      <div>Abandonment strategy</div>
+    </section>
+  </a>
+  
+
+</div></div>
+
+
+
+        <div class="bt-l b--moon-gray pv3 cb">
+          <div id="feedback_form" class="dpn">
+  <div id="feedback_buttons">
+	  <p class="di f5 pr2">Was this page helpful?</p>
+		<button enabled id="feedback_yes" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.9593 5.91859C12.0445 6.23734 11.6882 6.55684 11.6882 6.55684C11.6882 6.55684 11.9552 7.05934 11.9293 7.53747C11.9061 7.97172 11.59 8.38572 11.59 8.38572C11.59 8.38572 11.7272 9.00709 11.5933 9.43197C11.4355 9.93184 11.0023 10.2476 11.0023 10.2476C11.0023 10.2476 10.9858 10.8026 10.7083 11.1618C10.4308 11.5211 9.89197 11.6846 9.89197 11.6846C9.89197 11.6846 9.11984 11.9996 8.25847 12.0225C7.26734 12.0487 6.16897 11.7825 6.16897 11.7825C6.16897 11.7825 5.66384 11.5338 5.04997 11.4063C4.33297 11.2578 3.49109 11.2275 3.49109 11.2275V6.55722C3.49109 6.55722 3.92309 6.50247 4.20472 6.10609C4.48934 5.70559 4.61197 5.07897 4.87709 4.57272C5.20484 3.94759 5.64659 3.47209 5.64659 3.42184C5.64659 3.36109 6.36209 2.81772 6.77797 2.04372C7.25572 1.15497 7.34497 0.0577174 7.34497 0.0577174C7.34497 0.0577174 7.89284 -0.0562825 8.27309 0.279342C8.72009 0.673842 8.81459 1.52734 8.81459 1.52734C8.81459 1.52734 8.70734 2.43784 8.39459 3.29284C8.16472 3.92134 7.89997 4.56484 7.89997 4.56484C7.89997 4.56484 8.01734 4.94434 8.54909 4.97059C8.97434 4.99159 9.63022 4.81759 10.1245 4.76172C10.7638 4.68972 11.1985 4.72797 11.1985 4.72797C11.1985 4.72797 11.8157 5.38234 11.9593 5.91859ZM-0.00390625 6.23022L2.73959 6.09972L2.80484 11.5867L0.387969 11.5541L-0.00390625 6.23022Z" fill="currentColor"/>
+</svg>
+Yes</button>
+	  <button enabled id="feedback_no" class="ba b--white bg-primary-color-light f5 ph2 pv2 br2 dib tc mv3 link primary-color-dark"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.84642 0.22244C5.84642 0.22244 6.35117 0.471065 6.96467 0.59819C7.68129 0.74669 8.52242 0.77669 8.52242 0.77669V5.44394C8.52242 5.44394 8.09079 5.49832 7.80917 5.89469C7.52492 6.29482 7.40229 6.92144 7.13717 7.42694C6.80979 8.05132 6.36804 8.52682 6.36804 8.57669C6.36804 8.63744 5.65329 9.18044 5.23742 9.95369C4.76004 10.8421 4.67079 11.9382 4.67079 11.9382C4.67079 11.9382 4.12329 12.0522 3.74304 11.7166C3.29642 11.3224 3.20192 10.4693 3.20192 10.4693C3.20192 10.4693 3.30917 9.55919 3.62154 8.70494C3.85104 8.07682 4.11579 7.43369 4.11579 7.43369C4.11579 7.43369 3.99842 7.05457 3.46704 7.02832C3.04217 7.00732 2.38667 7.18132 1.89279 7.23682C1.25379 7.30882 0.819541 7.27057 0.819541 7.27057C0.819541 7.27057 0.202666 6.61694 0.0590409 6.08069C-0.0260841 5.76232 0.330166 5.44282 0.330166 5.44282C0.330166 5.44282 0.0635409 4.94069 0.0890409 4.46294C0.112291 4.02907 0.428041 3.61507 0.428041 3.61507C0.428041 3.61507 0.290791 2.99407 0.424666 2.56994C0.582541 2.07044 1.01529 1.75507 1.01529 1.75507C1.01529 1.75507 1.03179 1.20044 1.30892 0.84119C1.58642 0.482315 2.12492 0.318815 2.12492 0.318815C2.12492 0.318815 2.89667 0.00381546 3.75729 -0.0186845C4.74767 -0.0449345 5.84529 0.22094 5.84529 0.22094L5.84642 0.22244ZM11.6229 0.450815L12.0148 5.77057L9.27354 5.90107L9.20829 0.41819L11.6229 0.450815Z" fill="currentColor"/>
+</svg>
+No</button>
+  </div>
+	<div id="feedback_comment" style="display: none;">
+		<textarea id="feedback_textarea" class="ba b--light-gray bg-primary-color-light pa2 br3" type="text" placeholder="Tell us how we can make this article better." rows="4" cols="60"></textarea><button id="feedback_submit" class="db ba b--light-gray bg-primary-color-light f5 ph3 pv2 br2 dib tc mv3 link primary-color-dark">Send Feedback</button>
+  </div>
+  <div id="feedback_thank_you" style="display: none;">
+     <p class="i">Thank you for your feedback!</p>
+  </div>
+</div>
+
+        </div>
+        <div class="bt-l b--moon-gray pt3 f6">
+          <p>This page was last updated:  October 23, 2024 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
+      
+
+
+
+  <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">On this page</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#required-events-and-attributes" href="javascript:void(0)">Required events and attributes</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#required-visitor-attributes" href="javascript:void(0)">Required visitor attributes</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-1-track-events" href="javascript:void(0)">Step 1: Track events</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#track-add-to-cart-events" href="javascript:void(0)">Track Add to Cart events</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-2-define-visitor-attributes" href="javascript:void(0)">Step 2: Define visitor attributes</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#added-to-cart-boolean" href="javascript:void(0)">Added to cart boolean</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#did-purchase-boolean" href="javascript:void(0)">Did Purchase boolean</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cart-abandoner-badge-and-rule" href="javascript:void(0)">Cart Abandoner badge and rule</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-3-define-an-audience" href="javascript:void(0)">Step 3: Define an audience</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-4-configure-a-connector" href="javascript:void(0)">Step 4: Configure a connector</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#delayed-actions" href="javascript:void(0)">Delayed actions</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#additional-tracking" href="javascript:void(0)">Additional tracking</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cart-value" href="javascript:void(0)">Cart value</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#supplemental-attributes" href="javascript:void(0)">Supplemental attributes</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#next-steps" href="javascript:void(0)">Next steps</a></li>
+              </nav>
+  </aside></nav>
+
+</div>
+</div>
+    
+
+    </main>
+
+    <footer class="bg-secondary ph1-ns relative w-100 pv4 bt b--light-gray" role="contentinfo">
+  <div class="center flex-ns flex-wrap justify-between mw9 w-90 dn db-ns">
+
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="nav-list footer-heading-title">
+          <div class="footer-logo-wrapper">
+            <img class="logo" src="https://tealium.com/wp-content/uploads/2015/12/tealium_footer_logo_01-206x49.png" alt="tealium_footer_logo_01">
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Support</li>
+<li class="mb2"><a class="link" href="https://university.tealium.com/">Tealium University</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/en/support/solutions">Knowledge Base</a></li>
+<li class="mb2"><a class="link" href="https://support.tealiumiq.com/" target="">Support Desk</a></li>
+      </ul>
+    </div>
+    
+    <div class="flex nested-links w-33">
+      <ul class="list v-top mt0 pt0">
+        <li class="fw5 f5 mb3 ttu o-50">Company</li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/">Tealium.com</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="http://tealium.com/blog/">Blog</a>
+        </li>
+        <li class="mb2">
+          <a class="link" href="https://tealium.com/careers/">Careers</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+  <div class="dpn bg-primary-color-dark bottom-0 left-0 right-0 dn-ns db fixed pb3 ph3 w-100">
+<div class="globalmenu mobilemenu dn">
+    
+
+<ul class="list hidden dib ph0 ma0 scrolling-touch tc">
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Home
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/guides/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Guides
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/iq-tag-management/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          iQ Tag Management
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          EventStream API Hub
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/functions/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Functions
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/data-connect/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Data Connect
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/predict/getting-started/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Predict ML
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/data-storage/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          DataAccess
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/client-side-tags/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Client-Side Tags
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side-connectors/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Server-Side Connectors
+        </a>
+    </li>
+  
+  
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/platforms/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Platforms
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/api/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          API
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/administration/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Administration
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/industries/tealium-for-pharma/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium for Pharma
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/industries/tealium-identity-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Tealium Identity Partners
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/tech-partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Technology Partners
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/partners/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Partner Integrations
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/glossary/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Glossary
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/early-access/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Early Access
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/release-notes/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Release Notes
+        </a>
+    </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+</div>
+
+
+<div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
+    <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
+  
+  
+  
+  
+
+</ul>
+
+</div>
+
+
+
+
+<div class="flex dn-l justify-between">
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link mr2 white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".globalmenu">Site</button>
+
+  <button class="js-toggle flex-auto dib dn-l f6 tc db mt3 ph3 pv2 link white bg-primary-color-dark hover-bg-primary-color ba b--white-40 w-auto" data-target=".docsmenu">Section</button>
+
+</div>
+</div>
+
+</footer>
+
+    <script src="/dist/js/app.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://kit.fontawesome.com/59194dc628.js" crossorigin="anonymous"></script>
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+const translations = {
+  button: {
+    buttonText: 'Search',
+    buttonAriaLabel: 'Search',
+  },
+  modal: {
+    searchBox: {
+      resetButtonTitle: 'Clear the query',
+      resetButtonAriaLabel: 'Clear the query',
+      cancelButtonText: 'Cancel',
+      cancelButtonAriaLabel: 'Cancel',
+    },
+    startScreen: {
+      recentSearchesTitle: 'Recent',
+      noRecentSearchesText: 'No recent searches',
+      saveRecentSearchButtonTitle: 'Save this search',
+      removeRecentSearchButtonTitle: 'Remove this search from history',
+      favoriteSearchesTitle: 'Favorite',
+      removeFavoriteSearchButtonTitle: 'Remove this search from favorites',
+    },
+    errorScreen: {
+      titleText: 'Unable to fetch results',
+      helpText: 'You might want to check your network connection.',
+    },
+    footer: {
+      selectText: 'to select',
+      selectKeyAriaLabel: 'Enter key',
+      navigateText: 'to navigate',
+      navigateUpKeyAriaLabel: 'Arrow up',
+      navigateDownKeyAriaLabel: 'Arrow down',
+      closeText: 'to close',
+      closeKeyAriaLabel: 'Escape key',
+      searchByText: 'Search by',
+    },
+    noResultsScreen: {
+      noResultsText: 'No results for',
+      suggestedQueryText: 'Try searching for',
+      reportMissingResultsText: 'Believe this query should return results?',
+      reportMissingResultsLinkText: 'Let us know.',
+    },
+  },
+};
+var default_sections = [
+];
+var ls_sections = JSON.parse(localStorage.getItem("tealdocs_sections") || "[]");
+if(ls_sections.indexOf("JAVASCRIPT") != -1) {
+  ls_sections = [];
+  localStorage.setItem("tealdocs_sections", JSON.stringify(default_sections));
+}
+var local_sections = new Set(ls_sections);
+var cur_section = $('#breadcrumb ul li:nth-child(n+2)');
+if(cur_section && cur_section.length) {
+  var sect = cur_section.text().trim();
+  if(local_sections.has(sect)) {
+    
+    local_sections.delete(sect);
+    local_sections.add(sect);
+  }
+  else {
+    
+    local_sections.add(sect);
+    if(local_sections.size > 10) {
+      local_sections.delete(ls_sections[0]);
+    }
+  }
+  localStorage.setItem("tealdocs_sections", JSON.stringify(Array.from(local_sections)));
+}
+var filt_pre = "hierarchy.lvl0:";
+var hier_filters = local_sections.size ? Array.from(local_sections).map(s => filt_pre+s)
+  : default_sections.map(s => filt_pre+s);
+var opt_filters = [];
+if(hier_filters.length) {
+  opt_filters.push(hier_filters);
+}
+const transformItems = function(hits) {
+  hits.map(hit => {
+    if (hit.url.indexOf('#breadcrumb') > 0) {
+      hit.url = hit.url.replace('#breadcrumb', '');
+    }
+  });
+  return hits;
+};
+docsearch({
+  container: '#docsearch',
+  appId: '01G44CJWZ0',
+  apiKey: '09633c367e743588b87dbb988dad4158',
+  indexName: 'tealium',
+  placeholder: 'Search',
+  translations: translations,
+  searchParameters: {
+    "hitsPerPage": 50,
+    "analytics": true ,
+    "analyticsTags": ["site"]
+  },
+  insights: true,
+  debug: false ,
+  transformItems
+});
+</script>
+
+    
+
+  </body>
+</html>
