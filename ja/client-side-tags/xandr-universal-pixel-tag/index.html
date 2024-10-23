@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "client-side-tags",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -355,6 +355,7 @@
         <a href="/ja/client-side-tags/tribal-fusion-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tribal-fusion-tag">Tribal Fusion</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/true-fit-integration-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".true-fit-integration-tag">True Fit統合タグの構成ガイド</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/trusted-shops-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".trusted-shops-tag">Trusted Shops</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/client-side-tags/tv-scientific-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tv-scientific-tag">TV Scientific</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/twitter-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".twitter-pixel-tag">Twitterピクセル</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/uim-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".uim-tag">UIMリターゲティング</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/uplift-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".uplift-tag">Uplift</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -428,8 +429,8 @@
   <h2 id="タグのヒント">タグのヒント</h2>
 <ul>
 <li>複数のPixel IDをカンマ区切りのリストで入力することができます。</li>
-<li>注文IDが入力されると自動的に購入の追跡が行われます。自動的な購入追跡を無効にするには、マッピングを通じて<code>automatic_purchase_tracking</code>の構成を切り替えます。</li>
-<li>PageViewの追跡は自動的に行われます。自動的なPageView追跡を無効にするには、マッピングを通じて<code>automatic_pageview_tracking</code>の構成を切り替えます。</li>
+<li>注文IDが入力されると自動的に購入トラッキングが行われます。自動購入トラッキングを無効にするには、マッピングを通じて<code>automatic_purchase_tracking</code>の構成を切り替えます。</li>
+<li>PageViewトラッキングは自動的に行われます。自動PageViewトラッキングを無効にするには、マッピングを通じて<code>automatic_pageview_tracking</code>の構成を切り替えます。</li>
 <li>デフォルトでは、PageViewイベントは追加データなしで実行されます。PageViewイベントでデータを送信したい場合は、マッピングツールボックスのイベント固有パラメータタブで必要な変数をマップする必要があります。</li>
 <li>以下のE-Commerce拡張パラメータをサポートしています：
 <ul>
@@ -441,7 +442,7 @@
 </li>
 </ul>
 <h2 id="タグの構成">タグの構成</h2>
-<p>新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法については、<a href="/ja/iq-tag-management/tags/about/">Tag Overview</a>の記事を参照してください。</p>
+<p>新しいタグを追加するためにタグマーケットプレイスに移動します。タグの追加方法の一般的な指示については、<a href="/ja/iq-tag-management/tags/about/">Tag Overview</a>の記事を参照してください。</p>
 <p>タグを追加する際には、以下の構成を行います：</p>
 <ul>
 <li><strong>Pixel ID</strong>
@@ -450,9 +451,38 @@
 <li>複数のIDをカンマ区切りのリストで入力することができます。</li>
 </ul>
 </li>
+<li><strong>Ad Storage Consent</strong>: Ad Storageのデフォルトの同意を構成します。<strong>Data Mappings</strong>セクションで<code>ad_storage</code>パラメータをマッピングすることで、この値を動的に更新します。</li>
+<li><strong>Automatically read from Tealium Consent Cookie</strong>: trueに構成すると、同意は<a href="/ja/iq-tag-management/consent/consent-management/about/">Tealium Consent Manager</a>に基づいて構成されます。</li>
 </ul>
+<h2 id="consent-mode">Consent mode</h2>
+<p>このタグのconsent modeを実装するには2つのオプションがあります：</p>
+<ul>
+<li><a href="/ja/iq-tag-management/consent/consent-management/about/">Tealium Consent Management</a>を使用し、Tealium Consent cookieを自動的に読み取ります。</li>
+<li>このタグに対してconsent choicesとcategory mappingsをマップするために、<a href="/ja/iq-tag-management/extensions/extensions-list/javascript-code-basic-extension/">JavaScript Code extension</a>を追加します。</li>
+</ul>
+<p>訪問がconsent choicesを行うと、タグはfirst-partyとthird-partyのcookiesに対する適切なアプローチを選択します：</p>
+<ul>
+<li><strong>Granted</strong>: first-partyとthird-partyの両方のcookiesを読み取り、書き込むことができます。</li>
+<li><strong>Denied</strong>: first-partyのcookiesは読み取られず、書き込まれず、third-partyのcookiesは詐欺とスパムの目的のためにのみ読み取られ、広告のためには使用されません。</li>
+</ul>
+<h3 id="tealium-consent-management">Tealium Consent Management</h3>
+<p>Tealium Consent Managementを使用してこのタグのconsent modeを実装するには、タグ構成で<strong>Automatically read from Tealium Consent Cookie</strong>を<code>true</code>に構成します。</p>
+<h3 id="javascript-code-extension">JavaScript Code extension</h3>
+<p>エンドユーザーのconsent choicesをXandr consent mode構成にマップするには、JavaScript Code extensionを使用します。extensionを以下のように構成します：</p>
+<ul>
+<li><strong>Scope</strong>を**After Load Rules (default)**に構成します</li>
+<li><strong>Occurrence</strong>を<strong>Run Always</strong>に構成します</li>
+<li>CMPのJavaScriptコードを入力します。以下のコードテンプレートをベンダーのロジックで<code>CUSTOM_LOGIC</code>を置き換えてCMPにカスタマイズすることができます。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">consent_decision</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">tealiumConsentRegister</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">tealiumConsentRegister</span>.<span style="color:#a6e22e">currentDecision</span>) <span style="color:#f92672">||</span> [];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">xandr_ad_storage_consent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CUSTOM_LOGIC</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;granted&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;denied&#39;</span>;
+</span></span></code></pre></div><p>例えば、以下のコードはOneTrust用です。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// After Load Rules - Run Always
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">consent_decision</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">tealiumConsentRegister</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">tealiumConsentRegister</span>.<span style="color:#a6e22e">currentDecision</span>) <span style="color:#f92672">||</span> [];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">xandr_ad_storage_consent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">consent_decision</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#39;C0004&#39;</span>) <span style="color:#f92672">!==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>  <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;granted&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;denied&#39;</span>;
+</span></span></code></pre></div><p>これらの正確な変数名を使用すると、追加のマッピングは必要ありません。タグの最新バージョンはデフォルトでこれらの変数を使用します。特定のケースの属性に<code>ad_storage</code>パラメータをマッピングすることで、これらの変数を上書きします。</p>
 <h2 id="データマッピング">データマッピング</h2>
-<p>マッピングは、<a href="/ja/iq-tag-management/data-layer/data-layer-variables/">データレイヤー変数</a>からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、<a href="/iq-tag-management/data-mappings/manage/">Data Mappings</a>を参照してください。</p>
+<p>マッピングは、<a href="/ja/iq-tag-management/data-layer/data-layer-variables/">data layer variable</a>からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグ宛先にマップする方法については、<a href="/iq-tag-management/data-mappings/manage/">Data Mappings</a>を参照してください。</p>
 <p>利用可能なカテゴリは以下の通りです：</p>
 <h3 id="タグ構成">タグ構成</h3>
 <table>
@@ -465,19 +495,19 @@
 <tbody>
 <tr>
 <td>Universal Pixel ID (pixel_id)</td>
-<td>[文字列]</td>
+<td>[String]</td>
 </tr>
 <tr>
-<td>自動PageView追跡の切り替え (auto_pageview_tracking)</td>
-<td>[ブール値,文字列]</td>
+<td>自動PageViewトラッキングの切り替え (auto_pageview_tracking)</td>
+<td>[Boolean,String]</td>
 </tr>
 <tr>
-<td>自動購入追跡の切り替え (auto_purchase_tracking)</td>
-<td>[ブール値,文字列]</td>
+<td>自動購入トラッキングの切り替え (auto_purchase_tracking)</td>
+<td>[Boolean,String]</td>
 </tr>
 <tr>
-<td>基本URL (base_url)</td>
-<td>[文字列]</td>
+<td>Base URL (base_url)</td>
+<td>[String]</td>
 </tr>
 </tbody>
 </table>
@@ -492,15 +522,15 @@
 <tbody>
 <tr>
 <td>アイテムカテゴリのリスト (item_type) (_ccatを上書き)</td>
-<td>[配列]</td>
+<td>[Array]</td>
 </tr>
 <tr>
 <td>アイテムIDのリスト (item_id) (_cprodを上書き)</td>
-<td>[配列]</td>
+<td>[Array]</td>
 </tr>
 <tr>
 <td>アイテム名のリスト (item_name) (_cprodnameを上書き)</td>
-<td>[配列]</td>
+<td>[Array]</td>
 </tr>
 </tbody>
 </table>
@@ -686,7 +716,10 @@
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E3%83%92%E3%83%B3%E3%83%88" href="javascript:void(0)">タグのヒント</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグの構成</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データマッピング</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#consent-mode" href="javascript:void(0)">Consent mode</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-consent-management" href="javascript:void(0)">Tealium Consent Management</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#javascript-code-extension" href="javascript:void(0)">JavaScript Code extension</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データマッピング</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグ構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#e-commerce" href="javascript:void(0)">E-Commerce</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">イベント</a></li>
@@ -965,6 +998,7 @@
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   
