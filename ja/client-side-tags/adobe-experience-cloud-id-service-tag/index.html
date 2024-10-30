@@ -344,6 +344,7 @@
         <a href="/ja/client-side-tags/taboola-pixel-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".taboola-pixel-tag">Taboola Pixel</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/tapad-cookie-matching-service-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tapad-cookie-matching-service-tag-setup-guide">TAPAD Cookie Matching Service</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/tead-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tead-tag">Tead</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/client-side-tags/teads-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".teads-tag">Teads</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/teads-advertiser-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".teads-advertiser-tag">Teads広告主</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/tealium-collect-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-collect-tag">Tealium Collect</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/tealium-seo-json-ld-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".tealium-seo-json-ld-tag">Tealium SEO (JSON-LD)</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -427,10 +428,10 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>Cloud ID Serviceタグは、Cloud IDが必要な他のAdobeタグ（Appmeasurement、JavaScript、Heartbeatなど）よりも先にロードすることが重要です。すべてのページでタグをバンドルし、Tagsタブで他のAdobeタグよりも上に配置します。これにより、他のAdobeタグがページ上でロードされる前にCloud IDが利用可能になることが保証されます。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>Cloud ID Serviceタグは、Cloud IDが必要な他のAdobeタグ（Appmeasurement、JavaScript、Heartbeatなど）よりも先にロードすることが重要です。すべてのページでタグをバンドルし、Tagsタブで他のAdobeタグよりも上に配置します。これがCloud IDが他のAdobeタグがページ上でロードされる前にアクセス可能であることを確保する最善の方法です。</p>
 <h2 id="サポートされているバージョン">サポートされているバージョン</h2>
 <ul>
-<li>v5.5（最新版、推奨）</li>
+<li>v5.5 (最新および推奨)</li>
 <li>v5.4</li>
 <li>v5.3</li>
 <li>v5.2</li>
@@ -439,42 +440,45 @@
 <li>v4.1</li>
 <li>v3.0</li>
 </ul>
+<h2 id="adobe-web-sdk-opt-inモジュール">Adobe Web SDK Opt-inモジュール</h2>
+<p>Adobe AnalyticsはWeb SDKバージョン4.0.0でOpt-inモジュールを導入しました。Opt-inモジュールは、ユーザーの同意を確認し、強制するメカニズムを提供し、GDPRやCCPAなどのプライバシー法を遵守するために重要です。バージョン5.2.0でエンリッチメントされたチェックにより、Adobeツールが実行するための必要な許可があることを確認します。</p>
+<p>Experience Cloud ID Serviceタグのバージョン4.0以降を使用している場合、タグを構成した後にOpt-inモジュールを有効にする必要があります。そうしないと、イベントデータはTealiumに送信されません。詳細については、<a href="#enable-the-adobe-web-sdk-opt-in-module">Adobe Web SDK Opt-inモジュールを有効にする</a>を参照してください。</p>
 <h2 id="タグ構成">タグ構成</h2>
-<p>まず、タグマーケットプレイスに移動し、Experience Cloud ID Serviceタグをプロファイルに追加します（<a href="/ja/iq-tag-management/tags/manage/#add-a-tag">タグの追加</a>を参照）。</p>
+<p>まず、タグマーケットプレイスに移動し、プロファイルにExperience Cloud ID Serviceタグを追加します（<a href="/ja/iq-tag-management/tags/manage/#add-a-tag">タグを追加する</a>を参照）。</p>
 <p>タグを追加したら、以下の構成を行います：</p>
 <ul>
 <li><strong>Adobe Org ID</strong>
 <ul>
-<li>（必須）組織に割り当てられた英数字のExperience Cloud IDを入力します。</li>
+<li>(必須) あなたの組織に割り当てられた英数字のExperience Cloud IDを入力します。</li>
 <li>大文字と小文字を区別します。</li>
 <li>例：<code>265H7Z562851TTX99W870V12</code>@AdobeOrg</li>
 </ul>
 </li>
 <li><strong>Tracking Server</strong>
 <ul>
-<li>（必須）Adobe Analyticsデータ収集に使用するドメインを入力します。</li>
+<li>(必須) Adobe Analyticsデータ収集に使用するドメインを入力します。</li>
 <li>ここで画像リクエストとクッキーが処理されます。</li>
 <li>例：<code>site.mydomain.com</code></li>
 </ul>
 </li>
 <li><strong>Tracking Server Secure</strong>
 <ul>
-<li>（オプション）セキュアなトラッキングサーバーを使用している場合、このフィールドにURLを入力します。</li>
+<li>(オプション) セキュアなトラッキングサーバーを使用している場合、このフィールドにURLを入力します。</li>
 </ul>
 </li>
 <li><strong>Experience Cloud Server</strong>
 <ul>
-<li>（オプション）第三者のコンテキストでファーストパーティクッキーを利用するためのファーストパーティデータ収集（CNAME）を使用している場合、このフィールドにトラッキングサーバーのURLを入力します。</li>
+<li>(オプション) 第三者のコンテキストでファーストパーティクッキーを利用するためのファーストパーティデータ収集（CNAME）を使用している場合、このフィールドにトラッキングサーバーのURLを入力します。</li>
 </ul>
 </li>
 <li><strong>Experience Cloud Server Secure</strong>
 <ul>
-<li>（オプション）セキュアなExperience Cloud Serverを使用している場合、このフィールドにURLを入力します。</li>
+<li>(オプション) セキュアなExperience Cloud Serverを使用している場合、このフィールドにURLを入力します。</li>
 </ul>
 </li>
 <li><strong>Code Version</strong>
 <ul>
-<li>（必須）バージョン3.0以降は、Internet Explorerのバージョン6から9をサポートしていません。</li>
+<li>(必須) バージョン3.0以降は、Internet Explorerのバージョン6から9をサポートしていません。</li>
 </ul>
 </li>
 </ul>
@@ -483,7 +487,7 @@
 <p><a href="/ja/iq-tag-management/load-rules/about/">ロードルール</a>は、このタグのインスタンスをサイトのどこで、いつロードするかを決定します。</p>
 <p>推奨されるロードルール：<strong>すべてのページでロード</strong>。</p>
 <h2 id="データマッピング">データマッピング</h2>
-<p>マッピングは、<a href="/ja/iq-tag-management/data-mappings/manage/">データレイヤー変数</a>からベンダータグの対応する宛先変数にデータを送信するプロセスです。変数をタグの宛先にマッピングする方法については、<a href="/ja/iq-tag-management/data-mappings/manage/">データマッピング</a>を参照してください。</p>
+<p>マッピングは、<a href="/ja/iq-tag-management/data-mappings/manage/">データレイヤー変数</a>からのデータをベンダータグの対応する宛先変数に送信するプロセスです。変数をタグ宛先にマッピングする方法については、<a href="/ja/iq-tag-management/data-mappings/manage/">データマッピング</a>を参照してください。</p>
 <p>Cloud ID Serviceタグの宛先変数は、そのデータマッピングタブに組み込まれています。利用可能なカテゴリーは以下の通りです：</p>
 <h3 id="標準">標準</h3>
 <table>
@@ -513,22 +517,22 @@
 <tr>
 <td><code>config.marketingCloudServer</code></td>
 <td>Experience Cloud Server</td>
-<td>CNAMEが有効化されている場合のデータ収集サーバーのURL。</td>
+<td>CNAMEが有効になっている場合のデータ収集サーバーのURL。</td>
 </tr>
 <tr>
 <td>config.marketingCloudServerSecure</td>
 <td>Experience Cloud Server Secure</td>
-<td>CNAMEが有効化されている場合のデータ収集サーバーのURL。</td>
+<td>CNAMEが有効になっている場合のデータ収集サーバーのURL。</td>
 </tr>
 </tbody>
 </table>
 <h3 id="顧客id">顧客ID</h3>
-<p>追加の顧客識別子を送信するための宛先にマッピングします。</p>
-<p>宛先をマッピングするための手順は以下の通りです：</p>
+<p>追加の顧客識別子を送信するためのこれらの宛先にマッピングします。</p>
+<p>宛先をマッピングするための次の手順を使用します：</p>
 <ol>
 <li><strong>プロパティ</strong>リストから顧客プロパティを選択します。</li>
 <li><strong>Customer ID</strong>フィールドに、マッピングされる変数の値を入力します。<br>
-データレイヤーであなたが提供した値が見つかったときにプロパティが送信されます。</li>
+データレイヤーであなたの提供した値が見つかったときにプロパティが送信されます。</li>
 </ol>
 <table>
 <thead>
@@ -547,7 +551,7 @@
 <tr>
 <td style="text-align:left"><code>authState</code></td>
 <td style="text-align:left">Integer</td>
-<td style="text-align:left">認証状態を示します。可能な値は次のとおりです：<ul><li><code>0</code>は未知または未認証を示します</li><li><code>1</code>は認証済みを示します</li><li><code>2</code>はログアウトを示します</li></ul></td>
+<td style="text-align:left">認証状態を示します。可能な値は次のとおりです：  <ul><li><code>0</code> は未知または未認証を意味します</li><li><code>1</code> は認証済みを意味します</li><li><code>2</code> はログアウトを意味します</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -565,15 +569,36 @@
 <tr>
 <td style="text-align:left"><code>setCustomerID</code></td>
 <td style="text-align:left">String</td>
-<td style="text-align:left">顧客IDの構成</td>
+<td style="text-align:left">顧客IDを構成</td>
 </tr>
 </tbody>
 </table>
-<h2 id="ベンダー文書">ベンダー文書</h2>
+<h2 id="adobe-web-sdk-opt-inモジュールを有効にする">Adobe Web SDK Opt-inモジュールを有効にする</h2>
+<p>Experience Cloud ID Serviceタグのバージョン4.0以降を使用している場合、イベントデータがTealiumに送信されるためには、<code>doesOptInApply</code>オプションを<code>true</code>に構成する必要があります。<code>doesOptInApply</code>を構成するには、Adobe Experience Cloud ID Serviceタグにスコープを持つJavaScript拡張を作成します：</p>
+<ol>
+<li><strong>iQタグ管理 &gt; 拡張機能</strong>に移動します。</li>
+<li><strong>Advanced</strong>タブをクリックし、<strong>JavaScript Code</strong>の**+ Add**をクリックします。</li>
+<li><strong>Scope</strong>で、<strong>Tag Scoped Extensions</strong>を選択し、<strong>Adobe Experience Cloud ID Service</strong>を選択します。</li>
+<li><strong>Configuration</strong>の下に、次のコードを入力します：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">config</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">config</span> <span style="color:#f92672">||</span> {};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">config</span>[<span style="color:#e6db74">&#39;doesOptInApply&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">config</span>[<span style="color:#e6db74">&#39;preOptInApprovals&#39;</span>] <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;aa&#39;</span>, <span style="color:#e6db74">&#39;ecid&#39;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">config</span>[<span style="color:#e6db74">&#39;isIabContext&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">config</span>[<span style="color:#e6db74">&#39;optInStorageExpiry&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">34128000</span>; 
+</span></span></code></pre></div>以下の図は、Adobe Opt-inモジュールを有効にする拡張の構成例を示しています：<br>
+<figure><a class="slb" href="/images/client-side-tags/adobe-enable-optin-module-extension-example.png"><img src="/images/client-side-tags/adobe-enable-optin-module-extension-example.png"/>
+        </a>
+    </figure></li>
+<li>保存し、公開します。</li>
+</ol>
+<p>Opt-inサービスが期待通りに動作しているかどうかは、ブラウザの開発者ツールを使用して確認できます。詳細については、Adobeのドキュメンテーションの<a href="https://experienceleague.adobe.com/en/docs/id-service/using/implementation/opt-in-service/testing-optin-and-iab-plugin">Opt-in Serviceの検証</a>を参照してください。</p>
+<p>Adobe AnalyticsとAdobe Experience CloudのイベントデータがTealiumに送信されていることを確認するために、Live Eventsを使用します。詳細については、<a href="/ja/server-side/live-events-feeds/about-live-events/">Live Eventsについて</a>を参照してください。</p>
+<h2 id="ベンダードキュメンテーション">ベンダードキュメンテーション</h2>
 <ul>
-<li><a href="https://marketing.adobe.com/resources/help/en_US/mcvid/">Experience Cloud ID Service</a></li>
-<li><a href="https://marketing.adobe.com/resources/help/en_US/mcvid/mcvid-authenticated-state.html">Customer IDs and Authentication States</a></li>
-<li><a href="https://marketing.adobe.com/resources/help/en_US/target/a4t/t_analytics_tracking_server.html">Using an analytics tracking server</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/id-service/using/home">Adobe Experience Cloud ID Service</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/id-service/using/implementation/opt-in-service/testing-optin-and-iab-plugin">Opt-in Serviceの検証</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/id-service/using/reference/authenticated-state">顧客IDと認証状態</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/target/using/integrate/a4t/analytics-tracking-server">アナリティクストラッキングサーバーの使用</a></li>
 </ul>
 
 </div>
@@ -650,13 +675,15 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3" href="javascript:void(0)">サポートされているバージョン</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#adobe-web-sdk-opt-in%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB" href="javascript:void(0)">Adobe Web SDK Opt-inモジュール</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%BF%E3%82%B0%E6%A7%8B%E6%88%90" href="javascript:void(0)">タグ構成</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%89%E3%83%AB%E3%83%BC%E3%83%AB" href="javascript:void(0)">ロードルール</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0" href="javascript:void(0)">データマッピング</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%99%E6%BA%96" href="javascript:void(0)">標準</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E9%A1%A7%E5%AE%A2id" href="javascript:void(0)">顧客ID</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88" href="javascript:void(0)">イベント</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%E6%96%87%E6%9B%B8" href="javascript:void(0)">ベンダー文書</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#adobe-web-sdk-opt-in%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B" href="javascript:void(0)">Adobe Web SDK Opt-inモジュールを有効にする</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3" href="javascript:void(0)">ベンダードキュメンテーション</a></li>
               </nav>
   </aside></nav>
 
@@ -931,6 +958,7 @@
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
+  
   
   
   

@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "client-side-tags",
-        reading_time  : "2",
+        reading_time  : "3",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -421,14 +421,13 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Immediately add profit with third-party offers from well-known advertisers on your confirmation page through Rokt Ecommerce. You can also optimize campaign performance for Rokt Ads by integrating conversion attribution through Tealium.</p>
-<p>For more information about Rokt&rsquo;s suite of SDKs and APIs, please read the <a href="https://docs.rokt.com/docs/developers/integration-guides/overview%20">Rokt Integration Guides</a>.</p>
+  <p>For more information about Rokt&rsquo;s suite of SDKs and APIs, please read the <a href="https://docs.rokt.com/docs/developers/integration-guides/overview%20">Rokt Integration Guides</a>.</p>
 <h2 id="tag-tips">Tag Tips</h2>
 <ul>
 <li>Use mapping to override the standard config values and trigger events.</li>
 </ul>
 <h2 id="tag-configuration">Tag Configuration</h2>
-<p>First, go to the tag marketplace and add the Rokt tag (Learn more about <a href="/iq-tag-management/tags/manage/">how to add a tag</a>).</p>
+<p>First, go to the tag marketplace and add the Rokt tag. For more information, see <a href="/iq-tag-management/tags/manage/">Manage Tags</a>).</p>
 <p>After adding the tag, configure the following settings:</p>
 <ul>
 <li><strong>Rokt Account ID</strong>: Your Rokt account ID.</li>
@@ -437,7 +436,7 @@
 </ul>
 <h2 id="load-rules">Load Rules</h2>
 <p><a href="/iq-tag-management/load-rules/about/">Load Rules</a> determine when and where to load an instance of the Rokt tag on your site.</p>
-<p>Create a Load Rule to load the Rokt tag on your conversion page.</p>
+<p>Create a load rule to load the Rokt tag on your conversion page.</p>
 <h2 id="data-mappings">Data Mappings</h2>
 <p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-layer/data-layer-variables/">data layer variable</a> to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">data mappings</a>.</p>
 <p>The available categories are:</p>
@@ -446,41 +445,50 @@
 <thead>
 <tr>
 <th style="text-align:left">Variable</th>
+<th style="text-align:left">Type</th>
 <th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align:left"><code>email</code></td>
+<td style="text-align:left">String</td>
 <td style="text-align:left">Email</td>
-<td style="text-align:left">(<code>email</code>)</td>
 </tr>
 <tr>
-<td style="text-align:left">First Name</td>
-<td style="text-align:left">(<code>firstname</code>)</td>
+<td style="text-align:left"><code>firstname</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">First name</td>
 </tr>
 <tr>
-<td style="text-align:left">Last Name</td>
-<td style="text-align:left">(<code>lastname</code>)</td>
+<td style="text-align:left"><code>lastname</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Last name</td>
 </tr>
 <tr>
-<td style="text-align:left">Mobile Number</td>
-<td style="text-align:left">(<code>mobile</code>)</td>
+<td style="text-align:left"><code>mobile</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Mobile number</td>
 </tr>
 <tr>
-<td style="text-align:left">Zip or Postal Code</td>
-<td style="text-align:left">(<code>zipcode</code>)</td>
+<td style="text-align:left"><code>zipcode</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">ZIP or Postal code</td>
 </tr>
 <tr>
-<td style="text-align:left">Country</td>
-<td style="text-align:left">(<code>country</code>)</td>
+<td style="text-align:left"><code>country</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">ISO Alpha-2 country code</td>
 </tr>
 <tr>
+<td style="text-align:left"><code>language</code></td>
+<td style="text-align:left">String</td>
 <td style="text-align:left">Language</td>
-<td style="text-align:left">(<code>language</code>)</td>
 </tr>
 <tr>
-<td style="text-align:left">Use Sandbox</td>
-<td style="text-align:left">(<code>sandbox</code>)</td>
+<td style="text-align:left"><code>sandbox</code></td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">Select <code>True</code> if you would like to send events to a sandbox account for testing.</td>
 </tr>
 </tbody>
 </table>
@@ -490,74 +498,88 @@
 <tr>
 <th style="text-align:left">Variable</th>
 <th style="text-align:left">Attribute</th>
+<th style="text-align:left">Type</th>
 <th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left">Confirmation Number</td>
-<td style="text-align:left">(<code>confirmationref</code>)</td>
-<td style="text-align:left">This variable overrides the <code>_corder</code> variable.</td>
+<td style="text-align:left"><code>confirmationref</code></td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">This variable overrides the <code>_corder</code> variable.    Confirmation reference number.</td>
 </tr>
 <tr>
 <td style="text-align:left">Amount</td>
-<td style="text-align:left">(<code>amount</code>)</td>
-<td style="text-align:left">This variable overrides the <code>_ctotal</code> variable.</td>
+<td style="text-align:left"><code>amount</code></td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">This variable overrides the <code>_ctotal</code> variable.  Transaction amount.</td>
 </tr>
 <tr>
 <td style="text-align:left">Currency</td>
-<td style="text-align:left">(<code>currency</code>)</td>
-<td style="text-align:left">This variable overrides the <code>_ccurrency</code> variable.</td>
+<td style="text-align:left"><code>currency</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">This variable overrides the <code>_ccurrency</code> variable. Three-letter currency code (for example, <code>USD</code>).</td>
 </tr>
 <tr>
 <td style="text-align:left">Payment Type</td>
-<td style="text-align:left">(<code>paymenttype</code>)</td>
-<td style="text-align:left"></td>
+<td style="text-align:left"><code>paymenttype</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">The payment type (for example, <code>Credit Card</code>).</td>
 </tr>
 <tr>
 <td style="text-align:left">ccbin</td>
-<td style="text-align:left">(<code>ccbin</code>)</td>
-<td style="text-align:left"></td>
+<td style="text-align:left"><code>ccbin</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Credit card BIN.</td>
 </tr>
 <tr>
 <td style="text-align:left">List of Item Prices</td>
-<td style="text-align:left">(<code>price</code>)</td>
-<td style="text-align:left">[Array] This array overrides the <code>_cprice</code> variable.</td>
+<td style="text-align:left"><code>price</code></td>
+<td style="text-align:left">Array of Numbers</td>
+<td style="text-align:left">This array overrides the <code>_cprice</code> variable. A list of the price of each product.</td>
 </tr>
 <tr>
-<td style="text-align:left">List of Item Quantites</td>
-<td style="text-align:left">(<code>quantity</code>)</td>
-<td style="text-align:left">[Array] This array overrides the <code>_cquan</code> variable</td>
+<td style="text-align:left">List of Item Quantities</td>
+<td style="text-align:left"><code>quantity</code></td>
+<td style="text-align:left">Array of Numbers</td>
+<td style="text-align:left">This array overrides the <code>_cquan</code> variable. A list of the prices of each product.</td>
 </tr>
 <tr>
 <td style="text-align:left">List of Item Major Categories</td>
-<td style="text-align:left">(<code>majorcat</code>)</td>
-<td style="text-align:left">[Array] This array overrides the <code>_ccat</code> variable</td>
+<td style="text-align:left"><code>majorcat</code></td>
+<td style="text-align:left">Array of Strings</td>
+<td style="text-align:left">This array overrides the <code>_ccat</code> variable. A list of the categories of each product.</td>
 </tr>
 <tr>
 <td style="text-align:left">List of Item Major Category IDs</td>
-<td style="text-align:left">(<code>majorcatid</code>)</td>
-<td style="text-align:left">[Array]</td>
+<td style="text-align:left"><code>majorcatid</code></td>
+<td style="text-align:left">Array of Strings</td>
+<td style="text-align:left">A list of the major category IDs of each product.</td>
 </tr>
 <tr>
 <td style="text-align:left">List of Item Minor Categories</td>
-<td style="text-align:left">(<code>minorcat</code>)</td>
-<td style="text-align:left">[Array] This array overrides the <code>_ccat2</code> variable</td>
+<td style="text-align:left"><code>minorcat</code></td>
+<td style="text-align:left">Array of Strings</td>
+<td style="text-align:left">This array overrides the <code>_ccat2</code> variable. A list of the minor categories of each product.</td>
 </tr>
 <tr>
 <td style="text-align:left">List of Item Minor Category IDs</td>
-<td style="text-align:left">(<code>minorcatid</code>)</td>
-<td style="text-align:left">[Array]</td>
+<td style="text-align:left"><code>minorcatid</code></td>
+<td style="text-align:left">Array of Strings</td>
+<td style="text-align:left">A list of the minor category IDs of each product.</td>
 </tr>
 <tr>
 <td style="text-align:left">List of Product Names</td>
-<td style="text-align:left">(<code>productname</code>)</td>
-<td style="text-align:left">[Array] This array overrides the <code>_cprodname</code> variable.</td>
+<td style="text-align:left"><code>productname</code></td>
+<td style="text-align:left">Array of Strings</td>
+<td style="text-align:left">This array overrides the <code>_cprodname</code> variable. A list of the names of each product.</td>
 </tr>
 <tr>
 <td style="text-align:left">List of Item SKUs</td>
-<td style="text-align:left">(<code>sku</code>)</td>
-<td style="text-align:left">[Array] This array overrides the <code>_csku</code> variable.</td>
+<td style="text-align:left"><code>sku</code></td>
+<td style="text-align:left">Array of Strings</td>
+<td style="text-align:left">This array overrides the <code>_csku</code> variable. A list of the SKUs of each product.</td>
 </tr>
 </tbody>
 </table>
@@ -621,7 +643,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 26, 2022 
+          <p>This page was last updated:  October 30, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

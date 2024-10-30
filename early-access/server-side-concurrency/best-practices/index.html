@@ -12,6 +12,8 @@
     
     <meta NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
     
+    
+    <link rel="alternate" hreflang="ja" href="https://docs.tealium.com/ja/early-access/server-side-concurrency/best-practices/">
     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
     <script>
       history.scrollRestoration = "manual";
@@ -27,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "3",
+        reading_time  : "4",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -54,6 +56,16 @@
 <path d="M25.152 16.576v5.696q0 2.144-1.504 3.648t-3.648 1.504h-14.848q-2.144 0-3.648-1.504t-1.504-3.648v-14.848q0-2.112 1.504-3.616t3.648-1.536h12.576q0.224 0 0.384 0.16t0.16 0.416v1.152q0 0.256-0.16 0.416t-0.384 0.16h-12.576q-1.184 0-2.016 0.832t-0.864 2.016v14.848q0 1.184 0.864 2.016t2.016 0.864h14.848q1.184 0 2.016-0.864t0.832-2.016v-5.696q0-0.256 0.16-0.416t0.416-0.16h1.152q0.256 0 0.416 0.16t0.16 0.416zM32 1.152v9.12q0 0.48-0.352 0.8t-0.8 0.352-0.8-0.352l-3.136-3.136-11.648 11.648q-0.16 0.192-0.416 0.192t-0.384-0.192l-2.048-2.048q-0.192-0.16-0.192-0.384t0.192-0.416l11.648-11.648-3.136-3.136q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h9.12q0.48 0 0.8 0.352t0.352 0.8z"></path>
 </svg>
 </a>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+      
+        
+          <a href="/ja/early-access/server-side-concurrency/best-practices/" class="dim link mid-gray">日本語</a>
+        
+      
       </li>
             
     </ul>
@@ -100,7 +112,8 @@
         <a href="/early-access/snowflake-data-source/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-snowflake-data-source">Manage</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/snowflake-data-source/error-logs/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-snowflake-data-source-error-logs">Error logs</a></li></ul>
       </li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/early-access/spotify-conversions-connector-alpha/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".spotify-conversions-connector-alpha">Spotify Conversions Connector</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="/early-access/spotify-conversions-connector-alpha/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".spotify-conversions-connector-alpha">Spotify Conversions Connector</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/early-access/taboola-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".taboola-audiences-connector">Taboola Audiences Connector</a></li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".api-v3">Tealium API v3</a>
         <ul class="pl2  api-v3 desktopmenu animated fadeIn list  dn"><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".iq-profiles-api">iQ Profiles</a>
@@ -177,8 +190,17 @@
 <li><strong>Compare only with the published version</strong>: Compare and integrate your version with the published version, because you cannot compare and integrate your version with other versions.</li>
 <li><strong>Save frequently, avoid multiple versions</strong>: Save your changes frequently to the new version with the <strong>Save</strong> option, not <strong>Save As</strong>. Creating multiple new versions during development will result in confusion when it is time to reconcile your changes to the published version and then publish them.</li>
 <li><strong>Make small changes, publish often</strong>: Keep your development version changes small and publish often to reduce the impact on your peers. This will make it easier to troubleshoot any errors and revert changes.</li>
-<li><strong>Integrate the published version</strong>: Any time your version is behind the published version, integrate the published version into your version. This will make it easier to publish your changes later.</li>
 <li><strong>Coordinate with your team</strong>: Communicate your plans between your teams. Identify any potential issues of overlap early to prevent teams from inadvertently saving over each other&rsquo;s changes to common elements.</li>
+<li><strong>Integrate the published version</strong>: Any time your current version is behind the published version, integrate the published version into your version. This will make it easier to publish your changes later. The profile switcher and the <strong>Save/Publish</strong> dialog will indicate when your current version differs from the currently published version:
+<ul>
+<li><strong>You are ahead of the published version</strong><br>
+Your current version includes changes that are not in the currently published version.</li>
+<li><strong>You are up to date</strong><br>
+Your current version and the currently published version match.</li>
+<li><strong>You are behind the published version</strong><br>
+The currently published version includes changes that are not in your current version. To view those changes, click <strong>View latest published changes</strong>.</li>
+</ul>
+</li>
 </ul>
 <h2 id="example-workflows">Example workflows</h2>
 <p>In the following examples, an organization has two users working on the server-side platform. <strong>User 1</strong> is working on a connector while <strong>User 2</strong> is working on a data source.</p>
@@ -197,7 +219,7 @@
 <li><strong>User 1</strong> saves changes to version <strong>A1</strong>. <strong>User 2</strong> receives a notification that <strong>User 1</strong> has updated this version.</li>
 <li><strong>User 2</strong> saves changes to version <strong>A1</strong>, integrating <strong>User 1</strong>&rsquo;s changes (the new connector). <strong>User 1</strong> receives a notification that <strong>User 2</strong> has updated this version.</li>
 <li><strong>User 1</strong> loads version <strong>A1</strong> and receives <strong>User 2</strong>&rsquo;s changes (the new data source).</li>
-<li><strong>User 1</strong> publishes version <strong>A1</strong>. <strong>User 2</strong> receives a notification that <strong>User 1</strong> has published this version.</li>
+<li><strong>User 1</strong> publishes version <strong>A1</strong>. <strong>User 2</strong> receives a notification that <strong>User 1</strong> has published this version. User 1 and User 2 are up to date.</li>
 <li>When visitors go to the site or app, they use version <strong>A1</strong> with the new connector and data source.</li>
 </ol>
 <h3 id="concurrent-saves-to-multiple-versions">Concurrent saves to multiple versions</h3>
@@ -209,41 +231,52 @@
 </figure>
 <p>The diagram above shows each action performed.</p>
 <ol>
-<li>We begin with a single version <strong>Start</strong> currently published. When visitors go to the site or app, they use version <strong>Start</strong>.</li>
-<li><strong>User 1</strong> creates a new version of <strong>Start</strong> named <strong>Project 1</strong>.</li>
-<li><strong>User 2</strong> creates a new version <strong>Start</strong> named <strong>Project 2</strong>.</li>
-<li><strong>User 1</strong> adds a connector to version <strong>Project 1</strong> and saves.</li>
-<li><strong>User 2</strong> adds a data source to version <strong>Project 2</strong> and saves.</li>
-<li><strong>User 1</strong> publishes version <strong>Project 1</strong> and receives a notification that version <strong>Project 1</strong> has been published. When visitors go to the site or app, they use version <strong>Project 1</strong> with the new connector.</li>
+<li>We begin with a single version <strong>Start</strong> currently published. When visitors go to the site or app, they use version <strong>Start</strong>.
+<ul>
+<li><strong>Start</strong>: You are up to date.</li>
+</ul>
+</li>
+<li><strong>User 1</strong> creates a new version of <strong>Start</strong> named <strong>Project 1</strong>.
+<ul>
+<li><strong>Project 1</strong>: You are up to date.</li>
+</ul>
+</li>
+<li><strong>User 2</strong> creates a new version <strong>Start</strong> named <strong>Project 2</strong>.
+<ul>
+<li><strong>Project 2</strong>: You are up to date.</li>
+</ul>
+</li>
+<li><strong>User 1</strong> adds a connector to version <strong>Project 1</strong> and saves.
+<ul>
+<li><strong>Project 1</strong>: You are ahead of the published version.</li>
+</ul>
+</li>
+<li><strong>User 2</strong> adds a data source to version <strong>Project 2</strong> and saves.
+<ul>
+<li><strong>Project 2</strong>: You are ahead of the published version.</li>
+</ul>
+</li>
+<li><strong>User 1</strong> publishes version <strong>Project 1</strong> and receives a notification that version <strong>Project 1</strong> has been published. When visitors go to the site or app, they use version <strong>Project 1</strong> with the new connector.
+<ul>
+<li><strong>Project 1</strong>: You are up to date</li>
+<li><strong>Project 2</strong>: You are behind the published version.</li>
+</ul>
+</li>
 <li><strong>Project 1</strong> is complete.</li>
-<li><strong>User 2</strong> saves changes to version <strong>Project 2</strong>, using the <strong>Include latest published changes</strong> option to incorporate their changes into version <strong>Project 1</strong> (the new connector).</li>
-<li><strong>User 2</strong> publishes version <strong>Project 2</strong>. When visitors go to the site or app, they use version <strong>Project 2</strong> with the new connector and the new data source.</li>
+<li><strong>User 2</strong> saves changes to version <strong>Project 2</strong>, using the <strong>Include latest published changes</strong> option to integrate changes from version <strong>Project 1</strong> (the new connector).
+<ul>
+<li><strong>Project 2</strong>: You are ahead of the published version.</li>
+</ul>
+</li>
+<li><strong>User 2</strong> publishes version <strong>Project 2</strong>. When visitors go to the site or app, they use version <strong>Project 2</strong> with the new connector and the new data source.
+<ul>
+<li><strong>Project 1</strong>: You are behind the published version.</li>
+<li><strong>Project 2</strong>: You are up to date.</li>
+</ul>
+</li>
 <li><strong>Project 2</strong> is complete.</li>
 </ol>
-<!-- ### Two teams collaborating on different branches
 
-In the following example, an organization has two teams working on the server-side platform. Team 1 is working on a connector and an audience while Team 2 is working on a data source.
-
-<figure><a class="slb" href="/images/server-side/save-publish/collaboration-workflow-two-teams.png"><img src="/images/server-side/save-publish/collaboration-workflow-two-teams.png"
-         alt="Collaboration Workflow - Two Teams"
-         title="Collaboration Workflow - Two Teams"/>
-    </a>
-</figure>
-
-The diagram above shows each action performed.
-
-1. We begin with a single version Start currently published. When visitors go to the site or app, they use version Start.
-1. Team 1 performs a Save As on version Start to create version A.
-1. Team 2 performs a Save As on version Start to create version B.
-1. Team 1 adds a connector to version A and saves it.
-1. Team 2 adds a data source to version B and saves it.
-1. Team 1 publishes version A. Team 2 receives a notification that User 1 has published this version. When visitors go to the site or app, they use version A with the new connector.
-1. Team 2 saves changes to version B, using the **Include latest published changes** option to incorporate Team 1's changes into version A (the new connector).
-1. Team 1 adds a new audience.
-1. Team 2 publishes version B. Team 1 receives a notification that User 1 has published this version. When visitors go to the site or app, they use version B with the new connector and the new data source.
-1. Team 1 saves changes to version A, using the **Include latest published changes** option to incorporate Team 2's changes into version A (the new data source).
-
-Version A and B contain the new connector and data source. Only version A contains the new audience. So the currently published version B does not yet have the new audience. -->
 </div>
 
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="di mr3">
@@ -288,7 +321,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 25, 2024 
+          <p>This page was last updated:  October 29, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -617,6 +650,12 @@ No</button>
       <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/early-access/spotify-conversions-connector-alpha/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
           Spotify Conversions Connector
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/taboola-audiences-connector/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Taboola Audiences Connector
       </a>
       </li>
       

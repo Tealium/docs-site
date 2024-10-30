@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "client-side-tags",
-        reading_time  : "3",
+        reading_time  : "4",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -433,6 +433,9 @@
 <li>v4.1</li>
 <li>v3.0</li>
 </ul>
+<h2 id="adobe-web-sdk-opt-in-module">Adobe Web SDK Opt-in module</h2>
+<p>Adobe Analytics introduced the Opt-in module in Web SDK version 4.0.0. The Opt-in module provides mechanisms to verify and enforce user consent, which is crucial for adhering to privacy laws such as GDPR and CCPA. Enhanced checks in version 5.2.0 ensure that Adobe tools have the required permissions to run.</p>
+<p>If you are using version 4.0 or newer of the Experience Cloud ID Service tag, the Opt-in module must be enabled after you have configured the tag, otherwise event data will not be sent to Tealium. For more information, see <a href="#enable-the-adobe-web-sdk-opt-in-module">Enable the Adobe Web SDK Opt-in module</a>.</p>
 <h2 id="tag-configuration">Tag Configuration</h2>
 <p>First, go to the tag marketplace and add the Experience Cloud ID Service tag to your profile (See <a href="/iq-tag-management/tags/manage/#add-a-tag">Add a tag</a>).</p>
 <p>After adding the tag, configure the following settings:</p>
@@ -563,11 +566,32 @@ The property is sent when your supplied value is found in the data layer.</li>
 </tr>
 </tbody>
 </table>
+<h2 id="enable-the-adobe-web-sdk-opt-in-module">Enable the Adobe Web SDK Opt-in module</h2>
+<p>If you are using version 4.0 or newer of the Experience Cloud ID Service tag, the <code>doesOptInApply</code> option must be set to <code>true</code> for event data to be sent to Tealium. To set <code>doesOptInApply</code>, create a JavaScript extension scoped to the Adobe Experience Cloud ID Service Tag, as follows:</p>
+<ol>
+<li>Go to <strong>iQ Tag Management &gt; Extensions</strong>.</li>
+<li>Click the <strong>Advanced</strong> tab and click <strong>+ Add</strong> for <strong>JavaScript Code</strong>.</li>
+<li>For <strong>Scope</strong>, select <strong>Tag Scoped Extensions</strong>, then select <strong>Adobe Experience Cloud ID Service</strong>.</li>
+<li>Under <strong>Configuration</strong>, enter the following code:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">config</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">config</span> <span style="color:#f92672">||</span> {};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">config</span>[<span style="color:#e6db74">&#39;doesOptInApply&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">config</span>[<span style="color:#e6db74">&#39;preOptInApprovals&#39;</span>] <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;aa&#39;</span>, <span style="color:#e6db74">&#39;ecid&#39;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">config</span>[<span style="color:#e6db74">&#39;isIabContext&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">config</span>[<span style="color:#e6db74">&#39;optInStorageExpiry&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">34128000</span>; 
+</span></span></code></pre></div>The following figure shows an example configuration of an extension that enables the Adobe Opt-in module:<br>
+<figure><a class="slb" href="/images/client-side-tags/adobe-enable-optin-module-extension-example.png"><img src="/images/client-side-tags/adobe-enable-optin-module-extension-example.png"/>
+        </a>
+    </figure></li>
+<li>Save and publish.</li>
+</ol>
+<p>You can validate that the Opt-in service is working as expected using developer tools in your browser. For more information, see the Adobe documentation about <a href="https://experienceleague.adobe.com/en/docs/id-service/using/implementation/opt-in-service/testing-optin-and-iab-plugin">Validating Opt-in Service</a>.</p>
+<p>Use Live Events to verify that Adobe Analytics and Adobe Experience Cloud event data is being sent to Tealium. For more information, see <a href="/server-side/live-events-feeds/about-live-events/">About Live Events</a>.</p>
 <h2 id="vendor-documentation">Vendor Documentation</h2>
 <ul>
-<li><a href="https://marketing.adobe.com/resources/help/en_US/mcvid/">Experience Cloud ID Service</a></li>
-<li><a href="https://marketing.adobe.com/resources/help/en_US/mcvid/mcvid-authenticated-state.html">Customer IDs and Authentication States</a></li>
-<li><a href="https://marketing.adobe.com/resources/help/en_US/target/a4t/t_analytics_tracking_server.html">Using an analytics tracking server</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/id-service/using/home">Adobe Experience Cloud ID Service</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/id-service/using/implementation/opt-in-service/testing-optin-and-iab-plugin">Validating Opt-in Service</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/id-service/using/reference/authenticated-state">Customer IDs and Authentication States</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/target/using/integrate/a4t/analytics-tracking-server">Use an analytics tracking server</a></li>
 </ul>
 
 </div>
@@ -644,13 +668,15 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#supported-versions" href="javascript:void(0)">Supported Versions</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#adobe-web-sdk-opt-in-module" href="javascript:void(0)">Adobe Web SDK Opt-in module</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tag-configuration" href="javascript:void(0)">Tag Configuration</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#load-rules" href="javascript:void(0)">Load Rules</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#data-mappings" href="javascript:void(0)">Data Mappings</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#standard" href="javascript:void(0)">Standard</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#customer-ids" href="javascript:void(0)">Customer IDs</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#events" href="javascript:void(0)">Events</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#vendor-documentation" href="javascript:void(0)">Vendor Documentation</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enable-the-adobe-web-sdk-opt-in-module" href="javascript:void(0)">Enable the Adobe Web SDK Opt-in module</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#vendor-documentation" href="javascript:void(0)">Vendor Documentation</a></li>
               </nav>
   </aside></nav>
 

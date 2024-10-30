@@ -183,7 +183,7 @@
   <h2 id="使用法">使用法</h2>
 <p>アトリビューションモジュールは、各トラッキングコールにユーザーリセット可能な広告識別子（IDFA）を追加し、オプションでApple Search Ads APIを実装してアトリビューション情報を収集します。<a href="https://developer.apple.com/documentation/iad/setting_up_apple_search_ads_attribution">Apple Search Adsアトリビューションの構成</a>について詳しく学びましょう。</p>
 <p>バージョン2.1.1以降では、アトリビューションモジュールには<code>SKAdNetwork</code>のサポートが含まれており、<code>ATTransparency.AuthorizationStatus</code>がディスパッチペイロードに追加されます。</p>
-<p>このモジュールの使用はオプションです。その機能について読んで、必要かどうかを判断してください。なぜなら、それは追加の依存関係を導入します。あなたはAppleに対して、なぜIDFAを使用しているのかを説明する必要があります。IDFAの使用を申告しない場合、Appleはあなたのアプリを拒否します。<a href="https://developer.apple.com/app-store/review/rejections/">IDFAの使用と拒否</a>について詳しく学びましょう。</p>
+<p>このモジュールの使用はオプションです。その機能について読んで、必要かどうかを判断してください。なぜなら、それは追加の依存関係を導入します。あなたはAppleに対して、なぜIDFAを使用しているのかを説明する必要があります。IDFAの使用を明記しない場合、Appleはあなたのアプリを拒否します。<a href="https://developer.apple.com/app-store/review/rejections/">IDFAの使用と拒否</a>について詳しく学びましょう。</p>
 <p>以下のプラットフォームがサポートされています：</p>
 <ul>
 <li>iOS</li>
@@ -201,8 +201,8 @@
 <p>バージョン1.9.0以降でサポートされているSwift Package Managerは、Tealium Swiftライブラリをインストールする最も簡単で推奨される方法です：</p>
 <ol>
 <li>Xcodeプロジェクトで、<strong>File &gt; Add Package Dependencies</strong>を選択します。</li>
-<li>リポジトリのURLを入力します：<code>https://github.com/tealium/tealium-swift</code></li>
-<li>バージョンルールを構成します。通常、<code>&quot;Up to next major&quot;</code>が推奨されます。現在のTealium Swiftライブラリのバージョンがリストに表示されない場合は、Swiftパッケージのキャッシュをリセットします。</li>
+<li>リポジトリURLを入力します：<code>https://github.com/tealium/tealium-swift</code></li>
+<li>バージョンルールを構成します。通常、<code>&quot;Up to next major&quot;</code>が推奨されます。現在のTealium Swiftライブラリのバージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットします。</li>
 <li>インストールするモジュールのリストから<code>Attribution</code>モジュールを選択し、Xcodeプロジェクトの各アプリターゲットに追加します。<strong>Frameworks and Libraries</strong>の下にあります。</li>
 </ol>
 <p><a href="/platforms/ios-swift/install/#swift-package-manager-recommended">iOS向けのSwift Package Managerのインストール</a>について詳しく学びましょう。</p>
@@ -214,7 +214,7 @@
 <p>Carthageでアトリビューションモジュールをインストールするには、以下の手順を実行します：</p>
 <ol>
 <li>Xcodeでアプリターゲットの一般構成ページに移動します。</li>
-<li>以下のフレームワークを<strong>Embedded Binaries</strong>セクションに追加します：
+<li>次のフレームワークを<strong>Embedded Binaries</strong>セクションに追加します：
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>TealiumAttribution<span style="color:#f92672">.</span>framework
 </span></span></code></pre></div></li>
 </ol>
@@ -222,34 +222,34 @@
 <h2 id="初期化">初期化</h2>
 <p>モジュールを初期化するには、<a href="/platforms/ios-swift/api/tealium-config/#collectors"><code>collectors</code></a>プロパティに含めます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.collectors = [Collectors.Attribution]
-</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>必要なコレクターを正しく指定する方法を理解するために、<a href="/platforms/ios-swift/modules/#collectors">Collectors</a>のドキュメンテーションを確認してください。</p>
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/platforms/ios-swift/modules/#collectors">Collectors</a>のドキュメンテーションを確認し、必要なコレクターを正しく指定する方法を理解してください。</p>
 <h2 id="ios-14でのアトリビューション">iOS 14+でのアトリビューション</h2>
 <p>iOS 14以降では、アプリはユーザーの許可を得てデバイスの広告識別子（IDFA）にアクセスする必要があります。アプリが初めて起動するときにユーザーに「トラッキングの許可」を求めるプロンプトが表示されます。ユーザーが拒否すると、IDFAはアプリで利用できません。</p>
-<p>IDFAが利用できない場合、<code>SKAdNetwork</code>は登録された広告ネットワークがアプリのインストールをキャンペーンに帰属させるための方法を提供します。これは、Appleから直接署名された信号を受け取ることによって行われます。広告ネットワークは、アプリが正常にインストールされたこと、キャンペーンID、およびオプションのコンバージョン値を受け取るだけです。</p>
-<p><code>AppTrackingTransparency</code>と<code>SKAdNetwork</code>フレームワークについては、<a href="https://community.tealiumiq.com/t5/TLC-Blog/What-Do-Apple-s-IDFA-Changes-Mean-for-Tealium/ba-p/33770#toc-hId-1331108563">AppleのIDFAの変更がTealiumにどう影響するか？</a>で詳しく学びましょう。 <!-- blog --></p>
+<p>IDFAが利用できない場合、<code>SKAdNetwork</code>は登録された広告ネットワークがアプリのインストールをキャンペーンにアトリビュートするための方法を提供します。これは、Appleから直接署名された信号を受け取ることによって行われます。広告ネットワークは、アプリが正常にインストールされたこと、キャンペーンID、およびオプションのコンバージョン値を受け取ります。</p>
+<p><code>AppTrackingTransparency</code>と<code>SKAdNetwork</code>フレームワークについては、<a href="/ja/platforms/getting-started-mobile/idfa/">Consent and the Apple IDFA (Identifier for Advertisers)</a>で詳しく学びましょう。</p>
 <h3 id="apptrackingtransparency-att">AppTrackingTransparency (ATT)</h3>
 <p>アトリビューションモジュールが有効になっていると、ユーザーのトラッキング認証ステータスが自動的にディスパッチペイロードに<code>device_tracking_authorization</code>として追加され、その値は<a href="https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus"><code>ATTrackingManager.AuthorizationStatus</code></a>列挙型の文字列表現です。</p>
-<p>該当する場合は、<code>ATTrackingManager.requestTrackingAuthorization</code>を別途呼び出します。<a href="https://community.tealiumiq.com/t5/TLC-Blog/What-Do-Apple-s-IDFA-Changes-Mean-for-Tealium/ba-p/33770#toc-hId-1331108563">Tealium SDKを有効にするためのトラッキング認証のリクエスト</a>について詳しく学びましょう。</p>
+<p>該当する場合は、<code>ATTrackingManager.requestTrackingAuthorization</code>を別途呼び出します。<a href="/ja/platforms/getting-started-mobile/idfa/">Tealium SDKを有効にするためのトラッキング認証のリクエスト</a>について詳しく学びましょう。</p>
 <h3 id="skadnetwork">SKAdNetwork</h3>
-<p>Tealiumは、<code>config.skAdAttributionEnabled</code>が<code>true</code>に構成されている場合、起動時に自動的に<code>SKAdNetwork.registerAppForAdNetworkAttribution()</code>を呼び出します。これにより、広告ネットワークは匿名でアプリのインストールを検証できます。<code>config.skAdConversionKeys</code>辞書が定義されている場合、指定されたイベントで自動的に<code>SKAdNetwork.updateConversionValue()</code>が呼び出され、指定されたコンバージョンキーの値が送信されます。</p>
+<p>Tealiumは、<code>config.skAdAttributionEnabled</code>が<code>true</code>に構成されている場合、起動時に自動的に<code>SKAdNetwork.registerAppForAdNetworkAttribution()</code>を呼び出します。これにより、広告ネットワークはアプリのインストールを匿名で検証することができます。<code>config.skAdConversionKeys</code>辞書が定義されている場合、指定されたイベントで自動的に<code>SKAdNetwork.updateConversionValue()</code>が呼び出され、指定されたコンバージョンキーの値が送信されます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.skAdConversionKeys = [<span style="color:#e6db74">&#34;EVENT_NAME&#34;</span>: <span style="color:#e6db74">&#34;DATA_LAYER_VARIABLE&#34;</span>]
 </span></span></code></pre></div><p>コンバージョン値は、<code>0</code>から<code>63</code>までの値を持つ<code>Int</code>でなければなりません。コンバージョン値が小数の場合、コンバージョンイベントを呼び出す前に整数に変換する必要があります。</p>
 <p>例えば：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.skAdConversionKeys = [<span style="color:#e6db74">&#34;purchase&#34;</span>: <span style="color:#e6db74">&#34;conversion_value&#34;</span>]
 </span></span><span style="display:flex;"><span>...
 </span></span><span style="display:flex;"><span>tealium?.track(<span style="color:#e6db74">&#34;purchase&#34;</span>, dataLayer: [<span style="color:#e6db74">&#34;order_subtotal&#34;</span>: <span style="color:#ae81ff">456.87</span>, <span style="color:#e6db74">&#34;conversion_value&#34;</span>: conversionValue])
-</span></span></code></pre></div><p><a href="https://community.tealiumiq.com/t5/TLC-Blog/What-Do-Apple-s-IDFA-Changes-Mean-for-Tealium/ba-p/33770#toc-hId-1473659672"><code>SKAdNetwork</code>フレームワーク</a>について詳しく学びましょう。 <!-- blog --></p>
+</span></span></code></pre></div><p><a href="/ja/platforms/getting-started-mobile/idfa/"><code>SKAdNetwork</code>フレームワーク</a>について詳しく学びましょう。 <!-- blog --></p>
 <h4 id="プロセス">プロセス</h4>
 <p>以下の図は、広告のインストール検証のパスを示しています。App Aは広告を表示するソースアプリで、App Bはユーザーがインストールする広告アプリです。</p>
 <figure><a class="slb" href="/images/platforms/ios/skad-custom.png"><img src="/images/platforms/ios/skad-custom.png" width="750" height="550"/>
     </a><figcaption><p>Skad Custom</p>
         </figcaption>
 </figure>
-<p>ユーザーがアプリ内またはモバイルウェブブラウザ内の広告をクリックすると、App Storeが起動し、ユーザーは広告キャンペーンの製品画面に移動します。iOS 14.5以降では、広告主はカスタムビュースルーアドまたはStoreKitレンダリングアドを表示するかどうかを選択することができます。ユーザーが広告アプリをインストールすると、デバイスは保留中のインストール検証を保存します。ユーザーがアトリビューションタイムウィンドウ内でアプリを開くと、デバイスはインストール検証のポストバックを広告ネットワークに送信します。</p>
+<p>ユーザーがアプリ内またはモバイルウェブブラウザ内の広告をクリックすると、App Storeが起動し、ユーザーは広告キャンペーンの製品画面に移動します。iOS 14.5以降では、広告主はカスタムビュースルーアドまたはStoreKitレンダリングアドを表示するかどうかを選択するオプションがあります。ユーザーが広告アプリをインストールすると、デバイスは保留中のインストール検証を保存します。ユーザーがアトリビューションタイムウィンドウ内にアプリを開くと、デバイスはインストール検証のポストバックを広告ネットワークに送信します。</p>
 <p>通知はAppleによって署名され、キャンペーンIDを含みますが、ユーザーまたはデバイス固有のデータは除外されます。ポストバックには、Appleが値の提供がAppleのプライバシー閾値を満たすと判断した場合、コンバージョン値とソースアプリのIDが含まれる場合があります。</p>
 <p><a href="https://developer.apple.com/documentation/storekit/skadnetwork">広告主導のアプリインストール</a>について詳しく学びましょう。</p>
 <h4 id="tealiumの役割">Tealiumの役割</h4>
-<p>Appleの<code>SKAdNetwork</code>ソリューションには、主に3つの当事者が関与しています：</p>
+<p>Appleの<code>SKAdNetwork</code>ソリューションには3つの主要な関係者がいます：</p>
 <ul>
 <li>広告ネットワーク</li>
 <li>ソースアプリ</li>
@@ -258,29 +258,29 @@
 <p>Tealiumは<code>SKAdNetwork</code>への呼び出しをラップします。<code>TealiumAttribution</code>モジュールと構成フラグが有効になっている場合、アプリの起動時に<code>SKAdNetwork.registerAppForAdNetworkAttribution()</code>が呼び出されます。</p>
 <p>さらに、<a href="/platforms/ios-swift/api/tealium-config/#skadconversionkeys"><code>skAdConversionKeys</code></a>を定義している場合、<code>SKAdNetwork.updateConversionValue(_:)</code>メソッドが呼び出され、指定されたコンバージョン値が渡されます。Tealiumは、既に設置しているトラッキングを通じて<code>SKAdNetwork</code>への呼び出しを管理することを可能にします。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>ユーザーからトラッキング認証をリクエストし、適切なキーを<code>.plist</code>ファイルに追加する必要があるかもしれません。</p>
-<p>以下の図は、Tealiumが<code>SKAdNetwork</code>とどのように連携するかを示しています：
+<p>次の図は、Tealiumが<code>SKAdNetwork</code>とどのように連携するかを示しています：
 <figure><a class="slb" href="/images/platforms/ios/skad-tealium-custom.png"><img src="/images/platforms/ios/skad-tealium-custom.png" width="750" height="400"/>
     </a><figcaption><p>Skad Telium Custom</p>
         </figcaption>
 </figure></p>
 <h4 id="検証">検証</h4>
-<p><a href="https://developer.apple.com/documentation/storekit/skadnetwork/verifying_an_install_validation_postback"><code>SKAdNetwork</code>への呼び出しの検証</a>について学びましょう。</p>
+<p><a href="https://developer.apple.com/documentation/storekit/skadnetwork/verifying_an_install_validation_postback"><code>SKAdNetwork</code></a>への呼び出しの検証について学びましょう。</p>
 <h2 id="search-ads-api">Search Ads API</h2>
 <p>Apple Search Ads APIを使用するには、<a href="/platforms/ios-swift/api/tealium-config/#tealiumconfig"><code>TealiumConfig</code></a>オブジェクトの<a href="/platforms/ios-swift/api/tealium-config/#searchadsenabled"><code>searchAdsEnabled</code></a>プロパティを有効にします。次に、<a href="https://developer.apple.com/documentation/adservices/aaattribution"><code>AAAttribution</code></a>クラスを使用して、アトリビューションオブジェクトを取得するためのトークンを取得します。Tealiumライブラリはアプリの起動時にこれを行いますが、情報がタイムリーに取得されない可能性があります。Appleから受け取った情報は、通常は起動イベント中にデータレイヤーに追加されます。</p>
 <p>場合によっては、起動後にいくつかのイベントが発生することがあります。これらの変数は、アプリのライフタイム中に一度だけAppleのサーバーから取得され、永続的な変数として保存されるため、将来のアプリの起動時に利用可能になります。</p>
 <h3 id="iadフレームワークからadservicesフレームワークへ">iAdフレームワークからAdServicesフレームワークへ</h3>
-<p>iOS 14.3以降、Appleは<code>iAd</code>フレームワークを廃止し、新しい<code>AdServices</code>を導入しました。</p>
+<p>iOS 14.3以降、Appleは<code>iAd</code>フレームワークを非推奨とし、新しい<code>AdServices</code>を推奨しています。</p>
 <ul>
-<li><a href="https://developer.apple.com/documentation/iad"><code>iAd</code></a>フレームワークは、同じタイプのアトリビューションデータを、詳細にわたって、ATTを通じて同意したユーザーに返していました。</li>
+<li><a href="https://developer.apple.com/documentation/iad"><code>iAd</code></a>フレームワークは、同じタイプのアトリビューションデータを返しましたが、詳細な情報はATTを通じて同意したユーザーにのみ提供されました。</li>
 <li>新しい<a href="https://developer.apple.com/documentation/adservices"><code>AdServices</code></a>フレームワークは詳細度は低いですが、すべてのユーザーにアトリビューションデータを提供します。</li>
 </ul>
-<p>TealiumSwift SDKのバージョン2.9.0では、iOS 14.3以降の新しい<code>AdServices</code>を使用するアトリビューションモジュールの新バージョンを含めました。</p>
-<p>2023年2月7日、Appleは旧<code>iAd</code>フレームワークの公式なシャットダウンを発表し、すべてのアプリとSDKから依存関係を削除するよう開発者にアドバイスしました。</p>
+<p>TealiumSwift SDKのバージョン2.9.0では、新しいアトリビューションモジュールを含め、iOS 14.3以降では新しい<code>AdServices</code>を使用します。</p>
+<p>2023年2月7日、Appleは旧<code>iAd</code>フレームワークの公式サポートを終了し、近日中にiOSから削除されると発表し、開発者に対してすべてのアプリとSDKから依存関係を削除するよう勧告しました。</p>
 <p>TealiumSwift SDKのバージョン2.11.0では、Appleがサポートを終了したため、<code>iAd</code>フレームワークを完全に削除しました。今後は新しい<code>AdServices</code>フレームワークのみを使用します。</p>
 <p>お客様に対するサービスの中断を避けるため、<code>AdServices</code>に含まれるすべてのデータは、旧<code>iAd</code>フレームワークの同じデータレイヤー変数にマッピングされます。
-Appleから返されなくなった<code>iAd</code>のアトリビューションキーの一部を非推奨としています。<code>iAd</code>フレームワークが最終的にシャットダウンされる前にユーザーがそれらを受け取った場合、そのデータを引き続き受け取ることができますが、新規インストールには適用されません。</p>
+Appleから返されなくなった<code>iAd</code>のアトリビューションキーの一部を非推奨とします。<code>iAd</code>フレームワークが最終的にシャットダウンされる前にユーザーがそれらを受け取った場合、そのデータを引き続き受け取ることができますが、新規インストールには適用されません。</p>
 <h3 id="必要なアクション">必要なアクション</h3>
-<p>お客様に必要なアクションは、TealiumSwift SDKのバージョン2.11.0以降に更新することだけです。このアクションにより、<code>iAd</code>フレームワークがアプリから削除され、新規インストールに対しては、下記のように、非推奨となったキーが空になるよう、データレイヤーから非推奨となったアトリビューションキーのみを使用することが確認されます。</p>
+<p>お客様に必要なアクションは、TealiumSwift SDKのバージョン2.11.0以降に更新することだけです。このアクションにより、<code>iAd</code>フレームワークがアプリから削除され、新規インストールでは非推奨のアトリビューションキーのみをデータレイヤーから使用することが保証されます。非推奨のキーは空になります。</p>
 <h2 id="データレイヤー">データレイヤー</h2>
 <p>モジュールが有効な間、以下の変数が各トラッキングコールで送信されます：</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i><code>ad_</code>で始まる変数は、<a href="#search-ads-api">Search Ads</a>が有効になっている場合にのみ構成されます。</p>
@@ -350,7 +350,7 @@ Appleから返されなくなった<code>iAd</code>のアトリビューショ�
 </tr>
 <tr>
 <td><code>ad_purchase_date</code> (非推奨)</td>
-<td>ユーザーが初めてアプリをダウンロードした日時。<code>iadconversion-type = &quot;Redownload&quot;</code>の場合、これは元の購入日を表します。このパラメータはApple Search Adに関連付けられていたかもしれませんし、そうでなかったかもしれません。</td>
+<td>ユーザーが初めてアプリをダウンロードした日時。<code>iadconversion-type = &quot;Redownload&quot;</code>の場合、これは元の購入日を表します。このパラメータはApple Search Adに関連付けられていたかもしれませんし、そうでないかもしれません。</td>
 <td><code>2016-12-05T17:31:40Z</code></td>
 </tr>
 <tr>
@@ -460,7 +460,7 @@ Appleから返されなくなった<code>iAd</code>のアトリビューショ�
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年August月28日
+          <p>最終更新日 ::  2024年October月30日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

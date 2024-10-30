@@ -226,10 +226,10 @@
 <h2 id="attribution-in-ios-14">Attribution in iOS 14+</h2>
 <p>In iOS 14 and later, apps are required to receive user permission to access the device&rsquo;s advertising identifier (IDFA). The user is prompted to grant &ldquo;Permission to track&rdquo; when the app launches for the first time. If the user declines, then the IDFA is not available to the app.</p>
 <p>When the IDFA is not available, <code>SKAdNetwork</code> provides a method for registered advertising networks to attribute app installs to a campaign by receiving a signed signal directly from Apple. The advertising network only receives confirmation that the app was successfully installed, along with the campaign ID and optional conversion value.</p>
-<p>Learn more about the <code>AppTrackingTransparency</code> and <code>SKAdNetwork</code> frameworks in <a href="https://community.tealiumiq.com/t5/TLC-Blog/What-Do-Apple-s-IDFA-Changes-Mean-for-Tealium/ba-p/33770#toc-hId-1331108563">What Do Apple&rsquo;s IDFA Changes Mean for Tealium?</a> <!-- blog --></p>
+<p>Learn more about the <code>AppTrackingTransparency</code> and <code>SKAdNetwork</code> frameworks in <a href="/platforms/getting-started-mobile/idfa/">Consent and the Apple IDFA (Identifier for Advertisers)</a>.</p>
 <h3 id="apptrackingtransparency-att">AppTrackingTransparency (ATT)</h3>
 <p>With the attribution module enabled, the user&rsquo;s tracking authorization status is automatically added to the dispatch payload as <code>device_tracking_authorization</code> and the value is a string representation of the <a href="https://developer.apple.com/documentation/apptrackingtransparency/attrackingmanager/authorizationstatus"><code>ATTrackingManager.AuthorizationStatus</code></a> enumeration.</p>
-<p>If applicable, call <code>ATTrackingManager.requestTrackingAuthorization</code> separately. Learn more about <a href="https://community.tealiumiq.com/t5/TLC-Blog/What-Do-Apple-s-IDFA-Changes-Mean-for-Tealium/ba-p/33770#toc-hId-1331108563">requesting tracking authorization to enable the Tealium SDK</a>.</p>
+<p>If applicable, call <code>ATTrackingManager.requestTrackingAuthorization</code> separately. Learn more about <a href="/platforms/getting-started-mobile/idfa/">requesting tracking authorization to enable the Tealium SDK</a>.</p>
 <h3 id="skadnetwork">SKAdNetwork</h3>
 <p>Tealium automatically calls <code>SKAdNetwork.registerAppForAdNetworkAttribution()</code> on launch if <code>config.skAdAttributionEnabled</code> is set to <code>true</code>. This permits advertising networks to anonymously validate app installs. If the <code>config.skAdConversionKeys</code> dictionary is defined, then <code>SKAdNetwork.updateConversionValue()</code> is automatically called on the specified event and sent the value of the specified conversion key.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.skAdConversionKeys = [<span style="color:#e6db74">&#34;EVENT_NAME&#34;</span>: <span style="color:#e6db74">&#34;DATA_LAYER_VARIABLE&#34;</span>]
@@ -238,7 +238,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.skAdConversionKeys = [<span style="color:#e6db74">&#34;purchase&#34;</span>: <span style="color:#e6db74">&#34;conversion_value&#34;</span>]
 </span></span><span style="display:flex;"><span>...
 </span></span><span style="display:flex;"><span>tealium?.track(<span style="color:#e6db74">&#34;purchase&#34;</span>, dataLayer: [<span style="color:#e6db74">&#34;order_subtotal&#34;</span>: <span style="color:#ae81ff">456.87</span>, <span style="color:#e6db74">&#34;conversion_value&#34;</span>: conversionValue])
-</span></span></code></pre></div><p>Learn more about the <a href="https://community.tealiumiq.com/t5/TLC-Blog/What-Do-Apple-s-IDFA-Changes-Mean-for-Tealium/ba-p/33770#toc-hId-1473659672"><code>SKAdNetwork</code> framework</a>. <!-- blog --></p>
+</span></span></code></pre></div><p>Learn more about the <a href="/platforms/getting-started-mobile/idfa/"><code>SKAdNetwork</code> framework</a>. <!-- blog --></p>
 <h4 id="process">Process</h4>
 <p>The following diagram shows the path of an ad&rsquo;s install validation. App A is the source app that displays an ad, and App B is the advertised app that the user installs.</p>
 <figure><a class="slb" href="/images/platforms/ios/skad-custom.png"><img src="/images/platforms/ios/skad-custom.png" width="750" height="550"/>
@@ -460,7 +460,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 26, 2024 
+          <p>This page was last updated:  October 30, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

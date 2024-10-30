@@ -12,6 +12,8 @@
     
     <meta NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
     
+    
+    <link rel="alternate" hreflang="ja" href="https://docs.tealium.com/ja/early-access/server-side-concurrency/save-publish/">
     <link href='/dist/css/app.css' rel='stylesheet' type="text/css" />
     <script>
       history.scrollRestoration = "manual";
@@ -27,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "early-access",
-        reading_time  : "3",
+        reading_time  : "4",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -54,6 +56,16 @@
 <path d="M25.152 16.576v5.696q0 2.144-1.504 3.648t-3.648 1.504h-14.848q-2.144 0-3.648-1.504t-1.504-3.648v-14.848q0-2.112 1.504-3.616t3.648-1.536h12.576q0.224 0 0.384 0.16t0.16 0.416v1.152q0 0.256-0.16 0.416t-0.384 0.16h-12.576q-1.184 0-2.016 0.832t-0.864 2.016v14.848q0 1.184 0.864 2.016t2.016 0.864h14.848q1.184 0 2.016-0.864t0.832-2.016v-5.696q0-0.256 0.16-0.416t0.416-0.16h1.152q0.256 0 0.416 0.16t0.16 0.416zM32 1.152v9.12q0 0.48-0.352 0.8t-0.8 0.352-0.8-0.352l-3.136-3.136-11.648 11.648q-0.16 0.192-0.416 0.192t-0.384-0.192l-2.048-2.048q-0.192-0.16-0.192-0.384t0.192-0.416l11.648-11.648-3.136-3.136q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h9.12q0.48 0 0.8 0.352t0.352 0.8z"></path>
 </svg>
 </a>
+      </li>
+        
+      <li class="f5 dib mr4">
+      
+        
+      
+        
+          <a href="/ja/early-access/server-side-concurrency/save-publish/" class="dim link mid-gray">日本語</a>
+        
+      
       </li>
             
     </ul>
@@ -100,7 +112,8 @@
         <a href="/early-access/snowflake-data-source/manage/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-snowflake-data-source">Manage</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/early-access/snowflake-data-source/error-logs/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".manage-snowflake-data-source-error-logs">Error logs</a></li></ul>
       </li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/early-access/spotify-conversions-connector-alpha/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".spotify-conversions-connector-alpha">Spotify Conversions Connector</a></li><li class="relative w-100 fw8 f5 ">
+        <a href="/early-access/spotify-conversions-connector-alpha/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".spotify-conversions-connector-alpha">Spotify Conversions Connector</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/early-access/taboola-audiences-connector/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".taboola-audiences-connector">Taboola Audiences Connector</a></li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".api-v3">Tealium API v3</a>
         <ul class="pl2  api-v3 desktopmenu animated fadeIn list  dn"><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".iq-profiles-api">iQ Profiles</a>
@@ -171,82 +184,65 @@
 
 <div class="prose nested-links" id="prose">
   <h2 id="how-it-works">How it works</h2>
-<p>As you add, edit, or remove items from your configuration, you must save your profile to preserve those changes. Changes to your configuration are not automatically saved. If you sign out or close your browser without saving, your changes are discarded.</p>
+<p>As you add, edit, or remove items in your server-side configuration, you must save your changes to preserve them. Changes to your configuration are not automatically saved. If you sign out or close your browser without saving, your changes are discarded.</p>
 <p>After you save your changes, you can log out or close the window and your configuration is preserved for you or the next user that logs into the account.</p>
-<p>However, saving your changes will not put your changes into the production system. To activate your changes in production, you must also publish your changes.</p>
-<h3 id="permissions">Permissions</h3>
-<p>Profile and publishing permissions determine the available actions and visibility of items in the <strong>Save/Publish Changes</strong> interfaces:</p>
-<ul>
-<li><strong>Edit</strong> access for a product feature grants the ability to save changes to the profile.</li>
-<li><strong>Server-side publishing rights</strong> grant the ability to publish the profile.</li>
-</ul>
-<h2 id="save-changes">Save changes</h2>
+<p>When you save your changes you create a version of your profile. Typically, you will create a new version to work on a set of related changes to your configuration. This makes it easy to identify those changes in the version history and to revert to that version if needed.</p>
+<p>However, saving a version will not put your changes into the production system. To activate your changes in production, you must also publish your version.</p>
+<h2 id="save-or-publish-changes">Save or publish changes</h2>
+<p>When you click <strong>Save/Publish</strong>, the following screen appears where you select how to save your changes:</p>
 <figure><a class="slb" href="/images/server-side/save-publish/save-your-changes.png"><img src="/images/server-side/save-publish/save-your-changes.png"
          alt="Save your changes"
          title="Save your changes"/>
     </a>
 </figure>
-<p>To save or publish your changes:</p>
-<ol>
-<li>Click <strong>Save/Publish</strong>. The <strong>Save Changes</strong> screen appears.</li>
-<li>With the <strong>Save as a new version</strong> checkbox, choose whether to save changes to the current version or create a new version. This checkbox is not selected by default.
 <ul>
-<li>If you want to save your changes as a new version for a new project, select <strong>Save as new version</strong>.</li>
-</ul>
-</li>
-<li>Enter a name for the version in the <strong>Version</strong> field.
-<ul>
-<li>If you are saving to the current version, you cannot change the version name.</li>
-<li>By default, the <strong>Version</strong> field displays a date and timestamp.</li>
-</ul>
-</li>
-<li>If you are behind the published version, the <strong>Include latest published changes</strong> checkbox appears. Choose whether to include the latest changes that have been published on this profile. This checkbox is selected by default. <figure><a class="slb" href="/images/server-side/save-publish/integrate-changes-by-others.png"><img src="/images/server-side/save-publish/integrate-changes-by-others.png"
+<li><strong>Save as a new version</strong><br>
+Choose whether to save changes to the current version or create a new version. This checkbox is not selected by default.  If you want to save your changes as a new version for a new project, select <strong>Save as new version</strong>.</li>
+<li><strong>Include latest published changes</strong><br>
+This option appears if you are behind the published version. Choose whether to include the latest changes that have been published in this profile. If you do not select this option, the published changes from the other version will not be integrated into your version. This checkbox is selected by default.<br>
+<figure><a class="slb" href="/images/server-side/save-publish/integrate-changes-by-others.png"><img src="/images/server-side/save-publish/integrate-changes-by-others.png"
          alt="Integrate changes by others"
          title="Integrate changes by others"/>
     </a>
-</figure>
-<ul>
-<li>If you do not select this option, the published changes will not be integrated into your version.</li>
+</figure></li>
+<li><strong>Version Name</strong><br>
+Enter a name for the version. This name appears on various screens to identify this version, so choose a descriptive name that summarizes the changes in this version. By default, the <strong>Version</strong> field displays a date and timestamp. If you are saving to the current version, you cannot change the version name.</li>
+<li><strong>Notes</strong><br>
+Enter notes about the changes you are saving. The notes are useful to inform other users about your changes or if you need to revert to this version in the future and need to remember the changes. This is a required field, so you cannot save the version without entering notes.</li>
+<li><strong>Publish Version</strong><br>
+If you want to publish this version, select <strong>Publish version</strong>.</li>
 </ul>
-</li>
-<li>In the <strong>Notes</strong> field, enter notes about changes you made to the version. The notes entered in this field are useful if you need to revert to this version in the future. This is a required field, so you cannot save the version without entering notes.</li>
-<li>If you want to publish this version, select <strong>Publish version</strong>.</li>
-<li><a href="#review-changes">Review the changes</a> to this version and resolve any conflicts.
-<ul>
-<li>If you have changed an item and the latest published version also has changes to the item, your changes to that item will overwrite the latest published version.</li>
-</ul>
-</li>
-<li>Click <strong>Save</strong> or <strong>Publish</strong>.</li>
-</ol>
 <h3 id="review-changes">Review changes</h3>
 <figure><a class="slb" href="/images/server-side/save-publish/review-changes.png"><img src="/images/server-side/save-publish/review-changes.png"
          alt="Review changes"
          title="Review changes"/>
     </a>
 </figure>
-<p>The <strong>Change Details</strong> or <strong>Publish details</strong> section displays information about the changes in this version:</p>
+<p>The <strong>Change Details</strong> or <strong>Publish details</strong> section displays information about the changes you are saving and any changes included from the latest published version:</p>
 <ul>
 <li>The type of item that is changing (audience, attribute, etc.).</li>
 <li>The name of the item.</li>
-<li>The action being taken on the item (<strong>Created</strong>, <strong>Updated</strong>, or <strong>Deleted</strong>).</li>
+<li>The action taken on the item (<strong>Created</strong>, <strong>Updated</strong>, or <strong>Deleted</strong>).</li>
 <li>The status of the change (<strong>Saved</strong>, <strong>Unsaved</strong>, or <strong>Published</strong>).</li>
-<li>Who made the change.</li>
+<li>The user who made the change.</li>
 </ul>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>When you make changes, the Tealium platform may generate additional changes in the background that appear in this table. For example, if you add an event specification, it will also add any rules associated with the event specification.</p>
-<h3 id="historical-information">Historical information</h3>
+<p>This table might contain changes generated by the system. For example, if you add an event specification, the system automatically creates rules associated with the event specification, which will appear as unsaved changes in this table.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>If you&rsquo;ve edited an item that was also updated in the latest published version, your changes will override those updates when you publish.</p>
+<h2 id="historical-information">Historical information</h2>
 <p>Historical information appears on the right side of the window:</p>
 <ul>
-<li><strong>Latest Published Version</strong>: Displays the version name, timestamp, user, and notes about the most recently published version. This section also compares your current version to the latest published version:
+<li><strong>Latest Published Version</strong>: Displays the version name, timestamp, user, and notes about the most recently published version.</li>
+<li><strong>Version status</strong>: Compares your current version, including any saved or unsaved changes you have made to it, to the currently published version and displays one of the following status messages:
 <ul>
-<li><strong>You are ahead of the published version</strong>: Your version includes changes that are not in the published version.</li>
-<li><strong>You are up to date</strong>: Your current version and the latest published version match.</li>
-<li><strong>You are behind the published version</strong>: The published version includes changes that are not in your current version. The <strong>Include latest published changes</strong> option will appear, and these changes will appear in the <strong>Change Details</strong> table as <strong>Published</strong>.</li>
+<li><strong>You are ahead of the published version</strong><br>
+Your version includes changes that are not in the currently published version.</li>
+<li><strong>You are up to date</strong><br>
+Your current version and the latest published version match.</li>
+<li><strong>You are behind the published version</strong><br>
+The currently published version includes changes that are not in your current version. If you are developing changes in a version while other users have published changes in other versions, you will want to integrate those changes into your version. The <strong>Include latest published changes</strong> option will appear, and these changes appear in the <strong>Change Details</strong> table as <strong>Published</strong>.</li>
 </ul>
 </li>
 </ul>
- <!-- * **Save Log**: Lists information about each previous save, change, or publish of the current version.  -->
-<p>The server-side platform offers basic support for concurrent users that are logged in at the same time. The options available to manage concurrent changes depend on whether you have unsaved changes of your own.</p>
-<p>For more information, see <a href="/server-side/save-publish/concurrent-users/">Concurrent users</a>.</p>
 
 </div>
 
@@ -292,7 +288,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 25, 2024 
+          <p>This page was last updated:  October 29, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -307,10 +303,9 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#permissions" href="javascript:void(0)">Permissions</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#save-changes" href="javascript:void(0)">Save changes</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#save-or-publish-changes" href="javascript:void(0)">Save or publish changes</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#review-changes" href="javascript:void(0)">Review changes</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#historical-information" href="javascript:void(0)">Historical information</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#historical-information" href="javascript:void(0)">Historical information</a></li>
               </nav>
   </aside></nav>
 
@@ -622,6 +617,12 @@ No</button>
       <li  class="tl dib ma0 hover-bg-primary w-100">
       <a href="https://docs.tealium.com/early-access/spotify-conversions-connector-alpha/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
           Spotify Conversions Connector
+      </a>
+      </li>
+      
+      <li  class="tl dib ma0 hover-bg-primary w-100">
+      <a href="https://docs.tealium.com/early-access/taboola-audiences-connector/" class="f5 link primary-color-light  hover-white db ma0 w-100 pv2 ph4">
+          Taboola Audiences Connector
       </a>
       </li>
       
