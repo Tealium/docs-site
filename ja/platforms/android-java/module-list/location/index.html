@@ -165,17 +165,17 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Locationモジュールを使用すると、Androidアプリが位置情報を受信し、ジオフェンスを構成および監視できるようになります。位置追跡とジオフェンシングの詳細については、<a href="/platforms/getting-started/location/">こちら</a>を参照してください。</p>
+  <p>Locationモジュールを使用すると、Androidアプリが位置情報を受信し、ジオフェンスを構成および監視できるようになります。位置追跡とジオフェンシングの詳細については、<a href="/ja/platforms/getting-started/location/">こちら</a>を参照してください。</p>
 <h2 id="サポートされているプラットフォーム">サポートされているプラットフォーム</h2>
 <p>以下のプラットフォームがサポートされています。</p>
 <ul>
-<li><a href="/platforms/android-java/">Android</a></li>
-<li><a href="/platforms/android-java/tv/">Android TV</a></li>
-<li><a href="/platforms/android-java/wear/">Android Wear</a></li>
+<li><a href="/ja/platforms/android-java/">Android</a></li>
+<li><a href="/ja/platforms/android-java/tv/">Android TV</a></li>
+<li><a href="/ja/platforms/android-java/wear/">Android Wear</a></li>
 </ul>
 <h2 id="要件">要件</h2>
 <ul>
-<li><a href="/platforms/android-java/">Tealium for Android</a>（5.6.0以降）</li>
+<li><a href="/ja/platforms/android-java/">Tealium for Android</a>（5.6.0以降）</li>
 <li>Google Play Services <a href="https://developer.android.com/training/location">Location</a>（11.0.0以降）</li>
 </ul>
 <p>このモジュールはFirebase Cloud Messagingをサポートしています。</p>
@@ -237,7 +237,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      runtimeOnly <span style="color:#e6db74">&#39;com.google.android.gms:play-services-location:17.0.0&#39;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
 </span></span></code></pre></div><h2 id="初期化">初期化</h2>
-<p>Tealium インスタンス名を <a href="/platforms/android-java/api/tealium-location/#setupinstance"><code>TealiumLocation.setupInstance()</code></a>に渡して、Location モジュールを初期化します。</p>
+<p>Tealium インスタンス名を <a href="/ja/platforms/android-java/api/tealium-location/#setupinstance"><code>TealiumLocation.setupInstance()</code></a>に渡して、Location モジュールを初期化します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> tealiumInstances <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;();</span>
 </span></span><span style="display:flex;"><span>tealiumInstances<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>TealiumHelper<span style="color:#f92672">.</span><span style="color:#a6e22e">TEALIUM_MAIN</span><span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>
@@ -248,10 +248,10 @@
 <p>Android位置情報の精度構成の詳細については、<a href="https://developer.android.com/guide/topics/location/battery#accuracy">こちら</a>を参照してください。</p>
 <p>位置情報の更新間隔は、ミリ秒単位の値で構成されます。アプリにとって好適な範囲内で可能な限り高い値を使用してください。間隔の値は、Androidの<code>setInterval()</code>および<code>setFastestInterval()</code>メソッドに渡されます。</p>
 <p>Android位置情報の間隔構成の詳細については、<a href="https://developer.android.com/guide/topics/location/battery#frequency">こちら</a>を参照してください。</p>
-<p>位置追跡を開始するには、 <a href="/platforms/android-java/api/tealium-location/#startlocationupdates"><code>TealiumLocation.startLocationUpdates()</code></a>を呼び出します。最初のパラメータを高精度のトラッキングの場合は<code>true</code>、精度を下げたトラッキングの場合は<code>false</code>に構成します。</p>
+<p>位置追跡を開始するには、 <a href="/ja/platforms/android-java/api/tealium-location/#startlocationupdates"><code>TealiumLocation.startLocationUpdates()</code></a>を呼び出します。最初のパラメータを高精度のトラッキングの場合は<code>true</code>、精度を下げたトラッキングの場合は<code>false</code>に構成します。</p>
 <p>次の例では、高精度と60000ミリ秒（60秒）の時間間隔を使用します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>TealiumLocation<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">().</span><span style="color:#a6e22e">startLocationUpdates</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">60000</span><span style="color:#f92672">);</span>
-</span></span></code></pre></div><p>継続的な位置追跡を無効にするには、 <code>TealiumLocation.destroyInstance()</code> または <a href="/platforms/android-java/api/tealium-location/#stoplocationupdates"><code>TealiumLocation.stopLocationUpdates()</code></a>メソッドを呼び出します。</p>
+</span></span></code></pre></div><p>継続的な位置追跡を無効にするには、 <code>TealiumLocation.destroyInstance()</code> または <a href="/ja/platforms/android-java/api/tealium-location/#stoplocationupdates"><code>TealiumLocation.stopLocationUpdates()</code></a>メソッドを呼び出します。</p>
 <h3 id="位置情報へのアクセス許可">位置情報へのアクセス許可</h3>
 <p>アプリで、位置情報へのアクセス許可を付与するには:</p>
 <ol>
@@ -308,19 +308,19 @@
 </span></span><span style="display:flex;"><span>      Toast<span style="color:#f92672">.</span><span style="color:#a6e22e">LENGTH_LONG</span><span style="color:#f92672">).</span><span style="color:#a6e22e">show</span><span style="color:#f92672">();</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h3 id="最後に認識された位置">最後に認識された位置</h3>
-<p>継続的な位置追跡が無効になっている場合は、メソッド <a href="/platforms/android-java/api/tealium-location/#requestdevicelastlocation"><code>TealiumLocation.requestDeviceLastLocation()</code></a>を使用して、最後に認識された位置をリクエストします。このメソッドは、デバイス上の他のアプリによって精度を確保する目的で使用されているロケーションクライアントに依存します。他のアプリが最新の位置情報を受信して​​いない場合、このメソッドは最後に認識された位置情報（またはその位置情報が使用不可の場合は<code>null</code>）を返します。</p>
+<p>継続的な位置追跡が無効になっている場合は、メソッド <a href="/ja/platforms/android-java/api/tealium-location/#requestdevicelastlocation"><code>TealiumLocation.requestDeviceLastLocation()</code></a>を使用して、最後に認識された位置をリクエストします。このメソッドは、デバイス上の他のアプリによって精度を確保する目的で使用されているロケーションクライアントに依存します。他のアプリが最新の位置情報を受信して​​いない場合、このメソッドは最後に認識された位置情報（またはその位置情報が使用不可の場合は<code>null</code>）を返します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>TealiumLocation<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">().</span><span style="color:#a6e22e">requestDeviceLastLocation</span><span style="color:#f92672">();</span>
 </span></span></code></pre></div><h2 id="ジオフェンシング">ジオフェンシング</h2>
-<p>ジオフェンシングを有効にして初期化するには、次のいずれかの方法で、<a href="/platforms/getting-started/location/#json-file">ジオフェンスJSONファイル</a>をセットアップメソッドに指定します。</p>
+<p>ジオフェンシングを有効にして初期化するには、次のいずれかの方法で、<a href="/ja/platforms/getting-started/location/#json-file">ジオフェンスJSONファイル</a>をセットアップメソッドに指定します。</p>
 <ul>
 <li><strong>ホスト型URL</strong>
-メソッド <a href="/platforms/android-java/api/tealium-location/#setupinstancewithurl"><code>TealiumLocation.setupInstanceWithUrl()</code></a>への URL として指定されている独自のホスト型ジオフェンス ファイルを使用します。
+メソッド <a href="/ja/platforms/android-java/api/tealium-location/#setupinstancewithurl"><code>TealiumLocation.setupInstanceWithUrl()</code></a>への URL として指定されている独自のホスト型ジオフェンス ファイルを使用します。
 このオプションは、公開構成URLをオーバーライドした場合、または<a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/About-Hosted-Data-Layer/ta-p/17572">ホスト型データレイヤー</a>を使用する必要がある場合に推奨されます。</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>TealiumLocation<span style="color:#f92672">.</span><span style="color:#a6e22e">setupInstanceWithUrl</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> tealiumInstances<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;https://example.com/geofences.json&#34;</span><span style="color:#f92672">);</span>
 </span></span></code></pre></div><ul>
 <li><strong>ローカルファイル</strong>
-アプリの Assets ディレクトリに保存されているジオフェンス ファイルを <a href="/platforms/android-java/api/tealium-location/#setupinstancewithfile"><code>TealiumLocation.setupInstanceWithFile()</code></a>で使用します。</li>
+アプリの Assets ディレクトリに保存されているジオフェンス ファイルを <a href="/ja/platforms/android-java/api/tealium-location/#setupinstancewithfile"><code>TealiumLocation.setupInstanceWithFile()</code></a>で使用します。</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>TealiumLocation<span style="color:#f92672">.</span><span style="color:#a6e22e">setupInstanceWithFile</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> tealiumInstances<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;geofences.json&#34;</span><span style="color:#f92672">);</span>
 </span></span></code></pre></div><h2 id="追加の検討事項">追加の検討事項</h2>
@@ -404,7 +404,7 @@
 </tbody>
 </table>
 <h2 id="apiリファレンス">APIリファレンス</h2>
-<p>Location モジュールで使用されるメソッドのリファレンスについては、Tealium SDK for Android API の <a href="/platforms/android-java/api/tealium-location/#class-tealiumlocation"><code>TealiumLocation</code></a> クラスを参照してください。</p>
+<p>Location モジュールで使用されるメソッドのリファレンスについては、Tealium SDK for Android API の <a href="/ja/platforms/android-java/api/tealium-location/#class-tealiumlocation"><code>TealiumLocation</code></a> クラスを参照してください。</p>
 
 </div>
 

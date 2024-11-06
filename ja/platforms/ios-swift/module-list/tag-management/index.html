@@ -203,7 +203,7 @@
 <h3 id="cocoapods">CocoaPods</h3>
 <p>CocoaPodsでTagManagementモジュールをインストールするには、以下のpodをPodfileに追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>pod <span style="color:#e6db74">&#39;tealium-swift/TagManagement&#39;</span>
-</span></span></code></pre></div><p><a href="/platforms/ios-swift/install/#cocoapods">iOS向けのCocoaPodsインストール</a>について詳しく学びましょう。</p>
+</span></span></code></pre></div><p><a href="/ja/platforms/ios-swift/install/#cocoapods">iOS向けのCocoaPodsインストール</a>について詳しく学びましょう。</p>
 <h3 id="carthage">Carthage</h3>
 <p>CarthageでTagManagementモジュールをインストールするには、以下の手順を実行します：</p>
 <ol>
@@ -215,9 +215,9 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>TealiumTagManagement<span style="color:#f92672">.</span>framework
 </span></span></code></pre></div></li>
 </ol>
-<p><a href="/platforms/ios-swift/install/#carthage">iOS向けのCarthageインストール</a>について詳しく学びましょう。</p>
+<p><a href="/ja/platforms/ios-swift/install/#carthage">iOS向けのCarthageインストール</a>について詳しく学びましょう。</p>
 <h2 id="初期化">初期化</h2>
-<p>モジュールを初期化するには、<code>TealiumConfig</code>の<a href="/platforms/ios-swift/api/tealium-config/#collectors"><code>collectors</code></a>プロパティで指定されていることを確認します。</p>
+<p>モジュールを初期化するには、<code>TealiumConfig</code>の<a href="/ja/platforms/ios-swift/api/tealium-config/#collectors"><code>collectors</code></a>プロパティで指定されていることを確認します。</p>
 <p><code>config.dispatchers = [Dispatchers.TagManagement]</code></p>
 <h2 id="webview構成のカスタマイズ">WebView構成のカスタマイズ</h2>
 <h3 id="アプリバウンドドメイン">アプリバウンドドメイン</h3>
@@ -234,7 +234,7 @@
         
 </code></pre><h3 id="プロセスプール">プロセスプール</h3>
 <p>アプリが独自の<code>WKWebView</code>を使用している場合、クッキー同期の問題を避けるために、Tealiumのwebviewが使用するシングルトン<code>WKProcessPool</code>インスタンスを渡すか、アプリ内の他のwebviewsと共有するカスタム<code>WkWebViewConfiguration</code>を渡します。</p>
-<p><a href="/platforms/ios-swift/api/tealium-config/#webviewprocesspool">webviewProcessPool</a>と<a href="/platforms/ios-swift/api/tealium-config/#webviewconfig">webViewConfig</a>について学びましょう。</p>
+<p><a href="/ja/platforms/ios-swift/api/tealium-config/#webviewprocesspool">webviewProcessPool</a>と<a href="/ja/platforms/ios-swift/api/tealium-config/#webviewconfig">webViewConfig</a>について学びましょう。</p>
 <h2 id="データレイヤー">データレイヤー</h2>
 <p>以下の変数は、各トラッキング呼び出しで送信されます：</p>
 <table>
@@ -257,8 +257,8 @@
 </table>
 <h2 id="wkwebviewについて">WKWebViewについて</h2>
 <p>バージョン1.7.0以前、このモジュールは<code>UIWebView</code>を使用していましたが、現在は<code>WKWebView</code>に置き換えられています。OSは<code>WKWebView</code>が常に<code>UIView</code>に接続されていることを要求します。これが接続されていない場合、OSはパフォーマンスを大幅に制限し、JavaScriptが最適に実行されません。<strong>これに対応するため、Tag Managementモジュールは非表示のWKWebViewをアプリのルートUIViewに接続しようとします。</strong></p>
-<p>アプリが複雑なビュー階層を持っていて、モジュールが<code>rootViewController</code>を検出していない場合は、<code>viewDidLoad</code>、<code>viewWillAppear:</code>、または<code>viewDidAppear:</code>でビューを接続するために<a href="/platforms/ios-swift/api/tealium-config/">TealiumConfig</a>を初期化します。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>リリース1.7.1では、ビューの自動検出が大幅に改善され、ほとんどのシナリオでビューを指定する必要がなくなりました。ただし、トラッキング呼び出しが正しく送信されていることを確認するために、アプリでこれをテストする必要があります。詳細は<a href="/platforms/ios-swift/release-notes">リリースノート</a>をご覧ください。</p>
+<p>アプリが複雑なビュー階層を持っていて、モジュールが<code>rootViewController</code>を検出していない場合は、<code>viewDidLoad</code>、<code>viewWillAppear:</code>、または<code>viewDidAppear:</code>でビューを接続するために<a href="/ja/platforms/ios-swift/api/tealium-config/">TealiumConfig</a>を初期化します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>リリース1.7.1では、ビューの自動検出が大幅に改善され、ほとんどのシナリオでビューを指定する必要がなくなりました。ただし、トラッキング呼び出しが正しく送信されていることを確認するために、アプリでこれをテストする必要があります。詳細は<a href="/ja/platforms/ios-swift/release-notes">リリースノート</a>をご覧ください。</p>
 <p>アプリがプッシュ通知を受け取った際に<code>UIViewController</code>にジャンプし、Tealiumが初期化されたときとは異なるビュー階層を持っている場合、以下のAPIメソッドを使用して現在の<code>UIView</code>を更新する必要があります。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">viewDidLoad</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">super</span>.viewDidLoad()
@@ -270,7 +270,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Do any additional setup after loading the view.</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>完全な例については、サンプルアプリ<a href="https://github.com/Tealium/tealium-swift/tree/master/samples/Swift-WKWebView">Swift-WKWebView</a>をご覧ください。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/platforms/ios-swift/api/tealium-config/#shouldaddcookieobserver"><code>shouldAddCookieObserver</code></a>メソッドを使用すると、クッキー同期に必要なクッキーオブザーバーを使用して、構成後にメインスレッドでクッキーを取得できます。この問題は<code>WKWebView</code>のバグによるもので、自分のオブザーバーが呼び出されないように防ぎます。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/ja/platforms/ios-swift/api/tealium-config/#shouldaddcookieobserver"><code>shouldAddCookieObserver</code></a>メソッドを使用すると、クッキー同期に必要なクッキーオブザーバーを使用して、構成後にメインスレッドでクッキーを取得できます。この問題は<code>WKWebView</code>のバグによるもので、自分のオブザーバーが呼び出されないように防ぎます。</p>
 
 </div>
 
@@ -331,7 +331,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年August月28日
+          <p>最終更新日 ::  2024年November月6日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

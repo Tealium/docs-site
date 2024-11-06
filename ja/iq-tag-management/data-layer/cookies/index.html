@@ -464,7 +464,7 @@
 </tbody>
 </table>
 <h3 id="バージョン450以降">バージョン4.50以降</h3>
-<p><a href="/platforms/javascript/release-notes#450-august-2023">バージョン4.50以降</a>の<code>utag.js</code>は、<code>utag_main_</code>プレフィックスを使用してスタンドアロンのクッキーを作成および管理します。これは、<code>utag.js</code>が各値を<code>utag_main_</code>で始まるクッキー名を持つクッキーに個別に保存することを意味します。</p>
+<p><a href="/ja/platforms/javascript/release-notes#450-august-2023">バージョン4.50以降</a>の<code>utag.js</code>は、<code>utag_main_</code>プレフィックスを使用してスタンドアロンのクッキーを作成および管理します。これは、<code>utag.js</code>が各値を<code>utag_main_</code>で始まるクッキー名を持つクッキーに個別に保存することを意味します。</p>
 <p>ブラウザのコンソールでは、これらの個別のクッキーは次のように表示されます：</p>
 <figure><a class="slb" href="/images/iq-tag-management/data-layer/utag-separate-cookies.png"><img src="/images/iq-tag-management/data-layer/utag-separate-cookies.png"/>
     </a>
@@ -478,8 +478,8 @@
     </a>
 </figure>
 <h2 id="クッキー関数">クッキー関数</h2>
-<p><code>utag.js</code>は、クッキーを読み書きする簡単な方法を提供する2つのクッキー関数を使用します。詳細については、<a href="/platforms/javascript/api/cookie-functions/">クッキー関数</a>を参照してください。</p>
-<p><a href="/ja/platforms/javascript/settings/#split_cookie_allowlist"><code>split_cookie_allowlist</code></a>構成を使用して構成できるクッキーを制限します。この構成は、タグとカスタム関数が未宣言のクッキーを構成しないようにします。また、<a href="/platforms/javascript/api/cookie-functions/#utagloadersc"><code>utag.loader.SC</code></a>が未宣言のクッキーを書き込むのを防ぎます。</p>
+<p><code>utag.js</code>は、クッキーを読み書きする簡単な方法を提供する2つのクッキー関数を使用します。詳細については、<a href="/ja/platforms/javascript/api/cookie-functions/">クッキー関数</a>を参照してください。</p>
+<p><a href="/ja/platforms/javascript/settings/#split_cookie_allowlist"><code>split_cookie_allowlist</code></a>構成を使用して構成できるクッキーを制限します。この構成は、タグとカスタム関数が未宣言のクッキーを構成しないようにします。また、<a href="/ja/platforms/javascript/api/cookie-functions/#utagloadersc"><code>utag.loader.SC</code></a>が未宣言のクッキーを書き込むのを防ぎます。</p>
 <h2 id="拡張機能からのクッキー">拡張機能からのクッキー</h2>
 <h3 id="データ値の永続化">データ値の永続化</h3>
 <p><strong>データ値の永続化</strong>拡張機能は、iQタグ管理インターフェースからクッキーを構成するために使用できます。クッキーは、<code>utag_main</code>プレフィックスの有無に関係なく構成できます。</p>
@@ -491,7 +491,7 @@
 <p><strong>プライバシーマネージャー</strong>拡張機能は、<code>OPTOUTMULTI</code>という名前のクッキーを使用して、訪問のプライバシー構成を次回のサイト訪問時に保存します。</p>
 <p>詳細については、<a href="/ja/iq-tag-management/extensions/extensions-list/privacy-manager-extension/">プライバシーマネージャー拡張機能</a>を参照してください。</p>
 <h2 id="タグからのクッキー">タグからのクッキー</h2>
-<p>タグマーケットプレイスの一部のタグは、匿名識別子やその他の情報を永続化するために<a href="/platforms/javascript/api/cookie-functions/">クッキー関数</a>を使用します。</p>
+<p>タグマーケットプレイスの一部のタグは、匿名識別子やその他の情報を永続化するために<a href="/ja/platforms/javascript/api/cookie-functions/">クッキー関数</a>を使用します。</p>
 <h2 id="サードパーティタグからのクッキー">サードパーティタグからのクッキー</h2>
 <p>一部のサードパーティタグは、識別子やその他のデータを保存するクッキーを生成します。</p>
 <p>これらのクッキーはTealiumによって制御されず、<a href="/ja/platforms/javascript/settings/#split_cookie_allowlist"><code>split_cookie_allowlist</code></a>構成やTealium iQタグ管理の他の機能によって制限されません。</p>
@@ -500,7 +500,7 @@
 <p><a href="/ja/iq-tag-management/consent/consent-management/about/">同意管理</a>について詳しく学びましょう。</p>
 <p><code>CONSENTMGR</code>クッキーの名前を変更するには、まず<code>cmGeneral</code>テンプレートのバージョン2.0.1以降を使用していることを確認し、次に以下のコードを持つ<strong>All Tags - Before Load Rules</strong>にスコープを持つJavascript Code拡張機能を使用します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">gdpr</span>.<span style="color:#a6e22e">cmcookiens</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;NEW_COOKIE_NAME&#39;</span>;
-</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>同意クッキーの保持期間を変更するには、<a href="/platforms/javascript/settings/#consentperiod"><code>consentPeriod</code></a>構成を使用します。</p>
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>同意クッキーの保持期間を変更するには、<a href="/ja/platforms/javascript/settings/#consentperiod"><code>consentPeriod</code></a>構成を使用します。</p>
 <h2 id="web-companionからのクッキー">Web Companionからのクッキー</h2>
 <p><a href="/ja/iq-tag-management/troubleshooting/web-companion/">Web Companion</a>は、最後にサイトを訪れたときに表示していた公開環境（Prod、QA、Dev、またはCustom）を保存するためにクッキーを使用します。サイトのデフォルトの公開環境を表示してもクッキーは構成されません。</p>
 <p>最後に表示した公開環境は、次のクッキーに保存されます。ここで、<code>{account}</code>と<code>{profile}</code>はあなたのアカウントとプロファイルに置き換えられます：<code>utag_env_{account}_{profile}</code></p>
@@ -550,7 +550,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2024年November月6日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

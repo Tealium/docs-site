@@ -174,8 +174,8 @@
 <div class="prose nested-links" id="prose">
   <h2 id="使用法">使用法</h2>
 <p>同意管理モジュールは推奨され、初期化時に自動的に有効化されます。AndroidモバイルとAndroid TVでサポートされています。</p>
-<p><a href="/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy"><code>TealiumConfig</code></a>内で同意管理ポリシーを初期化します。その後、<a href="/platforms/android-kotlin/api/tealium/#consentmanager"><code>tealium.consentManager</code></a>でTealiumインスタンスを使用してユーザーの同意を管理します。</p>
-<p><a href="/platforms/getting-started-mobile/consent-management/">同意管理</a>と同意ポリシーについて詳しく学びましょう。</p>
+<p><a href="/ja/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy"><code>TealiumConfig</code></a>内で同意管理ポリシーを初期化します。その後、<a href="/ja/platforms/android-kotlin/api/tealium/#consentmanager"><code>tealium.consentManager</code></a>でTealiumインスタンスを使用してユーザーの同意を管理します。</p>
+<p><a href="/ja/platforms/getting-started-mobile/consent-management/">同意管理</a>と同意ポリシーについて詳しく学びましょう。</p>
 <h2 id="同意">同意</h2>
 <h3 id="ポリシーの構成">ポリシーの構成</h3>
 <p>初期化時に以下のいずれかの同意ポリシーを構成します：</p>
@@ -188,13 +188,13 @@
 </span></span><span style="display:flex;"><span>  consentManagerPolicy <span style="color:#f92672">=</span> ConsentPolicy<span style="color:#f92672">.</span><span style="color:#a6e22e">GDPR</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><h3 id="同意の有効期限">同意の有効期限</h3>
-<p><a href="/platforms/android-kotlin/api/tealium-config/#consentexpiry"><code>consentExpiry</code></a>プロパティを使用して、同意選択の有効期限を構成します。</p>
+<p><a href="/ja/platforms/android-kotlin/api/tealium-config/#consentexpiry"><code>consentExpiry</code></a>プロパティを使用して、同意選択の有効期限を構成します。</p>
 <p>以下の例では、同意管理ポリシーをGDPRに構成し、有効期限を90日に構成しています：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val config <span style="color:#f92672">=</span> TealiumConfig<span style="color:#f92672">(...).</span><span style="color:#a6e22e">apply</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>  consentManagerPolicy <span style="color:#f92672">=</span> ConsentPolicy<span style="color:#f92672">.</span><span style="color:#a6e22e">GDPR</span>
 </span></span><span style="display:flex;"><span>  consentExpiry <span style="color:#f92672">=</span> ConsentExpiry<span style="color:#f92672">(</span><span style="color:#ae81ff">90</span><span style="color:#f92672">,</span> TimeUnit<span style="color:#f92672">.</span><span style="color:#a6e22e">DAYS</span><span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><p>同意が期限切れになったときにコールバックをトリガーするには、<a href="/platforms/android-kotlin/api/consent-manager/#onuserconsentpreferencesupdated"><code>onUserConsentPreferencesUpdated()</code></a>メソッドを使用して<code>ConsentStatus</code>が<code>UNKNOWN</code>になったときを確認します：</p>
+</span></span></code></pre></div><p>同意が期限切れになったときにコールバックをトリガーするには、<a href="/ja/platforms/android-kotlin/api/consent-manager/#onuserconsentpreferencesupdated"><code>onUserConsentPreferencesUpdated()</code></a>メソッドを使用して<code>ConsentStatus</code>が<code>UNKNOWN</code>になったときを確認します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">create</span><span style="color:#f92672">(</span>BuildConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">TEALIUM_INSTANCE</span><span style="color:#f92672">,</span> config<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    events<span style="color:#f92672">.</span><span style="color:#a6e22e">subscribe</span><span style="color:#f92672">(</span>object <span style="color:#f92672">:</span> UserConsentPreferencesUpdatedListener <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>        override fun <span style="color:#a6e22e">onUserConsentPreferencesUpdated</span><span style="color:#f92672">(</span>userConsentPreferences<span style="color:#f92672">:</span> UserConsentPreferences<span style="color:#f92672">,</span>
@@ -208,16 +208,16 @@
 </span></span></code></pre></div><h3 id="全面的な同意の構成">全面的な同意の構成</h3>
 <p>全面的な同意を構成するには：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">consentManager</span><span style="color:#f92672">.</span><span style="color:#a6e22e">userConsentStatus</span> <span style="color:#f92672">=</span> ConsentStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">CONSENTED</span>
-</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>全面的な同意を構成すると、暗黙的に同意カテゴリが利用可能な<a href="/platforms/android-kotlin/api/consent-category/#class-consentcategory"><code>ConsentCategory</code></a>タイプの全リストに構成されます。</p>
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>全面的な同意を構成すると、暗黙的に同意カテゴリが利用可能な<a href="/ja/platforms/android-kotlin/api/consent-category/#class-consentcategory"><code>ConsentCategory</code></a>タイプの全リストに構成されます。</p>
 <h3 id="カテゴリ別の部分的な同意の構成">カテゴリ別の部分的な同意の構成</h3>
-<p>部分的な同意を構成するには、同意カテゴリのサブセットを指定します。これにより、<a href="/platforms/android-kotlin/api/consent-manager/#userconsentstatus"><code>userConsentStatus</code></a>が<code>CONSENTED</code>に暗黙的に構成されます。</p>
+<p>部分的な同意を構成するには、同意カテゴリのサブセットを指定します。これにより、<a href="/ja/platforms/android-kotlin/api/consent-manager/#userconsentstatus"><code>userConsentStatus</code></a>が<code>CONSENTED</code>に暗黙的に構成されます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">consentManager</span><span style="color:#f92672">.</span><span style="color:#a6e22e">userConsentCategories</span> <span style="color:#f92672">=</span> setOf<span style="color:#f92672">(</span>ConsentCategory<span style="color:#f92672">.</span><span style="color:#a6e22e">ANALYTICS</span><span style="color:#f92672">,</span> ConsentCategory<span style="color:#f92672">.</span><span style="color:#a6e22e">EMAIL</span><span style="color:#f92672">)</span>
 </span></span></code></pre></div><h3 id="同意の拒否の構成">同意の拒否の構成</h3>
 <p>同意を拒否するには、同意ステータスを構成します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">consentManager</span><span style="color:#f92672">.</span><span style="color:#a6e22e">userConsentStatus</span> <span style="color:#f92672">=</span> ConsentStatus<span style="color:#f92672">.</span><span style="color:#a6e22e">NOT_CONSENTED</span>
 </span></span></code></pre></div><p>あるいは、同意カテゴリを<code>null</code>に構成します。</p>
 <h2 id="カスタム同意">カスタム同意</h2>
-<p>あなたの組織の同意要件が、私たちの標準的な<a href="/glossary/#opt-in-model-consent">Opt-in</a>および<a href="/glossary/#opt-out-model-consent">Opt-out</a>同意管理ポリシーに含まれていない場合、カスタム同意ポリシーを作成します。</p>
+<p>あなたの組織の同意要件が、私たちの標準的な<a href="/ja/glossary/#opt-in-model-consent">Opt-in</a>および<a href="/ja/glossary/#opt-out-model-consent">Opt-out</a>同意管理ポリシーに含まれていない場合、カスタム同意ポリシーを作成します。</p>
 <ol>
 <li><code>ConsentManagementPolicy</code>インターフェースを実装します。
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val customPolicy <span style="color:#f92672">=</span> object<span style="color:#f92672">:</span> ConsentManagementPolicy <span style="color:#f92672">{</span>
@@ -227,7 +227,7 @@
 <li><code>setCustomPolicy()</code>メソッドを使用して、<code>ConsentPolicy.CUSTOM</code> enumに<code>ConsentManagementPolicy</code>の実装を渡します。
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>ConsentPolicy<span style="color:#f92672">.</span><span style="color:#a6e22e">CUSTOM</span><span style="color:#f92672">.</span><span style="color:#a6e22e">setCustomPolicy</span><span style="color:#f92672">(</span>customPolicy<span style="color:#f92672">)</span>
 </span></span></code></pre></div></li>
-<li><a href="/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy"><code>consentManagerPolicy</code></a>プロパティを介して<code>TealiumConfig</code>オブジェクトに<code>ConsentPolicy.CUSTOM</code>オプションを渡します。
+<li><a href="/ja/platforms/android-kotlin/api/tealium-config/#consentmanagerpolicy"><code>consentManagerPolicy</code></a>プロパティを介して<code>TealiumConfig</code>オブジェクトに<code>ConsentPolicy.CUSTOM</code>オプションを渡します。
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>config<span style="color:#f92672">.</span><span style="color:#a6e22e">consentManagerPolicy</span> <span style="color:#f92672">=</span> ConsentPolicy<span style="color:#f92672">.</span><span style="color:#a6e22e">CUSTOM</span>
 </span></span></code></pre></div></li>
 </ol>
@@ -408,7 +408,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月15日
+          <p>最終更新日 ::  2024年November月6日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

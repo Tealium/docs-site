@@ -205,11 +205,11 @@
 <li>バージョンルールを構成します。通常、<code>&quot;Up to next major&quot;</code>が推奨されます。現在のTealium Swiftライブラリのバージョンがリストに表示されない場合は、Swiftパッケージキャッシュをリセットします。</li>
 <li>インストールするモジュールのリストから<code>Attribution</code>モジュールを選択し、Xcodeプロジェクトの各アプリターゲットに追加します。<strong>Frameworks and Libraries</strong>の下にあります。</li>
 </ol>
-<p><a href="/platforms/ios-swift/install/#swift-package-manager-recommended">iOS向けのSwift Package Managerのインストール</a>について詳しく学びましょう。</p>
+<p><a href="/ja/platforms/ios-swift/install/#swift-package-manager-recommended">iOS向けのSwift Package Managerのインストール</a>について詳しく学びましょう。</p>
 <h3 id="cocoapods">CocoaPods</h3>
 <p>CocoaPodsでアトリビューションモジュールをインストールするには、以下のpodをPodfileに追加します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>pod <span style="color:#e6db74">&#39;tealium-swift/Attribution&#39;</span>
-</span></span></code></pre></div><p><a href="/platforms/ios-swift/install/#cocoapods">iOS向けのCocoaPodsのインストール</a>について詳しく学びましょう。</p>
+</span></span></code></pre></div><p><a href="/ja/platforms/ios-swift/install/#cocoapods">iOS向けのCocoaPodsのインストール</a>について詳しく学びましょう。</p>
 <h3 id="carthage">Carthage</h3>
 <p>Carthageでアトリビューションモジュールをインストールするには、以下の手順を実行します：</p>
 <ol>
@@ -218,11 +218,11 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>TealiumAttribution<span style="color:#f92672">.</span>framework
 </span></span></code></pre></div></li>
 </ol>
-<p><a href="/platforms/ios-swift/install/#carthage">iOS向けのCarthageのインストール</a>について詳しく学びましょう。</p>
+<p><a href="/ja/platforms/ios-swift/install/#carthage">iOS向けのCarthageのインストール</a>について詳しく学びましょう。</p>
 <h2 id="初期化">初期化</h2>
-<p>モジュールを初期化するには、<a href="/platforms/ios-swift/api/tealium-config/#collectors"><code>collectors</code></a>プロパティに含めます。</p>
+<p>モジュールを初期化するには、<a href="/ja/platforms/ios-swift/api/tealium-config/#collectors"><code>collectors</code></a>プロパティに含めます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.collectors = [Collectors.Attribution]
-</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/platforms/ios-swift/modules/#collectors">Collectors</a>のドキュメンテーションを確認し、必要なコレクターを正しく指定する方法を理解してください。</p>
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/ja/platforms/ios-swift/modules/#collectors">Collectors</a>のドキュメンテーションを確認し、必要なコレクターを正しく指定する方法を理解してください。</p>
 <h2 id="ios-14でのアトリビューション">iOS 14+でのアトリビューション</h2>
 <p>iOS 14以降では、アプリはユーザーの許可を得てデバイスの広告識別子（IDFA）にアクセスする必要があります。アプリが初めて起動するときにユーザーに「トラッキングの許可」を求めるプロンプトが表示されます。ユーザーが拒否すると、IDFAはアプリで利用できません。</p>
 <p>IDFAが利用できない場合、<code>SKAdNetwork</code>は登録された広告ネットワークがアプリのインストールをキャンペーンにアトリビュートするための方法を提供します。これは、Appleから直接署名された信号を受け取ることによって行われます。広告ネットワークは、アプリが正常にインストールされたこと、キャンペーンID、およびオプションのコンバージョン値を受け取ります。</p>
@@ -256,7 +256,7 @@
 <li>広告アプリ</li>
 </ul>
 <p>Tealiumは<code>SKAdNetwork</code>への呼び出しをラップします。<code>TealiumAttribution</code>モジュールと構成フラグが有効になっている場合、アプリの起動時に<code>SKAdNetwork.registerAppForAdNetworkAttribution()</code>が呼び出されます。</p>
-<p>さらに、<a href="/platforms/ios-swift/api/tealium-config/#skadconversionkeys"><code>skAdConversionKeys</code></a>を定義している場合、<code>SKAdNetwork.updateConversionValue(_:)</code>メソッドが呼び出され、指定されたコンバージョン値が渡されます。Tealiumは、既に設置しているトラッキングを通じて<code>SKAdNetwork</code>への呼び出しを管理することを可能にします。</p>
+<p>さらに、<a href="/ja/platforms/ios-swift/api/tealium-config/#skadconversionkeys"><code>skAdConversionKeys</code></a>を定義している場合、<code>SKAdNetwork.updateConversionValue(_:)</code>メソッドが呼び出され、指定されたコンバージョン値が渡されます。Tealiumは、既に設置しているトラッキングを通じて<code>SKAdNetwork</code>への呼び出しを管理することを可能にします。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>ユーザーからトラッキング認証をリクエストし、適切なキーを<code>.plist</code>ファイルに追加する必要があるかもしれません。</p>
 <p>次の図は、Tealiumが<code>SKAdNetwork</code>とどのように連携するかを示しています：
 <figure><a class="slb" href="/images/platforms/ios/skad-tealium-custom.png"><img src="/images/platforms/ios/skad-tealium-custom.png" width="750" height="400"/>
@@ -266,7 +266,7 @@
 <h4 id="検証">検証</h4>
 <p><a href="https://developer.apple.com/documentation/storekit/skadnetwork/verifying_an_install_validation_postback"><code>SKAdNetwork</code></a>への呼び出しの検証について学びましょう。</p>
 <h2 id="search-ads-api">Search Ads API</h2>
-<p>Apple Search Ads APIを使用するには、<a href="/platforms/ios-swift/api/tealium-config/#tealiumconfig"><code>TealiumConfig</code></a>オブジェクトの<a href="/platforms/ios-swift/api/tealium-config/#searchadsenabled"><code>searchAdsEnabled</code></a>プロパティを有効にします。次に、<a href="https://developer.apple.com/documentation/adservices/aaattribution"><code>AAAttribution</code></a>クラスを使用して、アトリビューションオブジェクトを取得するためのトークンを取得します。Tealiumライブラリはアプリの起動時にこれを行いますが、情報がタイムリーに取得されない可能性があります。Appleから受け取った情報は、通常は起動イベント中にデータレイヤーに追加されます。</p>
+<p>Apple Search Ads APIを使用するには、<a href="/ja/platforms/ios-swift/api/tealium-config/#tealiumconfig"><code>TealiumConfig</code></a>オブジェクトの<a href="/ja/platforms/ios-swift/api/tealium-config/#searchadsenabled"><code>searchAdsEnabled</code></a>プロパティを有効にします。次に、<a href="https://developer.apple.com/documentation/adservices/aaattribution"><code>AAAttribution</code></a>クラスを使用して、アトリビューションオブジェクトを取得するためのトークンを取得します。Tealiumライブラリはアプリの起動時にこれを行いますが、情報がタイムリーに取得されない可能性があります。Appleから受け取った情報は、通常は起動イベント中にデータレイヤーに追加されます。</p>
 <p>場合によっては、起動後にいくつかのイベントが発生することがあります。これらの変数は、アプリのライフタイム中に一度だけAppleのサーバーから取得され、永続的な変数として保存されるため、将来のアプリの起動時に利用可能になります。</p>
 <h3 id="iadフレームワークからadservicesフレームワークへ">iAdフレームワークからAdServicesフレームワークへ</h3>
 <p>iOS 14.3以降、Appleは<code>iAd</code>フレームワークを非推奨とし、新しい<code>AdServices</code>を推奨しています。</p>
@@ -460,7 +460,7 @@ Appleから返されなくなった<code>iAd</code>のアトリビューショ�
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年October月30日
+          <p>最終更新日 ::  2024年November月6日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -144,7 +144,7 @@
 <div class="prose nested-links" id="prose">
   <p>Tealium for React Nativeは、React NativeアプリケーションでTealiumのネイティブモバイルライブラリ（iOS、Android）を使用できるようにします。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>これはTealium for React Nativeの現行バージョン（2.x）です。<br>
-前のバージョンについては、<a href="/platforms/react-native-v1/">Tealium for React Native 1.x</a>を参照してください。</p>
+前のバージョンについては、<a href="/ja/platforms/react-native-v1/">Tealium for React Native 1.x</a>を参照してください。</p>
 <h2 id="仕組み">仕組み</h2>
 <p>Tealiumのモバイルライブラリは、以下の2つの方法のいずれかを使用してReact Nativeアプリケーションに統合されます：</p>
 <ul>
@@ -157,7 +157,7 @@
 <li><a href="https://github.com/Tealium/tealium-react-native">React Native 0.63+</a>とツールのインストール</li>
 <li><a href="/ja/iq-tag-management/profiles/creating-a-mobile-profile/">Tealium iQ Mobile Profile</a></li>
 <li><a href="https://developer.android.com/studio/">Android Studio</a>または<a href="https://developer.apple.com/xcode/">Xcode</a></li>
-<li><a href="/platforms/android-kotlin/">Tealium for Android</a>または<a href="/platforms/ios-swift/">Tealium for iOS</a></li>
+<li><a href="/ja/platforms/android-kotlin/">Tealium for Android</a>または<a href="/ja/platforms/ios-swift/">Tealium for iOS</a></li>
 </ul>
 <h2 id="サンプルアプリ">サンプルアプリ</h2>
 <p>ライブラリ、トラッキング方法、ベストプラクティスの実装について理解を深めるために、<a href="https://github.com/Tealium/tealium-react-native/tree/master/example">React Nativeのサンプルアプリ</a>をダウンロードすることを推奨します。</p>
@@ -176,7 +176,7 @@
 </li>
 </ol>
 <h3 id="android">Android</h3>
-<p><a href="/platforms/android/install/#maven-install">Android Maven Install</a>のドキュメンテーションに記載されているように、Androidプロジェクトのルートの<code>build.gradle</code>ファイルにTealiumのMavenリポジトリへの参照を追加します。プロジェクトの依存関係はAutolinkingプロセスによって自動的に処理されます。</p>
+<p><a href="/ja/platforms/android/install/#maven-install">Android Maven Install</a>のドキュメンテーションに記載されているように、Androidプロジェクトのルートの<code>build.gradle</code>ファイルにTealiumのMavenリポジトリへの参照を追加します。プロジェクトの依存関係はAutolinkingプロセスによって自動的に処理されます。</p>
 <h3 id="ios">iOS</h3>
 <p>React Native 0.60+のAutolinking機能は、必要なCocoaPodsの依存関係を自動的にiOSアプリケーションワークスペースに追加します。</p>
 <p>Podをインストールするには、次のコマンドを実行します：</p>
@@ -197,7 +197,7 @@
 </span></span></code></pre></div></li>
 </ol>
 <h4 id="ブリッジングヘッダー">ブリッジングヘッダー</h4>
-<p><code>TealiumReactNative</code>モジュールは<a href="/platforms/ios-swift"><code>Tealium iOS (Swift)</code></a>ライブラリを使用します。React NativeからSwiftへのObjective-Cファイルを公開するために、Xcodeを使用してiOSプロジェクトにブリッジングヘッダーファイルを作成します。</p>
+<p><code>TealiumReactNative</code>モジュールは<a href="/ja/platforms/ios-swift"><code>Tealium iOS (Swift)</code></a>ライブラリを使用します。React NativeからSwiftへのObjective-Cファイルを公開するために、Xcodeを使用してiOSプロジェクトにブリッジングヘッダーファイルを作成します。</p>
 <ol>
 <li>Xcodeで、メニューから**File &gt; New &gt; File&hellip;**を選択します。</li>
 <li>テンプレートとして<strong>Swift File</strong>を選択し、<strong>Next</strong>をクリックします。</li>
@@ -215,7 +215,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Tealium</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium-react-native&#39;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">TealiumConfig</span>, <span style="color:#a6e22e">TealiumView</span>, <span style="color:#a6e22e">TealiumEvent</span>, <span style="color:#a6e22e">ConsentCategories</span>, <span style="color:#a6e22e">Dispatchers</span>, <span style="color:#a6e22e">Collectors</span>, <span style="color:#a6e22e">ConsentPolicy</span>, <span style="color:#a6e22e">Expiry</span>, <span style="color:#a6e22e">ConsentExpiry</span>, <span style="color:#a6e22e">TimeUnit</span>, <span style="color:#a6e22e">ConsentStatus</span>, <span style="color:#a6e22e">TealiumEnvironment</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;tealium-react-native/common&#39;</span>;
 </span></span></code></pre></div><h2 id="初期化">初期化</h2>
-<p>アプリがインストールされたら、次の例に示すように<a href="/platforms/react-native/api/#initialize"><code>initialize()</code></a>メソッドを使用して<code>Tealium</code>インスタンスを初期化します：</p>
+<p>アプリがインストールされたら、次の例に示すように<a href="/ja/platforms/react-native/api/#initialize"><code>initialize()</code></a>メソッドを使用して<code>Tealium</code>インスタンスを初期化します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">config</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">TealiumConfig</span> <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">account</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;ACCOUNT&#39;</span>,
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">profile</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;PROFILE&#39;</span>,
@@ -226,7 +226,7 @@
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">visitorServiceEnabled</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
 </span></span><span style="display:flex;"><span>};
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">Tealium</span>.<span style="color:#a6e22e">initialize</span>(<span style="color:#a6e22e">config</span>);
-</span></span></code></pre></div><p>詳細な情報や追加の構成オプションについては、<a href="/platforms/react-native/api/">API Reference</a>を参照してください。</p>
+</span></span></code></pre></div><p>詳細な情報や追加の構成オプションについては、<a href="/ja/platforms/react-native/api/">API Reference</a>を参照してください。</p>
 
 </div>
 
@@ -272,7 +272,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月15日
+          <p>最終更新日 ::  2024年November月6日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

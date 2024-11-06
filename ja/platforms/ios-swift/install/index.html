@@ -174,7 +174,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>現在のTealium for Swift SDKのバージョンは2.xです。以前のバージョンについては、<a href="/platforms/ios-swift-v1">Swift 1.x</a>または<a href="/platforms/ios-objective-c/">Objective-C</a>を参照してください。Swiftコードは、同じプロジェクト内の既存のObjective-Cファイルと共存し、Objective-C APIに完全にアクセスできるため、採用が容易です。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>現在のTealium for Swift SDKのバージョンは2.xです。以前のバージョンについては、<a href="/ja/platforms/ios-swift-v1">Swift 1.x</a>または<a href="/ja/platforms/ios-objective-c/">Objective-C</a>を参照してください。Swiftコードは、同じプロジェクト内の既存のObjective-Cファイルと共存し、Objective-C APIに完全にアクセスできるため、採用が容易です。</p>
 <h2 id="要件">要件</h2>
 <ul>
 <li>Xcode 7.0+</li>
@@ -187,7 +187,7 @@
 <p>Tealiumの実装をアプリの他の部分から抽象化するために、ヘルパークラスの使用をお勧めします。これにより、初期化およびトラッキング呼び出しを行う単一のエントリポイントが提供されます。また、ヘルパーファイル内のコードを更新し、すべての<code>View</code>またはSwiftファイルで更新することができます。</p>
 <p><a href="https://github.com/Tealium/tealium-swift/tree/master/samples/TealiumSwiftExample">サンプルヘルパークラス</a>を探索してください。</p>
 <h2 id="インストール">インストール</h2>
-<p>Tealium iOSライブラリはモジュールに分割されています。リソースのフットプリントを小さく保つために、必要なモジュールのみをインストールすることをお勧めします。iOSで利用可能なモジュールについては、<a href="/platforms/ios-swift/modules/">詳細を学ぶ</a>。</p>
+<p>Tealium iOSライブラリはモジュールに分割されています。リソースのフットプリントを小さく保つために、必要なモジュールのみをインストールすることをお勧めします。iOSで利用可能なモジュールについては、<a href="/ja/platforms/ios-swift/modules/">詳細を学ぶ</a>。</p>
 <p>Tealium for iOSライブラリは、Swift Package Manager、CocoaPods、またはCarthageでインストールします。</p>
 <h3 id="swift-package-manager推奨">Swift Package Manager（推奨）</h3>
 <p>Swift Package Managerは、Tealium Swiftライブラリをインストールする最も簡単で推奨される方法です：</p>
@@ -204,7 +204,7 @@
 <li>Xcodeプロジェクトで、<strong>TARGETS</strong>セクションの下でアプリターゲットを選択します。</li>
 <li><strong>Frameworks and Libraries</strong>に移動し、アプリターゲットに追加するTealium Swiftライブラリを選択します。</li>
 </ol>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>Swift Package Managerは、パッケージ内のターゲットを特定のプラットフォームに制限することはできません。例えば、iOSのみがサポートする<a href="/platforms/ios-swift/module-list/tag-management/"><code>TagManagement</code></a>などのモジュールは、非iOSターゲットにも利用可能になります。これらのモジュールは、SPMを介してXCode上の非iOSターゲットに技術的に利用可能になりますが、これらのターゲットにモジュールを追加すると、コンパイラが利用できないシステムライブラリのためにエラーをスローします。この制限は、iOS専用のモジュールはiOSアプリにのみ追加されるべきであるため、ユーザーに影響を与えるべきではありません。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Swift Package Managerは、パッケージ内のターゲットを特定のプラットフォームに制限することはできません。例えば、iOSのみがサポートする<a href="/ja/platforms/ios-swift/module-list/tag-management/"><code>TagManagement</code></a>などのモジュールは、非iOSターゲットにも利用可能になります。これらのモジュールは、SPMを介してXCode上の非iOSターゲットに技術的に利用可能になりますが、これらのターゲットにモジュールを追加すると、コンパイラが利用できないシステムライブラリのためにエラーをスローします。この制限は、iOS専用のモジュールはiOSアプリにのみ追加されるべきであるため、ユーザーに影響を与えるべきではありません。</p>
 <h3 id="cocoapods">CocoaPods</h3>
 <p>CocoaPodsを使用してTealium for iOSライブラリをインストールする方法（推奨）：</p>
 <ol>
@@ -313,10 +313,10 @@
 <li>Carthageは_すべて_のモジュールをビルドし、結果として得られた <code>.framework</code> ファイルをCarthageビルドディレクトリに出力します。</li>
 <li>必要のないモジュールを削除し、必要なモジュールをXcodeにドラッグします。</li>
 </ul>
-<p>推奨モジュールリストの詳細については、<a href="/platforms/ios-swift/modules/">モジュール</a>を参照してください。</p>
+<p>推奨モジュールリストの詳細については、<a href="/ja/platforms/ios-swift/modules/">モジュール</a>を参照してください。</p>
 <h2 id="初期化">初期化</h2>
-<p>Tealiumを初期化するには、<a href="/platforms/ios-swift/api/tealium-config/"><code>TealiumConfig</code></a> インスタンスを <a href="/platforms/ios-swift/api/tealium/#tealium"><code>Tealium()</code></a> コンストラクタに渡します。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>トラッキングヘルパークラスを使用して <a href="/platforms/ios-swift/api/tealium/#class-tealium"><code>Tealium</code></a> インスタンスを管理します。これにより、Tealium iOSライブラリへの単一のエントリーポイントが提供され、将来のアップグレードが簡素化されます。</p>
+<p>Tealiumを初期化するには、<a href="/ja/platforms/ios-swift/api/tealium-config/"><code>TealiumConfig</code></a> インスタンスを <a href="/ja/platforms/ios-swift/api/tealium/#tealium"><code>Tealium()</code></a> コンストラクタに渡します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>トラッキングヘルパークラスを使用して <a href="/ja/platforms/ios-swift/api/tealium/#class-tealium"><code>Tealium</code></a> インスタンスを管理します。これにより、Tealium iOSライブラリへの単一のエントリーポイントが提供され、将来のアップグレードが簡素化されます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TealiumHelper</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">let</span> shared = TealiumHelper()
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> config = TealiumConfig(account: <span style="color:#e6db74">&#34;ACCOUNT&#34;</span>,
@@ -370,7 +370,7 @@
 </ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>モバイルパブリッシュ構成はデフォルトで有効になっており、使用しない場合は無効にする必要があります。iQタグ管理でモバイルパブリッシュ構成を構成するか、<code>config.shouldUseRemotePublishSettings = false</code>を使用して無効にします。</p>
 <h2 id="ログレベル">ログレベル</h2>
-<p>ログレベルを構成するには、<code>TealiumConfig</code>インスタンスの<a href="/platforms/ios-swift/api/tealium-config/#loglevel"><code>logLevel</code></a>プロパティを構成します：</p>
+<p>ログレベルを構成するには、<code>TealiumConfig</code>インスタンスの<a href="/ja/platforms/ios-swift/api/tealium-config/#loglevel"><code>logLevel</code></a>プロパティを構成します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.logLevel = .debug <span style="color:#75715e">// または .info, .error, .fault, .silent</span>
 </span></span></code></pre></div><p>デバッグ目的であれば、<code>.debug</code>が推奨されます。</p>
 <p>デフォルトのログタイプは<a href="https://developer.apple.com/documentation/os/oslog"><code>OSLog</code></a>ですが、<code>TealiumConfig</code>オブジェクトの<code>logType</code>プロパティを更新することで<code>.print</code>を使用するように変更することができます：</p>
@@ -392,7 +392,7 @@
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="appdelegate-proxy">AppDelegate Proxy</h2>
-<p>デフォルトでは、Tealium Swiftライブラリには、アプリのAppDelegateのプロキシが含まれており、ディープリンクの自動トラッキングと<a href="/platforms/getting-started-mobile/trace/#mobile-trace-tool">モバイルトレースツール</a>を使用したTealiumトレースセッションの開始が自動的に行われます。この機能を使用したくない場合は、<code>TealiumConfig</code>インスタンスの<code>appDelegateProxyEnabled</code>プロパティを<code>false</code>に構成します。</p>
+<p>デフォルトでは、Tealium Swiftライブラリには、アプリのAppDelegateのプロキシが含まれており、ディープリンクの自動トラッキングと<a href="/ja/platforms/getting-started-mobile/trace/#mobile-trace-tool">モバイルトレースツール</a>を使用したTealiumトレースセッションの開始が自動的に行われます。この機能を使用したくない場合は、<code>TealiumConfig</code>インスタンスの<code>appDelegateProxyEnabled</code>プロパティを<code>false</code>に構成します。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.appDelegateProxyEnabled = <span style="color:#66d9ef">false</span>
 </span></span></code></pre></div><h2 id="イベントバッチング">イベントバッチング</h2>
 <p>イベントバッチングは、<code>TealiumConfig</code>インスタンス上でローカルに構成するか、<a href="/ja/iq-tag-management/profiles/creating-a-mobile-profile/">モバイルパブリッシュ構成</a>を使用して構成します。ローカル構成はリモート構成を上書きします。</p>
@@ -420,23 +420,23 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><a href="/platforms/ios-swift/api/tealium-config/#batchingenabled"><code>batchingEnabled</code></a></td>
+<td style="text-align:left"><a href="/ja/platforms/ios-swift/api/tealium-config/#batchingenabled"><code>batchingEnabled</code></a></td>
 <td style="text-align:left">イベントバッチングを有効または無効にします（デフォルトは<code>false</code>）。</td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="/platforms/ios-swift/api/tealium-config/#batchsize"><code>batchSize</code></a></td>
+<td style="text-align:left"><a href="/ja/platforms/ios-swift/api/tealium-config/#batchsize"><code>batchSize</code></a></td>
 <td style="text-align:left">一つのバッチリクエストに組み合わせるイベントの数を構成します（最大：10）。</td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="/platforms/ios-swift/api/tealium-config/#dispatchafter"><code>dispatchAfter</code></a></td>
+<td style="text-align:left"><a href="/ja/platforms/ios-swift/api/tealium-config/#dispatchafter"><code>dispatchAfter</code></a></td>
 <td style="text-align:left">キューがフラッシュされるイベント数を構成します。</td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="/platforms/ios-swift/api/tealium-config/#dispatchexpiration"><code>dispatchExpiration</code></a></td>
+<td style="text-align:left"><a href="/ja/platforms/ios-swift/api/tealium-config/#dispatchexpiration"><code>dispatchExpiration</code></a></td>
 <td style="text-align:left">バッチの有効期限を日数で構成します。デバイスが長期間オフラインの場合、この期間を超えるとイベントは削除されます。</td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="/platforms/ios-swift/api/tealium-config/#dispatchqueuelimit"><code>dispatchQueueLimit</code></a></td>
+<td style="text-align:left"><a href="/ja/platforms/ios-swift/api/tealium-config/#dispatchqueuelimit"><code>dispatchQueueLimit</code></a></td>
 <td style="text-align:left">キューイベントの最大数を構成します。この数に達し、キューがフラッシュされていない場合、最も古いイベントが削除されます。</td>
 </tr>
 </tbody>
@@ -491,7 +491,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年August月28日
+          <p>最終更新日 ::  2024年November月6日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

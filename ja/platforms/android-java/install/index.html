@@ -219,7 +219,7 @@
 </span></span></code></pre></div><h2 id="初期化">初期化</h2>
 <p>初期化するには、次の変更をアプリの<code>onCreate()</code>メソッドに加えます。</p>
 <ol>
-<li><a href="/platforms/android-java/api/tealium-config/#class-tealium-config"><code>Tealium.Config</code></a> オブジェクトのインスタンスを作成します。</li>
+<li><a href="/ja/platforms/android-java/api/tealium-config/#class-tealium-config"><code>Tealium.Config</code></a> オブジェクトのインスタンスを作成します。</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span> tealConfig <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">Config</span><span style="color:#f92672">.</span><span style="color:#a6e22e">create</span><span style="color:#f92672">(</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">,</span>
@@ -227,21 +227,21 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;PROFILE&#34;</span><span style="color:#f92672">,</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ENVIRONMENT&#34;</span><span style="color:#f92672">);</span>
 </span></span></code></pre></div><ol start="2">
-<li>追加の必要なメソッド ( <a href="/platforms/android-java/api/tealium-config/#setdatasourceid"><code>setDatasourceId()</code></a>など) を呼び出して、構成データを構成します。</li>
+<li>追加の必要なメソッド ( <a href="/ja/platforms/android-java/api/tealium-config/#setdatasourceid"><code>setDatasourceId()</code></a>など) を呼び出して、構成データを構成します。</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">setDatasourceId</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;DATASOURCE_ID&#34;</span><span style="color:#f92672">);</span>
 </span></span></code></pre></div><ol start="3">
-<li><a href="/platforms/android-java/api/life-cycle/#setupinstance"><code>setupInstance()</code></a> メソッドを呼び出して、アプリのライフサイクル インスタンスを構成します。</li>
+<li><a href="/ja/platforms/android-java/api/life-cycle/#setupinstance"><code>setupInstance()</code></a> メソッドを呼び出して、アプリのライフサイクル インスタンスを構成します。</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>LifeCycle<span style="color:#f92672">.</span><span style="color:#a6e22e">setupInstance</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;INSTANCE_NAME&#34;</span><span style="color:#f92672">,</span> config<span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
 </span></span></code></pre></div><ol start="4">
-<li><a href="/platforms/android-java/api/tealium/#createinstance"><code>createInstance()</code></a> メソッドを呼び出して Tealium インスタンスを作成し、構成インスタンスをコンストラクタ引数として渡します。</li>
+<li><a href="/ja/platforms/android-java/api/tealium/#createinstance"><code>createInstance()</code></a> メソッドを呼び出して Tealium インスタンスを作成し、構成インスタンスをコンストラクタ引数として渡します。</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealium <span style="color:#f92672">=</span> Tealium<span style="color:#f92672">.</span><span style="color:#a6e22e">createInstance</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;INSTANCE_NAME&#34;</span><span style="color:#f92672">,</span> tealConfig<span style="color:#f92672">);</span>
 </span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>Collectがバージョン5.5.1以降で有効になっている場合、データは<code>Tealium.Config</code>オブジェクトで提供されるプロファイルに送信されます。それより前のバージョンでは、データはデフォルトのプロファイル（<code>&quot;main&quot;</code>）に送信されます。</p>
 <h2 id="ログレベル">ログレベル</h2>
 <p>ログレベルはリモート公開構成により管理され、初期化の際に構成された環境から推測されます。</p>
-<p>バージョン 5.3.1 以降、次の例に示すように <a href="/platforms/android-java/api/tealium-config/#setforceoverrideloglevel"><code>setForceOverrideLogLevel()</code></a> メソッドを使用して、ログ レベルをローカルでオーバーライドすることができます。</p>
+<p>バージョン 5.3.1 以降、次の例に示すように <a href="/ja/platforms/android-java/api/tealium-config/#setforceoverrideloglevel"><code>setForceOverrideLogLevel()</code></a> メソッドを使用して、ログ レベルをローカルでオーバーライドすることができます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>tealConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">setForceOverrideLogLevel</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;LOG_LEVEL&#34;</span><span style="color:#f92672">);</span>
 </span></span></code></pre></div><h2 id="cookie">Cookie</h2>
 <p>モバイルプロファイルでTag Managementを有効にしている場合は、Cookieを有効にする必要があります。</p>
@@ -268,8 +268,8 @@
 <p class="note"><i class="fa fa-exclamation-triangle"></i>バージョン5.1.0以降では、<code>CookieManager</code>がデフォルトで<strong>有効</strong>になっています。バージョン5.0.4以前では、<code>CookieManager</code>がデフォルトで<strong>無効</strong>になっています。</p>
 <h2 id="イベントバッチ処理">イベントバッチ処理</h2>
 <p>イベントバッチ処理を有効にするには、<a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Creating-a-Mobile-Profile/ta-p/16328">モバイル公開構成</a>に移動して、バッチサイズを1より大きい値に構成します。キュー内のイベントの数がバッチサイズと等しくなると、イベントがディスパッチされます。</p>
-<p>イベントのディスパッチは、_バッチタイムアウト_構成に基づいてトリガーすることもできます。この構成により、バッチサイズに達していない場合でも、一定の時間が経過したときにキューがディスパッチされるようになります。バッチ タイムアウトを構成するには、メソッド <a href="/platforms/android-java/api/tealium-config/#setsecondsbeforebatchtimeout"><code>setSecondsBeforeBatchTimeout()</code></a>を呼び出します。</p>
-<p>バッチ サイズとバッチ タイムアウト チェックをオーバーライドするには、メソッド <a href="/platforms/android-java/api/tealium/#requestflush"><code>requestFlush()</code></a>を呼び出してキューを即座にフラッシュします。</p>
+<p>イベントのディスパッチは、_バッチタイムアウト_構成に基づいてトリガーすることもできます。この構成により、バッチサイズに達していない場合でも、一定の時間が経過したときにキューがディスパッチされるようになります。バッチ タイムアウトを構成するには、メソッド <a href="/ja/platforms/android-java/api/tealium-config/#setsecondsbeforebatchtimeout"><code>setSecondsBeforeBatchTimeout()</code></a>を呼び出します。</p>
+<p>バッチ サイズとバッチ タイムアウト チェックをオーバーライドするには、メソッド <a href="/ja/platforms/android-java/api/tealium/#requestflush"><code>requestFlush()</code></a>を呼び出してキューを即座にフラッシュします。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>デバイスがオフラインであるか、Consent Managerが有効になっている場合は、フラッシュオーバーライドを行っても効果がありません。</p>
 <h2 id="マルチプロセスアプリ">マルチプロセスアプリ</h2>
 <h4 id="android-9以降のマルチプロセスアプリケーション">Android 9以降のマルチプロセスアプリケーション</h4>
@@ -322,7 +322,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月15日
+          <p>最終更新日 ::  2024年November月6日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

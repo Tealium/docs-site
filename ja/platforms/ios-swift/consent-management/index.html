@@ -183,7 +183,7 @@
 <li>CCPAサポートが導入されました</li>
 <li>同意の有効期限オプション</li>
 </ul>
-<p><a href="/platforms/getting-started-mobile/consent-management/">同意管理</a>と同意ポリシーについて詳しく学びましょう。</p>
+<p><a href="/ja/platforms/getting-started-mobile/consent-management/">同意管理</a>と同意ポリシーについて詳しく学びましょう。</p>
 <h2 id="同意">同意</h2>
 <h3 id="ポリシーの構成">ポリシーの構成</h3>
 <p>初期化時に同意ポリシーを次のいずれかに構成します。</p>
@@ -206,7 +206,7 @@
 </span></span></code></pre></div><p>同意のステータスが変更されるたびに生成される同意ログイベントを構成するには：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.consentLoggingEnabled = <span style="color:#66d9ef">true</span>
 </span></span></code></pre></div><h3 id="同意の有効期限">同意の有効期限</h3>
-<p><a href="/platforms/ios-swift/api/tealium-config/#consentexpiry"><code>consentExpiry</code></a>プロパティを使用して、同意の選択の有効期限を構成します。</p>
+<p><a href="/ja/platforms/ios-swift/api/tealium-config/#consentexpiry"><code>consentExpiry</code></a>プロパティを使用して、同意の選択の有効期限を構成します。</p>
 <p>次の例では、同意管理ポリシーをGDPRに構成し、有効期限を90日に構成しています。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TealiumHelper</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> tealium: Tealium?
@@ -218,7 +218,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">//...</span>
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>同意が期限切れになったときにコールバックをトリガーするには、<a href="/platforms/ios-swift/api/tealium-config/"><code>TealiumConfig</code></a>オブジェクトでコールバックを定義します：</p>
+</span></span></code></pre></div><p>同意が期限切れになったときにコールバックをトリガーするには、<a href="/ja/platforms/ios-swift/api/tealium-config/"><code>TealiumConfig</code></a>オブジェクトでコールバックを定義します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TealiumHelper</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> tealium: Tealium?
 </span></span><span style="display:flex;"><span>
@@ -232,7 +232,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">//...</span>
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>または、<a href="/platforms/ios-swift/api/tealium-consent-manager/"><code>TealiumConsentManager</code></a>オブジェクトでコールバックを定義します：</p>
+</span></span></code></pre></div><p>または、<a href="/ja/platforms/ios-swift/api/tealium-consent-manager/"><code>TealiumConsentManager</code></a>オブジェクトでコールバックを定義します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>tealium = Tealium(config: config) { [<span style="color:#66d9ef">weak</span> <span style="color:#66d9ef">self</span>] <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">in</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">self</span>?.tealium?.consentManager?.onConsentExpiration = {
 </span></span><span style="display:flex;"><span>		print(<span style="color:#e6db74">&#34;同意が期限切れになりました&#34;</span>)
@@ -244,7 +244,7 @@
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">self</span>.tealium?.consentManager?.userConsentStatus = .consented
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="カテゴリごとの部分的な同意の構成">カテゴリごとの部分的な同意の構成</h3>
-<p>部分的な同意を構成するには、同意カテゴリのサブセットを指定します。これにより、<a href="/platforms/ios-swift/api/tealium-consent-manager/#userconsentstatus"><code>userConsentStatus</code></a>が<code>.consented</code>に暗黙的に構成されます。</p>
+<p>部分的な同意を構成するには、同意カテゴリのサブセットを指定します。これにより、<a href="/ja/platforms/ios-swift/api/tealium-consent-manager/#userconsentstatus"><code>userConsentStatus</code></a>が<code>.consented</code>に暗黙的に構成されます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">grantPartialConsent</span>(categories: [TealiumConsentCategories]) {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">self</span>.tealium?.consentManager?.userConsentCategories = categories
 </span></span><span style="display:flex;"><span>}
@@ -263,7 +263,7 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// メソッドを実装...</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="2">
-<li><code>TealiumConfig</code>オブジェクトの<a href="/platforms/ios-swift/api/tealium-config/#consentpolicy"><code>consentPolicy</code></a>プロパティを使用して、新しいカスタムポリシーを<code>.custom</code>列挙型と関連付けたタイプを使用して構成します。</li>
+<li><code>TealiumConfig</code>オブジェクトの<a href="/ja/platforms/ios-swift/api/tealium-config/#consentpolicy"><code>consentPolicy</code></a>プロパティを使用して、新しいカスタムポリシーを<code>.custom</code>列挙型と関連付けたタイプを使用して構成します。</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>config.consentPolicy = .custom(SomeCustomConsentPolicy.<span style="color:#66d9ef">self</span>)
 </span></span></code></pre></div><p>カスタム同意ポリシーが実装されたら、必要に応じて<code>ConsentPolicy</code>で利用可能な次のプロパティをオーバーライドします。</p>
@@ -431,7 +431,7 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="ユースケース">ユースケース</h2>
 <h3 id="完全な同意">完全な同意</h3>
-<p>次の例では、ユーザーに同意ポリシーに同意または拒否するオプションを提供し、ユーザーが同意または拒否した後、選択した同意ポリシーのルールが適用されます。<a href="/platforms/getting-started-mobile/consent-management/#consent-policies">同意ポリシー</a>について詳しく学びましょう。</p>
+<p>次の例では、ユーザーに同意ポリシーに同意または拒否するオプションを提供し、ユーザーが同意または拒否した後、選択した同意ポリシーのルールが適用されます。<a href="/ja/platforms/getting-started-mobile/consent-management/#consent-policies">同意ポリシー</a>について詳しく学びましょう。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">setConsentStatusSimple</span>(<span style="color:#66d9ef">_</span> consented: Bool) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> status: TealiumConsentStatus = consented ? .consented: .notConsented
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">self</span>.tealium?.consentManager?.userConsentStatus = status
@@ -443,7 +443,7 @@
 </figure>
 <h3 id="カテゴリごとの部分的な同意gdpr">カテゴリごとの部分的な同意（GDPR）</h3>
 <p>カテゴリベースの同意では、ユーザーは全カテゴリのリストから各カテゴリを明示的に選択する必要があります。</p>
-<p>次のヘルパーメソッドは、<a href="/platforms/ios-swift/api/tealium-consent-manager/"><code>TealiumConsentManager</code></a> APIからメソッドを呼び出します：</p>
+<p>次のヘルパーメソッドは、<a href="/ja/platforms/ios-swift/api/tealium-consent-manager/"><code>TealiumConsentManager</code></a> APIからメソッドを呼び出します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">updateConsentPreferences</span>(<span style="color:#66d9ef">_</span> dict: [String: Any]) {
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">var</span> tealiumConsentCategories = [TealiumConsentCategories]()
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> categories = dict[<span style="color:#e6db74">&#34;consentCategories&#34;</span>] <span style="color:#66d9ef">as</span>? [String] {
@@ -559,7 +559,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年May月15日
+          <p>最終更新日 ::  2024年November月6日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
