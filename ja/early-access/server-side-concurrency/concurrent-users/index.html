@@ -118,6 +118,7 @@
       </li><li class="relative w-100 fw8 f5  active">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2 primary-color expanded " data-target=".server-side-concurrency">サーバーサイドの並行性</a>
         <ul class="pl2 bl b--primary bw1 server-side-concurrency desktopmenu animated fadeIn list "><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/early-access/server-side-concurrency/about/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">について</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/server-side-concurrency/save-publish/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">保存と公開</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/server-side-concurrency/profile-switcher/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">プロファイル切り替え</a></li><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/early-access/server-side-concurrency/concurrent-users/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".">同時接続ユーザー</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -181,14 +182,14 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、Tealiumが同時接続ユーザーからのサーバーサイドの変更をどのように管理しているかについて説明します。
+      この記事では、Tealiumが同時接続ユーザーからのサーバーサイドの変更をどのように管理するかについて説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
   <h2 id="概要">概要</h2>
-<p>サーバーサイドプラットフォームは、同時にサーバーサイドプラットフォームにログインしているユーザーからの変更を管理するためのサポートを提供しています。</p>
+<p>サーバーサイドプラットフォームは、同時にサーバーサイドプラットフォームにログインしている同時接続ユーザーからの変更を管理するためのサポートを提供しています。</p>
 <p>以下の機能がサポートされています：</p>
 <ul>
 <li>ユーザーはUIでアクティブな共同作業者を表示します。</li>
@@ -202,16 +203,16 @@
 <li><strong>あなたの変更</strong>：現在のバージョンに対して行った未保存の変更。</li>
 </ul>
 <h2 id="仕組み">仕組み</h2>
-<p>ログインしていて同時接続ユーザーからの変更を予想するとき、どのバージョンで作業しているかを知ることが重要です。現在のバージョンは、アカウントとプロフィールの下の見出しに表示されます：</p>
+<p>ログインしていて同時接続ユーザーからの変更を予想するとき、どのバージョンで作業しているかを知ることが重要です。現在のバージョンは、アカウントとプロファイルの下の見出しに表示されます：</p>
 <figure><a class="slb" href="/images/server-side/save-publish/server-side-concurrency-heading.png"><img src="/images/server-side/save-publish/server-side-concurrency-heading.png"
          alt="どのバージョンを使用していますか？"
          title="どのバージョンを使用していますか？"/>
     </a>
 </figure>
-<p>変更を加えたいときは、プロフィールスイッチャーを使用して現在公開されているバージョンをロードし、予定している変更のための新しいバージョンを作成します。すべての構成変更を新しいバージョンに行います。変更が完了し、テストが終わったら、新しいバージョンをプロダクションに公開します。</p>
-<p>バージョンに変更を加えると、ログインしているすべてのユーザーに通知されます、たとえあなたが変更を保存したり公開したりしていなくても。変更を保存した後、同時接続ユーザーには、最新の更新を保証するために、それらの変更を自分たちのバージョンに統合する必要があることが通知されます。</p>
+<p>変更を加えたいときは、プロファイルスイッチャーを使用して現在公開されているバージョンをロードし、予定している変更のための新しいバージョンを作成します。すべての構成変更を新しいバージョンに行います。変更が完了し、テストが終わったら、新しいバージョンをプロダクションに公開します。</p>
+<p>バージョンに変更を加えると、すべてのログインユーザーに通知されます。変更を保存または公開していなくてもです。変更を保存すると、同時接続ユーザーには、最新の更新を保証するために、それらの変更を自分のバージョンに統合する必要があることが通知されます。</p>
 <h2 id="他のアクティブユーザーの表示">他のアクティブユーザーの表示</h2>
-<p>ログインすると、作業している製品エリアが左のナビゲーションバーで青色にハイライト表示されます。もし他のユーザーもログインしており、あなたのバージョンでアクティブであれば、そのユーザーのイニシャルが画面上部に一意の背景色の円として表示されます。同じ一意の色が、他のユーザーが現在作業している製品のエリアをハイライト表示するために使用されます。以下の例を参照してください：</p>
+<p>ログインすると、作業している製品エリアが左のナビゲーションバーで青くハイライト表示されます。もし他のユーザーもログインしており、あなたのバージョンでアクティブであれば、そのユーザーのイニシャルが一意の背景色の円として画面の上部に表示されます。同じ一意の色が、他のユーザーが現在作業している製品のエリアをハイライト表示するために使用されます。以下の例を参照してください：</p>
 <figure><a class="slb" href="/images/server-side/whiteui-udh-concurrent-user-management-udh-3-users-logged-in.png"><img src="/images/server-side/whiteui-udh-concurrent-user-management-udh-3-users-logged-in.png"
          alt="3人のユーザーがログインしています"
          title="3人のユーザーがログインしています"/>
@@ -220,8 +221,8 @@
 <h2 id="別のユーザーが変更を開始する">別のユーザーが変更を開始する</h2>
 <p>もし別のユーザーがあなたが使用しているバージョンに変更を加え始めたら、進行中の未保存の変更についてのメッセージが表示されます：</p>
 <figure><a class="slb" href="/images/server-side/save-publish/another-user-is-making-changes.png"><img src="/images/server-side/save-publish/another-user-is-making-changes.png"
-         alt="変更確認メッセージ"
-         title="変更確認メッセージ"/>
+         alt="変更の確認メッセージ"
+         title="変更の確認メッセージ"/>
     </a>
 </figure>
 <p>メッセージを確認するには、<strong>了解</strong>をクリックします。</p>
@@ -238,7 +239,7 @@
 <li>そのオブジェクトに対するアクション（更新、作成、または削除）。</li>
 <li>変更を行ったユーザー。</li>
 </ul>
-<p class="tip"><i class="fa fa-info-circle"></i>最新の公開バージョンで更新されたアイテムを編集した場合、公開時にあなたの変更がそれらの更新を上書きします。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>あなたの変更と最新の公開バージョンが同じアイテムを変更した場合、あなたのバージョンを公開すると、公開バージョンの既存のアイテムがあなたのものに置き換えられます。</p>
 <h2 id="別のユーザーが公開する">別のユーザーが公開する</h2>
 <p>別のユーザーがバージョンを公開すると、あなたがどのバージョンにいても、その公開について通知するメッセージが表示されます：</p>
 <figure><a class="slb" href="/images/server-side/save-publish/another-user-published.png"><img src="/images/server-side/save-publish/another-user-published.png"
