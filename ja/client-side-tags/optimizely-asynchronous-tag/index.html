@@ -433,21 +433,21 @@
 <p><strong>注意:</strong> 両方の方法は、<code>utag.js</code>ファイルがページ上で非同期にコード化されていることを前提としています。</p>
 <h2 id="方法1-推奨-optimizely非同期タグをバンドルしすべてのページでロードする">方法1 (推奨): Optimizely非同期タグをバンドルし、すべてのページでロードする</h2>
 <p>この方法を推奨するのは、タグがページ内の他のもののロードをブロックしないからです。</p>
-<h3 id="ステップ1-すべてのページでロードするタグのバンドル機能を有効にする">ステップ1: すべてのページでロードするタグのバンドル機能を有効にする。</h3>
+<h3 id="ステップ1-すべてのページでロードされるタグのバンドル機能を有効にする">ステップ1: すべてのページでロードされるタグのバンドル機能を有効にする。</h3>
 <ol>
 <li>管理メニューで、<strong>公開構成を構成する</strong>をクリックします。<strong>公開構成</strong>ダイアログが表示されます。</li>
-<li><strong>すべてのページでロードするタグをバンドルする</strong>トグルを<strong>ON</strong>にします。これにより、タグが<code>utag.js</code>とバンドルされ、ブラウザによるネットワーク呼び出しの数が減少します。</li>
+<li><strong>すべてのページでロードするタグをバンドルする</strong>トグルを<strong>ON</strong>にします。これにより、タグが<code>utag.js</code>と一緒にバンドルされ、ブラウザが行うネットワーク呼び出しの数が減少します。</li>
 </ol>
 <h3 id="ステップ2-optimizely非同期タグを追加し構成する">ステップ2: Optimizely非同期タグを追加し、構成する</h3>
-<p>このタグはTealiumのタグマーケットプレイスにあります。タグマーケットプレイスは、多数のベンダータグが揃っています。詳細については、<a href="/ja/iq-tag-management/tags/tag-marketplace/about/">Tag Marketplace</a>を参照して、Tealium iQプロファイルにタグを追加する方法を学んでください。</p>
+<p>このタグはTealiumのタグマーケットプレイスにあります。これは、多数のベンダータグが揃っている場所です。詳しくは、<a href="/ja/iq-tag-management/tags/tag-marketplace/about/">Tag Marketplace</a>を参照して、Tealium iQプロファイルにタグを追加する方法を学んでください。</p>
 /ja/iq-tag-management/tags/manage/
 <p>構成する手順は以下の通りです：</p>
 <ol>
-<li>プロジェクトIDを入力します。これはOptimizelyが送信するスクリプトタグの末尾の数字です。<br>
+<li>プロジェクトIDを入力します。これは、Optimizelyが送信するスクリプトタグの末尾の数字です。<br>
 例えば： <code>&lt;script src=&quot;//cdn.optimizely.com/js/123456789.js&quot;&gt;&lt;/script&gt;</code></li>
 <li><strong>Advanced Settings</strong>リストから<strong>Wait Flag = No</strong>を選択します。</li>
 <li><strong>Load Rules</strong>タブに進み、デフォルトの<strong>Load on All Pages</strong>ルールをチェックします。</li>
-<li><strong>Data Mappings</strong>タブに進み、データを送信したい先をマップします。詳細については、<a href="/ja/iq-tag-management/data-mappings/about/">Data Mappings</a>を参照して、データソースをタグの先にマップする方法を学んでください。</li>
+<li><strong>Data Mappings</strong>タブに進み、データを送信したい先をマップします。詳しくは、<a href="/ja/iq-tag-management/data-mappings/about/">Data Mappings</a>を参照して、データソースをタグの先にマップする方法を学んでください。</li>
 </ol>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>非同期タグでE-Commerceデータを追跡する予定の場合、そのデータを自動的にマップするために<a href="/ja/iq-tag-management/extensions/extensions-list/e-commerce-extension/">E-Commerce Extension</a>を使用することをお勧めします。</p>
 <table>
@@ -487,16 +487,16 @@
 </tbody>
 </table>
 <h3 id="ステップ3-プロファイルを保存公開する">ステップ3: プロファイルを保存/公開する。</h3>
-<p><strong>重要</strong>: Asyncタグができるだけ早く発火するように、<code>utag.js</code>ファイルがページ内で可能な限り高い位置にコード化されていることを確認してください。utag.jsをHTMLの&lt;body&gt;タグの上部に配置することをお勧めします。TealiumはOptimizelyのJavaScriptファイルをロードし、残りの部分を処理します。</p>
+<p><strong>重要</strong>: 非同期タグができるだけ早く発火するように、<code>utag.js</code>ファイルがページ内で可能な限り高い位置にコード化されていることを確認してください。utag.jsをHTMLの&lt;body&gt;タグの上部に配置することをお勧めします。TealiumはOptimizelyのJavaScriptファイルをロードし、残りの部分を処理します。</p>
 <h2 id="方法2-optimizelyをブロッキングタグとして実行する">方法2: Optimizelyをブロッキングタグとして実行する</h2>
 <p>Optimizelyは通常、ページ上で同期的に実行されることを好みます。これにより、他のもの（例えば、あなたの分析ツール）が実行される前にテストを決定することができます。しかし、Optimizelyが十分に早く実行され、それでも非同期である唯一の方法は、その<code>.js</code>ライブラリを別の場所から提供することです。これにより、Optimizely非同期タグはブロッキングタグとなり、その後の非同期スクリプト（例えば、<code>utag.10.js</code>）は、<a href="/ja/iq-tag-management/templates/manage/">blocking Tag</a>が完了するまでロードされません。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>まだ最新版を使用していない場合は、<code>utag.js</code>のバージョンをアップグレードしてください（<a href="/ja/platforms/javascript/release-notes/">utag.js Release Notes</a>を参照）。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>まだ最新版を使用していない場合は、<code>utag.js</code>のバージョンをアップグレードしてください。詳細については、<a href="/ja/release-notes/?filter=tealium-universal-tag">utag.js Release Notes</a>を参照してください。</p>
 <ol>
 <li>上記のステップ＃2を繰り返して、Optimizely非同期タグを追加し、構成します。</li>
-<li><strong>Advanced Settings</strong>をドロップダウンし、<strong>Custom Script Source</strong>フィールドに<code>.js</code>ライブラリの場所を入力します。</li>
+<li><strong>Advanced Settings</strong>を展開し、<strong>Custom Script Source</strong>フィールドに<code>.js</code>ライブラリの場所を入力します。</li>
 <li>プロファイルを<strong>保存/公開</strong>します。</li>
 </ol>
-<p>以上です！いくつかの簡単な違いがありますが、これによりOptimizelyファイルのロード方法と、Optimizelyの後に他のタグがロードされる方法が大幅に変わります。</p>
+<p>以上です！いくつかの簡単な違いがありますが、これによりOptimizelyファイルがロードされる方法と、Optimizelyの後に他のタグがロードされる方法が大きく変わります。</p>
 
 </div>
 
@@ -572,7 +572,7 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%96%B9%E6%B3%951-%E6%8E%A8%E5%A5%A8-optimizely%E9%9D%9E%E5%90%8C%E6%9C%9F%E3%82%BF%E3%82%B0%E3%82%92%E3%83%90%E3%83%B3%E3%83%89%E3%83%AB%E3%81%97%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%A7%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B" href="javascript:void(0)">方法1 (推奨): Optimizely非同期タグをバンドルし、すべてのページでロードする</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%971-%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%A7%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B%E3%82%BF%E3%82%B0%E3%81%AE%E3%83%90%E3%83%B3%E3%83%89%E3%83%AB%E6%A9%9F%E8%83%BD%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B" href="javascript:void(0)">ステップ1: すべてのページでロードするタグのバンドル機能を有効にする。</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%971-%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%A7%E3%83%AD%E3%83%BC%E3%83%89%E3%81%95%E3%82%8C%E3%82%8B%E3%82%BF%E3%82%B0%E3%81%AE%E3%83%90%E3%83%B3%E3%83%89%E3%83%AB%E6%A9%9F%E8%83%BD%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B" href="javascript:void(0)">ステップ1: すべてのページでロードされるタグのバンドル機能を有効にする。</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%972-optimizely%E9%9D%9E%E5%90%8C%E6%9C%9F%E3%82%BF%E3%82%B0%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%97%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B" href="javascript:void(0)">ステップ2: Optimizely非同期タグを追加し、構成する</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%973-%E3%83%97%E3%83%AD%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%BF%9D%E5%AD%98%E5%85%AC%E9%96%8B%E3%81%99%E3%82%8B" href="javascript:void(0)">ステップ3: プロファイルを保存/公開する。</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%96%B9%E6%B3%952-optimizely%E3%82%92%E3%83%96%E3%83%AD%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0%E3%82%BF%E3%82%B0%E3%81%A8%E3%81%97%E3%81%A6%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B" href="javascript:void(0)">方法2: Optimizelyをブロッキングタグとして実行する</a></li>

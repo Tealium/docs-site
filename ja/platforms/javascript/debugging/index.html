@@ -88,10 +88,9 @@
   </ul>
   <ul class="list pa0" data-nav-section="javascript"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><span class="pb2">JavaScript (Web)</span>
         <ul data-level="1" class="javascript desktopmenu animated fadeIn list pl0 mt2"><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/javascript/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".utag-install">インストール</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/javascript/track/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".javascript-track">トラッキング</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/javascript/data-layer/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">データレイヤー</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/javascript/universal-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">ユニバーサルタグ（utag.js）</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/javascript/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".utag-install">インストール</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/javascript/universal-data-object/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">ユニバーサルデータオブジェクト (utag_data)</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/javascript/data-layer-object/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">データレイヤーオブジェクト (b)</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/javascript/single-page-applications/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">シングルページアプリケーション</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
@@ -146,119 +145,136 @@
 
   
     <p class="f4 fw3 lh-copy">
-      utag.jsから開始されるトラッキングコールのデバッグの基礎について解説します。
+      トラッキングコールのデバッグの基本を学びましょう。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p><code>utag.view()</code>関数と<code>utag.link()</code>関数は、それぞれページビューとイベントのトラッキングに使用します。この記事では、これらの関数のデバッグ方法を説明して、関数が呼び出される仕組みとタイミングや渡されるデータを確認します。</p>
+  <p>関数<code>utag.view()</code>と<code>utag.link()</code>は、それぞれページビューとイベントを追跡するために使用されます。この記事では、これらの関数がどのように、いつ呼び出され、どのようなデータが処理されているかをデバッグする方法を示します。</p>
 <h2 id="デバッグモード">デバッグモード</h2>
-<p>デバッグモードを有効にするには、お好みのブラウザでデバッグツールを開き、次のコマンドを実行します。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>document.<span style="color:#a6e22e">cookie</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utagdb=true&#34;</span>;
-</span></span></code></pre></div><p>このCookieにより<code>utag.js</code>内でデバッグモードが有効になり、有用な出力がコンソールに生成されます。</p>
-<p><img src="/ja/images/platforms/javascript/console-output.png" alt="コンソールの出力結果" title="utag.js debug console output"></p>
-<p>デバッグモードが有効になった後、ページでトラッキング対象のアクションを起こすと、コンソールにデバッグログが表示されます。コンソールの出力結果で<code>trigger: view</code>または<code>trigger: link</code>を調べてください。</p>
-<p>次の例は、イベントがトラッキングされた後のコンソールの出力結果を示しています。</p>
-<p><img src="/ja/images/platforms/javascript/debugging-console-utag-link.png" alt="デバッグ時のコンソール -utag.link" title="Debug Console utag.link"></p>
-<p><code>trigger:view</code>または<code>trigger:link</code>の下の行をクリックして、イベントデータオブジェクトを展開したり折りたたんだりします。</p>
+<p>デバッグモードを有効にするには、ブラウザの開発者コンソールを開き、以下のコマンドを実行します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>document.<span style="color:#a6e22e">cookie</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utagdb=true&#34;</span>;
+</span></span></code></pre></div><p>このクッキーはデバッグモードをオンにし、コンソールに有用な出力を生成します。</p>
+<figure><a class="slb" href="/images/platforms/javascript/console-output.png"><img src="/images/platforms/javascript/console-output.png"
+         alt="コンソール出力"
+         title="コンソール出力" width="1000" height="500"/>
+    </a>
+</figure>
+<p>デバッグモードが有効になると、トラッキングコールが発生したときにコンソールにログステートメントが表示されます。これらのステートメントをコンソール出力で探してみてください：</p>
+<pre tabindex="0"><code class="language-none" data-lang="none">trigger: view
+trigger: link
+</code></pre><p>以下の例は、イベントが追跡された後のコンソールでの表示方法を示しています：</p>
+<figure><a class="slb" href="/images/platforms/javascript/debugging-console-utag-link.png"><img src="/images/platforms/javascript/debugging-console-utag-link.png"
+         alt="デバッグコンソール utag.link"
+         title="デバッグコンソール utag.link" width="492" height="322"/>
+    </a>
+</figure>
+<p><code>trigger:view</code>または<code>trigger:link</code>の後の行をクリックして、イベントデータオブジェクトを展開または折りたたみます。</p>
 <h2 id="ブレークポイント">ブレークポイント</h2>
-<p>より詳細なデバッグでは、トラッキングコールが行われるときにコードを中断するよう<code>utag.js</code>にブレークポイントを構成すると役立ちます。こうすると、渡されるデータを検討できるほか、スタックトレースを調べてそのコールの起点を確認することができます。 </p>
-<p>Chromeのデベロッパーツールを使用してブレークポイントを構成するには：</p>
+<p>より深いデバッグのために、<code>utag.js</code>にブレークポイントを構成して、トラッキングコールが発生したときにコードを一時停止すると便利です。ブレークポイントを使用して、トラッキングデータオブジェクトを調査したり、コールがどこから発生したかを確認するためのスタックトレースを調査します。</p>
+<p>Chrome DevToolsを使用してブレークポイントを構成する方法は以下の通りです：</p>
 <ol>
-<li>
-<p>Chromeのデベロッパーツールで、[Sources]に移動して、<code>utag.js</code>を開きます。</p>
-</li>
-<li>
-<p>ウィンドウの左下にある波括弧をクリックして、コードを読みやすく展開します（pretty print）。</p>
-</li>
-<li>
-<p><code>return this.track(</code>を含む行を見つけ、行番号をクリックしてブレークポイントを構成します。
-<img src="/ja/images/platforms/javascript/debugging-utag-code.png" alt="utagのブレークポイント" title="utag breakpoint"></p>
-</li>
-<li>
-<p>メインウィンドウに戻り、トラッキングコールのいずれかを呼び出すアクションを実行します。トラッキングコールが発生すると、コードを調べることができるよう、ブレークポイントのいずれかによってアクションが停止します。</p>
-</li>
-<li>
-<p>デベロッパーツールの右側には、[Watch Expression]と呼ばれるセクションがあります。<strong>+<strong>記号をクリックしてウォッチ式を追加します。「<code>a</code>」と入力して</strong>Enter</strong>キーを押すと、この変数のウォッチ式が追加されます。</p>
-</li>
-<li>
-<p>パラメータ<code>a</code>に含まれるオブジェクトを展開して、トラッキングコールに渡されたデータを表示します。これが、拡張機能、タグ配信ルール、マッピングで処理する必要のあるデータです。 </p>
-</li>
+<li>DevToolsを開き、<strong>Sources</strong>タブに移動し、ファイル<code>utag.js</code>を開きます。</li>
+<li><code>return this.track(</code>という行を見つけて、その行番号をクリックしてブレークポイントを構成します：<br>
+<figure><a class="slb" href="/images/platforms/javascript/debugging-utag-code.png"><img src="/images/platforms/javascript/debugging-utag-code.png"
+               alt="utagブレークポイント"
+               title="utagブレークポイント" width="385" height="63"/>
+          </a>
+      </figure></li>
+<li>メインウィンドウに戻り、トラッキングコールをトリガーするアクションを実行します。トラッキングコールが実行されると、コードはブレークポイントで一時停止します。</li>
+<li>右パネルで<strong>Watch</strong>ペインを展開し、**+**記号をクリックしてウォッチ式を追加します。<code>a</code>と入力し、<strong>Enter</strong>をクリックしてこの変数のウォッチ式を追加します。</li>
+<li>パラメータ<code>a</code>に含まれるオブジェクトを展開して、トラッキングコールに渡されたデータを表示します。このデータは、拡張機能、ロードルール、データマッピングで利用可能です。</li>
+<li>右パネルで<strong>Call Stack</strong>ペインを展開して、トラッキングコールがどこから発生したかを確認します。</li>
 </ol>
-<p>Chromeのデベロッパーツールでのブレークポイントの構成の詳細については、<a href="https://developers.google.com/web/tools/chrome-devtools/javascript/breakpoints">こちら</a>を参照してください。</p>
-<p class="tip"><i class="fa fa-info-circle"></i>この方法のメリットの1つとして、デベロッパーツールの[Sources]タブでレポートされる[Call Stack]を使用してトラッキングコールの起点を調査できる点があります。</p>
-<p><code>utag.link()</code>のコールの位置を探す例を次に示します。</p>
-<p><img src="/ja/images/platforms/javascript/utag-link-call-stack.png" alt="utag-link-call-stack.png" title="utag-link-call-stack.png"></p>
-<p>上の画像は、<code>utag.link()</code>のコールを捉えるために<code>utag.js</code>に構成されたブレークポイントです。（2）をクリックすると、ソースコード内で行われた<code>utag.link()</code>のコールが（左に）表示されます。 </p>
-<p>これで次の3つの点をデバッグできるようになりました。</p>
+<p>以下は、<code>utag.link()</code>コールの位置を探す例です：</p>
+<figure><a class="slb" href="/images/platforms/javascript/utag-link-call-stack.png"><img src="/images/platforms/javascript/utag-link-call-stack.png"
+         alt="utag linkコールスタック"
+         title="utag linkコールスタック" width="1120" height="622"/>
+    </a>
+</figure>
+<p>この例は、<code>utag.link()</code>コールをデバッグするために<code>utag.js</code>に構成されたブレークポイントを示しています。項目(2)をクリックすると、ソースコード内で行われる<code>utag.link()</code>コールが表示されます。</p>
+<p>これで、以下の3つのことをデバッグすることができました：</p>
 <ul>
-<li>ブレークポイントにヒットしたかどうか。ヒットした場合は、その関数が正しくトリガーされるように構成されています。</li>
-<li>ブレークポイントにヒットした後は、<code>utag.view()</code>または<code>utag.link()</code>が呼び出された際に送信されたデータを確認できるようになりました。 </li>
-<li><code>utag.view()</code>または<code>utag.link()</code>のコールの実際の構成を確認できるようになりました。 </li>
+<li>ブレークポイントがヒットしたか？もしヒットしたなら、その関数は正しくトリガーされるように構成されています。</li>
+<li>ブレークポイントがヒットしたので、<code>utag.view()</code>または<code>utag.link()</code>が呼び出されたときにどのようなデータが送信されたかを確認することができました。</li>
+<li><code>utag.view()</code>または<code>utag.link()</code>コールの実際の構成を確認することができました。</li>
 </ul>
-<p>これは、特定のイベントがトリガーされたときに渡された適切なデータが表示されていない場合に有用です。関数で送信されるデータが間違っている可能性があります。</p>
-<h2 id="コンソールの出力結果">コンソールの出力結果</h2>
-<p>表示される各種出力結果の詳細を以下に示します。出力は実装に固有のため、このリストですべてが網羅されているわけではありません。また、ログ出力は更新や改良によって変わる可能性が常にあります。</p>
+<p>これは、特定のイベントがトリガーされたときに正しいデータが渡されない場合に役立ちます。関数で送信されるデータが間違っている可能性があります。</p>
+<p>詳細については、<a href="https://developer.chrome.com/docs/devtools/javascript/reference/">Chrome DevTools: JavaScript debugging</a>を参照してください。</p>
+<h2 id="コンソール出力">コンソール出力</h2>
+<p>以下の表は、コンソールに表示される重要なデバッグステートメントの一部を説明しています。あなたのサイトのデバッグ出力は、<code>utag.js</code>のバージョンや特定の構成により、若干異なる場合があります。</p>
 <table>
 <thead>
 <tr>
-<th>出力結果</th>
+<th>デバッグステートメント</th>
 <th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>Pre-INIT</code></td>
-<td>プリローダーをスコープとする拡張機能が実行中です</td>
+<td><strong>Pre Loader</strong>にスコープされた拡張機能が実行されます。</td>
+</tr>
+<tr>
+<td><code>PINIT</code></td>
+<td><strong>Before Load Rules</strong>にスコープされた拡張機能が実行され、ロードルールが評価され、タグがロードされます。</td>
 </tr>
 <tr>
 <td><code>utag.loader.RD</code></td>
-<td>ライブラリがUDO、メタデータ、DOMデータなどのデータを読み取ります</td>
+<td>ページからデータレイヤー変数が読み取られます（[data layer variable types](/ja/iq-tag-management/data-layer/data-layer-variables/を参照）。</td>
 </tr>
 <tr>
-<td><code>utag.load.INIT</code></td>
-<td>標準の<code>utag.js</code>ファイルのロジックが開始されます</td>
+<td><code>utag.loader.INIT</code></td>
+<td><strong>After Load Rules</strong>にスコープされた拡張機能が実行され、タグがロードされます。</td>
 </tr>
 <tr>
 <td><code>All Tags EXTENSIONS</code></td>
-<td>すべてのタグをスコープとする拡張機能が実行中です</td>
+<td><strong>After Load Rules</strong>にスコープされた拡張機能が実行されます。</td>
 </tr>
 <tr>
-<td><code>utag.loader.INIT: waiting 1</code></td>
-<td>タグがDOM Readyになるのを待っています</td>
+<td><code>utag.loader.INIT: waiting &lt;UID&gt;</code></td>
+<td>タグ（UID）がDOM Readyでロードされるように構成され、キューに追加されます。</td>
 </tr>
 <tr>
-<td><code>READY</code></td>
-<td>ライブラリはDOM Readyになる準備ができています</td>
+<td><code>READY:utag.cfg.readywait</code></td>
+<td>DOM Readyが発生し、<code>PINIT</code>が実行されます。</td>
 </tr>
 <tr>
-<td><code>WQ</code></td>
-<td>待機するよう構成されているタグの数を示します（たとえば、<code>&quot;services-dang/tiq-as&quot;</code>プロファイルで4つのタグが有効になっていて、4つすべてが待機に構成されています）</td>
+<td><code>READY:utag.cfg.wq</code></td>
+<td>DOM Readyが発生し、キューに入れられたタグが処理されます。</td>
+</tr>
+<tr>
+<td><code>WQ: #</code></td>
+<td>DOM Readyを待つキューに入れられたタグの数。</td>
 </tr>
 <tr>
 <td><code>Attach to head</code></td>
-<td>タグスクリプトがソースコードに追加されています</td>
+<td>タグスクリプトがソースコードに追加されます。</td>
 </tr>
 <tr>
-<td><code>utag.loader.WAIT</code></td>
-<td>指定されたタグがブラウザに読み込まれますが、タグをトリガーするためにDOM Readyになるまで待機します</td>
+<td><code>utag.loader.LOAD &lt;UID&gt;</code></td>
+<td>タグ（UID）がページにロードされました。</td>
 </tr>
 <tr>
-<td><code>utag.loader.LOAD</code></td>
-<td>タグの<code>u.send</code>関数が実行され、タグにデータを送信します</td>
-</tr>
-<tr>
-<td><code>Sending: 1</code></td>
-<td>タグがベンダーに対するコールをトリガーしています</td>
-</tr>
-<tr>
-<td><code>SETFORCE:WAIT</code></td>
-<td>DOM Readyのためタグはまもなくトリガーされます</td>
+<td><code>Sending: &lt;UID&gt;</code></td>
+<td>タグ（UID）がベンダーへのコールをトリガーしています。</td>
 </tr>
 <tr>
 <td><code>trigger:view</code></td>
-<td>トラッキングコールが行われました</td>
+<td><code>utag.view()</code>が呼び出されました。</td>
+</tr>
+<tr>
+<td><code>trigger:link</code></td>
+<td><code>utag.link()</code>が呼び出されました。</td>
+</tr>
+<tr>
+<td><code>trigger:called before tags loaded</code></td>
+<td>タグがページにロードされる前にトラッキングコールが発生しました。トラッキングコールはキューに入れられ、タグのロード後に実行されます。</td>
+</tr>
+<tr>
+<td><code>utag.handler.INIT</code></td>
+<td>キューに入れられたタグがトリガーされます。</td>
 </tr>
 </tbody>
 </table>
@@ -322,7 +338,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2024年November月8日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -338,7 +354,7 @@
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%A2%E3%83%BC%E3%83%89" href="javascript:void(0)">デバッグモード</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%96%E3%83%AC%E3%83%BC%E3%82%AF%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88" href="javascript:void(0)">ブレークポイント</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%AB%E3%81%AE%E5%87%BA%E5%8A%9B%E7%B5%90%E6%9E%9C" href="javascript:void(0)">コンソールの出力結果</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%AB%E5%87%BA%E5%8A%9B" href="javascript:void(0)">コンソール出力</a></li>
               </nav>
   </aside></nav>
 

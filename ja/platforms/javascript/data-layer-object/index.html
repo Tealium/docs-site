@@ -88,10 +88,9 @@
   </ul>
   <ul class="list pa0" data-nav-section="javascript"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><span class="pb2">JavaScript (Web)</span>
         <ul data-level="1" class="javascript desktopmenu animated fadeIn list pl0 mt2"><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/javascript/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".utag-install">インストール</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/javascript/track/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".javascript-track">トラッキング</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/javascript/data-layer/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">データレイヤー</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/javascript/universal-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">ユニバーサルタグ（utag.js）</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/javascript/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".utag-install">インストール</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/javascript/universal-data-object/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">ユニバーサルデータオブジェクト (utag_data)</a></li><li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/javascript/data-layer-object/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".">データレイヤーオブジェクト (b)</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/javascript/single-page-applications/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">シングルページアプリケーション</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
@@ -155,11 +154,11 @@
   <h2 id="仕組み">仕組み</h2>
 <p><code>b</code>変数は、データレイヤーを表す<code>utag.js</code>内のJavaScriptオブジェクトです。ページの読み込みやトラッキング呼び出し中に処理されるデータレイヤーオブジェクトを保持しています。</p>
 <p>Tealium iQでは、データレイヤー変数は通常、ドロップダウンリストを使用して参照されますが、<code>b</code>変数を使用してJavaScriptコード内で参照することもできます。</p>
-<p>例えば、<strong>Set Data Values</strong>拡張の一般的な使用例は、変数がまだ構成されていない場合にデフォルト値を構成することです。拡張は次のようになるかもしれません：</p>
+<p>例えば、<strong>Set Data Values</strong>拡張の一般的な使用法は、変数がまだ構成されていない場合にデフォルト値を構成することです。拡張は次のようになるかもしれません：</p>
 <figure><a class="slb" href="/images/platforms/javascript/b-object-extension-example.png"><img src="/images/platforms/javascript/b-object-extension-example.png"/>
     </a>
 </figure>
-<p><code>utag.js</code>では、この拡張は次のようにJavaScriptコードで表現されます：</p>
+<p><code>utag.js</code>では、この拡張は次のようにJavaScriptコードで表されます：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">b</span>[<span style="color:#e6db74">&#39;page_type&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;undefined&#39;</span>) {
@@ -170,21 +169,21 @@
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><code>b</code>変数はデータレイヤーオブジェクトへのローカル参照であり、<code>b['page_type']</code>はUDO変数<code>page_type</code>への参照です。同様に、拡張機能でカスタムJavaScriptを使用するときは、<code>b</code>を使用してデータレイヤーオブジェクト内の任意の変数を参照できます。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i><code>utag.js</code>バージョン4.39以前では、トラッキング呼び出し中の<code>b</code>オブジェクトの内容は<code>utag.data</code>の完全なコピーです。この更新については<a href="/ja/platforms/javascript/release-notes/#440---442">リリース4.40</a>で詳しく説明しています。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><code>utag.js</code>バージョン4.39以前では、トラッキング呼び出し中の<code>b</code>オブジェクトの内容は<code>utag.data</code>の完全なコピーです。この更新については<a href="/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2016-04-01">リリース4.40</a>で詳しく説明しています。</p>
 <h3 id="使用場所">使用場所</h3>
-<p><code>b</code>オブジェクトは<code>utag.js</code>の特定のセクション内のローカルスコープ変数であり、次の拡張スコープで利用可能です：</p>
+<p><code>b</code>オブジェクトは<code>utag.js</code>の特定のセクション内のローカルスコープ変数であり、以下の拡張スコープで利用可能です：</p>
 <ul>
 <li><strong>Before Load Rules</strong></li>
 <li><strong>After Load Rules</strong></li>
 <li><strong>Tag Scope</strong></li>
 <li><strong>After Tags</strong></li>
 </ul>
-<p>次のスコープでは<code>b</code>オブジェクトを参照することはできません：</p>
+<p><code>b</code>オブジェクトは以下のスコープでは参照できません：</p>
 <ul>
 <li><strong>Pre Loader</strong><br>
-<strong>Pre Loader</strong>にスコープされた拡張は、<code>b</code>オブジェクトが作成される前に実行されるため、<code>b</code>オブジェクトを参照することはできません。</li>
+<strong>Pre Loader</strong>にスコープされた拡張は、<code>b</code>オブジェクトが作成される前に実行されるため、<code>b</code>オブジェクトを参照できません。</li>
 <li><strong>DOM Ready</strong><br>
-<strong>DOM Ready</strong>にスコープされた拡張は、メインスコープの外部で実行されるため、<code>b</code>オブジェクトを参照することはできません。</li>
+<strong>DOM Ready</strong>にスコープされた拡張は、メインスコープの外部で実行されるため、<code>b</code>オブジェクトを参照できません。</li>
 </ul>
 <h3 id="シナリオページの読み込み">シナリオ：ページの読み込み</h3>
 <p>標準的なページの読み込みでは、<code>b</code>オブジェクトはページ上のすべてのデータ、<a href="/ja/platforms/javascript/universal-data-object/">ユニバーサルデータオブジェクト</a>を含むコレクションです。</p>
@@ -204,7 +203,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">utag</span>.<span style="color:#a6e22e">view</span>({ <span style="color:#a6e22e">tealium_event</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cart_add&#34;</span> })
 </span></span></code></pre></div><p>この例では、<code>b['page_type']</code>が定義されていないことに注意が必要です（<code>utag_data</code>で定義されていても）これは、トラッキング呼び出しで渡されたデータオブジェクトの一部ではないからです。</p>
 <p>ページから他のタイプのデータレイヤー変数を参照するには、<a href="#usage">使用法</a>を参照してください。</p>
-<p class="tip"><i class="fa fa-info-circle"></i>トラッキング呼び出しで<code>utag_data</code>の変数を含めるには、<a href="/ja/iq-tag-management/save-publish/publish-configuration/">公開構成の基本変数構成</a>を使用してください。</p>
+<p class="tip"><i class="fa fa-info-circle"></i>トラッキング呼び出しで<code>utag_data</code>から変数を含めるには、<a href="/ja/iq-tag-management/save-publish/publish-configuration/">公開構成の基本変数構成</a>を使用してください。</p>
 <h3 id="タグスコープの拡張">タグスコープの拡張</h3>
 <p>特定のタグにスコープされた拡張では、<code>b</code>オブジェクトはデータレイヤーオブジェクトのローカルコピーです。これは、<code>b</code>オブジェクトの値を他のタグに影響を与えずに変更できることを意味します。</p>
 <p>これらの例では、データレイヤー変数<code>order_id</code>がJavaScript Code拡張を使用して各タグでカスタマイズされています。各拡張では、<code>b</code>は<code>order_id</code>の同じ値から始まります：</p>
@@ -215,7 +214,7 @@
     </a>
 </figure>
 <h2 id="使用法">使用法</h2>
-<p>タグテンプレートや拡張機能で<code>b</code>オブジェクト変数を参照するには、各変数タイプの正しい構文を使用する必要があります。</p>
+<p>タグテンプレートや拡張で<code>b</code>オブジェクト変数を参照するには、各変数タイプの正しい構文を使用する必要があります。</p>
 <p>各変数タイプの構文は次のとおりです：</p>
 <table>
 <thead>
@@ -320,7 +319,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2024年November月13日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

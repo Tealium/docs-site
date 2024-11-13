@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "3",
+        reading_time  : "4",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -556,6 +556,60 @@ Z RFC 822 Time Zone
 &#39; Single quote
 </code></pre><p>Reference (with examples): <a href="https://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html">SimpleDateFormat Java Class</a></p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>If the string includes a <code>T</code>, ensure that you include single quotes before and after the <code>T</code> in the expression (for example, a <code>2024-08-22T10:24:58.905</code> string will use the expression <code>yyyy-MM-dd'T'HH:mm:ss.SSS</code>).</p>
+<h3 id="validation">Validation</h3>
+<p>When an event is received, Tealium validates any date attributes to ensure that the value is a date. If the value represents a date, it is converted to the date format, as follows:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Input</th>
+<th style="text-align:left">Parsed Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ISO8601 with milliseconds UTC-7</td>
+<td style="text-align:left"><code>&quot;2023-09-26T16:12:17.310-07:00&quot;</code></td>
+<td style="text-align:left"><code>1695769937000</code></td>
+</tr>
+<tr>
+<td style="text-align:left">ISO8601 with milliseconds UTC+7</td>
+<td style="text-align:left"><code>&quot;2023-09-26T16:12:17.310+07:00&quot;</code></td>
+<td style="text-align:left"><code>1695719537000</code></td>
+</tr>
+<tr>
+<td style="text-align:left">ISO8601 with UTC-7</td>
+<td style="text-align:left"><code>&quot;2023-09-26T16:12:17-07:00&quot;</code></td>
+<td style="text-align:left"><code>1695719537000</code></td>
+</tr>
+<tr>
+<td style="text-align:left">ISO8601 at UTC with milliseconds</td>
+<td style="text-align:left"><code>&quot;2023-09-26T23:10:17.241Z&quot;</code></td>
+<td style="text-align:left"><code>1695769817000</code></td>
+</tr>
+<tr>
+<td style="text-align:left">ISO8601 at UTC</td>
+<td style="text-align:left"><code>&quot;2023-09-26T23:10:17Z&quot;</code></td>
+<td style="text-align:left"><code>1695769817000</code></td>
+</tr>
+<tr>
+<td style="text-align:left">String milliseconds since epoch</td>
+<td style="text-align:left"><code>&quot;1695769817123&quot;</code></td>
+<td style="text-align:left"><code>1695769817123</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Numeric milliseconds since epoch</td>
+<td style="text-align:left"><code>1695769817123</code></td>
+<td style="text-align:left"><code>1695769817123</code></td>
+</tr>
+<tr>
+<td style="text-align:left">String</td>
+<td style="text-align:left"><code>&quot;March 30, 2019&quot;</code></td>
+<td style="text-align:left">If a string date is not converted to the date format using the <a href="#convert-from-date-format">Convert from date format</a> enrichment, the value is invalid and the attribute is removed from the event.</td>
+</tr>
+</tbody>
+</table>
+<p>If the value is not a date, the attribute is removed from the event.</p>
 <h3 id="size-limits">Size Limits</h3>
 <p>The size of a each date attribute is limited to the following range:</p>
 <ul>
@@ -563,7 +617,7 @@ Z RFC 822 Time Zone
 <li>Maximum: <code>+292278994-08-17T07:12:55.807Z</code></li>
 </ul>
 <p>These attributes are also limited by the maximum size of the profile after encryption and compression (400 KB).</p>
-<h2 id="date-enrichments">Date enrichments</h2>
+<h2 id="enrichments">Enrichments</h2>
 <h3 id="capture-date">Capture date</h3>
 <p>The Capture Date enrichment sets the attribute to the current timestamp at the time of an event condition. This enrichment is available for scopes: event, visit and visitor.</p>
 <p>For example, to capture the Last Purchase Date, use this enrichment with a rule that identifies a purchase event.</p>
@@ -661,7 +715,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 28, 2024 
+          <p>This page was last updated:  November 13, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -677,8 +731,9 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#date-formatter" href="javascript:void(0)">Date formatter</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#size-limits" href="javascript:void(0)">Size Limits</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#date-enrichments" href="javascript:void(0)">Date enrichments</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#validation" href="javascript:void(0)">Validation</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#size-limits" href="javascript:void(0)">Size Limits</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enrichments" href="javascript:void(0)">Enrichments</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#capture-date" href="javascript:void(0)">Capture date</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-date" href="javascript:void(0)">Set date</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#remove-date" href="javascript:void(0)">Remove date</a></li>

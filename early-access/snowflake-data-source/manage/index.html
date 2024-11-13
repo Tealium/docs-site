@@ -238,20 +238,28 @@ To create a new connection, enter the following account details on the <strong>N
 </ul>
 </li>
 <li>Click <strong>Save</strong>.</li>
-<li>In the <strong>Connection Configuration</strong> screen, enter your Snowflake account password and then click <strong>Establish Connection</strong>.</li>
+<li>In the <strong>Connection Configuration</strong> screen, click <strong>Establish Connection</strong>.</li>
 <li>After you successfully connect to Snowflake, select the data source table from the <strong>Table Selection</strong> drop-down list. To import data from multiple Snowflake tables, create a view in Snowflake and select it from the drop-down list. For more information, see <a href="https://docs.snowflake.com/en/user-guide/views-introduction">Snowflake: Overview of Views</a>.</li>
-<li>Toggle on <strong>Enable Processing</strong> if you want the Snowflake data source to begin processing immediately.</li>
-<li>Click <strong>Next</strong>.</li>
+<li>Click <strong>Continue</strong>.</li>
 </ol>
-<h2 id="step-2-select-query-setting">Step 2: Select query setting</h2>
-<p>In the <strong>Query Settings</strong> screen, select the appropriate query mode for your Snowflake table or view.</p>
-<p>When you select <strong>Timestamp</strong> or <strong>Incrementing</strong>, you must list the name of one column to use to detect either new and modified rows or new rows only. If you select <strong>Timestamp + Incrementing</strong> you must list two columns, a timestamp column and a strictly incrementing column, to detect new and modified rows.</p>
-<p>For more information, see <a href="/early-access/snowflake-data-source/about/#query-settings">About Snowflake data source &gt; Query settings</a>.</p>
-<p>When you are done, click <strong>Next</strong>.</p>
-<h2 id="step-3-configure-the-sql-query">Step 3: Configure the SQL query</h2>
+<h2 id="step-2-enable-processing">Step 2: Enable processing</h2>
+<p>Toggle on <strong>Enable Processing</strong> if you want the Snowflake data source to begin processing immediately after you save and publish your profile.</p>
+<p>When you are done, click <strong>Continue</strong>.</p>
+<h2 id="step-3-configure-the-query">Step 3: Configure the query</h2>
+<p>In the <strong>Query Mode and Configuration</strong> screen, select the appropriate query mode for your Snowflake table or view and optionally include a SQL <code>WHERE</code> clause to process only those records that match your custom condition.</p>
+<ol>
+<li>Select a query mode.<br>
+The query modes determine which column(s) in your Snowflake table or view will be used to detect new and/or modified rows.
+<ul>
+<li>If you select <strong>Timestamp + Incrementing</strong> (recommended) you must list two columns, a timestamp column and a strictly incrementing column, to detect new and modified rows.</li>
+<li>If you select <strong>Timestamp</strong> or <strong>Incrementing</strong>, you must list the name of one column to use to detect either new and modified rows or new rows only.<br>
+For more information, see <a href="/early-access/snowflake-data-source/about/#query-modes">About Snowflake data source &gt; Query modes</a>.</li>
+</ul>
+</li>
+<li>Configure the query.
 <ol>
 <li>
-<p>In the <strong>Query &gt; Select Columns</strong> section, select the table or view columns to import to Tealium. To change the Snowflake table or view, click <strong>Back</strong> to return to <a href="#step-1-establish-a-snowflake-connection">Step 1: Establish a Snowflake connection</a>.</p>
+<p>In the <strong>Query &gt; Select Columns</strong> section, select the table or view columns to import to Tealium. To change the Snowflake table or view, click <strong>Previous</strong> and return to <a href="#step-1-establish-a-snowflake-connection">Step 1: Establish a Snowflake connection</a>.</p>
 </li>
 <li>
 <p>(Optional) To add custom conditions or additional filters, include a SQL <code>WHERE</code> clause. <p class="note"><i class="fa fa-exclamation-triangle"></i>The <code>WHERE</code> clause does not support subqueries from multiple tables. To import data from multiple Snowflake tables, create a view in Snowflake and select the view in the data source configuration. For more information, see <a href="https://docs.snowflake.com/en/user-guide/views-introduction">Snowflake: Overview of Views</a>.</p></p>
@@ -259,9 +267,9 @@ To create a new connection, enter the following account details on the <strong>N
 <li>
 <p>Click <strong>Test Query</strong> to validate your SQL query and preview the results.</p>
 </li>
-<li>
-<p>Click <strong>Next</strong>.</p>
+</ol>
 </li>
+<li>Click <strong>Continue</strong>.</li>
 </ol>
 <h2 id="step-4-map-columns">Step 4: Map columns</h2>
 <p>Use the column mapping table to map pre-configured column labels to event attributes or manually enter the column labels for mapping. Each row from Snowflake is processed as an event. Columns not mapped to an event attribute are ignored.</p>
@@ -270,17 +278,17 @@ To create a new connection, enter the following account details on the <strong>N
 <h2 id="step-5-map-visitor-id-attributes">Step 5: Map visitor ID attributes</h2>
 <p>To use your Snowflake data with AudienceStream, map your data to visitor ID attributes. Select the mapped event attribute that represents a visitor ID and map it to the corresponding visitor ID attribute.</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i><strong>Visitor ID Mapping in AudienceStream</strong> is enabled by default. Disabling visitor ID mapping may cause errors in visitor stitching. For more information, see <a href="/server-side/data-sources/visitor-identification/">Visitor Identification using Tealium Data Sources</a>.</p>
-<p>When you are done, click <strong>Next</strong>.</p>
+<p>When you are done, click <strong>Continue</strong>.</p>
 <h2 id="step-6-summary">Step 6: Summary</h2>
-<p>In this final step, view the summary, make any needed corrections, and then save and publish your profile. To edit your configuration, click <strong>Back</strong> to return to the step where you want to make changes.</p>
+<p>In this final step, view the summary, make any needed corrections, and then save and publish your profile. To edit your configuration, click <strong>Previous</strong> to return to the step where you want to make changes.</p>
 <ol>
 <li>View the event attribute and visitor ID mappings.</li>
-<li>Click <strong>Create</strong> to create the data source and exit the configuration screen. The new data source is now listed in the <strong>Data Sources</strong> dashboard.</li>
+<li>Click <strong>Finish</strong> to create the data source and exit the configuration screen. The new data source is now listed in the <strong>Data Sources</strong> dashboard.</li>
 <li>Click <strong>Save/Publish</strong> to save and publish your changes.</li>
 </ol>
 <p>To check the status of import activity, navigate to the <strong>Data Sources</strong> dashboard and expand the data source.</p>
 <h2 id="edit-a-snowflake-data-source">Edit a Snowflake data source</h2>
-<p>To change a Snowflake data source, navigate to the <strong>Data Sources</strong> dashboard and click the edit icon next to the configuration you want to change. From the <strong>Edit Connection</strong> screen, you can edit Snowflake connection, query, and mapping configurations.</p>
+<p>To change a Snowflake data source, navigate to the <strong>Data Sources</strong> dashboard and click the edit icon next to the configuration you want to change. From the <strong>Edit Connection</strong> screen, you can edit Snowflake connection, processing settings, query, and mapping configurations.</p>
 
 </div>
 
@@ -341,7 +349,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  August 21, 2024 
+          <p>This page was last updated:  November 8, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -356,8 +364,8 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-1-establish-a-snowflake-connection" href="javascript:void(0)">Step 1: Establish a Snowflake connection</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-2-select-query-setting" href="javascript:void(0)">Step 2: Select query setting</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-3-configure-the-sql-query" href="javascript:void(0)">Step 3: Configure the SQL query</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-2-enable-processing" href="javascript:void(0)">Step 2: Enable processing</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-3-configure-the-query" href="javascript:void(0)">Step 3: Configure the query</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-4-map-columns" href="javascript:void(0)">Step 4: Map columns</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-5-map-visitor-id-attributes" href="javascript:void(0)">Step 5: Map visitor ID attributes</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#step-6-summary" href="javascript:void(0)">Step 6: Summary</a></li>

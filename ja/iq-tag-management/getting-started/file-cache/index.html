@@ -105,7 +105,7 @@
         <a href="/ja/iq-tag-management/getting-started/install/self-host/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-gs-install-self-hosting">utag.jsの自己ホスティング</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/getting-started/install/load-utag-china/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-gs-load-utag-china">中国でutag.jsをロードする</a></li></ul>
       </li><li data-level="3" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/getting-started/file-cache/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".iq-how-files-are-cached">ファイルのキャッシュ方法</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/getting-started/file-cache/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".iq-how-files-are-cached">ファイルがどのようにキャッシュされるか</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/getting-started/best-practices/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-gs-best-practices">ベストプラクティス</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".data-layer">データレイヤー</a>
@@ -422,7 +422,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Tealiumから提供されるファイルは、<code>Cache-Control</code>ヘッダーを構成して、ブラウザが新しいバージョンをチェックする前にファイルをどのくらいの時間キャッシュするかを指示します。キャッシュの期間（&ldquo;time to live&quot;またはTTLとも呼ばれる）が経過すると、ブラウザはヘッダーリクエストをTealiumのサーバーに送信して、ファイルが変更されたかどうかをチェックします。変更があった場合、ブラウザは最新のファイルを取得し、それ以外の場合はキャッシュされたファイルを引き続き使用します。</p>
+  <p>Tealiumから提供されるファイルは、<code>Cache-Control</code>ヘッダーを構成して、ブラウザが新しいバージョンをチェックする前にファイルをどのくらいの時間キャッシュするかを指示します。キャッシュの時間期間（&ldquo;time to live&quot;とも呼ばれるTTL）が経過すると、ブラウザはファイルが変更されたかどうかを確認するためにTealiumのサーバーにヘッダーリクエストを送信します。変更があった場合、ブラウザは最新のファイルを取得し、それ以外の場合はキャッシュされたファイルを引き続き使用します。</p>
 <p>ユニバーサルタグ（<code>utag.js</code>）は、Tealium iQタグ管理で公開すると、ウェブサイトの訪問が可能な限り早く最新バージョンの<code>utag.js</code>ファイルを取得できるように、TTLが短く構成されています。</p>
 <h2 id="ブラウザのキャッシュ時間">ブラウザのキャッシュ時間</h2>
 <p>以下は、iQタグ管理から公開されたファイルのブラウザキャッシュの有効期限です：</p>
@@ -449,12 +449,12 @@
 </tbody>
 </table>
 <h2 id="ユニバーサルタグのキャッシュ">ユニバーサルタグのキャッシュ</h2>
-<p>ユニバーサルタグのバージョン4.26以前では、すべての<code>utag.js</code>ファイルが公開後に更新されました。公開後、<code>utag.js</code>ファイルはキャッシュを無効化し、ブラウザが変更されていないファイルを取得するために不必要なネットワーク呼び出しを行うことがあり、ページの読み込みパフォーマンスに影響を与えました。</p>
-<p>バージョン<a href="/ja/platforms/javascript/release-notes/">4.26+</a>からは、新規および変更されたファイルのみが更新され、変更されていないファイルはブラウザのキャッシュに残ります。これにより、ネットワーク呼び出しの回数が減少し、ページの読み込みパフォーマンスが向上します。</p>
-<p class="tip"><i class="fa fa-info-circle"></i><code>utag.js</code>テンプレートの更新についての詳細は、ナレッジベースの記事<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">Best Practices for Updating to the Latest Version of utag.js</a>を参照してください。</p>
+<p>ユニバーサルタグのバージョン4.26以前では、すべての<code>utag.js</code>ファイルが公開後に更新されました。公開後、<code>utag.js</code>ファイルはキャッシュを無効にし、ブラウザが変更されていないファイルを取得するために不必要なネットワーク呼び出しを行うことがあり、ページの読み込みパフォーマンスに影響を与えました。</p>
+<p>バージョン<a href="/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2014-01-01">4.26+</a>からは、ネットワーク呼び出しの回数が減り、ページの読み込みパフォーマンスが向上しました。</p>
+<p class="tip"><i class="fa fa-info-circle"></i><code>utag.js</code>テンプレートの更新についての詳細は、ナレッジベースの記事<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">utag.jsの最新バージョンへの更新のベストプラクティス</a>を参照してください。</p>
 <h2 id="仕組み">仕組み</h2>
-<p>キャッシュの挙動は、公開されたファイルのURLに追加される<code>utv</code>という名前のタイムスタンプパラメーターによって制御されます。このキャッシュバスティングパラメーターは、ファイルのURLを変更し、ブラウザにファイルのキャッシュバージョンを更新させます。ユニバーサルタグのバージョン4.39+では、<code>utv</code>パラメーターの値にはタイムスタンプとバージョン番号が含まれます。</p>
-<p>ユニバーサルタグのバージョンによるキャッシュバスティングパラメーターの値：</p>
+<p>キャッシュの挙動は、公開されたファイルのURLに追加される<code>utv</code>という名前のタイムスタンプパラメーターによって制御されます。このキャッシュバスティングパラメーターは、ファイルのURLを変更し、ブラウザがファイルのキャッシュバージョンを更新するように強制します。ユニバーサルタグのバージョン4.39+では、<code>utv</code>パラメーターの値にはタイムスタンプとバージョン番号が含まれます。</p>
+<p>ユニバーサルタグのバージョンごとのキャッシュバスティングパラメーターの値：</p>
 <table>
 <thead>
 <tr>
@@ -477,7 +477,7 @@
 </tbody>
 </table>
 <p>変更されていない<code>utag.#.js</code>ファイルは、公開間でタイムスタンプの値が変わらないため、ブラウザのキャッシュに残ります。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/ja/iq-tag-management/extensions/extensions-list/currency-converter-extension/">Currency Converter Extension</a>はキャッシュされません。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i><a href="/ja/iq-tag-management/extensions/extensions-list/currency-converter-extension/">通貨換算エクステンション</a>はキャッシュされません。</p>
 <h2 id="例">例</h2>
 <p>以下の例では、UID #4のタグを変更または追加し、タグ#1を非活性化し、タグ#2とタグ#3には変更を加えません。</p>
 <figure><a class="slb" href="/images/iq-tag-management/example-tags.png"><img src="/images/iq-tag-management/example-tags.png"
@@ -485,7 +485,7 @@
          title="example tags"/>
     </a>
 </figure>
-<p>ウェブコンソールの公開URLビューでは、新規または変更されたファイルであるため、<code>utag.4.js</code>がサーバーから取得されました。<code>utag.2.js</code>と<code>utag.3.js</code>は変更されていなかったため、キャッシュから取得されました。<code>utag.1.js</code>は非活性化されたため、ページには読み込まれませんでした。</p>
+<p>ウェブコンソールの公開URLビューでは、新規または変更されたファイルであるため、<code>utag.4.js</code>がサーバーから取得されたことがわかります。<code>utag.2.js</code>と<code>utag.3.js</code>は変更されていなかったため、キャッシュから取得されました。<code>utag.1.js</code>は非活性化されたため、ページには読み込まれませんでした。</p>
 <figure><a class="slb" href="/images/iq-tag-management/timestamps-on-qa.png"><img src="/images/iq-tag-management/timestamps-on-qa.png"
          alt="Timestamps on QA"
          title="Timestamps on QA"/>
@@ -551,7 +551,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2024年November月13日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

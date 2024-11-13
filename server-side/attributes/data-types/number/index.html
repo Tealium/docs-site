@@ -553,10 +553,49 @@
 <figure><a class="slb" href="/images/server-side/scope-3checks.png"><img src="/images/server-side/scope-3checks.png"/>
     </a>
 </figure>
+<h3 id="validation">Validation</h3>
+<p>When an event is received, Tealium validates any number attributes to ensure that the value is a number. If the value represents a number, it is converted to the number format, as follows:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Input</th>
+<th style="text-align:left">Parsed Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">JSON Native Numbers</td>
+<td style="text-align:left"><code>42</code></td>
+<td style="text-align:left"><code>42</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Stringified numbers</td>
+<td style="text-align:left"><code>“42.5”</code></td>
+<td style="text-align:left"><code>42.5</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Stringified scientific notation</td>
+<td style="text-align:left"><code>“1e6”</code></td>
+<td style="text-align:left"><code>1000000</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Stringified alternate bases</td>
+<td style="text-align:left"><code>“0xDEADBEEF”</code></td>
+<td style="text-align:left"><code>3735928559</code></td>
+</tr>
+<tr>
+<td style="text-align:left">String</td>
+<td style="text-align:left"><code>&quot;twenty-five&quot;</code></td>
+<td style="text-align:left">Invalid value, attribute removed from event.</td>
+</tr>
+</tbody>
+</table>
+<p>If the value is not a number, the attribute is removed from the event.</p>
 <h3 id="size-limits">Size Limits</h3>
 <p>Decimal values of number attributes must be in the range of <code>-1.7976931348623157×10^308</code> to <code>1.7976931348623157×10^308</code>. Integer values of number attributes must be in the range of <code>-2147483647</code> to <code>2147483647</code>.</p>
 <p>Number attributes are also limited by the maximum size of the profile after encryption and compression (400 KB).</p>
-<h2 id="number-enrichments">Number enrichments</h2>
+<h2 id="enrichments">Enrichments</h2>
 <h3 id="increment-or-decrement-number-enrichment">Increment or decrement number enrichment</h3>
 <p>This enrichment modifies a number with a positive value (increment) or a negative value (decrement). The modifying value can be a separate number attribute or a constant value.</p>
 <p>For example, to calculate the Lifetime Total Value (LTV) of a visitor&rsquo;s orders use this enrichment to increment the attribute with the value of the <code>order_total</code> attribute each time the <code>purchase</code> event occurs.</p>
@@ -795,7 +834,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 31, 2024 
+          <p>This page was last updated:  November 13, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -810,8 +849,9 @@ No</button>
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#how-it-works" href="javascript:void(0)">How it works</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#size-limits" href="javascript:void(0)">Size Limits</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#number-enrichments" href="javascript:void(0)">Number enrichments</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#validation" href="javascript:void(0)">Validation</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#size-limits" href="javascript:void(0)">Size Limits</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enrichments" href="javascript:void(0)">Enrichments</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#increment-or-decrement-number-enrichment" href="javascript:void(0)">Increment or decrement number enrichment</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-ratio" href="javascript:void(0)">Set ratio</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#set-product" href="javascript:void(0)">Set product</a></li>

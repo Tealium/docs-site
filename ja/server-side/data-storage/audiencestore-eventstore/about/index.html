@@ -252,7 +252,7 @@
         <a href="/ja/server-side/attributes/data-types/tally/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">テリー属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/badge/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-badge-attribute">バッジ属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/funnel/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-funnel-attribute">ファネル属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/data-types/boolean/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-boolean-attribute">ブーリアン属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/boolean/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-boolean-attribute">ブール属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/popular-badges/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-popular-badges">人気のバッジ</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/number/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-number-attribute">数値属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/set-of-strings/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-set-of-strings-attribute">文字列のセット属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -537,11 +537,11 @@
 <h2 id="前提条件">前提条件</h2>
 <ul>
 <li>Tealium DataAccessが有効になっている必要があります。</li>
-<li>TealiumのS3バケットに訪問プロファイルデータを送信するには、アクティブなAudienceStoreコネクタが必要です。詳細については、<a href="/ja/server-side-connectors/audiencestore-connector/">AudienceStore Connector Setup Guide</a>を参照してください。</li>
+<li>TealiumのS3バケットに訪問プロファイルデータを送信するには、アクティブなAudienceStoreコネクタが必要です。詳細については、<a href="/ja/server-side-connectors/audiencestore-connector/">AudienceStoreコネクタ構成ガイド</a>を参照してください。</li>
 <li>イベントデータをTealiumのS3バケットに送信するには、少なくとも1つのアクティブなイベントフィードが必要です。</li>
 <li>オーディエンス名は128文字以下である必要があります。それ以上の長さのオーディエンス名は切り詰められ、エラーが発生する可能性があります。</li>
 </ul>
-<h2 id="仕組み">仕組み</h2>
+<h2 id="動作方法">動作方法</h2>
 <p>AudienceStoreとEventStoreは、Tealiumが提供するAmazon S3バケットに顧客がアクセス可能な半構造化の訪問データとイベントデータを保存するサービスです。データは以下の表に示すように保存されます：</p>
 <table>
 <thead>
@@ -563,20 +563,20 @@
 </table>
 <p>両方のサービスは、ファイルが100MB（圧縮前）に達するか、1時間が経過すると、どちらが先に来ても、新しいファイルをS3に書き込みます。ほとんどの場合、それよりもはるかに頻繁にファイルが書き込まれます。</p>
 <h3 id="データ保持">データ保持</h3>
-<p>EventStoreとAudienceStoreに保存された半構造化データは、契約で指定された期間、通常は30日間、Amazon S3で利用可能です。</p>
+<p>EventStoreとAudienceStoreに保存された半構造化データは、契約で指定された期間、Amazon S3で利用可能なままです。</p>
 <h3 id="eventstoreの有効化">Eventstoreの有効化</h3>
-<p>イベントデータをEventStoreに保存するには、1つ以上のイベントフィードでEventStoreを有効にします。詳細については、<a href="/ja/server-side/data-storage/audiencestore-eventstore/configure-eventstore/">Configure EventStore</a>を参照してください。</p>
+<p>イベントデータをEventStoreに保存するには、1つ以上のイベントフィードでEventStoreを有効にします。詳細については、<a href="/ja/server-side/data-storage/audiencestore-eventstore/configure-eventstore/">EventStoreの構成</a>を参照してください。</p>
 <p>EventStoreがイベントフィードで有効になっていると、EventDBはEventStoreをデータソースとして使用し、EventStoreのS3バケットからデータをTealiumが提供するAmazon Redshiftデータベースにインポートします。</p>
 <h3 id="audiencestoreの有効化">AudienceStoreの有効化</h3>
-<p>オーディエンスデータをAudienceStoreに保存するには、オーディエンス用のAudienceStoreコネクタを追加します。詳細については、<a href="/ja/server-side/data-storage/audiencestore-eventstore/configure-audiencestore/">Configure AudienceStore</a>を参照してください。</p>
-<p>AudienceStoreはAudienceDBを有効にするための前提条件ではありません。これらのサービスは独立して動作します。詳細については、<a href="/ja/server-side/data-storage/audiencedb-eventdb/about/">About AudienceDB and EventDB</a>を参照してください。</p>
+<p>オーディエンスデータをAudienceStoreに保存するには、オーディエンス用のAudienceStoreコネクタを追加します。詳細については、<a href="/ja/server-side/data-storage/audiencestore-eventstore/configure-audiencestore/">AudienceStoreの構成</a>を参照してください。</p>
+<p>AudienceStoreはAudienceDBを有効にするための前提条件ではありません。これらのサービスは独立して動作します。詳細については、<a href="/ja/server-side/data-storage/audiencedb-eventdb/about/">AudienceDBとEventDBについて</a>を参照してください。</p>
 <h3 id="audiencestoreのファイルパス">AudienceStoreのファイルパス</h3>
 <p>AudienceStoreのデータファイルは、アカウント名、プロファイル名、およびAudienceStoreコネクタのアクションIDに一致するパス構造でS3バケットに保存されます：</p>
 <pre tabindex="0"><code>{ACCOUNT}/{PROFILE}/audiences/{ACTION_ID}
 </code></pre><p>アクションIDは、AudienceStoreコネクタアクションの<strong>詳細</strong>で見つけることができます。以下に示すように：</p>
 <figure><a class="slb" href="/images/server-side/actionid-asactiondetails.png"><img src="/images/server-side/actionid-asactiondetails.png"
-         alt="Action ID in AudienceStream detail"
-         title="Action ID in AudienceStream detail"/>
+         alt="AudienceStream detailのAction ID"
+         title="AudienceStream detailのAction ID"/>
     </a>
 </figure>
 <p>AudienceStoreファイルへの例のパス：</p>
@@ -586,8 +586,8 @@
 <pre tabindex="0"><code>{ACCOUNT}/{PROFILE}/events/{EVENT_FEED_ID}
 </code></pre><p>イベントフィードIDは、イベントフィードのURLで見つけることができます。<strong>Live Events</strong>に移動し、フィードをクリックして選択します。以下に示すように、URLを調査してフィードIDを取得します：</p>
 <figure><a class="slb" href="/images/server-side/eventstore-id-in-url-highlighted.png"><img src="/images/server-side/eventstore-id-in-url-highlighted.png"
-         alt="EventStore ID in URL highlighted.png"
-         title="EventStore ID in URL highlighted.png"/>
+         alt="URLでハイライト表示されたEventStore ID"
+         title="URLでハイライト表示されたEventStore ID"/>
     </a>
 </figure>
 <p>EventStoreファイルへの例のパス：</p>
@@ -637,7 +637,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2024年November月13日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -652,7 +652,7 @@
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">前提条件</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E6%96%B9%E6%B3%95" href="javascript:void(0)">動作方法</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%BC%E3%82%BF%E4%BF%9D%E6%8C%81" href="javascript:void(0)">データ保持</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#eventstore%E3%81%AE%E6%9C%89%E5%8A%B9%E5%8C%96" href="javascript:void(0)">Eventstoreの有効化</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#audiencestore%E3%81%AE%E6%9C%89%E5%8A%B9%E5%8C%96" href="javascript:void(0)">AudienceStoreの有効化</a></li>

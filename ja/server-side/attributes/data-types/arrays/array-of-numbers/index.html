@@ -252,7 +252,7 @@
         <a href="/ja/server-side/attributes/data-types/tally/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">テリー属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/badge/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-badge-attribute">バッジ属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/funnel/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-funnel-attribute">ファネル属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/data-types/boolean/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-boolean-attribute">ブーリアン属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/boolean/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-boolean-attribute">ブール属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/popular-badges/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-popular-badges">人気のバッジ</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/number/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-number-attribute">数値属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/set-of-strings/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-set-of-strings-attribute">文字列のセット属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -539,7 +539,7 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>数値の配列属性は、訪問、ページビュー、購入イベントなどのブラウジングメトリクスの数値リストを保存します。</p>
+  <p>数値の配列属性は、訪問数、ページビュー数、購入イベントなどのメトリクスを参照するための数値リストを保存します。</p>
 <p>数値は小数または整数として保存されます。あなたのニーズに合ったタイプを選択してください：</p>
 <ul>
 <li>
@@ -553,9 +553,9 @@
 <li>
 <p><strong>整数</strong></p>
 <ul>
-<li>保存されるのは整数値のみです。</li>
+<li>整数値のみが保存されます。</li>
 <li>例：<code>12</code>、<code>-4</code>、<code>3214</code></li>
-<li>数量、カウンター、スコアを表す数値属性に便利。</li>
+<li>数量、カウンター、スコアを表す数値属性に有用。</li>
 </ul>
 </li>
 </ul>
@@ -565,38 +565,82 @@
          title="数値の配列"/>
     </a>
 </figure>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>数値の文字列表現（<code>0</code>、<code>123</code>、<code>12.95</code>）はその数値に変換されます。その他の非数値は無視されます。</p>
-<h2 id="エンリッチメント">エンリッチメント</h2>
+<p class="tip"><i class="fa fa-info-circle"></i>数値の文字列表現はそれぞれの数値に変換されます。それ以外の非数値は無視されます。</p>
+<h2 id="検証">検証</h2>
+<p>イベントが受信されると、Tealiumは数値の配列属性を検証して、配列内の各値が数値であることを確認します。値が数値を表している場合、それは以下のように数値形式に変換されます：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">説明</th>
+<th style="text-align:left">入力</th>
+<th style="text-align:left">解析値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">JSONネイティブ数値</td>
+<td style="text-align:left"><code>42</code></td>
+<td style="text-align:left"><code>42</code></td>
+</tr>
+<tr>
+<td style="text-align:left">文字列化された数値</td>
+<td style="text-align:left"><code>&quot;42.5&quot;</code></td>
+<td style="text-align:left"><code>42.5</code></td>
+</tr>
+<tr>
+<td style="text-align:left">文字列化された科学的表記</td>
+<td style="text-align:left"><code>&quot;1e6&quot;</code></td>
+<td style="text-align:left"><code>1000000</code></td>
+</tr>
+<tr>
+<td style="text-align:left">文字列化された代替基数</td>
+<td style="text-align:left"><code>&quot;0xFE4DB9AC&quot;</code></td>
+<td style="text-align:left"><code>4266506668</code></td>
+</tr>
+<tr>
+<td style="text-align:left">文字列</td>
+<td style="text-align:left"><code>&quot;fourteen&quot;</code></td>
+<td style="text-align:left"><code>null</code></td>
+</tr>
+</tbody>
+</table>
+<p>値が数値でない場合、その値は配列から削除されます。例えば、以下の配列の値&quot;one&quot;は数値を表していません：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 検証前
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>[<span style="color:#e6db74">&#34;1&#34;</span>, <span style="color:#ae81ff">2.5</span>, <span style="color:#e6db74">&#34;one&#34;</span>, <span style="color:#e6db74">&#34;3.5&#34;</span>, <span style="color:#ae81ff">4</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 検証後
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2.5</span>, <span style="color:#ae81ff">3.5</span>, <span style="color:#ae81ff">4</span>]
+</span></span></code></pre></div><h2 id="エンリッチメント">エンリッチメント</h2>
 <h3 id="数値の追加">数値の追加</h3>
-<p>このエンリッチメントは、数値を配列に追加します。追加される属性は、数値、iQ変数、またはオムニチャネル属性のみ可能です。例えば、最後の購入価格を<code>purchase_total_history</code>値配列に追加することができます。</p>
+<p>このエンリッチメントは、数値を配列に追加します。追加される属性は数値、iQ変数、またはオムニチャネル属性のみ可能です。例えば、最後の購入価格を<code>purchase_total_history</code>値配列に追加することができます。</p>
 <p><strong>属性名</strong>：<code>purchase_total_history</code></p>
 <ul>
-<li><strong>開始値</strong>：<code>[12.95]</code></li>
+<li><strong>初期値</strong>：<code>[12.95]</code></li>
 <li><strong>エンリッチメント</strong>：<code>5.99</code></li>
-<li><strong>結果の値</strong>：<code>[12.95, 5.99]</code></li>
+<li><strong>結果値</strong>：<code>[12.95, 5.99]</code></li>
 </ul>
 <h3 id="数値の配列の追加">数値の配列の追加</h3>
-<p>このエンリッチメントは、別の配列からすべての値を配列に追加します。追加される属性タイプは、数値の配列またはiQ変数のみ可能です。例えば、購入した商品の価格の配列をすべての購入商品の価格の配列に追加することができます。</p>
+<p>このエンリッチメントは、別の配列からすべての値を配列に追加します。追加される属性タイプは数値の配列またはiQ変数のみ可能です。例えば、購入した商品の価格の配列をすべての購入商品の価格の配列に追加することができます。</p>
 <p><strong>属性名</strong>：<code>purchased_products_history</code></p>
 <ul>
-<li><strong>開始値</strong>：<code>[24.99, 12.95]</code></li>
+<li><strong>初期値</strong>：<code>[24.99, 12.95]</code></li>
 <li><strong>エンリッチメント</strong>：<code>[5.99, 10.00]</code></li>
-<li><strong>結果の値</strong>：<code>[24.99, 12.95, 5.99, 10.00]</code></li>
+<li><strong>結果値</strong>：<code>[24.99, 12.95, 5.99, 10.00]</code></li>
 </ul>
 <h3 id="リセット">リセット</h3>
-<p>このエンリッチメントは、配列からすべての値を削除します。例えば、最後の購入アイテムを最後の購入の配列から削除することができます。</p>
+<p>このエンリッチメントは、配列からすべての値を削除します。例えば、最後の購入アイテムを最後の購入アイテムの配列から削除することができます。</p>
 <p><strong>属性名</strong>：<code>purchase_total_history</code></p>
 <ul>
-<li><strong>開始値</strong>：<code>[12.95, 5.99]</code></li>
-<li><strong>結果の値</strong>：<code>[]</code></li>
+<li><strong>初期値</strong>：<code>[12.95, 5.99]</code></li>
+<li><strong>結果値</strong>：<code>[]</code></li>
 </ul>
 <h3 id="2つの配列の差分を数値の配列に構成">2つの配列の差分を数値の配列に構成</h3>
-<p>このエンリッチメントは、2つの配列を入力として取り、一方に存在し他方に存在しない値を探し、それらを配列に挿入します。この例では、<code>Gift Card Amounts</code>から<code>Gift Cards Purchased</code>にも存在しない値が結果の配列に追加されます。</p>
+<p>このエンリッチメントは、2つの配列を入力として受け取り、一方に存在し他方に存在しない値を探し、それらを配列に挿入します。この例では、<code>Gift Card Amounts</code>から<code>Gift Cards Purchased</code>にも存在しない値が結果の配列に追加されます。</p>
 <p><strong>属性名</strong>：<code>gift_card_not_purchased</code></p>
 <ul>
-<li><strong>開始値</strong>：<code>[]</code></li>
+<li><strong>初期値</strong>：<code>[]</code></li>
 <li><strong>エンリッチメント</strong>：  差分：<code>Gift Card Amounts</code> <code>[5.00, 10.00, 25.00, 50.00, 100.00, 250.00]</code> と <code>Gift Cards Purchased</code> <code>[25.00, 50.00]</code></li>
-<li><strong>結果の値</strong>：<code>[5.00, 10.00, 100.00, 250.00]</code></li>
+<li><strong>結果値</strong>：<code>[5.00, 10.00, 100.00, 250.00]</code></li>
 </ul>
 
 </div>
@@ -658,7 +702,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2024年November月13日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -672,7 +716,8 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%B3%E3%83%AA%E3%83%83%E3%83%81%E3%83%A1%E3%83%B3%E3%83%88" href="javascript:void(0)">エンリッチメント</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A4%9C%E8%A8%BC" href="javascript:void(0)">検証</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%B3%E3%83%AA%E3%83%83%E3%83%81%E3%83%A1%E3%83%B3%E3%83%88" href="javascript:void(0)">エンリッチメント</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%95%B0%E5%80%A4%E3%81%AE%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">数値の追加</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%95%B0%E5%80%A4%E3%81%AE%E9%85%8D%E5%88%97%E3%81%AE%E8%BF%BD%E5%8A%A0" href="javascript:void(0)">数値の配列の追加</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88" href="javascript:void(0)">リセット</a></li>

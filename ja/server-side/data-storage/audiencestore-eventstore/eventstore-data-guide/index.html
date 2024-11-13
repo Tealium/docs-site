@@ -252,7 +252,7 @@
         <a href="/ja/server-side/attributes/data-types/tally/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">テリー属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/badge/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-badge-attribute">バッジ属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/funnel/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-funnel-attribute">ファネル属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/data-types/boolean/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-boolean-attribute">ブーリアン属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/boolean/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-boolean-attribute">ブール属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/popular-badges/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-popular-badges">人気のバッジ</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/number/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-number-attribute">数値属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/set-of-strings/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-set-of-strings-attribute">文字列のセット属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -527,56 +527,56 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、EventStoreを介して利用可能なイベントレベルのデータポイントの概要を提供します。
+      この記事では、EventStoreを通じて提供されるイベントレベルのデータポイントの概要を提供します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>EventStoreは、サイトからのイベントレベルのデータの収集とエクスポートに最も効率的な方法を提供します。</p>
-<h2 id="動作方法">動作方法</h2>
+  <p>EventStoreは、サイトからのイベントレベルのデータを収集し、エクスポートする最も効率的な方法を提供します。</p>
+<h2 id="仕組み">仕組み</h2>
 <ol>
 <li>
-<p><a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collect</a>タグは、サイト上の<a href="/ja/server-side/live-events-feeds/about-event-feeds/">ライブイベントフィード</a>をキャプチャし、イベントをEventStoreにフィードします。これにより、データを表示およびダウンロードすることができます。</p>
+<p><a href="/ja/client-side-tags/tealium-collect-tag/">Tealium Collect</a>タグは、サイト上の<a href="/ja/server-side/live-events-feeds/about-event-feeds/">ライブイベントフィード</a>をキャプチャし、イベントをEventStoreにフィードします。これにより、基礎となるデータを表示し、ダウンロードすることができます。</p>
 </li>
 <li>
-<p>キャプチャされたデータは、フラット化されたJSONファイルに圧縮され、TealiumのAmazon S3バケットからダウンロードできるようになります。ファイル内の各JSONオブジェクトには、イベントに関連付けられた1つ以上の名前と値のペアの行が含まれる場合があります。</p>
-   <p class="note"><i class="fa fa-exclamation-triangle"></i>イベントデータ（イベントフィード）を別の場所（たとえばS3バケットやサーバー）に送信する場合、フィードはEventStoreに表示されません。</p>
+<p>キャプチャしたデータは、フラット化されたJSONファイルに圧縮され、TealiumのAmazon S3バケットからダウンロードできるようになります。ファイル内の各JSONオブジェクトには、イベントに関連する名前-値のペアの1行または複数行が含まれる場合があります。</p>
+   <p class="note"><i class="fa fa-exclamation-triangle"></i>イベントデータ（イベントフィード）を別の場所（例えば、自分のS3バケットやサーバー）に送信する場合、フィードはEventStoreに表示されません。</p>
 </li>
 <li>
-<p>S3バケットのサイズが100MB（非圧縮）に達するか、1時間経過した後、いずれか早い方でデータが圧縮され、Redshift用に準備されます。</p>
+<p>S3バケットが100MB（非圧縮）に達するか、1時間が経過すると、いずれか早い方が来た時点で、データは圧縮され、Redshiftの準備が整います。</p>
 </li>
 <li>
-<p>圧縮されたデータは、Redshiftデータベースにコピーされ、アカウントにインポートされます。</p>
+<p>圧縮されたデータは、アカウントのRedshiftデータベースにコピーされ、インポートされます。</p>
 </li>
 </ol>
-<h2 id="tealium-collectタグのデータ">Tealium Collectタグのデータ</h2>
-<p>Tealium Collectタグは、以下のセクションで説明されているように、いくつかの事前定義された変数とページからデータを送信します。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>データログファイルのレガシーな値で <code>_t</code> で始まるものは無視してください。</p>
-<h3 id="デフォルトの変数">デフォルトの変数</h3>
+<h2 id="tealium-collectタグデータ">Tealium Collectタグデータ</h2>
+<p>Tealium Collectタグは、以下のセクションで説明するように、いくつかの事前定義された変数とページからのデータを送信します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>データログファイル内の<code>_t</code>で始まるレガシー値は無視してください。</p>
+<h3 id="デフォルト変数">デフォルト変数</h3>
 <table>
 <thead>
 <tr>
-<th><strong>変数</strong></th>
-<th><strong>説明</strong></th>
+<th>変数</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>visitorid</code></td>
-<td>訪問の固有IDです。</td>
+<td>訪問の一意のID。</td>
 </tr>
 <tr>
 <td><code>eventid</code></td>
-<td>イベントに固有の英数字の識別子です。</td>
+<td>イベントに固有の英数字識別子。</td>
 </tr>
 <tr>
 <td><code>eventtime</code></td>
-<td>イベントのUNIX/エポックタイムスタンプです（UTCタイムゾーンを基準としています）。</td>
+<td>イベントのUNIX/エポックタイムスタンプ（UTCタイムゾーンに基づく）。</td>
 </tr>
 <tr>
 <td><code>useragent</code></td>
-<td>ユーザーエージェントヘッダーです。</td>
+<td>ユーザーエージェントヘッダー。</td>
 </tr>
 </tbody>
 </table>
@@ -584,65 +584,65 @@
 <table>
 <thead>
 <tr>
-<th><strong>変数</strong></th>
-<th><strong>説明</strong></th>
+<th>変数</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>dom_domain</code></td>
-<td>サイトのドメインです。</td>
+<td>サイトのドメイン。</td>
 </tr>
 <tr>
 <td><code>dom_pathname</code></td>
-<td>URLのパス名です。</td>
+<td>URLのパス名。</td>
 </tr>
 <tr>
 <td><code>dom_query_string</code></td>
-<td>&ldquo;?&ldquo;文字以降のURLのクエリストリング部分です。</td>
+<td>URLのクエリストリング部分（<code>?</code>文字の後）。</td>
 </tr>
 <tr>
 <td><code>dom_url</code></td>
-<td>HTMLドキュメントの完全なURLです。</td>
+<td>HTMLドキュメントの全URL。</td>
 </tr>
 <tr>
 <td><code>dom_title</code></td>
-<td>HTMLドキュメントのタイトルです。</td>
+<td>HTMLドキュメントのタイトル。</td>
 </tr>
 <tr>
 <td><code>dom_viewport_width</code></td>
-<td>デバイスの画面幅です。</td>
+<td>デバイスの画面幅。</td>
 </tr>
 <tr>
 <td><code>dom_viewport_height</code></td>
-<td>デバイスの画面の高さです。</td>
+<td>デバイスの画面高さ。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="ページurl変数"><strong>ページURL変数</strong></h3>
+<h3 id="ページurl変数">ページURL変数</h3>
 <table>
 <thead>
 <tr>
-<th><strong>変数</strong></th>
-<th><strong>説明</strong></th>
+<th>変数</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>pageurl_scheme</code></td>
-<td>&ldquo;http&quot;または &ldquo;https&quot;などのUniform Resource Identifier（URI）プロトコルです。</td>
+<td>Uniform Resource Identifier（URI）プロトコル（<code>http</code>や<code>https</code>など）。</td>
 </tr>
 <tr>
 <td><code>pageurl_domain</code></td>
-<td>サイトのドメインです。</td>
+<td>サイトのドメイン。</td>
 </tr>
 <tr>
 <td><code>pageurl_path</code></td>
-<td>URLのパス名です。</td>
+<td>URLのパス名。</td>
 </tr>
 <tr>
 <td><code>pageurl_querystring</code></td>
-<td>&ldquo;?&ldquo;文字以降のURLのクエリストリング部分です。</td>
+<td>URLのクエリストリング部分（<code>?</code>文字の後）。</td>
 </tr>
 <tr>
 <td><code>pageurl_query_params_key</code></td>
@@ -650,34 +650,34 @@
 </tr>
 <tr>
 <td><code>pageurl_full_url</code></td>
-<td>クエリストリングパラメータを含まないHTMLドキュメントのURLです。</td>
+<td>クエリストリングパラメータを除いたHTMLドキュメントのURL。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="リファラurl変数"><strong>リファラURL変数</strong></h3>
+<h3 id="リファラーurl変数">リファラーURL変数</h3>
 <table>
 <thead>
 <tr>
-<th><strong>変数</strong></th>
-<th><strong>説明</strong></th>
+<th>変数</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>referrerurl_scheme</code></td>
-<td>&ldquo;http&quot;または &ldquo;https&quot;などのリファラURLのURIプロトコルです。</td>
+<td>リファラーURLのURIプロトコル（<code>http</code>や<code>https</code>など）。</td>
 </tr>
 <tr>
 <td><code>referrerurl_domain</code></td>
-<td>リファラURLサイトのドメインです。</td>
+<td>リファラーURLサイトのドメイン。</td>
 </tr>
 <tr>
 <td><code>referrerurl_path</code></td>
-<td>リファラURLのパス名です。</td>
+<td>リファラーURLのパス名。</td>
 </tr>
 <tr>
 <td><code>referrerurl_querystring</code></td>
-<td>リファラURLの&rdquo;?&ldquo;文字以降のクエリストリング部分です。</td>
+<td>リファラーURLのクエリストリング部分（<code>?</code>文字の後）。</td>
 </tr>
 <tr>
 <td><code>referrerurl_query_params_key</code></td>
@@ -685,157 +685,165 @@
 </tr>
 <tr>
 <td><code>referrerurl_full_url</code></td>
-<td>リファラページの完全なURLです。</td>
+<td>リファラーページの全URL。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="実行されたタグ"><strong>実行されたタグ</strong></h3>
+<h3 id="実行されたタグ">実行されたタグ</h3>
 <table>
 <thead>
 <tr>
-<th><strong>変数</strong></th>
-<th><strong>説明</strong></th>
+<th>変数</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>tags_profile_tag-uid_executed</code></td>
-<td><ul><li>正常に実行されたプロファイルとタグ。</li><li>各成功したタグトリガーには、独自のエントリが含まれます。</li></ul></td>
+<td><ul><li>成功したプロファイルとタグ。</li><li>各成功したタグトリガーには独自のエントリが含まれます。</li></ul></td>
 </tr>
 </tbody>
 </table>
-<h3 id="環境の詳細変数"><strong>環境の詳細変数</strong></h3>
+<h3 id="環境詳細変数">環境詳細変数</h3>
 <table>
 <thead>
 <tr>
-<th><strong>変数</strong></th>
-<th><strong>説明</strong></th>
+<th>変数</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>ut.account</code></td>
-<td>Tealium iQアカウントです。</td>
+<td>Tealium iQアカウント。</td>
 </tr>
 <tr>
 <td><code>ut.profile</code></td>
-<td>Tealium iQプロファイルです。</td>
+<td>Tealium iQプロファイル。</td>
 </tr>
 <tr>
 <td><code>ut.env</code></td>
-<td>utag.jsファイルに関連付けられた公開環境です。</td>
+<td><code>utag.js</code>ファイルに関連する公開環境。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="tealium組み込み変数"><strong>Tealium組み込み変数</strong></h3>
-<p>Tealium組み込み変数の完全なリストは、<a href="https://docs.tealium.com/platforms/javascript/built-in-variables/">組み込みデータレイヤ変数</a>の記事で提供されています。</p>
+<h3 id="tealium組み込み変数">Tealium組み込み変数</h3>
+<p>Tealium組み込み変数の完全なリストは、<a href="https://docs.tealium.com/platforms/javascript/built-in-variables/">Built-In Data Layer Variables</a>記事で提供されています。</p>
 <table>
 <thead>
 <tr>
-<th><strong>変数</strong></th>
-<th><strong>説明</strong></th>
+<th>変数</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>ut.event</code></td>
-<td>ビューやリンクなど、トラッキングされているイベントの名前です。</td>
+<td>トラッキングされるイベントの名前（ビューやリンクなど）。</td>
 </tr>
 <tr>
 <td><code>ut.version</code></td>
-<td>utag.jsのバージョン番号、および公開タイムスタンプです。</td>
+<td><code>utag.js</code>のバージョン番号、公開タイムスタンプが続きます。</td>
 </tr>
 <tr>
 <td><code>ut.domain</code></td>
-<td>現在の読み込まれているWebページのトップレベルドメインです。</td>
+<td>現在読み込まれているウェブページのトップレベルドメイン。</td>
 </tr>
 <tr>
 <td><code>tealium_session_number</code></td>
-<td><code>cp.utag_main__sn</code>の既存の値の複製です。</td>
+<td><code>cp.utag_main__sn</code>の既存の値の複製。</td>
 </tr>
 <tr>
 <td><code>tealium_session_event_number</code></td>
-<td>現在のセッション（訪問）のutag.link/view/track呼び出しの数をカウントする<code>cp.utag_main__se</code>の新しいクッキー値です。常に「1つのページ」とそのページ上の多くのイベントがあるシングルページアプリ（SPA）に便利です。</td>
+<td>現在のセッション（訪問）でのutag.link/view/track呼び出しの数をカウントする<code>cp.utag_main__se</code>の新しいクッキー値。常に'1ページ&rsquo;があり、そのページ上で多くのイベントが発生するシングルページアプリ（SPA）に便利です。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="ファーストパーティtealiumクッキー"><strong>ファーストパーティTealiumクッキー</strong></h3>
+<h3 id="ファーストパーティtealiumクッキー">ファーストパーティTealiumクッキー</h3>
 <table>
 <thead>
 <tr>
-<th><strong>変数</strong></th>
-<th><strong>説明</strong></th>
+<th>変数</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>_ses_id</code></td>
-<td>セッションの一意の識別子です。utag.jsバージョン4.27以降が必要です。</td>
+<td>セッションの一意の識別子。<code>utag.js</code>バージョン4.27以降が必要です。</td>
 </tr>
 <tr>
 <td><code>_st</code></td>
-<td>訪問セッションが何も行わない場合にセッションが期限切れになる時間です。これは訪問の「現在」の時間に、セッションのタイムアウト時間を加えたものです。このタイムアウト期間は通常30分（1800000ミリ秒）ですが、構成によって変更できます。<a href="/ja/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">JavaScript拡張機能</a>を使用してこの変数を変更して、utag.jsバージョン4.26以降が必要です。</td>
+<td>訪問が何もしない場合に訪問セッションが期限切れになる時間。これは訪問の現在の時間とセッションタイムアウト時間を足したものです。このタイムアウト期間は通常30分（1800000ミリ秒）ですが、構成により異なる場合があります。<code>utag.cfg.session_timeout</code>の値は、<a href="/ja/iq-tag-management/extensions/extensions-list/advanced-javascript-code-extension/">JavaScript Extension</a>を使用してこの変数を変更することで上書きできます。<code>utag.js</code>バージョン4.26以降が必要です。</td>
 </tr>
 <tr>
 <td><code>_v_id</code></td>
-<td>訪問に固有のID値です。utag.jsバージョン4.26以降が必要です。</td>
+<td>データプライバシーと同意ルールを遵守するための訪問固有のID値。<code>utag.js</code>バージョン4.26以降が必要です。詳細については、<a href="/ja/platforms/javascript/version-4-50/"><code>utag.js</code>バージョン4.50</a>を参照してください。</td>
+</tr>
+<tr>
+<td><code>_se</code></td>
+<td>現在のセッション中のイベント数。</td>
 </tr>
 <tr>
 <td><code>_ss</code></td>
-<td>セッションの開始を示すフラグ値です。値は0または1です。utag.jsバージョン4.26以降が必要です。</td>
+<td>セッション開始を示すフラグ値。値は<code>0</code>または<code>1</code>です。<code>utag.js</code>バージョン4.26以降が必要です。</td>
 </tr>
 <tr>
 <td><code>_pn</code></td>
-<td>ページ番号の値です。新しいセッションごとに1から始まり、utag.jsがロードされるたびにインクリメントされます。utag.jsバージョン4.28以降が必要です。</td>
+<td>ページ番号値。新しいセッションごとに<code>1</code>から始まり、<code>utag.js</code>がロードされるたびに増加します。<code>utag.js</code>バージョン4.28以降が必要です。</td>
 </tr>
 <tr>
 <td><code>_sn</code></td>
-<td>セッションのカウントです。utag.jsバージョン4.28以降が必要です。</td>
+<td>セッション数。<code>utag.js</code>バージョン4.28以降が必要です。</td>
+</tr>
+<tr>
+<td><code>_dc_group</code></td>
+<td>Tealium Collectタグの<strong>Sample Size</strong>構成を使用して、どのイベントがサンプリングされるかを決定するためのランダムな数値。</td>
 </tr>
 <tr>
 <td><code>_dc_visit</code></td>
-<td>訪問回数をカウントします。最初の訪問では「1」となります。</td>
+<td>Tealium Collectタグが発火した訪問の数。最初の訪問は<code>1</code>から始まります。</td>
 </tr>
 <tr>
 <td><code>_dc_event</code></td>
-<td>ページビューのカウントを保持します。最初のページビューでは「1」となります。</td>
+<td>Tealium Collectタグが発火したイベントの数。訪問の最初のページビューから<code>1</code>から始まります。</td>
 </tr>
 <tr>
 <td><code>_dc_region</code></td>
-<td>訪問セッションが存在するAudienceStreamリージョンです。</td>
+<td>訪問セッションが保存されているAudienceStream地域、HTTPレスポンスヘッダーから収集。このクッキーは、<a href="/ja/server-side/attributes/data-layer-enrichment/">data layer enrichment</a>のエンドポイントを決定するために使用されます。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="追加の変数">追加の変数</h3>
-<p>タグは、以下を含むページからさまざまなデータを収集します。</p>
+<h3 id="追加変数">追加変数</h3>
+<p>タグは、以下を含むページからさまざまな他のデータを収集します：</p>
 <ul>
-<li>データレイヤで定義されたデータポイント。1つの値の最大文字数は255文字です。</li>
-<li>メタデータ、クッキーパラメータ、およびJavaScriptページ変数などのWebページ要素。</li>
-<li>パフォーマンスタイミングメトリックスを使用して、リアルユーザーモニタリング（RUM）データを収集するためのパフォーマンスタイミングメトリックス。これらのデータは、ユーザーのエクスペリエンスを理解するために使用できます。たとえば、サイト上のページのブラウザのDOMインタラクティブ状態までのブラウザの時間など。</li>
+<li>データレイヤーで定義されたデータポイント。任意の値の最大文字長は255文字です。</li>
+<li>メタデータ、クッキーパラメータ、JavaScriptページ変数などのウェブページ要素。</li>
+<li>リアルユーザーモニタリング（RUM）データを収集するためのパフォーマンスタイミングメトリクス。このデータは、ユーザーの体験を理解するために使用できます。例えば、サイトのページでのDOMインタラクティブ状態までのブラウザ時間など。</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th><strong>パフォーマンスタイミング変数</strong></th>
-<th><strong>説明</strong></th>
+<th>パフォーマンスタイミング変数</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>timing.domain</code></td>
-<td>タイミングデータが収集されたドメインです。</td>
+<td>タイミングデータが収集されたドメイン。</td>
 </tr>
 <tr>
 <td><code>timing.pathname</code></td>
-<td>タイミングデータが収集されたパス名（Webページ）です。</td>
+<td>タイミングデータが収集されたパス名（ウェブページ）。</td>
 </tr>
 <tr>
 <td><code>timing.query_string</code></td>
-<td>タイミングデータが収集されたURLのクエリ文字列の値です。</td>
+<td>タイミングデータが収集されたURLのクエリストリング値。</td>
 </tr>
 <tr>
 <td><code>timing.timestamp</code></td>
-<td>タイミングデータが収集された日時（クライアントのWebブラウザのエポック時間）です。</td>
+<td>タイミングデータが収集された日時（クライアントのウェブブラウザのエポック時間）。</td>
 </tr>
 <tr>
 <td><code>timing.dns</code></td>
@@ -851,45 +859,45 @@
 </tr>
 <tr>
 <td><code>timing.dom_loading_to_interactive</code></td>
-<td><code>t.domInteractive</code>から<code>t.domLoading</code>を引いた値です。</td>
+<td><code>t.domInteractive</code>から<code>t.domLoading</code>を引いた値</td>
 </tr>
 <tr>
 <td><code>timing.dom_interactive_to_complete</code></td>
-<td><code>t.domComplete</code>から<code>t.domInteractive</code>を引いた値です。</td>
+<td><code>t.domComplete</code>から<code>t.domInteractive</code>を引いた値</td>
 </tr>
 <tr>
 <td><code>timing.load</code></td>
-<td><code>t.loadEventEnd</code>から<code>t.loadEventStart</code>を引いた値です。</td>
+<td><code>t.loadEventEnd</code>から<code>t.loadEventStart</code>を引いた値</td>
 </tr>
 <tr>
 <td><code>timing.time_to_first_byte</code></td>
-<td><code>t.responseStart</code>から<code>t.connectEnd</code>を引いた値です。</td>
+<td><code>t.responseStart</code>から<code>t.connectEnd</code>を引いた値</td>
 </tr>
 <tr>
 <td><code>timing.front_end</code></td>
-<td><code>t.loadEventStart</code>から<code>t.responseEnd</code>を引いた値です。</td>
+<td><code>t.loadEventStart</code>から<code>t.responseEnd</code>を引いた値</td>
 </tr>
 <tr>
 <td><code>timing.fetch_to_response</code></td>
-<td><code>t.responseStart</code>から<code>t.fetchStart</code>を引いた値です。</td>
+<td><code>t.responseStart</code>から<code>t.fetchStart</code>を引いた値</td>
 </tr>
 <tr>
 <td><code>timing.fetch_to_complete</code></td>
-<td><code>t.domComplete</code>から<code>t.fetchStart</code>を引いた値です。</td>
+<td><code>t.domComplete</code>から<code>t.fetchStart</code>を引いた値</td>
 </tr>
 <tr>
 <td><code>timing.fetch_to_interactive</code></td>
-<td><code>t.domInteractive</code>から<code>t.fetchStart </code>を引いた値です。</td>
+<td><code>t.domInteractive</code> から <code>t.fetchStart </code>を引いたもの</td>
 </tr>
 </tbody>
 </table>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>データポイントの値がゼロ（0）の場合、タイミング情報はキャプチャされていません。レポートや平均値の計算時にゼロの値を無視してください。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>データポイントの値がゼロの場合、タイミング情報は取得されません。報告や平均を出す際にはゼロの値は無視できます。</p>
 <h2 id="訪問のタイムゾーンの計算">訪問のタイムゾーンの計算</h2>
-<p>EventStoreデータには、訪問のタイムゾーンは含まれていません。<code>_ss</code>が<code>1</code>であるレコードの<code>EventTime</code>と<code>_ses_id</code>の差を表示して、訪問のタイムゾーンを計算することができます。なぜなら、そのレコードがセッションの開始であるからです。</p>
-<p><code>utag.cfg.session_timeout</code>が既知の場合、現在のユーザーのローカル時間を計算するために、<code>utag.cfg.session_timeout</code>を<code>_st</code>から引き、現在の時間と<code>EventTime</code>の差を見ることでタイムゾーンを計算することができます。このアプローチは、任意のレコードに使用することができます。</p>
+<p>訪問のタイムゾーンはEventStoreデータには含まれていません。<code>_ss</code>が<code>1</code>のレコードで<code>EventTime</code>と<code>_ses_id</code>の差を見ることでタイムゾーンを計算できます。そのレコードはセッションの開始を示しています。</p>
+<p><code>utag.cfg.session_timeout</code>がわかっている場合、<code>_st</code>から<code>utag.cfg.session_timeout</code>を引くことでユーザーの現地時間を計算できます。その後、現在の時間と<code>EventTime</code>の差を見ることでタイムゾーンを計算できます。このアプローチは任意のレコードに使用できます。</p>
 <h2 id="utagjsのバージョン">utag.jsのバージョン</h2>
-<p>個々のutagバージョンの詳細情報については、<a href="/ja/platforms/javascript/release-notes/">utag.jsリリースノート</a>を参照してください。</p>
-<h2 id="サンプルjsonオブジェクト">サンプルJSONオブジェクト</h2>
+<p>各utagバージョンの詳細情報については、<a href="/ja/release-notes/">utag.jsリリースノート</a>をご覧ください。</p>
+<h2 id="jsonオブジェクトのサンプル">JSONオブジェクトのサンプル</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;visitorid&#34;</span>: <span style="color:#e6db74">&#34;014fb34a718e001ad754191d58ff1c074003a06c00c48&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;eventid&#34;</span>: <span style="color:#e6db74">&#34;65f61a4b-54ca-4adf-b757-657e1711f6e7&#34;</span>,
@@ -942,9 +950,9 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;udo_post_date&#34;</span>: <span style="color:#e6db74">&#34;2014/11/26&#34;</span>,
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="パフォーマンスタイミングメトリクス">パフォーマンスタイミングメトリクス</h2>
-<p>パフォーマンスタイミングメトリクスの詳細については、次の情報を参照してください。</p>
+<p>パフォーマンスタイミングメトリクスについての詳細情報は、以下を参照してください：</p>
 <ul>
-<li><a href="http://calendar.perfplanet.com/2011/a-practical-guide-to-the-navigation-timing-api/">A Practical Guide to Navigation Timing</a></li>
+<li><a href="http://calendar.perfplanet.com/2011/a-practical-guide-to-the-navigation-timing-api/">Navigation Timingの実用ガイド</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigation_timing_API">Web APIs &gt; Navigation Timing API</a></li>
 </ul>
 
@@ -992,7 +1000,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2024年November月13日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1006,20 +1014,20 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E6%96%B9%E6%B3%95" href="javascript:void(0)">動作方法</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-collect%E3%82%BF%E3%82%B0%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">Tealium Collectタグのデータ</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%81%AE%E5%A4%89%E6%95%B0" href="javascript:void(0)">デフォルトの変数</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-collect%E3%82%BF%E3%82%B0%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">Tealium Collectタグデータ</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E5%A4%89%E6%95%B0" href="javascript:void(0)">デフォルト変数</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#dom%E5%A4%89%E6%95%B0" href="javascript:void(0)">DOM変数</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%9A%E3%83%BC%E3%82%B8url%E5%A4%89%E6%95%B0" href="javascript:void(0)">ページURL変数</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%83%95%E3%82%A1%E3%83%A9url%E5%A4%89%E6%95%B0" href="javascript:void(0)">リファラURL変数</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AA%E3%83%95%E3%82%A1%E3%83%A9%E3%83%BCurl%E5%A4%89%E6%95%B0" href="javascript:void(0)">リファラーURL変数</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%AE%9F%E8%A1%8C%E3%81%95%E3%82%8C%E3%81%9F%E3%82%BF%E3%82%B0" href="javascript:void(0)">実行されたタグ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%92%B0%E5%A2%83%E3%81%AE%E8%A9%B3%E7%B4%B0%E5%A4%89%E6%95%B0" href="javascript:void(0)">環境の詳細変数</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%92%B0%E5%A2%83%E8%A9%B3%E7%B4%B0%E5%A4%89%E6%95%B0" href="javascript:void(0)">環境詳細変数</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF%E5%A4%89%E6%95%B0" href="javascript:void(0)">Tealium組み込み変数</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%95%E3%82%A1%E3%83%BC%E3%82%B9%E3%83%88%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3tealium%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC" href="javascript:void(0)">ファーストパーティTealiumクッキー</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%BF%BD%E5%8A%A0%E3%81%AE%E5%A4%89%E6%95%B0" href="javascript:void(0)">追加の変数</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%BF%BD%E5%8A%A0%E5%A4%89%E6%95%B0" href="javascript:void(0)">追加変数</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A8%AA%E5%95%8F%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%BE%E3%83%BC%E3%83%B3%E3%81%AE%E8%A8%88%E7%AE%97" href="javascript:void(0)">訪問のタイムゾーンの計算</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#utagjs%E3%81%AE%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3" href="javascript:void(0)">utag.jsのバージョン</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%ABjson%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88" href="javascript:void(0)">サンプルJSONオブジェクト</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#json%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB" href="javascript:void(0)">JSONオブジェクトのサンプル</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9" href="javascript:void(0)">パフォーマンスタイミングメトリクス</a></li>
               </nav>
   </aside></nav>

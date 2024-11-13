@@ -105,7 +105,7 @@
         <a href="/ja/iq-tag-management/getting-started/install/self-host/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-gs-install-self-hosting">utag.jsの自己ホスティング</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/getting-started/install/load-utag-china/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-gs-load-utag-china">中国でutag.jsをロードする</a></li></ul>
       </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/getting-started/file-cache/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-how-files-are-cached">ファイルのキャッシュ方法</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/getting-started/file-cache/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-how-files-are-cached">ファイルがどのようにキャッシュされるか</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/getting-started/best-practices/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-gs-best-practices">ベストプラクティス</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".data-layer">データレイヤー</a>
@@ -432,25 +432,29 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <h2 id="要件">要件</h2>
+  <h2 id="必要条件">必要条件</h2>
 <ul>
-<li>utag v4.38以降。<code>utag.js</code>テンプレートの更新についての詳細は、当社のナレッジベース記事<a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">utag.jsの最新バージョンへの更新のベストプラクティス</a>を参照してください。</li>
+<li>utag v4.38以降。<code>utag.js</code>テンプレートの更新についての詳細は、ナレッジベースの記事 <a href="https://support.tealiumiq.com/en/support/solutions/articles/36000363470">utag.jsの最新バージョンへの更新のベストプラクティス</a> を参照してください。</li>
 </ul>
 <h2 id="動作方法">動作方法</h2>
-<p>ハッシュ変更イベントは、ページのURLのハッシュ記号 (<code>#</code>) 以降のアンカー部分が変更されたときにトラッキングします。例えば、URL <code>https://www.example.com/page#part2</code>では、URLのアンカー部分は <code>#part2</code>です。ページのハッシュのアンカー部分が変更されると、トラッキングコールがトリガーされます。</p>
-<p>ハッシュ変更イベントリスナーは、主にシングルページアプリケーション（SPA）で使用するためのものです。</p>
+<p>ハッシュ変更イベントは、ページのURLのハッシュ記号 (<code>#</code>) 以降のアンカー部分が変更されたときにトラッキングします。例えば、URL <code>https://www.example.com/page#part2</code> において、URLのアンカー部分は <code>#part2</code> です。ページのハッシュのアンカー部分が変更されると、トラッキング呼び出しがトリガーされます。</p>
+<p>ハッシュ変更イベントリスナーは主にシングルページアプリケーション（SPA）で使用するためのものです。</p>
 <p>イベントリスナーの追加方法についての詳細は、<a href="/ja/iq-tag-management/events/manage/">イベントの管理</a>を参照してください。</p>
 <h2 id="イベントトリガー">イベントトリガー</h2>
 <p>イベントトリガーは、イベントリスナーがトラッキングする特定のアクションです。</p>
-<p>ハッシュ変更イベントは、以下のイベントトリガーをトラッキングできます：</p>
+<p>ハッシュ変更イベントは以下のイベントトリガーをトラッキングできます：</p>
 <ul>
-<li><strong>ハッシュ変更</strong> – ページのURLのハッシュ記号 (<code>#</code>) 以降のアンカー部分が変更されたときにトリガー</li>
+<li><strong>ハッシュ変更</strong> – ページのURLのハッシュ記号 (<code>#</code>) 以降のアンカー部分が変更されたときにトリガーします。</li>
+</ul>
+<p>以下の閾値をトリガーに構成できます：</p>
+<ul>
+<li><strong>遅延</strong> - トラッキング呼び出しを遅延させる時間（ミリ秒）。</li>
 </ul>
 <h3 id="トリガー頻度">トリガー頻度</h3>
-<p>トリガー頻度は、イベントトリガーがトラッキングコールを引き起こす回数を決定します。SPAはDOMロードが1回しかないため、ハッシュ変更イベントのトリガー頻度は<strong>常に</strong>構成することをお勧めします。これにより、イベントリスナーはすべてのハッシュ変更をトラッキングします。</p>
+<p>トリガー頻度は、イベントトリガーがトラッキング呼び出しを引き起こす回数を決定します。SPAはDOMのロードが1回しかないため、ハッシュ変更イベントのトリガー頻度は<strong>常に</strong>構成することをお勧めします。これにより、イベントリスナーはすべてのハッシュ変更をトラッキングします。</p>
 <p>詳細については、<a href="/ja/iq-tag-management/events/triggers-and-frequency/">イベントトリガー</a>を参照してください。</p>
 <h2 id="イベントトリガー変数">イベントトリガー変数</h2>
-<p>イベントトリガー変数は、イベントリスナーがトラッキングコールと共に送信する値です。ハッシュ変更イベントには、以下のデフォルトのイベントトリガー変数があります：</p>
+<p>イベントトリガー変数は、イベントリスナーがトラッキング呼び出しと共に送信する値です。ハッシュ変更イベントには以下のデフォルトのイベントトリガー変数があります：</p>
 <h3 id="ハッシュ変更">ハッシュ変更</h3>
 <table>
 <thead>
@@ -535,7 +539,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年July月24日
+          <p>最終更新日 ::  2024年November月13日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -549,7 +553,7 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6" href="javascript:void(0)">必要条件</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E6%96%B9%E6%B3%95" href="javascript:void(0)">動作方法</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC" href="javascript:void(0)">イベントトリガー</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E9%A0%BB%E5%BA%A6" href="javascript:void(0)">トリガー頻度</a></li>

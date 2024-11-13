@@ -105,7 +105,7 @@
         <a href="/ja/iq-tag-management/getting-started/install/self-host/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-gs-install-self-hosting">utag.jsの自己ホスティング</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/getting-started/install/load-utag-china/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-gs-load-utag-china">中国でutag.jsをロードする</a></li></ul>
       </li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/iq-tag-management/getting-started/file-cache/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-how-files-are-cached">ファイルのキャッシュ方法</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/iq-tag-management/getting-started/file-cache/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-how-files-are-cached">ファイルがどのようにキャッシュされるか</a></li><li data-level="3" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/iq-tag-management/getting-started/best-practices/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".iq-gs-best-practices">ベストプラクティス</a></li></ul>
       </li><li class="relative w-100 fw8 f5 ">
         <a href="javascript:void(0)" class="js-toggle dib w-100 link text-color-primary hover-primary-color pv2 ind2 pr2  " data-target=".data-layer">データレイヤー</a>
@@ -428,15 +428,15 @@
 <div class="prose nested-links" id="prose">
   <p>構成のロード順序の管理については、<a href="/ja/iq-tag-management/extensions/load-order-manager/">Load Order Manager</a>を参照してください。</p>
 <h2 id="webページの処理順序の理解">Webページの処理順序の理解</h2>
-<p>Universal Tag（<code>utag.js</code>）のロード方法を理解するためには、ブラウザがWebページをどのようにロードするかを知ることが重要です。以下に、<code>utag.js</code>に関連する主な概念を示します：</p>
+<p>Universal Tag（<code>utag.js</code>）のロード方法を理解するためには、ブラウザがWebページをどのようにロードするかを知ることが重要です。以下に、<code>utag.js</code>に関連する主要な概念を示します：</p>
 <ol>
 <li><strong>リクエストとレスポンス</strong><br>
 ブラウザはURLに位置するページをリクエストし、生のページコンテンツ（HTML）が返されます。</li>
 <li><strong>ビルド</strong>
 <ul>
-<li>ブラウザはHTMLドキュメントを上から下へと解析し始めます。画像、リンク、テキスト、Universal Tag（<code>utag.js</code>）のようなスクリプトなど、遭遇する各要素を処理する必要があります。</li>
-<li>ブラウザは、HTMLドキュメント自体をダウンロードしながら、遭遇するこれらの要素をダウンロードし続けます。</li>
-<li>同期スクリプトは、ブラウザがスクリプトを解釈してから続行するように強制します。utag.jsのような非同期スクリプトは、スクリプトがロードされている間にブラウザが処理を続行することを許可します。</li>
+<li>ブラウザはHTMLドキュメントを上から下へと解析し始めます。画像、リンク、テキスト、Universal Tag（<code>utag.js</code>）のようなスクリプトなど、出会ったさまざまな要素を処理する必要があります。</li>
+<li>ブラウザは、HTMLドキュメント自体をダウンロードしながら、出会ったこれらの要素をダウンロードし続けます。</li>
+<li>同期スクリプトはブラウザを強制的に停止させ、スクリプトを解釈した後に続行します。utag.jsのような非同期スクリプトは、スクリプトがロードされている間にブラウザが処理を続行することを許可します。</li>
 <li>ブラウザがページのHTMLの構築が完了すると、通常は&quot;DOM Ready&quot;イベントと呼ばれます。</li>
 </ul>
 </li>
@@ -478,35 +478,35 @@
 <h3 id="before-load-rules">Before load rules</h3>
 <p>データレイヤーオブジェクトが処理された後、<strong>Before Load Rules</strong>にスコープされた拡張機能が実行されます。これらの拡張機能の影響は、すべてのタグとロードルールに影響を与えます。</p>
 <h4 id="ロードルールの処理">ロードルールの処理</h4>
-<p>ロードルールは評価され、どのタグをロードするかが決定されます。タグがDOM Readyイベントでロードするように構成されている場合、そのロードルールは、現在のデータオブジェクトの値を使用してその時点で再評価されます。</p>
+<p>ロードルールは評価され、どのタグをロードするかを決定します。タグがDOM Readyイベントでロードするように構成されている場合、そのロードルールはその時点で現在のデータオブジェクト値を使用して再評価されます。</p>
 <h3 id="after-load-rules">After load rules</h3>
 <p>ロードルールが評価された後、<strong>After Load Rules</strong>にスコープされた拡張機能が実行されます。これらの拡張機能の影響は、すべてのタグに影響を与えます。</p>
 <h3 id="prioritized-tags">Prioritized tags</h3>
 <p><strong>Tag Timing</strong>が<strong>Prioritized</strong>に構成されているタグは、評価されたロードルールに基づいて実行されます。</p>
 <p><a href="#tag-timing">tag timing</a>について詳しく学びましょう。</p>
 <h3 id="dom-readyタグと拡張機能">DOM ready（タグと拡張機能）</h3>
-<p><strong>DOM Ready</strong>にスコープされたタグと拡張機能は、ブラウザがDOM Readyイベントを通知したときに実行されます。タグは<code>utag.21.js</code>のような別のファイルとしてページにロードされ、ページパフォーマンスと訪問体験を最適化するために非同期でロードされます。DOM Ready拡張機能とタグの正確な順序は保証されません。</p>
-<p>ページにロードされた各タグは、そのタグスコープの拡張機能を実行し、データマッピングを適用してから発火します。</p>
+<p><strong>DOM Ready</strong>にスコープされたタグと拡張機能は、ブラウザがDOM Readyイベントを通知したときに実行されます。タグは<code>utag.21.js</code>のような別のファイルとしてページにロードされ、ページパフォーマンスと訪問体験を最適化するために非同期でロードされます。DOM Ready拡張機能とタグの正確な順序は保証できません。</p>
+<p>ページにロードされた各タグは、タグスコープの拡張機能を実行し、データマッピングを適用した後に発火します。</p>
 <h3 id="after-tags">After tags</h3>
 <p>タグが実行された後、<strong>After Tags</strong>にスコープされた拡張機能が実行されます。</p>
 <h3 id="シングルページアプリケーションについて">シングルページアプリケーションについて</h3>
-<p><code>utag.view()</code>を使用して画面ビューを手動でトラッキングする場合、各呼び出しでロードルールが再評価されます。<a href="/ja/platforms/javascript/release-notes/#version-4-26-4-35"><code>utag.js</code>バージョン4.26</a>以降。Universal Tagの4.26以前のバージョンでは、<code>utag.view()</code>を呼び出すときにロードルールを再評価しません。</p>
+<p><code>utag.view()</code>を使用して画面ビューを手動でトラックする場合、各呼び出しでロードルールが再評価されます。<a href="/ja/release-notes/?filter=tealium-universal-tag#tealium-universal-tag-2014-01-01"><code>utag.js</code>バージョン4.26</a>以降。4.26以前のUniversal Tagのバージョンでは、<code>utag.view()</code>を呼び出すときにロードルールを再評価しません。</p>
 <p>さらに、ロードルールの動作は、Universal Tagのバージョン4.26以降で利用可能な<code>load_rules_at_wait</code>という構成オプションを使用して制御できます。これはレガシーカスタマイズであり、実装する前にカスタマーサクセスマネージャーに連絡することをお勧めします。</p>
 <p><a href="/ja/platforms/javascript/settings/">Universal Tagの構成構成</a>について詳しく学びましょう。</p>
 <h2 id="用語集">用語集</h2>
 <h3 id="データマッピング">データマッピング</h3>
-<p>Tealium変数をベンダー変数にマッピングすると、データマッピングと呼ばれる接続が作成されます。データマッピングは、タグにどのデータが送信されるかを構成する方法です。</p>
+<p>Tealium変数をベンダー変数にマッピングすると、データマッピングと呼ばれる接続が作成されます。データマッピングは、タグにどのデータを送信するかを構成する方法です。</p>
 <h3 id="dom">DOM</h3>
 <p>DOMはDocument Object Modelの略です。DOMはWebページの階層的表現であり、その要素と対話する方法を提供します。</p>
 <h3 id="拡張スコープ">拡張スコープ</h3>
 <p>拡張スコープは、utag.jsの処理中に拡張機能が実行されるタイミングを示します。拡張機能は、Pre Loader、Before Load Rules、After Load Rules、特定のベンダータグ（タグスコープ）、またはDOM Readyイベントにスコープされることができます。</p>
 <h3 id="タグバンドリング">タグバンドリング</h3>
-<p>タグバンドリングは、utagファイルをフェッチするリクエストの数を減らす構成です。各タグ（<code>utag.#.js</code>）に対して個別のリクエストを行う代わりに、それらのファイルの内容が元のファイル、<code>utag.js</code>に含まれ（バンドルされ）ます。</p>
+<p>タグバンドリングは、utagファイルをフェッチするリクエストの数を減らす構成です。各タグ（<code>utag.#.js</code>）に対して個別のリクエストを行う代わりに、それらのファイルの内容が元のファイル、<code>utag.js</code>に含まれ（バンドル）ます。</p>
 <h3 id="タグタイミング">タグタイミング</h3>
 <p><strong>Tag Timing</strong>は、タグが操作の順序でいつ発火するかを決定する高度なタグ構成です。オプションは：<code>Prioritized</code>と<code>DOM Ready</code>です。</p>
 <p><a href="/ja/iq-tag-management/tags/about/">高度なタグ構成</a>について詳しく学びましょう。</p>
 <h3 id="utagview">utag.view()</h3>
-<p><code>utag.view()</code>関数は、ページビューイベントをトラッキングするために使用されます。utag.jsファイルがページにロードされると、この関数は自動的に呼び出され、初期ページロードをページビューイベントとしてトラッキングします。</p>
+<p><code>utag.view()</code>関数は、ページビューイベントをトラックするために使用されます。utag.jsファイルがページにロードされると、この関数は自動的に呼び出され、初期ページロードをページビューイベントとしてトラックします。</p>
 <figure><a class="slb" href="/images/iq-tag-management/utag.js-order-of-operations-simplified.jpg"><img src="/images/iq-tag-management/utag.js-order-of-operations-simplified.jpg"
          alt="操作の順序の簡略化"
          title="操作の順序の簡略化"/>
@@ -514,14 +514,14 @@
 </figure>
 <h4 id="utag-waterfall---タグタイミング--prioritized">utag Waterfall - タグタイミング = &ldquo;Prioritized&rdquo;</h4>
 <figure><a class="slb" href="/images/iq-tag-management/utag-waterfall-non-ready-wait.png"><img src="/images/iq-tag-management/utag-waterfall-non-ready-wait.png"
-         alt="waterfall non-ready-wait"
-         title="waterfall non-ready-wait"/>
+         alt="ウォーターフォール非レディ待機"
+         title="ウォーターフォール非レディ待機"/>
     </a>
 </figure>
 <h4 id="utag-waterfall---タグタイミング--dom-ready">utag Waterfall - タグタイミング = &ldquo;DOM Ready&rdquo;</h4>
 <figure><a class="slb" href="/images/iq-tag-management/utag-waterfall-with-ready-wait.png"><img src="/images/iq-tag-management/utag-waterfall-with-ready-wait.png"
-         alt="waterfall with ready-wait.png"
-         title="waterfall with ready-wait.png"/>
+         alt="ウォーターフォールレディ待機"
+         title="ウォーターフォールレディ待機"/>
     </a>
 </figure>
 
@@ -533,10 +533,10 @@
   <a href="/ja/iq-tag-management/getting-started/file-cache/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>ファイルのキャッシュ方法</div>
+      <div>ファイルがどのようにキャッシュされるか</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"ファイルのキャッシュ方法"</title>
+      <title>"ファイルがどのようにキャッシュされるか"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -584,7 +584,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2024年November月13日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

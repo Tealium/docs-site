@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "client-side-tags",
-        reading_time  : "5",
+        reading_time  : "6",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -439,7 +439,7 @@ Use this tag with AudienceStream to identify and action your visitors.</li>
 The event data coming from this tag can also be made available to DataAccess, where it can be analyzed using Business Intelligence (BI) tools of your choice.</li>
 <li><strong>Enrich your data layer</strong><br>
 Use the data enrichment setting to add visit and visitor attributes from AudienceStream to your data layer.<br>
-To learn more, see (<a href="/server-side/attributes/data-layer-enrichment/enable/">Enable Data Layer Enrichment</a>).</li>
+To learn more, see <a href="/server-side/attributes/data-layer-enrichment/enable/">Enable Data Layer Enrichment</a>.</li>
 </ul>
 <h2 id="tag-tips">Tag tips</h2>
 <ul>
@@ -448,7 +448,7 @@ To learn more, see (<a href="/server-side/attributes/data-layer-enrichment/enabl
 <li>Specify a value in the <strong>Tealium Profile</strong> field only when <strong>Tealium Collect Endpoint</strong> field is blank and your server-side data collection profile is something other than the current profile.</li>
 </ul>
 <h2 id="tag-configuration">Tag configuration</h2>
-<p>First, go to the tag marketplace and add the Tealium Collect tag (Learn more about <a href="/iq-tag-management/tags/manage/">how to add a tag</a>).</p>
+<p>First, go to the tag marketplace and add the Tealium Collect tag. For more information, see <a href="/iq-tag-management/tags/manage/#add-a-tag">Manage tags</a>.</p>
 <p>After adding the tag, configure the following settings:</p>
 <ul>
 <li><strong>Title</strong>
@@ -506,13 +506,13 @@ To learn more, see (<a href="/server-side/attributes/data-layer-enrichment/enabl
 <ul>
 <li>Set to <code>true</code> to use <code>navigator.sendBeacon()</code> to send tracking calls.</li>
 <li>Set to <code>false</code> to use the legacy browser method <code>XMLHttpRequest</code> to send tracking calls.</li>
-<li>SendBeacon is intended for small amounts of data and has a data size limit of 64Kb in most browsers. For more infomrmation, see <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon">Navigator:sendBeacon() method</a>.</li>
+<li>SendBeacon is intended for small amounts of data and has a data size limit of 64Kb in most browsers. For more information, see <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon">Navigator:sendBeacon() method</a>.</li>
 <li>Default: <code>true</code></li>
 </ul>
 </li>
 <li><strong>Use HTTP API Endpoint</strong>
 <ul>
-<li>Set to true to use the <a href="/platforms/http-api/endpoint-spec/">HTTP API endpoint</a> instead of the Tealium Collect endpoint.</li>
+<li>Set to true to use the <a href="/platforms/http-api/endpoint/">HTTP API endpoint</a> instead of the Tealium Collect endpoint.</li>
 <li>Default: <code>false</code></li>
 </ul>
 </li>
@@ -551,7 +551,7 @@ To learn more, see (<a href="/server-side/attributes/data-layer-enrichment/enabl
 <ul>
 <li>To prioritize third-party client-side tags, position this tag last in your list of tags to allow them to run first.</li>
 <li>Do not add more than one instance of this tag in your profile.</li>
-<li>Use the latest version of the uTag Loader template. For more information, see <a href="/platforms/javascript/release-notes/">Release Notes - utag.js</a>.</li>
+<li>Use the latest version of the uTag Loader template. For more information, see <a href="/platforms/javascript/version-4-50/">Version 4.50&#43; notes</a>.</li>
 </ul>
 <h2 id="advanced">Advanced</h2>
 <p>For first-party CNAME of the Tealium visitor service endpoint used for data layer enrichment, use a JavaScript Code extension scoped to the Tealium Collect tag to override the URL with the following code:</p>
@@ -574,7 +574,20 @@ To learn more, see (<a href="/server-side/attributes/data-layer-enrichment/enabl
 Learn more about the <a href="/platforms/getting-started-mobile/server-side/#native-module">native Collect module for mobile</a>.</li>
 <li>When using the <a href="/platforms/getting-started-mobile/server-side/#javascript-tag">Tealium Collect tag with the Tag Management module for mobile</a>, ensure that the <strong>Tealium Collect</strong> option in the <a href="/iq-tag-management/profiles/creating-a-mobile-profile/#configure-mobile-settings">mobile publish settings</a> is off to avoid duplicate tracking.</li>
 </ul>
-<h2 id="legacy-cookies">Legacy cookies</h2>
+<h2 id="cookies">Cookies</h2>
+<p>The Tealium Collect tag creates the following cookies:</p>
+<ul>
+<li><code>utag_main_v_id</code>: a unique, partially random identifier to ensure compliance with data privacy and consent rules. The Collect tag creates this cookie in <code>utag.js</code> version 4.50 and later if the <a href="/platforms/javascript/settings/#always_set_v_id"><code>always_set_v_id</code> utag setting</a> is set to <code>true</code>. Otherwise, the Collect tag creates the cookie under the following conditions:
+<ul>
+<li>The <code>suppress_v_id</code> Collect setting is set to <code>false</code> or not set.</li>
+<li>The cookie&rsquo;s value is not already set.<br>
+For more information about this cookie, see <a href="/platforms/javascript/version-4-50/"><code>utag.js</code> Release Notes version 4.50</a>.</li>
+</ul>
+</li>
+<li><code>utag_main_dc_group</code>: a random number to use with the <strong>Sample Size</strong> setting.</li>
+<li><code>utag_main_dc_region</code>: the AudienceStream region where the visit session is stored. This cookie is used for determining the endpoints for <a href="/server-side/attributes/data-layer-enrichment/">data layer enrichment</a>.</li>
+</ul>
+<h3 id="legacy-cookies">Legacy cookies</h3>
 <p>For compatibility reasons, the Tealium Collect tag creates the following legacy cookies:</p>
 <ul>
 <li><code>utag_main_dc_event</code>: a duplicate of the <code>utag_main__se</code> Session Event cookie.</li>
@@ -641,7 +654,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  June 25, 2024 
+          <p>This page was last updated:  November 7, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -664,7 +677,8 @@ No</button>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#load-rules" href="javascript:void(0)">Load rules</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#working-with-trace" href="javascript:void(0)">Working with trace</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#implementing-with-mobile" href="javascript:void(0)">Implementing with mobile</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#legacy-cookies" href="javascript:void(0)">Legacy cookies</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cookies" href="javascript:void(0)">Cookies</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#legacy-cookies" href="javascript:void(0)">Legacy cookies</a></li>
               </nav>
   </aside></nav>
 

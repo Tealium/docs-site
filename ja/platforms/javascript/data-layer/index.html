@@ -88,10 +88,9 @@
   </ul>
   <ul class="list pa0" data-nav-section="javascript"><li data-level="1" class="relative w-100 fw8 f4 mv2 text-color-primary pv1 ind2"><span class="pb2">JavaScript (Web)</span>
         <ul data-level="1" class="javascript desktopmenu animated fadeIn list pl0 mt2"><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
+        <a href="/ja/platforms/javascript/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".utag-install">インストール</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/javascript/track/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".javascript-track">トラッキング</a></li><li data-level="2" class="selected relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/javascript/data-layer/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".">データレイヤー</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/javascript/universal-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">ユニバーサルタグ（utag.js）</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
-        <a href="/ja/platforms/javascript/install/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".utag-install">インストール</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/javascript/universal-data-object/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">ユニバーサルデータオブジェクト (utag_data)</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/javascript/data-layer-object/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">データレイヤーオブジェクト (b)</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
         <a href="/ja/platforms/javascript/single-page-applications/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">シングルページアプリケーション</a></li><li data-level="2" class="relative w-100 hover-accent-color-light fw4 f5  ">
@@ -145,14 +144,18 @@
   
 
   
+    <p class="f4 fw3 lh-copy">
+      ユニバーサル データ オブジェクトの組み込み変数について学習します。
+    </p>
+  
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>ユニバーサルデータオブジェクト（UDO）には、そのオブジェクトが読み込まれるページの基本情報を収集するビルトイン変数が含まれています。これらの変数には、<code>utag.js</code>によって作成されるCookie、ページの標準DOM変数、および読み込まれる構成に関するTealium固有の変数があります。</p>
-<p>詳細は、<a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Data-Layer-Variables/ta-p/9427">使用可能なデータレイヤー変数の種類</a>に関するページを参照してください。</p>
-<h2 id="標準的なページデータ">標準的なページデータ</h2>
-<p>以下の変数は、ウェブページで使用できる標準JavaScriptプロパティから生成されます。これらの変数は、タグ配信ルール、拡張機能、データマッピング、条件と一緒に使用するために、iQインターフェイス内に自動的に表示されます。</p>
-<p>以下の値は、ページのURLを想定しています。</p>
+  <p>ユニバーサルデータオブジェクト（UDO）には、読み込まれたページに関する基本情報を収集する組み込み変数が含まれています。これらの変数には、<code>utag.js</code>によって作成されたクッキー、ページからの標準DOM変数、読み込まれた構成に関するTealium固有の変数が含まれます。</p>
+<p>利用可能なデータレイヤー変数の種類について<a href="/ja/iq-tag-management/data-layer/data-layer-variables/">詳しく学ぶ</a>。</p>
+<h2 id="標準ページデータ">標準ページデータ</h2>
+<p>以下の変数は、ウェブページで利用可能な標準的なJavaScriptプロパティから生成されます。これらの変数は、ロードルール、拡張機能、データマッピング、条件とともにiQインターフェース内に自動的に表示されます。</p>
+<p>これらの値は、ページのURLを前提としています：</p>
 <pre tabindex="0"><code>http://www.example.com/path/file.html?param1=value1#hash=fragment
 </code></pre><table>
 <thead>
@@ -165,54 +168,54 @@
 <tbody>
 <tr>
 <td><code>dom.domain</code></td>
-<td>URLの完全ドメイン。ソース：<code>location.hostname</code></td>
+<td>URLの完全なドメイン。ソース: <code>location.hostname</code></td>
 <td><code>www.example.com</code></td>
 </tr>
 <tr>
 <td><code>dom.hash</code></td>
-<td>URLのハッシュフラグメント（文字#を除く）。ソース：<code>location.hash</code></td>
+<td>URLのハッシュフラグメント（#文字を除く）。ソース: <code>location.hash</code></td>
 <td><code>hash=fragment</code></td>
 </tr>
 <tr>
 <td><code>dom.pathname</code></td>
-<td>URLのパス（クエリパラメータとドメインを除く）。ソース：<code>location.pathname</code></td>
+<td>URLのパス、クエリパラメータとドメインを除く。ソース: <code>location.pathname</code></td>
 <td><code>&quot;/path/file.html&quot;</code></td>
 </tr>
 <tr>
 <td><code>dom.query_string</code></td>
-<td>URLの完全クエリ文字列。ソース：<code>location.search</code></td>
-<td> <code>param1=value1</code></td>
+<td>URLの完全なクエリストリング。ソース: <code>location.search</code></td>
+<td><code>param1=value1</code></td>
 </tr>
 <tr>
 <td><code>dom.referrer</code></td>
-<td>前のページのURL。ソース：<code>document.referrer</code></td>
-<td> </td>
+<td>前のページのURL。ソース: <code>document.referrer</code></td>
+<td></td>
 </tr>
 <tr>
 <td><code>dom.title</code></td>
-<td><code>&lt;title&gt;</code>タグで囲まれたテキスト。ソース：<code>document.title</code></td>
+<td><code>&lt;title&gt;</code>タグ間のテキスト。ソース: <code>document.title</code></td>
 <td><code>&quot;Test Page Name&quot;</code></td>
 </tr>
 <tr>
 <td><code>dom.url</code></td>
-<td>ページの完全URL。ソース：<code>document.URL</code></td>
+<td>ページの完全なURL。ソース: <code>document.URL</code></td>
 <td><code>http://www.example.com/</code> <code>PATH/FILE.html?param1=VALUE#hash=FRAGMENT</code></td>
 </tr>
 <tr>
 <td><code>dom.viewport_height</code></td>
-<td>ブラウザのビューポートの高さ。ソース：<code>window.innerHeight</code>または<code>document.documentElement. clientHeight</code></td>
+<td>ブラウザビューポートの高さ。ソース: <code>window.innerHeight</code> または <code>document.documentElement. clientHeight</code></td>
 <td><code>1320</code></td>
 </tr>
 <tr>
 <td><code>dom.viewport_width</code></td>
-<td>ブラウザのビューポートの幅。ソース：<code>window.innerWidth</code>または<code>document.documentElement. clientWidth</code></td>
+<td>ブラウザビューポートの幅。ソース: <code>window.innerWidth</code> または <code>document.documentElement. clientWidth</code></td>
 <td><code>1278</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="cookie">Cookie</h2>
-<p>以下の変数は<code>utag_main</code>という名前の1つのCookieに格納され、維持されます。これらの変数はデータオブジェクト内に個別の変数として表示され、すべてに<code>cp.utag_main_</code>というプレフィックスが付きます。</p>
-<p>これらの変数をiQ構成に追加するには、**[Data Layer]**タブで<code>Tealium Built-in Data</code>という名前の<a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Data-Layer-Variables/ta-p/9427#add_common_data_sources">データバンドルを使用</a>します。</p>
+<h2 id="クッキー">クッキー</h2>
+<p>以下の変数は、<code>utag_main</code>という名前の単一のクッキーに保存され、維持されます。または、<code>utag_main_</code>クッキーネームスペース（バージョン4.50から）のスタンドアロンクッキーとして保存されます。すべての変数は、データオブジェクト内に別々の変数として表示され、すべて<code>cp.utag_main_</code>でプレフィックスされます。</p>
+<p>これらの変数をiQ構成に追加するには、<strong>Data Layer</strong>タブから<code>Tealium Built-in Data</code>という名前の<a href="/ja/iq-tag-management/data-layer/data-bundles/">データバンドルを使用</a>します。</p>
 <table>
 <thead>
 <tr>
@@ -224,17 +227,17 @@
 <tbody>
 <tr>
 <td><code>cp.utag_main__pn</code></td>
-<td><strong>セッションページビュー数</strong> - 現在のセッションで表示されているページ数</td>
+<td><strong>セッションページビューカウント</strong> - 現在のセッションで表示されたページの数</td>
 <td><code>2</code></td>
 </tr>
 <tr>
 <td><code>cp.utag_main__se</code></td>
-<td><strong>セッションイベント数</strong> - 現在のセッションでトラッキングされているイベント数</td>
+<td><strong>セッションイベントカウント</strong> - 現在のセッションで追跡されたイベントの数</td>
 <td><code>2</code></td>
 </tr>
 <tr>
 <td><code>cp.utag_main__sn</code></td>
-<td><strong>セッション数</strong> - このユニーク訪問のセッション数</td>
+<td><strong>セッションカウント</strong> - このユニークな訪問のセッション数</td>
 <td><code>1</code></td>
 </tr>
 <tr>
@@ -244,24 +247,24 @@
 </tr>
 <tr>
 <td><code>cp.utag_main__st</code></td>
-<td><strong>タイムスタンプ</strong> - UNIX/エポックのタイムスタンプ（ミリ秒単位）</td>
+<td><strong>タイムスタンプ</strong> - ミリ秒単位のUnix/Epochタイムスタンプ</td>
 <td><code>1522968400449</code></td>
 </tr>
 <tr>
 <td><code>cp.utag_main_ses_id</code></td>
-<td><strong>セッションID</strong> - セッションの一意識別子</td>
+<td><strong>セッションID</strong> - セッションの一意の識別子</td>
 <td><code>1522965346545</code></td>
 </tr>
 <tr>
 <td><code>cp.utag_main_v_id</code></td>
-<td><strong>訪問ID</strong> - 各訪問の一意識別子</td>
-<td><code>016297481...</code>（45文字）</td>
+<td><strong>訪問ID</strong> - 各訪問の一意の識別子</td>
+<td><code>016297481...</code> (45文字)</td>
 </tr>
 </tbody>
 </table>
 <h2 id="tealiumデータ">Tealiumデータ</h2>
-<p>以下の変数には、ページに読み込まれた<code>utag.js</code>に関する情報とともに、内部で使用される他の値が格納されます。</p>
-<p>**[Data Layer]**タブで<code>Tealium Built-in Data</code>という名前の<a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Data-Layer-Variables/ta-p/9427#add_common_data_sources">データバンドルを使用</a>して、<code>ut.*</code>変数をiQ構成に追加します。</p>
+<p>以下の変数には、ページに読み込まれた<code>utag.js</code>に関する情報と、内部で使用される他の値が含まれています。</p>
+<p><code>ut.*</code>変数をiQ構成に追加するには、<strong>Data Layer</strong>タブから<code>Tealium Built-in Data</code>という名前の<a href="/ja/iq-tag-management/data-layer/data-bundles/">データバンドルを使用</a>します。</p>
 <table>
 <thead>
 <tr>
@@ -288,7 +291,7 @@
 </tr>
 <tr>
 <td><code>tealium_event</code></td>
-<td>Tealiumイベント名（直接構成されていない場合、デフォルトは&quot;view&quot;または&quot;link&quot;になります）</td>
+<td>Tealiumイベント名（直接構成されていない場合は&quot;view&quot;または&quot;link&quot;にデフォルト構成）</td>
 <td><code>view</code></td>
 </tr>
 <tr>
@@ -308,7 +311,7 @@
 </tr>
 <tr>
 <td><code>tealium_random</code></td>
-<td>乱数</td>
+<td>ランダム数</td>
 <td><code>7782219635308327</code></td>
 </tr>
 <tr>
@@ -318,23 +321,23 @@
 </tr>
 <tr>
 <td><code>tealium_timestamp_epoch</code></td>
-<td>現在のUNIXタイムスタンプ（秒単位）</td>
+<td>現在のUnixタイムスタンプ（秒）</td>
 <td><code>1522956509</code></td>
 </tr>
 <tr>
 <td><code>tealium_timestamp_local</code></td>
-<td>現地時間タイムスタンプ</td>
+<td>ローカルタイムスタンプ</td>
 <td><code>2018-04-05T12:28:29.019</code></td>
 </tr>
 <tr>
 <td><code>tealium_timestamp_utc</code></td>
-<td>UTCタイムスタンプ </td>
+<td>UTCタイムスタンプ</td>
 <td><code>2018-04-05T19:28:29.019Z</code></td>
 </tr>
 <tr>
 <td><code>tealium_visitor_id</code></td>
 <td><code>utag_main_v_id</code>のコピー</td>
-<td><code>016297481...</code>（45文字）</td>
+<td><code>016297481...</code> (45文字)</td>
 </tr>
 <tr>
 <td><code>ut.account</code></td>
@@ -343,7 +346,7 @@
 </tr>
 <tr>
 <td><code>ut.domain</code></td>
-<td>Cookieの構成に使用される最上位ドメイン</td>
+<td>クッキーを構成するためのトップレベルドメイン。</td>
 <td><code>example.com</code></td>
 </tr>
 <tr>
@@ -368,18 +371,22 @@
 </tr>
 <tr>
 <td><code>ut.version</code></td>
-<td>公開バージョン（<code>utag.js</code>バージョン+タイムスタンプ）</td>
+<td>公開バージョン（<code>utag.js</code>バージョン + タイムスタンプ）</td>
 <td><code>ut4.44.201710171745</code></td>
 </tr>
 <tr>
 <td><code>ut.visitor_id</code></td>
 <td><code>tealium_visitor_id</code>のコピー</td>
-<td><code>016297481...</code>（45文字）</td>
+<td><code>016297481...</code> (45文字)</td>
 </tr>
 </tbody>
 </table>
+<h2 id="ローカル保存とセッション保存">ローカル保存とセッション保存</h2>
+<p>ローカル保存とセッション保存のキーは、<code>localStorage</code>と<code>sessionStorage</code>変数を使用してデータレイヤーに自動的に表示されます。</p>
+<p>これらの保存変数を使用するには、<strong>iQタグ管理 &gt; データレイヤー &gt; +変数を追加</strong>に移動します。<strong>UDO変数</strong>を選択し、ソース変数名を入力します。ローカル保存の場合は<code>ls.variable_name</code>、セッション保存の場合は<code>ss.variable_name</code>を使用します。</p>
+<p>ローカル保存とセッション保存変数についての詳細は、<a href="/ja/iq-tag-management/data-layer/data-layer-variables/">データレイヤー変数</a>を参照してください。</p>
 <h2 id="サンプル">サンプル</h2>
-<p><code>utag.data</code>内にあるビルトインデータのサンプルを以下に示します。</p>
+<p>以下は、<code>utag.data</code>内の組み込みデータのサンプルです。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{  
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;cp.utag_main_v_id&#34;</span>       : <span style="color:#e6db74">&#34;015da2e1daf10020914ce74dfaf00207900780700093c&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;cp.utag_main__sn&#34;</span>        : <span style="color:#e6db74">&#34;389&#34;</span>,
@@ -427,13 +434,13 @@
 <div class="mv30 nested-links overflow-hidden dpn flex justify-between flex-row-reverse"><div class="fr ml3">
 
   
-  <a href="/ja/platforms/javascript/universal-tag/"
+  <a href="/ja/platforms/javascript/universal-data-object/"
     class="inline-flex items-center-ns ba b--black-10 br3 pa3">
     <section class="tl pr3">
-      <div>ユニバーサルタグ（utag.js）</div>
+      <div>ユニバーサルデータオブジェクト (utag_data)</div>
     </section>
     <svg class="w1" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;height:100%">
-      <title>"ユニバーサルタグ（utag.js）"</title>
+      <title>"ユニバーサルデータオブジェクト (utag_data)"</title>
       <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
     </svg>
   </a>
@@ -481,7 +488,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2018年November月7日
+          <p>最終更新日 ::  2024年November月8日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -495,9 +502,10 @@
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%99%E6%BA%96%E7%9A%84%E3%81%AA%E3%83%9A%E3%83%BC%E3%82%B8%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">標準的なページデータ</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cookie" href="javascript:void(0)">Cookie</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E6%A8%99%E6%BA%96%E3%83%9A%E3%83%BC%E3%82%B8%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">標準ページデータ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC" href="javascript:void(0)">クッキー</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E3%83%87%E3%83%BC%E3%82%BF" href="javascript:void(0)">Tealiumデータ</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E4%BF%9D%E5%AD%98%E3%81%A8%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E4%BF%9D%E5%AD%98" href="javascript:void(0)">ローカル保存とセッション保存</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB" href="javascript:void(0)">サンプル</a></li>
               </nav>
   </aside></nav>

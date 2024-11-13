@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "2",
+        reading_time  : "3",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -561,8 +561,52 @@
          title="array of numbers"/>
     </a>
 </figure>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>String representations of numbers (<code>0</code>, <code>123</code>, <code>12.95</code>) are converted to their numeric values. All other non-numeric values are ignored.</p>
-<h2 id="enrichments">Enrichments</h2>
+<p class="tip"><i class="fa fa-info-circle"></i>String representations of numbers are converted to their respective numeric values. All other non-numeric values are ignored.</p>
+<h2 id="validation">Validation</h2>
+<p>When an event is received, Tealium validates any array of numbers attributes to ensure that each value in the array is a number. If a value represents a number, it is converted to the number format, as follows:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Input</th>
+<th style="text-align:left">Parsed Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">JSON Native Numbers</td>
+<td style="text-align:left"><code>42</code></td>
+<td style="text-align:left"><code>42</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Stringified numbers</td>
+<td style="text-align:left"><code>&quot;42.5&quot;</code></td>
+<td style="text-align:left"><code>42.5</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Stringified scientific notation</td>
+<td style="text-align:left"><code>&quot;1e6&quot;</code></td>
+<td style="text-align:left"><code>1000000</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Stringified alternate bases</td>
+<td style="text-align:left"><code>&quot;0xFE4DB9AC&quot;</code></td>
+<td style="text-align:left"><code>4266506668</code></td>
+</tr>
+<tr>
+<td style="text-align:left">String</td>
+<td style="text-align:left"><code>&quot;fourteen&quot;</code></td>
+<td style="text-align:left"><code>null</code></td>
+</tr>
+</tbody>
+</table>
+<p>If a value is not a number, that value is removed from the array. For example, the value &ldquo;one&rdquo; in the following array does not represent a number:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// Before validation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>[<span style="color:#e6db74">&#34;1&#34;</span>, <span style="color:#ae81ff">2.5</span>, <span style="color:#e6db74">&#34;one&#34;</span>, <span style="color:#e6db74">&#34;3.5&#34;</span>, <span style="color:#ae81ff">4</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// After validation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2.5</span>, <span style="color:#ae81ff">3.5</span>, <span style="color:#ae81ff">4</span>]
+</span></span></code></pre></div><h2 id="enrichments">Enrichments</h2>
 <h3 id="add-a-number">Add a number</h3>
 <p>This enrichment adds a number value to the array. The added attribute can only be a number, iQ variable, or omnichannel attribute. For example, you may wish to add the last purchase value to the rolling <code>purchase_total_history</code> value array.</p>
 <p><strong>Attribute Name</strong>: <code>purchase_total_history</code></p>
@@ -654,7 +698,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  December 15, 2023 
+          <p>This page was last updated:  November 13, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -668,7 +712,8 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enrichments" href="javascript:void(0)">Enrichments</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#validation" href="javascript:void(0)">Validation</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enrichments" href="javascript:void(0)">Enrichments</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-a-number" href="javascript:void(0)">Add a number</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-an-array-of-numbers" href="javascript:void(0)">Add an array of numbers</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#reset" href="javascript:void(0)">Reset</a></li>

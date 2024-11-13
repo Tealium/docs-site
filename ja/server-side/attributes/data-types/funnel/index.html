@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "2",
+        reading_time  : "1",
         site_language : "ja",
         tealium_event : "page_view"
     }
@@ -252,7 +252,7 @@
         <a href="/ja/server-side/attributes/data-types/tally/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">テリー属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/badge/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-badge-attribute">バッジ属性</a></li><li data-level="4" class="selected relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/funnel/" class="db link pr2 pv2  bg-secondary primary-color " data-target=".server-side-funnel-attribute">ファネル属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/data-types/boolean/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-boolean-attribute">ブーリアン属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/boolean/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-boolean-attribute">ブール属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/popular-badges/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-popular-badges">人気のバッジ</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/number/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-number-attribute">数値属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/set-of-strings/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-set-of-strings-attribute">文字列のセット属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -527,27 +527,28 @@
 
   
     <p class="f4 fw3 lh-copy">
-      この記事では、ファネルデータ型とその使用方法について説明します。
+      この記事では、ファネルデータタイプとその使用方法について説明します。
     </p>
   
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>ファネル属性は、以下のスコープで利用できます：訪問および訪問。</p>
+  <p>ファネル属性は、次の範囲で利用可能です：訪問と訪問。</p>
 <figure><a class="slb" href="/images/server-side/screenshot-2019-11-11-at-1.26.28-pm.png"><img src="/images/server-side/screenshot-2019-11-11-at-1.26.28-pm.png"
          alt="Screenshot 2019-11-11 at 1.26.28 PM.png"
          title="Screenshot 2019-11-11 at 1.26.28 PM.png"/>
     </a>
 </figure>
-<h2 id="動作方法">動作方法</h2>
-<p>ファネル属性は、訪問の進行状況を開始から終了まで測定するためのステップのシーケンスを追跡します。ステップは、構成されたルールが発生したときに記録されます。ステップが記録されると、ステップに関する情報のスナップショットとして属性値もキャプチャできます。ファネルステップは必須またはオプションであり、ただし最後のステップは常に必須です。</p>
-<p>例として、チェックアウトファネル、購入ファネル、またはリードジェネレータファネルがあります。</p>
-<p>ファネル属性には保存容量制限はありませんが、これらの属性は暗号化および圧縮後のプロファイルの最大サイズによって制限されます。</p>
-<h3 id="必須およびオプションのステップ">必須およびオプションのステップ</h3>
-<p>ファネルを構成する際には、予想されるシーケンスですべてのステップ（必須およびオプションの両方）を定義します。</p>
+<h2 id="仕組み">仕組み</h2>
+<p>ファネル属性は一連のステップを追跡し、訪問の進行状況を開始から終了まで測定します。構成されたルールが発生したときにステップが記録されます。ステップが記録されると、ステップに関する情報のスナップショットとして属性値もキャプチャされます。ファネルのステップは必須またはオプションであることができますが、最後のステップは常に必須です。</p>
+<p>例えば、チェックアウトファネル、購入ファネル、リードジェネレーターファネルなどがあります。</p>
+<h3 id="サイズ制限">サイズ制限</h3>
+<p>ファネル属性には保存容量の制限はありませんが、これらの属性は暗号化と圧縮後のプロファイルの最大サイズ（400 KB）によって制限されます。</p>
+<h3 id="必須ステップとオプションステップ">必須ステップとオプションステップ</h3>
+<p>ファネルを構成するときには、期待される順序ですべてのステップ（必須とオプション）を定義します。</p>
 <h4 id="必須ステップ">必須ステップ</h4>
-<p>必須とマークされたステップは、ファネル構成で定義されたシーケンスで発生すると記録されます。訪問が必須ステップをシーケンス外で実行した場合、ファネルには記録されません。つまり、必須ステップはシーケンス内でのみ記録されます。</p>
-<p>3つの必須ステップを持つ例のファネルの動作例：ステップ＃1、ステップ＃2、ステップ＃3：</p>
+<p>必須とマークされたステップは、ファネル構成で定義された順序で発生すると記録されます。訪問が必須のステップを順序を無視して実行すると、それはファネルに記録されません。つまり、必須のステップは順序通りに発生したときだけ記録されます。</p>
+<p>3つの必須ステップを持つファネルの例：ステップ＃1、ステップ＃2、ステップ＃3：</p>
 <table>
 <thead>
 <tr>
@@ -561,7 +562,7 @@
 <td>ステップ＃1</td>
 </tr>
 <tr>
-<td>ステップ＃3（シーケンス外）</td>
+<td>ステップ＃3（順序を無視）</td>
 <td>ステップ＃1</td>
 </tr>
 <tr>
@@ -575,8 +576,8 @@
 </tbody>
 </table>
 <h4 id="オプションステップ">オプションステップ</h4>
-<p>必須とマークされていないステップはオプションと見なされます。オプションステップは、ファネルで定義された正確なシーケンスでのみ記録されます。オプションステップは訪問によってスキップされることがあり、ファネルはその後のステップの記録を続けます。ただし、オプションステップがスキップされ、後で実行された場合、ファネルには記録されず、バックフィルされません。つまり、オプションステップがシーケンス外で実行された場合、ファネルには記録されません。</p>
-<p>1つのオプションステップを持つ例のファネルの動作例：ステップ＃1、ステップ＃2（オプション）、ステップ＃3、およびステップ＃4：</p>
+<p>必須とマークされていないステップはオプションと見なされます。オプションのステップは、ファネルで定義された正確な順序で発生した場合にのみ記録されます。訪問はオプションのステップをスキップして、ファネルが次のステップの記録を続けることができます。ただし、オプションのステップがスキップされ、その後実行された場合、それはファネルに記録されず、バックフィルされません。つまり、オプションのステップが順序を無視して実行された場合、それはファネルに記録されません。</p>
+<p>1つのオプションステップを持つファネルの例：ステップ＃1、ステップ＃2（オプション）、ステップ＃3、ステップ＃4：</p>
 <table>
 <thead>
 <tr>
@@ -590,7 +591,7 @@
 <td>ステップ＃1</td>
 </tr>
 <tr>
-<td>ステップ＃3（オプションステップ＃2をスキップ）</td>
+<td>ステップ＃3（オプションのステップ＃2をスキップ）</td>
 <td>ステップ＃1、ステップ＃3</td>
 </tr>
 <tr>
@@ -604,173 +605,174 @@
 </tbody>
 </table>
 <h3 id="属性データのキャプチャ">属性データのキャプチャ</h3>
-<p>ファネルの各ステップを記録するだけでなく、ステップが発生した時点で1つ以上の属性の値もキャプチャできます。キャプチャされたデータは、ステップが発生した時点での訪問の状態についての詳細情報を提供します。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>ファネル属性はAudienceStoreでアクセスできますが、AudienceDBやData Layer Enrichmentではアクセスできません。</p>
-<h2 id="ファネルエンリッチメント">ファネルエンリッチメント</h2>
+<p>ファネルの各ステップを記録するだけでなく、ステップが発生したときに1つ以上の属性の値をキャプチャすることもできます。キャプチャされたデータは、ステップが発生したときの訪問の状態についての詳細情報を提供します。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>ファネル属性はAudienceStoreでアクセス可能ですが、AudienceDBやData Layer Enrichmentではアクセスできません。</p>
+<h2 id="エンリッチメント">エンリッチメント</h2>
 <h3 id="ステップの作成">ステップの作成</h3>
-<p>このエンリッチメントを使用して、ファネル内のステップを作成します。ファネルステップを追加するにつれて、リストの一番上に表示されるステップがファネル内の最初のステップであり、一番下に表示されるステップが最後（必須）のステップです。新しいステップはリストの一番上に追加されます。</p>
+<p>このエンリッチメントを使用して、ファネルにステップを作成します。ファネルのステップを追加すると、リストの最上部に表示されるステップがファネルの最初のステップで、最下部に表示されるステップが最後（必須）のステップです。新しいステップはリストの最上部に追加されます。</p>
 <p>ファネルステップを作成するには：</p>
 <ol>
-<li><strong>ステップの作成</strong> をクリックします。</li>
+<li><strong>ステップを作成</strong>をクリックします。</li>
 <li>ステップのタイトルを入力します。</li>
-<li>（オプション）属性の値をキャプチャする場合は、属性を選択し、<strong>属性の追加</strong> をクリックします。</li>
-<li>オプションステップの場合は、<strong>必須ではない</strong> チェックボックスをクリアします。</li>
+<li>（オプション）属性値をキャプチャするには、属性を選択し、<strong>属性を追加</strong>をクリックします。</li>
+<li>オプションのステップの場合、<strong>必須</strong>のチェックボックスをクリアします。</li>
 <li>タイミングオプションとルールを選択します。</li>
 </ol>
-<p>ファネル内の各ステップについてこれらの手順を繰り返します。</p>
-<p>すべてのステップを入力した後、適切なシーケンスにドラッグします。</p>
+<p>これらのステップをファネルの各ステップで繰り返します。</p>
+<p>すべてのステップを入力したら、それらを適切な順序にドラッグします。</p>
 <h4 id="例">例</h4>
-<p>基本的な購入ファネル：製品ページからカートページ、チェックアウトページ、購入ページへのパス。</p>
-<p><strong>ステップ1：製品の表示</strong>
-データのキャプチャ：<code>product_name</code>
-ルール：<code>tealium_eventが &quot;product_view&quot; と等しい</code></p>
-<p><strong>ステップ2：カートの表示</strong>
-データのキャプチャ：なし
-ルール：<code>tealium_eventが &quot;cart_view&quot; と等しい</code></p>
-<p><strong>ステップ3：チェックアウト</strong>
-データのキャプチャ：なし
-ルール：<code>tealium_eventが &quot;checkout&quot; と等しい</code></p>
-<p><strong>ステップ4：購入完了</strong>
-データのキャプチャ：<code>order_id</code> および <code>order_total</code>
-ルール：<code>tealium_eventが &quot;purchase&quot; と等しい</code></p>
+<p>基本的な購入ファネル：製品ページからカートページ、チェックアウトページを経て購入ページへのパス。</p>
+<p><strong>ステップ1：製品を表示</strong>
+キャプチャデータ：<code>product_name</code><br>
+ルール：<code>tealium_event equals &quot;product_view&quot;</code></p>
+<p><strong>ステップ2：カートを表示</strong><br>
+キャプチャデータ：なし<br>
+ルール：<code>tealium_event equals &quot;cart_view&quot;</code></p>
+<p><strong>ステップ3：チェックアウト</strong><br>
+キャプチャデータ：なし<br>
+ルール：<code>tealium_event equals &quot;checkout&quot;</code></p>
+<p><strong>ステップ4：購入完了</strong><br>
+キャプチャデータ：<code>order_id</code>と<code>order_total</code><br>
+ルール：<code>tealium_event equals &quot;purchase&quot;</code></p>
 <h2 id="使用例">使用例</h2>
-<h3 id="無料トライアル登録ファネル">無料トライアル登録ファネル</h3>
-<p>プレミアム製品を購入する前に、訪問に無料で試用してもらうことを許可するとします。ただし、トライアル製品は、シンプルな3ステップの登録プロセスを完了した訪問のみ利用できます。ファネル内のすべてのステップを定義し、訪問がそれらを完了する必要がある順序で配置します。これを行う方法は2つあります：</p>
+<h3 id="無料試用登録ファネル">無料試用登録ファネル</h3>
+<p>あなたが訪問に製品を購入する前に無料で試すことを許可しているとしましょう。ただし、試用製品は、簡単な3ステップの登録プロセスを完了した訪問にのみ提供されます。あなたはファネルのすべてのステップを定義し、訪問がそれらを完了しなければならない順序で配置します。これには2つの方法があります：</p>
 <ul>
-<li>逆の年代順に追加する。</li>
-<li>または、ランダムな順序で追加し、それぞれのステップを適切な位置にドラッグします。</li>
+<li>逆の時間順序で追加します。</li>
+<li>ランダムな順序で追加し、それぞれのステップを適切な位置にドラッグします。</li>
 </ul>
-<p>この例では、逆の年代順法に従います。各ステップを &lsquo;必須&rsquo; としてマークすることを忘れないでください。これにより、登録に成功したユーザーと終了前に離脱したユーザーを区別することができます。</p>
+<p>この例では、逆の時間順序の方法を使用します。各ステップを「必須」とマークすることを忘れないでください。これにより、誰が正常に登録したか、誰が終了前にドロップオフしたかを知ることができます。</p>
 <ol>
 <li>ファネル属性を追加します。タイトルを付けてスコープを構成します。</li>
 </ol>
-<pre tabindex="0"><code>ファネルタイトル：無料トライアル登録
+<pre tabindex="0"><code>ファネルタイトル：無料試用登録
 ファネルスコープ：訪問
 </code></pre><ol start="2">
-<li>登録の最終ステップを作成します。この時点ではステップが1つだけであり、自動的に必須に構成されます。ここでは属性データはキャプチャされません。</li>
+<li>「ありがとう」ページに訪問を連れてくる登録の最終ステップを作成します。この時点で唯一のステップであるため、自動的に必須に構成されます。ここでは属性データはキャプチャされません。</li>
 </ol>
-<pre tabindex="0"><code>タイトル：ステップ3-トライアル完了
+<pre tabindex="0"><code>タイトル：ステップ3-試用完了
 WHEN：ANY EVENT
-ルール：Free Trial - Thanks
-  Current URL contains (ignore case) &#34;freetrialthanks.html&#34;
+ルール：無料試用 - ありがとう
+  現在のURLに含まれる（大文字小文字を無視） &#34;freetrialthanks.html&#34;
 </code></pre><ol start="3">
-<li>訪問が &lsquo;登録&rsquo; ボタンをクリックする必要がある中間ステップを作成します。このステップは &lsquo;必須&rsquo; ですが、ここでは属性データはキャプチャされません。</li>
+<li>訪問に「登録」ボタンをクリックすることを要求する中間ステップを作成します。このステップは「必須」ですが、ここでは属性データはキャプチャされません。</li>
 </ol>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>このステップの前に、訪問がボタンを追跡し、クリックされたときにカテゴリとアクションのデータをキャプチャする必要があります。Tealium iQでは、<a href="/ja/iq-tag-management/data-layer/data-layer-variables/">2つのUDO変数を追加</a>し、<code>ga_category</code> と <code>ga_action</code> を追加し、<a href="/ja/iq-tag-management/extensions/extensions-list/jquery-onhandler-extension/">jQuery Extension</a>を構成する必要があります。その後、ルール条件でデータソースが利用可能になります。</p>
-<pre tabindex="0"><code>タイトル：ステップ2-トライアル参加
+<p class="note"><i class="fa fa-exclamation-triangle"></i>このステップの前に、jQueryリスナーでボタンを追跡し、訪問がクリックしたときにカテゴリとアクションデータをキャプチャする必要があります。Tealium iQでは、<a href="/ja/iq-tag-management/data-layer/data-layer-variables/">2つのUDO変数</a>、<code>ga_category</code>と<code>ga_action</code>を追加し、<a href="/ja/iq-tag-management/extensions/extensions-list/jquery-onhandler-extension/">jQuery Extension</a>を構成します。その後、データソースがルール条件に利用可能になります。</p>
+<pre tabindex="0"><code>タイトル：ステップ2-試用開始
 WHEN：ANY EVENT
 ルール：
   ga_category contains (ignore case) &#34;free trial&#34;
   AND
   ga_action contains &#34;engaged&#34;
 </code></pre><ol start="4">
-<li>訪問を無料トライアル登録ページに案内する最初のステップを作成します。このステップは &lsquo;必須&rsquo; ですが、ここでは属性データはキャプチャされません。</li>
+<li>訪問を無料試用登録ページに連れてくる最初のステップを作成します。このステップは「必須」ですが、ここでは属性データはキャプチャされません。</li>
 </ol>
-<pre tabindex="0"><code>タイトル：ステップ1-トライアル着陸
+<pre tabindex="0"><code>タイトル：ステップ1- 試用開始
 WHEN：ANY EVENT
-ルール：Free Trial Landing
-  Current URL contains (ignore case)&#34;freetrial.html&#34;
+ルール：無料試用ランディング
+  現在のURLに含まれる（大文字小文字を無視）&#34;freetrial.html&#34;
 </code></pre><h4 id="結果">結果</h4>
-<p>必須ステップが完了すると、訪問は登録を進めながらファネルから外れます。このトラッキングとファネルリングのパターンは、訪問が製品に正常に登録したかどうかを判断するために続けられます。一方、訪問がファネル内の任意のステップを完了しなかった場合、登録は不完全と見なされます。</p>
+<p>必須のステップが完了すると、訪問が登録を進めると同時にすぐにファネルアウトされます。このトラッキングとファネルアウトのパターンは、訪問が製品の登録に成功するまで続きます。一方、訪問がファネルの任意のステップを完了できなかった場合、登録は不完全と見なされます。</p>
 <h3 id="コンバージョンファネル">コンバージョンファネル</h3>
-<p><code>Conversion Funnel</code> というファネル属性を作成し、ファネルの各ステップごとに <strong>ステップの作成</strong> をクリックします。</p>
-<h4 id="ステップ1---製品の表示">ステップ1 - 製品の表示</h4>
+<p>ファネル属性名<code>Conversion Funnel</code>を作成します。次に、ファネルの各ステップに対して<strong>ステップを作成</strong>をクリックします。</p>
+<h4 id="ステップ1---製品を表示">ステップ1 - 製品を表示</h4>
 <figure><a class="slb" href="/images/server-side/funnel-3.png"><img src="/images/server-side/funnel-3.png"
          alt="Funnel - Viewed a product"
          title="Funnel - Viewed a product"/>
     </a>
 </figure>
-<h4 id="ステップ2---カートページの表示">ステップ2 - カートページの表示</h4>
+<h4 id="ステップ2---カートページを表示">ステップ2 - カートページを表示</h4>
 <figure><a class="slb" href="/images/server-side/funnel-4.png"><img src="/images/server-side/funnel-4.png"
          alt="Funnel - Viewed cart"
          title="Funnel - Viewed cart"/>
     </a>
 </figure>
-<h4 id="ステップ3---チェックアウトページの表示ユーザーが既にログインしている場合はオプション">ステップ3 - チェックアウトページの表示（ユーザーが既にログインしている場合はオプション）</h4>
+<h4 id="ステップ3---チェックアウトページを表示ユーザーがすでにログインしている場合はオプション">ステップ3 - チェックアウトページを表示（ユーザーがすでにログインしている場合はオプション）</h4>
 <figure><a class="slb" href="/images/server-side/funnel-5.png"><img src="/images/server-side/funnel-5.png"
          alt="Funnel - Viewed checkout page"
          title="Funnel - Viewed checkout page"/>
     </a>
 </figure>
-<p>以下のステップはすべて必須であり、ステップ2と同じです。</p>
-<h4 id="ステップ4---請求ページの表示">ステップ4 - 請求ページの表示</h4>
+<p>以下のステップはすべて必須で、ステップ2と同じです。</p>
+<h4 id="ステップ4---請求ページを表示">ステップ4 - 請求ページを表示</h4>
 <pre tabindex="0"><code>page_name EQUALS billing
-</code></pre><h4 id="ステップ5---配送ページの表示">ステップ5 - 配送ページの表示</h4>
+</code></pre><h4 id="ステップ5---配送ページを表示">ステップ5 - 配送ページを表示</h4>
 <pre tabindex="0"><code>page_name EQUALS shipping_method
-</code></pre><h4 id="ステップ6---支払いページの表示">ステップ6 - 支払いページの表示</h4>
+</code></pre><h4 id="ステップ6---支払いページを表示">ステップ6 - 支払いページを表示</h4>
 <pre tabindex="0"><code>page_name EQUALS payment
-</code></pre><h4 id="ステップ7---注文確認ページの表示">ステップ7 - 注文確認ページの表示</h4>
+</code></pre><h4 id="ステップ7---注文確認ページを表示">ステップ7 - 注文確認ページを表示</h4>
 <pre tabindex="0"><code>page_name EQUALS review
  AND
  page_type EQUALS checkout
-</code></pre><h4 id="ステップ8---注文完了ページの表示">ステップ8 - 注文完了ページの表示</h4>
+</code></pre><h4 id="ステップ8---注文成功ページを表示">ステップ8 - 注文成功ページを表示</h4>
 <pre tabindex="0"><code>page_name EQUALS cart success
  AND
  order_id IS ASSIGNED
-</code></pre><h4 id="ファネルの離脱">ファネルの離脱</h4>
-<p>ユーザーがファネルから離脱した場所を把握することは、多くのマーケティングキャンペーンにとって重要な要素であり、AudienceStreamは最後に完了したステップを示すことができます。</p>
-<p>まず、ファネルの各ステップに対して複数のルールを作成する必要があります。たとえば、ルール <code>Conversion Funnel - Step 1 Complete</code> は、<code>Step 1 - Product</code> が完了したかどうかをチェックします。</p>
+</code></pre><h4 id="ファネルのフォールアウト">ファネルのフォールアウト</h4>
+<p>ユーザーがファネルからどこでドロップしたかを知ることは、多くのマーケティングキャンペーンにとって重要な要素であり、AudienceStreamは最後に完了したステップを教えてくれます。</p>
+<p>まず、ファネルの各ステップに対していくつかのルールを作成する必要があります。例えば、ルール<code>Conversion Funnel - Step 1 Complete</code>は<code>Step 1 - Product</code>が完了したかどうかをチェックします。
 <figure><a class="slb" href="/images/server-side/no-title-1138i54b80adb945590ff.png"><img src="/images/server-side/no-title-1138i54b80adb945590ff.png"
-         alt="Check Step 1"
-         title="Check Step 1"/>
+         alt="ステップ1を確認"
+         title="ステップ1を確認"/>
     </a>
-</figure>
-<p>次に、<code>Conversion Funnel - Last Step Completed</code> という文字列属性を作成します。この文字列属性には、上記のルールを使用してファネルの各ステップが完了したかどうかをチェックするエンリッチメントがあります。</p>
+</figure></p>
+<p>次に、<code>Conversion Funnel - Last Step Completed</code>という名前の文字列属性を作成します。この文字列属性には、ファネルの各ステップに対するエンリッチメントがあり、上記のルールを使用してファネルの各ステップが完了したかどうかを確認します。</p>
 <figure><a class="slb" href="/images/server-side/funnel-7.png"><img src="/images/server-side/funnel-7.png"
-         alt="String attribute created"
-         title="String attribute created"/>
+         alt="文字列属性が作成されました"
+         title="文字列属性が作成されました"/>
     </a>
 </figure>
-<h4 id="離脱">離脱</h4>
-<p>離脱はセッションの終了時に判断する必要があります。これにより、すべてのページビューが考慮されます。これを行うには、<code>Cart Abandoner</code> というバッジを作成し、訪問の最後にファネルを確認し、ファネルが開始されたが完了していない場合にバッジを割り当てます。</p>
+<h4 id="放棄">放棄</h4>
+<p>放棄は、すべてのページビューが計上されたことを確認するため、セッションの終了時に判断する必要があります。これは、<code>Cart Abandoner</code>というバッジを作成して訪問の終了時にコンバージョンファネルを見て、ファネルが開始されたが完了していないかどうかを確認することで行うことができます。</p>
 <figure><a class="slb" href="/images/server-side/no-title-1140i2e61df3ec9067d5c.png"><img src="/images/server-side/no-title-1140i2e61df3ec9067d5c.png"
-         alt="Cart abandoned?"
-         title="Cart abandoned?"/>
+         alt="カートは放棄されましたか？"
+         title="カートは放棄されましたか？"/>
     </a>
 </figure>
-<p>また、ファネルが完了した場合には、<code>Page View</code> イベントでバッジを削除する必要があります。</p>
+<p>また、<code>Page View</code>イベントでコンバージョンファネルが完了したときにバッジを削除したいと考えています。</p>
 <figure><a class="slb" href="/images/server-side/funnel-8-remove-badge.png"><img src="/images/server-side/funnel-8-remove-badge.png"
-         alt="Remove badge"
-         title="Remove badge"/>
+         alt="バッジを削除"
+         title="バッジを削除"/>
     </a>
 </figure>
 <h4 id="オーディエンス">オーディエンス</h4>
-<p>次に、新しく作成したバッジを使用するオーディエンスを追加できます。オーディエンスは、顧客のメールアドレスなどの識別情報があることを確認する必要があります。</p>
+<p>次に、新しく作成したバッジを使用するオーディエンスを追加できます。オーディエンスは、顧客について何らかの識別情報（例えば、メールアドレス）があることを確認する必要があります。これにより、彼らはターゲットにされることが可能になります。</p>
 <figure><a class="slb" href="/images/server-side/funnel-9-audience.png"><img src="/images/server-side/funnel-9-audience.png"
-         alt="Create audience"
-         title="Create audience"/>
+         alt="オーディエンスを作成"
+         title="オーディエンスを作成"/>
     </a>
 </figure>
 <h4 id="アクション">アクション</h4>
-<p>このオーディエンスは、ユーザーをウェブサイトに戻し、コンバージョンを促進するために、任意のコネクタ（例：ESP）をトリガーするために使用できます。</p>
-<p>who: この例では、ユーザーのメールアドレスを使用して、ベンダーにユーザーを識別します。</p>
-<p>what: ユーザーがカートを離脱し、どのステップで離脱したかをベンダーに伝えます。</p>
+<p>このオーディエンスは、任意のコネクタ（例えば、ESPへのコネクタ）をトリガーするために使用できるようになりました。これにより、顧客をウェブサイトに戻してコンバートするのに役立ちます。</p>
+<p>誰に: 例えば、この顧客のメールアドレスがユーザーが誰であるかをベンダーに伝えるために使用されます。</p>
+<p>何を: ベンダーに訪問がカートを放棄し、どのステップで放棄したかを伝えています。</p>
 <figure><a class="slb" href="/images/server-side/funnel-10-action2.png"><img src="/images/server-side/funnel-10-action2.png"
-         alt="Funnel action 2"
-         title="Funnel action 2"/>
+         alt="ファネルアクション2"
+         title="ファネルアクション2"/>
     </a>
 </figure>
 <h4 id="トレース">トレース</h4>
-<p>これがどのように機能するかを確認するには、トレースを実行し、コンバージョンファネルの各ステップをナビゲートします。</p>
+<p>これがどのように機能するかを確認するために、トレースを実行し、コンバージョンファネルの各ステップをナビゲートします。</p>
 <figure><a class="slb" href="/images/server-side/trace-2.png"><img src="/images/server-side/trace-2.png"
-         alt="Trace 3"
-         title="Trace 3" width="262" height="263"/>
+         alt="トレース3"
+         title="トレース3" width="262" height="263"/>
     </a>
 </figure>
-<p>最後に、セッションの終了時に <code>Cart Abandoner</code> バッジが割り当てられ、<code>Cart Abandoners</code> オーディエンスに参加し、関連するコネクタがトリガーされることに注意してください。</p>
+<p>最後に完了したステップを示すように特性が更新され、すべてのステップが完了したことを示すようにファネルが更新されることに注意してください。</p>
+<p>セッション終了時には、<code>Cart Abandoner</code>バッジが割り当てられ、<code>Cart Abandoners</code>オーディエンスが参加し、関連するコネクタがトリガーされます。</p>
 <figure><a class="slb" href="/images/server-side/trace-part-1-enriched.png"><img src="/images/server-side/trace-part-1-enriched.png"
-         alt="Cart abandoner enriched"
-         title="Cart abandoner enriched"/>
+         alt="カート放棄者が豊かになりました"
+         title="カート放棄者が豊かになりました"/>
     </a>
 </figure>
 <figure><a class="slb" href="/images/server-side/trace-part-2-enriched.png"><img src="/images/server-side/trace-part-2-enriched.png"
-         alt="Cart abandoner enriched 2"
-         title="Cart abandoner enriched 2"/>
+         alt="カート放棄者が豊かになりました2"
+         title="カート放棄者が豊かになりました2"/>
     </a>
 </figure>
 <figure><a class="slb" href="/images/server-side/trace-audience.png"><img src="/images/server-side/trace-audience.png"
-         alt="Trace audience"
-         title="Trace audience"/>
+         alt="トレースオーディエンス"
+         title="トレースオーディエンス"/>
     </a>
 </figure>
 
@@ -833,7 +835,7 @@ WHEN：ANY EVENT
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2024年November月13日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -847,13 +849,14 @@ WHEN：ANY EVENT
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">このページで</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%8B%95%E4%BD%9C%E6%96%B9%E6%B3%95" href="javascript:void(0)">動作方法</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%85%E9%A0%88%E3%81%8A%E3%82%88%E3%81%B3%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E3%82%B9%E3%83%86%E3%83%83%E3%83%97" href="javascript:void(0)">必須およびオプションのステップ</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%82%A4%E3%82%BA%E5%88%B6%E9%99%90" href="javascript:void(0)">サイズ制限</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%BF%85%E9%A0%88%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E3%81%A8%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%B9%E3%83%86%E3%83%83%E3%83%97" href="javascript:void(0)">必須ステップとオプションステップ</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%B1%9E%E6%80%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%97%E3%83%81%E3%83%A3" href="javascript:void(0)">属性データのキャプチャ</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%95%E3%82%A1%E3%83%8D%E3%83%AB%E3%82%A8%E3%83%B3%E3%83%AA%E3%83%83%E3%83%81%E3%83%A1%E3%83%B3%E3%83%88" href="javascript:void(0)">ファネルエンリッチメント</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%A8%E3%83%B3%E3%83%AA%E3%83%83%E3%83%81%E3%83%A1%E3%83%B3%E3%83%88" href="javascript:void(0)">エンリッチメント</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E3%81%AE%E4%BD%9C%E6%88%90" href="javascript:void(0)">ステップの作成</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BD%BF%E7%94%A8%E4%BE%8B" href="javascript:void(0)">使用例</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%84%A1%E6%96%99%E3%83%88%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%AB%E7%99%BB%E9%8C%B2%E3%83%95%E3%82%A1%E3%83%8D%E3%83%AB" href="javascript:void(0)">無料トライアル登録ファネル</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E7%84%A1%E6%96%99%E8%A9%A6%E7%94%A8%E7%99%BB%E9%8C%B2%E3%83%95%E3%82%A1%E3%83%8D%E3%83%AB" href="javascript:void(0)">無料試用登録ファネル</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%95%E3%82%A1%E3%83%8D%E3%83%AB" href="javascript:void(0)">コンバージョンファネル</a></li>
               </nav>
   </aside></nav>

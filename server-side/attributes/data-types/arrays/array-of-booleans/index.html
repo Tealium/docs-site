@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -543,7 +543,46 @@
     </a>
 </figure>
 <p class="tip"><i class="fa fa-info-circle"></i>The strings &ldquo;true&rdquo; and &ldquo;false&rdquo; (any mix of upper/lowercase) are converted to their respective boolean values. All other non-boolean values are ignored.</p>
-<h2 id="enrichments">Enrichments</h2>
+<h2 id="validation">Validation</h2>
+<p>When an event is received, Tealium validates any array of boolean attributes to ensure that each value in the array is a boolean. If a value represents a boolean, it is converted to the boolean format, as follows:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Input</th>
+<th style="text-align:left">Parsed Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">JSON Native Boolean</td>
+<td style="text-align:left"><code>true</code></td>
+<td style="text-align:left"><code>true</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Case-insensitive stringified Boolean</td>
+<td style="text-align:left"><code>&quot;TRUE&quot;</code></td>
+<td style="text-align:left"><code>true</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Numeric value</td>
+<td style="text-align:left"><code>0</code></td>
+<td style="text-align:left"><code>null</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Numeric value</td>
+<td style="text-align:left"><code>1 </code></td>
+<td style="text-align:left"><code>null</code></td>
+</tr>
+</tbody>
+</table>
+<p>If a value is not a boolean, that value is removed from the array. For example, the value <code>&quot;one&quot;</code> in the following array does not represent a boolean:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// Before validation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>[<span style="color:#e6db74">&#34;true&#34;</span>, <span style="color:#66d9ef">true</span>, <span style="color:#e6db74">&#34;one&#34;</span>, <span style="color:#e6db74">&#34;false&#34;</span>, <span style="color:#66d9ef">false</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// After validation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>[<span style="color:#66d9ef">true</span>, <span style="color:#66d9ef">true</span>, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">false</span>]
+</span></span></code></pre></div><h2 id="enrichments">Enrichments</h2>
 <h3 id="add-a-boolean">Add a boolean</h3>
 <p>This enrichment adds a value to the array. The added attribute can only be a boolean, iQ variable, or omnichannel attribute. For example, you may wish to add a boolean to the array to represent that the customer purchased on their last visit.</p>
 <p><strong>Attribute Name</strong>: <code>did_purchase_on_visit</code></p>
@@ -627,7 +666,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  February 21, 2023 
+          <p>This page was last updated:  November 13, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -641,7 +680,8 @@ No</button>
 
   <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
       <p class="b ttu">On this page</p>
-      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enrichments" href="javascript:void(0)">Enrichments</a></li>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#validation" href="javascript:void(0)">Validation</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#enrichments" href="javascript:void(0)">Enrichments</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-a-boolean" href="javascript:void(0)">Add a boolean</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#add-an-array-of-booleans" href="javascript:void(0)">Add an array of booleans</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#reset" href="javascript:void(0)">Reset</a></li>

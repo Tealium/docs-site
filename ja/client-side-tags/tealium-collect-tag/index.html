@@ -433,7 +433,7 @@
 <li>アカウントマネージャーに連絡して、このタグをアカウントで有効にしてください。</li>
 </ul>
 <h2 id="動作方法">動作方法</h2>
-<p>Tealium Collectタグは、ページから事前定義されたデータと動的データの組み合わせをキャプチャします。このタグはマッピングが不要で、<code>utag.data</code>に構成されたすべてのものや、トラッキングコールに渡された任意のデータを自動的に送信します。</p>
+<p>Tealium Collectタグは、ページから事前定義されたデータと動的データの組み合わせをキャプチャします。このタグはマッピングを必要とせず、<code>utag.data</code>に構成されたすべてのものや、トラッキング呼び出しに渡された任意のデータを自動的に送信します。</p>
 <p>収集される変数の完全なリストについては、<a href="/ja/server-side/data-storage/audiencestore-eventstore/eventstore-data-guide/">EventStoreデータガイド</a>を参照してください。</p>
 <p>Tealium Collectタグからの受信データを確認するには、<a href="/ja/server-side/live-events-feeds/about-live-events/">Live Events</a>を参照してください。</p>
 <p>以下の機能とともにTealium Collectタグを使用します：</p>
@@ -446,16 +446,16 @@
 このタグから来るイベントデータは、DataAccessで利用可能になり、選択したビジネスインテリジェンス（BI）ツールを使用して分析することができます。</li>
 <li><strong>データレイヤーをエンリッチする</strong><br>
 データエンリッチメント構成を使用して、AudienceStreamからの訪問と訪問の属性をデータレイヤーに追加します。<br>
-詳細については、(<a href="/ja/server-side/attributes/data-layer-enrichment/enable/">データレイヤーエンリッチメントを有効にする</a>)を参照してください。</li>
+詳細については、<a href="/ja/server-side/attributes/data-layer-enrichment/enable/">データレイヤーエンリッチメントを有効にする</a>を参照してください。</li>
 </ul>
 <h2 id="タグのヒント">タグのヒント</h2>
 <ul>
 <li>このタグは、初期ページのロード時に<code>utag.data</code>内のすべてのデータを自動的に送信し、または<code>utag.view()</code>または<code>utag.link()</code>に渡された任意のデータオブジェクトを送信します。</li>
-<li>ネットワークリクエストを検査するためのプロキシツールを使用するときは、<code>POST</code>メソッド（GETではなく）を探します。</li>
-<li><strong>Tealium Profile</strong>フィールドに値を指定するのは、<strong>Tealium Collect Endpoint</strong>フィールドが空白で、サーバーサイドのデータ収集プロファイルが現在のプロファイルと異なる場合のみです。</li>
+<li>ネットワークリクエストを検査するためにプロキシツールを使用する場合、<code>POST</code>メソッド（GETではなく）を探します。</li>
+<li><strong>Tealium Collect Endpoint</strong>フィールドが空白で、サーバーサイドのデータ収集プロファイルが現在のプロファイルと異なる場合にのみ、<strong>Tealium Profile</strong>フィールドに値を指定します。</li>
 </ul>
 <h2 id="タグの構成">タグの構成</h2>
-<p>まず、タグマーケットプレイスに移動し、Tealium Collectタグを追加します（<a href="/ja/iq-tag-management/tags/manage/">タグの追加方法</a>について詳しく学びましょう）。</p>
+<p>まず、タグマーケットプレイスに移動し、Tealium Collectタグを追加します。詳細については、<a href="/ja/iq-tag-management/tags/manage/#add-a-tag">Manage tags</a>を参照してください。</p>
 <p>タグを追加した後、以下の構成を行います：</p>
 <ul>
 <li><strong>タイトル</strong>
@@ -467,7 +467,7 @@
 <li><strong>Tealium Collect Endpoint</strong>（オプション）
 <ul>
 <li>カスタムデータ収集エンドポイントとともに使用します。</li>
-<li>このフィールドに入力されたカスタムURLは、指定がない限り自動的にHTTPSにデフォルト構成されます。</li>
+<li>このフィールドに入力されたカスタムURLは、特に指定がない限り自動的にHTTPSにデフォルト構成されます。</li>
 <li>デフォルト：（構成なし）</li>
 </ul>
 </li>
@@ -511,29 +511,29 @@
 </li>
 <li><strong>Use SendBeacon</strong>
 <ul>
-<li><code>true</code>に構成すると、<code>navigator.sendBeacon()</code>を使用してトラッキングコールを送信します。</li>
-<li><code>false</code>に構成すると、レガシーブラウザメソッドの<code>XMLHttpRequest</code>を使用してトラッキングコールを送信します。</li>
+<li><code>true</code>に構成すると、<code>navigator.sendBeacon()</code>を使用してトラッキング呼び出しを送信します。</li>
+<li><code>false</code>に構成すると、レガシーブラウザメソッドの<code>XMLHttpRequest</code>を使用してトラッキング呼び出しを送信します。</li>
 <li>SendBeaconは少量のデータ向けで、ほとんどのブラウザでデータサイズの上限は64Kbです。詳細については、<a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon">Navigator:sendBeacon() method</a>を参照してください。</li>
 <li>デフォルト：<code>true</code></li>
 </ul>
 </li>
 <li><strong>Use HTTP API Endpoint</strong>
 <ul>
-<li><a href="/ja/platforms/http-api/endpoint-spec/">HTTP API endpoint</a>を使用するためにtrueに構成します。Tealium Collectエンドポイントの代わりに。</li>
+<li>trueに構成すると、Tealium Collectエンドポイントの代わりに<a href="/ja/platforms/http-api/endpoint/">HTTP API endpoint</a>を使用します。</li>
 <li>デフォルト：<code>false</code></li>
 </ul>
 </li>
 <li><strong>Visitor Service Override</strong>
 <ul>
 <li>データレイヤーエンリッチメントのためにTealium AudienceStreamから訪問プロファイルデータを取得するために使用されるドメインを指定します。</li>
-<li>デフォルト値を上書きするためのカスタムドメインを入力します。</li>
+<li>デフォルト値を上書きするためにカスタムドメインを入力します。</li>
 <li>この値は通常、<code>visitor-service.yourdomain.com</code>のようなファーストパーティドメインに構成されます。</li>
 </ul>
 </li>
 <li><strong>Tealium Cookie Domain</strong>（オプション）
 <ul>
 <li>Tealium匿名ID（TAPIDクッキー）を構成するために使用されるドメイン。</li>
-<li>デフォルト値を上書きするためのカスタムドメインを入力します。</li>
+<li>デフォルト値を上書きするためにカスタムドメインを入力します。</li>
 <li>この値は通常、<code>.yourdomain.com</code>のようなファーストパーティドメインに構成されます。</li>
 </ul>
 </li>
@@ -558,15 +558,15 @@
 <ul>
 <li>サードパーティのクライアントサイドタグを優先するために、このタグをタグリストの最後に配置して、それらが最初に実行されるようにします。</li>
 <li>プロファイルにこのタグのインスタンスを1つ以上追加しないでください。</li>
-<li>uTag Loaderテンプレートの最新バージョンを使用します。詳細については、<a href="/ja/platforms/javascript/release-notes/">Release Notes - utag.js</a>を参照してください。</li>
+<li>uTag Loaderテンプレートの最新バージョンを使用します。詳細については、<a href="/ja/platforms/javascript/version-4-50/">バージョン4.50&#43;の注記</a>を参照してください。</li>
 </ul>
 <h2 id="高度な構成">高度な構成</h2>
 <p>データレイヤーエンリッチメントに使用されるTealium訪問サービスエンドポイントのファーストパーティCNAMEについては、以下のコードを使用してURLを上書きするTealium Collectタグにスコープを持つJavaScript Code拡張を使用します：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">visitor_service_override</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://visitor-service.example.co.uk&#34;</span>;
 </span></span></code></pre></div><h2 id="ロードルール">ロードルール</h2>
-<p>ベストプラクティスは、<strong>All Pages and Events</strong>ロードルールを使用することです。すべてのページでこのタグをロードすることで、すべてのイベントがサーバーサイドでトラッキングされ、イベントデータとオーディエンスデータの両方を完全に活性化することができます。このタグにカスタムロードルールを使用すると、サーバーサイドで活性化できるデータが制限されるため、推奨されません。</p>
+<p>ベストプラクティスは、<strong>All Pages and Events</strong>ロードルールを使用することです。すべてのページでこのタグをロードすると、すべてのイベントがサーバーサイドでトラッキングされ、イベントデータとオーディエンスデータの両方を完全に活性化することができます。このタグにカスタムロードルールを使用すると、サーバーサイドで活性化できるデータが制限されるため、推奨されません。</p>
 <h3 id="トレースとの連携">トレースとの連携</h3>
-<p>もしも制限的なロードルールを使用していて、トレースツールでセッションを終了できないことに気付いた場合は、トレースによってトリガーされる特別なイベントを許可するためのカスタムロードルールが必要です。</p>
+<p>より制限的なロードルールを使用していて、トレースツールでセッションを終了できないことに気付いた場合、トレースによってトリガーされる特別なイベントを許可するためにカスタムロードルールが必要です。</p>
 <p>以下のロードルールを作成し、Tealium Collectタグに割り当てます。</p>
 <pre tabindex="0"><code>ut.event equals (ignore case) kill_visitor_session
 </code></pre><figure><a class="slb" href="/images/client-side-tags/tealium-collect-load-rule-for-trace.png"><img src="/images/client-side-tags/tealium-collect-load-rule-for-trace.png"
@@ -577,17 +577,30 @@
 <h2 id="モバイルとの連携">モバイルとの連携</h2>
 <p><a href="/ja/platforms/android-kotlin/install/">Tealium for Android</a>または<a href="/ja/platforms/ios-swift/install/">Tealium for iOS</a>を使用するデプロイメントでは、以下の点に注意してください：</p>
 <ul>
-<li>デフォルトの<a href="/ja/iq-tag-management/profiles/creating-a-mobile-profile/#configure-mobile-settings">mobile publish settings</a>は、デフォルトでネイティブモバイルTealium Collectサービスを有効にします。<br>
-<a href="/ja/platforms/getting-started-mobile/server-side/#native-module">native Collect module for mobile</a>について詳しく学びましょう。</li>
-<li><a href="/ja/platforms/getting-started-mobile/server-side/#javascript-tag">Tag Management module for mobileとともにTealium Collectタグを使用する場合</a>は、<a href="/ja/iq-tag-management/profiles/creating-a-mobile-profile/#configure-mobile-settings">mobile publish settings</a>の<strong>Tealium Collect</strong>オプションがオフになっていることを確認してください。これにより、重複したトラッキングを避けることができます。</li>
+<li>デフォルトの<a href="/ja/iq-tag-management/profiles/creating-a-mobile-profile/#configure-mobile-settings">モバイル公開構成</a>は、デフォルトでネイティブモバイルTealium Collectサービスを有効にします。<br>
+<a href="/ja/platforms/getting-started-mobile/server-side/#native-module">ネイティブCollectモジュール for mobile</a>について詳しく学びましょう。</li>
+<li><a href="/ja/platforms/getting-started-mobile/server-side/#javascript-tag">モバイルのTag ManagementモジュールとともにTealium Collectタグを使用する</a>場合、<a href="/ja/iq-tag-management/profiles/creating-a-mobile-profile/#configure-mobile-settings">モバイル公開構成</a>の<strong>Tealium Collect</strong>オプションがオフになっていることを確認してください。これにより、重複したトラッキングを避けることができます。</li>
 </ul>
-<h2 id="レガシークッキー">レガシークッキー</h2>
+<h2 id="cookies">Cookies</h2>
+<p>Tealium Collectタグは以下のクッキーを作成します：</p>
+<ul>
+<li><code>utag_main_v_id</code>：データプライバシーと同意ルールを遵守するための一意で部分的にランダムな識別子。このクッキーは、<a href="/ja/platforms/javascript/settings/#always_set_v_id"><code>always_set_v_id</code> utag構成</a>が<code>true</code>に構成されている場合、<code>utag.js</code>バージョン4.50以降でCollectタグによって作成されます。それ以外の場合、Collectタグは以下の条件でクッキーを作成します：
+<ul>
+<li><code>suppress_v_id</code> Collect構成が<code>false</code>に構成されているか、構成されていない。</li>
+<li>クッキーの値がすでに構成されていない。<br>
+このクッキーについての詳細は、<a href="/ja/platforms/javascript/version-4-50/"><code>utag.js</code>リリースノートバージョン4.50</a>を参照してください。</li>
+</ul>
+</li>
+<li><code>utag_main_dc_group</code>：<strong>サンプルサイズ</strong>構成で使用するランダムな数値。</li>
+<li><code>utag_main_dc_region</code>：訪問セッションが保存されているAudienceStream地域。このクッキーは、<a href="/ja/server-side/attributes/data-layer-enrichment/">データレイヤーのエンリッチメント</a>のエンドポイントを決定するために使用されます。</li>
+</ul>
+<h3 id="レガシークッキー">レガシークッキー</h3>
 <p>互換性のため、Tealium Collectタグは以下のレガシークッキーを作成します：</p>
 <ul>
-<li><code>utag_main_dc_event</code>：<code>utag_main__se</code>セッションイベントクッキーの複製です。</li>
-<li><code>utag_main_dc_visit</code>：<code>utag_main__sn</code>セッション番号クッキーの複製です。
-これらのクッキーについての詳細は、<a href="/ja/platforms/javascript/data-layer/#cookies">Data Layer: Cookies</a>をご覧ください。</li>
+<li><code>utag_main_dc_event</code>：<code>utag_main__se</code>セッションイベントクッキーの複製。</li>
+<li><code>utag_main_dc_visit</code>：<code>utag_main__sn</code>セッション番号クッキーの複製。</li>
 </ul>
+<p>これらのクッキーについての詳細は、<a href="/ja/platforms/javascript/data-layer/#cookies">Data Layer: Cookies</a>を参照してください。</p>
 
 </div>
 
@@ -648,7 +661,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月6日
+          <p>最終更新日 ::  2024年November月13日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -671,7 +684,8 @@
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AD%E3%83%BC%E3%83%89%E3%83%AB%E3%83%BC%E3%83%AB" href="javascript:void(0)">ロードルール</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%A8%E3%81%AE%E9%80%A3%E6%90%BA" href="javascript:void(0)">トレースとの連携</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%A2%E3%83%90%E3%82%A4%E3%83%AB%E3%81%A8%E3%81%AE%E9%80%A3%E6%90%BA" href="javascript:void(0)">モバイルとの連携</a></li>
-              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AC%E3%82%AC%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC" href="javascript:void(0)">レガシークッキー</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#cookies" href="javascript:void(0)">Cookies</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%83%AC%E3%82%AC%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC" href="javascript:void(0)">レガシークッキー</a></li>
               </nav>
   </aside></nav>
 

@@ -252,7 +252,7 @@
         <a href="/ja/server-side/attributes/data-types/tally/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".">テリー属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/badge/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-badge-attribute">バッジ属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/funnel/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-funnel-attribute">ファネル属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/server-side/attributes/data-types/boolean/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-boolean-attribute">ブーリアン属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
+        <a href="/ja/server-side/attributes/data-types/boolean/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-boolean-attribute">ブール属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/popular-badges/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-popular-badges">人気のバッジ</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/number/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-number-attribute">数値属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/server-side/attributes/data-types/set-of-strings/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".server-side-set-of-strings-attribute">文字列のセット属性</a></li><li data-level="4" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -539,14 +539,21 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>配列は値のリストを保存するために使用されます。文字列や数値の属性は <code>&quot;Home Page&quot;</code> や <code>12.95</code> のような単一の値しか含めることができませんが、配列は <code>[&quot;Pants&quot;, &quot;Shirts&quot;]</code> や <code>[5.99, 12.95]</code> のように複数の値を含めることができます。配列は、<a href="/ja/server-side/attributes/data-types/number/">数値</a>、<a href="/ja/server-side/attributes/data-types/number/">文字列</a>、<a href="/ja/server-side/attributes/data-types/boolean/">ブール値</a>の属性データ型で利用可能です。</p>
-<p>この記事では、すべての例で配列はJSON形式で表現されています。</p>
+  <h2 id="仕組み">仕組み</h2>
+<p>配列は値のリストを保存するために使用されます。文字列や数値の属性は、<code>&quot;Home Page&quot;</code>や<code>12.95</code>のような単一の値しか含むことができませんが、配列は<code>[&quot;Pants&quot;, &quot;Shirts&quot;]</code>や<code>[5.99, 12.95]</code>のような複数の値を含むことができます。配列は<a href="/ja/server-side/attributes/data-types/number/">number</a>、<a href="/ja/server-side/attributes/data-types/number/">string</a>、<a href="/ja/server-side/attributes/data-types/boolean/">boolean</a>属性データ型で利用可能です。</p>
+<p>配列はすべての例でJSON形式で表現されます。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>[<span style="color:#e6db74">&#34;Pants&#34;</span>, <span style="color:#e6db74">&#34;Shirts&#34;</span>, <span style="color:#e6db74">&#34;Shoes&#34;</span>]
 </span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">6</span>]
 </span></span><span style="display:flex;"><span>[<span style="color:#66d9ef">true</span>, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">false</span>]
 </span></span><span style="display:flex;"><span>[]
 </span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>配列は重複した値を含むことができます。</p>
-<p>配列の保存容量には制限がありませんが、これらの属性は暗号化と圧縮後のプロファイルの最大サイズによってまだ制限されています。</p>
+<h3 id="サイズ制限">サイズ制限</h3>
+<p>配列は30,000エントリに制限されています。ブール値と数値のエントリのサイズは制限されていませんが、文字列のエントリは以下のように制限されています：</p>
+<ul>
+<li>EventStreamの文字列属性は最大長が1,500文字です。この制限を超えると文字列は1,500文字に切り捨てられます。</li>
+<li>AudienceStreamの文字列属性の値は最大長が1,000文字です。エンリッチメントが1,000文字を超える文字列を結果とする場合、その値は保存されません。</li>
+</ul>
+<p>これらの属性は、暗号化と圧縮後のプロファイルの最大サイズ（400 KB）によって制限されています。</p>
 
 </div>
 
@@ -607,7 +614,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2024年November月13日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -619,7 +626,12 @@
 
 
 
-  </nav>
+  <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">このページで</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%82%A4%E3%82%BA%E5%88%B6%E9%99%90" href="javascript:void(0)">サイズ制限</a></li>
+              </nav>
+  </aside></nav>
 
 </div>
 </div>
