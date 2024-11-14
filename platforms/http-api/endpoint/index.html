@@ -163,7 +163,7 @@
 <li><strong>User Identifier</strong>: Sent after the visitor is known. Based on a value that identifies the user instead of a particular device.</li>
 </ul>
 <h3 id="anonymous-id">Anonymous ID</h3>
-<p>The Anonymous ID is an anonymous identifier used by AudienceStream to associate a visitor between events and visits. Ensure this value is a GUID and consistent for the visitor.</p>
+<p>The Anonymous ID is an anonymous identifier used by AudienceStream to associate a visitor between events and visits. Ensure this value is a GUID and consistent for the visitor. This value must also be unique to each server-side profile.</p>
 <p>The key name of the anonymous ID is <code>tealium_visitor_id</code>.</p>
 <p>Depending on your business case, you can use anonymous values or values based on known user identifiers.</p>
 <h4 id="anonymous-values">Anonymous values</h4>
@@ -204,7 +204,8 @@
 <p>Account</p>
 </li>
 <li>
-<p>Profile</p>
+<p>Profile<br>
+Including the profile name ensures the <code>tealium_visitor_id</code> is unique to each server-side profile, which is essential when the same visitor profile is sent to multiple server-side profiles within a region.</p>
 </li>
 <li>
 <p>Visitor ID attribute ID and value <p class="tip"><i class="fa fa-info-circle"></i>You can find the visitor ID attribute ID next to the attribute name in the attribute list or within the expanded details. For more information, see <a href="/server-side/attributes/about/#attribute-ids">About Attributes</a>.</p></p>
@@ -229,6 +230,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_profile&#34;</span>    : <span style="color:#e6db74">&#34;main&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_event&#34;</span>      : <span style="color:#e6db74">&#34;user_login&#34;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;email_address&#34;</span>      : <span style="color:#e6db74">&#34;user@example.com&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;customer_number&#34;</span>    : <span style="color:#e6db74">&#34;45653454&#34;</span>, 
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;tealium_visitor_id&#34;</span> : <span style="color:#e6db74">&#34;__my-account_main__7688_45653454__&#34;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>Whether you use anonymous visitors or known visitors, if your API calls do not contain a consistent <code>tealium_visitor_id</code>, each event  generates a new visit and visitor stitching will not be possible.</p>
@@ -407,7 +409,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  July 16, 2024 
+          <p>This page was last updated:  November 14, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

@@ -251,11 +251,16 @@
 <h2 id="configuration">Configuration</h2>
 <h3 id="query-modes">Query Modes</h3>
 <p>The Snowflake data source supports three query modes to let you control how data is imported from your Snowflake table or view:</p>
-<ul>
-<li><strong>Timestamp + Incrementing</strong>: (Recommended) Tealium imports new or modified rows based on a timestamp column and an auto-increment column. In this mode, rows with a newer timestamp than the previous import and a larger auto-increment value than the last imported row are imported. This is the most reliable mode to ensure that all rows are imported as expected.</li>
-<li><strong>Timestamp</strong>: Tealium imports new or modified rows based on a timestamp column. In this mode, rows with a newer timestamp than the previous import are imported. Use this mode if your table has a timestamp column that gets set or updated on every update.</li>
-<li><strong>Incrementing</strong>: Tealium imports rows based on an auto-increment column. In this mode, rows with a larger auto-increment value than the last imported row are imported. This will not detect modifications or deletions of existing rows. Use this mode if you only have an auto-increment column and do not have a timestamp column.</li>
-</ul>
+<h4 id="timestamp--incrementing-recommended">Timestamp + Incrementing (Recommended)</h4>
+<p class="tip"><i class="fa fa-info-circle"></i><strong>Timestamp + Incrementing</strong> is the most reliable mode to ensure that all rows are imported as expected.</p>
+<p>Tealium imports new or modified rows based on a timestamp column and an auto-increment column. In this mode, rows with a newer timestamp than the previous import and/or a larger auto-increment value than the last imported row are imported.</p>
+<h4 id="additional-modes">Additional modes</h4>
+<p><strong>Timestamp</strong><br>
+Tealium imports new or modified rows based on a timestamp column. In this mode, rows with a newer timestamp than the previous import are imported. Use this mode if your table has a timestamp column that gets set or updated on every update.
+<strong>Timestamp</strong> is not as reliable as <strong>Timestamp + Incrementing</strong> because rows may be missed if there are duplicate timestamps in different batches of data, as shown in the example below.</p>
+<p><strong>Incrementing</strong>
+Tealium imports rows based on an auto-increment column. In this mode, rows with a larger auto-increment value than the last imported row are imported. Use this mode if you only have an auto-increment column and do not have a timestamp column.
+<strong>Incrementing</strong> is not as reliable as <strong>Timestamp + Incrementing</strong> because it cannot detect modifications or deletions of existing rows.</p>
 <p>The Snowflake data source does not support bulk query modes.</p>
 <h3 id="query-mode-example">Query mode example</h3>
 <p>The following example shows how batch processing of rows and query modes work together. In the following table, <code>modification_time</code> is the timestamp column and <code>customer_id</code> is the incrementing column.</p>
@@ -366,7 +371,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  November 8, 2024 
+          <p>This page was last updated:  November 14, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
