@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side-connectors",
-        reading_time  : "7",
+        reading_time  : "8",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -379,25 +379,25 @@
 <li>Authentication Type: OAuth2.0</li>
 </ul>
 <h2 id="how-it-works">How it works</h2>
-<p>The Awin server-side implementation is recommended by Awin to provide signal resilience. As such, the connector doesn’t replace the client-side but complements it. This pixel is used to attribute conversions resulting from a referral link that contains an awc query string parameter to identify the source of the traffic. Using Tealium extensions or having the client persisting this parameter then sending it from the server-side guarantees that the purchase is correctly attributed.</p>
-<p>Awin no longer support the use of pixel only implementations due to various browser updates. To alleviate browser-based tracking risks, the Awin S2S API (Connector) should be implemented as a fallback.</p>
+<p>Awin recommends a server-side implementation to provide signal resilience. As such, the connector doesn’t replace the client-side pixel tag, but complements it. This pixel is used to attribute the conversions that result from a referral link that contains an <code>awc</code> query string parameter to identify the source of the traffic. Using Tealium extensions or having the client persisting this parameter then sending it from the server-side guarantees that the purchase is correctly credited to the correct commission group.</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Because Awin no longer supports the use of pixel-only implementations due to various browser updates, this connector lets you to use the <a href="https://wiki.awin.com/index.php/Advertiser_Tracking_Guide/Conversion_Pixel_Only_Tracking#Server_To_Server_.28S2S.29">Awin S2S API</a> implementation as a fallback.</p>
 <h2 id="configuration">Configuration</h2>
-<p>Navigate to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see the <a href="/server-side/connectors/about/">About Connectors</a> article.</p>
+<p>Go to the Connector Marketplace and add a new connector. For general instructions on how to add a connector, see <a href="/server-side/connectors/about/">About Connectors</a>.</p>
 <p>After adding the connector, configure the following settings:</p>
 <ul>
 <li><strong>Token</strong><br>
-Required. This token is linked to your personal user account. For more information on creating your token, see <a href="https://ui.awin.com/awin-api">Authentication and Authorization</a> in the AWIN documentation.</li>
+Required. This token is linked to your personal user account. For more information on creating your token, see <a href="https://developer.awin.com/apidocs/api-authentication">AWIN: AWAuthentication and Authorization</a>.</li>
 <li><strong>Merchant (Advertiser ID)</strong><br>
 Applicable Awin advertiser ID. Contact your Awin account manager for support.</li>
 </ul>
 <p>Click <strong>Done</strong> when you are finished configuring the connector.</p>
 <h3 id="deduplication">Deduplication</h3>
-<p>If you are working with multiple marketing channels and/or networks it is necessary to perform de-duplication so that commission is not paid out to several traffic sources for the same conversion. For more information, please see below regarding the Channel Parameter and Awin&rsquo;s <a href="https://wiki.awin.com/index.php/Advertiser_Tracking_Guide/De-duplication">De-duplication documentation</a>.</p>
+<p>If you are working with multiple marketing channels and/or networks, it is necessary to perform de-duplication so that commission is not paid out to several traffic sources for the same conversion. For more information, please see below regarding the Channel Parameter and <a href="https://wiki.awin.com/index.php/Advertiser_Tracking_Guide/De-duplication">AWIN: De-duplication</a>.</p>
 <h3 id="channel-parameter">Channel parameter</h3>
-<p>Awin strongly advise all clients to use the <strong>Channel Parameter</strong> to instruct our system how to process each conversion based on the source of the traffic.</p>
-<p>By populating it with a code / name for the channel that won the conversion in question, we can subsequently treat the request in four different ways:</p>
+<p>Awin strongly advises all clients to use the <strong>Channel Parameter</strong> to instruct our system how to process each conversion based on the source of the traffic.</p>
+<p>Populating that parameter with the winning channel code allows Tealium to handle the request in four ways:</p>
 <ul>
-<li>Do not process what-so-ever</li>
+<li>Do not process</li>
 <li>Process if any Awin cookie is present</li>
 <li>Only process if an Awin click cookie is present</li>
 <li>Only process if an Awin post-view cookie is present</li>
@@ -438,24 +438,32 @@ Applicable Awin advertiser ID. Contact your Awin account manager for support.</l
 </thead>
 <tbody>
 <tr>
+<td style="text-align:left">Total Amount</td>
+<td style="text-align:left">(Required) The order subtotal amount after any relevant discounts are applied, but prior to any additional fees such as taxes, delivery charges, or relevant service charges. The value must be a float data type, no thousand separator is allowed, and the decimal place must be a standard dot (<code>.</code>) character.</td>
+</tr>
+<tr>
+<td style="text-align:left">Order Reference</td>
+<td style="text-align:left">(Required) The unique booking or order ID.</td>
+</tr>
+<tr>
 <td style="text-align:left">Merchant (Advertiser ID) (override)</td>
 <td style="text-align:left">The advertiser program ID.</td>
 </tr>
 <tr>
-<td style="text-align:left">AWC parameter</td>
-<td style="text-align:left">This value is appended to the landing page URL by Awin to identify the source of the click. You must supply a value for either the <strong>AWC parameter</strong> or the <strong>Voucher Code</strong>. The <code>awc</code> value is a parameter that is appended to the landing page URL by Awin to identify the source of the click. You must configure your site to record the awc value when the end user lands on the site, using a server-side scripting language. This value will be used to populate the <code>cks</code> parameter on conversion. This function needs to be called on every page. If you are using a cookie to capture the awc, please see the following guidelines: <ul><li>The cookie must be set the in HTTP response header and not in a client-side script for example, a cookie set in PHP would be fine.</li><li>The cookie should set the cookie with the HTTP Only flag</li><li>The cookie should be set with the secure flag</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Total Amount</td>
-<td style="text-align:left">(Required) The order subtotal amount after any relevant discounts are applied, but prior to any additional fees such as taxes, delivery charges, or relevant service charges are added. The value must be a float, no thousand separator is allowed, and the decimal place must be a standard dot character.</td>
-</tr>
-<tr>
 <td style="text-align:left">Commission Group Code</td>
-<td style="text-align:left">The code for the commission group you want to attribute the transaction to. Accepted characters are upper-case alphanumerics, underscores, and hyphens. <br>If this parameter is not populated, Awin will fallback to the default commission group.<br>Note: This parameter is highly recommended.</td>
+<td style="text-align:left">(Recommended) The code or codes for the commission groups you want to attribute the transaction to. This parameter can be a string for a single group or an array for multiple groups. Accepted characters are upper-case alphanumerics, underscores, and hyphens. <br>If this parameter is not populated, Awin will fall back to the default commission group.</td>
+</tr>
+<tr>
+<td style="text-align:left">Commission Group Amount</td>
+<td style="text-align:left">The commission amounts that you want to assign to each commission group. This parameter can be a string for a single group or an array for multiple groups. Array values must appear in the same order as the commission group array. If not mapped, the default value is the mapped total amount.</td>
 </tr>
 <tr>
 <td style="text-align:left">Channel</td>
 <td style="text-align:left">The channel name of the last click referrer. Always use <strong>aw</strong> for Awin, which is the default value. This value must be 20 alphanumeric characters or less. We strongly suggest that you include this parameter so the Awin system knows how to process each conversion based on the source of the traffic. Example values may include: <code>aw</code> (which should always be used for Awin), <code>display</code>, or <code>ppc</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left">AWC parameter</td>
+<td style="text-align:left">This value is appended to the landing page URL by Awin to identify the source of the click. You must supply a value for either the <strong>AWC parameter</strong> or the <strong>Voucher Code</strong>. The <code>awc</code> value is a parameter that is appended to the landing page URL by Awin to identify the source of the click. You must configure your site to record the <code>awc</code> value when the end user lands on the site, using a server-side scripting language. This value will be used to populate the <code>cks</code> parameter on conversion. This function needs to be called on every page. If you are capturing the awc value with a cookie, follow these guidelines: <ul><li>The cookie must be set the in HTTP response header and not in a client-side script for example, a cookie set in PHP would be fine.</li><li>The cookie should set the cookie with the HTTP Only flag</li><li>The cookie should be set with the secure flag</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Voucher Code</td>
@@ -464,10 +472,6 @@ Applicable Awin advertiser ID. Contact your Awin account manager for support.</l
 <tr>
 <td style="text-align:left">Currency Code</td>
 <td style="text-align:left">The ISO currency code of the currency that was used in the transaction, for example GBP or USD. <br>Note: This parameter is highly recommended to maintain accurate tracking.</td>
-</tr>
-<tr>
-<td style="text-align:left">Order Reference</td>
-<td style="text-align:left">(Required) The unique booking or order ID.</td>
 </tr>
 <tr>
 <td style="text-align:left">Custom Parameters</td>
@@ -491,24 +495,32 @@ Applicable Awin advertiser ID. Contact your Awin account manager for support.</l
 </thead>
 <tbody>
 <tr>
+<td style="text-align:left">Total Amount</td>
+<td style="text-align:left">(Required) The order subtotal amount after any relevant discounts are applied, but prior to any additional fees such as taxes, delivery charges, or relevant service charges. The value must be a float data type, no thousand separator is allowed, and the decimal place must be a standard dot (<code>.</code>) character.</td>
+</tr>
+<tr>
+<td style="text-align:left">Order Reference</td>
+<td style="text-align:left">(Required) The unique booking or order ID.</td>
+</tr>
+<tr>
 <td style="text-align:left">Merchant (Advertiser ID) (override)</td>
 <td style="text-align:left">The advertiser program ID.</td>
 </tr>
 <tr>
-<td style="text-align:left">AWC parameter</td>
-<td style="text-align:left">This value is appended to the landing page URL by Awin to identify the source of the click. You must supply a value for either the <strong>AWC parameter</strong> or the <strong>Voucher Code</strong>. If you are using a cookie to capture the awc, please see the following guidelines: <ul><li>The cookie must be set the in HTTP response header and not in a client-side script for example,  a cookie set in PHP would be fine.</li><li>The cookie should set the cookie with the HTTP Only flag</li><li>The cookie should be set with the secure flag</li></ul></td>
-</tr>
-<tr>
-<td style="text-align:left">Total Amount</td>
-<td style="text-align:left">(Required) The order subtotal amount after any relevant discounts are applied, but prior to any additional fees such as taxes, delivery charges, or relevant service charges are added. The value must be a float, no thousand separator is allowed, and the decimal place must be a standard dot character.</td>
-</tr>
-<tr>
 <td style="text-align:left">Commission Group Code</td>
-<td style="text-align:left">The code for the commission group you want to attribute the transaction to. Accepted characters are upper-case alphanumerics, underscores, and hyphens. <br>Note: This parameter is highly recommended, if this parameter is not populated Awin will fallback to the default commission group.</td>
+<td style="text-align:left">(Recommended) The code or codes for the commission groups you want to attribute the transaction to. This parameter can be a string for a single group or an array for multiple groups. Accepted characters are upper-case alphanumerics, underscores, and hyphens. <br>If this parameter is not populated, Awin will fall back to the default commission group.</td>
+</tr>
+<tr>
+<td style="text-align:left">Commission Group Amount</td>
+<td style="text-align:left">The commission amounts that you want to assign to each commission group. This parameter can be a string for a single group or an array for multiple groups. Array values must appear in the same order as the commission group array. If not mapped, the default value is the mapped total amount.</td>
 </tr>
 <tr>
 <td style="text-align:left">Channel</td>
-<td style="text-align:left">The channel name of the last click referrer. Always use aw for Awin, which is the default value. This value must be 20 alphanumeric characters or less. We strongly suggest that you include this parameter so the Awin system knows how to process each conversion based on the source of the traffic. Example values may include: <code>aw</code> (which should always be used for Awin), <code>display</code>, or <code>ppc</code>.</td>
+<td style="text-align:left">The channel name of the last click referrer. Always use <code>aw</code> for Awin, which is the default value. This value must be 20 alphanumeric characters or less. We strongly suggest that you include this parameter so the Awin system knows how to process each conversion based on the source of the traffic. Example values may include: <code>aw</code> (which should always be used for Awin), <code>display</code>, or <code>ppc</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left">AWC parameter</td>
+<td style="text-align:left">This value is appended to the landing page URL by Awin to identify the source of the click. You must supply a value for either the <strong>AWC parameter</strong> or the <strong>Voucher Code</strong>. If you are capturing the awc value with a cookie, follow these guidelines: <ul><li>The cookie must be set the in HTTP response header and not in a client-side script for example,  a cookie set in PHP would be fine.</li><li>The cookie should set the cookie with the HTTP Only flag</li><li>The cookie should be set with the secure flag</li></ul></td>
 </tr>
 <tr>
 <td style="text-align:left">Voucher Code</td>
@@ -516,19 +528,7 @@ Applicable Awin advertiser ID. Contact your Awin account manager for support.</l
 </tr>
 <tr>
 <td style="text-align:left">Currency Code</td>
-<td style="text-align:left">The ISO currency code of the currency that was used in the transaction, for example,  GBP or USD.<br>Note: This parameter is highly recommended to maintain accurate tracking.</td>
-</tr>
-<tr>
-<td style="text-align:left">Order Reference</td>
-<td style="text-align:left">(Required) The unique booking or order ID.</td>
-</tr>
-<tr>
-<td style="text-align:left">Custom Parameters</td>
-<td style="text-align:left">The input data for single or multiple custom tracking parameters.</td>
-</tr>
-<tr>
-<td style="text-align:left">Test Mode</td>
-<td style="text-align:left">Incoming tracking requests will not be processed for the purposes of testing.</td>
+<td style="text-align:left">(Recommended) The ISO currency code of the currency that was used in the transaction, for example, GBP or USD.</td>
 </tr>
 <tr>
 <td style="text-align:left">Product Name</td>
@@ -555,8 +555,12 @@ Applicable Awin advertiser ID. Contact your Awin account manager for support.</l
 <td style="text-align:left">(Required) An array of each product&rsquo;s category in the transaction.</td>
 </tr>
 <tr>
-<td style="text-align:left">Commission Group Code</td>
-<td style="text-align:left">The code for the commission group you want to attribute the transaction to. Accepted characters are upper-case alphanumerics, underscores, and hyphens.</td>
+<td style="text-align:left">Custom Parameters</td>
+<td style="text-align:left">The input data for single or multiple custom tracking parameters.</td>
+</tr>
+<tr>
+<td style="text-align:left">Test Mode</td>
+<td style="text-align:left">Incoming tracking requests will not be processed for the purposes of testing.</td>
 </tr>
 </tbody>
 </table>
@@ -620,7 +624,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  October 26, 2022 
+          <p>This page was last updated:  November 19, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

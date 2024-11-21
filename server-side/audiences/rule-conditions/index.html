@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "server-side",
-        reading_time  : "4",
+        reading_time  : "5",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -681,7 +681,7 @@
 </tr>
 <tr>
 <td>matches regex</td>
-<td>Allows you to use regular expressions (regex) in rules, enrichments, and audiences. The regex operator is available only for string attributes. <br>The <code>matches</code> regex operator has two options:<br><br><strong>Multiline Mode</strong>:<br> Instead of matching <code>^</code> and <code>$</code> at only the beginning or end of the entire string, matches <code>^</code> and <code>$</code> at the beginning and end of any line within the string in the attribute value.<br><br> <strong>Case Insensitive</strong>:<br> Ignores letter case when comparing the string to the attribute value.</td>
+<td>Allows you to use regular expressions (regex) in rules, enrichments, and audiences. For more information, see <a href="#regular-expressions">Regular expressions</a></td>
 <td>String</td>
 </tr>
 </tbody>
@@ -724,6 +724,68 @@
 <p>Click <strong>Save</strong>.</p>
 </li>
 </ol>
+<h2 id="regular-expressions">Regular expressions</h2>
+<p>The <code>matches regex</code> operator is available only for string attributes. The condition returns <code>true</code> if any part of the string matches the regular expression (regex).</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>Enter a regular expression into the rule condition without slashes (<code>/</code>).For example, for the value <code>abc1234567890</code>, enter <code>^[a-z0-9]{13}$</code> to match the entire string.</p>
+<figure><a class="slb" href="/images/server-side/audiences/regex_example_ui.png"><img src="/images/server-side/audiences/regex_example_ui.png"
+         alt="Example of matching regex condition"
+         title="Example of matching regex condition"/>
+    </a>
+</figure>
+<p>The <code>matches regex</code> operator has two options:</p>
+<ul>
+<li><strong>Multiline Mode</strong>:<br>
+Instead of matching <code>^</code> and <code>$</code> at only the beginning or end of the entire string, matches <code>^</code> and <code>$</code> at the beginning and end of any line within the string in the attribute value.</li>
+<li><strong>Case Insensitive</strong>:<br>
+Ignores letter case when comparing the string to the attribute value.</li>
+</ul>
+<p>The following regular expressions illustrate return values for various common string qualifiers for the example value <code>abc1234567890</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Regex</th>
+<th>Return Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\d{3}</code></td>
+<td><code>true</code></td>
+<td>No boundary qualifiers, matches anywhere within the string.</td>
+</tr>
+<tr>
+<td><code>^abc</code></td>
+<td><code>true</code></td>
+<td>Start of string qualifier (<code>^</code>) matches at the start of the string.</td>
+</tr>
+<tr>
+<td><code>\d{3}$</code></td>
+<td><code>true</code></td>
+<td>End of string qualifier (<code>$</code>) matches at the end of the string.</td>
+</tr>
+<tr>
+<td><code>^[a-z0-9]{13}$</code></td>
+<td><code>true</code></td>
+<td>Start and end qualifier matches the entire string.</td>
+</tr>
+<tr>
+<td><code>^[a-zA-Z]{4}</code></td>
+<td><code>false</code></td>
+<td>Start of string qualifier: does not match four consecutive uppercase or lowercase letters.</td>
+</tr>
+<tr>
+<td><code>[a-zA-Z]{4}$</code></td>
+<td><code>false</code></td>
+<td>End of string qualifier: no letters at the end of the string.</td>
+</tr>
+<tr>
+<td><code>^[a-z0-9]{15}$</code></td>
+<td><code>false</code></td>
+<td>Start and end qualifier: requires a value 15 characters long, which is not present.</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 
@@ -769,7 +831,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  May 24, 2023 
+          <p>This page was last updated:  November 20, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -785,6 +847,7 @@ No</button>
       <p class="b ttu">On this page</p>
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#condition-operators" href="javascript:void(0)">Condition Operators</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#using-the-extended-rule-condition-for-the-tally-attribute" href="javascript:void(0)">Using the Extended Rule Condition for the Tally Attribute</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#regular-expressions" href="javascript:void(0)">Regular expressions</a></li>
               </nav>
   </aside></nav>
 
