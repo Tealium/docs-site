@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "client-side-tags",
-        reading_time  : "12",
+        reading_time  : "13",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -431,7 +431,12 @@
 <p>You may enter a comma-separated list of Pixel IDs in the Pixel ID field.</p>
 </li>
 <li>
-<p>To make Facebook Pixel Event IDs available as server-side attributes, set <strong>Generate Event ID</strong> to <code>true</code> and use the latest version of the Tealium Collect tag.</p>
+<p><strong>Generate Event ID</strong>: Set to <code>true</code> to generate the <code>event_id</code> parameter in the Facebook Pixel and to make these event IDs available as server-side attributes.</p>
+<ul>
+<li>Requires the latest version of the Tealium Collect tag to.</li>
+<li>Must be set to <code>true</code> if you plan to map a custom variable to <code>event_id</code>.</li>
+<li>See <a href="#conversions-api-for-web">Conversions API for Web</a>.</li>
+</ul>
 </li>
 <li>
 <p>The template automatically attempts to calculate the <code>num_items</code> value if a product quantity array is present.</p>
@@ -446,7 +451,7 @@
 </ul>
 </li>
 <li>
-<p>Supports these E-Commerce extension parameters:</p>
+<p>Supports the following E-Commerce extension parameters:</p>
 <ul>
 <li>Order ID</li>
 <li>Sub Total</li>
@@ -461,12 +466,22 @@
 </li>
 </ul>
 <h3 id="conversions-api-for-web">Conversions API for Web</h3>
-<p>To support the Facebook Conversions API for Web, the tag generates a unique event ID for each event tracked and sends it to Tealium EventStream for use in the Facebook Conversions connector. The event ID may be mapped in the connector to synchronize the web-based on server-based integrations. This feature requires an active Tealium Collect tag.</p>
-<p>The tag emits new event attributes using the following naming convention:</p>
+<p>(This feature requires an active Tealium Collect tag.)</p>
+<p>To support Facebook Conversions API for Web, set <strong>Generate Event ID</strong> to <code>true</code>.  When <strong>Generate Event ID</strong> is enabled, this tag generates a unique event ID for each event tracked and sends it as an attribute to Tealium EventStream for use in the Facebook Conversions connector and passes it to the Facebook Pixel in the <code>event_id</code> parameter. This event ID attribute may be mapped in the connector to synchronize the web-based tag with server-side integration.</p>
+<p>The tag sends event IDs using generated event attributes using the following naming convention:</p>
 <pre tabindex="0"><code class="language-nohl" data-lang="nohl">fb_event_id_{FACEBOOK_EVENT}_{TAG_UID}
-</code></pre><p>For example: <code>fb_event_id_Purchase_32 : &quot;028b2ade7478...&quot;</code> or <code>fb_event_id_PageView_32</code></p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>IDs were previously generated as <code>fb_event_id_{FACEBOOK_EVENT}</code>. These IDs will continue to be generated, but are considered legacy. The new IDs allow for use with multiple Facebook tags firing on a single page and offer a stronger tie back to the related tag. If you are using the legacy version, you must change the connector to the new ID.</p>
-<p>See the <a href="/server-side-connectors/facebook-conversions-connector/">Facebook Conversions Connector Setup Guide</a>.</p>
+</code></pre><p>For example, a purchase event from tag #32 would send the following attribute and value:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;fb_event_id_Purchase_32&#34;</span>: <span style="color:#e6db74">&#34;028b2ade7478...&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>A page view event from the same tag would send the following attribute and value:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;fb_event_id_PageView_32&#34;</span>: <span style="color:#e6db74">&#34;084b1cda7461...&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>For information on using these event ID attributes, see <a href="/server-side-connectors/facebook-conversions-connector/#deduplication-for-web-events">Facebook Conversions connector: Deduplication for web events</a>.</p>
+<h4 id="legacy-event-ids">Legacy event IDs</h4>
+<p>In older versions of the Facebook Pixel tag, event ID attributes were  generated in the format <code>fb_event_id_{FACEBOOK_EVENT}</code>, such as <code>fb_event_id_Purchase</code>. While these older attribute names will continue to be generated by the tag, they are considered legacy because they don&rsquo;t support multiple Facebook tags on the same page.</p>
+<p>The latest version of the Facebook Pixel tag supports multiple Facebook tags firing on a page by including the tag UID in the generated attribute name. If you are still using the legacy format of the event ID attributes, we recommend updating to the latest version of the tag and referencing the new event ID attributes.</p>
 <h2 id="tag-configuration">Tag Configuration</h2>
 <p>First, go to the Tealium Tag Marketplace and add the Facebook Pixel tag (Learn more about <a href="/iq-tag-management/tags/manage/">how to add a tag</a>).</p>
 <p>After adding the tag, configure the following settings:</p>
@@ -488,9 +503,10 @@
 </li>
 <li><strong>Generate Event ID</strong>
 <ul>
+<li>Requires the Tealium Collect tag to send event IDs server-side.</li>
 <li>Automatically generate an event ID for every Facebook tracking event.</li>
-<li>Event ID attributes follow the naming convention: <code>fb_event_id_{FACEBOOK_EVENT}</code></li>
-<li>Example: <code> fb_event_id_Purchase : &quot;028b2ade7478...&quot;</code></li>
+<li>Event ID attributes follow the naming convention: <code>fb_event_id_{FACEBOOK_EVENT}_{TAG_UID}</code></li>
+<li>Example: <code>&quot;fb_event_id_Purchase_32&quot; : &quot;028b2ade7478...&quot;</code></li>
 </ul>
 </li>
 </ul>
@@ -512,8 +528,8 @@
 <ol>
 <li>Select <code>product_brand</code> from the variable drop-down list and click <strong>Select a Destination</strong>.</li>
 <li>In the <strong>Category</strong> section, select <strong>Event specific Parameters</strong>.</li>
-<li>Set the <strong>Destination</strong> field to the name <code>brand</code> for the Custom Parameter.</li>
-<li>In the <strong>For event</strong> drop-down list, select the event <code>Purchase</code> which the Custom Parameter collects with.<br>
+<li>Set the <strong>Destination</strong> field to the name <code>brand</code> for the custom parameter.</li>
+<li>In the <strong>For event</strong> drop-down list, select the event <code>Purchase</code> which the custom parameter collects with.<br>
 <figure><a class="slb" href="/images/client-side-tags/c.png"><img src="/images/client-side-tags/c.png"
          alt="Event: Purchase"
          title="Event: Purchase"/>
@@ -522,9 +538,9 @@
 </ol>
 <p>Test the mappings by using the <a href="https://developers.facebook.com/docs/facebook-pixel/support/pixel-helper/">Facebook Pixel Helper</a> or the Developer Tools offered by your browser.</p>
 <ol>
-<li>Use the Network Panel and filtering for Facebook to display all the network requests containing Facebook as a keyword.</li>
+<li>Use the <strong>Network Panel</strong> and filtering for Facebook to display all the network requests containing Facebook as a keyword.</li>
 <li>Confirm the purchase event was successful by looking at the name of the request.</li>
-<li>Open the request and scroll down to the Query String Parameters to see the values of the the data mappings that were configured: <code>purchase</code> , <code>product_id</code> , and <code>product_brand</code>.<br>
+<li>Open the request and scroll down to <strong>Query String Parameters</strong> to see the values of the the data mappings that were configured: <code>purchase</code> , <code>product_id</code> , and <code>product_brand</code>.<br>
 <figure><a class="slb" href="/images/client-side-tags/d.png"><img src="/images/client-side-tags/d.png"
          alt="Facebook Pixel Helper"
          title="Facebook Pixel Helper"/>
@@ -532,61 +548,61 @@
 </figure></li>
 </ol>
 <h2 id="data-mappings">Data Mappings</h2>
-<p>Data mappings follow a hierarchy in which specific mappings, such as Event-Specific Parameters, take precedence over more general mappings. For example, if you map a variable to the Currency destination in the Standard Tracking Parameters tab and to the Currency destination for the ViewContent event, the ViewContent mapping takes precedence over the general mapping, but only for the ViewContent event. For all other events, the Standard Tracking mapping is used.</p>
+<p>Data mappings follow a hierarchy in which specific mappings, such as Event-Specific Parameters, take precedence over more general mappings. For example, if you map a variable to the <strong>Currency</strong> destination in the <strong>Standard Tracking Parameters</strong> tab and to the <strong>Currency</strong> destination for the <strong>ViewContent</strong> event, the <strong>ViewContent</strong> mapping takes precedence over the general mapping, but only for the <strong>ViewContent</strong> event. For all other events, the Standard Tracking mapping is used.</p>
 <p>Mapping is the process of sending data from a <a href="/iq-tag-management/data-layer/data-layer-variables/">data layer variable</a> to the corresponding destination variable of the vendor tag. For instructions on how to map a variable to a tag destination, see <a href="/iq-tag-management/data-mappings/manage/">Data Mappings</a>.</p>
 <p>The available categories are:</p>
 <h3 id="tag-configurations">Tag Configurations</h3>
 <table>
 <thead>
 <tr>
-<th>Destination</th>
 <th>Variable</th>
+<th>Destination</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Pixel ID</td>
 <td><code>pixel_id</code></td>
-<td>[String]</td>
+<td>Pixel ID</td>
+<td>String</td>
 <td><ul><li>Your Facebook Pixel ID.</li><li>The Pixel ID appears as a long series of numbers in the code snippet.</li><li>You may enter multiple Pixel IDs using a comma-separated list, without spaces.</li><li>Example: <code>fbq(&quot;init&quot;, &quot;12345678901234&quot;);</code></li></ul></td>
 </tr>
 <tr>
-<td>Toggle Automatic PageView</td>
 <td><code>auto_page_view</code></td>
-<td>Boolean [<code>true</code>/<code>false</code>]</td>
-<td><ul><li>Toggle to enable or disable automatic PageView tracking.</li><li>Toggles whether or not to automatically trigger a PageView event with a page load.</li><li>Default value is <code>true</code>.</li></ul></td>
+<td>Toggle Automatic PageView</td>
+<td>Boolean</td>
+<td><ul><li>Toggle to enable or disable automatic PageView tracking, which triggers a PageView event with a page load.</li><li>Default value is <code>true</code>.</li></ul></td>
 </tr>
 <tr>
-<td>Toggle Advanced Matching</td>
 <td><code>advanced_matching</code></td>
-<td>Boolean [<code>true</code>/<code>false</code>]</td>
-<td><ul><li>Toggle to enable or disable the collection of Advanced Matching data.</li><li>Toggles whether or not to capture and send advanced matching data.</li><li>Default value is <code>true</code>.</li></ul></td>
+<td>Toggle Advanced Matching</td>
+<td>Boolean</td>
+<td><ul><li>Toggle to enable or disable collection of Advanced Matching data.</li><li>Default value is <code>true</code>.</li></ul></td>
 </tr>
 <tr>
-<td>Generate Event IDs</td>
 <td><code>generate_event_id</code></td>
-<td>Boolean [<code>true</code>/<code>false</code>]</td>
-<td><ul><li>Toggle to enable or disable the generation of Event IDs for each Facebook tracking event.</li><li>Toggles whether or not a unique Event ID is generated for each Facebook tracking event.</li><li>Requires the most recent version of the utag.js file in order to generate the IDs.</li><li>Default value is <code>false</code>.</li></ul></td>
+<td>Generate Event IDs</td>
+<td>Boolean</td>
+<td><ul><li>Toggle to enable or disable generation of unique Event IDs for each Facebook tracking event.</li><li>You must also enable <strong>Generate Event ID</strong> in the tag configuration page to enable generating an <code>event_id</code> .</li><li>Requires the most recent version of the <code>utag.js</code> file in order to generate the IDs.</li><li>Default value is <code>false</code>.</li></ul></td>
 </tr>
 <tr>
-<td>Automatically Calculate Number of Items</td>
 <td><code>calc_items</code></td>
-<td>Boolean [<code>true</code>/<code>false</code>]</td>
-<td><ul><li>Toggle to control whether or not to automatically determine the number of items for an event.</li><li>Uses the data mapped to Product Quantities to determine the number.</li><li>Toggles whether or not to automatically calculate the number of items in a Facebook tracking event based on the number of items in the <code>product_quantity</code> array.</li><li>Default value is <code>true</code>.</li></ul></td>
+<td>Automatically Calculate Number of Items</td>
+<td>Boolean</td>
+<td><ul><li>Toggle to control whether or not to automatically determine the number of items for an event.</li><li>Uses the data mapped to Product Quantities to determine the number.</li><li>Default value is <code>true</code>.</li></ul></td>
 </tr>
 <tr>
-<td>Toggle trackSingle Usage</td>
 <td><code>track_single</code></td>
-<td>Boolean [<code>true</code>/<code>false</code>]</td>
-<td><ul><li>Enable or disable the use of <code>trackSingle</code> for Facebook tracking events.</li><li>Toggles whether or not to use <code>trackSingle</code> for Facebook Pixel tracking calls.</li><li>Default value is <code>true</code>.</li><li>If set to <code>false</code>, the value <code>track</code> is used for all Facebook tracking calls.</li></ul></td>
+<td>Toggle trackSingle Usage</td>
+<td>Boolean</td>
+<td><ul><li>Enable or disable the use of <code>trackSingle</code> for Facebook tracking tracking events.</li><li>Default value is <code>true</code>.</li><li>If set to <code>false</code>, the value <code>track</code> is used for all Facebook tracking calls.</li></ul></td>
 </tr>
 <tr>
-<td>Toggle disablePushState Usage</td>
 <td><code>disablePushState</code></td>
-<td>Boolean [<code>true</code>/<code>false</code>]</td>
-<td><ul><li>Toggles the <code>disablePushState</code> setting.</li><li>Toggle to enable or disable the <code>disablePushState</code> option which controls whether or not to prevent the triggering of multiple PageViews on the same page (for Single Page Apps).</li><li>Default value is <code>false</code>.</li></ul></td>
+<td>Toggle disablePushState Usage</td>
+<td>Boolean</td>
+<td><ul><li>Toggles the <code>disablePushState</code> setting, which controls whether or not to prevent the triggering of multiple PageViews on the same page (for Single Page Apps).</li><li>Default value is <code>false</code>.</li></ul></td>
 </tr>
 </tbody>
 </table>
@@ -594,72 +610,72 @@
 <table>
 <thead>
 <tr>
-<th>Destination</th>
 <th>Variable</th>
+<th>Destination</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Email</td>
 <td><code>am.em</code></td>
-<td>[String]</td>
-<td><ul><li>Email address</li><li>The connector automatically converts this value to lowercase.</li><li>This value can be plain text, or normalized and SHA-256 hashed.</li></ul></td>
+<td>Email</td>
+<td>String</td>
+<td><ul><li>Email address</li><li>The tag automatically converts this value to lowercase.</li><li>This value can be plain text, or normalized and SHA-256 hashed.</li></ul></td>
 </tr>
 <tr>
-<td>First Name</td>
 <td><code>am.fn</code></td>
-<td>[String]</td>
-<td><ul><li>First name</li></ul></td>
+<td>First Name</td>
+<td>String</td>
+<td>First name</td>
 </tr>
 <tr>
-<td>Last Name</td>
 <td><code>am.ln</code></td>
-<td>[String]</td>
-<td><ul><li>Last name</li></ul></td>
+<td>Last Name</td>
+<td>String</td>
+<td>Last name</td>
 </tr>
 <tr>
-<td>Phone Number</td>
 <td><code>am.ph</code></td>
-<td>[String]</td>
-<td><ul><li>Telephone number</li></ul></td>
+<td>Phone Number</td>
+<td>String</td>
+<td>Telephone number</td>
 </tr>
 <tr>
-<td>Gender</td>
 <td><code>am.ge</code></td>
-<td>[String]</td>
-<td><ul><li>Gender</li><li>The connector automatically converts this value to lowercase.</li><li>This value must be <code>m</code> or <code>f</code>.</li></ul></td>
+<td>Gender</td>
+<td>String</td>
+<td><ul><li>Gender</li><li>The tag automatically converts this value to lowercase.</li><li>This value must be <code>m</code> or <code>f</code>.</li></ul></td>
 </tr>
 <tr>
-<td>Date of Birth</td>
 <td><code>am.db</code></td>
-<td>[String]</td>
-<td><ul><li>Date of birth</li><li>The connector automatically converts this value to lowercase.</li><li>This value must be eight characters long.</li></ul></td>
+<td>Date of Birth</td>
+<td>String</td>
+<td><ul><li>Date of birth</li><li>The tag automatically converts this value to lowercase.</li><li>This value must be eight characters long.</li></ul></td>
 </tr>
 <tr>
-<td>City</td>
 <td><code>am.ct</code></td>
-<td>[String]</td>
-<td><ul><li>City</li></ul></td>
+<td>City</td>
+<td>String</td>
+<td>City</td>
 </tr>
 <tr>
-<td>State</td>
 <td><code>am.st</code></td>
-<td>[String]</td>
-<td><ul><li>State</li></ul></td>
+<td>State</td>
+<td>String</td>
+<td>State</td>
 </tr>
 <tr>
-<td>Zip</td>
 <td><code>am.zp</code></td>
-<td>[String]</td>
-<td><ul><li>Zip Code</li><li>The connector automatically converts this value to lowercase.</li><li>This value must be five characters or fewer.</li></ul></td>
+<td>Zip</td>
+<td>String</td>
+<td><ul><li>Zip Code</li><li>The tag automatically converts this value to lowercase.</li><li>This value must be five characters or fewer.</li></ul></td>
 </tr>
 <tr>
-<td>External ID</td>
 <td><code>am.external_id</code></td>
-<td>[String]</td>
-<td><ul><li>External ID</li></ul></td>
+<td>External ID</td>
+<td>String</td>
+<td>External ID</td>
 </tr>
 </tbody>
 </table>
@@ -668,59 +684,59 @@
 <table>
 <thead>
 <tr>
-<th>Destination</th>
 <th>Variable</th>
+<th>Destination</th>
 <th>Description</th>
-<th>E-Commerce Extension Variable</th>
+<th>Overrides E-Commerce Extension Variable</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Order ID</td>
 <td><code>order_id</code></td>
-<td><ul><li>Unique identifier assigned to the final order.</li><li>Overrides <code>_corder</code>.</li></ul></td>
+<td>Order ID</td>
+<td>Unique identifier assigned to the final order</td>
 <td><code>_corder</code></td>
 </tr>
 <tr>
-<td>Sub Total</td>
 <td><code>sub_total</code></td>
-<td><ul><li>Sub total amount of the final order.</li><li>Overrides <code>_csubtotal</code>.</li></ul></td>
+<td>Sub Total</td>
+<td>Sub total amount of the final order</td>
 <td><code>_csubtotal</code></td>
 </tr>
 <tr>
-<td>Currency</td>
 <td><code>order_currency</code></td>
-<td><ul><li>Currency used in the payment.</li><li>Overrides <code>_ccurrency</code>.</li></ul></td>
+<td>Currency</td>
+<td>Currency used in the payment</td>
 <td><code>_ccurrency</code></td>
 </tr>
 <tr>
-<td>List of Product IDs</td>
 <td><code>product_id</code></td>
-<td><ul><li>Unique identifier of each product in the product array.</li><li>Overrides <code>_cprod</code>.</li></ul></td>
+<td>List of Product IDs</td>
+<td>Unique identifier of each product in the product array</td>
 <td><code>_cprod</code></td>
 </tr>
 <tr>
-<td>List of Product Names</td>
 <td><code>product_name</code></td>
-<td><ul><li>Name of each product in the product array.</li><li>Overrides <code>_cprodname</code>.</li></ul></td>
+<td>List of Product Names</td>
+<td>Name of each product in the product array</td>
 <td><code>_cprodname</code></td>
 </tr>
 <tr>
-<td>List of Product Quantities</td>
 <td><code>product_quantity</code></td>
-<td><ul><li>Quantity of products in the product array.</li><li>Overrides <code>_cquan</code>.</li></ul></td>
+<td>List of Product Quantities</td>
+<td>Quantity of products in the product array</td>
 <td><code>_cquan</code></td>
 </tr>
 <tr>
-<td>List of Categories</td>
 <td><code>product_category</code></td>
-<td><ul><li>Category of each product in the product array.</li><li>Overrides <code>_ccat</code>.</li></ul></td>
+<td>List of Categories</td>
+<td>Category of each product in the product array</td>
 <td><code>_ccat</code></td>
 </tr>
 <tr>
-<td>List of Prices</td>
 <td><code>product_unit_price</code></td>
-<td><ul><li>Unit price of each product in the product array.</li><li>Overrides <code>_cprice</code>.</li></ul></td>
+<td>List of Prices</td>
+<td>Unit price of each product in the product array</td>
 <td><code>_cprice</code></td>
 </tr>
 </tbody>
@@ -729,84 +745,84 @@
 <table>
 <thead>
 <tr>
-<th>Destination</th>
 <th>Variable</th>
+<th>Destination</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Currency</td>
 <td><code>currency</code></td>
-<td>[String]</td>
-<td><ul><li>The currency for the value of the event.</li></ul></td>
+<td>Currency</td>
+<td>String</td>
+<td>The currency for the value of the event</td>
 </tr>
 <tr>
-<td>Content Category</td>
 <td><code>content_category</code></td>
-<td>[Array,String]</td>
-<td><ul><li>Category of the page/product.</li></ul></td>
+<td>Content Category</td>
+<td>Array or String</td>
+<td>Category of the page or product</td>
 </tr>
 <tr>
-<td>Content Name</td>
 <td><code>content_name</code></td>
-<td>[Array,String]</td>
-<td><ul><li>Name of the page/product</li></ul></td>
+<td>Content Name</td>
+<td>Array or String</td>
+<td>Name of the page or product</td>
 </tr>
 <tr>
-<td>Content IDs</td>
 <td><code>content_ids</code></td>
-<td>[Array]</td>
-<td><ul><li>The product IDs or SKUs associated with the event</li></ul></td>
+<td>Content IDs</td>
+<td>Array of Integers or Strings</td>
+<td>The product IDs or SKUs associated with the event</td>
 </tr>
 <tr>
-<td>Content Type</td>
 <td><code>content_type</code></td>
-<td>[String]</td>
-<td><ul><li>The product type associated with the content IDs, which matches the types given in your Facebook product feed.</li><li>In most cases this is either <code>product</code> or <code>product_group</code>.</li><li>Dynamic Ads have other legitimate values for each business vertical.</li></ul></td>
+<td>Content Type</td>
+<td>String</td>
+<td><ul><li>The product type associated with the content IDs, which matches the types given in your Facebook product feed.</li><li>In most cases, this value is either <code>product</code> or <code>product_group</code>.</li><li>Dynamic Ads have other legitimate values for each business vertical.</li></ul></td>
 </tr>
 <tr>
-<td>Contents</td>
 <td><code>contents</code></td>
-<td>[Array,JSON Object]</td>
-<td><ul><li>An array of JSON objects that contains the quantity and the content IDs.</li></ul></td>
+<td>Contents</td>
+<td>Array of JSON Objects</td>
+<td>An array of JSON objects that contains quantity and  content IDs</td>
 </tr>
 <tr>
-<td>Predicted Lifetime Value</td>
 <td><code>predicted_ltv</code></td>
-<td>[String]</td>
-<td><ul><li>Predicted lifetime value of a subscriber as defined by the advertiser.</li><li>Expressed as an exact value</li></ul></td>
+<td>Predicted Lifetime Value</td>
+<td>Number</td>
+<td>Predicted lifetime value of a subscriber as defined by the advertiser, expressed as an exact value.</td>
 </tr>
 <tr>
-<td>Search String</td>
 <td><code>search_string</code></td>
-<td>[String]</td>
-<td><ul><li>Used with the Search event.</li><li>The string entered by the visitor for the search.</li></ul></td>
+<td>Search String</td>
+<td>String</td>
+<td>The string entered by the visitor for a <code>Search</code> event</td>
 </tr>
 <tr>
-<td>Status</td>
 <td><code>status</code></td>
-<td>[String]</td>
-<td><ul><li>Used with the <code>completeRegistration</code> event.</li><li>The status of the registration.</li></ul></td>
+<td>Status</td>
+<td>String</td>
+<td>The status of the registration for a <code>completeRegistration</code> event</td>
 </tr>
 <tr>
-<td>Number of Items</td>
 <td><code>num_items</code></td>
-<td>[Number]</td>
-<td><ul><li>The number of items for the event.</li><li>The number of items is automatically calculated based on the values in the data mapped for quantity.</li><li>Disable the automatic calculation by setting <code>calc_items</code> (<code>u.data.calc_items</code> ) to <code>false</code>, using data mapping or an extension.</li></ul></td>
+<td>Number of Items</td>
+<td>Integer</td>
+<td><ul><li>The number of items for the event.</li><li>The number of items is automatically calculated based on the values in the data mapped for quantity.</li><li>Disable the automatic calculation by setting <code>calc_items</code> (<code>u.data.calc_items</code> ) to <code>false</code> with data mapping or an extension.</li></ul></td>
 </tr>
 <tr>
-<td>Value</td>
 <td><code>value</code></td>
-<td>[String]</td>
-<td><ul><li>The value of a user performing this event to the business.</li></ul></td>
+<td>Value</td>
+<td>Number</td>
+<td>The value of a user performing this event to the business</td>
 </tr>
 </tbody>
 </table>
 <h3 id="content-type">Content Type</h3>
 <p>Set the <code>content_type</code> parameter by mapping to it directly in either the <strong>Standard Tracking Parameters</strong> tab, or the <strong>Event-specific Parameter</strong> mappings.</p>
-<p>The Content Type tab allows you to conditionally set the <code>content_type</code> parameter to any of the following supported values:</p>
+<p>The <strong>Content Type</strong> tab lets you conditionally set the <code>content_type</code> parameter to any of the following supported values:</p>
 <ul>
 <li><code>destination</code></li>
 <li><code>flight</code></li>
@@ -821,37 +837,45 @@
 <thead>
 <tr>
 <th>Variable</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>destination</code></td>
-<td><ul><li>Destination.</li></ul></td>
+<td>String</td>
+<td>Destination</td>
 </tr>
 <tr>
 <td><code>flight</code></td>
-<td><ul><li>Flight.</li></ul></td>
+<td>String</td>
+<td>Flight</td>
 </tr>
 <tr>
 <td><code>home_listing</code></td>
-<td><ul><li>Home Listing.</li></ul></td>
+<td>String</td>
+<td>Home listing</td>
 </tr>
 <tr>
 <td><code>hotel</code></td>
-<td><ul><li>Hotel.</li></ul></td>
+<td>String</td>
+<td>Hotel</td>
 </tr>
 <tr>
 <td><code>product</code></td>
-<td><ul><li>Product.</li></ul></td>
+<td>String</td>
+<td>Product</td>
 </tr>
 <tr>
 <td><code>product_group</code></td>
-<td><ul><li>Product Group.</li></ul></td>
+<td>String</td>
+<td>Product group</td>
 </tr>
 <tr>
 <td><code>vehicle</code></td>
-<td><ul><li>Vehicle.</li></ul></td>
+<td>String</td>
+<td>Vehicle</td>
 </tr>
 </tbody>
 </table>
@@ -866,85 +890,89 @@
 <tbody>
 <tr>
 <td><code>AddPaymentInfo</code></td>
-<td><ul><li>Add payment information.</li></ul></td>
+<td>Add payment information</td>
 </tr>
 <tr>
 <td><code>AddToCart</code></td>
-<td><ul><li>Add to cart.</li></ul></td>
+<td>Add to cart</td>
 </tr>
 <tr>
 <td><code>AddToWishlist</code></td>
-<td><ul><li>Add to wish list.</li></ul></td>
+<td>Add to wish list</td>
 </tr>
 <tr>
 <td><code>CompleteRegistration</code></td>
-<td><ul><li>Complete registration.</li></ul></td>
+<td>Complete registration</td>
 </tr>
 <tr>
 <td><code>Contact</code></td>
-<td><ul><li>Contact.</li></ul></td>
+<td>Contact</td>
 </tr>
 <tr>
 <td><code>CustomizeProduct</code></td>
-<td><ul><li>Customize product.</li></ul></td>
+<td>Customize product</td>
 </tr>
 <tr>
 <td><code>Donate</code></td>
-<td><ul><li>Donate.</li></ul></td>
+<td>Donate</td>
 </tr>
 <tr>
 <td><code>FindLocation</code></td>
-<td><ul><li>Find location.</li></ul></td>
+<td>Find location</td>
 </tr>
 <tr>
 <td><code>InitiateCheckout</code></td>
-<td><ul><li>Initiate checkout.</li></ul></td>
+<td>Initiate checkout</td>
 </tr>
 <tr>
 <td><code>Lead</code></td>
-<td><ul><li>Lead.</li></ul></td>
+<td>Lead</td>
 </tr>
 <tr>
 <td><code>PageView</code></td>
-<td><ul><li>Page view.</li></ul></td>
+<td>Page view</td>
 </tr>
 <tr>
 <td><code>Purchase</code></td>
-<td><ul><li>Purchase.</li></ul></td>
+<td>Purchase</td>
 </tr>
 <tr>
 <td><code>Schedule</code></td>
-<td><ul><li>Schedule.</li></ul></td>
+<td>Schedule</td>
 </tr>
 <tr>
 <td><code>Search</code></td>
-<td><ul><li>Search.</li></ul></td>
+<td>Search</td>
 </tr>
 <tr>
 <td><code>StartTrial</code></td>
-<td><ul><li>Start trial.</li></ul></td>
+<td>Start trial</td>
 </tr>
 <tr>
 <td><code>SubmitApplication</code></td>
-<td><ul><li>Submit application.</li></ul></td>
+<td>Submit application</td>
 </tr>
 <tr>
 <td><code>Subscribe</code></td>
-<td><ul><li>Subscribe.</li></ul></td>
+<td>Subscribe</td>
 </tr>
 <tr>
 <td><code>ViewContent</code></td>
-<td><ul><li>View content.</li></ul></td>
+<td>View content</td>
 </tr>
 <tr>
 <td><code>Custom</code></td>
-<td><ul><li>Enter the name of your custom event in the field provided.</li></ul></td>
+<td>Enter the name of your custom event in the field provided.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="event-specific-parameters">Event-specific Parameters</h3>
-<p>In order to map a parameter for a specific event only, first select the name of the parameter from the drop-down list,</p>
-<p>Enter the name of the parameter you want to set and then select the name of the event for which you want to set that parameter.</p>
+<p>In order to map a parameter for a specific event only:</p>
+<ol>
+<li>Select the name of the parameter from the drop-down list.</li>
+<li>Enter the name of the parameter you want to set.</li>
+<li>Select the name of the event for which you want to set that parameter.</li>
+</ol>
 <ul>
 <li>If you are mapping a parameter for a custom event, you must enter the name of the custom event in the field that appears.</li>
 <li>If you want to enter a custom parameter name, select the <strong>Custom</strong> option from the parameter drop-down list and enter the name of the custom parameter in the field that displays.</li>
@@ -960,79 +988,79 @@
 <tbody>
 <tr>
 <td><code>AddPaymentInfo</code></td>
-<td><ul><li>Add payment information.</li></ul></td>
+<td>Add payment information</td>
 </tr>
 <tr>
 <td><code>AddToCart</code></td>
-<td><ul><li>Add to cart.</li></ul></td>
+<td>Add to cart</td>
 </tr>
 <tr>
 <td><code>AddToWishlist</code></td>
-<td><ul><li>Add to wish list.</li></ul></td>
+<td>Add to wish list</td>
 </tr>
 <tr>
 <td><code>CompleteRegistration</code></td>
-<td><ul><li>Complete registration.</li></ul></td>
+<td>Complete registration</td>
 </tr>
 <tr>
 <td><code>Contact</code></td>
-<td><ul><li>Contact.</li></ul></td>
+<td>Contact</td>
 </tr>
 <tr>
 <td><code>CustomizeProduct</code></td>
-<td><ul><li>Customize product.</li></ul></td>
+<td>Customize product</td>
 </tr>
 <tr>
 <td><code>Donate</code></td>
-<td><ul><li>Donate.</li></ul></td>
+<td>Donate</td>
 </tr>
 <tr>
 <td><code>FindLocation</code></td>
-<td><ul><li>Find location.</li></ul></td>
+<td>Find location</td>
 </tr>
 <tr>
 <td><code>InitiateCheckout</code></td>
-<td><ul><li>Initiate checkout.</li></ul></td>
+<td>Initiate checkout</td>
 </tr>
 <tr>
 <td><code>Lead</code></td>
-<td><ul><li>Lead.</li></ul></td>
+<td>Lead</td>
 </tr>
 <tr>
 <td><code>PageView</code></td>
-<td><ul><li>Page view.</li></ul></td>
+<td>Page view</td>
 </tr>
 <tr>
 <td><code>Purchase</code></td>
-<td><ul><li>Purchase.</li></ul></td>
+<td>Purchase</td>
 </tr>
 <tr>
 <td><code>Schedule</code></td>
-<td><ul><li>Schedule.</li></ul></td>
+<td>Schedule</td>
 </tr>
 <tr>
 <td><code>Search</code></td>
-<td><ul><li>Search.</li></ul></td>
+<td>Search</td>
 </tr>
 <tr>
 <td><code>StartTrial</code></td>
-<td><ul><li>Start trial.</li></ul></td>
+<td>Start trial</td>
 </tr>
 <tr>
 <td><code>SubmitApplication</code></td>
-<td><ul><li>Submit application.</li></ul></td>
+<td>Submit application</td>
 </tr>
 <tr>
 <td><code>Subscribe</code></td>
-<td><ul><li>Subscribe.</li></ul></td>
+<td>Subscribe</td>
 </tr>
 <tr>
 <td><code>ViewContent</code></td>
-<td><ul><li>View content.</li></ul></td>
+<td>View content</td>
 </tr>
 <tr>
 <td><code>Custom</code></td>
-<td><ul><li>Custom.</li></ul></td>
+<td>Custom</td>
 </tr>
 </tbody>
 </table>
@@ -1040,116 +1068,138 @@
 <table>
 <thead>
 <tr>
-<th>Destination</th>
 <th>Variable</th>
+<th>Destination</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Body Style</td>
 <td><code>body_style</code></td>
-<td><ul><li>Body style.</li></ul></td>
+<td>Body Style</td>
+<td>String</td>
+<td>Body style</td>
 </tr>
 <tr>
-<td>Condition of Vehicle</td>
 <td><code>condition_of_vehicle</code></td>
-<td><ul><li>Condition of vehicle.</li></ul></td>
+<td>Condition of Vehicle</td>
+<td>String</td>
+<td>Condition of vehicle</td>
 </tr>
 <tr>
-<td>Country</td>
 <td><code>country</code></td>
-<td><ul><li>Country.</li></ul></td>
+<td>Country</td>
+<td>String</td>
+<td>Country</td>
 </tr>
 <tr>
-<td>Drivetrain</td>
 <td><code>drivetrain</code></td>
-<td><ul><li>Drive train.</li></ul></td>
+<td>Drivetrain</td>
+<td>String</td>
+<td>Drive train</td>
 </tr>
 <tr>
-<td>Exterior Color</td>
 <td><code>exterior_color</code></td>
-<td><ul><li>Exterior color.</li></ul></td>
+<td>Exterior Color</td>
+<td>String</td>
+<td>Exterior color</td>
 </tr>
 <tr>
-<td>Fuel Type</td>
 <td><code>fuel_type</code></td>
-<td><ul><li>Fuel type.</li></ul></td>
+<td>Fuel Type</td>
+<td>String</td>
+<td>Fuel type</td>
 </tr>
 <tr>
-<td>Interior Color</td>
 <td><code>interior_color</code></td>
-<td><ul><li>Interior color.</li></ul></td>
+<td>Interior Color</td>
+<td>String</td>
+<td>Interior color</td>
 </tr>
 <tr>
-<td>Lead Type</td>
 <td><code>lead_type</code></td>
-<td><ul><li>Lead type.</li></ul></td>
+<td>Lead Type</td>
+<td>String</td>
+<td>Lead type</td>
 </tr>
 <tr>
-<td>Make</td>
 <td><code>make</code></td>
-<td><ul><li>Make.</li></ul></td>
+<td>Make</td>
+<td>String</td>
+<td>Make</td>
 </tr>
 <tr>
-<td>Model</td>
 <td><code>model</code></td>
-<td><ul><li>Model.</li></ul></td>
+<td>Model</td>
+<td>String</td>
+<td>Model</td>
 </tr>
 <tr>
-<td>Postal Code</td>
 <td><code>postal_code</code></td>
-<td><ul><li>Postal code.</li></ul></td>
+<td>Postal Code</td>
+<td>String</td>
+<td>Postal code</td>
 </tr>
 <tr>
-<td>Preferred Price Range</td>
 <td><code>preferred_price_range</code></td>
-<td><ul><li>Array.</li><li>Preferred price range.</li><li>Must be an array that contains the minimum and maximum preferred prices.</li></ul></td>
+<td>Preferred Price Range</td>
+<td>Array</td>
+<td>An array of the minimum and maximum preferred prices</td>
 </tr>
 <tr>
-<td>Price</td>
 <td><code>price</code></td>
-<td><ul><li>Price.</li></ul></td>
+<td>Price</td>
+<td>Number</td>
+<td>Price</td>
 </tr>
 <tr>
-<td>Registration Type</td>
 <td><code>registration_type</code></td>
-<td><ul><li>Registration type.</li></ul></td>
+<td>Registration Type</td>
+<td>String</td>
+<td>Registration type</td>
 </tr>
 <tr>
-<td>Search Type</td>
 <td><code>search_type</code></td>
-<td><ul><li>Search type.</li></ul></td>
+<td>Search Type</td>
+<td>String</td>
+<td>Search type</td>
 </tr>
 <tr>
-<td>State of Vehicle</td>
 <td><code>state_of_vehicle</code></td>
-<td><ul><li>State of vehicle.</li></ul></td>
+<td>State of Vehicle</td>
+<td>String</td>
+<td>State of vehicle</td>
 </tr>
 <tr>
-<td>Transmission</td>
 <td><code>transmission</code></td>
-<td><ul><li>Transmission.</li></ul></td>
+<td>Transmission</td>
+<td>String</td>
+<td>Transmission</td>
 </tr>
 <tr>
-<td>Trim</td>
 <td><code>trim</code></td>
-<td><ul><li>Trim.</li></ul></td>
+<td>Trim</td>
+<td>String</td>
+<td>Trim</td>
 </tr>
 <tr>
-<td>ViewContent Type</td>
 <td><code>viewcontent_type</code></td>
-<td><ul><li>View content type.</li></ul></td>
+<td>ViewContent Type</td>
+<td>String</td>
+<td>View content type</td>
 </tr>
 <tr>
-<td>VIN</td>
 <td><code>vin</code></td>
-<td><ul><li>VIN number</li></ul></td>
+<td>VIN</td>
+<td>String</td>
+<td>Vehicle identification number</td>
 </tr>
 <tr>
-<td>Year</td>
 <td><code>year</code></td>
-<td><ul><li>Year.</li></ul></td>
+<td>Year</td>
+<td>Number</td>
+<td>Vehicle year</td>
 </tr>
 </tbody>
 </table>
@@ -1158,41 +1208,50 @@
 <thead>
 <tr>
 <th>Variable</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>city</code></td>
-<td><ul><li>City.</li></ul></td>
+<td>String</td>
+<td>City</td>
 </tr>
 <tr>
 <td><code>country</code></td>
-<td><ul><li>Country.</li></ul></td>
+<td>String</td>
+<td>Country</td>
 </tr>
 <tr>
 <td><code>num_adults</code></td>
-<td><ul><li>Number of adults.</li></ul></td>
+<td>Number</td>
+<td>Number of adults</td>
 </tr>
 <tr>
 <td><code>num_children</code></td>
-<td><ul><li>Number of children.</li></ul></td>
+<td>Number</td>
+<td>Number of children</td>
 </tr>
 <tr>
 <td><code>region</code></td>
-<td><ul><li>Region.</li></ul></td>
+<td>String</td>
+<td>Region</td>
 </tr>
 <tr>
 <td><code>suggested_destinations</code></td>
-<td><ul><li>Array.</li><li>Suggested destinations.</li><li>Must be an array of the suggested destinations.</li></ul></td>
+<td>Array</td>
+<td>An array of the suggested destinations</td>
 </tr>
 <tr>
 <td><code>travel_start</code></td>
-<td><ul><li>Travel start date.</li></ul></td>
+<td>Date</td>
+<td>Travel start date</td>
 </tr>
 <tr>
 <td><code>travel_end</code></td>
-<td><ul><li>Travel end date.</li></ul></td>
+<td>Date</td>
+<td>Travel end date</td>
 </tr>
 </tbody>
 </table>
@@ -1201,57 +1260,70 @@
 <thead>
 <tr>
 <th>Variable</th>
-<th>&gt;Description</th>
+<th>Type</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>departing_arrival_date</code></td>
-<td><ul><li>Departing arrival date.</li></ul></td>
+<td>String</td>
+<td>Departing arrival date</td>
 </tr>
 <tr>
 <td><code>departing_departure_date</code></td>
-<td><ul><li>Departing departure date.</li></ul></td>
+<td>String</td>
+<td>Departing departure date</td>
 </tr>
 <tr>
 <td><code>destination_ids</code></td>
-<td><ul><li>Destination IDs.</li></ul></td>
+<td>Array</td>
+<td>Destination IDs</td>
 </tr>
 <tr>
 <td><code>num_adults</code></td>
-<td><ul><li>Number of adults.</li></ul></td>
+<td>Number</td>
+<td>Number of adults</td>
 </tr>
 <tr>
 <td><code>num_children</code></td>
-<td><ul><li>Number of children.</li></ul></td>
+<td>Number</td>
+<td>Number of children</td>
 </tr>
 <tr>
 <td><code>num_infants</code></td>
-<td><ul><li>Number of infants.</li></ul></td>
+<td>Number</td>
+<td>Number of infants</td>
 </tr>
 <tr>
 <td><code>preferred_num_stops</code></td>
-<td><ul><li>Preferred number of stops.</li></ul></td>
+<td>Number</td>
+<td>Preferred number of stops</td>
 </tr>
 <tr>
 <td><code>price</code></td>
-<td><ul><li>Price.</li></ul></td>
+<td>Number</td>
+<td>Price</td>
 </tr>
 <tr>
 <td><code>returning_arrival_date</code></td>
-<td><ul><li>Returning arrival date.</li></ul></td>
+<td>Date</td>
+<td>Returning arrival date</td>
 </tr>
 <tr>
 <td><code>returning_departure_date</code></td>
-<td><ul><li>Returning departure date.</li></ul></td>
+<td>Date</td>
+<td>Returning departure date</td>
 </tr>
 <tr>
 <td><code>travel_class</code></td>
-<td><ul><li>Travel class.</li></ul></td>
+<td>String</td>
+<td>Travel class</td>
 </tr>
 <tr>
 <td><code>user_score</code></td>
-<td><ul><li>User score.</li></ul></td>
+<td>Number</td>
+<td>User score</td>
 </tr>
 </tbody>
 </table>
@@ -1260,61 +1332,75 @@
 <thead>
 <tr>
 <th>Variable</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>checkin_date</code></td>
-<td><ul><li>Check-in date.</li></ul></td>
+<td>Date</td>
+<td>Check-in date</td>
 </tr>
 <tr>
 <td><code>checkout_date</code></td>
-<td><ul><li>Check-out date.</li></ul></td>
+<td>Date</td>
+<td>Check-out date</td>
 </tr>
 <tr>
 <td><code>city</code></td>
-<td><ul><li>City.</li></ul></td>
+<td>String</td>
+<td>City</td>
 </tr>
 <tr>
 <td><code>country</code></td>
-<td><ul><li>Country.</li></ul></td>
+<td>String</td>
+<td>Country</td>
 </tr>
 <tr>
 <td><code>destination_ids</code></td>
-<td><ul><li>Array.</li><li>Destination IDs.</li><li>Must be an array that contains Destination IDs.</li></ul></td>
+<td>Array</td>
+<td>Destination IDs</td>
 </tr>
 <tr>
 <td><code>hotel_score</code></td>
-<td><ul><li>Hotel score.</li></ul></td>
+<td>Number</td>
+<td>Hotel score</td>
 </tr>
 <tr>
 <td><code>num_adults</code></td>
-<td><ul><li>Number of adults.</li></ul></td>
+<td>Number</td>
+<td>Number of adults</td>
 </tr>
 <tr>
 <td><code>num_children</code></td>
-<td><ul><li>Number of children.</li></ul></td>
+<td>Number</td>
+<td>Number of children</td>
 </tr>
 <tr>
 <td><code>preferred_neighborhoods</code></td>
-<td><ul><li>Array.</li><li>Preferred neighborhoods.</li></ul></td>
+<td>Array</td>
+<td>An array of the preferred neighborhoods</td>
 </tr>
 <tr>
 <td><code>preferred_price_range</code></td>
-<td><ul><li>Array.</li><li>Preferred price range.</li></ul></td>
+<td>Array</td>
+<td>An array of the minimum and maximum  price range</td>
 </tr>
 <tr>
 <td><code>preferred_star_ratings</code></td>
-<td><ul><li>Preferred star ratings.</li></ul></td>
+<td>String</td>
+<td>Preferred star ratings</td>
 </tr>
 <tr>
 <td><code>region</code></td>
-<td><ul><li>Region.</li></ul></td>
+<td>String</td>
+<td>Region</td>
 </tr>
 <tr>
 <td><code>user_score</code></td>
-<td><ul><li>User score.</li></ul></td>
+<td>Number</td>
+<td>User score</td>
 </tr>
 </tbody>
 </table>
@@ -1323,13 +1409,15 @@
 <thead>
 <tr>
 <th>Variable</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>movieref</code></td>
-<td><ul><li>Movie referrer.</li></ul></td>
+<td>String</td>
+<td>Movie referrer</td>
 </tr>
 </tbody>
 </table>
@@ -1338,57 +1426,70 @@
 <thead>
 <tr>
 <th>Variable</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>availability</code></td>
-<td><ul><li>Availability.</li></ul></td>
+<td>String</td>
+<td>Availability</td>
 </tr>
 <tr>
 <td><code>city</code></td>
-<td><ul><li>City.</li></ul></td>
+<td>String</td>
+<td>City</td>
 </tr>
 <tr>
 <td><code>country</code></td>
-<td><ul><li>Country.</li></ul></td>
+<td>String</td>
+<td>Country</td>
 </tr>
 <tr>
 <td><code>lease_start_date</code></td>
-<td><ul><li>Lease start date.</li></ul></td>
+<td>Date</td>
+<td>Lease start date</td>
 </tr>
 <tr>
 <td><code>lease_end_date</code></td>
-<td><ul><li>Lease end date.</li></ul></td>
+<td>Date</td>
+<td>Lease end date</td>
 </tr>
 <tr>
 <td><code>listing_type</code></td>
-<td><ul><li>Listing type.</li></ul></td>
+<td>String</td>
+<td>Listing type</td>
 </tr>
 <tr>
 <td><code>neighborhood</code></td>
-<td><ul><li>Neighborhood.</li></ul></td>
+<td>String</td>
+<td>Neighborhood</td>
 </tr>
 <tr>
 <td><code>preferred_baths_range</code></td>
-<td><ul><li>Array.</li><li>Preferred baths range.</li></ul></td>
+<td>Array</td>
+<td>An array of the minimum and maximum bathrooms range</td>
 </tr>
 <tr>
 <td><code>preferred_beds_range</code></td>
-<td><ul><li>Array.</li><li>Preferred beds range.</li></ul></td>
+<td>Array</td>
+<td>An array of the minimum and maximum bedrooms range</td>
 </tr>
 <tr>
 <td><code>preferred_price_range</code></td>
-<td><ul><li>Array.</li><li>Preferred price range.</li></ul></td>
+<td>Array</td>
+<td>An array of the minimum and maximum preferred prices</td>
 </tr>
 <tr>
 <td><code>property_type</code></td>
-<td><ul><li>Property type.</li></ul></td>
+<td>String</td>
+<td>Property type</td>
 </tr>
 <tr>
 <td><code>region</code></td>
-<td><ul><li>Region.</li></ul></td>
+<td>String</td>
+<td>Region</td>
 </tr>
 </tbody>
 </table>
@@ -1403,11 +1504,11 @@
 <tbody>
 <tr>
 <td><code>grant</code></td>
-<td>grant cookie consent</td>
+<td>Grant cookie consent</td>
 </tr>
 <tr>
 <td><code>revoke</code></td>
-<td>revoke cookie consent</td>
+<td>Revoke cookie consent</td>
 </tr>
 </tbody>
 </table>
@@ -1416,20 +1517,24 @@
 <thead>
 <tr>
 <th>Variable</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>lmt_data.use_ldu</code> (Use LDU)</td>
+<td>Boolean</td>
 <td><ul><li>If <code>true</code>, use Facebook’s Limited Data Use option </li><li>If <code>false</code>, do not use Facebook’s Limited Data Use option</li></ul></td>
 </tr>
 <tr>
 <td><code>lmt_data.ldu_types.geolocate</code> (LDU should Geolocate)</td>
+<td>Boolean</td>
 <td><ul><li>If <code>true</code>, the LDU geolocates the user.</li><li>If <code>false</code>, the LDU doe snot geolocate the user. If &ldquo;Use LDU&rdquo; is enabled, then &ldquo;LDU should Geolocate&rdquo; is also enabled by default.</li></ul></td>
 </tr>
 <tr>
 <td><code>lmt_data.ldu_types.california</code> (LDU is California)</td>
+<td>Boolean</td>
 <td><ul><li>If <code>true</code>, sets the state and country California-specific values inside the template. Only enable this option if the user is located in California and needs to be processed with Limited Data Use.</li><li>If <code>false</code>, does not set the user’s state and country California-specific values inside the template.</li></ul></td>
 </tr>
 </tbody>
@@ -1439,7 +1544,7 @@
 <ul>
 <li><a href="https://developers.facebook.com/docs/facebook-pixel/using-the-pixel">Facebook Pixel Developer Documentation</a>.</li>
 <li><a href="https://developers.facebook.com/docs/facebook-pixel/pixel-migration">Migrating from Deprecated Pixels</a></li>
-<li><a href="https://developers.facebook.com/docs/facebook-pixel/api-reference#events">Reference: Standard and Custom Events</a></li>
+<li><a href="https://developers.facebook.com/docs/meta-pixel/reference#events">Reference: Standard and Custom Events</a></li>
 <li><a href="https://www.facebook.com/business/help/651294705016616">The Facebook Pixel FAQ</a></li>
 <li><a href="https://www.facebook.com/business/help/978910435507261">Advertiser Help Center: Using Facebook Pixel with Tealium</a></li>
 <li><a href="https://developers.facebook.com/docs/facebook-pixel/pixel-with-ads/conversion-tracking#advanced_match">Conversion Tracking with the Pixel</a></li>
@@ -1504,7 +1609,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  April 21, 2022 
+          <p>This page was last updated:  November 22, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -1636,6 +1741,14 @@ No</button>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/moments-api/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Moments API
         </a>
     </li>
   

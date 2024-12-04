@@ -29,7 +29,7 @@
     <script>
     var utag_data = {
         site_section  : "iq-tag-management",
-        reading_time  : "1",
+        reading_time  : "2",
         site_language : "en",
         tealium_event : "page_view"
     }
@@ -419,9 +419,25 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Publishing is an optional and additional action during the save process. When you publish changes, the files associated with the account profile are regenerated to include the current configuration. It typically takes a few minutes after the publish for the files to update.</p>
+  <p>Publishing is an optional and additional action during the save process. When you publish changes, the files associated with the account profile are regenerated to include the current configuration.</p>
+<h2 id="publishing-timing">Publishing timing</h2>
+<p>The Tealium content delivery network (CDN) is optimized to refresh files immediately to minimize delays while publishing and testing.</p>
+<p>Time-to-live (TTL) settings and caching by your browser will cause your browser to load old versions of files. To resolve this, clear or disable your browser cache. For more information about Tealium and browser caching, see <a href="/iq-tag-management/getting-started/file-cache/">How Tealium files are cached</a>.</p>
+<h4 id="updated-immediately">Updated immediately</h4>
+<p>After publishing, the following files are immediately propagated through the CDN:</p>
+<ul>
+<li><code>utag.js</code></li>
+<li><code>utag.#.js</code></li>
+</ul>
+<h4 id="updated-up-to-five-minutes-later">Updated up to five minutes later</h4>
+<p>Publishing the following items will takes up to five minutes to propagate through the CDN:</p>
+<ul>
+<li><code>utag.sync.js</code></li>
+<li><code>utag.js</code> and <code>utag.#.js</code> files on <code>.cn</code> and <code>.eu</code> domains</li>
+<li><code>utag.js</code> and <code>utag.#.js</code> files on first-party domains</li>
+</ul>
 <h2 id="publish-environments">Publish environments</h2>
-<p>Publish environments provide separate instances of the Universal Tag (<code>utag.js</code>) to install on your production and non-production sites. There are three publish environments to support a proper release cycle: *<em>Dev</em>, <strong>QA</strong>, and <strong>Prod</strong>. Each environment uses a separate file for your different website environments. Using separate environments allows you to test changes before releasing them directly to your production site.</p>
+<p>Publish environments provide separate instances of the Universal Tag (<code>utag.js</code>) to install on your production and non-production sites. There are three publish environments to support a proper release cycle: <strong>Dev</strong>, <strong>QA</strong>, and <strong>Prod</strong>. Each environment uses a separate file for your different website environments. Using separate environments allows you to test changes before releasing them directly to your production site.</p>
 <p>There are three default publish environments which correspond to three instances of the Universal Tag (<code>utag.js</code>):</p>
 <ul>
 <li><strong>Dev</strong>: <code>/utag/YOUR-ACCOUNT/YOUR-PROFILE/dev/utag.js</code><br>
@@ -496,7 +512,7 @@ No</button>
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>This page was last updated:  March 9, 2023 
+          <p>This page was last updated:  November 22, 2024 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -504,7 +520,16 @@ No</button>
     </article>
 
     <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
-      </nav>
+      
+
+
+
+  <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">On this page</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#publishing-timing" href="javascript:void(0)">Publishing timing</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#publish-environments" href="javascript:void(0)">Publish environments</a></li>
+              </nav>
+  </aside></nav>
 
 </div>
 </div>
@@ -600,6 +625,14 @@ No</button>
     <li  class="tl dib ma0 hover-bg-primary w-100">
         <a href="https://docs.tealium.com/server-side/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
           AudienceStream CDP
+        </a>
+    </li>
+  
+  
+  
+    <li  class="tl dib ma0 hover-bg-primary w-100">
+        <a href="https://docs.tealium.com/server-side/moments-api/" class="f5 link primary-color-light overflow hover-white db ma0 w-100 pv3 ph4">
+          Moments API
         </a>
     </li>
   
