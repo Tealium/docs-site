@@ -422,9 +422,25 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>公開は、保存プロセス中のオプションであり、追加のアクションです。変更を公開すると、アカウントプロファイルに関連するファイルが再生成され、現在の構成が含まれます。公開後、ファイルが更新されるまで通常数分かかります。</p>
+  <p>公開は、保存プロセス中のオプションであり、追加のアクションです。変更を公開すると、アカウントプロファイルに関連するファイルが再生成され、現在の構成が含まれます。</p>
+<h2 id="公開のタイミング">公開のタイミング</h2>
+<p>Tealiumのコンテンツ配信ネットワーク（CDN）は、公開とテスト中の遅延を最小限に抑えるために、ファイルを即時に更新するように最適化されています。</p>
+<p>Time-to-live（TTL）構成とブラウザによるキャッシュは、ブラウザが古いバージョンのファイルをロードする原因となります。これを解決するためには、ブラウザのキャッシュをクリアするか無効にします。Tealiumとブラウザキャッシュについての詳細は、<a href="/ja/iq-tag-management/getting-started/file-cache/">Tealiumファイルがどのようにキャッシュされるか</a>を参照してください。</p>
+<h4 id="即時更新">即時更新</h4>
+<p>公開後、以下のファイルはCDNを通じて即時に伝播します：</p>
+<ul>
+<li><code>utag.js</code></li>
+<li><code>utag.#.js</code></li>
+</ul>
+<h4 id="最大5分後に更新">最大5分後に更新</h4>
+<p>以下の項目の公開は、CDNを通じて伝播するのに最大5分かかります：</p>
+<ul>
+<li><code>utag.sync.js</code></li>
+<li><code>.cn</code>および<code>.eu</code>ドメイン上の<code>utag.js</code>と<code>utag.#.js</code>ファイル</li>
+<li>ファーストパーティドメイン上の<code>utag.js</code>と<code>utag.#.js</code>ファイル</li>
+</ul>
 <h2 id="公開環境">公開環境</h2>
-<p>公開環境は、製品サイトと非製品サイトにインストールするためのユニバーサルタグ（<code>utag.js</code>）の別々のインスタンスを提供します。適切なリリースサイクルをサポートするための3つの公開環境があります：<strong>Dev</strong>、<strong>QA</strong>、および<strong>Prod</strong>。各環境は、異なるウェブサイト環境用の別々のファイルを使用します。別々の環境を使用することで、製品サイトに直接リリースする前に変更をテストすることができます。</p>
+<p>公開環境は、製品および非製品サイトにインストールするためのユニバーサルタグ（<code>utag.js</code>）の別々のインスタンスを提供します。適切なリリースサイクルをサポートするための3つの公開環境があります：<strong>Dev</strong>、<strong>QA</strong>、および<strong>Prod</strong>。各環境は、異なるウェブサイト環境のための別々のファイルを使用します。別々の環境を使用することで、製品サイトに直接リリースする前に変更をテストすることができます。</p>
 <p>ユニバーサルタグ（<code>utag.js</code>）の3つのインスタンスに対応する3つのデフォルトの公開環境があります：</p>
 <ul>
 <li><strong>Dev</strong>: <code>/utag/YOUR-ACCOUNT/YOUR-PROFILE/dev/utag.js</code><br>
@@ -432,11 +448,11 @@
 <li><strong>QA</strong>: <code>/utag/YOUR-ACCOUNT/YOUR-PROFILE/qa/utag.js</code><br>
 テストと検証のための環境。</li>
 <li><strong>Prod</strong>: <code>/utag/YOUR-ACCOUNT/YOUR-PROFILE/prod/utag.js</code><br>
-ライブ製品サイトの環境。</li>
+ライブプロダクションサイトの環境。</li>
 </ul>
-<p>例えば、Prod環境のファイルは製品サイトにインストールする必要があります：</p>
+<p>例えば、Prod環境からのファイルは、製品サイトにインストールする必要があります：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://tags.tiqcdn.com/utag/YOUR-ACCOUNT/main/prod/utag.js
-</span></span></code></pre></div><p>QA環境のファイルは非製品サイト（QA/Stage）にインストールする必要があります：</p>
+</span></span></code></pre></div><p>QA環境からのファイルは、非製品サイト（QA/Stage）にインストールする必要があります：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://tags.tiqcdn.com/utag/YOUR-ACCOUNT/main/qa/utag.js
 </span></span></code></pre></div><p>追加の環境が必要な場合は、<a href="/ja/iq-tag-management/save-publish/custom-publish-environments/">カスタム公開環境</a>を使用してください。</p>
 
@@ -499,7 +515,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2024年December月5日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -507,7 +523,16 @@
     </article>
 
     <nav id="toc" class="order-2 w-20 pl4 mv4 sticky-r dn db-ns max-vh-100 overflow-y-auto">
-      </nav>
+      
+
+
+
+  <aside class="mw5 right-0 f6 bl b--light-gray pv4 pv0-ns ph3 nested-copy-line-height">
+      <p class="b ttu">このページで</p>
+      <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%85%AC%E9%96%8B%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0" href="javascript:void(0)">公開のタイミング</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%85%AC%E9%96%8B%E7%92%B0%E5%A2%83" href="javascript:void(0)">公開環境</a></li>
+              </nav>
+  </aside></nav>
 
 </div>
 </div>

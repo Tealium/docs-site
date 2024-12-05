@@ -245,7 +245,6 @@
         <a href="/ja/client-side-tags/knotch-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".knotch-tag">Knotch</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/kochava-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".kochava-tag">Kochava</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/kochava-mobile-remote-command-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".kochava-mobile-remote-command-tag">Kochavaモバイルリモートコマンド</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
-        <a href="/ja/client-side-tags/krux-cookie-matching-service-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".krux-cookie-matching-service-tag">Krux Cookie Matching Service</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/line-tag-setup-guide/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".line-tag-setup-guide">LINE</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/linkedin-insight-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".linkedin-insight-tag">LinkedIn Insight</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
         <a href="/ja/client-side-tags/linkshare-tag/" class="db link pr2 pv2  text-color-primary hover-primary-color " data-target=".linkshare-tag-basic-configuration">LinkShare</a></li><li data-level="1" class="relative w-100 hover-accent-color-light fw4 f5  ind2">
@@ -433,12 +432,12 @@
 <li>アカウントマネージャーに連絡して、このタグをアカウントで有効にしてください。</li>
 </ul>
 <h2 id="動作方法">動作方法</h2>
-<p>Tealium Collectタグは、ページから事前定義されたデータと動的データの組み合わせをキャプチャします。このタグはマッピングを必要とせず、<code>utag.data</code>に構成されたすべてのものや、トラッキング呼び出しに渡された任意のデータを自動的に送信します。</p>
+<p>Tealium Collectタグは、ページから事前定義されたデータと動的データのミックスをキャプチャします。このタグはマッピングを必要とせず、<code>utag.data</code>に構成されたすべてのものや、トラッキング呼び出しに渡された任意のデータを自動的に送信します。</p>
 <p>収集される変数の完全なリストについては、<a href="/ja/server-side/data-storage/audiencestore-eventstore/eventstore-data-guide/">EventStoreデータガイド</a>を参照してください。</p>
-<p>Tealium Collectタグからの受信データを確認するには、<a href="/ja/server-side/live-events-feeds/about-live-events/">Live Events</a>を参照してください。</p>
+<p>Tealium Collectタグからの受信データを見るには、<a href="/ja/server-side/live-events-feeds/about-live-events/">Live Events</a>を参照してください。</p>
 <p>以下の機能とともにTealium Collectタグを使用します：</p>
 <ul>
-<li><strong>EventStreamを使用してピクセルリクエストを減らす</strong><br>
+<li><strong>EventStreamでピクセルリクエストを減らす</strong><br>
 このタグをEventStreamおよびイベントフィードとともに使用して、クライアントサイドのタグをサーバーサイドのコネクター、例えば<a href="/ja/server-side/connectors/webhook-connectors/about/">Webhook connector</a>に移行します。</li>
 <li><strong>AudienceStream</strong><br>
 このタグをAudienceStreamとともに使用して、訪問を特定し、アクションを起こします。</li>
@@ -452,7 +451,7 @@
 <ul>
 <li>このタグは、初期ページのロード時に<code>utag.data</code>内のすべてのデータを自動的に送信し、または<code>utag.view()</code>または<code>utag.link()</code>に渡された任意のデータオブジェクトを送信します。</li>
 <li>ネットワークリクエストを検査するためにプロキシツールを使用する場合、<code>POST</code>メソッド（GETではなく）を探します。</li>
-<li><strong>Tealium Collect Endpoint</strong>フィールドが空白で、サーバーサイドのデータ収集プロファイルが現在のプロファイルと異なる場合にのみ、<strong>Tealium Profile</strong>フィールドに値を指定します。</li>
+<li><strong>Tealium Profile</strong>フィールドに値を指定するのは、<strong>Tealium Collect Endpoint</strong>フィールドが空白で、サーバーサイドのデータ収集プロファイルが現在のプロファイルと異なる場合のみです。</li>
 </ul>
 <h2 id="タグの構成">タグの構成</h2>
 <p>まず、タグマーケットプレイスに移動し、Tealium Collectタグを追加します。詳細については、<a href="/ja/iq-tag-management/tags/manage/#add-a-tag">Manage tags</a>を参照してください。</p>
@@ -464,10 +463,10 @@
 <li>デフォルト：<code>Tealium Collect</code></li>
 </ul>
 </li>
-<li><strong>Tealium Collect Endpoint</strong>（オプション）
+<li><strong>Tealium Collectエンドポイント</strong>（オプション）
 <ul>
 <li>カスタムデータ収集エンドポイントとともに使用します。</li>
-<li>このフィールドに入力されたカスタムURLは、特に指定がない限り自動的にHTTPSにデフォルト構成されます。</li>
+<li>このフィールドに入力されたカスタムURLは、指定がない限り自動的にHTTPSにデフォルト構成されます。</li>
 <li>デフォルト：（構成なし）</li>
 </ul>
 </li>
@@ -477,13 +476,13 @@
 <li>AudienceStreamデータでデータレイヤーをエンリッチする頻度を選択します。
 <ul>
 <li><strong>None</strong>：（デフォルト）エンリッチメントは発生しません。</li>
-<li><strong>Infrequent</strong>：（推奨）エンリッチメントはセッションごとに1回発生します。</li>
-<li><strong>Frequent</strong>：エンリッチメントは各ページのロードごとに発生します。</li>
+<li><strong>Infrequent</strong>：（推奨）セッションごとに一度エンリッチメントが発生します。</li>
+<li><strong>Frequent</strong>：ページのロードごとにエンリッチメントが発生します。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><strong>Tealium Collect Profile</strong>（オプション）
+<li><strong>Tealium Collectプロファイル</strong>（オプション）
 <ul>
 <li>既存のデータ収集エンドポイント、例えばあなたのサイトからデータを受け取るAudienceStreamプロファイルを上書きするために使用します。</li>
 <li><strong>Tealium Collect Endpoint</strong>フィールドが空白で、AudienceStreamのデータ収集プロファイルが現在のプロファイルと異なる場合にのみ、このフィールドに値を指定します。</li>
@@ -500,7 +499,7 @@
 <ul>
 <li>データ収集サーバーの地理的な位置。</li>
 <li>デフォルト：Global（推奨）</li>
-<li>何を選択すべきかわからない場合は、アカウントマネージャーに連絡してください。</li>
+<li>選択すべきものがわからない場合は、アカウントマネージャーに連絡してください。</li>
 </ul>
 </li>
 <li><strong>Sample Size</strong>（オプション）
@@ -511,15 +510,15 @@
 </li>
 <li><strong>Use SendBeacon</strong>
 <ul>
-<li><code>true</code>に構成すると、<code>navigator.sendBeacon()</code>を使用してトラッキング呼び出しを送信します。</li>
-<li><code>false</code>に構成すると、レガシーブラウザメソッドの<code>XMLHttpRequest</code>を使用してトラッキング呼び出しを送信します。</li>
-<li>SendBeaconは少量のデータ向けで、ほとんどのブラウザでデータサイズの上限は64Kbです。詳細については、<a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon">Navigator:sendBeacon() method</a>を参照してください。</li>
+<li><code>navigator.sendBeacon()</code>を使用してトラッキング呼び出しを送信するには、<code>true</code>に構成します。</li>
+<li>レガシーブラウザーメソッド<code>XMLHttpRequest</code>を使用してトラッキング呼び出しを送信するには、<code>false</code>に構成します。</li>
+<li>SendBeaconは少量のデータ向けで、ほとんどのブラウザーではデータサイズの上限が64Kbです。詳細については、<a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon">Navigator:sendBeacon() method</a>を参照してください。</li>
 <li>デフォルト：<code>true</code></li>
 </ul>
 </li>
 <li><strong>Use HTTP API Endpoint</strong>
 <ul>
-<li>trueに構成すると、Tealium Collectエンドポイントの代わりに<a href="/ja/platforms/http-api/endpoint/">HTTP API endpoint</a>を使用します。</li>
+<li><a href="/ja/platforms/http-api/endpoint/">HTTP API endpoint</a>を使用するには、<code>true</code>に構成します。</li>
 <li>デフォルト：<code>false</code></li>
 </ul>
 </li>
@@ -556,7 +555,7 @@
 <h2 id="ベストプラクティス">ベストプラクティス</h2>
 <p>以下のベストプラクティスを実装に適用します：</p>
 <ul>
-<li>サードパーティのクライアントサイドタグを優先するために、このタグをタグリストの最後に配置して、それらが最初に実行されるようにします。</li>
+<li>サードパーティのクライアントサイドタグを優先するために、このタグをタグリストの最後に配置し、それらが最初に実行されるようにします。</li>
 <li>プロファイルにこのタグのインスタンスを1つ以上追加しないでください。</li>
 <li>uTag Loaderテンプレートの最新バージョンを使用します。詳細については、<a href="/ja/platforms/javascript/version-4-50/">バージョン4.50&#43;の注記</a>を参照してください。</li>
 </ul>
@@ -566,7 +565,7 @@
 </span></span></code></pre></div><h2 id="ロードルール">ロードルール</h2>
 <p>ベストプラクティスは、<strong>All Pages and Events</strong>ロードルールを使用することです。すべてのページでこのタグをロードすると、すべてのイベントがサーバーサイドでトラッキングされ、イベントデータとオーディエンスデータの両方を完全に活性化することができます。このタグにカスタムロードルールを使用すると、サーバーサイドで活性化できるデータが制限されるため、推奨されません。</p>
 <h3 id="トレースとの連携">トレースとの連携</h3>
-<p>より制限的なロードルールを使用していて、トレースツールでセッションを終了できないことに気付いた場合、トレースによってトリガーされる特別なイベントを許可するためにカスタムロードルールが必要です。</p>
+<p>もしも制限的なロードルールを使用していて、トレースツールでセッションを終了できないことに気付いた場合、トレースによってトリガーされる特別なイベントを許可するためのカスタムロードルールが必要です。</p>
 <p>以下のロードルールを作成し、Tealium Collectタグに割り当てます。</p>
 <pre tabindex="0"><code>ut.event equals (ignore case) kill_visitor_session
 </code></pre><figure><a class="slb" href="/images/client-side-tags/tealium-collect-load-rule-for-trace.png"><img src="/images/client-side-tags/tealium-collect-load-rule-for-trace.png"
@@ -584,21 +583,21 @@
 <h2 id="cookies">Cookies</h2>
 <p>Tealium Collectタグは以下のクッキーを作成します：</p>
 <ul>
-<li><code>utag_main_v_id</code>：データプライバシーと同意ルールを遵守するための一意で部分的にランダムな識別子。このクッキーは、<a href="/ja/platforms/javascript/settings/#always_set_v_id"><code>always_set_v_id</code> utag構成</a>が<code>true</code>に構成されている場合、<code>utag.js</code>バージョン4.50以降でCollectタグによって作成されます。それ以外の場合、Collectタグは以下の条件でクッキーを作成します：
+<li><code>utag_main_v_id</code>: データプライバシーと同意ルールを遵守するための一意で部分的にランダムな識別子です。Collectタグは、<a href="/ja/platforms/javascript/settings/#always_set_v_id"><code>always_set_v_id</code> utag構成</a>が<code>true</code>に構成されている場合、<code>utag.js</code>バージョン4.50以降でこのクッキーを作成します。それ以外の場合、Collectタグは以下の条件でクッキーを作成します:
 <ul>
 <li><code>suppress_v_id</code> Collect構成が<code>false</code>に構成されているか、構成されていない。</li>
 <li>クッキーの値がすでに構成されていない。<br>
 このクッキーについての詳細は、<a href="/ja/platforms/javascript/version-4-50/"><code>utag.js</code>リリースノートバージョン4.50</a>を参照してください。</li>
 </ul>
 </li>
-<li><code>utag_main_dc_group</code>：<strong>サンプルサイズ</strong>構成で使用するランダムな数値。</li>
-<li><code>utag_main_dc_region</code>：訪問セッションが保存されているAudienceStream地域。このクッキーは、<a href="/ja/server-side/attributes/data-layer-enrichment/">データレイヤーのエンリッチメント</a>のエンドポイントを決定するために使用されます。</li>
+<li><code>utag_main_dc_group</code>: <strong>Sample Size</strong>構成で使用するランダムな数値。</li>
+<li><code>utag_main_dc_region</code>: 訪問セッションが保存されているAudienceStream地域。このクッキーは、<a href="/ja/server-side/attributes/data-layer-enrichment/">データレイヤーのエンリッチメント</a>のエンドポイントを決定するために使用されます。</li>
 </ul>
 <h3 id="レガシークッキー">レガシークッキー</h3>
-<p>互換性のため、Tealium Collectタグは以下のレガシークッキーを作成します：</p>
+<p>互換性のため、Tealium Collectタグは以下のレガシークッキーを作成します:</p>
 <ul>
-<li><code>utag_main_dc_event</code>：<code>utag_main__se</code>セッションイベントクッキーの複製。</li>
-<li><code>utag_main_dc_visit</code>：<code>utag_main__sn</code>セッション番号クッキーの複製。</li>
+<li><code>utag_main_dc_visit</code>: Tealium Collectタグが発火したセッションの数。</li>
+<li><code>utag_main_dc_event</code>: Tealium Collectタグが発火したイベントの数。</li>
 </ul>
 <p>これらのクッキーについての詳細は、<a href="/ja/platforms/javascript/data-layer/#cookies">Data Layer: Cookies</a>を参照してください。</p>
 
@@ -661,7 +660,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月13日
+          <p>最終更新日 ::  2024年December月5日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -968,7 +967,6 @@
 
 <div class="docsmenu mobilemenu dn" style="overflow-y:scroll;">
     <ul class="list dib ph0 ma0 scrolling-touch tc">
-  
   
   
   

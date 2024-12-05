@@ -188,24 +188,24 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p class="note"><i class="fa fa-exclamation-triangle"></i>Snowflakeデータソースは早期アクセス段階にあり、一部のお客様のみが利用可能です。この機能を試してみたい場合は、Tealiumサポート担当者にお問い合わせください。</p>
+  <p class="note"><i class="fa fa-exclamation-triangle"></i>Snowflakeデータソースは早期アクセス中で、一部のお客様のみが利用可能です。この機能を試してみたい場合は、Tealiumサポート担当者に連絡してください。</p>
 <h2 id="要件">要件</h2>
-<p>この機能を利用するには以下が必要です：</p>
+<p>この機能を使用するには以下が必要です：</p>
 <ul>
 <li>Tealium EventStreamまたはTealium AudienceStream</li>
 <li>Snowflakeアカウント</li>
 <li><code>USAGE</code>権限を持つSnowflakeロール</li>
 </ul>
 <h2 id="仕組み">仕組み</h2>
-<p>Snowflakeデータソースを使用して、Snowflakeテーブルまたはビューから大量のデータをほぼリアルタイムでインポートします。データをインポートした後、それをTealiumの属性に変換・マッピングし、ターゲット指向のアクティベーションのためのより良いオーディエンスを構築します。</p>
-<p>始めるには、Snowflakeテーブルまたはビューごとに1つのSnowflakeデータソースを作成し、データセットのためのクエリモードとSQLの<code>WHERE</code>句をカスタマイズします。次に、データベースの列をTealiumの属性にマッピングします。Snowflakeソースからインポートされた各行はTealiumでイベントとして処理されます。</p>
+<p>Snowflakeデータソースを使用して、Snowflakeテーブルまたはビューから大量のデータをほぼリアルタイムでインポートします。データをインポートした後、それをTealiumの属性に変換・マッピングし、ターゲット指向の活性化のためのより良いオーディエンスを構築します。</p>
+<p>始めるには、Snowflakeテーブルまたはビューごとに1つのSnowflakeデータソースを作成し、データセットのためのクエリモードとSQLの<code>WHERE</code>句をカスタマイズします。次に、データベースの列をTealiumの属性にマッピングします。Snowflakeソースからインポートされた各行はTealiumのイベントとして処理されます。</p>
 <h2 id="レート制限">レート制限</h2>
-<p>Snowflakeからのインポートは通常、アカウントごとに秒あたり50イベントに制限されていますが、これは変動する場合があります。標準の属性サイズ制限は依然として適用されます。詳細については、<a href="/ja/server-side/attributes/about/#size-limits">属性について &gt; サイズ制限</a>を参照してください。</p>
+<p>Snowflakeからのインポートは通常、アカウントごとに秒あたり50イベントに制限されていますが、変動する場合があります。標準の属性サイズ制限は依然として適用されます。詳細については、<a href="/ja/server-side/attributes/about/#size-limits">属性について &gt; サイズ制限</a>を参照してください。</p>
 <p>Snowflakeデータソースは、一度に最大1,000行のデータを取得します。</p>
 <h2 id="snowflakeテーブル">Snowflakeテーブル</h2>
-<p>各Snowflakeデータソースは、1つのSnowflakeテーブルまたはビューからのデータのインポートをサポートします。複数のSnowflakeテーブルからデータをインポートするには、Snowflakeでビューを作成し、データソース構成でそのビューを選択します。Snowflakeのビューについての詳細は、<a href="https://docs.snowflake.com/en/user-guide/views-introduction">Snowflake: ビューの概要</a>を参照してください。</p>
+<p>各Snowflakeデータソースは、1つのSnowflakeテーブルまたはビューからのデータのインポートをサポートしています。複数のSnowflakeテーブルからデータをインポートするには、Snowflakeでビューを作成し、データソース構成でそのビューを選択します。Snowflakeのビューについての詳細は、<a href="https://docs.snowflake.com/en/user-guide/views-introduction">Snowflake: ビューの概要</a>を参照してください。</p>
 <h2 id="データタイプ">データタイプ</h2>
-<p>Snowflakeデータソースは、すべてのSnowflakeデータタイプをサポートします。データが正しくインポートされるように、以下のガイドラインに従ってSnowflakeのデータタイプをマッピングしてください：</p>
+<p>Snowflakeデータソースは、すべてのSnowflakeデータタイプをサポートしています。データが正しくインポートされるように、以下のガイドラインに従ってSnowflakeのデータタイプをマッピングしてください：</p>
 <table>
 <thead>
 <tr>
@@ -245,24 +245,29 @@
 <p>デフォルトのTealium <a href="/ja/server-side/getting-started/order-of-operations/">データ収集の操作順序</a>では、Snowflakeデータソースからのイベントは<strong>イベント受信</strong>ステップの前に処理され、操作の順序は変わりません。</p>
 <p>Snowflakeデータソースからのイベントは、以下の重要な例外を除き、他のデータソースからのイベントと同様にEventStreamとAudienceStreamに送信されます：</p>
 <ul>
-<li><strong>ブラウザ固有の属性</strong>：ユーザーエージェントなどのブラウザ固有の属性は入力されません。</li>
+<li><strong>ブラウザ固有の属性</strong>：ユーザーエージェントなどのブラウザ固有の属性は構成されません。</li>
 <li><strong>エンリッチメント</strong>：AudienceStreamの事前読み込み属性に対するエンリッチメントは実行されません。ただし、<code>First visit</code>属性は例外です。</li>
 <li><strong>関数</strong>：データ変換関数は実行されません。</li>
-<li><strong>単一ページ訪問</strong>：受信イベントは単一ページ訪問/訪問の基準から除外されます。他のデータソースからの単一ページ訪問と訪問はAudienceStreamに保存されません。詳細については、<a href="/ja/server-side/visitor-stitching/single-event-visitor/">AudienceStreamで単一ページ訪問はどのように処理されますか？</a> (Tealiumのログインが必要)を参照してください。</li>
+<li><strong>シングルページ訪問</strong>：着信イベントはシングルページ訪問/訪問の基準から除外されます。他のデータソースからのシングルページ訪問と訪問はAudienceStreamに保存されません。詳細については、<a href="/ja/server-side/visitor-stitching/single-event-visitor/">AudienceStreamでシングルページ訪問はどのように処理されますか？</a>（Tealiumログインが必要）を参照してください。</li>
 <li><strong>訪問の長さ</strong>：Snowflakeデータソースイベントによって開始された訪問は60秒間続きます。</li>
 <li><strong>訪問IDのマッピング</strong>：Snowflakeデータソース構成でAudienceStream訪問ID属性をマッピングすると、訪問IDは選択した列の値に直接構成され、追加のエンリッチメントは必要ありません。</li>
 </ul>
 <h2 id="構成">構成</h2>
 <h3 id="クエリモード">クエリモード</h3>
 <p>Snowflakeデータソースは、Snowflakeテーブルまたはビューからデータをインポートする方法を制御するための3つのクエリモードをサポートしています：</p>
-<ul>
-<li><strong>タイムスタンプ + インクリメント</strong>：（推奨）Tealiumは、タイムスタンプ列と自動インクリメント列に基づいて新規または変更された行をインポートします。このモードでは、前回のインポートより新しいタイムスタンプと、最後にインポートされた行より大きな自動インクリメント値を持つ行がインポートされます。これは、すべての行が期待通りにインポートされることを確実にする最も信頼性の高いモードです。</li>
-<li><strong>タイムスタンプ</strong>：Tealiumは、タイムスタンプ列に基づいて新規または変更された行をインポートします。このモードでは、前回のインポートより新しいタイムスタンプを持つ行がインポートされます。テーブルにタイムスタンプ列があり、それがすべての更新で構成または更新される場合、このモードを使用します。</li>
-<li><strong>インクリメント</strong>：Tealiumは、自動インクリメント列に基づいて行をインポートします。このモードでは、最後にインポートされた行より大きな自動インクリメント値を持つ行がインポートされます。これは既存の行の変更や削除を検出しません。自動インクリメント列のみを持ち、タイムスタンプ列を持っていない場合、このモードを使用します。</li>
-</ul>
+<h4 id="タイムスタンプ--インクリメンティング推奨">タイムスタンプ + インクリメンティング（推奨）</h4>
+<p class="tip"><i class="fa fa-info-circle"></i><strong>タイムスタンプ + インクリメンティング</strong>は、すべての行が期待通りにインポートされることを確実にする最も信頼性の高いモードです。</p>
+<p>Tealiumは、タイムスタンプ列と自動インクリメント列に基づいて新規または変更された行をインポートします。このモードでは、前回のインポートより新しいタイムスタンプと/または最後にインポートされた行より大きな自動インクリメント値を持つ行がインポートされます。</p>
+<h4 id="追加のモード">追加のモード</h4>
+<p><strong>タイムスタンプ</strong><br>
+Tealiumは、タイムスタンプ列に基づいて新規または変更された行をインポートします。このモードでは、前回のインポートより新しいタイムスタンプを持つ行がインポートされます。テーブルにタイムスタンプ列があり、それがすべての更新で構成または更新される場合、このモードを使用します。
+<strong>タイムスタンプ</strong>は<strong>タイムスタンプ + インクリメンティング</strong>ほど信頼性がありません。なぜなら、異なるデータバッチでタイムスタンプが重複している場合、行が見逃される可能性があるからです。</p>
+<p><strong>インクリメンティング</strong>
+Tealiumは、自動インクリメント列に基づいて行をインポートします。このモードでは、最後にインポートされた行よりも大きな自動インクリメント値を持つ行がインポートされます。タイムスタンプ列がなく、自動インクリメント列のみがある場合、このモードを使用します。
+<strong>インクリメンティング</strong>は<strong>タイムスタンプ + インクリメンティング</strong>ほど信頼性がありません。なぜなら、既存の行の変更や削除を検出できないからです。</p>
 <p>Snowflakeデータソースは、一括クエリモードをサポートしていません。</p>
 <h3 id="クエリモードの例">クエリモードの例</h3>
-<p>以下の例は、行のバッチ処理とクエリモードがどのように連携して動作するかを示しています。以下の表では、<code>modification_time</code>がタイムスタンプ列で、<code>customer_id</code>がインクリメント列です。</p>
+<p>以下の例は、行のバッチ処理とクエリモードがどのように連携して動作するかを示しています。以下の表では、<code>modification_time</code>がタイムスタンプ列で、<code>customer_id</code>がインクリメンティング列です。</p>
 <table>
 <thead>
 <tr>
@@ -304,24 +309,24 @@
 </tr>
 </tbody>
 </table>
-<p>Snowflakeデータソースは、一度に最大1,000行のデータを取得し、データのバッチからタイムスタンプと/またはインクリメント列の最大値をマークします。</p>
+<p>Snowflakeデータソースは、一度に最大1,000行のデータを取得し、データのバッチからタイムスタンプと/またはインクリメンティング列の最大値をマークします。</p>
 <ul>
-<li><strong>タイムスタンプ + インクリメント</strong>モードを使用する場合：データソースは行1-1000を取得します。次にデータソースがデータを取得するとき、次のいずれかの行を探します。<br>
+<li><strong>タイムスタンプ + インクリメンティング</strong>モードを使用する場合：データソースは行1-1000を取得します。次にデータソースがデータを取得するとき、次の行を探します。<br>
 <code>modification_time</code>が<code>01Apr 13:00</code>で、<code>customer_id</code>が<code>1000</code>より大きい<br>
 または<br>
 <code>modification_time</code>が<code>01Apr 13:00</code>より大きい</li>
-<li><strong>タイムスタンプ</strong>モードを使用する場合（例では<code>modification_time</code>）：データソースは行1-1000を取得し、最大タイムスタンプ<code>01Apr 13:00</code>をマークします。次にデータソースがデータを取得するとき、<code>01Apr 13:00</code>より大きいタイムスタンプを探します。この場合、行1001は同じタイムスタンプ値を持つが、異なるデータバッチで取得されたため、スキップされます。</li>
-<li><strong>インクリメント</strong>モードを使用する場合：データソースは行1-1000を取得し、最大の自動インクリメント値<code>1000</code>をマークしますが、新しいデータと更新されたタイムスタンプ列を持つ行は処理されません。インクリメント列をさらに増加させる新たに追加された行のみが処理されます（例では<code>customer_id</code>）。</li>
+<li><strong>タイムスタンプ</strong>モード（例では<code>modification_time</code>）を使用する場合：データソースは行1-1000を取得し、最大タイムスタンプ<code>01Apr 13:00</code>をマークします。次にデータソースがデータを取得するとき、<code>01Apr 13:00</code>より大きいタイムスタンプを探します。この場合、行1001は同じタイムスタンプ値を持つが、異なるデータバッチで取得されたため、スキップされます。</li>
+<li><strong>インクリメンティング</strong>モードを使用する場合：データソースは行1-1000を取得し、最大の自動インクリメント値<code>1000</code>をマークしますが、新しいデータと更新されたタイムスタンプ列を持つ行は処理されません。インクリメンティング列（例では<code>customer_id</code>）をさらに増加させる新規追加の行のみが処理されます。</li>
 </ul>
 <h3 id="sqlクエリ">SQLクエリ</h3>
-<p>Snowflakeデータソースの<strong>クエリ構成</strong>で、Tealiumにインポートしたい列を選択します。処理の追加条件を構成するには、SQLの<code>WHERE</code>句を使用します。このオプションは、クエリに<code>WHERE</code>文を追加します。<code>WHERE</code>文は基本的なSQL構文をサポートします。</p>
+<p>Snowflakeデータソースの<strong>クエリ構成</strong>で、Tealiumにインポートしたい列を選択します。処理の追加条件を構成するには、SQLの<code>WHERE</code>句を使用します。このオプションは、クエリに<code>WHERE</code>文を追加します。<code>WHERE</code>文は基本的なSQL構文をサポートしています。</p>
 <p class="note"><i class="fa fa-exclamation-triangle"></i><code>WHERE</code>句は、複数のテーブルからのサブクエリをサポートしていません。複数のSnowflakeテーブルからデータをインポートするには、Snowflakeでビューを作成し、データソース構成でそのビューを選択します。詳細については、<a href="https://docs.snowflake.com/en/user-guide/views-introduction">Snowflake: ビューの概要</a>を参照してください。</p>
 <h3 id="列マッピング">列マッピング</h3>
 <p>列マッピング構成は、Snowflakeテーブルの各列に対応するイベント属性を決定します。
-カラム名は、Customer Data Hubの属性名とはしばしば異なるため、このマッピングによりデータが適切にインポートされます。例えば、テーブルには<code>postalCode</code>という名前のカラムがあるかもしれませんが、対応するイベント属性は<code>customer_zip</code>と名付けられているため、それらを関連付けるマッピングが必要です。</p>
+カラム名は、Customer Data Hubの属性名とはしばしば異なるため、このマッピングによりデータが適切にインポートされます。例えば、テーブルには<code>postalCode</code>という名前のカラムがあるかもしれませんが、対応するイベント属性は<code>customer_zip</code>という名前なので、それらを関連付けるマッピングが必要です。</p>
 <p>Snowflakeのデータ型をTealiumのデータ型にマッピングする方法については、<a href="#data-types">データ型</a>セクションを参照してください。</p>
 <h3 id="ビジターidのマッピング">ビジターIDのマッピング</h3>
-<p>インポートされたデータがウェブ、モバイル、HTTP APIなどの他のソースとステッチされることを確認するために、Snowflakeテーブルの各行には一意のビジターIDを持つカラムがあることを確認してください。その後、ビジターIDカラムと対応するイベント属性をビジターID属性（AudienceStreamでのビジター識別のための一意の属性タイプ）にマッピングできます。マッピングされたイベント属性の値は、<code>tealium_visitor_id</code>属性に割り当てられ、既存のビジタープロファイルに直接マッチします。</p>
+<p>インポートされたデータがウェブ、モバイル、HTTP APIなどの他のソースとステッチされるようにするためには、Snowflakeのテーブルの各行に一意のビジターIDを持つカラムがあることを確認してください。その後、ビジターIDのカラムと対応するイベント属性を、AudienceStream内でのビジター識別用の一意の属性タイプであるビジターID属性にマッピングします。マッピングされたイベント属性の値は、<code>tealium_visitor_id</code>属性に割り当てられ、既存のビジタープロファイルに直接マッチします。</p>
 <p>AudienceStreamでのビジターIDマッピングについての詳細は、<a href="/ja/server-side/data-sources/visitor-identification/">Tealiumデータソースを使用したビジター識別</a>を参照してください。</p>
 <h2 id="許可するipアドレス">許可するIPアドレス</h2>
 <p>あなたのSnowflakeアカウントがどのシステムからのリクエストを受け入れるかについて厳格なルールがある場合は、<a href="/ja/server-side/administration/ip-allow-list/">TealiumのIPアドレス</a>をSnowflakeの許可リストに追加してください。</p>
@@ -370,7 +375,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年November月8日
+          <p>最終更新日 ::  2024年December月5日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>

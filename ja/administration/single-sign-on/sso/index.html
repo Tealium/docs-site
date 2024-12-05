@@ -161,61 +161,60 @@
 <div class="prose nested-links" id="prose">
   <h2 id="要件">要件</h2>
 <ul>
-<li><strong>IDプロバイダー</strong>: SAML 2.0のサポート</li>
+<li><strong>アイデンティティプロバイダー</strong>: SAML 2.0のサポート</li>
 <li><strong>Tealium</strong>: アカウント管理者およびユーザー管理者の権限</li>
 </ul>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>複数のTealiumアカウントにアクセスできる場合、SSOは主アカウントでのみ有効になります。</p>
 <h2 id="仕組み">仕組み</h2>
-<p>SSOは、一つの認証システムを使用して複数のアプリケーションにアクセスする安全な方法です。Tealiumは、SSOを実装するためにSecurity Assertion Markup Language (SAML) 2.0をサポートし、あなたのIDプロバイダー（IdP）構成のサービスプロバイダー（SP）として機能します。TealiumのSSOでSAMLを使用することで、ユーザーのアカウントを信頼できるエンタープライズIdPの下で保護することができます。</p>
+<p>SSOは、一つの認証システムを使用して複数のアプリケーションにアクセスする安全な方法です。Tealiumは、SSOを実装するためにSecurity Assertion Markup Language（SAML）2.0をサポートし、あなたのIdentity Provider（IdP）構成のサービスプロバイダー（SP）として機能します。TealiumのSSOでSAMLを使用すると、ユーザーのアカウントを信頼できるエンタープライズIdPの下で保護することができます。</p>
 <h3 id="サポートされているidp">サポートされているIdP</h3>
 <p>TealiumのSSOは、以下のIdPへの接続の構成手順をサポートしています：</p>
 <ul>
 <li>Amazon AWS</li>
-<li>ADFS (Active Directory)</li>
+<li>ADFS（Active Directory）</li>
 <li>Azure</li>
 <li>Jumpcloud</li>
 <li>OneLogin</li>
 <li>Okta</li>
 </ul>
-<p>Tealiumはまた、上記に記載されていないIdPプラットフォームへのSSO実装もサポートしています。ただし、他のプラットフォームからのIdP接続を構成するためには、追加のテストと構成時間が必要になる場合があります。他のIdPプラットフォームの実装に関する質問は、Tealiumサポートにお問い合わせください。</p>
-<h2 id="tealium-ssoログインプロセス">Tealium SSOログインプロセス</h2>
+<p>Tealiumは、上記に記載されていないIdPプラットフォームへのSSO実装もサポートしています。ただし、他のプラットフォームからのIdP接続を構成するためには、追加のテストと構成時間が必要になる場合があります。他のIdPプラットフォームの実装に関する質問は、Tealiumサポートにお問い合わせください。</p>
+<h2 id="tealium-ssoのログインプロセス">Tealium SSOのログインプロセス</h2>
 <figure><a class="slb" href="/images/iq-tag-management/administration/security/sso-configuration1.png"><img src="/images/iq-tag-management/administration/security/sso-configuration1.png"
          alt="Tealium SSO Login Process"
          title="Tealium SSO Login Process"/>
     </a>
 </figure>
-<p>TealiumのSSOログインプロセスは以下の手順に従います：</p>
+<p>Tealium SSOのログインプロセスは以下の手順に従います：</p>
 <ol>
-<li>次のログインオプションのいずれかを使用して、TealiumのSSOを介してTealiumアカウントにログインします：
+<li>次のログインオプションのいずれかを使用して、Tealium SSOを介してTealiumアカウントにログインします：
 <ul>
 <li>Tealium経由で <code>https://my.tealiumiq.com/login/sso</code></li>
 <li>カスタムTealium URL、例えば <code>https://my.tealiumiq.com/login/sso/customURL</code></li>
 <li>あなたのIdP経由</li>
 </ul>
 </li>
-<li><code>my.tealiumiq.com</code>経由でログインすると、TealiumのSSO SPはあなたのIdP接続情報を検証し、あなたのIdPにSAMLリクエストを送信し、あなたをIdPのログインページにリダイレクトします。あなたのIdP経由でログインする場合、このステップはスキップされます。</li>
+<li><code>my.tealiumiq.com</code>経由でログインすると、Tealium SSO SPはあなたのIdP接続情報を検証し、SAMLリクエストをあなたのIdPに送信し、あなたをIdPのログインページにリダイレクトします。あなたのIdP経由でログインする場合、このステップはスキップされます。</li>
 <li>あなたのIdPはSAMLレスポンスをTealium SSO SPに送信し、Tealium SSO SPはログイン情報を検証します。</li>
 <li>新しいTealiumのログインセッションが作成されます。</li>
 </ol>
 <h2 id="ssoの構成と管理">SSOの構成と管理</h2>
-<p>クライアントサイドまたはサーバーサイドの**管理メニュー &gt; SSO (シングルサインオン)**を通じて、TealiumのSSOを構成および管理します。IdPへの接続を確立し、認証をオンにすると、TealiumのSSOはクライアントサイドとサーバーサイドの製品全体で有効になります。</p>
-<figure><a class="slb" href="/images/iq-tag-management/administration/security/sso-client-side-menu.png"><img src="/images/iq-tag-management/administration/security/sso-client-side-menu.png"
+<figure class="fr mt0"><a class="slb" href="/images/iq-tag-management/administration/security/sso-client-side-menu.png"><img src="/images/iq-tag-management/administration/security/sso-client-side-menu.png"
          alt="SSO client-side menu"
-         title="SSO client-side menu" width="150"/>
+         title="SSO client-side menu" class="noshadow" width="150"/>
     </a>
 </figure>
-<h3 id="ssoの構成">SSOの構成</h3>
-<p>TealiumのSSOを以下の4つのステップで構成します：</p>
-<ol>
-<li><a href="#step-1-configure-your-idp">あなたのIdPを構成する</a></li>
-<li><a href="#step-2-connect-to-your-idp">あなたのIdPに接続する</a></li>
-<li><a href="#step-3-test-your-sp-initiated-sso">あなたのSSOをテストする</a></li>
-<li><a href="#step-4-activate-your-sp-initiate-sso">あなたのSSOを有効にする</a></li>
-</ol>
-<h4 id="ステップ1-あなたのidpを構成する">ステップ1: あなたのIdPを構成する</h4>
+<p>Tealium SSOの構成と管理を行うには：<br>
+**管理メニュー &gt; SSO（シングルサインオン）**に移動します。</p>
+<p>IdPへの接続を確立し、認証をオンにすると、Tealium SSOはクライアントサイドとサーバーサイドの製品全体で有効になります。</p>
+<p>Tealium SSOを4つのステップで構成します：</p>
+<p><a href="#step-1-configure-idp">ステップ1：IdPの構成</a><br>
+<a href="#step-2-connect-to-idp">ステップ2：IdPへの接続</a><br>
+<a href="#step-3-test-your-sp-initiated-sso">ステップ3：SSOのテスト</a><br>
+<a href="#step-4-activate-your-sp-initiated-sso">ステップ4：SSOの有効化</a></p>
+<h3 id="ステップ1idpの構成">ステップ1：IdPの構成</h3>
 <p>以下の手順を完了して、新しいSAML SSO接続を作成します：</p>
 <ol>
-<li>**管理メニュー &gt; SSO (シングルサインオン)**に移動します。</li>
+<li>**管理メニュー &gt; SSO（シングルサインオン）**に移動します。</li>
 </ol>
 <figure><a class="slb" href="/images/iq-tag-management/administration/security/sso-configuration2.png"><img src="/images/iq-tag-management/administration/security/sso-configuration2.png"
          alt="New SAML Single Sign On Connection"
@@ -224,8 +223,8 @@
 </figure>
 <ol start="2">
 <li><strong>新しいSAMLシングルサインオン（SSO）接続 &gt; IdPの構成</strong>画面で、Tealiumのメタデータファイルをコンピュータにダウンロードし、このファイルをあなたのIdPにインポートします。</li>
-<li>あなたのIdPで新しいTealiumアプリケーションを作成し、あなたのIdPのメタデータファイルをダウンロードします。新しいSSO接続を作成するためのメタデータファイルにアクセスし、ダウンロードするための構成は、各IdPで異なります。<br>
-具体的なIdPの手順については、<a href="#idp-configuration-instructions">IdP構成手順</a>を参照してください。<br>
+<li>あなたのIdPで新しいTealiumアプリケーションを作成し、あなたのIdPのメタデータファイルをダウンロードします。各IdPは、新しいSSO接続を作成するためのメタデータファイルにアクセスしてダウンロードするための異なる構成を必要とします。<br>
+具体的なIdPの手順については、<a href="#idp-instructions">IdP構成手順</a>を参照してください。<br>
 あなたのIdPから以下の情報を確認してください：
 <ul>
 <li>SAMLメタデータファイル</li>
@@ -235,8 +234,8 @@
 </li>
 <li>IdPを構成し、新しいSSO接続に必要な情報を収集した後、Tealiumの新しいSAMLシングルサインオン（SSO）接続ウィザードで<strong>続行</strong>をクリックします。</li>
 </ol>
-<h5 id="idp構成手順">IdP構成手順</h5>
-<p>以下の表は、TealiumのSSOと連携するためのIdPの構成方法についての指示をリストしています：</p>
+<h3 id="idpの手順">IdPの手順</h3>
+<p>以下の表は、Tealium SSOと連携するためのIdPの構成方法をリストしています：</p>
 <table>
 <thead>
 <tr>
@@ -251,7 +250,7 @@
 </tr>
 <tr>
 <td>ADFS</td>
-<td><a href="/ja/administration/single-sign-on/adfs/">ADFS (Active Directory) IdPとのSSO構成</a>の指示に従って、メタデータファイルをダウンロードしてTealiumにアップロードします。</td>
+<td><a href="/ja/administration/single-sign-on/adfs/">ADFS（Active Directory）IdPとのSSO構成</a>の指示に従って、メタデータファイルをダウンロードしてTealiumにアップロードします。</td>
 </tr>
 <tr>
 <td>Azure</td>
@@ -263,7 +262,7 @@
 </tr>
 <tr>
 <td>OneLogin</td>
-<td><a href="https://onelogin.service-now.com/support?id=kb_article&amp;sys_id=b2c91143db109700d5505eea4b9619d5">OneLoginのドキュメンテーション</a>の指示に従って、メタデータファイルをダウンロードしてTealiumにアップロードします。<br> あなたの構成では、以下の値が構成されていることを確認してください：<ul><li>ユーザーには<code>email</code>と構成された属性があります。</li><li><strong>Audience</strong>は、Tealiumのメタデータファイルの<strong>AssertionConsumerService</strong>ノードの<strong>Location</strong>属性と同じ値に構成されています。</li><li><strong>Recipient</strong>は、Tealiumのメタデータファイルの<strong>AssertionConsumerService</strong>ノードの<strong>Location</strong>属性と同じ値に構成されています。</li><li><strong>ACS (Consumer) URL Validator</strong>は、<strong>Tealium</strong>メタデータファイルの<strong>AssertionConsumerServicenode</strong>の<strong>Location</strong>属性と同じ値に構成されています。すべてのスラッシュはバックスラッシュでエスケープする必要があります。</li><ul><li>例えば、<strong>Location</strong>属性が<code>https://prod-federation.auth.us-west-1.amazoncognito.com/saml2/idpresponse</code>の値を持つ場合、<strong>URL Validator</strong>は<code>https:\/\/prod-federation.auth.us-west-1.amazoncognito.com\/saml2\/idpresponse</code>であるべきです。</li></ul><li><strong>ACS (Consumer) URL</strong>は、Tealiumのメタデータファイルの<strong>AssertionConsumerService</strong>ノードの<strong>Location</strong>属性と同じ値に構成されています。</li><li><strong>Login URL</strong>は<code>https://my.tealiumiq.com/login/sso/{ACCOUNT_NAME}</code>に構成されています。</li><li><strong>SAML Initiator</strong>は<strong>Service Provider</strong>に構成されています。</li></ul></td>
+<td><a href="https://onelogin.service-now.com/support?id=kb_article&amp;sys_id=b2c91143db109700d5505eea4b9619d5">OneLoginのドキュメンテーション</a>の指示に従って、メタデータファイルをダウンロードしてTealiumにアップロードします。<br> あなたの構成では、以下の値が構成されていることを確認してください：<ul><li>ユーザーには<code>email</code>と構成された属性があります。</li><li><strong>Audience</strong>は、Tealiumメタデータファイルの<strong>AssertionConsumerService</strong>ノードの<strong>Location</strong>属性と同じ値に構成されています。</li><li><strong>Recipient</strong>は、Tealiumメタデータファイルの<strong>AssertionConsumerService</strong>ノードの<strong>Location</strong>属性と同じ値に構成されています。</li><li><strong>ACS (Consumer) URL Validator</strong>は、<strong>Tealium</strong>メタデータファイルの<strong>AssertionConsumerServicenode</strong>の<strong>Location</strong>属性と同じ値に構成されています。すべてのスラッシュはバックスラッシュでエスケープする必要があります。</li><ul><li>例えば、<strong>Location</strong>属性が<code>https://prod-federation.auth.us-west-1.amazoncognito.com/saml2/idpresponse</code>の値を持つ場合、<strong>URL Validator</strong>は<code>https:\/\/prod-federation.auth.us-west-1.amazoncognito.com\/saml2\/idpresponse</code>であるべきです。</li></ul><li><strong>ACS (Consumer) URL</strong>は、Tealiumメタデータファイルの<strong>AssertionConsumerService</strong>ノードの<strong>Location</strong>属性と同じ値に構成されています。</li><li><strong>Login URL</strong>は<code>https://my.tealiumiq.com/login/sso/{ACCOUNT_NAME}</code>に構成されています。</li><li><strong>SAML Initiator</strong>は<strong>Service Provider</strong>に構成されています。</li></ul></td>
 </tr>
 <tr>
 <td>Okta</td>
@@ -271,33 +270,39 @@
 </tr>
 </tbody>
 </table>
-<h4 id="ステップ2-あなたのidpに接続する">ステップ2: あなたのIdPに接続する</h4>
+<h3 id="federation-id">Federation ID</h3>
+<p>デフォルトでは、Tealiumはユーザーのメールアドレスを使用してログイン時にユーザーを識別します。Federation IDは、代替のユーザー識別子を許可します。</p>
+<ul>
+<li>Federation IDはSAML NameIDプロパティにマッピングされます。</li>
+<li>Federation IDがTealiumのユーザーに割り当てられていない場合、システムはデフォルトでEmail属性にマッチングします。詳細については、<a href="/ja/administration/users/#edit-a-user">ユーザーの編集</a>を参照してください。</li>
+<li>あなたのSAML構成では、Email属性のマッピングが依然として必要です。</li>
+</ul>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>あなたのアカウントでFederation IDを有効にするには、Tealiumサポートにお問い合わせください。</p>
+<h3 id="ステップ2idpへの接続">ステップ2：IdPへの接続</h3>
 <p>以下の手順を完了して、あなたのIdPに接続します：</p>
 <ol>
-<li><strong>IdPに接続</strong>画面で、あなたのIdPからダウンロードしたSAMLメタデータファイルをアップロードします。接続が確立されると、<strong>Identity Provider</strong>フィールドはあなたのIdPの名前で自動的に入力されます。</li>
+<li><strong>IdPへの接続</strong>画面で、あなたのIdPからダウンロードしたSAMLメタデータファイルをアップロードします。接続が確立されると、<strong>Identity Provider</strong>フィールドはあなたのIdPの名前で自動的に入力されます。</li>
 </ol>
-<figure><a class="slb" href="/images/iq-tag-management/administration/security/sso-configuration3.png"><img src="/images/iq-tag-management/administration/security/sso-configuration3.png"
+<p><figure><a class="slb" href="/images/iq-tag-management/administration/security/sso-configuration3.png"><img src="/images/iq-tag-management/administration/security/sso-configuration3.png"
          alt="New SAML Single Sign On Connection"
          title="New SAML Single Sign On Connection"/>
     </a>
 </figure>
-<ol start="2">
-<li><strong>IdP Admin Email</strong>フィールドに、あなたのIdPアカウントの管理者のメールアドレスを入力します。</li>
-<li>（オプション）あなたのIdPが別の署名証明書を提供している場合は、そのファイルを<strong>IdP SAML 2.0 Signing Certificate</strong>の下にアップロードします。</li>
-<li><strong>接続を確立</strong>をクリックします。</li>
-</ol>
-<h4 id="ステップ3-あなたのsp-initiated-ssoをテストする">ステップ3: あなたのSP-Initiated SSOをテストする</h4>
-<p>IdPに接続した後、SSOは<strong>テスト</strong>認証モードに構成されます。<strong>テスト</strong>モードでは、アカウント内のユーザーがTealiumが開始したログインまたはSPが開始したログインを選択できます。このモードを使用して、認証モードを切り替える前にSPが開始したログインを検証します。テストが成功するためには、次のURLを使用してログインすることを確認してください：<code>my.tealiumiq.com/login/sso</code>。</p>
-<p class="note"><i class="fa fa-exclamation-triangle"></i>IdPへの接続をテストするには、<strong>証明書の詳細</strong>の下の<strong>テストURL</strong>をコピーしてブラウザに貼り付けます。</p>
-<h4 id="ステップ4spが開始したssoを有効にする">ステップ4：SPが開始したSSOを有効にする</h4>
-<p>ユーザーのSPが開始したログイン体験に満足したら、SPが開始したSSOを有効にするための次の手順を完了します。</p>
+2. <strong>IdP管理者メール</strong>フィールドに、IdPアカウントの管理者のメールアドレスを入力します。
+3. （オプション）IdPが別の署名証明書を提供している場合は、そのファイルを<strong>IdP SAML 2.0署名証明書</strong>の下にアップロードします。
+4. <strong>接続を確立</strong>をクリックします。</p>
+<h3 id="ステップ3sp-initiated-ssoをテストする">ステップ3：SP-initiated SSOをテストする</h3>
+<p>IdPに接続した後、SSOは<strong>テスト</strong>認証モードに構成されます。<strong>テスト</strong>モードでは、アカウント内のユーザーがTealium-initiatedログインとSP-initiatedログインのどちらを選択するかを選べます。このモードを使用して、認証モードを切り替える前にSP-initiatedログインを検証します。テストが成功するためには、次のURLを使用してログインすることを確認してください：<code>my.tealiumiq.com/login/sso</code>。</p>
+<p class="note"><i class="fa fa-exclamation-triangle"></i>IdPへの接続をテストするには、<strong>証明書詳細</strong>の下の<strong>テストURL</strong>をコピーしてブラウザに貼り付けます。</p>
+<h3 id="ステップ4sp-initiated-ssoを有効にする">ステップ4：SP-initiated SSOを有効にする</h3>
+<p>ユーザーのSP-initiatedログイン体験に満足したら、以下の手順を完了してSP-initiated SSOを有効にします。</p>
 <ol>
-<li><strong>SSOを管理</strong>画面から、<strong>認証モード</strong>を<strong>オン</strong>に切り替えます。認証モードを<strong>オン</strong>に切り替えると、アカウント内のすべてのユーザーがSPが開始したログインを通じて認証を行い、すべてのユーザーのTealiumが提供するログイン資格情報がリセットされます。</li>
-<li>確認ダイアログが表示されます。新しいSSOログイン手順を有効にする前に、SSO認証フローをテストし、アカウント内のユーザーに新しいSSOログイン手順について通知することを確認します。ステートメントを確認した後、<strong>SSOを有効にする</strong>をクリックします。</li>
+<li><strong>SSOを管理</strong>画面から、<strong>認証モード</strong>を<strong>オン</strong>に切り替えます。認証モードを<strong>オン</strong>に切り替えると、アカウント内のすべてのユーザーがSP-initiatedログインを通じて認証を行い、すべてのユーザーのTealium提供のログイン資格情報がリセットされます。</li>
+<li>確認ダイアログが表示されます。新しいSSOログイン手順を有効にする前に、SSO認証フローをテストし、アカウント内のユーザーに新しいSSOログイン手順について通知を提供することを確認します。ステートメントを確認した後、<strong>SSOを有効にする</strong>をクリックします。</li>
 <li><strong>保存</strong>をクリックします。</li>
 </ol>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>認証モードを<strong>テスト</strong>から<strong>オン</strong>に切り替えると、SSO認証が有効になり、Tealiumログインが無効になります。Tealiumログインを再度有効にするには、認証モードを<strong>テスト</strong>に戻します。</p>
-<p>Tealium SSOがオンになると、Tealiumはユーザーのパスワードを管理しなくなります。Tealium内からユーザーを追加し、権限を管理することは引き続き可能ですが、パスワードと認証に関連する機能（例えば、<a href="/ja/iq-tag-management/administration/security/mfa/">多要素認証</a>）はTealiumインターフェースを通じては利用できなくなります。ユーザーは企業のシステムを通じて認証し、カスタムSSO URLを使用してTealiumアカウントにアクセスします。</p>
+<p>Tealium SSOがオンになると、Tealiumはユーザーのパスワードを管理しなくなります。Tealium内からユーザーを追加したり、権限を管理したりすることはできますが、パスワードや認証に関連する機能（例えば、<a href="/ja/iq-tag-management/administration/security/mfa/">多要素認証</a>）はTealiumインターフェースを通じては利用できなくなります。ユーザーは企業のシステムを通じて認証し、カスタムSSO URLを使用してTealiumアカウントにアクセスします。</p>
 
 </div>
 
@@ -343,7 +348,7 @@
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年September月25日
+          <p>最終更新日 ::  2024年December月5日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -360,9 +365,14 @@
       <nav id="TableOfContents"><ul class="toc-h2"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E8%A6%81%E4%BB%B6" href="javascript:void(0)">要件</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E4%BB%95%E7%B5%84%E3%81%BF" href="javascript:void(0)">仕組み</a></li>
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8Bidp" href="javascript:void(0)">サポートされているIdP</a></li>
-              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-sso%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9" href="javascript:void(0)">Tealium SSOログインプロセス</a></li>
+              </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium-sso%E3%81%AE%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9" href="javascript:void(0)">Tealium SSOのログインプロセス</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sso%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%A8%E7%AE%A1%E7%90%86" href="javascript:void(0)">SSOの構成と管理</a></li>
-              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#sso%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">SSOの構成</a></li>
+              <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%971idp%E3%81%AE%E6%A7%8B%E6%88%90" href="javascript:void(0)">ステップ1：IdPの構成</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#idp%E3%81%AE%E6%89%8B%E9%A0%86" href="javascript:void(0)">IdPの手順</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#federation-id" href="javascript:void(0)">Federation ID</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%972idp%E3%81%B8%E3%81%AE%E6%8E%A5%E7%B6%9A" href="javascript:void(0)">ステップ2：IdPへの接続</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%973sp-initiated-sso%E3%82%92%E3%83%86%E3%82%B9%E3%83%88%E3%81%99%E3%82%8B" href="javascript:void(0)">ステップ3：SP-initiated SSOをテストする</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%974sp-initiated-sso%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B" href="javascript:void(0)">ステップ4：SP-initiated SSOを有効にする</a></li>
               </nav>
   </aside></nav>
 

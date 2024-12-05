@@ -426,16 +426,16 @@
 </div>
 
 <div class="prose nested-links" id="prose">
-  <p>Tealium同意登録は、<a href="/ja/iq-tag-management/consent/consent-integrations/about/">Tealium iQ Consent Integrations</a>と<a href="/ja/iq-tag-management/consent/consent-management/about/">Consent Manager</a>が、ウェブサイトのコード全体で同意信号を公開するために使用されます。また、Google同意モードタグがこれらの信号に直接アクセスし、適切な反応を可能にします。</p>
+  <p>Tealium同意登録は、<a href="/ja/iq-tag-management/consent/consent-integrations/about/">Tealium iQ Consent Integrations</a>と<a href="/ja/iq-tag-management/consent/consent-management/about/">Consent Manager</a>がウェブサイトのコード全体で同意信号を公開するために使用されます。また、Google同意モードタグがこれらの信号に直接アクセスし、適切な反応を可能にします。</p>
 <h2 id="主な特徴">主な特徴</h2>
 <ul>
-<li><strong>ユニバーサル同意イベント</strong>: 最新のConsent Manager（<code>cmGeneral</code>テンプレートv3.1.0から）とConsent Integrations（フレームワークテンプレートv1.2.0から）は、同意構成がロードされたり更新されたりするときにイベントを発行するために同意登録を使用します。これらの変更は、<code>window.tealiumConsentRegister</code>オブジェクトのページ全体でアクセス可能です。詳細については、<a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events">MDN Web Docs: イベントの紹介</a>を参照してください。</li>
+<li><strong>ユニバーサル同意イベント</strong>: 最新のConsent Manager（<code>cmGeneral</code>テンプレートv3.1.0から）とConsent Integrations（フレームワークテンプレートv1.2.0から）は、同意構成がロードされたり更新されたりしたときにイベントを発行するために同意登録を使用します。これらの変更は、<code>window.tealiumConsentRegister</code>オブジェクトのページ全体でアクセス可能です。詳細については、<a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events">MDN Web Docs: イベントの紹介</a>を参照してください。</li>
 <li><strong>すべての同意信号のサポート</strong>: <code>implicit</code>と<code>explicit</code>の両方の同意信号を発行し、保持します。</li>
 <li><strong>イベントのリスニング</strong>: ページ上の任意のタグやスクリプトは、<code>consent_loaded</code>と<code>consent_changed</code>イベントをリッスンできます。これにより、同意ステータスの変更に基づくレスポンシブなアクションが可能になります。詳細については、<a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener">MDN Web Docs: EventTarget addEventListener() method</a>を参照してください。</li>
 <li><strong>拡張のための堅固な基盤</strong>: Tealium同意登録は、高度なカスタマイズオプションを提供し、将来の新機能の追加を効率化する新しい堅固なシステムを導入します。</li>
 </ul>
 <h2 id="仕組み">仕組み</h2>
-<p>Tealium同意登録は、同意決定をウェブサイトのコード全体で共有できるようにすることで、同意管理を改善します。これにより、Google同意モードなどの機能がこれらの決定にアクセスし、適切なアクションを取ることが可能になります。同意信号の標準化レイヤーとして機能し、標準化された同意信号をウェブページで簡単に利用できるようにします。</p>
+<p>Tealium同意登録は、同意決定をウェブサイトのコード全体で共有することにより、同意管理を改善します。これにより、Google同意モードなどの機能がこれらの決定にアクセスし、適切なアクションを取ることが可能になります。同意信号の標準化レイヤーとして機能し、標準化された同意信号をウェブページで簡単に利用できるようにします。</p>
 <h2 id="google同意モード">Google同意モード</h2>
 <p>必要な背景と文脈については、<a href="/ja/iq-tag-management/consent/google-consent-mode/">Google同意モード</a>を参照してください。Googleタグをページに統合する適切なタイミングと方法については、リーダーシップと法務チームと相談することが重要です。</p>
 <h3 id="前提条件">前提条件</h3>
@@ -451,17 +451,17 @@
 <p><code>window.tealiumConsentRegister.currentDecision</code>オブジェクトは、ウェブページ上の現在の同意決定に直接アクセスすることを可能にします。これにより、以下のようなカスタムアクションの実装が簡素化されます：</p>
 <ul>
 <li>ベンダーにオプトアウトイベントを送信して、オーディエンスからの削除と完全なダウンストリームの無効化を可能にします。</li>
-<li>Tealium iQ拡張を使用して、CMPが提供するものに加えて同意ログの追加レイヤーを追加します。</li>
+<li>Tealium iQ拡張を使用して、CMPが提供するものの上に同意ログの追加レイヤーを追加します。</li>
 <li>同意の変更を追跡し、JavaScript API呼び出しを通じて現在の決定にアクセスを可能にします。</li>
 </ul>
-<p>Consent IntegrationsとConsent Managerでは、配列内の目的IDは特定の構成ごとに異なります。</p>
+<p>Consent IntegrationsとConsent Managerの場合、配列内の目的IDは、特定の構成ごとに異なります。</p>
 <pre tabindex="0"><code>// 現在の決定を取得する
 var currentDecision = window.tealiumConsentRegister.currentDecision
 
 // 現在のページがロードされてから登録されたすべての決定を取得する
 var allDecisionsOnThisPage = window.tealiumConsentRegister.decisions
 </code></pre><p><strong>OneTrustを使用したConsent Integrationsの例</strong></p>
-<p>この例では、最初にオプトインモデル（暗黙の決定）で始まり、次にオプトインとオプトアウトを行います。</p>
+<p>この例では、オプトインモデル（暗黙の決定）から始め、説明のためにオプトインとオプトアウトを行います。</p>
 <figure><a class="slb" href="/images/iq-tag-management/consent-register-and-consent-integrations.png"><img src="/images/iq-tag-management/consent-register-and-consent-integrations.png"
          alt="OneTrustを使用したConsent Integrationsの例"
          title="OneTrustを使用したConsent Integrationsの例"/>
@@ -471,7 +471,7 @@ var allDecisionsOnThisPage = window.tealiumConsentRegister.decisions
 <p>同意登録は、<code>implicit</code>または<code>explicit</code>の同意信号が初めてページ上で検出されたとき、または同意決定が更新されたときにイベントを発行します。</p>
 <pre tabindex="0"><code>// 同意の変更を表面化するための例のイベントリスナーを構成する
 
-// ページコードごとに一度実行できるように実装する - 使用ケースに応じて、Pre LoaderまたはDOM Readyを使用できます
+// ページコードごとに一度実行できるように実装できます - 使用ケースに応じてPre LoaderまたはDOM Readyを使用できます
 window.addEventListener(&#39;consent_loaded&#39;, (event) =&gt; {
   console.log(&#39;Consent loaded:&#39;, event.detail.decision);
 });
@@ -479,7 +479,7 @@ window.addEventListener(&#39;consent_loaded&#39;, (event) =&gt; {
 window.addEventListener(&#39;consent_updated&#39;, (event) =&gt; {
   console.log(&#39;Consent updated:&#39;, event.detail.decision);
 });
-</code></pre><p><strong>初回ランディングでオプトインするヨーロッパのユーザーのConsent Manager例</strong></p>
+</code></pre><p><strong>初回ランディングで欧州ユーザーがオプトインするConsent Managerの例</strong></p>
 <figure><a class="slb" href="/images/iq-tag-management/consent-register-and-consent-manager.png"><img src="/images/iq-tag-management/consent-register-and-consent-manager.png"
          alt="Consent Managerの例"
          title="Consent Managerの例"/>
@@ -487,12 +487,18 @@ window.addEventListener(&#39;consent_updated&#39;, (event) =&gt; {
 </figure>
 <p class="note"><i class="fa fa-exclamation-triangle"></i>透明性のため、これらの決定には常に<code>always_on</code>カテゴリが含まれます。なぜなら、<code>omitted</code>タグは常に許可されているからです。</p>
 <h2 id="同意イベントとリスナーのフローダイアグラム">同意イベントとリスナーのフローダイアグラム</h2>
-<p>新しいイベントとリスナーを示すフローの簡略化された概観。</p>
+<p>新しいイベントとリスナーを示すフローの簡略化された概要。</p>
 <figure><a class="slb" href="/images/iq-tag-management/consent-register-flow.png"><img src="/images/iq-tag-management/consent-register-flow.png"
-         alt="Consent Integrations決定フロー"
-         title="Consent Integrations決定フロー" width="1500" height="2000"/>
+         alt="Consent Integrations decision flow"
+         title="Consent Integrations decision flow" width="1500" height="2000"/>
     </a>
 </figure>
+<h2 id="tealium同意登録の抑制">Tealium同意登録の抑制</h2>
+<p>Pre Loader拡張で<code>suppressConsentRegister</code>フラグを構成することで、同意登録を抑制できます。</p>
+<p>同意登録を抑制するには、Pre LoaderスコープのJavaScript Code Extensionに以下のコードを追加します：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">tealiumCmpIntegration</span> <span style="color:#f92672">||</span> {};
+</span></span><span style="display:flex;"><span>window.<span style="color:#a6e22e">tealiumCmpIntegration</span>.<span style="color:#a6e22e">suppressConsentRegister</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span></code></pre></div><p class="note"><i class="fa fa-exclamation-triangle"></i>この構成は慎重に使用してください。なぜなら、これは<strong>すべて</strong>の同意登録機能を抑制します。</p>
 
 </div>
 
@@ -538,7 +544,7 @@ window.addEventListener(&#39;consent_updated&#39;, (event) =&gt; {
 
         </div>
         <div class="bt-l b--moon-gray pt3 f6">
-          <p>最終更新日 ::  2024年March月29日
+          <p>最終更新日 ::  2024年December月5日
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </p>
         </div>
@@ -560,6 +566,7 @@ window.addEventListener(&#39;consent_updated&#39;, (event) =&gt; {
               <ul class="toc-h3"><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E6%84%8F%E6%B1%BA%E5%AE%9A%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9" href="javascript:void(0)">同意決定へのアクセス</a></li>
               <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E6%84%8F%E3%81%AE%E5%A4%89%E6%9B%B4%E3%82%92%E7%9B%A3%E8%A6%96%E3%81%99%E3%82%8B" href="javascript:void(0)">同意の変更を監視する</a></li>
               </ul><li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#%E5%90%8C%E6%84%8F%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%A8%E3%83%AA%E3%82%B9%E3%83%8A%E3%83%BC%E3%81%AE%E3%83%95%E3%83%AD%E3%83%BC%E3%83%80%E3%82%A4%E3%82%A2%E3%82%B0%E3%83%A9%E3%83%A0" href="javascript:void(0)">同意イベントとリスナーのフローダイアグラム</a></li>
+              <li class="db mv2 f6"><a class="w-100 text-color-primary hover-primary-color link" data-id="#tealium%E5%90%8C%E6%84%8F%E7%99%BB%E9%8C%B2%E3%81%AE%E6%8A%91%E5%88%B6" href="javascript:void(0)">Tealium同意登録の抑制</a></li>
               </nav>
   </aside></nav>
 
